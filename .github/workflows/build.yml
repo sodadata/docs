@@ -37,11 +37,7 @@ jobs:
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
           bundle exec jekyll build
-      # TODO Janet/Dirk: Remove this comment and uncomment the below lines
-      #   to actually have these new docs be pushed to soda-sql.
-      #   IMPORATNT: Make sure the old soda-sql/docs no longer push during build!
-      #
-      # - name: Publish docs
-      #   run: aws s3 sync --delete ./_site s3://${AWS_DOCS_BUCKET}${AWS_DOCS_PATH}
-      # - name: Invalidate cache
-      #   run: aws cloudfront create-invalidation --distribution-id ${AWS_CLOUDFRONT_ID} --paths "${AWS_DOCS_PATH}" "${AWS_DOCS_PATH}/*"
+      - name: Publish docs
+        run: aws s3 sync --delete ./_site s3://${AWS_DOCS_BUCKET}${AWS_DOCS_PATH}
+      - name: Invalidate cache
+        run: aws cloudfront create-invalidation --distribution-id ${AWS_CLOUDFRONT_ID} --paths "${AWS_DOCS_PATH}" "${AWS_DOCS_PATH}/*"
