@@ -9,33 +9,16 @@ nav_order: 4
 
 Soda SQL needs connection details in order to access your [warehouse]({% link soda-sql/documentation/glossary.md %}#warehouse) to scan your data. Each type of warehouse uses different configuration parameters. To set the warehouse configurations in your [warehouse YAML]({% link soda-sql/documentation/warehouse.md %}), use the following example configurations that correspond to each database type that Soda SQL supports.
 
+[Amazon Athena](#amazon-athena) <br />
+[Amazon Redshift](#amazon-redshift) <br />
 [Apache Hive](#apache-hive) <br />
-[AWS Athena](#aws-athena) <br />
-[AWS Redshift](#aws-redshift) <br />
 [Google Cloud Platform BigQuery](#gcp-bigquery) <br />
 [Microsoft SQL Server](#microsoft-sql-server) <br />
 [PostgreSQL](#postgresql) <br />
 [Snowflake](#snowflake) <br />
 
 
-## Apache Hive
-
-```yaml
-name: my_hive_project
-connection:
-    type: hive
-    host: localhost
-    port: 10000
-    username: env_var(HIVE_USERNAME)
-    password: env_var(HIVE_PASSWORD)
-    database: default
-    configuration:
-      hive.execution.engine: mr
-      mapreduce.job.reduces: 2
-...
-```
-
-## AWS Athena
+## Amazon Athena
 
 ```yaml
 name: my_athena_project
@@ -63,7 +46,7 @@ connection:
 | region | | Optional |
 
 
-## AWS Redshift
+## Amazon Redshift
 
 ```yaml
 name: my_redshift_project
@@ -81,6 +64,22 @@ connection:
 ...
 ```
 
+## Apache Hive
+
+```yaml
+name: my_hive_project
+connection:
+    type: hive
+    host: localhost
+    port: 10000
+    username: env_var(HIVE_USERNAME)
+    password: env_var(HIVE_PASSWORD)
+    database: default
+    configuration:
+      hive.execution.engine: mr
+      mapreduce.job.reduces: 2
+...
+```
 
 ## GCP BigQuery
 

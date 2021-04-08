@@ -9,18 +9,11 @@ permalink: soda-sql/
 
 ![soda banner](../assets/images/soda-banner.png){:height="800px" width="800px"}
 
-# Soda SQL
+![soda sql](/assets/images/soda-sql-logo.png){:height="200px" width="200px"}
 
 **Soda SQL** is an open-source command-line tool. It utilizes user-defined input to prepare SQL queries that run tests on tables in a database to find invalid, missing, or unexpected data. When tests fail, they surface "bad" data that you and your data engineering team can fix, ensuring downstream analysts are using "good" data to make decisions.
 
-Use Soda SQL to scan a variety of data warehouses:<br />
-<table>
-  <tr>
-    <td>Apache Hive<br /> AWS Athena<br /> AWS Redshift<br /> GCP BigQuery<br /></td>
-    <td>Microsoft SQL Server <br /> PostgreSQL<br /> Snowflake<br /><br /></td>
-  </tr>
-</table>
-
+{% include compatible-warehouses.md %}
 
 * [Install Soda SQL]({% link soda-sql/getting-started/installation.md %}) from your command-line interface.
 * Follow the [Quick start tutorial]({% link soda-sql/getting-started/5_min_tutorial.md %}) to set up Soda SQL and run your first scan in minutes.
@@ -31,7 +24,7 @@ Use Soda SQL to scan a variety of data warehouses:<br />
 
 <br />
 
-# Soda Cloud
+![soda sql](/assets/images/soda-cloud-logo.png){:height="240px" width="240px"}
 
 Connect Soda SQL to a free **Soda Cloud** account where you and your team can use the web application to monitor test results and collaborate to keep your data issue-free.
 
