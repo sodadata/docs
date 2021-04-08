@@ -25,13 +25,13 @@ $ soda scan -v country=FRA warehouse.yml tables/customer_transactions.yml
 ## Configure a filter
 
 1. Open the [scan YAML]({% link soda-sql/documentation/scan.md %}) file associated with the table on which you want to run filtered scans. The scan YAML files are usually located in the [warehouse directory]({% link soda-sql/documentation/glossary.md %}#warehouse-directory) of your Soda SQL project.
-2. To the file, add a filter configuration key as per the following example. Be sure to use quotes for input that is in text format.
+2. To the file, add a filter configuration key as per the following example. Be sure to use quotes for input that is in text format.{% raw %}
 ```yaml
 table_name: CUSTOMER_TRANSACTIONS
 filter: "date = DATE '{{ date }}'"
 metrics: ...
 columns: ...
-```
+``` {% endraw %}
 3. When you define a variable in your scan YAML file, Soda SQL applies the filter to all tests *except* tests defined in SQL metrics. To apply a filter to SQL metrics tests, be sure to explicitly define the variable in your SQL query. Refer to [Variables in SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#variables-in-sql-metrics)
 4. Save the changes to the YAML file, then run a filtered scan by adding a variable to your `soda scan` command in your command-line interface.
 ```shell

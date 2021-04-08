@@ -123,3 +123,4 @@ tests:
 
 * Learn more about [Metrics]({% link soda-sql/documentation/sql_metrics.md %}).
 * Learn about [How Soda works]({% link soda-sql/documentation/concepts.md  %}).
+* Reference the [Data types]({% link soda-sql/documentation/supported-data-types.md %}) that Soda SQL supports when it scans columns.
