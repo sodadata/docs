@@ -7,7 +7,7 @@ nav_order: 11
 
 # Soda Cloud architecture
 
-![scan-anatomy](../assets/images/soda-cloud-arch.png){:height="550px" width="550px"}
+![scan-anatomy](/assets/images/soda-cloud-arch.png){:height="550px" width="550px"}
 
 **[Soda Cloud]({% link soda-sql/documentation/glossary.md %}#soda-cloud)** and **[Soda SQL]({% link soda-sql/documentation/glossary.md %}#soda-sql)** work together to help you monitor your data and alert you when there is a data quality issue.
 

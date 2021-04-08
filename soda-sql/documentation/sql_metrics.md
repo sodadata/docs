@@ -20,7 +20,7 @@ A **metric** is a property of the data in your database. A **measurement** is th
 
 Use **table metrics** to define tests in your scan YAML file that apply to all data in the table during a scan.
 
-![table-metrics](../assets/images/table-metrics.png){:height="440px" width="440px"}
+![table-metrics](/assets/images/table-metrics.png){:height="440px" width="440px"}
 
 
 | Table metric | Description      |
@@ -51,7 +51,7 @@ Use **column metrics** to define tests in your scan YAML file that apply to spec
 
 Where a column metric references a valid or invalid value, or a limit, use the metric in conjunction with a **column configuration**. A Soda SQL scan uses the value of a column configuration key to determine if it should pass or fail a test. See [example](#example-test-using-a-column-metric) below.
 
-![column-metrics](../assets/images/column-metrics.png){:height="440px" width="440px"}
+![column-metrics](/assets/images/column-metrics.png){:height="440px" width="440px"}
 
 
 | Column metric   | Description |  Use with column config key(s) |

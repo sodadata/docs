@@ -62,7 +62,7 @@ soda analyze
 6. Use a code editor to open one of your new scan YAML files. Soda SQL pre-populated the YAML file with default metrics and tests that it deemed useful for the kind of data in the table. See [scan YAML]({% link soda-sql/documentation/scan.md %}#anatomy-of-the-scan-yaml-file). <br /> Adjust the contents of the YAML file to define the tests that you want Soda SQL to conduct when it runs a scan on this table in your warehouse. Refer to [Metrics]({% link soda-sql/documentation/sql_metrics.md %}) and [Tests]({% link soda-sql/documentation/tests.md %}) for details. <br />
 <br />
 Example scan YAML<br />
-![configure yaml](../assets/images/configure-yaml.png){:height="275px" width="275px"}
+![configure yaml](/assets/images/configure-yaml.png){:height="275px" width="275px"}
 7. With your configuration complete, [run your first scan]({% link soda-sql/documentation/scan.md %}#run-a-scan).
 
 

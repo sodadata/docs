@@ -74,7 +74,7 @@ Imagine you have installed Soda SQL, you have run the `soda create` command to s
 
 The following image illustrates what Soda SQL does when you initiate a scan.
 
-![soda-operation](../assets/images/soda-operation.png){:height="800px" width="800px"}
+![soda-operation](/assets/images/soda-operation.png){:height="800px" width="800px"}
 
 **1** - You trigger a scan using the `soda scan` CLI command from your [warehouse directory]({% link soda-sql/documentation/glossary.md %}#warehouse-directory). The scan specifies which Warehouse YAML and scan YAML files to use, which amounts to telling it which table in which warehouse to scan.
 

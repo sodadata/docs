@@ -179,7 +179,7 @@ Insert image:
 
 Add a `png` file of your logically-named image to the `docs/assets/images` directory, then add this code:
 ```
-![scan-anatomy](../assets/images/scan-anatomy.png){:height="440px" width="440px"}
+![scan-anatomy](/assets/images/scan-anatomy.png){:height="440px" width="440px"}
 ```
 
 Includes:
@@ -193,7 +193,7 @@ Relative links:
 ```
 [warehouse yaml]({% link soda-sql/documentation/warehouse.md %})
 
-[airflow_bash.py](../../examples/airflow_bash.py)
+[airflow_bash.py](/../examples/airflow_bash.py)
 ```
 
 Link to anchor:
