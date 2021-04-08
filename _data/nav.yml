@@ -1,0 +1,48 @@
+- title: Get Started
+  page: getting-started/5_min_tutorial.md
+  subcategories:
+  - subtitle: Quick start tutorial
+    page: getting-started/5_min_tutorial.md
+  - subtitle: Install Soda SQL
+    page: getting-started/installation.md
+  - subtitle: Configure Soda SQL
+    page: getting-started/configure.md
+
+- title: Documentation
+  page: documentation/concepts.md
+  subcategories:
+  - subtitle: How Soda SQL works
+    page: documentation/concepts.md
+  - subtitle: Soda SQL CLI commands
+    page: documentation/cli.md
+  - subtitle: Warehouse YAML
+    page: documentation/warehouse.md
+  - subtitle: Set warehouse configuration
+    page: documentation/warehouse_types.md
+  - subtitle: Scan YAML
+    page: documentation/scan.md
+  - subtitle: Metrics
+    page: documentation/sql_metrics.md
+  - subtitle: Tests
+    page: documentation/tests.md
+  - subtitle: Apply filters
+    page: documentation/filtering.md
+  - subtitle: Configure programmatic scans
+    page: documentation/programmatic_scan.md
+  - subtitle: Configure orchestrated scans
+    page: documentation/orchestrate_scans.md
+  - subtitle: Soda Cloud Architecture
+    page: documentation/soda-cloud-architecture.md
+  - subtitle: Connect to Soda Cloud
+    page: documentation/connect_to_cloud.md
+  - subtitle: Create monitors and alerts
+    page: documentation/monitors.md
+  - subtitle: Integrate with Slack
+    page: documentation/integrate-slack.md
+  - subtitle: Troubleshoot
+    page: documentation/troubleshoot.md
+  - subtitle: Glossary
+    page: documentation/glossary.md
+
+- title: Community
+  page: community.md
