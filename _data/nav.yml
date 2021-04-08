@@ -41,6 +41,10 @@
     page: soda-sql/documentation/integrate-slack.md
   - subtitle: Troubleshoot
     page: soda-sql/documentation/troubleshoot.md
+  - subtitle: Data Types
+    page: soda-sql/documentation/supported-data-types.md
+  - subtitle: Data security and privacy
+    page: soda-sql/documentation/data-privacy.md
   - subtitle: Glossary
     page: soda-sql/documentation/glossary.md
 
