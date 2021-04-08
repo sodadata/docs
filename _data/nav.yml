@@ -1,48 +1,48 @@
 - title: Get Started
-  page: getting-started/5_min_tutorial.md
+  page: soda-sql/getting-started/5_min_tutorial.md
   subcategories:
   - subtitle: Quick start tutorial
-    page: getting-started/5_min_tutorial.md
+    page: soda-sql/getting-started/5_min_tutorial.md
   - subtitle: Install Soda SQL
-    page: getting-started/installation.md
+    page: soda-sql/getting-started/installation.md
   - subtitle: Configure Soda SQL
-    page: getting-started/configure.md
+    page: soda-sql/getting-started/configure.md
 
 - title: Documentation
-  page: documentation/concepts.md
+  page: soda-sql/documentation/concepts.md
   subcategories:
   - subtitle: How Soda SQL works
-    page: documentation/concepts.md
+    page: soda-sql/documentation/concepts.md
   - subtitle: Soda SQL CLI commands
-    page: documentation/cli.md
+    page: soda-sql/documentation/cli.md
   - subtitle: Warehouse YAML
-    page: documentation/warehouse.md
+    page: soda-sql/documentation/warehouse.md
   - subtitle: Set warehouse configuration
-    page: documentation/warehouse_types.md
+    page: soda-sql/documentation/warehouse_types.md
   - subtitle: Scan YAML
-    page: documentation/scan.md
+    page: soda-sql/documentation/scan.md
   - subtitle: Metrics
-    page: documentation/sql_metrics.md
+    page: soda-sql/documentation/sql_metrics.md
   - subtitle: Tests
-    page: documentation/tests.md
+    page: soda-sql/documentation/tests.md
   - subtitle: Apply filters
-    page: documentation/filtering.md
+    page: soda-sql/documentation/filtering.md
   - subtitle: Configure programmatic scans
-    page: documentation/programmatic_scan.md
+    page: soda-sql/documentation/programmatic_scan.md
   - subtitle: Configure orchestrated scans
-    page: documentation/orchestrate_scans.md
+    page: soda-sql/documentation/orchestrate_scans.md
   - subtitle: Soda Cloud Architecture
-    page: documentation/soda-cloud-architecture.md
+    page: soda-sql/documentation/soda-cloud-architecture.md
   - subtitle: Connect to Soda Cloud
-    page: documentation/connect_to_cloud.md
+    page: soda-sql/documentation/connect_to_cloud.md
   - subtitle: Create monitors and alerts
-    page: documentation/monitors.md
+    page: soda-sql/documentation/monitors.md
   - subtitle: Integrate with Slack
-    page: documentation/integrate-slack.md
+    page: soda-sql/documentation/integrate-slack.md
   - subtitle: Troubleshoot
-    page: documentation/troubleshoot.md
+    page: soda-sql/documentation/troubleshoot.md
   - subtitle: Glossary
-    page: documentation/glossary.md
+    page: soda-sql/documentation/glossary.md
 
 - title: Community
-  page: community.md
+  page: soda-sql/community.md
