@@ -6,7 +6,8 @@ has_children: true
 permalink: soda-sql/
 ---
 
-<p align="center"><img src="https://raw.githubusercontent.com/sodadata/soda-sql/main/docs/assets/images/soda-banner.png" alt="Soda logo" /></p>
+
+![soda banner](../assets/images/soda-banner.png){:height="800px" width="800px"}
 
 # Soda SQL
 

@@ -67,7 +67,7 @@ When it creates your scan YAML file, Soda SQL pre-populates it with the `test` a
 
 The following describes the contents of a scan YAML file that Soda SQL created and pre-populated.
 
-![scan-anatomy](../assets/images/scan-anatomy.png){:height="440px" width="440px"}
+![scan-anatomy](/assets/images/scan-anatomy.png){:height="440px" width="440px"}
 
 
 **1** - The value of **table_name** identifies a SQL table in your database. If you were writing a SQL query, it is the value you would supply for your `FROM` statement.

@@ -7,11 +7,11 @@ nav_order: 1
 
 # Quick start tutorial
 
-Use your command-line interface to **connect** Soda SQL to your database, prepare default **tests** that will surface "bad" data, then run your first **scan** in a few minutes.
+Use your command-line interface to **connect** Soda SQL to your database, prepare default **tests** that will surface "bad" data, then run your first **scan** in a few minutes. 
 <br />
 <br />
 
-![tutorial-happy-path](../assets/images/tutorial-happy-path.png){:height="600px" width="600px"}
+![tutorial-happy-path](/assets/images/tutorial-happy-path.png){:height="600px" width="600px"}
 
 
 ## Create a sample warehouse (optional)
@@ -106,7 +106,7 @@ Command:
 cat ./tables/demodata.yml
 ```
 Output:<br />
-![tutorial-output](../assets/images/tutorial-output.png){:height="340px" width="340px"}
+![tutorial-output](/assets/images/tutorial-output.png){:height="340px" width="340px"}
 3. Note the three tests that Soda SQL configured in `demodata.yml`. When it created this file, Soda SQL pre-populated it with the `test` and `metric` configurations it deemed useful based on the data in the table it analyzed. Read more about the [Anatomy of the scan YAML file]({% link soda-sql/documentation/scan.md %}#anatomy-of-the-scan-yaml-file).
 
 ## Run a scan
