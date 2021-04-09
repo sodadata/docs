@@ -26,12 +26,12 @@ Consider following the [Quick start tutorial]({% link soda-sql/getting-started/5
 $ mkdir soda_warehouse_directory
 $ cd soda_warehouse_directory
 ```
-2. Use the `soda create` command to create and pre-populate two files that enable you to configure connection details for Soda SQL to access your warehouse:
+2. Use the [create command](#create-commands) to create and pre-populate two files that enable you to configure connection details for Soda SQL to access your warehouse:
 * a `warehouse.yml` file which stores access details for your warehouse ([read more]({% link soda-sql/documentation/warehouse.md %}))
 * an `env_vars.yml` file which securely stores warehouse login credentials ([read more]({% link soda-sql/documentation/warehouse.md %}#env_vars-yaml))<br />
 <br />
 ```shell
-$ soda create -d yourdbname -u dbusername -w soda_warehouse_directory typeofdb
+$ soda create yourwarehousetype -d yourdbname -u dbusername -w soda_warehouse_directory 
 ```
 3. Use a code editor to open the `warehouse.yml` file that Soda SQL created and put in your warehouse directory. Refer to [Set warehouse configurations]({% link soda-sql/documentation/warehouse_types.md %}) to adjust the configuration details according to the type of warehouse you use, then save the file.<br />
 <br />
@@ -65,6 +65,17 @@ Example scan YAML<br />
 ![configure yaml](/assets/images/configure-yaml.png){:height="275px" width="275px"}
 7. With your configuration complete, [run your first scan]({% link soda-sql/documentation/scan.md %}#run-a-scan).
 
+## Create commands
+
+|Warehouse type  | Command |
+|--------------- | -------------------- |
+| Amazon Athena  | soda create athena |
+| Amazon Redshift | soda create redshift |
+| Apache Hive    | soda create hive     |
+| GCP BigQuery   | soda create bigquery |
+| MS SQL Server  | soda create sqlserver |
+| PostgreSQL     | soda create postgres |
+| Snowflake      | soda create snowflake |
 
 ## Go further
 

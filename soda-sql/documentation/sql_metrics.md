@@ -100,9 +100,8 @@ Where a column metric references a valid or invalid value, or a limit, use the m
 | `valid_values` | Specifies several valid values in list format. | integers in list |
 
 
-> EXPERIMENTAL: The valid_format values are experimental and may change in the future.
 
-| `valid_format` value | Format |
+| `valid_format` value <br /> (Experimental and<br />  subject to change.) | Format |
 | ----- | ------ |
 | `number_whole` | Number is whole. |
 | `number_decimal_point` | Number uses `.` as decimal indicator.|

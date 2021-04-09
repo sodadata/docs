@@ -16,7 +16,7 @@ Use your command-line interface to **connect** Soda SQL to your database, prepar
 
 ## Create a sample warehouse (optional)
 
-In the context of Soda SQL, a warehouse represents a SQL engine or database such as Snowflake, AWS Redshift, or PostgreSQL. If you do not have access to a warehouse on your system, you can use Docker to build a sample PostgreSQL warehouse so that you can set up your Soda SQL CLI tool and see it in action.
+In the context of Soda SQL, a warehouse represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. If you do not have access to a warehouse on your system, you can use Docker to build a sample PostgreSQL warehouse so that you can set up your Soda SQL CLI tool and see it in action.
 
 All the instructions below reference this sample warehouse in the commands.
 
@@ -39,9 +39,9 @@ docker exec soda_sql_tutorial_db \
 
 ## Connect Soda SQL to the warehouse
 
-The instructions below reference the sample warehouse in the commands. Customize the example commands to use your own PostgreSQL warehouse connection details, if you like.
+The instructions below reference the sample warehouse in the commands. There are many [install packages for Soda SQL]({% link soda-sql/getting-started/installation.md %}#install) that correspond to different warehouse types; this tutorial uses PostgreSQL. Customize the example commands to use your own PostgreSQL warehouse connection details, if you like.  
 
-1. From your command-line interface, verify your [installation]({% link soda-sql/getting-started/installation.md %}) of Soda SQL using the `soda` command.
+1. From your command-line interface, verify your [installation]({% link soda-sql/getting-started/installation.md %}) of Soda SQL using the `soda` command. 
 ```shell
 $ soda
 Usage: soda [OPTIONS] COMMAND [ARGS]...
@@ -51,13 +51,13 @@ Usage: soda [OPTIONS] COMMAND [ARGS]...
 $ mkdir soda_sql_tutorial
 $ cd soda_sql_tutorial
 ```
-3. Use the `soda create` command to create and pre-populate two files that enable you to configure connection details for Soda SQL to access your warehouse:
+3. Use the `soda create postgres` command to create and pre-populate two files that enable you to configure connection details for Soda SQL to access your warehouse:
 * a `warehouse.yml` file which stores access details for your warehouse ([read more]({% link soda-sql/documentation/warehouse.md %}))
 * an `env_vars.yml` file which securely stores warehouse login credentials ([read more]({% link soda-sql/documentation/warehouse.md %}#env_vars-yaml))<br />
 <br />
 Command:
 ```shell
-$ soda create -d sodasql -u sodasql -w soda_sql_tutorial postgres
+$ soda create postgres -d sodasql -u sodasql -w soda_sql_tutorial
 ```
 Output:
 ```shell
@@ -111,7 +111,7 @@ Output:<br />
 
 ## Run a scan
 
-1. Use the `soda scan` command to run tests against the data in the demodata warehouse. As input, the command requires the name of the warehouse to scan, and the path and name of the table in the warehouse. <br />
+1. Use the `soda scan` command to run tests against the data in the demodata warehouse. As input, the command requires the name of the warehouse to scan, and the filepath and name of the table in the warehouse. <br />
 <br />
 Command:
 ```shell
@@ -121,7 +121,7 @@ soda scan warehouse.yml tables/demodata.yml
 <br />
 Output:
 ```shell
-  | Soda CLI version 2.0.0 beta
+  | Soda CLI version ...
   | Scanning demodata in ./soda_sql_tutorial ...
   | Environment variable POSTGRES_PASSWORD is not set
   | Executing SQL query:
@@ -163,6 +163,7 @@ $ docker volume rm soda_sql_tutorial_postgres
 ## Go further
 
 * [Post your feedback](https://github.com/sodadata/soda-sql/discussions) about this tutorial!
+* Consult [Configure Soda SQL]({% link soda-sql/getting-started/configure.md %}) for details on setting up a non-PostgreSQL version of Soda SQL.
 * Learn more about [How Soda SQL works]({% link soda-sql/documentation/concepts.md %}).
 * Learn more about the [scan YAML file]({% link soda-sql/documentation/scan.md %}) and how to [run scans]({% link soda-sql/documentation/scan.md %}#run-a-scan).
 * Learn more about configuring [tests]({% link soda-sql/documentation/tests.md %}) and [metrics]({% link soda-sql/documentation/sql_metrics.md %}).

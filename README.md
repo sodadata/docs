@@ -7,7 +7,7 @@ The following outlines the workflow to contribute.
 1. [Set up docs tooling](#set-up-docs-tooling) locally on your machine and clone the GitHub repo.
 2. Create a new branch for your work. Include the word `docs` in the name of your branch.
 3. Follow the [style guidelines](#style-guidelines) to edit existing or write new content using [markdown](#use-jekyll-markdown).
-4. Adjust the nav order of any new files in the header of the file.
+4. Adjust the nav order of any new files in the `docs` > `nav.yml` file.
 5. Spell check your content (select all and copy to Google Docs for a thorough check) and test all links.
 6. Commit your contributions, create a pull request, and request a review, if you wish.
 7. When all tests pass, merge your pull request.
@@ -85,7 +85,7 @@ Content:
 ### Use Jekyll markdown
 
 Kramdown is the default markdown renderer that Jekyll uses.
-{% raw %}
+
 Insert image:
 
 Add a `png` file of your logically-named image to the `docs/assets/images` directory, then add this code:
@@ -131,6 +131,6 @@ Comment out:
 <!-- This content does not display on the web page. -->
 ```
 
-{% endraw %}
+
 
 
