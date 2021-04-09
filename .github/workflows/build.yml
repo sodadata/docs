@@ -19,7 +19,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_DOCS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_DOCS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_BUILD_DEFAULT_REGION }}
+          aws-region: ${{ secrets.AWS_DOCS_REGION }}
       - name: Set up Ruby 2.7
         uses: actions/setup-ruby@v1
         with:
