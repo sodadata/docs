@@ -116,13 +116,13 @@ Where a column metric references a valid or invalid value, or a limit, use the m
 | `date_eu` | dd/mm/yyyy |
 | `date_us` | mm/dd/yyyy |
 | `date_inverse` | yyyy/mm/dd |
-| `time` | |
-| `date_iso_8601` | yyyy-mm-dd |
-| `uuid` | universally unique identifier |
+| `time` | 11:59:00,000<br /> 11:59:00<br /> 11:59<br /> 11-59-00,000<br /> 23:59:00,000<br /> Noon<br /> 1,159 |
+| `date_iso_8601` | 2021, January 21<br /> October 21, 2015 |
+| `uuid` | Universally unique identifier. |
 | `ip_address` | Four whole numbers separated by `.` |
-| `email` | email address |
-| `phone_number` |  |
-| `credit_card_number` | Four four-digit numbers separated by spaces. |
+| `email` | name@domain.extension |
+| `phone_number` | +12 123 123 1234<br /> 123 123 1234<br /> +1 123-123-1234<br /> +12 123-123-1234<br /> +12 123 123-1234<br /> 555-2368<br /> 555-ABCD |
+| `credit_card_number` | Four four-digit numbers separated by spaces.<br /> Four four-digit numbers separated by dashes.<br /> Sixteen-digit number.<br /> Four five-digit numbers separated by spaces.<br />|
 
 
 #### Example tests using a column metric
