@@ -135,3 +135,4 @@ Optionally, you can insert the output of Soda SQL scans into your data orchestra
 * Learn how to configure [metrics]({% link soda-sql/documentation/sql_metrics.md %}) in your YAML files.
 * Learn more about configuring [tests]({% link soda-sql/documentation/tests.md %}).
 * Learn how to apply [filters]({% link soda-sql/documentation/filtering.md %}) to your scan.
+* Reference the [Data types]({% link soda-sql/documentation/supported-data-types.md %}) that Soda SQL supports when it scans columns.

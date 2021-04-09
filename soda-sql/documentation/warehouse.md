@@ -7,24 +7,23 @@ nav_order: 3
 
 # Warehouse YAML
 
-A **warehouse** represents a SQL engine or database such as Snowflake, AWS Redshift, or PostgreSQL. You use a **warehouse YAML** file to configure connection details for Soda SQL to access your warehouse.
+A **warehouse** represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. You use a **warehouse YAML** file to configure connection details for Soda SQL to access your warehouse.
 
 ## Create a warehouse YAML file
 
-You need to create a warehouse YAML file for every warehouse to which you want to connect. You can create warehouse YAML files manually, but the CLI command `soda create` automatically prepares a warehouse YAML file and an env_vars YAML file for you. (Use the env-vars YAML to securely store warehouse login credentials. See [Env_vars YAML](#env_vars-yaml) below.)
+You need to create a warehouse YAML file for every warehouse to which you want to connect. You can create warehouse YAML files manually, but the CLI command `soda create yourwarehousetype` automatically prepares a warehouse YAML file and an env_vars YAML file for you. (Use the env-vars YAML to securely store warehouse login credentials. See [Env_vars YAML](#env_vars-yaml) below.)
 
-When you execute the `soda create` command, you include options that instruct Soda SQL in the creation of the file, and you indicate the type of warehouse, a specification Soda SQL requires. Use `soda create --help` for a list of all available options.
+When you execute the `soda create yourwarehousetype` command, you include options that instruct Soda SQL in the creation of the file, and you indicate the type of warehouse, a specification Soda SQL requires. Use `soda create yourwarehousetype --help` for a list of all available options.
 
-The example below provides the following details:
+The example below includes the following optional details:
 * option `-d` provides the name of the database
 * option `-u` provides the username to log in to the database
 * option `-w` provides the name of the warehouse directory
-* requirement `postgres` indicates the type of database
 
 
 Command:
 ```shell
-$ soda create -d sodasql -u sodasql -w soda_sql_tutorial postgres
+$ soda create yourwarehousetype -d sodasql -u sodasql -w soda_sql_tutorial
 ```
 Output:
 ```shell

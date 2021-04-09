@@ -12,9 +12,10 @@ nav_order: 15
 {% include troubleshoot-install.md %}
 <br />
 
-## Tests and metrics
+## Scans and tests
 
 {% include troubleshoot-tests.md %}
+<br />
 <br />
 
 ## Warehouse connections
