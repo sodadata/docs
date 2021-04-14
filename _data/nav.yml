@@ -50,5 +50,8 @@
   - subtitle: Glossary
     page: soda-sql/documentation/glossary.md
 
+- title: Examples
+  page: soda-sql/examples/examples-by-metric.md
+
 - title: Community
   page: soda-sql/community.md

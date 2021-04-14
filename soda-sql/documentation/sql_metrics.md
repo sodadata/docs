@@ -14,7 +14,7 @@ A **metric** is a property of the data in your database. A **measurement** is th
 **[Table metrics](#table-metrics)<br />
 [Column metrics](#column-metrics)<br />
 [Default column metrics](#default-column-metrics) <br />
-[More column metrics](#more-column-metrics) <br />
+[Grouped column metrics](#grouped-column-metrics) <br />
 [Column configuration keys](#column-configuration-keys) <br />
 [Valid format](#valid-format) <br />
 [Metric groups and dependencies](#metric-groups-and-dependencies)<br />
@@ -56,7 +56,7 @@ Checks to see if the table has exactly five rows. The test fails if the table co
 
 ## Column metrics
 
-Use **column metrics** to define tests in your scan YAML file that apply to specific columns in a table during a scan.
+Use **column metrics** to define tests in your scan YAML file that apply to specific columns in a table during a scan. See [Examples by metric]({% link soda-sql/examples/examples-by-metric.md %}) for example configurations.
 
 Where a column metric references a valid or invalid value, or a limit, use the metric in conjunction with a **column configuration**. A Soda SQL scan uses the value of a column configuration key to determine if it should pass or fail a test. See [example](#example-test-using-a-column-metric) below.
 
@@ -71,30 +71,32 @@ Where a column metric references a valid or invalid value, or a limit, use the m
 | `invalid_count` | The total number of rows that contain invalid content. | `valid_format` <br /> `valid_regex` |
 | `invalid_percentage` | The total percentage of rows that contain invalid content.  |  `valid_format` <br /> `valid_regex` |
 | `max` | The greatest value in a numeric column.  |  -  |
-| `max_length` | The maximum length of a string.  | `valid_max_length`  |
+| `max_length` | The maximum length of a string.  |  -  |
 | `min` | The smallest value in a numeric column.  |  -  |
-| `min_length` | The minimum length of a string.  | `valid_min_length`  |
-| `missing_count` | The total number of rows that are missing specific content. | `missing_values` <br /> `missing_format` <br /> `missing_regex`|
-| `missing_percentage` | The total percentage of rows that are missing specific content. | `missing_values` <br /> `missing_format` <br /> `missing_regex` |
+| `min_length` | The minimum length of a string.  |  -  |
+| `missing_count` | The total number of rows that are missing specific content. | `missing_format` <br /> `missing_regex`|
+| `missing_percentage` | The total percentage of rows that are missing specific content. | `missing_format` <br /> `missing_regex` |
 | `stddev` |  The standard deviation of a numeric column.   | - |
 | `sum` | The sum of the values in a numeric column.   | -  |
 | `valid_count` |  The total number of rows that contain valid content.  | `valid_format` <br /> `valid_regex`   |
 | `valid_percentage` | The total percentage of rows that contain valid content.  |  `valid_format` <br /> `valid_regex`  |
-| `values_count` | The total number of rows that contain content included in a list of valid values. | `valid_values` <br /> `valid_regex`  |
-| `values_percentage` | The total percentage of rows that contain content included in a list of valid values. | `valid_values` <br /> `valid_regex` |
+| `values_count` | The total number of rows that contain content included in a list of valid values. | `missing_values` <br /> `valid_values` <br /> `valid_regex`  |
+| `values_percentage` | The total percentage of rows that contain content included in a list of valid values. | `missing_values` <br /> `valid_values` <br /> `valid_regex` |
 | `variance` | The variance of a numeric column.  | -  |
 
 
-### More column metrics
+### Grouped column metrics
+
+To use these metrics, be sure to define the `metric_groups` in your scan YAML file. See ]Metric groups and dependencies](#metric-groups-and-dependencies) below.
 
 | Column metric  |  Description | Use with column config key(s) | Use with `metric_groups` |
 | -------------- | ------------ | ----------------------------- |
 | `distinct` |  The distinct contents in rows in a column.  | -  | duplicates |
 | `duplicate_count` | The number of rows that contain duplicated content. | -  | duplicates |
-| `frequent_values` |  The number of rows that contain content that most frequently occurs in the column. |  - |  - |
-| `histogram` |  A histogram calculated on the content of the column.  | - |  - |
-| `maxs` |  The number of rows that qualify as maximum. | `valid_max` |  - |
-| `mins` |  The number of rows that qualify as minimum. | `valid_min`  |  - |
+| `frequent_values` |  The frequency of occurance of each value in a column. |  - |  profiling |
+| `histogram` |  A histogram calculated on the content of the column.  | - |  profiling  |
+| `maxs` |  The values of the rows that qualify as maximum relative to other column values. |  -  |  profiling |
+| `mins` |  The values of the rows that qualify as minimum relative to other column values. | -  |  profiling |
 | `unique_count` | The number of rows in which the content appears only once in the column.  |  - | duplicates |
 | `uniqueness` | A ratio that produces a number between 0 and 100 that indicates how unique a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the the column are unique.  | -  | duplicates |
 
