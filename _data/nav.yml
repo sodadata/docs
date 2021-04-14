@@ -13,6 +13,8 @@
   subcategories:
   - subtitle: How Soda SQL works
     page: soda-sql/documentation/concepts.md
+  - subtitle: Data monitoring
+    page: soda-sql/documentation/data-monitoring.md
   - subtitle: Soda SQL CLI commands
     page: soda-sql/documentation/cli.md
   - subtitle: Warehouse YAML

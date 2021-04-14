@@ -13,7 +13,16 @@ A **metric** is a property of the data in your database. A **measurement** is th
 
 **[Table metrics](#table-metrics)<br />
 [Column metrics](#column-metrics)<br />
-[SQL metrics](#sql-metrics)<br />**
+[Default column metrics](#default-column-metrics) <br />
+[More column metrics](#more-column-metrics) <br />
+[Column configuration keys](#column-configuration-keys) <br />
+[Valid format](#valid-format) <br />
+[Metric groups and dependencies](#metric-groups-and-dependencies)<br />
+[SQL metrics](#sql-metrics)<br />
+[SQL metric names](#sql-metricnames)<br >
+[GROUP BY queries in SQL metrics](group-by-queries-in-sql-metrics)<br />
+[Variables in SQL metrics](variables-in-sql-metrics)<br />
+[SQL metrics using file reference](#sql-metrics-using-file-reference)**
 
 
 ## Table metrics
@@ -53,35 +62,43 @@ Where a column metric references a valid or invalid value, or a limit, use the m
 
 ![column-metrics](/assets/images/column-metrics.png){:height="440px" width="440px"}
 
+### Default column metrics
 
-| Column metric   | Description |  Use with column config key(s) |
+| Default column metric   | Description |  Use with column config key(s) |
 | ---------- | ---------------- | ------------------------------ |
 | `avg` | The average of the values in a numeric column.  |  - |
 | `avg_length` | The average length of a string.  |  -  |
-| `distinct` |  The distinct contents in rows in a column.  | -  |
-| `duplicate_count` | The number of rows that contain duplicated content. | -  |
-| `frequent_values` |  The number of rows that contain content that most frequently occurs in the column. |  - |
-| `histogram` |  A histogram calculated on the content of the column.  | - |
 | `invalid_count` | The total number of rows that contain invalid content. | `valid_format` <br /> `valid_regex` |
 | `invalid_percentage` | The total percentage of rows that contain invalid content.  |  `valid_format` <br /> `valid_regex` |
 | `max` | The greatest value in a numeric column.  |  -  |
 | `max_length` | The maximum length of a string.  | `valid_max_length`  |
-| `maxs` |  The number of rows that qualify as maximum. | `valid_max` |
 | `min` | The smallest value in a numeric column.  |  -  |
 | `min_length` | The minimum length of a string.  | `valid_min_length`  |
-| `mins` |  The number of rows that qualify as minimum. | `valid_min`  |
-| `missing_count` | The total number of rows that are missing specific content. | `missing_values` <br /> `missing_regex`|
-| `missing_percentage` | The total percentage of rows that are missing specific content. | `missing_values` <br /> `missing_regex` |
+| `missing_count` | The total number of rows that are missing specific content. | `missing_values` <br /> `missing_format` <br /> `missing_regex`|
+| `missing_percentage` | The total percentage of rows that are missing specific content. | `missing_values` <br /> `missing_format` <br /> `missing_regex` |
 | `stddev` |  The standard deviation of a numeric column.   | - |
 | `sum` | The sum of the values in a numeric column.   | -  |
-| `unique_count` | The number of rows in which the content appears only once in the column.  |  - |
-| `uniqueness` | A ratio that produces a number between 0 and 100 that indicates how unique a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the the column are unique.  | -  |
 | `valid_count` |  The total number of rows that contain valid content.  | `valid_format` <br /> `valid_regex`   |
 | `valid_percentage` | The total percentage of rows that contain valid content.  |  `valid_format` <br /> `valid_regex`  |
 | `values_count` | The total number of rows that contain content included in a list of valid values. | `valid_values` <br /> `valid_regex`  |
 | `values_percentage` | The total percentage of rows that contain content included in a list of valid values. | `valid_values` <br /> `valid_regex` |
-| `variance` | The variance of a numerical column.  | -  |
+| `variance` | The variance of a numeric column.  | -  |
 
+
+### More column metrics
+
+| Column metric  |  Description | Use with column config key(s) | Use with `metric_groups` |
+| -------------- | ------------ | ----------------------------- |
+| `distinct` |  The distinct contents in rows in a column.  | -  | duplicates |
+| `duplicate_count` | The number of rows that contain duplicated content. | -  | duplicates |
+| `frequent_values` |  The number of rows that contain content that most frequently occurs in the column. |  - |  - |
+| `histogram` |  A histogram calculated on the content of the column.  | - |  - |
+| `maxs` |  The number of rows that qualify as maximum. | `valid_max` |  - |
+| `mins` |  The number of rows that qualify as minimum. | `valid_min`  |  - |
+| `unique_count` | The number of rows in which the content appears only once in the column.  |  - | duplicates |
+| `uniqueness` | A ratio that produces a number between 0 and 100 that indicates how unique a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the the column are unique.  | -  | duplicates |
+
+### Column configuration keys
 
 | Column configuration key  | Description  | Values |
 | ------------------------- | ------------ | ------ |
@@ -91,7 +108,7 @@ Where a column metric references a valid or invalid value, or a limit, use the m
 | `missing_regex` | Use regex expressions to specify your own custom missing values.| regex, no forward slash delimiters |
 | `missing_values` | Specifies the values that Soda SQL is to consider missing in list format.| integers in list |
 | `tests` | A section that contains the tests that Soda SQL runs on a column during a scan.| - |
-| `valid_format` | Specifies a named valid text format.| See Valid_format value table below.  |
+| `valid_format` | Specifies a named valid text format.| See `valid_format` value table below.  |
 | `valid_max` | Specifies a maximum value for valid values. | integer |
 | `valid_max_length` | Specifies a maximum string length for valid values. | integer |
 | `valid_min` | Specifies a minimum value for valid values. | integer |
@@ -99,9 +116,11 @@ Where a column metric references a valid or invalid value, or a limit, use the m
 | `valid_regex` | Use regex expressions to specify your own custom valid values. | regex, no forward slash delimiters |
 | `valid_values` | Specifies several valid values in list format. | integers in list |
 
+### Valid format
 
+Valid formats are experimental and subject to change.
 
-| `valid_format` value <br /> (Experimental and<br />  subject to change.) | Format |
+| `valid_format` value <br />  | Format |
 | ----- | ------ |
 | `number_whole` | Number is whole. |
 | `number_decimal_point` | Number uses `.` as decimal indicator.|
@@ -143,28 +162,74 @@ columns:
 
 ## Metric groups and dependencies
 
-Out of the box, Soda SQL includes a **metric groups** configuration key. Define this configuration key in your scan YAML file so that when you use one of the group's metrics in a test, Soda SQL automatically runs the test against all the metrics in its group.
-
-In the example below, a Soda SQL scan runs a test on the contents of the `commission` column to look for values that are not in percentage format. Because the YAML file also defined `metric_group: validity`, the scan also tests all other metrics in the `validity` group. Refer to table, below.
-
-```yaml
-columns:
-  commission:
-     metric_group: validity
-     valid_format: number_percentage
-     tests:
-     – invalid_count == 0
-```
+Out of the box, Soda SQL includes a **metric groups** configuration key. Define this configuration key in your scan YAML file in the table or in a column so that when you use one of the group's metrics in a test, Soda SQL automatically runs the test against all the metrics in its group.
 
 | `metric_groups` value | Metrics the scan includes |
 | ------------------- | ----------------------- |
-| `all` | all column metrics |
+| `all` | all column metrics groups |
 | `missing` | `missing_count`, `missing_percentage`, `values_count`, `values_percentage`. |
 | `validity` |  `valid_count`, `valid_percentage`, `invalid_count`, `invalide_percentage` |
-| `duplicates` | `distinct`, `unique_count`, `uniqueness`, `duplicate_count` |
+| `duplicates` | `distinct`, `unique_count`, `duplicate_count`, `uniqueness` |
 | `length` | `min_length`, `max_length`, `avg_length` |
 | `profiling` |  `maxs`, `mins`, `frequent_values`, `histogram` |
-| `statistics` | `min`, `max`, `avg sum`, `variance`, `stddev` |
+| `statistics` | `min`, `max`, `avg`, `sum`, `variance`, `stddev` |
+
+In the example below, a Soda SQL scan runs two tests on the contents of the `id` column: 
+- test for values that are not in UUID format
+- test for duplicate values
+
+Because the YAML file also defines `metric_groups: duplicates`, the scan also tests all other metrics in the `duplicates` group. Refer to table below.
+
+```yaml
+table_name: demodata
+metrics:
+  - row_count
+  - missing_count
+  - missing_percentage
+  - values_count
+  - ...
+tests:
+  - row_count > 0
+columns:
+  id:
+    metric_groups:
+    - duplicates
+    valid_format: uuid
+    tests:
+      - invalid_percentage == 0
+      - duplicate_count == 0
+  feepct:
+    valid_format: number_percentage
+    tests:
+      - invalid_percentage == 0
+```
+
+The example above defines metric groups at the **column level**, but you can also define metric groups at the **table level** so as to use the inidividual metrics from the group in tests in multiple columns. See example below.
+
+```yaml
+table_name: demodata
+metrics:
+  - row_count
+  - missing_count
+  - missing_percentage
+  - values_count
+  - ...
+metric_groups:
+  - duplicates
+tests:
+  - row_count > 0
+columns:
+  id:
+    valid_format: uuid
+    tests:
+      - invalid_percentage == 0
+      - duplicate_count == 0
+  feepct:
+    valid_format: number_percentage
+    tests:
+      - invalid_percentage == 0
+      - duplicate_count == 0
+```
 
 By default, there exist **dependencies** between some metrics. If Soda SQL scans a metric which has dependencies, it includes all the dependent metrics in the scan as well.
 
@@ -303,7 +368,7 @@ sql_metrics:
 In Soda SQL, you set a **variable** to apply a filter to the data that Soda SQL scans. Often you use a variable to filter the range of a scan by date. Refer to [Apply filters]({% link soda-sql/documentation/filtering.md %}) for details.
 
 When you define a variable in your scan YAML file, Soda SQL applies the filter to all tests *except* tests defined in SQL metrics. To apply a filter to SQL metrics tests, be sure to explicitly define the variable in your SQL query, as in the example below.
-
+{% raw %}
 ```yaml
 table_name: mytable
 filter: date = DATE '{{ date }}'
@@ -315,6 +380,7 @@ sql_metrics:
       tests:
         - total_volume_us > 5000
 ```
+{% endraw %}
 
 ### SQL metrics using file reference
 
