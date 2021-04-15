@@ -11,6 +11,8 @@ Log in to **[Soda Cloud]({% link soda-sql/documentation/glossary.md %}#soda-clou
 
 Further, you can use monitors to track data quality over time. Soda Cloud stores your scan results and prepares charts that represent the volume of failed tests in each scan. These visualizations of your scan results enable you to see where your data quality is improving or deteriorating over time.
 
+Soda SQL refers to monitors as **tests**. Refer to [Tests]({% link soda-sql/documentation/tests.md %}) to learn how to define a test using Soda SQL.
+
 
 ## Prerequisites
 

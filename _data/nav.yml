@@ -25,7 +25,7 @@
     page: soda-sql/documentation/scan.md
   - subtitle: Metrics
     page: soda-sql/documentation/sql_metrics.md
-  - subtitle: Tests
+  - subtitle: Define tests
     page: soda-sql/documentation/tests.md
   - subtitle: Apply filters
     page: soda-sql/documentation/filtering.md
@@ -52,6 +52,9 @@
 
 - title: Examples
   page: soda-sql/examples/examples-by-metric.md
+  subcategories:
+  - subtitle: Example tests by metric
+    page: soda-sql/examples/examples-by-metric.md
 
 - title: Community
   page: soda-sql/community.md

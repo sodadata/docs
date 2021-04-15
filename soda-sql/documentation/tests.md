@@ -1,23 +1,25 @@
 ---
 layout: default
-title: Tests
+title: Define tests
 parent: Documentation
 nav_order: 7
 ---
 
-# Tests
+# Define tests
 
-A **test** is a check that Soda SQL performs when it scans a table in your warehouse. Technically, it is a Python expression that, during a Soda SQL scan, checks metrics to see if they match the parameters defined for a measurement. A single Soda SQL scan runs against a single table in your database, but each scan can run multiple tests.
+A **test** is a check that Soda SQL performs when it scans a table in your warehouse. Technically, it is a Python expression that, during a Soda SQL scan, checks metrics to see if they match the parameters defined for a measurement. A single Soda SQL scan runs against a single table in your database, but each scan can run multiple tests against multiple columns.
 
 As a result of a scan, each test either passes or fails. When a test fails, it means that a property of the data in your table did not match the test parameters you defined. In other words, any test that returns `true` during a Soda SQL scan passes; any test that returns `false`, fails.
 
-The **scan results** in the command-line interface (CLI) include an exit code which is an indicator of the test results: `0` means all tests passed; a non-zero value means one or more tests have failed.  See [Scan output]({% link soda-sql/documentation/scan.md %}#scan-output) for details.
+The **scan results** appear in your command-line interface (CLI). The results include an exit code which is an indicator of the test results: `0` means all tests passed; a non-zero value means one or more tests have failed.  See [Scan output]({% link soda-sql/documentation/scan.md %}#scan-output) for details.
 
-## Define tests
+Soda Cloud refers to tests as **monitors**. Refer to [Crete monitors and alerts]({% link soda-sql/documentation/monitors.md %}) to learn how to define a monitor using Soda Cloud.
 
-You define your tests in your [scan YAML file]({% link soda-sql/documentation/scan.md %}) which is associated with a specific table in your database. You can write tests using **default metrics** that Soda SQL applies to an entire table (table metrics), or to individual columns you identify (column metrics). You can also write tests using **custom metrics** (SQL metrics) that you can apply to an entire table or individual columns. To learn more, see [Metrics]({% link soda-sql/documentation/sql_metrics.md %}).
+## Define tests using metrics
 
-Regardless of where it applies, each test is comprised of three parts:
+You define your tests in your [scan YAML file]({% link soda-sql/documentation/scan.md %}) which is associated with a specific table in your database. You can write tests using **[default metrics]({% link soda-sql/documentation/sql_metrics.md %})** that Soda SQL applies to an entire table (table metrics), or to individual columns you identify (column metrics). You can also write tests using **[custom metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics)** (SQL metrics) that you can apply to an entire table or individual columns. See [example tests]({% link soda-sql/examples/examples-by-metric.md %}) that use each default metric.
+
+Regardless of where it applies, each test is generally comprised of three parts:
 
 - a metric (a property of the data in your database)
 - a comparison operator
@@ -29,6 +31,16 @@ For example:
 tests:
   - row_count > 0
 ```
+
+At times, a test may only include one part, a metric, that simply returns a calculated value. For example, you may wish to write a test that simply returns the calculated sum of the values in a numeric column.
+
+```yaml
+columns:
+  commission_paid:
+    tests:
+      - sum
+```
+
 However, where a test must determine whether or not data is valid, you must add a fourth element, a **column configuration key** to define what qualifies as valid. In the scan YAML file, you define a column configuration key before the test that will use the definition of "valid".
 
 In the example below, the user defined the `valid_format` as `date_eu` or dd/mm/yyyy format. The metric `invalid_percentage` refers to the `valid_format` configuration key to determine if the data in the column is valid. To see a list of all available column configuration keys, see [Column Metrics]({% link soda-sql/documentation/sql_metrics.md %}#column-metrics).
@@ -40,6 +52,9 @@ columns:
         tests:
             - invalid_percentage < 2.0
 ```
+
+See [example tests]({% link soda-sql/examples/examples-by-metric.md %}) that use each default metric.
+
 <br />
 
 #### Example tests using default metrics
@@ -53,11 +68,6 @@ metrics:
   - missing_count
   - missing_percentage
   - values_count
-  - values_percentage
-  - valid_count
-  - valid_percentage
-  - invalid_count
-  - invalid_percentage
   - ...
 tests:
   - row_count > 0
@@ -78,7 +88,11 @@ columns:
 | `invalid_percentage` | `==` | `0` | `id` column | Checks to see if all rows in the id column contain data in a valid format. If the test fails, it means that more than 0% of the rows contain invalid data, which is data that is in non-UUID format.|
 | `invalid_percentage` | `==` | `0` | `feepct` column | Checks to see if all rows in the `feepct` column contain data in a valid format. If the test fails, it means that more than 0% of the rows contain invalid data, which is data that is not a numerical percentage.|
 
+See [example tests]({% link soda-sql/examples/examples-by-metric.md %}) that use each default metric.
+
 <br />
+
+
 
 #### Example tests using custom metrics
 
@@ -122,5 +136,6 @@ tests:
 ## Go further
 
 * Learn more about [Metrics]({% link soda-sql/documentation/sql_metrics.md %}).
+* See [example tests]({% link soda-sql/examples/examples-by-metric.md %}) that use each default metric.
 * Learn about [How Soda works]({% link soda-sql/documentation/concepts.md  %}).
 * Reference the [Data types]({% link soda-sql/documentation/supported-data-types.md %}) that Soda SQL supports when it scans columns.

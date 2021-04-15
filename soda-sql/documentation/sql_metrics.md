@@ -34,8 +34,8 @@ Use **table metrics** to define tests in your scan YAML file that apply to all d
 
 | Table metric | Description      |
 | ---------- | ---------------- |
-| `row_count` | The total number of rows in a table. |
-| `schema` |  Identifies that the table is part of a schema.   |
+| `row_count` | The number of rows in a table. |
+| `schema` | A list of column names in a table, and their data types. |
 
 
 #### Example tests using a table metric
@@ -66,23 +66,24 @@ Where a column metric references a valid or invalid value, or a limit, use the m
 
 | Default column metric   | Description |  Use with column config key(s) |
 | ---------- | ---------------- | ------------------------------ |
-| `avg` | The average of the values in a numeric column.  |  - |
-| `avg_length` | The average length of a string.  |  -  |
-| `invalid_count` | The total number of rows that contain invalid content. | `valid_format` <br /> `valid_regex` |
-| `invalid_percentage` | The total percentage of rows that contain invalid content.  |  `valid_format` <br /> `valid_regex` |
+| `avg` | The calculated average of the values in a numeric column.  |  - |
+| `avg_length` | The average length of string values in a column.  |  -  |
+| `invalid_count` | The number of rows that contain invalid values. | `valid_format` <br /> `valid_regex` |
+| `invalid_percentage` | The percentage of rows that contain invalid values.  |  `valid_format` <br /> `valid_regex` |
 | `max` | The greatest value in a numeric column.  |  -  |
-| `max_length` | The maximum length of a string.  |  -  |
+| `max_length` | The maximum length of string values in a column.  |  -  |
 | `min` | The smallest value in a numeric column.  |  -  |
-| `min_length` | The minimum length of a string.  |  -  |
-| `missing_count` | The total number of rows that are missing specific content. | `missing_format` <br /> `missing_regex`|
-| `missing_percentage` | The total percentage of rows that are missing specific content. | `missing_format` <br /> `missing_regex` |
-| `stddev` |  The standard deviation of a numeric column.   | - |
-| `sum` | The sum of the values in a numeric column.   | -  |
-| `valid_count` |  The total number of rows that contain valid content.  | `valid_format` <br /> `valid_regex`   |
-| `valid_percentage` | The total percentage of rows that contain valid content.  |  `valid_format` <br /> `valid_regex`  |
-| `values_count` | The total number of rows that contain content included in a list of valid values. | `missing_values` <br /> `valid_values` <br /> `valid_regex`  |
-| `values_percentage` | The total percentage of rows that contain content included in a list of valid values. | `missing_values` <br /> `valid_values` <br /> `valid_regex` |
-| `variance` | The variance of a numeric column.  | -  |
+| `min_length` | The minimum length of string values in a column.  |  -  |
+| `missing_count` | The number of rows in a column that do not contain specific content. | `missing_format` <br /> `missing_regex`|
+| `missing_percentage` | The percentage of rows in a column that do not contain specific content. | `missing_format` <br /> `missing_regex` |
+| `row_count` | The number of rows in a column. |
+| `stddev` |  The calculated standard deviation of values in a numeric column.   | - |
+| `sum` | The calculated sum of the values in a numeric column.   | -  |
+| `valid_count` |  The number of rows that contain valid content.  | `valid_format` <br /> `valid_regex`   |
+| `valid_percentage` | The percentage of rows that contain valid content.  |  `valid_format` <br /> `valid_regex`  |
+| `values_count` | The number of rows that contain content included in a list of valid values. | `missing_values` <br /> `valid_values` <br /> `valid_regex`  |
+| `values_percentage` | The percentage of rows that contain content included in a list of valid values. | `missing_values` <br /> `valid_values` <br /> `valid_regex` |
+| `variance` | The calculated variance of the values in a numeric column.  | -  |
 
 
 ### Grouped column metrics
@@ -91,13 +92,13 @@ To use these metrics, be sure to define the `metric_groups` in your scan YAML fi
 
 | Column metric  |  Description | Use with column config key(s) | Use with `metric_groups` |
 | -------------- | ------------ | ----------------------------- |
-| `distinct` |  The distinct contents in rows in a column.  | -  | duplicates |
-| `duplicate_count` | The number of rows that contain duplicated content. | -  | duplicates |
-| `frequent_values` |  The frequency of occurance of each value in a column. |  - |  profiling |
-| `histogram` |  A histogram calculated on the content of the column.  | - |  profiling  |
-| `maxs` |  The values of the rows that qualify as maximum relative to other column values. |  -  |  profiling |
-| `mins` |  The values of the rows that qualify as minimum relative to other column values. | -  |  profiling |
-| `unique_count` | The number of rows in which the content appears only once in the column.  |  - | duplicates |
+| `distinct` |  The number of rows that contain distinct values, relative to the column.  | -  | duplicates |
+| `duplicate_count` | The number of rows that contain duplicate values, relative to the column. | -  | duplicates |
+| `frequent_values` |  A list of values in the column and the frequency with which they occur. |  - |  profiling |
+| `histogram` |  A list of values to use to create a histogram that represents the contents of the column.  | - |  profiling  |
+| `maxs` |  A list of values that qualify as maximum relative to other values in the column. |  -  |  profiling |
+| `mins` |  A list of values that qualify as minimum relative to other values in the column. | -  |  profiling |
+| `unique_count` | The number of rows in which a value appears only once in the column.  |  - | duplicates |
 | `uniqueness` | A ratio that produces a number between 0 and 100 that indicates how unique a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the the column are unique.  | -  | duplicates |
 
 ### Column configuration keys
@@ -105,11 +106,9 @@ To use these metrics, be sure to define the `metric_groups` in your scan YAML fi
 | Column configuration key  | Description  | Values |
 | ------------------------- | ------------ | ------ |
 | `metric_groups` | Specifies pre-defined groups of metrics that Soda SQL computes for this column. See [Metric groups and dependencies](#metric-groups-and-dependencies) for details.| `duplicates` <br /> `length` <br /> `missing`  <br /> `profiling` <br /> `statistics` <br /> `validity` |
-| `metrics` | Specifies extra metrics that Soda SQL computes for this column. |  - |
 | `missing_format` | Specifies missing values such as whitespace or empty strings.|   |
 | `missing_regex` | Use regex expressions to specify your own custom missing values.| regex, no forward slash delimiters |
 | `missing_values` | Specifies the values that Soda SQL is to consider missing in list format.| integers in list |
-| `tests` | A section that contains the tests that Soda SQL runs on a column during a scan.| - |
 | `valid_format` | Specifies a named valid text format.| See `valid_format` value table below.  |
 | `valid_max` | Specifies a maximum value for valid values. | integer |
 | `valid_max_length` | Specifies a maximum string length for valid values. | integer |
