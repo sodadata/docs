@@ -12,6 +12,8 @@ Refer to [Scan YAML]({% link soda-sql/documentation/scan.md %}#anatomy-of-the-sc
 
 ### avg
 
+The calculated average of values in a numeric column.
+
 Scan YAML:
 ```yaml
 table_name: demodata
@@ -73,12 +75,14 @@ Scan output:
 
 ### avg_length
 
-Coming soon.
+The average length of string values in a column.
+
+Example coming soon.
 
 
 ### distinct
 
-Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+The number of rows that contain distinct values, relative to the column. Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
 Scan YAML:
 ```yaml
@@ -131,7 +135,7 @@ FROM group_by_value
 
 ### duplicate_count
 
-Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+The number of rows that contain duplicate values, relative to the column. Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
 Scan YAML:
 ```yaml
@@ -173,7 +177,7 @@ FROM group_by_value
 
 ### frequent_values
 
-Use with `metric_groups: profiling` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+A list of values in the column and the frequency with which they occur. Use with `metric_groups: profiling` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
 Scan YAML:
 ```yaml
@@ -209,7 +213,7 @@ Scan output:
 
 ### histogram
 
-Use with `metric_groups: profiling` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+A list of values to use to create a histogram that represents the contents of the column. Use with `metric_groups: profiling` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
 Scan YAML:
 ```yaml
@@ -245,6 +249,8 @@ Scan output:
 
 ### invalid_count
 
+The number of rows that contain invalid values.
+
 Scan YAML:
 ```yaml
 table_name: demodata
@@ -276,6 +282,8 @@ Scan output:
 ```
 
 ### invalid_percentage
+
+The percentage of rows that contain invalid values.
 
 Scan YAML:
 ```yaml
@@ -309,6 +317,8 @@ Scan output:
 ```
 
 ### max
+
+The greatest value in a numeric column.
 
 Scan YAML:
 ```yaml
@@ -371,6 +381,8 @@ Scan output:
 
 ### max_length
 
+The maximum length of string values in a column.
+
 Scan YAML:
 ```yaml
 table_name: demodata
@@ -408,7 +420,7 @@ Scan output:
 
 ### maxs
 
-Use with `metric_groups: profiling` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+A list of values that qualify as maximum relative to other values in the column. Use with `metric_groups: profiling` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
 Scan YAML:
 ```yaml
@@ -444,6 +456,8 @@ Scan output:
 
 
 ### min
+
+The smallest value in a numeric column.
 
 Scan YAML:
 ```yaml
@@ -506,6 +520,8 @@ Scan output:
 
 ### min_length
 
+The minimum length of string values in a column.
+
 Scan YAML:
 ```yaml
 table_name: demodata
@@ -541,6 +557,8 @@ Scan output:
 
 
 ### mins
+
+A list of values that qualify as minimum relative to other values in the column.
 
 Use with `metric_groups: profiling` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
@@ -578,6 +596,8 @@ Scan output:
 
 ### missing_count
 
+The number of rows in a column that do not contain specific content.
+
 Scan YAML:
 ```yaml
 table_name: demodata
@@ -609,6 +629,8 @@ Scan output:
 ```
 
 ### missing_percentage
+
+The percentage of rows in a column that do not contain specific content.
 
 Scan YAML:
 ```yaml
@@ -642,6 +664,8 @@ Scan output:
 ```
 
 ### row_count
+
+The number of rows in a table or column.
 
 Scan YAML, row_count at table level:
 ```yaml
@@ -727,6 +751,8 @@ Scan output:
 
 ### schema
 
+A list of column names in a table, and their data types.
+
 Scan YAML, at table level:
 ```yaml
 table_name: demodata
@@ -757,6 +783,8 @@ Scan output:
 
 
 ### stddev
+
+The calculated standard deviation of values in a numeric column. 
 
 Scan YAML:
 ```yaml
@@ -814,6 +842,8 @@ Scan output:
 ```
 
 ### sum
+
+The calculated sum of the values in a numeric column. 
 
 Scan YAML:
 ```yaml
@@ -873,7 +903,7 @@ Scan output:
 
 ### unique_count
 
-Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+The number of rows in which a value appears only once in the column. Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
 Scan YAML:
 ```yaml
@@ -915,7 +945,7 @@ FROM group_by_value
 
 ### uniqueness
 
-Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+A ratio that produces a number between 0 and 100 that indicates how unique a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the the column are unique. Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
 Scan YAML:
 ```yaml
@@ -958,6 +988,8 @@ FROM group_by_value
 
 ### valid_count
 
+The number of rows that contain valid content.
+
 Scan YAML:
 ```yaml
 table_name: demodata
@@ -990,6 +1022,8 @@ Scan output:
 
 ### valid_percentage
 
+The percentage of rows that contain valid content.
+
 Scan YAML:
 ```yaml
 table_name: demodata
@@ -1021,6 +1055,8 @@ Scan output:
 ```
 
 ### values_count
+
+The number of rows that contain content included in a list of valid values.
 
 Scan YAML:
 ```yaml
@@ -1056,6 +1092,8 @@ Scan output:
 
 ### values_percentage
 
+The number of rows that contain content included in a list of valid values.
+
 Scan YAML:
 ```yaml
 table_name: demodata
@@ -1090,6 +1128,8 @@ Scan output:
 ```
 
 ### variance
+
+The calculated variance of the values in a numeric column.
 
 Scan YAML:
 ```yaml
