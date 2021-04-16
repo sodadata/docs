@@ -57,6 +57,8 @@
   subcategories:
   - subtitle: Example tests by metric
     page: soda-sql/examples/examples-by-metric.md
+  - subtitle: Test for uniqueness
+    page: soda-sql/examples/example-test-unique.md
 
 - title: Community
   page: soda-sql/community.md
