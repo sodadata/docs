@@ -29,6 +29,8 @@
     page: soda-sql/documentation/tests.md
   - subtitle: Apply filters
     page: soda-sql/documentation/filtering.md
+  - subtitle: Scan separate datasets
+    page: soda-sql/documentation/scan-different-datasets.md
   - subtitle: Configure programmatic scans
     page: soda-sql/documentation/programmatic_scan.md
   - subtitle: Configure orchestrated scans

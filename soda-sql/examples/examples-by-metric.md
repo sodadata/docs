@@ -42,35 +42,6 @@ Scan output:
   | All is good. No tests failed.
   | Exiting with code 0
 ```
-<br />
-Scan YAML:
-```yaml
-table_name: demodata
-metrics:
-  - row_count
-  - missing_count
-  - missing_percentage
-  - values_count
-  - ...
-columns:
-  size:
-    tests:
-      - avg
-```
-
-Scan output:
-```shell
-  | 2.x.x
-  | Scanning tables/demodata.yml ...
-  | ...
-  | Test column(size) test(avg) passed with metric values {"avg": 5384.6}
-  | Executed 2 queries in 0:00:00.027455
-  | Scan summary ------
-  | 40 measurements computed
-  | 1 tests executed
-  | All is good. No tests failed.
-  | Exiting with code 0
-```
 
 
 ### avg_length

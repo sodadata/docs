@@ -1,0 +1,55 @@
+---
+layout: default
+title: Scan separate datasets
+parent: Documentation
+---
+
+# Scan separate datasets
+
+You can run a single scan against different datasets in your environments. For example, you can run the same scan against data in a [warehouse]({% link soda-sql/documentation/glossary.md %}#warehouse) in development environment and data in a warehouse in a production environment.
+
+## Run a scan
+
+{% include run-a-scan.md %}
+
+## Scan separate datasets
+
+To run the same scan against different datasets, proceed as follows.
+
+1. Prepare one [warehouse YAML file]({% link soda-sql/documentation/warehouse.md %}) for each data warehouse you wish to scan. For example:
+* `warehouse_postgres_dev.yml`
+```yaml
+name: my_postgres_datawarehouse_dev
+connection:
+  type: postgres
+  host: localhost
+  port: '5432'
+  username: env_var(POSTGRES_USERNAME)
+  password: env_var(POSTGRES_PASSWORD)
+  database: dev
+  schema: public
+```
+* `warehouse_postgres_prod.yml`
+```yaml
+name: my_postgres_datawarehouse_prod
+connection:
+  type: postgres
+  host: dbhost.example.com
+  port: '5432'
+  username: env_var(POSTGRES_USERNAME)
+  password: env_var(POSTGRES_PASSWORD)
+  database: prod
+  schema: public
+```
+2. Prepare a [scan YAML file]({% link soda-sql/documentation/scan.md %})  to define all the tests you wish to run against your datasets. See [Define tests]({% link soda-sql/documentation/tests.md %}) for details.
+3. Run separate Soda SQL scans against each dataset by specifying which warehouse YAML to scan and using the same scan YAML file. For example:
+```shell
+soda scan warehouse_postgres_dev.yml tables/my_table_scan.yml 
+soda scan warehouse_postgres_prod.yml tables/my_table_scan.yml
+```
+
+## Go further
+
+* See [Example tests by metric]({% link soda-sql/examples/examples-by-metric.md %}) to learn more about defining tests.
+* Learn [How Soda SQL works]({% link soda-sql/documentation/concepts.md %}).
+* Learn more about [Metrics]({% link soda-sql/documentation/sql_metrics.md %}).
