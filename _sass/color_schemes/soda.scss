@@ -45,6 +45,11 @@ $font-size-10-sm: 32px;
     .side-bar {
         width: 280px !important;
         align-items: flex-start !important;
+
+        .site-header,
+        .site-nav {
+            width: 280px !important;
+        }
     }
 }
 
