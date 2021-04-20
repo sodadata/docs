@@ -19,7 +19,7 @@ A **metric** is a property of the data in your database. A **measurement** is th
 [Valid format](#valid-format) <br />
 [Metric groups and dependencies](#metric-groups-and-dependencies)<br />
 [SQL metrics](#sql-metrics)<br />
-[SQL metric names](#sql-metricnames)<br >
+[SQL metric names](#sql-metric-names)<br >
 [GROUP BY queries in SQL metrics](#group-by-queries-in-sql-metrics)<br />
 [Variables in SQL metrics](#variables-in-sql-metrics)<br />
 [SQL metrics using file reference](#sql-metrics-using-file-reference)**
@@ -99,7 +99,7 @@ To use these metrics, be sure to define the `metric_groups` in your scan YAML fi
 | `maxs` |  A list of values that qualify as maximum relative to other values in the column. |  -  |  profiling |
 | `mins` |  A list of values that qualify as minimum relative to other values in the column. | -  |  profiling |
 | `unique_count` | The number of rows in which a value appears only once in the column.  |  - | duplicates |
-| `uniqueness` | A ratio that produces a number between 0 and 100 that indicates how unique a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the the column are unique.  | -  | duplicates |
+| `uniqueness` | A ratio that produces a number between 0 and 100 that indicates how unique a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the column are unique.  | -  | duplicates |
 
 ### Column configuration keys
 
@@ -208,7 +208,7 @@ columns:
       - invalid_percentage == 0
 ```
 
-The example above defines metric groups at the **column level**, but you can also define metric groups at the **table level** so as to use the inidividual metrics from the group in tests in multiple columns. See example below.
+The example above defines metric groups at the **column level**, but you can also define metric groups at the **table level** so as to use the individual metrics from the group in tests in multiple columns. See example below.
 
 ```yaml
 table_name: demodata

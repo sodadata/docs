@@ -27,7 +27,7 @@
     page: soda-sql/documentation/sql_metrics.md
   - subtitle: Define tests
     page: soda-sql/documentation/tests.md
-  - subtitle: Scan muliple datasets or tables
+  - subtitle: Scan multiple datasets or tables
     page: soda-sql/documentation/scan-different-datasets.md
   - subtitle: Apply filters
     page: soda-sql/documentation/filtering.md

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Scan muliple datasets or tables
+title: Scan multiple datasets or tables
 parent: Documentation
 ---
 
-# Scan muliple datasets or tables
+# Scan multiple datasets or tables
 
 You can run a single [scan]({% link soda-sql/documentation/glossary.md %}#scan %}) against different datasets in your environments. For example, you can run the same scan against data in a [warehouse]({% link soda-sql/documentation/glossary.md %}#warehouse) in development environment and data in a warehouse in a production environment.
 
