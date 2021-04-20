@@ -30,8 +30,9 @@ $ cd soda_warehouse_directory
 * a `warehouse.yml` file which stores access details for your warehouse ([read more]({% link soda-sql/documentation/warehouse.md %}))
 * an `env_vars.yml` file which securely stores warehouse login credentials ([read more]({% link soda-sql/documentation/warehouse.md %}#env_vars-yaml))<br />
 <br />
+Use `soda create --help` for a list of all available warehouse types and options.
 ```shell
-$ soda create yourwarehousetype -d yourdbname -u dbusername -w soda_warehouse_directory 
+$ soda create warehousetype -d yourdbname -u dbusername -w soda_warehouse_directory 
 ```
 3. Use a code editor to open the `warehouse.yml` file that Soda SQL created and put in your warehouse directory. Refer to [Set warehouse configurations]({% link soda-sql/documentation/warehouse_types.md %}) to adjust the configuration details according to the type of warehouse you use, then save the file.<br />
 <br />
@@ -66,6 +67,8 @@ Example scan YAML<br />
 7. With your configuration complete, [run your first scan]({% link soda-sql/documentation/scan.md %}#run-a-scan).
 
 ## Create commands
+
+Use `soda create --help` for a list of all available warehouse types and options.
 
 |Warehouse type  | Command |
 |--------------- | -------------------- |

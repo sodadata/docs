@@ -7,7 +7,7 @@ nav_order: 12
 
 # Connect to Soda Cloud
 
-To use the **[Soda Cloud]({% link soda-sql/documentation/glossary.md %}#soda-cloud)** web application to monitor your data, you must install and configure the **[Soda SQL]({% link soda-sql/documentation/glossary.md %}#soda-sql)** command-line tool, then connect it to your Soda Cloud account.
+To use the **Soda Cloud** web application to monitor your data, you must install and configure the **Soda SQL** command-line tool, then connect it to your Soda Cloud account.
 
 Soda SQL uses an API to connect to Soda Cloud. To use the API, you must generate API keys in your Soda Cloud account, then add them to the [warehouse YAML]({% link soda-sql/documentation/warehouse.md %}) file that Soda SQL created.
 

@@ -13,7 +13,7 @@ A **warehouse** represents a SQL engine or database such as Snowflake, Amazon Re
 
 You need to create a warehouse YAML file for every warehouse to which you want to connect. You can create warehouse YAML files manually, but the CLI command `soda create yourwarehousetype` automatically prepares a warehouse YAML file and an env_vars YAML file for you. (Use the env-vars YAML to securely store warehouse login credentials. See [Env_vars YAML](#env_vars-yaml) below.)
 
-When you execute the `soda create yourwarehousetype` command, you include options that instruct Soda SQL in the creation of the file, and you indicate the type of warehouse, a specification Soda SQL requires. Use `soda create yourwarehousetype --help` for a list of all available options.
+When you execute the `soda create yourwarehousetype` command, you include options that instruct Soda SQL in the creation of the file, and you indicate the type of warehouse, a specification Soda SQL requires. Use `soda create --help` for a list of all available warehouse types and options.
 
 The example below includes the following optional details:
 * option `-d` provides the name of the database

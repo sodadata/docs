@@ -13,7 +13,7 @@ As a result of a scan, each test either passes or fails. When a test fails, it m
 
 The **scan results** appear in your command-line interface (CLI). The results include an exit code which is an indicator of the test results: `0` means all tests passed; a non-zero value means one or more tests have failed.  See [Scan output]({% link soda-sql/documentation/scan.md %}#scan-output) for details.
 
-Soda Cloud refers to tests as **monitors**. Refer to [Crete monitors and alerts]({% link soda-sql/documentation/monitors.md %}) to learn how to define a monitor using Soda Cloud.
+**Soda Cloud** refers to tests as **monitors**. Refer to [Create monitors and alerts]({% link soda-sql/documentation/monitors.md %}) to learn how to define a monitor using Soda Cloud.
 
 ## Define tests using metrics
 
@@ -43,7 +43,7 @@ columns:
 
 However, where a test must determine whether or not data is valid, you must add a fourth element, a **column configuration key** to define what qualifies as valid. In the scan YAML file, you define a column configuration key before the test that will use the definition of "valid".
 
-In the example below, the user defined the `valid_format` as `date_eu` or dd/mm/yyyy format. The metric `invalid_percentage` refers to the `valid_format` configuration key to determine if the data in the column is valid. To see a list of all available column configuration keys, see [Column Metrics]({% link soda-sql/documentation/sql_metrics.md %}#column-metrics).
+In the example below, the user defined the `valid_format` as `date_eu` or dd/mm/yyyy format. The metric `invalid_percentage` refers to the `valid_format` configuration key to determine if the data in the column is valid. Note that `valid_format` applies only to columns with data type TEXT. Refer to [Data types]({% link soda-sql/documentation/supported-data-types.md %}) for details. To see a list of all available column configuration keys, see [Column Metrics]({% link soda-sql/documentation/sql_metrics.md %}#column-metrics).
 
 ```yaml
 columns:
@@ -59,7 +59,7 @@ See [example tests]({% link soda-sql/examples/examples-by-metric.md %}) that use
 
 #### Example tests using default metrics
 
-Reference the table below which corresponds to the following example scan YAML file.
+Reference the table below which corresponds to the following example scan YAML file. Both the `id` and `feepct` columns are of data type TEXT, enabling the user to define a `valid_format` for the contents of the columns. See [Valid format]({% link soda-sql/documentation/sql_metrics.md %}#valid-format) for details.
 
 ```yaml
 table_name: demodata
@@ -135,6 +135,7 @@ tests:
 
 ## Go further
 
+* Learn how to [apply filters]({% link soda-sql/documentation/filtering.md %}) such as date, to a scan of your data.
 * Learn more about [Metrics]({% link soda-sql/documentation/sql_metrics.md %}).
 * See [example tests]({% link soda-sql/examples/examples-by-metric.md %}) that use each default metric.
 * Learn about [How Soda works]({% link soda-sql/documentation/concepts.md  %}).

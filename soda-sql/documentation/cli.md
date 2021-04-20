@@ -43,7 +43,7 @@ Commands:
 
 To see a list of configurable parameters for each command, use the command-line help.
 ```shell
-$ soda create yourwarehousetype --help
+$ soda create --help
 $ soda analyze --help
 $ soda scan --help
 ```

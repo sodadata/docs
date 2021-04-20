@@ -19,9 +19,9 @@ A **metric** is a property of the data in your database. A **measurement** is th
 [Valid format](#valid-format) <br />
 [Metric groups and dependencies](#metric-groups-and-dependencies)<br />
 [SQL metrics](#sql-metrics)<br />
-[SQL metric names](#sql-metricnames)<br >
-[GROUP BY queries in SQL metrics](group-by-queries-in-sql-metrics)<br />
-[Variables in SQL metrics](variables-in-sql-metrics)<br />
+[SQL metric names](#sql-metric-names)<br >
+[GROUP BY queries in SQL metrics](#group-by-queries-in-sql-metrics)<br />
+[Variables in SQL metrics](#variables-in-sql-metrics)<br />
 [SQL metrics using file reference](#sql-metrics-using-file-reference)**
 
 
@@ -99,7 +99,7 @@ To use these metrics, be sure to define the `metric_groups` in your scan YAML fi
 | `maxs` |  A list of values that qualify as maximum relative to other values in the column. |  -  |  profiling |
 | `mins` |  A list of values that qualify as minimum relative to other values in the column. | -  |  profiling |
 | `unique_count` | The number of rows in which a value appears only once in the column.  |  - | duplicates |
-| `uniqueness` | A ratio that produces a number between 0 and 100 that indicates how unique a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the the column are unique.  | -  | duplicates |
+| `uniqueness` | A ratio that produces a number between 0 and 100 that indicates how unique a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the column are unique.  | -  | duplicates |
 
 ### Column configuration keys
 
@@ -109,7 +109,7 @@ To use these metrics, be sure to define the `metric_groups` in your scan YAML fi
 | `missing_format` | Specifies missing values such as whitespace or empty strings.|   |
 | `missing_regex` | Use regex expressions to specify your own custom missing values.| regex, no forward slash delimiters |
 | `missing_values` | Specifies the values that Soda SQL is to consider missing in list format.| integers in list |
-| `valid_format` | Specifies a named valid text format.| See `valid_format` value table below.  |
+| `valid_format` | Specifies a named valid text format. Can apply only to columns using data type TEXT. See [Data types]({% link soda-sql/documentation/supported-data-types.md %}). | See `valid_format` value table below.  |
 | `valid_max` | Specifies a maximum value for valid values. | integer |
 | `valid_max_length` | Specifies a maximum string length for valid values. | integer |
 | `valid_min` | Specifies a minimum value for valid values. | integer |
@@ -119,7 +119,8 @@ To use these metrics, be sure to define the `metric_groups` in your scan YAML fi
 
 ### Valid format
 
-Valid formats are experimental and subject to change.
+Valid formats are experimental and subject to change.<br />
+Valid formats apply only to columns using data type TEXT. See [Data types]({% link soda-sql/documentation/supported-data-types.md %}).
 
 | `valid_format` value <br />  | Format |
 | ----- | ------ |
@@ -159,6 +160,8 @@ columns:
       - invalid_percentage == 0
 ```
 `invalid_percentage == 0` in column `id` with column configuration `valid_format: uuid` checks the rows in the column named `id` for values that match a uuid (universally unique identifier) format. If the test passes, it means that 0% of the rows contain data that is invalid; if the test fails, it means that more than 0% of the rows contain invalid data, which is data that is in non-UUID format.
+
+`invalid_percentage == 0` in column `feepct` with column configuration `valid_format: number_percentage` checks the rows in the column named `feepct` for values that match a percentage format. If the test passes, it means that 0% of the rows contain data that is invalid; if the test fails, it means that more than 0% of the rows contain invalid data, which is data that is in non-percentage format.
 
 
 ## Metric groups and dependencies
@@ -205,7 +208,7 @@ columns:
       - invalid_percentage == 0
 ```
 
-The example above defines metric groups at the **column level**, but you can also define metric groups at the **table level** so as to use the inidividual metrics from the group in tests in multiple columns. See example below.
+The example above defines metric groups at the **column level**, but you can also define metric groups at the **table level** so as to use the individual metrics from the group in tests in multiple columns. See example below.
 
 ```yaml
 table_name: demodata
@@ -251,7 +254,7 @@ If the default set of table and column metrics that Soda SQL offers do not quite
 
 
 #### Simple example
-In your scan YAML file, use the `sql_metrics` property as a table metric or a column metric. The following simple SQL metric example queries all content in the table to select a single numeric value.
+In your scan YAML file, use the `sql_metrics` property as a table metric or a column metric. The following simple SQL metric example queries all content in the table to select a single numeric value. The outcome of the test determines whether or not the volume of transactions in the United States is greater than 5000.
 
 ```yaml
 table_name: mytable
@@ -342,7 +345,9 @@ sql_metrics:
 
 ### GROUP BY queries in SQL metrics
 
-If your SQL query uses a `GROUP BY` clause, you can use a **`group_by`** property in your SQL metrics to instruct Soda SQL to run each test against each group combination. Set the `group_property` as in the example below.
+If your SQL query uses a `GROUP BY` clause, you can use a **`group_by`** property in your SQL metrics to instruct Soda SQL to run each test against each group combination. The example below runs each of the four tests against each country in the table.
+
+Set the `group_property` as in the example below.
 
 ```yaml
 table_name: mytable
