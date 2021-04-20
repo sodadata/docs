@@ -7,11 +7,11 @@ nav_order: 13
 
 # Create monitors and alerts
 
-Log in to **[Soda Cloud]({% link soda-sql/documentation/glossary.md %}#soda-cloud)** to create **[monitors]({% link soda-sql/documentation/glossary.md %}#monitor)**, and customize **[alerts]({% link soda-sql/documentation/glossary.md %}#alert)** that send **[notifications]({% link soda-sql/documentation/glossary.md %}#notification)** to your team when a [scan]({% link soda-sql/documentation/glossary.md %}#scan) surfaces data issues.
+Log in to **Soda Cloud** to create **[monitors]({% link soda-sql/documentation/glossary.md %}#monitor)**, and customize **[alerts]({% link soda-sql/documentation/glossary.md %}#alert)** that send **[notifications]({% link soda-sql/documentation/glossary.md %}#notification)** to your team when a [scan]({% link soda-sql/documentation/glossary.md %}#scan) surfaces data issues.
 
 Further, you can use monitors to track data quality over time. Soda Cloud stores your scan results and prepares charts that represent the volume of failed tests in each scan. These visualizations of your scan results enable you to see where your data quality is improving or deteriorating over time.
 
-Soda SQL refers to monitors as **tests**. Refer to [Tests]({% link soda-sql/documentation/tests.md %}) to learn how to define a test using Soda SQL.
+**Soda SQL** refers to monitors as **tests**. Refer to [Tests]({% link soda-sql/documentation/tests.md %}) to learn how to define a test using Soda SQL.
 
 
 ## Prerequisites

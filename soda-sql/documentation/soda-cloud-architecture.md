@@ -9,7 +9,7 @@ nav_order: 11
 
 ![scan-anatomy](/assets/images/soda-cloud-arch.png){:height="550px" width="550px"}
 
-**[Soda Cloud]({% link soda-sql/documentation/glossary.md %}#soda-cloud)** and **[Soda SQL]({% link soda-sql/documentation/glossary.md %}#soda-sql)** work together to help you monitor your data and alert you when there is a data quality issue.
+**Soda Cloud** and **Soda SQL** work together to help you monitor your data and alert you when there is a data quality issue.
 
 Installed in your environment, you use the Soda SQL command-line tool to [scan]({% link soda-sql/documentation/glossary.md %}#scan) data in your [warehouses]({% link soda-sql/documentation/glossary.md %}#warehouse). Soda SQL uses a secure API to connect to Soda Cloud. When it completes a scan, it pushes the scan results to your Soda Cloud account where you can log in and examine the details in the web application. Notably, Soda SQL pushes metadata to Soda Cloud; by default all your data stays inside your private network. See [Data security and privacy]({% link soda-sql/documentation/data-privacy.md %})
 

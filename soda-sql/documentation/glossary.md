@@ -29,6 +29,9 @@ The key in the key-value pair that you use to define configuration in your scan 
 ### create
 A Soda SQL CLI command that creates a warehouse directory.
 
+### custom metric
+A metric you define in your scan YAML file using SQL queries. Also known as a SQL metric. SQL metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan. See [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics).
+
 ### default metric
 An out-of-the-box metric that you can configure in a scan YAML file. By contrast, you can use [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics) to define custom metrics in a scan YAML file.
 
@@ -54,13 +57,13 @@ A Soda SQL CLI command that uses SQL queries to extract information about data i
 The file in which you configure scan metrics and tests. Soda SQL uses the input from this file to prepare, then run SQL queries against your data. See [Scan YAML]({% link soda-sql/documentation/scan.md %}).
 
 ### Soda Cloud
-A free, web application that enables you to examine the results of Soda SQL scans and create monitors and alerts. To use Soda Cloud, you must set up and connect Soda SQL to your Soda cloud account.
+A free, web application that enables you to examine the results of Soda SQL scans and create monitors and alerts. To use Soda Cloud, you must set up and connect Soda SQL to your Soda cloud account. Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup) then [connect Soda SQL to Soda Cloud]({% link soda-sql/documentation/connect_to_cloud.md %}).
 
 ### Soda SQL
-An open-source command-line tool that scans the data in your warehouse. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application.
+An open-source command-line tool that scans the data in your warehouse. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. Start by [installing Soda SQL]({% link soda-sql/getting-started/installation.md%}).
 
 ### SQL metric
-A custom metric you define in your scan YAML file. SQL metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan. See [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics).
+A custom metric you define in your scan YAML file. Also known as a custom metric. SQL metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan. See [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics).
 
 ### table
 A table in your warehouse.

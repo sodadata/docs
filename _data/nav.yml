@@ -27,10 +27,10 @@
     page: soda-sql/documentation/sql_metrics.md
   - subtitle: Define tests
     page: soda-sql/documentation/tests.md
+  - subtitle: Scan muliple datasets or tables
+    page: soda-sql/documentation/scan-different-datasets.md
   - subtitle: Apply filters
     page: soda-sql/documentation/filtering.md
-  - subtitle: Scan separate datasets
-    page: soda-sql/documentation/scan-different-datasets.md
   - subtitle: Configure programmatic scans
     page: soda-sql/documentation/programmatic_scan.md
   - subtitle: Configure orchestrated scans
@@ -45,7 +45,7 @@
     page: soda-sql/documentation/integrate-slack.md
   - subtitle: Troubleshoot
     page: soda-sql/documentation/troubleshoot.md
-  - subtitle: Data Types
+  - subtitle: Data types
     page: soda-sql/documentation/supported-data-types.md
   - subtitle: Data security and privacy
     page: soda-sql/documentation/data-privacy.md
