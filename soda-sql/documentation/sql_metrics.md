@@ -99,7 +99,7 @@ To use these metrics, be sure to define the `metric_groups` in your scan YAML fi
 | `maxs` |  A list of values that qualify as maximum relative to other values in the column.  |  profiling |
 | `mins` |  A list of values that qualify as minimum relative to other values in the column.  |  profiling |
 | `unique_count` | The number of rows in which a value appears exactly only once in the column. For example, where a column has values: `aaa`, `aaa`, `bbb`, `ccc`, it has two unique values.  | duplicates |
-| `uniqueness` | A ratio that produces a number between 0 and 100 that indicates how unique a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the column are unique.  | duplicates |
+| `uniqueness` | A ratio that produces a number between 0 and 100 that indicates how unique the data in a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the column are unique.  | duplicates |
 
 ### Column configuration keys
 

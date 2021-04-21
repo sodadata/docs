@@ -1,26 +1,23 @@
 ---
 layout: default
-title: Test for uniqueness
+title: Example tests for unique values
 parent: Examples
 ---
 
-# Test for uniqueness
+# Example tests for unique values
 
-Where your table contains records that ought to be unique, such as item identifiers, you may wish to test the data to ensure there are no duplicates or that each value in a column is distinct. 
+Where your [warehouse]({% link soda-sql/documentation/glossary.md %}#warehouse) table contains records that ought to be unique, such as item identifiers, you may wish to test the data to ensure there are no duplicates or that each value is unique.  
 
-There are a few metrics you can use to test data in tables in your warehouse for unique values:
-* `distinct`
-* `duplicate_count`
-* `unique_count`
-* `uniqueness`
+To illustrate how to use Soda SQL to test the uniqueness of data, imagine an e-commerce company that fulfills orders for shipment to customers. The information associated with each shipment is stored in a fulfillment table in a database. Here are some of the ways the company could test their data.
 
-## Test for distinct values
+## Test for duplicates
 
-Use the `distinct` column metric in your tests to ensure that each value in a column is distinct from all other values in the same column. Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+The company needs to make sure that each individual shipment is associated with a unique identifier for tracking purposes. To ensure that `shipment_id` is not accidentally duplicated in their fulfillment system, a Data Engineer could use Soda SQL to test for duplicates. To do so, the engineer defines a [test]({% link soda-sql/documentation/glossary.md %}#test) in the [scan YAML file]({% link soda-sql/documentation/scan.md %}) associated with the table that contains the `shipment_id` data.
 
 Scan YAML:
+
 ```yaml
-table_name: demodata
+table_name: fulfillment
 metrics:
   - row_count
   - missing_count
@@ -30,130 +27,40 @@ metrics:
 metric_groups:
   - duplicates
 columns:
-  id:
-    tests: 
-      - distinct > 1
-  size:
+  shipment_id:
     tests:
-      - distinct > 1
-```
-
-Scan output:
-```shell
-  | 2.x.x
-  | Scanning tables/demodata.yml ...
-  | ...
-FROM group_by_value
-  | SQL took 0:00:00.007346
-  | Query measurement: distinct(id) = 65
-  | Query measurement: unique_count(id) = 65
-  | Derived measurement: duplicate_count(id) = 0
-  | Derived measurement: uniqueness(id) = 100
-  | ...
-FROM group_by_value
-  | SQL took 0:00:00.003017
-  | Query measurement: distinct(size) = 65
-  | Query measurement: unique_count(size) = 65
-  | Derived measurement: duplicate_count(size) = 0
-  | Derived measurement: uniqueness(size) = 100
-  | Test column(id) test(distinct > 1) passed with metric values {"distinct": 65}
-  | Test column(size) test(distinct > 1) passed with metric values {"distinct": 65}
-  | Executed 8 queries in 0:00:00.056644
-  | Scan summary ------
-  | 88 measurements computed
-  | 2 tests executed
-  | All is good. No tests failed.
-  | Exiting with code 0
-
-```
-
-
-## Test for duplicate values
-
-Use the `duplicate_count` column metric to test for duplicate values in a column. Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies). 
-
-Scan YAML, zero duplicate values:
-```yaml
-table_name: demodata
-metrics:
-  - row_count
-  - missing_count
-  - missing_percentage
-  - values_count
-  - ...
-metric_groups:
-  - duplicates
-columns:
-  id:
-    tests: 
       - duplicate_count == 0
 ```
 
+Then, the engineer [runs a Soda SQL scan]({% link soda-sql/documentation/scan.md %}#run-a-scan) as follows:
+
+Scan command:
+
+```soda scan warehouse.yml tables/fulfillment.yml```
+
 Scan output:
+
 ```shell
   | 2.x.x
-  | Scanning tables/demodata.yml ...
+  | Scanning tables/fulfillment.yml ...
   | ...
-FROM group_by_value
-  | SQL took 0:00:00.002620
-  | Query measurement: distinct(id) = 65
-  | Query measurement: unique_count(id) = 65
-  | Derived measurement: duplicate_count(id) = 0
-  | Derived measurement: uniqueness(id) = 100
-  | ...
-  | Test column(id) test(duplicate_count == 0) passed with metric values {"duplicate_count": 0}
-  | Executed 8 queries in 0:00:00.047606
+  | Test column(shipment_id) test(duplicate_count == 0) passed with metric values {"duplicate_count": 0}
+  | Executed 8 queries in 0:00:00.055843
   | Scan summary ------
-  | 88 measurements computed
+  | 92 measurements computed
   | 1 tests executed
   | All is good. No tests failed.
   | Exiting with code 0
 ```
 
-Scan YAML, low threshold for duplicate values
-```yaml
-table_name: demodata
-metrics:
-  - row_count
-  - missing_count
-  - missing_percentage
-  - values_count
-  - ...
-metric_groups:
-  - duplicates
-columns:
-  id:
-    tests: 
-      - duplicate_count < 3
-```
+## Test for unique
 
-Scan output:
-```shell
-  | 2.x.x
-  | Scanning tables/demodata.yml ...
-  | ...
-FROM group_by_value
-  | SQL took 0:00:00.002413
-  | Query measurement: distinct(country) = 4
-  | Query measurement: unique_count(country) = 0
-  | Derived measurement: duplicate_count(country) = 4
-  | Derived measurement: uniqueness(country) = 4.6875
-  | Test column(id) test(duplicate_count < 3) passed with metric values {"duplicate_count": 0}
-  | Executed 8 queries in 0:00:00.048232
-  | Scan summary ------
-  | 88 measurements computed
-  | 2 tests executed
-  | All is good. No tests failed.
-  | Exiting with code 0
-```
-
-## Test for unique values
-
-Use the `unique_count` column metric in your test to ensure that a column in your table contains unique values, relative to other values in the column. Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+Alternatively, to ensure that each value in the `shipment_id` column is unique relative to all other values in the column, a Data Engineer could define a test to count unique values. To do so, the engineer defines a test in the scan YAML file associated with the table that contains the `shipment_id` data.
 
 Scan YAML:
+
 ```yaml
-table_name: demodata
+table_name: fulfillment
 metrics:
   - row_count
   - missing_count
@@ -163,40 +70,59 @@ metrics:
 metric_groups:
   - duplicates
 columns:
-  id:
-    tests: 
+  shipment_id:
+    tests:
       - unique_count > 0
 ```
 
-Scan output:
+Then, the engineer runs a Soda SQL scan as follows:
+
+Scan command:
+
+```soda scan warehouse.yml tables/fulfillment.yml```
+
+Scan output, pass:
+
 ```shell
   | 2.x.x
-  | Scanning tables/demodata.yml ...
+  | Scanning tables/fulfillment.yml ...
   | ...
-FROM group_by_value
-  | SQL took 0:00:00.003185
-  | Query measurement: distinct(id) = 65
-  | Query measurement: unique_count(id) = 65
-  | Derived measurement: duplicate_count(id) = 0
-  | Derived measurement: uniqueness(id) = 100
-  | ...
-  | Test column(id) test(unique_count > 0) passed with metric values {"unique_count": 65}
-  | Executed 8 queries in 0:00:00.054074
+  | Test column(shipment_id) test(unique_count > 0) passed with metric values {"unique_count": 65}
+  | Executed 8 queries in 0:00:00.058411
   | Scan summary ------
-  | 88 measurements computed
+  | 92 measurements computed
   | 1 tests executed
   | All is good. No tests failed.
   | Exiting with code 0
+  ```
+
+Scan output, fail:
+
+```shell
+  | 2.x.x
+  | Scanning tables/fulfillment.yml ...
+  | ...
+  | Test column(shipment_id) test(unique_count > 0) failed with metric values {"unique_count": 5}
+  | Executed 8 queries in 0:00:00.056029
+  | Scan summary ------
+  | 92 measurements computed
+  | 1 tests executed
+  | 1 of 1 tests failed:
+  |   Test column(shipment_id) test(unique_count > 0) failed with metric values {"unique_count": 5}
+  | Exiting with code 1
 ```
 
 
 ## Test for uniqueness
 
-Use the `uniqueness` column metric to gauge the relative uniqueness of values in a column. This test produces a number between 0 and 100 that indicates how unique a column is: `0` indicates that all the values are the same; `100` indicates that all the values in the column are unique. Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+Where absolutely unique values is not a requirement, a Data Engineer may wish to test data in a table column for relative uniqueness. Uniqueness is a ratio that produces a number between 0 and 100 that indicates how unique the data in a column is:  0 indicates that all the values are the same; 100 indicates that all the values in the column are unique. 
 
-Scan YAML, all values are unique:
+For example, to loosely gauge the concentration of fulfillment orders destined for a particular country, an engineer defines a test in the scan YAML file associated with the table that contains `destination` data. 
+
+Scan YAML:
+
 ```yaml
-table_name: demodata
+table_name: fulfillment
 metrics:
   - row_count
   - missing_count
@@ -206,67 +132,26 @@ metrics:
 metric_groups:
   - duplicates
 columns:
-  id:
-    tests: 
-      - uniqueness == 100
+  destination:
+    tests:
+      - uniqueness > 1
 ```
 
+Scan command:
+
+```soda scan warehouse.yml tables/fulfillment.yml```
+
 Scan output:
+
 ```shell
   | 2.x.x
-  | Scanning tables/demodata.yml ...
+  | Scanning tables/fulfillment.yml ...
   | ...
-FROM group_by_value
-  | SQL took 0:00:00.002458
-  | Query measurement: distinct(id) = 65
-  | Query measurement: unique_count(id) = 65
-  | Derived measurement: duplicate_count(id) = 0
-  | Derived measurement: uniqueness(id) = 100
-  | ...
-  | Test column(id) test(uniqueness == 100) passed with metric values {"uniqueness": 100.0}
-  | Executed 8 queries in 0:00:00.049126
+  | Test column(destination) test(uniqueness > 1) passed with metric values {"uniqueness": 4.6875}
+  | Executed 8 queries in 0:00:00.050244
   | Scan summary ------
-  | 88 measurements computed
+  | 92 measurements computed
   | 1 tests executed
   | All is good. No tests failed.
   | Exiting with code 0
-```
-
-Scan YAML, no values are unique:
-```yaml
-table_name: demodata
-metrics:
-  - row_count
-  - missing_count
-  - missing_percentage
-  - values_count
-  - ...
-metric_groups:
-  - duplicates
-columns:
-  id:
-    tests: 
-      - uniqueness == 0
-```
-
-Scan output:
-```shell
-  | 2.x.x
-  | Scanning tables/demodata.yml ...
-  | ...
-FROM group_by_value
-  | SQL took 0:00:00.002458
-  | Query measurement: distinct(id) = 65
-  | Query measurement: unique_count(id) = 65
-  | Derived measurement: duplicate_count(id) = 0
-  | Derived measurement: uniqueness(id) = 100
-  | ...
-  | Test column(id) test(uniqueness == 0) failed with metric values {"uniqueness": 100.0}
-  | Executed 8 queries in 0:00:00.050528
-  | Scan summary ------
-  | 88 measurements computed
-  | 2 tests executed
-  | 1 of 2 tests failed:
-  |   Test column(id) test(uniqueness == 0) failed with metric values {"uniqueness": 100.0}
-  | Exiting with code 1
-```
+  ```

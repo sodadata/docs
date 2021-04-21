@@ -1018,7 +1018,7 @@ FROM group_by_value
 
 ### uniqueness
 
-A ratio that produces a number between 0 and 100 that indicates how unique a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the the column are unique. Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+A ratio that produces a number between 0 and 100 that indicates how unique the data in a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the the column are unique. Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
 Scan YAML:
 ```yaml

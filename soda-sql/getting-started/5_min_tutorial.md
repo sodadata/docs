@@ -4,6 +4,17 @@ title: Quick start tutorial
 parent: Get Started
 nav_order: 1
 ---
+<br />
+
+![soda live logo](/assets/images/soda-live-logo.png){:height="300px" width="300px"}
+
+Join us to discover how to deliver trusted data.<br />
+May 12, 2021<br />
+4.00pm - 6.30pm CEST | 4.00pm - 6.30pm EDT<br />
+[Register now!](https://www.sodalive.io/page/1787220/register)<br />
+
+----
+
 
 # Quick start tutorial
 
