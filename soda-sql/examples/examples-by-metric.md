@@ -48,12 +48,41 @@ Scan output:
 
 The average length of string values in a column.
 
-Example coming soon.
+Scan YAML
+```yaml
+table_name: demodata
+metrics:
+  - row_count
+  - missing_count
+  - missing_percentage
+  - values_count
+  - ...
+columns:
+  id:
+    tests:
+      - avg_length > 30
+```
+
+Scan output:
+```shell
+  | 2.x.x
+  | Scanning tables/demodata.yml ...
+  | ...
+  | Test column(id) test(avg_length > 30) passed with metric values {"avg_length": 36.0}
+  | Executed 2 queries in 0:00:00.034843
+  | Scan summary ------
+  | 68 measurements computed
+  | 1 tests executed
+  | All is good. No tests failed.
+  | Exiting with code 0
+```
 
 
 ### distinct
 
-The number of rows that contain distinct values, relative to the column. Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+The number of rows that contain distinct values, relative to the column. For example, where a column has values: `aaa`, `aaa`, `bbb`, `ccc`, it has three distinct values.
+
+Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
 Scan YAML:
 ```yaml
@@ -285,6 +314,43 @@ Scan output:
   | 1 tests executed
   | All is good. No tests failed.
   | Exiting with code 0
+```
+
+Scan YAML:
+```yaml
+table_name: demodata
+metrics:
+  - row_count
+  - missing_count
+  - missing_percentage
+  - values_count
+  - ...
+tests:
+  - row_count > 0
+columns:
+  country:
+    valid_values:
+      - US
+      - UK
+      - Netherlands
+    tests:
+      - invalid_percentage == 0
+```
+
+Scan output:
+```shell
+  | 2.x.x
+  | Scanning tables/demodata.yml ...
+  | ...
+  | Test test(row_count > 0) passed with metric values {"row_count": 65}
+  | Test column(country) test(invalid_percentage == 0) failed with metric values {"invalid_percentage": 10.76923076923077}
+  | Executed 2 queries in 0:00:00.040941
+  | Scan summary ------
+  | 68 measurements computed
+  | 2 tests executed
+  | 1 of 2 tests failed:
+  |   Test column(country) test(invalid_percentage == 0) failed with metric values {"invalid_percentage": 10.76923076923077}
+  | Exiting with code 1
 ```
 
 ### max
@@ -599,6 +665,40 @@ Scan output:
   | Exiting with code 0
 ```
 
+Scan YAML, where `country` column contains valid value `US`:
+```yaml
+table_name: demodata
+metrics:
+  - row_count
+  - missing_count
+  - missing_percentage
+  - values_count
+  - values_percentage
+  - valid_count
+  - ...
+columns:
+  country:
+    missing_values: 
+    - US
+    tests:
+      - missing_count == 0
+```
+
+Scan output:
+```shell
+  | 2.x.x
+  | Scanning tables/demodata.yml ...
+  | ...
+  | Test column(country) test(missing_count == 0) failed with metric values {"missing_count": 35}
+  | Executed 2 queries in 0:00:00.035223
+  | Scan summary ------
+  | 68 measurements computed
+  | 1 tests executed
+  | 1 of 1 tests failed:
+  |   Test column(country) test(missing_count == 0) failed with metric values {"missing_count": 35}
+  | Exiting with code 1
+```
+
 ### missing_percentage
 
 The percentage of rows in a column that do not contain specific content.
@@ -874,7 +974,9 @@ Scan output:
 
 ### unique_count
 
-The number of rows in which a value appears only once in the column. Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+The number of rows in which a value appears exactly only once in the column. For example, where a column has values: `aaa`, `aaa`, `bbb`, `ccc`, it has two unique values.
+
+Use with `metric_groups: duplicates` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
 Scan YAML:
 ```yaml
@@ -1016,7 +1118,7 @@ Scan output:
   | 2.x.x
   | Scanning tables/demodata.yml ...
   | ...
- | Test column(id) test(valid_percentage == 100) passed with metric values {"valid_percentage": 100.0}
+  | Test column(id) test(valid_percentage == 100) passed with metric values {"valid_percentage": 100.0}
   | Executed 2 queries in 0:00:00.033056
   | Scan summary ------
   | 44 measurements computed
@@ -1024,6 +1126,38 @@ Scan output:
   | All is good. No tests failed.
   | Exiting with code 0
 ```
+
+Scan YAML:
+```yaml
+table_name: demodata
+metrics:
+  - row_count
+  - missing_count
+  - missing_percentage
+  - values_count
+  - ...
+columns:
+  country:
+    valid_min_length: 10
+    tests:
+      - valid_percentage == 100
+```
+
+Scan output:
+```shell
+  | 2.x.x
+  | Scanning tables/demodata.yml ...
+  | ...
+  | Test column(country) test(valid_percentage == 100) failed with metric values {"valid_percentage": 4.615384615384615}
+  | Executed 2 queries in 0:00:00.029359
+  | Scan summary ------
+  | 68 measurements computed
+  | 1 tests executed
+  | 1 of 1 tests failed:
+  |   Test column(country) test(valid_percentage == 100) failed with metric values {"valid_percentage": 4.615384615384615}
+  | Exiting with code 1
+```
+
 
 ### values_count
 
