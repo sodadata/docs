@@ -64,9 +64,9 @@ Each type of warehouse requires different configuration parameters. Refer to [Se
 
 To keep your warehouse YAML file free of login credentials, Soda SQL references environment variables. When it creates a new warehouse YAML file, Soda SQL also creates an **env_vars YAML** file to store your database username and password values. Soda SQL does not overwrite or remove and existing environment variables, it only adds new.
 
-When it [runs a scan]({% link soda-sql/documentation/scan.md %}#run-a-scan), Soda SQL loads environment variables from your local user home directory where it stored your env_vars YAML file.
+When it [runs a scan]({% link soda-sql/documentation/scan.md %}#run-a-scan), Soda SQL loads environment variables from your local user home directory where it stored your env_vars YAML file. 
 
-Use the command `cat ~/.soda/env_vars.yml` to review the contents of your env_vars YAML file. Open the file from your local user home directory to input the values for your database credentials.
+Use the command `cat ~/.soda/env_vars.yml` to review the contents of your env_vars YAML file. Open this hidden file from your local user home directory to input the values for your database credentials.
 
 ```yaml
 soda_sql_tutorial:
@@ -77,6 +77,10 @@ some_other_soda_project:
     SNOWFLAKE_USERNAME: someotherexampleusername
     SNOWFLAKE_PASSWORD: someotherexamplepassword
 ```
+
+Note that it is not mandatory that you use this env_vars YAML file to store your credentials. The env_vars YAML is where Soda SQL looks first when running a scan, but if the file does not exist, it uses the runtime environment variables from the current shell. 
+
+For example, if you use you Google Cloud Platform, you can [set runtime environment variables](https://cloud.google.com/functions/docs/env-var) in your cloud platform where Soda SQL will find the login credentials it needs to access your warehouse. Set a single variable in your cloud platform that Soda SQL can locate and use. Then, since you do not need it, locate and delete the env_vars YAML file that Soda SQL created in your local home directory.
 
 ## Go further
 

@@ -57,8 +57,12 @@
   subcategories:
   - subtitle: Example tests by metric
     page: soda-sql/examples/examples-by-metric.md
-  - subtitle: Test for uniqueness
+  - subtitle: Example tests for missing values
+    page: soda-sql/examples/example-test-missing.md
+  - subtitle: Example tests for unique values
     page: soda-sql/examples/example-test-unique.md
+  - subtitle: Example tests for valid values
+    page: soda-sql/examples/example-test-valid.md
 
 - title: Community
   page: soda-sql/community.md

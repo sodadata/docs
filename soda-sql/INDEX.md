@@ -6,8 +6,17 @@ has_children: true
 permalink: soda-sql/
 ---
 
+<!--![soda banner](../assets/images/soda-banner.png){:height="800px" width="800px"}-->
 
-![soda banner](../assets/images/soda-banner.png){:height="800px" width="800px"}
+![soda live logo](../assets/images/soda-live-logo.png){:height="300px" width="300px"}
+
+Join us to discover how to deliver trusted data.<br />
+May 12, 2021<br />
+4.00pm - 6.30pm CEST | 4.00pm - 6.30pm EDT<br />
+[Register now!](https://www.sodalive.io/page/1787220/register)<br />
+
+----
+
 
 ![soda sql](/assets/images/soda-sql-logo.png){:height="200px" width="200px"}
 
