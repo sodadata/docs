@@ -19,12 +19,11 @@ Use the results of a Soda SQL scan to instruct your orchestration tool to:
 
 Follow the instructions that correspond to your data orchestration tool:
 
-[Apache Airflow using PythonVirtualenvOperator](#apache-airflow-using-pythonvirtualenvoperator)<br />
+**[Apache Airflow using PythonVirtualenvOperator](#apache-airflow-using-pythonvirtualenvoperator)<br />
 [Apache Airflow using PythonOperator](#apache-airflow-using-pythonoperator)<br />
 [Apache Airflow using BashOperator](#apache-airflow-using-bashoperator)<br />
 [Prefect using a custom Task](#prefect-using-a-custom-task)<br />
-More coming soon
-<br />
+More coming soon<br />**
 
 
 ## Apache Airflow using PythonVirtualenvOperator

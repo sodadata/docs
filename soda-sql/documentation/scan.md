@@ -17,7 +17,9 @@ Instead of laboriously accessing your database and then manually defining SQL qu
 [Anatomy of the scan YAML file](#anatomy-of-the-scan-yaml-file)<br />
 [Scan YAML configuration keys](#scan-yaml-configuration-keys)<br />
 [Run a scan](#run-a-scan)<br />
-[Scan output](#scan-output)<br />**
+[Scan output](#scan-output)<br />
+[Use the scan output](#use-the-scan-output)<br />
+[Go further](#go-further)<br />**
 
 ## Create a scan YAML file
 

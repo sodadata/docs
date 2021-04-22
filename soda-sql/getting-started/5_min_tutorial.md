@@ -11,7 +11,7 @@ nav_order: 1
 Join us to discover how to deliver trusted data.<br />
 May 12, 2021<br />
 4.00pm - 6.30pm CEST | 4.00pm - 6.30pm EDT<br />
-[Register now!](https://www.sodalive.io/page/1787220/register)<br />
+[Check out the agenda](https://www.sodalive.io/agenda)<br />
 
 ----
 
@@ -64,7 +64,7 @@ $ cd soda_sql_tutorial
 ```
 3. Use the `soda create postgres` command to create and pre-populate two files that enable you to configure connection details for Soda SQL to access your warehouse:
 * a `warehouse.yml` file which stores access details for your warehouse ([read more]({% link soda-sql/documentation/warehouse.md %}))
-* an `env_vars.yml` file which securely stores warehouse login credentials ([read more]({% link soda-sql/documentation/warehouse.md %}#env_vars-yaml))<br />
+* an `env_vars.yml` file which securely stores warehouse login credentials ([read more]({% link soda-sql/documentation/warehouse.md %}#env_vars-yaml-file))<br />
 <br />
 Command:
 ```shell

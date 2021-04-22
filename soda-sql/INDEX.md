@@ -13,7 +13,7 @@ permalink: soda-sql/
 Join us to discover how to deliver trusted data.<br />
 May 12, 2021<br />
 4.00pm - 6.30pm CEST | 4.00pm - 6.30pm EDT<br />
-[Register now!](https://www.sodalive.io/page/1787220/register)<br />
+[Check out the agenda](https://www.sodalive.io/agenda)<br />
 
 ----
 

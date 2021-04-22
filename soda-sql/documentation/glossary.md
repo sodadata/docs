@@ -36,7 +36,7 @@ A metric you define in your scan YAML file using SQL queries. Also known as a SQ
 An out-of-the-box metric that you can configure in a scan YAML file. By contrast, you can use [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics) to define custom metrics in a scan YAML file.
 
 ### env_vars YAML
-The file in your local user home directory that stores your database login credentials.
+The file in your local user home directory that stores your warehouse login credentials.
 
 ### measurement
 The value for a metric that Soda SQL obtains during a scan. For example, in `row_count = 5`, `row_count` is the metric and `5` is the measurement.
