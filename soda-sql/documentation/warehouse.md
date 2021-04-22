@@ -9,6 +9,12 @@ nav_order: 3
 
 A **warehouse** represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. You use a **warehouse YAML** file to configure connection details for Soda SQL to access your warehouse.
 
+**[Create a warehouse YAML file](#create-a-warehouse-yaml-file)<br />
+[Anatomy of the warehouse YAML file](#anatomy-of-the-warehouse-yaml-file)<br />
+[Env-vars YAML file](#env_vars-yaml-file)<br />
+[Go further](#go-further)<br />**
+
+
 ## Create a warehouse YAML file
 
 You need to create a warehouse YAML file for every warehouse to which you want to connect. You can create warehouse YAML files manually, but the CLI command `soda create yourwarehousetype` automatically prepares a warehouse YAML file and an env_vars YAML file for you. (Use the env-vars YAML to securely store warehouse login credentials. See [Env_vars YAML](#env_vars-yaml) below.)
@@ -60,7 +66,7 @@ Notice that even though the command provided a value for `username`, Soda SQL au
 Each type of warehouse requires different configuration parameters. Refer to [Set warehouse configurations]({% link soda-sql/documentation/warehouse_types.md %}) for details that correspond to the type of database you are using.
 
 
-## Env_vars YAML
+## Env_vars YAML file
 
 To keep your warehouse YAML file free of login credentials, Soda SQL references environment variables. When it creates a new warehouse YAML file, Soda SQL also creates an **env_vars YAML** file to store your database username and password values. Soda SQL does not overwrite or remove and existing environment variables, it only adds new.
 

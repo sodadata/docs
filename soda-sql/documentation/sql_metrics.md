@@ -22,7 +22,8 @@ A **metric** is a property of the data in your database. A **measurement** is th
 [SQL metric names](#sql-metric-names)<br >
 [GROUP BY queries in SQL metrics](#group-by-queries-in-sql-metrics)<br />
 [Variables in SQL metrics](#variables-in-sql-metrics)<br />
-[SQL metrics using file reference](#sql-metrics-using-file-reference)**
+[SQL metrics using file reference](#sql-metrics-using-file-reference)<br />
+[Go further](#go-further)<br />**
 
 
 ## Table metrics

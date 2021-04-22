@@ -9,7 +9,7 @@ nav_order: 3
 
 After you [install Soda SQL]({% link soda-sql/getting-started/installation.md %}), you must create files and configure a few settings before you can run a scan.
 
-## Overview
+## Overview of configuration 
 
 1. Create a [warehouse directory]({% link soda-sql/documentation/glossary.md %}#warehouse-directory) in which to store your warehouse YAML file and `/tables` directory.
 2. Create a [warehouse YAML file]({% link soda-sql/documentation/glossary.md %}#warehouse-yaml) and an [env_vars YAML file]({% link soda-sql/documentation/glossary.md %}#env_vars-yaml), then adjust the contents of each to input your [warehouse]({% link soda-sql/documentation/glossary.md %}#warehouse) connection details.
@@ -18,7 +18,7 @@ After you [install Soda SQL]({% link soda-sql/getting-started/installation.md %}
 
 Consider following the [Quick start tutorial]({% link soda-sql/getting-started/5_min_tutorial.md %}) that guides you through configuration and scanning.
 
-## Configure
+## Configuration instructions
 
 1. Use your command-line interface to create, then navigate to a new Soda SQL warehouse directory in your environment. The warehouse directory stores your warehouse YAML files and `/tables` directory. The example below creates a directory named `soda_warehouse_directory`.<br />
 <br />
@@ -28,7 +28,7 @@ $ cd soda_warehouse_directory
 ```
 2. Use the [create command](#create-commands) to create and pre-populate two files that enable you to configure connection details for Soda SQL to access your warehouse:
 * a `warehouse.yml` file which stores access details for your warehouse ([read more]({% link soda-sql/documentation/warehouse.md %}))
-* an `env_vars.yml` file which securely stores warehouse login credentials ([read more]({% link soda-sql/documentation/warehouse.md %}#env_vars-yaml))<br />
+* an `env_vars.yml` file which securely stores warehouse login credentials ([read more]({% link soda-sql/documentation/warehouse.md %}#env_vars-yaml-file))<br />
 <br />
 Use `soda create --help` for a list of all available warehouse types and options.
 ```shell
