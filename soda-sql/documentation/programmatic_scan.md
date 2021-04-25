@@ -50,4 +50,4 @@ if scan_result.has_test_failures():
 - Learn more about [Warehouse]({% link soda-sql/documentation/warehouse.md %}) and [Scan]({% link soda-sql/documentation/scan.md %}) YAML files.
 - Learn how to integrate Soda SQL with a [data orchestration tool]({% link soda-sql/documentation/orchestrate_scans.md %}).
 - Need help? [Post your questions on GitHub](https://github.com/sodadata/soda-sql/discussions)
-or [join our Slack community](https://join.slack.com/t/soda-community/shared_invite/zt-m77gajo1-nXJF7JtbbRht2zwaiLb9pg)
+or [join our Slack community](https://join.slack.com/t/soda-community/shared_invite/zt-pf67xl6u-n3wexBNDl71VC6vK8fSPjg)
