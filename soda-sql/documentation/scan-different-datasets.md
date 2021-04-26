@@ -62,25 +62,19 @@ The example below compares today's count of table entries against an average cou
 {% raw %}
 ```yaml
 table_name: current_table
-metrics:
-  - row_count
-  - missing_count
-  - missing_percentage
-  - values_count
-  - ...
 sql_metrics:
-    - sql: |
-        SELECT avg(cnt) as avg_cnt(
-            SELECT date, reported_date, count(*) as cnt
-            FROM my_history_table
-            WHERE to_date(date) = to_date(reported_date)
-            GROUP by date, reported_date
-        )
-            (SELECT count(1) as current_cnt
-            FROM current_table
-            WHERE date = DATE '{{ date }}')
-      tests:
-        - current_cnt > (avg_cnt * 0.5)
+  - sql: |
+      SELECT avg(cnt) as avg_cnt(
+          SELECT date, reported_date, count(*) as cnt
+          FROM my_history_table
+          WHERE to_date(date) = to_date(reported_date)
+          GROUP by date, reported_date
+      )
+      SELECT count(1) as current_cnt
+      FROM current_table
+      WHERE date = DATE '{{ date }}'
+tests:
+  - current_cnt > (avg_cnt * 0.5)
 ```
 {% endraw %}
 -->
