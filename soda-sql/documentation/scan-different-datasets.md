@@ -57,27 +57,8 @@ Use a single scan YAML file to run tests on different tables in your warehouse.
 Prepare one [scan YAML file]({% link soda-sql/documentation/scan.md %}) to define the tests you wish to apply against multiple tables. Use custom metrics to write SQL queries and subqueries that run against multiple tables. When you run a scan, Soda SQL uses your SQL queries to query data in the tables you specified in your scan YAML file. 
 
 Example coming soon.
-<!--
-The example below compares today's count of table entries against an average count of entries using historical data in a separate table. Note that the example uses a [filter]({% link soda-sql/documentation/filtering.md %}) to scan data for a specific date.
-{% raw %}
-```yaml
-table_name: current_table
-sql_metrics:
-  - sql: |
-      SELECT avg(cnt) as avg_cnt(
-          SELECT date, reported_date, count(*) as cnt
-          FROM my_history_table
-          WHERE to_date(date) = to_date(reported_date)
-          GROUP by date, reported_date
-      )
-      SELECT count(1) as current_cnt
-      FROM current_table
-      WHERE date = DATE '{{ date }}'
-tests:
-  - current_cnt > (avg_cnt * 0.5)
-```
-{% endraw %}
--->
+
+
 ## Go further
 
 * See [Example tests by metric]({% link soda-sql/examples/examples-by-metric.md %}) to learn more about defining tests.
