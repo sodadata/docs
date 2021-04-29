@@ -9,7 +9,7 @@ nav_order: 18
 <!--This glossary contains Soda-specific terms only. Do not define industry terminology such as "SQL" or "query".-->
 
 ### alert
-A setting that you configure in Soda Cloud by specifying key:value thresholds which, if passed, trigger a notification. See also: [notification](#notification).
+A setting that you configure in Soda Cloud by specifying key:value thresholds which, if exceeded, trigger a notification. See also: [notification](#notification).
 
 ### analyze
 A Soda SQL CLI command that sifts through the contents of your database and automatically prepares a scan YAML file for each table. See [Create a scan YAML file]({% link soda-sql/documentation/scan.md %}#create-a-scan-yaml-file).
@@ -33,7 +33,9 @@ A Soda SQL CLI command that creates a warehouse directory.
 A metric you define in your scan YAML file using SQL queries. Also known as a SQL metric. SQL metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan. See [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics).
 
 ### default metric
-An out-of-the-box metric that you can configure in a scan YAML file. By contrast, you can use [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics) to define custom metrics in a scan YAML file.
+An out-of-the-box metric that you can configure in a scan YAML file. There are two levels of default metric: [table](#table-metric), which are metrics that apply to an entire table of data, and [column](#column-metric), which are metrics that apply to individual columns in a table.
+
+By contrast, you can use [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics) to define custom metrics in a scan YAML file.
 
 ### env_vars YAML
 The file in your local user home directory that stores your warehouse login credentials.
@@ -51,7 +53,7 @@ A scan you define in Soda Cloud that tests the data in your database.
 A setting you configure in Soda Cloud that defines whom to notify when a data issue triggers an alert. See also: [alert](#alert).
 
 ### scan
-A Soda SQL CLI command that uses SQL queries to extract information about data in a database table.
+A Soda SQL CLI command that executes tests to extract information about data in a database table.
 
 ### scan YAML
 The file in which you configure scan metrics and tests. Soda SQL uses the input from this file to prepare, then run SQL queries against your data. See [Scan YAML]({% link soda-sql/documentation/scan.md %}).

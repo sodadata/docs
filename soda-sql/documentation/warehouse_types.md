@@ -28,23 +28,24 @@ connection:
     database: sodalite_test
     access_key_id: env_var(AWS_ACCESS_KEY_ID)
     secret_access_key: env_var(AWS_SECRET_ACCESS_KEY)
-    role_arn: an optional IAM role arn to be assumed
+    role_arn: 
     region: eu-west-1
     staging_dir: <YOUR STAGING PATH IN AWS S3>
 ...
 ```
 
-| Property | Description | Required |
-| -------- | ----------- | -------- |
-| type | `snowflake` | Required |
-| catalog | | Optional (default is `AwsDataCatalog`) |
-| database | | Required |
-| staging_dir | | Required |
-| access_key_id | | Optional |
-| secret_access_key | | Optional |
-| role_arn | | Optional |
-| region | | Optional |
+| Property  | Required | Notes |
+| --------  | -------- |-------- |
+| type | required |  |
+| catalog |optional | Default is `AwsDataCatalog`. |
+| database | required |  |
+| staging_dir |  required |  |
+| access_key_id |  optional | Use environment variables to retrieve this value securely. |
+| secret_access_key | optional | Use environment variables to retrieve this value securely. |
+| role_arn |optional | The [Amazon Resource Name](https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-role_arn.html) of an IAM role that you want to use. | 
+| region |  optional |  |
 
+Access keys and IAM role are mutually exclusive: if you provide values for `access_key_id` and `secret_access_key`, you cannot use Identity and Access Management role; if you provide value for `role_arn`, then you cannot use the access keys. Refer to [Identity and Access Management in Athena](https://docs.aws.amazon.com/athena/latest/ug/security-iam-athena.html) for details.
 
 ## Amazon Redshift
 
@@ -52,17 +53,32 @@ connection:
 name: my_redshift_project
 connection:
     type: redshift
-    host: <YOUR AWS REDSHIFT HOSTNAME>
+    host: <YOUR AMAZON REDSHIFT HOSTNAME>
     username: soda
-    password: <YOUR AWS REDSHIFT PASSWORD>
+    password: <YOUR AMAZON REDSHIFT PASSWORD>
     database: soda_agent_test
     schema: public
     access_key_id: env_var(AWS_ACCESS_KEY_ID)
     secret_access_key: env_var(AWS_SECRET_ACCESS_KEY)
-    role_arn: an optional IAM role arn to be assumed
+    role_arn: 
     region: eu-west-1
 ...
 ```
+
+| Property |  Required | Notes |
+| -------- |  -------- | ----- |
+| type    | required |  |
+| host |  required |   |
+| username  |  required |  |
+| password  |  required |  |
+| database  | required |  |
+| schema    |  |  |
+| access_key_id  | optional | Use environment variables to retrieve this value securely. |
+| secret_access_key  | optional | Use environment variables to retrieve this value securely. |
+| role_arn| optional | The [Amazon Resource Name](https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-role_arn.html) of an IAM role that you want to use. |
+| region | optional |  |
+
+Access keys and IAM role are mutually exclusive: if you provide values for `access_key_id` and `secret_access_key`, you cannot use Identity and Access Management role; if you provide value for `role_arn`, then you cannot use the access keys. Refer to [Amazon Redshift Authorization parameters](https://docs.aws.amazon.com/redshift/latest/dg/copy-parameters-authorization.html) for details.
 
 ## Apache Hive
 
@@ -81,29 +97,58 @@ connection:
 ...
 ```
 
+| Property |  Required | Notes |
+| -------- |  -------- | ----- |
+| type  | required  |  |
+| host  | required  |  |
+| port  | required  |  |
+| username  | required  | Use environment variables to retrieve this value securely. |
+| password  | required  | Use environment variables to retrieve this value securely. |
+| database | required | |
+| hive.execution.engine | required | Input options are: <br /> `mr` (Map reduce, default) <br /> `tez` (Tez execution for Hadoop 2) <br /> `spark` (Spark execution for Hive 1.1.0 or later)|
+| mapreduce.job.reduces | required | Sets the number of reduce tasks per job. Input `-1` for Hive to automatically determine the number of reducers. |
+
+
 ## GCP BigQuery
+
+
+Use the values Google Cloud Platform provides when you [create a service account](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Use your BigQuery service account JSON key file. 
 
 ```yaml
 name: my_bigquery_project
 connection:
     type: bigquery
-    # YOUR BIGQUERY SERVICE ACCOUNT INFO JSON FILE
     account_info_json: >
       {
         "type": "service_account",
         "project_id": "...",
         "private_key_id": "...",
         "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
-        "client_email": "user@project.iam.gserviceaccount.com",
+        "client_email": "...@project.iam.gserviceaccount.com",
         "client_id": "...",
         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-        "token_uri": "https://oauth2.googleapis.com/token",
+        "token_uri": "https://accounts.google.com/o/oauth2/token",
         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/..."
+        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/..."
       }
     dataset: sodasql
 ...
 ```
+
+| Property |  Required | 
+| -------- |  -------- | 
+| type | required | 
+| project_id | required | 
+| private_key_id | required |
+| private_key | required |
+| client_email | required |
+| client_id | required |
+| auth_uri | required |
+| token_uri | required |
+| auth_provider_x509_cert_url | required |
+| client_x509_cert_url | required | 
+
+
 
 ## Microsoft SQL Server
 
@@ -120,6 +165,16 @@ connection:
   schema: dbo
 ```
 
+| Property |  Required | Notes |
+| -------- |  -------- | ----- |
+| type | required |  |
+| host| required |  |
+| username| required | Use environment variables to retrieve this value securely. |
+| password| required | Use environment variables to retrieve this value securely. |
+| database| required |  |
+| schema | required | |
+
+
 ## PostgreSQL
 
 ```yaml
@@ -133,6 +188,15 @@ connection:
     schema: public
 ...
 ```
+
+| Property |  Required | Notes |
+| -------- |  -------- | ----- |
+| type | required |  |
+| host| required |  |
+| username| required | Use environment variables to retrieve this value securely. |
+| password| required | Use environment variables to retrieve this value securely. |
+| database| required |  |
+| schema |  | |
 
 ## Snowflake
 
@@ -149,12 +213,12 @@ connection:
 ...
 ```
 
-| Property | Description | Required |
-| -------- | ----------- | -------- |
-| type | `snowflake` | Required |
-| username |  | Required |
-| password |  | Required |
-| account | Eg YOUR_SNOWFLAKE_ACCOUNT.eu-west-1 | Required |
-| warehouse |  | Required |
-| database |  | Required |
-| schema |  | Required |
+| Property | Required | Notes |
+| --------  | -------- | -----|
+| type  | required |  |
+| username | required | Use environment variables to retrieve this value securely. |
+| password | required | Use environment variables to retrieve this value securely. |
+| account | required | Example: YOUR_SNOWFLAKE_ACCOUNT.eu-west-1 |
+| warehouse | required | The name of your Snowflake virtual warehouse. |
+| database | required |  |
+| schema | required |  |
