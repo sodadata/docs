@@ -13,7 +13,7 @@ Soda SQL needs connection details in order to access your [warehouse]({% link so
 [Amazon Redshift](#amazon-redshift) <br />
 [Apache Hive](#apache-hive) <br />
 [Google Cloud Platform BigQuery](#gcp-bigquery) <br />
-[Microsoft SQL Server](#microsoft-sql-server) <br />
+[Microsoft SQL Server (Experimental)](#microsoft-sql-server-experimental) <br />
 [PostgreSQL](#postgresql) <br />
 [Snowflake](#snowflake) <br />**
 
@@ -150,9 +150,10 @@ connection:
 
 
 
-## Microsoft SQL Server
+## Microsoft SQL Server (Experimental)
 
-Note: This connection is experimental.
+Note: MS SQL Server support is experimental.
+
 
 ```yaml
 name: my_sqlserver_project
@@ -195,7 +196,7 @@ connection:
 | host| required |  |
 | username| required | Use environment variables to retrieve this value securely. |
 | password| required | Use environment variables to retrieve this value securely. |
-| database| required |  |
+| database|  |  |
 | schema |  | |
 
 ## Snowflake
@@ -210,6 +211,7 @@ connection:
     warehouse: YOUR_WAREHOUSE
     database: YOUR_DATABASE
     schema: PUBLIC
+    role: PUBLIC
 ...
 ```
 
@@ -220,5 +222,6 @@ connection:
 | password | required | Use environment variables to retrieve this value securely. |
 | account | required | Example: YOUR_SNOWFLAKE_ACCOUNT.eu-west-1 |
 | warehouse | required | The name of your Snowflake virtual warehouse. |
-| database | required |  |
+| database | optional |  |
 | schema | required |  |
+| role | optional | See [Snowflake System-Defined Roles](https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles) for details.|
