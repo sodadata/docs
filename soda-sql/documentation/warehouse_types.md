@@ -15,7 +15,8 @@ Soda SQL needs connection details in order to access your [warehouse]({% link so
 [Google Cloud Platform BigQuery](#gcp-bigquery) <br />
 [Microsoft SQL Server (Experimental)](#microsoft-sql-server-experimental) <br />
 [PostgreSQL](#postgresql) <br />
-[Snowflake](#snowflake) <br />**
+[Snowflake](#snowflake) <br />
+[Troubleshoot warehouse connections]({% link soda-sql/documentation/troubleshoot.md %}#warehouse-connections)**
 
 
 ## Amazon Athena
@@ -225,3 +226,21 @@ connection:
 | database | optional |  |
 | schema | required |  |
 | role | optional | See [Snowflake System-Defined Roles](https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles) for details.|
+
+### Private key authentication
+
+You can use the `private_key` parameter to specify key-value pairs for key pair authentication. In the warehouse YAML file, add the parameter as follows: 
+```yml
+  private_key: |
+     -----BEGIN ENCRYPTED PRIVATE KEY-----
+     MIIExxxxxxxxxxxxxxxxxxxxucRqSZaS
+     ...
+
+     -----END ENCRYPTED PRIVATE KEY-----
+```
+Alternatively, you can use the `private_key_path` parameter in the warehouse YAML as follows:
+```yml
+  private_key_path: '/path/to/private_key/key.p8'
+```
+
+If you use a passphrase to regulate access to the private key, you can use the `private_key_passphrase` parameter to specify that key-value pair.

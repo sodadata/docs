@@ -9,6 +9,35 @@ parent: Examples
 Refer to [Metrics]({% link soda-sql/documentation/sql_metrics.md %}) for configuration details.<br />
 Refer to [Scan YAML]({% link soda-sql/documentation/scan.md %}#anatomy-of-the-scan-yaml-file) for details on the anatomy of a scan YAML file.
 
+[avg]({% link soda-sql/examples/examples-by-metric.md %}#avg)<br />
+[avg-length]({% link soda-sql/examples/examples-by-metric.md %}#avg-length)<br />
+[distinct]({% link soda-sql/examples/examples-by-metric.md %}#distinct)<br />
+[duplicate_count]({% link soda-sql/examples/examples-by-metric.md %}#duplicate_count)<br />
+[frequent_values]({% link soda-sql/examples/examples-by-metric.md %}#frequent_values)<br />
+[histogram]({% link soda-sql/examples/examples-by-metric.md %}#histogram)<br />
+[invalid_count]({% link soda-sql/examples/examples-by-metric.md %}#invalid_count)<br />
+[invalid_percentage]({% link soda-sql/examples/examples-by-metric.md %}#invalid_percentage)<br />
+[max]({% link soda-sql/examples/examples-by-metric.md %}#max)<br />
+[max_length]({% link soda-sql/examples/examples-by-metric.md %}#max_length)<br />
+[maxs]({% link soda-sql/examples/examples-by-metric.md %}#maxs)<br />
+[min]({% link soda-sql/examples/examples-by-metric.md %}#min)<br />
+[min_length]({% link soda-sql/examples/examples-by-metric.md %}#min_length)<br />
+[mins]({% link soda-sql/examples/examples-by-metric.md %}#mins)<br />
+[missing_count]({% link soda-sql/examples/examples-by-metric.md %}#missing_count)<br />
+[missing_percentage]({% link soda-sql/examples/examples-by-metric.md %}#missing_percentage)<br />
+[row_count]({% link soda-sql/examples/examples-by-metric.md %}#row_count)<br />
+[schema]({% link soda-sql/examples/examples-by-metric.md %}#schema)<br />
+[stddev]({% link soda-sql/examples/examples-by-metric.md %}#stddev)<br />
+[sum]({% link soda-sql/examples/examples-by-metric.md %}#sum)<br />
+[unique_count]({% link soda-sql/examples/examples-by-metric.md %}#unique_count)<br />
+[uniqueness]({% link soda-sql/examples/examples-by-metric.md %}#uniqueness)<br />
+[valid_count]({% link soda-sql/examples/examples-by-metric.md %}#valid_count)<br />
+[valid_percentage]({% link soda-sql/examples/examples-by-metric.md %}#valid_percentage)<br />
+[values_count]({% link soda-sql/examples/examples-by-metric.md %}#values_count)<br />
+[values_percentage]({% link soda-sql/examples/examples-by-metric.md %}#values_percentage)<br />
+[variance]({% link soda-sql/examples/examples-by-metric.md %}#variance)<br />
+
+----
 
 ### avg
 
@@ -457,7 +486,9 @@ Scan output:
 
 ### maxs
 
-A list of values that qualify as maximum relative to other values in the column. Use with `metric_groups: profiling` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
+A list of the five values that qualify as maximum relative to other values in the column. In other words, this metric returns the five greatest values in the column. 
+
+Use with `metric_groups: profiling` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
 Scan YAML:
 ```yaml
@@ -595,7 +626,7 @@ Scan output:
 
 ### mins
 
-A list of values that qualify as minimum relative to other values in the column.
+A list of the five values that qualify as minimum relative to other values in the column. In other words, this metric returns the five smallest values in the column.
 
 Use with `metric_groups: profiling` at table or column level. See [Metric groups and dependencies]({% link soda-sql/documentation/sql_metrics.md %}#metric-groups-and-dependencies).
 
