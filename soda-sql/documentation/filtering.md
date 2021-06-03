@@ -23,6 +23,13 @@ $ soda scan -v country=FRA warehouse.yml tables/customer_transactions.yml
 
 
 ## Configure a filter
+<br />
+#### Soda Cloud
+
+Define a filter in the first step of the guide to **Create a monitor**. Use the dropdowns to create a filter for your monitor, or compose a custom filter using any of the following operators: `NOT`, `AND`, `OR`.
+
+<br />
+#### Soda SQL
 
 1. Open the [scan YAML]({% link soda-sql/documentation/scan.md %}) file associated with the table on which you want to run filtered scans. The scan YAML files are usually located in the [warehouse directory]({% link soda-sql/documentation/glossary.md %}#warehouse-directory) of your Soda SQL project.
 2. To the file, add a filter configuration key as per the following example. Be sure to use quotes for input that is in text format.{% raw %}

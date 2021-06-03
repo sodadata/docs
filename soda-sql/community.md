@@ -4,7 +4,7 @@ title: Community
 nav_order: 99
 ---
 
-# Community
+# Soda SQL community
 
 Soda SQL is open-source software distributed under the Apache License 2.0.
 
