@@ -138,5 +138,8 @@ Show code:
 To keep the numbered list intact, apply endraw to the end of the line of preceding text; do not prepend with a line break.
 
 
+### Redirecting site visitors
 
+The `jekyll-redirect-from` plugin is installed, allowing to redirect users if a page is moved. 
 
+See documentation: https://github.com/jekyll/jekyll-redirect-from
