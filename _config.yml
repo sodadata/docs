@@ -11,6 +11,7 @@ github_username:  sodadata
 theme: just-the-docs
 plugins:
   - jekyll-feed
+  - jekyll-redirect-from
 
 logo: /assets/images/soda-logo.svg
 color_scheme: soda

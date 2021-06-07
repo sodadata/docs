@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Community
+redirect_from: /redirect/me/
 nav_order: 99
 ---
 
