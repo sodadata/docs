@@ -132,14 +132,19 @@ Comment out:
 ```
 
 Show code:
-
+```
 {% raw %}
 {% endraw %}
+```
 To keep the numbered list intact, apply endraw to the end of the line of preceding text; do not prepend with a line break.
 
 
 ### Redirecting site visitors
 
-The `jekyll-redirect-from` plugin is installed, allowing to redirect users if a page is moved. 
+The `jekyll-redirect-from` plugin is installed, allowing authors to redirect users if a page is moved. 
 
 See documentation: https://github.com/jekyll/jekyll-redirect-from
+
+To apply a redirect, navigate to the redirect destination file, then add the following to the file metadata at the top:
+
+`redirect_from: /pageyouwanttoredirect/`
