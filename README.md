@@ -132,9 +132,10 @@ Comment out:
 ```
 
 Show code:
-
+```
 {% raw %}
 {% endraw %}
+```
 To keep the numbered list intact, apply endraw to the end of the line of preceding text; do not prepend with a line break.
 
 
