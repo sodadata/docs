@@ -48,8 +48,6 @@ connection:
 
 Access keys and IAM role are mutually exclusive: if you provide values for `access_key_id` and `secret_access_key`, you cannot use Identity and Access Management role; if you provide value for `role_arn`, then you cannot use the access keys. Refer to [Identity and Access Management in Athena](https://docs.aws.amazon.com/athena/latest/ug/security-iam-athena.html) for details.
 
-Refer to [Troubleshoot warehouse connections]({% link soda-sql/documentation/troubleshoot.md %}#warehouse-connections) for help with Athena connection issues.
-
 ## Amazon Redshift
 
 ```yaml
