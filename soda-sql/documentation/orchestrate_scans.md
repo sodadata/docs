@@ -335,7 +335,5 @@ f.register()
 
 ## Go further
 
-- If you want to write integration instructions for your favorite data orchestration tool, please contribute to our open-source docs! [Post a note on GitHub](https://github.com/sodadata/soda-sql/discussions) to let us know your plans.
-- Need help? [Post your questions on GitHub](https://github.com/sodadata/soda-sql/discussions)
-or [join our Slack community](http://community.soda.io/slack)
+- Need help? <a href="http://community.soda.io/slack" target="_blank">Join our Slack community</a> to ask a question.
 - Learn how to configure [programmatic Soda SQL scans]({% link soda-sql/documentation/programmatic_scan.md %}).

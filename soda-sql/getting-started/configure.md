@@ -34,7 +34,7 @@ Use `soda create --help` for a list of all available warehouse types and options
 ```shell
 $ soda create warehousetype -d yourdbname -u dbusername -w soda_warehouse_directory 
 ```
-3. Use a code editor to open the `warehouse.yml` file that Soda SQL created and put in your warehouse directory. Refer to [Set warehouse configurations]({% link soda-sql/documentation/warehouse_types.md %}) to adjust the configuration details according to the type of warehouse you use, then save the file.<br />
+3. Use a code editor to open the `warehouse.yml` file that Soda SQL created and put in your warehouse directory. Refer to [Set warehouse configurations]({% link soda-sql/documentation/warehouse_types.md %}) to adjust the configuration details and authentication settings according to the type of warehouse you use, then save the file.<br />
 <br />
 Example warehouse YAML
 ```shell
@@ -47,7 +47,7 @@ connection:
   database: sodasql
   schema: public
 ```
-4. Use a code editor to open the `env_vars.yml` that Soda SQL created and put in your local user home directory as a hidden file (`~/.soda/env_vars.yml`). Input your warehouse login credentials then save the file.<br />
+4. Use a code editor to open the `env_vars.yml` that Soda SQL created and put in your local user home directory as a hidden file (`~/.soda/env_vars.yml`). Use the command `ls ~/.soda/env_vars.yml` to locate the file. Input your warehouse login credentials then save the file.<br />
 <br />
 Example env_vars YAML
 ```shell

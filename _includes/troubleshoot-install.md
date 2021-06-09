@@ -10,3 +10,29 @@ $ pip install --upgrade pip
 ```shell
 $ pip install --upgrade --no-cache-dir soda-sql-yourdatawarehouse
 ```
+<br />
+
+**Problem:** I can't run the `soda` command in my CLI. It returns `command not found: soda`. <br />
+**Solution:** If you followed the instructions to [install Soda SQL]({% link soda-sql/getting-started/installation.md %}) and still received the error, you may need to adjust your `$PATH` variable. 
+1. Run the following command to find the path to your installation of Python, replacing `soda-sql-postgresql` with the install package that matches the type of warehouse you use if not PostgreSQL:<br />
+`pip show soda-sql-postgresql`
+<br /> <br /> The output indicates the Location that looks something like this example:
+```shell
+...
+Location: /Users/yourname/Library/Python/3.8/lib/python/site-packages
+...
+```
+2. Add the location to your `$PATH` variable using the `export PATH` command as follows:<br />
+`'export PATH=$PATH:/Users/yourname/Library/Python/3.8/bin soda'`
+3. Run the `soda` command again to receive the following output:<br />
+```shell
+Usage: soda [OPTIONS] COMMAND [ARGS]...
+  Soda CLI version 2.1.xxx
+Options:
+  --help  Show this message and exit.
+Commands:
+  analyze  Analyzes tables in the warehouse and creates scan YAML files...
+  create   Creates a new warehouse.yml file and prepares credentials in
+           your...
+  scan     Computes all measurements and runs all tests on one table.
+```

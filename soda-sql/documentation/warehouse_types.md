@@ -207,27 +207,33 @@ connection:
 ```yaml
 name: my_snowflake_project
 connection:
-    type: snowflake
+    warehouse: snowflake
     username: env_var(SNOWFLAKE_USERNAME)
-    password: env_var(SNOWFLAKE_PASSWORD)
-    account: YOUR_SNOWFLAKE_ACCOUNT.eu-west-1
-    warehouse: YOUR_WAREHOUSE
-    database: YOUR_DATABASE
+    password: 
+    database: 
     schema: PUBLIC
     role: PUBLIC
-...
+    passcode_in_password:
+    private_key_passphrase: 
+    private_key: 
+    private_key_path: '/path/to/private_key/key.p8'
+    authenticator: snowflake
 ```
 
 | Property | Required | Notes |
 | --------  | -------- | -----|
-| type  | required |  |
+| warehouse  | required |  The name of your Snowflake virtual warehouse. |
 | username | required | Use environment variables to retrieve this value securely. |
-| password | required | Use environment variables to retrieve this value securely. |
-| account | required | Example: YOUR_SNOWFLAKE_ACCOUNT.eu-west-1 |
-| warehouse | required | The name of your Snowflake virtual warehouse. |
+| password | optional | Use environment variables to retrieve this value securely using `env_var(SNOWFLAKE_PASSWORD)`. Alternatively, authenticate using `private_key`, `private_key_passphrase`, or `private-key-path`. |
 | database | optional |  |
 | schema | required |  |
-| role | optional | See [Snowflake System-Defined Roles](https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles) for details.|
+| role | optional | See <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Roles</a> for details.|
+| passcode_in_password | optional | Default value is `false`. See <a href="https://docs.snowflake.com/en/user-guide/snowsql-start.html#mfa-passcode-in-password" target="_blank"> Snowflake documentation</a>.|
+| private_key_passphrase | optional | Specify the value for the key-value pair. |
+| private_key | optional | See [Private key authentication](#private-key-authentication) section below.|
+| private_key_path | optional | Example: `private_key_path: '/path/to/private_key/key.p8'` |
+| authenticator | optional | Default value is `snowflake`. See <a href="https://docs.snowflake.com/en/user-guide/snowsql-start.html#authenticator" target="_blank"> Snowflake documentation</a>. |
+
 
 ### Private key authentication
 
@@ -240,9 +246,3 @@ You can use the `private_key` parameter to specify key-value pairs for key pair 
 
      -----END ENCRYPTED PRIVATE KEY-----
 ```
-Alternatively, you can use the `private_key_path` parameter in the warehouse YAML as follows:
-```yml
-  private_key_path: '/path/to/private_key/key.p8'
-```
-
-If you use a passphrase to regulate access to the private key, you can use the `private_key_passphrase` parameter to specify that key-value pair.
