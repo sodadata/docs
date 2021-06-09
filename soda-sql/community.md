@@ -19,25 +19,25 @@ Soda SQL is open-source software distributed under the Apache License 2.0.
 
 We welcome and encourage any kind of contributions and suggestions for improvement!
 
-Soda SQL project: [github.com/sodadata/soda-sql](https://github.com/sodadata/soda-sql/)
+Soda SQL project: <a href="https://github.com/sodadata/soda-sql/" target="_blank"> github.com/sodadata/soda-sql</a>
 
-Join the conversation in [Soda's Slack community](http://community.soda.io/slack).
-
-Contact us using [GitHub discussions](https://github.com/sodadata/soda-sql/discussions) to:
+Join the conversation in <a href="http://community.soda.io/slack" target="_blank"> Soda's Slack community</a>.
 * ask a question
 * post a problem
 * share your feedback
 * suggest an improvement or contribution
 
-Write [documentation](https://github.com/sodadata/docs/blob/main/README.md) for Soda SQL.
+<a href="https://github.com/sodadata/soda-sql/issues/new" target="_blank"> Create a GitHub issue</a> to make a feature request or log an issue. 
 
-Read more about how to [contribute to Soda SQL](https://github.com/sodadata/soda-sql/blob/main/CONTRIBUTING.md).
+Write <a href="https://github.com/sodadata/docs/blob/main/README.md" target="_blank">documentation</a> for Soda SQL.
+
+Want to help us develop CLI tools for other SQL engines? Read more about how to <a href="https://github.com/sodadata/soda-sql/blob/main/CONTRIBUTING.md" target="_blank">contribute to Soda SQL</a>.
 
 
 ## Roadmap
 
 We have a long and exciting path ahead for developing Soda SQL and beyond. Check out our
-[project roadmap](https://github.com/sodadata/soda-sql/projects/1) on GitHub.
+<a href="https://github.com/sodadata/soda-sql/projects/1" target="_blank">project roadmap</a>  on GitHub.
 
-Do you have a feature request? Want to help us develop CLI tools for other SQL engines?  [Create an issue](https://github.com/sodadata/soda-sql/issues/new) on GitHub.
+
 
