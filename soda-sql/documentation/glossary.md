@@ -30,7 +30,10 @@ The key in the key-value pair that you use to define configuration in your scan 
 A Soda SQL CLI command that creates a warehouse directory.
 
 ### custom metric
-A metric you define in your scan YAML file using SQL queries. Also known as a SQL metric. SQL metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan. See [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics).
+A metric you define in your scan YAML file using SQL queries. Also known as a SQL metric or user-defined metric. SQL metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan. See [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics).
+
+### dataset
+A tabular data structure with rows and columns. Examples include a table in database, a stream in Kafka, a dataframe in Spark.
 
 ### default metric
 An out-of-the-box metric that you can configure in a scan YAML file. There are two levels of default metric: [table](#table-metric), which are metrics that apply to an entire table of data, and [column](#column-metric), which are metrics that apply to individual columns in a table.
@@ -65,7 +68,7 @@ A free, web application that enables you to examine the results of Soda SQL scan
 An open-source command-line tool that scans the data in your warehouse. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. Start by [installing Soda SQL]({% link soda-sql/getting-started/installation.md%}).
 
 ### SQL metric
-A custom metric you define in your scan YAML file. Also known as a custom metric. SQL metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan. See [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics).
+A custom metric you define in your scan YAML file. Also known as a custom metric or user-defined metric. SQL metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan. See [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics).
 
 ### table
 A table in your warehouse.
@@ -75,6 +78,9 @@ A property of the data in a table in your database. Use a table metric to define
 
 ### test
 A Python expression that, during a scan, checks metrics to see if they match the parameters defined for a measurement. As a result of a scan, a test either passes or fails. See [Tests]({% link soda-sql/documentation/tests.md %}).
+
+### user-defined metrics
+A custom metric you define in your scan YAML file. Also known as a a SQL metric. User-defined metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan. See [SQL metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics).
 
 ### warehouse
 A SQL engine or database that contains data that you wish to test and monitor.

@@ -12,7 +12,7 @@ To use the **Soda Cloud** web application to monitor your data, you must install
 Soda SQL uses an API to connect to Soda Cloud. To use the API, you must generate API keys in your Soda Cloud account, then add them to the [warehouse YAML]({% link soda-sql/documentation/warehouse.md %}) file that Soda SQL created.
 
 
-1. If you have not already done so, create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup).
+1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
 2. Use the instructions in [Install Soda SQL]({% link soda-sql/getting-started/installation.md %}) to install Soda SQL.
 3. Follow steps in the [Quick start tutorial]({% link soda-sql/getting-started/5_min_tutorial.md %}) to create your warehouse YAML file, connect to your [warehouse]({% link soda-sql/documentation/glossary.md %}#warehouse), analyze your [tables]({% link soda-sql/documentation/glossary.md %}#table), and run a [scan]({% link soda-sql/documentation/glossary.md %}#scan) on the data.
 4. Open the `warehouse.yml` file in a text editor, then add the following to the file:
