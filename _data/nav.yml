@@ -41,6 +41,8 @@
     page: soda-sql/documentation/connect_to_cloud.md
   - subtitle: Create monitors and alerts
     page: soda-sql/documentation/monitors.md
+  - subtitle: Detect anomalies
+    page: soda-sql/documentation/anomaly-detection.md
   - subtitle: Integrate with Slack
     page: soda-sql/documentation/integrate-slack.md
   - subtitle: Troubleshoot
