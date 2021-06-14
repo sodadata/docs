@@ -89,7 +89,7 @@ Where a column metric references a valid or invalid value, or a limit, use the m
 
 ### Grouped column metrics
 
-To use these metrics, be sure to define the `metric_groups` in your scan YAML file. See ]Metric groups and dependencies](#metric-groups-and-dependencies) below.
+To use these metrics, be sure to define the `metric_groups` in your scan YAML file. See [Metric groups and dependencies](#metric-groups-and-dependencies) below.
 
 | Column metric  |  Description |  Use with `metric_groups` |
 | -------------- | ------------ | ------------------------- |
