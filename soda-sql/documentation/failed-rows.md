@@ -19,6 +19,8 @@ metrics:
   - missing_percentage
   - values_count
   …
+samples:
+  sample_percentage: 50
 tests:
   - row_count > 0
 columns:
@@ -47,7 +49,7 @@ In Soda Cloud, the Soda SQL test manifests as a line item in the **Monitor resul
 
 ## Get a sample of failed rows
 
-[Monitors]({% link soda-sql/documentation/glossary.md %}#monitor) in Soda Cloud automatically reveal failed rows when a scan results in a failed test, but you can use Soda SQL user-defined metrics to seek out failed rows in your dataset.
+[Monitors]({% link soda-sql/documentation/glossary.md %}#monitor) in Soda Cloud automatically reveal failed rows when a scan results in a failed test, but you can use Soda SQL custom metrics to seek out failed rows in your dataset.
 
 In your scan YAML file, use `failed_rows` when writing a SQL query to retrieve a sample of failed rows in a dataset. By default, this property collects five rows of data that meet the criteria of the SQL query and displays them in Soda Cloud as samples of failed rows. 
 
