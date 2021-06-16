@@ -47,3 +47,4 @@ $ soda scan warehouse.yml tables/[dbtablename].yml
 * Learn more about [Soda Cloud architecture]({% link soda-sql/documentation/soda-cloud-architecture.md %}).
 * Learn more about the [warehouse yaml]({% link soda-sql/documentation/warehouse.md %}) file.
 * Learn more about the [anatomy of a scan]({% link soda-sql/documentation/scan.md %}#anatomy-of-the-scan-yaml-file)
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

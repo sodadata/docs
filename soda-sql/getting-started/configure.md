@@ -85,3 +85,4 @@ Use `soda create --help` for a list of all available warehouse types and options
 * Learn more about [How Soda SQL works]({% link soda-sql/documentation/concepts.md %}).
 * Learn more about the [scan YAML file]({% link soda-sql/documentation/scan.md %}).
 * Learn more about configuring [tests]({% link soda-sql/documentation/tests.md %}) and [metrics]({% link soda-sql/documentation/sql_metrics.md %}).
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

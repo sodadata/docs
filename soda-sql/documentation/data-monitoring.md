@@ -30,4 +30,4 @@ If your enterprise makes data-driven decisions, you should be monitoring your da
 * Learn more about [How Soda SQL works]({% link soda-sql/documentation/concepts.md %}).
 * Get started in a few minutes with the [Quick start tutorial]({% link soda-sql/getting-started/5_min_tutorial.md %}).
 * Learn how to [configure programmatic scans]({% link soda-sql/documentation/programmatic_scan.md %}) or [integrate with your data orchestration tool]({% link soda-sql/documentation/orchestrate_scans.md %}).
-
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

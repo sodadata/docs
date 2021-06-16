@@ -39,3 +39,4 @@ $ soda scan warehouse.yml tables/yourtablename.yml
 
 * Learn more about [How Soda SQL works]({% link soda-sql/documentation/concepts.md %})
 * Learn more about [Soda Cloud architecture]({% link soda-sql/documentation/soda-cloud-architecture.md %}).
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
