@@ -14,7 +14,7 @@ In Soda Cloud, you can create a monitor that automatically detects anomalies in 
 
 The algorithm automatically adapts to your data. It learns how your data generally behaves over time to build a mental model of data patterns, then compares actual measurements to that model. If the two disagree, the algorithm identifies the actual measurement as an anomaly and calculates:<br />
 
-a. the certainty of the algorithm's mental model, or how well it thinks it knows your data, and <br />
+a. the certainty of the algorithm's mental model, or how well it knows your data, and <br />
 b. the size of the anomaly, or how far the measurement deviates from the expected value.
 
 Soda Cloud uses the certainty and size calculations to derive the thresholds for triggering alerts: 
@@ -41,3 +41,4 @@ Currently, Soda's time-series anomaly detection uses the <a href=""https://faceb
 - Learn how to [Create monitors and alerts]({% link soda-sql/documentation/monitors.md %}).
 - <a href="https://cloud.soda.io/signup" target="_blank"> Sign up for Soda Cloud</a> and [connect your account to Soda SQL]({% link soda-sql/documentation/connect_to_cloud.md %}).
 - Read more about [How Soda SQL works]({% link soda-sql/documentation/concepts.md %}).
+- Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
