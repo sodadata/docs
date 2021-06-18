@@ -8,6 +8,12 @@ parent: Documentation
 
 A **scan** is a Soda SQL CLI command that uses SQL queries to extract information about data in a dataset.
 
+[Run a scan](#run-a-scan)<br />
+[Scan output in Soda SQL](#scan-output-in-soda-sql)<br />
+[Scan output in Soda Cloud](#scan-output-in-soda-cloud)<br />
+[Programmatically use scan output](#programmatically-use-scan-output)<br />
+[Go further](#go-further)<br />
+
 ## Run a scan
 
 {% include run-a-scan.md %}
@@ -32,19 +38,23 @@ To test specific portions of data, such as data pertaining to a specific date, y
 
 ## Scan output in Soda Cloud
 
-If you have a Soda Cloud account and you have [connected Soda SQL]({% link soda-sql/documentation/connect_to_cloud.md %}) to your account, Soda SQL automatically pushes your scan output to Soda Cloud. In the Soda Cloud web user interface, the test results manifest as monitor results. You can log in to view the **Monitor Results** dashboard; each row in the Monitor Results table represents the result of a test, and the icon indicates whether the test passed or failed.
+If you have a Soda Cloud account and you have [connected Soda SQL]({% link soda-sql/documentation/connect_to_cloud.md %}) to your account, Soda SQL automatically pushes your scan output to Soda Cloud. In the Soda Cloud web user interface, the test results manifest as monitor results. Log in to view the **Monitor Results** dashboard; each row in the Monitor Results table represents the result of a test, and the icon indicates whether the test passed or failed.
+
+![monitor-results](/assets/images/monitor-results.png){:height="550px" width="550px"}
 
 When you run a scan in Soda SQL, it connects with Soda Cloud to:
-1. push test results to Soda Cloud
+1. push the results of tests you configured in the scan YAML file to Soda Cloud
 2. fetch tests associated with any [monitors you have created]({% link soda-sql/documentation/monitors.md %}) in Soda Cloud, then execute the tests and push the test results to Soda Cloud
 
 ![scan-with-cloud](/assets/images/scan-with-cloud.png){:height="350px" width="350px"}
 
 
 
-## Use the scan output in your orchestration tool
+## Programmatically use scan output 
 
-Optionally, you can insert the output of Soda SQL scans into your data orchestration tool such as Dagster, or Apache Airflow. In your orchestration tool, you can use Soda SQL scan results to block the data pipeline if it encounters bad data, or to run in parallel to surface issues with your data. Learn more about [orchestrating scans]({% link soda-sql/documentation/orchestrate_scans.md %}).
+Optionally, you can insert the output of Soda SQL scans into your data orchestration tool such as Dagster, or Apache Airflow. You can save Soda SQL scan results anywhere in your system; the `scan_result` object contains all the scan result information. See [Configure programmatic scans]({% link soda-sql/documentation/programmatic_scan.md %}) for details.
+
+Further, in your orchestration tool, you can use Soda SQL scan results to block the data pipeline if it encounters bad data, or to run in parallel to surface issues with your data. Learn more about [orchestrating scans]({% link soda-sql/documentation/orchestrate_scans.md %}).
 
 ## Go further
 

@@ -11,6 +11,8 @@ To automate the search for "bad" data, you can use the **Soda SQL Python library
 
 Based on a set of conditions or a specific event schedule, you can instruct Soda SQL to automatically scan a [warehouse]({% link soda-sql/documentation/glossary.md %}#warehouse) [table]({% link soda-sql/documentation/glossary.md %}#table) for “bad” data. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a warehouse, after it is transformed, and before it is exported to another warehouse.
 
+You can save Soda SQL scan results anywhere in your system; the `scan_result` object contains all the scan result information.
+
 Execute a programmatic scan based on Soda SQL's default directory structure:
 
 ```python
