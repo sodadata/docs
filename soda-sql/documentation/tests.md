@@ -140,3 +140,4 @@ tests:
 * See [example tests]({% link soda-sql/examples/examples-by-metric.md %}) that use each default metric.
 * Learn about [How Soda works]({% link soda-sql/documentation/concepts.md  %}).
 * Reference the [Data types]({% link soda-sql/documentation/supported-data-types.md %}) that Soda SQL supports when it scans columns.
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

@@ -81,3 +81,4 @@ if scan_result.has_test_failures():
 
 * Learn more about configuring your [scan YAML]({% link soda-sql/documentation/scan.md %}) file.
 * Learn more about [how Soda SQL works]({% link soda-sql/documentation/concepts.md %}) file.
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

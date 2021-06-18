@@ -8,14 +8,14 @@ parent: Documentation
 
 In Soda Cloud, you can create a monitor that automatically detects anomalies in your time-series data. 
 
-**Anomaly detection** is a [monitor]({% link soda-sql/documentation/glossary.md %}#monitor) **Evaluation Type** powered by a machine learning algorithm that works with [measurements]({% link soda-sql/documentation/glossary.md %}#measurement) that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalous measurements in time-series data. (Seasonality refers to the measurements the algorithm expects to see relative to a specific amount of time. For example, the algorithm expects more or less the same measurements at 17:00 today as it observed at 17:00 yesterday.)
+**Anomaly detection** is a [monitor]({% link soda-sql/documentation/glossary.md %}#monitor) **Evaluation Type** powered by a machine learning algorithm that works with [measurements]({% link soda-sql/documentation/glossary.md %}#measurement) that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalous measurements in time-series data. ("Seasonality" is a common pattern of time-series data and translates as "something cyclical irrespecitve of the general direction of the data --the trend. For example, the number of orders that occur on your platform might show a clear drop during the weekend or peak during the holiday season, irrespecitve of whether your platform is growing or not).
 
 ![anomaly-detection](/assets/images/anomaly-detection.png){:height="600px" width="600px"}
 
-The algorithm that this evaluation type uses automatically adapts to your data. It learns how your data generally behaves over time to build a mental model of data patterns, then compares actual measurements to that model. If the two disagree, the algorithm identifies the actual measurement an anomaly and calculates:<br />
+The algorithm automatically adapts to your data. It learns how your data generally behaves over time to build a mental model of data patterns, then compares actual measurements to that model. If the two disagree, the algorithm identifies the actual measurement as an anomaly and calculates:<br />
 
-a. the certainty of the anomaly, or how likely it is that the measurement is abnormal, and <br />
-b. the size of the anomaly, or how far the measurement deviates from the expected value. 
+a. the certainty of the algorithm's mental model, or how well it knows your data, and <br />
+b. the size of the anomaly, or how far the measurement deviates from the expected value.
 
 Soda Cloud uses the certainty and size calculations to derive the thresholds for triggering alerts: 
 * a large, certain anomaly triggers a **critical alert** 
@@ -41,3 +41,4 @@ Currently, Soda's time-series anomaly detection uses the <a href=""https://faceb
 - Learn how to [Create monitors and alerts]({% link soda-sql/documentation/monitors.md %}).
 - <a href="https://cloud.soda.io/signup" target="_blank"> Sign up for Soda Cloud</a> and [connect your account to Soda SQL]({% link soda-sql/documentation/connect_to_cloud.md %}).
 - Read more about [How Soda SQL works]({% link soda-sql/documentation/concepts.md %}).
+- Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

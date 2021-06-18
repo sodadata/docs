@@ -7,6 +7,8 @@ nav_order: 15
 
 # Troubleshoot
 
+Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 ## Install and upgrade
 
 {% include troubleshoot-install.md %}
@@ -22,3 +24,4 @@ nav_order: 15
 
 {% include troubleshoot-warehouses.md %}
 <br />
+

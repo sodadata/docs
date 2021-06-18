@@ -17,12 +17,14 @@
     page: soda-sql/documentation/data-monitoring.md
   - subtitle: Soda SQL CLI commands
     page: soda-sql/documentation/cli.md
+  - subtitle: Scans
+    page: soda-sql/documentation/scan.md
   - subtitle: Warehouse YAML
     page: soda-sql/documentation/warehouse.md
   - subtitle: Set warehouse configuration
     page: soda-sql/documentation/warehouse_types.md
   - subtitle: Scan YAML
-    page: soda-sql/documentation/scan.md
+    page: soda-sql/documentation/scan-yaml.md
   - subtitle: Metrics
     page: soda-sql/documentation/sql_metrics.md
   - subtitle: Define tests

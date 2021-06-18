@@ -162,6 +162,7 @@ $ docker volume rm soda_sql_tutorial_postgres
 
 ## Go further
 
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Consult [Configure Soda SQL]({% link soda-sql/getting-started/configure.md %}) for details on setting up a non-PostgreSQL version of Soda SQL.
 * Learn more about [How Soda SQL works]({% link soda-sql/documentation/concepts.md %}).
 * Learn more about the [scan YAML file]({% link soda-sql/documentation/scan.md %}) and how to [run scans]({% link soda-sql/documentation/scan.md %}#run-a-scan).
