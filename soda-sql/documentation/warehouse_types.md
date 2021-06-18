@@ -207,7 +207,7 @@ connection:
 ```yaml
 name: my_snowflake_project
 connection:
-    warehouse: snowflake
+    type: snowflake
     username: env_var(SNOWFLAKE_USERNAME)
     password: 
     database: 
@@ -222,7 +222,7 @@ connection:
 
 | Property | Required | Notes |
 | --------  | -------- | -----|
-| warehouse  | required |  The name of your Snowflake virtual warehouse. |
+| type  | required |  The name of your Snowflake virtual warehouse. |
 | username | required | Use environment variables to retrieve this value securely. |
 | password | optional | Use environment variables to retrieve this value securely using `env_var(SNOWFLAKE_PASSWORD)`. Alternatively, authenticate using `private_key`, `private_key_passphrase`, or `private-key-path`. |
 | database | optional |  |
