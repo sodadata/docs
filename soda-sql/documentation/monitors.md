@@ -18,7 +18,7 @@ Further, you can use monitors to track data quality over time. Soda Cloud stores
 
 1. Create a free Soda Cloud account at [cloud.soda.io/signup](https://cloud.soda.io/signup).
 2. [Install Soda SQL]({% link soda-sql/getting-started/installation.md %}) in your local or development environment. Soda SQL executes the scans, then pushes the results of its scans to your Soda Cloud account.
-3. Use Soda SQL to [analyze]({% link soda-sql/documentation/scan.md %}#create-a-scan-yaml-file) the tables in your warehouse and [run your first scan]({% link soda-sql/documentation/scan.md %}#run-a-scan).
+3. Use Soda SQL to [analyze]({% link soda-sql/documentation/scan-yaml.md %}#create-a-scan-yaml-file) the tables in your warehouse and [run your first scan]({% link soda-sql/documentation/scan.md %}#run-a-scan).
 4. [Connect]({% link soda-sql/documentation/connect_to_cloud.md %}) Soda SQL to your Soda Cloud account.
 5. (Optional) [Integrate with Slack]({% link soda-sql/documentation/integrate-slack.md %}) to enable Soda Cloud to send Slack notifications to your team.
 

@@ -38,7 +38,9 @@ Currently, Soda's time-series anomaly detection uses the <a href=""https://faceb
 -->
 
 ## Go further
+
 - Learn how to [Create monitors and alerts]({% link soda-sql/documentation/monitors.md %}).
 - <a href="https://cloud.soda.io/signup" target="_blank"> Sign up for Soda Cloud</a> and [connect your account to Soda SQL]({% link soda-sql/documentation/connect_to_cloud.md %}).
+- Learn more about viewing [failed rows]({% link soda-sql/documentation/failed-rows.md %}) in Soda Cloud.
 - Read more about [How Soda SQL works]({% link soda-sql/documentation/concepts.md %}).
 - Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

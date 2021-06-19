@@ -31,7 +31,7 @@ Define a filter in the first step of the guide to **Create a monitor**. Use the 
 <br />
 #### Soda SQL
 
-1. Open the [scan YAML]({% link soda-sql/documentation/scan.md %}) file associated with the table on which you want to run filtered scans. The scan YAML files are usually located in the [warehouse directory]({% link soda-sql/documentation/glossary.md %}#warehouse-directory) of your Soda SQL project.
+1. Open the [scan YAML]({% link soda-sql/documentation/scan-yaml.md %}) file associated with the table on which you want to run filtered scans. The scan YAML files are usually located in the [warehouse directory]({% link soda-sql/documentation/glossary.md %}#warehouse-directory) of your Soda SQL project.
 2. To the file, add a filter configuration key as per the following example. Be sure to use quotes for input that is in text format.{% raw %}
 ```yaml
 table_name: CUSTOMER_TRANSACTIONS
@@ -79,6 +79,6 @@ if scan_result.has_test_failures():
 
 ## Go further
 
-* Learn more about configuring your [scan YAML]({% link soda-sql/documentation/scan.md %}) file.
+* Learn more about configuring your [scan YAML]({% link soda-sql/documentation/scan-yaml.md %}) file.
 * Learn more about [how Soda SQL works]({% link soda-sql/documentation/concepts.md %}) file.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

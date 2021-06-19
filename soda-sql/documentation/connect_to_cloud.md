@@ -44,7 +44,7 @@ $ soda scan warehouse.yml tables/[dbtablename].yml
 ## Go further
 
 * Learn how to [create monitors and alerts]({% link soda-sql/documentation/monitors.md %}).
+* Learn more about viewing [failed rows]({% link soda-sql/documentation/failed-rows.md %}) in Soda Cloud.
 * Learn more about [Soda Cloud architecture]({% link soda-sql/documentation/soda-cloud-architecture.md %}).
-* Learn more about the [warehouse yaml]({% link soda-sql/documentation/warehouse.md %}) file.
-* Learn more about the [anatomy of a scan]({% link soda-sql/documentation/scan.md %}#anatomy-of-the-scan-yaml-file)
+* Learn more about the [anatomy of a scan]({% link soda-sql/documentation/scan-yaml.md %}#anatomy-of-the-scan-yaml-file)
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

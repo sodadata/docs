@@ -7,7 +7,7 @@ nav_order: 6
 
 # Metrics
 
-A **metric** is a property of the data in your database. A **measurement** is the value for a metric that Soda SQL obtains during a scan. For example, in `row_count = 5`, `row_count` is the metric and `5` is the measurement. The following sections detail the configuration for metrics you can customize in your [scan YAML file]({% link soda-sql/documentation/scan.md %}).
+A **metric** is a property of the data in your database. A **measurement** is the value for a metric that Soda SQL obtains during a scan. For example, in `row_count = 5`, `row_count` is the metric and `5` is the measurement. The following sections detail the configuration for metrics you can customize in your [scan YAML file]({% link soda-sql/documentation/scan-yaml.md %}).
 <br />
 <br />
 
@@ -413,7 +413,7 @@ WHERE country = 'US'
 
 * Reference the [Data types]({% link soda-sql/documentation/supported-data-types.md %}) that Soda SQL supports when it scans columns.
 * Learn [How Soda SQL works]({% link soda-sql/documentation/concepts.md %}).
-* Learn more about the [Scan YAML]({% link soda-sql/documentation/scan.md %}) file.
+* Learn more about the [Scan YAML]({% link soda-sql/documentation/scan-yaml.md %}) file.
 * Learn more about configuring [tests]({% link soda-sql/documentation/tests.md %}).
 * Learn how to apply [filters]({% link soda-sql/documentation/filtering.md %}) to your scan.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

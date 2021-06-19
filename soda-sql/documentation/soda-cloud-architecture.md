@@ -21,7 +21,7 @@ Beyond creating them, you can use monitors to track data quality over time. Soda
 
 * Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup).
 * [Connect Soda SQL to Soda Cloud]({% link soda-sql/documentation/connect_to_cloud.md %}).
-* Learn more about [How Soda SQL works]({% link soda-sql/documentation/concepts.md %}).
+* Learn more about viewing [failed rows]({% link soda-sql/documentation/failed-rows.md %}) in Soda Cloud.
 * Learn more about [Soda SQL scans]({% link soda-sql/documentation/scan.md %}).
 * Learn more about [Soda SQL tests]({% link soda-sql/documentation/tests.md %}) and [Soda Cloud monitors and alerts]({% link soda-sql/documentation/monitors.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

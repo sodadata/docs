@@ -7,7 +7,7 @@ parent: Examples
 # Example tests by metric
 
 Refer to [Metrics]({% link soda-sql/documentation/sql_metrics.md %}) for configuration details.<br />
-Refer to [Scan YAML]({% link soda-sql/documentation/scan.md %}#anatomy-of-the-scan-yaml-file) for details on the anatomy of a scan YAML file.
+Refer to [Scan YAML]({% link soda-sql/documentation/scan-yaml.md %}#anatomy-of-the-scan-yaml-file) for details on the anatomy of a scan YAML file.
 
 [avg]({% link soda-sql/examples/examples-by-metric.md %}#avg)<br />
 [avg-length]({% link soda-sql/examples/examples-by-metric.md %}#avg-length)<br />

@@ -9,7 +9,7 @@ nav_order: 2
 
 | Command               | Description |
 | --------------------- | ----------- |
-| `soda analyze` | Analyzes the contents of your warehouse and automatically prepares a scan YAML file for each table. Soda SQL puts the YAML files in the `/tables` directory inside the warehouse directory. See [Create a scan YAML file]({% link soda-sql/documentation/scan.md %}#create-a-scan-yaml-file) for details.|
+| `soda analyze` | Analyzes the contents of your warehouse and automatically prepares a scan YAML file for each table. Soda SQL puts the YAML files in the `/tables` directory inside the warehouse directory. See [Create a scan YAML file]({% link soda-sql/documentation/scan-yaml.md %}#create-a-scan-yaml-file) for details.|
 | `soda create yourdatawarehouse` | Creates a new `warehouse.yml` file and prepares credentials in your `~/.soda/env_vars.yml`. Soda SQL does not overwrite or remove and existing environment variables, it only adds new. See [Create a warehouse YAML file]({% link soda-sql/documentation/warehouse.md %}#create-a-warehouse-yaml-file) for details. |
 | `soda scan` | Uses the configurations in your scan YAML file to prepare, then run SQL queries against the data in your warehouse. See [Run a scan]({% link soda-sql/documentation/scan.md %}#run-a-scan) for details. |
 

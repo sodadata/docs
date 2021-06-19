@@ -103,7 +103,7 @@ The table below describes all of the top level configuration keys you can use to
 
 ## Go further
 
-* Learn how to [run scans]({% link soda-sql/documentation/scan.md %}).
+* Learn how to [run scans]({% link soda-sql/documentation/scan.md %}#run-a-scan).
 * Learn more about the [warehouse YAML]({% link soda-sql/documentation/warehouse.md %}) file.
 * Learn how to configure [metrics]({% link soda-sql/documentation/sql_metrics.md %}) in your YAML files.
 * Learn more about configuring [tests]({% link soda-sql/documentation/tests.md %}).

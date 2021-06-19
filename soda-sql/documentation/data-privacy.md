@@ -18,6 +18,6 @@ Soda Cloud does store the following:
 * aggregated metrics, such as averages 
 * samples and failed rows, if you explicitly set up your configuration to send this data to Soda Cloud
 
-If you are working with [sensitive data](https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/legal-grounds-processing-data/sensitive-data/what-personal-data-considered-sensitive_en) that must not leave your organisation's network, do not enable the sample data and failed rows features for Soda SQL scans. Refer to [Scan YAML]({% link soda-sql/documentation/scan.md %}#scan-yaml-configuration-keys) for information on sample data.
+If you are working with [sensitive data](https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/legal-grounds-processing-data/sensitive-data/what-personal-data-considered-sensitive_en) that must not leave your organisation's network, do not enable the sample data and failed rows features for Soda SQL scans. Refer to [Scan YAML]({% link soda-sql/documentation/scan-yaml.md %}#scan-yaml-configuration-keys) for information on sample data.
 
 Read more about Soda's [Privacy Policy](https://www.soda.io/privacy-policy).

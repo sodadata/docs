@@ -12,7 +12,7 @@ To illustrate how to use Soda SQL to test the uniqueness of data, imagine an e-c
 
 ## Test for duplicates
 
-The company needs to make sure that each individual shipment is associated with a unique identifier for tracking purposes. To ensure that `shipment_id` is not accidentally duplicated in their fulfillment system, a Data Engineer could use Soda SQL to test for duplicates. To do so, the engineer defines a [test]({% link soda-sql/documentation/glossary.md %}#test) in the [scan YAML file]({% link soda-sql/documentation/scan.md %}) associated with the table that contains the `shipment_id` data.
+The company needs to make sure that each individual shipment is associated with a unique identifier for tracking purposes. To ensure that `shipment_id` is not accidentally duplicated in their fulfillment system, a Data Engineer could use Soda SQL to test for duplicates. To do so, the engineer defines a [test]({% link soda-sql/documentation/glossary.md %}#test) in the [scan YAML file]({% link soda-sql/documentation/scan-yaml.md %}) associated with the table that contains the `shipment_id` data.
 
 Scan YAML:
 

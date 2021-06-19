@@ -12,7 +12,7 @@ nav_order: 18
 A setting that you configure in a Soda Cloud monitor by specifying key:value thresholds which, if exceeded, trigger a notification. See also: [notification](#notification).
 
 ### analyze
-A Soda SQL CLI command that sifts through the contents of your database and automatically prepares a scan YAML file for each table. See [Create a scan YAML file]({% link soda-sql/documentation/scan.md %}#create-a-scan-yaml-file).
+A Soda SQL CLI command that sifts through the contents of your database and automatically prepares a scan YAML file for each table. See [Create a scan YAML file]({% link soda-sql/documentation/scan-yaml.md %}#create-a-scan-yaml-file).
 
 ### column
 A column in a table in your warehouse.
@@ -24,7 +24,7 @@ The key in the key-value pair that you use to define what qualifies as a valid v
 A property of the data of a single column in your database. Use a column metric to define tests that apply to specific columns in a table during a scan. See [Column metrics]({% link soda-sql/documentation/sql_metrics.md %}#column-metrics).
 
 ### configuration key
-The key in the key-value pair that you use to define configuration in your scan YAML file. See [Scan YAML configuration keys]({% link soda-sql/documentation/scan.md %}#scan-yaml-configuration-keys).
+The key in the key-value pair that you use to define configuration in your scan YAML file. See [Scan YAML configuration keys]({% link soda-sql/documentation/scan-yaml.md %}#scan-yaml-configuration-keys).
 
 ### create
 A Soda SQL CLI command that creates a warehouse directory.
@@ -53,7 +53,7 @@ The value for a metric that Soda SQL obtains during a scan. For example, in `row
 A property of the data in your database. See [Metrics]({% link soda-sql/documentation/sql_metrics.md %}).
 
 ### monitor
-A set of details you define in Soda Cloud which Soda SQL uses when it runs a scan. For a new monitor, you define: a dataset and column against which to execute a test, a test, an alert, a notification, an owner, and a description. See [Scan]({% link soda-sql/documentation/scan.md %}).
+A set of details you define in Soda Cloud which Soda SQL uses when it runs a scan. For a new monitor, you define: a dataset and column against which to execute a test, a test, an alert, a notification, an owner, and a description. See [Scans]({% link soda-sql/documentation/scan.md %}).
 
 ### notification
 A setting you configure in Soda Cloud that defines whom to notify when a data issue triggers an alert. See also: [alert](#alert).
@@ -62,7 +62,7 @@ A setting you configure in Soda Cloud that defines whom to notify when a data is
 A Soda SQL CLI command that executes tests to extract information about data in a data source.
 
 ### scan YAML
-The file in which you configure scan metrics and tests. Soda SQL uses the input from this file to prepare, then run SQL queries against your data. See [Scan YAML]({% link soda-sql/documentation/scan.md %}).
+The file in which you configure scan metrics and tests. Soda SQL uses the input from this file to prepare, then run SQL queries against your data. See [Scan YAML]({% link soda-sql/documentation/scan-yaml.md %}).
 
 ### Soda Cloud
 A free, web application that enables you to examine the results of Soda SQL scans and create monitors and alerts. To use Soda Cloud, you must set up and connect Soda SQL to your Soda cloud account. Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup) then [connect Soda SQL to Soda Cloud]({% link soda-sql/documentation/connect_to_cloud.md %}).
