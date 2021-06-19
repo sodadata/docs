@@ -51,7 +51,7 @@ soda_sql_tutorial:
 
 To **define** the data quality tests that Soda SQL runs against a table in your warehouse, you use the scan YAML files that Soda SQL creates when you run the `soda analyze` CLI command. Soda SQL uses the Warehouse YAML file to connect to your warehouse and analyze the tables in it. For every table that exists, Soda SQL creates a corresponding scan YAML file and automatically populates it with tests it deems relevant for your data. You can keep these default tests intact, or you can adjust them or add more tests to fine-tune your search for "bad" data.
 
-For example, you can define tests that look for things like, non-UUID entries in the id column of a table, or zero values in a commission percentage column. See [Scan YAML]({% link soda-sql/documentation/scan.md %}) for much more detail on the contents of this file.
+For example, you can define tests that look for things like, non-UUID entries in the id column of a table, or zero values in a commission percentage column. See [Scan YAML]({% link soda-sql/documentation/scan-yaml.md %}) for much more detail on the contents of this file.
 
 #### Scan YAML example
 ```yaml
@@ -104,14 +104,14 @@ Additionally, you can integrate Soda SQL with a **Soda Cloud** account. This fre
 Though you do not have to set up and ingrate a Soda Cloud account in order to use Soda SQL, the web app serves to complement the CLI tool, giving you a non-CLI method of examining data quality. Use Soda Cloud to:
 
 - collaborate with team members to review details of scan results that can help you to diagnose data issues
-- use monitors to view stored [scan output]({% link soda-sql/documentation/scan.md %}#scan-output) as a line graph that represents the volume of failed tests in each scan
+- use monitors to view stored [scan output]({% link soda-sql/documentation/scan.md %}#scan-output-in-soda-cloud) as a line graph that represents the volume of failed tests in each scan
 - empower others to [set quality thresholds]({% link soda-sql/documentation/monitors.md %}) that define "good" data
 - set up and [send alert notifications]({% link soda-sql/documentation/monitors.md %}) when "bad" data enters your data pipeline
 
 To connect Soda SQL to Soda Cloud, you create API keys in your Soda Cloud account and configure them as connection credentials in your Warehouse and env_vars YAML files. See [Connect to Soda Cloud]({% link soda-sql/documentation/connect_to_cloud.md %}) for details.
 
 ## Go further
-* Learn more about the contents of the [Scan YAML]({% link soda-sql/documentation/scan.md %}) file.
+* Learn more about the contents of the [Scan YAML]({% link soda-sql/documentation/scan-yaml.md %}) file.
 * Learn more about the [Metrics]({% link soda-sql/documentation/sql_metrics.md %}) you can use to define [Tests]({% link soda-sql/documentation/tests.md %}).
 * Learn how to [Connect to Soda Cloud]({% link soda-sql/documentation/connect_to_cloud.md %}).
 * See how to prepare [programmatic scans]({% link soda-sql/documentation/programmatic_scan.md %}) of your data.

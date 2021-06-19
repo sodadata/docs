@@ -92,5 +92,5 @@ For example, if you use you Google Cloud Platform, you can [set runtime environm
 
 * Set the [warehouse configuration parameters]({% link soda-sql/documentation/warehouse_types.md %}) for your type of database.
 * Learn more about [How Soda SQL works]({% link soda-sql/documentation/concepts.md %}).
-* Learn more about the [scan YAML]({% link soda-sql/documentation/scan.md %}) file.
+* Learn more about the [scan YAML]({% link soda-sql/documentation/scan-yaml.md %}) file.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

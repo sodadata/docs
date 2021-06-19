@@ -33,6 +33,10 @@
     page: soda-sql/documentation/scan-different-datasets.md
   - subtitle: Apply filters
     page: soda-sql/documentation/filtering.md
+  - subtitle: Examine failed rows
+    page: soda-sql/documentation/failed-rows.md
+  - subtitle: Use samples
+    page: soda-sql/documentation/samples.md
   - subtitle: Configure programmatic scans
     page: soda-sql/documentation/programmatic_scan.md
   - subtitle: Configure orchestrated scans

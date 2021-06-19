@@ -11,13 +11,13 @@ A **test** is a check that Soda SQL performs when it scans a table in your wareh
 
 As a result of a scan, each test either passes or fails. When a test fails, it means that a property of the data in your table did not match the test parameters you defined. In other words, any test that returns `true` during a Soda SQL scan passes; any test that returns `false`, fails.
 
-The **scan results** appear in your command-line interface (CLI). The results include an exit code which is an indicator of the test results: `0` means all tests passed; a non-zero value means one or more tests have failed.  See [Scan output]({% link soda-sql/documentation/scan.md %}#scan-output) for details.
+The **scan results** appear in your command-line interface (CLI). The results include an exit code which is an indicator of the test results: `0` means all tests passed; a non-zero value means one or more tests have failed.  See [Scan output in Soda SQL]({% link soda-sql/documentation/scan.md %}#scan-output-in-soda-sql) for details.
 
 **Soda Cloud** refers to tests as **monitors**. Refer to [Create monitors and alerts]({% link soda-sql/documentation/monitors.md %}) to learn how to define a monitor using Soda Cloud.
 
 ## Define tests using metrics
 
-You define your tests in your [scan YAML file]({% link soda-sql/documentation/scan.md %}) which is associated with a specific table in your database. You can write tests using **[default metrics]({% link soda-sql/documentation/sql_metrics.md %})** that Soda SQL applies to an entire table (table metrics), or to individual columns you identify (column metrics). You can also write tests using **[custom metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics)** (SQL metrics) that you can apply to an entire table or individual columns. See [example tests]({% link soda-sql/examples/examples-by-metric.md %}) that use each default metric.
+You define your tests in your [scan YAML file]({% link soda-sql/documentation/scan-yaml.md %}) which is associated with a specific table in your database. You can write tests using **[default metrics]({% link soda-sql/documentation/sql_metrics.md %})** that Soda SQL applies to an entire table (table metrics), or to individual columns you identify (column metrics). You can also write tests using **[custom metrics]({% link soda-sql/documentation/sql_metrics.md %}#sql-metrics)** (SQL metrics) that you can apply to an entire table or individual columns. See [example tests]({% link soda-sql/examples/examples-by-metric.md %}) that use each default metric.
 
 Regardless of where it applies, each test is generally comprised of three parts:
 

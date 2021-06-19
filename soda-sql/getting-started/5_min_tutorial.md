@@ -77,7 +77,7 @@ Output:
 
 ## Prepare default tests
 
-1. Use the `soda analyze` command to get Soda SQL to sift through the contents of your warehouse and automatically prepare a scan YAML file for each table. Soda SQL puts the YAML files in a new `/tables` directory in the warehouse directory you created. Read more about [scan YAML]({% link soda-sql/documentation/scan.md %}create-a-scan-yaml-file) files.<br />
+1. Use the `soda analyze` command to get Soda SQL to sift through the contents of your warehouse and automatically prepare a scan YAML file for each table. Soda SQL puts the YAML files in a new `/tables` directory in the warehouse directory you created. Read more about [scan YAML]({% link soda-sql/documentation/scan-yaml.md %}) files.<br />
 <br />
 Command:
 ```shell
@@ -107,7 +107,7 @@ cat ./tables/demodata.yml
 ```
 Output:<br />
 ![tutorial-output](/assets/images/tutorial-output.png){:height="340px" width="340px"}
-3. Note the three tests that Soda SQL configured in `demodata.yml`. When it created this file, Soda SQL pre-populated it with the `test` and `metric` configurations it deemed useful based on the data in the table it analyzed. Read more about the [Anatomy of the scan YAML file]({% link soda-sql/documentation/scan.md %}#anatomy-of-the-scan-yaml-file).
+3. Note the three tests that Soda SQL configured in `demodata.yml`. When it created this file, Soda SQL pre-populated it with the `test` and `metric` configurations it deemed useful based on the data in the table it analyzed. Read more about the [Anatomy of the scan YAML file]({% link soda-sql/documentation/scan-yaml.md %}#anatomy-of-the-scan-yaml-file).
 
 ## Run a scan
 
@@ -165,6 +165,6 @@ $ docker volume rm soda_sql_tutorial_postgres
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Consult [Configure Soda SQL]({% link soda-sql/getting-started/configure.md %}) for details on setting up a non-PostgreSQL version of Soda SQL.
 * Learn more about [How Soda SQL works]({% link soda-sql/documentation/concepts.md %}).
-* Learn more about the [scan YAML file]({% link soda-sql/documentation/scan.md %}) and how to [run scans]({% link soda-sql/documentation/scan.md %}#run-a-scan).
+* Learn more about the [scan YAML file]({% link soda-sql/documentation/scan-yaml.md %}) and how to [run scans]({% link soda-sql/documentation/scan.md %}#run-a-scan).
 * Learn more about configuring [tests]({% link soda-sql/documentation/tests.md %}) and [metrics]({% link soda-sql/documentation/sql_metrics.md %}).
 * Configure your warehouse YAML to [connect to your warehouse]({% link soda-sql/documentation/warehouse_types.md %}).

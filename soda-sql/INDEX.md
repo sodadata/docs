@@ -16,7 +16,7 @@ Soda SQL is an open-source command-line tool. It utilizes user-defined input to 
 <br />
 
 [Quick start tutorial](https://docs.soda.io/soda-sql/getting-started/5_min_tutorial.html)<br />
-<a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>
+<a href="http://community.soda.io/slack" target="_blank"> Join the Soda community on Slack</a>!
 
 ## Test your data
 

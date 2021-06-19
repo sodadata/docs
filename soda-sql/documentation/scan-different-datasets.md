@@ -43,7 +43,7 @@ connection:
   database: prod
   schema: public
 ```
-2. Prepare a [scan YAML file]({% link soda-sql/documentation/scan.md %}) to define all the tests you wish to run against your datasets. See [Define tests]({% link soda-sql/documentation/tests.md %}) for details.
+2. Prepare a [scan YAML file]({% link soda-sql/documentation/scan-yaml.md %}) to define all the tests you wish to run against your datasets. See [Define tests]({% link soda-sql/documentation/tests.md %}) for details.
 3. Run separate Soda SQL scans against each dataset by specifying which warehouse YAML to scan and using the same scan YAML file. For example:
 ```shell
 soda scan warehouse_postgres_dev.yml tables/my_table_scan.yml 
@@ -54,7 +54,7 @@ soda scan warehouse_postgres_prod.yml tables/my_table_scan.yml
 
 Use a single scan YAML file to run tests on different tables in your warehouse.
 
-Prepare one [scan YAML file]({% link soda-sql/documentation/scan.md %}) to define the tests you wish to apply against multiple tables. Use custom metrics to write SQL queries and subqueries that run against multiple tables. When you run a scan, Soda SQL uses your SQL queries to query data in the tables you specified in your scan YAML file. 
+Prepare one [scan YAML file]({% link soda-sql/documentation/scan-yaml.md %}) to define the tests you wish to apply against multiple tables. Use custom metrics to write SQL queries and subqueries that run against multiple tables. When you run a scan, Soda SQL uses your SQL queries to query data in the tables you specified in your scan YAML file. 
 
 Example coming soon.
 
