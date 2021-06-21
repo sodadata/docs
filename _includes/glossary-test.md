@@ -1,0 +1,1 @@
+A Python expression that, during a scan, checks metrics to see if they match the parameters defined for a measurement. As a result of a scan, a test either passes or fails. See [Tests]({% link soda-sql/tests.md %}).

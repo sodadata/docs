@@ -1,0 +1,1 @@
+A Soda SQL CLI command that executes tests to extract information about data in a data source.

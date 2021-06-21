@@ -11,6 +11,8 @@
     page: soda/data-monitoring.md
   - subtitle: Scans
     page: soda/scan.md
+  - subtitle: Common terms
+    page: soda/common-terms.md
 
 - title: Soda SQL
   page: soda-sql/concepts.md

@@ -1,0 +1,1 @@
+A set of details you define in Soda Cloud which Soda SQL uses when it runs a scan. Sometimes referred to in other systems as a "data quality rule". <br /> For a new monitor, you define: a dataset and column against which to execute a test, a test, an alert, a notification, an owner, and a description. See [Create monitors and alerts]({% link soda-cloud/monitors.md %}).

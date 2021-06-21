@@ -1,0 +1,1 @@
+A Soda SQL CLI command that sifts through the contents of your database and automatically prepares a scan YAML file for each table. See [Create a scan YAML file]({% link soda-sql/scan-yaml.md %}#create-a-scan-yaml-file).
