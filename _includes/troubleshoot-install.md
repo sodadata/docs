@@ -13,7 +13,7 @@ $ pip install --upgrade --no-cache-dir soda-sql-yourdatawarehouse
 <br />
 
 **Problem:** I can't run the `soda` command in my CLI. It returns `command not found: soda`. <br />
-**Solution:** If you followed the instructions to [install Soda SQL]({% link soda-sql/getting-started/installation.md %}) and still received the error, you may need to adjust your `$PATH` variable. 
+**Solution:** If you followed the instructions to [install Soda SQL]({% link soda-sql/installation.md %}) and still received the error, you may need to adjust your `$PATH` variable. 
 1. Run the following command to find the path to your installation of Python, replacing `soda-sql-postgresql` with the install package that matches the type of warehouse you use if not PostgreSQL:<br />
 `pip show soda-sql-postgresql`
 <br /> <br /> The output indicates the Location that looks something like this example:

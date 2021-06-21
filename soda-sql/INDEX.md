@@ -1,8 +1,6 @@
 ---
 layout: default
 title: Get Started
-nav_order: 1
-has_children: true
 permalink: soda-sql/
 ---
 
@@ -15,7 +13,7 @@ permalink: soda-sql/
 Soda SQL is an open-source command-line tool. It utilizes user-defined input to prepare SQL queries that run tests on tables in a data warehouse to find invalid, missing, or unexpected data. When tests fail, they surface "bad" data that you can fix to ensure that downstream analysts are using "good" data to make decisions.
 <br />
 
-[Quick start tutorial](https://docs.soda.io/soda-sql/getting-started/5_min_tutorial.html)<br />
+[Quick start tutorial](../soda-sql/getting-started/5_min_tutorial.html)<br />
 <a href="http://community.soda.io/slack" target="_blank"> Join the Soda community on Slack</a>!
 
 ## Test your data
@@ -32,7 +30,7 @@ If your organization uses data to make decisions, you should always be testing y
 
 ## Use Soda SQL
 
-[Install Soda SQL]({% link soda-sql/getting-started/installation.md %}), then complete three basic tasks to start testing your data: 
+[Install Soda SQL]({% link soda-sql/installation.md %}), then complete three basic tasks to start testing your data: 
 
 1. Create and configure a `warehouse.yml` file so that Soda SQL can connect to your data warehouse. 
 2. Create and configure a `scan.yml` file to define tests for "bad" data. Choose from a list of predefined metrics to define simple tests – is the table empty? – to more complex tests that borrow from SQL query logic.
@@ -40,7 +38,7 @@ If your organization uses data to make decisions, you should always be testing y
 
 ![scan-output-fail](/assets/images/scan-output-fail.png){:height="700px" width="700px"}
 
-[Full configuration instructions](https://docs.soda.io/soda-sql/getting-started/configure.html)
+[Full configuration instructions](../soda-sql/getting-started/configure.html)
 
 
 ## Show me the metrics!
@@ -145,11 +143,11 @@ All is good. No tests failed. Scan took 23.307 seconds
 
 ## Go further
 
-* **See for yourself!** Follow the [Quick start tutorial](https://docs.soda.io/soda-sql/getting-started/5_min_tutorial.html) to see Soda SQL up and running in five minutes.
-* [Install Soda SQL]({% link soda-sql/getting-started/installation.md %}) from your command-line interface.
-* Learn the [Basics of Soda SQL]({% link soda-sql/documentation/concepts.md %}#soda-sql-basics).
-* Use Soda SQL with your [data orchestration tool]({% link soda-sql/documentation/orchestrate_scans.md %}) to automate data monitoring and testing.
-* Use Soda SQL as a stand-alone solution, or [connect to a free Soda Cloud account]({% link soda-sql/documentation/connect_to_cloud.md %}) to use the web app to monitor data quality.
+* See for yourself! Follow the [Quick start tutorial](../soda-sql/getting-started/5_min_tutorial.html) to see Soda SQL up and running in five minutes.
+* [Install Soda SQL]({% link soda-sql/installation.md %}) from your command-line interface.
+* Learn the [Basics of Soda SQL]({% link soda-sql/concepts.md %}#soda-sql-basics).
+* Use Soda SQL with your [data orchestration tool]({% link soda-sql/orchestrate_scans.md %}) to automate data monitoring and testing.
+* Use Soda SQL as a stand-alone solution, or [connect to a free Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}) to use the web app to monitor data quality.
 * Help us make Soda SQL even better! Join our [developer community]({% link soda-sql/community.md %}) and [contribute](https://github.com/sodadata/soda-sql/blob/main/CONTRIBUTING.md).
 
 <br />
@@ -159,6 +157,6 @@ All is good. No tests failed. Scan took 23.307 seconds
 Connect Soda SQL to a free **Soda Cloud** account where you and your team can use the web application to monitor test results and collaborate to keep your data issue-free.
 
 * Set up your free Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup).
-* Soda SQL can run without Soda Cloud, but Soda Cloud Free and Teams editions depend upon Soda SQL! Install Soda SQL, then [connect it to your Soda Cloud Account]({% link soda-sql/documentation/connect_to_cloud.md %}).
-* [Create monitors and alerts]({% link soda-sql/documentation/monitors.md %}) to notify your team about data issues.
-* Learn more about [Soda Cloud architecture]({% link soda-sql/documentation/soda-cloud-architecture.md %}).
+* Soda SQL can run without Soda Cloud, but Soda Cloud Free and Teams editions depend upon Soda SQL! Install Soda SQL, then [connect it to your Soda Cloud Account]({% link soda-cloud/connect_to_cloud.md %}).
+* [Create monitors and alerts]({% link soda-cloud/monitors.md %}) to notify your team about data issues.
+* Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).

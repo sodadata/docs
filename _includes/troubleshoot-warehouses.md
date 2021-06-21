@@ -3,7 +3,7 @@
 <br />
 
 **Problem:**  I use Amazon Athena and I'm having trouble connecting Soda SQL to data in an S3 bucket. <br />
-**Solution:** If you have [followed the instructions]({% link soda-sql/getting-started/configure.md %}#configuration-instructions) to configure your warehouse YAML and have added your AWS access key ID and secret access key to your env_vars YAML file but are still not connecting, you may need to adjust the S3 bucket setup and user profile permissions. 
+**Solution:** If you have [followed the instructions]({% link soda-sql/configure.md %}#configuration-instructions) to configure your warehouse YAML and have added your AWS access key ID and secret access key to your env_vars YAML file but are still not connecting, you may need to adjust the S3 bucket setup and user profile permissions. 
 
 When you connect Soda SQL to Athena to run scans on data in an S3 bucket, Soda SQL uses PyAthena (the Python DB API client for Amazon Athena) to output its scan results to the staging directory in the same S3 bucket. As such, the user profile that Soda SQL uses to connect to Athena (the Athena access keys you configured in your env_vars YAML files) must have write permission to the staging directory. If the user profile doesn't have the correct write permissions, the issue manifests in Soda SQL as a connection error. Instead, as best practice, separate the buckets.
 

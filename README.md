@@ -63,7 +63,7 @@ Good practice:
 - Use includes rather than repeat or re-explain something.
 
 Formatting:
-- Use **bold** for the first time you mention a product name or feature in a document. See [Warehouse YAML]({% link soda-sql/documentation/warehouse.md %}) for an example. Otherwise, use it sparingly. Too much bold font renders the format meaningless.
+- Use **bold** for the first time you mention a product name or feature in a document. See [Warehouse YAML]({% link soda-sql/warehouse.md %}) for an example. Otherwise, use it sparingly. Too much bold font renders the format meaningless.
 - Use *italics* sparingly for emphasis on the negative. For example, "Do *not* share your login credentials."
 - Use sentence case for all titles and headings.
 - Use H1 headings for the page title. Use H2 and H3 as subheadings. Use H4 headings to introduce example code snippets.
@@ -72,7 +72,7 @@ Formatting:
 - Use [numbered lists](https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Tasklists) for procedures or ordered tasks.
 - Use relative links to link to other files or sections in Soda documentation.
 - Use hard-coded links to link to external sources.
-- Liberally include links to the [Glossary]({% link soda-sql/documentation/glossary.md %}), but only link the first instance of a term on a page, not all instances.
+- Liberally include links to the [Glossary]({% link soda/glossary.md %}), but only link the first instance of a term on a page, not all instances.
 
 Content:
 - Categorize your new content according to the following macro groups:
@@ -102,7 +102,7 @@ Add a markdown file of your logically-named include content to the `docs/_includ
 
 Relative links:
 ```
-[warehouse yaml]({% link soda-sql/documentation/warehouse.md %})
+[warehouse yaml]({% link soda-sql/warehouse.md %})
 
 [airflow_bash.py](/../examples/airflow_bash.py)
 ```
@@ -110,7 +110,7 @@ Relative links:
 Link to anchor:
 
 ```
-[warehouse yaml]({% link soda-sql/documentation/warehouse.md %}#to-anchor)
+[warehouse yaml]({% link soda-sql/warehouse.md %}#to-anchor)
 ```
 
 Link to section on same page:

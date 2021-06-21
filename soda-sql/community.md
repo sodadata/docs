@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Community
-nav_order: 99
+parent: Soda SQL
 ---
 
 # Soda SQL community
