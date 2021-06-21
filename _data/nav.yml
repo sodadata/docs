@@ -1,76 +1,86 @@
 - title: Get Started
-  page: soda-sql/getting-started/5_min_tutorial.md
+  page: soda-sql/5_min_tutorial.md
   subcategories:
   - subtitle: Quick start tutorial
-    page: soda-sql/getting-started/5_min_tutorial.md
-  - subtitle: Install Soda SQL
-    page: soda-sql/getting-started/installation.md
-  - subtitle: Configure Soda SQL
-    page: soda-sql/getting-started/configure.md
+    page: soda-sql/5_min_tutorial.md
 
-- title: Documentation
-  page: soda-sql/documentation/concepts.md
+- title: Concepts
+  page: soda/data-monitoring.md
   subcategories:
-  - subtitle: How Soda SQL works
-    page: soda-sql/documentation/concepts.md
   - subtitle: Data monitoring
-    page: soda-sql/documentation/data-monitoring.md
-  - subtitle: Soda SQL CLI commands
-    page: soda-sql/documentation/cli.md
+    page: soda/data-monitoring.md
   - subtitle: Scans
-    page: soda-sql/documentation/scan.md
-  - subtitle: Warehouse YAML
-    page: soda-sql/documentation/warehouse.md
-  - subtitle: Set warehouse configuration
-    page: soda-sql/documentation/warehouse_types.md
-  - subtitle: Scan YAML
-    page: soda-sql/documentation/scan-yaml.md
-  - subtitle: Metrics
-    page: soda-sql/documentation/sql_metrics.md
-  - subtitle: Define tests
-    page: soda-sql/documentation/tests.md
-  - subtitle: Scan multiple datasets or tables
-    page: soda-sql/documentation/scan-different-datasets.md
-  - subtitle: Apply filters
-    page: soda-sql/documentation/filtering.md
-  - subtitle: Examine failed rows
-    page: soda-sql/documentation/failed-rows.md
-  - subtitle: Use samples
-    page: soda-sql/documentation/samples.md
-  - subtitle: Configure programmatic scans
-    page: soda-sql/documentation/programmatic_scan.md
-  - subtitle: Configure orchestrated scans
-    page: soda-sql/documentation/orchestrate_scans.md
-  - subtitle: Soda Cloud Architecture
-    page: soda-sql/documentation/soda-cloud-architecture.md
-  - subtitle: Connect to Soda Cloud
-    page: soda-sql/documentation/connect_to_cloud.md
-  - subtitle: Create monitors and alerts
-    page: soda-sql/documentation/monitors.md
-  - subtitle: Detect anomalies
-    page: soda-sql/documentation/anomaly-detection.md
-  - subtitle: Integrate with Slack
-    page: soda-sql/documentation/integrate-slack.md
-  - subtitle: Troubleshoot
-    page: soda-sql/documentation/troubleshoot.md
-  - subtitle: Data types
-    page: soda-sql/documentation/supported-data-types.md
-  - subtitle: Data security and privacy
-    page: soda-sql/documentation/data-privacy.md
-  - subtitle: Glossary
-    page: soda-sql/documentation/glossary.md
+    page: soda/scan.md
 
-- title: Examples
-  page: soda-sql/examples/examples-by-metric.md
+- title: Soda SQL
+  page: soda-sql/concepts.md
   subcategories:
+  - subtitle: Soda SQL community
+    page: soda-sql/community.md
+  - subtitle: How Soda SQL works
+    page: soda-sql/concepts.md
+  - subtitle: Install Soda SQL
+    page: soda-sql/installation.md
+  - subtitle: Configure Soda SQL
+    page: soda-sql/configure.md
+  - subtitle: Soda SQL CLI commands
+    page: soda-sql/cli.md
+  - subtitle: Warehouse YAML
+    page: soda-sql/warehouse.md
+  - subtitle: Scan YAML
+    page: soda-sql/scan-yaml.md
+  - subtitle: Metrics
+    page: soda-sql/sql_metrics.md
+  - subtitle: Define tests
+    page: soda-sql/tests.md
+  - subtitle: Scan multiple datasets or tables
+    page: soda-sql/scan-different-datasets.md
+  - subtitle: Apply filters
+    page: soda-sql/filtering.md
+  - subtitle: Configure programmatic scans
+    page: soda-sql/programmatic_scan.md
+  - subtitle: Configure orchestrated scans
+    page: soda-sql/orchestrate_scans.md
   - subtitle: Example tests by metric
-    page: soda-sql/examples/examples-by-metric.md
+    page: soda-sql/examples-by-metric.md
   - subtitle: Example tests for missing values
-    page: soda-sql/examples/example-test-missing.md
+    page: soda-sql/example-test-missing.md
   - subtitle: Example tests for unique values
-    page: soda-sql/examples/example-test-unique.md
+    page: soda-sql/example-test-unique.md
   - subtitle: Example tests for valid values
-    page: soda-sql/examples/example-test-valid.md
+    page: soda-sql/example-test-valid.md
 
-- title: Soda SQL community
-  page: soda-sql/community.md
+- title: Soda Cloud
+  page: soda-cloud/soda-cloud-architecture.md
+  subcategories:
+  - subtitle: Soda Cloud Architecture
+    page: soda-cloud/soda-cloud-architecture.md
+  - subtitle: Connect to Soda Cloud
+    page: soda-cloud/connect_to_cloud.md
+  - subtitle: Create monitors and alerts
+    page: soda-cloud/monitors.md
+  - subtitle: Integrate with Slack
+    page: soda-cloud/integrate-slack.md
+  - subtitle: Examine failed rows
+    page: soda-cloud/failed-rows.md
+  - subtitle: Use samples
+    page: soda-cloud/samples.md
+  - subtitle: Detect anomalies
+    page: soda-cloud/anomaly-detection.md
+
+
+- title: Reference
+  page: soda/glossary.md
+  subcategories:
+  - subtitle: Glossary
+    page: soda/glossary.md
+  - subtitle: Data security and privacy
+    page: soda/data-privacy.md
+  - subtitle: Warehouse configuration
+    page: soda/warehouse_types.md
+  - subtitle: Data types
+    page: soda/supported-data-types.md
+  - subtitle: Troubleshoot
+    page: soda/troubleshoot.md
+
+
