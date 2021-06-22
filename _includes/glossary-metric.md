@@ -1,0 +1,1 @@
+A property of the data in your dataset. See [Metrics]({% link soda-sql/sql_metrics.md %}).

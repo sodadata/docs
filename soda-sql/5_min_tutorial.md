@@ -109,6 +109,10 @@ Output:<br />
 ![tutorial-output](/assets/images/tutorial-output.png){:height="340px" width="340px"}
 3. Note the three tests that Soda SQL configured in `demodata.yml`. When it created this file, Soda SQL pre-populated it with the `test` and `metric` configurations it deemed useful based on the data in the table it analyzed. Read more about the [Anatomy of the scan YAML file]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file).
 
+#### Troubleshoot
+
+If, when you run `soda analyze` you get an an authentication error, check to see if you have another instance of postgres already running on port 5432. If so, try stopping or uninstalling the postgres instance, then run `soda analyze` again. 
+
 ## Run a scan
 
 1. Use the `soda scan` command to run tests against the data in the demodata warehouse. As input, the command requires the name of the warehouse to scan, and the filepath and name of the table in the warehouse. <br />
