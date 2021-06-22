@@ -52,6 +52,9 @@ The file in your local user home directory that stores your warehouse login cred
 ### metric
 {% include glossary-metric.md %}
 
+#### metric store
+The component in Soda Cloud that stores metric measurements.
+
 ### monitor
 {% include glossary-monitor.md %}
 
