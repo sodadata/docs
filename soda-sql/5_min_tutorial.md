@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Quick start tutorial
+title: Quick start for Soda SQL
 parent: Soda SQL
 redirect_from: /soda-sql/getting-started/5_min_tutorial.html
 ---
 
-# Quick start tutorial
+# Quick start tutorial for Soda SQL
 
 Use your command-line interface to **connect** Soda SQL to your database, prepare default **tests** that will surface "bad" data, then run your first **scan** in a few minutes. 
 <br />

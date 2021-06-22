@@ -1,8 +1,10 @@
 - title: Get Started
   page: soda-sql/5_min_tutorial.md
   subcategories:
-  - subtitle: Quick start tutorial
+  - subtitle: Quick start for Soda SQL
     page: soda-sql/5_min_tutorial.md
+  - subtitle: Quick start for Soda Cloud
+    page: soda-cloud/quick-start.md
 
 - title: Concepts
   page: soda/data-monitoring.md
