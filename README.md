@@ -63,7 +63,7 @@ Good practice:
 - Use includes rather than repeat or re-explain something.
 
 Formatting:
-- Use **bold** for the first time you mention a product name or feature in a document. See [Warehouse YAML]({% link soda-sql/warehouse.md %}) for an example. Otherwise, use it sparingly. Too much bold font renders the format meaningless.
+- Use **bold** for the first time you mention a product name or feature in a document or to identify a **Tip:** for using a feature. See [Warehouse YAML]({% link soda-sql/warehouse.md %}) for an example. Otherwise, use it sparingly. Too much bold font renders the format meaningless.
 - Use *italics* sparingly for emphasis on the negative. For example, "Do *not* share your login credentials."
 - Use sentence case for all titles and headings.
 - Use H1 headings for the page title. Use H2 and H3 as subheadings. Use H4 headings to introduce example code snippets.

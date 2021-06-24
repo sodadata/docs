@@ -2,6 +2,7 @@
 layout: default
 title: Quick start for Soda Cloud
 parent: Soda Cloud
+redirect_from: /soda-cloud.html
 ---
 
 # Quick start tutorial for Soda Cloud

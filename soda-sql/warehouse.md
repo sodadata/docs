@@ -17,7 +17,9 @@ A **warehouse** represents a SQL engine or database such as Snowflake, Amazon Re
 
 ## Create a warehouse YAML file
 
-You need to create a warehouse YAML file for every warehouse to which you want to connect. You can create warehouse YAML files manually, but the CLI command `soda create yourwarehousetype` automatically prepares a warehouse YAML file and an env_vars YAML file for you. (Use the env-vars YAML to securely store warehouse login credentials. See [Env_vars YAML](#env_vars-yaml) below.)
+You need to create a warehouse YAML file for every warehouse to which you want to connect. If you're warehouse uses multiple schemas, you need to create one warehouse YAML file per schema and use unique names for each warehouse file.
+
+You can create warehouse YAML files manually, but the CLI command `soda create yourwarehousetype` automatically prepares a warehouse YAML file and an env_vars YAML file for you. (Use the env-vars YAML to securely store warehouse login credentials. See [Env_vars YAML](#env_vars-yaml) below.)
 
 When you execute the `soda create yourwarehousetype` command, you include options that instruct Soda SQL in the creation of the file, and you indicate the type of warehouse, a specification Soda SQL requires. Use `soda create --help` for a list of all available warehouse types and options.
 
@@ -43,7 +45,7 @@ Output:
   | Then run the soda analyze command
 ```
 
-In the above example, Soda SQL created a warehouse YAML file and put it in a **warehouse directory** which is the top directory in your Soda SQL project directory structure. (It puts the env_vars YAML file in your local user home directory.)
+In the above example, Soda SQL created a warehouse YAML file and put it in a **warehouse directory** which is the top directory in your Soda SQL project directory structure. (It put the env_vars YAML file in your local user home directory.)
 
 
 ## Anatomy of the warehouse YAML file
@@ -63,7 +65,7 @@ connection:
 
 Notice that even though the command provided a value for `username`, Soda SQL automatically used `env_var(POSTGRES_USERNAME)` instead. By default, Soda SQL stores database login credentials in an env_vars YAML file so that this sensitive information stays locally stored. See [Env_vars YAML](#env_vars-yaml) below for details.
 
-Each type of warehouse requires different configuration parameters. Refer to [Set warehouse configurations]({% link soda/warehouse_types.md %}) for details that correspond to the type of database you are using.
+Each type of warehouse -- PostgreSQL, Athena, Big Query, etc. -- requires different configuration parameters. Refer to [Set warehouse configurations]({% link soda/warehouse_types.md %}) for details that correspond to the type of warehouse you are using.
 
 
 ## Env_vars YAML file
@@ -90,7 +92,8 @@ For example, if you use you Google Cloud Platform, you can [set runtime environm
 
 ## Go further
 
-* Set the [warehouse configuration parameters]({% link soda/warehouse_types.md %}) for your type of database.
+* Next, run [`soda analyze`]({% link soda-sql/scan-yaml.md %}#create-a-scan-yaml-file) to automatically prepare a scan YAML file for each table in your warehouse.
+* Check the [warehouse configuration parameters]({% link soda/warehouse_types.md %}) for your type of database.
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Learn more about the [scan YAML]({% link soda-sql/scan-yaml.md %}) file.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

@@ -2,6 +2,7 @@
 layout: default
 title: Get Started
 permalink: soda-sql/
+redirect_from: /soda/
 ---
 
 ![soda banner](../assets/images/soda-banner.png){:height="800px" width="800px"}
