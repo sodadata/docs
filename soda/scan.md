@@ -31,7 +31,7 @@ When Soda SQL runs a scan, it performs the following actions:
 
 To allow some databases, such as Snowflake, to cache scan results, the column queries use the same Column Table Expression (CTE). This practice aims to improve overall scan performance.
 
-To test specific portions of data, such as data pertaining to a specific date, you can apply dynamic filters when you scan data in your warehouse. See [Apply filters]({% link soda-sql/filtering.md %}) for instructions.
+To test specific portions of data, such as data pertaining to a specific date, you can apply dynamic filters when you scan data in your warehouse. See [Apply filters]({% link soda-sql/filtering.md %}) for instructions. Further, use the `soda scan --help` command to review optional parameters you can include to customize the scan. 
 
 ## Scan output in Soda SQL
 

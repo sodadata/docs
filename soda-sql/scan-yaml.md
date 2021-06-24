@@ -22,7 +22,7 @@ Instead of laboriously accessing your database and then manually defining SQL qu
 
 You need to create a **scan YAML** file for every table in your [warehouse]({% link soda/glossary.md %}#warehouse) that you want to scan. If you have 20 tables in your warehouse, you need 20 YAML files, each corresponding to a single table.
 
-You can create scan YAML files yourself, but the CLI command `soda analyze` sifts through the contents of your warehouse and automatically prepares a scan YAML file for each table. Soda SQL puts the YAML files in a `/tables` directory in your [warehouse directory]({% link soda/glossary.md %}#warehouse-directory).
+You can create scan YAML files yourself, but the CLI command `soda analyze` sifts through the contents of your warehouse and automatically prepares a scan YAML file for each table. Soda SQL puts the YAML files in a `/tables` directory in your [warehouse directory]({% link soda/glossary.md %}#warehouse-directory). (If you have not already created a warehouse YAML file, refer to the instructions in [Warehouse YAML]({% link soda-sql/warehouse.md %}).)
 
 In your command-line interface, navigate to the directory that contains your `warehouse.yml` file, then execute the following:
 
@@ -58,7 +58,9 @@ WHERE lower(table_name) = 'demodata'
 ```
 In the above example, Soda SQL created a scan YAML file named `demodata.yml` and put it in the `/tables` directory.
 
-If you decide to create your own scan YAML files manually, best practice dictates that you name the YAML file using the same name as the table in your database.
+If you decide to create your own scan YAML files manually, best practice dictates that you name the YAML file using the same name as the table in your warehouse.
+
+**Tip:** Use the `soda analyze --help` command to review optional parameters you can include to customize the analysis. For example, use `soda analyze --include customer` to analyze only the table named `customer` in your warehouse. 
 
 ## Anatomy of the scan YAML file
 
@@ -104,7 +106,7 @@ The table below describes all of the top level configuration keys you can use to
 
 ## Go further
 
-* Learn how to [run scans]({% link soda/scan.md %}#run-a-scan).
+* Next, [run a scan]({% link soda/scan.md %}#run-a-scan) on the data in your warehouse.
 * Learn more about the [warehouse YAML]({% link soda-sql/warehouse.md %}) file.
 * Learn how to configure [metrics]({% link soda-sql/sql_metrics.md %}) in your YAML files.
 * Learn more about configuring [tests]({% link soda-sql/tests.md %}).

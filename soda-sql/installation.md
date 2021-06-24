@@ -78,7 +78,6 @@ pip install soda-sql-yourdatawarehouse -U
 
 ## Go further
 
-* [Configure Soda SQL]({% link soda-sql/5_min_tutorial.md %}).
-* [Run your first scan]({% link soda/scan.md %}#run-a-scan).
+* Next, [configure Soda SQL]({% link soda-sql/5_min_tutorial.md %}) to connect to your warehouse.
 * Learn [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
