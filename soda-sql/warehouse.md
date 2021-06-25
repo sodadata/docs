@@ -17,7 +17,7 @@ A **warehouse** represents a SQL engine or database such as Snowflake, Amazon Re
 
 ## Create a warehouse YAML file
 
-You need to create a warehouse YAML file for every warehouse to which you want to connect. If you're warehouse uses multiple schemas, you need to create one warehouse YAML file per schema and use unique names for each warehouse file.
+You need to create a warehouse YAML file for every warehouse to which you want to connect. If your warehouse uses multiple schemas, you need to create one warehouse YAML file per schema and use unique names for each warehouse file.
 
 You can create warehouse YAML files manually, but the CLI command `soda create yourwarehousetype` automatically prepares a warehouse YAML file and an env_vars YAML file for you. (Use the env-vars YAML to securely store warehouse login credentials. See [Env_vars YAML](#env_vars-yaml) below.)
 
