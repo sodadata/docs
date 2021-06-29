@@ -45,6 +45,8 @@
     page: soda-sql/programmatic_scan.md
   - subtitle: Configure orchestrated scans
     page: soda-sql/orchestrate_scans.md
+  - subtitle: Connect to Soda Cloud
+    page: soda-cloud/connect_to_cloud.md
   - subtitle: Example tests by metric
     page: soda-sql/examples-by-metric.md
   - subtitle: Example tests for missing values
@@ -57,10 +59,10 @@
 - title: Soda Cloud
   page: soda-cloud/soda-cloud-architecture.md
   subcategories:
-  - subtitle: Soda Cloud Architecture
+  - subtitle: Soda Cloud architecture
     page: soda-cloud/soda-cloud-architecture.md
-  - subtitle: Connect to Soda Cloud
-    page: soda-cloud/connect_to_cloud.md
+  - subtitle: Add datasets
+    page: soda-cloud/add-datasets.md
   - subtitle: Create monitors and alerts
     page: soda-cloud/monitors.md
   - subtitle: Integrate with Slack
