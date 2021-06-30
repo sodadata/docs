@@ -17,3 +17,10 @@ Integrate your Slack workspace in your **Soda Cloud** account so that Soda Cloud
 * [Create an alert]({% link soda-cloud/monitors.md %}) to send Slack notifications when a scan surfaces a data issue.
 * [Connect]({% link soda-cloud/connect_to_cloud.md %}) Soda SQL to your Soda Cloud account.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
+<br />
+
+---
+*Last modified on {% last_modified_at %}*
+
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

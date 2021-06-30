@@ -337,3 +337,11 @@ f.register()
 
 - Need help? <a href="http://community.soda.io/slack" target="_blank">Join our Slack community</a> to ask a question.
 - Learn how to configure [programmatic Soda SQL scans]({% link soda-sql/programmatic_scan.md %}).
+
+
+<br />
+
+---
+*Last modified on {% last_modified_at %}*
+
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
