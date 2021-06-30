@@ -7,7 +7,7 @@ redirect_from: /soda-sql/examples/examples-test-unique.html
 
 # Example tests for unique values
 
-Last modified on {% last_modified_at %}.
+*Last modified on {% last_modified_at %}*.
 
 Where your [warehouse]({% link soda/glossary.md %}#warehouse) table contains records that ought to be unique, such as item identifiers, you may wish to test the data to ensure there are no duplicates or that each value is unique.  
 
@@ -162,6 +162,6 @@ Scan output:
 <br />
 
 ---
-Last modified on {% last_modified_at %}
+*Last modified on {% last_modified_at %}*
 
 Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
