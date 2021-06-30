@@ -57,7 +57,7 @@
 - title: Soda Cloud
   page: soda-cloud/soda-cloud-architecture.md
   subcategories:
-  - subtitle: Soda Cloud Architecture
+  - subtitle: Soda Cloud architecture
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Connect to Soda Cloud
     page: soda-cloud/connect_to_cloud.md

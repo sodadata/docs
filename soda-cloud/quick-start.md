@@ -7,7 +7,7 @@ redirect_from: /soda-cloud.html
 
 # Quick start tutorial for Soda Cloud
 
-Sign up for a new Soda Cloud account, then **connect** to Soda SQL, **create a new monitor** that notifies your team when "bad" data surfaces, then **run a scan** to see results in the Soda Cloud web application.
+Sign up for a free Soda Cloud account, then **connect** to Soda SQL, **create a new monitor** that notifies your team when "bad" data surfaces, then **run a scan** to see results in the Soda Cloud web application.
 <br />
 
 ![cloud-tutorial-happy-path](/assets/images/cloud-tutorial-happy-path.png){:height="650px" width="650px"}
@@ -19,7 +19,7 @@ Soda Cloud and Soda SQL work together to help you monitor your data and alert yo
 * **Soda SQL** is an open-source command line tool that does the work of scanning the data in your database. You can use this as a stand-alone tool to scan your data and review the scan results in your command-line interface..
 * **Soda Cloud** is the web application to which Soda SQL pushes the results of its scans. Log in to the free web app to examine the visualized results of Soda SQL scans, view historical scan data, and set up alerts that automatically notify your team when there is an issue with your data. 
 
-1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
+1. If you have not already done so, create a free Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
 2. From your command-line interface (CLI), follow the instructions to [install Soda SQL]({% link soda-sql/installation.md %}) in your local or development environment. 
 3. Follow the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_tutorial.md %}) that uses a demo data source and guides you through configuration and scanning.
 4. Soda SQL uses an API to connect to Soda Cloud. Follow the instructions to [connect Soda SQL to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md%}). When complete, you can see the results of your Soda SQL scan appear as a row in the **Monitor Results** table in Soda Cloud.
