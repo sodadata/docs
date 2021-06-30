@@ -141,3 +141,10 @@ tests:
 * Learn about [How Soda works]({% link soda-sql/concepts.md  %}).
 * Reference the [Data types]({% link soda/supported-data-types.md %}) that Soda SQL supports when it scans columns.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
+<br />
+
+---
+Last modified on {% last_modified_at %}
+
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

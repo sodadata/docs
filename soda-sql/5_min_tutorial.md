@@ -166,8 +166,15 @@ $ docker volume rm soda_sql_tutorial_postgres
 
 ## Go further
 
-* [soda-sql/examples-test-valid.md](https://cloud.soda.io/signup) for a free Soda Cloud account to access visualized scan results and historic scan data.
+* [Sign up](https://cloud.soda.io/signup) for a free Soda Cloud account to access visualized scan results and historic scan data.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Consult [Configure Soda SQL]({% link soda-sql/configure.md %}) for details on setting up a non-PostgreSQL version of Soda SQL.
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Learn more about the [scan YAML file]({% link soda-sql/scan-yaml.md %}) and how to [run scans]({% link soda/scan.md %}#run-a-scan).
+
+<br />
+
+---
+Last modified on {% last_modified_at %}
+
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

@@ -99,3 +99,10 @@ sql_metrics:
 - [Create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
 - Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
 - Learn more about [Soda scans]({% link soda/scan.md %}).
+
+<br />
+
+---
+Last modified on {% last_modified_at %}
+
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

@@ -21,3 +21,10 @@ See [Glossary]({% link soda/glossary.md %}) for a full list of Soda terminology.
 | test | {% include glossary-test.md %} |
 | warehouse | {% include glossary-warehouse.md %} |
 | warehouse YAML | {% include glossary-warehouse-yaml.md %} |
+
+<br />
+
+---
+Last modified on {% last_modified_at %}
+
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
