@@ -95,7 +95,7 @@ sql_metrics:
 
 ## Go further
 
-- <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for Soda Cloud and [connect it to Soda SQL]({% link soda-cloud/connect_to_cloud.md %}).
+- <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a free Soda Cloud account and [connect it to Soda SQL]({% link soda-cloud/connect_to_cloud.md %}).
 - [Create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
 - Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
 - Learn more about [Soda scans]({% link soda/scan.md %}).
