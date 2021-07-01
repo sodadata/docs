@@ -6,12 +6,25 @@ redirect_from: /soda-sql/documentation/samples.html
 ---
 
 # Use samples 
+<!--
+When it scans your data, Soda SQL executes [tests]({% link soda/glossary.md %}#test) that you define in the [scan YAML]({% link soda/glossary.md %}#scan-yaml) file. If you have connected Soda SQL to a [Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}) account, Soda SQL also executes any tests you have defined in [monitors]({% link soda/glossary.md %}#monitor) in Soda Cloud, and it sends all the test results to Soda Cloud. 
 
-When it scans your data, Soda SQL executes [tests]({% link soda/glossary.md %}#test) that you define in the [scan YAML]({% link soda/glossary.md %}#scan-yaml) file. If you have connected Soda SQL to a [Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}) account, Soda SQL sends the results of each test to Soda Cloud where the test results manifest as [monitors]({% link soda/glossary.md %}#monitor). As a Soda Cloud user, you can open a monitor to review the same test results you see in Soda SQL, but you also have access to more information about the result including a chart that shows changes to your data over time, and a table that displays the data in the [rows that failed]({% link soda-cloud/failed-rows.md %}) the test.
+If you have configured Soda SQL to send [failed rows]({% link soda-cloud/failed-rows.md %}) to Soda Cloud, scans of large [datasets]({% link soda/glossary.md %}#dataset) may result in Soda SQL sending great volumes of results to your Soda Cloud account which has the potential to impact performance. In such a case, you may wish to limit the amount of data and metadata that Soda SQL sends to Soda Cloud when it executes a scan. To do so, use **sample metrics**.  
 
-When working with large [datasets]({% link soda/glossary.md %}#dataset), scans may result in Soda SQL sending great volumes of results to your Soda Cloud account. In such a case, you may wish to limit the amount of data and metadata that Soda SQL sends to Soda Cloud when it executes a scan. To do so, use **sample metrics**. 
+![failed-rows](/assets/images/failed-rows.png){:height="650px" width="650px"}
+-->
+When creating new [monitors]({% link soda/glossary.md %}#monitor) in Soda Cloud, you may find it useful to review sample data from your [dataset]({% link soda/glossary.md %}#dataset) to help you determine the kinds of [tests]({% link soda-sql/tests.md %}) to run when Soda SQL scans your data; see the image below. For this reason, you may wish to configure a **sample metric** in Soda SQL.
 
-Add one or more sample metrics to your scan YAML file at the table level as per the following example. The `table_limit` defines the threshold of rows in the table that Soda SQL sends as a sample to Soda Cloud; the `failed_limit` defines the threshold of failed tests Soda SQL sends as a sample to Soda Cloud.
+![sample-data](/assets/images/sample-data.png){:height="650px" width="650px"}
+
+## Add sample metrics
+
+1. Add a `table_limit` sample metric to your scan YAML file at the table level; refer to Scan YAML Example below. <br /> This metric defines the numerical threshold of rows in a dataset that Soda SQL sends to Soda Cloud after it executes a test during a scan. It yields a sample of the data from your dataset in the **Sample Data** tab when you are creating a new monitor; see image above.
+2. Save the changes to your scan YAML file, then run a scan on that dataset. <br />
+`soda scan warehouse.yml tables/orders.yml`
+3. In your Soda Cloud account, navigate to the **Monitors** dashboard. Click the stacked-dots icon to **Create Monitor**. Note that in the first step of the guided monitor creation, you can review sample data from your dataset that Soda SQL collected during its last scan of your dataset.
+
+#### Scan YAML Example
 ```yaml
 table_name: orders
 metrics:
@@ -31,8 +44,10 @@ columns:
     tests:
       - invalid_percentage <= 3
 ```
-<br />
-Using the example scan YAML above, the scan executes both tests against all the data in the dataset, but it only sends a maximum of 50 rows of data and metadata to Soda Cloud for review in its corresponding monitor, where applicable. The snippet below displays the CLI output of the query that counts the rows in the dataset; Soda SQL counts 193 rows but only sends 50 as a sample to Soda Cloud. 
+
+Using the example scan YAML above, the scan executes both tests against all the data in the dataset, but it only sends a maximum of 50 rows of data and metadata to Soda Cloud for review as sample data when creating a new monitor for the `orders` dataset. 
+
+The snippet below displays the CLI output of the query that counts the rows in the dataset; Soda SQL counts 193 rows but only sends 50 as a sample to Soda Cloud. 
 ```shell
   | …
   | Executing SQL query: 
@@ -43,20 +58,15 @@ LIMIT 50;
   | Sent sample orders.sample (50/193) to Soda Cloud
   | …
 ```
-<br />
-
-| Metric | Value type | Description | 
-| ----- | ----------- | ----------- |
-| `table_limit` | integer | Defines the threshold of rows in a dataset that Soda SQL sends to Soda Cloud after it executes a test during a scan. |
-| `failed_limit` | integer | Defines the numerical threshold of rows with data that failed a test that Soda SQL sends to Soda Cloud during a scan. |
 
 
 ## Go further
 
-- Read more about [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
+- Read more about [failed row]({% link soda-cloud/failed-rows.md %}) samples in Soda Cloud.
 - <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a free Soda Cloud account and [connect it to Soda SQL]({% link soda-cloud/connect_to_cloud.md %}).
 - [Create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
 - Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
+- Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />
 
