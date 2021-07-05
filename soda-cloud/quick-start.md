@@ -59,3 +59,10 @@ soda scan warehouse.yml tables/demodata.yml
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Use Soda Cloud to [examine failed rows]({% link soda-cloud/failed-rows.md %}).
 * Use Soda Cloud to automatically [detect anomalies]({% link soda-cloud/anomaly-detection.md %}) in your data.
+
+<br />
+
+---
+*Last modified on {% last_modified_at %}*
+
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

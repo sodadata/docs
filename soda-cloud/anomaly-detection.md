@@ -45,3 +45,10 @@ Currently, Soda's time-series anomaly detection uses the <a href=""https://faceb
 - Learn more about viewing [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 - Read more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 - Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
+<br />
+
+---
+*Last modified on {% last_modified_at %}*
+
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

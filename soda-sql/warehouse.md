@@ -97,3 +97,10 @@ For example, if you use you Google Cloud Platform, you can [set runtime environm
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Learn more about the [scan YAML]({% link soda-sql/scan-yaml.md %}) file.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
+<br />
+
+---
+*Last modified on {% last_modified_at %}*
+
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

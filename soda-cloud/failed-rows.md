@@ -7,25 +7,26 @@ redirect_from: /soda-sql/documentation/failed-rows.html
 
 # Examine failed rows
 
-When a scan in Soda SQL results in a failed test, the CLI output displays information about the test that failed and why.  To offer more insight into the data that failed a test, [Soda Cloud]({% link soda-cloud/soda-cloud-architecture.md %}) displays **failed rows**. 
+When a [scan]({% link soda/glossary.md %}#scan) in Soda SQL results in a failed [test]({% link soda/glossary.md %}#test), the CLI output displays information about the test that failed and why.  To offer more insight into the data that failed a test, [Soda Cloud]({% link soda-cloud/soda-cloud-architecture.md %}) displays **failed rows** in a monitor's history. 
 
-Note: The current implementation of failed rows described below is evolving to better serve user needs.
+Note: The current implementation of failed rows is evolving to better serve user needs.
 <br />
-<br />
+
 
 There are three ways you can configure Soda SQL to send failed rows to Soda Cloud for you to examine:
 
-1. define a sample metric in your scan YAML file
-2. use a missing-value Metric Type in your monitor 
-3. use custom metrics to explicitly send failed rows to Soda Cloud
+1. define a [sample metric](#use-a-sample-metric-to-send-failed-rows) in your scan YAML file
+2. use a [missing-value Metric Type](#use-a-missing-value-metric-type-to-send-failed-rows) in your monitor
+3. use custom metrics to [explicitly send failed rows](#explicitly-send-a-sample-of-failed-rows) to Soda Cloud
 
 ## Use a sample metric to send failed rows
 
-When you define a [sample metric]({% link soda-cloud/samples.md %}) in your scan YAML file, these metrics implicitly demand that Soda SQL sends failed rows of a sample of failed tests to Soda Cloud with the results of the scan. See [Use samples]({% link soda-cloud/samples.md %}).
+Define a `failed_limit` sample metric in your scan YAML file to instruct Soda SQL to send a sample of failed rows to Soda Cloud for any tests that fail during a scan. Refer to the Scan YAML Example below.
 
-As an example, imagine you have defined a test in your [scan YAML]({% link soda/glossary.md %}#scan-yaml) file to make sure that 99% of the values in the `productid` column are correctly formatted as universally unique identifiers (UUID), then you [run a scan]({% link soda/scan.md %}#run-a-scan) from the command line to execute the test on the data in your table.
+For this example, imagine you define a test in your [scan YAML]({% link soda/glossary.md %}#scan-yaml) file to make sure that 99% of the values in the `productid` column are correctly formatted as universally unique identifiers (UUID), then you [run a scan]({% link soda/scan.md %}#run-a-scan) from the command line to execute the test on the data in your table.
 
-Scan YAML file:
+#### Scan YAML Example
+
 ```yaml
 table_name: orders
 metrics:
@@ -77,7 +78,7 @@ If you used one of the following **Metric Types** in a test that you defined in 
 
 ## Explicitly send a sample of failed rows
 
-While the metrics described above implicitly demand that Soda SQL send failed rows to Soda Cloud when a scan results in a failed test, you can use Soda SQL [custom metrics]({% link soda-sql/sql_metrics.md %}#sql-metrics) (also known as SQL Metrics) to explicitly make the demand.
+You can use Soda SQL [custom metrics]({% link soda-sql/sql_metrics.md %}#sql-metrics) (also known as SQL Metrics) to explicitly demand that Soda SQL send failed rows to Soda Cloud when a scan results in a failed test.
 
 In your scan YAML file, use `type: failed_rows` when writing a SQL query to retrieve a sample of failed rows in a dataset. By default, this property collects five rows of data that failed the test defined in the SQL query and displays them in Soda Cloud as failed rows in the monitor that represents the test that failed during a scan. 
 
@@ -97,5 +98,14 @@ sql_metrics:
 
 - <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a free Soda Cloud account and [connect it to Soda SQL]({% link soda-cloud/connect_to_cloud.md %}).
 - [Create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
+- Learn how to [use samples]({% link soda-cloud/samples.md %}) in Soda Cloud.
 - Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
 - Learn more about [Soda scans]({% link soda/scan.md %}).
+- Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
+<br />
+
+---
+*Last modified on {% last_modified_at %}*
+
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

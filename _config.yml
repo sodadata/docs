@@ -12,6 +12,7 @@ theme: just-the-docs
 plugins:
   - jekyll-feed
   - jekyll-redirect-from
+  - jekyll-last-modified-at
 
 logo: /assets/images/soda-logo.svg
 color_scheme: soda
