@@ -9,6 +9,8 @@ redirect_from: /soda-sql/documentation/anomaly-detection.html
 
 In Soda Cloud, you can create a monitor that automatically detects anomalies in your time-series data. 
 
+![onboarding-detect-anomalies](/assets/images/onboarding-detect-anomalies.png){:height="350px" width="350px"}
+
 **Anomaly detection** is a [monitor]({% link soda/glossary.md %}#monitor) **Evaluation Type** powered by a machine learning algorithm that works with [measurements]({% link soda/glossary.md %}#measurement) that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalous measurements in time-series data. ("Seasonality" is a common pattern of time-series data and translates as "something cyclical irrespecitve of the general direction of the data --the trend. For example, the number of orders that occur on your platform might show a clear drop during the weekend or peak during the holiday season, irrespecitve of whether your platform is growing or not).
 
 ![anomaly-detection](/assets/images/anomaly-detection.png){:height="600px" width="600px"}
@@ -43,7 +45,6 @@ Currently, Soda's time-series anomaly detection uses the <a href=""https://faceb
 - <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a free Soda Cloud account and [connect your account to Soda SQL]({% link soda-cloud/connect_to_cloud.md %}).
 - Learn how to [Create monitors and alerts]({% link soda-cloud/monitors.md %}).
 - Learn more about viewing [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
-- Read more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 - Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

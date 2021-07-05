@@ -1,0 +1,2 @@
+1. In Soda Cloud, navigate to **your avatar** > **Organization Settings** > **Integrations**, then follow the guided steps to authorize Soda Cloud to connect to your Slack workspace.
+2. Select the all Slack channels to which you might send notifications when Soda finds an issue with your data, then **Save**.

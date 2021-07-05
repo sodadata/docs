@@ -19,6 +19,8 @@ Soda SQL is a command-line interface (CLI) tool that enables you to scan the dat
 
 ## Compatibility
 
+Use Soda SQL to scan a variety of data warehouses:<br />
+
 {% include compatible-warehouses.md %}
 
 

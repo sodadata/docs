@@ -22,7 +22,7 @@ All the instructions below reference this sample warehouse in the commands.
 
 1. From your command-line interface, execute the following to build a containerized PostgreSQL warehouse. Note that the `-v` option connects to a location on your local drive in which Soda SQL will create your warehouse directory file further in this tutorial.
 ```shell
-$ docker run --name soda_sql_tutorial_db --rm -d \
+docker run --name soda_sql_tutorial_db --rm -d \
     -p 5432:5432 \
     -v soda_sql_tutorial_postgres:/var/lib/postgresql/data:rw \
     -e POSTGRES_USER=sodasql \

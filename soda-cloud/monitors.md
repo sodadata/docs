@@ -9,6 +9,7 @@ redirect_from: /soda-sql/documentation/monitors.html
 
 A **monitor** is a set of details you define in Soda Cloud which Soda SQL uses when it runs a scan. Log in to **Soda Cloud** to create **[monitors]({% link soda/glossary.md %}#monitor)**, and customize **[alerts]({% link soda/glossary.md %}#alert)** that send **[notifications]({% link soda/glossary.md %}#notification)** to your team when a [scan]({% link soda/glossary.md %}#scan) surfaces data issues.
 
+![onboarding-monitors-alerts](/assets/images/onboarding-monitors-alerts.png){:height="350px" width="350px"}
 
 ## Prerequisites
 
@@ -18,12 +19,11 @@ A **monitor** is a set of details you define in Soda Cloud which Soda SQL uses w
 4. [Connect]({% link soda-cloud/connect_to_cloud.md %}) Soda SQL to your Soda Cloud account.
 5. (Optional) [Integrate with Slack]({% link soda-cloud/integrate-slack.md %}) to enable Soda Cloud to send Slack notifications to your team.
 
-
 ## Create a monitor and an alert
 
-For a new monitor, you define several details including which data to test, what test to run, and whom to notify when bad data triggers an alert. 
+For a new monitor, you define several details including which data to test, what tests to run, and whom to notify when bad data triggers an alert. 
 
-In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked dots to **Create Monitor**. Select the type `Metric`, then follow the guided steps to complete the setup. Use the table below for reference when completing the steps.
+In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked dots to **Create Monitor**. Select the type `Metric`, then follow the guided steps to complete the setup. Use the tables below for reference when completing the steps.
 
 #### 1. Dataset
 
@@ -48,6 +48,7 @@ In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked
 <sup>1</sup> Monitors can only use default column metrics, not default table metrics or SQL metrics. See [Metrics]({% link soda-sql/sql_metrics.md %}) for more detail.
 
 #### 3. Notifications
+
 By default, Soda Cloud includes two out-of-the-box email notifications: one for the **Dataset Owner** and one for the **Monitor Owner**, which is you. You can remove or adjust these notifications, or use the search bar to add more.
 
 | Field or Label | Description |
@@ -76,8 +77,8 @@ $ soda scan warehouse.yml tables/yourtablename.yml
 
 ## Go further
 
+* Next step in Soda Cloud Onboarding: [Refine dataset scan schedules]({% link soda-cloud/dataset-scan-schedule.md %})
 * Learn more about [how scans work]({% link soda/scan.md %}#scan-output-in-soda-cloud) with Soda Cloud.
-* Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %})
 * Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 

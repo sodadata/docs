@@ -63,16 +63,23 @@
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Add datasets
     page: soda-cloud/add-datasets.md
-  - subtitle: Create monitors and alerts
-    page: soda-cloud/monitors.md
   - subtitle: Integrate with Slack
     page: soda-cloud/integrate-slack.md
-  - subtitle: Examine failed rows
-    page: soda-cloud/failed-rows.md
-  - subtitle: Use samples
-    page: soda-cloud/samples.md
+  - subtitle: Create monitors and alerts
+    page: soda-cloud/monitors.md
+  - subtitle: Adjust a dataset scan schedule
+    page: soda-cloud/dataset-scan-schedule.md
   - subtitle: Detect anomalies
     page: soda-cloud/anomaly-detection.md
+  - subtitle: Display column metrics
+    page: soda-cloud/display-column-metrics.md
+  - subtitle: Display sample data
+    page: soda-cloud/samples.md
+  - subtitle: Define time partitioning for scans
+    page: soda-cloud/time-partitioning.md
+  - subtitle: Examine failed rows
+    page: soda-cloud/failed-rows.md
+
 
 
 - title: Reference
