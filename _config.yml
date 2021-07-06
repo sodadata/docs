@@ -18,5 +18,7 @@ logo: /assets/images/soda-logo.svg
 color_scheme: soda
 
 aux_links:
-  "Soda SQL on GitHub":
-    - "//github.com/sodadata/soda-sql"
+  "Visit Soda.io":
+    - "//www.soda.io/"
+
+aux_links_new_tab: true
