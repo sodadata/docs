@@ -291,7 +291,7 @@ $code-background-color: #f8f9f9;
         height: 40px;
         padding: 10px 20px;
         align-items: center;
-        width: auto;
+        width: 150px;
         text-align: center;
         border-radius: 20px;
         background-color: #00D891;
@@ -444,13 +444,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-weight: 500 !important;
-    color: #333 !important;
+    color: #8B9092 !important;
 }
 
 b,
 strong {
     font-weight: 600 !important;
-    color: #333;
+    color: #000;
 }
 
 h1,
