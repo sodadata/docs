@@ -441,8 +441,8 @@ $code-background-color: #f8f9f9;
 }
 
 body {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
+    //-moz-osx-font-smoothing: grayscale;
+    //-webkit-font-smoothing: antialiased; // do not enable these as they lighten the font too much depending on the screen density
     font-weight: 500 !important;
     color: #8B9092 !important;
 }
