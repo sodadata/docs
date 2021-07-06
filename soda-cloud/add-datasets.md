@@ -39,7 +39,7 @@ Use the following table as reference for configuring the Import Settings.
 <br />
 After Soda Cloud completes its first scan of your data according to the scan schedule you set, you can examine each dataset and configure any of the following optional settings:
 * display [column metrics]({% link soda-cloud/display-column-metrics.md %}) for all datasets
-* present [sample data]({% link soda-cloud/samples.md %}) for individual datasets
+* present [sample data]({% link soda-sql/samples.md %}) for individual datasets
 * adjust the [scan schedule]({% link soda-cloud/dataset-scan-schedule.md %}) for individual datasets
 * define [time partitioning]({% link soda-cloud/time-partitioning.md %}) for individual datasets
 * define attributes for individual datasets, including data owner, tags, and a description

@@ -47,6 +47,8 @@
     page: soda-sql/orchestrate_scans.md
   - subtitle: Connect to Soda Cloud
     page: soda-cloud/connect_to_cloud.md
+  - subtitle: Send sample data to Soda Cloud
+    page: soda-sql/samples.md
   - subtitle: Example tests by metric
     page: soda-sql/examples-by-metric.md
   - subtitle: Example tests for missing values
@@ -74,13 +76,11 @@
   - subtitle: Display column metrics
     page: soda-cloud/display-column-metrics.md
   - subtitle: Display sample data
-    page: soda-cloud/samples.md
+    page: soda-cloud/display-samples.md
   - subtitle: Define time partitioning for scans
     page: soda-cloud/time-partitioning.md
   - subtitle: Examine failed rows
     page: soda-cloud/failed-rows.md
-
-
 
 - title: Reference
   page: soda/glossary.md

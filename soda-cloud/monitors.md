@@ -33,7 +33,7 @@ In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked
 | Filters | Use filters to limit the amount of data that Soda SQL tests during a scan of your dataset.<br /> For example, you can use a filter to instruct Soda SQL to apply this monitor's tests *only* to rows in which the value of the `country` column is `FRA`. When you next run the soda scan command, Soda SQL executes this monitor's tests only against the data that meets the filter criteria instead of scanning an entire dataset. Refer to [Apply filters]({% link soda-sql/filtering.md %}) to learn more. 
 | Filter 1 | Select the values from the dropdowns for the column, operator, and value that will narrow the scope of data that Soda SQL tests during its scan. | 
 | Filter logic | Use `AND`, `OR`, or `NOT` to dictate how Soda SQL should apply the filters you have defined (Filter 1, Filter 2, etc). For example, to instruct Soda SQL to run tests against only those rows which match the criteria of two filters you created, enter `1 AND 2`. | 
-| Sample Data | Use the sample data to see what kind of data is in your dataset so you can determine what kinds of tests to write. If the panel is empty, configure your Soda SQL scan YAML file to [push sample data]({% link soda-cloud/samples.md %}) to your Soda Cloud account. |
+| Sample Data | Use the sample data to see what kind of data is in your dataset so you can determine what kinds of tests to write. If the panel is empty, configure your Soda SQL scan YAML file to [push sample data]({% link soda-sql/samples.md %}) to your Soda Cloud account. |
 
 #### 2. Monitor
 
