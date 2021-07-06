@@ -1,0 +1,25 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  $(function() {
+    var $searchInput = $("#search-input");
+    var $siteNav = $("#site-nav");
+    var $mainHeader = $("#main-header");
+    var $menuButton = $("#menu-button");
+    
+    $( "#search-input-inline" ).on('keypress', function( e ) { 
+        e.preventDefault();
+
+        if ($(window).width() < 800 && !$siteNav.hasClass("nav-open") ) {
+            $siteNav.addClass("nav-open");
+            $mainHeader.addClass("nav-open");
+            $menuButton.addClass("nav-open");
+
+            $searchInput[0].scrollIntoView();
+        }
+
+        $searchInput.focus();
+        $searchInput.val(e.key);
+        $searchInput.change();
+    });
+  });
+</script>
