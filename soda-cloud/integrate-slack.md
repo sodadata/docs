@@ -9,7 +9,7 @@ redirect_from: /soda-sql/documentation/integrate-slack.html
 
 Integrate your Slack workspace in your **Soda Cloud** account so that Soda Cloud can send Slack notifications to your team when a data issue triggers an [alert]({% link soda/glossary.md %}#alert).
 
-![onboarding-integrate-slack](/assets/images/onboarding-integrate-slack.png){:height="350px" width="350px"}
+![onboarding-integrate-slack](/assets/images/onboarding-integrate-slack.png){:height="300px" width="300px"}
 
 {% include integrate-slack-steps.md %}
 

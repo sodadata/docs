@@ -8,7 +8,7 @@ parent: Soda Cloud
 
 By default, Soda Cloud conducts a scan of each dataset in your data source according to the schedule you set when you configured the data source connection. If you wish, you can set a scan schedule specific to an individual datasest. For example, you can specify a more frequent scan schedule for a dataset that changes often.
 
-![onboarding-scan-schedules](/assets/images/onboarding-scan-schedules.png){:height="350px" width="350px"}
+![onboarding-scan-schedules](/assets/images/onboarding-scan-schedules.png){:height="300px" width="300px"}
  
 1. In the **Dataset** dashboard, click the stacked dots icon of the dataset you wish to edit. 
 2. In the **Scan Schedule** tab, uncheck the box to **Use Data Source Default Schedule**, then adjust the scan schedule as needed.  <br > If you wish to trigger Soda scans externally, select **Schedule Externally** in the **Dataset Scan Schedule** field, then copy the JSON or CURL snippet to use outside Soda Cloud to send a POST call to https://cloud.soda.io/api/command. 

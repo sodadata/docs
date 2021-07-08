@@ -8,7 +8,7 @@ parent: Soda Cloud
 
 When you sign up for a new Soda Cloud account, the first thing to do is give Soda Cloud access to the data you wish to scan. To do so, you first connect Soda Cloud to your [data source]({% link soda/glossary.md %}#data-source), which is the storage location that contains your data such as a database. Inside the data source are [datasets]({% link soda/glossary.md %}#data-source), such as tables, which Soda Cloud dynamically discovers during its first scan of your data.
 
-![onboarding-add-datasets](/assets/images/onboarding-add-datasets.png){:height="350px" width="350px"}
+![onboarding-add-datasets](/assets/images/onboarding-add-datasets.png){:height="300px" width="300px"}
 
 
 ## Connect to your data source

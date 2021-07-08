@@ -7,17 +7,15 @@ redirect_from: /soda-sql/documentation/monitors.html
 
 # Create monitors and alerts
 
-A **monitor** is a set of details you define in Soda Cloud which Soda SQL uses when it runs a scan. Log in to **Soda Cloud** to create **[monitors]({% link soda/glossary.md %}#monitor)**, and customize **[alerts]({% link soda/glossary.md %}#alert)** that send **[notifications]({% link soda/glossary.md %}#notification)** to your team when a [scan]({% link soda/glossary.md %}#scan) surfaces data issues.
+A **monitor** is a set of details you define in Soda Cloud which Soda SQL uses when it runs a scan. Log in to **Soda Cloud** to create monitors, and customize [alerts]({% link soda/glossary.md %}#alert) that send [notifications]({% link soda/glossary.md %}#notification) to your team when a [scan]({% link soda/glossary.md %}#scan) surfaces data issues.
 
-![onboarding-monitors-alerts](/assets/images/onboarding-monitors-alerts.png){:height="350px" width="350px"}
+![onboarding-monitors-alerts](/assets/images/onboarding-monitors-alerts.png){:height="300px" width="300px"}
 
 ## Prerequisites
 
-1. Create a free Soda Cloud account at [cloud.soda.io/signup](https://cloud.soda.io/signup).
-2. [Install Soda SQL]({% link soda-sql/installation.md %}) in your local or development environment and [configure it]({% link soda-sql/configure.md %}) to connect to a data source. Soda SQL is the tool that actually executes the scans of your data, then it pushes the results of its scans to your Soda Cloud account.
-3. Use Soda SQL to [analyze]({% link soda-sql/scan-yaml.md %}#create-a-scan-yaml-file) the tables in your warehouse and [run your first scan]({% link soda/scan.md %}#run-a-scan).
-4. [Connect]({% link soda-cloud/connect_to_cloud.md %}) Soda SQL to your Soda Cloud account.
-5. (Optional) [Integrate with Slack]({% link soda-cloud/integrate-slack.md %}) to enable Soda Cloud to send Slack notifications to your team.
+* Create a free Soda Cloud account at [cloud.soda.io/signup](https://cloud.soda.io/signup).
+* Connect a [data source]({% link soda/glossary.md %}#data-source) and [add datasets]({% link soda-cloud/add-datasets.md %}) to your Soda Cloud account so that Soda has access to the data you wish to monitor.
+* (Optional) [Integrate with Slack]({% link soda-cloud/integrate-slack.md %}) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud can send notifications via email.
 
 ## Create a monitor and an alert
 
@@ -30,20 +28,20 @@ In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked
 | Field or Label  | Description | 
 | -----------------  | ----------- |
 | Dataset | A dataset is a tabular data structure with rows and columns, such as a table in a database. Select the dataset that contains the data you wish to test. |
-| Filters | Use filters to limit the amount of data that Soda SQL tests during a scan of your dataset.<br /> For example, you can use a filter to instruct Soda SQL to apply this monitor's tests *only* to rows in which the value of the `country` column is `FRA`. When you next run the soda scan command, Soda SQL executes this monitor's tests only against the data that meets the filter criteria instead of scanning an entire dataset. Refer to [Apply filters]({% link soda-sql/filtering.md %}) to learn more. 
-| Filter 1 | Select the values from the dropdowns for the column, operator, and value that will narrow the scope of data that Soda SQL tests during its scan. | 
-| Filter logic | Use `AND`, `OR`, or `NOT` to dictate how Soda SQL should apply the filters you have defined (Filter 1, Filter 2, etc). For example, to instruct Soda SQL to run tests against only those rows which match the criteria of two filters you created, enter `1 AND 2`. | 
-| Sample Data | Use the sample data to see what kind of data is in your dataset so you can determine what kinds of tests to write. If the panel is empty, configure your Soda SQL scan YAML file to [push sample data]({% link soda-sql/samples.md %}) to your Soda Cloud account. |
+| Filters | Use filters to limit the amount of data that Soda Cloud tests during a scan of your dataset.<br /> For example, you can use a filter to instruct Soda Cloud to apply this monitor's tests *only* to rows in which the value of the `country` column is `FRA`. When it runs its next scheduled scan of your dataset, Soda Cloud executes this monitor's tests only against the data that meets the filter criteria instead of scanning an entire dataset. Refer to [Apply filters]({% link soda-sql/filtering.md %}) to learn more. 
+| Filter 1 | Select the values from the dropdowns for the column, operator, and value that will narrow the scope of data that Soda Cloud tests during its scan. | 
+| Filter logic | Use `AND`, `OR`, or `NOT` to dictate how Soda Cloud should apply the filters you have defined (Filter 1, Filter 2, etc). For example, to instruct Soda SQL to run tests against only those rows which match the criteria of two filters you created, enter `1 AND 2`. | 
+| Sample Data | Use the sample data to see what kind of data is in your dataset so you can determine what kinds of tests to write. If the panel is empty, follow the instructions to [display sample data]({% link soda-cloud/display-samples.md %}) for a dataset. |
 
 #### 2. Monitor
 
 | Field or Label | Description |
 | -----------------------   | ---------- |
-| Metric type | Select the type of default column metric you want to use to test your data. Read more about [default column metrics]({% link soda-sql/sql_metrics.md %}default-column-metrics). <sup>1</sup>
-| Column | Select the column in your dataset against which your test will run.
-| Evaluation type | Threshold: tests your data against the threshold value you define in your Critical Alert or Warning.<br /> Change Over Time: runs a comparison test against historical values in the same dataset. <br /> Anomaly Detection: automatically discovers patterns in your data over time and looks for outliers to the pattern. See [Detect anomalies]({% link soda-cloud/anomaly-detection.md %}).
-| Critical Alert | Select an operand and value. Combined with the Metric type, Column, and Evaluation type details you defined, the Critical Alert is essentially a [test]({% link soda/glossary.md %}test) that Soda SQL will run against data in the dataset. A failed test triggers this alert which, in turn, triggers a notification. 
-| Warning | Select an operand and value. Combined with the Metric type, Column, and Evaluation type details you defined, the Critical Alert is essentially a [test]({% link soda/glossary.md %}test) that Soda SQL will run against data in the dataset. A failed test triggers this alert which, in turn, triggers a notification. | 
+| Metric type | Select the type of default column metric you want to use to test your data. Read more about [default column metrics]({% link soda-sql/sql_metrics.md %}default-column-metrics). <sup>1</sup> |
+| Column | Select the column in your dataset against which your test will run. |
+| Evaluation type | Threshold: tests your data against the threshold value you define in your Critical Alert or Warning.<br /> Change Over Time: runs a comparison test against historical values in the same dataset. <br /> Anomaly Detection: automatically discovers patterns in your data over time and looks for outliers to the pattern. See [Detect anomalies]({% link soda-cloud/anomaly-detection.md %}).|
+| Critical Alert | Select an operand and value. Combined with the Metric type, Column, and Evaluation type details you defined, the Critical Alert is essentially a [test]({% link soda/glossary.md %}test) that Soda Cloud will run against data in the dataset. A failed test triggers this alert which, in turn, triggers a notification. |
+| Warning | Select an operand and value. Combined with the Metric type, Column, and Evaluation type details you defined, the Critical Alert is essentially a [test]({% link soda/glossary.md %}test) that Soda Cloud will run against data in the dataset. A failed test triggers this alert which, in turn, triggers a notification. | 
 
 <sup>1</sup> Monitors can only use default column metrics, not default table metrics or SQL metrics. See [Metrics]({% link soda-sql/sql_metrics.md %}) for more detail.
 
@@ -53,26 +51,24 @@ By default, Soda Cloud includes two out-of-the-box email notifications: one for 
 
 | Field or Label | Description |
 | -----------------------   | ---------- |
-| Add people, roles or channels to alert | If you have integrated your Soda Cloud account with [Slack]({% link soda-cloud/integrate-slack.md %}), use this field to type a channel name to add to the notification list of people included by default. Alternatively, use the field to enter names of teammates with whom you collaborate in Soda Cloud. |
+| Add people, roles or channels to alert | If you have integrated your Soda Cloud account with [Slack]({% link soda-cloud/integrate-slack.md %}), use this field to type a channel name to add to the notification list. Alternatively, use the field to enter names of teammates whom you invited to collaborate in Soda Cloud. |
 
 
 #### 4. Attributes
 
-Note that you have the option of adjusting the name of the monitor you are creating. Click the name to edit.
+Note that in addition to editing the attributes, 
 
 | Field or Label | Description |
 | -----------------------   | ---------- |
+| Monitor: Metric | You have the option of adjusting the name of the monitor you are creating. Click the name to edit. |
 | Monitor Owner | As the creator of this new monitor, you are the Monitor Owner by default. However, you can change this value to the name of a teammate with whom you collaborate in Soda Cloud. |
 | Description | Optionally, use this text field to describe what your monitor does to test data in the dataset. |
 
 ## Run a scan
 
-1. When you have completed the guided steps to create a monitor, access your command-line interface and use Soda SQL to scan your data again.
-``` shell
-$ soda scan warehouse.yml tables/yourtablename.yml
-```
-2. Check your Slack channel or email inbox; when a scan surfaces data that triggers your alert(s), Soda Cloud sends a notification.
-3. Return to **Monitor Results** in Soda Cloud and refresh your browser. Click the monitor to access details that can help you diagnose and solve the data issue.
+1. When you have completed the guided steps to create a monitor, wait for Soda Cloud to run its next scheduled scan of your dataset. You can [adjust the scan schedule of your dataset]({% link soda-cloud/dataset-scan-schedule.md%}) to run more or less frequently, if you wish.
+2. After Soda Cloud completes its scan, return to **Monitor Results** in Soda Cloud and refresh your browser. Click the monitor you created to access details of the scan results.
+3. Check your Slack channel or email inbox; when a scan surfaces data that triggers your alert(s), Soda Cloud sends notifications according to the settings you defined when you created the monitor.
 
 
 ## Go further
