@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Collaborate on data quality
+title: Collaborate on data monitoring
 parent: Soda Cloud
 redirect_from: 
   - /soda-sql/documentation/integrate-slack.html
   - /soda-clouse/integrate-slack.html
 ---
 
-# Collaborate on data quality
+# Collaborate on data monitoring
 
 One of the main benefits of using Soda Cloud is the ability to collaborate with your teammates on the work to monitor and maintain data quality. Including multiple perspectives yields a more robust interpretation of "good quality data".
 
@@ -17,7 +17,7 @@ Invite the members of your team to join you in your work to monitor data quality
 
 In Soda Cloud, navigate to **your avatar** > **Invite Team Members** and fill in the blanks. 
 
-When your team members receive the invitation email, they can click the link in the email to create their own accounts and access your Soda Cloud datasets, monitors, and monitor results directly. They can also create new monitors in your account. <!--Be aware that anyone with access to the invitation link in the email can create a Soda Cloud acccount and access your information.-->
+When your team members receive the invitation email, they can click the link in the email to create their own accounts and access your Soda Cloud datasets, monitors, and monitor results directly. They can also create new monitors in your account. <!--Be aware that anyone with access to the invitation link in the email can create a Soda Cloud account and access your information.-->
 
 ## Share data test results
 

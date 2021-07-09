@@ -67,7 +67,7 @@
     page: soda-cloud/connect_to_cloud.md
   - subtitle: Create monitors and alerts
     page: soda-cloud/monitors.md
-  - subtitle: Collaborate on data quality
+  - subtitle: Collaborate on data monitoring
     page: soda-cloud/collaborate.md
   - subtitle: Examine failed rows
     page: soda-cloud/failed-rows.md
