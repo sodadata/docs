@@ -36,8 +36,13 @@ Use the following table as reference for configuring the Import Settings.
 | Import Only Datasets Matching Filters | optional | Enable and configure this setting to limit the datasets that Soda Cloud scans according to the filters that you define. If your data source contains a large volume of datasets, you may wish to limit your scans to specific datasets according to content. |
 | Set the default scan schedule. | required | Define a regular scan schedule that applies, by default, to all datasets in the data source. | 
 
-<br />
-After Soda Cloud completes its first scan of your data according to the scan schedule you set, you can examine each dataset and configure any of the following optional settings:
+## After the first scan
+
+After Soda Cloud completes its first scan of your data according to the scan schedule you set, the **Datasets** dashboard displays all the datasets it automatically discovered in your data source. 
+
+Soda Cloud also automatically created a **row count anomaly detection monitor** for each dataset containing time-series data. This enables Soda Cloud to start learning row count patterns in your dataset over the course of the next few scheduled scans and surface anything it recognizes as anomalous. From the **Datasets** dashboard, click a time-series dataset to open it, then select the **Monitors** tab to review the monitor that Soda Cloud created for you. Learn more about creating [anomaly detection monitors]({% link soda-cloud/anomaly-detection.md %}).  
+
+You can also examine each dataset and configure any of the following optional settings:
 * display [column metrics]({% link soda-cloud/display-column-metrics.md %}) for all datasets
 * present [sample data]({% link soda-sql/samples.md %}) for individual datasets
 * adjust the [scan schedule]({% link soda-cloud/dataset-scan-schedule.md %}) for individual datasets

@@ -9,8 +9,6 @@ redirect_from: /soda-sql/documentation/anomaly-detection.html
 
 In Soda Cloud, you can create a monitor that automatically detects anomalies in your time-series data. 
 
-![onboarding-detect-anomalies](/assets/images/onboarding-detect-anomalies.png){:height="300px" width="300px"}
-
 **Anomaly detection** is a [monitor]({% link soda/glossary.md %}#monitor) **Evaluation Type** powered by a machine learning algorithm that works with [measurements]({% link soda/glossary.md %}#measurement) that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalous measurements in time-series data. ("Seasonality" is a common pattern of time-series data and translates as "something cyclical irrespecitve of the general direction of the data. For example, the number of orders that occur on your platform might show a clear drop during the weekend, or peak during the holiday season, irrespecitve of whether your platform is growing or not).
 
 ![anomaly-detection](/assets/images/anomaly-detection.png){:height="600px" width="600px"}
