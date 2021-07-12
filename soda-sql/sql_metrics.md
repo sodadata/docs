@@ -135,11 +135,11 @@ Valid formats apply only to columns using data type TEXT. See [Data types]({% li
 | `number_money_rmb` | Number matches Renminbi yuan currency pattern. |
 | `number_money_chf` | Number matches Swiss franc currency pattern. |
 | `number_money` | Format matches any of the `number_money_` patterns.|
-| `date_eu` | dd/mm/yyyy |
-| `date_us` | mm/dd/yyyy |
-| `date_inverse` | yyyy/mm/dd |
+| `date_eu` | Validates date only, not time. <br />dd/mm/yyyy |
+| `date_us` | Validates date only, not time. <br />mm/dd/yyyy |
+| `date_inverse` | Validates date only, not time. <br />yyyy/mm/dd |
 | `time` | 11:59:00,000<br /> 11:59:00<br /> 11:59<br /> 11-59-00,000<br /> 23:59:00,000<br /> Noon<br /> 1,159 |
-| `date_iso_8601` | 2021, January 21<br /> October 21, 2015 |
+| `date_iso_8601` | Validates date and/or time according to <a href="https://www.w3.org/TR/NOTE-datetime" target="_blank">ISO 8601 format </a>. <br />2021, January 21<br /> October 21, 2015 |
 | `uuid` | Universally unique identifier. |
 | `ip_address` | Four whole numbers separated by `.` |
 | `email` | name@domain.extension |
