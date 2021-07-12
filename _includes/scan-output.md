@@ -8,7 +8,7 @@ By default, the output of a Soda SQL scan appears in your command-line interface
   | Exiting with code 0
 ```
 
-In the following example, some of the tests Soda SQL executed failed, as indicated by `Exiting with code 2`. The scan output indicates which tests failed and why, so that you can investigate and resolve the issues in the warehouse.
+In the following example, some of the tests Soda SQL executed failed, as indicated by `Exiting with code 2`. The scan output indicates which tests failed and why, so that you can investigate and resolve the issues in the data source.
 
 ```shell
   | < 200 {}

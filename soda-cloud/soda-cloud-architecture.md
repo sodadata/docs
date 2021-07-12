@@ -11,11 +11,15 @@ redirect_from: /soda-sql/documentation/soda-cloud-architecture.html
 
 **Soda Cloud** uses **Soda SQL** in the background to help you monitor your data and alert you when there is a data quality issue.
 
-In Soda Cloud, you connect your account to your [data source]({% link soda/glossary.md %}#data source) and define a schedule for [scans]({% link soda/scan.md %}) of your data. To actually execute the scan, Soda Cloud connects to a hosted Soda SQL instance via a secure API and Soda SQL runs the scan.  When it completes a scan, it pushes the results to your Soda Cloud account where you can log in and examine the details in the web application. Notably, Soda SQL pushes metadata to Soda Cloud; by default all your data (barring the [sample data]({% link soda-cloud/display-samples.md %}) you explicity instruct Soda Cloud to collect) stays inside your private network. See [Data security and privacy]({% link soda/data-privacy.md %})
+In Soda Cloud, you connect your account to your [data source]({% link soda/glossary.md %}#data source) and define a schedule for [scans]({% link soda/scan.md %}) of your data. To actually execute the scan, Soda Cloud connects to a hosted Soda SQL instance via a secure API and Soda SQL runs the scan.  When it completes a scan, it pushes the results to your Soda Cloud account where you can log in and examine the details in the web application. Notably, Soda SQL pushes metadata to Soda Cloud; by default all your data (barring any [sample data]({% link soda-cloud/display-samples.md %}) you explicity instruct Soda Cloud to collect) stays inside your private network. See [Data security and privacy]({% link soda/data-privacy.md %})
 
 When you create a [monitor]({% link soda/glossary.md %}#monitor) in Soda Cloud's web application, Soda SQL uses the monitor settings to add new [tests]({% link soda/glossary.md %}#test) when it runs a scan on data in a specific warehouse. A monitor is essentially a way to create Soda SQL tests using the web application instead of adjusting [scan YAML file]({% link soda/glossary.md %}#scan-yaml) contents directly in your Soda project directory.
 
 You can use monitors to automatically detect anomalies, view samples of data that failed a test, and track data quality over time. Soda Cloud stores your scan results and prepares charts that represent the volume of failed tests in each scan. These visualizations of your scan results enable you to see where your data quality is improving or deteriorating over time.
+
+Follow the Soda Cloud Onboarding path to start monitoring your data.
+
+![soda-cloud-onboarding](/assets/images/soda-cloud-onboarding.png){:height="350px" width="350px"}
 
 ## Go further
 

@@ -9,7 +9,7 @@ redirect_from: /soda-sql/documentation/programmatic_scan.html
 
 To automate the search for "bad" data, you can use the **Soda SQL Python library** to programmatically execute [scans]({% link soda/glossary.md %}#scan).
 
-Based on a set of conditions or a specific event schedule, you can instruct Soda SQL to automatically scan a [warehouse]({% link soda/glossary.md %}#warehouse) [table]({% link soda/glossary.md %}#table) for “bad” data. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a warehouse, after it is transformed, and before it is exported to another warehouse.
+Based on a set of conditions or a specific event schedule, you can instruct Soda SQL to automatically scan a [data source]({% link soda/glossary.md %}#data-source) for “bad” data. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
 
 You can save Soda SQL scan results anywhere in your system; the `scan_result` object contains all the scan result information.
 
@@ -49,7 +49,7 @@ if scan_result.has_test_failures():
 ## Go further
 
 - Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
-- Learn more about [Warehouse]({% link soda-sql/warehouse.md %}) and [Scan]({% link soda-sql/scan-yaml.md %}) YAML files.
+- Learn more about [warehouse YAML]({% link soda-sql/warehouse.md %}) and [scan YAML]({% link soda-sql/scan-yaml.md %}) files.
 - Learn how to integrate Soda SQL with a [data orchestration tool]({% link soda-sql/orchestrate_scans.md %}).
 - Need help? <a href="http://community.soda.io/slack" target="_blank">Join our Slack community</a> to ask a question.
 

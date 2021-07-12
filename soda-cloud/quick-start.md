@@ -11,6 +11,7 @@ redirect_from: /soda-cloud.html
 
 ![tutorial-cloud-happy-path](/assets/images/tutorial-cloud-happy-path.png){:height="600px" width="600px"}
 
+<!--
 ## Create a sample data source (optional)
 
 In the context of Soda Cloud, a data source is a storage location that contains a collection of datasets, or tables. If you do not have access to a data source on your system, you can use <a href="https://www.docker.com/products/docker-desktop" target="_blank">Docker</a> to build a sample PostgreSQL warehouse so that you can set up your Soda Cloud account and see Soda in action.
@@ -32,15 +33,16 @@ docker run --name soda_sql_tutorial_db --rm -d \
 docker exec soda_sql_tutorial_db \
   sh -c "wget -qO - https://raw.githubusercontent.com/sodadata/soda-sql/main/tests/demo/demodata.sql | psql -U sodasql -d sodasql"
 ```
+-->
 
 ## Sign up and add datasets
 
-All the instructions in this tutorial reference the sample PostgreSQL data source, but you can use your own [data source]({% link soda/glossary.md %}#data-source) for this tutorial. Connect to any of the following Soda-compatible data sources to which you have access. 
+All the instructions in this tutorial reference a PostgreSQL data source, but you can use your own [data source]({% link soda/glossary.md %}#data-source) for this tutorial. Connect to any of the following Soda-compatible data sources to which you have access. 
 
 {% include compatible-warehouses.md %}
 
-1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. In Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow the guided steps to connect a data source using the following input values for the **Connection Details**. <!--Would be easier to prepare a JSON file to upload?-->
+1. If you have not already done so, create a free Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
+2. In Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow the guided steps to connect a data source. Use the following input values for the **Connection Details** for reference. 
 * Data source name: `demodata`
 * Data source type: `PostgreSQL`
 * Host: `localhost`
@@ -49,7 +51,7 @@ All the instructions in this tutorial reference the sample PostgreSQL data sourc
 * Database: `sodasql`
 * Schema: `public`
 3. Click **Next** to access **Import Settings**. In this panel, you have the option to instruct Soda Cloud to automatically discover new [datasets]({% link soda/glossary.md %}#dataset) as they are added to your data source, and/or define filters to limit the data Soda Cloud scans. For this tutorial, click **Next** to skip ahead. 
-4. Define the default **Scan Schedule** for all datasets in your data source. Set the values to scan the data source every hour, starting at the top of the next hour in your time zone, then **Save**. <br />For this tutorial, you are setting the schedule to run as soon as possible after you have completed this step. When Soda Cloud runs the scheduled scan, it automatically discovers all the datasets in the data source (in this case, all the tables in the sample PostgreSQL warehouse) and makes the details available to you so that you can create a new monitor.
+4. Define the default **Scan Schedule** for all datasets in your data source. Set the values to scan the data source every hour, starting at the top of the next hour in your time zone, then **Save**. <br />For this tutorial, you are setting the schedule to run as soon as possible after you have completed this step. When Soda Cloud runs the scheduled scan, it automatically discovers all the datasets in the data source (such as all the tables in a PostgreSQL warehouse) and makes the details available to you so that you can create a new monitor.
 
 Refer to [Add datasets in Soda Cloud]({% link soda-cloud/add-datasets.md %}) for further details.
 
@@ -69,7 +71,7 @@ After Soda Cloud completes its first scheduled scan of your data source, you can
 
 For a new monitor, you define several details including which data to test, what tests to run, and whom to notify when bad data triggers an alert. 
 
-1. In Soda Cloud, navigate to the **Monitors** dashboard, then click the stacked dots to **Create Monitor**. Select the type `Metric`, then follow the guided steps to complete the setup. Use the following input values to complete the steps.
+1. In Soda Cloud, navigate to the **Monitors** dashboard, then click the stacked dots to **Create Monitor**. Select the type `Metric`, then follow the guided steps to complete the setup. Use the following input values for reference.
 * Dataset: `demodata`
 * Metric type: `Average`
 * Column: `size`
@@ -78,7 +80,7 @@ For a new monitor, you define several details including which data to test, what
 * Add people, roles or channels to alert: `your slack channel`, if using Slack
 * Notify about: `Critical Alerts`
 * Frequency: `Immediately`
-2. When Soda Cloud runs its next scheduled scan of your data source, it runs the test you just created in your monitor to determine if the average of the values in the size column exceeds 5300. If the test fails (which it will, for this tutorial!), the failure triggers the alert you defined and sends a notification to the Slack channel you identified in your monitor, or your email address if you do not use Slack.
+2. When Soda Cloud runs its next scheduled scan of your data source, it runs the test you just created in your monitor. If the test fails, the failure triggers the alert you defined and sends a notification to the Slack channel you identified in your monitor, or your email address if you do not use Slack.
 
 Refer to [Create monitors and alerts]({% link soda-cloud/monitors.md %}) for further details.
 
@@ -86,21 +88,18 @@ Refer to [Create monitors and alerts]({% link soda-cloud/monitors.md %}) for fur
 
 When Soda Cloud completes its second scheduled scan of your data source, it runs your test and presents the results in the **Monitors** dashboard.
 
-1. Review the results of your test in the **Monitor Results** table in Soda Cloud to find the result for the monitor you just created: `size average fails when value is greater than 5300`.
+1. Review the results of your test in the **Monitor Results** table in Soda Cloud to find the result for the monitor you just created. See the example below in which the test failed.
 ![tutorial-monitor-results](/assets/images/tutorial-monitor-results.png){:height="600px" width="600px"}
 2. Click the monitor result to access details that can help you diagnose and solve the data issue.
-3. Check your Slack channel or email inbox; the scan surfaced a data issue that triggered your alert so Soda Cloud sent a notification.
-4. If you used Docker to create a sample PostgreSQL warehouse for this tutorial, be sure to execute the following commands in your command-line interface to stop the container.
-```shell
-$ docker stop soda_sql_tutorial_db
-$ docker volume rm soda_sql_tutorial_postgres
-```
+3. Check your Slack channel or email inbox; if the test failed, the scan surfaced a data issue that triggered your alert so Soda Cloud sent a notification.
+
 
 ## Go further
 
-* Follow the detailed steps to [add your own datasets]({% link soda-cloud/add-datasets.md %}) and begin monitoring your data.
+* Follow the detailed steps to [add datasets]({% link soda-cloud/add-datasets.md %}) and begin monitoring your data.
 * Learn more about [Soda Cloud Architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
 * Use Soda Cloud to automatically [detect anomalies]({% link soda-cloud/anomaly-detection.md %}) in your data.
+* Find out how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) for tests that failed.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

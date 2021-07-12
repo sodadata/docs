@@ -9,13 +9,13 @@ redirect_from: /soda-sql/documentation/monitors.html
 
 A **monitor** is a set of details you define in Soda Cloud which Soda SQL uses when it runs a scan. Log in to **Soda Cloud** to create monitors, and customize [alerts]({% link soda/glossary.md %}#alert) that send [notifications]({% link soda/glossary.md %}#notification) to your team when a [scan]({% link soda/glossary.md %}#scan) surfaces data issues.
 
-![onboarding-monitors-alerts](/assets/images/onboarding-monitors-alerts.png){:height="300px" width="300px"}
+![onboarding-monitors-alerts](/assets/images/onboarding-monitors-alerts.png){:height="350px" width="350px"}
 
 ## Prerequisites
 
 * Create a free Soda Cloud account at [cloud.soda.io/signup](https://cloud.soda.io/signup).
 * Connect a [data source]({% link soda/glossary.md %}#data-source) and [add datasets]({% link soda-cloud/add-datasets.md %}) to your Soda Cloud account so that Soda has access to the data you wish to monitor.
-* (Optional) [Integrate with Slack]({% link soda-cloud/integrate-slack.md %}) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud can send notifications via email.
+* (Optional) [Integrate with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud can send notifications via email.
 
 ## Create a monitor and an alert
 
@@ -70,11 +70,13 @@ Note that in addition to editing the attributes,
 2. After Soda Cloud completes its scan, return to **Monitor Results** in Soda Cloud and refresh your browser. Click the monitor you created to access details of the scan results.
 3. Check your Slack channel or email inbox; when a scan surfaces data that triggers your alert(s), Soda Cloud sends notifications according to the settings you defined when you created the monitor.
 
+If you are a Soda SQL user and have [connected to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}), you can manually run a scan in Soda SQL to see monitor results right away without waiting for the scheduled scan to run. See [Run a scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) for details.
+
 
 ## Go further
 
 * Next step in Soda Cloud Onboarding: [Refine dataset scan schedules]({% link soda-cloud/dataset-scan-schedule.md %})
-* Learn more about [how scans work]({% link soda/scan.md %}#scan-output-in-soda-cloud) with Soda Cloud.
+* Learn more about [how scans work]({% link soda/scan.md %}#scan-output-in-soda-cloud) in Soda Cloud.
 * Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 

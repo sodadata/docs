@@ -27,7 +27,7 @@ columns:
       - missing_count == 0
 ```
 
-Then, the engineer [runs a Soda SQL scan]({% link soda/scan.md %}#run-a-scan) as follows:
+Then, the engineer [runs a Soda SQL scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) as follows:
 
 Scan command:
 
@@ -71,7 +71,7 @@ columns:
       - missing_count == 0
 ```
 
-Then, the engineer [runs a Soda SQL scan]({% link soda/scan.md %}#run-a-scan) as follows:
+Then, the engineer [runs a Soda SQL scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) as follows:
 
 Scan command:
 

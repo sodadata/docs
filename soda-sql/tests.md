@@ -7,21 +7,21 @@ redirect_from: /soda-sql/documentation/tests.html
 
 # Define tests
 
-A **test** is a check that Soda SQL performs when it scans a table in your warehouse. Technically, it is a Python expression that, during a Soda SQL scan, checks metrics to see if they match the parameters defined for a measurement. A single Soda SQL scan runs against a single table in your database, but each scan can run multiple tests against multiple columns.
+A **test** is a check that Soda SQL performs when it scans a dataset in your data source. Technically, it is a Python expression that, during a Soda SQL scan, checks metrics to see if they match the parameters you defined for a measurement. A single Soda SQL scan runs against a single dataset in your data source, but each scan can run multiple tests against multiple columns.
 
-As a result of a scan, each test either passes or fails. When a test fails, it means that a property of the data in your table did not match the test parameters you defined. In other words, any test that returns `true` during a Soda SQL scan passes; any test that returns `false`, fails.
+As a result of a scan, each test either passes or fails. When a test fails, it means that a property of the data in your dataset did not match the test parameters you defined. In other words, any test that returns `true` during a Soda SQL scan passes; any test that returns `false`, fails.
 
 The **scan results** appear in your command-line interface (CLI). The results include an exit code which is an indicator of the test results: `0` means all tests passed; a non-zero value means one or more tests have failed.  See [Scan output in Soda SQL]({% link soda/scan.md %}#scan-output-in-soda-sql) for details.
 
-**Soda Cloud** refers to tests as **monitors**. Refer to [Create monitors and alerts]({% link soda-cloud/monitors.md %}) to learn how to define a monitor using Soda Cloud.
+**Soda Cloud** defines tests inside **monitors**. Refer to [Create monitors and alerts]({% link soda-cloud/monitors.md %}) to learn how to define a test in a monitor using Soda Cloud.
 
 ## Define tests using metrics
 
-You define your tests in your [scan YAML file]({% link soda-sql/scan-yaml.md %}) which is associated with a specific table in your database. You can write tests using **[default metrics]({% link soda-sql/sql_metrics.md %})** that Soda SQL applies to an entire table (table metrics), or to individual columns you identify (column metrics). You can also write tests using **[custom metrics]({% link soda-sql/sql_metrics.md %}#sql-metrics)** (SQL metrics) that you can apply to an entire table or individual columns. See [example tests]({% link soda-sql/examples-by-metric.md %}) that use each default metric.
+You define your tests in your [scan YAML file]({% link soda-sql/scan-yaml.md %}) which is associated with a specific dataset in your data source. You can write tests using built-in [dataset metrics]({% link soda-sql/sql_metrics.md %}#table-metrics) that Soda SQL applies to an entire dataset, or built-in [column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics) that Soda SQL applies to individual columns you identify. You can also write tests using [custom metrics]({% link soda-sql/sql_metrics.md %}#sql-metrics) (also known as SQL metrics) that you can apply to an entire dataset or to individual columns. See [example tests]({% link soda-sql/examples-by-metric.md %}) that use each built-in metric.
 
 Regardless of where it applies, each test is generally comprised of three parts:
 
-- a metric (a property of the data in your database)
+- a metric (a property of the data in your data source)
 - a comparison operator
 - a value
 
@@ -43,7 +43,9 @@ columns:
 
 However, where a test must determine whether or not data is valid, you must add a fourth element, a **column configuration key** to define what qualifies as valid. In the scan YAML file, you define a column configuration key before the test that will use the definition of "valid".
 
-In the example below, the user defined the `valid_format` as `date_eu` or dd/mm/yyyy format. The metric `invalid_percentage` refers to the `valid_format` configuration key to determine if the data in the column is valid. Note that `valid_format` applies only to columns with data type TEXT. Refer to [Data types]({% link soda/supported-data-types.md %}) for details. To see a list of all available column configuration keys, see [Column Metrics]({% link soda-sql/sql_metrics.md %}#column-metrics).
+In the example below, the user defined the `valid_format` as `date_eu` or dd/mm/yyyy format. The metric `invalid_percentage` refers to the `valid_format` configuration key to determine if the data in the column is valid. Note that `valid_format` applies only to columns with data type TEXT. Refer to [Data types]({% link soda/supported-data-types.md %}) for details. 
+
+To see a list of all available column configuration keys, see [Column Metrics]({% link soda-sql/sql_metrics.md %}#column-metrics).
 
 ```yaml
 columns:
@@ -53,11 +55,9 @@ columns:
             - invalid_percentage < 2.0
 ```
 
-See [example tests]({% link soda-sql/examples-by-metric.md %}) that use each default metric.
-
 <br />
 
-#### Example tests using default metrics
+#### Example tests using built-in metrics
 
 Reference the table below which corresponds to the following example scan YAML file. Both the `id` and `feepct` columns are of data type TEXT, enabling the user to define a `valid_format` for the contents of the columns. See [Valid format]({% link soda-sql/sql_metrics.md %}#valid-format) for details.
 
@@ -82,9 +82,9 @@ columns:
       - invalid_percentage == 0
 ```
 
-| Default metric | Comparison operator | Value | Applies to | Test |
+| Built-in metric | Comparison operator | Value | Applies to | Test |
 | ------ | ------------------- | ----- | ---------- | ---- |
-| `row_count` | `>` | `0` | whole table | Checks to see if the table has at least one row. If the test fails, it means the table has no rows, which means that the table is empty.|
+| `row_count` | `>` | `0` | whole dataset | Checks to see if the dataset has at least one row. If the test fails, it means the dataset has no rows, which means that the dataset is empty.|
 | `invalid_percentage` | `==` | `0` | `id` column | Checks to see if all rows in the id column contain data in a valid format. If the test fails, it means that more than 0% of the rows contain invalid data, which is data that is in non-UUID format.|
 | `invalid_percentage` | `==` | `0` | `feepct` column | Checks to see if all rows in the `feepct` column contain data in a valid format. If the test fails, it means that more than 0% of the rows contain invalid data, which is data that is not a numerical percentage.|
 
@@ -96,12 +96,12 @@ See [example tests]({% link soda-sql/examples-by-metric.md %}) that use each def
 
 #### Example tests using custom metrics
 
-If the default set of table and column metrics that Soda SQL offers do not quite give you the information you need from a scan, you can use **SQL metrics** to customize your queries. SQL metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan. See [SQL metrics]({% link soda-sql/sql_metrics.md %}#sql-metrics)
+If the built-in set of dataset and column metrics that Soda SQL offers do not quite give you the information you need from a scan, you can use **SQL metrics** to customize your queries. SQL metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan. See [SQL metrics]({% link soda-sql/sql_metrics.md %}#sql-metrics)
 
 Reference the table below which corresponds to the following example scan YAML file.
 
 ```yaml
-table_name: yourtable
+table_name: yourdataset
 sql_metrics:
     - sql: |
           SELECT sum(volume) as total_volume_us
@@ -113,7 +113,7 @@ sql_metrics:
 
 | Custom metric | Comparison operator | Value | Applies to | Test |
 | ------------- | ------------------- | ----- | ---------- | ---- |
-| `total_volume_us` | `>` | `5000`|  whole table | Checks to see if the sum of all customer transactions in the United States exceeds `5000`. If the test fails, it means that the total volume of transactions is less than `5000`.
+| `total_volume_us` | `>` | `5000`|  whole dataset | Checks to see if the sum of all customer transactions in the United States exceeds `5000`. If the test fails, it means that the total volume of transactions is less than `5000`.
 
 
 ## Define test names
@@ -137,7 +137,7 @@ tests:
 
 * Learn how to [apply filters]({% link soda-sql/filtering.md %}) such as date, to a scan of your data.
 * Learn more about [Metrics]({% link soda-sql/sql_metrics.md %}).
-* See [example tests]({% link soda-sql/examples-by-metric.md %}) that use each default metric.
+* See [example tests]({% link soda-sql/examples-by-metric.md %}) that use each built-in metric.
 * Learn about [How Soda works]({% link soda-sql/concepts.md  %}).
 * Reference the [Data types]({% link soda/supported-data-types.md %}) that Soda SQL supports when it scans columns.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

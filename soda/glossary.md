@@ -14,14 +14,19 @@ A setting that you configure in a Soda Cloud monitor by specifying key:value thr
 ### analyze
 {% include glossary-analyze.md %}
 
+### built-in metric
+An out-of-the-box metric that you can configure in a scan YAML file. There are two kinds of built-in metrics: [dataset](#table-metric), which are metrics that apply to an entire dataset, and [column](#column-metric), which are metrics that apply to individual columns in a dataset.
+
+By contrast, you can use [custom metrics]({% link soda-sql/sql_metrics.md %}#sql-metrics), also known as SQL metrics, to define SQL queries in a scan YAML file.
+
 ### column
-A column in a table in your warehouse.
+A column in a dataset in your data source.
 
 ### column configuration key
 The key in the key-value pair that you use to define what qualifies as a valid value in a column. A Soda SQL scan uses the value of a column configuration key to determine if it should pass or fail a test on a column. For example, in `valid_format: UUID` , `valid_format` is a column configuration key and `UUID` is the only format of the data in the column that Soda SQL considers valid. See [Column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics).
 
 ### column metric
-A property of the data of a single column in your database. Use a column metric to define tests that apply to specific columns in a table during a scan. See [Column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics).
+A property of the data of a single column in your data source. Use a column metric to define tests that apply to specific columns in a dataset during a scan. See [Column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics).
 
 ### configuration key
 The key in the key-value pair that you use to define configuration in your scan YAML file. See [Scan YAML configuration keys]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys).
@@ -38,13 +43,14 @@ A metric you define in your scan YAML file using SQL queries. Also known as a SQ
 ### dataset
 {% include glossary-dataset.md %}
 
-### default metric
-An out-of-the-box metric that you can configure in a scan YAML file. There are two levels of default metric: [table](#table-metric), which are metrics that apply to an entire table of data, and [column](#column-metric), which are metrics that apply to individual columns in a table.
+### dataset metric
+A property of the data in a dataset in your data source. Use a dataset metric to define tests that apply to all the columns in the dataset during a scan. See [Dataset metrics]({% link soda-sql/sql_metrics.md %}#table-metrics).
 
-By contrast, you can use [SQL metrics]({% link soda-sql/sql_metrics.md %}#sql-metrics) to define custom metrics in a scan YAML file.
+### default metric
+See [built-in metric](#built-in-metric)
 
 ### env_vars YAML
-The file in your local user home directory that stores your warehouse login credentials.
+The file in your local user home directory that stores your data source login credentials.
 
 ### measurement
 {% include glossary-measurement.md %}
@@ -53,7 +59,7 @@ The file in your local user home directory that stores your warehouse login cred
 {% include glossary-metric.md %}
 
 #### metric store
-The component in Soda Cloud that stores metric measurements.
+The component in Soda Cloud that stores metric measurements. This component facilities the visualization of changes to your data over time.
 
 ### monitor
 {% include glossary-monitor.md %}
@@ -68,10 +74,10 @@ A setting you configure in Soda Cloud that defines whom to notify when a data is
 {% include glossary-scan-yaml.md %}
 
 ### Soda Cloud
-A free, web application that enables you to examine the results of Soda SQL scans and create monitors and alerts. To use Soda Cloud, you must set up and connect Soda SQL to your Soda cloud account. Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup) then [connect Soda SQL to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}).
+A free, web application that enables you to examine scan results and create monitors and alerts. Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup). If you also use Soda SQL, you can [connect Soda SQL to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}).
 
 ### Soda SQL
-An open-source command-line tool that scans the data in your warehouse. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. Start by [installing Soda SQL]({% link soda-sql/installation.md%}).
+An open-source command-line tool that scans the data in your data source. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. Start by [installing Soda SQL]({% link soda-sql/installation.md%}).
 
 ### SQL metric
 A custom metric you define in your scan YAML file. Also known as a custom metric. SQL metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan. See [SQL metrics]({% link soda-sql/sql_metrics.md %}#sql-metrics).
@@ -80,7 +86,7 @@ A custom metric you define in your scan YAML file. Also known as a custom metric
 A type of [dataset](#dataset). 
 
 ### table metric
-A property of the data in a table in your database. Use a table metric to define tests that apply to all the columns in the table during a scan. See [Table metrics]({% link soda-sql/sql_metrics.md %}#table-metrics).
+See [dataset metric](#dataset-metric)
 
 ### test
 {% include glossary-test.md %}

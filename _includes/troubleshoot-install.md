@@ -8,7 +8,7 @@ $ pip install --upgrade pip
 **Problem:** Upgrading Soda SQL does not seem to work. <br />
 **Solution:** Run the following command to skip your local cache when upgrading your Soda SQL version:
 ```shell
-$ pip install --upgrade --no-cache-dir soda-sql-yourdatawarehouse
+$ pip install --upgrade --no-cache-dir soda-sql-yourdatasource
 ```
 <br />
 

@@ -14,7 +14,7 @@ Soda SQL uses an API to connect to Soda Cloud. To use the API, you must generate
 
 1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
 2. Use the instructions in [Install Soda SQL]({% link soda-sql/installation.md %}) to install Soda SQL.
-3. Follow steps in the [Quick start tutorial]({% link soda-sql/5_min_tutorial.md %}) to create your warehouse YAML file, connect to your [warehouse]({% link soda/glossary.md %}#warehouse), analyze your [tables]({% link soda/glossary.md %}#table), and run a [scan]({% link soda/glossary.md %}#scan) on the data.
+3. Follow steps in the [Quick start tutorial]({% link soda-sql/5_min_tutorial.md %}) to create your warehouse YAML file, connect to your [data source]({% link soda/glossary.md %}#data-source), analyze your [datasets]({% link soda/glossary.md %}#datasets), and run a [scan]({% link soda/glossary.md %}#scan) on the data.
 4. Open the `warehouse.yml` file in a text editor, then add the following to the file:
 ```yaml
 soda_account:
@@ -31,22 +31,22 @@ soda_sql_tutorial:
   API_PUBLIC: 
   API_PRIVATE: 
 ```
-7. In Soda Cloud, navigate to your **Profile** page to generate new API keys.
+7. In Soda Cloud, navigate to **your avatar** > **Profile** > **API Keys**, then click the plus icon to generate new API keys.
     * Copy the **API Key ID**, then paste it into the `env_vars.yml` file as the value for `API_PUBLIC`.
     * Copy the **API Key Secret**, then paste it into the `env_vars.yml` file as the value for `API_PRIVATE`.
 8. Save the changes to the `env_vars.yml` file. Close the **Create API Key** dialog box in your Soda Cloud account.
-9. From the command-line, use Soda SQL to scan the tables in your warehouse again.
+9. From the command-line, use Soda SQL to scan the datasets in your data source again.
 ```shell
-$ soda scan warehouse.yml tables/[dbtablename].yml
+$ soda scan warehouse.yml tables/[datasetname].yml
 ```
-10. Navigate to your Soda Cloud account in your browser and refresh the page. Review the results of your scan in Monitor Results.
+10. Navigate to your Soda Cloud account in your browser and refresh the page. Review the results of your scan in **Monitor Results**.
 
 ## Go further
 
 * Learn how to [create monitors and alerts]({% link soda-cloud/monitors.md %}).
+* Learn more about the [anatomy of a scan]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file)
 * Learn more about viewing [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 * Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
-* Learn more about the [anatomy of a scan]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file)
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

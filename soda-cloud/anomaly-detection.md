@@ -22,7 +22,7 @@ Soda Cloud uses the certainty and size calculations to derive the thresholds for
 * a large, certain anomaly triggers a **critical alert** 
 * a small, less certain anomaly triggers a **warning**
 
-As long as the [test]({% link soda/glossary.md %}#test) that a [Soda scan]({% link soda/scan.md %}#run-a-scan) executes results in a numerical measurement that regularly changes over time, you can use anomaly detection in a monitor. 
+As long as the [test]({% link soda/glossary.md %}#test) that a [Soda scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) executes results in a numerical measurement that regularly changes over time, you can use anomaly detection in a monitor. 
 
 For example, if the test you define in your monitor measures the row count of one of your datasets every hour as part of your transformation pipeline, you can use anomaly detection to discover unexpected volumes of entries in the dataset. If the test you define measures the price of an asset at the end of each day, you can use anomaly detection to get an alert if the price jumps wildly high or unexpectedly low. 
 

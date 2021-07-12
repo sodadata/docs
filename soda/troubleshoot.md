@@ -20,7 +20,7 @@ Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> So
 <br />
 <br />
 
-## Warehouse connections
+## Data source connections
 
 {% include troubleshoot-warehouses.md %}
 <br />

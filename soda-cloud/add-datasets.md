@@ -6,9 +6,9 @@ parent: Soda Cloud
 
 # Add datasets in Soda Cloud
 
-When you sign up for a new Soda Cloud account, the first thing to do is give Soda Cloud access to the data you wish to scan. To do so, you first connect Soda Cloud to your [data source]({% link soda/glossary.md %}#data-source), which is the storage location that contains your data such as a database. Inside the data source are [datasets]({% link soda/glossary.md %}#data-source), such as tables, which Soda Cloud dynamically discovers during its first scan of your data.
+When you sign up for a new Soda Cloud account, the first thing to do is give Soda Cloud access to the data you wish to scan. To do so, you first connect Soda Cloud to your [data source]({% link soda/glossary.md %}#data-source), which is the storage location that contains your data, such as a database. Inside the data source are [datasets]({% link soda/glossary.md %}#data-source), such as tables, which Soda Cloud dynamically discovers during its first scan of your data.
 
-![onboarding-add-datasets](/assets/images/onboarding-add-datasets.png){:height="300px" width="300px"}
+![onboarding-add-datasets](/assets/images/onboarding-add-datasets.png){:height="350px" width="350px"}
 
 
 ## Connect to your data source
@@ -40,7 +40,9 @@ Use the following table as reference for configuring the Import Settings.
 
 After Soda Cloud completes its first scan of your data according to the scan schedule you set, the **Datasets** dashboard displays all the datasets it automatically discovered in your data source. 
 
-Soda Cloud also automatically created a **row count anomaly detection monitor** for each dataset containing time-series data. This enables Soda Cloud to start learning row count patterns in your dataset over the course of the next few scheduled scans and surface anything it recognizes as anomalous. From the **Datasets** dashboard, click a time-series dataset to open it, then select the **Monitors** tab to review the monitor that Soda Cloud created for you. Learn more about creating [anomaly detection monitors]({% link soda-cloud/anomaly-detection.md %}).  
+Soda Cloud also automatically creates a **row count anomaly detection monitor** for each dataset that contains time-series data. This enables Soda Cloud to start learning row count patterns in your dataset over the course of the next few scheduled scans and surface anything it recognizes as anomalous. 
+
+From the **Datasets** dashboard, click one of your time-series datasets to open it, then select the **Monitors** tab to review the monitor that Soda Cloud created for you. Learn more about creating [anomaly detection monitors]({% link soda-cloud/anomaly-detection.md %}).  
 
 You can also examine each dataset and configure any of the following optional settings:
 * display [column metrics]({% link soda-cloud/display-column-metrics.md %}) for all datasets
@@ -51,7 +53,8 @@ You can also examine each dataset and configure any of the following optional se
 
 ## Go further
 
-* Next step in Soda Cloud Onboarding: [Integrate with Slack]({% link soda-cloud/integrate-slack.md %}).
+* Next step in Soda Cloud Onboarding: [Integrate with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack).
 * Start testing your data by [creating a new monitor]({% link soda-cloud/monitors.md %}).
 * Use automatated [anomaly detection]({% link soda-cloud/anomaly-detection.md %}) in your monitors.
+* Examine [failed rows]({% link soda-cloud/failed-rows.md %}#) for a scan that results in failed tests.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
