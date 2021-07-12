@@ -51,7 +51,7 @@ By default, Soda Cloud includes two out-of-the-box email notifications: one for 
 
 | Field or Label | Description |
 | -----------------------   | ---------- |
-| Add people, roles or channels to alert | If you have integrated your Soda Cloud account with [Slack]({% link soda-cloud/integrate-slack.md %}), use this field to type a channel name to add to the notification list. Alternatively, use the field to enter names of teammates whom you invited to collaborate in Soda Cloud. |
+| Add people, roles or channels to alert | If you have integrated your Soda Cloud account with [Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack), use this field to type a channel name to add to the notification list of people included by default. Alternatively, use the field to enter names of teammates with whom you collaborate in Soda Cloud. |
 
 
 #### 4. Attributes
