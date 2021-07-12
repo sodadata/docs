@@ -39,13 +39,13 @@ In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked
 
 | Field or Label | Description |
 | -----------------------   | ---------- |
-| Metric type | Select the type of default column metric you want to use to test your data. Read more about [default column metrics]({% link soda-sql/sql_metrics.md %}default-column-metrics). <sup>1</sup>
+| Metric type | Select the type of built-in metric you want to use to test your data. <br /> `Row count` is the only [table metric]({% link soda-sql/sql_metrics.md %}#table-metrics) available to select; Soda Cloud make several [column metrics]({% link soda-sql/sql_metrics.md %}#default-column-metrics) available to select depending upon the type of data in the dataset. <sup>1</sup>
 | Column | Select the column in your dataset against which your test will run.
 | Evaluation type | Threshold: tests your data against the threshold value you define in your Critical Alert or Warning.<br /> Change Over Time: runs a comparison test against historical values in the same dataset. <br /> Anomaly Detection: automatically discovers patterns in your data over time and looks for outliers to the pattern. See [Detect anomalies]({% link soda-cloud/anomaly-detection.md %}).
-| Critical Alert | Select an operand and value. Combined with the Metric type, Column, and Evaluation type details you defined, the Critical Alert is essentially a [test]({% link soda/glossary.md %}test) that Soda SQL will run against data in the dataset. A failed test triggers this alert which, in turn, triggers a notification. 
-| Warning | Select an operand and value. Combined with the Metric type, Column, and Evaluation type details you defined, the Critical Alert is essentially a [test]({% link soda/glossary.md %}test) that Soda SQL will run against data in the dataset. A failed test triggers this alert which, in turn, triggers a notification. | 
+| Critical Alert | Select an operand and value. Combined with the Metric type, Column, and Evaluation type details you defined, the Critical Alert is essentially a [test]({% link soda/glossary.md %}#test) that Soda SQL will run against data in the dataset. A failed test triggers this alert which, in turn, triggers a notification. 
+| Warning | Select an operand and value. Combined with the Metric type, Column, and Evaluation type details you defined, the Critical Alert is essentially a [test]({% link soda/glossary.md %}#test) that Soda SQL will run against data in the dataset. A failed test triggers this alert which, in turn, triggers a notification. | 
 
-<sup>1</sup> Monitors can only use default column metrics, not default table metrics or SQL metrics. See [Metrics]({% link soda-sql/sql_metrics.md %}) for more detail.
+<sup>1</sup> Monitors can only use built-in metrics, not SQL metrics, also known as custom metrics. See [Metrics]({% link soda-sql/sql_metrics.md %}) for more detail.
 
 #### 3. Notifications
 By default, Soda Cloud includes two out-of-the-box email notifications: one for the **Dataset Owner** and one for the **Monitor Owner**, which is you. You can remove or adjust these notifications, or use the search bar to add more.
