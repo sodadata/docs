@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Send failed row samples to Soda Cloud
+title: Send failed row samples
 parent: Soda SQL
 ---
 

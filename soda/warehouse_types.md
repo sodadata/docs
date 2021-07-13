@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Set data source configurations
+title: Data source configurations
 parent: Soda
 redirect_from: /soda-sql/documentation/warehouse_types.html
 ---

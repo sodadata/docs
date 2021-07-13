@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Display sample data for a dataset
+title: Display sample data
 parent: Soda Cloud
 ---
 

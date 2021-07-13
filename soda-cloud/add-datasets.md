@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Detect anomalies
+title: Add datasets
 parent: Soda Cloud
 ---
 

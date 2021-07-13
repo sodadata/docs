@@ -1,6 +1,6 @@
 ---
 layout: default
-title: What's new in Soda documentation?
+title: What's new in Soda docs?
 parent: Soda
 ---
 

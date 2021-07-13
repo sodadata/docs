@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Data monitoring
+title: Common terms
 parent: Soda
 ---
 

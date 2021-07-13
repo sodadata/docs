@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Define time partitioning for dataset scans
+title: Define time partitioning
 parent: Soda Cloud
 ---
 

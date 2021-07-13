@@ -7,7 +7,7 @@ redirect_from: /soda-sql/examples/examples-test-missing.html
 
 # Example tests for missing values
 
-Where your [warehouse]({% link soda/glossary.md %}#warehouse) table contains records that ought not to be empty, you can use Soda SQL to test for missing data, or null values. By default, Soda SQL includes a `missing_count` [metric]({% link soda/glossary.md %}#metric) that searches for missing or null values in a column of a table. 
+Where your dataset contains records that ought not to be empty, you can use Soda SQL to test for missing data, or null values. By default, Soda SQL includes a `missing_count` [metric]({% link soda/glossary.md %}#metric) that searches for missing or null values in a column of a dataset. 
 
 To illustrate how to use Soda SQL to test for missing values, imagine an e-commerce company that fulfills orders for shipment to customers. The information associated with each shipment is stored in a fulfillment table in a database. Here is how they could test to ensure the values in the `postal_code` column are not blank.
 

@@ -7,7 +7,7 @@ redirect_from: /soda-sql/examples/examples-test-valid.html
 
 # Example tests for valid values
 
-Where your [warehouse]({% link soda/glossary.md %}#warehouse) table contains records that ought to contain only values that qualify as valid, you can use Soda SQL to test for data validity. 
+Where your dataset contains records that ought to contain only values that qualify as valid, you can use Soda SQL to test for data validity. 
 
 To illustrate how to use Soda SQL to test for validity, imagine an e-commerce company that fulfills orders for shipment to customers. The information associated with each shipment is stored in a fulfillment table in a database. Here is how they could test to ensure the values in the `country` column are countries they ship to. This example uses the `valid_values` [column configuration key]({% link soda-sql/sql_metrics.md %}#column-configuration-keys) to define a list of valid countries.
 
@@ -71,7 +71,7 @@ Scan output, fail:
 <br />
 <br />
 
-Another way to test data for validity is to use the `valid_format` column configuration key. The data engineer can identify valid data using the `valid_format` column configuration key on the text column that contains customer_id values. The test ensures that all customer identifiers are in `uuid` format. (Note that `valid_format` only works with columns using [data type]({% link soda/supported-data-types.md %}) text, *not* date or number.)
+Another way to test data for validity is to use the `valid_format` column configuration key. The data engineer can identify valid data using the `valid_format` column configuration key on the text column that contains customer_id values. The test ensures that all customer identifiers are in `uuid` format. (Note that `valid_format` only works with columns using [data type]({% link soda/supported-data-types.md %}) TEXT, *not* date or number.)
 
 Scan YAML:
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Send sample data to Soda Cloud
+title: Send sample data
 parent: Soda Cloud
 redirect_from: 
 - /soda-sql/documentation/samples.html
