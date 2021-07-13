@@ -14,7 +14,7 @@ parent: Soda
 
 Use Soda SQL on its own to manually or programmatically scan the data that your organization uses to make decisions. Optionally, you can integrate Soda SQL with your data orchestration tool to schedule scans and automate actions based on scan results. Further, you can connect Soda SQL to a free Soda Cloud account where you and your team can use the web application to monitor test results and collaborate to keep your data issue-free.
 
-Get started with the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_tutorial.md %})
+Get started with the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_tutorial.md %}).
 
 <br />
 
@@ -26,9 +26,11 @@ Soda Cloud uses Soda SQL in the background to run scheduled scans. Soda SQL uses
 
 Beyond increasing the observability of your data, Soda Cloud enables you to automatically detect anomalies, and view samples of the rows that failed a test during a scan. Integrate Soda Cloud with your Slack workspace to collaborate with your team on data monitoring. 
 
-Get started with the [Quick start tutorial for Soda Cloud]({% link soda-cloud/quick-start.md %})
+Get started with the [Quick start tutorial for Soda Cloud]({% link soda-cloud/quick-start.md %}).
 
 ## Compare features and functionality
+
+[Connect Soda SQL to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}) to take advantage of all the features and functionality.
 
 | ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="120px" width="120px"} | ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="150px" width="150px"} |
 |--------| ---------|
@@ -45,13 +47,14 @@ Get started with the [Quick start tutorial for Soda Cloud]({% link soda-cloud/qu
 |[Add filters]({% link soda-sql/filtering.md %}) in the scan YAML file | [Add filters]({% link soda-cloud/monitors.md %}#1-dataset) when creating a monitor|
 |[Run an *ad hoc* scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) |  |
 |Schedule scans using your [data orchestration tool]({% link soda-sql/orchestrate_scans.md %}) | Schedule scans for a [data source]({% link soda-cloud/add-datasets.md %}#import-settings) and [datasets]({% link soda-cloud/dataset-scan-schedule.md %}) |
+|	| Get visibility into stored measurements for a metric over time |
 |	| Create [alerts]({% link soda/glossary.md %}#alert) and [notifications]({% link soda/glossary.md %}#notification) |
 |Configure scan YAML to send <br />[failed row samples]({% link soda-sql/send-failed-rows.md %}) to Soda Cloud | Use a missing value metric type to [collect failed row samples]({% link soda-cloud/failed-rows.md %}#use-a-missing-value-metric-type-to-collect-failed-row-samples)|
 |   | View [failed rows]({% link soda-cloud/failed-rows.md %}) |
 | Configure scan YAML to send <br />[sample dataset data]({% link soda-sql/samples.md %}) to Soda Cloud | <!--[Enable sample data]({% link soda-cloud/display-samples.md %}) for a dataset--> | 
-|  | View sample data for a dataset | 
-|	| View a chart of stored measurements for a metric over time |
+|   | View sample data for a dataset | 
 |	| Use [anomaly detection]({% link soda-cloud/anomaly-detection.md %}) |
+|   | [Collaborate]({% link soda-cloud/collaborate.md %}) with your team to monitor your data: invite team members, and integrate with Slack
 
 ## Go further
 
