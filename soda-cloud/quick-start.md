@@ -7,58 +7,102 @@ redirect_from: /soda-cloud.html
 
 # Quick start tutorial for Soda Cloud
 
-Sign up for a free Soda Cloud account, then **connect** to Soda SQL, **create a new monitor** that notifies your team when "bad" data surfaces, then **run a scan** to see results in the Soda Cloud web application.
-<br />
+**Sign up** for a free Soda Cloud account, **add datasets** to your account, **integrate** with Slack, then **create** a monitor and an alert to begin monitoring your data.
 
-![cloud-tutorial-happy-path](/assets/images/cloud-tutorial-happy-path.png){:height="650px" width="650px"}
+![tutorial-cloud-happy-path](/assets/images/tutorial-cloud-happy-path.png){:height="600px" width="600px"}
 
-## Connect to Soda SQL
+<!--
+## Create a sample data source (optional)
 
-Soda Cloud and Soda SQL work together to help you monitor your data and alert you when there are issues with your data.  
+In the context of Soda Cloud, a data source is a storage location that contains a collection of datasets, or tables. If you do not have access to a data source on your system, you can use <a href="https://www.docker.com/products/docker-desktop" target="_blank">Docker</a> to build a sample PostgreSQL warehouse so that you can set up your Soda Cloud account and see Soda in action.
 
-* **Soda SQL** is an open-source command line tool that does the work of scanning the data in your database. You can use this as a stand-alone tool to scan your data and review the scan results in your command-line interface..
-* **Soda Cloud** is the web application to which Soda SQL pushes the results of its scans. Log in to the free web app to examine the visualized results of Soda SQL scans, view historical scan data, and set up alerts that automatically notify your team when there is an issue with your data. 
+All the instructions in this tutorial reference this sample data source.
+
+1. Ensure the Docker app is running, then, from your command-line interface, execute the following to build a containerized PostgreSQL warehouse. 
+```shell
+docker run --name soda_sql_tutorial_db --rm -d \
+    -p 5432:5432 \
+    -v soda_sql_tutorial_postgres:/var/lib/postgresql/data:rw \
+    -e POSTGRES_USER=sodasql \
+    -e POSTGRES_DB=sodasql \
+    -e POSTGRES_HOST_AUTH_METHOD=trust \
+    postgres:9.6.17-alpine
+```
+2. Load sample data into your warehouse.
+```shell
+docker exec soda_sql_tutorial_db \
+  sh -c "wget -qO - https://raw.githubusercontent.com/sodadata/soda-sql/main/tests/demo/demodata.sql | psql -U sodasql -d sodasql"
+```
+-->
+
+## Sign up and add datasets
+
+All the instructions in this tutorial reference a PostgreSQL data source, but you can use your own [data source]({% link soda/glossary.md %}#data-source) for this tutorial. Connect to any of the following Soda-compatible data sources to which you have access. 
+
+{% include compatible-warehouses.md %}
 
 1. If you have not already done so, create a free Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. From your command-line interface (CLI), follow the instructions to [install Soda SQL]({% link soda-sql/installation.md %}) in your local or development environment. 
-3. Follow the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_tutorial.md %}) that uses a demo data source and guides you through configuration and scanning.
-4. Soda SQL uses an API to connect to Soda Cloud. Follow the instructions to [connect Soda SQL to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md%}). When complete, you can see the results of your Soda SQL scan appear as a row in the **Monitor Results** table in Soda Cloud.
+2. In Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow the guided steps to connect a data source. As reference, use the following input values for the **Connection Details** for a PostgreSQL data source. 
+* Data source name: `demodata`
+* Data source type: `PostgreSQL`
+* Host: `localhost`
+* Username: `sodasql` <sup>1</sup>
+* Password: `Eg abc123` <sup>1</sup>
+* Database: `sodasql`
+* Schema: `public`
+3. Click **Next** to access **Import Settings**. In this panel, you have the option to instruct Soda Cloud to automatically discover new [datasets]({% link soda/glossary.md %}#dataset) as they are added to your data source, and/or define filters to limit the data Soda Cloud scans. For this tutorial, click **Next** to skip ahead. 
+4. Define the default **Scan Schedule** for all datasets in your data source. Set the values to scan the data source every hour, starting at the top of the next hour in your time zone, then **Save**. <br />For this tutorial, you are setting the schedule to run as soon as possible after you have completed this step. When Soda Cloud runs the scheduled scan, it automatically discovers all the datasets in the data source (such as all the tables in a PostgreSQL warehouse) and makes the details available to you so that you can create a new monitor.
 
+Refer to [Add datasets in Soda Cloud]({% link soda-cloud/add-datasets.md %}) for further details.
+
+<sup>1</sup> Stored in a secure database; password is encrypted.
+
+## Integrate with Slack
+
+While you wait for Soda Cloud to complete its first scheduled scan of your data source, connect your Soda Cloud account to your Slack workspace. Making this connection enables you to send Slack notifications to your team when a data issue triggers an [alert]({% link soda/glossary.md %}#alert).
+
+If you do not use Slack, Soda Cloud notifies you and any teammates you invite via email.
+
+{% include integrate-slack-steps.md %}
 
 ## Create a monitor and alert
 
-A monitor is a set of details you define in Soda Cloud which Soda SQL uses when it runs a scan. Soda Cloud guides you through the steps to define a monitor, create alert triggers, then specify notification instructions. 
+After Soda Cloud completes its first scheduled scan of your data source, you can use the data and metadata it collected, such as column names and data types, to create a monitor and alert. 
 
-1. In Soda Cloud, navigate to your **avatar** > **Organization Settings** > **Integrations**, then follow the guided steps to authorize Soda Cloud to connect to your Slack workspace.
-2. In Soda Cloud, navigate to the **Datasets** dashboard, then select **demodata** to open the dataset. Go to the **Monitors** tab, then click the stacked dots to select **Create monitor**. Follow the guided steps to complete the setup using the values below to fill in the fields. These values will yield a failed test result so you can witness Soda Cloud's ability to send a notification to your team.
-* Monitor type: Metric
-* Dataset: demodata 
-* Metric type: Average 
-* Column: size
-* Evaluation type: Threshold 
-* Alerts: Critical Alert; is greater than; 4000
-3. Specify the Slack notifications you want to send when bad data triggers the Critical Alert you set up, then **Save** your monitor. 
+Note that Soda Cloud also automatically created a **row count anomaly detection monitor** for each dataset that contains time-series data. This enables Soda Cloud to start learning row count patterns in your dataset over the course of the next few scheduled scans and surface anything it recognizes as anomalous. See [anomaly detection]({% link soda-cloud/anomaly-detection.md %}) for details.
 
+For a new monitor, you define several details including which data to test, what tests to run, and whom to notify when bad data triggers an alert. 
 
-## Run a scan
+1. In Soda Cloud, navigate to the **Monitors** dashboard, then click the stacked dots to **Create Monitor**. Select the type `Metric`, then follow the guided steps to complete the setup. Use the following input values for reference.
+* Dataset: `demodata`
+* Metric Type: `Row Count` <br />(For datasets you added [via Soda Cloud](#sign-up-and-add-datasets), you can only select Row Count for this field. Soon, Soda Cloud will make more Metric Types available for selection for all datasets.)
+* Column: n/a
+* Evaluation type: `Threshold`
+* Critical Alert: `if less than`; `1`
+* Add people, roles or channels to alert: `your slack channel`, if using Slack
+* Notify about: `Critical Alerts`
+* Frequency: `Immediately`
+2. When Soda Cloud runs its next scheduled scan of your data source, it runs the test you just created in your monitor. If the test fails (which, with the example input, would indicate that your dataset is empty), the failure triggers the alert you defined and sends a notification to the Slack channel you identified in your monitor, or your email address if you do not use Slack.
 
-1. Access your command line tool, then use Soda SQL to scan your data again.
-```shell
-soda scan warehouse.yml tables/demodata.yml
-```
-2. When the scan finishes running, check your Slack channel: Soda Cloud has sent a notification! 
-3. Navigate to the **Monitor Results** dashboard and refresh the page in your browser. New rows appear in the table of Monitor Results, one of which is associated with the monitor you just created. Each row in this table represents the result of a test that passed or failed during the scan you ran using Soda SQL. Click the row for the monitor you created to see details about the scan result.  
+Refer to [Create monitors and alerts]({% link soda-cloud/monitors.md %}) for further details.
 
-![cloud-tutorial-result](/assets/images/cloud-tutorial-result.png){:height="500px" width="500px"}
+## Review your scan results
+
+When Soda Cloud completes its second scheduled scan of your data source, it runs your test and presents the results in the **Monitors** dashboard.
+
+1. Review the results of your test in the **Monitor Results** table in Soda Cloud to find the result for the monitor you just created. See the example below in which a test passed.
+![tutorial-monitor-results](/assets/images/tutorial-monitor-results.png){:height="600px" width="600px"}
+2. Click the monitor result to access details that can help you diagnose and solve the data issue.
+3. Check your Slack channel or email inbox; if the test failed, the scan surfaced a data issue that triggered your alert so Soda Cloud sent a notification.
 
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Follow the detailed steps to [add datasets]({% link soda-cloud/add-datasets.md %}) and begin monitoring your data.
 * Learn more about [Soda Cloud Architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
-* Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
-* Use Soda Cloud to [examine failed rows]({% link soda-cloud/failed-rows.md %}).
 * Use Soda Cloud to automatically [detect anomalies]({% link soda-cloud/anomaly-detection.md %}) in your data.
+* Find out how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) for tests that failed.
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />
 

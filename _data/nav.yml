@@ -17,6 +17,8 @@
     page: soda/data-monitoring.md
   - subtitle: Scans
     page: soda/scan.md
+  - subtitle: Metrics
+    page: soda/metrics.md
   - subtitle: Common terms
     page: soda/common-terms.md
 
@@ -37,11 +39,11 @@
     page: soda-sql/warehouse.md
   - subtitle: Scan YAML
     page: soda-sql/scan-yaml.md
-  - subtitle: Metrics
+  - subtitle: Configure metrics
     page: soda-sql/sql_metrics.md
   - subtitle: Define tests
     page: soda-sql/tests.md
-  - subtitle: Scan multiple datasets or tables
+  - subtitle: Scan multiple data sources or datasets
     page: soda-sql/scan-different-datasets.md
   - subtitle: Apply filters
     page: soda-sql/filtering.md
@@ -49,6 +51,12 @@
     page: soda-sql/programmatic_scan.md
   - subtitle: Configure orchestrated scans
     page: soda-sql/orchestrate_scans.md
+  - subtitle: Connect to Soda Cloud
+    page: soda-cloud/connect_to_cloud.md
+  - subtitle: Send sample data to Soda Cloud
+    page: soda-sql/samples.md
+  - subtitle: Send failed rows to Soda Cloud
+    page: soda-sql/send-failed-rows.md
   - subtitle: Example tests by metric
     page: soda-sql/examples-by-metric.md
   - subtitle: Example tests for missing values
@@ -59,23 +67,22 @@
     page: soda-sql/example-test-valid.md
 
 - title: Soda Cloud
-  page: soda-cloud/soda-cloud-architecture.md
+  page: soda-cloud/add-datasets.md
   subcategories:
-  - subtitle: Soda Cloud architecture
-    page: soda-cloud/soda-cloud-architecture.md
-  - subtitle: Connect to Soda Cloud
-    page: soda-cloud/connect_to_cloud.md
-  - subtitle: Create monitors and alerts
-    page: soda-cloud/monitors.md
+  - subtitle: Add datasets
+    page: soda-cloud/add-datasets.md
   - subtitle: Collaborate on data monitoring
     page: soda-cloud/collaborate.md
-  - subtitle: Examine failed rows
-    page: soda-cloud/failed-rows.md
-  - subtitle: Use samples
-    page: soda-cloud/samples.md
+  - subtitle: Create monitors and alerts
+    page: soda-cloud/monitors.md
+  - subtitle: Adjust a dataset scan schedule
+    page: soda-cloud/dataset-scan-schedule.md
   - subtitle: Detect anomalies
     page: soda-cloud/anomaly-detection.md
-
+  - subtitle: Examine failed rows
+    page: soda-cloud/failed-rows.md
+  - subtitle: Soda Cloud architecture
+    page: soda-cloud/soda-cloud-architecture.md
 
 - title: Reference
   page: soda/glossary.md
@@ -86,7 +93,7 @@
     page: soda/new-documentation.md
   - subtitle: Data security and privacy
     page: soda/data-privacy.md
-  - subtitle: Warehouse configuration
+  - subtitle: Data source configuration
     page: soda/warehouse_types.md
   - subtitle: Data types
     page: soda/supported-data-types.md

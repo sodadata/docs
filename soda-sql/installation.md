@@ -7,7 +7,7 @@ redirect_from: /soda-sql/getting-started/installation.html
 
 # Install Soda SQL
 
-Soda SQL is a command-line interface (CLI) tool that enables you to scan the data in your database to surface invalid, missing, or unexpected data.
+Soda SQL is a command-line interface (CLI) tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data.
 <br />
 
 **[Compatibility](#compatibility)<br />
@@ -18,6 +18,8 @@ Soda SQL is a command-line interface (CLI) tool that enables you to scan the dat
 [Go further](#go-further)<br />**
 
 ## Compatibility
+
+Use Soda SQL to scan a variety of data sources:<br />
 
 {% include compatible-warehouses.md %}
 
@@ -38,13 +40,13 @@ For MSSQL Server users only, install the following:
 
 ## Install
 
-From your command-line interface tool, execute the following command, using the install package that matches the type of warehouse you use to store data.
+From your command-line interface tool, execute the following command, using the install package that matches the type of data source you use to store data.
 
 ```
-$ pip install soda-sql-yourdatawarehouse
+$ pip install soda-sql-yourdatasource
 ```
 
-| Data warehouse | Install package |
+| Data source | Install package |
 | -------------- | --------------- |
 | Amazon Athena  | soda-sql-athena |
 | Amazon Redshift | soda-sql-redshift |
@@ -61,7 +63,7 @@ Optionally, you can install Soda SQL in a virtual environment. Execute the follo
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
-pip install soda-sql-yourdatawarehouse
+pip install soda-sql-yourdatasource
 ```
 
 
@@ -69,7 +71,7 @@ pip install soda-sql-yourdatawarehouse
 
 To upgrade your existing Soda SQL tool to the latest version, use the following command:
 ```shell
-pip install soda-sql-yourdatawarehouse -U
+pip install soda-sql-yourdatasource -U
 ```
 
 ## Troubleshoot

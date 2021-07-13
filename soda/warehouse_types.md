@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Set warehouse configurations
+title: Data source configurations
 parent: Soda
 redirect_from: /soda-sql/documentation/warehouse_types.html
 ---
 
-# Warehouse configurations
+# Data source configurations
 
-Soda SQL needs connection details in order to access your [warehouse]({% link soda/glossary.md %}#warehouse) to scan your data. Each type of warehouse uses different configuration parameters. To set the warehouse configurations in your [warehouse YAML]({% link soda-sql/warehouse.md %}), use the following example configurations that correspond to each database type that Soda SQL supports.
+Soda SQL and Soda Cloud need connection details in order to access your [data source]({% link soda/glossary.md %}#data-source) to scan your data. Each type of data source uses different configuration parameters. To set the data source configurations in your [warehouse YAML]({% link soda-sql/warehouse.md %}) or when adding new dataset in Soda Cloud, use the following example configurations that correspond to each kind of data source that Soda SQL and Soda Cloud support.
 
 **[Amazon Athena](#amazon-athena) <br />
 [Amazon Redshift](#amazon-redshift) <br />
@@ -16,7 +16,7 @@ Soda SQL needs connection details in order to access your [warehouse]({% link so
 [Microsoft SQL Server (Experimental)](#microsoft-sql-server-experimental) <br />
 [PostgreSQL](#postgresql) <br />
 [Snowflake](#snowflake) <br />
-[Troubleshoot warehouse connections]({% link soda/troubleshoot.md %}#warehouse-connections)**
+[Troubleshoot data source connections]({% link soda/troubleshoot.md %}#data-source-connections)**
 
 
 ## Amazon Athena

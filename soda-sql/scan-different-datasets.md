@@ -1,25 +1,25 @@
 ---
 layout: default
-title: Scan multiple datasets or tables
+title: Scan multiple data sources or datasets
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/scan-different-datasets.html
 ---
 
-# Scan multiple datasets or tables
+# Scan multiple data sources or datasets
 
-You can run a single [scan]({% link soda/glossary.md %}#scan %}) against different datasets in your environments. For example, you can run the same scan against data in a [warehouse]({% link soda/glossary.md %}#warehouse) in development environment and data in a warehouse in a production environment.
+You can run a single [scan]({% link soda/glossary.md %}#scan %}) against different [data sources]({% link soda/glossary.md %}#data-source) in your environments. For example, you can run the same scan against data in a development environment and data in a production environment.
 
-You can also run a single scan against different [tables]({% link soda/glossary.md %}#table %}) in your warehouse using [custom metrics]({% link soda/glossary.md %}#custom-metric). 
+You can also run a single scan against different [datasets]({% link soda/glossary.md %}#dataset %}) in your data source using [custom metrics]({% link soda/glossary.md %}#custom-metric). 
 
 ## Run a basic scan
 
 {% include run-a-scan.md %}
 
-## Scan multiple datasets
+## Scan multiple data sources
 
-To run the same scan against different datasets, proceed as follows.
+To run the same scan against different data sources, proceed as follows.
 
-1. Prepare one [warehouse YAML file]({% link soda-sql/warehouse.md %}) for each data warehouse you wish to scan. For example:
+1. Prepare one [warehouse YAML file]({% link soda-sql/warehouse.md %}) for each data source you wish to scan. For example:
 * `warehouse_postgres_dev.yml`
 ```yaml
 name: my_postgres_datawarehouse_dev
@@ -44,27 +44,25 @@ connection:
   database: prod
   schema: public
 ```
-2. Prepare a [scan YAML file]({% link soda-sql/scan-yaml.md %}) to define all the tests you wish to run against your datasets. See [Define tests]({% link soda-sql/tests.md %}) for details.
-3. Run separate Soda SQL scans against each dataset by specifying which warehouse YAML to scan and using the same scan YAML file. For example:
+2. Prepare a [scan YAML file]({% link soda-sql/scan-yaml.md %}) to define all the tests you wish to run against your data sources. See [Define tests]({% link soda-sql/tests.md %}) for details.
+3. Run separate Soda SQL scans against each data source by specifying which warehouse YAML to scan and using the same scan YAML file. For example:
 ```shell
-soda scan warehouse_postgres_dev.yml tables/my_table_scan.yml 
-soda scan warehouse_postgres_prod.yml tables/my_table_scan.yml
+soda scan warehouse_postgres_dev.yml tables/my_dataset_scan.yml 
+soda scan warehouse_postgres_prod.yml tables/my_dataset_scan.yml
 ```
 
-## Scan multiple tables
+## Scan multiple datasets
 
-Use a single scan YAML file to run tests on different tables in your warehouse.
+Use a single scan YAML file to run tests on different datasets in your data source.
 
-Prepare one [scan YAML file]({% link soda-sql/scan-yaml.md %}) to define the tests you wish to apply against multiple tables. Use custom metrics to write SQL queries and subqueries that run against multiple tables. When you run a scan, Soda SQL uses your SQL queries to query data in the tables you specified in your scan YAML file. 
-
-Example coming soon.
+Prepare one [scan YAML file]({% link soda-sql/scan-yaml.md %}) to define the tests you wish to apply against multiple datasets. Use custom metrics to write SQL queries and subqueries that run against multiple datasets. When you run a scan, Soda SQL uses your SQL queries to query data in the datasets you specified in your scan YAML file. 
 
 
 ## Go further
 
 * See [Example tests by metric]({% link soda-sql/examples-by-metric.md %}) to learn more about defining tests.
 * Learn [How Soda SQL works]({% link soda-sql/concepts.md %}).
-* Learn more about [Metrics]({% link soda-sql/sql_metrics.md %}).
+* Learn more about [Metrics]({% link soda/metrics.md %}).
 * Learn how to [apply dynamic filters]({% link soda-sql/filtering.md %}) to your scan.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 

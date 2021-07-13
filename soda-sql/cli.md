@@ -9,9 +9,9 @@ redirect_from: /soda-sql/documentation/cli.html
 
 | Command               | Description |
 | --------------------- | ----------- |
-| `soda analyze` | Analyzes the contents of your warehouse and automatically prepares a scan YAML file for each table. Soda SQL puts the YAML files in the `/tables` directory inside the warehouse directory. See [Create a scan YAML file]({% link soda-sql/scan-yaml.md %}#create-a-scan-yaml-file) for details.|
+| `soda analyze` | Analyzes the contents of your data source and automatically prepares a scan YAML file for each dataset. Soda SQL puts the YAML files in the `/tables` directory inside the warehouse directory. See [Create a scan YAML file]({% link soda-sql/scan-yaml.md %}#create-a-scan-yaml-file) for details.|
 | `soda create yourdatawarehouse` | Creates a new `warehouse.yml` file and prepares credentials in your `~/.soda/env_vars.yml`. Soda SQL does not overwrite or remove and existing environment variables, it only adds new. See [Create a warehouse YAML file]({% link soda-sql/warehouse.md %}#create-a-warehouse-yaml-file) for details. |
-| `soda scan` | Uses the configurations in your scan YAML file to prepare, then run SQL queries against the data in your warehouse. See [Run a scan]({% link soda/scan.md %}#run-a-scan) for details. |
+| `soda scan` | Uses the configurations in your scan YAML file to prepare, then run SQL queries against the data in your data source. See [Run a scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) for details. |
 
 ## List of commands
 
@@ -51,7 +51,7 @@ $ soda scan --help
 ## Go further
 
 * Learn [How Soda SQL works]({% link soda-sql/concepts.md %}).
-* [Quick start tutorial]({% link soda-sql/5_min_tutorial.md %}): Set up Soda SQL and run your first scan!
+* Follow the [Quick start tutorial]({% link soda-sql/5_min_tutorial.md %}) to set up Soda SQL and run your first scan!
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

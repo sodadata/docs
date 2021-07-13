@@ -8,9 +8,9 @@ redirect_from: /soda-sql/documentation/scan-yaml.html
 
 # Scan YAML
 
-A **scan** is a Soda SQL CLI command that uses SQL queries to extract information about data in a database table.
+A **scan** is a Soda SQL CLI command that uses SQL queries to extract information about data in a [dataset]({% link soda/glossary.md %}#dataset).
 
-Instead of laboriously accessing your database and then manually defining SQL queries to analyze the data in tables, you can use a much simpler Soda SQL scan. First, you configure scan metrics and tests in a **scan YAML** file, then Soda SQL uses the input from that file to prepare, then run SQL queries against your data.
+Instead of laboriously accessing your data source and then manually defining SQL queries to analyze the data in datasets, you can use a much simpler Soda SQL scan. First, you configure scan metrics and tests in a **scan YAML** file, then Soda SQL uses the input from that file to prepare, then run SQL queries against your data.
 <br />
 
 **[Create a scan YAML file](#create-a-scan-yaml-file)<br />
@@ -20,9 +20,9 @@ Instead of laboriously accessing your database and then manually defining SQL qu
 
 ## Create a scan YAML file
 
-You need to create a **scan YAML** file for every table in your [warehouse]({% link soda/glossary.md %}#warehouse) that you want to scan. If you have 20 tables in your warehouse, you need 20 YAML files, each corresponding to a single table.
+You need to create a **scan YAML** file for every dataset in your [data source]({% link soda/glossary.md %}#data-source) that you want to scan. If you have 20 datasets in your data source, you need 20 YAML files, each corresponding to a single dataset.
 
-You can create scan YAML files yourself, but the CLI command `soda analyze` sifts through the contents of your warehouse and automatically prepares a scan YAML file for each table. Soda SQL puts the YAML files in a `/tables` directory in your [warehouse directory]({% link soda/glossary.md %}#warehouse-directory). (If you have not already created a warehouse YAML file, refer to the instructions in [Warehouse YAML]({% link soda-sql/warehouse.md %}).)
+You can create scan YAML files yourself, but the CLI command `soda analyze` sifts through the contents of your data source and automatically prepares a scan YAML file for each dataset. Soda SQL puts the YAML files in a `/tables` directory in your [warehouse directory]({% link soda/glossary.md %}#warehouse-directory). (If you have not already created a warehouse YAML file, refer to the instructions in [Warehouse YAML]({% link soda-sql/warehouse.md %}).)
 
 In your command-line interface, navigate to the directory that contains your `warehouse.yml` file, then execute the following:
 
@@ -58,30 +58,30 @@ WHERE lower(table_name) = 'demodata'
 ```
 In the above example, Soda SQL created a scan YAML file named `demodata.yml` and put it in the `/tables` directory.
 
-If you decide to create your own scan YAML files manually, best practice dictates that you name the YAML file using the same name as the table in your warehouse.
+If you decide to create your own scan YAML files manually, best practice dictates that you name the YAML file using the same name as the dataset in your warehouse.
 
-**Tip:** Use the `soda analyze --help` command to review optional parameters you can include to customize the analysis. For example, use `soda analyze --include customer` to analyze only the table named `customer` in your warehouse. 
+**Tip:** Use the `soda analyze --help` command to review optional parameters you can include to customize the analysis. For example, use `soda analyze --include customer` to analyze only the dataset named `customer` in your data source. 
 
 ## Anatomy of the scan YAML file
 
-When it creates your scan YAML file, Soda SQL pre-populates it with the `test` and `metric` configurations it deems useful based on the data in the table it analyzed. You can keep those configurations intact and use them to run your scans, or you can adjust or add to them to fine-tune the tests Soda SQL runs on your data.
+When it creates your scan YAML file, Soda SQL pre-populates it with the `test` and `metric` configurations it deems useful based on the data in the dataset it analyzed. You can keep those configurations intact and use them to run your scans, or you can adjust or add to them to fine-tune the tests Soda SQL runs on your data.
 
 The following describes the contents of a scan YAML file that Soda SQL created and pre-populated.
 
 ![scan-anatomy](/assets/images/scan-anatomy.png){:height="440px" width="440px"}
 
 
-**1** - The value of **table_name** identifies a SQL table in your database. If you were writing a SQL query, it is the value you would supply for your `FROM` statement.
+**1** - The value of **table_name** identifies a dataset in your data source. If you were writing a SQL query, it would be the value you would supply for your `FROM` statement.
 
-**2** - A **metric** is a property of the data in your database.  A **measurement** is the value for a metric that Soda SQL obtains during a scan. For example, in `row_count = 5`, `row_count` is the metric and `5` is the measurement.
+**2** - A **metric** is a property of the data in your data source.  A **measurement** is the value for a metric that Soda SQL checks against during a scan. For example, in the test `row_count = 5`, `row_count` is the metric and `5` is the measurement.
 
 **3** - A **test** is a Python expression that, during a scan, checks metrics to see if they match the parameters defined for a measurement. As a result of a scan, a test either passes or fails.
 
-For example, the test `row_count > 0` checks to see if the table has at least one row. If the test passes, it means the table has at least one row; if the test fails, it means the table has no rows, which means that the table is empty. Tests in this part of the YAML file apply to all columns in the table. A single Soda SQL scan can run many tests on the contents of the whole table.
+For example, the test `row_count > 0` checks to see if the dataset has at least one row. If the test passes, it means the dataset has at least one row; if the test fails, it means the dataset has no rows, which means that it is empty. Tests in this part of the YAML file apply to all columns in the dataset. A single Soda SQL scan can run many tests on the contents of the whole dataset.
 
-**4** - A **column** identifies a specific column in your table. Use column names to configure tests against individual columns in the table. A single Soda SQL scan can run many tests in many columns.
+**4** - A **column** identifies a specific column in your dataset. Use column names to configure tests against individual columns in the dataset. A single Soda SQL scan can run many tests in many columns.
 
-**5** - **`id`** and **`feepct`** are column names that identify specific columns in the table this scan YAML file scans.
+**5** - **`id`** and **`feepct`** are column names that identify specific columns in the dataset this scan YAML file scans.
 
 **6** - The value of the **column configuration key** `valid_format` identifies the only form of data in the column that Soda SQL recognizes as valid during a scan. In this case, any row in the `id` column that contains data that is in UUID format (universally unique identifier) is valid; anything else is invalid.
 
@@ -89,24 +89,22 @@ For example, the test `row_count > 0` checks to see if the table has at least on
 
 ## Scan YAML configuration keys
 
-The table below describes all of the top level configuration keys you can use to customize your scan.
+The table below describes all of the top level **configuration keys** you can use to customize your scan.
 
 | Key         | Description | Required |
 | ----------- | ----------- | -------- |
-| `columns` | The section of the scan YAML file in which you define tests and metrics that apply to individual columns. See [Metrics]({% link soda-sql/sql_metrics.md %}#column-metrics) for configuration details.| optional |
+| `columns` | The section of the scan YAML file in which you define tests and metrics that apply to individual columns. See [Column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics) for configuration details.| optional |
 | `filter` | A SQL expression that Soda SQL adds to the `WHERE` clause in the query. Use `filter` to pass variables, such as date, into a scan. Uses [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) as the templating language. See [Apply filters]({% link soda-sql/filtering.md %}) for configuration details.| optional |
 | `frequent_values_limit` | Defines the maximum number of elements for the `maxs` metric. Default value is `5`.| optional |
-| `metrics` |  A list of all the default metrics that you can use to configure a scan. This list includes both table and column metrics. See [Metrics]({% link soda-sql/sql_metrics.md %}) for configuration details.| optional |
+| `metrics` |  A list of all the built-in metrics that you can use to configure a scan. This list includes both dataset and column metrics. See [Configure metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}) for configuration details.| optional |
 | `mins_maxs_limit` | Defines the maximum number of elements for the `mins` metric. Default value is `5`.| optional |
-| `sample_method` | Defines the sample method Soda SQL uses when you specify a `sample_percentage`. For Snowflake, the values available for this key are: `BERNOULLI`, `ROW`, `SYSTEM`, and `BLOCK`. | required, if `sample_percentage` is specified |
-| `sample_percentage` | Defines a limit to the number of rows in a table that Soda SQL scans during a scan. (Tested on Postgres only.) | optional|
-| `sql_metrics` | The section of the scan YAML file in which you define custom sql queries to run during a scan. You can apply `sql_metrics` to all data in the table, or data in individual columns. See [Metrics]({% link soda-sql/sql_metrics.md %}#sql-metrics) for configuration details.| optional |
-| `table_name` | Identifies a SQL table in your database. | required |
+| `sql_metrics` | The section of the scan YAML file in which you define custom sql queries to run during a scan. You can apply `sql_metrics` to all data in the dataset, or data in individual columns. See [Custom metrics]({% link soda-sql/sql_metrics.md %}#custom-metrics) for configuration details.| optional |
+| `table_name` | Identifies a dataset in your data source. | required |
 
 
 ## Go further
 
-* Next, [run a scan]({% link soda/scan.md %}#run-a-scan) on the data in your warehouse.
+* Next, [run a scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) on the data in your warehouse.
 * Learn more about the [warehouse YAML]({% link soda-sql/warehouse.md %}) file.
 * Learn how to configure [metrics]({% link soda-sql/sql_metrics.md %}) in your YAML files.
 * Learn more about configuring [tests]({% link soda-sql/tests.md %}).

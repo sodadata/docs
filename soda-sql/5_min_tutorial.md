@@ -16,13 +16,13 @@ Use your command-line interface to **connect** Soda SQL to your database, prepar
 
 ## Create a sample warehouse (optional)
 
-In the context of Soda SQL, a warehouse represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. If you do not have access to a warehouse on your system, you can use Docker to build a sample PostgreSQL warehouse so that you can set up your Soda SQL CLI tool and see it in action.
+In the context of Soda SQL, a warehouse is a type of data source that represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. If you do not have access to a warehouse on your system, you can use Docker to build a sample PostgreSQL warehouse so that you can set up your Soda SQL CLI tool and see it in action.
 
 All the instructions below reference this sample warehouse in the commands.
 
 1. From your command-line interface, execute the following to build a containerized PostgreSQL warehouse. Note that the `-v` option connects to a location on your local drive in which Soda SQL will create your warehouse directory file further in this tutorial.
 ```shell
-$ docker run --name soda_sql_tutorial_db --rm -d \
+docker run --name soda_sql_tutorial_db --rm -d \
     -p 5432:5432 \
     -v soda_sql_tutorial_postgres:/var/lib/postgresql/data:rw \
     -e POSTGRES_USER=sodasql \
@@ -53,7 +53,7 @@ $ cd soda_sql_tutorial
 ```
 3. Use the `soda create postgres` command to create and pre-populate two files that enable you to configure connection details for Soda SQL to access your warehouse:
 * a `warehouse.yml` file which stores access details for your warehouse ([read more]({% link soda-sql/warehouse.md %}))
-* an `env_vars.yml` file which securely stores warehouse login credentials ([read more]({% link soda-sql/warehouse.md %}#env_vars-yaml-file))<br />
+* an `env_vars.yml` file which securely stores data source login credentials ([read more]({% link soda-sql/warehouse.md %}#env_vars-yaml-file))<br />
 <br />
 Command:
 ```shell
@@ -100,14 +100,48 @@ WHERE lower(table_schema)='public'
   | Next run 'soda scan warehouse.yml tables/demodata.yml' to calculate measurements and run tests
 ```
 2. Use the following command to review the contents of the new scan YAML file that Soda SQL created and named `demodata.yml`.<br />
-<br />
+
 Command:
+
 ```shell
 cat ./tables/demodata.yml
 ```
-Output:<br />
-![tutorial-output](/assets/images/tutorial-output.png){:height="340px" width="340px"}
-3. Note the three tests that Soda SQL configured in `demodata.yml`. When it created this file, Soda SQL pre-populated it with the `test` and `metric` configurations it deemed useful based on the data in the table it analyzed. Read more about the [Anatomy of the scan YAML file]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file).
+<br />
+Output:
+
+```yaml
+table_name: demodata
+metrics:
+  - row_count
+  - missing_count
+  - missing_percentage
+  - values_count
+  - values_percentage
+  - invalid_count
+  - invalid_percentage
+  - min_length
+  - max_length
+  - avg_length
+  - min
+  - max
+  - avg
+  - sum
+  - variance
+  - stddev
+tests:
+  - row_count > 0
+columns:
+  id:
+    valid_format: uuid
+    tests:
+      - invalid_percentage == 0
+  feepct:
+    valid_format: number_percentage
+    tests:
+      - invalide_percentage == 0
+```
+
+Note the three tests that Soda SQL configured in `demodata.yml`. When it created this file, Soda SQL pre-populated it with the `test` and `metric` configurations it deemed useful based on the data in the table it analyzed. Read more about the [Anatomy of the scan YAML file]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file).
 
 #### Troubleshoot
 
@@ -166,11 +200,10 @@ $ docker volume rm soda_sql_tutorial_postgres
 
 ## Go further
 
-* [Sign up](https://cloud.soda.io/signup) for a free Soda Cloud account to access visualized scan results and historic scan data.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Consult [Configure Soda SQL]({% link soda-sql/configure.md %}) for details on setting up a non-PostgreSQL version of Soda SQL.
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
-* Learn more about the [scan YAML file]({% link soda-sql/scan-yaml.md %}) and how to [run scans]({% link soda/scan.md %}#run-a-scan).
+* Learn more about the [scan YAML file]({% link soda-sql/scan-yaml.md %}) and how to [run scans]({% link soda/scan.md %}#run-a-scan-in-soda-sql).
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />
 

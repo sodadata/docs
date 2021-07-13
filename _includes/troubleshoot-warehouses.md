@@ -1,5 +1,5 @@
-**Problem:** I get errors in the CLI when I run `soda analyze` on my MS SQL server warehouse.   <br />
-**Solution:** Connecting Soda SQL to MS SQL servers is still in experimental phase. You may encounter errors before this warehouse connection type is stabilized.
+**Problem:** I get errors in the CLI when I run `soda analyze` on my MS SQL server data source.   <br />
+**Solution:** Connecting Soda SQL to MS SQL servers is still in experimental phase. You may encounter errors before this data source connection type is stabilized.
 <br />
 
 **Problem:**  I use Amazon Athena and I'm having trouble connecting Soda SQL to data in an S3 bucket. <br />

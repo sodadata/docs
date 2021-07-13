@@ -7,15 +7,18 @@ redirect_from: /soda-sql/documentation/scan.html
 
 # Scans 
 
-A **scan** is a Soda SQL CLI command that uses SQL queries to extract information about data in a dataset.
+A **scan** is a command that executes [tests]({% link soda/glossary.md %}#test) to extract information about data in a [dataset]({% link soda/glossary.md %}#dataset). 
 
-[Run a scan](#run-a-scan)<br />
+Soda SQL uses the input in the scan YAML file and Soda Cloud monitors to prepare SQL queries that it runs against the data in a dataset. All tests return true or false; if true, the test passed and you know your data is sound; if false, the test fails which means the scan discovered data that falls outside the expected or acceptable parameters you defined in your test.
+
+[Run a scan in Soda SQL](#run-a-scan-in-soda-sql)<br />
 [Scan output in Soda SQL](#scan-output-in-soda-sql)<br />
+[Schedule a scan in Soda Cloud](#schedule-a-scan-in-soda-cloud)<br />
 [Scan output in Soda Cloud](#scan-output-in-soda-cloud)<br />
 [Programmatically use scan output](#programmatically-use-scan-output)<br />
 [Go further](#go-further)<br />
 
-## Run a scan
+## Run a scan in Soda SQL
 
 {% include run-a-scan.md %}
 
@@ -37,15 +40,21 @@ To test specific portions of data, such as data pertaining to a specific date, y
 
 {% include scan-output.md %}
 
+## Schedule a scan in Soda Cloud
+
+When you connect a [data source]({% link soda/glossary.md %}#data-source) to your Soda Cloud account, the guided steps ask that you define a schedule for scans of your data. See [Import settings]({% link soda-cloud/add-datasets.md %}#import-settings) for more information about setting a scan schedule. Note, you cannot run an *ad hoc* scan directly from Soda Cloud.
+
+You can also define scan schedules for individual [datasets]({% link soda/glossary.md %}#dataset). For example, you can specify a more frequent scan schedule for a dataset that changes often. Learn more about [adjusting a dataset scan schedule]({% link soda-cloud/dataset-scan-schedule.md %}). 
+
 ## Scan output in Soda Cloud
 
-If you have a Soda Cloud account and you have [connected Soda SQL]({% link soda-cloud/connect_to_cloud.md %}) to your account, Soda SQL automatically pushes your scan output to Soda Cloud. In the Soda Cloud web user interface, the test results manifest as monitor results. Log in to view the **Monitor Results** dashboard; each row in the Monitor Results table represents the result of a test, and the icon indicates whether the test passed or failed.
+Whether you defined your tests in your [scan YAML file]({% link soda-sql/scan-yaml.md %}) for Soda SQL or in a [monitor]({% link soda-cloud/monitors.md %}) in Soda Cloud, in the Soda Cloud web user interface, all test results manifest as monitor results. Log in to view the **Monitors** dashboard; each row in the **Monitor Results** table represents the result of a test, and the icon indicates whether the test passed or failed.
 
 ![monitor-results](/assets/images/monitor-results.png){:height="550px" width="550px"}
 
-When you run a scan in Soda SQL, it connects with Soda Cloud to:
-1. push the results of tests you configured in the scan YAML file to Soda Cloud
-2. fetch tests associated with any [monitors you have created]({% link soda-cloud/monitors.md %}) in Soda Cloud, then execute the tests and push the test results to Soda Cloud
+Soda Cloud uses Soda SQL in the background to run scheduled scans. Soda SQL uses a secure API to connect to Soda Cloud. When it completes a scan, Soda SQL:
+1. pushes the results of any tests you configured in the scan YAML file to Soda Cloud
+2. fetches tests associated with any monitors you created in Soda Cloud, then executes the tests and pushes the test results to Soda Cloud
 
 ![scan-with-cloud](/assets/images/scan-with-cloud.png){:height="350px" width="350px"}
 
@@ -60,7 +69,7 @@ Further, in your orchestration tool, you can use Soda SQL scan results to block 
 ## Go further
 
 * Learn more about [scan YAML files]({% link soda-sql/scan-yaml.md %}).
-* Learn more about the [warehouse YAML]({% link soda-sql/warehouse.md %}) file.
+* Learn more about [creating monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
 * Learn how to configure [metrics]({% link soda-sql/sql_metrics.md %}) in your YAML files.
 * Learn more about configuring [tests]({% link soda-sql/tests.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

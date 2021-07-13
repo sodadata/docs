@@ -9,13 +9,13 @@ redirect_from: /soda-sql/examples/examples-test-unique.html
 
 *Last modified on {% last_modified_at %}*.
 
-Where your [warehouse]({% link soda/glossary.md %}#warehouse) table contains records that ought to be unique, such as item identifiers, you may wish to test the data to ensure there are no duplicates or that each value is unique.  
+Where your dataset contains records that ought to be unique, such as item identifiers, you may wish to test the data to ensure there are no duplicates or that each value is unique.  
 
 To illustrate how to use Soda SQL to test the uniqueness of data, imagine an e-commerce company that fulfills orders for shipment to customers. The information associated with each shipment is stored in a fulfillment table in a database. Here are some of the ways the company could test their data.
 
 ## Test for duplicates
 
-The company needs to make sure that each individual shipment is associated with a unique identifier for tracking purposes. To ensure that `shipment_id` is not accidentally duplicated in their fulfillment system, a Data Engineer could use Soda SQL to test for duplicates. To do so, the engineer defines a [test]({% link soda/glossary.md %}#test) in the [scan YAML file]({% link soda-sql/scan-yaml.md %}) associated with the table that contains the `shipment_id` data.
+The company needs to make sure that each individual shipment is associated with a unique identifier for tracking purposes. To ensure that `shipment_id` is not accidentally duplicated in their fulfillment system, a Data Engineer could use Soda SQL to test for duplicates. To do so, the engineer defines a [metric group]({% link soda-sql/sql_metrics.md %}#metric-groups-and-dependencies) and a [test]({% link soda/glossary.md %}#test) in the [scan YAML file]({% link soda-sql/scan-yaml.md %}) associated with the table that contains the `shipment_id` data.
 
 Scan YAML:
 
@@ -35,7 +35,7 @@ columns:
       - duplicate_count == 0
 ```
 
-Then, the engineer [runs a Soda SQL scan]({% link soda/scan.md %}#run-a-scan) as follows:
+Then, the engineer [runs a Soda SQL scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) as follows:
 
 Scan command:
 
@@ -58,7 +58,7 @@ Scan output:
 
 ## Test for unique
 
-Alternatively, to ensure that each value in the `shipment_id` column is unique relative to all other values in the column, a Data Engineer could define a test to count unique values. To do so, the engineer defines a test in the scan YAML file associated with the table that contains the `shipment_id` data.
+Alternatively, to ensure that each value in the `shipment_id` column is unique relative to all other values in the column, a Data Engineer could define a test to count unique values. To do so, the engineer defines a metric grou pand a test in the scan YAML file associated with the table that contains the `shipment_id` data.
 
 Scan YAML:
 
@@ -120,7 +120,7 @@ Scan output, fail:
 
 Where absolutely unique values is not a requirement, a Data Engineer may wish to test data in a table column for relative uniqueness. Uniqueness is a ratio that produces a number between 0 and 100 that indicates how unique the data in a column is:  0 indicates that all the values are the same; 100 indicates that all the values in the column are unique. 
 
-For example, to loosely gauge the concentration of fulfillment orders destined for a particular country, an engineer defines a test in the scan YAML file associated with the table that contains `destination` data. 
+For example, to loosely gauge the concentration of fulfillment orders destined for a particular country, an engineer defines a metric group and a test in the scan YAML file associated with the table that contains `destination` data. 
 
 Scan YAML:
 

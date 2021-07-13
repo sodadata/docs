@@ -9,7 +9,7 @@ redirect_from: /soda-sql/documentation/orchestrate_scans.html
 
 Integrate Soda SQL with a **data orchestration tool** such as, Airflow, Dagster, or dbt, to automate and schedule your search for "bad" data. Refer to [Compatibility]({% link soda-sql/installation.md %}#compatibility) for details on Soda SQL requirements.
 
-Not only can you schedule [scans]({% link soda/glossary.md %}#scan) of [warehouse]({% link soda/glossary.md %}#warehouse) [tables]({% link soda/glossary.md %}#table), you can also configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically block "bad" data from contaminating your data pipeline.
+Not only can you schedule [scans]({% link soda/glossary.md %}#scan) of [datasets]({% link soda/glossary.md %}#dataset), you can also configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically block "bad" data from contaminating your data pipeline.
 
 Use the results of a Soda SQL scan to instruct your orchestration tool to:
 - block "bad" data from entering your data pipeline (for testing), or,
@@ -234,7 +234,7 @@ ingest_data_op >> soda_sql_scan_op >> publish_data_op
 Create a custom Prefect Task to run Soda SQL scans programmatically.
 
 1. Install Soda SQL and Prefect in your environment.
-2. Make sure that Soda SQL is available in the environment in whic your Prefect flow runs. For example, if you use Docker as the storage backend, you must provide Soda SQL as a dependency. Refer to [Prefect documentation](https://docs.prefect.io/core/concepts/flows.html).
+2. Make sure that Soda SQL is available in the environment in which your Prefect flow runs. For example, if you use Docker as the storage backend, you must provide Soda SQL as a dependency. Refer to [Prefect documentation](https://docs.prefect.io/core/concepts/flows.html).
 3. Define a custom Prefect Task to wrap Soda SQL and use it in your Prefect Flow. Refer to the following basic implementation of a SodaSQLScan Task.
 
 ```python
