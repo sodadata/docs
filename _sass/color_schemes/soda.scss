@@ -461,6 +461,12 @@ h5,
 h6 {
     font-weight: 600 !important;
     color: #000000 !important;
+
+    scroll-margin-top: 60px;
+    
+    @media (min-width: 50rem) {
+        scroll-margin-top: 80px;
+    }
 }
 
 .main-content h1 {
