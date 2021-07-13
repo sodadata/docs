@@ -16,7 +16,7 @@ Using the information Soda Cloud discovered about your datasets during its first
 DO NOT enable sample data if your dataset contains sensitive information or personally identifiable information (PII).
 
 1. From the **Datasets** dashboard, open the dataset in which you want to enable sample data.
-2. Click the **Sample data** tab, then check **Enable Sample Data** to enable Soda Cloud to capture sample data for the dataset during its next scan. If you see a message that asks you to review time partitioning settings before enabling, follow the [instructions]({% link soda-cloud/time-partitioning.md %}) to review the settings for the dataset.
+2. Click the **Sample data** tab, then check **Enable Sample Data** to enable Soda Cloud to capture sample data for the dataset during its next scan. <!--If you see a message that asks you to review time partitioning settings before enabling, follow the [instructions]({% link soda-cloud/time-partitioning.md %}) to review the settings for the dataset.-->
 
 Use the sample data to gain some insight into the data contained in your dataset and help you determine the ways in which you want to test it when you [create a new monitor]({% link soda-cloud/monitors.md %}).
 

@@ -45,10 +45,10 @@ Soda Cloud also automatically creates a **row count anomaly detection monitor** 
 From the **Datasets** dashboard, click one of your time-series datasets to open it, then select the **Monitors** tab to review the monitor that Soda Cloud created for you. Learn more about creating [anomaly detection monitors]({% link soda-cloud/anomaly-detection.md %}).  
 
 You can also examine each dataset and configure any of the following optional settings:
-* display [column metrics]({% link soda-cloud/display-column-metrics.md %}) for all datasets
-* present [sample data]({% link soda-sql/samples.md %}) for individual datasets
+<!--* display [column metrics]({% link soda-cloud/display-column-metrics.md %}) for all datasets-->
+<!--* display [sample data]({% link soda-cloud/display-samples.md %}) for individual datasets-->
 * adjust the [scan schedule]({% link soda-cloud/dataset-scan-schedule.md %}) for individual datasets
-* define [time partitioning]({% link soda-cloud/time-partitioning.md %}) for individual datasets
+<!--* define [time partitioning]({% link soda-cloud/time-partitioning.md %}) for individual datasets-->
 * define attributes for individual datasets, including data owner, tags, and a description
 
 ## Go further

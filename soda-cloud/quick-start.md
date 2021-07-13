@@ -42,7 +42,7 @@ All the instructions in this tutorial reference a PostgreSQL data source, but yo
 {% include compatible-warehouses.md %}
 
 1. If you have not already done so, create a free Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. In Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow the guided steps to connect a data source. Use the following input values for the **Connection Details** for reference. 
+2. In Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow the guided steps to connect a data source. As reference, use the following input values for the **Connection Details** for a PostgreSQL data source. 
 * Data source name: `demodata`
 * Data source type: `PostgreSQL`
 * Host: `localhost`
@@ -69,18 +69,20 @@ If you do not use Slack, Soda Cloud notifies you and any teammates you invite vi
 
 After Soda Cloud completes its first scheduled scan of your data source, you can use the data and metadata it collected, such as column names and data types, to create a monitor and alert. 
 
+Note that Soda Cloud also automatically created a **row count anomaly detection monitor** for each dataset that contains time-series data. This enables Soda Cloud to start learning row count patterns in your dataset over the course of the next few scheduled scans and surface anything it recognizes as anomalous. See [anomaly detection]({% link soda-cloud/anomaly-detection.md %}) for details.
+
 For a new monitor, you define several details including which data to test, what tests to run, and whom to notify when bad data triggers an alert. 
 
 1. In Soda Cloud, navigate to the **Monitors** dashboard, then click the stacked dots to **Create Monitor**. Select the type `Metric`, then follow the guided steps to complete the setup. Use the following input values for reference.
 * Dataset: `demodata`
-* Metric type: `Average`
-* Column: `size`
+* Metric Type: `Row Count` <br />(For datasets you added [via Soda Cloud](#sign-up-and-add-datasets), you can only select Row Count for this field. Soon, Soda Cloud will make more Metric Types available for selection for all datasets.)
+* Column: n/a
 * Evaluation type: `Threshold`
-* Critical Alert: `if greater than`; `5300`
+* Critical Alert: `if less than`; `1`
 * Add people, roles or channels to alert: `your slack channel`, if using Slack
 * Notify about: `Critical Alerts`
 * Frequency: `Immediately`
-2. When Soda Cloud runs its next scheduled scan of your data source, it runs the test you just created in your monitor. If the test fails, the failure triggers the alert you defined and sends a notification to the Slack channel you identified in your monitor, or your email address if you do not use Slack.
+2. When Soda Cloud runs its next scheduled scan of your data source, it runs the test you just created in your monitor. If the test fails (which, with the example input, would indicate that your dataset is empty), the failure triggers the alert you defined and sends a notification to the Slack channel you identified in your monitor, or your email address if you do not use Slack.
 
 Refer to [Create monitors and alerts]({% link soda-cloud/monitors.md %}) for further details.
 
@@ -88,7 +90,7 @@ Refer to [Create monitors and alerts]({% link soda-cloud/monitors.md %}) for fur
 
 When Soda Cloud completes its second scheduled scan of your data source, it runs your test and presents the results in the **Monitors** dashboard.
 
-1. Review the results of your test in the **Monitor Results** table in Soda Cloud to find the result for the monitor you just created. See the example below in which the test failed.
+1. Review the results of your test in the **Monitor Results** table in Soda Cloud to find the result for the monitor you just created. See the example below in which a test passed.
 ![tutorial-monitor-results](/assets/images/tutorial-monitor-results.png){:height="600px" width="600px"}
 2. Click the monitor result to access details that can help you diagnose and solve the data issue.
 3. Check your Slack channel or email inbox; if the test failed, the scan surfaced a data issue that triggered your alert so Soda Cloud sent a notification.

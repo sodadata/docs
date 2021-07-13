@@ -1,51 +1,48 @@
 ---
 layout: default
-title: Metrics
+title: Configure metrics
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/sql_metrics.html
 ---
 
-# Metrics
+# Configure metrics in Soda SQL
 
-A **metric** is a property of the data in your database. A **measurement** is the value for a metric that Soda SQL obtains during a scan. For example, in `row_count = 5`, `row_count` is the metric and `5` is the measurement. The following sections detail the configuration for metrics you can customize in your [scan YAML file]({% link soda-sql/scan-yaml.md %}).
+A **metric** is a property of the data in your database. A **measurement** is the value for a metric that Soda SQL checks against during a scan. The following sections detail the configuration for metrics you can customize in your [scan YAML file]({% link soda-sql/scan-yaml.md %}).
+
+Read more about [Metrics]({% link soda/metrics.md %}) in general as they apply to both Soda SQL and Soda Cloud. 
 <br />
 <br />
 
-**[Table metrics](#table-metrics)<br />
+**[Dataset metrics](#dataset-metrics)<br />
 [Column metrics](#column-metrics)<br />
-[Default column metrics](#default-column-metrics) <br />
 [Grouped column metrics](#grouped-column-metrics) <br />
 [Column configuration keys](#column-configuration-keys) <br />
-[Valid format](#valid-format) <br />
+[Valid format](#valid-format-values) <br />
 [Metric groups and dependencies](#metric-groups-and-dependencies)<br />
-[SQL metrics](#sql-metrics)<br />
-[SQL metric names](#sql-metric-names)<br >
-[GROUP BY queries in SQL metrics](#group-by-queries-in-sql-metrics)<br />
-[Variables in SQL metrics](#variables-in-sql-metrics)<br />
-[SQL metrics using file reference](#sql-metrics-using-file-reference)<br />
+[Custpm metrics](#custom-metrics)<br />
+[Custom metric names](#custom-metric-names)<br >
+[GROUP BY queries in custom metrics](#group-by-queries-in-custom-metrics)<br />
+[Variables in custom metrics](#variables-in-custom-metrics)<br />
+[Custom metrics using file reference](#custom-metrics-using-file-reference)<br />
 [Go further](#go-further)<br />**
 
 
-## Table metrics
+## Dataset metrics
 
-Use **table metrics** to define tests in your scan YAML file that apply to all data in the table during a scan.
+Use **dataset metrics** to define tests in your scan YAML file that execute against all data in the dataset during a scan.
 
 ![table-metrics](/assets/images/table-metrics.png){:height="440px" width="440px"}
 
-
-| Table metric | Description      |
-| ---------- | ---------------- |
-| `row_count` | The number of rows in a table. |
-| `schema` | A list of column names in a table, and their data types. |
+{% include dataset-metrics.md %}
 
 
-#### Example tests using a table metric
+#### Example tests using a dataset metric
 
 ```yaml
 tests:
   - row_count > 0
 ```
-Checks to see if the table has more than one row. The test passes if the table contains rows.
+Checks to see if the dataset has more than one row. The test passes if the dataset contains rows.
 
 <br />
 
@@ -53,38 +50,17 @@ Checks to see if the table has more than one row. The test passes if the table c
 tests:
   - row_count =5
 ```
-Checks to see if the table has exactly five rows. The test fails if the table contains more or fewer than five rows.
+Checks to see if the dataset has exactly five rows. The test fails if the dataset contains more or fewer than five rows.
 
 ## Column metrics
 
-Use **column metrics** to define tests in your scan YAML file that apply to specific columns in a table during a scan. See [Examples by metric]({% link soda-sql/examples-by-metric.md %}) for example configurations.
+Use **column metrics** to define tests in your scan YAML file that execute against specific columns in a dataset during a scan. See [Examples by metric]({% link soda-sql/examples-by-metric.md %}) for example configurations.
 
-Where a column metric references a valid or invalid value, or a limit, use the metric in conjunction with a **column configuration**. A Soda SQL scan uses the value of a column configuration key to determine if it should pass or fail a test. See [example](#example-test-using-a-column-metric) below.
+Where a column metric references a valid or invalid value, or a limit, use the metric in conjunction with a **column configuration key**. A Soda SQL scan uses the value of a column configuration key to determine if it should pass or fail a test. See [example](#example-test-using-a-column-metric) below.
 
 ![column-metrics](/assets/images/column-metrics.png){:height="440px" width="440px"}
 
-### Default column metrics
-
-| Default column metric   | Description |  Applies to [data type]({% link soda/supported-data-types.md %}) | Use with column config key(s) |
-| ----------------------- | ----------- | --------------------- | ----------------------------- |
-| `avg` | The calculated average of the values in a numeric column. | number |  - |
-| `avg_length` | The average length of string values in a column.  | text  |  -  |
-| `invalid_count` | The number of rows that contain invalid values. | text  | `valid_format` <br /> `valid_regex` <br /> `valid_values` <br /> `valid_min_length` <br /> `valid_max_length`|
-| `invalid_percentage` | The percentage of rows that contain invalid values.  | text  |  `valid_format` <br /> `valid_regex` <br />`valid_values`<br /> `valid_min_length` <br /> `valid_max_length` |
-| `max` | The greatest value in a numeric column. |  number  |  -  |
-| `max_length` | The maximum length of string values in a column. |  text  |  -  |
-| `min` | The smallest value in a numeric column.  | number |  -  |
-| `min_length` | The minimum length of string values in a column.  | text  |  -  |
-| `missing_count` | The number of rows in a column that do not contain specific content. | text, number, date  | `missing_format` <br /> `missing_regex` <br /> `missing_values`  |
-| `missing_percentage` | The percentage of rows in a column that do not contain specific content. | text, number, date  | `missing_format` <br /> `missing_regex` <br /> `missing_values`|
-| `row_count` | The number of rows in a column. |  text, number, date | - |
-| `stddev` |  The calculated standard deviation of values in a numeric column. | number | - |
-| `sum` | The calculated sum of the values in a numeric column.   | number | -  |
-| `valid_count` |  The number of rows that contain valid content.  | text  | `valid_format` <br /> `valid_regex` <br /> `valid_values` <br /> `valid_min_length` <br /> `valid_max_length` |
-| `valid_percentage` | The percentage of rows that contain valid content.  |  text |  `valid_format` <br /> `valid_regex` <br /> `valid_values` <br /> `valid_min_length` <br /> `valid_max_length` |
-| `values_count` | The number of rows that contain content included in a list of valid values. |  text | `valid_values` <br /> `valid_regex` |
-| `values_percentage` | The percentage of rows that contain content identified by valid values. | text | `valid_values` <br /> `valid_regex` |
-| `variance` | The calculated variance of the values in a numeric column.  | number  | - |
+{% include column-metrics.md %}
 
 
 ### Grouped column metrics
@@ -104,47 +80,11 @@ To use these metrics, be sure to define the `metric_groups` in your scan YAML fi
 
 ### Column configuration keys
 
-| Column configuration key  | Description  | Values |
-| ------------------------- | ------------ | ------ |
-| `metric_groups` | Specifies pre-defined groups of metrics that Soda SQL computes for this column. See [Metric groups and dependencies](#metric-groups-and-dependencies) for details.| `duplicates` <br /> `length` <br /> `missing`  <br /> `profiling` <br /> `statistics` <br /> `validity` |
-| `missing_format` | Specifies missing values such as whitespace or empty strings.|   |
-| `missing_regex` | Use regex expressions to specify your own custom missing values.| regex, no forward slash delimiters |
-| `missing_values` | Specifies the values that Soda SQL is to consider missing in list format.| values in a list |
-| `valid_format` | Specifies a named valid text format. Can apply only to columns using data type TEXT. See [Data types]({% link soda/supported-data-types.md %}). | See `valid_format` value table below.  |
-| `valid_max` | Specifies a maximum value for valid values. | integer |
-| `valid_max_length` | Specifies a maximum string length for valid values. | integer |
-| `valid_min` | Specifies a minimum value for valid values. | integer |
-| `valid_min_length` | Specifies a minimum string length for valid values. | integer |
-| `valid_regex` | Use regex expressions to specify your own custom valid values. | regex, no forward slash delimiters |
-| `valid_values` | Specifies several valid values in list format. | values in a list |
+{% include column-config-keys.md %}
 
-### Valid format
+### Valid format values
 
-Valid formats are experimental and subject to change.<br />
-Valid formats apply only to columns using data type TEXT. See [Data types]({% link soda/supported-data-types.md %}).
-
-| `valid_format` value <br />  | Format |
-| ----- | ------ |
-| `number_whole` | Number is whole. |
-| `number_decimal_point` | Number uses `.` as decimal indicator.|
-| `number_decimal_comma` | Number uses `,` as decimal indicator.|
-| `number_percentage` | Number is a percentage. |
-| `number_money_usd` | Number matches US dollar currency pattern. |
-| `number_money_eur` | Number matches Euro currency pattern. |
-| `number_money_gbp` | Number matches British pound currency pattern. |
-| `number_money_rmb` | Number matches Renminbi yuan currency pattern. |
-| `number_money_chf` | Number matches Swiss franc currency pattern. |
-| `number_money` | Format matches any of the `number_money_` patterns.|
-| `date_eu` | Validates date only, not time. <br />dd/mm/yyyy |
-| `date_us` | Validates date only, not time. <br />mm/dd/yyyy |
-| `date_inverse` | Validates date only, not time. <br />yyyy/mm/dd |
-| `time` | 11:59:00,000<br /> 11:59:00<br /> 11:59<br /> 11-59-00,000<br /> 23:59:00,000<br /> Noon<br /> 1,159 |
-| `date_iso_8601` | Validates date and/or time according to <a href="https://www.w3.org/TR/NOTE-datetime" target="_blank">ISO 8601 format </a>. <br />2021, January 21<br /> October 21, 2015 |
-| `uuid` | Universally unique identifier. |
-| `ip_address` | Four whole numbers separated by `.` |
-| `email` | name@domain.extension |
-| `phone_number` | +12 123 123 1234<br /> 123 123 1234<br /> +1 123-123-1234<br /> +12 123-123-1234<br /> +12 123 123-1234<br /> 555-2368<br /> 555-ABCD |
-| `credit_card_number` | Four four-digit numbers separated by spaces.<br /> Four four-digit numbers separated by dashes.<br /> Sixteen-digit number.<br /> Four five-digit numbers separated by spaces.<br />|
+{% include valid-format-values.md %}
 
 
 #### Example tests using a column metric
@@ -167,7 +107,7 @@ columns:
 
 ## Metric groups and dependencies
 
-Out of the box, Soda SQL includes a **metric groups** configuration key. Define this configuration key in your scan YAML file in the table or in a column so that when you use one of the group's metrics in a test, Soda SQL automatically runs the test against all the metrics in its group.
+Out of the box, Soda SQL includes a **metric groups** configuration key. Define this configuration key in your scan YAML file in the dataset level or column level so that when you use one of the group's metrics in a test, Soda SQL automatically runs the test against all the metrics in its group.
 
 | `metric_groups` value | Metrics the scan includes |
 | ------------------- | ----------------------- |
@@ -209,7 +149,7 @@ columns:
       - invalid_percentage == 0
 ```
 
-The example above defines metric groups at the **column level**, but you can also define metric groups at the **table level** so as to use the individual metrics from the group in tests in multiple columns. See example below.
+The example above defines metric groups at the **column level**, but you can also define metric groups at the **dataset level** so as to use the individual metrics from the group in tests in multiple columns. See example below.
 
 ```yaml
 table_name: demodata
@@ -249,13 +189,13 @@ By default, there exist **dependencies** between some metrics. If Soda SQL scans
 
 
 
-## SQL metrics
+## Custom metrics
 
-If the default set of table and column metrics that Soda SQL offers do not quite give you the information you need from a scan, you can use **SQL metrics** to customize your queries. SQL metrics essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan.
+If the built-in set of dataset and column metrics that Soda SQL offers do not quite give you the information you need from a scan, you can use **custom metrics** to customize your queries. Custom metrics, also known as SQL metrics, essentially enable you to add SQL queries to your scan YAML file so that Soda SQL runs them during a scan.
 
 
-#### Simple example
-In your scan YAML file, use the `sql_metrics` property as a table metric or a column metric. The following simple SQL metric example queries all content in the table to select a single numeric value. The outcome of the test determines whether or not the volume of transactions in the United States is greater than 5000.
+#### Dataset custom metric example
+In your scan YAML file, use the `sql_metrics` property as a dataset metric or a column metric. The following simple custom metric example queries all data in the dataset to select a single numeric value. The outcome of the test determines whether or not the volume of transactions in the United States is greater than 5000.
 
 ```yaml
 table_name: mytable
@@ -269,7 +209,7 @@ sql_metrics:
 ```
 In the example, the computed value (the sum volume of all customer transaction in the United States) becomes a **field** named `total_volume_us`, which, in turn, becomes the name of the metric that you use to define the test Soda SQL that runs on your data. In this case, the test passes if the computed sum of all US transactions exceeds `5000`.
 
-Notice that by default, Soda SQL uses the name of the field as the name of the metric. If you do not want to specify field names inside your SQL queries, you can explicitly name the metrics outside the queries. See [SQL metric names](#sql-metric-names) below.
+Notice that by default, Soda SQL uses the name of the field as the name of the metric. If you do not want to use the default field names inside your SQL queries, you can explicitly name the metrics outside the queries. See [Custom metric names](#custom-metric-names) below.
 
 
 #### Multiple example
@@ -299,9 +239,9 @@ In this example, the tests pass if:
 - the numerical value of the difference between the greatest and smallest of US transactions is less than `60`
 
 
-#### Column SQL metric example
+#### Column custom metric example
 
-The following example uses SQL metrics to run a query against an individual column named `volume`. When you use SQL metrics in a column, the field you define becomes available to use as a metric in the tests in that column.
+The following example uses custom metrics to run a query against an individual column named `volume`. When you use custome metrics in a column, the field you define becomes available to use as a metric in the tests in that column.
 
 ```yaml
 table_name: mytable
@@ -319,9 +259,9 @@ columns:
 ```
 
 
-### SQL metric names
+### Custom metric names
 
-If you do not want to specify field names inside your SQL queries, you can use the **`metric_names` property** to explicitly name the metrics outside the queries. This property contains a list of values which match the order of values in your `SELECT` statement.
+If you do not want to use the default field names inside your SQL queries, you can use the **`metric_names` property** to explicitly name the metrics outside the queries. This property contains a list of values which match the order of values in your `SELECT` statement.
 
 ```yaml
 table_name: mytable
@@ -344,9 +284,9 @@ sql_metrics:
 ```
 
 
-### GROUP BY queries in SQL metrics
+### GROUP BY queries in custom metrics
 
-If your SQL query uses a `GROUP BY` clause, you can use a **`group_by`** property in your SQL metrics to instruct Soda SQL to run each test against each group combination. The example below runs each of the four tests against each country in the table.
+If your SQL query uses a `GROUP BY` clause, you can use a **`group_by`** property in your custom metrics to instruct Soda SQL to run each test against each group combination. The example below runs each of the four tests against each country in the dataset.
 
 Set the `group_property` as in the example below.
 
@@ -370,11 +310,11 @@ sql_metrics:
 ```
 
 
-### Variables in SQL metrics
+### Variables in custom metrics
 
 In Soda SQL, you set a **variable** to apply a filter to the data that Soda SQL scans. Often you use a variable to filter the range of a scan by date. Refer to [Apply filters]({% link soda-sql/filtering.md %}) for details.
 
-When you define a variable in your scan YAML file, Soda SQL applies the filter to all tests *except* tests defined in SQL metrics. To apply a filter to SQL metrics tests, be sure to explicitly define the variable in your SQL query, as in the example below.
+When you define a variable in your scan YAML file, Soda SQL applies the filter to all tests *except* tests defined in custom metrics. To apply a filter to custom metrics tests, be sure to explicitly define the variable in your SQL query, as in the example below.
 {% raw %}
 ```yaml
 table_name: mytable
@@ -389,9 +329,9 @@ sql_metrics:
 ```
 {% endraw %}
 
-### SQL metrics using file reference
+### Cutom metrics using file reference
 
-Instead of including all your customized SQL queries in the SQL metrics in your scan YAML file, you can use **`sql_file`** to reference a relative file.
+Instead of including all your customized SQL queries in the custom metrics in your scan YAML file, you can use **`sql_file`** to reference a relative file.
 
 ```yaml
 table_name: mytable

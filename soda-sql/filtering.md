@@ -33,7 +33,7 @@ filter: "date = DATE '{{ date }}'"
 metrics: ...
 columns: ...
 ``` {% endraw %}
-3. When you define a variable in your scan YAML file, Soda SQL applies the filter to all tests *except* tests defined in SQL metrics. To apply a filter to SQL metrics tests, be sure to explicitly define the variable in your SQL query. Refer to [Variables in SQL metrics]({% link soda-sql/sql_metrics.md %}#variables-in-sql-metrics)
+3. When you define a variable in your scan YAML file, Soda SQL applies the filter to all tests *except* tests defined in SQL metrics. To apply a filter to SQL metrics tests, be sure to explicitly define the variable in your SQL query. Refer to [Variables in custom metrics]({% link soda-sql/sql_metrics.md %}#variables-in-custom-metrics)
 4. Save the changes to the YAML file, then run a filtered scan by adding a variable to your `soda scan` command in your command-line interface.
 ```shell
 $ soda scan -v date=2021-01-12 warehouse.yml tables/customer_transactions.yml

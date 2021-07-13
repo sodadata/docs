@@ -62,7 +62,7 @@ Prepare one [scan YAML file]({% link soda-sql/scan-yaml.md %}) to define the tes
 
 * See [Example tests by metric]({% link soda-sql/examples-by-metric.md %}) to learn more about defining tests.
 * Learn [How Soda SQL works]({% link soda-sql/concepts.md %}).
-* Learn more about [Metrics]({% link soda-sql/sql_metrics.md %}).
+* Learn more about [Metrics]({% link soda/metrics.md %}).
 * Learn how to [apply dynamic filters]({% link soda-sql/filtering.md %}) to your scan.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 

@@ -17,7 +17,7 @@ Dataset's Columns tab
 Consider *not* enabling column metrics if your data source contains a large volume of datasets. Soda Cloud's performance may be affected if it must fetch and display metadata from a great number of datasets.
 
 1. From the **Datasets** dashboard, click the link in the "Almost done!" banner, or click the gear icon.
-2. When prompted, check the box to **Enable Column Metrics**, then save. If you see a message that asks you to review time partitioning settings before enabling, TODO: what now? do you have to review the time partitioning settings for each dataset?
+2. When prompted, check the box to **Enable Column Metrics**, then save. If you see a message that asks you to review time partitioning settings before enabling, <!--TODO: what now? do you have to review the time partitioning settings for each dataset?-->
 
 During the next scheduled scan, Soda Cloud captures column metrics for each dataset and displays the information in the **Dataset** dashboard and in the dataset's **Column** tab. Use the column metrics to help you make informed choices when you [create a new monitor]({% link soda-cloud/monitors.md %}).
 

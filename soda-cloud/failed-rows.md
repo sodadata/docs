@@ -24,7 +24,6 @@ If you are a Soda SQL user and have [connected to your Soda Cloud account]({% li
 
 - <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a free Soda Cloud account.
 - [Create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
-- Learn how to [display samples]({% link soda-cloud/display-samples.md %}) in Soda Cloud.
 - Learn more about [scans in Soda Cloud]({% link soda/scan.md %}#scan-output-in-soda-cloud).
 - Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 

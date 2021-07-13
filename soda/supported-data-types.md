@@ -7,8 +7,8 @@ redirect_from: /soda-sql/documentation/supported-data-types.html
 
 # Data types
 
-Soda SQL supports the following data types in columns it scans.  <br />
-Currently, Soda SQL does *not* support complex data types.
+Soda supports the following data types in columns it scans.  <br />
+Currently, Soda does *not* support complex data types.
 
 
 ### Amazon Athena

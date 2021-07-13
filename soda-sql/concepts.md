@@ -112,7 +112,7 @@ To connect Soda SQL to Soda Cloud, you create API keys in your Soda Cloud accoun
 
 ## Go further
 * Learn more about the contents of the [Scan YAML]({% link soda-sql/scan-yaml.md %}) file.
-* Learn more about the [Metrics]({% link soda-sql/sql_metrics.md %}) you can use to define [Tests]({% link soda-sql/tests.md %}).
+* Learn more about the [Metrics]({% link soda/metrics.md %}) you can use to define [Tests]({% link soda-sql/tests.md %}).
 * Learn how to [Connect to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}).
 * See how to prepare [programmatic scans]({% link soda-sql/programmatic_scan.md %}) of your data.
 * Reference the [Data types]({% link soda/supported-data-types.md %}) that Soda SQL supports when it scans columns.

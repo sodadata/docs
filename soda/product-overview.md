@@ -14,7 +14,7 @@ parent: Soda
 
 Use Soda SQL on its own to manually or programmatically scan the data that your organization uses to make decisions. Optionally, you can integrate Soda SQL with your data orchestration tool to schedule scans and automate actions based on scan results. Further, you can connect Soda SQL to a free Soda Cloud account where you and your team can use the web application to monitor test results and collaborate to keep your data issue-free.
 
-Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
+Get started with the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_tutorial.md %})
 
 <br />
 
@@ -26,31 +26,29 @@ Soda Cloud uses Soda SQL in the background to run scheduled scans. Soda SQL uses
 
 Beyond increasing the observability of your data, Soda Cloud enables you to automatically detect anomalies, and view samples of the rows that failed a test during a scan. Integrate Soda Cloud with your Slack workspace to collaborate with your team on data monitoring. 
 
-Learn more about how to [set up]({% link soda-cloud/quick-start.md %}) your Soda Cloud account to start monitoring your data.
+Get started with the [Quick start tutorial for Soda Cloud]({% link soda-cloud/quick-start.md %})
 
 ## Compare features and functionality
 
 | ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="120px" width="120px"} | ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="150px" width="150px"} |
 |--------| ---------|
-|Connect to a warehouse using a [warehouse YAML file]({% link soda-sql/warehouse.md %})| Connect to a data source via [Add Datasets]({% link soda-cloud/add-datasets.md %})|
+|Connect to a data source using a [warehouse YAML file]({% link soda-sql/warehouse.md %}) and an [env_vars YAML file]({% link soda-sql/warehouse.md %}#env_vars-yaml-file)| Connect to a data source via [Add Datasets]({% link soda-cloud/add-datasets.md %})|
 |Edit connection details in a warehouse YAML file| Edit data source connection and import details |
-|Discover tables using the [`soda analyze` <br />CLI command]({% link soda-sql/cli.md %})| Discover datasets during the [first scheduled scan]({% link soda-cloud/add-datasets.md %}#after-the-first-scan) |
-|Define new [tests]({% link soda-sql/tests.md %}) using the [scan YAML file]({% link soda-sql/scan-yaml.md %}) | |
-|Edit existing tests in the scan YAML file| |
-|	|[Create new monitors]({% link soda-cloud/monitors.md %}) |
-|	|Edit existing monitors |
-| Use [dataset metrics]({% link soda-sql/sql_metrics.md %}#table-metrics) in the scan YAML file | Use dataset metrics when [creating a new monitor]({% link soda-cloud/monitors.md %}#2-monitor) |
-| Use [column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics) in the scan YAML file | Use column metrics when [creating a new monitor]({% link soda-cloud/monitors.md %}#2-monitor) |
-| Use [custom metrics]({% link soda-sql/sql_metrics.md %}#sql-metrics) in the scan YAML file | |
+|Discover datasets of a newly-connected data source using the [`soda analyze` <br />CLI command]({% link soda-sql/cli.md %})| Discover datasets of a newly-connected data source during the [first scheduled scan]({% link soda-cloud/add-datasets.md %}#after-the-first-scan) |
+|Define new [tests]({% link soda-sql/tests.md %}) in the [scan YAML file]({% link soda-sql/scan-yaml.md %}) only for datasets you added via Soda SQL. | Define new tests when you [create new monitors]({% link soda-cloud/monitors.md %}#2-monitor) for datasets you added via Soda Cloud or Soda SQL |
+|Edit existing tests in the scan YAML file| Edit the tests in existing monitors |
+| Use [dataset metrics]({% link soda-sql/sql_metrics.md %}#dataset-metrics) in the scan YAML file | Use [dataset metrics]({% link soda/metrics.md %}#dataset-metrics) when creating a new monitor |
+| Use [column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics) in the scan YAML file | Use [column metrics]({% link soda/metrics.md %}#column-metrics) when creating a new monitor |
+| Use [custom metrics]({% link soda-sql/sql_metrics.md %}#custom-metrics) in the scan YAML file | |
 |Configure [programmatic scans]({% link soda-sql/programmatic_scan.md %})| |
 |Integrate with an [orchestration tool]({% link soda-sql/orchestrate_scans.md %}) such as Airflow| |
 |[Add filters]({% link soda-sql/filtering.md %}) in the scan YAML file | [Add filters]({% link soda-cloud/monitors.md %}#1-dataset) when creating a monitor|
 |[Run an *ad hoc* scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) |  |
 |Schedule scans using your [data orchestration tool]({% link soda-sql/orchestrate_scans.md %}) | Schedule scans for a [data source]({% link soda-cloud/add-datasets.md %}#import-settings) and [datasets]({% link soda-cloud/dataset-scan-schedule.md %}) |
 |	| Create [alerts]({% link soda/glossary.md %}#alert) and [notifications]({% link soda/glossary.md %}#notification) |
-|Configure scan YAML to send <br />[failed row samples]({% link soda-sql/send-failed-rows.md %}) to Soda Cloud | |
+|Configure scan YAML to send <br />[failed row samples]({% link soda-sql/send-failed-rows.md %}) to Soda Cloud | Use a missing value metric type to [collect failed row samples]({% link soda-cloud/failed-rows.md %}#use-a-missing-value-metric-type-to-collect-failed-row-samples)|
 |   | View [failed rows]({% link soda-cloud/failed-rows.md %}) |
-| Configure scan YAML to send <br />[sample dataset data]({% link soda-sql/samples.md %}) to Soda Cloud | [Enable sample data]({% link soda-cloud/display-samples.md %}) for a dataset | 
+| Configure scan YAML to send <br />[sample dataset data]({% link soda-sql/samples.md %}) to Soda Cloud | <!--[Enable sample data]({% link soda-cloud/display-samples.md %}) for a dataset--> | 
 |  | View sample data for a dataset | 
 |	| View a chart of stored measurements for a metric over time |
 |	| Use [anomaly detection]({% link soda-cloud/anomaly-detection.md %}) |

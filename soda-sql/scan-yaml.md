@@ -71,9 +71,9 @@ The following describes the contents of a scan YAML file that Soda SQL created a
 ![scan-anatomy](/assets/images/scan-anatomy.png){:height="440px" width="440px"}
 
 
-**1** - The value of **table_name** identifies a SQL dataset in your data source. If you were writing a SQL query, it is the value you would supply for your `FROM` statement.
+**1** - The value of **table_name** identifies a dataset in your data source. If you were writing a SQL query, it would be the value you would supply for your `FROM` statement.
 
-**2** - A **metric** is a property of the data in your data source.  A **measurement** is the value for a metric that Soda SQL obtains during a scan. For example, in `row_count = 5`, `row_count` is the metric and `5` is the measurement.
+**2** - A **metric** is a property of the data in your data source.  A **measurement** is the value for a metric that Soda SQL checks against during a scan. For example, in the test `row_count = 5`, `row_count` is the metric and `5` is the measurement.
 
 **3** - A **test** is a Python expression that, during a scan, checks metrics to see if they match the parameters defined for a measurement. As a result of a scan, a test either passes or fails.
 
@@ -89,17 +89,17 @@ For example, the test `row_count > 0` checks to see if the dataset has at least 
 
 ## Scan YAML configuration keys
 
-The table below describes all of the top level configuration keys you can use to customize your scan.
+The table below describes all of the top level **configuration keys** you can use to customize your scan.
 
 | Key         | Description | Required |
 | ----------- | ----------- | -------- |
-| `columns` | The section of the scan YAML file in which you define tests and metrics that apply to individual columns. See [Metrics]({% link soda-sql/sql_metrics.md %}#column-metrics) for configuration details.| optional |
+| `columns` | The section of the scan YAML file in which you define tests and metrics that apply to individual columns. See [Column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics) for configuration details.| optional |
 | `filter` | A SQL expression that Soda SQL adds to the `WHERE` clause in the query. Use `filter` to pass variables, such as date, into a scan. Uses [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) as the templating language. See [Apply filters]({% link soda-sql/filtering.md %}) for configuration details.| optional |
 | `frequent_values_limit` | Defines the maximum number of elements for the `maxs` metric. Default value is `5`.| optional |
-| `metrics` |  A list of all the default metrics that you can use to configure a scan. This list includes both dataset and column metrics. See [Metrics]({% link soda-sql/sql_metrics.md %}) for configuration details.| optional |
+| `metrics` |  A list of all the built-in metrics that you can use to configure a scan. This list includes both dataset and column metrics. See [Configure metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}) for configuration details.| optional |
 | `mins_maxs_limit` | Defines the maximum number of elements for the `mins` metric. Default value is `5`.| optional |
-| `sql_metrics` | The section of the scan YAML file in which you define custom sql queries to run during a scan. You can apply `sql_metrics` to all data in the dataset, or data in individual columns. See [Metrics]({% link soda-sql/sql_metrics.md %}#sql-metrics) for configuration details.| optional |
-| `table_name` | Identifies a SQL dataset in your data source. | required |
+| `sql_metrics` | The section of the scan YAML file in which you define custom sql queries to run during a scan. You can apply `sql_metrics` to all data in the dataset, or data in individual columns. See [Custom metrics]({% link soda-sql/sql_metrics.md %}#custom-metrics) for configuration details.| optional |
+| `table_name` | Identifies a dataset in your data source. | required |
 
 
 ## Go further

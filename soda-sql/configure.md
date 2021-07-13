@@ -60,7 +60,7 @@ soda_warehouse_directory:
 ```shell
 soda analyze
 ```
-6. Use a code editor to open one of your new scan YAML files. Soda SQL pre-populated the YAML file with default metrics and tests that it deemed useful for the kind of data in the dataset. See [scan YAML]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file). <br /> Adjust the contents of the YAML file to define the tests that you want Soda SQL to conduct when it runs a scan on this dataset in your data source. Refer to [Metrics]({% link soda-sql/sql_metrics.md %}) and [Tests]({% link soda-sql/tests.md %}) for details. <br />
+6. Use a code editor to open one of your new scan YAML files. Soda SQL pre-populated the YAML file with built-in metrics and tests that it deemed useful for the kind of data in the dataset. See [scan YAML]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file). <br /> Adjust the contents of the YAML file to define the tests that you want Soda SQL to conduct when it runs a scan on this dataset in your data source. Refer to [Metrics]({% link soda-sql/sql_metrics.md %}) and [Tests]({% link soda-sql/tests.md %}) for details. <br />
 <br />
 Example scan YAML<br />
 ![configure yaml](/assets/images/configure-yaml.png){:height="275px" width="275px"}

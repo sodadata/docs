@@ -7,7 +7,7 @@ redirect_from: /soda-sql/documentation/monitors.html
 
 # Create monitors and alerts
 
-A **monitor** is a set of details you define in Soda Cloud which Soda SQL uses when it runs a scan. Log in to **Soda Cloud** to create monitors, and customize [alerts]({% link soda/glossary.md %}#alert) that send [notifications]({% link soda/glossary.md %}#notification) to your team when a [scan]({% link soda/glossary.md %}#scan) surfaces data issues.
+A **monitor** is a set of details you define in Soda Cloud which Soda SQL uses when it runs a scan. Log in to **Soda Cloud** to create monitors, and customize [alerts]({% link soda/glossary.md %}#alert) that send [notifications]({% link soda/glossary.md %}#notification) to your team when a [scan]({% link soda/glossary.md %}#scan) surfaces data issues. 
 
 ![onboarding-monitors-alerts](/assets/images/onboarding-monitors-alerts.png){:height="350px" width="350px"}
 
@@ -31,19 +31,19 @@ In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked
 | Filters | Use filters to limit the amount of data that Soda Cloud tests during a scan of your dataset.<br /> For example, you can use a filter to instruct Soda Cloud to apply this monitor's tests *only* to rows in which the value of the `country` column is `FRA`. When it runs its next scheduled scan of your dataset, Soda Cloud executes this monitor's tests only against the data that meets the filter criteria instead of scanning an entire dataset. Refer to [Apply filters]({% link soda-sql/filtering.md %}) to learn more. 
 | Filter 1 | Select the values from the dropdowns for the column, operator, and value that will narrow the scope of data that Soda Cloud tests during its scan. | 
 | Filter logic | Use `AND`, `OR`, or `NOT` to dictate how Soda Cloud should apply the filters you have defined (Filter 1, Filter 2, etc). For example, to instruct Soda SQL to run tests against only those rows which match the criteria of two filters you created, enter `1 AND 2`. | 
-| Sample Data | Use the sample data to see what kind of data is in your dataset so you can determine what kinds of tests to write. If the panel is empty, follow the instructions to [display sample data]({% link soda-cloud/display-samples.md %}) for a dataset. |
+| Sample Data | Use the sample data to see what kind of data is in your dataset so you can determine what kinds of tests to write. If the panel is empty, follow the instructions to configure Soda SQL to [send sample data]({% link soda-sql/samples.md %}) to Soda Cloud. |
 
 #### 2. Monitor
 
 | Field or Label | Description |
 | -----------------------   | ---------- |
-| Metric type | Select the type of built-in metric you want to use to test your data. <br /> `Row count` is the only [dataset metric]({% link soda-sql/sql_metrics.md %}#table-metrics) available to select; Soda Cloud make several [column metrics]({% link soda-sql/sql_metrics.md %}#default-column-metrics) available to select depending upon the type of data in the dataset. <sup>1</sup>
+| Metric type | Select the type of built-in metric you want to use to test your data. <br /> If you added your dataset using Soda Cloud, "Row count" is temporarily the only metric available to select in dataset. <br />  If you added your dataset using Soda SQL, Soda Cloud makes both [dataset]({% link soda/metrics.md %}#dataset-metrics) and [column]({% link soda/metrics.md %}#column-metrics) metrics available to select, depending upon the type of data in the dataset. <sup>1</sup> 
 | Column | Select the column in your dataset against which your test will run.
 | Evaluation type | Threshold: tests your data against the threshold value you define in your Critical Alert or Warning.<br /> Change Over Time: runs a comparison test against historical values in the same dataset. <br /> Anomaly Detection: automatically discovers patterns in your data over time and looks for outliers to the pattern. See [Detect anomalies]({% link soda-cloud/anomaly-detection.md %}).
 | Critical Alert | Select an operand and value. Combined with the Metric type, Column, and Evaluation type details you defined, the Critical Alert is essentially a [test]({% link soda/glossary.md %}#test) that Soda SQL will run against data in the dataset. A failed test triggers this alert which, in turn, triggers a notification. 
 | Warning | Select an operand and value. Combined with the Metric type, Column, and Evaluation type details you defined, the Critical Alert is essentially a [test]({% link soda/glossary.md %}#test) that Soda SQL will run against data in the dataset. A failed test triggers this alert which, in turn, triggers a notification. | 
 
-<sup>1</sup> Monitors can only use built-in metrics, not SQL metrics, also known as custom metrics. See [Metrics]({% link soda-sql/sql_metrics.md %}) for more detail.
+<sup>1</sup> Monitors can only use built-in metrics, not custom metrics, also known as SQL metrics. See [Metrics]({% link soda/metrics.md %}) for more detail.
 
 #### 3. Notifications
 

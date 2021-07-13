@@ -11,7 +11,7 @@ redirect_from:
 
 When creating new [monitors]({% link soda/glossary.md %}#monitor) in Soda Cloud, you may find it useful to review sample data from your [dataset]({% link soda/glossary.md %}#dataset) to help you determine the kinds of [tests]({% link soda-sql/tests.md %}) to run when Soda SQL scans your data; see the image below. For this reason, you may wish to configure a **sample metric** in Soda SQL.
 
-Alternatively, you can **Enable Sample Data** directly in your Soda Cloud account. Refer to [Display sample data]({% link soda-cloud/display-samples.md %}) instructions.
+<!--Alternatively, you can **Enable Sample Data** directly in your Soda Cloud account. Refer to [Display sample data]({% link soda-cloud/display-samples.md %}) instructions.-->
 
 ![sample-data](/assets/images/sample-data.png){:height="650px" width="650px"}
 
@@ -20,12 +20,13 @@ Alternatively, you can **Enable Sample Data** directly in your Soda Cloud accoun
 
 DO NOT use sample data if your dataset contains sensitive information or personally identifiable information (PII).
 
-1. Add a `table_limit` sample metric to your scan YAML file; refer to Scan YAML Example below. <br />This metric defines the numerical threshold of rows in a dataset that Soda SQL sends to Soda Cloud after it executes a test during a scan. It yields a sample of the data from your dataset in the **Sample Data** tab when you are creating a new monitor; see image above.
-2. Save the changes to your scan YAML file, then run a scan on that dataset.
+1. If you have not already done so, [connect Soda SQL to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}).
+2. Add a `table_limit` sample metric to your scan YAML file; refer to Scan YAML Example below. <br />This metric defines the numerical threshold of rows in a dataset that Soda SQL sends to Soda Cloud after it executes a test during a scan. It yields a sample of the data from your dataset in the **Sample Data** tab when you are creating a new monitor; see image above.
+3. Save the changes to your scan YAML file, then run a scan on that dataset.
 ```shell
 soda scan warehouse.yml/tables/orders.yml
 ```
-3. In your Soda Cloud account, navigate to the **Monitors** dashboard. Click the stacked-dots icon to **Create Monitor**. Note that in the first step of the guided monitor creation, you can review sample data from your dataset that Soda SQL collected during its last scan of your dataset.
+4. In your Soda Cloud account, navigate to the **Monitors** dashboard. Click the stacked-dots icon to **Create Monitor**. Note that in the first step of the guided monitor creation, you can review sample data from your dataset that Soda SQL collected during its last scan of your dataset.
 
 #### Scan YAML Example
 
