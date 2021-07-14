@@ -12,8 +12,8 @@ After you [install Soda SQL]({% link soda-sql/installation.md %}), you must crea
 ## Overview of configuration 
 
 1. Create a [warehouse directory]({% link soda/glossary.md %}#warehouse-directory) in which to store your warehouse YAML file and `/tables` directory.
-2. Create a [warehouse YAML file]({% link soda/glossary.md %}#warehouse-yaml) and an [env_vars YAML file]({% link soda/glossary.md %}#env_vars-yaml), then adjust the contents of each to input your [data source]({% link soda/glossary.md %}#data-source) connection details.
-3. Create a [scan YAML file]({% link soda/glossary.md %}#scan-yaml) for each [dataset]({% link soda/glossary.md %}#dataset) that exists in your data source. The scan YAML files store the test criteria that Soda SQL uses to prepare SQL queries that [scan]({% link soda/glossary.md %}#scan) your data source.
+2. Get Soda SQL to create a [warehouse YAML file]({% link soda/glossary.md %}#warehouse-yaml) and an [env_vars YAML file]({% link soda/glossary.md %}#env_vars-yaml), then adjust the contents of each to input your [data source]({% link soda/glossary.md %}#data-source) connection details.
+3. Get Soda SQL to discover all the [datasets]({% link soda/glossary.md %}#dataset) in your data source and create a [scan YAML file]({% link soda/glossary.md %}#scan-yaml) for each dataset. The scan YAML files store the test criteria that Soda SQL uses to prepare SQL queries that [scan]({% link soda/glossary.md %}#scan) your data source.
 4. Adjust the contents of your new scan YAML files to add the [tests]({% link soda/glossary.md %}#test) you want to run on your data to check for quality.
 
 Consider following the [Quick start tutorial]({% link soda-sql/5_min_tutorial.md %}) that guides you through configuration and scanning.
@@ -26,15 +26,15 @@ Consider following the [Quick start tutorial]({% link soda-sql/5_min_tutorial.md
 $ mkdir soda_warehouse_directory
 $ cd soda_warehouse_directory
 ```
-2. Use the [create command](#create-commands) to create and pre-populate two files that enable you to configure connection details for Soda SQL to access your warehouse:
+2. Use the data source-specific create command (see [list](#create-commands) below) to create and pre-populate two files that enable you to configure connection details for Soda SQL to access your data source:
 * a `warehouse.yml` file which stores access details for your data source ([read more]({% link soda-sql/warehouse.md %}))
 * an `env_vars.yml` file which securely stores data source login credentials ([read more]({% link soda-sql/warehouse.md %}#env_vars-yaml-file))<br />
 <br />
-Use `soda create --help` for a list of all available warehouse types and options.
+Use `soda create --help` for a list of all available data source types and options.
 ```shell
 $ soda create warehousetype -d yourdbname -u dbusername -w soda_warehouse_directory 
 ```
-3. Use a code editor to open the `warehouse.yml` file that Soda SQL created and put in your warehouse directory. Refer to [Set datasource configurations]({% link soda/warehouse_types.md %}) to adjust the configuration details and authentication settings according to the type of data source you use, then save the file.<br />
+3. Use a code editor to open the `warehouse.yml` file that Soda SQL created and put in your warehouse directory. Refer to [Datasource configuration]({% link soda/warehouse_types.md %}) to adjust the configuration details and authentication settings according to the type of data source you use, then save the file.<br />
 <br />
 Example warehouse YAML
 ```yaml

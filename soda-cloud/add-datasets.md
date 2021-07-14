@@ -18,9 +18,12 @@ Overall, there are two steps in the process to add datasets to your Soda Cloud a
 1. First, you connect to your data source and set a schedule for Soda Cloud to regularly scan your data. 
 2. Then, Soda Cloud runs its first scheduled scan of data in your data source and discovers all of its datasets.  
 
-In Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow the guided steps to connect a data source and schedule scans of your data. Soda Cloud requires **Connection Details** and **Import Settings**.
+Alternatively, you can install Soda SQL, a command-line developer tool, and connect it to your Soda Cloud account to add datasets. See [Connect to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}) for details.
+
 
 ### Connection Details
+
+In Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow the guided steps to connect a data source and schedule scans of your data. Soda Cloud requires **Connection Details** and **Import Settings**.
 
 The Connection Details that Soda Cloud requires are specific to the type of data source you are connecting. For example, a Big Query data source connection requires slightly different information than a connection to an Amazon Redshift data source. Refer to [Data source configurations]({% link soda/warehouse_types.md %}) for details.
 
@@ -54,6 +57,7 @@ You can also examine each dataset and configure any of the following optional se
 ## Go further
 
 * Next step in Soda Cloud Onboarding: [Integrate with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack).
+* Add datasets and run *ad hoc* scans using Soda SQL, if you like. See [Connect to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}) for details.
 * Start testing your data by [creating a new monitor]({% link soda-cloud/monitors.md %}).
 * Use automatated [anomaly detection]({% link soda-cloud/anomaly-detection.md %}) in your monitors.
 * Examine [failed rows]({% link soda-cloud/failed-rows.md %}#) for a scan that results in failed tests.

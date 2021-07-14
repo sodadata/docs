@@ -17,7 +17,7 @@ Read more about [Metrics]({% link soda/metrics.md %}) in general as they apply t
 [Column metrics](#column-metrics)<br />
 [Grouped column metrics](#grouped-column-metrics) <br />
 [Column configuration keys](#column-configuration-keys) <br />
-[Valid format](#valid-format-values) <br />
+[Valid format values](#valid-format-values) <br />
 [Metric groups and dependencies](#metric-groups-and-dependencies)<br />
 [Custpm metrics](#custom-metrics)<br />
 [Custom metric names](#custom-metric-names)<br >
