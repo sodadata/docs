@@ -1,5 +1,5 @@
 Valid formats are experimental and subject to change.<br />
-Valid formats apply only to columns using data type TEXT. See [Data types]({% link soda/supported-data-types.md %}).
+**Valid formats apply *only* to columns using data type TEXT.** See [Data types]({% link soda/supported-data-types.md %}).
 
 | Valid format value <br />  | Format |
 | ----- | ------ |

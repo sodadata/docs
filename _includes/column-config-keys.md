@@ -1,6 +1,6 @@
 | Column config key(s) / Validity Rule(s)  | Description  | Values |
 | ------------------------- | ------------ | ------ |
-| `metric_groups` | Only available in Soda SQL. Specifies pre-defined groups of metrics that Soda computes for this column. See [Metric groups and dependencies]({% link soda-sql/sql_metrics.md %}#metric-groups-and-dependencies) for details.| `duplicates` <br /> `length` <br /> `missing`  <br /> `profiling` <br /> `statistics` <br /> `validity` |
+| `metric_groups` | Only available in Soda SQL. <br />Specifies pre-defined groups of metrics that Soda computes for this column. See [Metric groups and dependencies]({% link soda-sql/sql_metrics.md %}#metric-groups-and-dependencies) for details.| `duplicates` <br /> `length` <br /> `missing`  <br /> `profiling` <br /> `statistics` <br /> `validity` |
 | `missing_format` | Specifies missing values such as whitespace or empty strings.|   |
 | `missing_regex` | Use regex expressions to specify your own custom missing values.| regex, no forward slash delimiters |
 | `missing_values` | Specifies the values that Soda is to consider missing in list format.| values in a list |
