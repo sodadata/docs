@@ -7,13 +7,21 @@ redirect_from: /soda-sql/documentation/tests.html
 
 # Define tests
 
-A **test** is a check that Soda SQL performs when it scans a dataset in your data source. Technically, it is a Python expression that, during a Soda SQL scan, checks metrics to see if they match the parameters you defined for a measurement. A single Soda SQL scan runs against a single dataset in your data source, but each scan can run multiple tests against multiple columns.
+A **test** is a check that Soda SQL performs when it scans a dataset in your data source. Technically, it is a Python expression that, during a Soda SQL scan, checks metrics to see if they match the parameters you defined for a measurement. A single Soda SQL scan runs against a single [dataset]({% link soda/glossary.md %}#dataset) in your [data source]({% link soda/glossary.md %}#data source), but each scan can run multiple tests against multiple columns.
 
-As a result of a scan, each test either passes or fails. When a test fails, it means that a property of the data in your dataset did not match the test parameters you defined. In other words, any test that returns `true` during a Soda SQL scan passes; any test that returns `false`, fails.
+As a result of a [scan]({% link soda/scan.md %}), each test either passes or fails. When a test fails, it means that a property of the data in your dataset did not match the test parameters you defined. In other words, any test that returns `true` during a Soda SQL scan passes; any test that returns `false`, fails.
 
 The **scan results** appear in your command-line interface (CLI). The results include an exit code which is an indicator of the test results: `0` means all tests passed; a non-zero value means one or more tests have failed.  See [Scan output in Soda SQL]({% link soda/scan.md %}#scan-output-in-soda-sql) for details.
 
 **Soda Cloud** defines tests inside **monitors**. Refer to [Create monitors and alerts]({% link soda-cloud/monitors.md %}) to learn how to define a test in a monitor using Soda Cloud.
+
+[Define tests using metrics](#define-tests-using-metrics)<br />
+[Example tests using built-in metrics](#example-tests-using-built-in-metrics)<br />
+[Example tests using custom metrics](#example-tests-using-custom-metrics)<br />
+[Define names for tests](#define-names-for-tests)<br />
+[Best practices for defining tests and running scans](#best-practices-for-defining-tests-and-running-scans)<br />
+[Go further](#go-further)
+<br />
 
 ## Define tests using metrics
 
@@ -116,7 +124,7 @@ sql_metrics:
 | `total_volume_us` | `>` | `5000`|  whole dataset | Checks to see if the sum of all customer transactions in the United States exceeds `5000`. If the test fails, it means that the total volume of transactions is less than `5000`.
 
 
-## Define test names
+## Define names for tests
 
 Soda SQL can run both anonymous or named tests. Named tests are useful if you intend to push Soda SQL scan results to your Soda Cloud account where you can update a test and retain its test history.
 
@@ -133,6 +141,13 @@ tests:
     volume_test_min:  total_volume_us < 5000
 ```
 
+## Best practices for defining and tests and running scans
+
+* There is no limit to the number of tests that Soda SQL can run during a scan. However, the volume of tests, the type of metrics you use, and the size of your dataset all affect the duration of a scan. (Testing to determine more precise compute costs per metric is ongoing.) Take these elements into consideration as you decide how to test the quality of your data.
+* Where you need to define tests that execute against <a href="https://www.guru99.com/fact-table-vs-dimension-table.html" target="_blank">facts and dimensions tables</a>, you can use [custom metrics]({% link soda-sql/sql_metrics.md %}#custom-metrics) to join facts and dimensions using SQL statement to validate your business metrics. In general, write aggregation tests for facts tables and validity tests for data in dimensions tables.
+* If you are using a [data orchestration tool]({% link soda-sql/orchestrate_scans.md %}) to schedule regular Soda scans of your data, consider the frequency of change in your data streams, or how your data pipeline is scheduled. For example, if your data sources or streams provide new data in a batch once per day, schedule a Soda scan once per day after batch processing.
+
+
 ## Go further
 
 * Learn how to [apply filters]({% link soda-sql/filtering.md %}) such as date, to a scan of your data.
@@ -147,4 +162,4 @@ tests:
 ---
 *Last modified on {% last_modified_at %}*
 
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.

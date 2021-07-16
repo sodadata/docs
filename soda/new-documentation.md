@@ -8,6 +8,11 @@ parent: Soda
 
 <br />
 
+#### July 16, 2021
+
+* Added early iteraction of content for [Best pracices for defining tests and running scans]({% link soda-sql/tests.md %}#best-practices-for-defining-tests-and-running-scans).
+* Added a link to the docs footer to open a Github issue to report issues with docs.
+
 #### July 13, 2021
 
 * New [Add datasets]({% link soda-cloud/add-datasets.md %}) documentation for the newly launched feature that enables your to connect to data sources and add datasets directly in Soda Cloud.
@@ -26,4 +31,4 @@ parent: Soda
 ---
 *Last modified on {% last_modified_at %}*
 
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
