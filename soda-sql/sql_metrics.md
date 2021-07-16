@@ -13,18 +13,17 @@ Read more about [Metrics]({% link soda/metrics.md %}) in general as they apply t
 <br />
 <br />
 
-**[Dataset metrics](#dataset-metrics)<br />
+[Dataset metrics](#dataset-metrics)<br />
 [Column metrics](#column-metrics)<br />
-[Grouped column metrics](#grouped-column-metrics) <br />
 [Column configuration keys](#column-configuration-keys) <br />
 [Valid format values](#valid-format-values) <br />
 [Metric groups and dependencies](#metric-groups-and-dependencies)<br />
-[Custpm metrics](#custom-metrics)<br />
+[Custom metrics](#custom-metrics)<br />
 [Custom metric names](#custom-metric-names)<br >
 [GROUP BY queries in custom metrics](#group-by-queries-in-custom-metrics)<br />
 [Variables in custom metrics](#variables-in-custom-metrics)<br />
 [Custom metrics using file reference](#custom-metrics-using-file-reference)<br />
-[Go further](#go-further)<br />**
+[Go further](#go-further)<br />
 
 
 ## Dataset metrics
@@ -52,33 +51,25 @@ tests:
 ```
 Checks to see if the dataset has exactly five rows. The test fails if the dataset contains more or fewer than five rows.
 
+
 ## Column metrics
 
-Use **column metrics** to define tests in your scan YAML file that execute against specific columns in a dataset during a scan. See [Examples by metric]({% link soda-sql/examples-by-metric.md %}) for example configurations.
+Use **column metrics** to define tests in your scan YAML file that execute against specific columns in a dataset during a scan. 
 
-Where a column metric references a valid or invalid value, or a limit, use the metric in conjunction with a **column configuration key**. A Soda SQL scan uses the value of a column configuration key to determine if it should pass or fail a test. See [example](#example-test-using-a-column-metric) below.
+Where a column metric references a valid or invalid value, or a limit, use the metric in conjunction with a **column configuration key**. A Soda SQL scan uses the value of a column configuration key to determine if it should pass or fail a test. See [example](#example-tests-using-a-column-metric) below.
 
 ![column-metrics](/assets/images/column-metrics.png){:height="440px" width="440px"}
+
+
+See [Metrics examples]({% link soda-sql/examples-by-metric.md %}).
+
 
 {% include column-metrics.md %}
 
 
-### Grouped column metrics
-
-To use these metrics, be sure to define the `metric_groups` in your scan YAML file. See [Metric groups and dependencies](#metric-groups-and-dependencies) below.
-
-| Column metric  |  Description |  Use with `metric_groups` |
-| -------------- | ------------ | ------------------------- |
-| `distinct` |  The number of rows that contain distinct values, relative to the column. For example, where a column has values: `aaa`, `aaa`, `bbb`, `ccc`, it has three distinct values. | duplicates |
-| `duplicate_count` | The number of rows that contain duplicate values, relative to the column. | duplicates |
-| `frequent_values` |  A list of values in the column and the frequency with which they occur.  |  profiling |
-| `histogram` |  A list of values to use to create a histogram that represents the contents of the column.  |  profiling  |
-| `maxs` |  A list of values that qualify as maximum relative to other values in the column.  |  profiling |
-| `mins` |  A list of values that qualify as minimum relative to other values in the column.  |  profiling |
-| `unique_count` | The number of rows in which a value appears exactly only once in the column. For example, where a column has values: `aaa`, `aaa`, `bbb`, `ccc`, it has two unique values.  | duplicates |
-| `uniqueness` | A ratio that produces a number between 0 and 100 that indicates how unique the data in a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the column are unique.  | duplicates |
-
 ### Column configuration keys
+
+The column configuration key:value pair defines what Soda SQL ought to consider as "valid" or "missing".   
 
 {% include column-config-keys.md %}
 
@@ -104,6 +95,8 @@ columns:
 
 `invalid_percentage == 0` in column `feepct` with column configuration `valid_format: number_percentage` checks the rows in the column named `feepct` for values that match a percentage format. If the test passes, it means that 0% of the rows contain data that is invalid; if the test fails, it means that more than 0% of the rows contain invalid data, which is data that is in non-percentage format.
 
+See more examples of how to use *all* column metrics in [Examples by metric]({% link soda-sql/examples-by-metric.md %}).
+
 
 ## Metric groups and dependencies
 
@@ -118,6 +111,21 @@ Out of the box, Soda SQL includes a **metric groups** configuration key. Define 
 | `length` | `min_length`, `max_length`, `avg_length` |
 | `profiling` |  `maxs`, `mins`, `frequent_values`, `histogram` |
 | `statistics` | `min`, `max`, `avg`, `sum`, `variance`, `stddev` |
+
+
+To use these metrics, be sure to define the `metric_groups` in your scan YAML file at the dataset level if the test is to apply to all columns in a dataset, or at the column level if the test is to apply only to a single column. An example follows, below.
+
+| Column metric  |  Description |  Use with `metric_groups` |
+| -------------- | ------------ | ------------------------- |
+| `distinct` |  The number of rows that contain distinct values, relative to the column. For example, where a column has values: `aaa`, `aaa`, `bbb`, `ccc`, it has three distinct values. | duplicates |
+| `duplicate_count` | The number of rows that contain duplicate values, relative to the column. | duplicates |
+| `frequent_values` |  A list of values in the column and the frequency with which they occur.  |  profiling |
+| `histogram` |  A list of values to use to create a histogram that represents the contents of the column.  |  profiling  |
+| `maxs` |  A list of values that qualify as maximum relative to other values in the column.  |  profiling |
+| `mins` |  A list of values that qualify as minimum relative to other values in the column.  |  profiling |
+| `unique_count` | The number of rows in which a value appears exactly only once in the column. For example, where a column has values: `aaa`, `aaa`, `bbb`, `ccc`, it has two unique values.  | duplicates |
+| `uniqueness` | A ratio that produces a number between 0 and 100 that indicates how unique the data in a column is.  0 indicates that all the values are the same; 100 indicates that all the values in the column are unique.  | duplicates |
+
 
 In the example below, a Soda SQL scan runs two tests on the contents of the `id` column: 
 - test for values that are not in UUID format
@@ -363,4 +371,4 @@ WHERE country = 'US'
 ---
 *Last modified on {% last_modified_at %}*
 
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.

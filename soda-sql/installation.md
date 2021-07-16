@@ -10,12 +10,12 @@ redirect_from: /soda-sql/getting-started/installation.html
 Soda SQL is a command-line interface (CLI) tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data.
 <br />
 
-**[Compatibility](#compatibility)<br />
+[Compatibility](#compatibility)<br />
 [Requirements](#requirements)<br />
 [Install](#install)<br />
 [Upgrade](#upgrade)<br />
 [Troubleshoot](#troubleshoot)<br />
-[Go further](#go-further)<br />**
+[Go further](#go-further)<br />
 
 ## Compatibility
 
@@ -89,4 +89,4 @@ pip install soda-sql-yourdatasource -U
 ---
 *Last modified on {% last_modified_at %}*
 
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.

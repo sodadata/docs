@@ -9,10 +9,10 @@ redirect_from: /soda-sql/documentation/warehouse.html
 
 A **warehouse** is a type of data source that represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. You use a **warehouse YAML** file to configure connection details for Soda SQL to access your data source.
 
-**[Create a warehouse YAML file](#create-a-warehouse-yaml-file)<br />
+[Create a warehouse YAML file](#create-a-warehouse-yaml-file)<br />
 [Anatomy of the warehouse YAML file](#anatomy-of-the-warehouse-yaml-file)<br />
 [Env-vars YAML file](#env_vars-yaml-file)<br />
-[Go further](#go-further)<br />**
+[Go further](#go-further)<br />
 
 
 ## Create a warehouse YAML file
@@ -103,4 +103,4 @@ For example, if you use you Google Cloud Platform, you can [set runtime environm
 ---
 *Last modified on {% last_modified_at %}*
 
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.

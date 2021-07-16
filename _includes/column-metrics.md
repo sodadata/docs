@@ -1,6 +1,6 @@
-| Column metric   | Description |  Applies to [data type]({% link soda/supported-data-types.md %}) | Column config key(s) / Validity Rule(s) |
+| Column metric   | Description |  Applies to [data type]({% link soda/supported-data-types.md %}) | Column config key(s) / Validity Rule(s) | 
 | ----------------------- | ----------- | --------------------- | ----------------------------- |
-| `avg` | The calculated average of the values in a numeric column. | number |  - |
+| `avg` | The calculated average of the values in a numeric column. | number |  - | 
 | `avg_length` | The average length of string values in a column.  | text  |  -  |
 | `invalid_count` | The number of rows that contain invalid values. | text  | `valid_format` <br /> `valid_regex` <br /> `valid_values` <br /> `valid_min_length` <br /> `valid_max_length`|
 | `invalid_percentage` | The percentage of rows that contain invalid values.  | text  |  `valid_format` <br /> `valid_regex` <br />`valid_values`<br /> `valid_min_length` <br /> `valid_max_length` |

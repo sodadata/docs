@@ -42,6 +42,14 @@ Currently, Soda does *not* support complex data types.
 | number | INT64, DECIMAL, BINUMERIC, BIGDECIMAL, FLOAT64 |
 | time | DATE, DATETIME, TIME, TIMESTAMP |
 
+### Microsoft SQL Server
+
+| Category | Data type | 
+| ---- | --------- |
+| text | VARCHAR, CHAR, TEXT, NVARCHAR, NCHAR, NTEXT |
+| number | BIGINT, NUMERIC, BIT, SMALLINT, DECIMAL, SMALLMONEY, INT, TINYINT, MONEY, FLOAT, REAL |
+| time | DATE, DATETIMEOFFSET, DATETIME2, SMALLDATETIME, DATETIME, TIME |
+
 ### Postgres
 
 | Category | Data type | 
@@ -58,18 +66,9 @@ Currently, Soda does *not* support complex data types.
 | number | NUMBER, INT, INTEGER, BIGINT, SMALLINT, TINYINT, BYTEINT, FLOAT, FLOAT4, FLOAT8, DOUBLE, DOUBLE PRECISION, REAL |
 | time | DATE, DATETIME, TIME, TIMESTAMP, TIMESTAMPT_LTZ, TIMESTAMP_NTZ, TIMESTAMP_TZ |
 
-### SQL Server
-
-| Category | Data type | 
-| ---- | --------- |
-| text | VARCHAR, CHAR, TEXT, NVARCHAR, NCHAR, NTEXT |
-| number | BIGINT, NUMERIC, BIT, SMALLINT, DECIMAL, SMALLMONEY, INT, TINYINT, MONEY, FLOAT, REAL |
-| time | DATE, DATETIMEOFFSET, DATETIME2, SMALLDATETIME, DATETIME, TIME |
-
-
 <br />
 
 ---
 *Last modified on {% last_modified_at %}*
 
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.

@@ -11,10 +11,10 @@ redirect_from: /soda-sql/documentation/concepts.html
 
 Use Soda SQL on its own to manually or programmatically scan the data that your organization uses to make decisions. Optionally, you can integrate Soda SQL with your data orchestration tool to schedule scans and automate actions based on scan results. Further, you can connect Soda SQL to a free Soda Cloud account where you and your team can use the web application to monitor test results and collaborate to keep your data issue-free.
 
-**[Soda SQL basics](#soda-sql-basics)<br />
+[Soda SQL basics](#soda-sql-basics)<br />
 [Soda SQL operation](#soda-sql-operation)<br />
 [Soda SQL automation and integrations](#soda-sql-automation-and-integrations)<br />
-[Go further](#go-further)<br />**
+[Go further](#go-further)<br />
 
 
 ## Soda SQL basics
@@ -123,4 +123,4 @@ To connect Soda SQL to Soda Cloud, you create API keys in your Soda Cloud accoun
 ---
 *Last modified on {% last_modified_at %}*
 
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.

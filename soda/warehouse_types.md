@@ -9,14 +9,14 @@ redirect_from: /soda-sql/documentation/warehouse_types.html
 
 Soda SQL and Soda Cloud need connection details in order to access your [data source]({% link soda/glossary.md %}#data-source) to scan your data. Each type of data source uses different configuration parameters. To set the data source configurations in your [warehouse YAML]({% link soda-sql/warehouse.md %}) or when adding new dataset in Soda Cloud, use the following example configurations that correspond to each kind of data source that Soda SQL and Soda Cloud support.
 
-**[Amazon Athena](#amazon-athena) <br />
+[Amazon Athena](#amazon-athena) <br />
 [Amazon Redshift](#amazon-redshift) <br />
 [Apache Hive](#apache-hive) <br />
 [Google Cloud Platform BigQuery](#gcp-bigquery) <br />
 [Microsoft SQL Server (Experimental)](#microsoft-sql-server-experimental) <br />
 [PostgreSQL](#postgresql) <br />
 [Snowflake](#snowflake) <br />
-[Troubleshoot data source connections]({% link soda/troubleshoot.md %}#data-source-connections)**
+[Troubleshoot data source connections]({% link soda/troubleshoot.md %}#data-source-connections)<br />
 
 
 ## Amazon Athena
@@ -253,4 +253,4 @@ You can use the `private_key` parameter to specify key-value pairs for key pair 
 ---
 *Last modified on {% last_modified_at %}*
 
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
