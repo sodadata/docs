@@ -23,7 +23,7 @@ Use the sample data to gain some insight into the data contained in your dataset
 
 ## Go further
 
-- If you use Soda SQL, you can add a [sample metric]({% link soda-sql/samples.md %}) to your scan YAML file to send sample data.
+- If you use Soda SQL, you can add a [`samples` configuration key]({% link soda-sql/samples.md %}) to your scan YAML file to send sample data.
 - Read more about [failed row]({% link soda-cloud/failed-rows.md %}) samples in Soda Cloud.
 - <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a free Soda Cloud account.
 - [Create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.

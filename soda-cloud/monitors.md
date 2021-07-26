@@ -15,6 +15,7 @@ A **monitor** is a set of details you define in Soda Cloud which Soda uses when 
 
 * Create a free Soda Cloud account at [cloud.soda.io/signup](https://cloud.soda.io/signup).
 * Connect a [data source]({% link soda/glossary.md %}#data-source) and [add datasets]({% link soda-cloud/add-datasets.md %}) to your Soda Cloud account so that Soda has access to the data you wish to monitor. If you are a Soda SQL user and have connected it to your Soda Cloud account, you can [add datasets via Soda SQL]({% link soda-sql/configure.md %}#configuration-instructions) if you prefer. 
+* Soda Cloud has executed at least one [scheduled scan]({% link soda-cloud/add-datasets.md %}#import-settings) of your data source to discover all of its datasets. If you are a Soda SQL user and have connected it to your Soda Cloud account, you can use the `soda analyze` command to discover datasets if you prefer. Refer to [Configure Soda SQL]({% link soda-sql/configure.md %}) for details.
 * (Optional) [Integrate with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud can send notifications via email.
 
 ## Create a monitor and an alert
@@ -37,9 +38,10 @@ In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked
 
 | Field or Label | Description |
 | -----------------------   | ---------- |
-| Metric type | Select the type of built-in metric you want to use to test your data. See [Metric types](#metric-types) below for details. |
-| Column | Select the column in your dataset against which your test will run.|
-| Evaluation type | Threshold: tests your data against the threshold value you define in your Critical Alert or Warning.<br /> Change Over Time: runs a comparison test against historical values in the same dataset. <br /> Anomaly Detection: automatically discovers patterns in your data over time and looks for outliers to the pattern. See [Detect anomalies]({% link soda-cloud/anomaly-detection.md %}).|
+| Metric type | Select the type of metric you want to use to test your data. See [Metric types](#metric-types) below for details. |
+| Column | If you selected the **Column** Metric Type, use this field to select the column in your dataset against which your test will run.|
+| Metric | Select the type of [metric]({% link soda/metrics.md %}) you want to use to test your data. |
+| Evaluation type | **Threshold:** tests your data against the threshold value you define in your Critical Alert or Warning.<br /> **Change Over Time:** runs a comparison test against historical values in the same dataset. <br /> **Anomaly Detection:** automatically discovers patterns in your data over time and looks for outliers to the pattern. See [Detect anomalies]({% link soda-cloud/anomaly-detection.md %}).|
 | Critical Alert | Select an operand and value. Combined with the Metric type, Column, and Evaluation type details you defined, the Critical Alert is essentially a [test]({% link soda/glossary.md %}#test) that Soda SQL will run against data in the dataset. A failed test triggers this alert which, in turn, triggers a notification. |
 | Warning | Select an operand and value. Combined with the Metric type, Column, and Evaluation type details you defined, the Critical Alert is essentially a [test]({% link soda/glossary.md %}#test) that Soda SQL will run against data in the dataset. A failed test triggers this alert which, in turn, triggers a notification. | 
 
@@ -63,10 +65,15 @@ By default, Soda Cloud includes two out-of-the-box email notifications: one for 
 
 ## Metric types
 
-Soda Cloud makes several built-in metric types available for you to select when you create a monitor. You can select a metric type that applies to an entire dataset, such as "Row Count", or a metric type that applies only to an individual column. Read [Metrics]({% link soda/metrics.md %}) to learn more. 
+Soda Cloud makes three metric types available for you to select when you create a monitor. 
 
-* **If you added your dataset via [Soda Cloud]({% link soda-cloud/add-datasets.md %}#connection-details), "Row count" is temporarily the only metric type available to select in Metric Type.** If you added your dataset using Soda SQL, Soda Cloud makes several metric types available to select, depending upon the type of data in the dataset.  
-* Note that monitors can only use built-in metrics, not custom metrics, also known as SQL metrics. See [Metrics]({% link soda/metrics.md %}) for more detail. 
+* **Dataset:** a metric type that applies to an entire dataset 
+* **Column:** a metric type that applies only to an individual column in your dataset
+* **Custom:** also known as a SQL metric, a metric type that enable you to define SQL queries that Soda executes against an entire dataset or against individual columns
+
+Read [Metrics]({% link soda/metrics.md %}) to learn more. 
+
+**If you added your dataset via [Soda Cloud]({% link soda-cloud/add-datasets.md %}#connection-details), "Row count" is temporarily the only metric type available to select in Metric Type.** If you added your dataset using Soda SQL, Soda Cloud makes several metric types available to select, depending upon the type of data in the dataset.  
 
 Some metric types test for missing or valid data in columns in your dataset. If you use one of the metric types listed below, Soda Cloud displays a link to **Modify Validity Rules**. Click the link to define what qualifies as valid or missing data. 
 
