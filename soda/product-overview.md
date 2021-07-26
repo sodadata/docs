@@ -41,10 +41,11 @@ Get started with the [Quick start tutorial for Soda Cloud]({% link soda-cloud/qu
 |Edit existing tests in the scan YAML file| Edit the tests in existing monitors |
 | Use [dataset metrics]({% link soda-sql/sql_metrics.md %}#dataset-metrics) in the scan YAML file | Use [dataset metrics]({% link soda/metrics.md %}#dataset-metrics) when creating a new monitor |
 | Use [column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics) in the scan YAML file | Use [column metrics]({% link soda/metrics.md %}#column-metrics) when creating a new monitor |
-| Use [custom metrics]({% link soda-sql/sql_metrics.md %}#custom-metrics) in the scan YAML file | |
+| Use [custom metrics]({% link soda-sql/sql_metrics.md %}#custom-metrics) in the scan YAML file | Use [custom metrics]({% link soda/metrics.md %}#custom-metrics) when creating a new monitor |
 |Configure [programmatic scans]({% link soda-sql/programmatic_scan.md %})| |
 |Integrate with an [orchestration tool]({% link soda-sql/orchestrate_scans.md %}) such as Airflow| |
 |[Add filters]({% link soda-sql/filtering.md %}) in the scan YAML file | [Add filters]({% link soda-cloud/monitors.md %}#1-dataset) when creating a monitor|
+| [Exclude columns]({% link soda-sql/scan-yaml.md %}#excluded-columns-example) from scans |  |
 |[Run an *ad hoc* scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) |  |
 |Schedule scans using your [data orchestration tool]({% link soda-sql/orchestrate_scans.md %}) | Schedule scans for a [data source]({% link soda-cloud/add-datasets.md %}#import-settings) and [datasets]({% link soda-cloud/dataset-scan-schedule.md %}) |
 |	| Get visibility into stored measurements for a metric over time |

@@ -94,12 +94,35 @@ The table below describes all of the top level **configuration keys** you can us
 | Key         | Description | Required |
 | ----------- | ----------- | -------- |
 | `columns` | The section of the scan YAML file in which you define tests and metrics that apply to individual columns. See [Column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics) for configuration details.| optional |
+| `excluded_columns` | Identifies the columns against which Soda SQL does NOT execute tests during a scan. Identifies columns by name. See [Excluded columns example](#excluded-columns-example) below. | optional |
 | `filter` | A SQL expression that Soda SQL adds to the `WHERE` clause in the query. Use `filter` to pass variables, such as date, into a scan. Uses [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) as the templating language. See [Apply filters]({% link soda-sql/filtering.md %}) for configuration details.| optional |
 | `frequent_values_limit` | Defines the maximum number of elements for the `maxs` metric. Default value is `5`.| optional |
 | `metrics` |  A list of all the built-in metrics that you can use to configure a scan. This list includes both dataset and column metrics. See [Configure metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}) for configuration details.| optional |
 | `mins_maxs_limit` | Defines the maximum number of elements for the `mins` metric. Default value is `5`.| optional |
+| `samples` | Defines a threshold on the number of sample rows that Soda SQL sends to Soda Cloud. See [Send sample data to Soda Cloud]({% link soda-sql/samples.md %}) and [Send failed rows to Soda Cloud]({% link soda-sql/send-failed-rows.md %}). | optional |
 | `sql_metrics` | The section of the scan YAML file in which you define custom sql queries to run during a scan. You can apply `sql_metrics` to all data in the dataset, or data in individual columns. See [Custom metrics]({% link soda-sql/sql_metrics.md %}#custom-metrics) for configuration details.| optional |
 | `table_name` | Identifies a dataset in your data source. | required |
+
+#### Excluded columns example
+
+```yaml
+table_name: orders
+metrics:
+  - row_count
+  - missing_count
+  - missing_percentage
+  - ...
+excluded_columns:
+  - discount
+  - productid
+tests:
+  - row_count > 0
+columns:
+  orderid:
+    valid_format: uuid
+    tests:
+      - invalid_percentage <= 3
+```
 
 
 ## Go further

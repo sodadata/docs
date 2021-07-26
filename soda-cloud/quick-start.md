@@ -39,7 +39,12 @@ docker exec soda_sql_tutorial_db \
 
 All the instructions in this tutorial reference a PostgreSQL data source, but you can use your own [data source]({% link soda/glossary.md %}#data-source) for this tutorial. Connect to any of the following Soda-compatible data sources to which you have access. 
 
-{% include compatible-warehouses.md %}
+<table>
+  <tr>
+    <td>Amazon Athena<br /> Amazon Redshift<br /></td>
+    <td>PostgreSQL<br /> Snowflake<br /></td>
+  </tr>
+</table>
 
 1. If you have not already done so, create a free Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
 2. In Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow the guided steps to connect a data source. As reference, use the following input values for the **Connection Details** for a PostgreSQL data source. 

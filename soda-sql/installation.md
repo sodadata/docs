@@ -40,10 +40,10 @@ For MSSQL Server users only, install the following:
 
 ## Install
 
-From your command-line interface tool, execute the following command, using the install package that matches the type of data source you use to store data.
+From your command-line interface tool, execute the following command, replacing `soda-sql-athena` with the install package that matches the type of data source you use to store data.
 
 ```
-$ pip install soda-sql-yourdatasource
+$ pip install soda-sql-athena
 ```
 
 | Data source | Install package |
@@ -69,9 +69,9 @@ pip install soda-sql-yourdatasource
 
 ## Upgrade
 
-To upgrade your existing Soda SQL tool to the latest version, use the following command:
+To upgrade your existing Soda SQL tool to the latest version, use the following command replacing `soda-sql-athena` with the install package that matches the type of data source you are using.
 ```shell
-pip install soda-sql-yourdatasource -U
+pip install soda-sql-athena -U
 ```
 
 ## Troubleshoot
