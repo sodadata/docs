@@ -143,8 +143,8 @@ tests:
 
 ## Best practices for defining tests and running scans
 
-* There is no limit to the number of tests that Soda SQL can run during a scan. However, the volume of tests, the type of metrics you use, and the size of your dataset all affect the duration of a scan. (Testing to determine more precise compute costs per metric is ongoing.) Take these elements into consideration as you decide how to test the quality of your data.
 * Where you need to define tests that execute against <a href="https://www.guru99.com/fact-table-vs-dimension-table.html" target="_blank">facts and dimensions tables</a>, you can use [custom metrics]({% link soda-sql/sql_metrics.md %}#custom-metrics) to join facts and dimensions using SQL statement to validate your business metrics. In general, write aggregation tests for facts tables and validity tests for data in dimensions tables.
+* There is no limit to the number of tests that Soda SQL can run during a scan. 
 * If you are using a [data orchestration tool]({% link soda-sql/orchestrate_scans.md %}) to schedule regular Soda scans of your data, consider the frequency of change in your data streams, or how your data pipeline is scheduled. For example, if your data sources or streams provide new data in a batch once per day, schedule a Soda scan once per day after batch processing.
 
 
