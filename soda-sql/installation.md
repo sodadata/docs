@@ -51,7 +51,7 @@ $ pip install soda-sql-athena
 | Amazon Athena  | soda-sql-athena |
 | Amazon Redshift | soda-sql-redshift |
 | Apache Hive    | soda-sql-hive     |
-| GCP BigQuery   | soda-sql-bigquery |
+| GCP Big Query   | soda-sql-bigquery |
 | MS SQL Server  | soda-sql-sqlserver |
 | PostgreSQL     | soda-sql-postgresql |
 | Snowflake      | soda-sql-snowflake |

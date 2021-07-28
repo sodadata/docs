@@ -11,7 +11,7 @@ A **warehouse** is a type of data source that represents a SQL engine or databas
 
 [Create a warehouse YAML file](#create-a-warehouse-yaml-file)<br />
 [Anatomy of the warehouse YAML file](#anatomy-of-the-warehouse-yaml-file)<br />
-[Env-vars YAML file](#env_vars-yaml-file)<br />
+[Env_vars YAML file](#env_vars-yaml-file)<br />
 [Go further](#go-further)<br />
 
 

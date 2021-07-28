@@ -34,7 +34,7 @@ Currently, Soda does *not* support complex data types.
 | text | CHAR, VARCHAR |
 | number | TINYINT, SMALLINT, INT, BIGINT, FLOAT, DOUBLE, DOUBLE PRECISION, DECIMAL, NUMERIC |
 
-### Google Cloud Platform BigQuery
+### Google Cloud Platform Big Query
 
 | Category | Data type | 
 | ---- | --------- |
