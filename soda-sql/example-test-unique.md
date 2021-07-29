@@ -7,8 +7,6 @@ redirect_from: /soda-sql/examples/examples-test-unique.html
 
 # Example tests for unique values
 
-*Last modified on {% last_modified_at %}*.
-
 Where your dataset contains records that ought to be unique, such as item identifiers, you may wish to test the data to ensure there are no duplicates or that each value is unique.  
 
 To illustrate how to use Soda SQL to test the uniqueness of data, imagine an e-commerce company that fulfills orders for shipment to customers. The information associated with each shipment is stored in a fulfillment table in a database. Here are some of the ways the company could test their data.

@@ -65,6 +65,8 @@
     page: soda-sql/example-test-unique.md
   - subtitle: Example tests for valid values
     page: soda-sql/example-test-valid.md
+  - subtitle: Example test to compare row counts
+    page: soda-sql/example-compare-rowcounts.md
 
 - title: Soda Cloud
   page: soda-cloud/add-datasets.md
