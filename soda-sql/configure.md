@@ -75,7 +75,7 @@ Use `soda create --help` for a list of all available data source types and optio
 | Amazon Athena  | soda create athena |
 | Amazon Redshift | soda create redshift |
 | Apache Hive    | soda create hive     |
-| GCP BigQuery   | soda create bigquery |
+| GCP Big Query   | soda create bigquery |
 | MS SQL Server  | soda create sqlserver |
 | PostgreSQL     | soda create postgres |
 | Snowflake      | soda create snowflake |

@@ -26,7 +26,7 @@ This open-source, command-line tool exists to enable Data Engineers to access an
 - scan your [dataset]({% link soda/glossary.md %}#dataset) to run tests for "bad" data.
 
 
-To **connect** to a data source such as Snowflake, Amazon Athena, or Google Cloud Products BigQuery, you use two files that Soda SQL creates for you when you run the CLI [`create`]({% link soda-sql/configure.md %}#create-commands) command:
+To **connect** to a data source such as Snowflake, Amazon Athena, or Google Cloud Platform Big Query, you use two files that Soda SQL creates for you when you run the CLI [`create`]({% link soda-sql/configure.md %}#create-commands) command:
 - a `warehouse.yml` file which stores access details for your data warehouse, and,
 - an `env_vars.yml` file which securely stores warehouse login credentials.
 

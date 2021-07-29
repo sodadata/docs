@@ -12,7 +12,7 @@ Soda SQL and Soda Cloud need connection details in order to access your [data so
 [Amazon Athena](#amazon-athena) <br />
 [Amazon Redshift](#amazon-redshift) <br />
 [Apache Hive](#apache-hive) <br />
-[Google Cloud Platform BigQuery](#gcp-bigquery) <br />
+[Google Cloud Platform Big Query](#gcp-big-query) <br />
 [Microsoft SQL Server (Experimental)](#microsoft-sql-server-experimental) <br />
 [PostgreSQL](#postgresql) <br />
 [Snowflake](#snowflake) <br />
@@ -112,17 +112,16 @@ connection:
 | mapreduce.job.reduces | required | Sets the number of reduce tasks per job. Input `-1` for Hive to automatically determine the number of reducers. |
 
 
-## GCP BigQuery
+## GCP Big Query
 
 
-Use the values Google Cloud Platform provides when you [create a service account](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Use your BigQuery service account JSON key file. 
+Use the values Google Cloud Platform provides when you [create a service account](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Copy and paste the contents of your Big Query service account JSON key file into your `warehouse.yml` file. 
 
 ```yaml
 name: my_bigquery_project
 connection:
     type: bigquery
-    account_info_json: >
-      {
+    account_info_json: '{
         "type": "service_account",
         "project_id": "...",
         "private_key_id": "...",
@@ -133,9 +132,18 @@ connection:
         "token_uri": "https://accounts.google.com/o/oauth2/token",
         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/..."
-      }
+}'
     dataset: sodasql
-...
+```
+
+Alternatively, use the `env_vars.yml` file to securely store the service account's JSON connection credentials. See [Env_vars YAML file]({% link soda-sql/warehouse.md %}#env_vars-yaml-file) for details.
+
+```yaml
+name: my_bigquery_project
+connection:
+    type: bigquery
+    account_info_json: env_var(BIG_QUERY_ACCESS)
+    dataset: sodasql
 ```
 
 | Property |  Required | 
@@ -151,6 +159,28 @@ connection:
 | auth_provider_x509_cert_url | required |
 | client_x509_cert_url | required | 
 
+### Big Query permissions
+
+To run Soda scans of your data in Big Query, you must configure some permissions of the Big Query Service Account. 
+
+1. In the Google Cloud Platform, make sure that you are in the Project that contains the Service Account you will use to access your Big Query dataset. Navigate to **Service Accounts** to confirm that you see an expected list of Service Accounts.
+2. Access **Roles**, then create a new role named "BigQuery Soda Scan User" that includes the permissions listed below. Alternatively, you can add these permissions to an existing role to which the Service Account is associated, if you prefer.
+* bigquery.jobs.create
+* bigquery.tables.get
+* bigquery.tables.getData
+* bigquery.tables.list 
+
+3. Access **IAM** > **Permissions** and, to the service account that you will use to access your Big Query dataset, add the following the following roles:
+* BigQuery Data Viewer
+* BigQuery Read Session User
+* BigQuery Soda Scan User
+4. After saving your changes to the Service Account, complete the steps to [configure Soda SQL]({% link soda-sql/configure.md %}) and run your first scan.
+
+The Google Cloud Platform offers more granular control of user access to data in Big Query. If you wish to further refine the data to which Service Accounts have access, refer to the Google Cloud Platform documentation. 
+* <a href="https://cloud.google.com/bigquery/docs/row-level-security-intro" target="_blank">Introduction to BigQuery row-level security </a>
+* <a href="https://cloud.google.com/bigquery/docs/column-level-security-intro" target="_blank">Introduction to BigQuery column-level security </a>
+* <a href="https://cloud.google.com/bigquery/docs/table-access-controls-intro?hl=en" target="_blank">Introduction to table access controls </a>
+* <a href="https://cloud.google.com/bigquery/docs/dataset-access-controls?hl=en" target="_blank"> Controlling access to datasets </a>
 
 
 ## Microsoft SQL Server (Experimental)
