@@ -15,6 +15,7 @@ Soda SQL uses the input in the scan YAML file and Soda Cloud monitors to prepare
 [Scan output in Soda SQL](#scan-output-in-soda-sql)<br />
 [Schedule a scan in Soda Cloud](#schedule-a-scan-in-soda-cloud)<br />
 [Scan output in Soda Cloud](#scan-output-in-soda-cloud)<br />
+[Overwrite scan output in Soda Cloud](#overwrite-scan-output-in-soda-cloud)<br />
 [Programmatically use scan output](#programmatically-use-scan-output)<br />
 [Go further](#go-further)<br />
 
@@ -58,7 +59,16 @@ Soda Cloud uses Soda SQL in the background to run scheduled scans. Soda SQL uses
 
 ![scan-with-cloud](/assets/images/scan-with-cloud.png){:height="350px" width="350px"}
 
+## Overwrite scan output in Soda Cloud
 
+When you use Soda SQL to run a scan, Soda SQL sends the test reults to Soda Cloud where they manifest as rows in the monitor results table. If you wish to overwrite a monitor result, you can do so by running the scan again and overwriting the timestamp.  
+
+In Soda SQL, use the `-t` option in your `soda scan` command and provide a timestamp date in ISO8601 format.
+
+```shell
+soda scan -t 2021-04-28T09:00:00+02:00 warehouse.yml tables/orders.yml 
+```
+ 
 
 ## Programmatically use scan output 
 

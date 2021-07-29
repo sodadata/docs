@@ -67,13 +67,12 @@ By default, Soda Cloud includes two out-of-the-box email notifications: one for 
 
 Soda Cloud makes three metric types available for you to select when you create a monitor. 
 
-* **Dataset:** a metric type that applies to an entire dataset 
-* **Column:** a metric type that applies only to an individual column in your dataset
-* **Custom:** also known as a SQL metric, a metric type that enable you to define SQL queries that Soda executes against an entire dataset or against individual columns
+* **Dataset:** a metric type that applies to an entire dataset. 
+* **Column:** a metric type that applies only to an individual column in your dataset.
+* **Custom:** also known as a SQL metric, a metric type that enable you to define SQL queries that Soda executes against an entire dataset or against individual columns. In Soda Cloud, you can only use the custom metrics you defined in your scan YAML file for Soda SQL; you cannot define custom metrics directly in Soda Cloud. <br />Learn more about [connecting your Soda Cloud account to Soda SQL]({% link soda-cloud/connect_to_cloud.md %}). 
 
-Read [Metrics]({% link soda/metrics.md %}) to learn more. 
 
-**If you added your dataset via [Soda Cloud]({% link soda-cloud/add-datasets.md %}#connection-details), "Row count" is temporarily the only metric type available to select in Metric Type.** If you added your dataset using Soda SQL, Soda Cloud makes several metric types available to select, depending upon the type of data in the dataset.  
+**If you added your dataset via [Soda Cloud]({% link soda-cloud/add-datasets.md %}#connection-details), "Row count" is temporarily the only metric type available to select in Metric Type.** If you added your dataset using Soda SQL, Soda Cloud makes several metric types available to select, depending upon the type of data in the dataset. Read [Metrics]({% link soda/metrics.md %}) to learn more about using metrics in tests.
 
 Some metric types test for missing or valid data in columns in your dataset. If you use one of the metric types listed below, Soda Cloud displays a link to **Modify Validity Rules**. Click the link to define what qualifies as valid or missing data. 
 
