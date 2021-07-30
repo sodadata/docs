@@ -14,6 +14,7 @@ Soda SQL and Soda Cloud need connection details in order to access your [data so
 [Apache Hive](#apache-hive) <br />
 [Google Cloud Platform Big Query](#gcp-big-query) <br />
 [Microsoft SQL Server (Experimental)](#microsoft-sql-server-experimental) <br />
+[MySQL (Experimental)](#mysql-experimental) <br />
 [PostgreSQL](#postgresql) <br />
 [Snowflake](#snowflake) <br />
 [Troubleshoot data source connections]({% link soda/troubleshoot.md %}#data-source-connections)<br />
@@ -208,6 +209,28 @@ connection:
 | database| required |  |
 | schema | required | |
 
+
+## MySQL (Experimental)
+
+Note: MySQL support is in a very early experimental stage.
+
+```yaml
+name: my_sqlserver_project
+connection:
+  type: mysql
+  host: localhost
+  username: sodasql
+  password: sodasql
+  database: sodasql
+```
+
+| Property |  Required | Notes |
+| -------- |  -------- | ----- |
+| type | required |  |
+| host| required |  |
+| username| required | Use environment variables to retrieve this value securely. |
+| password| required | Use environment variables to retrieve this value securely. |
+| database| required |  |
 
 ## PostgreSQL
 

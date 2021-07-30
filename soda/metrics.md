@@ -46,7 +46,7 @@ Where a column metric references a valid or invalid value, or a limit, use the m
 
 If the built-in dataset and column metrics that Soda offers do not quite give you the information you need from a scan, you can use **custom metrics** to customize your queries. Custom metrics, also known as SQL metrics, essentially enable you to define SQL queries that Soda runs during a scan.
 
-Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics).
+Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics) and [custom metrics in Soda Cloud]({% link soda-cloud/monitors.md %}#metric-types).
 
 ## Go further
 

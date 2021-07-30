@@ -8,13 +8,20 @@ parent: Soda
 
 <br />
 
+#### July 29, 2021
+
+* Added instructions for configuring [BigQuery permissions]({% link soda/warehouse_types.md %}#big-query-permissions) to run Soda scans.
+* Added an example of a [programmatic scan using a lambda function]({% link soda-sql/programmatic_scan.md %}#programmatic-scan-using-lambda-function).
+* Added instructions for [overwriting scan output in Soda Cloud]({% link soda/scan.md %}#overwrite-scan-output-in-soda-cloud).
+* New document for [Example test to compare row counts]({% link soda-sql/example-compare-rowcounts.md %}).
+
 #### July 26. 2021
 
 * Added Soda SQL documentation for [configuring `excluded_columns`]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) during scans.
-* Updated compatible data sources for [Soda SQL]({% link soda-sql/installation.md %}#compatibility) to include MySQL (experimental), and [Soda Cloud]({% link soda-cloud/quick-start.md %}#sign-up-and-add-datasets) to improve accuracy.
+* Updated compatible data sources for [Soda SQL]({% link soda-sql/installation.md %}#compatibility) to include **MySQL (experimental)**, and [Soda Cloud]({% link soda-cloud/quick-start.md %}#sign-up-and-add-datasets) to improve accuracy.
 * Updated [Create monitors and alerts]({% link soda-cloud/monitors.md %}#metric-types) to include custom metrics as part of creation flow; updated prerequisites.
 * Updated Product overview [comparison]({% link soda/product-overview.md %}#compare-features-and-functionality) for new `excluded_columns` functionality and custom metrics in Soda Cloud.
-* Minor adjustments to reflect new and changed elements in <a href="https://github.com/sodadata/soda-sql/blob/main/CHANGELOG.md#210b12---2021-07-23-frodo-baggins" target="_blank">Soda SQL 2.1.0b12</a> release.
+* Minor adjustments to reflect new and changed elements in the <a href="https://github.com/sodadata/soda-sql/blob/main/CHANGELOG.md#210b12---2021-07-23-frodo-baggins" target="_blank">Soda SQL 2.1.0b12</a> release.
 
 
 #### July 16, 2021
