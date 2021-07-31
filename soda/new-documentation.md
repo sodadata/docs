@@ -26,7 +26,7 @@ parent: Soda
 
 #### July 16, 2021
 
-* Added early iteraction of content for [Best pracices for defining tests and running scans]({% link soda-sql/tests.md %}#best-practices-for-defining-tests-and-running-scans).
+* Added early iteraction of content for [Best practices for defining tests and running scans]({% link soda-sql/tests.md %}#best-practices-for-defining-tests-and-running-scans).
 * Added a link to the docs footer to open a Github issue to report issues with docs.
 
 #### July 13, 2021
