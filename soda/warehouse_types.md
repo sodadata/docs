@@ -134,6 +134,10 @@ connection:
         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/..."
 }'
+    auth_scopes:
+    - https://www.googleapis.com/auth/bigquery
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/drive
     dataset: sodasql
 ```
 
@@ -144,6 +148,10 @@ name: my_bigquery_project
 connection:
     type: bigquery
     account_info_json: env_var(BIG_QUERY_ACCESS)
+    auth_scopes:
+    - https://www.googleapis.com/auth/bigquery
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/drive
     dataset: sodasql
 ```
 
@@ -159,6 +167,8 @@ connection:
 | token_uri | required |
 | auth_provider_x509_cert_url | required |
 | client_x509_cert_url | required | 
+| auth_scopes | optional; Soda applies the three scopes listed above by default |
+| dataset | required |
 
 ### Big Query permissions
 
