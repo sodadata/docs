@@ -51,21 +51,24 @@ $ pip install soda-sql-athena
 | Amazon Athena  | soda-sql-athena |
 | Amazon Redshift | soda-sql-redshift |
 | Apache Hive    | soda-sql-hive     |
+| Apache Spark (experimental) |  soda-sql-spark    |
 | GCP Big Query   | soda-sql-bigquery |
-| MS SQL Server  | soda-sql-sqlserver |
+| MS SQL Server (experimental) | soda-sql-sqlserver |
+| MySQL (experimental) | soda-sql-mysql  |
 | PostgreSQL     | soda-sql-postgresql |
 | Snowflake      | soda-sql-snowflake |
 
 
 Optionally, you can install Soda SQL in a virtual environment. Execute the following commands one by one:
 
-```
+```shell
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 pip install soda-sql-yourdatasource
 ```
 
+To deactivate the virtual environment, use the command: `deactivate`.
 
 ## Upgrade
 

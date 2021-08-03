@@ -15,22 +15,7 @@ Community memebers are also welcome to create and/or resolve issues in the publi
 
 For customers using **Soda Cloud Enterprise**, Soda adheres to a Service Level Agreement (SLA) that outlines the support and maintenance services that Soda provides.
 
-Generally speaking, Soda offers the following support and maintenance services. (Refer to the official SLA in your Enterprise contract for details.)
-
-* Cloud Services will be available 99% of the time, measured monthly, excluding scheduled downtime periods for releases, maintenance, and backup procedures.
-
-* Soda provides support in connection with incidents and errors, including: 
-    * assistance via email and Slack channels
-    * troubleshooting services and analysis
-    * access to Soda documentation 
-
-* Incident support response time varies with the severity of the error or incident.
-    * Level One Incident: respond within two normal business hours from receipt of an email to report the incident; Soda makes all commercially reasonable efforts to provide a temporary code patch as soon as practicable and to assign Soda's personnel to address the incident. 
-    * Level Two Incident: respond within four normal business hours from receipt of an email to report the incident; Soda adds the incident to the Incident Backlog and assigns the highest priority for resolution.
-    * Level Three Incident: respond within eight normal business hours from receipt of an email to report the incident; Soda adds the incident to the Incident Backlog and addresses it based on the relative severity and priority of outstanding incidents.
-    * Level Four Incident: respond within a reasonable time; Soda adds the incident to the Incident Backlog and addresses it based on the relative severity and priority of outstanding incidents.
-
-Refer to the official SLA in your Enterprise contract for details.
+Generally speaking, the SLA for enterprise customers outlines Soda Cloud availability and Soda's incident and error support. Refer to the official SLA in your Enterprise contract for details.
 
 ---
 *Last modified on {% last_modified_at %}*

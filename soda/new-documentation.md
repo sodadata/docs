@@ -12,7 +12,6 @@ parent: Soda
 
 * Added new document to ouline the [Support]({% link soda/support.md %}) that Soda provides its users and customers.
 * Updated [Big Query]({% link soda/warehouse_types.md %}#gcp-big-query) data source configuration to include `auth_scopes`. 
-* Added details about Soda Cloud's [secure connection to a data source]({% link soda/data-privacy.md %}#making-secure-connections) using a NAT gateway.
 
 
 #### July 29, 2021
