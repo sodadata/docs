@@ -12,6 +12,7 @@ Soda SQL and Soda Cloud need connection details in order to access your [data so
 [Amazon Athena](#amazon-athena) <br />
 [Amazon Redshift](#amazon-redshift) <br />
 [Apache Hive](#apache-hive) <br />
+[Apache Spark (Experimental)](#apache-spark-experimental) <br />
 [Google Cloud Platform Big Query](#gcp-big-query) <br />
 [Microsoft SQL Server (Experimental)](#microsoft-sql-server-experimental) <br />
 [MySQL (Experimental)](#mysql-experimental) <br />
@@ -111,6 +112,27 @@ connection:
 | database | required | |
 | hive.execution.engine | required | Input options are: <br /> `mr` (Map reduce, default) <br /> `tez` (Tez execution for Hadoop 2) <br /> `spark` (Spark execution for Hive 1.1.0 or later)|
 | mapreduce.job.reduces | required | Sets the number of reduce tasks per job. Input `-1` for Hive to automatically determine the number of reducers. |
+
+
+## Apache Spark (Experimental)
+
+```yaml
+name: my_spark_project
+connection:
+    type: spark
+    host: localhost
+    port: 10000
+    database: default
+    token: env_var(SPARK_TOKEN)
+```
+
+| Property |  Required | 
+| -------- |  -------- | 
+| type  | required  | 
+| host  | required  |  
+| port  | required  | 
+| database | required | 
+| token | required | 
 
 
 ## GCP Big Query

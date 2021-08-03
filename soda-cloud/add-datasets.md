@@ -27,7 +27,7 @@ In Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow 
 
 The Connection Details that Soda Cloud requires are specific to the type of data source you are connecting. For example, a PostgreSQL data source connection requires slightly different information than a connection to an Amazon Redshift data source. Refer to [Data source configurations]({% link soda/warehouse_types.md %}) for details.
 
-Regardless of the type of data source you are connecting, Soda Cloud requires access credentials. Note that Soda Cloud stores your login credentials securely in our database; passwords are encrypyed and can only be read by the components of Soda SQL that perform the scans.
+Regardless of the type of data source you are connecting, Soda Cloud requires access credentials. Note that Soda Cloud stores your login credentials securely in our database; passwords are encrypyed and can only be read by the components of Soda SQL that connect to perform scans of your data.
 
 ### Import Settings
 

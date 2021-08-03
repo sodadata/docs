@@ -13,7 +13,7 @@ Soda works in several ways to ensure your data and systems remain private.
 
 Installed in your environment, you use the Soda SQL command-line tool to securely connect to a [data source]({% link soda/glossary.md %}#data-source) using [environment variables]({% link soda-sql/warehouse.md %}#env_vars-yaml-file) to store login credentials. 
 
-From Soda Cloud, you can also [connect to a data source]({% link soda-cloud/add-datasets.md %}). To connect with your data source over the internet, your Soda Cloud account (running in a private subnet) uses a Network Adrdess Translation (NAT) gateway. The NAT `54.78.91.111` enables your account to connect to your data source but disallows external services to initiate connections with your Soda Cloud account. The NAT address may change from time to time.
+From Soda Cloud, you can also [connect to a data source]({% link soda-cloud/add-datasets.md %}). Soda Cloud stores your login credentials securely in our database; passwords are encrypyed and can only be read by the components of Soda SQL that connect to perform scans of your data.
 
 ## Sending data to Soda Cloud
 
