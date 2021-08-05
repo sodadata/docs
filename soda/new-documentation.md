@@ -8,10 +8,6 @@ parent: Soda
 
 <br />
 
-#### August 4, 2021
-
-* Added new documentation for the launch of `soda-sql-spark`. See [Install Soda SQL]({% link soda-sql/installation.md %}).
-
 #### August 2, 2021
 
 * Added new document to ouline the [Support]({% link soda/support.md %}) that Soda provides its users and customers.

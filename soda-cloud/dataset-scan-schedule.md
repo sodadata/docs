@@ -10,15 +10,71 @@ By default, Soda Cloud conducts a scan of each dataset in your data source accor
 
 ![onboarding-scan-schedules](/assets/images/onboarding-scan-schedules.png){:height="350px" width="350px"}
  
-1. In the **Dataset** dashboard, click the stacked dots icon of the dataset you wish to edit. 
+1. In the **Datasets** dashboard, click the stacked dots icon of the dataset you wish to edit. 
 2. In the **Scan Schedule** tab, uncheck the box to **Use Data Source Default Schedule**, then adjust the scan schedule as needed.  
 3. Save your changes, then wait for Soda Cloud to complete the next scan of your dataset according to the new scan schedule you set.
+
+## Trigger a scan externally
+
+Rather than defining a scan schedule in Soda Cloud, you can externally call the Soda Cloud API to trigger a Soda scan.
+
+1. First, you must login to your Soda Cloud account via the Soda Cloud API to obtain a session token to be able to send a `launchscan` POST request. To do this, use your Soda Cloud login credentials to send a `login` POST request.<br />
+Using curl from the command-line:
+```shell
+curl --request POST \
+>   -H "Content-Type: application/json" \
+>   --data '{"type":"login","username":"YOUR_EMAIL_","password":"YOUR_PASSWORD"}' \
+>   https://cloud.soda.io/api/command
+```
+Using an API client:
+```
+# Send to URL: https://cloud.soda.io/api/command
+POST /command
+  Content-Type: application/json
+  {
+    "type": "login",
+    "username": "YOUR_EMAIL",
+    "password": "YOUR_PASSWORD"
+  }
+```
+2. The Soda Cloud API returns a response with your session token. Copy the session token to a safe, temporary location in your local system.
+```shell
+{
+    "token": "**hidden**",
+    "organisationId": "06xxxx-xxxx-xxxx-fxxxxe88b",
+    "user": {
+        "id": "xxxx-8488-xxxx-xxxx-c06xxxxxxxxb",
+        "firstName": "YOUR_FIRST_NAME",
+        "lastName": "YOUR_LAST_NAME",
+        "fullName": "YOUR_FULL_NAME",
+        "email": "YOUR_EMAIL"
+    },
+    "organisations": [
+        {
+            "id": "0xxxx-05xxxx5f-xxxx-fxxxxxe88b",
+            "name": "Shape Company",
+            "settings": [
+                "slack"
+            ],
+            "plan": "enterprise",
+            "onboarded": true
+        }
+    ]
+}
+```
+3. In the web application of your Soda Cloud account, navigate to the **Datasets** dashboard, then click the stacked dots icon of the dataset on which you wish to externally trigger a scan, then select **Edit**.  
+4. In the **Scan Schedule** tab, uncheck the box to **Use Data Source Default Schedule**,then select **Schedule Externally** in the **Dataset Scan Schedule** field. 
+5. Copy the JSON or curl snippet for the `launchscan` API command that you can use outside Soda Cloud to send a POST call to `https://cloud.soda.io/api/command`. 
+6. **Save** the change to the dataset scan schedule.
+7. Using the JSON snippet in an API client or the curl snippet in the command-line, test the `launchscan` command, replacing the value of the `token` field with the session token you obtained when you logged in via the `login` API command.
+8. The Soda Cloud API returns a `200` HTTP response status code and a value for a `scanID`.
+9. Navigate to the web application of your Soda Cloud account to review the scan result in the **Monitors** dashboard.
+
 
 
 ## Go further
 
 * Next step in Soda Cloud Onboarding: [Automatically detect anomalies]({% link soda-cloud/anomaly-detection.md %}).
-* Learn how to [trigger Soda scans using an API]({% link soda-cloud/launchscan-api.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
