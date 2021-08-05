@@ -124,8 +124,8 @@ connection:
     type: spark
     host: localhost
     port: 10000
-    username: env_var(HIVE_USERNAME)
-    password: env_var(HIVE_PASSWORD)
+    username: env_var(SPARK_USERNAME)
+    password: env_var(SPARK_PASSWORD)
     database: default
     authentication: None
     token: env_var(SPARK_TOKEN)
