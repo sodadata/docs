@@ -79,6 +79,8 @@
     page: soda-cloud/monitors.md
   - subtitle: Adjust a dataset scan schedule
     page: soda-cloud/dataset-scan-schedule.md
+  - subtitle: Trigger scans via API
+    page: soda-cloud/launchscan-api.md
   - subtitle: Detect anomalies
     page: soda-cloud/anomaly-detection.md
   - subtitle: Examine failed rows
