@@ -136,7 +136,7 @@ connection:
 | type  | required  |  |
 | host  | required  |  |
 | port  | optional  |  |
-| username  | required  | Use environment variables to retrieve this value securely. |
+| username  | optional  | Use environment variables to retrieve this value securely. |
 | password  | optional  | Use environment variables to retrieve this value securely. <br /> Use with `authentication='LDAP'` or `authentication='CUSTOM'` only <br /> |
 | database | optional | |
 | authentication | optional | The value of hive.server2.authentication used by HiveServer2 |
