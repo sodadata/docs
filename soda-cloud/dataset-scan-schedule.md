@@ -6,7 +6,7 @@ parent: Soda Cloud
 
 # Adjust a dataset scan schedule 
 
-By default, Soda Cloud conducts a scan of each dataset in your data source according to the schedule you set when you configured the data source connection. If you wish, you can set a scan schedule specific to an individual datasest. For example, you can specify a more frequent scan schedule for a dataset that changes often.
+By default, Soda Cloud conducts a scan of each dataset in your data source according to the schedule you set when you configured the data source connection. If you wish, you can set a scan schedule specific to an individual datasets. For example, you can specify a more frequent scan schedule for a dataset that changes often.
 
 ![onboarding-scan-schedules](/assets/images/onboarding-scan-schedules.png){:height="350px" width="350px"}
  
@@ -18,17 +18,17 @@ By default, Soda Cloud conducts a scan of each dataset in your data source accor
 
 Rather than defining a scan schedule in Soda Cloud, you can externally call the Soda Cloud API to trigger a Soda scan.
 
-1. First, you must login to your Soda Cloud account via the Soda Cloud API to obtain a session token to be able to send a `launchscan` POST request. To do this, use your Soda Cloud login credentials to send a `login` POST request.<br />
-Using curl from the command-line:
+1. First, you must login to your Soda Cloud account via the Soda Cloud API to obtain a session token that you need to send further API requests. To do this, use your Soda Cloud login credentials to send a `login` POST request using curl or an API client.<br /><br />
+Using curl from the command-line, replace the values for `YOUR_EMAIL` and `YOUR_PASSWORD`:
 ```shell
 curl --request POST \
->   -H "Content-Type: application/json" \
->   --data '{"type":"login","username":"YOUR_EMAIL_","password":"YOUR_PASSWORD"}' \
->   https://cloud.soda.io/api/command
+  -H "Content-Type: application/json" \
+  --data '{"type":"login","username":"YOUR_EMAIL","password":"YOUR_PASSWORD"}' \
+  https://YOUR_SODA_DOMAIN.soda.io/api/command
 ```
-Using an API client:
+Using an API client such as <a href="http://postman.com" target="_blank"> Postman</a>, replace the values for `YOUR_EMAIL` and `YOUR_PASSWORD`:
 ```
-# Send to URL: https://cloud.soda.io/api/command
+#Send to URL: https://cloud.soda.io/api/command
 POST /command
   Content-Type: application/json
   {
@@ -37,7 +37,7 @@ POST /command
     "password": "YOUR_PASSWORD"
   }
 ```
-2. The Soda Cloud API returns a response with your session token. Copy the session token to a safe, temporary location in your local system.
+2. The Soda Cloud API responds with your profile information, including your session token. Copy the session token to a safe, temporary location in your local system.
 ```shell
 {
     "token": "**hidden**",
@@ -63,12 +63,31 @@ POST /command
 }
 ```
 3. In the web application of your Soda Cloud account, navigate to the **Datasets** dashboard, then click the stacked dots icon of the dataset on which you wish to externally trigger a scan, then select **Edit**.  
-4. In the **Scan Schedule** tab, uncheck the box to **Use Data Source Default Schedule**,then select **Schedule Externally** in the **Dataset Scan Schedule** field. 
-5. Copy the JSON or curl snippet for the `launchscan` API command that you can use outside Soda Cloud to send a POST call to `https://cloud.soda.io/api/command`. 
-6. **Save** the change to the dataset scan schedule.
-7. Using the JSON snippet in an API client or the curl snippet in the command-line, test the `launchscan` command, replacing the value of the `token` field with the session token you obtained when you logged in via the `login` API command.
-8. The Soda Cloud API returns a `200` HTTP response status code and a value for a `scanID`.
-9. Navigate to the web application of your Soda Cloud account to review the scan result in the **Monitors** dashboard.
+4. In the **Scan Schedule** tab, uncheck the box to **Use Data Source Default Schedule**, then select **Schedule Externally** in the **Dataset Scan Schedule** field. 
+5. Copy the JSON or curl snippet for the `launchscan` API command that you can use outside Soda Cloud to send a POST call to `https://cloud.soda.io/api/command`. **Save** the change to the dataset scan schedule.
+6. Using the JSON snippet in an API client or the curl snippet in the command-line, test the `launchscan` command, replacing the value of the `token` field with the session token you obtained when you logged in via the `login` API command. Refer to the following examples.<br /><br />
+Using curl:
+```shell
+curl 'https://cloud.soda.io/api/command' \
+    -H 'content-type: application/json' \
+    --data-raw '{ "type": "launchScan", "token": "****YOUR_TOKEN****", "datasetId": "152xxx-xxx-b4b9-xxxx9999xxx", "scanTime": "2020-01-01T16:00:00Z"}'
+```
+Using an API client:
+```shell
+  {
+  "type": "launchScan",
+  "token": "****YOUR_TOKEN****",
+  "datasetId": "152xxx-xxx-b4b9-xxxx9999xxx",
+  "scanTime": "2020-01-01T16:00:00Z"
+}
+```
+The Soda Cloud API returns a `200` HTTP response status code and a value for a `jobReference`.<br />
+```shell
+{
+    "jobReference": "497dc096-c3b5-4f1f-838b-259ac1c00a21"
+}
+```
+8. Navigate to the web application of your Soda Cloud account to review the scan result in the **Monitors** dashboard.
 
 
 
