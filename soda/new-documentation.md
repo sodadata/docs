@@ -8,6 +8,11 @@ parent: Soda
 
 <br />
 
+#### August 9, 2021
+
+* Added details for Apache Spark support. See [Install Soda SQL]({% link soda-sql/installation.md %}#compatibility).
+* Updated [Adjust a dataset scan schedule]({% link soda-cloud/dataset-scan-schedule.md %}#trigger-a-scan-externally) to include details instructions for triggering a Soda scan externally.
+
 #### August 2, 2021
 
 * Added new document to ouline the [Support]({% link soda/support.md %}) that Soda provides its users and customers.
