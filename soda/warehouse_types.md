@@ -96,6 +96,7 @@ connection:
     username: env_var(HIVE_USERNAME)
     password: env_var(HIVE_PASSWORD)
     database: default
+    authentication: None
     configuration:
       hive.execution.engine: mr
       mapreduce.job.reduces: 2
@@ -106,10 +107,11 @@ connection:
 | -------- |  -------- | ----- |
 | type  | required  |  |
 | host  | required  |  |
-| port  | required  |  |
+| port  | optional  |  |
 | username  | required  | Use environment variables to retrieve this value securely. |
-| password  | required  | Use environment variables to retrieve this value securely. |
-| database | required | |
+| password  | optional  | Use environment variables to retrieve this value securely. <br /> Use with `authentication='LDAP'` or `authentication='CUSTOM'` only <br /> |
+| database | optional | |
+| authentication | optional | The value of hive.server2.authentication used by HiveServer2 |
 | hive.execution.engine | required | Input options are: <br /> `mr` (Map reduce, default) <br /> `tez` (Tez execution for Hadoop 2) <br /> `spark` (Spark execution for Hive 1.1.0 or later)|
 | mapreduce.job.reduces | required | Sets the number of reduce tasks per job. Input `-1` for Hive to automatically determine the number of reducers. |
 
@@ -122,17 +124,23 @@ connection:
     type: spark
     host: localhost
     port: 10000
+    username: env_var(SPARK_USERNAME)
+    password: env_var(SPARK_PASSWORD)
     database: default
+    authentication: None
     token: env_var(SPARK_TOKEN)
 ```
 
-| Property |  Required | 
-| -------- |  -------- | 
-| type  | required  | 
-| host  | required  |  
-| port  | required  | 
-| database | required | 
-| token | required | 
+| Property |  Required | Notes |
+| -------- |  -------- | ----- |
+| type  | required  |  |
+| host  | required  |  |
+| port  | optional  |  |
+| username  | optional  | Use environment variables to retrieve this value securely. |
+| password  | optional  | Use environment variables to retrieve this value securely. <br /> Use with `authentication='LDAP'` or `authentication='CUSTOM'` only <br /> |
+| database | optional | |
+| authentication | optional | The value of hive.server2.authentication used by HiveServer2 |
+| token | optional | 
 
 
 ## GCP Big Query
