@@ -6,7 +6,11 @@ parent: Soda
 
 # Soda product overview
 
-<br />
+![mission-fit](/assets/images/mission-fit-banner-1.png){:height="650px" width="650px"}
+
+Join the fun in the <a href="https://dama-ga.org/announcements.php?id=2" target="_blank">DAMA Georgia & Soda Mission Fit Data Hackathon</a> taking place August 12 to September 02 2021. <a href="https://dama-ga.org/announcements.php?id=2" target="_blank">Register</a> your team by **Friday, August 20, 2021**.
+
+---
 
 ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="150px" width="150px"}
 

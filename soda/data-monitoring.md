@@ -7,6 +7,12 @@ redirect_from: /soda-sql/documentation/data-monitoring.html
 
 # Data monitoring 
 
+![mission-fit](/assets/images/mission-fit-banner-1.png){:height="650px" width="650px"}
+
+Join the fun in the <a href="https://dama-ga.org/announcements.php?id=2" target="_blank">DAMA Georgia & Soda Mission Fit Data Hackathon</a> taking place August 12 to September 02 2021. <a href="https://dama-ga.org/announcements.php?id=2" target="_blank">Register</a> your team by **Friday, August 20, 2021**.
+
+---
+
 *"We’re not close to our data. <br />We don’t have systems and processes in place to detect problems with data.  <br />As a result, data issues remain silent. <br />The software keeps on working, but on bad data."* <br />
  > –- Tom Baeyens, CTO and Co-founder, Soda
 
