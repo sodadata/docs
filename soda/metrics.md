@@ -17,7 +17,7 @@ There are three kinds of metrics Soda uses:
 
 * **[Dataset metrics](#dataset-metrics)** for tests that execute against an entire dataset
 * **[Column metrics](#column-metrics)** for tests that execute against an individual column
-* **[Custom metrics](#custom-metrics)**, also known as SQL metrics, that enable you to define SQL queries that Soda executes against an entire dataset or against individual columns 
+* **[Custom metrics](#custom-metrics)**, also known as SQL metrics, enable you to define your own metric that you can use tests that execute against a dataset or a column; you can also use custom metrics to simply define SQL queries that Soda executes during a scan
 
 ## Dataset metrics
 
@@ -44,7 +44,7 @@ Where a column metric references a valid or invalid value, or a limit, use the m
 
 ## Custom metrics
 
-If the built-in dataset and column metrics that Soda offers do not quite give you the information you need from a scan, you can use **custom metrics** to customize your queries. Custom metrics, also known as SQL metrics, essentially enable you to define SQL queries that Soda runs during a scan.
+If the built-in dataset and column metrics that Soda offers do not quite give you the information you need from a scan, you can use **custom metrics** to customize your queries. Custom metrics, also known as SQL metrics, essentially enable you to define SQL queries that Soda runs during a scan. You can also use custom metrics to define new metrics that you can use when you write tests. See [Validate that row counts are equal]({% link soda-sql/custom-metric-templates.md %}#validate-that-row-counts-are-equal) for an example of a test that uses a custom metric.
 
 Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics) and [custom metrics in Soda Cloud]({% link soda-cloud/monitors.md %}#metric-types).
 
