@@ -7,14 +7,14 @@ redirect_from: /soda-sql/example-compare-rowcounts.html
 
 # Custom metric templates
 
-Out of the box, Soda make several [built-in metrics]({% link soda/metrics.md %}), such as `row_count`, available for you to use to write [tests]({% link soda/glossary.md %}#test). If the built-in metrics that Soda offers do not quite give you the information you need from a scan, you can use custom metrics. 
+Out of the box, Soda makes several [built-in metrics]({% link soda/metrics.md %}), such as `row_count`, available for you to use to write [tests]({% link soda/glossary.md %}#test). If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs (such as cross-dataset comparisons), you can use [custom metrics]({% link soda-sql/sql_metrics.md%}#custom-metrics). 
 
-**Custom metrics**, also known as SQL metrics, enable you to define your own metric that you can use in a test in Soda SQL or Soda Cloud; refer to [this example below](#validate-that-row-counts-are-equal). You can also use custom metrics to simply define SQL queries that Soda executes during a scan, which is what most of these templates do.  
+**Custom metrics**, also known as SQL metrics, enable you to define your own metrics that you can use in a test in Soda SQL or Soda Cloud; refer to [this example below](#validate-that-row-counts-are-equal). You can also use custom metrics to simply define SQL queries that Soda executes during a scan as tests, which is what most of these templates do.
 
 * Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics).
 * Read more about using [custom metrics in Soda Cloud]({% link soda-cloud/monitors.md %}#metric-types).
 
-The templates below offer examples of how you can define custom metrics in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file to extract more complex, customized measurements from your data. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+The templates below offer examples of how you can define custom metrics in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file to extract more complex, customized and business-specific measurements from your data. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
 [Find and display duplicate values](#find-and-display-duplicate-values)<br />
 [Confirm the referential integrity of IDs between datasets](#confirm-the-referential-integrity-of-ids-between-datasets)<br />
@@ -25,14 +25,17 @@ The templates below offer examples of how you can define custom metrics in your 
 [Compare row count between datasets](#compare-row-count-between-datasets)<br />
 [Go further](#go-further)<br />
 
+<!-- TODO: Make sure to show that people either need to create those as failed rows or single metric in the explanation -->
 
 ## Find and display duplicate values
 
-Though you can use the built-in metric `duplicate_count` to test the contents of a column of unique IDs for duplicate values, a test passes or fails according to the number of duplicate values that exist. In other words, the metric reveals how many rows have duplicate content, but not which rows. (See an [example]({% link soda-sql/examples-by-metric.md %}#duplicate_count) of a test that uses `duplicate_count`.)
+Though you can use the built-in metric `duplicate_count` to test the contents of a column of unique IDs for duplicate values, the following template allows you to write a `failed_rows` test that passes or fails according to the number of duplicate values that exist. In other words, conversely to the built-in metric, which only shows you the number of duplicated rows (see an [example]({% link soda-sql/examples-by-metric.md %}#duplicate_count) of a test that uses `duplicate_count`), the following custom template allows you to select and display the full content of the rows that are duplicated so you can directly investigate the root cause of the issue.
 
 If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_cloud.md %}) to your instance of Soda SQL, you can use a custom metric to explicitly send failed rows that contain duplicate IDs to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
 
 Use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+
+Works in:
 
 ![template-compatible-1](/assets/images/template-compatible-1.png){:height="170px" width="170px"}
 
@@ -52,17 +55,17 @@ sql_metrics:
     - type: failed_rows
     - sql: |
         with duplicated_records as (
-        select
-            {{ id_column }}
-        from {{ table }}
-        group by {{ column }}
-        having count(*) > 1
+          select
+              {{ id_column }}
+          from {{ table }}
+          group by {{ column }}
+          having count(*) > 1
         )
         select
-          q.*
-        from {{ table }} q
+          t.*
+        from {{ table }} t
         join duplicated_records dup
-          on q.{{ id_column }} = dup.{{ id_column }}
+          on t.{{ id_column }} = dup.{{ id_column }}
 ``` 
 {% endraw %}
 
@@ -70,12 +73,14 @@ sql_metrics:
 
 #### Dataset does not contain a unique ID column
 
-If your dataset does not contain a unique ID column, as with a denormalized dataset or a dataset produced from several joins, you may need to define uniqueness using a combination of columns. Ideally, you would generate a <a href="https://en.wikipedia.org/wiki/Surrogate_key" target="_blank"> surrogate key</a> from the concatenation of columns as part of a transformation, but if that is not possible, you can use the following template to test for uniqueness using a <a href="https://en.wikipedia.org/wiki/Composite_key" target="_blank">composite key</a>.
+If your dataset does not contain a unique ID column (i.e. row-uniqueness is defined by more than one columns), as with a denormalized dataset or a dataset produced from several joins, you may need to define uniqueness using a combination of columns. Ideally, you would generate a <a href="https://en.wikipedia.org/wiki/Surrogate_key" target="_blank"> surrogate key</a> from the concatenation of columns as part of a transformation, but if that is not possible, you can use the following template to test for uniqueness using a <a href="https://en.wikipedia.org/wiki/Composite_key" target="_blank">composite key</a>.
+
+FIXME: Would we want to maybe point to a dbt link in case users use dbt or is that a no-no? There is a dbt package that implements a macro that is safe and well tested for generating surrogates.
 
 <details>
     <summary>Explain the SQL</summary>
     <ul>
-        <li>First, the query lists all the IDs that appear more than once in a dataset, allowing for a pattern that asserts uniqueness using more than one column. The template uses two columns but you can add as many as you need. It labels the list <code>duplicated_records</code>.</li>
+        <li>First, the <code>duplicated_records</code> CTE lists all of the IDs that appear more than once in a dataset, allowing for a pattern that asserts uniqueness using more than one column. Note: The template uses two columns but you can add as many as you need. If so, make sure that you also add them to the join at the end of the query.</li>
         <li>Next, it joins the <code>duplicated_records</code>, if any, back to the dataset itself so that it can identify and send the failed rows for those duplicate IDs to Soda Cloud. </li>
     </ul>
 </details>
@@ -103,6 +108,7 @@ sql_metrics:
 {% endraw %}
 
 
+
 ## Confirm the referential integrity of IDs between datasets
 
 You can use a custom metric to confirm <a href="https://en.wikipedia.org/wiki/Referential_integrity" target="_blank">referential integrity</a> between identifiers in two separate datasets. For example, you may wish to confirm that the IDs in a column in a parent dataset match the IDs in a column in a child dataset. Sometimes, transactional databases with <a href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints?view=sql-server-ver15" target="_blank">primary and foreign key constraints</a> serve to maintain the integrity of the IDs between datasets, but where the constraints are not enforced, you can define a custom metric to compare IDs between datasets and surface any discrepancies.
@@ -110,6 +116,8 @@ You can use a custom metric to confirm <a href="https://en.wikipedia.org/wiki/Re
 If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_cloud.md %}) to your instance of Soda SQL, you can use a custom metric to explicitly send rows that contain referential inconsistencies to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
 
 Use the following custom metric template in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+
+Works in:
 
 ![template-compatible-1](/assets/images/template-compatible-1.png){:height="170px" width="170px"}
 
@@ -137,8 +145,9 @@ sql_metrics:
             {{column}} as id
           from {{ table_2 }}
         )
-        select *
-        from {{table_1}} as t
+        select 
+          *
+        from {{ table_1 }} as t
         left join reference_table p
           on trim(t.id) = trim(p.id)
         left join target_table tt
@@ -150,9 +159,11 @@ sql_metrics:
 
 ## Compare values between datasets
 
-To compare values in columns in different datasets in the same data source, use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+To compare values between columns across two different datasets in the same data source, use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
 If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_cloud.md %}) to your instance of Soda SQL, you can use these custom metrics to explicitly send failed rows to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
+
+Works in:
 
 ![template-compatible-1](/assets/images/template-compatible-1.png){:height="170px" width="170px"}
 
@@ -161,8 +172,8 @@ If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_clou
 <details>
     <summary>Explain the SQL</summary>
     <ul>
-        <li>First, the query joins the two datasets whose contents you wish to compare using a common numerical ID column, then calculates the difference between the two numerical values and returns a percentage that indicates how different the values are. The statement takes into account the directionality of the calculation between datasets. It labels the join <code>dataset_join</code>, and the result of the calculation, <code>pcent_difference</code>. </li>
-        <li>Then, it gets all the rows from <code>dataset_join</code> for which the calculated <code>pcent_difference</code> value exceeds the value you set for <code>acceptance_threshold</code>. This enables you to set a limit on what is an acceptable difference between values in the columns. If you want the values of the IDs to be equal, set the threshold to <code>0.0</code>. </li>
+        <li>First, the query joins the two datasets whose contents you wish to compare using a common ID column, and then calculates the difference between the two numerical values and returns a percentage that indicates how different the values are. The statement takes into account the directionality of the calculation between datasets. It labels the join <code>dataset_join</code>, and the result of the calculation, <code>percent_difference</code>. </li>
+        <li>Then, it gets all the rows from <code>dataset_join</code> for which the calculated <code>percent_difference</code> value exceeds the value you set for <code>acceptance_threshold</code>. This enables you to set a limit on what is an acceptable difference between values in the columns. If you want the values of the IDs to be equal, set the threshold to <code>0.0</code>. </li>
     </ul>
 </details>
 
@@ -173,25 +184,25 @@ sql_metrics:
     - sql: |
         with dataset_join as (
             select
-                d1.{{id_column_to_join_tables_on}} as row_id,
-                d1.{{column}} as d1_column,
-                d2.{{column}} as d2_column,
+                d1.{{ id_column_to_join_tables_on }} as row_id,
+                d1.{{ column }} as d1_column,
+                d2.{{ column }} as d2_column,
                 case
-                  when d1.{{column}} >= d2.{{column}}
-                  then (d1.{{column}} - d2.{{column}})
-                      / nullif(abs(d1.{{column}}::numeric), 0) * 100
-                  when d1.{{column}} < d2.{{column}}
-                  then (d2.{{column}} - d1.{{column}})
-                      / nullif(abs(d2.{{column}}::numeric), 0) * 100
+                  when d1.{{ column }} >= d2.{{ column }}
+                  then (d1.{{ column }} - d2.{{ column }})
+                      / nullif(abs(d1.{{ column }}::numeric), 0) * 100
+                  when d1.{{ column }} < d2.{{ column }}
+                  then (d2.{{ column }} - d1.{{ column }})
+                      / nullif(abs(d2.{{ column }}::numeric), 0) * 100
                   end
-                as pcent_difference
+                as percent_difference
 
-            from {{table_1}} d1
-            join {{table_2}} d2
-                on d1.{{id_column_to_join_tables_on}} = d2.{{id_column_to_join_tables_on}}
+            from {{ table_1 }} d1
+            join {{ table_2 }} d2
+                on d1.{{ id_column_to_join_tables_on }} = d2.{{ id_column_to_join_tables_on }}
         )
         select * from dataset_join
-        where pcent_difference > {{acceptance_threshold}};
+        where percent_difference > {{ acceptance_threshold }};
 ```
 {% endraw %}
 
@@ -199,13 +210,13 @@ sql_metrics:
 
 #### Compare non-numerical values
 
-You can use this template for numerical values as well, but because it demands strict equality between ID values, it does not allow you to set an <code>acceptance_threshold</code> for acceptable discrepancy between values.  
+Use the following template if you want to compare non-numerical values such as strings. Note: You can, of course, use this template to compare numerical values as well, but because it demands strict equality between the columns you want to compare, it does not allow you to set an <code>acceptance_threshold</code> for acceptable discrepancy between values and is, therefore, more limited.  
 
 <details>
     <summary>Explain the SQL</summary>
     <ul>
         <li>First, the query joins the two datasets whose contents you wish to compare, then defines the identifiers to use to conduct the comparison between datasets. It labels the join <code>dataset_join</code>.</li>
-        <li>Next, it defines how to compare values in the ID columns and that the result of the comparison, true or false, is named <code>is_equal</code>.</li>
+        <li>Next, it defines how to compare values in the ID columns and that the result of the comparison, true or false, and names it <code>is_equal</code>.</li>
         <li>Then, it identifies the datasets that contain the columns to compare.</li>
         <li>The test at the end collects all the rows from <code>dataset_join</code> that do not have equal values.</li>
         
@@ -219,21 +230,24 @@ sql_metrics:
     - sql: |
         with dataset_join as (
             select
-                d1.{{id_column_to_join_on}} as row_id,
-                d1.{{column}} as d1_column,
-                d2.{{column}} as d2_column,
+                d1.{{ id_column_to_join_on }} as row_id,
+                d1.{{ column }} as d1_column,
+                d2.{{ column }} as d2_column,
                 case
-                  when d1.{{column}} != d2.{{column}}
+                  when d1.{{ column }} != d2.{{ column }}
                   then False
                   else True
                   end
                 as is_equal
 
-            from {{table_1}} d1
-            join {{table_2}} d2
-                on d1.{{id_column_to_join_on}} = d2.{{id_column_to_join_on}}
+            from {{ table_1 }} d1
+            join {{ table_2 }} d2
+                on d1.{{ id_column_to_join_on }} = d2.{{ id_column_to_join_on }}
         )
-        select * from dataset_join where is_equal = False
+        select 
+          * 
+        from dataset_join 
+        where is_equal = False
 ```
 {% endraw %}
 
@@ -243,6 +257,8 @@ sql_metrics:
 You can use a custom metric to compare two datasets in the same data source to assert that they are strictly identical. This template identifies rows that are present in one dataset but not in the other, and vice-versa. 
 
 Use the following custom metric template in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+
+Works in :
 
 ![template-compatible-1](/assets/images/template-compatible-1.png){:height="170px" width="170px"}
 
@@ -254,6 +270,8 @@ Use the following custom metric template in your [scan YAML]({% link soda-sql/sc
         <li>Lastly, the query adds another column to the dataset associated with the scan YAML file to indicate the direction of the inconsistency.</li>
     </ul>
 </details>
+
+FIXME: Write the BQ template as a separate one.
 
 {% raw %}
 ```yaml
@@ -294,11 +312,13 @@ sql_metrics:
 
 Use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file to validate that data in records in your data source match your expectations. The first example is a skeletal query into which you can insert a variety of conditions; the others offer examples of how you might use the query. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
+Works in:
+
 ![template-compatible-1](/assets/images/template-compatible-1.png){:height="170px" width="170px"}
 
 <details>
     <summary>Explain the SQL</summary>
-      The query identifies a dataset in which to find records that do not meet the conditions you set. 
+      The query identifies a dataset in which to find records that do not meet the conditions you set in the not clause. See fleshed out examples for more concrete use of the <code>not</code> sub-query.s 
 </details>
 
 {% raw %}
@@ -362,23 +382,25 @@ sql_metrics:
 
 Where the contents of a dataset are not validated on entry, you may wish to assert that entries map correctly to standard values. For example, where end users enter a free-form value for a country field, you can use a SQL query to confirm that the entry maps correctly to an ISO country code, as in the following table. 
 
-| country_name | country_code | 
-| ----------   | ------------ |
-| Holland      | NL |
-| Netherlands  | NL  |
-| Britain      | UK |
-| United states  | USA |
+| country_name   | country_code | 
+| ----------     | ------------ |
+| Holland        | NL           |
+| Netherlands    | NL           |
+| Britain        | UK           |
+| United states  | USA          |
 
 If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_cloud.md %}) to your instance of Soda SQL, you can use these custom metrics to explicitly send failed rows that contain distinct values in either column to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
 
 Use one of the following dialect-specific custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+
+Works in:
 
 ![template-compatible-2](/assets/images/template-compatible-2.png){:height="112px" width="112px"}
 
 <details>
     <summary>Explain the SQL</summary>
     <ul>
-        <li>The first query counts the number of rows in which the values in either column are distinct relative to the other column contents, and displays the number of distinct values (mappings that failed), or the full contents of the failed rows that contain distinct values. </li>
+        <li>The first query counts the number of rows in which the values in either column are distinct relative to the other column contents, and displays the full contents of the failed rows that contain distinct values. </li>
         <li>The second query is the same as the first, but displays only the distinct values that appear in either column.</li>
     </ul>
 </details>
@@ -388,7 +410,7 @@ Use one of the following dialect-specific custom metric templates in your [scan 
 sql_metrics:
     - type: failed_rows
     - sql: |
-        //this query returns distinct failed mappings or failed rows
+        //this query returns failed rows
         select
             *
         from {{ table }}
@@ -406,13 +428,14 @@ sql_metrics:
 
 <br />
 
+Works in:
 
 ![template-compatible-3](/assets/images/template-compatible-3.png){:height="155px" width="155px"}
 
 <details>
     <summary>Explain the SQL</summary>
     <ul>
-        <li>The first query counts the number of rows in which the values in either column are distinct relative to the other column contents, and displays the number of distinct values (mappings that failed), or the full contents of the failed rows that contain distinct values. </li>
+        <li>The first query counts the number of rows in which the values in either column are distinct relative to the other column contents, and displays the full contents of the failed rows that contain distinct values. </li>
         <li>The second query is the same as the first, but displays only the distinct values that appear in either column.</li>
     </ul>
 </details>
@@ -425,29 +448,30 @@ sql_metrics:
         //this query returns failed rows
         select
             *,
-        from {{table}}
+        from {{ table }}
         where 1 = 1
-        qualify  count(*) over (partition by {{column_1}} order by {{column_2}}) > 1;
+        qualify  count(*) over (partition by {{ column_1 }} order by {{ column_2 }}) > 1;
 
         // this query only returns the distinct failed mappings
         select distinct
-            {{column_1}},
-            {{column_2}}
-        from {{table}}
+            {{ column_1 }},
+            {{ column_2 }}
+        from {{ table }}
         where 1 = 1
-        qualify  count(*) over (partition by {{column_1}} order by {{column_2}}) > 1;
+        qualify  count(*) over (partition by {{ column_1 }} order by {{ column_2 }}) > 1;
 ```
 {% endraw %}
 
 <br />
 
+Works in :
 
 ![template-compatible-4](/assets/images/template-compatible-4.png){:height="175px" width="175px"}
 
 <details>
     <summary>Explain the SQL</summary>
     <ul>
-        <li>The first query counts the number of rows in which the values in either column are distinct relative to the other column contents, and displays the number of distinct values (mappings that failed), or the full contents of the failed rows that contain distinct values. </li>
+        <li>The first query counts the number of rows in which the values in either column are distinct relative to the other column contents, and displays the full contents of the failed rows that contain distinct values. </li>
         <li>The second query is the same as the first, but displays only the distinct values that appear in either column.</li>
     </ul>
 </details>
@@ -463,25 +487,33 @@ sql_metrics:
         from(
             select
                 *,
-                count({{column_2}}) over (partition by {{column_1}}) as number_duplicated_records_per_key
-            from public.child_table
+                count({{ column_2 }}) over (
+                  partition by {{column_1}}
+                  ) as number_duplicated_records_per_key
+
+            from {{ table }}
             ) as mapping_aggregations
+
         where number_duplicated_records_per_key > 1
-        order by {{column_1}}, {{column_2}}
+        order by {{ column_1 }}, {{ column_2 }}
         ;
 
         // this query only returns the distinct failed mappings
         select distinct 
-            {{column_1}}, 
-            {{column_2}}
+            {{ column_1 }}, 
+            {{ column_2 }}
         from(
             select
                 *,
-                count({{column_2}}) over (partition by {{column_1}}) as number_duplicated_records_per_key
-            from public.child_table
+                count({{ column_2 }}) over (
+                  partition by {{ column_1 }}
+                  ) as number_duplicated_records_per_key
+
+            from {{ table }}
             ) as mapping_aggregations
+
         where number_duplicated_records_per_key > 1
-        order by {{column_1}}, {{column_2}}
+        order by {{ column_1 }}, {{ column_2 }}
         ;
 ```
 {% endraw %}
@@ -490,6 +522,8 @@ sql_metrics:
 ## Compare row count between datasets
 
 You can use custom metrics to compare row counts between datasets in the same data source. Use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+
+Works in:
 
 ![template-compatible-1](/assets/images/template-compatible-1.png){:height="170px" width="170px"}
 
@@ -516,6 +550,7 @@ sql_metric:
 <br />
 
 #### Set an acceptable threshold for row count delta
+If you want to compare row counts between two datasets and you want to allow for some acceptable variance, you can use the following query.
 
 <details>
     <summary>Explain the SQL</summary>
@@ -533,10 +568,10 @@ sql_metric:
         - type: failed_rows
         - sql: |
             with table1 as (
-              select count(*) as table_1_rows from {{table_1}}
+              select count(*) as table_1_rows from {{ table_1 }}
             ), 
             table2 as (
-              select count(*) as table_2_rows from {{table_2}}
+              select count(*) as table_2_rows from {{ table_2 }}
             ),
             intermediate as (
               select 
