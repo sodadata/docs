@@ -7,47 +7,124 @@ redirect_from: /soda-sql/example-compare-rowcounts.html
 
 # Custom metric templates
 
-Out of the box, Soda makes several [built-in metrics]({% link soda/metrics.md %}), such as `row_count`, available for you to use to write [tests]({% link soda/glossary.md %}#test). If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs (such as cross-dataset comparisons), you can use [custom metrics]({% link soda-sql/sql_metrics.md%}#custom-metrics). 
+Out of the box, Soda makes several [built-in metrics]({% link soda/metrics.md %}), such as `row_count`, available for you to use to write [tests]({% link soda/glossary.md %}#test). If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs, you can use [custom metrics]({% link soda-sql/sql_metrics.md%}#custom-metrics). 
 
-**Custom metrics**, also known as SQL metrics, enable you to define your own metrics that you can use in a test in Soda SQL or Soda Cloud; refer to [this example below](#validate-that-row-counts-are-equal). You can also use custom metrics to simply define SQL queries that Soda executes during a scan as tests, which is what most of these templates do.
+**Custom metrics**, also known as SQL metrics, enable you to define your own metrics that you can use in a test in Soda SQL or Soda Cloud; refer to [this example below](#validate-that-row-counts-are-equal). You can also use custom metrics to simply define SQL queries that Soda executes as tests during a scan, which is what most of these templates do.
 
-* Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics).
-* Read more about using [custom metrics in Soda Cloud]({% link soda-cloud/monitors.md %}#metric-types).
+Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics).<br />
+Read more about using [custom metrics in Soda Cloud]({% link soda-cloud/monitors.md %}#metric-types).
 
-The templates below offer examples of how you can define custom metrics in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file to extract more complex, customized and business-specific measurements from your data. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+The templates below offer examples of how you can define custom metrics in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file to extract more complex, customized, business-specific measurements from your data. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
+[Compare row count between datasets](#compare-row-count-between-datasets)<br />
 [Find and display duplicate values](#find-and-display-duplicate-values)<br />
 [Confirm the referential integrity of IDs between datasets](#confirm-the-referential-integrity-of-ids-between-datasets)<br />
 [Compare values between datasets](#compare-values-between-datasets)<br />
 [Compare datasets for equality](#compare-datasets-for-equality)<br />
 [Validate business logic at the row level](#validate-business-logic-at-the-row-level)<br />
 [Check for incorrectly mapped values across columns](#check-for-incorrectly-mapped-values-across-columns)<br />
-[Compare row count between datasets](#compare-row-count-between-datasets)<br />
 [Go further](#go-further)<br />
 
-<!-- TODO: Make sure to show that people either need to create those as failed rows or single metric in the explanation -->
+<br />
+
+## Compare row count between datasets
+
+You can use custom metrics to compare row counts between datasets in the same data source. Use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+
+
+#### Validate that row counts are equal
+
+✅ Amazon Redshift  
+✅ GCP Big Query  
+✅ PostgreSQL  
+✅ Snowflake
+
+```yaml
+sql_metric: 
+  sql: |
+    SELECT COUNT(*) as other_row_count
+    FROM other_table
+  tests:
+    - row_count == other_row_count
+```
+<details>
+    <summary>Explain the SQL</summary>
+    <ul>
+        <li>First, the query counts the number of rows in another dataset in your data source, and labels the value <code>other_row_count</code>. This example uses SQL metrics to create a new, custom metric, <code>other_row_count</code>, that it will use in a Soda test immediately following.</li>
+        <li>Then, the Soda test compares the row count value of the dataset associated with the scan YAML file to the row count value of the other table that the custom query collected. If the two are not equal, the test fails.</li>
+    </ul>
+</details>
+
+<br />
+
+#### Set an acceptable threshold for row count delta
+If you want to compare row counts between two datasets and allow for some acceptable difference between counts, you can use the following query.
+
+✅ Amazon Redshift  
+✅ GCP Big Query  
+✅ PostgreSQL  
+✅ Snowflake
+
+{% raw %}
+```yaml
+    sql_metrics:
+        - type: failed_rows
+        - sql: |
+            with table1 as (
+              select count(*) as table_1_rows from {{ table_1 }}
+            ), 
+            table2 as (
+              select count(*) as table_2_rows from {{ table_2 }}
+            ),
+            intermediate as (
+              select 
+                (select table_1_rows from table1) as table_1_rows,
+                (select table_2_rows from table2) as table_2_rows
+            ),
+            difference_calculation as (
+              select 
+                case 
+                  when table_1_rows >= table_2_rows
+                    then table_1_rows - table_2_rows
+                  when table_1_rows < table_2_rows
+                    then table_2_rows - table_1_rows
+                  end
+                as row_delta
+              from intermediate
+            )
+            select row_delta
+            from difference_calculation
+            where row_delta > {{ acceptance_threshold }}
+```
+{% endraw %}
+
+
+<details>
+    <summary>Explain the SQL</summary>
+    <ul>
+        <li>First, the query counts the rows in each of two datasets.</li>
+        <li>Next, it defines an intermediate table to store the temporary row count values for each table so it can use those values in a calculation.</li>
+        <li>Then, the query uses the data in the intermediate table to perform a calculation that compares the row count values of the datasets and produces a value that represents the difference in the number of rows, which it labels <code>row_delta</code>.</li>
+        <li>Lastly, it compares the value it calculated for <code>row_delta</code> to the value you set for <code>acceptance_threshold</code>, or the amount of row count inconsistency you are willing to accept between datasets. If you want the row count values to be equal, set the threshold to <code>0.0</code>. </li>
+    </ul>
+</details>
+
 
 ## Find and display duplicate values
 
-Though you can use the built-in metric `duplicate_count` to test the contents of a column of unique IDs for duplicate values, the following template allows you to write a `failed_rows` test that passes or fails according to the number of duplicate values that exist. In other words, conversely to the built-in metric, which only shows you the number of duplicated rows (see an [example]({% link soda-sql/examples-by-metric.md %}#duplicate_count) of a test that uses `duplicate_count`), the following custom template allows you to select and display the full content of the rows that are duplicated so you can directly investigate the root cause of the issue.
+Though you can use the built-in metric `duplicate_count` to test the contents of a column of unique IDs to determine the number of duplicate values,  the following templates use the query type `failed_rows` and SQL queries to select and display the full content of the rows that contain duplicate values so you can investigate an issue.
 
 If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_cloud.md %}) to your instance of Soda SQL, you can use a custom metric to explicitly send failed rows that contain duplicate IDs to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
 
 Use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
-Works in:
-
-![template-compatible-1](/assets/images/template-compatible-1.png){:height="170px" width="170px"}
 
 #### Dataset contains a unique ID column
 
-<details>
-    <summary>Explain the SQL</summary>
-    <ul>
-        <li>First, the query lists all the IDs in the <code>id_column</code> that appear more than once in the column and labels the list <code>duplicated_records</code>. </li>
-        <li>Next, it joins the <code>duplicated_records</code>, if any, back to the dataset itself so that it can identify and send the failed rows for those duplicate IDs to Soda Cloud. </li>
-    </ul>
-</details>
+✅ Amazon Redshift  
+✅ GCP Big Query  
+✅ PostgreSQL  
+✅ Snowflake
 
 {% raw %}
 ```yaml
@@ -69,21 +146,25 @@ sql_metrics:
 ``` 
 {% endraw %}
 
+<details>
+    <summary>Explain the SQL</summary>
+    <ul>
+        <li>First, the <code>duplicated_records</code> <a href="https://en.wikipedia.org/wiki/Hierarchical_and_recursive_queries_in_SQL#Common_table_expression" target="_blank">common table expression (CTE)</a>  lists all the IDs in the <code>id_column</code> that appear more than once in the column and labels the list <code>duplicated_records</code>. </li>
+        <li>Next, it joins the <code>duplicated_records</code>, if any, back to the dataset itself so that it can identify and send the failed rows for those duplicate IDs to Soda Cloud. </li>
+    </ul>
+</details>
 <br />
 
 #### Dataset does not contain a unique ID column
 
-If your dataset does not contain a unique ID column (i.e. row-uniqueness is defined by more than one columns), as with a denormalized dataset or a dataset produced from several joins, you may need to define uniqueness using a combination of columns. Ideally, you would generate a <a href="https://en.wikipedia.org/wiki/Surrogate_key" target="_blank"> surrogate key</a> from the concatenation of columns as part of a transformation, but if that is not possible, you can use the following template to test for uniqueness using a <a href="https://en.wikipedia.org/wiki/Composite_key" target="_blank">composite key</a>.
+If your dataset does not contain a unique ID column, as with a denormalized dataset or a dataset produced from several joins, you may need to define uniqueness using a combination of columns. 
 
-FIXME: Would we want to maybe point to a dbt link in case users use dbt or is that a no-no? There is a dbt package that implements a macro that is safe and well tested for generating surrogates.
+Ideally, you would generate a <a href="https://en.wikipedia.org/wiki/Surrogate_key" target="_blank"> surrogate key</a> from the concatenation of columns as part of a transformation, such as with this dbt-util that <a href="https://github.com/dbt-labs/dbt-utils#surrogate_key-source" target="_blank"> generates a `surrogate_key`</a>. However, if that is not possible, you can use the following template to test for uniqueness using a <a href="https://en.wikipedia.org/wiki/Composite_key" target="_blank">composite key</a>.
 
-<details>
-    <summary>Explain the SQL</summary>
-    <ul>
-        <li>First, the <code>duplicated_records</code> CTE lists all of the IDs that appear more than once in a dataset, allowing for a pattern that asserts uniqueness using more than one column. Note: The template uses two columns but you can add as many as you need. If so, make sure that you also add them to the join at the end of the query.</li>
-        <li>Next, it joins the <code>duplicated_records</code>, if any, back to the dataset itself so that it can identify and send the failed rows for those duplicate IDs to Soda Cloud. </li>
-    </ul>
-</details>
+✅ Amazon Redshift  
+✅ GCP Big Query  
+✅ PostgreSQL  
+✅ Snowflake
 
 {% raw %}
 ```yaml
@@ -107,28 +188,30 @@ sql_metrics:
 ```
 {% endraw %}
 
+<details>
+    <summary>Explain the SQL</summary>
+    <ul>
+        <li>First, the <code>duplicated_records</code> <a href="https://en.wikipedia.org/wiki/Hierarchical_and_recursive_queries_in_SQL#Common_table_expression" target="_blank">common table expression (CTE)</a> lists all of the IDs that appear more than once in a dataset, allowing for a pattern that asserts uniqueness using more than one column. The template uses two columns but you can add as many as you need. If you add more, be sure to add them to the join at the end of the query.</li>
+        <li>Next, it joins the <code>duplicated_records</code> back to the dataset itself so that it can identify and send the failed rows for those duplicate IDs to Soda Cloud. </li>
+    </ul>
+</details>
+
 
 
 ## Confirm the referential integrity of IDs between datasets
 
-You can use a custom metric to confirm <a href="https://en.wikipedia.org/wiki/Referential_integrity" target="_blank">referential integrity</a> between identifiers in two separate datasets. For example, you may wish to confirm that the IDs in a column in a parent dataset match the IDs in a column in a child dataset. Sometimes, transactional databases with <a href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints?view=sql-server-ver15" target="_blank">primary and foreign key constraints</a> serve to maintain the integrity of the IDs between datasets, but where the constraints are not enforced, you can define a custom metric to compare IDs between datasets and surface any discrepancies.
+You can use a custom metric with query type `failed_rows` to confirm <a href="https://en.wikipedia.org/wiki/Referential_integrity" target="_blank">referential integrity</a> between identifiers in two separate datasets. For example, you may wish to confirm that the IDs in a column in a parent dataset match the IDs in a column in a child dataset. 
+
+Sometimes, transactional databases with <a href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints?view=sql-server-ver15" target="_blank">primary and foreign key constraints</a> maintain the integrity of the IDs between datasets, but where the datasets do not enforce constraints, you can define a custom metric to compare IDs between datasets to surface any discrepancies.
 
 If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_cloud.md %}) to your instance of Soda SQL, you can use a custom metric to explicitly send rows that contain referential inconsistencies to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
 
 Use the following custom metric template in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
-Works in:
-
-![template-compatible-1](/assets/images/template-compatible-1.png){:height="170px" width="170px"}
-
-<details>
-    <summary>Explain the SQL</summary>
-    <ul>
-        <li>First, the query gets the IDs from the child, or target dataset. </li>
-        <li>Next, it gets the IDs from the parent, or reference dataset.</li>
-        <li>Then, the query uses a <code>left join</code> to join the parent dataset onto the child dataset. If an ID exists in the child, but not in the parent, the record on the child dataset has a <code>null</code> value. Next, another <code>left join</code> joins the IDs back to the child/target dataset so that it can identify and send the failed rows for the ID inconsistencies to Soda Cloud.</li>
-    </ul>
-</details>
+✅ Amazon Redshift  
+✅ GCP Big Query  
+✅ PostgreSQL  
+✅ Snowflake
 
 {% raw %}
 ```yaml
@@ -156,26 +239,28 @@ sql_metrics:
 ```
 {% endraw %}
 
-
-## Compare values between datasets
-
-To compare values between columns across two different datasets in the same data source, use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
-
-If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_cloud.md %}) to your instance of Soda SQL, you can use these custom metrics to explicitly send failed rows to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
-
-Works in:
-
-![template-compatible-1](/assets/images/template-compatible-1.png){:height="170px" width="170px"}
-
-#### Compare numerical values
-
 <details>
     <summary>Explain the SQL</summary>
     <ul>
-        <li>First, the query joins the two datasets whose contents you wish to compare using a common ID column, and then calculates the difference between the two numerical values and returns a percentage that indicates how different the values are. The statement takes into account the directionality of the calculation between datasets. It labels the join <code>dataset_join</code>, and the result of the calculation, <code>percent_difference</code>. </li>
-        <li>Then, it gets all the rows from <code>dataset_join</code> for which the calculated <code>percent_difference</code> value exceeds the value you set for <code>acceptance_threshold</code>. This enables you to set a limit on what is an acceptable difference between values in the columns. If you want the values of the IDs to be equal, set the threshold to <code>0.0</code>. </li>
+        <li>First, the query gets the IDs from the child, or target dataset. </li>
+        <li>Next, it gets the IDs from the parent, or reference dataset.</li>
+        <li>Then, the query uses a <code>left join</code> to join the parent dataset onto the child dataset. If an ID exists in the child, but not in the parent, the record on the child dataset has a <code>null</code> value. Next, another <code>left join</code> joins the IDs back to the child/target dataset so that it can identify and send the failed rows for the ID inconsistencies to Soda Cloud.</li>
     </ul>
 </details>
+
+## Compare values between datasets
+
+To compare values between columns across two different datasets in the same data source, use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values, and be sure to set the query type to `failed_rows`.
+
+If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_cloud.md %}) to your instance of Soda SQL, you can use these custom metrics to explicitly send failed rows to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
+
+
+#### Compare numerical values
+
+✅ Amazon Redshift  
+✅ GCP Big Query  
+✅ PostgreSQL  
+✅ Snowflake
 
 {% raw %}
 ```yaml
@@ -206,22 +291,25 @@ sql_metrics:
 ```
 {% endraw %}
 
+<details>
+    <summary>Explain the SQL</summary>
+    <ul>
+        <li>First, the query joins the two datasets whose contents you wish to compare using a common ID column, and then calculates the difference between the two numerical values and returns a percentage that indicates how different the values are. The statement takes into account the directionality of the calculation between datasets. It labels the join <code>dataset_join</code>, and the result of the calculation, <code>percent_difference</code>. </li>
+        <li>Then, it gets all the rows from <code>dataset_join</code> for which the calculated <code>percent_difference</code> value exceeds the value you set for <code>acceptance_threshold</code>. This enables you to set a limit on what is an acceptable difference between values in the columns. If you want the values of the IDs to be exactly the same, set the threshold to <code>0.0</code>. </li>
+    </ul>
+</details>
+
+
 <br />
 
 #### Compare non-numerical values
 
-Use the following template if you want to compare non-numerical values such as strings. Note: You can, of course, use this template to compare numerical values as well, but because it demands strict equality between the columns you want to compare, it does not allow you to set an <code>acceptance_threshold</code> for acceptable discrepancy between values and is, therefore, more limited.  
+Use the following template if you want to compare non-numerical values such as strings. You can use this template to compare numerical values, but its demand for strict equality is more limiting because it does not allow you to set an <code>acceptance_threshold</code> for acceptable difference between values.  
 
-<details>
-    <summary>Explain the SQL</summary>
-    <ul>
-        <li>First, the query joins the two datasets whose contents you wish to compare, then defines the identifiers to use to conduct the comparison between datasets. It labels the join <code>dataset_join</code>.</li>
-        <li>Next, it defines how to compare values in the ID columns and that the result of the comparison, true or false, and names it <code>is_equal</code>.</li>
-        <li>Then, it identifies the datasets that contain the columns to compare.</li>
-        <li>The test at the end collects all the rows from <code>dataset_join</code> that do not have equal values.</li>
-        
-    </ul>
-</details>
+✅ Amazon Redshift  
+✅ GCP Big Query  
+✅ PostgreSQL  
+✅ Snowflake
 
 {% raw %}
 ```yaml
@@ -251,27 +339,26 @@ sql_metrics:
 ```
 {% endraw %}
 
+<details>
+    <summary>Explain the SQL</summary>
+    <ul>
+        <li>First, the query joins the two datasets whose contents you wish to compare, then defines the identifiers to use to conduct the comparison between datasets. It labels the join <code>dataset_join</code>.</li>
+        <li>Next, it defines how to compare values in the ID columns. It names the result of the comparison, which will be true or false, <code>is_equal</code>.</li>
+        <li>Then, it identifies the datasets that contain the columns to compare.</li>
+        <li>The test at the end collects all the rows from <code>dataset_join</code> that do not have equal values.</li>
+        
+    </ul>
+</details>
 
 ## Compare datasets for equality
 
 You can use a custom metric to compare two datasets in the same data source to assert that they are strictly identical. This template identifies rows that are present in one dataset but not in the other, and vice-versa. 
 
-Use the following custom metric template in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+Use one of the following data source-specific custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
-Works in :
-
-![template-compatible-1](/assets/images/template-compatible-1.png){:height="170px" width="170px"}
-
-<details>
-    <summary>Explain the SQL</summary>
-    <ul>
-        <li>First, the query compares the values of the first dataset against the second to look for values that exist in the first dataset, but not the second. </li>
-        <li>Next, the query compares the values of the second dataset against the first to look for values that exist in the second dataset, but not the first.  </li>
-        <li>Lastly, the query adds another column to the dataset associated with the scan YAML file to indicate the direction of the inconsistency.</li>
-    </ul>
-</details>
-
-FIXME: Write the BQ template as a separate one.
+✅ Amazon Redshift  
+✅ PostgreSQL  
+✅ Snowflake
 
 {% raw %}
 ```yaml
@@ -281,7 +368,6 @@ sql_metrics:
           select 
             *
           from {{ table_1 }}
-          except (distinct) //distinct is needed for Big Query
           select 
             *
           from {{ table_2 }}
@@ -290,7 +376,6 @@ sql_metrics:
           select
             *
           from {{ table_2 }}
-          except (distinct) //distinct is needed for Big Query
           select
             *
           from {{ table_1 }}
@@ -307,19 +392,74 @@ sql_metrics:
 ```
 {% endraw %}
 
+<details>
+    <summary>Explain the SQL</summary>
+    <ul>
+        <li>First, the query compares the values of the first dataset against the second to look for values that exist in the first dataset, but not the second. </li>
+        <li>Next, the query compares the values of the second dataset against the first to look for values that exist in the second dataset, but not the first.  </li>
+        <li>Lastly, the query adds another column to the dataset associated with the scan YAML file to indicate the direction of the inconsistency.</li>
+    </ul>
+</details>
 
-## Validate business logic at the row level
+<br />
 
-Use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file to validate that data in records in your data source match your expectations. The first example is a skeletal query into which you can insert a variety of conditions; the others offer examples of how you might use the query. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+✅ GCP Big Query
 
-Works in:
-
-![template-compatible-1](/assets/images/template-compatible-1.png){:height="170px" width="170px"}
+{% raw %}
+```yaml
+sql_metrics:
+    - sql: |
+        with table_1_not_in_table_2 as (
+          select 
+            *
+          from {{ table_1 }}
+          except (distinct) 
+          select 
+            *
+          from {{ table_2 }}
+        )
+        , table_2_not_in_table_1 as (
+          select
+            *
+          from {{ table_2 }}
+          except (distinct) 
+          select
+            *
+          from {{ table_1 }}
+        )
+        select
+          'found in table 1 but missing in table 2' as directionality,
+          *
+        from table_1_not_in_table_2
+        union all
+        select
+          'found in table 2 but missing in table 1' as directionality,
+          *
+        from table_2_not_in_table_1
+```
+{% endraw %}
 
 <details>
     <summary>Explain the SQL</summary>
-      The query identifies a dataset in which to find records that do not meet the conditions you set in the not clause. See fleshed out examples for more concrete use of the <code>not</code> sub-query.s 
+    <ul>
+        <li>First, the query compares the values of the first dataset against the second to look for values that exist in the first dataset, but not the second. </li>
+        <li>Next, the query compares the values of the second dataset against the first to look for values that exist in the second dataset, but not the first.  </li>
+        <li>Lastly, the query adds another column to the dataset associated with the scan YAML file to indicate the direction of the inconsistency.</li>
+    </ul>
 </details>
+
+
+
+## Validate business logic at the row level
+
+Use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file to validate that data in records in your data source match your expectations. 
+
+The first example is a skeletal query into which you can insert a variety of conditions; the others offer examples of how you might use the query. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+
+✅ Amazon Redshift  
+✅ GCP Big Query  
+✅ PostgreSQL  
+✅ Snowflake
 
 {% raw %}
 ```yaml
@@ -332,14 +472,19 @@ sql_metrics:
 ```
 {% endraw %}
 
+<details>
+    <summary>Explain the SQL</summary>
+      The query identifies a dataset in which to find records that do not meet the conditions you set in the <code>where not</code> clause.  
+</details>
+
 <br />
 
 #### Check the sum of column values
 
-<details>
-    <summary>Explain the SQL</summary>
-      The query validates that the sum of two columns in a dataset matches the value in a third column, and identifies those rows which do not match.
-</details>
+✅ Amazon Redshift  
+✅ GCP Big Query  
+✅ PostgreSQL  
+✅ Snowflake
 
 {% raw %}
 ```yaml
@@ -352,14 +497,19 @@ sql_metrics:
 ```
 {% endraw %}
 
+
+<details>
+    <summary>Explain the SQL</summary>
+      The query validates that the sum of two columns in a dataset matches the value in a third column, and identifies those rows which do not match.
+</details>
 <br />
 
 #### Confirm Paid in Full
 
-<details>
-    <summary>Explain the SQL</summary>
-      The query validates that an order that is being paid for in installments will be fully paid by its deadline, and identifies those rows which do not meet the deadline.
-</details>
+✅ Amazon Redshift  
+✅ GCP Big Query  
+✅ PostgreSQL  
+✅ Snowflake
 
 {% raw %}
 ```yaml
@@ -376,11 +526,15 @@ sql_metrics:
 ```
 {% endraw %}
 
+<details>
+    <summary>Explain the SQL</summary>
+      The query validates that an order that is being paid for in installments will be fully paid by its deadline, and identifies those rows which do not meet the deadline.
+</details>
 
 
 ## Check for incorrectly mapped values across columns
 
-Where the contents of a dataset are not validated on entry, you may wish to assert that entries map correctly to standard values. For example, where end users enter a free-form value for a country field, you can use a SQL query to confirm that the entry maps correctly to an ISO country code, as in the following table. 
+Where a dataset does not validate its contents on entry, you may wish to assert that entries map correctly to standard values. For example, where end users enter a free-form value for a country field, you can use a SQL query to confirm that the entry maps correctly to an ISO country code, as in the following table. 
 
 | country_name   | country_code | 
 | ----------     | ------------ |
@@ -391,90 +545,11 @@ Where the contents of a dataset are not validated on entry, you may wish to asse
 
 If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_cloud.md %}) to your instance of Soda SQL, you can use these custom metrics to explicitly send failed rows that contain distinct values in either column to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
 
-Use one of the following dialect-specific custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+Use one of the following data source-specific custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
-Works in:
 
-![template-compatible-2](/assets/images/template-compatible-2.png){:height="112px" width="112px"}
-
-<details>
-    <summary>Explain the SQL</summary>
-    <ul>
-        <li>The first query counts the number of rows in which the values in either column are distinct relative to the other column contents, and displays the full contents of the failed rows that contain distinct values. </li>
-        <li>The second query is the same as the first, but displays only the distinct values that appear in either column.</li>
-    </ul>
-</details>
-
-{% raw %}
-```yaml
-sql_metrics:
-    - type: failed_rows
-    - sql: |
-        //this query returns failed rows
-        select
-            *
-        from {{ table }}
-        qualify count(*) over (partition by {{ column_1 }} order by {{ column_2 }}) > 1
-
-        // this query only returns the distinct failed mappings
-        select
-            distinct
-            {{ column_1 }},
-            {{ column_2 }}
-        from {{ table }}
-        qualify count(*) over (partition by {{ column_1 }} order by {{ column_2 }}) > 1
-```
-{% endraw %}
-
-<br />
-
-Works in:
-
-![template-compatible-3](/assets/images/template-compatible-3.png){:height="155px" width="155px"}
-
-<details>
-    <summary>Explain the SQL</summary>
-    <ul>
-        <li>The first query counts the number of rows in which the values in either column are distinct relative to the other column contents, and displays the full contents of the failed rows that contain distinct values. </li>
-        <li>The second query is the same as the first, but displays only the distinct values that appear in either column.</li>
-    </ul>
-</details>
-
-{% raw %}
-```yaml
-sql_metrics:
-    - type: failed_rows
-    - sql: |
-        //this query returns failed rows
-        select
-            *,
-        from {{ table }}
-        where 1 = 1
-        qualify  count(*) over (partition by {{ column_1 }} order by {{ column_2 }}) > 1;
-
-        // this query only returns the distinct failed mappings
-        select distinct
-            {{ column_1 }},
-            {{ column_2 }}
-        from {{ table }}
-        where 1 = 1
-        qualify  count(*) over (partition by {{ column_1 }} order by {{ column_2 }}) > 1;
-```
-{% endraw %}
-
-<br />
-
-Works in :
-
-![template-compatible-4](/assets/images/template-compatible-4.png){:height="175px" width="175px"}
-
-<details>
-    <summary>Explain the SQL</summary>
-    <ul>
-        <li>The first query counts the number of rows in which the values in either column are distinct relative to the other column contents, and displays the full contents of the failed rows that contain distinct values. </li>
-        <li>The second query is the same as the first, but displays only the distinct values that appear in either column.</li>
-    </ul>
-</details>
+✅ Amazon Redshift  
+✅ PostgreSQL 
 
 {% raw %}
 ```yaml
@@ -518,82 +593,83 @@ sql_metrics:
 ```
 {% endraw %}
 
-
-## Compare row count between datasets
-
-You can use custom metrics to compare row counts between datasets in the same data source. Use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
-
-Works in:
-
-![template-compatible-1](/assets/images/template-compatible-1.png){:height="170px" width="170px"}
-
-#### Validate that row counts are equal
-
 <details>
     <summary>Explain the SQL</summary>
     <ul>
-        <li>First, the query counts the number of rows in another dataset in your data source, and labels the value <code>other_row_count</code>. This example uses SQL metrics to create a new, custom metric, <code>other_row_count</code>, that it will use in a Soda test immediately following.</li>
-        <li>Then, the Soda test compares the row count value of the dataset associated with the scan YAML file to the row count value of the other table that the custom query collected. If the two are not equal, the test fails.</li>
-        <li></li>
+        <li>The first query counts the number of rows in which the values in either column are distinct relative to the other column contents, and displays the full contents of the failed rows that contain distinct values. </li>
+        <li>The second query is the same as the first, but displays only the distinct values that appear in either column.</li>
     </ul>
 </details>
-
-```yaml
-sql_metric: 
-  sql: |
-    SELECT COUNT(*) as other_row_count
-    FROM other_table
-  tests:
-    - row_count == other_row_count
-```
 
 <br />
 
-#### Set an acceptable threshold for row count delta
-If you want to compare row counts between two datasets and you want to allow for some acceptable variance, you can use the following query.
+
+✅ GCP Big Query  
+
+{% raw %}
+```yaml
+sql_metrics:
+    - type: failed_rows
+    - sql: |
+        //this query returns failed rows
+        select
+            *,
+        from {{ table }}
+        where 1 = 1
+        qualify  count(*) over (partition by {{ column_1 }} order by {{ column_2 }}) > 1;
+
+        // this query only returns the distinct failed mappings
+        select distinct
+            {{ column_1 }},
+            {{ column_2 }}
+        from {{ table }}
+        where 1 = 1
+        qualify  count(*) over (partition by {{ column_1 }} order by {{ column_2 }}) > 1;
+```
+{% endraw %}
 
 <details>
     <summary>Explain the SQL</summary>
     <ul>
-        <li>First, the query counts the rows in each of two datasets.</li>
-        <li>Next, it defines an intermediate table to store the temporary row count values for each table so it can use those values in a calculation.</li>
-        <li>Then, the query uses the data in the intermediate table to perform a calculation that compares the row count values of the datasets and produces a value that represents the difference in the number of rows, which it labels <code>row_delta</code>.</li>
-        <li>Lastly, it compares the value it calculated for <code>row_delta</code> to the value you set for <code>acceptance_threshold</code>, or the amount of row count inconsistency you are willing to accept between datasets. If you want the row count values to be equal, set the threshold to <code>0.0</code>. </li>
+        <li>The first query counts the number of rows in which the values in either column are distinct relative to the other column contents, and displays the full contents of the failed rows that contain distinct values. </li>
+        <li>The second query is the same as the first, but displays only the distinct values that appear in either column.</li>
     </ul>
 </details>
 
+<br />
+
+
+✅ Snowflake
+
 {% raw %}
 ```yaml
-    sql_metrics:
-        - type: failed_rows
-        - sql: |
-            with table1 as (
-              select count(*) as table_1_rows from {{ table_1 }}
-            ), 
-            table2 as (
-              select count(*) as table_2_rows from {{ table_2 }}
-            ),
-            intermediate as (
-              select 
-                (select table_1_rows from table1) as table_1_rows,
-                (select table_2_rows from table2) as table_2_rows
-            ),
-            difference_calculation as (
-              select 
-                case 
-                  when table_1_rows >= table_2_rows
-                    then table_1_rows - table_2_rows
-                  when table_1_rows < table_2_rows
-                    then table_2_rows - table_1_rows
-                  end
-                as row_delta
-              from intermediate
-            )
-            select row_delta
-            from difference_calculation
-            where row_delta > {{ acceptance_threshold }}
+sql_metrics:
+    - type: failed_rows
+    - sql: |
+        //this query returns failed rows
+        select
+            *
+        from {{ table }}
+        qualify count(*) over (partition by {{ column_1 }} order by {{ column_2 }}) > 1
+
+        // this query only returns the distinct failed mappings
+        select
+            distinct
+            {{ column_1 }},
+            {{ column_2 }}
+        from {{ table }}
+        qualify count(*) over (partition by {{ column_1 }} order by {{ column_2 }}) > 1
 ```
 {% endraw %}
+
+<details>
+    <summary>Explain the SQL</summary>
+    <ul>
+        <li>The first query counts the number of rows in which the values in either column are distinct relative to the other column contents, and displays the full contents of the failed rows that contain distinct values. </li>
+        <li>The second query is the same as the first, but displays only the distinct values that appear in either column.</li>
+    </ul>
+</details>
+
 
 
 ## Go further
