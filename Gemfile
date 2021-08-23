@@ -17,6 +17,7 @@ gem "jekyll", "~> 4.2.0"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
   gem "jekyll-last-modified-at"
+  gem "jekyll-tabs"
 end
 
 # Performance-booster for watching directories on Windows

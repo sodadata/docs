@@ -41,6 +41,23 @@ Works in:
 
 #### Dataset contains a unique ID column
 
+{% tabs log %}
+
+{% tab log js %}
+```yaml
+some:
+  - yaml
+```
+{% endtab %}
+
+{% tab log ruby %}
+```yaml
+some:
+  - yaml
+```
+{% endtab %}
+{% endtabs %}
+
 <details>
     <summary>Explain the SQL</summary>
     <ul>
@@ -48,6 +65,10 @@ Works in:
         <li>Next, it joins the <code>duplicated_records</code>, if any, back to the dataset itself so that it can identify and send the failed rows for those duplicate IDs to Soda Cloud. </li>
     </ul>
 </details>
+
+
+
+
 
 {% raw %}
 ```yaml
