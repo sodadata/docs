@@ -8,6 +8,10 @@ parent: Soda
 
 <br />
 
+#### August 23, 2021
+
+* New document for [custom metric templates]({% link soda-sql/custom-metric-templates.md %}) that you can copy and paste into scan YAML files.
+
 #### August 9, 2021
 
 * Added details for Apache Spark support. See [Install Soda SQL]({% link soda-sql/installation.md %}#compatibility).
@@ -24,7 +28,7 @@ parent: Soda
 * Added instructions for configuring [BigQuery permissions]({% link soda/warehouse_types.md %}#big-query-permissions) to run Soda scans.
 * Added an example of a [programmatic scan using a lambda function]({% link soda-sql/programmatic_scan.md %}#programmatic-scan-using-lambda-function).
 * Added instructions for [overwriting scan output in Soda Cloud]({% link soda/scan.md %}#overwrite-scan-output-in-soda-cloud).
-* New document for [Example test to compare row counts]({% link soda-sql/example-compare-rowcounts.md %}).
+* New document for [Example test to compare row counts; moved to [Custom metric templates]({% link soda-sql/custom-metric-templates.md %}#validate-that-row-counts-are-equal)
 
 #### July 26. 2021
 

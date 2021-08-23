@@ -35,6 +35,7 @@ $ gem install --user-install bundler jekyll
 $ bundle exec jekyll serve
 ```
 7. In a browser, navigate to [http://localhost:4000/soda-sql/](http://localhost:4000/soda-sql/) to see a preview of the docs site locally. Make changes to docs files in your code editor, save the files, then refresh your browser to preview your changes.
+8. If you are creating a new page, consider copy+pasting the contents of the `template-new-page.md` file and pasting into your new file so that the header and footer info are included.
 
 
 ### Style guidelines
@@ -149,3 +150,19 @@ See documentation: https://github.com/jekyll/jekyll-redirect-from
 To apply a redirect, navigate to the redirect destination file, then add the following to the file metadata at the top:
 
 `redirect_from: /pageyouwanttoredirect/`
+
+
+### Adding Last modified date
+```
+{% last_modified_at %}
+```
+
+### Adding collapse-expand toggle
+
+```
+<details>
+    <summary>Click to expand</summary>
+    Long content here
+    and here
+</details>
+```
