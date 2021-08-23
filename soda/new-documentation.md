@@ -8,9 +8,9 @@ parent: Soda
 
 <br />
 
-#### August 22, 2021
+#### August 23, 2021
 
-* New document with [custom metric templates]({% link soda-sql/custom-metric-templates.md %}) you can copy and paste into your scan YAML files.
+* New document for [custom metric templates]({% link soda-sql/custom-metric-templates.md %}) that you can copy and paste into scan YAML files.
 
 #### August 9, 2021
 
