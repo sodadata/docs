@@ -410,6 +410,7 @@ sql_metrics:
           select 
             *
           from {{ table_1 }}
+          except
           select 
             *
           from {{ table_2 }}
@@ -418,6 +419,7 @@ sql_metrics:
           select
             *
           from {{ table_2 }}
+          except
           select
             *
           from {{ table_1 }}
