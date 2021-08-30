@@ -13,7 +13,7 @@
 - title: Concepts
   page: soda/data-monitoring.md
   subcategories:
-  - subtitle: Data monitoring
+  - subtitle: Data quality
     page: soda/data-monitoring.md
   - subtitle: Scans
     page: soda/scan.md

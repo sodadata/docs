@@ -7,7 +7,7 @@ redirect_from: /soda-sql/documentation/concepts.html
 
 # How Soda SQL works
 
-**Soda SQL** is a free, open-source command-line tool. It utilizes user-defined input to prepare SQL queries that run tests on dataset in a data source to find invalid, missing, or unexpected data. When tests fail, they surface the data that you defined as "bad" in the tests. Armed with this information, you and your data engineering team can diagnose where the "bad" data entered your data pipeline and take steps to prioritize and resolve issues based on downstream impact.
+**Soda SQL** is a free, open-source command-line tool. It utilizes user-defined input to prepare SQL queries that run tests on dataset in a data source to find invalid, missing, or unexpected data. When tests fail, they surface the data that you defined as "bad" in the tests. Armed with this information, you and your data engineering team can diagnose where the "bad" data entered your data pipeline and take steps to prioritize and resolve issues.
 
 Use Soda SQL on its own to manually or programmatically scan the data that your organization uses to make decisions. Optionally, you can integrate Soda SQL with your data orchestration tool to schedule scans and automate actions based on scan results. Further, you can connect Soda SQL to a free Soda Cloud account where you and your team can use the web application to monitor test results and collaborate to keep your data issue-free.
 
@@ -23,7 +23,7 @@ This open-source, command-line tool exists to enable Data Engineers to access an
 
 - connect to your data source,
 - define tests for "bad" data, and,
-- scan your [dataset]({% link soda/glossary.md %}#dataset) to run tests for "bad" data.
+- scan your [dataset]({% link soda/glossary.md %}#dataset) to run tests against your data.
 
 
 To **connect** to a data source such as Snowflake, Amazon Athena, or Google Cloud Platform Big Query, you use two files that Soda SQL creates for you when you run the CLI [`create`]({% link soda-sql/configure.md %}#create-commands) command:
@@ -49,9 +49,9 @@ soda_sql_tutorial:
   POSTGRES_PASSWORD: yyyyyy
 ```
 
-To **define** the data quality tests that Soda SQL runs against a dataset in your data source, you use the scan YAML files that Soda SQL creates when you run the `soda analyze` CLI command. Soda SQL uses the warehouse YAML file to connect to your data source and analyze the datasets in it. For every dataset that exists, Soda SQL creates a corresponding scan YAML file and automatically populates it with tests it deems relevant for your data. You can keep these default tests intact, or you can adjust them or add more tests to fine-tune your search for "bad" data.
+To **define** the data quality tests that Soda SQL runs against a dataset, you use the scan YAML files that Soda SQL creates when you run the `soda analyze` CLI command. Soda SQL uses the warehouse YAML file to connect to your data source and analyze the datasets in it. For every dataset that exists, Soda SQL creates a corresponding scan YAML file and automatically populates it with tests it deems relevant for your data. You can keep these default tests intact, or you can adjust them or add more tests to fine-tune your search for "bad" data.
 
-For example, you can define tests that look for things like, non-UUID entries in the id column of a table, or zero values in a commission percentage column. See [Scan YAML]({% link soda-sql/scan-yaml.md %}) for much more detail on the contents of this file.
+For example, you can define tests that look for things like, non-UUID-formatted entries in the ID column of a table, or zero values in a commission percentage column. See [Scan YAML]({% link soda-sql/scan-yaml.md %}) for much more detail on the contents of this file.
 
 #### Scan YAML example
 ```yaml
@@ -81,7 +81,7 @@ The following image illustrates what Soda SQL does when you initiate a scan.
 
 ![soda-operation](/assets/images/soda-operation.png){:height="800px" width="800px"}
 
-**1** - You trigger a scan using the `soda scan` CLI command from your [warehouse directory]({% link soda/glossary.md %}#warehouse-directory). The scan specifies which warehouse YAML and scan YAML files to use, which amounts to telling it which dataset in which data source to scan.
+**1** - You trigger a scan using the `soda scan` CLI command from your [warehouse directory]({% link soda/glossary.md %}#warehouse-directory). The scan specifies which warehouse YAML and scan YAML files to use, which amounts to identifying which dataset in which data source to scan.
 
 **2** - Soda SQL uses the tests in the scan YAML to prepare SQL queries that it runs on the datasets in your data source.
 
@@ -95,7 +95,7 @@ The following image illustrates what Soda SQL does when you initiate a scan.
 
 ## Soda SQL automation and integrations
 
-To automate scans on your data, you can use the **Soda SQL Python library** to programmatically execute scans. Based on a set of conditions or a specific schedule of events, you can instruct Soda SQL to automatically scan for "bad" data. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a warehouse, after it is transformed, and before it is exported to another warehouse. Refer to the [Programmatic scan]({% link soda-sql/programmatic_scan.md %}) instructions for details.
+To automate scans on your data, you can use the **Soda SQL Python library** to programmatically execute scans. Based on a set of conditions or a specific schedule of events, you can instruct Soda SQL to automatically run scans. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a warehouse, after it is transformed, and before it is exported to another warehouse. Refer to the [Programmatic scan]({% link soda-sql/programmatic_scan.md %}) instructions for details.
 
 Alternatively, you can integrate Soda SQL with a **data orchestration tool** such as, Airflow, Dagster, or dbt, to schedule automated scans. You can also configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically quarantine the "bad" data or block it from contaminating your data pipeline. Refer to [Orchestrate scans]({% link soda-sql/orchestrate_scans.md %}) for details.
 
@@ -104,7 +104,7 @@ Additionally, you can integrate Soda SQL with a **Soda Cloud** account. This fre
 Though you do not have to set up and ingrate a Soda Cloud account in order to use Soda SQL, the web app serves to complement the CLI tool, giving you a non-CLI method of examining data quality. Use Soda Cloud to:
 
 - collaborate with team members to review details of scan results that can help you to diagnose data issues
-- use monitors to view stored [scan output]({% link soda/scan.md %}#scan-output-in-soda-cloud) as a line graph that represents the volume of failed tests in each scan
+- use monitors to view stored [scan output]({% link soda/scan.md %}#scan-output-in-soda-cloud) as visualizations that represents the volume of failed tests in each scan
 - empower others to [set quality thresholds]({% link soda-cloud/monitors.md %}) that define "good" data
 - set up and [send alert notifications]({% link soda-cloud/monitors.md %}) when "bad" data enters your data pipeline
 
