@@ -1,1 +1,1 @@
-A type of datasource.
+A type of data source.

@@ -8,6 +8,10 @@ parent: Soda
 
 <br />
 
+#### August 30, 2021
+
+* Updated content and changed the name of **Data monitoring** documentation to **[Data quality]({% link soda/data-monitoring.md %})**. 
+
 #### August 23, 2021
 
 * New document for [custom metric templates]({% link soda-sql/custom-metric-templates.md %}) that you can copy and paste into scan YAML files.
