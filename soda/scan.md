@@ -59,6 +59,7 @@ Soda Cloud uses Soda SQL in the background to run scheduled scans. Soda SQL uses
 
 ![scan-with-cloud](/assets/images/scan-with-cloud.png){:height="350px" width="350px"}
 
+
 ## Overwrite scan output in Soda Cloud
 
 When you use Soda SQL to run a scan, Soda SQL sends the test reults to Soda Cloud where they manifest as rows in the monitor results table. If you wish to overwrite a monitor result, you can do so by running the scan again and overwriting the timestamp.  
@@ -78,6 +79,8 @@ Further, in your orchestration tool, you can use Soda SQL scan results to block 
 
 ## Go further
 
+* Learn how to define a list of [columns to exclude]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) when Soda SQL excutes a scan on a dataset. 
+* Learn how to specify the datasets you wish to [include or exclude]({% link soda-sql/configure.md %}#specify-or-exclude-datasets-to-analyze) during `soda anayze`.
 * Learn more about [scan YAML files]({% link soda-sql/scan-yaml.md %}).
 * Learn more about [creating monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
 * Learn how to configure [metrics]({% link soda-sql/sql_metrics.md %}) in your YAML files.
