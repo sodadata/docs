@@ -8,6 +8,10 @@ parent: Soda
 
 <br />
 
+#### August 31, 2021
+
+* Added documentation for the feature that allows you to [include or exclude specific datasets]({% link soda-sql/configure.md %}#specify-or-exclude-datasets-to-analyze) in your `soda analyze` command. 
+
 #### August 30, 2021
 
 * Updated content and changed the name of **Data monitoring** documentation to **[Data quality]({% link soda/data-monitoring.md %})**. 
