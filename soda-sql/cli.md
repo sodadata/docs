@@ -39,14 +39,17 @@ Commands:
   scan     Computes all measurements and runs all tests on one table.
 ```
 
-## List of parameters
+## List of options
 
-To see a list of configurable parameters for each command, use the command-line help.
+To see a list of configurable options for each command, use the command-line help.
 ```shell
 $ soda create --help
 $ soda analyze --help
 $ soda scan --help
 ```
+
+Refer to [Add analyze options]({% link soda/scan.md %}#add-scan-options) and [Add scan options]({% link soda-sql/configure.md %}#add-analyze-options) for details and examples.
+
 
 ## Go further
 

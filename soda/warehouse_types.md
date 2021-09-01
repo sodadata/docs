@@ -185,6 +185,20 @@ connection:
     dataset: sodasql
 ```
 
+Alternatively, use a 
+
+```yaml
+name: my_bigquery_project
+connection:
+    type: bigquery
+    account_info_json: env_var(BIG_QUERY_ACCESS)
+    auth_scopes:
+    - https://www.googleapis.com/auth/bigquery
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/drive
+    dataset: sodasql
+```
+
 | Property |  Required | 
 | -------- |  -------- | 
 | type | required | 

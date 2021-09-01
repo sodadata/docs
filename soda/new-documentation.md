@@ -10,7 +10,7 @@ parent: Soda
 
 #### August 31, 2021
 
-* Added documentation for the feature that allows you to [include or exclude specific datasets]({% link soda-sql/configure.md %}#specify-or-exclude-datasets-to-analyze) in your `soda analyze` command. 
+* Added documentation for the feature that allows you to [include or exclude specific datasets]({% link soda-sql/configure.md %}#add-analyze-options) in your `soda analyze` command. 
 
 #### August 30, 2021
 

@@ -60,7 +60,7 @@ In the above example, Soda SQL created a scan YAML file named `demodata.yml` and
 
 If you decide to create your own scan YAML files manually, best practice dictates that you name the YAML file using the same name as the dataset in your warehouse.
 
-**Tip:** Use the `soda analyze --help` command to review optional parameters you can include to customize the analysis. For example, use `soda analyze --include customer` to analyze only the dataset named `customer` in your data source. 
+**Tip:** Use the `soda analyze --help` command to review options you can include to customize the analysis. For example, use `soda analyze --include customer` to analyze only the dataset named `customer` in your data source. 
 
 ## Anatomy of the scan YAML file
 
@@ -94,7 +94,7 @@ The table below describes all of the top level **configuration keys** you can us
 | Key         | Description | Required |
 | ----------- | ----------- | -------- |
 | `columns` | The section of the scan YAML file in which you define tests and metrics that apply to individual columns. See [Column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics) for configuration details.| optional |
-| `excluded_columns` | Identifies the columns against which Soda SQL does NOT execute tests during a scan. Identifies columns by name. Use `excluded_columns` to avoid scanning columns that contain sensitive or personally identifiable information (PII). Specify columns that Soda SQL should *not* scan and send to Soda Cloud as [samples of rows]({% link soda-sql/samples.md %}) or [failed rows]({% link soda-sql/send-failed-rows.md %}). See [Excluded columns example](#excluded-columns-example) below. <br /> On a related note, you can specify datasets to [exclude or include]({% link soda-sql/configure.md %}#specify-or-exclude-datasets-to-analyze) during `soda analyze`.| optional |
+| `excluded_columns` | Identifies the columns against which Soda SQL does NOT execute tests during a scan. Identifies columns by name. Use `excluded_columns` to avoid scanning columns that contain sensitive or personally identifiable information (PII). Specify columns that Soda SQL should *not* scan and send to Soda Cloud as [samples of rows]({% link soda-sql/samples.md %}) or [failed rows]({% link soda-sql/send-failed-rows.md %}). See [Excluded columns example](#excluded-columns-example) below. <br /> On a related note, you can specify datasets to [exclude or include]({% link soda-sql/configure.md %}#add-analyze-options) during `soda analyze`.| optional |
 | `filter` | A SQL expression that Soda SQL adds to the `WHERE` clause in the query. Use `filter` to pass variables, such as date, into a scan. Uses [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) as the templating language. See [Apply filters]({% link soda-sql/filtering.md %}) for configuration details.| optional |
 | `frequent_values_limit` | Defines the maximum number of elements for the `maxs` metric. Default value is `5`.| optional |
 | `metrics` |  A list of all the built-in metrics that you can use to configure a scan. This list includes both dataset and column metrics. See [Configure metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}) for configuration details.| optional |
@@ -128,7 +128,7 @@ columns:
 ## Go further
 
 * Next, [run a scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) on the data in your warehouse.
-* Learn how to specify the datasets you wish to [include or exclude]({% link soda-sql/configure.md %}#specify-or-exclude-datasets-to-analyze) during `soda anayze`.
+* Learn how to specify the datasets you wish to [include or exclude]({% link soda-sql/configure.md %}#add-analyze-options) during `soda anayze`.
 * Learn more about the [warehouse YAML]({% link soda-sql/warehouse.md %}) file.
 * Learn how to configure [metrics]({% link soda-sql/sql_metrics.md %}) in your YAML files.
 * Learn more about configuring [tests]({% link soda-sql/tests.md %}).
