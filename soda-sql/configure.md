@@ -55,7 +55,7 @@ soda_warehouse_directory:
   POSTGRES_USERNAME: someusername
   POSTGRES_PASSWORD: somepassword
 ```
-5. In your command-line interface, use the `soda analyze` command to get Soda SQL to sift through the contents of your data source and automatically prepare a scan YAML file for each dataset. <br /><br />Soda SQL uses the name of the dataset to name each YAML file which it puts a new `/tables` directory in the warehouse directory. Optionally, you can set parameters to [include or exclude specific datasets](#specify-or-exclude-datasets-to-analyze) during analysis.<br /> 
+5. In your command-line interface, use the `soda analyze` command to get Soda SQL to sift through the contents of your data source and automatically prepare a scan YAML file for each dataset. <br /><br />Soda SQL uses the name of the dataset to name each YAML file which it puts a new `/tables` directory in the warehouse directory. If you wish, you can set options to [include or exclude specific datasets](#add-analyze-options) during analysis.<br /> 
 <br />
 ```shell
 soda analyze
@@ -81,16 +81,16 @@ Use `soda create --help` for a list of all available data source types and optio
 | Snowflake      | soda create snowflake |
 
 
-## Specify or exclude datasets to analyze 
+## Add analyze options 
 
-Optionally, you can define parameters for the `soda analyze` command that allow you exclude dataset(s) from the analysis or include specific dataset(s). To do so, add one of the following parameters to the command.
+If you wish, you can define options for the `soda analyze` command that allow you exclude dataset(s) from the analysis or include specific dataset(s), or limit the number of datasets to anaylze. To do so, add one of the following options to the command.
 
-| Parameter | Description | Example |
+| Option | Description and example
 | --------- | ----------- | ------- |
-| `-e TEXT` or <br />`--exclude TEXT` | Replace `TEXT` with the case-insensitive name of the dataset(s) you wish to exclude from the analysis. Use a comma-separated list to include multiple datasets. Use `*` as a wild card. | `soda analyze --exclude orders,customer` |
-| `-i TEXT` or <br />`--include TEXT` | Replace `TEXT` with the case-insensitive name of the dataset(s) you wish to specifically analyze. Use a comma-separated list to include multiple datasets. Use `*` as a wild card. | `soda analyze -i orders` |
+| `-e TEXT` or <br />`--exclude TEXT` | Replace `TEXT` with the case-insensitive name of the dataset(s) you wish to exclude from the analysis. Use a comma-separated list to include multiple datasets. Use `*` as a wild card. <br /> `soda analyze --exclude orders,customer` <br /> (If you need to exclude specific columns in a dataset during a Soda SQL scan, use the [`excluded_columns` configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) in your scan YAML file.) |
+| `-i TEXT` or <br />`--include TEXT` | Replace `TEXT` with the case-insensitive name of the dataset(s) you wish to specifically analyze. Use a comma-separated list to include multiple datasets. Use `*` as a wild card. <br /> `soda analyze -i orders` |
+| `-l INTEGER` or <br />`--limit INTEGER` | Replace `INTEGER` with the number of datasets you want Soda SQL to analyze. <br /> `soda analyze --limit 10` |
 
-If you need to exclude specific columns in a dataset during a Soda SQL scan, use the [`excluded_columns` configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) in your scan YAML file.
 
 ## Go further
 

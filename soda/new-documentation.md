@@ -8,9 +8,17 @@ parent: Soda
 
 <br />
 
+#### September 1, 2021
+
+* Added information for new command options included in Soda CLI version 2.1.0b15 for 
+    * [limiting the datasets that Soda SQL analyzes]({% link soda-sql/configure.md %}#add-analyze-options), 
+    * [preventing Soda SQL from sending scan results]({% link soda/scan.md %}#add-scan-options) to Soda Cloud after a scan, and 
+    * [instructing Soda SQL to skip confirmations]({% link soda/scan.md %}#add-scan-options) before running a scan. 
+* Added information about how to use a new option, [`account_info_path`]({% link soda/warehouse_types.md %}#gcp-big-query), to direct Soda SQL to your Big Query service account JSON key file for configuration details.
+
 #### August 31, 2021
 
-* Added documentation for the feature that allows you to [include or exclude specific datasets]({% link soda-sql/configure.md %}#specify-or-exclude-datasets-to-analyze) in your `soda analyze` command. 
+* Added documentation for the feature that allows you to [include or exclude specific datasets]({% link soda-sql/configure.md %}#add-analyze-options) in your `soda analyze` command. 
 
 #### August 30, 2021
 

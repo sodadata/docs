@@ -185,6 +185,20 @@ connection:
     dataset: sodasql
 ```
 
+Alternatively, you can specify Big Query configuration using the `account_info_path` configuration option to direct Soda SQL to your Big Query service account JSON key file.
+
+```yaml
+name: my_bigquery_project
+connection:
+    type: bigquery
+    account_info_path: /folder/service-account-file.json
+    auth_scopes:
+    - https://www.googleapis.com/auth/bigquery
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/drive
+    dataset: sodasql
+```
+
 | Property |  Required | 
 | -------- |  -------- | 
 | type | required | 
@@ -202,7 +216,7 @@ connection:
 
 ### Big Query permissions
 
-To run Soda scans of your data in Big Query, you must configure some permissions of the Big Query Service Account. 
+To run Soda scans of your data in Big Query, you must configure some permissions in the Big Query Service Account. 
 
 1. In the Google Cloud Platform, make sure that you are in the Project that contains the Service Account you will use to access your Big Query dataset. Navigate to **Service Accounts** to confirm that you see an expected list of Service Accounts.
 2. Access **Roles**, then create a new role named "BigQuery Soda Scan User" that includes the permissions listed below. Alternatively, you can add these permissions to an existing role to which the Service Account is associated, if you prefer.
