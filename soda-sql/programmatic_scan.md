@@ -28,8 +28,32 @@ if scan_result.has_test_failures():
     print('Scan has test failures, stop the pipeline')
 ```
 
-### Programmatic scan using dicts
+### Programmatic scans using dicts
 
+```python
+from sodasql.scan.scan_builder import ScanBuilder
+scan_builder_customers = ScanBuilder()
+scan_builder_customers.warehouse_yml_file = 'warehouse.yml'
+scan_builder_customers.scan_yml_dict = {
+  "table_name": "customer",
+  "metrics": ["row_count"],
+  "sql_metrics": [
+    {
+        "metric_names": [
+               "max_size"
+        ],
+        "sql": "SELECT max(size) from customer;"
+    }
+  ],
+  "tests": [
+        "max_size < 50"
+  ]
+}
+scan_customers = scan_builder_customers.build()
+scan_result_customers = scan_customers.execute()
+print('Scan Result Customers: ' +str(scan_result_customers.is_passed()))
+```
+<br />
 
 ```python
 scan_builder = ScanBuilder()
@@ -46,7 +70,7 @@ scan_builder.scan_yml_dict = {
 scan = scan_builder.build()
 scan_result = scan.execute()
 if scan_result.has_test_failures():
-    print('Scan has test failures, stop the pipeline')
+print('Scan has test failures, stop the pipeline')
 ```
 
 

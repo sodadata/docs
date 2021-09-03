@@ -160,7 +160,7 @@ sql_metrics:
 
 If your dataset does not contain a unique ID column, as with a denormalized dataset or a dataset produced from several joins, you may need to define uniqueness using a combination of columns. 
 
-Ideally, you would generate a <a href="https://en.wikipedia.org/wiki/Surrogate_key" target="_blank"> surrogate key</a> from the concatenation of columns as part of a transformation, such as with this dbt-util that <a href="https://github.com/dbt-labs/dbt-utils#surrogate_key-source" target="_blank"> generates a `surrogate_key`</a>. However, if that is not possible, you can use the following template to test for uniqueness using a <a href="https://en.wikipedia.org/wiki/Composite_key" target="_blank">composite key</a>.
+Ideally, you would generate a <a href="https://en.wikipedia.org/wiki/Surrogate_key" target="_blank"> surrogate key</a> from the concatenation of columns as part of a transformation, such as with this dbt Core™ utility that <a href="https://github.com/dbt-labs/dbt-utils#surrogate_key-source" target="_blank"> generates a `surrogate_key`</a>. However, if that is not possible, you can use the following template to test for uniqueness using a <a href="https://en.wikipedia.org/wiki/Composite_key" target="_blank">composite key</a>.
 
 ✅ Amazon Redshift  
 ✅ GCP Big Query  
