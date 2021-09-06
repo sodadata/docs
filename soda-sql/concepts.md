@@ -19,7 +19,7 @@ Use Soda SQL on its own to manually or programmatically scan the data that your 
 
 ## Soda SQL basics
 
-This open-source, command-line tool exists to enable Data Engineers to access and test data inside [data srouces]({% link soda/glossary.md %}#data-source). The first of what will soon be many such developer tools, Soda SQL allows you to perform three basic tasks:
+This open-source, command-line tool exists to enable Data Engineers to access and test data inside [data sources]({% link soda/glossary.md %}#data-source). The first of what will soon be many such developer tools, Soda SQL allows you to perform three basic tasks:
 
 - connect to your data source,
 - define tests for "bad" data, and,
@@ -123,4 +123,4 @@ To connect Soda SQL to Soda Cloud, you create API keys in your Soda Cloud accoun
 ---
 *Last modified on {% last_modified_at %}*
 
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
+- Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
