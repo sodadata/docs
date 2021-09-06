@@ -126,19 +126,22 @@ sql_metrics:
 
 ## Define names for tests
 
-Soda SQL can run both anonymous or named tests. Named tests are useful if you intend to push Soda SQL scan results to your Soda Cloud account where you can update a test and retain its test history.
+Soda SQL can run both anonymous or named tests. If you intend to push Soda SQL scan results to your Soda Cloud account, a named tests appears in the Monitor Results table with the title you gave it; anonymous tests also appear, of course, but their name defaults to the test expression.
 
-Example of an anonymous test
+Example of an anonymous
 ```yaml
+valid_format: number_percentage
 tests:
-    - total_volume_us > 5000
+    - invalid_percentage == 0
 ```
 
-Examples of named tests
+Examples of a named test
 ```yaml
+valid_format: number_percentage
 tests:
-    volume_test_max:  total_volume_us > 3000
-    volume_test_min:  total_volume_us < 5000
+  - name: inval_percent
+    expression: invalid_percentage == 0
+    title: Invalid Percentage
 ```
 
 ## Best practices for defining tests and running scans
