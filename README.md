@@ -35,7 +35,7 @@ $ gem install --user-install bundler jekyll
 $ bundle exec jekyll serve
 ```
 7. In a browser, navigate to [http://localhost:4000/soda-sql/](http://localhost:4000/soda-sql/) to see a preview of the docs site locally. Make changes to docs files in your code editor, save the files, then refresh your browser to preview your changes.
-8. If you are creating a new page, consider copy+pasting the contents of the `template-new-page.md` file and pasting into your new file so that the header and footer info are included.
+8. If you are creating a new page, consider copy+pasting the contents of the `template-new-page.md` file and pasting into your new file so that the standard header and footer info are included.
 
 
 ### Style guidelines
@@ -90,14 +90,14 @@ Kramdown is the default markdown renderer that Jekyll uses.
 
 Insert image:
 
-Add a `png` file of your logically-named image to the `docs/assets/images` directory, then add this code:
+Add a `png` file of your logically-named image to the `docs/assets/images` directory, then add this markdown:
 ```
 ![scan-anatomy](/assets/images/scan-anatomy.png){:height="440px" width="440px"}
 ```
 
 Includes:
 
-Add a markdown file of your logically-named include content to the `docs/_includes` directory, then add this code:
+Add a markdown file of your logically-named include content to the `docs/_includes` directory, then add this markdown:
 ```
 {% include run-a-scan.md %}
 ```
