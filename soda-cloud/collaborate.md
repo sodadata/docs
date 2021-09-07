@@ -13,12 +13,12 @@ One of the main benefits of using Soda Cloud is the ability to collaborate with 
 
 ## Integrate with Slack
 
-Integrate your Slack workspace in your **Soda Cloud** account so that Soda Cloud can send Slack notifications to your team when a data issue triggers an [alert]({% link soda/glossary.md %}#alert).
+As an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, integrate your Slack workspace in your **Soda Cloud** account so that Soda Cloud can send Slack notifications to your team when a data issue triggers an [alert]({% link soda/glossary.md %}#alert).
 
 ![integrate slack](/assets/images/onboarding-integrate-slack.png){:height="350px" width="350px"}
 
 1. In Soda Cloud, navigate to **your avatar** > **Organization Settings** > **Integrations**, then follow the guided steps to authorize Soda Cloud to connect to your Slack workspace.
-2. Select the all Slack channels to which you might send notifications when Soda finds an issue with your data, then **Save**.
+2. Select the all Slack channels to which your team might send notifications when Soda finds an issue with your data, then **Save**.
 
 ## Invite your team members
 
@@ -26,14 +26,14 @@ Invite the members of your team to join you in your work to monitor data quality
 
 In Soda Cloud, navigate to **your avatar** > **Invite Team Members** and fill in the blanks. 
 
-When your team members receive the invitation email, they can click the link in the email to create their own accounts and access your Soda Cloud datasets, monitors, and monitor results directly. They can also create new monitors in your account. <!--Be aware that anyone with access to the invitation link in the email can create a Soda Cloud account and access your information.-->
+When your team members receive the invitation email, they can click the link in the email to create their own login credentials to access your Soda Cloud account directly. Refer to [Default roles and groups]({% link soda-cloud/roles-and-rights.md %}#default-roles-and-groups) to learn more about the default access rights Soda Cloud assigns to new users.
 
 ## Share test results
 
 Collaborating as a team on Soda Cloud means you can quickly share the lastest test results for a dataset with others. 
 
 1. In Soda Cloud, navigate to the **Datasets** dashboard, then select the dataset you wish to share.  
-2. Copy the URL of the dataset, then paste it into a message to the teammates who have accepted your invitation and created a Soda Cloud account. 
+2. Copy the URL of the dataset, then paste it into a message to the teammates who have access to your organization's Soda Cloud account. 
 
 ![share dataset](/assets/images/share-dataset.png){:height="500px" width="500px"}
 

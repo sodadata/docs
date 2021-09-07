@@ -6,14 +6,14 @@ parent: Soda Cloud
 
 # Add datasets in Soda Cloud
 
-When you sign up for a new Soda Cloud account, the first thing to do is give Soda Cloud access to the data you wish to scan. To do so, you first connect Soda Cloud to your [data source]({% link soda/glossary.md %}#data-source), which is the storage location that contains your data, such as a database. Inside the data source are [datasets]({% link soda/glossary.md %}#data-source), such as tables, which Soda Cloud dynamically discovers during its first scan of your data.
+When you sign up for a new Soda Cloud account, the first thing to do as an [Admin]({% link soda-cloud/roles-and-rights.md %}) on the account is give Soda Cloud access to the data you wish to scan. To do so, you first connect Soda Cloud to your [data source]({% link soda/glossary.md %}#data-source), which is the storage location that contains your data, such as a database. Inside the data source are [datasets]({% link soda/glossary.md %}#data-source), such as tables, which Soda Cloud dynamically discovers during its first scan of your data.
 
 ![onboarding-add-datasets](/assets/images/onboarding-add-datasets.png){:height="350px" width="350px"}
 
 
 ## Connect to your data source
 
-Overall, there are two steps in the process to add datasets to your Soda Cloud account. 
+Overall, there are two steps in the process for an Admin]({% link soda-cloud/roles-and-rights.md %}) to add datasets to a Soda Cloud account. 
 
 1. First, you connect to your data source and set a schedule for Soda Cloud to regularly scan your data. 
 2. Then, Soda Cloud runs its first scheduled scan of data in your data source and discovers all of its datasets.  
@@ -23,7 +23,7 @@ Alternatively, you can install Soda SQL, a command-line developer tool, and conn
 
 ### Connection Details
 
-In Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow the guided steps to connect a data source and schedule scans of your data. Soda Cloud requires **Connection Details** and **Import Settings**.
+As an [Admin]({% link soda-cloud/roles-and-rights.md %}) in Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow the guided steps to connect a data source and schedule scans of your data. Soda Cloud requires **Connection Details** and **Import Settings**.
 
 The Connection Details that Soda Cloud requires are specific to the type of data source you are connecting. For example, a PostgreSQL data source connection requires slightly different information than a connection to an Amazon Redshift data source. Refer to [Data source configurations]({% link soda/warehouse_types.md %}) for details.
 
@@ -31,7 +31,7 @@ Regardless of the type of data source you are connecting, Soda Cloud requires ac
 
 ### Import Settings
 
-Use the following table as reference for configuring the Import Settings.
+Use the following table as reference for configuring the Import Settings. Note that only Users who have been assigned the role of Admin, Manager, or Editor for the dataset may edit the Import Settings; see [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) for details.
 
 | Import Setting | Required? | Description |
 | -------------- | ----------- |

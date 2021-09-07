@@ -13,10 +13,10 @@ A **monitor** is a set of details you define in Soda Cloud which Soda uses when 
 
 ## Prerequisites
 
-* Create a free Soda Cloud account at [cloud.soda.io/signup](https://cloud.soda.io/signup).
-* Connect a [data source]({% link soda/glossary.md %}#data-source) and [add datasets]({% link soda-cloud/add-datasets.md %}) to your Soda Cloud account so that Soda has access to the data you wish to monitor. If you are a Soda SQL user and have connected it to your Soda Cloud account, you can [add datasets via Soda SQL]({% link soda-sql/configure.md %}#configuration-instructions) if you prefer. 
+* An [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account has connected a [data source]({% link soda/glossary.md %}#data-source) and [added datasets]({% link soda-cloud/add-datasets.md %}) to your Soda Cloud account so that Soda has access to the data you wish to monitor. If you are a Soda SQL user and have connected it to your Soda Cloud account, you can [add datasets via Soda SQL]({% link soda-sql/configure.md %}#configuration-instructions) if you prefer. 
 * Soda Cloud has executed at least one [scheduled scan]({% link soda-cloud/add-datasets.md %}#import-settings) of your data source to discover all of its datasets. If you are a Soda SQL user and have connected it to your Soda Cloud account, you can use the `soda analyze` command to discover datasets if you prefer. Refer to [Configure Soda SQL]({% link soda-sql/configure.md %}) for details.
-* (Optional) [Integrate with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud can send notifications via email.
+* You have an Admin role or have the role of Editor or Manager for the dataset for which you wish to create a monitor. See [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) for details. 
+* (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud can send notifications via email.
 
 ## Create a monitor and an alert
 
@@ -60,7 +60,7 @@ By default, Soda Cloud includes two out-of-the-box email notifications: one for 
 | Field or Label | Description |
 | -----------------------   | ---------- |
 | Monitor: Metric name| You have the option of adjusting the name of the monitor you are creating. Click the name to edit. |
-| Monitor Owner | As the creator of this new monitor, you are the Monitor Owner by default. However, you can change this value to the name of a teammate with whom you collaborate in Soda Cloud. |
+| Monitor Owner | As the creator of this new monitor, you are the Monitor Owner by default. However, you can change this value to the name of a teammate with whom you collaborate in Soda Cloud who has an Admin, Manager, or Editor role for the dataset. |
 | Description | Optionally, use this text field to describe what your monitor does to test data in the dataset. |
 
 ## Metric types
@@ -96,7 +96,7 @@ Read more about **[Validity rules]({% link soda/metrics.md %}#column-configurati
 
 ## Run a scan
 
-1. When you have completed the guided steps to create a monitor, wait for Soda Cloud to run its next scheduled scan of your dataset. You can [adjust the scan schedule of your dataset]({% link soda-cloud/dataset-scan-schedule.md%}) to run more or less frequently, if you wish.
+1. When you have completed the guided steps to create a monitor, wait for Soda Cloud to run its next scheduled scan of your dataset. You can [adjust the scan schedule of your dataset]({% link soda-cloud/dataset-scan-schedule.md%}) to run more or less frequently, if you wish and if you have an Admin, Manager, or Editor role for the dataset.
 2. After Soda Cloud completes its scan, return to **Monitor Results** in Soda Cloud and refresh your browser. Click the monitor you created to access details of the scan results.
 3. Check your Slack channel or email inbox; when a scan surfaces data that triggers your alert(s), Soda Cloud sends notifications according to the settings you defined when you created the monitor.
 

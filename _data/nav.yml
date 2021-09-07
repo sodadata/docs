@@ -71,6 +71,8 @@
 - title: Soda Cloud
   page: soda-cloud/add-datasets.md
   subcategories:
+  - subtitle: Roles and rights
+    page: soda-cloud/roles-and-rights.md
   - subtitle: Add datasets
     page: soda-cloud/add-datasets.md
   - subtitle: Collaborate on data monitoring
