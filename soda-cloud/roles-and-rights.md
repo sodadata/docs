@@ -15,7 +15,7 @@ To manage the actions of users that belong to a single organization, Soda Cloud 
 [Go further](#go-further)<br />
 <br />
 
-The roles that define who has access to the organzation's Soda Cloud account are **Admin** and **User**. The following table outlines the rights of each role.
+The roles that define who has access to the organization's Soda Cloud account are **Admin** and **User**. The following table outlines the rights of each role.
 
 | Rights                                                                 | Admin | User | 
 |------------------------------------------------------------------------|-------|------|
@@ -76,7 +76,7 @@ As an Admin or a Manager of a dataset, you can access the **Responsibilities** t
 
 ## Dataset and monitor owners
 
-There are two owernship roles in Soda Cloud that identify the user that owns a dataset or monitor. These owners (and Admins) are the only users who can make changes to their own existing datasets and monitors. By default, the creator of the dataset or monitor becomes the **Dataset Owner** or **Monitor Owner**, respectively. 
+There are two ownership roles in Soda Cloud that identify the user that owns a dataset or monitor. These owners (and Admins) are the only users who can make changes to their own existing datasets and monitors. By default, the creator of the dataset or monitor becomes the **Dataset Owner** or **Monitor Owner**, respectively. 
 <br />
 <br />
 
@@ -84,7 +84,7 @@ There are two owernship roles in Soda Cloud that identify the user that owns a d
 
 1. As the Dataset Owner with an Editor, Manager, or Admin role, login to your Soda Cloud account and navigate to the **Datasets** dashboard. 
 2. Click the stacked dots to the right of the dataset for which you wish to adjust the ownership, then select **Edit Dataset**.
-3. In the **Attributes** tab, use the dropdown to select the name of another user to take ownership of the dataset. When you click **Save** you give up you your right to edit the dataset.
+3. In the **Attributes** tab, use the dropdown to select the name of another user to take ownership of the dataset. When you click **Save** you give up your right to edit the dataset.
 <br />
 <br />
 
@@ -92,7 +92,7 @@ There are two owernship roles in Soda Cloud that identify the user that owns a d
 
 1. As the Monitor Owner with an Editor, Manager, or Admin role in the dataset the monitor uses, login to your Soda Cloud account and navigate to the **Monitors** dashboard. 
 2. Click the stacked dots to the right of the monitor for which you wish to adjust the ownership, then select **Edit Monitor**.
-3. In the **Attributes** tab, use the dropdown to select the name of another user to take ownership of the monitor. When you click **Save** you give up you your right to edit the monitor.
+3. In the **Attributes** tab, use the dropdown to select the name of another user to take ownership of the monitor. When you click **Save** you give up your right to edit the monitor.
 
 ## Go further
 
