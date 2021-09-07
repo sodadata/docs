@@ -85,6 +85,8 @@
     page: soda-cloud/failed-rows.md
   - subtitle: Soda Cloud architecture
     page: soda-cloud/soda-cloud-architecture.md
+  - subtitle: Single sign on for Soda Cloud
+    page: soda-cloud/sso.md
 
 - title: Reference
   page: soda/glossary.md
