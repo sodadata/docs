@@ -81,6 +81,8 @@
     page: soda-cloud/monitors.md
   - subtitle: Adjust a dataset scan schedule
     page: soda-cloud/dataset-scan-schedule.md
+  - subtitle: Edit data source settings
+    page: soda-cloud/edit-data-source.md
   - subtitle: Detect anomalies
     page: soda-cloud/anomaly-detection.md
   - subtitle: Examine failed rows
