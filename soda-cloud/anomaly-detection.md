@@ -9,7 +9,7 @@ redirect_from: /soda-sql/documentation/anomaly-detection.html
 
 In Soda Cloud, you can create a monitor that automatically detects anomalies in your time-series data. 
 
-**Anomaly detection** is a [monitor]({% link soda/glossary.md %}#monitor) **Evaluation Type** powered by a machine learning algorithm that works with [measurements]({% link soda/glossary.md %}#measurement) that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalous measurements in time-series data. ("Seasonality" is a common pattern of time-series data and translates as "something cyclical irrespecitve of the general direction of the data. For example, the number of orders that occur on your platform might show a clear drop during the weekend, or peak during the holiday season, irrespecitve of whether your platform is growing or not).
+**Anomaly detection** is a [monitor]({% link soda/glossary.md %}#monitor) **Evaluation Type** powered by a machine learning algorithm that works with [measurements]({% link soda/glossary.md %}#measurement) that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalous measurements in time-series data. Seasonality is a term that describes a common pattern of time-series data and means "something cyclical, irrespecitve of the general direction of the data". For example, the number of orders that occur on your platform might show a clear drop during the weekend, or peak during the holiday season, irrespecitve of whether your platform is growing or not.
 
 ![anomaly-detection](/assets/images/anomaly-detection.png){:height="600px" width="600px"}
 
@@ -28,7 +28,7 @@ For example, if the test you define in your monitor measures the row count of on
 
 ## Use anomaly detection
 
-To use anomaly detection, you must have an Admin role for the dataset the monitor uses, or have a Manager or Editor role for the dataset. See [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) for details. 
+To use anomaly detection, you must be an Admin of the organization, or have a Manager or Editor role for the monitor's dataset. See [Roles and rights]({% link soda-cloud/roles-and-rights.md %}) for details.
 
 Follow the steps to [create a new monitor]({% link soda-cloud/monitors.md %}) and select **Anomaly Detection** as the **Evaluation Type** in step two of the create flow. Beyond that, you do not need to specify any other details about your data; Soda Cloud automatically begins learning about your data and triggering alerts when Soda scans reveal anomalies.
 

@@ -30,30 +30,29 @@ The roles that define who has access to the organization's Soda Cloud account ar
 | Reset User passwords or deactivate Users                               |   ✓   |      | 
 
 
-The roles that define who can add or make changes to a dataset are **Admin**, **Manager**, **Editor**, and **Viewer**. The following table outlines the rights of each role associated with an individual dataset.
+The roles that define who can add or make changes to a [dataset]({% link soda/glossary.md %}#dataset) are **Admin**, **Manager**, **Editor**, and **Viewer**. The following table outlines the rights of each role associated with individual datasets.
 
 | Rights                                                                   | Admin | Manager | Editor | Viewer |
 |--------------------------------------------------------------------------|-------|---------|--------|--------|
 | View Monitor results of monitors associated with the dataset             |   ✓   |    ✓    |    ✓   |    ✓   |
-| Create monitors associated with the dataset            |   ✓   |    ✓    |    ✓   |        |
-| Edit monitors associated with the dataset<sup>1</sup>  |   ✓   |    ✓    |    ✓   |        |
-| Edit dataset details such as scan schedule and attributes<sup>2</sup>    |   ✓   |    ✓    |    ✓   |        |
-| Change the roles of users in an individual dataset                      |   ✓   |    ✓    |        |        |
+| Create monitors associated with the dataset                              |   ✓   |    ✓    |    ✓   |        |
+| Edit monitors associated with the dataset                                |   ✓   |    ✓    |    ✓   |        |
+| Edit dataset details such as scan schedule and attributes                |   ✓   |    ✓    |    ✓   |        |
+| Change the roles of users in an individual dataset                       |   ✓   |    ✓    |        |        |
 | Add a dataset                                                            |   ✓   |         |        |        |
+| Connect to a new [data source]({% link soda/glossary.md %}#data-source)  |   ✓   |         |        |        |
+| Make changes to the data source connection                               |   ✓   |         |        |        |
 
-<sup>1</sup> To edit an existing monitor's details, the user must also be the **Monitor Owner** or an Admin. <br />
-<sup>2</sup> To edit an existing dataset's details, the user must also be the **Dataset Owner** or an Admin. <br />
-Refer to [Dataset and monitor owners](#dataset-and-monitor-owners) below.
 
 ## Default roles and groups
 
 If you are the first user in your organization to sign up for Soda Cloud, you become the Admin for the account by default. 
 
-Upon accepting an invitation to join an existing organization, Soda Cloud applies the following default roles to every new user:
+When a new user accepts an invitation to join an existing organization, Soda Cloud applies the following defaults to the new user:
 - the role of User in the organization
-- the role of Editor for all datasets (applies to all existing datasets and any new ones an Admin adds)
+- membership in the **everyone** group 
 
-By default, all Admins and Users are included in the group identity called **everyone**. Admins and Managers can use the **everyone** group when [setting Responsibilities in a dataset](#change-access-to-a-dataset). In this early implementation of roles and groups, **everyone** is the only group that exists in Soda Cloud. It is not possible to add or remove members from the group. 
+By default, all Admins and Users are included in the group identity called **everyone**. Admins and Managers can use the **everyone** group when [setting Responsibilities in a dataset](#change-access-to-a-dataset). In this early implementation of roles and groups, **everyone** is the only group that exists in Soda Cloud. It is not possible to add or remove members from the group, or to create new groups, yet. 
 
 
 ## Change organization roles and settings
@@ -67,32 +66,36 @@ An Admin is the only role that can make changes to the **Organization Settings**
 
 ## Change access to a dataset
 
-As an Admin or a Manager of a dataset, you can access the **Responsibilities** tab to make changes to the role assignments in the dataset. Only Admins and Managers can view the Responsibilities tab.
+By default, when an Admin adds a new dataset, Soda Cloud automatically adds the **everyone** group to the dataset and assigns the group the role of Editor. Effectively, this means that every user in the organization has the rights of an Editor when making changes to a dataset or adding or editing monitors associated with the dataset. 
+
+As an Admin or a Manager of a dataset, you can access the **Responsibilities** tab to make changes to the role assignments in the dataset, including the role of the **everyone** group. Only Admins and Managers can view the Responsibilities tab.
 
 1. As an Admin, login to your Soda Cloud account and navigate to the **Datasets** dashboard. 
 2. Click the stacked dots to the right of the dataset in which you wish to adjust the role assignments, then select **Edit Dataset**.
-3. In the **Responsibilities** tab, use the search bar to find specific Users to which you wish to assign a role other than the default, Editor, then use the dropdown next to each name to adjust their role. <br /> Alternatively, search for the group **everyone** and change the default role of the group from Editor to Manager or Viewer.
+3. In the **Responsibilities** tab, use the search bar to find specific Users to which you wish to assign a role other than the default, Editor, then use the dropdown next to each name to adjust their role. <br /> Alternatively, search for the group **everyone** and change the default role of the group from Editor to Manager or Viewer. Note that an individual User's role in the dataset overrides the role of the **everyone** group.
+
+If you need to make changes to an data source connection, you must be an Admin. Refer to [Edit a data source]() for details.
 
 
 ## Dataset and monitor owners
 
-There are two ownership roles in Soda Cloud that identify the user that owns a dataset or monitor. These owners (and Admins) are the only users who can make changes to their own existing datasets and monitors. By default, the creator of the dataset or monitor becomes the **Dataset Owner** or **Monitor Owner**, respectively. 
+There are two ownership roles in Soda Cloud that identify the user that owns a dataset or monitor. By default, the creator of the dataset or monitor becomes the **Dataset Owner** or **Monitor Owner**, respectively. These ownership roles do not enforce any rights or permissions on the datasets or monitors; these roles are simply identifiers.
 <br />
 <br />
 
 #### Change the Dataset Owner
 
-1. As the Dataset Owner with an Editor, Manager, or Admin role, login to your Soda Cloud account and navigate to the **Datasets** dashboard. 
+1. If you are the Admin of the organization, or have a Manager or Editor role for the dataset, login to your Soda Cloud account and navigate to the **Datasets** dashboard. 
 2. Click the stacked dots to the right of the dataset for which you wish to adjust the ownership, then select **Edit Dataset**.
-3. In the **Attributes** tab, use the dropdown to select the name of another user to take ownership of the dataset. When you click **Save** you give up your right to edit the dataset.
+3. In the **Attributes** tab, use the dropdown to select the name of another user to take ownership of the dataset, then **Save**.
 <br />
 <br />
 
 #### Change the Monitor Owner
 
-1. As the Monitor Owner with an Editor, Manager, or Admin role in the dataset the monitor uses, login to your Soda Cloud account and navigate to the **Monitors** dashboard. 
+1. If you are the Admin of the organization, or have a Manager or Editor role for the monitor's dataset, login to your Soda Cloud account and navigate to the **Monitors** dashboard. 
 2. Click the stacked dots to the right of the monitor for which you wish to adjust the ownership, then select **Edit Monitor**.
-3. In the **Attributes** tab, use the dropdown to select the name of another user to take ownership of the monitor. When you click **Save** you give up your right to edit the monitor.
+3. In the **Attributes** tab, use the dropdown to select the name of another user to take ownership of the monitor, then **Save**.
 
 ## Go further
 
@@ -100,6 +103,7 @@ There are two ownership roles in Soda Cloud that identify the user that owns a d
 * [Invite team members]({% link soda-cloud/collaborate.md %}#invite-your-team-members) to join your organization's Soda Cloud account.
 * Learn how to [add a dataset]({% link soda-cloud/add-datasets.md %}) to your Soda Cloud account.
 * Learn how to [change the scan schedule]({% link soda-cloud/dataset-scan-schedule.md %}) for an individual dataset.
+* Learn how to [edit a data source]().
 <br />
 
 ---
