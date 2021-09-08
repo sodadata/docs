@@ -74,7 +74,7 @@ As an Admin or a Manager of a dataset, you can access the **Responsibilities** t
 2. Click the stacked dots to the right of the dataset in which you wish to adjust the role assignments, then select **Edit Dataset**.
 3. In the **Responsibilities** tab, use the search bar to find specific Users to which you wish to assign a role other than the default, Editor, then use the dropdown next to each name to adjust their role. <br /> Alternatively, search for the group **everyone** and change the default role of the group from Editor to Manager or Viewer. Note that an individual User's role in the dataset overrides the role of the **everyone** group.
 
-If you need to make changes to an data source connection, you must be an Admin. Refer to [Edit a data source]() for details.
+If you need to make changes to an data source connection, you must be an Admin. Refer to [Edit data source settings]({% link soda-cloud/edit-data-source.md %}) for details.
 
 
 ## Dataset and monitor owners
@@ -103,7 +103,7 @@ There are two ownership roles in Soda Cloud that identify the user that owns a d
 * [Invite team members]({% link soda-cloud/collaborate.md %}#invite-your-team-members) to join your organization's Soda Cloud account.
 * Learn how to [add a dataset]({% link soda-cloud/add-datasets.md %}) to your Soda Cloud account.
 * Learn how to [change the scan schedule]({% link soda-cloud/dataset-scan-schedule.md %}) for an individual dataset.
-* Learn how to [edit a data source]().
+* Learn how to [edit a data source's settings]({% link soda-cloud/edit-data-source.md %}).
 <br />
 
 ---
