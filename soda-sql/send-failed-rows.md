@@ -14,7 +14,7 @@ Note: The current implementation of failed rows is evolving to better serve user
 
 There are three ways you can configure Soda SQL to send failed row samples to your Soda Cloud account:
 
-1. define a [samples configuration key](#define-a-sample-configuration-key-to-send-failed-rows) in your scan YAML file
+1. define a [samples configuration key](#define-a-samples-configuration-key-to-send-failed-rows) in your scan YAML file
 2. use a [missing-value Metric Type](#use-a-missing-value-metric-type-to-send-failed-rows) in your monitor in Soda Cloud
 3. use custom metrics in your scan YAML file to [explicitly send failed rows](#explicitly-send-a-sample-of-failed-rows) 
 
