@@ -66,15 +66,15 @@ An Admin is the only role that can make changes to the **Organization Settings**
 
 ## Change access to a dataset
 
-By default, when an Admin adds a new dataset, Soda Cloud automatically adds the **everyone** group to the dataset and assigns the group the role of Editor. Effectively, this means that every user in the organization has the rights of an Editor when making changes to a dataset or adding or editing monitors associated with the dataset. 
+By default, when an Admin adds a new dataset, Soda Cloud automatically adds the **everyone** group to the dataset and assigns the group the role of Editor. Effectively, this means that every user in the organization has the rights of an Editor when making changes to a dataset or adding or editing monitors associated with the dataset. The same default setting applies for any datasets added by a Soda SQL user who has connected their instance of the command-line tool to the Soda Cloud account. 
 
 As an Admin or a Manager of a dataset, you can access the **Responsibilities** tab to make changes to the role assignments in the dataset, including the role of the **everyone** group. Only Admins and Managers can view the Responsibilities tab.
 
 1. As an Admin, login to your Soda Cloud account and navigate to the **Datasets** dashboard. 
 2. Click the stacked dots to the right of the dataset in which you wish to adjust the role assignments, then select **Edit Dataset**.
-3. In the **Responsibilities** tab, use the search bar to find specific Users to which you wish to assign a role other than the default, Editor, then use the dropdown next to each name to adjust their role. <br /> Alternatively, search for the group **everyone** and change the default role of the group from Editor to Manager or Viewer. Note that an individual User's role in the dataset overrides the role of the **everyone** group.
+3. In the **Responsibilities** tab, use the search bar to find specific Users to which you wish to assign a role other than the default, Editor, then use the dropdown next to each name to adjust their role. <br /> Alternatively, search for the group **everyone** and change the default role of the group from Editor to Manager or Viewer. 
 
-If you need to make changes to an data source connection, you must be an Admin. Refer to [Edit data source settings]({% link soda-cloud/edit-data-source.md %}) for details.
+If you need to make changes to a [data source]({% link soda/glossary.md %}#data-source), you must be an Admin. Refer to [Edit data source settings]({% link soda-cloud/edit-data-source.md %}) for details.
 
 
 ## Dataset and monitor owners
