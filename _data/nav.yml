@@ -79,7 +79,7 @@
     page: soda-cloud/monitors.md
   - subtitle: Adjust a dataset scan schedule
     page: soda-cloud/dataset-scan-schedule.md
-    - subtitle: Display column metrics
+  - subtitle: Display column metrics
     page: soda-cloud/display-column-metrics.md
   - subtitle: Define time partitioning for dataset scans
     page: soda-cloud/time-partitioning.md
