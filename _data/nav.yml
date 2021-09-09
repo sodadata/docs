@@ -79,12 +79,18 @@
     page: soda-cloud/monitors.md
   - subtitle: Adjust a dataset scan schedule
     page: soda-cloud/dataset-scan-schedule.md
-  - subtitle: Edit data source settings
-    page: soda-cloud/edit-data-source.md
+  - subtitle: Display column metrics
+    page: soda-cloud/display-column-metrics.md
+  - subtitle: Define time partitioning for dataset scans
+    page: soda-cloud/time-partitioning.md
+  - subtitle: Display sample data
+    page: soda-cloud/display-samples.md
   - subtitle: Detect anomalies
     page: soda-cloud/anomaly-detection.md
   - subtitle: Examine failed rows
     page: soda-cloud/failed-rows.md
+  - subtitle: Edit data source settings
+    page: soda-cloud/edit-data-source.md
   - subtitle: Soda Cloud architecture
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Single sign on for Soda Cloud
