@@ -15,12 +15,11 @@ A dataset's Columns tab
 ![column-tab](/assets/images/column-tab.png){:height="650px" width="650px"}
 
 
-1. From the **Datasets** dashboard, open the dataset for which you want to enable column metrics.
-2. Click the link in the "Almost done!" banner, or click the gear icon on the right in the table header row.
+1. If you are the [Admin]({% link soda-cloud/roles-and-rights.md %}) of the organization, or have a Manager or Editor role for the dataset, navigate to the **Datasets** dashboard, then open the dataset in which you want to enable column metrics.
+2. Click the link in the "Almost done!" banner, or click the gear icon on the right in the table header row in the **Columns** tab.
 3. When prompted, check the box to **Enable Column Metrics**, then save. If you see a message that asks you to review time partitioning settings before enabling, click the link, then follow the [instructions]({% link soda-cloud/time-partitioning.md %}) to review and set the time partitioning settings for the dataset.
 
 During the next scheduled scan, Soda Cloud captures column metrics for each dataset and displays the information in the **Dataset** dashboard and in the dataset's **Column** tab. Use the column metrics to help you make informed choices when you [create a new monitor]({% link soda-cloud/monitors.md %}).
-
 
 
 ## Go further

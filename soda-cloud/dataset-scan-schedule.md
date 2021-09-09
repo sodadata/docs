@@ -10,7 +10,7 @@ By default, Soda Cloud conducts a scan of each dataset in your data source accor
 
 ![onboarding-scan-schedules](/assets/images/onboarding-scan-schedules.png){:height="350px" width="350px"}
  
-1. In the **Datasets** dashboard, click the stacked dots icon of the dataset you wish to edit.  You must be an Admin of the organization, or have a Manager or Editor role for the dataset to make changes. See [Roles and rights]({% link soda-cloud/roles-and-rights.md %}) for details.
+1. If you are the [Admin]({% link soda-cloud/roles-and-rights.md %}) of the organization, or have a Manager or Editor role for the dataset, navigate to the **Datasets** dashboard, click the stacked dots icon of the dataset you wish to edit, then select **Edit Dataset**. 
 2. In the **Scan Schedule** tab, uncheck the box to **Use Data Source Default Schedule**, then adjust the scan schedule as needed.  
 3. Save your changes, then wait for Soda Cloud to complete the next scan of your dataset according to the new scan schedule you set.
 

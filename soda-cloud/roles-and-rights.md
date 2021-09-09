@@ -8,12 +8,16 @@ parent: Soda Cloud
 
 To manage the actions of users that belong to a single organization, Soda Cloud uses roles and access rights. These roles and their associated rights of access enforce limits on the abilities for users to make additions and changes to datasets, and to make changes to the Soda Cloud account and the roles and rights of others. 
 
+[Roles and rights](#roles-and-rights)<br />
 [Default roles and groups](#default-roles-and-groups)<br />
 [Change organization roles and settings](#change-organization-roles-and-settings)<br />
 [Change access to a dataset](#change-access-to-a-dataset)<br />
 [Dataset and monitor owners](#dataset-and-monitor-owners)<br />
 [Go further](#go-further)<br />
 <br />
+
+
+## Roles and rights
 
 The roles that define who has access to the organization's Soda Cloud account are **Admin** and **User**. The following table outlines the rights of each role.
 
@@ -38,6 +42,7 @@ The roles that define who can add or make changes to a [dataset]({% link soda/gl
 | Create monitors associated with the dataset                              |   ✓   |    ✓    |    ✓   |        |
 | Edit monitors associated with the dataset                                |   ✓   |    ✓    |    ✓   |        |
 | Edit dataset details such as scan schedule and attributes                |   ✓   |    ✓    |    ✓   |        |
+| Edit dataset settings such as enable column metrics or sample data       |   ✓   |    ✓    |    ✓   |        | 
 | Change the roles of users in an individual dataset                       |   ✓   |    ✓    |        |        |
 | Add a dataset                                                            |   ✓   |         |        |        |
 | Connect to a new [data source]({% link soda/glossary.md %}#data-source)  |   ✓   |         |        |        |
@@ -68,7 +73,7 @@ An Admin is the only role that can make changes to the **Organization Settings**
 
 By default, when an Admin adds a new dataset, Soda Cloud automatically adds the **everyone** group to the dataset and assigns the group the role of Editor. Effectively, this means that every user in the organization has the rights of an Editor when making changes to a dataset or adding or editing monitors associated with the dataset. The same default setting applies for any datasets added by a Soda SQL user who has connected their instance of the command-line tool to the Soda Cloud account. 
 
-As an Admin or a Manager of a dataset, you can access the **Responsibilities** tab to make changes to the role assignments in the dataset, including the role of the **everyone** group. Only Admins and Managers can view the Responsibilities tab.
+As an Admin or a Manager of a dataset, you can access the **Responsibilities** tab to make changes to the role assignments in the dataset, including the role of the **everyone** group. All users, regardless of their role assignment, can view the Responsibilities tab.
 
 1. As an Admin, login to your Soda Cloud account and navigate to the **Datasets** dashboard. 
 2. Click the stacked dots to the right of the dataset in which you wish to adjust the role assignments, then select **Edit Dataset**.
