@@ -68,12 +68,6 @@
   - subtitle: Custom metric templates
     page: soda-sql/custom-metric-templates.md
 
-- title: Soda Spark
-  page: soda-spark/install-and-use.md
-  subcategories:
-  - subtitle: Install and use Soda Spark
-    page: soda-spark/install-and-use.md
-
 - title: Soda Cloud
   page: soda-cloud/add-datasets.md
   subcategories:
