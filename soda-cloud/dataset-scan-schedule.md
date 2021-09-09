@@ -94,6 +94,9 @@ The Soda Cloud API returns a `200` HTTP response status code and a value for a `
 ## Go further
 
 * Next step in Soda Cloud Onboarding: [Automatically detect anomalies]({% link soda-cloud/anomaly-detection.md %}).
+* Learn how to define [time partitioning]({% link soda-cloud/time-partitioning.md %}) for individual datasets.
+* Learn how to display [sample data]({% link soda-cloud/display-samples.md %}) for individual datasets.
+* Learn how to display [column metrics]({% link soda-cloud/display-column-metrics.md %}) for datasets.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
