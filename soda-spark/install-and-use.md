@@ -4,12 +4,12 @@ title: Install and use Soda Spark
 parent: Soda Spark
 ---
 
-# Soda Spark
+# Install and use Soda Spark
 
 Soda Spark is an extension of 
 [Soda SQL]({% link soda-sql/5_min_tutorial.md %}) that allows you to run Soda
 SQL functionality programmatically on a 
-[Spark data frame](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html).
+<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark data frame</a>
 
 ## Requirements
 
@@ -63,7 +63,7 @@ From your Python prompt, execute the following commands.
 >>>
 ```
 
-Or, use a [scan YAML](https://docs.soda.io/soda-sql/scan-yaml.html) file
+Alternatively, you can use a [scan YAML file]({% link soda-sql/scan-yaml.md %}).
 
 ``` python
 >>> scan_yml = "static/demodata.yml"
@@ -93,14 +93,14 @@ Send the scan result to Soda cloud.
 
 ## Understand
 
-Under the hood `soda-spark` does the following.
+When you execute Soda Spark, it completes the following tasks:
 
 1. Setup the scan
    * Use the Spark dialect
-   * Use [Spark session](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.SparkSession.html)
+   * Use <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.SparkSession.html" target="_blank">Spark session</a>
      as [warehouse]({% link soda-sql/warehouse.md %}) connection
 2. Create (or replace) 
-   [global temporary view](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceGlobalTempView.html)
+	<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceGlobalTempView.html" target="_blank">global temporary view</a>
    for the Spark data frame
 3. Execute the scan on the temporary view
 
