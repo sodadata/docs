@@ -8,6 +8,10 @@ parent: Soda
 
 <br />
 
+#### September 9, 2021
+
+* Published documentation for [time partitioning]({% link soda-cloud/time-partitioning.md %}), [column metrics]({% link soda-cloud/display-column-metrics.md %}), and [sample data]({% link soda-cloud/display-samples.md %}) in Soda Cloud.
+
 #### September 1, 2021
 
 * Added information for new command options included in Soda CLI version 2.1.0b15 for 
