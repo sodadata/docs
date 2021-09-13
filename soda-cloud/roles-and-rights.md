@@ -28,7 +28,7 @@ The roles that define who has access to the organization's Soda Cloud account ar
 | View Organization Settings for a Soda Cloud account                    |   ✓   |      | 
 | Change the name of the organization                                    |   ✓   |      | 
 | Adjust Soda Cloud Plan to which the organization subscribes            |   ✓   |      | 
-| Establish integrations, such as Slack                                  |   ✓   |      | 
+| Establish integrations, such as with Slack                             |   ✓   |      | 
 | View a list of Users                                                   |   ✓   |      | 
 | Change the roles of Users, including adding more Admins                |   ✓   |      | 
 | Reset User passwords or deactivate Users                               |   ✓   |      | 
@@ -38,14 +38,14 @@ The roles that define who can add or make changes to a [dataset]({% link soda/gl
 
 | Rights                                                                   | Admin | Manager | Editor | Viewer |
 |--------------------------------------------------------------------------|-------|---------|--------|--------|
-| View Monitor results of monitors associated with the dataset             |   ✓   |    ✓    |    ✓   |    ✓   |
+| View Monitor Results of monitors associated with the dataset             |   ✓   |    ✓    |    ✓   |    ✓   |
 | Create monitors associated with the dataset                              |   ✓   |    ✓    |    ✓   |        |
 | Edit monitors associated with the dataset                                |   ✓   |    ✓    |    ✓   |        |
 | Edit dataset details such as scan schedule and attributes                |   ✓   |    ✓    |    ✓   |        |
 | Edit dataset settings such as enable column metrics or sample data       |   ✓   |    ✓    |    ✓   |        | 
 | Change the roles of users in an individual dataset                       |   ✓   |    ✓    |        |        |
 | Add a dataset                                                            |   ✓   |         |        |        |
-| Connect to a new [data source]({% link soda/glossary.md %}#data-source)  |   ✓   |         |        |        |
+| Connect to a new data source                                             |   ✓   |         |        |        |
 | Make changes to the data source connection                               |   ✓   |         |        |        |
 
 
@@ -84,7 +84,7 @@ If you need to make changes to a [data source]({% link soda/glossary.md %}#data-
 
 ## Dataset and monitor owners
 
-There are two ownership roles in Soda Cloud that identify the user that owns a dataset or monitor. By default, the creator of the dataset or monitor becomes the **Dataset Owner** or **Monitor Owner**, respectively. These ownership roles do not enforce any rights or permissions on the datasets or monitors; these roles are simply identifiers.
+There are two ownership roles in Soda Cloud that identify the user that owns a dataset or monitor. By default, the creator of the dataset or monitor becomes the **Dataset Owner** or **Monitor Owner**, respectively. These ownership roles do not enforce any rights or permissions on the datasets or monitors, they are simply identifiers.
 <br />
 <br />
 
