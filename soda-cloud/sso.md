@@ -27,9 +27,9 @@ If your organization uses one of these providers, please contact <a href="mailto
 
 When an employee uses their SSO provider to access Soda Cloud for the first time, Soda Cloud automatically assigns the new user to roles and groups according to the [Default roles and rights]() for any new users. Soda Cloud also notifies the Soda Cloud Admin that a new user has joined the organization, and the new user receives a message indicating that their Soda Cloud Admin was notified of their first login. A Soda Cloud Admin can adjust users' roles in Organization Settings. See [Change organization roles and settings]() for details.
 
-When an IT Admin revokes a user's access to Soda Cloud through the SSO provider, a Soda cloud Admin is responsible for updating the resources and ownerships linked to the User. Refer to [Roles and rights in Soda Cloud]() for details.
+When an organization's IT Admin revokes a user's access to Soda Cloud through the SSO provider, a Soda cloud Admin is responsible for updating the resources and ownerships linked to the User. Refer to [Roles and rights in Soda Cloud]() for details.
 
-Once your organization enables SSO for all Soda Cloud users, Soda Cloud blocks all non-SSO login attempts and password changes via cloud.soda.io/login. If an employee attempts a non-SSO login or attempts to change a password using "Forgot password?" on cloud.soda.io/login, Soda Cloud presents a message that explains that they should log in or change their password using their SSO provider. 
+Once your organization enables SSO for all Soda Cloud users, Soda Cloud blocks all non-SSO login attempts and password changes via <a href="cloud.soda.io/login" target="_blank">cloud.soda.io/login<a/>. If an employee attempts a non-SSO login or attempts to change a password using "Forgot password?" on <a href="cloud.soda.io/login" target="_blank">cloud.soda.io/login<a/>, Soda Cloud presents a message that explains that they should log in or change their password using their SSO provider. 
 
 
 
