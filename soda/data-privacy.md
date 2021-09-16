@@ -15,6 +15,10 @@ Installed in your environment, you use the Soda SQL command-line tool to securel
 
 From Soda Cloud, you can also [connect to a data source]({% link soda-cloud/add-datasets.md %}). Soda Cloud stores your login credentials securely in our database; passwords are encrypyed and can only be read by the components of Soda SQL that connect to perform scans of your data.
 
+## Single sign-on with Soda Cloud
+
+Organizations that use a SAML 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider. Once added, employees of the organization can gain authorized and authenticated access to the organization's Soda Cloud account by successfully logging in to their SSO. See [Single sign-on with Soda Cloud]({% link soda-cloud/sso.md %}) for details.
+
 ## Sending data to Soda Cloud
 
 Soda SQL uses a secure API to connect to Soda Cloud. When it completes a scan, it pushes the scan results to your Soda Cloud account where you can log in and examine the details in the web application. 
