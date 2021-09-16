@@ -5,7 +5,7 @@ on: [ push ]
 jobs:
   publish-docs:
     name: Deploy documentation
-    if: github.ref == 'refs/heads/main' && github.repository == 'soda/docs'
+    if: github.ref == 'refs/heads/main'
     timeout-minutes: 10
     runs-on: ubuntu-20.04
     env:
