@@ -8,6 +8,10 @@ parent: Soda
 
 <br />
 
+#### September 17, 2021
+
+* Added Soda Cloud metric names to [master list of column metrics]({% link soda/metrics.md %}#column-metrics).
+
 #### September 9, 2021
 
 * Published documentation for [time partitioning]({% link soda-cloud/time-partitioning.md %}), [column metrics]({% link soda-cloud/display-column-metrics.md %}), and [sample data]({% link soda-cloud/display-samples.md %}) in Soda Cloud.

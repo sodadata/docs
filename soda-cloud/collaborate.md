@@ -26,7 +26,7 @@ Invite the members of your team to join you in your work to monitor data quality
 
 In Soda Cloud, navigate to **your avatar** > **Invite Team Members** and fill in the blanks. 
 
-When your team members receive the invitation email, they can click the link in the email to create their own accounts and access your Soda Cloud datasets, monitors, and monitor results directly. They can also create new monitors in your account. <!--Be aware that anyone with access to the invitation link in the email can create a Soda Cloud account and access your information.-->
+When your team members receive the invitation email, they can click the link in the email to create their own accounts and access your Soda Cloud datasets, monitors, and monitor results directly. They can also create new monitors in your account. 
 
 ## Share test results
 
