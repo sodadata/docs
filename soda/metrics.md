@@ -25,7 +25,6 @@ Use **dataset metrics** in tests that execute against all data in the dataset du
 
 {% include dataset-metrics.md %}
 
-
 ## Column metrics
 
 Use **column metrics** in tests that execute against specific columns in a dataset during a scan.
