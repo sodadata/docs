@@ -13,12 +13,20 @@ When creating new [monitors]({% link soda/glossary.md %}#monitor) in Soda Cloud,
 
 Using the information Soda Cloud discovered about your datasets during its first scan of your data, you can optionally instruct it to capture **sample data** for specific datasets during the next scheduled scan. Enable sample data to display sample rows of data in Soda Cloud (to a maximum of 1000) so that you can make informed choices about the tests to run against your data when you create a monitor. 
 
-DO NOT enable sample data if your dataset contains sensitive information or personally identifiable information (PII).
+DO NOT enable sample data if your dataset contains sensitive information or personally identifiable information (PII). For security, you can [disable the sample data](#disable-sample-data) feature entirely, or configure Soda SQL to [reroute failed sample data]({% link soda-sql/samples.md %}#reroute-sample-data-for-a-dataset) to an alternate location.
 
 1. From the **Datasets** dashboard, open the dataset in which you want to enable sample data.
 2. Click the **Sample data** tab, then check **Enable Sample Data** to enable Soda Cloud to capture sample data for the dataset during its next scan. If you see a message that asks you to review time partitioning settings before enabling sample data, click the link, then follow the [instructions]({% link soda-cloud/time-partitioning.md %}) to review and set the time partitioning settings for the dataset.
 3. When Soda Cloud completes its next scan, use the sample data to gain some insight into the data contained in your dataset and help you determine the ways in which you want to test it when you [create a new monitor]({% link soda-cloud/monitors.md %}).
 
+
+## Disable sample data
+
+Where your datasets contain sensitive or private information, you may *not* want to send sample data from your data source to Soda Cloud. In such a circumstance, you can disable the feature entirely in Soda Cloud.
+
+{% include disable-all-samples.md %}
+
+If you use Soda SQL to programmatically schedule scans of individual datasets, you can configure Soda SQL to send a dataset's samples to a secure location within your organization's infrastructure, such as an Amazon S3 bucket or Google Big Query. Refer to [Reroute sample data]({% link soda-sql/samples.md %}#reroute-sample-data-for-a-dataset) for details.
 
 ## Go further
 

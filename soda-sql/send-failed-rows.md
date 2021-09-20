@@ -8,15 +8,13 @@ parent: Soda SQL
 
 When a [scan]({% link soda/glossary.md %}#scan) results in a failed [test]({% link soda/glossary.md %}#test), the CLI output displays information about the test that failed and why.  To offer more insight into the data that failed a test, [Soda Cloud]({% link soda-cloud/soda-cloud-architecture.md %}) displays **failed rows** in a monitor's history. 
 
-Note: The current implementation of failed rows is evolving to better serve user needs.
-<br />
-
-
 There are three ways you can configure Soda SQL to send failed row samples to your Soda Cloud account:
 
 1. define a [samples configuration key](#define-a-samples-configuration-key-to-send-failed-rows) in your scan YAML file
 2. use a [missing-value Metric Type](#use-a-missing-value-metric-type-to-send-failed-rows) in your monitor in Soda Cloud
 3. use custom metrics in your scan YAML file to [explicitly send `failed_rows`](#explicitly-send-a-sample-of-failed-rows) 
+
+For security, you can also [disable the failed row samples](#disable-failed-row-samples) feature, or [reroute failed row samples for a dataset](#reroute-failed-row-samples-for-a-dataset) to an alternate location.
 
 ## Define a samples configuration key to send failed rows
 
@@ -88,6 +86,134 @@ sql_metrics:
       SELECT *
       FROM ORDERS
       WHERE PURCHASEPRICE > SELLINGPRICE
+```
+
+## Disable failed row samples
+
+Where your datasets contain sensitive or private information, you may *not* want to send failed row samples from your data source to Soda Cloud. In such a circumstance, you can disable the feature completely in Soda Cloud.
+
+{% include disable-all-samples.md %}
+
+Alternatively, you can prevent Soda SQL from sending metadata or samples to Soda Cloud by using one of the following methods:
+* To prevent Soda SQL from sending an individual dataset's scan results or samples to Soda Cloud, use the [`--offline` option]({% link soda/scan.md %}#add-scan-options) when you run a scan.
+* To prevent Soda SQL from sending specific column scan results or samples, configure an [`excluded_columns` configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) in your scan YAML file.
+
+### Reroute failed row samples for a dataset 
+
+Use a `FailedRowsProcessor` to programmatically send a dataset's failed row samples to a secure location within your organization's infrastructure, such as an Amazon S3 bucket or Google Big Query. Note that you can only configure failed row sample rerouting for individual datasets, and only for those scans that you have [scheduled programmatically]({% link soda-sql/programmatic_scan.md %}). In Soda Cloud, users see the message you define advising them where they can access and review failed row samples for the dataset.
+
+#### Reroute to Amazon S3
+
+First, configure the `FailedRowProcessor` according to the following example.
+
+```python
+import boto
+import json
+
+from soda.scan.FailedRowsProcessor
+
+class S3FailedRowProcessor(FailedRowsProcessor):
+  # Override the process function
+  def process(context) → dict:
+    file_name = 'failed_rows.json'
+    with open(file_name, 'w', encoding='uft-8') as f:
+      json.dump(, f)
+
+    s3_client = boto3.client('s3')
+    if object_name is None:
+      object_name = os.path.basename(file_name)
+    try:
+        response = s3_client.upload_file(file_name, bucket, object_name)
+    except ClientError as e:
+        logging.error(e)
+        return {'message': 'Unable to load failed rows into S3'}
+    return {'message':
+             f'Failed rows are saved to s3://{bucket_name}/{file_name}'}
+```
+Then, configure the failed row processor in a scan builder as per the example below.
+```python
+scan_builder.failed_row_processor = S3FailedRowProcessor()
+scan_result = scan_builder.build().execute()
+```
+<br />
+
+#### Reroute to Google Big Query using existing credentials
+
+This configuration uses the Big Query access credentials that Soda SQL uses. These credentials must have the appropriate service account and scopes in Big Query which give Soda SQL write permission on the table. 
+
+First, configure a `FailedRowProcessor` according to the following example. Note that the `client` parameter points to different objects for different warehouses.
+```python
+import bigquery
+from soda.scan.FailedRowsProcessor
+
+class BigQueryFailedRowProcessor(FailedRowsProcessor):
+  # Override process function - conn/context
+  # (here only treating it as a bigquery client)
+  def process(context) → dict:
+    table_id = "your-project.your_dataset.your_table"
+
+    errors = conn.insert_rows_json(
+        table_id, rows, row_ids=[None] * len(rows_to_insert)
+    )  # Make an API request.
+    if errors == []:
+        return { 'count': 50,
+                'columns': ['id', 'amount']
+                 'message': f'Faled rows saved to {table_id}'}
+    else:
+       return {'message': 'Unable to save failed rows to Bigquery'}
+```
+Then, configure the failed row processor in a scan builder as per the example below.
+```python
+# scan_builder construction
+scan_builder = ScanBuilder()
+scan_builder.failed_row_processor = BigQueryRowProcessor()
+```
+<br />
+
+#### Reroute to Google Big Query using separate credentials
+
+This configuration *does not* use the Big Query access credentials that Soda SQL uses. The separate credentials must have the appropriate service account and scopes in Big Query which give Soda SQL write permission on the table. 
+
+First, configure a `FailedProcessor` according to the following example. Note that the `client` parameter points to different objects for different warehouses.
+```python
+import json
+import bigquery
+from soda.scan.FailedRowsProcessor
+
+class BigQueryFailedRowProcessor(FailedRowsProcessor):
+  # Override process function
+  # context: sql, connection, sample_reference
+  def process(context) → dict:
+
+    table_schema = {
+     ## Define Schema for the failed rows dataset.table
+    }
+
+    project_id = '<my_project>'
+    dataset_id = '<my_dataset>'
+    table_id = '<my_table>'
+
+    client  = bigquery.Client(project = project_id)
+    dataset  = client.dataset(dataset_id)
+    table = dataset.table(table_id)
+    try:
+        json_object = json.loads(rows)
+        job_config = bigquery.LoadJobConfig()
+        job_config.source_format = bigquery.SourceFormat.NEWLINE_DELIMITED_JSON
+        job_config.schema = format_schema(table_schem
+        job = client.load_table_from_json(json_object, table, job_config = job_config)
+        job.result()
+    except GoogleAPICallError: # or TimeoutError or TypeError
+      return {'message': 'Unable to save failed rows to Bigquery'}
+    return { 'count': 42,
+             'columns': ['id', 'amount']
+             'message': f'Faled rows saved to {table_id}'}
+```
+Then, configure the failed row processor in a scan builder as per the example below.
+```python
+# scan_builder construction
+scan_builder = ScanBuilder()
+scan_builder.failed_row_processor = BigQueryRowProcessor()
 ```
 
 ## Go further

@@ -13,7 +13,7 @@ Soda works in several ways to ensure your data and systems remain private.
 
 Installed in your environment, you use the Soda SQL command-line tool to securely connect to a [data source]({% link soda/glossary.md %}#data-source) using [environment variables]({% link soda-sql/warehouse.md %}#env_vars-yaml-file) to store login credentials. 
 
-You can also [connect to a data source]({% link soda-cloud/add-datasets.md %}) in Soda Cloud. Soda Cloud stores your login credentials securely in our database; passwords are encrypyed and can only be read by the components of Soda SQL that connect to perform scans of your data. 
+You can also [connect to a data source]({% link soda-cloud/add-datasets.md %}) in Soda Cloud. Soda Cloud stores your login credentials securely in our database; passwords are encrypted and can only be read by the components of Soda SQL that connect to perform scans of your data. 
 
 {% include nat-gateway.md %}
 
@@ -28,9 +28,9 @@ Soda Cloud does store the following:
 * aggregated metrics, such as averages 
 * sample rows and failed rows, if you explicitly set up your configuration to send this data to Soda Cloud
 
-If you are working with [sensitive data](https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/legal-grounds-processing-data/sensitive-data/what-personal-data-considered-sensitive_en) that must not leave your organisation's network, do not enable the sample data and failed rows features for Soda SQL scans, and do not use [missing-value metric type]({% link soda-cloud/failed-rows.md %}#use-a-missing-value-metric-type-to-collect-failed-row-samples) in your Soda Cloud monitors. Refer to [Send sample data to Soda Cloud]({% link soda-sql/samples.md %}) and [Send failed rows to Soda Cloud]({% link soda-sql/send-failed-rows.md %}) for more information.
+Where your datasets contain [sensitive data](https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/legal-grounds-processing-data/sensitive-data/what-personal-data-considered-sensitive_en) or private information, you may *not* want to send sample data from your data source to Soda Cloud. In such a circumstance, you can [disable the samples feature entirely]({% link soda-cloud/display-samples.md %}#disable-sample-data) in Soda Cloud.
 
-If you wish, you can configure Soda SQL to send sample rows and failed rows but explicitly instruct it *not* to scan columns that contain sensitive or personally identifiable information (PII). Read more about how to use [`excluded_columns`]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) to specify columns that Soda SQL should NOT scan and send to Soda Cloud as samples of rows or failed rows. 
+If you use Soda SQL to programmatically schedule scans of individual datasets, you can configure Soda SQL to send a dataset's samples or failed row samples to a secure location within your organization's infrastructure, such as an Amazon S3 bucket or Google Big Query. Refer to [Reroute sample data]({% link soda-sql/samples.md %}#reroute-sample-data-for-a-dataset) and [Reroute failed row samples]({% link soda-sql/send-failed-rows.md %}#reroute-failed-row-samples-for-a-dataset) for details.
 
 Read more about Soda's [Privacy Policy](https://www.soda.io/privacy-policy).
 
