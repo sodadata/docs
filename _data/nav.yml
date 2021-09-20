@@ -112,3 +112,12 @@
   - subtitle: Support
     page: soda/support.md
 
+- title: Release notes
+  page: release-notes/all.md
+  subcategories:
+    - subtitle: Summary
+      page: release-notes/all.md
+    - subtitle: Soda Cloud
+      page: release-notes/soda-cloud.md
+    - subtitle: Soda SQL
+      page: release-notes/soda-sql.md
