@@ -1,10 +1,11 @@
 ---
 layout: default
-title: Summary
+title: Release notes 
 parent: Release notes
 ---
 
-# Release notes
+# Release notes for Soda products
+
 {% assign notes = site.release-notes | sort:"date" | reverse %}
 {% for release-note in notes %}
   <h2>[{{ release-note.products | join:', ' }}] {{ release-note.name }}</h2>
@@ -12,3 +13,5 @@ parent: Release notes
   {{ release-note.content }}
   <hr/>
 {% endfor %}
+
+*Last modified on {% last_modified_at %}*

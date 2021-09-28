@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Soda SQL Release notes
+title: Release notes for Soda SQL
 parent: Release notes
 ---
 
-# Soda SQL
+# Release notes for Soda SQL
 {% assign notes = site.release-notes | where_exp:"item","item.products contains 'soda-sql'" | sort:"date" | reverse %}
 {% for release-note in notes %}
   <h2>[{{ release-note.products | join:', ' }}] {{ release-note.name }}</h2>
@@ -12,3 +12,5 @@ parent: Release notes
   {{ release-note.content }}
   <hr/>
 {% endfor %}
+
+*Last modified on {% last_modified_at %}*

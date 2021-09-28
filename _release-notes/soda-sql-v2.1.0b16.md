@@ -1,12 +1,12 @@
 ---
-name: "Week 36: Celeborn release"
+name: "Week 36: Celeborn"
 date: 2021-09-07
 products:
   - soda-sql
 ---
-Bringing another round of Soda SQL updates containing:
+Launching another round of Soda SQL updates!
 
-- Core: fix time option as it's always set to now by default
+- Core: fix time option as it's always set to "now" by default
 - Core: Update dev requirements
 - Core: Update readme with dialect status (#477)
 - Core: Update Tox in dev requirements to prevent version deadlock (#474)
@@ -14,4 +14,4 @@ Bringing another round of Soda SQL updates containing:
 - BigQuery: Update bigquery dependency version (#470)
 - MySQL: Fix MySQL dialect issues (#475)
 
-Refer to the [Soda SQL Changelog](https://github.com/sodadata/soda-sql/blob/main/CHANGELOG.md#210b16---2021-09-07-celeborn) for more details.
+Refer to the [Soda SQL Changelog](https://github.com/sodadata/soda-sql/blob/main/CHANGELOG.md#210b16---2021-09-07-celeborn) for details.

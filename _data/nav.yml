@@ -117,7 +117,7 @@
 - title: Release notes
   page: release-notes/all.md
   subcategories:
-    - subtitle: Summary
+    - subtitle: Soda products
       page: release-notes/all.md
     - subtitle: Soda Cloud
       page: release-notes/soda-cloud.md

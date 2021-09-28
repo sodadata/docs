@@ -54,9 +54,10 @@ Get started with the [Quick start tutorial for Soda Cloud]({% link soda-cloud/qu
 |Configure scan YAML to send <br />[failed row samples]({% link soda-sql/send-failed-rows.md %}) to Soda Cloud | Use a missing value metric type to [collect failed row samples]({% link soda-cloud/failed-rows.md %}#use-a-missing-value-metric-type-to-collect-failed-row-samples)|
 |   | View [failed rows]({% link soda-cloud/failed-rows.md %}) |
 | Configure scan YAML to send <br />[sample dataset data]({% link soda-sql/samples.md %}) to Soda Cloud | [Enable sample data]({% link soda-cloud/display-samples.md %}) for a dataset | 
-|   | View sample data for a dataset | 
+|   | View [sample data]({% link soda-cloud/display-samples.md %}) for a dataset | 
 |	| Use [anomaly detection]({% link soda-cloud/anomaly-detection.md %}) |
 |   | [Collaborate]({% link soda-cloud/collaborate.md %}) with your team to monitor your data: invite team members, and integrate with Slack
+|   | Set up [Single sign-on for Soda Cloud]({% link soda-cloud/sso.md %}) so that all users in your organization must use your IdP to access Soda Cloud. |
 
 ## Go further
 
