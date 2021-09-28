@@ -4,7 +4,6 @@ date: 2021-09-07
 products:
   - soda-sql
 ---
-Launching another round of Soda SQL updates!
 
 - Core: fix time option as it's always set to "now" by default
 - Core: Update dev requirements
@@ -14,4 +13,4 @@ Launching another round of Soda SQL updates!
 - BigQuery: Update bigquery dependency version (#470)
 - MySQL: Fix MySQL dialect issues (#475)
 
-Refer to the [Soda SQL Changelog](https://github.com/sodadata/soda-sql/blob/main/CHANGELOG.md#210b16---2021-09-07-celeborn) for details.
+Refer to the <a href="https://github.com/sodadata/soda-sql/blob/main/CHANGELOG.md#210b16---2021-09-07-celeborn" target="_blank">Soda SQL Changelog</a> for details.
