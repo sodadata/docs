@@ -15,7 +15,7 @@ A **monitor** is a set of details you define in Soda Cloud which Soda uses when 
 
 * An [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account has connected a [data source]({% link soda/glossary.md %}#data-source) and [added datasets]({% link soda-cloud/add-datasets.md %}) to your Soda Cloud account so that Soda has access to the data you wish to monitor. If you are a Soda SQL user and have connected it to your Soda Cloud account, you can [add datasets via Soda SQL]({% link soda-sql/configure.md %}#configuration-instructions) if you prefer. 
 * Soda Cloud has executed at least one [scheduled scan]({% link soda-cloud/add-datasets.md %}#import-settings) of your data source to discover all of its datasets. If you are a Soda SQL user and have connected it to your Soda Cloud account, you can use the `soda analyze` command to discover datasets if you prefer. Refer to [Configure Soda SQL]({% link soda-sql/configure.md %}) for details.
-* You are the Admin of the organization, or have a Manager or Editor role for the dataset for which you wish to create a monitor. See [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) for details. 
+* You are an Admin in your Soda Cloud account, or have a Manager or Editor role for the dataset for which you wish to create a monitor. See [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) for details. 
 * (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud can send notifications via email.
 
 ## Create a monitor and an alert
