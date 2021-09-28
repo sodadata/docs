@@ -66,7 +66,7 @@ Refer to [Add datasets in Soda Cloud]({% link soda-cloud/add-datasets.md %}) for
 
 While you wait for Soda Cloud to complete its first scheduled scan of your data source, connect your Soda Cloud account to your Slack workspace. Making this connection enables you to send Slack notifications to your team when a data issue triggers an [alert]({% link soda/glossary.md %}#alert).
 
-If you do not use Slack, Soda Cloud notifies you and any teammates you invite via email.
+If you do not use Slack, Soda Cloud notifies you and any [teammates you invite]({% link soda-cloud/collaborate.md %}#invite-your-team-members) via email.
 
 {% include integrate-slack-steps.md %}
 
