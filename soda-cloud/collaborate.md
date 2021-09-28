@@ -28,6 +28,8 @@ In Soda Cloud, navigate to **your avatar** > **Invite Team Members** and fill in
 
 When your team members receive the invitation email, they can click the link in the email to create their own accounts and access your Soda Cloud datasets, monitors, and monitor results directly. They can also create new monitors in your account. 
 
+Note that if your organization uses a single sign-on (SSO) identity provider to access Soda Cloud, you cannot invite team members in Soda Cloud. Instead, contact your IT Admin to request access to Soda Cloud using your SSO. See also, [Single Sign-on with Soda Cloud]({% link soda-cloud/sso.md %}).
+
 ## Share test results
 
 Collaborating as a team on Soda Cloud means you can quickly share the lastest test results for a dataset with others. 
