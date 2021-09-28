@@ -17,9 +17,9 @@ As an Admin on your Soda Cloud account, you can also [connect to a data source](
 
 {% include nat-gateway.md %}
 
-## Managing access in Soda Cloud
+## Single sign-on with Soda Cloud
 
-To manage the actions of users that belong to a single organization, Soda Cloud uses roles and access rights. These roles and their associated rights of access enforce limits on the abilities for users to make additions and changes to datasets, and to make changes to the Soda Cloud account and the roles and rights of others. Learn more about [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}).  
+Organizations that use a SAML 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider. Once added, employees of the organization can gain authorized and authenticated access to the organization's Soda Cloud account by successfully logging in to their SSO. See [Single sign-on with Soda Cloud]({% link soda-cloud/sso.md %}) for details.
 
 ## Sending data to Soda Cloud
 

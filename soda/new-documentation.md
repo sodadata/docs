@@ -8,6 +8,11 @@ parent: Soda
 
 <br />
 
+#### September 28, 2021
+
+* New documentation to accompany the release of [SSO integration]({% link soda-cloud/sso.md %}) for Soda Cloud.
+
+
 #### September 17, 2021
 
 * Added Soda Cloud metric names to [master list of column metrics]({% link soda/metrics.md %}#column-metrics).

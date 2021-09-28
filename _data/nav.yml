@@ -95,6 +95,8 @@
     page: soda-cloud/edit-data-source.md
   - subtitle: Soda Cloud architecture
     page: soda-cloud/soda-cloud-architecture.md
+  - subtitle: Single sign-on with Soda Cloud
+    page: soda-cloud/sso.md
 
 - title: Reference
   page: soda/glossary.md
