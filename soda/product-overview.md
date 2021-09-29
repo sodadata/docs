@@ -55,6 +55,7 @@ Get started with the [Quick start tutorial for Soda Cloud]({% link soda-cloud/qu
 |   | View [failed rows]({% link soda-cloud/failed-rows.md %}) |
 | Configure scan YAML to send <br />[sample dataset data]({% link soda-sql/samples.md %}) to Soda Cloud | [Enable sample data]({% link soda-cloud/display-samples.md %}) for a dataset | 
 |   | View sample data for a dataset | 
+|   | [Disable sending all sample data]({% link soda-cloud/display-samples.md %}#disable-sample-data) to Soda Cloud | 
 |	| Use [anomaly detection]({% link soda-cloud/anomaly-detection.md %}) |
 |   | [Collaborate]({% link soda-cloud/collaborate.md %}) with your team to monitor your data: invite team members, and integrate with Slack
 
