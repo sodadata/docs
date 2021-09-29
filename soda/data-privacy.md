@@ -38,8 +38,13 @@ If you wish, you can configure Soda SQL to send sample rows and failed rows but 
 
 Read more about Soda's [Privacy Policy](https://www.soda.io/privacy-policy).
 
-<br />
+## Compliance and reporting
 
+In September 2021, an independent review of Soda's source code was conducted and the result indicated that the code is sound.
+
+As a result of an independent review in September 2021, Soda has been found to be SOCII Type 1 compliant. Soda aims to be Type 2 compliant in the near future. Contact <a href="mailto:support@soda.io">support@soda.io</a> for more information.
+
+<br />
 ---
 *Last modified on {% last_modified_at %}*
 
