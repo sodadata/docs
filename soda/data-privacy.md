@@ -13,7 +13,7 @@ Soda works in several ways to ensure your data and systems remain private.
 
 Installed in your environment, you use the Soda SQL command-line tool to securely connect to a [data source]({% link soda/glossary.md %}#data-source) using [environment variables]({% link soda-sql/warehouse.md %}#env_vars-yaml-file) to store login credentials. 
 
-You can also [connect to a data source]({% link soda-cloud/add-datasets.md %}) in Soda Cloud. Soda Cloud stores your login credentials securely in our database; passwords are encrypyed and can only be read by the components of Soda SQL that connect to perform scans of your data. 
+As an Admin on your Soda Cloud account, you can also [connect to a data source]({% link soda-cloud/add-datasets.md %}) in the Soda Cloud web application. Soda Cloud stores your login credentials securely in our database; passwords are encrypyed and can only be read by the components of Soda SQL that connect to perform scans of your data. 
 
 {% include nat-gateway.md %}
 
