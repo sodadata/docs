@@ -31,7 +31,7 @@ Once your organization enables SSO for all Soda Cloud users, Soda Cloud blocks a
 
 Use the procedure below to set up Soda Cloud as a web-based application (also known as a service provider) for your users in Azure AD.
 
-1. Contact <a href="mailto:support@soda.io">Soda Support</a> to request SSO set-up for Soda Cloud. Soda Support sends you speocifc values you need to configure the set up with your identity provider.
+1. Contact <a href="mailto:support@soda.io">Soda Support</a> to request SSO set-up for Soda Cloud. Soda Support sends you specific values you need to configure the set up with your identity provider.
 2. As a user with sufficient privileges in your organization's Azure AD account, sign in through <a href="http://portal.azure.com" target="_blank">portal.azure.com<a/>, then navigate to **Enterprise applications**. Click **New application**.
 3. Click **Create your own application**.
 4. In the right pane that appears, provide a name for your app, such as Soda Cloud, then select the **(Non-gallery)** option. Click **Create**.
@@ -66,7 +66,7 @@ The values for these fields are unique to your organization and are provided to 
 
 Use the procedure below to set up Soda Cloud as a web-based application (also known as a service provider) for your users in Okta.
 
-1. Contact <a href="mailto:support@soda.io">Soda Support</a> to request SSO set-up for Soda Cloud. Soda Support sends you speocifc values you need to configure the set up with your identity provider.
+1. Contact <a href="mailto:support@soda.io">Soda Support</a> to request SSO set-up for Soda Cloud. Soda Support sends you specific values you need to configure the set up with your identity provider.
 2. As an Okta Administrator, log in to Okta and navigate **Applications** > **Applications overview**, then click **Create App Integration**.
 3. Select **SAML 2.0**.
 4. Provide a name for the application, Soda Cloud, and upload the <a href="soda-logo.png" download>Soda logo</a>.
