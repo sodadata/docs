@@ -295,6 +295,7 @@ name: my_postgres_project
 connection:
     type: postgres
     host: localhost
+    port: '5432'
     username: sodasql
     password: sodasql
     database: sodasql
