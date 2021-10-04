@@ -9,14 +9,14 @@ parent: Soda Spark
 Soda Spark is an extension of 
 [Soda SQL]({% link soda-sql/5_min_tutorial.md %}) that allows you to run Soda
 SQL functionality programmatically on a 
-<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark data frame</a>
+<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark data frame</a>.
 
 ## Requirements
 
 Soda Spark has the same requirements as 
-[`soda-sql-spark`]({% link soda-sql/installation.md %}).
+[Soda SQL]({% link soda-sql/installation.md %}#requirements).
 
-## Install
+## Install Soda Spark
 
 From your command-line interface tool, execute the following command.
 
@@ -24,7 +24,7 @@ From your command-line interface tool, execute the following command.
 $ pip install soda-spark
 ```
 
-## Use
+## Use Soda Spark
 
 From your Python prompt, execute the following commands.
 
@@ -63,7 +63,7 @@ From your Python prompt, execute the following commands.
 >>>
 ```
 
-Alternatively, you can use a [scan YAML file]({% link soda-sql/scan-yaml.md %}).
+Alternatively, you can prepare a [scan YAML file]({% link soda-sql/scan-yaml.md %}) that Soda Spark uses to prepare SQL queries to run against your data.
 
 ``` python
 >>> scan_yml = "static/demodata.yml"
@@ -74,9 +74,9 @@ Alternatively, you can use a [scan YAML file]({% link soda-sql/scan-yaml.md %}).
 >>>
 ```
 
-### Send results to Soda cloud
+### Send results to Soda Cloud
 
-Send the scan result to Soda cloud.
+Use the following command to send Soda Spark scan results to Soda cloud.
 
 ``` python
 >>> import os
@@ -91,18 +91,18 @@ Send the scan result to Soda cloud.
 >>>
 ```
 
-## Understand
+## How Soda Spark works
 
 When you execute Soda Spark, it completes the following tasks:
 
-1. Setup the scan
-   * Use the Spark dialect
-   * Use <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.SparkSession.html" target="_blank">Spark session</a>
-     as [warehouse]({% link soda-sql/warehouse.md %}) connection
-2. Create (or replace) 
+1. It sets up the scan.
+   * uses the Spark dialect
+   * uses a <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.SparkSession.html" target="_blank">Spark session</a>
+     as a [warehouse]({% link soda-sql/warehouse.md %}) connection
+2. It creates (or replaces) a 
 	<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceGlobalTempView.html" target="_blank">global temporary view</a>
-   for the Spark data frame
-3. Execute the scan on the temporary view
+   for the Spark data frame.
+3. It executes the scan on the temporary view.
 
 ## Go further
 
