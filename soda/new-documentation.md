@@ -8,6 +8,10 @@ parent: Soda
 
 <br />
 
+#### October 2021
+
+* New documentation to accompany the launch of [Soda Spark]({% link soda-spark/install-and-use.md %})!
+
 #### Septemeber 30, 2021
 
 * New documentation to accompany the release of [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}).

@@ -7,13 +7,19 @@ parent: Soda
 # Soda product overview
 <br />
 
-![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="150px" width="150px"}
+![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="145px" width="145px"}
 
 **Soda SQL** is a free, open-source command-line tool. It utilizes user-defined input to prepare SQL queries that run tests on datasets in a data source to find invalid, missing, or unexpected data. When tests fail, they surface the data that you defined as "bad" in the tests. Armed with this information, you and your data engineering team can diagnose where the "bad" data entered your data pipeline and take steps to prioritize and resolve issues based on downstream impact.
 
 Use Soda SQL on its own to manually or programmatically scan the data that your organization uses to make decisions. Optionally, you can integrate Soda SQL with your data orchestration tool to schedule scans and automate actions based on scan results. Further, you can connect Soda SQL to a free Soda Cloud account where you and your team can use the web application to monitor test results and collaborate to keep your data issue-free.
 
 Get started with the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_tutorial.md %}).
+
+<br />
+
+![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="170px" width="170px"}
+
+**Soda Spark** is an extension of Soda SQL that allows you to run Soda SQL functionality programmatically on a Spark data frame. Read more about installing and using [Soda Spark]({% link soda-spark/install-and-use.md %}).
 
 <br />
 

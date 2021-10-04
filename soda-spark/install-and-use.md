@@ -9,7 +9,16 @@ parent: Soda Spark
 Soda Spark is an extension of 
 [Soda SQL]({% link soda-sql/5_min_tutorial.md %}) that allows you to run Soda
 SQL functionality programmatically on a 
-<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark data frame</a>.
+<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark data frame</a>. Reference the Soda SQL documentation to learn how to use Soda Spark, in particular, and how to [define tests]({% link soda-sql/tests.md %}) in a [scan YAML file]({% link soda-sql/scan-yaml.md %}). 
+
+[Requirements](#requirements)<br />
+[Install Soda Spark](#install-soda-spark)<br />
+[Use Soda Spark](#use-soda-spark)<br />
+[How Soda Spark works](#how-soda-spark-works)<br />
+[Contribute](#contribute)<br />
+[Go further](#go-further)
+
+<br />
 
 ## Requirements
 
@@ -76,7 +85,7 @@ Alternatively, you can prepare a [scan YAML file]({% link soda-sql/scan-yaml.md 
 
 ### Send results to Soda Cloud
 
-Use the following command to send Soda Spark scan results to Soda cloud.
+Use the following command to send Soda Spark scan results to Soda cloud. Use [Soda Cloud documentation]({% link soda-cloud/connect_to_cloud.md %}) to learn how to generage API keys to connect Soda Spark to Soda Cloud.
 
 ``` python
 >>> import os
@@ -103,6 +112,10 @@ When you execute Soda Spark, it completes the following tasks:
 	<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceGlobalTempView.html" target="_blank">global temporary view</a>
    for the Spark data frame.
 3. It executes the scan on the temporary view.
+
+## Contribute
+
+Soda Spark is an open-source software project hosted in <a href="https://github.com/sodadata/soda-spark" target="_blank">GitHub</a>. Learn how to <a href="https://github.com/sodadata/soda-spark/blob/main/CONTRIBUTING.md" target="blank">contribute</a> to the Soda Spark project. 
 
 ## Go further
 
