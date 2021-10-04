@@ -85,7 +85,7 @@ Alternatively, you can prepare a [scan YAML file]({% link soda-sql/scan-yaml.md 
 
 ### Send results to Soda Cloud
 
-Use the following command to send Soda Spark scan results to Soda cloud. Use [Soda Cloud documentation]({% link soda-cloud/connect_to_cloud.md %}) to learn how to generage API keys to connect Soda Spark to Soda Cloud.
+Use the following command to send Soda Spark scan results to Soda cloud. Use [Soda Cloud documentation]({% link soda-cloud/connect_to_cloud.md %}) to learn how to generate API keys to connect Soda Spark to Soda Cloud.
 
 ``` python
 >>> import os
