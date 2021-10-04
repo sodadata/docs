@@ -13,7 +13,13 @@ Soda works in several ways to ensure your data and systems remain private.
 
 Installed in your environment, you use the Soda SQL command-line tool to securely connect to a [data source]({% link soda/glossary.md %}#data-source) using [environment variables]({% link soda-sql/warehouse.md %}#env_vars-yaml-file) to store login credentials. 
 
-From Soda Cloud, you can also [connect to a data source]({% link soda-cloud/add-datasets.md %}). Soda Cloud stores your login credentials securely in our database; passwords are encrypyed and can only be read by the components of Soda SQL that connect to perform scans of your data.
+As an Admin on your Soda Cloud account, you can also [connect to a data source]({% link soda-cloud/add-datasets.md %}) in the Soda Cloud web application. Soda Cloud stores your login credentials securely in our database; passwords are encrypyed and can only be read by the components of Soda SQL that connect to perform scans of your data. 
+
+{% include nat-gateway.md %}
+
+## Single sign-on with Soda Cloud
+
+Organizations that use a SAML 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider. Once added, employees of the organization can gain authorized and authenticated access to the organization's Soda Cloud account by successfully logging in to their SSO. See [Single sign-on with Soda Cloud]({% link soda-cloud/sso.md %}) for details.
 
 ## Sending data to Soda Cloud
 
@@ -32,8 +38,13 @@ If you wish, you can configure Soda SQL to send sample rows and failed rows but 
 
 Read more about Soda's [Privacy Policy](https://www.soda.io/privacy-policy).
 
-<br />
+## Compliance and reporting
 
+In September 2021, an independent review of Soda's source code was conducted and the result indicated that the code is sound.
+
+As a result of an independent review in September 2021, Soda has been found to be SOCII Type 1 compliant. Soda is scheduled for SOCII Type 2 accreditation as soon as the minimum time interval from Type 1 accreditation has elapsed.  Contact <a href="mailto:support@soda.io">support@soda.io</a> for more information.
+
+<br />
 ---
 *Last modified on {% last_modified_at %}*
 

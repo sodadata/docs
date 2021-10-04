@@ -46,7 +46,7 @@ All the instructions in this tutorial reference a PostgreSQL data source, but yo
   </tr>
 </table>
 
-1. If you have not already done so, create a free Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
+1. If you have not already done so, create a free Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>. You, as the first user in your organization to sign up for a Soda Cloud account, become the account's **Admin** by default. Learn more about [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}). An Admin role is necessary to complete this tutorial.
 2. In Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow the guided steps to connect a data source. As reference, use the following input values for the **Connection Details** for a PostgreSQL data source. 
 * Data source name: `demodata`
 * Data source type: `PostgreSQL`
@@ -66,7 +66,7 @@ Refer to [Add datasets in Soda Cloud]({% link soda-cloud/add-datasets.md %}) for
 
 While you wait for Soda Cloud to complete its first scheduled scan of your data source, connect your Soda Cloud account to your Slack workspace. Making this connection enables you to send Slack notifications to your team when a data issue triggers an [alert]({% link soda/glossary.md %}#alert).
 
-If you do not use Slack, Soda Cloud notifies you and any teammates you invite via email.
+If you do not use Slack, Soda Cloud notifies you and any [teammates you invite]({% link soda-cloud/collaborate.md %}#invite-your-team-members) via email.
 
 {% include integrate-slack-steps.md %}
 

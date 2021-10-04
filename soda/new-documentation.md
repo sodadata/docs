@@ -8,6 +8,23 @@ parent: Soda
 
 <br />
 
+#### Septemeber 30, 2021
+
+* New documentation to accompany the release of [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}).
+
+#### September 28, 2021
+
+* New documentation to accompany the release of [SSO integration]({% link soda-cloud/sso.md %}) for Soda Cloud.
+
+
+#### September 17, 2021
+
+* Added Soda Cloud metric names to [master list of column metrics]({% link soda/metrics.md %}#column-metrics).
+
+#### September 9, 2021
+
+* Published documentation for [time partitioning]({% link soda-cloud/time-partitioning.md %}), [column metrics]({% link soda-cloud/display-column-metrics.md %}), and [sample data]({% link soda-cloud/display-samples.md %}) in Soda Cloud.
+
 #### September 1, 2021
 
 * Added information for new command options included in Soda CLI version 2.1.0b15 for 
