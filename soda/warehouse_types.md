@@ -13,7 +13,7 @@ Soda SQL and Soda Cloud need connection details in order to access your [data so
 
 [Amazon Athena](#amazon-athena) <br />
 [Amazon Redshift](#amazon-redshift) <br />
-[Apache Hive](#apache-hive) <br />
+[Apache Hive (Experimental)](#apache-hive-experimental) <br />
 [Apache Spark (Experimental)](#apache-spark-experimental) <br />
 [Google Cloud Platform Big Query](#gcp-big-query) <br />
 [Microsoft SQL Server (Experimental)](#microsoft-sql-server-experimental) <br />
@@ -87,7 +87,7 @@ connection:
 
 Access keys and IAM role are mutually exclusive: if you provide values for `access_key_id` and `secret_access_key`, you cannot use Identity and Access Management role; if you provide value for `role_arn`, then you cannot use the access keys. Refer to [Amazon Redshift Authorization parameters](https://docs.aws.amazon.com/redshift/latest/dg/copy-parameters-authorization.html) for details.
 
-## Apache Hive
+## Apache Hive (Experimental)
 
 ```yaml
 name: my_hive_project
