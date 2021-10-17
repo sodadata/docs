@@ -32,7 +32,7 @@ Soda Cloud does store the following:
 * aggregated metrics, such as averages 
 * sample rows and failed rows, if you explicitly set up your configuration to send this data to Soda Cloud
 
-Where your datasets contain [sensitive data](https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/legal-grounds-processing-data/sensitive-data/what-personal-data-considered-sensitive_en) or private information, you may *not* want to send sample data from your data source to Soda Cloud. In such a circumstance, you can [disable the samples feature entirely]({% link soda-cloud/display-samples.md %}#disable-sample-data) in Soda Cloud.
+Where your datasets contain <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/legal-grounds-processing-data/sensitive-data/what-personal-data-considered-sensitive_en" target="_blank"> sensitive data</a> or private information, you may *not* want to send sample data from your data source to Soda Cloud. In such a circumstance, you can [disable the samples feature entirely]({% link soda-cloud/display-samples.md %}#disable-sample-data) in Soda Cloud.
 
 If you use Soda SQL to programmatically schedule scans of individual datasets, you can configure Soda SQL to send a dataset's samples or failed row samples to a secure location within your organization's infrastructure, such as an Amazon S3 bucket or Google Big Query. Refer to [Reroute sample data]({% link soda-sql/samples.md %}#reroute-sample-data-for-a-dataset) and [Reroute failed row samples]({% link soda-sql/send-failed-rows.md %}#reroute-failed-row-samples-for-a-dataset) for details.
 
