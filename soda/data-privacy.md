@@ -38,8 +38,13 @@ If you use Soda SQL to programmatically schedule scans of individual datasets, y
 
 Read more about Soda's [Privacy Policy](https://www.soda.io/privacy-policy).
 
-<br />
+## Compliance and reporting
 
+In September 2021, an independent review of Soda's source code was conducted and the result indicated that the code is sound.
+
+As a result of an independent review in September 2021, Soda has been found to be SOCII Type 1 compliant. Soda is scheduled for SOCII Type 2 accreditation as soon as the minimum time interval from Type 1 accreditation has elapsed.  Contact <a href="mailto:support@soda.io">support@soda.io</a> for more information.
+
+<br />
 ---
 *Last modified on {% last_modified_at %}*
 
