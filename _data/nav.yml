@@ -89,6 +89,8 @@
     page: soda-cloud/display-samples.md
   - subtitle: Detect anomalies
     page: soda-cloud/anomaly-detection.md
+  - subtitle: Monitor schema evolution
+    page: soda-cloud/schema-evolution.md
   - subtitle: Examine failed rows
     page: soda-cloud/failed-rows.md
   - subtitle: Edit data source settings
