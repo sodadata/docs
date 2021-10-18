@@ -58,7 +58,7 @@ When you run a scan in Soda SQL, you can specify some options that modify the sc
 | `-v TEXT` or<br /> `--variable TEXT` | Replace `TEXT` with variables you wish to apply to the scan, such as a [filter for a date]({% link soda-sql/filtering.md %}). Put single or double quotes around any value with spaces. <br />  `soda scan -v start=2020-04-12 warehouse.yml tables/orders.yml` |
 | `-t TEXT` or<br /> `--time TEXT` | Replace `TEXT` with a scan time in ISO8601 format. Refer to [Overwrite scan output in Soda Cloud](#overwrite-scan-output-in-soda-cloud) for details. <br /> `soda scan -t 2021-04-28T09:00:00+02:00 warehouse.yml tables/orders.yml` |
 | `--offline` | Use this option to prevent Soda SQL from sending scan results to Soda Cloud. <br /> `soda scan --offline warehouse.yml tables/orders.yml` |
-| `-ni` or<br /> `--non-interactive` | Use this option to prevent Soda SQL from performinig any confirmations before the scan so it can proceed immediately with the scan itself. <br /> `soda scan -ni warehouse.yml tables/orders.yml` |
+| `-ni` or<br /> `--non-interactive` | Use this option to prevent Soda SQL from performing any command-line confirmations before the scan so it can proceed immediately with the scan itself. For example, use `-ni` in conjuction with the `-t TEXT` option to prevent Soda SQL from asking, `Are you sure you wish to continue with the --time option? Press 'y' to continue.` before starting the scan.<br /> `soda scan -ni -t 2021-04-28T09:00:00+02:00 warehouse.yml tables/orders.yml` |
 
 
 ## Schedule a scan in Soda Cloud
