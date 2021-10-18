@@ -16,7 +16,7 @@ parent: Soda
 
 * New documentation to accompany the new feature to [disable]({% link soda-cloud/display-samples.md %}#disable-sample-data) or [reroute]({% link soda-sql/samples.md %}#reroute-sample-data-for-a-dataset) sample data to Soda Cloud.
 
-#### Septemeber 30, 2021
+#### September 30, 2021
 
 * New documentation to accompany the release of [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}).
 
