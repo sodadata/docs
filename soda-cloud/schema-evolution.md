@@ -15,7 +15,9 @@ In Soda Cloud, you can create a monitor that automatically detects changes in yo
 
 ## Use a schema evolution monitor
 
-To create a schema evolution monitor, you must be an Admin of the organization, or have a Manager or Editor role for the monitor's dataset. See [Roles and rights]({% link soda-cloud/roles-and-rights.md %}) for details. 
+Soda Cloud automatically adds a schema evolution monitor to every new dataset you onboard using Soda SQL. In other words, when you use Soda SQL to connect to a new data source, then run `soda analyze` to discover all of its datasets, Soda SQL sends the dataset information to your Soda Cloud account. Soda Cloud then automatically creates a new schema evolution monitor for each of the datasets in your data source.
+
+To manually create a schema evolution monitor, you must be an Admin of the organization, or have a Manager or Editor role for the monitor's dataset. See [Roles and rights]({% link soda-cloud/roles-and-rights.md %}) for details. 
 
 1. Note that you can create only one Schema Evolution monitor per dataset. Follow the workflow in Soda Cloud to [create a new monitor]({% link soda-cloud/monitors.md %}) and, when prompted, select **Schema Evolution** as the **Monitor Type**. 
 2. Complete the monitor creation flow, including the type of alert, Warning or Critical, that you wish to associate with each schema evolution event: column(s) added, column(s) removed, and column(s) changed.
