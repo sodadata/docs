@@ -316,9 +316,7 @@ sql_metrics:
 
 ### GROUP BY queries in custom metrics
 
-If your SQL query uses a `GROUP BY` clause, you can use a **`group_by`** property in your custom metrics to instruct Soda SQL to run each test against each group combination. The example below runs each of the four tests against each country in the dataset.
-
-Set the `group_property` as in the example below.
+If your SQL query uses a `GROUP BY` clause, you can use a `group_fields` property in your custom metrics to instruct Soda SQL to run each test against each group combination. The example below runs each of the four tests against each country in the dataset.
 
 ```yaml
 table_name: mytable
