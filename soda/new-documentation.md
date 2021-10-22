@@ -10,11 +10,11 @@ parent: Soda
 
 #### October 18, 2021
 
-* New documentation to accompany the new [Schema Evolution Monitor]({% link soda-cloud/schema-evolution.md %}) in Soda Cloud. Use this monitor type to get notifications when columns are changed, added, or deleted in your dataset. 
+* New documentation to accompany the new [Schema Evolution Monitor]({% link soda-cloud/schema-evolution.md %}) in Soda Cloud. Use this monitor type to get notifications when columns are changed, added, or deleted in your dataset.
 
 #### October 17, 2021
 
-* New documentation to accompany the new feature to [disable]({% link soda-cloud/display-samples.md %}#disable-sample-data) or [reroute]({% link soda-sql/samples.md %}#reroute-sample-data-for-a-dataset) sample data to Soda Cloud.
+* New documentation to accompany the new feature to [disable]({% link soda-sql/samples.md %}#disable-sample-data) or [reroute]({% link soda-sql/samples.md %}#reroute-sample-data-for-a-dataset) sample data to Soda Cloud.
 
 #### September 30, 2021
 
@@ -31,23 +31,23 @@ parent: Soda
 
 #### September 9, 2021
 
-* Published documentation for [time partitioning]({% link soda-cloud/time-partitioning.md %}), [column metrics]({% link soda-cloud/display-column-metrics.md %}), and [sample data]({% link soda-cloud/display-samples.md %}) in Soda Cloud.
+* Published documentation for _time partitioning_, _column metrics_, and _sample data_ in Soda Cloud.
 
 #### September 1, 2021
 
-* Added information for new command options included in Soda CLI version 2.1.0b15 for 
-    * [limiting the datasets that Soda SQL analyzes]({% link soda-sql/configure.md %}#add-analyze-options), 
-    * [preventing Soda SQL from sending scan results]({% link soda/scan.md %}#add-scan-options) to Soda Cloud after a scan, and 
-    * [instructing Soda SQL to skip confirmations]({% link soda/scan.md %}#add-scan-options) before running a scan. 
+* Added information for new command options included in Soda CLI version 2.1.0b15 for
+    * [limiting the datasets that Soda SQL analyzes]({% link soda-sql/configure.md %}#add-analyze-options),
+    * [preventing Soda SQL from sending scan results]({% link soda/scan.md %}#add-scan-options) to Soda Cloud after a scan, and
+    * [instructing Soda SQL to skip confirmations]({% link soda/scan.md %}#add-scan-options) before running a scan.
 * Added information about how to use a new option, [`account_info_path`]({% link soda/warehouse_types.md %}#gcp-big-query), to direct Soda SQL to your Big Query service account JSON key file for configuration details.
 
 #### August 31, 2021
 
-* Added documentation for the feature that allows you to [include or exclude specific datasets]({% link soda-sql/configure.md %}#add-analyze-options) in your `soda analyze` command. 
+* Added documentation for the feature that allows you to [include or exclude specific datasets]({% link soda-sql/configure.md %}#add-analyze-options) in your `soda analyze` command.
 
 #### August 30, 2021
 
-* Updated content and changed the name of **Data monitoring** documentation to **[Data quality]({% link soda/data-monitoring.md %})**. 
+* Updated content and changed the name of **Data monitoring** documentation to **[Data quality]({% link soda/data-monitoring.md %})**.
 
 #### August 23, 2021
 
@@ -56,12 +56,12 @@ parent: Soda
 #### August 9, 2021
 
 * Added details for Apache Spark support. See [Install Soda SQL]({% link soda-sql/installation.md %}#compatibility).
-* Updated [Adjust a dataset scan schedule]({% link soda-cloud/dataset-scan-schedule.md %}#trigger-a-scan-externally) to include details instructions for triggering a Soda scan externally.
+* Updated _Adjust a dataset scan schedule_ to include details instructions for triggering a Soda scan externally.
 
 #### August 2, 2021
 
 * Added new document to ouline the [Support]({% link soda/support.md %}) that Soda provides its users and customers.
-* Updated [Big Query]({% link soda/warehouse_types.md %}#gcp-big-query) data source configuration to include `auth_scopes`. 
+* Updated [Big Query]({% link soda/warehouse_types.md %}#gcp-big-query) data source configuration to include `auth_scopes`.
 
 
 #### July 29, 2021
@@ -89,7 +89,7 @@ parent: Soda
 
 * New [Add datasets]({% link soda-cloud/add-datasets.md %}) documentation for the newly launched feature that enables your to connect to data sources and add datasets directly in Soda Cloud.
 * New [Collaborate on data monitoring]({% link soda-cloud/collaborate.md %}) documentation that incorporates how to integrate with Slack, and how to include your team in your efforts to monitor your data.
-* New [Adjust a dataset scan schedule]({% link soda-cloud/dataset-scan-schedule.md %}) content to help you refine how often Soda scans a particular dataset.
+* New _Adjust a dataset scan schedule_ content to help you refine how often Soda scans a particular dataset.
 * Revised [Quick start tutorial for Soda Cloud]({% link soda-cloud/quick-start.md %}) that incorporates the new feature to add datasets.
 * Improved Soda product overview page with a [comparison chart]({% link soda/product-overview.md %}#compare-features-and-functionality) for features and functionality.
 

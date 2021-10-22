@@ -18,7 +18,7 @@ In the context of Soda Cloud, a data source is a storage location that contains 
 
 All the instructions in this tutorial reference this sample data source.
 
-1. Ensure the Docker app is running, then, from your command-line interface, execute the following to build a containerized PostgreSQL warehouse. 
+1. Ensure the Docker app is running, then, from your command-line interface, execute the following to build a containerized PostgreSQL warehouse.
 ```shell
 docker run --name soda_sql_tutorial_db --rm -d \
     -p 5432:5432 \
@@ -37,7 +37,7 @@ docker exec soda_sql_tutorial_db \
 
 ## Sign up and add datasets
 
-All the instructions in this tutorial reference a PostgreSQL data source, but you can use your own [data source]({% link soda/glossary.md %}#data-source) for this tutorial. Connect to any of the following Soda-compatible data sources to which you have access. 
+All the instructions in this tutorial reference a PostgreSQL data source, but you can use your own [data source]({% link soda/glossary.md %}#data-source) for this tutorial. Connect to any of the following Soda-compatible data sources to which you have access.
 
 <table>
   <tr>
@@ -47,20 +47,7 @@ All the instructions in this tutorial reference a PostgreSQL data source, but yo
 </table>
 
 1. If you have not already done so, create a free Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>. You, as the first user in your organization to sign up for a Soda Cloud account, become the account's **Admin** by default. Learn more about [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}). An Admin role is necessary to complete this tutorial.
-2. In Soda Cloud, navigate to **Datasets**, then click **Add Datasets** and follow the guided steps to connect a data source. As reference, use the following input values for the **Connection Details** for a PostgreSQL data source. 
-* Data source name: `demodata`
-* Data source type: `PostgreSQL`
-* Host: `localhost`
-* Username: `sodasql` <sup>1</sup>
-* Password: `Eg abc123` <sup>1</sup>
-* Database: `sodasql`
-* Schema: `public`
-3. Click **Next** to access **Import Settings**. In this panel, you have the option to instruct Soda Cloud to automatically discover new [datasets]({% link soda/glossary.md %}#dataset) as they are added to your data source, and/or define filters to limit the data Soda Cloud scans. For this tutorial, click **Next** to skip ahead. 
-4. Define the default **Scan Schedule** for all datasets in your data source. Set the values to scan the data source every hour, starting at the top of the next hour in your time zone, then **Save**. <br />For this tutorial, you are setting the schedule to run as soon as possible after you have completed this step. When Soda Cloud runs the scheduled scan, it automatically discovers all the datasets in the data source (such as all the tables in a PostgreSQL warehouse) and makes the details available to you so that you can create a new monitor.
-
-Refer to [Add datasets in Soda Cloud]({% link soda-cloud/add-datasets.md %}) for further details.
-
-<sup>1</sup> Stored in a secure database; password is encrypted.
+2. [Add your first dataset to Soda Cloud]({% link soda-cloud/add-datasets.md %}).
 
 ## Integrate with Slack
 
@@ -72,11 +59,11 @@ If you do not use Slack, Soda Cloud notifies you and any [teammates you invite](
 
 ## Create a monitor and alert
 
-After Soda Cloud completes its first scheduled scan of your data source, you can use the data and metadata it collected, such as column names and data types, to create a monitor and alert. 
+After Soda Cloud completes its first scheduled scan of your data source, you can use the data and metadata it collected, such as column names and data types, to create a monitor and alert.
 
 Note that Soda Cloud also automatically created a **row count anomaly detection monitor** for each dataset that contains time-series data. This enables Soda Cloud to start learning row count patterns in your dataset over the course of the next few scheduled scans and surface anything it recognizes as anomalous. See [anomaly detection]({% link soda-cloud/anomaly-detection.md %}) for details.
 
-For a new monitor, you define several details including which data to test, what tests to run, and whom to notify when bad data triggers an alert. 
+For a new monitor, you define several details including which data to test, what tests to run, and whom to notify when bad data triggers an alert.
 
 1. In Soda Cloud, navigate to the **Monitors** dashboard, then click the stacked dots to **Create Monitor**. Select the type `Metric`, then follow the guided steps to complete the setup. Use the following input values for reference.
 * Dataset: `demodata`
