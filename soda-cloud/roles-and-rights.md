@@ -104,7 +104,6 @@ There are two ownership roles in Soda Cloud that identify the user that owns a d
 
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * [Invite team members]({% link soda-cloud/collaborate.md %}#invite-your-team-members) to join your organization's Soda Cloud account.
-* Learn how to [add a dataset]({% link soda-cloud/add-datasets.md %}) to your Soda Cloud account.
 <br />
 
 ---

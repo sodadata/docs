@@ -27,7 +27,7 @@ In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked
 
 | Field or Label  | Description |
 | -----------------  | ----------- |
-| Dataset | A dataset is a tabular data structure with rows and columns, such as a table in a database. Select the dataset that contains the data you wish to test. You can create monitors for datasets you added [via Soda Cloud]({% link soda-cloud/add-datasets.md %}) or datasets you added [using Soda SQL]({% link soda-sql/configure.md %}).|
+| Dataset | A dataset is a tabular data structure with rows and columns, such as a table in a database. Select the dataset that contains the data you wish to test. You can create monitors for datasets you added [using Soda SQL]({% link soda-sql/configure.md %}).|
 | Filters | Use filters to limit the amount of data that Soda Cloud tests during a scan of your dataset.<br /> For example, you can use a filter to instruct Soda Cloud to apply this monitor's tests *only* to rows in which the value of the `country` column is `FRA`. When it runs its next scheduled scan of your dataset, Soda Cloud executes this monitor's tests only against the data that meets the filter criteria instead of scanning an entire dataset. Refer to [Apply filters]({% link soda-sql/filtering.md %}) to learn more.
 | Filter 1 | Select the values from the dropdowns for the column, operator, and value that will narrow the scope of data that Soda Cloud tests during its scan. |
 | Filter logic | Use `AND`, `OR`, or `NOT` to dictate how Soda Cloud should apply the filters you have defined (Filter 1, Filter 2, etc). For example, to instruct Soda SQL to run tests against only those rows which match the criteria of two filters you created, enter `1 AND 2`. |
