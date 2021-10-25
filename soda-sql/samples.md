@@ -2,7 +2,7 @@
 layout: default
 title: Send sample data
 parent: Soda Cloud
-redirect_from: 
+redirect_from:
 - /soda-sql/documentation/samples.html
 - /soda-cloud/samples.html
 ---
@@ -10,8 +10,6 @@ redirect_from:
 # Send sample data to Soda Cloud
 
 When creating new [monitors]({% link soda/glossary.md %}#monitor) in Soda Cloud, you may find it useful to review sample data from your [dataset]({% link soda/glossary.md %}#dataset) to help you determine the kinds of [tests]({% link soda-sql/tests.md %}) to run when Soda SQL scans your data; see the image below. For this reason, you may wish to configure a `samples` [configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) in Soda SQL.
-
-Alternatively, you can **Enable Sample Data** directly in your Soda Cloud account. Refer to [Display sample data]({% link soda-cloud/display-samples.md %}) for details.
 
 ![sample-data](/assets/images/sample-data.png){:height="650px" width="650px"}
 
@@ -37,7 +35,7 @@ metrics:
   - missing_count
   - missing_percentage
   - values_count
-  ... 
+  ...
 samples:
   table_limit: 50
 tests:
@@ -55,9 +53,9 @@ The snippet below displays the CLI output of the query that counts the rows in t
 
 ```shell
   | ...
-  | Executing SQL query: 
-SELECT * 
-FROM "public"."orders" 
+  | Executing SQL query:
+SELECT *
+FROM "public"."orders"
 LIMIT 50;
   | SQL took 0:00:00.074957
   | Sent sample orders.sample (50/193) to Soda Cloud
@@ -74,7 +72,7 @@ Alternatively, you can prevent Soda SQL from sending metadata or samples to Soda
 * To prevent Soda SQL from sending an individual dataset's scan results or samples to Soda Cloud, use the [`--offline` option]({% link soda/scan.md %}#add-scan-options) when you run a scan.
 * To prevent Soda SQL from sending specific column scan results or samples, configure an [`excluded_columns` configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) in your scan YAML file.
 
-### Reroute sample data for a dataset 
+### Reroute sample data for a dataset
 
 Use a `SampleProcessor` to programmatically send a dataset's samples to a secure location within your organization's infrastructure, such as an Amazon S3 bucket or Google Big Query. Note that you can only configure sample data rerouting for individual datasets, and only for those scans that you have [scheduled programmatically]({% link soda-sql/programmatic_scan.md %}). In Soda Cloud, users looking for sample data see the message you define advising them where they can access and review sample data for the dataset.
 
@@ -116,7 +114,7 @@ scan_result = scan_builder.build().execute()
 
 #### Reroute to Google Big Query using existing credentials
 
-This configuration uses the Big Query access credentials that Soda SQL uses. These credentials must have the appropriate service account and scopes in Big Query which give Soda SQL write permission on the table. 
+This configuration uses the Big Query access credentials that Soda SQL uses. These credentials must have the appropriate service account and scopes in Big Query which give Soda SQL write permission on the table.
 
 First, configure a `SampleProcessor` according to the following example. Note that the `client` parameter points to different objects for different warehouses.
 ```python
@@ -149,7 +147,7 @@ scan_result = scan_builder.build().execute()
 
 #### Reroute to Google Big Query using separate credentials
 
-This configuration *does not* use the Big Query access credentials that Soda SQL uses. The separate credentials must have the appropriate service account and scopes in Big Query which give Soda SQL write permission on the table. 
+This configuration *does not* use the Big Query access credentials that Soda SQL uses. The separate credentials must have the appropriate service account and scopes in Big Query which give Soda SQL write permission on the table.
 
 First, configure a `SampleProcessor` according to the following example. Note that the `client` parameter points to different objects for different warehouses.
 ```python
@@ -199,7 +197,6 @@ scan_builder.sample_processor = BigQuerySampleProcessor()
 - Read more about [failed row]({% link soda-cloud/failed-rows.md %}) samples in Soda Cloud.
 - <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a free Soda Cloud account.
 - [Create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
-- Learn how to display [sample data]({% link soda-cloud/display-samples.md %}) for datasets in Soda Cloud.
 - Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
 - Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 

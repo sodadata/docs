@@ -16,10 +16,10 @@ By default, Soda Cloud scans all the data in your [datasets]({% link soda/glossa
 
 ## Go further
 
-* Learn more about [adding datasets]({% link soda-cloud/add-datasets.md %}) to your Soda Cloud account.
-* Learn how to adjust the [scan schedule]({% link soda-cloud/dataset-scan-schedule.md %}) for individual datasets.
-* Learn how to display [sample data]({% link soda-cloud/display-samples.md %}) for individual datasets.
-* Learn how to display [column metrics]({% link soda-cloud/display-column-metrics.md %}) for datasets.
+* Learn more about adding datasets to your Soda Cloud account.
+* Learn how to adjust the scan schedule for individual datasets.
+* Learn how to display sample data for individual datasets.
+* Learn how to display column metrics for datasets.
 * [Create monitors and alerts]({% link soda-cloud/monitors.md %}) in Soda Cloud.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

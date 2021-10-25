@@ -69,22 +69,16 @@
     page: soda-sql/custom-metric-templates.md
 
 - title: Soda Cloud
-  page: soda-cloud/add-datasets.md
+  page: soda-cloud/roles-and-rights.md
   subcategories:
   - subtitle: Roles and rights
     page: soda-cloud/roles-and-rights.md
-  - subtitle: Add datasets
-    page: soda-cloud/add-datasets.md
   - subtitle: Collaborate on data monitoring
     page: soda-cloud/collaborate.md
   - subtitle: Create monitors and alerts
     page: soda-cloud/monitors.md
-  - subtitle: Adjust a dataset scan schedule
-    page: soda-cloud/dataset-scan-schedule.md
   - subtitle: Display column metrics
     page: soda-cloud/display-column-metrics.md
-  - subtitle: Define time partitioning for dataset scans
-    page: soda-cloud/time-partitioning.md
   - subtitle: Display sample data
     page: soda-cloud/display-samples.md
   - subtitle: Detect anomalies
@@ -93,8 +87,6 @@
     page: soda-cloud/schema-evolution.md
   - subtitle: Examine failed rows
     page: soda-cloud/failed-rows.md
-  - subtitle: Edit data source settings
-    page: soda-cloud/edit-data-source.md
   - subtitle: Soda Cloud architecture
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Single sign-on with Soda Cloud

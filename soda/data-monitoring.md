@@ -30,7 +30,7 @@ Having set up a data catalog and started testing and monitoring your data, you c
 
 **Soda SQL** and **Soda Cloud** squarely address the challenges in testing, monitoring, profiling, and gaining observability into your data. Use built-in metrics to define tests in Soda SQL or Soda Cloud that test data against quality thresholds and surface issues that occur throughout your data pipeline. Integrate Soda scans with your existing data orchestration tools to test your data at regular intervals and before or after events such as a transformation.
 
-Use Soda Cloud to monitor and automatically detect anomalies in your data, and to notify your DevOps or Data Quality teams when bad data triggers an alert. Set a scan schedule in Soda Cloud that performs routine checks that "take the pulse" of data in your systems to gauge its health. Tag your datasets and add descriptions to monitors in Soda Cloud to make it easier for colleagues to locate and leverage the right data. Soda tools help you maintain healthy, good-quality data that is ready for teams throughout your organization to trust and use to make informed decisions.
+Use Soda Cloud to monitor and automatically detect anomalies in your data, and to notify your DevOps or Data Quality teams when bad data triggers an alert. Set a scan schedule for Soda SQL to perform routine checks that "take the pulse" of data in your systems to gauge its health. Tag your datasets and add descriptions to monitors in Soda Cloud to make it easier for colleagues to locate and leverage the right data. Soda tools help you maintain healthy, good-quality data that is ready for teams throughout your organization to trust and use to make informed decisions.
 
 
 ## Go further

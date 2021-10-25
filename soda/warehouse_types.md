@@ -7,7 +7,7 @@ redirect_from: /soda-sql/documentation/warehouse_types.html
 
 # Data source configurations
 
-Soda SQL and Soda Cloud need connection details in order to access your [data source]({% link soda/glossary.md %}#data-source) to scan your data. Each type of data source uses different configuration parameters. To set the data source configurations in your [warehouse YAML]({% link soda-sql/warehouse.md %}) or when adding new dataset in Soda Cloud, use the following example configurations that correspond to each kind of data source that Soda SQL and Soda Cloud support.
+Soda SQL needs connection details in order to access your [data source]({% link soda/glossary.md %}#data-source) to scan your data. Each type of data source uses different configuration parameters. To set the data source configurations in your [warehouse YAML]({% link soda-sql/warehouse.md %}), use the following example configurations that correspond to each kind of data source that Soda SQL supports.
 
 {% include nat-gateway.md %}
 

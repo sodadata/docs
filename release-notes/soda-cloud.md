@@ -2,6 +2,11 @@
 layout: default
 title: Release notes for Soda Cloud
 parent: Release notes
+redirect_from:
+  - /soda-cloud/time-partitioning.html
+  - /soda-cloud/add-datasets.html
+  - /soda-cloud/dataset-scan-schedule.html
+  - /soda-cloud/edit-data-source.html
 ---
 
 # Release notes for Soda Cloud
