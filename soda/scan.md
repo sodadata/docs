@@ -15,7 +15,6 @@ Soda SQL uses the input in the scan YAML file and Soda Cloud monitors to prepare
 [Scan output in Soda SQL](#scan-output-in-soda-sql)<br />
 [Programmatically use scan output](#programmatically-use-scan-output)<br />
 [Add scan options](#add-scan-options)<br />
-[Schedule a scan in Soda Cloud](#schedule-a-scan-in-soda-cloud)<br />
 [Scan output in Soda Cloud](#scan-output-in-soda-cloud)<br />
 [Overwrite scan output in Soda Cloud](#overwrite-scan-output-in-soda-cloud)<br />
 [Go further](#go-further)<br />
@@ -67,7 +66,7 @@ Whether you defined your tests in your [scan YAML file]({% link soda-sql/scan-ya
 
 ![monitor-results](/assets/images/monitor-results.png){:height="550px" width="550px"}
 
-Soda Cloud uses Soda SQL in the background to run scheduled scans. Soda SQL uses a secure API to connect to Soda Cloud. When it completes a scan, Soda SQL:
+Soda SQL uses a secure API to connect to Soda Cloud. When it completes a scan, Soda SQL:
 1. pushes the results of any tests you configured in the scan YAML file to Soda Cloud
 2. fetches tests associated with any monitors you created in Soda Cloud, then executes the tests and pushes the test results to Soda Cloud
 

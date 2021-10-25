@@ -33,9 +33,9 @@ Get started with the [Quick start tutorial for Soda Cloud]({% link soda-cloud/qu
 
 | ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="120px" width="120px"} | ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="150px" width="150px"} |
 |--------| ---------|
-|Connect to a data source using a [warehouse YAML file]({% link soda-sql/warehouse.md %}) and an [env_vars YAML file]({% link soda-sql/warehouse.md %}#env_vars-yaml-file)| Connect to a data source via [Add Datasets]({% link soda-cloud/add-datasets.md %})|
-|Edit connection details in a warehouse YAML file| Edit data source connection and import details |
-|Discover datasets of a newly-connected data source using the [`soda analyze` <br />CLI command]({% link soda-sql/cli.md %})| Discover datasets of a newly-connected data source during the [first scheduled scan]({% link soda-cloud/add-datasets.md %}#after-the-first-scan) |
+|Connect to a data source using a [warehouse YAML file]({% link soda-sql/warehouse.md %}) and an [env_vars YAML file]({% link soda-sql/warehouse.md %}#env_vars-yaml-file)|  |
+|Edit connection details in a warehouse YAML file|   |
+|Discover datasets of a newly-connected data source using the [`soda analyze` <br />CLI command]({% link soda-sql/cli.md %})|   |
 |Define new [tests]({% link soda-sql/tests.md %}) in the [scan YAML file]({% link soda-sql/scan-yaml.md %}) only for datasets you added via Soda SQL. | Define new tests when you [create new monitors]({% link soda-cloud/monitors.md %}#2-monitor) for datasets you added via Soda Cloud or Soda SQL |
 |Edit existing tests in the scan YAML file| Edit the tests in existing monitors |
 | Use [dataset metrics]({% link soda-sql/sql_metrics.md %}#dataset-metrics) in the scan YAML file | Use [dataset metrics]({% link soda/metrics.md %}#dataset-metrics) when creating a new monitor |

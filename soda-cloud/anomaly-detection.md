@@ -30,7 +30,9 @@ For example, if the test you define in your monitor measures the row count of on
 
 To use anomaly detection, you must be an Admin of the organization, or have a Manager or Editor role for the monitor's dataset. See [Roles and rights]({% link soda-cloud/roles-and-rights.md %}) for details.
 
-Follow the steps to [create a new monitor]({% link soda-cloud/monitors.md %}) and select **Anomaly Detection** as the **Evaluation Type** in step two of the create flow. Beyond that, you do not need to specify any other details about your data; Soda Cloud automatically begins learning about your data and triggering alerts when Soda scans reveal anomalies.
+Note that when Soda SQL first pushes scan results to your [connected Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}), Soda Cloud automtically creates an anomaly detection monitor for each dataset that contains time-series data. 
+
+To manually add an anomaly detection monitor, follow the steps to [create a new monitor]({% link soda-cloud/monitors.md %}) and select **Anomaly Detection** as the **Evaluation Type** in step two of the creation flow. Beyond that, you do not need to specify any other details about your data; Soda Cloud automatically begins learning about your data and triggering alerts when Soda scans reveal anomalies.
 
 When you access the **Monitors** dashboard to review the monitor's test results, the chart that displays the time-series data and its anomalies gives you the opportunity to manually provide feedback on an anomalous measurement. Your feedback on the accuracy of the calculated anomaly helps the algorithm to adapt its recognition of exceptions and deviations, and refine its thresholds for triggering alerts.
 

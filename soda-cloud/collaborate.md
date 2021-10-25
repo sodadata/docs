@@ -15,8 +15,6 @@ One of the main benefits of using Soda Cloud is the ability to collaborate with 
 
 As an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, integrate your Slack workspace in your **Soda Cloud** account so that Soda Cloud can send Slack notifications to your team when a data issue triggers an [alert]({% link soda/glossary.md %}#alert).
 
-![integrate slack](/assets/images/onboarding-integrate-slack.png){:width="350px"}
-
 1. In Soda Cloud, navigate to **your avatar** > **Organization Settings** > **Integrations**, then follow the guided steps to authorize Soda Cloud to connect to your Slack workspace.
 2. Select the all Slack channels to which your team might send notifications when Soda finds an issue with your data, then **Save**.
 
@@ -42,7 +40,6 @@ Collaborating as a team on Soda Cloud means you can quickly share the lastest te
 
 ## Go further
 
-* Next step in Soda Cloud Onboarding: [Create a monitor and alert]({% link soda-cloud/monitors.md %})
 * [Connect]({% link soda-cloud/connect_to_cloud.md %}) Soda SQL to your Soda Cloud account.
 * [Create an alert]({% link soda-cloud/monitors.md %}) to send Slack notifications when a scan surfaces a data issue.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

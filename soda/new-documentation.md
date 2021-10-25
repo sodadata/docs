@@ -8,6 +8,10 @@ parent: Soda
 
 <br />
 
+#### October 25, 2021
+
+* Removed the feature to Add datasets directly in Soda Cloud. Instead, users [add datasets using Soda SQL]({% link soda-sql/configure.md %}).
+
 #### October 18, 2021
 
 * New documentation to accompany the new [Schema Evolution Monitor]({% link soda-cloud/schema-evolution.md %}) in Soda Cloud. Use this monitor type to get notifications when columns are changed, added, or deleted in your dataset.
@@ -87,7 +91,7 @@ parent: Soda
 
 #### July 13, 2021
 
-* New [Add datasets]({% link soda-cloud/add-datasets.md %}) documentation for the newly launched feature that enables your to connect to data sources and add datasets directly in Soda Cloud.
+* New Add datasets documentation for the newly launched feature that enables your to connect to data sources and add datasets directly in Soda Cloud.
 * New [Collaborate on data monitoring]({% link soda-cloud/collaborate.md %}) documentation that incorporates how to integrate with Slack, and how to include your team in your efforts to monitor your data.
 * New _Adjust a dataset scan schedule_ content to help you refine how often Soda scans a particular dataset.
 * Revised [Quick start tutorial for Soda Cloud]({% link soda-cloud/quick-start.md %}) that incorporates the new feature to add datasets.

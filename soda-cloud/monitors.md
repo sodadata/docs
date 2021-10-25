@@ -9,12 +9,11 @@ redirect_from: /soda-sql/documentation/monitors.html
 
 A **monitor** is a set of details you define in Soda Cloud which Soda uses when it runs a scan. Log in to **Soda Cloud** to create monitors, and customize [alerts]({% link soda/glossary.md %}#alert) that send [notifications]({% link soda/glossary.md %}#notification) to your team when a [scan]({% link soda/glossary.md %}#scan) surfaces data issues.
 
-![onboarding-monitors-alerts](/assets/images/onboarding-monitors-alerts.png){:width="350px"}
 
 ## Prerequisites
 
-* An [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account has connected a [data source]({% link soda/glossary.md %}#data-source) and [added datasets]({% link soda-cloud/add-datasets.md %}) to your Soda Cloud account so that Soda has access to the data you wish to monitor. If you are a Soda SQL user and have connected it to your Soda Cloud account, you can [add datasets via Soda SQL]({% link soda-sql/configure.md %}#configuration-instructions) if you prefer.
-* Soda Cloud has executed at least one [scheduled scan]({% link soda-cloud/add-datasets.md %}#import-settings) of your data source to discover all of its datasets. If you are a Soda SQL user and have connected it to your Soda Cloud account, you can use the `soda analyze` command to discover datasets if you prefer. Refer to [Configure Soda SQL]({% link soda-sql/configure.md %}) for details.
+* An [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account has connected it to a configured local instance of Soda SQL. Learn more about [adding datasets via Soda SQL]({% link soda-sql/configure.md %}#configuration-instructions).
+* Soda SQL has executed at least one scan of your data source to discover all of its datasets. If you are a Soda SQL user and have connected it to your Soda Cloud account, you can use the `soda analyze` command to discover datasets. Refer to [Configure Soda SQL]({% link soda-sql/configure.md %}) for details.
 * You are an Admin in your Soda Cloud account, or have a Manager or Editor role for the dataset for which you wish to create a monitor. See [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) for details.
 * (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud can send notifications via email.
 
@@ -22,7 +21,7 @@ A **monitor** is a set of details you define in Soda Cloud which Soda uses when 
 
 For a new monitor, you define several details including which data to test, what tests to run, and whom to notify when bad data triggers an alert.
 
-In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked dots to **Create Monitor**. Select the type `Metric`, then follow the guided steps to complete the setup. Use the tables below for reference when completing the steps.
+In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked dots to **Create Monitor**. Select the type `Metric`, then follow the guided steps to complete the setup. Use the tables below for reference when completing the steps. If you select the type `Schema Evaluation`, refer to the [Monitor schema evolution]({% link soda-cloud/schema-evolution.md %}) instructions for details. 
 
 #### 1. Dataset
 
@@ -94,7 +93,7 @@ Read more about **[Validity rules]({% link soda/metrics.md %}#column-configurati
 
 ## Run a scan
 
-1. When you have completed the guided steps to create a monitor, run a next Soda SQL scan of your [Soda Cloud connected dataset]({% link soda-cloud/connect_to_cloud.md %}).
+1. When you have completed the guided steps to create a monitor, run a next Soda SQL scan on the dataset associated with the monitor.
 2. After the Soda SQL scan completes, return to **Monitor Results** in Soda Cloud and refresh your browser. Click the monitor you created to access details of the scan results.
 3. Check your Slack channel or email inbox; when a scan surfaces data that triggers your alert(s), Soda Cloud sends notifications according to the settings you defined when you created the monitor.
 

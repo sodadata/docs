@@ -69,12 +69,10 @@
     page: soda-sql/custom-metric-templates.md
 
 - title: Soda Cloud
-  page: soda-cloud/add-datasets.md
+  page: soda-cloud/roles-and-rights.md
   subcategories:
   - subtitle: Roles and rights
     page: soda-cloud/roles-and-rights.md
-  - subtitle: Add datasets
-    page: soda-cloud/add-datasets.md
   - subtitle: Collaborate on data monitoring
     page: soda-cloud/collaborate.md
   - subtitle: Create monitors and alerts
