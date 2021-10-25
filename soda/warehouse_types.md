@@ -328,6 +328,9 @@ connection:
     private_key: 
     private_key_path: '/path/to/private_key/key.p8'
     authenticator: snowflake
+session_parameters:
+    QUERY_TAG: soda-queries
+    QUOTED_IDENTIFIERS_IGNORE_CASE: false
 ```
 
 | Property | Required | Notes |
@@ -343,6 +346,8 @@ connection:
 | private_key | optional | See [Private key authentication](#private-key-authentication) section below.|
 | private_key_path | optional | Example: `private_key_path: '/path/to/private_key/key.p8'` |
 | authenticator | optional | Default value is `snowflake`. See <a href="https://docs.snowflake.com/en/user-guide/snowsql-start.html#authenticator" target="_blank"> Snowflake documentation</a>. |
+| QUERY_TAG | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag" target="_blank">QUERY_TAG</a> in Snowflake documentation. |
+| QUOTED_IDENTIFIERS_IGNORE_CASE | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#quoted-identifiers-ignore-case" target="_blank">QUOTED_IDENTIFIERS_IGNORE_CASE</a> in Snowflake documentation. |
 
 
 ### Private key authentication
