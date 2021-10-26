@@ -8,6 +8,10 @@ parent: Soda
 
 <br />
 
+### October 27, 2021
+
+* New documentation to accompany the new [historic metrics]({% link soda/metrics.md %}#historic-metrics). This type of metric enables you to use Soda SQL to access the stored measurements in Soda Cloud and write tests that use those stored measurements.
+
 #### October 25, 2021
 
 * Removed the feature to Add datasets directly in Soda Cloud. Instead, users [add datasets using Soda SQL]({% link soda-sql/configure.md %}).
