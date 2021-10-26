@@ -11,6 +11,7 @@ parent: Soda
 #### October 25, 2021
 
 * Removed the feature to Add datasets directly in Soda Cloud. Instead, users [add datasets using Soda SQL]({% link soda-sql/configure.md %}).
+* Added support for [Snowflake session parameter configuration]({% link soda/warehouse_types.md %}#snowflake) in the warehouse YAML file. 
 
 #### October 18, 2021
 
