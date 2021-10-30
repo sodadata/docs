@@ -8,6 +8,10 @@ parent: Soda
 
 <br />
 
+#### October 29, 2021
+
+* Added SSO identity providers to the list of third-party IdPs to which you can add Soda Cloud as a service provider.
+
 #### October 25, 2021
 
 * Removed the feature to Add datasets directly in Soda Cloud. Instead, users [add datasets using Soda SQL]({% link soda-sql/configure.md %}).
