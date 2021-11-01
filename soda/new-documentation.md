@@ -8,9 +8,6 @@ parent: Soda
 
 <br />
 
-### October 27, 2021
-
-* New documentation to accompany the new [historic metrics]({% link soda/metrics.md %}#historic-metrics). This type of metric enables you to use Soda SQL to access the stored measurements in Soda Cloud and write tests that use those stored measurements.
 #### October 29, 2021
 
 * Added SSO identity providers to the list of third-party IdPs to which you can add Soda Cloud as a service provider.
