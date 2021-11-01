@@ -6,7 +6,7 @@ parent: Soda Cloud
 
 # Single sign-on with Soda Cloud
 
-Organizations that use a SAML 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider. 
+Organizations that use a Security Assertion Markup Language (SAML) 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider. 
 
 Once added, employees of the organization can gain authorized and authenticated access to the organization's Soda Cloud account by successfully logging in to their SSO. This solution not only simplifies a secure login experience for users, it enables IT Admins to:
 
@@ -17,6 +17,12 @@ Soda Cloud is able to act as a service provider for any SAML 2.0 SSO identity pr
 
 * [Azure Active Directory](#add-soda-cloud-to-azure-ad)
 * [Okta](#add-soda-cloud-to-okta)
+
+Soda has tested and confirmed that SSO setup works with the following identity providers:
+
+* OneLogin
+* Auth0 
+* Google Cloud Identity Platform
 
 ## SSO access to Soda Cloud
 
