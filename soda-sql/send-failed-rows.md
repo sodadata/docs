@@ -98,11 +98,16 @@ Alternatively, you can prevent Soda SQL from sending metadata or samples to Soda
 * To prevent Soda SQL from sending an individual dataset's scan results or samples to Soda Cloud, use the [`--offline` option]({% link soda/scan.md %}#add-scan-options) when you run a scan.
 * To prevent Soda SQL from sending specific column scan results or samples, configure an [`excluded_columns` configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) in your scan YAML file.
 
-### Reroute failed row samples for a dataset 
+## Reroute failed row samples for a dataset 
 
-Use a `FailedRowsProcessor` to programmatically send a dataset's failed row samples to a secure location within your organization's infrastructure, such as an Amazon S3 bucket or Google Big Query. Note that you can only configure failed row sample rerouting for individual datasets, and only for those scans that you have [scheduled programmatically]({% link soda-sql/programmatic_scan.md %}). In Soda Cloud, users looking for failed row samples see the message you define advising them where they can access and review failed row samples for the dataset.
+Use a `FailedRowsProcessor` to programmatically send a dataset's failed row samples to a secure location within your organization's infrastructure, such as an Amazon S3 bucket or Google Big Query. In Soda Cloud, users looking for failed row samples see the message you define advising them where they can access and review failed row samples for the dataset.
+
+![failed-row-message](/assets/images/failed-row-message.png){:height="700px" width="700px"}
+
 
 #### Reroute to Amazon S3
+
+Note that you can only configure failed row sample rerouting for individual datasets, and only for those scans that you have [scheduled programmatically]({% link soda-sql/programmatic_scan.md %}). 
 
 First, configure the `FailedRowProcessor` according to the following example.
 
@@ -130,6 +135,7 @@ class S3FailedRowProcessor(FailedRowsProcessor):
     return {'message':
              f'Failed rows are saved to s3://{bucket_name}/{file_name}'}
 ```
+
 Then, configure the failed row processor in a scan builder as per the example below.
 ```python
 scan_builder.failed_row_processor = S3FailedRowProcessor()
@@ -138,6 +144,8 @@ scan_result = scan_builder.build().execute()
 <br />
 
 #### Reroute to Google Big Query using existing credentials
+
+Note that you can only configure failed row sample rerouting for individual datasets, and only for those scans that you have [scheduled programmatically]({% link soda-sql/programmatic_scan.md %}). 
 
 This configuration uses the Big Query access credentials that Soda SQL uses. These credentials must have the appropriate service account and scopes in Big Query which give Soda SQL write permission on the table. 
 
