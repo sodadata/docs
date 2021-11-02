@@ -1,8 +1,8 @@
 When you run a scan using Soda SQL, it displays the scan results in the command-line where you can review the results of tests that passed or failed. These results are ephemeral; Soda SQL does not store them. 
 
-If your Soda SQL instance is [connected to a Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}), Soda SQL also pushes the scan results to Soda Cloud where they appear in a table of **Monitor Results**. Soda Cloud stores the measurements resulting from each test Soda SQL executes against the data. It uses these stored measurements to display the metric's history in a graph that shows you changes over time.
+If your Soda SQL instance is [connected to a Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}), Soda SQL also pushes the scan results to Soda Cloud where they appear in a table of **Monitor Results**. Soda Cloud stores the measurements resulting from each test Soda SQL executes against the data in the Cloud Metric Store. It uses these stored measurements to display the metric's history in a graph that shows you changes over time.
 
-In Soda SQL, you can define historic metrics so that you can write tests in scan YAML files that test data relative to the stored measurements contained in Soda Cloud. Essentially, this type of metric allows you to use Soda SQL to access the stored measurements in Soda Cloud and write tests that use those stored measurements. 
+In Soda SQL, you can define historic metrics so that you can write tests in scan YAML files that test data relative to the historic measurements contained in the Cloud Metric Store. Essentially, this type of metric allows you to use Soda SQL to access the historic measurements in the Cloud Metric Store and write tests that use those historic measurements. 
 
 To use `historic_metrics`, refer to the following example scan YAML file and the table below.
 
@@ -54,3 +54,9 @@ columns:
 | `type`                   | required  | Identify the aggregation type.                      | `avg` <br /> `max` <br /> `min` <br /> `prev` |
 | `metric`                 | required  | Identify the metric from which to aggregate measurements. | `avg` <br /> `distinct` <br /> `duplicate_value` <br /> `valid_count` |
 | `count`                  | required  | Use with `avg`, `max`, or `min` to define the number of measurements to aggregate. <br /> <br /> Use with `prev` to define the number of previous measurements to count back to. For example, if the value is `7`, Soda Cloud counts back to the measurement that appeared as the result seven scans ago and uses that value as the historic measurement in the current test.| integer |
+
+#### Troubleshoot
+<br />
+**Problem:** When using an historic metric, you get an scan error message that advises you that there are insufficient measurements to complete the scan.
+
+**Solution:** The Cloud Metric Store does not contain enough historic measurements to execute the test you have defined. For example, if you defined a test to count back to the seventh historic measurement but your Cloud Metric Store only contains three historic measurements, Soda SQL cannot complete the scan. Consider lowering the count-back number in your test, then run the scan again.

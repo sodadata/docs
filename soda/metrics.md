@@ -18,7 +18,7 @@ There are four kinds of metrics Soda uses:
 * **[Dataset metrics](#dataset-metrics)** for tests that execute against an entire dataset
 * **[Column metrics](#column-metrics)** for tests that execute against an individual column
 * **[Custom metrics](#custom-metrics)**, also known as SQL metrics, enable you to define your own metric that you can use tests that execute against a dataset or a column; you can also use custom metrics to simply define SQL queries that Soda executes during a scan
-* **[Historic metrics](#historic-metrics)** for tests that rely on historic measurements stored in a user's Soda Cloud account
+* **[Historic metrics](#historic-metrics)** for tests that rely on historic measurements stored in the Cloud Metric Store
 
 ## Dataset metrics
 
