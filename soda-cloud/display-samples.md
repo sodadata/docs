@@ -6,18 +6,18 @@ parent: Soda Cloud
 
 # Display sample data for a dataset 
 
-When creating new [monitors]({% link soda/glossary.md %}#monitor) in Soda Cloud, you may find it useful to review sample data from your [dataset]({% link soda/glossary.md %}#dataset) to help you determine the kinds of [tests]({% link soda-sql/tests.md %}) to run when Soda SQL scans your data; see the image below. For this reason, you may wish to **enable sample data**.
+When creating new [monitors]({% link soda/glossary.md %}#monitor) in Soda Cloud, you may find it useful to review sample data from your [dataset]({% link soda/glossary.md %}#dataset) to help you determine the kinds of [tests]({% link soda-sql/tests.md %}) to run when Soda SQL scans your data; see the image below. For this reason, you may wish to use Soda SQL to to configure a `samples` [configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys).
 
 ![sample-data](/assets/images/sample-data.png){:height="650px" width="650px"}
 
 
 Using the information Soda SQL discovered about your datasets, you can optionally instruct it to capture and send **sample data** to Soda Cloud for specific datasets during the next scan. Enable sample data to display sample rows of data in Soda Cloud (to a maximum of 1000) so that you can make informed choices about the tests to run against your data when you create a monitor. 
 
-DO NOT enable sample data if your dataset contains sensitive information or personally identifiable information (PII). For security, you can [disable the sample data](#disable-sample-data) feature entirely, or configure Soda SQL to [reroute failed sample data]({% link soda-sql/samples.md %}#reroute-sample-data-for-a-dataset) to an alternate location.
+## Send sample data to Soda Cloud
 
-1. If you are the [Admin]({% link soda-cloud/roles-and-rights.md %}) of the organization, or have a Manager or Editor role for the dataset, navigate to the **Datasets** dashboard, then open the dataset in which you want to enable sample data.
-2. Click the **Sample data** tab, then check **Enable Sample Data** to enable Soda Cloud to capture sample data for the dataset during the next scan. <!--If you see a message that asks you to review time partitioning settings before enabling sample data, click the link, then follow the instructions to review and set the time partitioning settings for the dataset.-->
-3. When Soda SQL completes its next scan, use the sample data to gain some insight into the data contained in your dataset and help you determine the ways in which you want to test it when you [create a new monitor]({% link soda-cloud/monitors.md %}).
+DO NOT send sample data to Soda Cloud if your dataset contains sensitive information or personally identifiable information (PII). For security, you can [disable the sample data](#disable-sample-data) feature entirely, or configure Soda SQL to [reroute failed sample data]({% link soda-sql/samples.md %}#reroute-sample-data-for-a-dataset) to an alternate location.
+
+{% include add-sample-config-key.md %}
 
 
 ## Disable sample data
