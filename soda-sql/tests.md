@@ -27,7 +27,7 @@ The **scan results** appear in your command-line interface (CLI). The results in
 
 You define your tests in your [scan YAML file]({% link soda-sql/scan-yaml.md %}) which is associated with a specific dataset in your data source. You can write tests using built-in [dataset metrics]({% link soda-sql/sql_metrics.md %}#dataset-metrics) that Soda SQL applies to an entire dataset, or built-in [column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics) that Soda SQL applies to individual columns you identify. See [example tests]({% link soda-sql/examples-by-metric.md %}) that use each built-in metric. 
 
-You can also write tests using [custom metrics]({% link soda-sql/sql_metrics.md %}#custom-metrics) (also known as SQL metrics) that you can apply to an entire dataset or to individual columns, or [historic metrics]({% link soda/metrics.md %}#historic-metrics) that access historic measurements in the Cloud Metric Store. 
+You can also write tests using [custom metrics]({% link soda-sql/sql_metrics.md %}#custom-metrics) (also known as SQL metrics) that you can apply to an entire dataset or to individual columns, or [historic metrics (experimental)]({% link soda/metrics.md %}#historic-metrics-experimental) that access historic measurements in the Cloud Metric Store. 
 
 Regardless of where it applies, each test is generally comprised of three parts:
 
@@ -156,7 +156,7 @@ tests:
 ## Go further
 
 * Learn how to [apply filters]({% link soda-sql/filtering.md %}) such as date, to a scan of your data.
-* Access [historic measurements]({% link soda/metrics.md %}#historic-metrics) from the Cloud Metric Store in tests you define in your scan YAML file.
+* (Experimental) Access [historic measurements]({% link soda/metrics.md %}#historic-metrics-experimental) from the Cloud Metric Store in tests you define in your scan YAML file.
 * Learn more about [Metrics]({% link soda/metrics.md %}).
 * See [example tests]({% link soda-sql/examples-by-metric.md %}) that use each built-in metric.
 * Learn about [How Soda works]({% link soda-sql/concepts.md  %}).

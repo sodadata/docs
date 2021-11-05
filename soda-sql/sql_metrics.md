@@ -17,7 +17,7 @@ Read more about [Metrics]({% link soda/metrics.md %}) in general as they apply t
 [Column metrics](#column-metrics)<br />
 [Column configuration keys](#column-configuration-keys) <br />
 [Valid format values](#valid-format-values) <br />
-[Historic metrics](#historic-metrics)<br />
+[Historic metrics (Experimental)](#historic-metrics-experimental)<br />
 [Metric groups and dependencies](#metric-groups-and-dependencies)<br />
 [Custom metrics](#custom-metrics)<br />
 [Custom metric names](#custom-metric-names)<br >
@@ -121,7 +121,7 @@ columns:
 See more examples of how to use *all* column metrics in [Examples by metric]({% link soda-sql/examples-by-metric.md %}).
 
 
-## Historic metrics
+## Historic metrics (Experimental)
 
 {% include historic-metrics.md %}
 

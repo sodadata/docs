@@ -203,7 +203,7 @@ $ docker volume rm soda_sql_tutorial_postgres
 * Consult [Configure Soda SQL]({% link soda-sql/configure.md %}) for details on setting up a non-PostgreSQL version of Soda SQL.
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Learn more about the [scan YAML file]({% link soda-sql/scan-yaml.md %}) and how to [run scans]({% link soda/scan.md %}#run-a-scan-in-soda-sql).
-* Access [historic measurements]({% link soda/metrics.md %}#historic-metrics) from the Cloud Metric Store in tests you define in your scan YAML file.
+* (Experimental) Access [historic measurements]({% link soda/metrics.md %}#historic-metrics-experimental) from the Cloud Metric Store in tests you define in your scan YAML file.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

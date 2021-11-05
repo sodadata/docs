@@ -8,9 +8,9 @@ parent: Soda
 
 <br />
 
-### November 5, 2021
+#### November 9, 2021
 
-* New documentation to accompany the new [historic metrics]({% link soda/metrics.md %}#historic-metrics). This type of metric enables you to use Soda SQL to access the historic measurements in the Cloud Metric Store and write tests that use those historic measurements.
+* New documentation to accompany the new, experimental [historic metrics]({% link soda/metrics.md %}#historic-metrics-experimental). This type of metric enables you to use Soda SQL to access the historic measurements in the Cloud Metric Store and write tests that use those historic measurements.
 
 #### October 29, 2021
 

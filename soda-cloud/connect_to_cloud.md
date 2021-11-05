@@ -45,7 +45,7 @@ $ soda scan warehouse.yml tables/[datasetname].yml
 
 * Learn how to [create monitors and alerts]({% link soda-cloud/monitors.md %}).
 * Learn more about the [anatomy of a scan]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file).
-* Access [historic measurements]({% link soda/metrics.md %}#historic-metrics) from the Cloud Metric Store in tests you define in your scan YAML file.
+* (Experimental) Access [historic measurements]({% link soda/metrics.md %}#historic-metrics-experimental) from the Cloud Metric Store in tests you define in your scan YAML file.
 * Learn more about viewing [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 * Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
