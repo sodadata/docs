@@ -1,5 +1,5 @@
 ---
-name: "Week 36: Celeborn"
+name: "v2.1.0b16: Celeborn"
 date: 2021-09-07
 products:
   - soda-sql
