@@ -17,6 +17,7 @@ Read more about [Metrics]({% link soda/metrics.md %}) in general as they apply t
 [Column metrics](#column-metrics)<br />
 [Column configuration keys](#column-configuration-keys) <br />
 [Valid format values](#valid-format-values) <br />
+[Historic metrics (Experimental)](#historic-metrics-experimental)<br />
 [Metric groups and dependencies](#metric-groups-and-dependencies)<br />
 [Custom metrics](#custom-metrics)<br />
 [Custom metric names](#custom-metric-names)<br >
@@ -118,6 +119,11 @@ columns:
 `invalid_percentage == 0` in column `feepct` with column configuration `valid_format: number_percentage` checks the rows in the column named `feepct` for values that match a percentage format. If the test passes, it means that 0% of the rows contain data that is invalid; if the test fails, it means that more than 0% of the rows contain invalid data, which is data that is in non-percentage format.
 
 See more examples of how to use *all* column metrics in [Examples by metric]({% link soda-sql/examples-by-metric.md %}).
+
+
+## Historic metrics (Experimental)
+
+{% include historic-metrics.md %}
 
 
 ## Metric groups and dependencies
@@ -316,9 +322,7 @@ sql_metrics:
 
 ### GROUP BY queries in custom metrics
 
-If your SQL query uses a `GROUP BY` clause, you can use a **`group_by`** property in your custom metrics to instruct Soda SQL to run each test against each group combination. The example below runs each of the four tests against each country in the dataset.
-
-Set the `group_property` as in the example below.
+If your SQL query uses a `GROUP BY` clause, you can use a `group_fields` property in your custom metrics to instruct Soda SQL to run each test against each group combination. The example below runs each of the four tests against each country in the dataset.
 
 ```yaml
 table_name: mytable

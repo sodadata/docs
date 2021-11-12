@@ -22,3 +22,6 @@ aux_links:
     - "//www.soda.io/"
 
 aux_links_new_tab: true
+
+collections:
+  - release-notes

@@ -7,13 +7,13 @@ redirect_from: /soda-sql/documentation/warehouse_types.html
 
 # Data source configurations
 
-Soda SQL and Soda Cloud need connection details in order to access your [data source]({% link soda/glossary.md %}#data-source) to scan your data. Each type of data source uses different configuration parameters. To set the data source configurations in your [warehouse YAML]({% link soda-sql/warehouse.md %}) or when adding new dataset in Soda Cloud, use the following example configurations that correspond to each kind of data source that Soda SQL and Soda Cloud support.
+Soda SQL needs connection details in order to access your [data source]({% link soda/glossary.md %}#data-source) to scan your data. Each type of data source uses different configuration parameters. To set the data source configurations in your [warehouse YAML]({% link soda-sql/warehouse.md %}), use the following example configurations that correspond to each kind of data source that Soda SQL supports.
 
 {% include nat-gateway.md %}
 
 [Amazon Athena](#amazon-athena) <br />
 [Amazon Redshift](#amazon-redshift) <br />
-[Apache Hive](#apache-hive) <br />
+[Apache Hive (Experimental)](#apache-hive-experimental) <br />
 [Apache Spark (Experimental)](#apache-spark-experimental) <br />
 [Google Cloud Platform Big Query](#gcp-big-query) <br />
 [Microsoft SQL Server (Experimental)](#microsoft-sql-server-experimental) <br />
@@ -87,7 +87,7 @@ connection:
 
 Access keys and IAM role are mutually exclusive: if you provide values for `access_key_id` and `secret_access_key`, you cannot use Identity and Access Management role; if you provide value for `role_arn`, then you cannot use the access keys. Refer to [Amazon Redshift Authorization parameters](https://docs.aws.amazon.com/redshift/latest/dg/copy-parameters-authorization.html) for details.
 
-## Apache Hive
+## Apache Hive (Experimental)
 
 ```yaml
 name: my_hive_project
@@ -328,6 +328,9 @@ connection:
     private_key: 
     private_key_path: '/path/to/private_key/key.p8'
     authenticator: snowflake
+session_parameters:
+    QUERY_TAG: soda-queries
+    QUOTED_IDENTIFIERS_IGNORE_CASE: false
 ```
 
 | Property | Required | Notes |
@@ -343,6 +346,8 @@ connection:
 | private_key | optional | See [Private key authentication](#private-key-authentication) section below.|
 | private_key_path | optional | Example: `private_key_path: '/path/to/private_key/key.p8'` |
 | authenticator | optional | Default value is `snowflake`. See <a href="https://docs.snowflake.com/en/user-guide/snowsql-start.html#authenticator" target="_blank"> Snowflake documentation</a>. |
+| QUERY_TAG | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag" target="_blank">QUERY_TAG</a> in Snowflake documentation. |
+| QUOTED_IDENTIFIERS_IGNORE_CASE | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#quoted-identifiers-ignore-case" target="_blank">QUOTED_IDENTIFIERS_IGNORE_CASE</a> in Snowflake documentation. |
 
 
 ### Private key authentication

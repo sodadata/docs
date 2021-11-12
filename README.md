@@ -70,8 +70,8 @@ Formatting:
 - Use sentence case for all titles and headings.
 - Use H1 headings for the page title. Use H2 and H3 as subheadings. Use H4 headings to introduce example code snippets.
 - Never stack headings with no content between them. Add content or remove a heading, likely the latter so as to avoid adding non-essential text.
-- Use [bulleted lists](https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Bulletlists) for non-linear lists.
-- Use [numbered lists](https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Tasklists) for procedures or ordered tasks.
+- Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Bulletlists" target="_blank">bulleted lists</a> for non-linear lists.
+- Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Tasklists" target="_blank">numbered lists</a> for procedures or ordered tasks.
 - Use relative links to link to other files or sections in Soda documentation.
 - Use hard-coded links to link to external sources.
 - Liberally include links to the [Glossary]({% link soda/glossary.md %}), but only link the first instance of a term on a page, not all instances.
@@ -83,6 +83,19 @@ Content:
    - Reference - content that presents lists or tables of reference material such as error codes or glossary.
 - Produce content that focuses on how to achieve a goal or solve a problem and, insofar as it is practical, is inclusive of all products. Avoid creating documentation that focuses on how to use a single product. For example, instead of writing two documents -- one for "Troubleshoot Soda SQL" and one for "Troubleshoot Soda Cloud" -- write one Troubleshoot document that offers guidance for both tools.
 - Remember that Every Page is Page One for your reader. Most people enter your docs by clicking on the result of a Google search, so they could land anywhere and you should assume your new page is the first page that a new reader lands on. Give them the context for what they are reading, lots of "escape hatches" to the glossary or pre-requisite procedures, and instructions on what to read next in a "Go further" section at the bottom of all Concept or Task pages.
+
+### Release note documentation
+
+Document the details of each Soda SQL and Soda Cloud release using included release note files.
+
+1. Create a new branch in this Docs repo to create your product release notes.
+2. To the `_release-notes` folder in this Docs repo, add a new markdown file for your new product release notes. Follow the file naming structure established by existing files.
+3. Copy and paste the contents of the `template-soda-cloud-rn.md` file or the `template-soda-sql-rn.md` file into your new file.
+4. Write your release notes using the style guide for guidance on format, language, etc.
+5. Spell check your content. (Copy paste to a Google Doc or your favorite editor to run a spell check.)
+6. Commit your changes, then create a new pull request when you are ready to publish.
+7. In the new pull request, request a review by @janet-can if you wish, or simply squash and merge to publish.
+
 
 ### Use Jekyll markdown
 
@@ -140,8 +153,28 @@ Show code:
 ```
 To keep the numbered list intact, apply endraw to the end of the line of preceding text; do not prepend with a line break.
 
+Add Last modified date:
 
-### Redirecting site visitors
+```
+{% last_modified_at %}
+```
+
+Add collapse-expand toggle:
+
+```
+<details>
+    <summary>Click to expand</summary>
+    Long content here
+    and here
+</details>
+```
+
+Add mailto link:
+```
+<a href="mailto:support@soda.io">Soda Support</a>
+```
+
+### Redirect site visitors
 
 The `jekyll-redirect-from` plugin is installed, allowing authors to redirect users if a page is moved. 
 
@@ -152,17 +185,3 @@ To apply a redirect, navigate to the redirect destination file, then add the fol
 `redirect_from: /pageyouwanttoredirect/`
 
 
-### Adding Last modified date
-```
-{% last_modified_at %}
-```
-
-### Adding collapse-expand toggle
-
-```
-<details>
-    <summary>Click to expand</summary>
-    Long content here
-    and here
-</details>
-```
