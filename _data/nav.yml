@@ -1,14 +1,16 @@
 - title: Home
   page: index.html
 - title: Get started
-  page: soda/product-overview.md
+  page: soda-sql/interactive-demo.md
   subcategories:
-  - subtitle: Soda product overview
-    page: soda/product-overview.md
+  - subtitle: Soda SQL interactive demo
+    page: soda-sql/interactive-demo.md
   - subtitle: Quick start for Soda SQL
     page: soda-sql/5_min_tutorial.md
   - subtitle: Quick start for Soda Cloud
     page: soda-cloud/quick-start.md
+  - subtitle: Soda product overview
+    page: soda/product-overview.md
 
 - title: Concepts
   page: soda/data-monitoring.md
@@ -67,6 +69,7 @@
     page: soda-sql/example-test-valid.md
   - subtitle: Custom metric templates
     page: soda-sql/custom-metric-templates.md
+
 
 - title: Soda Cloud
   page: soda-cloud/roles-and-rights.md
