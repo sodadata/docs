@@ -82,7 +82,7 @@ In the following example, Soda SQL runs the scan and Soda Cloud displays a sampl
 sql_metrics:
   - type: failed_rows
     name: PURCHASEPRICE_EXCEEDS_SELLINGPRICE
-  - sql: |
+    sql: |
       SELECT *
       FROM ORDERS
       WHERE PURCHASEPRICE > SELLINGPRICE
