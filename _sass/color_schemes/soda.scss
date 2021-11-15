@@ -664,6 +664,14 @@ body {
             }
         }
     }
+
+    .demo-iframe {
+        border: 0;
+        max-width: calc(100% + 132px) !important;
+        width: calc(100% + 132px) !important;
+        height: 800px;
+        margin: 0 -66px;
+    }
 }
 
 .search-input-inline-wrap {

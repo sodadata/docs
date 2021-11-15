@@ -8,7 +8,7 @@ parent: soda-sql
 
 See just how easy it is to set up and use Soda SQL.
 
-    put interactive demo here
+<iframe class="demo-iframe" src="https://try.soda.io/tutorial?stepId=step0"></iframe>
 
 
 
