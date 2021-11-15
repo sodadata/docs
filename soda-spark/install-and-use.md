@@ -9,9 +9,10 @@ parent: Soda Spark
 Soda Spark is an extension of 
 [Soda SQL]({% link soda-sql/5_min_tutorial.md %}) that allows you to run Soda
 SQL functionality programmatically on a 
-<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark data frame</a>. Reference the Soda SQL documentation to learn how to use Soda Spark, in particular, and how to [define tests]({% link soda-sql/tests.md %}) in a [scan YAML file]({% link soda-sql/scan-yaml.md %}). 
+<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark dataframe</a>. Reference the Soda SQL documentation to learn how to use Soda Spark, particularly how to [define tests]({% link soda-sql/tests.md %}) in a [scan YAML file]({% link soda-sql/scan-yaml.md %}). 
 
 [Requirements](#requirements)<br />
+[Compatibility](#compatibility)<br />
 [Install Soda Spark](#install-soda-spark)<br />
 [Use Soda Spark](#use-soda-spark)<br />
 [How Soda Spark works](#how-soda-spark-works)<br />
@@ -22,8 +23,16 @@ SQL functionality programmatically on a
 
 ## Requirements
 
-Soda Spark has the same requirements as 
-[Soda SQL]({% link soda-sql/installation.md %}#requirements).
+To use Soda Spark, you must have installed the following on your system.
+
+{% include requirements.md %}
+
+## Compatibility
+
+Use Soda Spark to scan a variety of data sources:<br />
+
+{% include compatible-warehouses.md %}
+
 
 ## Install Soda Spark
 
@@ -34,8 +43,10 @@ $ pip install soda-spark
 ```
 
 ## Use Soda Spark
+As an extension of Soda SQL, Soda Spark allows you to run Soda
+SQL functionality programmatically on a Spark dataframe. Reference the Soda SQL documentation to learn how to use Soda Spark. 
 
-From your Python prompt, execute the following commands.
+From your Python prompt, execute the following commands to programmatically run Soda SQL functionality.
 
 ``` python
 >>> from pyspark.sql import DataFrame, SparkSession
@@ -83,7 +94,7 @@ Alternatively, you can prepare a [scan YAML file]({% link soda-sql/scan-yaml.md 
 >>>
 ```
 
-### Send results to Soda Cloud
+## Send scan results to Soda Cloud
 
 Use the following command to send Soda Spark scan results to Soda cloud. Use [Soda Cloud documentation]({% link soda-cloud/connect_to_cloud.md %}) to learn how to generate API keys to connect Soda Spark to Soda Cloud.
 
@@ -104,14 +115,11 @@ Use the following command to send Soda Spark scan results to Soda cloud. Use [So
 
 When you execute Soda Spark, it completes the following tasks:
 
-1. It sets up the scan.
-   * uses the Spark dialect
-   * uses a <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.SparkSession.html" target="_blank">Spark session</a>
-     as a [warehouse]({% link soda-sql/warehouse.md %}) connection
-2. It creates (or replaces) a 
+1. It sets up the scan using the Spark dialect and a <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.SparkSession.html" target="_blank">Spark session</a> as a [warehouse]({% link soda-sql/warehouse.md %}) connection.
+2. It creates, or replaces, a 
 	<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceGlobalTempView.html" target="_blank">global temporary view</a>
-   for the Spark data frame.
-3. It executes the scan on the temporary view.
+   for the Spark dataframe.
+3. It executes the Soda scan on the temporary view.
 
 ## Contribute
 

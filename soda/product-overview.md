@@ -19,7 +19,7 @@ Get started with the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_
 
 ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="170px" width="170px"}
 
-**Soda Spark** is an extension of Soda SQL that allows you to run Soda SQL functionality programmatically on a Spark data frame. Read more about installing and using [Soda Spark]({% link soda-spark/install-and-use.md %}).
+**Soda Spark** is an extension of Soda SQL that allows you to run Soda SQL functionality programmatically on a Spark dataframe. Read more about installing and using [Soda Spark]({% link soda-spark/install-and-use.md %}).
 
 <br />
 
