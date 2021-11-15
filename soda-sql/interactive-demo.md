@@ -14,6 +14,7 @@ See just how easy it is to set up and use Soda SQL.
 
 ## Go further
 
+* Access the Docker-based <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">example repo</a> the tutorial uses to explore with Soda SQL on your own.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
