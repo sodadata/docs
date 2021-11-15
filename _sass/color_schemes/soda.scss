@@ -670,7 +670,18 @@ body {
         max-width: calc(100% + 132px) !important;
         width: calc(100% + 132px) !important;
         height: 800px;
-        margin: 0 -66px;
+
+        @media (min-width: 31rem) {
+            margin: 0px -18px;
+        }
+
+        @media (min-width: 50rem) {
+            margin: 0 -31px;
+        }
+
+        @media (min-width: 66.5rem) {
+            margin: 0 -66px;
+        }
     }
 }
 
