@@ -13,6 +13,7 @@
 
   <link rel="shortcut icon" href="{{ 'favicon.ico' | relative_url }}" type="image/x-icon">
 
+  <!-- Add css cache invalidation based on built time -->
   <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}?{{ site.time | date: '%s%N' }}">
 
   {% if site.ga_tracking != nil %}
