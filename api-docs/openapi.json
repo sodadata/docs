@@ -1,0 +1,1006 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Soda Cloud Reporting API",
+        "description": "\nThis API allows authorised users to query data from Soda Cloud to build tool adoption and platform impact reporting\ndashboards.\n\nEach end point is documented and testable on this page.\n\nUntil further notice, the API requires that a username and password be provided according to the `HTTPBasic`\nsecurity protocol. More options will come in later iterations.\n\nWhen testing the API via the `/docs` endpoint you can provide those credentials by clicking on the \"Authorize\" button.\n\nMost HTTP request libraries should provide a handy way to provide username and password according to the scheme.\nWe provide an example below using `httpx` in Python.\n\n```python\nimport httpx\nrequest_result = httpx.post('<endpoint_URL>', auth=(\"username\", \"password'))\n```\n    ",
+        "version": "0.0.0-a2"
+    },
+    "servers": [
+        {
+          "url": "https://reporting.cloud.soda.io",
+          "description": "Production server"
+        },
+        {
+            "url": "https://reporting.devops-dev.soda.io",
+            "description": "Test server"
+          }
+      ],
+    "paths": {
+        "/v0/ping": {
+            "get": {
+                "tags": [
+                    "Status"
+                ],
+                "summary": "Soda Can Is Open",
+                "description": "Ping endpoint to test wether the Reporting API is live.\nReturns the sound of a Soda can opening along with a 200.",
+                "operationId": "soda_can_is_open_v0_ping_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v0/adoption/sign_ups": {
+            "post": {
+                "tags": [
+                    "Tool Adoption"
+                ],
+                "summary": "Sign Ups",
+                "description": "Provides a list of sign up events for the authenticated user's organization.\n\n\n**NOTE:** Users who signed up via SSO are currently not tracked in our\nevent tracking solution. If you do not see any sign up this could be the reason why.\n\n\nReturns\n-------\n`SignUpsResult` contatining an array of `SignUpData`.",
+                "operationId": "sign_ups_v0_adoption_sign_ups_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SignUpsResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "HTTPBasic": []
+                    }
+                ]
+            }
+        },
+        "/v0/adoption/sign_ins": {
+            "post": {
+                "tags": [
+                    "Tool Adoption"
+                ],
+                "summary": "Sign Ins",
+                "description": "Provides a list of sign in counts per day and user for the authenticated user's organization.\n\n\n**NOTE:** Users who signed in via SSO are currently not tracked in our\nevent tracking solution. If you do not see any sign ins this could be the reason why.\n\n\nReturns\n-------\n`SignInsResult` containing an array of `SignInData`",
+                "operationId": "sign_ins_v0_adoption_sign_ins_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SignInsResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "HTTPBasic": []
+                    }
+                ]
+            }
+        },
+        "/v0/adoption/daily_account_activity": {
+            "post": {
+                "tags": [
+                    "Tool Adoption"
+                ],
+                "summary": "Daily Account Activity",
+                "description": "Provides a daily count of activity events for the authenticated user's organization.\n\nEvent are grouped into \"Level 0\" and \"Level 1\":\n\n    - Level 0: Activity of type \"Read\"/\"View\" (e.g., view a dataset, view monitor result etc.)\n    - Level 1: Activity of type \"Create/Update\" (e.g., create a monitor, update a monitor configuration etc.)\n\nReturns\n-------\n`DailyAccountActivityResult` containting an array of `DailyAccountActivityData`.",
+                "operationId": "daily_account_activity_v0_adoption_daily_account_activity_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DailyAccountActivityResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "HTTPBasic": []
+                    }
+                ]
+            }
+        },
+        "/v0/impact/alerts_sent": {
+            "post": {
+                "tags": [
+                    "Platform Impact"
+                ],
+                "summary": "Alerts Sent",
+                "description": "Provides a daily count of alerts sent per user for the authenticated user's organization.\nAlerts are split into 3 groups corresponding to their criticality level as defined in the Soda Cloud UI.\n\n\nReturns\n-------\n`DailyAlertsSentResult` containing an array of `DailyAlertsSentData`.",
+                "operationId": "alerts_sent_v0_impact_alerts_sent_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DailyAlertsSentResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "HTTPBasic": []
+                    }
+                ]
+            }
+        },
+        "/v0/adoption/scans_run": {
+            "post": {
+                "tags": [
+                    "Tool Adoption"
+                ],
+                "summary": "Scans Run",
+                "description": "Provides a daily count of scans run and test results collected per user per date alerts sent per\nuser for the authenticated user's organization.\n\nReturns\n-------\n`ScansRunResult` containting an array of `ScansRunData`",
+                "operationId": "scans_run_v0_adoption_scans_run_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ScansRunResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "HTTPBasic": []
+                    }
+                ]
+            }
+        },
+        "/v0/coverage/tests": {
+            "post": {
+                "tags": [
+                    "Coverage"
+                ],
+                "summary": "Tests",
+                "description": "Provides a list of all tests and information about them implemented by the authenticated user's organization.\n\nReturns\n-------\n`TestsResult` containing an array of `TestsData`",
+                "operationId": "tests_v0_coverage_tests_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TestsResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "HTTPBasic": []
+                    }
+                ]
+            }
+        },
+        "/v0/coverage/datasets": {
+            "post": {
+                "tags": [
+                    "Coverage"
+                ],
+                "summary": "Datasets",
+                "description": "Provides a list of all datasets monitored and connected to the Soda Cloud platform for the\nauthenticated user's organization.\n\nReturn\n------\n`DatasetsResult` containing and array of `DatasetsData`",
+                "operationId": "datasets_v0_coverage_datasets_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DatasetsResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "HTTPBasic": []
+                    }
+                ]
+            }
+        },
+        "/v0/quality/tests_and_results": {
+            "post": {
+                "tags": [
+                    "Quality"
+                ],
+                "summary": "Test Results",
+                "description": "Provides a list of tests along with their entire results set for the authenticated user's organization.\n\nReturns\n-------\n`TestsAndResultsResult` containing an array of `TestsAndResultsData`",
+                "operationId": "test_results_v0_quality_tests_and_results_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TestsAndResultsResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "HTTPBasic": []
+                    }
+                ]
+            }
+        },
+        "/v0/quality/dataset_health": {
+            "post": {
+                "tags": [
+                    "Quality"
+                ],
+                "summary": "Dataset Health",
+                "description": "Provides a list of datasets with associated health metrics. Such as passing versus failing tests.\n\nReturns\n-------\n`DatasetHealthResult` containing an array of `DatasetHealthData`",
+                "operationId": "dataset_health_v0_quality_dataset_health_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DatasetHealthResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "HTTPBasic": []
+                    }
+                ]
+            }
+        },
+        "/v0/coverage/dataset_coverage": {
+            "post": {
+                "tags": [
+                    "Coverage"
+                ],
+                "summary": "Dataset Coverage",
+                "description": "Provides a list of dataset along with information about test coverage and coverage score metrics.\n\nReturns\n-------\n`DatasetCoverageResult` containing an array of `DatasetCoverageData`",
+                "operationId": "dataset_coverage_v0_coverage_dataset_coverage_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DatasetCoverageResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "HTTPBasic": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "DailyAccountActivityData": {
+                "title": "DailyAccountActivityData",
+                "type": "object",
+                "properties": {
+                    "on_date": {
+                        "title": "On Date",
+                        "type": "string",
+                        "description": "Date on which any number of activity for the authenticated user's organization took place.",
+                        "format": "date"
+                    },
+                    "active_level_0_users": {
+                        "title": "Active Level 0 Users",
+                        "type": "integer",
+                        "description": "Number of unique users who performed a level 0 type of activity."
+                    },
+                    "active_level_1_users": {
+                        "title": "Active Level 1 Users",
+                        "type": "integer",
+                        "description": "Number of unique users who performed a level 1 type of activity."
+                    },
+                    "level_0_events": {
+                        "title": "Level 0 Events",
+                        "type": "integer",
+                        "description": "Number of events of level 0."
+                    },
+                    "level_1_events": {
+                        "title": "Level 1 Events",
+                        "type": "integer",
+                        "description": "Number of events of level 1."
+                    }
+                },
+                "description": "Daily count of activity events for the authenticated user's organization.\n\nEvent are grouped into \"Level 0\" and \"Level 1\":\n\n    - Level 0: Activity of type \"Read\"/\"View\" (e.g., view a dataset, view monitor result etc.)\n    - Level 1: Activity of type \"Create/Update\" (e.g., create a monitor, update a monitor configuration etc.)"
+            },
+            "DailyAccountActivityResult": {
+                "title": "DailyAccountActivityResult",
+                "required": [
+                    "resource",
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "resource": {
+                        "title": "Resource",
+                        "type": "string"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DailyAccountActivityData"
+                        }
+                    }
+                },
+                "description": "Array of `DailyAccountActivityData`."
+            },
+            "DailyAlertsSentData": {
+                "title": "DailyAlertsSentData",
+                "type": "object",
+                "properties": {
+                    "user_email": {
+                        "title": "User Email",
+                        "type": "string",
+                        "description": "Email address of the user who was alerted."
+                    },
+                    "on_date": {
+                        "title": "On Date",
+                        "type": "string",
+                        "description": "Date on which an alert was sent.",
+                        "format": "date"
+                    },
+                    "count_info_alerts": {
+                        "title": "Count Info Alerts",
+                        "type": "integer",
+                        "description": "Number of alerts of info level sent to the user on the report date."
+                    },
+                    "count_warning_alerts": {
+                        "title": "Count Warning Alerts",
+                        "type": "integer",
+                        "description": "Number of alerts of warning level sent to the user on the report date."
+                    },
+                    "count_critical_alerts": {
+                        "title": "Count Critical Alerts",
+                        "type": "integer",
+                        "description": "Number of alerts of critical level sent to the user on the report date."
+                    }
+                },
+                "description": "Aggregate counts of sent alerts, split by severity level on a given day for a given user."
+            },
+            "DailyAlertsSentResult": {
+                "title": "DailyAlertsSentResult",
+                "required": [
+                    "resource",
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "resource": {
+                        "title": "Resource",
+                        "type": "string"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DailyAlertsSentData"
+                        }
+                    }
+                },
+                "description": "Array of `DailyAlertsSentData`."
+            },
+            "DatasetCoverageDataObject": {
+                "title": "DatasetCoverageDataObject",
+                "required": [
+                    "descriptives",
+                    "dataset_info"
+                ],
+                "type": "object",
+                "properties": {
+                    "descriptives": {
+                        "$ref": "#/components/schemas/DatasetCoverageDescriptivesData"
+                    },
+                    "dataset_info": {
+                        "title": "Dataset Info",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DatasetInfoData"
+                        }
+                    }
+                },
+                "description": "Array of `DatasetInfoData` and `DatasetCoverageDescriptivesData`."
+            },
+            "DatasetCoverageDescriptivesData": {
+                "title": "DatasetCoverageDescriptivesData",
+                "type": "object",
+                "properties": {
+                    "median_number_of_tests": {
+                        "title": "Median Number Of Tests",
+                        "type": "number",
+                        "description": "Median number of tests across all datasets in your organization.",
+                        "default": 0.0
+                    },
+                    "max_number_of_tests": {
+                        "title": "Max Number Of Tests",
+                        "type": "number",
+                        "description": "Max number of tests across all datasets in your organization.",
+                        "default": 0.0
+                    },
+                    "min_number_of_tests": {
+                        "title": "Min Number Of Tests",
+                        "type": "number",
+                        "description": "Min number of tests across all datasets in your organization.",
+                        "default": 0.0
+                    },
+                    "standard_deviation_number_of_tests": {
+                        "title": "Standard Deviation Number Of Tests",
+                        "type": "number",
+                        "description": "Standard deviation of the number of tests tests across all datasets in your organization.",
+                        "default": 0.0
+                    },
+                    "mean_number_of_tests": {
+                        "title": "Mean Number Of Tests",
+                        "type": "number",
+                        "description": "Mean number of tests across all datasets in your organization.",
+                        "default": 0.0
+                    }
+                },
+                "description": "Contains across dataset coverage descriptives."
+            },
+            "DatasetCoverageResult": {
+                "title": "DatasetCoverageResult",
+                "required": [
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/DatasetCoverageDataObject"
+                    },
+                    "resource": {
+                        "title": "Resource",
+                        "type": "string",
+                        "default": "dataset_coverage"
+                    }
+                },
+                "description": "Array of `DatasetInfoData` and `DatasetCoverageDescriptivesData`."
+            },
+            "DatasetHealthData": {
+                "title": "DatasetHealthData",
+                "type": "object",
+                "properties": {
+                    "dataset_id": {
+                        "title": "Dataset Id",
+                        "type": "string",
+                        "description": "Unique identifier for a dataset (uuid) in the soda cloud store."
+                    },
+                    "scan_date": {
+                        "title": "Scan Date",
+                        "type": "string",
+                        "description": "Date at which any number of scans was run.",
+                        "format": "date"
+                    },
+                    "critical": {
+                        "title": "Critical",
+                        "type": "integer",
+                        "description": "Number of tests and monitors failing with critical level."
+                    },
+                    "info": {
+                        "title": "Info",
+                        "type": "integer",
+                        "description": "Number of tests and monitors passing."
+                    },
+                    "warning": {
+                        "title": "Warning",
+                        "type": "integer",
+                        "description": "Number of tests and monitors failing with level warning."
+                    },
+                    "number_of_tests": {
+                        "title": "Number Of Tests",
+                        "type": "integer",
+                        "description": "Number of tests and/or monitors evaluated."
+                    },
+                    "percentage_passing_tests": {
+                        "title": "Percentage Passing Tests",
+                        "type": "number",
+                        "description": "Proportion of tests and/or monitors passed (i.e. did not issue a warning, or critical level alert)."
+                    }
+                },
+                "description": "Dataset health information containing counts of passing or failing tests (warning or critical) per scan date."
+            },
+            "DatasetHealthResult": {
+                "title": "DatasetHealthResult",
+                "required": [
+                    "resource",
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "resource": {
+                        "title": "Resource",
+                        "type": "string"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DatasetHealthData"
+                        }
+                    }
+                },
+                "description": "Array of `DatasetHealthData`."
+            },
+            "DatasetInfoData": {
+                "title": "DatasetInfoData",
+                "type": "object",
+                "properties": {
+                    "dataset_id": {
+                        "title": "Dataset Id",
+                        "type": "string",
+                        "description": "\nUUID of the dataset as stored on the Soda Cloud platform.\nCan be joined with the results of the `datasets` query for more augmentation.\n        "
+                    },
+                    "is_deleted": {
+                        "title": "Is Deleted",
+                        "type": "boolean",
+                        "description": "True if the dataset was deleted, False if the dataset is active."
+                    },
+                    "number_of_tests": {
+                        "title": "Number Of Tests",
+                        "type": "integer",
+                        "description": "Number of tests covering a given dataset."
+                    },
+                    "relative_coverage_score": {
+                        "title": "Relative Coverage Score",
+                        "type": "string",
+                        "description": "\nThis coverage score is a relative score derived by comparing the number of tests on the dataset at hand with the number\nof tests on the other datasets in your organization.\nThe labels \"good\", \"medium\", and \"poor\" are assigned based on a 3-ntile split.\n        "
+                    }
+                },
+                "description": "Information about a dataset containing information about whether a dataset is active or deleted as well as test\ncoverage metrics."
+            },
+            "DatasetsData": {
+                "title": "DatasetsData",
+                "type": "object",
+                "properties": {
+                    "dataset_id": {
+                        "title": "Dataset Id",
+                        "type": "string",
+                        "description": "UUID of the dataset as stored in the Soda Cloud backend."
+                    },
+                    "dataset_name": {
+                        "title": "Dataset Name",
+                        "type": "string",
+                        "description": "Name of the datset as seen and stored in the UI and Cloud backend"
+                    },
+                    "tags": {
+                        "title": "Tags",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "User provided tags list."
+                    },
+                    "number_of_failed_tests": {
+                        "title": "Number Of Failed Tests",
+                        "type": "integer",
+                        "description": "Number of tests that are currently failing on a given dataset."
+                    },
+                    "is_deleted": {
+                        "title": "Is Deleted",
+                        "type": "boolean",
+                        "description": "True if the dataset was deleted, False if the dataset is active."
+                    },
+                    "last_scan_time": {
+                        "title": "Last Scan Time",
+                        "type": "string",
+                        "description": "UTC timestamp of the last scan run on this dataset.",
+                        "format": "date-time"
+                    }
+                },
+                "description": "Contains information about a dataset."
+            },
+            "DatasetsResult": {
+                "title": "DatasetsResult",
+                "required": [
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "resource": {
+                        "title": "Resource",
+                        "type": "string",
+                        "default": "datasets"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DatasetsData"
+                        }
+                    }
+                },
+                "description": "Array of `DatasetsData`."
+            },
+            "ScansRunData": {
+                "title": "ScansRunData",
+                "type": "object",
+                "properties": {
+                    "user_email": {
+                        "title": "User Email",
+                        "type": "string",
+                        "description": "Email address of the user who ran a scan."
+                    },
+                    "on_date": {
+                        "title": "On Date",
+                        "type": "string",
+                        "description": "Date on which a user ran at least one scan.",
+                        "format": "date"
+                    },
+                    "number_of_scans": {
+                        "title": "Number Of Scans",
+                        "type": "integer",
+                        "description": "Number of (successfully ended) scans run by a user on the reported on date."
+                    },
+                    "number_of_test_results": {
+                        "title": "Number Of Test Results",
+                        "type": "integer",
+                        "description": "Number of test result across scans."
+                    }
+                },
+                "description": "Number of scans run and tests pushed by a user on a given day."
+            },
+            "ScansRunResult": {
+                "title": "ScansRunResult",
+                "required": [
+                    "resource",
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "resource": {
+                        "title": "Resource",
+                        "type": "string"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ScansRunData"
+                        }
+                    }
+                },
+                "description": "Array of `ScansRunData`."
+            },
+            "SignInData": {
+                "title": "SignInData",
+                "type": "object",
+                "properties": {
+                    "user_email": {
+                        "title": "User Email",
+                        "type": "string",
+                        "description": "Email address of the user who signed in."
+                    },
+                    "on_date": {
+                        "title": "On Date",
+                        "type": "string",
+                        "description": "Date on which the user signed in.",
+                        "format": "date"
+                    },
+                    "count_sign_in": {
+                        "title": "Count Sign In",
+                        "type": "integer",
+                        "description": "Number of times a given user signed in."
+                    }
+                },
+                "description": "Counts of sign in events per user per day."
+            },
+            "SignInsResult": {
+                "title": "SignInsResult",
+                "required": [
+                    "resource",
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "resource": {
+                        "title": "Resource",
+                        "type": "string"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SignInData"
+                        }
+                    }
+                },
+                "description": "Array of `SignInData`."
+            },
+            "SignUpData": {
+                "title": "SignUpData",
+                "type": "object",
+                "properties": {
+                    "user_email": {
+                        "title": "User Email",
+                        "type": "string",
+                        "description": "Email address of the user who signed up."
+                    },
+                    "on_date": {
+                        "title": "On Date",
+                        "type": "string",
+                        "description": "Date on which the user signed up.",
+                        "format": "date"
+                    }
+                },
+                "description": "List of sign up events per user per date."
+            },
+            "SignUpsResult": {
+                "title": "SignUpsResult",
+                "required": [
+                    "resource",
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "resource": {
+                        "title": "Resource",
+                        "type": "string"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SignUpData"
+                        }
+                    }
+                },
+                "description": "Array of `SignUpData`"
+            },
+            "TestsAndResultsData": {
+                "title": "TestsAndResultsData",
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "title": "Type",
+                        "type": "string",
+                        "description": "\nType of the test according to the soda-sql and cloud platform.\nE.g. 'metric' if test is on a metric, 'external' if test is evaluated by soda-sql.\n        "
+                    },
+                    "test_id": {
+                        "title": "Test Id",
+                        "type": "string",
+                        "description": "UUID of a test as stored on the Soda Cloud platform."
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string",
+                        "description": "Name of the test given either in the Cloud UI of via the `name` tag in soda yamls."
+                    },
+                    "created_at": {
+                        "title": "Created At",
+                        "type": "string",
+                        "description": "UTC timestamp at which the test was created.",
+                        "format": "date-time"
+                    },
+                    "dataset_ids": {
+                        "title": "Dataset Ids",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "\nUUID of the dataset as stored on the Soda Cloud platform.\nCan be joined with the results of the `datasets` query for more augmentation.\n        "
+                    },
+                    "test_creator_info": {
+                        "title": "Test Creator Info",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/UserInfo"
+                            }
+                        ],
+                        "description": "\nDict of information about the test's creator.\nRefer to the `UserInfo` schema for more information about each field.\n        "
+                    },
+                    "test_owner_info": {
+                        "title": "Test Owner Info",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/UserInfo"
+                            }
+                        ],
+                        "description": "\nDict of information about the test's owner.\nRefer to the `UserInfo` schema for more information about each field.\n        "
+                    },
+                    "result_id": {
+                        "title": "Result Id",
+                        "type": "string",
+                        "description": "UUID of a test result as stored in the Cloud backend"
+                    },
+                    "scan_time": {
+                        "title": "Scan Time",
+                        "type": "string",
+                        "description": "UTC timestamp of the scan that generated a given test result.",
+                        "format": "date-time"
+                    },
+                    "level": {
+                        "title": "Level",
+                        "type": "string",
+                        "description": "Severity level of a test result. Can be any of 'info', 'warning', or 'critical'"
+                    }
+                },
+                "description": "Contains information about tests and their results on a per scan basis."
+            },
+            "TestsAndResultsResult": {
+                "title": "TestsAndResultsResult",
+                "required": [
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "resource": {
+                        "title": "Resource",
+                        "type": "string",
+                        "default": "tests_and_results"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TestsAndResultsData"
+                        }
+                    }
+                },
+                "description": "Array of `TestsAndResultsData`."
+            },
+            "TestsData": {
+                "title": "TestsData",
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "title": "Type",
+                        "type": "string",
+                        "description": "\nType of the test according to the soda-sql and cloud platform.\nE.g. 'metric' if test is on a metric, 'external' if test is evaluated by soda-sql.\n        "
+                    },
+                    "test_id": {
+                        "title": "Test Id",
+                        "type": "string",
+                        "description": "UUID of a test as stored on the Soda Cloud platform."
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string",
+                        "description": "Name of the test given either in the Cloud UI of via the `name` tag in soda yamls."
+                    },
+                    "created_at": {
+                        "title": "Created At",
+                        "type": "string",
+                        "description": "UTC timestamp at which the test was created.",
+                        "format": "date-time"
+                    },
+                    "dataset_ids": {
+                        "title": "Dataset Ids",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "\nUUID of the dataset as stored on the Soda Cloud platform.\nCan be joined with the results of the `datasets` query for more augmentation.\n        "
+                    },
+                    "test_creator_info": {
+                        "title": "Test Creator Info",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/UserInfo"
+                            }
+                        ],
+                        "description": "\nDict of information about the test's creator.\nRefer to the `UserInfo` schema for more information about each field.\n        "
+                    },
+                    "test_owner_info": {
+                        "title": "Test Owner Info",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/UserInfo"
+                            }
+                        ],
+                        "description": "\nDict of information about the test's owner.\nRefer to the `UserInfo` schema for more information about each field.\n        "
+                    }
+                },
+                "description": "Contains information about a test and associated datasets."
+            },
+            "TestsResult": {
+                "title": "TestsResult",
+                "required": [
+                    "data"
+                ],
+                "type": "object",
+                "properties": {
+                    "resource": {
+                        "title": "Resource",
+                        "type": "string",
+                        "default": "tests"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TestsData"
+                        }
+                    }
+                },
+                "description": "Array of `TestsData`."
+            },
+            "UserInfo": {
+                "title": "UserInfo",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "string",
+                        "description": "UUID of the user as stored in Soda Cloud"
+                    },
+                    "first_name": {
+                        "title": "First Name",
+                        "type": "string",
+                        "description": "First name of the user"
+                    },
+                    "last_name": {
+                        "title": "Last Name",
+                        "type": "string",
+                        "description": "Last name of the user"
+                    },
+                    "email": {
+                        "title": "Email",
+                        "type": "string",
+                        "description": "Email address of the user as registered at account creation."
+                    },
+                    "job_title": {
+                        "title": "Job Title",
+                        "type": "string",
+                        "description": "Job title (if added to the user profile) of the user."
+                    },
+                    "phone_number": {
+                        "title": "Phone Number",
+                        "type": "string",
+                        "description": "Phone number (if added to the profile) of the user."
+                    },
+                    "country": {
+                        "title": "Country",
+                        "type": "string",
+                        "description": "ISO 3166-1 alpha-2 country code of the user's country as chosen at account creation."
+                    }
+                },
+                "description": "User information data."
+            }
+        },
+        "securitySchemes": {
+            "HTTPBasic": {
+                "type": "http",
+                "scheme": "basic"
+            }
+        }
+    }
+}

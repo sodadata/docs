@@ -44,4 +44,9 @@
 
   {% include head_custom.html %}
 
+  {% if page.apidoc %}
+  <script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css">
+  {% endif %}
+
 </head>
