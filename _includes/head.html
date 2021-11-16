@@ -1,5 +1,7 @@
-<!-- Copied from https://github.com/pmarsceill/just-the-docs/blob/v0.3.3/_includes/head.html
-     too match the version of the installed gem -->
+{% comment %}
+  Copied from https://github.com/pmarsceill/just-the-docs/blob/v0.3.3/_includes/head.html
+  too match the version of the installed gem
+{% endcomment %}
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -14,7 +16,9 @@
 
   <link rel="shortcut icon" href="{{ 'favicon.ico' | relative_url }}" type="image/x-icon">
 
-  <!-- Add css cache invalidation based on built time -->
+  {% comment %}
+    Add css cache invalidation based on built time
+  {% endcomment %}
   <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}?{{ site.time | date: '%s%N' }}">
 
   {% if site.ga_tracking != nil %}
