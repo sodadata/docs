@@ -21,12 +21,12 @@
     page: soda/scan.md
   - subtitle: Metrics
     page: soda/metrics.md
-  - subtitle: Common terms
-    page: soda/common-terms.md
 
 - title: Soda SQL
-  page: soda-sql/community.md
+  page: soda-sql/overview.md
   subcategories:
+  - subtitle: Soda SQL overview
+    page: soda-sql/overview.md
   - subtitle: Soda SQL community
     page: soda-sql/community.md
   - subtitle: How Soda SQL works

@@ -2,7 +2,9 @@
 layout: default
 title: Glossary
 parent: Soda
-redirect_from: /soda-sql/documentation/glossary.html
+redirect_from: 
+- /soda-sql/documentation/glossary.html
+- /soda/common-terms.html
 ---
 
 # Glossary
