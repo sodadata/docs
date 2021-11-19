@@ -16,11 +16,13 @@ Use your command-line interface to **connect** Soda SQL to your database, prepar
 
 ## Create a sample warehouse (optional)
 
-In the context of Soda SQL, a warehouse is a type of data source that represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. If you do not have access to a warehouse on your system, you can use Docker to build a sample PostgreSQL warehouse so that you can set up your Soda SQL CLI tool and see it in action.
+In the context of Soda SQL, a warehouse is a type of data source that represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. 
 
-All the instructions below reference this sample warehouse in the commands.
+If you do not have access to a warehouse on your system, you can clone a GitHub repository and use Docker to build a sample PostgreSQL warehouse that contains <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC School Bus Breakdowns and Delays</a> data so that you can set up your Soda SQL CLI tool and see it in action.
 
-1. Clone the <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">tutorial-demo-project</a> GitHub repository to your local environment.
+All the instructions in this tutorial reference this sample warehouse in the commands.
+
+1. Clone the <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">tutorial-demo-project</a> GitHub repo to your local environment.
 2. In the command-line, navigate into the tutorial project.
 ```shell
 cd tutorial-demo-project
@@ -29,15 +31,24 @@ cd tutorial-demo-project
 ```shell
 docker-compose up -d
 ``` 
-4. Validate that the setup is complete: docker ps -a | grep soda This command yields output like the following:
+4. Validate that the setup is complete. 
+```shell
+docker ps -a | grep soda
+``` 
+This command yields output like the following.
+```shell
 CONTAINER ID   IMAGE                                    COMMAND                  CREATED       STATUS         PORTS                                       NAMES
 90b555b29ccd   tutorial-demo-project_soda_sql_project   "/bin/bash"              3 hours ago   Exited (2) 3 seconds ago   0.0.0.0:8001->5432/tcp, :::8001->5432/tcp   tutorial-demo-project_soda_sql_project_1
 d7950300de7a   postgres                                 "docker-entrypoint.s…"   3 hours ago   Up 3 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   tutorial-demo-project_soda_sql_tutorial_db_1
-To run Soda commands and test your dataset, you need to get into the container's shell. From the project's root dir where the docker-compose.yml files exists, run the following command:
+```
+5. To run Soda commands and test your dataset, you need to access the container's shell. From the project's root dir where the `docker-compose.yml` file exists, run the following command.
+```shell
 docker-compose run --rm soda_sql_project "cd /workspace && /bin/bash"
-This command drops you into the container's shell with a prompt like the following:
-
+```
+This command yields a prompt like the following.
+```shell
 root@90461262c35e:/workspace# 
+```
 
 
 ## Connect Soda SQL to the warehouse
@@ -46,13 +57,12 @@ The instructions below reference the sample warehouse in the commands. There are
 
 1. From your command-line interface, verify your [installation]({% link soda-sql/installation.md %}) of Soda SQL using the `soda` command. 
 ```shell
-$ soda
 Usage: soda [OPTIONS] COMMAND [ARGS]...
 ```
-2. Create, then navigate to a new Soda SQL warehouse directory. The example below creates a directory named `soda-sql-tutorial`.
+2. Create, then navigate to a new Soda SQL warehouse directory. The example below creates a directory named `new_york_bus_breakdowns`.
 ```shell
-$ mkdir soda_sql_tutorial
-$ cd soda_sql_tutorial
+$ mkdir new_york_bus_breakdowns
+$ cd new_york_bus_breakdowns
 ```
 3. Use the `soda create postgres` command to create and pre-populate two files that enable you to configure connection details for Soda SQL to access your warehouse:
 * a `warehouse.yml` file which stores access details for your warehouse ([read more]({% link soda-sql/warehouse.md %}))
@@ -60,7 +70,7 @@ $ cd soda_sql_tutorial
 <br />
 Command:
 ```shell
-$ soda create postgres -d sodasql -u sodasql -w soda_sql_tutorial
+soda create postgres
 ```
 Output:
 ```shell
