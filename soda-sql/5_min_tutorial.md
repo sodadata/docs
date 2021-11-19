@@ -20,21 +20,24 @@ In the context of Soda SQL, a warehouse is a type of data source that represents
 
 All the instructions below reference this sample warehouse in the commands.
 
-1. From your command-line interface, execute the following to build a containerized PostgreSQL warehouse. Note that the `-v` option connects to a location on your local drive in which Soda SQL will create your warehouse directory file further in this tutorial.
+1. Clone the <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">tutorial-demo-project</a> GitHub repository to your local environment.
+2. In the command-line, navigate into the tutorial project.
 ```shell
-docker run --name soda_sql_tutorial_db --rm -d \
-    -p 5432:5432 \
-    -v soda_sql_tutorial_postgres:/var/lib/postgresql/data:rw \
-    -e POSTGRES_USER=sodasql \
-    -e POSTGRES_DB=sodasql \
-    -e POSTGRES_HOST_AUTH_METHOD=trust \
-    postgres:9.6.17-alpine
+cd tutorial-demo-project
 ```
-2. Load sample data into your warehouse.
+3. Use the following command to build the Docker containers. The `-d` flag means "detached" which means that you do not need to keep the terminal running for the docker containers to continue to run.)
 ```shell
-docker exec soda_sql_tutorial_db \
-  sh -c "wget -qO - https://raw.githubusercontent.com/sodadata/soda-sql/main/tests/demo/demodata.sql | psql -U sodasql -d sodasql"
-```
+docker-compose up -d
+``` 
+4. Validate that the setup is complete: docker ps -a | grep soda This command yields output like the following:
+CONTAINER ID   IMAGE                                    COMMAND                  CREATED       STATUS         PORTS                                       NAMES
+90b555b29ccd   tutorial-demo-project_soda_sql_project   "/bin/bash"              3 hours ago   Exited (2) 3 seconds ago   0.0.0.0:8001->5432/tcp, :::8001->5432/tcp   tutorial-demo-project_soda_sql_project_1
+d7950300de7a   postgres                                 "docker-entrypoint.s…"   3 hours ago   Up 3 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   tutorial-demo-project_soda_sql_tutorial_db_1
+To run Soda commands and test your dataset, you need to get into the container's shell. From the project's root dir where the docker-compose.yml files exists, run the following command:
+docker-compose run --rm soda_sql_project "cd /workspace && /bin/bash"
+This command drops you into the container's shell with a prompt like the following:
+
+root@90461262c35e:/workspace# 
 
 
 ## Connect Soda SQL to the warehouse
