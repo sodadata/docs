@@ -74,18 +74,37 @@ soda create postgres
 ```
 Output:
 ```shell
-  | Soda CLI version ...
+  | Soda CLI version 2.x.x
   | Creating warehouse YAML file warehouse.yml ...
-  | Creating /Users/tom/.soda/env_vars.yml with example env vars in section soda_sql_tutorial
+  | Creating ~/.soda/env_vars.yml with example env vars in section postgres
   | Review warehouse.yml by running command
   |   cat warehouse.yml
-  | Review section soda_sql_tutorial in ~/.soda/env_vars.yml by running command
+  | Review section postgres in ~/.soda/env_vars.yml by running command
   |   cat ~/.soda/env_vars.yml
   | Then run the soda analyze command
 ```
-4. Optionally, use the following commands  to review the contents of the two YAML files you created. You do not need to adjust any contents as Soda SQL has already configured the warehouse connection details.
-* `cat ./warehouse.yml`
-* `cat ~/.soda/env_vars.yml`
+4. Optionally, use the following commands to review the contents of the two YAML files Soda SQL created. Soda SQL automatically lists the fields it requires, and pre-populates some of the values. 
+<br />
+Command:
+```shell
+cat warehouse.yml
+```
+Output:
+```shell
+name: postgres
+connection:
+  type: postgres
+  host: localhost
+  port: '5432'
+  username: env_var(POSTGRES_USERNAME)
+  password: env_var(POSTGRES_PASSWORD)
+  database: your_database
+  schema: public
+```
+Command:
+```shell
+cat ~/.soda/env_vars.yml
+```
 
 
 ## Prepare default tests
