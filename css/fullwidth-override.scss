@@ -1,0 +1,43 @@
+---
+---
+
+.side-bar {
+  @media (min-width: 50rem) {
+    transform: translateX(-237px);
+    z-index: 100;
+
+    .site-header {
+      transform: translateX(237px);
+
+      .site-title {
+        &::after {
+          content: "Back to docs"
+        }
+      }
+    }
+
+    &:hover {
+      transform: translateX(0);
+
+      .site-header {
+        transform: translateX(0);
+      }
+    }
+
+  }
+}
+
+.main {
+  @media (min-width: 50rem) {
+    margin-left: 0 !important;
+
+    .main-header {
+      width: 100% !important;
+    }
+
+    .main-content-wrap {
+      margin-left: 30px;
+      margin-right: 30px;
+    }
+  }
+}

@@ -5,8 +5,8 @@
     var $siteNav = $("#site-nav");
     var $mainHeader = $("#main-header");
     var $menuButton = $("#menu-button");
-    
-    $( "#search-input-inline" ).on('keypress', function( e ) { 
+
+    $( "#search-input-inline" ).on('keypress', function( e ) {
         e.preventDefault();
 
         if ($(window).width() < 800 && !$siteNav.hasClass("nav-open") ) {
