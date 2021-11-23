@@ -3,7 +3,26 @@
 
 .sl-elements-api {
   .sl-py-16{
-    padding-top: 0 !important;
+    // hacks the page content top padding
+    padding-top: 50px !important;
+  }
+
+  @media (min-width: 50rem) {
+    .sl-sticky {
+      // forces the sidebar to be max 256px and
+      // be fixed just the 'real' doc sidebar
+      max-width: 256px !important;
+      min-width: 256px !important;
+      padding-left: 0px !important;
+      position: fixed !important;
+      height: 100% !important;
+      z-index: 2 !important;
+    }
+
+    .sl-bg-canvas.sl-w-full {
+      // overrides the main content section
+      padding-left: 350px !important;
+    }
   }
 }
 

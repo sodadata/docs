@@ -10,8 +10,12 @@
       transform: translateX(237px);
 
       .site-title {
+        .site-logo {
+          width: 89px;
+        }
+
         &::after {
-          content: "Back to docs"
+          content: "Back to Help Center"
         }
       }
     }
@@ -33,11 +37,20 @@
 
     .main-header {
       width: 100% !important;
+      z-index: 5 !important;
     }
 
     .main-content-wrap {
-      margin-left: 30px;
-      margin-right: 30px;
+      margin-left: 20px;
+      margin-right: 20px;
+      padding-top: 80px;
     }
+  }
+
+  .breadcrumb-nav {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 355px;
   }
 }
