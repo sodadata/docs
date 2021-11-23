@@ -66,6 +66,10 @@ Example scan YAML<br />
 ![configure yaml](/assets/images/configure-yaml.png){:height="275px" width="275px"}
 7. With your configuration complete, [run your first scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql).
 
+#### Troubleshoot
+
+If, when you run `soda analyze` you get an an authentication error, check to see if you have another instance of postgres already running on port 5432. If so, try stopping or uninstalling the postgres instance, then run `soda analyze` again. 
+
 ## Create commands
 
 Use `soda create --help` for a list of all available data source types and options.
