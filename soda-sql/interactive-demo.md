@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda SQL interactive demo
-parent: soda-sql
+parent: Get started
 ---
 
 # Soda SQL interactive demo
