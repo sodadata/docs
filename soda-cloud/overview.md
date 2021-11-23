@@ -16,7 +16,7 @@ parent: Soda Cloud
 <p>&#10004;  Create and track data quality Incidents<br /></p>
 <br />
 
-![soda-cloud-logo](/assets/images/soda-cloud-overview.png){:height="840px" width="840px"}
+![soda-cloud-overview1](/assets/images/soda-cloud-overview1.png){:height="840px" width="840px"}
 
 <div class="docs-html-content">
     <section class="docs-section" style="padding-top:0">
