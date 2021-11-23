@@ -99,6 +99,8 @@
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Single sign-on with Soda Cloud
     page: soda-cloud/sso.md
+  - subtitle: Integrate with Alation
+    page: soda-cloud/integrate-alation.md
 
 - title: Reference
   page: soda/glossary.md
