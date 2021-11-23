@@ -1,7 +1,13 @@
 {
   "openapi": "3.0.2",
-  "info": { "title": "FastAPI", "version": "0.1.0" },
-  "servers": [{ "url": "https://reporting.cloud.soda.io" }],
+  "info": {
+    "title": "Soda Cloud Reporting API",
+    "description": "\nThis API allows authorised users to query data from Soda Cloud to build tool adoption and platform impact reporting\ndashboards.\n\nEach end point is documented and testable on this page.\n\nUntil further notice, the API requires that a username and password be provided according to the `HTTPBasic`\nsecurity protocol. More options will come in later iterations.\n\nWhen testing the API via the `/docs` endpoint you can provide those credentials by clicking on the \"Authorize\" button.\n\nMost HTTP request libraries should provide a handy way to provide username and password according to the scheme.\nWe provide an example below using `httpx` in Python.\n\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
+    "version": "0.0.0-a2"
+  },
+  "servers": [
+    { "url": "https://reporting.cloud.soda.io", "description": "Soda Cloud" }
+  ],
   "paths": {
     "/v0/ping": {
       "get": {
@@ -19,9 +25,9 @@
     },
     "/v0/adoption/sign_ups": {
       "post": {
-        "tags": ["Tool adoption"],
+        "tags": ["Tool Adoption"],
         "summary": "Sign-ups",
-        "description": "This endpoint returns sign-up events for the authenticated user's organization.\n\nTo avoid incomplete reporting, Soda currently updates this data once per day and does not include the current date (UTC).\n\nNOTE: The event tracking solutions does not currently track users who signed up via SSO.\n\nUsage\n-----\nUse this endpoint to build reports about Soda's adoption throughout your organization.\n\nReturns\n-------\nAn object of type `SignUpsResult` containing an array of `SignUpData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint returns sign-up events for the authenticated user's organization.\n\nTo avoid incomplete reporting, Soda currently updates this data once per day and does not include\nthe current date (UTC).\n\n**NOTE:** The event tracking solution does not currently track users who signed up via SSO.\n\nUsage\n-----\nUse this endpoint to build reports about Soda's adoption across your organization.\n\nReturns\n-------\nAn object of type `SignUpsResult` containing an array of `SignUpData`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.",
         "operationId": "sign_ups_v0_adoption_sign_ups_post",
         "responses": {
           "200": {
@@ -38,9 +44,9 @@
     },
     "/v0/adoption/sign_ins": {
       "post": {
-        "tags": ["Tool adoption"],
+        "tags": ["Tool Adoption"],
         "summary": "Sign-ins",
-        "description": "This endpoint provides the number of logins for a specific user per day.\n\nTo avoid incomplete reporting, Soda currently updates this data once per day and does not include the current date (UTC).\n\nNOTE: The event tracking solutions does not currently track users who signed up via SSO.\n\nUsage\n-----\nUse this endpoint to build reports about Soda's adoption and usage throughout your organization.\n\nReturns\n-------\nAn object of type `SignInsResult` containing an array of `SignInData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides the number of logins for a specific user per day.\n\nTo avoid incomplete reporting, Soda currently updates this data once per day and does not include\nthe current date (UTC).\n\n**NOTE:** The event tracking solution does not currently track users who signed up via SSO.\n\nUsage\n-----\nUse this endpoint to build reports about Soda's adoption throughout your organization.\n\nReturns\n-------\nAn object of type `SignInsResult` containing an array of `SignInData`\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.",
         "operationId": "sign_ins_v0_adoption_sign_ins_post",
         "responses": {
           "200": {
@@ -57,9 +63,9 @@
     },
     "/v0/adoption/daily_account_activity": {
       "post": {
-        "tags": ["Tool adoption"],
+        "tags": ["Tool Adoption"],
         "summary": "Daily account activity",
-        "description": "This endpoint provides a daily count of activity events for the authenticated user's organization.\n\nThe endpoint groups events into one of two groups: \"Level 0\" or \"Level 1\".\n\n**Level 0**: Activity of type \"Read\"/\"View\" (For example, view a dataset, view a monitor result.)\n\n**Level 1**: Activity of type \"Create\"/\"Update\" (For example, create a monitor, update a monitor configuration.)\n\nTo prevent incomplete reporting, Soda updates the data in this endpoint once per day and does not contain the current date.\n\nUsage\n-----\nUse this endpoint to build reports about Soda's adoption and usage throughout your organization.\n\nReturns\n-------\nAn object of type `DailyAccountActivityResult` containing an array of `DailyAccountActivityData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides a daily count of activity events for the authenticated user's organization.\n\nThe endpoint groups events into one of two groups: \"Level 0\" or \"Level 1\".\n\n**Level 0**: Activity of type **\"Read\"/\"View\"** (For example, view a dataset, view a monitor result.)\n**Level 1**: Activity of type **\"Create\"/\"Update\"** (For example, create a monitor, update a monitor configuration.)\n\nTo avoid incomplete reporting, Soda currently updates this data once per day and does not include\nthe current date (UTC).\n\nUsage\n-----\nUse this endpoint to build reports about Soda's adoption and usage throughout your organization.\n\nReturns\n-------\nAn object of type `DailyAccountActivityResult` containing an array of `DailyAccountActivityData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "daily_account_activity_v0_adoption_daily_account_activity_post",
         "responses": {
           "200": {
@@ -78,9 +84,9 @@
     },
     "/v0/impact/alerts_sent": {
       "post": {
-        "tags": ["Platform impact"],
+        "tags": ["Platform Impact"],
         "summary": "Alerts sent",
-        "description": "This endpoint provides a daily count of alerts Soda has sent to a specific user.\nThe endpoint groups alerts into one of three groups corresponding to the criticality level of the alert ('Info', 'Warning', 'Critical')\n.\n\nTo prevent incomplete reporting, Soda updates the data in this endpoint once per day and does not contain the current date.\n\nUsage\n-----\nUse this endpoint to understand the number of alerts that Soda has sent to your team members.\nYou may, however, prefer using the `/test_and_results` endpoint to examine exactly which tests\nfailed.\n\nReturns\n-------\nAn object of type `DailyAlertsSentResult` containing an array of `DailyAlertsSentData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides a daily count of alerts Soda has sent to a specific user.\n\nThe endpoint groups alerts into one of three groups corresponding to the criticality level of the alert\n(\"Info\", \"Warning\", \"Critical).\n\nTo avoid incomplete reporting, Soda currently updates this data once per day and does not include\nthe current date (UTC).\n\nUsage\n-----\nUser this endpoint to understand the number of alerts that Soda has sent to your team members.\nYou may, however, prefer using the `/test_and_results` endpoint to examine exactly which tests\nfailed.\n\nReturns\n-------\nAn object of type `DailyAlertsSentResult` containing an array of `DailyAlertsSentData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "alerts_sent_v0_impact_alerts_sent_post",
         "responses": {
           "200": {
@@ -99,9 +105,9 @@
     },
     "/v0/adoption/scans_run": {
       "post": {
-        "tags": ["Tool adoption"],
+        "tags": ["Tool Adoption"],
         "summary": "Scans run",
-        "description": "This endpoint provides a per-user daily count of scans that users run, as well as the number of test results that Soda has\nevaluated.\n\nUsage\n-----\nUse this endpoint to report about the adoption of Soda throughout your organization.\n\nReturns\n-------\nAn object of type `DailyAlertsSentResult` containing an array of `DailyAlertsSentData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides a per-user daily count of scans that users run, as well as the number of test\nresults that Soda has evaluated.\n\nUsage\n-----\nUse this endpoint to report about the adoption of Soda throughout your organization.\n\nReturns\n-------\nAn object of type `DailyAlertsSentResult` containing an array of `DailyAlertsSentData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "scans_run_v0_adoption_scans_run_post",
         "responses": {
           "200": {
@@ -120,7 +126,7 @@
       "post": {
         "tags": ["Coverage"],
         "summary": "Tests",
-        "description": "This endpoint provides a real-time list of all the tests that exist\nin your organization's account, as well as the datasets upon which each test depends.\n\nUsage\n-----\nUse this endpoint to enrich results from the `/datasets` or `/tests_and_results` endpoints. \n\nReturns\n-------\nAn object of type `TestsResult` containing an array of `TestsData` for each test.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides a real-time list of all the tests that exist in your organization's account,\nas well as the datasets upon which each test depends.\n\nUsage\n-----\nUse this endpoint to enrich results from the `/datasets` or `/tests_and_results` endpoints.\n\nReturns\n-------\nAn object of type `TestsResult` containing an array of `TestsData` for each test.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "tests_v0_coverage_tests_post",
         "responses": {
           "200": {
@@ -139,7 +145,7 @@
       "post": {
         "tags": ["Coverage"],
         "summary": "Datasets",
-        "description": "This endpoint provides information about all the datasets that your team has connected to your organization's Soda Cloud account.\n\nUsage\n-----\nUse this endpoint to review the number of datasets Soda Cloud accesses, including each dataset's most recent\nscan time and test failure counts.\n\nUse the data from this endpoint to enrich other endpoints' data such as `/dataset_health` and\n`/dataset_coverage`.\n\nReturns\n-------\nAn object of type `DatasetsResult` containing an array of `DatasetsData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides information about all the datasets that your team has connected to your organization's\nSoda Cloud account.\n\nUsage\n-----\nUse this endpoint to review the number of datasets Soda Cloud accesses, including each dataset's most recent scan\ntime and test failure counts.\n\nUse the data from this endpoint to enrich other endpoints' data such as `/dataset_health` and\n`/dataset_coverage`\n\nReturns\n-------\nAn object of type `DatasetsResult` containing and array of `DatasetsData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "datasets_v0_coverage_datasets_post",
         "responses": {
           "200": {
@@ -158,7 +164,7 @@
       "post": {
         "tags": ["Quality"],
         "summary": "Test results",
-        "description": "This endpoint provides a list of tests along with each test's historical evaluation results.\n\nUsage\n-----\nUse this endpoint to build reports that show the outcome of your tests over time. If you gathered high-level data from the `/dataset_health` and `/dataset_coverage` endpoints, you can use this endpoint\nto examine more granular data about tests that apply to each dataset.\n\nReturns\n-------\nAn object of type `TestsAndResultsResult` containing an array of `TestsAndResultsData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides a list of tests along with each test's historical evaluation results.\n\nUsage\n-----\nUse this endpoint to build reports that show the outcome of your tests over time. If you gathered high-level data\nfrom the `/dataset_health` and `/dataset_coverage` endpoints, you can use this endpoint to examine more granular\ndata about tests that apply to each dataset.\n\nReturns\n-------\nAn object of type `TestsAndResultsResult` containing an array of `TestsAndResultsData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "test_results_v0_quality_tests_and_results_post",
         "responses": {
           "200": {
@@ -179,7 +185,7 @@
       "post": {
         "tags": ["Quality"],
         "summary": "Dataset health",
-        "description": "This endpoint provides a daily measure of the health of each of your datasets. Soda calculates a dataset's health\n based on the number of tests that pass during a scan.\n\nUsage\n-----\nUse this endpoint to review the health of your datasets, and to see a high-level view of the more\ngranular information that the `/tests_and_results` endpoint provides.\n\nUse this endpoint in conjunction with the `/datasets` endpoint as the latter adds \ninformation about each dataset.\n\nReturns\n-------\nAn object of type `DatasetHealthResult` containing an array of `DatasetHealthData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides you with a daily measure of the health of each of your datasets. Soda calculated a dataset's\nhealth based on the number of tests that pass during a scan.\n\nUsage\n-----\nUse this endpoint to get review the health of your datasets, and to see a high-level view of the more granular\ninformation that the `/tests_and_results` endpoint provides.\n\nUse this endpoint in conjunction with the `/datasets` endpoint as the latter adds information about each\ndataset.\n\nReturns\n-------\nAn object of type `DatasetHealthResult` containing an array of `DatasetHealthData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "dataset_health_v0_quality_dataset_health_post",
         "responses": {
           "200": {
@@ -198,7 +204,7 @@
       "post": {
         "tags": ["Coverage"],
         "summary": "Dataset coverage",
-        "description": "This endpoint provides a daily measure of the test coverage of your datasets.\nIt derives a `relative_coverage_score` which compares the number of tests that apply to\na single dataset to other datasets connected to your organization's Soda Cloud account. (Refer to the `DatasetCoverageData` schema for more information.)\n\nUsage\n-----\nUse this endpoint to review the relative test coverage of your datasets, and to see a high-level view of the more\ngranular information that the `/tests_and_results` endpoint provides.\n\nUse this endpoint in conjunction with the `/datasets` endpoint as the latter adds\ninformation about each dataset.\n\nReturns\n-------\nAn object of type `DatasetCoverageResult` containing an array of `DatasetCoverageData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides a daily measure of the test coverage of your datasets.\nIt derives a `relative_coverage_score` which compares the number of tests that apply to a single dataset to\nother datasets connected to your organization's Soda Cloud account. (Refer to the `DatasetCoverageData` schema\nfor more information.)\n\nUsage\n-----\nUse this endpoint to review the relative test coverage of your datasets, and to see a high-level view of the more\ngranular information that the `/tests_and_results` endpoint provides.\n\nThis endpoint is best used in conjunction with the `/datasets` endpoint as the latter augments the level of\ninformation about each dataset.\n\nReturns\n-------\nAn object of type `DatasetCoverageResult` containing an array of `DatasetCoverageData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "dataset_coverage_v0_coverage_dataset_coverage_post",
         "responses": {
           "200": {
@@ -249,7 +255,7 @@
             "description": "Number of Level 1 events."
           }
         },
-        "description": "Daily count of activity events for the authenticated user's organization.\n\nSoda groups events into two groups: \"Level 0\" or \"Level 1\"\n\n    - Level 0: Activity of type \"Read\"/\"View\" (For example, view a dataset, view monitor result.)\n    - Level 1: Activity of type \"Create/Update\" (For example, create a monitor, update a monitor configuration.)"
+        "description": "Daily count of activity events for the authenticated user's organization.\n\nSoda groups events into two groups: \"Level 0\" or \"Level 1\".\nEvent are grouped into \"Level 0\" and \"Level 1\":\n\n    - Level 0: Activity of type \"Read\"/\"View\" (For example, view a dataset, view monitor result.)\n    - Level 1: Activity of type \"Create/Update\" (For example, create a monitor, update a monitor configuration)"
       },
       "DailyAccountActivityResult": {
         "title": "DailyAccountActivityResult",
@@ -420,7 +426,7 @@
             "description": "Proportion of tests and monitors that passed."
           }
         },
-        "description": "Dataset health information containing counts of passed or failed tests per scan date."
+        "description": "Dataset health information containing counts of passing or failing tests (warning or critical) per scan date."
       },
       "DatasetHealthResult": {
         "title": "DatasetHealthResult",
@@ -443,7 +449,7 @@
           "dataset_id": {
             "title": "Dataset Id",
             "type": "string",
-            "description": "\nIdentifier (UUID) of the dataset in Soda Cloud.\nJoin with the results of the `datasets` query for more information.\n        "
+            "description": "\nIdentifier (UUID) of the dataset in Soda Cloud. Join with the results of the `datasets` endpoint for more\ninformation.\n        "
           },
           "is_deleted": {
             "title": "Is Deleted",
@@ -458,10 +464,10 @@
           "relative_coverage_score": {
             "title": "Relative Coverage Score",
             "type": "string",
-            "description": "\nA score derived by comparing the number of tests that apply to a single dataset to the number\nof tests that apply to other datasets in your organization's Soda Cloud account.\nSoda applies the labels \"good\", \"medium\", and \"poor\" based on a 3-ntile split.\n"
+            "description": "\nA score derived by comparing the number of tests that apply to a single dataset to the number of tests\nthat apply to other datasets in your organization's Soda Cloud account. Soda applies the labels \"good\", \"medium\", and\n\"poor\" based onf a 3-ntile split.\n        "
           }
         },
-        "description": "Information about a dataset including whether a dataset is active or deleted, and test\ncoverage metrics."
+        "description": "Information about a dataset including whether a dataset is active or delected,\nand test coverage metrics."
       },
       "DatasetsData": {
         "title": "DatasetsData",
@@ -538,7 +544,7 @@
           "number_of_scans": {
             "title": "Number Of Scans",
             "type": "integer",
-            "description": "Number of successfully-ended scans run by a user on the reported on date."
+            "description": "Number of successfully-ended scans run by a user on the reported date."
           },
           "number_of_test_results": {
             "title": "Number Of Test Results",
@@ -546,7 +552,7 @@
             "description": "Number of test results for all scans."
           }
         },
-        "description": "Number of scans run and tests executed by a user on a specific day."
+        "description": "Number of scans run and tests executed by a user on a specific report date."
       },
       "ScansRunResult": {
         "title": "ScansRunResult",
@@ -638,17 +644,17 @@
           "type": {
             "title": "Type",
             "type": "string",
-            "description": "\nType of Soda test.\nFor example, the type is 'metric' if the test uses a metric in Soda Cloud; 'external' if test is evaluated by Soda SQL.\n        "
+            "description": "\nType of Soda test. For example, the type is \"metric\" if the test uses a metric in Soda Cloud;\n\"external\" if the test is evaluated by Soda SQL.\n        "
           },
           "test_id": {
             "title": "Test Id",
             "type": "string",
-            "description": "Identifier (UUID) of a test in Soda Cloud."
+            "description": "Identifier (UUID) of a est in Soda Cloud."
           },
           "name": {
             "title": "Name",
             "type": "string",
-            "description": "Name of a specific test in Soda Cloud or in the `name` tag in a Soda SQL YAML file."
+            "description": "Name of a specific test in Soda Cloud or in the `name:` tag in a Soda SQL YAML file."
           },
           "created_at": {
             "title": "Created At",
@@ -660,7 +666,7 @@
             "title": "Dataset Ids",
             "type": "array",
             "items": { "type": "string" },
-            "description": "\nIdentifier (UUID) of the dataset in Soda Cloud.\nJoin with the results of the `datasets` query for more information.\n        "
+            "description": "\nList of identifiers (UUID) of the datasets in Soda Cloud.\nJoin with the results from the `datasets` endpoint for more information.\n        "
           },
           "test_creator_info": {
             "title": "Test Creator Info",
@@ -716,17 +722,17 @@
           "type": {
             "title": "Type",
             "type": "string",
-            "description": "\nType of Soda test.\nFor example, the type is 'metric' if the test uses a metric in Soda Cloud; 'external' if test is evaluated by Soda SQL.\n        "
+            "description": "\nType of Soda test. For example, the type is \"metric\" if the test uses a metric in Soda Cloud;\n\"external\" if the test is evaluated by Soda SQL.\n        "
           },
           "test_id": {
             "title": "Test Id",
             "type": "string",
-            "description": "Identifier (UUID) of a test in Soda Cloud."
+            "description": "Identifier (UUID) of a est in Soda Cloud."
           },
           "name": {
             "title": "Name",
             "type": "string",
-            "description": "Name of a specific test in Soda Cloud or in the `name` tag in a Soda SQL YAML file."
+            "description": "Name of a specific test in Soda Cloud or in the `name:` tag in a Soda SQL YAML file."
           },
           "created_at": {
             "title": "Created At",
@@ -738,7 +744,7 @@
             "title": "Dataset Ids",
             "type": "array",
             "items": { "type": "string" },
-            "description": "\nIdentifier (UUID) of the dataset in Soda Cloud.\nJoin with the results of the `datasets` query for more information.\n        "
+            "description": "\nList of identifiers (UUID) of the datasets in Soda Cloud.\nJoin with the results from the `datasets` endpoint for more information.\n        "
           },
           "test_creator_info": {
             "title": "Test Creator Info",
@@ -751,7 +757,7 @@
             "description": "\nDict of information about the test's owner.\nRefer to the `UserInfo` schema for more information about each field.\n        "
           }
         },
-        "description": "Contains information about a test and its associated dataset."
+        "description": "Contains information about a test and its associated datasets."
       },
       "TestsResult": {
         "title": "TestsResult",
@@ -808,7 +814,7 @@
           "country": {
             "title": "Country",
             "type": "string",
-            "description": "ISO 3166-1 alpha-2 country code of the user's country as registered when the user created the account."
+            "description": "\nISO 3166-1 alpha-2 country code of the user's country as registered when the user created the account.\n        "
           }
         },
         "description": "User information data."
@@ -817,4 +823,3 @@
     "securitySchemes": { "HTTPBasic": { "type": "http", "scheme": "basic" } }
   }
 }
-
