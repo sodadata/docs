@@ -1,61 +1,47 @@
 ---
 layout: default
 title: Quick start for Soda SQL
-parent: Soda SQL
+parent: Get started
 redirect_from: /soda-sql/getting-started/5_min_tutorial.html
 ---
 
 # Quick start tutorial for Soda SQL
 
-Use your command-line interface to **connect** Soda SQL to your database, prepare default **tests** that will surface "bad" data, then run your first **scan** in a few minutes. 
-<br />
+Use your command-line interface to **connect** Soda SQL to a sample data source, create and examine the **tests** that will surface "bad" data in a dataset, then run your first **scan** in a few minutes. 
+<br/>
 <br />
 
 ![tutorial-happy-path](/assets/images/tutorial-happy-path.png){:height="600px" width="600px"}
 
+## Prerequisites
+* a recent version of <a href="https://docs.docker.com/get-docker/" target="_blank">Docker</a>
+* <a href="https://docs.docker.com/compose/install/" target="_blank">Docker Compose</a> that is able to run docker-compose files version 3.9 and later
 
-## Create a sample warehouse (optional)
+## Create a sample warehouse
 
 In the context of Soda SQL, a warehouse is a type of data source that represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. 
 
-If you do not have access to a warehouse on your system, you can clone a GitHub repository and use Docker to build a sample PostgreSQL warehouse that contains <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC School Bus Breakdowns and Delays</a> data so that you can set up your Soda SQL CLI tool and see it in action.
+For this tutorial, use Docker to build a sample PostgreSQL warehouse from a <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">Soda GitHub repo</a>. The warehouse contains <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC School Bus Breakdowns and Delays</a> data that you can use to see the Soda SQL CLI tool in action. All the instructions in this tutorial reference this sample warehouse in the commands.
 
-All the instructions in this tutorial reference this sample warehouse in the commands.
+From the command-line, run the following command:
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sodadata/tutorial-demo-project/main/scripts/setup.sh)"
+```
 
-1. Clone the <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">tutorial-demo-project</a> GitHub repo to your local environment.
-2. In the command-line, navigate into the tutorial project.
-```shell
-cd tutorial-demo-project
-```
-3. Use the following command to build the Docker containers. The `-d` flag means "detached" which means that you do not need to keep the terminal running for the docker containers to continue to run.)
-```shell
-docker-compose up -d
-``` 
-4. Validate that the setup is complete. 
-```shell
-docker ps -a | grep soda
-``` 
-This command yields output like the following.
-```shell
-CONTAINER ID   IMAGE                                    COMMAND                  CREATED       STATUS         PORTS                                       NAMES
-90b555b29ccd   tutorial-demo-project_soda_sql_project   "/bin/bash"              3 hours ago   Exited (2) 3 seconds ago   0.0.0.0:8001->5432/tcp, :::8001->5432/tcp   tutorial-demo-project_soda_sql_project_1
-d7950300de7a   postgres                                 "docker-entrypoint.s…"   3 hours ago   Up 3 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   tutorial-demo-project_soda_sql_tutorial_db_1
-```
-5. To run Soda commands and test your dataset, you need to access the container's shell. From the project's root dir where the `docker-compose.yml` file exists, run the following command.
-```shell
-docker-compose run --rm soda_sql_project "cd /workspace && /bin/bash"
-```
 This command yields a prompt like the following.
 ```shell
 root@90461262c35e:/workspace# 
 ```
 
+Alternatively, follow the <a href="https://github.com/sodadata/tutorial-demo-project#set-up-manually" target="_blank">manual instructions</a> to clone the repo and set up the sample warehouse.
+
+
 
 ## Connect Soda SQL to the warehouse
 
-The instructions below reference the sample warehouse in the commands. There are many [install packages for Soda SQL]({% link soda-sql/installation.md %}#install) that correspond to different warehouse types; this tutorial uses PostgreSQL. Customize the example commands to use your own PostgreSQL warehouse connection details, if you like.  
+The instructions below reference the sample warehouse in the commands. There are many [install packages for Soda SQL]({% link soda-sql/installation.md %}#install) that correspond to different warehouse types; this tutorial uses PostgreSQL.   
 
-1. From your command-line interface, verify your [installation]({% link soda-sql/installation.md %}) of Soda SQL using the `soda` command. 
+1. From your command-line interface, verify the installation of Soda SQL in the demo environment using the `soda` command. 
 ```shell
 Usage: soda [OPTIONS] COMMAND [ARGS]...
 ```
@@ -76,7 +62,7 @@ Output:
 ```shell
   | Soda CLI version 2.x.x
   | Creating warehouse YAML file warehouse.yml ...
-  | Creating ~/.soda/env_vars.yml with example env vars in section postgres
+  | Adding env vars for postgres to /root/.soda/env_vars.yml
   | Review warehouse.yml by running command
   |   cat warehouse.yml
   | Review section postgres in ~/.soda/env_vars.yml by running command
@@ -105,11 +91,23 @@ Command:
 ```shell
 cat ~/.soda/env_vars.yml
 ```
+Output:
+```shell
+postgres:
+  POSTGRES_USERNAME: Eg johndoe
+  POSTGRES_PASSWORD: Eg abc123
+```
+5. If you were connecting to your own warehouse, you would [follow the detailed instructions]({% link soda-sql/configure.md %}) to edit the `warehouse.yml` and `env_vars.yml` file and provide values specific to your warehouse so that Soda SQL could access it. <br />
+<br />
+Because this tutorial uses a sample warehouse, you can use the demo `warehouse.yml` and `env_vars.yml` files that connect to our sample NYC School Bus Breakdowns and Delays data. Use the following commands to navigate to the demo directory.
+```shell
+cd ..
+cd new_york_bus_breakdowns_demo
+```
 
+## Create and examine tests
 
-## Prepare default tests
-
-1. Use the `soda analyze` command to get Soda SQL to sift through the contents of your warehouse and automatically prepare a scan YAML file for each table. Soda SQL puts the YAML files in a new `/tables` directory in the warehouse directory you created. Read more about [scan YAML]({% link soda-sql/scan-yaml.md %}) files.<br />
+1. Use the `soda analyze` command to get Soda SQL to sift through the contents of the warehouse and automatically prepare a scan YAML file for each dataset it discovers. Soda SQL puts the YAML files in a new `/tables` directory in the `new_york_bus_breakdowns_demo` project directory. Read more about [scan YAML]({% link soda-sql/scan-yaml.md %}) files.<br />
 <br />
 Command:
 ```shell
@@ -117,32 +115,30 @@ soda analyze
 ```
 Output:
 ```
+  | 2.x.xxx
   | Analyzing warehouse.yml ...
   | Querying warehouse for tables
   | Creating tables directory tables
-  | Executing SQL query:
-SELECT table_name
-FROM information_schema.tables
-WHERE lower(table_schema)='public'
-  | SQL took 0:00:00.007998
-  | Creating tables/demodata.yml ...
-  | Executing SQL query:
+  | Executing SQL query: 
+SELECT table_name 
+FROM information_schema.tables 
+WHERE lower(table_schema)='new_york'
+  | SQL took 0:00:00.068775
 ...
-  | SQL took 0:00:00.000647
-  | Next run 'soda scan warehouse.yml tables/demodata.yml' to calculate measurements and run tests
+  | SQL took 0:00:00.030745
+  | Creating tables/breakdowns.yml ...
+  | Next run 'soda scan warehouse.yml tables/breakdowns.yml' to calculate measurements and run tests
 ```
-2. Use the following command to review the contents of the new scan YAML file that Soda SQL created and named `demodata.yml`.<br />
+2. Use the following command to review the contents of the new scan YAML file that Soda SQL created and named `breakdowns.yml`.<br />
 
 Command:
-
 ```shell
-cat ./tables/demodata.yml
+cat tables/breakdowns.yml
 ```
 <br />
 Output:
-
 ```yaml
-table_name: demodata
+table_name: breakdowns
 metrics:
   - row_count
   - missing_count
@@ -151,91 +147,117 @@ metrics:
   - values_percentage
   - invalid_count
   - invalid_percentage
-  - min_length
-  - max_length
+  - valid_count
+  - valid_percentage
   - avg_length
-  - min
-  - max
+  - max_length
+  - min_length
   - avg
   - sum
-  - variance
+  - max
+  - min
   - stddev
+  - variance
 tests:
   - row_count > 0
 columns:
-  id:
-    valid_format: uuid
+  school_year:
+    valid_format: date_inverse
     tests:
       - invalid_percentage == 0
-  feepct:
-    valid_format: number_percentage
+  bus_no:
+    valid_format: number_whole
     tests:
-      - invalide_percentage == 0
+      - invalid_percentage <= 20
+  schools_serviced:
+    valid_format: number_whole
+    tests:
+      - invalid_percentage <= 15
 ```
 
-Note the three tests that Soda SQL configured in `demodata.yml`. When it created this file, Soda SQL pre-populated it with the `test` and `metric` configurations it deemed useful based on the data in the table it analyzed. Read more about the [Anatomy of the scan YAML file]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file).
+When it created this file, Soda SQL pre-populated it with four tests it deemed useful based on the data in the dataset it analyzed. Read more about [Defining tests]({% link soda-sql/tests.md %}) and the [Anatomy of the scan YAML file]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file).
 
-#### Troubleshoot
+| Test | Applies to | Description |
+| ---- | ---------- | ----------- |
+| `row_count > 0` | breakdowns dataset | Tests that the dataset contains rows, that it is not empty. |
+| `invalid_percentage == 0` | `school_year` column in the breakdowns dataset | Tests that all values in the column adhere to the `date_inverse` format. Read more about [valid format values]({% link soda-sql/sql_metrics.md %}#valid-format-values). |
+| `invalid_percentage <= 20` | `bus_no` column in the breakdowns dataset | Tests that at least 80% of the values in the column are whole numbers. |
+| `invalid_percentage <= 15` | `schools_serviced` column in the breakdowns dataset | Tests that at least 85% of the values in the column are whole numbers. |
 
-If, when you run `soda analyze` you get an an authentication error, check to see if you have another instance of postgres already running on port 5432. If so, try stopping or uninstalling the postgres instance, then run `soda analyze` again. 
 
 ## Run a scan
 
-1. Use the `soda scan` command to run tests against the data in the demodata warehouse. As input, the command requires the name of the warehouse to scan, and the filepath and name of the table in the warehouse. <br />
+1. Use the `soda scan` command to run tests against the data in the breakdowns dataset. As input, the command requires the name of the warehouse to scan, and the filepath and name of the dataset in the warehouse. <br />
 <br />
 Command:
 ```shell
-soda scan warehouse.yml tables/demodata.yml
+soda scan warehouse.yml tables/breakdowns.yml
 ```
-2. Examine the output of the command, in particular the lines at the bottom that indicate the results of the tests Soda SQL ran against your data. In this example, all the tests passed which indicates that there are no issues with the data.<br />
+2. Examine the output of the command, in particular the **Scan summary** at the bottom that indicates the results of the tests Soda SQL ran against your data. In this example, all the tests passed which indicates that there are no issues with the data.<br />
 <br />
 Output:
 ```shell
-  | Soda CLI version ...
-  | Scanning demodata in ./soda_sql_tutorial ...
+  | 2.x.xx
+  | Scanning tables/breakdowns.yml ...
   | Environment variable POSTGRES_PASSWORD is not set
-  | Executing SQL query:
-SELECT column_name, data_type, is_nullable
-FROM information_schema.columns
-WHERE lower(table_name) = 'demodata'
-  AND table_catalog = 'sodasql'
-  AND table_schema = 'public'
-  | SQL took 0:00:00.029199
-  | 6 columns:
-  |   id character varying
-  |   name character varying
-  |   size integer
-  |   date date
-  |   feepct character varying
-  |   country character varying
-  | Query measurement: schema = id character varying, name character varying, size integer, date date, feepct character varying, country character varying
-  | Executing SQL query:
-SELECT
-  COUNT(*),
-  COUNT(id),
-  MIN(LENGTH(id)),
-  MAX(LENGTH(id)),
-  COUNT(name),
-  MIN(LENGTH(name)),
-  MAX(LENGTH(name)),
-  COUNT(size),
-...
-  | missing_count(country) = 0
-  | values_percentage(country) = 100.0
-  | All good. 38 measurements computed. No tests failed.
+  | There is no value specified for valid_values for column school_year
+  | There is no value specified for valid_min for column school_year
+  | There is no value specified for valid_max for column school_year
+  | There is no value specified for valid_values for column bus_no
+  | There is no value specified for valid_min for column bus_no
+  | There is no value specified for valid_max for column bus_no
+  | There is no value specified for valid_values for column schools_serviced
+  | There is no value specified for valid_min for column schools_serviced
+  | There is no value specified for valid_max for column schools_serviced
+  | No Soda Cloud account configured
+  | Executing SQL query: 
+SELECT column_name, data_type, is_nullable 
+FROM information_schema.columns 
+WHERE lower(table_name) = 'breakdowns' 
+  AND table_catalog = 'sodasql_tutorial' 
+  AND table_schema = 'new_york'
+  | SQL took 0:00:00.062634
+  ...
+  | Test test(row_count > 0) passed with measurements {"expression_result": 199998, "row_count": 199998}
+  | Test column(school_year) test(invalid_percentage == 0) passed with measurements {"expression_result": 0.0, "invalid_percentage": 0.0}
+  | Test column(bus_no) test(invalid_percentage <= 20) passed with measurements {"expression_result": 19.99919999199992, "invalid_percentage": 19.99919999199992}
+  | Test column(schools_serviced) test(invalid_percentage <= 15) passed with measurements {"expression_result": 12.095620956209562, "invalid_percentage": 12.095620956209562}
+  | Executed 2 queries in 0:00:03.291901
+  | Scan summary ------
+  | 239 measurements computed
+  | 4 tests executed
+  | All is good. No tests failed.
+  | Exiting with code 0
 ```
-3. If you used Docker to create a sample PostgreSQL warehouse for this tutorial, be sure to execute the following commands to stop the container.
+3. (Optional) Open the `breakdowns.yml` file in a text editor, then adjust the test for the `school_year` column to `invalid_percentage == 5`, then save the change to the file.
+4. (Optional) Run the same scan again to see the output of a failed test.<br />
+Command:
 ```shell
-$ docker stop soda_sql_tutorial_db
-$ docker volume rm soda_sql_tutorial_postgres
+soda scan warehouse.yml tables/breakdowns.yml
 ```
+Output:
+```shell
+...
+  | Test test(row_count > 0) passed with measurements {"expression_result": 199998, "row_count": 199998}
+  | Test column(school_year) test(invalid_percentage == 5) failed with measurements {"expression_result": 0.0, "invalid_percentage": 0.0}
+  | Test column(bus_no) test(invalid_percentage <= 20) passed with measurements {"expression_result": 19.99919999199992, "invalid_percentage": 19.99919999199992}
+  | Test column(schools_serviced) test(invalid_percentage <= 15) passed with measurements {"expression_result": 12.095620956209562, "invalid_percentage": 12.095620956209562}
+  | Executed 2 queries in 0:00:02.454419
+  | Scan summary ------
+  | 239 measurements computed
+  | 4 tests executed
+  | 1 of 4 tests failed:
+  |   Test column(school_year) test(invalid_percentage == 5) failed with measurements {"expression_result": 0.0, "invalid_percentage": 0.0}
+  | Exiting with code 1
+```
+  5. If you like, adjust or add more tests to the `breakdowns.yml` file to further explore the things that Soda SQL can do. To exit the workspace in your command-line interface, type `exit` then press enter. Consult the [Metrics]({% link soda/metrics.md %}), [Define tests]({% link soda-sql/tests.md %}), and [Scans]({% link soda/scan.md %}) documentation for information and information on how to test data quality with Soda SQL.
+
 
 ## Go further
 
-* Consult [Configure Soda SQL]({% link soda-sql/configure.md %}) for details on setting up a non-PostgreSQL version of Soda SQL.
+* Consult [Configure Soda SQL]({% link soda-sql/configure.md %}) for details on setting up Soda SQL in your own environment.
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Learn more about the [scan YAML file]({% link soda-sql/scan-yaml.md %}) and how to [run scans]({% link soda/scan.md %}#run-a-scan-in-soda-sql).
-* (Experimental) Access [historic measurements]({% link soda/metrics.md %}#historic-metrics-experimental) from the Cloud Metric Store in tests you define in your scan YAML file.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

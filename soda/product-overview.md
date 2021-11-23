@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda product overview
-parent: Soda
+parent: Get started
 ---
 
 # Soda product overview
