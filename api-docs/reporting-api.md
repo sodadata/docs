@@ -13,4 +13,3 @@ fullwidth: true
     layout="sidebar"
 ></elements-api>
 
-<br />
