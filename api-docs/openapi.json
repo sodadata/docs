@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Soda Cloud Reporting API",
-    "description": "\nThis API allows authorised users to query data from Soda Cloud to build tool adoption and platform impact reporting\ndashboards.\n\nEach end point is documented and testable on this page.\n\nUntil further notice, the API requires that a username and password be provided according to the `HTTPBasic`\nsecurity protocol. More options will come in later iterations.\n\nWhen testing the API via the `/docs` endpoint you can provide those credentials by clicking on the \"Authorize\" button.\n\nMost HTTP request libraries should provide a handy way to provide username and password according to the scheme.\nWe provide an example below using `httpx` in Python.\n\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
+    "description": "\nThis API enables you to query data from your Soda Cloud account. Use the data to build reporting dashboards that\ncommunicate how users in your organization are adopting and making use of Soda Cloud.\n\nAuthentication\n-----\nTo use the API, you must provide a username and password (your Soda Cloud login credentials) according to\nthe `HTTPBasic` security protocol.\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required,\nin the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication\ncredentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
     "version": "0.0.0-a2"
   },
   "servers": [
@@ -86,7 +86,7 @@
       "post": {
         "tags": ["Platform Impact"],
         "summary": "Alerts sent",
-        "description": "This endpoint provides a daily count of alerts Soda has sent to a specific user.\n\nThe endpoint groups alerts into one of three groups corresponding to the criticality level of the alert\n(\"Info\", \"Warning\", \"Critical).\n\nTo avoid incomplete reporting, Soda currently updates this data once per day and does not include\nthe current date (UTC).\n\nUsage\n-----\nUser this endpoint to understand the number of alerts that Soda has sent to your team members.\nYou may, however, prefer using the `/test_and_results` endpoint to examine exactly which tests\nfailed.\n\nReturns\n-------\nAn object of type `DailyAlertsSentResult` containing an array of `DailyAlertsSentData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides a daily count of alerts Soda has sent to a specific user.\n\nThe endpoint groups alerts into one of three groups corresponding to the criticality level of the alert\n(\"Info\", \"Warning\", \"Critical).\n\nTo avoid incomplete reporting, Soda currently updates this data once per day and does not include\nthe current date (UTC).\n\nUsage\n-----\nUse this endpoint to understand the number of alerts that Soda has sent to your team members.\nYou may, however, prefer using the `/test_and_results` endpoint to examine exactly which tests\nfailed.\n\nReturns\n-------\nAn object of type `DailyAlertsSentResult` containing an array of `DailyAlertsSentData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "alerts_sent_v0_impact_alerts_sent_post",
         "responses": {
           "200": {
@@ -145,7 +145,7 @@
       "post": {
         "tags": ["Coverage"],
         "summary": "Datasets",
-        "description": "This endpoint provides information about all the datasets that your team has connected to your organization's\nSoda Cloud account.\n\nUsage\n-----\nUse this endpoint to review the number of datasets Soda Cloud accesses, including each dataset's most recent scan\ntime and test failure counts.\n\nUse the data from this endpoint to enrich other endpoints' data such as `/dataset_health` and\n`/dataset_coverage`\n\nReturns\n-------\nAn object of type `DatasetsResult` containing and array of `DatasetsData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides information about all the datasets that your team has connected to your organization's\nSoda Cloud account.\n\nUsage\n-----\nUse this endpoint to review the number of datasets Soda Cloud accesses, including each dataset's most recent scan\ntime and test failure counts.\n\nUse the data from this endpoint to enrich other endpoints' data such as `/dataset_health` and\n`/dataset_coverage`\n\nReturns\n-------\nAn object of type `DatasetsResult` containing an array of `DatasetsData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "datasets_v0_coverage_datasets_post",
         "responses": {
           "200": {
@@ -464,10 +464,10 @@
           "relative_coverage_score": {
             "title": "Relative Coverage Score",
             "type": "string",
-            "description": "\nA score derived by comparing the number of tests that apply to a single dataset to the number of tests\nthat apply to other datasets in your organization's Soda Cloud account. Soda applies the labels \"good\", \"medium\", and\n\"poor\" based onf a 3-ntile split.\n        "
+            "description": "\nA score derived by comparing the number of tests that apply to a single dataset to the number of tests\nthat apply to other datasets in your organization's Soda Cloud account. Soda applies the labels \"good\", \"medium\", and\n\"poor\" based on a 3-ntile split.\n        "
           }
         },
-        "description": "Information about a dataset including whether a dataset is active or delected,\nand test coverage metrics."
+        "description": "Information about a dataset including whether a dataset is active or deleted,\nand test coverage metrics."
       },
       "DatasetsData": {
         "title": "DatasetsData",
