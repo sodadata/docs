@@ -29,8 +29,8 @@
       gtag('js', new Date());
 
       gtag('config', '{{ site.ga_tracking }}'{% unless site.ga_tracking_anonymize_ip == nil %}, { 'anonymize_ip': true }{% endunless %});
-    </script> 
- 
+    </script>
+
   {% endif %}
 
   {% if site.search_enabled != false %}
@@ -43,5 +43,15 @@
   {% seo %}
 
   {% include head_custom.html %}
+
+  {% if page.apidoc %}
+  <script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css">
+  <link rel="stylesheet" href="{{ '/css/stoplight-elements-override.css' | relative_url }}"></script>
+  {% endif %}
+
+  {% if page.fullwidth %}
+    <link rel="stylesheet" href="{{ '/css/fullwidth-override.css' | relative_url }}"></script>
+  {% endif %}
 
 </head>

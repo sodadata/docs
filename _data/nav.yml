@@ -120,6 +120,12 @@
   - subtitle: Support
     page: soda/support.md
 
+- title: API Documentation
+  page: api-docs/reporting-api.md
+  subcategories:
+  - subtitle: Reporting API
+    page: api-docs/reporting-api.md
+
 - title: Release notes
   page: release-notes/all.md
   subcategories:
