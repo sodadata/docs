@@ -35,8 +35,15 @@ Collaborating as a team on Soda Cloud means you can quickly share the lastest te
 1. In Soda Cloud, navigate to the **Datasets** dashboard, then select the dataset you wish to share.
 2. Copy the URL of the dataset, then paste it into a message to the teammates who have access to your organization's Soda Cloud account.
 
-![share dataset](/assets/images/share-dataset.png){:height="500px" width="500px"}
+![share dataset](/assets/images/share-dataset.png){:height="700px" width="700px"}
 
+## Create and manage Incidents
+
+[Create an Incident]({% link soda-cloud/incidents.md %}) in Soda Cloud to track your team's investgation and resolution of the data quality issue. 
+
+If you have integrated your Soda Cloud account with a Slack workspace, you can use an Incident's built-in ability to create an incident-specific Slack channel where you and your team can collaborate on the issue investigation. 
+
+![monitor-results-incidents](/assets/images/monitor-results-incidents.png){:height="700px" width="700px"}
 
 ## Go further
 

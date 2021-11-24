@@ -101,6 +101,7 @@ The values for these fields are unique to your organization and are provided to 
 
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Learn more about [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}).
+* Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 <br />
 
 ---

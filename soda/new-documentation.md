@@ -8,6 +8,10 @@ parent: Soda
 
 <br />
 
+#### November 25, 2021
+
+* Added documentation to accompany the new [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}) feature. Collaborate with your team in Soda Cloud and in Slack to investigate and resolve data quality issues.
+
 #### November 23, 2021
 
 * Revised the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_tutorial.md %}) to use the same demo repo as the [interactive demo]({% link soda-sql/interactive-demo.md %}).

@@ -43,6 +43,7 @@ The roles that define who can add or make changes to a [dataset]({% link soda/gl
 | Edit monitors associated with the dataset                                |   ✓   |    ✓    |    ✓   |        |
 | Edit dataset details such as scan schedule and attributes                |   ✓   |    ✓    |    ✓   |        |
 | Edit dataset settings such as enable column metrics or sample data       |   ✓   |    ✓    |    ✓   |        |
+| Create and track Incidents associated with one or more monitor results   |   ✓   |    ✓    |    ✓   |        |
 | Change the roles of users in an individual dataset                       |   ✓   |    ✓    |        |        |
 | Add a dataset                                                            |   ✓   |         |        |        |
 | Connect to a new data source                                             |   ✓   |         |        |        |
@@ -104,6 +105,7 @@ There are two ownership roles in Soda Cloud that identify the user that owns a d
 
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * [Invite team members]({% link soda-cloud/collaborate.md %}#invite-your-team-members) to join your organization's Soda Cloud account.
+* Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 <br />
 
 ---

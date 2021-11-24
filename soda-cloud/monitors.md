@@ -101,6 +101,7 @@ Read more about **[Validity rules]({% link soda/metrics.md %}#column-configurati
 ## Go further
 
 * Learn more about [how scans work]({% link soda/scan.md %}#scan-output-in-soda-cloud) in Soda Cloud.
+* Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 * Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
