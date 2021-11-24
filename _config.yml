@@ -25,3 +25,5 @@ aux_links_new_tab: true
 
 collections:
   - release-notes
+
+ga_tracking: UA-118158875-3

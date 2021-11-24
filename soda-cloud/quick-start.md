@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Quick start for Soda Cloud
-parent: Soda Cloud
+parent: Get started
 redirect_from: /soda-cloud.html
 ---
 

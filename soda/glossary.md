@@ -19,6 +19,9 @@ An out-of-the-box metric that you can configure in a scan YAML file. There are t
 
 By contrast, you can use [custom metrics]({% link soda-sql/sql_metrics.md %}#custom-metrics), also known as SQL metrics, to define SQL queries in a scan YAML file in Soda SQL.
 
+### cloud metric store
+The place in Soda Cloud that stores the values of measurements collected over time as Soda SQL executes tests.  
+
 ### column
 A column in a dataset in your data source.
 
@@ -51,6 +54,9 @@ See [built-in metric](#built-in-metric).
 
 ### env_vars YAML
 The file in your local user home directory that stores your data source login credentials.
+
+### historic metric
+A metric to use in Soda SQL tests which rely on historic measurements stored in the Cloud Metric Store. See [Historic metrics (Experimental)](#historic-metrics-experimental). 
 
 ### measurement
 {% include glossary-measurement.md %}
