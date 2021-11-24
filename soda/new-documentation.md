@@ -8,6 +8,11 @@ parent: Soda
 
 <br />
 
+
+#### November 25, 2021
+
+* Added new API docs for the [Soda Cloud Reporting API]({% link api-docs/reporting-api.md %}).
+
 #### November 23, 2021
 
 * Revised the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_tutorial.md %}) to use the same demo repo as the [interactive demo]({% link soda-sql/interactive-demo.md %}).

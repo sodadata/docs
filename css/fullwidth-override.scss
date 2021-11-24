@@ -1,0 +1,56 @@
+---
+---
+
+.side-bar {
+  @media (min-width: 50rem) {
+    transform: translateX(-237px);
+    z-index: 100;
+
+    .site-header {
+      transform: translateX(237px);
+
+      .site-title {
+        .site-logo {
+          width: 89px;
+        }
+
+        &::after {
+          content: "Back to Help Center"
+        }
+      }
+    }
+
+    &:hover {
+      transform: translateX(0);
+
+      .site-header {
+        transform: translateX(0);
+      }
+    }
+
+  }
+}
+
+.main {
+  @media (min-width: 50rem) {
+    margin-left: 0 !important;
+
+    .main-header {
+      width: 100% !important;
+      z-index: 5 !important;
+    }
+
+    .main-content-wrap {
+      margin-left: 20px;
+      margin-right: 20px;
+      padding-top: 80px;
+    }
+  }
+
+  .breadcrumb-nav {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 355px;
+  }
+}
