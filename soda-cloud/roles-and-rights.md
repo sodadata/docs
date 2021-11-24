@@ -39,11 +39,11 @@ The roles that define who can add or make changes to a [dataset]({% link soda/gl
 | Rights                                                                   | Admin | Manager | Editor | Viewer |
 |--------------------------------------------------------------------------|-------|---------|--------|--------|
 | View Monitor Results of monitors associated with the dataset             |   ✓   |    ✓    |    ✓   |    ✓   |
+| Create and track Incidents associated with one or more monitor results   |   ✓   |    ✓    |    ✓   |    ✓   |
 | Create monitors associated with the dataset                              |   ✓   |    ✓    |    ✓   |        |
 | Edit monitors associated with the dataset                                |   ✓   |    ✓    |    ✓   |        |
 | Edit dataset details such as scan schedule and attributes                |   ✓   |    ✓    |    ✓   |        |
 | Edit dataset settings such as enable column metrics or sample data       |   ✓   |    ✓    |    ✓   |        |
-| Create and track Incidents associated with one or more monitor results   |   ✓   |    ✓    |    ✓   |        |
 | Change the roles of users in an individual dataset                       |   ✓   |    ✓    |        |        |
 | Add a dataset                                                            |   ✓   |         |        |        |
 | Connect to a new data source                                             |   ✓   |         |        |        |
