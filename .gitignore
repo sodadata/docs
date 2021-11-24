@@ -2,4 +2,4 @@ _site
 vendor
 .jekyll-cache
 .bundle/**
-.DS_Store
+**.DS_Store
