@@ -6,35 +6,43 @@ apidoc: true
 fullwidth: false
 ---
 
-!! This tutorial assumes that you have some knowledge of Python and are familiar with `pandas` and HTTP request libraries such as `httpx`.
-!!
-!! The code provided in this tutorial is compatible with versions of Python 3.8 and later.
+# Getting from reporting API to overview dashboards
 
-Today, Soda announced its Reporting API Beta to the public INSERT LINK TO BLOGPOST. If you've been using the platform for a while, you are probably wondering if your team is using it and how healthy your data is.
+**NOTE:** 
+- This tutorial assumes that you have some knowledge of Python and are familiar with `pandas` and HTTP request libraries such as `httpx`.
+- The code provided in this tutorial is compatible with versions of Python 3.8 and later.
 
-But don't worry, the reporting API has got you covered! In this step-by-step guide, we will show you how you can start building dashboards on top of the Reporting API in a matter of minutes.
+If you've been using the platform for a while, you are probably wondering if your team is using it and how healthy your data is.
+
+Don't worry, the reporting API has got you covered! In this step-by-step guide, we will show you how you can start building dashboards on top of the Reporting API in a matter of minutes.
 
 
 ## High-Level Components
 
 By the end of this tutorial, you will have built a system similar to the system that the following diagram represents
-![Overview of API to Dashboards system](assets/images/rep-api-system-diagram.png)
+![Overview of API to Dashboards system](/assets/images/rep-api-system-diagram.png)
 
 ## Familiarize yourself with the API
 
 You can find the API documentation in the [Reporting API Documentation Section]({% link api-docs/reporting-api.md %}). The documentation is always consistent with the code and is versioned, so no surprises!
 
-INSERT SCREEN CAP OF DOCS WHEN DEPLOYED
+![Overview of API documentation](/assets/images/rep-api-api-docs-screenshot.png)
 
 Each endpoint is listed under broad, use-case categories such as Tool Adoption, Coverage, and Data Quality.
 
 Each endpoint's documentation includes:
 
--   a high-level explanation of what the endpoint will give you **INSERT CAPTURE**
--   an example response payload **INSERT CAPTURE**
--   detailed field definitions for each schema response **INSERT GIF*
+-   a high-level explanation of what the endpoint will give you
+![Endpoint overview doc](/assets/images/rep-api-endpoint-overview.png)
 
-You can also "Try Out" each endpoint directly from the documentation pages **GIF + CHECK IF THIS WILL BE POSSIBLE IN THE SOLUTION WE OFFER**
+-   an example response payload
+![Endpoint response sample](/assets/images/rep-api-endpoint-result-sample.png)
+
+-   detailed field definitions for each schema response
+![Response Schema and Field definitions](/assets/images/rep-api-field-definitions.png)
+
+You can also "Try Out" each endpoint directly from the documentation pages 
+![Endpoint response sample](/assets/images/rep-api-endpoint-result-sample.png)
 
 # Start Building: Set up your Python Environment
 
@@ -149,9 +157,6 @@ datasets.head()
 
 The output appears similar to the example output below:
 
--   [ ] TODO: Check that we render this as pretty markdown table when we move it in our blog and/or docs.
-
-
 | dataset_id                           | dataset_name | tags | number_of_failed_tests | is_deleted | last_scan_time                   |
 | ------------------------------------ | ------------ | ---- | ---------------------- | ---------- | -------------------------------- |
 | 0301f146-3a0f-4437-b8cf-974936cbffda | subscription | []   | 0                      | False      | 2021-09-16T12:43:59.493882+00:00 |
@@ -241,7 +246,7 @@ def push_to_db(
     df.to_sql(qualified_target_table_name, con=engine, if_exists=if_exists, index=False)
 ```
 
-!! If you use a different database, you may need to modify the credentials class to hold the appropriate parameters, as this differs from database to database.
+If you use a different database, you may need to modify the credentials class to hold the appropriate parameters, as this differs from database to database.
 
 Now, move the two sets of data into the warehouse:
 
@@ -296,17 +301,17 @@ In Redash, the alias `dataset_name::filter` allows us to set up a [query-filter]
 
 Plot the "% passing test" metric from the `dataset_health` over time. In Redash, we set up the plot as follows:
 
-![% passing tests metric in Redash](assets/images/rep-api-pcent-passing-tests-redash.png)
+![% passing tests metric in Redash](/assets/images/rep-api-pcent-passing-tests-redash.png)
 
 In order to contextualize this chart, we could make another plot that displays the number of tests implemented on each dataset over time, as well as a project-wide benchmark, using the `median` calculation we derived in the [SQL query above](#enrich-your-dataset_health_report-table).
 
-!! You could plot all of these on the same chart, but it is a bit too crowded for our taste, so we made two plots, instead.
+You could plot all of these on the same chart, but it is a bit too crowded for our taste, so we made two plots, instead.
 
-![Plot of dataset test coverage over time](assets/images/rep-api-test-setup-over-time.png)
+![Plot of dataset test coverage over time](/assets/images/rep-api-test-setup-over-time.png)
 
 By setting the median number of tests metric as a line, you can also get an idea of the test coverage of your dataset relative to other datasets in your project.
 
-!! You can also get similar information from the `dataset_coverage` endpoint (see API Documentation INSERT LINK)
+You can also get similar information from the `dataset_coverage` endpoint (see API Documentation INSERT LINK)
 
 Make one final plot from this query to get an overview of the latest dataset health results for your project. For this plot, we set up a slightly different SQL query to capture only the latest-known scan date for each dataset.
 
@@ -331,15 +336,15 @@ order by 2
 
 Finally, we make a simple table visualization that we use to quickly identify datasets whose health is poor or great. The setup of the visualization looks like the following:
 
-![Dataset health last snapshot overview visualization](assets/images/rep-api-dataset-health-last-snapshot.png)
+![Dataset health last snapshot overview visualization](/assets/images/rep-api-dataset-health-last-snapshot.png)
 
 ### Add the Plots to a Dashboard
 
 This is specific to Redash, but once you have created each visualization from a query, you can add them all to a dashboard that your users can access and interact with. Our dashboard looks something like the following:
 
-!! We added another quick query from the `dataset_coverage` endpoint. We didn't cover data extraction as it follows the same principles and code as outlined above.
+We added another quick query from the `dataset_coverage` endpoint. We didn't cover data extraction as it follows the same principles and code as outlined above.
 
-![Example of a finished overview dashboard in Redash](assets/images/rep-api-all-in-dashboard.png)
+![Example of a finished overview dashboard in Redash](/assets/images/rep-api-all-in-dashboard.png)
 
 ### **One Last Thing**
 
