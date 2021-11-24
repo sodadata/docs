@@ -1,6 +1,6 @@
 ---
-name: "v0.2.1"
-date: 2021-11-15
+name: "v0.1.0"
+date: 2021-09-06
 products:
   - soda-spark
 ---

@@ -7,7 +7,7 @@ products:
 
 * Core: Use abstract method instead of exceptions. (#566)
 * Core: Save scan results to a json file. (#569)
-* Core: Introduce Open Telemetry tracing. (off by default) (#563)
+* Core: Introduce Open Telemetry tracing. (opt-out by default) (#563)
 * Core: Support pathlib.Purepath for yaml files. (#573)
 * dbt: Add dbt package to parse manifest and run_results. (#572)
 
