@@ -1,94 +1,80 @@
 ---
 layout: default
-title: Getting from Reporting API to Overview Dashboards
-parent: API Docs
+title: Build a reporting dashboard
+parent: API Documentation
 apidoc: true
 fullwidth: false
 ---
 
-# Getting from reporting API to overview dashboards
+# Build a reporting dashboard 
 
-**NOTE:** 
-- This tutorial assumes that you have some knowledge of Python and are familiar with `pandas` and HTTP request libraries such as `httpx`.
-- The code provided in this tutorial is compatible with versions of Python 3.8 and later.
+This example aims to help you build a Soda Cloud reporting dashboard using the Reporting API. The dashboard enables your team to understand how healthy your data is and how the team is using Soda Cloud. The following diagram represents the system this example builds.
 
-If you've been using the platform for a while, you are probably wondering if your team is using it and how healthy your data is.
+![Overview of API to Dashboards system](/assets/images/rep-api-system-diagram.png){:height="900px" width="900px"}
 
-Don't worry, the reporting API has got you covered! In this step-by-step guide, we will show you how you can start building dashboards on top of the Reporting API in a matter of minutes.
+[Prerequisites](#prerequisites)<br />
+[Set up a virtual Python environment](#set-up-a-virtual-python-environment)<br />
+[Set up Python ingestion](#set-up-python-ingestion)<br />
+[Capture data from your Soda Cloud account](#capture-data-from-your-soda-cloud-account)<br />
+[Move the captured data into a SQL warehouse](#move-the-captured-data-into-a-sql-warehouse)<br />
+[Build a Dataset Health-Over-Time dashboard](#build-a-dataset-health-over-time-dashboard)<br />
+[Go further](#go-further)<br />
+<br />
+<br />
+
+## Prerequisites 
+* You have some knowledge of Python and are familiar with `pandas` and HTTP request libraries such as `httpx`.
+* You have installed Python 3.8 or later.
+* You have a Soda Cloud account.
+* You have [installed Soda SQL]({% link soda-sql/installation.md %}) in your environment and [connected]({% link soda-cloud/connect_to_cloud.md %}) it to your Soda Cloud account.
+* You have used Soda SQL to run at least one scan against data in a dataset.
+* You are familiar with the [Soda Cloud Reporting API]({% link api-docs/reporting-api.md %}). 
 
 
-## High-Level Components
+## Set up a virtual Python environment
 
-By the end of this tutorial, you will have built a system similar to the system that the following diagram represents
-![Overview of API to Dashboards system](/assets/images/rep-api-system-diagram.png)
-
-## Familiarize yourself with the API
-
-You can find the API documentation in the [Reporting API Documentation Section]({% link api-docs/reporting-api.md %}). The documentation is always consistent with the code and is versioned, so no surprises!
-
-![Overview of API documentation](/assets/images/rep-api-api-docs-screenshot.png)
-
-Each endpoint is listed under broad, use-case categories such as Tool Adoption, Coverage, and Data Quality.
-
-Each endpoint's documentation includes:
-
--   a high-level explanation of what the endpoint will give you
-![Endpoint overview doc](/assets/images/rep-api-endpoint-overview.png)
-
--   an example response payload
-![Endpoint response sample](/assets/images/rep-api-endpoint-result-sample.png)
-
--   detailed field definitions for each schema response
-![Response Schema and Field definitions](/assets/images/rep-api-field-definitions.png)
-
-You can also "Try Out" each endpoint directly from the documentation pages 
-![Endpoint response sample](/assets/images/rep-api-endpoint-result-sample.png)
-
-# Start Building: Set up your Python Environment
-
-1.  Following best practice, set up a Python virtual environment for each project you have so that you can keep your setups isolated and avoid library clashes. The tool you use to manage and create your virtual environments is entirely up to you. We'll show one example using the [`venv`](https://docs.python.org/3/library/venv.html) built-in module.
-
+{% raw %}
+1.
+{% endraw %}As per best practice, set up a Python virtual environment for each project you have so that you can keep your setups isolated and avoid library clashes. The example below uses the built-in [`venv`](https://docs.python.org/3/library/venv.html) module.
 ```bash
 python3 -m venv ~/venvs/soda-reporting-api-ingest
 ```
-
-    2. Once created, activate it with the following command:
-
+<br />
+{% raw %}
+2.
+{% endraw %}Activate the virtual environment using the following command.
 ```bash
 source ~/venvs/soda-reporting-api-ingest
 ```
-
-    3. Depending on your shell and the folder you work in, the output appears like this in your terminal:
-
+Depending on your shell and the folder you work in, the output appears similar to the following output.
 ```bash
 (soda-reporting-api-ingest) -> ~/workspace/soda_reporting_ingestion git(main):
 ```
-
-To deactivate your virtual environment using `venv` , run the following command:
-
+<br />
+{% raw %}
+3.
+{% endraw %}When you have completed this tutorial, you can deactivate your virtual environment using the following command.
 ```bash
 deactivate
 ```
 
-## Set Up Python Ingestion
+## Set up Python ingestion
 
-The first thing to do is connect to the API endpoints you want via an HTTP request library. In this example, we have chosen to use [`httpx`](https://www.python-httpx.org/) as it is evolving as the next-generation HTTP client for Python, but feel free to use any alternative you like.
-
-To install it in your freshly-created Python environment, execute the following:
-
+{% raw %}
+1.
+{% endraw %}To connect to the API endpoints you want to acccess, use an HTTP request library. This tutorial uses [`httpx`](https://www.python-httpx.org/), but you can use any HTTP request library you prefer. Use the following command to install `httpx`.
 ```bash
 pip install httpx pandas sqlalchemy
 ```
-
-In our example, we show you how to move data into a [Snowflake](https://www.snowflake.com/) warehouse. Our code has an additional requirement on the [`snowflake-sqlalchemy`](https://pypi.org/project/snowflake-sqlalchemy/) [SQLAlchemy](https://www.sqlalchemy.org/) plugin. If you use another warehouse, make sure you can find a corresponding plugin, or check [SQLAlchemy built-in](https://docs.sqlalchemy.org/en/14/dialects/) database compatibility.
-
-
-Alternatively, you can list and save all those requirements in a `requirements.txt` file and have pip install them via the `pip install -r requirements.txt` command.
-
-
-Next, we must configure a few variables to hold static information such as the API URL and the endpoints we want to connect to in an easy-to-access Python dictionary. Since Soda Reporting API is not open to the entire web, and we need to know the organization you belong to, we also make a data class to hold your Soda Cloud authentication credentials.
-
-Still in beta, you can authenticate to the API via HTTP Basic Authentication using your Soda Cloud username and password.
+<br />
+{% raw %}
+2.
+{% endraw %}This examples moves the data it captures from your Soda Cloud account into a [Snowflake](https://www.snowflake.com/) warehouse; it requires the [`snowflake-sqlalchemy`](https://pypi.org/project/snowflake-sqlalchemy/) [SQLAlchemy](https://www.sqlalchemy.org/) plugin. If you use a different type of warehouse, find a corresponding plugin, or check [SQLAlchemy built-in](https://docs.sqlalchemy.org/en/14/dialects/) database compatibility. Alternatively, you can list and save all the requirements in a `requirements.txt` file and install them from the command-line using `pip install -r requirements.txt`.
+<br />
+<br />
+{% raw %}
+3.
+{% endraw %}Configure a few variables in a Python dictionary to contain static information such as the API URL and the endpoints to which you want to connect. Also, because the Soda Cloud Reporting API is not open to the entire web and it needs to identify your Soda Cloud account, create a data class to contain your Soda Cloud authentication credentials as per the following. You authenticate to the Reporting API using HTTP Basic Authentication and your Soda Cloud username and password.
 
 ```python
 from dataclasses import dataclass
@@ -104,14 +90,16 @@ ENDPOINTS = {
     "datasets": "/coverage/datasets",
 }
 
-# you can already assign defaults in the classes if you prefer.
+# you can assign defaults in the classes, if you prefer
 @dataclass
 class ApiAuth:
 	soda_username: str
 	soda_password: str
 ```
-
-As you may have seen from the [API Documentation](#familiarize-yourself-with-the-api), all the payloads have the following structure.
+<br />
+{% raw %}
+4.
+{% endraw %}All the Reporting API payloads have the following structure.
 
 ```json
 {
@@ -119,16 +107,13 @@ As you may have seen from the [API Documentation](#familiarize-yourself-with-the
   "data": ...
 }
 ```
-
-In most cases, the `data` object is a `list` of `dicts` but for one of the endpoints, namely the `dataset_coverage` endpoint, it is a `dict` of `dicts`.
-
-We must also define a function called `get_results` which issues the HTTP request and returns a well-formed [`pandas`](https://pandas.pydata.org/) `DataFrame`. We chose to use `pandas` as it is widely used in the Python data community and allows for easy transformation and database interaction, but feel free to use something else if it makes sense in your setup.
+In most cases, the `data` object is a `list` of `dicts` but for the `dataset_coverage` endpoint, it is a `dict` of `dicts`. Therefore, you must define a function called `get_results` which issues the HTTP request and returns a well-formed pandas DataFrame.
 
 ```python
 def get_results(url: str, api_credentials: ApiAuth) -> pd.DataFrame:
 	request_result = httpx.post(url, auth=(api_credentials.soda_username, api_credentials.soda_password))
 
-	# check that the response is good. A good response has a 200 status co
+	# check that the response is good
 	if request_result.status_code == 200:
 		result_json = request_result.json().get("data", {})
 		return pd.DataFrame.from_records(result_json)
@@ -136,9 +121,11 @@ def get_results(url: str, api_credentials: ApiAuth) -> pd.DataFrame:
 		raise httpx.RequestError(f"{request_result.status_code=}, {request_result.json()=}")
 ```
 
-## Capture Your Organization's Datasets Report
+## Capture data from your Soda Cloud account
 
-Start by capturing the `datasets` endpoint since it is a good starting point for what we want to do later.
+{% raw %}
+1.
+{% endraw %} Use the following code to capture data from the `datasets` endpoint.
 
 ```python
 api_credentials = ApiAuth(soda_username='fizz@soda.io', soda_password='fizzIsMoreThanBuzzAtSoda')
@@ -148,37 +135,41 @@ datasets = get_results(
 	api_credentials
 )
 ```
+<br />
 
-Since the `dataset` object we just loaded is a `pandas.DataFrame` , we can view its `head` with the following `pandas` command.
+{% raw %}
+2.
+{% endraw %} Since the `dataset` object is a `pandas.DataFrame`, view its `head` with the following `pandas` command.
 
 ```python
 datasets.head()
 ```
 
-The output appears similar to the example output below:
+The output appears similar to the following example.
 
-| dataset_id                           | dataset_name | tags | number_of_failed_tests | is_deleted | last_scan_time                   |
+```shell
+| dataset_id                           | dataset_name | tags | number_of_failed_tests | is_deleted | last_scan_time                   | 
 | ------------------------------------ | ------------ | ---- | ---------------------- | ---------- | -------------------------------- |
 | 0301f146-3a0f-4437-b8cf-974936cbffda | subscription | []   | 0                      | False      | 2021-09-16T12:43:59.493882+00:00 |
 | 3927e0eb-e543-4ef5-9626-08cb220cc43a | esg          | []   | 1                      | False      | 2021-07-05T09:26:48.948338+00:00 |
 | 39628650-59f5-4801-8dfe-5b063e5d611c | products     | []   | 3                      | False      | 2021-11-04T08:13:15.173895+00:00 |
 | 3b6b8f89-c450-4eb0-b910-92a29a0757a9 | booleancheck | []   | 0                      | False      | 2021-08-25T12:42:22.133490+00:00 |
 | 450f5de3-3b79-4fe5-a781-3e7441e06a70 | customers    | []   | 3                      | False      | 2021-11-04T08:12:43.519556+00:00 |
+```
+<br />
 
-
-Before we move the data to the database, make sure that the content of the `tags` column is compatible with most SQL databases. Since tags in Soda are a list of strings, it makes sense to convert the array into a string of comma-separated strings. In `pandas` we do it like this:
+{% raw %}
+3.
+{% endraw %} Ensure that the content of the `tags` column is compatible with most SQL databases. Because tags in Soda are a list of strings, convert the array into a string of comma-separated strings.
 
 ```python
 datasets["tags"] = datasets["tags"].str.join(',')
 ```
+<br />
 
-## Capture Your Organization's Dataset Health Report
-
-Now that we have your datasets info with human-readable names, whether or not they are active, and such, we can capture the convenient `dataset_health` information from the reporting API.
-
-The `dataset_health` tracks the number of passing (`info`), `warning` or `critical` tests per dataset and per scan date, and calculates a `percentage_of_passing_tests` to use as your dataset health score.
-
-Now that we have functionalized the code, we can get data from another endpoint, as we only need to change point to a different key in out endpoint `dict` :
+{% raw %}
+4.
+{% endraw %} The `dataset_health` endpoint tracks the number of tests that passed per dataset per scan date and calculates a `percentage_of_passing_tests` to use as your dataset health score. Capture the data from this endpoint as the following.
 
 ```python
 dataset_health = get_results(
@@ -189,9 +180,9 @@ dataset_health = get_results(
 dataset_health.head()
 ```
 
-The output should be similar to the following example:
+The output appears similar to the following example.
 
-
+```shell
 | dataset_id                           | scan_date  | critical | info | warning | number_of_tests | percentage_passing_tests |
 | ------------------------------------ | ---------- | -------- | ---- | ------- | --------------- | ------------------------ |
 | 0301f146-3a0f-4437-b8cf-974936cbffda | 2021-09-16 | 0        | 1    | 0       | 1               | 100.000000               |
@@ -199,21 +190,21 @@ The output should be similar to the following example:
 | 3927e0eb-e543-4ef5-9626-08cb220cc43a | 2021-06-25 | 1        | 5    | 0       | 6               | 83.333333                |
 | 3927e0eb-e543-4ef5-9626-08cb220cc43a | 2021-06-26 | 2        | 4    | 0       | 6               | 66.666667                |
 | 3927e0eb-e543-4ef5-9626-08cb220cc43a | 2021-06-27 | 1        | 5    | 0       | 6               | 83.333333                |
+```
+<br />
+
+The results from the second query produce a `dataset_id`, but no name or any of the information you get from the `datasets` query. When you build a dashboard, you can join the two results so that you can present the `dataset_name` in the reporting dashboard, rather than the less human-friendly `dataset_id`.
 
 
-At this point, you may want to skip ahead to [Move the datasets to your warehouse](#move-the-datasets-into-your-sql-warehouse) if you plan to transform the data in your warehouse rather than in Python. As you can see, the results from the second query only give you a `dataset_id` but no name or any of the information you get from the `datasets` query. When you build a dashboard, you will probably want to have the two results joined so that you can present the `dataset_name` to your stakeholders rather than a less human-friendly `dataset_id`.
+## Move the captured data into a SQL warehouse
 
-We consider it best practice to do the transformations (the T of ELT) in SQL using tools like [dbt](https://www.getdbt.com/), and keep your Python logic to just the L of ELT. Therefore, we load this data into a warehouse and add to it later in the [Build your dashboard step](#build-a-dataset-health-overtime-report).
+Having captured the Soda Cloud data that your Analytics Engineers need to compose dashboards, move the data into the storage-and-compute space that your reporting tools use, such as a SQL warehouse. This example uses a [Snowflake](https://www.snowflake.com/) warehouse and leverages `pandas`'s [`to_sql()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_sql.html?highlight=to_sql#pandas.DataFrame.to_sql) method, which itself leverages the database abstraction Python library known as [`SQLAlchemy`](https://www.sqlalchemy.org/).
+<br />
+<br />
 
-## Move the Datasets into Your SQL Warehouse
-
-Now that you have the data pieces your Analytics Engineers need to compose dashboards, move them into a storage-and-compute space that powers your reporting tools, such as a SQL warehouse.
-
-In this example, we use [Snowflake](https://www.snowflake.com/) and leverage `pandas`'s [`to_sql()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_sql.html?highlight=to_sql#pandas.DataFrame.to_sql) method, which itself leverages the database abstraction Python library known as [`SQLAlchemy`](https://www.sqlalchemy.org/).
-
-Since `to_sql()` works on top of a `SQLAlchemy` engine, it is likely that your database is either supported as a [built-in database](https://docs.sqlalchemy.org/en/14/dialects/), or via plugins, as is the case for Snowflake. However, feel free to use any other set of tools, or generate `INSERT` statements programmatically, if you prefer.
-
-First, define a data class to hold the database credentials and a convenient function that allows us to move data into a database table:
+{% raw %}
+1.
+{% endraw %} Define a data class to contain the warehouse credentials and a function that enables you to move data into a table. If you use a non-Snowflake warehouse, you may need to modify the credentials class to contain the appropriate parameters.
 
 ```python
 from sqlalchemy import create_engine
@@ -245,31 +236,28 @@ def push_to_db(
     engine = create_engine(db_url_string)
     df.to_sql(qualified_target_table_name, con=engine, if_exists=if_exists, index=False)
 ```
+<br />
 
-If you use a different database, you may need to modify the credentials class to hold the appropriate parameters, as this differs from database to database.
-
-Now, move the two sets of data into the warehouse:
+{% raw %}
+2.
+{% endraw %} Move the two sets of data into the warehouse.
 
 ```python
 push_to_db(SnowflakeCredentials(), datasets, 'datasets_report')
 push_to_db(SnowflakeCredentials(), dataset_health, 'dataset_health_report')
 ```
 
-If all goes well, your data should now be waiting for you in your chosen warehouse 🎉.
+## Build a Dataset Health-Over-Time dashboard
 
-## Build a Dataset Health-Over-Time Report
+To build a dashboard, this example uses [Redash](https://redash.io/), an open-source, self-hosted service. You may wish to use a different solution such as Metabase, Lightdash, Looker, or Tableau. To complete the data transformations, this example performs simple transformations directly in Redash, but you may wish to use a transformation tool such as [dbt™](https://www.getdbt.com/) instead.
+<br />
+<br />
 
-In this tutorial, we use [Redash](https://redash.io/), an open-source, self-hosted service that is sufficient for the simple dashboard we want to build. You and your team might already use another open-source BI solution such as Metabase or Lightdash or more feature-rich solutions such as Looker or Tableau.
+{% raw %}
+1.
+{% endraw %} Because humans will read these dashboards, use a `join` to enrich the `dataset_health` data with the `datasets` data so as to extract the dataset's name. This example also adds a [CTE](https://learnsql.com/blog/what-is-cte/) that enables you to derive the total number of tests in your account at any given time, and the median number of tests to plot some benchmarks in the visualization.
 
-You may also have a different approach regarding where to do transformations. We recommend preparing your reporting tables so that very little SQL or business logic exists in the BI tool, and, instead, use a transformation tool such as [dbt](https://www.getdbt.com/). However, to keep this tutorial on the shorter side, we do a few simple transformations directly in the BI tool to illustrate our point, butdo not let that break any of your preferred best practices!
-
-### Enrich Your dataset_health_report Table
-
-As in the data snippets above, the data we get from the `dataset_health` endpoint only contains the `dataset_id`. IDs are great for machines, less so for humans. Since humans will consume these dashboards, we will enrich the `dataset_health` data with the `datasets` data so that we can get its name. In SQL, this is done with a `join`.
-
-Our reporting tool for this tutorial is [Redash](https://redash.io/), which allows us to add a quick SQL transformation on the way towards visualization. We also add a quick [CTE](https://learnsql.com/blog/what-is-cte/) that allows us to derive the total number of tests in our account at any given time, as well as the median number of tests to plot some benchmarks in our visualization:
-
-```plsql
+```sql
 with descriptives as (
     select
         scan_date,
@@ -295,27 +283,34 @@ join reporting_api.datasets_report datasets
 
 where datasets.is_deleted = false
 ```
-### Make Some Plots
+<br />
 
-In Redash, the alias `dataset_name::filter` allows us to set up a [query-filter](https://redash.io/help/user-guide/querying/query-filters) that we can use to filter the whole dashboard.
-
-Plot the "% passing test" metric from the `dataset_health` over time. In Redash, we set up the plot as follows:
+{% raw %}
+2.
+{% endraw %} In Redash, this example uses the alias `dataset_name::filter` to set up a [query-filter](https://redash.io/help/user-guide/querying/query-filters) to filter the whole dashboard. Plot the "% passing test" metric from the `dataset_health` over time. In Redash, this example sets up the plot as per the following image.
 
 ![% passing tests metric in Redash](/assets/images/rep-api-pcent-passing-tests-redash.png)
 
-In order to contextualize this chart, we could make another plot that displays the number of tests implemented on each dataset over time, as well as a project-wide benchmark, using the `median` calculation we derived in the [SQL query above](#enrich-your-dataset_health_report-table).
+<br />
 
-You could plot all of these on the same chart, but it is a bit too crowded for our taste, so we made two plots, instead.
+{% raw %}
+3.
+{% endraw %} Make a second plot that displays the number of tests implemented on each dataset over time, as well as a project-wide benchmark, using the median calculation we derived in the SQL query above. Use two other metrics: 
+* "# of tests on dataset" 
+* "median number of tests in project". 
+
+<br />
+By setting the median number of tests metric as a line, you get some insight into the test coverage of your dataset relative to other datasets in your project. You can also get similar information from the [`dataset_coverage` endpoint]({% link api-docs/reporting-api.md %}#/operations/dataset_coverage_v0_coverage_dataset_coverage_post).
 
 ![Plot of dataset test coverage over time](/assets/images/rep-api-test-setup-over-time.png)
 
-By setting the median number of tests metric as a line, you can also get an idea of the test coverage of your dataset relative to other datasets in your project.
+<br />
 
-You can also get similar information from the `dataset_coverage` endpoint (see API Documentation INSERT LINK)
+{% raw %}
+4.
+{% endraw %} Make a third plot to get an overview of the latest Dataset Health results for your project. For this plot, the SQL query captures only the last-known scan date for each dataset.
 
-Make one final plot from this query to get an overview of the latest dataset health results for your project. For this plot, we set up a slightly different SQL query to capture only the latest-known scan date for each dataset.
-
-```plsql
+```sql
 select
     dataset_name,
     percentage_passing_tests,
@@ -334,29 +329,34 @@ qualify row_number() over (partition by dataset_name order by scan_date desc) = 
 order by 2
 ```
 
-Finally, we make a simple table visualization that we use to quickly identify datasets whose health is poor or great. The setup of the visualization looks like the following:
+<br />
+
+{% raw %}
+5.
+{% endraw %} Lastly, make a table visualization to identify the health of your datasets, as per the following image.
 
 ![Dataset health last snapshot overview visualization](/assets/images/rep-api-dataset-health-last-snapshot.png)
 
-### Add the Plots to a Dashboard
+<br />
 
-This is specific to Redash, but once you have created each visualization from a query, you can add them all to a dashboard that your users can access and interact with. Our dashboard looks something like the following:
-
-We added another quick query from the `dataset_coverage` endpoint. We didn't cover data extraction as it follows the same principles and code as outlined above.
+{% raw %}
+6.
+{% endraw %} Once you have created each visualization from a query, you can add them all to a dashboard that your colleagues can access. In Redash, the example dashboard appears as per the image below and includes a fourth query drawn from the `dataset_coverage` endpoint. 
 
 ![Example of a finished overview dashboard in Redash](/assets/images/rep-api-all-in-dashboard.png)
 
-### **One Last Thing**
+## Go further
 
-We thought it would be even nicer to share the code snippets as a Python script that you can simply run and modify at will. Access the [reporting API examples repo](https://github.com/sodadata/reporting-api-examples), clone it, then get started in a matter of minutes.
+* Access the [Reporting API examples reposotpru](https://github.com/sodadata/reporting-api-examples) in GitHub to get all the code snippets as a Python script that you can run and modify at will. Clone the repo, then get started in minutes.
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Open issues on the [Reporting API examples repository](https://github.com/sodadata/reporting-api-examples) in GitHub.
+<br />
+<br />
 
-# Get involved!
+---
+<br />
+*Last modified on {% last_modified_at %}*
+<br />
+<br />
 
-At Soda, we love feedback! If we didn't do a good job at explaining any of the steps or you have any other feedback, let us know.
-
--   Join our [Slack community](https://join.slack.com/t/soda-community/shared_invite/zt-pf67xl6u-n3wexBNDl71VC6vK8fSPjg). If you want to talk about this guide or the reporting API, be sure to join the #reporting-api channel.
--   Open issues on the [reporting API examples repo](https://github.com/sodadata/reporting-api-examples)
--   DM @Bastien Boutonnet directly on Slack
-
-Happy reporting!
-
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.

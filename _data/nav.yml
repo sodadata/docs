@@ -123,6 +123,8 @@
   subcategories:
   - subtitle: Reporting API
     page: api-docs/reporting-api.md
+  - subtitle: Build a reporting dashboard
+    page: api-docs/reporting-api-to-overview-dashboards.md
 
 - title: Release notes
   page: release-notes/all.md

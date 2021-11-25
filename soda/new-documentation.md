@@ -8,9 +8,10 @@ parent: Soda
 
 <br />
 
-#### November 25, 2021
+#### November 24, 2021
 
 * Added new API docs for the [Soda Cloud Reporting API]({% link api-docs/reporting-api.md %}).
+* Added instructions to [Build a reporting dashboard]({% link api-docs/reporting-api-to-overview-dashboards.md %}) using the Soda Cloud Reporting API.
 
 #### November 23, 2021
 
