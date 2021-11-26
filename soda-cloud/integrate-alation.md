@@ -59,17 +59,17 @@ SODA_API_KEY_SECRET=<your Soda Cloud private key>
 
 | Field | Retrieve value from |
 | ----- | ------------------- |
-| name  | a name you choose as an identifier for an integration between Soda Cloud and a data catalog |
-|soda: <br />    datasource_id | the data source information panel in Soda Cloud |
-|soda: <br />    dataset_mapping | (optional) the name of the dataset in Soda Cloud, and the name of the dataset in Alation; use this property if the names of the datasets differ in the tools |
-|catalog: <br />    type:| the name of the cataloging software; in this case, “alation” |
-|catalog: <br />    datasource_id | the URL on the data source page in the Alation catalog; see image below |
-|catalog: <br />    datasource_container_name | effectively the schema of the data source, retrieve this value from the data source page in the Alation catalog under the subheading **Schemas**; see image below |
+| name  | A name you choose as an identifier for an integration between Soda Cloud and a data catalog. |
+|soda: <br />    datasource_id | The data source information panel in Soda Cloud. |
+|soda: <br />    dataset_mapping | (Optional) When you run the integration, Soda automatically maps all of the datasets between data sources. However, if the names of the datasets differ in the tools you can use this property to manually map datasets between tools. <br /> |
+|catalog: <br />    type:| The name of the cataloging software; in this case, “alation”. |
+|catalog: <br />    datasource_id | Rhe URL on the data source page in the Alation catalog; see image below. |
+|catalog: <br />    datasource_container_name | Effectively the schema of the data source, retrieve this value from the data source page in the Alation catalog under the subheading **Schemas**; see image below. |
 
-Retrieve `datasource_id` from the URL <br />
+Retrieve the Alation `datasource_id` from the URL <br />
 ![alation-figure-1-0](/assets/images/alation-figure-1-0.png){:height="300px" width="300px"} 
 
-Retrieve `datasource_container_name` (schema) from the data source page <br />
+Retrieve the Alation `datasource_container_name` (schema) from the data source page <br />
 ![alation-figure-1-1](/assets/images/alation-figure-1-1.png){:height="400px" width="400px"} 
 
 
@@ -97,7 +97,7 @@ In your Alation account, navigate to **Settings** > **Catalog Admin** > **Custom
 
 ## Run the integration
 
-Contact <a href="mailto:support@soda.io">Soda Support</a> directly to arrange the assets and instructions to run the integration and view Soda Cloud details in your Alation catalog.
+Contact <a href="mailto:support@soda.io">Soda Support</a> directly to acquire the assets and instructions to run the integration and view Soda Cloud details in your Alation catalog.
 
 
 ## Use the integration

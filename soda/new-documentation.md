@@ -8,7 +8,7 @@ parent: Soda
 
 <br />
 
-#### Novermber 25, 2021
+#### Novermber 26, 2021
 
 * Added instructions for how to [integrate Soda Cloud with Alation data catalog]({% link soda-cloud/integrate-alation.md %}). Review Soda Cloud data quality information from within the Alation UI.
 
