@@ -8,6 +8,19 @@ parent: Soda
 
 <br />
 
+#### Novermber 26, 2021
+
+* Added instructions for how to [integrate Soda Cloud with Alation data catalog]({% link soda-cloud/integrate-alation.md %}). Review Soda Cloud data quality information from within the Alation UI.
+
+#### November 24, 2021
+
+* Added new API docs for the [Soda Cloud Reporting API]({% link api-docs/reporting-api.md %}).
+* Added instructions to [Build a reporting dashboard]({% link api-docs/reporting-api-to-overview-dashboards.md %}) using the Soda Cloud Reporting API.
+
+#### November 23, 2021
+
+* Revised the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_tutorial.md %}) to use the same demo repo as the [interactive demo]({% link soda-sql/interactive-demo.md %}).
+
 #### November 15, 2021
 
 * Added a new, embedded [interactive demo]({% link soda-sql/interactive-demo.md %}) for Soda SQL. 

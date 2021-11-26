@@ -1,5 +1,5 @@
 ---
-name: "Week XX: Name of release"
+name: "vX.X.x: Name of release"
 date: YYYY-MM-DD
 products:
   - soda-sql

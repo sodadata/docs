@@ -99,6 +99,8 @@
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Single sign-on with Soda Cloud
     page: soda-cloud/sso.md
+  - subtitle: Integrate with Alation
+    page: soda-cloud/integrate-alation.md
 
 - title: Reference
   page: soda/glossary.md
@@ -117,6 +119,14 @@
     page: soda/data-privacy.md
   - subtitle: Support
     page: soda/support.md
+
+- title: API Documentation
+  page: api-docs/reporting-api.md
+  subcategories:
+  - subtitle: Reporting API
+    page: api-docs/reporting-api.md
+  - subtitle: Build a reporting dashboard
+    page: api-docs/reporting-api-to-overview-dashboards.md
 
 - title: Release notes
   page: release-notes/all.md
