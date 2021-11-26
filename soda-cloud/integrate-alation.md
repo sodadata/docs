@@ -4,7 +4,7 @@ title: Integrate Soda Cloud with Alation
 parent: Soda Cloud
 ---
 
-# Integration Soda Cloud with Alation
+# Integrate Soda Cloud with Alation
 
 Integrate Soda with your Alation catalog to access details about the quality of your data.
 
