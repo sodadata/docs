@@ -347,7 +347,7 @@ order by 2
 
 ## Go further
 
-* Access the [Reporting API examples reposotpru](https://github.com/sodadata/reporting-api-examples) in GitHub to get all the code snippets as a Python script that you can run and modify at will. Clone the repo, then get started in minutes.
+* Access the [Reporting API examples repository](https://github.com/sodadata/reporting-api-examples) in GitHub to get all the code snippets as a Python script that you can run and modify at will. Clone the repo, then get started in minutes.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Open issues on the [Reporting API examples repository](https://github.com/sodadata/reporting-api-examples) in GitHub.
 <br />
