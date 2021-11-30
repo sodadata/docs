@@ -21,14 +21,12 @@
     page: soda/scan.md
   - subtitle: Metrics
     page: soda/metrics.md
-  - subtitle: Common terms
-    page: soda/common-terms.md
 
 - title: Soda SQL
-  page: soda-sql/community.md
+  page: soda-sql/overview.md
   subcategories:
-  - subtitle: Soda SQL community
-    page: soda-sql/community.md
+  - subtitle: Soda SQL
+    page: soda-sql/overview.md
   - subtitle: How Soda SQL works
     page: soda-sql/concepts.md
   - subtitle: Install Soda SQL
@@ -77,8 +75,10 @@
     page: soda-spark/install-and-use.md
 
 - title: Soda Cloud
-  page: soda-cloud/roles-and-rights.md
+  page: soda-cloud/overview.md
   subcategories:
+  - subtitle: Soda Cloud
+    page: soda-cloud/overview.md
   - subtitle: Roles and rights
     page: soda-cloud/roles-and-rights.md
   - subtitle: Collaborate on data monitoring
@@ -99,6 +99,8 @@
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Single sign-on with Soda Cloud
     page: soda-cloud/sso.md
+  - subtitle: Integrate with Alation
+    page: soda-cloud/integrate-alation.md
 
 - title: Reference
   page: soda/glossary.md
