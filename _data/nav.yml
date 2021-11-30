@@ -117,6 +117,8 @@
     page: soda/troubleshoot.md
   - subtitle: Data security and privacy
     page: soda/data-privacy.md
+  - subtitle: Anonymous usage statistics
+    page: soda-sql/global-configuration.md
   - subtitle: Support
     page: soda/support.md
 
