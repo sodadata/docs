@@ -8,7 +8,11 @@ parent: Soda
 
 <br />
 
-#### Novermber 26, 2021
+#### November 30, 2021
+
+* Added documentation about the anonymous Soda SQL usage statistics that Soda collects. Learn more about the [information]({% link soda-sql/global-configuration.md %}) Soda collects and how to opt out of sending statistics.
+
+#### November 26, 2021
 
 * Added instructions for how to [integrate Soda Cloud with Alation data catalog]({% link soda-cloud/integrate-alation.md %}). Review Soda Cloud data quality information from within the Alation UI.
 
