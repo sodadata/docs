@@ -11,9 +11,11 @@ When a [scan]({% link soda/glossary.md %}#scan) results in a failed [test]({% li
 
 ![failed-rows](/assets/images/failed-rows.png){:height="600px" width="600px"}
 
+## Use a missing-value Metric Type to collect failed row samples
+
 {% include failed-row-samples.md %}
 
-When Soda Cloud runs its next scheduled scan of your dataset, it collects and displays a sample of failed rows for the monitors that use the above-listed metric types.
+When Soda Cloud runs its next scheduled scan of your dataset, it collects and displays a sample of failed rows for the monitors that use the above-listed metric types. A sample contains the first five examples of failed rows from the dataset.
 
 If you are a Soda SQL user and have [connected to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}), you can add configurations to your scan YAML file to explicitly send failed row samples to Soda Cloud. See [Send failed rows to Soda Cloud]({% link soda-sql/send-failed-rows.md %}) for instructions.
 
