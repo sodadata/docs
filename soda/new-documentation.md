@@ -8,6 +8,11 @@ parent: Soda
 
 <br />
 
+#### December 1, 2021
+
+* Added documenation for the new [audit trail]({% link soda-cloud/roles-and-rights.md %}#download-an-audit-trail) feature for Soda Cloud.
+* Added further detail about which rows Soda SQL sends to Soda Cloud as samples; see [Define a samples configuration key to send failed rows]({% link soda-sql/send-failed-rows.md %}#define-a-samples-configuration-key-to-send-failed-rows).
+
 #### November 30, 2021
 
 * Added documentation about the anonymous Soda SQL usage statistics that Soda collects. Learn more about the [information]({% link soda-sql/global-configuration.md %}) Soda collects and how to opt out of sending statistics.
