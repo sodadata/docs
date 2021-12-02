@@ -34,7 +34,19 @@ Where a column metric references a valid or invalid value, or a limit, use the m
 
 {% include column-metrics.md %}
 
+### Using regex with column metrics
+
+When using regex to define valid or missing values, be sure to put the regex inside single quotes, as per the following example. You must single quotes because, as per YAML convention, chars like `[` and `]` have specific meaning in YAML if they are the first char of a value. If the first char is a normal text char then the YAML parser reads the rest of the value as a string.
+```yaml
+firstname:
+    valid_regex: '[A-Z].'
+    tests:
+      - invalid_count == 0
+```
+
 ### Column configuration keys or validity rules
+
+Refer to [Using regex with column metrics](#using-regex-with-column-metrics) for important details on how to define the regex in a YAML file. The column configuration key:value pair defines what Soda SQL ought to consider as "valid" or "missing".
 
 {% include column-config-keys.md %}
 

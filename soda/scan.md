@@ -62,7 +62,7 @@ When you run a scan in Soda SQL, you can specify some options that modify the sc
 
 ## Scan output in Soda Cloud
 
-Whether you defined your tests in your [scan YAML file]({% link soda-sql/scan-yaml.md %}) for Soda SQL or in a [monitor]({% link soda-cloud/monitors.md %}) in Soda Cloud, in the Soda Cloud web user interface, all test results manifest as monitor results. Log in to view the **Monitors** dashboard; each row in the **Monitor Results** table represents the result of a test, and the icon indicates whether the test passed or failed.
+Whether you defined your tests in your [scan YAML file]({% link soda-sql/scan-yaml.md %}) for Soda SQL or in a [monitor]({% link soda-cloud/monitors.md %}) in Soda Cloud, in the web user interface, all test results manifest as Monitor Results. Log in to view the **Monitors** dashboard; each row in the **Monitor Results** table represents the result of a test, and the icon indicates whether the test passed or failed.
 
 ![monitor-results](/assets/images/monitor-results.png){:height="550px" width="550px"}
 
@@ -83,6 +83,7 @@ In Soda SQL, use the `-t` or `--time` option in your `soda scan` command and pro
 soda scan -t 2021-04-28T09:00:00+02:00 warehouse.yml tables/orders.yml
 ```
 
+See [Add scan option](#add-scan-options) for more scan options.
 
 ## Go further
 
