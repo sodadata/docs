@@ -6,8 +6,8 @@
 | `missing_values` | Specifies the values that Soda is to consider missing in list format.| values in a list |
 | `valid_format` | Specifies a named valid text format. Can apply only to columns using data type TEXT. See [Data types]({% link soda/supported-data-types.md %}). | See [Valid format values](#valid-format-values) table.  |
 | `valid_max` | Specifies a maximum value for valid values. | integer or float|
-| `valid_max_length` | Specifies a maximum string length for valid values. | integer |
+| `valid_max_length` | Specifies a maximum string length for valid values. | string |
 | `valid_min` | Specifies a minimum value for valid values. | integer or float |
-| `valid_min_length` | Specifies a minimum string length for valid values. | integer |
+| `valid_min_length` | Specifies a minimum string length for valid values. | string |
 | `valid_regex` | Use regex expressions to specify your own custom valid values. | regex, no forward slash delimiters |
 | `valid_values` | Specifies several valid values in list format. | values in a list |
