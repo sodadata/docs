@@ -8,6 +8,11 @@ parent: Soda
 
 <br />
 
+#### December 2, 2021
+
+* Updated [Quick start tutorial for Soda Cloud]({% link soda-cloud/quick-start.md %}).
+* Added information about [using regex]({% link soda-sql/sql_metrics.md %}#using-regex-with-column-metrics) in a YAML file.
+
 #### November 30, 2021
 
 * Added documentation about the anonymous Soda SQL usage statistics that Soda collects. Learn more about the [information]({% link soda-sql/global-configuration.md %}) Soda collects and how to opt out of sending statistics.
