@@ -36,7 +36,8 @@ Where a column metric references a valid or invalid value, or a limit, use the m
 
 ### Using regex with column metrics
 
-When using regex to define valid or missing values, be sure to put the regex inside single quotes, as per the following example. You must single quotes because, as per YAML convention, chars like `[` and `]` have specific meaning in YAML if they are the first char of a value. If the first char is a normal text char then the YAML parser reads the rest of the value as a string.
+* You can only use regex to define valid or missing values in columns that contain strings.
+* When using regex to define valid or missing values, be sure to put the regex inside single quotes, as per the following example. You must single quotes because, as per YAML convention, chars like `[` and `]` have specific meaning in YAML if they are the first char of a value. If the first char is a normal text char then the YAML parser reads the rest of the value as a string.
 ```yaml
 firstname:
     valid_regex: '[A-Z].'
