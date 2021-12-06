@@ -3,6 +3,8 @@ Soda documentation guidelines
 
 Join us in our mission to help users become productive and confident using Soda software.
 
+## Contribute
+
 The following outlines the workflow to contribute.
 1. [Set up docs tooling](#set-up-docs-tooling) locally on your machine and clone the GitHub repo.
 2. Create a new branch for your work. Include the word `docs` in the name of your branch.
@@ -19,6 +21,7 @@ Soda uses the following tools to build and publish documentation.
 - [GitHub](https://github.com/sodadata/soda-sql) to store content
 - [Jekyll](https://jekyllrb.com/docs/) to build and serve content
 - [Just the Docs](https://pmarsceill.github.io/just-the-docs/) to apply a visual theme
+- [lunrjs](https://lunrjs.com/docs/index.html) to facilitate searches in docs (search bar)
 
 To contribute to Soda documentation, set up your local system to author and preview content before committing it.
 
@@ -38,11 +41,11 @@ $ bundle exec jekyll serve
 8. If you are creating a new page, consider copy+pasting the contents of the `template-new-page.md` file and pasting into your new file so that the standard header and footer info are included.
 
 
-### Style guidelines
+## Style guidelines
 
 Soda uses the [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Howtouse) for writing documentation. For any questions about style or language that are not listed below, refer to the Splunk Style Guide for guidance.
 
-Language:
+### Language:
 - Use American English.
 - Use [plain](https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Technicallanguage) language. Do not use jargon, colloquialisms, or meme references.
 - Use [unbiased](https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Inclusivity) language. For example, instead of "whitelist" and "blacklist", use "passlist" and "denylist".
@@ -55,38 +58,39 @@ Language:
 - Avoid the subjunctive mood: "should", "would", "could".
 - Make the language of your lists [parallel](https://ewriteonline.com/how-and-why-to-make-your-lists-parallel-and-what-does-parallel-mean/).
 
-Good practice:
+### Good practice:
 - Never write an FAQ page or section. FAQs are a randomly organized bucket of content that put the burden on the reader to find what they need. Instead, consciously think about when and where a user needs the information and include it there.
 - Include code snippets and commands.
 - Limit inclusion of screencaps. These images are hard to keep up-to-date as the product evolves.
 - Include diagrams.
 - Do not use "Note:" sections. Exception: to indicate incompatibility or a known issue.
-- Use includes rather than repeat or re-explain something.
+- Use \_includes rather than repeat or re-explain something.
 
-Formatting:
+### Formatting:
 - Use **bold** for the first time you mention a product name or feature in a document or to identify a **Tip:** for using a feature. See [Warehouse YAML]({% link soda-sql/warehouse.md %}) for an example. Otherwise, use it sparingly. Too much bold font renders the format meaningless.
 - Use *italics* sparingly for emphasis, primarily on the negative. For example, "Limit the scan to *only* test data from today."
+- Do not use underline.
 - Use ALL CAPS only for severe warnings. For example, "DO NOT store sensitive information."
 - Use sentence case for all titles and headings.
 - Use H1 headings for the page title. Use H2 and H3 as subheadings. Use H4 headings to introduce example code snippets.
-- Never stack headings with no content between them. Add content or remove a heading, likely the latter so as to avoid adding non-essential text.
+- Never stack headings with no content between them. Add content or remove a heading, ideally the latter so as to avoid adding non-essential text.
 - Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Bulletlists" target="_blank">bulleted lists</a> for non-linear lists.
 - Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Tasklists" target="_blank">numbered lists</a> for procedures or ordered tasks.
 - Use relative links to link to other files or sections in Soda documentation.
-- Use hard-coded links to link to external sources.
+- Use hard-coded links to link to external sources. Ensure the external link opens a new tab in a reader's browser.
 - Liberally include links to the [Glossary]({% link soda/glossary.md %}), but only link the first instance of a term on a page, not all instances.
 
-Content:
+### Content:
 - Categorize your new content according to the following macro groups:
    - Concepts - content that explains in general, without including procedural steps. Characterized by a title that does not use present tense imperative such as, "How Soda SQL works" or "Metrics".
    - Tasks - content that describes the steps a user takes to complete a task or reach a goal. Characterized by a title that is in present tense imperative such as, "Install Soda SQL" or "Apply filters".
    - Reference - content that presents lists or tables of reference material such as error codes or glossary.
 - Produce content that focuses on how to achieve a goal or solve a problem and, insofar as it is practical, is inclusive of all products. Avoid creating documentation that focuses on how to use a single product. For example, instead of writing two documents -- one for "Troubleshoot Soda SQL" and one for "Troubleshoot Soda Cloud" -- write one Troubleshoot document that offers guidance for both tools.
-- Remember that Every Page is Page One for your reader. Most people enter your docs by clicking on the result of a Google search, so they could land anywhere and you should assume your new page is the first page that a new reader lands on. Give them the context for what they are reading, lots of "escape hatches" to the glossary or pre-requisite procedures, and instructions on what to read next in a "Go further" section at the bottom of all Concept or Task pages.
+- Remember that Every Page is Page One for your reader. Most people enter the docs by clicking on the result of a Google search, so they could land anywhere and you should assume your new page is the first page that a reader lands on. Give them the context for what they are reading, lots of "escape hatches" to the glossary or pre-requisite procedures, and instructions on what to read next in a "Go further" section at the bottom of all Concept or Task pages.
 
-### Release note documentation
+## Release note documentation
 
-Document the details of each Soda SQL and Soda Cloud release using included release note files.
+Document the details of each Soda product's release using included release note files.
 
 1. Create a new branch in this Docs repo to create your product release notes.
 2. To the `_release-notes` folder in this Docs repo, add a new markdown file for your new product release notes. Follow the file naming structure established by existing files.
@@ -97,20 +101,20 @@ Document the details of each Soda SQL and Soda Cloud release using included rele
 7. In the new pull request, request a review by @janet-can if you wish, or simply squash and merge to publish.
 
 
-### Use Jekyll markdown
+## Use Jekyll markdown
 
-Kramdown is the default markdown renderer that Jekyll uses.
+Kramdown is the default markdown renderer that Jekyll uses. What follows are some Kramdown-specific formatting syntax.
 
 Insert image:
 
-Add a `png` file of your logically-named image to the `docs/assets/images` directory, then add this markdown:
+Add a `png` file of your logically-named image to the `docs/assets/images` directory, then add this markdown to the file in which you want the image to appear:
 ```
 ![scan-anatomy](/assets/images/scan-anatomy.png){:height="440px" width="440px"}
 ```
 
 Includes:
 
-Add a markdown file of your logically-named include content to the `docs/_includes` directory, then add this markdown:
+Add a markdown file of your logically-named include content to the `docs/_includes` directory, then add this markdown to the file in which you want the content to appear:
 ```
 {% include run-a-scan.md %}
 ```
@@ -122,7 +126,7 @@ Relative links:
 [airflow_bash.py](/../examples/airflow_bash.py)
 ```
 
-Link to anchor:
+Link to an anchor on a different page:
 
 ```
 [warehouse yaml]({% link soda-sql/warehouse.md %}#to-anchor)
@@ -137,7 +141,7 @@ Link to section on same page:
 External link:
 
 ```
-[Wikipedia](https://en.wikipedia.org)
+<a href="https://en.wikipedia.org" target="_blank">Wikipedia</a>
 ```
 
 Comment out:
@@ -147,11 +151,11 @@ Comment out:
 ```
 
 Show code:
+To keep the numbered list intact, apply endraw to the end of the line of preceding text; do not prepend with a line break.
 ```
 {% raw %}
 {% endraw %}
 ```
-To keep the numbered list intact, apply endraw to the end of the line of preceding text; do not prepend with a line break.
 
 Add Last modified date:
 
@@ -174,9 +178,9 @@ Add mailto link:
 <a href="mailto:support@soda.io">Soda Support</a>
 ```
 
-### Redirect site visitors
+## Redirect site visitors
 
-The `jekyll-redirect-from` plugin is installed, allowing authors to redirect users if a page is moved. 
+The `jekyll-redirect-from` plugin enables authors to redirect users if a page is moved. 
 
 See documentation: https://github.com/jekyll/jekyll-redirect-from
 
@@ -184,4 +188,19 @@ To apply a redirect, navigate to the redirect destination file, then add the fol
 
 `redirect_from: /pageyouwanttoredirect/`
 
+OR
+
+```
+redirect_from:
+  - /pageyouwantoredirect/
+  - /anotherpagetoredirect/
+```
+
+## Troubleshoot the Search tool
+
+docs.soda.io uses the Just The Docs for the theme which, in turn, uses lunrjs for the Search tool. Per lunrjs's documentation, “the more a search term occurs in a single document, the more that term will increase that document’s score, but the more a search term occurs in the overall collection of documents, the less that term will increase a document’s score.” There is no built-in functionality in the theme to adjust the document’s scoring relative to search terms.
+
+Work-around: artificially add a string/search term to to a document to boost the document's search score and make it appear in the auto-complete search results.
+
+Also, lunrjs does not take into account ocurrences of terms that appear in \_includes. For the Search tool to "find" a term, the term itself must occur in the content of a served markdown file. For example, though the term regex appeared multiple times in two \_includes files, the Search tool registered zero occurrences of the term in the docs. Adding the term to the content of the metrics.md and sql_metrics.md files yielded expected search results.
 
