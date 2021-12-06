@@ -11,7 +11,7 @@ When a [scan]({% link soda/glossary.md %}#scan) results in a failed [test]({% li
 There are three ways you can configure Soda SQL to send failed row samples to your Soda Cloud account:
 
 1. define a [samples configuration key](#define-a-samples-configuration-key-to-send-failed-rows) in your scan YAML file
-2. use a [missing-value Metric Type](#use-a-missing-value-metric-type-to-send-failed-rows) in your monitor in Soda Cloud
+2. use a [missing-value Metric Type](#use-a-missing-value-metric-type-to-send-failed-row-samples) in your monitor in Soda Cloud
 3. use custom metrics in your scan YAML file to [explicitly send `failed_rows`](#explicitly-send-a-sample-of-failed-rows) 
 
 For security, you can also [disable the failed row samples](#disable-failed-row-samples) feature, or [reroute failed row samples for a dataset](#reroute-failed-row-samples-for-a-dataset) to an alternate location.
@@ -19,7 +19,7 @@ For security, you can also [disable the failed row samples](#disable-failed-row-
 ## Define a samples configuration key to send failed rows
 
 1. If you have not already done so, [connect Soda SQL to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}).
-2. Define a `samples` configuration key in your scan YAML file according to the Scan YAML example below; use `failed_limit` to define a value that represents the numerical threshold of rows in a dataset that Soda SQL sends to Soda Cloud as a sample of failed rows for any tests that fail during a scan. 
+2. Define a `samples` configuration key in your scan YAML file according to the Scan YAML example below; use `failed_limit` to define a value that represents the numerical threshold of rows in a dataset that Soda SQL sends to Soda Cloud as a sample of failed rows for any tests that fail during a scan. A sample contains the first *n* number of rows from the dataset, according to the limit you specify.
 
 For this example, imagine you define a test in your [scan YAML]({% link soda/glossary.md %}#scan-yaml) file to make sure that 99% of the values in the `productid` column are correctly formatted as universally unique identifiers (UUID), then you [run a scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) from the command line to execute the test on the data in your dataset.
 
@@ -64,6 +64,7 @@ In Soda Cloud, the Soda SQL test manifests as a line item in the **Monitor resul
 
 If you open the monitor whose test failed during a scan but cannot click the **Failed Rows** tab, click a failed data point in the chart that shows the monitor's scan results over time. This action identifies the specific set of failed rows associated with an individual scan result so it can display the failed rows associated with that individual scan. 
 
+## Use a missing-value Metric Type to send failed row samples
 
 {% include failed-row-samples.md %}
 
@@ -76,7 +77,7 @@ You can use Soda SQL [custom metrics]({% link soda-sql/sql_metrics.md %}#custom-
 1. If you have not already done so, [connect Soda SQL to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}).
 2. In your scan YAML file, use `type: failed_rows` when writing a SQL query to retrieve a sample of `failed_rows` in a dataset, as in the example below. By default, `failed_rows` collects five rows of data that failed the test defined in the SQL query and displays them in Soda Cloud as failed rows in the monitor that represents the test that failed during a scan. 
 
-In the following example, Soda SQL runs the scan and Soda Cloud displays a sample of five `failed_rows` of data that failed the test defined as a SQL query.
+In the following example, Soda SQL runs the scan and Soda Cloud displays a sample of the first five `failed_rows` of data that failed the test defined as a SQL query.
 
 ```yaml
 sql_metrics:
