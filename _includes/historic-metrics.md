@@ -2,7 +2,7 @@ When you run a scan using Soda SQL, it displays the scan results in the command-
 
 If your Soda SQL instance is [connected to a Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}), Soda SQL also pushes the scan results to Soda Cloud where they appear in a table of **Monitor Results**. Soda Cloud stores the measurements resulting from each test Soda SQL executes against the data in the Cloud Metric Store. It uses these stored measurements to display the metric's history in a graph that shows you changes over time.
 
-**(Experimental)** In Soda SQL, you can define **historic metrics** so that you can write tests in scan YAML files that test data relative to the historic measurements contained in the Cloud Metric Store. Essentially, this type of metric allows you to use Soda SQL to access the historic measurements in the Cloud Metric Store and write tests that use those historic measurements. 
+In Soda SQL, you can define **historic metrics** so that you can write tests in scan YAML files that test data relative to the historic measurements contained in the Cloud Metric Store. Essentially, this type of metric allows you to use Soda SQL to access the historic measurements in the Cloud Metric Store and write tests that use those historic measurements. 
 
 To use `historic_metrics`, refer to the following example scan YAML file and the table below.
 
@@ -48,7 +48,7 @@ columns:
       - valid_count > prev_valid_count
 ```
 
-| Historic metric property <br /> (Experimental) | Required? | Use                                                 | Accepted input |
+| Historic metric property | Required? | Use                                                 | Accepted input |
 | ------------------------ | --------- |---------------------------------------------------- | ----------------|
 | `name`                   | required  | Provide a name for your metric. | string        | 
 | `type`                   | required  | Identify the aggregation type.                      | `avg` <br /> `max` <br /> `min` <br /> `prev` |

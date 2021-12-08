@@ -58,7 +58,7 @@ See [built-in metric](#built-in-metric).
 The file in your local user home directory that stores your data source login credentials.
 
 ### historic metric
-A metric to use in Soda SQL tests which rely on historic measurements stored in the Cloud Metric Store. See [Historic metrics (Experimental)](#historic-metrics-experimental). 
+A metric to use in Soda SQL tests which rely on historic measurements stored in the Cloud Metric Store. See [Historic metrics](#historic-metrics). 
 
 ### measurement
 {% include glossary-measurement.md %}
