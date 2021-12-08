@@ -11,7 +11,7 @@ When creating new [monitors]({% link soda/glossary.md %}#monitor) in Soda Cloud,
 ![sample-data](/assets/images/sample-data.png){:height="650px" width="650px"}
 
 
-Using the information Soda SQL discovered about your datasets, you can optionally instruct it to capture and send **sample data** to Soda Cloud for specific datasets during the next scan. Enable sample data to display sample rows of data in Soda Cloud (to a maximum of 1000) so that you can make informed choices about the tests to run against your data when you create a monitor. 
+Using the information Soda SQL discovered about your datasets, you can optionally instruct it to capture and send **sample data** to Soda Cloud for specific datasets during the next scan. Enable sample data to display sample rows of data in Soda Cloud (to a maximum of 1000) so that you can make informed choices about the tests to run against your data when you create a monitor. A sample contains the first *n* number of rows from the dataset, according to the limit you specify.
 
 ## Send sample data to Soda Cloud
 

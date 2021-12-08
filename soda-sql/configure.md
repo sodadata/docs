@@ -101,6 +101,7 @@ If you wish, you can define options for the `soda analyze` command that allow yo
 * Next, [run a scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) on the data in your data source.
 * Learn more about the [scan YAML file]({% link soda-sql/scan-yaml.md %}).
 * Learn more about the [warehouse YAML file]({% link soda-sql/warehouse.md %}).
+* Soda collects anonymous Soda SQL usage statistics. Learn more about the [information]({% link soda-sql/global-configuration.md %}) Soda collects.
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Learn more about configuring [tests]({% link soda-sql/tests.md %}) and [metrics]({% link soda-sql/sql_metrics.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

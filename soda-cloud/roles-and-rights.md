@@ -13,6 +13,7 @@ To manage the actions of users that belong to a single organization, Soda Cloud 
 [Change organization roles and settings](#change-organization-roles-and-settings)<br />
 [Change access to a dataset](#change-access-to-a-dataset)<br />
 [Dataset and monitor owners](#dataset-and-monitor-owners)<br />
+[Download an audit trail](#download-an-audit-trail)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -32,6 +33,7 @@ The roles that define who has access to the organization's Soda Cloud account ar
 | View a list of Users                                                   |   ✓   |      |
 | Change the roles of Users, including adding more Admins                |   ✓   |      |
 | Reset User passwords or deactivate Users                               |   ✓   |      |
+| Download a CSV file of an audit trail of Soda Cloud usage              |   ✓   |      |
 
 
 The roles that define who can add or make changes to a [dataset]({% link soda/glossary.md %}#dataset) are **Admin**, **Manager**, **Editor**, and **Viewer**. The following table outlines the rights of each role associated with individual datasets.
@@ -100,6 +102,13 @@ There are two ownership roles in Soda Cloud that identify the user that owns a d
 1. If you are the Admin of the organization, or have a Manager or Editor role for the monitor's dataset, login to your Soda Cloud account and navigate to the **Monitors** dashboard.
 2. Click the stacked dots to the right of the monitor for which you wish to adjust the ownership, then select **Edit Monitor**.
 3. In the **Attributes** tab, use the dropdown to select the name of another user to take ownership of the monitor, then **Save**.
+
+## Download an audit trail
+
+To meet your organization's regulatory and policy mandates, you can download a CSV file that contains an audit trail of activity on your Soda Cloud account for a date range you specify. The file contains details of each user's actions, their email and IP addresses, and a timestamp of the action.
+
+1. As an Admin user, login to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**. Only Admins can view Organization Settings.
+2. Access the **Audit Trail** tab, then set the date range of usage details you wish to examine and click **Download**.
 
 ## Go further
 

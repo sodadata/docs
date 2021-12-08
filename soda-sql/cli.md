@@ -32,11 +32,9 @@ Options:
   --help  Show this message and exit.
 
 Commands:
-  analyze  Analyzes tables in the warehouse and creates scan YAML files...
-  create   Creates a new warehouse.yml file and prepares credentials in
-           your...
-
-  scan     Computes all measurements and runs all tests on one table.
+  analyze  Analyze tables and scaffold SCAN YAML
+  create   Create a template warehouse.yml file
+  scan     Compute metrics and run tests for a given table
 ```
 
 ## List of options
@@ -53,6 +51,7 @@ Refer to [Add analyze options]({% link soda/scan.md %}#add-scan-options) and [Ad
 
 ## Go further
 
+* Soda collects anonymous Soda SQL usage statistics. Learn more about the [information]({% link soda-sql/global-configuration.md %}) Soda collects.
 * Learn [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Follow the [Quick start tutorial]({% link soda-sql/5_min_tutorial.md %}) to set up Soda SQL and run your first scan!
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

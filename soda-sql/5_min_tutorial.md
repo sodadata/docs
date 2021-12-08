@@ -21,7 +21,7 @@ Use your command-line interface to **connect** Soda SQL to a sample data source,
 
 In the context of Soda SQL, a warehouse is a type of data source that represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. 
 
-For this tutorial, use Docker to build a sample PostgreSQL warehouse from a <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">Soda GitHub repo</a>. The warehouse contains <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC School Bus Breakdowns and Delays</a> data that you can use to see the Soda SQL CLI tool in action. All the instructions in this tutorial reference this sample warehouse in the commands.
+For this tutorial, use Docker to build a sample PostgreSQL warehouse from a <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">Soda GitHub repo</a>. The warehouse contains <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC School Bus Breakdowns and Delays</a> data that you can use to see the Soda SQL CLI tool in action. If you use this command to spin up the Docker instance, you can use nano or vim to edit YAML files in the command-line later in the tutorial. All the instructions in this tutorial reference this sample warehouse.
 
 From the command-line, run the following command:
 ```shell
@@ -33,7 +33,7 @@ This command yields a prompt like the following.
 root@90461262c35e:/workspace# 
 ```
 
-Alternatively, follow the <a href="https://github.com/sodadata/tutorial-demo-project#set-up-manually" target="_blank">manual instructions</a> to clone the repo and set up the sample warehouse.
+Alternatively, follow the <a href="https://github.com/sodadata/tutorial-demo-project#set-up-manually" target="_blank">manual instructions</a> to clone the repo and set up the sample warehouse. If you clone the repo locally, you can use a text editor to edit YAML files later in the tutorial.
 
 
 
@@ -250,7 +250,11 @@ Output:
   |   Test column(school_year) test(invalid_percentage == 5) failed with measurements {"expression_result": 0.0, "invalid_percentage": 0.0}
   | Exiting with code 1
 ```
-  5. If you like, adjust or add more tests to the `breakdowns.yml` file to further explore the things that Soda SQL can do. To exit the workspace in your command-line interface, type `exit` then press enter. Consult the [Metrics]({% link soda/metrics.md %}), [Define tests]({% link soda-sql/tests.md %}), and [Scans]({% link soda/scan.md %}) documentation for information and information on how to test data quality with Soda SQL.
+5. If you like, adjust or add more tests to the `breakdowns.yml` file to further explore the things that Soda SQL can do. 
+* If you used the single command to spin up the Docker instance, you can use nano or vim to edit YAML files in the command-line.
+* If you cloned the tutorial-demo-project repo locally, you can use a text editor to edit YAML files.
+
+To exit the workspace in your command-line interface, type `exit` then press enter. Consult the [Metrics]({% link soda/metrics.md %}), [Define tests]({% link soda-sql/tests.md %}), and [Scans]({% link soda/scan.md %}) documentation for information and information on how to test data quality with Soda SQL.
 
 
 ## Go further

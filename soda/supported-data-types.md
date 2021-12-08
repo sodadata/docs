@@ -34,6 +34,14 @@ Currently, Soda does *not* support complex data types.
 | text | CHAR, VARCHAR |
 | number | TINYINT, SMALLINT, INT, BIGINT, FLOAT, DOUBLE, DOUBLE PRECISION, DECIMAL, NUMERIC |
 
+### Apache Spark
+
+| Category | Data type | 
+| ---- | --------- |
+| text | CHAR, STRING, VARCHAR |
+| number | TINYINT, SHORT, SMALLINT, INT, INTEGER, LONG, BIGINT, FLOAT, REAL, DOUBLE, DEC, DECIMAL, NUMERIC |
+| time | DATE, TIMESTAMP |
+
 ### Google Cloud Platform Big Query
 
 | Category | Data type | 

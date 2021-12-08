@@ -8,13 +8,32 @@ parent: Soda
 
 <br />
 
-#### November 25, 2021
+#### December 9, 2021
 
 * Added documentation to accompany the new [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}) feature. Collaborate with your team in Soda Cloud and in Slack to investigate and resolve data quality issues.
+
+#### December 6, 2021
+
+* Added documenation for the new [audit trail]({% link soda-cloud/roles-and-rights.md %}#download-an-audit-trail) feature for Soda Cloud.
+* Added further detail about which rows Soda SQL sends to Soda Cloud as samples; see [Define a samples configuration key to send failed rows]({% link soda-sql/send-failed-rows.md %}#define-a-samples-configuration-key-to-send-failed-rows).
+
+#### December 2, 2021
+
+* Updated [Quick start tutorial for Soda Cloud]({% link soda-cloud/quick-start.md %}).
+* Added information about [using regex]({% link soda-sql/sql_metrics.md %}#using-regex-with-column-metrics) in a YAML file.
+
+#### November 30, 2021
+
+* Added documentation about the anonymous Soda SQL usage statistics that Soda collects. Learn more about the [information]({% link soda-sql/global-configuration.md %}) Soda collects and how to opt out of sending statistics.
+
+#### November 26, 2021
+
+* Added instructions for how to [integrate Soda Cloud with Alation data catalog]({% link soda-cloud/integrate-alation.md %}). Review Soda Cloud data quality information from within the Alation UI.
 
 #### November 24, 2021
 
 * Added new API docs for the [Soda Cloud Reporting API]({% link api-docs/reporting-api.md %}).
+* Added instructions to [Build a reporting dashboard]({% link api-docs/reporting-api-to-overview-dashboards.md %}) using the Soda Cloud Reporting API.
 
 #### November 23, 2021
 

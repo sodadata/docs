@@ -1,5 +1,5 @@
 ---
-name: "v2.1.0b19: Introducing historic metrics!"
+name: "v2.1.0b19: Elrohir"
 date: 2021-11-09
 products:
   - soda-sql
