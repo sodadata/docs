@@ -16,7 +16,7 @@ Integrate Soda with Metaphor to access details about the quality of your data fr
 * You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}), [connected]({% link soda-cloud/connect_to_cloud.md %}) to an instance of Soda SQL.
 * You have [configured Soda SQL]({% link soda-sql/configure.md %}) to access the data source on which you want to run quality checks.
 * You have completed at least one [Soda scan]({% link soda/scan.md %}) to validate that the data source’s datasets appear in Soda Cloud as expected.
-* You have a Metaphor account with the privileges necessary to allow you to add a data source, create custom fields, and customize templates.
+* You have a Metaphor account with the privileges necessary to allow you to add a data source.
 * You have a git repository in which to store the integration project files.
 
 
