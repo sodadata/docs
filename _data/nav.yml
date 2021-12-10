@@ -101,6 +101,8 @@
     page: soda-cloud/sso.md
   - subtitle: Integrate with Alation
     page: soda-cloud/integrate-alation.md
+  - subtitle: Integrate with Metaphor
+    page: soda-cloud/integrate-metaphor.md
 
 - title: Reference
   page: soda/glossary.md
