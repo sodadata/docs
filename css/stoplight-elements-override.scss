@@ -8,7 +8,7 @@
   }
 
   @media (min-width: 50rem) {
-    .sl-sticky {
+    > .sl-sticky {
       // forces the sidebar to be max 256px and
       // be fixed just the 'real' doc sidebar
       max-width: 256px !important;
