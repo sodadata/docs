@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Integrate Soda Cloud with Alation
-parent: Soda Cloud
+parent: Integrate Soda
+redirect_from: /soda-cloud/integrate-alation.html
 ---
 
 # Integrate Soda Cloud with Alation

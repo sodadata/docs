@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Integrate Soda Cloud with Metaphor
-parent: Soda Cloud
+parent: Integrate Soda
 ---
 
 # Integrate Soda Cloud with Metaphor
