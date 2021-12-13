@@ -1,12 +1,14 @@
 ---
 layout: default
-title: dbt Integration
-parent: Soda SQL
-redirect_from: /soda-sql/documentation/dbt-integration.html
+title: Integrate Soda with dbt
+parent: Integrate
 ---
-<!--TODO: should this move to its own rubrik? Like under an integrations tab? It kind of spans across soda-sql and soda cloud so it could be confusing as to why we have it under either one of those products...-->
 
-# dbt Integration
+
+# Integrate Soda with dbt
+
+Integrate Soda with dbt to  
+
 If you have devoted a lot of your time in implementing tests on your models in dbt, you might not want to have to implement them in soda-sql. Since the Soda Cloud ecosystem provides you with much more than testing such as visualizing your data quality over time, managing alerts and incidents and integrating with catalogs it's only natural that you should be able to make the results from the tests you wrote in dbt also flow into that ecosystem.
 
 ## Ingest dbt test results
