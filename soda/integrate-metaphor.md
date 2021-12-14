@@ -8,7 +8,7 @@ parent: Integrate Soda
 
 Integrate Soda with Metaphor to access details about the quality of your data from within the data catalog. The following video illustrates how to take advantage of the integration.
 
-<div style="padding:50% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/656375442?h=a811ec4d0f&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="metaphor.mov"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:min(62.5%, calc(430px)) 0 0 0;position:relative; border:1px solid #333"><iframe src="https://player.vimeo.com/video/656375442?h=a811ec4d0f&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Data Catalog + Data Quality Integration - Metaphor"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
 
 ## Prerequisites
