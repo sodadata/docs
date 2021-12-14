@@ -8,9 +8,13 @@ parent: Soda
 
 <br />
 
-#### December 9, 2021
+#### December 14, 2021
 
 * Added documentation to accompany the new [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}) feature. Collaborate with your team in Soda Cloud and in Slack to investigate and resolve data quality issues.
+
+#### December 13, 2021
+
+* Added instructions for how to [integrate Soda with Metaphor]({% link soda/integrate-metaphor.md %}). Review data quality information from within the Metaphor UI.
 
 #### December 6, 2021
 
@@ -28,7 +32,7 @@ parent: Soda
 
 #### November 26, 2021
 
-* Added instructions for how to [integrate Soda Cloud with Alation data catalog]({% link soda-cloud/integrate-alation.md %}). Review Soda Cloud data quality information from within the Alation UI.
+* Added instructions for how to [integrate Soda Cloud with Alation data catalog]({% link soda/integrate-alation.md %}). Review Soda Cloud data quality information from within the Alation UI.
 
 #### November 24, 2021
 
@@ -46,7 +50,7 @@ parent: Soda
 
 #### November 9, 2021
 
-* New documentation to accompany the new, experimental [historic metrics]({% link soda/metrics.md %}#historic-metrics-experimental). This type of metric enables you to use Soda SQL to access the historic measurements in the Cloud Metric Store and write tests that use those historic measurements.
+* New documentation to accompany the new, preview release of [historic metrics]({% link soda/metrics.md %}#historic-metrics). This type of metric enables you to use Soda SQL to access the historic measurements in the Cloud Metric Store and write tests that use those historic measurements.
 
 #### October 29, 2021
 

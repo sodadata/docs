@@ -43,7 +43,7 @@ Get started with the [Quick start tutorial for Soda Cloud]({% link soda-cloud/qu
 |Edit connection details in a warehouse YAML file|   |
 |Discover datasets of a newly-connected data source using the [`soda analyze` <br />CLI command]({% link soda-sql/cli.md %})|   |
 |Define new [tests]({% link soda-sql/tests.md %}) in the [scan YAML file]({% link soda-sql/scan-yaml.md %}) only for datasets you added via Soda SQL. | Define new tests when you [create new monitors]({% link soda-cloud/monitors.md %}#2-monitor) for datasets you added via Soda Cloud or Soda SQL |
-| (Experimental) Use [historic measurements]({% link soda/metrics.md %}#historic-metrics-experimental) of data when defining tests. | Use historic measurements of data when creating new monitors.|
+| Use [historic measurements]({% link soda/metrics.md %}#historic-metrics) of data when defining tests. | Use historic measurements of data when creating new monitors.|
 |Edit existing tests in the scan YAML file| Edit the tests in existing monitors |
 | Use [dataset metrics]({% link soda-sql/sql_metrics.md %}#dataset-metrics) in the scan YAML file | Use [dataset metrics]({% link soda/metrics.md %}#dataset-metrics) when creating a new monitor |
 | Use [column metrics]({% link soda-sql/sql_metrics.md %}#column-metrics) in the scan YAML file | Use [column metrics]({% link soda/metrics.md %}#column-metrics) when creating a new monitor |
@@ -63,6 +63,7 @@ Get started with the [Quick start tutorial for Soda Cloud]({% link soda-cloud/qu
 |   | [Collaborate]({% link soda-cloud/collaborate.md %}) with your team to monitor your data: invite team members, and integrate with Slack
 |   | Set up [Single sign-on for Soda Cloud]({% link soda-cloud/sso.md %}) so that all users in your organization must use your IdP to access Soda Cloud. |
 |   | Manage [user access]({% link soda-cloud/roles-and-rights.md %}) to your organization and its datasets. |
+|   | Integrate with [Alation]({% link soda/integrate-alation.md %}) or [Metaphor]({% link soda/integrate-metaphor.md %}) to view data quality details from within your data catalog.
 
 ## Go further
 

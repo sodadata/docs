@@ -18,7 +18,7 @@ Read more about [Metrics]({% link soda/metrics.md %}) in general as they apply t
 [Using regex with column metrics](#using-regex-with-column-metrics)<br />
 [Column configuration keys](#column-configuration-keys) <br />
 [Valid format values](#valid-format-values) <br />
-[Historic metrics (Experimental)](#historic-metrics-experimental)<br />
+[Historic metrics](#historic-metrics)<br />
 [Metric groups and dependencies](#metric-groups-and-dependencies)<br />
 [Custom metrics](#custom-metrics)<br />
 [Custom metric names](#custom-metric-names)<br >
@@ -112,7 +112,7 @@ columns:
 See more examples of how to use *all* column metrics in [Examples by metric]({% link soda-sql/examples-by-metric.md %}).
 
 
-## Historic metrics (Experimental)
+## Historic metrics
 
 {% include historic-metrics.md %}
 
