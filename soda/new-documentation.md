@@ -8,6 +8,10 @@ parent: Soda
 
 <br />
 
+#### December 16, 2021
+
+* Added documentation for how to [integrate Soda with dbt]({% link soda/integrate-dbt.md %}). Access the test results from a dbt run directly within your Soda Cloud account.
+
 #### December 14, 2021
 
 * Added documentation to accompany the new [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}) feature. Collaborate with your team in Soda Cloud and in Slack to investigate and resolve data quality issues.

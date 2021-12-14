@@ -34,7 +34,7 @@ The table below lists the metrics and attributes that Soda currently tracks.
 
 ## Opt out of usage statistics
 
-By default, Soda SQL's usage statistics collection is turned on. You can opt out-out at any time by adding the following to your `~/.soda/config.yml` file:
+Soda SQL collects usage statistics by default. You can opt-out from sending Soda SQL usage statistics at any time by adding the following to your `~/.soda/config.yml` file:
 ```
 send_anonymous_usage_stats: false
 ```
