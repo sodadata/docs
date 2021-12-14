@@ -8,10 +8,13 @@ parent: Soda
 
 <br />
 
+#### December 14, 2021
+
+* Added documentation to accompany the new [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}) feature. Collaborate with your team in Soda Cloud and in Slack to investigate and resolve data quality issues.
+
 #### December 13, 2021
 
 * Added instructions for how to [integrate Soda with Metaphor]({% link soda/integrate-metaphor.md %}). Review data quality information from within the Metaphor UI.
-
 
 #### December 6, 2021
 
