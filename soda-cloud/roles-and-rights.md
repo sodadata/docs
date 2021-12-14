@@ -41,6 +41,7 @@ The roles that define who can add or make changes to a [dataset]({% link soda/gl
 | Rights                                                                   | Admin | Manager | Editor | Viewer |
 |--------------------------------------------------------------------------|-------|---------|--------|--------|
 | View Monitor Results of monitors associated with the dataset             |   ✓   |    ✓    |    ✓   |    ✓   |
+| Create and track Incidents associated with one or more monitor results   |   ✓   |    ✓    |    ✓   |    ✓   |
 | Create monitors associated with the dataset                              |   ✓   |    ✓    |    ✓   |        |
 | Edit monitors associated with the dataset                                |   ✓   |    ✓    |    ✓   |        |
 | Edit dataset details such as scan schedule and attributes                |   ✓   |    ✓    |    ✓   |        |
@@ -113,6 +114,7 @@ To meet your organization's regulatory and policy mandates, you can download a C
 
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * [Invite team members]({% link soda-cloud/collaborate.md %}#invite-your-team-members) to join your organization's Soda Cloud account.
+* Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 <br />
 
 ---

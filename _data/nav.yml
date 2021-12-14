@@ -95,6 +95,8 @@
     page: soda-cloud/schema-evolution.md
   - subtitle: Examine failed rows
     page: soda-cloud/failed-rows.md
+  - subtitle: Create and track incidents
+    page: soda-cloud/incidents.md
   - subtitle: Soda Cloud architecture
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Single sign-on with Soda Cloud
@@ -107,6 +109,10 @@
     page: soda/integrate-alation.md
   - subtitle: Integrate with dbt
     page: soda/integrate-dbt.md
+  - subtitle: Integrate with Metaphor
+    page: soda/integrate-metaphor.md
+  - subtitle: Integrate with Slack
+    page: soda/integrate-slack.md
 
 - title: Reference
   page: soda/glossary.md

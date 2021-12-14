@@ -13,10 +13,7 @@ One of the main benefits of using Soda Cloud is the ability to collaborate with 
 
 ## Integrate with Slack
 
-As an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, integrate your Slack workspace in your **Soda Cloud** account so that Soda Cloud can send Slack notifications to your team when a data issue triggers an [alert]({% link soda/glossary.md %}#alert).
-
-1. In Soda Cloud, navigate to **your avatar** > **Organization Settings** > **Integrations**, then follow the guided steps to authorize Soda Cloud to connect to your Slack workspace.
-2. Select the all Slack channels to which your team might send notifications when Soda finds an issue with your data, then **Save**.
+{% include integrate-slack-steps.md %}
 
 ## Invite your team members
 
@@ -35,8 +32,15 @@ Collaborating as a team on Soda Cloud means you can quickly share the lastest te
 1. In Soda Cloud, navigate to the **Datasets** dashboard, then select the dataset you wish to share.
 2. Copy the URL of the dataset, then paste it into a message to the teammates who have access to your organization's Soda Cloud account.
 
-![share dataset](/assets/images/share-dataset.png){:height="500px" width="500px"}
+![share dataset](/assets/images/share-dataset.png){:height="700px" width="700px"}
 
+## Create and manage Incidents
+
+[Create an Incident]({% link soda-cloud/incidents.md %}) in Soda Cloud to track your team's investgation and resolution of the data quality issue. 
+
+If you have integrated your Soda Cloud account with a Slack workspace, you can use an Incident's built-in ability to create an incident-specific Slack channel where you and your team can collaborate on the issue investigation. 
+
+![monitor-results-incidents](/assets/images/monitor-results-incidents.png){:height="700px" width="700px"}
 
 ## Go further
 

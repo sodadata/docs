@@ -63,6 +63,7 @@ Get started with the [Quick start tutorial for Soda Cloud]({% link soda-cloud/qu
 |   | [Collaborate]({% link soda-cloud/collaborate.md %}) with your team to monitor your data: invite team members, and integrate with Slack
 |   | Set up [Single sign-on for Soda Cloud]({% link soda-cloud/sso.md %}) so that all users in your organization must use your IdP to access Soda Cloud. |
 |   | Manage [user access]({% link soda-cloud/roles-and-rights.md %}) to your organization and its datasets. |
+|   | Integrate with [Alation]({% link soda/integrate-alation.md %}) or [Metaphor]({% link soda/integrate-metaphor.md %}) to view data quality details from within your data catalog.
 
 ## Go further
 

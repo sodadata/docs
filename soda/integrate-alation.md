@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Integrate Soda Cloud with Alation
-parent: Integrate
-redirect_from: /soda-cloud/integrate-alation.html 
+parent: Integrate Soda
+redirect_from: /soda-cloud/integrate-alation.html
 ---
 
 # Integrate Soda Cloud with Alation
 
-Integrate Soda with Alation to access details about the quality of your data from within your data catalog.
+Integrate Soda with Alation to access details about the quality of your data from within the data catalog.
 
 * Run data quality checks using Soda and visualize quality metrics and rules within the context of a data source, dataset, or column in Alation. 
 * Use Soda Cloud to flag poor-quality data in lineage diagrams and during live querying. 
