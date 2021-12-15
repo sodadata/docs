@@ -38,11 +38,6 @@ Run your dbt pipeline using one of the following commands:
 <br />
 Use Soda SQL to execute the following command.
 ```shell
-soda ingest dbt --dbt-artifacts <path to artifacts folder, usually dbt_project/target/>
-```
-
-or, if your manifest and run_result file end up in different places you can provide individual file paths like so:
-```shell
 soda ingest dbt --dbt-manifest <path to manifest.json> --dbt-run-results <path to run_results.json>
 ```
 
