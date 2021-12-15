@@ -67,6 +67,7 @@ When Soda SQL completes another scan of the dataset for which you created a moni
 * Learn more about [How Soda SQL Works]({% link soda-sql/concepts.md %}).
 * Use Soda Cloud to automatically [detect anomalies]({% link soda-cloud/anomaly-detection.md %}) in your data.
 * Find out how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) for tests that failed.
+* Integrate Soda with your [data catalogs]({% link soda/integrate-alation.md %}) or [data pipeline tools]({% link soda/integrate-dbt.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />
