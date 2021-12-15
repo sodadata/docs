@@ -38,17 +38,18 @@ From your command-line interface tool, execute the following command, replacing 
 $ pip install soda-sql-athena
 ```
 
-| Data source | Install package |
-| -------------- | --------------- |
-| Amazon Athena  | soda-sql-athena |
-| Amazon Redshift | soda-sql-redshift |
-| Apache Hive    | soda-sql-hive     |
-| Apache Spark (experimental) |  soda-sql-spark    |
-| GCP Big Query   | soda-sql-bigquery |
-| MS SQL Server (experimental) | soda-sql-sqlserver |
-| MySQL (experimental) | soda-sql-mysql  |
-| PostgreSQL     | soda-sql-postgresql |
-| Snowflake      | soda-sql-snowflake |
+| Data source                  | Install package    |
+| ---------------------------- | ------------------ |
+| Amazon Athena                | soda-sql-athena    |
+| Amazon Redshift              | soda-sql-redshift  |
+| Apache Hive                  | soda-sql-hive      |
+| Apache Spark (Experimental)  | soda-sql-spark     |
+| GCP Big Query                | soda-sql-bigquery  |
+| MS SQL Server (Experimental) | soda-sql-sqlserver |
+| MySQL (Experimental)         | soda-sql-mysql     |
+| PostgreSQL                   | soda-sql-postgresql|
+| Snowflake                    | soda-sql-snowflake |
+| Trino (Experimental)         | soda-sql-trino     |
 
 
 Optionally, you can install Soda SQL in a virtual environment. Execute the following commands one by one:
