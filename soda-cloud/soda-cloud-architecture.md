@@ -9,7 +9,7 @@ redirect_from: /soda-sql/documentation/soda-cloud-architecture.html
 
 ![soda-cloud-arch](/assets/images/soda-cloud-arch.png){:height="700px" width="700px"}
 
-**Soda SQL** connects to data sources and performs scans of each dataset in a data source. If you connect Soda SQL to a **Soda Cloud** account, it pushes scan results to Soda Cloud where users in your organization can view monitor results, access Cloud Metric Store data, create anomaly detection and schema evolution monitors, and integrate with Slack to investigate data quality incidents.
+**Soda SQL** connects to data sources and performs scans of each dataset in a data source. If you connect Soda SQL to a **Soda Cloud** account, it pushes scan results to Soda Cloud where users in your organization can view monitor results, access Cloud Metric Store data, create anomaly detection and schema evolution monitors, and integrate with Slack to investigate data quality Incidents.
 
 First, you must [connect your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}) to your configured instance of Soda SQL.  When Soda SQL completes a scan, it uses a secure API to push the results to your Soda Cloud account where you can log in and examine the details in the web application. Notably, Soda SQL pushes metadata to Soda Cloud; by default all your data (barring any [sample data]({% link soda-sql/samples.md %}) you explicity instruct Soda SQL to send to Soda Cloud) stays inside your private network. See [Data security and privacy]({% link soda/data-privacy.md %})
 
