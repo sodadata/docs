@@ -20,6 +20,7 @@ Soda SQL needs connection details in order to access your [data source]({% link 
 [MySQL (Experimental)](#mysql-experimental) <br />
 [PostgreSQL](#postgresql) <br />
 [Snowflake](#snowflake) <br />
+[Trino (Experimental)](#trino-experimental) <br />
 [Troubleshoot data source connections]({% link soda/troubleshoot.md %}#data-source-connections)<br />
 
 
@@ -309,8 +310,8 @@ connection:
 | host| required |  |
 | username| required | Use environment variables to retrieve this value securely. |
 | password| required | Use environment variables to retrieve this value securely. |
-| database|  |  |
-| schema |  | |
+| database| required |  |
+| schema | required | |
 
 ## Snowflake
 
@@ -361,6 +362,32 @@ You can use the `private_key` parameter to specify key-value pairs for key pair 
 
      -----END ENCRYPTED PRIVATE KEY-----
 ```
+
+## Trino (Experimental)
+
+```yaml
+name: my_trino_project
+connection:
+    type: trino
+    host: localhost
+    port: '443'
+    http_scheme: 'https'
+    catalog: your_catalog
+    schema: your_database
+    username: 
+    password: 
+
+...
+```
+
+| Property |  Required | Notes |
+| -------- |  -------- | ----- |
+| type | required |  |
+| host| required |  |
+| catalog| required | The name of your catalog.  |
+| schema | required | The name of your database. |
+| username| required | Use environment variables to retrieve this value securely. |
+| password| required | Use environment variables to retrieve this value securely. |
 
 
 <br />
