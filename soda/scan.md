@@ -87,7 +87,7 @@ See [Add scan option](#add-scan-options) for more scan options.
 
 ## Go further
 
-* Learn how to define a list of [columns to exclude]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) when Soda SQL excutes a scan on a dataset.
+* Learn how to define a list of [columns to exclude]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys) when Soda SQL excutes a scan on a dataset.
 * Learn how to specify the datasets you wish to [include or exclude]({% link soda-sql/configure.md %}#add-analyze-options) during `soda anayze`.
 * Learn more about [scan YAML files]({% link soda-sql/scan-yaml.md %}).
 * Learn more about [creating monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.

@@ -15,7 +15,7 @@ Instead of laboriously accessing your data source and then manually defining SQL
 
 [Create a scan YAML file](#create-a-scan-yaml-file)<br />
 [Anatomy of the scan YAML file](#anatomy-of-the-scan-yaml-file)<br />
-[Scan YAML configuration keys](#scan-yaml-configuration-keys)<br />
+[Scan YAML table configuration keys](#scan-yaml-table-configuration-keys)<br />
 [Go further](#go-further)<br />
 
 ## Create a scan YAML file
@@ -60,7 +60,8 @@ In the above example, Soda SQL created a scan YAML file named `demodata.yml` and
 
 If you decide to create your own scan YAML files manually, best practice dictates that you name the YAML file using the same name as the dataset in your warehouse.
 
-**Tip:** Use the `soda analyze --help` command to review options you can include to customize the analysis. For example, use `soda analyze --include customer` to analyze only the dataset named `customer` in your data source. 
+#### Tip!
+Use the `soda analyze --help` command to review options you can include to customize the analysis. For example, use `soda analyze --include customer` to analyze only the dataset named `customer` in your data source. 
 
 ## Anatomy of the scan YAML file
 
@@ -83,13 +84,13 @@ For example, the test `row_count > 0` checks to see if the dataset has at least 
 
 **5** - **`id`** and **`feepct`** are column names that identify specific columns in the dataset this scan YAML file scans.
 
-**6** - The value of the **column configuration key** `valid_format` identifies the only form of data in the column that Soda SQL recognizes as valid during a scan. In this case, any row in the `id` column that contains data that is in UUID format (universally unique identifier) is valid; anything else is invalid.
+**6** - The value of the **column configuration key** `valid_format` identifies the only form of data in the column that Soda SQL recognizes as valid during a scan. In this case, any row in the `id` column that contains data that is in UUID format (universally unique identifier) is valid; anything else is invalid. Refer to [Column configuration keys]({% link soda-sql/sql_metrics.md %}#column-configuration-keys) for more detail.
 
 **7** - Same as above, except the tests in the `column` section of the YAML file run only against the contents of the single, identified column. In this case, the test `invalid_percentage == 0` checks to see if all rows in the `id` column contain data in a valid format. If the test passes, it means that 0% of the rows contain data that is invalid; if the test fails, it means that more than 0% of the rows contain invalid data, which is data that is in non-UUID format.
 
-## Scan YAML configuration keys
+## Scan YAML table configuration keys
 
-The table below describes all of the top level **configuration keys** you can use to customize your scan.
+The table below describes all of the table-level **configuration keys** you can use to customize your scan.
 
 | Key         | Description | Required |
 | ----------- | ----------- | -------- |

@@ -34,7 +34,7 @@ The key in the key-value pair that you use to define what qualifies as a valid v
 A property of the data of a single column in your data source. Use a column metric to define tests that apply to specific columns in a dataset during a scan. See [Column metrics]({% link soda/metrics.md %}#column-metrics).
 
 ### configuration key
-The key in the key-value pair that you use to define configuration in your scan YAML file. See [Scan YAML configuration keys]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys).
+The key in the key-value pair that you use to define configuration in your scan YAML file. See [Scan YAML configuration keys]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys).
 
 ### create
 A Soda SQL CLI command that creates a warehouse directory.

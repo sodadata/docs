@@ -90,7 +90,7 @@ Soda uses the [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGu
 
 ## Image guidelines
 
-- Apply a grey, 1px border around screencap images embedded in pages.
+- Apply a grey, 1px border around screencap images embedded in pages; diagrams and graphics do not require borders.
 - Narrow and tighten any the UI before you take a screencap so as to keep the image legible when embedded to a page.
 - Ensure all images is legible.
 - Carefully consider whether or not to include a screencap. Is it really necessary? Does it communicate more than just your words do?  Screencaps of UI require regular maintenance to keep up with changes in the UI; is the image you are adding worth the extra maintenance?
