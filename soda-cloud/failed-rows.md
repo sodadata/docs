@@ -30,7 +30,7 @@ If you use Soda SQL to programmatically schedule scans of individual datasets, y
 
 ## Go further
 
-* <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a free Soda Cloud account.
+* <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a Soda Cloud account.
 * [Create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
 * Learn more about [scans in Soda Cloud]({% link soda/scan.md %}#scan-output-in-soda-cloud).
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).

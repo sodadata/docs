@@ -153,7 +153,7 @@ scan_builder.sample_processor = BigQuerySampleProcessor()
 ## Go further
 
 - Read more about [failed row]({% link soda-cloud/failed-rows.md %}) samples in Soda Cloud.
-- <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a free Soda Cloud account.
+- <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a Soda Cloud account.
 - [Create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
 - Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
 - Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

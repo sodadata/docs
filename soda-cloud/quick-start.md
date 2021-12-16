@@ -7,7 +7,7 @@ redirect_from: /soda-cloud.html
 
 # Quick start tutorial for Soda Cloud
 
-**Sign up** for a free Soda Cloud account, **connect Soda SQL** to your account, **integrate** with Slack, then **create** a monitor and an alert to begin monitoring your data.
+**Sign up** for a Soda Cloud account, **connect Soda SQL** to your account, **integrate** with Slack, then **create** a monitor and an alert to begin monitoring your data.
 <br />
 <br />
 
@@ -16,7 +16,7 @@ redirect_from: /soda-cloud.html
 
 ## Sign up and connect to Soda SQL
 
-1. If you have not already done so, create a free Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>. You, as the first user in your organization to sign up for a Soda Cloud account, become the account's **Admin** by default. Learn more about [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}). An Admin role is necessary to complete this tutorial.
+1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>. You, as the first user in your organization to sign up for a Soda Cloud account, become the account's **Admin** by default. Learn more about [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}). An Admin role is necessary to complete this tutorial.
 2. If you have not already done so, follow the instructions to [Install]({% link soda-sql/installation.md %}) and [Configure Soda SQL]({% link soda-sql/configure.md %}) in your local environment and connect it to a [data source]({% link soda/glossary.md %}#data-source). 
 3. [Connect your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}) to your Soda SQL instance.
 4. [Run a scan]({% link soda/scan.md %}#run-a-scan) in Soda SQL so that it pushes information about your datasets and test results to your Soda Cloud account.

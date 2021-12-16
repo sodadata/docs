@@ -9,7 +9,7 @@ redirect_from: /soda-sql/documentation/concepts.html
 
 **Soda SQL** is a free, open-source command-line tool. It utilizes user-defined input to prepare SQL queries that run tests on dataset in a data source to find invalid, missing, or unexpected data. When tests fail, they surface the data that you defined as "bad" in the tests. Armed with this information, you and your data engineering team can diagnose where the "bad" data entered your data pipeline and take steps to prioritize and resolve issues.
 
-Use Soda SQL on its own to manually or programmatically scan the data that your organization uses to make decisions. Optionally, you can integrate Soda SQL with your data orchestration tool to schedule scans and automate actions based on scan results. Further, you can connect Soda SQL to a free Soda Cloud account where you and your team can use the web application to monitor test results and collaborate to keep your data issue-free.
+Use Soda SQL on its own to manually or programmatically scan the data that your organization uses to make decisions. Optionally, you can integrate Soda SQL with your data orchestration tool to schedule scans and automate actions based on scan results. Further, you can connect Soda SQL to a Soda Cloud account where you and your team can use the web application to monitor test results and collaborate to keep your data issue-free.
 
 [Soda SQL basics](#soda-sql-basics)<br />
 [Soda SQL operation](#soda-sql-operation)<br />
@@ -99,7 +99,7 @@ To automate scans on your data, you can use the **Soda SQL Python library** to p
 
 Alternatively, you can integrate Soda SQL with a **data orchestration tool** such as, Airflow, Dagster, or dbt Core™, to schedule automated scans. You can also configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically quarantine the "bad" data or block it from contaminating your data pipeline. Refer to [Orchestrate scans]({% link soda-sql/orchestrate_scans.md %}) for details.
 
-Additionally, you can integrate Soda SQL with a **Soda Cloud** account. This free, cloud-based web application integrates with your Soda SQL implementation giving your team broader visibility into your organization's data quality. Soda SQL pushes scan results to your Soda Cloud account where you can use the web app to examine the results. Notably, Soda SQL only ever pushes *metadata* to the cloud; all your data stays inside your private network. Learn more about [connecting to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}).
+Additionally, you can integrate Soda SQL with a **Soda Cloud** account. This cloud-based web application integrates with your Soda SQL implementation giving your team broader visibility into your organization's data quality. Soda SQL pushes scan results to your Soda Cloud account where you can use the web app to examine the results. Notably, Soda SQL only ever pushes *metadata* to the cloud; all your data stays inside your private network. Learn more about [connecting to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}).
 
 Though you do not have to set up and ingrate a Soda Cloud account in order to use Soda SQL, the web app serves to complement the CLI tool, giving you a non-CLI method of examining data quality. Use Soda Cloud to:
 
