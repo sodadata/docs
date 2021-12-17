@@ -38,7 +38,7 @@ Run your dbt pipeline using one of the following commands:
 <br />
 Use Soda SQL to execute the following ingest command.
 ```shell
-soda ingest dbt --dbt-manifest <path to manifest.json> --dbt-run-results <path to run_results.json>
+soda ingest dbt --warehouse-yml-file <path to warehouse.yml> --dbt-manifest <path to manifest.json> --dbt-run-results <path to run_results.json>
 ```
 
 <br/>
