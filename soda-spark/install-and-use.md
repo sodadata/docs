@@ -27,12 +27,6 @@ To use Soda Spark, you must have installed the following on your system.
 
 {% include requirements.md %}
 
-## Compatibility
-
-Use Soda Spark to scan a variety of data sources:<br />
-
-{% include compatible-warehouses.md %}
-
 
 ## Install Soda Spark
 
@@ -133,7 +127,7 @@ Soda Spark is an open-source software project hosted in <a href="https://github.
 * Learn more about configuring [tests]({% link soda-sql/tests.md %}).
 * Learn how to define a list of 
   [columns to exclude]({% link soda-sql/scan-yaml.md
-  %}#scan-yaml-configuration-keys) when Soda SQL executes a scan on a dataset. 
+  %}#scan-yaml-table-configuration-keys) when Soda SQL executes a scan on a dataset. 
 * Need help? Join the **#soda-spark** channel in 
   <a href="http://community.soda.io/slack" target="_blank"> Soda community on
   Slack</a>.

@@ -97,7 +97,7 @@ Where your datasets contain sensitive or private information, you may *not* want
 
 Alternatively, you can prevent Soda SQL from sending metadata or samples to Soda Cloud by using one of the following methods:
 * To prevent Soda SQL from sending an individual dataset's scan results or samples to Soda Cloud, use the [`--offline` option]({% link soda/scan.md %}#add-scan-options) when you run a scan.
-* To prevent Soda SQL from sending specific column scan results or samples, configure an [`excluded_columns` configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) in your scan YAML file.
+* To prevent Soda SQL from sending specific column scan results or samples, configure an [`excluded_columns` configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys) in your scan YAML file.
 
 ## Reroute failed row samples for a dataset 
 

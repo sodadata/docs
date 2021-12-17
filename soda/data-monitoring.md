@@ -38,7 +38,7 @@ Use Soda Cloud to monitor and automatically detect anomalies in your data, and t
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Get started with Soda SQL in a few minutes with the [Quick start tutorial]({% link soda-sql/5_min_tutorial.md %}).
 * Learn how to [configure programmatic scans]({% link soda-sql/programmatic_scan.md %}) or [integrate with your data orchestration tool]({% link soda-sql/orchestrate_scans.md %}).
-* Create a free Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
+* Create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
 * Learn more about viewing [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 

@@ -11,6 +11,7 @@ redirect_from: /soda-sql/documentation/cli.html
 | --------------------- | ----------- |
 | `soda analyze` | Analyzes the contents of your data source and automatically prepares a scan YAML file for each dataset. Soda SQL puts the YAML files in the `/tables` directory inside the warehouse directory. See [Create a scan YAML file]({% link soda-sql/scan-yaml.md %}#create-a-scan-yaml-file) for details.|
 | `soda create yourdatawarehouse` | Creates a new `warehouse.yml` file and prepares credentials in your `~/.soda/env_vars.yml`. Soda SQL does not overwrite or remove and existing environment variables, it only adds new. See [Create a warehouse YAML file]({% link soda-sql/warehouse.md %}#create-a-warehouse-yaml-file) for details. |
+| `soda ingest` | Ingests test result details from other tools, such as dbt. |
 | `soda scan` | Uses the configurations in your scan YAML file to prepare, then run SQL queries against the data in your data source. See [Run a scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) for details. |
 
 ## List of commands
@@ -34,6 +35,7 @@ Options:
 Commands:
   analyze  Analyze tables and scaffold SCAN YAML
   create   Create a template warehouse.yml file
+  ingest   Ingest test information from different tools
   scan     Compute metrics and run tests for a given table
 ```
 
@@ -43,6 +45,7 @@ To see a list of configurable options for each command, use the command-line hel
 ```shell
 $ soda create --help
 $ soda analyze --help
+$ ingest --help
 $ soda scan --help
 ```
 
