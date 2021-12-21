@@ -8,9 +8,12 @@ parent: Soda
 
 <br />
 
-#### December 15, 2021
+#### December 2021
 
 * Added documentation regarding [Licenses]({% link soda-cloud/roles-and-rights.md %}#review-member-licenses) and [changing default access to datasets]({% link soda-cloud/roles-and-rights.md %}#change-the-default-access-to-datasets) in Soda Cloud.
+#### December 16, 2021
+
+* Added documentation for how to [integrate Soda with dbt]({% link soda/integrate-dbt.md %}). Access the test results from a dbt run directly within your Soda Cloud account.
 
 #### December 14, 2021
 
@@ -130,7 +133,7 @@ parent: Soda
 
 #### July 26. 2021
 
-* Added Soda SQL documentation for [configuring `excluded_columns`]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) during scans.
+* Added Soda SQL documentation for [configuring `excluded_columns`]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys) during scans.
 * Updated compatible data sources for [Soda SQL]({% link soda-sql/installation.md %}#compatibility) to include **MySQL (experimental)**, and [Soda Cloud]({% link soda-cloud/quick-start.md %}#sign-up-and-add-datasets) to improve accuracy.
 * Updated [Create monitors and alerts]({% link soda-cloud/monitors.md %}#metric-types) to include custom metrics as part of creation flow; updated prerequisites.
 * Updated Product overview [comparison]({% link soda/product-overview.md %}#compare-features-and-functionality) for new `excluded_columns` functionality and custom metrics in Soda Cloud.

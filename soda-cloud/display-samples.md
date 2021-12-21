@@ -6,7 +6,7 @@ parent: Soda Cloud
 
 # Display sample data for a dataset 
 
-When creating new [monitors]({% link soda/glossary.md %}#monitor) in Soda Cloud, you may find it useful to review sample data from your [dataset]({% link soda/glossary.md %}#dataset) to help you determine the kinds of [tests]({% link soda-sql/tests.md %}) to run when Soda SQL scans your data; see the image below. For this reason, you may wish to use Soda SQL to to configure a `samples` [configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys).
+When creating new [monitors]({% link soda/glossary.md %}#monitor) in Soda Cloud, you may find it useful to review sample data from your [dataset]({% link soda/glossary.md %}#dataset) to help you determine the kinds of [tests]({% link soda-sql/tests.md %}) to run when Soda SQL scans your data; see the image below. For this reason, you may wish to use Soda SQL to to configure a `samples` [configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys).
 
 ![sample-data](/assets/images/sample-data.png){:height="650px" width="650px"}
 
@@ -32,7 +32,7 @@ If you use Soda SQL to programmatically schedule scans of individual datasets, y
 
 - If you use Soda SQL, you can add a [`samples` configuration key]({% link soda-sql/samples.md %}) to your scan YAML file to send sample data.
 - Read more about [failed row]({% link soda-cloud/failed-rows.md %}) samples in Soda Cloud.
-- <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a free Soda Cloud account.
+- <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a Soda Cloud account.
 - [Create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
 - Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
 - Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

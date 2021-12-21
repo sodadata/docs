@@ -62,7 +62,6 @@ soda analyze
 ```
 6. Use a code editor to open one of your new scan YAML files. Soda SQL pre-populated the YAML file with built-in metrics and tests that it deemed useful for the kind of data in the dataset. See [scan YAML]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file). <br /> Adjust the contents of the YAML file to define the tests that you want Soda SQL to conduct when it runs a scan on this dataset in your data source. Refer to [Metrics]({% link soda-sql/sql_metrics.md %}) and [Tests]({% link soda-sql/tests.md %}) for details. <br />
 <br />
-Example scan YAML<br />
 ![configure yaml](/assets/images/configure-yaml.png){:height="275px" width="275px"}
 7. With your configuration complete, [run your first scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql).
 
@@ -74,15 +73,18 @@ If, when you run `soda analyze` you get an an authentication error, check to see
 
 Use `soda create --help` for a list of all available data source types and options.
 
-|Warehouse type  | Command |
-|--------------- | -------------------- |
-| Amazon Athena  | soda create athena |
-| Amazon Redshift | soda create redshift |
-| Apache Hive    | soda create hive     |
-| GCP Big Query   | soda create bigquery |
+|Warehouse type  | Command               |
+|--------------- | --------------------- |
+| Amazon Athena  | soda create athena    |
+| Amazon Redshift| soda create redshift  |
+| Apache Hive    | soda create hive      |
+| Apache Spark   | soda create spark     |
+| GCP Big Query  | soda create bigquery  |
 | MS SQL Server  | soda create sqlserver |
-| PostgreSQL     | soda create postgres |
+| MySQL          | soda create mysql     |
+| PostgreSQL     | soda create postgres  |
 | Snowflake      | soda create snowflake |
+| Trino          | soda create trino     |
 
 
 ## Add analyze options 
@@ -91,9 +93,9 @@ If you wish, you can define options for the `soda analyze` command that allow yo
 
 | Option | Description and example
 | --------- | ----------- | ------- |
-| `-e TEXT` or <br />`--exclude TEXT` | Replace `TEXT` with the case-insensitive name of the dataset(s) you wish to exclude from the analysis. Use a comma-separated list to include multiple datasets. Use `*` as a wild card. <br /> `soda analyze --exclude orders,customer` <br /> (If you need to exclude specific columns in a dataset during a Soda SQL scan, use the [`excluded_columns` configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-configuration-keys) in your scan YAML file.) |
-| `-i TEXT` or <br />`--include TEXT` | Replace `TEXT` with the case-insensitive name of the dataset(s) you wish to specifically analyze. Use a comma-separated list to include multiple datasets. Use `*` as a wild card. <br /> `soda analyze -i orders` |
-| `-l INTEGER` or <br />`--limit INTEGER` | Replace `INTEGER` with the number of datasets you want Soda SQL to analyze. <br /> `soda analyze --limit 10` |
+| `-e TEXT` <br />or <br />`--exclude TEXT` | Replace `TEXT` with the case-insensitive name of the dataset(s) you wish to exclude from the analysis. Use a comma-separated list to include multiple datasets. Use `*` as a wild card. <br /> `soda analyze --exclude orders,customer` <br /> (If you need to exclude specific columns in a dataset during a Soda SQL scan, use the [`excluded_columns` configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys) in your scan YAML file.) |
+| `-i TEXT` <br />or <br />`--include TEXT` | Replace `TEXT` with the case-insensitive name of the dataset(s) you wish to specifically analyze. Use a comma-separated list to include multiple datasets. Use `*` as a wild card. <br /> `soda analyze -i orders` |
+| `-l INTEGER` <br />or <br />`--limit INTEGER` | Replace `INTEGER` with the number of datasets you want Soda SQL to analyze. <br /> `soda analyze --limit 10` |
 
 
 ## Go further
