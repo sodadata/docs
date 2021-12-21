@@ -34,10 +34,10 @@ Anyone with access to your organization's Soda Cloud account is known as a **mem
 | Establish integrations with other tools, such as with Slack                                                  |   ✓   |      |
 | View a list of members                                                                                       |   ✓   |      |
 | Review the license status of members                                                                         |   ✓   |      |
-| Set the default role for members granted access to a dataset                                                   |   ✓   |      |
+| Set the default role for members granted access to a dataset                                                 |   ✓   |      |
 | Adjust the default setting that automatically grants the **Everyone** group access to newly-added datasets   |   ✓   |      |
 | Change the roles of members, including adding more Admins                                                    |   ✓   |      |
-| Reset member passwords or deactivate members                                                                   |   ✓   |      |
+| Reset member passwords or deactivate members                                                                 |   ✓   |      |
 | Download a CSV file of an audit trail of Soda Cloud usage                                                    |   ✓   |      |
 
 
@@ -45,11 +45,12 @@ The roles that define who can add or make changes to a [dataset]({% link soda/gl
 
 | Rights                                                                   | Admin | Manager | Editor | Viewer |
 |--------------------------------------------------------------------------|-------|---------|--------|--------|
-| View Monitor Results of monitors associated with the dataset             |   ✓   |    ✓    |    ✓   |    ✓   |
+| View Monitor Results of monitors associated with a dataset               |   ✓   |    ✓    |    ✓   |    ✓   |
 | Create and track Incidents associated with one or more monitor results   |   ✓   |    ✓    |    ✓   |    ✓   |
 | Create monitors associated with the dataset                              |   ✓   |    ✓    |    ✓   |        |
 | Edit monitors associated with the dataset                                |   ✓   |    ✓    |    ✓   |        |
-| Edit dataset details such as Responsibilities and Attributes             |   ✓   |    ✓    |    ✓   |        |
+| Edit dataset Responsibilities                                            |   ✓   |    ✓    |        |        |
+| Edit dataset Attributes                                                  |   ✓   |    ✓    |    ✓   |        |
 | Edit dataset settings such as Enable Column Metrics or Sample Data       |   ✓   |    ✓    |    ✓   |        |
 | Change the roles of members for an individual dataset                    |   ✓   |    ✓    |        |        |
 | Add a dataset                                                            |   ✓   |         |        |        |
@@ -91,7 +92,7 @@ Each Soda Cloud Plan (Soda Teams or Soda Enterprise) includes a specific number 
 
 As an Admin or a Manager of a dataset, you can access the **Responsibilities** tab for a dataset to make changes to the default role assignments in the dataset. All members, regardless of their role assignment, can view the Responsibilities tab for a dataset.
 
-1. As an Admin, login to your Soda Cloud account and navigate to the **Datasets** dashboard.
+1. As an Admin or Manager, login to your Soda Cloud account and navigate to the **Datasets** dashboard.
 2. Click the stacked dots to the right of the dataset for which you wish to adjust the role assignments, then select **Edit Dataset**.
 3. In the **Responsibilities** tab, use the search bar to find specific members to which you wish to assign a role other than the default, Editor, then use the dropdown next to each name to adjust their role. <br /> Alternatively, search for the group **everyone** and change the role of the group.
 
@@ -111,15 +112,19 @@ Note, by default, Soda Cloud automatically adds all new members to the organizat
 
 ## Dataset and monitor owners
 
-There are two ownership roles in Soda Cloud that identify the member that owns a dataset or monitor. By default, the Admin who adds a dataset becomes the **Dataset Owner**, and the member who creates a monitor become the **Monitor Owner**. These ownership roles do not enforce any rights or permissions on the datasets or monitors, they are simply identifiers.
+There are two ownership roles in Soda Cloud that identify the member that owns a dataset or monitor. These ownership roles do not enforce any rights or permissions on the datasets or monitors, they are simply identifiers.
+
+* By default, the member who created the [API keys]({% link soda-cloud/connect_to_cloud.md %}) that link Soda SQL to Soda Cloud becomes the **Dataset Owner** of all onboarded datasets. The default role that Soda Cloud assigns to the Dataset Owner is that of Manager.
+* By default, the member who creates a monitor become the **Monitor Owner**. 
 <br />
 <br />
 
 #### Change the Dataset Owner
 
-1. If you are the Admin of the organization, or have a Manager or Editor role for the dataset, login to your Soda Cloud account and navigate to the **Datasets** dashboard.
+1. If you are the Admin of the organization, or have a Manager role for the dataset, login to your Soda Cloud account and navigate to the **Datasets** dashboard.
 2. Click the stacked dots to the right of the dataset for which you wish to adjust the ownership, then select **Edit Dataset**.
 3. In the **Attributes** tab, use the dropdown to select the name of another member to take ownership of the dataset, then **Save**.
+4. Soda Cloud automatically assigns the role of Manager to the new Dataset Owner.
 <br />
 <br />
 
