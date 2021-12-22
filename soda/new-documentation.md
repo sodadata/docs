@@ -8,6 +8,11 @@ parent: Soda
 
 <br />
 
+#### December 22, 2021
+
+* Added data types information for [Trino]({% link soda/supported-data-types.md %}#trino-experimental) and [MySQL]({% link soda/supported-data-types.md %}#mysql-experimental). 
+* Adjusted the docs footer to offer users ways to suggest or make improve our docs.
+
 #### December 16, 2021
 
 * Added documentation for how to [integrate Soda with dbt]({% link soda/integrate-dbt.md %}). Access the test results from a dbt run directly within your Soda Cloud account.
