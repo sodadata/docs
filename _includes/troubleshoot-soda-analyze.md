@@ -1,0 +1,2 @@
+**Problem:** When you run `soda analyze` you get an an authentication error. <br />
+**Solution:** Check to see if you have another instance of Postgres already running on port 5432. If so, try stopping or uninstalling the Postgres instance, then run `soda analyze` again. 

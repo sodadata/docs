@@ -11,7 +11,7 @@ In Soda Cloud, you can create a monitor that automatically detects anomalies in 
 
 **Anomaly detection** is a [monitor]({% link soda/glossary.md %}#monitor) **Evaluation Type** powered by a machine learning algorithm that works with [measurements]({% link soda/glossary.md %}#measurement) that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalous measurements in time-series data. Seasonality is a term that describes a common pattern of time-series data and means "something cyclical, irrespecitve of the general direction of the data". For example, the number of orders that occur on your platform might show a clear drop during the weekend, or peak during the holiday season, irrespecitve of whether your platform is growing or not.
 
-![anomaly-detection](/assets/images/anomaly-detection.png){:height="600px" width="600px"}
+![anomaly-detection](/assets/images/anomaly-detection.png){:height="700px" width="700px"}
 
 The algorithm automatically adapts to your data. It learns how your data generally behaves over time to build a model of data patterns, then compares actual measurements to that model. If the two disagree, the algorithm identifies the actual measurement as an anomaly and calculates:<br />
 
@@ -52,6 +52,4 @@ Currently, Soda's time-series anomaly detection uses the <a href=""https://faceb
 <br />
 
 ---
-*Last modified on {% last_modified_at %}*
-
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
+{% include docs-footer.md %}
