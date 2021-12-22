@@ -1,0 +1,2 @@
+**Problem:** You open the monitor whose test failed during a scan but cannot click the **Failed Rows** tab. <br />
+**Solution:** Click a failed data point in the chart that shows the monitor's scan results over time. This action identifies the specific set of failed rows associated with an individual scan result so it can display the failed rows associated with that individual scan. 

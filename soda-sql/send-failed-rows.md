@@ -62,7 +62,7 @@ In Soda Cloud, the Soda SQL test manifests as a line item in the **Monitor resul
 
 #### Troubleshoot
 
-If you open the monitor whose test failed during a scan but cannot click the **Failed Rows** tab, click a failed data point in the chart that shows the monitor's scan results over time. This action identifies the specific set of failed rows associated with an individual scan result so it can display the failed rows associated with that individual scan. 
+{% include troubleshoot-failed-rows.md %}
 
 ## Use a missing-value Metric Type to send failed row samples
 
@@ -234,7 +234,5 @@ scan_builder.failed_row_processor = BigQueryRowProcessor()
 <br />
 
 ---
-*Last modified on {% last_modified_at %}*
-
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
+{% include docs-footer.md %}
 

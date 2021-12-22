@@ -1,0 +1,3 @@
+**Problem:** When using an historic metric, you get an scan error message that advises you that there are insufficient measurements to complete the scan.
+
+**Solution:** The Cloud Metric Store does not contain enough historic measurements to execute the test you have defined. For example, if you defined a test to count back to the seventh historic measurement but your Cloud Metric Store only contains three historic measurements, Soda SQL cannot complete the scan. Consider lowering the count-back number in your test, then run the scan again.
