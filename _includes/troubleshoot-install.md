@@ -36,8 +36,4 @@ Commands:
   ingest   Ingest test information from different tools
   scan     Compute metrics and run tests for a given table
 ```
-<br />
 
-**Problem:** I tried installing soda-sql on a DataBricks cluster and the `pip install` fails. Both Python and pip meet the install requirements. <br />
-**Solution:** Install `libsasl2-dev`, then use `pip install` to install soda-sql.
-<br />
