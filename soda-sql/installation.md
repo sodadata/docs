@@ -30,6 +30,9 @@ To use Soda SQL, you must have installed the following on your system.
 
 {% include requirements.md %}
 
+To install Soda SQL on a DataBricks cluster, install the following before installing soda-sql:
+* <a href="https://packages.debian.org/buster/libsasl2-dev" target="_blank"> `libsasl2-dev` </a>
+
 ## Install
 
 From your command-line interface tool, execute the following command, replacing `soda-sql-athena` with the install package that matches the type of data source you use to store data.
