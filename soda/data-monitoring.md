@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Data quality
+title: Data observability
 parent: Soda
 redirect_from: /soda-sql/documentation/data-monitoring.html
 ---
 
-# Data quality 
+# Data observability 
 
 *"Data teams are often flying blind. <br />We don’t have systems and processes in place to detect problems with data.  <br />As a result, data issues remain silent. <br />The software keeps on working, but on bad data."* <br />
  > –- Tom Baeyens, CTO and Co-founder, Soda

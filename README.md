@@ -25,21 +25,48 @@ Soda uses the following tools to build and publish documentation.
 
 To contribute to Soda documentation, set up your local system to author and preview content before committing it.
 
-1. Jekyll requires Ruby 2.4.0 or higher. If necessary, upgrade or install Ruby locally.
-2. Install two Ruby gems: bundler and jekyll. Refer to [Jekyll documentation](https://jekyllrb.com/docs/installation/) for details.
+1. Jekyll requires Ruby 2.4.0 or higher. If necessary, upgrade or install Ruby locally. If you are using a Mac with an Apple M1 chip, follow the prerequisite steps to [set up Ruby locally](#install-ruby-on-mac-with-an-apple-m1-chip).
+2. From Terminal, install two Ruby gems: bundler and jekyll. Refer to [Jekyll documentation](https://jekyllrb.com/docs/installation/) for details.
 ```shell
 $ gem install --user-install bundler jekyll
 ```
-3. Clone the sodadata/docs repo from GitHub.
+3. Clone the [sodadata/docs](https://github.com/sodadata/docs) repo from GitHub.
 4. From the command-line, navigate to the `docs` repo directory, then run `bundle install` to install all the necessary gems.
 5. Open the cloned repo locally in your favorite code editor such as Visual Code or Sublime.
-6. From the command-line, navigate to the `docs` repo directory, then run the following to build and serve docs locally.
+6. From the command-line, navigate to the `docs` repo directory that you just cloned, then run the following to build and serve docs locally.
 ```shell
 $ bundle exec jekyll serve
 ```
 7. In a browser, navigate to [http://localhost:4000](http://localhost:4000) to see a preview of the docs site locally. Make changes to docs files in your code editor, save the files, then refresh your browser to preview your changes.
 8. If you are creating a new page, consider copy+pasting the contents of the `template-new-page.md` file and pasting into your new file so that the standard header and footer info are included.
 
+#### Install Ruby on Mac with an Apple M1 chip
+
+1. If you have not already done so, install Homebrew by running the following command in Terminal.   
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+2. As instructed in the command-line output, run the following two commands one-by-one, adjusting the value for YOURNAME in the filepath:
+```shell
+ echo ‘eval “$)/opt/homebrew/bin/brew shellenv)”’ >> /Users/YOURNAME/.bash_profile
+ 
+ eval “$(/opt/homebrew/bin/brew shellenv)”
+ ```
+3. Optionally, run:  `brew bundle dump`.
+4. Install Ruby using the following command. Note that you can use [`rbenv`](https://github.com/rbenv/rbenv/blob/master/README.md) to install Ruby if you have need to access multiple versions of Ruby on your machine.  
+```shell
+brew install ruby
+```
+5. Check the Ruby install by running:   `ruby -v`
+6. Add the following to your `~/.bash_profile`, then save the file.
+```shell
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
+```
+7. Restart Terminal.
+8. Follow the [Set up docs tooling](#set-up-docs-tooling) above, starting at step 2.
 
 ## Style guidelines
 

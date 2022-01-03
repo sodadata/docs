@@ -31,8 +31,13 @@ Usage: soda [OPTIONS] COMMAND [ARGS]...
 Options:
   --help  Show this message and exit.
 Commands:
-  analyze  Analyzes tables in the warehouse and creates scan YAML files...
-  create   Creates a new warehouse.yml file and prepares credentials in
-           your...
-  scan     Computes all measurements and runs all tests on one table.
+  analyze  Analyze tables and scaffold SCAN YAML
+  create   Create a template warehouse.yml file
+  ingest   Ingest test information from different tools
+  scan     Compute metrics and run tests for a given table
 ```
+<br />
+
+**Problem:** I tried installing soda-sql on a DataBricks cluster and the `pip install` fails. Both Python and pip meet the install requirements. <br />
+**Solution:** Install `libsasl2-dev`, then use `pip install` to install soda-sql.
+<br />
