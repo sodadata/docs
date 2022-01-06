@@ -27,6 +27,9 @@ To use Soda Spark, you must have installed the following on your system.
 
 {% include requirements.md %}
 
+To install Soda Spark on a DataBricks cluster, install the following before installing soda-spark:
+* <a href="https://packages.debian.org/buster/libsasl2-dev" target="_blank"> `libsasl2-dev` </a>
+
 
 ## Install Soda Spark
 
@@ -35,6 +38,15 @@ From your command-line interface tool, execute the following command.
 ``` sh
 $ pip install soda-spark
 ```
+
+<br />
+
+#### Troubleshoot
+
+
+**Problem:** I tried installing `soda-spark` on a DataBricks cluster and the `pip install` fails. Both Python and pip meet the install requirements. <br />
+**Solution:** Install `libsasl2-dev`, then use `pip install soda-spark`.
+<br />
 
 ## Use Soda Spark
 As an extension of Soda SQL, Soda Spark allows you to run Soda

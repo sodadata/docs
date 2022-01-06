@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Data quality
+title: Data observability
 parent: Soda
 redirect_from: /soda-sql/documentation/data-monitoring.html
 ---
 
-# Data quality 
+# Data observability 
 
 *"Data teams are often flying blind. <br />We don’t have systems and processes in place to detect problems with data.  <br />As a result, data issues remain silent. <br />The software keeps on working, but on bad data."* <br />
  > –- Tom Baeyens, CTO and Co-founder, Soda
@@ -45,6 +45,4 @@ Use Soda Cloud to monitor and automatically detect anomalies in your data, and t
 <br />
 
 ---
-*Last modified on {% last_modified_at %}*
-
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
+{% include docs-footer.md %}

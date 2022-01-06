@@ -3,3 +3,4 @@ vendor
 .jekyll-cache
 .bundle/**
 **.DS_Store
+Brewfile

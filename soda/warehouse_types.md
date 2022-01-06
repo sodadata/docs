@@ -202,6 +202,22 @@ connection:
     dataset: sodasql
 ```
 
+Alternatively, you can specify Big Query configuration using the `use_context_auth` configuration option to direct Soda SQL to your Big Query global environnement variable (GOOGLE_APPLICATIONS_CREDNETIALS).
+
+```yaml
+name: my_bigquery_project
+connection:
+    type: bigquery
+    use_context_auth: true
+    project_id: your_project_id
+    auth_scopes:
+    - https://www.googleapis.com/auth/bigquery
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/drive
+    dataset: sodasql
+```
+
+
 | Property |  Required | 
 | -------- |  -------- | 
 | type | required | 
@@ -382,17 +398,17 @@ connection:
 
 | Property |  Required | Notes |
 | -------- |  -------- | ----- |
-| type | required |  |
-| host| required |  |
-| catalog| required | The name of your catalog.  |
-| schema | required | The name of your database. |
-| username| required | Use environment variables to retrieve this value securely. |
-| password| required | Use environment variables to retrieve this value securely. |
+| type     | required |        |
+| host     | required |        |
+| port     | required |        |
+| http_scheme | https |        |
+| catalog  | required | The name of your catalog.  |
+| schema   | required | The name of your database. |
+| username | required | Use environment variables to retrieve this value securely. |
+| password | required | Use environment variables to retrieve this value securely. |
 
 
 <br />
 
 ---
-*Last modified on {% last_modified_at %}*
-
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
+{% include docs-footer.md %}

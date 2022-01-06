@@ -11,6 +11,11 @@ parent: Soda
 #### December 2021
 
 * Added documentation regarding [Licenses]({% link soda-cloud/roles-and-rights.md %}#review-member-licenses) and [changing default access to datasets]({% link soda-cloud/roles-and-rights.md %}#change-the-default-access-to-datasets) in Soda Cloud.
+#### December 22, 2021
+
+* Added data types information for [Trino]({% link soda/supported-data-types.md %}#trino-experimental) and [MySQL]({% link soda/supported-data-types.md %}#mysql-experimental). 
+* Adjusted the docs footer to offer users ways to suggest or make improve our docs.
+
 #### December 16, 2021
 
 * Added documentation for how to [integrate Soda with dbt]({% link soda/integrate-dbt.md %}). Access the test results from a dbt run directly within your Soda Cloud account.
@@ -161,6 +166,4 @@ parent: Soda
 
 
 ---
-*Last modified on {% last_modified_at %}*
-
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
+{% include docs-footer.md %}

@@ -15,9 +15,13 @@ When a [scan]({% link soda/glossary.md %}#scan) results in a failed [test]({% li
 
 {% include failed-row-samples.md %}
 
-When Soda Cloud runs its next scheduled scan of your dataset, it collects and displays a sample of failed rows for the monitors that use the above-listed metric types. A sample contains the first five examples of failed rows from the dataset.
+When Soda SQL next runs a scan of your dataset, it collects and displays a sample of failed rows for the monitors that use the above-listed metric types. A sample contains the first five examples of failed rows from the dataset.
 
 If you are a Soda SQL user and have [connected to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}), you can add configurations to your scan YAML file to explicitly send failed row samples to Soda Cloud. See [Send failed rows to Soda Cloud]({% link soda-sql/send-failed-rows.md %}) for instructions.
+
+#### Troubleshoot
+
+{% include troubleshoot-failed-rows.md %}
 
 ## Disable failed row samples
 
@@ -39,6 +43,4 @@ If you use Soda SQL to programmatically schedule scans of individual datasets, y
 <br />
 
 ---
-*Last modified on {% last_modified_at %}*
-
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
+{% include docs-footer.md %}

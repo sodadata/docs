@@ -30,6 +30,7 @@ To use Soda SQL, you must have installed the following on your system.
 
 {% include requirements.md %}
 
+
 ## Install
 
 From your command-line interface tool, execute the following command, replacing `soda-sql-athena` with the install package that matches the type of data source you use to store data.
@@ -84,6 +85,4 @@ pip install soda-sql-athena -U
 <br />
 
 ---
-*Last modified on {% last_modified_at %}*
-
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
+{% include docs-footer.md %}

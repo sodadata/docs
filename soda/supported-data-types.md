@@ -10,6 +10,17 @@ redirect_from: /soda-sql/documentation/supported-data-types.html
 Soda supports the following data types in columns it scans.  <br />
 Currently, Soda does *not* support complex data types.
 
+[Amazon Athena](#amazon-athena) <br />
+[Amazon Redshift](#amazon-redshift) <br />
+[Apache Hive (Experimental)](#apache-hive-experimental) <br />
+[Apache Spark (Experimental)](#apache-spark-experimental) <br />
+[Google Cloud Platform Big Query](#google-cloud-platform-big-query) <br />
+[Microsoft SQL Server (Experimental)](#microsoft-sql-server-experimental) <br />
+[MySQL (Experimental)](#mysql-experimental) <br />
+[Postgres](#postgres) <br />
+[Snowflake](#snowflake) <br />
+[Trino (Experimental)](#trino-experimental) <br />
+<br />
 
 ### Amazon Athena
 
@@ -27,14 +38,14 @@ Currently, Soda does *not* support complex data types.
 | number | SMALLINT, INT2, INTEGER, INT, INT4, BIGINT, INT8 |
 | time | DATE, TIME, TIMETZ, TIMESTAMP, TIMESTAMPTZ |
 
-### Apache Hive
+### Apache Hive (Experimental)
 
 | Category | Data type | 
 | ---- | --------- |
 | text | CHAR, VARCHAR |
 | number | TINYINT, SMALLINT, INT, BIGINT, FLOAT, DOUBLE, DOUBLE PRECISION, DECIMAL, NUMERIC |
 
-### Apache Spark
+### Apache Spark (Experimental)
 
 | Category | Data type | 
 | ---- | --------- |
@@ -58,6 +69,14 @@ Currently, Soda does *not* support complex data types.
 | number | BIGINT, NUMERIC, BIT, SMALLINT, DECIMAL, SMALLMONEY, INT, TINYINT, MONEY, FLOAT, REAL |
 | time | DATE, DATETIMEOFFSET, DATETIME2, SMALLDATETIME, DATETIME, TIME |
 
+### MySQL (Experimental)
+
+| Category | Data type | 
+| ---- | --------- |
+| text | CHAR, VARCHAR, BINARY, VARBINARY, BLOB, TEXT, ENUM, SET |
+| number | INTEGER, INT, SMALLINT, TINYINT, MEDIUMINT, BIGINT, DECIMAL, NUMERIC, FLOAT, DOUBLE, REAL, DOUBLE PRECISION, DEC, FIXED |
+| time | TIMESTAMP, DATE, DATETIME, YEAR, TIME |
+
 ### Postgres
 
 | Category | Data type | 
@@ -74,9 +93,15 @@ Currently, Soda does *not* support complex data types.
 | number | NUMBER, INT, INTEGER, BIGINT, SMALLINT, TINYINT, BYTEINT, FLOAT, FLOAT4, FLOAT8, DOUBLE, DOUBLE PRECISION, REAL |
 | time | DATE, DATETIME, TIME, TIMESTAMP, TIMESTAMPT_LTZ, TIMESTAMP_NTZ, TIMESTAMP_TZ |
 
+### Trino (Experimental)
+
+| Category | Data type | 
+| ---- | --------- |
+| text | VARCHAR, CHAR, VARBINARY, JSON  |
+| number | BOOLEAN, INT, INTEGER, BIGINT, SMALLINT, TINYINT, BYTEINT, DOUBLE, REAL, DECIMAL |
+| time | DATE, TIME, TIMESTAMP, TIME WITH TIME ZONE, INTERVAL YEAR TO MONTH, INTERVAL DATE TO SECOND |
+
 <br />
 
 ---
-*Last modified on {% last_modified_at %}*
-
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
+{% include docs-footer.md %}
