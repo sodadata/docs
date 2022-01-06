@@ -43,29 +43,37 @@ $ bundle exec jekyll serve
 #### Install Ruby on Mac with an Apple M1 chip
 
 1. If you have not already done so, install Homebrew by running the following command in Terminal.   
-```shell
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-2. As instructed in the command-line output, run the following two commands one-by-one, adjusting the value for YOURNAME in the filepath:
-```shell
- echo 'eval "$)/opt/homebrew/bin/brew shellenv)"' >> /Users/YOURNAME/.bash_profile
- 
- eval "$(/opt/homebrew/bin/brew shellenv)"
- ```
+2. As instructed in the command-line output, run the following two commands one-by-one. Make sure to replace the target of `echo` to your bash profile file:
+```bash
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /your/bash/profile/file
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+Make sure to replace the target of `echo` to your bash profile file. It will typically look something like the following:
+
+```bash
+ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.bash_profile
+```
+
+If you're not sure which shell you're using, and therefore, which bash profile file this [blogpost](https://www.moncefbelyamani.com/which-shell-am-i-using-how-can-i-switch/) might be helpful.
+
 3. Optionally, run:  `brew bundle dump`.
 4. Install Ruby using the following command. Note that you can use [`rbenv`](https://github.com/rbenv/rbenv/blob/master/README.md) to install Ruby if you have need to access multiple versions of Ruby on your machine.  
 ```shell
 brew install ruby
 ```
 5. Check the Ruby install by running:   `ruby -v`
-6. Add the following to your `~/.bash_profile`, then save the file.
+6. Add the following to your bash profile file, then save the file.
 ```shell
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 ```
-7. Restart Terminal.
+7. Source your freshly modified bash profile `source /your/bash_profile/file` or open a new terminal window.
 8. Follow the [Set up docs tooling](#set-up-docs-tooling) above, starting at step 2.
 
 ## Style guidelines
