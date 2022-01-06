@@ -48,9 +48,9 @@ $ bundle exec jekyll serve
 ```
 2. As instructed in the command-line output, run the following two commands one-by-one, adjusting the value for YOURNAME in the filepath:
 ```shell
- echo ‘eval “$)/opt/homebrew/bin/brew shellenv)”’ >> /Users/YOURNAME/.bash_profile
+ echo 'eval "$)/opt/homebrew/bin/brew shellenv)"' >> /Users/YOURNAME/.bash_profile
  
- eval “$(/opt/homebrew/bin/brew shellenv)”
+ eval "$(/opt/homebrew/bin/brew shellenv)"
  ```
 3. Optionally, run:  `brew bundle dump`.
 4. Install Ruby using the following command. Note that you can use [`rbenv`](https://github.com/rbenv/rbenv/blob/master/README.md) to install Ruby if you have need to access multiple versions of Ruby on your machine.  
