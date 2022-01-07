@@ -27,7 +27,7 @@ Use Soda SQL to ingest the results of your dbt tests and push them to Soda Cloud
 
 ## Ingest dbt tests into Soda Cloud
 
-1. Every time you execute tests in dbt, dbt captures information about the test results. Soda SQL can access this information and translate it into test results that Soda Cloud can display. You must first run your tests in dbt before Soda SQL can find and translate test results, then push them to Soda Cloud. <br />
+Every time you execute tests in dbt, dbt captures information about the test results. Soda SQL can access this information and translate it into test results that Soda Cloud can display. You must first run your tests in dbt before Soda SQL can find and translate test results, then push them to Soda Cloud. <br />
 <br />
 Run your dbt pipeline using one of the following commands:
 * <a href="https://docs.getdbt.com/reference/commands/build" target="_blank">`dbt build`</a>  
@@ -35,7 +35,8 @@ Run your dbt pipeline using one of the following commands:
 <br/>
 <br/>
 
-2. To ingest dbt test results, Soda SQL uses the files that dbt generates when it builds or tests models: `manifest.json` and `run_results.json`. <br />
+### Ingest results from dbt-core (Open Source)
+To ingest dbt test results, Soda SQL uses the files that dbt generates when it builds or tests models: `manifest.json` and `run_results.json`. <br />
 <br />
 Use Soda SQL to execute the following ingest command.
 ```shell
@@ -44,9 +45,43 @@ soda ingest dbt --warehouse-yml-file <path to warehouse.yml> --dbt-manifest <pat
 
 <br/>
 
+### Ingest dbt test into Soda Cloud from dbt Cloud
+Every run that is part of a [Job on dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud/cloud-quickstart#create-a-new-job) generates metadata about your dbt project as well as the results from the run. Soda SQL can get this data directly from the dbt Cloud API. To do so, you need to:
+
+1. Obtain a [dbt Cloud Admin API Service Token](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens).
+2. Paste this token in your Soda `env_vars.yml` file as so:
+```yaml
+DBT_CLOUD_API_TOKEN: serviceAccountTokenFromDbt1234
+```
+3. Add an entry in your Soda `warehouse.yml` file as so:
+```yaml
+dbt_cloud_api_token: env_var(DBT_CLOUD_API_TOKEN)
+```
+The entry should be a top-level entry so, for example, a `warehouse.yml` file with dbt and Soda Cloud configured will look something like this:
+```yaml
+name: snowflake
+connection:
+  type: snowflake
+  username: env_var(SNOWFLAKE_USERNAME)
+  password: env_var(SNOWFLAKE_PASSWORD)
+  account: your.snowflake.account
+  database: database_where_your_dbt_tables_are
+  warehouse: some_compute_warehouse
+  schema: schema_where_your_dbt_tables_are
+soda_account:
+  host: cloud.soda.io
+  api_key_id: env_var(API_PUBLIC)
+  api_key_secret: env_var(API_PRIVATE)
+dbt_cloud_api_token: env_var(DBT_CLOUD_API)
+```
+4. Call `soda ingest` to capture the results from dbt Cloud into Soda Cloud. You'll need to know your dbt Cloud account ID as well as the run ID from which you want Soda to ingest results. Consult the [dbt Cloud documentation](https://docs.getdbt.com/docs/dbt-cloud/cloud-overview) for more information.
+```bash
+soda ingest dbt --warehouse-yml-file <path_to_warehouse.yml> --dbt-cloud-account-id <your_dbt_cloud_account_id> --dbt-cloud-run-id <the_run_id_from_a_dbt_Cloud_job
+```
+
 ### Ingestion notes and constraints
 
-* When you call the ingestion integration, Soda SQL reads the information from these files, then maps the information onto the corresponding datasets in Soda Cloud.  If the mapping fails, Soda SQL creates a new dataset and Soda Cloud displays the dbt monitor results associated with the new dataset.
+* When you call the ingestion integration, Soda SQL reads the information from `manifest.json` and `run_results.json` files (or gets them from the dbt Cloud API), then maps the information onto the corresponding datasets in Soda Cloud.  If the mapping fails, Soda SQL creates a new dataset and Soda Cloud displays the dbt monitor results associated with the new dataset.
 * In Soda Cloud, the displayed scan time of a dbt test is the time that Soda SQL ingested the test result from dbt. The scan time in Soda Cloud *does not* represent the time that the dbt pipeline executed the test. If you want those times to be close to each other, we recommend running a `soda ingest` right after your dbt transformation or testing pipeline has completed.
 * The command `soda scan` cannot trigger a dbt run, and the command `dbt run` cannot trigger a Soda scan. You must execute Soda scans and dbt runs individually, then ingest the results from a `dbt run` into Soda by explicitly executing a `soda ingest` command.
 
