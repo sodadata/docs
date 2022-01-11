@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### January 11, 2021
+
+* Added requirement for installing Soda Spark on a DataBricks cluster. See [Soda Spark Requirements]({% link soda-spark/install-and-use.md %}#requirements).
+
 #### December 22, 2021
 
 * Added data types information for [Trino]({% link soda/supported-data-types.md %}#trino-experimental) and [MySQL]({% link soda/supported-data-types.md %}#mysql-experimental). 
