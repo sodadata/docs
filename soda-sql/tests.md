@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Define tests
+description: A test is a check that Soda SQL performs when it scans a dataset. Define your tests in your scan YAML file associated with a specific dataset. 
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/tests.html
 ---

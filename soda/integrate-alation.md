@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Integrate Soda Cloud with Alation
+description: Integrate Soda with Alation to access details about the quality of your data from right within your data catalog. 
 parent: Integrate Soda
 redirect_from: /soda-cloud/integrate-alation.html
 ---

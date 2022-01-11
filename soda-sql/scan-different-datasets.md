@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Scan multiple data sources or datasets
+description: You can run a single scan against different data sources in your environments. You can also run a single scan against different datasets using custom metrics.
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/scan-different-datasets.html
 ---

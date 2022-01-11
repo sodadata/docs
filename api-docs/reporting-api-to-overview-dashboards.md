@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Build a reporting dashboard
+description: This example helps you build a reporting dashboard using the Reporting API. Use it to see how healthy your data is and how the team is using Soda Cloud. 
 parent: API Documentation
 apidoc: true
 fullwidth: false

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Custom metric templates
+description: If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs, you can use custom metrics. See full YAML examples.
 parent: Soda SQL
 redirect_from: /soda-sql/example-compare-rowcounts.html
 ---

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Display sample data
+description: In Soda Cloud, you may find it useful to review sample data from your dataset to help you determine the kinds of tests to run when Soda SQL scans your data.
 parent: Soda Cloud
 ---
 

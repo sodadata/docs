@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Roles and rights in Soda Cloud
+description: To manage the actions of users that belong to a single organization, Soda Cloud uses roles and access rights. Admins can access an Audit Trail of user actions.
 parent: Soda Cloud
 ---
 

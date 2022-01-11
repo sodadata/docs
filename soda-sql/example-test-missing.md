@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Example tests for missing values
+description: By default, Soda SQL includes a missing_count metric that searches for missing or null values in a column of a dataset. See a full YAML example.
 parent: Soda SQL
 redirect_from: /soda-sql/examples/examples-test-missing.html
 ---

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Configure programmatic scans
+description: To automate the search for missing, invalid, or unexpected data, you can use the Soda SQL Python library to programmatically execute scans.
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/programmatic_scan.html
 ---

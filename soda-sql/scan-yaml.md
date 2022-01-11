@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Scan YAML
+description: Configure scan metrics and tests in a scan YAML file, then Soda SQL uses the input from that file to prepare and run SQL queries against your data.
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/scan-yaml.html
 ---

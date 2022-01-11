@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Integrate Soda Cloud with Metaphor
+description: Integrate Soda with Metaphor to access details about the quality of your data from right within the data catalog.
 parent: Integrate Soda
 ---
 

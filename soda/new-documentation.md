@@ -1,6 +1,7 @@
 ---
 layout: default
 title: What's new in Soda docs?
+description: Review a changelog of additions and revisions to Soda documentation.
 parent: Soda
 ---
 

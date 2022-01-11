@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Release notes for Soda SQL
+description: Review release notes for Soda SQL, an open-source tool for testing and monitoring data quality.
 parent: Release notes
 ---
 

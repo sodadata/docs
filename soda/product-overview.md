@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Soda product overview
+description: Soda SQL utilizes user-defined input to prepare SQL queries to find bad data. Use the Soda Cloud web app to visualize results of scans and set up alerts.
 parent: Get started
 ---
 

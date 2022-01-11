@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Create monitors and alerts
+description: Log in to Soda Cloud to create monitors, and customize alerts that send notifications to your team when a Soda SQL scan surfaces data issues.
 parent: Soda Cloud
 redirect_from: /soda-sql/documentation/monitors.html
 ---
