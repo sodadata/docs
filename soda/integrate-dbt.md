@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Integrate Soda with dbt
+description: Integrate Soda with dbt-core or dbt Cloud to access dbt test results from within your Soda Cloud account and leverage all its features.
 parent: Integrate
 ---
 

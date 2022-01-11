@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Glossary
+description: Access a glossary of Soda terminology. 
 parent: Soda
 redirect_from: 
 - /soda-sql/documentation/glossary.html

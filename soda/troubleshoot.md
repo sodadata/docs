@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Troubleshoot
+description: Access an aggregated list of tips and solutions to problems using Soda.
 parent: Soda
 redirect_from: /soda-sql/documentation/troubleshoot.html
 ---

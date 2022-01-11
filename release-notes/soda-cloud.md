@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Release notes for Soda Cloud
+description: Review release notes for Soda Cloud, a web app that enables you visualize data quality test results and set alerts and notifications.
 parent: Release notes
 redirect_from:
   - /soda-cloud/time-partitioning.html

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Apply filters
+description: To test specific portions of data for quality, you can apply dynamic filters when you scan data in your warehouse. Define a filter config key in your scan YAML.
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/filtering.html
 ---

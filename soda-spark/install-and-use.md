@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Install and use Soda Spark 
+description: Soda Spark is an extension that allows you to run Soda SQL functionality programmatically on a Spark DataFrame. Install Soda Spark from the command-line.
 parent: Soda Spark
 ---
 

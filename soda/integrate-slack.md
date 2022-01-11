@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Integrate Soda Cloud with Slack
+description: Integrate your Slack workspace in your Soda Cloud account so that Soda Cloud can send Slack notifications to your team when a data issue triggers an alert.
 parent: Integrate Soda
 ---
 

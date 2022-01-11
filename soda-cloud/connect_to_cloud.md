@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Connect to Soda Cloud
+description: To use all the features that Soda Cloud has to offer, you can install and configure the Soda SQL command-line tool, then connect it to your Soda Cloud account.
 parent: Soda Cloud
 redirect_from: /soda-sql/documentation/connect_to_cloud.html
 ---

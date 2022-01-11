@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Anonymous usage statistics
+description: To understand how users are using Soda SQL, the Soda dev team has added telemetry event tracking to Soda SQL. See instructions to opt-out.
 parent: Reference
 redirect_from: /soda-sql/documentation/config.html
 ---

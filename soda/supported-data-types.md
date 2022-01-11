@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Data types
+description: Access a data source-specific list of data types Soda supports in columns it scans. Soda does not support complex data types.
 parent: Soda
 redirect_from: /soda-sql/documentation/supported-data-types.html
 ---

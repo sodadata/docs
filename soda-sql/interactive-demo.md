@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Soda SQL interactive demo
+description: Access our interactive, command-line simulator, complete with demo data and a 5-minute tutorial, to see just how easy it is to set up and use Soda SQL.
 parent: Get started
 ---
 

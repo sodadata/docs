@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Detect anomalies
+description: Soda Cloud automatically creates a monitor that uses a machine learning algorithm to detect anomalies in your time-series data.
 parent: Soda Cloud
 redirect_from: /soda-sql/documentation/anomaly-detection.html
 ---

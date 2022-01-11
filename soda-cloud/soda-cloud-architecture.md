@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Soda Cloud architecture
+description: Soda SQL connects to data sources and performs scans of datasets. If you connect Soda SQL to a Soda Cloud account, it pushes scan results to Soda Cloud.
 parent: Soda Cloud
 redirect_from: /soda-sql/documentation/soda-cloud-architecture.html
 ---

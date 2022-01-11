@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Soda SQL
+description: Open-source software that you install and use to run data quality tests from the command-line. Compatible with Snowflake, Amazon Redshift, BigQuery, and more.
 parent: Soda SQL
 ---
 <br />

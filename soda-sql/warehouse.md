@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Warehouse YAML
+description: A warehouse is a type of data source that represents a SQL engine or database. Use a warehouse YAML file to configure connection details for Soda SQL.
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/warehouse.html
 ---

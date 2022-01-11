@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Data source configurations
+description: To set data source configurations, use the following example configurations that correspond to each kind of data source that Soda SQL supports.
 parent: Soda
 redirect_from: /soda-sql/documentation/warehouse_types.html
 ---

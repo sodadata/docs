@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Configure metrics
+description: A metric is a property of the data in your database. The following sections detail the configuration for metrics you can customize in your scan YAML file.
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/sql_metrics.html
 ---

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Example tests for unique values
+description: By default, Soda SQL includes a unique_count metric to test data to ensure there are no duplicates or that each value is unique. See a full YAML example.
 parent: Soda SQL
 redirect_from: /soda-sql/examples/examples-test-unique.html
 ---

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Send failed row samples
+description: When a scan results in a failed test, the CLI output displays info about the test that failed. For more insight, Soda Cloud displays failed row samples.
 parent: Soda SQL
 ---
 
