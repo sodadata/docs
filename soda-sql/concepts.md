@@ -1,6 +1,7 @@
 ---
 layout: default
 title: How Soda SQL works
+description: Learn Soda SQL Basics, Soda SQL Operation, Soda SQL Automation and Integration with orchestration tools and Soda Cloud.
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/concepts.html
 ---

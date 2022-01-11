@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Install Soda SQL
+description: To use Soda SQL, your system must meet requirements. From your command-line interface, execute a pip install command to install Soda SQL.
 parent: Soda SQL
 redirect_from: /soda-sql/getting-started/installation.html
 ---

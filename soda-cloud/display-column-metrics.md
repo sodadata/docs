@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Display column metrics
+description: Instruct Soda SQL to send column metrics for your dataset to Soda Cloud. Column metrics give you at-a-glance information about the data in your dataset.
 parent: Soda Cloud
 ---
 

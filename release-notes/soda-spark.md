@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Release notes for Soda Spark
+description: Review release notes for Soda Spark, an open-source tool for testing and monitoring data quality in Spark DataFrames.
 parent: Release notes
 ---
 

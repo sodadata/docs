@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Quick start for Soda SQL
+description: Use your command-line interface to connect Soda SQL to a data source, create the tests that surface “bad” data in a dataset, then run your first scan.
 parent: Get started
 redirect_from: /soda-sql/getting-started/5_min_tutorial.html
 ---

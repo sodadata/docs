@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Create and track incidents
+description: If you have integrated Soda Cloud with Slack, you can use an Incident’s built-in ability to create a channel that your team can use to investigate an issue.
 parent: Soda Cloud
 ---
 

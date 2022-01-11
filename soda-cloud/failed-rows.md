@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Examine failed rows
+description: To offer more insight into the data that failed a test during a scan, Soda Cloud can display failed rows in a monitor’s history.
 parent: Soda Cloud
 redirect_from: /soda-sql/documentation/failed-rows.html
 ---

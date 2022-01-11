@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Monitor schema evolution
+description: Soda Cloud automatically creates a monitor that notifies you when columns in a dataset have been added, removed, or changed over time.
 parent: Soda Cloud 
 ---
 

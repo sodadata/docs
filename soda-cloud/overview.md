@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Soda Cloud
+description: A web app that enables you to visualize data quality test results, set up alerts and track incidents, and automatically detect data quality anomalies.
 parent: Soda Cloud
 ---
 <br />

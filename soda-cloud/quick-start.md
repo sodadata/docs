@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Quick start for Soda Cloud
+description: Sign up for a Soda Cloud account, connect Soda SQL to your account, integrate with Slack, then create a monitor and an alert to begin monitoring your data.
 parent: Get started
 redirect_from: /soda-cloud.html
 ---

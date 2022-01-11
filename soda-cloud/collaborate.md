@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Collaborate on data monitoring
+description: Data quality is a team sport! Integrate with Slack so Soda Cloud can send alerts to your team. Invite your team to join your Soda Cloud account.
 parent: Soda Cloud
 redirect_from:
   - /soda-sql/documentation/integrate-slack.html

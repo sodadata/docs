@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Configure Soda SQL
+description: After you install Soda SQL, you must create files and configure a few settings before you can run a scan. Access an Overview of configuration details.
 parent: Soda SQL
 redirect_from: /soda-sql/getting-started/configure.html
 ---

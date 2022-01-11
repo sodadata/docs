@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Release notes 
+description: Review release notes for all Soda data observability products.
 parent: Release notes
 ---
 

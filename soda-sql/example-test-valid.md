@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Example tests for valid values
+description: Where your dataset contains records that ought to contain only values that qualify as valid, you can use Soda SQL to test for data validity. See a full example.
 parent: Soda SQL
 redirect_from: /soda-sql/examples/examples-test-valid.html
 ---

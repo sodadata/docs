@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Data observability
+description: Data quality is all about making sure that people can trust the data they use. Ensuring data observability involves layers of tools and best practices.
 parent: Soda
 redirect_from: /soda-sql/documentation/data-monitoring.html
 ---
