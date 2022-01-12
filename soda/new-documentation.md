@@ -9,13 +9,17 @@ parent: Soda
 
 <br />
 
+#### January 12, 2021
+
+* Added documentation regarding [Licenses]({% link soda-cloud/roles-and-rights.md %}#review-member-licenses) and [changing default access to datasets]({% link soda-cloud/roles-and-rights.md %}#change-the-default-access-to-datasets) in Soda Cloud.
+
 #### January 11, 2021
 
 * Added requirement for installing Soda Spark on a DataBricks cluster. See [Soda Spark Requirements]({% link soda-spark/install-and-use.md %}#requirements).
 
 #### December 22, 2021
 
-* Added data types information for [Trino]({% link soda/supported-data-types.md %}#trino-experimental) and [MySQL]({% link soda/supported-data-types.md %}#mysql-experimental). 
+* Added data types information for [Trino]({% link soda/supported-data-types.md %}#trino-experimental) and [MySQL]({% link soda/supported-data-types.md %}#mysql-experimental).
 * Adjusted the docs footer to offer users ways to suggest or make improve our docs.
 
 #### December 16, 2021
@@ -59,7 +63,7 @@ parent: Soda
 
 #### November 15, 2021
 
-* Added a new, embedded [interactive demo]({% link soda-sql/interactive-demo.md %}) for Soda SQL. 
+* Added a new, embedded [interactive demo]({% link soda-sql/interactive-demo.md %}) for Soda SQL.
 * New documentation to accompany the soft-launch of [Soda Spark]({% link soda-spark/install-and-use.md %}), an extension of Soda SQL functionality.
 
 #### November 9, 2021
@@ -73,7 +77,7 @@ parent: Soda
 #### October 25, 2021
 
 * Removed the feature to Add datasets directly in Soda Cloud. Instead, users [add datasets using Soda SQL]({% link soda-sql/configure.md %}).
-* Added support for [Snowflake session parameter configuration]({% link soda/warehouse_types.md %}#snowflake) in the warehouse YAML file. 
+* Added support for [Snowflake session parameter configuration]({% link soda/warehouse_types.md %}#snowflake) in the warehouse YAML file.
 
 #### October 18, 2021
 
