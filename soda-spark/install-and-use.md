@@ -24,12 +24,21 @@ SQL functionality programmatically on a
 
 ## Requirements
 
+To install Soda Spark on a **DataBricks cluster**, install <a href="https://packages.debian.org/buster/libsasl2-dev" target="_blank"> `libsasl2-dev` </a> *before* installing Soda Spark. <br />
+For Ubuntu users, install `libsasl2-dev` using the following command: 
+```shell
+%sh sudo apt-get -y install unixodbc-dev libsasl2-dev gcc python-dev
+```
+
 To use Soda Spark, you must have installed the following on your system.
 
-{% include requirements.md %}
+* **Python 3.7** or greater. To check your existing version, use the CLI command: `python --version`
+* **Pip 21.0** or greater. To check your existing version, use the CLI command: `pip --version`
 
-To install Soda Spark on a DataBricks cluster, install the following before installing soda-spark:
-* <a href="https://packages.debian.org/buster/libsasl2-dev" target="_blank"> `libsasl2-dev` </a>
+For Linux users only, install the following:
+
+* On Debian Buster: `apt-get install g++ unixodbc-dev python3-dev libssl-dev libffi-dev`
+* On CentOS 8: `yum install gcc-c++ unixODBC-devel python38-devel libffi-devel openssl-devel`
 
 
 ## Install Soda Spark
@@ -47,6 +56,11 @@ $ pip install soda-spark
 
 **Problem:** I tried installing `soda-spark` on a DataBricks cluster and the `pip install` fails. Both Python and pip meet the install requirements. <br />
 **Solution:** Install `libsasl2-dev`, then use `pip install soda-spark`.
+<br />
+<br />
+
+**Problem:** As an Ubuntu user, I tried installing `soda-spark` on a DataBricks cluster and the `pip install` fails with a `Py4JJavaError`.  <br />
+**Solution:** Install `libsasl2-dev` by executing `%sh sudo apt-get -y install unixodbc-dev libsasl2-dev gcc python-dev` first, then use `pip install soda-spark`.
 <br />
 
 ## Use Soda Spark
