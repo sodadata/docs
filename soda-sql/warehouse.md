@@ -66,7 +66,7 @@ connection:
 
 Notice that even though the command provided a value for `username`, Soda SQL automatically used `env_var(POSTGRES_USERNAME)` instead. By default, Soda SQL stores database login credentials in an env_vars YAML file so that this sensitive information stays locally stored. See [Env_vars YAML](#env_vars-yaml) below for details.
 
-Each type of data source -- PostgreSQL, Athena, Big Query, etc. -- requires different configuration parameters. Refer to [Set data source configurations]({% link soda/warehouse_types.md %}) for details that correspond to the type of data source you are using.
+Each type of data source -- PostgreSQL, Amazon Athena, Google Big Query, etc. -- requires different configuration parameters. Refer to [Set data source configurations]({% link soda/warehouse_types.md %}) for details that correspond to the type of data source you are using.
 
 
 ## Env_vars YAML file
