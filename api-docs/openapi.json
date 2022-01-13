@@ -9,12 +9,12 @@
     { "url": "https://reporting.cloud.soda.io", "description": "Soda Cloud" }
   ],
   "paths": {
-    "/v0/ping": {
+    "/ping": {
       "get": {
         "tags": ["Status"],
         "summary": "Soda can is open",
         "description": "Ping this endpoint to test whether the Reporting API is live.\nReturns the sound of a Soda can opening along with a 200.",
-        "operationId": "soda_can_is_open_v0_ping_get",
+        "operationId": "soda_can_is_open_ping_get",
         "responses": {
           "200": {
             "description": "Successful Response",
