@@ -2,8 +2,8 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Soda Cloud Reporting API",
-    "description": "\nThis API enables you to query data from your Soda Cloud account. Use the data to build reporting dashboards that\ncommunicate how users in your organization are adopting and making use of Soda Cloud.\n\nAuthentication\n-----\nTo use the API, you must provide a username and password (your Soda Cloud login credentials) according to\nthe `HTTPBasic` security protocol.\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required,\nin the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication\ncredentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
-    "version": "0.0.0-a2"
+    "description": "\nThis API enables you to query data from your Soda Cloud account. Use the data to build reporting dashboards that\ncommunicate how users in your organization are adopting and making use of Soda Cloud.\n\nAuthentication\n-----\nThe API supports both `HTTPBasic` authentication and `TokenAuth` authentication. Except for the `/get_token` endpoint,\nwhich only supports HTTP Basic authentication.\n\n- `HTTPBasic` authentication requires you to provide a username and password via headers. Each endpoint \"Try It\" section\nwill show you exactly how to do that.\n\n- `TokenAuth` requires that you obtain a Soda token from the `/get_token` endpoint using your username and password\nin accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token`\nendpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with\nany of the other endpoints.\n\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required,\nin the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication\ncredentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
+    "version": "0.0.1"
   },
   "servers": [
     { "url": "https://reporting.cloud.soda.io", "description": "Soda Cloud" }
@@ -23,6 +23,25 @@
         }
       }
     },
+    "/v0/get_token": {
+      "get": {
+        "tags": ["Authentication"],
+        "summary": "Get token",
+        "description": "This enpoint allows you to obtain a limited duration API token to use in any of the other endpoints.\n\nMake a query to this endpoint according to the `HTTPBasic` authentication headers\n(see \"Live testing\" section on the right).\n\nThe expiration limit of the token is given to you in the response.\n\nReturns\n-------\nAn object of type `GetTokenResult`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.",
+        "operationId": "get_token_v0_get_token_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GetTokenResult" }
+              }
+            }
+          }
+        },
+        "security": [{ "HTTPBasic": [] }]
+      }
+    },
     "/v0/adoption/sign_ups": {
       "post": {
         "tags": ["Tool Adoption"],
@@ -39,7 +58,7 @@
             }
           }
         },
-        "security": [{ "HTTPBasic": [] }]
+        "security": [{ "HTTPBasic": [] }, { "APIKeyHeader": [] }]
       }
     },
     "/v0/adoption/sign_ins": {
@@ -58,7 +77,7 @@
             }
           }
         },
-        "security": [{ "HTTPBasic": [] }]
+        "security": [{ "HTTPBasic": [] }, { "APIKeyHeader": [] }]
       }
     },
     "/v0/adoption/daily_account_activity": {
@@ -79,7 +98,7 @@
             }
           }
         },
-        "security": [{ "HTTPBasic": [] }]
+        "security": [{ "HTTPBasic": [] }, { "APIKeyHeader": [] }]
       }
     },
     "/v0/impact/alerts_sent": {
@@ -100,7 +119,7 @@
             }
           }
         },
-        "security": [{ "HTTPBasic": [] }]
+        "security": [{ "HTTPBasic": [] }, { "APIKeyHeader": [] }]
       }
     },
     "/v0/adoption/scans_run": {
@@ -119,7 +138,7 @@
             }
           }
         },
-        "security": [{ "HTTPBasic": [] }]
+        "security": [{ "HTTPBasic": [] }, { "APIKeyHeader": [] }]
       }
     },
     "/v0/coverage/tests": {
@@ -138,7 +157,7 @@
             }
           }
         },
-        "security": [{ "HTTPBasic": [] }]
+        "security": [{ "HTTPBasic": [] }, { "APIKeyHeader": [] }]
       }
     },
     "/v0/coverage/datasets": {
@@ -157,7 +176,7 @@
             }
           }
         },
-        "security": [{ "HTTPBasic": [] }]
+        "security": [{ "HTTPBasic": [] }, { "APIKeyHeader": [] }]
       }
     },
     "/v0/quality/tests_and_results": {
@@ -178,7 +197,7 @@
             }
           }
         },
-        "security": [{ "HTTPBasic": [] }]
+        "security": [{ "HTTPBasic": [] }, { "APIKeyHeader": [] }]
       }
     },
     "/v0/quality/dataset_health": {
@@ -197,7 +216,7 @@
             }
           }
         },
-        "security": [{ "HTTPBasic": [] }]
+        "security": [{ "HTTPBasic": [] }, { "APIKeyHeader": [] }]
       }
     },
     "/v0/coverage/dataset_coverage": {
@@ -218,7 +237,7 @@
             }
           }
         },
-        "security": [{ "HTTPBasic": [] }]
+        "security": [{ "HTTPBasic": [] }, { "APIKeyHeader": [] }]
       }
     }
   },
@@ -526,6 +545,33 @@
         },
         "description": "Array of `DatasetsData`."
       },
+      "GetTokenResult": {
+        "title": "GetTokenResult",
+        "type": "object",
+        "properties": {
+          "user": {
+            "title": "User",
+            "type": "string",
+            "description": "User's username (email addess used at sign up)."
+          },
+          "token": {
+            "title": "Token",
+            "type": "string",
+            "description": "\n            API Token to use for authentication. This token expires. Its expiration is also provided in the response.\n            "
+          },
+          "organization_id": {
+            "title": "Organization Id",
+            "type": "string",
+            "description": "Organization ID (UUID) of the logged in user."
+          },
+          "expires_in": {
+            "title": "Expires In",
+            "type": "integer",
+            "description": "Token's expiration time in seconds."
+          }
+        },
+        "description": "Soda Cloud API token and organisation ID information to use in this API's endpoints."
+      },
       "ScansRunData": {
         "title": "ScansRunData",
         "type": "object",
@@ -820,6 +866,10 @@
         "description": "User information data."
       }
     },
-    "securitySchemes": { "HTTPBasic": { "type": "http", "scheme": "basic" } }
+    "securitySchemes": {
+      "HTTPBasic": { "type": "http", "scheme": "basic" },
+      "APIKeyHeader": { "type": "apiKey", "in": "header", "name": "SODA_TOKEN" }
+    }
   }
 }
+
