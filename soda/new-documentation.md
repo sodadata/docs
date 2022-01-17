@@ -9,11 +9,15 @@ parent: Soda
 
 <br />
 
-#### January 12, 2021
+#### January 17, 2022
+
+* Added text to [Roles and rights]({% link soda-cloud/roles-and-rights.md %}#access-an-audit-trail) documentation about the option to use the Reporting API to access Audit Trail data.
+
+#### January 12, 2022
 
 * Added documentation regarding [Licenses]({% link soda-cloud/roles-and-rights.md %}#review-member-licenses) and [changing default access to datasets]({% link soda-cloud/roles-and-rights.md %}#change-the-default-access-to-datasets) in Soda Cloud.
 
-#### January 11, 2021
+#### January 11, 2022
 
 * Added requirement for installing Soda Spark on a DataBricks cluster. See [Soda Spark Requirements]({% link soda-spark/install-and-use.md %}#requirements).
 
