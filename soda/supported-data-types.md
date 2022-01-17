@@ -14,7 +14,7 @@ Currently, Soda does *not* support complex data types.
 [Amazon Athena](#amazon-athena) <br />
 [Amazon Redshift](#amazon-redshift) <br />
 [Apache Hive (Experimental)](#apache-hive-experimental) <br />
-[Apache Spark (Experimental)](#apache-spark-experimental) <br />
+[Apache Spark](#apache-spark) <br />
 [Google Cloud Platform Big Query](#google-cloud-platform-big-query) <br />
 [Microsoft SQL Server (Experimental)](#microsoft-sql-server-experimental) <br />
 [MySQL (Experimental)](#mysql-experimental) <br />
@@ -46,7 +46,7 @@ Currently, Soda does *not* support complex data types.
 | text | CHAR, VARCHAR |
 | number | TINYINT, SMALLINT, INT, BIGINT, FLOAT, DOUBLE, DOUBLE PRECISION, DECIMAL, NUMERIC |
 
-### Apache Spark (Experimental)
+### Apache Spark
 
 | Category | Data type | 
 | ---- | --------- |

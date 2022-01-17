@@ -15,7 +15,7 @@ Soda SQL needs connection details in order to access your [data source]({% link 
 [Amazon Athena](#amazon-athena) <br />
 [Amazon Redshift](#amazon-redshift) <br />
 [Apache Hive (Experimental)](#apache-hive-experimental) <br />
-[Apache Spark (Experimental)](#apache-spark-experimental) <br />
+[Apache Spark](#apache-spark) <br />
 [Google Cloud Platform Big Query](#gcp-big-query) <br />
 [Microsoft SQL Server (Experimental)](#microsoft-sql-server-experimental) <br />
 [MySQL (Experimental)](#mysql-experimental) <br />
@@ -120,7 +120,7 @@ connection:
 | mapreduce.job.reduces | required | Sets the number of reduce tasks per job. Input `-1` for Hive to automatically determine the number of reducers. |
 
 
-## Apache Spark (Experimental)
+## Apache Spark
 
 ```yaml
 name: my_spark_project

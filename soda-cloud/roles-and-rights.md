@@ -16,7 +16,7 @@ To manage the actions of members that belong to a single organization, Soda Clou
 [Change access to a dataset](#change-access-to-a-dataset)<br />
 [Change the default access to datasets](#change-the-default-access-to-datasets)<br />
 [Dataset and monitor owners](#dataset-and-monitor-owners)<br />
-[Download an audit trail](#download-an-audit-trail)<br />
+[Access an audit trail](#access-an-audit-trail)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -135,12 +135,14 @@ There are two ownership roles in Soda Cloud that identify the member that owns a
 2. Click the stacked dots to the right of the monitor for which you wish to adjust the ownership, then select **Edit Monitor**.
 3. In the **Attributes** tab, use the dropdown to select the name of another member to take ownership of the monitor, then **Save**.
 
-## Download an audit trail
+## Access an audit trail
 
 To meet your organization's regulatory and policy mandates, you can download a CSV file that contains an audit trail of activity on your Soda Cloud account for a date range you specify. The file contains details of each member's actions, their email and IP addresses, and a timestamp of the action.
 
 1. As an Admin, login to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**. Only Admins can view Organization Settings.
 2. Access the **Audit Trail** tab, then set the date range of usage details you wish to examine and click **Download**.
+
+Alternatively, you can use the [Audit Trail endpoint]({% link api-docs/reporting-api.md %}#/operations/audit_trail_v0_audit_trail_get) in Soda Cloud's Reporting API to access audit trail data. 
 
 ## Go further
 
