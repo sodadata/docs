@@ -3,7 +3,7 @@
   "info": {
     "title": "Soda Cloud Reporting API",
     "description": "\nThis API enables you to query data from your Soda Cloud account. Use the data to build reporting dashboards that\ncommunicate how users in your organization are adopting and making use of Soda Cloud.\n\nAuthentication\n-----\nThe API supports both `HTTPBasic` authentication and `TokenAuth` authentication. Except for the `/get_token` endpoint,\nwhich only supports HTTP Basic authentication.\n\n- `HTTPBasic` authentication requires you to provide a username and password via headers. Each endpoint \"Try It\" section\nwill show you exactly how to do that.\n\n- `TokenAuth` requires that you obtain a Soda token from the `/get_token` endpoint using your username and password\nin accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token`\nendpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with\nany of the other endpoints.\n\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required,\nin the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication\ncredentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
-    "version": "0.0.1"
+    "version": "0.1.0"
   },
   "servers": [
     { "url": "https://reporting.cloud.soda.io", "description": "Soda Cloud" }
@@ -40,6 +40,57 @@
           }
         },
         "security": [{ "HTTPBasic": [] }]
+      }
+    },
+    "/v0/audit_trail": {
+      "get": {
+        "tags": ["Auditing"],
+        "summary": "Audit Trail",
+        "description": "This endpoint returns a list of audit trail events for the authenticated user's organization.\n\nTo obtain data from this endpoint, the authenticated user must be an **organization admin**\nand the data returned is equivalent to the what an Organization admin would be able to get from\nthe Soda Cloud UI under \"Organization Settings > Audit Trail\".\n\nUsage\n-----\nUse this endpoint to capture audit trail events for security and usage monitoring purposes.\n\nReturns\n-------\nAn object of type `AuditTrailResult` containing an array of `AuditTrailData`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.",
+        "operationId": "audit_trail_v0_audit_trail_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "From Datetime",
+              "type": "string",
+              "format": "date-time",
+              "default": "2021-12-27T13:54:18.020360"
+            },
+            "name": "from_datetime",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "To Datetime",
+              "type": "string",
+              "format": "date-time",
+              "default": "2022-01-17T13:54:18.020396"
+            },
+            "name": "to_datetime",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AuditTrailResult" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "HTTPBasic": [] }, { "APIKeyHeader": [] }]
       }
     },
     "/v0/adoption/sign_ups": {
@@ -243,6 +294,67 @@
   },
   "components": {
     "schemas": {
+      "AuditTrailData": {
+        "title": "AuditTrailData",
+        "type": "object",
+        "properties": {
+          "correlation_id": {
+            "title": "Correlation Id",
+            "type": "string",
+            "description": "Identifier of a given audited request. Note this column cannot be used as a primary key as it can span over multiple rows."
+          },
+          "eventTime": {
+            "title": "Eventtime",
+            "type": "string",
+            "description": "ISO UTC datetime at which the event happened.",
+            "format": "date-time"
+          },
+          "ipAddress": {
+            "title": "Ipaddress",
+            "type": "string",
+            "description": "IP address of the user who performed the logged action."
+          },
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "description": "Email address of the user who performed the logged action."
+          },
+          "apiKey": {
+            "title": "Apikey",
+            "type": "string",
+            "description": "Obfuscated API key of the user who performed the logged action."
+          },
+          "comment": {
+            "title": "Comment",
+            "type": "string",
+            "description": "Explanation of the audited event."
+          },
+          "hash": {
+            "title": "Hash",
+            "type": "string",
+            "description": "A tamper-proof security and verification hash."
+          }
+        },
+        "description": "Contains audited events from the authorized user's organization."
+      },
+      "AuditTrailResult": {
+        "title": "AuditTrailResult",
+        "required": ["data"],
+        "type": "object",
+        "properties": {
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "default": "audit_trail"
+          },
+          "data": {
+            "title": "Data",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/AuditTrailData" }
+          }
+        },
+        "description": "Array of `AuditTrailData`."
+      },
       "DailyAccountActivityData": {
         "title": "DailyAccountActivityData",
         "type": "object",
@@ -572,6 +684,17 @@
         },
         "description": "Soda Cloud API token and organisation ID information to use in this API's endpoints."
       },
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ValidationError" }
+          }
+        }
+      },
       "ScansRunData": {
         "title": "ScansRunData",
         "type": "object",
@@ -864,6 +987,20 @@
           }
         },
         "description": "User information data."
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": ["loc", "msg", "type"],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "msg": { "title": "Message", "type": "string" },
+          "type": { "title": "Error Type", "type": "string" }
+        }
       }
     },
     "securitySchemes": {
