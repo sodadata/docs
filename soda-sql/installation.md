@@ -44,8 +44,8 @@ $ pip install soda-sql-athena
 | ---------------------------- | ------------------ |
 | Amazon Athena                | soda-sql-athena    |
 | Amazon Redshift              | soda-sql-redshift  |
-| Apache Hive                  | soda-sql-hive      |
-| Apache Spark (Experimental)  | soda-sql-spark     |
+| Apache Hive (Experimental)   | soda-sql-hive      |
+| Apache Spark                 | soda-sql-spark     |
 | GCP Big Query                | soda-sql-bigquery  |
 | MS SQL Server (Experimental) | soda-sql-sqlserver |
 | MySQL (Experimental)         | soda-sql-mysql     |
