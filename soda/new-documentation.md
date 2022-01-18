@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### January 18, 2022
+
+* Add details to [Integrate Soda with dbt]({% link soda/integrate-dbt.md %}#ingest-results-from-dbt-cloud-into-soda-cloud) documentation for running `soda-ingest` using job ID or run ID.
+
 #### January 17, 2022
 
 * Added text to [Roles and rights]({% link soda-cloud/roles-and-rights.md %}#access-an-audit-trail) documentation about the option to use the Reporting API to access Audit Trail data.
