@@ -68,11 +68,22 @@ soda_account:
   api_key_secret: env_var(API_PRIVATE)
 dbt_cloud_api_token: env_var(DBT_CLOUD_API)
 ```
-5. From the command-line, call `soda ingest` to capture the test results from dbt Cloud and send them to Soda Cloud. To do so, you need two identifiers from dbt Cloud (see [dbt Cloud documentation](https://docs.getdbt.com/docs/dbt-cloud/cloud-overview) for more information): 
-* your dbt Cloud account ID 
-* the run ID from which you want Soda to ingest results 
+5. From the command-line, call `soda ingest` to capture the test results from dbt Cloud and send them to Soda Cloud. To do so, you need two identifiers from dbt Cloud. Refer to [dbt Cloud documentation](https://docs.getdbt.com/docs/dbt-cloud/cloud-overview) for more information. 
+
+| Identifier | Location | Notes |
+| ---------- | -------- | ----- |
+| your dbt Cloud account ID | Look for the account ID after the word "account" in a dbt Cloud URL. For example, `https://cloud.getdbt.com/#/accounts/ A_NUMBER/` | Required |
+| the run ID from which you want Soda to ingest results | Look for the run ID at the top of any Run page "Run #40732579" in dbt Cloud, or in the URL of the Run page. For example, `https://cloud.getdbt.com/#/accounts/ 1234/projects/1234/runs/40732579/` | Use either run ID or job ID; you do not need both. |
+| the job ID from which you want Soda to ingest result | Look for the job ID after the word "jobs" in the URL of the Job page in dbt Cloud. For example, `https://cloud.getdbt.com/#/accounts/ 1234/projects/5678/jobs/123445/`| Use either run ID or job ID; you do not need both. <br /> <br />Use the job ID to retrieve the latest run for a specific job. Using the job ID enables you to write the command once, and and know that Soda always ingests the latest run of the job, which is ideal if you perform ingests on a regular schedule via a cron job or other scheduler. |
+
+### Ingest a specific run
 ```bash
-soda ingest dbt --warehouse-yml-file <path_to_warehouse.yml> --dbt-cloud-account-id <your_dbt_cloud_account_id> --dbt-cloud-run-id <the_run_id_from_a_dbt_Cloud_job
+soda ingest dbt --warehouse-yml-file <path_to_warehouse.yml> --dbt-cloud-account-id <your_dbt_cloud_account_id> --dbt-cloud-run-id <the_run_id_from_a_dbt_Cloud_job>
+```
+
+### Ingest the latest run from a job
+```bash
+soda ingest dbt --warehouse-yml-file <path_to_warehouse.yml> --dbt-cloud-account-id <your_dbt_cloud_account_id> --dbt-cloud-job-id <the_run_id_from_a_dbt_Cloud_job>
 ```
 
 ## Ingestion notes and constraints
