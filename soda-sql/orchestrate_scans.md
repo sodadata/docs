@@ -32,12 +32,13 @@ Follow the instructions that correspond to your data orchestration tool:
 Though you can install Soda SQL directly in your Airflow environment, the instructions below use PythonVirtualenvOperator to run Soda SQL scans in a different environment. This keeps Soda SQL software separate to prevent any dependency conflicts.
 
 1. Install `virtualenv` in your main Airflow environment.
-2. Set the following variables in your Airflow environment.
+2. Install Soda SQL in your `virtualenv`.
+3. Set the following variables in your Airflow environment.
 ```python
 warehouse_yml = Variable.get('soda_sql_warehouse_yml_path')
 scan_yml = Variable.get('soda_sql_scan_yml_path')
 ```
-3. Configure as per the following example.
+4. Configure as per the following example.
 
 ```python
 from airflow import DAG
@@ -102,12 +103,13 @@ ingest_data_op >> soda_sql_scan_op >> publish_data_op
 
 If you do not want to use a PythonVirtualenvOperator, which installs Soda SQL on invocation, you can use PythonOperator.
 
-1. Set the following variables in your Airflow environment.
+1. Install Soda SQL in your Airflow environment.
+2. Set the following variables in your Airflow environment.
 ```python
 warehouse_yml = Variable.get('soda_sql_warehouse_yml_path')
 scan_yml = Variable.get('soda_sql_scan_yml_path')
 ```
-2. Configure as per the following example.
+3. Configure as per the following example.
 
 ```python
 from airflow import DAG

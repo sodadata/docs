@@ -16,6 +16,17 @@ Use Soda SQL to ingest the results of your dbt tests and push them to Soda Cloud
 
 ![dbt-test-in-soda-cloud](/assets/images/dbt-test-in-soda-cloud.png){:height="700px" width="700px"} 
 
+<br />
+
+[Prerequisites](#prerequisites)<br />
+[Videos](#videos)<br />
+[Ingest dbt test results from dbt-core into Soda Cloud](#ingest-dbt-test-results-from-dbt-core-into-soda-cloud)<br />
+[Ingest results from dbt Cloud into Soda Cloud](#ingest-results-from-dbt-cloud-into-soda-cloud)<br />
+[Ingestion notes and constraints](#ingestion-notes-and-constraints)<br />
+[View dbt test results in Soda Cloud](#view-dbt-test-results-in-soda-cloud)<br />
+[Go further](#go-further)<br />
+
+<br />
 
 ## Prerequisites
 
@@ -25,6 +36,17 @@ Use Soda SQL to ingest the results of your dbt tests and push them to Soda Cloud
 * You execute Soda commands from the same machine that executes the dbt pipeline.
 * You have installed the optional `soda-sql-dbt` sub-package in the Python environment that also runs `soda-sql` by running `pip install soda-sql-dbt`.
 
+## Videos
+
+Integrate dbt core with Soda.
+
+<iframe width="660" height="415" src="https://www.youtube.com/embed/V4cGCniBpMg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br />
+
+Integrate dbt Cloud with Soda.
+
+<iframe width="660" height="415" src="https://www.youtube.com/embed/lcGHJxVLOLI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Ingest dbt test results from dbt-core into Soda Cloud
 
