@@ -42,21 +42,21 @@ Anyone with access to your organization's Soda Cloud account is known as a **mem
 | Download a CSV file of an audit trail of Soda Cloud usage                                                    |   ✓   |      |
 
 
-The roles that define who can add or make changes to a [dataset]({% link soda/glossary.md %}#dataset) are **Admin**, **Manager**, **Editor**, and **Viewer**. The following table outlines the rights of each role associated with individual datasets.
+The roles that define who can make changes to a [dataset]({% link soda/glossary.md %}#dataset) are **Manager**, **Editor**, and **Viewer**. The following table outlines the rights of each role associated with individual datasets.
 
-| Rights                                                                   | Admin | Manager | Editor | Viewer |
-|--------------------------------------------------------------------------|-------|---------|--------|--------|
-| View Monitor Results of monitors associated with a dataset               |   ✓   |    ✓    |    ✓   |    ✓   |
-| Create and track Incidents associated with one or more monitor results   |   ✓   |    ✓    |    ✓   |    ✓   |
-| Create monitors associated with the dataset                              |   ✓   |    ✓    |    ✓   |        |
-| Edit monitors associated with the dataset                                |   ✓   |    ✓    |    ✓   |        |
-| Edit dataset Responsibilities                                            |   ✓   |    ✓    |        |        |
-| Edit dataset Attributes                                                  |   ✓   |    ✓    |    ✓   |        |
-| Edit dataset settings such as Enable Column Metrics or Sample Data       |   ✓   |    ✓    |    ✓   |        |
-| Change the roles of members for an individual dataset                    |   ✓   |    ✓    |        |        |
-| Add a dataset                                                            |   ✓   |         |        |        |
-| Connect to a new data source                                             |   ✓   |         |        |        |
-| Make changes to a data source connection                                 |   ✓   |         |        |        |
+Note that an **Admin** member as described above has all the rights of a **Manager** relative to a dataset.
+
+| Rights                                                                   | Manager <br /> and Admin | Editor | Viewer |
+|--------------------------------------------------------------------------|--------------------------|--------|--------|
+| View Monitor Results of monitors associated with a dataset               |             ✓            |    ✓   |    ✓   |
+| Create and track Incidents associated with one or more monitor results   |             ✓            |    ✓   |    ✓   |
+| Create monitors associated with the dataset                              |             ✓            |    ✓   |        |
+| Edit monitors associated with the dataset                                |             ✓            |    ✓   |        |
+| Edit dataset Responsibilities                                            |             ✓            |        |        |
+| Edit dataset Attributes                                                  |             ✓            |    ✓   |        |
+| Edit dataset settings such as Enable Column Metrics or Sample Data       |             ✓            |    ✓   |        |
+| Change the roles of members for an individual dataset                    |             ✓            |        |        |
+
 
 
 ## Default roles and groups
@@ -81,11 +81,11 @@ An Admin is the only role that can make changes to the **Organization Settings**
 
 ## Review member licenses
 
-Each Soda Cloud Plan (Soda Teams or Soda Enterprise) includes a specific number of **Author** licenses for members of the Soda Cloud account. 
+Each Soda Cloud Plan (Soda Teams or Soda Enterprise) includes a specific number of **Author** licenses for members of the Soda Cloud account. A member's license status controls whether they can make changes to any datasets and monitors in the Soda Cloud account.
 * **Authors** essentially have read-write access to elements in Soda Cloud and maintain the role of Admin, Manager, or Editor relative to monitors and datasets. See [Roles and rights](#roles-and-rights) above.
 * **Viewers** essentially have read-only acess to elements in Soda Cloud and maintain the role of Viewer relative to monitors and datasets. See [Roles and rights](#roles-and-rights) above.
 
-1. To review the licenses that your members have, login to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**. Only Soda Cloud Admins can view Organization Settings. 
+1. To review the licenses that your members have, as an Admin, login to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**. Only Soda Cloud Admin members can view Organization Settings. 
 2. Access the **Members** tab to view a list of people who have access to your Soda Cloud account, the role they have in the organization (Admin or User), and their License status (Author or Viewer). 
 3. Click a member's **Author** or **Viewer** label in the License column to access a **Responsibilities** window that lists the member's access to resources (datasets and monitors), the role they hold for each resource, and their license status relative to the resource.
 
