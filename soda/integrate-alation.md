@@ -16,6 +16,12 @@ Integrate Soda with Alation to access details about the quality of your data fro
  
 ![alation-integration](/assets/images/alation-integration.png){:height="700px" width="700px"} 
 
+<br />
+
+Watch an video that demonstrates the integration between Soda and Alation.
+<iframe src="https://player.vimeo.com/video/563765014?h=672726942b" width="680" height="440" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Prerequisites
 
 * You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}), [connected]({% link soda-cloud/connect_to_cloud.md %}) to an instance of Soda SQL.
