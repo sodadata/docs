@@ -56,7 +56,7 @@ However, where a test must determine whether or not data is valid, you must add 
 
 In the example below, the user defined the `valid_format` as `date_eu` or dd/mm/yyyy format. The metric `invalid_percentage` refers to the `valid_format` configuration key to determine if the data in the column is valid. Note that `valid_format` applies only to columns with data type TEXT. Refer to [Data types]({% link soda/supported-data-types.md %}) for details. 
 
-To see a list of all available column configuration keys, see [Column configureation keys]({% link soda-sql/sql_metrics.md %}#column-configuration-keys).
+To see a list of all available column configuration keys, see [Column configuration keys]({% link soda-sql/sql_metrics.md %}#column-configuration-keys).
 
 ```yaml
 columns:
