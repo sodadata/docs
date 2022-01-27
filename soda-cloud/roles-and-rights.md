@@ -40,6 +40,7 @@ Anyone with access to your organization's Soda Cloud account is known as a **mem
 | Change the roles of members, including adding more Admins                                                    |   ✓   |      |
 | Reset member passwords or deactivate members                                                                 |   ✓   |      |
 | Download a CSV file of an audit trail of Soda Cloud usage                                                    |   ✓   |      |
+| Define custom attributes that members can apply to a dataset                                                 |   ✓   |      |
 
 
 The roles that define who can make changes to a [dataset]({% link soda/glossary.md %}#dataset) are **Manager**, **Editor**, and **Viewer**. The following table outlines the rights of each role associated with individual datasets.
@@ -54,6 +55,10 @@ Note that an **Admin** member as described above has all the rights of a **Manag
 | Edit monitors associated with the dataset                                |             ✓            |    ✓   |        |
 | Edit dataset Attributes                                                  |             ✓            |    ✓   |        |
 | Edit dataset settings such as Enable Column Metrics or Sample Data       |             ✓            |    ✓   |        |
+| Apply custom attributes to a dataset                                     |             ✓            |    ✓   |        |
+| Edit dataset Attributes                                                  |             ✓            |    ✓   |        |
+| Edit dataset settings such as Enable Column Metrics or Sample Data       |             ✓            |    ✓   |        |
+| Add tags to a dataset                                                    |             ✓            |    ✓   |        |
 | Edit dataset Responsibilities                                            |             ✓            |        |        |
 | Change the roles of members for an individual dataset                    |             ✓            |        |        |
 
@@ -177,6 +182,7 @@ Alternatively, you can use the [Audit Trail endpoint]({% link api-docs/reporting
 ## Go further
 
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
 * [Invite colleagues]({% link soda-cloud/collaborate.md %}#invite-your-team-members) to join your organization's Soda Cloud account.
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 <br />
