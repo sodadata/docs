@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Organize datasets in Soda Cloud
-description: 
+description: Use custom attributes, tags, and filters to facilitate your search for the specific data quality status of your datasets.
 parent: Soda Cloud
 ---
 
