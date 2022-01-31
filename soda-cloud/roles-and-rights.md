@@ -40,7 +40,7 @@ Anyone with access to your organization's Soda Cloud account is known as a **mem
 | Change the roles of members, including adding more Admins                                                    |   ✓   |      |
 | Reset member passwords or deactivate members                                                                 |   ✓   |      |
 | Download a CSV file of an audit trail of Soda Cloud usage                                                    |   ✓   |      |
-| Define custom attributes that members can apply to a dataset                                                 |   ✓   |      |
+| Define and adjust Attributes for datasets                                                                    |   ✓   |      |
 
 
 The roles that define who can make changes to a [dataset]({% link soda/glossary.md %}#dataset) are **Manager**, **Editor**, and **Viewer**. The following table outlines the rights of each role associated with individual datasets.
