@@ -11,7 +11,7 @@ parent: Soda
 
 #### February 8, 2022
 
-* Added documentation to offer advice on [organizing your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud using custom attribtues and tags.
+* Added documentation to offer advice on [organizing your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud using attributes and tags.
 
 #### January 18, 2022
 

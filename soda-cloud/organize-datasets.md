@@ -18,7 +18,7 @@ With dozens, or even hundreds of datasets in your Soda Cloud account, it may be 
 * by product
 * by data domain: Customer data, Product data, Order & Fulfillment data
 * by internal objectives and key results (OKR)
-3. As an Admin, Manager, or Editor in your Soda Cloud account, navigate to the **Datasets** dashboard, click the stacked dots next to a dataset, then select **Edit Dataset**. Use the your attributes fields to apply the appropriate attributes to the dataset. 
+3. As an Admin, Manager, or Editor in your Soda Cloud account, navigate to the **Datasets** dashboard, click the stacked dots next to a dataset, then select **Edit Dataset**. Use the attributes fields to apply the appropriate attributes to the dataset. 
 4. While editing a dataset, consider adding **Tags** to the dataset as well. Use tags to:
 * identify datasets that are associated with a particular marketing campaign
 * identify datasets that are relevant for a particular customer account
