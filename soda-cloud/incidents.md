@@ -11,6 +11,8 @@ When you [create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud, you
 
 If you have integrated your Soda Cloud account with a Slack workspace, you can use an Incident's built-in ability to create an incident-specific Slack channel where you and your team can collaborate on the issue investigation. When you resolve or close the incident, Soda archives the channel for future troubleshooting reference.
 
+![incidents](/assets/images/incidents.png){:height="700px" width="700px"}
+
 ## Prerequisites
 * You have [installed Soda SQL]({% link soda-sql/installation.md %}) in your environment.
 * You have a Soda Cloud account and you have [connected the account]({% link soda-cloud/connect_to_cloud.md %}) to an instance of Soda SQL.
