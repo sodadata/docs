@@ -105,12 +105,12 @@ Note, by default, Soda Cloud automatically adds all new members to the organizat
 <details>
     <summary>Example of changed default settings</summary>
     <ol>
-      <li>As an Admin, I individually edit the <strong>Responsibilities</strong> of Datasets A, B, and C and add the Everyone group as Viewer to each.</li>
-      <li>Then I access <strong>Organization Settings</strong> > <strong>Responsibilities</strong> and change the value of <strong>Default role when assigning a new user or group to a resource</strong> to Manager and leave the check box unchecked for <strong>Automatically assign the "Everyone" group to the new resource</strong>.</li>
+      <li>As an Admin, I individually edit the <strong>Responsibilities</strong> of Datasets A, B, and C and add the Everyone group as Editor to each.</li>
+      <li>Then I access <strong>Organization Settings</strong> > <strong>Responsibilities</strong> and change the value of <strong>Default role when assigning a new user or group to a resource</strong> to <strong>Viewer</strong> and leave the check box <i>unchecked</i> for <strong>Automatically assign the "Everyone" group to the new resource</strong>.</li>
       <li>Then, using Soda SQL, I connect to a new data source, and upload 20 new datasets to Soda Cloud.</li>
-      <li>In Soda Cloud, I see all the new datasets, and Soda Cloud automatically made me the Dataset Owner of all of them, which comes with the role of Manager.  None of the new datasets have any other members that can access them at present, except Admins who can access everything.</li>
-      <li>Next, I edit the <strong>Responsibilities</strong> of new Datasets D, E, and F and add the Everyone group to those datasets and, because of my setting in Step 2, that group has Manager access to these three datasets by default.</li>
-      <li>Datasets A, B, and C still have the Everyone group assigned to them <i>but</i> those “Everyone” groups still only have Viewer access to these specific datasets.</li>
+      <li>Back in Soda Cloud, I see all the new datasets, and Soda Cloud automatically made me the Dataset Owner of all of them, which comes with the role of Manager.  None of the new datasets have any other members that can access them at present, except Admins who can access everything.</li>
+      <li>Next, I edit the <strong>Responsibilities</strong> of new Datasets D, E, and F and add the Everyone group to those datasets and, because of my setting in Step 2, that group now has Viewer access to these three datasets.</li>
+      <li>Datasets A, B, and C still have the Everyone group assigned to them, but those “Everyone” groups still have Editor access to these specific datasets.</li>
     </ol>
     <br />
     In other words, you cannot globally change the role for the Everyone group across resources. You can only change the role of Everyone by:<br />
