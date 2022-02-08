@@ -203,7 +203,7 @@ connection:
     dataset: sodasql
 ```
 
-Alternatively, you can specify Big Query configuration using the `use_context_auth` configuration option to direct Soda SQL to your Big Query global environnement variable (GOOGLE_APPLICATIONS_CREDNETIALS).
+Alternatively, you can specify Big Query configuration using the `use_context_auth` configuration option to direct Soda SQL to your Big Query global environnement variable (GOOGLE_APPLICATIONS_CREDENTIALS).
 
 ```yaml
 name: my_bigquery_project
