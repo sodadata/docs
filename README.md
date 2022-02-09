@@ -46,22 +46,15 @@ $ bundle exec jekyll serve
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-2. As instructed in the command-line output, run the following two commands one-by-one. Make sure to replace the target of `echo` to your bash profile file:
+2. Configure Terminal to run your shell as a login shell. See <a href="https://github.com/pyenv/pyenv/wiki/MacOS-login-shell" target="_blank">MacOS login shell</a> for details. 
+3. As instructed in the command-line output, run the following two commands one-by-one. Replace the target of `echo` to your bash profile file:
 ```bash
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /your/bash/profile/file
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.bash_profile
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
-Make sure to replace the target of `echo` to your bash profile file. It will typically look something like the following:
-
-```bash
- echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.bash_profile
-```
-
-If you're not sure which shell you're using, and therefore, which bash profile file this [blogpost](https://www.moncefbelyamani.com/which-shell-am-i-using-how-can-i-switch/) might be helpful.
-
 3. Optionally, run:  `brew bundle dump`.
-4. Install Ruby using the following command. Note that you can use [`rbenv`](https://github.com/rbenv/rbenv/blob/master/README.md) to install Ruby if you have need to access multiple versions of Ruby on your machine.  
+4. Install Ruby using the following command. Note that you can use <a href="https://github.com/rbenv/rbenv/blob/master/README.md" target="_blank">`rbenv`</a> to install Ruby if you need to access multiple versions of Ruby on your machine.  
 ```shell
 brew install ruby
 ```
@@ -73,7 +66,7 @@ export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 ```
-7. Source your freshly modified bash profile `source /your/bash_profile/file` or open a new terminal window.
+7. Source your freshly modified bash profile `source /your/bash_profile/file` or open a new Terminal window.
 8. Follow the [Set up docs tooling](#set-up-docs-tooling) above, starting at step 2.
 
 ## Style guidelines
@@ -98,7 +91,7 @@ Soda uses the [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGu
 - Include code snippets and commands.
 - Limit inclusion of screencaps. These images are hard to keep up-to-date as the product evolves.
 - Include diagrams.
-- Do not use "Note:" sections. Exception: to indicate incompatibility or a known issue.
+- Do not use "Note:" sections. 
 - Use \_includes rather than repeat or re-explain something.
 
 ### Formatting
