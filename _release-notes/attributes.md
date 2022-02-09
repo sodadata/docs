@@ -1,6 +1,6 @@
 ---
 name: "Attributes and filtering"
-date: 2022-02-08
+date: 2022-02-10
 products:
   - soda-cloud
 ---

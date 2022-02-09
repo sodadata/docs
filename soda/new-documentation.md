@@ -9,7 +9,7 @@ parent: Soda
 
 <br />
 
-#### February 8, 2022
+#### February 10, 2022
 
 * Added documentation to offer advice on [organizing your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud using attributes and tags.
 
