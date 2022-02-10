@@ -26,7 +26,7 @@ When your team members receive the invitation email, they can click the link in 
 
 Note that if your organization uses a single sign-on (SSO) identity provider to access Soda Cloud, you cannot invite team members in Soda Cloud. Instead, contact your IT Admin to request access to Soda Cloud using your SSO. See also, [Single Sign-on with Soda Cloud]({% link soda-cloud/sso.md %}).
 
-## Share test results
+## Share test results and filtered views
 
 Collaborating as a team on Soda Cloud means you can quickly share the lastest test results for a dataset with others.
 
@@ -45,6 +45,7 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 
 ## Go further
 
+* Share a [filtered view of your datasets]({% link soda-cloud/organize-datasets.md %}) with colleagues by sharing the URL of your narrowed search. 
 * [Connect]({% link soda-cloud/connect_to_cloud.md %}) Soda SQL to your Soda Cloud account.
 * [Create an alert]({% link soda-cloud/monitors.md %}) to send Slack notifications when a scan surfaces a data issue.
 * [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
