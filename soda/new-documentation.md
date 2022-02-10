@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### February 10, 2022
+
+* Added documentation to offer advice on [organizing your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud using attributes and tags.
+
 #### January 18, 2022
 
 * Add details to [Integrate Soda with dbt]({% link soda/integrate-dbt.md %}#ingest-results-from-dbt-cloud-into-soda-cloud) documentation for running `soda-ingest` using job ID or run ID.

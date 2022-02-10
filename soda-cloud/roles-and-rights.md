@@ -12,9 +12,9 @@ To manage the actions of members that belong to a single organization, Soda Clou
 [Roles and rights](#roles-and-rights)<br />
 [Default roles and groups](#default-roles-and-groups)<br />
 [Change organization roles and settings](#change-organization-roles-and-settings)<br />
-[Review member licenses](#review-member-licenses)<br />
-[Change access to a dataset](#change-access-to-a-dataset)<br />
 [Change the default access to datasets](#change-the-default-access-to-datasets)<br />
+[Change access to a dataset](#change-access-to-a-dataset)<br />
+[Review member licenses](#review-member-licenses)<br />
 [Dataset and monitor owners](#dataset-and-monitor-owners)<br />
 [Access an audit trail](#access-an-audit-trail)<br />
 [Go further](#go-further)<br />
@@ -40,6 +40,7 @@ Anyone with access to your organization's Soda Cloud account is known as a **mem
 | Change the roles of members, including adding more Admins                                                    |   ✓   |      |
 | Reset member passwords or deactivate members                                                                 |   ✓   |      |
 | Download a CSV file of an audit trail of Soda Cloud usage                                                    |   ✓   |      |
+| Define and adjust Attributes for datasets                                                                    |   ✓   |      |
 
 
 The roles that define who can make changes to a [dataset]({% link soda/glossary.md %}#dataset) are **Manager**, **Editor**, and **Viewer**. The following table outlines the rights of each role associated with individual datasets.
@@ -52,11 +53,11 @@ Note that an **Admin** member as described above has all the rights of a **Manag
 | Create and track Incidents associated with one or more monitor results   |             ✓            |    ✓   |    ✓   |
 | Create monitors associated with the dataset                              |             ✓            |    ✓   |        |
 | Edit monitors associated with the dataset                                |             ✓            |    ✓   |        |
-| Edit dataset Attributes                                                  |             ✓            |    ✓   |        |
+| Add and edit dataset Attributes                                          |             ✓            |    ✓   |        |
 | Edit dataset settings such as Enable Column Metrics or Sample Data       |             ✓            |    ✓   |        |
+| Add tags to a dataset                                                    |             ✓            |    ✓   |        |
 | Edit dataset Responsibilities                                            |             ✓            |        |        |
 | Change the roles of members for an individual dataset                    |             ✓            |        |        |
-
 
 
 ## Default roles and groups
@@ -84,6 +85,7 @@ As an Admin, login to your Soda Cloud account and navigate to **your avatar** > 
 | --- | ------ |
 | **Organization** | Adjust the name of the organization and the type of Soda Cloud Plan to which your organization subscribes.|
 | **Members** | View a list of people who have access to the Soda Cloud account. Use the dropdown next to each name to adjust their role to be either **Admin** or **User**. Review each member's **License** status as an **Author** or **Viewer**. Refer to [Review member licenses](#review-member-licenses). |
+| **Attributes** | Create new attributes for datasets in your organization that your colleagues can use to categorize datasets. See [Organize datasets in Soda Cloud]({% link soda-cloud/organize-datasets.md %}). |
 | **Responsibilities** | Adjust the default settings for accessing new datasets. See [Change the default access to datasets](#change-the-default-access-to-datasets). |
 | **Integrations** | Connect Soda Cloud to your organization's Slack workspace. See how to [Integrate with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack). |
 | **Audit Trail** | Download a CSV file that contains user audit trail information. See [Access an audit trail](#access-an-audit-trail). |
@@ -100,7 +102,7 @@ As an Admin you have the option of adjusting two default access settings:
 * Use the dropdown to adjust the default role of new members and groups who are granted access to a dataset.
 * Check the box for Soda Cloud to automatically assign the **Everyone** group to every new dataset that an Admin adds to the Soda Cloud account.  
 
-Note, by default, Soda Cloud automatically adds all new members to the organization's **Everyone** group. See [Default roles and group](#default-roles-and-groups). 
+Note that by default, Soda Cloud automatically adds all new members to the organization's **Everyone** group. See [Default roles and group](#default-roles-and-groups). 
 
 <details>
     <summary>Example of changed default settings</summary>
@@ -177,6 +179,7 @@ Alternatively, you can use the [Audit Trail endpoint]({% link api-docs/reporting
 ## Go further
 
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
 * [Invite colleagues]({% link soda-cloud/collaborate.md %}#invite-your-team-members) to join your organization's Soda Cloud account.
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 <br />

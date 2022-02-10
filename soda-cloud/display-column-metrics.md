@@ -25,6 +25,7 @@ During the next scan of your dataset, Soda SQL captures and sends column metrics
 
 ## Go further
 
+* [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
 * [Create monitors and alerts]({% link soda-cloud/monitors.md %}) in Soda Cloud.
 * Learn how to display [sample data]({% link soda-cloud/display-samples.md %}) for individual datasets.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
