@@ -6,5 +6,3 @@ products:
 ---
 
 Change the default access settings for new datasets in to Soda Cloud. Access the [Change the default access to datasets]({% link soda-cloud/roles-and-rights.md %}#change-the-default-access-to-datasets) section in our documentation to learn more.
-
-![% Change the default access settings](/assets/images/default-dataset-access-feature.gif)

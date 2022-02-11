@@ -20,7 +20,7 @@ A **warehouse** is a type of data source that represents a SQL engine or databas
 
 You need to create a warehouse YAML file for every data source to which you want to connect. If your data source uses multiple schemas, you need to create one warehouse YAML file per schema and use unique names for each warehouse file.
 
-You can create warehouse YAML files manually, but the CLI command `soda create yourdatasource` automatically prepares a warehouse YAML file and an env_vars YAML file for you. (Use the env-vars YAML to securely store warehouse login credentials. See [Env_vars YAML](#env_vars-yaml) below.)
+You can create warehouse YAML files manually, but the CLI command `soda create yourdatasource` automatically prepares a warehouse YAML file and an env_vars YAML file for you. (Use the env-vars YAML to securely store warehouse login credentials. See [Env_vars YAML](#env_vars-yaml-file) below.)
 
 When you execute the `soda create yourdatasource` command, you include options that instruct Soda SQL in the creation of the file, and you indicate the type of data source, a specification Soda SQL requires. Use `soda create --help` for a list of all available data source types and options.
 
@@ -64,7 +64,7 @@ connection:
   schema: public
 ```
 
-Notice that even though the command provided a value for `username`, Soda SQL automatically used `env_var(POSTGRES_USERNAME)` instead. By default, Soda SQL stores database login credentials in an env_vars YAML file so that this sensitive information stays locally stored. See [Env_vars YAML](#env_vars-yaml) below for details.
+Notice that even though the command provided a value for `username`, Soda SQL automatically used `env_var(POSTGRES_USERNAME)` instead. By default, Soda SQL stores database login credentials in an env_vars YAML file so that this sensitive information stays locally stored. See [Env_vars YAML](#env_vars-yaml-file) below for details.
 
 Each type of data source -- PostgreSQL, Amazon Athena, Google Big Query, etc. -- requires different configuration parameters. Refer to [Set data source configurations]({% link soda/warehouse_types.md %}) for details that correspond to the type of data source you are using.
 

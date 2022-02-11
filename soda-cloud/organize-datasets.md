@@ -25,6 +25,7 @@ With dozens, or even hundreds of datasets in your Soda Cloud account, it may be 
 * identify datasets whose quality is critical to business operations, or to categorize datasets according to their criticality in general, such as "high", "medium", and "low".
 * identify datasets that populate a particular report or dashboard 
 5. After saving your changes and applying tags and attributes to multiple datasets, use the **Filters** in the **Datasets** dashboard to display the datasets that help narrow your study of data quality. 
+6. Share a filtered view of your datasets with colleagues by sharing the URL of your narrowed search. 
 
 ## Adjust attributes
 
