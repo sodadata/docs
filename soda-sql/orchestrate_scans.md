@@ -31,14 +31,14 @@ Follow the instructions that correspond to your data orchestration tool:
 
 Though you can install Soda SQL directly in your Airflow environment, the instructions below use PythonVirtualenvOperator to run Soda SQL scans in a different environment. This keeps Soda SQL software separate to prevent any dependency conflicts.
 
-1. Install `virtualenv` in your main Airflow environment.
+1. Install `virtualenv` in your main Airflow environment. <br/> Be aware that if you use PythonVirtualenvOperator, you must also install Soda SQL in your main environment so that your system recognizes the return data as a Soda SQL object.
 2. Install Soda SQL in your `virtualenv`.
 3. Set the following variables in your Airflow environment.
 ```python
 warehouse_yml = Variable.get('soda_sql_warehouse_yml_path')
 scan_yml = Variable.get('soda_sql_scan_yml_path')
 ```
-4. Configure as per the following example.
+4. Configure as per the following example. Replace the value of `soda-sql-athena==2.x.x` with your own [soda-sql install package]({% link soda-sql/installation.md %}#install) and version.
 
 ```python
 from airflow import DAG
@@ -84,7 +84,7 @@ ingest_data_op = DummyOperator(
 soda_sql_scan_op = PythonVirtualenvOperator(
     task_id='soda_sql_scan_demodata',
     python_callable=run_soda_scan,
-    requirements=["soda-sql==2.0.0b10"],
+    requirements=["soda-sql-athena==2.x.x"],
     system_site_packages=False,
     op_kwargs={'warehouse_yml_file': warehouse_yml,
                'scan_yml_file': scan_yml},
@@ -121,7 +121,7 @@ from datetime import timedelta
 from sodasql.scan.scan_builder import ScanBuilder
 from airflow.exceptions import AirflowFailException
 
-# Make sure that this variables are set in your Airflow
+# Make sure that you set these variables in your Airflow
 warehouse_yml = Variable.get('soda_sql_warehouse_yml_path')
 scan_yml = Variable.get('soda_sql_scan_yml_path')
 
