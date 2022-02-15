@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### February 15, 2022
+
+* Added content to explain how Soda Cloud notifies users of a [scan failure]({% link soda/scan.md %}#scan-output-in-soda-cloud). 
+
 #### February 10, 2022
 
 * Added documentation to offer advice on [organizing your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud using attributes and tags.

@@ -51,6 +51,8 @@ In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked
 
 By default, Soda Cloud includes two out-of-the-box email notifications: one for the **Dataset Owner** and one for the **Monitor Owner**, which is you. You can remove or adjust these notifications, or use the search bar to add more.
 
+Note that Soda Cloud does not send an email or Slack notification when a scan fails, only when tests fail. Refer to [Scan output in Soda Cloud]({% link soda/scan.md %}#scan-output-in-soda-cloud).
+
 | Field or Label | Description |
 | -----------------------   | ---------- |
 | Add people, roles or channels to alert | If you have integrated your Soda Cloud account with [Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack), use this field to type a channel name to add to the notification list of people included by default. Alternatively, use the field to enter names of teammates with whom you collaborate in Soda Cloud. |
