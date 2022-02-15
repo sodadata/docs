@@ -1,3 +1,6 @@
+- title: Soda Core Documentation
+  page: soda-core/overview.md
+
 - title: Get started
   page: soda-core/cli-requirements.md
   subcategories:
