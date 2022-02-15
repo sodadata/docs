@@ -1,5 +1,6 @@
 - title: Home
   page: index.html
+
 - title: Get started
   page: soda-sql/interactive-demo.md
   subcategories:
@@ -73,6 +74,9 @@
   subcategories:
   - subtitle: Install and use Soda Spark
     page: soda-spark/install-and-use.md
+
+- title: SodaCL
+  page: soda-cl/soda-cl-overview.md
 
 - title: Soda Cloud
   page: soda-cloud/overview.md
