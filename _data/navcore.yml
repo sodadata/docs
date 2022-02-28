@@ -2,31 +2,7 @@
   page: soda-core/overview.md
 
 - title: Get started
-  page: soda-core/cli-requirements.md
-  subcategories:
-  - subtitle: Soda CLI requirements
-    page: soda-core/cli-requirements.md
-  - subtitle: Install Soda CLI
-    page: soda-core/install-cli.md
+  page: soda-core/get-started.md
 
 - title: Run your first scan
-  page: soda-core/soda-demo-db.md
-  subcategories:
-  - subtitle: Soda example demo DB
-    page: soda-core/soda-demo-db.md
-  - subtitle: The configuration file
-    page: soda-core/configuration-file.md
-  - subtitle: The SodaCL file
-    page: soda-core/sodacl-file.md
-  - subtitle: Run your first scan
-    page: soda-core/first-scan.md
-  - subtitle: Scan your own data
-    page: soda-core/scan-your-data.md
-
-- title: Scan inputs
-  page: soda-core/sodacl-files.md
-  subcategories:
-  - subtitle: SodaCL files
-    page: soda-core/sodacl-files.md
-  - subtitle: Configuration
-    page: soda-core/configuration.md
+  page: soda-core/first-scan.md
