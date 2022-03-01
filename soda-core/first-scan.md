@@ -3,7 +3,7 @@ layout: default
 title: Run your first scan
 description: 160 char description
 sidebar: core
-parent: Run your first scan
+parent: Soda Core
 ---
 
 # Run your first scan

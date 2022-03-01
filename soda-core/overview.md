@@ -6,7 +6,7 @@ sidebar: core
 parent: Soda Core
 ---
 
-# Soda Core 
+# Soda Core overview
 
 Lorem ipsum.
 
