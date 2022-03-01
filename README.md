@@ -5,11 +5,11 @@ Join us in our mission to help users become productive and confident using Soda 
 
 ## Contribute
 
-The following outlines the workflow to contribute.
+The following outlines the workflow to contribute to Soda documentation.
 1. [Set up docs tooling](#set-up-docs-tooling) locally on your machine and clone the GitHub repo.
 2. Create a new branch for your work. Include the word `docs` in the name of your branch.
 3. Follow the [style guidelines](#style-guidelines) to edit existing or write new content using [markdown](#use-jekyll-markdown).
-4. Adjust the nav order of any new files in the `docs` > `nav.yml` file.
+4. Adjust the nav order of any new files in the `docs` > `nav.yml` file, or `docs` > `navcore.yml` for Soda Core docs.
 5. Spell check your content (select all and copy to Google Docs for a thorough check) and test all links.
 6. Commit your contributions, create a pull request, and request a review, if you wish.
 7. When all tests pass, merge your pull request.
@@ -95,7 +95,7 @@ Soda uses the [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGu
 - Use \_includes rather than repeat or re-explain something. Refer to <a href="https://jekyllrb.com/docs/includes/" target="_blank">Jekyll Includes</a>.
 
 ### Formatting
-- Use **bold** for the first time you mention a product name or feature in a document or to identify a **Tip:** for using a feature. See [Warehouse YAML]({% link soda-sql/warehouse.md %}) for an example. Otherwise, use it sparingly. Too much bold font renders the format meaningless.
+- Use **bold** for the first time you mention a product name or feature in a document or to identify a **Tip:** for using a feature. Otherwise, use it sparingly. Too much bold font renders the format meaningless.
 - Use *italics* sparingly for emphasis, primarily on the negative. For example, "Limit the scan to *only* test data from today."
 - Do not use underline.
 - Use ALL CAPS only for severe warnings. For example, "DO NOT store sensitive information."
@@ -110,17 +110,17 @@ Soda uses the [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGu
 
 ### Content
 - Categorize your new content according to the following macro groups:
-   - Concepts - content that explains in general, without including procedural steps. Characterized by a title that does not use present tense imperative such as, "How Soda SQL works" or "Metrics".
-   - Tasks - content that describes the steps a user takes to complete a task or reach a goal. Characterized by a title that is in present tense imperative such as, "Install Soda SQL" or "Apply filters".
+   - Concepts - content that explains in general, without including procedural steps. Characterized by a title that does not use present tense imperative such as, "How Soda Core works" or "Metrics".
+   - Tasks - content that describes the steps a user takes to complete a task or reach a goal. Characterized by a title that is in present tense imperative such as, "Install Soda Core" or "Apply filters".
    - Reference - content that presents lists or tables of reference material such as error codes or glossary.
-- Produce content that focuses on how to achieve a goal or solve a problem and, insofar as it is practical, is inclusive of all products. ~Avoid creating documentation that focuses on how to use a single product. For example, instead of writing two documents -- one for "Troubleshoot Soda SQL" and one for "Troubleshoot Soda Cloud" -- write one Troubleshoot document that offers guidance for both tools.~
+- Produce content that focuses on how to achieve a goal or solve a problem and, insofar as it is practical, is inclusive of all products. 
 - Remember that Every Page is Page One for your reader. Most people enter the docs by clicking on the result of a Google search, so they could land anywhere and you should assume your new page is the first page that a reader lands on. Give them the context for what they are reading, lots of "escape hatches" to the glossary or pre-requisite procedures, and instructions on what to read next in a "Go further" section at the bottom of all Concept or Task pages.
 
 ## Image guidelines
 
 - Apply a grey, 1px border around screencap images embedded in pages; diagrams and graphics do not require borders.
 - Narrow and tighten any the UI before you take a screencap so as to keep the image legible when embedded to a page.
-- Ensure all images is legible.
+- Ensure all images are legible.
 - Carefully consider whether or not to include a screencap. Is it really necessary? Does it communicate more than just your words do?  Screencaps of UI require regular maintenance to keep up with changes in the UI; is the image you are adding worth the extra maintenance?
 
 ## Release note documentation
@@ -133,7 +133,7 @@ Document the details of each Soda product's release using included release note 
 4. Write your release notes using the style guide for guidance on format, language, etc.
 5. Spell check your content. (Copy paste to a Google Doc or your favorite editor to run a spell check.)
 6. Commit your changes, then create a new pull request when you are ready to publish.
-7. In the new pull request, request a review by @janet-can if you wish, or simply squash and merge to publish.
+7. In the new pull request, request a review by @janet-can. Upon approval, a Soda-ite squashes and merges your PR.
 
 
 ## Use Jekyll markdown
