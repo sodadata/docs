@@ -75,24 +75,24 @@ Soda uses the [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGu
 
 ### Language
 - Use American English.
-- Use [plain](https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Technicallanguage) language. Do not use jargon, colloquialisms, or meme references.
-- Use [unbiased](https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Inclusivity) language. For example, instead of "whitelist" and "blacklist", use "passlist" and "denylist".
+- Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Technicallanguage" target="_blank">plain</a language. Do not use jargon, colloquialisms, or meme references.
+- Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Inclusivity" target="_blank">unbiased</a> language. For example, instead of "whitelist" and "blacklist", use "passlist" and "denylist".
 - Avoid writing non-essential content such as welcome messages or backstory.
 - When referring to a collection of files, use "directory", not "folder".
 - Use "you" and "your" to refer to the reader.
 - Do not refer to Soda, the company, as participants in documentation: "we", "us", "let's", "our".
-- Use [active voice](https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Activeandpresent).
+- Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Activeandpresent" target="_blank">active voice</a>.
 - Use present tense and imperative mood. See the [Set up docs tooling](#set-up-docs-tooling) section above for an example.
 - Avoid the subjunctive mood: "should", "would", "could".
-- Make the language of your lists [parallel](https://ewriteonline.com/how-and-why-to-make-your-lists-parallel-and-what-does-parallel-mean/).
+- Make the language of your lists <a href="https://ewriteonline.com/how-and-why-to-make-your-lists-parallel-and-what-does-parallel-mean/" target="_blank">parallel</a>.
 
 ### Good practice
 - Never write an FAQ page or section. FAQs are a randomly organized bucket of content that put the burden on the reader to find what they need. Instead, consciously think about when and where a user needs the information and include it there.
-- Include code snippets and commands.
-- Limit inclusion of screencaps. These images are hard to keep up-to-date as the product evolves.
+- Include code snippets and command examples.
+- Limit inclusion of screencaps of product UI. These images are hard to keep up-to-date as the product evolves.
 - Include diagrams.
-- Do not use "Note:" sections. 
-- Use \_includes rather than repeat or re-explain something.
+- Do not use "Note:" callout boxes. Exception: banner message to indicate deprecated tools or features. 
+- Use \_includes rather than repeat or re-explain something. Refer to <a href="https://jekyllrb.com/docs/includes/" target="_blank">Jekyll Includes</a>.
 
 ### Formatting
 - Use **bold** for the first time you mention a product name or feature in a document or to identify a **Tip:** for using a feature. See [Warehouse YAML]({% link soda-sql/warehouse.md %}) for an example. Otherwise, use it sparingly. Too much bold font renders the format meaningless.
@@ -106,14 +106,14 @@ Soda uses the [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGu
 - Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Tasklists" target="_blank">numbered lists</a> for procedures or ordered tasks.
 - Use relative links to link to other files or sections in Soda documentation.
 - Use hard-coded links to link to external sources. Ensure the external link opens a new tab in a reader's browser.
-- Liberally include links to the [Glossary]({% link soda/glossary.md %}), but only link the first instance of a term on a page, not all instances.
+- Liberally include links to the Glossary, but only link the first instance of a term on a page, not all instances.
 
 ### Content
 - Categorize your new content according to the following macro groups:
    - Concepts - content that explains in general, without including procedural steps. Characterized by a title that does not use present tense imperative such as, "How Soda SQL works" or "Metrics".
    - Tasks - content that describes the steps a user takes to complete a task or reach a goal. Characterized by a title that is in present tense imperative such as, "Install Soda SQL" or "Apply filters".
    - Reference - content that presents lists or tables of reference material such as error codes or glossary.
-- Produce content that focuses on how to achieve a goal or solve a problem and, insofar as it is practical, is inclusive of all products. Avoid creating documentation that focuses on how to use a single product. For example, instead of writing two documents -- one for "Troubleshoot Soda SQL" and one for "Troubleshoot Soda Cloud" -- write one Troubleshoot document that offers guidance for both tools.
+- Produce content that focuses on how to achieve a goal or solve a problem and, insofar as it is practical, is inclusive of all products. ~Avoid creating documentation that focuses on how to use a single product. For example, instead of writing two documents -- one for "Troubleshoot Soda SQL" and one for "Troubleshoot Soda Cloud" -- write one Troubleshoot document that offers guidance for both tools.~
 - Remember that Every Page is Page One for your reader. Most people enter the docs by clicking on the result of a Google search, so they could land anywhere and you should assume your new page is the first page that a reader lands on. Give them the context for what they are reading, lots of "escape hatches" to the glossary or pre-requisite procedures, and instructions on what to read next in a "Go further" section at the bottom of all Concept or Task pages.
 
 ## Image guidelines

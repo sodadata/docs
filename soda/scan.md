@@ -67,6 +67,10 @@ Whether you defined your tests in your [scan YAML file]({% link soda-sql/scan-ya
 
 ![monitor-results](/assets/images/monitor-results.png){:height="550px" width="550px"}
 
+**Monitor Results** indicate whether tests in a monitor passed or failed during the scan. However, if a scan itself failed to complete successfully, Soda Cloud displays a warning message in the **Datasets** dashboard under the dataset for which scans have failed. Soda Cloud does not send an email or Slack notification when a scan fails, only when tests fail.
+
+![scan-failed](/assets/images/scan-failed.png){:height="550px" width="550px"}
+
 Soda SQL uses a secure API to connect to Soda Cloud. When it completes a scan, Soda SQL:
 1. pushes the results of any tests you configured in the scan YAML file to Soda Cloud
 2. fetches tests associated with any monitors you created in Soda Cloud, then executes the tests and pushes the test results to Soda Cloud
