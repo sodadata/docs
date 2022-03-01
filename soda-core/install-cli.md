@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Soda Core overview
+title: Install Soda CLI
 description: 
 sidebar: core
-parent: Soda Core
+parent: Get started
 ---
 
-# Soda Core 
+# Install Soda CLI 
 
 Lorem ipsum.
 

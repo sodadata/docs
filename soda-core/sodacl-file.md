@@ -1,14 +1,16 @@
 ---
 layout: default
-title: Soda Core overview
-description: 
+title: The SodaCL file
+description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Run your first scan
 ---
 
-# Soda Core 
+# The SodaCL file
 
 Lorem ipsum.
+
+
 
 ## Go further
 

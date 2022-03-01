@@ -1,14 +1,16 @@
 ---
 layout: default
-title: Soda Core overview
-description: 
+title: Configuration
+description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Scan inputs
 ---
 
-# Soda Core 
+# Configuration
 
 Lorem ipsum.
+
+
 
 ## Go further
 

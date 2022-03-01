@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Soda Core overview
+title: Soda CLI requirements
 description: 
 sidebar: core
-parent: Soda Core
+parent: Get started
 ---
 
-# Soda Core 
+# Soda CLI requirements
 
 Lorem ipsum.
 

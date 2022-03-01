@@ -1,14 +1,16 @@
 ---
 layout: default
-title: Soda Core overview
-description: 
+title: Scan your own data
+description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Run your first scan
 ---
 
-# Soda Core 
+# Scan your own data
 
 Lorem ipsum.
+
+
 
 ## Go further
 

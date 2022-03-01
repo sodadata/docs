@@ -1,14 +1,16 @@
 ---
 layout: default
-title: Soda Core overview
-description: 
+title: Soda example demo DB
+description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Run your first scan
 ---
 
-# Soda Core 
+# Soda example demo DB
 
 Lorem ipsum.
+
+
 
 ## Go further
 
