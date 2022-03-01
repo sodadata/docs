@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Title of page
+title: Migrate from Soda SQL
 description: 160 char description
 sidebar: core
 parent: Soda Core
 ---
 
-# Title
+# Migrate from Soda SQL
 
-Lorem ipsum.
+TODO
 
 
 

@@ -6,3 +6,39 @@
 
 - title: Run your first scan
   page: soda-core/first-scan.md
+
+- title: Soda Core scan reference
+  page: soda-core/scan-reference.md
+
+- title: SodaCL reference
+  page: soda-core/soda-cl.md
+
+- title: Soda Cloud reference
+  page: soda-core/soda-cloud.md
+
+- title: Configure Soda Core
+  page: soda-core/configure.md
+
+- title: Add scans to a pipeline
+  page: soda-core/scans-pipeline.md
+
+- title: Define programmatic scans
+  page: soda-core/programmatic-scans.md
+
+- title: Use variables in Soda Core
+  page: soda-core/variables.md
+
+- title: Use Soda Core CLI
+  page: soda-core/cli.md
+
+- title: Migrate from Soda SQL
+  page: soda-core/migrate.md
+
+- title: Soda Core Terminology
+  page: soda-core/terminology.md
+
+- title: Soda Core community
+  page: soda-core/community.md
+
+- title: Release notes
+  page: soda-core/release-notes-core.md
