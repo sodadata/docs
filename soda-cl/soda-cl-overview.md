@@ -7,14 +7,8 @@ parent: SodaCL
 
 # Soda Checks Language
 
+SodaCL is a new, simple, yet powerful, declarative language for data-reliability-as-code.
 
-Lorem ipsum.
-
-
-## Go further
-
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-<br />
 
 ---
 {% include docs-footer.md %}
