@@ -53,7 +53,7 @@ checks for CUSTOMERS:
   - count same as RAW_CUSTOMERS in other_snowflake_data_source
 ```
 
-## Cross table row count checks with partitions
+## Cross table row count checks with table filters
 
 (Coming soon)
 
@@ -75,9 +75,9 @@ table filter RAW_CUSTOMERS [daily_timestamp]:
   filter: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
 ```
 
-Row count comparison with partition also works cross data source.
+Row count comparison with table filter also works cross data source.
 
-Learn more on Partitions
+Learn more on table filters
 
 ## Change over time row count checks
 

@@ -17,14 +17,14 @@ filter CUSTOMERS [daily]:
 
 In the filter expression, reference is made to variables `ts_start` and `ts_end`. These variables will have to be passed into the scan configuration.
 
-Next you can put checks on a given partition like this:
+Next you can put checks on a given table filter like this:
 ```yaml
 checks for CUSTOMERS [daily]:
   - count = 6
   - missing(cat) = 2
 ```
 
-[Note] that in a single scan configuration file, you can declare both checks on the full table as well as on a partition.
+[Note] that in a single scan configuration file, you can declare both checks on the full table as well as on a table filter.
 
 ---
 {% include docs-footer.md %}

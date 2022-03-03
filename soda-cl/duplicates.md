@@ -27,7 +27,7 @@ checks for CUSTOMERS:
   - duplicates(cat, country, zip) = 0
 ```
 
-[Limitation] Duplicates can not yet be used with partitions and do not yet apply global column configurations for missing and valid values of the used columns.
+[Limitation] Duplicates can not yet be used with table filters and do not yet apply global column configurations for missing and valid values of the used columns.
 
 ---
 {% include docs-footer.md %}
