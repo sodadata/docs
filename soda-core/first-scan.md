@@ -20,8 +20,8 @@ drawing
 
 Launching the Soda Example Demo DB docker container Explain what the docker container contains: a postgres db preloaded with the demo data. The shell command to launch the docker container Ideally show a command how users can actually see the data inside the postgres container.
 
-## 
-The configuration file
+## The configuration file
+
 Setting up ~/.soda/configuration.yml Explain that configurations mostly contain the configurations and credentials for the data sources used in a Soda Core scan. Point out that in the later configuration section there is more about the other details in the configuration file. Provide the contents of the file and instructions on where to put it Explain that the contents given points to the postgres database on the Soda Example Demo DB docker container. And that later we will provide instructions on how to connect to your data
 
 ## The SodaCL file

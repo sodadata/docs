@@ -10,7 +10,7 @@ parent: Soda Core
 
 SodaCL is Soda's YAML based language to write checks and configure observability.
 
-SodaCL docs are a part of the <a href="https://docs.soda.io/soda-cl/soda-cl-overview.html" target="_blank">Soda Cloud docs</a>.
+SodaCL docs are a part of the <a href="/soda-cloud/overview.html" target="_blank">Soda Cloud docs</a>.
 
 
 

@@ -54,8 +54,8 @@ The list of package names for other data source types:
 | PostgreSQL | soda-core-postgresql | Available
 | Snowflake | soda-core-snowflake | Available
 | GCP Big Query | soda-core-bigquery | Available
+| Amazon Redshift | soda-core-redshift | Available
 | Amazon Athena | soda-core-athena | Coming soon
-| Amazon Redshift | soda-core-redshift | Coming soon
 | Apache Spark | soda-core-spark | Coming soon
 | Apache Hive | soda-core-hive | Coming soon, Experimental
 | MS SQL Server | soda-core-sqlserver | Coming soon, Experimental
