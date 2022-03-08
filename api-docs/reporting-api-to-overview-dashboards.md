@@ -13,7 +13,7 @@ This example aims to help you build a Soda Cloud reporting dashboard using the R
 
 ![Overview of API to Dashboards system](/assets/images/rep-api-system-diagram.png){:height="900px" width="900px"}
 
-[Prerequisites](#prerequisites)<br />
+[Prerequisites and limitations](#prerequisites-and-limitions)<br />
 [Set up a virtual Python environment](#set-up-a-virtual-python-environment)<br />
 [Set up Python ingestion](#set-up-python-ingestion)<br />
 [Capture data from your Soda Cloud account](#capture-data-from-your-soda-cloud-account)<br />
@@ -23,14 +23,14 @@ This example aims to help you build a Soda Cloud reporting dashboard using the R
 <br />
 <br />
 
-## Prerequisites 
+## Prerequisites and limitations
 * You have some knowledge of Python and are familiar with `pandas` and HTTP request libraries such as `httpx`.
 * You have installed Python 3.8 or later.
 * You have a Soda Cloud account.
 * You have [installed Soda SQL]({% link soda-sql/installation.md %}) in your environment and [connected]({% link soda-cloud/connect_to_cloud.md %}) it to your Soda Cloud account.
 * You have used Soda SQL to run at least one scan against data in a dataset.
 * You are familiar with the [Soda Cloud Reporting API]({% link api-docs/reporting-api.md %}). 
-
+* This example does not support SSO.
 
 ## Set up a virtual Python environment
 
