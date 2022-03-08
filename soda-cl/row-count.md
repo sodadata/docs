@@ -12,13 +12,13 @@ parent: SodaCL
 Row count must be greater than 0:
 ```yaml
 checks for CUSTOMERS:
-  - count > 0
+  - row_count > 0
 ```
 
 Row count must be between 1000 and 2000:
 ```yaml
 checks for CUSTOMERS:
-  - count between 1000 and 2000
+  - row_count between 1000 and 2000
 ```
 
 See the reference docs for all other threshold flavours
@@ -28,7 +28,7 @@ See the reference docs for all other threshold flavours
 There must be between 1000 and 2000 rows with category 'HIGH':
 ```yaml
 checks for TABLE_NAME:
-  - count between 1000 and 2000:
+  - row_count between 1000 and 2000:
       filter: category = 'HIGH'
 ```
 
@@ -41,7 +41,7 @@ This type of row count check is based on an aggregation metric:
 Check if the row count of a table is the same as another table in the same data source
 ```yaml
 checks for CUSTOMERS:
-  - count same as RAW_CUSTOMERS
+  - row_count same as RAW_CUSTOMERS
 ```
 
 ## Cross data source row count checks
@@ -50,7 +50,7 @@ Check if the row count of a table is the same as another table in another data s
 
 ```yaml
 checks for CUSTOMERS:
-  - count same as RAW_CUSTOMERS in other_snowflake_data_source
+  - row_count same as RAW_CUSTOMERS in other_snowflake_data_source
 ```
 
 ## Cross table row count checks with table filters
@@ -62,7 +62,7 @@ TODO Consider if we should push it to the user to define the right variables and
 Check if the row count of a table is the same as another table in the same data source
 ```yaml
 checks for CUSTOMERS [daily_date]:
-  - count same as RAW_CUSTOMERS [daily_timestamp]
+  - row_count same as RAW_CUSTOMERS [daily_timestamp]
 ```
 
 where in the same or another file:

@@ -20,7 +20,7 @@ In the filter expression, reference is made to variables `ts_start` and `ts_end`
 Next you can put checks on a given table filter like this:
 ```yaml
 checks for CUSTOMERS [daily]:
-  - count = 6
+  - row_count = 6
   - missing(cat) = 2
 ```
 

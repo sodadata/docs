@@ -31,12 +31,12 @@ Below is a list of metrics and thresholds including
 
 | Metric | Arguments | Description | Data sources supported |
 | ------ | --------- | ----------- | ---------------------- |
-| `count` | | Row counts | * |
-| `missing` | Column name | Missing values count | * |
+| `row_count` | | Row counts | * |
+| `missing_count` | Column name | Missing values count | * |
 | `missing_percent` | Column name | Missing values as a percentage of total row count | * |
-| `invalid` | Column name | Invalid values count | * |
+| `invalid_count` | Column name | Invalid values count | * |
 | `invalid_percent` | Column name | Invalid values as a percentage of the non-missing values count | * |
-| `duplicates` | One or more column names | Values that occur more than once | * |
+| `duplicate_count` | One or more column names | Values that occur more than once | * |
 | `stdev` | Column name | postgresql |  |
 | `stddev_pop` | Column name | postgresql |  |
 | `stddev_samp` | Column name | postgresql |  |
@@ -50,39 +50,39 @@ Below is a list of metrics and thresholds including
 
 ```yaml
 checks for {table_name}:
-  - count = 10.0
-  - count < 11
-  - count > 9
-  - count <= 10
-  - count >= 10
-  - count != 0
-  - count <> 0
-  - count between 10 and 15
-  - count between -5 and 10
-  - count between (9 and 15]
-  - count between [-5 and 11)
-  - count not between 11 and 15
-  - count not between -5 and 9
-  - count not between (10 and 15
-  - count not between -5 and 10)
+  - row_count = 10.0
+  - row_count < 11
+  - row_count > 9
+  - row_count <= 10
+  - row_count >= 10
+  - row_count != 0
+  - row_count <> 0
+  - row_count between 10 and 15
+  - row_count between -5 and 10
+  - row_count between (9 and 15]
+  - row_count between [-5 and 11)
+  - row_count not between 11 and 15
+  - row_count not between -5 and 9
+  - row_count not between (10 and 15
+  - row_count not between -5 and 10)
 ```
 
 `(` before the lower bound means it is not included. So
 
-* `count between (9 and 15` translates to `9 < count <= 15`
-* `count not between ]10 and 15` translates to `count <= 10 or 15 < count`
+* `row_count between (9 and 15` translates to `9 < count <= 15`
+* `row_count not between ]10 and 15` translates to `count <= 10 or 15 < count`
 
 `)` after the upper bound means it is not included.
 
-* `count between -5 and 11)` translates to `-5 <= count < 11`
-* `count not between -5 and 10)` translates to `count < -5 or 10 <= count`
+* `row_count between -5 and 11)` translates to `-5 <= count < 11`
+* `row_count not between -5 and 10)` translates to `count < -5 or 10 <= count`
 
 Boundaries included are the default, but It is ok to explicitely specify. These are all the equivalent:
 
-* `count between 10 and 15`
-* `count between [10 and 15`
-* `count between 10 and 15]`
-* `count between [10 and 15]`
+* `row_count between 10 and 15`
+* `row_count between [10 and 15`
+* `row_count between 10 and 15]`
+* `row_count between [10 and 15]`
 
 
 ## Change over time thresholds
@@ -101,7 +101,7 @@ The next example shows how to configure split warning and failure zones where in
 
 ```yaml
 checks for CUSTOMERS:
-  - count:
+  - row_count:
       warn: when not between -10 and 10
       fail: when not between -20 and 20
 ```
@@ -113,7 +113,7 @@ The above configuration gives a historic chart that looks like this:
 The next example shows how to configure warning and failure zones where inner is bad and outer is good:
 ```yaml
 checks for CUSTOMERS:
-  - count:
+  - row_count:
       warn: when between -20 and 20
       fail: when between -10 and 10
 ```
@@ -125,14 +125,14 @@ The above configuration gives a historic chart that looks like this:
 The next example shows how to configure a simple warning without a failure
 ```yaml
 checks for CUSTOMERS:
-  - count:
+  - row_count:
       warn: when < 20
 ```
 
 The next example shows how to configure a warning zone band with a single failure value.
 ```yaml
 checks for CUSTOMERS:
-  - count:
+  - row_count:
       warn: when not between 1 and 20
       fail: when = 11
 ```

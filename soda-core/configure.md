@@ -44,7 +44,7 @@ With the `table_prefix` property configured like above, the SodaCL
 
 ```yaml
 checks for "CUSTOMERS":
-  - count > 0
+  - row_count > 0
 ```
 
 will lead to a prefixed quoted table name in the generated queries like this:

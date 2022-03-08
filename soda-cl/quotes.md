@@ -14,7 +14,7 @@ For all situations where Soda Tools builds up the query, quotes will be kept as 
 Reference a table (or view) name in SodaCL without quotes like this:
 ```yaml
 checks for CUSTOMERS:
-  - count > 0
+  - row_count > 0
 ```
 
 will lead to queries like
@@ -27,7 +27,7 @@ FROM CUSTOMERS
 And when you add quotes to table names in SodaCL like this:
 ```yaml
 checks for "CUSTOMERS":
-  - count > 0
+  - row_count > 0
 ```
 
 it will lead to quoted table name in the generated queries like this:

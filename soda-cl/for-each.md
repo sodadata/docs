@@ -24,7 +24,7 @@ for each table T:
     # Exclude a tables matching this wildcard
     - exclude SALAR%
   checks:
-    - count > 0
+    - row_count > 0
     - missing(id) = 0
 ```
 

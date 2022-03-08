@@ -79,7 +79,7 @@ for each table T:
   tables: 
     - PRD_%
   checks:
-    - count > 0
+    - row_count > 0
 ```
 
 Support for table filters
@@ -88,7 +88,7 @@ table filter CUSTOMERS [daily]:
   filter: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
 
 checks for CUSTOMERS [daily]:
-  - count = 6
+  - row_count = 6
   - missing(cat) = 2
 ```
 
@@ -97,7 +97,7 @@ checks for CUSTOMERS [daily]:
 Cross warehouse row count comparison:
 ```yaml
 checks for CUSTOMERS:
-  - count same as RAW_CUSTOMERS in other_snowflake_data_source
+  - row_count same as RAW_CUSTOMERS in other_snowflake_data_source
 ```
 
 ## Examples using the metric store

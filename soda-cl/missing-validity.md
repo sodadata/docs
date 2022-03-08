@@ -9,20 +9,21 @@ parent: SodaCL
 
 Soda SQL makes sure that your checks do not interfere. In simpler solutions, missing and invalid counts often get mixed up leading to false positives and too many alerts. By clearly separating missing from invalid values, It is easier to diagnose issues when they alert.
 
-```yaml
-| <----- missing ------> | <------ invalid ------> | <----- valid ------> |
-| <------------------------------ row-count ----------------------------> |
+In a column, all values are split into 3 categories:
+* missing
+* invalid
+* valid
 
-| <-- missing_percent --> | <-- invalid_percent --> | <--valid_percent--> |
-| <-------------------------------- 100% -------------------------------> |
-```
+So for a column c, `missing_count(c)` + `invalid_count(c)` + `valid_count(c)` will always add up to the row count. 
+
+And the `missing_percent(c)` + `invalid_percent(c)` + `valid_percent(c)` will add up to 100. 
 
 Important! Configuring missing or valid values globally for a dataset will affect all checks. This means that if value `0` is configured as a missing value on column `value`, it will also be ignored in all checks, i.e. it will be ignored in aggregation check like `avg(value) between 30 and 70`
 
 Fixed threshold on the missing values for column `name`.
 ```yaml
 checks for CUSTOMERS:
-  - missing(name) < 100
+  - missing_count(name) < 100
 ```
 
 Relative percentage threshold: Missing values of column `name` should less than 1 percent of the total row count.
