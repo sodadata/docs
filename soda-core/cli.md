@@ -20,23 +20,17 @@ Options:
   --help  Show this message and exit.
 
 Commands:
-  scan  Run checks from given SodaCL files
+  scan  runs a scan
 ```
 
 And run this to get help on the scan command
 
 ```shell
-$ soda scan --help
-Usage: soda scan [OPTIONS]
+Usage: main scan [OPTIONS] [SODACL_PATHS]...
 
-Options:
-  -ch, --check PATH         [required]
-  -d, --data-source TEXT    [required]
-  -c, --configuration PATH
-  -v, --verbose
-  -var, --variables TEXT    Variables like -var today=2020-04-12 -var
-                            yesterday=2020-04-11  Put values with spaces in
-                            single or double quotes.
+  soda scan will
+    * Parse the SodaCL files and report any errors
+    ...
 ```
 
 ---
