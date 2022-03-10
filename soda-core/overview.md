@@ -8,44 +8,43 @@ parent: Soda Core
 
 # Soda Core overview
 
-Soda Core is a CLI tool and python library for data reliability.
+Soda Core is a CLI tool and python library for data reliability.  Soda Core serves as the foundation 
+for Soda Cloud, but it is also usable as a standalone, open source tool. 
 
-It's used for data reliability as code
+It's used for data quality testing both in and out of pipeline, data observability and data monitoring.
 
-* Data quality testing, both in and out of pipeline
-* Produce live data docs
-* Data monitoring and data observability
-* Enabling analysts to express data usage assumptions self-serve
+SodaCL enables **Data Reliability as Code**.
 
 Main features:
 
-* Easy to learn language
-* Support for all common
-* Check your data anywhere
-* Anomaly detection
-* Compares row counts across data sources
-* Change over time testing
-* Automated monitoring
-* Easy to enable a persistent metrics store
+* Easy read and write checks
+* Loads of check types
+* Includes anomaly detection & change over time checks
 
 ## How it works
 
-Soda Core evaluates checks that are written in SodaCL, Soda's checks language. A collection of SodaCL files can be executed in one scan. A scan will build and execute the necessary queries, extract the metrics and evaluate the checks. A scan is typically embedded into a data pipeline or executed on a time based schedule to ensure that new data is continuously checked.
+Soda Core evaluates checks that are written in SodaCL, Soda's checks language. A collection of SodaCL files 
+can be executed in one scan. A scan will build and execute the necessary queries, extract the metrics and 
+evaluate the checks. A scan is typically embedded into a data pipeline or executed on a time based schedule to 
+ensure that new data is continuously checked.
 
-## Data quality examples
+## SodaCL examples
 
-Hello world: The most basic SodaCL checks involve missing values, validity & duplicates:
+Basics: Row count, missing, invalid, duplicates and basic aggregates:
 ```yaml
 checks for PRODUCTS:
-  - invalid(unit_cost) = 0
+  - row_count between 10 and 1000
+  - missing_count(unit_cost) = 0
+  - invalid_count(unit_cost) = 0
       valid min: 0.01
       valid max: 10000
-  - invalid(movement_date) = 0:
+  - invalid_percent(movement_date) < 1 %:
       valid format: date us
   - sum(units_in) > 50
+  - duplicate_count(country, zip) = 0
 ```
 
-Schema checking
+Schema checking example
 ```yaml
 checks for PRODUCTS:
   - schema:
@@ -65,10 +64,10 @@ Freshness
 ```yaml
 checks for PRODUCTS:
   - freshness using row_added_ts < 1h
-Duplicates
+```
 
-checks for PRODUCTS:
-  - duplicates(date_key, account_key) = 0
+Reference data
+```yaml
 checks for PRODUCTS:
   - reference from (organization_key) to dim_organization (organization_key)
 ```
@@ -82,7 +81,7 @@ for each table T:
     - row_count > 0
 ```
 
-Support for table filters
+Support for table filters, typically used to check only the most recent data that was just produced.
 ```yaml
 table filter CUSTOMERS [daily]:
   filter: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
@@ -92,8 +91,6 @@ checks for CUSTOMERS [daily]:
   - missing(cat) = 2
 ```
 
-## Cross warehouse examples
-
 Cross warehouse row count comparison:
 ```yaml
 checks for CUSTOMERS:
@@ -101,29 +98,29 @@ checks for CUSTOMERS:
 ```
 
 ## Examples using the metric store
-And when connecting a free Soda Cloud developer account, you have a metric store integrated and can enable following extra checks:
+
+When connecting Soda Core to a free Soda Cloud developer account, you have a metric store integrated 
+and that also enables following extra check types:
 
 Change over time checks:
 ```yaml
 checks for PRODUCTS:
-  - change for count < 50
-  - change avg last 7 for count < 50
+  - change for row_count < 50
+  - change avg last 7 for row_count < 50
 ```
 
-Keep notified on any schema change:
+Anomaly detection checks:
+```yaml
+checks for PRODUCTS:
+  - row_count anomaly detection
+```
+
+Schema changes:
 ```yaml
 checks for PRODUCTS:
   - schema:
       warn:
         - when schema changes
-
-```
-## Automation examples
-
-Even automated monitoring using anomaly detection:
-```yaml
-automated monitoring:
-  tables: ['%']
 ```
 
 ## Compatibility
@@ -140,7 +137,7 @@ And deploy it in a variety of environments:
 
 | In orchestration tools | As a managed service	| Programmatically |
 | ---------------------- | -------------------- | ---------------- |
-| Airflow<br />Prefect (coming soon) <br />Dagster (coming soon) | Using Soda Cloud & Soda Agent |Python <br />PySpark |
+| Airflow (coming soon)<br />Prefect (coming soon) <br />Dagster (coming soon) | Using Soda Cloud & Soda Agent |Python <br />PySpark |
 
 Next, [install it on your own laptop to try it for yourself]({% link soda-core/get-started.md %}).
 
