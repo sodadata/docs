@@ -8,66 +8,52 @@ parent: Soda Core
 
 # Get started
 
-## CLI requirements
-Soda Core requires Python 3.7+
+Soda Core is a command-line interface (CLI) tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data.
 
-To check your Python version, run
-```shell
-$ python --version
-Python 3.8.12
-```
+## Requirements
 
-It might be that in your case, you need to run `python3` to get the right version.
-In that case, replace `python` in the instructions below with `python3`.
-```shell
-$ python3 --version
-Python 3.8.12
-```
+To use the Soda Core CLI, you must have installed the following on your system.
 
-## Install the CLI
+* Python 3.7 or greater. To check your existing version, use the CLI command: `python --version` or `python3 --version`
+* Pip 21.0 or greater. To check your existing version, use the CLI command: `pip --version`
 
-We recommend you to install the CLI using a virtual environment.
 
-From your command-line interface tool, execute the following command, replacing `soda-core-postgresql` with the install package that matches the type of data source you use to store data.
 
-Creating a virtual environment in the `.venv` directory
+## Install the Soda Core CLI
+
+Best practice dictates that you install the Soda Core CLI using a virtual environment.
+
+1. In your command-line interface tool, create a virtual environment in the `.venv` directory.
 ```shell
 python -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 ```
-
-Install the Soda Core package for your data source type:
+2. Execute the following command, replacing `soda-core-postgresql` with the install package that matches the type of data source you use to store data.
 ```shell
 pip install soda-core-postgresql
 ```
 
-To deactivate the virtual environment, use the command:
+| Data source | Install package | 
+| ----------- | --------------- | 
+| Amazon Redshift | soda-core-redshift | 
+| GCP Big Query | soda-core-bigquery | 
+| PostgreSQL | soda-core-postgresql |
+| Snowflake | soda-core-snowflake | 
+
+To deactivate the virtual environment, use the following command:
 ```shell
 deactivate
 ```
 
-The list of package names for other data source types:
+## Upgrade the Soda Core CLI
 
-| Data source | Install package | Status |
-| ----------- | --------------- | ------ |
-| PostgreSQL | soda-core-postgresql | Available
-| Snowflake | soda-core-snowflake | Available
-| GCP Big Query | soda-core-bigquery | Available
-| Amazon Redshift | soda-core-redshift | Available
-| Amazon Athena | soda-core-athena | Coming soon
-| Apache Spark | soda-core-spark | Coming soon
-| Apache Hive | soda-core-hive | Coming soon, Experimental
-| MS SQL Server | soda-core-sqlserver | Coming soon, Experimental
-| MySQL | soda-core-mysql | Coming soon, Experimental
-| Trino | soda-core-trino | Coming soon, Experimental
+To upgrade your existing Soda Core tool to the latest version, use the following command, replacing `soda-core-redshift` with the install package that matches the type of data source you are using.
+```shell
+pip install soda-core-redshift -U
+```
 
-## Upgrade
-
-To upgrade your existing Soda SQL tool to the latest version, use the following command replacing soda-core-athena with the install package that matches the type of data source you are using.
-
-pip install soda-core-athena -U
-Next, run your first scan.
+Next, [run your first scan]({% link soda-core/first-scan.md %}).
 
 ---
 {% include docs-core-footer.md %}

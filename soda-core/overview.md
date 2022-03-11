@@ -8,29 +8,29 @@ parent: Soda Core
 
 # Soda Core overview
 
-Soda Core is a CLI tool and python library for data reliability.  Soda Core serves as the foundation 
-for Soda Cloud, but it is also usable as a standalone, open source tool. 
+Soda Core is a CLI tool and Python library for data reliability.  Soda Core serves as the foundation 
+for Soda Cloud, but you can use it as a stand-alone, open source tool. 
 
-It's used for data quality testing both in and out of pipeline, data observability and data monitoring.
+Use Soda Core for data quality testing both in and out of your pipeline, for data observability, and for data monitoring.
 
-SodaCL enables **Data Reliability as Code**.
+Soda Core leverages the Soda Checks Langauge (SodaCL), a human-readable domain-specific language (DSL) for data reliability.
 
-Main features:
+Main features of SodaCL:
 
-* Easy read and write checks
-* Loads of check types
-* Includes anomaly detection & change over time checks
+* Read and write checks in a human-readable DSL
+* Includes dozens of built-in checks
+* Includes an anomaly detection check and change-over-time checks
 
 ## How it works
 
-Soda Core evaluates checks that are written in SodaCL, Soda's checks language. A collection of SodaCL files 
-can be executed in one scan. A scan will build and execute the necessary queries, extract the metrics and 
-evaluate the checks. A scan is typically embedded into a data pipeline or executed on a time based schedule to 
-ensure that new data is continuously checked.
+Soda Core evaluates checks that you write in a checks YAML file using SodaCL. You can execute a collection of checks files 
+in one scan. A scan builds and executes the necessary SQL queries, extracts the metrics, and 
+evaluates the checks. Typically, you embed a scan in a data pipeline, or execute scans on a time-based schedule to 
+ensure that Soda continuously checks new data.
 
 ## SodaCL examples
 
-Basics: Row count, missing, invalid, duplicates and basic aggregates:
+Row count, missing, invalid, duplicates, and basic aggregates:
 ```yaml
 checks for PRODUCTS:
   - row_count between 10 and 1000
@@ -44,7 +44,7 @@ checks for PRODUCTS:
   - duplicate_count(country, zip) = 0
 ```
 
-Schema checking example
+Schema check:
 ```yaml
 checks for PRODUCTS:
   - schema:
@@ -60,19 +60,19 @@ checks for PRODUCTS:
         when forbidden column present: [deprecated_col]
 ```
 
-Freshness
+Freshness check:
 ```yaml
 checks for PRODUCTS:
   - freshness using row_added_ts < 1h
 ```
 
-Reference data
+Reference data check:
 ```yaml
 checks for PRODUCTS:
   - reference from (organization_key) to dim_organization (organization_key)
 ```
 
-Run checks dynamically on multiple tables
+Dynamic for each checks on multiple tables:
 ```yaml
 for each table T:
   tables: 
@@ -81,7 +81,7 @@ for each table T:
     - row_count > 0
 ```
 
-Support for table filters, typically used to check only the most recent data that was just produced.
+Checks with table filters that you can use to check only the most recent data in a table:
 ```yaml
 table filter CUSTOMERS [daily]:
   filter: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
@@ -91,7 +91,7 @@ checks for CUSTOMERS [daily]:
   - missing(cat) = 2
 ```
 
-Cross warehouse row count comparison:
+Cross-warehouse row count comparison checks:
 ```yaml
 checks for CUSTOMERS:
   - row_count same as RAW_CUSTOMERS in other_snowflake_data_source
@@ -99,8 +99,7 @@ checks for CUSTOMERS:
 
 ## Examples using the metric store
 
-When connecting Soda Core to a free Soda Cloud developer account, you have a metric store integrated 
-and that also enables following extra check types:
+If you connect Soda Core to a free Soda Cloud Developer account, Soda Core pushes scan results to Soda Cloud. Soda Cloud stores the measurements resulting from each check Soda Core executes in the metric store so you can use the following checks:
 
 Change over time checks:
 ```yaml
@@ -115,7 +114,7 @@ checks for PRODUCTS:
   - row_count anomaly detection
 ```
 
-Schema changes:
+Schema change checks:
 ```yaml
 checks for PRODUCTS:
   - schema:
@@ -125,21 +124,14 @@ checks for PRODUCTS:
 
 ## Compatibility
 
-Use Soda Core to scan a variety of data sources:
+Use Soda Core to scan the following data sources:
+* Amazon Redshift 
+* GCP Big Query
+* PostgreSQL
+* Snowflake
 
-| Available | Coming soon | Roadmapped (experimental) |
-| --------- | ----------- | --------------------------|
-|PostgreSQL <br />Snowflake <br />GCP Big Query|Amazon Redshift  <br />Apache Spark  <br />Amazon Athena  | MySQL  <br />Microsoft SQL Server  <br />Apache Hive  <br />Trino |
 
-
-
-And deploy it in a variety of environments:
-
-| In orchestration tools | As a managed service	| Programmatically |
-| ---------------------- | -------------------- | ---------------- |
-| Airflow (coming soon)<br />Prefect (coming soon) <br />Dagster (coming soon) | Using Soda Cloud & Soda Agent |Python <br />PySpark |
-
-Next, [install it on your own laptop to try it for yourself]({% link soda-core/get-started.md %}).
+Next, [install Soda Core]({% link soda-core/get-started.md %}) in your own environment to try it for yourself.
 
 ---
 {% include docs-core-footer.md %}

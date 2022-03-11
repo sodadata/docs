@@ -1,4 +1,4 @@
-- title: Soda Core Documentation
+- title: Soda Core overview
   page: soda-core/overview.md
 
 - title: Get started
@@ -7,7 +7,7 @@
 - title: Run your first scan
   page: soda-core/first-scan.md
 
-- title: Soda Core scan reference
+- title: Scan reference
   page: soda-core/scan-reference.md
 
 - title: SodaCL reference

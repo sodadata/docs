@@ -8,24 +8,16 @@ parent: Soda Core
 
 # Soda Core community
 
-## Free community support
+For the Soda Core and the free Soda Cloud Developer account, Soda offers free support to the Soda community of users in Slack. Join the <a href="http://community.soda.io/slack" target="_blank">Soda community in Slack</a> to ask and answer questions.
 
-Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community in Slack</a> to ask and answer questions.
+Community memebers are also welcome to create and/or resolve issues in the public, open-source Soda Core repository in GitHub.
 
-## Resources
 
-Extra resources such as eg: How to run scans in relation to dbt runs?
+## Upgrade your Soda Cloud account
 
-## Contact sales
+If you wish to upgrade your Soda Cloud Developer account, please contact the <a href="mailto:sales@soda.io">Soda Sales Team</a>.
 
-<a href="mailto:sales@soda.io">Soda Sales Team</a>
-
-<a href="https://www.soda.io/licensing-options" target="_blank">Pointer</a> to product comparison on the website that shows relation between
-
-* Soda Core
-* Free Soda Cloud developer account
-* Soda Teams
-* Soda Enterprise
+Review the Soda Cloud licensing options on<a href="https://www.soda.io/licensing-options" target="_blank">soda.io</a>.
 
 
 
