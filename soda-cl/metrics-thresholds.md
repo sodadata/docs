@@ -37,12 +37,16 @@ Below is a list of metrics and thresholds including
 | `invalid_count` | Column name | Invalid values count | * |
 | `invalid_percent` | Column name | Invalid values as a percentage of the non-missing values count | * |
 | `duplicate_count` | One or more column names | Values that occur more than once | * |
-| `stdev` | Column name | postgresql |  |
-| `stddev_pop` | Column name | postgresql |  |
-| `stddev_samp` | Column name | postgresql |  |
-| `variance` | Column name | postgresql |  |
-| `var_pop` | Column name | postgresql |  |
-| `var_samp` | Column name | postgresql |  |
+| `sum` | Column name | Sum | * |
+| `min` | Column name | Min | * |
+| `max` | Column name | Max | * |
+| TODO | | TODO Which ones are we missing here? | * |
+| `stdev` | Column name | | postgresql |
+| `stddev_pop` | Column name |  | postgresql |
+| `stddev_samp` | Column name |  | postgresql |
+| `variance` | Column name | | postgresql |
+| `var_pop` | Column name | | postgresql |
+| `var_samp` | Column name | | postgresql |
 | `percentile` | Column name, percentage | Eg percentile(distance, 0.7) | postgresql |
 
 
@@ -83,13 +87,6 @@ Boundaries included are the default, but It is ok to explicitely specify. These 
 * `row_count between [10 and 15`
 * `row_count between 10 and 15]`
 * `row_count between [10 and 15]`
-
-
-## Change over time thresholds
-
-
-## Anomaly detection thresholds
-
 
 ## Warning thresholds
 
@@ -135,6 +132,64 @@ checks for CUSTOMERS:
   - row_count:
       warn: when not between 1 and 20
       fail: when = 11
+```
+
+## Change over time thresholds
+
+(*) This feature depends on [a Soda Cloud account](../soda-core/soda-cloud.md).
+
+In the examples below, we use `row_count` as the metric.
+In your use case, use any of the metrics as listed in [the Metrics section above](#metrics) 
+
+The next example will generate a failure if the difference between the previous `row_count` 
+and the current `row_count` is 50 or greater. 
+```yaml
+checks for CUSTOMERS:
+  - change for row_count < 50
+```
+
+The next examples show how to check the difference between the current `row_count` 
+and the average, minimum or maximum of the last 7 `row_count`s. 
+```yaml
+checks for CUSTOMERS:
+  - change avg last 7 for row_count < 50
+  - change min last 7 for row_count < 50
+  - change max last 7 for row_count < 50
+```
+
+## Anomaly detection thresholds
+
+(*) This feature depends on a Soda Cloud account.
+
+Anomaly detection checks can be applied to all metrics. The examples below are all 
+showing `row_count` as the metric.  Use any of the metrics as listed in [the Metrics section above](#metrics) 
+
+The next check is the simplest anomaly detection check.  It performs anomaly detection on 
+the `row_count` metric with the default anomaly score threshold.
+
+The anomaly score metric checks will generate a warning by default, which is different from the 
+typical failure default for other checks.
+
+```yaml
+checks for CUSTOMERS:
+  - anomaly score for row_count < default
+```
+
+It's possible to override the anomaly score threshold.  The following check will generate 
+a warning if the anomaly score for row_count exceeds .7
+
+```yaml
+checks for CUSTOMERS:
+  - anomaly score for row_count < .7
+```
+
+Finally, you can have separate thresholds for warn and fail.  It's possible to specify only the 
+warn threshold, the fail threshold or both like shown here:
+```yaml
+checks for CUSTOMERS:
+  - anomaly score for row_count:
+      warn: when > .8
+      fail: when > .99
 ```
 
 ---
