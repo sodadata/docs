@@ -13,7 +13,7 @@ for Soda Cloud, but you can use it as a stand-alone, open source tool.
 
 Use Soda Core for data quality testing both in and out of your pipeline, for data observability, and for data monitoring.
 
-Soda Core leverages the Soda Checks Langauge (SodaCL), a human-readable domain-specific language (DSL) for data reliability.
+Soda Core leverages the Soda Checks Language (SodaCL), a human-readable domain-specific language (DSL) for data reliability.
 
 Main features of SodaCL:
 
