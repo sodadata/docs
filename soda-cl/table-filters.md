@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Filters
+title: Table filters
 description: 
 parent: SodaCL
 ---
 
-# Filters
+# Table filters
 
-Large datasets often are built up incrementally. Each job execution appends the new data to a table. For those situations, Soda SQL has filters.
+Large datasets are often built up incrementally. Each job execution appends the new data to a table. For those situations, Soda SQL has filters.
 
 Creating a filter is done on a table by specifying a filter SQL expression. Like in this example a `daily` filter is defined on the `CUSTOMERS` table:
 ```yaml
