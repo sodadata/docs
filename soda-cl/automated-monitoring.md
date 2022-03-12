@@ -7,15 +7,17 @@ parent: SodaCL
 
 # Automated monitoring
 
-This feature requires Soda Cloud
+This feature requires Soda Cloud.
 
-The simplest form to configure automated monitoring for auto health dashboards. It activates automatic monitoring on all tables in the data source.
+Configure automated monitoring to activate health dashboards in Soda Cloud. Add the following to ensure that Soda Core sends automated monitoring details to Soda Cloud for all tables in the data source.
+
 ```yaml
 automated monitoring:
   tables: ['%']
 ```
 
-You can specify more precise which tables to include and exclude like this:
+Use the following to specify the tables to include and exclude in automated monitoring.
+
 ```yaml
 automated monitoring:
   tables:
@@ -23,9 +25,10 @@ automated monitoring:
     - exclude PROD%
 ```
 
-By default row counts and schema will be automatically monitored. And you'll get warnings if row counts have anomalies or for any schema changes.
+By default, Soda Core sends row count and schema information to Soda Cloud for every table in your data source. Soda Cloud issues warnings if row counts have anomalies, or if there is any change to a schema.
 
-You can also specify what aspects to skip like this. If you skip all aspects like in the example below, nothing will be monitored of course :)
+Use the following to specify any automated monitoring aspects you do not wish to send to Soda Cloud. 
+
 ```yaml
 automated monitoring:
   tables: ['%']

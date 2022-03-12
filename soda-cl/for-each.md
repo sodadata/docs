@@ -7,34 +7,33 @@ parent: SodaCL
 
 # For each checks
 
-## For each table
+You can specify a list of checks on a multiple tables. 
 
-For each table allow to specify a list of checks on a group of tables. Several styles of referring to tables can be combined:
+First, in your checks.yml file, specify the list of tables using `for each table T`. The purpose of the `T` is only to ensure that every `for each` check has a unique name. Next, write the checks you wish to execute against the tables.
+
 ```yaml
 for each table T:
   tables:
-    # Include the table name
-    - TEST_CUSTOMERS
-    # Include all table names matching this wildcard expression
-    - PROD_%
-    # The include directive is optional, it can be used to make the list more readable in case excludes are also specified
-    - include TEST_CUSTOMERS
-    # Exclude a specific table name
-    - exclude SALARIES
-    # Exclude a tables matching this wildcard
-    - exclude SALAR%
-  checks:
-    - row_count > 0
-    - missing(id) = 0
+    # include the table 
+    - dim_customer
+    # include all tables matching the wildcard expression
+    - new_%
+    # (optional) explicitly add the word include to make the list more readable
+    - include dim_product
+    # exclude a specific table
+    - exclude fact_survey_response
+    # exclude any tables matching the wildcard expression
+    - exclude prospective_%
+checks:
+  - row_count > 0
+  - duplicate_count = 0
 ```
 
-All table names are resolved in the scan's default data source.
+### Notes
 
-The purpose of the table name `T` is only to ensure that every `for each` check has a unique name.
-
-Both data source name and table name filters can use `%` as a wildcard.
-
-Table name matching is done case insensitive.
+* Soda Core resolves all table names in the scan's default data source.
+* You can use `%` as a wildcard in both data source name and table name filters.
+* Soda Core table names matching is case insensitive.
 
 ---
 {% include docs-footer.md %}
