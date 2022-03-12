@@ -101,8 +101,8 @@
     page: soda-cl/for-each.md
   - subtitle: Quotes
     page: soda-cl/quotes.md
-  - subtitle: Filters
-    page: soda-cl/filters.md
+  - subtitle: Table filters
+    page: soda-cl/table-filters.md
   - subtitle: Automated monitoring
     page: soda-cl/automated-monitoring.md
 

@@ -83,10 +83,10 @@ Learn more on table filters
 
 ```yaml
 checks for CUSTOMERS:
-  - change for count < 50
-  - change avg last 7 for count < 50
-  - change min last 7 for count < 50
-  - change max last 7 for count < 50
+  - change for row_count < 50
+  - change avg last 7 for row_count < 50
+  - change min last 7 for row_count < 50
+  - change max last 7 for row_count < 50
 ```
 
 ---

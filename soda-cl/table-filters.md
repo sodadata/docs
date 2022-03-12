@@ -11,7 +11,7 @@ Large datasets are often built up incrementally. Each job execution appends the 
 
 Creating a filter is done on a table by specifying a filter SQL expression. Like in this example a `daily` filter is defined on the `CUSTOMERS` table:
 ```yaml
-filter CUSTOMERS [daily]:
+table filter CUSTOMERS [daily]:
   filter: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
 ```
 
