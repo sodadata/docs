@@ -7,7 +7,7 @@ parent: SodaCL
 
 # Duplicate checks
 
-The number of rows that contain distinct values which occur more than once, relative to the column.
+Use the `duplicate_count` metric to count the distinct values that occur more than once in a column.
 
 The following checks that the column `email_address` does not contain any duplicates.
 
