@@ -10,6 +10,11 @@ parent: Soda Core
 
 Soda Core is a command-line interface (CLI) tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data.
 
+[Requirements](#requirements)<br />
+[Install the Soda Core CLI](#install-the-soda-core-cli)<br />
+[Upgrade the Soda Core CLI](#upgrade-the-sore-core-cli)<br />
+<br />
+
 ## Requirements
 
 To use the Soda Core CLI, you must have installed the following on your system.

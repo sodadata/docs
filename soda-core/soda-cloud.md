@@ -8,29 +8,28 @@ parent: Soda Core
 
 # Soda Cloud reference
 
-Soda Cloud is an online service that is build on top of Soda Core. It can extend Soda Core with
+Soda Cloud is a web application that connects to Soda Core. It extends Soda Core functionality, giving users the ability to:
 
-* A metric store
-* Collaboration features
-* Issue resolution workflow
-* Integrations with other SaaS services
+* use a metric store
+* collaborate with others
+* use an issue resolution workflow
+* integrate with software as a service (SaaS) tools
 
-<a href="https://docs.soda.io/soda-cloud/overview.html" target="_blank">Go to Soda Cloud docs</a>.
+Soda Core is the open source engine to compute observability metrics and evaluate checks. Soda Cloud is Soda's commercial offering which includes a free Soda Cloud Developer account.
 
-Soda Core is the open source engine to compute the observability metrics and evaluate checks. Soda Cloud is our commercial offering and there is even a free Soda Cloud Developer account.
+Access the <a href="https://docs.soda.io/soda-cloud/overview.html" target="_blank">Soda Cloud documentation</a> for details.
 
-TODO: point to a blog explaining our open source strategy
 
 ## Soda Cloud developer account
 
-What are the advantages of connecting to Soda Cloud?
+<a href="cloud.soda.io/signup" target="_blank">Sign up</a> for a free Soda Cloud Developer account and [configure]({% link soda-core/configure.md %}#connect-soda-core-to-soda-cloud) Soda Core to connect to Soda Cloud to take advantage of several features.
 
 * Metric store
-* Change over time metrics
+* Change-over-time metrics
 * Anomaly detection
-* Sharing Profiling / visualization / data docs with others
+* Shared profiling, visualization, and data docs
 * Check history view
-* Scan schedule & check identity
+* Scan schedule and check identity
 
 
 

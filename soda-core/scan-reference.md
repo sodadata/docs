@@ -46,7 +46,7 @@ variables:
 ```
 Scan command:
 ```shell
-soda scan -d adventureworkds -v TODAY=2022-03-11 checks.yml
+soda scan -d adventureworks -v TODAY=2022-03-11 checks.yml
 ```
 
 ## Scan output
@@ -63,7 +63,7 @@ Example output with a check that passed:
 Soda Core 0.0.x
 Scan summary:
 1/1 check PASSED: 
-    dim_customers in adventureworkds
+    dim_customers in adventureworks
       row_count > 0 [PASSED]
 All is good. No failures. No warnings. No errors.
 ```
@@ -73,7 +73,7 @@ Example output with a check that triggered a warning:
 Soda Core 0.0.x
 Scan summary:
 1/1 check WARNED: 
-    dim_customers in adventureworkds
+    dim_customers in adventureworks
       schema [WARNED]
         missing_column_names = [sombrero]
         schema_measured = [geography_key, customer_alternate_key, title, first_name, last_name ...]

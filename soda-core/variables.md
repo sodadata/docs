@@ -8,20 +8,15 @@ parent: Soda Core
 
 # Use variables in Soda Core
 
-Variables can be used in SodaCL files to
+Use **variables** in your `checks.yml` file to resolve credentials in configuration files, or to define dynamic filters.
 
-* Resolve credentials in configuration files.
-* Define dynamic filters
+Use variables in `checks.yml` files with the following syntax and markers: `${VAR_NAME}`
 
-Variables will resolve to environment variables or can be specified as variables on the scan.
+* During a scan, variables resolve to environment variables, or you can specify variables in the scan command.
+* By default, the variable `NOW` is the scan creation time as a string in ISO8601 format. For example: `2022-03-01T08:13:04.940634`
+* For consistency, best practice dictate that you use upper case for variable names, though you can use lower case if you wish.
 
-To use variables in SodaCL files, put them between markers `${` and `}` like this: `${VAR_NAME}`
-
-Variable `NOW` is set by default to the scan creation time as a string in iso8601 format. Eg `2022-03-01T08:13:04.940634`
-
-For consistency we recommend to use upper case for variable names, but lower case is also allowed.
-
-
+See also: [Scan reference]({% link soda-core/scan-reference.md %}#variables)
 
 
 ---
