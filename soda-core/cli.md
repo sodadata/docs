@@ -31,23 +31,8 @@ To see a list of configurable options for the command, use the command-line help
 ```shell
 $ soda scan --help
 ```
-```shell
-Usage: soda scan [OPTIONS] [SODACL_PATHS]...
 
-  soda scan will   * Parse the SodaCL files and report any errors   
-  ...
-
-Options:
-  -d, --data-source TEXT      [required]
-  -s, --scan-definition TEXT
-  -v, --variable TEXT
-  -c, --configuration PATH
-  -V, --verbose
-  --help                      Show this message and exit.
-
-```
-
-Use the `-c` option to include multiple `configuration.yml` files in one scan execution.
+Note that you can use the `-c` option to include multiple `configuration.yml` files in one scan execution.
 
 ---
 {% include docs-core-footer.md %}
