@@ -1,5 +1,6 @@
 - title: Home
   page: index.html
+
 - title: Get started
   page: soda-sql/interactive-demo.md
   subcategories:
@@ -73,6 +74,37 @@
   subcategories:
   - subtitle: Install and use Soda Spark
     page: soda-spark/install-and-use.md
+
+
+# - title: SodaCL
+#   page: soda-cl/soda-cl-overview.md
+#   subcategories:
+#   - subtitle: Row count checks
+#     page: soda-cl/row-count.md
+#   - subtitle: Missing and validity checks
+#     page: soda-cl/missing-validity.md
+#   - subtitle: Duplicate checks
+#     page: soda-cl/duplicates.md
+#   - subtitle: Statistical checks
+#     page: soda-cl/statistical.md
+#   - subtitle: Metrics and thresholds
+#     page: soda-cl/metrics-thresholds.md
+#   - subtitle: Schema checks
+#     page: soda-cl/schema.md
+#   - subtitle: Reference checks
+#     page: soda-cl/reference.md
+#   - subtitle: Freshness checks
+#     page: soda-cl/freshness.md
+#   - subtitle: User-defined checks
+#     page: soda-cl/user-defined.md
+#   - subtitle: For each checks
+#     page: soda-cl/for-each.md
+#   - subtitle: Quotes
+#     page: soda-cl/quotes.md
+#   - subtitle: Filters
+#     page: soda-cl/filters.md
+#   - subtitle: Automated monitoring
+#     page: soda-cl/automated-monitoring.md
 
 - title: Soda Cloud
   page: soda-cloud/overview.md
