@@ -2,6 +2,7 @@
 layout: default
 title: Schema checks
 description: 
+sidebar: cl
 parent: SodaCL
 ---
 

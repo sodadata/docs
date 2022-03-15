@@ -2,6 +2,7 @@
 layout: default
 title: Row count checks
 description: 
+sidebar: cl
 parent: SodaCL
 ---
 

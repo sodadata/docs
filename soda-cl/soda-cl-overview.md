@@ -2,6 +2,7 @@
 layout: default
 title: Soda Checks language 
 description: 
+sidebar: cl
 parent: SodaCL
 ---
 

@@ -1,11 +1,12 @@
 ---
 layout: default
-title: Filters
+title: Table filters
 description: 
+sidebar: cl
 parent: SodaCL
 ---
 
-# Filters
+# Table filters
 
 Large datasets often are built up incrementally. Each job execution appends the new data to a table. For those 
 situations, Soda SQL has filters.

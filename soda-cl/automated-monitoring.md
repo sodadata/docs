@@ -2,6 +2,7 @@
 layout: default
 title: Automated monitoring
 description: 
+sidebar: cl
 parent: SodaCL
 ---
 

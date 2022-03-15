@@ -2,6 +2,7 @@
 layout: default
 title: Duplicate checks
 description: 
+sidebar: cl
 parent: SodaCL
 ---
 

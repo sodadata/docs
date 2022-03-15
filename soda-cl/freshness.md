@@ -2,6 +2,7 @@
 layout: default
 title: Freshness checks
 description: 
+sidebar: cl
 parent: SodaCL
 ---
 

@@ -1,0 +1,41 @@
+- title: SodaCL
+  page: soda-cl/soda-cl-overview.md
+
+- title: Row count checks
+  page: soda-cl/row-count.md
+
+- title: Missing and validity checks
+  page: soda-cl/missing-validity.md
+
+- title: Duplicate checks
+  page: soda-cl/duplicates.md
+
+- title: Statistical checks
+  page: soda-cl/statistical.md
+
+- title: Metrics and thresholds
+  page: soda-cl/metrics-thresholds.md
+
+- title: Schema checks
+  page: soda-cl/schema.md
+
+- title: Reference checks
+  page: soda-cl/reference.md
+
+- title: Freshness checks
+  page: soda-cl/freshness.md
+
+- title: User-defined checks
+  page: soda-cl/user-defined.md
+
+- title: For each checks
+  page: soda-cl/for-each.md
+
+- title: Quotes
+  page: soda-cl/quotes.md
+
+- title: Table filters
+  page: soda-cl/filters.md
+  
+- title: Automated monitoring
+  page: soda-cl/automated-monitoring.md
