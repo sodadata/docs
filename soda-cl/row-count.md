@@ -53,7 +53,7 @@ checks for CUSTOMERS:
   - row_count same as RAW_CUSTOMERS in other_snowflake_data_source
 ```
 
-## Cross table row count checks with table filters
+## Cross table row count checks with filters
 
 (Coming soon)
 
@@ -68,16 +68,16 @@ checks for CUSTOMERS [daily_date]:
 where in the same or another file:
 
 ```yaml
-table filter CUSTOMERS [daily_date]:
-  filter: date = DATE '${date}'
+filter CUSTOMERS [daily_date]:
+  where: date = DATE '${date}'
 
-table filter RAW_CUSTOMERS [daily_timestamp]:
-  filter: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
+filter RAW_CUSTOMERS [daily_timestamp]:
+  where: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
 ```
 
 Row count comparison with table filter also works cross data source.
 
-Learn more on table filters
+Learn more on [filters](./filters.md)
 
 ## Change over time row count checks
 
