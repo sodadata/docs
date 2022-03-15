@@ -1,15 +1,12 @@
 <ul class="nav-list">
     {% if page.sidebar == "core" %}
     {% assign navlist = site.data.navcore %}
-    {% else %}
-    {% assign navlist = site.data.nav %}
-    {% endif %}
-
-    {% if page.sidebar == "cl" %}
+    {% elsif page.sidebar == "cl" %}
     {% assign navlist = site.data.navcl %}
     {% else %}
     {% assign navlist = site.data.nav %}
     {% endif %}
+ 
 
     {% for nav in navlist %}
     {% if nav.subcategories != null %}
@@ -57,5 +54,4 @@
     </li>
     {% endif %}
     {% endfor %}
-
-</ul>
+</ul>     
