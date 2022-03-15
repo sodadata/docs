@@ -57,7 +57,7 @@ The command output results in the following output:
 Soda Core 0.0.x
 Scan summary:
 1/1 check PASSED:
-    dim_account in adventureworks
+    CUSTOMERS in adventureworks
       row_count between 20 and 100 [PASSED]
 All is good. No failures. No warnings. No errors.
 ```
@@ -90,7 +90,7 @@ During a scan, Soda Core uses the following path and filename by default: `~/.so
 
 A Soda Check is a test that Soda Core performs when it scans a dataset in your data source. Technically, a check is a Python expression that, during a scan, checks metrics to see if they match the parameters you defined for a measurement.
 
-The Soda Check included in the demo environment uses SodaCL to make sure that the `dim_account` table contains rows or, in other words, is not empty. In this example, `row_count` is the metric, `between` is the operand, and `20 and 100` is the measurement. Use the following command to review the contents of the `checks.yml` that the demo environment uses.
+The Soda Check included in the demo environment uses SodaCL to make sure that the `CUSTOMERS` table contains rows or, in other words, is not empty. In this example, `row_count` is the metric, `between` is the operand, and `20 and 100` is the measurement. Use the following command to review the contents of the `checks.yml` that the demo environment uses.
 
 Command:
 ```shell
@@ -98,7 +98,7 @@ cat checks.yml
 ```
 Output:
 ```yaml
-checks for dim_account:
+checks for CUSTOMERS:
   - row_count between 20 and 100
 ```
 
@@ -122,7 +122,7 @@ Output:
 Soda Core 0.0.x
 Scan summary:
 1/1 check PASSED:
-    dim_account in adventureworks
+    CUSTOMERS in adventureworks
       row_count between 20 and 100 [PASSED]
 All is good. No failures. No warnings. No errors.
 ```
@@ -144,13 +144,13 @@ open checks.yml
 
 Check that a value is present in another table:
 ```yaml
-checks for dim_employee:
+checks for CUSTOMERS:
   - reference from (employee_key) to fact_sales_quota (employee_key)
 ```
 
 Issue a warning if expected columns in a table are missing:
 ```yaml
-checks for dim_employee:
+checks for CUSTOMERS:
   - schema:
       warn:
         when required column missing: [last_name, email_address]
@@ -158,7 +158,7 @@ checks for dim_employee:
 
 Check for valid values in a column in a table:
 ```yaml
-checks for dim_product:
+checks for CUSTOMERS:
   - invalid_percent(color) < 1%:
       valid values:
         - red

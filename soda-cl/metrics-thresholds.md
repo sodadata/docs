@@ -88,10 +88,10 @@ Though SodaCL includes the values that define the boundary thresholds during a c
 
 ## Warning thresholds and zones
 
-Where most checks yield pass or fail check results, you have the option of defining a warning threshold for any numeric metric check. To do so, you define a threshold that, when reached or surpassed, triggers a warning. For example, this check triggers a warning if the `row_count` of the `dim_customer` table is lower than `10`.
+Where most checks yield pass or fail check results, you have the option of defining a warning threshold for any numeric metric check. To do so, you define a threshold that, when reached or surpassed, triggers a warning. For example, this check triggers a warning if the `row_count` of the `CUSTOMERS` table is lower than `10`.
 
 ```yaml
-checks for dim_customer:
+checks for CUSTOMERS:
   - row_count:
       warn: when < 10
 ```
@@ -103,7 +103,7 @@ You can also define fail and warning zones, effectively yielding more severe che
 The example that follows defines split warning and failure zones in which inner is good, and outer is bad. The chart below illustrates the pass (white), warn (yellow), and fail (red) zones. 
 
 ```yaml
-checks for dim_customer:
+checks for CUSTOMERS:
   - row_count:
       warn: when not between -10 and 10
       fail: when not between -20 and 20
@@ -115,7 +115,7 @@ checks for dim_customer:
 
 The next example defines a different kind of zone slip in which inner is bad, and outer is good. The chart below illustrates the fail (red), warn (yellow), and pass (white) zones.
 ```yaml
-checks for dim_customer:
+checks for CUSTOMERS:
   - row_count:
       warn: when between -20 and 20
       fail: when between -10 and 10
@@ -132,7 +132,7 @@ If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check 
 The following example demonstrates how to use a change-over-time threshold for the `row_count` metric in a check. You can use any numeric metrics in lieu of `row_count`. This check yields a failed check result if the difference between the previous `row_count` measurement and the current `row_count` measurement is 50 or greater. 
 
 ```yaml
-checks for dim_customer:
+checks for CUSTOMERS:
   - change for row_count < 50
 ```
 
@@ -140,7 +140,7 @@ checks for dim_customer:
 
 The next example demonstrates how to use change-over-time thresholds to gauge the difference between the current `row_count` measurement and the average, minimum, and maximum value for the measurement calculated using the preceding seven measurements for `row_count`. 
 ```yaml
-checks for dim_customer:
+checks for CUSTOMERS:
   - change avg last 7 for row_count < 50
   - change min last 7 for row_count < 50
   - change max last 7 for row_count < 50
@@ -153,7 +153,7 @@ If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check 
 The following example demonstrates how to use the anomaly score for the `row_count` metric in a check. You can use any numeric metrics in lieu of `row_count`. By default, anomaly score checks yield warning check results, not failures.
 
 ```yaml
-checks for dim_customer:
+checks for CUSTOMERS:
   - anomaly score for row_count < default
 ```
 <br />
@@ -161,7 +161,7 @@ checks for dim_customer:
 If you wish, you can override the anomaly score. <!--why would you want to do this? what is the .7 a portion of?--> The following check yields a warning check result if the anomaly score for `row_count` exceeds `.7`.
 
 ```yaml
-checks for dim_customer:
+checks for CUSTOMERS:
   - anomaly score for row_count < .7
 ```
 

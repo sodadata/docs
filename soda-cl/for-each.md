@@ -15,11 +15,11 @@ First, in your checks.yml file, specify the list of tables using `for each table
 for each table T:
   tables:
     # include the table 
-    - dim_customer
+    - CUSTOMERS
     # include all tables matching the wildcard expression
     - new_%
     # (optional) explicitly add the word include to make the list more readable
-    - include dim_product
+    - include CUSTOMERS
     # exclude a specific table
     - exclude fact_survey_response
     # exclude any tables matching the wildcard expression
