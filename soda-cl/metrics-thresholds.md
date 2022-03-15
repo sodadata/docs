@@ -28,19 +28,23 @@ For example, in the check defined as `row_count > 0`, `row_count` is the metric,
 
 | Metric | Arguments | Description | Supported data sources |
 | ------ | --------- | ----------- | ---------------------- |
+| `row_count` | | The number of rows in a table. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake |
 | `duplicate_count` | one or more column names | The number of rows that contain duplicate values, relative to the column. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `missing_count` | column name | The number of rows in a column that do not contain specific content. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `missing_percent` | column name | The percentage of rows in a column that do not contain specific content. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `invalid_count` | column name | The number of rows that contain invalid values. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `invalid_percent` | column name | The percentage of rows that contain invalid values.| Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
-| `max` | column name | The greatest value in a numeric column. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `min` | column name | The smallest value in a numeric column. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `max` | column name | The greatest value in a numeric column. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `avg` | column name | The average value in a numeric column. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `sum` | column name | The calculated sum of the values in a numeric column. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `min_length` | column name | The smallest length in a text column. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `max_length` | column name | The greatest length in a text column. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `avg_length` | column name | The average length in a text column. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `percentile` | column name, percentage |  The value below which a percentage of observations fall within a group of observations. For example, `percentile(distance, 0.7)`. | PostgreSQL |
-| `row_count` | | The number of rows in a table. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake |
 | `stdev` | column name | The calculated standard deviation of values in a numeric column. | PostgreSQL |
 | `stddev_pop` | column name | The calculated population standard deviation of values in a numeric column. | PostgreSQL |
 | `stddev_samp` | column name | The calculated sample standard deviation of values in a numeric column. | PostgreSQL |
-| `sum` | column name | The calculated sum of the values in a numeric column. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `variance` | column name | The calculated variance of the values in a numeric column. | PostgreSQL |
 | `var_pop` | column name | The calculated population variance of the values in a numeric column. | PostgreSQL |
 | `var_samp` | column name | The calculated sample variance of the values in a numeric column.| PostgreSQL |
