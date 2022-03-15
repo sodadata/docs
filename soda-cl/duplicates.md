@@ -2,6 +2,7 @@
 layout: default
 title: Duplicate checks
 description: 
+sidebar: cl
 parent: SodaCL
 ---
 
@@ -12,13 +13,13 @@ Use the `duplicate_count` metric to count the distinct values that occur more th
 The following checks that the column `email_address` does not contain any duplicates.
 
 ```yaml
-checks for dim_customer:
+checks for CUSTOMERS:
   - duplicate_count(email_address) = 0
 ```
 
 The following executes the `duplicate_count` check on two columns. If either column contains a duplicate value relative to itself, the check fails.
 ```yaml
-checks for dim_customer:
+checks for CUSTOMERS:
   - duplicate_count(email_address, last_name) = 0
 ```
 

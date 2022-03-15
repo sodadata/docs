@@ -215,7 +215,7 @@ data_source events:
   table_prefix: "public"
 ```
 
-If you have configured the `table_prefix` property, a check for `row_count` yields scan output that reveals the table prefix information: `FROM public.dim_account`.
+If you have configured the `table_prefix` property, a check for `row_count` yields scan output that reveals the table prefix information: `FROM public.CUSTOMERS`.
 
 Checks YAML file:
 ```yaml
@@ -235,15 +235,15 @@ Soda Core 0.0.x
 Reading configuration file "configuration.yml"
 Reading SodaCL file "checks.yml"
 Scan execution starts
-Query adventureworks.dim_account.aggregation[0]:
+Query adventureworks.CUSTOMERS.aggregation[0]:
 SELECT 
   COUNT(*) 
-FROM public.dim_account
+FROM public.CUSTOMERS
 Scan summary:
 1/1 query OK
-  adventureworks.dim_account.aggregation[0] [OK] 0:00:00.035515
+  adventureworks.CUSTOMERS.aggregation[0] [OK] 0:00:00.035515
 1/1 check PASSED: 
-    dim_account in adventureworks
+    CUSTOMERS in adventureworks
       row_count > 0 [PASSED]
         check_value: 99
 All is good. No failures. No warnings. No errors.
@@ -265,8 +265,6 @@ soda_cloud:
 4. Save the changes to the `configuration.yml` file. Close the **Create API Key** dialog box in Soda Cloud.
 
 The next time you execute a scan in Soda Core, it pushes the scan results to Soda Cloud where you can view the results in the **Monitors** dashboard. Refer to [Soda Cloud documentation]({% link soda-cloud/overview.md %}) for more information.
-
-
 
 ---
 {% include docs-core-footer.md %}

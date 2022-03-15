@@ -63,7 +63,7 @@ Example output with a check that passed:
 Soda Core 0.0.x
 Scan summary:
 1/1 check PASSED: 
-    dim_customers in adventureworks
+    CUSTOMERSs in adventureworks
       row_count > 0 [PASSED]
 All is good. No failures. No warnings. No errors.
 ```
@@ -73,7 +73,7 @@ Example output with a check that triggered a warning:
 Soda Core 0.0.x
 Scan summary:
 1/1 check WARNED: 
-    dim_customers in adventureworks
+    CUSTOMERSs in adventureworks
       schema [WARNED]
         missing_column_names = [sombrero]
         schema_measured = [geography_key, customer_alternate_key, title, first_name, last_name ...]
@@ -85,7 +85,7 @@ Example output with a check that failed:
 Soda Core 0.0.x
 Scan summary:
 1/1 check FAILED: 
-    dim_date in adventureworks
+    CUSTOMERS in adventureworks
       freshness using full_date_alternate_key < 3d [FAILED]
         max_column_timestamp: 2020-06-24 00:04:10+00:00
         max_column_timestamp_utc: 2020-06-24 00:04:10+00:00

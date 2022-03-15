@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Missing and validity checks
-description: 
+description:
+sidebar: cl 
 parent: SodaCL
 ---
 
@@ -69,17 +70,17 @@ checks for CUSTOMERS:
         - HIGH
         - MEDIUM
         - LOW
-  - invalid(id) = 0:
+  - invalid_count(id) = 0:
       valid format: uuid
-  - invalid(email_masked) = 0:
+  - invalid_count(email_masked) = 0:
       valid regex: ^[a-z]+\*\*\*[a-z]+$
-  - invalid(usage_pct) = 0:
+  - invalid_count(usage_pct) = 0:
       valid min: 0
       valid max: 100
-  - invalid(name) = 0:
+  - invalid_count(name) = 0:
       valid min length: 3
       valid max length: 60
-  - invalid(product_code) = 0:
+  - invalid_count(product_code) = 0:
       valid length: 7
 ```
 
