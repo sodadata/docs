@@ -102,7 +102,7 @@
   - subtitle: Quotes
     page: soda-cl/quotes.md
   - subtitle: Table filters
-    page: soda-cl/table-filters.md
+    page: soda-cl/filters.md
   - subtitle: Automated monitoring
     page: soda-cl/automated-monitoring.md
 
