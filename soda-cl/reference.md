@@ -1,25 +1,23 @@
 ---
 layout: default
-title: Reference checks
+title: Reference data checks
 description: 
 parent: SodaCL
 ---
 
-# Reference checks
+# Reference data checks
 
-Basic reference check verifies that a value is present in another column.
+Check if values in column `ORDERS.customer_id` are present in column `CUSTOMERS.id`.
 ```yaml
 checks for ORDERS:
-  - reference from (customer_id) to CUSTOMERS (id)
+  - values in customer_id must exist in CUSTOMERS id
 ```
 
-Multi-column reference check
+Check if combination of multiple column values in table ORDERS occur in table CUSTOMERS
 ```yaml
 checks for ORDERS:
-  - reference from (customer_country, customer_zip) to CUSTOMERS (country, zip)
+  - values in (customer_country, customer_zip) must exist in CUSTOMERS (country, zip)
 ```
-
-[Note] Missing values in the source columns are also considered invalid.
 
 ---
 {% include docs-footer.md %}
