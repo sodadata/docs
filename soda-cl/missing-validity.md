@@ -102,7 +102,7 @@ General format for the configurations: `{configuration type} for {column name}: 
 
 [Warning] Column names can be specified with or without quotes, *but* quoting and case must match where they are used. So if you refer to column `"size"` in the column configurations section, the configurations will not be applied to checks referring to column `size` and `"Size"`
 
-[Note] Missing and invalidity checks can also be combined with [filters]({% link soda-cl/filters.md %})
+[Note] Missing and invalidity checks can also be combined with [table filters]({% link soda-cl/table-filters.md %})
 
 Advanced: When both global column configurations as well as check-local configurations are specified, they combined in case of different properties. If the same property is specified both locally and globally, local wins.
 

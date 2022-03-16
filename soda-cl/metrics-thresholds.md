@@ -101,7 +101,7 @@ checks for CUSTOMERS:
 
 You can also define fail and warning zones, effectively yielding more severe check results the further a measurement falls outside the parameters you specify as acceptable for your data quality. 
 
-The example that follows defines split warning and failure zones in which inner is good, and outer is bad. The chart below illustrates the pass (white), warn (yellow), and fail (red) zones. 
+The example that follows defines split warning and failure zones in which inner is good, and outer is bad. The chart below illustrates the pass (white), warn (yellow), and fail (red) zones. Note that an individual check only ever yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more serious, failed check result. 
 
 ```yaml
 checks for CUSTOMERS:
@@ -126,7 +126,7 @@ checks for CUSTOMERS:
 
 
 
-## Change over time thresholds
+## Change-over-time thresholds
 
 If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the historic measurements for your checks in a metric store. SodaCL can then use these stored values to evaluate change-over-time thresholds relative to previous measurements. Therefore, you must have a [Soda Cloud account]({% link soda-cloud/overview.md%}) to use change-over-time thresholds.
 
