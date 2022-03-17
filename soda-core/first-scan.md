@@ -127,7 +127,7 @@ Scan summary:
 All is good. No failures. No warnings. No errors.
 ```
 
-Note that normally, you do not need to include an explicit reference to the `-c configuration.yml` in your scan command. This demo database requires an explicit filepath for the file. See [Scan reference]({% link soda-core/scan-reference.md %})
+Note that normally, you do not need to include an explicit reference to the `-c configuration.yml` in your scan command. This demo database requires an explicit filepath for the file. See [Scan reference]({% link soda-core/scan-reference.md %}).
 
 ## Experiment with more checks
 
