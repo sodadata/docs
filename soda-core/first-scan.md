@@ -142,10 +142,10 @@ open checks.yml
 
 #### Examples
 
-Check that a value is present in another table:
+Check that values in one column in a table are present in another table's column:
 ```yaml
 checks for CUSTOMERS:
-  - reference from (employee_key) to fact_sales_quota (employee_key)
+  - values in employee_key must exist in SALES_QUOTA employee_key
 ```
 
 Issue a warning if expected columns in a table are missing:
@@ -158,7 +158,7 @@ checks for CUSTOMERS:
 
 Check for valid values in a column in a table:
 ```yaml
-checks for CUSTOMERS:
+checks for PRODUCT:
   - invalid_percent(color) < 1%:
       valid values:
         - red
