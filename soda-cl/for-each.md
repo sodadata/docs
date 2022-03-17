@@ -25,9 +25,9 @@ for each table T:
     - exclude fact_survey_response
     # exclude any tables matching the wildcard expression
     - exclude prospective_%
-checks:
-  - row_count > 0
-  - duplicate_count = 0
+  checks:
+    - row_count > 0
+    - duplicate_count = 0
 ```
 
 ### Notes
