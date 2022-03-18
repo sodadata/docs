@@ -62,7 +62,8 @@ configurations for CUSTOMERS:
 
 Similarly, valid values can be defined (and only applied) locally inside a check:
 
-TODO: When explaining valid values list, also point to reference check which covers a different variant of validity.
+TODO: When explaining valid values list, also point to reference data check which covers a different variant of validity.
+
 ```yaml
 checks for CUSTOMERS:
   - invalid_percent(category) < 1%:
