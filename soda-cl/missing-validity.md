@@ -16,6 +16,8 @@ A check for missing, valid, or invalid values surfaces unexpected or missing dat
 [Valid format values](#valid-format-values)<br />
 [Checks with relative thresholds](#checks-with-relative-thresholds)<br />
 [Configure global missing or valid values](#configure-global-missing-or-valid-values)<br />
+[Failed rows](#failed-rows)<br />
+[Go further](#go-further)<br />
 <br />
 
 
