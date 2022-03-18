@@ -139,7 +139,7 @@ Refer to image above for an example.
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
-Coming soon for **Soda Core (Beta)**.
+The integration with dbt is not available for **Soda Core (Beta)**, yet.
 
 Soda Core (Beta) is a free, open-source, command-line tool that enables you to use the Soda Check Language (Beta) to turn user-defined input into aggregated SQL queries.
 

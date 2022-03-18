@@ -80,7 +80,7 @@ Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
-You use **Soda Checks Language (Beta)** to define Soda Checks in a checks YAML file. A Soda Check is a test that **Soda Core (Beta)** (Soda's open-source, command-line tool) executes when it scans a dataset in your data source.
+You use **Soda Checks Language (Beta)** to define Soda Checks in a checks YAML file. A Soda Check is a test that **Soda Core (Beta)**, Soda's open-source, command-line tool, executes when it scans a dataset in your data source.
 
 Access the <a href="https://docs.soda.io/soda-cl/metrics-thresholds.html" target="_blank">SodaCL (Beta) documentation</a> to learn more about metrics in SodaCL.
 
