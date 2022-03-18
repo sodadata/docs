@@ -144,8 +144,8 @@ open checks.yml
 
 Check that a value is present in another table:
 ```yaml
-checks for CUSTOMERS:
-  - reference from (employee_key) to fact_sales_quota (employee_key)
+checks for dim_employee:
+  - values in employee_key must exist in fact_sales_quota employee_key
 ```
 
 Issue a warning if expected columns in a table are missing:

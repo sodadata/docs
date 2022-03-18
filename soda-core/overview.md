@@ -69,7 +69,7 @@ checks for PRODUCTS:
 Reference data check:
 ```yaml
 checks for PRODUCTS:
-  - reference from (organization_key) to dim_organization (organization_key)
+  - values in organization_key must exist in dim_organization organization_key
 ```
 
 Dynamic for each checks on multiple tables:

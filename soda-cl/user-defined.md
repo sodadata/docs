@@ -16,11 +16,11 @@ The simplest form of checking for `failed rows` is to use a failed rows check in
 ```yaml
 checks for CUSTOMERS:
   - failed rows:
-      label: High customers must have size less than 3
+      name: High customers must have size less than 3
       fail condition: cat = 'HIGH' and size >= 3
 ```
 
-For failed rows, the `label` configuration is required to get proper error messages. We recommend a short line that states the property that good rows must have.
+For failed rows, the `name` configuration is required to get proper error messages. We recommend a short line that states the property that good rows must have.
 
 The `fail condition` configuration is a SQL expression that selects failed rows. [Variables]({% link soda-core/variables.md %}) can be used in the fail condition
 
@@ -37,7 +37,7 @@ The query is executed as-is and can include joins.
 ```yaml
 checks:
   - failed rows:
-      label: customer contacts must have a valid email
+      name: customer contacts must have a valid email
       fail query: |
         SELECT *
         FROM customers as customer
@@ -48,7 +48,7 @@ checks:
 
 Failed rows queries can be specified under the `checks:` section as well as under a specific `checks for TABLE_NAME:` section. The only difference is that in the latter case the check will be associated with the table in the case it's pushed to Soda Cloud.
 
-For failed rows checks, the `label` configuration is required to get proper error messages. We recommend a short line that states the property that good rows must have.
+For failed rows checks, the `name` configuration is required to get proper error messages. We recommend a short line that states the property that good rows must have.
 
 The `fail query` configuration is a SQL query that selects failed rows. Variables]({% link soda-core/variables.md %}) can be used in the query.
 
@@ -67,13 +67,13 @@ Example of specifying a name, warn and fail levels for a user defined aggregatio
 ```yaml
 checks for CUSTOMERS:
   - avg_surface:
-      label: Average surface
+      name: Average surface
       avg_surface expression: AVG(size * distance)
       warn: when < 30
       fail: when < 10
 ```
 
-Other standard check configurations that apply: `label`, `filter`, `warn`, `fail`
+Other standard check configurations that apply: `name`, `filter`, `warn`, `fail`
 
 ## User-defined single metric query
 
