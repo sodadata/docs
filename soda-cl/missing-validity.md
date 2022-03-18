@@ -14,8 +14,8 @@ A check for missing, valid, or invalid values surfaces unexpected or missing dat
 [Missing and validity metrics](#missing-and-validity-metrics)<br />
 [Column configuration keys](#column-configuration-keys)<br />
 [Valid format values](#valid-format-values)<br />
-[Configure global missing or valid values](#configure-global-missing-or-valid-values)<br />
 [Checks with relative thresholds](#checks-with-relative-thresholds)<br />
+[Configure global missing or valid values](#configure-global-missing-or-valid-values)<br />
 <br />
 
 
@@ -41,7 +41,7 @@ checks for CUSTOMERS:
       missing values: [N/A, None, No value]
 ```
 * `missing_count` is the metric.
-* `(name)` is the column identifier.
+* `(name)` is the column identifier. 
 * `< 100` is the threshold.
 * `missing values` is the [column configuration key](#column-configuration-keys); its values define what qualifies as "missing". Note that by default, SodaCL always considers a `NULL` value as missing, so you do not need to explicitly define `NULL` as a missing value.
 
@@ -140,79 +140,6 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 | `uuid` | Universally unique identifier. | 
 
 
-## Configure global missing or valid values 
-
-Important! Configuring missing or valid values globally for a dataset will affect all checks. This means that if value `0` is configured as a missing value on column `value`, it will also be ignored in all checks, i.e. it will be ignored in aggregation check like `avg(value) between 30 and 70`
-
-A `NULL` value is always considered a missing value. But the set of values that is considered missing can be customized locally on the check. Local configurations will only apply to the check.
-
-The configuration of missing values can also be centralized so that it applies to all checks.
-```yaml
-checks for CUSTOMERS:
-  - missing_percent(growth_pct) < 1
-  - avg(growth_pct) between 30 and 70
-  - min(growth_pct) >= 0
-  - max(growth_pct) <= 100
-
-configurations for CUSTOMERS:
-  # Value -1 will be excluded from all the aggregation checks above
-  - missing values for growth_pct: [-1]
-```
-
-Similarly, valid values can be defined (and only applied) locally inside a check:
-
-
-
-
-```yaml
-checks for CUSTOMERS:
-  - invalid_percent(category) < 1%:
-      valid values:
-        - HIGH
-        - MEDIUM
-        - LOW
-  - invalid_count(id) = 0:
-      valid format: uuid
-  - invalid_count(email_masked) = 0:
-      valid regex: ^[a-z]+\*\*\*[a-z]+$
-  - invalid_count(usage_pct) = 0:
-      valid min: 0
-      valid max: 100
-  - invalid_count(name) = 0:
-      valid min length: 3
-      valid max length: 60
-  - invalid_count(product_code) = 0:
-      valid length: 7
-```
-
-or the above valid configurations can also be defined centrally so all checks on that column will leverage them.
-
-```yaml
-configurations for CUSTOMERS:
-  valid values for id: [HIGH, MEDIUM, LOW]
-  valid format for id: uuid
-  valid regex for email_masked: ^[a-z]+\*\*\*[a-z]+$
-  valid min for "usage_PCT": 0
-  valid max for "usage_PCT": 100
-  valid min length for name: 3
-  valid max length for name: 60
-  valid length for product_code: 7
-```
-
-Advanced: When both global column configurations as well as check-local configurations are specified, they combined in case of different properties. If the same property is specified both locally and globally, local wins.
-
-```yaml
-checks for CUSTOMERS:
- - invalid_percent(category) < 1%:
-     missing values: [N/A, No value, null]
-     valid values: [HIGH, MEDIUM, LOW]
-configurations for CUSTOMERS:
-  missing values for category: [N/A, No value]
-  valid min length for category: 3
-  valid max length for category: 6
-```
-
-
 ## Checks with relative thresholds
 
 SodaCL separates all values in a column into one of three categories:
@@ -242,37 +169,103 @@ checks for CUSTOMERS:
 
 
 
+## Configure global missing or valid values 
 
-TODO: When explaining valid values list, also point to reference check which covers a different variant of validity.
+Optionally, you can configure missing or valid values globally; these configurations apply to all checks in the table. This enables you to write checks that use missing and validity metrics without having to declare what qualitifes as missing or valid for each check locally.
+
+The following example defines a global column configuration for what qualifies as a missing value for the `growth_pct` column. The check that uses a `missing_percent` references the global configuration for what qualifies as missing.
+
+```yaml
+checks for CUSTOMERS:
+  - missing_percent(growth_pct) < 1
+
+configurations for CUSTOMERS:
+  - missing values for growth_pct: [-1]
+```
+
+### Global configurations and aggregation checks
+
+Globally defined values for missing or valid do not have an effect on aggregation checks. For example, if you globally define `0` as a missing value for a column named `value`, SodaCL still uses `0` when calculating the following aggregation check:
+
+```yaml
+checks for CUSTOMERS:
+  - avg(value) between 30 and 70
+```
+### Global configurations that use quotes
+
+In your global column configurations, you can identify column names with or without quotes. If you use quotes with the column name, any checks you write that do not use the quotes, do not use the global configuration.  
+
+For example, if you reference column `"size"` in a global column configurations, any checks that refer to a column name `size` or `"Size"` do not use the global column configuration.
 
 
-[Warning] Column names can be specified with or without quotes, *but* quoting and case must match where they are used. So if you refer to column `"size"` in the column configurations section, the configurations will not be applied to checks referring to column `size` and `"Size"`
+### Local versus global configurations
 
-[Note] Missing and invalidity checks can also be combined with [table filters]({% link soda-cl/table-filters.md %})
+The following example configures what qualifies as missing or valid values locally. 
 
+```yaml
+checks for CUSTOMERS:
+  - invalid_percent(category) < 1%:
+      valid values:
+        - HIGH
+        - MEDIUM
+        - LOW
+  - invalid_count(id) = 0:
+      valid format: uuid
+  - invalid_count(email_masked) = 0:
+      valid regex: ^[a-z]+\*\*\*[a-z]+$
+  - invalid_count(usage_pct) = 0:
+      valid min: 0
+      valid max: 100
+  - invalid_count(name) = 0:
+      valid min length: 3
+      valid max length: 60
+  - invalid_count(product_code) = 0:
+      valid length: 7
+```
 
+The following example defines the same checks, but the checks refer to globally configured values for missing and valid. 
 
-Configurations used in check `invalid_percent(category) < 1%`:
+```yaml
+checks for CUSTOMERS:
+  - invalid_percent(category) < 1%:
+  - invalid_count(id) = 0:
+  - invalid_count(email_masked) = 0:
+  - invalid_count(usage_pct) = 0:
+  - invalid_count(name) = 0:
+  - invalid_count(product_code) = 0:
 
-| Configuration property | value |
-| ---------------------- | ----- |
-| missing values | [`'N/A'`, `'No value'`, `'null'`] |
-| valid min length | 3 |
-| valid max length | 6 |
+configurations for CUSTOMERS:
+  valid values for id: [HIGH, MEDIUM, LOW]
+  valid format for id: uuid
+  valid regex for email_masked: ^[a-z]+\*\*\*[a-z]+$
+  valid min for "usage_PCT": 0
+  valid max for "usage_PCT": 100
+  valid min length for name: 3
+  valid max length for name: 60
+  valid length for product_code: 7
+```
 
-
-
+You can define both global and local column configurations in a `checks.yml`. If you accidentally configure the same property both globally and locally and the values conflict, SodaCL uses the local configuration to execute the check.
 
 
 ## Failed rows
 
 If you have connected Soda Core to a Soda Cloud Enterprise account, Soda Core pushes samples of failed rows to your cloud account.
 
-Metrics `missing`, `missing_percent`, `invalid`, `invalid_percent` will store failed rows when connected to Soda Cloud enterprise account for diagnostic purposes.
+When you use one of the follow metrics in your checks, Soda Core autmoatically sends failed row samples to your Soda Cloud account. 
+* `missing` 
+* `missing_percent`
+* `invalid`
+* `invalid_percent` 
 
-`duplicates` will store a table of value / frequency for all value combinations with frequency greater than 1 for diagnostic purposes.
+For the `duplicates` metric, Soda Core store a table of value / frequency for all value combinations with frequency greater than one.
 
-Using the open source Soda Core only, it is still possible to log the failed rows on the console.
+Using Soda Core only, you can still log the failed rows on the console.
+
+## Go further
+
+* Use missing and validity checks with [table filters]({% link soda-cl/table-filters.md %}).
+* Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.
 
 ---
 {% include docs-footer.md %}
