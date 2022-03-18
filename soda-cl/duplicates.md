@@ -25,7 +25,7 @@ checks for CUSTOMERS:
 
 ### Notes
 
-* You cannot use `duplicate_count` with table filters.
+* You cannot use `duplicate_count` with filters.
 * If you have defined global column configurations for missing and valid values, you cannot use `duplicate_count` to check for those globally-configured values in columns in a table.
 
 ---
