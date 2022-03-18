@@ -110,16 +110,16 @@ Read more about [Validity rules]({% link soda/metrics.md %}#column-configuration
 1. When you have completed the guided steps to create a monitor, run another Soda Core scan on the dataset associated with the monitor.
 2. After the Soda Core scan completes, return to **Monitor Results** in Soda Cloud and refresh your browser. Click the monitor results associated with the monitor you created to access details of the scan results.
 3. Check your Slack channel or email inbox; when a scan surfaces data that triggers your alert(s), Soda Cloud sends notifications according to the settings you defined when you created the monitor.
+
   </div>
   <div class="panel" id="two-panel" markdown="1">
-In Soda Cloud, you can only create new monitors and alerts for datasets connected to an instance of Soda SQL.
 
-You cannot create monitors for datasets connected to an instance of **Soda Core (Beta)**, yet. 
+In Soda Cloud, you can only create new monitors and alerts for datasets connected to an instance of Soda SQL; you cannot create monitors for datasets connected to Soda Core (Beta), yet. 
 
-Instead, you can use **SodaCL (Beta)** to write checks in a checks YAML file for Soda Core to execute during a scan. You can connect Soda Core to your Soda Cloud account to see the check results after each scan. 
+Instead, you can use SodaCL (Beta) to write checks in a checks YAML file for Soda Core to execute during a scan. You can connect Soda Core to your Soda Cloud account to see the check results after each scan. 
 
-[Soda Core (Beta) documentation]({% link soda-core/overview.md %})<br />
-[SodaCL (Beta) documentation]({% link soda-cl/soda-cl-overview.md %})
+<a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />
+<a href="https://docs.soda.io/soda-cl/soda-cl-overview.html" target="_blank">SodaCL (Beta) documentation</a>
 
 ## Edit checks in Soda Cloud
 

@@ -10,6 +10,16 @@ redirect_from: /soda-sql/documentation/anomaly-detection.html
 
 In Soda Cloud, you can create a monitor that automatically detects anomalies in your time-series data. 
 
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda SQL</label>
+  <label class="tab" id="two-tab" for="two">Soda Cloud with Soda Core (Beta)</label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
 **Anomaly detection** is a [monitor]({% link soda/glossary.md %}#monitor) **Evaluation Type** powered by a machine learning algorithm that works with [measurements]({% link soda/glossary.md %}#measurement) that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalous measurements in time-series data. Seasonality is a term that describes a common pattern of time-series data and means "something cyclical, irrespecitve of the general direction of the data". For example, the number of orders that occur on your platform might show a clear drop during the weekend, or peak during the holiday season, irrespecitve of whether your platform is growing or not.
 
 ![anomaly-detection](/assets/images/anomaly-detection.png){:height="700px" width="700px"}
@@ -42,6 +52,20 @@ When you access the **Monitors** dashboard to review the monitor's test results,
 
 Currently, Soda's time-series anomaly detection uses the <a href=""https://facebook.github.io/prophet/docs/quick_start.html target="_blank"> Facebook Prophet Python library</a> to learn about time-series data with strong seasonality patterns. Prophet learns and predicts the shape of the data and outputs confidence-bounds between which it thinks 99% of the data should fall.
 -->
+
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
+Anomaly detection monitors are unavailable for datasets added to Soda Cloud via Soda Core (Beta).
+
+Soon, you will be able to use Soda Cloud to set up anomaly detection on datasets added via Soda Core. 
+
+<a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />
+
+  </div>
+  </div>
+</div>
 
 ## Go further
 

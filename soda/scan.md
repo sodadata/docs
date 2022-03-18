@@ -10,6 +10,16 @@ redirect_from: /soda-sql/documentation/scan.html
 
 A **scan** is a command that executes [tests]({% link soda/glossary.md %}#test) to extract information about data in a [dataset]({% link soda/glossary.md %}#dataset).
 
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Soda SQL</label>
+  <label class="tab" id="two-tab" for="two">Soda Core (Beta)</label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
 Soda SQL uses the input in the scan YAML file and Soda Cloud monitors to prepare SQL queries that it runs against the data in a dataset. All tests return true or false; if true, the test passed and you know your data is sound; if false, the test fails which means the scan discovered data that falls outside the expected or acceptable parameters you defined in your test.
 
 [Run a scan in Soda SQL](#run-a-scan-in-soda-sql)<br />
@@ -89,6 +99,18 @@ soda scan -t 2021-04-28T09:00:00+02:00 warehouse.yml tables/orders.yml
 ```
 
 See [Add scan option](#add-scan-options) for more scan options.
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+**Soda Core (Beta)** is a free, open-source, command-line tool that enables you to use the **Soda Check Language (Beta)** to turn user-defined input into aggregated SQL queries.
+
+Access the <a href="https://docs.soda.io/soda-core/scan-reference.html" target="_blank">Soda Core (Beta) documentation</a> to learn more about scans in Soda Core.
+
+  </div>
+  </div>
+</div>
+
+
 
 ## Go further
 

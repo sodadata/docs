@@ -67,7 +67,7 @@ A metric to use in Soda SQL tests which rely on historic measurements stored in 
 ### metric
 {% include glossary-metric.md %}
 
-#### metric store
+### metric store
 The component in Soda Cloud that stores metric measurements. This component facilities the visualization of changes to your data over time.
 
 ### monitor
@@ -82,8 +82,17 @@ A setting you configure in a Soda Cloud monitor that defines whom to notify when
 ### scan YAML
 {% include glossary-scan-yaml.md %}
 
+### SodaCL (Beta)
+The domain-specific language to define Soda Checks in a checks YAML file. A Soda Check is a test that Soda Core (Beta) executes when it scans a dataset in your data source. See <a href="https://docs.soda.io/soda-cl/soda-cl-overview.html" target="_blank">SodaCL documentation</a>.
+
 ### Soda Cloud
 A web application that enables you to examine scan results and create monitors and alerts. Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup). If you also use Soda SQL, you can [connect Soda SQL to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}).
+
+### Soda Core (Beta)
+A free, open-source, command-line tool that enables you to use the Soda Check Language (Beta) to turn user-defined input into aggregated SQL queries. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. See <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core documentation</a>.
+
+### Soda Spark
+Soda Spark is an extension of Soda SQL that allows you to run Soda SQL functionality programmatically on a <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark dataframe</a>.
 
 ### Soda SQL
 An open-source command-line tool that scans the data in your data source. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. Start by [installing Soda SQL]({% link soda-sql/installation.md%}).

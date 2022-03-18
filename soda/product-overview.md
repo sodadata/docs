@@ -26,13 +26,33 @@ Get started with the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_
 
 ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="175px" width="175px"}
 
-**Soda Cloud** is the web application that connects to your data source, aggregates all metrics and tests, and enables your teammates to add even more. Log in to the web app to examine the visualized results of scans, view historical scan data, and set up alerts that automatically notify your team when there is an issue with your data.
+**Soda Cloud** is the web application that connects to your instance of Soda Core (Beta) or Soda SQL, aggregates all metrics and tests for data quality, and enables your teammates to add even more. Log in to the web app to examine the visualized results of scans, view historical scan data, and, with Soda SQL, set up alerts that automatically notify your team when there is an issue with your data.
 
-Soda SQL uses a secure API to connect to Soda Cloud. When it completes a scan, it pushes the scan results to your Soda Cloud account where you can log in and examine the details in the web application.
+Soda Core and Soda SQL use a secure API to connect to Soda Cloud. When Soda Core or Soda SQL completes a scan, it pushes the scan results to your Soda Cloud account where you can log in and examine the details in the web application. 
 
 Beyond increasing the observability of your data, Soda Cloud enables you to automatically detect anomalies, and view samples of the rows that failed a test during a scan. Integrate Soda Cloud with your Slack workspace to collaborate with your team on data monitoring.
 
-Get started with the [Quick start tutorial for Soda Cloud]({% link soda-cloud/quick-start.md %}).
+<br />
+
+![soda-cl-logo](/assets/images/sodacl-logo.png){:height="140px" width="140px"} 
+
+**Soda Checks Language (Beta)** is a domain-specific language for data reliability. 
+
+You use SodaCL to define Soda Checks in a checks YAML file. A Soda Check is a test that Soda Core (Soda's open-source, command-line tool) executes when it scans a dataset in your data source. Technically, a check is a Python expression that, during a scan, checks metrics to see if they match the parameters you defined for a measurement. 
+
+Designed as a human-readable language, SodaCL includes over 30 built-in metrics that you can use to write Soda Checks for data quality, including metrics for freshness, duplicates, missing values, and schema changes. Available for use with Soda Core, SodaCL enables Data Engineers and Analysts to collaborate to establish and maintain good-quality data.
+
+Access the <a href="https://docs.soda.io/soda-cl/soda-cl-overview.html" target="_blank">SodaCL documentation</a>.
+
+<br />
+
+![soda-core-logo](/assets/images/soda-core-logo.png){:height="170px" width="170px"}
+
+**Soda Core (Beta)** is a free, open-source, command-line tool that enables you to use the **Soda Check Language (Beta)** to turn user-defined input into aggregated SQL queries. When it runs a scan on a dataset, Soda Core executes the checks to find invalid, missing, or unexpected data. When your Soda Checks fail, they surface the data that you defined as "bad".
+
+Connect Soda Core to your data source (Snowflake, Postgres, and more), then define your Soda Checks for data quality in a checks YAML file. Use Soda Core to run scans of your data to execute the checks you defined. Read more about installing and using Soda Core.
+
+Access the <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core documentation</a>.
 
 ## Compare features and functionality
 
