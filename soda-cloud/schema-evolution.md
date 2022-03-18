@@ -43,7 +43,7 @@ In Soda Cloud, you can only create new schema evolution monitors for datasets co
 Instead, you can use SodaCL (Beta) to write <a href="https://docs.soda.io/soda-cl/schema.html" target="_blank">schema check</a> in a <a href="https://docs.soda.io/soda-core/first-scan.html#the-checks-yaml-file" target="_blank">checks YAML file</a><br /> for Soda Core to execute during a scan. You can <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connect</a> Soda Core to your Soda Cloud account to see the check results after each scan. 
 
 <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />
-<a href="https://docs.soda.io/soda-cl/soda-cl-overview.html" target="_blank">SodaCL (Beta) documentation</a>
+[SodaCL documentation]({% link soda-cl/soda-cl-overview.md %})
 
   </div>
   </div>

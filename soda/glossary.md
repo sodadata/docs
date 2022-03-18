@@ -83,7 +83,7 @@ A setting you configure in a Soda Cloud monitor that defines whom to notify when
 {% include glossary-scan-yaml.md %}
 
 ### SodaCL (Beta)
-The domain-specific language to define Soda Checks in a checks YAML file. A Soda Check is a test that Soda Core (Beta) executes when it scans a dataset in your data source. See <a href="https://docs.soda.io/soda-cl/soda-cl-overview.html" target="_blank">SodaCL documentation</a>.
+The domain-specific language to define Soda Checks in a checks YAML file. A Soda Check is a test that Soda Core (Beta) executes when it scans a dataset in your data source. See [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %}).
 
 ### Soda Cloud
 A web application that enables you to examine scan results and create monitors and alerts. Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup). If you also use Soda SQL, you can [connect Soda SQL to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}).

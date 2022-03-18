@@ -2,7 +2,7 @@
 layout: default
 title: For each checks
 description: 
-sidebar: cl
+
 parent: SodaCL
 ---
 

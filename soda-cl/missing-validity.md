@@ -2,7 +2,7 @@
 layout: default
 title: Missing and validity checks
 description:
-sidebar: cl 
+ 
 parent: SodaCL
 ---
 

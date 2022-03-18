@@ -2,7 +2,7 @@
 layout: default
 title: Quotes
 description:
-sidebar: cl 
+ 
 parent: SodaCL
 ---
 

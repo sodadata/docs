@@ -2,7 +2,7 @@
 layout: default
 title: Metrics and thresholds
 description: 
-sidebar: cl
+
 parent: SodaCL
 ---
 

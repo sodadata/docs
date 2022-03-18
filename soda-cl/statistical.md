@@ -2,7 +2,7 @@
 layout: default
 title: Statistical checks
 description: 
-sidebar: cl
+
 parent: SodaCL
 ---
 

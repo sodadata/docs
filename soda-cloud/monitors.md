@@ -119,7 +119,7 @@ In Soda Cloud, you can only create new monitors and alerts for datasets connecte
 Instead, you can use SodaCL (Beta) to write checks in a checks YAML file for Soda Core to execute during a scan. You can connect Soda Core to your Soda Cloud account to see the check results after each scan. 
 
 <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />
-<a href="https://docs.soda.io/soda-cl/soda-cl-overview.html" target="_blank">SodaCL (Beta) documentation</a>
+[SodaCL documentation]({% link soda-cl/soda-cl-overview.md %})
 
 ## Edit checks in Soda Cloud
 

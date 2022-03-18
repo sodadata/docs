@@ -2,7 +2,7 @@
 layout: default
 title: Table filters
 description: 
-sidebar: cl
+
 parent: SodaCL
 ---
 

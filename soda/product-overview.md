@@ -42,7 +42,7 @@ You use SodaCL to define Soda Checks in a checks YAML file. A Soda Check is a te
 
 Designed as a human-readable language, SodaCL includes over 30 built-in metrics that you can use to write Soda Checks for data quality, including metrics for freshness, duplicates, missing values, and schema changes. Available for use with Soda Core, SodaCL enables Data Engineers and Analysts to collaborate to establish and maintain good-quality data.
 
-Access the <a href="https://docs.soda.io/soda-cl/soda-cl-overview.html" target="_blank">SodaCL documentation</a>.
+Access the [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %}).
 
 <br />
 
