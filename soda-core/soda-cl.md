@@ -10,7 +10,7 @@ parent: Soda Core
 
 Soda Checks Language (SodaCL) is YAML-based, domain-specific language for data reliability.
 
-Access the <a href="/soda-cl/automated-monitoring.html" target="_blank">SodaCL documentation</a> for details.
+Access the <a href="/soda-cl/soda-cl-overview.html" target="_blank">SodaCL documentation</a> for details.
 
 
 

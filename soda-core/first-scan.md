@@ -127,7 +127,7 @@ Scan summary:
 All is good. No failures. No warnings. No errors.
 ```
 
-Note that normally, you do not need to include an explicit reference to the `-c configuration.yml` in your scan command. This demo database requires an explicit filepath for the file. See [Scan reference]({% link soda-core/scan-reference.md %})
+Note that normally, you do not need to include an explicit reference to the `-c configuration.yml` in your scan command. This demo database requires an explicit filepath for the file. See [Scan reference]({% link soda-core/scan-reference.md %}).
 
 ## Experiment with more checks
 
@@ -142,10 +142,10 @@ open checks.yml
 
 #### Examples
 
-Check that a value is present in another table:
+Check that values in one column in a table are present in another table's column:
 ```yaml
-checks for dim_employee:
-  - values in employee_key must exist in fact_sales_quota employee_key
+checks for CUSTOMERS:
+  - values in employee_key must exist in SALES_QUOTA employee_key
 ```
 
 Issue a warning if expected columns in a table are missing:
@@ -158,7 +158,7 @@ checks for CUSTOMERS:
 
 Check for valid values in a column in a table:
 ```yaml
-checks for CUSTOMERS:
+checks for PRODUCT:
   - invalid_percent(color) < 1%:
       valid values:
         - red
