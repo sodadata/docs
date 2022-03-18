@@ -10,7 +10,7 @@ parent: SodaCL
 
 A freshness check measures the age of the youngest row in a table. You can infer data freshness according to the age of the most recently added row in a table. If, for example, you use the data in a table to prepare a daily report at 9:00am, you can run a scan to check for freshness immediately before 9:00am to ensure that the report uses good-quality data.
 
-The following example checks if the most recently added row in the `CUSTOMERSion` table was added no later than one day ago. 
+The following example checks if the most recently added row in the `CUSTOMERS` table was added no later than one day ago. 
 
 Checks.yml:
 ```yaml
