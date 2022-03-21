@@ -2,7 +2,6 @@
 layout: default
 title: Distribution checks
 description: 
-sidebar: cl
 parent: SodaCL
 ---
 

@@ -6,7 +6,8 @@ sidebar: core
 parent: Soda Core (Beta)
 ---
 
-# Use variables in Soda Core ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Use variables in Soda Core 
+![beta](/assets/images/beta.png){:height="50px" width="50px"}
 
 Use **variables** in your `checks.yml` file to resolve credentials in configuration files, or to define dynamic filters.
 

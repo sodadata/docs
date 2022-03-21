@@ -34,7 +34,7 @@ Beyond increasing the observability of your data, Soda Cloud enables you to auto
 
 <br />
 
-![soda-cl-logo](/assets/images/sodacl-logo.png){:height="140px" width="140px"} 
+![soda-cl-logo](/assets/images/sodacl-logo.png){:height="130px" width="130px"} 
 
 **Soda Checks Language (Beta)** is a domain-specific language for data reliability. 
 
@@ -46,7 +46,7 @@ Access the [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %}).
 
 <br />
 
-![soda-core-logo](/assets/images/soda-core-logo.png){:height="170px" width="170px"}
+![soda-core-logo](/assets/images/soda-core-logo.png){:height="160px" width="160px"}
 
 **Soda Core (Beta)** is a free, open-source, command-line tool that enables you to use the **Soda Check Language (Beta)** to turn user-defined input into aggregated SQL queries. When it runs a scan on a dataset, Soda Core executes the checks to find invalid, missing, or unexpected data. When your Soda Checks fail, they surface the data that you defined as "bad".
 

@@ -6,7 +6,10 @@ sidebar: core
 parent: Soda Core (Beta)
 ---
 
-# Release notes for Soda Core ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Release notes for Soda Core 
+
+
+![beta](/assets/images/beta.png){:height="50px" width="50px"}
 
 {% assign notes = site.release-notes | where_exp:"item","item.products contains 'soda-core'" | sort:"date" | reverse %}
 {% for release-note in notes %}
