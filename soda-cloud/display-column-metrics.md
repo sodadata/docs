@@ -7,6 +7,16 @@ parent: Soda Cloud
 
 # Display column metrics
 
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda SQL</label>
+  <label class="tab" id="two-tab" for="two">Soda Cloud with Soda Core (Beta)</label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
 Using the information Soda SQL discovered about your [datasets]({% link soda/glossary.md %}#dataset), you can optionally instruct it to capture and send **column metrics** to Soda Cloud for individual datasets during the next [scan]({% link soda/scan.md %}). Enabling column metrics gives you at-a-glance information about your datasets in the **Datasets** dashboard and in the dataset's **Column** tab, as in the images below. 
 
 Datasets dashboard
@@ -21,6 +31,19 @@ A dataset's **Columns** tab
 3. When prompted, check the box to **Enable Column Metrics**, then save. 
 
 During the next scan of your dataset, Soda SQL captures and sends column metrics for each dataset to Soda Cloud where you can access the information in the **Dataset** dashboard and in the dataset's **Column** tab. Use the column metrics to help you make informed choices when you [create a new monitor]({% link soda-cloud/monitors.md %}).
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
+Column profile information is unavailable for datasets added to Soda Cloud via Soda Core (Beta).
+
+Soon, you will be able to configure Soda Core to automatically send column profile information to your Soda Cloud account. 
+
+<a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />
+
+  </div>
+  </div>
+</div>
 
 
 ## Go further

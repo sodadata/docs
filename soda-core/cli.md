@@ -3,10 +3,10 @@ layout: default
 title: Use Soda Core CLI
 description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Soda Core (Beta)
 ---
 
-# Use Soda Core CLI
+# Use Soda Core CLI ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 To see a list of Soda Core command-line interface (CLI) commands, use the `soda` command.
 

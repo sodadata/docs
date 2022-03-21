@@ -28,6 +28,7 @@ parent: Soda Cloud
                     <h2>Sign up</h2>
                     <a href="https://cloud.soda.io/signup" target="_blank">Sign up for Soda Cloud</a>
                     <a href="/soda-cloud/connect_to_cloud.html" target="_blank">Connect to Soda SQL</a>
+                    <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">Connect to Soda Core (Beta)</a>
                 </div>
                  <div>
                     <img src="/assets/images/icons/icon-collaboration@2x.png" width="54" height="40">

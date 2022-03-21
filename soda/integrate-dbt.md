@@ -9,6 +9,16 @@ parent: Integrate
 
 Integrate Soda with dbt to access dbt test results from within your Soda Cloud account.
 
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Soda SQL</label>
+  <label class="tab" id="two-tab" for="two">Soda Core (Beta)</label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
 Use Soda SQL to ingest the results of your dbt tests and push them to Soda Cloud so you can leverage features such as:
 * visualizing your data quality over time
 * setting up notifications for your team when tests fail
@@ -124,6 +134,20 @@ After completing the steps above to ingest dbt tests, log in to your Soda Cloud 
 * Click the stacked dots at the far right of a dbt monitor result, then select **Create Incident** to begin [investigating a data quality issue]({% link soda-cloud/incidents.md %}) with your team.
 * Click the stacked dots at the far right of a dbt monitor result, then select **Edit Monitor** to set up a [notification]({% link soda-cloud/monitors.md %}#3-notifications) that Soda Cloud sends when the dbt test fails. Send notifications to an individual or a team in [Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack).
 
+Refer to image above for an example.
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
+The integration with dbt is not available for **Soda Core (Beta)**, yet.
+
+Soda Core (Beta) is a free, open-source, command-line tool that enables you to use the Soda Check Language (Beta) to turn user-defined input into aggregated SQL queries.
+
+<a href="https://docs.soda.io/soda-core/scan-reference.html" target="_blank">Soda Core (Beta) documentation</a> 
+
+  </div>
+  </div>
+</div>
 
 ## Go further
 

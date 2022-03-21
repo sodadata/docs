@@ -7,6 +7,16 @@ parent: Soda
 
 # Metrics
 
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Soda SQL</label>
+  <label class="tab" id="two-tab" for="two">SodaCL (Beta)</label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
 A **metric** is a property of the data in your database. A **measurement** is the value for a metric that Soda checks against during a scan. You use metrics to define the tests that Soda executes against your data during a scan. 
 
 For example, in the [test]({% link soda/glossary.md %}#test) defined as `row_count > 0`, `row_count` is the metric and `0` is the measurement. When it runs a scan, Soda executes the test against your [dataset]({% link soda/glossary.md %}#dataset); if the row count is greater than `0`, the test passes; if the dataset is empty, the test fails.
@@ -65,6 +75,20 @@ Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.
 ## Historic metrics
 
 {% include historic-metrics.md %}
+
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
+You use **Soda Checks Language (Beta)** to define Soda Checks in a checks YAML file. A Soda Check is a test that **Soda Core (Beta)**, Soda's open-source, command-line tool, executes when it scans a dataset in your data source.
+
+Access the [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %}) to learn more about metrics in SodaCL.
+
+
+  </div>
+  </div>
+</div>
+
 
 ## Go further
 

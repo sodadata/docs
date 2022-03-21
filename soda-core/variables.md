@@ -3,10 +3,11 @@ layout: default
 title: Use variables in Soda Core
 description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Soda Core (Beta)
 ---
 
-# Use variables in Soda Core
+# Use variables in Soda Core 
+![beta](/assets/images/beta.png){:height="50px" width="50px"}
 
 Use **variables** in your `checks.yml` file to resolve credentials in configuration files, or to define dynamic filters.
 

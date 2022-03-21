@@ -10,9 +10,6 @@
 - title: Duplicate checks
   page: soda-cl/duplicates.md
 
-- title: Statistical checks
-  page: soda-cl/statistical.md
-
 - title: Metrics and thresholds
   page: soda-cl/metrics-thresholds.md
 

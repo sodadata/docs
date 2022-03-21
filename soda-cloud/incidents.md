@@ -7,6 +7,16 @@ parent: Soda Cloud
 
 # Create and track Incidents
 
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda SQL</label>
+  <label class="tab" id="two-tab" for="two">Soda Cloud with Soda Core (Beta)</label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
 When you [create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud, you have the option of adding a Warning or Critical alert to notify you when a data quality test fails. You can respond to the notification by creating an **Incident** in Soda Cloud to track your team's investigation and resolution of the data quality issue. 
 
 If you have integrated your Soda Cloud account with a Slack workspace, you can use an Incident's built-in ability to create an incident-specific Slack channel where you and your team can collaborate on the issue investigation. When you resolve or close the incident, Soda archives the channel for future troubleshooting reference.
@@ -33,6 +43,22 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 * As your team works through the investigation of an Incident, use the Incident's **Status** field to keep track of your progress. 
 * In the **Incidents** dashboard, review all Incidents, their severity and status, and the assigned lead. Sort the list of Incidents by severity.
 * From an Incident's page, link other monitor results to the same Incident to expand the investigation landscape.
+
+Do you have a suggestion about how to expand Soda Incidents? <a href="http://community.soda.io/slack" target="_blank"> Let us know!</a>
+
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
+In Soda Cloud, you can only create new Indidents for check results associated with datasets connected to an instance of Soda SQL; you cannot create Incidents for datasets connected to Soda Core (Beta), yet. 
+
+Soon, you will be able to use all the Soda Cloud features with Soda Core (Beta) datasets. 
+
+<a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />
+
+  </div>
+  </div>
+</div>
 
 
 ## Go further

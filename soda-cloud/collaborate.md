@@ -47,6 +47,7 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 
 * Share a [filtered view of your datasets]({% link soda-cloud/organize-datasets.md %}) with colleagues by sharing the URL of your narrowed search. 
 * [Connect]({% link soda-cloud/connect_to_cloud.md %}) Soda SQL to your Soda Cloud account.
+* <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">Connect</a> Soda Core (Beta) to your Soda Cloud account.
 * [Create an alert]({% link soda-cloud/monitors.md %}) to send Slack notifications when a scan surfaces a data issue.
 * [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

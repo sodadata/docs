@@ -12,7 +12,7 @@ Soda works in several ways to ensure your data and systems remain private.
 
 ## Making secure connections
 
-Installed in your environment, you use the Soda SQL command-line tool to securely connect to a [data source]({% link soda/glossary.md %}#data-source) using [environment variables]({% link soda-sql/warehouse.md %}#env_vars-yaml-file) to store login credentials.
+Installed in your environment, you use the Soda SQL or Soda Core (Beta) command-line tools to securely connect to a data source using environment variables to store login credentials.
 
 {% include nat-gateway.md %}
 
@@ -22,9 +22,9 @@ Organizations that use a SAML 2.0 single sign-on (SSO) identity provider can add
 
 ## Sending data to Soda Cloud
 
-Soda SQL uses a secure API to connect to Soda Cloud. When it completes a scan, it pushes the scan results to your Soda Cloud account where you can log in and examine the details in the web application.
+Soda SQL and Soda Core (Beta) use a secure API to connect to Soda Cloud. When Soda SQL or Soda Core completes a scan, it pushes the scan results to your Soda Cloud account where you can log in and examine the details in the web application.
 
-Notably, your Soda Cloud account does *not* store the raw data that Soda SQL scans. Soda SQL pushes metadata to Soda Cloud; by default all your data stays inside your private network.
+Notably, your Soda Cloud account does *not* store the raw data that Soda SQL or Soda Core scans. Soda SQL pushes metadata to Soda Cloud; by default all your data stays inside your private network.
 
 Soda Cloud does store the following:
 * metadata, such as column names

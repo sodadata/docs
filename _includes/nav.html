@@ -6,13 +6,7 @@
     {% else %}
     {% assign navlist = site.data.nav %}
     {% endif %}
- 
 
-    {% if page.sidebar == "cl" %}
-    {% assign navlist = site.data.navcl %}
-    {% else %}
-    {% assign navlist = site.data.nav %}
-    {% endif %}
 
     {% for nav in navlist %}
     {% if nav.subcategories != null %}

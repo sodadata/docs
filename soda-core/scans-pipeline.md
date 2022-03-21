@@ -3,14 +3,16 @@ layout: default
 title: Add scans to a pipeline
 description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Soda Core (Beta)
 ---
 
-# Add scans to a pipeline
+# Add scans to a pipeline ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-! This page is a work in progress.
+Integrate Soda Core with a **data orchestration tool** such as, Airflow, to automate and schedule your search for "bad" data. 
 
-## Airflow
+Configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically block "bad" data from contaminating your data pipeline.
+
+## Apache Airflow
 
 ```python
 soda_sql_scan_op = SodaScanOperator(
@@ -31,11 +33,13 @@ soda_sql_scan_op = SodaScanOperator(
 )
 ```
 
-* `data_sources` maps data_source names to the the details needed to create a data_source from an airflow connection
-* `soda_cl_path` is a file or directory containing the SodaCL file(s) passed to the scan.
-* `variables` is a dict and that is passed as-is to the scan
-* `airflow_variables` is a list of airflow variable names that should be propagated to soda scan variables with `Variable.get("varname")`
-* `airflow_variables_json` is a list of airflow variable names that should be propagated to soda scan variables with `Variable.get("varname", deserialize_json=True)`
+* `data_sources` maps data_source names to the the details Soda Core needs to create a data_source from an Airflow connection.
+* `soda_cl_path` is a file or directory containing the [checks.yml files]({% link soda-core/first-scan.md %}#the-checks-yaml-file) that you must identify in a `soda scan` command.
+* `variables` is a dict and that Soda Core passe "as is" to the scan.
+* `airflow_variables` is a list of Airflow variable names that must propagate to `soda scan` variables with `Variable.get("varname")`.
+* `airflow_variables_json` is a list of Airflow variable names that must propagate to `soda scan` variables with `Variable.get("varname", deserialize_json=True)`
+
+## Apache Airflow using PythonOperator
 
 ```python
 class SodaScanOperator(PythonOperator):
@@ -111,14 +115,6 @@ class SodaAirflow:
         scan.assert_no_error_logs()
         scan.assert_no_checks_fail()
 ```
-
-
-## Prefect
-
-
-## Dagster
-
-
 
 
 ---

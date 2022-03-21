@@ -10,7 +10,7 @@ redirect_from: /soda-sql/documentation/troubleshoot.html
 
 Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
-## Install and upgrade
+## Install and upgrade Soda SQL
 
 {% include troubleshoot-install.md %}
 <br />
@@ -19,7 +19,7 @@ Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> So
 {% include troubleshoot-soda-analyze.md %}
 <br />
 
-## Scans and tests
+## Scans and tests with Soda SQL
 
 {% include troubleshoot-tests.md %}
 <br />
@@ -28,7 +28,7 @@ Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> So
 {% include troubleshoot-historic-metrics.md %}
 <br />
 
-## Data source connections
+## Data source connections with Soda SQL
 
 {% include troubleshoot-warehouses.md %}
 <br />

@@ -2,11 +2,10 @@
 layout: default
 title: Metrics and thresholds
 description: 
-sidebar: cl
-parent: SodaCL
+parent: SodaCL (Beta)
 ---
 
-# Metrics and thresholds
+# Metrics and thresholds ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 This section explains the general principles of how to compose checks using metrics.
 
@@ -50,13 +49,39 @@ For example, in the check defined as `row_count > 0`, `row_count` is the metric,
 | `var_pop` | column name | The calculated population variance of the values in a numeric column. | PostgreSQL |
 | `var_samp` | column name | The calculated sample variance of the values in a numeric column.| PostgreSQL |
 
+<br />
+
+#### Example checks with numeric metrics
+
+<br />
+Checks available for all [Soda Core-supported data sources]({% link soda-core/get-started.md %}#install-the-soda-core-cli):
+
+```yaml
+checks for CUSTOMERS:
+  - min(size) >= 0
+  - max(size) <= 5000
+  - avg(size) between 100 and 1000
+  - sum(market_share_pct) = 100
+```
+
+Checks available with PostgreSQL:
+```yaml
+checks for CUSTOMERS:
+  - stddev(size) between 3 and 4
+  - stddev_pop(size) between 3 and 4
+  - stddev_samp(size) between 3 and 4
+  - variance(size) between 9 and 11
+  - var_pop(size) between 9 and 11
+  - var_samp(size) between 9 and 11
+  - percentile(distance, 0.95) > 500
+```
 
 ## Fixed thresholds and boundaries
 
 The following example lists multiple ways to use set thresholds for the `row_count` metric in checks. You can use any numeric metrics in lieu of `row_count`.
 
 ```yaml
-checks for {table_name}:
+checks for CUSTOMERS:
   - row_count = 10.0
   - row_count < 11
   - row_count > 9

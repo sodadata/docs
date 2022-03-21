@@ -2,11 +2,11 @@
 layout: default
 title: Missing and validity checks
 description:
-sidebar: cl 
-parent: SodaCL
+ 
+parent: SodaCL (Beta)
 ---
 
-# Missing and validity checks
+# Missing and validity checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 A check for missing, valid, or invalid values surfaces unexpected or missing data.
 
@@ -167,7 +167,7 @@ checks for CUSTOMERS:
 ```
 
 * Percentage metrics are between 0 and 100, not between 0 and 1.
-* If you wish, you can add a `%` to the threshold value for improved readability. `missing_percent(name) < 1%` is equivalent to `- missing_percent(name) < 1`.
+* If you wish, you can add a `%` character to the threshold value for improved readability. `missing_percent(name) < 1%` is equivalent to `- missing_percent(name) < 1`.
 
 
 
@@ -187,7 +187,7 @@ configurations for CUSTOMERS:
 
 ### Global configurations and aggregation checks
 
-Globally defined values for missing or valid do not have an effect on aggregation checks. For example, if you globally define `0` as a missing value for a column named `value`, SodaCL still uses `0` when calculating the following aggregation check:
+Globally defined values for missing or valid do not have an effect on aggregation checks. For example, if you globally define `0` as a missing value for a column named `value`, SodaCL still uses `0` when calculating the following aggregation check.
 
 ```yaml
 checks for CUSTOMERS:
@@ -202,7 +202,7 @@ For example, if you reference column `"size"` in a global column configurations,
 
 ### Local versus global configurations
 
-The following example configures what qualifies as missing or valid values locally. 
+The following example configures what qualifies as missing or valid values locally, within an individual check. 
 
 ```yaml
 checks for CUSTOMERS:
@@ -225,7 +225,7 @@ checks for CUSTOMERS:
       valid length: 7
 ```
 
-The following example defines the same checks, but the checks refer to globally configured values for missing and valid. 
+The following example defines the same checks, but the checks refer to globally configured values for missing and valid in the `configurations for` section. 
 
 ```yaml
 checks for CUSTOMERS:
@@ -262,7 +262,7 @@ When you use one of the follow metrics in your checks, Soda Core autmoatically s
 
 For the `duplicates` metric, Soda Core store a table of value / frequency for all value combinations with frequency greater than one.
 
-Using Soda Core only, you can still log the failed rows on the console.
+Using Soda Core without Soda Cloud, you can still log the failed rows on the console.
 
 ## Go further
 

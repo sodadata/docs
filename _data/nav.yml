@@ -105,6 +105,36 @@
   - subtitle: Single sign-on with Soda Cloud
     page: soda-cloud/sso.md
 
+- title: SodaCL (Beta)
+  page: soda-cl/soda-cl-overview.md
+  subcategories:
+  - subtitle: SodaCL (Beta) overview
+    page: soda-cl/soda-cl-overview.md
+  - subtitle: Row count checks
+    page: soda-cl/row-count.md
+  - subtitle: Missing and validity checks
+    page: soda-cl/missing-validity.md
+  - subtitle: Duplicate checks
+    page: soda-cl/duplicates.md
+  - subtitle: Metrics and thresholds
+    page: soda-cl/metrics-thresholds.md
+  - subtitle: Schema checks
+    page: soda-cl/schema.md
+  - subtitle: Reference checks
+    page: soda-cl/reference.md
+  - subtitle: Freshness checks
+    page: soda-cl/freshness.md
+  - subtitle: User-defined checks
+    page: soda-cl/user-defined.md
+  - subtitle: For each checks
+    page: soda-cl/for-each.md
+  - subtitle: Quotes
+    page: soda-cl/quotes.md
+  - subtitle: Table filters
+    page: soda-cl/table-filters.md
+  - subtitle: Distribution checks
+    page: soda-cl/distribution.md
+
 - title: Integrate Soda
   page: soda/integrate-alation.md
   subcategories:
@@ -150,9 +180,11 @@
   subcategories:
     - subtitle: Soda products
       page: release-notes/all.md
-    - subtitle: Soda SQL
-      page: release-notes/soda-sql.md
-    - subtitle: Soda Spark
-      page: release-notes/soda-spark.md
     - subtitle: Soda Cloud
       page: release-notes/soda-cloud.md
+    - subtitle: Soda Core (Beta)
+      page: release-notes/soda-core.md
+    - subtitle: Soda Spark
+      page: release-notes/soda-spark.md
+    - subtitle: Soda SQL
+      page: release-notes/soda-sql.md
