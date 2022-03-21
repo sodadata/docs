@@ -3,10 +3,10 @@ layout: default
 title: Soda Core community
 description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Soda Core (Beta)
 ---
-
-# Soda Core community
+ 
+# Soda Core community 
 
 For the Soda Core and the free Soda Cloud Developer account, Soda offers free support to the Soda community of users in Slack. Join the <a href="http://community.soda.io/slack" target="_blank">Soda community in Slack</a> to ask and answer questions.
 

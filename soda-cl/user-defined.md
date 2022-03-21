@@ -3,10 +3,10 @@ layout: default
 title: User-defined checks
 description: 
 
-parent: SodaCL
+parent: SodaCL (Beta)
 ---
 
-# User-defined checks
+# User-defined checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 A user-defined check enables you to define elements of a check using SQL expressions or queries.
 

@@ -2,11 +2,10 @@
 layout: default
 title: Metrics and thresholds
 description: 
-
-parent: SodaCL
+parent: SodaCL (Beta)
 ---
 
-# Metrics and thresholds
+# Metrics and thresholds ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 This section explains the general principles of how to compose checks using metrics.
 

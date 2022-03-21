@@ -3,10 +3,10 @@ layout: default
 title: Quotes
 description:
  
-parent: SodaCL
+parent: SodaCL (Beta)
 ---
 
-# Quotes
+# Quotes ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 You can use the quoting style that your data source uses in SodaCL. Soda Core uses the quoting style in the aggregated SQL queries it prepares when it runs a scan. 
 

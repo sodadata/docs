@@ -3,10 +3,10 @@ layout: default
 title: Table filters
 description: 
 
-parent: SodaCL
+parent: SodaCL (Beta)
 ---
 
-# Table filters
+# Table filters ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 It can be time-consuming to check exceptionally large tables for data quality in their entirety. Instead of checking whole tables, you can use table filters to specify a portion of data in a table against which Soda Core executes a check.
 

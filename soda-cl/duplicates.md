@@ -3,10 +3,10 @@ layout: default
 title: Duplicate checks
 description: 
 
-parent: SodaCL
+parent: SodaCL (Beta)
 ---
 
-# Duplicate checks
+# Duplicate checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 Use the `duplicate_count` metric to count the distinct values that occur more than once in a column.
 

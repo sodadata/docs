@@ -3,10 +3,10 @@ layout: default
 title: Get started
 description: 
 sidebar: core
-parent: Soda Core
+parent: Soda Core (Beta)
 ---
 
-# Get started
+# Get started ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 Soda Core is a command-line interface (CLI) tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data.
 

@@ -3,7 +3,7 @@ layout: default
 title: Title of page
 description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Soda Core (Beta)
 ---
 
 # Title

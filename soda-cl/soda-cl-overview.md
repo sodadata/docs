@@ -3,10 +3,10 @@ layout: default
 title: SodaCL (Beta)
 description: 
 
-parent: SodaCL
+parent: SodaCL (Beta)
 ---
 
-# SodaCL (Beta)
+# SodaCL ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 Soda Checks Language is a domain-specific language for data reliability. 
 

@@ -3,10 +3,10 @@ layout: default
 title: Run your first scan
 description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Soda Core (Beta)
 ---
 
-# Run your first scan
+# Run your first scan ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 **Soda Core** is a free, open-source, command-line tool that enables you to use the **Soda Check Language (SodaCL)** to turn user-defined input into aggregated SQL queries. When it runs a scan on a dataset, Soda Core executes the checks to find invalid, missing, or unexpected data. When your **Soda Checks** fail, they surface the data that you defined as "bad".
 

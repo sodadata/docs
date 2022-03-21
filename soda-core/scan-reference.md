@@ -3,10 +3,10 @@ layout: default
 title: Soda Core scan reference
 description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Soda Core (Beta)
 ---
 
-# Soda Core scan reference
+# Soda Core scan reference ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 A **scan** is a command that executes checks to extract information about data in a table.
 

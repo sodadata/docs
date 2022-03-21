@@ -3,10 +3,10 @@ layout: default
 title: Soda Core terminology
 description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Soda Core (Beta)
 ---
 
-# Soda Core terminology
+# Soda Core terminology ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 | Term | Description |
 | ---- | ----------- |

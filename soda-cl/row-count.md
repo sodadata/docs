@@ -3,10 +3,10 @@ layout: default
 title: Row count checks
 description: 
 
-parent: SodaCL
+parent: SodaCL (Beta)
 ---
 
-# Row count checks
+# Row count checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 A row count check validates the number of rows in a table. Row count checks do not apply to columns.
 

@@ -3,10 +3,10 @@ layout: default
 title: For each checks
 description: 
 
-parent: SodaCL
+parent: SodaCL (Beta)
 ---
 
-# For each checks
+# For each checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 You can specify a list of checks on a multiple tables. 
 

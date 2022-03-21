@@ -3,10 +3,10 @@ layout: default
 title: Missing and validity checks
 description:
  
-parent: SodaCL
+parent: SodaCL (Beta)
 ---
 
-# Missing and validity checks
+# Missing and validity checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 A check for missing, valid, or invalid values surfaces unexpected or missing data.
 

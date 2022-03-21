@@ -3,10 +3,10 @@ layout: default
 title: Soda Core overview
 description: 
 sidebar: core
-parent: Soda Core
+parent: Soda Core (Beta)
 ---
 
-# Soda Core overview
+# Soda Core overview ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 Soda Core is a CLI tool and Python library for data reliability.  Soda Core serves as the foundation 
 for Soda Cloud, but you can use it as a stand-alone, open source tool. 

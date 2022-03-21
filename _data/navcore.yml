@@ -31,9 +31,6 @@
 - title: Use Soda Core CLI
   page: soda-core/cli.md
 
-- title: Migrate from Soda SQL
-  page: soda-core/migrate.md
-
 - title: Soda Core terminology
   page: soda-core/terminology.md
 

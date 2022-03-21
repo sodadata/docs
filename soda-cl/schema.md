@@ -3,10 +3,10 @@ layout: default
 title: Schema checks
 description: 
 
-parent: SodaCL
+parent: SodaCL (Beta)
 ---
 
-# Schema checks
+# Schema checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 A schema check validates column presence, absence, or position in a table, or the type of data column contains. SodaCL schema checks are case insensitive for column names.
 

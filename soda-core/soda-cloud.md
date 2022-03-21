@@ -3,10 +3,10 @@ layout: default
 title: Soda Cloud reference
 description: 160 char description
 sidebar: core
-parent: Soda Core
+parent: Soda Core (Beta)
 ---
 
-# Soda Cloud reference
+# Soda Cloud reference ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 Soda Cloud is a web application that connects to Soda Core. It extends Soda Core functionality, giving users the ability to:
 
