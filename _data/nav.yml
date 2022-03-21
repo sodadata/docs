@@ -108,14 +108,14 @@
 - title: SodaCL (Beta)
   page: soda-cl/soda-cl-overview.md
   subcategories:
+  - subtitle: SodaCL (Beta) overview
+    page: soda-cl/soda-cl-overview.md
   - subtitle: Row count checks
     page: soda-cl/row-count.md
   - subtitle: Missing and validity checks
     page: soda-cl/missing-validity.md
   - subtitle: Duplicate checks
     page: soda-cl/duplicates.md
-  - subtitle: Statistical checks
-    page: soda-cl/statistical.md
   - subtitle: Metrics and thresholds
     page: soda-cl/metrics-thresholds.md
   - subtitle: Schema checks

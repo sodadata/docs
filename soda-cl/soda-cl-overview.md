@@ -6,7 +6,7 @@ description:
 parent: SodaCL
 ---
 
-# SodaCL(Beta)
+# SodaCL (Beta)
 
 Soda Checks Language is a domain-specific language for data reliability. 
 

@@ -8,56 +8,71 @@ parent: SodaCL
 
 # Quotes
 
-Use your data_source quoting style in SodaCL. Soda Tools will be pass the used quoting style to the generated SQL queries transparently.
+You can use the quoting style that your data source uses in SodaCL. Soda Core uses the quoting style in the aggregated SQL queries it prepares when it runs a scan. 
 
-For all situations where Soda Tools builds up the query, quotes will be kept as specified in the file.
+## Table name examples
 
-Reference a table (or view) name in SodaCL without quotes like this:
+Write a check referencing a table name *without* quotes in a checks.yml file to produce a SQL query that references the table name without quotes.
+
+checks.yml
 ```yaml
 checks for CUSTOMERS:
   - row_count > 0
 ```
 
-will lead to queries like
+SQL query
 ```sql
 SELECT
   COUNT(*)
 FROM CUSTOMERS
 ```
 
-And when you add quotes to table names in SodaCL like this:
+<br />
+
+Write a check referencing a table name *with* quotes in a checks.yml file to produce a SQL query that references the table name with quotes.
+
+checks.yml
 ```yaml
 checks for "CUSTOMERS":
   - row_count > 0
 ```
 
-it will lead to quoted table name in the generated queries like this:
+SQL query
 ```sql
 SELECT
   COUNT(*)
 FROM "CUSTOMERS"
 ```
 
-It is similar for columns. When referring to column names without quotes like this,
+## Column name examples
+
+Write a check referencing a column name *without* quotes in a checks.yml file to produce a SQL query that references the column name without quotes.
+
+checks.yml
 ```yaml
 checks for CUSTOMERS:
   - missing(id) = 0
 ```
 
-the column names in the generated queries will not be quoted:
+SQL query
 ```sql
 SELECT
   COUNT(CASE WHEN id IS NULL THEN 1 END)
 FROM CUSTOMERS
 ```
 
-And quoting the column name in SodaCL like this:
+<br />
+
+Write a check referencing a column name *with* quotes in a checks.yml file to produce a SQL query that references the column name with quotes.
+
+checks.yml
+
 ```yaml
 checks for CUSTOMERS:
   - missing("id") = 0
 ```
 
-will lead to a prefixed quoted table name in the generated queries like this:
+SQL query
 ```sql
 SELECT
   COUNT(CASE WHEN "id" IS NULL THEN 1 END)
