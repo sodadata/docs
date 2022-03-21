@@ -31,6 +31,9 @@
 - title: Use Soda Core CLI
   page: soda-core/cli.md
 
+- title: Automated monitoring
+  page: soda-core/automated-monitoring.md
+
 - title: Soda Core terminology
   page: soda-core/terminology.md
 
