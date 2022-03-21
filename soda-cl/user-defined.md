@@ -28,7 +28,7 @@ Failed row checks use two key-value pairs.
 ```yaml
 checks for CUSTOMERS:
   - failed rows:
-      label: High customers must have size less than 3
+      name: High customers must have size less than 3
       fail condition: cat = 'HIGH' and size >= 3
 ```
 
@@ -49,7 +49,7 @@ Failed row checks use two key-value pairs.
 ```yaml
 checks:
   - failed rows:
-      label: customer contacts must have a valid email
+      name: customer contacts must have a valid email
       fail query: |
         SELECT *
         FROM customers as customer
@@ -78,7 +78,7 @@ The next example illustrates how to specify a name, and warn and fail levels for
 ```yaml
 checks for CUSTOMERS:
   - avg_surface:
-      label: Average surface
+      name: Average surface
       avg_surface expression: AVG(size * distance)
       warn: when < 30
       fail: when < 10

@@ -7,4 +7,4 @@ products:
 
 This release marks the launch, or first generally available release, of **Soda Core** and **Soda Checks Language**. 
 
-Reference [Soda Core]({% link soda-core/overview.md %}) and [SodaCL]({% link soda-cl/automated-monitoring.md %}) documentation for information on how to use the new CLI tool and domain-specific language for reliability.
+Reference [Soda Core]({% link soda-core/overview.md %}) and [SodaCL]({% link soda-cl/soda-cl-overview.md %}) documentation for information on how to use the new CLI tool and domain-specific language for reliability.
