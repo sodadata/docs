@@ -21,15 +21,21 @@ Soda Core uses the input in the checks YAML file to prepare SQL queries that it 
 
 Each scan requires the following as input:
 
-* the name of the data source that contains the tables of data you wish to scan
+* the name of the data source that contains the tables of data you wish to scan, identified using the `-d` option
+* a `configuration.yml` file, which contains details about how Soda Core can connect to your data source. <br /> You do not need to explicitly identify your `configuration.yml` files in the scan command. During a scan, Soda Core uses the following path and filename by default: `~/.soda/configuration.yml`. 
 * a `checks.yml` file, including its filepath if stored in a different directory, which contains the checks you write using SodaCL
-* a `configuration.yml` file, which contains details about how Soda Core can connect to your data source. You do not need to explicitly identify your `configuration.yml` files in the scan command. During a scan, Soda Core uses the following path and filename by default: `~/.soda/configuration.yml`. 
 
 Scan command:
 ```shell
 soda scan -d adventureworks checks.yml
 ```
 
+Scan command with explicit `configuration.yml` path:
+```shell
+soda scan -d adventureworks -c configuration.yml checks.yml
+```
+
+<br />
 Use the soda `soda scan --help` command to review options you can include to customize the scan.
 
 ## Variables
@@ -53,17 +59,17 @@ soda scan -d adventureworks -v TODAY=2022-03-11 checks.yml
 
 During a scan, all checks return a status that represents the result of each check: pass, fail, warn, or error.
 
-* If a check passes, you know your data is sound.
-* If a check fails, it means the scan discovered data that falls outside the expected or acceptable parameters you defined in your check.
-* If a check warns, it means the data falls within the parameters you defined as “worthy of a warning” in your check.
-* If a check returns an error, it means there is a problem with the check itself, such as a syntax error.
+* If a check **passes**, you know your data is sound.
+* If a check **fails**, it means the scan discovered data that falls outside the expected or acceptable parameters you defined in your check.
+* If a check triggers a **warning**, it means the data falls within the parameters you defined as “worthy of a warning” in your check.
+* If a check returns an **error**, it means there is a problem with the check itself, such as a syntax error.
 
 Example output with a check that passed:
 ```shell
 Soda Core 0.0.x
 Scan summary:
 1/1 check PASSED: 
-    CUSTOMERSs in adventureworks
+    CUSTOMERS in adventureworks
       row_count > 0 [PASSED]
 All is good. No failures. No warnings. No errors.
 ```
@@ -73,7 +79,7 @@ Example output with a check that triggered a warning:
 Soda Core 0.0.x
 Scan summary:
 1/1 check WARNED: 
-    CUSTOMERSs in adventureworks
+    CUSTOMERS in adventureworks
       schema [WARNED]
         missing_column_names = [sombrero]
         schema_measured = [geography_key, customer_alternate_key, title, first_name, last_name ...]
