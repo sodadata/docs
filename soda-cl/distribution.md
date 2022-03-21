@@ -6,13 +6,15 @@ sidebar: cl
 parent: SodaCL
 ---
 
-# Distribution checks
+# Distribution checks (Experimental)
 
 Use the `distribution_difference(column_name, distribution_difference_name)` check to monitor the consistency of a column over time or between a known time (i.e. a reference) and a later point in time (e.g., the latest data, the last n days etc.)
 
 For example, comparing distributions of input features or predictions between the time a machine learning model is developed along its lifecycle in production can prevent machine learning models to suffer from decaying or erroneous performance. This is often referred to as **drift monitoring**.
 
 Distribution checks work for both continuous and categorical (discrete) distributions --see [Advanced configurations](#advanced-configuration) section.
+
+**NOTE:** This feature is still experimental. If you experience difficulties or issues, do not hesitate to get in touch with us or open a GitHub issue.
 
 ## Configure the check
 The following example shows how to monitor the distribution of the `order_price` column of the `orders` dataset using the [Kolmogorov–Smirnov test](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test) (currently the default algorithm for a continuous distribution). This test outputs a p-value. A p-value below 0.05 is considered a reliable signal that the two distributions have drifted:
