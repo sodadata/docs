@@ -6,7 +6,7 @@ sidebar: cl
 parent: SodaCL
 ---
 
-# Distribution checks
+# Distribution checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 Use a distribution check to monitor the consistency of a column over time or between a known time, such as a reference, and a later point in time, such as "the latest data", or "the last *n* days".
 

@@ -132,6 +132,8 @@
     page: soda-cl/quotes.md
   - subtitle: Table filters
     page: soda-cl/table-filters.md
+  - subtitle: Distribution checks
+    page: soda-cl/distribution.md
 
 - title: Integrate Soda
   page: soda/integrate-alation.md
