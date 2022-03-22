@@ -148,10 +148,13 @@ data_source orders:
   connection:
     username: "SODATESTING"
     password: "abc123"
+    account: sodadatapartner.eu-central-1
     database: SNOWFLAKE_SAMPLE_DATA
     schema: PUBLIC
+    warehouse:
+    connection_timeout:
     role: PUBLIC
-    account: sodadatapartner.eu-central-1
+    client_session_keep_alive:
     passcode_in_password:
     private_key_passphrase:
     private_key:
@@ -167,10 +170,12 @@ data_source orders:
 | type  | required |  The name of your Snowflake virtual data source. |
 | username | required | Use environment variables to retrieve this value securely. |
 | password | optional | Use environment variables to retrieve this value securely using `env_var(SNOWFLAKE_PASSWORD)`. Alternatively, authenticate using `private_key`, `private_key_passphrase`, or `private-key-path`. |
+| account | required |   |
 | database | optional |  |
 | schema | required |  |
+| warehouse | required |   |
+| connection_timeout | required |   |
 | role | optional | See <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Roles</a> for details.|
-| account | required |   |
 | passcode_in_password | optional | Default value is `false`. See <a href="https://docs.snowflake.com/en/user-guide/snowsql-start.html#mfa-passcode-in-password" target="_blank"> Snowflake documentation</a>.|
 | private_key_passphrase | optional | Specify the value for the key-value pair. |
 | private_key | optional | See [Private key authentication](#private-key-authentication) section below.|
