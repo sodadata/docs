@@ -1,14 +1,14 @@
 ---
 layout: default
 title: Add scans to a pipeline
-description: 160 char description
+description: Integrate Soda Core with a data orchestration tool such as, Airflow, to automate and schedule your search for "bad" data.
 sidebar: core
 parent: Soda Core (Beta)
 ---
 
 # Add scans to a pipeline ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-Integrate Soda Core with a **data orchestration tool** such as, Airflow, to automate and schedule your search for "bad" data. 
+Integrate Soda Core with a data orchestration tool such as, Airflow, to automate and schedule your search for "bad" data. 
 
 Configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically block "bad" data from contaminating your data pipeline.
 

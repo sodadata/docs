@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda Core community
-description: 160 char description
+description: For the open source developer tools and free trial version of our cloud software, Soda offers free support to the Soda community of users in Slack.
 sidebar: core
 parent: Soda Core (Beta)
 ---

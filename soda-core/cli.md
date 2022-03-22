@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Use Soda Core CLI
-description: 160 char description
+description: To see a list of Soda Core (Beta) command-line interface (CLI) commands, use the soda command.
 sidebar: core
 parent: Soda Core (Beta)
 ---

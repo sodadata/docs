@@ -1,8 +1,7 @@
 ---
 layout: default
 title: User-defined checks
-description: 
-
+description: Use a SodaCL (Beta) user-defined check to define elements of a check using SQL expressions or queries.
 parent: SodaCL (Beta)
 ---
 

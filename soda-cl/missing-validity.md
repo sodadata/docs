@@ -1,14 +1,13 @@
 ---
 layout: default
 title: Missing and validity checks
-description:
- 
+description: Use these SodaCL (Beta) checks to discover missing, valid, or invalid values surfaces unexpected or missing data.
 parent: SodaCL (Beta)
 ---
 
 # Missing and validity checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-A check for missing, valid, or invalid values surfaces unexpected or missing data.
+Use these checks to discover missing, valid, or invalid values surfaces unexpected or missing data.
 
 [Anatomy of a missing or validity check](#anatomy-of-a-missing-or-validity-check)<br />
 [Missing and validity metrics](#missing-and-validity-metrics)<br />

@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Row count checks
-description: 
-
+description: Use a SodaCL (Beta) row count checks to validate the number of rows in a table. Compare row counts across tables or data sources.
 parent: SodaCL (Beta)
 ---
 
