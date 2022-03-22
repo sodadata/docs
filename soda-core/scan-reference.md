@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda Core scan reference
-description: 160 char description
+description: Soda Core uses the input in the checks YAML file to prepare a scan that it runs against the data in a table. 
 sidebar: core
 parent: Soda Core (Beta)
 ---

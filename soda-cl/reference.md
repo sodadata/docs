@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Reference data checks
-description: 
-
+description: Use a SodaCL (Beta) reference data check to validate that the values in a column in a table are present in a column in a different table. 
 parent: SodaCL (Beta)
 ---
 

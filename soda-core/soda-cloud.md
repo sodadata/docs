@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda Cloud reference
-description: 160 char description
+description: Soda Cloud is a web application that connects to Soda Core (Beta). It extends Soda Core functionality.
 sidebar: core
 parent: Soda Core (Beta)
 ---

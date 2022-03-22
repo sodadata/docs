@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Use variables in Soda Core
-description: 160 char description
+description: For Soda Core (Beta), use variables in your checks.yml file to resolve credentials in configuration files, or to define dynamic filters.
 sidebar: core
 parent: Soda Core (Beta)
 ---

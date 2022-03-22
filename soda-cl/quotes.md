@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Quotes
-description:
- 
+description: Use the quoting style that your data source uses in a SodaCL (Beta) check. Soda Core (Beta) uses the quoting style in the SQL queries it prepares for a scan. 
 parent: SodaCL (Beta)
 ---
 

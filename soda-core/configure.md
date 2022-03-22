@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Configure Soda Core
-description: 160 char description
+description: Create a configuration YAML file to configure connection details for Soda Core (Beta) to access your data source. 
 sidebar: core
 parent: Soda Core (Beta)
 ---
@@ -143,14 +143,15 @@ data_source my_database_name:
 ## Connect to Snowflake
 
 ```yaml
-data_source my_database_name:
+data_source orders:
   type: snowflake
   connection:
-    username:  
-    password: 
-    database: 
+    username: "SODATESTING"
+    password: "abc123"
+    database: SNOWFLAKE_SAMPLE_DATA
     schema: PUBLIC
     role: PUBLIC
+    account: sodadatapartner.eu-central-1
     passcode_in_password:
     private_key_passphrase:
     private_key:
@@ -169,6 +170,7 @@ data_source my_database_name:
 | database | optional |  |
 | schema | required |  |
 | role | optional | See <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Roles</a> for details.|
+| account | required |   |
 | passcode_in_password | optional | Default value is `false`. See <a href="https://docs.snowflake.com/en/user-guide/snowsql-start.html#mfa-passcode-in-password" target="_blank"> Snowflake documentation</a>.|
 | private_key_passphrase | optional | Specify the value for the key-value pair. |
 | private_key | optional | See [Private key authentication](#private-key-authentication) section below.|
@@ -189,6 +191,7 @@ You can use the `private_key` parameter to specify key-value pairs for key pair 
 
      -----END ENCRYPTED PRIVATE KEY-----
 ```
+
 
 ### Supported data types
 

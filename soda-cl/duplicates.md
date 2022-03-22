@@ -1,14 +1,13 @@
 ---
 layout: default
 title: Duplicate checks
-description: 
-
+description: Use a SodaCL (Beta) duplicate count check to count the distinct values that occur more than once in a column.
 parent: SodaCL (Beta)
 ---
 
 # Duplicate checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-Use the `duplicate_count` metric to count the distinct values that occur more than once in a column.
+Use a `duplicate_count` check to count the distinct values that occur more than once in a column.
 
 The following checks that the column `email_address` does not contain any duplicates.
 

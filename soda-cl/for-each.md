@@ -1,14 +1,13 @@
 ---
 layout: default
 title: For each checks
-description: 
-
+description: Use a SodaCL (Beta) for each check to specify a list of checks you wish to execute on a multiple tables. 
 parent: SodaCL (Beta)
 ---
 
 # For each checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-You can specify a list of checks on a multiple tables. 
+Use a for each check to specify a list of checks you wish to execute on a multiple tables. 
 
 First, in your checks.yml file, specify the list of tables using `for each table T`. The purpose of the `T` is only to ensure that every `for each` check has a unique name. Next, write the checks you wish to execute against the tables.
 

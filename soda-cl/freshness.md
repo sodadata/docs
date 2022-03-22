@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Freshness checks
-description: 
-
+description: Use a SodaCL (Beta) freshness check to infer data freshness according to the age of the most recently added row in a table.
 parent: SodaCL (Beta)
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Define programmatic scans
-description: 160 char description
+description: To automate the search for "bad" data, you can use the Soda Sore Python library to programmatically execute scans.
 sidebar: core
 parent: Soda Core (Beta)
 ---

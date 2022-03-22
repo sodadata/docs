@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Table filters
-description: 
-
+description: Instead of checking whole tables, you can use SodaCL (Beta) table filters to specify a portion of data in a table against which Soda Core executes a check.
 parent: SodaCL (Beta)
 ---
 

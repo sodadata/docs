@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Metrics and thresholds
-description: 
+description: Learn the general principles of how to compose SodaCL (Beta) checks using metrics.
 parent: SodaCL (Beta)
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda Core terminology
-description: 160 char description
+description: Access a short list of terminology specific to Soda Core (Beta).
 sidebar: core
 parent: Soda Core (Beta)
 ---

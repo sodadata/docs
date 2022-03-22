@@ -108,7 +108,7 @@
 - title: SodaCL (Beta)
   page: soda-cl/soda-cl-overview.md
   subcategories:
-  - subtitle: SodaCL (Beta) overview
+  - subtitle: SodaCL overview
     page: soda-cl/soda-cl-overview.md
   - subtitle: Row count checks
     page: soda-cl/row-count.md
