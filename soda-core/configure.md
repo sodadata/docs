@@ -148,15 +148,13 @@ data_source orders:
   connection:
     username: "SODATESTING"
     password: "abc123"
+    account: sodadatapartner.eu-central-1
     database: SNOWFLAKE_SAMPLE_DATA
     schema: PUBLIC
+    warehouse:
+    connection_timeout:
     role: PUBLIC
-    account: sodadatapartner.eu-central-1
-    passcode_in_password:
-    private_key_passphrase:
-    private_key:
-    private_key_path: '/path/to/private_key/key.p8'
-    authenticator: snowflake
+    client_session_keep_alive:
   session_parameters:
     QUERY_TAG: soda-queries
     QUOTED_IDENTIFIERS_IGNORE_CASE: false
@@ -166,31 +164,15 @@ data_source orders:
 | --------  | -------- | -----|
 | type  | required |  The name of your Snowflake virtual data source. |
 | username | required | Use environment variables to retrieve this value securely. |
-| password | optional | Use environment variables to retrieve this value securely using `env_var(SNOWFLAKE_PASSWORD)`. Alternatively, authenticate using `private_key`, `private_key_passphrase`, or `private-key-path`. |
-| database | optional |  |
-| schema | required |  |
-| role | optional | See <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Roles</a> for details.|
+| password | optional | Use environment variables to retrieve this value securely using `env_var(SNOWFLAKE_PASSWORD)`. |
 | account | required |   |
-| passcode_in_password | optional | Default value is `false`. See <a href="https://docs.snowflake.com/en/user-guide/snowsql-start.html#mfa-passcode-in-password" target="_blank"> Snowflake documentation</a>.|
-| private_key_passphrase | optional | Specify the value for the key-value pair. |
-| private_key | optional | See [Private key authentication](#private-key-authentication) section below.|
-| private_key_path | optional | Example: `private_key_path: '/path/to/private_key/key.p8'` |
-| authenticator | optional | Default value is `snowflake`. See <a href="https://docs.snowflake.com/en/user-guide/snowsql-start.html#authenticator" target="_blank"> Snowflake documentation</a>. |
+| database | required |  |
+| schema | required |  |
+| warehouse | required |   |
+| connection_timeout | required |   |
+| role | optional | See <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Roles</a> for details.|
 | QUERY_TAG | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag" target="_blank">QUERY_TAG</a> in Snowflake documentation. |
 | QUOTED_IDENTIFIERS_IGNORE_CASE | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#quoted-identifiers-ignore-case" target="_blank">QUOTED_IDENTIFIERS_IGNORE_CASE</a> in Snowflake documentation. |
-
-
-### Private key authentication
-
-You can use the `private_key` parameter to specify key-value pairs for key pair authentication. In the warehouse YAML file, add the parameter as follows: 
-```yml
-  private_key: |
-     -----BEGIN ENCRYPTED PRIVATE KEY-----
-     MIIExxxxxxxxxxxxxxxxxxxxucRqSZaS
-     ...
-
-     -----END ENCRYPTED PRIVATE KEY-----
-```
 
 
 ### Supported data types
@@ -207,13 +189,13 @@ You can use the `private_key` parameter to specify key-value pairs for key pair 
 To assist in identifying details when Soda Core scans your data with the verbose option, you can add a prefix to the name of a table with the name of a database or schema. Use the data source property `table_prefix` according to the following example.
 
 ```yaml
-data_source events:
-  type: snowflake
+data_source my_database_name:
+  type: postgres
   connection:
-    host: ${SNOWFLAKE_HOST}
-    username: ${SNOWFLAKE_USERNAME}
-    password: ${SNOWFLAKE_PASSWORD}
-  database: events
+    host: db
+    username:  
+    password:  
+  database: postgres
   schema: public
   table_prefix: "public"
 ```
