@@ -48,7 +48,7 @@ Access the [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %}).
 
 ![soda-core-logo](/assets/images/soda-core-logo.png){:height="160px" width="160px"}
 
-**Soda Core (Beta)** is a free, open-source, command-line tool that enables you to use the **Soda Check Language (Beta)** to turn user-defined input into aggregated SQL queries. When it runs a scan on a dataset, Soda Core executes the checks to find invalid, missing, or unexpected data. When your Soda Checks fail, they surface the data that you defined as "bad".
+**Soda Core (Beta)** is a free, open-source, command-line tool that enables you to use the **Soda Checks Language (Beta)** to turn user-defined input into aggregated SQL queries. When it runs a scan on a dataset, Soda Core executes the checks to find invalid, missing, or unexpected data. When your Soda Checks fail, they surface the data that you defined as "bad".
 
 Connect Soda Core to your data source (Snowflake, Postgres, and more), then define your Soda Checks for data quality in a checks YAML file. Use Soda Core to run scans of your data to execute the checks you defined. Read more about installing and using Soda Core.
 
