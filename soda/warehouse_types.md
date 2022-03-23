@@ -325,6 +325,7 @@ connection:
 | -------- |  -------- | ----- |
 | type | required |  |
 | host| required |  |
+| port | optional |  |
 | username| required | Use environment variables to retrieve this value securely. |
 | password| required | Use environment variables to retrieve this value securely. |
 | database| required |  |
