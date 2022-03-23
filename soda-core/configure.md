@@ -116,6 +116,7 @@ data_source my_database_name:
   type: postgres
   connection:
     host: db
+    port: '5432'
     username:  
     password:  
   database: postgres
@@ -125,7 +126,8 @@ data_source my_database_name:
 | Property |  Required | Notes |
 | -------- |  -------- | ----- |
 | type | required |  |
-| host| required |  |
+| host | required |  |
+| port | optional |  |
 | username| required | Use environment variables to retrieve this value securely.|
 | password| required | Use environment variables to retrieve this value securely.|
 | database| required |  |
@@ -155,9 +157,9 @@ data_source orders:
     connection_timeout:
     role: PUBLIC
     client_session_keep_alive:
-  session_parameters:
-    QUERY_TAG: soda-queries
-    QUOTED_IDENTIFIERS_IGNORE_CASE: false
+    session_parameters:
+      QUERY_TAG: soda-queries
+      QUOTED_IDENTIFIERS_IGNORE_CASE: false
 ```
 
 | Property | Required | Notes |
