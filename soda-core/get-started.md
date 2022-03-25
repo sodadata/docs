@@ -34,16 +34,16 @@ python -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 ```
-2. Execute the following command, replacing `soda-core-postgresql` with the install package that matches the type of data source you use to store data.
+2. Execute the following command, replacing `soda-core-postgres` with the install package that matches the type of data source you use to store data.
 ```shell
-pip install soda-core-postgresql
+pip install soda-core-postgres
 ```
 
 | Data source | Install package | 
 | ----------- | --------------- | 
 | Amazon Redshift | soda-core-redshift | 
 | GCP Big Query | soda-core-bigquery | 
-| PostgreSQL | soda-core-postgresql |
+| PostgreSQL | soda-core-postgres |
 | Snowflake | soda-core-snowflake | 
 
 To deactivate the virtual environment, use the following command:

@@ -27,12 +27,12 @@ Each scan requires the following as input:
 
 Scan command:
 ```shell
-soda scan -d adventureworks checks.yml
+soda scan -d postgres_retail checks.yml
 ```
 
 Scan command with explicit `configuration.yml` path:
 ```shell
-soda scan -d adventureworks -c configuration.yml checks.yml
+soda scan -d postgres_retail -c configuration.yml checks.yml
 ```
 
 <br />
@@ -52,7 +52,7 @@ variables:
 ```
 Scan command:
 ```shell
-soda scan -d adventureworks -v TODAY=2022-03-11 checks.yml
+soda scan -d postgres_retail -v TODAY=2022-03-11 checks.yml
 ```
 
 ## Scan output
@@ -66,10 +66,10 @@ During a scan, all checks return a status that represents the result of each che
 
 Example output with a check that passed:
 ```shell
-Soda Core 0.0.x
+Soda Core 3.0.0bx
 Scan summary:
 1/1 check PASSED: 
-    CUSTOMERS in adventureworks
+    CUSTOMERS in postgres_retail
       row_count > 0 [PASSED]
 All is good. No failures. No warnings. No errors.
 ```
@@ -79,7 +79,7 @@ Example output with a check that triggered a warning:
 Soda Core 0.0.x
 Scan summary:
 1/1 check WARNED: 
-    CUSTOMERS in adventureworks
+    CUSTOMERS in postgres_retail
       schema [WARNED]
         missing_column_names = [sombrero]
         schema_measured = [geography_key, customer_alternate_key, title, first_name, last_name ...]
@@ -91,7 +91,7 @@ Example output with a check that failed:
 Soda Core 0.0.x
 Scan summary:
 1/1 check FAILED: 
-    CUSTOMERS in adventureworks
+    CUSTOMERS in postgres_retail
       freshness using full_date_alternate_key < 3d [FAILED]
         max_column_timestamp: 2020-06-24 00:04:10+00:00
         max_column_timestamp_utc: 2020-06-24 00:04:10+00:00
