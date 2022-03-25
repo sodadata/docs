@@ -17,13 +17,14 @@ $ soda
 ```shell
 Usage: soda [OPTIONS] COMMAND [ARGS]...
 
-  Soda Core CLI version 0.0.x
+  Soda Core CLI version 3.0.xx
 
 Options:
   --help  Show this message and exit.
 
 Commands:
-  scan  runs a scan
+  scan    runs a scan
+  update  updates a distribution reference file
 ```
 
 To see a list of configurable options for the command, use the command-line help.
