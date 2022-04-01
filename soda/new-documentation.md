@@ -9,7 +9,12 @@ parent: Soda
 
 <br />
 
+#### April 1, 2022
+
+* Added documentation for the `dataset_name` identifier in a [scan YAML]({% link soda-sql/scan-yaml.md %}#add-a-dataset-name-for-soda-cloud) file. Use the identifier to send more precise dataset information to Soda Cloud. 
+
 #### March 22, 2022
+
 * New documentation for the beta release of <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core </a>, a free, open-source, command-line tool that enables you to use the Soda Checks Language (Beta) to turn user-defined input into aggregated SQL queries.
 * New documentation for the beta release of <a href="https://docs.soda.io/soda-cl/soda-cl-overview.html" target="_blank">SodaCL</a>, a domain-specific language you can use to define Soda Checks in a checks YAML file.
 
