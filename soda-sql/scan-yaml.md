@@ -154,7 +154,7 @@ Soda Cloud Monitor info:
 ![named-dataset1](/assets/images/named-dataset1.png){:height="600px" width="600px"}
 
 <br />
-Futher, you can use a variable in the `dataset_name` identifier so that Soda SQL dynamically retrieves information from the `soda scan` command and uses it in the identifier. Include a variable in the `dataset_name` as in the example that follows, then use the `-v` option to provide a value for the variable at scan time. 
+Further, you can use a variable in the `dataset_name` identifier so that Soda SQL dynamically retrieves information from the `soda scan` command and uses it in the identifier. Include a variable in the `dataset_name` as in the example that follows, then use the `-v` option to provide a value for the variable at scan time. 
 
 Scan YAML:
 ```yaml
