@@ -55,7 +55,7 @@
               "title": "From Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-03-01T13:57:46.088363"
+              "default": "2022-03-03T14:25:57.886219"
             },
             "name": "from_datetime",
             "in": "query"
@@ -66,7 +66,7 @@
               "title": "To Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-04-01T13:57:46.088422"
+              "default": "2022-04-03T14:25:57.886257"
             },
             "name": "to_datetime",
             "in": "query"
@@ -349,7 +349,7 @@
       "post": {
         "tags": ["Quality"],
         "summary": "Test results",
-        "description": "This endpoint provides a list of tests along with each test's historical evaluation results.\n\nUsage\n-----\nUse this endpoint to build reports that show the outcome of your tests over time. If you gathered high-level data\nfrom the `/dataset_health` and `/dataset_coverage` endpoints, you can use this endpoint to examine more granular\ndata about tests that apply to each dataset.\n\nUsers must provide a single `dataset_id` per request and are advised to use the `from_datetime` parameter to\noptimize performance.\n\nUsers should first use the `datasets` endpoint to get a list of available datasets along with their IDs and\nand issue separate queries one dataset as a time.\n\nUsers are advised to keep the number of potentially parallel queries made to this endpoint to a small amount\nas they might face rate limitations or bad performance.\n\nReturns\n-------\nAn object of type `TestsAndResultsResult` containing an array of `TestsAndResultsData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides a list of tests along with each test's historical evaluation results.\n\nUsage\n-----\nUse this endpoint to build reports that show the outcome of your tests over time. If you gathered high-level data\nfrom the `/dataset_health` and `/dataset_coverage` endpoints, you can use this endpoint to examine more granular\ndata about tests that apply to each dataset.\n\nBe sure to provide a single `dataset_id` per request, and use the `from_datetime` parameter to optimize performance.\nUse the `datasets` endpoint to first get a list of available datasets along with their IDs, then issue separate\nqueries one dataset at a time.\n\nKeep the number of potentially parallel queries that you make to this endpoint small as they can face rate\nlimitations or poor performance.\n\nReturns\n-------\nAn object of type `TestsAndResultsResult` containing an array of `TestsAndResultsData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "test_results_v0_quality_tests_and_results_post",
         "requestBody": {
           "content": {
@@ -401,7 +401,7 @@
       "post": {
         "tags": ["Quality"],
         "summary": "Dataset health",
-        "description": "This endpoint provides you with a daily measure of the health of each of your datasets. Soda calculated a dataset's\nhealth based on the number of tests that pass during a scan.\n\nUsage\n-----\nUse this endpoint to get review the health of your datasets, and to see a high-level view of the more granular\ninformation that the `/tests_and_results` endpoint provides.\n\nUse this endpoint in conjunction with the `/datasets` endpoint as the latter adds information about each\ndataset.\n\nUsers must provide a single `dataset_id` per request and are advised to use the `from_datetime` parameter to\noptimize performance.\n\nUsers should first use the `datasets` endpoint to get a list of available datasets along with their IDs and\nand issue separate queries one dataset as a time.\n\nUsers are advised to keep the number of potentially parallel queries made to this endpoint to a small amount\nas they might face rate limitations or bad performance.\n\nReturns\n-------\nAn object of type `DatasetHealthResult` containing an array of `DatasetHealthData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides you with a daily measure of the health of each of your datasets. Soda calculated a dataset's\nhealth based on the number of tests that pass during a scan.\n\nUsage\n-----\nUse this endpoint to get review the health of your datasets, and to see a high-level view of the more granular\ninformation that the `/tests_and_results` endpoint provides.\n\nUse this endpoint in conjunction with the `/datasets` endpoint as the latter adds information about each\ndataset.\n\nBe sure to provide a single `dataset_id` per request, and use the `from_datetime` parameter to optimize performance.\n\nUse the datasets endpoint to first get a list of available datasets along with their IDs, then issue separate\nqueries one dataset at a time.\n\nKeep the number of potentially parallel queries that you make to this endpoint small as they can face rate\nlimitations or poor performance.\n\nReturns\n-------\nAn object of type `DatasetHealthResult` containing an array of `DatasetHealthData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "dataset_health_v0_quality_dataset_health_post",
         "requestBody": {
           "content": {
@@ -1340,3 +1340,4 @@
     }
   }
 }
+
