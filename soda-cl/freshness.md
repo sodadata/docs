@@ -22,11 +22,11 @@ The following list describes the elements that form the syntax of a freshness ch
 ```yaml
 - freshness using {column_name} [with {now_variable_name}] < {duration}
 ```
-* `freshness using` is the name of the check
-* `column_name` is the name of a timestamp column in the table
+* `freshness using` is the name of the check.
+* `column_name` is the name of a timestamp column in the table.
 * `now_variable_name` is optional input that specifies the timestamp variable name to use as the value for `NOW`. See [Variables with freshness checks](#variables-with-freshness-checks) below.
-* `<` is the operand 
-* `duration` is an indication of acceptable age of the youngest column in the table relative to `NOW`
+* `<` is the operand. 
+* `duration` is an indication of acceptable age of the youngest column in the table relative to `NOW`. Note that you can specify a maximum of two time units for duration. For example, `1d6h` is acceptable but `1d6h30m` is not.
   * `3d` 3 days
   * `1d6` 1 day and 6 hours
   * `1h` 1 hour
