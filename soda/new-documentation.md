@@ -9,6 +9,12 @@ parent: Soda
 
 <br />
 
+#### April 6, 2022
+
+* Added details to the [Freshness check]({% link soda-cl/freshness.md %}) to clarify limitations when specifying duration.
+* Added documentation for how to [use system variables to store property values]({% link soda-sql/warehouse.md %}#provide-credentials-as-system-variables) instead of storing values in the `env_vars.yml` file.
+* Updated Soda Core documentation to remove aspirational content from Adding scans to a pipeline.
+
 #### April 1, 2022
 
 * Added documentation for the `dataset_name` identifier in a [scan YAML]({% link soda-sql/scan-yaml.md %}#add-a-dataset-name-for-soda-cloud) file. Use the identifier to send more precise dataset information to Soda Cloud. 

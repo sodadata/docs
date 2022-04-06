@@ -13,6 +13,7 @@ A **warehouse** is a type of data source that represents a SQL engine or databas
 [Create a warehouse YAML file](#create-a-warehouse-yaml-file)<br />
 [Anatomy of the warehouse YAML file](#anatomy-of-the-warehouse-yaml-file)<br />
 [Env_vars YAML file](#env_vars-yaml-file)<br />
+[Provide credentials as system variables](#provide-credentials-as-system-variables)<br />
 [Go further](#go-further)<br />
 
 
@@ -90,6 +91,37 @@ some_other_soda_project:
 Beyond storing data source login credentials, you can use env_vars to securely store any parameter in the warehouse YAML file. Best practice dictates that you use env_vars to store login credentials and any other sensitive data such as API keys or tokens. Note, however, that it is not mandatory that you use this env_vars YAML file to store your credentials. The env_vars YAML is where Soda SQL looks first when it runs a scan, but if the file does not exist, it uses the runtime environment variables from the current shell. 
 
 For example, if you use you Google Cloud Platform, you can [set runtime environment variables](https://cloud.google.com/functions/docs/env-var) in your cloud platform where Soda SQL will find the login credentials it needs to access your data source. Set a single variable in your cloud platform that Soda SQL can locate and use. Then, since you do not need it, locate and delete the env_vars YAML file that Soda SQL created in your local home directory.
+
+## Provide credentials as system variables
+
+If you wish, you can provide data source login credentials or any of the properties in the warehouse YAML file as system variables instead of storing the values in your `env_vars.yml` file. 
+
+1. First, make sure that you have not already defined the value for the property in the `env_vars.yml` file. 
+2. Set a system variable to store the value of a property that the warehouse YAML file uses. For example, you can use the following command to define a system variable for your password.  
+```shell
+export POSTGRES_PASSWORD=1234
+```
+3. Test that the system retrieves the value that you set by running an `echo` command. 
+```shell
+echo $POSTGRES_PASSWORD
+```
+4. In the warehouse YAML file, set the value of the property to reference the environment variable, as in the following example.
+```yaml
+name: aws-postgres
+connection:
+  type: postgres
+  host: env_var(POSTGRES_HOST)
+  port: '5432'
+  username: sodatest
+  password: env_var(POSTGRES_PASSWORD)
+  database: postgres
+  schema: public
+```
+5. Save the warehouse YAML file, then run a scan to confirm that Soda SQL connects to your data source without issue.
+```shell
+soda scan warehouse.yml tables/customers.yml
+```
+
 
 ## Go further
 
