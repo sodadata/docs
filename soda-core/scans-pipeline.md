@@ -12,6 +12,7 @@ Integrate Soda Core with a data orchestration tool such as, Airflow, to automate
 
 Configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically block "bad" data from contaminating your data pipeline.
 
+<!--
 ## Apache Airflow
 
 ```python
@@ -38,6 +39,7 @@ soda_sql_scan_op = SodaScanOperator(
 * `variables` is a dict and that Soda Core passe "as is" to the scan.
 * `airflow_variables` is a list of Airflow variable names that must propagate to `soda scan` variables with `Variable.get("varname")`.
 * `airflow_variables_json` is a list of Airflow variable names that must propagate to `soda scan` variables with `Variable.get("varname", deserialize_json=True)`
+-->
 
 ## Apache Airflow using PythonOperator
 
