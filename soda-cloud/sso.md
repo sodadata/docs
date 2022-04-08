@@ -81,8 +81,8 @@ Use the procedure below to set up Soda Cloud as a web-based application (also kn
 * **Single sign on URL**
 * **Audience URI (SP Entity ID)**. <br />
 The values for these fields are unique to your organization and are provided to you by Soda and they follow this pattern: `https://cloud.soda.io/sso/<your-organization-identifier>/saml`.
-6. Make sure to use email address as the application username.
-7. Scroll down the page to **Attribute Statements** to map the following values, then click **Next** to continue.
+6. Be sure to use an email address as the application username.
+7. Scroll down to **Attribute Statements** to map the following values, then click **Next** to continue.
 * map `User.GivenName` to `user.firstName`
 * map `User.FamilyName`to `user.lastName`. <br />
 8. Select the following options, then click **Finish**.
