@@ -81,20 +81,21 @@ Use the procedure below to set up Soda Cloud as a web-based application (also kn
 * **Single sign on URL**
 * **Audience URI (SP Entity ID)**. <br />
 The values for these fields are unique to your organization and are provided to you by Soda and they follow this pattern: `https://cloud.soda.io/sso/<your-organization-identifier>/saml`.
-6. Scroll down the page to **Attribute Statements** to map the following values, then click **Next** to continue.
+6. Be sure to use an email address as the application username.
+7. Scroll down to **Attribute Statements** to map the following values, then click **Next** to continue.
 * map `User.GivenName` to `user.firstName`
 * map `User.FamilyName`to `user.lastName`. <br />
-7. Select the following options, then click **Finish**.
+8. Select the following options, then click **Finish**.
 * I'm an Okta customer adding an internal app.
 * This is an internal app that we have created. <br />
-8. In the **Sign On** pane of the application, scroll down to click **View Setup Instructions**.
-9. Collect the values of three fields that Soda needs to complete the Okta SSO integration:
+9. In the **Sign On** pane of the application, scroll down to click **View Setup Instructions**.
+10. Collect the values of three fields that Soda needs to complete the Okta SSO integration:
 * **Identity Provider Single Sign-On URL**
 * **Identity Provider Issuer**
 * **X.509 Certificate**
-10. Send the values and certificate to the Soda support team via email to <a href="mailto:support@soda.io" target="_blank">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
-11. Test the integration by assigning the Soda application in Okta to a single user, then requesting that they log in.
-12. After a successful single-user test of the sign in, assign access to the Soda Okta app to users and/or user groups in your organization.
+11. Send the values and certificate to the Soda support team via email to <a href="mailto:support@soda.io" target="_blank">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
+12. Test the integration by assigning the Soda application in Okta to a single user, then requesting that they log in.
+13. After a successful single-user test of the sign in, assign access to the Soda Okta app to users and/or user groups in your organization.
 
 
 
