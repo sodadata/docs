@@ -38,7 +38,7 @@ For example, the following missing check validates that the column `name` contai
 
 ```yaml
 checks for CUSTOMERS:
-  - missing count(name) < 100 :
+  - missing_count(name) < 100 :
       missing values: [N/A, None, No value]
 ```
 * `missing_count` is the metric.

@@ -165,9 +165,9 @@ data_source orders:
 | Property | Required | Notes |
 | --------  | -------- | -----|
 | type  | required |  The name of your Snowflake virtual data source. |
-| username | required | Use environment variables to retrieve this value securely. |
-| password | optional | Use environment variables to retrieve this value securely using `env_var(SNOWFLAKE_PASSWORD)`. |
-| account | required |   |
+| username | required | Use environment variables to retrieve this value securely using, for example, `${SNOWFLAKE_USER}`. |
+| password | required | Use environment variables to retrieve this value securely using, for example, `${SNOWFLAKE_PASSWORD}`. |
+| account | required | Use environment variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`.  |
 | database | required |  |
 | schema | required |  |
 | warehouse | required |   |
