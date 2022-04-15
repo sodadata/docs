@@ -189,13 +189,13 @@ connection:
     dataset: sodasql
 ```
 
-Alternatively, you can specify Big Query configuration using the `account_info_path` configuration option to direct Soda SQL to your Big Query service account JSON key file.
+Alternatively, you can specify Big Query configuration using the `account_info_json_path` configuration option to direct Soda SQL to your Big Query service account JSON key file.
 
 ```yaml
 name: my_bigquery_project
 connection:
     type: bigquery
-    account_info_path: /folder/service-account-file.json
+    account_info_json_path: /folder/service-account-file.json
     auth_scopes:
     - https://www.googleapis.com/auth/bigquery
     - https://www.googleapis.com/auth/cloud-platform
@@ -203,7 +203,7 @@ connection:
     dataset: sodasql
 ```
 
-Alternatively, you can specify Big Query configuration using the `use_context_auth` configuration option to direct Soda SQL to your Big Query global environnement variable (GOOGLE_APPLICATIONS_CREDENTIALS).
+Alternatively, you can specify Big Query configuration using the `use_context_auth` configuration option to direct Soda SQL to your Big Query global environnement variable `(GOOGLE_APPLICATIONS_CREDENTIALS)`.
 
 ```yaml
 name: my_bigquery_project

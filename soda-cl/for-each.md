@@ -26,7 +26,6 @@ for each table T:
     - exclude prospective_%
   checks:
     - row_count > 0
-    - duplicate_count = 0
 ```
 
 ### Notes
