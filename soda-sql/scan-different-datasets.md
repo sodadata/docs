@@ -8,9 +8,9 @@ redirect_from: /soda-sql/documentation/scan-different-datasets.html
 
 # Scan multiple data sources or datasets
 
-You can run a single [scan]({% link soda/glossary.md %}#scan %}) against different [data sources]({% link soda/glossary.md %}#data-source) in your environments. For example, you can run the same scan against data in a development environment and data in a production environment.
+You can run a single [scan]({% link soda/glossary.md %}#scan) against different [data sources]({% link soda/glossary.md %}#data-source) in your environments. For example, you can run the same scan against data in a development environment and data in a production environment.
 
-You can also run a single scan against different [datasets]({% link soda/glossary.md %}#dataset %}) in your data source using [custom metrics]({% link soda/glossary.md %}#custom-metric). 
+You can also run a single scan against different [datasets]({% link soda/glossary.md %}#dataset) in your data source using [custom metrics]({% link soda/glossary.md %}#custom-metric). 
 
 ## Run a basic scan
 
