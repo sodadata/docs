@@ -6,17 +6,17 @@ parent: Soda SQL
 ---
 <br />
 
-![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="200px" width="200px"}
+![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="200px" width="200px"} [![try-soda-core](/assets/images/try-soda-core.png){:height="160px" width="160px" align="right"}]({% link soda-cl/soda-cl-overview.md %})
 <br />
 <br />
 
 <p>&#10004;  <a href="https://github.com/sodadata/soda-sql" target="_blank">Open-source software</a><br /></p>
 <p>&#10004;  <a href="https://docs.soda.io/soda-sql/installation.html">Install</a> from the command-line<br /></p>
 <p>&#10004;  Compatible with Snowflake, Amazon Redshift, BigQuery, <a href="https://docs.soda.io/soda-sql/installation.html#compatibility">and more</a><br /></p>
-<p>&#10004;  <a href="https://docs.soda.io/soda-sql/tests.html">Write tests</a> in a YAML file<br /></p>
+<p>&#10004;  <a href="https://docs.soda.io/soda-sql/tests.html">Write tests</a> in a YAML file<br /></p> 
 <p>&#10004;  <a href="https://docs.soda.io/soda-sql/programmatic_scan.html">Run programmatic scans</a> to test data quality<br /></p>
-<p>&#10004;  Deploy in an <a href="https://docs.soda.io/soda-sql/orchestrate_scans.html">Airflow enviroment</a><br /></p>
-**Got 5 minutes? [Try the interactive demo!]({% link soda-sql/interactive-demo.md %})**
+<p>&#10004;  Deploy in an <a href="https://docs.soda.io/soda-sql/orchestrate_scans.html">Airflow enviroment</a><br /></p> 
+**Got 5 minutes? [Try the interactive demo!]({% link soda-sql/interactive-demo.md %})** 
 <br />
 <br />
 

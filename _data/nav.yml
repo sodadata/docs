@@ -110,30 +110,33 @@
   subcategories:
   - subtitle: SodaCL overview
     page: soda-cl/soda-cl-overview.md
-  - subtitle: Row count checks
-    page: soda-cl/row-count.md
-  - subtitle: Missing and validity checks
-    page: soda-cl/missing-validity.md
-  - subtitle: Duplicate checks
-    page: soda-cl/duplicates.md
-  - subtitle: Metrics and thresholds
-    page: soda-cl/metrics-thresholds.md
-  - subtitle: Schema checks
-    page: soda-cl/schema.md
-  - subtitle: Reference checks
-    page: soda-cl/reference.md
-  - subtitle: Freshness checks
-    page: soda-cl/freshness.md
-  - subtitle: User-defined checks
-    page: soda-cl/user-defined.md
-  - subtitle: For each checks
-    page: soda-cl/for-each.md
-  - subtitle: Quotes
-    page: soda-cl/quotes.md
-  - subtitle: Table filters
-    page: soda-cl/table-filters.md
+  - subtitle: Soda Core overview
+    page: soda-cl/soda-core-overview.md
   - subtitle: Distribution checks
     page: soda-cl/distribution.md
+  - subtitle: Duplicate checks
+    page: soda-cl/duplicates.md
+  - subtitle: For each checks
+    page: soda-cl/for-each.md
+  - subtitle: Freshness checks
+    page: soda-cl/freshness.md
+  - subtitle: Metrics and thresholds
+    page: soda-cl/metrics-thresholds.md
+  - subtitle: Missing and validity checks
+    page: soda-cl/missing-validity.md
+  - subtitle: Quotes
+    page: soda-cl/quotes.md
+  - subtitle: Reference checks
+    page: soda-cl/reference.md
+  - subtitle: Row count checks
+    page: soda-cl/row-count.md
+  - subtitle: Schema checks
+    page: soda-cl/schema.md
+  - subtitle: Table filters
+    page: soda-cl/table-filters.md
+  - subtitle: User-defined checks
+    page: soda-cl/user-defined.md
+
 
 - title: Integrate Soda
   page: soda/integrate-alation.md
