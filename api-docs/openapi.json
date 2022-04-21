@@ -55,7 +55,7 @@
               "title": "From Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-03-21T08:37:46.043747"
+              "default": "2022-03-21T19:19:32.740952"
             },
             "name": "from_datetime",
             "in": "query"
@@ -66,7 +66,7 @@
               "title": "To Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-04-21T08:37:46.043788"
+              "default": "2022-04-21T19:19:32.740985"
             },
             "name": "to_datetime",
             "in": "query"
@@ -904,7 +904,7 @@
           "dataset_name": {
             "title": "Dataset Name",
             "type": "string",
-            "description": "Name of the dataset in Soda Cloud corresponding to the name of the table in the data source."
+            "description": "Name of the dataset in Soda Cloud corresponding to the name of the dataset in the data source."
           },
           "dataset_label": {
             "title": "Dataset Label",
