@@ -72,7 +72,7 @@ sql_metric:
                     <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
                     <h2>Install</h2>
                     <a href="/soda-sql/installation.html">Install Soda SQL</a>
-                    <a href="/soda-sql/5_min_tutorial.html">Quick start for Soda SQL</a>
+                    <a href="/soda/quick-start-soda-sql.html">Quick start for Soda SQL and Soda Cloud</a>
                 </div>
                  <div>
                     <img src="/assets/images/icons/icon-collaboration@2x.png" width="54" height="40">

@@ -14,7 +14,7 @@ parent: Get started
 
 Use Soda SQL on its own to manually or programmatically scan the data that your organization uses to make decisions. Optionally, you can integrate Soda SQL with your data orchestration tool to schedule scans and automate actions based on scan results. Further, you can connect Soda SQL to a Soda Cloud account where you and your team can use the web application to monitor test results and collaborate to keep your data issue-free.
 
-Get started with the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_tutorial.md %}).
+Get started with the [Quick start tutorial for Soda SQL]({% link soda/quick-start-soda-sql.md %}).
 
 <br />
 

@@ -8,7 +8,7 @@ parent: Soda Spark
 # Install and use Soda Spark
 
 Soda Spark is an extension of 
-[Soda SQL]({% link soda-sql/5_min_tutorial.md %}) that allows you to run Soda
+[Soda SQL]({% link soda/quick-start-soda-sql.md %}) that allows you to run Soda
 SQL functionality programmatically on a 
 <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark dataframe</a>. Reference the Soda SQL documentation to learn how to use Soda Spark, particularly how to [define tests]({% link soda-sql/tests.md %}) in a [scan YAML file]({% link soda-sql/scan-yaml.md %}). 
 

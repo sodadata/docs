@@ -6,10 +6,10 @@
   subcategories:
   - subtitle: Soda SQL interactive demo
     page: soda-sql/interactive-demo.md
-  - subtitle: Quick start for Soda SQL
-    page: soda-sql/5_min_tutorial.md
-  - subtitle: Quick start for Soda Cloud
-    page: soda-cloud/quick-start.md
+  - subtitle: Quick start for Soda SQL and Soda Cloud
+    page: soda/quick-start-soda-sql.md
+  - subtitle: Quick start for Soda Core and Soda Cloud
+    page: soda/quick-start-soda-core.md
   - subtitle: Soda product overview
     page: soda/product-overview.md
 

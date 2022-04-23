@@ -30,6 +30,8 @@ A **monitor** is a set of details you define in Soda Cloud which Soda uses when 
 * You are an Admin in your Soda Cloud account, or have a Manager or Editor role for the dataset for which you wish to create a monitor. See [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) for details.
 * (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud sends notifications via email.
 
+Consider following the [Quick start for Soda SQL with Soda Cloud]({% link soda/quick-start-soda-sql.md %}) to learn how to set everything up from scratch.
+
 ## Create a monitor and an alert
 
 For a new monitor, you define several details including which data to check, what checks to run, and whom to notify when bad data triggers an alert.
@@ -118,7 +120,7 @@ In Soda Cloud, you can only create new monitors and alerts for datasets connecte
 
 Instead, you can use SodaCL (Beta) to write checks in a <a href="https://docs.soda.io/soda-core/first-scan.html#the-checks-yaml-file" target="_blank">checks YAML file</a> for Soda Core to execute during a scan. You can <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connect Soda Core to your Soda Cloud account</a> to see the check results after each scan. 
 
-Consider following the [Quick start tutorial for Soda Cloud with Soda Core (Beta)]({% link soda-cloud/quick-start.md %}) to learn how to do so.
+Consider following the [Quick start for Soda Core with Soda Cloud]({% link soda/quick-start-soda-core.md %}) to learn how to do so.
 
 <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />
 [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %})

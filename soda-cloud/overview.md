@@ -3,6 +3,7 @@ layout: default
 title: Soda Cloud
 description: A web app that enables you to visualize data quality test results, set up alerts and track incidents, and automatically detect data quality anomalies.
 parent: Soda Cloud
+redirect_from: /soda-cloud.html
 ---
 <br />
 
@@ -27,8 +28,8 @@ parent: Soda Cloud
                     <img src="/assets/images/icons/icon-cloud@2x.png" width="54" height="40">
                     <h2>Sign up</h2>
                     <a href="https://cloud.soda.io/signup" target="_blank">Sign up for Soda Cloud</a>
-                    <a href="/soda-cloud/connect_to_cloud.html" target="_blank">Connect to Soda SQL</a>
-                    <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">Connect to Soda Core (Beta)</a>
+                    <a href="/soda/quick-start-soda-sql.html" target="_blank">Quick start with Soda SQL</a>
+                    <a href="/soda/quick-start-soda-core.html" target="_blank">Quick start with Soda Core (Beta)</a>
                 </div>
                  <div>
                     <img src="/assets/images/icons/icon-collaboration@2x.png" width="54" height="40">

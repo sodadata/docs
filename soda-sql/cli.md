@@ -57,7 +57,7 @@ Refer to [Add analyze options]({% link soda/scan.md %}#add-scan-options) and [Ad
 
 * Soda collects anonymous Soda SQL usage statistics. Learn more about the [information]({% link soda-sql/global-configuration.md %}) Soda collects.
 * Learn [How Soda SQL works]({% link soda-sql/concepts.md %}).
-* Follow the [Quick start tutorial]({% link soda-sql/5_min_tutorial.md %}) to set up Soda SQL and run your first scan!
+* Follow the [Quick start tutorial]({% link soda/quick-start-soda-sql.md %}) to set up Soda SQL and run your first scan!
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

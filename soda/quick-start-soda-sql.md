@@ -1,38 +1,34 @@
 ---
 layout: default
-title: Quick start tutorial for Soda
-description: 
+title: Quick start for Soda SQL and Soda Cloud
+description: Follow the quick start tutorial to get started with Soda SQL and Soda Cloud. Use demo data to explore functionality and features.
 parent: Get started
+redirect_from:
+- /soda-sql/getting-started/5_min_tutorial.html
+- /soda-sql/5_min_tutorial.html
+- /soda-cloud/quick-start.html
 ---
 
-# Quick start tutorial for Soda OSS and Soda Cloud
+# Quick start for Soda SQL and Soda Cloud
+<br />
 
-<div class="warpper">
-  <input class="radio" id="one" name="group" type="radio" checked>
-  <input class="radio" id="two" name="group" type="radio">
-  <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Soda SQL and Soda Cloud</label>
-  <label class="tab" id="two-tab" for="two">Soda Core (Beta) and Soda Cloud</label>
-  </div>
-  <div class="panels">
-  <div class="panel" id="one-panel" markdown="1">
-![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="100px" width="100px"} 
-Use your command-line interface to connect Soda SQL to a demo data source, create and examine the tests that surface “bad” data in a dataset, then run your first scan in a few minutes.
+![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="105px" width="105px"} 
+Use your command-line interface to connect Soda SQL to a demo warehouse, create and examine the tests that surface “bad” data in a table, then run your first scan in a few minutes.
 
 ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="123px" width="123px"} 
 After you run your scan from the command-line, consider going further by signing up for a free trial account in Soda Cloud, the web application that offers data quality visualizations and much more. 
 
-[Prerequisites](#prerequisites) <br />
+[Tutorial prerequisites](#tutorial-prerequisites) <br />
 [Create a demo warehouse](#create-a-demo-warehouse) <br />
 [Connect Soda SQL to the warehouse](#connect-soda-sql-to-the-warehouse) <br />
 [Create and examine tests](#create-and-examine-tests) <br />
 [Run a scan](#run-a-scan) <br />
-[Connect to Soda Cloud (Optional)](#connect-to-soda-cloud) <br />
+[Connect Soda SQL to Soda Cloud (Optional)](#connect-soda-sql-to-soda-cloud) <br />
 <br />
 
 
 
-## Prerequisites
+## Tutorial prerequisites
 * a GitHub account
 * a recent version of <a href="https://docs.docker.com/get-docker/" target="_blank">Docker</a>
 * <a href="https://docs.docker.com/compose/install/" target="_blank">Docker Compose</a> that is able to run docker-compose files version 3.9 and later
@@ -42,10 +38,10 @@ After you run your scan from the command-line, consider going further by signing
 
 In the context of Soda SQL, a warehouse is a type of data source that represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. 
 
-For this tutorial, use Docker to build a demo PostgreSQL warehouse from a <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">Soda tutorial-demo-project</a> repository in GitHub. The warehouse contains <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC School Bus Breakdowns and Delays</a> data that you can use to see the Soda SQL CLI tool in action. When you clone the repo and spin up the Docker instance, you can use a code editor to edit YAML files later in the tutorial. All the instructions in this tutorial reference this demo warehouse.
+For this tutorial, use Docker to build a demo PostgreSQL warehouse from a <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">Soda tutorial-demo-project</a> repository in GitHub. The warehouse contains public <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC School Bus Breakdowns and Delays</a> data that you can use to see the Soda SQL CLI tool in action. When you clone the repo and spin up the Docker instance, you can use a code editor to edit YAML files later in the tutorial. All the instructions in this tutorial reference this demo warehouse.
 
-1. Clone the <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">tutorial-demo-project repo</a> to your local environment.
-2. In the command-line, navigate to the tutorial project's directory. 
+1. Clone the <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">tutorial-demo-project</a> GitHub repo to your local environment.
+2. In the command-line, navigate to the tutorial repo's directory. 
 ```shell
 cd tutorial-demo-project
 ```
@@ -63,12 +59,12 @@ CONTAINER ID   IMAGE                                    COMMAND                 
 90b555b29ccd   tutorial-demo-project_soda_sql_project   "/bin/bash"              3 hours ago   Exited (2) 3 seconds ago   0.0.0.0:8001->5432/tcp, :::8001->5432/tcp   tutorial-demo-project_soda_sql_project_1
 d7950300de7a   postgres                                 "docker-entrypoint.s…"   3 hours ago   Up 3 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   tutorial-demo-project_soda_sql_tutorial_db_1
 ```
-5. To run Soda commands, you need to get into the container's shell. From the project's root dir where the `docker-compose.yml` file exists, run the following command:
+5. To run Soda commands, you need to get into the container's shell. From the project's root directory where the `docker-compose.yml` file exists, run the following command:
 
 ```bash
 docker-compose run --rm soda_sql_project "cd /workspace && /bin/bash"
 ```
-This command drops you into the container's shell with a prompt like the following:
+This command puts you into the container's shell with a prompt like the following:
 
 ```bash
 root@90461262c35e:/workspace# 
@@ -77,7 +73,7 @@ root@90461262c35e:/workspace#
 
 ## Connect Soda SQL to the warehouse
 
-You can skip this section if you wish, as this tutorial uses a prepared YAML file that includes connection details to the demo warehouse. Though this tutorial uses PostgreSQL, there are many [install packages for Soda SQL]({% link soda-sql/installation.md %}#install) that correspond to different warehouse types.   
+Though this tutorial uses PostgreSQL, there are many [install packages for Soda SQL]({% link soda-sql/installation.md %}#install) that correspond to different warehouse types.   
 
 1. From your command-line interface, verify the installation of Soda SQL in the demo environment using the `soda` command. The CLI output appears as per the following. 
 ```shell
@@ -93,12 +89,12 @@ Commands:
 ```
 2. Create, then navigate to a new Soda SQL warehouse directory. The example below creates a directory named `new_york_bus_breakdowns`.
 ```shell
-$ mkdir new_york_bus_breakdowns
-$ cd new_york_bus_breakdowns
+mkdir new_york_bus_breakdowns
+cd new_york_bus_breakdowns
 ```
 3. Use the `soda create postgres` command to create and pre-populate two files that enable you to configure connection details for Soda SQL to access your warehouse:
 * a `warehouse.yml` file which stores access details for your warehouse ([read more]({% link soda-sql/warehouse.md %}))
-* an `env_vars.yml` file which securely stores data source login credentials ([read more]({% link soda-sql/warehouse.md %}#env_vars-yaml-file))<br />
+* an `env_vars.yml` file which securely stores warehouse login credentials ([read more]({% link soda-sql/warehouse.md %}#env_vars-yaml-file))<br />
 <br />
 Command:
 ```shell
@@ -155,7 +151,7 @@ cd new_york_bus_breakdowns_demo
 
 ## Create and examine tests
 
-1. Use the `soda analyze` command to get Soda SQL to sift through the contents of the warehouse and automatically prepare a scan YAML file for each dataset it discovers. Soda SQL puts the YAML files in a new `/tables` directory in the `new_york_bus_breakdowns_demo` project directory. Read more about [scan YAML]({% link soda-sql/scan-yaml.md %}) files.<br />
+1. From the `new_york_bus_breakdowns_demo` directory, use the `soda analyze` command to get Soda SQL to sift through the contents of the demo warehouse and automatically prepare a scan YAML file for each table it discovers. Soda SQL puts the YAML files in a new `/tables` directory in the `new_york_bus_breakdowns_demo` project directory. Read more about [scan YAML]({% link soda-sql/scan-yaml.md %}) files.<br />
 <br />
 Command:
 ```shell
@@ -179,7 +175,7 @@ WHERE lower(table_schema)='new_york'
   | Starting new HTTPS connection (1): collect.soda.io:443
   | https://collect.soda.io:443 "POST /v1/traces HTTP/1.1" 200 0
 ```
-2. Use the following command to review the contents of the new scan YAML file that Soda SQL created and named `breakdowns.yml`.<br />
+2. Use the following command to review the contents of the new scan YAML file that Soda SQL created and named `breakdowns.yml`. `breakdowns` is the only table in the warehouse. <br />
 
 Command:
 ```shell
@@ -225,27 +221,28 @@ columns:
       - invalid_percentage <= 15
 ```
 
-When it created this file, Soda SQL pre-populated it with four tests it deemed useful based on the data in the dataset it analyzed. Read more about [Defining tests]({% link soda-sql/tests.md %}) and the [Anatomy of the scan YAML file]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file).
+When it created this file, Soda SQL pre-populated it with four tests it deemed useful based on the data in the table it analyzed. Read more about [Defining tests]({% link soda-sql/tests.md %}) and the [Anatomy of the scan YAML file]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file).
 
 | Test | Applies to | Description |
 | ---- | ---------- | ----------- |
-| `row_count > 0` | the entire dataset | Tests that the dataset contains rows, that it is not empty. |
-| `invalid_percentage == 0` | `school_year` column in the dataset | Tests that all values in the column adhere to the `date_inverse` format. Read more about [valid format values]({% link soda-sql/sql_metrics.md %}#valid-format-values). |
-| `invalid_percentage <= 20` | `bus_no` column in the dataset | Tests that at least 80% of the values in the column are whole numbers. |
-| `invalid_percentage <= 15` | `schools_serviced` column in the dataset | Tests that at least 85% of the values in the column are whole numbers. |
+| `row_count > 0` | the entire table | Tests that the table contains rows, that it is not empty. |
+| `invalid_percentage == 0` | `school_year` column in the table | Tests that all values in the column adhere to the `date_inverse` format. Read more about [valid format values]({% link soda-sql/sql_metrics.md %}#valid-format-values). |
+| `invalid_percentage <= 20` | `bus_no` column in the table | Tests that at least 80% of the values in the column are whole numbers. |
+| `invalid_percentage <= 15` | `schools_serviced` column in the table | Tests that at least 85% of the values in the column are whole numbers. |
 
 
 ## Run a scan
 
-1. Use the `soda scan` command to run tests against the data in the breakdowns dataset. As input, the command requires:
+1. Use the `soda scan` command to run tests against the data in the breakdowns table. As input, the command requires:
 * the name of the warehouse to scan
-* the filepath and name of the dataset in the warehouse <br />
+* the filepath and name of the scan YAML file <br />
 <br />
 Command:
 ```shell
 soda scan warehouse.yml tables/breakdowns.yml
 ```
-2. Examine the output of the command, in particular the **Scan summary** at the bottom that indicates the results of the tests Soda SQL ran against your data. In this example, all the tests passed which indicates that there are no issues with the data.<br />
+2. Examine the output of the command, in particular the **Scan summary** at the bottom that indicates the results of the tests Soda SQL ran against your data. <br />
+In this example, all the tests passed which indicates that there are no issues with the data.<br />
 <br />
 Output:
 ```shell
@@ -276,6 +273,7 @@ WHERE lower(table_name) = 'breakdowns'
 ```
 3. (Optional) Open the `tables/breakdowns.yml` file locally in a code editor, adjust the test for the `school_year` column to `invalid_percentage == 5`, then save the change to the file.
 4. (Optional) Run the same scan again to see the output of a failed test.<br />
+<br />
 Command:
 ```shell
 soda scan warehouse.yml tables/breakdowns.yml
@@ -297,21 +295,23 @@ Output:
   | Starting new HTTPS connection (1): collect.soda.io:443
   | https://collect.soda.io:443 "POST /v1/traces HTTP/1.1" 200 0
 ```
-5. If you like, adjust or add more tests to the `breakdowns.yml` file to further explore the things that Soda SQL can do. Use a code editor to edit YAML files.
+5. (Optional) If you like, adjust or add more tests to the `breakdowns.yml` file to further explore the things that Soda SQL can do. Use a code editor to edit YAML files.
 
 To exit the workspace in your command-line interface, type `exit` then press enter.<br />
 OR <br />
 Continue to the next section to connect Soda SQL to a Soda Cloud account.
 
-## Connect to Soda Cloud 
+## Connect Soda SQL to Soda Cloud 
 
-Though you can use Soda SQL as a standalone, CLI tool to monitor data quality, you may wish to connect to the Soda Cloud web application that vastly enriches the data quality monitoring experience. Beyond increasing the observability of your data, Soda Cloud enables you to automatically detect anomalies, and view samples of the rows that failed a test during a scan. Integrate Soda Cloud with your Slack workspace to collaborate with your team on data monitoring.
+Though you can use Soda SQL as a standalone CLI tool to monitor data quality, you may wish to connect to the Soda Cloud web application that vastly enriches the data quality monitoring experience. 
+
+Beyond increasing the observability of your data, Soda Cloud enables you to automatically [detect anomalies]({% link soda-cloud/anomaly-detection.md %}), and view [samples of the rows that failed]({% link soda-cloud/failed-rows.md %}) a test during a scan. Integrate Soda Cloud with your [Slack workspace]({% link soda/integrate-slack.md %}) to collaborate with your team on data monitoring.
 
 Soda SQL uses an API to connect to Soda Cloud. To use the API, you must generate API keys in your Soda Cloud account, then add them to the warehouse YAML file that Soda SQL created. When it runs a scan, Soda SQL pushes the test results to Soda Cloud. 
 
 
 1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. Open the `warehouse.yml` file in a text editor, then add the following to the file:
+2. Open the `warehouse.yml` file in a code editor, then add the following to the file:
 ```yaml
 soda_account:
   host: cloud.soda.io
@@ -319,7 +319,7 @@ soda_account:
   api_key_secret: env_var(API_PRIVATE)
 ```
 3. Save the `warehouse.yml` file.
-4. Open your `data/env_vars.yml` file in a text editor, then add `API_PUBLIC` and `API_PRIVATE` as per the following:
+4. Open the `data/env_vars.yml` file in a code editor, then add `API_PUBLIC` and `API_PRIVATE` as per the following:
 ```yaml
 sodasql_tutorial:
   API_PUBLIC: 
@@ -330,18 +330,18 @@ If you do not see an `env_vars.yml` file, return to complete step 2 of [Connect 
     * Copy the **API Key ID**, then paste it into the `env_vars.yml` file as the value for `API_PUBLIC`.
     * Copy the **API Key Secret**, then paste it into the `env_vars.yml` file as the value for `API_PRIVATE`.
 6. Save the changes to the `env_vars.yml` file. Close the **Create API Key** dialog box in your Soda Cloud account.
-7. From the command-line, in the `new_york_bus_breakdowns_demo` directory, use Soda SQL to scan the datasets in your data source again.
+7. From the command-line, in the `new_york_bus_breakdowns_demo` directory, use Soda SQL to scan the table again.
 ```shell
 $ soda scan warehouse.yml tables/breakdowns.yml
 ```
-8. Navigate to your Soda Cloud account in your browser and refresh the page. Review the results of your scan in **Monitor Results**. 
+8. Go to your Soda Cloud account in your browser and navigate to the **Monitors** dashboard. Review the results of your scan in **Monitor Results**. 
 <br />
 <br />
 ![cloud-tutorial-results](/assets/images/cloud-tutorial-results.png){:height="700px" width="700px"}
-9. Navigate to the **Datasets** dashboard, then click to select the breakdowns dataset to review statistics and metadata about the dataset.
+9. Navigate to the **Datasets** dashboard, then click to select the **breakdowns** table to review statistics and metadata about the table.
 <br />
 <br />
-![cloud-tutorial-results](/assets/images/cloud-tutorial-results.png){:height="700px" width="700px"}
+![dataset-metadata](/assets/images/dataset-metadata.png){:height="700px" width="700px"}
 10. Explore Soda Cloud!
 * [integrate your Slack workspace]({% link soda/integrate-slack.md %}) to receive notifications of failed tests and collaborate on data quality investigations
 * set up [alerts and notifications]({% link soda-cloud/monitors.md %}) for the monitors in your account
@@ -350,18 +350,13 @@ $ soda scan warehouse.yml tables/breakdowns.yml
 
 To exit the workspace in your command-line interface, type `exit` then press enter.
 
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
-  Text 2
-  sfe
-  </div>
-  </div>
-</div>
+## Go further
 
+* [Install Soda SQL]({% link soda-sql/installation.md %}) in your local environment and [connect to your own warehouses]({% link soda-sql/configure.md %}).
+* Learn more about [creating new monitors]({% link soda-cloud/monitors.md %}) for your tables in Soda Cloud.
+* Set up [programmatic scans]({% link soda-sql/programmatic_scan.md %}) to automate data quality monitoring.
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
-## Get help
-
-Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---
