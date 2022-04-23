@@ -185,11 +185,11 @@
       page: release-notes/all.md
     - subtitle: Soda Cloud
       page: release-notes/soda-cloud.md
+    - subtitle: Soda Cloud Reporting API
+      page: release-notes/reporting-api.md
     - subtitle: Soda Core (Beta)
       page: release-notes/soda-core.md
     - subtitle: Soda Spark
       page: release-notes/soda-spark.md
     - subtitle: Soda SQL
       page: release-notes/soda-sql.md
-    - subtitle: Soda Cloud Reporting API
-      page: release-notes/reporting-api.md
