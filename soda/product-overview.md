@@ -14,7 +14,7 @@ parent: Get started
 
 Use Soda SQL on its own to manually or programmatically scan the data that your organization uses to make decisions. Optionally, you can integrate Soda SQL with your data orchestration tool to schedule scans and automate actions based on scan results. Further, you can connect Soda SQL to a Soda Cloud account where you and your team can use the web application to monitor test results and collaborate to keep your data issue-free.
 
-Get started with the [Quick start tutorial for Soda SQL]({% link soda-sql/5_min_tutorial.md %}).
+Get started with the [Quick start tutorial for Soda SQL]({% link soda/quick-start-soda-sql.md %}).
 
 <br />
 
@@ -34,7 +34,7 @@ Beyond increasing the observability of your data, Soda Cloud enables you to auto
 
 <br />
 
-![soda-cl-logo](/assets/images/sodacl-logo.png){:height="130px" width="130px"} 
+![soda-cl-logo](/assets/images/sodacl-logo.png){:height="130px" width="130px"} ![beta](/assets/images/beta.png){:height="40px" width="40px" align="top"}
 
 **Soda Checks Language (Beta)** is a domain-specific language for data reliability. 
 
@@ -46,7 +46,7 @@ Access the [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %}).
 
 <br />
 
-![soda-core-logo](/assets/images/soda-core-logo.png){:height="160px" width="160px"}
+![soda-core-logo](/assets/images/soda-core-logo.png){:height="160px" width="160px"} ![beta](/assets/images/beta.png){:height="40px" width="40px" align="top"}
 
 **Soda Core (Beta)** is a free, open-source, command-line tool that enables you to use the **Soda Checks Language (Beta)** to turn user-defined input into aggregated SQL queries. When it runs a scan on a dataset, Soda Core executes the checks to find invalid, missing, or unexpected data. When your Soda Checks fail, they surface the data that you defined as "bad".
 

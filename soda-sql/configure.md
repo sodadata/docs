@@ -17,7 +17,7 @@ After you [install Soda SQL]({% link soda-sql/installation.md %}), you must crea
 3. Get Soda SQL to discover all the [datasets]({% link soda/glossary.md %}#dataset) in your data source and create a [scan YAML file]({% link soda/glossary.md %}#scan-yaml) for each dataset. The scan YAML files store the test criteria that Soda SQL uses to prepare SQL queries that [scan]({% link soda/glossary.md %}#scan) your data source.
 4. Adjust the contents of your new scan YAML files to add the [tests]({% link soda/glossary.md %}#test) you want to run on your data to check for quality.
 
-Consider following the [Quick start tutorial]({% link soda-sql/5_min_tutorial.md %}) that guides you through configuration and scanning.
+Consider following the [Quick start tutorial]({% link soda/quick-start-soda-sql.md %}) that guides you through configuration and scanning.
 
 ## Configuration instructions
 

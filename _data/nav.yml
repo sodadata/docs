@@ -6,10 +6,10 @@
   subcategories:
   - subtitle: Soda SQL interactive demo
     page: soda-sql/interactive-demo.md
-  - subtitle: Quick start for Soda SQL
-    page: soda-sql/5_min_tutorial.md
-  - subtitle: Quick start for Soda Cloud
-    page: soda-cloud/quick-start.md
+  - subtitle: Quick start for Soda SQL and Soda Cloud
+    page: soda/quick-start-soda-sql.md
+  - subtitle: Quick start for Soda Core and Soda Cloud
+    page: soda/quick-start-soda-core.md
   - subtitle: Soda product overview
     page: soda/product-overview.md
 
@@ -185,11 +185,11 @@
       page: release-notes/all.md
     - subtitle: Soda Cloud
       page: release-notes/soda-cloud.md
+    - subtitle: Soda Cloud Reporting API
+      page: release-notes/reporting-api.md
     - subtitle: Soda Core (Beta)
       page: release-notes/soda-core.md
     - subtitle: Soda Spark
       page: release-notes/soda-spark.md
     - subtitle: Soda SQL
       page: release-notes/soda-sql.md
-    - subtitle: Soda Cloud Reporting API
-      page: release-notes/reporting-api.md
