@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### April 25, 2022
+
+* Updated the [Soda product overview]({% link soda/product-overview.md %}) with a more thorough explanation of the product suite and how the parts work together to establish and maintain data reliability.
+
 #### April 22, 2022
 
 * Replaced the quick start tutorials for Soda SQL and Soda Cloud with two new tutorials: 

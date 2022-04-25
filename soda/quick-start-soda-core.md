@@ -64,22 +64,24 @@ There are several other <a href="https://docs.soda.io/soda-core/get-started.html
 mkdir .soda
 ```
 2. In your Finder, navigate to your new hidden directory (use Command+Shift+. to display hidden folders), then create a new file called `confguration.yml`. 
-3. Open the `configuration.yml` file in a code editor, then copy and paste the following connection details into the file.
+3. Open the `configuration.yml` file in a code editor, then copy and paste the following connection details into the file. Replace the values for each of the fields with your own database-specific details, then save the file.
+
 ```yaml
 data_source my_database_name:
   type: postgres
   connection:
-    host: 
+    host: soda-temp-demo
     port: '5432'
-    username:  
-    password:  
-  database: 
-  schema: 
+    username: sodademo
+    password: env_var(POSTGRES_PASSWORD)
+  database: postgres
+  schema: public
 ```
-4. Add values for each of the fields, all required, then save the file.
+
 * Replace `my_database_name` with the name of your PostgreSQL database. 
 * Note that `connection:` is a header, not a field. 
-* Consider using environment variables to securely store the values of your username and password. 
+* All values are required.
+* Consider using environment variables to securely store the values of your username and password. Refer to Soda SQL documentation for details on [setting system variables]({% link soda-sql/warehouse.md %}#provide-credentials-as-system-variables). 
 
 
 ## Write a check and run a scan
@@ -97,20 +99,20 @@ checks for my_dataset:
 - row_count > 0 
 ```
 4. Save the changes to the `checks.yml` file, then, in Terminal, use the following command to run a scan. As input, the command requires:
-* the name of the data source to scan; replace the value for `my_datasource_name` with the name of your PostgreSQL database
+* the name of the data source to scan; replace the value for `my_database_name` with the name of your PostgreSQL database
 * the filepath and name of the `checks.yml` file
 * Soda Core automatically finds the `configuration.yml` file in the hidden `.soda` directory in your local user environment to retrieve the information it needs to connect to your data source.<br />
 <br />
 Command:
 ```shell
-soda scan -d my_datasource_name checks.yml
+soda scan -d my_database_name checks.yml
 ```
 Output:
-```
+```shell
 Soda Core 3.0.0bx
 Scan summary:
 1/1 check PASSED: 
-    my_dataset in my_datasource_name
+    my_dataset in my_database_name
       row_count > 0 [PASSED]
 All is good. No failures. No warnings. No errors.
 ```
@@ -118,14 +120,14 @@ All is good. No failures. No warnings. No errors.
 6. (Optional) Run the same scan command to see a different scan results in the CLI.<br />
 Command:
 ```shell
-soda scan -d my_datasource_name checks.yml
+soda scan -d my_database_name checks.yml
 ```
 Output:
 ```
 Soda Core 3.0.0bx
 Scan summary:
 1/1 check FAILED: 
-    my_dataset in my_datasource_name
+    my_dataset in my_database_name
       row_count < 5 [FAILED]
         check_value: 1329
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
@@ -148,9 +150,9 @@ SELECT
 FROM orders
 Scan summary:
 1/1 query OK
-  my_datasource_name.my_dataset.aggregation[0] [OK] 0:00:00.285771
+  my_database_name.my_dataset.aggregation[0] [OK] 0:00:00.285771
 1/1 check FAILED: 
-    my_dataset in my_datasource_name
+    my_dataset in my_database_name
       row_count < 5 [FAILED]
         check_value: 1329
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
@@ -186,14 +188,14 @@ soda_account:
 6. From the command-line, in your `soda_tutorial` directory, use Soda Core to scan the datasets in your data source again.<br />
 Command:
 ```shell
-soda scan -d my_datasource_name checks.yml
+soda scan -d my_database_name checks.yml
 ```
 Output:
 ```shell
 Soda Core 3.0.0bx
 Scan summary:
 1/1 check FAILED: 
-    my_dataset in my_datasource_name
+    my_dataset in my_database_name
       row_count < 5 [FAILED]
         check_value: 1329
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.

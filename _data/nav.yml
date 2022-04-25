@@ -6,17 +6,18 @@
   subcategories:
   - subtitle: Soda SQL interactive demo
     page: soda-sql/interactive-demo.md
+  - subtitle: Soda product overview
+    page: soda/product-overview.md
   - subtitle: Quick start for Soda SQL and Soda Cloud
     page: soda/quick-start-soda-sql.md
   - subtitle: Quick start for Soda Core and Soda Cloud
     page: soda/quick-start-soda-core.md
-  - subtitle: Soda product overview
-    page: soda/product-overview.md
+
 
 - title: Concepts
   page: soda/data-monitoring.md
   subcategories:
-  - subtitle: Data quality
+  - subtitle: Data observability
     page: soda/data-monitoring.md
   - subtitle: Scans
     page: soda/scan.md
