@@ -108,7 +108,7 @@ Command:
 soda scan -d my_database_name checks.yml
 ```
 Output:
-```
+```shell
 Soda Core 3.0.0bx
 Scan summary:
 1/1 check PASSED: 
