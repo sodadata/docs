@@ -85,7 +85,7 @@ Soda Cloud makes three metric types available for you to select when you create 
 
 * **Dataset:** a metric type that applies to an entire dataset.
 * **Column:** a metric type that applies only to an individual column in your dataset.
-* **Custom:** also known as a SQL metric, a metric type that enables you to define SQL queries that Soda Core executes against an entire dataset or against individual columns. In Soda Cloud, you can only use the custom metrics you defined in your checks YAML file for Soda Core; you cannot define custom metrics directly in Soda Cloud. 
+* **Custom:** also known as a SQL metric, a metric type that enables you to define SQL queries that Soda Core executes against an entire dataset or against individual columns. In Soda Cloud, you can only use the custom metrics you defined in your scan YAML file for Soda SQL or checks YAML file for Soda Core; you cannot define custom metrics directly in Soda Cloud. 
 
 Soda Cloud makes several metric types available to select, depending upon the type of data in the dataset. Read [Metrics]({% link soda/metrics.md %}) to learn more about using metrics in checks. Some metric types check for missing or valid data in columns in your dataset. If you use one of the metric types listed below, Soda Cloud displays a link to **Modify Validity Rules**. Click the link to define what qualifies as valid or missing data.
 
