@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### April 26, 2022
+
+* Updated a set of [Soda product comparison]({% link soda/product-matrix.md %}) matrices to illustrate the features and functionality available with different Soda tools.
+
 #### April 25, 2022
 
 * Updated the [Soda product overview]({% link soda/product-overview.md %}) with a more thorough explanation of the product suite and how the parts work together to establish and maintain data reliability.
