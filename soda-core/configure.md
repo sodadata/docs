@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Configure Soda Core
-description: Create a configuration YAML file to configure connection details for Soda Core (Beta) to access your data source. 
+description: Create a configuration YAML file to configure connection details for Soda Core (Beta) to access your data source.
 sidebar: core
 parent: Soda Core (Beta)
 ---
@@ -27,11 +27,11 @@ data_source my_database_name:
   type: redshift
   connection:
     host: db
-    username: 
-    password:  
+    username:
+    password:
   database: soda_test
   schema: public
-  access_key_id: 
+  access_key_id:
   secret_access_key:
   role_arn:
   region: eu-west-1
@@ -54,7 +54,7 @@ Access keys and IAM role are mutually exclusive: if you provide values for `acce
 
 ### Supported data types
 
-| Category | Data type | 
+| Category | Data type |
 | ---- | --------- |
 | text | CHARACTER VARYING, CHARACTER, CHAR, TEXT, NCHAR, NVARCHAR, BPCHAR |
 | number | SMALLINT, INT2, INTEGER, INT, INT4, BIGINT, INT8 |
@@ -82,15 +82,16 @@ data_source my_database_name:
     - https://www.googleapis.com/auth/bigquery
     - https://www.googleapis.com/auth/cloud-platform
     - https://www.googleapis.com/auth/drive
+    project_id: "..."
     dataset: sodacore
 ```
 
-| Property |  Required | 
-| -------- |  -------- | 
-| type | required | 
+| Property |  Required |
+| -------- |  -------- |
+| type | required |
 | account_info_json | reqired; inline properties listed below |
 | &ensp;&ensp;type | required |
-| &ensp;&ensp;project_id | required | 
+| &ensp;&ensp;project_id | required |
 | &ensp;&ensp;private_key_id | required |
 | &ensp;&ensp;private_key | required |
 | &ensp;&ensp;client_email | required |
@@ -98,13 +99,14 @@ data_source my_database_name:
 | &ensp;&ensp;auth_uri | required |
 | &ensp;&ensp;token_uri | required |
 | &ensp;&ensp;auth_provider_x509_cert_url | required |
-| &ensp;&ensp;client_x509_cert_url | required | 
+| &ensp;&ensp;client_x509_cert_url | required |
 | auth_scopes | optional; Soda applies the three scopes listed above by default |
+| project_id | optional; Overrides project_id from account_info_json |
 | dataset | required |
 
 ### Supported data types
 
-| Category | Data type | 
+| Category | Data type |
 | ---- | --------- |
 | text | STRING |
 | number | INT64, DECIMAL, BINUMERIC, BIGDECIMAL, FLOAT64 |
@@ -119,8 +121,8 @@ data_source my_database_name:
   connection:
     host: db
     port: '5432'
-    username:  
-    password:  
+    username:
+    password:
   database: postgres
   schema: public
 ```
@@ -137,7 +139,7 @@ data_source my_database_name:
 
 ### Supported data types
 
-| Category | Data type | 
+| Category | Data type |
 | ---- | --------- |
 | text | CHARACTER VARYING, CHARACTER, CHAR, TEXT |
 | number | SMALLINT, INTEGER, BIGINT, DECIMAL, NUMERIC, VARIABLE, REAL, DOUBLE PRECISION, SMALLSERIAL, SERIAL, BIGSERIAL |
@@ -181,7 +183,7 @@ data_source orders:
 
 ### Supported data types
 
-| Category | Data type | 
+| Category | Data type |
 | ---- | --------- |
 | text | CHAR, VARCHAR, CHARACTER, STRING, TEXT |
 | number | NUMBER, INT, INTEGER, BIGINT, SMALLINT, TINYINT, BYTEINT, FLOAT, FLOAT4, FLOAT8, DOUBLE, DOUBLE PRECISION, REAL |
@@ -197,8 +199,8 @@ data_source my_database_name:
   type: postgres
   connection:
     host: db
-    username:  
-    password:  
+    username:
+    password:
   database: postgres
   schema: public
   table_prefix: "public"
@@ -225,13 +227,13 @@ Reading configuration file "configuration.yml"
 Reading SodaCL file "checks.yml"
 Scan execution starts
 Query adventureworks.CUSTOMERS.aggregation[0]:
-SELECT 
-  COUNT(*) 
+SELECT
+  COUNT(*)
 FROM public.CUSTOMERS
 Scan summary:
 1/1 query OK
   adventureworks.CUSTOMERS.aggregation[0] [OK] 0:00:00.035515
-1/1 check PASSED: 
+1/1 check PASSED:
     CUSTOMERS in adventureworks
       row_count > 0 [PASSED]
         check_value: 99
@@ -240,13 +242,13 @@ All is good. No failures. No warnings. No errors.
 
 ## Connect Soda Core to Soda Cloud
 
-1. If you have not already done so, create a free Soda Cloud Developer account at <a href="cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a>. 
+1. If you have not already done so, create a free Soda Cloud Developer account at <a href="cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a>.
 2. To your `configuration.yml`, and adding the following:
 ```yaml
 soda_cloud:
   host: cloud.soda.io
-  api_key: 
-  api_secret: 
+  api_key:
+  api_secret:
 ```
 3. In your Soda Cloud account, navigate to **your avatar** > **Profile** > **API Keys**, then click the plus icon to generate new API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key`.
