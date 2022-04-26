@@ -29,7 +29,7 @@ Anyone with access to your organization's Soda Cloud account is known as a **mem
 The following table outlines the rights of each role.
 
 | Rights                                                                                                       | Admin | User |
-|--------------------------------------------------------------------------------------------------------------|-------|------|
+|--------------------------------------------------------------------------------------------------------------|:-----:|:----:|
 | Access the organization's Soda Cloud account as a member of the team                                         |   ✓   |   ✓  |
 | Invite colleagues to join the organization's Soda Cloud account as members                                   |   ✓   |   ✓  |
 | View Organization Settings for a Soda Cloud account                                                          |   ✓   |      |
@@ -39,7 +39,7 @@ The following table outlines the rights of each role.
 | View a list of members                                                                                       |   ✓   |      |
 | Review the license status of members                                                                         |   ✓   |      |
 | Set the default role for members granted access to a dataset                                                 |   ✓   |      |
-| Adjust the default setting that automatically grants the **Everyone** group access to newly-added datasets   |   ✓   |      |
+| Adjust the default setting that automatically grants the Everyone group access to newly-added datasets       |   ✓   |      |
 | Change the roles of members, including adding more Admins                                                    |   ✓   |      |
 | Reset member passwords or deactivate members                                                                 |   ✓   |      |
 | Download a CSV file of an audit trail of Soda Cloud usage                                                    |   ✓   |      |
@@ -78,7 +78,7 @@ The roles that define who can make changes to [datasets]({% link soda/glossary.m
 The following table outlines the rights of each role associated with individual datasets. Note that because of its universal access to all things in your Soda Cloud account, an **Admin** member as described above has all the rights of a **Manager** relative to datasets and monitors.
 
 | Rights                                                                     | Manager <br /> and Admin | Editor | Viewer |
-|----------------------------------------------------------------------------|--------------------------|--------|--------|
+|----------------------------------------------------------------------------|:------------------------:|:------:|:------:|
 | View Monitor Results of monitors associated with a dataset                 |             ✓            |    ✓   |    ✓   |
 | Create and track Incidents associated with one or more monitor results     |             ✓            |    ✓   |    ✓   |
 | Create monitors associated with the dataset                                |             ✓            |    ✓   |        |

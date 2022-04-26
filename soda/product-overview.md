@@ -31,7 +31,7 @@ There are three OSS CLI tools to choose from:
 
 * ![soda-core-logo](/assets/images/soda-core-logo.png){:height="98px" width="98px"} ![beta](/assets/images/beta.png){:height="30px" width="30px" align="top"} is the newest Soda technology that improves upon the functionality that Soda SQL offers. Available as a beta product, Soda Core works with [SodaCL](#soda-checks-language-sodacl) to make use of even more built-in metrics, notably for freshness, and reference checks between datasets. When it becomes generally available, Soda Core will replace Soda SQL as the primary and most accessible tool for maintaining data reliability. Access <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core documentation</a>.
 
-<!-- Refer to the Soda product matrix to compare options. -->
+Refer to the [Soda product comparison]({% link soda/product-matrix.md %}) to compare the features and functionality of the tools.
 
 These OSS tools essentially serve as the backbone of Soda technology, the software that performs the work of converting user-defined input into SQL queries that execute when you run scans for data quality. To extend your data reliability efforts even further, you have the option of integrating the OSS tools with other technologies.
 * Integrate Soda with your [data orchestration tool]({% link soda-sql/orchestrate_scans.md %}), such as Airflow or Prefect, to schedule scans and automate actions based on scan results.

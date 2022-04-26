@@ -214,6 +214,13 @@ Add mailto link:
 <a href="mailto:support@soda.io">Soda Support</a>
 ```
 
+Add a table:
+```
+| Header - Left-aligned content | Header - Center-aligned content | Header - Right aligned content |
+|---------------------| :--------------------:|---------------------:|
+| Content | Content | Content | Content |
+```
+
 ## Redirect site visitors
 
 The `jekyll-redirect-from` plugin enables authors to redirect users if a page is moved. 
