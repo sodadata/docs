@@ -152,6 +152,7 @@ In Soda Cloud, you can do much more than just review the scan results.
 
 ## Go further
 
+* Access a [Soda product comparison]({% link soda/product-matrix.md %}) to learn about the features and functionalities each tool has to offer.
 * [Install Soda SQL]({% link soda-sql/installation.md %}) or <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core</a>, then sign up for a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
 * Get up and running in a few minutes using the [Quick start for Soda SQL and Soda Cloud](% link soda/quick-start-soda-sql.md %) or the [Quick start for Soda Core and Soda Cloud](% link soda/quick-start-soda-core.md %).
 * Learn more about [scans]({% link soda/scan.md %}) and [metrics]({% link soda/metrics.md %}).

@@ -88,15 +88,17 @@ data_source my_database_name:
 | Property |  Required | 
 | -------- |  -------- | 
 | type | required | 
-| project_id | required | 
-| private_key_id | required |
-| private_key | required |
-| client_email | required |
-| client_id | required |
-| auth_uri | required |
-| token_uri | required |
-| auth_provider_x509_cert_url | required |
-| client_x509_cert_url | required | 
+| account_info_json | reqired; inline properties listed below |
+| &ensp;&ensp;type | required |
+| &ensp;&ensp;project_id | required | 
+| &ensp;&ensp;private_key_id | required |
+| &ensp;&ensp;private_key | required |
+| &ensp;&ensp;client_email | required |
+| &ensp;&ensp;client_id | required |
+| &ensp;&ensp;auth_uri | required |
+| &ensp;&ensp;token_uri | required |
+| &ensp;&ensp;auth_provider_x509_cert_url | required |
+| &ensp;&ensp;client_x509_cert_url | required | 
 | auth_scopes | optional; Soda applies the three scopes listed above by default |
 | dataset | required |
 

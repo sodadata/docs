@@ -90,7 +90,9 @@ Use these matrices to review the features and functionality that Soda products h
 
 ## Go further
 
+* Learn more about [Soda products in general]({% link soda/product-overview.md %}) and how the work together to establish and maintain data reliability.
 * Questions? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Get up and running in a few minutes using the [Quick start for Soda SQL and Soda Cloud](% link soda/quick-start-soda-sql.md %) or the [Quick start for Soda Core and Soda Cloud](% link soda/quick-start-soda-core.md %).
 <br />
 
 ---
