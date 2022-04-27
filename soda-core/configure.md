@@ -101,7 +101,7 @@ data_source my_database_name:
 | &ensp;&ensp;auth_provider_x509_cert_url | required |
 | &ensp;&ensp;client_x509_cert_url | required |
 | auth_scopes | optional; Soda applies the three scopes listed above by default |
-| project_id | optional; Overrides project_id from account_info_json |
+| project_id | optional; overrides project_id from account_info_json |
 | dataset | required |
 
 ### Supported data types
