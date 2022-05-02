@@ -23,7 +23,7 @@ parent: SodaCL
 checks for PRODUCTS:
   - row_count between 10 and 1000
   - missing_count(unit_cost) = 0
-  - invalid_count(unit_cost) = 0
+  - invalid_count(unit_cost) = 0:
       valid min: 0.01
       valid max: 10000
   - invalid_percent(movement_date) < 1 %:
