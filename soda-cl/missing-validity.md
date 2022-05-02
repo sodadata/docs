@@ -236,8 +236,8 @@ checks for CUSTOMERS:
   - invalid_count(product_code) = 0:
 
 configurations for CUSTOMERS:
-  valid values for id: [HIGH, MEDIUM, LOW]
   valid format for id: uuid
+  valid values for cat: [HIGH, MEDIUM, LOW]
   valid regex for email_masked: ^[a-z]+\*\*\*[a-z]+$
   valid min for "usage_PCT": 0
   valid max for "usage_PCT": 100
