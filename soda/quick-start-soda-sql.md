@@ -38,7 +38,23 @@ After you run your scan from the command-line, consider going further by signing
 
 In the context of Soda SQL, a warehouse is a type of data source that represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. 
 
-For this tutorial, use Docker to build a demo PostgreSQL warehouse from a <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">Soda tutorial-demo-project</a> repository in GitHub. The warehouse contains public <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC School Bus Breakdowns and Delays</a> data that you can use to see the Soda SQL CLI tool in action. When you clone the repo and spin up the Docker instance, you can use a code editor to edit YAML files later in the tutorial. All the instructions in this tutorial reference this demo warehouse.
+For this tutorial, use Docker to build a demo PostgreSQL warehouse from a <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">Soda tutorial-demo-project</a> repository in GitHub. The warehouse contains public <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC School Bus Breakdowns and Delays</a> data that you can use to see the Soda SQL CLI tool in action. All the instructions in this tutorial reference this demo warehouse.
+
+Use the instructions below to set up the demo warehouse using a script, or set it up manually by cloning the repo. When you clone the repo and spin up the Docker instance, you can use a code editor to edit YAML files later in the tutorial. 
+
+### Set up with a script
+
+From the command-line, run the following script:
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sodadata/tutorial-demo-project/main/scripts/setup.sh)"
+```
+
+#### Troubleshoot
+**Problem:** When running the script on a Mac, you get an error such as `failed to solve with frontend dockerfile.v0: failed to read dockerfile: error from sender: open /Users/<user>/.Trash: operation not permitted.`
+
+**Solution:** You need to grant Full Disk Access to the Terminal application. Go to System Preferences > Security & Privacy > Privacy, then select Full Disk Access. Check the box next to Terminal to grant full disk access.
+
+### Set up manually
 
 1. Clone the <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">tutorial-demo-project</a> GitHub repo to your local environment.
 2. In the command-line, navigate to the tutorial repo's directory. 
@@ -319,7 +335,7 @@ soda_account:
   api_key_secret: env_var(API_PRIVATE)
 ```
 3. Save the `warehouse.yml` file.
-4. Open the `data/env_vars.yml` file in a code editor, then add `API_PUBLIC` and `API_PRIVATE` as per the following. Note that `sodasql` corresponds to the `name` of the data source connection in `workspace/new_york_bus_breakdowns_demo/warehouse.yml`.
+4. In the `tutorial-demo-project` repo, open the `data/env_vars.yml` file in a code editor, then add `API_PUBLIC` and `API_PRIVATE` as per the following. Note that `sodasql` corresponds to the `name` of the data source connection in `workspace/new_york_bus_breakdowns_demo/warehouse.yml`.
 ```yaml
 sodasql:
   API_PUBLIC: 

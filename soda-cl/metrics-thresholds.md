@@ -20,7 +20,7 @@ For example, in the check defined as `row_count > 0`, `row_count` is the metric,
 [Fixed thresholds and boundaries](#fixed-thresholds-and-boundaries)<br />
 [Warning thresholds and zones](#warning-thresholds-and-zones)<br />
 [Change-over-time thresholds](#change-over-time-thresholds)<br />
-[Anomaly detection thresholds](#anomaly-detection-thresholds)<br />
+[Anomaly detection](#anomaly-detection)<br />
 <br />
 
 

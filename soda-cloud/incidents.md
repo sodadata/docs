@@ -50,11 +50,34 @@ Do you have a suggestion about how to expand Soda Incidents? <a href="http://com
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
-In Soda Cloud, you can only create new Indidents for check results associated with datasets connected to an instance of Soda SQL; you cannot create Incidents for datasets connected to Soda Core (Beta), yet. 
+When you create checks in Soda Core and you have connected Soda Core to a Soda Cloud account, Soda Core pushes all checks results from each scan to Soda Cloud. For a check that failed or triggered a warning, you have the option of creating an **Incident** for that check result in Soda Cloud to track your team's investigation and resolution of a data quality issue. 
 
-Soon, you will be able to use all the Soda Cloud features with Soda Core (Beta) datasets. 
+If you have integrated your Soda Cloud account with a Slack workspace, you can use an Incident's built-in ability to create an incident-specific Slack channel where you and your team can collaborate on the issue investigation. When you resolve or close the incident, Soda archives the channel for future troubleshooting reference.
 
-<a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />
+![incidents](/assets/images/incidents.png){:height="700px" width="700px"}
+
+## Prerequisites
+* You have <a href="https://docs.soda.io/soda-core/get-started.html" target="_blank">installed Soda Core</a> in your environment.
+* You have a Soda Cloud account and you have <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connected the account</a> to Soda Core.
+* You have [integrated a Slack workspace]({% link soda-cloud/collaborate.md %}#integrate-with-slack) with your Soda Cloud account. 
+
+## Create Incidents
+
+1. Log in to your Soda Cloud account, then navigate to the **Monitors** dashboard. 
+2. For the check result you wish to investigate, click the stacked dots at right, then select **Create Incident**. Provide a **Title**, **Severity**, and **Description** of your new incident, then save. 
+3. In the **Incident** column of the monitor result, click the Incident link to access the Incident page where you can record the following details:
+* **Severity**: Minor, Major, or Critical
+* **Status**: Reported, Investigating, Fixing, Resolved
+* **Lead**: a list of team members from whom you can assign the Lead Investigator role
+4. Click **View Slack Channel** to connect directly to a newly-created channel in your Slack workspace that is dedicated to the investigation and resolution of the Incident. Invite team members to the channel to collaborate on resolving the data quality issue. 
+
+## Track Incidents
+
+* As your team works through the investigation of an Incident, use the Incident's **Status** field to keep track of your progress. 
+* In the **Incidents** dashboard, review all Incidents, their severity and status, and the assigned lead. Sort the list of Incidents by severity.
+* From an Incident's page, link other monitor results to the same Incident to expand the investigation landscape.
+
+Access the <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />.
 
   </div>
   </div>
