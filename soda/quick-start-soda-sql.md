@@ -141,13 +141,13 @@ postgres:
   POSTGRES_USERNAME: Eg johndoe
   POSTGRES_PASSWORD: Eg abc123
 ```
-5. If you were connecting to your own warehouse, you would [follow the detailed instructions]({% link soda-sql/configure.md %}) to edit the `warehouse.yml` and `env_vars.yml` file and provide values specific to your warehouse so that Soda SQL could access it. <br />
-<br />
-Because this tutorial uses a sample warehouse, you can use the demo `warehouse.yml` and `env_vars.yml` files that connect to our sample NYC School Bus Breakdowns and Delays data. Use the following commands to navigate to the demo directory.
+5. Because this tutorial uses a sample warehouse, you can use the demo `warehouse.yml` and `env_vars.yml` files that connect to our sample NYC School Bus Breakdowns and Delays data. Use the following commands to navigate to the demo directory before proceeding.
 ```shell
 cd ..
 cd new_york_bus_breakdowns_demo
 ```
+<br />
+If you were connecting to your own warehouse, you would [follow the detailed instructions]({% link soda-sql/configure.md %}) to edit the `warehouse.yml` and `env_vars.yml` file and provide values specific to your warehouse so that Soda SQL could access it. 
 
 ## Create and examine tests
 
@@ -319,13 +319,12 @@ soda_account:
   api_key_secret: env_var(API_PRIVATE)
 ```
 3. Save the `warehouse.yml` file.
-4. Open the `data/env_vars.yml` file in a code editor, then add `API_PUBLIC` and `API_PRIVATE` as per the following:
+4. Open the `data/env_vars.yml` file in a code editor, then add `API_PUBLIC` and `API_PRIVATE` as per the following. Note that `sodasql` corresponds to the `name` of the data source connection in `workspace/new_york_bus_breakdowns_demo/warehouse.yml`.
 ```yaml
-sodasql_tutorial:
+sodasql:
   API_PUBLIC: 
   API_PRIVATE: 
 ```
-If you do not see an `env_vars.yml` file, return to complete step 2 of [Connect Soda SQL to the warehouse](#connect-soda-sql-to-the-warehouse).
 5. In Soda Cloud, navigate to **your avatar** > **Profile** > **API Keys**, then click the plus icon to generate new API keys.
     * Copy the **API Key ID**, then paste it into the `env_vars.yml` file as the value for `API_PUBLIC`.
     * Copy the **API Key Secret**, then paste it into the `env_vars.yml` file as the value for `API_PRIVATE`.
