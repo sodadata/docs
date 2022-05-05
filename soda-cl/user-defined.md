@@ -43,7 +43,7 @@ Use SQL queries to write scan-level checks which are not associated with any tab
 
 Failed row checks use two key-value pairs.
 * The value for `fail query` is a SQL query that selects failed rows. Soda Core executes the query as it is written, including joins.
-* The value for `label` is a short description that states the property that non-failed rows must have. Soda Core uses the `label` in error messages.
+* The value for `name` is a short description that states the property that non-failed rows must have. Soda Core uses the `name` in error messages.
 
 ```yaml
 checks:
@@ -84,7 +84,7 @@ checks for CUSTOMERS:
 ```
 
 The following are standard check configurations that you can apply: 
-* `label` 
+* `name` 
 * `filter`
 * `warn`
 * `fail`
