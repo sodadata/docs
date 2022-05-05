@@ -42,7 +42,7 @@ For example, in the check defined as `row_count > 0`, `row_count` is the metric,
 | `max_length` | column name | The greatest length in a text column. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `avg_length` | column name | The average length in a text column. | Amazon Redshift <br /> GCP Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `percentile` | column name, percentage |  The value below which a percentage of observations fall within a group of observations. For example, `percentile(distance, 0.7)`. | PostgreSQL |
-| `stdev` | column name | The calculated standard deviation of values in a numeric column. | PostgreSQL |
+| `stddev` | column name | The calculated standard deviation of values in a numeric column. | PostgreSQL |
 | `stddev_pop` | column name | The calculated population standard deviation of values in a numeric column. | PostgreSQL |
 | `stddev_samp` | column name | The calculated sample standard deviation of values in a numeric column. | PostgreSQL |
 | `variance` | column name | The calculated variance of the values in a numeric column. | PostgreSQL |
