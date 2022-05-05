@@ -66,13 +66,13 @@ checks for CUSTOMERS:
 | Metric | Description |  Applies to data type | Column config key(s) | 
 | ----- | ----------- | --------------------- | -------------------- |
 | `invalid_count` |  The number of rows that contain invalid values. | text, number, time  | `valid format` <br /> `valid regex` <br /> `valid values` <br /> `valid min_length` <br /> `valid max_length`|
-| `invalid_percentage` | The percentage of rows that contain invalid values.  | text, number, time  |  `valid format` <br /> `valid regex` <br />`valid values`<br /> `valid min_length` <br /> `valid max_length` |
+| `invalid_percent` | The percentage of rows that contain invalid values.  | text, number, time  |  `valid format` <br /> `valid regex` <br />`valid values`<br /> `valid min_length` <br /> `valid max_length` |
 | `missing_count` |  The number of rows in a column that do not contain specific content. | text, number, time  | `missing format` <br /> `missing regex`  <br /> `missing values`  |
-| `missing_percentage` |  The percentage of rows in a column that do not contain specific content. | text, number, time  | `missing format` <br /> `missing regex`  <br /> `missing values`|
+| `missing_percent` |  The percentage of rows in a column that do not contain specific content. | text, number, time  | `missing format` <br /> `missing regex`  <br /> `missing values`|
 | `valid_count` |   The number of rows that contain valid content.  | text, number, time  | `valid format` <br /> `valid regex`  <br /> `valid values` <br /> `valid min_length` <br /> `valid max_length` |
-| `valid_percentage` |  The percentage of rows that contain valid content.  |  text, number, time |  `valid format` <br /> `valid regex`  <br /> `valid values` <br /> `valid min_length` <br /> `valid max_length` |
+| `valid_percent` |  The percentage of rows that contain valid content.  |  text, number, time |  `valid format` <br /> `valid regex`  <br /> `valid values` <br /> `valid min_length` <br /> `valid max_length` |
 | `values_count` |  The number of rows that contain content included in a list of valid values. |  text, number, time | `valid values` <br /> `valid regex`  |
-| `values_percentage` |  The percentage of rows that contain content identified by valid values. | text, number, time | `valid values` <br /> `valid regex`  |
+| `values_percent` |  The percentage of rows that contain content identified by valid values. | text, number, time | `valid values` <br /> `valid regex`  |
 
 ### Column configuration keys
 
