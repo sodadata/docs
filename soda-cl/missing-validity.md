@@ -100,10 +100,10 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 | Valid format value  | Format |
 | ------------------- | ------ |
 | `credit card number` | Four four-digit numbers separated by spaces.<br /> Four four-digit numbers separated by dashes.<br /> Sixteen-digit number.<br /> Four five-digit numbers separated by spaces.<br />|
-| `date eu` | Validates date only, not time. <br />mm/dd/yyyy |
+| `date eu` | Validates date only, not time. <br />dd/mm/yyyy |
 | `date inverse` | Validates date only, not time. <br />yyyy/mm/dd |
 | `date iso 8601` | Validates date and/or time according to <a href="https://www.w3.org/TR/NOTE-datetime" target="_blank">ISO 8601 format </a>. <br /> 2021-04-28T09:00:00+02:00 |
-| `date us` | Validates date only, not time. <br />dd/mm/yyyy |
+| `date us` | Validates date only, not time. <br />mm/dd/yyyy |
 | `decimal` | Number uses a `,` or `.` as a decimal indicator. |
 | `decimal comma` | Number uses `,` as decimal indicator. |
 | `decimal point` | Number uses `.` as decimal indicator. |
