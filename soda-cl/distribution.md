@@ -10,6 +10,7 @@ parent: SodaCL
 Check whether the distribution of a column has changed between two points in time. One of the occasions where this could be useful is when you trained a model at a particular moment and want to find out if the distributions of the columns you used as features have changed since.  
 
 To detect changes in the distribution of a column between different points in time, [hypothesis testing](https://en.wikipedia.org/wiki/Statistical_hypothesis_testing) is used. More specifically, a statistical test is employed to evaluate the difference between two samples. The distribution check will return the [p-value](https://en.wikipedia.org/wiki/P-value) corresponding to the null hypothesis that the two samples came from the same distribution. If the p-value is smaller than a user-specified threshold, the distribution check will return a warning. Depending on whether your data is categorical or continuous you should either use the [Chi-square](https://en.wikipedia.org/wiki/Chi-squared_test) test or the [Kolmogorov-Smirnov](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test) test.
+
 ## Setting up a Local Database (Optional)
 To run the distribution checks you need to have access to a database. If you want to try out the steps on this page but do not have a database to connect to, you can go through the **Set up** section of [this workshop](https://github.com/sodadata/sodacl-workshop#set-up) to set up a demo PostgreSQL database. The steps outlined on this page will use tables and column names that exist in this PostgreSQL database.
 
