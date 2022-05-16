@@ -65,7 +65,7 @@ data_source my_sql_database:
 ```
 You can decide which database to use by passing the value of the corresponding `data_source` key to the `-d` option of the `soda scan` command - this command will be covered in more detail later, but for now you can run `soda scan --help` to find out what it does and which arguments it accepts. The next step in setting up your own distribution checks involves creating a Distribution Reference Object (DRO).
 
-## Generating a Distribution Reference Object (DRO)
+## Generate a Distribution Reference Object (DRO)
 Before setting up your distribution check, you need to generate a Distribution Reference Object (DRO). When you run a distribution check you are comparing the data in a column of your database with a snapshot of the same column at a different point in time. This snapshot is the DRO, which serves as a point of reference. The distribution check will tell you if the difference between the distributions of the two dataset is statistically significant.  
 
 To generate a DRO, you can create a file called `cars_owned_dist_ref.yml` that looks something like this
