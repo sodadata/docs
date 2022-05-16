@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### May 9, 2022
+
+* Updated the <a href="https://docs.soda.io/soda-core/get-started.html" target="_blank">Soda Core installation documentation</a> to indicate that Python 3.8 or greater is required.
+
 #### April 26, 2022
 
 * Updated a set of [Soda product comparison]({% link soda/product-matrix.md %}) matrices to illustrate the features and functionality available with different Soda tools.

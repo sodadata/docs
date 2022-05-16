@@ -19,7 +19,7 @@ Soda Core is a command-line interface (CLI) tool that enables you to scan the da
 
 To use the Soda Core CLI, you must have installed the following on your system.
 
-* Python 3.7 or greater. To check your existing version, use the CLI command: `python --version` or `python3 --version`
+* Python 3.8 or greater. To check your existing version, use the CLI command: `python --version` or `python3 --version`
 * Pip 21.0 or greater. To check your existing version, use the CLI command: `pip --version`
 
 

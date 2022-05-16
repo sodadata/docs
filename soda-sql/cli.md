@@ -50,7 +50,7 @@ $ ingest --help
 $ soda scan --help
 ```
 
-Refer to [Add analyze options]({% link soda/scan.md %}#add-scan-options) and [Add scan options]({% link soda-sql/configure.md %}#add-analyze-options) for details and examples.
+Refer to [Add analyze options]({% link soda-sql/configure.md %}#add-analyze-options) and [Add scan options]({% link soda/scan.md %}#add-scan-options) for details and examples.
 
 
 ## Go further
