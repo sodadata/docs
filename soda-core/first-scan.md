@@ -58,13 +58,13 @@ You write Soda Checks using SodaCL’s built-in metrics, though you can go beyon
 During a scan, all checks return a status of pass, fail, warn, or error.
 
 * If a check passes, you know your data is sound.
-* If a check fail*, it means the scan discovered data that falls outside the expected or acceptable parameters you defined in your check.
+* If a check fails, it means the scan discovered data that falls outside the expected or acceptable parameters you defined in your check.
 * If a check triggers a warning, it means the data falls within the parameters you defined as “worthy of a warning” in your check.
 * If a check returns an error, it means there is a problem with the check itself, such as a syntax error.
 
 Scan command:
 ```shell
-soda scan -d your_datasource_name  -c ~/.soda/configuration.yml checks.yml
+soda scan -d your_datasource_name checks.yml
 ```
 Output:
 ```shell
