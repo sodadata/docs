@@ -147,6 +147,8 @@ checks for retail_products:
 
 ## Define boundaries and zones
 
+WIP 
+
 (Optional) You can set a boundary using a range; must include all variations using parens, square brackets, and minus.
 (Optional) Zones
 
