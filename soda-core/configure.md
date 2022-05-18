@@ -247,8 +247,8 @@ All is good. No failures. No warnings. No errors.
 ```yaml
 soda_cloud:
   host: cloud.soda.io
-  api_key:
-  api_secret:
+  api_key_id:
+  api_key_secret:
 ```
 3. In your Soda Cloud account, navigate to **your avatar** > **Profile** > **API Keys**, then click the plus icon to generate new API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key`.

@@ -14,7 +14,7 @@ Use these checks to discover missing, valid, or invalid values surfaces unexpect
 [Column configuration keys](#column-configuration-keys)<br />
 [Valid format values](#valid-format-values)<br />
 [Checks with relative thresholds](#checks-with-relative-thresholds)<br />
-[Configure global missing or valid values](#configure-global-missing-or-valid-values)<br />
+[Configure global missing or valid values (Experimental)](#configure-global-missing-or-valid-values-experimental)<br />
 [Failed rows](#failed-rows)<br />
 [Go further](#go-further)<br />
 <br />
@@ -71,8 +71,7 @@ checks for CUSTOMERS:
 | `missing_percent` |  The percentage of rows in a column that do not contain specific content. | text, number, time  | `missing format` <br /> `missing regex`  <br /> `missing values`|
 | `valid_count` |   The number of rows that contain valid content.  | text, number, time  | `valid format` <br /> `valid regex`  <br /> `valid values` <br /> `valid min_length` <br /> `valid max_length` |
 | `valid_percent` |  The percentage of rows that contain valid content.  |  text, number, time |  `valid format` <br /> `valid regex`  <br /> `valid values` <br /> `valid min_length` <br /> `valid max_length` |
-| `values_count` |  The number of rows that contain content included in a list of valid values. |  text, number, time | `valid values` <br /> `valid regex`  |
-| `values_percent` |  The percentage of rows that contain content identified by valid values. | text, number, time | `valid values` <br /> `valid regex`  |
+
 
 ### Column configuration keys
 
@@ -86,9 +85,9 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 | `valid format` | Specifies a named valid text format. Can apply only to columns using data type TEXT.  | See [Valid format values](#valid-format-values) table.  |
 | `valid length` | Specifies a value for the string length for valid values. | string |
 | `valid max` | Specifies a maximum value for valid values. | integer or float|
-| `valid max_length` | Specifies a maximum string length for valid values. | string |
+| `valid max length` | Specifies a maximum string length for valid values. | string |
 | `valid min` | Specifies a minimum value for valid values. | integer or float |
-| `valid min_length` | Specifies a minimum string length for valid values. | string |
+| `valid min length` | Specifies a minimum string length for valid values. | string |
 | `valid regex` | Use regex expressions to specify your own custom valid values. | regex, no forward slash delimiters, string only |
 | `valid values` | Specifies several valid values in list format. | values in a list |
 
@@ -170,7 +169,7 @@ checks for CUSTOMERS:
 
 
 
-## Configure global missing or valid values 
+## Configure global missing or valid values (Experimental)
 
 Optionally, you can configure missing or valid values globally; these configurations apply to all checks in the table. This enables you to write checks that use missing and validity metrics without having to declare what qualitifes as missing or valid for each check locally.
 
@@ -181,10 +180,10 @@ checks for CUSTOMERS:
   - missing_percent(growth_pct) < 1
 
 configurations for CUSTOMERS:
-  - missing values for growth_pct: [-1]
+  missing values for growth_pct: [-1]
 ```
 
-### Global configurations and aggregation checks
+### Global configurations and aggregation checks (Experimental)
 
 Globally defined values for missing or valid do not have an effect on aggregation checks. For example, if you globally define `0` as a missing value for a column named `value`, SodaCL still uses `0` when calculating the following aggregation check.
 
@@ -192,14 +191,14 @@ Globally defined values for missing or valid do not have an effect on aggregatio
 checks for CUSTOMERS:
   - avg(value) between 30 and 70
 ```
-### Global configurations that use quotes
+### Global configurations that use quotes (Experimental)
 
 In your global column configurations, you can identify column names with or without quotes. If you use quotes with the column name, any checks you write that do not use the quotes, do not use the global configuration.  
 
 For example, if you reference column `"size"` in a global column configurations, any checks that refer to a column name `size` or `"Size"` do not use the global column configuration.
 
 
-### Local versus global configurations
+### Local versus global configurations (Experimental)
 
 The following example configures what qualifies as missing or valid values locally, within an individual check. 
 
@@ -259,7 +258,7 @@ When you use one of the follow metrics in your checks, Soda Core autmoatically s
 * `invalid`
 * `invalid_percent` 
 
-For the `duplicates` metric, Soda Core store a table of value / frequency for all value combinations with frequency greater than one.
+For the `duplicate_count` metric, Soda Core store a table of value / frequency for all value combinations with frequency greater than one.
 
 Using Soda Core without Soda Cloud, you can still log the failed rows on the console.
 
