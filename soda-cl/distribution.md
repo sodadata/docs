@@ -11,10 +11,11 @@ Use a distribution check to determine whether the distribution of a column has c
 
 <details>
   <summary>What does a distribution check do?</summary>
-  To detect changes in the distribution of a column between different points in time, Soda uses <a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing" target="_blank"> statistical hypothesis testing</a>. In essence, this type of test determines if the available statistical data can support an hypothesis. You provide a null hypothesis and an alternative hypothesis, then the the check results returns a <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">p-value</a> that corresponds to the null hypothesis that the two samples came from the same distribution. You define an acceptable threshold for the p-value so that Soda can register whether the check result falls within acceptable parameters of your threshold. 
+  To detect changes in the distribution of a column between different points in time, Soda uses <a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing" target="_blank"> statistical hypothesis testing</a>. In essence, a distribution check allows you to determine whether there exists enough evidence to conclude that the distribution of a column has changed. It returns the probability that the difference between samples taken at two points in time would have occurred if they came from the same distribution (see <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">p-value</a>). If this probability is smaller than a threshold that you define, the test will warn you that the column's distribution has changed.
   <br /><br />
   Depending on whether your data is categorical or continuous, use the <a href="https://en.wikipedia.org/wiki/Chi-squared_test" target="_blank">chi-square</a> test or the <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank">Kolmogorov-Smirnov</a> test, respectively.
 </details>
+
 
 [Prerequisites](#prerequisites)<br />
 [Install Soda Core Scientific](#install-soda-core-scientific)<br />
