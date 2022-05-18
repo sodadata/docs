@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### May 18, 2022
+
+* Updated the details pertaining to connecting Soda Core to Soda Cloud. The syntax for the key-value pairs for API keys changed from `api_key` and `api_secret` to `api_key_id` and `api_key_secret`.
+
 #### May 9, 2022
 
 * Updated the <a href="https://docs.soda.io/soda-core/get-started.html" target="_blank">Soda Core installation documentation</a> to indicate that Python 3.8 or greater is required.
