@@ -44,7 +44,6 @@ Note that installing Soda Core Scientific also installs the following dependenci
 * <a href="https://pypi.org/project/scipy/" target="_blank">scipy</a>
 * <a href="https://pypi.org/project/soda-core/" target="_blank">soda-core</a>
 
-
 ## Generate a distribution reference object (DRO)
 
 Before defining a distribution check, you must generate a distribution reference object (DRO). 
@@ -148,7 +147,113 @@ checks for fact_sales_quota:
       distribution reference file: ./sales_dist_ref.yml
 ```
 
+## Debug Installation Errors
+
+```bash
+Collecting joblib>=0.16.0
+  Using cached joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+Collecting scipy>=1.3.2
+  Using cached scipy-1.8.0-cp39-cp39-macosx_12_0_arm64.whl (28.7 MB)
+Collecting xarray>=0.17.0
+  Using cached xarray-2022.3.0-py3-none-any.whl (870 kB)
+Collecting statsmodels>=0.13.0
+  Downloading statsmodels-0.13.2-cp39-cp39-macosx_11_0_arm64.whl (9.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.1/9.1 MB 52.4 MB/s eta 0:00:00
+Collecting lightgbm>=2.2.3
+  Using cached lightgbm-3.3.2.tar.gz (1.5 MB)
+  Preparing metadata (setup.py) ... error
+  error: subprocess-exited-with-error
   
+  × python setup.py egg_info did not run successfully.
+  │ exit code: 1
+  ╰─> [6 lines of output]
+      Traceback (most recent call last):
+        File "<string>", line 2, in <module>
+        File "<pip-setuptools-caller>", line 34, in <module>
+        File "/private/var/folders/vj/7nxglgz93mv6cv472sl0pnm40000gq/T/pip-install-j0txphmm/lightgbm_327e689fd1a645dfa052e5669c31918c/setup.py", line 17, in <module>
+          from wheel.bdist_wheel import bdist_wheel
+      ModuleNotFoundError: No module named 'wheel'
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: metadata-generation-failed
+
+× Encountered error while generating package metadata.
+╰─> See above for output.
+
+note: This is an issue with the package mentioned above, not pip.
+hint: See above for details.
+```
+
+If you get the error show above make sure that you run 
+```bash
+pip install wheel
+```
+If you now run
+```bash
+pip install soda-core-scientific 
+```
+you might bump into a few errors. The important ones are 
+```bash
+Building wheels for collected packages: pystan, prophet, PyYAML, antlr4-python3-runtime, lightgbm, ephem, pymeeus, ruamel.yaml.clib, numba, llvmlite
+  Building wheel for pystan (setup.py) ... error
+  error: subprocess-exited-with-error
+  
+  × python setup.py bdist_wheel did not run successfully.
+  │ exit code: 1
+  ╰─> [1 lines of output]
+      Cython>=0.22 and NumPy are required.
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for pystan
+  Running setup.py clean for pystan
+  Building wheel for prophet (setup.py) ... error
+  error: subprocess-exited-with-error
+  
+  × python setup.py bdist_wheel did not run successfully.
+```
+and
+```bash
+      RuntimeError: Could not find a `llvm-config` binary. There are a number of reasons this could occur, please see: https://llvmlite.readthedocs.io/en/latest/admin-guide/install.html#using-pip for help.
+      error: command '/Users/tituskex/Projects/testing/venv/bin/python3' failed with exit code 1
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for llvmlite
+```
+indicating that during the installation of `soda-core-scientific`, the installation of the dependencies `pystan` and `llvmlite` failed. To resolve these errors you have to install these dependencies separately. To install `pystan` first install `cython`, using
+```bash
+pip install cython
+```
+You should then be able to run 
+```bash
+pip install pystan
+```
+If the installation works as expected you should see something like this:
+```bash
+Successfully built pystan
+Installing collected packages: pystan
+Successfully installed pystan-2.19.1.1
+```
+To install `llvmlite`, you need to have a `llvm-config` binary file that is used during the installation process. To proceed with the next step, make sure that you have homebrew installed (see [here](https://brew.sh/)). With homebrew installed, run:
+```bash
+brew install llvm@11
+```
+The `@11` part of this command indicates that homebrew should install `llvm` version 11. This is required because without this addition homebrew will install `llvm` version 13, which is incompatible with `llvmlite`. By installing `llvm`, a binary file called `llvm-config` will be installed. If you followed along and installed `llvm` using homebrew, this file will probably be located at `/opt/homebrew/opt/llvm@11/bin/llvm-config`. To ensure that this binary file is used during the installation of `llvmlite`, use the following command
+```bash
+export LLVM_CONFIG=/opt/homebrew/opt/llvm@11/bin/llvm-config
+```
+This will set the environment variable `LLVM_CONFIG` to the path where you installed the `llvm_config` binary. During the installation of `llvmlite` this environment variable will be used to locate the binary file. If you now run 
+```bash
+pip install llvmlite
+```
+the package should be installed correctly. With `pystan` and `llvmlite` installed you can run
+```bash
+pip install soda-core-scientific 
+```
+and the installation should be successful.
+
 ## Go further
 
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
