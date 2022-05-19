@@ -148,7 +148,7 @@ checks for fact_sales_quota:
 ```
 
 ## Debug Installation Errors
-
+During the installation process you might run into a few errors. If you come across the following
 ```bash
 Collecting joblib>=0.16.0
   Using cached joblib-1.1.0-py2.py3-none-any.whl (306 kB)
@@ -184,8 +184,7 @@ error: metadata-generation-failed
 note: This is an issue with the package mentioned above, not pip.
 hint: See above for details.
 ```
-
-If you get the error show above make sure that you run 
+you can run the following command 
 ```bash
 pip install wheel
 ```
@@ -193,7 +192,7 @@ If you now run
 ```bash
 pip install soda-core-scientific 
 ```
-you might bump into a few errors. The important ones are 
+you might bump into a few new errors. The important ones are 
 ```bash
 Building wheels for collected packages: pystan, prophet, PyYAML, antlr4-python3-runtime, lightgbm, ephem, pymeeus, ruamel.yaml.clib, numba, llvmlite
   Building wheel for pystan (setup.py) ... error
