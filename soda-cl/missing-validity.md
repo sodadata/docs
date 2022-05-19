@@ -107,6 +107,7 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 | `decimal comma` | Number uses `,` as decimal indicator. |
 | `decimal point` | Number uses `.` as decimal indicator. |
 | `email` | name@domain.extension |
+| `integer` | Number is whole. |
 | `ip_address` | Four whole numbers separated by `.` |
 | `ipv4_address` | Four whole numbers separated by `.` |
 | `ipv6_address` | Eight values separated by `:` |
