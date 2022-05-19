@@ -192,27 +192,7 @@ If you now run
 ```bash
 pip install soda-core-scientific 
 ```
-you might bump into a few new errors. The important ones are 
-```bash
-Building wheels for collected packages: pystan, prophet, PyYAML, antlr4-python3-runtime, lightgbm, ephem, pymeeus, ruamel.yaml.clib, numba, llvmlite
-  Building wheel for pystan (setup.py) ... error
-  error: subprocess-exited-with-error
-  
-  × python setup.py bdist_wheel did not run successfully.
-  │ exit code: 1
-  ╰─> [1 lines of output]
-      Cython>=0.22 and NumPy are required.
-      [end of output]
-  
-  note: This error originates from a subprocess, and is likely not a problem with pip.
-  ERROR: Failed building wheel for pystan
-  Running setup.py clean for pystan
-  Building wheel for prophet (setup.py) ... error
-  error: subprocess-exited-with-error
-  
-  × python setup.py bdist_wheel did not run successfully.
-```
-and
+you might bump into a few new errors. The one to consider is 
 ```bash
       RuntimeError: Could not find a `llvm-config` binary. There are a number of reasons this could occur, please see: https://llvmlite.readthedocs.io/en/latest/admin-guide/install.html#using-pip for help.
       error: command '/Users/tituskex/Projects/testing/venv/bin/python3' failed with exit code 1
@@ -221,21 +201,7 @@ and
   note: This error originates from a subprocess, and is likely not a problem with pip.
   ERROR: Failed building wheel for llvmlite
 ```
-indicating that during the installation of `soda-core-scientific`, the installation of the dependencies `pystan` and `llvmlite` failed. To resolve these errors you have to install these dependencies separately. To install `pystan` first install `cython`, using
-```bash
-pip install cython
-```
-You should then be able to run 
-```bash
-pip install pystan
-```
-If the installation works as expected you should see something like this:
-```bash
-Successfully built pystan
-Installing collected packages: pystan
-Successfully installed pystan-2.19.1.1
-```
-To install `llvmlite`, you need to have a `llvm-config` binary file that is used during the installation process. To proceed with the next step, make sure that you have homebrew installed (see [here](https://brew.sh/)). With homebrew installed, run:
+To install `llvmlite`, you need to have a `llvm-config` binary file that is used during the installation process. To proceed with the next step, make sure that you have homebrew installed (see [here](https://brew.sh/)). With homebrew installed, run
 ```bash
 brew install llvm@11
 ```
@@ -243,15 +209,11 @@ The `@11` part of this command indicates that homebrew should install `llvm` ver
 ```bash
 export LLVM_CONFIG=/opt/homebrew/opt/llvm@11/bin/llvm-config
 ```
-This will set the environment variable `LLVM_CONFIG` to the path where you installed the `llvm_config` binary. During the installation of `llvmlite` this environment variable will be used to locate the binary file. If you now run 
-```bash
-pip install llvmlite
-```
-the package should be installed correctly. With `pystan` and `llvmlite` installed you can run
+This will set the environment variable `LLVM_CONFIG` to the path where you installed the `llvm_config` binary. During the installation of `llvmlite` this environment variable will be used to locate the binary file. If you now run
 ```bash
 pip install soda-core-scientific 
 ```
-and the installation should be successful.
+the installation should be successful. Since pip unsuccessfully tries to build a lot of the dependencies using wheels, you will get some errors and warnings.
 
 ## Go further
 
