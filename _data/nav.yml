@@ -113,30 +113,32 @@
   subcategories:
   - subtitle: SodaCL overview
     page: soda-cl/soda-cl-overview.md
-  - subtitle: Soda Core overview
-    page: soda-cl/soda-core-overview.md
+  - subtitle: Metrics and checks
+    page: soda-cl/metrics-and-checks.md
+  - subtitle: Anomaly score check
+    page: soda-cl/anomaly-score.md
+  - subtitle: Dataset filters
+    page: soda-cl/dataset-filters.md
   - subtitle: Distribution checks
     page: soda-cl/distribution.md
   - subtitle: Duplicate checks
     page: soda-cl/duplicates.md
-  - subtitle: For each checks
+  - subtitle: For each
     page: soda-cl/for-each.md
   - subtitle: Freshness checks
     page: soda-cl/freshness.md
-  - subtitle: Metrics and thresholds
-    page: soda-cl/metrics-thresholds.md
   - subtitle: Missing and validity checks
     page: soda-cl/missing-validity.md
-  - subtitle: Quotes
-    page: soda-cl/quotes.md
+  - subtitle: Numeric metrics
+    page: soda-cl/numeric-metrics.md
+  - subtitle: Optional check configurations
+    page: soda-cl/optional-config.md
   - subtitle: Reference checks
     page: soda-cl/reference.md
   - subtitle: Row count checks
     page: soda-cl/row-count.md
   - subtitle: Schema checks
     page: soda-cl/schema.md
-  - subtitle: Table filters
-    page: soda-cl/table-filters.md
   - subtitle: User-defined checks
     page: soda-cl/user-defined.md
 
