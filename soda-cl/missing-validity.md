@@ -265,7 +265,7 @@ Using Soda Core without Soda Cloud, you can still log the failed rows on the con
 
 ## Go further
 
-* Use missing and validity checks with [table filters]({% link soda-cl/table-filters.md %}).
+* Use missing and validity checks with [dataset filters]({% link soda-cl/dataset-filters.md %}).
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.
 
 ---
