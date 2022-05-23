@@ -4,6 +4,8 @@ title: Soda Core overview
 description: Soda Core (Beta) is a free, open-source, command-line tool that enables you to use the Soda Checks Language (Beta) to turn user-defined input into SQL queries.
 sidebar: core
 parent: Soda Core (Beta)
+redirect_from:
+- /soda-cl/soda-core-overview.html
 ---
 
 # Soda Core overview ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
