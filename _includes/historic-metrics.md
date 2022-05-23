@@ -17,7 +17,7 @@ columns:
   ID:
     metrics:
       - distinct
-      - duplicate_copunt
+      - duplicate_count
       - valid_count
       - avg
     historic_metrics:

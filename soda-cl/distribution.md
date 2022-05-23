@@ -37,6 +37,7 @@ Note that installing Soda Core Scientific also installs the following dependenci
 * <a href="https://pypi.org/project/scipy/" target="_blank">scipy</a>
 * <a href="https://pypi.org/project/soda-core/" target="_blank">soda-core</a>
 
+
 ## Generate a distribution reference object (DRO)
 
 Before defining a distribution check, you must generate a distribution reference object (DRO). 
@@ -88,7 +89,6 @@ distribution reference:
 Soda appended a new key called `distribution reference` to the file, together with an array of `bins` and a corresponding array of `weights`. 
 
 Soda uses the `bins` and `weights` to generate a sample from the reference distribution when it executes the distribution check during a scan. By creating a sample using the DRO's bins and weights, you do not have to save the entire – potentially very large - sample.
-
 
 ## Define a distribution check
 
@@ -143,6 +143,7 @@ checks for fact_sales_quota:
 ## Install Soda Core Scientific
 
 {% include install-soda-core-scientific.md %}
+
 
 ## Go further
 

@@ -22,7 +22,7 @@ Use SQL expressions to write failed rows checks that ought to return no rows. If
 
 Failed row checks use two key-value pairs.
 * The value for `fail condition` is a SQL expression that defines the conditions that qualify as failed; it selects failed rows. 
-* The value for `label` is a short description that states the property that non-failed rows must have. Soda Core uses the `label` in error messages.
+* The value for `name` is a short description that states the property that non-failed rows must have. Soda Core uses the `name` in error messages.
 
 ```yaml
 checks for CUSTOMERS:
