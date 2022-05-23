@@ -13,7 +13,8 @@ If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check 
 
 ## Prerequisites
 * a Soda Cloud account, connected to Soda Core
-* Soda Core Scientific package installed
+* Soda Core Scientific package installed 
+<!-- Add link to include page when https://github.com/sodadata/docs/pull/261 is merged -->
 
 
 ## Configuration
@@ -24,23 +25,21 @@ The following example demonstrates how to use the anomaly score for the `row_cou
 checks for CUSTOMERS:
   - anomaly score for row_count < default
 ```
-<br />
+**NOTE:** Currently, only `default` is supported as a score. We will extend our documentation and configuration language in the future to let users define different sensitivity thresholds.
 
-If you wish, you can override the anomaly score. <!--why would you want to do this? what is the .7 a portion of?--> The following check yields a warning check result if the anomaly score for `row_count` exceeds `.7`.
+Anomaly detection can be applied to any of [Soda Core's numeric metrics]({% link numeric-metrics.md %}). For example, if you want to place an anomaly detection for the average of `order_price` in the `orders` table you could write the following check:
 
 ```yaml
-checks for CUSTOMERS:
-  - anomaly score for row_count < .7
+checks for orders:
+  - anomaly score for avg(order_price) < default
 ```
 
-<br />
+You can also use metrics that require nested configurations such as [Missing and Validity Metrics]({% link missing-validity.md %}) by simply nesting the extra configuration as you would for those checks. For example, checking for anomalies over a count of invalid values would look like:
 
-Further, you can use `warn` and `fail` thresholds with the anomaly score. The following example demonstrates how to define the threshold for `row_count` that yields a warning, and the threshold that yields a failed check result. Note that an individual check only ever yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more serious, failed check result. 
 ```yaml
-checks for CUSTOMERS:
-  - anomaly score for row_count:
-      warn: when > .8
-      fail: when > .99
+checkc for orders:
+  - anomaly score for missing_count(id) < default:
+    missing_values: [None, No Value]
 ```
 
 ## Go further
