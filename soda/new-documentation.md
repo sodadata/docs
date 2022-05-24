@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### May 24, 2022
+
+* Updated the documentation for the [distribution check]({% link soda-cl/distribution.md %}) in SodaCL (Beta), including instructions to install Soda Core Scientific.
+
 #### May 19, 2022
 
 * Added new SodaCL documentation to elaborate on some configuration and offer broad language rules. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}), [Optional check configurations]({% link soda-cl/optional-config.md %}), [Numeric metrics]({% link soda-cl/numeric-metrics.md %}), [Dataset filters]({% link soda-cl/dataset-filters.md %}), [Anomaly score check]({% link soda-cl/anomaly-score.md %}) and [For each]({% link soda-cl/for-each.md %}).
