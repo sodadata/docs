@@ -29,8 +29,8 @@ data_source my_database_name:
     host: db
     username:
     password:
-  database: soda_test
-  schema: public
+    database: soda_test
+    schema: public
   access_key_id:
   secret_access_key:
   role_arn:
