@@ -11,7 +11,7 @@ Use a distribution check to determine whether the distribution of a column has c
 
 <details>
   <summary>What does a distribution check do?</summary>
-  To detect changes in the distribution of a column between different points in time, Soda uses <a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing" target="_blank"> statistical hypothesis testing</a>. In essence, a distribution check allows you to determine whether there exists enough evidence to conclude that the distribution of a column has changed. It returns the probability that the difference between samples taken at two points in time would have occurred if they came from the same distribution (see <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">p-value</a>). If this probability is smaller than a threshold that you define, the test will warn you that the column's distribution has changed.
+  To detect changes in the distribution of a column between different points in time, Soda uses <a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing" target="_blank"> statistical hypothesis testing</a>. In essence, a distribution check allows you to determine whether enough evidence exists to conclude that the distribution of a column has changed. It returns the probability that the difference between samples taken at two points in time would have occurred if they came from the same distribution (see <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">p-value</a>). If this probability is smaller than a threshold that you define, the check warns you that the column's distribution has changed.
   <br /><br />
   Depending on whether your data is categorical or continuous, use the <a href="https://en.wikipedia.org/wiki/Chi-squared_test" target="_blank">chi-square</a> test or the <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank">Kolmogorov-Smirnov</a> test, respectively.
 </details>
@@ -32,7 +32,7 @@ Use a distribution check to determine whether the distribution of a column has c
 
 ## Install Soda Core Scientific
 
-1. (Optional) Consider installing both the Soda Core and Soda Core Scientific packages in a virtual environment as described in the <a href="https://docs.soda.io/soda-core/get-started.html#install-the-soda-core-cli" target="_blank">Soda Core documentation</a>. 
+1. (Optional) Consider setting up a virtual environment, as described in the <a href="https://docs.soda.io/soda-core/get-started.html#install-the-soda-core-cli" target="_blank">Soda Core documentation</a>, to use to install Soda Core and Soda Core Scientific. Alternatively, you can create a Soda project directory in your local environment and install both packages in that directory.
 2. From your command-line interface, use the following command to install Soda Core Scientific.
 ```bash
 pip install soda-core-scientific
@@ -72,7 +72,7 @@ If you do not wish to define a filter, remove the key-value pair from the file.
 ```bash
 soda update -d your_datasource_name ./distribution_reference.yml 
 ```
-7. Review the changed contents of your `distribution_reference.yml` file. This following is an example of the information that Soda added to the file.
+7. Review the changed contents of your `distribution_reference.yml` file. The following is an example of the information that Soda added to the file.
 
 ```yaml
 table: dim_customer
