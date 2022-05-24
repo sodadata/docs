@@ -22,28 +22,22 @@ Use a distribution check to determine whether the distribution of a column has c
 [Generate a distribution reference object (DRO)](#generate-a-distribution-reference-object-dro)<br />
 [Define a distribution check](#define-a-distribution-check)<br />
 [Distribution check examples](#distribution-check-examples)<br />
+[Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation)<br />
 [Go further](#go-further) <br />
 <br />
 
 ## Prerequisites
 * You have installed a <a href="https://docs.soda.io/soda-core/get-started.html#requirements" target="_blank">Soda Core package</a> in your environment.
 * You have <a href="https://docs.soda.io/soda-core/configure.html" target="_blank">configured Soda Core</a> to connect to a data source using a <a href="https://docs.soda.io/soda-core/first-scan.html#the-configuration-yaml-file" target="_blank">`configuration.yml` file</a>. 
-* You have installed the [Soda Core Scientific](#install-soda-core-scientific) package in your environment.
+
 
 ## Install Soda Core Scientific
 
-1. (Optional) Consider setting up a virtual environment, as described in the <a href="https://docs.soda.io/soda-core/get-started.html#install-the-soda-core-cli" target="_blank">Soda Core documentation</a>, to use to install Soda Core and Soda Core Scientific. Alternatively, you can create a Soda project directory in your local environment and install both packages in that directory.
-2. From your command-line interface, use the following command to install Soda Core Scientific.
-```bash
-pip install soda-core-scientific
-```
-Note that installing Soda Core Scientific also installs the following dependencies:
-* <a href="https://pypi.org/project/pandas/" target="_blank">pandas</a>
-* <a href="https://pypi.org/project/pydantic/" target="_blank">pydantic</a>
-* <a href="https://pypi.org/project/PyYAML/" target="_blank">pyyaml</a>
-* <a href="https://pypi.org/project/scipy/" target="_blank">scipy</a>
-* <a href="https://pypi.org/project/soda-core/" target="_blank">soda-core</a>
+To use distribution checks, you must install Soda Core Scientific in addition to Soda Core.
 
+{% include install-soda-core-scientific.md %}
+
+Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
 
 ## Generate a distribution reference object (DRO)
 
@@ -147,8 +141,14 @@ checks for fact_sales_quota:
       distribution reference file: ./sales_dist_ref.yml
 ```
 
+## Troubleshoot Soda Core Scientific installation
+
+{% include troubleshoot-soda-core-scientific.md %}
+
+
 ## Go further
 
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.
 
