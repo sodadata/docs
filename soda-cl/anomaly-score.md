@@ -11,36 +11,61 @@ The anomaly score check is powered by a machine learning algorithm that works wi
 
 If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the historic measurements for your checks in a metric store. SodaCL can then use these stored values to establish a baseline of normal measurements against which to evaluate future measurements to identify anomalies. Therefore, you must have a [Soda Cloud account]({% link soda-cloud/overview.md%}) to use change-over-time thresholds.
 
+[Prerequisites](#prerequisites)<br />
+[Install Soda Core Scientific](#install-soda-core-scientific)<br />
+[Define an anomaly score check](#define-an-anomaly-score-check) <br />
+[Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation)<br />
+[Go further](#go-further) <br />
+<br />
+
+
 ## Prerequisites
-* a Soda Cloud account, connected to Soda Core
-* Soda Core Scientific package installed 
-<!-- Add link to include page when https://github.com/sodadata/docs/pull/261 is merged -->
+* You have installed and <a href="https://docs.soda.io/soda-core/configure.html" target="_blank">configured Soda Core</a> to connect to a data source using a <a href="https://docs.soda.io/soda-core/first-scan.html#the-configuration-yaml-file" target="_blank">`configuration.yml` file</a>. 
+* You have a Soda Cloud account and have <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connected Soda Core to Soda Cloud</a>. 
+* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you <a href="https://docs.soda.io/soda-core/get-started.html#requirements" target="_blank">installed Soda Core</a>.
 
 
-## Configuration
+## Install Soda Core Scientific
 
-The following example demonstrates how to use the anomaly score for the `row_count` metric in a check. You can use any numeric metrics in lieu of `row_count`. By default, anomaly score checks yield warning check results, not failures.
+To use an anomaly score check, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core.
+
+{% include install-soda-core-scientific.md %}
+
+Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
+
+
+## Define an anomaly score check
+
+The following example demonstrates how to use the anomaly score for the `row_count` metric in a check. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing, or validity metric]({% link soda-cl/missing-validity.md %}) in lieu of `row_count`. 
 
 ```yaml
 checks for CUSTOMERS:
   - anomaly score for row_count < default
 ```
-**NOTE:** Currently, only `default` is supported as a score. We will extend our documentation and configuration language in the future to let users define different sensitivity thresholds.
 
-Anomaly detection can be applied to any of [Soda Core's numeric metrics]({% link numeric-metrics.md %}). For example, if you want to place an anomaly detection for the average of `order_price` in the `orders` table you could write the following check:
+* Currently, you can only use `default` as the measurement in an anomaly check. 
+* By default, anomaly score checks yield warning check results, not failures.
+
+<br />
+You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing, or validity]({% link soda-cl/missing-validity.md %}) metric in anomaly score checks.  The following example detects anomalies for the average of `order_price` in an `orders` dataset.
 
 ```yaml
 checks for orders:
   - anomaly score for avg(order_price) < default
 ```
 
-You can also use metrics that require nested configurations such as [Missing and Validity Metrics]({% link missing-validity.md %}) by simply nesting the extra configuration as you would for those checks. For example, checking for anomalies over a count of invalid values would look like:
+The following example detects anomalies for the count of missing values in the `id` column. 
 
 ```yaml
-checkc for orders:
+checks for orders:
   - anomaly score for missing_count(id) < default:
     missing_values: [None, No Value]
 ```
+
+## Troubleshoot Soda Core Scientific installation
+
+{% include troubleshoot-soda-core-scientific.md %}
+
 
 ## Go further
 
