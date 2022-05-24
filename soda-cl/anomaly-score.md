@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Anomaly score check
+title: Anomaly score checks
 description: 
 parent: Soda CL 
 ---
 
-# Anomaly score check ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Anomaly score checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
 The anomaly score check is powered by a machine learning algorithm that works with measurements that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalous measurements in time-series data. 
 
