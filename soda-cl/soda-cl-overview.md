@@ -53,6 +53,7 @@ checks for PROSPECTS:
 checks for PRODUCTS:
   - values in organization_key must exist in dim_organization organization_key
 ```
+<br />
 
 <div class="docs-html-content">
     <section class="docs-section" style="padding-top:0">
