@@ -29,11 +29,12 @@ Use a distribution check to determine whether the distribution of a column has c
 ## Prerequisites
 * You have installed a <a href="https://docs.soda.io/soda-core/get-started.html#requirements" target="_blank">Soda Core package</a> in your environment.
 * You have <a href="https://docs.soda.io/soda-core/configure.html" target="_blank">configured Soda Core</a> to connect to a data source using a <a href="https://docs.soda.io/soda-core/first-scan.html#the-configuration-yaml-file" target="_blank">`configuration.yml` file</a>. 
+* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you <a href="https://docs.soda.io/soda-core/get-started.html#requirements" target="_blank">installed Soda Core</a>.
 
 
 ## Install Soda Core Scientific
 
-To use distribution checks, you must install Soda Core Scientific in addition to Soda Core.
+To use a distribution check, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core.
 
 {% include install-soda-core-scientific.md %}
 
