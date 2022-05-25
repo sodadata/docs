@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### May 25, 2022
+
+* Revised and renamed **Data observability** to **[Data concepts]({% link soda/data-concepts.md %})**.
+
 #### May 24, 2022
 
 * Updated the documentation for the [distribution check]({% link soda-cl/distribution.md %}) in SodaCL (Beta), including instructions to install Soda Core Scientific.
@@ -180,7 +184,7 @@ parent: Soda
 
 #### August 30, 2021
 
-* Updated content and changed the name of **Data monitoring** documentation to **[Data quality]({% link soda/data-monitoring.md %})**.
+* Updated content and changed the name of **Data monitoring** documentation to **Data quality**.
 
 #### August 23, 2021
 
