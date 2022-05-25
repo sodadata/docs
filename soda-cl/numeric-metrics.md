@@ -31,7 +31,7 @@ checks for retail_orders_postgres:
   - var_samp(discount) not between 0 and 5
 ```
 
-[Configuration](#configuration) <br />
+[Configure checks with numeric metrics](#configure-checks-with-numeric-metrics) <br />
 [Optional configurations](#optional-configurations)<br />
 [List of numeric metrics](#list-of-numeric-metrics)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
@@ -39,7 +39,7 @@ checks for retail_orders_postgres:
 [Go further](#go-further)<br />
 <br />
 
-## Configuration
+## Configure checks with numeric metrics
 
 You can use the `row_count` metric in checks that apply to entire datasets. 
 ```yaml
@@ -61,7 +61,7 @@ checks for dim_reseller:
 # a check with a fixed threshold
   - duplicate_count(phone) = 0
 # a check with a dynamic threshold
-  - change avg last 7 for row_count < 50
+  - change avg last 7 days row_count < 50
 ```
 
 If you have connected Soda Core to a Soda Cloud account, one numeric metric, `duplicate_count`, automatically sends samples of any failed rows to Soda Cloud. 
@@ -80,7 +80,7 @@ If you have connected Soda Core to a Soda Cloud account, one numeric metric, `du
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters {% raw %} (%) {% endraw %} in values in the check. |  - |
 | ✓ | Use for each to apply checks with numeric metrics to multiple datasets in one scan; see [example](#example-with-for-each-checks) | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
-| ✓ | Apply table filters to partition data during a scan; see [example](#example-with-table-filters). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+| ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 <!--| ✓ | Apply a filter to return results for a specific portion of the data in your dataset. | Filters | -->
 
@@ -117,13 +117,13 @@ checks for dim_reseller:
   - duplicate_count("phone", "address_line1") = 0
 ```
 
-#### Example with table filters
+#### Example with dataset filter
 
 ```yaml
 coming soon
 ```
 
-#### Example with for each checks
+#### Example with for each
 
 ```yaml
 for each table T:
@@ -147,7 +147,7 @@ for each table T:
 | `min` | one or more column names, comma-separated values | The smallest value in a numeric column. | number<br /> time | Amazon Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `min_length` | one or more column names, comma-separated values | The smallest length in a text column. | text | Amazon Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `percentile` | one or more column names, comma-separated values, percentage | The value below which a percentage of observations fall within a group of observations. <br /> For example, `percentile(distance, 0.7)`. | number | PostgreSQL |
-| `row_count` | (optional) one or more column names, comma-separated values| The number of rows in a table or column, if specified. | number<br /> text<br /> time | Amazon Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake |
+| `row_count` | (optional) one or more column names, comma-separated values| The number of rows in a dataset or column, if specified. | number<br /> text<br /> time | Amazon Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake |
 | `stddev` | one or more column names, comma-separated values | The calculated standard deviation of values in a numeric column. | number | PostgreSQL |
 | `stddev_pop` | one or more column names, comma-separated values | The calculated population standard deviation of values in a numeric column. | number |  PostgreSQL |
 | `stddev_samp` | one or more column names, comma-separated values | The calculated sample standard deviation of values in a numeric column. | number | PostgreSQL |
@@ -163,46 +163,48 @@ for each table T:
 
 ## Fixed and dynamic thresholds
 
-Numeric metrics can specify a fixed measurement value, or **fixed threshold**, which is not relative to any other measurement. `row_count > 0` is an example of a check with a fixed threshold as the measurement value, `0`, is absolute. Refer to [Fixed thresholds]({% link soda-cl/metrics-and-checks.md %}#fixed-thresholds) for details.
+Numeric metrics can specify a **fixed threshold** which is not relative to any other threshold. `row_count > 0` is an example of a check with a fixed threshold as the threshold value, `0`, is absolute. Refer to [Checks with fixed thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) for details.
 
-Only checks that use numeric metrics can specify a **dynamic threshold**, a measurement value that is relative to a past measurement value. Sometimes referred to a change-over-time threshold, you use these dynamic threshold measurements to gauge changes to the same metric over time. 
+Only checks that use numeric metrics can specify a **dynamic threshold**, a value that is relative to a previously-measured, or historic, value. Sometimes referred to a change-over-time threshold, you use these dynamic thresholds to gauge changes to the same metric over time. 
 
-If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account. Soda Cloud stores the value of each measurement that a check result produces during a scan. Over time, these historic measurements accumulate and you can reference them to detect anomalous measurements relative to previous measurements for the same metric. Therefore, you must have a Soda Cloud account to use dynamic thresholds.
+If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account. Soda Cloud stores the measured value of each metric that a check result produces during a scan in a Cloud Metric Store. Over time, these historic values accumulate and you can reference them to detect anomalous values relative to historic values for the same metric. Therefore, you must have a Soda Cloud account to use dynamic thresholds.
+
+<br />
 
 The most basic of dynamic threshold checks has three or four mutable parts:
 
 | a metric | 
 | an argument (optional) | 
 | a comparison symbol or phrase| 
-| a measurement |  
+| a threshold |  
 
 <br />
 
-The example below defines a check that applies to the entire dataset and counts the rows in the dataset, then compares that value to the preceding value contained in the Cloud Metric Store. If the `row_count` at present is greater than the preceding measurement for `row_count` by more than 49, the check fails.
+The example below defines a check that applies to the entire dataset and counts the rows in the dataset, then compares that value to the preceding value contained in the Cloud Metric Store. If the `row_count` at present is greater than the previously-recorded historic value for `row_count` by more than 49, the check fails.
 
 ```yaml
 checks for dim_customer:
-  - change for row_count < 50
+  - change row_count < 50
 ```
 
 
 | metric |`row_count` |
 | comparison symbol | `>` |
-| measurement | `50` | 
+| threshold | `50` | 
 
 <br />
 
-The example below applies to only the `phone` column in the dataset and counts the rows that contain duplicate values, then compares that value to the preceding value contained in the Cloud Metric Store. If the number of duplicate phone numbers at present is greater than the preceding measurement for `duplicate_count` by more than 20, the check fails.
+The example below applies to only the `phone` column in the dataset and counts the rows that contain duplicate values, then compares that value to the preceding value contained in the Cloud Metric Store. If the number of duplicate phone numbers at present is greater than the preceding historic values for `duplicate_count` by more than 20, the check fails.
 
 ```yaml
 checks for dim_customer:
-  - change for duplicate_count(phone) < 20
+  - change duplicate_count(phone) < 20
 ```
 
 | metric | `duplicate_count` |
 | argument | `(phone)` |
 | comparison symbol | `<` |
-| measurement | `20`  |
+| threshold | `20`  |
 
 <br />
 
@@ -213,28 +215,28 @@ A more complex dynamic threshold check includes two more optional mutable parts:
 | a metric | 
 | an argument (optional) | 
 | a comparison symbol or phrase| 
-| a measurement |  
+| a threshold |  
 
 <br />
 
 
 ```yaml
 checks for dim_customer:
-  - change avg last 7 for row_count < 50
-  - change min last 7 for row_count < 50
-  - change max last 7 for row_count < 50
+  - change avg last 7 days row_count < 50
+  - change min last 7 days row_count < 50
+  - change max last 7 days row_count < 50
 ```
  
-The example above defines three checks, one for each type of calculation available to use, `avg`, `min`, and `max`, all of which apply to the entire dataset. Each check value uses a count of `7` which refers to the preceding seven measurements. 
+The example above defines three checks, one for each type of calculation available to use, `avg`, `min`, and `max`, all of which apply to the entire dataset. Each check value uses a count of `7` which refers to the values collected over the course of the preceding seven days. 
 
-The first check counts the rows in the dataset, then compares that value to the calculated average of the preceding seven measurements for that metric contained in the Cloud Metric Store. If the `row_count` at present is greater than the average of the seven preceding measurements by more than 50, the check fails. 
+The first check counts the rows in the dataset, then compares that value to the calculated average of the preceding seven values for that metric contained in the Cloud Metric Store. If the `row_count` at present is greater than the average of the seven preceding historic values by more than 50, the check fails. 
 
-The second and third checks in the example determine the minimum value and maximum value of the preceding seven measurements respectively, then use that value to compare to the present measurement value.
+The second and third checks in the example determine the minimum value and maximum value of the preceding seven historic values respectively, then use that value to compare to the present value.
 
 ## Go further
 
 * Use numeric metrics in checks with alert configurations to establish [warn and fail zones]({% link soda-cl/optional-config.md %}#define-zones-using-alert-configurations)
-* Use numeric metrics in checks to define ranges of acceptable measurements using [boundary thresholds]({% link soda-cl/metrics-and-checks.md %}#define-boundaries-with-fixed-thresholds).
+* Use numeric metrics in checks to define ranges of acceptable thresholds using [boundary thresholds]({% link soda-cl/metrics-and-checks.md %}#define-boundaries-with-fixed-thresholds).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

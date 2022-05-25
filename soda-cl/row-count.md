@@ -33,7 +33,7 @@ checks for CUSTOMERS:
   - row_count between 1000 and 2000
 ```
 
-Reference the [Metrics and thresholds]({% link soda-cl/metrics-thresholds.md %}#fixed-thresholds-and-boundaries) documentation for a list of all thresholds that numeric checks can use.
+Reference the [Metrics and thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-dynamic-thresholds) documentation for a list of all thresholds that numeric checks can use.
 
 ## Row count checks with filters
 
@@ -98,7 +98,7 @@ Learn more on [table filters](./table-filters.md)
 
 ## Change-over-time row count checks
 
-Refer to [Change-over-time thresholds]({% link soda-cl/metrics-thresholds.md %}#change-over-time-thresholds) for full details.
+Refer to [Change-over-time thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-dynamic-thresholds) for full details.
 
 ```yaml
 checks for CUSTOMERS:

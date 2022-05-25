@@ -119,7 +119,7 @@ checks for CUSTOMERS:
         when schema changes: any
 ```
 
-`when schema changes` requires at least a Free Developer Soda Cloud account for storing the historic schema measurements
+`when schema changes` requires at least a Free Developer Soda Cloud account for storing the historic schema values
 
 But it is also possible to list individual changes on which to fail or warn:
 ```yaml

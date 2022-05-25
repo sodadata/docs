@@ -2,7 +2,7 @@
 layout: default
 title: Metrics
 description: A metric is a property of the data in your database. You use metrics to define the tests that Soda executes against your data during a scan.
-parent: Soda
+parent: Concepts
 ---
 
 # Metrics
