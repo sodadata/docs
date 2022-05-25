@@ -31,7 +31,7 @@ checks for retail_orders_postgres:
   - var_samp(discount) not between 0 and 5
 ```
 
-[Configuration](#configuration) <br />
+[Configure checks with numeric metrics](#configure-checks-with-numeric-metrics) <br />
 [Optional configurations](#optional-configurations)<br />
 [List of numeric metrics](#list-of-numeric-metrics)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
@@ -39,7 +39,7 @@ checks for retail_orders_postgres:
 [Go further](#go-further)<br />
 <br />
 
-## Configuration
+## Configure checks with numeric metrics
 
 You can use the `row_count` metric in checks that apply to entire datasets. 
 ```yaml
