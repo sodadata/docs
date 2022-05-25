@@ -45,17 +45,16 @@ Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-cor
 ```yaml
 automated monitoring:
   tables:
-    - your-dataset-you-want-to-include
+    - your-dataset
 ```
 3. Replace the following values with your own dataset and threshold details.
-* `your-dataset-you-want-to-include` - the name of your dataset that you want to include for automated monitoring
-* `your-dataset-you-want-to-exclude` - the name of your dataset that you want to exclude from automated monitoring
+* `your-dataset` - the name of your dataset that you want to apply automated monitoring
 
 4. Run a soda scan of your data source to execute the automated monitoring you defined. Refer to <a href ="https://docs.soda.io/soda-core/first-scan.html#run-a-scan" target="_blank">Soda Core documentation</a> for more details.
 ```bash
 soda scan -d your_datasource_name checks.yml 
 ```
-Note that the number of rows for your table  `your-dataset-you-want-to-include` will be sent to Soda Cloud and the anomaly detection starts only after sending four scan results in four different days. For the schema check, the first `soda scan` will send the schema reference. Starting from the second `soda scan`, the schema checks will be applied using the previous scan's schema reference. The schema reference is overwritten after completing the schema checks.
+Note that the number of rows for your table  `your-dataset` will be sent to Soda Cloud and the anomaly detection starts only after sending four scan results in four different days. For the schema check, the first `soda scan` will send the schema references. Starting from the second `soda scan`, the schema checks will be applied using the previous scan's schema reference. The schema reference is overwritten after completing the schema checks.
 
 <br />
 
