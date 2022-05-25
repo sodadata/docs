@@ -11,7 +11,7 @@ parent: Soda
 
 #### May 24, 2022
 
-* Updated the documentation for the [distribution check]({% link soda-cl/distribution.md %}) in SodaCL (Beta).
+* Updated the documentation for the [distribution check]({% link soda-cl/distribution.md %}) in SodaCL (Beta), including instructions to install Soda Core Scientific.
 
 #### May 19, 2022
 
