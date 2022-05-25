@@ -43,8 +43,8 @@ checks for dim_employee:
 ## Add alert configurations
 
 When Soda Core runs a scan of your data, it returns a check result for each check. Each check results in one of three default states:
-* **pass**: the values in the dataset match or fall within the thresholds you specified for the measurement
-* **fail**: the values in the dataset _do not_ match or fall within the thresholds you specified for the measurement
+* **pass**: the values in the dataset match or fall within the thresholds you specified
+* **fail**: the values in the dataset _do not_ match or fall within the thresholds you specified
 * **error**: the syntax of the check is invalid
 
 However, you can add alert configurations to a check to explicitly specify the conditions that warrant a `warn` and/or `fail` result. Setting more granular conditions for a warn or fail state of a check result gives you more insight into the severity of a data quality issue. 
@@ -164,7 +164,7 @@ Sending results to Soda Cloud
 
 ### Define zones using alert configurations
 
-Use alert configurations to write checks that define fail or warn zones. By establishing these zones, the check results register as more severe the further a measurement falls outside the parameters you specify as acceptable for your data quality. 
+Use alert configurations to write checks that define fail or warn zones. By establishing these zones, the check results register as more severe the further a measured value falls outside the threshold parameters you specify as acceptable for your data quality. 
 
 The example that follows defines split warning and failure zones in which inner is good, and outer is bad. The chart below illustrates the pass (white), warn (yellow), and fail (red) zones. Note that an individual check only ever yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more serious, failed check result. 
 
