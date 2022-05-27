@@ -87,7 +87,7 @@ parent: Soda
 
 #### January 11, 2022
 
-* Added requirement for installing Soda Spark on a DataBricks cluster. See [Soda Spark Requirements]({% link soda-spark/install-and-use.md %}#requirements).
+* Added requirement for installing Soda Spark on a Databricks cluster. See [Soda Spark Requirements]({% link soda-spark/install-and-use.md %}#requirements).
 
 #### December 22, 2021
 

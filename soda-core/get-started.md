@@ -19,22 +19,24 @@ Soda Core is a command-line interface (CLI) tool that enables you to scan the da
 
 To use the Soda Core CLI, you must have installed the following on your system.
 
-* Python 3.8 or greater. To check your existing version, use the CLI command: `python --version` or `python3 --version`
+* Python 3.8 or greater. To check your existing version, use the CLI command: `python --version` or `python3 --version` <br /> 
+If you have not already installed Python, consider using <a href="https://github.com/pyenv/pyenv/wiki" target="_blank">pyenv</a> to manage multiple versions of Python in your environement.
 * Pip 21.0 or greater. To check your existing version, use the CLI command: `pip --version`
 
 
 
 ## Install the Soda Core CLI
 
-Best practice dictates that you install the Soda Core CLI using a virtual environment.
-
-1. In your command-line interface tool, create a virtual environment in the `.venv` directory.
+1. Best practice dictates that you install the Soda Core CLI using a virtual environment. In your command-line interface tool, create a virtual environment in the `.venv` directory using the commands below. Depending on your version of Python, you may need to replace `python` with `python3` in the first command.
 ```shell
 python -m venv .venv
 source .venv/bin/activate
+```
+2. Upgrade pip inside your new virtual environment.
+```shell
 pip install --upgrade pip
 ```
-2. Execute the following command, replacing `soda-core-postgres` with the install package that matches the type of data source you use to store data.
+3. Execute the following command, replacing `soda-core-postgres` with the install package that matches the type of data source you use to store data.
 ```shell
 pip install soda-core-postgres
 ```

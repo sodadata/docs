@@ -117,10 +117,10 @@
     page: soda-cl/metrics-and-checks.md
   - subtitle: Optional check configurations
     page: soda-cl/optional-config.md
-  - subtitle: Missing metrics
-    page: soda-cl/missing-metrics.md
   - subtitle: Numeric metrics
     page: soda-cl/numeric-metrics.md
+  - subtitle: Missing metrics
+    page: soda-cl/missing-metrics.md
   - subtitle: Validity metrics
     page: soda-cl/validity-metrics.md
   - subtitle: Anomaly score checks
