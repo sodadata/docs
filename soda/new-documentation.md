@@ -9,6 +9,12 @@ parent: Soda
 
 <br />
 
+#### May 26, 2022
+
+* Updated various Soda Core documents to include support for Amazon Athena. See <a href="https://docs.soda.io/soda-core/get-started.html#install-the-soda-core-cli" target="_blank">Get started</a>.
+* Update [Optional check configurations]({% link soda-cl/optional-config.md %}) to include instructions for use an in-check filter to check a portion of your data.
+* Added new documentation for [Missing metrics]({% link soda-cl/missing-metrics.md %}) and [Validity metrics]({% link soda-cl/validity-metrics.md %}).
+
 #### May 25, 2022
 
 * Revised and renamed **Data observability** to **[Data concepts]({% link soda/data-concepts.md %})**.

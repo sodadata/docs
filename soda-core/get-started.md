@@ -41,6 +41,7 @@ pip install soda-core-postgres
 
 | Data source | Install package | 
 | ----------- | --------------- | 
+| Amazon Athena | soda-core-athena |
 | Amazon Redshift | soda-core-redshift | 
 | GCP Big Query | soda-core-bigquery | 
 | PostgreSQL | soda-core-postgres |
