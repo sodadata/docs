@@ -9,8 +9,9 @@ parent: SodaCL
 
 As in the name, automated monitoring automates common checks for the users. In the latest version, following checks are automated for the specified tables in your data source;
 
-1. **Anomaly detection on row count**: Monitoring the number of rows after each scan and detects the anomalies if the latest row count behave abnormal.
-2. **Schema checks**: Monitoring the schema changes including column addition, deletion, type changes and index changes. Default behavior is that soda scan will fail in case column deletion, type changes and index changes. For column addition, it will raise a warning.
+1. **Anomaly detection on row count**: Monitoring the number of rows after each scan and detects the anomalies if the latest row count behave abnormal. 
+See  <a href="https://docs.soda.io/soda-cl/anomaly-score.html" target="_blank">anomaly detection</a> documentation
+2. **Schema checks**: Monitoring the schema changes including column addition, deletion, type changes and index changes. Default behavior is that soda scan will fail in case column deletion, type changes and index changes. For column addition, it will raise a warning. See  <a href="https://docs.soda.io/soda-cl/schema.html" target="_blank">schema checks</a> documentation
 
 
 [Prerequisites](#prerequisites)<br />
@@ -24,7 +25,7 @@ As in the name, automated monitoring automates common checks for the users. In t
 
 ## Prerequisites
 * You have installed a <a href="https://docs.soda.io/soda-core/get-started.html#requirements" target="_blank">Soda Core package</a> in your environment.
-* You have <a href="https://docs.soda.io/soda-core/configure.html" target="_blank">configured Soda Core</a> to connect to a data source using a <a href="https://docs.soda.io/soda-core/first-scan.html#the-configuration-yaml-file" target="_blank">`configuration.yml` file</a>. 
+* You have <a href="https://docs.soda.io/soda-core/configure.html" target="_blank">configured Soda Core</a> to connect to a data source using a <a href="https://docs.soda.io/soda-core/first-scan.html#the-configuration-yaml-file" target="_blank">`configuration.yaml` file</a>. 
 * You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you <a href="https://docs.soda.io/soda-core/get-started.html#requirements" target="_blank">installed Soda Core</a>.
 * You <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connect soda core to soda cloud</a>
 
@@ -40,21 +41,26 @@ Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-cor
 
 ## Define automated monitoring check
 
-1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including automated monitoring checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the <a href="https://docs.soda.io/soda-core/first-scan.html#the-checks-yaml-file" target="_blank">Soda Core documentation</a>.
-2. In your new file, add the following example content.
+1. If you have not already done so, create a `checks.yaml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including automated monitoring checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the <a href="https://docs.soda.io/soda-core/first-scan.html#the-checks-yaml-file" target="_blank">Soda Core documentation</a>.
+
+2. In your new file, add the following example content. For `tables` syntax, optionally you can use `include` or `exclude` tags together with `wildcards` to choose or ignore multiple tables as shown in [this example](#automated-monitoring-examples).
 ```yaml
 automated monitoring:
   tables:
     - your-dataset
 ```
-3. Replace the following values with your own dataset and threshold details.
+
+3. Replace `your-dataset` with your own dataset.
 * `your-dataset` - the name of your dataset that you want to apply automated monitoring
 
-4. Run a soda scan of your data source to execute the automated monitoring you defined. Refer to <a href ="https://docs.soda.io/soda-core/first-scan.html#run-a-scan" target="_blank">Soda Core documentation</a> for more details.
+4. Run a soda scan of your data source to execute the automated monitoring you defined. Refer to <a href ="https://docs.soda.io/soda-core/first-scan.html#run-a-scan" target="_blank">Soda Core documentation</a> for more details. After running the scan, the check results will be shared with soda cloud.
 ```bash
-soda scan -d your_datasource_name checks.yml 
+soda scan -d your_datasource_name checks.yaml
 ```
-Note that the number of rows for your table  `your-dataset` will be sent to Soda Cloud and the anomaly detection starts only after sending four scan results in four different days. For the schema check, the first `soda scan` will send the schema references. Starting from the second `soda scan`, the schema checks will be applied using the previous scan's schema reference. The schema reference is overwritten after completing the schema checks.
+
+5. From your browser, go to <a href="https://dev.sodadata.io/datasets/overview" target="_blank">soda cloud datasets</a> and sign in with your account to see the automated monitoring checks. When you sign in, click your `your-dataset` that you defined in the `check.yaml`file from the UI. The automated monitoring checks will appear with the `INSIGHT` tag. 
+
+**Important Note:** For the schema check, the first `soda scan` will send the schema references to cloud. Starting from the second `soda scan`, the schema checks will be applied using the previous scan's schema reference. The schema reference is overwritten after completing the schema checks. For automated anomaly detection on row counts, the check starts only after sending four scan results to have sufficient data to detect the anomalies using the past data. 
 
 <br />
 
