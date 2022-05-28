@@ -44,7 +44,7 @@ checks for dim_customer:
 In the context of Soda check types, you use validity metrics in Standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
 
 You can use all validity metrics in checks that apply to individual columns in a dataset; you cannot use validity metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
-* You must use a [configuration key:value pair] to define what qualifies as an valid value 
+* You must use a [configuration key:value pair](#list-of-configuration-keys) to define what qualifies as an valid value. 
 * If you wish, you can add a `%` character to the threshold for a `invalid_percent` metric for improved readability. 
 
 ```yaml
