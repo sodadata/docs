@@ -36,7 +36,7 @@ Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-cor
 
 ## Define an anomaly score check
 
-The following example demonstrates how to use the anomaly score for the `row_count` metric in a check. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing, or validity metric]({% link soda-cl/missing-validity.md %}) in lieu of `row_count`. 
+The following example demonstrates how to use the anomaly score for the `row_count` metric in a check. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing](% link soda-cl/missing-metrics.md %), or [validity]({% link soda-cl/validity-metrics.md %}) metric in lieu of `row_count`. 
 
 ```yaml
 checks for CUSTOMERS:
@@ -47,7 +47,7 @@ checks for CUSTOMERS:
 * By default, anomaly score checks yield warning check results, not failures.
 
 <br />
-You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing, or validity]({% link soda-cl/missing-validity.md %}) metric in anomaly score checks.  The following example detects anomalies for the average of `order_price` in an `orders` dataset.
+You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing](% link soda-cl/missing-metrics.md %), or [validity]({% link soda-cl/validity-metrics.md %}) metric in anomaly score checks.  The following example detects anomalies for the average of `order_price` in an `orders` dataset.
 
 ```yaml
 checks for orders:

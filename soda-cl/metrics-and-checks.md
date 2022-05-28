@@ -130,8 +130,8 @@ checks for customers:
 
 Standard check types use the same pattern to compose a check, but the metrics they use can, themselves, be divided into three categories:
 1. [numeric]({% link soda-cl/numeric-metrics.md %}) - metrics that involve tabulation or calculation of data
-2. missing - metrics that identify values or formats of data that qualifies as missing, such as NULL
-3. validity - metrics that identify values or formats of data that, according to your own business rules, are acceptable or unacceptable
+2. [missing]({% link soda-cl/missing-metrics.md %})  - metrics that identify values or formats of data that qualify as missing, such as NULL
+3. [validity]({% link soda-cl/validity-metrics.md %})  - metrics that identify values or formats of data that, according to your own business rules, are acceptable or unacceptable
 
 ### Checks with fixed thresholds
 

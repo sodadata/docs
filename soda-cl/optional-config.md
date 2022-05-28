@@ -16,8 +16,8 @@ The following optional configurations are available to use with most, though not
 
 [Customize check names](#customize-check-names)<br />
 [Add alert configurations](#add-alert-configurations)<br />
+[Add a filter to a check](#add-a-filter-to-a-check)<br />
 [Use quotes in a check](#use-quotes-in-a-check)<br />
-<!--[Add a filter to a check](#add-a-filter-to-a-check)<br /> -->
 [Apply checks to multiple datasets](#apply-checks-to-multiple-datasets)<br />
 [Scan a portion of your dataset](#scan-a-portion-of-your-dataset)<br />
 <br />
@@ -47,7 +47,7 @@ When Soda Core runs a scan of your data, it returns a check result for each chec
 * **fail**: the values in the dataset _do not_ match or fall within the thresholds you specified
 * **error**: the syntax of the check is invalid
 
-However, you can add alert configurations to a check to explicitly specify the conditions that warrant a `warn` and/or `fail` result. Setting more granular conditions for a warn or fail state of a check result gives you more insight into the severity of a data quality issue. 
+However, you can add alert configurations to a check to explicitly specify the conditions that warrant a **warn** result. Setting more granular conditions for a warn, or fail, state of a check result gives you more insight into the severity of a data quality issue. 
 
 For example, perhaps 50 missing values in a column is acceptable, but more than 50 is cause for concern; you can use alert configurations to warn you when there are 0 - 50 missing values, but fail when there are 51 or more missing values.
 
@@ -68,7 +68,6 @@ Scan summary:
     dim_reseller in adventureworks
       duplicate_count(phone) [WARNED]
         check_value: 48
-        failed_rows_sample_ref: soda_cloud 66**(48/48)
 Only 1 warning. 0 failure. 0 errors. 0 pass.
 Sending results to Soda Cloud
 ```
@@ -93,7 +92,6 @@ Scan summary:
     dim_reseller in adventureworks
       duplicate_count(phone) [FAILED]
         check_value: 48
-        failed_rows_sample_ref: soda_cloud 68***(48/48)
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 Sending results to Soda Cloud
 ```
@@ -189,6 +187,46 @@ checks for CUSTOMERS:
 
 ![historic-chart2](/assets/images/historic-chart2.png){:height="350px" width="350px"}
 
+
+## Add a filter to a check
+
+Add a filter to a check to specify a portion of the data against which Soda executes the check.  
+
+Add a filter as a nested key:value pair, as in the following example which filters the check results to display only those rows with a value of 81 or greater and which contain `11` in the `sales_territory_key` column.
+
+```yaml
+checks for dim_employee:
+  - max(vacation_hours) < 80:
+      name: Too many vacation hours for US Sales
+      filter: sales_territory_key = 11
+```
+
+You can use `AND` or `OR` to add multiple filter conditions to a filter key:value pair to further refine your results, as in the following example.
+
+```yaml
+checks for dim_employee:
+  - max(vacation_hours) < 80:
+      name: Too many vacation hours for US Sales
+      filter: sales_territory_key = 11 AND salaried_flag = 1
+```
+
+<br />
+
+Be aware that if no rows match the filter parameters you set, Soda does not evaluate the check. In other words, Soda first finds rows that match the filter, then executes the check on those rows. 
+
+If, in the example above, none of the rows contained a value of `11` in the `sales_territory_key` column, Soda would not evaluate the check and would return a `NOT EVALUATED` message in the CLI scan output, such as the following.
+
+```shell
+Soda Core 3.0.0bxx
+Scan summary:
+1/1 check NOT EVALUATED: 
+    dim_employee in adventureworks
+      Too many vacation hours for US Sales [NOT EVALUATED]
+        check_value: None
+1 checks not evaluated.
+Apart from the checks that have not been evaluated, no failures, no warnings and no errors.
+```
+
 ## Use quotes in a check
 
 In the checks you write with SodaCL, you can apply the quoting style that your data source uses for dataset or column names. Soda Core uses the quoting style you specify in the aggregated SQL queries it prepares, then executes during a scan. 
@@ -223,20 +261,7 @@ SELECT
   COUNT(CASE WHEN "id" IS NULL THEN 1 END)
 FROM CUSTOMERS
 ```
-<!--
-## Add a filter to a check
 
-Add a filter to a check to specify a portion of the data to capture in the check result.  
-
-Add a filter as a nested key:value pair, as in the following example which filters the check results to display only those rows with a value of 81 or greater and which contain `11` in the `sales_territory_key` column.
-
-```yaml
-checks for dim_employee:
-  - max(vacation_hours) < 80:
-      name: Too many vacation hours for Sales
-      filter: sales_territory_key = 11
-```
--->
 
 ## Apply checks to multiple datasets
 

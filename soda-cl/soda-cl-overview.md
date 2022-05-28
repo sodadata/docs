@@ -13,7 +13,7 @@ parent: SodaCL
 <p>&#10004;  Human-readable, domain-specific language for data reliability<br /></p>
 <p>&#10004;  Compatible with <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta)</a> and <a href="https://docs.soda.io/soda-cloud/overview.html">Soda Cloud</a><br /></p>
 <p>&#10004;  Includes 25+ built-in metrics, plus the ability to <a href="https://docs.soda.io/soda-cl/user-defined.html">include SQL queries</a><br /></p>
-<p>&#10004;  Includes checks with <a href="https://docs.soda.io/soda-cl/user-defined.html">dynamic thresholds</a> to gauge changes to metrics over time<br /></p>
+<p>&#10004;  Includes checks with <a href="https://docs.soda.io/soda-cl/numeric-metrics.html#fixed-and-dynamic-thresholds">dynamic thresholds</a> to gauge changes to metrics over time<br /></p>
 <p>&#10004;  Collaborate with your team to write SodaCL checks in a YAML file<br /></p>
 <br />
 
