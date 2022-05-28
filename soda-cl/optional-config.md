@@ -38,7 +38,7 @@ checks for dim_employee:
 
 * Be sure to add the `:` to the end of your check, before the nested content.
 * Known issue: the `name` configuration does not work with a freshness check.
-* If `name` is configured, Soda Core sends the value for `name` to Soda Cloud as the check identifier.
+* If `name` is configured, Soda Core sends the value of `name` to Soda Cloud as the check identifier.
 
 ## Add alert configurations
 
@@ -96,7 +96,7 @@ Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 Sending results to Soda Cloud
 ```
 
-You can add multiple conditions to each type of alert, as with the following example. Be aware that a check that contains one or more alert configurations only ever yields a [single check result](#expect-one-check-result).
+You can add multiple conditions to each type of alert, as with the following example, but be aware that a check that contains one or more alert configurations only ever yields a [single check result](#expect-one-check-result).
 ```yaml
 checks for dim_reseller:
   - duplicate_count(phone):
@@ -164,7 +164,7 @@ Sending results to Soda Cloud
 
 Use alert configurations to write checks that define fail or warn zones. By establishing these zones, the check results register as more severe the further a measured value falls outside the threshold parameters you specify as acceptable for your data quality. 
 
-The example that follows defines split warning and failure zones in which inner is good, and outer is bad. The chart below illustrates the pass (white), warn (yellow), and fail (red) zones. Note that an individual check only ever yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more serious, failed check result. 
+The example that follows defines split warning and failure zones in which inner is good, and outer is bad. The chart below illustrates the pass (white), warn (yellow), and fail (red) zones. Note that an individual check only ever yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more serious, failed check result. See [Expect one check result](#expect-one-check-result) for details.
 
 ```yaml
 checks for CUSTOMERS:
