@@ -9,6 +9,16 @@ parent: Soda
 
 <br />
 
+#### May 26, 2022
+
+* Updated various Soda Core documents to include support for Amazon Athena. See <a href="https://docs.soda.io/soda-core/get-started.html#install-the-soda-core-cli" target="_blank">Get started</a>.
+* Update [Optional check configurations]({% link soda-cl/optional-config.md %}) to include instructions for use an in-check filter to check a portion of your data.
+* Added new documentation for [Missing metrics]({% link soda-cl/missing-metrics.md %}) and [Validity metrics]({% link soda-cl/validity-metrics.md %}).
+
+#### May 25, 2022
+
+* Revised and renamed **Data observability** to **[Data concepts]({% link soda/data-concepts.md %})**.
+
 #### May 24, 2022
 
 * Updated the documentation for the [distribution check]({% link soda-cl/distribution.md %}) in SodaCL (Beta), including instructions to install Soda Core Scientific.
@@ -77,7 +87,7 @@ parent: Soda
 
 #### January 11, 2022
 
-* Added requirement for installing Soda Spark on a DataBricks cluster. See [Soda Spark Requirements]({% link soda-spark/install-and-use.md %}#requirements).
+* Added requirement for installing Soda Spark on a Databricks cluster. See [Soda Spark Requirements]({% link soda-spark/install-and-use.md %}#requirements).
 
 #### December 22, 2021
 
@@ -180,7 +190,7 @@ parent: Soda
 
 #### August 30, 2021
 
-* Updated content and changed the name of **Data monitoring** documentation to **[Data quality]({% link soda/data-monitoring.md %})**.
+* Updated content and changed the name of **Data monitoring** documentation to **Data quality**.
 
 #### August 23, 2021
 

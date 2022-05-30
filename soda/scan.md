@@ -2,7 +2,7 @@
 layout: default
 title: Scans
 description: A scan is a command that executes tests to extract information about data in a dataset. Soda SQL uses YAML file contents to prepare SQL queries for a scan.
-parent: Soda
+parent: Concepts
 redirect_from: /soda-sql/documentation/scan.html
 ---
 

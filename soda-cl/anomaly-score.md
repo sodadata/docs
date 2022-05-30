@@ -7,9 +7,9 @@ parent: Soda CL
 
 # Anomaly score checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-The anomaly score check is powered by a machine learning algorithm that works with measurements that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalous measurements in time-series data. 
+The anomaly score check is powered by a machine learning algorithm that works with measured values for a metric that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalies in time-series data. 
 
-If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the historic measurements for your checks in a metric store. SodaCL can then use these stored values to establish a baseline of normal measurements against which to evaluate future measurements to identify anomalies. Therefore, you must have a [Soda Cloud account]({% link soda-cloud/overview.md%}) to use change-over-time thresholds.
+If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a baseline of normal metric values against which to evaluate future metric values to identify anomalies. Therefore, you must have a [Soda Cloud account]({% link soda-cloud/overview.md%}) to use anomaly score checks.
 
 [Prerequisites](#prerequisites)<br />
 [Install Soda Core Scientific](#install-soda-core-scientific)<br />
@@ -36,18 +36,18 @@ Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-cor
 
 ## Define an anomaly score check
 
-The following example demonstrates how to use the anomaly score for the `row_count` metric in a check. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing, or validity metric]({% link soda-cl/missing-validity.md %}) in lieu of `row_count`. 
+The following example demonstrates how to use the anomaly score for the `row_count` metric in a check. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing](% link soda-cl/missing-metrics.md %), or [validity]({% link soda-cl/validity-metrics.md %}) metric in lieu of `row_count`. 
 
 ```yaml
 checks for CUSTOMERS:
   - anomaly score for row_count < default
 ```
 
-* Currently, you can only use `default` as the measurement in an anomaly check. 
+* Currently, you can only use `default` as the threshold in an anomaly check. 
 * By default, anomaly score checks yield warning check results, not failures.
 
 <br />
-You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing, or validity]({% link soda-cl/missing-validity.md %}) metric in anomaly score checks.  The following example detects anomalies for the average of `order_price` in an `orders` dataset.
+You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing](% link soda-cl/missing-metrics.md %), or [validity]({% link soda-cl/validity-metrics.md %}) metric in anomaly score checks.  The following example detects anomalies for the average of `order_price` in an `orders` dataset.
 
 ```yaml
 checks for orders:

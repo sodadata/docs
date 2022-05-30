@@ -12,6 +12,7 @@ Create a configuration YAML file to configure connection details for Soda Core t
 
 To set the data source configurations, use the following example configurations that correspond to each kind of data source that Soda Core supports.
 
+[Connect to Amazon Athena](#connect-to-amazon-athena)<br />
 [Connect to Amazon Redshift](#connect-to-amazon-redshift)<br />
 [Connect to GCP BigQuery](#connect-to-gcp-bigquery)<br />
 [Connect to PostgreSQL](#connect-to-postgresql)<br />
@@ -19,6 +20,39 @@ To set the data source configurations, use the following example configurations 
 [Add prefixes to tables](#add-prefixes-to-tables)<br />
 [Connect Soda Core to Soda Cloud](#connect-soda-core-to-soda-cloud)<br />
 <br />
+
+
+## Connect to Amazon Athena
+
+```yaml
+data_source athena:
+  type: athena
+  connection:
+    access_key_id: ${ env_var('ATHENA_ACCESS_KEY_ID') }
+    secret_access_key: ${ env_var('ATHENA_SECRET_ACCESS_KEY') }
+    region_name: eu-west-1
+    staging_dir: ${ env_var('ATHENA_STAGING_DIR') }
+    database: ${ env_var('ATHENA_DATABASE') }
+```
+
+| Property  | Required | Notes |
+| --------  | -------- |-------- |
+| type | required |  |
+| access_key_id |  optional | Use environment variables to retrieve this value securely. |
+| secret_access_key | optional | Use environment variables to retrieve this value securely. |
+| region_name |optional |  | 
+| staging_dir |  required |  |
+| database | required |  |
+
+Access keys and IAM role are mutually exclusive: if you provide values for `access_key_id` and `secret_access_key`, you cannot use Identity and Access Management role; if you provide value for `role_arn`, then you cannot use the access keys. Refer to [Identity and Access Management in Athena](https://docs.aws.amazon.com/athena/latest/ug/security-iam-athena.html) for details.
+
+### Supported data types
+
+| Category | Data type | 
+| ---- | --------- |
+| text | CHAR, VARCHAR, STRING |
+| number | TINYINT, SMALLINT, INT, INTEGER, BIGINT, DOUBLE, FLOAT, DECIMAL |
+| time | DATE, TIMESTAMP |
 
 ## Connect to Amazon Redshift
 
