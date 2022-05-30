@@ -37,7 +37,7 @@ soda scan -d your_datasource_name -c path/to/configuration.yaml checks.yaml
 ```
 5. From your browser, go to <a href="https://dev.sodadata.io/datasets/overview" target="_blank">soda cloud datasets</a> and sign in with your account to see the sent sample datasets. When you sign in, click any of your dataset that you defined in the `check.yaml`file from the UI. Then, click `Sample Data` from the dataset navigation bar to check your sample data.
 
-![Example sample datasets screenshot](assets/images/soda_sample_datasets.png)
+![Example sample datasets screenshot](../assets/images/soda-sample-datasets.png)
 
 <br />
 
