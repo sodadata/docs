@@ -74,7 +74,7 @@ filter: "column_name between '2010-01-01' and '2020-01-01'"
 If you do not wish to define a filter, remove the key-value pair from the file.
 6. Save the file, then, while still in your Soda project directory, run the `soda update` command to create a distribution reference object. For a list of options available to use with the command, run `soda update --help`. 
 ```bash
-soda update -d your_datasource_name ./distribution_reference.yml 
+soda update -d your_datasource_name -c your_configuration_file.yaml ./distribution_reference.yaml 
 ```
 7. Review the changed contents of your `distribution_reference.yml` file. The following is an example of the information that Soda added to the file.
 
