@@ -210,6 +210,16 @@ checks for dim_employee:
       filter: sales_territory_key = 11 AND salaried_flag = 1
 ```
 
+To improve the readability of multiple filters in a check, consider adding filters as separate line items, as per the following example.
+
+```yaml
+checks for dim_employee:
+  - max(vacation_hours) < 80:
+      name: Too many vacation hours for US Sales
+      filter: sales_territory_key = 11 AND 
+              sick_leave_hours > 0 OR
+              pay_frequency > 1
+```
 <br />
 
 Be aware that if no rows match the filter parameters you set, Soda does not evaluate the check. In other words, Soda first finds rows that match the filter, then executes the check on those rows. 
