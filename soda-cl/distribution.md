@@ -117,7 +117,7 @@ checks for your_dataset_name:
 This example distribution check compares the values in `column_name` to a sample that Soda creates based on the `bins` and `weights` defined in the `distribution_reference.yml` file. Specifically, it checks whether the p-value of the statistical test is larger than `0.05`.
 4. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to <a href ="https://docs.soda.io/soda-core/first-scan.html#run-a-scan" target="_blank">Soda Core documentation</a> for more details.
 ```bash
-soda scan -d your_datasource_name checks.yml 
+soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yaml your_check_file.yaml
 ```
 When you execute the `soda scan` command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory. 
 
