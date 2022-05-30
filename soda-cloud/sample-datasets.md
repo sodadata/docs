@@ -11,7 +11,6 @@ Sample datasets sends last 100 rows to soda cloud for you to see the example row
 [Prerequisites](#prerequisites)<br />
 [Connect Soda Core to Soda Cloud](#connect-soda-core-to-soda-cloud)<br />
 [Define sample datasets](#define-sample-datasets)<br />
-[Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -34,9 +33,11 @@ sample datasets:
 ```
 3. Run a soda scan of your data source to execute the sample datasets you defined. Refer to <a href ="https://docs.soda.io/soda-core/first-scan.html#run-a-scan" target="_blank">Soda Core documentation</a> for more details. After running the scan, the check results will be shared with soda cloud.
 ```bash
-soda scan -d your_datasource_name checks.yaml
+soda scan -d your_datasource_name -c path/to/configuration.yaml checks.yaml
 ```
 5. From your browser, go to <a href="https://dev.sodadata.io/datasets/overview" target="_blank">soda cloud datasets</a> and sign in with your account to see the sent sample datasets. When you sign in, click any of your dataset that you defined in the `check.yaml`file from the UI. Then, click `Sample Data` from the dataset navigation bar to check your sample data.
+
+[Example sample datasets screenshot](assets/images/soda_sample_datasets.png){:height="50px" width="50px" align="top"}
 
 <br />
 
