@@ -9,6 +9,12 @@ parent: Soda
 
 <br />
 
+#### May 31, 2022
+
+* Updated SodaCL [Schema checks]({% link soda-cl/schema.md %}) and [Reference checks]({% link soda-cl/reference.md %}) documentation.
+* Corrected Soda Cloud connection syntax in the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}).
+* Removed separate Duplicate checks documentation, redirecting to [Numeric metrics]({% link soda-cl/numeric-metrics.md %}).
+
 #### May 26, 2022
 
 * Updated various Soda Core documents to include support for Amazon Athena. See <a href="https://docs.soda.io/soda-core/get-started.html#install-the-soda-core-cli" target="_blank">Get started</a>.

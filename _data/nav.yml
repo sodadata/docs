@@ -129,8 +129,6 @@
     page: soda-cl/dataset-filters.md
   - subtitle: Distribution checks
     page: soda-cl/distribution.md
-  - subtitle: Duplicate checks
-    page: soda-cl/duplicates.md
   - subtitle: For each
     page: soda-cl/for-each.md
   - subtitle: Freshness checks

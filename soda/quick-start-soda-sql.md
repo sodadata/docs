@@ -9,7 +9,7 @@ redirect_from:
 - /soda-cloud/quick-start.html
 ---
 
-# Quick start for Soda SQL and Soda Cloud
+# Quick start for Soda SQL and Soda Cloud 
 <br />
 
 ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="105px" width="105px"} 
