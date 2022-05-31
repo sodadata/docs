@@ -173,8 +173,18 @@ Soda Core uses an API to connect to Soda Cloud. To use the API, you must generat
 
 
 1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. In a code editor, open the `configuration.yml` file (in the hidden `.soda` directory in your local home directory), then add the following to the file:
+2. In a code editor, open the `configuration.yml` file (in the hidden `.soda` directory in your local home directory), then add the `soda_account` syntax to the file, as in the example below.
 ```yaml
+data_source my_database_name:
+  type: postgres
+  connection:
+    host: soda-temp-demo
+    port: '5432'
+    username: sodademo
+    password: env_var(POSTGRES_PASSWORD)
+  database: postgres
+  schema: public
+
 soda_account:
   host: cloud.soda.io
   api_key_id: 
