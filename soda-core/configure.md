@@ -285,8 +285,8 @@ soda_cloud:
   api_key_secret:
 ```
 3. In your Soda Cloud account, navigate to **your avatar** > **Profile** > **API Keys**, then click the plus icon to generate new API keys.
-  * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key`.
-  * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_secret`.
+  * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
+  * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
 4. Save the changes to the `configuration.yml` file. Close the **Create API Key** dialog box in Soda Cloud.
 
 The next time you execute a scan in Soda Core, it pushes the scan results to Soda Cloud where you can view the results in the **Monitors** dashboard. Refer to [Soda Cloud documentation]({% link soda-cloud/overview.md %}) for more information.
