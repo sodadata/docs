@@ -1,27 +1,87 @@
 ---
 layout: default
-title: Reference data checks
-description: Use a SodaCL (Beta) reference data check to validate that the values in a column in a table are present in a column in a different table. 
+title: Reference checks
+description: Use a SodaCL (Beta) reference check to validate that the values in a column in a table are present in a column in a different table. 
 parent: SodaCL (Beta)
 ---
 
-# Reference data checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Reference checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-A reference check validates that the values in a column in a table are present in a column in a different table. The example below checks that the values in the `customer_id_nok` column in the `CUSTOMERS` table exist in the `id` column in the `RAW_CUSTOMERS` table. If the values are not in the `id` column, the check fails.
+Use a reference check to validate that column contents match between datasets in the same data source. 
 
 ```yaml
-checks for CUSTOMERS:
-        - values in customer_id_nok must exist in RAW_CUSTOMERS id
+checks for dim_department_group:
+  - values in (department_group_name) must exist in dim_employee (department_name)
 ```
-<!--
-Multi-column reference check
-```yaml
-checks for ORDERS:
-  - values in (customer_country, customer_zip) must exist in CUSTOMERS (country, zip)
-```
--->
 
-Note that Soda CL considers missing values in the source column as invalid.
+[Define reference checks](#define-checks-with-missing-metrics) <br />
+[Optional check configurations](#optional-check-configurations)<br />
+[Go further](#go-further)<br />
+<br />
+
+
+## Define reference checks
+
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), reference checks are unique. This check is very limited in its syntax variation, with only a few mutable parts to specify column and dataset names.
+
+The example below checks that the values in the source column, `department_group_name`, in the `dim_department_group` dataset exist in the destination column, `department_name`, in the `dim_employee` dataset. If the values are absent in the `department_name` column, the check fails.
+* Soda CL considers missing values in the source column as invalid.
+* Optionally, do not use brackets around column names. The brackets serve as visual aids to improve readability.
+
+```yaml
+checks for dim_department_group:
+  - values in (department_group_name) must exist in dim_employee (department_name)
+```
+
+You can use reference checks to compare the values of multiple columns in different datasets, as in the following example. Soda compares the columns in the order you list them, so in the example below, `last_name` compares to `last_name`, and `first_name` compares to `first_name`.
+
+```yaml
+checks for dim_customers_dev:
+  - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name)
+```
+
+## Optional check configurations
+
+| ✓ | Configuration | Documentation |
+| :-: | ------------|---------------|
+| ✓ | Define a name for a schema check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
+|   | Define alert configurations to specify warn and fail alert conditions. | - |
+|   | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+|   | Use wildcard characters ({% raw %} % {% endraw %}) in values in the check. | - |
+|   | Use for each to apply schema checks to multiple datasets in one scan. | - |
+| ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+
+#### Example with check name 
+
+```yaml
+checks for dim_department_group:
+  - values in (department_group_name) must exist in dim_employee (department_name):
+      name: Cross-check departments
+```
+
+#### Example with quotes
+
+```yaml
+checks for dim_department_group:
+  - values in ("department_group_name") must exist in dim_employee ("department_name")
+```
+
+#### Example with dataset filter
+
+```yaml
+coming soon
+```
+
+<br />
+
+## Go further
+
+* Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
+* Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+<br />
+
 
 ---
 {% include docs-footer.md %}

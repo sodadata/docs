@@ -41,7 +41,7 @@ checks for dim_customer:
 
 ## Define checks with validity metrics
 
-In the context of Soda check types, you use validity metrics in Standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), you use validity metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
 
 You can use all validity metrics in checks that apply to individual columns in a dataset; you cannot use validity metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
 * You must use a [configuration key:value pair](#list-of-configuration-keys) to define what qualifies as an valid value. 
@@ -194,20 +194,11 @@ If you have connected Soda Core to a Soda Cloud account, checks with validity me
 | ✓ | Define alert configurations to specify warn and fail thresholds; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 | ✓ | Apply a filter to return results for a specific portion of the data in your dataset; see [example](#example-with-filter).| [Add a filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
-|   | Use wildcard characters {% raw %} (%) {% endraw %} in values in the check. |  - |
-| ✓ | Use for each to apply checks with validity metrics to multiple datasets in one scan; see [example](#example-with-for-each-checks) | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
+|   | Use wildcard characters ({% raw %} % {% endraw %}) in values in the check. |  - |
+| ✓ | Use for each to apply checks with validity metrics to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 | ✓ | Define validity values globally (experimental); see [example](#configure-global-valid-values-experimental). | [Configure global valid values (experimental)](#configure-global-valid-values-experimental)|
 
-
-#### Example with alert configuration
-
-```yaml
-  - invalid_count(house_owner_flag):
-      valid values: ['0', '1']
-      warn: when between 1 and 5
-      fail: when > 6  
-```
 
 #### Example with check name
 
@@ -216,6 +207,15 @@ checks for dim_customer:
   - invalid_count(first_name) = 0 :
       valid min length: 2
       name: First name has 2 or more characters
+```
+
+#### Example with alert configuration
+
+```yaml
+  - invalid_count(house_owner_flag):
+      valid values: ['0', '1']
+      warn: when between 1 and 5
+      fail: when > 6  
 ```
 
 #### Example with filter
@@ -235,12 +235,6 @@ checks for dim_customer:
       valid min: 1
 ```
 
-#### Example with dataset filter
-
-```yaml
-coming soon
-```
-
 #### Example with for each
 
 ```yaml
@@ -252,6 +246,14 @@ for each table T:
     - invalid_count(email_address) = 0:
         valid format: email
 ```
+
+#### Example with dataset filter
+
+```yaml
+coming soon
+```
+
+<br />
 
 ## List of validity metrics
 

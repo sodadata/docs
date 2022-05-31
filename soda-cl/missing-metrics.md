@@ -35,7 +35,7 @@ checks for dim_customer
 
 ## Define checks with missing metrics
 
-In the context of Soda check types, you use missing metrics in Standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), you use missing metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
 
 You can use all missing metrics in checks that apply to individual columns in a dataset; you cannot use missing metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
 * SodaCL considers `NULL` as the default value for "missing". 
@@ -186,11 +186,20 @@ If you have connected Soda Core to a Soda Cloud account, checks with missing met
 | ✓ | Define alert configurations to specify warn and fail thresholds; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 | ✓ | Apply a filter to return results for a specific portion of the data in your dataset; see [example](#example-with-filter).| [Add a filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
-|   | Use wildcard characters {% raw %} (%) {% endraw %} in values in the check. |  - |
-| ✓ | Use for each to apply checks with missing metrics to multiple datasets in one scan; see [example](#example-with-for-each-checks) | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
+|   | Use wildcard characters ({% raw %} % {% endraw %}) in values in the check. |  - |
+| ✓ | Use for each to apply checks with missing metrics to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 | ✓ | Define missing values globally (experimental); see [example](#configure-global-missing-values-experimental). | [Configure global missing values (experimental)](#configure-global-missing-values-experimental)|
 
+
+#### Example with check name
+
+```yaml
+checks for dim_customer:
+  - missing_count(birthday) = 0:
+      missing regex: (0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)
+      name: Date entered as 00/00/0000
+```
 
 #### Example with alert configuration
 
@@ -200,15 +209,6 @@ checks for dim_customer:
       valid length: 1
       warn: when < 5
       fail: when >= 5  
-```
-
-#### Example with check name
-
-```yaml
-checks for dim_customer:
-  - missing_count(birthday) = 0:
-      missing regex: (0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)
-      name: Date entered as 00/00/0000
 ```
 
 #### Example with filter
@@ -227,12 +227,6 @@ checks for dim_reseller:
   - missing_percent("phone", "address_line1") = 0
 ```
 
-#### Example with dataset filter
-
-```yaml
-coming soon
-```
-
 #### Example with for each
 
 ```yaml
@@ -243,6 +237,14 @@ for each table T:
   checks:
     - missing_count(product_line) = 0
 ```
+
+#### Example with dataset filter
+
+```yaml
+coming soon
+```
+
+<br />
 
 ## List of missing metrics
 

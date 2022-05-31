@@ -7,134 +7,213 @@ parent: SodaCL (Beta)
 
 # Schema checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-A schema check validates column presence, absence, or position in a table, or the type of data column contains. SodaCL schema checks are case insensitive for column names.
+Use a schema check to validate the presence, absence or position of a column in a dataset, or to validate the type of data column contains. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general. 
 
-[Schema checks for column presence](#schema-checks-for-column-presence)<br />
-[Schema checks with warnings](#schema-checks-with-warnings)<br />
-[Schema checks for data type](#schema-checks-for-data-type)<br />
-[Schema checks for index order](#schema-checks-for-index-order)<br />
+```yaml
+checks for dim_product:
+  - schema:
+      name: Confirm that required columns are present
+      warn:
+        when required column missing: [weight_unit_measure_code, product_subcategory_key, made_up_column]
+      fail:
+        when required column missing:
+          - product_key 
+          - product_alternate_key
+  - schema:
+      warn:
+        when forbidden column present: [standard_cost]
+        when wrong column type:
+          standard_cost: money
+      fail:
+        when forbidden column present: [sombrero]
+        when wrong column type:
+          reorder_point: smallint
+  - schema:
+      name: Columns out of order
+      warn:
+        when wrong column index:
+          style: 1
+      fail:
+        when wrong column index:
+          model_name: 22
+  - schema:
+      name: Any schema changes
+      warn: 
+        when schema changes: any
+```
+
+[Define schema checks](#define-checks-with-missing-metrics) <br />
+[List of validation keys](#list-of-validation-keys) <br />
+[Optional check configurations](#optional-check-configurations)<br />
+[Expect one check result](#expect-one-check-result)<br />
+[Go further](#go-further)<br />
 <br />
 
-## Schema checks for column presence
 
-The following example validates that three columns exist in a table.
+## Define schema checks
+
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), schema checks are unique. Schema checks always employ alert configurations -- specifying warn and/or fail alert conditions -- with **validation keys** that are unique to this type of check. Refer to [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) for exhaustive alert configuration details.
+
+The validation key:value pairs in schema checks set the conditions for a warn or a fail check result. See a [List of validation keys](#list-of-validation-keys) below. 
+
+For example, the following check uses the `when required column missing` validation key to validate that specific columns are present in a dataset; if any of columns in the list are absent, the check result is fail.
+
 ```yaml
-checks for CUSTOMERS:
+checks for dim_product:
   - schema:
       fail:
         when required column missing:
-          # Each of the items in this list requires a (-) at the beginning of the line
-          - id
-          - sizetxt
-          - distance
+          - standard_cost
+          - list_price
+          - weight
 ```
 
-<br />
+In the example above, the value for the validation key is in a nested list format, but you can use an inline list of comma-separated values inside square brackets instead. The following example yields identical checks results to the example above.
 
-You can write the same check using a YAML list notation, as in the following example.
 ```yaml
-checks for CUSTOMERS:
+checks for dim_product:
   - schema:
       fail:
-        when required column missing: [id, sizetxt, distance]
+        when required column missing: [standard_cost, list_price, weight]
+
+```
+
+You can define a schema check with both warn and fail alert conditions, each with multiple validation keys. Refer to [Configure multiple alerts]({% link soda-cl/optional-config.md %}configure-multiple-alerts) for details. Be aware, however, that a single schema check only ever produces a *single check result*. See [Expect one check result](#expect-one-check-result) below for details.
+
+The following example is a single check; Soda executes each of its validations during a scan. Note that unlike the nested list of column names in the example above, the nested key:value pairs that form the value for these validation keys are indented, but do not use a `-`.
+
+```yaml
+checks for dim_product:
+  - schema:
+      warn:
+        when forbidden column present: [standard_cost]
+        when wrong column type:
+          standard_cost: money
+          weight: double precision
+      fail:
+        when forbidden column present: [sombrero]
+        when wrong column type:
+          reorder_point: smallint
 ```
 
 <br />
 
-Use a schema check to validate that forbidden columns do not exist in a table, as in the example below. You can use `*` or `%` as wildcard characters in the list of items; if the item begins with a wildcard character, add quotes to the item. 
+### Define schema evolution checks
+
+Rather than specifying exact parameters for column changes, you can use the `when schema changes` validation key to warn or fail when indistinct changes occur in a dataset.
+
+This type of validation key requires a **Soda Cloud** account. If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future schema checks. Therefore, you must have a created and connected a <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">Soda Cloud account</a> to use schema evolution checks.
+
 ```yaml
-checks for CUSTOMERS:
+checks for dim_customer:
+  - schema:
+      warn:
+        when schema changes: any
+      fail:
+        when schema changes: 
+         - column delete
+         - column add
+         - column index change
+         - column type change
+```
+
+## List of validation keys
+
+| Validation key | Values | Requires a Soda<br />Cloud account | 
+| -------------- | ------ | :-------------------------: |
+| `when required column missing` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  |
+| `when forbidden column present` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  |
+| `when wrong column type` | nested key:value pair to identify column:expected_data_type |  |
+| `when wrong column index` | nested key:value pair to identify <br />column:expected_position_in_dataset_index |  |
+| `when schema changes` | `any` as an inline value<br /> `column add` as a nested list item<br /> `column delete` as a nested list item<br /> `column index change` as a nested list item <br /> `column type change` as a nested list item | ✓ |
+
+
+## Optional check configurations
+
+| ✓ | Configuration | Documentation |
+| :-: | ------------|---------------|
+| ✓ | Define a name for a schema check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
+| ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
+|  | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use wildcard characters ({% raw %} % {% endraw %}) in values in the check; see [example](#example-with-wildcards). | See note in [example](#example-with-wildcards) below. |
+| ✓ | Use for each to apply schema checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
+| ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+
+
+#### Example with check name
+
+```yaml
+checks for dim_product:
+  - schema:
+      name: Confirm that required columns are present
+      warn:
+        when required column missing: [weight_unit_measure_code, product_subcategory_key]
+```
+
+#### Example with alert configuration
+
+```yaml
+checks for dim_product:
+  - schema:
+      warn:
+        when forbidden column present: [standard_cost]
+```
+
+#### Example with quotes
+
+```yaml
+checks for dim_product:
+  - schema:
+      warn:
+        when wrong column type:
+          standard_cost: "money"
+```
+
+#### Example with wildcards
+
+You can use `*` or `%` as wildcard characters in a list of column names.  If the column name begins with a wildcard character, add single quotes as per the example below. 
+```yaml
+checks for dim_product:
   - schema:
       fail:
         when forbidden column present:
-          - salary
+          - credit_card
           - obsolete_%
           - '%SALARY%'
 ```
 
-## Schema checks with warnings
+#### Example with for each
 
-Where most checks yield pass or fail check results, you have the option of defining a warning threshold for a schema check. To do so, you define a threshold that, when reached or surpassed, triggers a warning check result.
 ```yaml
-checks for CUSTOMERS:
-  - schema:
-      warn:
-        when required column missing: [id, sizetxt, distance]
-```
-
-<br />
-
-You can configure a single schema check to contain multiple `warn` and `fail` validations, as in the following example. Note that an individual check only ever yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more serious, failed check result. 
-```yaml
-checks for CUSTOMERS:
-  - schema:
-      warn:
-        when required column missing: [not_so_important_column]
-        when forbidden column present:
-          - credit_card
-      fail:
-        when required column missing: [id, other_important_column]
-        when wrong column type:
-          size: integer
-        when wrong column index:
-          absence_period: 23
-```
-
-## Schema checks for data type
-Use a schema check to validate the type of data in a column, as in the following example.
-```yaml
-checks for CUSTOMERS:
-  - schema:
-      fail:
-        when wrong column type:
-          # The items in this list DO NOT require a (-) at the beginning of the line
-          address: character varying
-          size: integer
-```
-
-Optionally, you can identify the data type of a column in a schema check using a data type alias. In other words, rather than specifying the data type of a column as `character varying`, you can specify the data type as `varchar`. For more information on data type aliases for each data source, refer to `packages/[data source]/soda_core/data_sources/[data source]_data_source.py` variable `SCHEMA_CHECK_TYPES_MAPPING` in the Soda Core repo in GitHub.
-
-## Schema checks for index order
-Use a schema check to confirm a specific index position of a column in a table, as in the following example. Indexes start from `0`. 
-```yaml
-checks for CUSTOMERS:
-  - schema:
-      fail:
-        when wrong column index:
-          # The items in this list DO NOT require a (-) at the beginning of the line
-          absence_period: 23
-          size: 24
-```
-
-<!--
-Verify schema changes over time.
-
-(Coming soon)
-
-This check will warn when anything changes in the schema:
-```yaml
-checks for CUSTOMERS:
-  - schema:
+for each table T:
+  tables:
+    - dim_product_%
+  checks:
+    schema:
       warn:
         when schema changes: any
 ```
 
-`when schema changes` requires at least a Free Developer Soda Cloud account for storing the historic schema values
+#### Example with dataset filter
 
-But it is also possible to list individual changes on which to fail or warn:
 ```yaml
-checks for CUSTOMERS:
-  - schema:
-      fail:
-        when schema changes:
-          # Each of the following schema changes is optional.  When you want to fail on any of the
-          # changes, consider using 'all' like in the above example
-          - column add
-          - column delete
-          - column type change
-          - column index change
+coming soon
 ```
--->
+
+<br />
+
+## Expect one check result
+
+{% include expect-one-result.md %}
+
+
+## Go further
+
+* Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
+* Use a [reference check]({% link soda-cl/reference.md %}) to validate matching contents between datasets.
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+<br />
 
 ---
 {% include docs-footer.md %}

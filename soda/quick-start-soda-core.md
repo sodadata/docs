@@ -185,7 +185,7 @@ data_source my_database_name:
   database: postgres
   schema: public
 
-soda_account:
+soda_cloud:
   host: cloud.soda.io
   api_key_id: 
   api_key_secret: 
