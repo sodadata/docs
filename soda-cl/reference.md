@@ -14,7 +14,7 @@ checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
 ```
 
-[Define reference checks](#define-checks-with-missing-metrics) <br />
+[Define reference checks](#define-reference-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />
 [Go further](#go-further)<br />
 <br />
@@ -22,7 +22,7 @@ checks for dim_department_group:
 
 ## Define reference checks
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), reference checks are unique. This check is very limited in its syntax variation, with only a few mutable parts to specify column and dataset names.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), reference checks are unique. This check is limited in its syntax variation, with only a few mutable parts to specify column and dataset names.
 
 The example below checks that the values in the source column, `department_group_name`, in the `dim_department_group` dataset exist in the destination column, `department_name`, in the `dim_employee` dataset. If the values are absent in the `department_name` column, the check fails.
 * Soda CL considers missing values in the source column as invalid.
@@ -48,7 +48,7 @@ checks for dim_customers_dev:
 |   | Define alert configurations to specify warn and fail alert conditions. | - |
 |   | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
-|   | Use wildcard characters ({% raw %} % {% endraw %}) in values in the check. | - |
+|   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |
 |   | Use for each to apply schema checks to multiple datasets in one scan. | - |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
@@ -57,7 +57,7 @@ checks for dim_customers_dev:
 ```yaml
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name):
-      name: Cross-check departments
+      name: Compare department datasets
 ```
 
 #### Example with quotes

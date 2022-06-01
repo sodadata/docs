@@ -123,24 +123,24 @@
     page: soda-cl/missing-metrics.md
   - subtitle: Validity metrics
     page: soda-cl/validity-metrics.md
-  - subtitle: Anomaly score checks
-    page: soda-cl/anomaly-score.md
-  - subtitle: Dataset filters
-    page: soda-cl/dataset-filters.md
-  - subtitle: Distribution checks
-    page: soda-cl/distribution.md
-  - subtitle: For each
-    page: soda-cl/for-each.md
   - subtitle: Freshness checks
     page: soda-cl/freshness.md
-  - subtitle: Reference checks
-    page: soda-cl/reference.md
-  - subtitle: Row count checks
-    page: soda-cl/row-count.md
   - subtitle: Schema checks
     page: soda-cl/schema.md
+  - subtitle: Reference checks
+    page: soda-cl/reference.md
+  - subtitle: Cross checks
+    page: soda-cl/cross-row-check.md
+  - subtitle: Anomaly score checks
+    page: soda-cl/anomaly-score.md
+  - subtitle: Distribution checks
+    page: soda-cl/distribution.md
   - subtitle: User-defined checks
     page: soda-cl/user-defined.md
+  - subtitle: Dataset filters
+    page: soda-cl/dataset-filters.md
+  - subtitle: For each
+    page: soda-cl/for-each.md
 
 
 - title: Integrate Soda

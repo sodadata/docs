@@ -21,37 +21,36 @@ parent: SodaCL
 #### Example checks
 ```yaml
 # Checks for basic validations
-checks for PRODUCTS:
+checks for dim_customer:
   - row_count between 10 and 1000
-  - missing_count(unit_cost) = 0
-  - invalid_count(unit_cost) = 0:
-      valid min: 0.01
-      valid max: 10000
-  - invalid_percent(movement_date) < 1 %:
-      valid format: date us
-  - sum(units_in) > 50
-  - duplicate_count(country, zip) = 0
+  - missing_count(birth_date) = 0
+  - invalid_percent(phone) < 1 %:
+      valid format: phone number
+  - invalid_count(number_cars_owned) = 0:
+      valid min: 1
+      valid max: 6
+  - duplicate_count(phone) = 0
 
+checks for dim_product:
+  - avg(safety_stock_level) > 50
 # Checks for schema changes
-  checks for PYMNT:
   - schema:
-      fail:
-        when required column missing: [finance_key]
-        when wrong column index:
-          finance_key: 0
-        when forbidden column present: ["pii_*"]
+      name: Find forbidden, missing, or wrong type
       warn:
+        when required column missing: [dealer_price, list_price]
+        when forbidden column present: [credit_card]
         when wrong column type:
-          date_key: integer 
-          amount: double precision 
-
+          standard_cost: money
+      fail:
+        when forbidden column present: [pii*]
+        when wrong column index:
+          model_name: 22
 # Check for freshness 
-checks for PROSPECTS:
-  - freshness using row_added_ts < 1d
+  - freshness using start_date < 1d
 
 # Check for referential integrity
-checks for PRODUCTS:
-  - values in organization_key must exist in dim_organization organization_key
+checks for dim_department_group:
+  - values in (department_group_name) must exist in dim_employee (department_name)
 ```
 <br />
 
