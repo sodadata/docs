@@ -7,14 +7,33 @@ parent: SodaCL
 
 # Distribution checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-Use a distribution check to determine whether the distribution of a column has changed between two points in time. For example, if you trained a model at a particular moment in time, you can use a distribution check to find out how much the data in the column has changed over time, or if it has changed all. 
+Use a distribution check to determine whether the distribution of a column has changed between two points in time. For example, if you trained a model at a particular moment in time, you can use a distribution check to find out how much the data in the column has changed over time, or if it has changed all.
 
-<details>
-  <summary>What does a distribution check do?</summary>
-  To detect changes in the distribution of a column between different points in time, Soda uses <a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing" target="_blank"> statistical hypothesis testing</a>. In essence, a distribution check allows you to determine whether enough evidence exists to conclude that the distribution of a column has changed. It returns the probability that the difference between samples taken at two points in time would have occurred if they came from the same distribution (see <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">p-value</a>). If this probability is smaller than a threshold that you define, the check warns you that the column's distribution has changed.
-  <br /><br />
-  Depending on whether your data is categorical or continuous, use the <a href="https://en.wikipedia.org/wiki/Chi-squared_test" target="_blank">chi-square</a> test or the <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank">Kolmogorov-Smirnov</a> test, respectively.
-</details>
+```yaml
+checks for dim_customer:
+  - distribution_difference(number_cars_owned) > 0.05:
+      distribution reference file: ./cars_owned_dist_ref.yml
+```
+
+[About distribution checks](#about-distribution-checks)<br />
+[Prerequisites](#prerequisites)<br />
+[Install Soda Core Scientific](#install-soda-core-scientific)<br />
+[Generate a distribution reference object (DRO)](#generate-a-distribution-reference-object-dro)<br />
+[Define a distribution check](#define-a-distribution-check)<br />
+[Distribution check examples](#distribution-check-examples)<br />
+[Optional check configurations](#optional-check-configurations)<br />
+[Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation)<br />
+[Go further](#go-further) <br />
+<br />
+
+
+## About distribution checks
+
+To detect changes in the distribution of a column between different points in time, Soda uses <a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing" target="_blank"> statistical hypothesis testing</a>. In essence, a distribution check allows you to determine whether enough evidence exists to conclude that the distribution of a column has changed. It returns the probability that the difference between samples taken at two points in time would have occurred if they came from the same distribution (see <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">p-value</a>). If this probability is smaller than a threshold that you define, the check warns you that the column's distribution has changed.
+
+Depending on whether your data is categorical or continuous, use the <a href="https://en.wikipedia.org/wiki/Chi-squared_test" target="_blank">chi-square</a> test or the <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank">Kolmogorov-Smirnov</a> test, respectively.
+
+
 <details>
   <summary>Sample sizes in distribution checks</summary>
   In hypothesis testing, the <a href="https://en.wikipedia.org/wiki/Power_of_a_test" target="_blank">statistical power</a> of a test refers to its ability to reject the null hypothesis when it is false. Specifically, the power of a test tells you how likely it is that the null hypothesis will be rejected if the true difference with the alternative hypothesis were of a particular size; see <a href="https://en.wikipedia.org/wiki/Effect_size#Relationship_to_test_statistics" target="_blank">effect size</a>. A very powerful test is able to reject the null hypothesis even if the true difference is small.
@@ -25,15 +44,6 @@ Use a distribution check to determine whether the distribution of a column has c
   <br /><br />
   For each distribution type, the Kolmogorov-Smirnov test rejected the null hypothesis 100% of the time if the effect size was equal to, or larger than, a shift to the mean of 1% of the standard deviation, when using a sample size of one million. Using such a sample size does not result in problems with local memory.
 </details>
-
-[Prerequisites](#prerequisites)<br />
-[Install Soda Core Scientific](#install-soda-core-scientific)<br />
-[Generate a distribution reference object (DRO)](#generate-a-distribution-reference-object-dro)<br />
-[Define a distribution check](#define-a-distribution-check)<br />
-[Distribution check examples](#distribution-check-examples)<br />
-[Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation)<br />
-[Go further](#go-further) <br />
-<br />
 
 ## Prerequisites
 
@@ -148,6 +158,47 @@ checks for dim_customer:
 checks for fact_sales_quota:
   - distribution_difference(calendar_quarter) > 0.05:
       distribution reference file: ./sales_dist_ref.yml
+```
+
+## Optional check configurations
+
+| ✓ | Configuration | Documentation |
+| :-: | ------------|---------------|
+| ✓ | Define a name for a distribution check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
+|   | Define alert configurations to specify warn and fail thresholds. | - |
+|   | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+|   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
+| ✓ | Use for each to apply distribution checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
+|   | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+
+#### Example with check name
+
+```yaml
+checks for dim_customer:
+- distribution_difference(number_cars_owned) > 0.05:
+    distribution reference file: dist_ref.yml
+    name: Distribution check
+```
+
+#### Example with quotes
+
+```yaml
+checks for dim_customer:
+- distribution_difference("number_cars_owned") > 0.05:
+    distribution reference file: dist_ref.yml
+    name: Distribution check
+```
+
+#### Example with for each
+
+```yaml
+for each table T:
+    tables:
+        - dim_customer
+    checks:
+    - distribution_difference(number_cars_owned, absolutely_whatever_string_you_please) > 0.05:
+        distribution reference file: dist_ref.yml
 ```
 
 ## Troubleshoot Soda Core Scientific installation

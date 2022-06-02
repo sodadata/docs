@@ -139,8 +139,8 @@
     page: soda-cl/user-defined.md
   - subtitle: Failed rows checks
     page: soda-cl/failed-rows-checks.md
-  - subtitle: Dataset filters
-    page: soda-cl/dataset-filters.md
+  - subtitle: Filters
+    page: soda-cl/filters.md
   - subtitle: For each
     page: soda-cl/for-each.md
 

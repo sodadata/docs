@@ -7,16 +7,28 @@ parent: Soda CL
 
 # Anomaly score checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-The anomaly score check is powered by a machine learning algorithm that works with measured values for a metric that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalies in time-series data. 
+Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
+Requires Soda Cloud and Soda Core Scientific.
 
-If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a baseline of normal metric values against which to evaluate future metric values to identify anomalies. Therefore, you must have a created and connected a <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">Soda Cloud account</a> to use anomaly score checks.
+```yaml
+checks for CUSTOMERS:
+  - anomaly score for row_count < default
+```
 
+[About anomaly score checks](#about-anomaly-score-checks)<br />
 [Prerequisites](#prerequisites)<br />
 [Install Soda Core Scientific](#install-soda-core-scientific)<br />
 [Define an anomaly score check](#define-an-anomaly-score-check) <br />
+[Optional check configurations](#optional-check-configurations) <br />
 [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation)<br />
 [Go further](#go-further) <br />
 <br />
+
+## About anomaly score checks
+
+The anomaly score check is powered by a machine learning algorithm that works with measured values for a metric that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalies in time-series data. 
+
+If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a baseline of normal metric values against which to evaluate future metric values to identify anomalies. Therefore, you must have a created and connected a <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">Soda Cloud account</a> to use anomaly score checks.
 
 
 ## Prerequisites
@@ -61,6 +73,39 @@ checks for orders:
   - anomaly score for missing_count(id) < default:
     missing_values: [None, No Value]
 ```
+
+## Optional check configurations
+
+| ✓ | Configuration | Documentation |
+| :-: | ------------|---------------|
+|   | Define a name for an anomaly score check. |  - |
+|   | Define alert configurations to specify warn and fail thresholds. | - |
+|   | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
+| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+|   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
+| ✓ | Use for each to apply anomaly score checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
+|   | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+
+
+#### Example with quotes
+
+```yaml
+checks for "dim_customer":
+  - anomaly score for row_count < default
+```
+
+#### Example with for each
+
+```yaml
+for each table T:
+  tables:
+    - dim_customer
+  checks:
+    - anomaly score for row_count < default
+```
+
+
+<br />
 
 ## Troubleshoot Soda Core Scientific installation
 
