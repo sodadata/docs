@@ -12,7 +12,7 @@ redirect_from:
 
 When you define SodaCL checks for data quality in your checks YAML file, you have the option of adding one or more extra configurations or syntax variations. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 
-The following optional configurations are available to use with most, though not all, check types. The detailed documentation for metrics and individual check types indicate specifically which optional configurations are compatible.
+The following optional configurations are available to use with most, though not all, [check types]({% link soda-cl/metrics-and-checks.md %}#check-types). The detailed documentation for metrics and individual check types indicate specifically which optional configurations are compatible.
 
 [Customize check names](#customize-check-names)<br />
 [Add alert configurations](#add-alert-configurations)<br />
@@ -37,7 +37,6 @@ checks for dim_employee:
 ```
 
 * Be sure to add the `:` to the end of your check, before the nested content.
-* Known issue: the `name` configuration does not work with a freshness check.
 * If `name` is configured, Soda Core sends the value of `name` to Soda Cloud as the check identifier.
 
 ## Add alert configurations
@@ -177,7 +176,7 @@ checks for dim_employee:
 ```
 <br />
 
-Be aware that if no rows match the filter parameters you set, Soda does not evaluate the check. In other words, Soda first finds rows that match the filter, then executes the check on those rows. 
+Be aware that if no rows match the filter parameters you set, Soda does not evaluate the check. In other words, Soda first finds rows that match the filter, *then* executes the check on those rows. 
 
 If, in the example above, none of the rows contained a value of `11` in the `sales_territory_key` column, Soda would not evaluate the check and would return a `NOT EVALUATED` message in the CLI scan output, such as the following.
 

@@ -9,6 +9,11 @@ parent: Soda
 
 <br />
 
+#### June 1, 2022
+
+* Updated SodaCL [Freshness checks]({% link soda-cl/freshness.md %}) and [Cross checks]({% link soda-cl/cross-row-checks.md %}) (fka. Row count checks).
+* Added new documentation for SodaCL [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}) 
+
 #### May 31, 2022
 
 * Updated SodaCL [Schema checks]({% link soda-cl/schema.md %}) and [Reference checks]({% link soda-cl/reference.md %}) documentation.

@@ -21,11 +21,11 @@ checks for dim_product:
           - product_alternate_key
   - schema:
       warn:
-        when forbidden column present: [standard_cost]
+        when forbidden column present: [credit_card]
         when wrong column type:
           standard_cost: money
       fail:
-        when forbidden column present: [sombrero]
+        when forbidden column present: [pii*]
         when wrong column type:
           reorder_point: smallint
   - schema:
@@ -36,6 +36,7 @@ checks for dim_product:
       fail:
         when wrong column index:
           model_name: 22
+# Requires Soda Cloud account
   - schema:
       name: Any schema changes
       warn: 
@@ -43,8 +44,8 @@ checks for dim_product:
 ```
 
 [Define schema checks](#define-checks-with-missing-metrics) <br />
-[List of validation keys](#list-of-validation-keys) <br />
 [Optional check configurations](#optional-check-configurations)<br />
+[List of validation keys](#list-of-validation-keys) <br />
 [Expect one check result](#expect-one-check-result)<br />
 [Go further](#go-further)<br />
 <br />
@@ -117,16 +118,6 @@ checks for dim_customer:
          - column type change
 ```
 
-## List of validation keys
-
-| Validation key | Values | Requires a Soda<br />Cloud account | 
-| -------------- | ------ | :-------------------------: |
-| `when required column missing` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  |
-| `when forbidden column present` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  |
-| `when wrong column type` | nested key:value pair to identify column:expected_data_type |  |
-| `when wrong column index` | nested key:value pair to identify <br />column:expected_position_in_dataset_index |  |
-| `when schema changes` | `any` as an inline value<br /> `column add` as a nested list item<br /> `column delete` as a nested list item<br /> `column index change` as a nested list item <br /> `column type change` as a nested list item | ✓ |
-
 
 ## Optional check configurations
 
@@ -136,7 +127,7 @@ checks for dim_customer:
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 |  | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
-| ✓ | Use wildcard characters ({% raw %} % {% endraw %}) in values in the check; see [example](#example-with-wildcards). | See note in [example](#example-with-wildcards) below. |
+| ✓ | Use wildcard characters  ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check; see [example](#example-with-wildcards). | See note in [example](#example-with-wildcards) below. |
 | ✓ | Use for each to apply schema checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
@@ -181,6 +172,7 @@ checks for dim_product:
           - credit_card
           - obsolete_%
           - '%SALARY%'
+          - pii*
 ```
 
 #### Example with for each
@@ -202,6 +194,19 @@ coming soon
 ```
 
 <br />
+
+
+## List of validation keys
+
+| Validation key | Values | Requires a Soda<br />Cloud account | 
+| -------------- | ------ | :-------------------------: |
+| `when required column missing` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  |
+| `when forbidden column present` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  |
+| `when wrong column type` | nested key:value pair to identify column:expected_data_type |  |
+| `when wrong column index` | nested key:value pair to identify <br />column:expected_position_in_dataset_index |  |
+| `when schema changes` | `any` as an inline value<br /> `column add` as a nested list item<br /> `column delete` as a nested list item<br /> `column index change` as a nested list item <br /> `column type change` as a nested list item | ✓ |
+
+
 
 ## Expect one check result
 

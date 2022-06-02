@@ -194,7 +194,7 @@ If you have connected Soda Core to a Soda Cloud account, checks with validity me
 | ✓ | Define alert configurations to specify warn and fail thresholds; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 | ✓ | Apply a filter to return results for a specific portion of the data in your dataset; see [example](#example-with-filter).| [Add a filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
-|   | Use wildcard characters ({% raw %} % {% endraw %}) in values in the check. |  - |
+|   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply checks with validity metrics to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 | ✓ | Define validity values globally (experimental); see [example](#configure-global-valid-values-experimental). | [Configure global valid values (experimental)](#configure-global-valid-values-experimental)|
