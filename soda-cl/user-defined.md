@@ -9,55 +9,9 @@ parent: SodaCL (Beta)
 
 A user-defined check enables you to define elements of a check using SQL expressions or queries.
 
-[Failed rows SQL expression for tables](#failed-rows-sql-expression for tables)<br />
-[Failed rows SQL query](#failed-rows-swl-query)<br />
 [User-defined table expression metric checks](#user-defined-table-expression-metric-checks)<br />
 [User-defined single-metric query](#user-defined-single-metric-query)<br />
 <br />
-
-
-## Failed rows SQL expression for tables
-
-Use SQL expressions to write failed rows checks that ought to return no rows. If the check does return rows, Soda stores these rows so that you can examine them in an effort to diagnose the cause of the failed state. 
-
-Failed row checks use two key-value pairs.
-* The value for `fail condition` is a SQL expression that defines the conditions that qualify as failed; it selects failed rows. 
-* The value for `name` is a short description that states the property that non-failed rows must have. Soda Core uses the `name` in error messages.
-
-```yaml
-checks for CUSTOMERS:
-  - failed rows:
-      name: High customers must have size less than 3
-      fail condition: cat = 'HIGH' and size >= 3
-```
-
-<!--
-(Coming soon) add example that shows how variables are used in the rows fail when expression
-
-(Coming soon) doc when/how Soda Cloud sync identity gets updated, how to prevent it.
--->
-
-## Failed rows SQL query
-
-Use SQL queries to write scan-level checks which are not associated with any table. The failed checks ought to return no rows. If the check does return rows, they contain information to help you diagnose the cause of the failed state.
-
-Failed row checks use two key-value pairs.
-* The value for `fail query` is a SQL query that selects failed rows. Soda Core executes the query as it is written, including joins.
-* The value for `name` is a short description that states the property that non-failed rows must have. Soda Core uses the `name` in error messages.
-
-```yaml
-checks:
-  - failed rows:
-      name: customer contacts must have a valid email
-      fail query: |
-        SELECT *
-        FROM customers as customer
-             JOIN contact as contact on contact.customer_id = customer.id
-        WHERE contact.type = 'email'
-              AND contact.status = 'invalid'
-```
-
-Specify failed row queries  under the `checks:` section of a `checks.yml` file, or under a specific `checks for TABLE-NAME:` section. Where a failed row check is associated with a specific table, Soda Core pushes that association information to Soda Cloud, if you have connected Soda Core to your Soda Cloud account.
 
 
 ## User-defined table expression metric checks

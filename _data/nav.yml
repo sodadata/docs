@@ -130,13 +130,15 @@
   - subtitle: Reference checks
     page: soda-cl/reference.md
   - subtitle: Cross checks
-    page: soda-cl/cross-row-check.md
+    page: soda-cl/cross-row-checks.md
   - subtitle: Anomaly score checks
     page: soda-cl/anomaly-score.md
   - subtitle: Distribution checks
     page: soda-cl/distribution.md
   - subtitle: User-defined checks
     page: soda-cl/user-defined.md
+  - subtitle: Failed rows checks
+    page: soda-cl/failed-rows-checks.md
   - subtitle: Dataset filters
     page: soda-cl/dataset-filters.md
   - subtitle: For each
