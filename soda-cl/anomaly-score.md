@@ -20,7 +20,7 @@ If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check 
 
 
 ## Prerequisites
-* You have installed and <a href="https://docs.soda.io/soda-core/configure.html" target="_blank">configured Soda Core</a> to connect to a data source using a <a href="https://docs.soda.io/soda-core/first-scan.html#the-configuration-yaml-file" target="_blank">`configuration.yml` file</a>. 
+
 * You have a Soda Cloud account and have <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connected Soda Core to Soda Cloud</a>. 
 * You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you <a href="https://docs.soda.io/soda-core/get-started.html#requirements" target="_blank">installed Soda Core</a>.
 

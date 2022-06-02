@@ -35,7 +35,13 @@ checks for dim_customer:
   - row_count same as dim_department_group
 ```
 
-You can use cross checks to compare row counts between datasets in different data sources, as in the example below. In the example, `retail_customers` is the name of the other dataset, and `aws_postgres_retail` is the name of the data source in which `retail_customers` exists.
+<br />
+
+You can use cross checks to compare row counts between datasets in different data sources, as in the example below. 
+
+If you wish to compare row counts of datasets in different data sources, you must have configured a connection to both data sources in your <a href="https://docs.soda.io/soda-core/first-scan.html#the-configuration-yaml-file" target="_blank"> configuration YAML file</a>. Soda needs access to both data sources in order to execute a cross check between data sources. 
+
+In the example, `retail_customers` is the name of the other dataset, and `aws_postgres_retail` is the name of the data source in which `retail_customers` exists.
 
 ```yaml
 checks for dim_customer:
