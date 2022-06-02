@@ -7,65 +7,125 @@ parent: SodaCL (Beta)
 
 # User-defined checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-A user-defined check enables you to define elements of a check using SQL expressions or queries.
+If the built-in set of [metrics and checks]({% link soda-cl/metrics-and-checks.md %}) that SodaCL offers do not quite give you the information you need from a scan, you can define your own metrics to customize your checks. User-defined checks essentially enable you to create common-table expressions or SQL queries that Soda Core runs during a scan.
 
-[User-defined table expression metric checks](#user-defined-table-expression-metric-checks)<br />
-[User-defined single-metric query](#user-defined-single-metric-query)<br />
-<br />
+[Define user-defined checks](#define-user-defined-checks) <br />
+[Optional check configurations](#optional-check-configurations)<br />
+[Go further](#go-further)<br />
 
 
-## User-defined table expression metric checks
+## Define user-defined checks
 
-The syntax for a table expression metric check, `{metric_name} expression`, is a SQL aggregation expression that computes the value for the metric in the check.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), these are user-defined checks. Truly, it is the metric that you define yourself, then use in a check.
 
-The following example demonstrates how to use a check to specify user-defined aggregation SQL expressions.
+The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the metric that is then used in the check. The check itself follows the simple pattern of a [standard check]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) that uses a metric, a comparison symbol or phrase, and a threshold. You specify the CTE value for the custom metric using a nested **expression key** which also defines the name of the new custom metric.
+* The name you provide for a custom metric must *not* contain spaces.
+
 ```yaml
-checks for CUSTOMERS:
-  - avg_surface between 1068 and 1069:
-      avg_surface expression: AVG(size * distance)
+checks for dim_reseller:
+  - avg_order_span between 5 and 10:
+      avg_order_span expression: AVG(last_order_year - first_order_year)
 ```
 
-<br />
-
-The next example illustrates how to specify a name, and warn and fail levels for a user-defined aggregation SQL expression.
-```yaml
-checks for CUSTOMERS:
-  - avg_surface:
-      name: Average surface
-      avg_surface expression: AVG(size * distance)
-      warn: when < 30
-      fail: when < 10
-```
-
-The following are standard check configurations that you can apply: 
-* `name` 
-* `filter`
-* `warn`
-* `fail`
-
-## User-defined single-metric query
-
-The following is an example of a single-metric query associated with a table.
-```yaml
-checks for CUSTOMERS:
-  - mins_maxs between 100 and 1000:
-      mins_maxs query: |
-        SELECT MIN(MAX(a)+MAX(b))
-        FROM CUSTOMERS
-        WHERE cat = 'HIGH'
-```
+| custom metric | `avg_order_span` |
+| comparison symbol or phrase| `between` |
+| threshold | `5 and 10` |
+| expression key | `avg_order_span expression` |
+| expression value | `AVG(last_order_year - first_order_year)` |
 
 <br />
 
-While best practice dictates that you associate single-metric queries with a table where applicable, it is not required. The following example defines the same check as the previous example, but without a table association.
+Instead of using CTE to define a custom metric, you can use a SQL query. The example check below follows the same standard check pattern, but includes a nested **query key** to define the custom metric and its name.
+* The name you provide for a custom metric must *not* contain spaces.
+* Though you specify the dataset against which to run the query in the SQL query, you must also provide the dataset identifier in the `checks for` section header. Without the dataset identifier, Soda Core cannot send the check results to Soda Cloud.
+
 ```yaml
-checks:
-  - mins_maxs between 100 and 1000:
-      mins_maxs query: |
-        SELECT MIN(MAX(a)+MAX(b))
-        FROM CUSTOMERS
-        WHERE cat = 'HIGH'
+checks for dim_product:
+  - product_stock >= 50:
+      product_stock query: |
+        SELECT COUNT(safety_stock_level - days_to_manufacture)
+        FROM dim_product
 ```
+
+| custom metric | `product_stock` |
+| comparison symbol or phrase| `>=` |
+| threshold | `50` |
+| query key | `product_stock query` |
+| query value | `SELECT COUNT(safety_stock_level - days_to_manufacture) FROM dim_product` |
+
+
+<br />
+
+
+## Optional check configurations
+
+| ✓ | Configuration | Documentation |
+| :-: | ------------|---------------|
+| ✓ | Define a name for a user-defined check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
+| ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
+|   | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use wildcard characters in the value in the check. | Use wildcard values as you would with CTE or SQL. |
+| ✓ | Use for each to apply user-defined checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
+| ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+
+#### Example with check name 
+
+```yaml
+checks for dim_product:
+  - product_stock >= 50:
+      name: Product stock 
+      product_stock query: |
+        SELECT COUNT(safety_stock_level - days_to_manufacture)
+        FROM dim_product
+```
+
+#### Example with alert configuration
+
+```yaml
+  - avg_order_span:
+      avg_order_span expression: AVG(last_order_year - first_order_year)
+      warn: when > 50
+      fail: when > 200
+```
+
+#### Example with quotes
+
+```yaml
+checks for dim_product:
+  - product_stock >= 50:
+      product_stock query: |
+        SELECT COUNT("safety_stock_level" - "days_to_manufacture")
+        FROM dim_product
+```
+
+#### Example with for each
+
+```yaml
+for each table T:
+  tables:
+    - dim_reseller
+  checks:
+    - avg_order_span between 5 and 10:
+        avg_order_span expression: AVG(last_order_year - first_order_year)
+```
+
+#### Example with dataset filter
+
+```yaml
+coming soon
+```
+
+<br />
+
+## Go further
+
+* Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
+* Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+<br />
+
+
 <!--
 ## User-defined multi numeric metrics query
 

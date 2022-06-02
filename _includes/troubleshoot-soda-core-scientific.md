@@ -59,7 +59,7 @@ docker run -v /path/to/your/local/sodacl/files:/sodacl \
 
 <br />
 
-### Install Soda Core Locally 
+### Install Soda Core Scientific Locally 
 
 The following works on Mac OS on a machine with the M1 ARM-based processor. Consult the sections below to troubleshoot errors that may arise.
 

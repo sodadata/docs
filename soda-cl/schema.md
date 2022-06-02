@@ -7,7 +7,7 @@ parent: SodaCL (Beta)
 
 # Schema checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-Use a schema check to validate the presence, absence or position of a column in a dataset, or to validate the type of data column contains. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general. 
+Use a schema check to validate the presence, absence or position of columns in a dataset, or to validate the type of data column contains. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general. 
 
 ```yaml
 checks for dim_product:
@@ -36,7 +36,7 @@ checks for dim_product:
       fail:
         when wrong column index:
           model_name: 22
-# Requires Soda Cloud account
+# Requires a Soda Cloud account
   - schema:
       name: Any schema changes
       warn: 

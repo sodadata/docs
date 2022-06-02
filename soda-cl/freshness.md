@@ -14,7 +14,6 @@ checks for dim_product:
   - freshness using start_date < 3d
 ```
 
-
 [Define freshness checks](#define-freshness-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of freshness thresholds](#list-of-freshness-thresholds) <br />

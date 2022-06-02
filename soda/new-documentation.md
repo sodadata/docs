@@ -9,6 +9,12 @@ parent: Soda
 
 <br />
 
+#### June 2, 2022
+
+* Revised the SodaCL [User-defined checks]({% link soda-cl/user-defined.md %}) documentation.
+* Revised [For each]({% link soda-cl/for-each.md %}) and [Filters]({% link soda-cl/filters.md %}) documentation.
+* Updated [Glossary]({% link soda/glossary.md %}) with SodaCL terminology.
+
 #### June 1, 2022
 
 * Updated SodaCL [Freshness checks]({% link soda-cl/freshness.md %}) and [Cross checks]({% link soda-cl/cross-row-checks.md %}) (fka. Row count checks).
@@ -36,7 +42,7 @@ parent: Soda
 
 #### May 19, 2022
 
-* Added new SodaCL documentation to elaborate on some configuration and offer broad language rules. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}), [Optional check configurations]({% link soda-cl/optional-config.md %}), [Numeric metrics]({% link soda-cl/numeric-metrics.md %}), [Dataset filters]({% link soda-cl/dataset-filters.md %}), [Anomaly score check]({% link soda-cl/anomaly-score.md %}) and [For each]({% link soda-cl/for-each.md %}).
+* Added new SodaCL documentation to elaborate on some configuration and offer broad language rules. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}), [Optional check configurations]({% link soda-cl/optional-config.md %}), [Numeric metrics]({% link soda-cl/numeric-metrics.md %}), [Filters]({% link soda-cl/filters.md %}), [Anomaly score check]({% link soda-cl/anomaly-score.md %}) and [For each]({% link soda-cl/for-each.md %}).
 
 #### May 18, 2022
 
