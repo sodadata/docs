@@ -11,7 +11,7 @@ Use an anomaly score check to automatically discover anomalies in your time-seri
 Requires Soda Cloud and Soda Core Scientific.
 
 ```yaml
-checks for CUSTOMERS:
+checks for dim_customer:
   - anomaly score for row_count < default
 ```
 
@@ -20,6 +20,7 @@ checks for CUSTOMERS:
 [Install Soda Core Scientific](#install-soda-core-scientific)<br />
 [Define an anomaly score check](#define-an-anomaly-score-check) <br />
 [Optional check configurations](#optional-check-configurations) <br />
+[List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
 [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation)<br />
 [Go further](#go-further) <br />
 <br />
@@ -51,12 +52,12 @@ Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-cor
 The following example demonstrates how to use the anomaly score for the `row_count` metric in a check. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing](% link soda-cl/missing-metrics.md %), or [validity]({% link soda-cl/validity-metrics.md %}) metric in lieu of `row_count`. 
 
 ```yaml
-checks for CUSTOMERS:
+checks for dim_customer:
   - anomaly score for row_count < default
 ```
 
-* Currently, you can only use `default` as the threshold in an anomaly check. 
-* By default, anomaly score checks yield warning check results, not failures.
+* Currently, you can only use `< default` to define the threshold in an anomaly score check. 
+* By default, anomaly score checks yield warn check results, not fails.
 
 <br />
 You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing](% link soda-cl/missing-metrics.md %), or [validity]({% link soda-cl/validity-metrics.md %}) metric in anomaly score checks.  The following example detects anomalies for the average of `order_price` in an `orders` dataset.
@@ -106,6 +107,13 @@ for each table T:
 
 
 <br />
+
+## List of comparison symbols and phrases
+
+```yaml
+<
+```
+
 
 ## Troubleshoot Soda Core Scientific installation
 

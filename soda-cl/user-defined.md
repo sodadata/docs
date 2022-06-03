@@ -11,6 +11,7 @@ If the built-in set of [metrics and checks]({% link soda-cl/metrics-and-checks.m
 
 [Define user-defined checks](#define-user-defined-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />
+[List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
 [Go further](#go-further)<br />
 
 
@@ -117,6 +118,10 @@ coming soon
 ```
 
 <br />
+
+## List of comparison symbols and phrases
+
+{% include list-symbols.md %}
 
 ## Go further
 
