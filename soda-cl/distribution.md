@@ -22,6 +22,7 @@ checks for dim_customer:
 [Define a distribution check](#define-a-distribution-check)<br />
 [Distribution check examples](#distribution-check-examples)<br />
 [Optional check configurations](#optional-check-configurations)<br />
+[List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
 [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation)<br />
 [Go further](#go-further) <br />
 <br />
@@ -200,6 +201,12 @@ for each table T:
     - distribution_difference(number_cars_owned, absolutely_whatever_string_you_please) > 0.05:
         distribution reference file: dist_ref.yml
 ```
+
+<br />
+
+## List of comparison symbols and phrases
+
+{% include list-symbols.md %}
 
 ## Troubleshoot Soda Core Scientific installation
 
