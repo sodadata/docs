@@ -17,7 +17,7 @@ Community members are also welcome to create and/or resolve issues in the public
 
 If you wish to upgrade your Soda Cloud Developer account, contact the <a href="mailto:sales@soda.io">Soda Sales Team</a>.
 
-Review the Soda Cloud licensing options on<a href="https://www.soda.io/licensing-options" target="_blank">soda.io</a>.
+Review the Soda Cloud licensing options on <a href="https://www.soda.io/licensing-options" target="_blank">soda.io</a>.
 
 
 
