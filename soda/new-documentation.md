@@ -9,6 +9,11 @@ parent: Soda
 
 <br />
 
+#### June 6, 2022
+
+* Added clarifying details to [Cross checks]({% link soda-cl/cross-row-checks.md %}) and updated images on [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
+* Added <a href="https://docs.soda.io/soda-core/get-started.html#use-docker-to-run-soda-core" target="_blank">Use Docker to run Soda Core</a> to Soda Core installation documentation.
+
 #### June 2, 2022
 
 * Revised the SodaCL [User-defined checks]({% link soda-cl/user-defined.md %}) documentation.

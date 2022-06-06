@@ -13,6 +13,7 @@ Soda Core is a command-line interface (CLI) tool that enables you to scan the da
 [Requirements](#requirements)<br />
 [Install the Soda Core CLI](#install-the-soda-core-cli)<br />
 [Upgrade the Soda Core CLI](#upgrade-the-sore-core-cli)<br />
+[Use Docker to run Soda Core](#use-docker-to-run-soda-core)<br />
 <br />
 
 ## Requirements
@@ -62,6 +63,10 @@ pip install soda-core-redshift -U
 ```
 
 Next, [run your first scan]({% link soda-core/first-scan.md %}).
+
+## Use Docker to run Soda Core
+
+{% include docker-soda-core.md %}
 
 ---
 {% include docs-core-footer.md %}
