@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Cross checks
-description: Use a SodaCL (Beta) row count checks to validate the number of rows in a table. Compare row counts across tables or data sources.
+description: Use a SodaCL (Beta) cross check to compare row counts across datasets in the same, or different, data sources.
 parent: SodaCL (Beta)
 redirect_from: /soda-cl/row-count.html
 ---
@@ -39,8 +39,6 @@ checks for dim_customer:
 
 You can use cross checks to compare row counts between datasets in different data sources, as in the example below. 
 
-If you wish to compare row counts of datasets in different data sources, you must have configured a connection to both data sources in your <a href="https://docs.soda.io/soda-core/first-scan.html#the-configuration-yaml-file" target="_blank"> configuration YAML file</a>. Soda needs access to both data sources in order to execute a cross check between data sources. 
-
 In the example, `retail_customers` is the name of the other dataset, and `aws_postgres_retail` is the name of the data source in which `retail_customers` exists.
 
 ```yaml
@@ -48,6 +46,8 @@ checks for dim_customer:
   - row_count same as retail_customers in aws_postgres_retail
 ```
 
+* If you wish to compare row counts of datasets in different data sources, you must have configured a connection to both data sources in your <a href="https://docs.soda.io/soda-core/first-scan.html#the-configuration-yaml-file" target="_blank"> configuration YAML file</a>. Soda needs access to both data sources in order to execute a cross check between data sources. 
+* The data sources do not need to be the same type; you can compare a dataset in a PostgreSQL data source to a dataset in a BigQuery data source.
 
 ## Optional check configurations
 

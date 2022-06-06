@@ -82,7 +82,7 @@ A **standard** check, as illustrated above with `row_count`, uses a language pat
 
 Some checks that you write with SodaCL do not use metrics and thresholds, and instead follow **unique patterns** relevant to the data quality parameters they check. Each unique check type has its own documentation.
 
-For example, a check that validates that the values in a column in one dataset match exactly with the values in another column in another dataset uses a unique pattern.
+For example, a reference check that validates that the values in a column in one dataset match exactly with the values in another column in another dataset uses a unique pattern.
 
 ```yaml
 checks for dim_employees_dev:
@@ -97,7 +97,7 @@ checks for dim_employees_dev:
     distribution<br />
     freshness<br />
     reference<br />
-    row count cross-check<br />
+    cross<br />
     schema<br />
 </details>
 
@@ -117,10 +117,8 @@ checks for customers:
 
 <details>
     <summary>Quick view of user-defined check types</summary>
-    failed rows using common table expression<br />
-    failed rows using SQL query<br />
-    user-defined metric using common table expression<br />
-    user-defined metric using SQL query<br />
+    failed rows<br />
+    user-defined<br />
 
 </details>
 
