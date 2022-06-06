@@ -27,3 +27,5 @@ gem "just-the-docs"
 gem "webrick"
 
 gem 'jekyll-redirect-from'
+
+gem 'jekyll-sitemap'
