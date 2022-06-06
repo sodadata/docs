@@ -27,3 +27,8 @@ collections:
   - release-notes
 
 ga_tracking: UA-118158875-3
+
+# Site map for docs subdomain
+url: "https://docs.soda.io"
+plugins:
+  - jekyll-sitemap
