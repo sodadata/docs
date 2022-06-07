@@ -53,7 +53,7 @@ Depending on whether your data is categorical or continuous, use the <a href="ht
 
 ## Install Soda Core Scientific
 
-To use a distribution check, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core.
+To use a distribution check, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core. Best practice recommends installing Soda Core and Soda Core Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Core Scientific locally](#install-soda-core-scientific-locally) if you prefer.
 
 {% include install-soda-core-scientific.md %}
 
