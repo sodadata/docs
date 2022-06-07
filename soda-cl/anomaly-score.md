@@ -40,7 +40,7 @@ If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check 
 
 ## Install Soda Core Scientific
 
-To use an anomaly score check, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core.
+To use an anomaly score check, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core. Best practice recommends installing Soda Core and Soda Core Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Core Scientific locally](#install-soda-core-scientific-locally) if you prefer.
 
 {% include install-soda-core-scientific.md %}
 

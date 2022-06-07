@@ -1,5 +1,6 @@
-1. (Optional, but recommended) Set up a virtual environment, as described in the <a href="https://docs.soda.io/soda-core/get-started.html#install-the-soda-core-cli" target="_blank">Soda Core documentation</a>, to use to install Soda Core Scientific. Alternatively, you can create a Soda project directory in your local environment and install Soda Core and Soda Core Scientific in that directory. 
-2. From your command-line interface, use the following command to install Soda Core Scientific.
+1. Set up a virtual environment, as described in the <a href="https://docs.soda.io/soda-core/get-started.html#install-the-soda-core-cli" target="_blank">Soda Core documentation</a>.
+2. <a href="https://docs.soda.io/soda-core/get-started.html#use-docker-to-run-soda-core" target="_blank">Install Soda Core</a> in your new virtual environment. 
+3. Use the following command to install Soda Core Scientific.
 
 ```bash
 pip install soda-core-scientific
