@@ -9,6 +9,11 @@ parent: Soda
 
 <br />
 
+#### June 7, 2022
+
+* Added new documentation for <a href="https://docs.soda.io/soda-core/install-scientific.html" target="_blank"> Install Soda Core Scientifc</a>.
+* Add a new [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}).
+
 #### June 6, 2022
 
 * Added clarifying details to [Cross checks]({% link soda-cl/cross-row-checks.md %}) and updated images on [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
