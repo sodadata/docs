@@ -13,6 +13,7 @@ plugins:
   - jekyll-feed
   - jekyll-redirect-from
   - jekyll-last-modified-at
+  - jekyll-sitemap
 
 logo: /assets/images/soda-logo.svg
 color_scheme: soda
@@ -28,7 +29,3 @@ collections:
 
 ga_tracking: UA-118158875-3
 
-# Site map for docs subdomain
-url: "https://docs.soda.io"
-plugins:
-  - jekyll-sitemap
