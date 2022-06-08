@@ -2,7 +2,7 @@
 layout: default
 title: Quick start for SodaCL
 description: Follow the quick start tutorial to get started with SodaCL, a human-readable, domain-specific language for data reliability. 
-parent: Soda
+parent: Get started
 ---
 
 # Quick start for SodaCL ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
