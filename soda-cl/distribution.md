@@ -143,7 +143,7 @@ checks for your_dataset_name:
 * `your_dataset_name` - the name of your dataset
 * `column_name` - the column against which to compare the DRO
 * `> 0.05` - the threshold for the distribution check that you specify as acceptable
-*  `your_method_of_choice` - the type of test you want to use in the distribution check. You can choose one of the following options: `ks`, `chi_square`, `psi`, `swd`, `semd`, corresponding to the Kolmogorov-Smirnov test, Chi-square test, Population Stability Index, Standardized Wasserstein Distance (SWD), and the Standardized Earth Mover's Distance (SEMD). Please note that the SWD and the SEMD are the same metric.
+*  `your_method_of_choice` - the type of test you want to use in the distribution check. You can choose one of the following options: `ks`, `chi_square`, `psi`, `swd`, `semd`, corresponding to the Kolmogorov-Smirnov test, Chi-square test, Population Stability Index, Standardized Wasserstein Distance (SWD), and the Standardized Earth Mover's Distance (SEMD). Please note that the SWD and the SEMD are the same metric. If no method is specified the distribution check defaults to `ks` or `chi_square`, for continuous and categorical data respectively.
 4. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to <a href ="https://docs.soda.io/soda-core/first-scan.html#run-a-scan" target="_blank">Soda Core documentation</a> for more details.
 ```bash
 soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yaml your_check_file.yaml
