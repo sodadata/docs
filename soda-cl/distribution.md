@@ -35,6 +35,7 @@ To detect changes in the distribution of a column between different points in ti
 When using hypothesis testing, a distribution check allows you to determine whether enough evidence exists to conclude that the distribution of a column has changed. It returns the probability that the difference between samples taken at two points in time would have occurred if they came from the same distribution (see <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">p-value</a>). If this probability is smaller than a threshold that you define, the check warns you that the column's distribution has changed. 
 
 You can use the following statistical tests for hypothesis testing in your distribution checks.
+
 * <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank">Kolmogorov-Smirnov</a> for continuous data
 * <a href="https://en.wikipedia.org/wiki/Chi-squared_test" target="_blank">Chi-square</a> for categorical data
 
