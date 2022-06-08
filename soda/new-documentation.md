@@ -13,6 +13,7 @@ parent: Soda
 
 * Updated the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) with an example of a check for duplicates.
 * Added documentation for [installing Soda Spark on Windows]({% link soda-spark/install-and-use.md %}#install-soda-spark-on-windows).
+* Updated the [Distribution check]({% link soda-cl/distribution.md %}) documentation to record a change in syntax for the check and the addition of two more methods available to use with distribution checks.
 
 #### June 7, 2022
 
