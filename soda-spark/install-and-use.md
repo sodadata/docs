@@ -43,7 +43,16 @@ For Linux users only, install the following:
 
 ## Install Soda Spark
 
-From your command-line interface tool, execute the following command.
+1. (Optional) Best practice dictates that you install the Soda Spark package using a virtual environment. In your command-line interface tool, create a virtual environment in the `.venv` directory using the commands below. Depending on your version of Python, you may need to replace `python` with `python3` in the first command.
+```shell
+python -m venv .venv
+source .venv/bin/activate
+```
+2. Upgrade pip.
+```shell
+pip install --upgrade pip
+```
+3. Execute the following command to install the Soda Spark package.
 
 ``` sh
 pip install soda-spark
