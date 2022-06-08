@@ -2,16 +2,14 @@
   page: index.html
 
 - title: Get started
-  page: soda-sql/interactive-demo.md
+  page: soda/quick-start-soda-core.md
   subcategories:
-  - subtitle: Soda SQL interactive demo
-    page: soda-sql/interactive-demo.md
-  - subtitle: Quick start for Soda SQL and Soda Cloud
-    page: soda/quick-start-soda-sql.md
   - subtitle: Quick start for Soda Core and Soda Cloud
     page: soda/quick-start-soda-core.md
   - subtitle: Quick start for SodaCL
     page: soda/quick-start-sodacl.md
+  - subtitle: Quick start for Soda SQL and Soda Cloud
+    page: soda/quick-start-soda-sql.md
   - subtitle: Soda product overview
     page: soda/product-overview.md
   - subtitle: Soda product comparison
@@ -33,6 +31,8 @@
   subcategories:
   - subtitle: Soda SQL
     page: soda-sql/overview.md
+  - subtitle: Soda SQL interactive demo
+    page: soda-sql/interactive-demo.md
   - subtitle: How Soda SQL works
     page: soda-sql/concepts.md
   - subtitle: Install Soda SQL
