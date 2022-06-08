@@ -32,17 +32,19 @@ checks for dim_customer:
 
 To detect changes in the distribution of a column between different points in time, Soda uses approaches based on <a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing" target="_blank">hypothesis testing</a> and based on metrics that quantify the distance between samples.  
 
-When using hypothesis testing, a distribution check allows you to determine whether enough evidence exists to conclude that the distribution of a column has changed. It returns the probability that the difference between samples taken at two points in time would have occurred if they came from the same distribution (see <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">p-value</a>). If this probability is smaller than a threshold that you define, the check warns you that the column's distribution has changed.
+When using hypothesis testing, a distribution check allows you to determine whether enough evidence exists to conclude that the distribution of a column has changed. It returns the probability that the difference between samples taken at two points in time would have occurred if they came from the same distribution (see <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">p-value</a>). If this probability is smaller than a threshold that you define, the check warns you that the column's distribution has changed. 
+
+You can use the following statistical tests for hypothesis testing in your distribution checks.
+* <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank">Kolmogorov-Smirnov</a> for continuous data
+* <a href="https://en.wikipedia.org/wiki/Chi-squared_test" target="_blank">Chi-square</a> for categorical data
 
 When using a metric to measure distance between samples, a distribution check returns the value of the distance metric that you chose based on samples taken at two points in time. If the value of the distance metric is larger than a threshold that you define, the check warns that the column's distribution has changed.
 
-You can use the following statistical tests and distance metrics in your distribution checks
-* <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test" target="_blank">Kolmogorov-Smirnov</a> (hypothesis testing)
-* <a href="https://en.wikipedia.org/wiki/Chi-squared_test" target="_blank">Chi-square</a> (hypothesis testing)
-* <a href="https://mwburke.github.io/data%20science/2018/04/29/population-stability-index.html" target="_blank">Population Stability Index (PSI)</a> (distance metric)
-* <a href="https://en.wikipedia.org/wiki/Wasserstein_metric" target="_blank">Standardized Wasserstein Distance (SWD) </a> (distance metric, standardized using the sample standard deviation)
+You can use the following distance metrics in your distribution checks.
 
-Please make sure that your depending on whether your data is continuous or categorical, you choose a test that is appropriate. While the PSI and the SWD can be used with both types of data, the Kolmogorov-Smirnov test and chi-square test only support continuous and categorical data, respectively.
+* <a href="https://mwburke.github.io/data%20science/2018/04/29/population-stability-index.html" target="_blank">Population Stability Index (PSI)</a> for continuous or categorical data
+* <a href="https://en.wikipedia.org/wiki/Wasserstein_metric" target="_blank">Standardized Wasserstein Distance (SWD) </a> (standardized using the sample standard deviation) for continuous or categorical data
+
 
 <details>
   <summary>Sample sizes in distribution checks</summary>
@@ -56,13 +58,15 @@ Please make sure that your depending on whether your data is continuous or categ
 </details>
 <details>
   <summary>Distribution check thresholds for distance metrics</summary>
-  The values of the Population Stability Index (PSI) and the Standardized Wasserstein Distance (SWD) can be hard to interpret, which is why users are encouraged to investigate which distribution thresholds make sense for their use case. That being said, some common interpretations of the PSI result are
+  The values of the Population Stability Index (PSI) and the Standardized Wasserstein Distance (SWD) can be hard to interpret. Consider carefully investigating which distribution thresholds make sense for your use case. <br />
+  <br />
+  Some common interpretations of the PSI result are as follows:
   <ul>
     <li> PSI < 0.1: no significant distribution change </li>
     <li> 0.1 < PSI < 0.2: moderate distribution change </li>
     <li> PSI >= 0.2: significant distribution change </li>
   </ul>
-  During simulations it was found that for a difference in mean between distributions of size relative to 10% of their standard deviation, the SWD value converged to approximately 0.1.
+  During simulations, for a difference in mean between distributions of size relative to 10% of their standard deviation, the SWD value converged to approximately 0.1.
 </details>
 ## Prerequisites
 
@@ -95,9 +99,7 @@ data_type: categorical
 filter: "column_name between '2010-01-01' and '2020-01-01'"
 ```
 3. Change the values for `table` and `column` to reflect your own dataset's identifiers.
-4. (Optional) Change the value for `data_type` to capture a different data type
-* use `categorical` for categorical data
-* use `continuous` for continuous data
+4. (Optional) Change the value for `data_type` to capture `categorical` or `continuous` data.
 5. (Optional) Define the value of `filter` to specify the portion of the data in your dataset for which you are creating a DRO. If you trained a model on data in which the `date_first_customer` column contained values between 2010-01-01 and 2020-01-01, you can use a filter based on that period to test whether the distribution of the column has changed since then. <br />
 If you do not wish to define a filter, remove the key-value pair from the file.
 6. Save the file, then, while still in your Soda project directory, run the `soda update` command to create a distribution reference object. For a list of options available to use with the command, run `soda update --help`. 
@@ -143,8 +145,14 @@ checks for your_dataset_name:
 * `your_dataset_name` - the name of your dataset
 * `column_name` - the column against which to compare the DRO
 * `> 0.05` - the threshold for the distribution check that you specify as acceptable
-*  `your_method_of_choice` - the type of test you want to use in the distribution check. You can choose one of the following options: `ks`, `chi_square`, `psi`, `swd`, `semd`, corresponding to the Kolmogorov-Smirnov test, Chi-square test, Population Stability Index, Standardized Wasserstein Distance (SWD), and the Standardized Earth Mover's Distance (SEMD). Please note that the SWD and the SEMD are the same metric. If no `method` is specified the distribution check defaults to `ks` or `chi_square`, for continuous and categorical data respectively.
-4. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to <a href ="https://docs.soda.io/soda-core/first-scan.html#run-a-scan" target="_blank">Soda Core documentation</a> for more details.
+4. Replace the value of `your_method_of_choice` with the type of test you want to use in the distribution check. 
+    * `ks` for the Kolmogorov-Smirnov test
+    * `chi_square` for the Chi-square test
+    * `psi` for the Population Stability Index metric
+    * `swd` for the Standardized Wasserstein Distance (SWD) metric 
+    * `semd` for the Standardized Earth Mover's Distance (SEMD) metric (the SWD and the SEMD are the same metric) <br /> 
+If you do not specify a `method`, the distribution check defaults to `ks` for continuous data or `chi_square` for categorical data respectively.
+5. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to <a href ="https://docs.soda.io/soda-core/first-scan.html#run-a-scan" target="_blank">Soda Core documentation</a> for more details.
 ```bash
 soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yaml your_check_file.yaml
 ```
