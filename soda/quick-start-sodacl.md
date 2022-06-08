@@ -15,6 +15,7 @@ If you are staring at a blank YAML file wondering what SodaCL checks to write to
 [About this tutorial](#about-this-tutorial) <br />
 [Tutorial prerequisites](#tutorial-prerequisites) <br />
 [Row count and cross checks](#row-count-and-cross-checks) <br />
+[Duplicate check](#duplicate-check) <br />
 [Freshness check](#freshness-check)<br />
 [Missing and invalid checks](#missing-and-invalid-checks)<br />
 [Reference checks](#reference-checks)<br />
@@ -60,17 +61,7 @@ checks for dataset_name:
 
 <br />
 
-If you wish, you can specify a column against which Soda executes the check. In the following example, Soda counts the rows in the `last_name` column, identified as the value in parentheses. If there are fewer than 50 rows, the check result is fail.
-
-```yaml
-# Check that a column contains more than 50 rows
-checks for dim_customer:
-  - row_count(last_name) > 50
-```
-
-<br />
-
-The two checks above are examples that use a numeric metric in a standard check pattern. By contrast, the following unique cross check compares row counts between datasets within the same data source without setting a threshold for volume, like `> 50`. 
+The check above is an example that use a numeric metric in a standard check pattern. By contrast, the following unique cross check compares row counts between datasets within the same data source without setting a threshold for volume, like `> 50`. 
 
 This type of check is useful when, for example, you want to compare row counts to validate that a transformed dataset contains the same volume of data as the source from which it came.
 
@@ -86,6 +77,32 @@ checks for dataset_name:
 * [Cross checks]({% link soda-cl/cross-row-checks.md %})
 
 
+## Duplicate check
+
+For the nearly universal use case of making sure that values in a column are not duplicated, you can use the `duplicate_count` metrics. In the following example, Soda counts the number of duplicate values in the `column_name` column, identified as the value in parentheses appended to the metric. If there is even one value that is a duplicate of another, the check result is fail.
+
+This type of check is useful when, for example, you need to make sure that values in an `id` column are unique, such `customer_id` or `product_id`.
+
+```yaml
+# Check that a column does not contain any duplicate values
+checks for dataset_name:
+  - duplicate_count(column_name) = 0
+```
+
+<br />
+
+If you wish, you can quickly check for duplicate values in multiple columns in a single check. Note that `duplicate_count` only compares values in the same column, it does not compare the values in one column to values in another column to surface duplicates. (However, you *can* compare column values using a [reference check](#reference-checks)!)
+
+```yaml
+# Check that neither column contains any duplicate values
+checks for dataset_name:
+  - duplicate_count(column_name, column_name1, column_name2) = 0
+```
+
+### Read more
+* [Numeric metrics]({% link soda-cl/numeric-metrics.md %})
+
+
 ## Freshness check
 
 If your dataset contains a column that stores timestamp information, you can configure a freshness check. This type of check is useful when, for example, you need to validate that the data feeding a weekly report or dashboard is not stale. Timely data is reliable data!
@@ -95,7 +112,7 @@ In this example, the check fails if the most-recently added row (in other words,
 ```yaml
 # Check that data in dataset is less than one day old
 checks for dataset_name:
-  - freshness(timestap_column_name) < 1d
+  - freshness(timestamp_column_name) < 1d
 ```
 
 ### Read more
