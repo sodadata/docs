@@ -10,6 +10,8 @@
     page: soda/quick-start-soda-sql.md
   - subtitle: Quick start for Soda Core and Soda Cloud
     page: soda/quick-start-soda-core.md
+  - subtitle: Quick start for SodaCL
+    page: soda/quick-start-sodacl.md
   - subtitle: Soda product overview
     page: soda/product-overview.md
   - subtitle: Soda product comparison
