@@ -9,6 +9,11 @@ parent: Soda
 
 <br />
 
+#### June 8, 2022
+
+* Updated the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) with an example of a check for duplicates.
+* Added documentation for [installing Soda Spark on Windows]({% link soda-spark/install-and-use.md %}#install-soda-spark-on-windows).
+
 #### June 7, 2022
 
 * Added new documentation for <a href="https://docs.soda.io/soda-core/install-scientific.html" target="_blank"> Install Soda Core Scientifc</a>.
