@@ -87,6 +87,10 @@
     page: soda-cloud/overview.md
   - subtitle: Roles and rights
     page: soda-cloud/roles-and-rights.md
+  - subtitle: Add a data source
+    page: soda-cloud/datasource.md
+  - subtitle: Create agreements
+    page: soda-cloud/agreements.md
   - subtitle: Collaborate on data monitoring
     page: soda-cloud/collaborate.md
   - subtitle: Create monitors and alerts
