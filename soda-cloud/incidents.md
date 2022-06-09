@@ -77,7 +77,7 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 * In the **Incidents** dashboard, review all Incidents, their severity and status, and the assigned lead. Sort the list of Incidents by severity.
 * From an Incident's page, link other monitor results to the same Incident to expand the investigation landscape.
 
-Access the <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />.
+Access the <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a>.
 
   </div>
   </div>

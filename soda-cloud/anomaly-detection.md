@@ -57,11 +57,12 @@ Currently, Soda's time-series anomaly detection uses the <a href=""https://faceb
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
-Anomaly detection monitors are unavailable for datasets added to Soda Cloud via Soda Core (Beta).
+In Soda Cloud, you can only create new anomaly detection monitors for datasets connected to an instance of Soda SQL; you cannot create schema evolution monitors for datasets connected to Soda Core (Beta), yet. 
 
-Soon, you will be able to use Soda Cloud to set up anomaly detection on datasets added via Soda Core. 
+Instead, you can use SodaCL (Beta) to write [anomaly score checks]({% link soda-cl/anomaly-score.md %}) in a <a href="https://docs.soda.io/soda-core/first-scan.html#the-checks-yaml-file" target="_blank">checks YAML file</a><br /> for Soda Core to execute during a scan. You can <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connect</a> Soda Core to your Soda Cloud account to see the check results after each scan. 
 
 <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />
+[SodaCL documentation]({% link soda-cl/soda-cl-overview.md %})
 
   </div>
   </div>
