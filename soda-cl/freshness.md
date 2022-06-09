@@ -28,8 +28,6 @@ A freshness check measures the age of the youngest row in a table. Using this ch
 
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), freshness checks are unique. This check is limited in its syntax variation, with only a few mutable parts to specify column name, threshold, and, optionally, a "now" variable.
 
-Note that the syntax for freshness checks is a work-in-progress. Any changes will appear here in the documentation and in the Soda community on Slack.
-
 A freshness check has two or three mutable parts:
 
 | a timestamp column name | 
@@ -107,6 +105,8 @@ Invalid check "freshness(start_date) > 1d": no viable alternative at input ' >'
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 #### Example with check name
+
+KNOWN ISSUE: Adding a customized name for a freshness check does not work. (CORE-12)
 
 ```yaml
 checks for dim_product:

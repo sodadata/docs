@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### June 14, 2022
+
+* Updated the syntax for [freshness checks]({% link soda-cl/freshness.md %}) to remove `using` from the syntax and identify column name instead by wrapping in parentheses.
+
 #### June 8, 2022
 
 * Updated the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) with an example of a check for duplicates.
