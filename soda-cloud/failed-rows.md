@@ -50,24 +50,31 @@ When a Soda Core (Beta) scan results in a failed check, Soda Cloud displays deta
 
 ![failed-rows](/assets/images/failed-rows.png){:height="600px" width="600px"}
 
-## Use a missing-value check to collect failed row samples
+## Use a metrics to send failed row samples
 
 In Soda Cloud, you can only create new monitors and alerts for datasets connected to an instance of Soda SQL; you cannot create monitors for datasets connected to Soda Core (Beta), yet. 
 
-Instead, you can use SodaCL (Beta) to write a <a href="https://docs.soda.io/soda-cl/missing-validity.html" target="_blank">check</a> in a <a href="https://docs.soda.io/soda-core/first-scan.html#the-checks-yaml-file" target="_blank">checks YAML file</a><br /> for Soda Core to execute during a scan. You can <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connect</a> Soda Core to your Soda Cloud account to see the check results after each scan. 
+Instead, you can use SodaCL (Beta) to write a check that uses a [duplicate_count]({% link soda-cl/numeric-metrics.md %}#send-failed-rows-to-soda-cloud), [missing]({% link soda-cl/missing-metrics.md %}#send-failed-rows-to-soda-cloud) or [validity]({% link soda-cl/validity-metrics.md %}#send-failed-rows-to-soda-cloud) metric in a <a href="https://docs.soda.io/soda-core/first-scan.html#the-checks-yaml-file" target="_blank">checks YAML file</a> for Soda Core to execute during a scan. You can <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connect</a> Soda Core to your Soda Cloud account to see the check results after each scan. 
 
-If you use one of the following checks using SodaCL, Soda Core automatically sends a sample of the first five failed rows associated with the failed test to Soda Cloud with the scan results.
-
-* Missing Values
-* Invalid Values
-* Distinct
-
-When Soda Core next runs a scan of your dataset, it collects and displays a sample of failed rows for the checks that use the above-listed checks. A sample contains the first five examples of failed rows from the dataset.
-
+If you use one of the above-listed metrics in checks you write using SodaCL, Soda Core automatically sends a sample of the failed rows associated with the failed check to Soda Cloud with the scan results.
+<br />
 
 #### Troubleshoot
 
 {% include troubleshoot-failed-rows.md %}
+
+
+
+## Use checks to send failed rows 
+
+Use a [failed rows check]({% link soda-cl/failed-rows-checks.md %}) to explicitly send samples of rows that failed a check to Soda Cloud.
+
+## Disable failed row samples
+
+Where your datasets contain sensitive or private information, you may *not* want to send failed row samples from your data source to Soda Cloud. In such a circumstance, you can disable the feature completely in Soda Cloud.
+
+{% include disable-all-samples.md %}
+
 
   </div>
   </div>
