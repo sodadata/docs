@@ -1,22 +1,20 @@
 ---
 layout: default
-title: SodaCL (Beta)
-description: Soda Checks Language (Beta) is a human-readable, domain-specific language for data reliability. You use SodaCL to define Soda Checks in a checks YAML file.
-parent: SodaCL
+title: Soda Core overview
+description: Soda Core (Beta) is an open-source, CLI tool that enables you to use the Soda Checks Language to turn user-defined input into SQL queries.
+parent: Soda Core
 ---
 <br />
 
-![soda-cl-logo](/assets/images/sodacl-logo.png){:height="185px" width="185px"} ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+![soda-core-logo](/assets/images/soda-core-logo.png){:height="250px" width="250px"} ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 <br />
 <br />
 
-<p>&#10004;  Human-readable, domain-specific language for data reliability<br /></p>
-<p>&#10004;  Compatible with <a href="https://docs.soda.io/soda-core/overview-main.html" target="_blank">Soda Core (Beta)</a> and <a href="https://docs.soda.io/soda-cloud/overview.html">Soda Cloud</a><br /></p>
-<p>&#10004;  Includes 25+ built-in metrics, plus the ability to <a href="https://docs.soda.io/soda-cl/user-defined.html">include SQL queries</a><br /></p>
-<p>&#10004;  Includes checks with <a href="https://docs.soda.io/soda-cl/numeric-metrics.html#fixed-and-dynamic-thresholds">dynamic thresholds</a> to gauge changes to metrics over time<br /></p>
-<p>&#10004;  Collaborate with your team to write SodaCL checks in a YAML file<br /></p>
+&#10004;  An open-source, CLI tool and Python library for data reliability<br /> <br />
+&#10004;  Compatible with [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}) and [Soda Cloud]({% link soda-cloud/overview.md %}) <br /> <br />
+&#10004;  Conduct data quality testing both in and out of your pipeline, for data observability, and for data monitoring <br /> <br />
+&#10004;  Embed a Soda scan in a data pipeline, or execute scans programmatically on a time-based schedule <br /> <br />
 <br />
-
 
 #### Example checks
 ```yaml
@@ -63,14 +61,16 @@ checks for dim_department_group:
                     <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
                     <h2>Get started</h2>
                     <a href="https://docs.soda.io/soda-core/installation.html" target="_blank">Download and install Soda Core (Beta)</a> 
+                    <a href="https://docs.soda.io/soda-core/configuration.html" target="_blank">Prepare a configuration.yml file</a>
                     <a href="https://docs.soda.io/soda-core/configuration.html" target="_blank">Write checks in a checks.yml file</a>
-                    <a href="https://docs.soda.io/soda-core/scan-core.html" target="_blank">Run a scan of your data to discover any data quality issues</a>
                 </div>
             </div>
         </div>        
     </section>
 </div>
 
+
+Access the <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) open-source documentation</a>.
 
 ---
 {% include docs-footer.md %}

@@ -43,7 +43,7 @@ You do not need to follow the tutorial sequentially.
 
 ## Tutorial prerequisites
 
-* You have completed the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) <br /> OR <br /> you have followed the instructions to <a href="https://docs.soda.io/soda-core/get-started.html" target="_blank">install</a> and <a href="https://docs.soda.io/soda-core/first-scan.html" target="_blank">configure</a> Soda Core on your own. 
+* You have completed the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) <br /> OR <br /> you have followed the instructions to [install]({% link soda-core/installation.md %}) and [configure]({% link soda-core/configuration.md %}) Soda Core on your own. 
 * You have installed a code editor such as Sublime or Visual Studio Code.
 * You have created a new YAML file in your code editor and named it `checks.yml`.
 * (Optional) You have read the first two sections in [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) as a primer for SodaCL.

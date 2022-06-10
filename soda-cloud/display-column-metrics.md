@@ -39,7 +39,7 @@ Column profile information is unavailable for datasets added to Soda Cloud via S
 
 Soon, you will be able to configure Soda Core to automatically send column profile information to your Soda Cloud account. 
 
-<a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />
+[Soda Core documentation]({% link soda-core/overview-main.md %})<br />
 
   </div>
   </div>

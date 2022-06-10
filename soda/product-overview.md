@@ -29,7 +29,7 @@ There are three OSS CLI tools to choose from:
 
 * ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="103px" width="103px"} is an extension of Soda SQL that allows you to run Soda SQL functionality programmatically on a Spark dataframe. Access [Soda Spark documentation]({% link soda-spark/install-and-use.md %}).
 
-* ![soda-core-logo](/assets/images/soda-core-logo.png){:height="98px" width="98px"} ![beta](/assets/images/beta.png){:height="30px" width="30px" align="top"} is the newest Soda technology that improves upon the functionality that Soda SQL offers. Available as a beta product, Soda Core works with [SodaCL](#soda-checks-language-sodacl) to make use of even more built-in metrics, notably for freshness, and reference checks between datasets. When it becomes generally available, Soda Core will replace Soda SQL as the primary and most accessible tool for maintaining data reliability. Access <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core documentation</a>.
+* ![soda-core-logo](/assets/images/soda-core-logo.png){:height="98px" width="98px"} ![beta](/assets/images/beta.png){:height="30px" width="30px" align="top"} is the newest Soda technology that improves upon the functionality that Soda SQL offers. Available as a beta product, Soda Core works with [SodaCL](#soda-checks-language-sodacl) to make use of even more built-in metrics, notably for freshness, and reference checks between datasets. When it becomes generally available, Soda Core will replace Soda SQL as the primary and most accessible tool for maintaining data reliability. Access [Soda Core documentation]({% link soda-core/overview-main.md %}).
 
 Refer to the [Soda product comparison]({% link soda/product-matrix.md %}) to compare the features and functionality of the tools.
 
@@ -153,7 +153,7 @@ In Soda Cloud, you can do much more than just review the scan results.
 ## Go further
 
 * Access a [Soda product comparison]({% link soda/product-matrix.md %}) to learn about the features and functionalities each tool has to offer.
-* [Install Soda SQL]({% link soda-sql/installation.md %}) or <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core</a>, then sign up for a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
+* [Install Soda SQL]({% link soda-sql/installation.md %}) or [Soda Core]({% link soda-core/installation.md %}), then sign up for a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
 * Get up and running in a few minutes using the [Quick start for Soda SQL and Soda Cloud]({% link soda/quick-start-soda-sql.md %}) or the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}).
 * Learn more about [scans]({% link soda/scan.md %}) and [metrics]({% link soda/metrics.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

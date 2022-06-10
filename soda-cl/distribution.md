@@ -71,7 +71,7 @@ You can use the following distance metrics in your distribution checks.
 </details>
 ## Prerequisites
 
-* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you <a href="https://docs.soda.io/soda-core/get-started.html#requirements" target="_blank">installed Soda Core</a>.
+* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you [installed Soda Core]({% link soda-core/installation.md %}).
 
 
 ## Install Soda Core Scientific
@@ -134,7 +134,7 @@ Soda uses the `bins` and `weights` to generate a sample from the reference distr
 
 ## Define a distribution check
 
-1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the <a href="https://docs.soda.io/soda-core/first-scan.html#the-checks-yaml-file" target="_blank">Soda Core documentation</a>.
+1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the [Soda Core documentation]({% link soda-core/configuration.md %}).
 2. In your new file, add the following example content.
 ```yaml
 checks for your_dataset_name:
@@ -153,7 +153,7 @@ checks for your_dataset_name:
     * `swd` for the Standardized Wasserstein Distance (SWD) metric 
     * `semd` for the Standardized Earth Mover's Distance (SEMD) metric (the SWD and the SEMD are the same metric) <br /> 
 If you do not specify a `method`, the distribution check defaults to `ks` for continuous data or `chi_square` for categorical data respectively.
-5. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to <a href ="https://docs.soda.io/soda-core/first-scan.html#run-a-scan" target="_blank">Soda Core documentation</a> for more details.
+5. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to [Soda Core documentation]({% link soda-core/scan-core.md %}) for more details.
 ```bash
 soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yaml your_check_file.yaml
 ```
