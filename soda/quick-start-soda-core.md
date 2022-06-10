@@ -27,7 +27,7 @@ After you run your scan from the command-line, consider going further by signing
 
 This tutorial references a MacOS development environment with a PostgreSQL data source.
 
-* Python 3.7 or greater 
+* Python 3.8 or greater 
 * Pip 21.0 or greater
 * access details and credentials for a PostgreSQL database
 * a code editor such as Sublime or Visual Studio Code
@@ -173,7 +173,7 @@ Soda Core uses an API to connect to Soda Cloud. To use the API, you must generat
 
 
 1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. In a code editor, open the `configuration.yml` file (in the hidden `.soda` directory in your local home directory), then add the `soda_account` syntax to the file, as in the example below.
+2. In a code editor, open the `configuration.yml` file (in the hidden `.soda` directory in your local home directory), then add the `soda_account` syntax to the file, as in the example below. 
 ```yaml
 data_source my_database_name:
   type: postgres
@@ -184,7 +184,6 @@ data_source my_database_name:
     password: env_var(POSTGRES_PASSWORD)
   database: postgres
   schema: public
-
 soda_cloud:
   host: cloud.soda.io
   api_key_id: 
