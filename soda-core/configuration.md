@@ -25,7 +25,7 @@ After you [install Soda Core]({% link soda-core/installation.md %}), you must cr
 Consider following the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) that guides you through the steps to configure Soda Core and run a scan of your data.
 
 1. Create a directory in your environment in which to store your configuration and checks YAML files.
-2. In your code editor, create a new YAML file named `configuration.yml` and save it the directory you just created. 
+2. In your code editor, create a new YAML file named `configuration.yml` and save it in the directory you just created. 
 3. The configuration YAML file stores connection details for your data source. Use the data source-specific sections below to copy+paste the connection syntax into your file, then adjust the values to correspond with your data source's details. <br/> 
 The following is an example of the connection details Soda Core requires to connect to a PostgreSQL data source. 
 ```yaml
