@@ -26,7 +26,7 @@
   - subtitle: Metrics
     page: soda/metrics.md
 
-- title: Soda Core
+- title: Soda Core (Beta)
   page: soda-core/overview-main.md
   subcategories:
   - subtitle: Soda Core overview
