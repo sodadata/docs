@@ -54,7 +54,7 @@ When a Soda Core (Beta) scan results in a failed check, Soda Cloud displays deta
 
 In Soda Cloud, you can only create new monitors and alerts for datasets connected to an instance of Soda SQL; you cannot create monitors for datasets connected to Soda Core (Beta), yet. 
 
-Instead, you can use SodaCL (Beta) to write a check that uses a [duplicate_count]({% link soda-cl/numeric-metrics.md %}#send-failed-rows-to-soda-cloud), [missing]({% link soda-cl/missing-metrics.md %}#send-failed-rows-to-soda-cloud) or [validity]({% link soda-cl/validity-metrics.md %}#send-failed-rows-to-soda-cloud) metric in a <a href="https://docs.soda.io/soda-core/first-scan.html#the-checks-yaml-file" target="_blank">checks YAML file</a> for Soda Core to execute during a scan. You can <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connect</a> Soda Core to your Soda Cloud account to see the check results after each scan. 
+Instead, you can use SodaCL (Beta) to write a check that uses a [duplicate_count]({% link soda-cl/numeric-metrics.md %}#send-failed-rows-to-soda-cloud), [missing]({% link soda-cl/missing-metrics.md %}#send-failed-rows-to-soda-cloud) or [validity]({% link soda-cl/validity-metrics.md %}#send-failed-rows-to-soda-cloud) metric in a [checks YAML file]({% link soda-core/configuration.md %}) for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account to see the check results after each scan. 
 
 If you use one of the above-listed metrics in checks you write using SodaCL, Soda Core automatically sends a sample of the failed rows associated with the failed check to Soda Cloud with the scan results.
 <br />

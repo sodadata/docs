@@ -57,8 +57,8 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 ![incidents](/assets/images/incidents.png){:height="700px" width="700px"}
 
 ## Prerequisites
-* You have <a href="https://docs.soda.io/soda-core/get-started.html" target="_blank">installed Soda Core</a> in your environment.
-* You have a Soda Cloud account and you have <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connected the account</a> to Soda Core.
+* You have [installed Soda Core]({% link soda-core/installation.md %}) in your environment.
+* You have a Soda Cloud account and you have [connected the account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core.
 * You have [integrated a Slack workspace]({% link soda-cloud/collaborate.md %}#integrate-with-slack) with your Soda Cloud account. 
 
 ## Create Incidents
@@ -77,7 +77,7 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 * In the **Incidents** dashboard, review all Incidents, their severity and status, and the assigned lead. Sort the list of Incidents by severity.
 * From an Incident's page, link other monitor results to the same Incident to expand the investigation landscape.
 
-Access the <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a>.
+Access the [Soda Core documentation]({% link soda-core/overview-main.md %}).
 
   </div>
   </div>

@@ -117,11 +117,11 @@ Read more about [Validity rules]({% link soda/metrics.md %}#column-configuration
 
 In Soda Cloud, you can only create new monitors and alerts for datasets connected to an instance of Soda SQL; you cannot create monitors for datasets connected to Soda Core (Beta), yet. 
 
-Instead, you can use SodaCL (Beta) to write checks in a <a href="https://docs.soda.io/soda-core/first-scan.html#the-checks-yaml-file" target="_blank">checks YAML file</a> for Soda Core to execute during a scan. You can <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connect Soda Core to your Soda Cloud account</a> to see the check results after each scan. 
+Instead, you can use SodaCL (Beta) to write checks in a [checks YAML file]({% link soda-core/configuration.md %}) for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account</a> to see the check results after each scan. 
 
 Consider following the [Quick start for Soda Core with Soda Cloud]({% link soda/quick-start-soda-core.md %}) to learn how to do so.
 
-<a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) documentation</a><br />
+[Soda Core documentation]({% link soda-core/overview-main.md %})<br />
 [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %})
 
 ## Edit checks in Soda Cloud

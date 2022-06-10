@@ -101,7 +101,7 @@ The domain-specific language to define Soda Checks in a checks YAML file. A Soda
 A web application that enables you to examine scan results and create monitors and alerts. Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup). If you also use Soda SQL, you can [connect Soda SQL to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}).
 
 ### Soda Core ![beta](/assets/images/beta.png){:height="30px" width="30px" align="top"}
-A free, open-source, command-line tool that enables you to use the Soda Checks Language (Beta) to turn user-defined input into aggregated SQL queries. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. See <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core documentation</a>.
+A free, open-source, command-line tool that enables you to use the Soda Checks Language (Beta) to turn user-defined input into aggregated SQL queries. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. See [Soda Core documentation]({% link soda-core/overview-main.md %}).
 
 ### Soda Spark
 Soda Spark is an extension of Soda SQL that allows you to run Soda SQL functionality programmatically on a <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark dataframe</a>.
