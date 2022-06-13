@@ -14,6 +14,7 @@ To set the data source configurations, use the following example configurations 
 
 [Connect to Amazon Athena](#connect-to-amazon-athena)<br />
 [Connect to Amazon Redshift](#connect-to-amazon-redshift)<br />
+[Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes)</br>
 [Connect to GCP BigQuery](#connect-to-gcp-bigquery)<br />
 [Connect to PostgreSQL](#connect-to-postgresql)<br />
 [Connect to Snowflake](#connect-to-snowflake)<br />

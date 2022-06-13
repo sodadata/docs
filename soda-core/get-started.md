@@ -18,8 +18,6 @@ Soda Core is a command-line interface (CLI) tool that enables you to scan the da
 
 {% include install-core.md %}
 
-Next, [run your first scan]({% link soda-core/first-scan.md %}).
-
 ## Upgrade the Soda Core CLI
 
 {% include upgrade-core.md %}
@@ -27,6 +25,9 @@ Next, [run your first scan]({% link soda-core/first-scan.md %}).
 ## Use Docker to run Soda Core
 
 {% include docker-soda-core.md %}
+
+
+Next, [run your first scan]({% link soda-core/first-scan.md %}).
 
 ---
 {% include docs-core-footer.md %}

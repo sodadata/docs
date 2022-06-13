@@ -13,7 +13,7 @@ To automate the search for "bad" data, you can use the **Soda Core Python librar
 
 Based on a set of conditions or a specific event schedule, you can instruct Soda Core to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
 
-You can save Soda Core scan results anywhere in your system; the `scan_result` object contains all the scan result information.
+You can save Soda Core scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import the Soda Core library in Python so you can utilize the `Scan()` object, [install a Soda Core package]({% link soda-core/installation.md %}), then use `from soda.scan import Scan`.
 
 ## Basic programmatic scan
 
@@ -22,7 +22,7 @@ scan = Scan()
 scan.set_data_source_name("events")
 scan.set_schedule_name("Default events schedule 6am UTC")
 
-# Add configuration files
+# Add configuration YAML files
 #########################
 scan.add_configuration_yaml_file(file_path="~/.soda/my_local_soda_environment.yml")
 scan.add_configuration_yaml_from_env_var(env_var_name="SODA_ENV")
@@ -40,7 +40,7 @@ scan.add_configuration_yaml_str(
 """
 )
 
-# Add SodaCL files
+# Add check YAML files
 ##################
 scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_one.yml")
 scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_two.yml")
@@ -71,6 +71,7 @@ scan.get_checks_warn_or_fail_text()
 scan.get_all_checks_text()
 ```
 
+<!--
 ## PySpark
 
 ```python
@@ -107,7 +108,7 @@ scan.has_checks_warn_or_fail()
 scan.get_checks_warn_or_fail_text()
 scan.get_all_checks_text()
 ```
-
+-->
 
 
 ---

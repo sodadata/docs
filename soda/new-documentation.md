@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### June 14, 2022
+
+* Added documentation corresponding to Soda Core support for [Apache Spark DataFrames]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes). For use with [programmatic Soda scans]({% link soda-core/programmatic-scans.md %}), only.
+
 #### June 9, 2022
 
 * Added some new [Soda Core (Beta) content]({% link soda-core/overview-main.md %}) to documentation.
