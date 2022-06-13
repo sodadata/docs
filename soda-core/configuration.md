@@ -15,6 +15,7 @@ After you [install Soda Core]({% link soda-core/installation.md %}), you must cr
 [Configuration instructions](#configuration-instructions) <br />
 [Connect to Amazon Athena](#connect-to-amazon-athena)<br />
 [Connect to Amazon Redshift](#connect-to-amazon-redshift)<br />
+[Connect to Apache Spark Dataframe](#connect-to-apache-spark-dataframe) <br />
 [Connect to GCP BigQuery](#connect-to-gcp-bigquery)<br />
 [Connect to PostgreSQL](#connect-to-postgresql)<br />
 [Connect to Snowflake](#connect-to-snowflake)<br />
@@ -47,7 +48,7 @@ checks for dataset_name:
 ```
 6. Save the changes to the `checks.yml` file. 
 
-
+<br />
 
 {% include core-datasource-config.md %}
 

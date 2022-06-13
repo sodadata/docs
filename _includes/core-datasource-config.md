@@ -70,6 +70,44 @@ Access keys and IAM role are mutually exclusive: if you provide values for `acce
 | number | SMALLINT, INT2, INTEGER, INT, INT4, BIGINT, INT8 |
 | time | DATE, TIME, TIMETZ, TIMESTAMP, TIMESTAMPTZ |
 
+
+## Connect to Apache Spark Dataframes
+
+
+
+### Supported data types
+
+| Category | Data type |
+| ---- | --------- |
+| text | STRING |
+| number | DECIMAL, INTEGER |
+| time | DATE, TIMESTAMP, TIMESTAMPTZ |
+
+
+## Connect to Apache Spark via Thrift
+
+            connection = connection_function(
+                username=self.username,
+                password=self.password,
+                host=self.host,
+                port=self.port,
+                database=self.database,
+                auth_method=self.auth_method,
+                driver=self.driver,
+                token=self.token,
+                organization=self.organization,
+                cluster=self.cluster,
+                server_side_parameters=self.server_side_parameters,
+
+### Supported data types
+
+| Category | Data type |
+| ---- | --------- |
+| text | STRING |
+| number | DECIMAL, INTEGER |
+| time | DATE, TIMESTAMP, TIMESTAMPTZ |
+
+
 ## Connect to GCP BigQuery
 
 ```yaml
