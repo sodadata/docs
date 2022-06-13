@@ -24,26 +24,7 @@ A check is a test for data quality that you write using the Soda Checks Language
 
 When it scans datasets in your data source, Soda Core executes the checks you defined in your checks YAML file. Technically, a check is a Python expression that, during a Soda scan, checks metrics to see if they match the parameters you defined for a threshold. A single Soda scan executes multiple checks against one or more datasets in your data source.
 
-As a result of a scan, each check results in one of three default states:
-* **pass**: the values in the dataset match or fall within the thresholds you specified
-* **fail**: the values in the dataset _do not_ match or fall within the thresholds you specified
-* **error**: the syntax of the check is invalid
-
-A fourth state, **warn**, is something you can explicitly configure for individual checks. See [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations).
-
-The scan results appear in your command-line interface (CLI) and, if you have connected Soda Core to a Soda Cloud account, in the **Monitors Results** dashboard in the Soda Cloud web application. 
-
-```shell
-Soda Core 3.0.0bx
-Scan summary:
-1/1 check PASSED: 
-    dim_customer in adventureworks
-      row_count > 0 [PASSED]
-All is good. No failures. No warnings. No errors.
-Sending results to Soda Cloud
-```
-
-![check-result](/assets/images/check-result.png){:height="700px" width="700px"}
+{% include core-scan-output.md %}
 
 ## Check types
 

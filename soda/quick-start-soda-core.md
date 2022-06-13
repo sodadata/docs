@@ -27,7 +27,7 @@ After you run your scan from the command-line, consider going further by signing
 
 This tutorial references a MacOS development environment with a PostgreSQL data source.
 
-* Python 3.7 or greater 
+* Python 3.8 or greater 
 * Pip 21.0 or greater
 * access details and credentials for a PostgreSQL database
 * a code editor such as Sublime or Visual Studio Code
@@ -57,7 +57,7 @@ Commands:
 
 ## Connect Soda Core to a data source
 
-There are several other <a href="https://docs.soda.io/soda-core/get-started.html#install-the-soda-core-cli" target="_blank">install packages for Soda Core</a> that correspond to different data sources. This tutorial references a MacOS development environment with a PostgreSQL data source. 
+There are several other [install packages for Soda Core]({% link soda-core/installation.md %}#install) that correspond to different data sources. This tutorial references a MacOS development environment with a PostgreSQL data source. 
 
 1. In your local user home directory, create a new hidden folder in which you will store your `configuration.yml` file. This file will contain the connection details that Soda Core needs to access your data source. 
 ```shell
@@ -157,7 +157,7 @@ Scan summary:
         check_value: 1329
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 ```
-8. (Optional) If you like, adjust or add more hecks to the `checks.yml` file to further explore the things that <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core</a> and [SodaCL]({% link soda-cl/soda-cl-overview.md %}) can do. 
+8. (Optional) If you like, adjust or add more checks to the `checks.yml` file to further explore the things that [Soda Core]({% link soda-core/overview-main.md %}) and [SodaCL]({% link soda-cl/soda-cl-overview.md %}) can do. 
 
 To exit the virtual environment in your command-line interface, type `deactivate` then press enter.<br />
 OR <br />
@@ -173,7 +173,7 @@ Soda Core uses an API to connect to Soda Cloud. To use the API, you must generat
 
 
 1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. In a code editor, open the `configuration.yml` file (in the hidden `.soda` directory in your local home directory), then add the `soda_account` syntax to the file, as in the example below.
+2. In a code editor, open the `configuration.yml` file (in the hidden `.soda` directory in your local home directory), then add the `soda_account` syntax to the file, as in the example below. 
 ```yaml
 data_source my_database_name:
   type: postgres
@@ -184,7 +184,6 @@ data_source my_database_name:
     password: env_var(POSTGRES_PASSWORD)
   database: postgres
   schema: public
-
 soda_cloud:
   host: cloud.soda.io
   api_key_id: 
@@ -232,7 +231,7 @@ To exit the virtual environment in your command-line interface, type `deactivate
 ## Go further
 
 * Explore the built-in metrics you can use to write checks with [SodaCL]({% link soda-cl/soda-cl-overview.md %}).
-* Access the complete set of <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core documentation</a>.
+* Access the complete set of <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core OSS documentation</a>.
 * Set up <a href="https://docs.soda.io/soda-core/programmatic-scans.html" target="_blank">programmatic scans</a> to automate data quality monitoring.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 

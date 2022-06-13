@@ -13,6 +13,13 @@ parent: Soda
 
 * Updated the syntax for [freshness checks]({% link soda-cl/freshness.md %}) to remove `using` from the syntax and identify column name instead by wrapping in parentheses.
 
+#### June 9, 2022
+
+* Added some new [Soda Core (Beta) content]({% link soda-core/overview-main.md %}) to documentation.
+* Moved Soda SQL and Soda Spark in documentation leftnav.
+* Updated Home page with links to new Soda Core (Beta) documentation.
+* Fixed formatting in [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}).
+
 #### June 8, 2022
 
 * Updated the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) with an example of a check for duplicates.

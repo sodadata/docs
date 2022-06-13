@@ -3,7 +3,7 @@ email: support@soda.io
 description: >- # this means to ignore newlines until "baseurl:"
   Learn how to use Soda to test and monitor data quality.
 baseurl: ""
-url: ""
+url: "https://docs.soda.io"
 twitter_username: sodadata
 github_username:  sodadata
 
