@@ -75,9 +75,12 @@ Access keys and IAM role are mutually exclusive: if you provide values for `acce
 
 * For use with [programmatic Soda scans]({% link soda-core/programmatic-scans.md %}), only. 
 * Unlike other data sources, Soda Core does *not* require a configuration YAML file to run scans against Spark DataFrames. 
-* Coming soon: `soda-core-spark`, a package that connects to a Spark cluster via Thrift, will make it possible to connect using configuration YAML files.
 
-A Spark cluster contains a distributed collection of data. Spark DataFrames are distributed collections of data that are organized into named columns, much like a table in a database, and which are stored in-memory in a cluster.  To make a DataFrame available to Soda Core to run scans against, you must use a driver program like PySpark and the Spark API to link DataFrames to individual, named, temporary tables in the cluster. You pass this information into a Soda scan programtically.
+Note: There are two Soda Core packages for Spark: 
+* `soda-core-spark-df`, in its early release candidate form, enables you to pass dataframe objects into Soda scans programatically, after you have associated the temporary tables to DataFrames via the Spark API.
+* `soda-core-spark` continues as a work-in-progress and will connect to Soda Core much the same as other data sources, via connection details in a configuration YAML.
+
+A Spark cluster contains a distributed collection of data. Spark DataFrames are distributed collections of data that are organized into named columns, much like a table in a database, and which are stored in-memory in a cluster.  To make a DataFrame available to Soda Core to run scans against, you must use a driver program like PySpark and the Spark API to link DataFrames to individual, named, temporary tables in the cluster. You pass this information into a Soda scan programatically.
 
 1. Confirm that you have already:
 * installed `soda-core-spark-df`
