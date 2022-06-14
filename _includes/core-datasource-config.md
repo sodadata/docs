@@ -97,9 +97,17 @@ df = ...user-defined-way-to-build-the-dataframe...
 db.createOrReplaceTempView('customers')
 ```
 3. Use the Spark API to link a DataFrame to the name of each temporary table against which you wish to run Soda scans. Refer to <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceTempView.html" target="_blank"> PySpark documentation</a>.
-4. [Define a programmatic scan]({% link soda-core/programmatic-scans.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Core: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`.   
+4. [Define a programmatic scan]({% link soda-core/programmatic-scans.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Core: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`. Refer to example below. 
+
 ```python
+spark_session = ...your_spark_session...
+df1.createOrReplaceTempView("TABLE_ONE")
+df2.createOrReplaceTempView("TABLE_TWO")
+...
+
 scan = Scan()
+scan.set_definition_name('YOUR_SCHEDULE_NAME')
+scan.add_configuration_yaml_file(file_path="somedirectory/your_configuration.yml")
 scan.add_spark_session(spark_session)
 ... all other scan methods in the standard programmatic scan ...
 ```
