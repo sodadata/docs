@@ -118,6 +118,8 @@ scan.add_spark_session(spark_session)
 
 ## Connect to GCP BigQuery
 
+{% include gcp-datasets.md %}
+
 ```yaml
 data_source my_database_name:
   type: bigquery
