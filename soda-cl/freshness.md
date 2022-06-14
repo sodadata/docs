@@ -11,7 +11,7 @@ Use a freshness check to determine the relative age of the data in a column in y
 
 ```yaml
 checks for dim_product:
-  - freshness using start_date < 3d
+  - freshness(start_date) < 3d
 ```
 
 [Define freshness checks](#define-freshness-checks) <br />
@@ -27,8 +27,6 @@ checks for dim_product:
 A freshness check measures the age of the youngest row in a table. Using this check, you can infer the freshness of the data in the dataset using the age of the most recently added row in a table. 
 
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), freshness checks are unique. This check is limited in its syntax variation, with only a few mutable parts to specify column name, threshold, and, optionally, a "now" variable.
-
-Note that the syntax for freshness checks is a work-in-progress. Any changes will appear here in the documentation and in the Soda community on Slack.
 
 A freshness check has two or three mutable parts:
 
@@ -48,7 +46,7 @@ The example below defines a check that measures freshness relative to "now", whe
 
 ```yaml
 checks for dim_product:
-  - freshness using start_date < 3d
+  - freshness(start_date) < 3d
 ```
 
 | timestamp column name | `start_date` |
@@ -60,7 +58,7 @@ Instead of using the default value for "now" (the time you run the scan that exe
 
 ```yaml
 checks for dim_product:
-  - freshness using end_date with CUST_VAR < 1d
+  - freshness(end_date, CUST_VAR) < 1d
 ```
 
 | timestamp column name | `end_date` |
@@ -87,7 +85,7 @@ Invalid staleness threshold "when < 3256d"
 ```
 
 ```shell
-Invalid check "freshness using start_date > 1d": no viable alternative at input ' >'
+Invalid check "freshness(start_date) > 1d": no viable alternative at input ' >'
 ```
 
 **Solution:** The error indicates that you are using an incorrect comparison symbol. Remember that freshness checks can only use `<` in check, unless the freshness check employs an alert configuration, in which case it can only use `>` in the check. 
@@ -108,9 +106,11 @@ Invalid check "freshness using start_date > 1d": no viable alternative at input 
 
 #### Example with check name
 
+KNOWN ISSUE: Adding a customized name for a freshness check does not work. (CORE-12)
+
 ```yaml
 checks for dim_product:
-  - freshness using start_date < 27h:
+  - freshness(start_date) < 27h:
       name: Data is fresh
 ```
 
@@ -120,7 +120,7 @@ The only comparison symbol that you can use with freshness checks that employ an
 
 ```yaml
 checks for dim_product:
-  - freshness using start_date:
+  - freshness(start_date):
       warn: when > 3256d
       fail: when > 3258d
 ```
@@ -129,7 +129,7 @@ OR
 
 ```yaml
 checks for dim_product:
-  - freshness using start_date:
+  - freshness(start_date):
       warn: 
         when > 3256d
       fail: 
@@ -140,7 +140,7 @@ checks for dim_product:
 
 ```yaml
 checks for dim_product:
-  - freshness using "end_date" < 3d
+  - freshness("end_date") < 3d
 ```
 
 #### Example with for each
@@ -150,7 +150,7 @@ for each table T:
   tables:
     - dim_prod%
   checks:
-    - freshness using end_date < 3d
+    - freshness(end_date) < 3d
 ```
 
 #### Example with dataset filter
@@ -169,12 +169,8 @@ coming soon
 | `#d` |`3d` |  3 days |
 | `#h` | `1h` | 1 hour | 
 | `#m` | `30m` | 30 minutes |
-
-<!--
-| `#d#` |  `1d6` | 1 day and 6 hours |
-| `#h#` | `1h30` | 1 hour and 30 minutes |
-| `#m#` |`3m30` | 3 minutes and 30 seconds |
--->
+| `#d#h` | `1d6h` | 1 day and 6 hours |
+| `#h#m` | `1h30m` | 1 hour and 30 minutes |
 
 ## List of comparison symbols and phrases
 

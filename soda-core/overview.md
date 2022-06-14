@@ -65,7 +65,7 @@ checks for PRODUCTS:
 Freshness check:
 ```yaml
 checks for PRODUCTS:
-  - freshness using row_added_ts < 1h
+  - freshness (row_added_ts) < 1h
 ```
 
 Reference data check:
