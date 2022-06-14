@@ -57,6 +57,8 @@ For Soda Core (Beta) data types, see [Soda Core documentation]({% link soda-core
 
 ### Google Cloud Platform Big Query
 
+{% include gcp-datasets.md %}
+
 | Category | Data type | 
 | ---- | --------- |
 | text | STRING |

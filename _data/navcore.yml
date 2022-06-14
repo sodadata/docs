@@ -31,9 +31,6 @@
 - title: Use Soda Core CLI
   page: soda-core/cli.md
 
-- title: Install Soda Core Scientific
-  page: soda-core/install-scientific.md
-
 - title: Soda Core terminology
   page: soda-core/terminology.md
 

@@ -13,6 +13,13 @@ parent: Soda
 
 * Added documentation corresponding to Soda Core support for [Apache Spark DataFrames]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes). For use with [programmatic Soda scans]({% link soda-core/programmatic-scans.md %}), only.
 * Updated the syntax for [freshness checks]({% link soda-cl/freshness.md %}) to remove `using` from the syntax and identify column name instead by wrapping in parentheses.
+    * old: `freshness using created_at < 3h`
+    * new: `freshness(created_at) < 3h`
+* Added clarification to the context-specific measning of a [BigQuery dataset]({% link soda-core/configuration.md %}#connect-to-gcp-bigquery) versus a dataset in the context of Soda.
+* Added instructions for setting a [default notification channel]({% link soda/integrate-slack.md %}#set-a-default-slack-channel-for-notifications) in Slack for Soda Cloud alerts.
+* Added an explanation about [anomaly score check results]({% link soda-cl/anomaly-score.md %}#anomaly-score-check-results) and the minimum number of measurements required to gauge an anomaly.
+* Moved installation instructions for Soda Core Scientific to a sub-section of [Install Soda Core]({% link soda-core/installation.md %}#install-soda-core-scientific).
+* Added expanded example for setting up [Soda Core Spark DataFrames]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes).
 
 #### June 9, 2022
 
@@ -29,7 +36,7 @@ parent: Soda
 
 #### June 7, 2022
 
-* Added new documentation for <a href="https://docs.soda.io/soda-core/install-scientific.html" target="_blank"> Install Soda Core Scientifc</a>.
+* Added new documentation for [Install Soda Core Scientifc]({% link soda-core/installation.md %}#install-soda-core-scientific).
 * Add a new [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}).
 
 #### June 6, 2022
