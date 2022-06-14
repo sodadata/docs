@@ -70,6 +70,52 @@ Access keys and IAM role are mutually exclusive: if you provide values for `acce
 | number | SMALLINT, INT2, INTEGER, INT, INT4, BIGINT, INT8 |
 | time | DATE, TIME, TIMETZ, TIMESTAMP, TIMESTAMPTZ |
 
+
+## Connect to Apache Spark DataFrames
+
+* For use with [programmatic Soda scans]({% link soda-core/programmatic-scans.md %}), only. 
+* Unlike other data sources, Soda Core does *not* require a configuration YAML file to run scans against Spark DataFrames. 
+
+Note: There are two Soda Core packages for Spark: 
+* `soda-core-spark-df`, in its early release candidate form, enables you to pass dataframe objects into Soda scans programatically, after you have associated the temporary tables to DataFrames via the Spark API.
+* `soda-core-spark` continues as a work-in-progress and will connect to Soda Core much the same as other data sources, via connection details in a configuration YAML.
+
+A Spark cluster contains a distributed collection of data. Spark DataFrames are distributed collections of data that are organized into named columns, much like a table in a database, and which are stored in-memory in a cluster.  To make a DataFrame available to Soda Core to run scans against, you must use a driver program like PySpark and the Spark API to link DataFrames to individual, named, temporary tables in the cluster. You pass this information into a Soda scan programatically.
+
+1. Confirm that you have already:
+* installed `soda-core-spark-df`
+* set up a a Spark session <br />
+```python
+spark_session: SparkSession = ...user-defined-way-to-create-the-spark-session...
+```
+* your Spark cluster contains one or more DataFrames 
+```python
+df = ...user-defined-way-to-build-the-dataframe...
+```
+2. Use the Spark API to link the name of a temporary table to a DataFrame. In this example, the name of the table is `customers`.
+```python
+db.createOrReplaceTempView('customers')
+```
+3. Use the Spark API to link a DataFrame to the name of each temporary table against which you wish to run Soda scans. Refer to <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceTempView.html" target="_blank"> PySpark documentation</a>.
+4. [Define a programmatic scan]({% link soda-core/programmatic-scans.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Core: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`.   
+```python
+scan = Scan()
+scan.add_spark_session(spark_session)
+... all other scan methods in the standard programmatic scan ...
+```
+
+<!--### Supported data types
+
+| Category | Data type |
+| ---- | --------- |
+| text | STRING |
+| number | DECIMAL, INTEGER |
+| time | DATE, TIMESTAMP, TIMESTAMPTZ |
+-->
+
+<br />
+
+
 ## Connect to GCP BigQuery
 
 ```yaml

@@ -104,7 +104,7 @@ A web application that enables you to examine scan results and create monitors a
 A free, open-source, command-line tool that enables you to use the Soda Checks Language (Beta) to turn user-defined input into aggregated SQL queries. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. See [Soda Core documentation]({% link soda-core/overview-main.md %}).
 
 ### Soda Spark
-Soda Spark is an extension of Soda SQL that allows you to run Soda SQL functionality programmatically on a <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark dataframe</a>.
+Soda Spark is an extension of Soda SQL that allows you to run Soda SQL functionality programmatically on a <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark DataFrame</a>.
 
 ### Soda SQL
 An open-source command-line tool that scans the data in your data source. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. Start by [installing Soda SQL]({% link soda-sql/installation.md%}).
