@@ -47,7 +47,7 @@ checks for dim_product:
           model_name: 22
 
 # Check for freshness 
-  - freshness using start_date < 1d
+  - freshness (start_date) < 1d
 
 # Check for referential integrity
 checks for dim_department_group:

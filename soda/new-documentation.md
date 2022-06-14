@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### June 14, 2022
+
+* Updated the syntax for [freshness checks]({% link soda-cl/freshness.md %}) to remove `using` from the syntax and identify column name instead by wrapping in parentheses.
+
 #### June 9, 2022
 
 * Added some new [Soda Core (Beta) content]({% link soda-core/overview-main.md %}) to documentation.

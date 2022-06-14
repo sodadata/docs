@@ -71,7 +71,7 @@ checks for CUSTOMERS:
           id: 0
 
   checks for ORDERS [daily]:
-  - freshness using created_at < 2h
+  - freshness (created_at) < 2h
 ```
 
 ## Soda Cloud
