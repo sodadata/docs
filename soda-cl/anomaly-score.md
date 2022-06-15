@@ -19,6 +19,7 @@ checks for dim_customer:
 [Prerequisites](#prerequisites)<br />
 [Install Soda Core Scientific](#install-soda-core-scientific)<br />
 [Define an anomaly score check](#define-an-anomaly-score-check) <br />
+[Anomaly score check results](#anomaly-score-check-results) <br />
 [Optional check configurations](#optional-check-configurations) <br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
 [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation)<br />
@@ -29,13 +30,13 @@ checks for dim_customer:
 
 The anomaly score check is powered by a machine learning algorithm that works with measured values for a metric that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalies in time-series data. 
 
-If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a baseline of normal metric values against which to evaluate future metric values to identify anomalies. Therefore, you must have a created and connected a <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">Soda Cloud account</a> to use anomaly score checks.
+If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a baseline of normal metric values against which to evaluate future metric values to identify anomalies. Therefore, you must have a created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to use anomaly score checks.
 
 
 ## Prerequisites
 
-* You have a Soda Cloud account and have <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">connected Soda Core to Soda Cloud</a>. 
-* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you <a href="https://docs.soda.io/soda-core/get-started.html#requirements" target="_blank">installed Soda Core</a>.
+* You have a Soda Cloud account and have [connected Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}). 
+* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you [installed Soda Core]({% link soda-core/installation.md %}).
 
 
 ## Install Soda Core Scientific
@@ -74,6 +75,32 @@ checks for orders:
   - anomaly score for missing_count(id) < default:
     missing_values: [None, No Value]
 ```
+
+## Anomaly score check results
+
+Because the anomaly score check requires at least **four** data points before it can start detecting what counts as an anomalous measurement, your first few scans will yield a check result that indicates that Soda does not have enough data.
+
+```shell
+Soda Core 3.0.0xx
+Anomaly Detection Frequency Warning: Coerced into daily dataset with last daily time point kept
+Data frame must have at least 4 measurements
+Skipping anomaly metric check eval because there is not enough historic data yet
+Scan summary:
+1/1 check NOT EVALUATED: 
+    dim_customer in adventureworks
+      anomaly score for missing_count(last_name) < default [NOT EVALUATED]
+        check_value: None
+1 checks not evaluated.
+Apart from the checks that have not been evaluated, no failures, no warnings and no errors.
+Sending results to Soda Cloud
+```
+
+Though your first instinct may be to run several scans in a row to product the four measurments that the anomaly score needs, the measurements don’t “count” if the frequency of occurrence is too random, or rather, the measurements don't represent enough of a stable frequency.
+
+If, for example, you attempt to run eight back-to-back scans in five minutes, the anomaly score does not register the measurements resulting from those scans as a reliable pattern against which to evaluate an anomaly. 
+
+Consider using the Soda Core Python library to set up a [programmatic scan]({% link soda-core/programmatic-scans.md %}) that produces a check result for an anomaly score check on a regular schedule.
+
 
 ## Optional check configurations
 

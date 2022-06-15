@@ -22,7 +22,7 @@ Soda Core uses the input in the checks YAML file to prepare SQL queries that it 
 Each scan requires the following as input:
 
 * the name of the data source that contains the tables of data you wish to scan, identified using the `-d` option
-* a `configuration.yml` file, which contains details about how Soda Core can connect to your data source. <br /> You do not need to explicitly identify your `configuration.yml` files in the scan command. During a scan, Soda Core uses the following path and filename by default: `~/.soda/configuration.yml`. 
+* a `configuration.yml` file, which contains details about how Soda Core can connect to your data source, identified using the `-c` option <!--<br /> You do not need to explicitly identify your `configuration.yml` files in the scan command. During a scan, Soda Core uses the following path and filename by default: `~/.soda/configuration.yml`. -->
 * a `checks.yml` file, including its filepath if stored in a different directory, which contains the checks you write using SodaCL
 
 Scan command:
@@ -92,7 +92,7 @@ Soda Core 0.0.x
 Scan summary:
 1/1 check FAILED: 
     CUSTOMERS in postgres_retail
-      freshness using full_date_alternate_key < 3d [FAILED]
+      freshness (full_date_alternate_key) < 3d [FAILED]
         max_column_timestamp: 2020-06-24 00:04:10+00:00
         max_column_timestamp_utc: 2020-06-24 00:04:10+00:00
         now_variable_name: NOW

@@ -1,5 +1,5 @@
-1. Set up a virtual environment, as described in the <a href="https://docs.soda.io/soda-core/get-started.html#install-the-soda-core-cli" target="_blank">Soda Core documentation</a>.
-2. <a href="https://docs.soda.io/soda-core/get-started.html#use-docker-to-run-soda-core" target="_blank">Install Soda Core</a> in your new virtual environment. 
+1. Set up a virtual environment, as described in the [Soda Core install documentation]({% link soda-core/installation.md %}).
+2. [Install Soda Core]({% link soda-core/installation.md %}) in your new virtual environment. 
 3. Use the following command to install Soda Core Scientific.
 
 ```bash

@@ -26,6 +26,129 @@
   - subtitle: Metrics
     page: soda/metrics.md
 
+- title: Soda Core (Beta)
+  page: soda-core/overview-main.md
+  subcategories:
+  - subtitle: Soda Core overview
+    page: soda-core/overview-main.md
+  - subtitle: Install Soda Core
+    page: soda-core/installation.md
+  - subtitle: Configure Soda Core
+    page: soda-core/configuration.md
+  - subtitle: Run a Soda Core scan
+    page: soda-core/scan-core.md
+  - subtitle: Connect to Soda Cloud
+    page: soda-core/connect-core-to-cloud.md
+  - subtitle: Soda Core OSS docs
+    page: soda-core/overview.md
+
+- title: SodaCL (Beta)
+  page: soda-cl/soda-cl-overview.md
+  subcategories:
+  - subtitle: SodaCL overview
+    page: soda-cl/soda-cl-overview.md
+  - subtitle: Metrics and checks
+    page: soda-cl/metrics-and-checks.md
+  - subtitle: Optional check configurations
+    page: soda-cl/optional-config.md
+  - subtitle: Numeric metrics
+    page: soda-cl/numeric-metrics.md
+  - subtitle: Missing metrics
+    page: soda-cl/missing-metrics.md
+  - subtitle: Validity metrics
+    page: soda-cl/validity-metrics.md
+  - subtitle: Freshness checks
+    page: soda-cl/freshness.md
+  - subtitle: Schema checks
+    page: soda-cl/schema.md
+  - subtitle: Reference checks
+    page: soda-cl/reference.md
+  - subtitle: Cross checks
+    page: soda-cl/cross-row-checks.md
+  - subtitle: Anomaly score checks
+    page: soda-cl/anomaly-score.md
+  - subtitle: Distribution checks
+    page: soda-cl/distribution.md
+  - subtitle: User-defined checks
+    page: soda-cl/user-defined.md
+  - subtitle: Failed rows checks
+    page: soda-cl/failed-rows-checks.md
+  - subtitle: Filters
+    page: soda-cl/filters.md
+  - subtitle: For each
+    page: soda-cl/for-each.md
+
+
+- title: Soda Cloud
+  page: soda-cloud/overview.md
+  subcategories:
+  - subtitle: Soda Cloud
+    page: soda-cloud/overview.md
+  - subtitle: Roles and rights
+    page: soda-cloud/roles-and-rights.md
+  - subtitle: Collaborate on data monitoring
+    page: soda-cloud/collaborate.md
+  - subtitle: Create monitors and alerts
+    page: soda-cloud/monitors.md
+  - subtitle: Organize datasets
+    page: soda-cloud/organize-datasets.md
+  - subtitle: Display column metrics
+    page: soda-cloud/display-column-metrics.md
+  - subtitle: Display sample data
+    page: soda-cloud/display-samples.md
+  - subtitle: Detect anomalies
+    page: soda-cloud/anomaly-detection.md
+  - subtitle: Monitor schema evolution
+    page: soda-cloud/schema-evolution.md
+  - subtitle: Examine failed rows
+    page: soda-cloud/failed-rows.md
+  - subtitle: Create and track incidents
+    page: soda-cloud/incidents.md
+  - subtitle: Soda Cloud architecture
+    page: soda-cloud/soda-cloud-architecture.md
+  - subtitle: Single sign-on with Soda Cloud
+    page: soda-cloud/sso.md
+
+- title: Integrate Soda
+  page: soda/integrate-alation.md
+  subcategories:
+  - subtitle: Integrate with Alation
+    page: soda/integrate-alation.md
+  - subtitle: Integrate with dbt
+    page: soda/integrate-dbt.md
+  - subtitle: Integrate with Metaphor
+    page: soda/integrate-metaphor.md
+  - subtitle: Integrate with Slack
+    page: soda/integrate-slack.md
+
+- title: Reference
+  page: soda/glossary.md
+  subcategories:
+  - subtitle: Glossary
+    page: soda/glossary.md
+  - subtitle: What's new in docs?
+    page: soda/new-documentation.md
+  - subtitle: Data source configuration
+    page: soda/warehouse_types.md
+  - subtitle: Data types
+    page: soda/supported-data-types.md
+  - subtitle: Troubleshoot
+    page: soda/troubleshoot.md
+  - subtitle: Data security and privacy
+    page: soda/data-privacy.md
+  - subtitle: Anonymous usage statistics
+    page: soda-sql/global-configuration.md
+  - subtitle: Support
+    page: soda/support.md
+
+- title: API Documentation
+  page: api-docs/reporting-api.md
+  subcategories:
+  - subtitle: Reporting API
+    page: api-docs/reporting-api.md
+  - subtitle: Build a reporting dashboard
+    page: api-docs/reporting-api-to-overview-dashboards.md
+
 - title: Soda SQL
   page: soda-sql/overview.md
   subcategories:
@@ -79,117 +202,6 @@
   subcategories:
   - subtitle: Install and use Soda Spark
     page: soda-spark/install-and-use.md
-
-- title: Soda Cloud
-  page: soda-cloud/overview.md
-  subcategories:
-  - subtitle: Soda Cloud
-    page: soda-cloud/overview.md
-  - subtitle: Roles and rights
-    page: soda-cloud/roles-and-rights.md
-  - subtitle: Add a data source
-    page: soda-cloud/datasource.md
-  - subtitle: Create agreements
-    page: soda-cloud/agreements.md
-  - subtitle: Collaborate on data monitoring
-    page: soda-cloud/collaborate.md
-  - subtitle: Create monitors and alerts
-    page: soda-cloud/monitors.md
-  - subtitle: Organize datasets
-    page: soda-cloud/organize-datasets.md
-  - subtitle: Display column metrics
-    page: soda-cloud/display-column-metrics.md
-  - subtitle: Display sample data
-    page: soda-cloud/display-samples.md
-  - subtitle: Detect anomalies
-    page: soda-cloud/anomaly-detection.md
-  - subtitle: Monitor schema evolution
-    page: soda-cloud/schema-evolution.md
-  - subtitle: Examine failed rows
-    page: soda-cloud/failed-rows.md
-  - subtitle: Create and track incidents
-    page: soda-cloud/incidents.md
-  - subtitle: Soda Cloud architecture
-    page: soda-cloud/soda-cloud-architecture.md
-  - subtitle: Single sign-on with Soda Cloud
-    page: soda-cloud/sso.md
-
-- title: SodaCL (Beta)
-  page: soda-cl/soda-cl-overview.md
-  subcategories:
-  - subtitle: SodaCL overview
-    page: soda-cl/soda-cl-overview.md
-  - subtitle: Metrics and checks
-    page: soda-cl/metrics-and-checks.md
-  - subtitle: Optional check configurations
-    page: soda-cl/optional-config.md
-  - subtitle: Numeric metrics
-    page: soda-cl/numeric-metrics.md
-  - subtitle: Missing metrics
-    page: soda-cl/missing-metrics.md
-  - subtitle: Validity metrics
-    page: soda-cl/validity-metrics.md
-  - subtitle: Freshness checks
-    page: soda-cl/freshness.md
-  - subtitle: Schema checks
-    page: soda-cl/schema.md
-  - subtitle: Reference checks
-    page: soda-cl/reference.md
-  - subtitle: Cross checks
-    page: soda-cl/cross-row-checks.md
-  - subtitle: Anomaly score checks
-    page: soda-cl/anomaly-score.md
-  - subtitle: Distribution checks
-    page: soda-cl/distribution.md
-  - subtitle: User-defined checks
-    page: soda-cl/user-defined.md
-  - subtitle: Failed rows checks
-    page: soda-cl/failed-rows-checks.md
-  - subtitle: Filters
-    page: soda-cl/filters.md
-  - subtitle: For each
-    page: soda-cl/for-each.md
-
-
-- title: Integrate Soda
-  page: soda/integrate-alation.md
-  subcategories:
-  - subtitle: Integrate with Alation
-    page: soda/integrate-alation.md
-  - subtitle: Integrate with dbt
-    page: soda/integrate-dbt.md
-  - subtitle: Integrate with Metaphor
-    page: soda/integrate-metaphor.md
-  - subtitle: Integrate with Slack
-    page: soda/integrate-slack.md
-
-- title: Reference
-  page: soda/glossary.md
-  subcategories:
-  - subtitle: Glossary
-    page: soda/glossary.md
-  - subtitle: What's new in docs?
-    page: soda/new-documentation.md
-  - subtitle: Data source configuration
-    page: soda/warehouse_types.md
-  - subtitle: Data types
-    page: soda/supported-data-types.md
-  - subtitle: Troubleshoot
-    page: soda/troubleshoot.md
-  - subtitle: Data security and privacy
-    page: soda/data-privacy.md
-  - subtitle: Anonymous usage statistics
-    page: soda-sql/global-configuration.md
-  - subtitle: Support
-    page: soda/support.md
-
-- title: API Documentation
-  page: api-docs/reporting-api.md
-  subcategories:
-  - subtitle: Reporting API
-    page: api-docs/reporting-api.md
-  - subtitle: Build a reporting dashboard
-    page: api-docs/reporting-api-to-overview-dashboards.md
 
 - title: Release notes
   page: release-notes/all.md

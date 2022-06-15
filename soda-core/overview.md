@@ -8,9 +8,9 @@ redirect_from:
 - /soda-cl/soda-core-overview.html
 ---
 
-# Soda Core overview ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Soda Core OSS documentation ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
 
-Soda Core is a CLI tool and Python library for data reliability.  Soda Core serves as the foundation 
+Soda Core is an open-source CLI tool and Python library for data reliability.  Soda Core serves as the foundation 
 for Soda Cloud, but you can use it as a stand-alone, open source tool. 
 
 Use Soda Core for data quality testing both in and out of your pipeline, for data observability, and for data monitoring.
@@ -65,7 +65,7 @@ checks for PRODUCTS:
 Freshness check:
 ```yaml
 checks for PRODUCTS:
-  - freshness using row_added_ts < 1h
+  - freshness (row_added_ts) < 1h
 ```
 
 Reference data check:
@@ -127,6 +127,7 @@ checks for PRODUCTS:
 ## Compatibility
 
 Use Soda Core to scan the following data sources:
+* Amazon Athena
 * Amazon Redshift 
 * GCP Big Query
 * PostgreSQL

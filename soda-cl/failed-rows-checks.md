@@ -30,7 +30,7 @@ checks for dim_customer:
 
 ## Prerequisites
 
-To use failed row checks, you must have a **Soda Cloud** account connected to Soda Core. See <a href="https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud" target="_blank">Connect Soda Core to Soda Cloud</a> for details. 
+To use failed row checks, you must have a **Soda Cloud** account connected to Soda Core. See [Connect Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}) for details. 
 
 
 ## About failed row samples

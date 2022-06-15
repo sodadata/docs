@@ -104,7 +104,7 @@ See [Add scan option](#add-scan-options) for more scan options.
   <div class="panel" id="two-panel" markdown="1">
 **Soda Core (Beta)** is a free, open-source, command-line tool that enables you to use the **Soda Checks Language (Beta)** to turn user-defined input into aggregated SQL queries.
 
-Access the <a href="https://docs.soda.io/soda-core/scan-reference.html" target="_blank">Soda Core (Beta) documentation</a> to learn more about scans in Soda Core.
+Access the [Soda Core (Beta) documentation]({% link soda-core/scan-core.md %}) to learn more about scans in Soda Core.
 
   </div>
   </div>
