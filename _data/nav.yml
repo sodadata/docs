@@ -78,6 +78,13 @@
   - subtitle: For each
     page: soda-cl/for-each.md
 
+- title: Soda Agent
+  page: soda-agent/deploy.md
+  subcategories:
+  - subtitle: Deploy a Soda Agent
+    page: soda-agent/deploy.md
+  - subtitle: How a Soda Agent works
+    page: soda-agent/how-it-works.md
 
 - title: Soda Cloud
   page: soda-cloud/overview.md
