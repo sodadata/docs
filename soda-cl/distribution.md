@@ -161,6 +161,8 @@ When the above distribution check is executed, it compares the values in `column
 
 When you execute the `soda scan` command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory. 
 
+As explained in [Generate a Distribution Reference Object (DRO)](#generate-a-distribution-reference-object-dro), soda uses bins and weights to randomly sample from your DRO. This means that there is a chance that the original dataset that was used to create the DRO resembles a different underlying distribution than the dataset that is created by sampling from the DRO. To limit the impact of this possibility, each distribution check is run ten times and the median of the results (either p-value or distance metric) is returned. Please note that this does change the interpretation of the distribution check results in the context of statistical tests. For example, the probability of a type I error is multiple orders of magnitude smaller than the signifance level that you choose. 
+
 <br />
 
 ## Distribution check examples
