@@ -110,6 +110,14 @@ scan.get_all_checks_text()
 ```
 -->
 
+### Scan exit codes
+
+Soda Core's scan output includes an exit code which indicates the outcome of the scan.
+
+| 0 | all checks passed, all good from both runtime and Soda perspective |
+| 1 | Soda issues a warning on a check(s) |
+| 2 | Soda issues a failure on a check(s) |
+| 3 | Soda encountered a runtime issue |
 
 ---
 {% include docs-core-footer.md %}
