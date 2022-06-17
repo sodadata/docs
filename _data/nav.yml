@@ -83,6 +83,8 @@
   subcategories:
   - subtitle: Deploy a Soda Agent
     page: soda-agent/deploy.md
+  - subtitle: Soda Agent test deployment
+    page: soda-agent/test-deploy.md
   - subtitle: How a Soda Agent works
     page: soda-agent/how-it-works.md
 
