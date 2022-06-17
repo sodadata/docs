@@ -149,6 +149,8 @@
     page: soda-sql/global-configuration.md
   - subtitle: Support
     page: soda/support.md
+  - subtitle: Soda Community Code of Conduct
+    page: soda/community-coc.md
 
 - title: API Documentation
   page: api-docs/reporting-api.md
