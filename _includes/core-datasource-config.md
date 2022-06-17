@@ -80,9 +80,14 @@ Note: There are two Soda Core packages for Spark:
 * `soda-core-spark-df`, in its early release candidate form, enables you to pass dataframe objects into Soda scans programatically, after you have associated the temporary tables to DataFrames via the Spark API.
 * `soda-core-spark` continues as a work-in-progress and will connect to Soda Core much the same as other data sources, via connection details in a configuration YAML.
 
+
 A Spark cluster contains a distributed collection of data. Spark DataFrames are distributed collections of data that are organized into named columns, much like a table in a database, and which are stored in-memory in a cluster.  To make a DataFrame available to Soda Core to run scans against, you must use a driver program like PySpark and the Spark API to link DataFrames to individual, named, temporary tables in the cluster. You pass this information into a Soda scan programatically.
 
-1. Confirm that you have already:
+1. If you are *not* installing Soda Core Spark DataFrames on a cluster, skip to step 2. To install Soda Core Spark DataFrames on a cluster, such as a Kubernetes cluster or a Databricks cluster, install <a href="https://packages.debian.org/buster/libsasl2-dev" target="_blank"> `libsasl2-dev` </a> *before* installing `soda-core-spark-df`. For Ubuntu users, install `libsasl2-dev` using the following command: 
+```shell
+sh sudo apt-get -y install unixodbc-dev libsasl2-dev gcc python-dev
+```
+2. Confirm that you have already:
 * installed `soda-core-spark-df`
 * set up a a Spark session <br />
 ```python
@@ -92,12 +97,12 @@ spark_session: SparkSession = ...user-defined-way-to-create-the-spark-session...
 ```python
 df = ...user-defined-way-to-build-the-dataframe...
 ```
-2. Use the Spark API to link the name of a temporary table to a DataFrame. In this example, the name of the table is `customers`.
+3. Use the Spark API to link the name of a temporary table to a DataFrame. In this example, the name of the table is `customers`.
 ```python
 db.createOrReplaceTempView('customers')
 ```
-3. Use the Spark API to link a DataFrame to the name of each temporary table against which you wish to run Soda scans. Refer to <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceTempView.html" target="_blank"> PySpark documentation</a>.
-4. [Define a programmatic scan]({% link soda-core/programmatic-scans.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Core: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`. Refer to example below. 
+4. Use the Spark API to link a DataFrame to the name of each temporary table against which you wish to run Soda scans. Refer to <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceTempView.html" target="_blank"> PySpark documentation</a>.
+5. [Define a programmatic scan]({% link soda-core/programmatic-scans.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Core: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`. Refer to the example below. 
 
 ```python
 spark_session = ...your_spark_session...
