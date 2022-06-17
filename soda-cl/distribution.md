@@ -157,13 +157,14 @@ If you do not specify a `method`, the distribution check defaults to `ks` for co
 ```bash
 soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yaml your_check_file.yaml
 ```
-When the above distribution check is executed, it compares the values in `column_name` to a sample that Soda creates based on the `bins`, `weights`, and `data_type` defined in the `distribution_reference.yml` file. Specifically, it checks whether the value of `your_method_of_choice` is larger than `0.05`.
+When Soda Core executes the distribution check above, it compares the values in `column_name` to a sample that Soda creates based on the `bins`, `weights`, and `data_type` defined in the `distribution_reference.yml` file. Specifically, it checks whether the value of `your_method_of_choice` is larger than `0.05`.
 
-When you execute the `soda scan` command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory. 
+### For awareness
 
-As explained in [Generate a Distribution Reference Object (DRO)](#generate-a-distribution-reference-object-dro), soda uses bins and weights to randomly sample from your DRO. This means that there is a chance that the original dataset that was used to create the DRO resembles a different underlying distribution than the dataset that is created by sampling from the DRO. To limit the impact of this possibility, the tests in each distribution check are run ten times and the median of the results (either p-value or distance metric) is returned. 
+* When you execute the `soda scan` command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory. 
 
-If you use the Kolmogorov-Smirnov test and a threshold of 0.05, the distribution check uses the Kolmogorov-Smirnov test to compare ten different samples from your DRO to the data in your column.  If the median of the returned p-values is smaller than 0.05 the check gives a warning. Please note that this approach does change the interpretation of the distribution check results. For example, the probability of a type I error is multiple orders of magnitude smaller than the signifance level that you choose. 
+* As explained in [Generate a Distribution Reference Object (DRO)](#generate-a-distribution-reference-object-dro), Soda uses bins and weights to take random samples from your DRO. Therefore, it is possible that the original dataset that you used to create the DRO resembles a different underlying distribution than the dataset that Soda creates by sampling from the DRO. To limit the impact of this possibility, Soda runs the tests in each distribution check ten times and returns the median of the results (either p-value or distance metric). <br /> 
+For example, if you use the Kolmogorov-Smirnov test and a threshold of 0.05, the distribution check uses the Kolmogorov-Smirnov test to compare ten different samples from your DRO to the data in your column.  If the median of the returned p-values is smaller than 0.05, the check issues a warning. This approach does change the interpretation of the distribution check results. For example, the probability of a type I error is multiple orders of magnitude smaller than the signifance level that you choose. 
 
 <br />
 
