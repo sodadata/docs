@@ -65,13 +65,13 @@ When it scans a column in your dataset, Soda automatically separates all values 
   <li>valid</li>
 </ul>
 Soda then performs two calculations. The sum of the count for all categories in a column is always equal to the total row count for the dataset. 
-<br/>
-<code>missing_count(column_name) + invalid_count(column_name) + valid_count(column_name) = row_count</code>
- <br/>
+<br/><br/>
+missing count(column name) + invalid count(column name) + valid count(column name) = row count
+<br/><br/>
 Similarly, a calculation that uses percentage always adds up to a total of 100 for the column. 
-<br/>
-<code>missing_percent(name) + invalid_percent(name) + valid_percent(name) = 100 </code>
-<br/>
+<br/><br/>
+missing percent(name) + invalid percent(name) + valid percent(name) = 100 
+<br/><br/>
 These calculations enable you to write checks that use <strong>relative thresholds</strong>. <br />
 <br />
 In the example above, the missing values (in this case, NULL) of the <code>number_employees</code> column must be less than five percent of the total row count, or the check fails.<br /><br />

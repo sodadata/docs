@@ -10,7 +10,7 @@ parent: Soda Spark
 Soda Spark is an extension of 
 [Soda SQL]({% link soda/quick-start-soda-sql.md %}) that allows you to run Soda
 SQL functionality programmatically on a 
-<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark dataframe</a>. Reference the Soda SQL documentation to learn how to use Soda Spark, particularly how to [define tests]({% link soda-sql/tests.md %}) in a [scan YAML file]({% link soda-sql/scan-yaml.md %}). 
+<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark DataFrame</a>. Reference the Soda SQL documentation to learn how to use Soda Spark, particularly how to [define tests]({% link soda-sql/tests.md %}) in a [scan YAML file]({% link soda-sql/scan-yaml.md %}). 
 
 [Requirements](#requirements)<br />
 [Compatibility](#compatibility)<br />
@@ -132,7 +132,7 @@ sudo apt install openjdk-11-jre-headless
 
 ## Use Soda Spark
 As an extension of Soda SQL, Soda Spark allows you to run Soda
-SQL functionality programmatically on a Spark dataframe. Reference the Soda SQL documentation to learn how to use Soda Spark. 
+SQL functionality programmatically on a Spark DataFrame. Reference the Soda SQL documentation to learn how to use Soda Spark. 
 
 From your Python prompt, execute the following commands to programmatically run Soda SQL functionality.
 
@@ -206,7 +206,7 @@ When you execute Soda Spark, it completes the following tasks:
 1. It sets up the scan using the Spark dialect and a <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.SparkSession.html" target="_blank">Spark session</a> as a [warehouse]({% link soda-sql/warehouse.md %}) connection.
 2. It creates, or replaces, a 
 	<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceGlobalTempView.html" target="_blank">global temporary view</a>
-   for the Spark dataframe.
+   for the Spark DataFrame.
 3. It executes the Soda scan on the temporary view.
 
 ## Contribute

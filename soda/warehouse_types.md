@@ -149,6 +149,7 @@ connection:
 
 ## GCP Big Query
 
+{% include gcp-datasets.md %}
 
 Use the values Google Cloud Platform provides when you [create a service account](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Copy and paste the contents of your Big Query service account JSON key file into your `warehouse.yml` file. 
 
