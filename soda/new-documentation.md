@@ -12,6 +12,13 @@ parent: Reference
 #### June 20, 2022
 
 * Changed all references to `table` in SodaCL to `dataset`, notably used with [for each]({% link soda-cl/freshness.md %}) and [distribution]({% link soda-cl/distribution.md %}) check syntax.
+* Added deprecation warning banners to all Soda SQL and Soda Spark content.
+* Revised and reorganized content to reframe focus on Soda Core in lieu of Soda SQL.
+* New [How Soda Core works]({% link soda-core/how-core-works.md %}) documentation.
+* Added more Soda Core documentation to main docs set. 
+* Updated [Soda product overview]({% link soda/product-overview.md %}) to reflect new focus on Soda Core and imminent deprecation of Soda SQL and Soda Spark.
+* Updated Soda Cloud documentation to reflect new focus on Soda Core.
+* Update links on [docs home page]({% link index.html %}) to point to most recent content and shift Soda SQL and Soda Core to a Legacy section.
 
 #### June 14, 2022
 
