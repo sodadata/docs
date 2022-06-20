@@ -10,7 +10,7 @@ parent: Soda Core (Beta)
 
 A **scan** is a command that executes checks to extract information about data in a table.
 
-Soda Core uses the input in the checks YAML file to prepare SQL queries that it runs against the data in a table. A single scan can execute checks against multiple tables in a data source. 
+Soda Core uses the input in the checks YAML file to prepare SQL queries that it runs against the data in a table. A single scan can execute checks against multiple datasets in a data source. 
 
 [Anatomy of a scan command](#anatomy-of-a-scan-command)<br />
 [Variables](#variables)<br />
@@ -21,7 +21,7 @@ Soda Core uses the input in the checks YAML file to prepare SQL queries that it 
 
 Each scan requires the following as input:
 
-* the name of the data source that contains the tables of data you wish to scan, identified using the `-d` option
+* the name of the data source that contains the datasets of data you wish to scan, identified using the `-d` option
 * a `configuration.yml` file, which contains details about how Soda Core can connect to your data source, identified using the `-c` option <!--<br /> You do not need to explicitly identify your `configuration.yml` files in the scan command. During a scan, Soda Core uses the following path and filename by default: `~/.soda/configuration.yml`. -->
 * a `checks.yml` file, including its filepath if stored in a different directory, which contains the checks you write using SodaCL
 
