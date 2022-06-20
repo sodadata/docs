@@ -7,6 +7,8 @@ parent: Soda Spark
 
 # Install and use Soda Spark
 
+{% include banner-spark.md %}
+
 Soda Spark is an extension of 
 [Soda SQL]({% link soda/quick-start-soda-sql.md %}) that allows you to run Soda
 SQL functionality programmatically on a 

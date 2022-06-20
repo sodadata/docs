@@ -1,9 +1,8 @@
 ---
 layout: default
 title: Define programmatic scans
-description: To automate the search for "bad" data, you can use the Soda Sore Python library to programmatically execute scans.
-sidebar: core
-parent: Soda Core (Beta)
+description: Use the Soda Sore Python library to programmatically execute scans and automate the checks for "bad" data.
+parent: Soda Core
 ---
 
 # Define programmatic scans
@@ -21,4 +20,5 @@ Soda Core's scan output includes an exit code which indicates the outcome of the
 | 3 | Soda encountered a runtime issue |
 
 ---
-{% include docs-core-footer.md %}
+
+{% include docs-footer.md %}

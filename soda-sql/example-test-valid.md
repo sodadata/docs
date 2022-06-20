@@ -8,6 +8,8 @@ redirect_from: /soda-sql/examples/examples-test-valid.html
 
 # Example tests for valid values
 
+{% include banner-sql.md %}
+
 Where your dataset contains records that ought to contain only values that qualify as valid, you can use Soda SQL to test for data validity. 
 
 To illustrate how to use Soda SQL to test for validity, imagine an e-commerce company that fulfills orders for shipment to customers. The information associated with each shipment is stored in a fulfillment table in a database. Here is how they could test to ensure the values in the `country` column are countries they ship to. This example uses the `valid_values` [column configuration key]({% link soda-sql/sql_metrics.md %}#column-configuration-keys) to define a list of valid countries.

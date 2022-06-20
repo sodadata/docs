@@ -8,6 +8,8 @@ redirect_from: /soda-sql/getting-started/installation.html
 
 # Install Soda SQL
 
+{% include banner-sql.md %}
+
 Soda SQL is a command-line interface (CLI) tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data.
 <br />
 

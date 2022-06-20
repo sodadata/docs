@@ -2,7 +2,7 @@
 layout: default
 title: Missing metrics
 description: Use missing metrics in SodaCL checks to detect missing values in a dataset.
-parent: Soda CL (Beta)
+parent: Soda CL
 redirect_from: /soda-cl/missing-validity.html
 ---
 
@@ -28,7 +28,6 @@ checks for dim_customer
 [List of configuration keys](#list-of-configuration-keys)<br />
 [List of valid formats](#list-of-valid-formats)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
-[Configure global missing values (experimental)](#configure-global-missing-values-experimental)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -149,9 +148,6 @@ checks for dim_customer:
 | configuration key | `valid format` |
 | configuration value(s) | `email` |
 
-
-You can also experiment with providing your own global definition of a missing value or format so that the definition applies to all checks for a dataset. See [Configure global missing values (experimental)](#configure-global-missing-values-experimental).
-
 <br />
 
 #### Troubleshoot missing format
@@ -189,7 +185,6 @@ If you have connected Soda Core to a Soda Cloud account, checks with missing met
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply checks with missing metrics to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
-| ✓ | Define missing values globally (experimental); see [example](#configure-global-missing-values-experimental). | [Configure global missing values (experimental)](#configure-global-missing-values-experimental)|
 
 
 #### Example with check name
@@ -271,7 +266,7 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 {% include list-symbols.md %}
 
-
+<!--
 ## Configure global missing values (experimental)
 
 Optionally, you can use a global configuration to define what qualifies as a missing value.  Global configurations apply to all checks in a dataset so that you can write checks that use missing metrics without having to declare what qualifies as a missing value in each individual check.
@@ -289,7 +284,7 @@ checks for dim_customer:
 * In your global column configurations, you can identify column names with or without quotes. If you use quotes with the column name, any checks you write that do *not* use the quotes, do not use the global configuration. Refer to [Use quotes in a check]({% link soda-cl/metrics-and-checks.md %}##use-quotes-in-a-check).
 * Globally defined missing values do not have an effect on aggregation checks. For example, if you globally define `0` as a missing value for a column named `value`, SodaCL still uses `0` when calculating the following aggregation check: `- avg(value) between 30 and 70`.
 * You can define both global and local column configurations in a checks YAML file. If you accidentally configure the same property both globally and locally and the values conflict, SodaCL uses the local configuration to execute the check.
-
+-->
 
 ## Go further
 

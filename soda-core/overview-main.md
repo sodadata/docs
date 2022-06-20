@@ -12,8 +12,8 @@ parent: Soda Core
 
 &#10004;  An open-source, CLI tool and Python library for data reliability<br /> <br />
 &#10004;  Compatible with [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}) and [Soda Cloud]({% link soda-cloud/overview.md %}) <br /> <br />
-&#10004;  Conduct data quality testing both in and out of your pipeline, for data observability, and for data monitoring <br /> <br />
-&#10004;  Embed a Soda scan in a data pipeline, or execute scans programmatically on a time-based schedule <br /> <br />
+&#10004;  Enables data quality testing both in and out of your pipeline, for data observability, and for data monitoring <br /> <br />
+&#10004;  Integrated to allow a Soda scan in a data pipeline, or programmatic scans on a time-based schedule <br /> <br />
 <br />
 
 #### Example checks

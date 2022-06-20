@@ -8,6 +8,8 @@ redirect_from: /soda-sql/example-compare-rowcounts.html
 
 # Custom metric templates
 
+{% include banner-sql.md %}
+
 Out of the box, Soda makes several [built-in metrics]({% link soda/metrics.md %}), such as `row_count`, available for you to use to write [tests]({% link soda/glossary.md %}#test). If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs, you can use [custom metrics]({% link soda-sql/sql_metrics.md%}#custom-metrics). 
 
 **Custom metrics**, also known as SQL metrics, enable you to define your own metrics that you can use in a test in Soda SQL or Soda Cloud; refer to [this example below](#validate-that-row-counts-are-equal). You can also use custom metrics to simply define SQL queries that Soda executes as tests during a scan, which is what most of these templates do.

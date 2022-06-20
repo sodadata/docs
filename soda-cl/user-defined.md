@@ -2,7 +2,7 @@
 layout: default
 title: User-defined checks
 description: Use a SodaCL (Beta) user-defined check to define elements of a check using SQL expressions or queries.
-parent: SodaCL (Beta)
+parent: SodaCL
 ---
 
 # User-defined checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}

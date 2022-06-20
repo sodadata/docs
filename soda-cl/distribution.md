@@ -9,6 +9,8 @@ parent: SodaCL
 
 Use a distribution check to determine whether the distribution of a column has changed between two points in time. For example, if you trained a model at a particular moment in time, you can use a distribution check to find out how much the data in the column has changed over time, or if it has changed all.
 
+Soda Cloud does *not* support distribution checks.
+
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned) > 0.05:

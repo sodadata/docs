@@ -8,6 +8,8 @@ redirect_from: /soda-sql/documentation/cli.html
 
 # Soda SQL CLI commands
 
+{% include banner-sql.md %}
+
 | Command               | Description |
 | --------------------- | ----------- |
 | `soda analyze` | Analyzes the contents of your data source and automatically prepares a scan YAML file for each dataset. Soda SQL puts the YAML files in the `/tables` directory inside the warehouse directory. See [Create a scan YAML file]({% link soda-sql/scan-yaml.md %}#create-a-scan-yaml-file) for details.|
