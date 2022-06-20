@@ -2,7 +2,7 @@
 layout: default
 title: Soda product comparison
 description: Review a set of matrices that illustrate the features and functionality available with different Soda products.
-parent: Soda
+parent: Get started
 ---
 
 # Soda product comparison
@@ -41,10 +41,10 @@ Use these matrices to review the features and functionality that Soda products h
 | Use historic measurements of data when defining tests, checks, or monitors  | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 | Use built-in metrics to write tests, checks, or monitors  | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 | Use your own custom metrics to write tests, checks, or monitors | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} |
-| Include SQL queries in tests or checks for data quality | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"} |
+| Include SQL queries in tests or checks for data quality | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 | Use SodaCL to write human-readable checks for data quality |  | ![done](/assets/images/done.png){:height="20px" width="20px"}  | ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"} |
 |Copy + paste custom metrics from templates into your YAML file  | ![done](/assets/images/done.png){:height="20px" width="20px"} |  |  |
-| Apply an anomaly detection check or monitor |  | ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} |
+| Apply an anomaly detection check or monitor |  | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 | Apply a schema evolution check or monitor |  | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 | Apply freshness checks, reference checks, and row-count comparisons between datasets |  | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"} |
 
@@ -92,7 +92,7 @@ Use these matrices to review the features and functionality that Soda products h
 
 * Learn more about [Soda products in general]({% link soda/product-overview.md %}) and how the work together to establish and maintain data reliability.
 * Questions? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-* Get up and running in a few minutes using the [Quick start for Soda SQL and Soda Cloud]({% link soda/quick-start-soda-sql.md %}) or the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}).
+* Get up and running in a few minutes using the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}).
 <br />
 
 ---

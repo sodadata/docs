@@ -2,7 +2,7 @@
 layout: default
 title: Numeric metrics
 description: Use numeric metrics in SodaCL checks for data quality.
-parent: Soda CL (Beta)
+parent: Soda CL
 redirect_from: soda-cl/duplicates.html
 ---
 

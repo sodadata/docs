@@ -15,11 +15,31 @@ A **monitor** is a set of details you define in Soda Cloud which Soda uses when 
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda SQL</label>
-  <label class="tab" id="two-tab" for="two">Soda Cloud with Soda Core (Beta)</label>
+  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda Core (Beta)</label>
+  <label class="tab" id="two-tab" for="two">Soda Cloud with Soda SQL</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
+
+
+In Soda Cloud, you can only create new monitors and alerts for datasets connected to an instance of Soda SQL; you cannot create monitors for datasets connected to Soda Core (Beta), yet. 
+
+Instead, you can use SodaCL (Beta) to write checks in a [checks YAML file]({% link soda-core/configuration.md %}) for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account to see the check results after each scan. 
+
+Consider following the [Quick start for Soda Core with Soda Cloud]({% link soda/quick-start-soda-core.md %}) to learn how to do so.
+
+[Soda Core documentation]({% link soda-core/overview-main.md %})<br />
+[SodaCL documentation]({% link soda-cl/soda-cl-overview.md %})
+
+## Edit checks in Soda Cloud
+
+If you have connected Soda Core to your Soda Cloud account and run a scan, you can see check results in the list of Monitor Results in the **Monitors** dashboard. If you wish, you can edit the checks to add attributes.
+
+1. In Soda Cloud, navigate to the **Monitors** dashboard, then click the stacked dots at the right of the check you wish to edit and select **Edit monitor**.
+2. Navigate to the **Attributes** tab, then change the value for the **Monitor Owner** field and add any details to the **Description** field, then **Save**.
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
 
 ## Prerequisites
 
@@ -112,24 +132,6 @@ Read more about [Validity rules]({% link soda/metrics.md %}#column-configuration
 2. After the Soda SQL scan completes, return to **Monitor Results** in Soda Cloud and refresh your browser. Click the monitor results associated with the monitor you created to access details of the scan results.
 3. Check your Slack channel or email inbox; when a scan surfaces data that triggers your alert(s), Soda Cloud sends notifications according to the settings you defined when you created the monitor.
 
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
-
-In Soda Cloud, you can only create new monitors and alerts for datasets connected to an instance of Soda SQL; you cannot create monitors for datasets connected to Soda Core (Beta), yet. 
-
-Instead, you can use SodaCL (Beta) to write checks in a [checks YAML file]({% link soda-core/configuration.md %}) for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account</a> to see the check results after each scan. 
-
-Consider following the [Quick start for Soda Core with Soda Cloud]({% link soda/quick-start-soda-core.md %}) to learn how to do so.
-
-[Soda Core documentation]({% link soda-core/overview-main.md %})<br />
-[SodaCL documentation]({% link soda-cl/soda-cl-overview.md %})
-
-## Edit checks in Soda Cloud
-
-If you have connected Soda Core to your Soda Cloud account and run a scan, you can see check results in the list of Monitor Results in the **Monitors** dashboard. If you wish, you can edit the checks to add attributes.
-
-1. In Soda Cloud, navigate to the **Monitors** dashboard, then click the stacked dots at the right of the check you wish to edit and select **Edit monitor**.
-2. Navigate to the **Attributes** tab, then change the value for the **Monitor Owner** field and add any details to the **Description** field, then **Save**.
 
   </div>
   </div>

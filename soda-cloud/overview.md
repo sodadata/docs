@@ -28,7 +28,6 @@ redirect_from: /soda-cloud.html
                     <img src="/assets/images/icons/icon-cloud@2x.png" width="54" height="40">
                     <h2>Sign up</h2>
                     <a href="https://cloud.soda.io/signup" target="_blank">Sign up for Soda Cloud</a>
-                    <a href="/soda/quick-start-soda-sql.html" target="_blank">Quick start with Soda SQL</a>
                     <a href="/soda/quick-start-soda-core.html" target="_blank">Quick start with Soda Core (Beta)</a>
                 </div>
                  <div>

@@ -2,7 +2,7 @@
 layout: default
 title: Cross checks
 description: Use a SodaCL (Beta) cross check to compare row counts across datasets in the same, or different, data sources.
-parent: SodaCL (Beta)
+parent: SodaCL
 redirect_from: /soda-cl/row-count.html
 ---
 

@@ -2,7 +2,7 @@
 layout: default
 title: Validity metrics
 description: Use validity metrics in SodaCL checks to detect invalid values in a dataset.
-parent: Soda CL (Beta)
+parent: Soda CL
 ---
 
 # Validity metrics ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}

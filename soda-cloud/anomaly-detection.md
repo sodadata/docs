@@ -14,11 +14,23 @@ In Soda Cloud, you can create a monitor that automatically detects anomalies in 
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda SQL</label>
-  <label class="tab" id="two-tab" for="two">Soda Cloud with Soda Core (Beta)</label>
+  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda Core (Beta)</label>
+  <label class="tab" id="two-tab" for="two">Soda Cloud with Soda SQL</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
+
+
+In Soda Cloud, you can only create new anomaly detection monitors for datasets connected to an instance of Soda SQL; you cannot create schema evolution monitors for datasets connected to Soda Core (Beta), yet. 
+
+Instead, you can use SodaCL (Beta) to write [anomaly score checks]({% link soda-cl/anomaly-score.md %}) in a [checks YAML file]({% link soda-core/configuration.md %}) for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account to see the check results after each scan. 
+
+[Soda Core documentation]({% link soda-core/overview-main.md %})<br />
+[SodaCL documentation]({% link soda-cl/soda-cl-overview.md %})
+
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
 
 **Anomaly detection** is a [monitor]({% link soda/glossary.md %}#monitor) **Evaluation Type** powered by a machine learning algorithm that works with [measurements]({% link soda/glossary.md %}#measurement) that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalous measurements in time-series data. Seasonality is a term that describes a common pattern of time-series data and means "something cyclical, irrespecitve of the general direction of the data". For example, the number of orders that occur on your platform might show a clear drop during the weekend, or peak during the holiday season, irrespecitve of whether your platform is growing or not.
 
@@ -52,17 +64,6 @@ When you access the **Monitors** dashboard to review the monitor's test results,
 
 Currently, Soda's time-series anomaly detection uses the <a href=""https://facebook.github.io/prophet/docs/quick_start.html target="_blank"> Facebook Prophet Python library</a> to learn about time-series data with strong seasonality patterns. Prophet learns and predicts the shape of the data and outputs confidence-bounds between which it thinks 99% of the data should fall.
 -->
-
-
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
-
-In Soda Cloud, you can only create new anomaly detection monitors for datasets connected to an instance of Soda SQL; you cannot create schema evolution monitors for datasets connected to Soda Core (Beta), yet. 
-
-Instead, you can use SodaCL (Beta) to write [anomaly score checks]({% link soda-cl/anomaly-score.md %}) in a [checks YAML file]({% link soda-core/configuration.md %}) for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account to see the check results after each scan. 
-
-[Soda Core documentation]({% link soda-core/overview-main.md %})<br />
-[SodaCL documentation]({% link soda-cl/soda-cl-overview.md %})
 
   </div>
   </div>

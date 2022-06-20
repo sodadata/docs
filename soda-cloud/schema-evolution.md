@@ -11,12 +11,23 @@ parent: Soda Cloud
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda SQL</label>
-  <label class="tab" id="two-tab" for="two">Soda Cloud with Soda Core (Beta)</label>
+  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda Core (Beta)</label>
+  <label class="tab" id="two-tab" for="two">Soda Cloud with Soda SQL</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
+**Schema Evolution** is a type of check that you can use to monitor the columns in your dataset. You can set the type of alert – warn or fail – associated with each evolution event. For example, you can configure the check so that a change in the ordring of your columns triggers a warning, while a removal of a column in the dataset triggers a failure.  
+
+In Soda Cloud, you can only create new schema evolution monitors for datasets connected to an instance of Soda SQL; you cannot create schema evolution monitors for datasets connected to Soda Core (Beta), yet. 
+
+Instead, you can use SodaCL (Beta) to write [schema checks]({% link soda-cl/schema.md %}) in a [checks YAML file]({% link soda-core/configuration.md %}) for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account to see the check results after each scan. 
+
+[Soda Core documentation]({% link soda-core/overview-main.md %})<br />
+[SodaCL documentation]({% link soda-cl/soda-cl-overview.md %})
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
 In Soda Cloud, you can create a monitor that automatically detects changes in your dataset's schema. 
 
 **Schema Evolution** is a type of monitor that notifies you when columns in a dataset have been added, removed, or changed since the previous Soda scan of the dataset. You can set the type of alert – Warning or Critical – associated with each evolution event. For example, you can configure the monitor so that additions and changes to your dataset's schema issue a Warning, while a removal of a column in the dataset issues a Critical alert.  
@@ -32,18 +43,6 @@ To manually create a schema evolution monitor, you must be an Admin of the organ
 2. Complete the monitor creation flow, including the type of alert, Warning or Critical, that you wish to associate with each schema evolution event: column(s) added, column(s) removed, and column(s) changed.
 
 When you access the **Monitors** dashboard to review the monitor's test results, the bar chart displays the volume of each type of event that has occurred in your schema. The **Diagnostics** and **Schema** tabs below the chart offer more granular insight into the events that occurred. Note that the monitor displays results only after Soda Cloud has collected at least two measurements, or in other words, after it has completed two scans of the same dataset.
-
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
-
-**Schema Evolution** is a type of check that you can use to monitor the columns in your dataset. You can set the type of alert – warn or fail – associated with each evolution event. For example, you can configure the check so that a change in the ordring of your columns triggers a warning, while a removal of a column in the dataset triggers a failure.  
-
-In Soda Cloud, you can only create new schema evolution monitors for datasets connected to an instance of Soda SQL; you cannot create schema evolution monitors for datasets connected to Soda Core (Beta), yet. 
-
-Instead, you can use SodaCL (Beta) to write [schema checks]({% link soda-cl/schema.md %}) in a [checks YAML file]({% link soda-core/configuration.md %}) for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account to see the check results after each scan. 
-
-[Soda Core documentation]({% link soda-core/overview-main.md %})<br />
-[SodaCL documentation]({% link soda-cl/soda-cl-overview.md %})
 
   </div>
   </div>

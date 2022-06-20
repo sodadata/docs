@@ -2,7 +2,7 @@
 layout: default
 title: Missing metrics
 description: Use missing metrics in SodaCL checks to detect missing values in a dataset.
-parent: Soda CL (Beta)
+parent: Soda CL
 redirect_from: /soda-cl/missing-validity.html
 ---
 
