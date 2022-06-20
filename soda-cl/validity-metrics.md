@@ -35,7 +35,6 @@ checks for dim_customer:
 [List of configuration keys](#list-of-configuration-keys)<br />
 [List of valid formats](#list-of-valid-formats)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
-[Configure global valid values (experimental)](#configure-global-valid-values-experimental)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -156,9 +155,6 @@ checks for dim_customer:
 | configuration key | `valid format` |
 | configuration value(s) | `email` |
 
-
-You can also experiment with providing your own global definition of an invalid value or format so that the definition applies to all checks for a dataset. See [Configure global valid values (experimental)](#configure-global-valid-values-experimental).
-
 <br />
 
 #### Troubleshoot valid format
@@ -197,7 +193,6 @@ If you have connected Soda Core to a Soda Cloud account, checks with validity me
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply checks with validity metrics to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
-| ✓ | Define validity values globally (experimental); see [example](#configure-global-valid-values-experimental). | [Configure global valid values (experimental)](#configure-global-valid-values-experimental)|
 
 
 #### Example with check name
@@ -285,6 +280,7 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 {% include list-symbols.md %}
 
+<!--
 ## Configure global valid values (experimental)
 
 Optionally, you can use a global configuration to define what qualifies as a valid value.  Global configurations apply to all checks in a dataset so that you can write checks that use validity metrics without having to declare what qualifies as a valid value in each individual check.
@@ -303,7 +299,7 @@ checks for dim_customer:
 * Globally defined valid values do not have an effect on aggregation checks. For example, if you globally define `0` as a valid value for a column named `value`, SodaCL still uses `0` when calculating the following aggregation check: `- avg(value) between 30 and 70`.
 * You can define both global and local column configurations in a checks YAML file. If you accidentally configure the same property both globally and locally and the values conflict, SodaCL uses the local configuration to execute the check.
 
-
+-->
 
 ## Go further
 

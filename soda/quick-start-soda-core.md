@@ -231,8 +231,7 @@ To exit the virtual environment in your command-line interface, type `deactivate
 ## Go further
 
 * Explore the built-in metrics you can use to write checks with [SodaCL]({% link soda-cl/soda-cl-overview.md %}).
-* Access the complete set of <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core OSS documentation</a>.
-* Set up <a href="https://docs.soda.io/soda-core/programmatic-scans.html" target="_blank">programmatic scans</a> to automate data quality monitoring.
+* Set up [programmatic scans]({% link soda-core/programmatic.md %}) to automate data quality monitoring.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

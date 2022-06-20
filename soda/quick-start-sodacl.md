@@ -34,7 +34,7 @@ A **Soda scan** executes the checks you defined in the checks YAML file and retu
 
 ## About this tutorial
 
-With over 25 built-in checks and metrics to choose from, it can be hard to know where to begin. This tutorial offers suggestions for some basic checks you can write to begin surfacing missing, invalid, unexpected data in your datasets. 
+With over 25 built-in SodaCL checks and metrics to choose from, it can be hard to know where to begin. This tutorial offers suggestions for some basic checks you can write to begin surfacing missing, invalid, unexpected data in your datasets. 
 
 All the example checks in this tutorial use placeholder values for dataset and column name identifiers, but you can copy+paste the examples into your own checks YAML file and adjust the details to correspond to your own data.
 

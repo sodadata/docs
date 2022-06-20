@@ -8,39 +8,33 @@
     page: soda/quick-start-soda-core.md
   - subtitle: Quick start for SodaCL
     page: soda/quick-start-sodacl.md
-  - subtitle: Quick start for Soda SQL and Soda Cloud
-    page: soda/quick-start-soda-sql.md
   - subtitle: Soda product overview
     page: soda/product-overview.md
   - subtitle: Soda product comparison
     page: soda/product-matrix.md
 
 
-- title: Concepts
-  page: soda/data-concepts.md
-  subcategories:
-  - subtitle: Data concepts
-    page: soda/data-concepts.md
-  - subtitle: Scans
-    page: soda/scan.md
-  - subtitle: Metrics
-    page: soda/metrics.md
-
 - title: Soda Core (Beta)
   page: soda-core/overview-main.md
   subcategories:
   - subtitle: Soda Core overview
     page: soda-core/overview-main.md
+  - subtitle: How Soda Core works
+    page: soda-core/how-core-works.md
   - subtitle: Install Soda Core
     page: soda-core/installation.md
   - subtitle: Configure Soda Core
     page: soda-core/configuration.md
   - subtitle: Run a Soda Core scan
     page: soda-core/scan-core.md
+  - subtitle: Soda Core CLI commands
+    page: soda-core/cli-reference.md
+  - subtitle: Define programmatic scans
+    page: soda-core/programmatic.md
+  - subtitle: Configure orchestrated scans
+    page: soda-core/orchestrate-scans.md
   - subtitle: Connect to Soda Cloud
     page: soda-core/connect-core-to-cloud.md
-  - subtitle: Soda Core OSS docs
-    page: soda-core/overview.md
 
 - title: SodaCL (Beta)
   page: soda-cl/soda-cl-overview.md
@@ -90,6 +84,8 @@
     page: soda-cloud/collaborate.md
   - subtitle: Create monitors and alerts
     page: soda-cloud/monitors.md
+  - subtitle: Scan output
+    page: soda-cloud/scan-output.md
   - subtitle: Organize datasets
     page: soda-cloud/organize-datasets.md
   - subtitle: Display column metrics
@@ -122,22 +118,18 @@
     page: soda/integrate-slack.md
 
 - title: Reference
-  page: soda/glossary.md
+  page: soda/data-concepts.md
   subcategories:
+  - subtitle: Data concepts
+    page: soda/data-concepts.md
   - subtitle: Glossary
     page: soda/glossary.md
   - subtitle: What's new in docs?
     page: soda/new-documentation.md
-  - subtitle: Data source configuration
-    page: soda/warehouse_types.md
-  - subtitle: Data types
-    page: soda/supported-data-types.md
-  - subtitle: Troubleshoot
-    page: soda/troubleshoot.md
   - subtitle: Data security and privacy
     page: soda/data-privacy.md
-  - subtitle: Anonymous usage statistics
-    page: soda-sql/global-configuration.md
+  - subtitle: Soda Core usage statistics
+    page: soda-core/usage-stats.md
   - subtitle: Support
     page: soda/support.md
   - subtitle: Soda Community Code of Conduct
@@ -158,6 +150,8 @@
     page: soda-sql/overview.md
   - subtitle: Soda SQL interactive demo
     page: soda-sql/interactive-demo.md
+  - subtitle: Quick start for Soda SQL and Soda Cloud
+    page: soda/quick-start-soda-sql.md
   - subtitle: How Soda SQL works
     page: soda-sql/concepts.md
   - subtitle: Install Soda SQL
@@ -170,10 +164,14 @@
     page: soda-sql/warehouse.md
   - subtitle: Scan YAML
     page: soda-sql/scan-yaml.md
+  - subtitle: Metrics in Soda SQL
+    page: soda/metrics.md
   - subtitle: Configure metrics
     page: soda-sql/sql_metrics.md
   - subtitle: Define tests
     page: soda-sql/tests.md
+  - subtitle: Run a Soda SQL scan
+    page: soda/scan.md
   - subtitle: Scan multiple data sources or datasets
     page: soda-sql/scan-different-datasets.md
   - subtitle: Apply filters
@@ -198,6 +196,14 @@
     page: soda-sql/example-test-valid.md
   - subtitle: Custom metric templates
     page: soda-sql/custom-metric-templates.md
+  - subtitle: Data source configuration
+    page: soda/warehouse_types.md
+  - subtitle: Data types
+    page: soda/supported-data-types.md
+  - subtitle: Troubleshoot
+    page: soda/troubleshoot.md
+  - subtitle: Soda SQL usage statistics
+    page: soda-sql/global-configuration.md
 
 - title: Soda Spark
   page: soda-spark/install-and-use.md

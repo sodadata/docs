@@ -11,6 +11,8 @@ A **scan** is a command that executes checks to extract information about data i
 
 [Anatomy of a scan command](#anatomy-of-a-scan-command)<br />
 [Scan output](#scan-output)<br />
+[Programmatically use scan output](#programmatically-use-scan-output)<br />
+[Add scan options](#add-scan-options)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -27,6 +29,8 @@ Scan command:
 soda scan -d postgres_retail -c configuration.yml checks.yml
 ```
 <br />
+
+Note that you can use the `-c` option to include multiple `configuration.yml` files in one scan execution.
 
 Include the filepath of each YAML file if you stored them in a directory other than the one in which you installed Soda Core.
 ```shell
@@ -87,6 +91,27 @@ Scan summary:
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 
 ```
+
+## Programmatically use scan output
+
+Optionally, you can insert the output of Soda Core scans into your data orchestration tool such as Dagster, or Apache Airflow. 
+
+You can save Soda Core scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import the Soda Core library in Python so you can utilize the `Scan()` object, [install a Soda Core package]({% link soda-core/installation.md %}), then use `from soda.scan import Scan`. Refer to [Define programmatic scans]({% link soda-core/programmatic.md %}) for details.
+
+Further, in your orchestration tool, you can use Soda Core scan results to block the data pipeline if it encounters bad data, or to run in parallel to surface issues with your data. Learn how to [Configure orchestrated scans]({% link soda-core/orchestrate-scans.md %}).
+
+## Add scan options
+
+When you run a scan in Soda Cre, you can specify some options that modify the scan actions or output. Add one or more of the following options to a `soda scan` command.
+
+| Option | Description and example|
+| --------  | ---------------------- |
+| `-c TEXT` or<br /> `--configuration TEXT` | (Required) Use this option to specify the file path and file name for the configuration YAML file.|
+| `-d TEXT` or<br /> `--data-source TEXT` | (Required) Use this option to specify the data source that contains the datasets you wish to scan.|
+| `-s TEXT` or<br /> `--scan-definition TEXT` |  |
+| `-v TEXT` or<br /> `--variable TEXT` | Replace `TEXT` with variables you wish to apply to the scan, such as a [filter for a date]({% link soda-cl/filters.md %}). Put single or double quotes around any value with spaces. <br />  `soda scan -d my_datasource -v start=2020-04-12 -c configuration.yml checks.yml` |
+| `V` or <br /> `--verbose` | Return scan output in verbose mode to review query details. |
+
 
 ## Go further
 
