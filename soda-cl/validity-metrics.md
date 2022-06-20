@@ -238,8 +238,8 @@ checks for dim_customer:
 #### Example with for each
 
 ```yaml
-for each table T:
-  tables:
+for each dataset T:
+  datasets:
     - dim_customer
     - dim_customer_%
   checks:

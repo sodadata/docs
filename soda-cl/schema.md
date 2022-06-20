@@ -178,8 +178,8 @@ checks for dim_product:
 #### Example with for each
 
 ```yaml
-for each table T:
-  tables:
+for each dataset T:
+  datasets:
     - dim_product_%
   checks:
     schema:

@@ -94,13 +94,13 @@ To create a DRO, you use the CLI command `soda update`. When you execute the com
 1. If you have not already done so, create a directory to contain the files that Soda uses for a distribution check.
 2. Use a code editor to create a file called `distribution_reference.yml` (though, you can name it anything you wish) in your Soda project directory, then add the following example content to the file.
 ```yaml
-table: your_dataset_name
+dataset: your_dataset_name
 column: column_name_in_dataset
 distribution_type: categorical
 # (optional) filter to a specific point in time or any other dimension 
 filter: "column_name between '2010-01-01' and '2020-01-01'"
 ```
-3. Change the values for `table` and `column` to reflect your own dataset's identifiers.
+3. Change the values for `dataset` and `column` to reflect your own dataset's identifiers.
 4. (Optional) Change the value for `distribution_type` to capture `categorical` or `continuous` data.
 5. (Optional) Define the value of `filter` to specify the portion of the data in your dataset for which you are creating a DRO. If you trained a model on data in which the `date_first_customer` column contained values between 2010-01-01 and 2020-01-01, you can use a filter based on that period to test whether the distribution of the column has changed since then. <br />
 If you do not wish to define a filter, remove the key-value pair from the file.
@@ -111,7 +111,7 @@ soda update -d your_datasource_name -c your_configuration_file.yaml ./distributi
 7. Review the changed contents of your `distribution_reference.yml` file. The following is an example of the information that Soda added to the file.
 
 ```yaml
-table: dim_customer
+dataset: dim_customer
 column: number_cars_owned
 distribution_type: categorical
 filter: date_first_purchase between '2010-01-01' and '2020-01-01'
@@ -238,8 +238,8 @@ checks for dim_customer:
 #### Example with for each
 
 ```yaml
-for each table T:
-    tables:
+for each dataset T:
+    dataset:
         - dim_customer
     checks:
     - distribution_difference(number_cars_owned, absolutely_whatever_string_you_please) < 0.15:

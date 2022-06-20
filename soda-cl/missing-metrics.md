@@ -230,8 +230,8 @@ checks for dim_reseller:
 #### Example with for each
 
 ```yaml
-for each table T:
-  tables:
+for each dataset T:
+  datasets:
     - dim_product
     - dim_product_%
   checks:

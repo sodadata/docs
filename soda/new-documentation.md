@@ -9,6 +9,10 @@ parent: Soda
 
 <br />
 
+#### June 20, 2022
+
+* Changed all references to `table` in SodaCL to `dataset`, notably used with [for each]({% link soda-cl/freshness.md %}) and [distribution]({% link soda-cl/distribution.md %}) check syntax.
+
 #### June 14, 2022
 
 * Added documentation corresponding to Soda Core support for [Apache Spark DataFrames]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes). For use with [programmatic Soda scans]({% link soda-core/programmatic-scans.md %}), only.
