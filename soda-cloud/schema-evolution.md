@@ -28,6 +28,9 @@ Instead, you can use SodaCL (Beta) to write [schema checks]({% link soda-cl/sche
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
+
+{% include banner-sql.md %}
+
 In Soda Cloud, you can create a monitor that automatically detects changes in your dataset's schema. 
 
 **Schema Evolution** is a type of monitor that notifies you when columns in a dataset have been added, removed, or changed since the previous Soda scan of the dataset. You can set the type of alert – Warning or Critical – associated with each evolution event. For example, you can configure the monitor so that additions and changes to your dataset's schema issue a Warning, while a removal of a column in the dataset issues a Critical alert.  

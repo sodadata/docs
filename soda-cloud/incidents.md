@@ -49,6 +49,8 @@ Access the [Soda Core documentation]({% link soda-core/overview-main.md %}).
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
+{% include banner-sql.md %}
+
 When you [create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud, you have the option of adding a Warning or Critical alert to notify you when a data quality test fails. You can respond to the notification by creating an **Incident** in Soda Cloud to track your team's investigation and resolution of the data quality issue. 
 
 If you have integrated your Soda Cloud account with a Slack workspace, you can use an Incident's built-in ability to create an incident-specific Slack channel where you and your team can collaborate on the issue investigation. When you resolve or close the incident, Soda archives the channel for future troubleshooting reference.

@@ -8,6 +8,8 @@ redirect_from: /soda-sql/examples/examples-by-metric.html
 
 # Example tests by metric
 
+{% include banner-sql.md %}
+
 Refer to [Metrics]({% link soda-sql/sql_metrics.md %}) for configuration details for Soda SQL.<br />
 Refer to [Scan YAML]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file) for details on the anatomy of a scan YAML file.
 

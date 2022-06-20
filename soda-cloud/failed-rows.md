@@ -51,6 +51,8 @@ Where your datasets contain sensitive or private information, you may *not* want
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
+{% include banner-sql.md %}
+
 When a [scan]({% link soda/glossary.md %}#scan) results in a failed [test]({% link soda/glossary.md %}#test), Soda Cloud displays details of the scan results in each monitor's **Monitor History** view. To offer more insight into the data that failed a test during a scan, Soda Cloud can display **failed rows** in a monitor's history. 
 
 ![failed-rows](/assets/images/failed-rows.png){:height="600px" width="600px"}

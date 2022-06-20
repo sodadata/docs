@@ -41,6 +41,8 @@ If you have connected Soda Core to your Soda Cloud account and run a scan, you c
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
+{% include banner-sql.md %}
+
 ## Prerequisites
 
 * An [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account has [connected]({% link soda-cloud/connect_to_cloud.md %}) it to a configured instance of Soda SQL. 

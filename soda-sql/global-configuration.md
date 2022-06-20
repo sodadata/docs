@@ -8,6 +8,8 @@ redirect_from: /soda-sql/documentation/config.html
 
 # Soda SQL usage statistics
 
+{% include banner-sql.md %}
+
 To understand how users are using Soda SQL, and to proactively capture bugs and performance issues, the Soda development team has added telemetry event tracking to Soda SQL. 
 
 Soda tracks usage statistics using the Open Telemetry Framework. The data Soda tracks is completely anonymous, does not contain any personally identifiying information (PII) in any form, and is purely for internal use.
