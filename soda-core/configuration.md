@@ -28,7 +28,7 @@ Consider following the [Quick start for Soda Core and Soda Cloud]({% link soda/q
 
 1. Soda Core connects with Spark DataFrames in a unique way, using programmtic scans.
 * If you are using Spark DataFrames, follow the configuration details in [Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes), then skip to step 6 to create a checks YAML file.
-* If nyou are *not* using Spark DataFrames, continue to step 2.
+* If you are *not* using Spark DataFrames, continue to step 2.
 2. Create a directory in your environment in which to store your configuration and checks YAML files.
 3. In your code editor, create a new YAML file named `configuration.yml` and save it in the directory you just created.
 4. The configuration YAML file stores connection details for your data source. Use the data source-specific sections below to copy+paste the connection syntax into your file, then adjust the values to correspond with your data source's details. You can use [system variables](#provide-credentials-as-system-variables) to pass sensitive values, if you wish.<br/>
