@@ -27,7 +27,7 @@ When you create a [monitor]({% link soda/glossary.md %}#monitor) in Soda Cloud's
 
 ![scan-with-cloud](/assets/images/scan-with-cloud.png){:height="350px" width="350px"}
 
-You can use monitors to automatically [detect anomalies]({% link soda-cloud/anomaly-detection.md %}) and [changes to a dataset's schema]({% link soda-cloud/schema-evolution.md %}), view samples of data that [failed a check]({% link soda-cloud/failed-rows.md %}), and track data quality over time. Soda Cloud stores your scan results and prepares charts that represent the volume of failed checks in each scan. These visualizations of your scan results enable you to see where your data quality is improving or deteriorating over time.
+You can use monitors to view samples of data that [failed a check]({% link soda-cloud/failed-rows.md %}), and track data quality over time. Soda Cloud stores your scan results and prepares charts that represent the volume of failed checks in each scan. These visualizations of your scan results enable you to see where your data quality is improving or deteriorating over time.
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
@@ -43,7 +43,7 @@ When you create a [monitor]({% link soda/glossary.md %}#monitor) in Soda Cloud's
 
 ![scan-with-cloud-sql](/assets/images/scan-with-cloud-sql.png){:height="350px" width="350px"}
 
-You can use monitors to automatically [detect anomalies]({% link soda-cloud/anomaly-detection.md %}) and [changes to a dataset's schema]({% link soda-cloud/schema-evolution.md %}), view samples of data that [failed a test]({% link soda-cloud/failed-rows.md %}), and track data quality over time. Soda Cloud stores your scan results and prepares charts that represent the volume of failed tests in each scan. These visualizations of your scan results enable you to see where your data quality is improving or deteriorating over time.
+You can use monitors to view samples of data that [failed a test]({% link soda-cloud/failed-rows.md %}), and track data quality over time. Soda Cloud stores your scan results and prepares charts that represent the volume of failed tests in each scan. These visualizations of your scan results enable you to see where your data quality is improving or deteriorating over time.
 
 
   </div>
@@ -56,7 +56,6 @@ You can use monitors to automatically [detect anomalies]({% link soda-cloud/anom
 * Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup).
 * Learn more about what happens during a [scan]({% link soda-sql/scan.md %}#scan-output-in-soda-cloud).
 * Learn more about [monitors and alerts]({% link soda-cloud/monitors.md %}).
-* Get Soda Cloud to automatically [detect anomalies]({% link soda-cloud/anomaly-detection.md %}) in your data.
 * Learn more about viewing [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 

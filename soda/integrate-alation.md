@@ -126,8 +126,6 @@ In a dataset page in Alation, in the **Overview** tab, users have the opportunit
 
 ## Go further
 
-* Learn more about [creating monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
-* Learn more about [anomaly detection]({% link soda-cloud/anomaly-detection.md %}) and [schema evolution]({% link soda-cloud/schema-evolution.md %}) monitors in Soda Cloud.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

@@ -216,7 +216,7 @@ parent: Reference
 
 #### October 18, 2021
 
-* New documentation to accompany the new [Schema Evolution Monitor]({% link soda-cloud/schema-evolution.md %}) in Soda Cloud. Use this monitor type to get notifications when columns are changed, added, or deleted in your dataset.
+* New documentation to accompany the new Schema Evolution Monitor in Soda Cloud. Use this monitor type to get notifications when columns are changed, added, or deleted in your dataset.
 
 #### October 17, 2021
 

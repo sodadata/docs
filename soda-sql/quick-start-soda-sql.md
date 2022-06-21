@@ -326,7 +326,7 @@ Continue to the next section to connect Soda SQL to a Soda Cloud account.
 
 Though you can use Soda SQL as a standalone CLI tool to monitor data quality, you may wish to connect to the Soda Cloud web application that vastly enriches the data quality monitoring experience. 
 
-Beyond increasing the observability of your data, Soda Cloud enables you to automatically [detect anomalies]({% link soda-cloud/anomaly-detection.md %}), and view [samples of the rows that failed]({% link soda-cloud/failed-rows.md %}) a test during a scan. Integrate Soda Cloud with your [Slack workspace]({% link soda/integrate-slack.md %}) to collaborate with your team on data monitoring.
+Beyond increasing the observability of your data, Soda Cloud enables you to automatically detect anomalies, and view [samples of the rows that failed]({% link soda-cloud/failed-rows.md %}) a test during a scan. Integrate Soda Cloud with your [Slack workspace]({% link soda/integrate-slack.md %}) to collaborate with your team on data monitoring.
 
 Soda SQL uses an API to connect to Soda Cloud. To use the API, you must generate API keys in your Soda Cloud account, then add them to the warehouse YAML file that Soda SQL created. When it runs a scan, Soda SQL pushes the test results to Soda Cloud. 
 

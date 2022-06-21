@@ -70,7 +70,7 @@ checks for CUSTOMERS:
 
 ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="105px" width="105px"} is the web application that you can optionally connect to Soda Core. It aggregates all metrics and tests for data quality and enables multiple people in an organization to monitor scan results, collaborate on issue investigation, and even write their own checks for data reliability. Log in to the web app to examine the visualized results of scans, view historical scan data, and set up alerts that automatically notify your team when there is an issue with your data quality.
 
-Beyond increasing the observability of your data, Soda Cloud enables you to automatically [detect anomalies]({% link soda-cloud/anomaly-detection.md %}), view samples of the [rows that failed]({% link soda-cloud/failed-rows.md %}) a check during a scan, and [integrate with your Slack]({% link soda/integrate-slack.md %}) workspace to get [alert notifications]({% link soda-cloud/monitors.md %}) and automatically spin up new channels for collaborative [incident investigation]({% link soda-cloud/incidents.md %}).
+Beyond increasing the observability of your data, Soda Cloud enables you to view samples of the [rows that failed]({% link soda-cloud/failed-rows.md %}) a check during a scan and [integrate with your Slack]({% link soda/integrate-slack.md %}) workspace to get [alert notifications]({% link soda-cloud/monitors.md %}) and automatically spin up new channels for collaborative [incident investigation]({% link soda-cloud/incidents.md %}).
 
 Access [Soda Cloud documentation]({% link soda-cloud/overview.md %}).
 
@@ -105,7 +105,6 @@ Further, you have the option of connecting a Soda Core to Soda Cloud. Soda Core 
 ![product-overview-cloud](/assets/images/product-overview-cloud.png){:height="700px" width="700px"}
 
 In Soda Cloud, you can do much more than just review the scan results.
-* Take advantage of the [anomaly detection monitor]({% link soda-cloud/anomaly-detection.md %}) that Soda Cloud automatically sets up for all the time-series datasets it discovers. 
 * [Integrate with Slack]({% link soda/integrate-slack.md %}) to configure and send alerts to your team when there is a data quality issue.
 * Create and track data quality [incidents]({% link soda-cloud/incidents.md %}) associated with failed monitor results so your team can collaborate on issue investigation.
 * Get at-a-glance information about column metrics and the overall health of a dataset in the Datasets dashboard.
