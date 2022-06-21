@@ -26,9 +26,9 @@ After you [install Soda Core]({% link soda-core/installation.md %}), you must cr
 
 Consider following the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) that guides you through the steps to configure Soda Core and run a scan of your data.
 
-1. Soda Core connects with Spark DataFrames in a unique way using programmtic scans. 
-* If you are using Spark DataFrames, follow the configuration details in [Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes), then skip to step 6 to create your checks YAML file.
-* If you are not using Spark DataFrames, continue to step 2.
+1. Soda Core connects with Spark DataFrames in a unique way, using programmtic scans.
+* If you are using Spark DataFrames, follow the configuration details in [Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes), then skip to step 6 to create a checks YAML file.
+* If you are *not* using Spark DataFrames, continue to step 2.
 2. Create a directory in your environment in which to store your configuration and checks YAML files.
 3. In your code editor, create a new YAML file named `configuration.yml` and save it in the directory you just created.
 4. The configuration YAML file stores connection details for your data source. Use the data source-specific sections below to copy+paste the connection syntax into your file, then adjust the values to correspond with your data source's details. You can use [system variables](#provide-credentials-as-system-variables) to pass sensitive values, if you wish.<br/>
@@ -51,7 +51,37 @@ checks for dataset_name:
   - row_count > 0
 ```
 7. Save the changes to the `checks.yml` file.
-8. Next: [Run a scan]({% link soda-core/scan-core.md %}) of the data in your data source.
+8. Next: [run a scan]({% link soda-core/scan-core.md %}) of the data in your data source.
+
+
+## Provide credentials as system variables
+
+If you wish, you can provide data source login credentials or any of the properties in the configuration YAML file as system variables instead of storing the values directly in the  file. 
+
+1. From your command-line interface, set a system variable to store the value of a property that the configuration YAML file uses. For example, you can use the following command to define a system variable for your password.  
+```shell
+export POSTGRES_PASSWORD=1234
+```
+3. Test that the system retrieves the value that you set by running an `echo` command. 
+```shell
+echo $POSTGRES_PASSWORD
+```
+4. In the configuration YAML file, set the value of the property to reference the environment variable, as in the following example.
+```yaml
+data_source my_database_name:
+  type: postgres
+  connection:
+    host: soda-temp-demo
+    port: '5432'
+    username: sodademo
+    password: env_var(POSTGRES_PASSWORD)
+  database: postgres
+  schema: public
+```
+5. Save the configuration YAML file, then run a scan to confirm that Soda SQL connects to your data source without issue.
+```shell
+soda scan -d your_datasource -c configuration.yml checks.yml
+```
 
 <br />
 

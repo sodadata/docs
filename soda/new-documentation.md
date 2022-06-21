@@ -9,6 +9,11 @@ parent: Reference
 
 <br />
 
+#### June 21, 2022
+
+* Added details to Soda Core documentation for using [system variables]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables).  to store sensitive credentials.
+* Updated the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) with slightly changed instructions.
+
 #### June 20, 2022
 
 * Changed all references to `table` in SodaCL to `dataset`, notably used with [for each]({% link soda-cl/freshness.md %}) and [distribution]({% link soda-cl/distribution.md %}) check syntax.
