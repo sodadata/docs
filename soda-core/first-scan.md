@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Run your first scan
-description: Soda Core  is a free, open-source, CLI tool that enables you to discover bad data. Use this tutorial for a hands-on learning experience with Soda Core.
+description: Soda Core is a free, open-source, CLI tool that enables you to discover bad data. Use this tutorial for a hands-on learning experience with Soda Core.
 sidebar: core
 parent: Soda Core 
 ---

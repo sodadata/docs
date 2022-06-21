@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Configure Soda Core
-description: Create a configuration YAML file to configure connection details for Soda Core  to access your data source.
+description: Create a configuration YAML file to configure connection details for Soda Core to access your data source.
 sidebar: core
 parent: Soda Core 
 ---

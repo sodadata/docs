@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda Core terminology
-description: Access a short list of terminology specific to Soda Core .
+description: Access a short list of terminology specific to Soda Core.
 sidebar: core
 parent: Soda Core 
 ---

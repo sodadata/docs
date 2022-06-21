@@ -1,7 +1,7 @@
 ---
 layout: default
 title: SodaCL 
-description: Soda Checks Language  is a human-readable, domain-specific language for data reliability. You use SodaCL to define Soda Checks in a checks YAML file.
+description: Soda Checks Language is a human-readable, domain-specific language for data reliability. You use SodaCL to define Soda Checks in a checks YAML file.
 parent: SodaCL
 ---
 <br />

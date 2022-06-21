@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Quick start for Soda Core and Soda Cloud
-description: Follow the quick start tutorial to get started with Soda Core  and Soda Cloud with a PostgreSQL database.
+description: Follow the quick start tutorial to get started with Soda Core and Soda Cloud with a PostgreSQL database.
 parent: Get started
 ---
 
-# Quick start for Soda Core  and Soda Cloud
+# Quick start for Soda Core and Soda Cloud
 <br />
 
 ![soda-core-logo](/assets/images/soda-core-logo.png){:height="120px" width="120px"} 

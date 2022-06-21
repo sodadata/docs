@@ -366,7 +366,6 @@ $ soda scan warehouse.yml tables/breakdowns.yml
 * [integrate your Slack workspace]({% link soda/integrate-slack.md %}) to receive notifications of failed tests and collaborate on data quality investigations
 * set up [alerts and notifications]({% link soda-cloud/monitors.md %}) for the monitors in your account
 * open and track [data quality incidents]({% link soda-cloud/incidents.md %}) and collaborate to resolve them with your team in Slack
-* [enable column metrics]({% link soda-cloud/display-column-metrics.md %}) and [display sample data]({% link soda-cloud/display-samples.md %}) in Soda Cloud
 
 To exit the workspace in your command-line interface, type `exit` then press enter.
 

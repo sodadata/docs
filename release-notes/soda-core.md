@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Release notes for Soda Core 
-description: Review release notes for Soda Core , an open-source tool for testing and monitoring data quality.
+description: Review release notes for Soda Core, an open-source tool for testing and monitoring data quality.
 parent: Release notes
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Use Soda Core CLI
-description: To see a list of Soda Core  command-line interface (CLI) commands, use the soda command.
+description: To see a list of Soda Core command-line interface (CLI) commands, use the soda command.
 sidebar: core
 parent: Soda Core 
 ---

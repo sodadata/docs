@@ -34,9 +34,9 @@ parent: Reference
 
 #### June 9, 2022
 
-* Added some new [Soda Core  content]({% link soda-core/overview-main.md %}) to documentation.
+* Added some new [Soda Core content]({% link soda-core/overview-main.md %}) to documentation.
 * Moved Soda SQL and Soda Spark in documentation leftnav.
-* Updated Home page with links to new Soda Core  documentation.
+* Updated Home page with links to new Soda Core documentation.
 * Fixed formatting in [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}).
 
 #### June 8, 2022
@@ -84,7 +84,7 @@ parent: Reference
 
 #### May 24, 2022
 
-* Updated the documentation for the [distribution check]({% link soda-cl/distribution.md %}) in SodaCL , including instructions to install Soda Core Scientific.
+* Updated the documentation for the [distribution check]({% link soda-cl/distribution.md %}) in SodaCL, including instructions to install Soda Core Scientific.
 
 #### May 19, 2022
 
@@ -124,7 +124,7 @@ parent: Reference
 
 #### March 22, 2022
 
-* New documentation for the beta release of [Soda Core]({% link soda-core/overview-main.md %}), a free, open-source, command-line tool that enables you to use the Soda Checks Language  to turn user-defined input into aggregated SQL queries.
+* New documentation for the beta release of [Soda Core]({% link soda-core/overview-main.md %}), a free, open-source, command-line tool that enables you to use the Soda Checks Language to turn user-defined input into aggregated SQL queries.
 * New documentation for the beta release of [SodaCL]({% link soda-cl/soda-cl-overview.md %}), a domain-specific language you can use to define Soda Checks in a checks YAML file.
 
 

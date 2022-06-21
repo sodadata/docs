@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Get started
-description: Install Soda Core , a CLI tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data.
+description: Install Soda Core, a CLI tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data.
 sidebar: core
 parent: Soda Core 
 ---

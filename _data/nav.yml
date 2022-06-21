@@ -88,10 +88,6 @@
     page: soda-cloud/scan-output.md
   - subtitle: Organize datasets
     page: soda-cloud/organize-datasets.md
-  - subtitle: Display column metrics
-    page: soda-cloud/display-column-metrics.md
-  - subtitle: Display sample data
-    page: soda-cloud/display-samples.md
   - subtitle: Detect anomalies
     page: soda-cloud/anomaly-detection.md
   - subtitle: Monitor schema evolution

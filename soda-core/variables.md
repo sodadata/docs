@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Use variables in Soda Core
-description: For Soda Core , use variables in your checks.yml file to resolve credentials in configuration files, or to define dynamic filters.
+description: For Soda Core, use variables in your checks.yml file to resolve credentials in configuration files, or to define dynamic filters.
 sidebar: core
 parent: Soda Core 
 ---

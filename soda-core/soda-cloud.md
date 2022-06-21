@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda Cloud reference
-description: Soda Cloud is a web application that connects to Soda Core . It extends Soda Core functionality.
+description: Soda Cloud is a web application that connects to Soda Core. It extends Soda Core functionality.
 sidebar: core
 parent: Soda Core 
 ---

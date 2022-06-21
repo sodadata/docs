@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Reference checks
-description: Use a SodaCL  reference check to validate that the values in a column in a table are present in a column in a different table. 
+description: Use a SodaCL reference check to validate that the values in a column in a table are present in a column in a different table. 
 parent: SodaCL
 ---
 

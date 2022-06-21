@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda Core CLI Commands
-description: Review the Soda Core  command-line interface (CLI) commands.
+description: Review the Soda Core command-line interface (CLI) commands.
 parent: Soda Core
 ---
 

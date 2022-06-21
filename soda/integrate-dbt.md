@@ -141,9 +141,9 @@ Refer to image above for an example.
 
 The integration with dbt is not available for **Soda Core **, yet.
 
-Soda Core  is a free, open-source, command-line tool that enables you to use the Soda Checks Language  to turn user-defined input into aggregated SQL queries.
+Soda Core is a free, open-source, command-line tool that enables you to use the Soda Checks Language to turn user-defined input into aggregated SQL queries.
 
-[Soda Core  documentation]({% link soda-core/overview-main.md %})
+[Soda Core documentation]({% link soda-core/overview-main.md %})
 
   </div>
   </div>

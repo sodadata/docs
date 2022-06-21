@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda Core overview
-description: Soda Core  is an open-source, CLI tool that enables you to use the Soda Checks Language to turn user-defined input into SQL queries.
+description: Soda Core is an open-source, CLI tool that enables you to use the Soda Checks Language to turn user-defined input into SQL queries.
 parent: Soda Core
 ---
 <br />
@@ -71,7 +71,7 @@ checks for dim_department_group:
 </div>
 
 
-Access the <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core  open-source documentation</a>.
+Access the <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core open-source documentation</a>.
 
 ---
 {% include docs-footer.md %}

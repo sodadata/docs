@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Failed rows checks
-description: Use a SodaCL  failed rows check to explicitly send sample failed rows to Soda Cloud. 
+description: Use a SodaCL failed rows check to explicitly send sample failed rows to Soda Cloud. 
 parent: SodaCL
 ---
 

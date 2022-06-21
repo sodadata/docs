@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Filters
-description: Instead of checking whole sets of data, you can use SodaCL  filters to specify a portion of data against which Soda Core executes a check.
+description: Instead of checking whole sets of data, you can use SodaCL filters to specify a portion of data against which Soda Core executes a check.
 parent: SodaCL
 redirect_from:
 - soda-cl/table-filters.html

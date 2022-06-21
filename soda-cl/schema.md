@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Schema checks
-description: Use a SodaCL  schema check to validate column presence, absence, or position in a table, or the type of data column contains.
+description: Use a SodaCL schema check to validate column presence, absence, or position in a table, or the type of data column contains.
 parent: SodaCL
 ---
 

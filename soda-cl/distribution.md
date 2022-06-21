@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Distribution checks
-description: Use a SodaCL  distribution check to monitor the consistency of a column over time.
+description: Use a SodaCL distribution check to monitor the consistency of a column over time.
 parent: SodaCL
 ---
 
