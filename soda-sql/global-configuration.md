@@ -2,6 +2,7 @@
 layout: default
 title: Soda SQL usage statistics
 description: To understand how users are using Soda SQL, the Soda dev team has added telemetry event tracking to Soda SQL. See instructions to opt-out.
+sidebar: sql
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/config.html
 ---

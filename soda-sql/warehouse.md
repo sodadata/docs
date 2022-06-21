@@ -2,6 +2,7 @@
 layout: default
 title: Warehouse YAML
 description: A warehouse is a type of data source that represents a SQL engine or database. Use a warehouse YAML file to configure connection details for Soda SQL.
+sidebar: sql
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/warehouse.html
 ---
@@ -69,14 +70,14 @@ connection:
 
 Notice that even though the command provided a value for `username`, Soda SQL automatically used `env_var(POSTGRES_USERNAME)` instead. By default, Soda SQL stores database login credentials in an env_vars YAML file so that this sensitive information stays locally stored. See [Env_vars YAML](#env_vars-yaml-file) below for details.
 
-Each type of data source -- PostgreSQL, Amazon Athena, Google Big Query, etc. -- requires different configuration parameters. Refer to [Set data source configurations]({% link soda/warehouse_types.md %}) for details that correspond to the type of data source you are using.
+Each type of data source -- PostgreSQL, Amazon Athena, Google Big Query, etc. -- requires different configuration parameters. Refer to [Set data source configurations]({% link soda-sql/warehouse_types.md %}) for details that correspond to the type of data source you are using.
 
 
 ## Env_vars YAML file
 
 To keep your warehouse YAML file free of data source login credentials, Soda SQL references environment variables. When it creates a new warehouse YAML file, Soda SQL also creates an **env_vars YAML** file to store your data source username and password values. Soda SQL does not overwrite or remove and existing environment variables, it only adds new.
 
-When it [runs a scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql), Soda SQL loads environment variables from your local user home directory where it stored your env_vars YAML file. 
+When it [runs a scan]({% link soda-sql/scan.md %}#run-a-scan-in-soda-sql), Soda SQL loads environment variables from your local user home directory where it stored your env_vars YAML file. 
 
 Use the command `cat ~/.soda/env_vars.yml` to review the contents of your env_vars YAML file. Open this hidden file from your local user home directory to input the values for your data source credentials.
 
@@ -128,7 +129,7 @@ soda scan warehouse.yml tables/customers.yml
 ## Go further
 
 * Next, run [`soda analyze`]({% link soda-sql/scan-yaml.md %}#create-a-scan-yaml-file) to automatically prepare a scan YAML file for each dataset in your data source.
-* Check the [data source configuration parameters]({% link soda/warehouse_types.md %}) for your type of data source.
+* Check the [data source configuration parameters]({% link soda-sql/warehouse_types.md %}) for your type of data source.
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Learn more about the [scan YAML]({% link soda-sql/scan-yaml.md %}) file.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

@@ -2,10 +2,14 @@
 layout: default
 title: Metrics in Soda SQL
 description: A metric is a property of the data in your database. You use metrics to define the tests that Soda executes against your data during a scan.
-parent: Concepts
+sidebar: sql
+parent: Soda SQL
+redirect_from: /soda/metrics.html
 ---
 
 # Metrics in Soda SQL
+
+{% include banner-sql.md %}
 
 A **metric** is a property of the data in your database. A **measurement** is the value for a metric that Soda checks against during a scan. You use metrics to define the tests that Soda executes against your data during a scan. 
 
@@ -72,8 +76,8 @@ Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.
 
 * Learn how to [configure metrics]({% link soda-sql/sql_metrics.md %}) in Soda SQL.
 * Learn how to use metrics when [creating a monitor]({% link soda-cloud/monitors.md %}#2-monitor) in Soda Cloud.
-* Follow the [Quick start tutorial for Soda SQL]({% link soda/quick-start-soda-sql.md %}) to set up Soda SQL and run your first scan!
-* Follow the [Quick start for Soda SQL and Soda Cloud]({% link soda/quick-start-soda-sql.md %}) to start monitoring your data.
+* Follow the [Quick start tutorial for Soda SQL]({% link soda-sql/quick-start-soda-sql.md %}) to set up Soda SQL and run your first scan!
+* Follow the [Quick start for Soda SQL and Soda Cloud]({% link soda-sql/quick-start-soda-sql.md %}) to start monitoring your data.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

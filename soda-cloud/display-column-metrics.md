@@ -28,7 +28,7 @@ Soon, you will be able to configure Soda Core to automatically send column profi
 
 {% include banner-sql.md %}
 
-Using the information Soda SQL discovered about your [datasets]({% link soda/glossary.md %}#dataset), you can optionally instruct it to capture and send **column metrics** to Soda Cloud for individual datasets during the next [scan]({% link soda/scan.md %}). Enabling column metrics gives you at-a-glance information about your datasets in the **Datasets** dashboard and in the dataset's **Column** tab, as in the images below. 
+Using the information Soda SQL discovered about your [datasets]({% link soda/glossary.md %}#dataset), you can optionally instruct it to capture and send **column metrics** to Soda Cloud for individual datasets during the next [scan]({% link soda-sql/scan.md %}). Enabling column metrics gives you at-a-glance information about your datasets in the **Datasets** dashboard and in the dataset's **Column** tab, as in the images below. 
 
 Datasets dashboard
 ![display-column-metrics](/assets/images/display-column-metrics.png){:height="650px" width="650px"}

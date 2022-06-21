@@ -2,6 +2,7 @@
 layout: default
 title: Example tests by metric
 description: Review examples for each built-in metric in Soda SQL. Copy + paste into your scan YAML to write tests for data quality.
+sidebar: sql
 parent: Soda SQL
 redirect_from: /soda-sql/examples/examples-by-metric.html
 ---

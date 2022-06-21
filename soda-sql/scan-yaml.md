@@ -2,6 +2,7 @@
 layout: default
 title: Scan YAML
 description: Configure scan metrics and tests in a scan YAML file, then Soda SQL uses the input from that file to prepare and run SQL queries against your data.
+sidebar: sql
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/scan-yaml.html
 ---
@@ -130,7 +131,7 @@ columns:
 
 ## Add a dataset name for Soda Cloud
 
-If you have [connected Soda SQL to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}), you have the option of adding a `dataset_name` identifier to your scan YAML file. Soda SQL sends the value of this identifier to Soda Cloud along with any test results so that viewers in Soda Cloud can more precisely identify to which dataset the results pertain.
+If you have [connected Soda SQL to your Soda Cloud account]({% link soda-sql/connect_to_cloud.md %}), you have the option of adding a `dataset_name` identifier to your scan YAML file. Soda SQL sends the value of this identifier to Soda Cloud along with any test results so that viewers in Soda Cloud can more precisely identify to which dataset the results pertain.
 
 Scan YAML:
 ```yaml
@@ -180,12 +181,12 @@ Soda Cloud Datasets dashboard:
 
 ## Go further
 
-* Next, [run a scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) on the data in your warehouse.
+* Next, [run a scan]({% link soda-sql/scan.md %}#run-a-scan-in-soda-sql) on the data in your warehouse.
 * Learn how to specify the datasets you wish to [include or exclude]({% link soda-sql/configure.md %}#add-analyze-options) during `soda anayze`.
 * Learn more about the [warehouse YAML]({% link soda-sql/warehouse.md %}) file.
 * Learn how to configure [metrics]({% link soda-sql/sql_metrics.md %}) in your YAML files.
 * Learn more about configuring [tests]({% link soda-sql/tests.md %}).
-* Reference the [Data types]({% link soda/supported-data-types.md %}) that Soda SQL supports when it scans columns.
+* Reference the [Data types]({% link soda-sql/supported-data-types.md %}) that Soda SQL supports when it scans columns.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

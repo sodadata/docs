@@ -63,7 +63,7 @@ When a [scan]({% link soda/glossary.md %}#scan) results in a failed [test]({% li
 
 When Soda SQL next runs a scan of your dataset, it collects and displays a sample of failed rows for the monitors that use the above-listed metric types. A sample contains the first five examples of failed rows from the dataset.
 
-If you are a Soda SQL user and have [connected to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}), you can add configurations to your scan YAML file to explicitly send failed row samples to Soda Cloud. See [Send failed rows to Soda Cloud]({% link soda-sql/send-failed-rows.md %}) for instructions.
+If you are a Soda SQL user and have [connected to your Soda Cloud account]({% link soda-sql/connect_to_cloud.md %}), you can add configurations to your scan YAML file to explicitly send failed row samples to Soda Cloud. See [Send failed rows to Soda Cloud]({% link soda-sql/send-failed-rows.md %}) for instructions.
 
 #### Troubleshoot
 
@@ -86,7 +86,7 @@ If you use Soda SQL to programmatically schedule scans of individual datasets, y
 
 * <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a Soda Cloud account.
 * [Create monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
-* Learn more about [scans in Soda Cloud]({% link soda/scan.md %}#scan-output-in-soda-cloud).
+* Learn more about [scans in Soda Cloud]({% link soda-sql/scan.md %}#scan-output-in-soda-cloud).
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 

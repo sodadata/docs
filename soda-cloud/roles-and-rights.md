@@ -174,7 +174,7 @@ Each Soda Cloud Plan (Soda Teams or Soda Enterprise) includes a specific number 
 
 There are two ownership roles in Soda Cloud that identify the member that owns a dataset or monitor. These ownership roles do not enforce any rights or permissions on the datasets or monitors, they are simply identifiers.
 
-* By default, the member who created the [API keys]({% link soda-cloud/connect_to_cloud.md %}) that link Soda SQL or Soda Core (Beta) to Soda Cloud becomes the **Dataset Owner** of all existing datasets that already had connections to Soda SQL or Soda Core (Beta). The default role that Soda Cloud assigns to the Dataset Owner is that of Manager.
+* By default, the member who created the [API keys]({% link soda-sql/connect_to_cloud.md %}) that link Soda SQL or Soda Core (Beta) to Soda Cloud becomes the **Dataset Owner** of all existing datasets that already had connections to Soda SQL or Soda Core (Beta). The default role that Soda Cloud assigns to the Dataset Owner is that of Manager.
 * By default, any member who uses Soda SQL or Soda Core (Beta) to add a new dataset to the Soda Cloud account becomes the Dataset Owner. The default role that Soda Cloud assigns to the Dataset Owner is that of Manager.
 * By default, the member who creates a monitor become the **Monitor Owner**. 
 <br />

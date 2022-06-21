@@ -2,14 +2,19 @@
 layout: default
 title: Quick start for Soda SQL and Soda Cloud
 description: Follow the quick start tutorial to get started with Soda SQL and Soda Cloud. Use demo data to explore functionality and features.
-parent: Get started
+sidebar: sql
+parent: Soda SQL
 redirect_from:
 - /soda-sql/getting-started/5_min_tutorial.html
 - /soda-sql/5_min_tutorial.html
 - /soda-cloud/quick-start.html
+- /soda/quick-start-soda-sql.html
 ---
 
 # Quick start for Soda SQL and Soda Cloud 
+
+{% include banner-sql.md %}
+
 <br />
 
 ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="105px" width="105px"} 

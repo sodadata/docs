@@ -47,7 +47,7 @@ Soda Cloud uses the certainty and size calculations to derive the thresholds for
 * a large, certain anomaly triggers a **critical alert** 
 * a small, less certain anomaly triggers a **warning**
 
-As long as the [test]({% link soda/glossary.md %}#test) that a [Soda scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) executes results in a numerical measurement that regularly changes over time, you can use anomaly detection in a monitor. 
+As long as the [test]({% link soda/glossary.md %}#test) that a [Soda scan]({% link soda-sql/scan.md %}#run-a-scan-in-soda-sql) executes results in a numerical measurement that regularly changes over time, you can use anomaly detection in a monitor. 
 
 For example, if the test you define in your monitor measures the row count of one of your datasets every hour as part of your transformation pipeline, you can use anomaly detection to discover unexpected volumes of entries in the dataset. If the test you define measures the price of an asset at the end of each day, you can use anomaly detection to get an alert if the price jumps wildly high or unexpectedly low. 
 
@@ -55,7 +55,7 @@ For example, if the test you define in your monitor measures the row count of on
 
 To use anomaly detection, you must be an Admin of the organization, or have a Manager or Editor role for the monitor's dataset. See [Roles and rights]({% link soda-cloud/roles-and-rights.md %}) for details.
 
-Note that when Soda SQL first pushes scan results to your [connected Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}), Soda Cloud automtically creates an anomaly detection monitor for each dataset that contains time-series data. 
+Note that when Soda SQL first pushes scan results to your [connected Soda Cloud account]({% link soda-sql/connect_to_cloud.md %}), Soda Cloud automtically creates an anomaly detection monitor for each dataset that contains time-series data. 
 
 To manually add an anomaly detection monitor, follow the steps to [create a new monitor]({% link soda-cloud/monitors.md %}) and select **Anomaly Detection** as the **Evaluation Type** in step two of the creation flow. Beyond that, you do not need to specify any other details about your data; Soda Cloud automatically begins learning about your data and triggering alerts when Soda scans reveal anomalies.
 

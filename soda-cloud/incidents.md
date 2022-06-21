@@ -59,7 +59,7 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 
 ## Prerequisites
 * You have [installed Soda SQL]({% link soda-sql/installation.md %}) in your environment.
-* You have a Soda Cloud account and you have [connected the account]({% link soda-cloud/connect_to_cloud.md %}) to an instance of Soda SQL.
+* You have a Soda Cloud account and you have [connected the account]({% link soda-sql/connect_to_cloud.md %}) to an instance of Soda SQL.
 * You have [integrated a Slack workspace]({% link soda-cloud/collaborate.md %}#integrate-with-slack) with your Soda Cloud account. 
 
 ## Create Incidents

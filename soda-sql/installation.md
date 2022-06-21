@@ -2,6 +2,7 @@
 layout: default
 title: Install Soda SQL
 description: To use Soda SQL, your system must meet requirements. From your command-line interface, execute a pip install command to install Soda SQL.
+sidebar: sql
 parent: Soda SQL
 redirect_from: /soda-sql/getting-started/installation.html
 ---
@@ -80,7 +81,7 @@ pip install soda-sql-athena -U
 
 ## Go further
 
-* Next, [configure Soda SQL]({% link soda/quick-start-soda-sql.md %}) to connect to your warehouse.
+* Next, [configure Soda SQL]({% link soda-sql/quick-start-soda-sql.md %}) to connect to your warehouse.
 * Soda collects anonymous Soda SQL usage statistics. Learn more about the [information]({% link soda-sql/global-configuration.md %}) Soda collects.
 * Learn [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

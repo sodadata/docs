@@ -41,7 +41,7 @@ Use Soda SQL to ingest the results of your dbt tests and push them to Soda Cloud
 ## Prerequisites
 
 * You have a Soda Cloud account with [Admin, Manager, or Editor permissions]({% link soda-cloud/roles-and-rights.md %}).
-* You have [connected your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}) to an instance of Soda SQL.
+* You have [connected your Soda Cloud account]({% link soda-sql/connect_to_cloud.md %}) to an instance of Soda SQL.
 * You use the open-source <a href="https://github.com/dbt-labs/dbt-core" target="_blank">dbt-core</a> version 1.0.0 or later or dbt Cloud.
 * You execute Soda commands from the same machine that executes the dbt pipeline.
 * You have installed the optional `soda-sql-dbt` sub-package in the Python environment that also runs `soda-sql` by running `pip install soda-sql-dbt`.
@@ -152,7 +152,7 @@ Soda Core (Beta) is a free, open-source, command-line tool that enables you to u
 ## Go further
 
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
-* Read more about [running a Soda scan]({% link soda/scan.md %}#run-a-scan).
+* Read more about [running a Soda scan]({% link soda-sql/scan.md %}#run-a-scan).
 * Learn more about [creating alerts and notifications]({% link soda-cloud/monitors.md %}) in Soda Cloud.
 * Learn more about creating, tracking, and resolving data quality [Incidents]({% link soda-cloud/incidents.md %}) in Soda Cloud.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

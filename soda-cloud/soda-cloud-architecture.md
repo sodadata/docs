@@ -37,7 +37,7 @@ You can use monitors to automatically [detect anomalies]({% link soda-cloud/anom
 
 **Soda SQL** connects to data sources and performs scans of each dataset in a data source. If you connect Soda SQL to a **Soda Cloud** account, it pushes scan results to Soda Cloud where users in your organization can view monitor results, access Cloud Metric Store data, create anomaly detection and schema evolution monitors, and integrate with Slack to investigate data quality Incidents.
 
-First, you must [connect your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}) to your configured instance of Soda SQL.  When Soda SQL completes a scan, it uses a secure API to push the results to your Soda Cloud account where you can log in and examine the details in the web application. Notably, Soda SQL pushes metadata to Soda Cloud; by default all your data (barring any [sample data]({% link soda-sql/samples.md %}) you explicity instruct Soda SQL to send to Soda Cloud) stays inside your private network. See [Data security and privacy]({% link soda/data-privacy.md %})
+First, you must [connect your Soda Cloud account]({% link soda-sql/connect_to_cloud.md %}) to your configured instance of Soda SQL.  When Soda SQL completes a scan, it uses a secure API to push the results to your Soda Cloud account where you can log in and examine the details in the web application. Notably, Soda SQL pushes metadata to Soda Cloud; by default all your data (barring any [sample data]({% link soda-sql/samples.md %}) you explicity instruct Soda SQL to send to Soda Cloud) stays inside your private network. See [Data security and privacy]({% link soda/data-privacy.md %})
 
 When you create a [monitor]({% link soda/glossary.md %}#monitor) in Soda Cloud's web application, Soda SQL uses the monitor settings to add new [tests]({% link soda/glossary.md %}#test) when it runs a scan on data in a specific warehouse; see image below. A monitor is essentially a way to create Soda SQL tests using the web application instead of adjusting [scan YAML file]({% link soda/glossary.md %}#scan-yaml) contents directly in your Soda project directory.
 
@@ -54,7 +54,7 @@ You can use monitors to automatically [detect anomalies]({% link soda-cloud/anom
 ## Go further
 
 * Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup).
-* Learn more about what happens during a [scan]({% link soda/scan.md %}#scan-output-in-soda-cloud).
+* Learn more about what happens during a [scan]({% link soda-sql/scan.md %}#scan-output-in-soda-cloud).
 * Learn more about [monitors and alerts]({% link soda-cloud/monitors.md %}).
 * Get Soda Cloud to automatically [detect anomalies]({% link soda-cloud/anomaly-detection.md %}) in your data.
 * Learn more about viewing [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.

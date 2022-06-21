@@ -38,10 +38,10 @@ The place in Soda Cloud that stores the values of measurements collected over ti
 A column in a dataset in your data source.
 
 ### column configuration key
-The key in the key-value pair that you use to define what qualifies as a valid value in a column. A Soda scan uses the value of a column configuration key to determine if it should pass or fail a test. For example, in `valid_format: UUID` , `valid_format` is a column configuration key and `UUID` is the only format of the data in the column that Soda considers valid. See [Column configuration keys]({% link soda/metrics.md %}#column-configuration-keys-or-validity-rules).
+The key in the key-value pair that you use to define what qualifies as a valid value in a column. A Soda scan uses the value of a column configuration key to determine if it should pass or fail a test. For example, in `valid_format: UUID` , `valid_format` is a column configuration key and `UUID` is the only format of the data in the column that Soda considers valid. See [Column configuration keys]({% link soda-sql/metrics.md %}#column-configuration-keys-or-validity-rules).
 
 ### column metric
-A property of the data of a single column in your data source. Use a column metric to define tests that apply to specific columns in a dataset during a scan. See [Column metrics]({% link soda/metrics.md %}#column-metrics).
+A property of the data of a single column in your data source. Use a column metric to define tests that apply to specific columns in a dataset during a scan. See [Column metrics]({% link soda-sql/metrics.md %}#column-metrics).
 
 ### configuration key
 The key in the key-value pair that you use to define configuration in your scan YAML file. See [Scan YAML configuration keys]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys).
@@ -62,7 +62,7 @@ A metric you define in your scan YAML file using SQL queries. Also known as a SQ
 {% include glossary-dataset.md %}
 
 ### dataset metric
-A property of the data in a dataset in your data source. Use a dataset metric to define tests that apply to all the columns in the dataset during a scan. See [Dataset metrics]({% link soda/metrics.md %}#dataset-metrics).
+A property of the data in a dataset in your data source. Use a dataset metric to define tests that apply to all the columns in the dataset during a scan. See [Dataset metrics]({% link soda-sql/metrics.md %}#dataset-metrics).
 
 ### default metric
 See [built-in metric](#built-in-metric).
@@ -98,7 +98,7 @@ A setting you configure in a Soda Cloud monitor that defines whom to notify when
 The domain-specific language to define Soda Checks in a checks YAML file. A Soda Check is a test that Soda Core (Beta) executes when it scans a dataset in your data source. See [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %}).
 
 ### Soda Cloud
-A web application that enables you to examine scan results and create monitors and alerts. Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup). If you also use Soda SQL, you can [connect Soda SQL to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}).
+A web application that enables you to examine scan results and create monitors and alerts. Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup). If you also use Soda SQL, you can [connect Soda SQL to Soda Cloud]({% link soda-sql/connect_to_cloud.md %}).
 
 ### Soda Core ![beta](/assets/images/beta.png){:height="30px" width="30px" align="top"}
 A free, open-source, command-line tool that enables you to use the Soda Checks Language (Beta) to turn user-defined input into aggregated SQL queries. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. See [Soda Core documentation]({% link soda-core/overview-main.md %}).

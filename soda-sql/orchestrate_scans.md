@@ -2,6 +2,7 @@
 layout: default
 title: Configure orchestrated scans
 description: Integrate Soda SQL with a data orchestration tool such as, Airflow, Dagster, or dbt-core, to automate and schedule your search for “bad” data. 
+sidebar: sql
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/orchestrate_scans.html
 ---

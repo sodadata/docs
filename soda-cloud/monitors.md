@@ -45,13 +45,13 @@ If you have connected Soda Core to your Soda Cloud account and run a scan, you c
 
 ## Prerequisites
 
-* An [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account has [connected]({% link soda-cloud/connect_to_cloud.md %}) it to a configured instance of Soda SQL. 
+* An [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account has [connected]({% link soda-sql/connect_to_cloud.md %}) it to a configured instance of Soda SQL. 
 * A Soda SQL user has prepared one or more `scan.yaml` files which contain user-defined checks for data quality.
 * You have used Soda SQL to run at least one scan of a dataset in your data source so that Soda SQL pushes dataset details and check results to Soda Cloud.
 * You are an Admin in your Soda Cloud account, or have a Manager or Editor role for the dataset for which you wish to create a monitor. See [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) for details.
 * (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud sends notifications via email.
 
-Consider following the [Quick start for Soda SQL with Soda Cloud]({% link soda/quick-start-soda-sql.md %}) to learn how to set everything up from scratch.
+Consider following the [Quick start for Soda SQL with Soda Cloud]({% link soda-sql/quick-start-soda-sql.md %}) to learn how to set everything up from scratch.
 
 ## Create a monitor and an alert
 
@@ -85,7 +85,7 @@ In Soda Cloud, navigate to the **Monitor Results** table, then click the stacked
 
 By default, Soda Cloud includes two out-of-the-box email notifications: one for the **Dataset Owner** and one for the **Monitor Owner**, which is you. You can remove or adjust these notifications, or use the search bar to add more.
 
-Note that Soda Cloud does not send an email or Slack notification when a scan fails, only when checks fail. Refer to [Scan output in Soda Cloud]({% link soda/scan.md %}#scan-output-in-soda-cloud).
+Note that Soda Cloud does not send an email or Slack notification when a scan fails, only when checks fail. Refer to [Scan output in Soda Cloud]({% link soda-sql/scan.md %}#scan-output-in-soda-cloud).
 
 | Field or Label | Description |
 | -----------------------   | ---------- |
@@ -108,7 +108,7 @@ Soda Cloud makes three metric types available for you to select when you create 
 * **Column:** a metric type that applies only to an individual column in your dataset.
 * **Custom:** also known as a SQL metric, a metric type that enables you to define SQL queries that Soda SQL executes against an entire dataset or against individual columns. In Soda Cloud, you can only use the custom metrics you defined in your scan YAML file for Soda SQL; you cannot define custom metrics directly in Soda Cloud. 
 
-Soda Cloud makes several metric types available to select, depending upon the type of data in the dataset. Read [Metrics]({% link soda/metrics.md %}) to learn more about using metrics in checks. Some metric types check for missing or valid data in columns in your dataset. If you use one of the metric types listed below, Soda Cloud displays a link to **Modify Validity Rules**. Click the link to define what qualifies as valid or missing data.
+Soda Cloud makes several metric types available to select, depending upon the type of data in the dataset. Read [Metrics]({% link soda-sql/metrics.md %}) to learn more about using metrics in checks. Some metric types check for missing or valid data in columns in your dataset. If you use one of the metric types listed below, Soda Cloud displays a link to **Modify Validity Rules**. Click the link to define what qualifies as valid or missing data.
 
 ![validity-rules](/assets/images/validity-rules.png){:height="500px" width="500px"}
 
@@ -125,7 +125,7 @@ For example, to check that data in an `id` column all conforms to a universally 
 
 In the **Modifiy Validity Rules** modal, you select "UUID" as the **Validity Type**, then define the **Alert** values. When Soda SQL runs a scan using this check in your monitor, it gauges whether or not a value in the `id` column is valid based on the Validity Type rule you defined.
 
-Read more about [Validity rules]({% link soda/metrics.md %}#column-configuration-keys-or-validity-rules) and [Valid value formats]({% link soda/metrics.md %}#valid-format-values) details and limitations.
+Read more about [Validity rules]({% link soda-sql/metrics.md %}#column-configuration-keys-or-validity-rules) and [Valid value formats]({% link soda-sql/metrics.md %}#valid-format-values) details and limitations.
 
 
 ## Run a scan
@@ -141,7 +141,7 @@ Read more about [Validity rules]({% link soda/metrics.md %}#column-configuration
 
 ## Go further
 
-* Learn more about [how scans work]({% link soda/scan.md %}#scan-output-in-soda-cloud) in Soda Cloud.
+* Learn more about [how scans work]({% link soda-sql/scan.md %}#scan-output-in-soda-cloud) in Soda Cloud.
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 * Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
 * Integrate Soda with your [data catalogs]({% link soda/integrate-alation.md %}) or [data pipeline tools]({% link soda/integrate-dbt.md %}).

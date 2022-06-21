@@ -2,6 +2,7 @@
 layout: default
 title: Configure metrics
 description: A metric is a property of the data in your database. The following sections detail the configuration for metrics you can customize in your scan YAML file.
+sidebar: sql
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/sql_metrics.html
 ---
@@ -12,7 +13,7 @@ redirect_from: /soda-sql/documentation/sql_metrics.html
 
 A **metric** is a property of the data in your database. A **measurement** is the value for a metric that Soda SQL checks against during a scan. The following sections detail the configuration for metrics you can customize in your [scan YAML file]({% link soda-sql/scan-yaml.md %}).
 
-Read more about [Metrics]({% link soda/metrics.md %}) in general as they apply to both Soda SQL and Soda Cloud. 
+Read more about [Metrics]({% link soda-sql/metrics.md %}) in general as they apply to both Soda SQL and Soda Cloud. 
 <br />
 <br />
 
@@ -379,7 +380,7 @@ WHERE country = 'US'
 
 ## Go further
 
-* Reference the [Data types]({% link soda/supported-data-types.md %}) that Soda SQL supports when it scans columns.
+* Reference the [Data types]({% link soda-sql/supported-data-types.md %}) that Soda SQL supports when it scans columns.
 * Learn [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Learn more about the [Scan YAML]({% link soda-sql/scan-yaml.md %}) file.
 * Learn more about configuring [tests]({% link soda-sql/tests.md %}).
