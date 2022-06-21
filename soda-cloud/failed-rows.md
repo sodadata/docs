@@ -23,7 +23,7 @@ When a Soda Core scan results in a failed check, Soda Cloud displays details of 
 
 ![failed-rows](/assets/images/failed-rows.png){:height="600px" width="600px"}
 
-## Use a metrics to send failed row samples
+## Use metrics to send failed row samples
 
 In Soda Cloud, you can only create new monitors and alerts for datasets connected to an instance of Soda SQL; you cannot create monitors for datasets connected to Soda Core, yet. 
 
