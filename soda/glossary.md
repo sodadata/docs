@@ -72,10 +72,10 @@ A web application that enables you to examine scan results and create monitors a
 A free, open-source, command-line tool that enables you to use the Soda Checks Language to turn user-defined input into aggregated SQL queries. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. See [Soda Core documentation]({% link soda-core/overview-main.md %}).
 
 ### Soda Spark (Deprecated)
-Soda Spark was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. Replaced by Soda Core configured to [connect with Apache Spark DataFrames]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes). Access [legacy documentation]({% link soda-spark/install-and-use.md %}).
+Soda Spark was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark DataFrames]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes). Access [legacy documentation]({% link soda-spark/install-and-use.md %}).
 
 ### Soda SQL (Deprecated)
-Soda SQL was an open-source command-line tool that scans the data in your data source. Replaced by [Soda Core]({% link soda-core/overview-main.md %}). Access [legacy documentation]({% link soda-sql/overview.md %}).
+Soda SQL was an open-source command-line tool that scanned the data in your data source. Replaced by [Soda Core]({% link soda-core/overview-main.md %}). Access [legacy documentation]({% link soda-sql/overview.md %}).
 
 ### threshold 
 The value for a metric that Soda checks against during a scan. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).

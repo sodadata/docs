@@ -78,7 +78,7 @@ data_source my_database_name:
   database: postgres
   schema: public
 ```
-5. Save the configuration YAML file, then run a scan to confirm that Soda SQL connects to your data source without issue.
+5. Save the configuration YAML file, then run a scan to confirm that Soda Core connects to your data source without issue.
 ```shell
 soda scan -d your_datasource -c configuration.yml checks.yml
 ```
@@ -109,7 +109,7 @@ data_source my_database_name:
   database: postgres
   schema: public
 ```
-5. Save the configuration YAML file, then run a scan to confirm that Soda SQL connects to your data source without issue.
+5. Save the configuration YAML file, then run a scan to confirm that Soda Core connects to your data source without issue.
 ```shell
 soda scan -d your_datasource -c configuration.yml checks.yml
 ```

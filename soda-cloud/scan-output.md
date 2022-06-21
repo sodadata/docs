@@ -7,8 +7,6 @@ parent: Soda Cloud
 
 # Scan output in Soda Cloud
 
-*This document is in transition as Soda Cloud support for Soda SQL ceases in favor of Soda Core.*
-
 When you define checks in a [checks YAML file]({% link soda-core/how-core-works.md %}) and use Soda Core to run a scan, the check results manifest as Monitor Results in Soda Cloud. Log in to view the **Monitors** dashboard; each row in the **Monitor Results** table represents the result of a check, and the icon indicates whether the test passed, warned, or failed.
 
 ![monitor-results](/assets/images/monitor-results.png){:height="550px" width="550px"}

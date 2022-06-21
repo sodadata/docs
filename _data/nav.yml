@@ -82,7 +82,7 @@
     page: soda-cloud/roles-and-rights.md
   - subtitle: Collaborate on data monitoring
     page: soda-cloud/collaborate.md
-  - subtitle: Create monitors and alerts
+  - subtitle: Edit monitors
     page: soda-cloud/monitors.md
   - subtitle: Scan output
     page: soda-cloud/scan-output.md
