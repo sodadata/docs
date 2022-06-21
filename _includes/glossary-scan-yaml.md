@@ -1,1 +1,0 @@
-The file in which you configure scan metrics and tests. Soda SQL uses the input from this file to prepare, then run SQL queries against your data. See [Scan YAML]({% link soda-sql/scan-yaml.md %}).

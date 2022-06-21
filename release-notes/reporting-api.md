@@ -7,7 +7,7 @@ parent: Release notes
 
 # Release notes for Soda Cloud's Reporting API
 
-![beta](/assets/images/beta.png){:height="50px" width="50px"}
+
 
 {% assign notes = site.release-notes | where_exp:"item","item.products contains 'reporting-api'" | sort:"date" | reverse %}
 {% for release-note in notes %}

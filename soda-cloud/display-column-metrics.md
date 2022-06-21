@@ -11,13 +11,13 @@ parent: Soda Cloud
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda Core (Beta)</label>
+  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda Core </label>
   <label class="tab" id="two-tab" for="two">Soda Cloud with Soda SQL</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
-Column profile information is unavailable for datasets added to Soda Cloud via Soda Core (Beta).
+Column profile information is unavailable for datasets added to Soda Cloud via Soda Core .
 
 Soon, you will be able to configure Soda Core to automatically send column profile information to your Soda Cloud account. 
 

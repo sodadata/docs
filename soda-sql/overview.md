@@ -88,4 +88,4 @@ sql_metric:
 
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

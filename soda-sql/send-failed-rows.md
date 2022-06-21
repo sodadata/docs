@@ -234,9 +234,9 @@ scan_builder.failed_row_processor = BigQueryRowProcessor()
 * [Connect Soda SQL]({% link soda-sql/connect_to_cloud.md %}) to your Soda Cloud account.
 * Learn more about examining [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 * Learn how to [send sample data]({% link soda-sql/samples.md %}) to your Soda Cloud account.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*
 

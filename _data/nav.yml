@@ -14,7 +14,7 @@
     page: soda/product-matrix.md
 
 
-- title: Soda Core (Beta)
+- title: Soda Core 
   page: soda-core/overview-main.md
   subcategories:
   - subtitle: Soda Core overview
@@ -36,7 +36,7 @@
   - subtitle: Connect to Soda Cloud
     page: soda-core/connect-core-to-cloud.md
 
-- title: SodaCL (Beta)
+- title: SodaCL 
   page: soda-cl/soda-cl-overview.md
   subcategories:
   - subtitle: SodaCL overview
@@ -153,5 +153,5 @@
       page: release-notes/soda-cloud.md
     - subtitle: Soda Cloud Reporting API
       page: release-notes/reporting-api.md
-    - subtitle: Soda Core (Beta)
+    - subtitle: Soda Core 
       page: release-notes/soda-core.md

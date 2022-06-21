@@ -12,9 +12,9 @@ redirect_from: /soda-cloud.html
 <br />
 
 <p>&#10004;  Visualize data quality test results and historical measurements<br /></p>
-<p>&#10004;  Automatically detect data quality <a href="https://docs.soda.io/soda-cloud/anomaly-detection.html">anomalies</a><br /></p>
+<!--<p>&#10004;  Automatically detect data quality <a href="https://docs.soda.io/soda-cloud/anomaly-detection.html">anomalies</a><br /></p>-->
 <p>&#10004;  Set up <a href="https://docs.soda.io/soda-cloud/monitors.html">alerts</a> to notify your team of data quality issues<br /></p>
-<p>&#10004;  <a href="https://docs.soda.io/soda-cloud/collaborate.html">Collaborate with colleagues</a> to write tests for data quality<br /></p>
+<p>&#10004;  <a href="https://docs.soda.io/soda-cloud/collaborate.html">Collaborate with colleagues</a> to monitor data quality<br /></p>
 <p>&#10004;  Create and track data quality <a href="https://docs.soda.io/soda-cloud/incidents.html">Incidents</a><br /></p>
 <br />
 
@@ -28,7 +28,7 @@ redirect_from: /soda-cloud.html
                     <img src="/assets/images/icons/icon-cloud@2x.png" width="54" height="40">
                     <h2>Sign up</h2>
                     <a href="https://cloud.soda.io/signup" target="_blank">Sign up for Soda Cloud</a>
-                    <a href="/soda/quick-start-soda-core.html" target="_blank">Quick start with Soda Core (Beta)</a>
+                    <a href="/soda/quick-start-soda-core.html" target="_blank">Quick start with Soda Core </a>
                 </div>
                  <div>
                     <img src="/assets/images/icons/icon-collaboration@2x.png" width="54" height="40">

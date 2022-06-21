@@ -15,7 +15,7 @@ redirect_from:
 
 Soda SQL supports the following data types in columns it scans.  <br />
 Currently, Soda does *not* support complex data types. <br />
-For Soda Core (Beta) data types, see [Soda Core documentation]({% link soda-core/configuration.md %}).
+For Soda Core  data types, see [Soda Core documentation]({% link soda-core/configuration.md %}).
 
 [Amazon Athena](#amazon-athena) <br />
 [Amazon Redshift](#amazon-redshift) <br />
@@ -113,4 +113,4 @@ For Soda Core (Beta) data types, see [Soda Core documentation]({% link soda-core
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

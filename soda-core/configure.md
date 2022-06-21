@@ -1,12 +1,12 @@
 ---
 layout: default
 title: Configure Soda Core
-description: Create a configuration YAML file to configure connection details for Soda Core (Beta) to access your data source.
+description: Create a configuration YAML file to configure connection details for Soda Core  to access your data source.
 sidebar: core
-parent: Soda Core (Beta)
+parent: Soda Core 
 ---
 
-# Configure Soda Core ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Configure Soda Core 
 
 Create a configuration YAML file to configure connection details for Soda Core to access your data source. Store the `configuration.yml` as a hidden file in your local user home directory: `~/.soda/configuration.yml`. When you execute a scan, Soda Core uses that path and filename by default to find the configuration YAML and use the information within to connect to your data source.
 

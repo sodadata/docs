@@ -165,9 +165,9 @@ tests:
 * See [example tests]({% link soda-sql/examples-by-metric.md %}) that use each built-in metric.
 * Learn about [How Soda works]({% link soda-sql/concepts.md  %}).
 * Reference the [Data types]({% link soda-sql/supported-data-types.md %}) that Soda SQL supports when it scans columns.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

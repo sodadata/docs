@@ -132,9 +132,9 @@ soda scan warehouse.yml tables/customers.yml
 * Check the [data source configuration parameters]({% link soda-sql/warehouse_types.md %}) for your type of data source.
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Learn more about the [scan YAML]({% link soda-sql/scan-yaml.md %}) file.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

@@ -722,11 +722,11 @@ sql_metrics:
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 * Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics) and [custom metrics in Soda Cloud]({% link soda-cloud/monitors.md %}#metric-types).
 * See [Examples of tests using built-in metrics]({% link soda-sql/examples-by-metric.md %})
 * Read more about [Failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

@@ -9,8 +9,8 @@ parent: Get started
 
 Soda has three parts that work together to establish and maintain the reliability of data in your organization: **Soda Core**, **Soda Checks Language**, and **Soda Cloud**.
 
-[Soda Core (Beta)](#soda-core-beta) <br />
-[Soda Checks Language (Beta)](#soda-checks-language-sodacl-beta)<br />
+[Soda Core ](#soda-core-beta) <br />
+[Soda Checks Language ](#soda-checks-language-sodacl-beta)<br />
 [Soda Cloud](#soda-cloud)<br />
 [Soda in operation](#soda-in-operation)<br />
 [Legacy OSS tools](#legacy-oss-tools) <br />
@@ -20,9 +20,9 @@ Soda has three parts that work together to establish and maintain the reliabilit
 
 
 
-## Soda Core (Beta)
+## Soda Core 
 
-![soda-core-logo](/assets/images/soda-core-logo.png){:height="98px" width="98px"} ![beta](/assets/images/beta.png){:height="30px" width="30px" align="top"} is a free, open-source, command-line tool that you install in your environment and connect to your data sources. Once connected, you run scans of your data from the command-line to find invalid, missing, or unexpected data. The scan results in the CLI indicate whether the data quality tests you defined passed, failed, or triggered a warning. 
+![soda-core-logo](/assets/images/soda-core-logo.png){:height="98px" width="98px"}  is a free, open-source, command-line tool that you install in your environment and connect to your data sources. Once connected, you run scans of your data from the command-line to find invalid, missing, or unexpected data. The scan results in the CLI indicate whether the data quality tests you defined passed, failed, or triggered a warning. 
 
 Armed with this information, you and your data engineering team can diagnose data quality issues and take steps to prioritize and resolve issues based on downstream impact.
 
@@ -33,9 +33,9 @@ Soda Core essentially serves as the backbone of Soda technology, the software th
 * Connect Soda Core to a [Soda Cloud account](#soda-cloud) where you and your team can use the web application to collaborate on data quality monitoring.
 
 
-## Soda Checks Language (SodaCL) (Beta)
+## Soda Checks Language (SodaCL) 
 
-![soda-cl-logo](/assets/images/sodacl-logo.png){:height="74px" width="74px"} ![beta](/assets/images/beta.png){:height="30px" width="30px" align="top"} is a YAML-based, domain-specific language for data reliability that you use to define Soda Checks. A Soda Check is a test that Soda Core executes when it scans a dataset in your data source. 
+![soda-cl-logo](/assets/images/sodacl-logo.png){:height="74px" width="74px"}  is a YAML-based, domain-specific language for data reliability that you use to define Soda Checks. A Soda Check is a test that Soda Core executes when it scans a dataset in your data source. 
 
 Designed as a human-readable language, SodaCL includes over 25 built-in metrics and checks that you can use to write Soda Checks for data quality, including metrics for missing values, duplicates, schema changes, and freshness; see example below. Compatible with Soda Core, SodaCL enables data engineers and analysts to collaborate on writing checks for good-quality data. 
 

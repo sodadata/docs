@@ -82,9 +82,9 @@ if scan_result.has_test_failures():
 * You can overwrite monitor results in Soda Cloud by running a scan in Soda SQL that overwrites the timestamp. See [Overwrite scan output in Soda Cloud ]({% link soda-sql/scan.md %}#overwrite-scan-output-in-soda-cloud)
 * Learn more about configuring your [scan YAML]({% link soda-sql/scan-yaml.md %}) file.
 * Learn more about [how Soda SQL works]({% link soda-sql/concepts.md %}) file.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

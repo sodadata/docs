@@ -84,9 +84,9 @@ pip install soda-sql-athena -U
 * Next, [configure Soda SQL]({% link soda-sql/quick-start-soda-sql.md %}) to connect to your warehouse.
 * Soda collects anonymous Soda SQL usage statistics. Learn more about the [information]({% link soda-sql/global-configuration.md %}) Soda collects.
 * Learn [How Soda SQL works]({% link soda-sql/concepts.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

@@ -1,12 +1,12 @@
 ---
 layout: default
 title: Soda Core overview
-description: Soda Core (Beta) is an open-source, CLI tool that enables you to use the Soda Checks Language to turn user-defined input into SQL queries.
+description: Soda Core  is an open-source, CLI tool that enables you to use the Soda Checks Language to turn user-defined input into SQL queries.
 parent: Soda Core
 ---
 <br />
 
-![soda-core-logo](/assets/images/soda-core-logo.png){:height="250px" width="250px"} ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+![soda-core-logo](/assets/images/soda-core-logo.png){:height="250px" width="250px"} 
 <br />
 <br />
 
@@ -45,7 +45,7 @@ checks for dim_product:
           model_name: 22
 
 # Check for freshness 
-  - freshness using start_date < 1d
+  - freshness(start_date) < 1d
 
 # Check for referential integrity
 checks for dim_department_group:
@@ -60,9 +60,10 @@ checks for dim_department_group:
                 <div>
                     <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
                     <h2>Get started</h2>
-                    <a href="https://docs.soda.io/soda-core/installation.html" target="_blank">Download and install Soda Core (Beta)</a> 
+                    <a href="https://docs.soda.io/soda-core/installation.html" target="_blank">Download and install Soda Core </a> 
                     <a href="https://docs.soda.io/soda-core/configuration.html" target="_blank">Prepare a configuration.yml file</a>
-                    <a href="https://docs.soda.io/soda-core/configuration.html" target="_blank">Write checks in a checks.yml file</a>
+                    <a href="https://docs.soda.io/soda/quick-start-sodacl.html" target="_blank">Write checks in a checks.yml file</a>
+                    <a href="https://docs.soda.io/soda-core/scan-core.html" target="_blank">Run a scan</a>
                 </div>
             </div>
         </div>        
@@ -70,7 +71,7 @@ checks for dim_department_group:
 </div>
 
 
-Access the <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core (Beta) open-source documentation</a>.
+Access the <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core  open-source documentation</a>.
 
 ---
 {% include docs-footer.md %}

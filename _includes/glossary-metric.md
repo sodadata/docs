@@ -1,1 +1,1 @@
-A property of the data in your dataset. See [Metrics]({% link soda-sql/metrics.md %}).
+A property of the data in your dataset. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).

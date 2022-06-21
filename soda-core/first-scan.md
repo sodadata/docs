@@ -1,12 +1,12 @@
 ---
 layout: default
 title: Run your first scan
-description: Soda Core (Beta) is a free, open-source, CLI tool that enables you to discover bad data. Use this tutorial for a hands-on learning experience with Soda Core.
+description: Soda Core  is a free, open-source, CLI tool that enables you to discover bad data. Use this tutorial for a hands-on learning experience with Soda Core.
 sidebar: core
-parent: Soda Core (Beta)
+parent: Soda Core 
 ---
 
-# Run your first scan ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Run your first scan 
 
 **Soda Core** is a free, open-source, command-line tool that enables you to use the **Soda Checks Language (SodaCL)** to turn user-defined input into aggregated SQL queries. When it runs a scan on a dataset, Soda Core executes the checks to find invalid, missing, or unexpected data. When your **Soda Checks** fail, they surface the data that you defined as "bad".
 

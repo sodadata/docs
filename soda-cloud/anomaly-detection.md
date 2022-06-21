@@ -14,16 +14,16 @@ In Soda Cloud, you can create a monitor that automatically detects anomalies in 
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda Core (Beta)</label>
+  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda Core </label>
   <label class="tab" id="two-tab" for="two">Soda Cloud with Soda SQL</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
 
-In Soda Cloud, you can only create new anomaly detection monitors for datasets connected to an instance of Soda SQL; you cannot create schema evolution monitors for datasets connected to Soda Core (Beta), yet. 
+In Soda Cloud, you can only create new anomaly detection monitors for datasets connected to an instance of Soda SQL; you cannot create schema evolution monitors for datasets connected to Soda Core , yet. 
 
-Instead, you can use SodaCL (Beta) to write [anomaly score checks]({% link soda-cl/anomaly-score.md %}) in a [checks YAML file]({% link soda-core/configuration.md %}) for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account to see the check results after each scan. 
+Instead, you can use SodaCL  to write [anomaly score checks]({% link soda-cl/anomaly-score.md %}) in a [checks YAML file]({% link soda-core/configuration.md %}) for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account to see the check results after each scan. 
 
 [Soda Core documentation]({% link soda-core/overview-main.md %})<br />
 [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %})

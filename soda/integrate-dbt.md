@@ -14,7 +14,7 @@ Integrate Soda with dbt to access dbt test results from within your Soda Cloud a
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
   <label class="tab" id="one-tab" for="one">Soda SQL</label>
-  <label class="tab" id="two-tab" for="two">Soda Core (Beta)</label>
+  <label class="tab" id="two-tab" for="two">Soda Core </label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
@@ -139,11 +139,11 @@ Refer to image above for an example.
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
-The integration with dbt is not available for **Soda Core (Beta)**, yet.
+The integration with dbt is not available for **Soda Core **, yet.
 
-Soda Core (Beta) is a free, open-source, command-line tool that enables you to use the Soda Checks Language (Beta) to turn user-defined input into aggregated SQL queries.
+Soda Core  is a free, open-source, command-line tool that enables you to use the Soda Checks Language  to turn user-defined input into aggregated SQL queries.
 
-[Soda Core (Beta) documentation]({% link soda-core/overview-main.md %})
+[Soda Core  documentation]({% link soda-core/overview-main.md %})
 
   </div>
   </div>

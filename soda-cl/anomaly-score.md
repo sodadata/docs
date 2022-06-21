@@ -5,7 +5,7 @@ description: Anomaly score checks use a machine learning algorithm to automatica
 parent: Soda CL 
 ---
 
-# Anomaly score checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Anomaly score checks 
 
 Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
 Requires Soda Cloud and Soda Core Scientific.

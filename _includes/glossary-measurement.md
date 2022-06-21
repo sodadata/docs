@@ -1,1 +1,1 @@
-The value for a metric that Soda SQL checks against during a scan. For example, in the test `row_count = 5`, `row_count` is the metric and `5` is the measurement.
+The value for a metric that Soda Core collects during a scan. 

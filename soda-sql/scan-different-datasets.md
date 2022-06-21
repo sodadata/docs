@@ -68,9 +68,9 @@ Prepare one [scan YAML file]({% link soda-sql/scan-yaml.md %}) to define the tes
 * Learn [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Learn more about [Metrics]({% link soda-sql/metrics.md %}).
 * Learn how to [apply dynamic filters]({% link soda-sql/filtering.md %}) to your scan.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Schema checks
-description: Use a SodaCL (Beta) schema check to validate column presence, absence, or position in a table, or the type of data column contains.
+description: Use a SodaCL  schema check to validate column presence, absence, or position in a table, or the type of data column contains.
 parent: SodaCL
 ---
 
-# Schema checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Schema checks 
 
 Use a schema check to validate the presence, absence or position of columns in a dataset, or to validate the type of data column contains. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general. 
 

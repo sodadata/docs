@@ -8,7 +8,7 @@ Use Soda Core to scan a variety of data sources.<br />
     <td>GCP Big Query<br /> PostgreSQL<br /> Snowflake<br /> </td>
   </tr>
 </table>
-<sup>1</sup> For use with [programmatic Soda scans]({% link soda-core/programmatic-scans.md %}), only.
+<sup>1</sup> For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
 
 ## Requirements
 
@@ -38,12 +38,10 @@ pip install soda-core-postgres
 | ----------- | --------------- | 
 | Amazon Athena | soda-core-athena |
 | Amazon Redshift | soda-core-redshift | 
-| Apache Spark Dataframe <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic-scans.md %}), only.) | soda-core-spark-df |
+| Apache Spark Dataframe <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | soda-core-spark-df |
 | GCP Big Query | soda-core-bigquery | 
 | PostgreSQL | soda-core-postgres |
 | Snowflake | soda-core-snowflake | 
-
-Next, [configure]({% link soda-core/configuration.md %}) your newly-installed Soda Core to connect to your data source.
 
 To deactivate the virtual environment, use the following command:
 ```shell

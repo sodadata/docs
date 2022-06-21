@@ -54,9 +54,9 @@ $ soda scan warehouse.yml tables/[datasetname].yml
 * Access [historic measurements]({% link soda-sql/metrics.md %}#historic-metrics) from the Cloud Metric Store in tests you define in your scan YAML file.
 * Learn more about viewing [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 * Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

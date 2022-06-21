@@ -1,14 +1,14 @@
 ---
 layout: default
 title: Quick start for Soda Core and Soda Cloud
-description: Follow the quick start tutorial to get started with Soda Core (Beta) and Soda Cloud with a PostgreSQL database.
+description: Follow the quick start tutorial to get started with Soda Core  and Soda Cloud with a PostgreSQL database.
 parent: Get started
 ---
 
-# Quick start for Soda Core ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"} and Soda Cloud
+# Quick start for Soda Core  and Soda Cloud
 <br />
 
-![soda-core-logo](/assets/images/soda-core-logo.png){:height="120px" width="120px"} ![beta](/assets/images/beta.png){:height="40px" width="40px" align="top"}
+![soda-core-logo](/assets/images/soda-core-logo.png){:height="120px" width="120px"} 
 Use your command-line interface to connect Soda Core to a data source, create and examine the checks that surface “bad” data in a dataset, then run your first scan in a few minutes. 
 
 ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="123px" width="123px"} 

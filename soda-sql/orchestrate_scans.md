@@ -348,4 +348,4 @@ f.register()
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

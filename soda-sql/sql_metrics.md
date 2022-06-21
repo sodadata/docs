@@ -385,9 +385,9 @@ WHERE country = 'US'
 * Learn more about the [Scan YAML]({% link soda-sql/scan-yaml.md %}) file.
 * Learn more about configuring [tests]({% link soda-sql/tests.md %}).
 * Learn how to apply [filters]({% link soda-sql/filtering.md %}) to your scan.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*
