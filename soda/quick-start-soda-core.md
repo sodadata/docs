@@ -81,7 +81,7 @@ data_source my_database_name:
 * Replace `my_database_name` with the name of your PostgreSQL database. 
 * Note that `connection:` is a header, not a field. 
 * All values are required.
-* Consider using environment variables to securely store the values of your username and password. Refer to Soda SQL documentation for details on [setting system variables]({% link soda-sql/warehouse.md %}#provide-credentials-as-system-variables). 
+* Consider using environment variables to securely store the values of your username and password. Refer to [Configure Soda Core]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables) for details.
 
 
 ## Write a check and run a scan
@@ -101,11 +101,11 @@ checks for my_dataset:
 4. Save the changes to the `checks.yml` file, then, in Terminal, use the following command to run a scan. As input, the command requires:
 * the name of the data source to scan; replace the value for `my_database_name` with the name of your PostgreSQL database
 * the filepath and name of the `checks.yml` file
-* Soda Core automatically finds the `configuration.yml` file in the hidden `.soda` directory in your local user environment to retrieve the information it needs to connect to your data source.<br />
+* the filepath and name of the `configuration.yml` file <br />
 <br />
 Command:
 ```shell
-soda scan -d my_database_name checks.yml
+soda scan -d my_database_name -c configuration.yml checks.yml
 ```
 Output:
 ```shell
@@ -173,7 +173,7 @@ Soda Core uses an API to connect to Soda Cloud. To use the API, you must generat
 
 
 1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. In a code editor, open the `configuration.yml` file (in the hidden `.soda` directory in your local home directory), then add the `soda_account` syntax to the file, as in the example below. 
+2. In a code editor, open the `configuration.yml` file, then add the `soda_cloud` syntax to the file, as in the example below. 
 ```yaml
 data_source my_database_name:
   type: postgres
@@ -193,11 +193,11 @@ soda_cloud:
 4. In Soda Cloud, navigate to **your avatar** > **Profile** > **API Keys**, then click the plus icon to generate new API keys.
     * Copy the **API Key ID**, then paste it into the `configuration.yml` file as the value for `api_key_id`.
     * Copy the **API Key Secret**, then paste it into the `configuration.yml` file as the value for `api_key_secret`.
-5. You may wish to securely store the values for the API keys as environment variables. Save the changes to the `configuration.yml` file. Close the **Create API Key** dialog box in your Soda Cloud account. 
+5. You may wish to securely store the values for the API keys as [environment variables]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables). Save the changes to the `configuration.yml` file. Close the **Create API Key** dialog box in your Soda Cloud account. 
 6. From the command-line, in your `soda_tutorial` directory, use Soda Core to scan the datasets in your data source again.<br />
 Command:
 ```shell
-soda scan -d my_database_name checks.yml
+soda scan -d my_database_name -c configuration.yml checks.yml
 ```
 Output:
 ```shell

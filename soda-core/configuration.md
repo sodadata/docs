@@ -12,10 +12,11 @@ After you [install Soda Core]({% link soda-core/installation.md %}), you must cr
 - Create a **configuration YAML file** to provide details for Soda Core to connect your data source (except Apache Spark DataFrames, which does not use a configuration YAML file).
 - Create a **checks YAML file** to define your Soda Checks for data quality.
 
-[Configuration instructions](#configuration-instructions) <br />
+[Configuration instructions](#configuration-instructions)<br />
+[Provide credentials as system variables](#provide-credentials-as-system-variables)<br />
 [Connect to Amazon Athena](#connect-to-amazon-athena)<br />
 [Connect to Amazon Redshift](#connect-to-amazon-redshift)<br />
-[Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes) <br />
+[Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes)<br />
 [Connect to GCP BigQuery](#connect-to-gcp-bigquery)<br />
 [Connect to PostgreSQL](#connect-to-postgresql)<br />
 [Connect to Snowflake](#connect-to-snowflake)<br />
@@ -30,7 +31,7 @@ Consider following the [Quick start for Soda Core and Soda Cloud]({% link soda/q
 * If you are not using Spark DataFrames, continue to step 2.
 2. Create a directory in your environment in which to store your configuration and checks YAML files.
 3. In your code editor, create a new YAML file named `configuration.yml` and save it in the directory you just created.
-4. The configuration YAML file stores connection details for your data source. Use the data source-specific sections below to copy+paste the connection syntax into your file, then adjust the values to correspond with your data source's details. <br/>
+4. The configuration YAML file stores connection details for your data source. Use the data source-specific sections below to copy+paste the connection syntax into your file, then adjust the values to correspond with your data source's details. You can use [system variables](#provide-credentials-as-system-variables) to pass sensitive values, if you wish.<br/>
 The following is an example of the connection details Soda Core requires to connect to a PostgreSQL data source.
 ```yaml
 data_source postgres_retail:
@@ -53,6 +54,35 @@ checks for dataset_name:
 8. Next: [Run a scan]({% link soda-core/scan-core.md %}) of the data in your data source.
 
 <br />
+
+## Provide credentials as system variables
+
+If you wish, you can provide data source login credentials or any of the properties in the configuration YAML file as system variables instead of storing the values directly in the  file. 
+
+1. From your command-line interface, set a system variable to store the value of a property that the configuration YAML file uses. For example, you can use the following command to define a system variable for your password.  
+```shell
+export POSTGRES_PASSWORD=1234
+```
+3. Test that the system retrieves the value that you set by running an `echo` command. 
+```shell
+echo $POSTGRES_PASSWORD
+```
+4. In the configuration YAML file, set the value of the property to reference the environment variable, as in the following example.
+```yaml
+data_source my_database_name:
+  type: postgres
+  connection:
+    host: soda-temp-demo
+    port: '5432'
+    username: sodademo
+    password: env_var(POSTGRES_PASSWORD)
+  database: postgres
+  schema: public
+```
+5. Save the configuration YAML file, then run a scan to confirm that Soda SQL connects to your data source without issue.
+```shell
+soda scan -d your_datasource -c configuration.yml checks.yml
+```
 
 {% include core-datasource-config.md %}
 
