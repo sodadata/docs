@@ -9,6 +9,11 @@ parent: Reference
 
 <br />
 
+#### June 28, 2022
+
+* Revised documentation to reflect the general availability of Soda Core and SodaCL.
+* Archived the deprecated documentation for [Soda SQL]({% link soda-sql/overview.md %}) and [Soda Spark]({% link soda-spark/install-and-use.md %}).
+
 #### June 22, 2022
 
 * Added documentation to correspond with the new `percent` argument you can use in checks with [dynamic thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-dynamic-thresholds).
