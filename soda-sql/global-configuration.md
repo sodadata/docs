@@ -2,6 +2,7 @@
 layout: default
 title: Soda SQL usage statistics
 description: To understand how users are using Soda SQL, the Soda dev team has added telemetry event tracking to Soda SQL. See instructions to opt-out.
+sidebar: sql
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/config.html
 ---
@@ -46,9 +47,9 @@ send_anonymous_usage_stats: false
 
 * Learn [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Learn more about the [Warehouse and env_vars YAML files]({% link soda-sql/warehouse.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

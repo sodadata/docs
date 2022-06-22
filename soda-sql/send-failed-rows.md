@@ -2,6 +2,7 @@
 layout: default
 title: Send failed row samples
 description: When a scan results in a failed test, the CLI output displays info about the test that failed. For more insight, Soda Cloud displays failed row samples.
+sidebar: sql
 parent: Soda SQL
 ---
 
@@ -21,10 +22,10 @@ For security, you can also [disable the failed row samples](#disable-failed-row-
 
 ## Define a samples configuration key to send failed rows
 
-1. If you have not already done so, [connect Soda SQL to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}).
+1. If you have not already done so, [connect Soda SQL to your Soda Cloud account]({% link soda-sql/connect_to_cloud.md %}).
 2. Define a `samples` configuration key in your scan YAML file according to the Scan YAML example below; use `failed_limit` to define a value that represents the numerical threshold of rows in a dataset that Soda SQL sends to Soda Cloud as a sample of failed rows for any tests that fail during a scan. A sample contains the first *n* number of rows from the dataset, according to the limit you specify.
 
-For this example, imagine you define a test in your [scan YAML]({% link soda/glossary.md %}#scan-yaml) file to make sure that 99% of the values in the `productid` column are correctly formatted as universally unique identifiers (UUID), then you [run a scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) from the command line to execute the test on the data in your dataset.
+For this example, imagine you define a test in your [scan YAML]({% link soda/glossary.md %}#scan-yaml) file to make sure that 99% of the values in the `productid` column are correctly formatted as universally unique identifiers (UUID), then you [run a scan]({% link soda-sql/scan.md %}#run-a-scan-in-soda-sql) from the command line to execute the test on the data in your dataset.
 
 #### Scan YAML Example
 
@@ -77,7 +78,7 @@ When Soda Cloud runs its next scheduled scan of your dataset, or when you run a 
 
 You can use Soda SQL [custom metrics]({% link soda-sql/sql_metrics.md %}#custom-metrics) (also known as SQL metrics) to explicitly demand that Soda SQL send failed rows to Soda Cloud when a scan results in a failed test.
 
-1. If you have not already done so, [connect Soda SQL to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}).
+1. If you have not already done so, [connect Soda SQL to your Soda Cloud account]({% link soda-sql/connect_to_cloud.md %}).
 2. In your scan YAML file, use `type: failed_rows` when writing a SQL query to retrieve a sample of `failed_rows` in a dataset, as in the example below. By default, `failed_rows` collects five rows of data that failed the test defined in the SQL query and displays them in Soda Cloud as failed rows in the monitor that represents the test that failed during a scan. 
 
 In the following example, Soda SQL runs the scan and Soda Cloud displays a sample of the first five `failed_rows` of data that failed the test defined as a SQL query.
@@ -99,7 +100,7 @@ Where your datasets contain sensitive or private information, you may *not* want
 {% include disable-all-samples.md %}
 
 Alternatively, you can prevent Soda SQL from sending metadata or samples to Soda Cloud by using one of the following methods:
-* To prevent Soda SQL from sending an individual dataset's scan results or samples to Soda Cloud, use the [`--offline` option]({% link soda/scan.md %}#add-scan-options) when you run a scan.
+* To prevent Soda SQL from sending an individual dataset's scan results or samples to Soda Cloud, use the [`--offline` option]({% link soda-sql/scan.md %}#add-scan-options) when you run a scan.
 * To prevent Soda SQL from sending specific column scan results or samples, configure an [`excluded_columns` configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys) in your scan YAML file.
 
 ## Reroute failed row samples for a dataset 
@@ -230,12 +231,12 @@ scan_builder.failed_row_processor = BigQueryRowProcessor()
 
 ## Go further
 
-* [Connect Soda SQL]({% link soda-cloud/connect_to_cloud.md %}) to your Soda Cloud account.
+* [Connect Soda SQL]({% link soda-sql/connect_to_cloud.md %}) to your Soda Cloud account.
 * Learn more about examining [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 * Learn how to [send sample data]({% link soda-sql/samples.md %}) to your Soda Cloud account.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*
 

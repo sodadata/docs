@@ -2,6 +2,7 @@
 layout: default
 title: How Soda SQL works
 description: Learn Soda SQL Basics, Soda SQL Operation, Soda SQL Automation and Integration with orchestration tools and Soda Cloud.
+sidebar: sql
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/concepts.html
 ---
@@ -102,25 +103,25 @@ To automate scans on your data, you can use the **Soda SQL Python library** to p
 
 Alternatively, you can integrate Soda SQL with a **data orchestration tool** such as, Airflow, Dagster, or dbt Core™, to schedule automated scans. You can also configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically quarantine the "bad" data or block it from contaminating your data pipeline. Refer to [Orchestrate scans]({% link soda-sql/orchestrate_scans.md %}) for details.
 
-Additionally, you can integrate Soda SQL with a **Soda Cloud** account. This cloud-based web application integrates with your Soda SQL implementation giving your team broader visibility into your organization's data quality. Soda SQL pushes scan results to your Soda Cloud account where you can use the web app to examine the results. Except when you explicitly demand that it do so, Soda SQL only ever pushes *metadata* to the cloud; all your data stays inside your private network. Learn more about [connecting to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}).
+Additionally, you can integrate Soda SQL with a **Soda Cloud** account. This cloud-based web application integrates with your Soda SQL implementation giving your team broader visibility into your organization's data quality. Soda SQL pushes scan results to your Soda Cloud account where you can use the web app to examine the results. Except when you explicitly demand that it do so, Soda SQL only ever pushes *metadata* to the cloud; all your data stays inside your private network. Learn more about [connecting to Soda Cloud]({% link soda-sql/connect_to_cloud.md %}).
 
 Though you do not have to set up and ingrate a Soda Cloud account in order to use Soda SQL, the web app serves to complement the CLI tool, giving you a non-CLI method of examining data quality. Use Soda Cloud to:
 
 - collaborate with team members to review details of scan results that can help you to diagnose data issues
-- use monitors to view stored [scan output]({% link soda/scan.md %}#scan-output-in-soda-cloud) as visualizations that represents the volume of failed tests in each scan
+- use monitors to view stored [scan output]({% link soda-sql/scan.md %}#scan-output-in-soda-cloud) as visualizations that represents the volume of failed tests in each scan
 - empower others to [set quality thresholds]({% link soda-cloud/monitors.md %}) that define "good" data
 - set up and [send alert notifications]({% link soda-cloud/monitors.md %}) when "bad" data enters your data pipeline
 - create and track data quality [Incidents]({% link soda-cloud/incidents.md %}) so your team can collaborate in Slack to resolve them
 
-To connect Soda SQL to Soda Cloud, you create API keys in your Soda Cloud account and configure them as connection credentials in your warehouse and env_vars YAML files. See [Connect to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}) for details.
+To connect Soda SQL to Soda Cloud, you create API keys in your Soda Cloud account and configure them as connection credentials in your warehouse and env_vars YAML files. See [Connect to Soda Cloud]({% link soda-sql/connect_to_cloud.md %}) for details.
 
 ## Go further
 * Learn more about the contents of the [Scan YAML]({% link soda-sql/scan-yaml.md %}) file.
-* Learn more about the [Metrics]({% link soda/metrics.md %}) you can use to define [Tests]({% link soda-sql/tests.md %}).
-* Learn how to [Connect to Soda Cloud]({% link soda-cloud/connect_to_cloud.md %}).
+* Learn more about the [Metrics]({% link soda-sql/metrics.md %}) you can use to define [Tests]({% link soda-sql/tests.md %}).
+* Learn how to [Connect to Soda Cloud]({% link soda-sql/connect_to_cloud.md %}).
 * See how to prepare [programmatic scans]({% link soda-sql/programmatic_scan.md %}) of your data.
-* Reference the [Data types]({% link soda/supported-data-types.md %}) that Soda SQL supports when it scans columns.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Reference the [Data types]({% link soda-sql/supported-data-types.md %}) that Soda SQL supports when it scans columns.
+
 
 <br />
 

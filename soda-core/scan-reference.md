@@ -3,10 +3,10 @@ layout: default
 title: Soda Core scan reference
 description: Soda Core uses the input in the checks YAML file to prepare a scan that it runs against the data in a table. 
 sidebar: core
-parent: Soda Core (Beta)
+parent: Soda Core 
 ---
 
-# Soda Core scan reference ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Soda Core scan reference 
 
 A **scan** is a command that executes checks to extract information about data in a table.
 

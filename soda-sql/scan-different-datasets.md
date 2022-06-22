@@ -2,6 +2,7 @@
 layout: default
 title: Scan multiple data sources or datasets
 description: You can run a single scan against different data sources in your environments. You can also run a single scan against different datasets using custom metrics.
+sidebar: sql
 parent: Soda SQL
 redirect_from: /soda-sql/documentation/scan-different-datasets.html
 ---
@@ -65,11 +66,11 @@ Prepare one [scan YAML file]({% link soda-sql/scan-yaml.md %}) to define the tes
 
 * See [Example tests by metric]({% link soda-sql/examples-by-metric.md %}) to learn more about defining tests.
 * Learn [How Soda SQL works]({% link soda-sql/concepts.md %}).
-* Learn more about [Metrics]({% link soda/metrics.md %}).
+* Learn more about [Metrics]({% link soda-sql/metrics.md %}).
 * Learn how to [apply dynamic filters]({% link soda-sql/filtering.md %}) to your scan.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

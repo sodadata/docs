@@ -24,9 +24,9 @@ Watch an video that demonstrates the integration between Soda and Alation.
 
 ## Prerequisites
 
-* You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}), [connected]({% link soda-cloud/connect_to_cloud.md %}) to an instance of Soda SQL.
-* You have [configured Soda SQL]({% link soda-sql/configure.md %}) to access the data source on which you want to run quality checks.
-* You have completed at least one [Soda scan]({% link soda/scan.md %}) to validate that the data source’s datasets appear in Soda Cloud as expected.
+* You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}), [connected]({% link soda-core/connect-core-to-cloud.md %}) to an instance of Soda Core.
+* You have [configured Soda Core]({% link soda-core/configuration.md %}) to access the data source on which you want to run quality checks.
+* You have completed at least one [Soda scan]({% link soda-core/scan-core.md %}) to validate that the data source’s datasets appear in Soda Cloud as expected.
 * You have an Alation account with the privileges necessary to allow you to add a data source, create custom fields, and customize templates.
 * You have a git repository in which to store the integration project files.
 
@@ -34,7 +34,7 @@ Watch an video that demonstrates the integration between Soda and Alation.
 ## Set up the integration
 
 1. Sign into your Soda Cloud account and confirm that you see the datasets you expect to see in the data source you wish to test for quality.
-2. To connect your Soda Cloud account to your Alation Service Account, create an `.env` file in your integration project in your git repo and include details according to the example below. To obtain the values for your Soda API keys, refer to the [Connect to Soda Cloud documentation]({% link soda-cloud/connect_to_cloud.md %}). <br />
+2. To connect your Soda Cloud account to your Alation Service Account, create an `.env` file in your integration project in your git repo and include details according to the example below. To obtain the values for your Soda API keys, refer to the [Connect to Soda Cloud documentation]({% link soda-core/connect-core-to-cloud.md %}). <br />
 ```yaml
 ALATION_HOST=yourcompany.alationcatalog.com
 ALATION_USER=<your username for your Alation account>
@@ -110,7 +110,7 @@ Contact <a href="mailto:support@soda.io">Soda Support</a> directly to acquire th
 
 ## Use the integration
 
-Access Soda Cloud to [create monitors]({% link soda-cloud/monitors.md %}) that execute tests against datasets in your data source each time you [run a Soda scan manually]({% link soda/scan.md %}#run-a-scan), or [orchestrate a scan]({% link soda-sql/orchestrate_scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Alation so that users can review data quality information from within the catalog. 
+Access Soda Cloud to [create monitors]({% link soda-cloud/monitors.md %}) that execute tests against datasets in your data source each time you [run a Soda scan manually]({% link soda-core/scan-core.md %}#run-a-scan), or [orchestrate a scan]({% link soda-core/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Alation so that users can review data quality information from within the catalog. 
 
 In Alation, beyond reviewing data quality information for the data source, users can access the **Joins** and **Lineage** tabs of individual datasets to examine details and investigate the source of any data quality issues. 
 
@@ -126,8 +126,6 @@ In a dataset page in Alation, in the **Overview** tab, users have the opportunit
 
 ## Go further
 
-* Learn more about [creating monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
-* Learn more about [anomaly detection]({% link soda-cloud/anomaly-detection.md %}) and [schema evolution]({% link soda-cloud/schema-evolution.md %}) monitors in Soda Cloud.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

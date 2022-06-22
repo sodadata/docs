@@ -1,1 +1,1 @@
-A storage location that contains a collection of datasets.  A warehouse in Soda SQL is one form of datasource. A datasource may also imply a compute engine that Soda SQL uses to compute measurements.
+A storage location that contains a collection of datasets, such as Snowflake, Amazon Athena, or GCP BigQuery.

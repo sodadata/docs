@@ -1,14 +1,14 @@
 ---
 layout: default
 title: Soda Core overview
-description: Soda Core (Beta) is a free, open-source, command-line tool that enables you to use the Soda Checks Language (Beta) to turn user-defined input into SQL queries.
+description: Soda Core is a free, open-source, command-line tool that enables you to use the Soda Checks Language to turn user-defined input into SQL queries.
 sidebar: core
-parent: Soda Core (Beta)
+parent: Soda Core 
 redirect_from:
 - /soda-cl/soda-core-overview.html
 ---
 
-# Soda Core OSS documentation ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Soda Core OSS documentation 
 
 Soda Core is an open-source CLI tool and Python library for data reliability.  Soda Core serves as the foundation 
 for Soda Cloud, but you can use it as a stand-alone, open source tool. 

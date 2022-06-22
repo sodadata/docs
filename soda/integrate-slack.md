@@ -22,7 +22,7 @@ If you wish, you can configure a setting in Soda Cloud to set a default Slack ch
 
 ## Go further
 
-* [Connect]({% link soda-cloud/connect_to_cloud.md %}) Soda SQL to your Soda Cloud account.
+* [Connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account.
 * [Create an alert]({% link soda-cloud/monitors.md %}) to send Slack notifications when a scan surfaces a data issue.
 * Learn more about using Slack to collaborate on resolving [Incidents]({% link soda-cloud/incidents.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

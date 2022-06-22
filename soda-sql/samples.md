@@ -2,7 +2,8 @@
 layout: default
 title: Send sample data
 description: In Soda Cloud, you may find it useful to review sample data from your dataset to help you determine the kinds of tests to run when Soda SQL scans your data.
-parent: Soda Cloud
+sidebar: sql
+parent: Soda SQL
 redirect_from:
 - /soda-sql/documentation/samples.html
 - /soda-cloud/samples.html
@@ -30,7 +31,7 @@ Where your datasets contain sensitive or private information, you may *not* want
 {% include disable-all-samples.md %}
 
 Alternatively, you can prevent Soda SQL from sending metadata or samples to Soda Cloud by using one of the following methods:
-* To prevent Soda SQL from sending an individual dataset's scan results or samples to Soda Cloud, use the [`--offline` option]({% link soda/scan.md %}#add-scan-options) when you run a scan.
+* To prevent Soda SQL from sending an individual dataset's scan results or samples to Soda Cloud, use the [`--offline` option]({% link soda-sql/scan.md %}#add-scan-options) when you run a scan.
 * To prevent Soda SQL from sending specific column scan results or samples, configure an [`excluded_columns` configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys) in your scan YAML file.
 
 ### Reroute sample data for a dataset
@@ -164,4 +165,4 @@ scan_builder.sample_processor = BigQuerySampleProcessor()
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

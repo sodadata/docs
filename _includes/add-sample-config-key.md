@@ -1,4 +1,4 @@
-1. If you have not already done so, [connect Soda SQL to your Soda Cloud account]({% link soda-cloud/connect_to_cloud.md %}).
+1. If you have not already done so, [connect Soda SQL to your Soda Cloud account]({% link soda-sql/connect_to_cloud.md %}).
 2. Add a `samples` configuration key to your scan YAML file according to the Scan YAML example below; use `table_limit` to define a value that represents the numerical threshold of rows in a dataset that Soda SQL sends to Soda Cloud after it executes a test during a scan. It yields a sample of the data from your dataset in the **Sample Data** tab when you are creating a new monitor; see image above. A sample contains the first *n* number of rows from the dataset, according to the limit you specify.
 3. Save the changes to your scan YAML file, then run a scan on that dataset.
 ```shell

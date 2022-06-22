@@ -1,12 +1,17 @@
 ---
 layout: default
-title: Scans
+title: Run a Soda SQL scan
 description: A scan is a command that executes tests to extract information about data in a dataset. Soda SQL uses YAML file contents to prepare SQL queries for a scan.
-parent: Concepts
-redirect_from: /soda-sql/documentation/scan.html
+sidebar: sql
+parent: Soda SQL
+redirect_from: 
+- /soda-sql/documentation/scan.html
+- /soda/scan.html
 ---
 
-# Scans
+# Run a Soda SQL scan
+
+{% include banner-sql.md %}
 
 A **scan** is a command that executes [tests]({% link soda/glossary.md %}#test) to extract information about data in a [dataset]({% link soda/glossary.md %}#dataset).
 
@@ -100,9 +105,9 @@ See [Add scan option](#add-scan-options) for more scan options.
 * Integrate Soda with your [data catalogs]({% link soda/integrate-alation.md %}) or [data pipeline tools]({% link soda/integrate-dbt.md %}).
 * Learn how to configure [metrics]({% link soda-sql/sql_metrics.md %}) in your YAML files.
 * Learn more about configuring [tests]({% link soda-sql/tests.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

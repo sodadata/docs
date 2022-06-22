@@ -3,10 +3,10 @@ layout: default
 title: SodaCL reference
 description: Soda Checks Language is YAML-based, domain-specific language for data reliability. Access SodaCL documentation for details.
 sidebar: core
-parent: Soda Core (Beta)
+parent: Soda Core 
 ---
 
-# SodaCL reference ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# SodaCL reference 
 
 Soda Checks Language (SodaCL) is YAML-based, domain-specific language for data reliability.
 

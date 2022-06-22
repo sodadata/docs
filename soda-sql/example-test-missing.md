@@ -2,6 +2,7 @@
 layout: default
 title: Example tests for missing values
 description: By default, Soda SQL includes a missing_count metric that searches for missing or null values in a column of a dataset. See a full YAML example.
+sidebar: sql
 parent: Soda SQL
 redirect_from: /soda-sql/examples/examples-test-missing.html
 ---
@@ -30,7 +31,7 @@ columns:
       - missing_count == 0
 ```
 
-Then, the engineer [runs a Soda SQL scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) as follows:
+Then, the engineer [runs a Soda SQL scan]({% link soda-sql/scan.md %}#run-a-scan-in-soda-sql) as follows:
 
 Scan command:
 
@@ -74,7 +75,7 @@ columns:
       - missing_count == 0
 ```
 
-Then, the engineer [runs a Soda SQL scan]({% link soda/scan.md %}#run-a-scan-in-soda-sql) as follows:
+Then, the engineer [runs a Soda SQL scan]({% link soda-sql/scan.md %}#run-a-scan-in-soda-sql) as follows:
 
 Scan command:
 
@@ -114,4 +115,4 @@ Scan output, fail:
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

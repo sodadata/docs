@@ -1,1 +1,1 @@
-You can connect Soda SQL or Soda Core (Beta) to your Soda Cloud account. To communicate with your data source, Soda Cloud uses a Network Address Translation (NAT) gateway with the IP address 54.78.91.111. You may wish to add this IP address to your data source's passlist.
+You can connect Soda Core to your Soda Cloud account. To communicate with your data source, Soda Cloud uses a Network Address Translation (NAT) gateway with the IP address 54.78.91.111. You may wish to add this IP address to your data source's passlist.
