@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### June 22, 2022
+
+* Added documentation to correspond with the new `percent` argument you can use in checks with [dynamic thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-dynamic-thresholds).
+
 #### June 21, 2022
 
 * Added details to Soda Core documentation for using [system variables]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables).  to store sensitive credentials.
