@@ -59,8 +59,6 @@
     page: soda-sql/troubleshoot.md
   - subtitle: Soda SQL usage statistics
     page: soda-sql/global-configuration.md
-  - subtitle: Integrate Soda SQL with dbt
-    page: soda-sql/integrate-sql-dbt.md
   - subtitle: Release notes
     page: release-notes/soda-sql.md
 
