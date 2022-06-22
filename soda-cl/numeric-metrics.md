@@ -174,6 +174,8 @@ Only checks that use numeric metrics can specify a **dynamic threshold**, a valu
 
 If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account. Soda Cloud stores the measured value of each metric that a check result produces during a scan in a Cloud Metric Store. Over time, these historic values accumulate and you can reference them to detect anomalous values relative to historic values for the same metric. Therefore, you must have a Soda Cloud account to use dynamic thresholds.
 
+We recommend you to consider `between` thresholds for change over time as changes may be nagative as well.  Use for example a threshold like `between -10 and +50`
+
 <br />
 
 The most basic of dynamic threshold checks has three or four mutable parts:
@@ -189,13 +191,27 @@ The example below defines a check that applies to the entire dataset and counts 
 
 ```yaml
 checks for dim_customer:
-  - change row_count < 50
+  - change for row_count between -20 and +50
 ```
 
+| metric |`row_count` |
+| threshold | `between -20 and +50` |
+
+<br />
+
+The next example below defines a check that applies to the entire dataset and counts the rows in the dataset, then compares that value to the preceding value contained in the Cloud Metric Store. The check evaluates if the relative percentage between the previous historic value and the newly measured value against the newly calculated row count.
+So if the previous historic value is 80 and the new value in this scan is 100, the relative change is 25%, which is less than the 50% in the threshold.
+Percentage thresholds should be expressed between 0 and 100 (and not between 0 and 1).  The `%` sign in the threshold is optional can can be added for extra readability.  If the previous historic metric value is 0 and the new metric value is 0, then the relative change is considered 0%,
+but if the previous historic metric value is 0 and new value is a value different from 0, then the check will be marked as NOT EVALUATED because it would lead to a division by zero. 
+
+```yaml
+checks for dim_customer:
+  - change percent for row_count between -10% and +50%
+```
 
 | metric |`row_count` |
-| comparison symbol | `>` |
-| threshold | `50` | 
+| comparison symbol | `<` |
+| threshold | `50 %` | 
 
 <br />
 
@@ -203,11 +219,11 @@ The example below applies to only the `phone` column in the dataset and counts t
 
 ```yaml
 checks for dim_customer:
-  - change duplicate_count(phone) < 20
+  - change for duplicate_count(phone) < 20
 ```
 
 | metric | `duplicate_count` |
-| argument | `(phone)` |
+| metric argument | `(phone)` |
 | comparison symbol | `<` |
 | threshold | `20`  |
 
@@ -227,9 +243,9 @@ A more complex dynamic threshold check includes two more optional mutable parts:
 
 ```yaml
 checks for dim_customer:
-  - change avg last 7 days row_count < 50
-  - change min last 7 days row_count < 50
-  - change max last 7 days row_count < 50
+  - change avg last 7 days for row_count < 50
+  - change min last 7 days for row_count < 50
+  - change max last 7 days for row_count < 50
 ```
  
 The example above defines three checks, one for each type of calculation available to use, `avg`, `min`, and `max`, all of which apply to the entire dataset. Each check value uses a count of `7` which refers to the values collected over the course of the preceding seven days. 
@@ -237,6 +253,24 @@ The example above defines three checks, one for each type of calculation availab
 The first check counts the rows in the dataset, then compares that value to the calculated average of the preceding seven values for that metric contained in the Cloud Metric Store. If the `row_count` at present is greater than the average of the seven preceding historic values by more than 50, the check fails. 
 
 The second and third checks in the example determine the minimum value and maximum value of the preceding seven historic values respectively, then use that value to compare to the present value.
+
+The general structure of a change over time check is like this:
+> `change` `{historic_value_definition}`? `percent`? `for` `{metric}` `{threshold}`
+
+Where
+
+| `{historic_value_definition}` | is optional and specifies how to comppute the historic value. eg `avg last 7 days`.  By default, when no historic value definition is give, the previous historic value is taken |
+| `{metric}`|  any numeric metric like eg `row_count`, `duplicates(id, postcode)` etc |
+| `{threshold}` | specify the valid value range eg `<= 50` or `between -10 and +50` |
+
+Note that also distinct warning and failure thresholds can be specified like this: 
+
+```
+checks for dim_customer:
+  - change avg last 7 days for row_count:
+      warn: when not between -10 and +20
+      fail: when not between -50 and +100
+```
 
 ## Go further
 
