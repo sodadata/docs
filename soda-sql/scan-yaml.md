@@ -6,8 +6,9 @@ parent: Soda SQL
 redirect_from: /soda-sql/documentation/scan-yaml.html
 ---
 
-
 # Scan YAML
+
+{% include banner-sql.md %}
 
 A **scan** is a Soda SQL CLI command that uses SQL queries to extract information about data in a [dataset]({% link soda/glossary.md %}#dataset).
 

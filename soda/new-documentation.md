@@ -2,12 +2,32 @@
 layout: default
 title: What's new in Soda docs?
 description: Review a changelog of additions and revisions to Soda documentation.
-parent: Soda
+parent: Reference
 ---
 
 # What's new in Soda docs?
 
 <br />
+
+#### June 22, 2022
+
+* Added documentation to correspond with the new `percent` argument you can use in checks with [dynamic thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-dynamic-thresholds).
+
+#### June 21, 2022
+
+* Added details to Soda Core documentation for using [system variables]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables).  to store sensitive credentials.
+* Updated the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) with slightly changed instructions.
+
+#### June 20, 2022
+
+* Changed all references to `table` in SodaCL to `dataset`, notably used with [for each]({% link soda-cl/freshness.md %}) and [distribution]({% link soda-cl/distribution.md %}) check syntax.
+* Added deprecation warning banners to all Soda SQL and Soda Spark content.
+* Revised and reorganized content to reframe focus on Soda Core in lieu of Soda SQL.
+* New [How Soda Core works]({% link soda-core/how-core-works.md %}) documentation.
+* Added more Soda Core documentation to main docs set. 
+* Updated [Soda product overview]({% link soda/product-overview.md %}) to reflect new focus on Soda Core and imminent deprecation of Soda SQL and Soda Spark.
+* Updated Soda Cloud documentation to reflect new focus on Soda Core.
+* Update links on [docs home page]({% link index.html %}) to point to most recent content and shift Soda SQL and Soda Core to a Legacy section.
 
 #### June 14, 2022
 
@@ -42,7 +62,7 @@ parent: Soda
 #### June 6, 2022
 
 * Added clarifying details to [Cross checks]({% link soda-cl/cross-row-checks.md %}) and updated images on [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
-* Added <a href="https://docs.soda.io/soda-core/get-started.html#use-docker-to-run-soda-core" target="_blank">Use Docker to run Soda Core</a> to Soda Core installation documentation.
+* Added [Use Docker to run Soda Core]({% link soda-core/installation.md %}#use-docker-to-run-soda-core) to Soda Core installation documentation.
 
 #### June 2, 2022
 
@@ -63,7 +83,7 @@ parent: Soda
 
 #### May 26, 2022
 
-* Updated various Soda Core documents to include support for Amazon Athena. See <a href="https://docs.soda.io/soda-core/get-started.html#install-the-soda-core-cli" target="_blank">Get started</a>.
+* Updated various Soda Core documents to include support for Amazon Athena. See [Connect to Amazon Athena]({% link soda-core/configuration.md %}#connect-to-amazon-athena).
 * Update [Optional check configurations]({% link soda-cl/optional-config.md %}) to include instructions for use an in-check filter to check a portion of your data.
 * Added new documentation for [Missing metrics]({% link soda-cl/missing-metrics.md %}) and [Validity metrics]({% link soda-cl/validity-metrics.md %}).
 
@@ -85,7 +105,7 @@ parent: Soda
 
 #### May 9, 2022
 
-* Updated the <a href="https://docs.soda.io/soda-core/get-started.html" target="_blank">Soda Core installation documentation</a> to indicate that Python 3.8 or greater is required.
+* Updated the [Soda Core installation documentation]({% link soda-core/installation.md %}) to indicate that Python 3.8 or greater is required.
 
 #### April 26, 2022
 
@@ -113,8 +133,8 @@ parent: Soda
 
 #### March 22, 2022
 
-* New documentation for the beta release of <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core </a>, a free, open-source, command-line tool that enables you to use the Soda Checks Language (Beta) to turn user-defined input into aggregated SQL queries.
-* New documentation for the beta release of <a href="https://docs.soda.io/soda-cl/soda-cl-overview.html" target="_blank">SodaCL</a>, a domain-specific language you can use to define Soda Checks in a checks YAML file.
+* New documentation for the beta release of [Soda Core]({% link soda-core/overview-main.md %}), a free, open-source, command-line tool that enables you to use the Soda Checks Language (Beta) to turn user-defined input into aggregated SQL queries.
+* New documentation for the beta release of [SodaCL]({% link soda-cl/soda-cl-overview.md %}), a domain-specific language you can use to define Soda Checks in a checks YAML file.
 
 
 #### February 15, 2022

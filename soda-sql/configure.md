@@ -8,6 +8,8 @@ redirect_from: /soda-sql/getting-started/configure.html
 
 # Configure Soda SQL
 
+{% include banner-sql.md %}
+
 After you [install Soda SQL]({% link soda-sql/installation.md %}), you must create files and configure a few settings before you can run a scan.
 
 ## Overview of configuration 

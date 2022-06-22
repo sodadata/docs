@@ -8,6 +8,8 @@ redirect_from: /soda-sql/documentation/warehouse.html
 
 # Warehouse YAML
 
+{% include banner-sql.md %}
+
 A **warehouse** is a type of data source that represents a SQL engine or database such as Snowflake, Amazon Redshift, or PostgreSQL. You use a **warehouse YAML** file to configure connection details for Soda SQL to access your data source.
 
 [Create a warehouse YAML file](#create-a-warehouse-yaml-file)<br />

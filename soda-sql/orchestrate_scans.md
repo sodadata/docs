@@ -8,6 +8,8 @@ redirect_from: /soda-sql/documentation/orchestrate_scans.html
 
 # Configure orchestrated scans
 
+{% include banner-sql.md %}
+
 Integrate Soda SQL with a **data orchestration tool** such as, Airflow, Dagster, or dbt Core™, to automate and schedule your search for "bad" data. Refer to [Compatibility]({% link soda-sql/installation.md %}#compatibility) for details on Soda SQL requirements.
 
 Not only can you schedule [scans]({% link soda/glossary.md %}#scan) of [datasets]({% link soda/glossary.md %}#dataset), you can also configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically block "bad" data from contaminating your data pipeline.

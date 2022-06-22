@@ -59,11 +59,12 @@ Commands:
 
 There are several other [install packages for Soda Core]({% link soda-core/installation.md %}#install) that correspond to different data sources. This tutorial references a MacOS development environment with a PostgreSQL data source. 
 
-1. In your local user home directory, create a new hidden folder in which you will store your `configuration.yml` file. This file will contain the connection details that Soda Core needs to access your data source. 
+1. In your command-line interface, create a Soda tutorial project directory in your local environment, then navigate to the directory.
 ```shell
-mkdir .soda
+mkdir soda_tutorial
+cd soda_tutorial
 ```
-2. In your Finder, navigate to your new hidden directory (use Command+Shift+. to display hidden folders), then create a new file called `confguration.yml`. 
+2. Create a new file called `confguration.yml`. 
 3. Open the `configuration.yml` file in a code editor, then copy and paste the following connection details into the file. Replace the values for each of the fields with your own database-specific details, then save the file.
 
 ```yaml
@@ -81,31 +82,26 @@ data_source my_database_name:
 * Replace `my_database_name` with the name of your PostgreSQL database. 
 * Note that `connection:` is a header, not a field. 
 * All values are required.
-* Consider using environment variables to securely store the values of your username and password. Refer to Soda SQL documentation for details on [setting system variables]({% link soda-sql/warehouse.md %}#provide-credentials-as-system-variables). 
+* Consider using environment variables to securely store the values of your username and password. Refer to [Configure Soda Core]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables) for details. 
 
 
 ## Write a check and run a scan
 
-1. In your command-line interface, create a Soda tutorial project directory in your local environment, then navigate to the directory.
-```shell
-mkdir soda_tutorial
-cd soda_tutorial
-```
-2. Using Finder or Terminal, create a file in the `soda-tutorial` directory called `checks.yml`. A Soda Check is a test that Soda Core performs when it scans a dataset in your data source. The `checks.yml` file stores the Soda Checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). 
-3. Open the `checks.yml` file in a code editor, then copy and paste the following Soda Check into the file. Replace the value for `my_dataset` with the name of a dataset in your data source. <br />
+1. Using Finder or Terminal, create another file in the `soda-tutorial` directory called `checks.yml`. A Soda Check is a test that Soda Core performs when it scans a dataset in your data source. The `checks.yml` file stores the Soda Checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). 
+2. Open the `checks.yml` file in a code editor, then copy and paste the following Soda Check into the file. Replace the value for `my_dataset` with the name of a dataset in your data source. <br />
 This simple check validates that the dataset contains more than zero rows, which is to say, that it is not empty.
 ```yaml
 checks for my_dataset:
 - row_count > 0 
 ```
-4. Save the changes to the `checks.yml` file, then, in Terminal, use the following command to run a scan. As input, the command requires:
+3. Save the changes to the `checks.yml` file, then, in Terminal, use the following command to run a scan. As input, the command requires:
 * the name of the data source to scan; replace the value for `my_database_name` with the name of your PostgreSQL database
-* the filepath and name of the `checks.yml` file
-* Soda Core automatically finds the `configuration.yml` file in the hidden `.soda` directory in your local user environment to retrieve the information it needs to connect to your data source.<br />
+* the filepath and name of the `configuration.yml` file 
+* the filepath and name of the `checks.yml` file<br />
 <br />
 Command:
 ```shell
-soda scan -d my_database_name checks.yml
+soda scan -d my_database_name -c configuration.yml checks.yml
 ```
 Output:
 ```shell
@@ -116,11 +112,11 @@ Scan summary:
       row_count > 0 [PASSED]
 All is good. No failures. No warnings. No errors.
 ```
-5. The CLI output indicates that the check passed, confirming that the dataset is not empty. (Optional) To witness an example of scan output with a failed check, open the `checks.yml` file and change the check to read: `row_count < 5`, then save the file.
-6. (Optional) Run the same scan command to see a different scan results in the CLI.<br />
+4. The CLI output indicates that the check passed, confirming that the dataset is not empty. (Optional) To witness an example of scan output with a failed check, open the `checks.yml` file and change the check to read: `row_count < 5`, then save the file.
+5. (Optional) Run the same scan command to see a different scan results in the CLI.<br />
 Command:
 ```shell
-soda scan -d my_database_name checks.yml
+soda scan -d my_database_name -c configuration.yml checks.yml
 ```
 Output:
 ```
@@ -132,11 +128,11 @@ Scan summary:
         check_value: 1329
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 ```
-7. (Optional) To see more detail in the scan results output in the CLI, add the `-V` option to the scan command to return a verbose version of the output.<br />
+6. (Optional) To see more detail in the scan results output in the CLI, add the `-V` option to the scan command to return a verbose version of the output.<br />
 <br />
 Command:
 ```shell
-soda scan -d aws_postgres_retail -V checks.yml
+soda scan -d my_database_name -c configuration.yml -V checks.yml
 ```
 Output:
 ```shell
@@ -157,9 +153,8 @@ Scan summary:
         check_value: 1329
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 ```
-8. (Optional) If you like, adjust or add more checks to the `checks.yml` file to further explore the things that [Soda Core]({% link soda-core/overview-main.md %}) and [SodaCL]({% link soda-cl/soda-cl-overview.md %}) can do. 
-
-To exit the virtual environment in your command-line interface, type `deactivate` then press enter.<br />
+7. (Optional) If you like, adjust or add more checks to the `checks.yml` file to further explore the things that [SodaCL]({% link soda-cl/soda-cl-overview.md %}) can do. 
+8. To exit the virtual environment in your command-line interface, type `deactivate` then press enter.<br />
 OR <br />
 Continue to the next section to connect Soda Core to a Soda Cloud account.
 
@@ -173,7 +168,7 @@ Soda Core uses an API to connect to Soda Cloud. To use the API, you must generat
 
 
 1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. In a code editor, open the `configuration.yml` file (in the hidden `.soda` directory in your local home directory), then add the `soda_account` syntax to the file, as in the example below. 
+2. In a code editor, open your `configuration.yml` file, then add the `soda_cloud` syntax to the file, as in the example below. 
 ```yaml
 data_source my_database_name:
   type: postgres
@@ -193,11 +188,12 @@ soda_cloud:
 4. In Soda Cloud, navigate to **your avatar** > **Profile** > **API Keys**, then click the plus icon to generate new API keys.
     * Copy the **API Key ID**, then paste it into the `configuration.yml` file as the value for `api_key_id`.
     * Copy the **API Key Secret**, then paste it into the `configuration.yml` file as the value for `api_key_secret`.
-5. You may wish to securely store the values for the API keys as environment variables. Save the changes to the `configuration.yml` file. Close the **Create API Key** dialog box in your Soda Cloud account. 
+<br />You may wish to securely store the values for the API keys as [environment variables]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables). 
+5. Save the changes to the `configuration.yml` file. Close the **Create API Key** dialog box in your Soda Cloud account. 
 6. From the command-line, in your `soda_tutorial` directory, use Soda Core to scan the datasets in your data source again.<br />
 Command:
 ```shell
-soda scan -d my_database_name checks.yml
+soda scan -d my_database_name -c configuration.yml checks.yml
 ```
 Output:
 ```shell
@@ -209,8 +205,6 @@ Scan summary:
         check_value: 1329
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 Sending results to Soda Cloud
-> /api/command (login with API key credentials)
-< 200 (login ok, token received)
 ```
 7. Go to your Soda Cloud account in your browser and navigate to the **Monitors** dashboard. Review the results of your scan in **Monitor Results**. 
 <br />
@@ -230,9 +224,9 @@ To exit the virtual environment in your command-line interface, type `deactivate
 
 ## Go further
 
-* Explore the built-in metrics you can use to write checks with [SodaCL]({% link soda-cl/soda-cl-overview.md %}).
-* Access the complete set of <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core OSS documentation</a>.
-* Set up <a href="https://docs.soda.io/soda-core/programmatic-scans.html" target="_blank">programmatic scans</a> to automate data quality monitoring.
+* Consider completing the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}).
+* Explore the built-in [metrics and checks]({% link soda-cl/metrics-and-checks.md %}) you can use with SodaCL.
+* Set up [programmatic scans]({% link soda-core/programmatic.md %}) to automate data quality monitoring.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

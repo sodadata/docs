@@ -6,9 +6,9 @@ parent: Soda SQL
 ---
 <br />
 
-![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="200px" width="200px"} [![try-soda-core](/assets/images/try-soda-core.png){:height="160px" width="160px" align="right"}]({% link soda-cl/soda-cl-overview.md %})
+![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="200px" width="200px"} 
 <br />
-<br />
+{% include banner-sql.md %}
 
 <p>&#10004;  <a href="https://github.com/sodadata/soda-sql" target="_blank">Open-source software</a><br /></p>
 <p>&#10004;  <a href="https://docs.soda.io/soda-sql/installation.html">Install</a> from the command-line<br /></p>

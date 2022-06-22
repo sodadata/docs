@@ -2,7 +2,7 @@
 layout: default
 title: Schema checks
 description: Use a SodaCL (Beta) schema check to validate column presence, absence, or position in a table, or the type of data column contains.
-parent: SodaCL (Beta)
+parent: SodaCL
 ---
 
 # Schema checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
@@ -178,8 +178,8 @@ checks for dim_product:
 #### Example with for each
 
 ```yaml
-for each table T:
-  tables:
+for each dataset T:
+  datasets:
     - dim_product_%
   checks:
     schema:

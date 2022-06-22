@@ -2,7 +2,7 @@
 layout: default
 title: Freshness checks
 description: Use a SodaCL (Beta) freshness check to infer data freshness according to the age of the most recently added row in a table.
-parent: SodaCL (Beta)
+parent: SodaCL
 ---
 
 # Freshness checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
@@ -106,8 +106,6 @@ Invalid check "freshness(start_date) > 1d": no viable alternative at input ' >'
 
 #### Example with check name
 
-KNOWN ISSUE: Adding a customized name for a freshness check does not work. (CORE-12)
-
 ```yaml
 checks for dim_product:
   - freshness(start_date) < 27h:
@@ -146,8 +144,8 @@ checks for dim_product:
 #### Example with for each
 
 ```yaml
-for each table T:
-  tables:
+for each dataset T:
+  datasets:
     - dim_prod%
   checks:
     - freshness(end_date) < 3d

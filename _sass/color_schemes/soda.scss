@@ -863,3 +863,36 @@ body {
   
   }
   
+/* The alert message box */
+.alert {
+    padding: 20px 20px 20px 75px;
+    background-color: #F5F5F5;
+    color: black;
+    margin-bottom: 15px;
+    position: relative;
+
+    &::before {
+        content: '⚠';
+        position: absolute;
+        left: 20px;
+        top: 33px;
+        color: red;
+        font-size: 40px;
+    }
+
+    /* The close button */
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            color: grey;
+        }
+    }
+}

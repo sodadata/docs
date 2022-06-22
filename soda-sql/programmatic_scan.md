@@ -8,6 +8,8 @@ redirect_from: /soda-sql/documentation/programmatic_scan.html
 
 # Configure programmatic scans
 
+{% include banner-sql.md %}
+
 To automate the search for "bad" data, you can use the **Soda SQL Python library** to programmatically execute [scans]({% link soda/glossary.md %}#scan).
 
 Based on a set of conditions or a specific event schedule, you can instruct Soda SQL to automatically scan a [data source]({% link soda/glossary.md %}#data-source) for “bad” data. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.

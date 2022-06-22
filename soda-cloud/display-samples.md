@@ -10,11 +10,22 @@ parent: Soda Cloud
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda SQL</label>
-  <label class="tab" id="two-tab" for="two">Soda Cloud with Soda Core (Beta)</label>
+  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda Core (Beta)</label>
+  <label class="tab" id="two-tab" for="two">Soda Cloud with Soda SQL</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
+
+Sample data is unavailable for datasets added to Soda Cloud via Soda Core (Beta).
+
+Soon, you will be able to configure Soda Core to automatically send sample data to your Soda Cloud account. 
+
+[Soda Core documentation]({% link soda-core/overview-main.md %})<br />
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
+{% include banner-sql.md %}
 
 When creating new [monitors]({% link soda/glossary.md %}#monitor) in Soda Cloud, you may find it useful to review sample data from your [dataset]({% link soda/glossary.md %}#dataset) to help you determine the kinds of [tests]({% link soda-sql/tests.md %}) to run when Soda SQL scans your data; see the image below. For this reason, you may wish to use Soda SQL to to configure a `samples` [configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys).
 
@@ -37,15 +48,6 @@ Where your datasets contain sensitive or private information, you may *not* want
 {% include disable-all-samples.md %}
 
 If you use Soda SQL to programmatically schedule scans of individual datasets, you can configure Soda SQL to send a dataset's samples to a secure location within your organization's infrastructure, such as an Amazon S3 bucket or Google Big Query. Refer to [Reroute sample data]({% link soda-sql/samples.md %}#reroute-sample-data-for-a-dataset) for details.
-
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
-
-Sample data is unavailable for datasets added to Soda Cloud via Soda Core (Beta).
-
-Soon, you will be able to configure Soda Core to automatically send sample data to your Soda Cloud account. 
-
-[Soda Core documentation]({% link soda-core/overview-main.md %})<br />
 
   </div>
   </div>

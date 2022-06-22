@@ -8,6 +8,8 @@ redirect_from: /soda-sql/documentation/concepts.html
 
 # How Soda SQL works
 
+{% include banner-sql.md %}
+
 **Soda SQL** is a free, open-source command-line tool. It utilizes user-defined input to prepare SQL queries that run tests on dataset in a data source to find invalid, missing, or unexpected data. When tests fail, they surface the data that you defined as "bad" in the tests. Armed with this information, you and your data engineering team can diagnose where the "bad" data entered your data pipeline and take steps to prioritize and resolve issues.
 
 Use Soda SQL on its own to manually or programmatically scan the data that your organization uses to make decisions. Optionally, you can integrate Soda SQL with your data orchestration tool to schedule scans and automate actions based on scan results. Further, you can connect Soda SQL to a Soda Cloud account where you and your team can use the web application to monitor test results and collaborate to keep your data issue-free.

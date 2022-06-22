@@ -2,7 +2,7 @@
 layout: default
 title: Metrics and checks
 description: SodaCL uses metrics in checks for data quality in one or more datasets.
-parent: Soda CL (Beta)
+parent: Soda CL
 redirect_from:
 - /soda-cl/metrics-thresholds.html 
 ---

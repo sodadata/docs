@@ -2,7 +2,7 @@
 layout: default
 title: SodaCL optional check configurations
 description: Add optional configurations to your SodaCL checks to optimize and clarify.
-parent: SodaCL (Beta)
+parent: SodaCL
 redirect_from:
 - /soda-cl/quotes.html
 ---

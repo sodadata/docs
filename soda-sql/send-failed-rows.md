@@ -7,6 +7,8 @@ parent: Soda SQL
 
 # Send failed row samples to Soda Cloud
 
+{% include banner-sql.md %}
+
 When a [scan]({% link soda/glossary.md %}#scan) results in a failed [test]({% link soda/glossary.md %}#test), the CLI output displays information about the test that failed and why.  To offer more insight into the data that failed a test, [Soda Cloud]({% link soda-cloud/soda-cloud-architecture.md %}) displays **failed rows** in a monitor's history. 
 
 There are three ways you can configure Soda SQL to send failed row samples to your Soda Cloud account:

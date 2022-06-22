@@ -8,6 +8,8 @@ redirect_from: /soda-sql/documentation/tests.html
 
 # Define tests
 
+{% include banner-sql.md %}
+
 A **test** is a check that Soda SQL performs when it scans a dataset in your data source. Technically, it is a Python expression that, during a Soda SQL scan, checks metrics to see if they match the parameters you defined for a measurement. A single Soda SQL scan runs against a single [dataset]({% link soda/glossary.md %}#dataset) in your [data source]({% link soda/glossary.md %}#data source), but each scan can run multiple tests against multiple columns.
 
 As a result of a [scan]({% link soda/scan.md %}), each test either passes or fails. When a test fails, it means that a property of the data in your dataset did not match the test parameters you defined. In other words, any test that returns `true` during a Soda SQL scan passes; any test that returns `false`, fails.

@@ -18,14 +18,14 @@ To set the data source configurations, use the following example configurations 
 [Connect to GCP BigQuery](#connect-to-gcp-bigquery)<br />
 [Connect to PostgreSQL](#connect-to-postgresql)<br />
 [Connect to Snowflake](#connect-to-snowflake)<br />
-[Add prefixes to tables](#add-prefixes-to-tables)<br />
+[Add prefixes to datasets](#add-prefixes-to-datasets)<br />
 [Connect Soda Core to Soda Cloud](#connect-soda-core-to-soda-cloud)<br />
 <br />
 
 
 {% include core-datasource-config.md %}
 
-## Add prefixes to tables
+## Add prefixes to datasets
 
 To assist in identifying details when Soda Core scans your data with the verbose option, you can add a prefix to the name of a table with the name of a database or schema. Use the data source property `table_prefix` according to the following example.
 

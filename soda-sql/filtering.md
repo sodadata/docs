@@ -8,6 +8,8 @@ redirect_from: /soda-sql/documentation/filtering.html
 
 # Apply filters
 
+{% include banner-sql.md %}
+
 To test specific portions of data for quality, you can apply dynamic **filters** when you [scan]({% link soda/glossary.md %}#scan) data in your [warehouse]({% link soda/glossary.md %}#warehouse). To do so, you define a filter [configuration key]({% link soda/glossary.md %}#configuration-key) in your [scan YAML]({% link soda/glossary.md %}#scan-yaml) file, then add a variable to the `soda scan` command that specifies a portion of data for Soda SQL to scan instead of scanning a larger data set. When you add a variable, Soda SQL adds a filter to the `WHERE` clause of the SQL queries it creates to scan your data. Refer to [How Soda SQL works]({% link soda-sql/concepts.md %}) to learn more. 
 
 For example, where a `CUSTOMER_TRANSACTIONS` [table]({% link soda/glossary.md %}#table) has a `DATE` column, you may wish to run a scan only against the newest data added to the table. In such a case, you can apply a filter for a specific date so that Soda SQL only scans data associated with that date.

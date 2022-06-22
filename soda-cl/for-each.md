@@ -1,8 +1,8 @@
 ---
 layout: default
 title: For each checks
-description: Use a SodaCL (Beta) for each check to specify a list of checks you wish to execute on a multiple tables. 
-parent: SodaCL (Beta)
+description: Use a SodaCL (Beta) for each check to specify a list of checks you wish to execute on a multiple datasets. 
+parent: SodaCL
 ---
 
 # For each ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
@@ -10,8 +10,8 @@ parent: SodaCL (Beta)
 Use a for each configuration to execute checks against multiple datasets during a scan.
 
 ```yaml
-for each table T:
-  tables:
+for each dataset T:
+  datasets:
     - dim_products%
     - fact%
     - exclude fact_survey_response

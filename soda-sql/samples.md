@@ -10,6 +10,8 @@ redirect_from:
 
 # Send sample data to Soda Cloud
 
+{% include banner-sql.md %}
+
 When creating new [monitors]({% link soda/glossary.md %}#monitor) in Soda Cloud, you may find it useful to review sample data from your [dataset]({% link soda/glossary.md %}#dataset) to help you determine the kinds of [tests]({% link soda-sql/tests.md %}) to run when Soda SQL scans your data; see the image below. For this reason, you may wish to configure a `samples` [configuration key]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys) in Soda SQL.
 
 ![sample-data](/assets/images/sample-data.png){:height="650px" width="650px"}

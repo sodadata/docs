@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Anomaly score checks
-description: 
+description: Anomaly score checks use a machine learning algorithm to automatically detect anomalies in your time-series data.
 parent: Soda CL 
 ---
 
@@ -125,8 +125,8 @@ checks for "dim_customer":
 #### Example with for each
 
 ```yaml
-for each table T:
-  tables:
+for each dataset T:
+  datasets:
     - dim_customer
   checks:
     - anomaly score for row_count < default

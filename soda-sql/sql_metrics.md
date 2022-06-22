@@ -8,6 +8,8 @@ redirect_from: /soda-sql/documentation/sql_metrics.html
 
 # Configure metrics in Soda SQL
 
+{% include banner-sql.md %}
+
 A **metric** is a property of the data in your database. A **measurement** is the value for a metric that Soda SQL checks against during a scan. The following sections detail the configuration for metrics you can customize in your [scan YAML file]({% link soda-sql/scan-yaml.md %}).
 
 Read more about [Metrics]({% link soda/metrics.md %}) in general as they apply to both Soda SQL and Soda Cloud. 

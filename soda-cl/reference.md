@@ -2,7 +2,7 @@
 layout: default
 title: Reference checks
 description: Use a SodaCL (Beta) reference check to validate that the values in a column in a table are present in a column in a different table. 
-parent: SodaCL (Beta)
+parent: SodaCL
 ---
 
 # Reference checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}

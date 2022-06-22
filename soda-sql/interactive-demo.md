@@ -7,6 +7,8 @@ parent: Get started
 
 # Soda SQL interactive demo
 
+{% include banner-sql.md %}
+
 See just how easy it is to set up and use Soda SQL.
 
 <iframe class="demo-iframe" src="https://try.soda.io/?stepId=step0"></iframe>

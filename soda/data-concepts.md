@@ -2,7 +2,7 @@
 layout: default
 title: Data concepts
 description: Data quality is all about making sure that people can trust the data they use. Ensuring data reliability involves layers of tools and best practices.
-parent: Concepts
+parent: Reference
 redirect_from: /soda/data-monitoring.html
 ---
 

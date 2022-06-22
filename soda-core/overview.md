@@ -74,10 +74,10 @@ checks for PRODUCTS:
   - values in organization_key must exist in dim_organization organization_key
 ```
 
-Dynamic for each checks on multiple tables:
+Dynamic for each checks on multiple datasets:
 ```yaml
-for each table T:
-  tables: 
+for each dataset T:
+  datasets: 
     - PRD_%
   checks:
     - row_count > 0

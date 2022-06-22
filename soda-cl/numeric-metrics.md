@@ -2,7 +2,7 @@
 layout: default
 title: Numeric metrics
 description: Use numeric metrics in SodaCL checks for data quality.
-parent: Soda CL (Beta)
+parent: Soda CL
 redirect_from: soda-cl/duplicates.html
 ---
 
@@ -64,7 +64,7 @@ checks for dim_reseller:
 # a check with a fixed threshold
   - duplicate_count(phone) = 0
 # a check with a dynamic threshold
-  - change avg last 7 days row_count < 50
+  - change avg last 7 days for row_count < 50
 ```
 
 ### Send failed rows to Soda Cloud
@@ -131,8 +131,8 @@ coming soon
 #### Example with for each
 
 ```yaml
-for each table T:
-  tables:
+for each dataset T:
+  datasets:
     - dim_product
     - dim_customer
     - dim reseller
@@ -151,7 +151,7 @@ for each table T:
 | `max_length`  | The greatest length in a text column. | text | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `min`  | The smallest value in a numeric column. | number<br /> time | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `min_length`  | The smallest length in a text column. | text | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake  |
-| `percentile` , percentage | The value below which a percentage of observations fall within a group of observations. <br /> For example, `percentile(distance, 0.7)`. | number | PostgreSQL |
+| `percentile` | The value below which a percentage of observations fall within a group of observations. <br /> For example, `percentile(distance, 0.7)`. | number | PostgreSQL |
 | `row_count` | The number of rows in a dataset or column, if specified. | number<br /> text<br /> time | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake |
 | `stddev`  | The calculated standard deviation of values in a numeric column. | number | PostgreSQL |
 | `stddev_pop`  | The calculated population standard deviation of values in a numeric column. | number |  PostgreSQL |
@@ -170,11 +170,9 @@ for each table T:
 
 Numeric metrics can specify a **fixed threshold** which is not relative to any other threshold. `row_count > 0` is an example of a check with a fixed threshold as the threshold value, `0`, is absolute. Refer to [Checks with fixed thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) for details.
 
-Only checks that use numeric metrics can specify a **dynamic threshold**, a value that is relative to a previously-measured, or historic, value. Sometimes referred to a change-over-time threshold, you use these dynamic thresholds to gauge changes to the same metric over time. 
+Only checks that use numeric metrics can specify a **dynamic threshold**, a value that is relative to a previously-measured, or historic, value. Sometimes referred to as a change-over-time threshold, you use these dynamic thresholds to gauge changes to the same metric over time. Most of the examples below use the `row_count` metric, but you can use any numeric metric in checks that use dynamic thresholds. 
 
 If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account. Soda Cloud stores the measured value of each metric that a check result produces during a scan in a Cloud Metric Store. Over time, these historic values accumulate and you can reference them to detect anomalous values relative to historic values for the same metric. Therefore, you must have a Soda Cloud account to use dynamic thresholds.
-
-<br />
 
 The most basic of dynamic threshold checks has three or four mutable parts:
 
@@ -185,17 +183,35 @@ The most basic of dynamic threshold checks has three or four mutable parts:
 
 <br />
 
-The example below defines a check that applies to the entire dataset and counts the rows in the dataset, then compares that value to the preceding value contained in the Cloud Metric Store. If the `row_count` at present is greater than the previously-recorded historic value for `row_count` by more than 49, the check fails.
+The example below defines a check that applies to the entire dataset and counts the rows in the dataset, then compares that value to the preceding value contained in the Cloud Metric Store. If the `row_count` at present is greater than the previously-recorded historic value for `row_count` by more than 50 or less than -20, the check fails. 
+
+Use `between` for checks with dynamic thresholds as much as possible to trigger check failures when the measurement falls outside of a range of acceptable values. This practice ensures that you get visibility into changes that either exceed or fall short of threshold expectations. 
 
 ```yaml
 checks for dim_customer:
-  - change row_count < 50
+  - change for row_count between -20 and +50
 ```
 
+| metric |`row_count` |
+| threshold | `between -20 and +50` |
+
+<br />
+
+The example below defines a check that applies to the entire dataset and counts the rows in the dataset, then compares that value to the preceding value contained in the Cloud Metric Store. If the `row_count` at present is greater than the previously-recorded historic value for `row_count` by more than 50%, the check fails. 
+
+For example, the previously-recorded historic measurement for row count is 80, and the newly-recorded value is 100, the relative change is 25%, which is less than the 50% specified in the threshold, so the check passes.
+* Percentage thresholds are between 0 and 100, not between 0 and 1. 
+* If you wish, you can add a `%` character to the threshold for a dynamic threshold for improved readability.   
+* If the previous measurement value is 0 and the new value is 0, Soda calculates the relative change as 0%. However, if the previous measurement value is 0 and the new value is not 0, then Soda indicates the check as `NOT EVALUATED` because the calculation is a division by zero. 
+
+```yaml
+checks for dim_customer:
+  - change percent for row_count > 50%
+```
 
 | metric |`row_count` |
 | comparison symbol | `>` |
-| threshold | `50` | 
+| threshold | `50 %` | 
 
 <br />
 
@@ -203,7 +219,7 @@ The example below applies to only the `phone` column in the dataset and counts t
 
 ```yaml
 checks for dim_customer:
-  - change duplicate_count(phone) < 20
+  - change for duplicate_count(phone) < 20
 ```
 
 | metric | `duplicate_count` |
@@ -216,7 +232,8 @@ checks for dim_customer:
 A more complex dynamic threshold check includes two more optional mutable parts:
 
 | a calculation type (optional) `avg`, `min`, `max`|
-| a count (optional) |
+| a historical value definition (optional) |
+| percent (optional) |
 | a metric | 
 | an argument (optional) | 
 | a comparison symbol or phrase| 
@@ -227,16 +244,47 @@ A more complex dynamic threshold check includes two more optional mutable parts:
 
 ```yaml
 checks for dim_customer:
-  - change avg last 7 days row_count < 50
-  - change min last 7 days row_count < 50
-  - change max last 7 days row_count < 50
+  - change avg last 7 days for row_count < 50
+  - change min last 7 days for row_count < 50
+  - change max last 7 days percent for row_count < 50
 ```
  
-The example above defines three checks, one for each type of calculation available to use, `avg`, `min`, and `max`, all of which apply to the entire dataset. Each check value uses a count of `7` which refers to the values collected over the course of the preceding seven days. 
+The example above defines three checks, one for each type of calculation available to use, `avg`, `min`, and `max`, all of which apply to the entire dataset.  
 
-The first check counts the rows in the dataset, then compares that value to the calculated average of the preceding seven values for that metric contained in the Cloud Metric Store. If the `row_count` at present is greater than the average of the seven preceding historic values by more than 50, the check fails. 
+The first check counts the rows in the dataset, then compares that value to the calculated average of the preceding seven measurement values for that metric contained in the Cloud Metric Store. If the `row_count` at present is greater than the average of the seven preceding historic values by more than 50, the check fails. 
 
-The second and third checks in the example determine the minimum value and maximum value of the preceding seven historic values respectively, then use that value to compare to the present value.
+| calculation type (optional) | `avg` |
+| a historical value definition (optional) | `last 7 days`
+| percent (optional) | - |
+| metric | `row_count` |
+| argument (optional) | - |
+| comparison symbol or phrase| `<` |
+| a threshold | `50` |
+
+<br />
+
+The second check in the example determines the minimum value of the preceding seven historic values, then uses that value to compare to the present measurement value. 
+
+| calculation type (optional) | `min` |
+| historical value definition (optional) | `last 7 days`
+| percent (optional) | - |
+| metric | `row_count` |
+| argument (optional) | - |
+| comparison symbol or phrase| `<` |
+| a threshold | `50` |
+
+<br />
+
+The third check in the example determines the maximum value of the preceding seven historic values, then uses that value and the present measurement value to calculate the percentage of change. 
+
+| calculation type (optional) | `max` |
+| historical value definition (optional) | `last 7 days`
+| percent (optional) | `percent` |
+| metric | `row_count` |
+| argument (optional) | - |
+| comparison symbol or phrase| `<` |
+| a threshold | `50` |
+
 
 ## Go further
 

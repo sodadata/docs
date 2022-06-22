@@ -10,23 +10,13 @@ redirect_from: /soda-sql/documentation/scan.html
 
 A **scan** is a command that executes [tests]({% link soda/glossary.md %}#test) to extract information about data in a [dataset]({% link soda/glossary.md %}#dataset).
 
-<div class="warpper">
-  <input class="radio" id="one" name="group" type="radio" checked>
-  <input class="radio" id="two" name="group" type="radio">
-  <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Soda SQL</label>
-  <label class="tab" id="two-tab" for="two">Soda Core (Beta)</label>
-    </div>
-  <div class="panels">
-  <div class="panel" id="one-panel" markdown="1">
-
 Soda SQL uses the input in the scan YAML file and Soda Cloud monitors to prepare SQL queries that it runs against the data in a dataset. All tests return true or false; if true, the test passed and you know your data is sound; if false, the test fails which means the scan discovered data that falls outside the expected or acceptable parameters you defined in your test.
 
 [Run a scan in Soda SQL](#run-a-scan-in-soda-sql)<br />
 [Scan output in Soda SQL](#scan-output-in-soda-sql)<br />
 [Programmatically use scan output](#programmatically-use-scan-output)<br />
 [Add scan options](#add-scan-options)<br />
-[Scan output in Soda Cloud](#scan-output-in-soda-cloud)<br />
+[Scan output in Soda Cloud](#scan-output-in-soda-cloud) <br />
 [Overwrite scan output in Soda Cloud](#overwrite-scan-output-in-soda-cloud)<br />
 [Go further](#go-further)<br />
 
@@ -85,7 +75,7 @@ Soda SQL uses a secure API to connect to Soda Cloud. When it completes a scan, S
 1. pushes the results of any tests you configured in the scan YAML file to Soda Cloud
 2. fetches tests associated with any monitors you created in Soda Cloud, then executes the tests and pushes the test results to Soda Cloud
 
-![scan-with-cloud](/assets/images/scan-with-cloud.png){:height="350px" width="350px"}
+![scan-with-cloud-sql](/assets/images/scan-with-cloud-sql.png){:height="350px" width="350px"}
 
 
 ## Overwrite scan output in Soda Cloud
@@ -99,17 +89,6 @@ soda scan -t 2021-04-28T09:00:00+02:00 warehouse.yml tables/orders.yml
 ```
 
 See [Add scan option](#add-scan-options) for more scan options.
-
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
-**Soda Core (Beta)** is a free, open-source, command-line tool that enables you to use the **Soda Checks Language (Beta)** to turn user-defined input into aggregated SQL queries.
-
-Access the [Soda Core (Beta) documentation]({% link soda-core/scan-core.md %}) to learn more about scans in Soda Core.
-
-  </div>
-  </div>
-</div>
-
 
 
 ## Go further
