@@ -91,7 +91,7 @@ Before defining a distribution check, you must generate a distribution reference
 
 When you run a distribution check, Soda compares the data in a column of your dataset with a snapshot of the same column at a different point in time. This snapshot exists in the DRO, which serves as a point of reference. The distribution check result indicates whether the difference between the distributions of the snapshot and the actual datasets is statistically significant.
 
-To create a DRO, you use the CLI command `soda update`. When you execute the command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory. 
+To create a DRO, you use the CLI command `soda update-dro`. When you execute the command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory. 
 
 1. If you have not already done so, create a directory to contain the files that Soda uses for a distribution check.
 2. Use a code editor to create a file called `distribution_reference.yml` (though, you can name it anything you wish) in your Soda project directory, then add the following example content to the file.
@@ -106,9 +106,9 @@ filter: "column_name between '2010-01-01' and '2020-01-01'"
 4. (Optional) Change the value for `distribution_type` to capture `categorical` or `continuous` data.
 5. (Optional) Define the value of `filter` to specify the portion of the data in your dataset for which you are creating a DRO. If you trained a model on data in which the `date_first_customer` column contained values between 2010-01-01 and 2020-01-01, you can use a filter based on that period to test whether the distribution of the column has changed since then. <br />
 If you do not wish to define a filter, remove the key-value pair from the file.
-6. Save the file, then, while still in your Soda project directory, run the `soda update` command to create a distribution reference object. For a list of options available to use with the command, run `soda update --help`. 
+6. Save the file, then, while still in your Soda project directory, run the `soda update-dro` command to create a distribution reference object. For a list of options available to use with the command, run `soda update-dro --help`. 
 ```bash
-soda update -d your_datasource_name -c your_configuration_file.yaml ./distribution_reference.yaml 
+soda update-dro -d your_datasource_name -c your_configuration_file.yaml ./distribution_reference.yaml 
 ```
 7. Review the changed contents of your `distribution_reference.yml` file. The following is an example of the information that Soda added to the file.
 
