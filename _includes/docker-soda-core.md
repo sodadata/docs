@@ -20,7 +20,7 @@ Output:
 
     Commands:
     scan    runs a scan
-    update  updates a distribution reference file
+    update-dro  updates a distribution reference file
     ```
 When you run the Docker image on a non-Linux/amd64 platform, you may see the following warning from Docker, which you can ignore.
 ```shell
