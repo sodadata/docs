@@ -122,7 +122,7 @@ If you do not wish to define a filter, remove the key-value pair from the file.
 ```bash
 soda update -d your_datasource_name -c your_configuration_file.yaml ./distribution_reference.yaml 
 ```
-If you defined multiple DROs in your `distribution_reference.yml` file, specify which DRO you want to update using the `-n` argument.
+If you defined multiple DROs in your `distribution_reference.yml` file, specify which DRO you want to update using the `-n` argument. `-n` stands for name
 ```bash
 soda update -n dro_name1 -d your_datasource_name -c your_configuration_file.yaml ./distribution_reference.yaml 
 ```
