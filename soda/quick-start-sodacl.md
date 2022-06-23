@@ -19,6 +19,7 @@ If you are staring at a blank YAML file wondering what SodaCL checks to write to
 [Freshness check](#freshness-check)<br />
 [Missing and invalid checks](#missing-and-invalid-checks)<br />
 [Reference checks](#reference-checks)<br />
+[Schema checks](#schema-checks)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -71,6 +72,11 @@ checks for dataset_name:
   - row_count same as other_dataset_name
 ```
 
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
+```
+
 ### Read more
 * [Numeric metrics]({% link soda-cl/numeric-metrics.md %})
 * [Standard check pattern]({% link soda-cl/metrics-and-checks.md %}#check-types)
@@ -99,6 +105,11 @@ checks for dataset_name:
   - duplicate_count(column_name1, column_name2) = 0
 ```
 
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
+```
+
 ### Read more
 * [Numeric metrics]({% link soda-cl/numeric-metrics.md %})
 
@@ -113,6 +124,11 @@ In this example, the check fails if the most-recently added row (in other words,
 # Check that data in dataset is less than one day old
 checks for dataset_name:
   - freshness(timestamp_column_name) < 1d
+```
+
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
 ```
 
 ### Read more
@@ -155,6 +171,11 @@ checks for dataset_name:
       missing values: [N/A, '0000', none]
 ```
 
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
+```
+
 ### Read more
 * [Missing metrics]({% link soda-cl/missing-metrics.md %})
 * [Validity metrics]({% link soda-cl/validity-metrics.md %})
@@ -178,6 +199,11 @@ If you wish, you can compare the values of multiple columns in one check. Soda c
 # Check that values in two columns exist in two other columns in a different dataset
 checks for dataset_name:
   - values in (column_name1, column_name2) must exist in different_dataset_name (other_column1, other_column2)
+```
+
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
 ```
 
 ### Read more
@@ -215,7 +241,12 @@ checks for dataset_name:
         when forbidden column present: [column_name1, column_name2]
 ```
 
-Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a warn and a fail, the check result only displays the more severe, failed check result.
+Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a warn and a fail, the check result only displays the more severe, failed check result. [Read more]({% link soda-cl/schema.md %}#expect-one-check-result).
+
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
+```
 
 ### Read more
 * [Alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations)
