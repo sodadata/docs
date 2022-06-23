@@ -79,7 +79,7 @@ checks for dataset_name:
 
 ## Duplicate check
 
-For the nearly universal use case of making sure that values in a column are not duplicated, you can use the `duplicate_count` metrics. In the following example, Soda counts the number of duplicate values in the `column_name` column, identified as the value in parentheses appended to the metric. If there is even one value that is a duplicate of another, the check result is fail.
+For the nearly universal use case of making sure that values in a column are not duplicated, you can use the `duplicate_count` metrics. In the following example, Soda counts the number of duplicate values in the `column_name` column, identified as the argument in parentheses appended to the metric. If there is even one value that is a duplicate of another, the check result is fail.
 
 This type of check is useful when, for example, you need to make sure that values in an `id` column are unique, such `customer_id` or `product_id`.
 
@@ -91,12 +91,12 @@ checks for dataset_name:
 
 <br />
 
-If you wish, you can quickly check for duplicate values in multiple columns in a single check. Note that `duplicate_count` only compares values in the same column, it does not compare the values in one column to values in another column to surface duplicates. (However, you *can* compare column values using a [reference check](#reference-checks)!)
+If you wish, you can quickly check for duplicate values across multiple columns. In the following example, Soda counts the number of values in `column_name1` that are duplicates of values in `column_name2`. This type of check is useful when, for example, you need to make sure that order numbers or other unique identifiers are not duplicated.
 
 ```yaml
-# Check that neither column contains any duplicate values
+# Check that duplicate values do not exist across columns
 checks for dataset_name:
-  - duplicate_count(column_name, column_name1, column_name2) = 0
+  - duplicate_count(column_name1, column_name2) = 0
 ```
 
 ### Read more
