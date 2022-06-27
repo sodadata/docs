@@ -215,11 +215,11 @@ parent: Reference
 
 #### November 23, 2021
 
-* Revised the [Quick start tutorial for Soda SQL]({% link soda-sql/quick-start-soda-sql.md %}) to use the same demo repo as the [interactive demo]({% link soda-sql/interactive-demo.md %}).
+* Revised the [Quick start tutorial for Soda SQL]({% link soda-sql/quick-start-soda-sql.md %}) to use the same demo repo as the interactive demo.
 
 #### November 15, 2021
 
-* Added a new, embedded [interactive demo]({% link soda-sql/interactive-demo.md %}) for Soda SQL.
+* Added a new, embedded interactive demo for Soda SQL.
 * New documentation to accompany the soft-launch of [Soda Spark]({% link soda-spark/install-and-use.md %}), an extension of Soda SQL functionality.
 
 #### November 9, 2021

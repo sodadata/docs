@@ -3,8 +3,6 @@
   subcategories:
   - subtitle: Soda SQL
     page: soda-sql/overview.md
-  - subtitle: Soda SQL interactive demo
-    page: soda-sql/interactive-demo.md
   - subtitle: Quick start for Soda SQL and Soda Cloud
     page: soda-sql/quick-start-soda-sql.md
   - subtitle: How Soda SQL works

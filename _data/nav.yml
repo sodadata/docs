@@ -2,8 +2,10 @@
   page: index.html
 
 - title: Get started
-  page: soda/quick-start-soda-core.md
+  page: soda/core-interactive-demo.md
   subcategories:
+  - subtitle: Soda Core Interactive demo
+    page: soda/core-interactive-demo.md
   - subtitle: Quick start for Soda Core and Soda Cloud
     page: soda/quick-start-soda-core.md
   - subtitle: Quick start for SodaCL
