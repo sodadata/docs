@@ -144,19 +144,19 @@ for each dataset T:
 
 | Metric  | Description | Supported data type | Supported data sources |
 | ------  | ----------- | ------------------- | ---------------------- |
-| `avg`  | The average value in a numeric column. | number | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake  |
-| `avg_length`  | The average length in a text column. | text | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake  |
-| `duplicate_count`  | The number of rows that contain duplicate values, relative to the column. | number<br /> text<br /> time | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake  |
-| `max`  | The greatest value in a numeric column. | number<br /> time | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake  |
-| `max_length`  | The greatest length in a text column. | text | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake  |
-| `min`  | The smallest value in a numeric column. | number<br /> time | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake  |
-| `min_length`  | The smallest length in a text column. | text | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `avg`  | The average value in a numeric column. | number | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `avg_length`  | The average length in a text column. | text | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `duplicate_count`  | The number of rows that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>Include more than one column in the argument to compare values across columns. See [Duplicate check]({% link soda/quick-start-sodacl.md %}#duplicate-check)| number<br /> text<br /> time | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `max`  | The greatest value in a numeric column. | number<br /> time | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `max_length`  | The greatest length in a text column. | text | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `min`  | The smallest value in a numeric column. | number<br /> time | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `min_length`  | The smallest length in a text column. | text | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `percentile` | The value below which a percentage of observations fall within a group of observations. <br /> For example, `percentile(distance, 0.7)`. | number | PostgreSQL |
-| `row_count` | The number of rows in a dataset or column, if specified. | number<br /> text<br /> time | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake |
+| `row_count` | The number of rows in a dataset or column, if specified. | number<br /> text<br /> time | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake |
 | `stddev`  | The calculated standard deviation of values in a numeric column. | number | PostgreSQL |
 | `stddev_pop`  | The calculated population standard deviation of values in a numeric column. | number |  PostgreSQL |
 | `stddev_samp`  | The calculated sample standard deviation of values in a numeric column. | number | PostgreSQL |
-| `sum`  | The calculated sum of the values in a numeric column. | number | Athena <br /> Redshift <br >  Big Query <br /> PostgreSQL <br /> Snowflake  |
+| `sum`  | The calculated sum of the values in a numeric column. | number | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake  |
 | `variance`  | The calculated variance of the values in a numeric column. | number<br /> time | PostgreSQL |
 | `var_pop`  | The calculated population variance of the values in a numeric column. | number<br /> time | PostgreSQL |
 | `var_samp`  | The calculated sample variance of the values in a numeric column.| number<br /> time | PostgreSQL |
