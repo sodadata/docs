@@ -91,7 +91,7 @@
     page: soda-cloud/roles-and-rights.md
   - subtitle: Add a data source
     page: soda-cloud/add-datasource.md
-  - subtitle: Create agreements
+  - subtitle: Create an agreement
     page: soda-cloud/agreements.md
   - subtitle: Scan output
     page: soda-cloud/scan-output.md

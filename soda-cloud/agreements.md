@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Create agreements
+title: Create an agreement
 description: 
 parent: Soda Cloud
 redirect_from: /soda-cloud/monitors.html
 ---
 
-# Create agreements
+# Create an agreement in Soda Cloud
 
 An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
 
@@ -14,26 +14,30 @@ Use SodaCL checks to define the state of "good quality" for data in this data so
 
 ## Prerequisites
 
-* An [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account has [connected]({% link soda-core/configure.md %}#connect-soda-core-to-soda-cloud) it to a configured instance of Soda Core <br /> OR <br /> you have [added a new datasource]({% link soda-cloud/datasource.md %}) from your Soda Cloud account.
-* (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud sends notifications via email.
+* You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
+* You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [added a new datasource]({% link soda-cloud/add-datasource.md %}) in your Soda Cloud account.
+* (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud can send notifications via email.
 
 ## Create a new agreement
 
-For a new agreement, you define several details including which data to check, what checks to run, and whom to notify when bad data triggers an alert.
+For a new agreement, you define several details including which data to check, what checks to execute during a scan, and whom to notify when bad data triggers an alert.
 
-In Soda Cloud, navigate to the **Agreements** dashboard, then click **New Agreement**. Follow the guided steps to complete the new agreement. Use the tables below for reference when completing the steps.  
+In Soda Cloud, navigate to the **Agreements** dashboard, then click **New Agreement**. Follow the guided steps to complete the new agreement. Use the sections below for insight into the values to enter in the fields and editing panels in the guided steps. .  
 
 #### 1. Select a Data Source
 
 | Field or Label  | Guidance |
 | -----------------  | ----------- |
+| Agreement Label  | Provide a name for your agreement. |
+| Data Source | Select the data source to which your agreement applies. See [Create a data source]({% link soda-cloud/add-datasource.md %}).|
 
 <br />
 
 #### 2. Write Checks
 
-| Field or Label  | Guidance |
-| -----------------  | ----------- |
+Use [SodaCL]({% link soda-cl/soda-cl-overview.md %}) to define the checks that Soda Cloud executes on a regular schedule to uphold the tenets of this agreement. If any of these checks fail during a regularly-scheduled scan, Soda Cloud notifies the stakeholders you specify in the Notifications section.
+
+For help writing your first checks, consider following the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}).
 
 <br />
 
