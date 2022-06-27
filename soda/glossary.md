@@ -11,6 +11,9 @@ redirect_from:
 # Glossary
 <!--This glossary contains Soda-specific terms only. Do not define industry terminology such as "SQL" or "query".-->
 
+#### agreement
+A collection of checks that serve as a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
+
 ### alert
 A setting that you configure in a Soda Cloud monitor by specifying key:value thresholds which, if exceeded, trigger a notification. See also: [notification](#notification).
 
@@ -61,6 +64,12 @@ A setting you configure in a Soda Cloud monitor that defines whom to notify when
 
 ### scan
 {% include glossary-scan.md %}
+
+#### scan definition
+A collection of checks YAML files that Soda Cloud collects when it executes a scan on a data source.
+
+#### Soda Agent
+The Helm chart you deploy in your Kubernetes cluster to faciliate a secure connection between your Soda Cloud account and your data sources. See [Deploy a Soda Agent]({% link soda-agent/deploy.md %}).
 
 ### SodaCL 
 The domain-specific language to define Soda Checks in a checks YAML file. A Soda Check is a test that Soda Core executes when it scans a dataset in your data source. See [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %}).

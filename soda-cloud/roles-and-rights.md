@@ -17,7 +17,7 @@ To manage the actions of members that belong to a single organization, Soda Clou
 [Change the default access to datasets](#change-the-default-access-to-datasets)<br />
 [Change access to a dataset](#change-access-to-a-dataset)<br />
 [Review member licenses](#review-member-licenses)<br />
-[Dataset and monitor owners](#dataset-and-monitor-owners)<br />
+[Data source, dataset, and check owners](#data-source-dataset-and-check-owners) <br />
 [Go further](#go-further)<br />
 <br />
 
@@ -170,13 +170,12 @@ Each Soda Cloud Plan (Soda Teams or Soda Enterprise) includes a specific number 
 2. Access the **Members** tab to view a list of people who have access to your Soda Cloud account, the role they have in the organization (Admin or User), and their License status (Author or Viewer). 
 3. Click a member's **Author** or **Viewer** label in the License column to access a **Responsibilities** window that lists the member's access to resources (datasets and monitors), the role they hold for each resource, and their license status relative to the resource.
 
-## Dataset and monitor owners
+## Data source, dataset, and check owners
 
-There are two ownership roles in Soda Cloud that identify the member that owns a dataset or monitor. These ownership roles do not enforce any rights or permissions on the datasets or monitors, they are simply identifiers.
+There are three ownership roles in Soda Cloud that identify the member that owns a data source, a dataset, or a check. These ownership roles do not enforce any rights or permissions on these resources, they are simply identifiers.
 
-* By default, the member who created the [API keys]({% link soda-core/connect-core-to-cloud.md %}) that link Soda Core to Soda Cloud becomes the **Dataset Owner** of all existing datasets that already had connections to Soda Core. The default role that Soda Cloud assigns to the Dataset Owner is that of Manager.
-* By default, any member who uses Soda Core to add a new dataset to the Soda Cloud account becomes the Dataset Owner. The default role that Soda Cloud assigns to the Dataset Owner is that of Manager.
-* By default, the member who creates a monitor become the **Monitor Owner**. 
+* By default, the member who [created the data source]({% link soda-cloud/add-datasource.md %}) becomes the **Data Source Owner** and **Dataset Owner** of all datasets in that data source. The default role that Soda Cloud assigns to the Dataset Owner is that of Manager.
+* By default, the member who [creates an agreement]({% link soda-cloud/agreements.md %}) become the **Check Owner**. 
 <br />
 <br />
 

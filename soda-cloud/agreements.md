@@ -3,11 +3,12 @@ layout: default
 title: Create agreements
 description: 
 parent: Soda Cloud
+redirect_from: /soda-cloud/monitors.html
 ---
 
 # Create agreements
 
-An agreement is contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
+An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
 
 Use SodaCL checks to define the state of "good quality" for data in this data source, then identify and get approval from stakeholders in your organization. Define whom Soda Cloud will notify when a check in this Agreement fails, then set a schedule to regularly execute the Soda Checks to uphold the tenets of the agreement.
 
@@ -24,19 +25,24 @@ In Soda Cloud, navigate to the **Agreements** dashboard, then click **New Agreem
 
 #### 1. Select a Data Source
 
-| Field or Label  | Description |
+| Field or Label  | Guidance |
 | -----------------  | ----------- |
+
+<br />
 
 #### 2. Write Checks
 
-| Field or Label  | Description |
+| Field or Label  | Guidance |
 | -----------------  | ----------- |
+
+<br />
 
 #### 3. Identify Stakeholders
 
-| Field or Label  | Description |
+| Field or Label  | Guidance |
 | -----------------  | ----------- |
 
+<br />
 
 #### 4. Set Notifications
 
@@ -44,13 +50,15 @@ By default, Soda Cloud includes two out-of-the-box email notifications: one for 
 
 Note that Soda Cloud does not send an email or Slack notification when a scan fails, only when checks fail. 
 
-| Field or Label  | Description |
+| Field or Label  | Guidance |
 | -----------------  | ----------- |
 |                    | If you have integrated your Soda Cloud account with Slack, use this field to type a channel name to add to the notification list of people included by default. Alternatively, use the field to enter names of teammates with whom you collaborate in Soda Cloud. |
 
+<br />
+
 #### 5. Set a Scan Schedule
 
-| Field or Label  | Description |
+| Field or Label  | Guidance |
 | -----------------  | ----------- |
 
 
@@ -58,6 +66,7 @@ Note that Soda Cloud does not send an email or Slack notification when a scan fa
 After you have set up a new agreement, Soda Cloud sends approval requests to the stakeholders you identified in step 3. when stakeholders approve or reject your agreement, Soda Cloud sends you an email notification.
 
 Regardless of the approval status of the agreement, however, Soda Cloud begins running scans of your data according to the scan schedule you set. Soda Cloud sends notifications after each scan according to the settings you defined in step 4. 
+
 
 ## Edit an agreement
 

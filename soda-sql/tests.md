@@ -17,7 +17,7 @@ As a result of a [scan]({% link soda-sql/scan.md %}), each test either passes or
 
 The **scan results** appear in your command-line interface (CLI). The results include an exit code which is an indicator of the test results: `0` means all tests passed; a non-zero value means one or more tests have failed.  See [Scan output in Soda SQL]({% link soda-sql/scan.md %}#scan-output-in-soda-sql) for details.
 
-**Soda Cloud** defines tests inside **monitors**. Refer to [Create monitors and alerts]({% link soda-cloud/monitors.md %}) to learn how to define a test in a monitor using Soda Cloud.
+**Soda Cloud** defines tests inside **monitors**. 
 
 [Define tests using metrics](#define-tests-using-metrics)<br />
 [Example tests using built-in metrics](#example-tests-using-built-in-metrics)<br />

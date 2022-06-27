@@ -89,12 +89,14 @@
     page: soda-cloud/overview.md
   - subtitle: Roles and rights
     page: soda-cloud/roles-and-rights.md
-  - subtitle: Collaborate on data monitoring
-    page: soda-cloud/collaborate.md
-  - subtitle: Edit monitors
-    page: soda-cloud/monitors.md
+  - subtitle: Add a data source
+    page: soda-cloud/add-datasource.md
+  - subtitle: Create agreements
+    page: soda-cloud/agreements.md
   - subtitle: Scan output
     page: soda-cloud/scan-output.md
+  - subtitle: Collaborate on data monitoring
+    page: soda-cloud/collaborate.md
   - subtitle: Organize datasets
     page: soda-cloud/organize-datasets.md
   - subtitle: Examine failed rows

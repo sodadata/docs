@@ -16,7 +16,6 @@ Out of the box, Soda makes several [built-in metrics]({% link soda-sql/metrics.m
 **Custom metrics**, also known as SQL metrics, enable you to define your own metrics that you can use in a test in Soda SQL or Soda Cloud; refer to [this example below](#validate-that-row-counts-are-equal). You can also use custom metrics to simply define SQL queries that Soda executes as tests during a scan, which is what most of these templates do.
 
 Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics).<br />
-Read more about using [custom metrics in Soda Cloud]({% link soda-cloud/monitors.md %}#metric-types).
 
 The templates below offer examples of how you can define custom metrics in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file to extract more complex, customized, business-specific measurements from your data. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
@@ -723,7 +722,7 @@ sql_metrics:
 ## Go further
 
 
-* Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics) and [custom metrics in Soda Cloud]({% link soda-cloud/monitors.md %}#metric-types).
+* Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics).
 * See [Examples of tests using built-in metrics]({% link soda-sql/examples-by-metric.md %})
 * Read more about [Failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 <br />
