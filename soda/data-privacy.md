@@ -12,7 +12,7 @@ Soda works in several ways to ensure your data and systems remain private.
 
 ## Making secure connections
 
-Installed in your environment, you use the Soda Core command-line tools to securely connect to a data source using environment variables to store login credentials.
+Installed in your environment, you use the Soda Core command-line tools to securely connect to a data source using system variables to store login credentials.
 
 {% include nat-gateway.md %}
 

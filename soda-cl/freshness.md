@@ -41,7 +41,6 @@ The example below defines a check that measures freshness relative to "now", whe
 * The only comparison symbol you can use with freshness checks is `<` *except* when you employ and alert configuration. See [Example with alert configuration](#example-with-alert-configuration) for details.
 * The default value for "now" is the time you run the scan that executes the freshness check.
 * If no timezone information is available in either the timestamp of the check (scan time), or in the data in the column, a freshness check uses the UTC timezone. Soda converts both timestamps to UTC to compare values.
-* KNOWN ISSUE: Adding a customized name for a freshness check does not work. (CORE-12)
 
 
 ```yaml

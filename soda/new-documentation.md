@@ -14,6 +14,13 @@ parent: Reference
 * Revised documentation to reflect the general availability of Soda Core and SodaCL.
 * Archived the deprecated documentation for [Soda SQL]({% link soda-sql/overview.md %}) and [Soda Spark]({% link soda-spark/install-and-use.md %}).
 
+#### June 23, 2022
+
+* Added backlog of [Soda Core release notes]({% link release-notes/soda-core.md %}).
+* Refined the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) with details on how to run a scan.
+* Corrected the explanation of the [`duplicate_count` check]({% link soda/quick-start-sodacl.md %}#duplicate-check) regarding checks that included multiple arguments (columns).
+* Removed a Known Issue from [freshness check]({% link soda-cl/freshness.md %}) that recorded problem when defining a custom name to the check.
+
 #### June 22, 2022
 
 * Added documentation to correspond with the new `percent` argument you can use in checks with [dynamic thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-dynamic-thresholds).

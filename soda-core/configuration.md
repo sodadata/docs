@@ -74,7 +74,7 @@ data_source my_database_name:
     host: soda-temp-demo
     port: '5432'
     username: sodademo
-    password: env_var(POSTGRES_PASSWORD)
+    password: ${POSTGRES_PASSWORD}
   database: postgres
   schema: public
 ```
@@ -105,7 +105,7 @@ data_source my_database_name:
     host: soda-temp-demo
     port: '5432'
     username: sodademo
-    password: env_var(POSTGRES_PASSWORD)
+    password: ${POSTGRES_PASSWORD}
   database: postgres
   schema: public
 ```

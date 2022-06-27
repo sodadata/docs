@@ -2,7 +2,7 @@
 | Command               | Description |
 | --------------------- | ----------- |
 | `soda scan` | Uses the configurations in your checks YAML file to prepare, then run SQL queries against the data in your data source. See [Run a Soda Core scan]({% link soda-core/scan-core.md %}) for details. |
-| `soda update` | Updates a distribution reference file that a [distribution check]({% link soda-cl/distribution.md %}) uses. |
+| `soda update-dro` | Updates a distribution reference file that a [distribution check]({% link soda-cl/distribution.md %}) uses. |
 
 ## List of commands
 
@@ -24,7 +24,7 @@ Options:
 
 Commands:
   scan    runs a scan
-  update  updates a distribution reference file
+  update-dro  updates a distribution reference file
 ```
 
 ## List of options
@@ -32,7 +32,7 @@ Commands:
 To see a list of configurable options for each command, use the command-line help.
 ```shell
 $ soda scan --help
-$ soda update --help
+$ soda update-dro --help
 ```
 
 Refer to [Add scan options]({% link soda-core/scan-core.md %}#add-scan-options) for more information.
