@@ -25,7 +25,7 @@ In your Soda Cloud account, navigate to **your avatar** > **Scans & Data**. Clic
 | Field or Label | Guidance |
 | -----------------------   | ---------- |
 | Data Source Label | Provide a unique identifier for the [data source]({% link soda/glossary.md %}#data-source). Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
-| Default Scan Definition Label | Provide a unique identifier for the scan definition. A scan definition is a collection of [checks YAML files]({% link soda/glossary.md %}#checks-yaml) that Soda Cloud collects when it executes a scan on a data source. Each checks YAML file contains the checks you wish to execute to test for data quality.  |
+| Default Scan Definition Label | Provide a name for the default scan definition. A collection of [checks YAML]({% link soda/glossary.md %}#checks-yaml) files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source.  |
 | Default Scan Definition Agent | Select the name of a Soda Agent that you have previously set up in your secure environment and connected to a specific data source. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
 | Schedule Definition | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
 | Starting At | Select the time of day to run the scan. The default value is midnight. |

@@ -1,18 +1,26 @@
+---
+layout: default
+title: Edit checks
+description: 
+parent: Soda Cloud
+---
 
+# Edit checks in Soda Cloud
 
+In Soda Cloud, you can only create new checks as part of an [agreement]({% link soda-cloud/agreements.md %}); you cannot create independent, individual checks, yet.
 
+However, if you have previously connected [Soda Core]({% link soda-core/overview-main.md %}) to your Soda Cloud account and run a scan using checks you wrote in a [checks YAML]({% link soda/glossary.md %}#checks-yaml) file, you can see check results **Check Results** table. If you wish, you can edit existing checks to add or adjust attributes or notifications.
 
-In Soda Cloud, you can only create new monitors and alerts for datasets connected to an instance of Soda SQL; you cannot create monitors for datasets connected to Soda Core (Beta), yet.
+1. In Soda Cloud, navigate to the **Checks** dashboard, then click the stacked dots at the right of the check you wish to edit and select **Edit Check**.
+2. Make changes to existing notifications, or use the search bar to add or remove notifications.
+3. Navigate to the **Attributes** tab, then change the value for the Check Owner field and add any details to the Description field, then Save.
 
-Instead, you can use SodaCL (Beta) to write checks in a checks YAML file for Soda Core to execute during a scan. You can connect Soda Core to your Soda Cloud account to see the check results after each scan.
+## Go further
 
-Consider following the Quick start for Soda Core with Soda Cloud to learn how to do so.
+* Complete the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write a few simple checks for data quality.
+* Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+<br />
 
-Soda Core documentation
-SodaCL documentation
-
-Edit checks in Soda Cloud
-If you have connected Soda Core to your Soda Cloud account and run a scan, you can see check results in the list of Monitor Results in the Monitors dashboard. If you wish, you can edit the checks to add attributes.
-
-In Soda Cloud, navigate to the Monitors dashboard, then click the stacked dots at the right of the check you wish to edit and select Edit monitor.
-Navigate to the Attributes tab, then change the value for the Monitor Owner field and add any details to the Description field, then Save.
+---
+{% include docs-footer.md %}

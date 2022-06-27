@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Create an agreement
-description: 
+description: Create agreements in Soda Cloud to set expectations for good-quality data.
 parent: Soda Cloud
 redirect_from: /soda-cloud/monitors.html
 ---
@@ -43,36 +43,38 @@ For help writing your first checks, consider following the [Quick start for Soda
 
 #### 3. Identify Stakeholders
 
-| Field or Label  | Guidance |
-| -----------------  | ----------- |
+Add Stakeholders to this Agreement who have an interest in maintaining or using the good-quality data in this data source. 
+
+Soda Cloud sends emails to request review and approval from all stakeholders, but does not prevent Soda Cloud from running scans and executing checks in the agreement if not all stakeholders have approved the agreement.
 
 <br />
 
 #### 4. Set Notifications
 
-By default, Soda Cloud includes two out-of-the-box email notifications: one for the Dataset Owner and one for the Monitor Owner, which is you. You can remove or adjust these notifications, or use the search bar to add more.
+By default, Soda Cloud includes an out-of-the-box email notification to all the agreement's stakeholders when a check in your agreement fails. You can remove or adjust this notification, or use the search bar to add more. Access [Scan output]({% link soda-cloud/scan-output.md %}) to learn more about pass, warn, and fail check results.
 
-Note that Soda Cloud does not send an email or Slack notification when a scan fails, only when checks fail. 
+If you have integrated your Soda Cloud account with Slack, use the search field to type a channel name to add the channel as a notification recipient. Alternatively, use the field to enter names of individual teammates with whom you collaborate in Soda Cloud.
 
-| Field or Label  | Guidance |
-| -----------------  | ----------- |
-|                    | If you have integrated your Soda Cloud account with Slack, use this field to type a channel name to add to the notification list of people included by default. Alternatively, use the field to enter names of teammates with whom you collaborate in Soda Cloud. |
+Note that Soda Cloud does not send an email or Slack notification when a *scan* fails because of an error, only when *checks* pass, warn, or fail. Refer to [Scan output]({% link soda-cloud/scan-output.md %}) for details.
 
 <br />
 
 #### 5. Set a Scan Schedule
 
-| Field or Label  | Guidance |
-| -----------------  | ----------- |
-
-
-
-After you have set up a new agreement, Soda Cloud sends approval requests to the stakeholders you identified in step 3. when stakeholders approve or reject your agreement, Soda Cloud sends you an email notification.
+After you have set up a new agreement, Soda Cloud sends approval requests to the stakeholders you identified in step 3. When stakeholders approve or reject your agreement, Soda Cloud sends you an email notification.
 
 Regardless of the approval status of the agreement, however, Soda Cloud begins running scans of your data according to the scan schedule you set. Soda Cloud sends notifications after each scan according to the settings you defined in step 4. 
 
+(Optional) You can create a new [scan definition]({% link soda/glossary.md %}#scan-definition) if you wish to run a scan to execute the checks in this agreement more or less frequently, or a different time of day, relative to the default scan definition for the data source. 
+
+To review existing scan definitions, navigate to **your avatar** > **Scans & Data** > **Scan Definitions** tab. 
+
 
 ## Edit an agreement
+
+1. Navigate to the **Agreements** dashboard, then click the stacked dots at the right of the agreement you wish to edit and select **Edit Agreement**.
+2. Navigate the tabs to locate the details you wish to change.  
+3. When you **Save**, Soda Cloud sends new approval request emails to all the agreement's stakeholders.  The next scheduled scan applies your changes, regardless of stakeholder approval status.
 
 
 ## Go further

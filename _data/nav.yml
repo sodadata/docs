@@ -95,6 +95,8 @@
     page: soda-cloud/agreements.md
   - subtitle: Scan output
     page: soda-cloud/scan-output.md
+  - subtitle: Edit checks
+    page: soda-cloud/edit-checks.md
   - subtitle: Collaborate on data monitoring
     page: soda-cloud/collaborate.md
   - subtitle: Organize datasets
