@@ -102,15 +102,31 @@ distribution_type: categorical
 # (optional) filter to a specific point in time or any other dimension 
 filter: "column_name between '2010-01-01' and '2020-01-01'"
 ```
+Alternatively, you can define multiple DROs in your `distribution_reference.yml` file by naming them. The following example content defines two DROs
+```yaml
+dro_name1:
+  dataset: your_dataset_name
+  column: column_name_in_dataset
+  distribution_type: categorical
+dro_name2:
+  dataset: your_dataset_name
+  column: column_name2_in_dataset
+  distribution_type: continuous
+```
 3. Change the values for `dataset` and `column` to reflect your own dataset's identifiers.
 4. (Optional) Change the value for `distribution_type` to capture `categorical` or `continuous` data.
 5. (Optional) Define the value of `filter` to specify the portion of the data in your dataset for which you are creating a DRO. If you trained a model on data in which the `date_first_customer` column contained values between 2010-01-01 and 2020-01-01, you can use a filter based on that period to test whether the distribution of the column has changed since then. <br />
 If you do not wish to define a filter, remove the key-value pair from the file.
-6. Save the file, then, while still in your Soda project directory, run the `soda update` command to create a distribution reference object. For a list of options available to use with the command, run `soda update --help`. 
+6. (Optional) If you wish to define multiple DROs in a single `distribution_reference.yml` file, change the names `dro_name1` and `dro_name2`.
+7. Save the file, then, while still in your Soda project directory, run the `soda update` command to create a distribution reference object. For a list of options available to use with the command, run `soda update --help`. 
 ```bash
 soda update -d your_datasource_name -c your_configuration_file.yaml ./distribution_reference.yaml 
 ```
-7. Review the changed contents of your `distribution_reference.yml` file. The following is an example of the information that Soda added to the file.
+If you defined multiple DROs in your `distribution_reference.yml` file, specify which DRO you want to update using the `-n` argument. `-n` stands for name
+```bash
+soda update -n dro_name1 -d your_datasource_name -c your_configuration_file.yaml ./distribution_reference.yaml 
+```
+8. Review the changed contents of your `distribution_reference.yml` file. The following is an example of the information that Soda added to the file.
 
 ```yaml
 dataset: dim_customer
@@ -135,19 +151,21 @@ Soda appended a new key called `distribution reference` to the file, together wi
 
 Soda uses the `bins` and `weights` to generate a sample from the reference distribution when it executes the distribution check during a scan. By creating a sample using the DRO's bins and weights, you do not have to save the entire – potentially very large - sample. The `distribution_type` value impacts how the weights and bins will be used to generate a sample, so make sure your choice reflects the nature of your data (continuous or categorical).
 
+When multiple DROs are defined in a single `distribution_reference.yml` file, Soda requires all of them to be named. In that case it is required to provide the DRO name with the `-n` argument when using `soda update`.
 ## Define a distribution check
 
 1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the [Soda Core documentation]({% link soda-core/configuration.md %}).
 2. In your new file, add the following example content.
 ```yaml
 checks for your_dataset_name:
-  - distribution_difference(column_name) > your_threshold:
+  - distribution_difference(column_name, dro_name) > your_threshold:
       method: your_method_of_choice
       distribution reference file: ./distribution_reference.yml
 ```
 3. Replace the following values with your own dataset and threshold details.
 * `your_dataset_name` - the name of your dataset
 * `column_name` - the column against which to compare the DRO
+* `dro_name` - the name of the DRO (optional, required if `distribution_reference.yml` contains named DROs)
 * `> 0.05` - the threshold for the distribution check that you specify as acceptable
 4. Replace the value of `your_method_of_choice` with the type of test you want to use in the distribution check. 
     * `ks` for the Kolmogorov-Smirnov test
@@ -161,7 +179,7 @@ If you do not specify a `method`, the distribution check defaults to `ks` for co
 soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yaml your_check_file.yaml
 ```
 
-When Soda Core executes the distribution check above, it compares the values in `column_name` to a sample that Soda creates based on the `bins`, `weights`, and `data_type` defined in the `distribution_reference.yml` file. Specifically, it checks whether the value of `your_method_of_choice` is larger than `0.05`.
+When Soda Core executes the distribution check above, it compares the values in `column_name` to a sample that Soda creates based on the `bins`, `weights`, and `data_type` in `dro_name` defined in the `distribution_reference.yml` file. Specifically, it checks whether the value of `your_method_of_choice` is larger than `0.05`.
 
 ### For awareness
 
@@ -187,22 +205,32 @@ checks for fact_sales_quota:
       method: psi
       distribution reference file: ./sales_dist_ref.yml
 ```
-
-You can also define multiple checks for different columns in the same dataset by generating multiple DROs for those columns. Refer to the following example.
-
+Alternatively you can define two DROs in `distribution_reference.yml`, naming them `cars_owned_dro` and `calendar_quarter_dro`, and use both in a single `checks.yml` file
 ```yaml
 checks for dim_customer:
-  - distribution_difference(number_cars_owned) > 0.05:
+  - distribution_difference(number_cars_owned, cars_owned_dro) > 0.05:
       method: chi_square
-      distribution reference file: ./cars_owned_dist_ref.yml
-  - distribution_difference(total_children) < 0.2:
-      method: psi
-      distribution reference file: ./total_children_dist_ref.yml
+      distribution reference file: ./distribution_reference.yml
 
 checks for fact_sales_quota:
-  - distribution_difference(calendar_quarter) < 0.15:
-      method: swd
-      distribution reference file: ./sales_dist_ref.yml
+  - distribution_difference(calendar_quarter, calendar_quarter_dro) < 0.2:
+      method: psi
+      distribution reference file: ./distribution_reference.yml
+```
+You can also define multiple checks for different columns in the same dataset by generating multiple DROs for those columns. Refer to the following example.
+```yaml
+checks for dim_customer:
+  - distribution_difference(number_cars_owned, cars_owned_dro) > 0.05:
+      method: chi_square
+      distribution reference file: ./distribution_reference.yml
+   - distribution_difference(total_children, total_children_dro) < 0.2:
+      method: psi
+      distribution reference file: ./distribution_reference.yml
+
+checks for fact_sales_quota:
+  - distribution_difference(calendar_quarter, calendar_quarter_dro) < 0.2:
+      method: psi
+      distribution reference file: ./distribution_reference.yml
 ```
 
 ## Optional check configurations
@@ -244,7 +272,7 @@ for each dataset T:
     dataset:
         - dim_customer
     checks:
-    - distribution_difference(number_cars_owned, absolutely_whatever_string_you_please) < 0.15:
+    - distribution_difference(number_cars_owned) < 0.15:
         method: swd
         distribution reference file: dist_ref.yml
 ```
