@@ -52,7 +52,7 @@ Options:
   --help  Show this message and exit.
 Commands:
   scan    runs a scan
-  update  updates a distribution reference file
+  update-dro  updates a distribution reference file
 ```
 
 ## Connect Soda Core to a data source
