@@ -19,6 +19,7 @@ If you are staring at a blank YAML file wondering what SodaCL checks to write to
 [Freshness check](#freshness-check)<br />
 [Missing and invalid checks](#missing-and-invalid-checks)<br />
 [Reference checks](#reference-checks)<br />
+[Schema checks](#schema-checks)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -71,6 +72,11 @@ checks for dataset_name:
   - row_count same as other_dataset_name
 ```
 
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
+```
+
 ### Read more
 * [Numeric metrics]({% link soda-cl/numeric-metrics.md %})
 * [Standard check pattern]({% link soda-cl/metrics-and-checks.md %}#check-types)
@@ -79,7 +85,7 @@ checks for dataset_name:
 
 ## Duplicate check
 
-For the nearly universal use case of making sure that values in a column are not duplicated, you can use the `duplicate_count` metrics. In the following example, Soda counts the number of duplicate values in the `column_name` column, identified as the value in parentheses appended to the metric. If there is even one value that is a duplicate of another, the check result is fail.
+For the nearly universal use case of making sure that values in a column are not duplicated, you can use the `duplicate_count` metrics. In the following example, Soda counts the number of duplicate values in the `column_name` column, identified as the argument in parentheses appended to the metric. If there is even one value that is a duplicate of another, the check result is fail.
 
 This type of check is useful when, for example, you need to make sure that values in an `id` column are unique, such `customer_id` or `product_id`.
 
@@ -91,12 +97,17 @@ checks for dataset_name:
 
 <br />
 
-If you wish, you can quickly check for duplicate values in multiple columns in a single check. Note that `duplicate_count` only compares values in the same column, it does not compare the values in one column to values in another column to surface duplicates. (However, you *can* compare column values using a [reference check](#reference-checks)!)
+If you wish, you can quickly check for duplicate values across multiple columns. In the following example, Soda counts the number of values in `column_name1` that are duplicates of values in `column_name2`. This type of check is useful when, for example, you need to make sure that order numbers or other unique identifiers are not duplicated.
 
 ```yaml
-# Check that neither column contains any duplicate values
+# Check that duplicate values do not exist across columns
 checks for dataset_name:
-  - duplicate_count(column_name, column_name1, column_name2) = 0
+  - duplicate_count(column_name1, column_name2) = 0
+```
+
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
 ```
 
 ### Read more
@@ -113,6 +124,11 @@ In this example, the check fails if the most-recently added row (in other words,
 # Check that data in dataset is less than one day old
 checks for dataset_name:
   - freshness(timestamp_column_name) < 1d
+```
+
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
 ```
 
 ### Read more
@@ -155,6 +171,11 @@ checks for dataset_name:
       missing values: [N/A, '0000', none]
 ```
 
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
+```
+
 ### Read more
 * [Missing metrics]({% link soda-cl/missing-metrics.md %})
 * [Validity metrics]({% link soda-cl/validity-metrics.md %})
@@ -178,6 +199,11 @@ If you wish, you can compare the values of multiple columns in one check. Soda c
 # Check that values in two columns exist in two other columns in a different dataset
 checks for dataset_name:
   - values in (column_name1, column_name2) must exist in different_dataset_name (other_column1, other_column2)
+```
+
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
 ```
 
 ### Read more
@@ -215,7 +241,12 @@ checks for dataset_name:
         when forbidden column present: [column_name1, column_name2]
 ```
 
-Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a warn and a fail, the check result only displays the more severe, failed check result.
+Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a warn and a fail, the check result only displays the more severe, failed check result. [Read more]({% link soda-cl/schema.md %}#expect-one-check-result).
+
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
+```
 
 ### Read more
 * [Alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations)
