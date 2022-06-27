@@ -151,7 +151,7 @@ Soda appended a new key called `distribution reference` to the file, together wi
 
 Soda uses the `bins` and `weights` to generate a sample from the reference distribution when it executes the distribution check during a scan. By creating a sample using the DRO's bins and weights, you do not have to save the entire – potentially very large - sample. The `distribution_type` value impacts how the weights and bins will be used to generate a sample, so make sure your choice reflects the nature of your data (continuous or categorical).
 
-When multiple DROs are defined in a single `distribution_reference.yml` file, Soda requires all of them to be named. In that case it is required to provide the DRO name with the `-n` argument when using `soda update`.
+When multiple DROs are defined in a single `distribution_reference.yml` file, Soda requires all of them to be named. In that case it is required to provide the DRO name with the `-n` argument when using `soda update-dro`.
 ## Define a distribution check
 
 1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the [Soda Core documentation]({% link soda-core/configuration.md %}).
