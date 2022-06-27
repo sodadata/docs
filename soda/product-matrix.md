@@ -80,7 +80,7 @@ Use these matrices to review the features and functionality that Soda products h
 |--------|:---------:|:---------:|
 | Take advantage of automatic data profiling for datasets and columns |  | ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"} |
 | View charts to gain visibility into stored measurements for a metric over time |  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
-| Create alerts to notify your team of data quality failures and warnings | ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"}  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
+| Set up notifications to alert your team of data quality failures and warnings | ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"}  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 | View samples of rows that failed a check  |  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 | Use an API to gain insight into the health of your dataset and your Soda Cloud account user activity  |  | ![done](/assets/images/done.png){:height="20px" width="20px"}  |
 

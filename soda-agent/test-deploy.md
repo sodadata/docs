@@ -5,7 +5,9 @@ description:
 parent: Soda Agent
 ---
 
-# Soda Agent test deployment
+# Soda Agent test deployment![preview](/assets/images/preview.png){:height="70px" width="70px"}
+
+{% include banner-preview.md %}
 
 If you are curious about how the Soda Agent works but are not yet ready to deploy to an Amazon Elastic Kubernetes Service (EKS) cluster, you can deploy an agent locally and connect it to your Soda Cloud account.
 

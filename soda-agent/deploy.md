@@ -5,7 +5,9 @@ description:
 parent: Soda Agent
 ---
 
-# Deploy a Soda Agent
+# Deploy a Soda Agent![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+
+{% include banner-preview.md %}
 
 The **Soda Agent** is a tool that empowers Soda Cloud users to securely connect to new data sources. 
 

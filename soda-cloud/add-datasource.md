@@ -5,7 +5,9 @@ description: Connect a data source to your Soda Cloud account to begin scanning 
 parent: Soda Cloud
 ---
 
-# Create a data source in Soda Cloud
+# Create a data source![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+
+{% include banner-preview.md %}
 
 To run [scans]({% link soda/glossary.md %}#scan) for data quality in your [data source]({% link soda/glossary.md %}#data-source) such as PostgreSQL or GCP BigQuery, you must first connect Soda Cloud to a data source. 
 

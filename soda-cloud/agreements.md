@@ -6,7 +6,9 @@ parent: Soda Cloud
 redirect_from: /soda-cloud/monitors.html
 ---
 
-# Create an agreement in Soda Cloud
+# Create an agreement![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+
+{% include banner-preview.md %}
 
 An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
 

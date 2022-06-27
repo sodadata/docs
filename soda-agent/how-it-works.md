@@ -5,7 +5,9 @@ description:
 parent: Soda Agent
 ---
 
-# How a Soda Agent works
+# How a Soda Agent works![preview](/assets/images/preview.png){:height="70px" width="70px"}
+
+{% include banner-preview.md %}
 
 To run scans against your data to check for quality, Soda Core needs to connect to the data sources (Snowflake, Amazon Athena, etc.). To send scan results to a Soda Cloud account, you connect Soda Core to Soda Cloud using API keys. 
 
