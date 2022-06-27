@@ -107,7 +107,7 @@ Further, you have the option of connecting a Soda Core to Soda Cloud. Soda Core 
 
 In Soda Cloud, you can do much more than just review the scan results.
 * [Integrate with Slack]({% link soda/integrate-slack.md %}) to configure and send alerts to your team when there is a data quality issue.
-* Create and track data quality [incidents]({% link soda-cloud/incidents.md %}) associated with failed monitor results so your team can collaborate on issue investigation.
+* Create and track data quality [incidents]({% link soda-cloud/incidents.md %}) associated with failed check results so your team can collaborate on issue investigation.
 * Get at-a-glance information about column metrics and the overall health of a dataset in the Datasets dashboard.
 * [Integrate your dbt tests]({% link soda/integrate-dbt.md %}) into Soda Cloud, or integrate with your [Metaphor]({% link soda/integrate-metaphor.md %}) or [Alation]({% link soda/integrate-alation.md %}) data catalog.
 

@@ -47,7 +47,7 @@ Contact <a href="mailto:support@soda.io">Soda Support</a> directly to acquire th
 
 ## Use the integration
 
-Access Soda Cloud to [create monitors]({% link soda-cloud/agreements.md %}) that execute tests against datasets in your data source each time you [run a Soda scan manually]({% link soda-core/scan-core.md %}), or [orchestrate a scan]({% link soda-core/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Metaphor so that users can review data quality information from within the catalog. 
+Access Soda Cloud to [create agreements]({% link soda-cloud/agreements.md %}) that execute checks against datasets in your data source each time you [run a Soda scan manually]({% link soda-core/scan-core.md %}), or [orchestrate a scan]({% link soda-core/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Metaphor so that users can review data quality information from within the catalog. 
 
 Refer to video above for details.
 

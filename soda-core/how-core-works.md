@@ -107,7 +107,7 @@ Additionally, you can integrate Soda Core with a **Soda Cloud** account. This cl
 Though you do not have to set up and ingrate a Soda Cloud account in order to use Soda Core, the web app serves to complement the CLI tool, giving you a non-CLI method of examining data quality. Use Soda Cloud to:
 
 - collaborate with team members to review details of scan results that can help you to diagnose data issues
-- use monitors to view stored as visualizations that represents the volume of failed tests in each scan
+- use checks to view stored as visualizations that represents the volume of failed tests in each scan
 - empower others to set quality thresholds that define "good" data
 - set up and send alert notifications when "bad" data enters your data pipeline
 - create and track data quality [Incidents]({% link soda-cloud/incidents.md %}) so your team can collaborate in Slack to resolve them

@@ -302,7 +302,7 @@ parent: Reference
 
 * Added Soda SQL documentation for [configuring `excluded_columns`]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys) during scans.
 * Updated compatible data sources for [Soda SQL]({% link soda-sql/installation.md %}#compatibility) to include **MySQL (experimental)**, and Soda Cloud to improve accuracy.
-* Updated [Create monitors and alerts]({% link soda-cloud/agreements.md %}#metric-types) to include custom metrics as part of creation flow; updated prerequisites.
+* Updated Create monitors and alerts to include custom metrics as part of creation flow; updated prerequisites.
 * Updated Product overview [comparison]({% link soda/product-overview.md %}#compare-features-and-functionality) for new `excluded_columns` functionality and custom metrics in Soda Cloud.
 * Minor adjustments to reflect new and changed elements in the <a href="https://github.com/sodadata/soda-sql/blob/main/CHANGELOG.md#210b12---2021-07-23-frodo-baggins" target="_blank">Soda SQL 2.1.0b12</a> release.
 
@@ -315,7 +315,7 @@ parent: Reference
 #### July 13, 2021
 
 * New Add datasets documentation for the newly launched feature that enables your to connect to data sources and add datasets directly in Soda Cloud.
-* New [Collaborate on data monitoring]({% link soda-cloud/collaborate.md %}) documentation that incorporates how to integrate with Slack, and how to include your team in your efforts to monitor your data.
+* New Collaborate on data monitoring documentation that incorporates how to integrate with Slack, and how to include your team in your efforts to monitor your data.
 * New _Adjust a dataset scan schedule_ content to help you refine how often Soda scans a particular dataset.
 * Revised Quick start tutorial for Soda Cloud that incorporates the new feature to add datasets.
 * Improved Soda product overview page with a [comparison chart]({% link soda/product-overview.md %}#compare-features-and-functionality) for features and functionality.

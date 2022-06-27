@@ -110,7 +110,7 @@ Contact <a href="mailto:support@soda.io">Soda Support</a> directly to acquire th
 
 ## Use the integration
 
-Access Soda Cloud to [create monitors]({% link soda-cloud/agreements.md %}) that execute tests against datasets in your data source each time you [run a Soda scan manually]({% link soda-core/scan-core.md %}#run-a-scan), or [orchestrate a scan]({% link soda-core/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Alation so that users can review data quality information from within the catalog. 
+Access Soda Cloud to [create agreements]({% link soda-cloud/agreements.md %}) that execute checks against datasets in your data source each time you [run a Soda scan manually]({% link soda-core/scan-core.md %}#run-a-scan), or [orchestrate a scan]({% link soda-core/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Alation so that users can review data quality information from within the catalog. 
 
 In Alation, beyond reviewing data quality information for the data source, users can access the **Joins** and **Lineage** tabs of individual datasets to examine details and investigate the source of any data quality issues. 
 
@@ -118,7 +118,7 @@ In Alation, beyond reviewing data quality information for the data source, users
 
 In a dataset page in Alation, in the **Overview** tab, users have the opportunity to click links to directly access Soda Cloud to scrutinize data quality details; see image below. 
 * Under the **Soda DQ Overview** heading in Alation, click **Open in Soda** to access the dataset page in Soda Cloud.  
-* Under the **Dataset Level Monitors** heading in Alation, click the title of any monitor to access the monitor info page in Soda Cloud.
+* Under the **Dataset Level Monitors** heading in Alation, click the title of any monitor to access the check info page in Soda Cloud.
 
 ![alation-figure-1-2](/assets/images/alation-figure-1-2.png){:height="600px" width="600px"} 
 

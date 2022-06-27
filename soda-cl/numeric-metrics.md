@@ -70,7 +70,7 @@ checks for dim_reseller:
 ### Send failed rows to Soda Cloud
 
 If you have connected Soda Core to a Soda Cloud account, checks that use a `duplicate_count` metric automatically sends samples of any failed rows to Soda Cloud. 
-1. To review the failed rows in Soda Cloud, navigate to the **Monitors** dashboard.
+1. To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard.
 2. Click the row for the check with `duplicate_count`, then go to the **Failed rows** tab.
 
 ![failed-duplicate-count](/assets/images/failed-duplicate-count.png){:height="700px" width="700px"}
