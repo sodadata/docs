@@ -69,7 +69,7 @@ Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-cor
 
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), automated monitoring checks are unique. This check employs the `anomaly score` and `schema` checks, but is limited in its syntax variation, with only a couple of mutable parts to specify which datasets to automatically apply the anomaly and schema checks.
 
-The example check below uses a wildcard character (`%`) to specify that Soda should execute automated monitoring checks against all datasets with names that begin with `prod`, and *not* to execute the checks against any dataset with a name that begins with `test`.
+The example check below uses a wildcard character (`%`) to specify that Soda Core executes automated monitoring checks against all datasets with names that begin with `prod`, and *not* to execute the checks against any dataset with a name that begins with `test`.
 
 ```yaml
 automated monitoring:
@@ -102,14 +102,15 @@ To review the checks results for automated monitoring checks in Soda Cloud, navi
 |   | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters ({% raw %} % {% endraw %} with dataset names in the check; see [example](#example-with-wildcards). | - |
-|   | Use for each to apply anomaly score checks to multiple datasets in one scan. | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
+|   | Use for each to apply anomaly score checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan. |  -  |
 
 #### Example with quotes
 
 ```yaml
-checks for "dim_customer":
-  - anomaly score for row_count < default
+automated monitoring:
+  datasets:
+    - include "prod_customer"
 ```
 
 #### Example with wildcards 

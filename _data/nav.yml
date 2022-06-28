@@ -73,6 +73,8 @@
     page: soda-cl/filters.md
   - subtitle: For each
     page: soda-cl/for-each.md
+  - subtitle: Send sample data to Soda Cloud
+    page: soda-cl/sample-datasets.md
 
 - title: Soda Agent
   page: soda-agent/deploy.md
