@@ -215,7 +215,7 @@ parent: Reference
 
 #### November 23, 2021
 
-* Revised the [Quick start tutorial for Soda SQL]({% link soda-sql/quick-start-soda-sql.md %}) to use the same demo repo as the [interactive demo]({% link soda-sql/interactive-demo.md %}).
+* Revised the [Quick start tutorial for Soda SQL]({% link soda-sql/quick-start-soda-sql.md %}) to use the same demo repo as the interactive demo.
 
 #### November 15, 2021
 

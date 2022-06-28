@@ -11,9 +11,21 @@ parent: Soda Agent
 
 The **Soda Agent** is a tool that empowers Soda Cloud users to securely connect to new data sources. 
 
-The agent obviates the need to install Soda Core independently to set up configuration YAML files to connect to data sources. Instead, it enables Soda Cloud users to serve themselves when it comes to connecting to new data sources in an organization. 
+The agent obviates the need to install Soda Core independently and set up configuration YAML files to connect to data sources. Instead, it enables Soda Cloud users to serve themselves when it comes to connecting to new data sources in an organization. 
 
 Create an Amazon Elastic Kubernetes Service (EKS) Fargate cluster, then use Helm to deploy the Soda Agent in the cluster. This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. 
+
+[Deployment overview](#deployment-overview)<br />
+[Basic concepts](#basic-concepts) <br />
+[Prerequisites](#prererequisites)<br />
+[Compatibility](#compatability)<br />
+[Create a Soda Cloud account and API keys](#create-a-soda-cloud-account-and-api-keys) <br />
+[Deploy an agent](#deploy-an-agent)<br />
+[Environment variables for data source connections](#environment-variables-for-data-source-connections) <br />
+[Review logs](#review-logs) <br />
+[Decommission a Soda Agent and the EKS cluster](#decomission-a-soda-agent-and-the-eks-cluster)<br />
+[Redeploy an agent](#redeploy-an-agent)<br />
+<br />
 
 
 ## Deployment overview
@@ -292,7 +304,7 @@ eksctl delete cluster --name soda-agent
 4. (Optional) Access your <a href="https://eu-central-1.console.aws.amazon.com/cloudformation/home" target="_blank"> CloudFormation console</a>, then click **Stacks** to view the status of your decomissioned cluster.
 
 
-## Redeploy the agent
+## Redeploy an agent
 
 
 

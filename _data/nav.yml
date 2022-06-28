@@ -102,7 +102,7 @@
   - subtitle: Collaborate on data monitoring
     page: soda-cloud/collaborate.md
   - subtitle: Edit monitors
-    page: soda-cloud/monitors.md
+    page: soda-cloud/edit-checks.md
   - subtitle: Scan output
     page: soda-cloud/scan-output.md
   - subtitle: Edit checks
