@@ -2,6 +2,7 @@
 layout: default
 title: Soda SQL
 description: Open-source software that you install and use to run data quality tests from the command-line. Compatible with Snowflake, Amazon Redshift, BigQuery, and more.
+sidebar: sql
 parent: Soda SQL
 ---
 <br />
@@ -16,7 +17,6 @@ parent: Soda SQL
 <p>&#10004;  <a href="https://docs.soda.io/soda-sql/tests.html">Write tests</a> in a YAML file<br /></p> 
 <p>&#10004;  <a href="https://docs.soda.io/soda-sql/programmatic_scan.html">Run programmatic scans</a> to test data quality<br /></p>
 <p>&#10004;  Deploy in an <a href="https://docs.soda.io/soda-sql/orchestrate_scans.html">Airflow enviroment</a><br /></p> 
-**Got 5 minutes? [Try the interactive demo!]({% link soda-sql/interactive-demo.md %})** 
 <br />
 <br />
 
@@ -87,4 +87,4 @@ sql_metric:
 
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

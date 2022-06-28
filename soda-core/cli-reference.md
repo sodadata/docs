@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Soda Core CLI Commands
-description: Review the Soda Core (Beta) command-line interface (CLI) commands.
+description: Review the Soda Core command-line interface (CLI) commands.
 parent: Soda Core
 ---
 
-# Soda Core CLI commands ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Soda Core CLI commands 
 
 {% include cli-commands.md %}
 

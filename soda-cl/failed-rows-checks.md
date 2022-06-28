@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Failed rows checks
-description: Use a SodaCL (Beta) failed rows check to explicitly send sample failed rows to Soda Cloud. 
+description: Use a SodaCL failed rows check to explicitly send sample failed rows to Soda Cloud. 
 parent: SodaCL
 ---
 
-# Failed rows checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Failed rows checks 
 
 Use a failed rows check to explicitly send samples of rows that failed a check to Soda Cloud.
 

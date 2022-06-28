@@ -4,18 +4,18 @@
 data_source athena:
   type: athena
   connection:
-    access_key_id: ${ env_var('ATHENA_ACCESS_KEY_ID') }
-    secret_access_key: ${ env_var('ATHENA_SECRET_ACCESS_KEY') }
+    access_key_id: 
+    secret_access_key: 
     region_name: eu-west-1
-    staging_dir: ${ env_var('ATHENA_STAGING_DIR') }
-    database: ${ env_var('ATHENA_DATABASE') }
+    staging_dir: 
+    database: 
 ```
 
 | Property          | Required | Notes                                                      |
 | ----------------- | -------- | ---------------------------------------------------------- |
 | type              | required |                                                            |
-| access_key_id     | optional | Use environment variables to retrieve this value securely. |
-| secret_access_key | optional | Use environment variables to retrieve this value securely. |
+| access_key_id     | optional | Use system variables to retrieve this value securely. |
+| secret_access_key | optional | Use system variables to retrieve this value securely. |
 | region_name       | optional |                                                            |
 | staging_dir       | required |                                                            |
 | database          | required |                                                            |
@@ -55,8 +55,8 @@ data_source my_database_name:
 | password          | required |                                                                                                                                                  |
 | database          | required |                                                                                                                                                  |
 | schema            |          |                                                                                                                                                  |
-| access_key_id     | optional | Use environment variables to retrieve this value securely.                                                                                       |
-| secret_access_key | optional | Use environment variables to retrieve this value securely.                                                                                       |
+| access_key_id     | optional | Use system variables to retrieve this value securely.                                                                                       |
+| secret_access_key | optional | Use system variables to retrieve this value securely.                                                                                       |
 | role_arn          | optional | The [Amazon Resource Name](https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-role_arn.html) of an IAM role that you want to use. |
 | region            | optional |                                                                                                                                                  |
 
@@ -210,8 +210,8 @@ data_source my_database_name:
 | type     | required |                                                            |
 | host     | required |                                                            |
 | port     | optional |                                                            |
-| username | required | Use environment variables to retrieve this value securely. |
-| password | required | Use environment variables to retrieve this value securely. |
+| username | required | Use system variables to retrieve this value securely. |
+| password | required | Use system variables to retrieve this value securely. |
 | database | required |                                                            |
 | schema   | required |                                                            |
 
@@ -246,9 +246,9 @@ data_source orders:
 | Property                       | Required | Notes                                                                                                                                                                                   |
 | ------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | type                           | required | The name of your Snowflake virtual data source.                                                                                                                                         |
-| username                       | required | Use environment variables to retrieve this value securely using, for example, `${SNOWFLAKE_USER}`.                                                                                      |
-| password                       | required | Use environment variables to retrieve this value securely using, for example, `${SNOWFLAKE_PASSWORD}`.                                                                                  |
-| account                        | required | Use environment variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`.                                                                                   |
+| username                       | required | Use system variables to retrieve this value securely using, for example, `${SNOWFLAKE_USER}`.                                                                                      |
+| password                       | required | Use system variables to retrieve this value securely using, for example, `${SNOWFLAKE_PASSWORD}`.                                                                                  |
+| account                        | required | Use system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`.                                                                                   |
 | database                       | required |                                                                                                                                                                                         |
 | schema                         | required |                                                                                                                                                                                         |
 | warehouse                      | required |                                                                                                                                                                                         |

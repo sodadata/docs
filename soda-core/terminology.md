@@ -1,12 +1,12 @@
 ---
 layout: default
 title: Soda Core terminology
-description: Access a short list of terminology specific to Soda Core (Beta).
+description: Access a short list of terminology specific to Soda Core.
 sidebar: core
-parent: Soda Core (Beta)
+parent: Soda Core 
 ---
 
-# Soda Core terminology ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Soda Core terminology 
 
 | Term | Description |
 | ---- | ----------- |

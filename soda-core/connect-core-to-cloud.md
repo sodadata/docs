@@ -5,7 +5,7 @@ description: To use all the features that Soda Cloud has to offer, you can insta
 parent: Soda Core
 ---
 
-# Connect Soda Core to Soda Cloud ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Connect Soda Core to Soda Cloud 
 
 To use all the [features and functionality]({% link soda/product-matrix.md %}) that **Soda Cloud** and **Soda Core** have to offer, you can install and configure the Soda Core command-line tool, then connect it to your Soda Cloud account.
 

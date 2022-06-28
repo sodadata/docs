@@ -5,7 +5,7 @@ description: Configure Soda Core to connect to your data sources and prepare dat
 parent: Soda Core
 ---
 
-# Configure Soda Core ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Configure Soda Core 
 
 After you [install Soda Core]({% link soda-core/installation.md %}), you must create files and configure a few settings before you can run a scan.
 
@@ -56,17 +56,18 @@ checks for dataset_name:
 
 ## Provide credentials as system variables
 
-If you wish, you can provide data source login credentials or any of the properties in the configuration YAML file as system variables instead of storing the values directly in the  file. 
+If you wish, you can provide data source login credentials or any of the properties in the configuration YAML file as system variables instead of storing the values directly in the file. System variables persist only for as long as you have the terminal session open in which you created the variable. For a longer-term solution, consider using permanent environment variables stored in your `~/.bash_profile` or `~/.zprofile` files.
 
 1. From your command-line interface, set a system variable to store the value of a property that the configuration YAML file uses. For example, you can use the following command to define a system variable for your password.  
 ```shell
 export POSTGRES_PASSWORD=1234
 ```
-3. Test that the system retrieves the value that you set by running an `echo` command. 
+2. Test that the system retrieves the value that you set by running an `echo` command. 
 ```shell
 echo $POSTGRES_PASSWORD
 ```
-4. In the configuration YAML file, set the value of the property to reference the environment variable, as in the following example.
+3. In the configuration YAML file, set the value of the property to reference the environment variable, as in the following example.
+
 ```yaml
 data_source my_database_name:
   type: postgres
@@ -74,11 +75,12 @@ data_source my_database_name:
     host: soda-temp-demo
     port: '5432'
     username: sodademo
-    password: env_var(POSTGRES_PASSWORD)
-  database: postgres
+    password: ${POSTGRES_PASSWORD}
+    database: postgres
   schema: public
 ```
-5. Save the configuration YAML file, then run a scan to confirm that Soda SQL connects to your data source without issue.
+
+Run a scan to confirm that Soda Core connects to your data source without issue.
 ```shell
 soda scan -d your_datasource -c configuration.yml checks.yml
 ```

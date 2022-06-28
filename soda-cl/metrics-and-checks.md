@@ -7,9 +7,9 @@ redirect_from:
 - /soda-cl/metrics-thresholds.html 
 ---
 
-# Metrics and checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Metrics and checks 
 
-**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with **Soda Core (Beta)**, Soda’s open-source, command-line tool, you use SodaCL to write checks for data quality, then use Soda Core to scan the data in your data source and execute those checks.
+**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with **Soda Core**, Soda’s open-source, command-line tool, you use SodaCL to write checks for data quality, then use Soda Core to scan the data in your data source and execute those checks.
 
 A **metric** is a property of the data in your dataset. A **threshold** is the value for a metric that Soda checks against during a scan. Usually, you use both a metric and a threshold to define a SodaCL **check** in a checks YAML file, like the following example that checks that the `dim_customer` dataset is not empty.  
 

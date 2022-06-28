@@ -2,14 +2,19 @@
 layout: default
 title: Quick start for Soda SQL and Soda Cloud
 description: Follow the quick start tutorial to get started with Soda SQL and Soda Cloud. Use demo data to explore functionality and features.
-parent: Get started
+sidebar: sql
+parent: Soda SQL
 redirect_from:
 - /soda-sql/getting-started/5_min_tutorial.html
 - /soda-sql/5_min_tutorial.html
 - /soda-cloud/quick-start.html
+- /soda/quick-start-soda-sql.html
 ---
 
 # Quick start for Soda SQL and Soda Cloud 
+
+{% include banner-sql.md %}
+
 <br />
 
 ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="105px" width="105px"} 
@@ -321,7 +326,7 @@ Continue to the next section to connect Soda SQL to a Soda Cloud account.
 
 Though you can use Soda SQL as a standalone CLI tool to monitor data quality, you may wish to connect to the Soda Cloud web application that vastly enriches the data quality monitoring experience. 
 
-Beyond increasing the observability of your data, Soda Cloud enables you to automatically [detect anomalies]({% link soda-cloud/anomaly-detection.md %}), and view [samples of the rows that failed]({% link soda-cloud/failed-rows.md %}) a test during a scan. Integrate Soda Cloud with your [Slack workspace]({% link soda/integrate-slack.md %}) to collaborate with your team on data monitoring.
+Beyond increasing the observability of your data, Soda Cloud enables you to automatically detect anomalies, and view [samples of the rows that failed]({% link soda-cloud/failed-rows.md %}) a test during a scan. Integrate Soda Cloud with your [Slack workspace]({% link soda/integrate-slack.md %}) to collaborate with your team on data monitoring.
 
 Soda SQL uses an API to connect to Soda Cloud. To use the API, you must generate API keys in your Soda Cloud account, then add them to the warehouse YAML file that Soda SQL created. When it runs a scan, Soda SQL pushes the test results to Soda Cloud. 
 
@@ -361,7 +366,6 @@ $ soda scan warehouse.yml tables/breakdowns.yml
 * [integrate your Slack workspace]({% link soda/integrate-slack.md %}) to receive notifications of failed tests and collaborate on data quality investigations
 * set up [alerts and notifications]({% link soda-cloud/monitors.md %}) for the monitors in your account
 * open and track [data quality incidents]({% link soda-cloud/incidents.md %}) and collaborate to resolve them with your team in Slack
-* [enable column metrics]({% link soda-cloud/display-column-metrics.md %}) and [display sample data]({% link soda-cloud/display-samples.md %}) in Soda Cloud
 
 To exit the workspace in your command-line interface, type `exit` then press enter.
 
@@ -370,9 +374,9 @@ To exit the workspace in your command-line interface, type `exit` then press ent
 * [Install Soda SQL]({% link soda-sql/installation.md %}) in your local environment and [connect to your own warehouses]({% link soda-sql/configure.md %}).
 * Learn more about [creating new monitors]({% link soda-cloud/monitors.md %}) for your tables in Soda Cloud.
 * Set up [programmatic scans]({% link soda-sql/programmatic_scan.md %}) to automate data quality monitoring.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

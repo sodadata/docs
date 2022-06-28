@@ -72,7 +72,7 @@ class SodaScanOperator(PythonOperator):
         )
 ```
 
-and
+Also, configure the following.
 
 ```python
 class SodaAirflow:

@@ -1,14 +1,14 @@
 ---
 layout: default
 title: Quick start for Soda Core and Soda Cloud
-description: Follow the quick start tutorial to get started with Soda Core (Beta) and Soda Cloud with a PostgreSQL database.
+description: Follow the quick start tutorial to get started with Soda Core and Soda Cloud with a PostgreSQL database.
 parent: Get started
 ---
 
-# Quick start for Soda Core ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"} and Soda Cloud
+# Quick start for Soda Core and Soda Cloud
 <br />
 
-![soda-core-logo](/assets/images/soda-core-logo.png){:height="120px" width="120px"} ![beta](/assets/images/beta.png){:height="40px" width="40px" align="top"}
+![soda-core-logo](/assets/images/soda-core-logo.png){:height="120px" width="120px"} 
 Use your command-line interface to connect Soda Core to a data source, create and examine the checks that surface “bad” data in a dataset, then run your first scan in a few minutes. 
 
 ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="123px" width="123px"} 
@@ -74,7 +74,7 @@ data_source my_database_name:
     host: soda-temp-demo
     port: '5432'
     username: sodademo
-    password: env_var(POSTGRES_PASSWORD)
+    password: ${POSTGRES_PASSWORD}
   database: postgres
   schema: public
 ```
@@ -82,7 +82,7 @@ data_source my_database_name:
 * Replace `my_database_name` with the name of your PostgreSQL database. 
 * Note that `connection:` is a header, not a field. 
 * All values are required.
-* Consider using environment variables to securely store the values of your username and password. Refer to [Configure Soda Core]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables) for details. 
+* Consider using system variables to securely store the values of your username and password. Refer to [Configure Soda Core]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables) for details. 
 
 
 ## Write a check and run a scan
@@ -176,7 +176,7 @@ data_source my_database_name:
     host: soda-temp-demo
     port: '5432'
     username: sodademo
-    password: env_var(POSTGRES_PASSWORD)
+    password: ${POSTGRES_PASSWORD}
   database: postgres
   schema: public
 soda_cloud:
@@ -188,7 +188,7 @@ soda_cloud:
 4. In Soda Cloud, navigate to **your avatar** > **Profile** > **API Keys**, then click the plus icon to generate new API keys.
     * Copy the **API Key ID**, then paste it into the `configuration.yml` file as the value for `api_key_id`.
     * Copy the **API Key Secret**, then paste it into the `configuration.yml` file as the value for `api_key_secret`.
-<br />You may wish to securely store the values for the API keys as [environment variables]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables). 
+<br />You may wish to securely store the values for the API keys as [system variables]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables). 
 5. Save the changes to the `configuration.yml` file. Close the **Create API Key** dialog box in your Soda Cloud account. 
 6. From the command-line, in your `soda_tutorial` directory, use Soda Core to scan the datasets in your data source again.<br />
 Command:

@@ -7,7 +7,7 @@ redirect_from:
 - /soda-cl/quotes.html
 ---
 
-# Optional check configurations ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Optional check configurations 
 
 When you define SodaCL checks for data quality in your checks YAML file, you have the option of adding one or more extra configurations or syntax variations. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 

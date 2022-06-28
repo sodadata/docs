@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Distribution checks
-description: Use a SodaCL (Beta) distribution check to monitor the consistency of a column over time.
+description: Use a SodaCL distribution check to monitor the consistency of a column over time.
 parent: SodaCL
 ---
 
-# Distribution checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Distribution checks 
 
 Use a distribution check to determine whether the distribution of a column has changed between two points in time. For example, if you trained a model at a particular moment in time, you can use a distribution check to find out how much the data in the column has changed over time, or if it has changed all.
 

@@ -1,17 +1,17 @@
 ---
 layout: default
-title: SodaCL (Beta)
-description: Soda Checks Language (Beta) is a human-readable, domain-specific language for data reliability. You use SodaCL to define Soda Checks in a checks YAML file.
+title: SodaCL 
+description: Soda Checks Language is a human-readable, domain-specific language for data reliability. You use SodaCL to define Soda Checks in a checks YAML file.
 parent: SodaCL
 ---
 <br />
 
-![soda-cl-logo](/assets/images/sodacl-logo.png){:height="185px" width="185px"} ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+![soda-cl-logo](/assets/images/sodacl-logo.png){:height="185px" width="185px"} 
 <br />
 <br />
 
 <p>&#10004;  Human-readable, domain-specific language for data reliability<br /></p>
-<p>&#10004;  Compatible with <a href="https://docs.soda.io/soda-core/overview-main.html" target="_blank">Soda Core (Beta)</a> and <a href="https://docs.soda.io/soda-cloud/overview.html">Soda Cloud</a><br /></p>
+<p>&#10004;  Compatible with <a href="https://docs.soda.io/soda-core/overview-main.html" target="_blank">Soda Core </a> and <a href="https://docs.soda.io/soda-cloud/overview.html">Soda Cloud</a><br /></p>
 <p>&#10004;  Includes 25+ built-in metrics, plus the ability to <a href="https://docs.soda.io/soda-cl/user-defined.html">include SQL queries</a><br /></p>
 <p>&#10004;  Includes checks with <a href="https://docs.soda.io/soda-cl/numeric-metrics.html#fixed-and-dynamic-thresholds">dynamic thresholds</a> to gauge changes to metrics over time<br /></p>
 <p>&#10004;  Collaborate with your team to write SodaCL checks in a YAML file<br /></p>
@@ -62,9 +62,9 @@ checks for dim_department_group:
                 <div>
                     <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
                     <h2>Get started</h2>
-                    <a href="https://docs.soda.io/soda-core/installation.html" target="_blank">Download and install Soda Core (Beta)</a> 
+                    <a href="https://docs.soda.io/soda-core/installation.html" target="_blank">Download and install Soda Core </a> 
                     <a href="https://docs.soda.io/soda-core/configuration.html" target="_blank">Write checks in a checks.yml file</a>
-                    <a href="https://docs.soda.io/soda-core/scan-core.html" target="_blank">Run a scan of your data to discover any data quality issues</a>
+                    <a href="https://docs.soda.io/soda-core/scan-core.html" target="_blank">Run a scan of your data</a>
                 </div>
             </div>
         </div>        

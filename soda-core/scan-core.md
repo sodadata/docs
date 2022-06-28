@@ -5,7 +5,7 @@ description:  Soda Core uses the input in the checks and configuration YAML file
 parent: Soda Core
 ---
 
-# Run a Soda Core scan ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Run a Soda Core scan 
 
 A **scan** is a command that executes checks to extract information about data in a dataset. A **check** is a test that Soda Core performs when it scans a dataset in your data source. Soda Core uses the checks you define in the **checks YAML** file to prepare SQL queries that it runs against the data in a table. Soda Core can execute multiple checks against one or more datasets in a single scan. 
 
@@ -81,7 +81,7 @@ Soda Core 0.0.x
 Scan summary:
 1/1 check FAILED: 
     CUSTOMERS in postgres_retail
-      freshness using full_date_alternate_key < 3d [FAILED]
+      freshness(full_date_alternate_key) < 3d [FAILED]
         max_column_timestamp: 2020-06-24 00:04:10+00:00
         max_column_timestamp_utc: 2020-06-24 00:04:10+00:00
         now_variable_name: NOW

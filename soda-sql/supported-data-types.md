@@ -2,15 +2,20 @@
 layout: default
 title: Data types
 description: Access a data source-specific list of data types Soda supports in columns it scans. Soda does not support complex data types.
-parent: Soda
-redirect_from: /soda-sql/documentation/supported-data-types.html
+sidebar: sql
+parent: Soda SQL
+redirect_from: 
+- /soda-sql/documentation/supported-data-types.html
+- /soda/supported-data-types.html
 ---
 
 # Data types
 
+{% include banner-sql.md %}
+
 Soda SQL supports the following data types in columns it scans.  <br />
 Currently, Soda does *not* support complex data types. <br />
-For Soda Core (Beta) data types, see [Soda Core documentation]({% link soda-core/configuration.md %}).
+For Soda Core data types, see [Soda Core documentation]({% link soda-core/configuration.md %}).
 
 [Amazon Athena](#amazon-athena) <br />
 [Amazon Redshift](#amazon-redshift) <br />
@@ -108,4 +113,4 @@ For Soda Core (Beta) data types, see [Soda Core documentation]({% link soda-core
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

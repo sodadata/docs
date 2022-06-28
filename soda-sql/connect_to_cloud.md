@@ -2,11 +2,16 @@
 layout: default
 title: Connect to Soda Cloud
 description: To use all the features that Soda Cloud has to offer, you can install and configure the Soda SQL command-line tool, then connect it to your Soda Cloud account.
-parent: Soda Cloud
-redirect_from: /soda-sql/documentation/connect_to_cloud.html
+sidebar: sql
+parent: Soda SQL
+redirect_from: 
+- /soda-sql/documentation/connect_to_cloud.html
+- /soda-cloud/connect_to_cloud.html
 ---
 
 # Connect to Soda Cloud
+
+{% include banner-sql.md %}
 
 To use all the [features and functionality]({% link soda/product-overview.md %}#compare-features-and-functionality) that **Soda Cloud** and **Soda SQL** have to offer, you can install and configure the Soda SQL command-line tool, then connect it to your Soda Cloud account.
 
@@ -15,7 +20,7 @@ Soda SQL uses an API to connect to Soda Cloud. To use the API, you must generate
 
 1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
 2. Use the instructions in [Install Soda SQL]({% link soda-sql/installation.md %}) to install Soda SQL.
-3. Follow steps in the [Quick start tutorial]({% link soda/quick-start-soda-sql.md %}) to create your warehouse YAML file, connect to your [data source]({% link soda/glossary.md %}#data-source), analyze your [datasets]({% link soda/glossary.md %}#datasets), and run a [scan]({% link soda/glossary.md %}#scan) on the data.
+3. Follow steps in the [Quick start tutorial]({% link soda-sql/quick-start-soda-sql.md %}) to create your warehouse YAML file, connect to your [data source]({% link soda/glossary.md %}#data-source), analyze your [datasets]({% link soda/glossary.md %}#datasets), and run a [scan]({% link soda/glossary.md %}#scan) on the data.
 4. Open the `warehouse.yml` file in a text editor, then add the following to the file:
 ```yaml
 soda_account:
@@ -46,12 +51,12 @@ $ soda scan warehouse.yml tables/[datasetname].yml
 
 * Learn how to [create monitors and alerts]({% link soda-cloud/monitors.md %}).
 * Learn more about the [anatomy of a scan]({% link soda-sql/scan-yaml.md %}#anatomy-of-the-scan-yaml-file).
-* Access [historic measurements]({% link soda/metrics.md %}#historic-metrics) from the Cloud Metric Store in tests you define in your scan YAML file.
+* Access [historic measurements]({% link soda-sql/metrics.md %}#historic-metrics) from the Cloud Metric Store in tests you define in your scan YAML file.
 * Learn more about viewing [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 * Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

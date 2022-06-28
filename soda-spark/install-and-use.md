@@ -2,6 +2,7 @@
 layout: default
 title: Install and use Soda Spark 
 description: Soda Spark is an extension that allows you to run Soda SQL functionality programmatically on a Spark DataFrame. Install Soda Spark from the command-line.
+sidebar: sql
 parent: Soda Spark
 ---
 
@@ -10,7 +11,7 @@ parent: Soda Spark
 {% include banner-spark.md %}
 
 Soda Spark is an extension of 
-[Soda SQL]({% link soda/quick-start-soda-sql.md %}) that allows you to run Soda
+[Soda SQL]({% link soda-sql/quick-start-soda-sql.md %}) that allows you to run Soda
 SQL functionality programmatically on a 
 <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark DataFrame</a>. Reference the Soda SQL documentation to learn how to use Soda Spark, particularly how to [define tests]({% link soda-sql/tests.md %}) in a [scan YAML file]({% link soda-sql/scan-yaml.md %}). 
 
@@ -186,7 +187,7 @@ Alternatively, you can prepare a [scan YAML file]({% link soda-sql/scan-yaml.md 
 
 ## Send scan results to Soda Cloud
 
-Use the following command to send Soda Spark scan results to Soda cloud. Use [Soda Cloud documentation]({% link soda-cloud/connect_to_cloud.md %}) to learn how to generate API keys to connect Soda Spark to Soda Cloud.
+Use the following command to send Soda Spark scan results to Soda cloud. Use [Soda Cloud documentation]({% link soda-sql/connect_to_cloud.md %}) to learn how to generate API keys to connect Soda Spark to Soda Cloud.
 
 ``` python
 >>> import os

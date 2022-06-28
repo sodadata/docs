@@ -5,7 +5,7 @@ description: Follow the quick start tutorial to get started with SodaCL, a human
 parent: Get started
 ---
 
-# Quick start for SodaCL ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Quick start for SodaCL 
 
 If you are staring at a blank YAML file wondering what SodaCL checks to write to surface data quality issues, this quick start tutorial is for you. 
 
@@ -26,7 +26,7 @@ If you are staring at a blank YAML file wondering what SodaCL checks to write to
 
 ## Soda Core and SodaCL: In brief
 
-**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with Soda Core (Beta), Soda’s open-source, command-line tool, you use SodaCL to write checks for data quality, then use Soda Core to scan the data in your data source and execute those checks.
+**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with Soda Core, Soda’s open-source, command-line tool, you use SodaCL to write checks for data quality, then use Soda Core to scan the data in your data source and execute those checks.
 
 After installing Soda Core, you connect Soda Core to your data source (Snowflake, BigQuery, etc.) by defining connection details such as host, username, and password, in a **configuration YAML** file. Then, you define your Soda Checks for data quality in a **checks YAML** file. A Soda Check is a test that Soda Core performs when it scans a dataset in your data source. When you use Soda Core to run a scan on data in your data source, you reference both the configuration and checks YAML files in the scan command.
 

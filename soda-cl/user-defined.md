@@ -1,11 +1,11 @@
 ---
 layout: default
 title: User-defined checks
-description: Use a SodaCL (Beta) user-defined check to define elements of a check using SQL expressions or queries.
+description: Use a SodaCL user-defined check to define elements of a check using SQL expressions or queries.
 parent: SodaCL
 ---
 
-# User-defined checks ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# User-defined checks 
 
 If the built-in set of [metrics and checks]({% link soda-cl/metrics-and-checks.md %}) that SodaCL offers do not quite give you the information you need from a scan, you can define your own metrics to customize your checks. User-defined checks essentially enable you to create common-table expressions or SQL queries that Soda Core runs during a scan.
 

@@ -1,12 +1,17 @@
 ---
 layout: default
-title: Data source configurations
+title: Data source configurations for Soda SQL
 description: To set data source configurations, use the following example configurations that correspond to each kind of data source that Soda SQL supports.
-parent: Soda
-redirect_from: /soda-sql/documentation/warehouse_types.html
+sidebar: sql
+parent: Soda SQL
+redirect_from: 
+- /soda-sql/documentation/warehouse_types.html
+- /soda/warehouse_types.html
 ---
 
-# Data source configurations
+# Data source configurations for Soda SQL
+
+{% include banner-sql.md %}
 
 Soda SQL needs connection details in order to access your [data source]({% link soda/glossary.md %}#data-source) to scan your data. Each type of data source uses different configuration parameters. To set the data source configurations in your [warehouse YAML]({% link soda-sql/warehouse.md %}), use the following example configurations that correspond to each kind of data source that Soda SQL supports.
 
@@ -22,7 +27,7 @@ Soda SQL needs connection details in order to access your [data source]({% link 
 [PostgreSQL](#postgresql) <br />
 [Snowflake](#snowflake) <br />
 [Trino (Experimental)](#trino-experimental) <br />
-[Troubleshoot data source connections]({% link soda/troubleshoot.md %}#data-source-connections)<br />
+[Troubleshoot data source connections]({% link soda-sql/troubleshoot.md %}#data-source-connections)<br />
 
 
 ## Amazon Athena
@@ -54,7 +59,7 @@ connection:
 
 Access keys and IAM role are mutually exclusive: if you provide values for `access_key_id` and `secret_access_key`, you cannot use Identity and Access Management role; if you provide value for `role_arn`, then you cannot use the access keys. Refer to [Identity and Access Management in Athena](https://docs.aws.amazon.com/athena/latest/ug/security-iam-athena.html) for details.
 
-Refer to [Troubleshoot warehouse connections]({% link soda/troubleshoot.md %}#warehouse-connections) for help with Athena connection issues.
+Refer to [Troubleshoot warehouse connections]({% link soda-sql/troubleshoot.md %}#warehouse-connections) for help with Athena connection issues.
 
 ## Amazon Redshift
 
@@ -414,4 +419,4 @@ connection:
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

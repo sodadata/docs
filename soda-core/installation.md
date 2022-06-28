@@ -6,7 +6,7 @@ parent: Soda Core
 redirect_from: /soda-core/install-scientific.html
 ---
 
-# Install Soda Core ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Install Soda Core 
 
 Soda Core is a command-line interface (CLI) tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data.
 <br />

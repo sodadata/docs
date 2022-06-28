@@ -27,8 +27,8 @@ This example aims to help you build a Soda Cloud reporting dashboard using the R
 * You have some knowledge of Python and are familiar with `pandas` and HTTP request libraries such as `httpx`.
 * You have installed Python 3.8 or later.
 * You have a Soda Cloud account.
-* You have [installed Soda SQL]({% link soda-sql/installation.md %}) in your environment and [connected]({% link soda-cloud/connect_to_cloud.md %}) it to your Soda Cloud account.
-* You have used Soda SQL to run at least one scan against data in a dataset.
+* You have [installed Soda Core]({% link soda-core/installation.md %}) in your environment and [connected]({% link soda-core/connect-core-to-cloud.md %}) it to your Soda Cloud account.
+* You have used Soda Core to run at least one scan against data in a dataset.
 * You are familiar with the [Soda Cloud Reporting API]({% link api-docs/reporting-api.md %}). 
 * This example does not support SSO.
 

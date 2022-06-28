@@ -1,4 +1,4 @@
-| Column metric<br /> in Soda SQL | Column metric<br /> in Soda Cloud |Description |  Applies to [data type]({% link soda/supported-data-types.md %}) | Column config key(s) / Validity Rule(s) | 
+| Column metric<br /> in Soda SQL | Column metric<br /> in Soda Cloud |Description |  Applies to [data type]({% link soda-sql/supported-data-types.md %}) | Column config key(s) / Validity Rule(s) | 
 | ----------------------- | ----------- | --------------------- | ----------------------------- | ----------------------------- |
 | `avg`| Average | The calculated average of the values in a numeric column. | number |  - | 
 | `avg_length` | Average Length | The average length of string values in a column.  | text  |  -  |

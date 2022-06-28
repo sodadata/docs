@@ -1,15 +1,15 @@
 ---
 layout: default
 title: Release notes for Soda Core
-description: Review release notes for Soda Core (Beta), an open-source tool for testing and monitoring data quality.
+description: Review release notes for Soda Core, an open-source tool for testing and monitoring data quality.
 sidebar: core
-parent: Soda Core (Beta)
+parent: Soda Core 
 ---
 
 # Release notes for Soda Core 
 
 
-![beta](/assets/images/beta.png){:height="50px" width="50px"}
+
 
 {% assign notes = site.release-notes | where_exp:"item","item.products contains 'soda-core'" | sort:"date" | reverse %}
 {% for release-note in notes %}

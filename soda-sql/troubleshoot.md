@@ -1,14 +1,17 @@
 ---
 layout: default
-title: Troubleshoot
+title: Troubleshoot Soda SQL
 description: Access an aggregated list of tips and solutions to problems using Soda.
-parent: Soda
-redirect_from: /soda-sql/documentation/troubleshoot.html
+sidebar: sql
+parent: Soda SQL
+redirect_from: 
+- /soda-sql/documentation/troubleshoot.html
+- /soda/troubleshoot.html
 ---
 
-# Troubleshoot
+# Troubleshoot Soda SQL
 
-Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+{% include banner-sql.md %}
 
 ## Install and upgrade Soda SQL
 
@@ -39,4 +42,4 @@ Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> So
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

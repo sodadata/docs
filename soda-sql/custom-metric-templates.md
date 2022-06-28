@@ -2,6 +2,7 @@
 layout: default
 title: Custom metric templates
 description: If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs, you can use custom metrics. See full YAML examples.
+sidebar: sql
 parent: Soda SQL
 redirect_from: /soda-sql/example-compare-rowcounts.html
 ---
@@ -10,7 +11,7 @@ redirect_from: /soda-sql/example-compare-rowcounts.html
 
 {% include banner-sql.md %}
 
-Out of the box, Soda makes several [built-in metrics]({% link soda/metrics.md %}), such as `row_count`, available for you to use to write [tests]({% link soda/glossary.md %}#test). If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs, you can use [custom metrics]({% link soda-sql/sql_metrics.md%}#custom-metrics). 
+Out of the box, Soda makes several [built-in metrics]({% link soda-sql/metrics.md %}), such as `row_count`, available for you to use to write [tests]({% link soda/glossary.md %}#test). If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs, you can use [custom metrics]({% link soda-sql/sql_metrics.md%}#custom-metrics). 
 
 **Custom metrics**, also known as SQL metrics, enable you to define your own metrics that you can use in a test in Soda SQL or Soda Cloud; refer to [this example below](#validate-that-row-counts-are-equal). You can also use custom metrics to simply define SQL queries that Soda executes as tests during a scan, which is what most of these templates do.
 
@@ -118,7 +119,7 @@ If you want to compare row counts between two datasets and allow for some accept
 
 Though you can use the built-in metric `duplicate_count` to test the contents of a column of unique IDs to determine the number of duplicate values, the following templates use the query type `failed_rows` and SQL queries to select and display the full content of the rows that contain duplicate values so you can investigate an issue.
 
-If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_cloud.md %}) to your instance of Soda SQL, you can use a custom metric to explicitly send failed rows that contain duplicate IDs to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
+If you use Soda Cloud and have [connected it]({% link soda-sql/connect_to_cloud.md %}) to your instance of Soda SQL, you can use a custom metric to explicitly send failed rows that contain duplicate IDs to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
 
 Use one of the following custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
@@ -208,7 +209,7 @@ You can use a custom metric with query type `failed_rows` to confirm <a href="ht
 
 Sometimes, transactional databases with <a href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints?view=sql-server-ver15" target="_blank">primary and foreign key constraints</a> maintain the integrity of the IDs between datasets, but where the data source does not enforce constraints, you can define a custom metric to compare IDs between datasets to surface any discrepancies.
 
-If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_cloud.md %}) to your instance of Soda SQL, you can use a custom metric to explicitly send rows that contain referential inconsistencies to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
+If you use Soda Cloud and have [connected it]({% link soda-sql/connect_to_cloud.md %}) to your instance of Soda SQL, you can use a custom metric to explicitly send rows that contain referential inconsistencies to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
 
 Use the following custom metric template in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
@@ -590,7 +591,7 @@ Where a dataset does not validate its contents on entry, you may wish to assert 
 | Britain        | UK           |
 | United states  | USA          |
 
-If you use Soda Cloud and have [connected it]({% link soda-cloud/connect_to_cloud.md %}) to your instance of Soda SQL, you can use these custom metrics to explicitly send failed rows that contain distinct values in either column to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
+If you use Soda Cloud and have [connected it]({% link soda-sql/connect_to_cloud.md %}) to your instance of Soda SQL, you can use these custom metrics to explicitly send failed rows that contain distinct values in either column to Soda Cloud. (Learn how to [examine failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.) 
 
 Use one of the following **data source-specific** custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
@@ -721,11 +722,11 @@ sql_metrics:
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 * Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics) and [custom metrics in Soda Cloud]({% link soda-cloud/monitors.md %}#metric-types).
 * See [Examples of tests using built-in metrics]({% link soda-sql/examples-by-metric.md %})
 * Read more about [Failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 <br />
 
 ---
-{% include docs-footer.md %}
+*Last modified on {% last_modified_at %}*

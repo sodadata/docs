@@ -5,7 +5,7 @@ description: Use validity metrics in SodaCL checks to detect invalid values in a
 parent: Soda CL
 ---
 
-# Validity metrics ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Validity metrics 
 
 Use a validity metric in a check to surface invalid or unexpected values in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 

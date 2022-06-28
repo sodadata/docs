@@ -1,0 +1,70 @@
+- title: Soda SQL (Deprecated)
+  page: soda-sql/overview.md
+  subcategories:
+  - subtitle: Soda SQL
+    page: soda-sql/overview.md
+  - subtitle: Quick start for Soda SQL and Soda Cloud
+    page: soda-sql/quick-start-soda-sql.md
+  - subtitle: How Soda SQL works
+    page: soda-sql/concepts.md
+  - subtitle: Install Soda SQL
+    page: soda-sql/installation.md
+  - subtitle: Configure Soda SQL
+    page: soda-sql/configure.md
+  - subtitle: Soda SQL CLI commands
+    page: soda-sql/cli.md
+  - subtitle: Warehouse YAML
+    page: soda-sql/warehouse.md
+  - subtitle: Scan YAML
+    page: soda-sql/scan-yaml.md
+  - subtitle: Metrics in Soda SQL
+    page: soda-sql/metrics.md
+  - subtitle: Configure metrics
+    page: soda-sql/sql_metrics.md
+  - subtitle: Define tests
+    page: soda-sql/tests.md
+  - subtitle: Run a Soda SQL scan
+    page: soda-sql/scan.md
+  - subtitle: Scan multiple data sources or datasets
+    page: soda-sql/scan-different-datasets.md
+  - subtitle: Apply filters in Soda SQL
+    page: soda-sql/filtering.md
+  - subtitle: Configure programmatic scans
+    page: soda-sql/programmatic_scan.md
+  - subtitle: Configure orchestrated scans
+    page: soda-sql/orchestrate_scans.md
+  - subtitle: Connect to Soda Cloud
+    page: soda-sql/connect_to_cloud.md
+  - subtitle: Send sample data to Soda Cloud
+    page: soda-sql/samples.md
+  - subtitle: Send failed rows to Soda Cloud
+    page: soda-sql/send-failed-rows.md
+  - subtitle: Example tests by metric
+    page: soda-sql/examples-by-metric.md
+  - subtitle: Example tests for missing values
+    page: soda-sql/example-test-missing.md
+  - subtitle: Example tests for unique values
+    page: soda-sql/example-test-unique.md
+  - subtitle: Example tests for valid values
+    page: soda-sql/example-test-valid.md
+  - subtitle: Custom metric templates
+    page: soda-sql/custom-metric-templates.md
+  - subtitle: Data source configuration
+    page: soda-sql/warehouse_types.md
+  - subtitle: Data types
+    page: soda-sql/supported-data-types.md
+  - subtitle: Troubleshoot Soda SQL
+    page: soda-sql/troubleshoot.md
+  - subtitle: Soda SQL usage statistics
+    page: soda-sql/global-configuration.md
+  - subtitle: Release notes
+    page: release-notes/soda-sql.md
+
+- title: Soda Spark (Deprecated)
+  page: soda-spark/install-and-use.md
+  subcategories:
+  - subtitle: Install and use Soda Spark
+    page: soda-spark/install-and-use.md
+  - subtitle: Release notes
+    page: release-notes/soda-spark.md
+

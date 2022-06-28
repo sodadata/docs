@@ -6,7 +6,7 @@ parent: Soda Core
 ---
 
 # Define programmatic scans
-![beta](/assets/images/beta.png){:height="50px" width="50px"}
+
 
 {% include programmatic-basic.md %}
 

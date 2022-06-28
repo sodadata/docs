@@ -5,7 +5,7 @@ description: Integrate Soda Core with a data orchestration tool to automate and 
 parent: Soda Core
 ---
 
-# Configure orchestrated scans ![beta](/assets/images/beta.png){:height="50px" width="50px" align="top"}
+# Configure orchestrated scans 
 
 {% include orchestrate.md %}
 
