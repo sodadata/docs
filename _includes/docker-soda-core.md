@@ -30,6 +30,10 @@ WARNING: The requested image's platform (linux/amd64) does not match the detecte
 ```bash
 docker run -v /path/to/your_soda_directory:/sodacl sodadata/soda-core scan -d your_data_source -c /sodacl/your_configuration.yml /sodacl/your_checks.yml
 ``` 
+Optionally, you can specify the version of Soda Core to use to execute the scan. This may be useful when you do not wish to use the latest released version of Soda Core to run your scans. The example scan command below specifies Soda Core version 3.0.0.
+```bash
+docker run -v /path/to/your_soda_directory:/sodacl sodadata/soda-core:v3.0.0 scan -d your_data_source -c /sodacl/your_configuration.yml /sodacl/your_checks.yml
+```
 
 <details>
   <summary>What does the scan command do? </summary>
