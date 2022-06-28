@@ -187,7 +187,7 @@ automated monitoring:
     - exclude test_%
 ```
 
-#### 6. 
+#### 6. Assign Owner
 
 | Field or Label | Guidance | 
 | Data Source Owner | The Data Source Owner maintains the connection details and settings for this data source and its Default Scan Schedule. |

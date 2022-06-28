@@ -67,6 +67,8 @@
     page: soda-cl/user-defined.md
   - subtitle: Failed rows checks
     page: soda-cl/failed-rows-checks.md
+  - subtitle: Automated monitoring checks
+    page: soda-cl/automated-monitoring.md
   - subtitle: Filters
     page: soda-cl/filters.md
   - subtitle: For each
@@ -89,7 +91,7 @@
     page: soda-cloud/overview.md
   - subtitle: Roles and rights
     page: soda-cloud/roles-and-rights.md
-  - subtitle: Add a data source
+  - subtitle: Create a data source
     page: soda-cloud/add-datasource.md
   - subtitle: Create an agreement
     page: soda-cloud/agreements.md

@@ -79,7 +79,7 @@ checks for orders:
 
 ## Anomaly score check results
 
-Because the anomaly score check requires at least **four** data points before it can start detecting what counts as an anomalous measurement, your first few scans will yield a check result that indicates that Soda does not have enough data.
+Because the anomaly score check requires at least four data points before it can start detecting what counts as an anomalous measurement, your first few scans will yield a check result that indicates that Soda does not have enough data.
 
 ```shell
 Soda Core 3.0.0xx
