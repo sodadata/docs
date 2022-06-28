@@ -921,3 +921,40 @@ body {
             color: grey;
         }
 }
+/* Docs announcement banner */
+
+.docs-banner {
+  padding-top: 0;
+}
+
+.docs-banner > a.docs-section-row {
+  display: block;
+  overflow: auto;
+  text-overflow: initial;
+  white-space: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  max-width: none !important;
+}
+.docs-banner-text {
+  display: inline-block;
+  margin-right: 20px;
+}
+.docs-banner-action {
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: underline;
+}
+.docs-banner.docs-color-turquoise {
+  background-color: #00c9d6;
+}
+.docs-banner.docs-color-turquoise .docs-banner-text {
+  color: #000;
+}
+.docs-banner.docs-color-turquoise .docs-banner-action {
+  color: #fff;
+}
+
