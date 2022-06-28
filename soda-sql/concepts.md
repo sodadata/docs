@@ -109,8 +109,8 @@ Though you do not have to set up and ingrate a Soda Cloud account in order to us
 
 - collaborate with team members to review details of scan results that can help you to diagnose data issues
 - use monitors to view stored [scan output]({% link soda-sql/scan.md %}#scan-output-in-soda-cloud) as visualizations that represents the volume of failed tests in each scan
-- empower others to [set quality thresholds]({% link soda-cloud/agreements.md %}) that define "good" data
-- set up and [send alert notifications]({% link soda-cloud/agreements.md %}) when "bad" data enters your data pipeline
+- empower others to set quality thresholds that define "good" data
+- set up and send alert notifications when "bad" data enters your data pipeline
 - create and track data quality [Incidents]({% link soda-cloud/incidents.md %}) so your team can collaborate in Slack to resolve them
 
 To connect Soda SQL to Soda Cloud, you create API keys in your Soda Cloud account and configure them as connection credentials in your warehouse and env_vars YAML files. See [Connect to Soda Cloud]({% link soda-sql/connect_to_cloud.md %}) for details.

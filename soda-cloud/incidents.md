@@ -39,7 +39,6 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 ## Go further
 
 * [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
-* Learn more about configuring [alerts]({% link soda-cloud/agreements.md %}) in Soda Cloud.
 * [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for a check result.
 * Collaborate with your team using a [Single Sign-on IdP]({% link soda-cloud/sso.md %}).
 * Integrate Soda with your [data catalogs]({% link soda/integrate-alation.md %}) or [data pipeline tools]({% link soda/integrate-dbt.md %}).

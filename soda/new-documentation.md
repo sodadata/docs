@@ -219,7 +219,7 @@ parent: Reference
 
 #### November 15, 2021
 
-* Added a new, embedded [interactive demo]({% link soda-sql/interactive-demo.md %}) for Soda SQL.
+* Added a new, embedded interactive demo for Soda SQL.
 * New documentation to accompany the soft-launch of [Soda Spark]({% link soda-spark/install-and-use.md %}), an extension of Soda SQL functionality.
 
 #### November 9, 2021

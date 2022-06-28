@@ -97,7 +97,7 @@ For example, if you use you Google Cloud Platform, you can [set runtime environm
 
 ## Provide credentials as system variables
 
-If you wish, you can provide data source login credentials or any of the properties in the warehouse YAML file as system variables instead of storing the values in your `env_vars.yml` file. 
+If you wish, you can provide data source login credentials or any of the properties in the warehouse YAML file as system variables instead of storing the values in your `env_vars.yml` file. System variables persist only for as long as you have a terminal session open. For a longer-term solution, consider using permanent environment variables stored in your `~/.bash_profile` or `~/.zprofile` files.
 
 1. First, make sure that you have not already defined the value for the property in the `env_vars.yml` file. 
 2. Set a system variable to store the value of a property that the warehouse YAML file uses. For example, you can use the following command to define a system variable for your password.  

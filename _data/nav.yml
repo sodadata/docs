@@ -2,8 +2,10 @@
   page: index.html
 
 - title: Get started
-  page: soda/quick-start-soda-core.md
+  page: soda/core-interactive-demo.md
   subcategories:
+  - subtitle: Soda Core Interactive demo
+    page: soda/core-interactive-demo.md
   - subtitle: Quick start for Soda Core and Soda Cloud
     page: soda/quick-start-soda-core.md
   - subtitle: Quick start for SodaCL
@@ -97,6 +99,10 @@
     page: soda-cloud/add-datasource.md
   - subtitle: Create an agreement
     page: soda-cloud/agreements.md
+  - subtitle: Collaborate on data monitoring
+    page: soda-cloud/collaborate.md
+  - subtitle: Edit monitors
+    page: soda-cloud/monitors.md
   - subtitle: Scan output
     page: soda-cloud/scan-output.md
   - subtitle: Edit checks

@@ -144,7 +144,7 @@ Soda Core is a free, open-source, command-line tool that enables you to use the 
 
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Read more about [running a Soda scan]({% link soda-sql/scan.md %}#run-a-scan).
-* Learn more about [creating alerts and notifications]({% link soda-cloud/agreements.md %}) in Soda Cloud.
+* Learn more about [creating agreements]({% link soda-cloud/agreements.md %}) in Soda Cloud.
 * Learn more about creating, tracking, and resolving data quality [Incidents]({% link soda-cloud/incidents.md %}) in Soda Cloud.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
