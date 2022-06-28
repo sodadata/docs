@@ -119,7 +119,7 @@ df2.createOrReplaceTempView("TABLE_TWO")
 ...
 
 scan = Scan()
-scan.set_definition_name('YOUR_SCHEDULE_NAME')
+scan.set_scan_definition_name('YOUR_SCHEDULE_NAME')
 scan.set_data_source_name("spark_df")
 scan.add_configuration_yaml_file(file_path="somedirectory/your_configuration.yml")
 scan.add_spark_session(spark_session)
