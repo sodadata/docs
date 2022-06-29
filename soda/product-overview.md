@@ -75,6 +75,14 @@ Beyond increasing the observability of your data, Soda Cloud enables you to view
 
 Access [Soda Cloud documentation]({% link soda-cloud/overview.md %}).
 
+![preview](/assets/images/preview.png){:height="60px" width="60px"} Some new features and functionality for are accessible via limited-access preview. <a href="mailto:support@soda.io">Let us know</a> if you want access!
+* [Create a data source in Soda Cloud]({% link soda-cloud/add-datasource.md %})
+* [Create an agreement]({% link soda-cloud/agreements.md %})
+* [Deploy a Soda Agent]({% link soda-agent/deploy.md %})
+* [Add automated monitoring checks]({% link soda-cl/automated-monitoring.md %})
+* [Send profile info to Soda Cloud]({% link soda-cl/profile.md %})
+
+
 ![overview-soda-cloud](/assets/images/overview-soda-cloud.png){:height="700px" width="700px"}
 
 
@@ -109,7 +117,7 @@ In Soda Cloud, you can do much more than just review the scan results.
 * [Integrate with Slack]({% link soda/integrate-slack.md %}) to configure and send alerts to your team when there is a data quality issue.
 * Create and track data quality [incidents]({% link soda-cloud/incidents.md %}) associated with failed check results so your team can collaborate on issue investigation.
 * Get at-a-glance information about column metrics and the overall health of a dataset in the Datasets dashboard.
-* [Integrate your dbt tests]({% link soda/integrate-dbt.md %}) into Soda Cloud, or integrate with your [Metaphor]({% link soda/integrate-metaphor.md %}) or [Alation]({% link soda/integrate-alation.md %}) data catalog.
+* Integrate with your [Metaphor]({% link soda/integrate-metaphor.md %}) or [Alation]({% link soda/integrate-alation.md %}) data catalog.
 
 ## Legacy OSS tools
 

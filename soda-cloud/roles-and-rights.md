@@ -12,8 +12,8 @@ To manage the actions of members that belong to a single organization, Soda Clou
 [Roles and rights in your account](#roles-and-rights-in-your-account)<br />
 [Change organization roles and settings](#change-organization-roles-and-settings)<br />
 [Access an audit trail](#access-an-audit-trail)<br />
-[Access to datasets and monitors](#access-to-datasets-and-monitors)<br />
-[Default roles for datasets and monitors](#default-roles-for-datasets-and-monitors)<br />
+[Access to datasets and checks](#access-to-datasets-and-checks)<br />
+[Default roles for datasets and checks](#default-roles-for-datasets-and-checks)<br />
 [Change the default access to datasets](#change-the-default-access-to-datasets)<br />
 [Change access to a dataset](#change-access-to-a-dataset)<br />
 [Review member licenses](#review-member-licenses)<br />
@@ -71,26 +71,25 @@ To meet your organization's regulatory and policy mandates, you can download a C
 Alternatively, you can use the [Audit Trail endpoint]({% link api-docs/reporting-api.md %}#/operations/audit_trail_v0_audit_trail_get) in Soda Cloud's Reporting API to access audit trail data. 
 
 
-## Access to datasets and monitors
+## Access to datasets and checks
 
-The roles that define who can make changes to [datasets]({% link soda/glossary.md %}#dataset) and [monitors]({% link soda/glossary.md %}#monitor) are **Manager**, **Editor**, and **Viewer**. Where the roles and rights described above apply to your organization's Soda Account, the roles and rights described in the table below apply to individual resources in your account, namely the datasets and monitors. 
+The roles that define who can make changes to [datasets]({% link soda/glossary.md %}#dataset) and [checks]({% link soda/glossary.md %}#check) are **Manager**, **Editor**, and **Viewer**. Where the roles and rights described above apply to your organization's Soda Account, the roles and rights described in the table below apply to individual resources in your account, namely the datasets and checks. 
 
-The following table outlines the rights of each role associated with individual datasets. Note that because of its universal access to all things in your Soda Cloud account, an **Admin** member as described above has all the rights of a **Manager** relative to datasets and monitors.
+The following table outlines the rights of each role associated with individual datasets. Note that because of its universal access to all things in your Soda Cloud account, an **Admin** member as described above has all the rights of a **Manager** relative to datasets and checks.
 
 | Rights                                                                     | Manager <br /> and Admin | Editor | Viewer |
 |----------------------------------------------------------------------------|:------------------------:|:------:|:------:|
-| View Monitor Results of monitors associated with a dataset                 |             ✓            |    ✓   |    ✓   |
-| Create and track Incidents associated with one or more monitor results     |             ✓            |    ✓   |    ✓   |
-| Create monitors associated with the dataset                                |             ✓            |    ✓   |        |
-| Edit monitors associated with the dataset                                  |             ✓            |    ✓   |        |
+| View Check Results of checks associated with a dataset                     |             ✓            |    ✓   |    ✓   |
+| Create and track Incidents associated with one or more check results       |             ✓            |    ✓   |    ✓   |
+| Create checks associated with an agreement                                 |             ✓            |    ✓   |        |
+| Edit checks associated with a dataset                                      |             ✓            |    ✓   |        |
 | Add and edit dataset Attributes, such as Description or Tags               |             ✓            |    ✓   |        |
-| Edit dataset settings such as Enable Column Metrics or Sample Data         |             ✓            |    ✓   |        |
 | Add Tags to a dataset                                                      |             ✓            |    ✓   |        |
-| Control member access to a dataset and its monitors (add or remove access) |             ✓            |        |        |
-| Change the roles of members with access to a dataset and its monitors      |             ✓            |        |        |
+| Control member access to a dataset and its checks (add or remove access)   |             ✓            |        |        |
+| Change the roles of members with access to a dataset and its check         |             ✓            |        |        |
 
 
-## Default roles for datasets and monitors
+## Default roles for datasets and checks
 
 When a new member accepts an invitation to join an existing organization, Soda Cloud applies the following defaults to the new member:
 - the role of **User** in the organization
@@ -122,7 +121,7 @@ By default, when any member adds a new dataset to the Soda Cloud account via Sod
 
 As an Admin you have the option of adjusting three default access settings:
 
-* By default, when a dataset's Admin or Manager grants another member or the Everyone group access to a dataset, Soda Cloud automatically assigns the new member or group the [default role of Editor for the dataset](#default-roles-for-datasets-and-monitors).  You can adjust this setting to a different default role.
+* By default, when a dataset's Admin or Manager grants another member or the Everyone group access to a dataset, Soda Cloud automatically assigns the new member or group the [default role of Editor for the dataset](#default-roles-for-datasets-and-checks).  You can adjust this setting to a different default role.
 * By default, when any member adds a new dataset to the Soda Cloud account via Soda Core, Soda Cloud *does not* assign the **Everyone** group to the dataset. You can adjust this setting to automatically assign the **Everyone** group to each newly added dataset.
 * By default, Soda Cloud *does not* allow dataset owners to manage the responsibilites on the datasets they own. You can adjust this setting to automatically assign the role of Manager to all dataset owners, rather than Editor.
 
@@ -146,8 +145,8 @@ Note that by default, Soda Cloud automatically adds all new members to the organ
     </ol>
     <br />
     In other words, you cannot globally change the role for the Everyone group across resources. You can only change the role of Everyone by:<br />
-    a) changing it individually on an individual dataset or monitor.<br />
-    b) changing its default role in the Organization Settings which <i>only</i> applies when the Everyone group is added to a dataset or monitor on upload or creation.
+    a) changing it individually on an individual dataset or check.<br />
+    b) changing its default role in the Organization Settings which <i>only</i> applies when the Everyone group is added to a dataset or check on upload or creation.
 </details>
  
 
@@ -164,13 +163,13 @@ As an Admin or a Manager of a dataset, you can access the **Responsibilities** t
 
 ## Review member licenses
 
-Each Soda Cloud Plan (Soda Teams or Soda Enterprise) includes a specific number of **Author** licenses for members of the Soda Cloud account. A member's license status controls whether they can make changes to any datasets and monitors in the Soda Cloud account.
-* **Authors** essentially have read-write access in Soda Cloud and maintain the role of Admin, Manager, or Editor relative to monitors and datasets. See [Roles and rights](#roles-and-rights) above.
-* **Viewers** essentially have read-only acecss in Soda Cloud and maintain the role of Viewer relative to monitors and datasets. See [Roles and rights](#roles-and-rights) above.
+Each Soda Cloud Plan (Soda Teams or Soda Enterprise) includes a specific number of **Author** licenses for members of the Soda Cloud account. A member's license status controls whether they can make changes to any datasets and checks in the Soda Cloud account.
+* **Authors** essentially have read-write access in Soda Cloud and maintain the role of Admin, Manager, or Editor relative to checks and datasets. See [Roles and rights](#roles-and-rights) above.
+* **Viewers** essentially have read-only acecss in Soda Cloud and maintain the role of Viewer relative to checks and datasets. See [Roles and rights](#roles-and-rights) above.
 
 1. To review the licenses that your members have, as an Admin, login to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**. Only Soda Cloud Admin members can view Organization Settings. 
 2. Access the **Members** tab to view a list of people who have access to your Soda Cloud account, the role they have in the organization (Admin or User), and their License status (Author or Viewer). 
-3. Click a member's **Author** or **Viewer** label in the License column to access a **Responsibilities** window that lists the member's access to resources (datasets and monitors), the role they hold for each resource, and their license status relative to the resource.
+3. Click a member's **Author** or **Viewer** label in the License column to access a **Responsibilities** window that lists the member's access to resources (datasets and checks), the role they hold for each resource, and their license status relative to the resource.
 
 ## Data source, dataset, and check owners
 
@@ -190,11 +189,11 @@ There are three ownership roles in Soda Cloud that identify the member that owns
 <br />
 <br />
 
-#### Change the Monitor Owner
+#### Change the Check Owner
 
-1. If you are the Admin of the organization, or have a Manager or Editor role for the monitor's dataset, login to your Soda Cloud account and navigate to the **Monitors** dashboard.
-2. Click the stacked dots to the right of the monitor for which you wish to adjust the ownership, then select **Edit Monitor**.
-3. In the **Attributes** tab, use the dropdown to select the name of another member to take ownership of the monitor, then **Save**.
+1. If you are the Admin of the organization, or have a Manager or Editor role for the check's dataset, login to your Soda Cloud account and navigate to the **Checks** dashboard.
+2. Click the stacked dots to the right of the check for which you wish to adjust the ownership, then select **Edit Check**.
+3. In the **Attributes** tab, use the dropdown to select the name of another member to take ownership of the check, then **Save**.
 
 
 ## Go further
