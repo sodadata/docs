@@ -5,7 +5,7 @@ description:
 parent: Soda Agent
 ---
 
-# Soda Agent test deployment![preview](/assets/images/preview.png){:height="70px" width="70px"}
+# Soda Agent test deployment ![preview](/assets/images/preview.png){:height="70px" width="70px"}
 
 {% include banner-preview.md %}
 

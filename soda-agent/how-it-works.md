@@ -5,7 +5,7 @@ description:
 parent: Soda Agent
 ---
 
-# How a Soda Agent works![preview](/assets/images/preview.png){:height="70px" width="70px"}
+# How a Soda Agent works ![preview](/assets/images/preview.png){:height="70px" width="70px"}
 
 {% include banner-preview.md %}
 

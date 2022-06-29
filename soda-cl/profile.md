@@ -5,7 +5,7 @@ description: Use SodaCL to send dataset and column profile information to Soda C
 parent: SodaCL
 ---
 
-# Send profile information to Soda Cloud
+# Send profile information to Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 Use the `discover datasets` and/or `profile columns` configurations in your checks YAML file to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.<br />
 Requires Soda Cloud.
@@ -31,6 +31,7 @@ profile columns:
 
 [Prerequisites](#prerequisites)<br />
 [Define dataset discovery](#define-dataset-discovery) <br />
+[Define column profiling](#define-column-profiling)<br />
 [Optional check configurations](#optional-check-configurations) <br />
 [Go further](#go-further) <br />
 <br />
@@ -44,9 +45,11 @@ profile columns:
 
 ## Define dataset discovery
 
+Dataset discovery captures basic information about each dataset, including a dataset's schema and the columns it contains.
+
 This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud.
 
-The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Core discovers all the datasets the data source contains *except* those with names that begin with `test_`. This action captures basic information about each dataset, including a dataset's schema and the columns it contains.
+The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Core discovers all the datasets the data source contains *except* those with names that begin with `test_`. 
 
 
 ```yaml
@@ -79,9 +82,12 @@ discover datasets:
 
 ## Define column profiling
 
+Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. 
+
 This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud.
 
-The example configuratio below uses a wildcard character (`%`) to specify that, during a scan, Soda Core captures the column profile information for all the columns in the dataset named `retail_orders`. Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. 
+The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Core captures the column profile information for all the columns in the dataset named `retail_orders`. The `.`in the syntax separates the dataset name from the column name. 
+
 
 ```yaml
 profile columns:
@@ -90,6 +96,25 @@ profile columns:
 ```
 
 <br />
+
+You can also specify individual columns to profile, as in the following example.
+
+```yaml
+profile columns:
+  columns:
+    - retail_orders.billing_address
+```
+
+Refer to the top of the page for more example configurations for column profiling.
+<br />
+
+### Scan results in Soda Cloud
+
+1. To review the profiled columns in Soda Cloud, first [run a scan]({% link soda-core/scan-core.md %}) of your data source so that Soda Core can gather and send column profile information to Soda Cloud.
+2. In Soda Cloud, navigate to the **Datasets** dashboard, then click a dataset name to open the dataset's info page. 
+3. Access the **Columns** tab to review the columns that Soda Core profiled.
+
+![profile columns](../assets/images/profile-columns.png)
 
 
 ## Optional check configurations

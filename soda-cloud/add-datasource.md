@@ -5,7 +5,7 @@ description: Connect a data source to your Soda Cloud account to begin scanning 
 parent: Soda Cloud
 ---
 
-# Create a data source![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Create a data source ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 {% include banner-preview.md %}
 

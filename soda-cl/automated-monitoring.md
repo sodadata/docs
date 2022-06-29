@@ -5,7 +5,7 @@ description: Use a SodaCL automated monitoring check to automatically check for 
 parent: SodaCL
 ---
 
-# Automated monitoring checks
+# Automated monitoring checks ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 Use automated monitoring checks to instruct Soda to automatically check for row count anomalies and schema changes in a dataset.<br />
 Requires Soda Cloud and Soda Core Scientific.

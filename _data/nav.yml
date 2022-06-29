@@ -103,8 +103,6 @@
     page: soda-cloud/agreements.md
   - subtitle: Collaborate on data monitoring
     page: soda-cloud/collaborate.md
-  - subtitle: Edit monitors
-    page: soda-cloud/edit-checks.md
   - subtitle: Scan output
     page: soda-cloud/scan-output.md
   - subtitle: Edit checks
