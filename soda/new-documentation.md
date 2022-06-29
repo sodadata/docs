@@ -9,6 +9,11 @@ parent: Reference
 
 <br />
 
+#### July 6, 2022
+
+* Published documentation associated with the preview release of Soda Cloud's self-serve features and functionality. This is a limited access preview release, so please ask us for access at <a href="mailto:support@soda.io">support@soda.io</a>.
+
+
 #### June 28, 2022
 
 * Revised documentation to reflect the general availability of Soda Core and SodaCL.

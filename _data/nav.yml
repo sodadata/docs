@@ -164,6 +164,8 @@
   subcategories:
     - subtitle: Soda products
       page: release-notes/all.md
+    - subtitle: Soda Agent
+      page: release-notes/soda-agent.md
     - subtitle: Soda Cloud
       page: release-notes/soda-cloud.md
     - subtitle: Soda Cloud Reporting API
