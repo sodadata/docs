@@ -64,7 +64,7 @@ checks for dim_reseller:
 # a check with a fixed threshold
   - duplicate_count(phone) = 0
 # a check with a dynamic threshold
-  - change avg last 7 days for row_count < 50
+  - change avg last 7 for row_count < 50
 ```
 
 ### Send failed rows to Soda Cloud
@@ -244,9 +244,9 @@ A more complex dynamic threshold check includes two more optional mutable parts:
 
 ```yaml
 checks for dim_customer:
-  - change avg last 7 days for row_count < 50
-  - change min last 7 days for row_count < 50
-  - change max last 7 days percent for row_count < 50
+  - change avg last 7 for row_count < 50
+  - change min last 7 for row_count < 50
+  - change max last 7 percent for row_count < 50
 ```
  
 The example above defines three checks, one for each type of calculation available to use, `avg`, `min`, and `max`, all of which apply to the entire dataset.  
