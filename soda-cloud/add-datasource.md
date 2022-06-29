@@ -40,7 +40,7 @@ In your Soda Cloud account, navigate to **your avatar** > **Scans & Data**. Clic
 
 In the editing panel, provide the connection configurations Soda Cloud needs to be able to access the data in the data source. Connection configurations are data source-specific and include values for things such as a database's host and access credentials. 
 
-To more securely provide sensitive values such as usernames and passwords, use a `values.yml` file when you deploy the Soda Agent. See [Deploy a Soda Agent]({% link soda-agent/deploy.md %}) for details.
+To more securely provide sensitive values such as usernames and passwords, use environment variables in a `values.yml` file when you deploy the Soda Agent. See [Use environment variables for data source connection credentials]({% link soda-agent/deploy.md %}#use-environment-variables-for-data-source-connection-credentials) for details.
 
 Use the following data source configuration details to copy+paste the content associated with the type of data source you are using into the editing panel. 
  
