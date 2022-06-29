@@ -9,6 +9,11 @@ parent: Reference
 
 <br />
 
+#### June 29, 2022
+
+* Added documentation to correspond with the new `samples limit` configuration for [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}#define-failed-rows-checks)
+* Added documentation for setting the [default role for dataset owners]({% link soda-cloud/roles-and-rights.md %}#change-the-default-access-to-datasets) in Soda Cloud.
+
 #### June 28, 2022
 
 * Revised documentation to reflect the general availability of Soda Core and SodaCL.

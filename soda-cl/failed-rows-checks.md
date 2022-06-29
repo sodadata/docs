@@ -13,6 +13,7 @@ Use a failed rows check to explicitly send samples of rows that failed a check t
 checks for dim_customer:
 # Failed rows defined using common table expression
   - failed rows:
+      samples limit: 50
       fail condition: total_children = '2' and number_cars_owned >= 3
 # Failed rows defined using SQL query
   - failed rows:
@@ -77,6 +78,15 @@ checks for dim_customer:
 ![failed-rows-SQL](/assets/images/failed-rows-SQL.png){:height="700px" width="700px"}
 
 <br />
+
+By default, Soda Core sends 100 sample rows to Soda Cloud. You can limit the number of sample rows that Soda Core using the `samples limit` configuration key:value pair, as in the following example.
+
+```yaml
+checks for dim_customer:
+  - failed rows:
+      samples limit: 50
+      fail condition: total_children = '2' and number_cars_owned >= 3
+```
 
 ## Optional check configurations
 
