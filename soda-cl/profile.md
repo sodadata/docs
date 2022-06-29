@@ -81,6 +81,15 @@ discover datasets:
 
 This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud.
 
+The example configuratio below uses a wildcard character (`%`) to specify that, during a scan, Soda Core captures the column profile information for all the columns in the dataset named `retail_orders`. Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. 
+
+```yaml
+profile columns:
+  columns:
+    - retail_orders.%
+```
+
+<br />
 
 
 ## Optional check configurations
