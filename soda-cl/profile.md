@@ -8,7 +8,9 @@ parent: SodaCL
 # Send profile information to Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 Use the `discover datasets` and/or `profile columns` configurations in your checks YAML file to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.<br />
-Requires Soda Cloud.
+*Requires Soda Cloud.*
+
+**Known issue:** Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when using a Spark data source.
 
 ```yaml
 discover datasets:

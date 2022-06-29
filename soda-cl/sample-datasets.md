@@ -8,7 +8,7 @@ parent: SodaCL
 # Send sample data to Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 Use the `sample datasets` configuration in your checks YAML file to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.<br />
-Requires Soda Cloud.
+*Requires Soda Cloud.*
 
 ```yaml
 sample datasets:

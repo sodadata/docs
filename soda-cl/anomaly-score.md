@@ -9,7 +9,7 @@ redirect_from: /soda-cloud/anomaly-detection.html
 # Anomaly score checks 
 
 Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
-Requires Soda Cloud and Soda Core Scientific.
+*Requires Soda Cloud and Soda Core Scientific.*
 
 ```yaml
 checks for dim_customer:
