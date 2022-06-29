@@ -66,7 +66,7 @@ During a scan, all checks return a status that represents the result of each che
 
 Example output with a check that passed:
 ```shell
-Soda Core 3.0.0bx
+Soda Core 3.0.xx
 Scan summary:
 1/1 check PASSED: 
     CUSTOMERS in postgres_retail

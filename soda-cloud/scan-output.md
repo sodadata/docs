@@ -9,7 +9,7 @@ parent: Soda Cloud
 
 When you define checks in a [checks YAML file]({% link soda-core/how-core-works.md %}) and use Soda Core to run a scan, the check results manifest in the **Checks Results** table in Soda Cloud. Log in to view the **Checks** dashboard; each row in the **Checks Results** table represents the result of a check, and the icon indicates whether the test passed, warned, or failed.
 
-![monitor-results](/assets/images/monitor-results.png){:height="550px" width="550px"}
+![check-results](/assets/images/check-results.png){:height="700px" width="700px"}
 
 <br />
 

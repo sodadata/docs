@@ -91,7 +91,7 @@ When it completes a scan, Soda Core returns the scan results in the CLI. The out
 #### Example Soda Core scan results 
 
 ```shell
-Soda Core 3.0.0bx
+Soda Core 3.0.xx
 Scan summary:
 1/1 check PASSED: 
     my_dataset in my_database_name

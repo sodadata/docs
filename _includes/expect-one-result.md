@@ -10,7 +10,7 @@ checks for dim_employee:
         when forbidden column present: [birth_date]
 ```
 ```shell
-Soda Core 3.0.0bxx
+Soda Core 3.0.xxx
 Scan summary:
 1/1 check WARNED: 
     dim_employee in adventureworks
@@ -34,7 +34,7 @@ checks for dim_employee:
         when required column missing: [very_important_column]
 ```
 ```shell
-Soda Core 3.0.0bxx
+Soda Core 3.0.xxx
 Scan summary:
 1/1 check FAILED: 
     dim_employee in adventureworks

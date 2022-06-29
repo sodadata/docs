@@ -68,7 +68,7 @@ soda scan -d your_datasource_name checks.yml
 ```
 Output:
 ```shell
-Soda Core 3.0.0bx
+Soda Core 3.0.xx
 Scan summary:
 1/1 check PASSED: 
     CUSTOMERS in postgres_retail

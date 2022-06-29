@@ -105,7 +105,7 @@ soda scan -d my_database_name -c configuration.yml checks.yml
 ```
 Output:
 ```shell
-Soda Core 3.0.0bx
+Soda Core 3.0.xx
 Scan summary:
 1/1 check PASSED: 
     my_dataset in my_database_name
@@ -120,7 +120,7 @@ soda scan -d my_database_name -c configuration.yml checks.yml
 ```
 Output:
 ```
-Soda Core 3.0.0bx
+Soda Core 3.0.xx
 Scan summary:
 1/1 check FAILED: 
     my_dataset in my_database_name
@@ -136,7 +136,7 @@ soda scan -d my_database_name -c configuration.yml -V checks.yml
 ```
 Output:
 ```shell
-Soda Core 3.0.0bx
+Soda Core 3.0.xx
 Reading configuration file "/Users/username/.soda/configuration.yml"
 Reading SodaCL file "checks.yml"
 Scan execution starts
@@ -197,11 +197,11 @@ soda scan -d my_database_name -c configuration.yml checks.yml
 ```
 Output:
 ```shell
-Soda Core 3.0.0bx
+Soda Core 3.0.xx
 Scan summary:
 1/1 check FAILED: 
     my_dataset in my_database_name
-      row_count < 5 [FAILED]
+      row_count > 0 [FAILED]
         check_value: 1329
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 Sending results to Soda Cloud

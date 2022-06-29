@@ -8,7 +8,7 @@ A fourth state, **warn**, is something you can explicitly configure for individu
 The scan results appear in your command-line interface (CLI) and, if you have connected Soda Core to a Soda Cloud account, in the **Check Results** dashboard in the Soda Cloud web application. 
 
 ```shell
-Soda Core 3.0.0bx
+Soda Core 3.0.xx
 Scan summary:
 1/1 check PASSED: 
     dim_customer in adventureworks
