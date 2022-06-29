@@ -7,6 +7,8 @@ parent: SodaCL
 
 # Send profile information to Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
+{% include banner-preview.md %}
+
 Use the `discover datasets` and/or `profile columns` configurations in your checks YAML file to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.<br />
 *Requires Soda Cloud.*
 

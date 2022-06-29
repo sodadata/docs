@@ -13,10 +13,9 @@ The **Soda Agent** is a tool that empowers Soda Cloud users to securely connect 
 
 The agent obviates the need to install Soda Core independently and set up configuration YAML files to connect to data sources. Instead, it enables Soda Cloud users to serve themselves when it comes to connecting to new data sources in an organization. 
 
-Create an Amazon Elastic Kubernetes Service (EKS) Fargate cluster, then use Helm to deploy the Soda Agent in the cluster. This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. 
+Create an Amazon Elastic Kubernetes Service (EKS) Fargate cluster, then use Helm to deploy the Soda Agent in the cluster. This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. [Read more]({% link soda-agent/basics.md %})
 
 [Deployment overview](#deployment-overview)<br />
-[Basic concepts](#basic-concepts) <br />
 [Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
 [Create a Soda Cloud account and API keys](#create-a-soda-cloud-account-and-api-keys) <br />
@@ -26,40 +25,19 @@ Create an Amazon Elastic Kubernetes Service (EKS) Fargate cluster, then use Helm
 &nbsp;&nbsp;&nbsp;&nbsp; [Troubleshoot deployment](#troubleshoot-deployment)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; [Deploy using a values YAML file](#deploy-using-a-values-yaml-file) <br />
 [Use environment variables for data source connection credentials](#use-environment-variables-for-data-source-connection-credentials) <br />
-[Upgrade a Soda Agent](#upgrade-a-soda-agent)<br />
-[Review Soda Agent logs](#review-soda-agent-logs) <br />
-[Decommission a Soda Agent and the EKS cluster](#decommission-a-soda-agent-and-the-eks-cluster) <br />
 [Redeploy an agent](#redeploy-an-agent)<br />
+[Review Soda Agent logs](#review-soda-agent-logs) <br />
 <br />
 
 
 ## Deployment overview
 
-1. (Optional) Familiarize yourself with basic Soda, Kubernetes, and Helm concepts. 
+1. (Optional) Familiarize yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
 2. Install, or confirm the installation of, a few required command-line tools.
 3. Sign up for a Soda Cloud account and create new API keys.
 4. Use the command-line to create an EKS Fargate cluster.
 5. Deploy the Soda Agent in the new cluster.  
 
-## Basic concepts
-
-What follows is an extremely abridged introduction to a few basic elements involved in the deployment and setup of a Soda Agent.
-
-**Soda Core** is an open-source, command-line tool that serves as the backbone of Soda technology. It is the software that performs the work of converting user-defined input into SQL queries that execute when you run scans for data quality. You can connect Soda Core to a **Soda Cloud** account where you and your team can use the web application to collaborate on data quality monitoring. 
-
-Both Soda Core and Soda Cloud make use of **Soda Checks Language (SodaCL)** to write checks for data quality. The checks are tests that Soda Core executes when it runs a scan of your data. Read [more]({% link soda/product-overview.md %}). 
-
-**Kubernetes** is a system for orchestrating containerized applications; a **Kubernetes cluster** is a set of resources that support an application environment. You need a Kubernetes cluster in which to deploy the containerized applications that make up the **Soda Agent**.
-
-**Amazon Elastic Kubernetes Service (EKS)** is *where* you create your Kubernetes cluster; **Fargate** is a type of EKS node that operates as a serverless, pay-as-you-go compute engine, so that you can pay for the compute power your cluster uses. The Kubernetes cluster is also where you store **Kubernetes secrets**, such as login credentials, which Kubernetes creates independently on the pods that use them. (Pods are a basic workload unit in Kubernetes, usually an instance of one container.) Learn more about <a href="https://www.youtube.com/watch?v=BOj1sgWVXko" target="_blank" >Kubernetes concepts</a>.
-
-**Helm** is a package manager for Kubernetes which bundles YAML files together for storage in a public or private repository. This bundle of YAML files is referred to as a **Helm chart**. The Soda Agent is a Helm chart. Anyone with access to the Helm chart's repo can deploy the chart to make use of YAML files in it. Learn more about <a href="https://www.youtube.com/watch?v=-ykwb1d0DXU" target="_blank" >Helm concepts</a>. 
-
-The Soda Agent Helm chart is stored on a public respository on <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>. Anyone can use Helm to find and deploy the Soda Agent Helm chart in their Kubernetes cluster. Deploying the agent also installs two other things in your Kubernetes cluster:
-* a **Soda Agent Orchestrator** from a Docker image, which creates Kubernetes Jobs and cron jobs to trigger scheduled scans of data
-* a **Soda Agent Scan Launcher** which wraps around Soda Core, the tool which performs the scan itself and pushes scan results to Soda Cloud 
-
-To learn more about the Soda Agent in greater detail, read [How a Soda Agent works]({% link soda-agent/how-it-works.md %}). 
 
 ## Compatibility
 
@@ -74,6 +52,7 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 ## Prerequisites
 
+* (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
 * You have an AWS account and the necessary permissions to enable you to create an EKS Fargate cluster in your region.
 * You have installed <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" target="_blank">aws-cli</a>. This is the command-line tool you need to access your AWS account from the command-line. Run `aws --version` to check the version of an existing install.
 * You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. Run `kubectl version --output=yaml` to check the version of an existing install.
@@ -89,7 +68,7 @@ The Soda Agent communicates with your Soda Cloud account using API public and pr
 2. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > the **Agents** tab, then click the **New Soda Agent**.
 3. The dialog box that appears offers abridged instructions to set up a new Soda Agent from the command-line; more thorough instructions exist in this documentation, below. <br /><br />
 For now, copy and paste the values for both the **soda.apikey.id** and **soda.apikey.secret** to a temporary, secure place in your local environment. You will need these values in the next section when you deploy the agent in your Kubernetes cluster.<br />
-![deploy-agent](/assets/images/deploy-agent.png){:height="600px" width="600px"}
+![deploy-agent](/assets/images/deploy-agent.png){:height="700px" width="700px"}
 4. You can keep the dialog box open in Soda Cloud, or close it.
 
 
@@ -112,7 +91,7 @@ kubectl create namespace soda-agent
 When you deploy a Soda Agent on EKS Fargate, AWS matches the Fargate Profile using annotation labels in the Soda Agent Helm chart. Without the profile, the Helm chart cannot successfully deploy. <br />
 Refer to [Troubleshoot deployment](#troubleshoot-deployment) below if you encounter errors.
 ```shell
-eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --namespace soda-agent
+eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --region us-west-1 --namespace soda-agent
 ```
 4. Run the following command to verify which cluster kubectl recognizes as the current one. 
 ```shell
@@ -295,27 +274,26 @@ helm upgrade soda-agent soda-agent/soda-agent \
   --namespace soda-agent
 ```
 
-## Upgrade a Soda Agent
 
-To take advantage of new or improved features and functionality in the Soda Agent, you can upgrade your agent when a new version becomes available <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>.
+## Redeploy an agent
 
-1. Use the following command to find out which version of the Soda Agent Helm chart you have deployed on your EKS cluster.
-```shell
-helm list -n soda-agent
+When you delete the Soda Agent Helm chart from your cluster, you also delete all the agent resources on your cluster. However, if you wish to redeploy the previously-registered agent (use the same name), you need to specify the agent ID in your override values in your values YAML file.
+
+1. In Soda Cloud, navigate to **your avatar** > **Scans & Data** > **Agents** tab.
+2. Click to select the agent you wish to redeploy, then copy the agent ID of the previously-registered agent from the URL.<br />
+For example, in the following URL, the agent ID is the long UUID at the end. `https://dev.sodadata.io/agents/842feab3-snip-87eb-06d2813a72c1`.
+3. Open your `values.yml` file, then add the `id` key:value pair under `agent`, using the agent ID you copied from the URL as the value.
 ```
-2. Use the following command to search ArifactHub for the most recent version of the Soda Agent Helm chart.
-```shell
-helm search hub soda-agent
+soda:
+  apikey:
+    id: "<uuid>"
+    secret: "<secret>"
+  agent:
+    id: "842feab3-snip-87eb-06d2813a72c1"
+    loglevel: "INFO"
+    name: "<YourAgentName>"
 ```
-3. Use the following command to upgrade the Helm repository.
-```shell
-helm repo update
-```
-4. Upgrade the Soda Agent Helm chart.
-```shell
-helm upgrade soda-agent soda-agent/soda-agent \
-   --values values-local.yaml --namespace soda-agent
-```
+
 
 ## Review Soda Agent logs
 
@@ -357,44 +335,6 @@ kubectl logs pods/soda-agent-orchestrator-5975ddcd9-5b5qr \
   -c logging-sidecar \
   -n soda-agent -f
 ```
-
-
-## Decommission a Soda Agent and the EKS cluster
-
-1. Uninstall the Soda Agent in the cluster.
-```shell
-helm delete soda-agent -n soda-agent
-```
-2. Remove the Fargate profile.
-```shell
-eksctl delete fargateprofile --cluster soda-agent --name soda-agent-profile --namespace soda-agent
-```
-3. Delete the EKS cluster itself.
-```shell
-eksctl delete cluster --name soda-agent
-```
-4. (Optional) Access your <a href="https://eu-central-1.console.aws.amazon.com/cloudformation/home" target="_blank"> CloudFormation console</a>, then click **Stacks** to view the status of your decommissioned cluster.
-
-
-## Redeploy an agent
-
-When you delete the Soda Agent Helm chart from your cluster, you also delete all the agent resources on your cluster. However, if you wish to redeploy the previously-registered agent (use the same name), you need to specify the agent ID in your override values in your values YAML file.
-
-1. In Soda Cloud, navigate to **your avatar** > **Scans & Data** > **Agents** tab.
-2. Click to select the agent you wish to redeploy, then copy the agent ID of the previously-registered agent from the URL.<br />
-For example, in the following URL, the agent ID is the long UUID at the end. `https://dev.sodadata.io/agents/842feab3-snip-87eb-06d2813a72c1`.
-3. Open your `values.yml` file, then add the `id` key:value pair under `agent`, using the agent ID you copied from the URL as the value.
-```
-soda:
-  apikey:
-    id: "<uuid>"
-    secret: "<secret>"
-  agent:
-    id: "842feab3-snip-87eb-06d2813a72c1"
-    loglevel: "INFO"
-    name: "<YourAgentName>"
-```
-
 
 
 

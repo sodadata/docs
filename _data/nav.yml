@@ -81,14 +81,18 @@
     page: soda-cl/sample-datasets.md
 
 - title: Soda Agent
-  page: soda-agent/deploy.md
+  page: soda-agent/basics.md
   subcategories:
+  - subtitle: Soda Agent basic concepts
+    page: soda-agent/basics.md
   - subtitle: Deploy a Soda Agent
     page: soda-agent/deploy.md
   - subtitle: Soda Agent test deployment
     page: soda-agent/test-deploy.md
-  - subtitle: How a Soda Agent works
-    page: soda-agent/how-it-works.md
+  - subtitle: Upgrade a Soda Agent
+    page: soda-agent/upgrade.md
+  - subtitle: Decommission a Soda Agent
+    page: soda-agent/delete.md
 
 - title: Soda Cloud
   page: soda-cloud/overview.md
