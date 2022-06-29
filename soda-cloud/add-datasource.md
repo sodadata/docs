@@ -141,7 +141,7 @@ data_source orders:
 
 #### 3. Discover Datasets
 
-During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. Tt captures basic information about each dataset, including a dataset's schema and the columns it contains.
+During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. It captures basic information about each dataset, including a dataset's schema and the columns it contains.
 
 In the editing panel, specify the datasets that Soda Cloud should include or exclude from this basic discovery activity. The default syntax in the editing panel indicates that Soda Cloud will collect basic dataset information from all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character.
 
