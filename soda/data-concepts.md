@@ -55,7 +55,7 @@ Observability data, such as metrics, logs, and service level agreements, facilit
 
 Soda OSS tools squarely address the challenges in testing, monitoring, profiling, and gaining observability into your data. Use built-in metrics to define checks that test data against quality thresholds and surface issues that occur throughout your data pipeline. Integrate Soda scans with your existing data orchestration tools to test your data at regular intervals and before or after events such as a transformation.
 
-Use Soda Cloud to monitor and automatically detect anomalies in your data, and to notify teams when bad data triggers an alert. Set a scan schedule for Soda OSS tools to perform routine checks that "take the pulse" of data in your systems to gauge its health. Tag your datasets and add descriptions to monitors in Soda Cloud to make it easier for colleagues to locate and leverage the right data. 
+Use Soda Cloud to monitor and automatically detect anomalies in your data, and to notify teams when bad data triggers an alert. Set a scan schedule for Soda OSS tools to perform routine checks that "take the pulse" of data in your systems to gauge its health. Tag your datasets and add descriptions to checks in Soda Cloud to make it easier for colleagues to locate and leverage the right data. 
 
 Soda tools help you maintain reliable, good-quality data that teams throughout your organization can trust to do their jobs.
 

@@ -35,7 +35,7 @@ Be aware that if no rows match the filter parameters you set, Soda does not eval
 If, in the example above, none of the rows contained a value of `11` in the `sales_territory_key` column, Soda would not evaluate the check and would return a `NOT EVALUATED` message in the CLI scan output, such as the following.
 
 ```shell
-Soda Core 3.0.0bxx
+Soda Core 3.0.xxx
 Scan summary:
 1/1 check NOT EVALUATED: 
     dim_employee in adventureworks

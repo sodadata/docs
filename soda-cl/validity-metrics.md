@@ -176,7 +176,7 @@ Error occurred while executing scan.
 ### Send failed rows to Soda Cloud
 
 If you have connected Soda Core to a Soda Cloud account, checks with validity metrics automatically send samples of any failed rows to Soda Cloud. 
-1. To review the failed rows in Soda Cloud, navigate to the **Monitors** dashboard.
+1. To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard.
 2. Click the row for a check for invalid values, then go to the **Failed rows** tab.
 
 ![failed-invalid-count](/assets/images/failed-invalid-count.png){:height="700px" width="700px"}

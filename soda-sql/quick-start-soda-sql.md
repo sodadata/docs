@@ -364,7 +364,7 @@ $ soda scan warehouse.yml tables/breakdowns.yml
 ![dataset-metadata](/assets/images/dataset-metadata.png){:height="700px" width="700px"}
 10. Explore Soda Cloud!
 * [integrate your Slack workspace]({% link soda/integrate-slack.md %}) to receive notifications of failed tests and collaborate on data quality investigations
-* set up [alerts and notifications]({% link soda-cloud/monitors.md %}) for the monitors in your account
+* set up alerts and notifications for the monitors in your account
 * open and track [data quality incidents]({% link soda-cloud/incidents.md %}) and collaborate to resolve them with your team in Slack
 
 To exit the workspace in your command-line interface, type `exit` then press enter.
@@ -372,7 +372,6 @@ To exit the workspace in your command-line interface, type `exit` then press ent
 ## Go further
 
 * [Install Soda SQL]({% link soda-sql/installation.md %}) in your local environment and [connect to your own warehouses]({% link soda-sql/configure.md %}).
-* Learn more about [creating new monitors]({% link soda-cloud/monitors.md %}) for your tables in Soda Cloud.
 * Set up [programmatic scans]({% link soda-sql/programmatic_scan.md %}) to automate data quality monitoring.
 
 

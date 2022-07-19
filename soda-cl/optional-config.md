@@ -60,7 +60,7 @@ checks for dim_reseller:
 ```
 
 ```shell
-Soda Core 3.0.0bxx
+Soda Core 3.0.xxx
 Scan summary:
 1/1 check WARNED: 
     dim_reseller in adventureworks
@@ -84,7 +84,7 @@ checks for dim_reseller:
       fail: when > 10
 ```
 ```shell
-Soda Core 3.0.0bxx
+Soda Core 3.0.xxx
 Scan summary:
 1/1 check FAILED: 
     dim_reseller in adventureworks

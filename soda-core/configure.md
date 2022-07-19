@@ -90,7 +90,7 @@ soda_cloud:
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
 4. Save the changes to the `configuration.yml` file. Close the **Create API Key** dialog box in Soda Cloud.
 
-The next time you execute a scan in Soda Core, it pushes the scan results to Soda Cloud where you can view the results in the **Monitors** dashboard. Refer to [Soda Cloud documentation]({% link soda-cloud/overview.md %}) for more information.
+The next time you execute a scan in Soda Core, it pushes the scan results to Soda Cloud where you can view the results in the **Checks** dashboard. Refer to [Soda Cloud documentation]({% link soda-cloud/overview.md %}) for more information.
 
 ---
 {% include docs-core-footer.md %}

@@ -68,7 +68,7 @@ When you run a scan in Soda SQL, you can specify some options that modify the sc
 
 ## Scan output in Soda Cloud
 
-Whether you defined your tests in your [scan YAML file]({% link soda-sql/scan-yaml.md %}) for Soda SQL or in a [monitor]({% link soda-cloud/monitors.md %}) in Soda Cloud, in the web user interface, all test results manifest as Monitor Results. Log in to view the **Monitors** dashboard; each row in the **Monitor Results** table represents the result of a test, and the icon indicates whether the test passed or failed.
+Whether you defined your tests in your [scan YAML file]({% link soda-sql/scan-yaml.md %}) for Soda SQL or in a monitor in Soda Cloud, in the web user interface, all test results manifest as Monitor Results. Log in to view the **Monitors** dashboard; each row in the **Monitor Results** table represents the result of a test, and the icon indicates whether the test passed or failed.
 
 ![monitor-results](/assets/images/monitor-results.png){:height="550px" width="550px"}
 
@@ -101,7 +101,6 @@ See [Add scan option](#add-scan-options) for more scan options.
 * Learn how to define a list of [columns to exclude]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys) when Soda SQL excutes a scan on a dataset.
 * Learn how to specify the datasets you wish to [include or exclude]({% link soda-sql/configure.md %}#add-analyze-options) during `soda anayze`.
 * Learn more about [scan YAML files]({% link soda-sql/scan-yaml.md %}).
-* Learn more about [creating monitors]({% link soda-cloud/monitors.md %}) in Soda Cloud.
 * Integrate Soda with your [data catalogs]({% link soda/integrate-alation.md %}) or [data pipeline tools]({% link soda/integrate-dbt.md %}).
 * Learn how to configure [metrics]({% link soda-sql/sql_metrics.md %}) in your YAML files.
 * Learn more about configuring [tests]({% link soda-sql/tests.md %}).

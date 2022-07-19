@@ -11,8 +11,8 @@ redirect_from:
 # Glossary
 <!--This glossary contains Soda-specific terms only. Do not define industry terminology such as "SQL" or "query".-->
 
-### alert
-A setting that you configure in a Soda Cloud monitor by specifying key:value thresholds which, if exceeded, trigger a notification. See also: [notification](#notification).
+#### agreement
+A collection of checks that serve as a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
 
 ### alert configuration 
 A configuration in a SodaCL check that you use to explicitly specify the conditions that warrant a warn result. See [Optional check configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations).
@@ -57,16 +57,22 @@ The component in Soda Cloud that stores metric measurements. This component faci
 {% include glossary-monitor.md %}
 
 ### notification
-A setting you configure in a Soda Cloud monitor that defines whom to notify when a data issue triggers an alert. See also: [alert](#alert).
+A setting you configure in a Soda Cloud agreement that defines whom to notify with check results after a scan. 
 
 ### scan
 {% include glossary-scan.md %}
+
+#### scan definition
+A collection of checks YAML files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source. Effectively, a scan definition provides the what, when, and where to run a scan.
+
+#### Soda Agent
+The Helm chart you deploy in your Kubernetes cluster to faciliate a secure connection between your Soda Cloud account and your data sources. See [Deploy a Soda Agent]({% link soda-agent/deploy.md %}).
 
 ### SodaCL 
 The domain-specific language to define Soda Checks in a checks YAML file. A Soda Check is a test that Soda Core executes when it scans a dataset in your data source. See [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %}).
 
 ### Soda Cloud
-A web application that enables you to examine scan results and create monitors and alerts. Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup). If you also use Soda Core, you can [connect Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}).
+A web application that enables you to examine scan results and create agreements. Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup). If you also use Soda Core, you can [connect Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}).
 
 ### Soda Core 
 A free, open-source, command-line tool that enables you to use the Soda Checks Language to turn user-defined input into aggregated SQL queries. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. See [Soda Core documentation]({% link soda-core/overview-main.md %}).

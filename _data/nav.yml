@@ -69,11 +69,30 @@
     page: soda-cl/user-defined.md
   - subtitle: Failed rows checks
     page: soda-cl/failed-rows-checks.md
+  - subtitle: Automated monitoring checks
+    page: soda-cl/automated-monitoring.md
   - subtitle: Filters
     page: soda-cl/filters.md
   - subtitle: For each
     page: soda-cl/for-each.md
+  - subtitle: Send profile info to Soda Cloud
+    page: soda-cl/profile.md
+  - subtitle: Send sample data to Soda Cloud
+    page: soda-cl/sample-datasets.md
 
+- title: Soda Agent
+  page: soda-agent/basics.md
+  subcategories:
+  - subtitle: Soda Agent basic concepts
+    page: soda-agent/basics.md
+  - subtitle: Deploy a Soda Agent
+    page: soda-agent/deploy.md
+  - subtitle: Soda Agent test deployment
+    page: soda-agent/test-deploy.md
+  - subtitle: Upgrade a Soda Agent
+    page: soda-agent/upgrade.md
+  - subtitle: Decommission a Soda Agent
+    page: soda-agent/delete.md
 
 - title: Soda Cloud
   page: soda-cloud/overview.md
@@ -82,12 +101,18 @@
     page: soda-cloud/overview.md
   - subtitle: Roles and rights
     page: soda-cloud/roles-and-rights.md
+  - subtitle: Create a data source
+    page: soda-cloud/add-datasource.md
+  - subtitle: Create an agreement
+    page: soda-cloud/agreements.md
   - subtitle: Collaborate on data monitoring
     page: soda-cloud/collaborate.md
-  - subtitle: Edit monitors
-    page: soda-cloud/monitors.md
   - subtitle: Scan output
     page: soda-cloud/scan-output.md
+  - subtitle: Edit checks
+    page: soda-cloud/edit-checks.md
+  - subtitle: Collaborate on data monitoring
+    page: soda-cloud/collaborate.md
   - subtitle: Organize datasets
     page: soda-cloud/organize-datasets.md
   - subtitle: Examine failed rows
@@ -143,6 +168,8 @@
   subcategories:
     - subtitle: Soda products
       page: release-notes/all.md
+    - subtitle: Soda Agent
+      page: release-notes/soda-agent.md
     - subtitle: Soda Cloud
       page: release-notes/soda-cloud.md
     - subtitle: Soda Cloud Reporting API

@@ -25,7 +25,6 @@ Similarly, if the table has a column for `COUNTRY`, you can apply a filter that 
 $ soda scan -v country=FRA warehouse.yml tables/customer_transactions.yml
 ```
 
-If you have a Soda Cloud account, you can configure filters in the first step of the guide to **[Create a monitor]({% link soda-cloud/monitors.md %}#1-dataset)**.
 
 ## Configure a filter in Soda SQL
 
@@ -78,7 +77,6 @@ if scan_result.has_test_failures():
 
 ## Go further
 
-* If you have a Soda Cloud account, you can configure filters in the first step of the guide to **[Create a monitor]({% link soda-cloud/monitors.md %}#1-dataset)**.
 * You can overwrite monitor results in Soda Cloud by running a scan in Soda SQL that overwrites the timestamp. See [Overwrite scan output in Soda Cloud ]({% link soda-sql/scan.md %}#overwrite-scan-output-in-soda-cloud)
 * Learn more about configuring your [scan YAML]({% link soda-sql/scan-yaml.md %}) file.
 * Learn more about [how Soda SQL works]({% link soda-sql/concepts.md %}) file.

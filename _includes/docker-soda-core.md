@@ -13,7 +13,7 @@ Output:
 ```shell
     Usage: soda [OPTIONS] COMMAND [ARGS]...
 
-    Soda Core CLI version 3.0.0bxx
+    Soda Core CLI version 3.0.xxx
 
     Options:
     --help  Show this message and exit.
@@ -74,7 +74,7 @@ If you encounter the following error, double check the syntax of the scan comman
 * Be sure to mount your files into the container by including the `-v` option.  For example, `-v /Users/MyName/soda_core_project:/sodacl`.
 
 ```shell
-Soda Core 3.0.0bxx
+Soda Core 3.0.xxx
 Configuration path 'configuration.yml' does not exist
 Path "checks.yml" does not exist
 Scan summary:

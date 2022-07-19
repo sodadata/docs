@@ -105,7 +105,7 @@ soda scan -d my_database_name -c configuration.yml checks.yml
 ```
 Output:
 ```shell
-Soda Core 3.0.0bx
+Soda Core 3.0.xx
 Scan summary:
 1/1 check PASSED: 
     my_dataset in my_database_name
@@ -120,7 +120,7 @@ soda scan -d my_database_name -c configuration.yml checks.yml
 ```
 Output:
 ```
-Soda Core 3.0.0bx
+Soda Core 3.0.xx
 Scan summary:
 1/1 check FAILED: 
     my_dataset in my_database_name
@@ -136,7 +136,7 @@ soda scan -d my_database_name -c configuration.yml -V checks.yml
 ```
 Output:
 ```shell
-Soda Core 3.0.0bx
+Soda Core 3.0.xx
 Reading configuration file "/Users/username/.soda/configuration.yml"
 Reading SodaCL file "checks.yml"
 Scan execution starts
@@ -197,16 +197,16 @@ soda scan -d my_database_name -c configuration.yml checks.yml
 ```
 Output:
 ```shell
-Soda Core 3.0.0bx
+Soda Core 3.0.xx
 Scan summary:
 1/1 check FAILED: 
     my_dataset in my_database_name
-      row_count < 5 [FAILED]
+      row_count > 0 [FAILED]
         check_value: 1329
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 Sending results to Soda Cloud
 ```
-7. Go to your Soda Cloud account in your browser and navigate to the **Monitors** dashboard. Review the results of your scan in **Monitor Results**. 
+7. Go to your Soda Cloud account in your browser and navigate to the **Checks** dashboard. Review the results of your scan in **Check Results**. 
 <br />
 <br />
 ![cloud-tutorial-results](/assets/images/cloud-tutorial-results-1.png){:height="700px" width="700px"}
@@ -216,7 +216,7 @@ Sending results to Soda Cloud
 ![dataset-metadata-1](/assets/images/dataset-metadata-1.png){:height="700px" width="700px"}
 10. Explore Soda Cloud!
 * [integrate your Slack workspace]({% link soda/integrate-slack.md %}) to receive notifications of failed checks and collaborate on data quality investigations
-* set up alerts and notifications for the checks in your account (**Monitors** > **Monitor Results** > **stacked dots** > **Edit Monitor**)
+* set up or modify notifications for the checks in your account (**Check** > **Check Results** > **stacked dots** > **Edit Check**)
 * open and track [data quality incidents]({% link soda-cloud/incidents.md %}) and collaborate to resolve them with your team in Slack
 
 

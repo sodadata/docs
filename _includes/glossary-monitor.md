@@ -1,1 +1,1 @@
-A set of details you define in Soda Cloud which Soda SQL used when it ran a scan. Sometimes referred to in other systems as a "data quality rule". Soda Cloud displays Soda Core check results as Monitors.<br /> See [Create monitors and alerts]({% link soda-cloud/monitors.md %}).
+(Deprecated) A set of details you define in Soda Cloud which Soda SQL used when it ran a scan. Now deprecated and replaced by a [check](#check).

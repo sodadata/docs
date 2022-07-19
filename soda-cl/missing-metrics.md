@@ -169,7 +169,7 @@ Error occurred while executing scan.
 ### Send failed rows to Soda Cloud
 
 If you have connected Soda Core to a Soda Cloud account, checks with missing metrics automatically send samples of any failed rows to Soda Cloud. 
-1. To review the failed rows in Soda Cloud, navigate to the **Monitors** dashboard.
+1. To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard.
 2. Click the row for a check for missing values, then go to the **Failed rows** tab.
 
 ![failed-missing-count](/assets/images/failed-missing-count.png){:height="700px" width="700px"}
