@@ -216,26 +216,26 @@ The instructions to [Deploy a Soda Agent](#deploy-a-soda-agent) above use option
 * You can also store the [data source login credentials](#use-environment-variables-for-data-source-connection-credentials) you need to provide when connecting to a data source in Soda Cloud as environment variables in this local file.
 
 Therefore, instead of running the command in [step 2](#deploy-an-agent-to-the-cluster) above, take a couple extra steps and use a modified `helm install` command.
-1. Using a code editor, create a new YAML file called `values.yml`.
-2. To that file, copy+paste the content below, replacing the following values:
-* `id` and `secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account 
-* Replace the value of `soda.agent.name` with a custom name for you agent, if you wish
-```yaml
+ 1. Using a code editor, create a new YAML file called `values.yml`.
+ 2. To that file, copy+paste the content below, replacing the following values:
+ * `id` and `secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account 
+ * Replace the value of `soda.agent.name` with a custom name for you agent, if you wish <br />
+ ```yaml
 soda:
   apikey:
-    id: "your-agent-api-key-id"
-    secret: "your-agent-api-key-secret"
+            id: "your-agent-api-key-id"
+            secret: "your-agent-api-key-secret"
   agent:
-    loglevel: "DEBUG"
-    name: "myuniqueagent"
-```
-3. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
-```shell
-helm install soda-agent soda-agent/soda-agent \
-  --values values.yml \
-  --namespace soda-agent
-```
-4. Return to the procedure above and continue with step 3.
+            loglevel: "DEBUG"
+            name: "myuniqueagent"
+ ```
+ 3. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
+ ```shell
+ helm install soda-agent soda-agent/soda-agent \
+   --values values.yml \
+   --namespace soda-agent
+ ```
+ 4. Return to the procedure above and continue with step 3.
 
 
 ## Use environment variables for data source connection credentials
@@ -257,15 +257,15 @@ data_source local_postgres_test:
 2. Create or edit your local values YAML file to include the values for the environment variables you input into the connection configuration. Reference the [section above](#deploy-using-a-values-yaml-file) for details.
 ```yaml
 soda:
-  apikey:
-    id: "your-agent-api-key-id"
-    secret: "your-agent-api-key-secret"
-  agent:
-    loglevel: "DEBUG"
-    name: "your-unique-agent-name"
-  env:
-    POSTGRES_USER: "sodacore"
-    POSTGRES_PASS: "sodacore"
+    apikey:
+      id: "your-agent-api-key-id"
+      secret: "your-agent-api-key-secret"
+    agent:
+      loglevel: "DEBUG"
+      name: "your-unique-agent-name"
+    env:
+      POSTGRES_USER: "sodacore"
+      POSTGRES_PASS: "sodacore"
 ```
 3. After adding the environment variables to the values YAML file, update the Soda Agent using the following command:
 ```shell
@@ -283,15 +283,15 @@ When you delete the Soda Agent Helm chart from your cluster, you also delete all
 2. Click to select the agent you wish to redeploy, then copy the agent ID of the previously-registered agent from the URL.<br />
 For example, in the following URL, the agent ID is the long UUID at the end. `https://dev.sodadata.io/agents/842feab3-snip-87eb-06d2813a72c1`.
 3. Open your `values.yml` file, then add the `id` key:value pair under `agent`, using the agent ID you copied from the URL as the value.
-```
+```yaml
 soda:
   apikey:
-    id: "<uuid>"
-    secret: "<secret>"
+        id: "<uuid>"
+        secret: "<secret>"
   agent:
-    id: "842feab3-snip-87eb-06d2813a72c1"
-    loglevel: "INFO"
-    name: "<YourAgentName>"
+        id: "842feab3-snip-87eb-06d2813a72c1"
+        loglevel: "INFO"
+        name: "<YourAgentName>"
 ```
 
 
