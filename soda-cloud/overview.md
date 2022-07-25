@@ -19,6 +19,7 @@ redirect_from:
 <p>&#10004;  Set up <a href="https://docs.soda.io/soda-cloud/agreements.html">agreements</a> to set data quality expecations with your team<br /></p>
 <p>&#10004;  <a href="https://docs.soda.io/soda-cloud/collaborate.html">Collaborate with colleagues</a> to monitor data quality<br /></p>
 <p>&#10004;  Create and track data quality <a href="https://docs.soda.io/soda-cloud/incidents.html">Incidents</a><br /></p>
+<p>&#10004;  <a href="https://docs.soda.io/soda/data-privacy.html#compliance-and-reporting">SOCII Type 2</a> compliant<br /></p>
 <br />
 
 ![soda-cloud-overview1](/assets/images/soda-cloud-overview1.png){:height="840px" width="840px"}
