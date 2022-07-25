@@ -21,7 +21,7 @@ The table below lists the metrics and attributes that Soda currently tracks.
 
 | Attribute or metric      | Derivation and notes                                                                                                      |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| `user_cookie_id`         | uuid generated once and stored in `~/.soda/config.yaml`                                                                   |
+| `user_cookie_id`         | uuid generated once and stored in `~/.soda/config.yml`                                                                   |
 | `command_name`           | Soda SQL command or API method name                                                                                       |
 | `command_options`        | Soda SQL command or API method name                                                                                       |
 | `version`                | version of soda-sql                                                                                                       |

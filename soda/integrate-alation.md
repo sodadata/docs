@@ -43,7 +43,7 @@ SODA_HOST=cloud.soda.io
 SODA_API_KEY_ID=<your Soda Cloud pubic key>
 SODA_API_KEY_SECRET=<your Soda Cloud private key>
 ```
-3. To sync a data source and schema in the Alation catalog to a data source in Soda Cloud, you must map it from Soda Cloud to Alation. Create a `.datasource-mapping.yaml` file in your integration project and populate it with mapping data according to the following example. The table below describes where to retrieve the values for each field.<br />
+3. To sync a data source and schema in the Alation catalog to a data source in Soda Cloud, you must map it from Soda Cloud to Alation. Create a `.datasource-mapping.yml` file in your integration project and populate it with mapping data according to the following example. The table below describes where to retrieve the values for each field.<br />
 ```yaml
 - name: Cars
   soda:

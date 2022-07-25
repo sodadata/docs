@@ -232,7 +232,7 @@ checks for dim_customer:
 A more complex dynamic threshold check includes two more optional mutable parts:
 
 | a calculation type (optional) `avg`, `min`, `max`|
-| a historical value definition (optional) |
+| a historical value definition (optional) `7` |
 | percent (optional) |
 | a metric | 
 | an argument (optional) | 
@@ -251,10 +251,10 @@ checks for dim_customer:
  
 The example above defines three checks, one for each type of calculation available to use, `avg`, `min`, and `max`, all of which apply to the entire dataset.  
 
-The first check counts the rows in the dataset, then compares that value to the calculated average of the preceding seven measurement values for that metric contained in the Cloud Metric Store. If the `row_count` at present is greater than the average of the seven preceding historic values by more than 50, the check fails. 
+The first check counts the rows in the dataset, then compares that value to the calculated average of the preceding seven measurement values for that metric contained in the Cloud Metric Store. If the `row_count` at present is greater than the average of the seven preceding historic values by more than 50, the check fails. The only valid historical value definiton you can use is seven.
 
 | calculation type (optional) | `avg` |
-| a historical value definition (optional) | `last 7 days`
+| a historical value definition (optional) | `last 7`
 | percent (optional) | - |
 | metric | `row_count` |
 | argument (optional) | - |
@@ -266,7 +266,7 @@ The first check counts the rows in the dataset, then compares that value to the 
 The second check in the example determines the minimum value of the preceding seven historic values, then uses that value to compare to the present measurement value. 
 
 | calculation type (optional) | `min` |
-| historical value definition (optional) | `last 7 days`
+| historical value definition (optional) | `last 7`
 | percent (optional) | - |
 | metric | `row_count` |
 | argument (optional) | - |
@@ -278,7 +278,7 @@ The second check in the example determines the minimum value of the preceding se
 The third check in the example determines the maximum value of the preceding seven historic values, then uses that value and the present measurement value to calculate the percentage of change. 
 
 | calculation type (optional) | `max` |
-| historical value definition (optional) | `last 7 days`
+| historical value definition (optional) | `last 7`
 | percent (optional) | `percent` |
 | metric | `row_count` |
 | argument (optional) | - |

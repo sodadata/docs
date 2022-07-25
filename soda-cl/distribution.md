@@ -121,11 +121,11 @@ If you do not wish to define a filter, remove the key-value pair from the file.
 6. (Optional) If you wish to define multiple DROs in a single `distribution_reference.yml` file, change the names `dro_name1` and `dro_name2`.
 7. Save the file, then, while still in your Soda project directory, run the `soda update-dro` command to create a distribution reference object. For a list of options available to use with the command, run `soda update-dro --help`. 
 ```bash
-soda update-dro -d your_datasource_name -c your_configuration_file.yaml ./distribution_reference.yaml 
+soda update-dro -d your_datasource_name -c your_configuration_file.yml ./distribution_reference.yml 
 ```
 If you defined multiple DROs in your `distribution_reference.yml` file, specify which DRO you want to update using the `-n` argument. `-n` stands for name
 ```bash
-soda update-dro -n dro_name1 -d your_datasource_name -c your_configuration_file.yaml ./distribution_reference.yaml 
+soda update-dro -n dro_name1 -d your_datasource_name -c your_configuration_file.yml ./distribution_reference.yml 
 ```
 8. Review the changed contents of your `distribution_reference.yml` file. The following is an example of the information that Soda added to the file.
 
@@ -177,7 +177,7 @@ checks for your_dataset_name:
 If you do not specify a `method`, the distribution check defaults to `ks` for continuous data or `chi_square` for categorical data respectively.
 5. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to [Soda Core documentation]({% link soda-core/scan-core.md %}) for more details.
 ```bash
-soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yaml your_check_file.yaml
+soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yml your_check_file.yml
 ```
 
 When Soda Core executes the distribution check above, it compares the values in `column_name` to a sample that Soda creates based on the `bins`, `weights`, and `data_type` in `dro_name` defined in the `distribution_reference.yml` file. Specifically, it checks whether the value of `your_method_of_choice` is larger than `0.05`.

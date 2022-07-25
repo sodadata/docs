@@ -43,7 +43,7 @@ profile columns:
 
 ## Prerequisites
 * You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
-* You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yaml` file. 
+* You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
 * You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core.
 
 
