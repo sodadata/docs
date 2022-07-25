@@ -123,7 +123,7 @@ After completing the steps above to ingest dbt tests, log in to your Soda Cloud 
 
 * Click the row of a dbt monitor result to examine visualized historic data for the test, details of the results, and information that can help you diagnose a data quality issue.
 * Click the stacked dots at the far right of a dbt monitor result, then select **Create Incident** to begin [investigating a data quality issue]({% link soda-cloud/incidents.md %}) with your team.
-* Click the stacked dots at the far right of a dbt monitor result, then select **Edit Monitor** to set up a [notification]({% link soda-cloud/monitors.md %}#3-notifications) that Soda Cloud sends when the dbt test fails. Send notifications to an individual or a team in [Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack).
+* Click the stacked dots at the far right of a dbt monitor result, then select **Edit Monitor** to set up a [notification]({% link soda-cloud/agreements.md %}#3-notifications) that Soda Cloud sends when the dbt test fails. Send notifications to an individual or a team in [Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack).
 
 Refer to image above for an example.
 
@@ -144,7 +144,7 @@ Soda Core is a free, open-source, command-line tool that enables you to use the 
 
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 * Read more about [running a Soda scan]({% link soda-sql/scan.md %}#run-a-scan).
-* Learn more about [creating alerts and notifications]({% link soda-cloud/monitors.md %}) in Soda Cloud.
+* Learn more about [creating agreements]({% link soda-cloud/agreements.md %}) in Soda Cloud.
 * Learn more about creating, tracking, and resolving data quality [Incidents]({% link soda-cloud/incidents.md %}) in Soda Cloud.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

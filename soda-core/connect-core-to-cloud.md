@@ -34,7 +34,7 @@ soda_cloud:
 ```shell
 soda scan -d your_datasource_name -c configuration.yml checks.yml
 ```
-6. Navigate to your Soda Cloud account in your browser review the results of your latest scan in **Monitor Results**.
+6. Navigate to your Soda Cloud account in your browser review the results of your latest scan in **Check Results**.
 
 ## Go further
 

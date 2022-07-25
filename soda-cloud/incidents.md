@@ -20,9 +20,9 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 
 ## Create Incidents
 
-1. Log in to your Soda Cloud account, then navigate to the **Monitors** dashboard. 
+1. Log in to your Soda Cloud account, then navigate to the **Checks** dashboard. 
 2. For the check result you wish to investigate, click the stacked dots at right, then select **Create Incident**. Provide a **Title**, **Severity**, and **Description** of your new incident, then save. 
-3. In the **Incident** column of the monitor result, click the Incident link to access the Incident page where you can record the following details:
+3. In the **Incident** column of the check result, click the Incident link to access the Incident page where you can record the following details:
 * **Severity**: Minor, Major, or Critical
 * **Status**: Reported, Investigating, Fixing, Resolved
 * **Lead**: a list of team members from whom you can assign the Lead Investigator role
@@ -32,15 +32,14 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 
 * As your team works through the investigation of an Incident, use the Incident's **Status** field to keep track of your progress. 
 * In the **Incidents** dashboard, review all Incidents, their severity and status, and the assigned lead. Sort the list of Incidents by severity.
-* From an Incident's page, link other monitor results to the same Incident to expand the investigation landscape.
+* From an Incident's page, link other check results to the same Incident to expand the investigation landscape.
 
 
 
 ## Go further
 
 * [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
-* Learn more about configuring [alerts]({% link soda-cloud/monitors.md %}) in Soda Cloud.
-* [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for a monitor result.
+* [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for a check result.
 * Collaborate with your team using a [Single Sign-on IdP]({% link soda-cloud/sso.md %}).
 * Integrate Soda with your [data catalogs]({% link soda/integrate-alation.md %}) or [data pipeline tools]({% link soda/integrate-dbt.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

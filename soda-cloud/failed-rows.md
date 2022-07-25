@@ -1,14 +1,14 @@
 ---
 layout: default
 title: Examine failed rows
-description: To offer more insight into the data that failed a test during a scan, Soda Cloud can display failed rows in a monitor’s history.
+description: To offer more insight into the data that failed a test during a scan, Soda Cloud can display failed rows in a check's history.
 parent: Soda Cloud
 redirect_from: /soda-sql/documentation/failed-rows.html
 ---
 
 # Examine failed rows
 
-When a Soda Core scan results in a failed check, Soda Cloud displays details of the scan results in each check's **Monitor History** view. To offer more insight into the data that failed a check during a scan, Soda Cloud can display **failed rows** in a check's history. 
+When a Soda Core scan results in a failed check, Soda Cloud displays details of the scan results in each check's **Check History** view. To offer more insight into the data that failed a check during a scan, Soda Cloud can display **failed rows** in a check's history. 
 
 ![failed-rows](/assets/images/failed-rows.png){:height="600px" width="600px"}
 

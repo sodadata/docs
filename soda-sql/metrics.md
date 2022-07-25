@@ -16,7 +16,7 @@ A **metric** is a property of the data in your database. A **measurement** is th
 For example, in the [test]({% link soda/glossary.md %}#test) defined as `row_count > 0`, `row_count` is the metric and `0` is the measurement. When it runs a scan, Soda executes the test against your [dataset]({% link soda/glossary.md %}#dataset); if the row count is greater than `0`, the test passes; if the dataset is empty, the test fails.
 
 * In **Soda SQL**, you use metrics to define tests in your scan YAML file. Read more about [configuring metrics]({% link soda-sql/sql_metrics.md %}). 
-* In **Soda Cloud**, you use metrics to define a test as part of the process to create a new monitor. Read more about [creating a monitor]({% link soda-cloud/monitors.md %}).
+* In **Soda Cloud**, you use metrics to define a test as part of the process to create a new monitor. 
 
 There are four kinds of metrics Soda uses:
 
@@ -64,7 +64,7 @@ Refer to [Using regex with column metrics](#using-regex-with-column-metrics) for
 
 If the built-in dataset and column metrics that Soda offers do not quite give you the information you need from a scan, you can use **custom metrics** to customize your queries. Custom metrics, also known as SQL metrics, essentially enable you to define SQL queries that Soda runs during a scan. You can also use custom metrics to define new metrics that you can use when you write tests. See [Validate that row counts are equal]({% link soda-sql/custom-metric-templates.md %}#validate-that-row-counts-are-equal) for an example of a test that uses a custom metric.
 
-Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics) and [custom metrics in Soda Cloud]({% link soda-cloud/monitors.md %}#metric-types).
+Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics).
 
 ## Historic metrics
 
@@ -75,7 +75,6 @@ Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.
 ## Go further
 
 * Learn how to [configure metrics]({% link soda-sql/sql_metrics.md %}) in Soda SQL.
-* Learn how to use metrics when [creating a monitor]({% link soda-cloud/monitors.md %}#2-monitor) in Soda Cloud.
 * Follow the [Quick start tutorial for Soda SQL]({% link soda-sql/quick-start-soda-sql.md %}) to set up Soda SQL and run your first scan!
 * Follow the [Quick start for Soda SQL and Soda Cloud]({% link soda-sql/quick-start-soda-sql.md %}) to start monitoring your data.
 
