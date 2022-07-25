@@ -26,7 +26,7 @@ helm repo update
 4. Upgrade the Soda Agent Helm chart.
 ```shell
 helm upgrade soda-agent soda-agent/soda-agent \
-   --values values-local.yaml --namespace soda-agent
+   --values values-local.yml --namespace soda-agent
 ```
 
 

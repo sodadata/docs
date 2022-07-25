@@ -7,7 +7,7 @@ In Soda SQL, you can define **historic metrics** so that you can write tests in 
 To use `historic_metrics`, refer to the following example scan YAML file and the table below.
 
 ```yaml
-table_name: orders.yaml
+table_name: orders.yml
 metrics:
   - row_count
   - missing_count
