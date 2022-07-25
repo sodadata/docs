@@ -12,9 +12,9 @@
 | `decimal point` | Number uses `.` as decimal indicator. |
 | `email` | name@domain.extension |
 | `integer` | Number is whole. |
-| `ip_address` | Four whole numbers separated by `.` |
-| `ipv4_address` | Four whole numbers separated by `.` |
-| `ipv6_address` | Eight values separated by `:` |
+| `ip address` | Four whole numbers separated by `.` |
+| `ipv4 address` | Four whole numbers separated by `.` |
+| `ipv6 address` | Eight values separated by `:` |
 | `money` | A money pattern with currency symbol + decimal point or comma + currency abbreviation.|
 | `money comma` | A money pattern with currency symbol + decimal comma + currency abbreviation. |
 | `money point` | A money pattern with currency symbol + decimal point  + currency abbreviation. |
