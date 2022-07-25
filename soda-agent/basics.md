@@ -9,6 +9,8 @@ parent: Soda Agent
 
 {% include banner-preview.md %}
 
+{% include soda-agent.md %}
+
 What follows is an extremely abridged introduction to a few basic elements involved in the deployment and setup of a Soda Agent.
 
 **Soda Core** is an open-source, command-line tool that serves as the backbone of Soda technology. It is the software that performs the work of converting user-defined input into SQL queries that execute when you run scans for data quality. You can connect Soda Core to a **Soda Cloud** account where you and your team can use the web application to collaborate on data quality monitoring. 
