@@ -9,9 +9,9 @@ Valid formats are experimental and subject to change.<br />
 | `date_iso_8601` | Validates date and/or time according to <a href="https://www.w3.org/TR/NOTE-datetime" target="_blank">ISO 8601 format </a>. <br /> 2021-04-28T09:00:00+02:00 |
 | `date_us` | Validates date only, not time. <br />mm/dd/yyyy |
 | `email` | name@domain.extension |
-| `ip_address` | Four whole numbers separated by `.` |
-| `ipv4_address` | Four whole numbers separated by `.` |
-| `ipv6_address` | Eight values separated by `:` |
+| `ip address` | Four whole numbers separated by `.` |
+| `ipv4 address` | Four whole numbers separated by `.` |
+| `ipv6 address` | Eight values separated by `:` |
 | `number_decimal_comma` | Number uses `,` as decimal indicator.|
 | `number_decimal_point` | Number uses `.` as decimal indicator.|
 | `number_money` | Format matches any of the `number_money_` patterns listed below.|
