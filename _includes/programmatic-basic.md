@@ -27,9 +27,9 @@ scan.add_configuration_yaml_str(
     data_source events:
       type: snowflake
       connection:
-        host: ${SNOWFLAKE_HOST}
-        username: ${SNOWFLAKE_USERNAME}
-        password: ${SNOWFLAKE_PASSWORD}
+      host: ${SNOWFLAKE_HOST}
+      username: ${SNOWFLAKE_USERNAME}
+      password: ${SNOWFLAKE_PASSWORD}
       database: events
       schema: public
 """
@@ -48,15 +48,28 @@ scan.add_variables({"date": "2022-01-01"})
 
 # Execute the scan
 ##################
+# Set logs to verbose mode, equivalent to CLI -V option
+scan.set_verbose(True)
+
+# Execute the scan
 scan.execute()
 
 # Inspect the scan result
 #########################
+# Inspect the scan logs.
+scan.get_logs_text()
+
+# Typical checking
 scan.assert_no_error_logs()
 scan.assert_no_checks_fail()
+
+# More advanced scan execution log introspection methods
 scan.has_error_logs()
 scan.get_error_logs_text()
+
+# More advanced check results details methods
 scan.get_checks_fail()
+scan.has_check_fails()
 scan.get_checks_fail_text()
 scan.assert_no_checks_warn_or_fail()
 scan.get_checks_warn_or_fail()

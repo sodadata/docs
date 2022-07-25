@@ -5,7 +5,7 @@ description: Configure Soda Core to connect to your data sources and prepare dat
 parent: Soda Core
 ---
 
-# Configure Soda Core 
+# Configure Soda Core
 
 After you [install Soda Core]({% link soda-core/installation.md %}), you must create files and configure a few settings before you can run a scan.
 
@@ -37,11 +37,11 @@ The following is an example of the connection details Soda Core requires to conn
 data_source postgres_retail:
   type: postgres
   connection:
-    host: db
-    port: "5432"
-    username: postgres
-    password: secret
-    database: postgres
+  host: db
+  port: "5432"
+  username: postgres
+  password: secret
+  database: postgres
   schema: public
 ```
 5. Save the `configuration.yml` file, then create another new YAML file named `checks.yml` and save it the directory you created.
@@ -58,11 +58,11 @@ checks for dataset_name:
 
 If you wish, you can provide data source login credentials or any of the properties in the configuration YAML file as system variables instead of storing the values directly in the file. System variables persist only for as long as you have the terminal session open in which you created the variable. For a longer-term solution, consider using permanent environment variables stored in your `~/.bash_profile` or `~/.zprofile` files.
 
-1. From your command-line interface, set a system variable to store the value of a property that the configuration YAML file uses. For example, you can use the following command to define a system variable for your password.  
+1. From your command-line interface, set a system variable to store the value of a property that the configuration YAML file uses. For example, you can use the following command to define a system variable for your password.
 ```shell
 export POSTGRES_PASSWORD=1234
 ```
-2. Test that the system retrieves the value that you set by running an `echo` command. 
+2. Test that the system retrieves the value that you set by running an `echo` command.
 ```shell
 echo $POSTGRES_PASSWORD
 ```
@@ -76,8 +76,8 @@ data_source my_database_name:
     port: '5432'
     username: sodademo
     password: ${POSTGRES_PASSWORD}
-  database: postgres
-  schema: public
+    database: postgres
+    schema: public
 ```
 4. Save the configuration YAML file, then run a scan to confirm that Soda Core connects to your data source without issue.
 ```shell
