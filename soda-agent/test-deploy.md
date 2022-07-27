@@ -122,17 +122,17 @@ kind: Pod
 metadata:
   name: nybusbreakdowns
   labels:
-    app: nybusbreakdowns
-    eks.amazonaws.com/fargate-profile: soda-agent-profile
+       app: nycbusbreakdowns
+       eks.amazonaws.com/fargate-profile: soda-agent-profile
 spec:
   containers:
   - image: sodadata/nybusbreakdowns
-    imagePullPolicy: IfNotPresent
-    name: nybusbreakdowns
+       imagePullPolicy: IfNotPresent
+       name: nybusbreakdowns
   restartPolicy: Always
 EOF
 ```
-2. Once the pod is running, you can use the following configuration details when you add a data source in Soda Cloud, in step 2 **Connect the Data Source**.
+2. Once the pod is running, you can use the following configuration details when you add a data source in Soda Cloud, in step 2, **Connect the Data Source**.
 ```yaml 
 data_source local_postgres_test:
     type: postgres
