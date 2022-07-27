@@ -43,10 +43,11 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 <table>
   <tr>
-    <td>Amazon Athena<br /> Amazon Redshift<br />  GCP Big Query</td>
-    <td>PostgreSQL<br /> Snowflake</td>
+    <td>Amazon Athena<br /> Amazon Redshift<br />  Apache Spark DataFrames<sup>1</sup><br /> GCP Big Query</td>
+    <td>IBM DB2<br /> MS SQL Server <br /> PostgreSQL<br /> Snowflake</td>
   </tr>
 </table>
+<sup>1</sup> For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
 
 ## Prerequisites
 
