@@ -254,8 +254,10 @@ coming soon
 
 | Metric  | Column config keys | Description | Supported data type | Supported data sources | 
 | ------  | ------------------ | ----------- |---------------------| ---------------------- |
-| `invalid_count` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |  Athena <br />  Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake   |
-| `invalid_percent` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` | The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  Athena <br />  Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake  | 
+| `invalid_count` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex`<sup>1</sup> <br /> `valid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |  Athena <br /> Redshift <br />  Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake   |
+| `invalid_percent` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex`<sup>1</sup> <br /> `valid values` | The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  Athena <br /> Redshift <br />  Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  | 
+
+<sup>1</sup> **Known issue:** Connections to MS SQL Server do not support checks that use regex.
 
 ## List of configuration keys
 
