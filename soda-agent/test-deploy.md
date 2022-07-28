@@ -135,14 +135,14 @@ EOF
 2. Once the pod is running, you can use the following configuration details when you add a data source in Soda Cloud, in step 2, **Connect the Data Source**.
 ```yaml 
 data_source local_postgres_test:
-    type: postgres
-    connection:
+  type: postgres
+  connection:
         host: nybusbreakdowns
         port: 5432
         username: sodacore
         password: sodacore
-    database: postgres
-    schema: new_york
+        database: sodacore
+        schema: new_york
 ```
 
 ## Deccomission the local cluster and Soda Agent
