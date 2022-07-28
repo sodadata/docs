@@ -18,6 +18,8 @@ After you [install Soda Core]({% link soda-core/installation.md %}), you must cr
 [Connect to Amazon Redshift](#connect-to-amazon-redshift)<br />
 [Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes)<br />
 [Connect to GCP BigQuery](#connect-to-gcp-bigquery)<br />
+[Connect to IBM DB2](#connect-to-ibm-db2)<br />
+[Connect to MS SQL Server](#connect-to-ms-sql-server)<br />
 [Connect to PostgreSQL](#connect-to-postgresql)<br />
 [Connect to Snowflake](#connect-to-snowflake)<br />
 <br />

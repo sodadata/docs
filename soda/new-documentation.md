@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### July 27, 2022
+
+* Added content to correspond with Soda Core's new support for [MS SQL Server]({% link soda-core/configuration.md %}#connect-to-ms-sql-server) and [IBM DB2]({% link soda-core/configuration.md %}#connect-to-ibm-db2).
+
 #### July 20, 2022
 
 * Published documentation associated with the preview release of Soda Cloud's self-serve features and functionality. This is a limited access preview release, so please ask us for access at <a href="mailto:support@soda.io">support@soda.io</a>.

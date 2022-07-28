@@ -47,8 +47,8 @@ data_source my_database_name:
   schema: public
 ```
 
-| Property          | Required | Notes                                                                                                                                            |
-| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Property          | Required | Notes  |
+| ----------------- | -------- | ------ |
 | type              | required |                                                                                                                                                  |
 | host              | required |                                                                                                                                                  |
 | username          | required |                                                                                                                                                  |
@@ -182,6 +182,79 @@ data_source my_database_name:
 | number   | INT64, DECIMAL, BINUMERIC, BIGDECIMAL, FLOAT64 |
 | time     | DATE, DATETIME, TIME, TIMESTAMP                |
 
+## Connect to IBM DB2
+
+```yaml
+data_source my_database_name:
+  type: db2
+  host: localhost
+  port: 50000
+  username: xxx
+  password: ...
+  database: 
+  schema: 
+```
+
+| Property | Required | Notes                                                      |
+| -------- | -------- | ---------------------------------------------------------- |
+| type     | required |                                                            |
+| host     | required |                                                            |
+| port     | optional |                                                            |
+| username | required | Use system variables to retrieve this value securely.      |
+| password | required | Use system variables to retrieve this value securely.      |
+| database | required |                                                            |
+| schema   | required |                                                            |
+
+### Supported data types
+
+| Category | Data type  |
+| -------- | ---------- |
+| text     | VARCHAR  |
+| number   | INT, INTEGER, DOUBLE, FLOAT  |
+| time     | DATE, TIME, TIMESTAMP |
+
+
+## Connect to MS SQL Server
+
+**Known issue:** Connections to MS SQL Server do not support checks that use regex, such as with [missing metrics]({% link soda-cl/missing-metrics.md %}#list-of-missing-metrics) or [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics).
+
+```yaml
+data_source my_server_name:
+  type: sqlserver
+  host: localhost
+  port: 1433
+  username: xxx
+  password: ...
+  database:
+  schema:
+  trusted_connection: false
+  encrypt: false 
+  trust_server_certificate: false
+```
+
+| Property | Required | Notes                                                      |
+| -------- | -------- | ---------------------------------------------------------- |
+| type     | required |                                                            |
+| host     | required |                                                            |
+| port     | optional |                                                            |
+| username | required | Use system variables to retrieve this value securely.      |
+| password | required | Use system variables to retrieve this value securely.      |
+| database | required |                                                            |
+| schema   | required |                                                            |
+| trusted_connection | optional |  The default value is `false`.                   |
+| encrypt | optional |   The default value is `false`.                             |
+| trust_server_certificate | optional |   The default value is `false`.            |
+
+
+### Supported data types
+
+| Category | Data type  |
+| -------- | ---------- |
+| text     | CHAR, VARCHAR, TEXT  |
+| number   | BIG INT, NUMERIC, BIT, SMALLINT, DECIMAL, SMALLMONEY, INT, TINYINT, MONEY, FLOAT, REAL  |
+| time     | DATE, TIME, DATETIME, DATETIMEOFFSET |
+
+
 ## Connect to PostgreSQL
 
 ```yaml
@@ -201,18 +274,18 @@ data_source my_database_name:
 | type     | required |                                                            |
 | host     | required |                                                            |
 | port     | optional |                                                            |
-| username | required | Use system variables to retrieve this value securely. |
-| password | required | Use system variables to retrieve this value securely. |
+| username | required | Use system variables to retrieve this value securely.      |
+| password | required | Use system variables to retrieve this value securely.      |
 | database | required |                                                            |
 | schema   | required |                                                            |
 
 ### Supported data types
 
-| Category | Data type                                                                                                                  |
-| -------- | -------------------------------------------------------------------------------------------------------------------------- |
-| text     | CHARACTER VARYING, CHARACTER, CHAR, TEXT                                                                                   |
-| number   | SMALLINT, INTEGER, BIGINT, DECIMAL, NUMERIC, VARIABLE, REAL, DOUBLE PRECISION, SMALLSERIAL, SERIAL, BIGSERIAL              |
-| time     | TIMESTAMPT, DATE, TIME, TIMESTAMP WITH TIME ZONE, TIMESTAMP WITHOUT TIME ZONE, TIME WITH TIME ZONE, TIME WITHOUT TIME ZONE |
+| Category | Data type  |
+| -------- | ---------- |
+| text     | CHARACTER VARYING, CHARACTER, CHAR, TEXT  |
+| number   | SMALLINT, INTEGER, BIGINT, DECIMAL, NUMERIC, VARIABLE, REAL, DOUBLE PRECISION, SMALLSERIAL, SERIAL, BIGSERIAL  |
+| time     | TIMESTAMP, DATE, TIME, TIMESTAMP WITH TIME ZONE, TIMESTAMP WITHOUT TIME ZONE, TIME WITH TIME ZONE, TIME WITHOUT TIME ZONE |
 
 ## Connect to Snowflake
 
