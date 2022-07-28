@@ -7,6 +7,12 @@ url: "https://docs.soda.io"
 twitter_username: sodadata
 github_username:  sodadata
 
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/minerals.png
+
 # Build settings minima
 theme: just-the-docs
 plugins:
