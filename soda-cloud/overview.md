@@ -7,6 +7,7 @@ redirect_from:
 - /soda-cloud.html
 - /soda-cloud/display-column-metrics.html
 - /soda-cloud/display-samples.html
+- /soda-cloud/
 ---
 <br />
 

@@ -3,6 +3,7 @@ layout: default
 title: Soda Agent basic concepts
 description: Establish a baseline understanding of the concepts involved in deploying a Soda Agent.
 parent: Soda Agent
+redirect_from: /soda-agent/
 ---
 
 # Soda Agent basic concepts ![preview](/assets/images/preview.png){:height="70px" width="70px"}
