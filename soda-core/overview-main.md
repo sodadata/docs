@@ -3,6 +3,7 @@ layout: default
 title: Soda Core overview
 description: Soda Core is an open-source, CLI tool that enables you to use the Soda Checks Language to turn user-defined input into SQL queries.
 parent: Soda Core
+redirect_from: /soda-core/
 ---
 <br />
 
