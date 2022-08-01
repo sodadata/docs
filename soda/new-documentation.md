@@ -12,6 +12,7 @@ parent: Reference
 #### August 1. 2022
 
 * Added a "was this helpful" counter to most documentation pages.
+* Added details for [connecting `soda-core-spark-df` to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}#connect-soda-core-for-sparkdf-to-soda-cloud). 
 
 #### July 27, 2022
 
