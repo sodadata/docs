@@ -71,7 +71,7 @@ scan.add_configuration_yaml_str(
 soda_cloud:
   api_key_id: "[key]"
   api_key_secret: "[secret]"
-  host: cloud.sodadata.io
+  host: cloud.soda.io
 """
 )
 scan.add_spark_session(spark_session)
