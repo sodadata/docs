@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### August 1. 2022
+
+* Added a "was this helpful" counter to most documentation pages.
+
 #### July 27, 2022
 
 * Added content to correspond with Soda Core's new support for [MS SQL Server]({% link soda-core/configuration.md %}#connect-to-ms-sql-server) and [IBM DB2]({% link soda-core/configuration.md %}#connect-to-ibm-db2).
@@ -341,4 +345,5 @@ parent: Reference
 
 
 ---
-{% include docs-footer.md %}
+
+*Last modified on {% last_modified_at %}*
