@@ -1,5 +1,6 @@
-As an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, integrate your Slack workspace in your **Soda Cloud** account so that Soda Cloud can send Slack notifications to your team when a data issue triggers an [alert]({% link soda/glossary.md %}#alert).
+As an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, integrate your Slack workspace in your **Soda Cloud** account so that Soda Cloud can interact with individuals and channels in the workspace.
 
-1. In Soda Cloud, navigate to **your avatar** > **Organization Settings** > **Integrations**, then follow the guided steps to authorize Soda Cloud to connect to your Slack workspace.
-2. If necessary, contact your organization's Slack Administrator to approve the integration with Soda Cloud. When your Slack Admin approves your request, proceed to the next step.
-3. In **your avatar** > **Organization Settings** > **Integrations**, select the Slack channels to which your team might send notifications when Soda finds an issue with your data, then **Save**.
+1. In Soda Cloud, navigate to **your avatar** > **Organization Settings**, then navigate to the **Integrations** tab and click the **+** icon to add a new integration.
+2. Follow the guided steps to authorize Soda Cloud to connect to your Slack workspace. If necessary, contact your organization's Slack Administrator to approve the integration with Soda Cloud. 
+* **Configuration** tab: select the channels to which Soda can post messages.
+* **Scope** tab: select the Soda features (alert notifications and/or incidents) which can access the Slack integration. 
