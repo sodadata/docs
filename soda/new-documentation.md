@@ -9,6 +9,12 @@ parent: Reference
 
 <br />
 
+#### August 2, 2022
+
+* Adjusted the instructions for [Slack integration]({% link soda/integrate-slack.md %}) to correspond with a slightly changed UI experience.
+* Added limitation to the [for each]({% link soda-cl/for-each.md %}) as the configuration is not compatible with dataset filters (also known as partitions).
+
+
 #### August 1. 2022
 
 * Added a "was this helpful" counter to most documentation pages.
