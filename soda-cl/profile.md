@@ -123,7 +123,7 @@ Refer to the top of the page for more example configurations for column profilin
 
 ## Optional check configurations
 
-| ✓ | Configuration | Documentation |
+| Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 |   | Define a name for sample data configuration. |  - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |

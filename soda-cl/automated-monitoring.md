@@ -97,7 +97,7 @@ To review the checks results for automated monitoring checks in Soda Cloud, navi
 
 ## Optional check configurations
 
-| ✓ | Configuration | Documentation |
+| Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 |   | Define a name for an automated monitoring check. |  - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |

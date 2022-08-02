@@ -105,7 +105,7 @@ Consider using the Soda Core Python library to set up a [programmatic scan]({% l
 
 ## Optional check configurations
 
-| ✓ | Configuration | Documentation |
+| Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 |   | Define a name for an anomaly score check. |  - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |

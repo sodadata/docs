@@ -68,7 +68,7 @@ sample datasets:
 
 ## Optional check configurations
 
-| ✓ | Configuration | Documentation |
+| Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 |   | Define a name for sample data configuration. |  - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
