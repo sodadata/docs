@@ -131,9 +131,9 @@ Second check:
 
 ### Specify missing format
 
-If the data type of the column you are checking is TEXT (such as character, character varying, or string) then you can use the `missing format` configuration key. This config key uses built-in values that test the data in the column for specific formats, such as email address format, date format, or uuid format. See [List of valid formats](#list-of-format-values) below.
+If the data type of the column you are checking is TEXT (such as character, character varying, or string) then you can use the `valid format` configuration key. This config key uses built-in values that test the data in the column for specific formats, such as email address format, date format, or uuid format. See [List of valid formats](#list-of-format-values) below.
 
- The check below validates that all values in the `email_address` column conform to an email address format. 
+ The check below validates that all values in the `email_address` column conform to an email address format; those that do not conform to the format qualify as missing.
 
 ```yaml
 checks for dim_customer:
@@ -150,7 +150,7 @@ checks for dim_customer:
 
 <br />
 
-#### Troubleshoot missing format
+#### Troubleshoot valid format
 
 **Problem:** You are using a `valid format` to test the format of values in a column and the CLI returns the following error message when you run a scan. 
 
@@ -256,9 +256,9 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 | Column config key  | Description  | Values | 
 | ------------------ | ------------ | ------ |
-| `missing format` | Defines the format of a value that Soda ought to register as missing. <br />Only works with columns that contain data type TEXT. |  See [List of valid formats](#list-of-valid-formats) |
 | `missing regex` | Specifies a regular expression to define your own custom missing values.| regex, no forward slash delimiters, string only |
 | `missing values` | Specifies the values that Soda is to consider missing. Numeric characters in a `valid values` list must be enclosed in single quotes. | values in a list |
+| `valid format` | Defines the format of a value that Soda ought to register as valid; all other values register as missing. <br />Only works with columns that contain data type TEXT. |  See [List of valid formats](#list-of-valid-formats) |
 
 ## List of valid formats
 
