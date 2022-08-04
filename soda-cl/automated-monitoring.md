@@ -102,18 +102,11 @@ To review the checks results for automated monitoring checks in Soda Cloud, navi
 |   | Define a name for an automated monitoring check. |  - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
 |   | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+|   | Use quotes when identifying dataset names. | - |
 | ✓ | Use wildcard characters ({% raw %} % {% endraw %} with dataset names in the check; see [example](#example-with-wildcards). | - |
 |   | Use for each to apply anomaly score checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan. |  -  |
 
-#### Example with quotes
-
-```yaml
-automated monitoring:
-  datasets:
-    - include "prod_customer"
-```
 
 #### Example with wildcards 
 

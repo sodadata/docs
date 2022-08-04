@@ -19,14 +19,13 @@ checks for dim_customer
   - missing_count(last_name) < 5:
       missing values: [n/a, NA, none]
   - missing_percent(email_address) = 0:
-      valid format: email
+      missing format: '   '
 ```
 
 [Define checks with missing metrics](#define-checks-with-missing-metrics) <br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of missing metrics](#list-of-missing-metrics)<br />
 [List of configuration keys](#list-of-configuration-keys)<br />
-[List of valid formats](#list-of-valid-formats)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
 [Go further](#go-further)<br />
 <br />
@@ -36,7 +35,7 @@ checks for dim_customer
 
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), you use missing metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
 
-You can use all missing metrics in checks that apply to individual columns in a dataset; you cannot use missing metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
+You can use both missing metrics in checks that apply to individual columns in a dataset; you cannot use missing metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
 * SodaCL considers `NULL` as the default value for "missing". 
 * If you wish, you can add a `%` character to the threshold for a `missing_percent` metric for improved readability. 
 
@@ -131,38 +130,25 @@ Second check:
 
 ### Specify missing format
 
-If the data type of the column you are checking is TEXT (such as character, character varying, or string) then you can use the `missing format` configuration key. This config key uses built-in values that test the data in the column for specific formats, such as email address format, date format, or uuid format. See [List of valid formats](#list-of-format-values) below.
+*Known issue:* The `missing format` configuration does not function as expected. A fix is forthcoming.
 
- The check below validates that all values in the `email_address` column conform to an email address format. 
+Defines what qualifies as a value that ought to register as missing, such as whitespace or empty strings. For example, three spaces in row is recognizable as an entry, but from a business perspective, it ought to be recognized as missing.
+
+The check below ensures that Soda ought to consider any value entered as three spaces as missing, in addition to all NULL values which Soda automatically considers as missing.
 
 ```yaml
 checks for dim_customer:
   - missing_percent(email_address) = 0:
-      valid format: email
+      missing format: '   '
 ```
 
 | metric | `missing_percent` |
 | argument | `email_address` |
 | comparison symbol or phrase| `=` |
 | threshold | `0` | 
-| configuration key | `valid format` |
-| configuration value(s) | `email` |
+| configuration key | `missing format` |
+| configuration value(s) | `'   '` |
 
-<br />
-
-#### Troubleshoot missing format
-
-**Problem:** You are using a `valid format` to test the format of values in a column and the CLI returns the following error message when you run a scan. 
-
-```shell
-  | HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
-
-Error occurred while executing scan.
-  | unsupported operand type(s) for *: 'Undefined' and 'int'
-
-```
-
-**Solution:** The error indicates that the data type of the column is not TEXT. Adjust your check to use `missing regex` or `missing values` configuration keys, instead.
 
 <br />
 
@@ -256,13 +242,10 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 | Column config key  | Description  | Values | 
 | ------------------ | ------------ | ------ |
-| `missing format` | Defines the format of a value that Soda ought to register as missing. <br />Only works with columns that contain data type TEXT. |  See [List of valid formats](#list-of-valid-formats) |
+| `missing format` | Defines what qualifies as a value that ought to register as missing, such as whitespace or empty strings. For example, three spaces in row is recognizable as an entry, but from a business perspective, it ought to be recognized as missing. <br />*Known issue:* The `missing format` configuration does not function as expected. A fix is forthcoming. |
 | `missing regex` | Specifies a regular expression to define your own custom missing values.| regex, no forward slash delimiters, string only |
 | `missing values` | Specifies the values that Soda is to consider missing. Numeric characters in a `valid values` list must be enclosed in single quotes. | values in a list |
 
-## List of valid formats
-
-{% include valid-formats.md %}
 
 ## List of comparison symbols and phrases
 
