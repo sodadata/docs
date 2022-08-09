@@ -11,7 +11,7 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /assets/minerals.png
+      image: /assets/og-card.png
 
 # Build settings minima
 theme: just-the-docs
