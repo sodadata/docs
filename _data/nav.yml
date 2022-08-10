@@ -29,6 +29,8 @@
     page: soda-core/configuration.md
   - subtitle: Run a Soda Core scan
     page: soda-core/scan-core.md
+  - subtitle: Migrate from Soda SQL
+    page: soda-core/migrate.md
   - subtitle: Soda Core CLI commands
     page: soda-core/cli-reference.md
   - subtitle: Define programmatic scans

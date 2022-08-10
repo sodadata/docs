@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### August 9, 2022
+
+* Added documentation to describe the [migration path]({% link soda-core/migrate.md %}) from Soda SQL to Soda Core.
+
 #### August 2, 2022
 
 * Adjusted the instructions for [Slack integration]({% link soda/integrate-slack.md %}) to correspond with a slightly changed UI experience.
