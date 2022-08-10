@@ -1,5 +1,5 @@
 You can use variables to:
-* resolve credentials in configuration files; see [Configure Soda Core]({% link soda-core/configuration.md %}provide-credentials-as-system-variables)
+* resolve credentials in configuration files; see [Configure Soda Core]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables)
 * define dynamic [dataset filters]({% link soda-cl/filters.md %}#configure-dataset-filters)
 * customize dynamic [check names]({% link soda-cl/optional-config.md %}#customize-check-names)
 

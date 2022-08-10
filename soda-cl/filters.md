@@ -38,6 +38,7 @@ checks for dim_customer:
 [In-check filters](#configure-in-check-filters)<br />
 [Dataset filters](#configure-dataset-filters)<br />
 [Configure variables](#configure-variables)<br />
+[Go further](#go-further)<br />
 <br />
 
 ## Configure in-check filters
@@ -62,6 +63,8 @@ checks for dim_customer:
 ## Go further
 
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Use a [for each]({% link soda-cl/for-each.md %}) configuration to execute checks on multiple datasets.
+* Learn more about [Optional check configurations]({% link soda-cl/optional-config.md %}).
 <br />
 
 ---

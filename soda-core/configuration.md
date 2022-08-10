@@ -91,9 +91,10 @@ soda scan -d your_datasource -c configuration.yml checks.yml
 
 ## Go further
 
-- Next: [Run a scan]({% link soda-core/scan-core.md %}) of the data in your data source.
-- Consider completing the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write more checks for data quality.
-- Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Next: [Run a scan]({% link soda-core/scan-core.md %}) of the data in your data source.
+* Consider completing the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write more checks for data quality.
+* (Optional) [Connect Soda Core to a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}).
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
   <br />
 
 ---
