@@ -44,7 +44,7 @@ checks for dim_product:
         when schema changes: any
 ```
 
-[Define schema checks](#define-checks-with-missing-metrics) <br />
+[Define schema checks](#define-schema-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of validation keys](#list-of-validation-keys) <br />
 [Expect one check result](#expect-one-check-result)<br />
