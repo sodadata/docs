@@ -94,7 +94,7 @@ checks for dim_customer:
 | :-: | ------------|---------------|
 | ✓ | Define a name for a failed rows check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 |   | Define alert configurations to specify warn and fail alert conditions. | - |
-|   | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
+|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓  | Use wildcard characters in the value in the check. | Use wildcard values as you would with CTE or SQL. |
 |   | Use for each to apply schema checks to multiple datasets in one scan. | - |

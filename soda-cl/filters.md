@@ -1,16 +1,16 @@
 ---
 layout: default
-title: Filters
-description: Instead of checking whole sets of data, you can use SodaCL filters to specify a portion of data against which Soda Core executes a check.
+title: Filters and variables
+description: Instead of checking whole sets of data, use filters to specify a portion of data against which to execute a check. Use variables to specify values at scan time.
 parent: SodaCL
 redirect_from:
 - soda-cl/table-filters.html
 - soda-cl/dataset-filters.html
 ---
 
-# Filters 
+# Filters and variables
 
-Use filters to specify portions of data in your dataset against which Soda Core executes checks during a scan.
+Use filters or variables to specify portions of data in your dataset against which Soda Core executes checks during a scan.
 
 ```yaml
 # In-check filter
@@ -26,10 +26,19 @@ filter CUSTOMERS [daily]:
 checks for CUSTOMERS [daily]:
   - row_count = 6
   - missing(cat) = 2
+
+# Variable in a dynamic customized  check name 
+variables:
+  name: Customers UK
+checks for dim_customer:
+  - row_count > 1:
+     name: Row count in ${name}
 ```
 
 [In-check filters](#configure-in-check-filters)<br />
 [Dataset filters](#configure-dataset-filters)<br />
+[Configure variables](#configure-variables)<br />
+[Go further](#go-further)<br />
 <br />
 
 ## Configure in-check filters
@@ -39,17 +48,23 @@ checks for CUSTOMERS [daily]:
 ### List of compatible metrics and checks
 
 * all numeric metrics, *except* `duplicate_count`
-* all missing metrics
-* all validity metrics
+* both missing metrics
+* both validity metrics
 
 ## Configure dataset filters
 
 {% include dataset-filters.md %}
 
+## Configure variables
+
+{% include variables.md %}
+
 
 ## Go further
 
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Use a [for each]({% link soda-cl/for-each.md %}) configuration to execute checks on multiple datasets.
+* Learn more about [Optional check configurations]({% link soda-cl/optional-config.md %}).
 <br />
 
 ---

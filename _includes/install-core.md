@@ -4,8 +4,8 @@ Use Soda Core to scan a variety of data sources.<br />
 
 <table>
   <tr>
-    <td>Amazon Athena<br /> Amazon Redshift<br />  Apache Spark DataFrames<sup>1</sup><br /> GCP Big Query</td>
-    <td>IBM DB2<br /> MS SQL Server<br /> PostgreSQL<br /> Snowflake<br /> </td>
+    <td>Amazon Athena<br /> Amazon Redshift<br />  Apache Spark DataFrames<sup>1</sup><br /> GCP Big Query<br /> IBM DB2</td>
+    <td>MS SQL Server<br /> MySQL<br > PostgreSQL<br /> Snowflake<br /> </td>
   </tr>
 </table>
 <sup>1</sup> For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
@@ -42,10 +42,11 @@ pip install soda-core-postgres
 | GCP Big Query | soda-core-bigquery | 
 | IBM DB2 | soda-core-db2 |
 | MS SQL Server<sup>2</sup> | soda-core-sqlserver |
+| MySQL | soda-core-mysql |
 | PostgreSQL | soda-core-postgres |
 | Snowflake | soda-core-snowflake | 
 
-<sup>2</sup> **Known issue:** Connections to MS SQL Server do not support checks that use regex, such as with [missing metrics]({% link soda-cl/missing-metrics.md %}#list-of-missing-metrics) or [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics).
+<sup>2</sup> *Known issue:* Connections to MS SQL Server do not support checks that use regex, such as with [missing metrics]({% link soda-cl/missing-metrics.md %}#list-of-missing-metrics) or [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics). <!--CORE-211-->
 
 To deactivate the virtual environment, use the following command:
 ```shell

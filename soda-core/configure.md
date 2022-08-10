@@ -18,14 +18,16 @@ To set the data source configurations, use the following example configurations 
 [Connect to GCP BigQuery](#connect-to-gcp-bigquery)<br />
 [Connect to IBM DB2](#connect-to-ibm-db2)<br />
 [Connect to MS SQL Server](#connect-to-ms-sql-server)<br />
+[Connect to MySQL](#connect-to-mysql)<br />
 [Connect to PostgreSQL](#connect-to-postgresql)<br />
 [Connect to Snowflake](#connect-to-snowflake)<br />
-[Add prefixes to datasets](#add-prefixes-to-datasets)<br />
 [Connect Soda Core to Soda Cloud](#connect-soda-core-to-soda-cloud)<br />
 <br />
 
 
 {% include core-datasource-config.md %}
+
+<!-- This feature does not appear to work, nor exist in the code as either table_prefix or dataset_prefix.
 
 ## Add prefixes to datasets
 
@@ -76,6 +78,7 @@ Scan summary:
         check_value: 99
 All is good. No failures. No warnings. No errors.
 ```
+-->
 
 ## Connect Soda Core to Soda Cloud
 

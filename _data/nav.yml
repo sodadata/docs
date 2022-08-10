@@ -73,7 +73,7 @@
     page: soda-cl/failed-rows-checks.md
   - subtitle: Automated monitoring checks
     page: soda-cl/automated-monitoring.md
-  - subtitle: Filters
+  - subtitle: Filters and variables
     page: soda-cl/filters.md
   - subtitle: For each
     page: soda-cl/for-each.md

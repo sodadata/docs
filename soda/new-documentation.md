@@ -9,6 +9,11 @@ parent: Reference
 
 <br />
 
+#### August 10, 2022
+
+* Added content to correspond with Soda Core's new support for [MySQL]({% link soda-core/configuration.md %}#connect-to-mysql).
+* Validated and clarified documentation for using [filters and variables]({% link soda-cl/filters.md %}).
+
 #### August 9, 2022
 
 * Added documentation to describe the [migration path]({% link soda-core/migrate.md %}) from Soda SQL to Soda Core.
