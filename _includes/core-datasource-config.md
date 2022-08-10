@@ -218,7 +218,7 @@ data_source my_database_name:
 
 ## Connect to MS SQL Server
 
-**Known issue:** Connections to MS SQL Server do not support checks that use regex, such as with [missing metrics]({% link soda-cl/missing-metrics.md %}#list-of-missing-metrics) or [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics).
+**Known issue:** Connections to MS SQL Server do not support checks that use regex, such as with [missing metrics]({% link soda-cl/missing-metrics.md %}#list-of-missing-metrics) or [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics).<!--CORE-211-->
 
 ```yaml
 data_source my_server_name:
@@ -255,6 +255,36 @@ data_source my_server_name:
 | text     | CHAR, VARCHAR, TEXT  |
 | number   | BIG INT, NUMERIC, BIT, SMALLINT, DECIMAL, SMALLMONEY, INT, TINYINT, MONEY, FLOAT, REAL  |
 | time     | DATE, TIME, DATETIME, DATETIMEOFFSET |
+
+
+## Connect to MySQL
+
+```yaml
+data_source my_server_name:
+  type: mysql
+  host: 
+  username: xxx
+  password: ...
+  database:
+```
+
+| Property | Required | Notes                                                      |
+| -------- | -------- | ---------------------------------------------------------- |
+| type     | required |                                                            |
+| host     | required |                                                            |
+| username | required | Use system variables to retrieve this value securely.      |
+| password | required | Use system variables to retrieve this value securely.      |
+| database | required |                                                            |
+
+
+### Supported data types
+
+| Category | Data type  |
+| -------- | ---------- |
+| text     | CHAR, VARCHAR, TEXT  |
+| number   | BIG INT, NUMERIC, BIT, SMALLINT, DECIMAL, SMALLMONEY, INT, TINYINT, MONEY, FLOAT, REAL  |
+| time     | DATE, TIME, DATETIME, DATETIMEOFFSET |
+
 
 
 ## Connect to PostgreSQL
