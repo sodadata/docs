@@ -40,20 +40,7 @@ Use the soda `soda scan --help` command to review options you can include to cus
 
 ## Variables
 
-To test specific portions of data, such as data pertaining to a specific date, you can apply dynamic variables when you scan data in your warehouse. See [Use variables in Soda Core]({% link soda-core/variables.md %}) for detailed instructions. 
-
-Variables are a set of key-value pairs, both of which are strings. In SodaCL, you can refer to variables as `${VAR}`.
-
-Soda checks YAML file:
-```yaml
-variables:
-  hello: world
-  sometime_later: ${now}
-```
-Scan command:
-```shell
-soda scan -d postgres_retail -v TODAY=2022-03-11 checks.yml
-```
+{% include variables.md %}
 
 ## Scan output
 

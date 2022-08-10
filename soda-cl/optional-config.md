@@ -38,6 +38,27 @@ checks for dim_employee:
 * Be sure to add the `:` to the end of your check, before the nested content.
 * If `name` is configured, Soda Core sends the value of `name` to Soda Cloud as the check identifier.
 
+<br />
+
+If you wish, you can use a [variable]({% link soda-cl/filters.md %}#configure-variables) to customize a dynamic check name.
+```yaml
+variables:
+  name: Customers UK
+checks for dim_customer:
+  - row_count > 1:
+     name: Row count in ${name}
+```
+
+When you run a scan, Soda Core uses the value you specified for your variable in the scan results, as in the example below.
+```shell
+Soda Core 3.0.4
+Scan summary:
+1/1 check PASSED: 
+    dim_customer in adventureworks
+      Row count in Customers UK [PASSED]
+All is good. No failures. No warnings. No errors.
+```
+
 ## Add alert configurations
 
 When Soda Core runs a scan of your data, it returns a check result for each check. Each check results in one of three default states:

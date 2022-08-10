@@ -1,6 +1,6 @@
 Add a filter to a check to specify a portion of the data against which Soda executes the check.  
 
-Add a filter as a nested key:value pair, as in the following example which filters the check results to display only those rows with a value of 81 or greater and which contain `11` in the `sales_territory_key` column. You cannot use a variable to specify a filter.
+Add a filter as a nested key:value pair, as in the following example which filters the check results to display only those rows with a value of 81 or greater and which contain `11` in the `sales_territory_key` column. You cannot use a variable to specify an in-check filter.
 
 ```yaml
 checks for dim_employee:
@@ -32,7 +32,7 @@ checks for dim_employee:
 
 Be aware that if no rows match the filter parameters you set, Soda does not evaluate the check. In other words, Soda first finds rows that match the filter, *then* executes the check on those rows. 
 
-If, in the example above, none of the rows contained a value of `11` in the `sales_territory_key` column, Soda would not evaluate the check and would return a `NOT EVALUATED` message in the CLI scan output, such as the following.
+If, in the example above, none of the rows contained a value of `11` in the `sales_territory_key` column, Soda does not evaluate the check and returns a `NOT EVALUATED` message in the CLI scan output, such as the following.
 
 ```shell
 Soda Core 3.0.xxx
