@@ -130,7 +130,7 @@ Second check:
 
 ### Specify missing format
 
-*Known issue:* The `missing format` configuration does not function as expected. A fix is forthcoming.
+*Known issue:* The `missing format` configuration does not function as expected. A fix is forthcoming.<!--CORE-212-->
 
 Defines what qualifies as a value that ought to register as missing, such as whitespace or empty strings. For example, three spaces in row is recognizable as an entry, but from a business perspective, it ought to be recognized as missing.
 
@@ -234,7 +234,7 @@ coming soon
 | `missing_count` | `missing format` <br /> `missing regex`<sup>1</sup>  <br /> `missing values` | The number of rows in a column that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake   |
 | `missing_percent` | `missing format` <br /> `missing regex`<sup>1</sup>  <br /> `missing values` | The percentage of rows in a column, relative to the total row count, that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  | 
 
-<sup>1</sup> **Known issue:** Connections to MS SQL Server do not support checks that use regex.
+<sup>1</sup> **Known issue:** Connections to MS SQL Server do not support checks that use regex. <!--CORE-211-->
 
 ## List of configuration keys
 
@@ -242,7 +242,7 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 | Column config key  | Description  | Values | 
 | ------------------ | ------------ | ------ |
-| `missing format` | Defines what qualifies as a value that ought to register as missing, such as whitespace or empty strings. For example, three spaces in row is recognizable as an entry, but from a business perspective, it ought to be recognized as missing. <br />*Known issue:* The `missing format` configuration does not function as expected. A fix is forthcoming. |
+| `missing format` | Defines what qualifies as a value that ought to register as missing, such as whitespace or empty strings. For example, three spaces in row is recognizable as an entry, but from a business perspective, it ought to be recognized as missing. <br />*Known issue:* The `missing format` configuration does not function as expected. A fix is forthcoming. <!--CORE-212-->|
 | `missing regex` | Specifies a regular expression to define your own custom missing values.| regex, no forward slash delimiters, string only |
 | `missing values` | Specifies the values that Soda is to consider missing. Numeric characters in a `valid values` list must be enclosed in single quotes. | values in a list |
 

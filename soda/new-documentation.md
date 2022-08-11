@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### August 11, 2022
+
+* Added documentation for the new `-t` option for use with scan commands to [overwrite scan output in Soda Cloud]({% link soda-cloud/scan-output.md %}#overwrite-scan-output-in-soda-cloud).
+
 #### August 10, 2022
 
 * Added content to correspond with Soda Core's new support for [MySQL]({% link soda-core/configuration.md %}#connect-to-mysql).
