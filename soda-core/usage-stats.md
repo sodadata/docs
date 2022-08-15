@@ -13,7 +13,7 @@ Soda tracks usage statistics using the Open Telemetry Framework. The data Soda t
 
 ## Opt out of usage statistics
 
-Soda Core collects usage statistics by default. You can opt-out from sending Soda Core usage statistics at any time by adding the following to your `~/.soda/config.yml` file:
+Soda Core collects usage statistics by default. You can opt-out from sending Soda Core usage statistics at any time by adding the following to your `configuration.yml` file:
 ```
 send_anonymous_usage_stats: false
 ```
