@@ -17,7 +17,8 @@ Use SodaCL checks to define the state of "good quality" for data in this data so
 ## Prerequisites
 
 * You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
-* You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [added a new datasource]({% link soda-cloud/add-datasource.md %}) in your Soda Cloud account.
+* You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) and connected it to your Soda Cloud account.
+* You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [added a new datasource]({% link soda-cloud/add-datasource.md %}) via the Soda Agent in your Soda Cloud account.
 * (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud can send notifications via email.
 
 ## Create a new agreement
