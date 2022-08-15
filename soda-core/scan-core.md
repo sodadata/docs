@@ -14,6 +14,7 @@ A **scan** is a command that executes checks to extract information about data i
 [Scan output](#scan-output)<br />
 [Programmatically use scan output](#programmatically-use-scan-output)<br />
 [Add scan options](#add-scan-options)<br />
+[Troubleshoot](#troubleshoot)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -100,6 +101,11 @@ When you run a scan in Soda Core, you can specify some options that modify the s
 | `-v TEXT` or<br /> `--variable TEXT` |  | Replace `TEXT` with variables you wish to apply to the scan, such as a [filter for a date]({% link soda-cl/filters.md %}). Put single or double quotes around any value with spaces. <br />  `soda scan -d my_datasource -v start=2020-04-12 -c configuration.yml checks.yml` |
 | `V` or <br /> `--verbose` |  | Return scan output in verbose mode to review query details. |
 
+## Troubleshoot
+
+**Problem:** When you run a scan, you get an error that reads, `Exception while exporting Span batch.`
+
+**Solution:** Without an internet connection, Soda Core is unable to communicate with `soda.connect.io` to transmit anonymous usage statistics about the software. <br /> If you are using Soda Core offline, you can resolve the issue by setting `send_anonymous_usage_stats: false` in your `configuration.yml` file. Refer to [Soda Core usage statistics]({% link soda-core/usage-stats.md %}) for further details.
 
 
 ## Go further
