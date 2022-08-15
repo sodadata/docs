@@ -192,7 +192,7 @@ checks for dim_customer:
       fail: when >= 5  
 ```
 
-#### Example with filter
+#### Example with in-check filter
 
 ```yaml
 checks for dim_customer:
