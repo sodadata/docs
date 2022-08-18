@@ -27,7 +27,7 @@ checks for CUSTOMERS [daily]:
   - row_count = 6
   - missing(cat) = 2
 
-# Variable in a dynamic customized  check name 
+# Variable in a customized check name 
 variables:
   name: Customers UK
 checks for dim_customer:

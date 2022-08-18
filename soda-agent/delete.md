@@ -15,13 +15,13 @@ helm delete soda-agent -n soda-agent
 ```
 2. Remove the Fargate profile.
 ```shell
-eksctl delete fargateprofile --cluster soda-agent --name soda-agent-profile --namespace soda-agent
+eksctl delete fargateprofile --cluster soda-agent --name soda-agent-profile
 ```
-3. Delete the EKS cluster itself.
+3. Wait for the Fargate profile deletion to complete, then delete the EKS cluster itself.
 ```shell
 eksctl delete cluster --name soda-agent
 ```
-4. (Optional) Access your <a href="https://eu-central-1.console.aws.amazon.com/cloudformation/home" target="_blank"> CloudFormation console</a>, then click **Stacks** to view the status of your decommissioned cluster.
+4. (Optional) Access your <a href="https://eu-central-1.console.aws.amazon.com/cloudformation/home" target="_blank"> CloudFormation console</a>, then click **Stacks** to view the status of your decommissioned cluster. <br /> If you do not see your Stack, use the region drop-down menu at upper-right to select the region in which you created the cluster.
 
 
 
