@@ -12,6 +12,7 @@ parent: Reference
 #### August 22, 2022
 
 * Added an [example DAG]({% link soda-core/orchestrate-scans.md %}#example-dag) for using Soda with Airflow PythonOperator.
+* Added [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) documentation.
 
 #### August 11, 2022
 

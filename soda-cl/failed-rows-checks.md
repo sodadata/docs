@@ -135,6 +135,7 @@ coming soon
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 
 
