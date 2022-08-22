@@ -20,7 +20,7 @@ Use these matrices to review the features and functionality that Soda products h
 
 ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"} Coming soon <br />
 ![done](/assets/images/done.png){:height="20px" width="20px"}  Full implemented <br />
-![preview](/assets/images/preview.png){:height="60px" width="60px"} Released for limited-access preview 
+![preview](/assets/images/preview.png){:height="60px" width="60px"} Preview features available only for limited access.<br /> Interested in getting early access? <a href="mailto:support@soda.io">Let us know!
 
 <br />
 <br />

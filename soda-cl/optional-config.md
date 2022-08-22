@@ -206,14 +206,19 @@ FROM CUSTOMERS
 
 {% include foreach-config.md %}
 
+See [For each]({% link soda-cl/for-each.md %}) for further details.
+
 ## Scan a portion of your dataset
 
 {% include dataset-filters.md %}
+
+See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
 
 ## Go further
 
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 
 ---

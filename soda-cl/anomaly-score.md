@@ -163,6 +163,7 @@ Need help? Ask the team in the <a href="http://community.soda.io/slack" target="
 ## Go further
 
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 
 ---

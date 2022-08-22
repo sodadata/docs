@@ -20,6 +20,7 @@ If you are staring at a blank YAML file wondering what SodaCL checks to write to
 [Missing and invalid checks](#missing-and-invalid-checks)<br />
 [Reference checks](#reference-checks)<br />
 [Schema checks](#schema-checks)<br />
+[Tips and best practices for SodaCL](#tips-and-best-practices-for-sodacl)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -28,11 +29,11 @@ If you are staring at a blank YAML file wondering what SodaCL checks to write to
 
 **Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with Soda Core, Soda’s open-source, command-line tool, you use SodaCL to write checks for data quality, then use Soda Core to scan the data in your data source and execute those checks.
 
-After installing Soda Core, you connect Soda Core to your data source (Snowflake, BigQuery, etc.) by defining connection details such as host, username, and password, in a **configuration YAML** file. Then, you define your Soda Checks for data quality in a **checks YAML** file. 
+After installing Soda Core, you connect Soda Core to your data source (Snowflake, BigQuery, etc.) by defining connection details such as host, username, and password, in a **configuration YAML** file (except SparkDF, which is [special]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes)). Then, you define your Soda Checks for data quality in a **checks YAML** file. 
 
 A **Soda Check** is a test that Soda Core performs when it scans a dataset in your data source. When you use Soda Core to run a scan on data in your data source, you reference both the configuration and checks YAML files in the scan command.
 
-A **Soda scan** executes the checks you defined in the checks YAML file and returns a result for each check: pass, fail, or error. (Optionally, you can configure a check to warn instead of fail by setting an alert configuration.)
+A **Soda scan** executes the checks you defined in the checks YAML file and returns a result for each check: pass, fail, or error. (Optionally, you can configure a check to warn instead of fail by setting an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations).)
 
 
 ## About this tutorial
@@ -254,6 +255,32 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 * [Alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations)
 * [Schema checks]({% link soda-cl/schema.md %})
 * [Expect one check result]({% link soda-cl/optional-config.md %}#expect-one-check-result)
+
+
+## Tips and best practices for SodaCL
+
+* Get your logic straight: your check defines a *passing* state, what you expect to see in your dataset. Do not define a failed state. (Exception: [dynamic fixed threshold checks]({% link soda-cl/numeric-metrics.md %}#fixed-and-dynamic-thresholds) are unusual in that they define a failed state.)
+* Take careful note of the data type of the column against which you run a check. For example, if numeric values are stored in a column as data type TEXT, a numeric check such as `min` or `avg` is incalculable. 
+* A check that uses [alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) only ever returns *one* check result. See [Expect one check result]({% link soda-cl/optional-config.md %}#expect-one-check-result).
+* The `invalid format` configuration key only works with data type TEXT. See [Specify valid format]({% link soda-cl/validity-metrics.md %}#specify-valid-format).
+* Not all checks support in-check filters. See [List of compatible metrics and checks]({% link soda-cl/filters.md %}#List-of-compatible-metrics-and-checks).
+
+#### Best practices
+* To avoid typos or spelling errors, best practice dictates that you copy + paste any dataset or column names into your checks. 
+* It is good practice to add a [custom name]({% link soda-cl/numeric-metrics.md %}#customize-check-names) to your check. Establish a naming convention – word order, underscores, identifiers – and apply easily-digestible check names for any colleagues with whom you collaborate.
+
+#### Syntax tips
+* Column names that contain colons or periods can interfere with SodaCL's YAML-based syntax. For any column names that contain these punctuation marks, [apply quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) to the column name in the check to prevent issues. 
+* Be sure to add a colon to the end of a check whenever you add a second line to a check such as for a missing or invalid configuration key, or if you add a [custom name]({% link soda-cl/numeric-metrics.md %}#customize-check-names) for your check.
+* Indentations in the SodaCL syntax are critical. If you encounter an error, check your indentation first.
+* Spaces in the SodaCL syntax are critical. For example, be sure to add a space before and after your threshold symbol ( `=`, `>`, `>=` ); do *not* add a space between a metric and the column to which it applies, such as `duplicate_count(column1)`.
+* All comma-separated values in lists in SodaCL use a comma + space syntax, such as `duplicate_count(column1, column2)`; do not forget to add the space.
+* Note that multi-word checks such as `missing_count` use underscores, but configuration keys, such as `missing format`, do not. See [List of missing metrics](#list-of-missing-metrics) and [List of validity metrics](#list-of-validity-metrics).
+* If you use `missing values` or `invalid values` configuration keys, note that 
+    * Values in a comma-separated list must be enclosed in square brackets. <br />For example, `[US, BE, CN]`.
+    * Numeric characters in a values list must be enclosed in single quotes. <br />For example, `[none,'0', NA]`.
+
+
 
 
 ## Go further

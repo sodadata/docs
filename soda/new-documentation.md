@@ -9,6 +9,13 @@ parent: Reference
 
 <br />
 
+#### August 22, 2022
+
+* Added an [example DAG]({% link soda-core/orchestrate-scans.md %}#example-dag) for using Soda with Airflow PythonOperator.
+* Added [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) documentation.
+* Expanded [For each]({% link soda-cl/for-each.md %}) documentation with optional configurations and examples.
+* Published a new [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) that outlines how to use preview features in Soda Cloud to connect to a data source, then write a new agreement for stakeholder approval.
+
 #### August 11, 2022
 
 * Added documentation for the new `-t` option for use with scan commands to [overwrite scan output in Soda Cloud]({% link soda-cloud/scan-output.md %}#overwrite-scan-output-in-soda-cloud).

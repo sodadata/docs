@@ -19,7 +19,7 @@ checks for dim_customer
   - missing_count(last_name) < 5:
       missing values: [n/a, NA, none]
   - missing_percent(email_address) = 0:
-      missing format: '   '
+      missing format: '    '
 ```
 
 [Define checks with missing metrics](#define-checks-with-missing-metrics) <br />
@@ -276,6 +276,7 @@ checks for dim_customer:
 * Use missing metrics in checks with alert configurations to establish [warn and fail zones]({% link soda-cl/optional-config.md %}#define-zones-using-alert-configurations)
 * Use missing metrics in checks to define ranges of acceptable thresholds using [boundary thresholds]({% link soda-cl/metrics-and-checks.md %}#define-boundaries-with-fixed-thresholds).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 
 ---
