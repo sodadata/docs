@@ -206,9 +206,13 @@ FROM CUSTOMERS
 
 {% include foreach-config.md %}
 
+See [For each]({% link soda-cl/for-each.md %}) for further details.
+
 ## Scan a portion of your dataset
 
 {% include dataset-filters.md %}
+
+See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
 
 ## Go further
