@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### August 22, 2022
+
+* Added an [example DAG]({% link soda-core/orchestrate-scans.md %}#example-dag) for using Soda with Airflow PythonOperator.
+
 #### August 11, 2022
 
 * Added documentation for the new `-t` option for use with scan commands to [overwrite scan output in Soda Cloud]({% link soda-cloud/scan-output.md %}#overwrite-scan-output-in-soda-cloud).
