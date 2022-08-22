@@ -7,6 +7,15 @@ parent: Soda Core
 
 # Configure orchestrated scans 
 
+Integrate Soda Core with a data orchestration tool such as, Airflow, to automate and schedule your search for "bad" data. 
+
+Configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically block "bad" data from contaminating your data pipeline.
+
+[Apache Airflow using BashOperator](#apache-airflow-using-bashoperator)<br />
+[Apache Airflow using PythonOperator](#apache-airflow-using-pythonoperator)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; [Example DAG](#example-dag)
+<br />
+
 {% include orchestrate.md %}
 
 ## Go further
