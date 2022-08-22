@@ -8,10 +8,10 @@ parent: Get started
 # Quick start for Soda Core and Soda Cloud
 <br />
 
-![soda-core-logo](/assets/images/soda-core-logo.png){:height="120px" width="120px"} 
+![soda-core-logo](/assets/images/soda-core-logo.png){:height="120px" width="120px"} <br />
 Use your command-line interface to connect Soda Core to a data source, create and examine the checks that surface “bad” data in a dataset, then run your first scan in a few minutes. 
 
-![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="123px" width="123px"} 
+![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="123px" width="123px"} <br />
 After you run your scan from the command-line, consider going further by signing up for a free trial account in Soda Cloud, the web application that offers data quality visualizations and much more. 
 
 [Tutorial prerequisites](#tutorial-prerequisites-1) <br />

@@ -198,6 +198,7 @@ automated monitoring:
 ## Go further
 
 * Next step: Create a new [agreement]({% link soda-cloud/agreements.md %}).
+* Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
