@@ -5,7 +5,7 @@ description: Follow the quick start tutorial to get started with Soda Cloud.
 parent: Get started
 ---
 
-# Quick start for Soda Cloud <br /> ![preview](/assets/images/preview.png){:height="70px" width="70px"}
+# Quick start for <br />Soda Cloud![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 {% include banner-preview.md %}
 
@@ -13,6 +13,8 @@ parent: Get started
 Though the features highlighted in this tutorial are still in Preview state in Soda Cloud, you can review the steps that outline how to connect to your data source, set a scan schedule, profile your data, then write an agreement for stakeholder approval. 
 
 When made generally available, these new features will enable users across your organization to serve themselves when it comes to monitoring data quality and collaborating on data reliability.
+
+🎥 <a href="https://vimeo.com/738592291" target="_blank">Soda Cloud: Watch & Learn</a>
 
 [Tutorial prerequisites](#tutorial-prerequisites-1) <br />
 [Set up a data source and create a new agreement](#set-up-a-data-source-and-create-a-new-agreement)<br />

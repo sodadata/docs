@@ -9,7 +9,7 @@ parent: Reference
 
 <br />
 
-#### August 24, 2022
+#### August 23, 2022
 
 * Adjusted [configuration instructions]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes) for `soda-core-spark-df` to separately install dependencies for Hive and ODBC as needed.
 

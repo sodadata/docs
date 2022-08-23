@@ -1,6 +1,6 @@
 ---
 name: "3.0.5"
-date: 2022-08-24
+date: 2022-08-23
 products:
   - soda-core
 ---
