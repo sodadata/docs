@@ -88,7 +88,10 @@ Refer to <a href="https://github.com/sodadata/soda-core/blob/main/soda/core/test
 ```shell
 sh sudo apt-get -y install unixodbc-dev libsasl2-dev gcc python-dev
 ```
-2. Confirm that you have completed the following.
+2. If you are _not_ using Spark with Hive or ODBC, skip to step 3. Otherwise, install the separate dependencies as needed.
+* for Hive, use: `pip install soda-core-spark[hive]`
+* for ODBC, use: `pip install soda-core-spark[odbc]`
+3. Confirm that you have completed the following.
 * installed `soda-core-spark-df`
 * set up a a Spark session
 ```python
@@ -98,12 +101,12 @@ spark_session: SparkSession = ...user-defined-way-to-create-the-spark-session...
 ```python
 df = ...user-defined-way-to-build-the-dataframe...
 ```
-3. Use the Spark API to link the name of a temporary table to a DataFrame. In this example, the name of the table is `customers`.
+4. Use the Spark API to link the name of a temporary table to a DataFrame. In this example, the name of the table is `customers`.
 ```python
 db.createOrReplaceTempView('customers')
 ```
-4. Use the Spark API to link a DataFrame to the name of each temporary table against which you wish to run Soda scans. Refer to <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceTempView.html" target="_blank"> PySpark documentation</a>.
-5. [Define a programmatic scan]({% link soda-core/programmatic-scans.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Core: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`. Refer to the example below.
+5. Use the Spark API to link a DataFrame to the name of each temporary table against which you wish to run Soda scans. Refer to <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceTempView.html" target="_blank"> PySpark documentation</a>.
+6. [Define a programmatic scan]({% link soda-core/programmatic-scans.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Core: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`. Refer to the example below.
 
 ```python
 spark_session = ...your_spark_session...
