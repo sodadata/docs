@@ -127,19 +127,6 @@ After completing the steps above to ingest dbt tests, log in to your Soda Cloud 
 
 Refer to image above for an example.
 
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
-
-The integration with dbt is not available for **Soda Core**, yet.
-
-Soda Core is a free, open-source, command-line tool that enables you to use the Soda Checks Language to turn user-defined input into aggregated SQL queries.
-
-[Soda Core documentation]({% link soda-core/overview-main.md %})
-
-  </div>
-  </div>
-</div>
-
 ## Go further
 
 * Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
