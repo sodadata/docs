@@ -13,6 +13,7 @@ parent: Reference
 
 * Adjusted [configuration instructions]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes) for `soda-core-spark-df` to separately install dependencies for Hive and ODBC as needed.
 * Added content to correspond with Soda Core's new support for [Trino]({% link soda-core/configuration.md %}#connect-to-trino).
+* Removed the known issue: The `missing format` configuration does not function as expected.
 
 #### August 22, 2022
 
