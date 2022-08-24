@@ -39,7 +39,7 @@ See [Add scan options]({% link soda-core/scan-core.md %}#add-scan-options) for m
 
 ## Run an ad hoc scan
 
-{% includ ad-hoc-scan.md %}
+{% include ad-hoc-scan.md %}
 
 ## Go further
 

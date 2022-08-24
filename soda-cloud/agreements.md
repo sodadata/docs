@@ -83,7 +83,7 @@ To review existing scan definitions, navigate to **your avatar** > **Scans & Dat
 
 ## Run an ad hoc scan
 
-{% includ ad-hoc-scan.md %}
+{% include ad-hoc-scan.md %}
 
 
 ## Edit an agreement
