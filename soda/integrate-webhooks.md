@@ -23,13 +23,18 @@ Configure a webhook in Soda Cloud to connect your account to a third-part servic
 ## Prerequisites
 
 * You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}).
-* You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core and run at least one scan.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %})![preview](/assets/images/preview.png){:height="60px" width="60px"} .
+* You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core and run at least one scan.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %})![preview](/assets/images/preview.png){:height="60px" width="60px"}.
+
 
 ## Configure a webhook
 
-1. In your Soda Cloud account, navigate to **your avatar** > **Organization Settings**, then select the **Integrations** tab.
-2. Click the **+** at the upper right of the table of integrations to add a new integration. 
-3. In the **Add Integration** dialog box, select **Webhook** then follow the guided steps to configure the integration. Reference the following table for guidance on the values to input. <br /> Add as many HTTP headers as you wish, but be sure to add the required `Content type:` header.
+1. Confirm that the third-party can provide an incoming webhook URL that meets the following technical specifications:
+* can return an HTTP status code between 200 and 400
+* can reply to a request within 10 seconds (otherwise the request from Soda Cloud times out)
+* provides an SSL-secured endpoint (https://) of TLS 1.2 or greater
+2. In your Soda Cloud account, navigate to **your avatar** > **Organization Settings**, then select the **Integrations** tab.
+3. Click the **+** at the upper right of the table of integrations to add a new integration. 
+4. In the **Add Integration** dialog box, select **Webhook** then follow the guided steps to configure the integration. Reference the following table for guidance on the values to input. <br /> Add as many HTTP headers as you wish, but be sure to add the required `Content type:` header.
 
 | Field or Label  | Guidance |
 | -----------------  | ----------- |
