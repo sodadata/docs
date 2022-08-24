@@ -342,18 +342,18 @@ data_source orders:
   schema: public
 ```
 
-| Property                       | Required | Notes                                                                                                                                                                                   |
-| ------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type                           | required | The name of your Snowflake virtual data source.                                                                                                                                         |
-| username                       | required | Use system variables to retrieve this value securely using, for example, `${SNOWFLAKE_USER}`.                                                                                      |
-| password                       | required | Use system variables to retrieve this value securely using, for example, `${SNOWFLAKE_PASSWORD}`.                                                                                  |
-| account                        | required | Use system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`.                                                                                   |
-| database                       | required |                                                                                                                                                                                         |
-| schema                         | required |                                                                                                                                                                                         |
-| warehouse                      | required |                                                                                                                                                                                         |
-| connection_timeout             | required |                                                                                                                                                                                         |
-| role                           | optional | See <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Roles</a> for details.       |
-| QUERY_TAG                      | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag" target="_blank">QUERY_TAG</a> in Snowflake documentation.                                           |
+| Property | Required | Notes |
+| ----__-- | -------- | ----- |
+| type   | required |   |
+| username | required | Use system variables to retrieve this value securely using, for example, `${SNOWFLAKE_USER}`. |
+| password | required | Use system variables to retrieve this value securely using, for example, `${SNOWFLAKE_PASSWORD}`. |
+| account| required | Use system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`. |
+| database| required | |
+| schema | required | |
+| warehouse| required | |
+| connection_timeout| required | |
+| role | optional | See <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Roles</a> for details. |
+| QUERY_TAG | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag" target="_blank">QUERY_TAG</a> in Snowflake documentation. |
 | QUOTED_IDENTIFIERS_IGNORE_CASE | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#quoted-identifiers-ignore-case" target="_blank">QUOTED_IDENTIFIERS_IGNORE_CASE</a> in Snowflake documentation. |
 
 ### Supported data types
@@ -361,5 +361,35 @@ data_source orders:
 | Category | Data type                                                                                                       |
 | -------- | --------------------------------------------------------------------------------------------------------------- |
 | text     | CHAR, VARCHAR, CHARACTER, STRING, TEXT                                                                          |
+| number   | NUMBER, INT, INTEGER, BIGINT, SMALLINT, TINYINT, BYTEINT, FLOAT, FLOAT4, FLOAT8, DOUBLE, DOUBLE PRECISION, REAL |
+| time     | DATE, DATETIME, TIME, TIMESTAMP, TIMESTAMPT_LTZ, TIMESTAMP_NTZ, TIMESTAMP_TZ                                    |
+
+
+## Connect to Trino
+
+```yaml
+data_source my_datasource_name:
+  type: trino
+  host: 
+  username: 
+  password:
+  catalog: 
+  schema: 
+```
+
+| Property | Required | Notes |
+| -------- | -------- | ----- |
+| type     | required |       |
+| host     | required |       |
+| username | required | Use system variables to retrieve this value securely using, for example, `${TRINO_USER}`. |
+| password | required | Use system variables to retrieve this value securely using, for example, `${TRINO_PASSWORD}`. |
+| catalog  | required |       |
+| schema   | required |       |
+
+### Supported data types
+
+| Category | Data type                                                                                                       |
+| -------- | --------------------------------------------------------------------------------------------------------------- |
+| text     | CHAR, VARCHAR                                                                          |
 | number   | NUMBER, INT, INTEGER, BIGINT, SMALLINT, TINYINT, BYTEINT, FLOAT, FLOAT4, FLOAT8, DOUBLE, DOUBLE PRECISION, REAL |
 | time     | DATE, DATETIME, TIME, TIMESTAMP, TIMESTAMPT_LTZ, TIMESTAMP_NTZ, TIMESTAMP_TZ                                    |
