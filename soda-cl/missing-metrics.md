@@ -130,8 +130,6 @@ Second check:
 
 ### Specify missing format
 
-*Known issue:* The `missing format` configuration does not function as expected. A fix is forthcoming.<!--CORE-212-->
-
 Defines what qualifies as a value that ought to register as missing, such as whitespace or empty strings. For example, three spaces in row is recognizable as an entry, but from a business perspective, it ought to be recognized as missing.
 
 The check below ensures that Soda ought to consider any value entered as three spaces as missing, in addition to all NULL values which Soda automatically considers as missing.
@@ -242,7 +240,7 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 | Column config key  | Description  | Values | 
 | ------------------ | ------------ | ------ |
-| `missing format` | Defines what qualifies as a value that ought to register as missing, such as whitespace or empty strings. For example, three spaces in row is recognizable as an entry, but from a business perspective, it ought to be recognized as missing. <br />*Known issue:* The `missing format` configuration does not function as expected. A fix is forthcoming. <!--CORE-212-->|
+| `missing format` | Defines what qualifies as a value that ought to register as missing, such as whitespace or empty strings. For example, three spaces in row is recognizable as an entry, but from a business perspective, it ought to be recognized as missing. <br />|
 | `missing regex` | Specifies a regular expression to define your own custom missing values.| regex, no forward slash delimiters, string only |
 | `missing values` | Specifies the values that Soda is to consider missing. Numeric characters in a `valid values` list must be enclosed in single quotes. | values in a list |
 

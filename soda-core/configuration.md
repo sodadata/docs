@@ -23,6 +23,7 @@ After you [install Soda Core]({% link soda-core/installation.md %}), you must cr
 [Connect to MySQL](#connect-to-mysql)<br />
 [Connect to PostgreSQL](#connect-to-postgresql)<br />
 [Connect to Snowflake](#connect-to-snowflake)<br />
+[Connect to Trino](#connect-to-trino)<br />
 <br />
 
 ## Configuration instructions

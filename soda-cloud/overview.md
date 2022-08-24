@@ -34,6 +34,7 @@ redirect_from:
                     <h2>Sign up</h2>
                     <a href="https://cloud.soda.io/signup" target="_blank">Sign up for Soda Cloud</a>
                     <a href="/soda/quick-start-sodacloud.html" target="_blank">Quick start with Soda Cloud (Preview) </a>
+                    <a href="https://vimeo.com/738592291" target="_blank">🎥 Soda Cloud Product Showcase</a>
                 </div>
                  <div>
                     <img src="/assets/images/icons/icon-collaboration@2x.png" width="54" height="40">
