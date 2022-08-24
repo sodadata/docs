@@ -37,6 +37,9 @@ soda scan -d adventureworks -t 2021-04-28T09:00:00+02:00 -c configuration.yml ta
 
 See [Add scan options]({% link soda-core/scan-core.md %}#add-scan-options) for more scan options.
 
+## Run an ad hoc scan
+
+{% includ ad-hoc-scan.md %}
 
 ## Go further
 
