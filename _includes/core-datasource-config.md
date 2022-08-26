@@ -133,6 +133,47 @@ scan.add_spark_session(spark_session)
 
 <br />
 
+## Connect to DataBricks
+
+Use the `soda-core-spark-df` package to connect to DataBricks using a Notebook. 
+
+1. Follow steps 1-2 in [the instructions](#connect-to-apache-spark-dataframes) to install `soda-core-spark-df`.
+2. Reference the following Notebook example to connect to DataBricks. 
+
+```python
+# import Scan from Soda Core
+from soda.scan import Scan
+# Create a Spark DataFrame, or use the Spark API to read data and create a DataFrame
+df = spark.createDataFrame([(1, "a"), (2, "b")], ("id", "name"))
+# Create a view that SodaCL uses as a dataset
+df.createOrReplaceTempView("abc")
+# Create a Scan object, set a scan definition, and attach a Spark session
+scan = Scan()
+scan.set_scan_definition_name("test")
+scan.set_data_source_name("spark_df")
+scan.add_spark_session(spark)
+# Define checks for datasets 
+checks  ="""
+checks for dataset_abc:
+  - row_count > 0 
+"""
+# If you defined checks in a file accessible via Spark, you can use the scan.add_sodacl_yaml_file method to retrieve the checks
+scan.add_sodacl_yaml_str(checks)
+# Optionally, add a configuration file with Soda Cloud credentials 
+# config = """
+# soda_cloud:
+#   api_key_id: xyz
+#   api_key_secret: xyz
+# """
+# scan.add_configuration_yaml_str(config)
+
+# Execute a scan
+scan.execute()
+# Check the Scan object for methods to inspect the scan result; the following prints all logs to console
+print(scan.get_logs_text())
+```
+
+
 ## Connect to GCP BigQuery
 
 {% include gcp-datasets.md %}
@@ -226,29 +267,31 @@ data_source my_database_name:
 ```yaml
 data_source my_server_name:
   type: sqlserver
-  host: localhost
-  port: 1433
+  host: host
+  port: '1433'
   username: xxx
   password: ...
-  database:
-  schema:
+  database: sodaexample
+  schema: dbo
   trusted_connection: false
   encrypt: false 
   trust_server_certificate: false
+  driver: 
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
 | type     | required |                                                            |
 | host     | required |                                                            |
-| port     | optional |                                                            |
+| port     | optional | You can remove the `port` config setting entirely; defaults to `1433`.|
 | username | required | Use system variables to retrieve this value securely.      |
 | password | required | Use system variables to retrieve this value securely.      |
 | database | required |                                                            |
 | schema   | required |                                                            |
-| trusted_connection | optional |  The default value is `false`.                   |
+| trusted_connection | optional |  The default value is `false`. Set to `true` if using Active Directory authentication. |  
 | encrypt | optional |   The default value is `false`.                             |
-| trust_server_certificate | optional |   The default value is `false`.            |
+| trust_server_certificate | optional |   The default value is `false`.  |
+| driver  | optional | Use this config setting to specify the ODBC driver version you use, such as `SQL Server Native Client 11.0` |
 
 
 ### Supported data types
@@ -367,12 +410,15 @@ data_source orders:
 
 ## Connect to Trino
 
+Reference <a href="https://trino.io/docs/current/overview/concepts.html#" target="_blank">Trino documentation</a> for assistance.
+
 ```yaml
 data_source my_datasource_name:
   type: trino
-  host: 
-  username: 
-  password:
+  host: host
+  port: 
+  username: user
+  password: ***
   catalog: 
   schema: 
 ```
@@ -381,6 +427,7 @@ data_source my_datasource_name:
 | -------- | -------- | ----- |
 | type     | required |       |
 | host     | required |       |
+| port     | optional |       |
 | username | required | Use system variables to retrieve this value securely using, for example, `${TRINO_USER}`. |
 | password | required | Use system variables to retrieve this value securely using, for example, `${TRINO_PASSWORD}`. |
 | catalog  | required |       |
