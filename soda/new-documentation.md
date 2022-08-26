@@ -9,6 +9,11 @@ parent: Reference
 
 <br />
 
+#### August 26, 2022
+
+* Added documentation for how to use Soda Core for SparkDF with a Notebook to connect to [DataBricks]({% link soda-core/configuration.md %}#connect-to-databricks).
+* Adjusted the configuration for connecting to [MS SQL Server]({% link soda-core/configuration.md %}#connect-to-ms-sql-server) based on community feedback.
+
 #### August 24, 2022
 
 * Adjusted [configuration instructions]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes) for `soda-core-spark-df` to separately install dependencies for Hive and ODBC as needed.
