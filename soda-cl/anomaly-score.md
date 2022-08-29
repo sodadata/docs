@@ -100,7 +100,7 @@ Though your first instinct may be to run several scans in a row to product the f
 
 If, for example, you attempt to run eight back-to-back scans in five minutes, the anomaly score does not register the measurements resulting from those scans as a reliable pattern against which to evaluate an anomaly. 
 
-Consider using the Soda Core Python library to set up a [programmatic scan]({% link soda-core/programmatic-scans.md %}) that produces a check result for an anomaly score check on a regular schedule.
+Consider using the Soda Core Python library to set up a [programmatic scan]({% link soda-core/programmatic.md %}) that produces a check result for an anomaly score check on a regular schedule.
 
 
 ## Optional check configurations

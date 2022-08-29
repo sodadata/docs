@@ -171,7 +171,7 @@ soda_sql_scan_op = SodaScanOperator(
 ```
 
 * `data_sources` maps data_source names to the the details Soda Core needs to create a data_source from an Airflow connection.
-* `soda_cl_path` is a file or directory containing the [checks.yml files]({% link soda-core/first-scan.md %}#the-checks-yaml-file) that you must identify in a `soda scan` command.
+* `soda_cl_path` is a file or directory containing the checks.yml files that you must identify in a `soda scan` command.
 * `variables` is a dict and that Soda Core passe "as is" to the scan.
 * `airflow_variables` is a list of Airflow variable names that must propagate to `soda scan` variables with `Variable.get("varname")`.
 * `airflow_variables_json` is a list of Airflow variable names that must propagate to `soda scan` variables with `Variable.get("varname", deserialize_json=True)`

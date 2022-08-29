@@ -3,6 +3,7 @@ layout: default
 title: Define programmatic scans
 description: Use the Soda Sore Python library to programmatically execute scans and automate the checks for "bad" data.
 parent: Soda Core
+redirect_from: /soda-core/programmatic-scans.html
 ---
 
 # Define programmatic scans
