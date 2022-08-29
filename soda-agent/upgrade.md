@@ -29,6 +29,17 @@ helm upgrade soda-agent soda-agent/soda-agent \
    --values values-local.yml --namespace soda-agent
 ```
 
+<br />
+
+#### Troubleshoot
+
+**Problem:** To upgrade the agent, I need the API keys that connect it to Soda Cloud, but I do not have access to them.
+
+**Solution:** You can access the values by running the following command, replacing the placeholder values with your own details.
+
+```shell
+helm get values -n <namespace> <release name>
+```
 
 
 ## Go further
