@@ -9,6 +9,11 @@ parent: Reference
 
 <br />
 
+#### August 29, 2022
+
+* Added instructions for how to [disable dataset discovery]({% link soda-cl/profile.md %}#disable-dataset-discovery) and [disable column profiling]({% link soda-cl/profile.md %}#disable-column-profiling).
+* Added details for obtaining info when [upgrading]({% link soda-agent/upgrade.md %}#troubleshoot) a Soda Agent.
+
 #### August 26, 2022
 
 * Added documentation for how to use Soda Core for SparkDF with a Notebook to connect to [DataBricks]({% link soda-core/configuration.md %}#connect-to-databricks).
