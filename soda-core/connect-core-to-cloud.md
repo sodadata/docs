@@ -44,7 +44,7 @@ soda scan -d your_datasource_name -c configuration.yml checks.yml
 
 ## Connect Soda Core for SparkDF to Soda Cloud
 
-Unlike other data sources, Soda Core does _not_ require a configuration YAML file to run scans against Spark DataFrames. It is for use with [programmatic Soda scans]({% link soda-core/programmatic-scans.md %}), only.
+Unlike other data sources, Soda Core does _not_ require a configuration YAML file to run scans against Spark DataFrames. It is for use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
 
 Therefore, to connect to Soda Cloud, include the Soda Cloud API keys (see step 3, above) in your programmatic scan using either `add_configuration_yaml_file(file_path)` or `scan.add_configuration_yaml_str(config_string)` as in the example below.
 

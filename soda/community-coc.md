@@ -3,6 +3,7 @@ layout: default
 title: Soda Community Code of Conduct
 description: Reference the Soda Community Code of Conduct for guidelines for behaviors. Be safe, be respectful, be yourself.
 parent: Reference
+redirect_from: /soda-core/community.html
 ---
 
 # Soda Community Code of Conduct

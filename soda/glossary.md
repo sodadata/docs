@@ -6,6 +6,7 @@ parent: Reference
 redirect_from: 
 - /soda-sql/documentation/glossary.html
 - /soda/common-terms.html
+- /soda-core/terminology.html
 ---
 
 # Glossary

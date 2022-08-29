@@ -3,6 +3,7 @@ layout: default
 title: Configure Soda Core
 description: Configure Soda Core to connect to your data sources and prepare data quality checks to run against your data.
 parent: Soda Core
+redirect_from: /soda-core/configure.html
 ---
 
 # Configure Soda Core

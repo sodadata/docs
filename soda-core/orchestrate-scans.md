@@ -3,6 +3,7 @@ layout: default
 title: Configure orchestrated scans
 description: Integrate Soda Core with a data orchestration tool to automate and schedule your search for "bad" data.
 parent: Soda Core
+redirect_from: /soda-core/scans-pipeline.html
 ---
 
 # Configure orchestrated scans 
