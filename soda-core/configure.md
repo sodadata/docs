@@ -22,8 +22,8 @@ To set the data source configurations, use the following example configurations 
 [Connect to MySQL](#connect-to-mysql)<br />
 [Connect to PostgreSQL](#connect-to-postgresql)<br />
 [Connect to Snowflake](#connect-to-snowflake)<br />
-[Connect Soda Core to Soda Cloud](#connect-soda-core-to-soda-cloud)<br />
 [Connect to Trino](#connect-to-trino)<br />
+[Connect Soda Core to Soda Cloud](#connect-soda-core-to-soda-cloud)<br />
 <br />
 
 
