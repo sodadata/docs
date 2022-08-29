@@ -137,7 +137,7 @@
     page: soda/integrate-metaphor.md
   - subtitle: Integrate with Slack
     page: soda/integrate-slack.md
-  - subtitle: Integrate using webhooks
+  - subtitle: Integrate webhooks
     page: soda/integrate-webhooks.md
 
 - title: Reference

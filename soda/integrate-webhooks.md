@@ -1,16 +1,17 @@
 ---
 layout: default
 title: Integrate using webhooks
-description: Configure webhooks to connect Soda Cloud to any number of third-party service provider.
+description: Configure webhooks to connect Soda Cloud to any number of third-party service providers.
 parent: Integrate
 ---
 
-# Integrate using webhooks
+# Integrate webhooks with Soda Cloud
 
-Configure a webhook in Soda Cloud to connect your account to a third-part service provider such as Jira, ServiceNow, PagerDuty, and more.
+Configure a webhook in Soda Cloud to connect your account to a third-party service provider such as Jira, ServiceNow, PagerDuty, and more.
 
-* Send notifications for failed or warning check results to a third-party, such as ServiceNow.
-* Create and track data quality incidents with a third-party, such as Jira
+Use a webhook to:
+* send [alert notifications]({% link soda-cloud/edit-checks.md %}) for failed or warning check results to a third-party, such as ServiceNow.
+* create and track data quality [incidents]({% link soda-cloud/incidents.md %}) with a third-party, such as Jira
 
 ![webhook-example](/assets/images/webhook-example.png){:height="700px" width="700px"} 
 
@@ -31,10 +32,10 @@ Configure a webhook in Soda Cloud to connect your account to a third-part servic
 1. Confirm that the third-party can provide an incoming webhook URL that meets the following technical specifications:
 * can return an HTTP status code between 200 and 400
 * can reply to a request within 10 seconds (otherwise the request from Soda Cloud times out)
-* provides an SSL-secured endpoint (https://) of TLS 1.2 or greater
+* provides an SSL-secured endpoint (`https://`) of TLS 1.2 or greater
 2. In your Soda Cloud account, navigate to **your avatar** > **Organization Settings**, then select the **Integrations** tab.
 3. Click the **+** at the upper right of the table of integrations to add a new integration. 
-4. In the **Add Integration** dialog box, select **Webhook** then follow the guided steps to configure the integration. Reference the following table for guidance on the values to input. <br /> Add as many HTTP headers as you wish, but be sure to add the required `Content type:` header.
+4. In the **Add Integration** dialog box, select **Webhook** then follow the guided steps to configure the integration. Reference the following tables for guidance on the values to input. <br /> Add as many HTTP headers as you wish, but be sure to add the required `Content type:` header.
 
 | Field or Label  | Guidance |
 | -----------------  | ----------- |
@@ -43,6 +44,11 @@ Configure a webhook in Soda Cloud to connect your account to a third-part servic
 | HTTP Headers, Name |  **Required** Enter `Content type:` |
 | HTTP Headers, Value |  **Required** Enter `application/json` |
 
+| Checkbox  | Guidance |
+| -----------------  | ----------- |
+| Enable to send notifications to this webhook when a check result triggers an alert. | Check to allow users to select this webhook as a destination for alert notifications when check results warn or fail. |
+| Use this webhook as the default notification channel for all check result alerts. | Check to automatically configure check results alert notifications to this webhook by default. <br />Users can deselect the webhook as the notification destination, but it is the prepopulated destination by default.   |
+| Enable to use this webhook to track and resolve incidents in Soda Cloud. | Check to allow users to send incident information to a destination. <br />For example, a user creating a new incident can choose to use this webhook to create a new issue in Jira.  |
 
 ### Incoming webhook URLs
 
@@ -50,7 +56,7 @@ Some third-party service providers can provide you with an incoming webhook URL 
 
 For example, in Jira, you can set up an Automation Rule that enables you to define what you want a webhook to do in Jira, then provides you with a URL that you use in the URL fields in the Soda Cloud integration setup. Reference the Jira documentation for details on how to create an <a href="https://confluence.atlassian.com/automation070/triggers-1014664599.html" target="_blank">Incoming webhook</a>.
 
-If the third party does not offer incoming webhook URLs, you can ...
+<!--If the third party does not offer incoming webhook URLs, you can ...-->
 
 ## Go further
 

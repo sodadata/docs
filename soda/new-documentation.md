@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### September, 2022
+
+* Added documentation to correspond with Soda Cloud' new support for [webhooks]({% link soda/integrate-webhooks.md %}).
+
 #### August 29, 2022
 
 * Added instructions for how to [disable dataset discovery]({% link soda-cl/profile.md %}#disable-dataset-discovery) and [disable column profiling]({% link soda-cl/profile.md %}#disable-column-profiling).
