@@ -13,6 +13,7 @@ parent: Reference
 
 * Added instructions for how to [disable dataset discovery]({% link soda-cl/profile.md %}#disable-dataset-discovery) and [disable column profiling]({% link soda-cl/profile.md %}#disable-column-profiling).
 * Added details for obtaining info when [upgrading]({% link soda-agent/upgrade.md %}#troubleshoot) a Soda Agent.
+* Organized and tightened Soda Core documentation.
 
 #### August 26, 2022
 
