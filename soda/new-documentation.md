@@ -9,6 +9,17 @@ parent: Reference
 
 <br />
 
+#### August 29, 2022
+
+* Added instructions for how to [disable dataset discovery]({% link soda-cl/profile.md %}#disable-dataset-discovery) and [disable column profiling]({% link soda-cl/profile.md %}#disable-column-profiling).
+* Added details for obtaining info when [upgrading]({% link soda-agent/upgrade.md %}#troubleshoot) a Soda Agent.
+* Organized and tightened Soda Core documentation.
+
+#### August 26, 2022
+
+* Added documentation for how to use Soda Core for SparkDF with a Notebook to connect to [DataBricks]({% link soda-core/configuration.md %}#connect-to-databricks).
+* Adjusted the configuration for connecting to [MS SQL Server]({% link soda-core/configuration.md %}#connect-to-ms-sql-server) based on community feedback.
+
 #### August 24, 2022
 
 * Adjusted [configuration instructions]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes) for `soda-core-spark-df` to separately install dependencies for Hive and ODBC as needed.
@@ -93,7 +104,7 @@ parent: Reference
 
 #### June 14, 2022
 
-* Added documentation corresponding to Soda Core support for [Apache Spark DataFrames]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes). For use with [programmatic Soda scans]({% link soda-core/programmatic-scans.md %}), only.
+* Added documentation corresponding to Soda Core support for [Apache Spark DataFrames]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes). For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
 * Updated the syntax for [freshness checks]({% link soda-cl/freshness.md %}) to remove `using` from the syntax and identify column name instead by wrapping in parentheses.
     * old: `freshness using created_at < 3h`
     * new: `freshness(created_at) < 3h`

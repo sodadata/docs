@@ -14,6 +14,13 @@ An agreement is a contract between stakeholders that stipulates the expected and
 
 Use SodaCL checks to define the state of "good quality" for data in this data source, then identify and get approval from stakeholders in your organization. Define whom Soda Cloud will notify when a check in this Agreement fails, then set a schedule to regularly execute the Soda Checks to uphold the tenets of the agreement.
 
+[Prerequisites](#prerequisites)<br />
+[Create a new agreement](#create-a-new-agreement)<br />
+[Run an ad hoc scan](#run-an-ad-hoc-scan)<br />
+[Edit an agreement](#edit-an-agreement)<br />
+[Go further](#go-further)<br />
+<br />
+
 ## Prerequisites
 
 * You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
@@ -40,7 +47,9 @@ In Soda Cloud, navigate to the **Agreements** dashboard, then click **New Agreem
 
 Use [SodaCL]({% link soda-cl/soda-cl-overview.md %}) to define the checks that Soda Cloud executes on a regular schedule to uphold the tenets of this agreement. If any of these checks fail during a regularly-scheduled scan, Soda Cloud notifies the stakeholders you specify in the Notifications section.
 
-For help writing your first checks, consider following the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}).
+* For help writing your first checks, consider following the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}), including the [Tips and best practices]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) section.
+* Avoid using an [anomaly score check]({% link soda-cl/anomaly-score.md %}) to test the agreements workflow. The ML algorithm that anomaly score checks use requires a minimum of four, regular-frequency scans before it has collected enough historic measurements against which to gauge an anomaly. Consider using checks with [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metrics, instead.
+* Note that any checks you test in the context of this agreements workflow _do not_ appear as "real" check results in the **Check Results** dashboard. 
 
 <br />
 
@@ -71,6 +80,10 @@ Regardless of the approval status of the agreement, however, Soda Cloud begins r
 (Optional) You can create a new [scan definition]({% link soda/glossary.md %}#scan-definition) if you wish to run a scan to execute the checks in this agreement more or less frequently, or a different time of day, relative to the default scan definition for the data source. 
 
 To review existing scan definitions, navigate to **your avatar** > **Scans & Data** > **Scan Definitions** tab. 
+
+## Run an ad hoc scan
+
+{% include ad-hoc-scan.md %}
 
 
 ## Edit an agreement

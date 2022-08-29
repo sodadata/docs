@@ -3,11 +3,20 @@ layout: default
 title: Run a Soda Core scan
 description:  Soda Core uses the input in the checks and configuration YAML file to prepare a scan that it runs against the data in a dataset.
 parent: Soda Core
+redirect_from:
+- /soda-core/first-scan.html
+- /soda-core/scan-reference.html
 ---
 
 # Run a Soda Core scan 
 
-A **scan** is a command that executes checks to extract information about data in a dataset. A **check** is a test that Soda Core performs when it scans a dataset in your data source. Soda Core uses the checks you define in the **checks YAML** file to prepare SQL queries that it runs against the data in a table. Soda Core can execute multiple checks against one or more datasets in a single scan. 
+A **scan** is a command that executes checks to extract information about data in a dataset. 
+
+```shell
+soda scan -d postgres_retail_db  -c configuration.yml checks.yml
+```
+
+A **check** is a test that Soda Core performs when it scans a dataset in your data source. Soda Core uses the checks you define in the **checks YAML** file to prepare SQL queries that it runs against the data in a table. Soda Core can execute multiple checks against one or more datasets in a single scan. 
 
 [Anatomy of a scan command](#anatomy-of-a-scan-command)<br />
 [Variables](#variables)<br />

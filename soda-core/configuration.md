@@ -3,6 +3,7 @@ layout: default
 title: Configure Soda Core
 description: Configure Soda Core to connect to your data sources and prepare data quality checks to run against your data.
 parent: Soda Core
+redirect_from: /soda-core/configure.html
 ---
 
 # Configure Soda Core
@@ -17,6 +18,7 @@ After you [install Soda Core]({% link soda-core/installation.md %}), you must cr
 [Connect to Amazon Athena](#connect-to-amazon-athena)<br />
 [Connect to Amazon Redshift](#connect-to-amazon-redshift)<br />
 [Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes)<br />
+[Connect to DataBricks](#connect-to-databricks)<br />
 [Connect to GCP BigQuery](#connect-to-gcp-bigquery)<br />
 [Connect to IBM DB2](#connect-to-ibm-db2)<br />
 [Connect to MS SQL Server](#connect-to-ms-sql-server)<br />

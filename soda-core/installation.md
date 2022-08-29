@@ -3,7 +3,9 @@ layout: default
 title: Install Soda Core
 description: From your command-line interface, execute a pip install command to install Soda Core.
 parent: Soda Core
-redirect_from: /soda-core/install-scientific.html
+redirect_from: 
+- /soda-core/install-scientific.html
+- /soda-core/get-started.html
 ---
 
 # Install Soda Core 

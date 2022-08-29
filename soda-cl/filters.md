@@ -6,6 +6,7 @@ parent: SodaCL
 redirect_from:
 - soda-cl/table-filters.html
 - soda-cl/dataset-filters.html
+- /soda-core/variables.html
 ---
 
 # Filters and variables
