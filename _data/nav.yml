@@ -17,30 +17,47 @@
   - subtitle: Soda product comparison
     page: soda/product-matrix.md
 
-
-- title: Soda Core 
-  page: soda-core/overview-main.md
+- title: Soda Agent
+  page: soda-agent/basics.md
   subcategories:
-  - subtitle: Soda Core overview
-    page: soda-core/overview-main.md
-  - subtitle: How Soda Core works
-    page: soda-core/how-core-works.md
-  - subtitle: Install Soda Core
-    page: soda-core/installation.md
-  - subtitle: Configure Soda Core
-    page: soda-core/configuration.md
-  - subtitle: Run a Soda Core scan
-    page: soda-core/scan-core.md
-  - subtitle: Migrate from Soda SQL
-    page: soda-core/migrate.md
-  - subtitle: Soda Core CLI commands
-    page: soda-core/cli-reference.md
-  - subtitle: Define programmatic scans
-    page: soda-core/programmatic.md
-  - subtitle: Configure orchestrated scans
-    page: soda-core/orchestrate-scans.md
-  - subtitle: Connect to Soda Cloud
-    page: soda-core/connect-core-to-cloud.md
+  - subtitle: Soda Agent basic concepts
+    page: soda-agent/basics.md
+  - subtitle: Deploy a Soda Agent
+    page: soda-agent/deploy.md
+  - subtitle: Soda Agent test deployment
+    page: soda-agent/test-deploy.md
+  - subtitle: Upgrade a Soda Agent
+    page: soda-agent/upgrade.md
+  - subtitle: Decommission a Soda Agent
+    page: soda-agent/delete.md
+
+- title: Soda Cloud
+  page: soda-cloud/overview.md
+  subcategories:
+  - subtitle: Soda Cloud
+    page: soda-cloud/overview.md
+  - subtitle: Roles and rights
+    page: soda-cloud/roles-and-rights.md
+  - subtitle: Create a data source
+    page: soda-cloud/add-datasource.md
+  - subtitle: Create an agreement
+    page: soda-cloud/agreements.md
+  - subtitle: Collaborate on data monitoring
+    page: soda-cloud/collaborate.md
+  - subtitle: Scan output
+    page: soda-cloud/scan-output.md
+  - subtitle: Edit checks
+    page: soda-cloud/edit-checks.md
+  - subtitle: Organize datasets
+    page: soda-cloud/organize-datasets.md
+  - subtitle: Examine failed rows
+    page: soda-cloud/failed-rows.md
+  - subtitle: Create and track incidents
+    page: soda-cloud/incidents.md
+  - subtitle: Soda Cloud architecture
+    page: soda-cloud/soda-cloud-architecture.md
+  - subtitle: Single sign-on with Soda Cloud
+    page: soda-cloud/sso.md
 
 - title: SodaCL 
   page: soda-cl/soda-cl-overview.md
@@ -84,47 +101,29 @@
   - subtitle: Send sample data to Soda Cloud
     page: soda-cl/sample-datasets.md
 
-- title: Soda Agent
-  page: soda-agent/basics.md
+- title: Soda Core 
+  page: soda-core/overview-main.md
   subcategories:
-  - subtitle: Soda Agent basic concepts
-    page: soda-agent/basics.md
-  - subtitle: Deploy a Soda Agent
-    page: soda-agent/deploy.md
-  - subtitle: Soda Agent test deployment
-    page: soda-agent/test-deploy.md
-  - subtitle: Upgrade a Soda Agent
-    page: soda-agent/upgrade.md
-  - subtitle: Decommission a Soda Agent
-    page: soda-agent/delete.md
-
-- title: Soda Cloud
-  page: soda-cloud/overview.md
-  subcategories:
-  - subtitle: Soda Cloud
-    page: soda-cloud/overview.md
-  - subtitle: Roles and rights
-    page: soda-cloud/roles-and-rights.md
-  - subtitle: Create a data source
-    page: soda-cloud/add-datasource.md
-  - subtitle: Create an agreement
-    page: soda-cloud/agreements.md
-  - subtitle: Collaborate on data monitoring
-    page: soda-cloud/collaborate.md
-  - subtitle: Scan output
-    page: soda-cloud/scan-output.md
-  - subtitle: Edit checks
-    page: soda-cloud/edit-checks.md
-  - subtitle: Organize datasets
-    page: soda-cloud/organize-datasets.md
-  - subtitle: Examine failed rows
-    page: soda-cloud/failed-rows.md
-  - subtitle: Create and track incidents
-    page: soda-cloud/incidents.md
-  - subtitle: Soda Cloud architecture
-    page: soda-cloud/soda-cloud-architecture.md
-  - subtitle: Single sign-on with Soda Cloud
-    page: soda-cloud/sso.md
+  - subtitle: Soda Core overview
+    page: soda-core/overview-main.md
+  - subtitle: How Soda Core works
+    page: soda-core/how-core-works.md
+  - subtitle: Install Soda Core
+    page: soda-core/installation.md
+  - subtitle: Configure Soda Core
+    page: soda-core/configuration.md
+  - subtitle: Run a Soda Core scan
+    page: soda-core/scan-core.md
+  - subtitle: Migrate from Soda SQL
+    page: soda-core/migrate.md
+  - subtitle: Soda Core CLI commands
+    page: soda-core/cli-reference.md
+  - subtitle: Define programmatic scans
+    page: soda-core/programmatic.md
+  - subtitle: Configure orchestrated scans
+    page: soda-core/orchestrate-scans.md
+  - subtitle: Connect to Soda Cloud
+    page: soda-core/connect-core-to-cloud.md
 
 - title: Integrate Soda
   page: soda/integrate-alation.md

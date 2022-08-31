@@ -9,9 +9,13 @@ parent: Reference
 
 <br />
 
-#### September, 2022
+#### September 5, 2022
 
 * Added documentation to correspond with Soda Cloud' new support for [webhooks]({% link soda/integrate-webhooks.md %}).
+
+#### August 30, 2022
+
+* Recorded known issue: Soda Core for SparkDF does not support anomaly score or distribution checks.
 
 #### August 29, 2022
 
