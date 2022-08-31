@@ -77,7 +77,7 @@ Access keys and IAM role are mutually exclusive: if you provide values for `acce
 
 Note that there are two Soda Core packages for Spark:
 
-- `soda-core-spark-df`, in its early release candidate form, enables you to pass dataframe objects into Soda scans programatically, after you have associated the temporary tables to DataFrames via the Spark API.
+- `soda-core-spark-df`, in its early release candidate form, enables you to pass dataframe objects into Soda scans programatically, after you have associated the temporary tables to DataFrames via the Spark API. <br  />*Known issue:* Soda Core for SparkDF does not support anomaly score or distribution checks.
 - `soda-core-spark` continues as a work-in-progress and will connect to Soda Core much the same as other data sources, via connection details in a configuration YAML.
 
 A Spark cluster contains a distributed collection of data. Spark DataFrames are distributed collections of data that are organized into named columns, much like a table in a database, and which are stored in-memory in a cluster. To make a DataFrame available to Soda Core to run scans against, you must use a driver program like PySpark and the Spark API to link DataFrames to individual, named, temporary tables in the cluster. You pass this information into a Soda scan programatically. You can also pass Soda Cloud connection details programmatically; see [Connect Soda Core for SparkDF to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}#connect-soda-core-for-sparkdf-to-soda-cloud).

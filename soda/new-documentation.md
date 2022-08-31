@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### August 30, 2022
+
+* Recorded known issue: Soda Core for SparkDF does not support anomaly score or distribution checks.
+
 #### August 29, 2022
 
 * Added instructions for how to [disable dataset discovery]({% link soda-cl/profile.md %}#disable-dataset-discovery) and [disable column profiling]({% link soda-cl/profile.md %}#disable-column-profiling).
