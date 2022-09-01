@@ -133,7 +133,7 @@ scan.add_spark_session(spark_session)
 
 <br />
 
-## Connect to Databricks
+## Use Soda Core with Spark DataFrames on Databricks
 
 Use the `soda-core-spark-df` package to connect to Databricks using a Notebook. 
 
