@@ -154,7 +154,7 @@ Soda Cloud sends this event payload when a new incident has been created.
   "event": "incidentCreated",
   "incident": {
     "id": "e1f399a3-09ea-***",
-    "sodaCloudUrl": "https://cloud.soda.io/incidents/e1f399a3-******-1992d2744ef6"
+    "sodaCloudUrl": "https://cloud.soda.io/incidents/e1f399a3-******-1992d2744ef6",
     "number": 196,
     "title": "Invalid customer ids",
     "description": "Invalid customer ids",
@@ -169,8 +169,8 @@ Soda Cloud sends this event payload when a new incident has been created.
         "integrationType": "slack",
         "name": "soda-inc-196-2022-05-18-invalid-customer-ids",
         "url": "https://example.slack.com/channels/C03FU9GR7P7"
-      },
-    ]
+      }
+    ],
     "lead": {
       "id": "31781df5-93cf-***",
       "email": "personn@soda.io"
@@ -183,7 +183,8 @@ Soda Cloud sends this event payload when a new incident has been created.
       // Contains the same payload as 
       // event checkEvaluation
     ]
-  }
+  },
+  "incidentLinkCallbackUrl": "https://cloud.soda.io/integrations/webhook/8224bbc2-******-16907465484e/incident-link/510fad8c-******-712a23f27197/uL******Kr6rvMcIrQ*"
 }
 ```
 
