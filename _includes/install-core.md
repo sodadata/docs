@@ -4,8 +4,8 @@ Use Soda Core to scan a variety of data sources.<br />
 
 <table>
   <tr>
-    <td>Amazon Athena<br /> Amazon Redshift<br />  Apache Spark DataFrames<sup>1</sup><br /> GCP Big Query<br /> IBM DB2</td>
-    <td>MS SQL Server<br /> MySQL<br > PostgreSQL<br /> Snowflake<br /> </td>
+    <td>Amazon Athena<br /> Amazon Redshift<br />  Apache Spark DataFrames<sup>1</sup><br /> Apache Spark for Databricks SQL<br />GCP Big Query<br /> IBM DB2</td>
+    <td>MS SQL Server<br /> MySQL<br > PostgreSQL<br /> Snowflake<br /> Trino </td>
   </tr>
 </table>
 <sup>1</sup> For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
@@ -38,7 +38,8 @@ pip install soda-core-postgres
 | ----------- | --------------- | 
 | Amazon Athena | soda-core-athena |
 | Amazon Redshift | soda-core-redshift | 
-| Apache Spark Dataframe <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | soda-core-spark-df |
+| Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | soda-core-spark-df |
+| Apache Spark for Databricks SQL  | soda-core-spark[databricks] |
 | GCP Big Query | soda-core-bigquery | 
 | IBM DB2 | soda-core-db2 |
 | MS SQL Server<sup>2</sup> | soda-core-sqlserver |
