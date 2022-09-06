@@ -5,14 +5,12 @@ description: Use SodaCL to send dataset and column profile information to Soda C
 parent: SodaCL
 ---
 
-# Send profile information to Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Send profile information to Soda Cloud 
 
-{% include banner-preview.md %}
+Use the `discover datasets` and/or `profile columns` configurations to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.
 
-Use the `discover datasets` and/or `profile columns` configurations in your checks YAML file to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.<br />
-*Requires Soda Cloud.*
-
-**Known issue:** Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark data source (`soda-core-spark-df`).
+*Requires Soda Cloud.* <br />
+*Known issue:* Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark data source (`soda-core-spark-df`).
 
 ```yaml
 discover datasets:
@@ -42,10 +40,35 @@ profile columns:
 
 
 ## Prerequisites
+
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Configure in Soda Cloud</label>
+  <label class="tab" id="two-tab" for="two">Configure using Soda Core </label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
+* You have <a href="https://cloud.soda.io/signup" target="_blank">signed up for a Soda Cloud account</a>.
+* You have [Administor rights]({% link soda-cloud/roles-and-rights.md %}) within your organization's Soda Cloud account.
+* You, or an Administrator in your organization's Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) which enables you to connect to a data source in Soda Cloud.
+
+To define discover and profile datasets, follow the guided steps to [create a new data source]({% link soda-cloud/add-datasource.md %}#3-discover-datasets). Reference the [section below](#define-an-automated-monitoring-check) for how to define the checks themselves. 
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
 * You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
 * You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
 * You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core.
 
+Reference the [section below](#define-an-automated-monitoring-check) for how to define the checks themselves. 
+
+  </div>
+  </div>
+</div>
 
 ## Define dataset discovery
 

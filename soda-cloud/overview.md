@@ -17,7 +17,6 @@ redirect_from:
 <br />
 
 <p>&#10004;  Visualize data quality test results and historical measurements<br /></p>
-<!--<p>&#10004;  Automatically detect data quality <a href="https://docs.soda.io/soda-cloud/anomaly-detection.html">anomalies</a><br /></p>-->
 <p>&#10004;  Set up <a href="https://docs.soda.io/soda-cloud/agreements.html">agreements</a> to set data quality expecations with your team<br /></p>
 <p>&#10004;  <a href="https://docs.soda.io/soda-cloud/collaborate.html">Collaborate with colleagues</a> to monitor data quality<br /></p>
 <p>&#10004;  Create and track data quality <a href="https://docs.soda.io/soda-cloud/incidents.html">Incidents</a><br /></p>
@@ -34,7 +33,7 @@ redirect_from:
                     <img src="/assets/images/icons/icon-cloud@2x.png" width="54" height="40">
                     <h2>Sign up</h2>
                     <a href="https://cloud.soda.io/signup" target="_blank">Sign up for Soda Cloud</a>
-                    <a href="/soda/quick-start-sodacloud.html" target="_blank">Quick start with Soda Cloud (Preview) </a>
+                    <a href="/soda/quick-start-sodacloud.html" target="_blank">Quick start with Soda Cloud</a>
                     <a href="https://vimeo.com/738592291" target="_blank">🎥 Soda Cloud Product Showcase</a>
                 </div>
                  <div>

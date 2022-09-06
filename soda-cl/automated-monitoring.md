@@ -5,12 +5,10 @@ description: Use a SodaCL automated monitoring check to automatically check for 
 parent: SodaCL
 ---
 
-# Automated monitoring checks ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
-
-{% include banner-preview.md %}
+# Automated monitoring checks 
 
 Use automated monitoring checks to instruct Soda to automatically check for row count anomalies and schema changes in a dataset.<br />
-*Requires Soda Cloud and Soda Core Scientific.*
+*Requires Soda Cloud* 
 
 ```yaml
 automated monitoring:
@@ -20,11 +18,8 @@ automated monitoring:
 ```
 [About automated monitoring checks](#about-automated-monitoring-checks)<br />
 [Prerequisites](#prerequisites)<br />
-[Install Soda Core Scientific](#install-soda-core-scientific)<br />
-[Connect Soda Core to Soda Cloud](#connect-soda-core-to-soda-cloud)<br />
 [Define an automated monitoring check](#define-an-automated-monitoring-check)<br />
 [Optional check configurations](#optional-check-configurations) <br />
-[Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -40,22 +35,33 @@ Schema checks require a minimum of one data point to use as a baseline against w
 
 If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a baseline of normal metric values against which to evaluate future metric values to identify anomalies and schema changes. Therefore, you must have a created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to use automated monitoring checks. 
 
+## Prerequisites
+
 <div class="warpper">
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Soda Core</label>
-  <label class="tab" id="two-tab" for="two">Soda Cloud (Preview)</label>
+  <label class="tab" id="one-tab" for="one">Configure in Soda Cloud</label>
+  <label class="tab" id="two-tab" for="two">Configure using Soda Core </label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
+* You have <a href="https://cloud.soda.io/signup" target="_blank">signed up for a Soda Cloud account</a>.
+* You have [Administor rights]({% link soda-cloud/roles-and-rights.md %}) within your organization's Soda Cloud account.
+* You, or an Administrator in your organization's Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) which enables you to connect to a data source in Soda Cloud.
 
-## Prerequisites
+
+To define automated monitoring checks, follow the guided steps to [create a new data source]({% link soda-cloud/add-datasource.md %}#5-check-datasets). Reference the [section below](#define-an-automated-monitoring-check) for how to define the checks themselves. 
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
+
 * You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
 * You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
-* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you installed Soda Core.
 * You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core.
+* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you installed Soda Core; see instructions below.
 
 ## Install Soda Core Scientific
 
@@ -64,6 +70,27 @@ To use automated monitoring, you must install Soda Core Scientific in the same d
 {% include install-soda-core-scientific.md %}
 
 Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
+
+
+## Troubleshoot Soda Core Scientific installation
+
+While installing Soda Core Scientific works on Linux, you may encounter issues if you install Soda Core Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
+* [Use Docker to run Soda Core (Recommended)](#use-docker-to-run-soda-core)
+* [Install Soda Core locally (Limited support)](#install-soda-core-locally)
+
+Need help? Ask the team in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
+### Use Docker to run Soda Core
+
+{% include docker-soda-core.md %}
+
+### Install Soda Core Scientific Locally 
+
+{% include install-local-soda-core-scientific.md %}
+
+  </div>
+  </div>
+</div>
 
 
 
@@ -116,34 +143,6 @@ automated monitoring:
     - include prod%
     - exclude test%
 ```
-
-
-## Troubleshoot Soda Core Scientific installation
-
-While installing Soda Core Scientific works on Linux, you may encounter issues if you install Soda Core Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
-* [Use Docker to run Soda Core (Recommended)](#use-docker-to-run-soda-core)
-* [Install Soda Core locally (Limited support)](#install-soda-core-locally)
-
-Need help? Ask the team in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-
-### Use Docker to run Soda Core
-
-{% include docker-soda-core.md %}
-
-### Install Soda Core Scientific Locally 
-
-{% include install-local-soda-core-scientific.md %}
-
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
-![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
-<br />
-You cannot create automated monitoring checks in Soda Cloud, yet. However, you can preview the functionality by requesting limited preview access. <a href="mailto:support@soda.io">Email us</a> to ask!
-
-When the functionality in Soda Cloud becomes generally available, you will be able to add automated monitoring checks in the guided steps to [create a new data source]({% link soda-cloud/add-datasource.md %}#5-check-datasets). 
-  </div>
-  </div>
-</div>
 
 
 ## Go further

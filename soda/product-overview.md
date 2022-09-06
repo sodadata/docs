@@ -75,15 +75,14 @@ Log in to the web app to examine the visualized results of scans, view historica
 
 Beyond increasing the observability of your data, Soda Cloud enables you to view samples of the [rows that failed]({% link soda-cloud/failed-rows.md %}) a check during a scan and [integrate with your Slack]({% link soda/integrate-slack.md %}) workspace to get [alert notifications]({% link soda-cloud/agreements.md %}) and automatically spin up new channels for collaborative [incident investigation]({% link soda-cloud/incidents.md %}).
 
-Access [Soda Cloud documentation]({% link soda-cloud/overview.md %}).
-
-![preview](/assets/images/preview.png){:height="60px" width="60px"} Some new features and functionality for are accessible via limited-access preview. <a href="mailto:support@soda.io">Let us know</a> if you want access!
+Features and functionality include: 
 * [Create a data source in Soda Cloud]({% link soda-cloud/add-datasource.md %})
 * [Create an agreement]({% link soda-cloud/agreements.md %})
 * [Deploy a Soda Agent]({% link soda-agent/deploy.md %})
 * [Add automated monitoring checks]({% link soda-cl/automated-monitoring.md %})
 * [Send profile info to Soda Cloud]({% link soda-cl/profile.md %})
 
+Access [Soda Cloud documentation]({% link soda-cloud/overview.md %}).
 
 ![overview-soda-cloud](/assets/images/overview-soda-cloud.png){:height="700px" width="700px"}
 

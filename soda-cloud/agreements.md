@@ -6,9 +6,7 @@ parent: Soda Cloud
 redirect_from: /soda-cloud/monitors.html
 ---
 
-# Create an agreement![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
-
-{% include banner-preview.md %}
+# Create an agreement
 
 An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
 
@@ -95,7 +93,7 @@ To review existing scan definitions, navigate to **your avatar** > **Scans & Dat
 
 ## Go further
 
-* Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around creating a new agreement.
+* Consider completing the [Quick start for Soda Cloud]({% link soda/quick-start-sodacloud.md %}) for more context around creating a new agreement.
 * Complete the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write a few simple checks for data quality.
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

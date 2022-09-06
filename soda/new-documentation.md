@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### September 13, 2022
+
+* Removed the Preview status from self-serve features available in Soda Cloud such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
+
 #### August 30, 2022
 
 * Recorded known issue: Soda Core for SparkDF does not support anomaly score or distribution checks.

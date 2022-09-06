@@ -5,9 +5,7 @@ description: Use SodaCL to send sample data to Soda Cloud to quickly review the 
 parent: SodaCL
 ---
 
-# Send sample data to Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
-
-{% include banner-preview.md %}
+# Send sample data to Soda Cloud 
 
 Use the `sample datasets` configuration in your checks YAML file to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.<br />
 *Requires Soda Cloud.*
