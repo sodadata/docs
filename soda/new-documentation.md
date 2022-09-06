@@ -25,7 +25,7 @@ parent: Reference
 
 #### August 26, 2022
 
-* Added documentation for how to use Soda Core for SparkDF with a Notebook to connect to [DataBricks]({% link soda-core/configuration.md %}#connect-to-databricks).
+* Added documentation for how to use Soda Core for SparkDF with a Notebook to connect to [Databricks]({% link soda-core/configuration.md %}#connect-to-databricks).
 * Adjusted the configuration for connecting to [MS SQL Server]({% link soda-core/configuration.md %}#connect-to-ms-sql-server) based on community feedback.
 
 #### August 24, 2022
