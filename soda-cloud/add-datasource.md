@@ -13,6 +13,13 @@ To run [scans]({% link soda/glossary.md %}#scan) for data quality in your [data 
 
 In setting up a data source, you provide details such as database access credentials, details about the frequency with which Soda Cloud runs scans on this data source, and how much profile information Soda Cloud fetches about the datasets in your data source. 
 
+## Compatibility
+
+You can connect Soda Cloud with the following data sources via a [Soda Agent]({% link soda-agent/basics.md %}):
+
+{% include compatible-cloud-datasources.md %}
+
+
 ## Prerequisites
 * You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
 * You, or an IT Administrator in your organization, has deployed a [Soda Agent]({% link soda-agent/deploy.md %}) in an Amazon Elastic Kubernetes Service (EKS) Fargate environment and connected it to your Soda Cloud account.

@@ -41,7 +41,7 @@ Create an Amazon Elastic Kubernetes Service (EKS) Fargate cluster, then use Helm
 
 You can deploy a Soda Agent to connect with the following data sources:
 
-{% include compatible-datasources.md %}
+{% include compatible-cloud-datasources.md %}
 
 ## Prerequisites
 
