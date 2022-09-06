@@ -1,18 +1,16 @@
 ---
 layout: default
-title: Quick start for Soda Cloud (Preview)
+title: Quick start for Soda Cloud
 description: Follow the quick start tutorial to get started with Soda Cloud.
 parent: Get started
 ---
 
-# Quick start for <br />Soda Cloud![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Quick start for Soda Cloud
 
-{% include banner-preview.md %}
+<br />
 
 ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="123px" width="123px"}<br />
-Though the features highlighted in this tutorial are still in Preview state in Soda Cloud, you can review the steps that outline how to connect to your data source, set a scan schedule, profile your data, then write an agreement for stakeholder approval. 
-
-When made generally available, these new features will enable users across your organization to serve themselves when it comes to monitoring data quality and collaborating on data reliability.
+Use this tutorial to review the steps that outline how to connect to your data source, set a scan schedule, profile your data, then write an agreement for stakeholder approval. These features enable users across your organization to serve themselves when it comes to monitoring data quality and collaborating on data reliability.
 
 🎥 <a href="https://vimeo.com/738592291" target="_blank">Soda Cloud: Watch & Learn</a>
 
@@ -26,7 +24,7 @@ When made generally available, these new features will enable users across your 
 * You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) in your Soda Cloud account.
 * You, or an IT Administrator in your organization, has deployed a [Soda Agent]({% link soda-agent/deploy.md %}) in a cluster in your organization's cloud environment.
 
-## Set up a data source and create a new agreement ![preview](/assets/images/preview.png){:height="70px" width="70px"}
+## Set up a data source and create a new agreement 
 
 1. Log in to your Soda Cloud account, then navigate to **your avatar** > **Scans & Data**.
 2. In the **Agents** tab, confirm that an Administrator has deployed a Soda Agent and that its status is "green" in the **Last Seen** column. If not, contact the Soda Cloud user in your organization who deployed the agent to troubleshoot its status.
