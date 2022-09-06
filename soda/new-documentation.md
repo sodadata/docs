@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### September 7, 2022
+
+* Documented [Soda Cloud resources]({% link soda-cloud/resource-map.md %}) to add visual context to the parts that exist in Soda Cloud, and how they relate to each other, particularly when you delete a resource.
+
 #### August 30, 2022
 
 * Recorded known issue: Soda Core for SparkDF does not support anomaly score or distribution checks.

@@ -26,7 +26,7 @@ The following diagram illustrates an example deployment of a single Soda Cloud a
 * A **data source** in Soda Cloud is a representation of the connection to your data source. Notably, it does not contain any of your data<sup>†</sup>, only data source metadata that it uses to check for data quality. [Read more]({% link soda-cloud/add-datasource.md %}). <br />Within the context of Soda Cloud, a data source contains:
   * **datasets** which represent tabular structures with rows and columns in your data source; like data sources, they do not contain your data<sup>†</sup>, only metadata. Datasets can contain user-defined **attributes** that help filter and organize check results. [Read more]({% link soda-cloud/organize-datasets.md %}).
   * **scan definitions** which you use to define a Soda scan schedule for the data source. [Read more]({% link soda-cloud/add-datasource.md %}#1-attributes).
-  * **agreements** which utilize **checks** to define what good data looks like. Agreements also specify where to send **alert notifications** when a check result warns or fails, such as to a Slack channel in your organization. [Read more]({% link soda-cloud/agreements.md %}).
+  * **agreements** in which you write **checks** to define what good data looks like. Agreements also specify where to send alert notifications when a check result warns or fails, such as to a Slack channel in your organization. [Read more]({% link soda-cloud/agreements.md %}).
 * An **integration** is a built-in Soda Cloud feature that enables you to connect with a third-party service provider, such as Slack. [Read more]({% link soda/integrate-slack.md %}).
 
 <sup>†</sup> An exception to this rule exists when you configure Soda Cloud to collect sample data from a dataset, or samples of failed rows from a dataset when a check result fails.
@@ -34,6 +34,8 @@ The following diagram illustrates an example deployment of a single Soda Cloud a
 ## Delete resources
 
 As the example deployment diagram illustrates, the different resources in Soda Cloud have several connections to each other. You can responsibly delete resources in Soda Cloud -- it warns you about the relevant impact before executing a deletion! -- but it may help to visualize the impact a deletion may have on your deployment before proceeding.
+
+The following non-exhaustive list of example deletions serve to illustrate the potential impact of deleting. 
 
 ### Delete a dataset
 
@@ -45,7 +47,7 @@ Deleting a dataset affects individual checks defined inside an agreement. If you
 
 Deleting a data source affects many other resources in Soda Cloud. As the following diagram illustrates, when you delete a data source, you delete all its datasets, scan definitions, agreements, and the checks in the agreements. 
 
-If an agreement contains a [cross check]({% link soda-cl/cross-row-checks.md %}) that compares the row count of datasets between data sources (as does the agreement in Data source C in the diagram), deleting a data source may affect more than the checks and agreements it contains.
+If an agreement contains a [cross check]({% link soda-cl/cross-row-checks.md %}) that compares the row count of datasets between data sources (as does the agreement in Data source C in the diagram), deleting a data source affects more than the checks and agreements it contains.
 
 ![delete-datasource](/assets/images/delete-datasource.png){:height="700px" width="700px"}
 
@@ -69,7 +71,16 @@ As the example diagram indicates, deleting a Slack integration prevents Soda Clo
 
 If your Soda Cloud account is also [connected to Soda Core]({% link soda-core/connect-core-to-cloud.md %}), your deployment may resemble something like the following diagram. 
 
-Note that a Soda Cloud user cannot delete any data sources and datasets that have been added to Soda Cloud via a Soda Core connection. Soda Cloud can display the check results of scans you run in Soda Core manually or programmatically, but you cannot manage resources added via Soda Core.
+Note that you can delete resources that appear in Soda Cloud as a result of a manual or programmatic Soda Core scan. However, unless you delete the reference to the resource at its source – the `checks.yml` file or `configuration.yml` file – the resource will reappear in Soda Cloud when Soda Core sends its next set of scan results.
+
+For example, imagine you use Soda Core to run scans and send results to Soda Cloud. In the `checks.yml` file that you use to define your checks, you have the following configuration:
+```yaml
+checks for dataset-q:
+  - missing_count(last_name) < 10
+```
+
+In Soda Cloud, you can see `dataset-q` because Soda Core pushed the scan results to Soda Cloud which resulted in the creation of a resource for that dataset. In Soda Cloud, you can use the UI to delete `dataset-q`, but unless you also remove the `checks for dataset-q` configuration from your `checks.yml` file, the dataset reappears in Soda Cloud the next time you run a scan. 
+
 
 ![example-cloud-with-core](/assets/images/example-cloud-with-core.png){:height="700px" width="700px"}
 
