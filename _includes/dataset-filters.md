@@ -7,7 +7,7 @@ It can be time-consuming to check exceptionally large datasets for data quality 
 * When you run the `soda scan` command, you must include these two variables as options in the command; see step 5.
 ```yaml
 filter CUSTOMERS [daily]:
-  where: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
+        where: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
 ```
 3. Add a separate section for `checks for your_dataset_name [filter name]`. Any checks you nest under this header execute *only* against the portion of data that the expression in the filter section defines. Refer to the example below.
 4. Write any checks you wish for the dataset and the columns in it.

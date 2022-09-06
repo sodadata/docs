@@ -10,7 +10,8 @@ parent: SodaCL
 Use a distribution check to determine whether the distribution of a column has changed between two points in time. For example, if you trained a model at a particular moment in time, you can use a distribution check to find out how much the data in the column has changed over time, or if it has changed all.
 
 *Soda Cloud does not support distribution checks.*<br />
-*Requires Soda Core Scientific.*
+*Requires Soda Core Scientific.*<br />
+*Known issue:* Soda Core for SparkDF does not support distribution checks.
 
 ```yaml
 checks for dim_customer:
@@ -61,6 +62,9 @@ You can use the following distance metrics in your distribution checks.
   <br /><br />
   For each distribution type, the Kolmogorov-Smirnov test rejected the null hypothesis 100% of the time if the effect size was equal to, or larger than, a shift to the mean of 1% of the standard deviation, when using a sample size of one million. Using such a sample size does not result in problems with local memory.
 </details>
+
+<br />
+
 <details>
   <summary>Distribution check thresholds for distance metrics</summary>
   The values of the Population Stability Index (PSI) and the Standardized Wasserstein Distance (SWD) can be hard to interpret. Consider carefully investigating which distribution thresholds make sense for your use case. <br />
@@ -73,6 +77,7 @@ You can use the following distance metrics in your distribution checks.
   </ul>
   During simulations, for a difference in mean between distributions of size relative to 10% of their standard deviation, the SWD value converged to approximately 0.1.
 </details>
+
 ## Prerequisites
 
 * You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you [installed Soda Core]({% link soda-core/installation.md %}).
@@ -153,6 +158,7 @@ Soda appended a new key called `distribution reference` to the file, together wi
 Soda uses the `bins` and `weights` to generate a sample from the reference distribution when it executes the distribution check during a scan. By creating a sample using the DRO's bins and weights, you do not have to save the entire – potentially very large - sample. The `distribution_type` value impacts how the weights and bins will be used to generate a sample, so make sure your choice reflects the nature of your data (continuous or categorical).
 
 When multiple DROs are defined in a single `distribution_reference.yml` file, Soda requires all of them to be named. In that case it is required to provide the DRO name with the `-n` argument when using `soda update-dro`.
+
 ## Define a distribution check
 
 1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the [Soda Core documentation]({% link soda-core/configuration.md %}).
@@ -182,7 +188,7 @@ soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file
 
 When Soda Core executes the distribution check above, it compares the values in `column_name` to a sample that Soda creates based on the `bins`, `weights`, and `data_type` in `dro_name` defined in the `distribution_reference.yml` file. Specifically, it checks whether the value of `your_method_of_choice` is larger than `0.05`.
 
-### For awareness
+### Distribution check details
 
 * When you execute the `soda scan` command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory. 
 
