@@ -1,17 +1,29 @@
 ---
 layout: default
-title: Create a data source
+title: Add a data source
 description: Connect a data source to your Soda Cloud account to begin scanning for data quality.
 parent: Soda Cloud
+redirect_from: /soda-cloud/datasource.html
 ---
 
-# Create a data source ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Add a data source ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 {% include banner-preview.md %}
 
 To run [scans]({% link soda/glossary.md %}#scan) for data quality in your [data source]({% link soda/glossary.md %}#data-source) such as PostgreSQL or GCP BigQuery, you must first connect Soda Cloud to a data source. 
 
 In setting up a data source, you provide details such as database access credentials, details about the frequency with which Soda Cloud runs scans on this data source, and how much profile information Soda Cloud fetches about the datasets in your data source. 
+
+## Compatibility
+
+You can connect Soda Cloud with the following data sources via a [Soda Agent]({% link soda-agent/basics.md %}):
+
+{% include compatible-cloud-datasources.md %}
+
+Soda Cloud can, however, accept scan results run using Soda Core from the following data sources:
+
+{% include compatible-datasources.md %}
+
 
 ## Prerequisites
 * You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
