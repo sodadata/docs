@@ -11,7 +11,7 @@ parent: Reference
 
 #### September 8, 2022
 
-* Added documentation to correspond with Soda Cloud's new support for [webhooks]({% link soda/integrate-webhooks.md %}).
+* Added documentation to correspond with Soda Cloud's new support for [webhooks]({% link soda/integrate-webhooks.md %}) to integrate with third-party service providers to send alert notifications or create and track incidents externally.
 
 #### September 7, 2022
 

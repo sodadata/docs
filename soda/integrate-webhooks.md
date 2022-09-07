@@ -17,8 +17,10 @@ Use a webhook to:
 
 [Prerequisites](#prerequisites)<br />
 [Configure a webhook](#configure-a-webhook) <br />
-[Example webhook with Jira](#example-webhook-with-jira)<br />
-[Event payloads](#event-paylods) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud alert notifications](#webhooks-for-soda-cloud-alert-notifications)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud incident integrations](#webhooks-for-soda-cloud-incident-integrations)<br />
+[Example webhook with Jira for Soda Cloud incidents](#example-webhook-with-jira-for-soda-cloud-incidents)<br />
+[Event payloads](#event-payloads) <br />
 [Go further](#go-further)<br />
 <br />
 
@@ -26,7 +28,7 @@ Use a webhook to:
 ## Prerequisites
 
 * You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}).
-* You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core and run at least one scan.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %})![preview](/assets/images/preview.png){:height="60px" width="60px"}.
+* You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core and run at least one scan so as to produce one or more check results.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %})![preview](/assets/images/preview.png){:height="60px" width="60px"}.
 
 
 ## Configure a webhook
@@ -42,27 +44,108 @@ Use a webhook to:
 | Field or Label  | Guidance |
 | -----------------  | ----------- |
 | Name | Provide a unique name for your webhook in Soda Cloud. |
-| URL | Input the incoming webhook URL provided by your service provider. Some third-party service providers can provide you with an incoming webhook URL that you can use to integrate with Soda Cloud; see [Example webhook with Jira](#example-webhook-with-jira). <br />For providers that do not provide such functionality, you can set up an integration manually. |
+| URL | Input the incoming webhook URL provided by your service provider. See sections below for details. <br />[alert notifications](#webhooks-for-soda-cloud-alert-notifications) <br />[incidents](#webhooks-for-soda-cloud-incident-integrations) |
 | HTTP Headers, Name |  **Required** Enter `Content type:` |
 | HTTP Headers, Value |  **Required** Enter `application/json` |
 | Enable to send notifications to this webhook when a check result triggers an alert. | Check to allow users to select this webhook as a destination for alert notifications when check results warn or fail. |
 | Use this webhook as the default notification channel for all check result alerts. | Check to automatically configure check results alert notifications to this webhook by default. <br />Users can deselect the webhook as the notification destination, but it is the prepopulated destination by default.   |
 | Enable to use this webhook to track and resolve incidents in Soda Cloud. | Check to allow users to send incident information to a destination. <br />For example, a user creating a new incident can choose to use this webhook to create a new issue in Jira.  |
 
+<br />
 
-## Example webhook with Jira
+### Webhooks for Soda Cloud alert notifications
+
+You can use a webhook to enable Soda Cloud to send alert notifications to a third-party provider, such as OpsGenie, to notify your team of warn and fail check results. With such an integration, Soda Cloud enables users to select the webhook as the destination for an alert notification. See [Edit checks in Soda Cloud]({% link soda-cloud/edit-checks.md %}).
+
+Soda Cloud incident integrations make use of the following events:
+* [`validate`](#validate)
+* [`checkEvaluation`](#checkevaluation)
+
+Access a third-party service provider's documentation for details on how to set up an incoming webhook or API call, and obtain a URL to input into the Soda webhook configuration in step 4, above. The following links may be helpful starting points.
+
+* <a href="https://developer.pagerduty.com/api-reference/a7d81b0e9200f-create-an-incident" target="_blank">PagerDuty</a>
+* <a href="https://docs.opsgenie.com/docs/alert-api#create-alert" target="_blank">OpsGenie</a>
+
+<br />
+
+### Webhooks for Soda Cloud incident integrations
+
+You can use a webhook to integrate with a third-party service provider, such as Jira, to track incidents. With such an integration, Soda Cloud displays an external link for the integration in the **Incident Details**. See [image below](#example-webhook-with-jira-for-soda-cloud-incidents) for an example. 
+
+Soda Cloud incident integrations make use of the following events:
+* [`validate`](#validate)
+* [`incidentCreated`](#incidentcreated)
+* [`incidentUpdated`](#incidentupdated)
+
+When Soda Cloud sends an `incidentCreated` event to a webhook endpoint, the third-party service provider can respond with a link message. In such a case, Soda Cloud adds the link to the incident. The following is an example of the response payload.
+
+```json
+// > POST [webhook URL]
+{
+  "event": "incidentCreated",
+  // ...
+}
+// < 200 OK
+{
+  "link": {
+    "url": "https://sodadata.atlassian.net/browse/SODA-69",
+    "text": "[SODA-69] Notification & Incident Webhook"
+  }
+}
+```
+
+<br />
+
+For incident integrations with third-party service providers that *do not* provide a response, you can use a callback URL. In such a case, when Soda Cloud sends an `incidentCreated` event to the third-party, the third-party response can include an `incidentLinkCallbackUrl` property. 
+
+Configure the third-party response to make a POST request to this callback URL, including the text and url in the body of the JSON payload. Soda Cloud adds the callback URL as an integration link in the incident details. 
+
+ The following is an example of the response payload with a callback URL.
+
+```json
+// > POST [webhook URL]
+{
+  "event": "incidentCreated",
+  "incident": { ... },
+  "incidentLinkCallbackUrl": "https://dev.sodadata.io/integrations/webhook/8224bbc2-2c80-4c6d-a002-16907465484e/incident-link/510fad8c-dc43-419a-a122-712a23f27197/uLYosxWNwVGHSdR-_noJjlNAA--WyQwe1ygqGBgZclD9Kr6rvMcIrQ"
+}
+// < 200 OK
+{ }
+Followed by a POST request to incidentLinkCallbackUrl:
+// > POST https://dev.sodadata.io/integrations/webhook/8224bbc2-2c80-4c6d-a002-16907465484e/incident-link/510fad8c-dc43-419a-a122-712a23f27197/uLYosxWNwVGHSdR-_noJjlNAA--WyQwe1ygqGBgZclD9Kr6rvMcIrQ
+{
+  "url": "https://sodadata.atlassian.net/browse/SODA-69",
+  "text": "[SODA-69] Notification & Incident Webhook"
+}
+```
+
+<br />
+
+## Example webhook with Jira for Soda Cloud incidents
 
 In Jira, you can set up an Automation Rule that enables you to define what you want an incoming webhook to do, then provides you with a URL that you use in the URL field in the Soda Cloud integration setup. 
 
-Reference the Jira documentation for details on how to create an <a href="https://confluence.atlassian.com/automation070/triggers-1014664599.html" target="_blank">Incoming webhook</a>. In Jira, start by navigating to **Project settings** > **Automation**, then click **Create rule** and, for the type of **New trigger**, select **Incoming webhook**.  
+This example offers guidance on how to set up a webhook to generate an external link to which Soda Cloud displays in the **Incident Details**.
+
+![webhook-incident](/assets/images/webhook-incident.png){:height="700px" width="700px"} 
+
+In Jira, start by navigating to **Project settings** > **Automation**, then click **Create rule** and, for the type of **New trigger**, select **Incoming webhook**. Reference the Jira documentation for details on how to create an <a href="https://confluence.atlassian.com/automation070/triggers-1014664599.html" target="_blank">Incoming webhook</a>. 
 
 The images below offer an example of an Automation Rule in Jira to set up an incoming webhook that processes incident events from Soda Cloud. 
 
-![webhook-jira1](/assets/images/webhook-jira1.png){:height="450px" width="450px"} 
+In the first image, note the value for the **Webhook URL** that Jira provides for the automation; input this URL into the Soda Cloud URL field for the webhook. 
 
-![webhook-jira2](/assets/images/webhook-jira2.png){:height="400px" width="400px"} 
+![webhook-jira1](/assets/images/webhook-jira1.png){:height="700px" width="700px"} 
 
-## Event paylods 
+<br />
+
+In the second image, note the **Web request URL** that Jira sends back to Soda Cloud for the incident. This example uses `incidentLinkCallbackUrl` to sent a POST request back to Soda Cloud.
+
+![webhook-jira2](/assets/images/webhook-jira2.png){:height="700px" width="700px"} 
+
+<br />
+
+## Event payloads 
 
 The following list of event payloads outlines the information that Soda Cloud sends when an action triggers a webhook.
 
@@ -77,9 +160,6 @@ Soda Cloud sends this event payload to validate that the integration with the th
   "sentAt": "2022-10-01T09:12:10.042323Z" 
 }
 ```
-
-
-
 
 ### checkEvaluation
 
@@ -134,7 +214,7 @@ Soda Cloud sends this event payload when it receives new check results. If the c
       },
       // included when a check belongs to an agreement
       "agreement": {
-        "id": "AGREEMEN-T001-0000-0000-0",
+        "id": "AGREEMENT-001-0000-0000-0",
         "sodaCloudUrl": "https://cloud.soda.io/agreements/AGREEMEN-T001-0000-0000-0",
         "label": "My new agreement pending",
         "approvalState": "pending",
@@ -147,7 +227,7 @@ Soda Cloud sends this event payload when it receives new check results. If the c
 
 ### incidentCreated
 
-Soda Cloud sends this event payload when a new incident has been created.
+Soda Cloud sends this event payload when you create a new incident.
 
 ```json
 {
