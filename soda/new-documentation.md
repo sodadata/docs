@@ -9,9 +9,9 @@ parent: Reference
 
 <br />
 
-#### September 5, 2022
+#### September 7, 2022
 
-* Added documentation to correspond with Soda Cloud' new support for [webhooks]({% link soda/integrate-webhooks.md %}).
+* Added documentation to correspond with Soda Cloud's new support for [webhooks]({% link soda/integrate-webhooks.md %}).
 
 #### August 30, 2022
 
