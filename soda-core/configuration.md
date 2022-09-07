@@ -20,7 +20,7 @@ After you [install Soda Core]({% link soda-core/installation.md %}), you must cr
 [Connect to Apache Spark](#connect-to-apache-spark)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; [Connect to Spark DataFrames](#connect-to-spark-dataframes)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; [Use Soda Core with Spark DataFrames on Databricks](#use-soda-core-with-spark-dataframes-on-databricks)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; [Connect to Spark for Databricks SQL](#connect-to-spark-for-databricks-sql)
+&nbsp;&nbsp;&nbsp;&nbsp; [Connect to Spark for Databricks SQL](#connect-to-spark-for-databricks-sql)<br />
 [Connect to GCP BigQuery](#connect-to-gcp-bigquery)<br />
 [Connect to IBM DB2](#connect-to-ibm-db2)<br />
 [Connect to MS SQL Server](#connect-to-ms-sql-server)<br />

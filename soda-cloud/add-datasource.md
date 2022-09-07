@@ -1,11 +1,12 @@
 ---
 layout: default
-title: Create a data source
+title: Add a data source
 description: Connect a data source to your Soda Cloud account to begin scanning for data quality.
 parent: Soda Cloud
+redirect_from: /soda-cloud/datasource.html
 ---
 
-# Create a data source ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Add a data source ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 {% include banner-preview.md %}
 
@@ -18,6 +19,10 @@ In setting up a data source, you provide details such as database access credent
 You can connect Soda Cloud with the following data sources via a [Soda Agent]({% link soda-agent/basics.md %}):
 
 {% include compatible-cloud-datasources.md %}
+
+Soda Cloud can, however, accept scan results run using Soda Core from the following data sources:
+
+{% include compatible-datasources.md %}
 
 
 ## Prerequisites

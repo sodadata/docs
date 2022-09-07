@@ -9,9 +9,10 @@ parent: Reference
 
 <br />
 
-#### September 6, 2022
+#### September 7, 2022
 
 * Added content to correspond with Soda Core's new support for [Spark for Databricks SQL]({% link soda-core/configuration.md %}#connect-to-spark-for-databricks-sql).
+* Adjusted documentation to reflect that Soda Core now supports the ingestion of [dbt tests]({% link soda/integrate-dbt.md %}).
 
 #### August 30, 2022
 
