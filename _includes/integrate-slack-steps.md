@@ -2,5 +2,5 @@ As an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud acco
 
 1. In Soda Cloud, navigate to **your avatar** > **Organization Settings**, then navigate to the **Integrations** tab and click the **+** icon to add a new integration.
 2. Follow the guided steps to authorize Soda Cloud to connect to your Slack workspace. If necessary, contact your organization's Slack Administrator to approve the integration with Soda Cloud. 
-* **Configuration** tab: select the channels to which Soda can post messages.
+* **Configuration** tab: select the public channels to which Soda can post messages; Soda cannot post to private channels.
 * **Scope** tab: select the Soda features (alert notifications and/or incidents) which can access the Slack integration. 
