@@ -70,15 +70,21 @@ Access keys and IAM role are mutually exclusive: if you provide values for `acce
 | number   | SMALLINT, INT2, INTEGER, INT, INT4, BIGINT, INT8                  |
 | time     | DATE, TIME, TIMETZ, TIMESTAMP, TIMESTAMPTZ                        |
 
-## Connect to Apache Spark DataFrames
+## Connect to Apache Spark
 
-- For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
-- Unlike other data sources, Soda Core does _not_ require a configuration YAML file to run scans against Spark DataFrames.
-
-Note that there are two Soda Core packages for Spark:
+There are several Soda Core packages for Spark:
 
 - `soda-core-spark-df`, in its early release candidate form, enables you to pass dataframe objects into Soda scans programatically, after you have associated the temporary tables to DataFrames via the Spark API. <br  />*Known issue:* Soda Core for SparkDF does not support anomaly score or distribution checks.
 - `soda-core-spark` continues as a work-in-progress and will connect to Soda Core much the same as other data sources, via connection details in a configuration YAML.
+- `soda-core-spark[hive]` is a package you add if you are using Apache Hive.
+- `soda-core-spark[odbc]` is a package you add if you are using an ODBC driver.
+- `soda-core-spark[databricks]` is a package you use to install Soda Core for Databricks SQL on the Databricks Lakehouse Platform. See [Connect to Spark for Databricks SQL](#connect-to-spark-for-databricks-sql).
+
+
+### Connect to Spark DataFrames
+
+- For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
+- Unlike other data sources, Soda Core for SparkDf does _not_ require a configuration YAML file to run scans against Spark DataFrames.
 
 A Spark cluster contains a distributed collection of data. Spark DataFrames are distributed collections of data that are organized into named columns, much like a table in a database, and which are stored in-memory in a cluster. To make a DataFrame available to Soda Core to run scans against, you must use a driver program like PySpark and the Spark API to link DataFrames to individual, named, temporary tables in the cluster. You pass this information into a Soda scan programatically. You can also pass Soda Cloud connection details programmatically; see [Connect Soda Core for SparkDF to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}#connect-soda-core-for-sparkdf-to-soda-cloud).
 
@@ -88,9 +94,9 @@ Refer to <a href="https://github.com/sodadata/soda-core/blob/main/soda/core/test
 ```shell
 sh sudo apt-get -y install unixodbc-dev libsasl2-dev gcc python-dev
 ```
-2. If you are _not_ using Spark with Hive or ODBC, skip to step 3. Otherwise, install the separate dependencies as needed.
-* for Hive, use: `pip install soda-core-spark[hive]`
-* for ODBC, use: `pip install soda-core-spark[odbc]`
+2. If you are _not_ using Spark with Hive or ODBC, skip to step 3. Otherwise, install the separate dependencies as needed, and configure connection details for each dependency; see below.
+* for Hive, use: `pip install soda-core-spark[hive]` and [configure](#connect-to-spark-for-hive)
+* for ODBC, use: `pip install soda-core-spark[odbc]` and [configure](#connect-to-spark-for-odbc)
 3. Confirm that you have completed the following.
 * installed `soda-core-spark-df`
 * set up a a Spark session
@@ -133,7 +139,61 @@ scan.add_spark_session(spark_session)
 
 <br />
 
-## Use Soda Core with Spark DataFrames on Databricks
+### Connect to Spark for Hive
+
+```yaml
+data_source my_database_name:
+  type: spark
+  username: 
+  password: 
+  host: 
+  port: 
+  database: 
+  auth_method: 
+```
+
+| Property      | Required    |
+| ------------- | ----------- |
+| type          | required    |
+| username      | required    |
+| password      | required    |
+| host          | required    |
+| port          | required    |
+| database      | required    |
+| auth_method   | required    |
+
+
+<br />
+
+### Connect to Spark for ODBC
+
+```yaml
+data_source my_database_name:
+  type: spark
+  driver: 
+  host: 
+  port: 
+  token: 
+  organization: 
+  cluster:
+  server_side_parameters: 
+```
+
+| Property      | Required    |
+| ------------- | ----------- |
+| type          | required    |
+| driver        | required    |
+| host          | required    |
+| port          | required    |
+| token         | required    |
+| organization  | required    |
+| cluster       | required    |
+| server_side_parameters | required    |
+
+
+<br />
+
+### Use Soda Core with Spark DataFrames on Databricks
 
 Use the `soda-core-spark-df` package to connect to Databricks using a Notebook. 
 
@@ -172,6 +232,36 @@ scan.execute()
 # Check the Scan object for methods to inspect the scan result; the following prints all logs to console
 print(scan.get_logs_text())
 ```
+
+### Connect to Spark for Databricks SQL
+
+```yaml
+data_source my_database_name:
+  type: spark
+  catalog: samples
+  schema: nyctaxi
+  method: databricks
+  host: hostname_from_Databricks_SQL_settings
+  http_path:*http_path_from_Databricks_SQL_settings
+  token: my_access_token
+```
+
+| Property      | Required    |
+| ------------- | ----------- |
+| type          | required    |
+| catalog       | required    |
+| schema        | required    |
+| method        | required    |
+| host          | required    |
+| token         | required    |
+
+### Supported data types
+
+| Category | Data type  |
+| -------- | ---------- |
+| text     | CHAR, VARCHAR, TEXT  |
+| number   | BIG INT, NUMERIC, BIT, SMALLINT, DECIMAL, SMALLMONEY, INT, TINYINT, MONEY, FLOAT, REAL  |
+| time     | DATE, TIME, DATETIME, DATETIMEOFFSET |
 
 
 ## Connect to GCP BigQuery
