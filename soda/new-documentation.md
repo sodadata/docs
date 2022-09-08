@@ -9,6 +9,63 @@ parent: Reference
 
 <br />
 
+#### September 7, 2022
+
+* Added content to correspond with Soda Core's new support for [Spark for Databricks SQL]({% link soda-core/configuration.md %}#connect-to-spark-for-databricks-sql).
+* Adjusted documentation to reflect that Soda Core now supports the ingestion of [dbt tests]({% link soda/integrate-dbt.md %}).
+
+#### August 30, 2022
+
+* Recorded known issue: Soda Core for SparkDF does not support anomaly score or distribution checks.
+
+#### August 29, 2022
+
+* Added instructions for how to [disable dataset discovery]({% link soda-cl/profile.md %}#disable-dataset-discovery) and [disable column profiling]({% link soda-cl/profile.md %}#disable-column-profiling).
+* Added details for obtaining info when [upgrading]({% link soda-agent/upgrade.md %}#troubleshoot) a Soda Agent.
+* Organized and tightened Soda Core documentation.
+
+#### August 26, 2022
+
+* Added documentation for how to use Soda Core for SparkDF with a Notebook to connect to [Databricks]({% link soda-core/configuration.md %}#c#use-soda-core-with-spark-dataframes-on-databricks).
+* Adjusted the configuration for connecting to [MS SQL Server]({% link soda-core/configuration.md %}#connect-to-ms-sql-server) based on community feedback.
+
+#### August 24, 2022
+
+* Adjusted [configuration instructions]({% link soda-core/configuration.md %}#connect-to-spark-dataframes) for `soda-core-spark-df` to separately install dependencies for Hive and ODBC as needed.
+* Added content to correspond with Soda Core's new support for [Trino]({% link soda-core/configuration.md %}#connect-to-trino).
+* Removed the known issue: The `missing format` configuration does not function as expected.
+
+#### August 22, 2022
+
+* Added an [example DAG]({% link soda-core/orchestrate-scans.md %}#example-dag) for using Soda with Airflow PythonOperator.
+* Added [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) documentation.
+* Expanded [For each]({% link soda-cl/for-each.md %}) documentation with optional configurations and examples.
+* Published a new [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) that outlines how to use preview features in Soda Cloud to connect to a data source, then write a new agreement for stakeholder approval.
+
+#### August 11, 2022
+
+* Added documentation for the new `-t` option for use with scan commands to [overwrite scan output in Soda Cloud]({% link soda-cloud/scan-output.md %}#overwrite-scan-output-in-soda-cloud).
+
+#### August 10, 2022
+
+* Added content to correspond with Soda Core's new support for [MySQL]({% link soda-core/configuration.md %}#connect-to-mysql).
+* Validated and clarified documentation for using [filters and variables]({% link soda-cl/filters.md %}).
+
+#### August 9, 2022
+
+* Added documentation to describe the [migration path]({% link soda-core/migrate.md %}) from Soda SQL to Soda Core.
+
+#### August 2, 2022
+
+* Adjusted the instructions for [Slack integration]({% link soda/integrate-slack.md %}) to correspond with a slightly changed UI experience.
+* Added limitation to the [for each]({% link soda-cl/for-each.md %}) as the configuration is not compatible with dataset filters (also known as partitions).
+
+
+#### August 1. 2022
+
+* Added a "was this helpful" counter to most documentation pages.
+* Added details for [connecting `soda-core-spark-df` to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}#connect-soda-core-for-sparkdf-to-soda-cloud). 
+
 #### July 27, 2022
 
 * Added content to correspond with Soda Core's new support for [MS SQL Server]({% link soda-core/configuration.md %}#connect-to-ms-sql-server) and [IBM DB2]({% link soda-core/configuration.md %}#connect-to-ibm-db2).
@@ -56,7 +113,7 @@ parent: Reference
 
 #### June 14, 2022
 
-* Added documentation corresponding to Soda Core support for [Apache Spark DataFrames]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes). For use with [programmatic Soda scans]({% link soda-core/programmatic-scans.md %}), only.
+* Added documentation corresponding to Soda Core support for [Apache Spark DataFrames]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes). For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
 * Updated the syntax for [freshness checks]({% link soda-cl/freshness.md %}) to remove `using` from the syntax and identify column name instead by wrapping in parentheses.
     * old: `freshness using created_at < 3h`
     * new: `freshness(created_at) < 3h`
@@ -341,4 +398,5 @@ parent: Reference
 
 
 ---
-{% include docs-footer.md %}
+
+*Last modified on {% last_modified_at %}*

@@ -184,11 +184,11 @@ If you have connected Soda Core to a Soda Cloud account, checks with validity me
 
 ## Optional check configurations
 
-| ✓ | Configuration | Documentation |
+| Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 | ✓ | Define a name for a check with validity metrics; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Define alert configurations to specify warn and fail thresholds; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
-| ✓ | Apply a filter to return results for a specific portion of the data in your dataset; see [example](#example-with-filter).| [Add a filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) | 
+| ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset; see [example](#example-with-filter).| [Add an in-check filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply checks with validity metrics to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
@@ -213,7 +213,7 @@ checks for dim_customer:
       fail: when > 6  
 ```
 
-#### Example with filter
+#### Example with in-check filter
 
 ```yaml
 checks for dim_customer:
@@ -257,7 +257,7 @@ coming soon
 | `invalid_count` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex`<sup>1</sup> <br /> `valid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake   |
 | `invalid_percent` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex`<sup>1</sup> <br /> `valid values` | The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  | 
 
-<sup>1</sup> **Known issue:** Connections to MS SQL Server do not support checks that use regex.
+<sup>1</sup> **Known issue:** Connections to MS SQL Server do not support checks that use regex.<!--CORE-211-->
 
 ## List of configuration keys
 
@@ -308,7 +308,16 @@ checks for dim_customer:
 * Use validity metrics in checks with alert configurations to establish [warn and fail zones]({% link soda-cl/optional-config.md %}#define-zones-using-alert-configurations)
 * Use validity metrics in checks to define ranges of acceptable thresholds using [boundary thresholds]({% link soda-cl/metrics-and-checks.md %}#define-boundaries-with-fixed-thresholds).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

@@ -41,13 +41,7 @@ Create an Amazon Elastic Kubernetes Service (EKS) Fargate cluster, then use Helm
 
 You can deploy a Soda Agent to connect with the following data sources:
 
-<table>
-  <tr>
-    <td>Amazon Athena<br /> Amazon Redshift<br />  Apache Spark DataFrames<sup>1</sup><br /> GCP Big Query</td>
-    <td>IBM DB2<br /> MS SQL Server <br /> PostgreSQL<br /> Snowflake</td>
-  </tr>
-</table>
-<sup>1</sup> For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
+{% include compatible-cloud-datasources.md %}
 
 ## Prerequisites
 
@@ -340,8 +334,17 @@ kubectl logs pods/soda-agent-orchestrator-5975ddcd9-5b5qr \
 ## Go further
 
 * Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed.
+* Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

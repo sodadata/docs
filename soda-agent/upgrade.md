@@ -29,6 +29,17 @@ helm upgrade soda-agent soda-agent/soda-agent \
    --values values-local.yml --namespace soda-agent
 ```
 
+<br />
+
+#### Troubleshoot
+
+**Problem:** To upgrade the agent, I need the API keys that connect it to Soda Cloud, but I do not have access to them.
+
+**Solution:** You can access the values by running the following command, replacing the placeholder values with your own details.
+
+```shell
+helm get values -n <namespace> <release name>
+```
 
 
 ## Go further
@@ -39,4 +50,12 @@ helm upgrade soda-agent soda-agent/soda-agent \
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

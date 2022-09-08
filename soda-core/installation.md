@@ -3,7 +3,9 @@ layout: default
 title: Install Soda Core
 description: From your command-line interface, execute a pip install command to install Soda Core.
 parent: Soda Core
-redirect_from: /soda-core/install-scientific.html
+redirect_from: 
+- /soda-core/install-scientific.html
+- /soda-core/get-started.html
 ---
 
 # Install Soda Core 
@@ -59,4 +61,12 @@ You have three installation options to choose from:
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

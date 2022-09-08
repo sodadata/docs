@@ -3,16 +3,28 @@ layout: default
 title: Run a Soda Core scan
 description:  Soda Core uses the input in the checks and configuration YAML file to prepare a scan that it runs against the data in a dataset.
 parent: Soda Core
+redirect_from:
+- /soda-core/first-scan.html
+- /soda-core/scan-reference.html
 ---
 
 # Run a Soda Core scan 
 
-A **scan** is a command that executes checks to extract information about data in a dataset. A **check** is a test that Soda Core performs when it scans a dataset in your data source. Soda Core uses the checks you define in the **checks YAML** file to prepare SQL queries that it runs against the data in a table. Soda Core can execute multiple checks against one or more datasets in a single scan. 
+A **scan** is a command that executes checks to extract information about data in a dataset. 
+
+```shell
+soda scan -d postgres_retail_db  -c configuration.yml checks.yml
+```
+
+A **check** is a test that Soda Core performs when it scans a dataset in your data source. Soda Core uses the checks you define in the **checks YAML** file to prepare SQL queries that it runs against the data in a table. Soda Core can execute multiple checks against one or more datasets in a single scan. 
 
 [Anatomy of a scan command](#anatomy-of-a-scan-command)<br />
+[Variables](#variables)<br />
 [Scan output](#scan-output)<br />
+[Examine a scan's SQL queries](#examine-a-scans-sql-queries)<br />
 [Programmatically use scan output](#programmatically-use-scan-output)<br />
 [Add scan options](#add-scan-options)<br />
+[Troubleshoot](#troubleshoot)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -40,24 +52,10 @@ soda scan -d postgres_retail -c other-directory/configuration.yml other-director
 <br />
 Use the soda `soda scan --help` command to review options you can include to customize the scan.
 
-<!--
 ## Variables
 
-To test specific portions of data, such as data pertaining to a specific date, you can apply dynamic variables when you scan data in your warehouse. See [Use variables in Soda Core]({% link soda-core/variables.md %}) for detailed instructions. 
+{% include variables.md %}
 
-Variables are a set of key-value pairs, both of which are strings. In SodaCL, you can refer to variables as `${VAR}`.
-
-Soda checks YAML file:
-```yaml
-variables:
-  hello: world
-  sometime_later: ${now}
-```
-Scan command:
-```shell
-soda scan -d postgres_retail -v TODAY=2022-03-11 checks.yml
-```
--->
 
 ## Scan output
 
@@ -92,6 +90,14 @@ Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 
 ```
 
+### Examine a scan's SQL queries
+
+To examine the SQL queries that Soda Core prepares and executes as part of a scan, you can add the `-V` option to your `soda scan` command. This option prints the queries as part of the scan results.
+
+```shell
+soda scan -d postgres_retail -c configuration.yml -V checks.yml
+``` 
+
 ## Programmatically use scan output
 
 Optionally, you can insert the output of Soda Core scans into your data orchestration tool such as Dagster, or Apache Airflow. 
@@ -102,15 +108,22 @@ Further, in your orchestration tool, you can use Soda Core scan results to block
 
 ## Add scan options
 
-When you run a scan in Soda Cre, you can specify some options that modify the scan actions or output. Add one or more of the following options to a `soda scan` command.
+When you run a scan in Soda Core, you can specify some options that modify the scan actions or output. Add one or more of the following options to a `soda scan` command.
 
-| Option | Description and example|
-| --------  | ---------------------- |
-| `-c TEXT` or<br /> `--configuration TEXT` | (Required) Use this option to specify the file path and file name for the configuration YAML file.|
-| `-d TEXT` or<br /> `--data-source TEXT` | (Required) Use this option to specify the data source that contains the datasets you wish to scan.|
-| `-s TEXT` or<br /> `--scan-definition TEXT` |  |
-| `-v TEXT` or<br /> `--variable TEXT` | Replace `TEXT` with variables you wish to apply to the scan, such as a [filter for a date]({% link soda-cl/filters.md %}). Put single or double quotes around any value with spaces. <br />  `soda scan -d my_datasource -v start=2020-04-12 -c configuration.yml checks.yml` |
-| `V` or <br /> `--verbose` | Return scan output in verbose mode to review query details. |
+| Option | Required | Description and examples |
+| ------ | :------: | ---------------------- |
+| `-c TEXT` or<br /> `--configuration TEXT` | ✓ | Use this option to specify the file path and file name for the configuration YAML file.|
+| `-d TEXT` or<br /> `--data-source TEXT` |  ✓ |Use this option to specify the data source that contains the datasets you wish to scan.|
+| `-s TEXT` or<br /> `--scan-definition TEXT` |  | *Placeholder* For future use with Soda Cloud.|
+| `-t TEXT` or<br /> `--data-timestamp TEXT` |  | Replace TEXT with a scan time in ISO8601 format (`2021-04-28T09:00:00+02:00`). Refer to [Overwrite scan output in Soda Cloud]({% link soda-cloud/scan-output.md %}#overwrite-scan-output-in-soda-cloud) for details. |
+| `-v TEXT` or<br /> `--variable TEXT` |  | Replace `TEXT` with variables you wish to apply to the scan, such as a [filter for a date]({% link soda-cl/filters.md %}). Put single or double quotes around any value with spaces. <br />  `soda scan -d my_datasource -v start=2020-04-12 -c configuration.yml checks.yml` |
+| `V` or <br /> `--verbose` |  | Return scan output in verbose mode to review query details. |
+
+## Troubleshoot
+
+**Problem:** When you run a scan, you get an error that reads, `Exception while exporting Span batch.`
+
+**Solution:** Without an internet connection, Soda Core is unable to communicate with `soda.connect.io` to transmit anonymous usage statistics about the software. <br /> If you are using Soda Core offline, you can resolve the issue by setting `send_anonymous_usage_stats: false` in your `configuration.yml` file. Refer to [Soda Core usage statistics]({% link soda-core/usage-stats.md %}) for further details.
 
 
 ## Go further
@@ -120,4 +133,12 @@ When you run a scan in Soda Cre, you can specify some options that modify the sc
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

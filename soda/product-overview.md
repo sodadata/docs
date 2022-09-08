@@ -69,6 +69,8 @@ checks for CUSTOMERS:
 
 ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="105px" width="105px"} is the web application that you can optionally connect to Soda Core. It aggregates all metrics and tests for data quality and enables multiple people in an organization to monitor scan results, collaborate on issue investigation, and even write their own checks for data reliability. 
 
+🎥 <a href="https://vimeo.com/738592291" target="_blank">Soda Cloud: Watch & Learn</a>
+
 Log in to the web app to examine the visualized results of scans, view historical scan data, and set up alerts that automatically notify your team when there is an issue with your data quality.
 
 Beyond increasing the observability of your data, Soda Cloud enables you to view samples of the [rows that failed]({% link soda-cloud/failed-rows.md %}) a check during a scan and [integrate with your Slack]({% link soda/integrate-slack.md %}) workspace to get [alert notifications]({% link soda-cloud/agreements.md %}) and automatically spin up new channels for collaborative [incident investigation]({% link soda-cloud/incidents.md %}).
@@ -125,7 +127,7 @@ The very first Soda OSS tools, Soda SQL and Soda Spark served their community we
 
 * ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="80px" width="80px"} was the original command-line tool that Soda created to test for data quality. Access the [legacy documentation]({% link soda-sql/overview.md %}).
 
-* ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="103px" width="103px"} was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark DataFrames]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes). Access [legacy documentation]({% link soda-spark/install-and-use.md %}).
+* ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="103px" width="103px"} was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark]({% link soda-core/configuration.md %}#connect-to-apache-spark). Access [legacy documentation]({% link soda-spark/install-and-use.md %}).
 
 ## Go further
 
@@ -136,4 +138,12 @@ The very first Soda OSS tools, Soda SQL and Soda Spark served their community we
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

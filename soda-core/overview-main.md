@@ -3,6 +3,10 @@ layout: default
 title: Soda Core overview
 description: Soda Core is an open-source, CLI tool that enables you to use the Soda Checks Language to turn user-defined input into SQL queries.
 parent: Soda Core
+redirect_from: 
+- /soda-core/
+- /soda-core/overview.html
+- /soda-cl/soda-core-overview.html
 ---
 <br />
 
@@ -12,8 +16,8 @@ parent: Soda Core
 
 &#10004;  An open-source, CLI tool and Python library for data reliability<br /> <br />
 &#10004;  Compatible with [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}) and [Soda Cloud]({% link soda-cloud/overview.md %}) <br /> <br />
-&#10004;  Enables data quality testing both in and out of your pipeline, for data observability, and for data monitoring <br /> <br />
-&#10004;  Integrated to allow a Soda scan in a data pipeline, or programmatic scans on a time-based schedule <br /> <br />
+&#10004;  Enables data quality testing both in and out of your [data pipeline]({% link soda-core/orchestrate-scans.md %}), for data observability and reliability <br /> <br />
+&#10004;  Enables [programmatic scans]({% link soda-core/programmatic.md %}) on a time-based scheudle <br /> <br />
 <br />
 
 #### Example checks
@@ -74,4 +78,12 @@ checks for dim_department_group:
 Access the <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core open-source documentation</a>.
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

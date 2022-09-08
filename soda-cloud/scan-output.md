@@ -25,6 +25,21 @@ Soda Core use a secure API to connect to Soda Cloud. When it completes a scan, S
 
 ![scan-with-cloud](/assets/images/scan-with-cloud.png){:height="350px" width="350px"}
 
+## Overwrite scan output in Soda Cloud
+
+When you use Soda Core to run a scan, Soda Core sends the test reults to Soda Cloud where they manifest as rows in the Check Results table. If you wish to overwrite a check result, you can do so by running the scan again and overwriting the timestamp.
+
+In Soda Core, use the `-t` or `--data-timestamp` option in your `soda scan` command and provide a timestamp date in ISO8601 format, as in the following example.
+
+```shell
+soda scan -d adventureworks -t 2021-04-28T09:00:00+02:00 -c configuration.yml tables/orders.yml
+```
+
+See [Add scan options]({% link soda-core/scan-core.md %}#add-scan-options) for more scan options.
+
+## Run an ad hoc scan
+
+{% include ad-hoc-scan.md %}
 
 ## Go further
 
@@ -34,4 +49,12 @@ Soda Core use a secure API to connect to Soda Cloud. When it completes a scan, S
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

@@ -8,10 +8,10 @@ parent: Get started
 # Quick start for Soda Core and Soda Cloud
 <br />
 
-![soda-core-logo](/assets/images/soda-core-logo.png){:height="120px" width="120px"} 
+![soda-core-logo](/assets/images/soda-core-logo.png){:height="120px" width="120px"} <br />
 Use your command-line interface to connect Soda Core to a data source, create and examine the checks that surface “bad” data in a dataset, then run your first scan in a few minutes. 
 
-![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="123px" width="123px"} 
+![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="123px" width="123px"} <br />
 After you run your scan from the command-line, consider going further by signing up for a free trial account in Soda Cloud, the web application that offers data quality visualizations and much more. 
 
 [Tutorial prerequisites](#tutorial-prerequisites-1) <br />
@@ -232,4 +232,12 @@ To exit the virtual environment in your command-line interface, type `deactivate
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

@@ -39,6 +39,7 @@ checks for dim_reseller:
 Instead of using CTE to define a custom metric, you can use a SQL query. The example check below follows the same standard check pattern, but includes a nested **query key** to define the custom metric and its name.
 * The name you provide for a custom metric must *not* contain spaces.
 * Though you specify the dataset against which to run the query in the SQL query, you must also provide the dataset identifier in the `checks for` section header. Without the dataset identifier, Soda Core cannot send the check results to Soda Cloud.
+* *Known issue*: Soda does not recognize variables used in query key for custom metrics; see <a href="https://github.com/sodadata/soda-core/issues/1523" target="_blank">GitHub Issue 1523</a>.<!--SODA-1012-->
 
 ```yaml
 checks for dim_product:
@@ -60,11 +61,11 @@ checks for dim_product:
 
 ## Optional check configurations
 
-| ✓ | Configuration | Documentation |
+| Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 | ✓ | Define a name for a user-defined check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
-|   | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
+|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters in the value in the check. | Use wildcard values as you would with CTE or SQL. |
 | ✓ | Use for each to apply user-defined checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
@@ -128,6 +129,7 @@ coming soon
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 
 
@@ -151,4 +153,12 @@ queries:
 Aliases in the select statement will be used to map the query results to metrics in the checks and then checks are executed with the query results.
 -->
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

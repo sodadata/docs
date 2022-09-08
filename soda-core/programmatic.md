@@ -3,6 +3,7 @@ layout: default
 title: Define programmatic scans
 description: Use the Soda Sore Python library to programmatically execute scans and automate the checks for "bad" data.
 parent: Soda Core
+redirect_from: /soda-core/programmatic-scans.html
 ---
 
 # Define programmatic scans
@@ -20,5 +21,12 @@ Soda Core's scan output includes an exit code which indicates the outcome of the
 | 3 | Soda encountered a runtime issue |
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
 
 {% include docs-footer.md %}

@@ -11,6 +11,12 @@ To use all the [features and functionality]({% link soda/product-matrix.md %}) t
 
 Soda Core uses an API to connect to Soda Cloud. To use the API, you must generate API keys in your Soda Cloud account, then add them to the configuration YAML file that Soda Core uses to connect to your data sources. Note that the API keys you create do not expire. 
 
+[Prerequisites](#prerequisites)<br />
+[Connect](#connect)<br />
+[Connect Soda Core for SparkDF to Soda Cloud](#connect-soda-core-for-sparkdf-to-soda-cloud)<br />
+[Go further](#go-further)<br />
+<br />
+
 ## Prerequisites
 
 * You have [installed]({% link soda-core/installation.md %}) and [configured]({% link soda-core/configuration.md %}) Soda Core and run at least one scan of your data.<br /> OR 
@@ -36,6 +42,50 @@ soda scan -d your_datasource_name -c configuration.yml checks.yml
 ```
 6. Navigate to your Soda Cloud account in your browser review the results of your latest scan in **Check Results**.
 
+## Connect Soda Core for SparkDF to Soda Cloud
+
+Unlike other data sources, Soda Core does _not_ require a configuration YAML file to run scans against Spark DataFrames. It is for use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
+
+Therefore, to connect to Soda Cloud, include the Soda Cloud API keys (see step 3, above) in your programmatic scan using either `add_configuration_yaml_file(file_path)` or `scan.add_configuration_yaml_str(config_string)` as in the example below.
+
+```shell
+from pyspark.sql import SparkSession, types
+from soda.scan import Scan
+
+spark_session = SparkSession.builder.master("local").appName("test").getOrCreate()
+df = spark_session.createDataFrame(
+    data=[{"id": "1", "name": "John Doe"}],
+    schema=types.StructType(
+        [types.StructField("id", types.StringType()), types.StructField("name", types.StringType())]
+    ),
+)
+df.createOrReplaceTempView("users")
+
+scan = Scan()
+scan.set_verbose(True)
+scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
+scan.set_data_source_name("spark_df")
+scan.add_configuration_yaml_file(file_path="sodacl_spark_df/configuration.yml")
+scan.add_configuration_yaml_str(
+    """
+soda_cloud:
+  api_key_id: "[key]"
+  api_key_secret: "[secret]"
+  host: cloud.soda.io
+"""
+)
+scan.add_spark_session(spark_session)
+scan.add_sodacl_yaml_file(file_path="sodacl_spark_df/checks.yml")
+# ... all other scan methods in the standard programmatic scan ...
+scan.execute()
+
+# print(scan.get_all_checks_text())
+print(scan.get_logs_text())
+# scan.assert_no_checks_fail()
+```
+
+Refer to <a href="https://github.com/sodadata/soda-core/blob/main/soda/core/tests/examples/example_python_api.py" target="_blank">the soda-core repo in GitHub</a> for details.
+
 ## Go further
 
 * Learn more about using [SodaCL]({% link soda-cl/soda-cl-overview.md %}) to write checks for data quality.
@@ -46,4 +96,12 @@ soda scan -d your_datasource_name -c configuration.yml checks.yml
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

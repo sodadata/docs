@@ -32,6 +32,11 @@
       }catch(e) {
         console.error("Failed to associate search-input binding", e);
       }
+
+      var githubLi = document.createElement('li');
+      githubLi.setAttribute('class', 'aux-nav-list-item');
+      githubLi.innerHTML = '<iframe frameborder="0" scrolling="0" width="138" height="30" title="GitHub" src="https://ghbtns.com/github-btn.html?user=sodadata&repo=soda-core&type=star&count=true&size=large" class="aux-nav-list-item-github-iframe"></iframe>';
+      document.querySelector(".aux-nav-list").prepend(githubLi);
     });
   })();
 </script>

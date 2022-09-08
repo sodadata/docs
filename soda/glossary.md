@@ -6,6 +6,7 @@ parent: Reference
 redirect_from: 
 - /soda-sql/documentation/glossary.html
 - /soda/common-terms.html
+- /soda-core/terminology.html
 ---
 
 # Glossary
@@ -78,7 +79,7 @@ A web application that enables you to examine scan results and create agreements
 A free, open-source, command-line tool that enables you to use the Soda Checks Language to turn user-defined input into aggregated SQL queries. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. See [Soda Core documentation]({% link soda-core/overview-main.md %}).
 
 ### Soda Spark (Deprecated)
-Soda Spark was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark DataFrames]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes). Access [legacy documentation]({% link soda-spark/install-and-use.md %}).
+Soda Spark was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark]({% link soda-core/configuration.md %}#connect-to-apache-spark). Access [legacy documentation]({% link soda-spark/install-and-use.md %}).
 
 ### Soda SQL (Deprecated)
 Soda SQL was an open-source command-line tool that scanned the data in your data source. Replaced by [Soda Core]({% link soda-core/overview-main.md %}). Access [legacy documentation]({% link soda-sql/overview.md %}).
@@ -92,4 +93,12 @@ In Soda Cloud, the key-value pair that you use to define what qualifies as a mis
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

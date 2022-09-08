@@ -20,7 +20,7 @@ Use these matrices to review the features and functionality that Soda products h
 
 ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"} Coming soon <br />
 ![done](/assets/images/done.png){:height="20px" width="20px"}  Full implemented <br />
-![preview](/assets/images/preview.png){:height="60px" width="60px"} Released for limited-access preview 
+![preview](/assets/images/preview.png){:height="60px" width="60px"} Preview features available only for limited access.<br /> Interested in getting early access? <a href="mailto:support@soda.io">Let us know!
 
 <br />
 <br />
@@ -98,4 +98,12 @@ Use these matrices to review the features and functionality that Soda products h
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

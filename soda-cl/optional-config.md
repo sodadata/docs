@@ -38,6 +38,27 @@ checks for dim_employee:
 * Be sure to add the `:` to the end of your check, before the nested content.
 * If `name` is configured, Soda Core sends the value of `name` to Soda Cloud as the check identifier.
 
+<br />
+
+If you wish, you can use a [variable]({% link soda-cl/filters.md %}#configure-variables) to customize a dynamic check name.
+```yaml
+variables:
+  name: Customers UK
+checks for dim_customer:
+  - row_count > 1:
+     name: Row count in ${name}
+```
+
+When you run a scan, Soda Core uses the value you specified for your variable in the scan results, as in the example below.
+```shell
+Soda Core 3.0.4
+Scan summary:
+1/1 check PASSED: 
+    dim_customer in adventureworks
+      Row count in Customers UK [PASSED]
+All is good. No failures. No warnings. No errors.
+```
+
 ## Add alert configurations
 
 When Soda Core runs a scan of your data, it returns a check result for each check. Each check results in one of three default states:
@@ -185,15 +206,28 @@ FROM CUSTOMERS
 
 {% include foreach-config.md %}
 
+See [For each]({% link soda-cl/for-each.md %}) for further details.
+
 ## Scan a portion of your dataset
 
 {% include dataset-filters.md %}
+
+See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
 
 ## Go further
 
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

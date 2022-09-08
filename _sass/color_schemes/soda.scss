@@ -440,6 +440,19 @@ $code-background-color: #f8f9f9;
     }
 }
 
+@media (min-width: 50rem) {
+    /* move search box left */
+    .search .search-input-wrap {
+      right: auto;
+    }
+  
+    /* github iframe margin */
+    .aux-nav-list-item-github-iframe {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+  }
+
 body {
     //-moz-osx-font-smoothing: grayscale;
     //-webkit-font-smoothing: antialiased; // do not enable these as they lighten the font too much depending on the screen density
@@ -522,6 +535,7 @@ body {
 .site-logo {
     max-height: 16px;
 }
+
 
 // for index.md
 .docs-html-content {

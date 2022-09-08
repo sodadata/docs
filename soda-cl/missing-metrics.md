@@ -19,14 +19,13 @@ checks for dim_customer
   - missing_count(last_name) < 5:
       missing values: [n/a, NA, none]
   - missing_percent(email_address) = 0:
-      valid format: email
+      missing format: '    '
 ```
 
 [Define checks with missing metrics](#define-checks-with-missing-metrics) <br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of missing metrics](#list-of-missing-metrics)<br />
 [List of configuration keys](#list-of-configuration-keys)<br />
-[List of valid formats](#list-of-valid-formats)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
 [Go further](#go-further)<br />
 <br />
@@ -36,7 +35,7 @@ checks for dim_customer
 
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), you use missing metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
 
-You can use all missing metrics in checks that apply to individual columns in a dataset; you cannot use missing metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
+You can use both missing metrics in checks that apply to individual columns in a dataset; you cannot use missing metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
 * SodaCL considers `NULL` as the default value for "missing". 
 * If you wish, you can add a `%` character to the threshold for a `missing_percent` metric for improved readability. 
 
@@ -131,38 +130,23 @@ Second check:
 
 ### Specify missing format
 
-If the data type of the column you are checking is TEXT (such as character, character varying, or string) then you can use the `missing format` configuration key. This config key uses built-in values that test the data in the column for specific formats, such as email address format, date format, or uuid format. See [List of valid formats](#list-of-format-values) below.
+Defines what qualifies as a value that ought to register as missing, such as whitespace or empty strings. For example, three spaces in row is recognizable as an entry, but from a business perspective, it ought to be recognized as missing.
 
- The check below validates that all values in the `email_address` column conform to an email address format. 
+The check below ensures that Soda ought to consider any value entered as three spaces as missing, in addition to all NULL values which Soda automatically considers as missing.
 
 ```yaml
 checks for dim_customer:
   - missing_percent(email_address) = 0:
-      valid format: email
+      missing format: '   '
 ```
 
 | metric | `missing_percent` |
 | argument | `email_address` |
 | comparison symbol or phrase| `=` |
 | threshold | `0` | 
-| configuration key | `valid format` |
-| configuration value(s) | `email` |
+| configuration key | `missing format` |
+| configuration value(s) | `'   '` |
 
-<br />
-
-#### Troubleshoot missing format
-
-**Problem:** You are using a `valid format` to test the format of values in a column and the CLI returns the following error message when you run a scan. 
-
-```shell
-  | HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
-
-Error occurred while executing scan.
-  | unsupported operand type(s) for *: 'Undefined' and 'int'
-
-```
-
-**Solution:** The error indicates that the data type of the column is not TEXT. Adjust your check to use `missing regex` or `missing values` configuration keys, instead.
 
 <br />
 
@@ -176,11 +160,11 @@ If you have connected Soda Core to a Soda Cloud account, checks with missing met
 
 ## Optional check configurations
 
-| ✓ | Configuration | Documentation |
+| Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 | ✓ | Define a name for a check with missing metrics; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Define alert configurations to specify warn and fail thresholds; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
-| ✓ | Apply a filter to return results for a specific portion of the data in your dataset; see [example](#example-with-filter).| [Add a filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) | 
+| ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset; see [example](#example-with-filter).| [Add an in-check filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply checks with missing metrics to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
@@ -206,7 +190,7 @@ checks for dim_customer:
       fail: when >= 5  
 ```
 
-#### Example with filter
+#### Example with in-check filter
 
 ```yaml
 checks for dim_customer:
@@ -248,7 +232,7 @@ coming soon
 | `missing_count` | `missing format` <br /> `missing regex`<sup>1</sup>  <br /> `missing values` | The number of rows in a column that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake   |
 | `missing_percent` | `missing format` <br /> `missing regex`<sup>1</sup>  <br /> `missing values` | The percentage of rows in a column, relative to the total row count, that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  | 
 
-<sup>1</sup> **Known issue:** Connections to MS SQL Server do not support checks that use regex.
+<sup>1</sup> **Known issue:** Connections to MS SQL Server do not support checks that use regex. <!--CORE-211-->
 
 ## List of configuration keys
 
@@ -256,13 +240,10 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 | Column config key  | Description  | Values | 
 | ------------------ | ------------ | ------ |
-| `missing format` | Defines the format of a value that Soda ought to register as missing. <br />Only works with columns that contain data type TEXT. |  See [List of valid formats](#list-of-valid-formats) |
+| `missing format` | Defines what qualifies as a value that ought to register as missing, such as whitespace or empty strings. For example, three spaces in row is recognizable as an entry, but from a business perspective, it ought to be recognized as missing. <br />|
 | `missing regex` | Specifies a regular expression to define your own custom missing values.| regex, no forward slash delimiters, string only |
 | `missing values` | Specifies the values that Soda is to consider missing. Numeric characters in a `valid values` list must be enclosed in single quotes. | values in a list |
 
-## List of valid formats
-
-{% include valid-formats.md %}
 
 ## List of comparison symbols and phrases
 
@@ -293,7 +274,16 @@ checks for dim_customer:
 * Use missing metrics in checks with alert configurations to establish [warn and fail zones]({% link soda-cl/optional-config.md %}#define-zones-using-alert-configurations)
 * Use missing metrics in checks to define ranges of acceptable thresholds using [boundary thresholds]({% link soda-cl/metrics-and-checks.md %}#define-boundaries-with-fixed-thresholds).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

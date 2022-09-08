@@ -1,17 +1,29 @@
 ---
 layout: default
-title: Create a data source
+title: Add a data source
 description: Connect a data source to your Soda Cloud account to begin scanning for data quality.
 parent: Soda Cloud
+redirect_from: /soda-cloud/datasource.html
 ---
 
-# Create a data source ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Add a data source ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 {% include banner-preview.md %}
 
 To run [scans]({% link soda/glossary.md %}#scan) for data quality in your [data source]({% link soda/glossary.md %}#data-source) such as PostgreSQL or GCP BigQuery, you must first connect Soda Cloud to a data source. 
 
 In setting up a data source, you provide details such as database access credentials, details about the frequency with which Soda Cloud runs scans on this data source, and how much profile information Soda Cloud fetches about the datasets in your data source. 
+
+## Compatibility
+
+You can connect Soda Cloud with the following data sources via a [Soda Agent]({% link soda-agent/basics.md %}):
+
+{% include compatible-cloud-datasources.md %}
+
+Soda Cloud can, however, accept scan results run using Soda Core from the following data sources:
+
+{% include compatible-datasources.md %}
+
 
 ## Prerequisites
 * You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
@@ -198,8 +210,17 @@ automated monitoring:
 ## Go further
 
 * Next step: Create a new [agreement]({% link soda-cloud/agreements.md %}).
+* Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source.
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

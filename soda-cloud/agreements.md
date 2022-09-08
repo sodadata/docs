@@ -14,10 +14,18 @@ An agreement is a contract between stakeholders that stipulates the expected and
 
 Use SodaCL checks to define the state of "good quality" for data in this data source, then identify and get approval from stakeholders in your organization. Define whom Soda Cloud will notify when a check in this Agreement fails, then set a schedule to regularly execute the Soda Checks to uphold the tenets of the agreement.
 
+[Prerequisites](#prerequisites)<br />
+[Create a new agreement](#create-a-new-agreement)<br />
+[Run an ad hoc scan](#run-an-ad-hoc-scan)<br />
+[Edit an agreement](#edit-an-agreement)<br />
+[Go further](#go-further)<br />
+<br />
+
 ## Prerequisites
 
 * You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
-* You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [added a new datasource]({% link soda-cloud/add-datasource.md %}) in your Soda Cloud account.
+* You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) and connected it to your Soda Cloud account.
+* You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [added a new datasource]({% link soda-cloud/add-datasource.md %}) via the Soda Agent in your Soda Cloud account.
 * (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack) to enable Soda Cloud to send Slack notifications to your team. If you do not use Slack, Soda Cloud can send notifications via email.
 
 ## Create a new agreement
@@ -39,7 +47,9 @@ In Soda Cloud, navigate to the **Agreements** dashboard, then click **New Agreem
 
 Use [SodaCL]({% link soda-cl/soda-cl-overview.md %}) to define the checks that Soda Cloud executes on a regular schedule to uphold the tenets of this agreement. If any of these checks fail during a regularly-scheduled scan, Soda Cloud notifies the stakeholders you specify in the Notifications section.
 
-For help writing your first checks, consider following the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}).
+* For help writing your first checks, consider following the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}), including the [Tips and best practices]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) section.
+* Avoid using an [anomaly score check]({% link soda-cl/anomaly-score.md %}) to test the agreements workflow. The ML algorithm that anomaly score checks use requires a minimum of four, regular-frequency scans before it has collected enough historic measurements against which to gauge an anomaly. Consider using checks with [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metrics, instead.
+* Note that any checks you test in the context of this agreements workflow _do not_ appear as "real" check results in the **Check Results** dashboard. 
 
 <br />
 
@@ -71,6 +81,10 @@ Regardless of the approval status of the agreement, however, Soda Cloud begins r
 
 To review existing scan definitions, navigate to **your avatar** > **Scans & Data** > **Scan Definitions** tab. 
 
+## Run an ad hoc scan
+
+{% include ad-hoc-scan.md %}
+
 
 ## Edit an agreement
 
@@ -81,10 +95,19 @@ To review existing scan definitions, navigate to **your avatar** > **Scans & Dat
 
 ## Go further
 
+* Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around creating a new agreement.
 * Complete the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write a few simple checks for data quality.
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

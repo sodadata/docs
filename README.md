@@ -247,3 +247,8 @@ Work-around: artificially add a string/search term to to a document to boost th
 
 Also, lunrjs does not take into account ocurrences of terms that appear in \_includes. For the Search tool to "find" a term, the term itself must occur in the content of a served markdown file. For example, though the term regex appeared multiple times in two \_includes files, the Search tool registered zero occurrences of the term in the docs. Adding the term to the content of the metrics.md and sql_metrics.md files yielded expected search results.
 
+## Jekyll SEO Tag Plugin
+
+For static web builders like Jekyll, the one that we use, there is a plugin that automatically optimizes for SEO called [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag). It does stuff like "automatically add the appropriate search engine metadata to each page, including the page title, description, canonical URL, next and previous URLs for posts, and JSON-LD site and post metadata to help your site get properly indexed by search engines."  (See [this blogpost](https://cloudcannon.com/blog/showcase-jekyll-seo-plugin/) that illustrates the stuff that the Jekyll SEO Tag plugin does.)
+
+That plugin has not been explicitly installed on our version of Jekyll. However, if you add the tag {% seo %} to your head.html file, Jekyll automatically starts applying Jekyll SEO Tag functionality. When I tested it by removing that tag, all the SEO content between the <!-- Begin Jekyll SEO tag v2.7.1 --> and <!-- End Jekyll SEO tag --> disappeared.  

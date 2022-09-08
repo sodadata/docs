@@ -56,6 +56,7 @@
               "type": "string",
               "format": "date-time",
               "default": "2022-08-08T06:30:53.062028"
+
             },
             "name": "from_datetime",
             "in": "query"
@@ -66,6 +67,7 @@
               "title": "To Datetime",
               "type": "string",
               "format": "date-time",
+
               "default": "2022-09-08T06:30:53.062099"
             },
             "name": "to_datetime",

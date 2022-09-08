@@ -16,7 +16,7 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 ## Prerequisites
 * You have [installed Soda Core]({% link soda-core/installation.md %}) in your environment.
 * You have a Soda Cloud account and you have [connected the account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core.
-* You have [integrated a Slack workspace]({% link soda-cloud/collaborate.md %}#integrate-with-slack) with your Soda Cloud account. 
+* (Optional) You have [integrated a Slack workspace]({% link soda-cloud/collaborate.md %}#integrate-with-slack) with your Soda Cloud account. 
 
 ## Create Incidents
 
@@ -26,13 +26,14 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 * **Severity**: Minor, Major, or Critical
 * **Status**: Reported, Investigating, Fixing, Resolved
 * **Lead**: a list of team members from whom you can assign the Lead Investigator role
-4. Click **View Slack Channel** to connect directly to a newly-created channel in your Slack workspace that is dedicated to the investigation and resolution of the Incident. Invite team members to the channel to collaborate on resolving the data quality issue. 
+4. (Optional) Click **View Slack Channel** to connect directly to a newly-created channel in your Slack workspace that is dedicated to the investigation and resolution of the Incident. Invite team members to the channel to collaborate on resolving the data quality issue. 
 
 ## Track Incidents
 
 * As your team works through the investigation of an Incident, use the Incident's **Status** field to keep track of your progress. 
 * In the **Incidents** dashboard, review all Incidents, their severity and status, and the assigned lead. Sort the list of Incidents by severity.
 * From an Incident's page, link other check results to the same Incident to expand the investigation landscape.
+* If you opened a Slack channel to investigate the incident, Soda archives the channel when you set the **Status** to Resolved.
 
 
 
@@ -46,4 +47,12 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

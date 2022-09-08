@@ -135,14 +135,14 @@ EOF
 2. Once the pod is running, you can use the following configuration details when you add a data source in Soda Cloud, in step 2, **Connect the Data Source**.
 ```yaml 
 data_source local_postgres_test:
-    type: postgres
-    connection:
+  type: postgres
+  connection:
         host: nybusbreakdowns
         port: 5432
         username: sodacore
         password: sodacore
-    database: postgres
-    schema: new_york
+        database: sodacore
+        schema: new_york
 ```
 
 ## Deccomission the local cluster and Soda Agent
@@ -169,4 +169,12 @@ minikube delete
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

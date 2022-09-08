@@ -97,23 +97,16 @@ To review the checks results for automated monitoring checks in Soda Cloud, navi
 
 ## Optional check configurations
 
-| ✓ | Configuration | Documentation |
+| Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 |   | Define a name for an automated monitoring check. |  - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
-|   | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
+|   | Use quotes when identifying dataset names. | - |
 | ✓ | Use wildcard characters ({% raw %} % {% endraw %} with dataset names in the check; see [example](#example-with-wildcards). | - |
 |   | Use for each to apply anomaly score checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan. |  -  |
 
-#### Example with quotes
-
-```yaml
-automated monitoring:
-  datasets:
-    - include "prod_customer"
-```
 
 #### Example with wildcards 
 
@@ -156,8 +149,17 @@ When the functionality in Soda Cloud becomes generally available, you will be ab
 ## Go further
 
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

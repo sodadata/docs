@@ -3,6 +3,7 @@ layout: default
 title: Configure Soda Core
 description: Configure Soda Core to connect to your data sources and prepare data quality checks to run against your data.
 parent: Soda Core
+redirect_from: /soda-core/configure.html
 ---
 
 # Configure Soda Core
@@ -16,12 +17,17 @@ After you [install Soda Core]({% link soda-core/installation.md %}), you must cr
 [Provide credentials as system variables](#provide-credentials-as-system-variables)<br />
 [Connect to Amazon Athena](#connect-to-amazon-athena)<br />
 [Connect to Amazon Redshift](#connect-to-amazon-redshift)<br />
-[Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes)<br />
+[Connect to Apache Spark](#connect-to-apache-spark)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; [Connect to Spark DataFrames](#connect-to-spark-dataframes)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; [Use Soda Core with Spark DataFrames on Databricks](#use-soda-core-with-spark-dataframes-on-databricks)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; [Connect to Spark for Databricks SQL](#connect-to-spark-for-databricks-sql)<br />
 [Connect to GCP BigQuery](#connect-to-gcp-bigquery)<br />
 [Connect to IBM DB2](#connect-to-ibm-db2)<br />
 [Connect to MS SQL Server](#connect-to-ms-sql-server)<br />
+[Connect to MySQL](#connect-to-mysql)<br />
 [Connect to PostgreSQL](#connect-to-postgresql)<br />
 [Connect to Snowflake](#connect-to-snowflake)<br />
+[Connect to Trino](#connect-to-trino)<br />
 <br />
 
 ## Configuration instructions
@@ -69,7 +75,6 @@ export POSTGRES_PASSWORD=1234
 echo $POSTGRES_PASSWORD
 ```
 3. In the configuration YAML file, set the value of the property to reference the environment variable, as in the following example.
-
 ```yaml
 data_source my_database_name:
   type: postgres
@@ -86,46 +91,24 @@ data_source my_database_name:
 soda scan -d your_datasource -c configuration.yml checks.yml
 ```
 
-<br />
-
-## Provide credentials as system variables
-
-If you wish, you can provide data source login credentials or any of the properties in the configuration YAML file as system variables instead of storing the values directly in the  file. 
-
-1. From your command-line interface, set a system variable to store the value of a property that the configuration YAML file uses. For example, you can use the following command to define a system variable for your password.  
-```shell
-export POSTGRES_PASSWORD=1234
-```
-3. Test that the system retrieves the value that you set by running an `echo` command. 
-```shell
-echo $POSTGRES_PASSWORD
-```
-4. In the configuration YAML file, set the value of the property to reference the environment variable, as in the following example.
-```yaml
-data_source my_database_name:
-  type: postgres
-  connection:
-    host: soda-temp-demo
-    port: '5432'
-    username: sodademo
-    password: ${POSTGRES_PASSWORD}
-  database: postgres
-  schema: public
-```
-5. Save the configuration YAML file, then run a scan to confirm that Soda Core connects to your data source without issue.
-```shell
-soda scan -d your_datasource -c configuration.yml checks.yml
-```
 
 {% include core-datasource-config.md %}
 
 ## Go further
 
-- Next: [Run a scan]({% link soda-core/scan-core.md %}) of the data in your data source.
-- Consider completing the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write more checks for data quality.
-- Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Next: [Run a scan]({% link soda-core/scan-core.md %}) of the data in your data source.
+* Consider completing the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write more checks for data quality.
+* (Optional) [Connect Soda Core to a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}).
+* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
   <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
 
 {% include docs-footer.md %}

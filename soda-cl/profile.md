@@ -12,7 +12,7 @@ parent: SodaCL
 Use the `discover datasets` and/or `profile columns` configurations in your checks YAML file to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.<br />
 *Requires Soda Cloud.*
 
-**Known issue:** Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when using a Spark data source.
+**Known issue:** Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark data source (`soda-core-spark-df`).
 
 ```yaml
 discover datasets:
@@ -75,6 +75,17 @@ discover datasets:
 
 <br />
 
+### Disable dataset discovery
+
+If your data source is very large, you may wish to disable dataset discovery completely.  To do so, you can use the following configuration.
+```yaml
+discover datasets:
+  datasets:
+    - exclude %.%
+```
+
+<br />
+
 ### Scan results in Soda Cloud
 
 1. To review the discovered datasets in Soda Cloud, first [run a scan]({% link soda-core/scan-core.md %}) of your data source so that Soda Core can gather and send dataset information to Soda Cloud.
@@ -110,6 +121,18 @@ profile columns:
 ```
 
 Refer to the top of the page for more example configurations for column profiling.
+
+<br />
+
+### Disable column profiling
+
+If you wish to disable column profiling completely, so that Soda Cloud profiles no columns at all, you can use the following configuration.
+```yaml
+profile columns:
+  columns:
+    - exclude %.%
+```
+
 <br />
 
 ### Scan results in Soda Cloud
@@ -121,13 +144,14 @@ Refer to the top of the page for more example configurations for column profilin
 ![profile columns](../assets/images/profile-columns.png)
 
 
+
 ## Optional check configurations
 
-| ✓ | Configuration | Documentation |
+| Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 |   | Define a name for sample data configuration. |  - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
-|   | Apply a filter to return results for a specific portion of the data in your dataset.| - | 
+|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters ({% raw %} % {% endraw %} with dataset names in the check; see [example](#example-with-wildcards). | - |
 |   | Use for each to apply anomaly score checks to multiple datasets in one scan. | - |
@@ -151,10 +175,19 @@ profile columns:
 
 ## Go further
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.
 
 <br />
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

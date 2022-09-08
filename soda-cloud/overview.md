@@ -7,6 +7,8 @@ redirect_from:
 - /soda-cloud.html
 - /soda-cloud/display-column-metrics.html
 - /soda-cloud/display-samples.html
+- /soda-cloud/
+- /soda-core/soda-cloud.html
 ---
 <br />
 
@@ -32,7 +34,8 @@ redirect_from:
                     <img src="/assets/images/icons/icon-cloud@2x.png" width="54" height="40">
                     <h2>Sign up</h2>
                     <a href="https://cloud.soda.io/signup" target="_blank">Sign up for Soda Cloud</a>
-                    <a href="/soda/quick-start-soda-core.html" target="_blank">Quick start with Soda Core </a>
+                    <a href="/soda/quick-start-sodacloud.html" target="_blank">Quick start with Soda Cloud (Preview) </a>
+                    <a href="https://vimeo.com/738592291" target="_blank">🎥 Soda Cloud Product Showcase</a>
                 </div>
                  <div>
                     <img src="/assets/images/icons/icon-collaboration@2x.png" width="54" height="40">
@@ -51,4 +54,12 @@ redirect_from:
 </div>
 
 ---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
 {% include docs-footer.md %}

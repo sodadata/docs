@@ -22,7 +22,11 @@ for each dataset T:
     - row_count > 0
 ```
 
-<br />
+
+## Limitations and specifics
+
+* For each is not compatible with dataset filters.
 * Soda Core dataset names matching is case insensitive.
 * If any of your checks specify column names as arguments, make sure the column exists in all datasets listed under the `datasets` heading.
 * To add multiple for each configurations in your checks YAML file, configure another `for each` section header with a different letter identifier, such as `for each dataset R`.
+
