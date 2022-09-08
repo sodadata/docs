@@ -9,10 +9,13 @@ parent: Reference
 
 <br />
 
-#### Septemeber 8, 2022
+#### Septemeber 12, 2022
 
 * Documented [Soda Cloud resources]({% link soda-cloud/resource-map.md %}) to add visual context to the parts that exist in Soda Cloud, and how they relate to each other, particularly when you delete a resource.
 
+#### September 8, 2022
+
+* Added inclusion and exclusion rules for [dataset discovery]({% link soda-cl/profile.md %}#define-dataset-discovery), [column profiling]({% link soda-cl/profile.md %}#define-column-profiling), and [dataset sampling]({% link soda-cl/sample-datasets.md %}#inclusion-and-exclusion-rules).
 
 #### September 7, 2022
 
