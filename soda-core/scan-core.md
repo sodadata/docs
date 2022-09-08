@@ -21,6 +21,7 @@ A **check** is a test that Soda Core performs when it scans a dataset in your da
 [Anatomy of a scan command](#anatomy-of-a-scan-command)<br />
 [Variables](#variables)<br />
 [Scan output](#scan-output)<br />
+[Examine a scan's SQL queries](#examine-a-scans-sql-queries)<br />
 [Programmatically use scan output](#programmatically-use-scan-output)<br />
 [Add scan options](#add-scan-options)<br />
 [Troubleshoot](#troubleshoot)<br />
@@ -88,6 +89,14 @@ Scan summary:
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 
 ```
+
+### Examine a scan's SQL queries
+
+To examine the SQL queries that Soda Core prepares and executes as part of a scan, you can add the `-V` option to your `soda scan` command. This option prints the queries as part of the scan results.
+
+```shell
+soda scan -d postgres_retail -c configuration.yml -V checks.yml
+``` 
 
 ## Programmatically use scan output
 
