@@ -1,16 +1,33 @@
 ---
 layout: default
-title: Create a data source
+title: Add a data source
 description: Connect a data source to your Soda Cloud account to begin scanning for data quality.
 parent: Soda Cloud
 redirect_from: /soda-cloud/datasource.html
 ---
 
-# Create a data source 
+# Add a data source 
 
 To run [scans]({% link soda/glossary.md %}#scan) for data quality in your [data source]({% link soda/glossary.md %}#data-source) such as PostgreSQL or GCP BigQuery, you must first connect Soda Cloud to a data source. 
 
 In setting up a data source, you provide details such as database access credentials, details about the frequency with which Soda Cloud runs scans on this data source, and how much profile information Soda Cloud fetches about the datasets in your data source. 
+
+[Compatibility](#compatibility)<br />
+[Prerequisites](#prerequisites)<br />
+[Add a new data source](#add-a-new-data-source)<br />
+[Go further](#go-further)<br />
+<br />
+
+## Compatibility
+
+You can connect Soda Cloud with the following data sources via a [Soda Agent]({% link soda-agent/basics.md %}):
+
+{% include compatible-cloud-datasources.md %}
+
+Soda Cloud can, however, accept scan results run using Soda Core from the following data sources:
+
+{% include compatible-datasources.md %}
+
 
 ## Prerequisites
 * You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
@@ -41,101 +58,8 @@ In the editing panel, provide the connection configurations Soda Cloud needs to 
 
 To more securely provide sensitive values such as usernames and passwords, use environment variables in a `values.yml` file when you deploy the Soda Agent. See [Use environment variables for data source connection credentials]({% link soda-agent/deploy.md %}#use-environment-variables-for-data-source-connection-credentials) for details.
 
-Use the following data source configuration details to copy+paste the content associated with the type of data source you are using into the editing panel. 
+Access the separately-documented [data source connection configuration details]({% link soda-core/configuration.md %}) to copy+paste the content associated with the type of data source you are using into the editing panel. 
  
-
-**Amazon Athena**
-
- ```yaml
-data_source athena:
-  type: athena
-  connection:
-    access_key_id: 
-    secret_access_key: 
-    region_name: eu-west-1
-    staging_dir: 
-    database: 
-```
-
-**Amazon Redshift**
-
-```yaml
-data_source my_database_name:
-  type: redshift
-  connection:
-    host: db
-    username:
-    password:
-    database: soda_test
-    access_key_id:
-    secret_access_key:
-    role_arn:
-    region: eu-west-1
-  schema: public
-```
-
-**GCP BigQuery**
-
-{% include gcp-datasets.md %}
-
-```yaml
-data_source my_database_name:
-  type: bigquery
-  connection:
-    account_info_json: '{
-        "type": "service_account",
-        "project_id": "...",
-        "private_key_id": "...",
-        "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
-        "client_email": "...@project.iam.gserviceaccount.com",
-        "client_id": "...",
-        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-        "token_uri": "https://accounts.google.com/o/oauth2/token",
-        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/..."
-}'
-    auth_scopes:
-    - https://www.googleapis.com/auth/bigquery
-    - https://www.googleapis.com/auth/cloud-platform
-    - https://www.googleapis.com/auth/drive
-    project_id: "..."
-    dataset: sodacore
-```
-
-**PostgreSQL**
-
-```yaml
-data_source my_database_name:
-  type: postgres
-  connection:
-    host: db
-    port: "5432"
-    username:
-    password:
-    database: postgres
-  schema: public
-```
-
-**Snowflake**
-
-```yaml
-data_source orders:
-  type: snowflake
-  connection:
-    username: "SODATESTING"
-    password: "abc123"
-    account: sodadatapartner.eu-central-1
-    database: SNOWFLAKE_SAMPLE_DATA
-    warehouse:
-    connection_timeout:
-    role: PUBLIC
-    client_session_keep_alive:
-    session_parameters:
-      QUERY_TAG: soda-queries
-      QUOTED_IDENTIFIERS_IGNORE_CASE: false
-  schema: public
-```
-
 <br />
 
 #### 3. Discover Datasets

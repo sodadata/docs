@@ -13,6 +13,15 @@ parent: Reference
 
 * Removed the Preview status from self-serve features available in Soda Cloud such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
 
+#### September 8, 2022
+
+* Added inclusion and exclusion rules for [dataset discovery]({% link soda-cl/profile.md %}#define-dataset-discovery), [column profiling]({% link soda-cl/profile.md %}#define-column-profiling), and [dataset sampling]({% link soda-cl/sample-datasets.md %}#inclusion-and-exclusion-rules).
+
+#### September 7, 2022
+
+* Added content to correspond with Soda Core's new support for [Spark for Databricks SQL]({% link soda-core/configuration.md %}#connect-to-spark-for-databricks-sql).
+* Adjusted documentation to reflect that Soda Core now supports the ingestion of [dbt tests]({% link soda/integrate-dbt.md %}).
+
 #### August 30, 2022
 
 * Recorded known issue: Soda Core for SparkDF does not support anomaly score or distribution checks.
@@ -25,12 +34,12 @@ parent: Reference
 
 #### August 26, 2022
 
-* Added documentation for how to use Soda Core for SparkDF with a Notebook to connect to [Databricks]({% link soda-core/configuration.md %}#connect-to-databricks).
+* Added documentation for how to use Soda Core for SparkDF with a Notebook to connect to [Databricks]({% link soda-core/configuration.md %}#c#use-soda-core-with-spark-dataframes-on-databricks).
 * Adjusted the configuration for connecting to [MS SQL Server]({% link soda-core/configuration.md %}#connect-to-ms-sql-server) based on community feedback.
 
 #### August 24, 2022
 
-* Adjusted [configuration instructions]({% link soda-core/configuration.md %}#connect-to-apache-spark-dataframes) for `soda-core-spark-df` to separately install dependencies for Hive and ODBC as needed.
+* Adjusted [configuration instructions]({% link soda-core/configuration.md %}#connect-to-spark-dataframes) for `soda-core-spark-df` to separately install dependencies for Hive and ODBC as needed.
 * Added content to correspond with Soda Core's new support for [Trino]({% link soda-core/configuration.md %}#connect-to-trino).
 * Removed the known issue: The `missing format` configuration does not function as expected.
 

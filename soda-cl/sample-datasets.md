@@ -7,7 +7,7 @@ parent: SodaCL
 
 # Send sample data to Soda Cloud 
 
-Use the `sample datasets` configuration in your checks YAML file to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.<br />
+Use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.<br />
 *Requires Soda Cloud.*
 
 ```yaml
@@ -21,6 +21,7 @@ sample datasets:
 [Prerequisites](#prerequisites)<br />
 [Define sample datasets](#define-sample-datasets)<br />
 [Optional check configurations](#optional-check-configurations) <br />
+[Inclusion and exclusion rules](#inclusion-and-exclusion-rules)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -28,12 +29,17 @@ sample datasets:
 ## Prerequisites
 * You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
 * You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
-* You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core.
+* You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core. <br />
+OR <br />
+* You a Soda Cloud account with Preview access ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 
 ## Define sample datasets
 
-This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud.
+This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud. You can add this configuration to one of two places:
+* to your `checks.yml` file <br />
+OR<br />
+*  to either step [3. Discover Datasets]({% link soda-cloud/add-datasource.md %}#3-discover-datasets) or step [4. Profile Datasets]({% link soda-cloud/add-datasource.md %}#4-profile-datasets) when you add a data source directly in Soda Cloud. 
 
 The example configuration below uses a wildcard character (`%`) to specify that Soda Core sends sample rows to Soda Cloud for all datasets with names that begin with `customer`, and *not* to send samples for any dataset with a name that begins with `test`.
 
@@ -92,6 +98,11 @@ sample datasets:
     - include prod%
     - exclude test%
 ```
+
+## Inclusion and exclusion rules
+
+* If you configure `sample datasets` to include specific datasets, Soda implicitly *excludes* all other datasets from sampling. 
+* If you combine an include config and an exclude config and a dataset fits both patterns, Soda excludes the dataset from sampling.
 
 ## Go further
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

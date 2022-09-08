@@ -55,7 +55,8 @@
               "title": "From Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-06-27T10:45:50.944194"
+              "default": "2022-08-08T06:30:53.062028"
+
             },
             "name": "from_datetime",
             "in": "query"
@@ -66,7 +67,8 @@
               "title": "To Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-07-28T10:45:50.944227"
+
+              "default": "2022-09-08T06:30:53.062099"
             },
             "name": "to_datetime",
             "in": "query"
@@ -810,7 +812,7 @@
           "number_of_tests": {
             "title": "Number Of Tests",
             "type": "integer",
-            "description": "Number of tests and monitors executed."
+            "description": "\nNumber of tests that were evaluated.\nNOTE: This does not correspond to the number of tests added to this dataset.\nFor example, if a test is not evaluated on a given date it will not be counted.\n            "
           },
           "percentage_passing_tests": {
             "title": "Percentage Passing Tests",
