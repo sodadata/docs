@@ -9,10 +9,10 @@ parent: SodaCL
 
 {% include banner-preview.md %}
 
-Use the `discover datasets` and/or `profile columns` configurations in your checks YAML file to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.<br />
-*Requires Soda Cloud.*
+Use the `discover datasets` and/or `profile columns` configurations in your checks YAML file to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.
 
-**Known issue:** Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark data source (`soda-core-spark-df`).
+*Requires Soda Cloud*<br />
+*Known issue:* Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark DataFrame data source (`soda-core-spark-df`).
 
 ```yaml
 discover datasets:
@@ -37,6 +37,7 @@ profile columns:
 [Define dataset discovery](#define-dataset-discovery) <br />
 [Define column profiling](#define-column-profiling)<br />
 [Optional check configurations](#optional-check-configurations) <br />
+[Inclusion and exclusion rules](#inclusion-and-exclusion-rules)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -44,7 +45,9 @@ profile columns:
 ## Prerequisites
 * You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
 * You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
-* You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core.
+* You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core. <br />
+OR <br />
+* You a Soda Cloud account with Preview access ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 
 ## Define dataset discovery
@@ -160,8 +163,8 @@ profile columns:
 #### Example with quotes
 
 ```yaml
-discover datasets:
-  datasets:
+profile columns:
+  columns:
     - include "prod_customer"
 ```
 
@@ -172,6 +175,12 @@ profile columns:
   columns:
     - retail_orders.%
 ```
+
+## Inclusion and exclusion rules
+
+* If you configure `discover datasets` or `profile columns` to include specific datasets or columns, Soda implicitly *excludes* all other datasets or columns from discovery or profiling. 
+* If you combine an include config and an exclude config and a dataset or column fits both patterns, Soda excludes the dataset or column from discovery or profiling.
+<!--* If you configured `discover datasets` to exclude a dataset but do not explicitly also exclude its columns in `profile columns`, Soda discovers the dataset and profiles its columns. -->
 
 ## Go further
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
