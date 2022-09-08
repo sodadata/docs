@@ -11,10 +11,8 @@ Integrate Soda with dbt to access dbt test results from within your Soda Cloud a
 
 Use Soda Core to ingest the results of your dbt tests and push them to Soda Cloud so you can leverage features such as:
 * visualizing your data quality over time
-* setting up notifications for your team when tests fail
+* setting up notifications for your team when dbt tests fail
 * creating and tracking data quality incidents 
-
-![dbt-test-in-soda-cloud](/assets/images/dbt-test-in-soda-cloud.png){:height="700px" width="700px"} 
 
 
 [Prerequisites](#prerequisites)<br />
@@ -29,10 +27,10 @@ Use Soda Core to ingest the results of your dbt tests and push them to Soda Clou
 
 ## Prerequisites
 
-* You have a Soda Cloud account with [Admin, Manager, or Editor permissions]({% link soda-cloud/roles-and-rights.md %}).
+* You have created a Soda Cloud account with [Admin, Manager, or Editor permissions]({% link soda-cloud/roles-and-rights.md %}).
+* You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment and [configured it]]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
 * You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core.
 * You use the open-source <a href="https://github.com/dbt-labs/dbt-core" target="_blank">dbt-core</a> version 1.0.0 or later or dbt Cloud.
-* You execute Soda commands from the same machine that executes the dbt pipeline.
 * You have installed the optional `soda-core-dbt` sub-package in the Python environment that also runs `soda-core` by running `pip install soda-core-dbt`.
 
 ## Videos
@@ -55,10 +53,18 @@ Every time you execute tests in dbt, dbt captures information about the test res
 2. Run your dbt pipeline using one of the following commands:
 * <a href="https://docs.getdbt.com/reference/commands/build" target="_blank">`dbt build`</a>  
 * <a href="https://docs.getdbt.com/reference/commands/test" target="_blank">`dbt test`</a>
-3. To ingest dbt test results, Soda Core uses the files that dbt generates when it builds or tests models: `manifest.json` and `run_results.json`. Use Soda Core to execute the following ingest command.
+3. To ingest dbt test results, Soda Core uses the files that dbt generates when it builds or tests models: `manifest.json` and `run_results.json`. Use Soda Core to execute *one* of the following ingest commands to ingest the JSON files into Soda Cloud.
+* Specify the file path for the directory in which you store both the `manifest.json` and `run_results.json` files; Soda finds the files it needs in this directory.
 ```shell
-soda ingest dbt --artifacts <path to minfest and run_results> --dbt-manifest <path to manifest.json> --dbt-run-results <path to run_results.json>
+soda ingest dbt --artifacts /path/to/files 
 ```
+OR <br />
+* Specify the path and filename for each individual JSON file that Soda Cloud must ingest.
+```shell
+soda ingest --dbt-manifest path/to/manifest.json --dbt-run-results path/to/run_results.json>
+```
+
+Run `soda ingest --help` to review a list of all command options.
 
 <br/>
 
@@ -68,35 +74,24 @@ Every run that is part of a [Job on dbt Cloud](https://docs.getdbt.com/docs/dbt-
 
 1. If you have not already done so, install the `soda-core-dbt` sub-package in the Python environment that also runs `soda-core` by running `pip install soda-core-dbt`.
 2. Obtain a <a href="https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens" target="_blank"> dbt Cloud Admin API Service Token</a>.
-3. Paste this token in your Soda `configuration.yml` file. 
+3. Add the following configuration in your Soda `configuration.yml` file as in the following example. Look for the `account ID` after the word "account" in a dbt Cloud URL. For example, `https://cloud.getdbt.com/#/accounts/840923545***/`
 ```yaml
-DBT_CLOUD_API_TOKEN: serviceAccountTokenFromDbt1234
+dbt_cloud:
+  account_id: account_id
+  api_token: serviceAccountTokenFromDbt1234
 ```
-4. Add an entry in your Soda `configuration.yml` file as in the following example. 
-```yaml
-soda_cloud:
-  host: cloud.soda.io
-  api_key_id: ******
-  api_key_secret:  ****
-dbt_cloud_api_token: ******
-```
-5. From the command-line, call `soda ingest` to capture the test results from dbt Cloud and send them to Soda Cloud. To do so, you need two identifiers from dbt Cloud. Refer to [dbt Cloud documentation](https://docs.getdbt.com/docs/dbt-cloud/cloud-overview) for more information. 
-
-| Identifier | Location | Notes |
-| ---------- | -------- | ----- |
-| your dbt Cloud account ID | Look for the account ID after the word "account" in a dbt Cloud URL. For example, `https://cloud.getdbt.com/#/accounts/ A_NUMBER/` | Required |
-| the run ID from which you want Soda to ingest results | Look for the run ID at the top of any Run page "Run #40732579" in dbt Cloud, or in the URL of the Run page. For example, `https://cloud.getdbt.com/#/accounts/ 1234/projects/1234/runs/40732579/` | Use either run ID or job ID; you do not need both. |
-| the job ID from which you want Soda to ingest result | Look for the job ID after the word "jobs" in the URL of the Job page in dbt Cloud. For example, `https://cloud.getdbt.com/#/accounts/ 1234/projects/5678/jobs/123445/`| Use either run ID or job ID; you do not need both. <br /> <br />Use the job ID to retrieve the latest run for a specific job. Using the job ID enables you to write the command once, and and know that Soda always ingests the latest run of the job, which is ideal if you perform ingests on a regular schedule via a cron job or other scheduler. |
-
-### Ingest a specific run
+4. From the command-line, run the `soda ingest` command to capture the test results from dbt Cloud and send them to Soda Cloud and include *one* of two identifiers from dbt Cloud. Refer to [dbt Cloud documentation](https://docs.getdbt.com/docs/dbt-cloud/cloud-overview) for more information. 
+* Use the **run ID** from which you want Soda to ingest results. <br /> Look for the run ID at the top of any Run page "Run #40732579" in dbt Cloud, or in the URL of the Run page. For example, `https://cloud.getdbt.com/#/accounts/ 1234/projects/1234/runs/40732579/`
 ```bash
-soda ingest dbt --artifacts <path_to_mainfest_and_run_results.yml> --dbt-cloud-account-id <your_dbt_cloud_account_id> --dbt-cloud-run-id <the_run_id_from_a_dbt_Cloud_job>
+soda ingest -c configuration.yml --dbt-cloud-run-id the_run_id
+```
+OR <br />
+* Use the **job ID** from which you want Soda to ingest results. Using the job ID enables you to write the command once, and and know that Soda always ingests the latest run of the job, which is ideal if you perform ingests on a regular schedule via a cron job or other scheduler. <br /> Look for the job ID after the word "jobs" in the URL of the Job page in dbt Cloud. For example, `https://cloud.getdbt.com/#/accounts/ 1234/projects/5678/jobs/123445/`
+```bash
+soda ingest -c configuration.yml --dbt-cloud-job-id the_job_id
 ```
 
-### Ingest the latest run from a job
-```bash
-soda ingest dbt --warehouse-yml-file <path_to_warehouse.yml> --dbt-cloud-account-id <your_dbt_cloud_account_id> --dbt-cloud-job-id <the_run_id_from_a_dbt_Cloud_job>
-```
+<br/>
 
 ## Ingestion notes and constraints
 
@@ -108,13 +103,15 @@ soda ingest dbt --warehouse-yml-file <path_to_warehouse.yml> --dbt-cloud-account
 
 ## View dbt test results in Soda Cloud
 
-After completing the steps above to ingest dbt tests, log in to your Soda Cloud account, then navigate to the **Check Results** dashboard. Each row in the table of Check Results represents the result of a check that Soda Core executed or a the result of a dbt test that Soda Core ingested. Refer to image above for an example.
+After completing the steps above to ingest dbt tests, log in to your Soda Cloud account, then navigate to the **Check Results** dashboard. 
+
+Each row in the table of Check Results represents the result of a check that Soda Core executed,or the result of a dbt test that Soda Core ingested. dbt test results are prefixed with `dbt:` in the table of Check Results.
 
 * Click the row of a dbt check result to examine visualized historic data for the test, details of the results, and information that can help you diagnose a data quality issue.
-* Click the stacked dots at the far right of a dbt monitor result, then select **Create Incident** to begin [investigating a data quality issue]({% link soda-cloud/incidents.md %}) with your team.
-* Click the stacked dots at the far right of a dbt check result, then select **Edit Check** to set up a [notification]({% link soda-cloud/agreements.md %}#3-notifications) that Soda Cloud sends when the dbt test fails. Send notifications to an individual or a team in [Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack).
+* Click the stacked dots at the far right of a dbt check result, then select **Create Incident** to begin [investigating a data quality issue]({% link soda-cloud/incidents.md %}) with your team.
+* Click the stacked dots at the far right of a dbt check result, then select **Edit Check** to set up a [notification]({% link soda-cloud/edit-checks.md %}) that Soda Cloud sends when the dbt test fails. Send notifications to an individual or a team in [Slack]({% link soda/integrate-slack.md %}).
 
-Refer to image above for an example.
+
 
 ## Go further
 

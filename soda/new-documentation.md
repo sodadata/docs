@@ -9,9 +9,13 @@ parent: Reference
 
 <br />
 
-#### September 8, 2022
+#### September 13, 2022
 
 * Added documentation to correspond with Soda Cloud's new support for [webhooks]({% link soda/integrate-webhooks.md %}) to integrate with third-party service providers to send alert notifications or create and track incidents externally.
+
+#### September 8, 2022
+
+* Added inclusion and exclusion rules for [dataset discovery]({% link soda-cl/profile.md %}#define-dataset-discovery), [column profiling]({% link soda-cl/profile.md %}#define-column-profiling), and [dataset sampling]({% link soda-cl/sample-datasets.md %}#inclusion-and-exclusion-rules).
 
 #### September 7, 2022
 
