@@ -127,7 +127,7 @@ The very first Soda OSS tools, Soda SQL and Soda Spark served their community we
 
 * ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="80px" width="80px"} was the original command-line tool that Soda created to test for data quality. Access the [legacy documentation]({% link soda-sql/overview.md %}).
 
-* ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="103px" width="103px"} was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark]({% link soda-core/configuration.md %}#connect-to-apache-spark). Access [legacy documentation]({% link soda-spark/install-and-use.md %}).
+* ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="103px" width="103px"} was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark]({% link soda/connect-spark.md %}). Access [legacy documentation]({% link soda-spark/install-and-use.md %}).
 
 ## Go further
 

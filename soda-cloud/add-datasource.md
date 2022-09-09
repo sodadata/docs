@@ -60,7 +60,9 @@ In the editing panel, provide the connection configurations Soda Cloud needs to 
 
 To more securely provide sensitive values such as usernames and passwords, use environment variables in a `values.yml` file when you deploy the Soda Agent. See [Use environment variables for data source connection credentials]({% link soda-agent/deploy.md %}#use-environment-variables-for-data-source-connection-credentials) for details.
 
-Access the separately-documented [data source connection configuration details]({% link soda-core/configuration.md %}) to copy+paste the content associated with the type of data source you are using into the editing panel. 
+Access the data source-specific connection configurations listed below to copy+paste the connection syntax into the editing panel, then adjust the values to correspond with your data source's details. 
+
+{% include connection-list.md %}
  
 <br />
 
