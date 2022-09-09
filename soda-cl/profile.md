@@ -65,7 +65,7 @@ To define discover and profile datasets, follow the guided steps to [create a ne
 * You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
 * You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core. <br />
 OR <br />
-* You a Soda Cloud account with Preview access ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+* You have a Soda Cloud account and you, or a colleauge, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) and [added a data source]({% link soda-cloud/add-datasource.md %}) to your organization's Soda Cloud account.
 
 Reference the [section below](#define-an-automated-monitoring-check) for how to define the checks themselves. 
 
