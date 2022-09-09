@@ -2,6 +2,7 @@
 | Command               | Description |
 | --------------------- | ----------- |
 | `soda scan` | Uses the configurations in your checks YAML file to prepare, then run SQL queries against the data in your data source. See [Run a Soda Core scan]({% link soda-core/scan-core.md %}) for details. |
+| `soda ingest` | Ingests dbt test results to display in Soda Cloud. See [Integrate with dbt]({% link soda/integrate-dbt.md %}). |
 | `soda update-dro` | Updates a distribution reference file that a [distribution check]({% link soda-cl/distribution.md %}) uses. |
 
 ## List of commands
@@ -10,7 +11,7 @@ To see a list of Soda Core command-line interface (CLI) commands, use the `soda`
 
 Command:
 ```shell
-$ soda
+soda
 ```
 
 Output:
@@ -27,12 +28,13 @@ Commands:
   update-dro  updates a distribution reference file
 ```
 
-## List of options
+## List of command options
 
 To see a list of configurable options for each command, use the command-line help.
 ```shell
-$ soda scan --help
-$ soda update-dro --help
+soda scan --help
+soda ingest --help
+soda update-dro --help
 ```
 
 Refer to [Add scan options]({% link soda-core/scan-core.md %}#add-scan-options) for more information.

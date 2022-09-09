@@ -17,6 +17,30 @@
   - subtitle: Soda product comparison
     page: soda/product-matrix.md
 
+- title: Connect a data source
+  page: soda/connect-athena.md
+  subcategories:
+  - subtitle: Connect to Athena
+    page: soda/connect-athena.md
+  - subtitle: Connect to Redshift
+    page: soda/connect-redshift.md
+  - subtitle: Connect to Spark
+    page: soda/connect-spark.md
+  - subtitle: Connect to BigQuery
+    page: soda/connect-bigquery.md
+  - subtitle: Connect to IBM DB2
+    page: soda/connect-db2.md
+  - subtitle: Connect to MS SQL Server
+    page: soda/connect-mssql.md
+  - subtitle: Connect to MySQL
+    page: soda/connect-mysql.md
+  - subtitle: Connect to PostgreSQL
+    page: soda/connect-postgres.md
+  - subtitle: Connect to Snowflake
+    page: soda/connect-snowflake.md
+  - subtitle: Connect to Trino
+    page: soda/connect-trino.md
+
 - title: Soda Agent
   page: soda-agent/basics.md
   subcategories:
@@ -58,6 +82,7 @@
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Single sign-on with Soda Cloud
     page: soda-cloud/sso.md
+
 
 - title: SodaCL 
   page: soda-cl/soda-cl-overview.md
