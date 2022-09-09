@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### September 9, 2022
+
+* Decoupled data source connection configuration details from Soda Core. Created a separate page for each data source's connection config details. See [Connect a data source]({% link soda/connect-athena.md %}).
+
 #### September 8, 2022
 
 * Added inclusion and exclusion rules for [dataset discovery]({% link soda-cl/profile.md %}#define-dataset-discovery), [column profiling]({% link soda-cl/profile.md %}#define-column-profiling), and [dataset sampling]({% link soda-cl/sample-datasets.md %}#inclusion-and-exclusion-rules).

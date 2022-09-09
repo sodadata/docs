@@ -40,6 +40,7 @@ pip install soda-core-postgres
 | MySQL | soda-core-mysql |
 | PostgreSQL | soda-core-postgres |
 | Snowflake | soda-core-snowflake | 
+| Trino | soda-core-trino |
 
 <sup>2</sup> *Known issue:* Connections to MS SQL Server do not support checks that use regex, such as with [missing metrics]({% link soda-cl/missing-metrics.md %}#list-of-missing-metrics) or [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics). <!--CORE-211-->
 
