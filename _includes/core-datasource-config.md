@@ -4,11 +4,11 @@
 data_source athena:
   type: athena
   connection:
-    access_key_id: 
-    secret_access_key: 
+    access_key_id:
+    secret_access_key:
     region_name: eu-west-1
-    staging_dir: 
-    database: 
+    staging_dir:
+    database:
 ```
 
 | Property          | Required | Notes                                                      |
@@ -144,12 +144,12 @@ scan.add_spark_session(spark_session)
 ```yaml
 data_source my_database_name:
   type: spark
-  username: 
-  password: 
-  host: 
-  port: 
-  database: 
-  auth_method: 
+  username:
+  password:
+  host:
+  port:
+  database:
+  auth_method:
 ```
 
 | Property      | Required    |
@@ -170,13 +170,13 @@ data_source my_database_name:
 ```yaml
 data_source my_database_name:
   type: spark
-  driver: 
-  host: 
-  port: 
-  token: 
-  organization: 
+  driver:
+  host:
+  port:
+  token:
+  organization:
   cluster:
-  server_side_parameters: 
+  server_side_parameters:
 ```
 
 | Property      | Required    |
@@ -195,10 +195,10 @@ data_source my_database_name:
 
 ### Use Soda Core with Spark DataFrames on Databricks
 
-Use the `soda-core-spark-df` package to connect to Databricks using a Notebook. 
+Use the `soda-core-spark-df` package to connect to Databricks using a Notebook.
 
 1. Follow steps 1-2 in [the instructions](#connect-to-apache-spark-dataframes) to install `soda-core-spark-df`.
-2. Reference the following Notebook example to connect to Databricks. 
+2. Reference the following Notebook example to connect to Databricks.
 
 ```python
 # import Scan from Soda Core
@@ -212,14 +212,14 @@ scan = Scan()
 scan.set_scan_definition_name("test")
 scan.set_data_source_name("spark_df")
 scan.add_spark_session(spark)
-# Define checks for datasets 
+# Define checks for datasets
 checks  ="""
 checks for dataset_abc:
-  - row_count > 0 
+  - row_count > 0
 """
 # If you defined checks in a file accessible via Spark, you can use the scan.add_sodacl_yaml_file method to retrieve the checks
 scan.add_sodacl_yaml_str(checks)
-# Optionally, add a configuration file with Soda Cloud credentials 
+# Optionally, add a configuration file with Soda Cloud credentials
 # config = """
 # soda_cloud:
 #   api_key_id: xyz
@@ -292,23 +292,23 @@ data_source my_database_name:
     dataset: sodacore
 ```
 
-| Property                                | Required                                                        |
-| --------------------------------------- | --------------------------------------------------------------- |
-| type                                    | required                                                        |
-| account_info_json                       | reqired; inline properties listed below                         |
-| &ensp;&ensp;type                        | required                                                        |
-| &ensp;&ensp;project_id                  | required                                                        |
-| &ensp;&ensp;private_key_id              | required                                                        |
-| &ensp;&ensp;private_key                 | required                                                        |
-| &ensp;&ensp;client_email                | required                                                        |
-| &ensp;&ensp;client_id                   | required                                                        |
-| &ensp;&ensp;auth_uri                    | required                                                        |
-| &ensp;&ensp;token_uri                   | required                                                        |
-| &ensp;&ensp;auth_provider_x509_cert_url | required                                                        |
-| &ensp;&ensp;client_x509_cert_url        | required                                                        |
-| auth_scopes                             | optional; Soda applies the three scopes listed above by default |
-| project_id                              | optional; overrides project_id from account_info_json           |
-| dataset                                 | required                                                        |
+| Property                                | required                                                                                                    |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------|
+| type                                    | required                                                                                                    |
+| account_info_json                       | optional; inline properties listed below; if not provided, Soda uses Google Application Default Credentials |
+| &ensp;&ensp;type                        | required                                                                                                    |
+| &ensp;&ensp;project_id                  | required                                                                                                    |
+| &ensp;&ensp;private_key_id              | required                                                                                                    |
+| &ensp;&ensp;private_key                 | required                                                                                                    |
+| &ensp;&ensp;client_email                | required                                                                                                    |
+| &ensp;&ensp;client_id                   | required                                                                                                    |
+| &ensp;&ensp;auth_uri                    | required                                                                                                    |
+| &ensp;&ensp;token_uri                   | required                                                                                                    |
+| &ensp;&ensp;auth_provider_x509_cert_url | required                                                                                                    |
+| &ensp;&ensp;client_x509_cert_url        | required                                                                                                    |
+| auth_scopes                             | optional; Soda applies the three scopes listed above by default                                             |
+| project_id                              | optional; overrides project_id from account_info_json                                                       |
+| dataset                                 | required                                                                                                    |
 
 ### Supported data types
 
@@ -327,8 +327,8 @@ data_source my_database_name:
   port: 50000
   username: xxx
   password: ...
-  database: 
-  schema: 
+  database:
+  schema:
 ```
 
 | Property | Required | Notes                                                      |
@@ -364,9 +364,9 @@ data_source my_server_name:
   database: sodaexample
   schema: dbo
   trusted_connection: false
-  encrypt: false 
+  encrypt: false
   trust_server_certificate: false
-  driver: 
+  driver:
 ```
 
 | Property | Required | Notes                                                      |
@@ -378,7 +378,7 @@ data_source my_server_name:
 | password | required | Use system variables to retrieve this value securely.      |
 | database | required |                                                            |
 | schema   | required |                                                            |
-| trusted_connection | optional |  The default value is `false`. Set to `true` if using Active Directory authentication. |  
+| trusted_connection | optional |  The default value is `false`. Set to `true` if using Active Directory authentication. |
 | encrypt | optional |   The default value is `false`.                             |
 | trust_server_certificate | optional |   The default value is `false`.  |
 | driver  | optional | Use this config setting to specify the ODBC driver version you use, such as `SQL Server Native Client 11.0` |
@@ -398,7 +398,7 @@ data_source my_server_name:
 ```yaml
 data_source my_server_name:
   type: mysql
-  host: 
+  host:
   username: xxx
   password: ...
   database:
@@ -506,11 +506,11 @@ Reference <a href="https://trino.io/docs/current/overview/concepts.html#" target
 data_source my_datasource_name:
   type: trino
   host: host
-  port: 
+  port:
   username: user
   password: ***
-  catalog: 
-  schema: 
+  catalog:
+  schema:
 ```
 
 | Property | Required | Notes |
