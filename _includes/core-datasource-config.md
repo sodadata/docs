@@ -295,7 +295,7 @@ data_source my_database_name:
 | Property                                | required                                                                                                    |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------|
 | type                                    | required                                                                                                    |
-| account_info_json                       | optional; inline properties listed below; Google Application Default Credentials is used when not provided  |
+| account_info_json                       | optional; inline properties listed below; if not provided, Soda uses Google Application Default Credentials |
 | &ensp;&ensp;type                        | required                                                                                                    |
 | &ensp;&ensp;project_id                  | required                                                                                                    |
 | &ensp;&ensp;private_key_id              | required                                                                                                    |
