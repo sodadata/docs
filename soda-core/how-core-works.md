@@ -26,7 +26,7 @@ This open-source, command-line tool exists to enable Data Engineers to access an
 - scan your [dataset]({% link soda/glossary.md %}#dataset) to run checks against your data
 
 
-To connect to a data source such as Snowflake, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. (Except for connections to Spark DataFrames which do not use a configuration YAML file.) See [Configure Soda Core]({% link soda-core/configuration.md %}) for details on the data source-specific connection configurations.
+To connect to a data source such as Snowflake, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. (Except for connections to Spark DataFrames which do not use a configuration YAML file.) See [Configure Soda Core]({% link soda-core/configuration.md %}) for details and links to data source-specific connection configurations.
 
 #### Configuration YAML example
 ```yaml
