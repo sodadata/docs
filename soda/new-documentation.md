@@ -13,6 +13,7 @@ parent: Reference
 
 * Documented [Soda Cloud resources]({% link soda-cloud/resource-map.md %}) to add visual context to the parts that exist in Soda Cloud, and how they relate to each other, particularly when you delete a resource.
 * Added documentation to correspond with Soda Cloud's new support for [webhooks]({% link soda/integrate-webhooks.md %}) to integrate with third-party service providers to send alert notifications or create and track incidents externally.
+* Corrected documentation to indicate that [reference checks]({% link soda-cl/reference.md %}) do *not* support dataset filters.
 
 #### September 9, 2022
 
