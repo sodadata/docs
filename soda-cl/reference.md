@@ -50,7 +50,7 @@ checks for dim_customers_dev:
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |
 |   | Use for each to apply schema checks to multiple datasets in one scan. | - |
-| ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+|   | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 #### Example with check name 
 
@@ -65,12 +65,6 @@ checks for dim_department_group:
 ```yaml
 checks for dim_department_group:
   - values in ("department_group_name") must exist in dim_employee ("department_name")
-```
-
-#### Example with dataset filter
-
-```yaml
-coming soon
 ```
 
 <br />
