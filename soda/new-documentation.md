@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### Septemeber 12, 2022
+
+* Documented [Soda Cloud resources]({% link soda-cloud/resource-map.md %}) to add visual context to the parts that exist in Soda Cloud, and how they relate to each other, particularly when you delete a resource.
+
 #### September 9, 2022
 
 * Decoupled data source connection configuration details from Soda Core. Created a separate page for each data source's connection config details. See [Connect a data source]({% link soda/connect-athena.md %}).
