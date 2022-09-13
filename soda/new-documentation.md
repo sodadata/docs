@@ -13,6 +13,7 @@ parent: Reference
 
 * Added documentation to correspond with the release of Soda Core 3.0.7, including an update to [freshness check results]({% link soda-cl/freshness.md %}#freshness-check-results).
 * Removed the known issue for using variables in the SQL or CTE of a [user-defined check]({% link soda-cl/user-defined.md %}). See <a href="https://github.com/sodadata/soda-core/issues/1577" target="_blank">GitHub Issue 1577</a>.
+* Added instructions for [configuring the same scan to run in multiple environments]({% link soda-core/configuration.md %}#configure-the-same-scan-to-run-in-multiple-environments).
 
 #### Septemeber 12, 2022
 
