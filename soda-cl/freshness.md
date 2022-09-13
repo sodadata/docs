@@ -97,7 +97,7 @@ Invalid check "freshness(start_date) > 1d": no viable alternative at input ' >'
 
 When you run a scan that includes a freshness check, the output in the **Soda Core CLI** provides several values for measurements Soda used to calculate freshness. The value for freshness itself is displayed in days, hours, minutes, seconds, and milliseconds; see the example below. 
 
-In **Soda Cloud**, the freshness value is displayed in milliseconds.
+In **Soda Cloud**, the freshness value represents age of the data in the days, hours, minutes, etc. relative to `now_timestamp`.
 
 ```shell
 Soda Core 3.0.x
