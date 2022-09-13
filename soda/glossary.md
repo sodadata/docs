@@ -12,7 +12,7 @@ redirect_from:
 # Glossary
 <!--This glossary contains Soda-specific terms only. Do not define industry terminology such as "SQL" or "query".-->
 
-#### agreement
+### agreement
 A collection of checks that serve as a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
 
 ### alert configuration 
@@ -63,10 +63,10 @@ A setting you configure in a Soda Cloud agreement that defines whom to notify wi
 ### scan
 {% include glossary-scan.md %}
 
-#### scan definition
+### scan definition
 A collection of checks YAML files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source. Effectively, a scan definition provides the what, when, and where to run a scan.
 
-#### Soda Agent
+### Soda Agent
 The Helm chart you deploy in your Kubernetes cluster to faciliate a secure connection between your Soda Cloud account and your data sources. See [Deploy a Soda Agent]({% link soda-agent/deploy.md %}).
 
 ### SodaCL 
