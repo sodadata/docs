@@ -113,7 +113,6 @@ Each row in the table of Check Results represents the result of a check that Sod
 
 
 
-
 ## Go further
 
 * Learn more about [How Soda Core works]({% link soda-core/how-core-works.md %}).

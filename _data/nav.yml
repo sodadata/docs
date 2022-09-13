@@ -80,6 +80,8 @@
     page: soda-cloud/incidents.md
   - subtitle: Soda Cloud architecture
     page: soda-cloud/soda-cloud-architecture.md
+  - subtitle: Soda Cloud resources
+    page: soda-cloud/resource-map.md
   - subtitle: Single sign-on with Soda Cloud
     page: soda-cloud/sso.md
 
@@ -161,6 +163,8 @@
     page: soda/integrate-metaphor.md
   - subtitle: Integrate with Slack
     page: soda/integrate-slack.md
+  - subtitle: Integrate webhooks
+    page: soda/integrate-webhooks.md
 
 - title: Reference
   page: soda/data-concepts.md
