@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### September 14, 2022
+
+* Added instructions for [configuring a custom sampler for failed rows]({% link soda-cl/failed-rows-checks.md %}#configure-a-failed-row-sampler).
+
 #### September 13, 2022
 
 * Added documentation to correspond with the release of Soda Core 3.0.7, including an update to [freshness check results]({% link soda-cl/freshness.md %}#freshness-check-results).
