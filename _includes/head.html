@@ -13,6 +13,11 @@
   {% endcomment %}
   <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}?{{ site.time | date: '%s%N' }}">
 
+  {% comment %}
+    Cookiebot must be the first script tag
+  {% endcomment %}
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="789afc41-df22-45f3-8fd9-981f78082b81" data-blockingmode="auto" type="text/javascript"></script>
+
   {% if site.ga_tracking != nil %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking }}"></script>
     <script>
