@@ -161,6 +161,8 @@
     page: soda/integrate-dbt.md
   - subtitle: Integrate with Metaphor
     page: soda/integrate-metaphor.md
+  - subtitle: Integrate with MS Teams
+    page: soda/integrate-msteams.md
   - subtitle: Integrate with Slack
     page: soda/integrate-slack.md
   - subtitle: Integrate webhooks
