@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### September 22, 2022
+
+* Added documentation to set up [integration with Microsoft Teams]({% link soda/integrate-webhooks.md %}) so that Soda Cloud can send alert notifications or incident events to MS Teams.
+
 #### September 14, 2022
 
 * Added instructions for [configuring a custom sampler for failed rows]({% link soda-cl/failed-rows-checks.md %}#configure-a-failed-row-sampler).
