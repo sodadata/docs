@@ -9,6 +9,11 @@ parent: Reference
 
 <br />
 
+#### Septemeber 22, 2022
+
+* Added release notes to correspond with the release of Soda Core 3.0.8.
+* Removed Known issue: Connections to MS SQL Server do not support checks that use regex, such as with [missing metrics]({% link soda-cl/missing-metrics.md %}#list-of-missing-metrics) or [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics).
+
 #### September 14, 2022
 
 * Added instructions for [configuring a custom sampler for failed rows]({% link soda-cl/failed-rows-checks.md %}#configure-a-failed-row-sampler).
