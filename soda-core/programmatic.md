@@ -72,6 +72,8 @@ scan.execute()
 
 # Inspect the scan result
 #########################
+scan.get_scan_results()
+
 # Inspect the scan logs.
 scan.get_logs_text()
 
