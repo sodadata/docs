@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### September 23, 2022
+
+* Added documentation to set up [integration with Microsoft Teams]({% link soda/integrate-webhooks.md %}) so that Soda Cloud can send alert notifications or incident events to MS Teams.
+
 #### Septemeber 22, 2022
 
 * Added release notes to correspond with the release of Soda Core 3.0.8.
