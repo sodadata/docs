@@ -352,7 +352,6 @@ data_source my_database_name:
 
 ## Connect to MS SQL Server
 
-**Known issue:** Connections to MS SQL Server do not support checks that use regex, such as with [missing metrics]({% link soda-cl/missing-metrics.md %}#list-of-missing-metrics) or [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics).<!--CORE-211-->
 
 ```yaml
 data_source my_datasource_name:

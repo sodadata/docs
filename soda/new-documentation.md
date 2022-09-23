@@ -9,9 +9,14 @@ parent: Reference
 
 <br />
 
-#### September 22, 2022
+#### September 23, 2022
 
 * Added documentation to set up [integration with Microsoft Teams]({% link soda/integrate-webhooks.md %}) so that Soda Cloud can send alert notifications or incident events to MS Teams.
+
+#### Septemeber 22, 2022
+
+* Added release notes to correspond with the release of Soda Core 3.0.8.
+* Removed Known issue: Connections to MS SQL Server do not support checks that use regex, such as with [missing metrics]({% link soda-cl/missing-metrics.md %}#list-of-missing-metrics) or [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics).
 
 #### September 14, 2022
 

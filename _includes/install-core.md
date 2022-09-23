@@ -36,13 +36,12 @@ pip install soda-core-postgres
 | Apache Spark for Databricks SQL  | soda-core-spark[databricks] |
 | GCP Big Query | soda-core-bigquery | 
 | IBM DB2 | soda-core-db2 |
-| MS SQL Server<sup>2</sup> | soda-core-sqlserver |
+| MS SQL Server | soda-core-sqlserver |
 | MySQL | soda-core-mysql |
 | PostgreSQL | soda-core-postgres |
 | Snowflake | soda-core-snowflake | 
 | Trino | soda-core-trino |
 
-<sup>2</sup> *Known issue:* Connections to MS SQL Server do not support checks that use regex, such as with [missing metrics]({% link soda-cl/missing-metrics.md %}#list-of-missing-metrics) or [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics). <!--CORE-211-->
 
 To deactivate the virtual environment, use the following command:
 ```shell
