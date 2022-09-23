@@ -13,6 +13,7 @@ parent: Reference
 
 * Added documentation to set up [integration with Microsoft Teams]({% link soda/integrate-webhooks.md %}) so that Soda Cloud can send alert notifications or incident events to MS Teams.
 * Added detail for programmatically inspecting scan results; see [programmatic scans]({% link soda-core/programmatic.md %}).
+* Added details for using various [authentication methods]({% link soda/connect-bigquery.md %}#authentication-methods) to connect to BigQuery.
 
 #### Septemeber 22, 2022
 
