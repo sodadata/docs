@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Send sample data to Soda Cloud
+title: Display sample data in Soda Cloud
 description: Use SodaCL to send sample data to Soda Cloud to quickly review the contents of your dataset.
 parent: SodaCL
 ---
 
-# Send sample data to Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Display sample data in Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 {% include banner-preview.md %}
 
