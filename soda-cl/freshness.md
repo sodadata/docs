@@ -15,6 +15,7 @@ checks for dim_product:
 ```
 
 [Define freshness checks](#define-freshness-checks) <br />
+[Freshness check results](#freshness-check-results)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of freshness thresholds](#list-of-freshness-thresholds) <br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
@@ -42,6 +43,7 @@ The example below defines a check that measures freshness relative to "now", whe
 * The default value for "now" is the time you run the scan that executes the freshness check.
 * If no timezone information is available in either the timestamp of the check (scan time), or in the data in the column, a freshness check uses the UTC timezone. Soda converts both timestamps to UTC to compare values.
 
+<br />
 
 ```yaml
 checks for dim_product:
@@ -89,6 +91,27 @@ Invalid check "freshness(start_date) > 1d": no viable alternative at input ' >'
 
 **Solution:** The error indicates that you are using an incorrect comparison symbol. Remember that freshness checks can only use `<` in check, unless the freshness check employs an alert configuration, in which case it can only use `>` in the check. 
 
+<br />
+
+## Freshness check results  
+
+When you run a scan that includes a freshness check, the output in the **Soda Core CLI** provides several values for measurements Soda used to calculate freshness. The value for freshness itself is displayed in days, hours, minutes, seconds, and milliseconds; see the example below. 
+
+In **Soda Cloud**, the freshness value represents age of the data in the days, hours, minutes, etc. relative to `now_timestamp`.
+
+```shell
+Soda Core 3.0.x
+Scan summary:
+1/1 checks FAILED: 
+      Data is fresh [FAILED]
+        max_column_timestamp: 2013-07-01 00:00:00
+        max_column_timestamp_utc: 2013-07-01 00:00:00+00:00
+        now_variable_name: NOW
+        now_timestamp: 2022-09-13T16:40:39.196522+00:00
+        now_timestamp_utc: 2022-09-13 16:40:39.196522+00:00
+        freshness: 3361 days, 16:40:39.196522
+Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
+```
 
 
 ## Optional check configurations

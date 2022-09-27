@@ -17,7 +17,7 @@ data_source my_datasource_name:
     secret_access_key: 
     region_name: eu-west-1
     staging_dir: 
-    database: 
+    schema: 
 ```
 
 | Property          | Required | Notes                                                      |
@@ -27,7 +27,7 @@ data_source my_datasource_name:
 | secret_access_key | optional <sup>1</sup> | Consider using system variables to retrieve this value securely. |
 | region_name       | optional |                                                            |
 | staging_dir       | required |                                                            |
-| database          | required |                                                            |
+| schema            | required |                                                            |
 
 <sup>1</sup> Access keys and IAM role are mutually exclusive: if you provide values for `access_key_id` and `secret_access_key`, you cannot use Identity and Access Management role; if you provide value for `role_arn`, then you cannot use the access keys. Refer to [Identity and Access Management in Athena](https://docs.aws.amazon.com/athena/latest/ug/security-iam-athena.html) for details.
 

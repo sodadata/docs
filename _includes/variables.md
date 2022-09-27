@@ -20,7 +20,6 @@ soda scan -d aws_postgres_retail duplicate_count_filter.yml -v date=2022-07-25 -
 * Variables must use the following syntax: `${VAR_NAME}`.
 * If you do not explicitly specify a variable value at scan time, Soda uses environment variables.
 * For consistency, best practice dictates that you use upper case for variable names, though you can use lower case if you wish.
-* *Known issue:* You cannot use variables in the SQL or CTE of a [user-defined check]({% link soda-cl/user-defined.md %}). <!--SODA-1012-->
 * Except for customizing [dynamic names for checks]({% link soda-cl/optional-config.md %}#customize-check-names), you *cannot* use in-check variables. For example, Soda does not support the following check:
 
 ```yaml

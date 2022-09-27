@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Send sample data to Soda Cloud
+title: Display sample data in Soda Cloud
 description: Use SodaCL to send sample data to Soda Cloud to quickly review the contents of your dataset.
 parent: SodaCL
 ---
 
-# Send sample data to Soda Cloud 
+# Display sample data in Soda Cloud 
 
 Use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.<br />
 *Requires Soda Cloud.*

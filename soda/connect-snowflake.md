@@ -19,9 +19,10 @@ data_source my_datasource_name:
     account: 
     database: 
     warehouse:
-    connection_timeout:
+    connection_timeout: 
     role: PUBLIC
-    client_session_keep_alive:
+    client_session_keep_alive: true
+    authenticator: externalbrowser
     session_parameters:
       QUERY_TAG: soda-queries
       QUOTED_IDENTIFIERS_IGNORE_CASE: false
@@ -39,8 +40,15 @@ data_source my_datasource_name:
 | warehouse| required | |
 | connection_timeout| required | |
 | role | optional | See <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Roles</a> for details. |
+| client_session_keep_alive | optional | Use this parameter with a boolean option to keep the session active, even with no user activity. |
+| authenticator <sup>1</sup> | optional | Add an authenticator paramater with value `externalbrowser` to authenticate the connection to your Snowflake data source using any SAML 2.0-compliant identity provider (IdP) such as Okta or OneLogin.  |
+| other params | optional | You can pass any other Snowflake paramters you wish by adding the key:value pairs to your Snowflake connection configuration. See <a ref="https://docs.snowflake.com/en/user-guide/python-connector-api.html#connect" target="_blank"> Snowflake Python Connector API documentation</a>> for a list of passable parameters. |
 | QUERY_TAG | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag" target="_blank">QUERY_TAG</a> in Snowflake documentation. |
-| QUOTED_IDENTIFIERS_IGNORE_CASE | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#quoted-identifiers-ignore-case" target="_blank">QUOTED_IDENTIFIERS_IGNORE_CASE</a> in Snowflake documentation. |
+| QUOTED_IDENTIFIERS_<br />IGNORE_CASE | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#quoted-identifiers-ignore-case" target="_blank">QUOTED_IDENTIFIERS_IGNORE_CASE</a> in Snowflake documentation. |
+| schema | required |  |
+
+<sup>1</sup> Use this parameter when adding Snowflake connection configurations to a `configuration.`yml file. However, if you are adding connection configuration details directly in Soda Cloud (connecting to your Snowflake data source via a Soda Agent) to authenticate using Okta, you must follow the instructions documented by Snowflake for <a href="https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#native-sso-okta-only" target="_blank">Native SSO - Okta Only</a>.
+ 
 
 ## Supported data types
 

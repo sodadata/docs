@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Send profile info to Soda Cloud
+title: Display profile info in Soda Cloud
 description: Use SodaCL to send dataset and column profile information to Soda Cloud to quickly review the contents of your dataset.
 parent: SodaCL
 ---
 
-# Send profile information to Soda Cloud 
+# Display profile information in Soda Cloud 
 
 Use the `discover datasets` and/or `profile columns` configurations to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.
 

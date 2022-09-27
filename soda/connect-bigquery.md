@@ -9,7 +9,15 @@ parent: Connect a data source
 
 {% include connect-to-intro.md %}
 
+[Connection configuration](#connection-configuration)<br />
+[Authentication methods](#authentication-methods)<br />
+[Supported data types](#supported-data-types)<br />
+<br />
+
+
 {% include gcp-datasets.md %}
+
+## Connection configuration
 
 ```yaml
 data_source my_datasource_name:
@@ -52,6 +60,61 @@ data_source my_datasource_name:
 | auth_scopes                             | optional; Soda applies the three scopes listed above by default |
 | project_id                              | optional; overrides project_id from account_info_json           |
 | dataset                                 | required                                                        |
+
+
+## Authentication methods
+
+Using GCP BigQuery, you have the option of using one of several methods to authenticate the connection.
+
+1. Application Default Credentials
+2. Application Default Credentials with Service Account impersonation
+3. Service Account Key (see [connection configuration](#connection-configuration) above)
+4. Service Account Key with Service Account Impersonation
+
+<br />
+
+#### Application Default Credentials
+
+Add the `use_context_auth` property to your connection configuration, as per the following example.
+```yaml
+data_source my_datasource:
+  type: bigquery
+  connection:
+    use_context_auth: True
+```
+
+<br />
+
+#### Application Default Credentials with Service Account impersonation
+
+Add the `use_context_auth` and `impersonation_account` properties to your connection configuration, as per the following example.
+```yaml
+data_source my_datasource:
+  type: bigquery
+  connection:
+    use_context_auth: True
+    impersonation_account: <SA_EMAIL>
+```
+
+<br />
+
+#### Service Account Key with Service Account impersonation
+
+Add the `impersonation_account` property to your connection configuration, as per the following example.
+
+```yaml
+data_source my_database_name:
+  type: bigquery
+  connection:
+    account_info_json: '{
+        "type": "service_account",
+        "project_id": "...",
+        "private_key_id": "...",
+      ...}'
+    impersonation_account: <SA_EMAIL>
+```
+
+<br />
 
 ## Supported data types
 

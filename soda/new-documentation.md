@@ -9,9 +9,31 @@ parent: Reference
 
 <br />
 
-#### September 13, 2022
+#### October 6, 2022
 
 * Removed the Preview status from self-serve features available in Soda Cloud such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
+
+#### September 23, 2022
+
+* Added documentation to set up [integration with Microsoft Teams]({% link soda/integrate-webhooks.md %}) so that Soda Cloud can send alert notifications or incident events to MS Teams.
+* Added detail for programmatically inspecting scan results; see [programmatic scans]({% link soda-core/programmatic.md %}).
+* Added details for using various [authentication methods]({% link soda/connect-bigquery.md %}#authentication-methods) to connect to BigQuery.
+
+#### Septemeber 22, 2022
+
+* Added release notes to correspond with the release of Soda Core 3.0.8.
+* Removed Known issue: Connections to MS SQL Server do not support checks that use regex, such as with [missing metrics]({% link soda-cl/missing-metrics.md %}#list-of-missing-metrics) or [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics).
+
+#### September 14, 2022
+
+* Added instructions for [configuring a custom sampler for failed rows]({% link soda-cl/failed-rows-checks.md %}#configure-a-failed-row-sampler).
+
+#### September 13, 2022
+
+* Added documentation to correspond with the release of Soda Core 3.0.7, including an update to [freshness check results]({% link soda-cl/freshness.md %}#freshness-check-results).
+* Removed the known issue for using variables in the SQL or CTE of a [user-defined check]({% link soda-cl/user-defined.md %}). See <a href="https://github.com/sodadata/soda-core/issues/1577" target="_blank">GitHub Issue 1577</a>.
+* Added instructions for [configuring the same scan to run in multiple environments]({% link soda-core/configuration.md %}#configure-the-same-scan-to-run-in-multiple-environments).
+* Added information about [passing parameters]({% link soda/connect-snowflake.md %}) to a Snowflake data source in connection configurations, specifically which parameter to use to authenticate a connection via SSO with a SAML 2.0-compliant identity provider (IdP).
 
 #### Septemeber 12, 2022
 
