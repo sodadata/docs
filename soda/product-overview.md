@@ -12,6 +12,7 @@ Soda has three parts that work together to establish and maintain the reliabilit
 [Soda Core ](#soda-core) <br />
 [Soda Checks Language ](#soda-checks-language-sodacl)<br />
 [Soda Cloud](#soda-cloud)<br />
+[Soda Agent](#soda-agent)<br />
 [Soda in operation](#soda-in-operation)<br />
 [Legacy OSS tools](#legacy-oss-tools) <br />
 [Go further](#go-further)<br />
@@ -86,6 +87,15 @@ Access [Soda Cloud documentation]({% link soda-cloud/overview.md %}).
 
 
 ![overview-soda-cloud](/assets/images/overview-soda-cloud.png){:height="700px" width="700px"}
+
+
+## Soda Agent
+
+The Soda Agent is a tool that empowers Soda Cloud users to securely connect to new data sources without setting up and connecting to Soda Core.
+
+The agent obviates the need to install Soda Core independently and set up configuration YAML files to connect to data sources. Instead, it enables Soda Cloud users to serve themselves when it comes to connecting to new data sources in an organization.
+
+Read [Soda Agent basic concepts]({% link soda-agent/basics.md %}) for more detail about what the agent is and does.
 
 
 ## Soda in operation
