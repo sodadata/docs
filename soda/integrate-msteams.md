@@ -16,7 +16,7 @@ Configure Soda Cloud to connect your account to MS Teams so that you can:
 ## Prerequisites
 
 * You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}).
-* You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core and run at least one scan so as to produce one or more check results.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %})![preview](/assets/images/preview.png){:height="60px" width="60px"}.
+* You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core and run at least one scan so as to produce one or more check results.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %}).
 
 
 ## Configure an MS Teams integration
