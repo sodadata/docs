@@ -25,6 +25,7 @@ checks for dim_customer:
 [Prerequisites](#prerequisites) <br />
 [About failed row samples](#about-failed-row-samples) <br />
 [Define failed rows checks](#define-failed-rows-checks) <br />
+[Set a sample limit](#set-a-sample-limit)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [Configure a failed row sampler](#configure-a-failed-row-sampler)<br />
 [Go further](#go-further)<br />
@@ -79,6 +80,8 @@ checks for dim_customer:
 ![failed-rows-SQL](/assets/images/failed-rows-SQL.png){:height="700px" width="700px"}
 
 <br />
+
+### Set a sample limit
 
 By default, Soda Core sends 100 sample rows to Soda Cloud. You can limit the number of sample rows that Soda Core using the `samples limit` configuration key:value pair, as in the following example.
 
