@@ -63,7 +63,7 @@ Use these matrices to review the features and functionality that Soda products h
 
 | Feature or functionality |   ![soda-core-logo](/assets/images/soda-core-logo.png){:height="110px" width="110px"} <br />**+** ![sodacl-logo](/assets/images/sodacl-logo.png){:height="75px" width="75px"} |![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="150px" width="150px"} | 
 |--------|:---------:|:---------:|
-| Run an *ad hoc* scan  | ![done](/assets/images/done.png){:height="20px" width="20px"} |  |
+| Run an *ad hoc* scan  | ![done](/assets/images/done.png){:height="20px" width="20px"} | ![preview](/assets/images/preview.png){:height="60px" width="60px"} |
 | Define a scan schedule  |  | ![preview](/assets/images/preview.png){:height="60px" width="60px"} |
 |Configure programmatic scans | ![done](/assets/images/done.png){:height="20px" width="20px"} |  |
 |Define filters to test specific portions of data for quality   | ![done](/assets/images/done.png){:height="20px" width="20px"} |![preview](/assets/images/preview.png){:height="60px" width="60px"} |
