@@ -126,6 +126,14 @@ When you run a scan in Soda Core, you can specify some options that modify the s
 
 **Solution:** Without an internet connection, Soda Core is unable to communicate with `soda.connect.io` to transmit anonymous usage statistics about the software. <br /> If you are using Soda Core offline, you can resolve the issue by setting `send_anonymous_usage_stats: false` in your `configuration.yml` file. Refer to [Soda Core usage statistics]({% link soda-core/usage-stats.md %}) for further details.
 
+<br />
+
+**Problem:** When you run a scan using Soda Core 3.0.9, you get an error message that reads, `from google.protobuf.pyext import _message ImportError: dlopen(.../site-packages/google/protobuf/pyext/_message.cpython-310-darwin.so, 0x0002): symbol not found in flat namespace`
+
+**Solution:** This is the result of a transitive dependency from open telemetry that gathers OSS usage statistics. To resolve:
+1. From the command-line, in the directory in which you installed your soda-core package, run `pip uninistall protobuf`.
+2. Reinstall protobuf with the command `pip install protobuf==3.19.4`.
+
 
 ## Go further
 
