@@ -17,6 +17,7 @@ You can save Soda Core scan results anywhere in your system; the `scan_result` o
 [Basic programmatic scan](#basic-programmatic-scan)<br />
 [Scan exit codes](#scan-exit-codes)<br />
 [Configure a failed row sampler](#configure-a-failed-row-sampler)<br />
+[Save failed row samples to a file](#save-failed-row-samples-to-a-file)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -30,14 +31,14 @@ scan.set_data_source_name("events")
 
 # Add configuration YAML files
 #########################
-# Multiple strategies available:
+# Choose one of the following to specify data source connection configurations :
 # 1) From a file
 scan.add_configuration_yaml_file(file_path="~/.soda/my_local_soda_environment.yml")
 # 2) From explicit environment variable(s)
 scan.add_configuration_yaml_from_env_var(env_var_name="SODA_ENV")
 # 3) From environment variables using a prefix
 scan.add_configuration_yaml_from_env_vars(prefix="SODA_")
-# 4) In code.
+# 4) Inline in the code
 scan.add_configuration_yaml_str(
     """
     data_source events:
@@ -64,28 +65,32 @@ scan.add_variables({"date": "2022-01-01"})
 
 # Execute the scan
 ##################
+scan.execute()
+
 # Set logs to verbose mode, equivalent to CLI -V option
 scan.set_verbose(True)
 
-# Execute the scan
-scan.execute()
 
 # Inspect the scan result
 #########################
 scan.get_scan_results()
 
-# Inspect the scan logs.
+# Inspect the scan logs
+#######################
 scan.get_logs_text()
 
-# Typical checking
+# Typical log inspection
+##################
 scan.assert_no_error_logs()
 scan.assert_no_checks_fail()
 
-# More advanced scan execution log introspection methods
+# Advanced methods to inspect scan execution logs 
+#################################################
 scan.has_error_logs()
 scan.get_error_logs_text()
 
-# More advanced check results details methods
+# Advanced methods to review check results details
+########################################
 scan.get_checks_fail()
 scan.has_check_fails()
 scan.get_checks_fail_text()
@@ -120,19 +125,19 @@ from soda.sampler.sample_context import SampleContext
 # Create a custom sampler by extending the Sampler class
 class CustomSampler(Sampler):
     def store_sample(self, sample_context: SampleContext):
-        # Retrieve the rows from the sample for a check.
+        # Retrieve the rows from the sample for a check
         rows = sample_context.sample.get_rows()
-        # Check SampleContext for more details that you can extract.
-        # This example simply prints the failed row samples.
+        # Check SampleContext for more details that you can extract
+        # This example simply prints the failed row samples
         print(sample_context.query)
         print(sample_context.sample.get_schema())
         print(rows)
 
 
 if __name__ == '__main__':
-    # Create Scan object.
+    # Create Scan object
     s = Scan()
-    # Configure an instance of custom sampler.
+    # Configure an instance of custom sampler
     s.sampler = CustomSampler()
 
     s.set_scan_definition_name("test_scan")
@@ -144,8 +149,8 @@ if __name__ == '__main__':
       connection:
         host: localhost
         port: 5433
-        username: postgres
-        password: secret
+        username: ***
+        password: ***
         database: postgres
     """)
 
@@ -158,6 +163,11 @@ if __name__ == '__main__':
     s.execute()
     print(s.get_logs_text())
 ```
+
+### Save failed row samples to alternate desination
+
+If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">docs.python.org</a> for details.
+
 
 ## Go further
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

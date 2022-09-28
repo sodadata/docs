@@ -42,7 +42,7 @@ When a scan results in a failed check, the CLI output displays information about
 
 There are two ways you can configure a SodaCL check to send failed row samples to your Soda Cloud account:
 
-1. Use a [`duplicate_count` metric]({% link soda-cl/numeric-metrics.md %}#send-failed-rows-to-soda-cloud), a [missing metric]({% link soda-cl/missing-metrics.md %}#send-failed-rows-to-soda-cloud), or a [validity metric]({% link soda-cl/validity-metrics.md %}#send-failed-rows-to-soda-cloud) in your check. Checks that use these metrics automatically send failed row samples to your Soda Cloud account.
+1. Use a [`duplicate_count` metric]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud), a [missing metric]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), or a [validity metric]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud) in your check. Checks that use these metrics automatically send failed row samples to your Soda Cloud account.
 2. Use failed rows checks in your to explicitly send failed rows to Soda Cloud. Read on!
 
 For security, you can also disable the failed row samples feature entirely; see [Disable failed row samples]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples) for details.
@@ -83,7 +83,7 @@ checks for dim_customer:
 
 ### Set a sample limit
 
-By default, Soda Core sends 100 sample rows to Soda Cloud. You can limit the number of sample rows that Soda Core using the `samples limit` configuration key:value pair, as in the following example.
+By default, Soda Core sends 1000 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda Core using the `samples limit` configuration key:value pair, as in the following example.
 
 ```yaml
 checks for dim_customer:
