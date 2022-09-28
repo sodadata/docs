@@ -9,10 +9,23 @@ parent: Reference
 
 <br />
 
+#### September 28, 2022
+
+* Added release notes to correspond with the release of Soda Core 3.0.9.
+* Added documentation for a new `samples limit` configuration key that you can add to checks that use [missing]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), [validity]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud), or [duplicate_count]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud) metrics which automatically send 1000 failed row samples to Soda Cloud.
+* Added instructions to [save failed row samples to a file]({% link soda-core/programmatic.md %}#save-failed-row-samples-to-a-file).
+* Added [Windows-specific instructions]({% link soda-core/installation.md %}) for installing Soda Core using a virtual environment.
+* Removed known issue for in-check variables which are supported as of Soda Core 3.0.9: "Except for customizing [dynamic names for checks]({% link soda-cl/optional-config.md %}#customize-check-names), you *cannot* use in-check variables. For example, Soda does not support the following check:
+
+```yaml
+checks for dim_customers:
+  - row_count > ${VAR_2}
+```
+
 #### September 23, 2022
 
 * Added documentation to set up [integration with Microsoft Teams]({% link soda/integrate-webhooks.md %}) so that Soda Cloud can send alert notifications or incident events to MS Teams.
-* Added detail for programmatically inspecting scan results; see [programmatic scans]({% link soda-core/programmatic.md %}).
+* Added detail for programmatically inspecting scan results; see [programmatic scans]({% link soda-core/programmatic.md %}). Available with Soda Core 3.0.9.
 * Added details for using various [authentication methods]({% link soda/connect-bigquery.md %}#authentication-methods) to connect to BigQuery.
 
 #### Septemeber 22, 2022
