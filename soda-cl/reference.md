@@ -40,6 +40,22 @@ checks for dim_customers_dev:
   - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name)
 ```
 
+### Display failed rows in Soda Cloud
+
+Reference checks automatically collect samples of any failed rows to display Soda Cloud. <!--The default number of failed row samples that Soda collects and displays is 1000. -->
+
+<!--If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration.
+
+```yaml
+checks for dim_customers_dev:
+  - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name):
+      samples limit: 20
+``` 
+
+-->
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a reference check. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+
+
 ## Optional check configurations
 
 | Supported | Configuration | Documentation |
