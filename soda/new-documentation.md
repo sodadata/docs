@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### September 29, 2022
+
+* Added a [link]({% link soda-core/orchestrate-scans.md %}#soda-core-and-prefect) to a community contribution for Prefect 2.0 collection for Soda Core.
+
 #### September 28, 2022
 
 * Added release notes to correspond with the release of Soda Core 3.0.9.
