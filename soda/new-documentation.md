@@ -9,6 +9,11 @@ parent: Reference
 
 <br />
 
+#### September 29, 2022
+
+* Added a [link]({% link soda-core/orchestrate-scans.md %}#soda-core-and-prefect) to a community contribution for Prefect 2.0 collection for Soda Core.
+* Updated Reference checks documentation for [displaying failed]({% link soda-cl/reference.md %}##display-failed-rows-in-soda-cloud) rows in Soda Cloud.
+
 #### September 28, 2022
 
 * Added release notes to correspond with the release of Soda Core 3.0.9.
