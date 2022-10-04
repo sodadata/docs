@@ -372,7 +372,6 @@ To exit the workspace in your command-line interface, type `exit` then press ent
 ## Go further
 
 * [Install Soda SQL]({% link soda-sql/installation.md %}) in your local environment and [connect to your own warehouses]({% link soda-sql/configure.md %}).
-* Set up [programmatic scans]({% link soda-sql/programmatic_scan.md %}) to automate data quality monitoring.
 
 
 <br />

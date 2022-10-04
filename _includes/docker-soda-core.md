@@ -36,7 +36,7 @@ docker run -v /path/to/your_soda_directory:/sodacl sodadata/soda-core:v3.0.0 sca
 ```
 
 <details>
-  <summary>What does the scan command do? </summary>
+  <summary style="color:#00BC7E"> What does the scan command do? </summary>
   <ul>
     <li><code>docker run</code> ensures that the docker engine runs a specific image.</li>
     <li><code>-v</code> mounts your SodaCL files into the container. In other words, it makes the configuration.yml and checks.yml files in your local environment available to the docker container. The command example maps your local directory to <code>/sodacl</code> inside of the docker container. </li>

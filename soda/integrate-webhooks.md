@@ -136,7 +136,7 @@ In Jira, start by navigating to **Project settings** > **Automation**, then clic
 The images below offer details for an example of an Automation Rule in Jira to set up an incoming webhook that processes incident events from Soda Cloud. 
 
 <details>
-  <summary>See full Jira Automation example</summary>
+  <summary style="color:#00BC7E">See full Jira Automation example</summary>
   <img src="/assets/images/webhook-automation.png" width="350">
 </details>
 

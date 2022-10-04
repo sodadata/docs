@@ -137,7 +137,7 @@ Document the details of each Soda product's release using included release note 
 8. Any Soda employee reviews, squashes, and mergess the PR.
 
 
-## Use Jekyll markdown
+## Use Jekyll markdown (and HTML)
 
 Kramdown is the default markdown renderer that Jekyll uses. What follows are some Kramdown-specific formatting syntax.
 
@@ -203,7 +203,7 @@ Add collapse-expand toggle:
 
 ```
 <details>
-    <summary>Click to expand</summary>
+    <summary style="color:#00BC7E">Click to expand</summary>
     Long content here
     and here
 </details>

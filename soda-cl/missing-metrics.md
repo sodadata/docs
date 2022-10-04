@@ -55,7 +55,7 @@ checks for dim_reseller:
 ```
 
 <details>
-  <summary>What is a relative threshold?</summary>
+  <summary style="color:#00BC7E">What is a relative threshold?</summary>
 When it scans a column in your dataset, Soda automatically separates all values in the column into one of three categories:
 <ul> 
   <li>missing</li>
