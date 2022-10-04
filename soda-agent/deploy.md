@@ -1,13 +1,11 @@
 ---
 layout: default
-title: Deploy a Soda Agent
-description: 
+title: Deploy a Soda Agent in EKS
+description: Deploy a Soda Agent in an Amazon Elastic Kubernetes Service cluster.
 parent: Soda Agent
 ---
 
-# Deploy a Soda Agent ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
-
-{% include banner-preview.md %}
+# Deploy a Soda Agent in EKS
 
 {% include soda-agent.md %}
 
@@ -30,11 +28,7 @@ Create an Amazon Elastic Kubernetes Service (EKS) Fargate cluster, then use Helm
 
 ## Deployment overview
 
-1. (Optional) Familiarize yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
-2. Install, or confirm the installation of, a few required command-line tools.
-3. Sign up for a Soda Cloud account and create new API keys.
-4. Use the command-line to create an EKS Fargate cluster.
-5. Deploy the Soda Agent in the new cluster.  
+{% include agent-deploy-overview.md %}
 
 
 ## Compatibility
@@ -55,14 +49,7 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 ## Create a Soda Cloud account and API keys
 
-The Soda Agent communicates with your Soda Cloud account using API public and private keys. Note that the keys a Soda Agent uses are different from the API keys Soda Cloud uses to connect to Soda Core. 
-
-1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > the **Agents** tab, then click the **New Soda Agent**.
-3. The dialog box that appears offers abridged instructions to set up a new Soda Agent from the command-line; more thorough instructions exist in this documentation, below. <br /><br />
-For now, copy and paste the values for both the **soda.apikey.id** and **soda.apikey.secret** to a temporary, secure place in your local environment. You will need these values in the next section when you deploy the agent in your Kubernetes cluster.<br />
-![deploy-agent](/assets/images/deploy-agent.png){:height="700px" width="700px"}
-4. You can keep the dialog box open in Soda Cloud, or close it.
+{% include agent-api-keys.md %}
 
 
 ## Create an EKS Fargate cluster

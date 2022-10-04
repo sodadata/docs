@@ -6,9 +6,7 @@ parent: Soda Agent
 redirect_from: /soda-agent/
 ---
 
-# Soda Agent basic concepts ![preview](/assets/images/preview.png){:height="70px" width="70px"}
-
-{% include banner-preview.md %}
+# Soda Agent basic concepts 
 
 {% include soda-agent.md %}
 
@@ -20,7 +18,11 @@ Both Soda Core and Soda Cloud make use of **Soda Checks Language (SodaCL)** to w
 
 **Kubernetes** is a system for orchestrating containerized applications; a **Kubernetes cluster** is a set of resources that support an application environment. You need a Kubernetes cluster in which to deploy the containerized applications that make up the **Soda Agent**.
 
-**Amazon Elastic Kubernetes Service (EKS)** is *where* you create your Kubernetes cluster; **Fargate** is a type of EKS node that operates as a serverless, pay-as-you-go compute engine, so that you can pay for the compute power your cluster uses. The Kubernetes cluster is also where you store **Kubernetes secrets**, such as login credentials, which Kubernetes creates independently on the pods that use them. (Pods are a basic workload unit in Kubernetes, usually an instance of one container.) Learn more about <a href="https://www.youtube.com/watch?v=BOj1sgWVXko" target="_blank" >Kubernetes concepts</a>.
+Within a cloud services provider environment is *where* you create your Kubernetes cluster. You can create a cluster and deploy the Soda Agent on one of several cloud services providers:
+
+* **Amazon Elastic Kubernetes Service (EKS) Fargate** is a type of EKS node that operates as a serverless, pay-as-you-go compute engine, so that you can pay for the compute power your cluster uses. The Kubernetes cluster is also where you store **Kubernetes secrets**, such as login credentials, which Kubernetes creates independently on the pods that use them. (Pods are a basic workload unit in Kubernetes, usually an instance of one container.) Learn more about <a href="https://www.youtube.com/watch?v=BOj1sgWVXko" target="_blank" >Kubernetes concepts</a>.
+* **Microsoft Azure Kubernetes Service (AKS)**  is...
+* **Google Kubernetes Engine (GKE)** is...
 
 **Helm** is a package manager for Kubernetes which bundles YAML files together for storage in a public or private repository. This bundle of YAML files is referred to as a **Helm chart**. The Soda Agent is a Helm chart. Anyone with access to the Helm chart's repo can deploy the chart to make use of YAML files in it. Learn more about <a href="https://www.youtube.com/watch?v=-ykwb1d0DXU" target="_blank" >Helm concepts</a>. 
 
