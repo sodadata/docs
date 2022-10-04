@@ -7,7 +7,9 @@ parent: SodaCL
 
 # Failed rows checks 
 
-Use a failed rows check to explicitly send samples of rows that failed a check to Soda Cloud.
+Use a failed rows check to explicitly send samples of rows that failed a check to Soda Cloud. You can also use a failed row check to configure Soda Core to group failed check results by one or more categories.
+
+*Requires Soda Cloud*
 
 ```yaml
 checks for dim_customer:
@@ -20,12 +22,31 @@ checks for dim_customer:
       fail query: |
         SELECT DISTINCT geography_key
         FROM dim_customer as customer
+# Failed rows defined using SQL query with GROUP BY
+  - failed rows:
+      name: For each week, invalid subscriptions must be less than 0.015 %
+      fail query: |
+        WITH groups AS (
+          SELECT
+          ro.country AS country,
+          ro.company_week AS company_week,
+          (COUNT(CASE WHEN fk_subscription = -1 THEN 1 END) / count(*)) * 100 AS invalid_subscription_pct
+          FROM fact_tables.items_ordered AS ro
+          WHERE company_week = '{{ company_week }}'
+          GROUP BY
+          ro.country,
+          ro.company_week
+        ) 
+        SELECT * 
+        FROM groups 
+        WHERE invalid_subscription_pct >= 0.015
 ```
 
 [Prerequisites](#prerequisites) <br />
 [About failed row samples](#about-failed-row-samples) <br />
 [Define failed rows checks](#define-failed-rows-checks) <br />
 [Set a sample limit](#set-a-sample-limit)<br />
+[Group results by category](#group-results-by-category)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [Configure a failed row sampler](#configure-a-failed-row-sampler)<br />
 [Go further](#go-further)<br />
@@ -33,8 +54,8 @@ checks for dim_customer:
 
 ## Prerequisites
 
-To use failed row checks, you must have a **Soda Cloud** account connected to Soda Core. See [Connect Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}) for details. 
-
+* To use failed row checks, you must have a **Soda Cloud** account connected to Soda Core. See [Connect Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}) for details. 
+* To use failed row checks, samples collection must *not* be [disabled in Soda Cloud]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).
 
 ## About failed row samples
 
@@ -42,7 +63,7 @@ When a scan results in a failed check, the CLI output displays information about
 
 There are two ways you can configure a SodaCL check to send failed row samples to your Soda Cloud account:
 
-1. Use a [`duplicate_count` metric]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud), a [missing metric]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), or a [validity metric]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud) in your check. Checks that use these metrics automatically send failed row samples to your Soda Cloud account.
+1. Use a [reference check]({% link soda-cl/reference.md %}), [`duplicate_count` metric]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud), a [missing metric]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), or a [validity metric]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud) in your check. Checks that use these metrics automatically send failed row samples to your Soda Cloud account.
 2. Use failed rows checks in your to explicitly send failed rows to Soda Cloud. Read on!
 
 For security, you can also disable the failed row samples feature entirely; see [Disable failed row samples]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples) for details.
@@ -91,6 +112,34 @@ checks for dim_customer:
       samples limit: 50
       fail condition: total_children = '2' and number_cars_owned >= 3
 ```
+
+<br />
+
+### Group results by category
+
+You can use a SQL query in a failed row check to group failed check results by one or more categories. The following example groups results by country and week.
+
+```yaml
+checks for dim_subscriptions:
+  - failed rows:
+      name: For each week, invalid subscriptions must be less than 0.015 %
+      fail query: |
+        WITH groups AS (
+          SELECT
+          ro.country AS country,
+          ro.company_week AS company_week,
+          (COUNT(CASE WHEN fk_subscription = -1 THEN 1 END) / count(*)) * 100 AS invalid_subscription_pct
+          FROM fact_tables.items_ordered AS ro
+          WHERE company_week = '{{ company_week }}'
+          GROUP BY
+          ro.country,
+          ro.company_week
+        ) 
+        SELECT * 
+        FROM groups 
+        WHERE invalid_subscription_pct >= 0.015
+```
+
 
 ## Optional check configurations
 
@@ -190,6 +239,7 @@ if __name__ == '__main__':
 ### Save failed row samples to alternate desination
 
 If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">docs.python.org</a> for details.
+
 
 ## Go further
 

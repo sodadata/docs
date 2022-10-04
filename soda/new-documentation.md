@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### October 6, 2022
+
+* Added documentation for [grouping failed checks results]({% link soda-cl/failed-rows-checks.md %}#group-results-by-category) by one or more categories. 
+
 #### September 29, 2022
 
 * Added a [link]({% link soda-core/orchestrate-scans.md %}#soda-core-and-prefect) to a community contribution for Prefect 2.0 collection for Soda Core.
