@@ -972,3 +972,13 @@ body {
   color: #fff;
 }
 
+/* Override commentes in python snippets */
+
+.language-python.highlighter-rouge .highlight {
+    .c1 { 
+        color: #93a1a1;
+    }
+    .n {
+        color: #586e75;
+    }
+}
