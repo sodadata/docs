@@ -9,6 +9,13 @@ parent: Reference
 
 <br />
 
+#### October 5, 2022
+
+* Added release notes to correspond with the release of Soda Core 3.0.10.
+* Revised the value for the default number of [failed row samples]({% link soda-cl/optional-config.md %}#display-failed-rows-in-soda-cloud) that Soda automatically collects and displays in Soda Cloud from 1000 to 100.
+* Added documentation to accompany new support for [Dremio]({% link soda/connect-dremio.md %}).
+* Added documentation to accompany new support for [ClickHouse (Experimental)]({% link soda/connect-clickhouse.md %}).
+
 #### September 29, 2022
 
 * Added a [link]({% link soda-core/orchestrate-scans.md %}#soda-core-and-prefect) to a community contribution for Prefect 2.0 collection for Soda Core.

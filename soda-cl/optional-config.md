@@ -215,11 +215,11 @@ See [For each]({% link soda-cl/for-each.md %}) for further details.
 
 See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
-### Display failed rows in Soda Cloud
+## Display failed rows in Soda Cloud
 
-Checks that use missing, validity, or `duplicate_count` metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 1000. 
+Reference checks and any checks that use missing, validity, or `duplicate_count` metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a [missing]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), [validity]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud), or [duplicate_count]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud) metric, or in a [failed rows check]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit).
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a [reference check]({% link soda-cl/reference.md %}), or in a check with a [missing]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), [validity]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud), or [duplicate_count]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud) metric, or in a [failed rows check]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit).
 
 ```yaml
 checks for dim_customer:

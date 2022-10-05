@@ -63,17 +63,19 @@ pip install soda-core-postgres
 
 | Data source | Install package | 
 | ----------- | --------------- | 
-| Amazon Athena | soda-core-athena |
-| Amazon Redshift | soda-core-redshift | 
-| Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | soda-core-spark-df |
-| Apache Spark for Databricks SQL  | soda-core-spark[databricks] |
-| GCP Big Query | soda-core-bigquery | 
-| IBM DB2 | soda-core-db2 |
-| MS SQL Server | soda-core-sqlserver |
-| MySQL | soda-core-mysql |
-| PostgreSQL | soda-core-postgres |
-| Snowflake | soda-core-snowflake | 
-| Trino | soda-core-trino |
+| Amazon Athena | `soda-core-athena` |
+| Amazon Redshift | `soda-core-redshift` | 
+| Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | `soda-core-spark-df` |
+| Apache Spark for Databricks SQL  | `soda-core-spark[databricks]` |
+| ClickHouse (Experimental) | `soda-core-mysql` |
+| Dremio | `soda-core-dremio` | 
+| GCP Big Query | `soda-core-bigquery` | 
+| IBM DB2 | `soda-core-db2` |
+| MS SQL Server | `soda-core-sqlserver` |
+| MySQL | `soda-core-mysql` |
+| PostgreSQL | `soda-core-postgres` |
+| Snowflake | `soda-core-snowflake` | 
+| Trino | `soda-core-trino` |
 
 
 To deactivate the virtual environment, use the following command:
@@ -101,17 +103,19 @@ pip install soda-core-postgres
 
 | Data source | Install package | 
 | ----------- | --------------- | 
-| Amazon Athena | soda-core-athena |
-| Amazon Redshift | soda-core-redshift | 
-| Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | soda-core-spark-df |
-| Apache Spark for Databricks SQL  | soda-core-spark[databricks] |
-| GCP Big Query | soda-core-bigquery | 
-| IBM DB2 | soda-core-db2 |
-| MS SQL Server | soda-core-sqlserver |
-| MySQL | soda-core-mysql |
-| PostgreSQL | soda-core-postgres |
-| Snowflake | soda-core-snowflake | 
-| Trino | soda-core-trino |
+| Amazon Athena | `soda-core-athena` |
+| Amazon Redshift | `soda-core-redshift` | 
+| Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | `soda-core-spark-df` |
+| Apache Spark for Databricks SQL  | `soda-core-spark[databricks]` |
+| ClickHouse (Experimental) | `soda-core-mysql` |
+| Dremio | `soda-core-dremio` | 
+| GCP Big Query | `soda-core-bigquery` | 
+| IBM DB2 | `soda-core-db2` |
+| MS SQL Server | `soda-core-sqlserver` |
+| MySQL | `soda-core-mysql` |
+| PostgreSQL | `soda-core-postgres` |
+| Snowflake | `soda-core-snowflake` | 
+| Trino | `soda-core-trino` |
 
 
 To deactivate the virtual environment, use the following command:
