@@ -6,7 +6,7 @@ parent: Integrate Soda
 redirect_from: /soda-cloud/integrate-alation.html
 ---
 
-# Integrate Soda Cloud with Alation
+# Integrate Soda Cloud with Alation <!--Linked to UI, access Shlink-->
 
 Integrate Soda with Alation to access details about the quality of your data from within the data catalog.
 
