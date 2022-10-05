@@ -50,7 +50,7 @@ OR <br />
 * You a Soda Cloud account with Preview access ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
 
-## Define dataset discovery
+## Define dataset discovery  <!--Linked to UI, access Shlink-->
 
 Dataset discovery captures basic information about each dataset, including a dataset's schema and the columns it contains.
 
@@ -98,7 +98,7 @@ discover datasets:
 ![discover datasets](../assets/images/discover-datasets.png)
 
 
-## Define column profiling
+## Define column profiling  <!--Linked to UI, access Shlink-->
 
 Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. 
 

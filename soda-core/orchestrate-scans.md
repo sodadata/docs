@@ -6,7 +6,7 @@ parent: Soda Core
 redirect_from: /soda-core/scans-pipeline.html
 ---
 
-# Configure orchestrated scans 
+# Configure orchestrated scans <!--Linked to UI, access Shlink-->
 
 Integrate Soda Core with a data orchestration tool such as, Airflow, to automate and schedule your search for "bad" data. 
 

@@ -6,7 +6,7 @@ parent: Soda CL
 redirect_from: /soda-cloud/anomaly-detection.html
 ---
 
-# Anomaly score checks 
+# Anomaly score checks <!--Linked to UI, access Shlink-->
 
 Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
 *Requires Soda Cloud and Soda Core Scientific.*<br />
@@ -78,7 +78,7 @@ checks for orders:
     missing_values: [None, No Value]
 ```
 
-## Anomaly score check results
+## Anomaly score check results <!--Linked to UI, access Shlink-->
 
 Because the anomaly score check requires at least four data points before it can start detecting what counts as an anomalous measurement, your first few scans will yield a check result that indicates that Soda does not have enough data.
 

@@ -89,7 +89,7 @@ To use a distribution check, you must install Soda Core Scientific in the same d
 
 Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
 
-## Generate a distribution reference object (DRO)
+## Generate a distribution reference object (DRO) <!--Linked to UI, access Shlink--><!--though actually embedded in CLI help-->
 
 Before defining a distribution check, you must generate a distribution reference object (DRO). 
 

@@ -6,7 +6,7 @@ parent: Soda Cloud
 redirect_from: /soda-cloud/monitors.html
 ---
 
-# Create an agreement![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Create an agreement![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"} <!--Linked to UI, access Shlink-->
 
 {% include banner-preview.md %}
 

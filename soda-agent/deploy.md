@@ -5,7 +5,7 @@ description:
 parent: Soda Agent
 ---
 
-# Deploy a Soda Agent ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Deploy a Soda Agent ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"} <!--Linked to UI, access Shlink-->
 
 {% include banner-preview.md %}
 
