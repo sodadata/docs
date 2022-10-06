@@ -99,7 +99,7 @@ checks for dim_customer:
 
 ### Set a sample limit
 
-By default, Soda Core sends 1000 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda Core using the `samples limit` configuration key:value pair, as in the following example.
+By default, Soda Core sends 100 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda Core using the `samples limit` configuration key:value pair, as in the following example.
 
 ```yaml
 checks for dim_customer:

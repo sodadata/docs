@@ -6,7 +6,7 @@ parent: Soda Core
 redirect_from: /soda-core/configure.html
 ---
 
-# Configure Soda Core
+# Configure Soda Core <!--Linked to UI, access Shlink-->
 
 After you [install Soda Core]({% link soda-core/installation.md %}), you must create a `configuration.yml` to provide details for Soda Core to connect your data source (except Apache Spark DataFrames, which does not use a configuration YAML file).
 

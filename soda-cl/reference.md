@@ -5,7 +5,7 @@ description: Use a SodaCL reference check to validate that the values in a colum
 parent: SodaCL
 ---
 
-# Reference checks 
+# Reference checks <!--Linked to UI, access Shlink-->
 
 Use a reference check to validate that column contents match between datasets in the same data source. 
 
@@ -42,9 +42,9 @@ checks for dim_customers_dev:
 
 ### Display failed rows in Soda Cloud
 
-Reference checks automatically collect samples of any failed rows to display Soda Cloud. <!--The default number of failed row samples that Soda collects and displays is 1000. -->
+Reference checks automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100.
 
-<!--If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration.
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration.
 
 ```yaml
 checks for dim_customers_dev:
@@ -52,7 +52,6 @@ checks for dim_customers_dev:
       samples limit: 20
 ``` 
 
--->
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a reference check. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 

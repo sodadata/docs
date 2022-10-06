@@ -5,7 +5,7 @@ description: Use attributes, tags, and filters to facilitate your search for the
 parent: Soda Cloud
 ---
 
-# Organize datasets in Soda Cloud
+# Organize datasets in Soda Cloud <!--Linked to UI, access Shlink-->
 
 With dozens, or even hundreds of datasets in your Soda Cloud account, it may be laborious to try to find the data quality information you're looking for. To facilitate your search for specific data quality status, consider defining your own **Attributes** and **Tags** for datasets, then use filters to narrow your search.
 

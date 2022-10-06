@@ -7,7 +7,7 @@ redirect_from:
 - /soda-cl/
 - /soda-core/soda-cl.html
 ---
-<br />
+<!--Linked to UI, access Shlink--><br />
 
 ![soda-cl-logo](/assets/images/sodacl-logo.png){:height="185px" width="185px"} 
 <br />

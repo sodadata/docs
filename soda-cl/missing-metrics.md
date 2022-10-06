@@ -6,7 +6,7 @@ parent: Soda CL
 redirect_from: /soda-cl/missing-validity.html
 ---
 
-# Missing metrics 
+# Missing metrics <!--Linked to UI, access Shlink-->
 
 Use a missing metric in a check to surface missing values in the data in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 
@@ -152,9 +152,8 @@ checks for dim_customer:
 
 ### Display failed rows in Soda Cloud
 
-Checks with missing metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 1000. 
+Checks with missing metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
-<!--
 If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a missing metric.
 
 ```yaml
@@ -164,7 +163,7 @@ checks for dim_customer:
 ```
 
 <br />
--->
+
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for missing values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-missing-count](/assets/images/failed-missing-count.png){:height="700px" width="700px"}
