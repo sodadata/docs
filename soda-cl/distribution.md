@@ -157,6 +157,28 @@ Soda uses the `bins` and `weights` to generate a sample from the reference distr
 
 When multiple DROs are defined in a single `distribution_reference.yml` file, Soda requires all of them to be named. In that case it is required to provide the DRO name with the `-n` argument when using `soda update-dro`.
 
+
+<details>
+  <summary style="color:#00BC7E">Computing the number of bins for a DRO</summary>
+  For each DRO, we automatically compute the number of bins by taking the maximum of <a href="https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width" target="_blank">sturges</a>  and <a href="https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule" target="_blank">fd(Freedman Diaconis Estimator)</a> methods. This is also the default behavior of <a href="https://numpy.org/doc/stable/reference/generated/numpy.histogram_bin_edges.html#numpy.histogram_bin_edges" target="_blank">numpy.histogram_bin_edges(data, bins='auto')</a>. This method works quite robust for datasets having no outliers.
+
+  For datasets having outlier as shown below;
+
+  ```python
+  import numpy as np
+  arr = np.array([0, 0, 0, 1, 2, 3, 3, 4, 10e6])
+  number_of_bins = np.histogram_bin_edges(arr, bins='auto').size # return 3466808
+  ```
+
+  We obtain very high number of bins like `3466808` while we only have 9 elements in the array. We obtained this high number due to the outlier in the data which is `10e6`.
+  <br /><br />
+
+  To handle datasets having outliers, we apply <a href="https://en.wikipedia.org/wiki/Interquartile_range" target="_blank">interquantile range (IQR)</a> to detect and filter the outliers if the found number of bins are greater than the size of data. Basically, the data that are greater than `Q3 + 1.5 IQR` and less than `Q1 - 1.5 IQR` is removed from the datasets and we recompute the number of bins after removing the datasets.
+  <br /><br />
+
+  After removing the outliers, if the number of bins still exceed the size of filtered data, then we simply take the square root of our dataset size to set the number of bins. To cover edge cases, if square root of dataset size exceeds 1 million, then we hardcode number of bins to 1 million in order to prevent very large number of bins.
+</details>
+
 ## Define a distribution check
 
 1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the [Soda Core documentation]({% link soda-core/configuration.md %}).
