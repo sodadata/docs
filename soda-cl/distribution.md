@@ -159,24 +159,23 @@ When multiple DROs are defined in a single `distribution_reference.yml` file, So
 
 
 <details>
-  <summary style="color:#00BC7E">Computing the number of bins for a DRO</summary>
-  For each DRO, we automatically compute the number of bins by taking the maximum of <a href="https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width" target="_blank">sturges</a>  and <a href="https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule" target="_blank">fd(Freedman Diaconis Estimator)</a> methods. This is also the default behavior of <a href="https://numpy.org/doc/stable/reference/generated/numpy.histogram_bin_edges.html#numpy.histogram_bin_edges" target="_blank">numpy.histogram_bin_edges(data, bins='auto')</a>. This method works quite robust for datasets having no outliers.
+  <summary style="color:#00BC7E">How Soda computes the number of bins for a DRO</summary>
+  
+  For datasets with no outlier values, Soda automatically computes the number of bins for each DRO by taking the maximum of <a href="https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width" target="_blank">sturges</a> and <a href="https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule" target="_blank">fd(Freedman Diaconis Estimator)</a> methods. 
+  <a href="https://numpy.org/doc/stable/reference/generated/numpy.histogram_bin_edges.html#numpy.histogram_bin_edges" target="_blank">numpy.histogram_bin_edges(data, bins='auto')</a> also applies this practice by default. 
+<br /><br />
 
-  For datasets having outlier as shown below;
-
-  ```python
-  import numpy as np
+  For datasets <i>with</i> outliers, such as in the example below, Soda produces a great number of bins, <code>3466808</code>, with only nine elements in the array. The number of bins is great because there are <code>10e6</code> in the data.
+<br />
+  <pre><code>import numpy as np
   arr = np.array([0, 0, 0, 1, 2, 3, 3, 4, 10e6])
-  number_of_bins = np.histogram_bin_edges(arr, bins='auto').size # return 3466808
-  ```
+  number_of_bins = np.histogram_bin_edges(arr, bins='auto').size # return 3466808</code></pre>
+<br />
 
-  We obtain very high number of bins like `3466808` while we only have 9 elements in the array. We obtained this high number due to the outlier in the data which is `10e6`.
+  If the number of bins is greater than the size of data, Soda uses <a href="https://en.wikipedia.org/wiki/Interquartile_range" target="_blank">interquantile range (IQR)</a> to detect and filter the outliers. Basically, for data that is greater than <code>Q3 + 1.5 IQR</code> and less than <code>Q1 - 1.5 IQR</code> Soda removes the datasets, then recomputes the number of bins.
   <br /><br />
 
-  To handle datasets having outliers, we apply <a href="https://en.wikipedia.org/wiki/Interquartile_range" target="_blank">interquantile range (IQR)</a> to detect and filter the outliers if the found number of bins are greater than the size of data. Basically, the data that are greater than `Q3 + 1.5 IQR` and less than `Q1 - 1.5 IQR` is removed from the datasets and we recompute the number of bins after removing the datasets.
-  <br /><br />
-
-  After removing the outliers, if the number of bins still exceed the size of filtered data, then we simply take the square root of our dataset size to set the number of bins. To cover edge cases, if square root of dataset size exceeds 1 million, then we hardcode number of bins to 1 million in order to prevent very large number of bins.
+  After removing the outliers, if the number of bins still exceeds the size of the filtered data, Soda takes the square root of the dataset size to set the number of bins. To cover edge cases, if the square root of dataset size exceeds one million, then Soda sets the number of bins to one million to prevent it from generating too many bins.
 </details>
 
 ## Define a distribution check
