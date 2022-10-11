@@ -144,17 +144,17 @@ WHERE avg_age < 25
 ```yaml
 checks for dim_customers:
   - failed rows:
-      name: Average age of citizens is less than 25
-      fail query: |
-        WITH groups AS (
-	        SELECT country, AVG(age) as avg_age
-	        FROM Customers
-	        GROUP BY country
-        )
-
-        SELECT * 
-        FROM groups
-        WHERE avg_age < 25
+          name: Average age of citizens is less than 25
+          fail query: |
+            WITH groups AS (
+	            SELECT country, AVG(age) as avg_age
+	            FROM Customers
+	            GROUP BY country
+            )
+  
+            SELECT * 
+            FROM groups
+            WHERE avg_age < 25
 ```
 
 <br />
