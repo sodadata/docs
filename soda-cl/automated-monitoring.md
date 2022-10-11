@@ -5,7 +5,7 @@ description: Use a SodaCL automated monitoring check to automatically check for 
 parent: SodaCL
 ---
 
-# Automated monitoring checks 
+# Automated monitoring checks <!--Linked to UI, access Shlink-->
 
 Use automated monitoring checks to instruct Soda to automatically check for row count anomalies and schema changes in a dataset.<br />
 *Requires Soda Cloud* 

@@ -22,12 +22,12 @@
   subcategories:
   - subtitle: Connect to Athena
     page: soda/connect-athena.md
-  - subtitle: Connect to Redshift
-    page: soda/connect-redshift.md
-  - subtitle: Connect to Spark
-    page: soda/connect-spark.md
   - subtitle: Connect to BigQuery
     page: soda/connect-bigquery.md
+  - subtitle: Connect to ClickHouse
+    page: soda/connect-clickhouse.md
+  - subtitle: Connect to Dremio
+    page: soda/connect-dremio.md
   - subtitle: Connect to IBM DB2
     page: soda/connect-db2.md
   - subtitle: Connect to MS SQL Server
@@ -36,8 +36,12 @@
     page: soda/connect-mysql.md
   - subtitle: Connect to PostgreSQL
     page: soda/connect-postgres.md
+  - subtitle: Connect to Redshift
+    page: soda/connect-redshift.md
   - subtitle: Connect to Snowflake
     page: soda/connect-snowflake.md
+  - subtitle: Connect to Spark
+    page: soda/connect-spark.md
   - subtitle: Connect to Trino
     page: soda/connect-trino.md
 

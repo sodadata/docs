@@ -5,7 +5,7 @@ description:
 parent: Soda Cloud
 ---
 
-# Edit checks in Soda Cloud
+# Edit checks in Soda Cloud <!--Linked to UI, access Shlink-->
 
 In Soda Cloud, you can only create new checks as part of an [agreement]({% link soda-cloud/agreements.md %}); you cannot create independent, individual checks, yet.
 

@@ -115,6 +115,7 @@ When you run a scan in Soda Core, you can specify some options that modify the s
 | `-c TEXT` or<br /> `--configuration TEXT` | ✓ | Use this option to specify the file path and file name for the configuration YAML file.|
 | `-d TEXT` or<br /> `--data-source TEXT` |  ✓ | Use this option to specify the data source that contains the datasets you wish to scan.|
 | `-s TEXT` or<br /> `--scan-definition TEXT` |  | Use this option to provide a [scan definition]({% link soda/glossary.md %}#scan-definition) name so that Soda Cloud keeps check results from different environments (dev, prod, staging) separate. See [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}##configure-the-same-scan-to-run-in-multiple-environments).|
+| `-srf` or <br /> `--scan-results-file TEXT` |  | Specify the file name and file path to which Soda Core sends a JSON file of the scan results. You can use this in addition to, or instead of, sending results to Soda Cloud. <br /> `soda scan -d adventureworks -c configuration.yml -srf test.json checks.yml`|
 | `-t TEXT` or<br /> `--data-timestamp TEXT` |  | Replace TEXT with a scan time in ISO8601 format (`2021-04-28T09:00:00+02:00`). Refer to [Overwrite scan output in Soda Cloud]({% link soda-cloud/scan-output.md %}#overwrite-scan-output-in-soda-cloud) for details. |
 | `-v TEXT` or<br /> `--variable TEXT` |  | Replace `TEXT` with variables you wish to apply to the scan, such as a [filter for a date]({% link soda-cl/filters.md %}). Put single or double quotes around any value with spaces. <br />  `soda scan -d my_datasource -v start=2020-04-12 -c configuration.yml checks.yml` |
 | `V` or <br /> `--verbose` |  | Return scan output in verbose mode to review query details. |
@@ -124,6 +125,14 @@ When you run a scan in Soda Core, you can specify some options that modify the s
 **Problem:** When you run a scan, you get an error that reads, `Exception while exporting Span batch.`
 
 **Solution:** Without an internet connection, Soda Core is unable to communicate with `soda.connect.io` to transmit anonymous usage statistics about the software. <br /> If you are using Soda Core offline, you can resolve the issue by setting `send_anonymous_usage_stats: false` in your `configuration.yml` file. Refer to [Soda Core usage statistics]({% link soda-core/usage-stats.md %}) for further details.
+
+<br />
+
+**Problem:** When you run a scan using Soda Core 3.0.9, you get an error message that reads, `from google.protobuf.pyext import _message ImportError: dlopen(.../site-packages/google/protobuf/pyext/_message.cpython-310-darwin.so, 0x0002): symbol not found in flat namespace`
+
+**Solution:** This is the result of a transitive dependency from open telemetry that gathers OSS usage statistics. To resolve:
+1. From the command-line, in the directory in which you installed your soda-core package, run `pip uninistall protobuf`.
+2. Reinstall protobuf with the command `pip install protobuf==3.19.4`.
 
 
 ## Go further

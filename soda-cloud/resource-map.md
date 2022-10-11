@@ -5,7 +5,7 @@ description: Learn about the different parts, or resources, that make up your So
 parent: Soda Cloud
 ---
 
-# Soda Cloud resources
+# Soda Cloud resources <!--Linked to UI, access Shlink-->
 
 Soda Cloud is made up of several parts, or **resources**, that work together to define checks, execute scans, and display results that help you gauge the quality and reliability of your data. 
 

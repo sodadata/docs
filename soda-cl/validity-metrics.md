@@ -65,7 +65,7 @@ checks for dim_reseller:
 ```
 
 <details>
-  <summary>What is a relative threshold?</summary>
+  <summary style="color:#00BC7E">What is a relative threshold?</summary>
 When it scans a column in your dataset, Soda automatically separates all values in the column into one of three categories:
 <ul> 
   <li>missing</li>
@@ -173,11 +173,21 @@ Error occurred while executing scan.
 
 <br />
 
-### Send failed rows to Soda Cloud
+### Display failed rows in Soda Cloud
 
-If you have connected Soda Core to a Soda Cloud account, checks with validity metrics automatically send samples of any failed rows to Soda Cloud. 
-1. To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard.
-2. Click the row for a check for invalid values, then go to the **Failed rows** tab.
+Checks with validity metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
+
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric.
+
+```yaml
+checks for dim_customer:
+  - invalid_percent(email_address) < 50:
+      samples limit: 2
+```
+
+<br />
+
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for validity values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-invalid-count](/assets/images/failed-invalid-count.png){:height="700px" width="700px"}
 

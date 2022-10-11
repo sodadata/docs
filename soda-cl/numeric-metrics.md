@@ -6,7 +6,7 @@ parent: Soda CL
 redirect_from: soda-cl/duplicates.html
 ---
 
-# Numeric metrics 
+# Numeric metrics <!--Linked to UI, access Shlink-->
 
 Use a numeric metric in a check to perform basic calculations on the data in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 
@@ -67,11 +67,21 @@ checks for dim_reseller:
   - change avg last 7 for row_count < 50
 ```
 
-### Send failed rows to Soda Cloud
+### Display failed rows in Soda Cloud
 
-If you have connected Soda Core to a Soda Cloud account, checks that use a `duplicate_count` metric automatically sends samples of any failed rows to Soda Cloud. 
-1. To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard.
-2. Click the row for the check with `duplicate_count`, then go to the **Failed rows** tab.
+Checks that use the `duplicate_count` metric automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
+
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric.
+
+```yaml
+checks for dim_customer:
+  - duplicate_count(email_address) < 50:
+      samples limit: 2
+```
+
+<br />
+
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for duplicate_count values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-duplicate-count](/assets/images/failed-duplicate-count.png){:height="700px" width="700px"}
 

@@ -99,7 +99,7 @@ The following image illustrates what Soda SQL does when you initiate a scan.
 
 ## Soda SQL automation and integrations
 
-To automate scans on your data, you can use the **Soda SQL Python library** to programmatically execute scans. Based on a set of conditions or a specific schedule of events, you can instruct Soda SQL to automatically run scans. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a warehouse, after it is transformed, and before it is exported to another warehouse. Refer to the [Programmatic scan]({% link soda-sql/programmatic_scan.md %}) instructions for details.
+To automate scans on your data, you can use the **Soda SQL Python library** to execute scans. Based on a set of conditions or a specific schedule of events, you can instruct Soda SQL to automatically run scans. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a warehouse, after it is transformed, and before it is exported to another warehouse.
 
 Alternatively, you can integrate Soda SQL with a **data orchestration tool** such as, Airflow, Dagster, or dbt Core™, to schedule automated scans. You can also configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically quarantine the "bad" data or block it from contaminating your data pipeline. Refer to [Orchestrate scans]({% link soda-sql/orchestrate_scans.md %}) for details.
 
@@ -119,7 +119,6 @@ To connect Soda SQL to Soda Cloud, you create API keys in your Soda Cloud accoun
 * Learn more about the contents of the [Scan YAML]({% link soda-sql/scan-yaml.md %}) file.
 * Learn more about the [Metrics]({% link soda-sql/metrics.md %}) you can use to define [Tests]({% link soda-sql/tests.md %}).
 * Learn how to [Connect to Soda Cloud]({% link soda-sql/connect_to_cloud.md %}).
-* See how to prepare [programmatic scans]({% link soda-sql/programmatic_scan.md %}) of your data.
 * Reference the [Data types]({% link soda-sql/supported-data-types.md %}) that Soda SQL supports when it scans columns.
 
 

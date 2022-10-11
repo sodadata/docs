@@ -5,7 +5,7 @@ description: Use SodaCL to send sample data to Soda Cloud to quickly review the 
 parent: SodaCL
 ---
 
-# Display sample data in Soda Cloud 
+# Display sample data in Soda Cloud <!--Linked to UI, access Shlink-->
 
 Use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.<br />
 *Requires Soda Cloud.*
@@ -22,6 +22,7 @@ sample datasets:
 [Define sample datasets](#define-sample-datasets)<br />
 [Optional check configurations](#optional-check-configurations) <br />
 [Inclusion and exclusion rules](#inclusion-and-exclusion-rules)<br />
+[Disable samples in Soda Cloud](#disable-samples-in-soda-cloud)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -103,6 +104,12 @@ sample datasets:
 
 * If you configure `sample datasets` to include specific datasets, Soda implicitly *excludes* all other datasets from sampling. 
 * If you combine an include config and an exclude config and a dataset fits both patterns, Soda excludes the dataset from sampling.
+
+## Disable samples in Soda Cloud
+
+Where your datasets contain sensitive or private information, you may *not* want to send samples from your data source to Soda Cloud. In such a circumstance, you can disable the feature completely in Soda Cloud.
+
+{% include disable-all-samples.md %}
 
 ## Go further
 * Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

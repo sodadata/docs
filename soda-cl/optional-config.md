@@ -19,6 +19,7 @@ The following optional configurations are available to use with most, though not
 [Use quotes in a check](#use-quotes-in-a-check)<br />
 [Apply checks to multiple datasets](#apply-checks-to-multiple-datasets)<br />
 [Scan a portion of your dataset](#scan-a-portion-of-your-dataset)<br />
+[Display failed row samples in Soda Cloud](#display-failed-rows-in-soda-cloud)<br />
 <br />
 <br />
 
@@ -213,6 +214,23 @@ See [For each]({% link soda-cl/for-each.md %}) for further details.
 {% include dataset-filters.md %}
 
 See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
+
+## Display failed rows in Soda Cloud
+
+Reference checks and any checks that use missing, validity, or `duplicate_count` metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
+
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a [reference check]({% link soda-cl/reference.md %}), or in a check with a [missing]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), [validity]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud), or [duplicate_count]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud) metric, or in a [failed rows check]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit).
+
+```yaml
+checks for dim_customer:
+  - duplicate_count(email_address) < 50:
+      samples limit: 2
+```
+
+<br />
+
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for duplicate_count values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+
 
 
 ## Go further

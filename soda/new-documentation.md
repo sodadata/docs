@@ -9,14 +9,44 @@ parent: Reference
 
 <br />
 
-#### October 6, 2022
+#### October 13, 2022
 
 * Removed the Preview status from self-serve features available in Soda Cloud such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
+
+
+#### October 11, 2022
+
+* Added documentation for [grouping failed checks results]({% link soda-cl/failed-rows-checks.md %}#group-results-by-category) by one or more categories. 
+
+#### October 5, 2022
+
+* Added release notes to correspond with the release of Soda Core 3.0.10.
+* Revised the value for the default number of [failed row samples]({% link soda-cl/optional-config.md %}#display-failed-rows-in-soda-cloud) that Soda automatically collects and displays in Soda Cloud from 1000 to 100.
+* Added documentation to accompany new support for [Dremio]({% link soda/connect-dremio.md %}).
+* Added documentation to accompany new support for [ClickHouse (Experimental)]({% link soda/connect-clickhouse.md %}).
+
+#### September 29, 2022
+
+* Added a [link]({% link soda-core/orchestrate-scans.md %}#soda-core-and-prefect) to a community contribution for Prefect 2.0 collection for Soda Core.
+* Updated Reference checks documentation for [displaying failed]({% link soda-cl/reference.md %}##display-failed-rows-in-soda-cloud) rows in Soda Cloud.
+
+#### September 28, 2022
+
+* Added release notes to correspond with the release of Soda Core 3.0.9.
+* Added documentation for a new `samples limit` configuration key that you can add to checks that use [missing]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), [validity]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud), or [duplicate_count]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud) metrics which automatically send 1000 failed row samples to Soda Cloud.
+* Added instructions to [save failed row samples to a file]({% link soda-core/programmatic.md %}#save-failed-row-samples-to-a-file).
+* Added [Windows-specific instructions]({% link soda-core/installation.md %}) for installing Soda Core using a virtual environment.
+* Removed known issue for in-check variables which are supported as of Soda Core 3.0.9: "Except for customizing [dynamic names for checks]({% link soda-cl/optional-config.md %}#customize-check-names), you *cannot* use in-check variables. For example, Soda does not support the following check:
+
+```yaml
+checks for dim_customers:
+  - row_count > ${VAR_2}
+```
 
 #### September 23, 2022
 
 * Added documentation to set up [integration with Microsoft Teams]({% link soda/integrate-webhooks.md %}) so that Soda Cloud can send alert notifications or incident events to MS Teams.
-* Added detail for programmatically inspecting scan results; see [programmatic scans]({% link soda-core/programmatic.md %}).
+* Added detail for programmatically inspecting scan results; see [programmatic scans]({% link soda-core/programmatic.md %}). Available with Soda Core 3.0.9.
 * Added details for using various [authentication methods]({% link soda/connect-bigquery.md %}#authentication-methods) to connect to BigQuery.
 
 #### Septemeber 22, 2022

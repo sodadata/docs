@@ -17,9 +17,9 @@ Based on a set of conditions or a specific event schedule, you can instruct Soda
 
 You can save Soda SQL scan results anywhere in your system; the `scan_result` object contains all the scan result information.
 
-### Basic programmatic scan
+### Basic scan
 
-Execute a programmatic scan based on Soda SQL's default directory structure.
+Execute a scan based on Soda SQL's default directory structure.
 
 ```python
 scan_builder = ScanBuilder()
@@ -32,7 +32,7 @@ if scan_result.has_test_failures():
     print('Scan has test failures, stop the pipeline')
 ```
 
-### Programmatic scans using dicts
+### Scans using dicts
 
 ```python
 from sodasql.scan.scan_builder import ScanBuilder
@@ -78,7 +78,7 @@ print('Scan has test failures, stop the pipeline')
 ```
 
 
-### Programmatic scan using a lambda function
+### Scan using a lambda function
 
 ```python
 from sodasql.scan.scan_builder import ScanBuilder

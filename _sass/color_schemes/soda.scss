@@ -176,7 +176,7 @@ $media-queries: (
   xl: 1400px,
 ) !default;
 
-$link-color: #0AC675;
+$link-color: #00BC7E;
 
 $feedback-color: darken($sidebar-color, 2%);
 
@@ -294,7 +294,7 @@ $code-background-color: #f8f9f9;
         width: 150px;
         text-align: center;
         border-radius: 20px;
-        background-color: #0AC675;
+        background-color: #00D891;
         font-size: 15px;
         line-height: 20px;
         font-weight: 500;
@@ -384,7 +384,7 @@ $code-background-color: #f8f9f9;
         padding-bottom: 6px;
 
         &.active {
-            color: #0AC675;
+            color: #00BC7E;
             font-weight: 600;
         }
     }
@@ -406,7 +406,7 @@ $code-background-color: #f8f9f9;
 
     .nav-list .nav-list-item .nav-list-link.active {
         background: none;
-        color: #0AC675;
+        color: #00BC7E;
 
         &:hover {
             background-image: linear-gradient(-90deg, #f2f6f6 0%, rgba(242, 246, 246, 0.8) 80%, rgba(242, 246, 246, 0) 100%);
@@ -525,7 +525,7 @@ body {
 .main-content-wrap a {
     background: none !important;
     transition: color .4s ease-out;
-    color: #0AC675;
+    color: #00BC7E;
 
     &:hover {
         color: #009e66;
@@ -558,7 +558,7 @@ body {
     font-weight: 600;
     color: #000;
     a {
-        color: #0AC675;
+        color: #00BC7E;
         background: none !important;
     }
 }
@@ -671,7 +671,7 @@ body {
                 transition: color .4s ease-out;
 
                 &:hover {
-                    color: #0AC675;
+                    color: #00BC7E;
                     background: none;
                     border: none;
                 }
@@ -827,7 +827,7 @@ body {
     cursor: pointer;
     padding:10px 20px;
     margin:0px 0px;
-    background:#0AC675;
+    background:#00D891;
     display:inline-block;
     color:#fff;
     border-radius:3px 3px 0px 0px;
@@ -972,3 +972,13 @@ body {
   color: #fff;
 }
 
+/* Override commentes in python snippets */
+
+.language-python.highlighter-rouge .highlight {
+    .c1 { 
+        color: #93a1a1;
+    }
+    .n {
+        color: #586e75;
+    }
+}

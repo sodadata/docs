@@ -6,7 +6,7 @@ parent: Soda Agent
 redirect_from: /soda-agent/
 ---
 
-# Soda Agent basic concepts 
+# Soda Agent basic concepts <!--Linked to UI, access Shlink-->
 
 {% include soda-agent.md %}
 

@@ -105,14 +105,14 @@ Alternatively, you can prevent Soda SQL from sending metadata or samples to Soda
 
 ## Reroute failed row samples for a dataset 
 
-Use a `FailedRowsProcessor` to programmatically send a dataset's failed row samples to a secure location within your organization's infrastructure, such as an Amazon S3 bucket or Google Big Query. In Soda Cloud, users looking for failed row samples see the message you define advising them where they can access and review failed row samples for the dataset.
+Use a `FailedRowsProcessor` to send a dataset's failed row samples to a secure location within your organization's infrastructure, such as an Amazon S3 bucket or Google Big Query. In Soda Cloud, users looking for failed row samples see the message you define advising them where they can access and review failed row samples for the dataset.
 
 ![failed-row-message](/assets/images/failed-row-message.png){:height="700px" width="700px"}
 
 
 #### Reroute to Amazon S3
 
-Note that you can only configure failed row sample rerouting for individual datasets, and only for those scans that you have [scheduled programmatically]({% link soda-sql/programmatic_scan.md %}). 
+Note that you can only configure failed row sample rerouting for individual datasets, and only for those scans that you have scheduled programmatically. 
 
 First, configure the `FailedRowProcessor` according to the following example.
 

@@ -36,7 +36,7 @@ In general, SodaCL checks fall into one of three broad categories:
 A **standard** check, as illustrated above with `row_count`, uses a language pattern that includes a metric and a threshold. All numeric, missing, and validity metrics use this pattern and have a multitude of optional configurations. Read more about [standard check types](#standard-check-types) below.
 
 <details>
-    <summary>Quick view of standard check metrics</summary>
+    <summary style="color:#00BC7E">Quick view of standard check metrics</summary>
     avg<br />
     avg_length<br />
     duplicate_count<br />
@@ -73,7 +73,7 @@ checks for dim_employees_dev:
 ![unique-check](/assets/images/unique-check.png){:height="700px" width="700px"}
 
 <details>
-    <summary>Quick view of unique check types</summary>
+    <summary style="color:#00BC7E">Quick view of unique check types</summary>
     anomaly score<br />
     distribution<br />
     freshness<br />
@@ -97,7 +97,7 @@ checks for customers:
 ![user-defined-check](/assets/images/user-defined-check.png){:height="640px" width="640px"}
 
 <details>
-    <summary>Quick view of user-defined check types</summary>
+    <summary style="color:#00BC7E">Quick view of user-defined check types</summary>
     failed rows<br />
     user-defined<br />
 

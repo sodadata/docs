@@ -7,7 +7,9 @@ parent: SodaCL
 
 # Failed rows checks 
 
-Use a failed rows check to explicitly send samples of rows that failed a check to Soda Cloud.
+Use a failed rows check to explicitly send samples of rows that failed a check to Soda Cloud. You can also use a failed row check to configure Soda Core to group failed check results by one or more categories.
+
+*Requires Soda Cloud*
 
 ```yaml
 checks for dim_customer:
@@ -20,11 +22,26 @@ checks for dim_customer:
       fail query: |
         SELECT DISTINCT geography_key
         FROM dim_customer as customer
+# Failed rows with GROUP BY
+  - failed rows:
+      name: Average age of citizens is less than 25
+      fail query: |
+        WITH groups AS (
+	        SELECT country, AVG(age) as avg_age
+	        FROM Customers
+	        GROUP BY country
+        )
+
+        SELECT * 
+        FROM groups
+        WHERE avg_age < 25
 ```
 
 [Prerequisites](#prerequisites) <br />
 [About failed row samples](#about-failed-row-samples) <br />
 [Define failed rows checks](#define-failed-rows-checks) <br />
+[Set a sample limit](#set-a-sample-limit)<br />
+[Group results by category](#group-results-by-category)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [Configure a failed row sampler](#configure-a-failed-row-sampler)<br />
 [Go further](#go-further)<br />
@@ -32,8 +49,8 @@ checks for dim_customer:
 
 ## Prerequisites
 
-To use failed row checks, you must have a **Soda Cloud** account connected to Soda Core. See [Connect Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}) for details. 
-
+* To use failed row checks, you must have a **Soda Cloud** account connected to Soda Core. See [Connect Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}) for details. 
+* To use failed row checks, samples collection must *not* be [disabled in Soda Cloud]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).
 
 ## About failed row samples
 
@@ -41,7 +58,7 @@ When a scan results in a failed check, the CLI output displays information about
 
 There are two ways you can configure a SodaCL check to send failed row samples to your Soda Cloud account:
 
-1. Use a [`duplicate_count` metric]({% link soda-cl/numeric-metrics.md %}#send-failed-rows-to-soda-cloud), a [missing metric]({% link soda-cl/missing-metrics.md %}#send-failed-rows-to-soda-cloud), or a [validity metric]({% link soda-cl/validity-metrics.md %}#send-failed-rows-to-soda-cloud) in your check. Checks that use these metrics automatically send failed row samples to your Soda Cloud account.
+1. Use a [reference check]({% link soda-cl/reference.md %}), [`duplicate_count` metric]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud), a [missing metric]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), or a [validity metric]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud) in your check. Checks that use these metrics automatically send failed row samples to your Soda Cloud account.
 2. Use failed rows checks in your to explicitly send failed rows to Soda Cloud. Read on!
 
 For security, you can also disable the failed row samples feature entirely; see [Disable failed row samples]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples) for details.
@@ -80,7 +97,9 @@ checks for dim_customer:
 
 <br />
 
-By default, Soda Core sends 100 sample rows to Soda Cloud. You can limit the number of sample rows that Soda Core using the `samples limit` configuration key:value pair, as in the following example.
+### Set a sample limit
+
+By default, Soda Core sends 100 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda Core using the `samples limit` configuration key:value pair, as in the following example.
 
 ```yaml
 checks for dim_customer:
@@ -88,6 +107,57 @@ checks for dim_customer:
       samples limit: 50
       fail condition: total_children = '2' and number_cars_owned >= 3
 ```
+
+<br />
+
+### Group results by category
+
+You can use a SQL query in a failed row check to group failed check results by one or more categories. Use a SQL editor to build and test a SQL query with your data source, then add the query to a failed rows check to execute it during a Soda scan.
+
+The following example illustrates how to build a query that identifies the countries where the average age of people is less than 25.
+
+1. Begining with a basic query, the output shows the data this example works with.
+```sql
+SELECT * FROM Customers;
+```
+![group-by-1](/assets/images/group-by-1.png){:height="600px" width="600px"}
+2. Build a query to select groups with the relevant aggregations.
+```sql
+SELECT country, AVG(age) as avg_age
+FROM Customers
+GROUP BY country
+```
+![group-by-2](/assets/images/group-by-2.png){:height="600px" width="600px"}
+3. Add a common table expression (CTE) to identify the "bad" group (where the average age is less than 25) from among the grouped results.
+```sql
+WITH groups AS (
+	SELECT country, AVG(age) as avg_age
+	FROM Customers
+	GROUP BY country
+)
+SELECT * 
+FROM groups
+WHERE avg_age < 25
+```
+![group-by-3](/assets/images/group-by-3.png){:height="600px" width="600px"}
+4. Now that the query yields the expected results, add the query to a failed row check, as per the following example.
+```yaml
+checks for dim_customers:
+  - failed rows:
+          name: Average age of citizens is less than 25
+          fail query: |
+            WITH groups AS (
+	            SELECT country, AVG(age) as avg_age
+	            FROM Customers
+	            GROUP BY country
+            )
+  
+            SELECT * 
+            FROM groups
+            WHERE avg_age < 25
+```
+
+<br />
 
 ## Optional check configurations
 
@@ -182,6 +252,12 @@ if __name__ == '__main__':
     s.execute()
     print(s.get_logs_text())
 ```
+
+
+### Save failed row samples to alternate desination
+
+If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">docs.python.org</a> for details.
+
 
 ## Go further
 

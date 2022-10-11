@@ -5,7 +5,7 @@ description: Use a SodaCL reference check to validate that the values in a colum
 parent: SodaCL
 ---
 
-# Reference checks 
+# Reference checks <!--Linked to UI, access Shlink-->
 
 Use a reference check to validate that column contents match between datasets in the same data source. 
 
@@ -39,6 +39,21 @@ You can use reference checks to compare the values of multiple columns in differ
 checks for dim_customers_dev:
   - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name)
 ```
+
+### Display failed rows in Soda Cloud
+
+Reference checks automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100.
+
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration.
+
+```yaml
+checks for dim_customers_dev:
+  - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name):
+      samples limit: 20
+``` 
+
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a reference check. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+
 
 ## Optional check configurations
 

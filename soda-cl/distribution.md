@@ -51,9 +51,8 @@ You can use the following distance metrics in your distribution checks.
 * <a href="https://en.wikipedia.org/wiki/Wasserstein_metric" target="_blank">Standardized Wasserstein Distance (SWD) </a> (standardized using the sample standard deviation) for continuous or categorical data
 * <a href="https://en.wikipedia.org/wiki/Earth_mover%27s_distance" target="_blank">Standardized Earth Mover's Distance</a> (standardized using the sample standard deviation, this metric is equal to the SWD) for continuous or categorical data
 
-
 <details>
-  <summary>Sample sizes in distribution checks</summary>
+  <summary style="color:#00BC7E">Sample sizes in distribution checks</summary>
   In hypothesis testing, the <a href="https://en.wikipedia.org/wiki/Power_of_a_test" target="_blank">statistical power</a> of a test refers to its ability to reject the null hypothesis when it is false. Specifically, the power of a test tells you how likely it is that the null hypothesis will be rejected if the true difference with the alternative hypothesis were of a particular size; see <a href="https://en.wikipedia.org/wiki/Effect_size#Relationship_to_test_statistics" target="_blank">effect size</a>. A very powerful test is able to reject the null hypothesis even if the true difference is small.
   <br /><br />
   Since distribution checks issue warnings based on the p-value alone and do not take effect size into account, having too much power can make the results of the checks hard to interpret. An extremely powerful test rejects the null hypothesis for effect sizes that are negligible. Because the power of a test increases as its sample size increases, there is a sample size limit of one million in distribution checks. Soon, users will be able to define the sample size in a distribution check.
@@ -63,10 +62,9 @@ You can use the following distance metrics in your distribution checks.
   For each distribution type, the Kolmogorov-Smirnov test rejected the null hypothesis 100% of the time if the effect size was equal to, or larger than, a shift to the mean of 1% of the standard deviation, when using a sample size of one million. Using such a sample size does not result in problems with local memory.
 </details>
 
-<br />
 
 <details>
-  <summary>Distribution check thresholds for distance metrics</summary>
+  <summary style="color:#00BC7E">Distribution check thresholds for distance metrics</summary>
   The values of the Population Stability Index (PSI) and the Standardized Wasserstein Distance (SWD) can be hard to interpret. Consider carefully investigating which distribution thresholds make sense for your use case. <br />
   <br />
   Some common interpretations of the PSI result are as follows:
@@ -91,7 +89,7 @@ To use a distribution check, you must install Soda Core Scientific in the same d
 
 Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
 
-## Generate a distribution reference object (DRO)
+## Generate a distribution reference object (DRO) <!--Linked to UI, access Shlink--><!--though actually embedded in CLI help-->
 
 Before defining a distribution check, you must generate a distribution reference object (DRO). 
 
