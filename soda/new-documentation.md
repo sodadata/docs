@@ -9,7 +9,7 @@ parent: Reference
 
 <br />
 
-#### October 6, 2022
+#### October 11, 2022
 
 * Added documentation for [grouping failed checks results]({% link soda-cl/failed-rows-checks.md %}#group-results-by-category) by one or more categories. 
 
