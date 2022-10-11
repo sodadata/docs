@@ -25,7 +25,8 @@ checks for dim_customer:
 [Install Soda Core Scientific](#install-soda-core-scientific)<br />
 [Generate a distribution reference object (DRO)](#generate-a-distribution-reference-object-dro)<br />
 [Define a distribution check](#define-a-distribution-check)<br />
-[Distribution check details](#distribution-check-details)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Distribution check details](#distribution-check-details)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Bins and weights](#bins-and-weights)<br />
 [Distribution check examples](#distribution-check-examples)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
@@ -152,7 +153,7 @@ distribution reference:
     - 3
     - 4
 ```
-Soda appended a new key called `distribution reference` to the file, together with an array of `bins` and a corresponding array of `weights`. [Read more](#distribution-check-details) about `bins` and `weights` and how Soda computes the number of bins for a DRO.
+Soda appended a new key called `distribution reference` to the file, together with an array of `bins` and a corresponding array of `weights`. [Read more](#bins-and-weights) about `bins` and `weights`, and how Soda computes the number of bins for a DRO.
 
 
 ## Define a distribution check
@@ -188,30 +189,29 @@ When Soda Core executes the distribution check above, it compares the values in 
 
 * When you execute the `soda scan` command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory. 
 
-* As explained in [Generate a Distribution Reference Object (DRO)](#generate-a-distribution-reference-object-dro), Soda uses bins and weights to take random samples from your DRO. Therefore, it is possible that the original dataset that you used to create the DRO resembles a different underlying distribution than the dataset that Soda creates by sampling from the DRO. To limit the impact of this possibility, Soda runs the tests in each distribution check ten times and returns the median of the results (either p-value or distance metric). <br /> 
+* As explained in [Generate a Distribution Reference Object (DRO)](#generate-a-distribution-reference-object-dro), Soda uses bins and weights to take random samples from your DRO. Therefore, it is possible that the original dataset that you used to create the DRO resembles a different underlying distribution than the dataset that Soda creates by sampling from the DRO. To limit the impact of this possibility, Soda runs the tests in each distribution check ten times and returns the median of the results (either p-value or distance metric). <br /> <br />
 For example, if you use the Kolmogorov-Smirnov test and a threshold of 0.05, the distribution check uses the Kolmogorov-Smirnov test to compare ten different samples from your DRO to the data in your column.  If the median of the returned p-values is smaller than 0.05, the check issues a warning. This approach does change the interpretation of the distribution check results. For example, the probability of a type I error is multiple orders of magnitude smaller than the signifance level that you choose. 
 
-* Soda uses the `bins` and `weights` to generate a sample from the reference distribution when it executes the distribution check during a scan. By creating a sample using the DRO's bins and weights, you do not have to save the entire – potentially very large - sample. The `distribution_type` value impacts how the weights and bins will be used to generate a sample, so make sure your choice reflects the nature of your data (continuous or categorical). <br />
-<details>
-  <summary style="color:#00BC7E">Learn how Soda computes the number of bins for a DRO</summary>
-  
-  For datasets with no outlier values, Soda automatically computes the number of bins for each DRO by taking the maximum of <a href="https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width" target="_blank">sturges</a> and <a href="https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule" target="_blank">fd(Freedman Diaconis Estimator)</a> methods. 
-  <a href="https://numpy.org/doc/stable/reference/generated/numpy.histogram_bin_edges.html#numpy.histogram_bin_edges" target="_blank">numpy.histogram_bin_edges(data, bins='auto')</a> also applies this practice by default. 
-<br /><br />
+### Bins and weights
 
-  For datasets <i>with</i> outliers, such as in the example below, Soda produces a great number of bins, <code>3466808</code>, with only nine elements in the array. The number of bins is great because there are <code>10e6</code> in the data.
-<br />
-  <pre><code>import numpy as np
-  arr = np.array([0, 0, 0, 1, 2, 3, 3, 4, 10e6])
-  number_of_bins = np.histogram_bin_edges(arr, bins='auto').size # return 3466808</code></pre>
-<br />
+Soda uses the `bins` and `weights` to generate a sample from the reference distribution when it executes the distribution check during a scan. By creating a sample using the DRO's bins and weights, you do not have to save the entire – potentially very large - sample. The `distribution_type` value impacts how the weights and bins will be used to generate a sample, so make sure your choice reflects the nature of your data (continuous or categorical). 
 
-  If the number of bins is greater than the size of data, Soda uses <a href="https://en.wikipedia.org/wiki/Interquartile_range" target="_blank">interquantile range (IQR)</a> to detect and filter the outliers. Basically, for data that is greater than <code>Q3 + 1.5 IQR</code> and less than <code>Q1 - 1.5 IQR</code> Soda removes the datasets, then recomputes the number of bins.
-  <br /><br />
+To compute the number of bins for a DRO, Soda uses different strategies based on whether outlier values are present in the dataset.
 
-  After removing the outliers, if the number of bins still exceeds the size of the filtered data, Soda takes the square root of the dataset size to set the number of bins. To cover edge cases, if the square root of dataset size exceeds one million, then Soda sets the number of bins to one million to prevent it from generating too many bins.
-</details>
-<br />
+For datasets with no outlier values, Soda automatically computes the number of bins for each DRO by taking the maximum of <a href="https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width" target="_blank">sturges</a> and <a href="https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule" target="_blank">fd(Freedman Diaconis Estimator)</a> methods. 
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.histogram_bin_edges.html#numpy.histogram_bin_edges" target="_blank">numpy.histogram_bin_edges(data, bins='auto')</a> also applies this practice by default. 
+
+For datasets *with* outliers, such as in the example below, Soda produces a great number of bins, `3466808`, with only nine elements in the array. The number of bins is great because there are `10e6` in the data.
+```shell
+import numpy as np
+arr = np.array([0, 0, 0, 1, 2, 3, 3, 4, 10e6])
+number_of_bins = np.histogram_bin_edges(arr, bins='auto').size # return 3466808
+```
+
+If the number of bins is greater than the size of data, Soda uses <a href="https://en.wikipedia.org/wiki/Interquartile_range" target="_blank">interquantile range (IQR)</a> to detect and filter the outliers. Basically, for data that is greater than `Q3 + 1.5 IQR` and less than `Q1 - 1.5 IQR` Soda removes the datasets, then recomputes the number of bins.
+
+After removing the outliers, if the number of bins still exceeds the size of the filtered data, Soda takes the square root of the dataset size to set the number of bins. To cover edge cases, if the square root of dataset size exceeds one million, then Soda sets the number of bins to one million to prevent it from generating too many bins.
+
 
 ## Distribution check examples
 
