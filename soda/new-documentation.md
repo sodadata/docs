@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### October 11, 2022
+
+* Added documentation for [grouping failed checks results]({% link soda-cl/failed-rows-checks.md %}#group-results-by-category) by one or more categories. 
+
 #### October 5, 2022
 
 * Added release notes to correspond with the release of Soda Core 3.0.10.
