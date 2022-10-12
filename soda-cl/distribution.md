@@ -194,24 +194,24 @@ For example, if you use the Kolmogorov-Smirnov test and a threshold of 0.05, the
 
 ### Bins and weights
 
-Soda uses the `bins` and `weights` to generate a sample from the reference distribution when it executes the distribution check during a scan. By creating a sample using the DRO's bins and weights, you do not have to save the entire – potentially very large - sample. The `distribution_type` value impacts how the weights and bins will be used to generate a sample, so make sure your choice reflects the nature of your data (continuous or categorical). 
+Soda uses the `bins` and `weights` to generate a sample from the reference distribution when it executes the distribution check during a scan. By creating a sample using the DRO's bins and weights, you do not have to save the entire – potentially very large - sample. The `distribution_type` value impacts how the weights and bins will be used to generate a sample, so make sure your choice reflects the nature of your data (continuous or categorical).
 
 To compute the number of bins for a DRO, Soda uses different strategies based on whether outlier values are present in the dataset.
 
-For datasets with no outlier values, Soda automatically computes the number of bins for each DRO by taking the maximum of <a href="https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width" target="_blank">sturges</a> and <a href="https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule" target="_blank">fd(Freedman Diaconis Estimator)</a> methods. 
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.histogram_bin_edges.html#numpy.histogram_bin_edges" target="_blank">numpy.histogram_bin_edges(data, bins='auto')</a> also applies this practice by default. 
+By default Soda automatically computes the number of bins for each DRO by taking the maximum of <a href="https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width" target="_blank">sturges</a> and <a href="https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule" target="_blank">FD (Freedman Diaconis Estimator)</a> methods.
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.histogram_bin_edges.html#numpy.histogram_bin_edges" target="_blank">numpy.histogram_bin_edges(data, bins='auto')</a> also applies this practice by default.
 
-For datasets *with* outliers, such as in the example below, Soda produces a great number of bins, `3466808`, with only nine elements in the array. The number of bins is great because there are `10e6` in the data.
-```shell
+For datasets *with* outliers, such as in the example below, the default strategy does not work well. When taking the maximum of `Sturges` and `DF` methods, it produces a great number of bins, `3466808`, while there is only nine elements in the array. The outlier value `10e6` causes to obtain this misleading bin size.
+
+```python
 import numpy as np
 arr = np.array([0, 0, 0, 1, 2, 3, 3, 4, 10e6])
 number_of_bins = np.histogram_bin_edges(arr, bins='auto').size # return 3466808
 ```
 
-If the number of bins is greater than the size of data, Soda uses <a href="https://en.wikipedia.org/wiki/Interquartile_range" target="_blank">interquantile range (IQR)</a> to detect and filter the outliers. Basically, for data that is greater than `Q3 + 1.5 IQR` and less than `Q1 - 1.5 IQR` Soda removes the datasets, then recomputes the number of bins.
+If the number of bins is greater than the size of data, Soda uses <a href="https://en.wikipedia.org/wiki/Interquartile_range" target="_blank">interquantile range (IQR)</a> to detect and filter the outliers. Basically, for data that is greater than `Q3 + 1.5 IQR` and less than `Q1 - 1.5 IQR` Soda removes the datasets, then recomputes the number of bins with the same method by taking the maximum of `Sturges` and `FD`.
 
 After removing the outliers, if the number of bins still exceeds the size of the filtered data, Soda takes the square root of the dataset size to set the number of bins. To cover edge cases, if the square root of dataset size exceeds one million, then Soda sets the number of bins to one million to prevent it from generating too many bins.
-
 
 ## Distribution check examples
 
