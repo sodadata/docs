@@ -198,9 +198,9 @@ Soda uses the `bins` and `weights` to generate a sample from the reference distr
 
 To compute the number of bins for a DRO, Soda uses different strategies based on whether outlier values are present in the dataset.
 
-By default Soda automatically computes the number of bins for each DRO by taking the maximum of [sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [FD (Freedman Diaconis Estimator)]("https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule") methods. [numpy.histogram_bin_edges(data, bins='auto')](https://numpy.org/doc/stable/reference/generated/numpy.histogram_bin_edges.html#numpy.histogram_bin_edges) also applies this practice by default.
+By default Soda automatically computes the number of bins for each DRO by taking the maximum of [Sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [Freedman Diaconis Estimator](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule) methods. [numpy.histogram_bin_edges(data, bins='auto')](https://numpy.org/doc/stable/reference/generated/numpy.histogram_bin_edges.html#numpy.histogram_bin_edges) also applies this practice by default.
 
-For datasets *with* outliers, such as in the example below, the default strategy does not work well. When taking the maximum of [sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [FD (Freedman Diaconis Estimator)]("https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule") methods, it produces a great number of bins, `3466808`, while there is only nine elements in the array. The outlier value `10e6` causes to obtain this misleading bin size.
+For datasets *with* outliers, such as in the example below, the default strategy does not work well. When taking the maximum of [Sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [Freedman Diaconis Estimator](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule) methods, it produces a great number of bins, `3466808`, while there is only nine elements in the array. The outlier value `10e6` causes to obtain this misleading bin size.
 
 ```python
 import numpy as np
@@ -208,7 +208,7 @@ arr = np.array([0, 0, 0, 1, 2, 3, 3, 4, 10e6])
 number_of_bins = np.histogram_bin_edges(arr, bins='auto').size # return 3466808
 ```
 
-If the number of bins is greater than the size of data, Soda uses [interquantile range (IQR)](https://en.wikipedia.org/wiki/Interquartile_range) to detect and filter the outliers. Basically, for data that is greater than `Q3 + 1.5 IQR` and less than `Q1 - 1.5 IQR` Soda removes the datasets, then recomputes the number of bins with the same method by taking the maximum of [sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [FD (Freedman Diaconis Estimator)]("https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule").
+If the number of bins is greater than the size of data, Soda uses [interquantile range (IQR)](https://en.wikipedia.org/wiki/Interquartile_range) to detect and filter the outliers. Basically, for data that is greater than `Q3 + 1.5 IQR` and less than `Q1 - 1.5 IQR` Soda removes the datasets, then recomputes the number of bins with the same method by taking the maximum of [Sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [Freedman Diaconis Estimator](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule).
 
 After removing the outliers, if the number of bins still exceeds the size of the filtered data, Soda takes the square root of the dataset size to set the number of bins. To cover edge cases, if the square root of dataset size exceeds one million, then Soda sets the number of bins to one million to prevent it from generating too many bins.
 
