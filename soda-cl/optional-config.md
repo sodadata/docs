@@ -171,6 +171,8 @@ checks for CUSTOMERS:
 
 In the checks you write with SodaCL, you can apply the quoting style that your data source uses for dataset or column names. Soda Core uses the quoting style you specify in the aggregated SQL queries it prepares, then executes during a scan. 
 
+Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark.
+
 Write a check referencing a dataset name with quotes to produce a SQL query that references the dataset name with quotes.
 
 Check:

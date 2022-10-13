@@ -56,7 +56,7 @@ checks for dim_customer:
 | ✓ | Define a name for a cross check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 |   | Define alert configurations to specify warn and fail alert conditions. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |
 |   | Use for each to apply schema checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | - |
