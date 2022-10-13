@@ -57,6 +57,20 @@ checks for dim_product:
 
 <br />
 
+Once defined in your checks YAML file, you can reference a user-defined metric in other checks in the same file. The user defined metric must exist in the file *above* other checks that reference it. 
+
+The following example includes a second check that references the custom metric defined above it.
+
+```yaml
+checks for dim_product:
+  - product_stock >= 50:
+      product_stock query: |
+        SELECT COUNT(safety_stock_level - days_to_manufacture)
+        FROM dim_product
+  - anomaly score for product_stock < default
+```
+
+<br />
 
 ## Optional check configurations
 
@@ -65,7 +79,7 @@ checks for dim_product:
 | ✓ | Define a name for a user-defined check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters in the value in the check. | Use wildcard values as you would with CTE or SQL. |
 | ✓ | Use for each to apply user-defined checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
