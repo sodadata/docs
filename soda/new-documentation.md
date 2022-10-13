@@ -9,6 +9,13 @@ parent: Reference
 
 <br />
 
+#### October 13, 2022
+
+* Added notes about specifying the type of [quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) you use in SodaCL checks must match that which the data source uses. 
+* Added short snippet as an example to obtain scan exit codes in a [programmatic scan]({% link soda-core/programmatic.md %}#scan-exit-codes). 
+* Added detail about using [multiple checks files]({% link soda-core/scan-core.md %}#anatomy-of-a-scan-command) in one scan command.
+* Added detail about [re-using user-defined metrics]({% link soda-cl/user-defined.md %}#define-user-defined-checks) in multiple checks in the same checks YAML file.
+
 #### October 11, 2022
 
 * Added documentation for [grouping failed checks results]({% link soda-cl/failed-rows-checks.md %}#group-results-by-category) by one or more categories. 
