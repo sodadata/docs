@@ -5,7 +5,8 @@ description: Use SodaCL to send sample data to Soda Cloud to quickly review the 
 parent: SodaCL
 ---
 
-# Display sample data in Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}<!--Linked to UI, access Shlink-->
+# Display sample data in Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+<!--Linked to UI, access Shlink-->
 
 {% include banner-preview.md %}
 

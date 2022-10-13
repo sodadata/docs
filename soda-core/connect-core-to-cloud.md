@@ -5,7 +5,8 @@ description: To use all the features that Soda Cloud has to offer, you can insta
 parent: Soda Core
 ---
 
-# Connect Soda Core to Soda Cloud <!--Linked to UI, access Shlink-->
+# Connect Soda Core to Soda Cloud 
+<!--Linked to UI, access Shlink-->
 
 To use all the [features and functionality]({% link soda/product-matrix.md %}) that **Soda Cloud** and **Soda Core** have to offer, you can install and configure the Soda Core command-line tool, then connect it to your Soda Cloud account.
 

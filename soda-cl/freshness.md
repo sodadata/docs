@@ -5,7 +5,8 @@ description: Use a SodaCL freshness check to infer data freshness according to t
 parent: SodaCL
 ---
 
-# Freshness checks  <!--Linked to UI, access Shlink-->
+# Freshness checks  
+<!--Linked to UI, access Shlink-->
 
 Use a freshness check to determine the relative age of the data in a column in your dataset. 
 
