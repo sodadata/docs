@@ -5,7 +5,8 @@ description: Use a SodaCL reference check to validate that the values in a colum
 parent: SodaCL
 ---
 
-# Reference checks <!--Linked to UI, access Shlink-->
+# Reference checks 
+<!--Linked to UI, access Shlink-->
 
 Use a reference check to validate that column contents match between datasets in the same data source. 
 

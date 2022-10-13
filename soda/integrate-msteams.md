@@ -5,7 +5,8 @@ description: Integrate MS Teams in your Soda Cloud account so that Soda sends al
 parent: Integrate Soda
 ---
 
-# Integrate Soda Cloud with Microsoft Teams <!--Linked to UI, access Shlink-->
+# Integrate Soda Cloud with Microsoft Teams 
+<!--Linked to UI, access Shlink-->
 
 Configure Soda Cloud to connect your account to MS Teams so that you can:
 

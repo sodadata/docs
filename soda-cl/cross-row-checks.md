@@ -6,7 +6,8 @@ parent: SodaCL
 redirect_from: /soda-cl/row-count.html
 ---
 
-# Cross checks <!--Linked to UI, access Shlink--> 
+# Cross checks 
+<!--Linked to UI, access Shlink--> 
 
 Use a cross check to compare row counts between datasets within the same, or different, data sources.
 
