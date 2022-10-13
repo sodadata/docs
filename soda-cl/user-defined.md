@@ -57,6 +57,20 @@ checks for dim_product:
 
 <br />
 
+Once defined in your checks YAML file, you can reference a user-defined metric in other checks in the same file. The user defined metric must exist in the file *above* other checks that reference it. 
+
+The following example includes a second check that references the custom metric defined above it.
+
+```yaml
+checks for dim_product:
+  - product_stock >= 50:
+      product_stock query: |
+        SELECT COUNT(safety_stock_level - days_to_manufacture)
+        FROM dim_product
+  - anomaly score for product_stock < default
+```
+
+<br />
 
 ## Optional check configurations
 

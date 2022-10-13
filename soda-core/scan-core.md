@@ -42,15 +42,20 @@ soda scan -d postgres_retail -c configuration.yml checks.yml
 ```
 <br />
 
-Note that you can use the `-c` option to include multiple `configuration.yml` files in one scan execution.
-
-Include the filepath of each YAML file if you stored them in a directory other than the one in which you installed Soda Core.
+Note that you can use the `-c` option to include **multiple configuration YAML files** in one scan execution. Include the filepath of each YAML file if you stored them in a directory other than the one in which you installed Soda Core.
 ```shell
 soda scan -d postgres_retail -c other-directory/configuration.yml other-directory/checks.yml
 ```
 
 <br />
-Use the soda `soda scan --help` command to review options you can include to customize the scan.
+
+You can also include **multiple checks YAML files** in one scan execution. Use multiple checks YAML files to execute different sets of checks during a scan. 
+```shell
+soda scan -d postgres_retail -c configuration.yml checks_stats1.yml checks_stats2.yml
+```
+
+<br />
+Use the soda `soda scan --help` command to review options you can include to customize the scan. See also: [Add scan options](#add-scan-options).
 
 ## Variables
 
