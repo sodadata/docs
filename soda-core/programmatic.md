@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Define programmatic scans
+title: Define programmatic scans using Python
 description: Use the Soda Sore Python library to programmatically execute scans and automate the checks for "bad" data.
 parent: Soda Core
 redirect_from: /soda-core/programmatic-scans.html
 ---
 
-# Define programmatic scans
+# Define programmatic scans using Python
 
-To automate the search for "bad" data, you can use the **Soda Core Python library** to programmatically execute scans.
+To automate the search for "bad" data, you can use the **Soda Core Python library** to programmatically execute scans. Alternatively, you can install and use the Soda Core CLI to run scans; see [Install Soda Core]({% link soda-core/installation.md %}).
 
 Based on a set of conditions or a specific event schedule, you can instruct Soda Core to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
 

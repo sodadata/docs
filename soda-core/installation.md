@@ -10,7 +10,7 @@ redirect_from:
 
 # Install Soda Core 
 
-Soda Core is a command-line interface (CLI) tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data.
+Soda Core is a command-line interface (CLI) tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data. Alternatively, you can use the Soda Core Python library to programmatically execute scans; see [Define programmatic scans using Python]({% link soda-core/programmatic.md %}).
 <br />
 
 [Compatibility](#compatibility)<br />
