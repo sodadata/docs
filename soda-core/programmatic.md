@@ -111,6 +111,13 @@ Soda Core's scan output includes an exit code which indicates the outcome of the
 | 2 | Soda issues a failure on a check(s) |
 | 3 | Soda encountered a runtime issue |
 
+To obtain the exit code, you can add the following to your programmatic scan.
+
+```python
+exit_code = scan.execute()
+print(exit_code)
+```
+
 
 ## Configure a failed row sampler
 
