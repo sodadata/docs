@@ -195,6 +195,8 @@
   subcategories:
   - subtitle: Reporting API
     page: api-docs/reporting-api.md
+  - subtitle: Reporting API (v1)
+    page: api-docs/reporting-api-v1.md
   - subtitle: Build a reporting dashboard
     page: api-docs/reporting-api-to-overview-dashboards.md
 
