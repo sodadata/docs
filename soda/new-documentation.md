@@ -23,19 +23,19 @@ parent: Reference
 #### October 5, 2022
 
 * Added release notes to correspond with the release of Soda Core 3.0.10.
-* Revised the value for the default number of [failed row samples]({% link soda-cl/optional-config.md %}#display-failed-rows-in-soda-cloud) that Soda automatically collects and displays in Soda Cloud from 1000 to 100.
+* Revised the value for the default number of [failed row samples]({% link soda-cl/optional-config.md %}#collect-failed-row-samples) that Soda automatically collects and displays in Soda Cloud from 1000 to 100.
 * Added documentation to accompany new support for [Dremio]({% link soda/connect-dremio.md %}).
 * Added documentation to accompany new support for [ClickHouse (Experimental)]({% link soda/connect-clickhouse.md %}).
 
 #### September 29, 2022
 
 * Added a [link]({% link soda-core/orchestrate-scans.md %}#soda-core-and-prefect) to a community contribution for Prefect 2.0 collection for Soda Core.
-* Updated Reference checks documentation for [displaying failed]({% link soda-cl/reference.md %}##display-failed-rows-in-soda-cloud) rows in Soda Cloud.
+* Updated Reference checks documentation for [displaying failed]({% link soda-cl/reference.md %}#failed-row-samples) rows in Soda Cloud.
 
 #### September 28, 2022
 
 * Added release notes to correspond with the release of Soda Core 3.0.9.
-* Added documentation for a new `samples limit` configuration key that you can add to checks that use [missing]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), [validity]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud), or [duplicate_count]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud) metrics which automatically send 1000 failed row samples to Soda Cloud.
+* Added documentation for a new `samples limit` configuration key that you can add to checks that use [missing]({% link soda-cl/missing-metrics.md %}#failed-row-samples), [validity]({% link soda-cl/validity-metrics.md %}#failed-row-samples), or [duplicate_count]({% link soda-cl/numeric-metrics.md %}#failed-row-samples) metrics which automatically send 1000 failed row samples to Soda Cloud.
 * Added instructions to [save failed row samples to a file]({% link soda-core/programmatic.md %}#save-failed-row-samples-to-a-file).
 * Added [Windows-specific instructions]({% link soda-core/installation.md %}) for installing Soda Core using a virtual environment.
 * Removed known issue for in-check variables which are supported as of Soda Core 3.0.9: "Except for customizing [dynamic names for checks]({% link soda-cl/optional-config.md %}#customize-check-names), you *cannot* use in-check variables. For example, Soda does not support the following check:

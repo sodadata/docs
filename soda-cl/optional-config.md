@@ -19,7 +19,7 @@ The following optional configurations are available to use with most, though not
 [Use quotes in a check](#use-quotes-in-a-check)<br />
 [Apply checks to multiple datasets](#apply-checks-to-multiple-datasets)<br />
 [Scan a portion of your dataset](#scan-a-portion-of-your-dataset)<br />
-[Display failed row samples in Soda Cloud](#display-failed-rows-in-soda-cloud)<br />
+[Collect failed row samples](#collect-failed-row-samples)<br />
 <br />
 <br />
 
@@ -217,11 +217,19 @@ See [For each]({% link soda-cl/for-each.md %}) for further details.
 
 See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
-## Display failed rows in Soda Cloud
+## Collect failed row samples
 
-Reference checks and any checks that use missing, validity, or `duplicate_count` metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
+Soda collects failed row samples explicitly and implicitly. 
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a [reference check]({% link soda-cl/reference.md %}), or in a check with a [missing]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), [validity]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud), or [duplicate_count]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud) metric, or in a [failed rows check]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit).
+To explicitly collect failed row samples, you can add a [failed row check]({% link soda-cl/failed-rows-checks.md %}) your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
+
+Implicitly, Soda automatically collects 100 failed row samples for the following checks:
+* [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 
+* checks that use a [missing metric]({% link soda-cl/missing-metrics.md %}#failed-row-samples)
+* checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
+* checks that use a [duplicate_count metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
+
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration with any of the above-listed checks, including failed row checks.
 
 ```yaml
 checks for dim_customer:
@@ -231,7 +239,7 @@ checks for dim_customer:
 
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for duplicate_count values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check that collects failed row samples and has failed. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 
 

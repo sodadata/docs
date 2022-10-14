@@ -24,6 +24,9 @@ checks for dim_customer
 ```
 
 [Define checks with missing metrics](#define-checks-with-missing-metrics) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Specify missing values or missing regex](#specify-missing-values-or-missing-regex)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Specify missing format](#specify-missing-format)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples) <br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of missing metrics](#list-of-missing-metrics)<br />
 [List of configuration keys](#list-of-configuration-keys)<br />
@@ -151,11 +154,11 @@ checks for dim_customer:
 
 <br />
 
-### Display failed rows in Soda Cloud
+### Failed row samples
 
 Checks with missing metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a missing metric.
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a missing metric. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
 
 ```yaml
 checks for dim_customer:

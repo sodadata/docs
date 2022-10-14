@@ -16,6 +16,7 @@ checks for dim_department_group:
 ```
 
 [Define reference checks](#define-reference-checks) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [Go further](#go-further)<br />
 <br />
@@ -41,11 +42,11 @@ checks for dim_customers_dev:
   - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name)
 ```
 
-### Display failed rows in Soda Cloud
+### Failed row samples
 
 Reference checks automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100.
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration.
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
 
 ```yaml
 checks for dim_customers_dev:
