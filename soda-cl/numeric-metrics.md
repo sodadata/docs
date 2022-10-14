@@ -34,6 +34,7 @@ checks for retail_orders_postgres:
 ```
 
 [Define checks with numeric metrics](#define-checks-with-numeric-metrics) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of numeric metrics](#list-of-numeric-metrics)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
@@ -68,11 +69,11 @@ checks for dim_reseller:
   - change avg last 7 for row_count < 50
 ```
 
-### Display failed rows in Soda Cloud
+### Failed row samples
 
 Checks that use the `duplicate_count` metric automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric.
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
 
 ```yaml
 checks for dim_customer:

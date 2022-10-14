@@ -30,6 +30,9 @@ checks for dim_customer:
 ```
 
 [Define checks with validity metrics](#define-checks-with-validity-metrics) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Specify valid values](#specify-valid-values)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Specify valid format](#specify-valid-format)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of validity metrics](#list-of-validity-metrics)<br />
 [List of configuration keys](#list-of-configuration-keys)<br />
@@ -173,11 +176,11 @@ Error occurred while executing scan.
 
 <br />
 
-### Display failed rows in Soda Cloud
+### Failed row samples
 
 Checks with validity metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric.
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
 
 ```yaml
 checks for dim_customer:
