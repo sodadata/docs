@@ -1,35 +1,39 @@
 ---
 layout: default
-title: Connect Soda to ClickHouse (Experimental)
-description: Access configuration details to connect Soda to a ClickHouse data source.
+title: Connect Soda to Synapse (Experimental)
+description: Access configuration details to connect Soda to a Microsoft Azure Synapse data source.
 parent: Connect a data source
 ---
 
-# Connect Soda to ClickHouse (Experimental)
+# Connect Soda to Azure Synapse (Experimental)
 
 {% include connect-to-intro.md %}
 
-Because Clickhouse is compatible with MySQL wire protocol, Soda offers indirect, experimental support for ClickHouse data sources using the `soda-core-mysql` package. 
+Because Synapse is compatible with MS SQL server wire protocol, Soda offers indirect, experimental support for Synapse data sources using the `soda-core-sqlserver` package. 
 
 ```yaml
 data_source my_datasource_name:
-  type: mysql
-  connection:
-    host: 
-    port: `9004`
-    username: xxx
-    password: ...
-    database:
+  type: sqlserver
+  driver: SQL Server Native Client 11.0};
+  host: my_server.sql.azuresynapse.net,
+  port: 1433
+  database: my_database
+  username: my_user_name
+  password: my_password
+  encrypt: true;
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
 | type     | required |                                                            |
+| driver   | required | Use this config setting to specify the ODBC driver version you use, such as `SQL Server Native Client 11.0` |
 | host     | required |                                                            |
-| port     | required |                                                            |
+| port     | optional | You can remove the `port` config setting entirely; defaults to `1433`.|
+| database | required |                                                            |
 | username | required | Use system variables to retrieve this value securely.      |
 | password | required | Use system variables to retrieve this value securely.      |
-| database | required |                                                            |
+| encrypt  | optional |   The default value is `false`.                            |
+
 
 
 ## Supported data types
