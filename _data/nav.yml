@@ -131,6 +131,8 @@
     page: soda-cl/profile.md
   - subtitle: Display sample data in Soda Cloud
     page: soda-cl/sample-datasets.md
+  - subtitle: Check templates
+    page: soda-cl/check-templates.md
 
 - title: Soda Core 
   page: soda-core/overview-main.md

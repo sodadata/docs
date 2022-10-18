@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### October 19, 2022
+
+* Migrated custom metric templates from Soda SQL to SodaCL; see [Check templates]({% link soda-cl/check-templates.md %}).
+
 #### October 13, 2022
 
 * Added notes about specifying the type of [quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) you use in SodaCL checks must match that which the data source uses. 
