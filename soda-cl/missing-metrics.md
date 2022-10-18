@@ -48,7 +48,7 @@ checks for dim_customer
   - missing_count(birthday, last_name) = 0
 ```
 
-You can use missing metrics in checks with fixed thresholds, or relative thresholds, but *not* dynamic thresholds. See [Checks with fixed thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) for more detail. 
+You can use missing metrics in checks with fixed thresholds, or relative thresholds, but *not* change-over-time thresholds. See [Checks with fixed thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) for more detail. 
 
 ```yaml
 checks for dim_reseller:

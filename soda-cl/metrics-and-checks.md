@@ -148,13 +148,13 @@ The second check applies to only the `size` column in the dataset and checks tha
 
 <br />
 
-### Checks with dynamic thresholds
+### Checks with change-over-time thresholds
 
-Only checks that use numeric metrics can specify a **dynamic threshold**, a value that is relative to a previously-measured, or historic, value. Sometimes referred to a change-over-time threshold, you use these dynamic thresholds to gauge changes to the same metric over time. 
+Only checks that use numeric metrics can specify a **change-over-time threshold**, a value that is relative to a previously-measured, or historic, value. Sometimes referred to a dynamic threshold, you use these change-over-time thresholds to gauge changes to the same metric over time. 
 
-You must have a Soda Cloud account to use dynamic thresholds.
+You must have a Soda Cloud account to use change-over-time thresholds.
 
-Refer to [Dynamic thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-dynamic-thresholds) for further details.
+Refer to [change-over-time thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-change-over-time-thresholds) for further details.
 
 
 ### Define boundaries with fixed thresholds
