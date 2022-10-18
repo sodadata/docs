@@ -14,13 +14,13 @@ Because Synapse is compatible with MS SQL server wire protocol, Soda offers indi
 ```yaml
 data_source my_datasource_name:
   type: sqlserver
-  driver: SQL Server Native Client 11.0};
+  driver: SQL Server Native Client 11.0
   host: my_server.sql.azuresynapse.net,
   port: 1433
   database: my_database
   username: my_user_name
   password: my_password
-  encrypt: true;
+  encrypt: true
 ```
 
 | Property | Required | Notes                                                      |
