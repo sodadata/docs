@@ -38,7 +38,7 @@ checks for retail_orders_postgres:
 [Optional check configurations](#optional-check-configurations)<br />
 [List of numeric metrics](#list-of-numeric-metrics)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
-[Fixed and dynamic thresholds](#fixed-and-dynamic-thresholds)<br />
+[Fixed and change-over-time thresholds](#fixed-and-change-over-time-thresholds) <br />
 [Go further](#go-further)<br />
 <br />
 
@@ -59,7 +59,7 @@ checks for dim_reseller:
   - duplicate_count(phone, address_line1) = 0
 ```
 
-You can use some numeric metrics in checks with either fixed or dynamic thresholds. See [Fixed and dynamic thresholds](#fixed-and-dynamic-thresholds) for more detail. 
+You can use some numeric metrics in checks with either fixed or change-over-time thresholds. See [Fixed and change-over-time thresholds](#fixed-and-change-over-time-thresholds) for more detail. 
 
 ```yaml
 checks for dim_reseller:
@@ -180,15 +180,15 @@ for each dataset T:
 
 {% include list-symbols.md %}
 
-## Fixed and dynamic thresholds
+## Fixed and change-over-time thresholds
 
 Numeric metrics can specify a **fixed threshold** which is not relative to any other threshold. `row_count > 0` is an example of a check with a fixed threshold as the threshold value, `0`, is absolute. Refer to [Checks with fixed thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) for details.
 
-Only checks that use numeric metrics can specify a **dynamic threshold**, a value that is relative to a previously-measured, or historic, value. Sometimes referred to as a change-over-time threshold or historic metrics, you use these dynamic thresholds to gauge changes to the same metric over time. Most of the examples below use the `row_count` metric, but you can use any numeric metric in checks that use dynamic thresholds. 
+Only checks that use numeric metrics can specify a **change-over-time threshold**, a value that is relative to a previously-measured, or historic, value. Sometimes referred to as a dynamic threshold or historic metrics, you use these change-over-time thresholds to gauge changes to the same metric over time. Most of the examples below use the `row_count` metric, but you can use any numeric metric in checks that use change-over-time thresholds. 
 
-If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account. Soda Cloud stores the measured value of each metric that a check result produces during a scan in a Cloud Metric Store. Over time, these historic values accumulate and you can reference them to detect anomalous values relative to historic values for the same metric. Therefore, you must have a Soda Cloud account to use dynamic thresholds.
+If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account. Soda Cloud stores the measured value of each metric that a check result produces during a scan in a Cloud Metric Store. Over time, these historic values accumulate and you can reference them to detect anomalous values relative to historic values for the same metric. Therefore, you must have a Soda Cloud account to use change-over-time thresholds.
 
-The most basic of dynamic threshold checks has three or four mutable parts:
+The most basic of change-over-time threshold checks has three or four mutable parts:
 
 | a metric | 
 | an argument (optional) | 
@@ -199,7 +199,9 @@ The most basic of dynamic threshold checks has three or four mutable parts:
 
 The example below defines a check that applies to the entire dataset and counts the rows in the dataset, then compares that value to the preceding value contained in the Cloud Metric Store. If the `row_count` at present is greater than the previously-recorded historic value for `row_count` by more than 50 or less than -20, the check fails. 
 
-Use `between` for checks with dynamic thresholds as much as possible to trigger check failures when the measurement falls outside of a range of acceptable values. This practice ensures that you get visibility into changes that either exceed or fall short of threshold expectations. 
+Use `between` for checks with change-over-time thresholds as much as possible to trigger check failures when the measurement falls outside of a range of acceptable values. This practice ensures that you get visibility into changes that either exceed or fall short of threshold expectations. 
+
+Note that checks with change-over-time thresholds define a failed state for data quality. This is unlike all other SodaCL metrics and checks in which you define a passing state.
 
 ```yaml
 checks for dim_customer:
@@ -215,7 +217,7 @@ The example below defines a check that applies to the entire dataset and counts 
 
 For example, the previously-recorded historic measurement for row count is 80, and the newly-recorded value is 100, the relative change is 25%, which is less than the 50% specified in the threshold, so the check passes.
 * Percentage thresholds are between 0 and 100, not between 0 and 1. 
-* If you wish, you can add a `%` character to the threshold for a dynamic threshold for improved readability.   
+* If you wish, you can add a `%` character to the threshold for a change-over-time threshold for improved readability.   
 * If the previous measurement value is 0 and the new value is 0, Soda calculates the relative change as 0%. However, if the previous measurement value is 0 and the new value is not 0, then Soda indicates the check as `NOT EVALUATED` because the calculation is a division by zero. 
 
 ```yaml
@@ -243,7 +245,7 @@ checks for dim_customer:
 
 <br />
 
-A more complex dynamic threshold check includes two more optional mutable parts:
+A more complex change-over-time threshold check includes two more optional mutable parts:
 
 | a calculation type (optional) `avg`, `min`, `max`|
 | a historical value definition (optional) `7` |

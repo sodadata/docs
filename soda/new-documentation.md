@@ -171,7 +171,7 @@ checks for dim_customers:
 
 #### June 22, 2022
 
-* Added documentation to correspond with the new `percent` argument you can use in checks with [dynamic thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-dynamic-thresholds).
+* Added documentation to correspond with the new `percent` argument you can use in checks with [change-over-time thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-change-over-time-thresholds).
 
 #### June 21, 2022
 
