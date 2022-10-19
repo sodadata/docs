@@ -9,6 +9,12 @@ parent: Reference
 
 <br />
 
+#### October 19, 2022
+
+* Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.9.
+* Documented connection configuration for Azure Synapse (Experimental).
+* Added documentation for an enhancement for change-over-time checks to gauge changes relative to the same day last week or month.
+
 #### October 13, 2022
 
 * Added notes about specifying the type of [quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) you use in SodaCL checks must match that which the data source uses. 
