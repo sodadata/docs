@@ -11,8 +11,9 @@ redirect_from: /soda-core/cli.html
 
 | Command               | Description |
 | --------------------- | ----------- |
-| `soda scan` | Uses the configurations in your checks YAML file to prepare, then run SQL queries against the data in your data source. See [Run a Soda Core scan]({% link soda-core/scan-core.md %}) for details. |
 | `soda ingest` | Ingests dbt test results to display in Soda Cloud. See [Integrate with dbt]({% link soda/integrate-dbt.md %}). |
+| `soda scan` | Uses the configurations in your checks YAML file to prepare, then run SQL queries against the data in your data source. See [Run a Soda Core scan]({% link soda-core/scan-core.md %}) for details. |
+| `soda test-connection` | Tests the connection to the data sources for which you configured a connection in your configuration YAML file. |
 | `soda update-dro` | Updates a distribution reference file that a [distribution check]({% link soda-cl/distribution.md %}) uses. |
 
 ## List of commands

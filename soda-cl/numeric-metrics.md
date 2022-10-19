@@ -38,7 +38,7 @@ checks for retail_orders_postgres:
 [Optional check configurations](#optional-check-configurations)<br />
 [List of numeric metrics](#list-of-numeric-metrics)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
-[Fixed and change-over-time thresholds](#fixed-and-change-over-time-thresholds) <br />
+[Change-over-time thresholds](#change-over-time-thresholds) <br />
 [Go further](#go-further)<br />
 <br />
 
@@ -59,7 +59,7 @@ checks for dim_reseller:
   - duplicate_count(phone, address_line1) = 0
 ```
 
-You can use some numeric metrics in checks with either fixed or change-over-time thresholds. See [Fixed and change-over-time thresholds](#fixed-and-change-over-time-thresholds) for more detail. 
+You can use some numeric metrics in checks with either fixed or change-over-time thresholds. See [Fixed and change-over-time thresholds](#change-over-time-thresholds) for more detail. 
 
 ```yaml
 checks for dim_reseller:
@@ -180,7 +180,9 @@ for each dataset T:
 
 {% include list-symbols.md %}
 
-## Fixed and change-over-time thresholds
+## Change-over-time thresholds
+
+*Requires Soda Cloud*
 
 Numeric metrics can specify a **fixed threshold** which is not relative to any other threshold. `row_count > 0` is an example of a check with a fixed threshold as the threshold value, `0`, is absolute. Refer to [Checks with fixed thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) for details.
 
@@ -210,6 +212,17 @@ checks for dim_customer:
 
 | metric |`row_count` |
 | threshold | `between -20 and +50` |
+
+<br />
+
+You can also use use a change-over-time threshold to compare check results relative to the same day in the previous week. The example below uses change-over-time to compare today's value with the same check result from last week to confirm that the delta is greater than 10. 
+```yaml
+checks for dim_customer:
+  - change same day last week for row_count > 10
+```
+
+| metric |`row_count` |
+| threshold | `> 10` |
 
 <br />
 

@@ -42,6 +42,8 @@
     page: soda/connect-snowflake.md
   - subtitle: Connect to Spark
     page: soda/connect-spark.md
+  - subtitle: Connect to Synapse
+    page: soda/connect-synapse.md
   - subtitle: Connect to Trino
     page: soda/connect-trino.md
 
