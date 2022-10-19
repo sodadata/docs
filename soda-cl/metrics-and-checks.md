@@ -154,7 +154,7 @@ Only checks that use numeric metrics can specify a **change-over-time threshold*
 
 You must have a Soda Cloud account to use change-over-time thresholds.
 
-Refer to [change-over-time thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-change-over-time-thresholds) for further details.
+Refer to [change-over-time thresholds]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds) for further details.
 
 
 ### Define boundaries with fixed thresholds

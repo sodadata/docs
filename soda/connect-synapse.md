@@ -35,6 +35,7 @@ data_source my_datasource_name:
 | encrypt  | optional |   The default value is `false`.                            |
 
 
+{% include test-connection.md %}
 
 ## Supported data types
 
