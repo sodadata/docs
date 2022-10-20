@@ -227,7 +227,7 @@ Implicitly, Soda automatically collects 100 failed row samples for the following
 * [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 
 * checks that use a [missing metric]({% link soda-cl/missing-metrics.md %}#failed-row-samples)
 * checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
-* checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
+* checks that use a [duplicate_count metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
 
 If you wish to limit or broaden the sample size, you can use the `samples limit` configuration with any of the above-listed checks, including failed row checks.
 

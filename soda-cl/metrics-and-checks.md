@@ -40,7 +40,6 @@ A **standard** check, as illustrated above with `row_count`, uses a language pat
     avg<br />
     avg_length<br />
     duplicate_count<br />
-    duplicate_percent<br />
     invalid_count<br />
     invalid_percent<br />
     max<br />
