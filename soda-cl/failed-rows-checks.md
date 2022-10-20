@@ -58,7 +58,7 @@ When a scan results in a failed check, the CLI output displays information about
 
 There are two ways you can configure a SodaCL check to send failed row samples to your Soda Cloud account:
 
-1. Use a [reference check]({% link soda-cl/reference.md %}), [`duplicate_count` metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples), a [missing metric]({% link soda-cl/missing-metrics.md %}#failed-row-samples), or a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples) in your check. Checks that use these metrics automatically send 100 failed row samples to your Soda Cloud account.
+1. Use a [reference check]({% link soda-cl/reference.md %}), [duplicate_count or duplicate_percent metrics]({% link soda-cl/numeric-metrics.md %}#failed-row-samples), a [missing metric]({% link soda-cl/missing-metrics.md %}#failed-row-samples), or a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples) in your check. Checks that use these metrics automatically send 100 failed row samples to your Soda Cloud account.
 2. Use failed rows checks in your to explicitly send failed rows to Soda Cloud. Read on!
 
 For security, you can also disable the failed row samples feature entirely; see [Disable failed row samples]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples) for details.

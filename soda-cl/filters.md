@@ -48,7 +48,7 @@ checks for dim_customer:
 
 ### List of compatible metrics and checks
 
-* all numeric metrics, *except* `duplicate_count`
+* all numeric metrics, *except* `duplicate_count` and `duplicate_percent`
 * both missing metrics
 * both validity metrics
 

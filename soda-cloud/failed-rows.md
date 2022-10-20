@@ -14,7 +14,7 @@ When a Soda Core scan results in a failed check, Soda Cloud displays details of 
 
 ## Use metrics to send failed row samples
 
-Use SodaCL to write a check that uses a [duplicate_count]({% link soda-cl/numeric-metrics.md %}#failed-row-samples), [missing]({% link soda-cl/missing-metrics.md %}#failed-row-samples) or [validity]({% link soda-cl/validity-metrics.md %}#failed-row-samples) metric in a `checks.yml` file for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account to see the check results after each scan. 
+Use SodaCL to write a check that uses a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples), a [missing]({% link soda-cl/missing-metrics.md %}#failed-row-samples) or a [validity]({% link soda-cl/validity-metrics.md %}#failed-row-samples) metric in a `checks.yml` file for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account to see the check results after each scan. 
 
 If you use one of the above-listed metrics in checks you write using SodaCL, Soda Core automatically sends a sample of the failed rows associated with the failed check to Soda Cloud with the scan results.
 <br />
