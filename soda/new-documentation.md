@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### October 20, 2022
+
+* Added documentation for a new numeric metric: `duplicate_percent`. See [Numeric metrics]({% link soda-cl/numeric-metrics.md %}#list-of-numeric-metrics).
+
 #### October 19, 2022
 
 * Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.9.
