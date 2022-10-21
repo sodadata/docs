@@ -70,7 +70,7 @@ Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-cor
 
 ## Define an automated monitoring check
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), automated monitoring checks are unique. This check employs the `anomaly score` and `schema` checks, but is limited in its syntax variation, with only a couple of mutable parts to specify which datasets to automatically apply the anomaly and schema checks.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), automated monitoring checks are unique. This check employs the `anomaly score` and `schema` checks, but is limited in its syntax variation, with only a couple of mutable parts to specify which datasets to automatically apply the anomaly and schema checks.
 
 The example check below uses a wildcard character (`%`) to specify that Soda Core executes automated monitoring checks against all datasets with names that begin with `prod`, and *not* to execute the checks against any dataset with a name that begins with `test`.
 
@@ -125,7 +125,7 @@ While installing Soda Core Scientific works on Linux, you may encounter issues i
 * [Use Docker to run Soda Core (Recommended)](#use-docker-to-run-soda-core)
 * [Install Soda Core locally (Limited support)](#install-soda-core-locally)
 
-Need help? Ask the team in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 ### Use Docker to run Soda Core
 
@@ -149,7 +149,7 @@ When the functionality in Soda Cloud becomes generally available, you will be ab
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.

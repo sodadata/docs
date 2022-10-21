@@ -177,7 +177,7 @@ If you prefer to send the output of the failed row sampler to a destination othe
 
 
 ## Go further
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Learn more about configuring [orchestrated scans]({% link soda-core/orchestrate-scans.md %}).
 

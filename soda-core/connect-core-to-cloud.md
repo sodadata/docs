@@ -92,7 +92,7 @@ Refer to <a href="https://github.com/sodadata/soda-core/blob/main/soda/core/test
 * Learn more about using [SodaCL]({% link soda-cl/soda-cl-overview.md %}) to write checks for data quality.
 * Learn more about viewing [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 * Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />
 

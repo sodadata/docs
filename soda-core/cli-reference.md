@@ -55,7 +55,7 @@ Refer to [Add scan options]({% link soda-core/scan-core.md %}#add-scan-options) 
 
 * Learn [How Soda Core works]({% link soda-core/how-core-works.md %}).
 * Follow the [Quick start tutorial]({% link soda/quick-start-soda-core.md %}) to set up Soda Core and run your first scan!
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />
 

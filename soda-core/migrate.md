@@ -107,7 +107,7 @@ There are a couple of implications to take into consideration when migrating fro
 ## Go further
 
 * Contact <a href="mailto:support@soda.io">support@soda.io</a> for help migrating from Soda SQL to Soda Core.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Learn more about [writing checks with SodaCL]({% link soda/quick-start-sodacl.md %}).
 * Review the [features and functionalities]({% link soda/product-matrix.md %}) that Soda Cloud offers.
 <br />
