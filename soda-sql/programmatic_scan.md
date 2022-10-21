@@ -119,7 +119,7 @@ def lambda_handler(event, context):
 - Learn more about [How Soda SQL works]({% link soda-sql/concepts.md %}).
 - Learn more about [warehouse YAML]({% link soda-sql/warehouse.md %}) and [scan YAML]({% link soda-sql/scan-yaml.md %}) files.
 - Learn how to integrate Soda SQL with a [data orchestration tool]({% link soda-sql/orchestrate_scans.md %}).
-- Need help? <a href="http://community.soda.io/slack" target="_blank">Join our Slack community</a> to ask a question.
+- Need help? <a href="https://community.soda.io/slack" target="_blank">Join our Slack community</a> to ask a question.
 
 <br />
 

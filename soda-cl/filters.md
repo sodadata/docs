@@ -63,7 +63,7 @@ checks for dim_customer:
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [for each]({% link soda-cl/for-each.md %}) configuration to execute checks on multiple datasets.
 * Learn more about [Optional check configurations]({% link soda-cl/optional-config.md %}).

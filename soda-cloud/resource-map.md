@@ -87,7 +87,7 @@ In Soda Cloud, you can see `dataset-q` because Soda Core pushed the scan results
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Learn more about [agreements (preview)]({% link soda-cloud/agreements.md %}).
 <br />
 

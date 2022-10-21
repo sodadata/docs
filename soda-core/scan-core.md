@@ -143,7 +143,7 @@ When you run a scan in Soda Core, you can specify some options that modify the s
 ## Go further
 
 * Consider completing the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write more checks for data quality.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

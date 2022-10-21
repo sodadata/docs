@@ -52,7 +52,7 @@ When made generally available, these new features will enable users across your 
 * Consider completing the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}).
 * Learn the basics of deploying a [Soda Agent]({% link soda-agent/basics.md %}).
 * Explore the built-in [metrics and checks]({% link soda-cl/metrics-and-checks.md %}) you can use with SodaCL.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />
 

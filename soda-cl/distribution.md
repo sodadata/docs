@@ -313,7 +313,7 @@ While installing Soda Core Scientific works on Linux, you may encounter issues i
 * [Use Docker to run Soda Core (Recommended)](#use-docker-to-run-soda-core)
 * [Install Soda Core locally (Limited support)](#install-soda-core-locally)
 
-Need help? Ask the team in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 ### Use Docker to run Soda Core
 
@@ -327,7 +327,7 @@ Need help? Ask the team in the <a href="http://community.soda.io/slack" target="
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.
