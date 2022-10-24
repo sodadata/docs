@@ -1,122 +1,129 @@
 ---
 layout: default
-title: Reporting API v1 Migration Guide
+title: Reporting API changelog and migration guide
 description: Find out all you need to know on what has changed in the new version of the reporting API.
 parent: API Documentation
 fullwidth: false
 ---
 
-# v1, What's changed?
+# Reporting API changelog and migration guide
 
-## Update Frequency
+## Version 1: New and changed
 
-The new version of the reporting API (`v1`) is now getting all of its data from pre-processed and aggregated data sources. Deriving some metrics such as health and coverage can be heavy to perform "on the fly" and often lead to a significant impact on the Cloud application performance.
+* Version 1 of the reporting API retrieves all of its data from pre-processed and aggregated data sources. This change addresses the issue of application performance impact in v0 when deriving some metrics "on the fly", such as health and coverage.
+* The reporting API refreshes the data for all endpoints once per day between 10:00pm and 11:00pm EST. This update frequency may increase in the future if the need for intra-day reporting arises.
+* Tests in Soda products have been renamed checks. Therefore, any references to `tests` in the Reporting API now exist as `checks`.
+* Most endpoints are paginated. Refer to [Pagination](#pagination) subsection below for details.
+* The following endpoints are deprecated: 
+  * `/adoption/sign_ups`
+  * `/adoption/sign_ins`
+  * `/adoption/daily_account_activity`
+  * `/adoption/scans_run`
+  * `/impact/alerts_sent`
+* The following endpoints have query and response-breaking code changes. Refer to subsections below for details.
+  * [Coverage: Tests endpoint](#coverage-tests-endpoint)
+  * [Coverage: Datasets endpoint](#coverage-datasets-endpoint)
+  * [Coverage: Dataset coverage endpoint](#coverage-dataset-coverage-endpoint)
+  * [Quality: Test results endpoint](#quality-test-results-endpoint)
+  * [Quality: Dataset health endpoint](#quality-dataset-health-endpoint)
+  * [Platform impact: Incidents endpoint](#platform-impact-incidents-endpoint)
 
-The data for all of the endpoints will be refreshed **once a day between 4 AM and 5 AM CEST **(10 PM - 11 PM EST)**.** This frequency may increase in the future if the need for intra-day reporting arises internally or based on your feedback. For the foreseeable future, however, we do not intend to get anywhere near real-time.
 
-## Endpoint Deprecations
+### Coverage: Tests endpoint
 
-Due to low usage and limitations (e.g., sign-ups and sign-ins done via SSO) on the accuracy of some endpoints available in v0 we have decided to deprecate several endpoints. Those will be re-introduced when built on more reliable sources. The endpoints we have deprecated are:
+* Tests in Soda products have been renamed checks. Therefore, the endpoint previously labeled as Tests is renamed Checks. 
+* Query checks by providing a list of `dataset_ids` or `check_ids` and to get attributes about checks.
+* The API denormalizes owner and creator information into independent fields rather than as nested objects; see image below.
+* [New endpoint documentation]({% link api-docs/reporting-api-v1.md %}#/operations/checks_coverage_checks_post)
 
-- `/adoption/sign_ups`
-- `/adoption/sign_ins`
-- `/adoption/daily_account_activity`
-- `/adoption/scans_run`
-- `/impact/alerts_sent`
+![checks-endpoint-diff](/assets/images/checks-endpoint-diff.png)
 
-## Contract Changes
+### Coverage: Datasets endpoint
 
-Some endpoints have both querying and response-breaking changes. We will list endpoints with breaking changes below. Endpoints that have not changed in their query or response behaviors are not mentioned here.
+* Provide a list of `dataset_ids` to filter results, as opposed to providing a single dataset ID per request.
+* The API denormalizes owner and creator information into independent fields rather than as nested objects; see image below.
+* [New endpoint documentation]({% link api-docs/reporting-api-v1.md %}#/operations/datasets_coverage_datasets_post)
 
-## Coverage Endpoints
+![datasets-endpoint-diff](/assets/images/datasets-endpoint-diff.png)
 
-### `tests` is renamed to `checks`
 
-Users can query checks by providing a list of `dataset_ids` or `check_ids` and will get attributes about checks.
+### Coverage: Dataset coverage endpoint
 
-Owner and creator information is now denormalized into their fields instead of being provided as nested objects. Check the [API documentation](#reporting-api-v1) for more information.
+* Provide a list of `dataset_ids` to filter results.
+* The `include_deleted` boolean was removed as the API does not store deleted datasets.
+* [New endpoint documentation]({% link api-docs/reporting-api-v1.md %}#/operations/dataset_coverage_coverage_dataset_coverage_post)
 
-![](/assets/images/checks-endpoint-diff.png)
-*Diff Courtesy of Diffchecker: [https://www.diffchecker.com/37Oq7Zni]()*
+![dataset-coverage-endpoint-diff](/assets/images/dataset-coverage-endpoint-diff.png)
 
-### `datasets`
 
-Can now be filtered by providing a **list** of `dataset_ids` as opposed to a single dataset ID per request.
-Owner and creator information is now denormalized into their fields instead of being provided as nested objects. Check the [API documentation](#reporting-api-v1) for more information.
+### Quality: Test results endpoint
 
-![](/assets/images/datasets-endpoint-diff.png)
-*Diff Courtsey of Diffchecker: [https://www.diffchecker.com/v5MY2Go9]()*
+* Tests in Soda products have been renamed checks. Therefore, the endpoint previously labeled as Test results is renamed Check results.
+* Query check results by providing a list of `dataset_ids` and, optionally, a `from_datetime` ISO timestamp corresponding to the moment Soda evaluated the checks as part of a scan.
+* The API denormalizes owner and creator information into independent fields rather than as nested objects; see image below.
+* [New endpoint documentation]({% link api-docs/reporting-api-v1.md %}#/operations/check_results_quality_check_results_post)
 
-### `dataset_coverage`
+![check-results-endpoint-diff](/assets/images/check-results-endpoint-diff.png)
 
-Can now be filtered by providing a list of `dataset_ids`
 
-The `include_deleted` boolean is removed as deleted datasets are not kept historically at the moment and led to inconsistencies in the previous version.
+### Quality: Dataset health endpoint
 
-![](/assets/images/dataset-coverage-endpoint-diff.png)
-*Diff Courtsey of Diffchecker: [https://www.diffchecker.com/VY5cQCcI]()*
+* The endpoint accepts a list of `dataset_ids`. The v0 limitation of one dataset per query does not apply in v1. 
+* The `output_all_dates` boolean was removed. The API returns a row of data per day even if you have not executed a Soda scan. Optionally, you can still filter results by date using the `from_datetime` parameter.
+* [New endpoint documentation]({% link api-docs/reporting-api-v1.md %}#/operations/dataset_health_quality_dataset_health_post)
 
-## Quality Endpoints
+![dataset-health-endpoint-diff](/assets/images/dataset-health-endpoint-diff.png)
 
-### `dataset_health`
 
-- **The limitation to 1 dataset per query is now lifted**! The endpoint will accept a list of `dataset_ids` .
-- The `output_all_dates` boolean is removed, and the API will return a row of data per day even if no scan has been executed.
-- It is still possible to optionally filter results by date via the `from_datetime` parameter.
+### Platform Impact: Incidents endpoint
 
-![](/assets/images/dataset-health-endpoint-diff.png)
-*Diff Courtsey of Diffchecker: [https://www.diffchecker.com/bOWED2xx]()*
+* A new endpoint, it retrieves a list of incidents users have created in Soda Cloud, along with any attributes. 
+* Filter the results by providing a list of `dataset_ids` for which you wish to retrieve linked incidents. You can further filter results according to resolution status and time parameters.
+* [New endpoint documentation]({% link api-docs/reporting-api-v1.md %}#/operations/incidents_impact_incidents_post)
 
-### `tests_and_results` is renamed to `check_results`
 
-- Users can query check results by providing a list of `dataset_ids` and optionally a `from_datetime` ISO timestamp corresponding to the moment the checks were evaluated as part of a scan.
-- Owner information is now denormalized into its fields instead of being provided as nested objects. Check the [API documentation](#reporting-api-v1) for more information.
 
-![](/assets/images/check-results-endpoint-diff.png)
-*Diff Courtsey of Diffchecker: [https://www.diffchecker.com/zb2S7jQo]()*
+### Pagination
 
-## Platform Impact
+The Reporting API v1 paginates the responses for most endpoints. This feature addresses the issue of timeouts in API clients when trying to retrieve large volumes of records. 
 
-## `incidents` is now a newly available endpoint
+You can use pagination you to control the number of records you pull per request by using the following parameters: 
+* `size` controls the number of records that you retrieve per page; for example, `{"size": 200}` returns 200 records. There is no cap on the value of this parameter.
+* `page` controls the location, also known as offset, from which Soda retrieves the records. 
 
-This endpoint will provide incidents created on the platform along with their attributes. You can filter results by providing a list of `dataset_ids` for which you want to retrieve linked incidents. Further filtering around resolution status and time parameters is also available.
-
-Check the v1 docs for full information.
-
-## Pagination
-
-Most of the endpoints are paginated. Because most endpoints have the potential to retrieve large amounts of records (especially when unfiltered or filtered too broadly), which could cause timeouts in API clients.
-
-Endpoint that are paginated will contain "[Paginated]" in their title in our documentation.
-
-Pagination allows you to control the number of records you pull per request. It is controlled by the following parameters: `size` and `page`. The `size` parameter controls the number of records that you will retrieve per page (`{"size": 200}` would return 200 records. The `page` parameter controls the "location," also known as "offset," from which the records will be retrieved. Let's say that you have a total of 600 records from a given endpoint. If you query it with the following parameters:
+For example, imagine the API can retrieve 600 records from an endpoint. When you query it with the following parameters, the response includes the first 200 records.
 
 ```json
 { "page": 1, "size": 200 }
 ```
 
-You will retrieve the first 200 records. To get the next ones, you'll issue a new request with the following parameters:
+To retrieve all records, issue two new requests with the following parameters:
 
 ```json
 { "page": 2, "size": 200 }
 ```
 
-and so on.
+```json
+{ "page": 3, "size": 200 }
+```
 
-**NOTE:**the `size` parameter is not currently capped. We believe you should have some flexibility here. The API will use:
+<br />
+
+If you do not explicitly set the values for the size and page parameters, the Reporting API uses the following default values:
 
 ```json
 { "page": 2, "size": 400 }
 ```
 
-as defaults in case, you do not override them.
+<br />
 
-All paginated endpoints will accompany the set of records with the following indicators: `total`, `page`, and `size`. The `total` field will indicate the number of records you would pull with that query. The `page` and `size` parameters are just there so that you can keep track of your location and the pages, and the jumps you're making.
+When a paginated endpoint returns a set of records, it also includes the following parameters: 
+* `total` indicates the number of records you can retrieve with the query. 
+* `page` and `size` enable you to keep track of your location and the pages.
 
-If you query a page that would make you exceed the number of records, the endpoint will return no content. Coming back to our earlier example of a table with 600 records, If you were to query with:
+
+If you query a page that exceeds the number of records, the endpoint returns no content. For example, imagine the API can retrieve 600 records from an endpoint. The following query retrieves nothing as you have already obtained all the records and stopping at page 3 was enough. 
 
 ```json
 { "page": 4, "size": 200 }
 ```
-
-You would receive nothing: `4 * 200 = 800`. You've exceeded and obtained all your records, and stopping at page 3 was enough.
