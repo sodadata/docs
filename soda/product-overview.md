@@ -23,7 +23,7 @@ Soda has three parts that work together to establish and maintain the reliabilit
 
 ## Soda Core 
 
-![soda-core-logo](/assets/images/soda-core-logo.png){:height="98px" width="98px"}  is a free, open-source, command-line tool that you install in your environment and connect to your data sources. Once connected, you run scans of your data from the command-line to find invalid, missing, or unexpected data. The scan results in the CLI indicate whether the data quality tests you defined passed, failed, or triggered a warning. 
+![soda-core-logo](/assets/images/soda-core-logo.png){:height="98px" width="98px"}  is a free, open-source, command-line tool and Python library that you install in your environment and connect to your data sources. Once connected, you run scans of your data from the command-line to find invalid, missing, or unexpected data. The scan results in the CLI indicate whether the data quality tests you defined passed, failed, or triggered a warning. 
 
 Armed with this information, you and your data engineering team can diagnose data quality issues and take steps to prioritize and resolve issues based on downstream impact.
 
@@ -143,7 +143,7 @@ The very first Soda OSS tools, Soda SQL and Soda Spark served their community we
 * Access a [Soda product comparison]({% link soda/product-matrix.md %}) to learn about the features and functionalities each tool has to offer.
 * Get up and running in a few minutes using the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}).
 * Learn more about Soda Core [scans]({% link soda-core/scan-core.md %}) and [metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

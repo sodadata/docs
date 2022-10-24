@@ -30,6 +30,9 @@ checks for dim_customer:
 ```
 
 [Define checks with validity metrics](#define-checks-with-validity-metrics) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Specify valid values](#specify-valid-values)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Specify valid format](#specify-valid-format)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of validity metrics](#list-of-validity-metrics)<br />
 [List of configuration keys](#list-of-configuration-keys)<br />
@@ -40,7 +43,7 @@ checks for dim_customer:
 
 ## Define checks with validity metrics
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), you use validity metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), you use validity metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
 
 You can use all validity metrics in checks that apply to individual columns in a dataset; you cannot use validity metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
 * You must use a [configuration key:value pair](#list-of-configuration-keys) to define what qualifies as an valid value. 
@@ -52,7 +55,7 @@ checks for dim_customer
       valid min: 1
 ```
 
-You can use validity metrics in checks with fixed thresholds, or relative thresholds, but *not* dynamic thresholds. See [Checks with fixed thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) for more detail. 
+You can use validity metrics in checks with fixed thresholds, or relative thresholds, but *not* change-over-time thresholds. See [Checks with fixed thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) for more detail. 
 
 ```yaml
 checks for dim_reseller:
@@ -173,11 +176,11 @@ Error occurred while executing scan.
 
 <br />
 
-### Display failed rows in Soda Cloud
+### Failed row samples
 
 Checks with validity metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric.
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
 
 ```yaml
 checks for dim_customer:
@@ -199,7 +202,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 | ✓ | Define a name for a check with validity metrics; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Define alert configurations to specify warn and fail thresholds; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 | ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset; see [example](#example-with-filter).| [Add an in-check filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) | 
-| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply checks with validity metrics to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
@@ -316,7 +319,7 @@ checks for dim_customer:
 
 * Use validity metrics in checks with alert configurations to establish [warn and fail zones]({% link soda-cl/optional-config.md %}#define-zones-using-alert-configurations)
 * Use validity metrics in checks to define ranges of acceptable thresholds using [boundary thresholds]({% link soda-cl/metrics-and-checks.md %}#define-boundaries-with-fixed-thresholds).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

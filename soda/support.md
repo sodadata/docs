@@ -7,7 +7,7 @@ parent: Reference
 
 # Support
 
-For the open source developer tools and free trial version of our cloud software, Soda offers free support to the Soda community of users in Slack. Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community in Slack</a> to ask and answer questions.
+For the open source developer tools and free trial version of our cloud software, Soda offers free support to the Soda community of users in Slack. Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community in Slack</a> to ask and answer questions.
 <br />
 
 Community memebers are also welcome to create and/or resolve issues in the public, open-source <a href="https://github.com/sodadata/soda-core" target="_blank"> Soda Core repository</a> in GitHub.  

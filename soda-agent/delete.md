@@ -27,7 +27,7 @@ eksctl delete cluster --name soda-agent
 ## Go further
 
 * Access instructions on how to [redeploy]({% link soda-agent/deploy.md %}#redeploy-an-agent) a Soda Agent on an existing cluster.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

@@ -6,7 +6,8 @@ parent: Integrate Soda
 redirect_from: /soda-cloud/integrate-alation.html
 ---
 
-# Integrate Soda Cloud with Alation <!--Linked to UI, access Shlink-->
+# Integrate Soda Cloud with Alation 
+<!--Linked to UI, access Shlink-->
 
 Integrate Soda with Alation to access details about the quality of your data from within the data catalog.
 
@@ -126,7 +127,7 @@ In a dataset page in Alation, in the **Overview** tab, users have the opportunit
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

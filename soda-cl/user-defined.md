@@ -17,7 +17,7 @@ If the built-in set of [metrics and checks]({% link soda-cl/metrics-and-checks.m
 
 ## Define user-defined checks
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), these are user-defined checks. Truly, it is the metric that you define yourself, then use in a check.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), these are user-defined checks. Truly, it is the metric that you define yourself, then use in a check.
 
 The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the metric that is then used in the check. The check itself follows the simple pattern of a [standard check]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) that uses a metric, a comparison symbol or phrase, and a threshold. You specify the CTE value for the custom metric using a nested **expression key** which also defines the name of the new custom metric.
 * The name you provide for a custom metric must *not* contain spaces.
@@ -57,6 +57,20 @@ checks for dim_product:
 
 <br />
 
+Once defined in your checks YAML file, you can reference a user-defined metric in other checks in the same file. The user defined metric must exist in the file *above* other checks that reference it. 
+
+The following example includes a second check that references the custom metric defined above it.
+
+```yaml
+checks for dim_product:
+  - product_stock >= 50:
+      product_stock query: |
+        SELECT COUNT(safety_stock_level - days_to_manufacture)
+        FROM dim_product
+  - anomaly score for product_stock < default
+```
+
+<br />
 
 ## Optional check configurations
 
@@ -65,7 +79,7 @@ checks for dim_product:
 | ✓ | Define a name for a user-defined check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters in the value in the check. | Use wildcard values as you would with CTE or SQL. |
 | ✓ | Use for each to apply user-defined checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
@@ -127,7 +141,7 @@ coming soon
 
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

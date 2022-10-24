@@ -58,7 +58,7 @@ When a scan results in a failed check, the CLI output displays information about
 
 There are two ways you can configure a SodaCL check to send failed row samples to your Soda Cloud account:
 
-1. Use a [reference check]({% link soda-cl/reference.md %}), [`duplicate_count` metric]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud), a [missing metric]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), or a [validity metric]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud) in your check. Checks that use these metrics automatically send failed row samples to your Soda Cloud account.
+1. Use a [reference check]({% link soda-cl/reference.md %}), [`duplicate_count` metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples), a [missing metric]({% link soda-cl/missing-metrics.md %}#failed-row-samples), or a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples) in your check. Checks that use these metrics automatically send 100 failed row samples to your Soda Cloud account.
 2. Use failed rows checks in your to explicitly send failed rows to Soda Cloud. Read on!
 
 For security, you can also disable the failed row samples feature entirely; see [Disable failed row samples]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples) for details.
@@ -66,7 +66,7 @@ For security, you can also disable the failed row samples feature entirely; see 
 
 ## Define failed rows checks
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), failed row checks are user-defined. This check is limited in its syntax variation, but you can customize your expression or query as much as you like.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), failed row checks are user-defined. This check is limited in its syntax variation, but you can customize your expression or query as much as you like.
 
 The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the `fail condition` that any rows in the `dim_customer` dataset must meet in order to qualify as failed rows, during a scan, get sent to Soda Cloud. 
 
@@ -116,7 +116,7 @@ You can use a SQL query in a failed row check to group failed check results by o
 
 The following example illustrates how to build a query that identifies the countries where the average age of people is less than 25.
 
-1. Begining with a basic query, the output shows the data this example works with.
+1. Beginning with a basic query, the output shows the data this example works with.
 ```sql
 SELECT * FROM Customers;
 ```
@@ -166,7 +166,7 @@ checks for dim_customers:
 | ✓ | Define a name for a failed rows check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 |   | Define alert configurations to specify warn and fail alert conditions. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓  | Use wildcard characters in the value in the check. | Use wildcard values as you would with CTE or SQL. |
 |   | Use for each to apply schema checks to multiple datasets in one scan. | - |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
@@ -263,7 +263,7 @@ If you prefer to send the output of the failed row sampler to a destination othe
 
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

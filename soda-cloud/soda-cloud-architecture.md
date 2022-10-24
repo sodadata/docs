@@ -26,7 +26,7 @@ You can use checks to view samples of data that [failed a check]({% link soda-cl
 * Learn more about what happens during a [scan]({% link soda-cloud/scan-output.md %}).
 * Learn how to configure [agreements]({% link soda-cloud/agreements.md %}) in Soda Cloud.
 * Learn more about viewing [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />
 

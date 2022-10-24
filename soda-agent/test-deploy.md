@@ -115,19 +115,38 @@ If you wish to try creating a new data source in Soda Cloud using the agent you 
 1. From the command-line, create the data source as a pod on your local cluster.
 ```shell
 cat <<EOF | kubectl apply -n soda-agent -f -
+---
 apiVersion: v1
 kind: Pod
 metadata:
   name: nybusbreakdowns
   labels:
-       app: nycbusbreakdowns
-       eks.amazonaws.com/fargate-profile: soda-agent-profile
+    app: nybusbreakdowns
 spec:
   containers:
   - image: sodadata/nybusbreakdowns
-       imagePullPolicy: IfNotPresent
-       name: nybusbreakdowns
+    imagePullPolicy: IfNotPresent
+    name: nybusbreakdowns
+    ports:
+    - name: tcp-postgresql
+      containerPort: 5432
   restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nybusbreakdowns
+  name: nybusbreakdowns
+spec:
+  ports:
+  - name: tcp-postgresql
+    port: 5432
+    protocol: TCP
+    targetPort: tcp-postgresql
+  selector:
+    app: nybusbreakdowns
+  type: ClusterIP
 EOF
 ```
 2. Once the pod is running, you can use the following configuration details when you add a data source in Soda Cloud, in step 2, **Connect the Data Source**.
@@ -163,7 +182,7 @@ minikube delete
 
 * [Deploy a Soda Agent]({% link soda-agent/deploy.md %}) for real!
 * 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

@@ -5,7 +5,8 @@ description: Use a SodaCL reference check to validate that the values in a colum
 parent: SodaCL
 ---
 
-# Reference checks <!--Linked to UI, access Shlink-->
+# Reference checks 
+<!--Linked to UI, access Shlink-->
 
 Use a reference check to validate that column contents match between datasets in the same data source. 
 
@@ -15,6 +16,7 @@ checks for dim_department_group:
 ```
 
 [Define reference checks](#define-reference-checks) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [Go further](#go-further)<br />
 <br />
@@ -22,7 +24,7 @@ checks for dim_department_group:
 
 ## Define reference checks
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), reference checks are unique. This check is limited in its syntax variation, with only a few mutable parts to specify column and dataset names.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), reference checks are unique. This check is limited in its syntax variation, with only a few mutable parts to specify column and dataset names.
 
 The example below checks that the values in the source column, `department_group_name`, in the `dim_department_group` dataset exist in the destination column, `department_name`, in the `dim_employee` dataset. If the values are absent in the `department_name` column, the check fails.
 * Soda CL considers missing values in the source column as invalid.
@@ -40,11 +42,11 @@ checks for dim_customers_dev:
   - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name)
 ```
 
-### Display failed rows in Soda Cloud
+### Failed row samples
 
 Reference checks automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100.
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration.
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
 
 ```yaml
 checks for dim_customers_dev:
@@ -62,7 +64,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 | ✓ | Define a name for a schema check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 |   | Define alert configurations to specify warn and fail alert conditions. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |
 |   | Use for each to apply schema checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
@@ -88,7 +90,7 @@ checks for dim_department_group:
 
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

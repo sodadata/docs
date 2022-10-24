@@ -5,7 +5,8 @@ description: If you have integrated Soda Cloud with Slack, you can use an Incide
 parent: Soda Cloud
 ---
 
-# Create and track incidents <!--Linked to UI, access Shlink-->
+# Create and track incidents 
+<!--Linked to UI, access Shlink-->
 
 When you create checks in Soda Core and you have connected Soda Core to a Soda Cloud account, Soda Core pushes all checks results from each scan to Soda Cloud. For a check that failed or triggered a warning, you have the option of creating an **Incident** for that check result in Soda Cloud to track your team's investigation and resolution of a data quality issue. 
 
@@ -43,7 +44,7 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 * [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for a check result.
 * Collaborate with your team using a [Single Sign-on IdP]({% link soda-cloud/sso.md %}).
 * Integrate Soda with your [data catalogs]({% link soda/integrate-alation.md %}) or [data pipeline tools]({% link soda/integrate-dbt.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

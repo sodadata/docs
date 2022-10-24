@@ -227,7 +227,7 @@ To exit the virtual environment in your command-line interface, type `deactivate
 * Consider completing the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}).
 * Explore the built-in [metrics and checks]({% link soda-cl/metrics-and-checks.md %}) you can use with SodaCL.
 * Set up [programmatic scans]({% link soda-core/programmatic.md %}) to automate data quality monitoring.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />
 

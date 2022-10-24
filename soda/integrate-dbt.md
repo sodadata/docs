@@ -119,7 +119,7 @@ Each row in the table of Check Results represents the result of a check that Sod
 * Read more about [running a Soda scan]({% link soda-core/scan-core.md %}#run-a-scan).
 * Learn more about [creating agreements]({% link soda-cloud/agreements.md %}) in Soda Cloud.
 * Learn more about creating, tracking, and resolving data quality [incidents]({% link soda-cloud/incidents.md %}) in Soda Cloud.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

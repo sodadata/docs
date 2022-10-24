@@ -64,7 +64,6 @@ sql_metric:
                 <div>
                     <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
                     <h2>Play</h2>
-                    <a href="/soda-sql/landing.html">Interactive Soda SQL demo</a>
                     <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">Soda SQL playground in GitHub</a>
                 </div>
                  <div>

@@ -5,7 +5,8 @@ description: Use a SodaCL automated monitoring check to automatically check for 
 parent: SodaCL
 ---
 
-# Automated monitoring checks <!--Linked to UI, access Shlink-->
+# Automated monitoring checks 
+<!--Linked to UI, access Shlink-->
 
 Use automated monitoring checks to instruct Soda to automatically check for row count anomalies and schema changes in a dataset.<br />
 *Requires Soda Cloud* 
@@ -96,7 +97,7 @@ Need help? Ask the team in the <a href="http://community.soda.io/slack" target="
 
 ## Define an automated monitoring check
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), automated monitoring checks are unique. This check employs the `anomaly score` and `schema` checks, but is limited in its syntax variation, with only a couple of mutable parts to specify which datasets to automatically apply the anomaly and schema checks.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), automated monitoring checks are unique. This check employs the `anomaly score` and `schema` checks, but is limited in its syntax variation, with only a couple of mutable parts to specify which datasets to automatically apply the anomaly and schema checks.
 
 The example check below uses a wildcard character (`%`) to specify that Soda Core executes automated monitoring checks against all datasets with names that begin with `prod`, and *not* to execute the checks against any dataset with a name that begins with `test`.
 
@@ -145,9 +146,37 @@ automated monitoring:
 ```
 
 
+## Troubleshoot Soda Core Scientific installation
+
+While installing Soda Core Scientific works on Linux, you may encounter issues if you install Soda Core Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
+* [Use Docker to run Soda Core (Recommended)](#use-docker-to-run-soda-core)
+* [Install Soda Core locally (Limited support)](#install-soda-core-locally)
+
+Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
+### Use Docker to run Soda Core
+
+{% include docker-soda-core.md %}
+
+### Install Soda Core Scientific Locally 
+
+{% include install-local-soda-core-scientific.md %}
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+<br />
+You cannot create automated monitoring checks in Soda Cloud, yet. However, you can preview the functionality by requesting limited preview access. <a href="mailto:support@soda.io">Email us</a> to ask!
+
+When the functionality in Soda Cloud becomes generally available, you will be able to add automated monitoring checks in the guided steps to [create a new data source]({% link soda-cloud/add-datasource.md %}#5-check-datasets). 
+  </div>
+  </div>
+</div>
+
+
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.

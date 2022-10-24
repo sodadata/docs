@@ -5,7 +5,8 @@ description: Use SodaCL to send sample data to Soda Cloud to quickly review the 
 parent: SodaCL
 ---
 
-# Display sample data in Soda Cloud <!--Linked to UI, access Shlink-->
+# Display sample data in Soda Cloud 
+<!--Linked to UI, access Shlink-->
 
 Use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.<br />
 *Requires Soda Cloud.*
@@ -78,7 +79,7 @@ sample datasets:
 |   | Define a name for sample data configuration. |  - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters ({% raw %} % {% endraw %} with dataset names in the check; see [example](#example-with-wildcards). | - |
 |   | Use for each to apply anomaly score checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan. |  -  |
@@ -112,7 +113,7 @@ Where your datasets contain sensitive or private information, you may *not* want
 {% include disable-all-samples.md %}
 
 ## Go further
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.

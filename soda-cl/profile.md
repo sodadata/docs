@@ -73,7 +73,8 @@ Reference the [section below](#define-an-automated-monitoring-check) for how to 
   </div>
 </div>
 
-## Define dataset discovery  <!--Linked to UI, access Shlink-->
+## Define dataset discovery  
+<!--Linked to UI, access Shlink-->
 
 Dataset discovery captures basic information about each dataset, including a dataset's schema and the columns it contains.
 
@@ -121,7 +122,8 @@ discover datasets:
 ![discover datasets](../assets/images/discover-datasets.png)
 
 
-## Define column profiling  <!--Linked to UI, access Shlink-->
+## Define column profiling  
+<!--Linked to UI, access Shlink-->
 
 Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. 
 
@@ -178,7 +180,7 @@ profile columns:
 |   | Define a name for sample data configuration. |  - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters ({% raw %} % {% endraw %} with dataset names in the check; see [example](#example-with-wildcards). | - |
 |   | Use for each to apply anomaly score checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan. |  -  |
@@ -206,7 +208,7 @@ profile columns:
 <!--* If you configured `discover datasets` to exclude a dataset but do not explicitly also exclude its columns in `profile columns`, Soda discovers the dataset and profiles its columns. -->
 
 ## Go further
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.

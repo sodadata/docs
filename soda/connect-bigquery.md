@@ -11,6 +11,7 @@ parent: Connect a data source
 
 [Connection configuration](#connection-configuration)<br />
 [Authentication methods](#authentication-methods)<br />
+[Test the datasource connection](#test-the-data-source-connection)<br />
 [Supported data types](#supported-data-types)<br />
 <br />
 
@@ -115,6 +116,8 @@ data_source my_database_name:
 ```
 
 <br />
+
+{% include test-connection.md %}
 
 ## Supported data types
 
