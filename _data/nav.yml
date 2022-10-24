@@ -216,16 +216,16 @@
     page: soda/deprecated.md
 
 - title: API Documentation
-  page: api-docs/reporting-api.md
+  page: api-docs/reporting-api-v1.md
   subcategories:
-  - subtitle: Reporting API
-    page: api-docs/reporting-api.md
-  - subtitle: Reporting API (v1)
+  - subtitle: Reporting API v1
     page: api-docs/reporting-api-v1.md
+  - subtitle: Reporting API v0
+    page: api-docs/reporting-api.md
+  - subtitle: Changelog and migration guide
+    page: api-docs/reporting-api-v1-migration-guide.md
   - subtitle: Build a reporting dashboard
     page: api-docs/reporting-api-to-overview-dashboards.md
-  - subtitle: Reporting API v1 Migration guide
-    page: api-docs/reporting-api-v1-migration-guide.md
 
 
 - title: Release notes
