@@ -144,7 +144,7 @@ The very first Soda OSS tools, Soda SQL and Soda Spark served their community we
 * Access a [Soda product comparison]({% link soda/product-matrix.md %}) to learn about the features and functionalities each tool has to offer.
 * Get up and running in a few minutes using the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}).
 * Learn more about Soda Core [scans]({% link soda-core/scan-core.md %}) and [metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

@@ -34,7 +34,7 @@ The Soda Agent Helm chart is stored on a public respository on <a href="https://
 ## Go further
 
 * Next: [Deploy a Soda Agent]({% link soda-agent/deploy.md %})
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

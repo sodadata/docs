@@ -24,7 +24,7 @@ checks for dim_department_group:
 
 ## Define reference checks
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), reference checks are unique. This check is limited in its syntax variation, with only a few mutable parts to specify column and dataset names.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), reference checks are unique. This check is limited in its syntax variation, with only a few mutable parts to specify column and dataset names.
 
 The example below checks that the values in the source column, `department_group_name`, in the `dim_department_group` dataset exist in the destination column, `department_name`, in the `dim_employee` dataset. If the values are absent in the `department_name` column, the check fails.
 * Soda CL considers missing values in the source column as invalid.
@@ -90,7 +90,7 @@ checks for dim_department_group:
 
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

@@ -46,7 +46,7 @@ helm get values -n <namespace> <release name>
 
 * Access instructions for how to [deploy a Soda Agent]({% link soda-agent/deploy.md %}).
 * Learn the [Soda Agent basics]({% link soda-agent/basics.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

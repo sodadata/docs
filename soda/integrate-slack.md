@@ -23,7 +23,7 @@ You can set a default Slack channel that Soda Cloud applies to all alert notific
 
 * [Connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account.
 * Learn more about using Slack to collaborate on resolving [Incidents]({% link soda-cloud/incidents.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

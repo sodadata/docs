@@ -289,7 +289,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Read about the [Optional configurations]({% link soda-cl/optional-config.md %}) you can apply to SodaCL checks.
 * [Connect Soda Core to Soda Cloud]({% link soda/quick-start-soda-core.md %}#connect-soda-core-to-soda-cloud) to vastly enrich the data quality monitoring experience.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 
