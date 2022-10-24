@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Soda Cloud Reporting API",
-    "description": "\nThis API enables you to query data from your Soda Cloud account. Use the data to build reporting dashboards that\ncommunicate how users in your organization are adopting and making use of Soda Cloud.\n\nAuthentication\n-----\nThe API supports both `HTTPBasic` authentication and `TokenAuth` authentication. Except for the `/get_token` endpoint,\nwhich only supports HTTP Basic authentication.\n\n- `HTTPBasic` authentication requires you to provide a username and password via headers. Each endpoint \"Try It\" section\nwill show you exactly how to do that.\n\n- `TokenAuth` requires that you obtain a Soda token from the `/get_token` endpoint using your username and password\nin accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token`\nendpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with\nany of the other endpoints.\n\n- `ApiKeyId` and `ApiKeySecret` allow you to use API keys generated in your Cloud Profile. Use this method if\nyour organization is using Single Sign-On (SSO). Provide your API Key Id and API Key Secret in the\n`API_KEY_ID` and `API_KEY_SECRET` headers, respectively. If you do not know how to generate your API Key and Secret\npair follow the\n[Connect Soda Core to Soda Cloud](https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud)\ndocumentation.\n\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required,\nin the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication\ncredentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
+    "description": "\nThis API enables you to query reporting-oriented data from your Soda Cloud account.\nUse this data to power dashboards and reports on the coverage and quality of your data.\n\nAuthentication\n-----\nThe API supports both `HTTPBasic` authentication and `TokenAuth` authentication. Except for the `/get_token` endpoint,\nwhich only supports HTTP Basic authentication.\n\n- `HTTPBasic` authentication requires you to provide a username and password via headers. Each endpoint \"Try It\" section\nwill show you exactly how to do that.\n\n- `TokenAuth` requires that you obtain a Soda token from the `/get_token` endpoint using your username and password\nin accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token`\nendpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with\nany of the other endpoints.\n\n- `ApiKeyId` and `ApiKeySecret` allow you to use API keys generated in your Cloud Profile. Use this method if\nyour organization is using Single Sign-On (SSO). Provide your API Key Id and API Key Secret in the\n`API_KEY_ID` and `API_KEY_SECRET` headers, respectively. If you do not know how to generate your API Key and Secret\npair follow the\n[Connect Soda Core to Soda Cloud](https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud)\ndocumentation.\n\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required,\nin the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication\ncredentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
     "version": "1.0.0"
   },
   "servers": [
@@ -23,12 +23,12 @@
         }
       }
     },
-    "/v1/get_token": {
+    "/get_token": {
       "get": {
         "tags": ["Authentication"],
         "summary": "Get token",
         "description": "This enpoint allows you to obtain a limited duration API token to use in any of the other endpoints.\n\nMake a query to this endpoint according to the `HTTPBasic` authentication headers\n(see \"Live testing\" section on the right).\n\nThe expiration limit of the token is given to you in the response.\n\nReturns\n-------\nAn object of type `GetTokenResult`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.",
-        "operationId": "get_token_v1_get_token_get",
+        "operationId": "get_token_get_token_get",
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -42,12 +42,12 @@
         "security": [{ "HTTPBasic": [] }]
       }
     },
-    "/v1/audit_trail": {
+    "/audit_trail": {
       "get": {
         "tags": ["Auditing"],
         "summary": "Audit Trail",
         "description": "This endpoint returns a list of audit trail events for the authenticated user's organization.\n\nTo obtain data from this endpoint, the authenticated user must be an **organization admin**\nand the data returned is equivalent to the what an Organization admin would be able to get from\nthe Soda Cloud UI under \"Organization Settings > Audit Trail\".\n\nUsage\n-----\nUse this endpoint to capture audit trail events for security and usage monitoring purposes.\n\nReturns\n-------\nAn object of type `AuditTrailResult` containing an array of `AuditTrailData`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.",
-        "operationId": "audit_trail_v1_audit_trail_get",
+        "operationId": "audit_trail_audit_trail_get",
         "parameters": [
           {
             "required": false,
@@ -55,7 +55,7 @@
               "title": "From Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-09-12T13:28:43.485498"
+              "default": "2022-09-23T11:28:51.465782"
             },
             "name": "from_datetime",
             "in": "query"
@@ -66,7 +66,7 @@
               "title": "To Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-10-13T13:28:43.485538"
+              "default": "2022-10-24T11:28:51.465800"
             },
             "name": "to_datetime",
             "in": "query"
@@ -107,120 +107,19 @@
         ]
       }
     },
-    "/v1/adoption/sign_ups": {
-      "post": {
-        "tags": ["Tool Adoption"],
-        "summary": "Sign-ups",
-        "description": "This endpoint returns sign-up events for the authenticated user's organization.\n\nTo avoid incomplete reporting, Soda currently updates this data once per day and does not include\nthe current date (UTC).\n\n**NOTE:** The event tracking solution does not currently track users who signed up via SSO.\n\nUsage\n-----\nUse this endpoint to build reports about Soda's adoption across your organization.\n\nReturns\n-------\nAn object of type `SignUpsResult` containing an array of `SignUpData`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.",
-        "operationId": "sign_ups_v1_adoption_sign_ups_post",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/SignUpsResult" }
-              }
-            }
-          },
-          "202": {
-            "description": "Successful request but no data was returned",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/NoContentError" }
-              }
-            }
-          }
-        },
-        "security": [
-          { "HTTPBasic": [] },
-          { "SodaBackendToken": [] },
-          { "APIKeyCookie": [] },
-          { "ApiKeyId": [] },
-          { "APIKeySecret": [] }
-        ]
-      }
-    },
-    "/v1/adoption/sign_ins": {
-      "post": {
-        "tags": ["Tool Adoption"],
-        "summary": "Sign-ins",
-        "description": "This endpoint provides the number of logins for a specific user per day.\n\nTo avoid incomplete reporting, Soda currently updates this data once per day and does not include\nthe current date (UTC).\n\n**NOTE:** The event tracking solution does not currently track users who signed up via SSO.\n\nUsage\n-----\nUse this endpoint to build reports about Soda's adoption throughout your organization.\n\nReturns\n-------\nAn object of type `SignInsResult` containing an array of `SignInData`\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.",
-        "operationId": "sign_ins_v1_adoption_sign_ins_post",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/SignInsResult" }
-              }
-            }
-          },
-          "202": {
-            "description": "Successful request but no data was returned",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/NoContentError" }
-              }
-            }
-          }
-        },
-        "security": [
-          { "HTTPBasic": [] },
-          { "SodaBackendToken": [] },
-          { "APIKeyCookie": [] },
-          { "ApiKeyId": [] },
-          { "APIKeySecret": [] }
-        ]
-      }
-    },
-    "/v1/adoption/daily_account_activity": {
-      "post": {
-        "tags": ["Tool Adoption"],
-        "summary": "Daily account activity",
-        "description": "This endpoint provides a daily count of activity events for the authenticated user's organization.\n\nThe endpoint groups events into one of two groups: \"Level 0\" or \"Level 1\".\n\n**Level 0**: Activity of type **\"Read\"/\"View\"** (For example, view a dataset, view a monitor result.)\n**Level 1**: Activity of type **\"Create\"/\"Update\"** (For example, create a monitor, update a monitor configuration.)\n\nTo avoid incomplete reporting, Soda currently updates this data once per day and does not include\nthe current date (UTC).\n\nUsage\n-----\nUse this endpoint to build reports about Soda's adoption and usage throughout your organization.\n\nReturns\n-------\nAn object of type `DailyAccountActivityResult` containing an array of `DailyAccountActivityData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
-        "operationId": "daily_account_activity_v1_adoption_daily_account_activity_post",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DailyAccountActivityResult"
-                }
-              }
-            }
-          },
-          "202": {
-            "description": "Successful request but no data was returned",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/NoContentError" }
-              }
-            }
-          }
-        },
-        "security": [
-          { "HTTPBasic": [] },
-          { "SodaBackendToken": [] },
-          { "APIKeyCookie": [] },
-          { "ApiKeyId": [] },
-          { "APIKeySecret": [] }
-        ]
-      }
-    },
-    "/v1/coverage/checks": {
+    "/coverage/checks": {
       "post": {
         "tags": ["Coverage"],
         "summary": "Checks",
         "description": "This endpoint provides a real-time list of all the check that exist in your organization's account,\nas well as the datasets upon which each check depends.\n\nUsage\n-----\nUse this endpoint to enrich results from the `/datasets` or `/check_results` endpoints.\n\nReturns\n-------\nAn object of type `CheckResult` containing an array of `CheckData` for each check.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
-        "operationId": "checks_v1_coverage_checks_post",
+        "operationId": "checks_coverage_checks_post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "title": "Request Body",
                 "allOf": [{ "$ref": "#/components/schemas/CheckRequest" }],
-                "default": {}
+                "default": { "page": 1, "size": 400 }
               }
             }
           }
@@ -260,19 +159,19 @@
         ]
       }
     },
-    "/v1/coverage/datasets": {
+    "/coverage/datasets": {
       "post": {
         "tags": ["Coverage"],
         "summary": "Datasets",
         "description": "This endpoint provides information about all the datasets that your team has connected to your organization's\nSoda Cloud account.\n\nUsage\n-----\nUse this endpoint to review the number of datasets Soda Cloud accesses, including each dataset's most recent scan\ntime and test failure counts.\n\nUse the data from this endpoint to enrich other endpoints' data such as `/dataset_health` and\n`/dataset_coverage`\n\nReturns\n-------\nAn object of type `DatasetsResult` containing an array of `DatasetsData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
-        "operationId": "datasets_v1_coverage_datasets_post",
+        "operationId": "datasets_coverage_datasets_post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "title": "Request Body",
                 "allOf": [{ "$ref": "#/components/schemas/DatasetsRequest" }],
-                "default": {}
+                "default": { "page": 1, "size": 400 }
               }
             }
           }
@@ -312,12 +211,12 @@
         ]
       }
     },
-    "/v1/quality/check_results": {
+    "/quality/check_results": {
       "post": {
         "tags": ["Quality"],
-        "summary": "Test results",
+        "summary": "Check results",
         "description": "This endpoint provides a list of checks along with each checks's historical evaluation results.\n\nUsage\n-----\nUse this endpoint to build reports that show the outcome of your checks over time. If you gathered high-level data\nfrom the `/dataset_health` and `/dataset_coverage` endpoints, you can use this endpoint to examine more granular\ndata about checks that apply to each dataset.\n\nYou can provide multiple `dataset_ids` per request, and use the `from_datetime` parameter to optimize performance.\nUse the `datasets` endpoint to first get a list of available datasets along with their IDs, then issue separate\nqueries one dataset at a time.\n\nKeep the number of potentially parallel queries that you make to this endpoint small as they can face rate\nlimitations or poor performance.\n\nReturns\n-------\nAn object of type `CheckResultsResult` containing an array of `CheckResultsData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
-        "operationId": "test_results_v1_quality_check_results_post",
+        "operationId": "check_results_quality_check_results_post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -326,7 +225,7 @@
                 "allOf": [
                   { "$ref": "#/components/schemas/CheckResultsRequest" }
                 ],
-                "default": {}
+                "default": { "page": 1, "size": 400 }
               }
             }
           }
@@ -366,12 +265,12 @@
         ]
       }
     },
-    "/v1/quality/dataset_health": {
+    "/quality/dataset_health": {
       "post": {
         "tags": ["Quality"],
         "summary": "Dataset health",
         "description": "This endpoint provides you with a daily measure of the health of each of your datasets. Soda calculated a dataset's\nhealth based on the number of checks that pass during a scan.\n\nUsage\n-----\nUse this endpoint to get review the health of your datasets, and to see a high-level view of the more granular\ninformation that the `/check_results` endpoint provides.\n\nUse this endpoint in conjunction with the `/datasets` endpoint as the latter adds information about each\ndataset.\n\nMultiple `dataset_ids` are allowed per request, and use the `from_datetime` parameter to optimize performance.\n\nUse the datasets endpoint to first get a list of available datasets along with their IDs, then issue separate\nqueries one dataset at a time.\n\nKeep the number of potentially parallel queries that you make to this endpoint small as they can face rate\nlimitations or poor performance.\n\nReturns\n-------\nAn object of type `DatasetHealthResult` containing an array of `DatasetHealthData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
-        "operationId": "dataset_health_v1_quality_dataset_health_post",
+        "operationId": "dataset_health_quality_dataset_health_post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -380,7 +279,7 @@
                 "allOf": [
                   { "$ref": "#/components/schemas/DatasetHealthRequest" }
                 ],
-                "default": {}
+                "default": { "page": 1, "size": 400 }
               }
             }
           }
@@ -420,12 +319,12 @@
         ]
       }
     },
-    "/v1/coverage/dataset_coverage": {
+    "/coverage/dataset_coverage": {
       "post": {
         "tags": ["Coverage"],
         "summary": "Dataset coverage",
         "description": "This endpoint provides a daily measure of the test coverage of your datasets.\nIt derives a `relative_coverage_score` which compares the number of tests that apply to a single dataset to\nother datasets connected to your organization's Soda Cloud account. (Refer to the `DatasetCoverageData` schema\nfor more information.)\n\nUsage\n-----\nUse this endpoint to review the relative test coverage of your datasets, and to see a high-level view of the more\ngranular information that the `/tests_and_results` endpoint provides.\n\nThis endpoint is best used in conjunction with the `/datasets` endpoint as the latter augments the level of\ninformation about each dataset.\n\nReturns\n-------\nAn object of type `DatasetCoverageResult` containing an array of `DatasetCoverageData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
-        "operationId": "dataset_coverage_v1_coverage_dataset_coverage_post",
+        "operationId": "dataset_coverage_coverage_dataset_coverage_post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -476,12 +375,12 @@
         ]
       }
     },
-    "/v1/impact/incidents": {
+    "/impact/incidents": {
       "post": {
         "tags": ["Platform Impact"],
         "summary": "Incidents",
         "description": "This endpoint provides a list of incidents (as well as basic information --see field definitions in the\n`IncidentsData` schema) per report date.\n\nYou can filter for specific incident statuses, datasets, and report dates. See `IncidentsRequest` schema\nfor an exhaustive list of filter and aggregation options.\n\n**NOTE:** In some rare cases, incidents are not attached to any monitors, in that case we cannot check wich\ndataset they are attached to. These incidents are therefore ignored from the output.\n\nUsage\n-----\nUse to build reports about the number of incidents at any given time on your Soda Cloud account.\n\nReturns\n-------\nAn object of type `IncidentsResult` containing an array of `IncidentsData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
-        "operationId": "incidents_v1_impact_incidents_post",
+        "operationId": "incidents_impact_incidents_post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -489,9 +388,11 @@
                 "title": "Request Body",
                 "allOf": [{ "$ref": "#/components/schemas/IncidentsRequest" }],
                 "default": {
+                  "page": 1,
+                  "size": 400,
                   "status": "unresolved",
-                  "from_datetime": "2022-09-12T13:28:42.648330",
-                  "to_datetime": "2022-10-13T13:28:42.648347"
+                  "from_datetime": "2022-09-23T11:28:50.887963",
+                  "to_datetime": "2022-10-24T11:28:50.887978"
                 }
               }
             }
@@ -583,15 +484,15 @@
         "required": ["data"],
         "type": "object",
         "properties": {
-          "resource": {
-            "title": "Resource",
-            "type": "string",
-            "default": "audit_trail"
-          },
           "data": {
             "title": "Data",
             "type": "array",
             "items": { "$ref": "#/components/schemas/AuditTrailData" }
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "default": "audit_trail"
           }
         },
         "description": "Array of `AuditTrailData`."
@@ -600,6 +501,8 @@
         "title": "CheckRequest",
         "type": "object",
         "properties": {
+          "page": { "title": "Page", "type": "integer", "default": 1 },
+          "size": { "title": "Size", "type": "integer", "default": 400 },
           "dataset_ids": {
             "title": "Dataset Ids",
             "type": "array",
@@ -617,18 +520,16 @@
       },
       "CheckResult": {
         "title": "CheckResult",
-        "required": ["data"],
+        "required": ["total", "page", "size", "data"],
         "type": "object",
         "properties": {
+          "total": { "title": "Total", "type": "integer" },
+          "page": { "title": "Page", "type": "integer" },
+          "size": { "title": "Size", "type": "integer" },
           "data": {
             "title": "Data",
             "type": "array",
             "items": { "$ref": "#/components/schemas/ChecksData" }
-          },
-          "resource": {
-            "title": "Resource",
-            "type": "string",
-            "default": "tests"
           }
         },
         "description": "Array of `TestsData`."
@@ -771,11 +672,19 @@
         "title": "CheckResultsRequest",
         "type": "object",
         "properties": {
+          "page": { "title": "Page", "type": "integer", "default": 1 },
+          "size": { "title": "Size", "type": "integer", "default": 400 },
           "dataset_ids": {
             "title": "Dataset Ids",
             "type": "array",
             "items": { "type": "string" },
-            "description": "\nDataset IDs (UUID from the Soda Cloud platform). The `datasets` endpoint provides those IDs and can be used\nto loop over this endpoint.\n        "
+            "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."
+          },
+          "check_ids": {
+            "title": "Check Ids",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Check IDs (UUIDs from the Soda Cloud platform) to use as filter."
           },
           "from_datetime": {
             "title": "From Datetime",
@@ -788,18 +697,16 @@
       },
       "CheckResultsResult": {
         "title": "CheckResultsResult",
-        "required": ["data"],
+        "required": ["total", "page", "size", "data"],
         "type": "object",
         "properties": {
+          "total": { "title": "Total", "type": "integer" },
+          "page": { "title": "Page", "type": "integer" },
+          "size": { "title": "Size", "type": "integer" },
           "data": {
             "title": "Data",
             "type": "array",
             "items": { "$ref": "#/components/schemas/CheckResultsData" }
-          },
-          "resource": {
-            "title": "Resource",
-            "type": "string",
-            "default": "tests_and_results"
           }
         },
         "description": "Array of `CheckResultsData`."
@@ -821,7 +728,7 @@
           "check_name": {
             "title": "Check Name",
             "type": "string",
-            "description": "Name of a specific check in Soda Cloud or in the `name:` tag in a Soda SQL YAML file."
+            "description": "Name of a specific check in Soda Cloud."
           },
           "check_type": {
             "title": "Check Type",
@@ -843,6 +750,11 @@
             "title": "Dataset Id",
             "type": "string",
             "description": "Identifier (UUID) of a dataset in Soda Cloud."
+          },
+          "source": {
+            "title": "Source",
+            "type": "string",
+            "description": "Source type of a check (E.g. soda-core, dbt etc.)"
           },
           "creator_id": {
             "title": "Creator Id",
@@ -927,53 +839,6 @@
         },
         "description": "Contains information about a check and its associated datasets."
       },
-      "DailyAccountActivityData": {
-        "title": "DailyAccountActivityData",
-        "type": "object",
-        "properties": {
-          "on_date": {
-            "title": "On Date",
-            "type": "string",
-            "description": "Date on which an activity for the authenticated user's organization took place.",
-            "format": "date"
-          },
-          "active_level_0_users": {
-            "title": "Active Level 0 Users",
-            "type": "integer",
-            "description": "Number of unique users who performed a Level 0 type of activity."
-          },
-          "active_level_1_users": {
-            "title": "Active Level 1 Users",
-            "type": "integer",
-            "description": "Number of unique users who performed a Level 1 type of activity."
-          },
-          "level_0_events": {
-            "title": "Level 0 Events",
-            "type": "integer",
-            "description": "Number of Level 0 events."
-          },
-          "level_1_events": {
-            "title": "Level 1 Events",
-            "type": "integer",
-            "description": "Number of Level 1 events."
-          }
-        },
-        "description": "Daily count of activity events for the authenticated user's organization.\n\nSoda groups events into two groups: \"Level 0\" or \"Level 1\".\nEvent are grouped into \"Level 0\" and \"Level 1\":\n\n    - Level 0: Activity of type \"Read\"/\"View\" (For example, view a dataset, view monitor result.)\n    - Level 1: Activity of type \"Create/Update\" (For example, create a monitor, update a monitor configuration)"
-      },
-      "DailyAccountActivityResult": {
-        "title": "DailyAccountActivityResult",
-        "required": ["resource", "data"],
-        "type": "object",
-        "properties": {
-          "resource": { "title": "Resource", "type": "string" },
-          "data": {
-            "title": "Data",
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/DailyAccountActivityData" }
-          }
-        },
-        "description": "Array of `DailyAccountActivityData`."
-      },
       "DatasetCoverageDataObject": {
         "title": "DatasetCoverageDataObject",
         "required": ["descriptives", "dataset_info"],
@@ -1049,12 +914,7 @@
         "required": ["data"],
         "type": "object",
         "properties": {
-          "data": { "$ref": "#/components/schemas/DatasetCoverageDataObject" },
-          "resource": {
-            "title": "Resource",
-            "type": "string",
-            "default": "dataset_coverage"
-          }
+          "data": { "$ref": "#/components/schemas/DatasetCoverageDataObject" }
         },
         "description": "Array of `DatasetInfoData` and `DatasetCoverageDescriptivesData`."
       },
@@ -1065,12 +925,12 @@
           "organization_id": {
             "title": "Organization Id",
             "type": "string",
-            "description": "Organization ID of the dataset (UUID) in Soda Cloud."
+            "description": "Identifier (UUID) of an organization in Soda Cloud."
           },
           "dataset_id": {
             "title": "Dataset Id",
             "type": "string",
-            "description": "Unique identifier for a dataset (UUID) in Soda Cloud."
+            "description": "Identifier (UUID) of a dataset in Soda Cloud."
           },
           "scan_date": {
             "title": "Scan Date",
@@ -1120,11 +980,13 @@
         "title": "DatasetHealthRequest",
         "type": "object",
         "properties": {
+          "page": { "title": "Page", "type": "integer", "default": 1 },
+          "size": { "title": "Size", "type": "integer", "default": 400 },
           "dataset_ids": {
             "title": "Dataset Ids",
             "type": "array",
             "items": { "type": "string" },
-            "description": "List of dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."
+            "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."
           },
           "from_datetime": {
             "title": "From Datetime",
@@ -1137,10 +999,12 @@
       },
       "DatasetHealthResult": {
         "title": "DatasetHealthResult",
-        "required": ["resource", "data"],
+        "required": ["total", "page", "size", "data"],
         "type": "object",
         "properties": {
-          "resource": { "title": "Resource", "type": "string" },
+          "total": { "title": "Total", "type": "integer" },
+          "page": { "title": "Page", "type": "integer" },
+          "size": { "title": "Size", "type": "integer" },
           "data": {
             "title": "Data",
             "type": "array",
@@ -1156,7 +1020,7 @@
           "dataset_id": {
             "title": "Dataset Id",
             "type": "string",
-            "description": "\nIdentifier (UUID) of the dataset in Soda Cloud. Join with the results of the `datasets` endpoint for more\ninformation.\n        "
+            "description": "Identifier (UUID) of a dataset in Soda Cloud."
           },
           "number_of_checks": {
             "title": "Number Of Checks",
@@ -1178,12 +1042,12 @@
           "dataset_id": {
             "title": "Dataset Id",
             "type": "string",
-            "description": "Identifier (UUID) of the dataset in Soda Cloud."
+            "description": "Identifier (UUID) of a dataset in Soda Cloud."
           },
           "organization_id": {
             "title": "Organization Id",
             "type": "string",
-            "description": "Identifier (UUID) of the organization in Soda Cloud."
+            "description": "Identifier (UUID) of an organization in Soda Cloud."
           },
           "dataset_name": {
             "title": "Dataset Name",
@@ -1316,29 +1180,29 @@
         "title": "DatasetsRequest",
         "type": "object",
         "properties": {
+          "page": { "title": "Page", "type": "integer", "default": 1 },
+          "size": { "title": "Size", "type": "integer", "default": 400 },
           "dataset_ids": {
             "title": "Dataset Ids",
             "type": "array",
             "items": { "type": "string" },
-            "description": "A list of dataset UUIDs corresponding to datasets in the Soda Cloud platform."
+            "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."
           }
         },
         "description": "Datasets request JSON Body."
       },
       "DatasetsResult": {
         "title": "DatasetsResult",
-        "required": ["data"],
+        "required": ["total", "page", "size", "data"],
         "type": "object",
         "properties": {
+          "total": { "title": "Total", "type": "integer" },
+          "page": { "title": "Page", "type": "integer" },
+          "size": { "title": "Size", "type": "integer" },
           "data": {
             "title": "Data",
             "type": "array",
             "items": { "$ref": "#/components/schemas/DatasetsData" }
-          },
-          "resource": {
-            "title": "Resource",
-            "type": "string",
-            "default": "datasets"
           }
         },
         "description": "Array of `DatasetsData`."
@@ -1360,7 +1224,7 @@
           "organization_id": {
             "title": "Organization Id",
             "type": "string",
-            "description": "Organization ID (UUID) of the logged in user."
+            "description": "Identifier (UUID) of an organization in Soda Cloud."
           },
           "expires_in": {
             "title": "Expires In",
@@ -1398,7 +1262,7 @@
           "organization_id": {
             "title": "Organization Id",
             "type": "string",
-            "description": "ID (UUID) of the corresponding organization for the incident shown in the Soda Cloud Incidents page."
+            "description": "Identifier (UUID) of an organization in Soda Cloud."
           },
           "created_at": {
             "title": "Created At",
@@ -1415,7 +1279,7 @@
           "check_id": {
             "title": "Check Id",
             "type": "string",
-            "description": "Check ID (UUID) of the check for which the incident was created."
+            "description": "Identifier (UUID) of a check in Soda Cloud."
           },
           "check_result_id": {
             "title": "Check Result Id",
@@ -1425,7 +1289,7 @@
           "dataset_id": {
             "title": "Dataset Id",
             "type": "string",
-            "description": "Dataset ID (UUID) of the dataset in the Soda Cloud Dataset page."
+            "description": "Identifier (UUID) of a dataset in Soda Cloud."
           },
           "title": {
             "title": "Title",
@@ -1435,7 +1299,7 @@
           "check_name": {
             "title": "Check Name",
             "type": "string",
-            "description": "Name of the check for which the incident was created as shown in the Soda Cloud Incidents page."
+            "description": "Name of a specific check in Soda Cloud."
           },
           "severity": {
             "title": "Severity",
@@ -1496,6 +1360,8 @@
         "title": "IncidentsRequest",
         "type": "object",
         "properties": {
+          "page": { "title": "Page", "type": "integer", "default": 1 },
+          "size": { "title": "Size", "type": "integer", "default": 400 },
           "dataset_ids": {
             "title": "Dataset Ids",
             "type": "array",
@@ -1513,28 +1379,26 @@
             "type": "string",
             "description": "ISO timestamp from which you want to retrieve incidents. Defaults to last 31 days.",
             "format": "date-time",
-            "default": "2022-09-12T13:28:42.648330"
+            "default": "2022-09-23T11:28:50.887963"
           },
           "to_datetime": {
             "title": "To Datetime",
             "type": "string",
             "description": "ISO timestamp up to which you want to retrieve incidents. Defaults to today.",
             "format": "date-time",
-            "default": "2022-10-13T13:28:42.648347"
+            "default": "2022-10-24T11:28:50.887978"
           }
         },
         "description": "Incidents request JSON Body."
       },
       "IncidentsResult": {
         "title": "IncidentsResult",
-        "required": ["data"],
+        "required": ["total", "page", "size", "data"],
         "type": "object",
         "properties": {
-          "resource": {
-            "title": "Resource",
-            "type": "string",
-            "default": "incidents"
-          },
+          "total": { "title": "Total", "type": "integer" },
+          "page": { "title": "Page", "type": "integer" },
+          "size": { "title": "Size", "type": "integer" },
           "data": {
             "title": "Data",
             "type": "array",
@@ -1567,75 +1431,6 @@
         },
         "description": "Response Schema of a NoContent Error"
       },
-      "SignInData": {
-        "title": "SignInData",
-        "type": "object",
-        "properties": {
-          "user_email": {
-            "title": "User Email",
-            "type": "string",
-            "description": "Email address of the user who signed in."
-          },
-          "on_date": {
-            "title": "On Date",
-            "type": "string",
-            "description": "Date on which the user signed in.",
-            "format": "date"
-          },
-          "count_sign_in": {
-            "title": "Count Sign In",
-            "type": "integer",
-            "description": "Number of times a specific user signed in."
-          }
-        },
-        "description": "Count of sign-in events per user per day."
-      },
-      "SignInsResult": {
-        "title": "SignInsResult",
-        "required": ["resource", "data"],
-        "type": "object",
-        "properties": {
-          "resource": { "title": "Resource", "type": "string" },
-          "data": {
-            "title": "Data",
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/SignInData" }
-          }
-        },
-        "description": "Array of `SignInData`."
-      },
-      "SignUpData": {
-        "title": "SignUpData",
-        "type": "object",
-        "properties": {
-          "user_email": {
-            "title": "User Email",
-            "type": "string",
-            "description": "Email address of the user who signed up."
-          },
-          "on_date": {
-            "title": "On Date",
-            "type": "string",
-            "description": "Date on which the user signed up.",
-            "format": "date"
-          }
-        },
-        "description": "List of sign-up events per user per date."
-      },
-      "SignUpsResult": {
-        "title": "SignUpsResult",
-        "required": ["resource", "data"],
-        "type": "object",
-        "properties": {
-          "resource": { "title": "Resource", "type": "string" },
-          "data": {
-            "title": "Data",
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/SignUpData" }
-          }
-        },
-        "description": "Array of `SignUpData`"
-      },
       "ValidationError": {
         "title": "ValidationError",
         "required": ["loc", "msg", "type"],
@@ -1644,7 +1439,7 @@
           "loc": {
             "title": "Location",
             "type": "array",
-            "items": { "type": "string" }
+            "items": { "anyOf": [{ "type": "string" }, { "type": "integer" }] }
           },
           "msg": { "title": "Message", "type": "string" },
           "type": { "title": "Error Type", "type": "string" }
