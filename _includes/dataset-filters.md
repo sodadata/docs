@@ -16,9 +16,9 @@ checks for CUSTOMERS [daily]:
   - row_count = 6
   - missing(cat) = 2
 ```
-5. When you wish to execute the checks, use Soda Core to run a scan of your data source and use the `-v` option to include the values for the variables you included in your filter expression, as in the example below. 
+5. When you wish to execute the checks, use Soda Core to run a scan of your data source and use the `-v` option to include each value for the variables you included in your filter expression, as in the example below. 
 ```shell
-soda scan -d snowflake_customer_data -v ts_start=2022-03-11 ts_end=2022-03-15 checks.yml
+soda scan -d snowflake_customer_data -v ts_start=2022-03-11 -v ts_end=2022-03-15 checks.yml
 ```
 
 If you wish to run checks on the same dataset *without* using a filter, add a separate section for `checks for your_dataset_name` without the appended filter name. Any checks you nest under this header execute against all the data in the dataset. 
