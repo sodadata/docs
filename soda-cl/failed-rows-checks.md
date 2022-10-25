@@ -7,9 +7,9 @@ parent: SodaCL
 
 # Failed rows checks 
 
-Use a failed rows check to explicitly send samples of rows that failed a check to Soda Cloud. You can also use a failed row check to configure Soda Core to group failed check results by one or more categories.
+Use a failed rows check to explicitly send samples of rows that failed a check to Soda Cloud. 
 
-*Requires Soda Cloud*
+You can also use a failed row check to configure Soda Core to execute a CTE or SQL query against your data, or to group failed check results by one or more categories.
 
 ```yaml
 checks for dim_customer:
@@ -49,12 +49,12 @@ checks for dim_customer:
 
 ## Prerequisites
 
-* To use failed row checks, you must have a **Soda Cloud** account connected to Soda Core. See [Connect Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}) for details. 
-* To use failed row checks, samples collection must *not* be [disabled in Soda Cloud]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).
+* To view failed rows that a failed rows check collects, you must have a **Soda Cloud** account connected to Soda Core. See [Connect Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}) for details. 
+* To use failed row checks to send failed rows samples to Soda Cloud, samples collection must *not* be [disabled in Soda Cloud]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).
 
 ## About failed row samples
 
-When a scan results in a failed check, the CLI output displays information about the check that failed and why. To offer more insight into the data that failed a check, Soda Cloud displays failed rows in a check result’s history.
+When a scan results in a failed check, the CLI output displays information about the check that failed and why. To offer more insight into the data that failed a check, Soda Cloud displays failed rows in a check result’s history. 
 
 There are two ways you can configure a SodaCL check to send failed row samples to your Soda Cloud account:
 
@@ -86,12 +86,7 @@ checks for dim_customer:
 If you prefer, you can use a SQL query to define what qualifies as a failed row for Soda Core to send to Soda Cloud, as in the following simple example.
 
 ```yaml
-checks for dim_customer:
-  - failed rows:
-      name: Failed rows query test
-      fail query: |
-        SELECT DISTINCT geography_key
-        FROM dim_customer as customer
+ 
 ```
 ![failed-rows-SQL](/assets/images/failed-rows-SQL.png){:height="700px" width="700px"}
 
@@ -196,7 +191,15 @@ checks for dim_customer:
 #### Example with dataset filter
 
 ```yaml
-coming soon
+filter CUSTOMERS [daily]:
+  where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
+
+checks for CUSTOMERS [daily]:
+  - failed rows:
+      name: Failed rows query test
+      fail query: |
+        SELECT DISTINCT "geography_key"
+        FROM dim_customer as customer
 ```
 
 <br />
