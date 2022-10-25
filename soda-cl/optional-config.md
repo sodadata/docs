@@ -167,6 +167,8 @@ checks for CUSTOMERS:
 
 {% include in-check-filters.md %}
 
+See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
+
 ## Use quotes in a check
 
 In the checks you write with SodaCL, you can apply the quoting style that your data source uses for dataset or column names. Soda Core uses the quoting style you specify in the aggregated SQL queries it prepares, then executes during a scan. 

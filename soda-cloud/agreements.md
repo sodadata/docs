@@ -40,7 +40,7 @@ In Soda Cloud, navigate to the **Agreements** dashboard, then click **New Agreem
 | Field or Label  | Guidance |
 | -----------------  | ----------- |
 | Agreement Label  | Provide a name for your agreement. |
-| Data Source | Select the data source to which your agreement applies. See [Create a data source]({% link soda-cloud/add-datasource.md %}).|
+| Data Source | Select the data source that contains the datasets to which your agreement applies. <br /> If you have no options to select in the dropdown, it is because you have not added a data source via a Soda Agent. You can only create agreements on datasets that are in a data source that has been onboarded into Soda Cloud via a Soda Agent. <br /> See [Create a data source]({% link soda-cloud/add-datasource.md %}).|
 
 <br />
 
