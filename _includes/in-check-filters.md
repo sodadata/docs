@@ -1,4 +1,4 @@
-Add a filter to a check to specify a portion of the data against which Soda executes the check.  
+Add a filter to a check to apply conditions that specify a portion of the data against which Soda executes the check. For example, you may wish to use an in-check filter to support a use case in which "Column X must be filled in for all rows that have value Y in column Z".
 
 Add a filter as a nested key:value pair, as in the following example which filters the check results to display only those rows with a value of 81 or greater and which contain `11` in the `sales_territory_key` column. You cannot use a variable to specify an in-check filter.
 
