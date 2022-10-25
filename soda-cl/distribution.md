@@ -263,11 +263,11 @@ checks for fact_sales_quota:
 | :-: | ------------|---------------|
 | ✓ | Define a name for a distribution check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
-|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
+| ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset; see [example](#example-with-in-check-filter).| [Configure in-check filters]({% link soda-cl/filters.md %}#configure-in-check-filters) | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply distribution checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
-|   | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+| ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 #### Example with check name
 
@@ -301,6 +301,26 @@ for each dataset T:
         distribution reference file: dist_ref.yml
 ```
 
+#### Example with in-check filter
+
+```yaml
+checks for dim_customer:
+- distribution_difference(number_cars_owned) < 0.05: 
+    method: swd
+    distribution reference file: dist_ref.yml
+    filter: "date_first_purchase between '2010-01-01' and '2022-01-01'"
+```
+
+#### Example with dataset filter
+```yaml
+filter dim_customer [first_purchase]:
+  where: "date_first_purchase between '2010-01-01' and '2022-01-01'" 
+
+checks for dim_customer [first_purchase]:
+- distribution_difference(number_cars_owned) < 0.05: 
+    method: swd
+    distribution reference file: dist_ref.yml
+```
 <br />
 
 ## List of comparison symbols and phrases
