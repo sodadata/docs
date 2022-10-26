@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### October 27, 2022
+
+* Added documentation for distribution checks which now support dataset and in-check filters. See [Distribution check optional check configurations]({% link soda-cl/distribution.md %}#optional-check-configurations).
+
 #### October 26, 2022
 
 * Removed the Preview status from self-serve features which are now generally available in Soda Cloud, such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).

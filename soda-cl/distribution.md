@@ -308,13 +308,13 @@ checks for dim_customer:
 - distribution_difference(number_cars_owned) < 0.05: 
     method: swd
     distribution reference file: dist_ref.yml
-    filter: "date_first_purchase between '2010-01-01' and '2022-01-01'"
+    filter: date_first_purchase between '2010-01-01' and '2022-01-01'
 ```
 
 #### Example with dataset filter
 ```yaml
 filter dim_customer [first_purchase]:
-  where: "date_first_purchase between '2010-01-01' and '2022-01-01'" 
+  where: date_first_purchase between '2010-01-01' and '2022-01-01' 
 
 checks for dim_customer [first_purchase]:
 - distribution_difference(number_cars_owned) < 0.05: 
