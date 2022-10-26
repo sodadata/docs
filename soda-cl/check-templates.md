@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Check templates
+title: Custom check templates
 description: If the built-in metrics that SodaCL offers do not quite cover your more specific or complex needs, you can define your own metrics. See examples to copy+paste.
 parent: SodaCL
 ---
 
-# Check templates
+# Custom check templates
 
 Out of the box, Soda Checks Language (SodaCL) makes several [built-in metrics and checks]({% link soda-cl/metrics-and-checks.md %}), such as `row_count`, available for you to use to define checks for data quality. If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs, you can use [user-defined]({% link soda-cl/user-defined.md %}) and [failed rows]({% link soda-cl/failed-rows-checks.md %}) checks. 
 
-**User-defined checks** and **failed rows checks** enable you to define your own metrics that you can use in a a SodaCL check; refer to the templated examples below. You can also use these checks to simply define SQL queries or Common Table Expressions (CTE) that Soda executes during a scan, which is what most of these templates do.
+**User-defined checks** and **failed rows checks** enable you to define your own metrics that you can use in a SodaCL check. You can also use these checks to simply define SQL queries or Common Table Expressions (CTE) that Soda executes during a scan, which is what most of these templates do.
 
 The templates below offer examples of how you can define user-defined checks in your checks YAML file, if using Soda Core, or within an [agreement]({% link soda-cloud/agreements.md %}), if using Soda Cloud, to extract more complex, customized, business-specific measurements from your data. 
 
@@ -51,12 +51,7 @@ checks for dim_product:
         ),
         difference_calculation as (
           select 
-            case 
-              when table_1_rows >= table_2_rows
-                then table_1_rows - table_2_rows
-              when table_1_rows < table_2_rows
-                then table_2_rows - table_1_rows
-              end
+            ABS( table_1_rows - table_2_rows)
             as row_delta
           from intermediate
         )
@@ -137,17 +132,13 @@ The first example is a skeletal query into which you can insert a variety of con
 ```yaml
 checks for dim_product:
   - failed rows: 
-      fail query: |
-        select 
-          *
-        from {{ table }}
-        where not({{ condition_logic }})
+      fail expression: not({{ condition_logic }})
 ```
 {% endraw %}
 
 <details>
     <summary style="color:#00BC7E">Explain the SQL</summary>
-      The query identifies a dataset in which to find records that do not meet the conditions you set in the <code>where not</code> clause.  
+      The CTE identifies a dataset in which to find records that do not meet the conditions you set in the <code>not</code> expression.  
 </details>
 
 <br />
@@ -163,18 +154,14 @@ checks for dim_product:
 ```yaml
 checks for dim_product:
   - failed rows:
-      fail query: |
-        select
-          *
-        from {{ table }}
-        where not(credit_card_amount + wire_tranfer = total_order_value)
+      fail expression: not(credit_card_amount + wire_tranfer = total_order_value)
 ```
 {% endraw %}
 
 
 <details>
     <summary style="color:#00BC7E">Explain the SQL</summary>
-      The query validates that the sum of two columns in a dataset matches the value in a third column, and identifies those rows which do not match.
+      The CTE validates that the sum of two columns in a dataset matches the value in a third column, and identifies those rows which do not match.
 </details>
 <br />
 
@@ -189,21 +176,13 @@ checks for dim_product:
 ```yaml
 checks for dim_product:
   - failed rows: 
-      fail query: |
-        select
-          *
-        from {{ table }}
-        where not(
-          full_payment_deadline < dateadd(
-            month, number_of_installments, first_payment_date
-            )
-        )
+      fail expression: not(full_payment_deadline < dateadd(month, number_of_installments, first_payment_date))
 ```
 {% endraw %}
 
 <details>
     <summary style="color:#00BC7E">Explain the SQL</summary>
-      The query validates that an order that is being paid for in installments will be fully paid by its deadline, and identifies those rows which do not meet the deadline.
+      The CTE validates that an order that is being paid for in installments will be fully paid by its deadline, and identifies those rows which do not meet the deadline.
 </details>
 
 
@@ -215,8 +194,8 @@ Where a dataset does not validate its contents on entry, you may wish to assert 
 | ----------     | ------------ |
 | Holland        | NL           |
 | Netherlands    | NL           |
-| Britain        | UK           |
-| United states  | USA          |
+| Britain        | GB           |
+| United states  | US           |
 
 
 Use one of the following **data source-specific** custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
@@ -347,12 +326,17 @@ checks for dim_product:
 
 
 ## Go further
-
-
-* Read more about using [custom metrics in Soda SQL]({% link soda-sql/sql_metrics.md %}#custom-metrics).
-* See [Examples of tests using built-in metrics]({% link soda-sql/examples-by-metric.md %})
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Read more about [Failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 <br />
 
 ---
-*Last modified on {% last_modified_at %}*
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
+{% include docs-footer.md %}
