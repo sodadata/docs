@@ -6,10 +6,8 @@ parent: Soda Cloud
 redirect_from: /soda-cloud/monitors.html
 ---
 
-# Create an agreement![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"} 
+# Create an agreement 
 <!--Linked to UI, access Shlink-->
-
-{% include banner-preview.md %}
 
 An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
 
@@ -40,7 +38,7 @@ In Soda Cloud, navigate to the **Agreements** dashboard, then click **New Agreem
 | Field or Label  | Guidance |
 | -----------------  | ----------- |
 | Agreement Label  | Provide a name for your agreement. |
-| Data Source | Select the data source to which your agreement applies. See [Create a data source]({% link soda-cloud/add-datasource.md %}).|
+| Data Source | Select the data source that contains the datasets to which your agreement applies. <br /> If you have no options to select in the dropdown, it is because you have not added a data source via a Soda Agent. You can only create agreements on datasets that are in a data source that has been onboarded into Soda Cloud via a Soda Agent. <br /> See [Create a data source]({% link soda-cloud/add-datasource.md %}).|
 
 <br />
 
@@ -96,7 +94,7 @@ To review existing scan definitions, navigate to **your avatar** > **Scans & Dat
 
 ## Go further
 
-* Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around creating a new agreement.
+* Consider completing the [Quick start for Soda Cloud]({% link soda/quick-start-sodacloud.md %}) for more context around creating a new agreement.
 * Complete the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write a few simple checks for data quality.
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

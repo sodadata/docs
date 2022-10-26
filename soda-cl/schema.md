@@ -192,7 +192,14 @@ for each dataset T:
 #### Example with dataset filter
 
 ```yaml
-coming soon
+filter CUSTOMERS [daily]:
+  where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
+
+checks for CUSTOMERS [daily]:
+  - schema:
+      fail:
+        when forbidden column present:
+          - credit_card
 ```
 
 <br />

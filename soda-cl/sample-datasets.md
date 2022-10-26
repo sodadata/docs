@@ -5,10 +5,8 @@ description: Use SodaCL to send sample data to Soda Cloud to quickly review the 
 parent: SodaCL
 ---
 
-# Display sample data in Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Display sample data in Soda Cloud 
 <!--Linked to UI, access Shlink-->
-
-{% include banner-preview.md %}
 
 Use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.<br />
 *Requires Soda Cloud.*
@@ -35,7 +33,7 @@ sample datasets:
 * You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
 * You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core. <br />
 OR <br />
-* You a Soda Cloud account with Preview access ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+* You have a Soda Cloud account and you, or a colleague, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) and [added a data source]({% link soda-cloud/add-datasource.md %}) to your organization's Soda Cloud account.
 
 
 ## Define sample datasets
