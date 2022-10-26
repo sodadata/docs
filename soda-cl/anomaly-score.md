@@ -6,7 +6,8 @@ parent: Soda CL
 redirect_from: /soda-cloud/anomaly-detection.html
 ---
 
-# Anomaly score checks <!--Linked to UI, access Shlink-->
+# Anomaly score checks 
+<!--Linked to UI, access Shlink-->
 
 Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
 *Requires Soda Cloud and Soda Core Scientific.*<br />
@@ -52,7 +53,7 @@ Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-cor
 
 ## Define an anomaly score check
 
-The following example demonstrates how to use the anomaly score for the `row_count` metric in a check. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing](% link soda-cl/missing-metrics.md %), or [validity]({% link soda-cl/validity-metrics.md %}) metric in lieu of `row_count`. 
+The following example demonstrates how to use the anomaly score for the `row_count` metric in a check. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metric in lieu of `row_count`. 
 
 ```yaml
 checks for dim_customer:
@@ -78,7 +79,8 @@ checks for orders:
     missing_values: [None, No Value]
 ```
 
-## Anomaly score check results <!--Linked to UI, access Shlink-->
+## Anomaly score check results 
+<!--Linked to UI, access Shlink-->
 
 Because the anomaly score check requires at least four data points before it can start detecting what counts as an anomalous measurement, your first few scans will yield a check result that indicates that Soda does not have enough data.
 
@@ -111,7 +113,7 @@ Consider using the Soda Core Python library to set up a [programmatic scan]({% l
 | ✓ | Define a name for an anomaly score check. |  - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply anomaly score checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 |   | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
@@ -150,7 +152,7 @@ While installing Soda Core Scientific works on Linux, you may encounter issues i
 * [Use Docker to run Soda Core (Recommended)](#use-docker-to-run-soda-core)
 * [Install Soda Core locally (Limited support)](#install-soda-core-locally)
 
-Need help? Ask the team in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 ### Use Docker to run Soda Core
 
@@ -163,7 +165,7 @@ Need help? Ask the team in the <a href="http://community.soda.io/slack" target="
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

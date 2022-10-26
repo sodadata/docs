@@ -45,7 +45,7 @@ See [Add scan options]({% link soda-core/scan-core.md %}#add-scan-options) for m
 
 * Learn more about [Soda products in general]({% link soda/product-overview.md %}) and how the work together to establish and maintain data reliability.
 * Learn [How Soda Core works]({% link soda-core/how-core-works.md %}).
-* Questions? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Questions? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

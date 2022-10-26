@@ -6,7 +6,8 @@ parent: Soda Core
 redirect_from: /soda-core/configure.html
 ---
 
-# Configure Soda Core <!--Linked to UI, access Shlink-->
+# Configure Soda Core 
+<!--Linked to UI, access Shlink-->
 
 After you [install Soda Core]({% link soda-core/installation.md %}), you must create a `configuration.yml` to provide details for Soda Core to connect your data source (except Apache Spark DataFrames, which does not use a configuration YAML file).
 
@@ -105,7 +106,7 @@ soda scan -d nyc_prod -c configuration.yml -s nyc_b checks.yml
 * Next: [Run a scan]({% link soda-core/scan-core.md %}) of the data in your data source.
 * Consider completing the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write more checks for data quality.
 * (Optional) [Connect Soda Core to a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
   <br />
 
 ---

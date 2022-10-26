@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Define programmatic scans
+title: Define programmatic scans using Python
 description: Use the Soda Sore Python library to programmatically execute scans and automate the checks for "bad" data.
 parent: Soda Core
 redirect_from: /soda-core/programmatic-scans.html
 ---
 
-# Define programmatic scans
+# Define programmatic scans using Python
 
-To automate the search for "bad" data, you can use the **Soda Core Python library** to programmatically execute scans.
+To automate the search for "bad" data, you can use the **Soda Core Python library** to programmatically execute scans. Alternatively, you can install and use the Soda Core CLI to run scans; see [Install Soda Core]({% link soda-core/installation.md %}).
 
 Based on a set of conditions or a specific event schedule, you can instruct Soda Core to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
 
@@ -111,6 +111,13 @@ Soda Core's scan output includes an exit code which indicates the outcome of the
 | 2 | Soda issues a failure on a check(s) |
 | 3 | Soda encountered a runtime issue |
 
+To obtain the exit code, you can add the following to your programmatic scan.
+
+```python
+exit_code = scan.execute()
+print(exit_code)
+```
+
 
 ## Configure a failed row sampler
 
@@ -170,7 +177,7 @@ If you prefer to send the output of the failed row sampler to a destination othe
 
 
 ## Go further
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Learn more about configuring [orchestrated scans]({% link soda-core/orchestrate-scans.md %}).
 

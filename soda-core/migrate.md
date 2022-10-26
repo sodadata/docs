@@ -5,7 +5,8 @@ description:
 parent: Soda Core
 ---
 
-# Migrate from Soda SQL to Soda Core <!--Linked to UI, access Shlink-->
+# Migrate from Soda SQL to Soda Core 
+<!--Linked to UI, access Shlink-->
 
 [Soda SQL]({% link soda-sql/overview.md %}), the original command-line tool that Soda created to test for data quality, has been deprecated and replaced by [Soda Core]({% link soda-core/overview-main.md %}). As the primary tool for data reliability, you can install Soda Core, connect to your data sources, and convert your Soda SQL tests into SodaCL checks. 
 
@@ -92,8 +93,8 @@ If you connected Soda SQL to a Soda Cloud account, you can continue to use the s
 
 1. [Connect]({% link soda-core/connect-core-to-cloud.md%}) Soda Core to your existing Soda Cloud account.
 2. Prepare your team to review **Check Results** in lieu of **Monitor Results**. Checks replace the concept of Monitors in Soda Cloud. 
-3. Write new checks in Soda Cloud in the context of [Soda Agreements (Preview)]({% link soda-cloud/agreements.md%}).
-4. (Optional) Add a new data source in Soda Cloud using a [Soda Agent (Preview)]({% link soda-agent/basics.md%}).
+3. Write new checks in Soda Cloud in the context of [Soda Agreements]({% link soda-cloud/agreements.md%}).
+4. (Optional) Add a new data source in Soda Cloud using a [Soda Agent]({% link soda-agent/basics.md%}).
 
 ## Migration implications
 
@@ -106,7 +107,7 @@ There are a couple of implications to take into consideration when migrating fro
 ## Go further
 
 * Contact <a href="mailto:support@soda.io">support@soda.io</a> for help migrating from Soda SQL to Soda Core.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Learn more about [writing checks with SodaCL]({% link soda/quick-start-sodacl.md %}).
 * Review the [features and functionalities]({% link soda/product-matrix.md %}) that Soda Cloud offers.
 <br />

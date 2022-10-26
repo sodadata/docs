@@ -5,9 +5,8 @@ description:
 parent: Soda Agent
 ---
 
-# Deploy a Soda Agent ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"} <!--Linked to UI, access Shlink-->
-
-{% include banner-preview.md %}
+# Deploy a Soda Agent 
+<!--Linked to UI, access Shlink-->
 
 {% include soda-agent.md %}
 
@@ -335,7 +334,7 @@ kubectl logs pods/soda-agent-orchestrator-5975ddcd9-5b5qr \
 
 * Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed.
 * Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

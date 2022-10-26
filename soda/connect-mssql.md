@@ -38,7 +38,7 @@ data_source my_datasource_name:
 | trust_server_certificate | optional |   The default value is `false`.  |
 | driver  | optional | Use this config setting to specify the ODBC driver version you use, such as `SQL Server Native Client 11.0` |
 
-
+{% include test-connection.md %}
 
 ## Supported data types
 

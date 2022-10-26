@@ -5,9 +5,8 @@ description: Use SodaCL to send sample data to Soda Cloud to quickly review the 
 parent: SodaCL
 ---
 
-# Display sample data in Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}<!--Linked to UI, access Shlink-->
-
-{% include banner-preview.md %}
+# Display sample data in Soda Cloud 
+<!--Linked to UI, access Shlink-->
 
 Use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.<br />
 *Requires Soda Cloud.*
@@ -24,6 +23,7 @@ sample datasets:
 [Define sample datasets](#define-sample-datasets)<br />
 [Optional check configurations](#optional-check-configurations) <br />
 [Inclusion and exclusion rules](#inclusion-and-exclusion-rules)<br />
+[Disable samples in Soda Cloud](#disable-samples-in-soda-cloud)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -33,7 +33,7 @@ sample datasets:
 * You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
 * You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core. <br />
 OR <br />
-* You a Soda Cloud account with Preview access ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+* You have a Soda Cloud account and you, or a colleague, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) and [added a data source]({% link soda-cloud/add-datasource.md %}) to your organization's Soda Cloud account.
 
 
 ## Define sample datasets
@@ -79,7 +79,7 @@ sample datasets:
 |   | Define a name for sample data configuration. |  - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters ({% raw %} % {% endraw %} with dataset names in the check; see [example](#example-with-wildcards). | - |
 |   | Use for each to apply anomaly score checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan. |  -  |
@@ -106,8 +106,14 @@ sample datasets:
 * If you configure `sample datasets` to include specific datasets, Soda implicitly *excludes* all other datasets from sampling. 
 * If you combine an include config and an exclude config and a dataset fits both patterns, Soda excludes the dataset from sampling.
 
+## Disable samples in Soda Cloud
+
+Where your datasets contain sensitive or private information, you may *not* want to send samples from your data source to Soda Cloud. In such a circumstance, you can disable the feature completely in Soda Cloud.
+
+{% include disable-all-samples.md %}
+
 ## Go further
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.

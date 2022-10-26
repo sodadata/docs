@@ -7,6 +7,10 @@ parent: Get started
 
 # Quick start for SodaCL 
 
+<br />
+
+![sodacl-logo](/assets/images/sodacl-logo.png){:height="100px" width="100px"}<br />
+
 If you are staring at a blank YAML file wondering what SodaCL checks to write to surface data quality issues, this quick start tutorial is for you. 
 
 ![blank-page](/assets/images/blank-page.png){:height="600px" width="600px"}
@@ -257,9 +261,10 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 * [Expect one check result]({% link soda-cl/optional-config.md %}#expect-one-check-result)
 
 
-## Tips and best practices for SodaCL <!--Linked to UI, access Shlink-->
+## Tips and best practices for SodaCL 
+<!--Linked to UI, access Shlink-->
 
-* Get your logic straight: your check defines a *passing* state, what you expect to see in your dataset. Do not define a failed state. (Exception: [dynamic fixed threshold checks]({% link soda-cl/numeric-metrics.md %}#fixed-and-dynamic-thresholds) are unusual in that they define a failed state.)
+* Get your logic straight: your check defines a *passing* state, what you expect to see in your dataset. Do not define a failed state. (Exception: [change-over-time threshold checks]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds) are unusual in that they define a failed state.)
 * Take careful note of the data type of the column against which you run a check. For example, if numeric values are stored in a column as data type TEXT, a numeric check such as `min` or `avg` is incalculable. 
 * A check that uses [alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) only ever returns *one* check result. See [Expect one check result]({% link soda-cl/optional-config.md %}#expect-one-check-result).
 * The `invalid format` configuration key only works with data type TEXT. See [Specify valid format]({% link soda-cl/validity-metrics.md %}#specify-valid-format).
@@ -288,7 +293,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Read about the [Optional configurations]({% link soda-cl/optional-config.md %}) you can apply to SodaCL checks.
 * [Connect Soda Core to Soda Cloud]({% link soda/quick-start-soda-core.md %}#connect-soda-core-to-soda-cloud) to vastly enrich the data quality monitoring experience.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 

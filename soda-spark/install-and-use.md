@@ -13,7 +13,7 @@ parent: Soda Spark
 Soda Spark is an extension of 
 [Soda SQL]({% link soda-sql/quick-start-soda-sql.md %}) that allows you to run Soda
 SQL functionality programmatically on a 
-<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark DataFrame</a>. Reference the Soda SQL documentation to learn how to use Soda Spark, particularly how to [define tests]({% link soda-sql/tests.md %}) in a [scan YAML file]({% link soda-sql/scan-yaml.md %}). 
+<a href="https://spark.apache.org/docs/3.1.3/api/python/reference/api/pyspark.sql.DataFrame.html" target="_blank">Spark DataFrame</a>. Reference the Soda SQL documentation to learn how to use Soda Spark, particularly how to [define tests]({% link soda-sql/tests.md %}) in a [scan YAML file]({% link soda-sql/scan-yaml.md %}). 
 
 [Requirements](#requirements)<br />
 [Compatibility](#compatibility)<br />
@@ -206,9 +206,9 @@ Use the following command to send Soda Spark scan results to Soda cloud. Use [So
 
 When you execute Soda Spark, it completes the following tasks:
 
-1. It sets up the scan using the Spark dialect and a <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.SparkSession.html" target="_blank">Spark session</a> as a [warehouse]({% link soda-sql/warehouse.md %}) connection.
+1. It sets up the scan using the Spark dialect and a <a href="https://spark.apache.org/docs/3.1.3/api/python/reference/api/pyspark.sql.SparkSession.html" target="_blank">Spark session</a> as a [warehouse]({% link soda-sql/warehouse.md %}) connection.
 2. It creates, or replaces, a 
-	<a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceGlobalTempView.html" target="_blank">global temporary view</a>
+	<a href="https://spark.apache.org/docs/3.1.3/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceGlobalTempView.html" target="_blank">global temporary view</a>
    for the Spark DataFrame.
 3. It executes the Soda scan on the temporary view.
 
@@ -226,7 +226,7 @@ Soda Spark is an open-source software project hosted in <a href="https://github.
   [columns to exclude]({% link soda-sql/scan-yaml.md
   %}#scan-yaml-table-configuration-keys) when Soda SQL executes a scan on a dataset. 
 * Need help? Join the **#soda-spark** channel in 
-  <a href="http://community.soda.io/slack" target="_blank"> Soda community on
+  <a href="https://community.soda.io/slack" target="_blank"> Soda community on
   Slack</a>.
 <br />
 
@@ -235,7 +235,7 @@ Soda Spark is an open-source software project hosted in <a href="https://github.
 
 Was this documentation helpful? <br /> Give us your feedback in the
 **#soda-docs** channel in the 
-<a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> 
+<a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a> 
 or 
 <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> 
 in GitHub.

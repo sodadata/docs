@@ -75,7 +75,7 @@ Soda uses the [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGu
 
 ### Language
 - Use American English.
-- Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Technicallanguage" target="_blank">plain</a language. Do not use jargon, colloquialisms, or meme references.
+- Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Technicallanguage" target="_blank">plain</a> language. Do not use jargon, colloquialisms, or meme references.
 - Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Inclusivity" target="_blank">unbiased</a> language. For example, instead of "whitelist" and "blacklist", use "passlist" and "denylist".
 - Avoid writing non-essential content such as welcome messages or backstory.
 - When referring to a collection of files, use "directory", not "folder".

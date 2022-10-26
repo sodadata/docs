@@ -25,6 +25,8 @@ checks for dim_customer:
 [Install Soda Core Scientific](#install-soda-core-scientific)<br />
 [Generate a distribution reference object (DRO)](#generate-a-distribution-reference-object-dro)<br />
 [Define a distribution check](#define-a-distribution-check)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Distribution check details](#distribution-check-details)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Bins and weights](#bins-and-weights)<br />
 [Distribution check examples](#distribution-check-examples)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
@@ -89,7 +91,8 @@ To use a distribution check, you must install Soda Core Scientific in the same d
 
 Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
 
-## Generate a distribution reference object (DRO) <!--Linked to UI, access Shlink--><!--though actually embedded in CLI help-->
+## Generate a distribution reference object (DRO) 
+<!--Linked to UI, access Shlink though actually embedded in CLI help-->
 
 Before defining a distribution check, you must generate a distribution reference object (DRO). 
 
@@ -126,7 +129,7 @@ If you do not wish to define a filter, remove the key-value pair from the file.
 ```bash
 soda update-dro -d your_datasource_name -c your_configuration_file.yml ./distribution_reference.yml 
 ```
-If you defined multiple DROs in your `distribution_reference.yml` file, specify which DRO you want to update using the `-n` argument. `-n` stands for name
+If you defined multiple DROs in your `distribution_reference.yml` file, specify which DRO you want to update using the `-n` argument. `-n` stands for name. When multiple DROs are defined in a single `distribution_reference.yml` file, Soda requires all of them to be named. Thus, you must provide the DRO name with the `-n` argument when using the `soda update-dro` command.
 ```bash
 soda update-dro -n dro_name1 -d your_datasource_name -c your_configuration_file.yml ./distribution_reference.yml 
 ```
@@ -151,11 +154,8 @@ distribution reference:
     - 3
     - 4
 ```
-Soda appended a new key called `distribution reference` to the file, together with an array of `bins` and a corresponding array of `weights`. 
+Soda appended a new key called `distribution reference` to the file, together with an array of `bins` and a corresponding array of `weights`. [Read more](#bins-and-weights) about `bins` and `weights`, and how Soda computes the number of bins for a DRO.
 
-Soda uses the `bins` and `weights` to generate a sample from the reference distribution when it executes the distribution check during a scan. By creating a sample using the DRO's bins and weights, you do not have to save the entire – potentially very large - sample. The `distribution_type` value impacts how the weights and bins will be used to generate a sample, so make sure your choice reflects the nature of your data (continuous or categorical).
-
-When multiple DROs are defined in a single `distribution_reference.yml` file, Soda requires all of them to be named. In that case it is required to provide the DRO name with the `-n` argument when using `soda update-dro`.
 
 ## Define a distribution check
 
@@ -190,10 +190,29 @@ When Soda Core executes the distribution check above, it compares the values in 
 
 * When you execute the `soda scan` command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory. 
 
-* As explained in [Generate a Distribution Reference Object (DRO)](#generate-a-distribution-reference-object-dro), Soda uses bins and weights to take random samples from your DRO. Therefore, it is possible that the original dataset that you used to create the DRO resembles a different underlying distribution than the dataset that Soda creates by sampling from the DRO. To limit the impact of this possibility, Soda runs the tests in each distribution check ten times and returns the median of the results (either p-value or distance metric). <br /> 
+* As explained in [Generate a Distribution Reference Object (DRO)](#generate-a-distribution-reference-object-dro), Soda uses bins and weights to take random samples from your DRO. Therefore, it is possible that the original dataset that you used to create the DRO resembles a different underlying distribution than the dataset that Soda creates by sampling from the DRO. To limit the impact of this possibility, Soda runs the tests in each distribution check ten times and returns the median of the results (either p-value or distance metric). <br /> <br />
 For example, if you use the Kolmogorov-Smirnov test and a threshold of 0.05, the distribution check uses the Kolmogorov-Smirnov test to compare ten different samples from your DRO to the data in your column.  If the median of the returned p-values is smaller than 0.05, the check issues a warning. This approach does change the interpretation of the distribution check results. For example, the probability of a type I error is multiple orders of magnitude smaller than the signifance level that you choose. 
 
-<br />
+### Bins and weights
+<!--Linked to UI, access Shlink though actually embedded in CLI help--> 
+
+Soda uses the `bins` and `weights` to generate a sample from the reference distribution when it executes the distribution check during a scan. By creating a sample using the DRO's bins and weights, you do not have to save the entire – potentially very large - sample. The `distribution_type` value impacts how the weights and bins will be used to generate a sample, so make sure your choice reflects the nature of your data (continuous or categorical).
+
+To compute the number of bins for a DRO, Soda uses different strategies based on whether outlier values are present in the dataset.
+
+By default Soda automatically computes the number of bins for each DRO by taking the maximum of [Sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [Freedman Diaconis Estimator](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule) methods. [numpy.histogram_bin_edges(data, bins='auto')](https://numpy.org/doc/stable/reference/generated/numpy.histogram_bin_edges.html#numpy.histogram_bin_edges) also applies this practice by default.
+
+For datasets *with* outliers, such as in the example below, the default strategy does not work well. When taking the maximum of [Sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [Freedman Diaconis Estimator](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule) methods, it produces a great number of bins, `3466808`, while there is only nine elements in the array. The outlier value `10e6` causes to obtain this misleading bin size.
+
+```python
+import numpy as np
+arr = np.array([0, 0, 0, 1, 2, 3, 3, 4, 10e6])
+number_of_bins = np.histogram_bin_edges(arr, bins='auto').size # return 3466808
+```
+
+If the number of bins is greater than the size of data, Soda uses [interquantile range (IQR)](https://en.wikipedia.org/wiki/Interquartile_range) to detect and filter the outliers. Basically, for data that is greater than `Q3 + 1.5 IQR` and less than `Q1 - 1.5 IQR` Soda removes the datasets, then recomputes the number of bins with the same method by taking the maximum of [Sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [Freedman Diaconis Estimator](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule).
+
+After removing the outliers, if the number of bins still exceeds the size of the filtered data, Soda takes the square root of the dataset size to set the number of bins. To cover edge cases, if the square root of dataset size exceeds one million, then Soda sets the number of bins to one million to prevent it from generating too many bins.
 
 ## Distribution check examples
 
@@ -245,7 +264,7 @@ checks for fact_sales_quota:
 | ✓ | Define a name for a distribution check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply distribution checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 |   | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
@@ -294,7 +313,7 @@ While installing Soda Core Scientific works on Linux, you may encounter issues i
 * [Use Docker to run Soda Core (Recommended)](#use-docker-to-run-soda-core)
 * [Install Soda Core locally (Limited support)](#install-soda-core-locally)
 
-Need help? Ask the team in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 ### Use Docker to run Soda Core
 
@@ -308,7 +327,7 @@ Need help? Ask the team in the <a href="http://community.soda.io/slack" target="
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.

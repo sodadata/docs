@@ -6,7 +6,8 @@ parent: SodaCL
 redirect_from: /soda-cl/row-count.html
 ---
 
-# Cross checks <!--Linked to UI, access Shlink--> 
+# Cross checks 
+<!--Linked to UI, access Shlink--> 
 
 Use a cross check to compare row counts between datasets within the same, or different, data sources.
 
@@ -26,7 +27,7 @@ checks for dim_customer:
 
 ## Define cross checks
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), cross checks are unique. This check employs the `row_count` metric but is limited in its syntax variation, with only a few mutable parts to specify dataset and data source names.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), cross checks are unique. This check employs the `row_count` metric but is limited in its syntax variation, with only a few mutable parts to specify dataset and data source names.
 
 The example check below compares the volume of rows in two datasets in the same data source. If the row count in the `dim_department_group` is not the same as in `dim_customer`, the check fails.
 
@@ -56,7 +57,7 @@ checks for dim_customer:
 | ✓ | Define a name for a cross check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 |   | Define alert configurations to specify warn and fail alert conditions. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |
 |   | Use for each to apply schema checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | - |
@@ -110,7 +111,7 @@ Row count comparison with table filter also works cross data source.
 
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 
