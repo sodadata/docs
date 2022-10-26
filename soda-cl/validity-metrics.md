@@ -43,7 +43,7 @@ checks for dim_customer:
 
 ## Define checks with validity metrics
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), you use validity metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), you use validity metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
 
 You can use all validity metrics in checks that apply to individual columns in a dataset; you cannot use validity metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
 * You must use a [configuration key:value pair](#list-of-configuration-keys) to define what qualifies as an valid value. 
@@ -258,7 +258,12 @@ for each dataset T:
 #### Example with dataset filter
 
 ```yaml
-coming soon
+filter CUSTOMERS [daily]:
+  where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
+
+checks for CUSTOMERS [daily]:
+  - invalid_count(email_address) = 0:
+      valid format: email
 ```
 
 <br />
@@ -319,7 +324,7 @@ checks for dim_customer:
 
 * Use validity metrics in checks with alert configurations to establish [warn and fail zones]({% link soda-cl/optional-config.md %}#define-zones-using-alert-configurations)
 * Use validity metrics in checks to define ranges of acceptable thresholds using [boundary thresholds]({% link soda-cl/metrics-and-checks.md %}#define-boundaries-with-fixed-thresholds).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

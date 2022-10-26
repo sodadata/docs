@@ -5,9 +5,7 @@ description: Learn how to upgrade a Soda Agent to a newer version.
 parent: Soda Agent
 ---
 
-# Upgrade a Soda Agent ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
-
-{% include banner-preview.md %}
+# Upgrade a Soda Agent 
 
 To take advantage of new or improved features and functionality in the Soda Agent, you can upgrade your agent when a new version becomes available <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>.
 
@@ -46,7 +44,7 @@ helm get values -n <namespace> <release name>
 
 * Access instructions for how to [deploy a Soda Agent]({% link soda-agent/deploy.md %}).
 * Learn the [Soda Agent basics]({% link soda-agent/basics.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

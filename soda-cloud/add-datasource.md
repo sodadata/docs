@@ -6,9 +6,7 @@ parent: Soda Cloud
 redirect_from: /soda-cloud/datasource.html
 ---
 
-# Add a data source ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
-
-{% include banner-preview.md %}
+# Add a data source 
 
 To run [scans]({% link soda/glossary.md %}#scan) for data quality in your [data source]({% link soda/glossary.md %}#data-source) such as PostgreSQL or GCP BigQuery, you must first connect Soda Cloud to a data source. 
 
@@ -127,7 +125,7 @@ automated monitoring:
 
 * Next step: Create a new [agreement]({% link soda-cloud/agreements.md %}).
 * Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

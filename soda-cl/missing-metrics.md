@@ -37,14 +37,14 @@ checks for dim_customer
 
 ## Define checks with missing metrics
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), you use missing metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), you use missing metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
 
 You can use both missing metrics in checks that apply to individual columns in a dataset; you cannot use missing metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
 * SodaCL considers `NULL` as the default value for "missing". 
 * If you wish, you can add a `%` character to the threshold for a `missing_percent` metric for improved readability. 
 
 ```yaml
-checks for dim_customer
+checks for dim_customer:
   - missing_count(birthday, last_name) = 0
 ```
 
@@ -234,7 +234,11 @@ for each dataset T:
 #### Example with dataset filter
 
 ```yaml
-coming soon
+filter CUSTOMERS [daily]:
+  where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
+
+checks for CUSTOMERS [daily]:
+  - missing_count(user_id) = 0
 ```
 
 <br />
@@ -286,7 +290,7 @@ checks for dim_customer:
 
 * Use missing metrics in checks with alert configurations to establish [warn and fail zones]({% link soda-cl/optional-config.md %}#define-zones-using-alert-configurations)
 * Use missing metrics in checks to define ranges of acceptable thresholds using [boundary thresholds]({% link soda-cl/metrics-and-checks.md %}#define-boundaries-with-fixed-thresholds).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

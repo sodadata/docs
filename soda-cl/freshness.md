@@ -28,7 +28,7 @@ checks for dim_product:
 
 A freshness check measures the age of the youngest row in a table. Using this check, you can infer the freshness of the data in the dataset using the age of the most recently added row in a table. 
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), freshness checks are unique. This check is limited in its syntax variation, with only a few mutable parts to specify column name, threshold, and, optionally, a "now" variable.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), freshness checks are unique. This check is limited in its syntax variation, with only a few mutable parts to specify column name, threshold, and, optionally, a "now" variable.
 
 A freshness check has two or three mutable parts:
 
@@ -177,7 +177,11 @@ for each dataset T:
 #### Example with dataset filter
 
 ```yaml
-coming soon
+filter CUSTOMERS [daily]:
+  where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
+
+checks for CUSTOMERS [daily]:
+  - freshness(end_date) < 3d
 ```
 
 <br />
@@ -207,7 +211,7 @@ coming soon
 
 * Use missing metrics in checks with alert configurations to establish [warn and fail zones]({% link soda-cl/optional-config.md %}#define-zones-using-alert-configurations)
 * Use missing metrics in checks to define ranges of acceptable thresholds using [boundary thresholds]({% link soda-cl/metrics-and-checks.md %}#define-boundaries-with-fixed-thresholds).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

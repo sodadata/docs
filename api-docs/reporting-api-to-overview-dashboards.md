@@ -349,7 +349,7 @@ order by 2
 ## Go further
 
 * Access the [Reporting API examples repository](https://github.com/sodadata/reporting-api-examples) in GitHub to get all the code snippets as a Python script that you can run and modify at will. Clone the repo, then get started in minutes.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Open issues on the [Reporting API examples repository](https://github.com/sodadata/reporting-api-examples) in GitHub.
 <br />
 <br />
@@ -360,4 +360,4 @@ order by 2
 <br />
 <br />
 
-Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.
+Was this documentation helpful? <br /> Give us your feedback in the **#soda-docs** channel in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a> or <a href="https://github.com/sodadata/docs/issues/new" target="_blank">open an issue</a> in GitHub.

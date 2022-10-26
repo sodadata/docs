@@ -50,6 +50,8 @@ data_source my_datasource_name:
 <sup>1</sup> Use this parameter when adding Snowflake connection configurations to a `configuration.`yml file. However, if you are adding connection configuration details directly in Soda Cloud (connecting to your Snowflake data source via a Soda Agent) to authenticate using Okta, you must follow the instructions documented by Snowflake for <a href="https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#native-sso-okta-only" target="_blank">Native SSO - Okta Only</a>.
  
 
+{% include test-connection.md %}
+
 ## Supported data types
 
 | Category | Data type                                                                                                       |

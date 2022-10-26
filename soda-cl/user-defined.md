@@ -17,7 +17,7 @@ If the built-in set of [metrics and checks]({% link soda-cl/metrics-and-checks.m
 
 ## Define user-defined checks
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), these are user-defined checks. Truly, it is the metric that you define yourself, then use in a check.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), these are user-defined checks. Truly, it is the metric that you define yourself, then use in a check.
 
 The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the metric that is then used in the check. The check itself follows the simple pattern of a [standard check]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) that uses a metric, a comparison symbol or phrase, and a threshold. You specify the CTE value for the custom metric using a nested **expression key** which also defines the name of the new custom metric.
 * The name you provide for a custom metric must *not* contain spaces.
@@ -128,7 +128,12 @@ for each dataset T:
 #### Example with dataset filter
 
 ```yaml
-coming soon
+filter FULFILLMENT [daily]:
+  where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
+
+checks for FULFILLMENT [daily]:
+  - avg_order_span between 5 and 10:
+      avg_order_span expression: AVG(last_order_day - first_order_day)
 ```
 
 <br />
@@ -141,7 +146,7 @@ coming soon
 
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

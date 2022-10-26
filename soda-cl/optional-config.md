@@ -167,6 +167,8 @@ checks for CUSTOMERS:
 
 {% include in-check-filters.md %}
 
+See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
+
 ## Use quotes in a check
 
 In the checks you write with SodaCL, you can apply the quoting style that your data source uses for dataset or column names. Soda Core uses the quoting style you specify in the aggregated SQL queries it prepares, then executes during a scan. 
@@ -245,7 +247,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

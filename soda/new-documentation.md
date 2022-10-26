@@ -9,9 +9,17 @@ parent: Reference
 
 <br />
 
+#### October 26, 2022
+
+* Removed the Preview status from self-serve features available in Soda Cloud such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
+* Migrated custom metric templates from Soda SQL to SodaCL; see [Check templates]({% link soda-cl/check-templates.md %}).
+
 #### October 19, 2022
 
-* Migrated custom metric templates from Soda SQL to SodaCL; see [Check templates]({% link soda-cl/check-templates.md %}).
+* Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.9.
+* Documented connection configuration for Azure Synapse (Experimental).
+* Added documentation for an enhancement for [change-over-time checks]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds) to gauge changes relative to the same day last week or month.
+* Added documentation for the new `test-connection` command in Soda Core. See [Connect Soda to Amazon Athena]({% link soda/connect-athena.md %}#test-the-data-source-connection) for an example.
 
 #### October 13, 2022
 
@@ -169,7 +177,7 @@ checks for dim_customers:
 
 #### June 22, 2022
 
-* Added documentation to correspond with the new `percent` argument you can use in checks with [change-over-time thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-change-over-time-thresholds).
+* Added documentation to correspond with the new `percent` argument you can use in checks with [change-over-time thresholds]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds).
 
 #### June 21, 2022
 

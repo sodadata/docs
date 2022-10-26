@@ -5,11 +5,9 @@ description: Use SodaCL to send dataset and column profile information to Soda C
 parent: SodaCL
 ---
 
-# Display profile information in Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Display profile information in Soda Cloud 
 
-{% include banner-preview.md %}
-
-Use the `discover datasets` and/or `profile columns` configurations in your checks YAML file to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.
+Use the `discover datasets` and/or `profile columns` configurations to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.
 
 *Requires Soda Cloud*<br />
 *Known issue:* Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark DataFrame data source (`soda-core-spark-df`).
@@ -43,12 +41,37 @@ profile columns:
 
 
 ## Prerequisites
+
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Configure in Soda Cloud</label>
+  <label class="tab" id="two-tab" for="two">Configure using Soda Core </label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
+* You have <a href="https://cloud.soda.io/signup" target="_blank">signed up for a Soda Cloud account</a>.
+* You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) within your organization's Soda Cloud account.
+* You, or an Administrator in your organization's Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) which enables you to connect to a data source in Soda Cloud.
+
+To define discover and profile datasets, follow the guided steps to [create a new data source]({% link soda-cloud/add-datasource.md %}#3-discover-datasets). Reference the [section below](#define-an-automated-monitoring-check) for how to define the checks themselves. 
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
 * You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
 * You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
 * You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core. <br />
 OR <br />
-* You a Soda Cloud account with Preview access ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+* You have a Soda Cloud account and you, or a colleague, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) and [added a data source]({% link soda-cloud/add-datasource.md %}) to your organization's Soda Cloud account.
 
+Reference the [section below](#define-an-automated-monitoring-check) for how to define the checks themselves. 
+
+  </div>
+  </div>
+</div>
 
 ## Define dataset discovery  
 <!--Linked to UI, access Shlink-->
@@ -185,7 +208,7 @@ profile columns:
 <!--* If you configured `discover datasets` to exclude a dataset but do not explicitly also exclude its columns in `profile columns`, Soda discovers the dataset and profiles its columns. -->
 
 ## Go further
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.

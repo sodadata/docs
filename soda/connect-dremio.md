@@ -29,6 +29,8 @@ data_source my_datasource_name:
 | schema    | optional |                                                                  |
 
 
+{% include test-connection.md %}
+
 
 ## Supported data types
 

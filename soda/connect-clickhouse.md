@@ -26,10 +26,13 @@ data_source my_datasource_name:
 | -------- | -------- | ---------------------------------------------------------- |
 | type     | required |                                                            |
 | host     | required |                                                            |
-| port     | required
+| port     | required |                                                            |
 | username | required | Use system variables to retrieve this value securely.      |
 | password | required | Use system variables to retrieve this value securely.      |
 | database | required |                                                            |
+
+
+{% include test-connection.md %}
 
 
 ## Supported data types

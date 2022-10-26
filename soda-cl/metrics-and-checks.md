@@ -154,7 +154,7 @@ Only checks that use numeric metrics can specify a **change-over-time threshold*
 
 You must have a Soda Cloud account to use change-over-time thresholds.
 
-Refer to [change-over-time thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-change-over-time-thresholds) for further details.
+Refer to [change-over-time thresholds]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds) for further details.
 
 
 ### Define boundaries with fixed thresholds
@@ -215,7 +215,7 @@ checks for dim_customer:
 ## Go further
 
 * Access information about [optional configurations]({% link soda-cl/optional-config.md %}) that you can use in SodaCL checks.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 
