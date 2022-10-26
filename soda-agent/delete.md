@@ -5,9 +5,8 @@ description: Access instructions on how to remove a Soda Agent and deccommission
 parent: Soda Agent
 ---
 
-# Decommission a Soda Agent and the EKS cluster ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Decommission a Soda Agent and the EKS cluster
 
-{% include banner-preview.md %}
 
 1. Uninstall the Soda Agent in the cluster.
 ```shell

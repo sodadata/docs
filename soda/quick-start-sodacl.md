@@ -7,6 +7,10 @@ parent: Get started
 
 # Quick start for SodaCL 
 
+<br />
+
+![sodacl-logo](/assets/images/sodacl-logo.png){:height="100px" width="100px"}<br />
+
 If you are staring at a blank YAML file wondering what SodaCL checks to write to surface data quality issues, this quick start tutorial is for you. 
 
 ![blank-page](/assets/images/blank-page.png){:height="600px" width="600px"}

@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### October 26, 2022
+
+* Removed the Preview status from self-serve features available in Soda Cloud such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
+
 #### October 19, 2022
 
 * Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.9.
