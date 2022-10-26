@@ -128,7 +128,12 @@ for each dataset T:
 #### Example with dataset filter
 
 ```yaml
-coming soon
+filter FULFILLMENT [daily]:
+  where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
+
+checks for FULFILLMENT [daily]:
+  - avg_order_span between 5 and 10:
+      avg_order_span expression: AVG(last_order_day - first_order_day)
 ```
 
 <br />

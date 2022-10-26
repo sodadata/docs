@@ -44,7 +44,7 @@ You can use both missing metrics in checks that apply to individual columns in a
 * If you wish, you can add a `%` character to the threshold for a `missing_percent` metric for improved readability. 
 
 ```yaml
-checks for dim_customer
+checks for dim_customer:
   - missing_count(birthday, last_name) = 0
 ```
 
@@ -234,7 +234,11 @@ for each dataset T:
 #### Example with dataset filter
 
 ```yaml
-coming soon
+filter CUSTOMERS [daily]:
+  where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
+
+checks for CUSTOMERS [daily]:
+  - missing_count(user_id) = 0
 ```
 
 <br />

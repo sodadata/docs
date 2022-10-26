@@ -6,10 +6,8 @@ parent: Soda Agent
 redirect_from: /soda-agent/
 ---
 
-# Soda Agent basic concepts ![preview](/assets/images/preview.png){:height="70px" width="70px"}
+# Soda Agent basic concepts 
 <!--Linked to UI, access Shlink-->
-
-{% include banner-preview.md %}
 
 {% include soda-agent.md %}
 

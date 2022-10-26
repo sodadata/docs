@@ -5,8 +5,7 @@ description: Review release notes for Soda Agent, a Helm chart for deployment on
 parent: Release notes
 ---
 
-# Release notes for Soda Agent ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
-
+# Release notes for Soda Agent
 
 
 {% assign notes = site.release-notes | where_exp:"item","item.products contains 'soda-agent'" | sort:"date" | reverse %}
