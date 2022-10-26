@@ -51,6 +51,8 @@ Use **dataset filters** to create one or more partitions of data, commonly time 
 
 Instead of executing a great many checks on *all* the data in a dataset, you can specify a smaller portion of data against which to execute all the checks. Doing so helps avoid having to repeatedly apply the same filter to many checks, and it produces a `WHERE` clause in the SQL query that Soda prepares and executes against your data. 
 
+*Known issue:* Dataset filters are not compatible with [failed rows checks which use a SQL query]({% link soda-cl/failed-rows-checks.md %}#define-failed-rows-checks). With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260-->
+
 Use **in-check filters** to exclude rows from an individual check evaluation. 
 
 In-check filters provide the ability to create conditions, or business rules, that data in a column must meet before Soda includes a row in a check evaluation. In other words, Soda first finds rows that match the filter, *then* executes the check on those rows. As an example, you may wish to use an in-check filter to support a use case in which "Column X must be filled in for all rows that have value Y in column Z". 
