@@ -11,7 +11,8 @@ parent: Reference
 
 #### October 26, 2022
 
-* Removed the Preview status from self-serve features available in Soda Cloud such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
+* Removed the Preview status from self-serve features which are now generally available in Soda Cloud, such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
+* Migrated custom metric templates from Soda SQL to SodaCL; see [Custom check templates]({% link soda-cl/check-templates.md %}).
 
 #### October 19, 2022
 
