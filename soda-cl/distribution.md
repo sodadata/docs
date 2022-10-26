@@ -9,9 +9,9 @@ parent: SodaCL
 
 Use a distribution check to determine whether the distribution of a column has changed between two points in time. For example, if you trained a model at a particular moment in time, you can use a distribution check to find out how much the data in the column has changed over time, or if it has changed all.
 
-*Soda Cloud has limited support for distribution checks: the DRO cannot yet be maintained in Soda Cloud's self serve, but the check result outcome will appear in your check results.*<br />
-*Requires Soda Core Scientific.*<br />
-*Known issue:* Soda Core for SparkDF does not support distribution checks.
+* *Requires Soda Core Scientific.*<br />
+* *Limitation:* Soda Cloud cannot yet maintain the distribution reference object (DRO), but distribution check results appear in the Check Results dashboard.*<br />
+* *Known issue:* Soda Core for SparkDF does not support distribution checks.
 
 ```yaml
 checks for dim_customer:
