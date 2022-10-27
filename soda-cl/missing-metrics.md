@@ -37,11 +37,12 @@ checks for dim_customer
 
 ## Define checks with missing metrics
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), you use missing metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), you use missing metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details. 
 
 You can use both missing metrics in checks that apply to individual columns in a dataset; you cannot use missing metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
 * SodaCL considers `NULL` as the default value for "missing". 
 * If you wish, you can add a `%` character to the threshold for a `missing_percent` metric for improved readability. 
+* *Known issue:* When more than one column is included in a check with a missing metric, as in the example below, Soda executes the check *only* against the first column listed. <!--CORE-331-->
 
 ```yaml
 checks for dim_customer:
