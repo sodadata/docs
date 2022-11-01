@@ -45,6 +45,7 @@ The following table outlines the rights of each role.
 | Reset member passwords or deactivate members                                                                 |   ✓   |      |
 | Download a CSV file of an audit trail of Soda Cloud usage                                                    |   ✓   |      |
 | Define and adjust Attributes for datasets                                                                    |   ✓   |      |
+| Set and edit notification rules                                                                              |   ✓   |      |
 
 ## Change organization roles and settings
 
