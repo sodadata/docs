@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Set notification rules
-description: 
+description: Use Soda Cloud to set alert notification rules for multiple checks across datasets in your account.
 parent: Soda Cloud
 ---
 
