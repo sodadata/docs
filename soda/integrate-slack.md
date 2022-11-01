@@ -9,6 +9,25 @@ parent: Integrate Soda
 
 {% include integrate-slack-steps.md %}
 
+## Integration for Soda Cloud alert notifications
+
+You can use this integration to enable Soda Cloud to send alert notifications to a Slack channel to notify your team of warn and fail check results. 
+
+With such an integration, Soda Cloud enables users to select a Slack channel as the destination for an alert notification of an individual check or checks that form a part of an agreement, or multiple checks. 
+
+* To send notifications for individual checks, see [Edit checks in Soda Cloud]({% link soda-cloud/edit-checks.md %}) and [agreements]({% link soda-cloud/agreements.md %}).
+* To send notifications that apply to multiple checks, see [Set notification rules]({% link soda-cloud/notif-rules.md %}). ![preview](/assets/images/preview.png){:height="70px" width="70px"}
+
+
+## Integration for Soda Cloud incidents
+
+You can use this integration to notify your team when a new incident has been created in Soda Cloud. With such an integration, Soda Cloud displays an external link to the MS Teams channel in the **Incident Details**. 
+
+Soda Cloud sends all incident events to only one channel in MS Teams. As such, you must provide a separate integration link in the **Channel URL** field in the **Define Scope** tab. For example, `https://teams.microsoft.com/mychannel`. To obtain the channel link in MS Teams, right-click on the channel name in the overview sidebar.
+
+Refer to [Incidents]({% link soda-cloud/incidents.md %}) for more details about using incidents in Soda Cloud.
+
+
 ## Set a default Slack channel for notifications
 
 You can set a default Slack channel that Soda Cloud applies to all alert notifications. If you have not already set the default Slack channel when you initially set up the integration, you can edit it to set the default.
@@ -22,6 +41,7 @@ You can set a default Slack channel that Soda Cloud applies to all alert notific
 ## Go further
 
 * [Connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account.
+* Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account. ![preview](/assets/images/preview.png){:height="70px" width="70px"}
 * Learn more about using Slack to collaborate on resolving [Incidents]({% link soda-cloud/incidents.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

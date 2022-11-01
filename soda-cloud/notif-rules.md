@@ -5,9 +5,11 @@ description:
 parent: Soda Cloud
 ---
 
-# Set notification rules
+# Set notification rules ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
-In Soda Cloud, you can define where and when to send an alert notifications when check results warn or fail. You can define these parameters for:
+{% include banner-preview.md %}
+
+In Soda Cloud, you can define where and when to send alert notifications when check results warn or fail. You can define these parameters for:
 * **individual checks** as you create or edit them; see [Create agreements]({% link soda-cloud/agreements.md %}#4-set-notifications) or [Edit checks]({% link soda-cloud/edit-checks.md %})
 * **multiple checks** by defining notification rules
 
@@ -44,7 +46,7 @@ In Soda Cloud, navigate to **your avatar** > **Notification Rules**, then click 
 | -----------------  | ----------- |
 | Name  | Provide a unique identifier for your notification. |
 | For | Select **All Checks**, or select **Selected Checks** to use conditions to identify specific checks to which you want the rule to apply. You can identify checks according to several attributes such as **Data Source Name**, **Dataset Name**, or **Check Name**.|
-| Notify Recipient | Select the destintation to which this rules sends its notifications. For example, you can send the rule's notifications to a channel in Slack. |
+| Notify Recipient | Select the destination to which this rule sends its notifications. For example, you can send the rule's notifications to a channel in Slack. |
 | Notify About | Identify the notifications this rule sends based on the severity of the check result: warn, fail, or both.|
 
 ## Edit or delete rules

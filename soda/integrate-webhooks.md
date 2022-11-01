@@ -56,7 +56,10 @@ Use a webhook to:
 
 ### Webhooks for Soda Cloud alert notifications
 
-You can use a webhook to enable Soda Cloud to send alert notifications to a third-party provider, such as OpsGenie, to notify your team of warn and fail check results. With such an integration, Soda Cloud enables users to select the webhook as the destination for an alert notification. See [Edit checks in Soda Cloud]({% link soda-cloud/edit-checks.md %}).
+You can use a webhook to enable Soda Cloud to send alert notifications to a third-party provider, such as OpsGenie, to notify your team of warn and fail check results. With such an integration, Soda Cloud enables users to select the webhook as the destination for an individual check or checks that form a part of an agreement, or multiple checks. 
+
+* To send notifications for individual checks, see [Edit checks in Soda Cloud]({% link soda-cloud/edit-checks.md %}) and [agreements]({% link soda-cloud/agreements.md %}).
+* To send notifications that apply to multiple checks, see [Set notification rules]({% link soda-cloud/notif-rules.md %}). ![preview](/assets/images/preview.png){:height="70px" width="70px"}
 
 Soda Cloud alert notifications make use of the following events:
 * [`validate`](#validate)
@@ -304,6 +307,7 @@ Soda Cloud sends this event payload when an incident has been updated with, for 
 ## Go further
 
 * Learn more about [creating agreements]({% link soda-cloud/agreements.md %}) in Soda Cloud.
+* Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account. ![preview](/assets/images/preview.png){:height="70px" width="70px"}
 * Learn more about creating, tracking, and resolving data quality [Incidents]({% link soda-cloud/incidents.md %}) in Soda Cloud.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

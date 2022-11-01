@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 2, 2022
+
+* Added documentation for the preview of the [alert notification rules]({% link soda-cloud/notif-rules.md %}) feature. 
+
 #### October 26, 2022
 
 * Removed the Preview status from self-serve features which are now generally available in Soda Cloud, such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
