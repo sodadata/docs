@@ -11,7 +11,7 @@ parent: Reference
 
 #### November 1, 2022
 
-* Added [Limitations and known issues]({% link soda-cld/profile.md %}#limitations-and-known-issues) section to Display Profile information in Soda Cloud.
+* Added [Limitations and known issues]({% link soda-cl/profile.md %}#limitations-and-known-issues) section to Display Profile information in Soda Cloud.
 
 #### October 26, 2022
 
