@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 1, 2022
+
+* Added [Limitations and known issues]({% link soda-cl/profile.md %}#limitations-and-known-issues) section to Display Profile information in Soda Cloud.
+
 #### October 26, 2022
 
 * Removed the Preview status from self-serve features which are now generally available in Soda Cloud, such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
@@ -16,7 +20,7 @@ parent: Reference
 
 #### October 19, 2022
 
-* Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.9.
+* Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.11.
 * Documented connection configuration for Azure Synapse (Experimental).
 * Added documentation for an enhancement for [change-over-time checks]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds) to gauge changes relative to the same day last week or month.
 * Added documentation for the new `test-connection` command in Soda Core. See [Connect Soda to Amazon Athena]({% link soda/connect-athena.md %}#test-the-data-source-connection) for an example.

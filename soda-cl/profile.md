@@ -10,7 +10,7 @@ parent: SodaCL
 Use the `discover datasets` and/or `profile columns` configurations to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.
 
 *Requires Soda Cloud*<br />
-*Known issue:* Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark DataFrame data source (`soda-core-spark-df`).
+
 
 ```yaml
 discover datasets:
@@ -32,6 +32,7 @@ profile columns:
 ```
 
 [Prerequisites](#prerequisites)<br />
+[Limitations and known issues](#limitations-and-known-issues)<br />
 [Define dataset discovery](#define-dataset-discovery) <br />
 [Define column profiling](#define-column-profiling)<br />
 [Optional check configurations](#optional-check-configurations) <br />
@@ -56,7 +57,7 @@ profile columns:
 * You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) within your organization's Soda Cloud account.
 * You, or an Administrator in your organization's Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) which enables you to connect to a data source in Soda Cloud.
 
-To define discover and profile datasets, follow the guided steps to [create a new data source]({% link soda-cloud/add-datasource.md %}#3-discover-datasets). Reference the [section below](#define-an-automated-monitoring-check) for how to define the checks themselves. 
+To define discover and profile datasets, follow the guided steps to create a new data source and add the sample configuration in step 4 [Discover datasets]({% link soda-cloud/add-datasource.md %}#3-discover-datasets). Reference the [section below](#define-an-automated-monitoring-check) for how to configure profiling using SodaCL. 
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
@@ -64,14 +65,17 @@ To define discover and profile datasets, follow the guided steps to [create a ne
 * You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
 * You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
 * You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core. <br />
-OR <br />
-* You have a Soda Cloud account and you, or a colleague, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) and [added a data source]({% link soda-cloud/add-datasource.md %}) to your organization's Soda Cloud account.
 
-Reference the [section below](#define-an-automated-monitoring-check) for how to define the checks themselves. 
+Reference the [section below](#define-an-automated-monitoring-check) for how to configure profiling in a checks YAML file using SodaCL. 
 
   </div>
   </div>
 </div>
+
+## Limitations and known issues
+
+* *Known issue:* Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark DataFrame data source (`soda-core-spark-df`).
+* Soda can only profile columns that contain numbers or text type data; it cannot profile columns that contain time or date data.
 
 ## Define dataset discovery  
 <!--Linked to UI, access Shlink-->

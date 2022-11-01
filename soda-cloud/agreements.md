@@ -64,7 +64,7 @@ Soda Cloud sends emails to request review and approval from all stakeholders, bu
 
 By default, Soda Cloud includes an out-of-the-box email notification to all the agreement's stakeholders when a check in your agreement fails. You can remove or adjust this notification, or use the search bar to add more. Access [Scan output]({% link soda-cloud/scan-output.md %}) to learn more about pass, warn, and fail check results.
 
-If you have integrated your Soda Cloud account with [Slack]{% link soda/integrate-slack.md %}) or another third-party service provider via a [webhook]({% link soda/integrate-webhooks.md %}), use the search field to type a channel name to add the channel as a notification recipient. Alternatively, use the field to enter names of individual teammates with whom you collaborate in Soda Cloud.
+If you have integrated your Soda Cloud account with [Slack]({% link soda/integrate-slack.md %}) or another third-party service provider via a [webhook]({% link soda/integrate-webhooks.md %}), use the search field to type a channel name to add the channel as a notification recipient. Alternatively, use the field to enter names of individual teammates with whom you collaborate in Soda Cloud.
 
 Note that Soda Cloud does not send a notification when a *scan* fails because of an error, only when *checks* pass, warn, or fail. Refer to [Scan output]({% link soda-cloud/scan-output.md %}) for details.
 

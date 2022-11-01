@@ -54,7 +54,7 @@
     page: soda-agent/basics.md
   - subtitle: Deploy a Soda Agent
     page: soda-agent/deploy.md
-  - subtitle: Soda Agent test deployment
+  - subtitle: Test Soda Agent deployment
     page: soda-agent/test-deploy.md
   - subtitle: Upgrade a Soda Agent
     page: soda-agent/upgrade.md
