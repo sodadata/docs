@@ -19,7 +19,8 @@ The following optional configurations are available to use with most, though not
 [Use quotes in a check](#use-quotes-in-a-check)<br />
 [Apply checks to multiple datasets](#apply-checks-to-multiple-datasets)<br />
 [Scan a portion of your dataset](#scan-a-portion-of-your-dataset)<br />
-[Collect failed row samples](#collect-failed-row-samples)<br />
+[Collect failed rows samples](#collect-failed-rows-samples)<br />
+[Disable failed rows samples for specific columns](#disable-failed-row-samples-for-specific-columns)<br />
 <br />
 <br />
 
@@ -219,9 +220,9 @@ See [For each]({% link soda-cl/for-each.md %}) for further details.
 
 See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
-## Collect failed row samples
+## Collect failed rows samples
 
-Soda collects failed row samples explicitly and implicitly. 
+Soda collects failed rows samples explicitly and implicitly. 
 
 To explicitly collect failed row samples, you can add a [failed row check]({% link soda-cl/failed-rows-checks.md %}) your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
 
@@ -243,6 +244,11 @@ checks for dim_customer:
 
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check that collects failed row samples and has failed. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
+## Disable failed row samples for specific columns
+
+For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
+
+Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
 
 ## Go further

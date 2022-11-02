@@ -13,6 +13,7 @@ parent: Reference
 
 * Added documentation for a new numeric metric: `duplicate_percent`. See [Numeric metrics]({% link soda-cl/numeric-metrics.md %}#list-of-numeric-metrics).
 * Removed known issue regarding Soda Core for SparkDF not supporting anomaly score or distribution checks; now the checks are supported.
+* Added documentation for a new feature to [disable failed rows samples for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
 #### November 1, 2022
 

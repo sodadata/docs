@@ -84,6 +84,8 @@ checks for dim_customer:
 
 <br />
 
+For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for duplicate values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-duplicate-count](/assets/images/failed-duplicate-count.png){:height="700px" width="700px"}
