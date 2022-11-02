@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Reporting API changelog and migration guide
-description: Find out all you need to know on what has changed in the new version of the reporting API.
+description: Review the changes for the latest version of Soda Cloud's Reporting API and learn how to migrate existing calls.
 parent: API Documentation
 fullwidth: false
 ---
