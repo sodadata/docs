@@ -204,7 +204,13 @@ To do so, add the `sampler` configuration to your data source connection configu
 ```yaml
 data_source my_datasource_name: 
   type: postgres
-  ...
+  connection:
+    host: localhost
+    port: '5432'
+    username: ***
+    password: ***
+  database: postgres
+  schema: public
   sampler:
     exclude_columns:
       dataset_name:
@@ -280,22 +286,22 @@ sampler:
 ```yaml
 sampler:
   exclude_columns:
-    retail_users: [password]
+    retail_*: [password]
     retail_customers: [last_name, pii_*]
 ```
 
+* The `exclude_columns` configuration also applies to any custom, user-defined failed rows sampler.
+
 * The `exclude_columns` configuration does not apply to [sample data collection]({% link soda-cl/sample-datasets.md %}).
 
-* The `exclude_columns` configuration applies to any custom, user-defined failed rows sampler.
-
-* Failed rows checks that use a `fail query` to execute a SQL query do not honor the `exclude_column` configuration. Instead, a gatekeeper component parses all queries that Soda runs to collect samples and ensures that none of columns listed in an `exclude_column` configuration slipped through when generating the sample queries. In such a case, the Soda Core CLI provides a message to indicate the gatekeeper's behavior:
+* Checks in which you provide a complete SQL query, such as failed rows checks that use a `fail query`, do not honor the `exclude_column` configuration. Instead, a gatekeeper component parses all queries that Soda runs to collect samples and ensures that none of columns listed in an `exclude_column` configuration slip through when generating the sample queries. In such a case, the Soda Core CLI provides a message to indicate the gatekeeper's behavior:
 ```shell
 Skipping samples from query 'retail_orders.last_name.failed_rows[missing_count]'. Excluded column(s) present: ['*'].
 ```
 
 ### Failed rows sampling queries
 
-Note that for every column you exclude from failed rows sampling, Soda does not include the columns in its query to collect samples. In other words, it does not collect the samples *then* prevent them from sending to Soda Cloud, Soda does not query them, period. 
+For the most part, when you exclude a column from failed rows sampling, Soda does not include the column in its query to collect samples. In other words, it does not collect the samples *then* prevent them from sending to Soda Cloud, Soda does not query the column for samples, period. (There are some edge cases in which this is not the case and for those instances, a gatekeeper component ensures that no excluded columns are included in failed rows samples.)
 
 As an example, imagine a check that looks for NULL values in a column that you included in your `exclude_columns` configuration. (A missing metric in a check implicitly collects failed rows samples.)
 ```yaml
@@ -303,7 +309,10 @@ checks for retail_orders:
   - missing_count(cat) = 0
 ```
 
-If the `cat` column were *not* an excluded column, Soda would generate two queries such as the following: 
+If the `cat` column were *not* an excluded column, Soda would generate two queries:
+* a query that executes the check 
+* another query to collect failed rows samples for checks that failed
+
 ```shell
 SELECT * FROM dev_m1n0.sodatest_customers_6c2f3574
  WHERE cat IS NULL
@@ -316,7 +325,7 @@ SELECT * FROM dev_m1n0.sodatest_customers_6c2f3574
 But because the `cat` column is excluded, Soda must generate three queries:
 * a query that executes the check 
 * a query to gather the schema of the dataset to identify all columns
-* another query to collect failed rows samples for checks that failed, only on columns identified on the list 
+* another query to collect failed rows samples for checks that failed, only on columns identified on the list returned by the preceding query
 
 ```shell
 SELECT
