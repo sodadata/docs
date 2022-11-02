@@ -12,6 +12,7 @@ parent: Reference
 #### November 2, 2022
 
 * Removed `missing format` as a valid configuration key for [missing metrics]({% link soda-cl/missing-metrics.md %}).
+* Added an independent [Connect to Databricks]({% link soda/connect-databricks.md %}) page that points to documentation to use Soda Core packages for Apache Spark to connect.
 
 #### November 1, 2022
 
