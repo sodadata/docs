@@ -1,15 +1,15 @@
 ---
 layout: default
 title: Soda Agent test deployment
-description: 
+description: Deploy a Soda Agent locally to familiarize yourself with the procedure and test the functionality of the agent.
 parent: Soda Agent
 ---
 
-# Soda Agent test deployment 
+# Test Soda Agent deployment 
 
-If you are curious about how the Soda Agent works but are not yet ready to deploy to an Amazon Elastic Kubernetes Service (EKS) cluster, you can deploy an agent locally and connect it to your Soda Cloud account.
+If you are curious about how the Soda Agent works but are not yet ready to deploy to an Amazon Elastic Kubernetes Service (EKS) cluster, you can use <a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank">minikube</a> to deploy an agent locally and connect it to your Soda Cloud account to see how things work.
 
-Access [Deploy a Soda Agent]({% link soda-agent/deploy.md %}) for full deployment details.
+Access [Deploy a Soda Agent]({% link soda-agent/deploy.md %}) for full deployment details. Minikube is *not* required to fully deploy a Soda Agent in a cluster in a cloud services provider environment.
 
 [Prerequisites](#prerequisites)<br />
 [Create a Soda Cloud account and API keys](#create-a-soda-cloud-account-and-api-keys)<br />
@@ -20,7 +20,7 @@ Access [Deploy a Soda Agent]({% link soda-agent/deploy.md %}) for full deploymen
 
 ## Prerequisites
 
-* You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. Run `kubectl version --output=yaml` to check the version of an existing install.
+* You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. With Docker running, use the command `kubectl version --output=yaml` to check the version of an existing install.
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
 * You have installed <a href="https://docs.docker.com/get-docker/" target="_blank">Docker</a> in your local environment.
 
@@ -181,7 +181,6 @@ minikube delete
 ## Go further
 
 * [Deploy a Soda Agent]({% link soda-agent/deploy.md %}) for real!
-* 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

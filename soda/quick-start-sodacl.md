@@ -92,7 +92,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 
 ## Duplicate check
 
-For the nearly universal use case of making sure that values in a column are not duplicated, you can use the `duplicate_count` metrics. In the following example, Soda counts the number of duplicate values in the `column_name` column, identified as the argument in parentheses appended to the metric. If there is even one value that is a duplicate of another, the check result is fail.
+For the nearly universal use case of making sure that values in a column are not duplicated, you can use the `duplicate_count` or `duplicate_percent` metrics. In the following example, Soda counts the number of duplicate values in the `column_name` column, identified as the argument in parentheses appended to the metric. If there is even one value that is a duplicate of another, the check result is fail.
 
 This type of check is useful when, for example, you need to make sure that values in an `id` column are unique, such `customer_id` or `product_id`.
 
@@ -280,7 +280,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 * Indentations in the SodaCL syntax are critical. If you encounter an error, check your indentation first.
 * Spaces in the SodaCL syntax are critical. For example, be sure to add a space before and after your threshold symbol ( `=`, `>`, `>=` ); do *not* add a space between a metric and the column to which it applies, such as `duplicate_count(column1)`.
 * All comma-separated values in lists in SodaCL use a comma + space syntax, such as `duplicate_count(column1, column2)`; do not forget to add the space.
-* Note that multi-word checks such as `missing_count` use underscores, but configuration keys, such as `missing format`, do not. See [List of missing metrics](#list-of-missing-metrics) and [List of validity metrics](#list-of-validity-metrics).
+* Note that multi-word checks such as `missing_count` use underscores, but configuration keys, such as `missing regex`, do not. See [List of missing metrics](#list-of-missing-metrics) and [List of validity metrics](#list-of-validity-metrics).
 * If you use `missing values` or `invalid values` configuration keys, note that 
     * Values in a comma-separated list must be enclosed in square brackets. <br />For example, `[US, BE, CN]`.
     * Numeric characters in a values list must be enclosed in single quotes. <br />For example, `[none,'0', NA]`.
