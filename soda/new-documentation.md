@@ -11,6 +11,10 @@ parent: Reference
 
 #### November 3, 2022
 
+* Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.12.
+* Added documentation for a new numeric metric: `duplicate_percent`. See [Numeric metrics]({% link soda-cl/numeric-metrics.md %}#list-of-numeric-metrics).
+* Removed known issue regarding Soda Core for SparkDF not supporting anomaly score or distribution checks; now the checks are supported.
+* Added documentation for a new feature to [disable failed rows samples for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 * Added documentation for distribution checks which now support dataset and in-check filters. See [Distribution check optional check configurations]({% link soda-cl/distribution.md %}#optional-check-configurations).
 
 #### November 2, 2022

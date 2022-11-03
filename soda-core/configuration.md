@@ -16,6 +16,7 @@ Alternatively, you can provide data source connection configurations in the cont
 [Configuration instructions](#configuration-instructions)<br />
 [Provide credentials as system variables](#provide-credentials-as-system-variables)<br />
 [Configure the same scan to run in multiple environments](#configure-the-same-scan-to-run-in-multiple-environments)<br />
+[Disable failed rows sampling for specific columns](#disable-failed-rows-sampling-for-specific-columns)<br/>
 [Go further](#go-further)<br />
 <br />
 
@@ -100,6 +101,11 @@ soda scan -d nyc_dev -c configuration.yml -s nyc_a checks.yml
 soda scan -d nyc_prod -c configuration.yml -s nyc_b checks.yml
 ```
 
+## Disable failed rows sampling for specific columns
+
+For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can add a configuration to your configuration YAML file to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
+
+Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
 ## Go further
 

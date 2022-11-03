@@ -11,7 +11,6 @@ redirect_from: /soda-cloud/anomaly-detection.html
 
 Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
 *Requires Soda Cloud and Soda Core Scientific.*<br />
-*Known issue:* Soda Core for SparkDF does not support anomaly score checks.
 
 ```yaml
 checks for dim_customer:

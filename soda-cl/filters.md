@@ -73,7 +73,7 @@ For a dataset filter, Soda Core generates a separate query and, again, attempts 
 
 ### List of compatible metrics and checks
 
-* all numeric metrics, *except* `duplicate_count`
+* all numeric metrics, *except* `duplicate_count` and `duplicate_percent`
 * both missing metrics
 * both validity metrics
 

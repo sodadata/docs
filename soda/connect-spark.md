@@ -25,7 +25,7 @@ There are several Soda Core packages for Spark.
 
 | Package | Description | 
 | ------- | ----- |
-| [`soda-core-spark-df`](#connect-to-spark-dataframes) | Enables you to pass dataframe objects into Soda scans programatically, after you have associated the temporary tables to DataFrames via the Spark API. <br />- For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only. <br />- Supports Delta Lake Tables on Databricks.<br />- [Use for Spark DataFrames on Databricks](#use-soda-core-with-spark-dataframes-on-databricks).<br  />- *Known issue:* Soda Core for SparkDF does not support anomaly score or distribution checks. |
+| [`soda-core-spark-df`](#connect-to-spark-dataframes) | Enables you to pass dataframe objects into Soda scans programatically, after you have associated the temporary tables to DataFrames via the Spark API. <br />- For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only. <br />- Supports Delta Lake Tables on Databricks.<br />- [Use for Spark DataFrames on Databricks](#use-soda-core-with-spark-dataframes-on-databricks).<br  /> |
 | [`soda-core-spark[hive]`](#connect-to-spark-for-hive) | A package you add to `soda-core-spark-df` if you are using Apache Hive. |
 | [`soda-core-spark[odbc]`](#connect-to-spark-for-odbc) | A package you add to `soda-core-spark-df` if you are using ODBC. |
 | [`soda-core-spark[databricks]`](#connect-to-spark-for-databricks-sql) | A package you use to install Soda Core for Databricks SQL on the Databricks Lakehouse Platform. |

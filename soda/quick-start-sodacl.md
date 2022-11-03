@@ -92,7 +92,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 
 ## Duplicate check
 
-For the nearly universal use case of making sure that values in a column are not duplicated, you can use the `duplicate_count` metrics. In the following example, Soda counts the number of duplicate values in the `column_name` column, identified as the argument in parentheses appended to the metric. If there is even one value that is a duplicate of another, the check result is fail.
+For the nearly universal use case of making sure that values in a column are not duplicated, you can use the `duplicate_count` or `duplicate_percent` metrics. In the following example, Soda counts the number of duplicate values in the `column_name` column, identified as the argument in parentheses appended to the metric. If there is even one value that is a duplicate of another, the check result is fail.
 
 This type of check is useful when, for example, you need to make sure that values in an `id` column are unique, such `customer_id` or `product_id`.
 

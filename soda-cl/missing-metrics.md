@@ -142,12 +142,15 @@ checks for dim_customer:
   - missing_percent(email_address) < 50:
       samples limit: 2
 ```
-
 <br />
+
+For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for missing values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-missing-count](/assets/images/failed-missing-count.png){:height="700px" width="700px"}
+
+<br />
 
 ## Optional check configurations
 
