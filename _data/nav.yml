@@ -26,6 +26,8 @@
     page: soda/connect-bigquery.md
   - subtitle: Connect to ClickHouse
     page: soda/connect-clickhouse.md
+  - subtitle: Connect to Databricks
+    page: soda/connect-databricks.md
   - subtitle: Connect to Dremio
     page: soda/connect-dremio.md
   - subtitle: Connect to IBM DB2
@@ -54,7 +56,7 @@
     page: soda-agent/basics.md
   - subtitle: Deploy a Soda Agent
     page: soda-agent/deploy.md
-  - subtitle: Soda Agent test deployment
+  - subtitle: Test Soda Agent deployment
     page: soda-agent/test-deploy.md
   - subtitle: Upgrade a Soda Agent
     page: soda-agent/upgrade.md

@@ -9,9 +9,18 @@ parent: Reference
 
 <br />
 
-#### October 27, 2022
+#### November 3, 2022
 
 * Added documentation for distribution checks which now support dataset and in-check filters. See [Distribution check optional check configurations]({% link soda-cl/distribution.md %}#optional-check-configurations).
+
+#### November 2, 2022
+
+* Removed `missing format` as a valid configuration key for [missing metrics]({% link soda-cl/missing-metrics.md %}).
+* Added an independent [Connect to Databricks]({% link soda/connect-databricks.md %}) page that points to documentation to use Soda Core packages for Apache Spark to connect.
+
+#### November 1, 2022
+
+* Added [Limitations and known issues]({% link soda-cl/profile.md %}#limitations-and-known-issues) section to Display Profile information in Soda Cloud.
 
 #### October 26, 2022
 
@@ -20,7 +29,7 @@ parent: Reference
 
 #### October 19, 2022
 
-* Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.9.
+* Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.11.
 * Documented connection configuration for Azure Synapse (Experimental).
 * Added documentation for an enhancement for [change-over-time checks]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds) to gauge changes relative to the same day last week or month.
 * Added documentation for the new `test-connection` command in Soda Core. See [Connect Soda to Amazon Athena]({% link soda/connect-athena.md %}#test-the-data-source-connection) for an example.

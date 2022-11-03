@@ -19,13 +19,11 @@ checks for dim_customer
       missing regex: (0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)
   - missing_count(last_name) < 5:
       missing values: [n/a, NA, none]
-  - missing_percent(email_address) = 0:
-      missing format: '    '
+  - missing_percent(email_address) = 0
 ```
 
 [Define checks with missing metrics](#define-checks-with-missing-metrics) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Specify missing values or missing regex](#specify-missing-values-or-missing-regex)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Specify missing format](#specify-missing-format)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples) <br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of missing metrics](#list-of-missing-metrics)<br />
@@ -37,11 +35,12 @@ checks for dim_customer
 
 ## Define checks with missing metrics
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), you use missing metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), you use missing metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details. 
 
 You can use both missing metrics in checks that apply to individual columns in a dataset; you cannot use missing metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
 * SodaCL considers `NULL` as the default value for "missing". 
 * If you wish, you can add a `%` character to the threshold for a `missing_percent` metric for improved readability. 
+* *Known issue:* When more than one column is included in a check with a missing metric, as in the example below, Soda executes the check *only* against the first column listed. <!--CORE-331-->
 
 ```yaml
 checks for dim_customer:
@@ -129,28 +128,6 @@ Second check:
 | threshold | `0` | 
 | configuration key | `missing regex` |
 | configuration value(s) | `(0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)` |
-
-<br />
-
-### Specify missing format
-
-Defines what qualifies as a value that ought to register as missing, such as whitespace or empty strings. For example, three spaces in row is recognizable as an entry, but from a business perspective, it ought to be recognized as missing.
-
-The check below ensures that Soda ought to consider any value entered as three spaces as missing, in addition to all NULL values which Soda automatically considers as missing.
-
-```yaml
-checks for dim_customer:
-  - missing_percent(email_address) = 0:
-      missing format: '   '
-```
-
-| metric | `missing_percent` |
-| argument | `email_address` |
-| comparison symbol or phrase| `=` |
-| threshold | `0` | 
-| configuration key | `missing format` |
-| configuration value(s) | `'   '` |
-
 
 <br />
 
@@ -247,8 +224,8 @@ checks for CUSTOMERS [daily]:
 
 | Metric | Column config keys | Description | Supported data type | Supported data sources | 
 | ------ | ------------------ | ----------- | ------------------- |------------------------| 
-| `missing_count` | `missing format` <br /> `missing regex` <br /> `missing values` | The number of rows in a column that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake   |
-| `missing_percent` | `missing format` <br /> `missing regex` <br /> `missing values` | The percentage of rows in a column, relative to the total row count, that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  | 
+| `missing_count` | `missing regex` <br /> `missing values` | The number of rows in a column that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake   |
+| `missing_percent` | `missing regex` <br /> `missing values` | The percentage of rows in a column, relative to the total row count, that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  | 
 
 
 ## List of configuration keys
@@ -257,7 +234,6 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 | Column config key  | Description  | Values | 
 | ------------------ | ------------ | ------ |
-| `missing format` | Defines what qualifies as a value that ought to register as missing, such as whitespace or empty strings. For example, three spaces in row is recognizable as an entry, but from a business perspective, it ought to be recognized as missing. <br />|
 | `missing regex` | Specifies a regular expression to define your own custom missing values.| regex, no forward slash delimiters, string only |
 | `missing values` | Specifies the values that Soda is to consider missing. Numeric characters in a `valid values` list must be enclosed in single quotes. | values in a list |
 
