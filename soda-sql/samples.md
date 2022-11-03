@@ -36,7 +36,7 @@ Alternatively, you can prevent Soda SQL from sending metadata or samples to Soda
 
 ### Reroute sample data for a dataset
 
-Use a `SampleProcessor` to programmatically send a dataset's samples to a secure location within your organization's infrastructure, such as an Amazon S3 bucket or Google Big Query. Note that you can only configure sample data rerouting for individual datasets, and only for those scans that you have [scheduled programmatically]({% link soda-sql/programmatic_scan.md %}). In Soda Cloud, users looking for sample data see the message you define advising them where they can access and review sample data for the dataset.
+Use a `SampleProcessor` to send a dataset's samples to a secure location within your organization's infrastructure, such as an Amazon S3 bucket or Google Big Query. Note that you can only configure sample data rerouting for individual datasets, and only for those scans that you have scheduled programmatically. In Soda Cloud, users looking for sample data see the message you define advising them where they can access and review sample data for the dataset.
 
 #### Reroute to Amazon S3
 
@@ -159,7 +159,7 @@ scan_builder.sample_processor = BigQuerySampleProcessor()
 - Read more about [failed row]({% link soda-cloud/failed-rows.md %}) samples in Soda Cloud.
 - <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a Soda Cloud account.
 - Learn more about [Soda Cloud architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
-- Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+- Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />
 

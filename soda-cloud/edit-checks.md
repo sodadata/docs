@@ -5,7 +5,8 @@ description:
 parent: Soda Cloud
 ---
 
-# Edit checks in Soda Cloud
+# Edit checks in Soda Cloud 
+<!--Linked to UI, access Shlink-->
 
 In Soda Cloud, you can only create new checks as part of an [agreement]({% link soda-cloud/agreements.md %}); you cannot create independent, individual checks, yet.
 
@@ -20,7 +21,7 @@ However, if you have previously connected [Soda Core]({% link soda-core/overview
 * Integrate your Soda Cloud account with [Slack]({% link soda/integrate-slack.md %}), [Jira, and more]({% link soda/integrate-webhooks.md %}) to send alert notifications to a third-party service provider.
 * Complete the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write a few simple checks for data quality.
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

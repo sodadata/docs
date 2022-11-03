@@ -28,6 +28,8 @@ data_source my_datasource_name:
 | database | required |                                                            |
 
 
+{% include test-connection.md %}
+
 ## Supported data types
 
 | Category | Data type  |

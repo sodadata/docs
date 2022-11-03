@@ -5,14 +5,12 @@ description: Use SodaCL to send dataset and column profile information to Soda C
 parent: SodaCL
 ---
 
-# Display profile information in Soda Cloud ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Display profile information in Soda Cloud 
 
-{% include banner-preview.md %}
-
-Use the `discover datasets` and/or `profile columns` configurations in your checks YAML file to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.
+Use the `discover datasets` and/or `profile columns` configurations to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.
 
 *Requires Soda Cloud*<br />
-*Known issue:* Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark DataFrame data source (`soda-core-spark-df`).
+
 
 ```yaml
 discover datasets:
@@ -34,6 +32,7 @@ profile columns:
 ```
 
 [Prerequisites](#prerequisites)<br />
+[Limitations and known issues](#limitations-and-known-issues)<br />
 [Define dataset discovery](#define-dataset-discovery) <br />
 [Define column profiling](#define-column-profiling)<br />
 [Optional check configurations](#optional-check-configurations) <br />
@@ -43,14 +42,43 @@ profile columns:
 
 
 ## Prerequisites
+
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Configure in Soda Cloud</label>
+  <label class="tab" id="two-tab" for="two">Configure using Soda Core </label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
+* You have <a href="https://cloud.soda.io/signup" target="_blank">signed up for a Soda Cloud account</a>.
+* You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) within your organization's Soda Cloud account.
+* You, or an Administrator in your organization's Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) which enables you to connect to a data source in Soda Cloud.
+
+To define discover and profile datasets, follow the guided steps to create a new data source and add the sample configuration in step 4 [Discover datasets]({% link soda-cloud/add-datasource.md %}#3-discover-datasets). Reference the [section below](#define-an-automated-monitoring-check) for how to configure profiling using SodaCL. 
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
 * You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
 * You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
 * You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core. <br />
-OR <br />
-* You a Soda Cloud account with Preview access ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 
+Reference the [section below](#define-an-automated-monitoring-check) for how to configure profiling in a checks YAML file using SodaCL. 
 
-## Define dataset discovery
+  </div>
+  </div>
+</div>
+
+## Limitations and known issues
+
+* *Known issue:* Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark DataFrame data source (`soda-core-spark-df`).
+* Soda can only profile columns that contain numbers or text type data; it cannot profile columns that contain time or date data.
+
+## Define dataset discovery  
+<!--Linked to UI, access Shlink-->
 
 Dataset discovery captures basic information about each dataset, including a dataset's schema and the columns it contains.
 
@@ -98,7 +126,8 @@ discover datasets:
 ![discover datasets](../assets/images/discover-datasets.png)
 
 
-## Define column profiling
+## Define column profiling  
+<!--Linked to UI, access Shlink-->
 
 Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. 
 
@@ -155,7 +184,7 @@ profile columns:
 |   | Define a name for sample data configuration. |  - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters ({% raw %} % {% endraw %} with dataset names in the check; see [example](#example-with-wildcards). | - |
 |   | Use for each to apply anomaly score checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan. |  -  |
@@ -183,7 +212,7 @@ profile columns:
 <!--* If you configured `discover datasets` to exclude a dataset but do not explicitly also exclude its columns in `profile columns`, Soda discovers the dataset and profiles its columns. -->
 
 ## Go further
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.

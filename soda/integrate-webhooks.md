@@ -5,7 +5,8 @@ description: Configure webhooks to connect Soda Cloud to any number of third-par
 parent: Integrate
 ---
 
-# Integrate webhooks with Soda Cloud
+# Integrate webhooks with Soda Cloud 
+<!--Linked to UI, access Shlink-->
 
 Configure a webhook in Soda Cloud to connect your account to a third-party service provider such as Jira, ServiceNow, PagerDuty, and more.
 
@@ -28,7 +29,7 @@ Use a webhook to:
 ## Prerequisites
 
 * You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}).
-* You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core and run at least one scan so as to produce one or more check results.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %})![preview](/assets/images/preview.png){:height="60px" width="60px"}.
+* You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core and run at least one scan so as to produce one or more check results.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %}).
 
 
 ## Configure a webhook
@@ -136,7 +137,7 @@ In Jira, start by navigating to **Project settings** > **Automation**, then clic
 The images below offer details for an example of an Automation Rule in Jira to set up an incoming webhook that processes incident events from Soda Cloud. 
 
 <details>
-  <summary>See full Jira Automation example</summary>
+  <summary style="color:#00BC7E">See full Jira Automation example</summary>
   <img src="/assets/images/webhook-automation.png" width="350">
 </details>
 
@@ -304,7 +305,7 @@ Soda Cloud sends this event payload when an incident has been updated with, for 
 
 * Learn more about [creating agreements]({% link soda-cloud/agreements.md %}) in Soda Cloud.
 * Learn more about creating, tracking, and resolving data quality [Incidents]({% link soda-cloud/incidents.md %}) in Soda Cloud.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

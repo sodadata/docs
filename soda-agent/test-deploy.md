@@ -1,17 +1,15 @@
 ---
 layout: default
 title: Soda Agent test deployment
-description: 
+description: Deploy a Soda Agent locally to familiarize yourself with the procedure and test the functionality of the agent.
 parent: Soda Agent
 ---
 
-# Soda Agent test deployment ![preview](/assets/images/preview.png){:height="70px" width="70px"}
+# Test Soda Agent deployment 
 
-{% include banner-preview.md %}
+If you are curious about how the Soda Agent works but are not yet ready to deploy to an Amazon Elastic Kubernetes Service (EKS) cluster, you can use <a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank">minikube</a> to deploy an agent locally and connect it to your Soda Cloud account to see how things work.
 
-If you are curious about how the Soda Agent works but are not yet ready to deploy to an Amazon Elastic Kubernetes Service (EKS) cluster, you can deploy an agent locally and connect it to your Soda Cloud account.
-
-Access [Deploy a Soda Agent]({% link soda-agent/deploy.md %}) for full deployment details.
+Access [Deploy a Soda Agent]({% link soda-agent/deploy.md %}) for full deployment details. Minikube is *not* required to fully deploy a Soda Agent in a cluster in a cloud services provider environment.
 
 [Prerequisites](#prerequisites)<br />
 [Create a Soda Cloud account and API keys](#create-a-soda-cloud-account-and-api-keys)<br />
@@ -22,7 +20,7 @@ Access [Deploy a Soda Agent]({% link soda-agent/deploy.md %}) for full deploymen
 
 ## Prerequisites
 
-* You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. Run `kubectl version --output=yaml` to check the version of an existing install.
+* You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. With Docker running, use the command `kubectl version --output=yaml` to check the version of an existing install.
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
 * You have installed <a href="https://docs.docker.com/get-docker/" target="_blank">Docker</a> in your local environment.
 
@@ -117,19 +115,38 @@ If you wish to try creating a new data source in Soda Cloud using the agent you 
 1. From the command-line, create the data source as a pod on your local cluster.
 ```shell
 cat <<EOF | kubectl apply -n soda-agent -f -
+---
 apiVersion: v1
 kind: Pod
 metadata:
   name: nybusbreakdowns
   labels:
-       app: nycbusbreakdowns
-       eks.amazonaws.com/fargate-profile: soda-agent-profile
+    app: nybusbreakdowns
 spec:
   containers:
   - image: sodadata/nybusbreakdowns
-       imagePullPolicy: IfNotPresent
-       name: nybusbreakdowns
+    imagePullPolicy: IfNotPresent
+    name: nybusbreakdowns
+    ports:
+    - name: tcp-postgresql
+      containerPort: 5432
   restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nybusbreakdowns
+  name: nybusbreakdowns
+spec:
+  ports:
+  - name: tcp-postgresql
+    port: 5432
+    protocol: TCP
+    targetPort: tcp-postgresql
+  selector:
+    app: nybusbreakdowns
+  type: ClusterIP
 EOF
 ```
 2. Once the pod is running, you can use the following configuration details when you add a data source in Soda Cloud, in step 2, **Connect the Data Source**.
@@ -164,8 +181,7 @@ minikube delete
 ## Go further
 
 * [Deploy a Soda Agent]({% link soda-agent/deploy.md %}) for real!
-* 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

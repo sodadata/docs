@@ -8,6 +8,7 @@ redirect_from:
 ---
 
 # Metrics and checks 
+<!--Linked to UI, access Shlink; though actually linked in CLI error message-->
 
 **Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with **Soda Core**, Soda’s open-source, command-line tool, you use SodaCL to write checks for data quality, then use Soda Core to scan the data in your data source and execute those checks.
 
@@ -36,10 +37,11 @@ In general, SodaCL checks fall into one of three broad categories:
 A **standard** check, as illustrated above with `row_count`, uses a language pattern that includes a metric and a threshold. All numeric, missing, and validity metrics use this pattern and have a multitude of optional configurations. Read more about [standard check types](#standard-check-types) below.
 
 <details>
-    <summary>Quick view of standard check metrics</summary>
+    <summary style="color:#00BC7E">Quick view of standard check metrics</summary>
     avg<br />
     avg_length<br />
     duplicate_count<br />
+    duplicate_percent<br />
     invalid_count<br />
     invalid_percent<br />
     max<br />
@@ -73,7 +75,7 @@ checks for dim_employees_dev:
 ![unique-check](/assets/images/unique-check.png){:height="700px" width="700px"}
 
 <details>
-    <summary>Quick view of unique check types</summary>
+    <summary style="color:#00BC7E">Quick view of unique check types</summary>
     anomaly score<br />
     distribution<br />
     freshness<br />
@@ -97,7 +99,7 @@ checks for customers:
 ![user-defined-check](/assets/images/user-defined-check.png){:height="640px" width="640px"}
 
 <details>
-    <summary>Quick view of user-defined check types</summary>
+    <summary style="color:#00BC7E">Quick view of user-defined check types</summary>
     failed rows<br />
     user-defined<br />
 
@@ -148,13 +150,13 @@ The second check applies to only the `size` column in the dataset and checks tha
 
 <br />
 
-### Checks with dynamic thresholds
+### Checks with change-over-time thresholds
 
-Only checks that use numeric metrics can specify a **dynamic threshold**, a value that is relative to a previously-measured, or historic, value. Sometimes referred to a change-over-time threshold, you use these dynamic thresholds to gauge changes to the same metric over time. 
+Only checks that use numeric metrics can specify a **change-over-time threshold**, a value that is relative to a previously-measured, or historic, value. Sometimes referred to a dynamic threshold, you use these change-over-time thresholds to gauge changes to the same metric over time. 
 
-You must have a Soda Cloud account to use dynamic thresholds.
+You must have a Soda Cloud account to use change-over-time thresholds.
 
-Refer to [Dynamic thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-dynamic-thresholds) for further details.
+Refer to [change-over-time thresholds]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds) for further details.
 
 
 ### Define boundaries with fixed thresholds
@@ -215,7 +217,7 @@ checks for dim_customer:
 ## Go further
 
 * Access information about [optional configurations]({% link soda-cl/optional-config.md %}) that you can use in SodaCL checks.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

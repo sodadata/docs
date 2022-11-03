@@ -5,7 +5,8 @@ description: Use attributes, tags, and filters to facilitate your search for the
 parent: Soda Cloud
 ---
 
-# Organize datasets in Soda Cloud
+# Organize datasets in Soda Cloud 
+<!--Linked to UI, access Shlink-->
 
 With dozens, or even hundreds of datasets in your Soda Cloud account, it may be laborious to try to find the data quality information you're looking for. To facilitate your search for specific data quality status, consider defining your own **Attributes** and **Tags** for datasets, then use filters to narrow your search.
 
@@ -39,7 +40,7 @@ With dozens, or even hundreds of datasets in your Soda Cloud account, it may be 
 * Create [alerts]({% link soda-cloud/agreements.md %}) to notify your team of data quality issues.
 * Learn how to create and track data quality [Incidents]({% link soda-cloud/incidents.md %}).
 * Use Soda Core to [add datasets]({% link soda-core/configuration.md %}) to your Soda Cloud account.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

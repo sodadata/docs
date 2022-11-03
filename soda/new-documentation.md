@@ -9,15 +9,62 @@ parent: Reference
 
 <br />
 
+#### November 3, 2022
+
+* Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.12.
+* Added documentation for a new numeric metric: `duplicate_percent`. See [Numeric metrics]({% link soda-cl/numeric-metrics.md %}#list-of-numeric-metrics).
+* Removed known issue regarding Soda Core for SparkDF not supporting anomaly score or distribution checks; now the checks are supported.
+* Added documentation for a new feature to [disable failed rows samples for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+* Added documentation for distribution checks which now support dataset and in-check filters. See [Distribution check optional check configurations]({% link soda-cl/distribution.md %}#optional-check-configurations).
+
+#### November 2, 2022
+
+* Removed `missing format` as a valid configuration key for [missing metrics]({% link soda-cl/missing-metrics.md %}).
+* Added an independent [Connect to Databricks]({% link soda/connect-databricks.md %}) page that points to documentation to use Soda Core packages for Apache Spark to connect.
+
+#### November 1, 2022
+
+* Added [Limitations and known issues]({% link soda-cl/profile.md %}#limitations-and-known-issues) section to Display Profile information in Soda Cloud.
+
+#### October 26, 2022
+
+* Removed the Preview status from self-serve features which are now generally available in Soda Cloud, such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
+* Migrated custom metric templates from Soda SQL to SodaCL; see [Custom check templates]({% link soda-cl/check-templates.md %}).
+
+#### October 19, 2022
+
+* Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.11.
+* Documented connection configuration for Azure Synapse (Experimental).
+* Added documentation for an enhancement for [change-over-time checks]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds) to gauge changes relative to the same day last week or month.
+* Added documentation for the new `test-connection` command in Soda Core. See [Connect Soda to Amazon Athena]({% link soda/connect-athena.md %}#test-the-data-source-connection) for an example.
+
+#### October 13, 2022
+
+* Added notes about specifying the type of [quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) you use in SodaCL checks must match that which the data source uses. 
+* Added short snippet as an example to obtain scan exit codes in a [programmatic scan]({% link soda-core/programmatic.md %}#scan-exit-codes). 
+* Added detail about using [multiple checks files]({% link soda-core/scan-core.md %}#anatomy-of-a-scan-command) in one scan command.
+* Added detail about [re-using user-defined metrics]({% link soda-cl/user-defined.md %}#define-user-defined-checks) in multiple checks in the same checks YAML file.
+
+#### October 11, 2022
+
+* Added documentation for [grouping failed checks results]({% link soda-cl/failed-rows-checks.md %}#group-results-by-category) by one or more categories. 
+
+#### October 5, 2022
+
+* Added release notes to correspond with the release of Soda Core 3.0.10.
+* Revised the value for the default number of [failed row samples]({% link soda-cl/optional-config.md %}#collect-failed-row-samples) that Soda automatically collects and displays in Soda Cloud from 1000 to 100.
+* Added documentation to accompany new support for [Dremio]({% link soda/connect-dremio.md %}).
+* Added documentation to accompany new support for [ClickHouse (Experimental)]({% link soda/connect-clickhouse.md %}).
+
 #### September 29, 2022
 
 * Added a [link]({% link soda-core/orchestrate-scans.md %}#soda-core-and-prefect) to a community contribution for Prefect 2.0 collection for Soda Core.
-* Updated Reference checks documentation for [displaying failed]({% link soda-cl/reference.md %}##display-failed-rows-in-soda-cloud) rows in Soda Cloud.
+* Updated Reference checks documentation for [displaying failed]({% link soda-cl/reference.md %}#failed-row-samples) rows in Soda Cloud.
 
 #### September 28, 2022
 
 * Added release notes to correspond with the release of Soda Core 3.0.9.
-* Added documentation for a new `samples limit` configuration key that you can add to checks that use [missing]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud), [validity]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud), or [duplicate_count]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud) metrics which automatically send 1000 failed row samples to Soda Cloud.
+* Added documentation for a new `samples limit` configuration key that you can add to checks that use [missing]({% link soda-cl/missing-metrics.md %}#failed-row-samples), [validity]({% link soda-cl/validity-metrics.md %}#failed-row-samples), or [duplicate_count]({% link soda-cl/numeric-metrics.md %}#failed-row-samples) metrics which automatically send 1000 failed row samples to Soda Cloud.
 * Added instructions to [save failed row samples to a file]({% link soda-core/programmatic.md %}#save-failed-row-samples-to-a-file).
 * Added [Windows-specific instructions]({% link soda-core/installation.md %}) for installing Soda Core using a virtual environment.
 * Removed known issue for in-check variables which are supported as of Soda Core 3.0.9: "Except for customizing [dynamic names for checks]({% link soda-cl/optional-config.md %}#customize-check-names), you *cannot* use in-check variables. For example, Soda does not support the following check:
@@ -147,7 +194,7 @@ checks for dim_customers:
 
 #### June 22, 2022
 
-* Added documentation to correspond with the new `percent` argument you can use in checks with [dynamic thresholds]({% link soda-cl/numeric-metrics.md %}#fixed-and-dynamic-thresholds).
+* Added documentation to correspond with the new `percent` argument you can use in checks with [change-over-time thresholds]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds).
 
 #### June 21, 2022
 

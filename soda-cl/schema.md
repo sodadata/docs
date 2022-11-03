@@ -7,6 +7,7 @@ redirect_from: /soda-cloud/schema-evolution.html
 ---
 
 # Schema checks 
+<!--Linked to UI, access Shlink-->
 
 Use a schema check to validate the presence, absence or position of columns in a dataset, or to validate the type of data column contains. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general. 
 
@@ -54,7 +55,7 @@ checks for dim_product:
 
 ## Define schema checks
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}check-types), schema checks are unique. Schema checks always employ alert configurations -- specifying warn and/or fail alert conditions -- with **validation keys** that are unique to this type of check. Refer to [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) for exhaustive alert configuration details.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), schema checks are unique. Schema checks always employ alert configurations -- specifying warn and/or fail alert conditions -- with **validation keys** that are unique to this type of check. Refer to [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) for exhaustive alert configuration details.
 
 The validation key:value pairs in schema checks set the conditions for a warn or a fail check result. See a [List of validation keys](#list-of-validation-keys) below. 
 
@@ -80,7 +81,7 @@ checks for dim_product:
 
 ```
 
-You can define a schema check with both warn and fail alert conditions, each with multiple validation keys. Refer to [Configure multiple alerts]({% link soda-cl/optional-config.md %}configure-multiple-alerts) for details. Be aware, however, that a single schema check only ever produces a *single check result*. See [Expect one check result](#expect-one-check-result) below for details.
+You can define a schema check with both warn and fail alert conditions, each with multiple validation keys. Refer to [Configure multiple alerts]({% link soda-cl/optional-config.md %}#configure-multiple-alerts) for details. Be aware, however, that a single schema check only ever produces a *single check result*. See [Expect one check result](#expect-one-check-result) below for details.
 
 The following example is a single check; Soda executes each of its validations during a scan. Note that unlike the nested list of column names in the example above, the nested key:value pairs that form the value for these validation keys are indented, but do not use a `-`.
 
@@ -106,6 +107,8 @@ Rather than specifying exact parameters for column changes, you can use the `whe
 
 This type of validation key requires a **Soda Cloud** account. If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future schema checks. Therefore, you must have a created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to use schema evolution checks.
 
+Soda Cloud must have at least two measurements to yield a check result. In other words, the first time you run a scan to execute a schema evolution check, Soda returns no results because it has nothing against which to compare; the second scan that executes the check yields a check result.
+
 ```yaml
 checks for dim_customer:
   - schema:
@@ -127,7 +130,7 @@ checks for dim_customer:
 | ✓ | Define a name for a schema check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 |  | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes) | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters  ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check; see [example](#example-with-wildcards). | See note in [example](#example-with-wildcards) below. |
 | ✓ | Use for each to apply schema checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
@@ -191,7 +194,14 @@ for each dataset T:
 #### Example with dataset filter
 
 ```yaml
-coming soon
+filter CUSTOMERS [daily]:
+  where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
+
+checks for CUSTOMERS [daily]:
+  - schema:
+      fail:
+        when forbidden column present:
+          - credit_card
 ```
 
 <br />
@@ -218,7 +228,7 @@ coming soon
 
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Use a [reference check]({% link soda-cl/reference.md %}) to validate matching contents between datasets.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 <br />
 

@@ -341,8 +341,7 @@ f.register()
 
 ## Go further
 
-- Need help? <a href="http://community.soda.io/slack" target="_blank">Join our Slack community</a> to ask a question.
-- Learn how to configure [programmatic Soda SQL scans]({% link soda-sql/programmatic_scan.md %}).
+- Need help? <a href="https://community.soda.io/slack" target="_blank">Join our Slack community</a> to ask a question.
 
 
 <br />

@@ -5,7 +5,8 @@ description: Integrate MS Teams in your Soda Cloud account so that Soda sends al
 parent: Integrate Soda
 ---
 
-# Integrate Soda Cloud with Microsoft Teams
+# Integrate Soda Cloud with Microsoft Teams 
+<!--Linked to UI, access Shlink-->
 
 Configure Soda Cloud to connect your account to MS Teams so that you can:
 
@@ -16,7 +17,7 @@ Configure Soda Cloud to connect your account to MS Teams so that you can:
 ## Prerequisites
 
 * You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}).
-* You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core and run at least one scan so as to produce one or more check results.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %})![preview](/assets/images/preview.png){:height="60px" width="60px"}.
+* You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core and run at least one scan so as to produce one or more check results.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %}).
 
 
 ## Configure an MS Teams integration
@@ -69,7 +70,7 @@ Refer to [Incidents]({% link soda-cloud/incidents.md %}) for more details about 
 
 * [Connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account.
 * Learn more about general [webhooks]({% link soda/integrate-webhooks.md %}) to integrate Soda Cloud with other third-party service providers.
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

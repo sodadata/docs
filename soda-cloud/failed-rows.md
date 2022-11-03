@@ -1,33 +1,38 @@
 ---
 layout: default
-title: Examine failed rows
+title: Examine failed rows samples
 description: To offer more insight into the data that failed a test during a scan, Soda Cloud can display failed rows in a check's history.
 parent: Soda Cloud
 redirect_from: /soda-sql/documentation/failed-rows.html
 ---
 
-# Examine failed rows
+# Examine failed rows samples
 
-When a Soda Core scan results in a failed check, Soda Cloud displays details of the scan results in each check's **Check History** view. To offer more insight into the data that failed a check during a scan, Soda Cloud can display **failed rows** in a check's history. 
+When a Soda scan results in a failed check, Soda Cloud displays details of the scan results in each check's **Check History** view. To offer more insight into the data that failed a check during a scan, Soda Cloud can display **failed rows samples** in a check's history. 
+
+From the **Checks Results** dashboard, navigate to an indivdual check result history page, then click the **Failed rows** tab (pictured below) to see the failed rows samples associated with a failed check result. 
 
 ![failed-rows](/assets/images/failed-rows.png){:height="600px" width="600px"}
 
-## Use metrics to send failed row samples
+## Implicitly send failed rows samples
 
-Use SodaCL to write a check that uses a [duplicate_count]({% link soda-cl/numeric-metrics.md %}#display-failed-rows-in-soda-cloud), [missing]({% link soda-cl/missing-metrics.md %}#display-failed-rows-in-soda-cloud) or [validity]({% link soda-cl/validity-metrics.md %}#display-failed-rows-in-soda-cloud) metric in a `checks.yml` file for Soda Core to execute during a scan. You can [connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account to see the check results after each scan. 
+Implicitly, Soda automatically collects 100 failed row samples for the following checks:
+* [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 
+* checks that use a [missing metric]({% link soda-cl/missing-metrics.md %}#failed-row-samples)
+* checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
+* checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
 
-If you use one of the above-listed metrics in checks you write using SodaCL, Soda Core automatically sends a sample of the failed rows associated with the failed check to Soda Cloud with the scan results.
 <br />
 
 #### Troubleshoot
 
 {% include troubleshoot-failed-rows.md %}
 
+<br />
 
+## Explicitly send failed rows samples
 
-## Use checks to send failed rows 
-
-Define a [failed rows check]({% link soda-cl/failed-rows-checks.md %}) in a checks YAML file to explicitly send samples of rows that failed a check to Soda Cloud.
+Define a [failed rows check]({% link soda-cl/failed-rows-checks.md %}) to explicitly send samples of rows that failed a check to Soda Cloud.
 
 ## Disable failed row samples
 
@@ -35,13 +40,19 @@ Where your datasets contain sensitive or private information, you may *not* want
 
 {% include disable-all-samples.md %}
 
+### Disable sampling for specific columns
+
+For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
+
+Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+
 
 ## Go further
 
 * <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a Soda Cloud account.
 * Learn more about [scans in Soda Cloud]({% link soda-cloud/scan-output.md %}).
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />
 

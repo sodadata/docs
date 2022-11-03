@@ -6,6 +6,7 @@ parent: Soda Cloud
 ---
 
 # Roles and rights in Soda Cloud
+<!--Linked to UI, access Shlink-->
 
 To manage the actions of members that belong to a single organization, Soda Cloud uses roles and access rights. These roles and their associated rights of access enforce limits on the abilities for members to make additions and changes to datasets, to make changes to the Soda Cloud account, and to adjust the roles and rights of others.
 
@@ -98,7 +99,7 @@ When a new member accepts an invitation to join an existing organization, Soda C
 By default, all members are included in the group identity called Everyone In the context of an individual dataset, Admins and Managers can use the Everyone group when [setting Responsibilities in a dataset](#change-access-to-a-dataset). In this early implementation of roles and groups, Everyone is the only group that exists in Soda Cloud. It is not possible to add or remove members from the group, or to create new groups, yet.
 
 <details>
-    <summary>For example...</summary>
+    <summary style="color:#00BC7E">For example...</summary>
     <p>For the Customers_EU dataset, Alice the Admin added the Everyone group to the dataset and assigned the group Editor privileges. </p>
     <img src="/assets/images/everyone-editor.png" style="height:250px">
     <p>When Bob joins his organization's Soda Cloud account as a User member, Soda Cloud automatically adds his name to the organization's Everyone group. Thus, Bob automatically has Editor level access to the Customers_EU dataset.</p>
@@ -108,7 +109,7 @@ By default, all members are included in the group identity called Everyone In th
 By default, when a dataset's Admin or Manager grants another member or the Everyone group access to a dataset, Soda Cloud automatically assigns the new member or group the default role of Editor for the dataset.  You can adjust this setting to a different default role; see [Change the default access to datasets](#change-the-default-access-to-datasets).
 
 <details>
-    <summary>For example...</summary>
+    <summary style="color:#00BC7E">For example...</summary>
     <p>When Alice the Admin adds Carlos, a member of her Soda Cloud account, to the Customers_US dataset, Soda Cloud automatically assigns him the role of Editor for that dataset. </p>
     <img src="/assets/images/new-editor.png" style="height:250px">
 </details>
@@ -134,7 +135,7 @@ As an Admin you have the option of adjusting three default access settings:
 Note that by default, Soda Cloud automatically adds all new members to the organization's **Everyone** group. See [Default roles and group](#default-roles-and-groups). 
 
 <details>
-    <summary>Example of changed default settings</summary>
+    <summary style="color:#00BC7E">Example of changed default settings</summary>
     <ol>
       <li>As an Admin, I individually edit the <strong>Responsibilities</strong> of Datasets A, B, and C and add the Everyone group as Editor to each.</li>
       <li>Then I access <strong>Organization Settings</strong> > <strong>Responsibilities</strong> and change the value of <strong>Default role when assigning a new user or group to a resource</strong> to <strong>Viewer</strong> and leave the check box <i>unchecked</i> for <strong>Automatically assign the "Everyone" group to the new resource</strong>.</li>
@@ -198,7 +199,7 @@ There are three ownership roles in Soda Cloud that identify the member that owns
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
 * [Invite colleagues]({% link soda-cloud/collaborate.md %}#invite-your-team-members) to join your organization's Soda Cloud account.
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).

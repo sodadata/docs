@@ -10,7 +10,7 @@
     page: soda/quick-start-soda-core.md
   - subtitle: Quick start for SodaCL
     page: soda/quick-start-sodacl.md
-  - subtitle: Quick start for Soda Cloud (Preview)
+  - subtitle: Quick start for Soda Cloud
     page: soda/quick-start-sodacloud.md
   - subtitle: Soda product overview
     page: soda/product-overview.md
@@ -22,12 +22,14 @@
   subcategories:
   - subtitle: Connect to Athena
     page: soda/connect-athena.md
-  - subtitle: Connect to Redshift
-    page: soda/connect-redshift.md
-  - subtitle: Connect to Spark
-    page: soda/connect-spark.md
   - subtitle: Connect to BigQuery
     page: soda/connect-bigquery.md
+  - subtitle: Connect to ClickHouse
+    page: soda/connect-clickhouse.md
+  - subtitle: Connect to Databricks
+    page: soda/connect-databricks.md
+  - subtitle: Connect to Dremio
+    page: soda/connect-dremio.md
   - subtitle: Connect to IBM DB2
     page: soda/connect-db2.md
   - subtitle: Connect to MS SQL Server
@@ -36,8 +38,14 @@
     page: soda/connect-mysql.md
   - subtitle: Connect to PostgreSQL
     page: soda/connect-postgres.md
+  - subtitle: Connect to Redshift
+    page: soda/connect-redshift.md
   - subtitle: Connect to Snowflake
     page: soda/connect-snowflake.md
+  - subtitle: Connect to Spark
+    page: soda/connect-spark.md
+  - subtitle: Connect to Synapse
+    page: soda/connect-synapse.md
   - subtitle: Connect to Trino
     page: soda/connect-trino.md
 
@@ -52,7 +60,7 @@
     page: soda-agent/deploy-azure.md
   - subtitle: Deploy a Soda Agent in GKE
     page: soda-agent/deploy-gcp.md
-  - subtitle: Soda Agent test deployment
+  - subtitle: Test Soda Agent deployment
     page: soda-agent/test-deploy.md
   - subtitle: Upgrade a Soda Agent
     page: soda-agent/upgrade.md
@@ -131,6 +139,8 @@
     page: soda-cl/profile.md
   - subtitle: Display sample data in Soda Cloud
     page: soda-cl/sample-datasets.md
+  - subtitle: Custom check templates
+    page: soda-cl/check-templates.md
 
 - title: Soda Core 
   page: soda-core/overview-main.md

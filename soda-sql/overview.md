@@ -15,7 +15,6 @@ parent: Soda SQL
 <p>&#10004;  <a href="https://docs.soda.io/soda-sql/installation.html">Install</a> from the command-line<br /></p>
 <p>&#10004;  Compatible with Snowflake, Amazon Redshift, BigQuery, <a href="https://docs.soda.io/soda-sql/installation.html#compatibility">and more</a><br /></p>
 <p>&#10004;  <a href="https://docs.soda.io/soda-sql/tests.html">Write tests</a> in a YAML file<br /></p> 
-<p>&#10004;  <a href="https://docs.soda.io/soda-sql/programmatic_scan.html">Run programmatic scans</a> to test data quality<br /></p>
 <p>&#10004;  Deploy in an <a href="https://docs.soda.io/soda-sql/orchestrate_scans.html">Airflow enviroment</a><br /></p> 
 <br />
 <br />
@@ -65,7 +64,6 @@ sql_metric:
                 <div>
                     <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
                     <h2>Play</h2>
-                    <a href="/soda-sql/landing.html">Interactive Soda SQL demo</a>
                     <a href="https://github.com/sodadata/tutorial-demo-project" target="_blank">Soda SQL playground in GitHub</a>
                 </div>
                  <div>

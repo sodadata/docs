@@ -56,10 +56,10 @@ $ soda scan -v date=2021-01-12 warehouse.yml tables/customer_transactions_tp.yml
 
 ## Configure a filter in a programmatic scan
 
-Alternatively, you can use variables when programmatically invoking a Soda SQL scan. Refer to [Configure programmatic scans]({% link soda-sql/programmatic_scan.md %}).
+Alternatively, you can use variables when invoking a Soda SQL scan. 
 
 1. Follow steps 1 - 3 above to prepare your scan YAML file.
-2. Configure your programmatic scan to include variables as per the following example.
+2. Configure your scan to include variables as per the following example.
 
 ```python
 scan_builder = ScanBuilder()

@@ -5,7 +5,8 @@ description: Learn about the different parts, or resources, that make up your So
 parent: Soda Cloud
 ---
 
-# Soda Cloud resources
+# Soda Cloud resources 
+<!--Linked to UI, access Shlink-->
 
 Soda Cloud is made up of several parts, or **resources**, that work together to define checks, execute scans, and display results that help you gauge the quality and reliability of your data. 
 
@@ -86,7 +87,7 @@ In Soda Cloud, you can see `dataset-q` because Soda Core pushed the scan results
 
 ## Go further
 
-* Need help? Join the <a href="http://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Learn more about [agreements (preview)]({% link soda-cloud/agreements.md %}).
 <br />
 
