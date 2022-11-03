@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 3, 2022
+
+* Added documentation for distribution checks which now support dataset and in-check filters. See [Distribution check optional check configurations]({% link soda-cl/distribution.md %}#optional-check-configurations).
+
 #### November 2, 2022
 
 * Removed `missing format` as a valid configuration key for [missing metrics]({% link soda-cl/missing-metrics.md %}).
