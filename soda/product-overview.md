@@ -70,7 +70,7 @@ checks for CUSTOMERS:
 
 ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="105px" width="105px"} is the web application that you can optionally connect to Soda Core. It aggregates all metrics and tests for data quality and enables multiple people in an organization to monitor scan results, collaborate on issue investigation, and even write their own checks for data reliability. 
 
-🎥 <a href="https://vimeo.com/738592291" target="_blank">Soda Cloud: Watch & Learn</a>
+🎥 <a href="https://vimeo.com/sodadata/soda-cloud" target="_blank">Soda Cloud: Watch & Learn</a>
 
 Log in to the web app to examine the visualized results of scans, view historical scan data, and set up alerts that automatically notify your team when there is an issue with your data quality.
 
