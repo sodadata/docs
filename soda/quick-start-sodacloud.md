@@ -12,7 +12,7 @@ parent: Get started
 ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="123px" width="123px"}<br />
 Use this tutorial to review the steps that outline how to connect to your data source, set a scan schedule, profile your data, then write an agreement for stakeholder approval. These features enable users across your organization to serve themselves when it comes to monitoring data quality and collaborating on data reliability.
 
-🎥 <a href="https://vimeo.com/738592291" target="_blank">Soda Cloud: Watch & Learn</a>
+🎥 <a href="https://vimeo.com/sodadata/soda-cloud" target="_blank">Soda Cloud: Watch & Learn</a>
 
 [Tutorial prerequisites](#tutorial-prerequisites-1) <br />
 [Set up a data source and create a new agreement](#set-up-a-data-source-and-create-a-new-agreement)<br />
