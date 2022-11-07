@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 7, 2022
+
+* Added examples for using [in-check variables]({% link soda-cl/filters.md %}#configure-variables) to provide dynamic values at scan time.
+
 #### November 3, 2022
 
 * Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.12.
