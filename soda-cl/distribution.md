@@ -347,7 +347,7 @@ checks for dim_customer [first_purchase]:
 #### Example with in-check sampling
 
 The following example works for postgres. It randomly samples 50% of the table with seed value 61. 
-For other databases, you can use database specific sample clouses.
+Since sampling SQL clauses vary significantly between databases, consult your database documentation.
 
 ```yaml
 checks for dim_customer:
