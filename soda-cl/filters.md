@@ -20,7 +20,7 @@ checks for dim_employee:
       name: Too many vacation hours for US Sales
       filter: sales_territory_key = 11
 
-# Dataset filter
+# Dataset filter with variables
 filter CUSTOMERS [daily]:
   where: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
 
@@ -28,12 +28,10 @@ checks for CUSTOMERS [daily]:
   - row_count = 6
   - missing(cat) = 2
 
-# Variable in a customized check name 
-variables:
-  name: Customers UK
-checks for dim_customer:
-  - row_count > 1:
-     name: Row count in ${name}
+# In-check variable 
+checks for ${DATASET}:
+  - invalid_count(last_name) = 0:
+      valid length: 10 
 ```
 
 [In-check vs. dataset filters](#in-check-vs-dataset-filters)<br />
