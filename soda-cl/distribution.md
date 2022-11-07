@@ -5,7 +5,7 @@ description: Use a SodaCL distribution check to monitor the consistency of a col
 parent: SodaCL
 ---
 
-# Distribution checks 
+# Distribution checks
 
 Use a distribution check to determine whether the distribution of a column has changed between two points in time. For example, if you trained a model at a particular moment in time, you can use a distribution check to find out how much the data in the column has changed over time, or if it has changed all.
 
@@ -17,6 +17,11 @@ checks for dim_customer:
   - distribution_difference(number_cars_owned) > 0.05:
       distribution reference file: ./cars_owned_dist_ref.yml
       method: chi_square
+      # (optional) filter to a specific point in time or any other dimension 
+      filter: purchase_date > 2022-10-01 and purchase_date < 2022-12-01
+      # (optional) database specific sampling query, for example for postgres\
+      # the following query will randomly sample 50% of the data with seed 61
+      sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
 ```
 
 [About distribution checks](#about-distribution-checks)<br />
@@ -37,7 +42,7 @@ checks for dim_customer:
 
 To detect changes in the distribution of a column between different points in time, Soda uses approaches based on <a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing" target="_blank">hypothesis testing</a> and based on metrics that quantify the distance between samples.  
 
-When using hypothesis testing, a distribution check allows you to determine whether enough evidence exists to conclude that the distribution of a column has changed. It returns the probability that the difference between samples taken at two points in time would have occurred if they came from the same distribution (see <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">p-value</a>). If this probability is smaller than a threshold that you define, the check warns you that the column's distribution has changed. 
+When using hypothesis testing, a distribution check allows you to determine whether enough evidence exists to conclude that the distribution of a column has changed. It returns the probability that the difference between samples taken at two points in time would have occurred if they came from the same distribution (see <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">p-value</a>). If this probability is smaller than a threshold that you define, the check warns you that the column's distribution has changed.
 
 You can use the following statistical tests for hypothesis testing in your distribution checks.
 
@@ -63,7 +68,6 @@ You can use the following distance metrics in your distribution checks.
   For each distribution type, the Kolmogorov-Smirnov test rejected the null hypothesis 100% of the time if the effect size was equal to, or larger than, a shift to the mean of 1% of the standard deviation, when using a sample size of one million. Using such a sample size does not result in problems with local memory.
 </details>
 
-
 <details>
   <summary style="color:#00BC7E">Distribution check thresholds for distance metrics</summary>
   The values of the Population Stability Index (PSI) and the Standardized Wasserstein Distance (SWD) can be hard to interpret. Consider carefully investigating which distribution thresholds make sense for your use case. <br />
@@ -81,7 +85,6 @@ You can use the following distance metrics in your distribution checks.
 
 * You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you [installed Soda Core]({% link soda-core/installation.md %}).
 
-
 ## Install Soda Core Scientific
 
 To use a distribution check, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core. Best practice recommends installing Soda Core and Soda Core Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Core Scientific locally](#install-soda-core-scientific-locally) if you prefer.
@@ -90,17 +93,18 @@ To use a distribution check, you must install Soda Core Scientific in the same d
 
 Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
 
-## Generate a distribution reference object (DRO) 
+## Generate a distribution reference object (DRO)
 <!--Linked to UI, access Shlink though actually embedded in CLI help-->
 
-Before defining a distribution check, you must generate a distribution reference object (DRO). 
+Before defining a distribution check, you must generate a distribution reference object (DRO).
 
 When you run a distribution check, Soda compares the data in a column of your dataset with a snapshot of the same column at a different point in time. This snapshot exists in the DRO, which serves as a point of reference. The distribution check result indicates whether the difference between the distributions of the snapshot and the actual datasets is statistically significant.
 
-To create a DRO, you use the CLI command `soda update-dro`. When you execute the command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory. 
+To create a DRO, you use the CLI command `soda update-dro`. When you execute the command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory.
 
 1. If you have not already done so, create a directory to contain the files that Soda uses for a distribution check.
 2. Use a code editor to create a file called `distribution_reference.yml` (though, you can name it anything you wish) in your Soda project directory, then add the following example content to the file.
+
 ```yaml
 dataset: your_dataset_name
 column: column_name_in_dataset
@@ -108,7 +112,9 @@ distribution_type: categorical
 # (optional) filter to a specific point in time or any other dimension 
 filter: "column_name between '2010-01-01' and '2020-01-01'"
 ```
+
 Alternatively, you can define multiple DROs in your `distribution_reference.yml` file by naming them. The following example content defines two DROs
+
 ```yaml
 dro_name1:
   dataset: your_dataset_name
@@ -119,19 +125,24 @@ dro_name2:
   column: column_name2_in_dataset
   distribution_type: continuous
 ```
+
 3. Change the values for `dataset` and `column` to reflect your own dataset's identifiers.
 4. (Optional) Change the value for `distribution_type` to capture `categorical` or `continuous` data.
 5. (Optional) Define the value of `filter` to specify the portion of the data in your dataset for which you are creating a DRO. If you trained a model on data in which the `date_first_customer` column contained values between 2010-01-01 and 2020-01-01, you can use a filter based on that period to test whether the distribution of the column has changed since then. <br />
 If you do not wish to define a filter, remove the key-value pair from the file.
 6. (Optional) If you wish to define multiple DROs in a single `distribution_reference.yml` file, change the names `dro_name1` and `dro_name2`.
-7. Save the file, then, while still in your Soda project directory, run the `soda update-dro` command to create a distribution reference object. For a list of options available to use with the command, run `soda update-dro --help`. 
+7. Save the file, then, while still in your Soda project directory, run the `soda update-dro` command to create a distribution reference object. For a list of options available to use with the command, run `soda update-dro --help`.
+
 ```bash
 soda update-dro -d your_datasource_name -c your_configuration_file.yml ./distribution_reference.yml 
 ```
+
 If you defined multiple DROs in your `distribution_reference.yml` file, specify which DRO you want to update using the `-n` argument. `-n` stands for name. When multiple DROs are defined in a single `distribution_reference.yml` file, Soda requires all of them to be named. Thus, you must provide the DRO name with the `-n` argument when using the `soda update-dro` command.
+
 ```bash
 soda update-dro -n dro_name1 -d your_datasource_name -c your_configuration_file.yml ./distribution_reference.yml 
 ```
+
 8. Review the changed contents of your `distribution_reference.yml` file. The following is an example of the information that Soda added to the file.
 
 ```yaml
@@ -153,32 +164,37 @@ distribution reference:
     - 3
     - 4
 ```
-Soda appended a new key called `distribution reference` to the file, together with an array of `bins` and a corresponding array of `weights`. [Read more](#bins-and-weights) about `bins` and `weights`, and how Soda computes the number of bins for a DRO.
 
+Soda appended a new key called `distribution reference` to the file, together with an array of `bins` and a corresponding array of `weights`. [Read more](#bins-and-weights) about `bins` and `weights`, and how Soda computes the number of bins for a DRO.
 
 ## Define a distribution check
 
 1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the [Soda Core documentation]({% link soda-core/configuration.md %}).
 2. In your new file, add the following example content.
+
 ```yaml
 checks for your_dataset_name:
   - distribution_difference(column_name, dro_name) > your_threshold:
       method: your_method_of_choice
       distribution reference file: ./distribution_reference.yml
 ```
+
 3. Replace the following values with your own dataset and threshold details.
+
 * `your_dataset_name` - the name of your dataset
 * `column_name` - the column against which to compare the DRO
 * `dro_name` - the name of the DRO (optional, required if `distribution_reference.yml` contains named DROs)
 * `> 0.05` - the threshold for the distribution check that you specify as acceptable
-4. Replace the value of `your_method_of_choice` with the type of test you want to use in the distribution check. 
+
+4. Replace the value of `your_method_of_choice` with the type of test you want to use in the distribution check.
     * `ks` for the Kolmogorov-Smirnov test
     * `chi_square` for the Chi-square test
     * `psi` for the Population Stability Index metric
-    * `swd` for the Standardized Wasserstein Distance (SWD) metric 
-    * `semd` for the Standardized Earth Mover's Distance (SEMD) metric (the SWD and the SEMD are the same metric) <br /> 
+    * `swd` for the Standardized Wasserstein Distance (SWD) metric
+    * `semd` for the Standardized Earth Mover's Distance (SEMD) metric (the SWD and the SEMD are the same metric) <br />
 If you do not specify a `method`, the distribution check defaults to `ks` for continuous data or `chi_square` for categorical data respectively.
 5. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to [Soda Core documentation]({% link soda-core/scan-core.md %}) for more details.
+
 ```bash
 soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yml your_check_file.yml
 ```
@@ -187,13 +203,13 @@ When Soda Core executes the distribution check above, it compares the values in 
 
 ### Distribution check details
 
-* When you execute the `soda scan` command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory. 
+* When you execute the `soda scan` command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory.
 
 * As explained in [Generate a Distribution Reference Object (DRO)](#generate-a-distribution-reference-object-dro), Soda uses bins and weights to take random samples from your DRO. Therefore, it is possible that the original dataset that you used to create the DRO resembles a different underlying distribution than the dataset that Soda creates by sampling from the DRO. To limit the impact of this possibility, Soda runs the tests in each distribution check ten times and returns the median of the results (either p-value or distance metric). <br /> <br />
-For example, if you use the Kolmogorov-Smirnov test and a threshold of 0.05, the distribution check uses the Kolmogorov-Smirnov test to compare ten different samples from your DRO to the data in your column.  If the median of the returned p-values is smaller than 0.05, the check issues a warning. This approach does change the interpretation of the distribution check results. For example, the probability of a type I error is multiple orders of magnitude smaller than the signifance level that you choose. 
+For example, if you use the Kolmogorov-Smirnov test and a threshold of 0.05, the distribution check uses the Kolmogorov-Smirnov test to compare ten different samples from your DRO to the data in your column.  If the median of the returned p-values is smaller than 0.05, the check issues a warning. This approach does change the interpretation of the distribution check results. For example, the probability of a type I error is multiple orders of magnitude smaller than the signifance level that you choose.
 
 ### Bins and weights
-<!--Linked to UI, access Shlink though actually embedded in CLI help--> 
+<!--Linked to UI, access Shlink though actually embedded in CLI help-->
 
 Soda uses the `bins` and `weights` to generate a sample from the reference distribution when it executes the distribution check during a scan. By creating a sample using the DRO's bins and weights, you do not have to save the entire – potentially very large - sample. The `distribution_type` value impacts how the weights and bins will be used to generate a sample, so make sure your choice reflects the nature of your data (continuous or categorical).
 
@@ -228,7 +244,9 @@ checks for fact_sales_quota:
       method: psi
       distribution reference file: ./sales_dist_ref.yml
 ```
+
 Alternatively you can define two DROs in `distribution_reference.yml`, naming them `cars_owned_dro` and `calendar_quarter_dro`, and use both in a single `checks.yml` file
+
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned, cars_owned_dro) > 0.05:
@@ -240,7 +258,9 @@ checks for fact_sales_quota:
       method: psi
       distribution reference file: ./distribution_reference.yml
 ```
+
 You can also define multiple checks for different columns in the same dataset by generating multiple DROs for those columns. Refer to the following example.
+
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned, cars_owned_dro) > 0.05:
@@ -262,7 +282,7 @@ checks for fact_sales_quota:
 | :-: | ------------|---------------|
 | ✓ | Define a name for a distribution check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
-| ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset; see [example](#example-with-in-check-filter).| [Configure in-check filters]({% link soda-cl/filters.md %}#configure-in-check-filters) | 
+| ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset; see [example](#example-with-in-check-filter).| [Configure in-check filters]({% link soda-cl/filters.md %}#configure-in-check-filters) |
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply distribution checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
@@ -311,6 +331,7 @@ checks for dim_customer:
 ```
 
 #### Example with dataset filter
+
 ```yaml
 filter dim_customer [first_purchase]:
   where: date_first_purchase between '2010-01-01' and '2022-01-01' 
@@ -320,7 +341,21 @@ checks for dim_customer [first_purchase]:
     method: swd
     distribution reference file: dist_ref.yml
 ```
+
 <br />
+
+#### Example with in-check sampling
+
+The following example works for postgres. It randomly samples 50% of the table with seed value 61. 
+For other databases, you can use database specific sample clouses.
+
+```yaml
+checks for dim_customer:
+  - distribution_difference(number_cars_owned) > 0.05:
+      distribution reference file: ./cars_owned_dist_ref.yml
+      method: chi_square
+      sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
+```
 
 ## List of comparison symbols and phrases
 
@@ -329,6 +364,7 @@ checks for dim_customer [first_purchase]:
 ## Troubleshoot Soda Core Scientific installation
 
 While installing Soda Core Scientific works on Linux, you may encounter issues if you install Soda Core Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
+
 * [Use Docker to run Soda Core (Recommended)](#use-docker-to-run-soda-core)
 * [Install Soda Core locally (Limited support)](#install-soda-core-locally)
 
@@ -338,11 +374,9 @@ Need help? Ask the team in the <a href="https://community.soda.io/slack" target=
 
 {% include docker-soda-core.md %}
 
-### Install Soda Core Scientific Locally 
+### Install Soda Core Scientific Locally
 
 {% include install-local-soda-core-scientific.md %}
-
-
 
 ## Go further
 
@@ -357,7 +391,7 @@ Was this documentation helpful?
 
 <!-- LikeBtn.com BEGIN -->
 <span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
-<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName[e](0);a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
 <!-- LikeBtn.com END -->
 
 {% include docs-footer.md %}
