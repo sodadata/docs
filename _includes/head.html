@@ -18,17 +18,15 @@
   {% endcomment %}
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="789afc41-df22-45f3-8fd9-981f78082b81" data-blockingmode="auto" type="text/javascript"></script>
 
-  {% if site.ga_tracking != nil %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R6YJ1X2PYS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag('config', '{{ site.ga_tracking }}'{% unless site.ga_tracking_anonymize_ip == nil %}, { 'anonymize_ip': true }{% endunless %});
-    </script>
-
-  {% endif %}
+    gtag('config', 'G-R6YJ1X2PYS');
+  </script>
 
   {% if site.search_enabled != false %}
     <script type="text/javascript" src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}" data-cookieconsent="ignore"></script>
