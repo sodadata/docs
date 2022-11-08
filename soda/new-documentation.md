@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 8, 2022
+
+* Added an [example webhook integration]({% link soda/integrate-webhooks.md %}#example-webhook-with-servicenow-for-soda-cloud-incidents) for Soda Cloud and ServiceNow.
+
 #### November 7, 2022
 
 * Added examples for using [in-check variables]({% link soda-cl/filters.md %}#configure-variables) to provide dynamic values at scan time.
