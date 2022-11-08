@@ -13,7 +13,7 @@ To manage the actions of members that belong to a single organization, Soda Clou
 [Roles and rights in your account](#roles-and-rights-in-your-account)<br />
 [Change organization roles and settings](#change-organization-roles-and-settings)<br />
 [Access an audit trail](#access-an-audit-trail)<br />
-[Access to datasets, agreements, and checks](#access-to-datasets-agreements-and-checks)<br />
+[Access to resources](#access-to-resources)<br />
 [Default roles for datasets and checks](#default-roles-for-datasets-and-checks)<br />
 [Change the default access to datasets](#change-the-default-access-to-datasets)<br />
 [Change access to a dataset](#change-access-to-a-dataset)<br />
@@ -72,26 +72,39 @@ To meet your organization's regulatory and policy mandates, you can download a C
 Alternatively, you can use the [Audit Trail endpoint]({% link api-docs/reporting-api.md %}#/operations/audit_trail_v0_audit_trail_get) in Soda Cloud's Reporting API to access audit trail data. 
 
 
-## Access to datasets, agreements, and checks
+## Access to resources
 
-The roles that define who can make changes to [datasets]({% link soda/glossary.md %}#dataset), [agreements]({% link soda/glossary.md %}#agreement) and [checks]({% link soda/glossary.md %}#check) are **Manager**, **Editor**, and **Viewer**. Where the roles and rights described above apply to your organization's Soda Account, the roles and rights described in the table below apply to individual resources in your account, namely the datasets, agreements, and checks. 
+Where the roles and rights described above apply to your organization's Soda Account, the roles and rights described in the table below apply to the following resources in your account:
+* [incidents]({% link soda/glossary.md %}#incident)
+* [checks]({% link soda/glossary.md %}#check)
+* [agreements]({% link soda/glossary.md %}#agreement)
+* [datasets]({% link soda/glossary.md %}#dataset)
+* [data sources]({% link soda/glossary.md %}#data-source)
+* [scan definitions]({% link soda/glossary.md %}#scan-definition)
+* [agents]({% link soda/glossary.md %}#soda-agent)
 
-The following table outlines the rights of each role associated with individual datasets. Note that because of its universal access to all things in your Soda Cloud account, an **Admin** member as described above has all the rights of a **Manager** relative to datasets and checks.
+The roles that define who can make changes to resources in Soda Cloud are **Manager**, **Editor**, and **Viewer**. 
 
-| Rights                                                                     | Manager <br /> and Admin | Editor | Viewer |
-|----------------------------------------------------------------------------|:------------------------:|:------:|:------:|
-| View Check Results of checks associated with a dataset                     |             ✓            |    ✓   |    ✓   |
-| Create and track Incidents associated with one or more check results       |             ✓            |    ✓   |    ✓   |
-| View agreements                                                            |             ✓            |    ✓   |    ✓   |
-| Approve and reject agreements when requested by an agreement's owner       |             ✓            |    ✓   |    ✓   |
-| Create checks associated with an agreement                                 |             ✓            |    ✓   |        |
-| Edit checks associated with a dataset                                      |             ✓            |    ✓   |        |
-| Add and edit dataset Attributes, such as Description or Tags               |             ✓            |    ✓   |        |
-| Add Tags to a dataset                                                      |             ✓            |    ✓   |        |
-| Create a new agreement                                                     |             ✓            |    ✓   |        |
-| Edit an existing agreement                                                 |             ✓            |    ✓   |        |
-| Control member access to a dataset and its checks (add or remove access)   |             ✓            |        |        |
-| Change the roles of members with access to a dataset and its check         |             ✓            |        |        |
+The following table outlines the rights of each role associated with each resource. Note that because of its universal access to all things in your Soda Cloud account, an **Admin** member as described above has all the rights of a **Manager** relative to resources. Learn more about [Soda Cloud resources]({% link soda-cloud/resource-map.md %}) in general.
+
+| Rights                                                                     | Admin | Manager  | Editor | Viewer |
+|----------------------------------------------------------------------------|:-----:|:--------:|:------:|:------:|
+| Create and track incidents associated with one or more check results       |   ✓   |    ✓     |    ✓   |    ✓   |
+| Delete an incident                                                         |   ✓   |    ✓     |    ✓   |        |
+| View Check Results of checks associated with a dataset or agreement        |   ✓   |    ✓     |    ✓   |    ✓   |
+| Edit individual checks associated with a dataset ingested via Soda Core    |   ✓   |    ✓     |    ✓   |        |
+| Delete a check                                                             |   ✓   |    ✓     |    ✓   |        |
+| View agreements                                                            |   ✓   |    ✓     |    ✓   |    ✓   |
+| Approve and reject agreements as a stakeholder                             |   ✓   |    ✓     |    ✓   |    ✓   |
+| Create a new agreement                                                     |   ✓   |    ✓     |    ✓   |        |
+| Edit an existing agreement, including adding a new scan definition         |   ✓   |    ✓     |    ✓   |        |
+| Add and edit dataset Attributes, such as Description or Tags               |   ✓   |    ✓     |    ✓   |        |
+| Control member access to a dataset and its checks (add or remove access)   |   ✓   |    ✓     |        |        |
+| Change the roles of members with access to a dataset and its checks        |   ✓   |    ✓     |        |        |
+| Add, edit, or delete a data source                                         |   ✓   |          |        |        |
+| Change the owner of a data source                                          |   ✓   |          |        |        |
+| Add, edit, or delete a scan definition                                     |   ✓   |          |        |        |
+| Add, edit, or delete an agent                                              |   ✓   |          |        |        |
 
 
 ## Default roles for datasets and checks
@@ -217,6 +230,7 @@ To bulk-change the owner of all new datasets added to a data source, follow the 
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Learn more about [Soda Cloud resources]({% link soda-cloud/resource-map.md %}).
 * [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
 * [Invite colleagues]({% link soda-cloud/collaborate.md %}#invite-your-team-members) to join your organization's Soda Cloud account.
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
