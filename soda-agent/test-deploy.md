@@ -94,14 +94,14 @@ minikube kubectl -- describe pods
 ...
 Containers:
   soda-agent-orchestrator:
-    Container ID:   docker://081*33a7
-    Image:          sodadata/agent-orchestrator:latest
-    Image ID:       docker-pullable://sodadata/agent-orchestrator@sha256:394e7c1**b5f
-    Port:           <none>
-    Host Port:      <none>
-    State:          Running
-      Started:      Thu, 16 Jun 2022 15:50:28 -0700
-    Ready:          True
+        Container ID:   docker://081*33a7
+        Image:          sodadata/agent-orchestrator:latest
+        Image ID:       docker-pullable://sodadata/agent-orchestrator@sha256:394e7c1**b5f
+        Port:           <none>
+        Host Port:      <none>
+        State:          Running
+          Started:      Thu, 16 Jun 2022 15:50:28 -0700
+        Ready:          True
 ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="600px" width="600px"}
@@ -112,7 +112,7 @@ Containers:
 
 If you wish to try creating a new data source in Soda Cloud using the agent you created locally, you can use the following command to create a PostgreSQL warehouse containing data from the <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC Bus Breakdowns and Delay Dataset</a>.
 
-1. From the command-line, create the data source as a pod on your local cluster.
+From the command-line, create the data source as a pod on your local cluster.
 ```shell
 cat <<EOF | kubectl apply -n soda-agent -f -
 ---
@@ -149,17 +149,18 @@ spec:
   type: ClusterIP
 EOF
 ```
-2. Once the pod is running, you can use the following configuration details when you add a data source in Soda Cloud, in step 2, **Connect the Data Source**.
+
+Once the pod is running, you can use the following configuration details when you add a data source in Soda Cloud, in step 2, **Connect the Data Source**.
 ```yaml 
 data_source local_postgres_test:
   type: postgres
   connection:
-        host: nybusbreakdowns
-        port: 5432
-        username: sodacore
-        password: sodacore
-        database: sodacore
-        schema: new_york
+    host: nybusbreakdowns
+    port: 5432
+    username: sodacore
+    password: sodacore
+    database: sodacore
+    schema: new_york
 ```
 
 ## Deccomission the local cluster and Soda Agent
