@@ -50,8 +50,10 @@
     page: soda/connect-trino.md
 
 - title: Soda Agent
-  page: soda-agent/basics.md
+  page: soda-agent/overview.md
   subcategories:
+  - subtitle: Soda Agent
+    page: soda-agent/overview.md
   - subtitle: Soda Agent basic concepts
     page: soda-agent/basics.md
   - subtitle: Deploy a Soda Agent
