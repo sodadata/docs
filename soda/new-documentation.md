@@ -12,6 +12,8 @@ parent: Reference
 #### November 10, 2022
 
 * Added [private key authentication]({% link soda/connect-snowflake.md %}#private-key-authentication) detail to Snowflake connection documentation.
+* Updated the [list of numeric metrics]({% link soda-cl/numeric-metrics.md %}#list-of-numeric-metrics) for updated data source support. 
+* Added a simple list of all SodaCL metrics to [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}#list-of-sodacl-metrics) documentation.
 
 #### November 8, 2022
 
