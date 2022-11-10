@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 10, 2022
+
+* Added [private key authentication]({% link soda/connect-snowflake.md %}#private-key-authentication) detail to Snowflake connection documentation.
+
 #### November 8, 2022
 
 * Added an [example webhook integration]({% link soda/integrate-webhooks.md %}#example-webhook-with-servicenow-for-soda-cloud-incidents) for Soda Cloud and ServiceNow.

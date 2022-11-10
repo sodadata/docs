@@ -50,6 +50,18 @@ data_source my_datasource_name:
 <sup>1</sup> Use this parameter when adding Snowflake connection configurations to a `configuration.`yml file. However, if you are adding connection configuration details directly in Soda Cloud (connecting to your Snowflake data source via a Soda Agent) to authenticate using Okta, you must follow the instructions documented by Snowflake for <a href="https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#native-sso-okta-only" target="_blank">Native SSO - Okta Only</a>.
  
 
+### Private key authentication
+
+You can use the `private_key` parameter to specify key-value pairs for key pair authentication. In you configuration YML file, add the parameter as per the following example: 
+```yml
+  private_key: |
+     -----BEGIN ENCRYPTED PRIVATE KEY-----
+     MIIExxxxxxxxxxxxxxxxxxxxucRqSZaS
+     ...
+
+     -----END ENCRYPTED PRIVATE KEY-----
+```
+
 {% include test-connection.md %}
 
 ## Supported data types
