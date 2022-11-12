@@ -60,6 +60,7 @@ data_source my_datasource_name:
 | &ensp;&ensp;client_x509_cert_url        | required                                                        |
 | auth_scopes                             | optional; Soda applies the three scopes listed above by default |
 | project_id                              | optional; overrides project_id from account_info_json           |
+| storage_project_id                      | optional; allows to use separate project for compute and storage|
 | dataset                                 | required                                                        |
 
 
