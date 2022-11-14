@@ -44,24 +44,24 @@ data_source my_datasource_name:
     dataset: sodacore
 ```
 
-| Property                                | Required                                                        |
-| --------------------------------------- | --------------------------------------------------------------- |
-| type                                    | required                                                        |
+| Property                                | Required                                                             |
+| --------------------------------------- | -------------------------------------------------------------------- |
+| type                                    | required                                                             |
 | account_info_json                       | optional; inline properties listed below; if not provided, Soda uses Google Application Default Credentials |
-| &ensp;&ensp;type                        | required                                                        |
-| &ensp;&ensp;project_id                  | required                                                        |
-| &ensp;&ensp;private_key_id              | required                                                        |
-| &ensp;&ensp;private_key                 | required                                                        |
-| &ensp;&ensp;client_email                | required                                                        |
-| &ensp;&ensp;client_id                   | required                                                        |
-| &ensp;&ensp;auth_uri                    | required                                                        |
-| &ensp;&ensp;token_uri                   | required                                                        |
-| &ensp;&ensp;auth_provider_x509_cert_url | required                                                        |
-| &ensp;&ensp;client_x509_cert_url        | required                                                        |
-| auth_scopes                             | optional; Soda applies the three scopes listed above by default |
-| project_id                              | optional; overrides project_id from account_info_json           |
-| storage_project_id                      | optional; allows to use separate project for compute and storage|
-| dataset                                 | required                                                        |
+| &ensp;&ensp;type                        | required                                                             |
+| &ensp;&ensp;project_id                  | required                                                             |
+| &ensp;&ensp;private_key_id              | required                                                             |
+| &ensp;&ensp;private_key                 | required                                                             |
+| &ensp;&ensp;client_email                | required                                                             |
+| &ensp;&ensp;client_id                   | required                                                             |
+| &ensp;&ensp;auth_uri                    | required                                                             |
+| &ensp;&ensp;token_uri                   | required                                                             |
+| &ensp;&ensp;auth_provider_x509_cert_url | required                                                             |
+| &ensp;&ensp;client_x509_cert_url        | required                                                             |
+| auth_scopes                             | optional; Soda applies the three scopes listed above by default      |
+| project_id                              | optional; overrides project_id from account_info_json                |
+| storage_project_id                      | optional; enables you to use separate project for compute and storage|
+| dataset                                 | required                                                             |
 
 
 ## Authentication methods
