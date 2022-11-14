@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 14, 2022
+
+* Corrected the location in which to [opt out]({% link soda-core/usage-stats.md %}l#opt-out-of-usage-statistics) of sending Soda Core usage statistics.
+
 #### November 10, 2022
 
 * Added [private key authentication]({% link soda/connect-snowflake.md %}#private-key-authentication) detail to Snowflake connection documentation.
