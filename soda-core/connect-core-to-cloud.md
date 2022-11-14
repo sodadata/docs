@@ -15,6 +15,7 @@ Soda Core uses an API to connect to Soda Cloud. To use the API, you must generat
 [Prerequisites](#prerequisites)<br />
 [Connect](#connect)<br />
 [Connect Soda Core for SparkDF to Soda Cloud](#connect-soda-core-for-sparkdf-to-soda-cloud)<br />
+[Provide credentials as system variables](#provide-credentials-as-system-variables)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -26,7 +27,7 @@ Soda Core uses an API to connect to Soda Cloud. To use the API, you must generat
 ## Connect
 
 1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. Open your `configuration.yml` file in a text editor, then add the following to the file. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under any other `data_source` syntax.
+2. Open your `configuration.yml` file in a text editor, then add the following to the file. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under any other `data_source` syntax. Consider creating system or environment variables for the values of your API key and secret; see [Provide credentials as system variables](#provide-credentials-as-system-variables).
 ```yaml
 soda_cloud:
   host: cloud.soda.io
@@ -86,6 +87,42 @@ print(scan.get_logs_text())
 ```
 
 Refer to <a href="https://github.com/sodadata/soda-core/blob/main/soda/core/tests/examples/example_python_api.py" target="_blank">the soda-core repo in GitHub</a> for details.
+
+
+## Provide credentials as system variables
+
+If you wish, you can provide API key credentials or any of the properties in the configuration YAML file as system variables instead of storing the values directly in the file. System variables persist only for as long as you have the terminal session open in which you created the variable. For a longer-term solution, consider using permanent environment variables stored in your `~/.bash_profile` or `~/.zprofile` files.
+
+1. From your command-line interface, set a system variable to store the value of a property that the configuration YAML file uses. For example, you can use the following command to define a system variable for your password.
+```shell
+export API_KEY=1234
+```
+2. Test that the system retrieves the value that you set by running an `echo` command.
+```shell
+echo $API_KEY
+```
+3. In the configuration YAML file, set the value of the property to reference the environment variable, as in the following example.
+```yaml
+data_source my_database_name:
+  type: postgres
+  connection:
+    host: soda-temp-demo
+    port: '5432'
+    username: sodademo
+    password: ${POSTGRES_PASSWORD}
+    database: postgres
+    schema: public
+
+soda_cloud:
+  host: cloud.soda.io
+  api_key_id: ${API_KEY}
+  api_key_secret: ${API_SECRET}
+```
+4. Save the configuration YAML file, then run a scan to confirm that Soda Core connects to Soda Cloud without issue.
+```shell
+soda scan -d your_datasource -c configuration.yml checks.yml
+```
+5. Navigate to your Soda Cloud account in your browser review the results of your latest scan in **Check Results**.
 
 ## Go further
 
