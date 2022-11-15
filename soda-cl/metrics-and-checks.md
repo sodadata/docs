@@ -23,7 +23,7 @@ checks for dim_customer:
 
 A check is a test for data quality that you write using the Soda Checks Language (SodaCL). SodaCL includes over 25 built-in metrics that you can use to write checks, but you also have the option of writing your own SQL queries or expressions using SodaCL. 
 
-See a [full list of SodaCL metrics](#list-of-sodacl-metrics).
+See a [full list of SodaCL metrics and checks](#list-of-sodacl-metrics-and-checks).
 
 When it scans datasets in your data source, Soda Core executes the checks you defined in your checks YAML file. Technically, a check is a Python expression that, during a Soda scan, checks metrics to see if they match the parameters you defined for a threshold. A single Soda scan executes multiple checks against one or more datasets in your data source.
 
@@ -216,7 +216,7 @@ checks for dim_customer:
   - row_count between [10 and 15]
 ```
 
-## List of SodaCL metrics
+## List of SodaCL metrics and checks
 ```yaml
 anomaly score
 avg
