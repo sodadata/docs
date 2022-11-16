@@ -60,7 +60,7 @@ To more securely provide sensitive values such as usernames and passwords, use e
 
 Access the data source-specific connection configurations listed below to copy+paste the connection syntax into the editing panel, then adjust the values to correspond with your data source's details. 
 
-{% include connection-list.md %}
+{% include connection-list-cloud.md %}
  
 <br />
 

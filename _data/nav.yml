@@ -36,6 +36,8 @@
     page: soda/connect-mssql.md
   - subtitle: Connect to MySQL
     page: soda/connect-mysql.md
+  - subtitle: Connect to Oracle
+    page: soda/connect-oracle.md
   - subtitle: Connect to PostgreSQL
     page: soda/connect-postgres.md
   - subtitle: Connect to Redshift
