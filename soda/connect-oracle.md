@@ -11,19 +11,18 @@ parent: Connect a data source
 
 ```yaml
 data_source my_datasource_name:
-  type: 
-  
+  type: oracle
+  username: 
+  password:
+  connectstring:
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
 | type     | required |                                                            |
-| host     | required |                                                            |
-| port     | optional |                                                            |
 | username | required | Consider using system variables to retrieve this value securely.      |
 | password | required | Consider using system variables to retrieve this value securely.      |
-| database | required |                                                            |
-| schema   | required |                                                            |
+| connectstring | required |                                                            |
 
 
 {% include test-connection.md %}

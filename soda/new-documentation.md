@@ -13,7 +13,7 @@ parent: Reference
 
 * Added release notes documentation for Soda Core 3.0.13.
 * Adjusted [freshness check]({% link soda-cl/freshness.md %}) documentation to reflect new support for columns that contain data type DATE.
-* Added documentation to accompany new support for [OracleDB]({% link soda/connect-oracle.md %}) and [Denodo]({% link soda/connect-denodo.md %}).
+* Added documentation to accompany new support for [OracleDB]({% link soda/connect-oracle.md %}).
 
 #### November 14, 2022
 

@@ -1,9 +1,6 @@
 
 * [Amazon Athena]({% link soda/connect-athena.md %})
 * [Amazon Redshift]({% link soda/connect-redshift.md %})
-* [Apache Spark]({% link soda/connect-spark.md %})
-* [Apache Spark for Databricks SQL]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql)
-* [Apache Spark DataFrames in Databricks]({% link soda/connect-spark.md %}#use-soda-core-with-spark-dataframes-on-databricks)
 * [Clickhouse (Experimental)]({% link soda/connect-clickhouse.md %})
 * [Dremio]({% link soda/connect-dremio.md %})
 * [GCP BigQuery]({% link soda/connect-bigquery.md %})
