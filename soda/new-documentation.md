@@ -201,7 +201,7 @@ checks for dim_customers:
 #### June 28, 2022
 
 * Revised documentation to reflect the general availability of Soda Core and SodaCL.
-* Archived the deprecated documentation for [Soda SQL]({% link soda-sql/overview.md %}) and [Soda Spark]({% link soda-spark/install-and-use.md %}).
+* Archived the deprecated documentation for Soda SQL and Soda Spark.
 
 #### June 23, 2022
 
@@ -252,7 +252,7 @@ checks for dim_customers:
 #### June 8, 2022
 
 * Updated the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) with an example of a check for duplicates.
-* Added documentation for [installing Soda Spark on Windows]({% link soda-spark/install-and-use.md %}#install-soda-spark-on-windows).
+* Added documentation for installing Soda Spark on Windows.
 * Updated the [Distribution check]({% link soda-cl/distribution.md %}) documentation to record a change in syntax for the check and the addition of two more methods available to use with distribution checks.
 
 #### June 7, 2022
@@ -319,18 +319,18 @@ checks for dim_customers:
 #### April 22, 2022
 
 * Replaced the quick start tutorials for Soda SQL and Soda Cloud with two new tutorials: 
-  * [Quick start for Soda SQL and Soda Cloud]({% link soda-sql/quick-start-soda-sql.md %})
-  * [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %})
+  * Quick start for Soda SQL and Soda Cloud
+  * Quick start for Soda Core and Soda Cloud
 
 #### April 6, 2022
 
 * Added details to the [Freshness check]({% link soda-cl/freshness.md %}) to clarify limitations when specifying duration.
-* Added documentation for how to [use system variables to store property values]({% link soda-sql/warehouse.md %}#provide-credentials-as-system-variables) instead of storing values in the `env_vars.yml` file.
+* Added documentation for how to use system variables to store property values#provide-credentials-as-system-variables) instead of storing values in the `env_vars.yml` file.
 * Updated Soda Core documentation to remove aspirational content from Adding scans to a pipeline.
 
 #### April 1, 2022
 
-* Added documentation for the `dataset_name` identifier in a [scan YAML]({% link soda-sql/scan-yaml.md %}#add-a-dataset-name-for-soda-cloud) file. Use the identifier to send more precise dataset information to Soda Cloud. 
+* Added documentation for the `dataset_name` identifier in a scan YAML file. Use the identifier to send more precise dataset information to Soda Cloud. 
 
 #### March 22, 2022
 
@@ -340,7 +340,7 @@ checks for dim_customers:
 
 #### February 15, 2022
 
-* Added content to explain how Soda Cloud notifies users of a [scan failure]({% link soda-sql/scan.md %}#scan-output-in-soda-cloud). 
+* Added content to explain how Soda Cloud notifies users of a scan failure. 
 
 #### February 10, 2022
 
@@ -360,11 +360,11 @@ checks for dim_customers:
 
 #### January 11, 2022
 
-* Added requirement for installing Soda Spark on a Databricks cluster. See [Soda Spark Requirements]({% link soda-spark/install-and-use.md %}#requirements).
+* Added requirement for installing Soda Spark on a Databricks cluster. See Soda Spark Requirements.
 
 #### December 22, 2021
 
-* Added data types information for [Trino]({% link soda-sql/supported-data-types.md %}#trino-experimental) and [MySQL]({% link soda-sql/supported-data-types.md %}#mysql-experimental).
+* Added data types information for Trino and MySQL.
 * Adjusted the docs footer to offer users ways to suggest or make improve our docs.
 
 #### December 16, 2021
@@ -382,16 +382,16 @@ checks for dim_customers:
 #### December 6, 2021
 
 * Added documenation for the new [audit trail]({% link soda-cloud/roles-and-rights.md %}#access-an-audit-trail) feature for Soda Cloud.
-* Added further detail about which rows Soda SQL sends to Soda Cloud as samples; see [Define a samples configuration key to send failed rows]({% link soda-sql/send-failed-rows.md %}#define-a-samples-configuration-key-to-send-failed-rows).
+* Added further detail about which rows Soda SQL sends to Soda Cloud as samples.
 
 #### December 2, 2021
 
 * Updated Quick start tutorial for Soda Cloud.
-* Added information about [using regex]({% link soda-sql/sql_metrics.md %}#using-regex-with-column-metrics) in a YAML file.
+* Added information about using regex in a YAML file.
 
 #### November 30, 2021
 
-* Added documentation about the anonymous Soda SQL usage statistics that Soda collects. Learn more about the [information]({% link soda-sql/global-configuration.md %}) Soda collects and how to opt out of sending statistics.
+* Added documentation about the anonymous Soda SQL usage statistics that Soda collects. Learn more about the information Soda collects and how to opt out of sending statistics.
 
 #### November 26, 2021
 
@@ -404,16 +404,16 @@ checks for dim_customers:
 
 #### November 23, 2021
 
-* Revised the [Quick start tutorial for Soda SQL]({% link soda-sql/quick-start-soda-sql.md %}) to use the same demo repo as the interactive demo.
+* Revised the Quick start tutorial for Soda SQL to use the same demo repo as the interactive demo.
 
 #### November 15, 2021
 
 * Added a new, embedded interactive demo for Soda SQL.
-* New documentation to accompany the soft-launch of [Soda Spark]({% link soda-spark/install-and-use.md %}), an extension of Soda SQL functionality.
+* New documentation to accompany the soft-launch of Soda Spark, an extension of Soda SQL functionality.
 
 #### November 9, 2021
 
-* New documentation to accompany the new, preview release of [historic metrics]({% link soda-sql/metrics.md %}#historic-metrics). This type of metric enables you to use Soda SQL to access the historic measurements in the Cloud Metric Store and write tests that use those historic measurements.
+* New documentation to accompany the new, preview release of historic metrics. This type of metric enables you to use Soda SQL to access the historic measurements in the Cloud Metric Store and write tests that use those historic measurements.
 
 #### October 29, 2021
 
@@ -421,8 +421,8 @@ checks for dim_customers:
 
 #### October 25, 2021
 
-* Removed the feature to Add datasets directly in Soda Cloud. Instead, users [add datasets using Soda SQL]({% link soda-sql/configure.md %}).
-* Added support for [Snowflake session parameter configuration]({% link soda-sql/warehouse_types.md %}#snowflake) in the warehouse YAML file.
+* Removed the feature to Add datasets directly in Soda Cloud. Instead, users add datasets using Soda SQL.
+* Added support for Snowflake session parameter configuration in the warehouse YAML file.
 
 #### October 18, 2021
 
@@ -430,7 +430,7 @@ checks for dim_customers:
 
 #### October 17, 2021
 
-* New documentation to accompany the new feature to [disable]({% link soda-sql/samples.md %}#disable-sample-data) or [reroute]({% link soda-sql/samples.md %}#reroute-sample-data-for-a-dataset) sample data to Soda Cloud.
+* New documentation to accompany the new feature to disable or reroute sample data to Soda Cloud.
 
 #### September 30, 2021
 
@@ -443,7 +443,7 @@ checks for dim_customers:
 
 #### September 17, 2021
 
-* Added Soda Cloud metric names to [master list of column metrics]({% link soda-sql/metrics.md %}#column-metrics).
+* Added Soda Cloud metric names to primary list of column metrics.
 
 #### September 9, 2021
 
@@ -452,14 +452,14 @@ checks for dim_customers:
 #### September 1, 2021
 
 * Added information for new command options included in Soda CLI version 2.1.0b15 for
-    * [limiting the datasets that Soda SQL analyzes]({% link soda-sql/configure.md %}#add-analyze-options),
-    * [preventing Soda SQL from sending scan results]({% link soda-sql/scan.md %}#add-scan-options) to Soda Cloud after a scan, and
-    * [instructing Soda SQL to skip confirmations]({% link soda-sql/scan.md %}#add-scan-options) before running a scan.
-* Added information about how to use a new option, [`account_info_path`]({% link soda-sql/warehouse_types.md %}#gcp-big-query), to direct Soda SQL to your Big Query service account JSON key file for configuration details.
+    * limiting the datasets that Soda SQL analyzes,
+    * preventing Soda SQL from sending scan results to Soda Cloud after a scan, and
+    * instructing Soda SQL to skip confirmations before running a scan.
+* Added information about how to use a new option, `account_info_path`, to direct Soda SQL to your Big Query service account JSON key file for configuration details.
 
 #### August 31, 2021
 
-* Added documentation for the feature that allows you to [include or exclude specific datasets]({% link soda-sql/configure.md %}#add-analyze-options) in your `soda analyze` command.
+* Added documentation for the feature that allows you to include or exclude specific datasets in your `soda analyze` command.
 
 #### August 30, 2021
 
@@ -467,30 +467,30 @@ checks for dim_customers:
 
 #### August 23, 2021
 
-* New document for [custom metric templates]({% link soda-sql/custom-metric-templates.md %}) that you can copy and paste into scan YAML files.
+* New document for custom metric templates that you can copy and paste into scan YAML files.
 
 #### August 9, 2021
 
-* Added details for Apache Spark support. See [Install Soda SQL]({% link soda-sql/installation.md %}#compatibility).
+* Added details for Apache Spark support. See Install Soda SQL.
 * Updated _Adjust a dataset scan schedule_ to include details instructions for triggering a Soda scan externally.
 
 #### August 2, 2021
 
 * Added new document to ouline the [Support]({% link soda/support.md %}) that Soda provides its users and customers.
-* Updated [Big Query]({% link soda-sql/warehouse_types.md %}#gcp-big-query) data source configuration to include `auth_scopes`.
+* Updated Big Query data source configuration to include `auth_scopes`.
 
 
 #### July 29, 2021
 
-* Added instructions for configuring [BigQuery permissions]({% link soda-sql/warehouse_types.md %}#big-query-permissions) to run Soda scans.
-* Added an example of a [programmatic scan using a lambda function]({% link soda-sql/programmatic_scan.md %}#programmatic-scan-using-lambda-function).
-* Added instructions for [overwriting scan output in Soda Cloud]({% link soda-sql/scan.md %}#overwrite-scan-output-in-soda-cloud).
-* New document for [Example test to compare row counts; moved to [Custom metric templates]({% link soda-sql/custom-metric-templates.md %}#validate-that-row-counts-are-equal)
+* Added instructions for configuring BigQuery permissions to run Soda scans.
+* Added an example of a programmatic scan using a lambda function.
+* Added instructions for overwriting scan output in Soda Cloud.
+* New document for Example test to compare row counts.
 
 #### July 26. 2021
 
-* Added Soda SQL documentation for [configuring `excluded_columns`]({% link soda-sql/scan-yaml.md %}#scan-yaml-table-configuration-keys) during scans.
-* Updated compatible data sources for [Soda SQL]({% link soda-sql/installation.md %}#compatibility) to include **MySQL (experimental)**, and Soda Cloud to improve accuracy.
+* Added Soda SQL documentation for configuring `excluded_columns` during scans.
+* Updated compatible data sources for Soda SQL to include **MySQL (experimental)**, and Soda Cloud to improve accuracy.
 * Updated Create monitors and alerts to include custom metrics as part of creation flow; updated prerequisites.
 * Updated Product overview [comparison]({% link soda/product-overview.md %}#compare-features-and-functionality) for new `excluded_columns` functionality and custom metrics in Soda Cloud.
 * Minor adjustments to reflect new and changed elements in the <a href="https://github.com/sodadata/soda-sql/blob/main/CHANGELOG.md#210b12---2021-07-23-frodo-baggins" target="_blank">Soda SQL 2.1.0b12</a> release.
@@ -498,7 +498,7 @@ checks for dim_customers:
 
 #### July 16, 2021
 
-* Added early iteraction of content for [Best practices for defining tests and running scans]({% link soda-sql/tests.md %}#best-practices-for-defining-tests-and-running-scans).
+* Added early iteraction of content for Best practices for defining tests and running scans.
 * Added a link to the docs footer to open a Github issue to report issues with docs.
 
 #### July 13, 2021

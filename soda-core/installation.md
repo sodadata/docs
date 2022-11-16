@@ -134,7 +134,10 @@ Reference the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activ
 
 ## Upgrade
 
-{% include upgrade-core.md %}
+To upgrade your existing Soda Core tool to the latest version, use the following command, replacing `soda-core-redshift` with the install package that matches the type of data source you are using.
+```shell
+pip install soda-core-redshift -U
+```
 
 ## Use Docker to run Soda Core
 

@@ -153,8 +153,6 @@
     page: soda-core/configuration.md
   - subtitle: Run a Soda Core scan
     page: soda-core/scan-core.md
-  - subtitle: Migrate from Soda SQL
-    page: soda-core/migrate.md
   - subtitle: Soda Core CLI commands
     page: soda-core/cli-reference.md
   - subtitle: Define programmatic scans
@@ -163,6 +161,8 @@
     page: soda-core/orchestrate-scans.md
   - subtitle: Connect to Soda Cloud
     page: soda-core/connect-core-to-cloud.md
+  - subtitle: Migrate from Soda SQL
+    page: soda-core/migrate.md
 
 - title: Integrate Soda
   page: soda/integrate-alation.md
@@ -197,6 +197,8 @@
     page: soda/support.md
   - subtitle: Soda Community Code of Conduct
     page: soda/community-coc.md
+  - subtitle: Legacy Soda OSS tools
+    page: soda/legacy.md
 
 - title: API Documentation
   page: api-docs/reporting-api.md
