@@ -27,7 +27,7 @@ checks for dim_customer:
 
 ## Define cross checks
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), cross checks are unique. This check employs the `row_count` metric but is limited in its syntax variation, with only a few mutable parts to specify dataset and data source names.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), cross checks are unique. This check employs the `row_count` metric and is limited in its syntax variation, with only a few mutable parts to specify dataset and data source names.
 
 The example check below compares the volume of rows in two datasets in the same data source. If the row count in the `dim_department_group` is not the same as in `dim_customer`, the check fails.
 

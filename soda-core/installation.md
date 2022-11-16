@@ -74,6 +74,7 @@ pip install soda-core-postgres
 | IBM DB2 | `soda-core-db2` |
 | MS SQL Server | `soda-core-sqlserver` |
 | MySQL | `soda-core-mysql` |
+| OracleDB | `soda-core-oracle` |
 | PostgreSQL | `soda-core-postgres` |
 | Snowflake | `soda-core-snowflake` | 
 | Trino | `soda-core-trino` |
@@ -114,6 +115,7 @@ pip install soda-core-postgres
 | IBM DB2 | `soda-core-db2` |
 | MS SQL Server | `soda-core-sqlserver` |
 | MySQL | `soda-core-mysql` |
+| OracleDB | `soda-core-oracle` |
 | PostgreSQL | `soda-core-postgres` |
 | Snowflake | `soda-core-snowflake` | 
 | Trino | `soda-core-trino` |

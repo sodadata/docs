@@ -9,6 +9,12 @@ parent: Reference
 
 <br />
 
+#### November 15, 2022
+
+* Added release notes documentation for Soda Core 3.0.13.
+* Adjusted [freshness check]({% link soda-cl/freshness.md %}) documentation to reflect new support for columns that contain data type DATE.
+* Added documentation to accompany new support for [OracleDB]({% link soda/connect-oracle.md %}).
+
 #### November 14, 2022
 
 * Corrected the location in which to [opt out]({% link soda-core/usage-stats.md %}l#opt-out-of-usage-statistics) of sending Soda Core usage statistics.
