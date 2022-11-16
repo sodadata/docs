@@ -211,6 +211,38 @@ profile columns:
 * If you combine an include config and an exclude config and a dataset or column fits both patterns, Soda excludes the dataset or column from discovery or profiling.
 <!--* If you configured `discover datasets` to exclude a dataset but do not explicitly also exclude its columns in `profile columns`, Soda discovers the dataset and profiles its columns. -->
 
+## Compute Consumption and Cost Considerations
+Both columns profiling and table discovery can lead to increased computation costs on your datasources. Consider adding it to a selected few tables if you want to maintain costs low. We list more details for each type of profiling below.
+### Discover Datasets
+Besides metadata queries to discover datasets and their columns, `discover datasets` also derives a **row count** for each table. Depending on your data source and the size of your tables this can take considerable compute time.
+### Profile Columns
+Column profiling aims to issue the most optimized queries for your data source, however, given the nature of the derived metrics, those queries often cause full table scans and can be slow and costly on large tables.
+
+Column profiling derives the following metrics:
+
+**Numeric Columns**:
+- minimum value
+- maximum value
+- top 5 smallest values
+- top 5 largest values
+- top 5 most frequent values
+- aveage
+- sum
+- standard deviation
+- variance
+- count of distinct values
+- count of missing values
+- histogram
+
+**Text Columns**:
+- top 5 most frequent values
+- count of distinct values
+- count of missing values
+- average length
+- minimum length
+- maximum length
+
+
 ## Go further
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
