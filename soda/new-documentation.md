@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 17, 2022
+
+* Archived all Soda SQL and Soda Spark content to the <a href="https://github.com/sodadata/soda-sql/tree/main/docs" target="_blank">sodadata/soda-sql</a> repository in GitHub. 
+
 #### November 15, 2022
 
 * Added release notes documentation for Soda Core 3.0.13.
