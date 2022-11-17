@@ -10,7 +10,7 @@ redirect_from:
 ---
 <!--Linked to UI, access Shlink--><br />
 
-![soda-core-logo](/assets/images/soda-core-logo.png){:height="250px" width="250px"} 
+![soda-core-logo](/assets/images/soda-core-logo.png){:height="230px" width="230px"} 
 <br />
 <br />
 
@@ -74,8 +74,15 @@ checks for dim_department_group:
     </section>
 </div>
 
+## Why Soda Core?
 
-Access the <a href="https://docs.soda.io/soda-core/overview.html" target="_blank">Soda Core open-source documentation</a>.
+Simplify the work of maintaining healthy data and eliminate the bottlenecks in data quality management.
+* Download a free, OSS CLI tool and configure settings and data quality checks in two simple YAML files to start scanning your data within minutes.
+* Connect Soda Core to over a dozen data sources to scan volumes of data for quality.
+* Use the Soda Core Python library to build programmatic scans that you can use in conjunction with orchestration tools like Airflow or Prefect to automate pipeline actions when data quality fails.
+* Write data quality checks using SodaCL, a low-code, human-readable, domain-specific language for data quality management.
+* Run the same scans for data quality in multiple environments such as development, staging, and production.
+* Connect to Soda Cloud to unlock historic metric storage, data quality incident tracking, and change-over-time metrics.
 
 ---
 

@@ -36,6 +36,8 @@
     page: soda/connect-mssql.md
   - subtitle: Connect to MySQL
     page: soda/connect-mysql.md
+  - subtitle: Connect to Oracle
+    page: soda/connect-oracle.md
   - subtitle: Connect to PostgreSQL
     page: soda/connect-postgres.md
   - subtitle: Connect to Redshift
@@ -50,8 +52,10 @@
     page: soda/connect-trino.md
 
 - title: Soda Agent
-  page: soda-agent/basics.md
+  page: soda-agent/overview.md
   subcategories:
+  - subtitle: Soda Agent
+    page: soda-agent/overview.md
   - subtitle: Soda Agent basic concepts
     page: soda-agent/basics.md
   - subtitle: Deploy a Soda Agent in EKS

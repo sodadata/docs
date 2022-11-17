@@ -67,12 +67,14 @@ pip install soda-core-postgres
 | Amazon Redshift | `soda-core-redshift` | 
 | Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | `soda-core-spark-df` |
 | Apache Spark for Databricks SQL  | `soda-core-spark[databricks]` |
+| Azure Synapse (Experimental) | `soda-core-sqlserver` |
 | ClickHouse (Experimental) | `soda-core-mysql` |
 | Dremio | `soda-core-dremio` | 
 | GCP Big Query | `soda-core-bigquery` | 
 | IBM DB2 | `soda-core-db2` |
 | MS SQL Server | `soda-core-sqlserver` |
 | MySQL | `soda-core-mysql` |
+| OracleDB | `soda-core-oracle` |
 | PostgreSQL | `soda-core-postgres` |
 | Snowflake | `soda-core-snowflake` | 
 | Trino | `soda-core-trino` |
@@ -113,6 +115,7 @@ pip install soda-core-postgres
 | IBM DB2 | `soda-core-db2` |
 | MS SQL Server | `soda-core-sqlserver` |
 | MySQL | `soda-core-mysql` |
+| OracleDB | `soda-core-oracle` |
 | PostgreSQL | `soda-core-postgres` |
 | Snowflake | `soda-core-snowflake` | 
 | Trino | `soda-core-trino` |

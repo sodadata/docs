@@ -45,6 +45,9 @@ The file in which you configure data source connection details and Soda Cloud co
 ### dataset
 {% include glossary-dataset.md %}
 
+### incident
+A ticket you create and associate with a failed check result so as to track your team's investigation and resolution of a data quality issue. See [Create and track incidents]({% link soda-cloud/incidents.md %}).
+
 ### measurement
 {% include glossary-measurement.md %}
 
@@ -67,7 +70,7 @@ A setting you configure in a Soda Cloud agreement that defines whom to notify wi
 A collection of checks YAML files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source. Effectively, a scan definition provides the what, when, and where to run a scan.
 
 ### Soda Agent
-The Helm chart you deploy in your Kubernetes cluster to faciliate a secure connection between your Soda Cloud account and your data sources. See [Deploy a Soda Agent]({% link soda-agent/deploy.md %}).
+The Helm chart you deploy in your Kubernetes cluster to faciliate a secure connection between your Soda Cloud account and your data sources. See [Soda Agent basic concepts]({% link soda-agent/basics.md %}).
 
 ### SodaCL 
 The domain-specific language to define Soda Checks in a checks YAML file. A Soda Check is a test that Soda Core executes when it scans a dataset in your data source. See [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %}).
