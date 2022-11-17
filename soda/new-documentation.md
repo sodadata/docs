@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 16, 2022
+
+* Added content to more explictly describe the metrics that dataset discovery and column profiling derive, and the potential [compute costs]({% link soda-cl/profile.md %}#compute-consumption-and-cost-considerations) associated with these configurations.
+
 #### November 15, 2022
 
 * Added release notes documentation for Soda Core 3.0.13.
