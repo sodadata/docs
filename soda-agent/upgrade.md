@@ -6,6 +6,7 @@ parent: Soda Agent
 ---
 
 # Upgrade a Soda Agent 
+*Last modified on {% last_modified_at %}*
 
 To take advantage of new or improved features and functionality in the Soda Agent, you can upgrade your agent when a new version becomes available <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>.
 

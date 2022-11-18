@@ -6,6 +6,7 @@ parent: Integrate Soda
 ---
 
 # Integrate Soda Cloud with Metaphor
+*Last modified on {% last_modified_at %}*
 
 Integrate Soda with Metaphor to access details about the quality of your data from within the data catalog. The following video illustrates how to take advantage of the integration.
 

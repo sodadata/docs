@@ -9,6 +9,7 @@ redirect_from:
 
 # Metrics and checks 
 <!--Linked to UI, access Shlink; though actually linked in CLI error message-->
+*Last modified on {% last_modified_at %}*
 
 **Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with **Soda Core**, Soda’s open-source, command-line tool, you use SodaCL to write checks for data quality, then use Soda Core to scan the data in your data source and execute those checks.
 

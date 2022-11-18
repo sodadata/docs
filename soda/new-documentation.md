@@ -11,6 +11,9 @@ parent: Reference
 
 #### November 18, 2022
 
+* Added a [list of valid formats]({% link soda-cl/validity-metrics.md %}#formats-supported-with-soda-for-ms-sql-server) for validity metrics that Soda for MS SQL Server supports.
+* Added documentation for [rerouting failed rows samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to an HTTP endpoint; supported as of Soda Core 3.0.13.
+* Removed content for overwriting Soda Cloud checks results using `-t` option.
 * Archived all Soda SQL and Soda Spark content to the <a href="https://github.com/sodadata/soda-sql/tree/main/docs" target="_blank">sodadata/soda-sql</a> repository in GitHub. 
 
 #### November 16, 2022

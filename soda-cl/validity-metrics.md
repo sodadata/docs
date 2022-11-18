@@ -6,6 +6,7 @@ parent: Soda CL
 ---
 
 # Validity metrics 
+*Last modified on {% last_modified_at %}*
 
 Use a validity metric in a check to surface invalid or unexpected values in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 
@@ -296,7 +297,8 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 ## List of valid formats
 
-**Valid formats apply *only* to columns using data type TEXT.** 
+* Valid formats apply *only* to columns using data type **TEXT**, not DATE or NUMBER.
+* The Soda Core package for **MS SQL Server** has limited support for valid formats. See the [separate list below](#formats-supported-with-soda-for-ms-sql-server) of formats supported for MS SQL Server.
 
 | Valid format value  | Format |
 | ------------------- | ------ |
@@ -340,6 +342,22 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 | `time 24h nosec` | Validates against the 24-hour clock.<br /> hh:mm |
 | `timestamp 12h` | Validates against the 12-hour clock. <br /> hh:mm:ss |
 | `timestamp 24h` | Validates against the 24-hour clock. <br /> hh:mm:ss |
+| `uuid` | Universally unique identifier. | 
+
+
+### Formats supported with Soda for MS SQL Server
+
+| Valid format value  | Format |
+| ------------------- | ------ |
+| `date eu` | Validates date only, not time. <br />dd/mm/yyyy |
+| `date inverse` | Validates date only, not time. <br />yyyy/mm/dd |
+| `date us` | Validates date only, not time. <br />mm/dd/yyyy |
+| `decimal` | Number uses a `,` or `.` as a decimal indicator. |
+| `integer` | Number is whole. |
+| `ip address` | Four whole numbers separated by `.` |
+| `negative integer` | Number is negative and whole. |
+| `phone number` | +12 123 123 1234<br /> 123 123 1234<br /> +1 123-123-1234<br /> +12 123-123-1234<br /> +12 123 123-1234<br /> 555-2368<br /> 555-ABCD |
+| `positive integer` | Number is positive and whole. |
 | `uuid` | Universally unique identifier. | 
 
 

@@ -7,6 +7,7 @@ parent: SodaCL
 
 # Freshness checks  
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 Use a freshness check to determine the relative age of the data in a column in your dataset. 
 

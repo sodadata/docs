@@ -8,6 +8,7 @@ redirect_from: /soda-cloud/monitors.html
 
 # Create an agreement 
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
 

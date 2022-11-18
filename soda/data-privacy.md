@@ -7,6 +7,7 @@ redirect_from: /soda-sql/documentation/data-privacy.html
 ---
 
 # Data security and privacy
+*Last modified on {% last_modified_at %}*
 
 Soda works in several ways to ensure your data and systems remain private.
 

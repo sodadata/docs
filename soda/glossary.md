@@ -11,6 +11,7 @@ redirect_from:
 
 # Glossary
 <!--This glossary contains Soda-specific terms only. Do not define industry terminology such as "SQL" or "query".-->
+*Last modified on {% last_modified_at %}*
 
 ### agreement
 A collection of checks that serve as a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 

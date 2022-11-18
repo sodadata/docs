@@ -7,6 +7,7 @@ redirect_from: /soda-core/cli.html
 ---
 
 # Soda Core CLI commands 
+*Last modified on {% last_modified_at %}*
 
 
 | Command               | Description |

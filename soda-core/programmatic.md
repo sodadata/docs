@@ -7,6 +7,7 @@ redirect_from: /soda-core/programmatic-scans.html
 ---
 
 # Define programmatic scans using Python
+*Last modified on {% last_modified_at %}*
 
 To automate the search for "bad" data, you can use the **Soda Core Python library** to programmatically execute scans. Alternatively, you can install and use the Soda Core CLI to run scans; see [Install Soda Core]({% link soda-core/installation.md %}).
 
