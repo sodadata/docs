@@ -9,7 +9,9 @@ parent: Soda Agent
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-{% include soda-agent.md %}
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely connect to new data sources. 
+
+The agent obviates the need to install Soda Core independently and set up configuration YAML files to connect to data sources. Instead, it enables Soda Cloud users to serve themselves when it comes to connecting to new data sources in an organization. 
 
 Create an Amazon Elastic Kubernetes Service (EKS) Fargate cluster, then use Helm to deploy the Soda Agent in the cluster. This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. [Read more]({% link soda-agent/basics.md %})
 

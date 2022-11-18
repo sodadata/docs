@@ -9,7 +9,7 @@ parent: Soda Core
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-[Soda SQL]({% link soda-sql/overview.md %}), the original command-line tool that Soda created to test for data quality, has been deprecated and replaced by [Soda Core]({% link soda-core/overview-main.md %}). As the primary tool for data reliability, you can install Soda Core, connect to your data sources, and convert your Soda SQL tests into SodaCL checks. 
+Soda SQL, the original command-line tool that Soda created to test for data quality, has been deprecated and replaced by [Soda Core]({% link soda-core/overview-main.md %}). As the primary tool for data reliability, you can install Soda Core, connect to your data sources, and convert your Soda SQL tests into SodaCL checks. 
 
 Use the following guide to understand the migration path from Soda SQL to Soda Core. <br />Contact <a href="mailto:support@soda.io">support@soda.io</a> for help migrating from Soda SQL to Soda Core. 
 

@@ -41,31 +41,32 @@ The key in the key-value pair that you use to define what qualifies as a missing
 The file in which you configure data source connection details and Soda Cloud connection details. See [How Soda Core works]({% link soda-core/how-core-works.md %}).
 
 ### data source
-{% include glossary-data-source.md %}
+A storage location that contains a collection of datasets, such as Snowflake, Amazon Athena, or GCP BigQuery.
 
 ### dataset
-{% include glossary-dataset.md %}
+A representation of a tabular data structure with rows and columns. A dataset can take the form of a table in PostgreSQL or Snowflake, a stream in Kafka, or a DataFrame in a Spark application.
 
 ### incident
 A ticket you create and associate with a failed check result so as to track your team's investigation and resolution of a data quality issue. See [Create and track incidents]({% link soda-cloud/incidents.md %}).
 
 ### measurement
-{% include glossary-measurement.md %}
+The value for a metric that Soda Core collects during a scan. 
 
 ### metric
-{% include glossary-metric.md %}
+A property of the data in your dataset. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
 
 ### metric store
 The component in Soda Cloud that stores metric measurements. This component facilities the visualization of changes to your data over time.
 
 ### monitor
-{% include glossary-monitor.md %}
+(Deprecated) A set of details you define in Soda Cloud which Soda SQL used when it ran a scan. Now deprecated and replaced by a [check](#check).
+
 
 ### notification
 A setting you configure in a Soda Cloud agreement that defines whom to notify with check results after a scan. 
 
 ### scan
-{% include glossary-scan.md %}
+A command that executes checks to extract information about data in a data source. See [Run a Soda Core scan]({% link soda-core/scan-core.md %}).
 
 ### scan definition
 A collection of checks YAML files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source. Effectively, a scan definition provides the what, when, and where to run a scan.
@@ -83,10 +84,10 @@ A web application that enables you to examine scan results and create agreements
 A free, open-source, command-line tool that enables you to use the Soda Checks Language to turn user-defined input into aggregated SQL queries. You can use this as a stand-alone tool to monitor data quality from the command-line, or connect it to a Soda Cloud account to monitor your data using a web application. See [Soda Core documentation]({% link soda-core/overview-main.md %}).
 
 ### Soda Spark (Deprecated)
-Soda Spark was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect Soda to Apache Spark]({% link soda/connect-spark.md %}). Access [legacy documentation]({% link soda-spark/install-and-use.md %}).
+Soda Spark was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect Soda to Apache Spark]({% link soda/connect-spark.md %}). 
 
 ### Soda SQL (Deprecated)
-Soda SQL was an open-source command-line tool that scanned the data in your data source. Replaced by [Soda Core]({% link soda-core/overview-main.md %}). Access [legacy documentation]({% link soda-sql/overview.md %}).
+Soda SQL was an open-source command-line tool that scanned the data in your data source. Replaced by [Soda Core]({% link soda-core/overview-main.md %}). 
 
 ### threshold 
 The value for a metric that Soda checks against during a scan. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).

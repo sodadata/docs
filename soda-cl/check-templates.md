@@ -199,7 +199,7 @@ Where a dataset does not validate its contents on entry, you may wish to assert 
 | United states  | US           |
 
 
-Use one of the following **data source-specific** custom metric templates in your [scan YAML]({% link soda-sql/scan-yaml.md %}) file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+Use one of the following **data source-specific** custom metric templates in your checks YAML file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
 
 ✅ Amazon Redshift  

@@ -15,7 +15,7 @@ Soda works in several ways to ensure your data and systems remain private.
 
 Installed in your environment, you use the Soda Core command-line tools to securely connect to a data source using system variables to store login credentials.
 
-{% include nat-gateway.md %}
+You can connect Soda Core to your Soda Cloud account. To communicate with your data source, Soda Cloud uses a Network Address Translation (NAT) gateway with the IP address 54.78.91.111. You may wish to add this IP address to your data source's passlist.
 
 ## Single sign-on with Soda Cloud
 
