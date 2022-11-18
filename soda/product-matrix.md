@@ -74,9 +74,9 @@ Use these matrices to review the features and functionality that Soda products h
 | Integrate with AirFlow to automate scans and actions proceeding from scan results  | ![done](/assets/images/done.png){:height="20px" width="20px"} |  |
 | Integrate with Slack to send notifications of data quality issues and investigate incidents | ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"} | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 | Integrate with Alation or Metaphor to view data quality details from within your data catalog |  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
-| Integrate with dbt to view dbt tests from within Soda Cloud | ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"} | ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"} |
-| Use a webhook to integrate Soda Cloud with a third-party service provider to send notifications of data quality issues and investigate incidents |  | ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"} |
-| Integrate with MS Teams to send notifications of data quality issues and investigate incidents |  | ![almost-done](/assets/images/almost-done.png){:height="20px" width="20px"} |
+| Integrate with dbt to view dbt tests from within Soda Cloud |  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
+| Use a webhook to integrate Soda Cloud with a third-party service provider to send notifications of data quality issues and investigate incidents |  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
+| Integrate with MS Teams to send notifications of data quality issues and investigate incidents |  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 
 ## Gain insight
 
