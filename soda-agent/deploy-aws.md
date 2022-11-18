@@ -6,7 +6,7 @@ parent: Soda Agent
 ---
 
 # Deploy a Soda Agent in Amazon EKS
-<!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 {% include soda-agent.md %}
 

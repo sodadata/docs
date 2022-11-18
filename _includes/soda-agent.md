@@ -1,0 +1,3 @@
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely connect to new data sources. 
+
+The agent obviates the need to install Soda Core independently, connect it to Soda Cloud, then set up a configuration YAML files to configure connections to data sources. Instead, it enables Soda Cloud users to serve themselves when it comes to connecting to new data sources directly in the Soda Cloud user interface. 

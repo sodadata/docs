@@ -10,9 +10,14 @@ redirect_from: /soda-agent/test-deploy.html
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-The **Soda Agent** is a tool that empowers Soda Cloud users to securely connect to new data sources. 
+{% include soda-agent.md %}
 
-The agent obviates the need to install Soda Core independently and set up configuration YAML files to connect to data sources. Instead, it enables Soda Cloud users to serve themselves when it comes to connecting to new data sources in an organization. 
+These deployment instructions offer generic guidance for setting up a Kubernetes cluster and deploying a Soda Agent in it. Instead, you may wish to access a cloud service-specific set of instructions for:
+* [Amazon Elastic Kubernetes Service (EKS)]({% link soda-agent/deploy-aws.md %})
+* [Microsoft Azure Kubernetes Service (AKS)]({% link soda-agent/deploy-azure.md %})
+* [Google Kubernetes Engine (GKE)]({% link soda-agent/deploy-gcp.md %})
+
+<br />
 
 [Deployment overview](#deployment-overview)<br />
 [Compatibility](#compatibility)<br />
