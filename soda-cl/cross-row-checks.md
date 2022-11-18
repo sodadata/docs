@@ -8,6 +8,7 @@ redirect_from: /soda-cl/row-count.html
 
 # Cross checks 
 <!--Linked to UI, access Shlink--> 
+*Last modified on {% last_modified_at %}*
 
 Use a cross check to compare row counts between datasets within the same, or different, data sources.
 

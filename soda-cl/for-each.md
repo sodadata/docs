@@ -6,6 +6,7 @@ parent: SodaCL
 ---
 
 # For each 
+*Last modified on {% last_modified_at %}*
 
 Use a for each configuration to execute checks against multiple datasets during a scan.
 

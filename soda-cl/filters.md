@@ -10,6 +10,7 @@ redirect_from:
 ---
 
 # Filters and variables
+*Last modified on {% last_modified_at %}*
 
 Use filters or variables to specify portions of data in your dataset against which Soda Core executes checks during a scan.
 

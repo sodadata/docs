@@ -6,6 +6,7 @@ parent: Get started
 ---
 
 # Quick start for Soda Cloud
+*Last modified on {% last_modified_at %}*
 
 <br />
 

@@ -6,6 +6,7 @@ parent: Integrate Soda
 ---
 
 # Integrate Soda Cloud with Slack
+*Last modified on {% last_modified_at %}*
 
 {% include integrate-slack-steps.md %}
 

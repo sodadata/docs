@@ -6,6 +6,7 @@ parent: Connect a data source
 ---
 
 # Connect Soda to Databricks
+*Last modified on {% last_modified_at %}*
 
 You can use the Soda Core packages for Apache Spark to connect to Databricks SQL or to use Spark DataFrames on Databricks.
 

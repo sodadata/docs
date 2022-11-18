@@ -6,6 +6,7 @@ parent: Connect a data source
 ---
 
 # Connect Soda to Azure Synapse (Experimental)
+*Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
 

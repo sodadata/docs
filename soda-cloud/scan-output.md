@@ -6,6 +6,7 @@ parent: Soda Cloud
 ---
 
 # Scan output in Soda Cloud
+*Last modified on {% last_modified_at %}*
 
 When you define checks in a [checks YAML file]({% link soda-core/how-core-works.md %}) and use Soda Core to run a scan, the check results manifest in the **Checks Results** table in Soda Cloud. Log in to view the **Checks** dashboard; each row in the **Checks Results** table represents the result of a check, and the icon indicates whether the test passed, warned, or failed.
 
@@ -25,19 +26,8 @@ Soda Core use a secure API to connect to Soda Cloud. When it completes a scan, S
 
 ![scan-with-cloud](/assets/images/scan-with-cloud.png){:height="350px" width="350px"}
 
-## Overwrite scan output in Soda Cloud
 
-When you use Soda Core to run a scan, Soda Core sends the test reults to Soda Cloud where they manifest as rows in the Check Results table. If you wish to overwrite a check result, you can do so by running the scan again and overwriting the timestamp.
-
-In Soda Core, use the `-t` or `--data-timestamp` option in your `soda scan` command and provide a timestamp date in ISO8601 format, as in the following example.
-
-```shell
-soda scan -d adventureworks -t 2021-04-28T09:00:00+02:00 -c configuration.yml tables/orders.yml
-```
-
-See [Add scan options]({% link soda-core/scan-core.md %}#add-scan-options) for more scan options.
-
-## Run an ad hoc scan ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+## Run an ad hoc scan 
 
 {% include ad-hoc-scan.md %}
 

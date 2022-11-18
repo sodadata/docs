@@ -7,6 +7,7 @@ parent: Soda Cloud
 
 # Create and track incidents 
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 When you create checks in Soda Core and you have connected Soda Core to a Soda Cloud account, Soda Core pushes all checks results from each scan to Soda Cloud. For a check that failed or triggered a warning, you have the option of creating an **Incident** for that check result in Soda Cloud to track your team's investigation and resolution of a data quality issue. 
 

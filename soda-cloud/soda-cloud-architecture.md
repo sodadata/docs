@@ -6,6 +6,7 @@ parent: Soda Cloud
 ---
 
 # Soda Cloud architecture
+*Last modified on {% last_modified_at %}*
 
 <br />
 

@@ -7,6 +7,7 @@ redirect_from: /soda/data-monitoring.html
 ---
 
 # Data concepts
+*Last modified on {% last_modified_at %}*
 
 *"Data teams are often flying blind. <br />We don’t have systems and processes in place to detect problems with data.  <br />As a result, data issues remain silent. <br />The software keeps on working, but on bad data."* <br />
  > –- Tom Baeyens, CTO and Co-founder, Soda

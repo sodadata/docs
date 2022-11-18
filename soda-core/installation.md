@@ -9,6 +9,7 @@ redirect_from:
 ---
 
 # Install Soda Core 
+*Last modified on {% last_modified_at %}*
 
 Soda Core is a command-line interface (CLI) tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data. Alternatively, you can use the Soda Core Python library to programmatically execute scans; see [Define programmatic scans using Python]({% link soda-core/programmatic.md %}).
 <br />
@@ -136,7 +137,10 @@ Reference the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activ
 
 ## Upgrade
 
-{% include upgrade-core.md %}
+To upgrade your existing Soda Core tool to the latest version, use the following command, replacing `soda-core-redshift` with the install package that matches the type of data source you are using.
+```shell
+pip install soda-core-redshift -U
+```
 
 ## Use Docker to run Soda Core
 

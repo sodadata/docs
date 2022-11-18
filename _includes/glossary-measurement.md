@@ -1,1 +1,0 @@
-The value for a metric that Soda Core collects during a scan. 

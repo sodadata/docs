@@ -6,6 +6,7 @@ parent: Soda Core
 ---
 
 # How Soda Core works 
+*Last modified on {% last_modified_at %}*
 
 **Soda Core** is a free, open-source command-line tool. It utilizes user-defined input to prepare SQL queries that run checks on datasets in a data source to find invalid, missing, or unexpected data. When checks fail, they surface the data that you defined as "bad" in the check. Armed with this information, you and your data engineering team can diagnose where the "bad" data entered your data pipeline and take steps to prioritize and resolve issues.
 
