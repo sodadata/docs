@@ -6,6 +6,7 @@ parent: Reference
 ---
 
 # Support
+*Last modified on {% last_modified_at %}*
 
 For the open source developer tools and free trial version of our cloud software, Soda offers free support to the Soda community of users in Slack. Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community in Slack</a> to ask and answer questions.
 <br />

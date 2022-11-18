@@ -6,6 +6,7 @@ parent: Soda CL
 ---
 
 # Validity metrics 
+*Last modified on {% last_modified_at %}*
 
 Use a validity metric in a check to surface invalid or unexpected values in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 

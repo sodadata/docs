@@ -6,6 +6,7 @@ parent: Get started
 ---
 
 # Soda product comparison
+*Last modified on {% last_modified_at %}*
 
 Use these matrices to review the features and functionality that Soda products have to offer.
 

@@ -6,6 +6,7 @@ parent: Soda Agent
 ---
 
 # Test Soda Agent deployment 
+*Last modified on {% last_modified_at %}*
 
 If you are curious about how the Soda Agent works but are not yet ready to deploy to an Amazon Elastic Kubernetes Service (EKS) cluster, you can use <a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank">minikube</a> to deploy an agent locally and connect it to your Soda Cloud account to see how things work.
 

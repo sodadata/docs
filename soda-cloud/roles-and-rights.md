@@ -7,6 +7,7 @@ parent: Soda Cloud
 
 # Roles and rights in Soda Cloud
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 To manage the actions of members that belong to a single organization, Soda Cloud uses roles and access rights. These roles and their associated rights of access enforce limits on the abilities for members to make additions and changes to datasets, to make changes to the Soda Cloud account, and to adjust the roles and rights of others.
 

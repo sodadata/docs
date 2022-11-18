@@ -7,6 +7,7 @@ redirect_from: /soda-core/community.html
 ---
 
 # Soda Community Code of Conduct
+*Last modified on {% last_modified_at %}*
 
 This code of conduct describes the tenets of the inclusive and harassment-free environment that is the Soda Community. We do not tolerate harassment or discrimination of any participant in any form.
 

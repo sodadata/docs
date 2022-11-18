@@ -6,6 +6,7 @@ parent: Reference
 ---
 
 # Soda Core usage statistics
+*Last modified on {% last_modified_at %}*
 
 To understand how users are using Soda Core, and to proactively capture bugs and performance issues, the Soda development team has added telemetry event tracking to Soda Core. 
 

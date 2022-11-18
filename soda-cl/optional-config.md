@@ -8,6 +8,7 @@ redirect_from:
 ---
 
 # Optional check configurations 
+*Last modified on {% last_modified_at %}*
 
 When you define SodaCL checks for data quality in your checks YAML file, you have the option of adding one or more extra configurations or syntax variations. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 

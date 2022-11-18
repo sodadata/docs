@@ -6,6 +6,7 @@ parent: Get started
 ---
 
 # Soda product overview
+*Last modified on {% last_modified_at %}*
 
 Soda has three parts that work together to establish and maintain the reliability of data in your organization: **Soda Core**, **Soda Checks Language**, and **Soda Cloud**.
 

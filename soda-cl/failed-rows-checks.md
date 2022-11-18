@@ -6,6 +6,7 @@ parent: SodaCL
 ---
 
 # Failed rows checks 
+*Last modified on {% last_modified_at %}*
 
 Use a failed rows check to explicitly send samples of rows that failed a check to Soda Cloud. 
 

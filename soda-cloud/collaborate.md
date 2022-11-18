@@ -9,6 +9,7 @@ redirect_from:
 ---
 
 # Collaborate on data monitoring
+*Last modified on {% last_modified_at %}*
 
 One of the main benefits of using Soda Cloud is the ability to collaborate with your teammates on the work to monitor and maintain data quality. Including multiple perspectives yields a more robust interpretation of "good quality data".
 
