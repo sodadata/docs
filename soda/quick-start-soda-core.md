@@ -6,6 +6,8 @@ parent: Get started
 ---
 
 # Quick start for Soda Core and Soda Cloud
+*Last modified on {% last_modified_at %}*
+<br />
 <br />
 
 ![soda-core-logo](/assets/images/soda-core-logo.png){:height="120px" width="120px"} <br />

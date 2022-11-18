@@ -6,6 +6,7 @@ parent: SodaCL
 ---
 
 # Custom check templates
+*Last modified on {% last_modified_at %}*
 
 Out of the box, Soda Checks Language (SodaCL) makes several [built-in metrics and checks]({% link soda-cl/metrics-and-checks.md %}), such as `row_count`, available for you to use to define checks for data quality. If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs, you can use [user-defined]({% link soda-cl/user-defined.md %}) and [failed rows]({% link soda-cl/failed-rows-checks.md %}) checks. 
 

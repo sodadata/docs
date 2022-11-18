@@ -6,6 +6,7 @@ parent: Get started
 ---
 
 # Quick start for SodaCL 
+*Last modified on {% last_modified_at %}*
 
 <br />
 

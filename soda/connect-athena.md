@@ -6,6 +6,7 @@ parent: Connect a data source
 ---
 
 # Connect Soda to Amazon Athena
+*Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
 

@@ -6,6 +6,7 @@ parent: Connect a data source
 ---
 
 # Connect Soda to ClickHouse (Experimental)
+*Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
 

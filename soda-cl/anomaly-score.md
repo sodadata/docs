@@ -8,6 +8,7 @@ redirect_from: /soda-cloud/anomaly-detection.html
 
 # Anomaly score checks 
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
 *Requires Soda Cloud and Soda Core Scientific.*<br />

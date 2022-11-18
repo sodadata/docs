@@ -7,6 +7,7 @@ parent: SodaCL
 
 # Reference checks 
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 Use a reference check to validate that column contents match between datasets in the same data source. 
 
