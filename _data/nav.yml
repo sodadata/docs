@@ -58,17 +58,17 @@
     page: soda-agent/overview.md
   - subtitle: Soda Agent basic concepts
     page: soda-agent/basics.md
-  - subtitle: Deploy a Soda Agent in EKS
+  - subtitle: Deploy an Agent in a cluster
     page: soda-agent/deploy.md
-  - subtitle: Deploy a Soda Agent in AKS
+  - subtitle: Deploy an Agent in EKS
+    page: soda-agent/deploy-aws.md
+  - subtitle: Deploy an Agent in AKS
     page: soda-agent/deploy-azure.md
-  - subtitle: Deploy a Soda Agent in GKE
+  - subtitle: Deploy an Agent in GKE
     page: soda-agent/deploy-gcp.md
-  - subtitle: Test Soda Agent deployment
-    page: soda-agent/test-deploy.md
-  - subtitle: Upgrade a Soda Agent
+  - subtitle: Upgrade an Agent
     page: soda-agent/upgrade.md
-  - subtitle: Decommission a Soda Agent
+  - subtitle: Decommission an Agent
     page: soda-agent/delete.md
 
 - title: Soda Cloud
