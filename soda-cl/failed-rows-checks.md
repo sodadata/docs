@@ -31,6 +31,7 @@ checks for dim_customer:
 [Set a sample limit](#set-a-sample-limit)<br />
 [Group results by category](#group-results-by-category)<br />
 [Disable failed rows sampling for specific columns](#disable-failed-rows-sampling-for-specific-columns)<br />
+[Reroute failed rows samples](#reroute-failed-rows-samples)<br />
 [Configure a failed row sampler](#configure-a-failed-row-sampler)<br />
 [Go further](#go-further)<br />
 <br />
@@ -232,34 +233,25 @@ data_source my_datasource_name:
 ```
 <br />
 
-<div class="warpper">
-  <input class="radio" id="one" name="group" type="radio" checked>
-  <input class="radio" id="two" name="group" type="radio">
-  <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Configure in Soda Cloud</label>
-  <label class="tab" id="two-tab" for="two">Configure using Soda Core </label>
-    </div>
-  <div class="panels">
-  <div class="panel" id="one-panel" markdown="1">
+#### Configure in Soda Cloud
 
 1. As an Admin user, log in to Soda Cloud, then navigate to an existing data source: **your avatar** > **Scans & Data**.
 2. In the **Data Sources** tab, click to open the data source that contains the columns in the dataset that you wish to exclude from failed rows sampling, then navigate to the **Connect the Data Source** tab.
-3. To the connection configuration, add the `sampler` configuration.
+3. To the connection configuration, add the `sampler` configuration as outlined above.
 4. Save the changes.
- 
-<br />
+
 Alternatively, you can disable the failed row samples feature entirely in Soda Cloud; see [Disable failed row samples]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples) for details.
 
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
+<br />
+
+#### Configure in Soda Core
 
 1. Open the [configuration YAML file]({% link soda-core/configuration.md %}#configuration-instructions) that contains the data source connection configuration for the data source that contains the dataset that contains the columns that you wish to exclude from failed rows sampling.
-2. To the connection configuration, add the `sampler` configuration to specify the columns you wish to exclude
+2. To the connection configuration, add the `sampler` configuration to specify the columns you wish to exclude, as outlined above.
 3. Save the changes to the file.
 
-  </div>
-  </div>
-</div>
+
+<br />
 
 ### Disabling options and details
 
@@ -348,6 +340,52 @@ SELECT id, cst_size, cst_size_txt, distance, pct, country, zip, email, date_upda
 ```
 
 <br />
+
+## Reroute failed rows samples
+
+If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. To do so, add the `storage` configuration to your data source connection configuration to specify the columns you wish to exclude, as per the following examples. 
+
+Soda sends the failed rows samples as a JSON payload.
+
+```yaml
+data_source my_datasource_name: 
+  type: postgres
+  connection:
+    host: localhost
+    port: '5432'
+    username: ***
+    password: ***
+  database: postgres
+  schema: public
+  storage:
+    type: http
+    url: http://failedrows.example.com
+    message: Failed rows have been sent to failedrows.example.com
+```
+
+| Parameter  | Value      | Description |
+| ---------- | ---------- | ----------- |
+| `type`     | `http`     | Provide an HTTP endpoint such as a Lambda function, or a custom Python HTTP service. |
+| `url`      |  any URL   | Provide a valid URL that accepts JSON payloads. |
+| `message ` | any string | (Optional) Provide a customized message that Soda Cloud displays in the failed rows tab to direct your fellow Soda Cloud users to the location where the failed rows samples are stored in your environment. |
+
+#### Configure in Soda Cloud
+
+1. As an Admin user, log in to Soda Cloud, then navigate to an existing data source: **your avatar** > **Scans & Data**.
+2. In the **Data Sources** tab, click to open the data source for which you wish to reroute failed rows samples, then navigate to the **Connect the Data Source** tab.
+3. To the connection configuration, add the `storage` configuration as outlined above.
+4. Save the changes.
+
+<br />
+
+#### Configure in Soda Core
+
+1. Open the [configuration YAML file]({% link soda-core/configuration.md %}#configuration-instructions) that contains the data source connection configuration for the data source for which you wish to reroute failed rows samples.
+2. To the connection configuration, add the `storage` configuration to specify the columns you wish to exclude, as outlined above.
+3. Save the changes to the file.
+
+<br />
+
 
 ## Configure a failed row sampler
 

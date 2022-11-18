@@ -12,6 +12,7 @@ parent: Reference
 #### November 18, 2022
 
 * Added a [list of valid formats]({% link soda-cl/validity-metrics.md %}#formats-supported-with-soda-for-ms-sql-server) for validity metrics that Soda for MS SQL Server supports.
+* Added documentation for [rerouting failed rows samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to an HTTP endpoint; supported as of Soda Core 3.0.13.
 
 #### November 16, 2022
 
