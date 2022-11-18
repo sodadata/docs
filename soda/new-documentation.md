@@ -9,9 +9,13 @@ parent: Reference
 
 <br />
 
-#### November 17, 2022
+#### November 18, 2022
 
 * Archived all Soda SQL and Soda Spark content to the <a href="https://github.com/sodadata/soda-sql/tree/main/docs" target="_blank">sodadata/soda-sql</a> repository in GitHub. 
+
+#### November 16, 2022
+
+* Added content to more explictly describe the metrics that dataset discovery and column profiling derive, and the potential [compute costs]({% link soda-cl/profile.md %}#compute-consumption-and-cost-considerations) associated with these configurations.
 
 #### November 15, 2022
 
