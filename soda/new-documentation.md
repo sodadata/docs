@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 18, 2022
+
+* Added a [list of valid formats]({% link soda-cl/validity-metrics.md %}#formats-supported-with-soda-for-ms-sql-server) for validity metrics that Soda for MS SQL Server supports.
+
 #### November 16, 2022
 
 * Added content to more explictly describe the metrics that dataset discovery and column profiling derive, and the potential [compute costs]({% link soda-cl/profile.md %}#compute-consumption-and-cost-considerations) associated with these configurations.
