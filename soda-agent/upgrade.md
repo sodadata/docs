@@ -10,7 +10,7 @@ parent: Soda Agent
 
 To take advantage of new or improved features and functionality in the Soda Agent, you can upgrade your agent when a new version becomes available <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>.
 
-1. Use the following command to find out which version of the Soda Agent Helm chart you have deployed on your EKS cluster.
+1. Use the following command to find out which version of the Soda Agent Helm chart you have deployed on your cluster.
 ```shell
 helm list -n soda-agent
 ```
@@ -23,6 +23,10 @@ helm search hub soda-agent
 helm repo update
 ```
 4. Upgrade the Soda Agent Helm chart.
+```shell
+helm upgrade soda-agent soda-agent/soda-agent 
+```
+OR
 ```shell
 helm upgrade soda-agent soda-agent/soda-agent \
    --values values-local.yml --namespace soda-agent
