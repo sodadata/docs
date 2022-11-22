@@ -12,6 +12,7 @@ The **Soda Agent** is a tool that empowers Soda Cloud users to securely access d
 
 Create an Azure Kubernetes Service (AKS) cluster, then use Helm to deploy a Soda Agent in the cluster. This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. [Read more]({% link soda-agent/basics.md %}).
 
+[About the Soda Agent](#about-the-soda-agent)<br />
 [Deployment overview](#deployment-overview)<br />
 [Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
@@ -28,6 +29,9 @@ Create an Azure Kubernetes Service (AKS) cluster, then use Helm to deploy a Soda
 [Go further](#go-further)<br />
 <br />
 
+## About the Soda Agent
+
+{% include soda-agent.md %}
 
 ## Deployment overview
 

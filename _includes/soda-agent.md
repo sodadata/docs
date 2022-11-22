@@ -1,4 +1,4 @@
-The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. 
+**WIP**
 
 To connect Soda Cloud to the data sources in which you wish to run data quality scans, you must use one of two methods:
 1. Install Soda Core in your environment and configure it to connect to the data sources you wish to scan.

@@ -10,7 +10,7 @@ redirect_from: /soda-agent/test-deploy.html
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-{% include soda-agent.md %}
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. 
 
 These deployment instructions offer generic guidance for setting up a Kubernetes cluster and deploying a Soda Agent in it. Instead, you may wish to access a cloud service-specific set of instructions for:
 * [Amazon Elastic Kubernetes Service (EKS)]({% link soda-agent/deploy-aws.md %})
@@ -19,6 +19,7 @@ These deployment instructions offer generic guidance for setting up a Kubernetes
 
 <br />
 
+[About the Soda Agent](#about-the-soda-agent)<br />
 [Deployment overview](#deployment-overview)<br />
 [Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
@@ -34,6 +35,10 @@ These deployment instructions offer generic guidance for setting up a Kubernetes
 [Troubleshoot deployment](#troubleshoot-deployment)<br />
 [Go further](#go-further)<br />
 <br />
+
+## About the Soda Agent
+
+{% include soda-agent.md %}
 
 ## Deployment overview
 
