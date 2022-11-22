@@ -31,6 +31,7 @@ These deployment instructions offer generic guidance for setting up a Kubernetes
 [About the `helm install` command](#about-the-helm-install-command)<br />
 [Helpful commands](#helpful-commands)<br />
 [(Optional) Decommission the Soda Agent and cluster](#optional-decomission-the-soda-agent-and-cluster)<br />
+[Troubleshoot deployment](#troubleshoot-deployment)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -47,6 +48,8 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 ## Prerequisites
 
+* (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
+* You have installed <a href="https://docs.docker.com/get-docker/" target="_blank">Docker</a> in your local environment.
 * You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. With Docker running, use the command `kubectl version --output=yaml` to check the version of an existing install.
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
 
@@ -76,13 +79,13 @@ minikube start --driver=docker
 ```shell
 minikube kubectl -- create namespace soda-agent
 ```
-4. Run the following command to verify which cluster kubectl regcognizes as the current one. 
-```shell
-minikube kubectl -- config get-contexts
-```
-The namespace associated with `CURRENT` must be `soda-agent`. If it is not, use the following command to change contexts. 
+4. Run the following command to change the context to associate the current namespace to `soda-agent`.  
 ```shell
 minikube kubectl -- config set-context --current --namespace=soda-agent
+```
+5. Run the following command to verify that the cluster kubectl regcognizes `soda-agent` as the current namespace. 
+```shell
+minikube kubectl -- config get-contexts
 ```
 ```shell
 CURRENT   NAME               CLUSTER          AUTHINFO          NAMESPACE
@@ -128,7 +131,7 @@ REVISION: 1
 ```shell
 minikube kubectl -- describe pods
 ```
-4. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 7 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
+4. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
 Containers:
@@ -173,7 +176,7 @@ helm install soda-agent soda-agent/soda-agent \
 minikube kubectl -- describe pods
 ```
 5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> 
-Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
+Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
 Containers:
@@ -253,7 +256,7 @@ data_source your_datasource_name:
 
 ```shell
 helm install soda-agent soda-agent/soda-agent \
-  --set soda.agent.target=aws-eks \
+  --set soda.agent.target=minikube \
   --set soda.agent.name=myuniqueagent \
   --set soda.apikey.id=*** \
   --set soda.apikey.secret=**** \
@@ -271,7 +274,7 @@ The `--set` options either override or set some of the values defined in and use
 
 | Option key      | Option value, description   |
 |-----------------|--------------------------------|
-| `--set soda.agent.target` | Use `default`, or `minikube`. |
+| `--set soda.agent.target` | Use `minikube`. |
 | `--set soda.agent.name`   | A unique name for your Soda Agent. Choose any name you wish, as long as it is unique in your Soda Cloud account. |
 | `--set soda.apikey.id`    | With the apikey.secret, this connects the Soda Agent to your Soda Cloud account. Use the value you copied from the dialog box in Soda Cloud when adding a new agent. You can use a [values.yml file](#deploy-using-a-values-yaml-file) to pass this value to the cluster instead of exposing it here.|
 | `--set soda.apikey.secret`    | With the apikey.id, this connects the Soda Agent to your Soda Cloud account. Use the value you copied from the dialog box in Soda Cloud when adding a new agent. You can use a [values.yml file](#deploy-using-a-values-yaml-file) to pass this value to the cluster instead of exposing it here.|
@@ -352,6 +355,36 @@ minikube delete
 ```shell
 💀  Removed all traces of the "minikube" cluster.
 ```
+
+## Troubleshoot deployment
+
+**Problem:** During deployment, you run `minikube kubectl -- describe pods` and the following error occurs: `ImagePullBackOff`.
+```shell
+...
+Containers:
+  soda-agent-orchestrator:
+    Container ID:   
+    Image:          sodadata/agent-orchestrator:v1.0.15
+    Image ID:       
+    Port:           <none>
+    Host Port:      <none>
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+
+```
+
+**Solution:**  
+
+<br />
+
+**Problem:** I have deployed the agent in a cluster and it shows as running, but the agent in Soda Cloud shows as "offline". 
+
+**Solution:**
+
+<br />
+
 
 ## Go further
 

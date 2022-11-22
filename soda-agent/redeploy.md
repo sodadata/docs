@@ -1,4 +1,12 @@
-## Redeploy an agent
+---
+layout: default
+title: Redeploy a Soda Agent
+description: Redeploy a Soda Agent in a Kubernetes cluster.
+parent: Soda Agent
+---
+
+# Redeploy a Soda Agent
+*Last modified on {% last_modified_at %}*
 
 When you delete the Soda Agent Helm chart from your cluster, you also delete all the agent resources on your cluster. However, if you wish to redeploy the previously-registered agent (use the same name), you need to specify the agent ID in your override values in your values YAML file.
 
@@ -22,7 +30,26 @@ helm install soda-agent soda-agent/soda-agent \
   --values values.yml \
   --namespace soda-agent
 ```
-5. (Optional) Validate the Soda Agent deployment by running the following command:
+5. Validate the Soda Agent deployment by running the following command:
 ```shell
 kubectl describe pods
 ```
+
+
+## Go further
+
+* Learn how to [deploy a Soda Agent]({% link soda-agent/deploy.md %}) for the first time.
+* Learn more about securely accessing login credentials.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+<br />
+
+---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
+{% include docs-footer.md %}
