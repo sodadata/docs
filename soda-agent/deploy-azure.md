@@ -8,11 +8,10 @@ parent: Soda Agent
 # Deploy a Soda Agent in AKS
 *Last modified on {% last_modified_at %}*
 
-The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. 
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create an **Azure Kubernetes Service (AKS)** cluster, then use Helm to deploy a Soda Agent in the cluster. 
 
-Create an Azure Kubernetes Service (AKS) cluster, then use Helm to deploy a Soda Agent in the cluster. This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. [Read more]({% link soda-agent/basics.md %}).
+This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. 
 
-[About the Soda Agent](#about-the-soda-agent)<br />
 [Deployment overview](#deployment-overview)<br />
 [Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
@@ -24,14 +23,13 @@ Create an Azure Kubernetes Service (AKS) cluster, then use Helm to deploy a Soda
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only - regular cluster](#deploy-using-cli-only---regular-cluster)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only - virtual cluster](#deploy-using-cli-only---virtual-cluster)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file)<br />
+[(Optional) Create a practice data source](#optional-create-a-practice-data-source)<br />
 [About the `helm install` command](#about-the-helm-install-command)<br />
+[Decommission the Soda Agent and the AKS cluster](#decommission-the-soda-agent-and-the-aks-cluster)<br />
 [Troubleshoot deployment](#troubleshoot-deployment)<br />
 [Go further](#go-further)<br />
 <br />
 
-## About the Soda Agent
-
-{% include soda-agent.md %}
 
 ## Deployment overview
 
@@ -123,8 +121,7 @@ aks-nodepool1-15273607-vmss000000   Ready    agent   40m   v1.23.12
 
 ### Create a virtual cluster
 
-AKS provides an interesting solution using the virtual nodes option, a fairly recent addition to its offering. Through this, Kubernetes pods can be launched using Azure's ACI (Azure Container Instances), which would mean a serverless approach for the cluster and less upfront tweaking of the provisioning baseline. The approach has limitations as well, but it could offer a useful starting point. Switching to a fully managed server at some point afterwards remains an option anyway.
-Also, for this approach to work, the virtual nodes make use of a virtual network allowing the pods in the cluster to communicate. Only AKS clusters configured with advanced networking will be able to use virtual nodes. The below mentioned steps and networking parts are also covered in great detail in the Azure documentation.
+Use Azure's ACI (Azure Container Instances) to create Kubernetes pods for a serverless approach. The virtual nodes make use of a virtual network allowing the pods in the cluster to communicate. Only AKS clusters configured with advanced networking can use virtual nodes. <a href="https://learn.microsoft.com/en-us/azure/aks/virtual-nodes-cli" target="_blank">Read more</a>.
 
 1. From the command-line, verify if the Azure Container Instances (ACI) provider is enabled for your subscription.
 ```shell
@@ -171,7 +168,7 @@ az network vnet create \
   --subnet-name SodaAgentSubnet \
   --subnet-prefix 10.100.100.0/24
 ```
-7. Note of the ID of the subnet which you just created, or use the following command to find it and store it in a variable.
+7. Note of the ID of the subnet which you just created, or use the following command to find it and store it in a variable. When you wish to [decommission the agent and its cluster](#decommission-a-soda-agent-and-the-aks-cluster), you need the subnet and vnet IDs.
 ```shell
 subnetid=$(az network vnet subnet show \
   --resource-group SodaAgent \
@@ -196,7 +193,7 @@ The following table outlines the ways you can install the Helm chart to deploy a
 |--------|-------------|-------------|
 | [CLI only - regular cluster](#deploy-using-cli-only---regular-cluster) | Install the Helm chart via CLI by providing values directly in the install command. | Use this as a straight-forward way of deploying an agent on a cluster in a secure or local environment. | 
 | [CLI only - virtual cluster](#deploy-using-cli-only---virtual-cluster) | Install the Helm chart via CLI by providing values directly in the install command. | Use this as a straight-forward way of deploying an agent on a cluster in a secure or local environment. | 
-| [Use values YAML file](#deploy-using-a-values-yaml-file) | Install the Helm chart via CLI by providing values in a values YAML file. | Use this as a way of deploying an agent on a cluster while keeping sensitive values secure. <br /> - provide sensitive API key values in this local file <br /> - store data source login credentials as environment variables in this local file; Soda needs access to the credentials to be able to connect to your data source to run scans of your data.|
+| [Use a values YAML file](#deploy-using-a-values-yaml-file) | Install the Helm chart via CLI by providing values in a values YAML file. | Use this as a way of deploying an agent on a cluster while keeping sensitive values secure. <br /> - provide sensitive API key values in this local file <br /> - store data source login credentials as environment variables in this local file; Soda needs access to the credentials to be able to connect to your data source to run scans of your data. See: [Manage sensitive values]({% link soda-agent/secrets.md %}).|
 
 
 ### Deploy using CLI only - regular cluster
@@ -282,6 +279,49 @@ kubectl get nodes
 NAME                                STATUS   ROLES   AGE   VERSION
 aks-nodepool1-15273607-vmss000000   Ready    agent   40m   v1.23.12
 ```
+7. Use Helm to add the Soda Agent Helm chart repository.
+```shell
+helm repo add soda-agent https://helm.soda.io/soda-agent/
+```
+8. Create a namespace for the agent.
+```shell
+kubectl create ns soda-agent
+```
+```shell
+namespace/soda-agent created
+```
+9. Use one of the following command to install the Helm chart which deploys a Soda Agent in your custer. 
+* Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud. The cluster stores these key values as Kubernetes secrets.<br /> Alternatively, you can install the agent using a values.yml file to store all the `--set` values in a local file. See [Deploy using values YAML file](#deploy-using-values-yaml-file).
+* Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
+* Read more [about the `helm install` command](#about-the-helm-install-command).
+```shell
+helm install soda-agent soda-agent/soda-agent \
+  --set soda.agent.target=azure-aks-virtualnodes \
+  --set soda.agent.name=myuniqueagent \
+  --set soda.apikey.id=*** \
+  --set soda.apikey.secret=**** \
+  --namespace soda-agent
+```
+The command-line produces output like the following message:
+```shell
+NAME: soda-agent
+LAST DEPLOYED: Mon Nov 21 16:29:38 2022
+NAMESPACE: soda-agent
+STATUS: deployed
+REVISION: 1
+```
+4. (Optional) Validate the Soda Agent deployment by running the following command:
+```shell
+kubectl get pods -n soda-agent
+```
+```shell
+NAME                                     READY   STATUS    RESTARTS   AGE
+soda-agent-orchestrator-ffd74c76-5g7tl   1/1     Running   0          32s
+```
+5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+Be aware that this may take several minutes to appear in your list of Soda Agents. 
+![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
+5. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed.
 
 
 ### Deploy using a values YAML file
@@ -321,38 +361,37 @@ kubectl -- describe pods
 6. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. 
 
 
+## (Optional) Create a practice data source
+
+{% include agent-practice-datasource.md %}
+
 
 ## About the `helm install` command
 
+{% include agent-helm-command.md %}
+
+
+## Decommission the Soda Agent and the AKS cluster
+
+1. Delete everything in the namespace which you created for the Soda Agent.
 ```shell
-helm install soda-agent soda-agent/soda-agent \
-  --set soda.agent.target=aws-eks \
-  --set soda.agent.name=myuniqueagent \
-  --set soda.apikey.id=*** \
-  --set soda.apikey.secret=**** \
-  --namespace soda-agent
+kubectl delete ns soda-agent
+```
+2. Delete the cluster. Be patient; this task may take some time to complete.
+```shell
+az aks delete --resource-group SodaAgent --name soda-agent-cli-test --yes
+```
+3. If you created an additional subnet for virtual nodes, delete the subnet. The `subnet` and `vnet` values must match the names you used during deployment.
+```shell
+az network vnet subnet delete \
+  --resource-group SodaAgent \
+  --name SodaAgentVirtualNodeSubnet \
+  --vnet-name SodaAgentVnet
 ```
 
-| Command part | Description   |
-|--------------|---------------|
-| helm install | the action helm is to take | 
-| `soda-agent` (the first one) | a release named soda-agent on your cluster |
-| `soda-agent` (the second one)| the name of the helm repo you added in [step 1](#deploy-an-agent-to-the-cluster)|
-| `soda-agent` (the third one) | the name of the helm chart that is the Soda Agent |
-
-The `--set` options either override or set some of the values defined in and used by the Helm chart. You can override these values with the `--set` files as this command does, or you can specify the override values using a [values.yml](#deploy-using-a-values-yaml-file) file. 
-
-| Option key      | Option value, description   |
-|-----------------|--------------------------------|
-| `--set soda.agent.target` | Use `aws-eks`. |
-| `--set soda.agent.name`   | A unique name for your Soda Agent. Choose any name you wish, as long as it is unique in your Soda Cloud organization. |
-| `--set soda.apikey.id`    | With the apikey.secret, this connects the Soda Agent to your Soda Cloud organization. Use the value you copied from the dialog box in Soda Cloud when adding a new agent. You can use a [values.yml file](#deploy-using-a-values-yaml-file) to pass this value to the EKS cluster instead of exposing it here.|
-| `--set soda.apikey.secret`    | With the apikey.id, this connects the Soda Agent to your Soda Cloud organization. Use the value you copied from the dialog box in Soda Cloud when adding a new agent. You can use a [values.yml file](#deploy-using-a-values-yaml-file) to pass this value to the EKS cluster instead of exposing it here.|
-| `--namespace soda-agent` | Use the namespace value to identify the namespace in which to deploy the agent. 
 
 
-
-### Troubleshoot deployment
+### Troubleshoot deployment 
 
 **Problem:** When you attempt to create a cluster, you get an error that reads, `An RSA key file or key value must be supplied to SSH Key Value. You can use --generate-ssh-keys to let CLI generate one for you`. 
 
@@ -370,7 +409,8 @@ az aks create \
 ## Go further
 
 * Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed.
-* Learn more about securely accessing login credentials.
+* Access a list of [helpful `kubectl` commands]({% link soda-agent/helpful-commands.md %}) for running commands on your Kubernetes cluster.
+* [Learn more]({% link soda-agent/secrets.md %}) about securely storing and accessing API keys and data source login credentials.
 * Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

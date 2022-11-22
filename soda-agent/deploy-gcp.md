@@ -7,9 +7,9 @@ parent: Soda Agent
 
 # Deploy a Soda Agent 
 
-{% include soda-agent.md %}
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Google Kubernetes Engine (GKE) cluster, then use Helm to deploy the Soda Agent in the cluster. 
 
-Create a Google Kubernetes Engine (GKE) cluster, then use Helm to deploy the Soda Agent in the cluster. This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. [Read more]({% link soda-agent/basics.md %})
+This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. 
 
 
 [Deployment overview](#deployment-overview)<br />

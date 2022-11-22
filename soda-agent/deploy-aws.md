@@ -8,11 +8,10 @@ parent: Soda Agent
 # Deploy a Soda Agent in Amazon EKS
 *Last modified on {% last_modified_at %}*
 
-The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. 
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create an **Amazon Elastic Kubernetes Service (EKS) Fargate** cluster, then use Helm to deploy a Soda Agent in the cluster. 
 
-Create an Amazon Elastic Kubernetes Service (EKS) Fargate cluster, then use Helm to deploy a Soda Agent in the cluster. This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. [Read more]({% link soda-agent/basics.md %}).
+This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. 
 
-[About the Soda Agent](#about-the-soda-agent)<br />
 [Deployment overview](#deployment-overview)<br />
 [Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
@@ -21,14 +20,14 @@ Create an Amazon Elastic Kubernetes Service (EKS) Fargate cluster, then use Helm
 [Deploy a Soda Agent](#deploy-a-soda-agent)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only](#deploy-using-cli-only)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file)<br />
+[(Optional) Create a practice data source](#optional-create-a-practice-data-source)<br />
 [About the `helm install` command](#about-the-helm-install-command)<br />
+[Decommission the Soda Agent and the EKS cluster](#decommission-the-soda-agent-and-the-eks-cluster)<br />
 [Troubleshoot deployment](#troubleshoot-deployment)<br />
 [Go further](#go-further)<br />
 <br />
 
-## About the Soda Agent
 
-{% include soda-agent.md %}
 
 ## Deployment overview
 
@@ -97,7 +96,7 @@ The following table outlines the two ways you can install the Helm chart to depl
 | Method | Description | When to use |
 |--------|-------------|-------------|
 | [CLI only](#deploy-using-cli-only) | Install the Helm chart via CLI by providing values directly in the install command. | Use this as a straight-forward way of deploying an agent on a cluster in a secure or local environment. | 
-| [Use values YAML file](#deploy-using-a-values-yaml-file) | Install the Helm chart via CLI by providing values in a values YAML file. | Use this as a way of deploying an agent on a cluster while keeping sensitive values secure. <br /> - provide sensitive API key values in this local file <br /> - store data source login credentials as environment variables in this local file; Soda needs access to the credentials to be able to connect to your data source to run scans of your data.|
+| [Use a values YAML file](#deploy-using-a-values-yaml-file) | Install the Helm chart via CLI by providing values in a values YAML file. | Use this as a way of deploying an agent on a cluster while keeping sensitive values secure. <br /> - provide sensitive API key values in this local file <br /> - store data source login credentials as environment variables in this local file; Soda needs access to the credentials to be able to connect to your data source to run scans of your data. See: [Manage sensitive values]({% link soda-agent/secrets.md %}).|
 
 
 ### Deploy using CLI only
@@ -194,45 +193,43 @@ Containers:
 6. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. 
 
 
+## (Optional) Create a practice data source
+
+{% include agent-practice-datasource.md %}
+
 
 ## About the `helm install` command
 
+{% include agent-helm-command.md %}
+
+
+## Decommission the Soda Agent and the EKS cluster
+
+1. Uninstall the Soda Agent in the cluster.
 ```shell
-helm install soda-agent soda-agent/soda-agent \
-  --set soda.agent.target=aws-eks \
-  --set soda.agent.name=myuniqueagent \
-  --set soda.apikey.id=*** \
-  --set soda.apikey.secret=**** \
-  --namespace soda-agent
+helm delete soda-agent -n soda-agent
 ```
-
-| Command part | Description   |
-|--------------|---------------|
-| helm install | the action helm is to take | 
-| `soda-agent` (the first one) | a release named soda-agent on your cluster |
-| `soda-agent` (the second one)| the name of the helm repo you added in [step 1](#deploy-an-agent-to-the-cluster)|
-| `soda-agent` (the third one) | the name of the helm chart that is the Soda Agent |
-
-The `--set` options either override or set some of the values defined in and used by the Helm chart. You can override these values with the `--set` files as this command does, or you can specify the override values using a [values.yml](#deploy-using-a-values-yaml-file) file. 
-
-| Option key      | Option value, description   |
-|-----------------|--------------------------------|
-| `--set soda.agent.target` | Use `aws-eks`. |
-| `--set soda.agent.name`   | A unique name for your Soda Agent. Choose any name you wish, as long as it is unique in your Soda Cloud organization. |
-| `--set soda.apikey.id`    | With the apikey.secret, this connects the Soda Agent to your Soda Cloud organization. Use the value you copied from the dialog box in Soda Cloud when adding a new agent. You can use a [values.yml file](#deploy-using-a-values-yaml-file) to pass this value to the EKS cluster instead of exposing it here.|
-| `--set soda.apikey.secret`    | With the apikey.id, this connects the Soda Agent to your Soda Cloud organization. Use the value you copied from the dialog box in Soda Cloud when adding a new agent. You can use a [values.yml file](#deploy-using-a-values-yaml-file) to pass this value to the EKS cluster instead of exposing it here.|
-| `--namespace soda-agent` | Use the namespace value to identify the namespace in which to deploy the agent. 
-
+2. Remove the Fargate profile.
+```shell
+eksctl delete fargateprofile --cluster soda-agent --name soda-agent-profile
+```
+3. Wait for the Fargate profile deletion to complete, then delete the EKS cluster itself.
+```shell
+eksctl delete cluster --name soda-agent
+```
+4. (Optional) Access your <a href="https://eu-central-1.console.aws.amazon.com/cloudformation/home" target="_blank"> CloudFormation console</a>, then click **Stacks** to view the status of your decommissioned cluster. <br /> If you do not see your Stack, use the region drop-down menu at upper-right to select the region in which you created the cluster.
 
 
 ### Troubleshoot deployment
 
-**Error:** `UnauthorizedOperation: You are not authorized to perform this operation.`
+**Problem:** `UnauthorizedOperation: You are not authorized to perform this operation.`
 
-This error indicates that your user profile is not authorized to create the cluster. Contact your AWS Administrator to request the appropriate permissions.
+**Solution:** This error indicates that your user profile is not authorized to create the cluster. Contact your AWS Administrator to request the appropriate permissions.
 
 
-**Error:** `ResourceNotFoundException: No cluster found for name: soda-agent.` 
+**Problem:** `ResourceNotFoundException: No cluster found for name: soda-agent.` 
+
+**Solution:**
 
 If you get an error like this when you attempt to create a Fargate profile, it may be a question of region. 
 1. Access your <a href="https://us-west-1.console.aws.amazon.com/cloudformation/home" target="_blank">AWS CloudFormation console</a>, then click **Stacks* to find the eksctl-soda-agent-cluster that you created in step 1. If you do not see the stack, adjust the region of your CloudFormation console (top nav bar, next to your username).
@@ -253,7 +250,8 @@ eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --re
 ## Go further
 
 * Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed.
-* Learn more about securely accessing login credentials.
+* Access a list of [helpful `kubectl` commands]({% link soda-agent/helpful-commands.md %}) for running commands on your Kubernetes cluster.
+* [Learn more]({% link soda-agent/secrets.md %}) about securely storing and accessing API keys and data source login credentials.
 * Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

@@ -10,7 +10,9 @@ redirect_from: /soda-agent/
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-{% include soda-agent.md %}
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kuberenets cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster. 
+
+This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. 
 
 What follows is an extremely abridged introduction to a few basic elements involved in the deployment and setup of a Soda Agent.
 
@@ -24,14 +26,16 @@ Both Soda Core and Soda Cloud make use of **Soda Checks Language (SodaCL)** to w
 
 ![agent-diagram](/assets/images/agent-diagram.png){:height="640px" width="640px"}
 
-**Kubernetes** is a system for orchestrating containerized applications; a **Kubernetes cluster** is a set of resources that support an application environment. You need a Kubernetes cluster in which to deploy the containerized applications that make up the **Soda Agent**. The Kubernetes cluster is also where you store **Kubernetes secrets**, such as login credentials, which Kubernetes creates independently on the pods that use them. (Pods are a basic workload unit in Kubernetes, usually an instance of one container.) Learn more about <a href="https://www.youtube.com/watch?v=BOj1sgWVXko" target="_blank" >Kubernetes concepts</a>.
+**Kubernetes** is a system for orchestrating containerized applications; a **Kubernetes cluster** is a set of resources that support an application environment. 
+
+You need a Kubernetes cluster in which to deploy the containerized applications that make up the **Soda Agent**. The Kubernetes cluster is also where you store **Kubernetes secrets**, such as login credentials, which Kubernetes creates independently on the pods that use them. (Pods are a basic workload unit in Kubernetes, usually an instance of one container.) Learn more about <a href="https://www.youtube.com/watch?v=BOj1sgWVXko" target="_blank" >Kubernetes concepts</a>.
 
 Within a cloud services provider environment is *where* you create your Kubernetes cluster. You can deploy a Soda Agent in any environment in which you can create Kubernetes clusters such as:
 
-* **Amazon Elastic Kubernetes Service (EKS)** 
-* **Microsoft Azure Kubernetes Service (AKS)** 
-* **Google Kubernetes Engine (GKE)** 
-* Locally, using **Minikube**
+* Amazon Elastic Kubernetes Service (EKS)
+* Microsoft Azure Kubernetes Service (AKS)
+<!--Google Kubernetes Engine (GKE) -->
+* Locally, using Minikube
 
 **Helm** is a package manager for Kubernetes which bundles YAML files together for storage in a public or private repository. This bundle of YAML files is referred to as a **Helm chart**. The Soda Agent is a Helm chart. Anyone with access to the Helm chart's repo can deploy the chart to make use of YAML files in it. Learn more about <a href="https://www.youtube.com/watch?v=-ykwb1d0DXU" target="_blank" >Helm concepts</a>. 
 

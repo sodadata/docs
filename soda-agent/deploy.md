@@ -3,7 +3,9 @@ layout: default
 title: Deploy a Soda Agent in a Kubernetes cluster
 description: Learn how to deploy a Soda Agent in a Kubernetes cluster.
 parent: Soda Agent
-redirect_from: /soda-agent/test-deploy.html
+redirect_from: 
+- /soda-agent/test-deploy.html
+- /soda-agent/delete.html
 ---
 
 # Deploy a Soda Agent in a Kubernetes cluster
@@ -12,14 +14,13 @@ redirect_from: /soda-agent/test-deploy.html
 
 The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. 
 
-These deployment instructions offer generic guidance for setting up a Kubernetes cluster and deploying a Soda Agent in it. Instead, you may wish to access a cloud service-specific set of instructions for:
+These deployment instructions offer generic guidance for setting up a Kubernetes cluster and deploying a Soda Agent in it. Instead, you may wish to access a cloud service provider-specific set of instructions for:
 * [Amazon Elastic Kubernetes Service (EKS)]({% link soda-agent/deploy-aws.md %})
 * [Microsoft Azure Kubernetes Service (AKS)]({% link soda-agent/deploy-azure.md %})
-* [Google Kubernetes Engine (GKE)]({% link soda-agent/deploy-gcp.md %})
+<!--* [Google Kubernetes Engine (GKE)]({% link soda-agent/deploy-gcp.md %})-->
 
 <br />
 
-[About the Soda Agent](#about-the-soda-agent)<br />
 [Deployment overview](#deployment-overview)<br />
 [Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
@@ -30,15 +31,11 @@ These deployment instructions offer generic guidance for setting up a Kubernetes
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file)<br />
 [(Optional) Create a practice data source](#optional-create-a-practice-data-source)<br />
 [About the `helm install` command](#about-the-helm-install-command)<br />
-[Helpful commands](#helpful-commands)<br />
-[(Optional) Decommission the Soda Agent and cluster](#optional-decomission-the-soda-agent-and-cluster)<br />
+[Decommission the Soda Agent and cluster](#decomission-the-soda-agent-and-cluster)<br />
 [Troubleshoot deployment](#troubleshoot-deployment)<br />
 [Go further](#go-further)<br />
 <br />
 
-## About the Soda Agent
-
-{% include soda-agent.md %}
 
 ## Deployment overview
 
@@ -104,7 +101,7 @@ The following table outlines the two ways you can install the Helm chart to depl
 | Method | Description | When to use |
 |--------|-------------|-------------|
 | [CLI only](#deploy-using-cli-only) | Install the Helm chart via CLI by providing values directly in the install command. | Use this as a straight-forward way of deploying an agent on a cluster in a secure or local environment. | 
-| [Use values YAML file](#deploy-using-a-values-yaml-file) | Install the Helm chart via CLI by providing values in a values YAML file. | Use this as a way of deploying an agent on a cluster while keeping sensitive values secure. <br /> - provide sensitive API key values in this local file <br /> - store data source login credentials as environment variables in this local file; Soda needs access to the credentials to be able to connect to your data source to run scans of your data.|
+| [Use a values YAML file](#deploy-using-a-values-yaml-file) | Install the Helm chart via CLI by providing values in a values YAML file. | Use this as a way of deploying an agent on a cluster while keeping sensitive values secure. <br /> - provide sensitive API key values in this local file <br /> - store data source login credentials as environment variables in this local file; Soda needs access to the credentials to be able to connect to your data source to run scans of your data. See: [Manage sensitive values]({% link soda-agent/secrets.md %}).|
 
 
 ### Deploy using CLI only
@@ -202,152 +199,13 @@ Containers:
 
 ## (Optional) Create a practice data source
 
-If you wish to try creating a new data source in Soda Cloud using the agent you created locally, you can use the following command to create a PostgreSQL warehouse containing data from the <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC Bus Breakdowns and Delay Dataset</a>.
-
-From the command-line, copy+paste and run the following to create the data source as a pod on your local cluster.
-```shell
-cat <<EOF | kubectl apply -n soda-agent -f -
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nybusbreakdowns
-  labels:
-    app: nybusbreakdowns
-spec:
-  containers:
-  - image: sodadata/nybusbreakdowns
-    imagePullPolicy: IfNotPresent
-    name: nybusbreakdowns
-    ports:
-    - name: tcp-postgresql
-      containerPort: 5432
-  restartPolicy: Always
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: nybusbreakdowns
-  name: nybusbreakdowns
-spec:
-  ports:
-  - name: tcp-postgresql
-    port: 5432
-    protocol: TCP
-    targetPort: tcp-postgresql
-  selector:
-    app: nybusbreakdowns
-  type: ClusterIP
-EOF
-```
-
-
-Once the pod of practice data is running, you can use the following configuration details when you add a data source in Soda Cloud, in [step 2]({% link soda-cloud/add-datasource.md %}#2-connect-the-data-source), **Connect the Data Source**.
-```yaml 
-data_source your_datasource_name:
-  type: postgres
-  connection:
-    host: nybusbreakdowns
-    port: 5432
-    username: sodacore
-    password: sodacore
-    database: sodacore
-    schema: new_york
-```
-
+{% include agent-practice-datasource.md %}
 
 ## About the `helm install` command
 
-```shell
-helm install soda-agent soda-agent/soda-agent \
-  --set soda.agent.target=minikube \
-  --set soda.agent.name=myuniqueagent \
-  --set soda.apikey.id=*** \
-  --set soda.apikey.secret=**** \
-  --namespace soda-agent
-```
+{% include agent-helm-command.md %}
 
-| Command part | Description   |
-|--------------|---------------|
-| helm install | the action helm is to take | 
-| `soda-agent` (the first one) | a release named soda-agent on your cluster |
-| `soda-agent` (the second one)| the name of the helm repo you installed|
-| `soda-agent` (the third one) | the name of the helm chart that is the Soda Agent |
-
-The `--set` options either override or set some of the values defined in and used by the Helm chart. You can override these values with the `--set` files as this command does, or you can specify the override values using a [values.yml](#deploy-using-a-values-yaml-file) file. 
-
-| Option key      | Option value, description   |
-|-----------------|--------------------------------|
-| `--set soda.agent.target` | Use `minikube`. |
-| `--set soda.agent.name`   | A unique name for your Soda Agent. Choose any name you wish, as long as it is unique in your Soda Cloud account. |
-| `--set soda.apikey.id`    | With the apikey.secret, this connects the Soda Agent to your Soda Cloud account. Use the value you copied from the dialog box in Soda Cloud when adding a new agent. You can use a [values.yml file](#deploy-using-a-values-yaml-file) to pass this value to the cluster instead of exposing it here.|
-| `--set soda.apikey.secret`    | With the apikey.id, this connects the Soda Agent to your Soda Cloud account. Use the value you copied from the dialog box in Soda Cloud when adding a new agent. You can use a [values.yml file](#deploy-using-a-values-yaml-file) to pass this value to the cluster instead of exposing it here.|
-| `--namespace soda-agent` | Use the namespace value to identify the namespace in which to deploy the agent. 
-
-
-## Helpful commands
-
-Use `get pods` to retrieve a list of the pods running in your cluster, including some information about each.
-```shell
-minikube kubectl -- get pods
-```
-
-```
-NAME                                       READY   STATUS             RESTARTS   AGE
-nybusbreakdowns                            1/1     Running            0          10m
-sa-job-3637cccd-bvp6p                      0/1     ImagePullBackOff   0          6m2s
-soda-agent-orchestrator-5cd47d77b4-7c2jn   1/1     Running            0          42m
-```
-
-<br />
-
-Use `describe pods` to examine details about the pods running in your cluster.
-```shell
-minikube kubectl -- describe pods
-```
-
-```
-Name:         nybusbreakdowns
-Namespace:    soda-agent
-Priority:     0
-Node:         minikube/192.168.**.**
-Start Time:   Thu, 17 Nov 2022 16:53:54 -0800
-Labels:       app=nybusbreakdowns
-Annotations:  <none>
-Status:       Running
-IP:           172.17.**.**
-...
-```
-
-<br />
-
-Use `logs` to examine details of pod activity. Run `minikube kubectl -- logs -h` for a full list of options to use with the `logs` command.
-
-For example, the following command reveals the activity during set up of the practice pod of `nybusbreakdown` data.
-```
-minikube kubectl -- logs -l app=nybusbreakdowns --all-containers=true
-```
-
-```
-server stopped
-
-PostgreSQL init process complete; ready for start up.
-
-2022-11-18 00:55:31.058 UTC [1] LOG:  starting PostgreSQL 14.3 (Debian 14.3-1.pgdg110+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit
-2022-11-18 00:55:31.062 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
-2022-11-18 00:55:31.062 UTC [1] LOG:  listening on IPv6 address "::", port 5432
-2022-11-18 00:55:31.065 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
-2022-11-18 00:55:31.091 UTC [168] LOG:  database system was shut down at 2022-11-18 00:55:30 UTC
-2022-11-18 00:55:31.129 UTC [1] LOG:  database system is ready to accept connections
-```
-
-
-
-<br />
-
-
-## (Optional) Decomission the Soda Agent and cluster
+## Decomission the Soda Agent and cluster
 
 1. Uninstall the Soda Agent in the cluster.
 ```shell
@@ -363,30 +221,11 @@ minikube delete
 
 ## Troubleshoot deployment
 
-**Problem:** During deployment, you run `minikube kubectl -- describe pods` and the following error occurs: `ImagePullBackOff`.
-```shell
-...
-Containers:
-  soda-agent-orchestrator:
-    Container ID:   
-    Image:          sodadata/agent-orchestrator:v1.0.15
-    Image ID:       
-    Port:           <none>
-    Host Port:      <none>
-    State:          Waiting
-      Reason:       ImagePullBackOff
-    Ready:          False
-    Restart Count:  0
-
-```
-
-**Solution:**  
-
-<br />
-
 **Problem:** I have deployed the agent in a cluster and it shows as running, but the agent in Soda Cloud shows as "offline". 
 
 **Solution:**
+
+TBD
 
 <br />
 
@@ -394,6 +233,8 @@ Containers:
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Access a list of [helpful `kubectl` commands]({% link soda-agent/helpful-commands.md %}) for running commands on your Kubernetes cluster.
+* [Learn more]({% link soda-agent/secrets.md %}) about securely storing and accessing API keys and data source login credentials.
 <br />
 
 ---
