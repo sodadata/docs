@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Legacy Soda OSS tools
-description: Data quality is all about making sure that people can trust the data they use. Ensuring data reliability involves layers of tools and best practices.
+title: Legacy Soda SQL and Soda Spark
+description: Soda SQL and Soda Spark were Soda's original OSS tools for monitoring data quality which have been replaced by Soda Core.
 parent: Reference
 redirect_from: 
 - /soda-sql/
@@ -74,13 +74,13 @@ redirect_from:
 - /release-notes/soda-sql.md
 ---
 
-# Legacy Soda OSS tools
+# Legacy Soda SQL and Soda Spark
 
 The very first Soda OSS tools, Soda SQL and Soda Spark, served their community well since 2021. They have been deprecated. 
 
-* ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="80px" width="80px"} was the original command-line tool that Soda created to test for data quality. It has been replaced by [Soda Core]({% link soda-core/overview-main.md %}).
+* **Soda SQL** was the original command-line tool that Soda created to test for data quality. It has been replaced by [Soda Core]({% link soda-core/overview-main.md %}).
 
-* ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="103px" width="103px"} was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark]({% link soda/connect-spark.md %}). 
+* **Soda Spark** was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark]({% link soda/connect-spark.md %}). 
 
 ## Documentation
 

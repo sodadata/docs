@@ -199,7 +199,7 @@
     page: soda/support.md
   - subtitle: Soda Community Code of Conduct
     page: soda/community-coc.md
-  - subtitle: Legacy Soda OSS tools
+  - subtitle: Legacy Soda SQL and Spark
     page: soda/legacy.md
 
 - title: API Documentation
