@@ -8,7 +8,14 @@ parent: Soda Agent
 # Helpful kubectl commands
 *Last modified on {% last_modified_at %}*
 
-If you used Minikube to create a cluster, prepend all of the commands below with `minikube` and add `--` before the action. For example, for `kubectl describe pods`, use `minikube kubectl -- describe pods`.
+Kubectl is the command-line tool you use to run commands against Kubernetes clusters. To deploy a Soda Agent in a cluster, you must have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. <br />
+Run `kubectl version --output=yaml` to check the version of an existing install.
+
+If you used Minikube to create a cluster, prepend all of the commands below with `minikube` and add `--` before the action. <br />
+For example, for `kubectl describe pods`, use `minikube kubectl -- describe pods`.
+
+
+## Commands
 
 * Use `get pods` to retrieve a list of the pods running in your cluster, including some information about each.
 ```shell

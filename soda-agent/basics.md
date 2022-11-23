@@ -16,6 +16,8 @@ This setup enables Soda Cloud users to securely connect to data sources (Snowfla
 
 What follows is an extremely abridged introduction to a few basic elements involved in the deployment and setup of a Soda Agent.
 
+![agent-diagram](/assets/images/agent-diagram.png){:height="700px" width="700px"}
+
 **Soda Core** is an open-source, command-line tool that serves as the backbone of Soda technology. It is the software that performs the work of converting user-defined input into SQL queries that execute when you run scans for data quality in a data source. You can connect Soda Core to a **Soda Cloud** account where you and your team can use the web application to collaborate on data quality monitoring. 
 
 Both Soda Core and Soda Cloud make use of **Soda Checks Language (SodaCL)** to write checks for data quality. The checks are tests that Soda Core executes when it runs a scan of your data. Read [more]({% link soda/product-overview.md %}). 
@@ -24,11 +26,9 @@ Both Soda Core and Soda Cloud make use of **Soda Checks Language (SodaCL)** to w
 * a **Soda Agent Orchestrator** from a Docker image, which creates Kubernetes Jobs and cron jobs to trigger scheduled scans of data
 * a **Soda Agent Scan Launcher** which wraps around Soda Core, the tool which performs the scan itself and pushes scan results to Soda Cloud
 
-![agent-diagram](/assets/images/agent-diagram.png){:height="640px" width="640px"}
-
 **Kubernetes** is a system for orchestrating containerized applications; a **Kubernetes cluster** is a set of resources that support an application environment. 
 
-You need a Kubernetes cluster in which to deploy the containerized applications that make up the **Soda Agent**. The Kubernetes cluster is also where you store **Kubernetes secrets**, such as login credentials, which Kubernetes creates independently on the pods that use them. (Pods are a basic workload unit in Kubernetes, usually an instance of one container.) Learn more about <a href="https://www.youtube.com/watch?v=BOj1sgWVXko" target="_blank" >Kubernetes concepts</a>.
+You need a Kubernetes cluster in which to deploy the containerized applications that make up the **Soda Agent**. Depending on your cloud services provider, you store sensitive values, such as login credentials, in an Azure Key Vault or as Kubernetes secrets , which Kubernetes creates independently on the pods that use them. (Pods are a basic workload unit in Kubernetes, usually an instance of one container.) Learn more about <a href="https://www.youtube.com/watch?v=BOj1sgWVXko" target="_blank" >Kubernetes concepts</a>.
 
 Within a cloud services provider environment is *where* you create your Kubernetes cluster. You can deploy a Soda Agent in any environment in which you can create Kubernetes clusters such as:
 

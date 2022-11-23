@@ -20,7 +20,7 @@ As these values are sensitive, you may wish to employ the following strategies t
 ### Use a values YAML file to store API key values 
 
 When you deploy a Soda Agent from the command-line, you provide values for the API key id and API key secret which the agent uses to connect to your Soda Cloud account. You can provide these values during agent deployment in one of two ways:
-* directly in the `helm install` command that deploys the agent and stores the values as Kubernetes secrets in your cluster; see [deploy using CLI only]({% link soda-agent/deploy.md %}#deploy-using-cli-only)<br />
+* directly in the `helm install` command that deploys the agent and stores the values as <a href="https://kubernetes.io/docs/concepts/configuration/secret/" target="_blank">Kubernetes secrets</a> in your cluster; see [deploy using CLI only]({% link soda-agent/deploy.md %}#deploy-using-cli-only)<br />
 OR
 * in a values YAML file which you store locally but reference in the `helm install` command; see below
 
