@@ -10,6 +10,8 @@ parent: Connect a data source
 
 {% include connect-to-intro.md %}
 
+## Configuration
+
 Reference <a href="https://trino.io/docs/current/overview/concepts.html#" target="_blank">Trino documentation</a> for assistance.
 
 ```yaml
