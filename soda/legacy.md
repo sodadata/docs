@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Legacy Soda SQL and Soda Spark
+title: Deprecated - Soda SQL and Soda Spark
 description: Soda SQL and Soda Spark were Soda's original OSS tools for monitoring data quality which have been replaced by Soda Core.
 parent: Reference
 redirect_from: 
@@ -74,9 +74,9 @@ redirect_from:
 - /release-notes/soda-sql.md
 ---
 
-# Legacy Soda SQL and Soda Spark
+# Deprecated: Soda SQL and Soda Spark
 
-The very first Soda OSS tools, Soda SQL and Soda Spark, served their community well since 2021. They have been deprecated. 
+The very first Soda OSS tools, Soda SQL and Soda Spark, served their community well since 2021. They have been deprecated. <a href="https://www.soda.io/resources/introducing-soda-core-the-new-way-for-data-reliability" target="_blank">Read more</a> about the decision to deprecate and move forward with Soda Core.
 
 * **Soda SQL** was the original command-line tool that Soda created to test for data quality. It has been replaced by [Soda Core]({% link soda-core/overview-main.md %}).
 
@@ -84,6 +84,6 @@ The very first Soda OSS tools, Soda SQL and Soda Spark, served their community w
 
 ## Documentation
 
-The GitHub repository for the legacy tools has been archived but is still read-only accessible, including the documentation:
+The GitHub repository for the legacy tools has been archived but is still read-only accessible, including the documentation.
 * <a href="https://github.com/sodadata/soda-sql/tree/main/docs" target="_blank">Soda SQL</a>
 * <a href="https://github.com/sodadata/soda-sql/tree/main/docs" target="_blank">Soda Spark</a>
