@@ -41,6 +41,8 @@ Create an Amazon Elastic Kubernetes Service (EKS) Fargate cluster, then use Helm
 
 ## Compatibility
 
+Soda supports Kubernetes cluster version 1.21 or greater.
+
 You can deploy a Soda Agent to connect with the following data sources:
 
 {% include compatible-cloud-datasources.md %}

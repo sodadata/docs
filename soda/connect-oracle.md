@@ -10,6 +10,11 @@ parent: Connect a data source
 
 {% include connect-to-intro.md %}
 
+## Compatibility
+Soda supports Oracle version 21.3 or greater.
+
+## Configuration
+
 ```yaml
 data_source my_datasource_name:
   type: oracle

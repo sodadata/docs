@@ -9,6 +9,12 @@ parent: Reference
 
 <br />
 
+#### November 23, 2022
+
+* Updated [version compatibility]({% link soda-agent/deploy.md %}#compatibility) for Kubernetes clusters when deploying a Soda Agent. 
+* Updated [version compatibility]({% link soda/connect-oracle.md %}#compatibility) for OracleDB data sources.
+* Updated [version compatibility]({% link soda/connect-dremio.md %}#compatibility) for Dremio data sources.
+
 #### November 18, 2022
 
 * Added a [list of valid formats]({% link soda-cl/validity-metrics.md %}#formats-supported-with-soda-for-ms-sql-server) for validity metrics that Soda for MS SQL Server supports.

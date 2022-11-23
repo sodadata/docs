@@ -10,6 +10,11 @@ parent: Connect a data source
 
 {% include connect-to-intro.md %}
 
+## Compatibility
+Soda supports Dremio version 22 or greater.
+
+## Configuration
+
 ```yaml
 data_source my_datasource_name:
   type: dremio
