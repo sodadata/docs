@@ -262,12 +262,12 @@ Optionally, you can use wildcard characters `*` in the `sampler` configuration, 
 # disable all failed rows samples on all datasets
 sampler:
   exclude_columns:
-    *: [*]
+    '*': ['*']
 
 # disable failed rows samples on all columns named "password" in all datasets
 sampler:
   exclude_columns:
-    *: [password] 
+    '*': [password] 
 
 # disable failed rows samples on the "last_name" column and all columns that begin with "pii_" from all datasets that begin with "soda_"
 sampler:
