@@ -163,11 +163,6 @@ You have three installation options to choose from:
 
 {% include docker-soda-core.md %}
 
-## Install Soda Core Scientific locally
-
-{% include install-local-soda-core-scientific.md %}
-
-
 ## Go further
 
 * Next: [Configure]({% link soda-core/configuration.md %}) your newly-installed Soda Core to connect to your data source.
