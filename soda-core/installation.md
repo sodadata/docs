@@ -159,6 +159,10 @@ You have three installation options to choose from:
 
 {% include install-soda-core-scientific.md %}
 
+### Troubleshoot `Library not loaded: @rpath/libtbb.dylib` error when running anomaly score check
+
+{% include troubleshoot-anomaly-check-tbb.md %}
+
 ## Use Docker to run Soda Core Scientific
 
 {% include docker-soda-core.md %}
