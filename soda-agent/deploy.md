@@ -44,6 +44,8 @@ These deployment instructions offer generic guidance for setting up a Kubernetes
 
 ## Compatibility
 
+Soda supports Kubernetes cluster version 1.21 or greater.
+
 You can deploy a Soda Agent to connect with the following data sources:
 
 {% include compatible-cloud-datasources.md %}

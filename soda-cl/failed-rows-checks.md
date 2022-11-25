@@ -39,7 +39,7 @@ checks for dim_customer:
 
 ## Prerequisites
 
-* To view failed rows that a failed rows check collects, you must have a **Soda Cloud** account connected to Soda Core. See [Connect Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}) for details. 
+* To view failed rows that a failed rows check collects, you ideally have a **Soda Cloud** account. It is not necessary to view failed rows samples in Soda Cloud, but easy to view in the context of a check result. 
 * To use failed row checks to send failed rows samples to Soda Cloud, samples collection must *not* be [disabled in Soda Cloud]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).
 
 ## About failed row samples
@@ -262,12 +262,12 @@ Optionally, you can use wildcard characters `*` in the `sampler` configuration, 
 # disable all failed rows samples on all datasets
 sampler:
   exclude_columns:
-    *: [*]
+    '*': ['*']
 
 # disable failed rows samples on all columns named "password" in all datasets
 sampler:
   exclude_columns:
-    *: [password] 
+    '*': [password] 
 
 # disable failed rows samples on the "last_name" column and all columns that begin with "pii_" from all datasets that begin with "soda_"
 sampler:
