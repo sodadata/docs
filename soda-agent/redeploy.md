@@ -12,7 +12,11 @@ When you delete the Soda Agent Helm chart from your cluster, you also delete all
 
 1. In Soda Cloud, navigate to **your avatar** > **Scans & Data** > **Agents** tab.
 2. Click to select the agent you wish to redeploy, then copy the agent ID of the previously-registered agent from the URL.<br />
-For example, in the following URL, the agent ID is the long UUID at the end. `https://dev.sodadata.io/agents/842feab3-snip-87eb-06d2813a72c1`.
+For example, in the following URL, the agent ID is the long UUID at the end. `https://cloud.soda.io/agents/842feab3-snip-87eb-06d2813a72c1`.<br /><br />
+Alternatively, if you use the base64 CLI tool, you can run the following command to obtain the agentID.
+```shell
+ kubectl get secret/soda-agent-id -n soda-agent --template={{.data.SODA_AGENT_ID}} | base64 --decode
+```
 3. Open your `values.yml` file, then add the `id` key:value pair under `agent`, using the agent ID you copied from the URL as the value.
 ```yaml
 soda:
@@ -24,13 +28,17 @@ soda:
         loglevel: "INFO"
         name: "<YourAgentName>"
 ```
-4. In the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
+4. To redeploy the agent, you need to provide the values for the API keys the agent uses to connect to Soda Cloud in the values YAML file. Access the values by running the following command, replacing the placeholder values with your own details, then paste the values into your values YAML file.
+```shell
+helm get values -n <namespace> <release name>
+```
+5. In the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
 ```shell
 helm install soda-agent soda-agent/soda-agent \
   --values values.yml \
   --namespace soda-agent
 ```
-5. Validate the Soda Agent deployment by running the following command:
+6. Validate the Soda Agent deployment by running the following command:
 ```shell
 kubectl describe pods
 ```

@@ -11,13 +11,10 @@ parent: Soda Agent
 Kubectl is the command-line tool you use to run commands against Kubernetes clusters. To deploy a Soda Agent in a cluster, you must have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. <br />
 Run `kubectl version --output=yaml` to check the version of an existing install.
 
-If you used Minikube to create a cluster, prepend all of the commands below with `minikube` and add `--` before the action. <br />
-For example, for `kubectl describe pods`, use `minikube kubectl -- describe pods`.
-
 
 ## Commands
 
-* Use `get pods` to retrieve a list of the pods running in your cluster, including some information about each.
+* Use `get pods` to retrieve a list of the pods running in your cluster, including some information about each. The Soda Orchestrator creates pods when it creates Jobs and CronJobs.
 ```shell
 kubectl get pods
 ```
@@ -49,7 +46,7 @@ IP:           172.17.**.**
 <br />
 
 * Use `logs` to examine details of pod activity. Run `kubectl logs -h` for a full list of options to use with the `logs` command. <br />
-For example, the following command reveals the activity during set up of the practice pod of `nybusbreakdown` data.
+For example, the following command specifies a label (`-l`) to reveal the activity during set up of the practice pod of `nybusbreakdown` data.
 ```
 kubectl logs -l app=nybusbreakdowns --all-containers=true
 ```
@@ -107,15 +104,16 @@ Example output:
 ...
 ```
 <br />
-
-* In the example above that gets the pods of the soda-agent namespace, the output displays `2/2` which means that two containers are running in the pod. This indicates that a <a href="https://medium.com/bb-tutorials-and-thoughts/kubernetes-learn-sidecar-container-pattern-6d8c21f873d" target="_blank">sidecar</a> is deployed in the pod, which is the fluent-bit based log reader/forwarder. <br />
-If you wish to get the logs from the sidecar, you can add the `-c` option to the `logs` command to specify the sidecar container in the pod.
+Alternatively, you can use the following command to retrieve the Orchestrator's or Scan Launcher's logs using a label.
 ```shell
-kubectl logs pods/soda-agent-orchestrator-5975ddcd9-5b5qr \
-  -c logging-sidecar \
-  -n soda-agent -f
+kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent
 ```
+```shell
+kubectl logs -l agent.soda.io/component=scanlauncher -n soda-agent
+```
+
 <br />
+
 
 ## Go further
 

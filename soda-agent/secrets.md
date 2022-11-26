@@ -12,19 +12,23 @@ When you deploy a Soda Agent to a Kubernetes cluster in your cloud service provi
 
 As these values are sensitive, you may wish to employ the following strategies to keep them secure.
 
+[Store Kubernetes secrets](#store-kubernetes-secrets)<br />
 [Use a values YAML file to store API key values](#use-a-values-yaml-file-to-store-api-key-values)<br />
 [Use environment variables to store data source connection credentials](#use-environment-variables-to-store-data-source-connection-credentials)<br />
 <br />
 
+## Store Kubernetes secrets
 
-### Use a values YAML file to store API key values 
+Kubernetes uses the concept of Secrets that the Soda Agent Helm chart employs to store connection secrets that you specify as values during the Helm release of the Soda Agent. Depending on your cloud provider, you can arrange to store these Secrets in a specialized storage such as <a href="https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts" target="_blank">Azure Key Vault</a> or <a href="https://docs.aws.amazon.com/kms/latest/developerguide/overview.html" target="_blank">AWS Key Management Service (KMS)</a>.
+
+## Use a values YAML file to store API key values 
 
 When you deploy a Soda Agent from the command-line, you provide values for the API key id and API key secret which the agent uses to connect to your Soda Cloud account. You can provide these values during agent deployment in one of two ways:
 * directly in the `helm install` command that deploys the agent and stores the values as <a href="https://kubernetes.io/docs/concepts/configuration/secret/" target="_blank">Kubernetes secrets</a> in your cluster; see [deploy using CLI only]({% link soda-agent/deploy.md %}#deploy-using-cli-only)<br />
 OR
 * in a values YAML file which you store locally but reference in the `helm install` command; see below
 
-#### Values YAML file
+### Values YAML file
 
 ```yaml
 soda:
@@ -44,7 +48,6 @@ helm install soda-agent soda-agent/soda-agent \
 ```
 
 Refer to the exhaustive cloud service provider-specific instructions for more detail on how to deploy an agent using a values YAML file:
-* [Generic deployment]({% link soda-agent/deploy.md %}#deploy-using-a-values-yaml-file)
 * [Deploy to EKS]({% link soda-agent/deploy-aws.md %}#deploy-using-a-values-yaml-file)
 * [Deploy to AKS]({% link soda-agent/deploy-azure.md %}#deploy-using-a-values-yaml-file)
 

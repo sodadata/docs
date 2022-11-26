@@ -10,21 +10,27 @@ parent: Soda Agent
 
 To take advantage of new or improved features and functionality in the Soda Agent, you can upgrade your agent when a new version becomes available <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>.
 
-1. Use the following command to find out which version of the Soda Agent Helm chart you have deployed on your cluster.
+1. To upgrade the agent, you need to provide the values for the API keys the agent uses to connect to Soda Cloud using flags in the helm upgrade command, or in a values YAML file. Access the values by running the following command, replacing the placeholder values with your own details.
+```shell
+helm get values -n <namespace> <release name>
+```
+2. Use the following command to find out which version of the Soda Agent Helm chart you have deployed on your cluster.
 ```shell
 helm list -n soda-agent
 ```
-2. Use the following command to search ArifactHub for the most recent version of the Soda Agent Helm chart.
+3. Use the following command to search ArifactHub for the most recent version of the Soda Agent Helm chart.
 ```shell
 helm search hub soda-agent
 ```
-3. Use the following command to upgrade the Helm repository.
+4. Use the following command to upgrade the Helm repository.
 ```shell
 helm repo update
 ```
-4. Upgrade the Soda Agent Helm chart.
+5. Upgrade the Soda Agent Helm chart. 
 ```shell
-helm upgrade soda-agent soda-agent/soda-agent 
+helm upgrade soda-agent soda-agent/soda-agent \
+  --set soda.apikey.id=*** \
+  --set soda.apikey.secret=**** \
 ```
 OR
 ```shell
@@ -33,16 +39,6 @@ helm upgrade soda-agent soda-agent/soda-agent \
 ```
 
 <br />
-
-#### Troubleshoot
-
-**Problem:** To upgrade the agent, I need the API keys that connect it to Soda Cloud, but I do not have access to them.
-
-**Solution:** You can access the values by running the following command, replacing the placeholder values with your own details.
-
-```shell
-helm get values -n <namespace> <release name>
-```
 
 
 ## Go further

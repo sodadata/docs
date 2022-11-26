@@ -17,7 +17,6 @@ The **Soda Agent** is a tool that empowers Soda Cloud users to securely access d
 These deployment instructions offer generic guidance for setting up a Kubernetes cluster and deploying a Soda Agent in it. Instead, you may wish to access a cloud service provider-specific set of instructions for:
 * [Amazon Elastic Kubernetes Service (EKS)]({% link soda-agent/deploy-aws.md %})
 * [Microsoft Azure Kubernetes Service (AKS)]({% link soda-agent/deploy-azure.md %})
-<!--* [Google Kubernetes Engine (GKE)]({% link soda-agent/deploy-gcp.md %})-->
 
 <br />
 
@@ -53,7 +52,6 @@ You can deploy a Soda Agent to connect with the following data sources:
 ## Prerequisites
 
 * (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
-* You have installed <a href="https://docs.docker.com/get-docker/" target="_blank">Docker</a> in your local environment.
 * You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. With Docker running, use the command `kubectl version --output=yaml` to check the version of an existing install.
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
 
@@ -66,9 +64,9 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 To deploy a Soda Agent in a Kubernetes cluster, you must first create a cluster. 
 
-Because the procedure to create a cluster varies depending upon your cloud services provider, the instructions below offer a simple way of creating cluster using Minikube on which you can deploy a Soda Agent locally. Refer to <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/" target="_blank"> Kubernetes documentation</a>.
+To create a cluster for testing purposes, you can use a tool such as <a href="https://minikube.sigs.k8s.io/docs/" target="_blank">Minikube</a>, <a href="https://microk8s.io/docs" target="_blank">microk8s</a>, <a href="https://kind.sigs.k8s.io/" target="_blank">kind</a>, <a href="https://docs.k3s.io/" target="_blank">k3s</a>, or <a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop</a> to create a cluster, or use an existing cluster to which you have pointed a working kubectl.
 
-Minikube is *not* required to fully deploy a Soda Agent in a cluster in a cloud services provider environment; it is a tool to facilitate completion of the following cloud service-agnostic deployment instructions.
+Because the procedure to create a cluster varies depending upon your cloud services provider, the instructions below offer a simple way of creating cluster using Minikube on which you can deploy a Soda Agent locally. Refer to <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/" target="_blank"> Kubernetes documentation</a>. 
 
 1. Install <a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank">minikube</a> to use to create a Kubernetes cluster running locally.
 2. Run the following command to create your local Kubernetes cluster. Be aware that this activity can take awhile. Be patient!
@@ -113,14 +111,17 @@ The following table outlines the two ways you can install the Helm chart to depl
 helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```
 2. Use the following comand to install the Helm chart to deploy a Soda Agent in your custer. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
-* Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account
-* Replace the value of `soda.agent.name` with a custom name for you agent, if you wish
+* Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account.
+* Replace the value of `soda.agent.name` with a custom name for you agent, if you wish.
+* Add the `core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. You can have multiple idle scan launchers waiting for instructions. <br />
 ```shell
 helm install soda-agent soda-agent/soda-agent \
   --set soda.agent.target=minikube \
   --set soda.agent.name=myuniqueagent \
   --set soda.apikey.id=*** \
   --set soda.apikey.secret=**** \
+  --set soda.core.idle=true \
+  --set soda.core.replicas=1 \
   --namespace soda-agent
 ```
 The command-line produces output like the following message:
@@ -158,8 +159,9 @@ Containers:
 
 1. Using a code editor, create a new YAML file called `values.yml`.
 2. In that file, copy+paste the content below, replacing the following values:
-* `id` and `secret` with the values you copy+pasted from the **New Soda Agent** dialog box in your Soda Cloud account 
-* Replace the value of `soda.agent.name` with a custom name for your agent, if you wish <br />
+* `id` and `secret` with the values you copy+pasted from the **New Soda Agent** dialog box in your Soda Cloud account. 
+* Replace the value of `name` with a custom name for your agent, if you wish.
+* Add the `core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. You can have multiple idle scan launchers waiting for instructions. <br />
 ```yaml
 soda:
  apikey:
@@ -168,6 +170,10 @@ soda:
  agent:
            loglevel: "DEBUG"
            name: "myuniqueagent"
+           pollingInterval: 5
+ core:
+          idle: true
+          replicas: 1
 ```
 3. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
 ```shell
@@ -223,11 +229,10 @@ minikube delete
 
 ## Troubleshoot deployment
 
-**Problem:** I have deployed the agent in a cluster and it shows as running, but the agent in Soda Cloud shows as "offline". 
+Refer to [Helpful kubectl commands]({% link soda-agent/helpful-commands.md %}) for instructions on accessing logs, etc.
+<br /><br />
 
-**Solution:**
-
-TBD
+{% include agent-troubleshoot.md %}
 
 <br />
 

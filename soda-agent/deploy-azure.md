@@ -10,7 +10,7 @@ parent: Soda Agent
 
 The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create an **Azure Kubernetes Service (AKS)** cluster, then use Helm to deploy a Soda Agent in the cluster. 
 
-This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. 
+This setup enables Soda Cloud users to securely connect to data sources (Snowflake, MS SQL Server, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. 
 
 [Deployment overview](#deployment-overview)<br />
 [Compatibility](#compatibility)<br />
@@ -37,6 +37,8 @@ This setup enables Soda Cloud users to securely connect to data sources (Snowfla
 
 
 ## Compatibility
+
+Soda supports Kubernetes cluster version 1.21 or greater.
 
 You can deploy a Soda Agent to connect with the following data sources:
 
@@ -65,7 +67,7 @@ The following procedures use Azure CLI to create a resource group and cluster. A
 
 There are two ways to create a cluster:
 1. [create a regular AKS cluster](#create-a-regular-cluster)
-2. [create a virtual, nodes-based cluster](#create-a-virtual-cluster) which permits Azure to automatically schedule pods as Azure Container Instances (ACIs) in the background; <a href="https://learn.microsoft.com/en-us/azure/aks/virtual-nodes-cli" target="_blank">read more</a>
+2. [create a virtual nodes-based cluster](#create-a-virtual-cluster) which permits Azure to automatically schedule pods as Azure Container Instances (ACIs) in the background; <a href="https://learn.microsoft.com/en-us/azure/aks/virtual-nodes-cli" target="_blank">read more</a>
 
 
 ### Create a regular cluster
@@ -159,7 +161,7 @@ az group list --output table
 ```shell
 az group create --name SodaAgent --location westeurope
 ```
-6. Use the following command to create a virtual network.
+6. Use the following command to create a virtual network. You will use this network and a subnet (see next steps) to set up virtual nodes.
 ```shell
 az network vnet create \
   --resource-group SodaAgent \
@@ -184,6 +186,43 @@ az network vnet subnet create \
   --name SodaAgentVirtualNodeSubnet \
   --address-prefixes 10.100.101.0/24
 ```
+9. Use the following command to create the cluster. Note that the node count is set to `1`, which represents the number of nodes the control plane parts of the AKS cluster use, meaning the cluster is not entirely serverless.  For production deployments, best practice dictates that you use two or three nodes.
+```shell
+az aks create \
+  --resource-group SodaAgent \
+  --name SodaAgentCluster \
+  --node-count 1 \
+  --network-plugin azure \
+  --vnet-subnet-id $subnetid
+```
+Be patient as the command can take several minutes to complete. 
+10. Use the following command to list the enabled add-ons for the cluster.
+```shell
+az aks addon list --resource-group SodaAgent --name SodaAgentCluster
+```
+11. Activate the virtual nodes add-on.
+```shell
+az aks enable-addons \
+    --resource-group SodaAgent \
+    --name SodaAgentCluster \
+    --addons virtual-node \
+    --subnet-name SodaAgentVirtualNodeSubnet
+```
+12. Add the cluster credentials to your kubectl configuration so you can run kubectl and helm commands against this cluster.
+```shell
+az aks get-credentials \
+  --resource-group SodaAgent \
+  --name SodaAgentCluster
+```
+13. Your default kubectl configuration now points to the newly-added cluster context. Run the following command to check the nodes in the cluster.
+```shell
+kubectl get nodes
+```
+```shell
+NAME                                STATUS   ROLES   AGE   VERSION
+aks-nodepool1-15273607-vmss000000   Ready    agent   40m   v1.23.12
+```
+
 
 ## Deploy a Soda Agent
 
@@ -243,42 +282,7 @@ Be aware that this may take several minutes to appear in your list of Soda Agent
 
 ### Deploy using CLI only - virtual cluster
 
-1. Use the following command to create the cluster. Note that the node count is set to `1`, which represents the number of nodes the control plane parts of the AKS cluster use, meaning the cluster is not entirely serverless.  For production deployments, best practice dictates that you use two or three nodes.
-```shell
-az aks create \
-  --resource-group SodaAgent \
-  --name SodaAgentCluster \
-  --node-count 1 \
-  --network-plugin azure \
-  --vnet-subnet-id $subnetid
-```
-Be patient as the command can take several minutes to complete. 
-2. Use the following command to list the enabled add-ons for the cluster.
-```shell
-az aks addon list --resource-group SodaAgent --name SodaAgentCluster
-```
-3. Activate the virtual nodes add-on.
-```shell
-az aks enable-addons \
-    --resource-group SodaAgent \
-    --name SodaAgentCluster \
-    --addons virtual-node \
-    --subnet-name SodaAgentVirtualNodeSubnet
-```
-4. Add the cluster credentials to your kubectl configuration so you can run kubectl and helm commands against this cluster.
-```shell
-az aks get-credentials \
-  --resource-group SodaAgent \
-  --name SodaAgentCluster
-```
-6. Your default kubectl configuration now points to the newly-added cluster context. Run the following command to check the nodes in the cluster.
-```shell
-kubectl get nodes
-```
-```shell
-NAME                                STATUS   ROLES   AGE   VERSION
-aks-nodepool1-15273607-vmss000000   Ready    agent   40m   v1.23.12
-```
+
 7. Use Helm to add the Soda Agent Helm chart repository.
 ```shell
 helm repo add soda-agent https://helm.soda.io/soda-agent/
@@ -291,8 +295,9 @@ kubectl create ns soda-agent
 namespace/soda-agent created
 ```
 9. Use one of the following command to install the Helm chart which deploys a Soda Agent in your custer. 
-* Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud. The cluster stores these key values as Kubernetes secrets.<br /> Alternatively, you can install the agent using a values.yml file to store all the `--set` values in a local file. See [Deploy using values YAML file](#deploy-using-values-yaml-file).
+* Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud. The cluster stores these key values as Kubernetes secrets.
 * Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
+* Add the `core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. You can have multiple idle scan launchers waiting for instructions.
 * Read more [about the `helm install` command](#about-the-helm-install-command).
 ```shell
 helm install soda-agent soda-agent/soda-agent \
@@ -300,6 +305,8 @@ helm install soda-agent soda-agent/soda-agent \
   --set soda.agent.name=myuniqueagent \
   --set soda.apikey.id=*** \
   --set soda.apikey.secret=**** \
+  --set soda.core.idle=true \
+  --set soda.core.replicas=1 \
   --namespace soda-agent
 ```
 The command-line produces output like the following message:
@@ -328,8 +335,9 @@ Be aware that this may take several minutes to appear in your list of Soda Agent
 
 1. Using a code editor, create a new YAML file called `values.yml`.
 2. To that file, copy+paste the content below, replacing the following values:
- * `id` and `secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account 
- * Replace the value of `soda.agent.name` with a custom name for you agent, if you wish <br />
+* `id` and `secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account.
+* Replace the value of `name` with a custom name for you agent, if you wish.
+* Add the `core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. You can have multiple idle scan launchers waiting for instructions.  <br />
 ```yaml
 soda:
  apikey:
@@ -338,6 +346,9 @@ soda:
  agent:
            loglevel: "DEBUG"
            name: "myuniqueagent"
+ core:
+          idle: true
+          replicas: 1
 ```
 3. Save the file. Then, create a namespace for the agent.
 ```shell
@@ -391,7 +402,11 @@ az network vnet subnet delete \
 
 
 
-### Troubleshoot deployment 
+## Troubleshoot deployment 
+
+Refer to [Helpful kubectl commands]({% link soda-agent/helpful-commands.md %}) for instructions on accessing logs, etc.
+
+{% include agent-troubleshoot.md %}
 
 **Problem:** When you attempt to create a cluster, you get an error that reads, `An RSA key file or key value must be supplied to SSH Key Value. You can use --generate-ssh-keys to let CLI generate one for you`. 
 
