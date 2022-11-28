@@ -14,6 +14,7 @@ parent: Reference
 * Documented connection configuration for [Denodo (Experimental)]({% link soda/connect-denodo.md %}).
 * Documented improvments to the feature for [rerouting failed rows samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to an HTTP endpoint.
 * Documented [how to pass scan time variables]({% link soda-cl/filters.md %}#configure-variables-for-connection-configuration) for data source connection configuration values.
+* Add an example to demonstrate how to define a [variable in an in-check filter]({% link soda-cl/filters.md %}#example-use-a-variable-in-an-in-check-filter).
 
 #### November 28, 2022
 
@@ -58,7 +59,7 @@ parent: Reference
 
 #### November 7, 2022
 
-* Added examples for using [in-check variables]({% link soda-cl/filters.md %}#configure-variables) to provide dynamic values at scan time.
+* Added examples for using [in-check variables]({% link soda-cl/filters.md %}#configure-variables-in-SodaCL) to provide dynamic values at scan time.
 
 #### November 3, 2022
 

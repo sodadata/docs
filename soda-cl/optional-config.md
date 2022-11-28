@@ -43,7 +43,7 @@ checks for dim_employee:
 
 <br />
 
-If you wish, you can use a [variable]({% link soda-cl/filters.md %}#configure-variables) to customize a dynamic check name.
+If you wish, you can use a variable to customize a dynamic check name. Read more about [Filters and variables]({% link soda-cl/filters.md %}).
 ```yaml
 variables:
   name: Customers UK
