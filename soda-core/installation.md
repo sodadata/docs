@@ -153,13 +153,14 @@ Install Soda Core Scientific to be able to use SodaCL [distribution checks]({% l
 You have three installation options to choose from:
 * [Install Soda Core Scientific in a virtual environment (Recommended)](#install-soda-core-scientific-in-a-virtual-environment-recommended)
 * [Use Docker to run Soda Core with Soda Scientific](#use-docker-to-run-soda-core-scientific)
-* [Install Soda Core Scientific locally](#install-soda-core-scientific-locally)
 
 ## Install Soda Core Scientific in a virtual environment (Recommended)
 
 {% include install-soda-core-scientific.md %}
 
-### Troubleshoot `Library not loaded: @rpath/libtbb.dylib` error when running anomaly score check
+<br />
+
+#### Error: Library not loaded
 
 {% include troubleshoot-anomaly-check-tbb.md %}
 

@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 28, 2022
+
+* Added [troubleshooting insturctions]({% link soda-core/installation.md %}#error-library-not-loaded) for Soda Core Scientific on an M1 MacOS machine.
+
 #### November 23, 2022
 
 * Updated [version compatibility]({% link soda-agent/deploy.md %}#compatibility) for Kubernetes clusters when deploying a Soda Agent. 

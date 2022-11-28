@@ -151,9 +151,10 @@ for each dataset T:
 While installing Soda Core Scientific works on Linux, you may encounter issues if you install Soda Core Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
 * [Use Docker to run Soda Core (Recommended)](#use-docker-to-run-soda-core)
 * [Install Soda Core locally (Limited support)](#install-soda-core-locally)
-* [Troubleshoot `Library not loaded: @rpath/libtbb.dylib`]()
+* [Troubleshoot Soda Core Scientific installation in a virtual env](#troubleshoot-soda-core-scientific-installation-in-a-virtual-env)
 
 Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 
 ### Use Docker to run Soda Core
 
@@ -163,7 +164,7 @@ Need help? Ask the team in the <a href="https://community.soda.io/slack" target=
 
 {% include install-local-soda-core-scientific.md %}
 
-### Troubleshoot `Library not loaded: @rpath/libtbb.dylib` error message
+### Troubleshoot Soda Core Scientific installation in a virtual env
 
 {% include troubleshoot-anomaly-check-tbb.md %}
 
