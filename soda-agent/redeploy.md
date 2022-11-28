@@ -15,7 +15,7 @@ When you delete the Soda Agent Helm chart from your cluster, you also delete all
 For example, in the following URL, the agent ID is the long UUID at the end. `https://cloud.soda.io/agents/842feab3-snip-87eb-06d2813a72c1`.<br /><br />
 Alternatively, if you use the base64 CLI tool, you can run the following command to obtain the agentID.
 ```shell
- kubectl get secret/soda-agent-id -n soda-agent --template={{.data.SODA_AGENT_ID}} | base64 --decode
+ kubectl get secret/soda-agent-id -n soda-agent --template={% raw %}{{.data.SODA_AGENT_ID}}{% endraw %} | base64 --decode
 ```
 3. Open your `values.yml` file, then add the `id` key:value pair under `agent`, using the agent ID you copied from the URL as the value.
 ```yaml
