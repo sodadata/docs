@@ -346,7 +346,11 @@ SELECT id, cst_size, cst_size_txt, distance, pct, country, zip, email, date_upda
 
 If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. To do so, add the `storage` configuration to your data source connection configuration to specify the columns you wish to exclude, as per the following examples. 
 
-Soda sends the failed rows samples as a JSON payload.
+Soda sends the failed rows samples as a JSON payload and includes:
+* data source name
+* dataset name
+* scan definition name
+* check name
 
 ```yaml
 data_source my_datasource_name: 

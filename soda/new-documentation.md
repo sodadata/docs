@@ -9,6 +9,12 @@ parent: Reference
 
 <br />
 
+#### November 30, 2022
+* Added release notes documentation for Soda Core 3.0.14.
+* Documented connection configuration for [Denodo (Experimental)]({% link soda/connect-denodo.md %}).
+* Documented improvments to the feature for [rerouting failed rows samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to an HTTP endpoint.
+* Documented [how to pass scan time variables]({% link soda-cl/filters.md %}#configure-variables-for-connection-configuration) for data source connection configuration values.
+
 #### November 28, 2022
 
 * Added [troubleshooting insturctions]({% link soda-core/installation.md %}#error-library-not-loaded) for Soda Core Scientific on an M1 MacOS machine.
@@ -79,7 +85,7 @@ parent: Reference
 #### October 19, 2022
 
 * Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.11.
-* Documented connection configuration for Azure Synapse (Experimental).
+* Documented connection configuration for [Azure Synapse (Experimental)]({% link soda/connect-synapse.md %}).
 * Added documentation for an enhancement for [change-over-time checks]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds) to gauge changes relative to the same day last week or month.
 * Added documentation for the new `test-connection` command in Soda Core. See [Connect Soda to Amazon Athena]({% link soda/connect-athena.md %}#test-the-data-source-connection) for an example.
 

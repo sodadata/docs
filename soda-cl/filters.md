@@ -39,6 +39,7 @@ checks for ${DATASET}:
 [Configure in-check filters](#configure-in-check-filters)<br />
 [Configure dataset filters](#configure-dataset-filters)<br />
 [Configure variables](#configure-variables)<br />
+[Configure variables for connection configuration](#configure-variables-for-connection-configuration)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -83,6 +84,31 @@ For a dataset filter, Soda Core generates a separate query and, again, attempts 
 ## Configure variables
 
 {% include variables.md %}
+
+## Configure variables for connection configuration
+
+If you use Soda Core to execute Soda scans for data quality, you can pass variables at scan time to provide values for data source connection configuration keys in your configuration YAML file. For example, you may wish to pass a variable for the value of `password` in your configuration YAML.
+
+1. Adjust the data source connection configuration in your configuration YAML to include a variable.
+```shell
+data_source adventureworks:
+  type: postgres
+  host: localhost
+  username: noname
+  password: ${PASSWORD}
+  database: sodacore
+  schema: public
+```
+2. Save then file, then run a scan that uses a `-v` option to include the value of the variable in the scan command.
+```shell
+soda scan -d adventureworks -c configuration.yml -v PASSWORD=123abc checks.yml
+```
+
+You can provide the values for multiple variables in a single scan command.
+
+```shell
+soda scan -d adventureworks -c configuration.yml -v USERNAME=sodacore -v PASSWORD=123abc -v FRESH_NOW=2022-05-31 21:00:00 checks.yml
+```
 
 
 ## Go further
