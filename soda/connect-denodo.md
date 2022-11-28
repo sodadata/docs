@@ -5,16 +5,20 @@ description: Access configuration details to connect Soda to a Denodo data sourc
 parent: Connect a data source
 ---
 
-# Connect Soda to Denodo
+# Connect Soda to Denodo (Experimental)
 *Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
+
+## Compatibility
+
+Soda supports ...
 
 ## Configuration
 
 ```yaml
 data_source my_datasource_name:
-  type: 
+  type: denodo
   
 ```
 

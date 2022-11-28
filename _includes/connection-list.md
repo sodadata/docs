@@ -5,6 +5,7 @@
 * [Apache Spark for Databricks SQL]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql)
 * [Apache Spark DataFrames in Databricks]({% link soda/connect-spark.md %}#use-soda-core-with-spark-dataframes-on-databricks)
 * [Clickhouse (Experimental)]({% link soda/connect-clickhouse.md %})
+* [Denodo (Experimental)]({% link soda/connect-denodo.md %})
 * [Dremio]({% link soda/connect-dremio.md %})
 * [GCP BigQuery]({% link soda/connect-bigquery.md %})
 * [IBM DB2]({% link soda/connect-db2.md %})

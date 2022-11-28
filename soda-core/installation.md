@@ -111,6 +111,7 @@ pip install soda-core-postgres
 | Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | `soda-core-spark-df` |
 | Apache Spark for Databricks SQL  | `soda-core-spark[databricks]` |
 | ClickHouse (Experimental) | `soda-core-mysql` |
+| Denodo (Experimental) | `soda-core-denodo` |
 | Dremio | `soda-core-dremio` | 
 | GCP Big Query | `soda-core-bigquery` | 
 | IBM DB2 | `soda-core-db2` |
@@ -119,6 +120,7 @@ pip install soda-core-postgres
 | OracleDB | `soda-core-oracle` |
 | PostgreSQL | `soda-core-postgres` |
 | Snowflake | `soda-core-snowflake` | 
+| Synapse | `soda-core-synapse` |
 | Trino | `soda-core-trino` |
 
 

@@ -28,6 +28,8 @@
     page: soda/connect-clickhouse.md
   - subtitle: Connect to Databricks
     page: soda/connect-databricks.md
+  - subtitle: Connect to Denodo
+    page: soda/connect-denodo.md
   - subtitle: Connect to Dremio
     page: soda/connect-dremio.md
   - subtitle: Connect to IBM DB2
