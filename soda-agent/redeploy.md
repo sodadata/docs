@@ -28,9 +28,16 @@ soda:
         loglevel: "INFO"
         name: "<YourAgentName>"
 ```
-4. To redeploy the agent, you need to provide the values for the API keys the agent uses to connect to Soda Cloud in the values YAML file. Access the values by running the following command, replacing the placeholder values with your own details, then paste the values into your values YAML file.
+4. To redeploy the agent, you need to provide the values for the API keys the agent uses to connect to Soda Cloud in the values YAML file. Access the values by running the following command, replacing the `soda-agent` values with your own details, then paste the values into your values YAML file.
 ```shell
-helm get values -n <namespace> <release name>
+helm get values -n soda-agent soda-agent
+```
+Alternatively, if you use the base64 CLI tool, you can run the following commands to obtain the API key and API secret, respectively.
+```shell
+kubectl get secret/soda-agent-apikey -n soda-agent --template={% raw %}{{.data.SODA_API_KEY_ID}}{% endraw %} | base64 --decode
+```
+```shell
+kubectl get secret/soda-agent-apikey -n soda-agent --template={% raw %}{{.data.SODA_API_KEY_SECRET}}{% endraw %} | base64 --decode
 ```
 5. In the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
 ```shell
