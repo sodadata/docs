@@ -6,8 +6,11 @@ parent: Connect a data source
 ---
 
 # Connect Soda to Trino
+*Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
+
+## Configuration
 
 Reference <a href="https://trino.io/docs/current/overview/concepts.html#" target="_blank">Trino documentation</a> for assistance.
 

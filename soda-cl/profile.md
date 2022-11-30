@@ -6,11 +6,12 @@ parent: SodaCL
 ---
 
 # Display profile information in Soda Cloud 
+*Last modified on {% last_modified_at %}*
 
 Use the `discover datasets` and/or `profile columns` configurations to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.
 
 *Requires Soda Cloud*<br />
-*Known issue:* Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark DataFrame data source (`soda-core-spark-df`).
+
 
 ```yaml
 discover datasets:
@@ -32,8 +33,10 @@ profile columns:
 ```
 
 [Prerequisites](#prerequisites)<br />
+[Limitations and known issues](#limitations-and-known-issues)<br />
 [Define dataset discovery](#define-dataset-discovery) <br />
 [Define column profiling](#define-column-profiling)<br />
+[Compute consumption and cost considerations](#compute-consumption-and-cost-considerations)<br />
 [Optional check configurations](#optional-check-configurations) <br />
 [Inclusion and exclusion rules](#inclusion-and-exclusion-rules)<br />
 [Go further](#go-further) <br />
@@ -56,7 +59,7 @@ profile columns:
 * You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) within your organization's Soda Cloud account.
 * You, or an Administrator in your organization's Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) which enables you to connect to a data source in Soda Cloud.
 
-To define discover and profile datasets, follow the guided steps to [create a new data source]({% link soda-cloud/add-datasource.md %}#3-discover-datasets). Reference the [section below](#define-an-automated-monitoring-check) for how to define the checks themselves. 
+To define discover and profile datasets, follow the guided steps to create a new data source and add the sample configuration in step 4 [Discover datasets]({% link soda-cloud/add-datasource.md %}#3-discover-datasets). Reference the [section below](#define-an-automated-monitoring-check) for how to configure profiling using SodaCL. 
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
@@ -64,19 +67,24 @@ To define discover and profile datasets, follow the guided steps to [create a ne
 * You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
 * You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
 * You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core. <br />
-OR <br />
-* You have a Soda Cloud account and you, or a colleague, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) and [added a data source]({% link soda-cloud/add-datasource.md %}) to your organization's Soda Cloud account.
 
-Reference the [section below](#define-an-automated-monitoring-check) for how to define the checks themselves. 
+Reference the [section below](#define-an-automated-monitoring-check) for how to configure profiling in a checks YAML file using SodaCL. 
 
   </div>
   </div>
 </div>
 
+## Limitations and known issues
+
+* **Known issue:** Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark DataFrame data source (`soda-core-spark-df`).
+* **Data type**: Soda can only profile columns that contain NUMBERS or TEXT type data; it cannot profile columns that contain TIME or DATE data.
+* **Performance:** Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a selected few datasets to keep costs low. See [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
+
+
 ## Define dataset discovery  
 <!--Linked to UI, access Shlink-->
 
-Dataset discovery captures basic information about each dataset, including a dataset's schema and the columns it contains.
+Dataset discovery captures basic information about each dataset, including a dataset's schema and the columns it contains. Dataset discovery can be resource-heavy, so carefully consider the datasets about which you truly need information. Refer to [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
 
 This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud.
 
@@ -125,7 +133,7 @@ discover datasets:
 ## Define column profiling  
 <!--Linked to UI, access Shlink-->
 
-Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. 
+Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
 
 This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud.
 
@@ -171,6 +179,42 @@ profile columns:
 
 ![profile columns](../assets/images/profile-columns.png)
 
+## Compute consumption and cost considerations
+
+Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a selected few datasets to keep costs low. 
+
+### Discover Datasets
+
+Besides metadata queries to discover the datasets in a data source and their columns, dataset discovery also derives a row count for each dataset. Depending on your data source and the size of your datasets, this can take considerable compute time. Dataset discovery derives the following metrics:
+
+All columns
+* row count
+
+### Profile Columns
+
+Column profiling aims to issue the most optimized queries for your data source, however, given the nature of the derived metrics, those queries can result in full dataset scans and can be slow and costly on large datasets. Column profiling derives the following metrics:
+
+Numeric Columns
+* minimum value
+* maximum value
+* five smallest values
+* five largest values
+* five most frequent values
+* average
+* sum
+* standard deviation
+* variance
+* count of distinct values
+* count of missing values
+* histogram
+
+Text Columns
+* five most frequent values
+* count of distinct values
+* count of missing values
+* average length
+* minimum length
+* maximum length
 
 
 ## Optional check configurations
@@ -206,6 +250,8 @@ profile columns:
 * If you configure `discover datasets` or `profile columns` to include specific datasets or columns, Soda implicitly *excludes* all other datasets or columns from discovery or profiling. 
 * If you combine an include config and an exclude config and a dataset or column fits both patterns, Soda excludes the dataset or column from discovery or profiling.
 <!--* If you configured `discover datasets` to exclude a dataset but do not explicitly also exclude its columns in `profile columns`, Soda discovers the dataset and profiles its columns. -->
+
+
 
 ## Go further
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

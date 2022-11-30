@@ -6,6 +6,7 @@ parent: Get started
 ---
 
 # Soda product overview
+*Last modified on {% last_modified_at %}*
 
 Soda has three parts that work together to establish and maintain the reliability of data in your organization: **Soda Core**, **Soda Checks Language**, and **Soda Cloud**.
 
@@ -70,7 +71,7 @@ checks for CUSTOMERS:
 
 ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="105px" width="105px"} is the web application that you can optionally connect to Soda Core. It aggregates all metrics and tests for data quality and enables multiple people in an organization to monitor scan results, collaborate on issue investigation, and even write their own checks for data reliability. 
 
-🎥 <a href="https://vimeo.com/738592291" target="_blank">Soda Cloud: Watch & Learn</a>
+🎥 <a href="https://vimeo.com/sodadata/soda-cloud" target="_blank">Soda Cloud: Watch & Learn</a>
 
 Log in to the web app to examine the visualized results of scans, view historical scan data, and set up alerts that automatically notify your team when there is an issue with your data quality.
 
@@ -132,11 +133,11 @@ In Soda Cloud, you can do much more than just review the scan results.
 
 ## Legacy OSS tools
 
-The very first Soda OSS tools, Soda SQL and Soda Spark served their community well since 2021. They have been deprecated. 
+The very first Soda OSS tools, Soda SQL and Soda Spark, served their community well since 2021. They have been deprecated. 
 
-* ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="80px" width="80px"} was the original command-line tool that Soda created to test for data quality. Access the [legacy documentation]({% link soda-sql/overview.md %}).
+* ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="80px" width="80px"} was the original command-line tool that Soda created to test for data quality. 
 
-* ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="103px" width="103px"} was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark]({% link soda/connect-spark.md %}). Access [legacy documentation]({% link soda-spark/install-and-use.md %}).
+* ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="103px" width="103px"} was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark]({% link soda/connect-spark.md %}). 
 
 ## Go further
 

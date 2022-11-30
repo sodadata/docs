@@ -10,6 +10,7 @@ redirect_from:
 ---
 
 # Filters and variables
+*Last modified on {% last_modified_at %}*
 
 Use filters or variables to specify portions of data in your dataset against which Soda Core executes checks during a scan.
 
@@ -20,7 +21,7 @@ checks for dim_employee:
       name: Too many vacation hours for US Sales
       filter: sales_territory_key = 11
 
-# Dataset filter
+# Dataset filter with variables
 filter CUSTOMERS [daily]:
   where: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
 
@@ -28,12 +29,10 @@ checks for CUSTOMERS [daily]:
   - row_count = 6
   - missing(cat) = 2
 
-# Variable in a customized check name 
-variables:
-  name: Customers UK
-checks for dim_customer:
-  - row_count > 1:
-     name: Row count in ${name}
+# In-check variable 
+checks for ${DATASET}:
+  - invalid_count(last_name) = 0:
+      valid length: 10 
 ```
 
 [In-check vs. dataset filters](#in-check-vs-dataset-filters)<br />
@@ -73,7 +72,7 @@ For a dataset filter, Soda Core generates a separate query and, again, attempts 
 
 ### List of compatible metrics and checks
 
-* all numeric metrics, *except* `duplicate_count`
+* all numeric metrics, *except* `duplicate_count` and `duplicate_percent`
 * both missing metrics
 * both validity metrics
 

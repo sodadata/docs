@@ -9,6 +9,7 @@ redirect_from:
 ---
 
 # Collaborate on data monitoring
+*Last modified on {% last_modified_at %}*
 
 One of the main benefits of using Soda Cloud is the ability to collaborate with your teammates on the work to monitor and maintain data quality. Including multiple perspectives yields a more robust interpretation of "good quality data".
 
@@ -45,9 +46,10 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 
 ## Go further
 
-* Share a [filtered view of your datasets]({% link soda-cloud/organize-datasets.md %}) with colleagues by sharing the URL of your narrowed search. 
+* Create a new [agreement]({% link soda-cloud/agreements.md %}) to establish an agreed-upon expectation of good-quality data.
 * [Connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account.
 * [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
+* Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account.![preview](/assets/images/preview.png){:height="70px" width="70px"}
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

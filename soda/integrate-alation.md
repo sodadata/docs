@@ -8,6 +8,7 @@ redirect_from: /soda-cloud/integrate-alation.html
 
 # Integrate Soda Cloud with Alation 
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 Integrate Soda with Alation to access details about the quality of your data from within the data catalog.
 

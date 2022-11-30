@@ -6,20 +6,21 @@ parent: Get started
 ---
 
 # Quick start for Soda Cloud
+*Last modified on {% last_modified_at %}*
 
 <br />
 
 ![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="123px" width="123px"}<br />
 Use this tutorial to review the steps that outline how to connect to your data source, set a scan schedule, profile your data, then write an agreement for stakeholder approval. These features enable users across your organization to serve themselves when it comes to monitoring data quality and collaborating on data reliability.
 
-🎥 <a href="https://vimeo.com/738592291" target="_blank">Soda Cloud: Watch & Learn</a>
+🎥 <a href="https://vimeo.com/sodadata/soda-cloud" target="_blank">Soda Cloud: Watch & Learn</a>
 
 [Tutorial prerequisites](#tutorial-prerequisites-1) <br />
 [Set up a data source and create a new agreement](#set-up-a-data-source-and-create-a-new-agreement)<br />
 [Go further](#go-further)<br />
 <br />
 
-## Prerequisites
+## Tutorial prerequisites
 * You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
 * You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) in your Soda Cloud account.
 * You, or an IT Administrator in your organization, has deployed a [Soda Agent]({% link soda-agent/deploy.md %}) in a cluster in your organization's cloud environment.

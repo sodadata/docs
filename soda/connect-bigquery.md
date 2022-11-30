@@ -6,6 +6,7 @@ parent: Connect a data source
 ---
 
 # Connect Soda to GCP Big Query
+*Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
 
@@ -16,7 +17,11 @@ parent: Connect a data source
 <br />
 
 
-{% include gcp-datasets.md %}
+A note about BigQuery datasets: Google uses the term dataset slightly differently than Soda (and many others) do. 
+* In the context of Soda, a [dataset]({% link soda/glossary.md %}#dataset) is a representation of a tabular data structure with rows and columns. A dataset can take the form of a table in PostgreSQL or Snowflake, a stream in Kafka, or a DataFrame in a Spark application. 
+* In the context of BigQuery, a <a href="https://cloud.google.com/bigquery/docs/datasets-intro" target="_blank"> dataset</a> is "a top-level container that is used to organize and control access to your tables and views. A table or view must belong to a dataset..."
+
+Instances of "dataset" in Soda documentation always reference the former.
 
 ## Connection configuration
 
@@ -44,23 +49,24 @@ data_source my_datasource_name:
     dataset: sodacore
 ```
 
-| Property                                | Required                                                        |
-| --------------------------------------- | --------------------------------------------------------------- |
-| type                                    | required                                                        |
+| Property                                | Required                                                             |
+| --------------------------------------- | -------------------------------------------------------------------- |
+| type                                    | required                                                             |
 | account_info_json                       | optional; inline properties listed below; if not provided, Soda uses Google Application Default Credentials |
-| &ensp;&ensp;type                        | required                                                        |
-| &ensp;&ensp;project_id                  | required                                                        |
-| &ensp;&ensp;private_key_id              | required                                                        |
-| &ensp;&ensp;private_key                 | required                                                        |
-| &ensp;&ensp;client_email                | required                                                        |
-| &ensp;&ensp;client_id                   | required                                                        |
-| &ensp;&ensp;auth_uri                    | required                                                        |
-| &ensp;&ensp;token_uri                   | required                                                        |
-| &ensp;&ensp;auth_provider_x509_cert_url | required                                                        |
-| &ensp;&ensp;client_x509_cert_url        | required                                                        |
-| auth_scopes                             | optional; Soda applies the three scopes listed above by default |
-| project_id                              | optional; overrides project_id from account_info_json           |
-| dataset                                 | required                                                        |
+| &ensp;&ensp;type                        | required                                                             |
+| &ensp;&ensp;project_id                  | required                                                             |
+| &ensp;&ensp;private_key_id              | required                                                             |
+| &ensp;&ensp;private_key                 | required                                                             |
+| &ensp;&ensp;client_email                | required                                                             |
+| &ensp;&ensp;client_id                   | required                                                             |
+| &ensp;&ensp;auth_uri                    | required                                                             |
+| &ensp;&ensp;token_uri                   | required                                                             |
+| &ensp;&ensp;auth_provider_x509_cert_url | required                                                             |
+| &ensp;&ensp;client_x509_cert_url        | required                                                             |
+| auth_scopes                             | optional; Soda applies the three scopes listed above by default      |
+| project_id                              | optional; overrides project_id from account_info_json                |
+| storage_project_id                      | optional; enables you to use separate project for compute and storage|
+| dataset                                 | required                                                             |
 
 
 ## Authentication methods

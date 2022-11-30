@@ -145,19 +145,19 @@ Insert image:
 
 Add a `png` file of your logically-named image to the `docs/assets/images` directory, then add this markdown to the file in which you want the image to appear:
 ```
-![scan-anatomy](/assets/images/scan-anatomy.png){:height="440px" width="440px"}
+![webhook-incident](/assets/images/webhook-incident.png){:height="440px" width="440px"}
 ```
 
 Includes:
 
 Add a markdown file of your logically-named include content to the `docs/_includes` directory, then add this markdown to the file in which you want the content to appear:
 ```
-{% include run-a-scan.md %}
+{% include disable-all-samples.md %}
 ```
 
 Relative links:
 ```
-[warehouse yaml]({% link soda-sql/warehouse.md %})
+[warehouse yaml]({% link soda-cloud/agreements.md %})
 
 [airflow_bash.py](/../examples/airflow_bash.py)
 ```
@@ -165,7 +165,7 @@ Relative links:
 Link to an anchor on a different page:
 
 ```
-[warehouse yaml]({% link soda-sql/warehouse.md %}#to-anchor)
+[warehouse yaml]({% link soda-cloud/agreements.md %}#to-anchor)
 ```
 
 Link to section on same page:

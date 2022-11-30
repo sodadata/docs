@@ -8,6 +8,8 @@ redirect_from:
 ---
 
 # Metrics and checks 
+<!--Linked to UI, access Shlink; though actually linked in CLI error message-->
+*Last modified on {% last_modified_at %}*
 
 **Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with **Soda Core**, Soda’s open-source, command-line tool, you use SodaCL to write checks for data quality, then use Soda Core to scan the data in your data source and execute those checks.
 
@@ -20,7 +22,9 @@ checks for dim_customer:
 
 ![check](/assets/images/check.png){:height="325px" width="325px"}
 
-A check is a test for data quality that you write using the Soda Checks Language (SodaCL). SodaCL includes over 25 built-in metrics that you can use to write checks, but you also have the option of writing your own SQL queries or expressions using SodaCL.
+A check is a test for data quality that you write using the Soda Checks Language (SodaCL). SodaCL includes over 25 built-in metrics that you can use to write checks, but you also have the option of writing your own SQL queries or expressions using SodaCL. 
+
+See a [full list of SodaCL metrics and checks](#list-of-sodacl-metrics-and-checks).
 
 When it scans datasets in your data source, Soda Core executes the checks you defined in your checks YAML file. Technically, a check is a Python expression that, during a Soda scan, checks metrics to see if they match the parameters you defined for a threshold. A single Soda scan executes multiple checks against one or more datasets in your data source.
 
@@ -40,6 +44,7 @@ A **standard** check, as illustrated above with `row_count`, uses a language pat
     avg<br />
     avg_length<br />
     duplicate_count<br />
+    duplicate_percent<br />
     invalid_count<br />
     invalid_percent<br />
     max<br />
@@ -210,6 +215,39 @@ checks for dim_customer:
   - row_count between [10 and 15
   - row_count between 10 and 15]
   - row_count between [10 and 15]
+```
+
+## List of SodaCL metrics and checks
+```yaml
+anomaly score
+avg
+avg_length
+cross
+distribution
+duplicate_count
+duplicate_percent
+failed rows
+freshness
+invalid_count
+invalid_percent
+max
+max_length
+min
+min_length
+missing_count
+missing_percent
+percentile
+reference
+row_count
+schema
+stddev
+stddev_pop
+stddev_samp
+sum
+user-defined
+variance
+var_pop
+var_samp
 ```
 
 ## Go further

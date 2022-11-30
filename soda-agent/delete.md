@@ -6,7 +6,7 @@ parent: Soda Agent
 ---
 
 # Decommission a Soda Agent and the EKS cluster
-
+*Last modified on {% last_modified_at %}*
 
 1. Uninstall the Soda Agent in the cluster.
 ```shell

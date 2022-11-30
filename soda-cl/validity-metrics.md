@@ -6,6 +6,7 @@ parent: Soda CL
 ---
 
 # Validity metrics 
+*Last modified on {% last_modified_at %}*
 
 Use a validity metric in a check to surface invalid or unexpected values in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 
@@ -48,6 +49,7 @@ In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#
 You can use all validity metrics in checks that apply to individual columns in a dataset; you cannot use validity metrics in checks that apply to entire datasets. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
 * You must use a [configuration key:value pair](#list-of-configuration-keys) to define what qualifies as an valid value. 
 * If you wish, you can add a `%` character to the threshold for a `invalid_percent` metric for improved readability. 
+* *Known issue:* When more than one column is included in a check with a validity metric, Soda executes the check *only* against the first column listed. <!--CORE-331-->
 
 ```yaml
 checks for dim_customer
@@ -190,6 +192,8 @@ checks for dim_customer:
 
 <br />
 
+For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for validity values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-invalid-count](/assets/images/failed-invalid-count.png){:height="700px" width="700px"}
@@ -293,7 +297,69 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 ## List of valid formats
 
-{% include valid-formats.md %}
+* Valid formats apply *only* to columns using data type **TEXT**, not DATE or NUMBER.
+* The Soda Core package for **MS SQL Server** has limited support for valid formats. See the [separate list below](#formats-supported-with-soda-for-ms-sql-server) of formats supported for MS SQL Server.
+
+| Valid format value  | Format |
+| ------------------- | ------ |
+| `credit card number` | Four four-digit numbers separated by spaces.<br /> Four four-digit numbers separated by dashes.<br /> Sixteen-digit number.<br /> Four five-digit numbers separated by spaces.<br />|
+| `date eu` | Validates date only, not time. <br />dd/mm/yyyy |
+| `date inverse` | Validates date only, not time. <br />yyyy/mm/dd |
+| `date iso 8601` | Validates date and/or time according to <a href="https://www.w3.org/TR/NOTE-datetime" target="_blank">ISO 8601 format </a>. <br /> 2021-04-28T09:00:00+02:00 |
+| `date us` | Validates date only, not time. <br />mm/dd/yyyy |
+| `decimal` | Number uses a `,` or `.` as a decimal indicator. |
+| `decimal comma` | Number uses `,` as decimal indicator. |
+| `decimal point` | Number uses `.` as decimal indicator. |
+| `email` | name@domain.extension |
+| `integer` | Number is whole. |
+| `ip address` | Four whole numbers separated by `.` |
+| `ipv4 address` | Four whole numbers separated by `.` |
+| `ipv6 address` | Eight values separated by `:` |
+| `money` | A money pattern with currency symbol + decimal point or comma + currency abbreviation.|
+| `money comma` | A money pattern with currency symbol + decimal comma + currency abbreviation. |
+| `money point` | A money pattern with currency symbol + decimal point  + currency abbreviation. |
+| `negative decimal` | Negative number uses a `,` or `.` as a decimal indicator.|
+| `negative decimal comma` | Negative number uses `,` as decimal indicator. |
+| `negative decimal point` | Negative number uses `.` as decimal indicator. |
+| `negative integer` | Number is negative and whole. |
+| `negative percentage` | Negative number is a percentage.  |
+| `negative percentage comma` | Negative number is a percentage with a `,` decimal indicator. | 
+| `negative percentage point` | Negative number is a percentage with a `.` decimal indicator. |
+| `percentage comma` | Number is a percentage with a `,` decimal indicator. |
+| `percentage point` | Number is a percentage with a `.` decimal indicator. |
+| `percentage` | Number is a percentage. |
+| `phone number` | +12 123 123 1234<br /> 123 123 1234<br /> +1 123-123-1234<br /> +12 123-123-1234<br /> +12 123 123-1234<br /> 555-2368<br /> 555-ABCD |
+| `positive decimal` | Postive number uses a `,` or `.` as a decimal indicator. |
+| `positive decimal comma` | Positive number uses `,` as decimal indicator. |
+| `positive decimal point` | Positive number uses `.` as decimal indicator. |
+| `positive integer` | Number is positive and whole. |
+| `positive percentage` | Positive number is a percentage.  |
+| `positive percentage comma` | Positive number is a percentage with a `,` decimal indicator. |
+| `positive percentage point` | Positive number is a percentage with a `.` decimal indicator. |
+| `time 12h` | Validates against the 12-hour clock.<br /> hh:mm:ss |
+| `time 12h nosec` | Validates against the 12-hour clock.<br /> hh:mm |
+| `time 24h` | Validates against the 244-hour clock.<br /> hh:mm:ss |
+| `time 24h nosec` | Validates against the 24-hour clock.<br /> hh:mm |
+| `timestamp 12h` | Validates against the 12-hour clock. <br /> hh:mm:ss |
+| `timestamp 24h` | Validates against the 24-hour clock. <br /> hh:mm:ss |
+| `uuid` | Universally unique identifier. | 
+
+
+### Formats supported with Soda for MS SQL Server
+
+| Valid format value  | Format |
+| ------------------- | ------ |
+| `date eu` | Validates date only, not time. <br />dd/mm/yyyy |
+| `date inverse` | Validates date only, not time. <br />yyyy/mm/dd |
+| `date us` | Validates date only, not time. <br />mm/dd/yyyy |
+| `decimal` | Number uses a `,` or `.` as a decimal indicator. |
+| `integer` | Number is whole. |
+| `ip address` | Four whole numbers separated by `.` |
+| `negative integer` | Number is negative and whole. |
+| `phone number` | +12 123 123 1234<br /> 123 123 1234<br /> +1 123-123-1234<br /> +12 123-123-1234<br /> +12 123 123-1234<br /> 555-2368<br /> 555-ABCD |
+| `positive integer` | Number is positive and whole. |
+| `uuid` | Universally unique identifier. | 
+
 
 ## List of comparison symbols and phrases
 

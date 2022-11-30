@@ -7,6 +7,7 @@ parent: Integrate Soda
 
 # Integrate Soda Cloud with Microsoft Teams 
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 Configure Soda Cloud to connect your account to MS Teams so that you can:
 
@@ -55,7 +56,10 @@ Refer to the Microsoft documentation for creating <a href="https://learn.microso
 
 You can use this integration to enable Soda Cloud to send alert notifications to an MS Teams channel to notify your team of warn and fail check results. 
 
-With such an integration, Soda Cloud enables users to select MS Teams as the destination for an alert notification of an individual check or checks that form a part of an agreement. See [Edit checks in Soda Cloud]({% link soda-cloud/edit-checks.md %}) and [agreements]({% link soda-cloud/agreements.md %}).
+With such an integration, Soda Cloud enables users to select MS Teams as the destination for an alert notification of an individual check or checks that form a part of an agreement, or multiple checks.
+
+* To send notifications for individual checks, see [Edit checks in Soda Cloud]({% link soda-cloud/edit-checks.md %}) and [agreements]({% link soda-cloud/agreements.md %}).
+* To send notifications that apply to multiple checks, see [Set notification rules]({% link soda-cloud/notif-rules.md %}). ![preview](/assets/images/preview.png){:height="70px" width="70px"}
 
 
 ## Integration for Soda Cloud incidents
@@ -70,6 +74,7 @@ Refer to [Incidents]({% link soda-cloud/incidents.md %}) for more details about 
 
 * [Connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account.
 * Learn more about general [webhooks]({% link soda/integrate-webhooks.md %}) to integrate Soda Cloud with other third-party service providers.
+* Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account. ![preview](/assets/images/preview.png){:height="70px" width="70px"}
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

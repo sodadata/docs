@@ -8,6 +8,7 @@ redirect_from: soda-cl/duplicates.html
 
 # Numeric metrics 
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 Use a numeric metric in a check to perform basic calculations on the data in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 
@@ -16,6 +17,7 @@ checks for retail_products:
   - avg(size) between 100 and 300 
   - avg_length(manufacturer) > 10
   - duplicate_count(product_id) = 0
+  - duplicate_percent(user_id) < 2%
   - max(size) <= 500
   - max_length(manufacturer) = 25
   - min(size) >= 50
@@ -59,7 +61,7 @@ checks for dim_reseller:
   - duplicate_count(phone, address_line1) = 0
 ```
 
-You can use some numeric metrics in checks with either fixed or change-over-time thresholds. See [Fixed and change-over-time thresholds](#change-over-time-thresholds) for more detail. 
+You can use some numeric metrics in checks with either fixed or change-over-time thresholds. See [Change-over-time thresholds](#change-over-time-thresholds) for more detail. 
 
 ```yaml
 checks for dim_reseller:
@@ -71,7 +73,7 @@ checks for dim_reseller:
 
 ### Failed row samples
 
-Checks that use the `duplicate_count` metric automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
+Checks that use the `duplicate_count` or `duplicate_percent` metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
 If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
 
@@ -83,7 +85,9 @@ checks for dim_customer:
 
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for duplicate_count values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for duplicate values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-duplicate-count](/assets/images/failed-duplicate-count.png){:height="700px" width="700px"}
 
@@ -94,7 +98,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 | :-: | ------------|---------------|
 | ✓ | Define a name for a check with numeric metrics; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Define alert configurations to specify warn and fail thresholds; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
-| ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset; see [example](#example-with-filter). <br />Exception: you *cannot* use filters in checks with a `duplicate_count` metric. <br /> *Known issue:* In-check filters on numeric checks is not consistently applied. <!--Github 1541-->| [Add an in-check filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) | 
+| ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset; see [example](#example-with-filter). <br />Exception: you *cannot* use filters in checks with the `duplicate_count` or  `duplicate_percent` metrics. <br />| [Add an in-check filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply checks with numeric metrics to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
@@ -160,25 +164,27 @@ for each dataset T:
 
 ## List of numeric metrics
 
-| Metric  | Description | Supported data type | Supported data sources |
+| Metric  | Description | Supported data type | Supported data sources<sup>1</sup> |
 | ------  | ----------- | ------------------- | ---------------------- |
-| `avg`  | The average value in a numeric column. | number | Athena <br /> Redshift <br />  Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  |
-| `avg_length`  | The average length in a text column. | text | Athena <br /> Redshift <br />  Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  |
-| `duplicate_count`  | The number of rows that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>Include more than one column in the argument to compare values across columns. See [Duplicate check]({% link soda/quick-start-sodacl.md %}#duplicate-check)| number<br /> text<br /> time | Athena <br /> Redshift <br />  Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  |
-| `max`  | The greatest value in a numeric column. | number<br /> time | Athena <br /> Redshift <br />  Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  |
-| `max_length`  | The greatest length in a text column. | text | Athena <br /> Redshift <br />  Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  |
-| `min`  | The smallest value in a numeric column. | number<br /> time | Athena <br /> Redshift <br /> Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  |
-| `min_length`  | The smallest length in a text column. | text | Athena <br /> Redshift <br />  Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  |
-| `percentile` | The value below which a percentage of observations fall within a group of observations. <br /> For example, `percentile(distance, 0.7)`. | number | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake |
-| `row_count` | The number of rows in a dataset or column, if specified. | number<br /> text<br /> time | Athena <br /> Redshift <br />  Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake |
+| `avg`  | The average value in a numeric column. | number | all  |
+| `avg_length`  | The average length in a text column. | text | all  |
+| `duplicate_count`  | The number of rows that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>Include more than one column in the argument to compare values across columns. See also: [Duplicate check]({% link soda/quick-start-sodacl.md %}#duplicate-check)| number<br /> text<br /> time | all  |
+| `duplicate_percent`  | The percentage of rows in a dataset that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>Include more than one column in the argument to compare values across columns. | number<br /> text<br /> time | all  |
+| `max`  | The greatest value in a numeric column. | number<br /> time | all  |
+| `max_length`  | The greatest length in a text column. | text | all |
+| `min`  | The smallest value in a numeric column. | number<br /> time | all  |
+| `min_length`  | The smallest length in a text column. | text | all  |
+| `percentile` | The value below which a percentage of observations fall within a group of observations. <br /> For example, `percentile(distance, 0.7)`. | number | PostgreSQL <br /> Snowflake |
+| `row_count` | The number of rows in a dataset or column, if specified. | number<br /> text<br /> time | all |
 | `stddev`  | The calculated standard deviation of values in a numeric column. | number | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake |
 | `stddev_pop`  | The calculated population standard deviation of values in a numeric column. | number |  Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake |
 | `stddev_samp`  | The calculated sample standard deviation of values in a numeric column. | number | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake |
-| `sum`  | The calculated sum of the values in a numeric column. | number | Athena <br /> Redshift <br />  Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  |
+| `sum`  | The calculated sum of the values in a numeric column. | number | all  |
 | `variance`  | The calculated variance of the values in a numeric column. | number<br /> time | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake |
 | `var_pop`  | The calculated population variance of the values in a numeric column. | number<br /> time | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake |
 | `var_samp`  | The calculated sample variance of the values in a numeric column.| number<br /> time | Athena <br /> Redshift <br />  Big Query <br /> PostgreSQL <br /> Snowflake |
 
+<sup>1</sup> Soda has not validated metric functionality for any data source labeled as "Experimental".
 
 ## List of comparison symbols and phrases
 

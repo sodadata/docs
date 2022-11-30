@@ -7,6 +7,7 @@ redirect_from: soda-sql/interactive-demo.html
 ---
 
 # Soda Core interactive demo
+*Last modified on {% last_modified_at %}*
 
 See just how easy it is to set up and use Soda Core and SodaCL.
 

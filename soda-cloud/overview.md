@@ -34,7 +34,7 @@ redirect_from:
                     <h2>Sign up</h2>
                     <a href="https://cloud.soda.io/signup" target="_blank">Sign up for Soda Cloud</a>
                     <a href="/soda/quick-start-sodacloud.html" target="_blank">Quick start with Soda Cloud</a>
-                    <a href="https://vimeo.com/738592291" target="_blank">🎥 Soda Cloud Product Showcase</a>
+                    <a href="https://vimeo.com/sodadata/soda-cloud" target="_blank">🎥 Soda Cloud Product Showcase</a>
                 </div>
                  <div>
                     <img src="/assets/images/icons/icon-collaboration@2x.png" width="54" height="40">
@@ -51,6 +51,18 @@ redirect_from:
         </div>        
     </section>
 </div>
+
+
+## Why Soda Cloud?
+
+Use Soda Cloud to make data quality management in your organization more accessible to more people. 
+* Enable data consumers to not only access and gauge the quality they use to feed machine learning models, dashboards, or report, but to participate in defining what "good-quality data" looks like.
+* Empower all users to write data quality checks using SodaCL, a low-code, human-readable, domain-specific language for data quality management in a UI environment.
+* Collaboratively build data products that regularly check for data quality and alert the right people at the right time when an issue could have downstream impact.
+* Set up scan schedules, automatically monitor for anomalies and schema changes over time, profile and sample data, and set up the right level of notifications to reduce the signal-to-noise ratio.
+* Create data agreements, or contracts, to define and align expectations between data producers and data consumers so that everyone can trust the data they use to make decisions.
+* Use a webhook to link Soda Cloud to the tools you already use like Jira or ServiceNow so that Soda can automatically create tickets when data quality checks result in critical failures.
+* Review samples of failed rows when a check result fails to help you begin a root cause analysis for a data quality issue.
 
 ---
 
