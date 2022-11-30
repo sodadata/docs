@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 30, 2022
+
+* Adjusted the documentation for dataset discovery because, as of Soda Core v3.0.14, the action no longer derives a `row_count` metric; see [Dataset discovery]({% link soda-cl/profile.md %}#discover-datasets).
+
 #### November 28, 2022
 
 * Added [troubleshooting insturctions]({% link soda-core/installation.md %}#error-library-not-loaded) for Soda Core Scientific on an M1 MacOS machine.
