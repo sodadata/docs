@@ -207,7 +207,7 @@
 - title: API Documentation
   page: api-docs/reporting-api-v1.md
   subcategories:
-  - subtitle: Reporting API v1
+  - subtitle: Reporting API v1 (Preview)
     page: api-docs/reporting-api-v1.md
   - subtitle: Reporting API v0
     page: api-docs/reporting-api.md
