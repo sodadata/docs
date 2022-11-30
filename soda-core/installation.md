@@ -9,6 +9,7 @@ redirect_from:
 ---
 
 # Install Soda Core 
+*Last modified on {% last_modified_at %}*
 
 Soda Core is a command-line interface (CLI) tool that enables you to scan the data in your data source to surface invalid, missing, or unexpected data. Alternatively, you can use the Soda Core Python library to programmatically execute scans; see [Define programmatic scans using Python]({% link soda-core/programmatic.md %}).
 <br />
@@ -67,12 +68,14 @@ pip install soda-core-postgres
 | Amazon Redshift | `soda-core-redshift` | 
 | Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | `soda-core-spark-df` |
 | Apache Spark for Databricks SQL  | `soda-core-spark[databricks]` |
+| Azure Synapse (Experimental) | `soda-core-sqlserver` |
 | ClickHouse (Experimental) | `soda-core-mysql` |
 | Dremio | `soda-core-dremio` | 
 | GCP Big Query | `soda-core-bigquery` | 
 | IBM DB2 | `soda-core-db2` |
 | MS SQL Server | `soda-core-sqlserver` |
 | MySQL | `soda-core-mysql` |
+| OracleDB | `soda-core-oracle` |
 | PostgreSQL | `soda-core-postgres` |
 | Snowflake | `soda-core-snowflake` | 
 | Trino | `soda-core-trino` |
@@ -113,6 +116,7 @@ pip install soda-core-postgres
 | IBM DB2 | `soda-core-db2` |
 | MS SQL Server | `soda-core-sqlserver` |
 | MySQL | `soda-core-mysql` |
+| OracleDB | `soda-core-oracle` |
 | PostgreSQL | `soda-core-postgres` |
 | Snowflake | `soda-core-snowflake` | 
 | Trino | `soda-core-trino` |
@@ -133,7 +137,10 @@ Reference the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activ
 
 ## Upgrade
 
-{% include upgrade-core.md %}
+To upgrade your existing Soda Core tool to the latest version, use the following command, replacing `soda-core-redshift` with the install package that matches the type of data source you are using.
+```shell
+pip install soda-core-redshift -U
+```
 
 ## Use Docker to run Soda Core
 
@@ -146,20 +153,20 @@ Install Soda Core Scientific to be able to use SodaCL [distribution checks]({% l
 You have three installation options to choose from:
 * [Install Soda Core Scientific in a virtual environment (Recommended)](#install-soda-core-scientific-in-a-virtual-environment-recommended)
 * [Use Docker to run Soda Core with Soda Scientific](#use-docker-to-run-soda-core-scientific)
-* [Install Soda Core Scientific locally](#install-soda-core-scientific-locally)
 
 ## Install Soda Core Scientific in a virtual environment (Recommended)
 
 {% include install-soda-core-scientific.md %}
 
+<br />
+
+#### Error: Library not loaded
+
+{% include troubleshoot-anomaly-check-tbb.md %}
+
 ## Use Docker to run Soda Core Scientific
 
 {% include docker-soda-core.md %}
-
-## Install Soda Core Scientific locally
-
-{% include install-local-soda-core-scientific.md %}
-
 
 ## Go further
 

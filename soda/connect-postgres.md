@@ -6,9 +6,11 @@ parent: Connect a data source
 ---
 
 # Connect Soda to PostgreSQL
+*Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
 
+## Configuration
 
 ```yaml
 data_source my_datasource_name:

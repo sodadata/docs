@@ -1,1 +1,0 @@
-A storage location that contains a collection of datasets, such as Snowflake, Amazon Athena, or GCP BigQuery.

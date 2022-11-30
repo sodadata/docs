@@ -7,6 +7,7 @@ redirect_from: /soda-sql/documentation/failed-rows.html
 ---
 
 # Examine failed rows samples
+*Last modified on {% last_modified_at %}*
 
 When a Soda scan results in a failed check, Soda Cloud displays details of the scan results in each check's **Check History** view. To offer more insight into the data that failed a check during a scan, Soda Cloud can display **failed rows samples** in a check's history. 
 

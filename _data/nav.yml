@@ -6,12 +6,12 @@
   subcategories:
   - subtitle: Soda Core Interactive demo
     page: soda/core-interactive-demo.md
-  - subtitle: Quick start for Soda Core and Soda Cloud
-    page: soda/quick-start-soda-core.md
-  - subtitle: Quick start for SodaCL
-    page: soda/quick-start-sodacl.md
   - subtitle: Quick start for Soda Cloud
     page: soda/quick-start-sodacloud.md
+  - subtitle: Quick start for SodaCL
+    page: soda/quick-start-sodacl.md
+  - subtitle: Quick start for Soda Core
+    page: soda/quick-start-soda-core.md
   - subtitle: Soda product overview
     page: soda/product-overview.md
   - subtitle: Soda product comparison
@@ -36,6 +36,8 @@
     page: soda/connect-mssql.md
   - subtitle: Connect to MySQL
     page: soda/connect-mysql.md
+  - subtitle: Connect to Oracle
+    page: soda/connect-oracle.md
   - subtitle: Connect to PostgreSQL
     page: soda/connect-postgres.md
   - subtitle: Connect to Redshift
@@ -50,8 +52,10 @@
     page: soda/connect-trino.md
 
 - title: Soda Agent
-  page: soda-agent/basics.md
+  page: soda-agent/overview.md
   subcategories:
+  - subtitle: Soda Agent
+    page: soda-agent/overview.md
   - subtitle: Soda Agent basic concepts
     page: soda-agent/basics.md
   - subtitle: Deploy a Soda Agent
@@ -153,8 +157,6 @@
     page: soda-core/configuration.md
   - subtitle: Run a Soda Core scan
     page: soda-core/scan-core.md
-  - subtitle: Migrate from Soda SQL
-    page: soda-core/migrate.md
   - subtitle: Soda Core CLI commands
     page: soda-core/cli-reference.md
   - subtitle: Define programmatic scans
@@ -163,6 +165,8 @@
     page: soda-core/orchestrate-scans.md
   - subtitle: Connect to Soda Cloud
     page: soda-core/connect-core-to-cloud.md
+  - subtitle: Migrate from Soda SQL
+    page: soda-core/migrate.md
 
 - title: Integrate Soda
   page: soda/integrate-alation.md
@@ -197,6 +201,8 @@
     page: soda/support.md
   - subtitle: Soda Community Code of Conduct
     page: soda/community-coc.md
+  - subtitle: Soda SQL is now Soda Core
+    page: soda/deprecated.md
 
 - title: API Documentation
   page: api-docs/reporting-api.md

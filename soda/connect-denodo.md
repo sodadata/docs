@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Connect Soda to MS SQL Server
-description: Access configuration details to connect Soda to an MS SQL Server data source.
+title: Connect Soda to Denodo
+description: Access configuration details to connect Soda to a Denodo data source.
 parent: Connect a data source
 ---
 
-# Connect Soda to MS SQL Server
+# Connect Soda to Denodo
 *Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
@@ -14,32 +14,20 @@ parent: Connect a data source
 
 ```yaml
 data_source my_datasource_name:
-  type: sqlserver
-  host: host
-  port: '1433'
-  username: xxx
-  password: ...
-  database: 
-  schema: dbo
-  trusted_connection: false
-  encrypt: false 
-  trust_server_certificate: false
-  driver: 
+  type: 
+  
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
 | type     | required |                                                            |
 | host     | required |                                                            |
-| port     | optional | You can remove the `port` config setting entirely; defaults to `1433`.|
-| username | required | Use system variables to retrieve this value securely.      |
-| password | required | Use system variables to retrieve this value securely.      |
+| port     | optional |                                                            |
+| username | required | Consider using system variables to retrieve this value securely.      |
+| password | required | Consider using system variables to retrieve this value securely.      |
 | database | required |                                                            |
 | schema   | required |                                                            |
-| trusted_connection | optional |  The default value is `false`. Set to `true` if using Active Directory authentication. |  
-| encrypt | optional |   The default value is `false`.                             |
-| trust_server_certificate | optional |   The default value is `false`.  |
-| driver  | optional | Use this config setting to specify the ODBC driver version you use, such as `SQL Server Native Client 11.0` |
+
 
 {% include test-connection.md %}
 
@@ -47,9 +35,10 @@ data_source my_datasource_name:
 
 | Category | Data type  |
 | -------- | ---------- |
-| text     | CHAR, VARCHAR, TEXT  |
-| number   | BIG INT, NUMERIC, BIT, SMALLINT, DECIMAL, SMALLMONEY, INT, TINYINT, MONEY, FLOAT, REAL  |
-| time     | DATE, TIME, DATETIME, DATETIMEOFFSET |
+| text     | CHARACTER VARYING, CHARACTER, CHAR, TEXT  |
+| number   | SMALLINT, INTEGER, BIGINT, DECIMAL, NUMERIC, VARIABLE, REAL, DOUBLE PRECISION, SMALLSERIAL, SERIAL, BIGSERIAL  |
+| time     | TIMESTAMP, DATE, TIME, TIMESTAMP WITH TIME ZONE, TIMESTAMP WITHOUT TIME ZONE, TIME WITH TIME ZONE, TIME WITHOUT TIME ZONE |
+
 
 <br />
 <br />

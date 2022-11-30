@@ -7,6 +7,7 @@ redirect_from: /soda-cloud/datasource.html
 ---
 
 # Add a data source 
+*Last modified on {% last_modified_at %}*
 
 To run [scans]({% link soda/glossary.md %}#scan) for data quality in your [data source]({% link soda/glossary.md %}#data-source) such as PostgreSQL or GCP BigQuery, you must first connect Soda Cloud to a data source. 
 
@@ -60,7 +61,7 @@ To more securely provide sensitive values such as usernames and passwords, use e
 
 Access the data source-specific connection configurations listed below to copy+paste the connection syntax into the editing panel, then adjust the values to correspond with your data source's details. 
 
-{% include connection-list.md %}
+{% include connection-list-cloud.md %}
  
 <br />
 

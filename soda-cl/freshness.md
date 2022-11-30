@@ -7,6 +7,7 @@ parent: SodaCL
 
 # Freshness checks  
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 Use a freshness check to determine the relative age of the data in a column in your dataset. 
 
@@ -39,7 +40,7 @@ A freshness check has two or three mutable parts:
 <br />
 
 The example below defines a check that measures freshness relative to "now", where "now" is the moment you run the scan that executes the freshness check. This example discovers when the last row was added to the `start_date` timestamp column, then compares that timestamp to "now". If Soda discovers that the last row was added more than three days ago, the check fails. 
-* Freshness checks *only* work with columns that contain timestamp values.
+* Freshness checks *only* work with columns that contain data types TIMESTAMP or DATE.
 * The only comparison symbol you can use with freshness checks is `<` *except* when you employ and alert configuration. See [Example with alert configuration](#example-with-alert-configuration) for details.
 * The default value for "now" is the time you run the scan that executes the freshness check.
 * If no timezone information is available in either the timestamp of the check (scan time), or in the data in the column, a freshness check uses the UTC timezone. Soda converts both timestamps to UTC to compare values.
@@ -51,7 +52,7 @@ checks for dim_product:
   - freshness(start_date) < 3d
 ```
 
-| timestamp column name | `start_date` |
+| column name | `start_date` |
 | threshold |  3d |
 
 <br />
@@ -60,18 +61,17 @@ Instead of using the default value for "now" (the time you run the scan that exe
 
 ```yaml
 checks for dim_product:
-  - freshness(end_date, CUST_VAR) < 1d
+  - freshness(end_date, CUST_VAR < 1d
 ```
 
-| timestamp column name | `end_date` |
+| column name | `end_date` |
 | variable to specify the value of "now" (optional)| `CUST_VAR` |
 | threshold |  1d |
 
-At scan time, you use a `-v` option to pass a value for the variable that the check expects for the value of "now". The scan command below passes a variable that the check uses. 
-<!--* In your scan command, if you use a variable with a timestamp, the variable must be in ISO8601 format such as `"2022-02-16 21:00:00"` or `"2022-02-16T21:00:00"`.-->
+At scan time, you use a `-v` option to pass a value for the variable that the check expects for the value of "now". The scan command below passes a variable that the check uses. In your scan command, if you pass a variable with a timestamp, the variable must be in ISO8601 format such as `"2022-02-16 21:00:00"` or `"2022-02-16T21:00:00"`.
 
 ```shell
-soda scan -d adventureworks -c configuration.yml -v CUST_VAR=2022-05-31 checks_test.yml
+soda scan -d adventureworks -c configuration.yml -v CUST_VAR=2022-05-31 21:00:00 checks_test.yml
 ```
 
 <br />
@@ -98,8 +98,6 @@ Invalid check "freshness(start_date) > 1d": no viable alternative at input ' >'
 
 When you run a scan that includes a freshness check, the output in the **Soda Core CLI** provides several values for measurements Soda used to calculate freshness. The value for freshness itself is displayed in days, hours, minutes, seconds, and milliseconds; see the example below. 
 
-In **Soda Cloud**, the freshness value represents age of the data in the days, hours, minutes, etc. relative to `now_timestamp`.
-
 ```shell
 Soda Core 3.0.x
 Scan summary:
@@ -113,6 +111,8 @@ Scan summary:
         freshness: 3361 days, 16:40:39.196522
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 ```
+
+In **Soda Cloud**, the freshness value represents age of the data in the days, hours, minutes, etc. relative to `now_timestamp`.
 
 
 ## Optional check configurations

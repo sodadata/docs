@@ -8,6 +8,7 @@ redirect_from: /soda-cl/missing-validity.html
 
 # Missing metrics 
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 Use a missing metric in a check to surface missing values in the data in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 

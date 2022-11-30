@@ -7,6 +7,7 @@ parent: Soda Cloud
 
 # Soda Cloud resources 
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 Soda Cloud is made up of several parts, or **resources**, that work together to define checks, execute scans, and display results that help you gauge the quality and reliability of your data. 
 

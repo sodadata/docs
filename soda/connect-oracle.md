@@ -1,33 +1,34 @@
 ---
 layout: default
-title: Connect Soda to MySQL
-description: Access configuration details to connect Soda to a MySQL data source.
+title: Connect Soda to OracleDB
+description: Access configuration details to connect Soda to an OracleDB data source.
 parent: Connect a data source
 ---
 
-# Connect Soda to MySQL
+# Connect Soda to OracleDB
 *Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
+
+## Compatibility
+Soda supports Oracle version 21.3 or greater.
 
 ## Configuration
 
 ```yaml
 data_source my_datasource_name:
-  type: mysql
-  host: 
-  username: xxx
-  password: ...
-  database:
+  type: oracle
+  username: 
+  password:
+  connectstring:
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
 | type     | required |                                                            |
-| host     | required |                                                            |
-| username | required | Use system variables to retrieve this value securely.      |
-| password | required | Use system variables to retrieve this value securely.      |
-| database | required |                                                            |
+| username | required | Consider using system variables to retrieve this value securely.      |
+| password | required | Consider using system variables to retrieve this value securely.      |
+| connectstring | required |                                                            |
 
 
 {% include test-connection.md %}
@@ -36,10 +37,9 @@ data_source my_datasource_name:
 
 | Category | Data type  |
 | -------- | ---------- |
-| text     | CHAR, VARCHAR, TEXT  |
-| number   | BIG INT, NUMERIC, BIT, SMALLINT, DECIMAL, SMALLMONEY, INT, TINYINT, MONEY, FLOAT, REAL  |
-| time     | DATE, TIME, DATETIME, DATETIMEOFFSET |
-
+| text     | CHARACTER VARYING, CHARACTER, CHAR, TEXT  |
+| number   | SMALLINT, INTEGER, BIGINT, DECIMAL, NUMERIC, VARIABLE, REAL, DOUBLE PRECISION, SMALLSERIAL, SERIAL, BIGSERIAL  |
+| time     | TIMESTAMP, DATE, TIME, TIMESTAMP WITH TIME ZONE, TIMESTAMP WITHOUT TIME ZONE, TIME WITH TIME ZONE, TIME WITHOUT TIME ZONE |
 
 
 <br />

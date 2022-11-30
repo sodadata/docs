@@ -7,6 +7,7 @@ parent: SodaCL
 
 # Display sample data in Soda Cloud 
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
 Use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.<br />
 *Requires Soda Cloud.*

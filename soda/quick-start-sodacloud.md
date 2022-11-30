@@ -6,6 +6,7 @@ parent: Get started
 ---
 
 # Quick start for Soda Cloud
+*Last modified on {% last_modified_at %}*
 
 <br />
 
@@ -19,7 +20,7 @@ Use this tutorial to review the steps that outline how to connect to your data s
 [Go further](#go-further)<br />
 <br />
 
-## Prerequisites
+## Tutorial prerequisites
 * You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
 * You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) in your Soda Cloud account.
 * You, or an IT Administrator in your organization, has deployed a [Soda Agent]({% link soda-agent/deploy.md %}) in a cluster in your organization's cloud environment.

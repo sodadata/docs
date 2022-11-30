@@ -6,6 +6,7 @@ parent: Get started
 ---
 
 # Soda product overview
+*Last modified on {% last_modified_at %}*
 
 Soda has three parts that work together to establish and maintain the reliability of data in your organization: **Soda Core**, **Soda Checks Language**, and **Soda Cloud**.
 
@@ -132,11 +133,11 @@ In Soda Cloud, you can do much more than just review the scan results.
 
 ## Legacy OSS tools
 
-The very first Soda OSS tools, Soda SQL and Soda Spark served their community well since 2021. They have been deprecated. 
+The very first Soda OSS tools, Soda SQL and Soda Spark, served their community well since 2021. They have been deprecated. 
 
-* ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="80px" width="80px"} was the original command-line tool that Soda created to test for data quality. Access the [legacy documentation]({% link soda-sql/overview.md %}).
+* ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="80px" width="80px"} was the original command-line tool that Soda created to test for data quality. 
 
-* ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="103px" width="103px"} was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark]({% link soda/connect-spark.md %}). Access [legacy documentation]({% link soda-spark/install-and-use.md %}).
+* ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="103px" width="103px"} was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark]({% link soda/connect-spark.md %}). 
 
 ## Go further
 

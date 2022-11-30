@@ -6,6 +6,7 @@ parent: Integrate
 ---
 
 # Integrate Soda Core with dbt
+*Last modified on {% last_modified_at %}*
 
 Integrate Soda with dbt to access dbt test results from within your Soda Cloud account.
 

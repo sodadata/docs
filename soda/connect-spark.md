@@ -6,6 +6,7 @@ parent: Connect a data source
 ---
 
 # Connect Soda to Apache Spark
+*Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
 
@@ -104,7 +105,7 @@ from soda.scan import Scan
 # Create a Spark DataFrame, or use the Spark API to read data and create a DataFrame
 df = spark.createDataFrame([(1, "a"), (2, "b")], ("id", "name"))
 # Create a view that SodaCL uses as a dataset
-df.createOrReplaceTempView("abc")
+df.createOrReplaceTempView("my_df")
 # Create a Scan object, set a scan definition, and attach a Spark session
 scan = Scan()
 scan.set_scan_definition_name("test")
@@ -112,7 +113,7 @@ scan.set_data_source_name("spark_df")
 scan.add_spark_session(spark)
 # Define checks for datasets 
 checks  ="""
-checks for dataset_abc:
+checks for my_df:
   - row_count > 0 
 """
 # If you defined checks in a file accessible via Spark, you can use the scan.add_sodacl_yaml_file method to retrieve the checks

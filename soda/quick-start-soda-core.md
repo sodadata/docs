@@ -1,11 +1,13 @@
 ---
 layout: default
-title: Quick start for Soda Core and Soda Cloud
-description: Follow the quick start tutorial to get started with Soda Core and Soda Cloud with a PostgreSQL database.
+title: Quick start for Soda Core
+description: Follow the quick start tutorial to get started with Soda Core with a PostgreSQL database.
 parent: Get started
 ---
 
-# Quick start for Soda Core and Soda Cloud
+# Quick start for Soda Core 
+*Last modified on {% last_modified_at %}*
+<br />
 <br />
 
 ![soda-core-logo](/assets/images/soda-core-logo.png){:height="120px" width="120px"} <br />
@@ -18,7 +20,7 @@ After you run your scan from the command-line, consider going further by signing
 [Install Soda Core](#install-soda-core)<br />
 [Connect Soda Core to a data source](#connect-soda-core-to-a-data-source)<br />
 [Write a check and run a scan](#write-a-check-and-run-a-scan) <br />
-[Connect Soda Core to Soda Cloud (Optional)](#connect-soda-core-to-soda-cloud) <br />
+[(Optional) Connect Soda Core to Soda Cloud](#optional-connect-soda-core-to-soda-cloud) <br />
 <br />
 
 
@@ -29,7 +31,7 @@ This tutorial references a MacOS development environment with a PostgreSQL data 
 
 * Python 3.8 or greater 
 * Pip 21.0 or greater
-* access details and credentials for a PostgreSQL database
+* access details and credentials for a data source
 * a code editor such as Sublime or Visual Studio Code
 
 ## Install Soda Core
@@ -65,7 +67,7 @@ mkdir soda_tutorial
 cd soda_tutorial
 ```
 2. Create a new file called `confguration.yml`. 
-3. Open the `configuration.yml` file in a code editor, then copy and paste the following connection details into the file. Replace the values for each of the fields with your own database-specific details, then save the file.
+3. Open the `configuration.yml` file in a code editor, then copy and paste the following connection details into the file. Replace the values for each of the fields with your own data source-specific details, then save the file.
 
 ```yaml
 data_source my_database_name:
@@ -79,7 +81,7 @@ data_source my_database_name:
   schema: public
 ```
 
-* Replace `my_database_name` with the name of your PostgreSQL database. 
+* Replace `my_database_name` with the name of your database; replace `postgres` with the type of data source to which you are connecting.
 * Note that `connection:` is a header, not a field. 
 * All values are required.
 * Consider using system variables to securely store the values of your username and password. Refer to [Configure Soda Core]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables) for details. 
@@ -158,7 +160,7 @@ Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 OR <br />
 Continue to the next section to connect Soda Core to a Soda Cloud account.
 
-## Connect Soda Core to Soda Cloud 
+## (Optional) Connect Soda Core to Soda Cloud 
 
 Though you can use Soda Core as a standalone CLI tool to monitor data quality, you may wish to connect to the Soda Cloud web application that vastly enriches the data quality monitoring experience. 
 
