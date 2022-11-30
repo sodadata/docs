@@ -341,8 +341,8 @@ Be aware that this may take several minutes to appear in your list of Soda Agent
 ```yaml
 soda:
  apikey:
-           id: "your-agent-api-key-id"
-           secret: "your-agent-api-key-secret"
+           id: "***"
+           secret: "***"
  agent:
            loglevel: "DEBUG"
            name: "myuniqueagent"

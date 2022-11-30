@@ -166,8 +166,8 @@ Containers:
 ```yaml
 soda:
  apikey:
-           id: "your-agent-api-key-id"
-           secret: "your-agent-api-key-secret"
+           id: "***"
+           secret: "***"
  agent:
            loglevel: "DEBUG"
            name: "myuniqueagent"

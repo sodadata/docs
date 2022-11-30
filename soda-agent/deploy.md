@@ -116,7 +116,6 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 * Add the `core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. You can have multiple idle scan launchers waiting for instructions. <br />
 ```shell
 helm install soda-agent soda-agent/soda-agent \
-  --set soda.agent.target=minikube \
   --set soda.agent.name=myuniqueagent \
   --set soda.apikey.id=*** \
   --set soda.apikey.secret=**** \
@@ -165,15 +164,15 @@ Containers:
 ```yaml
 soda:
  apikey:
-           id: "your-agent-api-key-id"
-           secret: "your-agent-api-key-secret"
+        id: "***"
+        secret: "***"
  agent:
-           loglevel: "DEBUG"
-           name: "myuniqueagent"
-           pollingInterval: 5
+        loglevel: "DEBUG"
+        name: "myuniqueagent"
+        pollingInterval: 5
  core:
-          idle: true
-          replicas: 1
+        idle: true
+        replicas: 1
 ```
 3. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
 ```shell
