@@ -32,13 +32,11 @@ OR
 
 ```yaml
 soda:
- apikey:
-           id: "your-agent-api-key-id"
-           secret: "your-agent-api-key-secret"
- agent:
-           loglevel: "DEBUG"
-           name: "myuniqueagent"
-```
+  apikey:
+    id: "your-agent-api-key-id"
+    secret: "your-agent-api-key-secret"
+  agent:
+    name: "your-unique-agent-name"
 #### helm install command
 
 ```shell
