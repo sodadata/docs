@@ -15,6 +15,7 @@ parent: Reference
 * Documented improvments to the feature for [rerouting failed rows samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to an HTTP endpoint.
 * Documented [how to pass scan time variables]({% link soda-cl/filters.md %}#configure-variables-for-connection-configuration) for data source connection configuration values.
 * Add an example to demonstrate how to define a [variable in an in-check filter]({% link soda-cl/filters.md %}#example-use-a-variable-in-an-in-check-filter).
+* Documented how to [add an identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) to a check to preserve check result history in Soda Cloud when a check is modified.
 
 #### November 28, 2022
 

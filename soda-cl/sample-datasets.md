@@ -102,6 +102,7 @@ sample datasets:
 | Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 |   | Define a name for sample data configuration. |  - |
+|   | Add an identity to a check. |  -  |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
