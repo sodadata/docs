@@ -166,15 +166,13 @@ Containers:
 ```yaml
 soda:
  apikey:
-           id: "your-agent-api-key-id"
-           secret: "your-agent-api-key-secret"
+    id: "your-agent-api-key-id"
+    secret: "your-agent-api-key-secret"
  agent:
-           loglevel: "DEBUG"
-           name: "myuniqueagent"
+    name: "your-unique-agent-name"
  core:
-          idle: true
-          replicas: 1
-```
+   idle: true
+   replicas: 1
 3. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
 ```shell
 helm install soda-agent soda-agent/soda-agent \
