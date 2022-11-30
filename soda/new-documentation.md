@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### November 30, 2022
+
+* Added documentation for the preview of the [alert notification rules]({% link soda-cloud/notif-rules.md %}) feature. 
+
 #### November 28, 2022
 
 * Added [troubleshooting insturctions]({% link soda-core/installation.md %}#error-library-not-loaded) for Soda Core Scientific on an M1 MacOS machine.

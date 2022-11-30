@@ -84,6 +84,8 @@
     page: soda-cloud/scan-output.md
   - subtitle: Edit checks
     page: soda-cloud/edit-checks.md
+  - subtitle: Set notification rules (Preview)
+    page: soda-cloud/notif-rules.md
   - subtitle: Organize datasets
     page: soda-cloud/organize-datasets.md
   - subtitle: Examine failed rows

@@ -8,17 +8,31 @@ parent: Soda Cloud
 # Scan output in Soda Cloud
 *Last modified on {% last_modified_at %}*
 
-When you define checks in a [checks YAML file]({% link soda-core/how-core-works.md %}) and use Soda Core to run a scan, the check results manifest in the **Checks Results** table in Soda Cloud. Log in to view the **Checks** dashboard; each row in the **Checks Results** table represents the result of a check, and the icon indicates whether the test passed, warned, or failed.
+Soda Cloud displays the check results that each scan executed in the **Checks Results** dashboard.
+
+There two methods through which a check result appears on the dashboard.
+* When you define checks in a [checks YAML file]({% link soda-core/how-core-works.md %}) and use Soda Core to run a scan, the check results manifest in the **Checks Results** dashboard in Soda Cloud. 
+* Any time Soda Cloud runs a scheduled scan of your data as part of an [agreement]({% link soda-cloud/agreements.md %}), it displays the check results in the **Checks Results** dashboard.
+
+Log in to view the **Checks Results** dashboard; each row in the table represents the result of a check, and the icon indicates whether the test passed, warned, or failed.
 
 ![check-results](/assets/images/check-results.png){:height="700px" width="700px"}
 
 <br />
+
+## Check results
+
+{% include core-scan-output.md %}
+
+## Scan failed
 
 Check results indicate whether check passed, warned, or failed during the scan. However, if a scan itself failed to complete successfully, Soda Cloud displays a warning message in the **Datasets** dashboard under the dataset for which scans have failed. Soda Cloud does not send an email or Slack notification when a scan fails, only when checks fail.
 
 ![scan-failed](/assets/images/scan-failed.png){:height="550px" width="550px"}
 
 <br />
+
+## Sending scan results to Soda Cloud
 
 Soda Core use a secure API to connect to Soda Cloud. When it completes a scan, Soda Core:
 1. securely gains access to Soda Cloud
