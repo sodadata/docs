@@ -32,13 +32,13 @@ OR
 
 ```yaml
 soda:
- apikey:
+  apikey:
     id: "***"
     secret: "***"
- agent:
-    loglevel: "DEBUG"
-    name: "myuniqueagent"
+  agent:
+    name: "your-unique-agent-name"
 ```
+
 #### helm install command
 
 ```shell
@@ -59,16 +59,14 @@ When you, or someone in your organization, follows the guided steps to [create a
 1. Create or edit your local [values YAML file]({% link soda-agent/deploy.md %}#deploy-using-a-values-yaml-file) to include the values for the environment variables you input into the connection configuration. 
 ```yaml
 soda:
-    apikey:
-      id: "your-agent-api-key-id"
-      secret: "your-agent-api-key-secret"
-    agent:
-      loglevel: "DEBUG"
-      name: "your-unique-agent-name"
-    env:
-      POSTGRES_USER: "sodacore"
-      POSTGRES_PASS: "sodacore"
-```
+  apikey:
+    id: "your-agent-api-key-id"
+    secret: "your-agent-api-key-secret"
+  agent:
+    name: "your-unique-agent-name"
+  env:
+    POSTGRES_USER: "sodacore"
+    POSTGRES_PASS: "sodacore"
 2. After adding the environment variables to the values YAML file, update the Soda Agent using the following command:
 ```shell
 helm upgrade soda-agent soda-agent/soda-agent \

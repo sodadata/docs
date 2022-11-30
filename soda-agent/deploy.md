@@ -163,16 +163,14 @@ Containers:
 * Add the `core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. You can have multiple idle scan launchers waiting for instructions. <br />
 ```yaml
 soda:
- apikey:
-        id: "***"
-        secret: "***"
- agent:
-        loglevel: "DEBUG"
-        name: "myuniqueagent"
-        pollingInterval: 5
- core:
-        idle: true
-        replicas: 1
+  apikey:
+    id: "***"
+    secret: "***"
+  agent:
+    name: "your-unique-agent-name"
+  core:
+    idle: true
+    replicas: 1
 ```
 3. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
 ```shell

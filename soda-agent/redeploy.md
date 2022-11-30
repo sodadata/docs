@@ -21,13 +21,11 @@ Alternatively, if you use the base64 CLI tool, you can run the following command
 ```yaml
 soda:
   apikey:
-        id: "<uuid>"
-        secret: "<secret>"
+    id: "your-agent-api-key-id"
+    secret: "your-agent-api-key-secret"
   agent:
-        id: "842feab3-snip-87eb-06d2813a72c1"
-        loglevel: "INFO"
-        name: "<YourAgentName>"
-```
+    id: "842feab3-snip-87eb-06d2813a72c1"
+    name: "your-unique-agent-name"
 4. To redeploy the agent, you need to provide the values for the API keys the agent uses to connect to Soda Cloud in the values YAML file. Access the values by running the following command, replacing the `soda-agent` values with your own details, then paste the values into your values YAML file.
 ```shell
 helm get values -n soda-agent soda-agent

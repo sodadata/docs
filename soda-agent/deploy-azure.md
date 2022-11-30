@@ -341,15 +341,13 @@ Be aware that this may take several minutes to appear in your list of Soda Agent
 ```yaml
 soda:
  apikey:
-           id: "***"
-           secret: "***"
+    id: "***"
+    secret: "***"
  agent:
-           loglevel: "DEBUG"
-           name: "myuniqueagent"
+   name: "your-unique-agent-name"
  core:
-          idle: true
-          replicas: 1
-```
+   idle: true
+   replicas: 1
 3. Save the file. Then, create a namespace for the agent.
 ```shell
 kubectl create ns soda-agent
