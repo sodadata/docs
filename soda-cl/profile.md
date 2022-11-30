@@ -187,7 +187,7 @@ Both column profiling and dataset discovery can lead to increased computation co
 
 Besides metadata queries to discover the datasets in a data source and their columns, dataset discovery also derives a row count for each dataset. Depending on your data source and the size of your datasets, this can take considerable compute time. Dataset discovery derives the following metrics:
 
-* row count
+* row count (removed in soda-core v3.0.14)
 
 ### Profile Columns
 
