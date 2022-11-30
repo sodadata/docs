@@ -199,8 +199,8 @@
     page: soda/support.md
   - subtitle: Soda Community Code of Conduct
     page: soda/community-coc.md
-  - subtitle: Deprecated Soda OSS tools
-    page: soda/legacy.md
+  - subtitle: Soda SQL is now Soda Core
+    page: soda/deprecated.md
 
 - title: API Documentation
   page: api-docs/reporting-api.md
