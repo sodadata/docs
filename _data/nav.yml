@@ -32,6 +32,8 @@
     page: soda/connect-denodo.md
   - subtitle: Connect to Dremio
     page: soda/connect-dremio.md
+  - subtitle: Connect to DuckDB
+    page: soda/connect-duckdb.md
   - subtitle: Connect to IBM DB2
     page: soda/connect-db2.md
   - subtitle: Connect to MS SQL Server
