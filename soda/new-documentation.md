@@ -9,6 +9,15 @@ parent: Reference
 
 <br />
 
+#### December 1, 2022
+
+* Added release notes documentation for Soda Core 3.0.14.
+* Documented connection configuration for [Denodo (Experimental)]({% link soda/connect-denodo.md %}).
+* Documented improvments to the feature for [rerouting failed rows samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to an HTTP endpoint.
+* Documented [how to pass scan time variables]({% link soda-cl/filters.md %}#configure-variables-for-connection-configuration) for data source connection configuration values.
+* Add an example to demonstrate how to define a [variable in an in-check filter]({% link soda-cl/filters.md %}#example-use-a-variable-in-an-in-check-filter).
+* Documented how to [add an identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) to a check to preserve check result history in Soda Cloud when a check is modified.
+
 #### November 30, 2022
 
 * Adjusted the documentation for dataset discovery because, as of Soda Core v3.0.14, the action no longer derives a `row_count` metric; see [Dataset discovery]({% link soda-cl/profile.md %}#discover-datasets).
@@ -57,7 +66,7 @@ parent: Reference
 
 #### November 7, 2022
 
-* Added examples for using [in-check variables]({% link soda-cl/filters.md %}#configure-variables) to provide dynamic values at scan time.
+* Added examples for using [in-check variables]({% link soda-cl/filters.md %}#configure-variables-in-SodaCL) to provide dynamic values at scan time.
 
 #### November 3, 2022
 
@@ -84,7 +93,7 @@ parent: Reference
 #### October 19, 2022
 
 * Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.11.
-* Documented connection configuration for Azure Synapse (Experimental).
+* Documented connection configuration for [Azure Synapse (Experimental)]({% link soda/connect-synapse.md %}).
 * Added documentation for an enhancement for [change-over-time checks]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds) to gauge changes relative to the same day last week or month.
 * Added documentation for the new `test-connection` command in Soda Core. See [Connect Soda to Amazon Athena]({% link soda/connect-athena.md %}#test-the-data-source-connection) for an example.
 
