@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reporting API
+title: Reporting API v1 (Preview)
 description: This API enables you to query data from your Soda Cloud account. Use the data to build dashboards that communicate how your teammates are using Soda Cloud.
 parent: API Docs
 apidoc: true
