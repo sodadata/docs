@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda Agent
-description: Deploy a Soda Agent in your local environment to securly execute scheduled scans for Soda Cloud.
+description: Deploy a Soda Agent in your local environment to securly execute scheduled scans from Soda Cloud.
 parent: Soda Agent
 ---
 <br />
