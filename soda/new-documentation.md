@@ -11,7 +11,7 @@ parent: Reference
 
 #### December 1, 2022
 
-* Added release notes documentation for Soda Core 3.0.14.
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.14.
 * Documented connection configuration for [Denodo (Experimental)]({% link soda/connect-denodo.md %}).
 * Documented improvments to the feature for [rerouting failed rows samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to an HTTP endpoint.
 * Documented [how to pass scan time variables]({% link soda-cl/filters.md %}#configure-variables-for-connection-configuration) for data source connection configuration values.
