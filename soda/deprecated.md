@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Deprecated - Soda SQL and Soda Spark
-description: Soda SQL and Soda Spark were Soda's original OSS tools for monitoring data quality which have been replaced by Soda Core.
+title: Soda SQL and Soda Spark are now Soda Core
+description: Soda SQL and Soda Spark have been deprecated and replaced by Soda Core.
 parent: Reference
 redirect_from: 
 - /soda-sql/
@@ -70,11 +70,12 @@ redirect_from:
 - /soda-sql/documentation/warehouse.html
 - /soda-sql/warehouse.html
 - /soda-spark/install-and-use.html
-- /release-notes/soda-spark.md
-- /release-notes/soda-sql.md
+- /release-notes/soda-spark.html
+- /release-notes/soda-sql.html
+- /soda/legacy.html
 ---
 
-# Deprecated: Soda SQL and Soda Spark
+# Soda SQL and Soda Spark are now Soda Core
 
 The very first Soda OSS tools, Soda SQL and Soda Spark, served their community well since 2021. They have been deprecated. <a href="https://www.soda.io/resources/introducing-soda-core-the-new-way-for-data-reliability" target="_blank">Read more</a> about the decision to deprecate and move forward with Soda Core.
 

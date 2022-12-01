@@ -9,13 +9,19 @@ parent: Reference
 
 <br />
 
-#### November 30, 2022
+#### December 1, 2022
+
 * Added release notes documentation for Soda Core 3.0.14.
 * Documented connection configuration for [Denodo (Experimental)]({% link soda/connect-denodo.md %}).
 * Documented improvments to the feature for [rerouting failed rows samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to an HTTP endpoint.
 * Documented [how to pass scan time variables]({% link soda-cl/filters.md %}#configure-variables-for-connection-configuration) for data source connection configuration values.
 * Add an example to demonstrate how to define a [variable in an in-check filter]({% link soda-cl/filters.md %}#example-use-a-variable-in-an-in-check-filter).
 * Documented how to [add an identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) to a check to preserve check result history in Soda Cloud when a check is modified.
+
+#### November 30, 2022
+
+* Adjusted the documentation for dataset discovery because, as of Soda Core v3.0.14, the action no longer derives a `row_count` metric; see [Dataset discovery]({% link soda-cl/profile.md %}#discover-datasets).
+* Added documentation for the preview of the [alert notification rules]({% link soda-cloud/notif-rules.md %}) feature. 
 
 #### November 28, 2022
 

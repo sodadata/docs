@@ -17,4 +17,4 @@ All is good. No failures. No warnings. No errors.
 Sending results to Soda Cloud
 ```
 
-![check-result](/assets/images/check-result.png){:height="700px" width="700px"}
+![monitor-results-incidents](/assets/images/monitor-results-incidents.png){:height="700px" width="700px"}

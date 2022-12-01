@@ -88,6 +88,8 @@
     page: soda-cloud/scan-output.md
   - subtitle: Edit checks
     page: soda-cloud/edit-checks.md
+  - subtitle: Set notification rules (Preview)
+    page: soda-cloud/notif-rules.md
   - subtitle: Organize datasets
     page: soda-cloud/organize-datasets.md
   - subtitle: Examine failed rows
@@ -203,8 +205,8 @@
     page: soda/support.md
   - subtitle: Soda Community Code of Conduct
     page: soda/community-coc.md
-  - subtitle: Deprecated Soda OSS tools
-    page: soda/legacy.md
+  - subtitle: Soda SQL is now Soda Core
+    page: soda/deprecated.md
 
 - title: API Documentation
   page: api-docs/reporting-api.md
