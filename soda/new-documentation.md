@@ -11,6 +11,7 @@ parent: Reference
 
 #### November 30, 2022
 
+* Adjusted the documentation for dataset discovery because, as of Soda Core v3.0.14, the action no longer derives a `row_count` metric; see [Dataset discovery]({% link soda-cl/profile.md %}#discover-datasets).
 * Added documentation for the preview of the [alert notification rules]({% link soda-cloud/notif-rules.md %}) feature. 
 
 #### November 28, 2022
