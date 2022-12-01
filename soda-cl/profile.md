@@ -185,10 +185,7 @@ Both column profiling and dataset discovery can lead to increased computation co
 
 ### Discover Datasets
 
-Besides metadata queries to discover the datasets in a data source and their columns, dataset discovery also derives a row count for each dataset. Depending on your data source and the size of your datasets, this can take considerable compute time. Dataset discovery derives the following metrics:
-
-All columns
-* row count
+Dataset discovery gathers metadata to discover the datasets in a data source and their columns.
 
 ### Profile Columns
 
@@ -222,6 +219,7 @@ Text Columns
 | Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 |   | Define a name for sample data configuration. |  - |
+|   | Add an identity to a check. | - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |

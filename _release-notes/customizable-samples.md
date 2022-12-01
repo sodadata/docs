@@ -1,6 +1,6 @@
 ---
 name: Customizable failed rows and samples
-date: 2021-10-18
+date: 2022-10-18
 products:
   - soda-cloud
 ---

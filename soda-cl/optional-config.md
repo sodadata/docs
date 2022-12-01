@@ -15,6 +15,7 @@ When you define SodaCL checks for data quality in your checks YAML file, you hav
 The following optional configurations are available to use with most, though not all, [check types]({% link soda-cl/metrics-and-checks.md %}#check-types). The detailed documentation for metrics and individual check types indicate specifically which optional configurations are compatible.
 
 [Customize check names](#customize-check-names)<br />
+[Add a check identity](#add-a-check-identity)<br />
 [Add alert configurations](#add-alert-configurations)<br />
 [Add a filter to a check](#add-a-filter-to-a-check)<br />
 [Use quotes in a check](#use-quotes-in-a-check)<br />
@@ -43,7 +44,7 @@ checks for dim_employee:
 
 <br />
 
-If you wish, you can use a [variable]({% link soda-cl/filters.md %}#configure-variables) to customize a dynamic check name.
+If you wish, you can use a variable to customize a dynamic check name. Read more about [Filters and variables]({% link soda-cl/filters.md %}).
 ```yaml
 variables:
   name: Customers UK
@@ -61,6 +62,29 @@ Scan summary:
       Row count in Customers UK [PASSED]
 All is good. No failures. No warnings. No errors.
 ```
+
+## Add a check identity
+
+Soda Cloud idtifies a check using details such as the check name, the check YAML file name, the file's location. When you modify an individual check, the check identity changes which results in a new check result in Soda cloud.  For example, the following check sends one check result to Soda Cloud after a scan. 
+```yaml
+checks for dim_customer:
+  - missing_count(last_name) > 0
+```
+If you changed the threshold from `0` to `99`, then after the next scan, Soda Cloud considers this as a new check and discards the previous check result's history; it would appear as though the original check and its results had disappeared. 
+
+If you anticipate modifying a check, particularly if you include a variable in your check, you can explicitly specify a check identity so that Soda Cloud can correctly accumulate the results of a single check and retain its history even if the check has been modified. 
+
+First, navigate to an existing check in your Soda Cloud account, then copy the UUID of the check from the URL; see the example below.
+
+![check-identity](/assets/images/check-identity.png){:height="700px" width="700px"}
+
+Add an identity property to your check using the UUID you copied as the identity's value.
+```yaml
+checks for dim_customer:
+  - missing_count(last_name) > 99:
+      identity: aa457447-60f6-4b09-4h8t-02fbb78f9587
+```
+
 
 ## Add alert configurations
 
@@ -245,7 +269,7 @@ checks for dim_customer:
 
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check that collects failed row samples and has failed. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
-## Disable failed row samples for specific columns
+### Disable failed row samples for specific columns
 
 For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
 

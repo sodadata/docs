@@ -38,7 +38,8 @@ checks for ${DATASET}:
 [In-check vs. dataset filters](#in-check-vs-dataset-filters)<br />
 [Configure in-check filters](#configure-in-check-filters)<br />
 [Configure dataset filters](#configure-dataset-filters)<br />
-[Configure variables](#configure-variables)<br />
+[Configure variables in SodaCL](#configure-variables-in-sodacl)<br />
+[Configure variables for connection configuration](#configure-variables-for-connection-configuration)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -80,9 +81,139 @@ For a dataset filter, Soda Core generates a separate query and, again, attempts 
 
 {% include dataset-filters.md %}
 
-## Configure variables
+## Configure variables in SodaCL
 
-{% include variables.md %}
+You can use variables in SodaCL to:
+* define dynamic [dataset filters]({% link soda-cl/filters.md %}#configure-dataset-filters)
+* customize dynamic [check names](#example-customize-a-check-name)
+* define dynamic in-check values; see examples below
+* define dynamic in-check filters; see [example](#example-use-a-variable-in-an-in-check-filter) below
+* replace any value anywhere in your checks with a scan-time value
+
+To provide a variable at scan time, as with dynamic dataset filters or with in-check values, add a `-v` option to the scan command and specify the key:value pair for the variable, as in the following example.
+```shell
+soda scan -d aws_postgres_retail -c configuration.yml -v TODAY=2022-03-31 checks.yml
+```
+
+If you wish, you can provide the value more than one variable at scan time, as in the following example.
+
+```shell
+soda scan -d aws_postgres_retail duplicate_count_filter.yml -v date=2022-07-25 -v name='rowcount check'
+```
+
+<br />
+
+#### Example: customize a check name
+
+See also: [Customize check names]({% link soda-cl/optional-config.md %}#customize-a-check-name).
+
+```yaml
+variables:
+  name: Customers UK
+checks for dim_customer:
+  - row_count > 1:
+     name: Row count in ${name}
+```
+
+<br />
+
+#### Example: provide a dataset name at scan time
+
+```yaml
+checks for ${DATASET}:
+  - invalid_count(last_name) = 0:
+      valid length: 10 
+```
+
+Scan command:
+```shell
+soda scan -d my_datasource_name -c configuration.yml -v DATASET=dim_customer checks.yml
+```
+
+<br />
+
+#### Example: provide a column name at scan time
+
+```yaml
+checks for dim_customer:
+  - invalid_count(${COLUMN}) = 0:
+      valid length: 10 
+```
+
+Scan command:
+```shell
+soda scan -d my_datasource_name -c configuration.yml -v COLUMN=last_name checks.yml
+```
+
+<br />
+
+#### Example: provide a threshold value at scan time
+
+```yaml
+checks for dim_customer:
+  - invalid_count(last_name) = ${LENGTH}:
+      valid length: 10 
+```
+
+Scan command:
+```shell
+soda scan -d my_datasource_name -c configuration.yml -v LENGTH=0 checks.yml
+```
+
+#### Example: use a variable in an in-check filter
+
+```yaml
+checks for dim_employee:
+  - max(vacation_hours) < 80:
+      name: Too many vacation hours for US Sales
+      filter: sales_territory_key = ${SALES_TER}
+```
+
+<br />
+
+###  Configuration details and limitations
+
+* Variables must use the following syntax: `${VAR_NAME}`.
+* You cannot use a variable to provide a scan-time value for a [configuration key]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) value, such as the value for `valid length` for an `invalid_count` check.
+* For consistency, best practice dictates that you use upper case for variable names, though you can use lower case if you wish.
+
+
+## Configure variables for connection configuration
+
+You can use variables to:
+* resolve credentials in configuration files using system variables; see [Configure Soda Core]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables)
+* pass variables for values in configuration files; see instructions below
+* replace any value anywhere in your configuration with a scan-time value
+
+If you use Soda Core to execute Soda scans for data quality, you can pass variables at scan time to provide values for data source connection configuration keys in your configuration YAML file. For example, you may wish to pass a variable for the value of `password` in your configuration YAML.
+
+1. Adjust the data source connection configuration in your configuration YAML to include a variable.
+```shell
+data_source adventureworks:
+  type: postgres
+  host: localhost
+  username: noname
+  password: ${PASSWORD}
+  database: sodacore
+  schema: public
+```
+2. Save then file, then run a scan that uses a `-v` option to include the value of the variable in the scan command.
+```shell
+soda scan -d adventureworks -c configuration.yml -v PASSWORD=123abc checks.yml
+```
+
+You can provide the values for multiple variables in a single scan command.
+
+```shell
+soda scan -d adventureworks -c configuration.yml -v USERNAME=sodacore -v PASSWORD=123abc -v FRESH_NOW=2022-05-31 21:00:00 checks.yml
+```
+
+<br />
+
+###  Configuration details and limitations
+
+* If you do not explicitly specify a variable value at scan time to resolve credentials, Soda uses environment variables.
+* For consistency, best practice dictates that you use upper case for variable names, though you can use lower case if you wish.
 
 
 ## Go further
