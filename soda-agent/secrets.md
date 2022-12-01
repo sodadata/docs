@@ -19,7 +19,9 @@ As these values are sensitive, you may wish to employ the following strategies t
 
 ## Store Kubernetes secrets
 
-Kubernetes uses the concept of Secrets that the Soda Agent Helm chart employs to store connection secrets that you specify as values during the Helm release of the Soda Agent. Depending on your cloud provider, you can arrange to store these Secrets in a specialized storage such as <a href="https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts" target="_blank">Azure Key Vault</a> or <a href="https://docs.aws.amazon.com/kms/latest/developerguide/overview.html" target="_blank">AWS Key Management Service (KMS)</a>.
+Kubernetes uses the concept of Secrets that the Soda Agent Helm chart employs to store connection secrets that you specify as values during the Helm release of the Soda Agent. 
+
+Depending on your cloud provider, you can arrange to store these Secrets in a specialized storage such as <a href="https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts" target="_blank">Azure Key Vault</a> or <a href="https://docs.aws.amazon.com/kms/latest/developerguide/overview.html" target="_blank">AWS Key Management Service (KMS)</a>.
 
 ## Use a values YAML file to store API key values 
 
@@ -36,7 +38,7 @@ soda:
     id: "***"
     secret: "***"
   agent:
-    name: "your-unique-agent-name"
+    name: "myuniqueagent"
 ```
 
 #### helm install command
@@ -54,19 +56,22 @@ Refer to the exhaustive cloud service provider-specific instructions for more de
 
 ## Use environment variables to store data source connection credentials
 
-When you, or someone in your organization, follows the guided steps to [create a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud, one of the steps involves providing the connection details and credentials Soda needs to connect to the data source to run scans. You can add those details directly in Soda Cloud, but because any user can then access these values, you may wish to store them securely in the values YAML file as environment variables. 
+When you, or someone in your organization, follows the guided steps to [create a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud, one of the steps involves providing the connection details and credentials Soda needs to connect to the data source to run scans. 
+
+You can add those details directly in Soda Cloud, but because any user can then access these values, you may wish to store them securely in the values YAML file as environment variables. 
 
 1. Create or edit your local [values YAML file]({% link soda-agent/deploy.md %}#deploy-using-a-values-yaml-file) to include the values for the environment variables you input into the connection configuration. 
 ```yaml
 soda:
-  apikey:
-    id: "your-agent-api-key-id"
-    secret: "your-agent-api-key-secret"
-  agent:
-    name: "your-unique-agent-name"
-  env:
-    POSTGRES_USER: "sodacore"
-    POSTGRES_PASS: "sodacore"
+    apikey:
+      id: "***"
+      secret: "***"
+    agent:
+      name: "myuniqueagent"
+    env:
+      POSTGRES_USER: "sodacore"
+      POSTGRES_PASS: "sodacore"
+```
 2. After adding the environment variables to the values YAML file, update the Soda Agent using the following command:
 ```shell
 helm upgrade soda-agent soda-agent/soda-agent \
@@ -91,7 +96,7 @@ data_source local_postgres_test:
 ## Go further
 
 * Learn more about [Soda Agent basic concepts]({% link soda-agent/basics.md %}).
-* Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
+* Consider completing the [Quick start for Soda Cloud]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

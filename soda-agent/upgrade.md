@@ -8,7 +8,9 @@ parent: Soda Agent
 # Upgrade a Soda Agent 
 *Last modified on {% last_modified_at %}*
 
-To take advantage of new or improved features and functionality in the Soda Agent, you can upgrade your agent when a new version becomes available <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>.
+The **Soda Agent** is a Helm chart that you deploy on a Kubernetes cluster and connect to your Soda Cloud account using API keys.
+
+To take advantage of new or improved features and functionality in the Soda Agent, you can upgrade your agent when a new version becomes available in <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>.
 
 1. To upgrade the agent, you need to provide the values for the API keys the agent uses to connect to Soda Cloud using flags in the helm upgrade command, or in a values YAML file. Access the values by running the following command, replacing the placeholder values with your own details.
 ```shell
@@ -32,7 +34,7 @@ helm upgrade soda-agent soda-agent/soda-agent \
   --set soda.apikey.id=*** \
   --set soda.apikey.secret=**** \
 ```
-OR
+OR, if you us a values YAML file,
 ```shell
 helm upgrade soda-agent soda-agent/soda-agent \
    --values values-local.yml --namespace soda-agent

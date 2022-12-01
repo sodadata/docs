@@ -8,6 +8,8 @@ parent: Soda Agent
 # Helpful kubectl commands
 *Last modified on {% last_modified_at %}*
 
+The **Soda Agent** is a Helm chart that you deploy on a Kubernetes cluster and connect to your Soda Cloud account using API keys.
+
 Kubectl is the command-line tool you use to run commands against Kubernetes clusters. To deploy a Soda Agent in a cluster, you must have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. <br />
 Run `kubectl version --output=yaml` to check the version of an existing install.
 
@@ -118,7 +120,7 @@ kubectl logs -l agent.soda.io/component=scanlauncher -n soda-agent
 ## Go further
 
 * Learn more about [Soda Agent basic concepts]({% link soda-agent/basics.md %}).
-* Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
+* Consider completing the [Quick start for Soda Cloud]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

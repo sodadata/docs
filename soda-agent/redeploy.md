@@ -8,10 +8,12 @@ parent: Soda Agent
 # Redeploy a Soda Agent
 *Last modified on {% last_modified_at %}*
 
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster. [Read more]({% link soda-agent/basics.md %}).
+
 When you delete the Soda Agent Helm chart from your cluster, you also delete all the agent resources on your cluster. However, if you wish to redeploy the previously-registered agent (use the same name), you need to specify the agent ID in your override values in your values YAML file.
 
 1. In Soda Cloud, navigate to **your avatar** > **Scans & Data** > **Agents** tab.
-2. Click to select the agent you wish to redeploy, then copy the agent ID of the previously-registered agent from the URL.<br />
+2. Click to select the agent you wish to redeploy, then copy the agent ID of the previously-registered agent from the URL.<br /><br />
 For example, in the following URL, the agent ID is the long UUID at the end. `https://cloud.soda.io/agents/842feab3-snip-87eb-06d2813a72c1`.<br /><br />
 Alternatively, if you use the base64 CLI tool, you can run the following command to obtain the agentID.
 ```shell
@@ -21,11 +23,12 @@ Alternatively, if you use the base64 CLI tool, you can run the following command
 ```yaml
 soda:
   apikey:
-    id: "your-agent-api-key-id"
-    secret: "your-agent-api-key-secret"
+        id: "***"
+        secret: "***"
   agent:
-    id: "842feab3-snip-87eb-06d2813a72c1"
-    name: "your-unique-agent-name"
+        id: "842feab3-snip-87eb-06d2813a72c1"
+        name: "myuniqueagent"
+```
 4. To redeploy the agent, you need to provide the values for the API keys the agent uses to connect to Soda Cloud in the values YAML file. Access the values by running the following command, replacing the `soda-agent` values with your own details, then paste the values into your values YAML file.
 ```shell
 helm get values -n soda-agent soda-agent

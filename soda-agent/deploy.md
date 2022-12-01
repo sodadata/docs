@@ -14,7 +14,7 @@ redirect_from:
 
 The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. 
 
-These deployment instructions offer generic guidance for setting up a Kubernetes cluster and deploying a Soda Agent in it. Instead, you may wish to access a cloud service provider-specific set of instructions for:
+These deployment instructions offer generic guidance for setting up a Kubernetes cluster and deploying a Soda Agent in it. Alternatively, you may wish to access a cloud service provider-specific set of instructions for:
 * [Amazon Elastic Kubernetes Service (EKS)]({% link soda-agent/deploy-aws.md %})
 * [Microsoft Azure Kubernetes Service (AKS)]({% link soda-agent/deploy-azure.md %})
 
@@ -113,15 +113,15 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 2. Use the following comand to install the Helm chart to deploy a Soda Agent in your custer. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
 * Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account.
 * Replace the value of `soda.agent.name` with a custom name for you agent, if you wish.
-* Add the `core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. You can have multiple idle scan launchers waiting for instructions. <br />
+* Optionally, add the `soda.core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions. <br />
 ```shell
 helm install soda-agent soda-agent/soda-agent \
-  --set soda.agent.name=myuniqueagent \
-  --set soda.apikey.id=*** \
-  --set soda.apikey.secret=**** \
-  --set soda.core.idle=true \
-  --set soda.core.replicas=1 \
-  --namespace soda-agent
+    --set soda.agent.name=myuniqueagent \
+    --set soda.apikey.id=*** \
+    --set soda.apikey.secret=**** \
+    --set soda.core.idle=true \
+    --set soda.core.replicas=1 \
+    --namespace soda-agent
 ```
 The command-line produces output like the following message:
 ```shell
@@ -135,7 +135,7 @@ REVISION: 1
 ```shell
 minikube kubectl -- describe pods
 ```
-4. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
+4. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
 Containers:
@@ -148,10 +148,10 @@ Containers:
         State:          Running
           Started:      Thu, 16 Jun 2022 15:50:28 -0700
         Ready:          True
-...
+        ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="600px" width="600px"}
-5. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
+5. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
 
 
 ### Deploy using a values YAML file
@@ -160,17 +160,17 @@ Containers:
 2. In that file, copy+paste the content below, replacing the following values:
 * `id` and `secret` with the values you copy+pasted from the **New Soda Agent** dialog box in your Soda Cloud account. 
 * Replace the value of `name` with a custom name for your agent, if you wish.
-* Add the `core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. You can have multiple idle scan launchers waiting for instructions. <br />
+* Optionally, add the `soda.core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions. <br />
 ```yaml
 soda:
-  apikey:
-    id: "***"
-    secret: "***"
-  agent:
-    name: "your-unique-agent-name"
-  core:
-    idle: true
-    replicas: 1
+        apikey:
+          id: "***"
+          secret: "***"
+        agent:
+          name: "myuniqueagent"
+        core:
+          idle: true
+          replicas: 1
 ```
 3. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
 ```shell
@@ -182,7 +182,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 minikube kubectl -- describe pods
 ```
-5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> 
+5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -199,7 +199,7 @@ Containers:
 ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
-6. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
+6. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
 
 
 ## (Optional) Create a practice data source
@@ -226,7 +226,7 @@ minikube delete
 
 ## Troubleshoot deployment
 
-Refer to [Helpful kubectl commands]({% link soda-agent/helpful-commands.md %}) for instructions on accessing logs, etc.
+Refer to [Helpful kubectl commands]({% link soda-agent/helpful-commands.md %}) for instructions on accessing logs and investigating issues.
 <br /><br />
 
 {% include agent-troubleshoot.md %}
@@ -236,9 +236,10 @@ Refer to [Helpful kubectl commands]({% link soda-agent/helpful-commands.md %}) f
 
 ## Go further
 
-* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed.
 * Access a list of [helpful `kubectl` commands]({% link soda-agent/helpful-commands.md %}) for running commands on your Kubernetes cluster.
 * [Learn more]({% link soda-agent/secrets.md %}) about securely storing and accessing API keys and data source login credentials.
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---
