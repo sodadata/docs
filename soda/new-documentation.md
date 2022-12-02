@@ -12,6 +12,8 @@ parent: Reference
 #### December 2, 2022
 
 * Added preview documentation for [deploying a Soda Agent in an AKS cluster]({% link soda-agent/deploy-azure.md %}). Reorganized and expanded Soda Agent documentation in general.
+* Added documentation to cast a column so as to use TEXT type data in a [freshness check]({% link soda-cl/freshness.md %}#details-and-limitations).
+* Documented [troubleshooting tips]({% link soda-cloud/scan-output.md %}#troubleshoot) for Soda Cloud 400 response.
 
 #### December 1, 2022
 
