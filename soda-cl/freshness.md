@@ -17,6 +17,8 @@ checks for dim_product:
 ```
 
 [Define freshness checks](#define-freshness-checks) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Details and limitations](#details-and-limitations)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Troubleshoot errors with freshness checks](#troubleshoot-errors-with-freshness-checks)<br />
 [Freshness check results](#freshness-check-results)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of freshness thresholds](#list-of-freshness-thresholds) <br />
@@ -40,12 +42,6 @@ A freshness check has two or three mutable parts:
 <br />
 
 The example below defines a check that measures freshness relative to "now", where "now" is the moment you run the scan that executes the freshness check. This example discovers when the last row was added to the `start_date` timestamp column, then compares that timestamp to "now". If Soda discovers that the last row was added more than three days ago, the check fails. 
-* Freshness checks *only* work with columns that contain data types TIMESTAMP or DATE.
-* The only comparison symbol you can use with freshness checks is `<` *except* when you employ and alert configuration. See [Example with alert configuration](#example-with-alert-configuration) for details.
-* The default value for "now" is the time you run the scan that executes the freshness check.
-* If no timezone information is available in either the timestamp of the check (scan time), or in the data in the column, a freshness check uses the UTC timezone. Soda converts both timestamps to UTC to compare values.
-
-<br />
 
 ```yaml
 checks for dim_product:
@@ -74,9 +70,21 @@ At scan time, you use a `-v` option to pass a value for the variable that the ch
 soda scan -d adventureworks -c configuration.yml -v CUST_VAR=2022-05-31 21:00:00 checks_test.yml
 ```
 
-<br />
 
-#### Troubleshoot errors with freshness checks
+### Details and limitations
+* Out-of-the-box, freshness checks *only* work with columns that contain data types TIMESTAMP or DATE. However, you can apply a freshness check to TEXT type data using the following syntax to cast the column: 
+
+```yaml
+checks for dim_product:
+  - freshness(createdat::datetime) < 1d
+```
+* The only comparison symbol you can use with freshness checks is `<` *except* when you employ and alert configuration. See [Example with alert configuration](#example-with-alert-configuration) for details.
+* The default value for "now" is the time you run the scan that executes the freshness check.
+* If no timezone information is available in either the timestamp of the check (scan time), or in the data in the column, a freshness check uses the UTC timezone. Soda converts both timestamps to UTC to compare values.
+
+
+
+### Troubleshoot errors with freshness checks
 
 **Problem:** When you run a scan to execute a freshness check, the CLI returns one of the following error message when you run a scan.  
 
