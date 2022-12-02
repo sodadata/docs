@@ -8,37 +8,39 @@ parent: Soda Agent
 # Upgrade a Soda Agent 
 *Last modified on {% last_modified_at %}*
 
-To take advantage of new or improved features and functionality in the Soda Agent, you can upgrade your agent when a new version becomes available <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>.
+The **Soda Agent** is a Helm chart that you deploy on a Kubernetes cluster and connect to your Soda Cloud account using API keys.
 
-1. Use the following command to find out which version of the Soda Agent Helm chart you have deployed on your EKS cluster.
+To take advantage of new or improved features and functionality in the Soda Agent, you can upgrade your agent when a new version becomes available in <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>.
+
+1. To upgrade the agent, you need to provide the values for the API keys the agent uses to connect to Soda Cloud using flags in the helm upgrade command, or in a values YAML file. Access the values by running the following command, replacing the placeholder values with your own details.
+```shell
+helm get values -n <namespace> <release name>
+```
+2. Use the following command to find out which version of the Soda Agent Helm chart you have deployed on your cluster.
 ```shell
 helm list -n soda-agent
 ```
-2. Use the following command to search ArifactHub for the most recent version of the Soda Agent Helm chart.
+3. Use the following command to search ArifactHub for the most recent version of the Soda Agent Helm chart.
 ```shell
 helm search hub soda-agent
 ```
-3. Use the following command to upgrade the Helm repository.
+4. Use the following command to upgrade the Helm repository.
 ```shell
 helm repo update
 ```
-4. Upgrade the Soda Agent Helm chart.
+5. Upgrade the Soda Agent Helm chart. 
+```shell
+helm upgrade soda-agent soda-agent/soda-agent \
+  --set soda.apikey.id=*** \
+  --set soda.apikey.secret=**** \
+```
+OR, if you use a values YAML file,
 ```shell
 helm upgrade soda-agent soda-agent/soda-agent \
    --values values-local.yml --namespace soda-agent
 ```
 
 <br />
-
-#### Troubleshoot
-
-**Problem:** To upgrade the agent, I need the API keys that connect it to Soda Cloud, but I do not have access to them.
-
-**Solution:** You can access the values by running the following command, replacing the placeholder values with your own details.
-
-```shell
-helm get values -n <namespace> <release name>
-```
 
 
 ## Go further

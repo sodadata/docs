@@ -10,31 +10,43 @@ redirect_from: /soda-agent/
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-The **Soda Agent** is a tool that empowers Soda Cloud users to securely connect to new data sources. 
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster. 
 
-The agent obviates the need to install Soda Core independently and set up configuration YAML files to connect to data sources. Instead, it enables Soda Cloud users to serve themselves when it comes to connecting to new data sources in an organization. 
+This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. 
 
 What follows is an extremely abridged introduction to a few basic elements involved in the deployment and setup of a Soda Agent.
+
+![agent-diagram](/assets/images/agent-diagram.png){:height="700px" width="700px"}
 
 **Soda Core** is an open-source, command-line tool that serves as the backbone of Soda technology. It is the software that performs the work of converting user-defined input into SQL queries that execute when you run scans for data quality in a data source. You can connect Soda Core to a **Soda Cloud** account where you and your team can use the web application to collaborate on data quality monitoring. 
 
 Both Soda Core and Soda Cloud make use of **Soda Checks Language (SodaCL)** to write checks for data quality. The checks are tests that Soda Core executes when it runs a scan of your data. Read [more]({% link soda/product-overview.md %}). 
 
-**Kubernetes** is a system for orchestrating containerized applications; a **Kubernetes cluster** is a set of resources that support an application environment. You need a Kubernetes cluster in which to deploy the containerized applications that make up the **Soda Agent**.
+**Soda Agent** is essentially Soda Core functionality that you deploy in a Kubernetes cluster in your own cloud services provider environment. When you deploy an agent, you also deploy two types of workloads in your Kubernetes cluster from a Docker image:
+* a **Soda Agent Orchestrator** which creates Kubernetes Jobs and CronJobs to trigger scheduled scans of data
+* a **Soda Agent Scan Launcher** which wraps around Soda Core, the tool which performs the scan itself 
 
-**Amazon Elastic Kubernetes Service (EKS)** is *where* you create your Kubernetes cluster; **Fargate** is a type of EKS node that operates as a serverless, pay-as-you-go compute engine, so that you can pay for the compute power your cluster uses. The Kubernetes cluster is also where you store **Kubernetes secrets**, such as login credentials, which Kubernetes creates independently on the pods that use them. (Pods are a basic workload unit in Kubernetes, usually an instance of one container.) Learn more about <a href="https://www.youtube.com/watch?v=BOj1sgWVXko" target="_blank" >Kubernetes concepts</a>.
+**Kubernetes** is a system for orchestrating containerized applications; a **Kubernetes cluster** is a set of resources that supports an application deployment. 
+
+You need a Kubernetes cluster in which to deploy the containerized applications that make up the **Soda Agent**. Kubernetes uses the concept of **Secrets** that the Soda Agent Helm chart employs to store connection secrets that you specify as values during the Helm release of the Soda Agent. Depending on your cloud provider, you can arrange to store these Secrets in a specialized storage such as <a href="https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts" target="_blank">Azure Key Vault</a> or <a href="https://docs.aws.amazon.com/kms/latest/developerguide/overview.html" target="_blank">AWS Key Management Service (KMS)</a>. The Jobs and CronJobs that the agent creates access these Secrets when they execute. Learn more about <a href="https://www.youtube.com/watch?v=BOj1sgWVXko" target="_blank" >Kubernetes concepts</a>.
+
+Within a cloud services provider environment is *where* you create your Kubernetes cluster. You can deploy a Soda Agent in any environment in which you can create Kubernetes clusters such as:
+
+* Amazon Elastic Kubernetes Service (EKS)
+* Microsoft Azure Kubernetes Service (AKS) (Preview)
+<!--Google Kubernetes Engine (GKE) -->
+* Any Kubernetes cluster  version 1.21 or greater which uses standard Kubernetes
+* Locally, for testing purposes, using tools like <a href="https://minikube.sigs.k8s.io/docs/" target="_blank">Minikube</a>, <a href="https://microk8s.io/docs" target="_blank">microk8s</a>, <a href="https://kind.sigs.k8s.io/" target="_blank">kind</a>, <a href="https://docs.k3s.io/" target="_blank">k3s</a>, or <a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop</a> with Kubernetes support.
 
 **Helm** is a package manager for Kubernetes which bundles YAML files together for storage in a public or private repository. This bundle of YAML files is referred to as a **Helm chart**. The Soda Agent is a Helm chart. Anyone with access to the Helm chart's repo can deploy the chart to make use of YAML files in it. Learn more about <a href="https://www.youtube.com/watch?v=-ykwb1d0DXU" target="_blank" >Helm concepts</a>. 
 
-The Soda Agent Helm chart is stored on a public respository on <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>. Anyone can use Helm to find and deploy the Soda Agent Helm chart in their Kubernetes cluster. Deploying the agent also installs two other things in your Kubernetes cluster:
-* a **Soda Agent Orchestrator** from a Docker image, which creates Kubernetes Jobs and cron jobs to trigger scheduled scans of data
-* a **Soda Agent Scan Launcher** which wraps around Soda Core, the tool which performs the scan itself and pushes scan results to Soda Cloud 
+The Soda Agent Helm chart is stored on a <a href="https://helm.soda.io/soda-agent/" target="_blank">public repository</a> and published on <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>. Anyone can use Helm to find and deploy the Soda Agent Helm chart in their Kubernetes cluster.
 
 
 
 ## Go further
 
-* Next: [Deploy a Soda Agent]({% link soda-agent/deploy.md %})
+* Next: [Deploy a Soda Agent in a Kubernetes cluster]({% link soda-agent/deploy.md %})
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

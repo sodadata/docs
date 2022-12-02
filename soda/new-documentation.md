@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### December 2, 2022
+
+* Added preview documentation for [deploying a Soda Agent in an AKS cluster]({% link soda-agent/deploy-azure.md %}). Reorganized and expanded Soda Agent documentation in general.
+
 #### December 1, 2022
 
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.14.
