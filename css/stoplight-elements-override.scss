@@ -12,16 +12,15 @@
       // forces the sidebar to be max 256px and
       // be fixed just the 'real' doc sidebar
       max-width: 256px !important;
-      min-width: 256px !important;
+      min-width: 56px !important;
       padding-left: 0px !important;
-      position: fixed !important;
-      height: 100% !important;
-      z-index: 2 !important;
     }
 
     .sl-bg-canvas.sl-w-full {
       // overrides the main content section
-      padding-left: 350px !important;
+      padding-left: 50px !important;
+      box-sizing: border-box !important;
+      max-width: 1000px !important;
     }
   }
 }
