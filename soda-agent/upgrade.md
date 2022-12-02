@@ -34,7 +34,7 @@ helm upgrade soda-agent soda-agent/soda-agent \
   --set soda.apikey.id=*** \
   --set soda.apikey.secret=**** \
 ```
-OR, if you us a values YAML file,
+OR, if you use a values YAML file,
 ```shell
 helm upgrade soda-agent soda-agent/soda-agent \
    --values values-local.yml --namespace soda-agent

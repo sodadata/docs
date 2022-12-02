@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Deploy a Soda Agent in AKS
+title: Deploy a Soda Agent in AKS (Preview)
 description: Deploy a Soda Agent in a Microsoft Azure Kubernetes Service cluster.
 parent: Soda Agent
 ---
 
-# Deploy a Soda Agent in AKS
+# Deploy a Soda Agent in AKS ![preview](/assets/images/preview.png){:height="70px" width="70px"}
 *Last modified on {% last_modified_at %}*
 
 The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create an **Azure Kubernetes Service (AKS)** cluster, then use Helm to deploy a Soda Agent in the cluster. 

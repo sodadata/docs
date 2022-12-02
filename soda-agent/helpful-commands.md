@@ -10,11 +10,12 @@ parent: Soda Agent
 
 The **Soda Agent** is a Helm chart that you deploy on a Kubernetes cluster and connect to your Soda Cloud account using API keys.
 
-Kubectl is the command-line tool you use to run commands against Kubernetes clusters. To deploy a Soda Agent in a cluster, you must have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. <br />
-Run `kubectl version --output=yaml` to check the version of an existing install.
+Kubectl is the command-line tool you use to run commands against Kubernetes clusters. To deploy a Soda Agent in a cluster, you must have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. 
 
 
 ## Commands
+
+* Run `kubectl version --output=yaml` to check the version of an existing install.
 
 * Use `get pods` to retrieve a list of the pods running in your cluster, including some information about each. The Soda Orchestrator creates pods when it creates Jobs and CronJobs.
 ```shell
