@@ -28,7 +28,8 @@ Consider following the [Quick start for Soda Core and Soda Cloud]({% link soda/q
 1. Soda Core connects with Spark DataFrames in a unique way, using programmtic scans.
 * If you are using Spark DataFrames, follow the configuration details in [Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes).
 * If you are *not* using Spark DataFrames, continue to step 2.
-2. Create a `configuration.yml` file. This file stores connection details for your data sources. Use the data source-specific connection configurations listed below to copy+paste the connection syntax into your file, then adjust the values to correspond with your data source's details. You can use [system variables](#provide-credentials-as-system-variables) to pass sensitive values, if you wish.<br/> {% include connection-list.md %}
+2. Create a `configuration.yml` file. This file stores connection details for your data sources. Use the data source-specific connection configurations listed below to copy+paste the connection syntax into your file, then adjust the values to correspond with your data source's details. You can use [system variables](#provide-credentials-as-system-variables) to pass sensitive values, if you wish.<br/> 
+{% include connection-list.md %}
 3. Save the `configuration.yml` file, then create another new YAML file named `checks.yml`. 
 4. A Soda Check is a test that Soda Core performs when it scans a dataset in your data source. The checks YAML file stores the Soda Checks you write using [SodaCL]({% link soda-cl/soda-cl-overview.md %}). Copy+paste the following basic check syntax in your file, then adjust the value for `dataset_name` to correspond with the name of one of the datasets in your data source.
 ```yaml

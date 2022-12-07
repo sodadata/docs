@@ -110,7 +110,7 @@ Each row in the table of Check Results represents the result of a check that Sod
 
 * Click the row of a dbt check result to examine visualized historic data for the test, details of the results, and information that can help you diagnose a data quality issue.
 * Click the stacked dots at the far right of a dbt check result, then select **Create Incident** to begin [investigating a data quality issue]({% link soda-cloud/incidents.md %}) with your team.
-* Click the stacked dots at the far right of a dbt check result, then select **Edit Check** to set up a [notification]({% link soda-cloud/edit-checks.md %}) that Soda Cloud sends when the dbt test fails. Send notifications to an individual or a team in [Slack]({% link soda/integrate-slack.md %}).
+* Set up an [alert notification rule]({% link soda-cloud/notif-rules.md %}) for checks with fail or warn results. Navigate to **your avatar** > **Notification Rules**, then click **New Notification Rule**. Follow the guided steps to complete the new rule. Send notifications to an individual or a team in [Slack]({% link soda/integrate-slack.md %}).
 
 
 

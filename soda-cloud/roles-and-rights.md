@@ -34,6 +34,7 @@ The following table outlines the rights of each role.
 |--------------------------------------------------------------------------------------------------------------|:-----:|:----:|
 | Access the organization's Soda Cloud account as a member of the team                                         |   ✓   |   ✓  |
 | Invite colleagues to join the organization's Soda Cloud account as members                                   |   ✓   |   ✓  |
+| Set and edit notification rules                                                                              |   ✓   |   ✓  |
 | View Organization Settings for a Soda Cloud account                                                          |   ✓   |      |
 | Change the name of the organization                                                                          |   ✓   |      |
 | Adjust the Soda Cloud Plan to which the organization subscribes                                              |   ✓   |      |
@@ -46,7 +47,6 @@ The following table outlines the rights of each role.
 | Reset member passwords or deactivate members                                                                 |   ✓   |      |
 | Download a CSV file of an audit trail of Soda Cloud usage                                                    |   ✓   |      |
 | Define and adjust Attributes for datasets                                                                    |   ✓   |      |
-| Set and edit notification rules (Preview)                                                                    |   ✓   |      |
 
 ## Change organization roles and settings
 

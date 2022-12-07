@@ -3,6 +3,7 @@ layout: default
 title: Set notification rules
 description: Use Soda Cloud to set alert notification rules for multiple checks across datasets in your account.
 parent: Soda Cloud
+redirect_from: /soda-cloud/edit-checks.html
 ---
 
 # Set notification rules ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
@@ -10,8 +11,9 @@ parent: Soda Cloud
 {% include banner-preview.md %}
 
 In Soda Cloud, you can define where and when to send alert notifications when check results warn or fail. You can define these parameters for:
-* **individual checks** as you create or edit them; see [Create agreements]({% link soda-cloud/agreements.md %}#4-set-notifications) or [Edit checks]({% link soda-cloud/edit-checks.md %})
-* **multiple checks** by defining notification rules
+* **agreements** as you create or edit them; see [Create agreements]({% link soda-cloud/agreements.md %}#4-set-notifications)
+* **multiple checks** by defining notification rules; read on
+* The ability to create alert notifications for **individual checks** is deprecated.
 
 For example, you can define a notification rule to instruct Soda Cloud to send an alert to your #sales-engineering Slack channel whenever a data quality check on the `snowflake_sales` data source fails.
 
@@ -24,7 +26,6 @@ For example, you can define a notification rule to instruct Soda Cloud to send a
 ## Prerequisites
 
 * You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
-* You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account.
 * (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda/integrate-slack.md %}) or another [third-party service provider]({% link soda/integrate-webhooks.md %}) to enable Soda Cloud to send alert notifications to your team. If you do not integrate with another service-provider, Soda Cloud can send notifications via email.
 
 ## Default rules
@@ -51,7 +52,7 @@ In Soda Cloud, navigate to **your avatar** > **Notification Rules**, then click 
 
 ## Edit or delete rules
 
-Navigate to **your avatar** > **Notification Rules**, then click the stacked dots at the right of a check and select **Edit Notification Rule** or **Edit Notification Rule**. 
+Navigate to **your avatar** > **Notification Rules**, then click the stacked dots at the right of a check and select **Edit Notification Rule** or **Delete Notification Rule**. 
 
 
 ## Go further
