@@ -44,32 +44,81 @@
 
 {% if page.apidoc %}
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('#main-content .sl-elements-api .sl-bg-canvas-100.sl-border-r').forEach(function(elem) {
-      document.body.classList.add('reporting-api-page');
-  
-      elem.addEventListener('click', function(e) {
-        if (!elem.classList.contains('reporting-api-open-mobile-menu')) {
-          this.classList.add('reporting-api-open-mobile-menu');
-        } else {
-          var actualLink = e.target.closest('a.ElementsTableOfContentsItem');
-          if (actualLink !== null) {
-            this.classList.remove('reporting-api-open-mobile-menu');
-          }
+var requestTimeoutMaxTries = 100;
+var requestTimeoutTries = 0;
+
+var requestTimeout = function requestTimeout(fn, delay) {
+  var start = new Date().getTime(),
+    handle = {};
+
+  function loop() {
+    var current = new Date().getTime(),
+      delta = current - start;
+    if (delta >= delay) {
+      fn.call();
+    } else {
+      handle.value = window.requestAnimationFrame(loop);
+    }
+  }
+  handle.value = window.requestAnimationFrame(loop);
+  return handle;
+};
+
+var stoplightElementsLoaded = function stoplightElementsLoaded() {
+  var isLoaded = false;
+  requestTimeoutTries++;
+
+  if (document.querySelector('#main-content .sl-elements-api .sl-bg-canvas-100.sl-border-r') !== null) {
+    console.log('#main-content .sl-elements-api .sl-bg-canvas-100.sl-border-r EXISTS');
+
+    if (document.querySelector('#main-content .sl-elements-api .sl-bg-canvas-100.sl-border-r  > .sl-flex.sl-items-center.sl-mb-5.sl-ml-4') !== null) {
+      console.log('#main-content .sl-elements-api .sl-bg-canvas-100.sl-border-r  > .sl-flex.sl-items-center.sl-mb-5.sl-ml-4 EXISTS');
+      isLoaded = true;
+
+    } else {
+      console.log('#main-content .sl-elements-api .sl-bg-canvas-100.sl-border-r  > .sl-flex.sl-items-center.sl-mb-5.sl-ml-4 missing');
+    }
+
+  } else {
+    console.log('#main-content .sl-elements-api .sl-bg-canvas-100.sl-border-r missing...');
+  }
+
+  if (!isLoaded && requestTimeoutTries < requestTimeoutMaxTries) {
+    requestTimeout(stoplightElementsLoaded, 200);
+  }
+
+  document.querySelectorAll('#main-content .sl-elements-api .sl-bg-canvas-100.sl-border-r').forEach(function(elem) {
+    console.log('adding reporting-api-page to body');
+    document.body.classList.add('reporting-api-page');
+
+    console.log('adding click handler to', elem);
+    elem.addEventListener('click', function(e) {
+      if (!elem.classList.contains('reporting-api-open-mobile-menu')) {
+        this.classList.add('reporting-api-open-mobile-menu');
+      } else {
+        var actualLink = e.target.closest('a.ElementsTableOfContentsItem');
+        if (actualLink !== null) {
+          this.classList.remove('reporting-api-open-mobile-menu');
         }
-      });
+      }
     });
-    
-    document.querySelectorAll('#main-content .sl-elements-api .sl-bg-canvas-100.sl-border-r  > .sl-flex.sl-items-center.sl-mb-5.sl-ml-4').forEach(function(elem) {
-      elem.addEventListener('click', function(e) {
-        if (elem.parentNode.classList.contains('reporting-api-open-mobile-menu')) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          elem.parentNode.classList.remove('reporting-api-open-mobile-menu');
-        }
-      });
-    })
-  })
+  });
+
+  document.querySelectorAll('#main-content .sl-elements-api .sl-bg-canvas-100.sl-border-r  > .sl-flex.sl-items-center.sl-mb-5.sl-ml-4').forEach(function(elem) {
+     console.log('adding click handler to', elem);
+    elem.addEventListener('click', function(e) {
+      if (elem.parentNode.classList.contains('reporting-api-open-mobile-menu')) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        elem.parentNode.classList.remove('reporting-api-open-mobile-menu');
+      }
+    });
+  });
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  requestTimeout(stoplightElementsLoaded, 100);
+});
 </script>
 {% endif %}
