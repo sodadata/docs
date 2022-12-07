@@ -16,8 +16,7 @@ You can use this integration to enable Soda Cloud to send alert notifications to
 
 With such an integration, Soda Cloud enables users to select a Slack channel as the destination for an alert notification of an individual check or checks that form a part of an agreement, or multiple checks. 
 
-* To send notifications for individual checks, see [Edit checks in Soda Cloud]({% link soda-cloud/edit-checks.md %}) and [agreements]({% link soda-cloud/agreements.md %}).
-* To send notifications that apply to multiple checks, see [Set notification rules]({% link soda-cloud/notif-rules.md %}). ![preview](/assets/images/preview.png){:height="70px" width="70px"}
+To send notifications that apply to multiple checks, see [Set notification rules]({% link soda-cloud/notif-rules.md %}). ![preview](/assets/images/preview.png){:height="70px" width="70px"}
 
 
 ## Integration for Soda Cloud incidents

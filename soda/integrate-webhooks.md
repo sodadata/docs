@@ -12,7 +12,7 @@ parent: Integrate
 Configure a webhook in Soda Cloud to connect your account to a third-party service provider such as Jira, ServiceNow, PagerDuty, and more.
 
 Use a webhook to:
-* send [alert notifications]({% link soda-cloud/edit-checks.md %}) for failed or warning check results to a third-party, such as ServiceNow
+* send [alert notifications]({% link soda-cloud/notif-rules.md %}) for failed or warning check results to a third-party, such as ServiceNow
 * create and track data quality [incidents]({% link soda-cloud/incidents.md %}) with a third-party, such as Jira
 
 ![webhook-example](/assets/images/webhook-example.png){:height="700px" width="700px"} 
@@ -60,8 +60,7 @@ Use a webhook to:
 
 You can use a webhook to enable Soda Cloud to send alert notifications to a third-party provider, such as OpsGenie, to notify your team of warn and fail check results. With such an integration, Soda Cloud enables users to select the webhook as the destination for an individual check or checks that form a part of an agreement, or multiple checks. 
 
-* To send notifications for individual checks, see [Edit checks in Soda Cloud]({% link soda-cloud/edit-checks.md %}) and [agreements]({% link soda-cloud/agreements.md %}).
-* To send notifications that apply to multiple checks, see [Set notification rules]({% link soda-cloud/notif-rules.md %}). ![preview](/assets/images/preview.png){:height="70px" width="70px"}
+To send notifications that apply to multiple checks, see [Set notification rules]({% link soda-cloud/notif-rules.md %}). ![preview](/assets/images/preview.png){:height="70px" width="70px"}
 
 Soda Cloud alert notifications make use of the following events:
 * [`validate`](#validate)
