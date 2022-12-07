@@ -6,7 +6,10 @@
     "version": "1.0.0a16"
   },
   "servers": [
-    { "url": "https://reporting.cloud.soda.iov1/", "description": "Soda Cloud" }
+    {
+      "url": "https://reporting.cloud.soda.io/v1/",
+      "description": "Soda Cloud"
+    }
   ],
   "paths": {
     "/ping": {
@@ -55,7 +58,7 @@
               "title": "From Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-11-06T10:37:52.085538"
+              "default": "2022-11-06T10:40:19.271280"
             },
             "name": "from_datetime",
             "in": "query"
@@ -66,7 +69,7 @@
               "title": "To Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-12-07T10:37:52.085555"
+              "default": "2022-12-07T10:40:19.271304"
             },
             "name": "to_datetime",
             "in": "query"
@@ -391,8 +394,8 @@
                   "page": 1,
                   "size": 400,
                   "status": "unresolved",
-                  "from_datetime": "2022-11-06T10:37:51.797532",
-                  "to_datetime": "2022-12-07T10:37:51.797542"
+                  "from_datetime": "2022-11-06T10:40:18.938386",
+                  "to_datetime": "2022-12-07T10:40:18.938397"
                 }
               }
             }
@@ -1379,14 +1382,14 @@
             "type": "string",
             "description": "ISO timestamp from which you want to retrieve incidents. Defaults to last 31 days.",
             "format": "date-time",
-            "default": "2022-11-06T10:37:51.797532"
+            "default": "2022-11-06T10:40:18.938386"
           },
           "to_datetime": {
             "title": "To Datetime",
             "type": "string",
             "description": "ISO timestamp up to which you want to retrieve incidents. Defaults to today.",
             "format": "date-time",
-            "default": "2022-12-07T10:37:51.797542"
+            "default": "2022-12-07T10:40:18.938397"
           }
         },
         "description": "Incidents request JSON Body."
