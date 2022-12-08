@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Connect Soda to Denodo (Experimental)
-description: Access configuration details to connect Soda to a Denodo data source.
+title: Connect Soda to DuckDB (Experimental)
+description: Access configuration details to connect Soda to a DuckDB data source.
 parent: Connect a data source
 ---
 
-# Connect Soda to Denodo (Experimental)
+# Connect Soda to DuckDB (Experimental)
 *Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
@@ -14,22 +14,17 @@ parent: Connect a data source
 
 ```yaml
 data_source my_datasource_name:
-  type: denodo
-  username: ***
-  password: **
-  host: xxx
-  port: xxxx
+  type: duckdb
+  path: xxx
+  read_only: true
   
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
 | type     | required |                                                            |
-| username | required | Consider using system variables to retrieve this value securely.      |
-| password | required | Consider using system variables to retrieve this value securely.      |
-| host     | required |                                                            |
-| port     | optional |                                                            |
-
+| path     | required |                                                            |
+| read_only | required | Value is boolean: `true` or `false`                       |
 
 {% include test-connection.md %}
 

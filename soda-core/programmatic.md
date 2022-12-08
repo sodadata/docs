@@ -53,6 +53,11 @@ scan.add_configuration_yaml_str(
 """
 )
 
+# Add variables
+###############
+scan.add_variables({"date": "2022-01-01"})
+
+
 # Add check YAML files
 ##################
 scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_one.yml")
@@ -60,9 +65,6 @@ scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_two.yml")
 scan.add_sodacl_yaml_files("./my_scan_dir")
 scan.add_sodacl_yaml_files("./my_scan_dir/sodacl_file_three.yml")
 
-# Add variables
-###############
-scan.add_variables({"date": "2022-01-01"})
 
 # Execute the scan
 ##################

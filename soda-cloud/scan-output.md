@@ -18,6 +18,12 @@ Log in to view the **Checks Results** dashboard; each row in the table represent
 
 ![check-results](/assets/images/check-results.png){:height="700px" width="700px"}
 
+[Check results](#check-results)<br />
+[Scan failed](#scan-failed)<br />
+[Sending scan results to Soda Cloud](#sending-scan-results-to-soda-cloud)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Troubleshoot](#troubleshoot)<br />
+[Run an ad hoc scan](#run-an-ad-hoc-scan)<br />
+[Go further](#go-further)<br />
 <br />
 
 ## Check results
@@ -40,6 +46,24 @@ Soda Core use a secure API to connect to Soda Cloud. When it completes a scan, S
 
 ![scan-with-cloud](/assets/images/scan-with-cloud.png){:height="350px" width="350px"}
 
+
+#### Troubleshoot
+
+**Problem:** When running a programmatic scan or a scan from the command-line, I get an error that reads `Error while executing Soda Cloud command response code: 400`.
+
+**Solution:** While there may be several reasons Soda returns a 400 error, you can address the following which may resolve the issue:
+* Upgrade to the [latest version]({% link soda-core/installation.md %}#upgrade) of Soda Core.
+* Confirm that all the checks in your checks YAML file identify a dataset against which to execute. For example, the following syntax yields a 400 error because the `checks:` does not identify a dataset.
+
+```yaml
+checks:
+    - schema:
+        warn:
+            when schema changes: any
+```
+
+
+<br />
 
 ## Run an ad hoc scan 
 

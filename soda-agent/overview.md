@@ -13,7 +13,7 @@ parent: Soda Agent
 <p>&#10004;  Deploy an instance of Soda Core in a cluster in your own cloud service environment.<br /></p>
 <p>&#10004;  Connect to Soda Cloud via API keys.<br /></p>
 <p>&#10004;  Enable Soda Cloud to securely access multiple data sources such as Snowflake or BigQuery.<br /></p>
-<p>&#10004;  Try it out locally using a test deployment.<br /></p>
+<p>&#10004;  Try it out locally by deploying to a Minikube cluster.<br /></p>
 
 
 <div class="docs-html-content">
@@ -25,7 +25,8 @@ parent: Soda Agent
                     <h2>Get started</h2>
                     <a href="https://cloud.soda.io/signup" target="_blank">Sign up for Soda Cloud</a>
                     <a href="/soda-agent/deploy.html" target="_blank">Deploy a Soda Agent</a>
-                    <a href="/soda-agent/test-deploy.html" target="_blank">Try it locally</a>
+                    <a href="/soda-agent/deploy-aws.html" target="_blank">Deploy in EKS</a>
+                    <a href="/soda-agent/deploy-azure.html" target="_blank">Deploy in AKS (Preview)</a>                    
                 </div>
             </div>
         </div>        
@@ -36,7 +37,6 @@ parent: Soda Agent
 ## Why Soda Agent?
 
 One, and done: connect one agent, then let your data consumers access multiple data sources to set up their own data quality agreements. 
-* Use Kubernetes secrets to securely store and access data source login credentials.
 * Connect Soda Cloud to the agent, then use the UI to connect to data sources and schedule data quality scans. 
 * Empower more people in your organization with self-serve access to data sources to collaboratively manage data quality.
 * Deploy the agent in a Kubernetes cluster in nearly any cloud services environment.

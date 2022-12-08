@@ -60,7 +60,30 @@ Use the soda `soda scan --help` command to review options you can include to cus
 
 ## Variables
 
-{% include variables.md %}
+There are several ways you can use variables in checks, filters, and in your data source configuration to pass values at scan time; a few examples follow. 
+
+Refer to the comprehensive [Filters and variables]({% link soda-cl/filters.md %}) documentation for details.
+
+```yaml
+# In-check filter
+checks for dim_employee:
+  - max(vacation_hours) < 80:
+      name: Too many vacation hours for US Sales
+      filter: sales_territory_key = 11
+
+# Dataset filter with variables
+filter CUSTOMERS [daily]:
+  where: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
+
+checks for CUSTOMERS [daily]:
+  - row_count = 6
+  - missing(cat) = 2
+
+# In-check variable 
+checks for ${DATASET}:
+  - invalid_count(last_name) = 0:
+      valid length: 10 
+```
 
 
 ## Scan output

@@ -86,6 +86,7 @@ If you prefer, you can use a SQL query to define what qualifies as a failed row 
 | Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 | ✓ | Define a name for a failed rows check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
+| ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
 |   | Define alert configurations to specify warn and fail alert conditions. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
@@ -344,9 +345,13 @@ SELECT id, cst_size, cst_size_txt, distance, pct, country, zip, email, date_upda
 
 ## Reroute failed rows samples
 
-If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. To do so, add the `storage` configuration to your data source connection configuration to specify the columns you wish to exclude, as per the following examples. 
+If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. To do so, add the `storage` configuration to your sampler configuration to specify the columns you wish to exclude, as per the following examples. 
 
-Soda sends the failed rows samples as a JSON payload.
+Soda sends the failed rows samples as a JSON payload and includes:
+* data source name
+* dataset name
+* scan definition name
+* check name
 
 ```yaml
 data_source my_datasource_name: 
@@ -358,10 +363,11 @@ data_source my_datasource_name:
     password: ***
   database: postgres
   schema: public
-  storage:
-    type: http
-    url: http://failedrows.example.com
-    message: Failed rows have been sent to failedrows.example.com
+  sampler:
+    storage:
+      type: http
+      url: http://failedrows.example.com
+      message: Failed rows have been sent to failedrows.example.com
 ```
 
 | Parameter  | Value      | Description |

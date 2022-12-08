@@ -70,7 +70,9 @@ pip install soda-core-postgres
 | Apache Spark for Databricks SQL  | `soda-core-spark[databricks]` |
 | Azure Synapse (Experimental) | `soda-core-sqlserver` |
 | ClickHouse (Experimental) | `soda-core-mysql` |
+| Denodo (Experimental) | `soda-core-denodo` |
 | Dremio | `soda-core-dremio` | 
+| DuckDB (Experimental)  | `soda-core-duckdb` |
 | GCP Big Query | `soda-core-bigquery` | 
 | IBM DB2 | `soda-core-db2` |
 | MS SQL Server | `soda-core-sqlserver` |
@@ -110,8 +112,11 @@ pip install soda-core-postgres
 | Amazon Redshift | `soda-core-redshift` | 
 | Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | `soda-core-spark-df` |
 | Apache Spark for Databricks SQL  | `soda-core-spark[databricks]` |
+| Azure Synapse (Experimental) | `soda-core-sqlserver` |
 | ClickHouse (Experimental) | `soda-core-mysql` |
+| Denodo (Experimental) | `soda-core-denodo` |
 | Dremio | `soda-core-dremio` | 
+| DuckDB (Experimental) | `soda-core-duckdb` |
 | GCP Big Query | `soda-core-bigquery` | 
 | IBM DB2 | `soda-core-db2` |
 | MS SQL Server | `soda-core-sqlserver` |
