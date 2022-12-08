@@ -9,6 +9,11 @@ parent: Reference
 
 <br />
 
+#### December 8, 2022
+* Added preview documentation for the [Soda Cloud Reporting API v1]({% link api-docs/reporting-api-v1.md %}).
+* Corrected documentation to properly reflect that you can add only one column against which to execute a metric in a check.
+* Reverted the statement about using variables to pass any value *anywhere* in syntax or configuration at scan time. Refer to [variables documentation]({% link soda-cl/filters.md %}#configure-variables-in-sodacl) for details on how to use them.
+
 #### December 2, 2022
 
 * Added preview documentation for [deploying a Soda Agent in an AKS cluster]({% link soda-agent/deploy-azure.md %}). Reorganized and expanded Soda Agent documentation in general.

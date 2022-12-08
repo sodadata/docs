@@ -54,11 +54,11 @@ checks for dim_reseller:
   - row_count > 0
 ```
 
-You can use all numeric metrics in checks that apply to individual columns in a dataset. Identify the column(s) by adding one or more values in the argument between brackets in the check. 
+You can use all numeric metrics in checks that apply to individual columns in a dataset. Identify the column by adding a value in the argument between brackets in the check. 
 
 ```yaml
 checks for dim_reseller:
-  - duplicate_count(phone, address_line1) = 0
+  - duplicate_count(phone) = 0
 ```
 
 You can use some numeric metrics in checks with either fixed or change-over-time thresholds. See [Change-over-time thresholds](#change-over-time-thresholds) for more detail. 
