@@ -65,7 +65,7 @@ All is good. No failures. No warnings. No errors.
 
 ## Add a check identity
 
-Soda Cloud idtifies a check using details such as the check name, the check YAML file name, the file's location. When you modify an individual check, the check identity changes which results in a new check result in Soda cloud.  For example, the following check sends one check result to Soda Cloud after a scan. 
+Soda Cloud identifies a check using details such as the check name, the check YAML file name, the file's location. When you modify an individual check, the check identity changes which results in a new check result in Soda cloud.  For example, the following check sends one check result to Soda Cloud after a scan. 
 ```yaml
 checks for dim_customer:
   - missing_count(last_name) > 0
@@ -85,6 +85,13 @@ checks for dim_customer:
       identity: aa457447-60f6-4b09-4h8t-02fbb78f9587
 ```
 
+You can also use a variable to pass the value of a check identity at scan time, as in the example below. Read more about using [in-check variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl).
+
+```yaml
+checks for dim_product:
+  - row_count > 0:
+      identity: ${IDENTITY}
+```
 
 ## Add alert configurations
 

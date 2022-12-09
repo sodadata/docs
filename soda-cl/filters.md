@@ -87,8 +87,7 @@ You can use variables in SodaCL to:
 * define dynamic [dataset filters]({% link soda-cl/filters.md %}#configure-dataset-filters)
 * customize dynamic [check names](#example-customize-a-check-name)
 * define dynamic in-check values; see examples below
-* define dynamic in-check filters; see [example](#example-use-a-variable-in-an-in-check-filter) below
-* replace any value anywhere in your checks with a scan-time value
+* define dynamic in-check filters; see [example below](#example-use-a-variable-in-an-in-check-filter)
 
 To provide a variable at scan time, as with dynamic dataset filters or with in-check values, add a `-v` option to the scan command and specify the key:value pair for the variable, as in the following example.
 ```shell
@@ -169,6 +168,16 @@ checks for dim_employee:
       filter: sales_territory_key = ${SALES_TER}
 ```
 
+#### Example: use a variable for a check identity
+
+Read more about adding a [check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity).
+
+```yaml
+checks for dim_product:
+  - row_count > 0:
+      identity: ${IDENTITY}
+```
+
 <br />
 
 ###  Configuration details and limitations
@@ -183,7 +192,6 @@ checks for dim_employee:
 You can use variables to:
 * resolve credentials in configuration files using system variables; see [Configure Soda Core]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables)
 * pass variables for values in configuration files; see instructions below
-* replace any value anywhere in your configuration with a scan-time value
 
 If you use Soda Core to execute Soda scans for data quality, you can pass variables at scan time to provide values for data source connection configuration keys in your configuration YAML file. For example, you may wish to pass a variable for the value of `password` in your configuration YAML.
 
