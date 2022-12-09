@@ -36,7 +36,7 @@ parent: Reference
 
 #### November 28, 2022
 
-* Added [troubleshooting insturctions]({% link soda-core/installation.md %}#error-library-not-loaded) for Soda Core Scientific on an M1 MacOS machine.
+* Added [troubleshooting instructions]({% link soda-core/installation.md %}#error-library-not-loaded) for Soda Core Scientific on an M1 MacOS machine.
 
 #### November 23, 2022
 
