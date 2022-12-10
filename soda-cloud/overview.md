@@ -56,7 +56,7 @@ redirect_from:
 ## Why Soda Cloud?
 
 Use Soda Cloud to make data quality management in your organization more accessible to more people. 
-* Enable data consumers to not only access and gauge the quality they use to feed machine learning models, dashboards, or report, but to participate in defining what "good-quality data" looks like.
+* Enable data consumers to not only access and gauge the quality they use to feed machine learning models, dashboards, or reports, but to participate in defining what "good-quality data" looks like.
 * Empower all users to write data quality checks using SodaCL, a low-code, human-readable, domain-specific language for data quality management in a UI environment.
 * Collaboratively build data products that regularly check for data quality and alert the right people at the right time when an issue could have downstream impact.
 * Set up scan schedules, automatically monitor for anomalies and schema changes over time, profile and sample data, and set up the right level of notifications to reduce the signal-to-noise ratio.
