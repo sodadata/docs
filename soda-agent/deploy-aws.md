@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deploy a Soda Agent in EKS
+title: Deploy a Soda Agent in Amazon EKS
 description: Deploy a Soda Agent in an Amazon Elastic Kubernetes Service cluster.
 parent: Soda Agent
 ---
