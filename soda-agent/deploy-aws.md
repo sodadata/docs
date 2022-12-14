@@ -44,7 +44,7 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 ## Prerequisites
 
-* (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
+* (Optional) You have familiarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
 * You have an AWS account and the necessary permissions to enable you to create an EKS cluster in your region.
 * You have installed <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" target="_blank">aws-cli</a>. This is the command-line tool you need to access your AWS account from the command-line. Run `aws --version` to check the version of an existing install.
 * You have installed <a href="https://eksctl.io/introduction/#installation" target="_blank">eksctl</a>. This is the command-line tool for Amazon EKS that you use to create and manage Kubernetes clusters on EKS. Run `eksctl version` to check the version of an existing install.
@@ -61,7 +61,7 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 The following offers instructions to create a <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html" target="_blank">Fargate (serverless) cluster</a> to deploy a Soda Agent, but you can create and use a <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html" target="_blank">regular EKS cluster</a> if you wish.
 
-1. If you are deploying to an exiting Virtual Private Cloud (VPC), consider supplying public or private subnets with your deployment. Consult the eksctl documentation to <a href="https://eksctl.io/usage/vpc-configuration/#use-existing-vpc-other-custom-configuration" target="_blank">Use existing VPC</a>.
+1. If you are deploying to an existing Virtual Private Cloud (VPC), consider supplying public or private subnets with your deployment. Consult the eksctl documentation to <a href="https://eksctl.io/usage/vpc-configuration/#use-existing-vpc-other-custom-configuration" target="_blank">Use existing VPC</a>.
 2. From the command-line, execute the following command to create a new EKS Fargate cluster in your AWS account.  <br/>Replace the value of `--region` with one that is appropriate for your location. 
 ```shell
 eksctl create cluster --name soda-agent --region eu-central-1 --fargate
@@ -75,7 +75,7 @@ aws configure get region
 ```shell
 kubectl create namespace soda-agent
 ```
-4. Create a namespace and a Fargate profile for EKS Fargate serverless deployment in the namespace you just created. <br />
+4. Create a namespace and a Fargate profile for EKS Fargate serverless deployment. <br />
 When you deploy a Soda Agent on EKS Fargate, AWS matches the Fargate Profile using annotation labels in the Soda Agent Helm chart. Without the profile, the Helm chart cannot successfully deploy. <br />
 Refer to [Troubleshoot deployment](#troubleshoot-deployment) below if you encounter errors.
 ```shell
@@ -85,7 +85,7 @@ eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --re
 ```shell
 kubectl config set-context --current --namespace=soda-agent
 ```
-6. Run the following command to verify that the cluster kubectl regcognizes `soda-agent` as the current namespace.
+6. Run the following command to verify that the cluster kubectl recognizes `soda-agent` as the current namespace.
 ```shell
 kubectl config get-contexts
 ```
@@ -161,7 +161,7 @@ Containers:
 1. Using a code editor, create a new YAML file called `values.yml`.
 2. To that file, copy+paste the content below, replacing the following values:
 * `id` and `secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account. 
-* Replace the value of `name` with a custom name for you agent, if you wish.
+* Replace the value of `name` with a custom name for your agent, if you wish.
 * Optionally, add the `soda.core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions. 
 ```yaml
 soda:

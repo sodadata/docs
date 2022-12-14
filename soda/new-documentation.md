@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### December 16, 2022
+* Added preview documentation for [deploying a Soda Agent in a GKE cluster]({% link soda-agent/deploy-gke.md %}). 
+
 #### December 8, 2022
 * Added preview documentation for the [Soda Cloud Reporting API v1]({% link api-docs/reporting-api-v1.md %}).
 * Corrected documentation to properly reflect that you can add only one column against which to execute a metric in a check.

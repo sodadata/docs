@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Deploy a Soda Agent in Google GKE
+title: Deploy a Soda Agent in Google GKE (Preview)
 description: Learn how to deploy a Soda Agent in a Google Kubernetes Engine cluster.
 parent: Soda Agent
 ---
 
-# Deploy a Soda Agent in Google GKE
+# Deploy a Soda Agent in Google GKE ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
@@ -23,7 +23,7 @@ This setup enables Soda Cloud users to securely connect to data sources (BigQuer
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file)<br />
 [(Optional) Create a practice data source](#optional-create-a-practice-data-source)<br />
 [About the `helm install` command](#about-the-helm-install-command)<br />
-[Decommission the Soda Agent and cluster](#decomission-the-soda-agent-and-cluster)<br />
+[Decommission the Soda Agent and cluster](#decommission-the-soda-agent-and-cluster)<br />
 [Troubleshoot deployment](#troubleshoot-deployment)<br />
 [Go further](#go-further)<br />
 <br />
@@ -44,7 +44,7 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 ## Prerequisites
 
-* (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
+* (Optional) You have familiarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
 * You have a Google Cloud Platform (GCP) account and the necessary permissions to enable you to create a Google Kubernetes Engine (GKE) cluster in Autopilot mode in your region.
 * You have installed the <a href="https://cloud.google.com/sdk/docs/install" target="_blank"> gcloud CLI tool</a>. Use the command `glcoud version` to verify the version of an existing install. 
   * If you have already installed the gcloud CLI, use the following commands to login and verify your configuration settings, respectively: `gcloud auth login` `gcloud config list`
@@ -62,7 +62,7 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 To deploy a Soda Agent in a Kubernetes cluster, you must first create a network and a cluster. 
 
-TODO - add variations of cluster creation
+GKE offers several types of clusters and modes you can use; refer to <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters" target="_blank">GKE documentation</a> for details. The instructions below detail the steps to deploy a cluster using <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/creating-an-autopilot-cluster" target="_blank">GKE Autopilot</a>, in a single zone, as a private cluster with outbound internet access.
 
 1. Use the following command to create a network. Pick a name for the network that is unique in your environment.
 ```shell
@@ -72,7 +72,7 @@ gcloud compute networks create soda-agent-net-2 \
 Output:
 ```shell
 Created [https://www.googleapis.com/compute/v1/projects/test-gke/global/networks/soda-agent-net-2].
-NAME              SUBNET_MODE  BGP_ROUTING_MODE  IPV4_RANGE  GATEWAY_IPV4
+NAME              SUBNET_MODE  BGP_ROUTING_MODE  IPV4_RANGE  GATEWAY_IPV4 
 soda-agent-net-2  CUSTOM       REGIONAL
 ...
 ```
@@ -90,7 +90,7 @@ Created [https://www.googleapis.com/compute/v1/projects/test-gke/regions/us-west
 NAME                 REGION    NETWORK           RANGE           STACK_TYPE  IPV6_ACCESS_TYPE  INTERNAL_IPV6_PREFIX  EXTERNAL_IPV6_PREFIX
 soda-agent-subnet-2  us-west1  soda-agent-net-2  xxx.xxx.x.x/20  IPV4_ONLY
 ```
-3. Use the following command to create a cluster in your network, providing a unique name for the cluster. Replace the values for `master-authorized-networks` and `region` with your own IP address and region. <br />
+3. Use the following command to create a cluster in your network, providing a unique name for the cluster. Replace the values for `region` and`master-authorized-networks` with your own region and IP address, respectively. <br />
 Read more about the `create-auto` command and its flags in <a href="https://cloud.google.com/sdk/gcloud/reference/container/clusters/create-auto" target="_blank">Google documentation</a>.
 ```shell
 gcloud container clusters create-auto soda-agent-gke \
@@ -101,7 +101,7 @@ gcloud container clusters create-auto soda-agent-gke \
 --cluster-secondary-range-name agent-pods \
 --services-secondary-range-name agent-services \
 --enable-master-authorized-networks \
---master-authorized-networks xxx.xxx.x.x/20 \
+--master-authorized-networks xxx.xxx.x.x/20 
 ```
 Output:
 ```shell
@@ -129,19 +129,10 @@ gcloud compute routers nats create nat-config \
     --nat-all-subnet-ip-ranges \
     --auto-allocate-nat-external-ips
 ```
-Output:
-```shell
-Creating NAT [nat-config] in router [agent-nat-router-1]...done.     
-```
-6. Use the following command to add configuration to connect the cluster to your local kubectl configuration.
+6. Use the following command to add configuration to connect the new cluster to your local kubectl configuration.
 ```shell
 gcloud container clusters get-credentials soda-agent-gke \
   --region us-west1
-```
-Output:
-```shell
-Fetching cluster endpoint and auth data.
-kubeconfig entry generated for soda-agent-gke.
 ```
 7. (Optional) To enable other machines or networks to connect to the cluster, use the following command to add broader IP ranges. Replace the value for `Z.Z.Z.Z/29` with your own IP range.
 ```shell
@@ -149,7 +140,23 @@ gcloud container clusters update soda-agent-gke \
     --enable-master-authorized-networks \
     --master-authorized-networks Z.Z.Z.Z/29
 ```
-
+8. Use the following command to create a new namespace in your cluster. 
+```shell
+kubectl create ns soda-agent
+```
+9. Run the following command to change the context to associate the current namespace to `soda-agent`. 
+```shell
+kubectl config set-context --current --namespace=soda-agent
+```
+10. Run the following command to verify that the cluster kubectl recognizes `soda-agent` as the current namespace.
+```shell
+kubectl config get-contexts
+```
+Output:
+```shell
+CURRENT   NAME                             CLUSTER                          AUTHINFO                        NAMESPACE
+*         gke_soda-agent-gke_us-west1...   gke_soda-agent-gke_us-west1...   gke_soda-agent-gke_us-west1***  soda-agent
+```
 
 ## Deploy a Soda Agent
 
@@ -167,49 +174,46 @@ The following table outlines the two ways you can install the Helm chart to depl
 ```shell
 helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```
-2. Use a the following command to create a namespace in your cluster. 
-```shell
-kubectl create ns soda-agent
-```
-3. Use the following comand to install the Helm chart to deploy a Soda Agent in your custer. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
+2. Use the following command to install the Helm chart to deploy a Soda Agent in your custer. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
 * Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account.
-* Replace the value of `soda.agent.name` with a custom name for you agent, if you wish.
+* Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
 * Optionally, add the `soda.core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions. <br />
 ```shell
 helm install soda-agent soda-agent/soda-agent \
-    --set soda.agent.name=myuniqueagent \
-    --set soda.apikey.id=*** \
-    --set soda.apikey.secret=**** \
-    --set soda.core.idle=true \
-    --set soda.core.replicas=1 \
-    --namespace soda-agent
+>   --set soda.agent.name=myuniqueagent \
+>   --set soda.apikey.id=*** \
+>   --set soda.apikey.secret=*** \
+>   --namespace soda-agent \
+>   --set soda.core.idle=true \
+>   --set soda.core.replicas=1
 ```
 The command-line produces output like the following message:
 ```shell
 NAME: soda-agent
-LAST DEPLOYED: Thu Jun 16 15:03:10 2022
+LAST DEPLOYED: Wed Dec 14 11:45:13 2022
 NAMESPACE: soda-agent
 STATUS: deployed
 REVISION: 1
 ```
-4. (Optional) Validate the Soda Agent deployment by running the following command:
+3. (Optional) Validate the Soda Agent deployment by running the following command:
 ```shell
-minikube kubectl -- describe pods
+kubectl describe pods
 ```
-5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
+4. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
 ```shell
+Name:             soda-agent-orchestrator-66-snip
+Namespace:        soda-agent
+Priority:         0
+Service Account:  soda-agent
+Node:             <none>
+Labels:           agent.soda.io/component=orchestrator
+                  agent.soda.io/service=queue
+                  app.kubernetes.io/instance=soda-agent
+                  app.kubernetes.io/name=soda-agent
+                  pod-template-hash=669snip
+Annotations:      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+Status:           Running
 ...
-Containers:
-  soda-agent-orchestrator:
-        Container ID:   docker://081*33a7
-        Image:          sodadata/agent-orchestrator:latest
-        Image ID:       docker-pullable://sodadata/agent-orchestrator@sha256:394e7c1**b5f
-        Port:           <none>
-        Host Port:      <none>
-        State:          Running
-          Started:      Thu, 16 Jun 2022 15:50:28 -0700
-        Ready:          True
-        ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="600px" width="600px"}
 6. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
@@ -241,22 +245,23 @@ helm install soda-agent soda-agent/soda-agent \
 ```
 4. (Optional) Validate the Soda Agent deployment by running the following command:
 ```shell
-minikube kubectl -- describe pods
+kubectl describe pods
 ```
 5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
-Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
+Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step four to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
 ```shell
-...
-Containers:
-  soda-agent-orchestrator:
-    Container ID:   docker://081*33a7
-    Image:          sodadata/agent-orchestrator:latest
-    Image ID:       docker-pullable://sodadata/agent-orchestrator@sha256:394e7c1**b5f
-    Port:           <none>
-    Host Port:      <none>
-    State:          Running
-      Started:      Thu, 16 Jun 2022 15:50:28 -0700
-    Ready:          True
+Name:             soda-agent-orchestrator-66-snip
+Namespace:        soda-agent
+Priority:         0
+Service Account:  soda-agent
+Node:             <none>
+Labels:           agent.soda.io/component=orchestrator
+                  agent.soda.io/service=queue
+                  app.kubernetes.io/instance=soda-agent
+                  app.kubernetes.io/name=soda-agent
+                  pod-template-hash=669snip
+Annotations:      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+Status:           Running
 ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
@@ -271,7 +276,7 @@ Containers:
 
 {% include agent-helm-command.md %}
 
-## Decomission the Soda Agent and cluster
+## Decommission the Soda Agent and cluster
 
 1. Uninstall the Soda Agent in the cluster.
 ```shell
@@ -279,11 +284,10 @@ helm delete soda-agent -n soda-agent
 ```
 2. Delete the cluster.
 ```shell
-minikube delete
+gcloud container clusters delete soda-agent-gke
 ```
-```shell
-💀  Removed all traces of the "minikube" cluster.
-```
+
+Refer to <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/deleting-a-cluster" target="_blank">Google Kubernetes Engine documentation</a> for details.
 
 ## Troubleshoot deployment
 
