@@ -16,6 +16,7 @@ In setting up a data source, you provide details such as database access credent
 [Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
 [Add a new data source](#add-a-new-data-source)<br />
+[Use a file reference for a Big Query data source connection](#use-a-file-reference-for-a-big-query-data-source-connection)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -121,6 +122,47 @@ automated monitoring:
 | Data Source Owner | The Data Source Owner maintains the connection details and settings for this data source and its Default Scan Schedule. |
 | Default Dataset Owner | The Datasets Owner is the user who, by default, becomes the owner of each dataset the Default Scan discovers. Refer to [Roles and Rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) to learn how to adjust the Dataset Owner of individual datasets.|
 
+
+## Use a file reference for a Big Query data source connection
+
+If you already store information about your data source in a JSON file in a secure location, you can configure your BigQuery data source connection details in Soda Cloud to refer to the JSON file for service account information. To do so, you must add two elements:
+* the `configMap` parameters in the `values.yml` file that your Soda Agent helm chart uses
+* the `account_info_json_path` in your data source connection configuration 
+
+You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deplouyment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-gke.md %}#deploy-using-a-values-yaml-file) for details.
+```yaml
+soda:
+  scanlauncher:
+    volumeMounts:
+      - name: gcloud-credentials
+        mountPath: /opt/soda/etc
+    volumes:
+      - name: gcloud-credentials
+        configMap:
+          name: gcloud-credentials
+          items:
+            - key: serviceaccount.json
+              path: serviceaccount.json
+```
+
+Run the following command to restart of the Soda Agent in your cluster so that the scan launcher can access the file for service account information.
+```shell
+kubectl create configmap -n <soda-agent-namespace> gcloud-credentials --from-file=serviceaccount.json=<local path to the serviceccount.json>
+```
+
+Adjust the data source connection configuration to include the `account_info_json_path` configuration, as per the following example. 
+```yaml
+my_datasource_name:
+  type: bigquery
+  connection:
+    account_info_json_path: /opt/soda/etc/serviceaccount.json
+    auth_scopes:
+    - https://www.googleapis.com/auth/bigquery
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/drive
+    project_id: ***
+    dataset: sodacore
+```
 
 
 ## Go further
