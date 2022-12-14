@@ -71,7 +71,7 @@ checks for dim_customer:
 
 <br />
 
-If you prefer, you can use a SQL query to define what qualifies as a failed row for Soda Core to send to Soda Cloud, as in the following simple example.
+If you prefer, you can use a SQL query to define what qualifies as a failed row for Soda Core to send to Soda Cloud, as in the following simple example. Use this cofiguration to include complete SQL queries in the Soda scan of your data.
 
 ```yaml
  
@@ -344,6 +344,7 @@ SELECT id, cst_size, cst_size_txt, distance, pct, country, zip, email, date_upda
 <br />
 
 ## Reroute failed rows samples
+<!--Linked to UI, access Shlink-->
 
 If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. To do so, add the `storage` configuration to your sampler configuration to specify the columns you wish to exclude, as per the following examples. 
 
@@ -367,14 +368,14 @@ data_source my_datasource_name:
     storage:
       type: http
       url: http://failedrows.example.com
-      message: Failed rows have been sent to failedrows.example.com
+      message: Failed rows have been sent to 
 ```
 
 | Parameter  | Value      | Description |
 | ---------- | ---------- | ----------- |
 | `type`     | `http`     | Provide an HTTP endpoint such as a Lambda function, or a custom Python HTTP service. |
-| `url`      |  any URL   | Provide a valid URL that accepts JSON payloads. |
-| `message ` | any string | (Optional) Provide a customized message that Soda Cloud displays in the failed rows tab to direct your fellow Soda Cloud users to the location where the failed rows samples are stored in your environment. |
+| `url`      |  any URL   | Provide a valid URL that accepts JSON payloads.|
+| `message ` | any string | (Optional) Provide a customized message that Soda Cloud displays in the failed rows tab, prepended to your URL, to direct your fellow Soda Cloud users to the location where the failed rows samples are stored in your environment. <br />For example, if you wish the complete message to read: "Failed rows have been sent to http://failedrows.exmple.com", configure the SodaCL syntax as in the example above.|
 
 #### Configure in Soda Cloud
 
