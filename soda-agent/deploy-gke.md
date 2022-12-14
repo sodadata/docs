@@ -113,7 +113,8 @@ soda-agent-gke  us-west1  1.24.5-gke.600  xx.xxx.xx.xx  e2-medium     1.24.5-gke
 4. Because the cluster is private, it cannot reach public IP addresses directly. Use the following command to add a network address translation (NAT) router to your network to route outbound network requests towards public IP addresses, such as `cloud.soda.io` or `cloud.us.soda.io`, through a virtual NAT.
 ```shell
 gcloud compute routers create agent-nat-router-1 \
-    --network soda-agent-net-2
+    --network soda-agent-net-2 \
+    --region=us-west1
 ```
 Output:
 ```shell
