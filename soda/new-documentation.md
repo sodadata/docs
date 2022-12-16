@@ -9,8 +9,15 @@ parent: Reference
 
 <br />
 
-#### December 16, 2022
+#### December 20, 2022
 * Added preview documentation for [deploying a Soda Agent in a GKE cluster]({% link soda-agent/deploy-gke.md %}). 
+
+#### December 15, 2022
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.16.
+* Corrected data types on which `max` and `min` metrics can be used. See [Numeric metrics]({% link soda-cl/numeric-metrics.md %}#list-of-numeric-metrics).
+
+#### December 12, 2022
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.15.
 
 #### December 8, 2022
 * Added preview documentation for the [Soda Cloud Reporting API v1]({% link api-docs/reporting-api-v1.md %}).
