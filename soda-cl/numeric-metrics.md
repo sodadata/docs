@@ -171,9 +171,9 @@ for each dataset T:
 | `avg_length`  | The average length in a text column. | text | all  |
 | `duplicate_count`  | The number of rows that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>Include more than one column in the argument to compare values across columns. See also: [Duplicate check]({% link soda/quick-start-sodacl.md %}#duplicate-check)| number<br /> text<br /> time | all  |
 | `duplicate_percent`  | The percentage of rows in a dataset that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>Include more than one column in the argument to compare values across columns. | number<br /> text<br /> time | all  |
-| `max`  | The greatest value in a numeric column. | number<br /> time | all  |
+| `max`  | The greatest value in a numeric column. | number | all  |
 | `max_length`  | The greatest length in a text column. | text | all |
-| `min`  | The smallest value in a numeric column. | number<br /> time | all  |
+| `min`  | The smallest value in a numeric column. | number | all  |
 | `min_length`  | The smallest length in a text column. | text | all  |
 | `percentile` | The value below which a percentage of observations fall within a group of observations. <br /> For example, `percentile(distance, 0.7)`. | number | PostgreSQL <br /> Snowflake |
 | `row_count` | The number of rows in a dataset or column, if specified. | number<br /> text<br /> time | all |
