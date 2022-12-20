@@ -12,7 +12,11 @@ redirect_from: /soda-cloud/monitors.html
 
 An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
 
+![agreement-1](/assets/images/agreement-1.png){:height="700px" width="700px"}
+
 Use SodaCL checks to define the state of "good quality" for data in this data source, then identify and get approval from stakeholders in your organization. Define whom Soda Cloud will notify when a check in this Agreement fails, then set a schedule to regularly execute the Soda Checks to uphold the tenets of the agreement.
+
+![agreement-2](/assets/images/agreement-2.png){:height="700px" width="700px"}
 
 [Prerequisites](#prerequisites)<br />
 [Create a new agreement](#create-a-new-agreement)<br />
@@ -20,6 +24,7 @@ Use SodaCL checks to define the state of "good quality" for data in this data so
 [Edit an agreement](#edit-an-agreement)<br />
 [Go further](#go-further)<br />
 <br />
+
 
 ## Prerequisites
 
@@ -80,6 +85,8 @@ Regardless of the approval status of the agreement, however, Soda Cloud begins r
 (Optional) You can create a new [scan definition]({% link soda/glossary.md %}#scan-definition) if you wish to run a scan to execute the checks in this agreement more or less frequently, or a different time of day, relative to the default scan definition for the data source. 
 
 To review existing scan definitions, navigate to **your avatar** > **Scans & Data** > **Scan Definitions** tab. 
+
+<br />
 
 ## Run an ad hoc scan
 
