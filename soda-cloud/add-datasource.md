@@ -129,7 +129,7 @@ If you already store information about your data source in a JSON file in a secu
 * the `configMap` parameters in the `values.yml` file that your Soda Agent helm chart uses
 * the `account_info_json_path` in your data source connection configuration 
 
-You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deplouyment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-gke.md %}#deploy-using-a-values-yaml-file) for details.
+You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deplouyment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.
 ```yaml
 soda:
   scanlauncher:
