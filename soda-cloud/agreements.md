@@ -55,7 +55,7 @@ Use [SodaCL]({% link soda-cl/soda-cl-overview.md %}) to define the checks that S
 
 #### 3. Identify Stakeholders
 
-Add Stakeholders to this Agreement who have an interest in maintaining or using the good-quality data in this data source. 
+Add Stakeholders to this agreement who have an interest in maintaining or using the good-quality data in this data source. Consider adding a co-owner to your agreement for redundancy should you, as the agreement author, be absent.
 
 Soda Cloud sends emails to request review and approval from all stakeholders, but does not prevent Soda Cloud from running scans and executing checks in the agreement if not all stakeholders have approved the agreement.
 
