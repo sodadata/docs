@@ -104,7 +104,7 @@ To review existing scan definitions, navigate to **your avatar** > **Scans & Dat
 
 * Consider completing the [Quick start for Soda Cloud]({% link soda/quick-start-sodacloud.md %}) for more context around creating a new agreement.
 * Complete the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write a few simple checks for data quality.
-* Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account. ![preview](/assets/images/preview.png){:height="70px" width="70px"}
+* Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account. s
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

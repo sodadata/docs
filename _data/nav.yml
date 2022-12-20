@@ -66,9 +66,9 @@
     page: soda-agent/deploy.md
   - subtitle: Deploy an agent in Amazon
     page: soda-agent/deploy-aws.md
-  - subtitle: Deploy an agent in Azure 
+  - subtitle: Deploy an agent in Azure (Preview) 
     page: soda-agent/deploy-azure.md
-  - subtitle: Deploy an agent in Google
+  - subtitle: Deploy an agent in Google (Preview)
     page: soda-agent/deploy-google.md
   - subtitle: Manage sensitive values
     page: soda-agent/secrets.md
