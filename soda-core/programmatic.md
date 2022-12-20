@@ -13,12 +13,11 @@ To automate the search for "bad" data, you can use the **Soda Core Python librar
 
 Based on a set of conditions or a specific event schedule, you can instruct Soda Core to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
 
-You can save Soda Core scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import the Soda Core library in Python so you can utilize the `Scan()` object, [install a Soda Core package]({% link soda-core/installation.md %}), then use `from soda.scan import Scan`.
-
 [Basic programmatic scan](#basic-programmatic-scan)<br />
+[Tips and best practices](#tips-and-best-practices)<br />
 [Scan exit codes](#scan-exit-codes)<br />
 [Configure a failed row sampler](#configure-a-failed-row-sampler)<br />
-[Save failed row samples to a file](#save-failed-row-samples-to-a-file)<br />
+[Save failed row samples to an alternate destination](#save-failed-row-samples-to-an-alternate-desination)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -104,6 +103,10 @@ scan.get_checks_warn_or_fail_text()
 scan.get_all_checks_text()
 ```
 
+## Tips and best practices
+
+* You can save Soda Core scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import the Soda Core library in Python so you can utilize the `Scan()` object, [install a Soda Core package]({% link soda-core/installation.md %}), then use `from soda.scan import Scan`.
+* Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files. 
 
 ## Scan exit codes
 
@@ -174,7 +177,7 @@ if __name__ == '__main__':
     print(s.get_logs_text())
 ```
 
-### Save failed row samples to alternate desination
+### Save failed row samples to an alternate desination
 
 If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">docs.python.org</a> for details.
 
