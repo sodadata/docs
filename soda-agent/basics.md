@@ -34,7 +34,7 @@ Within a cloud services provider environment is *where* you create your Kubernet
 
 * Amazon Elastic Kubernetes Service (EKS)
 * Microsoft Azure Kubernetes Service (AKS) (Preview)
-<!--Google Kubernetes Engine (GKE) -->
+* Google Kubernetes Engine (GKE) (Preview)
 * Any Kubernetes cluster  version 1.21 or greater which uses standard Kubernetes
 * Locally, for testing purposes, using tools like <a href="https://minikube.sigs.k8s.io/docs/" target="_blank">Minikube</a>, <a href="https://microk8s.io/docs" target="_blank">microk8s</a>, <a href="https://kind.sigs.k8s.io/" target="_blank">kind</a>, <a href="https://docs.k3s.io/" target="_blank">k3s</a>, or <a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop</a> with Kubernetes support.
 

@@ -50,8 +50,9 @@ helm install soda-agent soda-agent/soda-agent \
 ```
 
 Refer to the exhaustive cloud service provider-specific instructions for more detail on how to deploy an agent using a values YAML file:
-* [Deploy to EKS]({% link soda-agent/deploy-aws.md %}#deploy-using-a-values-yaml-file)
-* [Deploy to AKS (Preview)]({% link soda-agent/deploy-azure.md %}#deploy-using-a-values-yaml-file)
+* [Deploy a Soda Agent in Amazon EKS]({% link soda-agent/deploy-aws.md %}#deploy-using-a-values-yaml-file)
+* [Deploy a Soda Agent in Azure AKS (Preview)]({% link soda-agent/deploy-azure.md %}#deploy-using-a-values-yaml-file)
+* [Deploy a Soda agent in Google GKE (Preview)]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file)
 
 
 ## Use environment variables to store data source connection credentials
