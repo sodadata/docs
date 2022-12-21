@@ -73,7 +73,7 @@ parent: Reference
 
 #### November 14, 2022
 
-* Corrected the location in which to [opt out]({% link soda-core/usage-stats.md %}l#opt-out-of-usage-statistics) of sending Soda Core usage statistics.
+* Corrected the location in which to [opt out]({% link soda-core/usage-stats.md %}#opt-out-of-usage-statistics) of sending Soda Core usage statistics.
 
 #### November 10, 2022
 
