@@ -24,6 +24,7 @@ A **check** is a test that Soda Core performs when it scans a dataset in your da
 [Scan output](#scan-output)<br />
 [Examine a scan's SQL queries](#examine-a-scans-sql-queries)<br />
 [Programmatically use scan output](#programmatically-use-scan-output)<br />
+[Configure the same scan to run in multiple environments](#configure-the-same-scan-to-run-in-multiple-environments)<br />
 [Add scan options](#add-scan-options)<br />
 [Troubleshoot](#troubleshoot)<br />
 [Go further](#go-further) <br />
@@ -134,6 +135,10 @@ Optionally, you can insert the output of Soda Core scans into your data orchestr
 You can save Soda Core scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import the Soda Core library in Python so you can utilize the `Scan()` object, [install a Soda Core package]({% link soda-core/installation.md %}), then use `from soda.scan import Scan`. Refer to [Define programmatic scans]({% link soda-core/programmatic.md %}) for details.
 
 Further, in your orchestration tool, you can use Soda Core scan results to block the data pipeline if it encounters bad data, or to run in parallel to surface issues with your data. Learn how to [Configure orchestrated scans]({% link soda-core/orchestrate-scans.md %}).
+
+## Configure the same scan to run in multiple environments
+
+{% include scan-multiple-envs.md %}
 
 ## Add scan options
 
