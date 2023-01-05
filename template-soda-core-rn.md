@@ -3,6 +3,7 @@ name: "vX.X.x: Name of release"
 date: YYYY-MM-DD
 products:
   - soda-core
+robots: noindex
 ---
 
 - change or new item

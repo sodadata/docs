@@ -3,6 +3,7 @@ layout: default
 title: 
 description: 
 parent: 
+robots: noindex
 ---
 
 # Title
