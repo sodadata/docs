@@ -8,13 +8,24 @@ parent: SodaCL
 # Troubleshoot SodaCL
 *Last modified on {% last_modified_at %}*
 
+[Errors with invalid format](#errors-with-invalid-format)<br />
 [Soda does not recognize variables](#soda-does-not-recognize-variables)<br />
 [Missing check results in Soda Cloud](#missing-check-results-in-soda-cloud)<br />
 <br />
 
+## Errors with invalid format
+
+**Problem:** You have written a check using an `invalid_count` or `invalid_percent` metric and used an `invalid format` config key to specify the values that qualify as invalid, but Soda errors on scan.
+
+**Solution:** The `invalid format` configuration key only works with data type TEXT. See [Specify valid format]({% link soda-cl/validity-metrics.md %}#specify-valid-format).
+
+See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl)
+
+<br />
+
 ### Soda does not recognize variables 
 
-**Problem:** You execute a programmatic scan using Soda Core, but Soda does not seem to recognize the variables you include in the programmatic scan. 
+**Problem:** You execute a programmatic scan using Soda Core, but Soda does not seem to recognize the variables you included in the programmatic scan. 
 
 **Solution:** Be sure to include any variables in your programmatic scan *before* the check YAML file identification. Refer to [Basid programmatic scan]({% link soda-core/programmatic.md %}#basic-programmatic-scan) for an example.
 
@@ -49,9 +60,7 @@ checks for dataset_2:
         FROM breakdowns
 ```
 
-**Solution:**
-
-Soda Cloud archives check results if they have been removed, by deletion or alteration, from the check file. If two scans run using the same checks YAML file, but an alteration or deletion of the checks in the file took place between scans, Soda Cloud automatically archives the check results of any check that appeared in the file for the first scan, but does not exist in the same checks YAML file during the second scan.
+**Solution:** Soda Cloud archives check results if they have been removed, by deletion or alteration, from the check file. If two scans run using the same checks YAML file, but an alteration or deletion of the checks in the file took place between scans, Soda Cloud automatically archives the check results of any check that appeared in the file for the first scan, but does not exist in the same checks YAML file during the second scan.
 
 To force Soda Cloud to retain the check results of previous scans, you can use one of the following options:
 * Write individual checks and keep them static, unchanged between scan executions.
