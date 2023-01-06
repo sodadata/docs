@@ -121,7 +121,7 @@
   - subtitle: Optional check configurations
     page: soda-cl/optional-config.md
   - subtitle: Add check attributes
-    page: soda-cl/organize-checks.md
+    page: soda-cl/check-attributes.md
   - subtitle: Numeric metrics
     page: soda-cl/numeric-metrics.md
   - subtitle: Missing metrics

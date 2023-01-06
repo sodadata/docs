@@ -8,14 +8,29 @@ parent: SodaCL
 # Add check attributes
 *Last modified on {% last_modified_at %}*
 
-As a Soda Cloud Admin user, you can define **check attributes** that your team can apply to checks when they write them in an agreement or in a checks YAML file for Soda Core. 
+As a Soda Cloud Admin user, you can define **check attributes** that your team can apply to checks when they write them in an agreement or in a checks YAML file for Soda Core.
 
-Use attributes to organize your checks in Soda Cloud.
+```yaml
+checks for dim_product:
+  - missing_count(discount) < 10:
+    attributes:
+      department: marketing
+```
+
+Use attributes to organize your checks and alert notifications in Soda Cloud.
 * Apply attributes to checks to label and sort them by department, priority, location, etc.
 * Add a check attribute to define, for example, whether a check executes against personally identifiable information (PII).
 * Use the [Soda Cloud Reporting API]({% link api-docs/reporting-api-v1.md %}) to access information about checks according to their attributes.
 <!--* Use attributes to filter results on the Check Results dashboard.-->
-<!--* Define rules to route alert notifications according to check attributes.-->
+* Define rules to route alert notifications according to check attributes.
+
+
+[Prerequisites](#prerequisites)<br />
+[Define a check attribute](#define-a-check-attribute)<br />
+[Apply an attribute to a check](#apply-an-attribute-to-a-check)<br />
+[Optional check attribute SodaCL configurations](#optional-check-attribute-sodacl-configurations)<br />
+[Go further](#go-further)<br />
+<br />
 
 
 ## Prerequisites
@@ -25,17 +40,26 @@ Use attributes to organize your checks in Soda Cloud.
 
 ## Define a check attribute
 
-Note that you can only define or review check attributes as an [Admin]({% link soda-cloud/roles-and-rights.md %}) in Soda Cloud. You cannot define new attributes in Soda Core. Once defined in Soda Cloud, any Soda Cloud or Soda Core user can [apply the attribute](#apply-an-attribute-to-a-check) to new or existing checks.
+Note that you can only define or edit check attributes as an [Admin]({% link soda-cloud/roles-and-rights.md %}) in Soda Cloud. You cannot define new attributes in Soda Core. Once defined in Soda Cloud, any Soda Cloud or Soda Core user can [apply the attribute](#apply-an-attribute-to-a-check) to new or existing checks.
 
 1. In your Soda Cloud account, navigate to **your avatar** > **Attributes** > **New Attribute**. 
-2. Follow the guided steps to create the new attribute. Use the details below for insight into the values to enter in the fields and editing panels in the guided steps. 
-* single select
-* multi select
-* checkbox, true/false
-* text
-* number
-* datetime
-3. ...
+2. Follow the guided steps to create the new attribute. Use the details below for insight into the values to enter in the fields in the guided steps. 
+
+| Field or Label  | Guidance |
+| -----------------  | ----------- |
+| Label | Enter the key for the key:value pair that makes up the attribute. In the example above, the check attribute's key is `department` and the value is `marketing`.  |
+| Resource Type |  Select `Check` to define an attribute for a check. |
+| Type | Define the type of input a check author may use for the value that pairs with the attribute's key:<br /> Single select<br /> Multi select<br /> Checkbox<br /> Text<br /> Number<br /> Date<br /> Note that during a scan, Soda validates that the type of input for an attribute's value matches the expected type. For example, if your attribute's type is Number and the check author enters a value of `one` instead of `1`, the scan produces an error to indicate the incorrect attribute value. |
+| Allowed Values | Applies only to Single select and Multi select. Provide a list of values that a check author may use when applying the attribute key:value pair to a check. |
+| Description | (Optional) Provide details about the check attribute to offer guidance for your fellow Soda users. |
+
+
+### Adjust attributes
+
+* Once created, you *cannot* change the type of your attribute. For example, you cannot change a checkbox attribute into a multi-select attribute.
+* Once created, you can change the display name of an attribute.
+* For a single- or multi-select attribute, you can remove, change, or add values to the list of available selections. However, if you remove or change values on such a list, you cannot use a previous value to route alert notifications. 
+
 
 ## Apply an attribute to a check
 
@@ -56,6 +80,8 @@ checks for dim_product:
       pii: true
       best_before: 2022-02-20
 ```
+
+Note that during a scan, Soda validates that the type of input for an attribute's value matches the expected type. For example, if your attribute's type is Number and the check author enters a value of `one` instead of `1`, the scan produces an error to indicate the incorrect attribute value.
 
 ## Optional check attribute SodaCL configurations
 
