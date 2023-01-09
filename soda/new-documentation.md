@@ -9,6 +9,13 @@ parent: Reference
 
 <br />
 
+#### January 10, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.18.
+* Removed the known issue for using `duplicate_count` and `duplicate_percent` metrics with an in-check filter.
+
+#### December 28, 2022
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.17.
+
 #### December 20, 2022
 * Added preview documentation for [deploying a Soda Agent in a GKE cluster]({% link soda-agent/deploy-google.md %}). 
 
