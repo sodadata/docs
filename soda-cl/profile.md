@@ -15,21 +15,20 @@ Use the `discover datasets` and/or `profile columns` configurations to send info
 ```yaml
 discover datasets:
   datasets:
-    - prod% # All datasets starting with "prod"
-    - include prod% # Same with above
-    - include prod\_% # All datasets starting with "prod_"
-    - exclude dev% # Exclude all datasets starting with "dev"
+    - prod% # all datasets starting with prod
+    - include prod% # same as above
+    - exclude dev% # exclude all datasets starting with dev
 
 profile columns:
   columns:
-    - dataset\_a.column\_a # column_a of dataset_a
-    - dataset\_a.% # All columns of dataset_a
-    - dataset\_%.column\_a # "column_a" of all datasets starting with "dataset_" 
-    - dataset%.% # All columns of datasets starting with "dataset"
-    - %.% # All datasets and all columns
-    - include dataset\_a.% # Same with "dataset\_a.%"
-    - exclude dataset_a.prod% # exclude  all columns starting with "prod" of dataset "dataset_a"
-    - exclude dim_geography # Exclude "dim_geography" dataset 
+    - datasetA.columnA # columnA of datasetA
+    - datasetA.% # all columns of datasetA
+    - dataset%.columnA # columnA of all datasets starting with dataset
+    - dataset%.% # all columns of datasets starting with dataset
+    - %.% # all datasets and all columns
+    - include datasetA.% # same as datasetA.%
+    - exclude datasetA.prod% # exclude  all columns starting with prod in datasetA
+    - exclude dimgeography # exclude dimgeography dataset 
 ```
 
 [Prerequisites](#prerequisites)<br />
@@ -87,7 +86,7 @@ Dataset discovery captures basic information about each dataset, including a dat
 
 This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud.
 
-While defining your datasets and columns, the SQL wildcard characters like `%` or `_` are supported. For all allowed SQL characters, refer to your data source's documentation. To escape a wildcard character, use a backslash `\` before the character (e.g. `\%`) if your data source supports backslashes.
+SodaCL supports SQL wildcard characters such as `%`, `*`, or `_`. Refer to your data source's documentation to determine which SQL wildcard characters it suports and how to escape the characters, such as with a backslach `\`, if your dataset or column names use characters that SQL would consider wildcards. 
 
 The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Core discovers all the datasets the data source contains *except* those with names that begin with `test`.
 
@@ -100,22 +99,22 @@ discover datasets:
 
 <br />
 
-The example configuration below uses a wildcard character (`_`), during a scan, Soda Core discovers all the datasets that starts with `soda` and any single character after that. For example, it can match with `soda1`, `soda2`, `soda3`, and so on. However, it won't match with `soda` or `soda_core` since in total it needs to match with 5 characters and the first 4 characters needs to be `soda`.
+The example configuration below uses a wildcard character (`_`). During a scan, Soda discovers all the datasets that start with `customer` and any single character after that, such as `customer1`, `customer2`, `customer3`. However, in the example below, Soda does not include dataset names that are exactly eight characters or are more than nine characters, as with `customer` or `customermain`.
 
 ```yaml
 discover datasets:
   datasets:
-    - include soda_
+    - include customer_
 ```
 
 <br />
 
-The example configuration below uses an escaped wildcard character (`\_`) and wildcard character(`*`), during a scan, Soda Core discovers all the datasets that starts with `soda_` and any single or multiple character after that. For example, it can match with `soda_core`, `soda_cl`, `soda_cloud`, and so on. Note that your data source may not support backslashes as an escape character, so you may need to use a different escape character.
+The example configuration below uses both an escaped wildcard character (`\_`) *and* wildcard character(`*`). During a scan, Soda discovers all the datasets that start with `north_` and any single or multiple character after that. For example, it includes `north_star`, `north_end`, `north_pole`. Note that your data source may not support backslashes to escape a character, so you may need to use a different escape character.
 
 ```yaml
 discover datasets:
   datasets:
-    - include soda\_*
+    - include north\_*
 ```
 
 <br />
@@ -157,7 +156,7 @@ Column profile information includes details such as the calculated mean value of
 
 This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud.
 
-The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Core captures the column profile information for all the columns in the dataset named `retail_orders`. The `.` in the syntax separates the dataset name from the column name. Since `_` is a wildcard character, it is escaped with a backslash `\` before the character (e.g. `\_`). Note that your data source may not support backslashes as an escape character, so you may need to use a different escape character.
+The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Core captures the column profile information for all the columns in the dataset named `retail_orders`. The `.` in the syntax separates the dataset name from the column name. Since `_` is a wildcard character, the example escapes the character with a backslash `\`. Note that your data source may not support backslashes to escape a character, so you may need to use a different escape character.
 
 ```yaml
 profile columns:
@@ -198,9 +197,10 @@ profile columns:
 3. Access the **Columns** tab to review the columns that Soda Core profiled.
 
 ![profile columns](../assets/images/profile-columns.png)
+
 ## Compute consumption and cost considerations
 
-Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a selected few datasets to keep costs low. 
+Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a select few datasets to keep costs low. 
 
 ### Discover Datasets
 
@@ -250,7 +250,7 @@ Text Columns
 ```yaml
 profile columns:
   columns:
-    - include "prod_customer"
+    - include "prodcustomer"
 ```
 
 #### Example with wildcards
