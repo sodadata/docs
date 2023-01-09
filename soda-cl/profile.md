@@ -87,7 +87,7 @@ Dataset discovery captures basic information about each dataset, including a dat
 
 This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud.
 
-While defining your datasets and columns, the SQL wildcard characters like `%` or `_` are supported. For all allowed SQL characters, refer to your data source's documentation. To escape a wildcard character, use a backslash `\` before the character (e.g. `\%`).
+While defining your datasets and columns, the SQL wildcard characters like `%` or `_` are supported. For all allowed SQL characters, refer to your data source's documentation. To escape a wildcard character, use a backslash `\` before the character (e.g. `\%`) if your data source supports backslashes.
 
 The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Core discovers all the datasets the data source contains *except* those with names that begin with `test`.
 
@@ -110,7 +110,7 @@ discover datasets:
 
 <br />
 
-The example configuration below uses an escaped wildcard character (`\_`) and wildcard character(`*`), during a scan, Soda Core discovers all the datasets that starts with `soda_` and any single or multiple character after that. For example, it can match with `soda_core`, `soda_cl`, `soda_cloud`, and so on.
+The example configuration below uses an escaped wildcard character (`\_`) and wildcard character(`*`), during a scan, Soda Core discovers all the datasets that starts with `soda_` and any single or multiple character after that. For example, it can match with `soda_core`, `soda_cl`, `soda_cloud`, and so on. Note that your data source may not support backslashes as an escape character, so you may need to use a different escape character.
 
 ```yaml
 discover datasets:
@@ -125,7 +125,7 @@ You can also specify individual datasets to include or exclude, as in the follow
 ```yaml
 discover datasets:
   datasets:
-    - include retail_orders
+    - include retailorders
 ```
 
 <br />
@@ -157,7 +157,7 @@ Column profile information includes details such as the calculated mean value of
 
 This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud.
 
-The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Core captures the column profile information for all the columns in the dataset named `retail_orders`. The `.` in the syntax separates the dataset name from the column name. Since `_` is a wildcard character, it is escaped with a backslash `\` before the character (e.g. `\_`).
+The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Core captures the column profile information for all the columns in the dataset named `retail_orders`. The `.` in the syntax separates the dataset name from the column name. Since `_` is a wildcard character, it is escaped with a backslash `\` before the character (e.g. `\_`). Note that your data source may not support backslashes as an escape character, so you may need to use a different escape character.
 
 ```yaml
 profile columns:
