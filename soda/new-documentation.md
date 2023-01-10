@@ -9,8 +9,9 @@ parent: Reference
 
 <br />
 
-#### January 10, 2022
+#### January 10, 2023
 * Added documentation for the ability to create and use [check attributes]({% link soda-cl/check-attributes.md %}).
+* Adjusted documentation for [adding dataset attributes]({% link soda-cloud/organize-datasets.md %}) to correspond with the new check attributes feature.
 
 #### December 20, 2022
 * Added preview documentation for [deploying a Soda Agent in a GKE cluster]({% link soda-agent/deploy-google.md %}). 
