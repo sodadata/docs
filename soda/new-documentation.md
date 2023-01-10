@@ -9,7 +9,7 @@ parent: Reference
 
 <br />
 
-#### January 10, 2023
+#### January 11, 2023
 * Added documentation for the ability to create and use [check attributes]({% link soda-cl/check-attributes.md %}).
 * Adjusted documentation for [adding dataset attributes]({% link soda-cloud/organize-datasets.md %}) to correspond with the new check attributes feature.
 
