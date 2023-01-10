@@ -12,7 +12,11 @@ redirect_from: /soda-cloud/monitors.html
 
 An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
 
+![agreement-1](/assets/images/agreement-1.png){:height="700px" width="700px"}
+
 Use SodaCL checks to define the state of "good quality" for data in this data source, then identify and get approval from stakeholders in your organization. Define whom Soda Cloud will notify when a check in this Agreement fails, then set a schedule to regularly execute the Soda Checks to uphold the tenets of the agreement.
+
+![agreement-2](/assets/images/agreement-2.png){:height="700px" width="700px"}
 
 [Prerequisites](#prerequisites)<br />
 [Create a new agreement](#create-a-new-agreement)<br />
@@ -20,6 +24,7 @@ Use SodaCL checks to define the state of "good quality" for data in this data so
 [Edit an agreement](#edit-an-agreement)<br />
 [Go further](#go-further)<br />
 <br />
+
 
 ## Prerequisites
 
@@ -81,6 +86,8 @@ Regardless of the approval status of the agreement, however, Soda Cloud begins r
 
 To review existing scan definitions, navigate to **your avatar** > **Scans & Data** > **Scan Definitions** tab. 
 
+<br />
+
 ## Run an ad hoc scan
 
 {% include ad-hoc-scan.md %}
@@ -97,7 +104,7 @@ To review existing scan definitions, navigate to **your avatar** > **Scans & Dat
 
 * Consider completing the [Quick start for Soda Cloud]({% link soda/quick-start-sodacloud.md %}) for more context around creating a new agreement.
 * Complete the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write a few simple checks for data quality.
-* Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account. ![preview](/assets/images/preview.png){:height="70px" width="70px"}
+* Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account. s
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

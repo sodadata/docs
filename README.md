@@ -38,7 +38,7 @@ $ gem install --user-install bundler jekyll
 $ bundle exec jekyll serve
 ```
 7. In a browser, navigate to [http://localhost:4000](http://localhost:4000) to see a preview of the docs site locally. Make changes to docs files in your code editor, save the files, then refresh your browser to preview your changes.
-8. If you are creating a new page, consider copy+pasting the contents of the `template-new-page.md` or `template-new-page-core.md` files and pasting into your new file so that the standard header and footer info are included.
+8. If you are creating a new page, consider copy+pasting the contents of the `template-new-page.md` file and pasting into your new file so that the standard header and footer info are included.
 
 #### Install Ruby on Mac with an Apple M1 chip
 
@@ -129,7 +129,7 @@ Document the details of each Soda product's release using included release note 
 
 1. Create a new branch in this docs repo to create your product release notes.
 2. To the `_release-notes` folder in this Docs repo, add a new markdown file for your new product release notes. Follow the file naming structure established by existing files. If you do not recognize a discernable pattern, use a logical name for the feature or functionality you are releasing.
-3. Copy and paste the contents of the `template-soda-cloud-rn.md` file or the `template-soda-sql-rn.md` file into your new file.
+3. Copy and paste the contents of the `template-soda-cloud-rn.md` file into your new file.
 4. Write your release notes using the style guide for guidance on format, language, etc. Use <a href="https://writing.wisc.edu/handbook/style/ccs_activevoice/" target="_blank">active voice</a>!
 5. Spell check your content. (Copy paste to a Google Doc or your favorite editor to run a spell check.)
 6. Commit your changes, then create a new pull request when you are ready to publish.

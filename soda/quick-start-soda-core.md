@@ -66,7 +66,7 @@ There are several other [install packages for Soda Core]({% link soda-core/insta
 mkdir soda_tutorial
 cd soda_tutorial
 ```
-2. Create a new file called `confguration.yml`. 
+2. Create a new file called `configuration.yml`. 
 3. Open the `configuration.yml` file in a code editor, then copy and paste the following connection details into the file. Replace the values for each of the fields with your own data source-specific details, then save the file.
 
 ```yaml

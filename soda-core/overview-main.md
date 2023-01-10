@@ -8,11 +8,13 @@ redirect_from:
 - /soda-core/overview.html
 - /soda-cl/soda-core-overview.html
 ---
-<!--Linked to UI, access Shlink--><br />
+<br />
 
 ![soda-core-logo](/assets/images/soda-core-logo.png){:height="230px" width="230px"} 
 <br />
 <br />
+
+<!--Linked to UI, access Shlink-->
 
 &#10004;  An open-source, CLI tool and Python library for data reliability<br /> <br />
 &#10004;  Compatible with [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}) and [Soda Cloud]({% link soda-cloud/overview.md %}) <br /> <br />

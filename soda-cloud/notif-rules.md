@@ -6,9 +6,7 @@ parent: Soda Cloud
 redirect_from: /soda-cloud/edit-checks.html
 ---
 
-# Set notification rules ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
-
-{% include banner-preview.md %}
+# Set notification rules 
 
 In Soda Cloud, you can define where and when to send alert notifications when check results warn or fail. You can define these parameters for:
 * **agreements** as you create or edit them; see [Create agreements]({% link soda-cloud/agreements.md %}#4-set-notifications)

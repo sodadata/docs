@@ -13,7 +13,7 @@ parent: Reference
 * Added note about the new ability to add co-owners to an agreement; see [Create an agreement]({% link soda-cloud/agreements.md %}).
 
 #### December 20, 2022
-* Added preview documentation for [deploying a Soda Agent in a GKE cluster]({% link soda-agent/deploy-gke.md %}). 
+* Added preview documentation for [deploying a Soda Agent in a GKE cluster]({% link soda-agent/deploy-google.md %}). 
 
 #### December 15, 2022
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.16.
@@ -76,7 +76,7 @@ parent: Reference
 
 #### November 14, 2022
 
-* Corrected the location in which to [opt out]({% link soda-core/usage-stats.md %}l#opt-out-of-usage-statistics) of sending Soda Core usage statistics.
+* Corrected the location in which to [opt out]({% link soda-core/usage-stats.md %}#opt-out-of-usage-statistics) of sending Soda Core usage statistics.
 
 #### November 10, 2022
 

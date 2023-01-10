@@ -26,7 +26,7 @@ A check is a test for data quality that you write using the Soda Checks Language
 
 See a [full list of SodaCL metrics and checks](#list-of-sodacl-metrics-and-checks).
 
-When it scans datasets in your data source, Soda Core executes the checks you defined in your checks YAML file. Technically, a check is a Python expression that, during a Soda scan, checks metrics to see if they match the parameters you defined for a threshold. A single Soda scan executes multiple checks against one or more datasets in your data source.
+When it scans datasets in your data source, Soda Core executes the checks you defined in your checks YAML file. Technically, a check is a Python expression that, during a Soda scan, checks metrics to see if they match the parameters you defined for a threshold. A single Soda scan executes multiple checks against one or more datasets in your data source. Read more about [running scans on multiple environments]({% link soda-core/scan-core.md %}#configure-the-same-scan-to-run-in-multiple-environments).
 
 {% include core-scan-output.md %}
 

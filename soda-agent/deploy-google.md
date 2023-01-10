@@ -3,13 +3,14 @@ layout: default
 title: Deploy a Soda Agent in Google GKE (Preview)
 description: Learn how to deploy a Soda Agent in a Google Kubernetes Engine cluster.
 parent: Soda Agent
+redirect_from: /soda-agent/deploy-gke.html
 ---
 
 # Deploy a Soda Agent in Google GKE ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create an **Google Kubernetes Engine (GKE)** cluster, then use Helm to deploy a Soda Agent in the cluster. 
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a **Google Kubernetes Engine (GKE)** cluster, then use Helm to deploy a Soda Agent in the cluster. 
 
 This setup enables Soda Cloud users to securely connect to data sources (BigQuery, Snowflake, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source. 
 
