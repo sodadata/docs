@@ -53,7 +53,7 @@ Note that you can only define or edit check attributes as an [Admin]({% link sod
 | -----------------  | ----------- |
 | Label | Enter the key for the key:value pair that makes up the attribute. In the example above, the check attribute's key is `department` and the value is `marketing`.<br /> Note that though you enter a value for label that may contain spaces or uppercase characters, users must use the attribute's **NAME** as the key, not the **Label** as Soda Cloud automatically formats the label into SodaCL-friendly syntax. Refer to the screenshot in the [section below](#apply-an-attribute-to-a-check).|
 | Resource Type |  Select `Check` to define an attribute for a check. |
-| Type | Define the type of input a check author may use for the value that pairs with the attribute's key:<br /> &nbsp;&nbsp;&nbsp;&nbsp;Single select<br /> &nbsp;&nbsp;&nbsp;&nbsp;Multi select<br /> &nbsp;&nbsp;&nbsp;&nbsp;Checkbox<br /> &nbsp;&nbsp;&nbsp;&nbsp;Text<br /> &nbsp;&nbsp;&nbsp;&nbsp;Number<br /> &nbsp;&nbsp;&nbsp;&nbsp;Date |
+| Type | Define the type of input a check author may use for the value that pairs with the attribute's key.<br /> &nbsp;&nbsp;&nbsp;&nbsp;- Single select<br /> &nbsp;&nbsp;&nbsp;&nbsp;- Multi select<br /> &nbsp;&nbsp;&nbsp;&nbsp;- Checkbox<br /> &nbsp;&nbsp;&nbsp;&nbsp;- Text<br /> &nbsp;&nbsp;&nbsp;&nbsp;- Number<br /> &nbsp;&nbsp;&nbsp;&nbsp;- Date |
 | Allowed Values | Applies only to Single select and Multi select. Provide a list of values that a check author may use when applying the attribute key:value pair to a check. |
 | Description | (Optional) Provide details about the check attribute to offer guidance for your fellow Soda users. |
 
@@ -72,7 +72,7 @@ While only a Soda Cloud Admin can define or revise check attributes, any Author 
 OR <br />
 * writing or editing checks in a checks YAML file for Soda Core.
 
-Apply attributes to checks using key-value pairs, as in the following example which applies five Soda Cloud-created attributes to a new `row_count` check. 
+Apply attributes to checks using key:value pairs, as in the following example which applies five Soda Cloud-created attributes to a new `row_count` check. 
 
 ```yaml
 checks for dim_product:
@@ -85,18 +85,22 @@ checks for dim_product:
         best_before: 2022-02-20
 ```
 
+During a scan, Soda validates the attribute's input – **NAME** (the key in the key:value pair), **Type**, **Allowed Values** – to ensure that the key:value pairs match the expected input. If the input is unexpected, Soda evaluates no checks, and the scan results in an error. For example, if your attribute's type is Number and the check author enters a value of `one` instead of `1`, the scan produces an error to indicate the incorrect attribute value.
 
-### Notes for applying attributes to checks
+The following table outlines the expected values for each type of attribute.
 
-* The only valid values for a Checkbox type attribute are **true** and **false**.
+|Attribute type (key)| Attribute value |
+|--------------------| --------------- |
+| Single select | Any value that exactly matches the **Allowed Values** for the attribute as defined by the Soda Admin who created the attribute. Values are case sensitive.<br /> Refer to example above in which the `department` attribute is a Single select attribute.|
+| Multi select | Any value(s) that exactly matches the **Allowed Values** for the attribute as defined by the Soda Admin who created the attribute. Values are case sensitive. <br />You must wrap input in square brackets, which indicates a list, when adding Multi select attribute key:value pair to a check. <br />Refer to example above in which the `tags` attribute is a Multi select attribute. |
+| Checkbox | `true` or `false` |
+| Text | string |
+| Number | integer or float |
+| Date | ISO-formatted date or datetime. |
 
-* The only valid formats for a Date type attribute are ISO-formatted date or datetime.
 
-* For a Multi select type attribute, you must wrap input in square brackets, which indicates a list, when adding the attribute key:value pair to a check. Refer to example above in which the `tags` attribute is a Multi select.
+Note that users must use the attribute's **NAME** as the attribute's key in a check, not the **Label** as defined by a Soda Admin in Soda Cloud. Refer to screenshot below. 
 
-* During a scan, Soda validates the attribute's input – **NAME**, **Type**, **Allowed Values** – to ensure that the key:value pairs match the expected input. If the input is unexpected, Soda evaluates no checks, and the scan results in an error. For example, if your attribute's type is Number and the check author enters a value of `one` instead of `1`, the scan produces an error to indicate the incorrect attribute value.
-
-* Note that users must use the attribute's **NAME** as the attribute's key in a check, not the **Label** as defined by a Soda Admin in Soda Cloud. Refer to screenshot below. <br />
 ![name-not-label](/assets/images/name-not-label.png){:height="200px" width="200px"}
 
 ## Optional check attribute SodaCL configurations
