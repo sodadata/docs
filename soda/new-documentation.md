@@ -9,9 +9,14 @@ parent: Reference
 
 <br />
 
-#### January 10, 2023
+#### January 11, 2023
+* Added documentation for the ability to create and use [check attributes]({% link soda-cl/check-attributes.md %}).
+* Adjusted documentation for [adding dataset attributes]({% link soda-cloud/organize-datasets.md %}) to correspond with the new check attributes feature.
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.18.
 * Removed the known issue for using `duplicate_count` and `duplicate_percent` metrics with an in-check filter.
+
+#### January 10, 2023
+* Added note about the new ability to add co-owners to an agreement; see [Create an agreement]({% link soda-cloud/agreements.md %}).
 
 #### December 28, 2022
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.17.
