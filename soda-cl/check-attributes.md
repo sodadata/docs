@@ -14,7 +14,7 @@ As a Soda Cloud Admin user, you can define **check attributes** that your team c
 checks for dim_product:
   - missing_count(discount) < 10:
       attributes:
-      department: marketing
+        department: marketing
 ```
 
 Use attributes to organize your checks and alert notifications in Soda Cloud.
@@ -74,11 +74,11 @@ Apply attributes to checks using key-value pairs, as in the following example wh
 checks for dim_product:
   - row_count = 10:
       attributes:
-      department: marketing
-      priority: 1
-      tags: [a, b, c]
-      pii: true
-      best_before: 2022-02-20
+        department: marketing
+        priority: 1
+        tags: [a, b, c]
+        pii: true
+        best_before: 2022-02-20
 ```
 
 
@@ -108,8 +108,8 @@ for each dataset T:
  checks:
    - row_count > 0:
         attributes:
-        department: marketing
-        priority: 2
+          department: marketing
+          priority: 2
 ```
 
 
