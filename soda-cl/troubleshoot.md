@@ -27,13 +27,13 @@ See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.m
 
 **Problem:** You execute a programmatic scan using Soda Core, but Soda does not seem to recognize the variables you included in the programmatic scan. 
 
-**Solution:** Be sure to include any variables in your programmatic scan *before* the check YAML file identification. Refer to [Basid programmatic scan]({% link soda-core/programmatic.md %}#basic-programmatic-scan) for an example.
+**Solution:** Be sure to include any variables in your programmatic scan *before* the check YAML file identification. Refer to [Basic programmatic scan]({% link soda-core/programmatic.md %}#basic-programmatic-scan) for an example.
 
 <br />
 
 ### Missing check results in Soda Cloud
 
-**Problem:** You have written checks for a single dataset and use variables to provide check input at scan time, as in the example below. However, when you provide a different value the variable and run the scan, the check results for the previous scan that used a different variable disappears or appears to be over-written. 
+**Problem:** You have written checks for a single dataset and use variables to provide check input at scan time, as in the example below. However, when you provide a different value for the variable and run the scan, the check result for the previous scan that used a different variable disappears or appears to be overwritten. 
 ```yaml
 checks for test_table_${expected_country}:
   - failed rows:
@@ -70,7 +70,7 @@ To force Soda Cloud to retain the check results of previous scans, you can use o
 soda scan -d adventureworks -c configuration.yml checks_test.yml checks_test2.yml
 ```
 
-* Use the `-s` scan definition option in the scan command to explicitly specify separate scan defintions for each scan. [Read more]({% link soda-core/scan-core.md %}#configure-the-same-scan-to-run-in-multiple-environments).
+* Use the `-s` scan definition option in the scan command to explicitly specify separate scan definitions for each scan. [Read more]({% link soda-core/scan-core.md %}#configure-the-same-scan-to-run-in-multiple-environments).
 
 ```shell
 soda scan -d subscription_statuses -s subscription_statuses-BE   -c configuration.yml -v country=BE checks.yml 

@@ -4,4 +4,4 @@
     <td>IBM DB2<br /> MS SQL Server †<br /> MySQL<br > OracleDB<br />PostgreSQL<br /> Snowflake<br /> Trino<br /> </td>
   </tr>
 </table>
-† MS SQL Server with Windows Authentication is does not work with out-of-the-box Soda Agent.
+† MS SQL Server with Windows Authentication does not work with Soda Agent out-of-the-box.
