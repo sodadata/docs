@@ -14,6 +14,7 @@ parent: Connect a data source
 [Authentication methods](#authentication-methods)<br />
 [Test the datasource connection](#test-the-data-source-connection)<br />
 [Supported data types](#supported-data-types)<br />
+[Use a file reference for a Big Query data source connection](#use-a-file-reference-for-a-big-query-data-source-connection)<br />
 <br />
 
 
@@ -132,6 +133,49 @@ data_source my_database_name:
 | text     | STRING                                         |
 | number   | INT64, DECIMAL, BINUMERIC, BIGDECIMAL, FLOAT64 |
 | time     | DATE, DATETIME, TIME, TIMESTAMP                |
+
+## Use a file reference for a Big Query data source connection
+
+If you already store information about your data source in a JSON file in a secure location, you can configure your BigQuery data source connection details in Soda Cloud to refer to the JSON file for service account information. To do so, you must add two elements:
+* `volumes` and `volumeMounts` parameters in the `values.yml` file that your Soda Agent helm chart uses
+* the `account_info_json_path` in your data source connection configuration 
+
+You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deployment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.
+```yaml
+soda:
+  scanlauncher:
+    volumeMounts:
+      - name: gcloud-credentials
+        mountPath: /opt/soda/etc
+    volumes:
+      - name: gcloud-credentials
+        secret:
+          secretName: gcloud-credentials
+          items:
+            - key: serviceaccount.json
+              path: serviceaccount.json
+```
+
+Use the following command to add the service account information to a Kubernetes secret that the Soda Agent consumes according to the configuration above.
+```shell
+kubectl create secret -n <soda-agent-namespace> gcloud-credentials --from-file=serviceaccount.json=<local path to the serviceccount.json>
+```
+
+After you make both of these changes, you must redeploy the Soda Agent. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.   
+
+Adjust the data source connection configuration to include the `account_info_json_path` configuration, as per the following example. 
+```yaml
+my_datasource_name:
+  type: bigquery
+  connection:
+    account_info_json_path: /opt/soda/etc/serviceaccount.json
+    auth_scopes:
+    - https://www.googleapis.com/auth/bigquery
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/drive
+    project_id: ***
+    dataset: sodacore
+```
 
 <br />
 <br />

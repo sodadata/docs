@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### January 13, 2023
+
+* Updated Soda Agent for GKE documentation so that the instructions for [using a file reference for a Big Query data source connection]({% link soda-cloud/add-datasource.md %}#use-a-file-reference-for-a-big-query-data-source-connection) use a Kubernetes secret instead of an Kubernetes ConfigMap.  
+
 #### January 11, 2023
 * Added documentation for the ability to create and use [check attributes]({% link soda-cl/check-attributes.md %}).
 * Adjusted documentation for [adding dataset attributes]({% link soda-cloud/organize-datasets.md %}) to correspond with the new check attributes feature.

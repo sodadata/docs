@@ -126,10 +126,10 @@ automated monitoring:
 ## Use a file reference for a Big Query data source connection
 
 If you already store information about your data source in a JSON file in a secure location, you can configure your BigQuery data source connection details in Soda Cloud to refer to the JSON file for service account information. To do so, you must add two elements:
-* the `configMap` parameters in the `values.yml` file that your Soda Agent helm chart uses
+* `volumes` and `volumeMounts` parameters in the `values.yml` file that your Soda Agent helm chart uses
 * the `account_info_json_path` in your data source connection configuration 
 
-You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deplouyment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.
+You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deployment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.
 ```yaml
 soda:
   scanlauncher:
@@ -138,17 +138,19 @@ soda:
         mountPath: /opt/soda/etc
     volumes:
       - name: gcloud-credentials
-        configMap:
-          name: gcloud-credentials
+        secret:
+          secretName: gcloud-credentials
           items:
             - key: serviceaccount.json
               path: serviceaccount.json
 ```
 
-Run the following command to restart of the Soda Agent in your cluster so that the scan launcher can access the file for service account information.
+Use the following command to add the service account information to a Kubernetes secret that the Soda Agent consumes according to the configuration above.
 ```shell
-kubectl create configmap -n <soda-agent-namespace> gcloud-credentials --from-file=serviceaccount.json=<local path to the serviceccount.json>
+kubectl create secret -n <soda-agent-namespace> gcloud-credentials --from-file=serviceaccount.json=<local path to the serviceccount.json>
 ```
+
+After you make both of these changes, you must redeploy the Soda Agent. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.   
 
 Adjust the data source connection configuration to include the `account_info_json_path` configuration, as per the following example. 
 ```yaml
