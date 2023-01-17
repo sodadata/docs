@@ -3,13 +3,10 @@
   "info": {
     "title": "Soda Cloud Reporting API (Preview)",
     "description": "\nThis API enables you to query reporting-oriented data from your Soda Cloud account.\nUse this data to power dashboards and reports on the coverage and quality of your data.\n\nAuthentication\n-----\nThe API supports both `HTTPBasic` authentication and `TokenAuth` authentication. Except for the `/get_token` endpoint,\nwhich only supports HTTP Basic authentication.\n\n- `HTTPBasic` authentication requires you to provide a username and password via headers. Each endpoint \"Try It\" section\nwill show you exactly how to do that.\n\n- `TokenAuth` requires that you obtain a Soda token from the `/get_token` endpoint using your username and password\nin accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token`\nendpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with\nany of the other endpoints.\n\n- `ApiKeyId` and `ApiKeySecret` allow you to use API keys generated in your Cloud Profile. Use this method if\nyour organization is using Single Sign-On (SSO). Provide your API Key Id and API Key Secret in the\n`API_KEY_ID` and `API_KEY_SECRET` headers, respectively. If you do not know how to generate your API Key and Secret\npair follow the\n[Connect Soda Core to Soda Cloud](https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud)\ndocumentation.\n\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required,\nin the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication\ncredentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
-    "version": "1.0.0a16"
+    "version": "1.0.0a18"
   },
   "servers": [
-    {
-      "url": "https://reporting.cloud.soda.io/v1/",
-      "description": "Soda Cloud"
-    }
+    { "url": "https://reporting.cloud.soda.io", "description": "Soda Cloud" }
   ],
   "paths": {
     "/ping": {
@@ -58,7 +55,7 @@
               "title": "From Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-11-07T15:51:40.794045"
+              "default": "2022-12-17T10:01:38.475897"
             },
             "name": "from_datetime",
             "in": "query"
@@ -69,7 +66,7 @@
               "title": "To Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-12-08T15:51:40.794063"
+              "default": "2023-01-17T10:01:38.475912"
             },
             "name": "to_datetime",
             "in": "query"
@@ -394,8 +391,8 @@
                   "page": 1,
                   "size": 400,
                   "status": "unresolved",
-                  "from_datetime": "2022-11-07T15:51:40.413245",
-                  "to_datetime": "2022-12-08T15:51:40.413257"
+                  "from_datetime": "2022-12-17T10:01:38.122042",
+                  "to_datetime": "2023-01-17T10:01:38.122051"
                 }
               }
             }
@@ -838,6 +835,15 @@
             "title": "Owner User Type",
             "type": "string",
             "description": "User type of the check owner."
+          },
+          "attributes": {
+            "title": "Attributes",
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "description": "Atributes of a check"
           }
         },
         "description": "Contains information about a check and its associated datasets."
@@ -1382,14 +1388,14 @@
             "type": "string",
             "description": "ISO timestamp from which you want to retrieve incidents. Defaults to last 31 days.",
             "format": "date-time",
-            "default": "2022-11-07T15:51:40.413245"
+            "default": "2022-12-17T10:01:38.122042"
           },
           "to_datetime": {
             "title": "To Datetime",
             "type": "string",
             "description": "ISO timestamp up to which you want to retrieve incidents. Defaults to today.",
             "format": "date-time",
-            "default": "2022-12-08T15:51:40.413257"
+            "default": "2023-01-17T10:01:38.122051"
           }
         },
         "description": "Incidents request JSON Body."
