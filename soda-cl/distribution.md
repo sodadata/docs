@@ -17,11 +17,11 @@ Use a distribution check to determine whether the distribution of a column has c
 checks for dim_customer:
   - distribution_difference(number_cars_owned) > 0.05:
       distribution reference file: ./cars_owned_dist_ref.yml
-      method: chi_square
       # (optional) filter to a specific point in time or any other dimension 
+      method: chi_square
       filter: purchase_date > 2022-10-01 and purchase_date < 2022-12-01
       # (optional) database specific sampling query, for example for postgres\
-      # the following query will randomly sample 50% of the data with seed 61
+      # the following query randomly samples 50% of the data with seed 61
       sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
 ```
 
@@ -185,7 +185,7 @@ checks for your_dataset_name:
 * `your_dataset_name` - the name of your dataset
 * `column_name` - the column against which to compare the DRO
 * `dro_name` - the name of the DRO (optional, required if `distribution_reference.yml` contains named DROs)
-* `> 0.05` - the threshold for the distribution check that you specify as acceptable
+* `> your_threshold` - the threshold for the distribution check that you specify as acceptable
 
 4. Replace the value of `your_method_of_choice` with the type of test you want to use in the distribution check.
     * `ks` for the Kolmogorov-Smirnov test
