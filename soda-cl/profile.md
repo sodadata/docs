@@ -5,7 +5,7 @@ description: Use SodaCL to send dataset and column profile information to Soda C
 parent: SodaCL
 ---
 
-# Display profile information in Soda Cloud 
+# Display profile information in Soda Cloud
 *Last modified on {% last_modified_at %}*
 
 Use the `discover datasets` and/or `profile columns` configurations to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.
@@ -28,7 +28,7 @@ profile columns:
     - %.% # all datasets and all columns
     - include datasetA.% # same as datasetA.%
     - exclude datasetA.prod% # exclude  all columns starting with prod in datasetA
-    - exclude dimgeography # exclude dimgeography dataset 
+    - exclude dimgeography.% # exclude all columns of dimgeography dataset 
 ```
 
 [Prerequisites](#prerequisites)<br />
@@ -200,7 +200,7 @@ profile columns:
 
 ## Compute consumption and cost considerations
 
-Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a select few datasets to keep costs low. 
+Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a select few datasets to keep costs low.
 
 ### Discover Datasets
 
@@ -250,7 +250,7 @@ Text Columns
 ```yaml
 profile columns:
   columns:
-    - include "prodcustomer"
+    - include "prodcustomer".%
 ```
 
 #### Example with wildcards
@@ -263,7 +263,7 @@ profile columns:
 
 ## Inclusion and exclusion rules
 
-* If you configure `discover datasets` or `profile columns` to include specific datasets or columns, Soda implicitly *excludes* all other datasets or columns from discovery or profiling. 
+* If you configure `discover datasets` or `profile columns` to include specific datasets or columns, Soda implicitly *excludes* all other datasets or columns from discovery or profiling.
 * If you combine an include config and an exclude config and a dataset or column fits both patterns, Soda excludes the dataset or column from discovery or profiling.
 <!--* If you configured `discover datasets` to exclude a dataset but do not explicitly also exclude its columns in `profile columns`, Soda discovers the dataset and profiles its columns. -->
 
