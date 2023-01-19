@@ -5,7 +5,7 @@ description: Use SodaCL to send dataset and column profile information to Soda C
 parent: SodaCL
 ---
 
-# Display profile information in Soda Cloud 
+# Display profile information in Soda Cloud
 *Last modified on {% last_modified_at %}*
 
 Use the `discover datasets` and/or `profile columns` configurations to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.
@@ -28,7 +28,7 @@ profile columns:
     - %.% # all datasets and all columns
     - include datasetA.% # same as datasetA.%
     - exclude datasetA.prod% # exclude  all columns starting with prod in datasetA
-    - exclude dimgeography # exclude dimgeography dataset 
+    - exclude dimgeography.% # exclude all columns of dimgeography dataset 
 ```
 
 [Prerequisites](#prerequisites)<br />
@@ -200,7 +200,7 @@ profile columns:
 
 ## Compute consumption and cost considerations
 
-Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a select few datasets to keep costs low. 
+Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a select few datasets to keep costs low.
 
 ### Discover Datasets
 
@@ -240,18 +240,11 @@ Text Columns
 |   | Add an identity to a check. | - |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+|   | Use quotes when identifying dataset names. <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters ({% raw %} % {% endraw %} with dataset names in the check; see [example](#example-with-wildcards). | - |
 |   | Use for each to apply anomaly score checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan. |  -  |
 
-#### Example with quotes
-
-```yaml
-profile columns:
-  columns:
-    - include "prodcustomer"
-```
 
 #### Example with wildcards
 
@@ -263,7 +256,7 @@ profile columns:
 
 ## Inclusion and exclusion rules
 
-* If you configure `discover datasets` or `profile columns` to include specific datasets or columns, Soda implicitly *excludes* all other datasets or columns from discovery or profiling. 
+* If you configure `discover datasets` or `profile columns` to include specific datasets or columns, Soda implicitly *excludes* all other datasets or columns from discovery or profiling.
 * If you combine an include config and an exclude config and a dataset or column fits both patterns, Soda excludes the dataset or column from discovery or profiling.
 <!--* If you configured `discover datasets` to exclude a dataset but do not explicitly also exclude its columns in `profile columns`, Soda discovers the dataset and profiles its columns. -->
 
