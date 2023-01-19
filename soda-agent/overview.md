@@ -37,7 +37,7 @@ parent: Soda Agent
 ## Why Soda Agent?
 
 One, and done: connect one agent, then let your data consumers access multiple data sources to set up their own data quality agreements. 
-* Connect Soda Cloud to the agent, then use the UI to connect to data sources and schedule data quality scans. 
+* Connect Soda Cloud to the agent, then use the web application to connect to data sources and schedule data quality scans. 
 * Empower more people in your organization with self-serve access to data sources to collaboratively manage data quality.
 * Deploy the agent in a Kubernetes cluster in nearly any cloud services environment.
 

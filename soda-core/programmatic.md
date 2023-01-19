@@ -70,7 +70,12 @@ scan.add_sodacl_yaml_files("./my_scan_dir/sodacl_file_three.yml")
 scan.execute()
 
 # Set logs to verbose mode, equivalent to CLI -V option
+##################
 scan.set_verbose(True)
+
+# Set scan definition name, equivalent to CLI -s option
+##################
+scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
 
 
 # Inspect the scan result

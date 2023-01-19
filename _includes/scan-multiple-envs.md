@@ -30,4 +30,5 @@ soda scan -d nyc_dev -c configuration.yml -s nyc_a checks.yml
 soda scan -d nyc_prod -c configuration.yml -s nyc_b checks.yml
 ```
 
-See also: [Troubleshoot missing check results]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
+See also: [Troubleshoot missing check results]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)<br />
+See also: [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity)
