@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### January 20, 2023
+* Updated [agent upgrade]({% link soda-agent/upgrade.md %}) docs with more detail.
+
 #### January 19, 2023
 * Added clarity to the documentation for [adding a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) and using a scan definition name.
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.20.
