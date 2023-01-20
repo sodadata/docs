@@ -71,7 +71,7 @@ A command that executes checks to extract information about data in a data sourc
 ### scan definition
 A collection of checks YAML files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source. Effectively, a scan definition provides the what, when, and where to run a scan. 
 
-## scan definition name
+### scan definition name
 A unique identifier that you add to a programmatic scan or to the `soda scan` command using the `-s` option. Include a scan definition name so that Soda Cloud retains the historic measurements of an individual check, even if the check itself changes between scans. 
 
 ### Soda Agent

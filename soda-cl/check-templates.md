@@ -18,6 +18,7 @@ The templates below offer examples of how you can define user-defined checks in 
 [Find duplicates in a dataset without a unique ID column](#find-duplicates-in-a-dataset-without-a-unique-id-column)<br />
 [Validate business logic at the row level](#validate-business-logic-at-the-row-level)<br />
 [Check for incorrectly mapped values across columns](#check-for-incorrectly-mapped-values-across-columns)<br />
+[Compare dates to validate event sequence](#compare-dates-to-validate-event-sequence)<br />
 [Go further](#go-further)<br />
 
 <br />
@@ -323,6 +324,35 @@ checks for dim_product:
         <li>The second query is the same as the first, but displays only the distinct values that appear in either column.</li>
     </ul>
 </details>
+
+
+## Compare dates to validate event sequence
+
+You can use a user-defined metric to compare date values in the same dataset. For example, you may wish to compare the value of `start_date` to `end_date` to confirm that an event does not end before it starts, as in the second line, below.
+
+```shell
+index ; start_date ; end_date
+1 ; 2020-01-01 ; 2021-03-13
+2 ; 2022-01-01 ; 2019-03-13
+```
+
+
+✅ GCP Big Query  
+
+{% raw %}
+```yaml
+checks for exchange_operations:
+  - UpdatedDateOk = 1:
+    name: Verify that, if there is an update date, it is grater than the creation date
+    UpdatedDateOk query: |
+        SELECT
+            CASE
+            WHEN (updated_at_ts > '2017-10-01' AND updated_at_ts < current_timestamp AND updated_at_ts >= created_at_ts) OR updated_at_ts is NULL THEN 1
+            ELSE 0
+            END as rdo
+        FROM exchange_operations
+```
+{% endraw %}
 
 
 

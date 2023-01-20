@@ -9,6 +9,15 @@ parent: Reference
 
 <br />
 
+#### January 19, 2023
+* Added clarity to the documentation for [adding a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) and using a scan definition name.
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.20.
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.21.
+* Updated screenshots of Soda Cloud for [deploying an agent]({% link soda-agent/deploy.md %}#create-a-soda-cloud-account-and-api-keys).
+* Added [explicit detail]({% link soda-cl/filters.md %}#configuration-details-and-limitations) about when to wrap date variables in single quotes.
+* Added a custom check templates for [validating event sequence]({% link soda-cl/check-templates.md %}#compare-dates-to-validate-event-sequence) with date columns.
+* Updated the Soda product [feature list]({% link soda/product-matrix.md %}).
+
 #### January 13, 2023
 
 * Updated Soda Agent for GKE documentation so that the instructions for [using a file reference for a Big Query data source connection]({% link soda-cloud/add-datasource.md %}#use-a-file-reference-for-a-big-query-data-source-connection) use a Kubernetes secret instead of an Kubernetes ConfigMap.  
