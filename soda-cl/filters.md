@@ -185,6 +185,7 @@ checks for dim_product:
 * Variables must use the following syntax: `${VAR_NAME}`.
 * You cannot use a variable to provide a scan-time value for a [configuration key]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) value, such as the value for `valid length` for an `invalid_count` check.
 * For consistency, best practice dictates that you use upper case for variable names, though you can use lower case if you wish.
+* You may need to wrap date values for variables in single quotes for a check to execute properly. The use of single quotes is bound to the data source, so if your data source demands single quotes around date values for SQL queries, you must also include them when providing date values in Soda. Refer to the [# Dataset filter with variables](#filters-and-variables) example at the top of this page.  
 
 
 ## Configure variables for connection configuration

@@ -200,14 +200,14 @@
     page: soda/integrate-webhooks.md
 
 - title: Reference
-  page: soda/data-concepts.md
+  page: soda/glossary.md
   subcategories:
-  - subtitle: Data concepts
-    page: soda/data-concepts.md
   - subtitle: Glossary
     page: soda/glossary.md
   - subtitle: What's new in docs?
     page: soda/new-documentation.md
+  - subtitle: Data concepts
+    page: soda/data-concepts.md
   - subtitle: Data security and privacy
     page: soda/data-privacy.md
   - subtitle: Soda Core usage statistics
