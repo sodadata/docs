@@ -214,7 +214,6 @@ The example below defines a check that applies to the entire dataset and counts 
 
 Use `between` for checks with change-over-time thresholds as much as possible to trigger check failures when the measurement falls outside of a range of acceptable values. This practice ensures that you get visibility into changes that either exceed or fall short of threshold expectations. 
 
-Note that checks with change-over-time thresholds define a failed state for data quality. This is unlike all other SodaCL metrics and checks in which you define a passing state.
 
 ```yaml
 checks for dim_customer:
