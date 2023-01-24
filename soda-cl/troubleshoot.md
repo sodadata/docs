@@ -11,6 +11,7 @@ parent: SodaCL
 [Errors with invalid format](#errors-with-invalid-format)<br />
 [Soda does not recognize variables](#soda-does-not-recognize-variables)<br />
 [Missing check results in Soda Cloud](#missing-check-results-in-soda-cloud)<br />
+[Metrics were not computed for check](#metrics-were-not-computed-for-check)<br />
 <br />
 
 ## Errors with invalid format
@@ -31,7 +32,7 @@ See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.m
 
 <br />
 
-### Missing check results in Soda Cloud
+## Missing check results in Soda Cloud
 
 **Problem, variation 1:** You have written checks for a single dataset and use variables to provide check input at scan time, as in the example below. However, when you provide a different value for the variable and run the scan, the check result for the previous scan that used a different variable disappears or appears to be overwritten. 
 ```yaml
@@ -80,6 +81,19 @@ soda scan -d subscription_statuses -s subscription_statuses-CA -c configuration.
 
 See also: [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity)<br />
 See also: [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}##configure-the-same-scan-to-run-in-multiple-environments).
+
+
+## Metrics were not computed for check
+
+**Problem, variation 1:** You have written a check using the exact syntax provided in SodaCL documentation but when you run a scan, Soda produces an error that reads something like, `Metrics 'schema' were not computed for check 'schema'`.
+
+**Problem, variaion 2:** You can run scans succesfully on some datasets but one or two of them always produce errors when trying to execute checks. 
+
+**Solution:** In your checks YAML file, you cannot use a dataset identifier that includes a schema, such as `soda.test_table`. You can only use a dataset name as an identifier, such as `test_table`. 
+
+However, if you were including the schema in the dataset identifier in an attempt to run the same set of checks against multiple environments, you can do so using the instructions to [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}##configure-the-same-scan-to-run-in-multiple-environments).
+
+See also: [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity)
 
 ## Go further
 

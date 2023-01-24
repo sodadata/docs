@@ -54,6 +54,8 @@
     page: soda/connect-synapse.md
   - subtitle: Connect to Trino
     page: soda/connect-trino.md
+  - subtitle: Connect to Vertica
+    page: soda/connect-vertica.md
 
 - title: Soda Agent
   page: soda-agent/overview.md

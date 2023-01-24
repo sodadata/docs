@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### January 24, 2023
+* Added documentation to accompany new support for [Vertica (Experimental)]({% link soda/connect-vertica.md %}).
+* Added [troubleshooting tip]({% link soda-cl/troubleshoot.md %}#metrics-were-not-computed-for-check) for errors in which Soda does not compute metrics for a dataset that includes a schema in its identifier.
+
 #### January 20, 2023
 * Updated [agent upgrade]({% link soda-agent/upgrade.md %}) docs with more detail.
 
