@@ -34,10 +34,13 @@ soda_cloud:
   host: cloud.soda.io
   api_key_id:
   api_key_secret:
+  # Optional
+  scheme: 
 ```
 3. In your Soda Cloud account, navigate to **your avatar** > **Profile** > **API Keys**, then click the plus icon to generate new API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
+  * Optionally, provide a value for the scheme property to indicate which scheme to use to initialize the URI instance. If you do not explicitly include a `scheme` property, Soda uses the default `https`.
 4. Save the changes to the `configuration.yml` file. Close the **Create API Key** dialog box in Soda Cloud.
 5. From the command-line, use Soda Core to scan the datasets in your data source again.
 ```shell
