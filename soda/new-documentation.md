@@ -9,6 +9,11 @@ parent: Reference
 
 <br />
 
+#### January 25, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.22.
+* Added a detail for adding an [optional scheme property]({% link soda-core/connect-core-to-cloud.md %}#connect) to `soda_cloud` configuration when connecting Soda Core to Soda Cloud. 
+* Added documentation to accompany new support for [Dask and Pandas (Experimental)]({% link soda/connect-dask.md %}).
+
 #### January 24, 2023
 * Added documentation to accompany new support for [Vertica (Experimental)]({% link soda/connect-vertica.md %}).
 * Added [troubleshooting tip]({% link soda-cl/troubleshoot.md %}#metrics-were-not-computed-for-check) for errors in which Soda does not compute metrics for a dataset that includes a schema in its identifier.

@@ -26,6 +26,8 @@
     page: soda/connect-bigquery.md
   - subtitle: Connect to ClickHouse
     page: soda/connect-clickhouse.md
+  - subtitle: Connect to Dask and Pandas
+    page: soda/connect-dask.md
   - subtitle: Connect to Databricks
     page: soda/connect-databricks.md
   - subtitle: Connect to Denodo
