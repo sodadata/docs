@@ -19,7 +19,7 @@ redirect_from:
 &#10004;  An open-source, CLI tool and Python library for data reliability<br /> <br />
 &#10004;  Compatible with [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}) and [Soda Cloud]({% link soda-cloud/overview.md %}) <br /> <br />
 &#10004;  Enables data quality testing both in and out of your [data pipeline]({% link soda-core/orchestrate-scans.md %}), for data observability and reliability <br /> <br />
-&#10004;  Enables [programmatic scans]({% link soda-core/programmatic.md %}) on a time-based scheudle <br /> <br />
+&#10004;  Enables [programmatic scans]({% link soda-core/programmatic.md %}) on a time-based schedule <br /> <br />
 <br />
 
 #### Example checks
