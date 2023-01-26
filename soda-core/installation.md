@@ -81,6 +81,7 @@ pip install soda-core-postgres
 | PostgreSQL | `soda-core-postgres` |
 | Snowflake | `soda-core-snowflake` | 
 | Trino | `soda-core-trino` |
+| Pandas and Dask | `soda-core-pandas-dask` |
 
 
 To deactivate the virtual environment, use the following command:
