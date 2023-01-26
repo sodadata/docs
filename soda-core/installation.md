@@ -67,9 +67,10 @@ pip install soda-core-postgres
 | Amazon Athena | `soda-core-athena` |
 | Amazon Redshift | `soda-core-redshift` | 
 | Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | `soda-core-spark-df` |
-| Apache Spark for Databricks SQL  | `soda-core-spark[databricks]` |
 | Azure Synapse (Experimental) | `soda-core-sqlserver` |
 | ClickHouse (Experimental) | `soda-core-mysql` |
+| Dask and Pandas (Experimental)  | `soda-core-pandas-dask` |
+| Databricks  | `soda-core-spark[databricks]` |
 | Denodo (Experimental) | `soda-core-denodo` |
 | Dremio | `soda-core-dremio` | 
 | DuckDB (Experimental)  | `soda-core-duckdb` |
@@ -81,6 +82,7 @@ pip install soda-core-postgres
 | PostgreSQL | `soda-core-postgres` |
 | Snowflake | `soda-core-snowflake` | 
 | Trino | `soda-core-trino` |
+| Vertica (Experimental) | `soda-core-vertica` |
 
 
 To deactivate the virtual environment, use the following command:
@@ -111,9 +113,10 @@ pip install soda-core-postgres
 | Amazon Athena | `soda-core-athena` |
 | Amazon Redshift | `soda-core-redshift` | 
 | Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.) | `soda-core-spark-df` |
-| Apache Spark for Databricks SQL  | `soda-core-spark[databricks]` |
 | Azure Synapse (Experimental) | `soda-core-sqlserver` |
 | ClickHouse (Experimental) | `soda-core-mysql` |
+| Dask and Pandas (Experimental)  | `soda-core-pandas-dask` |
+| Databricks  | `soda-core-spark[databricks]` |
 | Denodo (Experimental) | `soda-core-denodo` |
 | Dremio | `soda-core-dremio` | 
 | DuckDB (Experimental) | `soda-core-duckdb` |
@@ -125,7 +128,7 @@ pip install soda-core-postgres
 | PostgreSQL | `soda-core-postgres` |
 | Snowflake | `soda-core-snowflake` | 
 | Trino | `soda-core-trino` |
-
+| Vertica (Experimental) | `soda-core-vertica` |
 
 To deactivate the virtual environment, use the following command:
 ```shell
