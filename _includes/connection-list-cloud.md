@@ -1,6 +1,6 @@
 * [Amazon Athena]({% link soda/connect-athena.md %})
 * [Amazon Redshift]({% link soda/connect-redshift.md %})
-* [Clickhouse (Experimental)]({% link soda/connect-clickhouse.md %})
+* [ClickHouse (Experimental)]({% link soda/connect-clickhouse.md %})
 * [Denodo (Experimental)]({% link soda/connect-denodo.md %})
 * [Dremio]({% link soda/connect-dremio.md %})
 * [DuckDB (Experimental)]({% link soda/connect-duckdb.md %})
