@@ -38,8 +38,6 @@ Read more about Soda's <a href="https://www.soda.io/privacy-policy" target="_bla
 
 ## Compliance and reporting
 
-In September 2021, an independent review of Soda's source code was conducted and the results indicated that the code is sound.
-
 As a result of an independent review in April 2022, Soda has been found to be **SOCII Type 2** compliant. Contact <a href="mailto:support@soda.io">support@soda.io</a> for more information.
 
 <br />
