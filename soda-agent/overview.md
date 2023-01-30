@@ -25,8 +25,9 @@ parent: Soda Agent
                     <h2>Get started</h2>
                     <a href="https://cloud.soda.io/signup" target="_blank">Sign up for Soda Cloud</a>
                     <a href="/soda-agent/deploy.html" target="_blank">Deploy a Soda Agent</a>
-                    <a href="/soda-agent/deploy-aws.html" target="_blank">Deploy in EKS</a>
-                    <a href="/soda-agent/deploy-azure.html" target="_blank">Deploy in AKS (Preview)</a>                    
+                    <a href="/soda-agent/deploy-aws.html" target="_blank">Deploy in Amazon EKS</a>
+                    <a href="/soda-agent/deploy-azure.html" target="_blank">Deploy in Azure AKS (Preview)</a>
+                    <a href="/soda-agent/deploy-google.html" target="_blank">Deploy in Google GKE (Preview)</a>                      
                 </div>
             </div>
         </div>        
