@@ -54,6 +54,8 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 ## Create a Soda Cloud account and API keys
 
+(Optional) Rather than connect your Soda Agent to Soda Cloud using API keys, you have the option of connecting them and sending information via AWS PrivateLink. Access [Connect a Soda Agent to Soda Cloud via AWS PrivateLink]({% link soda-agent/private-link.md %}) for details.
+
 {% include agent-api-keys.md %}
 
 
