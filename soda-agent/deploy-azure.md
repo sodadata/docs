@@ -56,12 +56,10 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 
 ## Create a Kubernetes cluster
-
-1. Use the Microsoft documentation for one of the following procedures to create a resource group and cluster using the Azure CLI. Alternatively, you tackle the same tasks using <a href="https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-powershell" target="_blank">PowerShell</a> or the <a href="https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-portal?tabs=azure-cli" target="_blank">Azure portal</a>, if you prefer.<br />
-There are two ways to create a cluster:
-* create a <a href="https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli" target="_blank">regular AKS cluster</a><br />
-OR
-* create a <a href="https://learn.microsoft.com/en-us/azure/aks/virtual-nodes-cli" target="_blank">virtual nodes-based cluster</a> which permits Azure to automatically schedule pods as Azure Container Instances (ACIs) in the background 
+1. Use the Microsoft documentation for one of the following procedures to create a resource group and cluster. <br />
+* Use the Azure CLI to create a <a href="https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli" target="_blank">regular AKS cluster</a>.
+* Use the Azure CLI to create a <a href="https://learn.microsoft.com/en-us/azure/aks/virtual-nodes-cli" target="_blank">virtual nodes-based cluster</a> which permits Azure to automatically schedule pods as Azure Container Instances (ACIs) in the background.
+* Use <a href="https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-powershell" target="_blank">PowerShell</a> or the <a href="https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-portal?tabs=azure-cli" target="_blank">Azure portal</a> to create a cluster.
 2. To connect to the newly-created cluster and create a namespace, use the following command.
 ```shell
 kubectl create ns soda-agent
