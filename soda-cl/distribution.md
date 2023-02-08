@@ -371,6 +371,7 @@ While installing Soda Core Scientific works on Linux, you may encounter issues i
 * [Use Docker to run Soda Core](#use-docker-to-run-soda-core)
 
 Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
 ### Install Soda Core Scientific Locally
 
 {% include install-soda-core-scientific.md %}

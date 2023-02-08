@@ -91,6 +91,9 @@ Need help? Ask the team in the <a href="https://community.soda.io/slack" target=
 
 {% include install-soda-core-scientific.md %}
 
+  </div>
+  </div>
+</div>
 
 ## Define an automated monitoring check
 
