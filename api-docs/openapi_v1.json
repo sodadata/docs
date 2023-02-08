@@ -2,8 +2,8 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Soda Cloud Reporting API (Preview)",
-    "description": "\nThis API enables you to query reporting-oriented data from your Soda Cloud account.\nUse this data to power dashboards and reports on the coverage and quality of your data.\n\nAuthentication\n-----\nThe API supports both `HTTPBasic` authentication and `TokenAuth` authentication. Except for the `/get_token` endpoint,\nwhich only supports HTTP Basic authentication.\n\n- `HTTPBasic` authentication requires you to provide a username and password via headers. Each endpoint \"Try It\" section\nwill show you exactly how to do that.\n\n- `TokenAuth` requires that you obtain a Soda token from the `/get_token` endpoint using your username and password\nin accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token`\nendpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with\nany of the other endpoints.\n\n- `ApiKeyId` and `ApiKeySecret` allow you to use API keys generated in your Cloud Profile. Use this method if\nyour organization is using Single Sign-On (SSO). Provide your API Key Id and API Key Secret in the\n`API_KEY_ID` and `API_KEY_SECRET` headers, respectively. If you do not know how to generate your API Key and Secret\npair follow the\n[Connect Soda Core to Soda Cloud](https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud)\ndocumentation.\n\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required,\nin the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication\ncredentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
-    "version": "1.0.0a20"
+    "description": "\nThis API enables you to query reporting-oriented data from your Soda Cloud account.\nUse this data to power dashboards and reports on the coverage and quality of your data.\n\nAuthentication\n-----\nThe API supports both `HTTPBasic` authentication and `TokenAuth` authentication. Except for the `/get_token` endpoint,\nwhich only supports HTTP Basic authentication.\n\n- `HTTPBasic` authentication requires you to provide a username and password via headers. Each endpoint \"Try It\" section\nwill show you exactly how to do that.\n\n- `TokenAuth` requires that you obtain a Soda token from the `/get_token` endpoint using your username and password\nin accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token`\nendpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with\nany of the other endpoints.\n\n- `XApiKeyId` and `XApiKeySecret` allow you to use API keys generated in your Cloud Profile. Use this method if\nyour organization is using Single Sign-On (SSO). Provide your API Key Id and API Key Secret in the\n`X-API-KEY-ID` and `X-API-KEY-SECRET` headers, respectively. If you do not know how to generate your API Key and Secret\npair follow the\n[Connect Soda Core to Soda Cloud](https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud)\ndocumentation.\n\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required,\nin the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication\ncredentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
+    "version": "1.0.0a22"
   },
   "servers": [
     {
@@ -58,7 +58,7 @@
               "title": "From Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2022-12-25T12:16:22.352784"
+              "default": "2023-01-08T11:06:16.962009"
             },
             "name": "from_datetime",
             "in": "query"
@@ -69,7 +69,7 @@
               "title": "To Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2023-01-25T12:16:22.352798"
+              "default": "2023-02-08T11:06:16.962023"
             },
             "name": "to_datetime",
             "in": "query"
@@ -105,8 +105,10 @@
           { "HTTPBasic": [] },
           { "SodaBackendToken": [] },
           { "APIKeyCookie": [] },
-          { "ApiKeyId": [] },
-          { "APIKeySecret": [] }
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
         ]
       }
     },
@@ -157,8 +159,10 @@
           { "HTTPBasic": [] },
           { "SodaBackendToken": [] },
           { "APIKeyCookie": [] },
-          { "ApiKeyId": [] },
-          { "APIKeySecret": [] }
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
         ]
       }
     },
@@ -209,8 +213,10 @@
           { "HTTPBasic": [] },
           { "SodaBackendToken": [] },
           { "APIKeyCookie": [] },
-          { "ApiKeyId": [] },
-          { "APIKeySecret": [] }
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
         ]
       }
     },
@@ -263,8 +269,10 @@
           { "HTTPBasic": [] },
           { "SodaBackendToken": [] },
           { "APIKeyCookie": [] },
-          { "ApiKeyId": [] },
-          { "APIKeySecret": [] }
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
         ]
       }
     },
@@ -317,8 +325,10 @@
           { "HTTPBasic": [] },
           { "SodaBackendToken": [] },
           { "APIKeyCookie": [] },
-          { "ApiKeyId": [] },
-          { "APIKeySecret": [] }
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
         ]
       }
     },
@@ -326,7 +336,7 @@
       "post": {
         "tags": ["Coverage"],
         "summary": "Dataset coverage (Preview)",
-        "description": "This endpoint provides a daily measure of the test coverage of your datasets.\nIt derives a `relative_coverage_score` which compares the number of tests that apply to a single dataset to\nother datasets connected to your organization's Soda Cloud account. (Refer to the `DatasetCoverageData` schema\nfor more information.)\n\nUsage\n-----\nUse this endpoint to review the relative test coverage of your datasets, and to see a high-level view of the more\ngranular information that the `/tests_and_results` endpoint provides.\n\nThis endpoint is best used in conjunction with the `/datasets` endpoint as the latter augments the level of\ninformation about each dataset.\n\nReturns\n-------\nAn object of type `DatasetCoverageResult` containing an array of `DatasetCoverageData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "description": "This endpoint provides a daily measure of the test coverage of your datasets.\nIt derives a `relative_coverage_score` which compares the number of checks that apply to a single dataset to\nother datasets connected to your organization's Soda Cloud account. (Refer to the `DatasetCoverageData` schema\nfor more information.)\n\nUsage\n-----\nUse this endpoint to review the relative test coverage of your datasets, and to see a high-level view of the more\ngranular information that the `/tests_and_results` endpoint provides.\n\nThis endpoint is best used in conjunction with the `/datasets` endpoint as the latter augments the level of\ninformation about each dataset.\n\nReturns\n-------\nAn object of type `DatasetCoverageResult` containing an array of `DatasetCoverageData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
         "operationId": "dataset_coverage_coverage_dataset_coverage_post",
         "requestBody": {
           "content": {
@@ -373,8 +383,10 @@
           { "HTTPBasic": [] },
           { "SodaBackendToken": [] },
           { "APIKeyCookie": [] },
-          { "ApiKeyId": [] },
-          { "APIKeySecret": [] }
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
         ]
       }
     },
@@ -394,8 +406,8 @@
                   "page": 1,
                   "size": 400,
                   "status": "unresolved",
-                  "from_datetime": "2022-12-25T12:16:21.869858",
-                  "to_datetime": "2023-01-25T12:16:21.869867"
+                  "from_datetime": "2023-01-08T11:06:16.446868",
+                  "to_datetime": "2023-02-08T11:06:16.446879"
                 }
               }
             }
@@ -431,8 +443,10 @@
           { "HTTPBasic": [] },
           { "SodaBackendToken": [] },
           { "APIKeyCookie": [] },
-          { "ApiKeyId": [] },
-          { "APIKeySecret": [] }
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
         ]
       }
     }
@@ -1391,14 +1405,14 @@
             "type": "string",
             "description": "ISO timestamp from which you want to retrieve incidents. Defaults to last 31 days.",
             "format": "date-time",
-            "default": "2022-12-25T12:16:21.869858"
+            "default": "2023-01-08T11:06:16.446868"
           },
           "to_datetime": {
             "title": "To Datetime",
             "type": "string",
             "description": "ISO timestamp up to which you want to retrieve incidents. Defaults to today.",
             "format": "date-time",
-            "default": "2023-01-25T12:16:21.869867"
+            "default": "2023-02-08T11:06:16.446879"
           }
         },
         "description": "Incidents request JSON Body."
@@ -1466,11 +1480,21 @@
         "name": "SODA_TOKEN"
       },
       "APIKeyCookie": { "type": "apiKey", "in": "cookie", "name": "token" },
-      "ApiKeyId": { "type": "apiKey", "in": "header", "name": "API_KEY_ID" },
-      "APIKeySecret": {
+      "ApiKeyId[Soon Deprecated] Use XApiKeyID": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "API_KEY_ID"
+      },
+      "APIKeySecret[Soon Deprecated] Use XApiKeySecret": {
         "type": "apiKey",
         "in": "header",
         "name": "API_KEY_SECRET"
+      },
+      "XApiKeyId": { "type": "apiKey", "in": "header", "name": "X-API-KEY-ID" },
+      "XApiKeySecret": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-KEY-SECRET"
       }
     }
   }
