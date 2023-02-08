@@ -77,8 +77,9 @@ Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-cor
 ## Troubleshoot Soda Core Scientific installation
 
 While installing Soda Core Scientific works on Linux, you may encounter issues if you install Soda Core Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
-* [Use Docker to run Soda Core (Recommended)](#use-docker-to-run-soda-core)
-* [Install Soda Core locally (Limited support)](#install-soda-core-locally)
+
+* [Install Soda Core locally](#install-soda-core-locally)
+* [Use Docker to run Soda Core](#use-docker-to-run-soda-core)
 
 Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
@@ -88,12 +89,7 @@ Need help? Ask the team in the <a href="https://community.soda.io/slack" target=
 
 ### Install Soda Core Scientific Locally 
 
-{% include install-local-soda-core-scientific.md %}
-
-  </div>
-  </div>
-</div>
-
+{% include install-soda-core-scientific.md %}
 
 
 ## Define an automated monitoring check
@@ -145,35 +141,6 @@ automated monitoring:
     - include prod%
     - exclude test%
 ```
-
-
-## Troubleshoot Soda Core Scientific installation
-
-While installing Soda Core Scientific works on Linux, you may encounter issues if you install Soda Core Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
-* [Use Docker to run Soda Core (Recommended)](#use-docker-to-run-soda-core)
-* [Install Soda Core locally (Limited support)](#install-soda-core-locally)
-
-Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-
-### Use Docker to run Soda Core
-
-{% include docker-soda-core.md %}
-
-### Install Soda Core Scientific Locally 
-
-{% include install-local-soda-core-scientific.md %}
-
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
-![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
-<br />
-You cannot create automated monitoring checks in Soda Cloud, yet. However, you can preview the functionality by requesting limited preview access. <a href="mailto:support@soda.io">Email us</a> to ask!
-
-When the functionality in Soda Cloud becomes generally available, you will be able to add automated monitoring checks in the guided steps to [create a new data source]({% link soda-cloud/add-datasource.md %}#5-check-datasets). 
-  </div>
-  </div>
-</div>
-
 
 ## Go further
 
