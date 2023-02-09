@@ -73,7 +73,8 @@ scan.execute()
 ##################
 scan.set_verbose(True)
 
-# Set scan definition name, equivalent to CLI -s option
+# Set scan definition name, equivalent to CLI -s option;
+# see Tips and best practices below
 ##################
 scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
 
@@ -112,6 +113,7 @@ scan.get_all_checks_text()
 
 * You can save Soda Core scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import the Soda Core library in Python so you can utilize the `Scan()` object, [install a Soda Core package]({% link soda-core/installation.md %}), then use `from soda.scan import Scan`.
 * Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files. 
+* If Soda Core pushes scan results to Soda Cloud, you may not want to change the scan definition name with each scan. Soda Cloud uses the scan definition name to correlate subsequent scan results, thus retaining an historical record of the measurements over time. <br /> Sometimes, changing the name is useful, like when you wish to [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}##configure-the-same-scan-to-run-in-multiple-environments). Be aware, however, that if you change the scan definition name with each scan for the same environment, Soda Cloud recognizes each set of scan results as independent from previous scan results, thereby making it appear as though it records a new, separate check result with each scan and archives or "disappears" previous results. See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
 
 ## Scan exit codes
 

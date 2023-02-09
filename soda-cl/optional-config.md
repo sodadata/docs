@@ -70,9 +70,13 @@ Soda Cloud identifies a check using details such as the check name, the check YA
 checks for dim_customer:
   - missing_count(last_name) > 0
 ```
-If you changed the threshold from `0` to `99`, then after the next scan, Soda Cloud considers this as a new check and discards the previous check result's history; it would appear as though the original check and its results had disappeared. 
+If you changed the threshold from `0` to `99`, then after the next scan, Soda Cloud considers this as a new check and discards the previous check result's history; it would appear as though the original check and its results had disappeared. Note that this behaviour *does not* apply to changing values that use an in-check variable, as in the example below.
+```yaml
+checks for dataset_1:
+  - row_count > ${VAR}
+```
 
-If you anticipate modifying a check, particularly if you include a variable in your check, you can explicitly specify a check identity and [scan definition name]({% link soda/glossary.md %}#scan-definition-name) so that Soda Cloud can correctly accumulate the results of a single check and retain its history even if the check has been modified. 
+If you anticipate modifying a check, you can explicitly specify a check identity so that Soda Cloud can correctly accumulate the results of a single check and retain its history even if the check has been modified. 
 
 1. First, navigate to an existing check in your Soda Cloud account, then copy the UUID of the check from the URL; see the example below.
 ![check-identity](/assets/images/check-identity.png){:height="700px" width="700px"}
@@ -82,13 +86,7 @@ checks for dim_customer:
   - missing_count(last_name) > 99:
       identity: aa457447-60f6-4b09-4h8t-02fbb78f9587
 ```
-3. If you use Soda Core to manually or programmatically run a scan, add a scan definition name to the [programmatic scan]({% link soda-core/programmatic.md %}#basic-programmatic-scan) or to the scan command itself using the `-s` option, as in the following example.
-```shell
-# for first scan
-soda scan -d nyc_prod -c configuration.yml -s nyc_a checks.yml
-# for second scan
-soda scan -d nyc_prod -c configuration.yml -s nyc_b checks.yml
-```
+3. Save your changes
 
 You can also use a variable to pass the value of a check identity at scan time, as in the example below. Read more about using [in-check variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl).
 

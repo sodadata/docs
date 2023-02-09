@@ -34,34 +34,23 @@ See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.m
 
 ## Missing check results in Soda Cloud
 
-**Problem, variation 1:** You have written checks for a single dataset and use variables to provide check input at scan time, as in the example below. However, when you provide a different value for the variable and run the scan, the check result for the previous scan that used a different variable disappears or appears to be overwritten. 
-```yaml
-checks for test_table_${expected_country}:
-  - failed rows:
-      name: Check for ${expected_country}
-      fail query: |
-          select * from test_table where country = ${expected_country}
-```
-
-**Problem, variation 2:** You wrote one or more checks for a dataset and the scan produced check results for the check as expected. Then, you adjusted the check -- for example, to apply to a different dataset, as in the example below -- and ran another scan. The latest scan appears in the check results, but the previous check result seems to have disappeared or been archived.
+**Problem:** You wrote one or more checks for a dataset and the scan produced check results for the check as expected. Then, you adjusted the check -- for example, to apply a different threshold value, as in the example below -- and ran another scan. The latest scan appears in the check results, but the previous check result seems to have disappeared or been archived.
 ```yaml
 checks for dataset_1:
-  - failed rows:
-      identity: failed-row-1
-      fail query: |
-        SELECT DISTINCT busbreakdown_id
-        FROM breakdowns
+  - row_count > 0
 ```
 ```yaml
-checks for dataset_2:
-  - failed rows:
-      identity: failed-row-2
-      fail query: |
-        SELECT DISTINCT busbreakdown_id
-        FROM breakdowns
+checks for dataset_1:
+  - row_count > 10
 ```
 
-**Solution:** Soda Cloud archives check results if they have been removed, by deletion or alteration, from the check file. If two scans run using the same checks YAML file, but an alteration or deletion of the checks in the file took place between scans, Soda Cloud automatically archives the check results of any check that appeared in the file for the first scan, but does not exist in the same checks YAML file during the second scan.
+**Solution:** Soda Cloud archives check results if they have been removed, by deletion or alteration, from the check file. If two scans run using the same checks YAML file, but an alteration or deletion of the checks in the file took place between scans (such as adjusting the threshold in the example above), Soda Cloud automatically archives the check results of any check that appeared in the file for the first scan, but does not exist in the same checks YAML file during the second scan. 
+
+Note that this behaviour *does not* apply to changing values that use an in-check variable, as in the example below.
+```yaml
+checks for dataset_1:
+  - row_count > ${VAR}
+```
 
 To force Soda Cloud to retain the check results of previous scans, you can use one of the following options:
 * Write individual checks and keep them static between scan executions.
@@ -71,16 +60,9 @@ To force Soda Cloud to retain the check results of previous scans, you can use o
 soda scan -d adventureworks -c configuration.yml checks_test.yml checks_test2.yml
 ```
 
-* [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) and use the `-s` scan definition option in the scan command to explicitly specify separate scan definitions for each scan. [Read more]({% link soda-core/scan-core.md %}#configure-the-same-scan-to-run-in-multiple-environments).
+* [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) parameter to the check so that Soda Cloud can accurately correlate new measurements from scan results to the same check, thus maintaining the history of check results.
 
-```shell
-soda scan -d subscription_statuses -s subscription_statuses-BE -c configuration.yml -v country=BE checks.yml 
-
-soda scan -d subscription_statuses -s subscription_statuses-CA -c configuration.yml -v country=CA checks.yml 
-```
-
-See also: [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity)<br />
-See also: [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}##configure-the-same-scan-to-run-in-multiple-environments).
+See also: [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}#configure-the-same-scan-to-run-in-multiple-environments).
 
 
 ## Metrics were not computed for check
