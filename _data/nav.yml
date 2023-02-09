@@ -107,6 +107,8 @@
     page: soda-cloud/failed-rows.md
   - subtitle: Create and track incidents
     page: soda-cloud/incidents.md
+  - subtitle: Generate API keys
+    page: soda-cloud/api-keys.md
   - subtitle: Soda Cloud architecture
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Soda Cloud resources
