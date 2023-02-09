@@ -130,6 +130,7 @@ In a dataset page in Alation, in the **Overview** tab, users have the opportunit
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
+* Access a list of <a href="https://www.soda.io/integrations" target="_blank">all integrations</a> that Soda Cloud supports.
 
 ---
 

@@ -74,6 +74,7 @@ Refer to [Incidents]({% link soda-cloud/incidents.md %}) for more details about 
 * Learn more about general [webhooks]({% link soda/integrate-webhooks.md %}) to integrate Soda Cloud with other third-party service providers.
 * Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account. 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Access a list of <a href="https://www.soda.io/integrations" target="_blank">all integrations</a> that Soda Cloud supports.
 <br />
 
 ---

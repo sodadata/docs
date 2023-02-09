@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### February 9, 2023
+* Add new documentation for [generating API keys]({% link soda-cloud/api-keys.md %}) for use with Soda Cloud.
+
 #### January 25, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.22.
 * Added a detail for adding an [optional scheme property]({% link soda-core/connect-core-to-cloud.md %}#connect) to `soda_cloud` configuration when connecting Soda Core to Soda Cloud. 

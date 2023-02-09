@@ -9,16 +9,16 @@ parent: Soda Cloud
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-When you create checks in Soda Core and you have connected Soda Core to a Soda Cloud account, Soda Core pushes all checks results from each scan to Soda Cloud. For a check that failed or triggered a warning, you have the option of creating an **Incident** for that check result in Soda Cloud to track your team's investigation and resolution of a data quality issue. 
+When you create checks in an [agreement]({% link soda-cloud/agreements.md %}) or in a checks YAML file and you have connected Soda Core to a Soda Cloud account, Soda Cloud displays the checks results from each scan in the **Checks** dashboard. For a check that failed or triggered a warning, you have the option of creating an **Incident** for that check result in Soda Cloud to track your team's investigation and resolution of a data quality issue. 
 
-If you have integrated your Soda Cloud account with a Slack workspace, you can use an Incident's built-in ability to create an incident-specific Slack channel where you and your team can collaborate on the issue investigation. When you resolve or close the incident, Soda archives the channel for future troubleshooting reference.
+If you have integrated your Soda Cloud account with a [Slack workspace]({% link soda/integrate-slack.md %}), or [MS Teams channel]({% link soda/integrate-msteams.md %}), or another [third-party messaging or ticketing tool]({% link soda/integrate-webhooks.md %}) that your team uses such as [Jira]({% link soda/integrate-webhooks.md %}#example-webhook-with-jira-for-soda-cloud-incidents) or [ServiceNow]({% link soda/integrate-webhooks.md %}#example-webhook-with-servicenow-for-soda-cloud-incidents), you can use an Incident's built-in ability to create an incident-specific link where you and your team can collaborate on the issue investigation. 
 
 ![incidents](/assets/images/incidents.png){:height="700px" width="700px"}
 
 ## Prerequisites
 * You have [installed Soda Core]({% link soda-core/installation.md %}) in your environment.
 * You have a Soda Cloud account and you have [connected the account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core.
-* (Optional) You have [integrated a Slack workspace]({% link soda-cloud/collaborate.md %}#integrate-with-slack) with your Soda Cloud account. 
+* (Optional) You have [integrated a Slack workspace]({% link soda-cloud/collaborate.md %}#integrate-with-slack), or another [third-party tool]({% link soda/integrate-webhooks.md %}) with your Soda Cloud account. 
 
 ## Create Incidents
 
@@ -28,7 +28,8 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 * **Severity**: Minor, Major, or Critical
 * **Status**: Reported, Investigating, Fixing, Resolved
 * **Lead**: a list of team members from whom you can assign the Lead Investigator role
-4. (Optional) Click **View Slack Channel** to connect directly to a newly-created channel in your Slack workspace that is dedicated to the investigation and resolution of the Incident. Invite team members to the channel to collaborate on resolving the data quality issue. 
+4. Save your changes.
+5. (Optional) In the **Integrations** tile, click the auto-generated link to connect directly to a newly-created, public channel in your Slack workspace that is dedicated to the investigation and resolution of the Incident and invite team members to the channel to collaborate on resolving the data quality issue. If you have integrated Soda Cloud with [MS Teams]({% link soda/integrate-msteams.md %}) or another [third-party tool]({% link soda/integrate-webhooks.md %}), like Jira or ServiceNow, you can access those tools via auto-generated links in the **Incidents** tab, as well.
 
 ## Track Incidents
 
@@ -36,7 +37,6 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 * In the **Incidents** dashboard, review all Incidents, their severity and status, and the assigned lead. Sort the list of Incidents by severity.
 * From an Incident's page, link other check results to the same Incident to expand the investigation landscape.
 * If you opened a Slack channel to investigate the incident, Soda archives the channel when you set the **Status** to Resolved.
-
 
 
 ## Go further
