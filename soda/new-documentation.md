@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### February 10, 2023
+* Added a new section to Distribution check documentation for [defining a sample size]({% link soda-cl/distribution.md %}#define-the-sample-size).
+
 #### February 9, 2023
 * Add new documentation for [generating API keys]({% link soda-cloud/api-keys.md %}) for use with Soda Cloud.
 
