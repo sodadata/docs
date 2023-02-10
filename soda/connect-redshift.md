@@ -31,8 +31,8 @@ data_source my_datasource_name:
 | ----------------- | -------- | ------------------------ |
 | type              | required |                          |
 | host              | required |                          |
-| username          | required |                          |
-| password          | required |                          |
+| username          | required | If you provide a value for `username` and `password`, the connection ignores cluster credentials.          |
+| password          | required | As above.                |
 | database          | required |                          |
 | schema            |          |                          |
 | access_key_id     | optional <sup>1</sup> | Consider using system variables to retrieve this value securely.  |
