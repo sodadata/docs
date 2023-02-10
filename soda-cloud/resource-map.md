@@ -20,7 +20,7 @@ It is helpful to understand these resources and how they relate, or connect, to 
 
 ## Example Soda Cloud deployment
 
-The following diagram illustrates an example deployment of a single Soda Cloud account with two Soda Agents, each of which connects to two data sources. A Soda Cloud Administrator has also created integrations with Slack, Jira (via a webhook), and MS Teams (coming soon).
+The following diagram illustrates an example deployment of a single Soda Cloud account with two Soda Agents, each of which connects to two data sources. A Soda Cloud Administrator has also created integrations with Slack, Jira (via a webhook), and MS Teams.
 
 ![example-deployment](/assets/images/example-deployment.png){:height="700px" width="700px"}
 
@@ -30,6 +30,7 @@ The following diagram illustrates an example deployment of a single Soda Cloud a
   * **scan definitions** which you use to define a Soda scan schedule for the data source. [Read more]({% link soda-cloud/add-datasource.md %}#1-attributes).
   * **agreements** in which you write **checks** to define what good data looks like. Agreements also specify where to send alert notifications when a check result warns or fails, such as to a Slack channel in your organization. [Read more]({% link soda-cloud/agreements.md %}).
 * An **integration** is a built-in Soda Cloud feature that enables you to connect with a third-party service provider, such as Slack. [Read more]({% link soda/integrate-slack.md %}).
+* A **notification rule** is a tool to bulk-edit where and when to send alert notifications when check results warn or fail. [Read more]({% link soda-cloud/notif-rules.md %}).
 
 <sup>†</sup> An exception to this rule exists when you configure Soda Cloud to collect sample data from a dataset, or samples of failed rows from a dataset when a check result fails.
 
