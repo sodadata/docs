@@ -8,17 +8,17 @@ parent: SodaCL
 # Troubleshoot SodaCL
 *Last modified on {% last_modified_at %}*
 
-[Errors with invalid format](#errors-with-invalid-format)<br />
+[Errors with valid format](#errors-with-valid-format)<br />
 [Soda does not recognize variables](#soda-does-not-recognize-variables)<br />
 [Missing check results in Soda Cloud](#missing-check-results-in-soda-cloud)<br />
 [Metrics were not computed for check](#metrics-were-not-computed-for-check)<br />
 <br />
 
-## Errors with invalid format
+## Errors with valid format
 
-**Problem:** You have written a check using an `invalid_count` or `invalid_percent` metric and used an `invalid format` config key to specify the values that qualify as invalid, but Soda errors on scan.
+**Problem:** You have written a check using an `invalid_count` or `invalid_percent` metric and used a `valid format` config key to specify the values that qualify as valid, but Soda errors on scan.
 
-**Solution:** The `invalid format` configuration key only works with data type TEXT. See [Specify valid format]({% link soda-cl/validity-metrics.md %}#specify-valid-format).
+**Solution:** The `valid format` configuration key only works with data type TEXT. See [Specify valid format]({% link soda-cl/validity-metrics.md %}#specify-valid-format).
 
 See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl)
 
