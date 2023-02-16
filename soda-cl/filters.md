@@ -38,8 +38,10 @@ checks for ${DATASET}:
 [In-check vs. dataset filters](#in-check-vs-dataset-filters)<br />
 [Configure in-check filters](#configure-in-check-filters)<br />
 [Configure dataset filters](#configure-dataset-filters)<br />
+[Configure a time partition using the NOW variable](#configure-a-time-partition-using-the-now-variable)<br />
 [Configure variables in SodaCL](#configure-variables-in-sodacl)<br />
-[Configure variables for connection configuration](#configure-variables-for-connection-configuration)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Configure variables for connection configuration](#configure-variables-for-connection-configuration)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Configuration details and limitations](#configuration-details-and-limitations)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -80,6 +82,20 @@ For a dataset filter, Soda Core generates a separate query and, again, attempts 
 ## Configure dataset filters
 
 {% include dataset-filters.md %}
+
+## Configure a time partition using the NOW variable
+
+If your data source is partitioned, or if you wish to apply checks in your [agreement]({% link soda-cloud/agreements.md %}) to a specific interval of time, you can do so using a dataset filter. 
+
+Use the built-in `NOW` variable to specify a relative time partition. Reference the following example to add a dataset filter to either your checks YAML file, or to the **Write Checks** step in the agreement workflow in Soda Cloud. The `where` clause in the example defines the time partition to mean "now, less one day". 
+
+```yaml
+filter sodatest_dataset [daily]:
+  where: ts > TIMESTAMP '${NOW}' - interval '1d'
+
+checks for sodatest_dataset [daily]:
+  - duplicate_count(email_address) < 5
+```
 
 ## Configure variables in SodaCL
 
@@ -180,15 +196,7 @@ checks for dim_product:
 
 <br />
 
-###  Configuration details and limitations
-
-* Variables must use the following syntax: `${VAR_NAME}`.
-* You cannot use a variable to provide a scan-time value for a [configuration key]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) value, such as the value for `valid length` for an `invalid_count` check.
-* For consistency, best practice dictates that you use upper case for variable names, though you can use lower case if you wish.
-* You may need to wrap date values for variables in single quotes for a check to execute properly. The use of single quotes is bound to the data source, so if your data source demands single quotes around date values for SQL queries, you must also include them when providing date values in Soda. Refer to the [# Dataset filter with variables](#filters-and-variables) example at the top of this page.  
-
-
-## Configure variables for connection configuration
+### Configure variables for connection configuration
 
 You can use variables to:
 * resolve credentials in configuration files using system variables; see [Configure Soda Core]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables)
@@ -221,8 +229,12 @@ soda scan -d adventureworks -c configuration.yml -v USERNAME=sodacore -v PASSWOR
 
 ###  Configuration details and limitations
 
-* If you do not explicitly specify a variable value at scan time to resolve credentials, Soda uses environment variables.
+* Variables must use the following syntax: `${VAR_NAME}`.
 * For consistency, best practice dictates that you use upper case for variable names, though you can use lower case if you wish.
+* If you do not explicitly specify a variable value at scan time to resolve credentials for a connection configuration, Soda uses environment variables.
+* You cannot use a variable to provide a scan-time value for a [configuration key]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) value, such as the value for `valid length` for an `invalid_count` check.
+* You may need to wrap date values for variables in single quotes for a check to execute properly. The use of single quotes is bound to the data source, so if your data source demands single quotes around date values for SQL queries, you must also include them when providing date values in SodaCL. Refer to the [# Dataset filter with variables](#filters-and-variables) example at the top of this page.  
+* Except for using the `${NOW}` variable in a dataset filter to [configure a time partition](#configure-a-time-partition-using-the-now-variable) for checks, you cannot use variables when defining checks in an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. When using variables, you normally pass the values for those variables at scan time, adding them to the `soda scan` command with a `-v` option. However, because scans that execute checks defined in an agreement run on a schedule according to a [scan definition]({% link soda/glossary.md %}#scan-definition), there is no opportunity to add dynamic values for variables at scan time.
 
 
 ## Go further
