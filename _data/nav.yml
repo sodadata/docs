@@ -76,7 +76,7 @@
     page: soda-agent/deploy-google.md
   - subtitle: Manage sensitive values
     page: soda-agent/secrets.md
-  - subtitle: Connect to Soda Cloud via PrivateLink
+  - subtitle: Connect to Soda Cloud via AWS PrivateLink
     page: soda-agent/private-link.md
   - subtitle: Redeploy an agent
     page: soda-agent/redeploy.md

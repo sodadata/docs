@@ -34,7 +34,7 @@ helm install soda-agent soda-agent/soda-agent \
 | ----- | ----- |
 | Name tag | myuniqueagent |
 | Service category | PrivateLink Ready partner services (or Other endpoint services?) |
-| Service name | (several, I imagine, just like DD with a service name for each endpoint?) |
+| Service name | (several, I imagine, just like DataDog with a service name for each endpoint?) |
 | VPC | Identify the VPC in your network in which to create the endpoint. |
 
 
