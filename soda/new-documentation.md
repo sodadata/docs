@@ -12,6 +12,7 @@ parent: Reference
 #### February 16, 2023
 * Added documentation for the `invalid values` configuration key. Refer to [Validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) documentation.
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.23.
+* Corrected [custom check templates]({% link soda-cl/check-templates.md %}) to use `fail condition` syntax, not `fail expression`. 
 
 #### February 10, 2023
 * Added a new section to Distribution check documentation for [defining a sample size]({% link soda-cl/distribution.md %}#define-the-sample-size).
