@@ -20,7 +20,7 @@ Alternatively, you can send information from a Soda Agent to your Soda Cloud acc
 helm install soda-agent soda-agent/soda-agent \
     --set soda.agent.target=aws-eks \
     --set soda.agent.name=myuniqueagent \
-    --set soda.agnet.tbd=*** \
+    --set soda.agent.tbd=*** \
     --set soda.core.idle=true \
     --set soda.core.replicas=1 \
     --namespace soda-agent
