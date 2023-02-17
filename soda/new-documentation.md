@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### February 23, 2023
+* Added documentation for [failed row analysis]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
+
 #### February 16, 2023
 * Added documentation for the `invalid values` configuration key. Refer to [Validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) documentation.
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.23.

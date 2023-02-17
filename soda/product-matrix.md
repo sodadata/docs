@@ -91,7 +91,7 @@ Access a list of <a href="https://www.soda.io/integrations" target="_blank">all 
 | Access sample data to inspire the data quality checks to write | | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 | View charts to gain visibility into stored measurements for a metric over time |  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 | Set up notifications to alert your team of data quality failures and warnings |   | ![done](/assets/images/done.png){:height="20px" width="20px"} |
-| View samples of rows that failed a check  |  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
+| View failed rows samples and analysis for checks that failed |  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 | Use the Soda Reporting API to gain insight into the health of your datasets and your Soda Cloud account user activity, and to build customized dashboards in Tableau, Looker, etc.  |  | ![done](/assets/images/done.png){:height="20px" width="20px"}  |
 
 
