@@ -1,19 +1,56 @@
 ---
 layout: default
-title: Examine failed rows samples
-description: To offer more insight into the data that failed a test during a scan, Soda Cloud can display failed rows in a check's history.
+title: Analyze failed rows 
+description: To offer more insight into the data that failed a test during a scan, Soda Cloud displays samples and information about failed rows.
 parent: Soda Cloud
 redirect_from: /soda-sql/documentation/failed-rows.html
 ---
 
-# Examine failed rows samples
+# Analyze failed rows
 *Last modified on {% last_modified_at %}*
 
-When a Soda scan results in a failed check, Soda Cloud displays details of the scan results in each check's **Check History** view. To offer more insight into the data that failed a check during a scan, Soda Cloud can display **failed rows samples** in a check's history. 
+When a Soda scan results in a failed check, Soda Cloud displays details of the scan results in each check's **Check History** view. To offer more insight into the data that failed a check during a scan, Soda Cloud can display **failed row analysis** details for a check, including failed row samples. 
 
-From the **Checks Results** dashboard, navigate to an indivdual check result history page, then click the **Failed rows** tab (pictured below) to see the failed rows samples associated with a failed check result. 
+[Failed rows analysis and samples](#failed-rows-analysis-and-samples)<br />
+[Implicitly send failed rows samples](#implicitly-send-failed-rows-samples)<br />
+[Explicitly send failed rows samples](#explicitly-send-failed-rows-samples)<br />
+[Set a sample limit](#set-a-sample-limit)<br />
+[Disable failed rows samples](#disable-failed-row-samples)<br />
+[Go further](#go-further)<br />
+<br />
+
+## Failed rows analysis and samples
+
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Soda Cloud with Soda Agent</label>
+  <label class="tab" id="two-tab" for="two">Soda Cloud with Soda Core </label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
+If you have connected it to a **Soda Agent**, Soda Cloud displays summary and analysis information, and samples of failed rows for failed check results for which you have [implicitly](#implicitly-send-failed-rows-samples) or [explicitly](#explicitly-send-failed-rows-samples) configured failed rows sample collection. 
+
+From the **Checks Results** dashboard, select a check result to navigate to that indivdual check's result history page, then click the **Failed Row Analysis** tab (pictured below) to examine samples and analytical information associated with a failed check result. 
+
+Adjust the **Segment By** setting to examine the results by column name.
+
+![failed-row-analysis](/assets/images/failed-row-analysis.png){:height="600px" width="600px"}
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+If you have connected it to **Soda Core**, Soda Cloud displays samples of failed rows for failed check results for which you have [implicitly](#implicitly-send-failed-rows-samples) or [explicitly](#explicitly-send-failed-rows-samples) configured failed rows sample collection. It does not display failed row summary or analysis information; see **Soda Cloud with Soda Agent** tab.
+
+From the **Checks Results** dashboard, select a check result to navigate to that indivdual check's result history page, then click the **Failed Row Samples** tab (pictured below) to examine samples associated with a failed check result. 
 
 ![failed-rows](/assets/images/failed-rows.png){:height="600px" width="600px"}
+
+  </div>
+  </div>
+</div>
+
 
 ## Implicitly send failed rows samples
 
@@ -23,17 +60,30 @@ Implicitly, Soda automatically collects 100 failed row samples for the following
 * checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
 * checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
 
-<br />
-
 #### Troubleshoot
 
 {% include troubleshoot-failed-rows.md %}
 
-<br />
 
 ## Explicitly send failed rows samples
 
 Define a [failed rows check]({% link soda-cl/failed-rows-checks.md %}) to explicitly send samples of rows that failed a check to Soda Cloud.
+
+## Set a sample limit
+
+By default, Soda Core sends 100 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda Core using the `samples limit` configuration key:value pair in your agreement or in your checks YAML file, as in the following example.
+
+```yaml
+checks for dim_customer:
+# Explicitly sending failed rows samples
+  - failed rows:
+      samples limit: 50
+      fail condition: total_children = '2' and number_cars_owned >= 3
+# Implicitly sending failed rows samples
+  - missing_percent(email_address) < 50:
+      samples limit: 20
+```
+
 
 ## Disable failed row samples
 

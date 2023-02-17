@@ -262,6 +262,8 @@ See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
 Soda collects failed rows samples explicitly and implicitly. 
 
+{% include failed-row-analysis.md %}
+
 To explicitly collect failed row samples, you can add a [failed row check]({% link soda-cl/failed-rows-checks.md %}) your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
 
 Implicitly, Soda automatically collects 100 failed row samples for the following checks:
@@ -275,12 +277,12 @@ If you wish to limit or broaden the sample size, you can use the `samples limit`
 ```yaml
 checks for dim_customer:
   - duplicate_count(email_address) < 50:
-      samples limit: 2
+      samples limit: 20
 ```
 
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check that collects failed row samples and has failed. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows samples and analysis in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a failed check that collected samples. Examine failed rows in the **Failed rows** tab, or the **Failed Row Analysis** tab if you connected Soda Cloud to a Soda Agent; see [Analyze failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ### Disable failed row samples for specific columns
 

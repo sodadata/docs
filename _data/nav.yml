@@ -103,7 +103,7 @@
     page: soda-cloud/notif-rules.md
   - subtitle: Organize datasets
     page: soda-cloud/organize-datasets.md
-  - subtitle: Examine failed rows
+  - subtitle: Analyze failed rows
     page: soda-cloud/failed-rows.md
   - subtitle: Create and track incidents
     page: soda-cloud/incidents.md

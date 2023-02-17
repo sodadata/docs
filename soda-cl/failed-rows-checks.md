@@ -26,12 +26,14 @@ checks for dim_customer:
 ```
 
 [Prerequisites](#prerequisites) <br />
-[About failed row samples](#about-failed-row-samples) <br />
+[About failed row samples and analysis](#about-failed-row-samples-and-analysis) <br />
 [Define failed rows checks](#define-failed-rows-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />
 [Set a sample limit](#set-a-sample-limit)<br />
 [Group results by category](#group-results-by-category)<br />
 [Disable failed rows sampling for specific columns](#disable-failed-rows-sampling-for-specific-columns)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Disabling options and details](#disabling-options-and-details)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[About failed rows sampling queries](#about-failed-rows-sampling-queries)<br />
 [Reroute failed rows samples](#reroute-failed-rows-samples)<br />
 [Configure a failed row sampler](#configure-a-failed-row-sampler)<br />
 [Go further](#go-further)<br />
@@ -39,12 +41,13 @@ checks for dim_customer:
 
 ## Prerequisites
 
-* To view failed rows that a failed rows check collects, you ideally have a **Soda Cloud** account. It is not necessary to view failed rows samples in Soda Cloud, but easy to view in the context of a check result. 
+* (Optional) To view failed rows samples that a failed rows check collects, you ideally have a **Soda Cloud** account. It is not necessary to view failed rows samples in Soda Cloud, but easy to view in the context of a check result. 
 * To use failed row checks to send failed rows samples to Soda Cloud, samples collection must *not* be [disabled in Soda Cloud]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).
+* (Optional) To see failed row analysis information, Soda Cloud must be connected to a Soda Agent. See [Analyze failed rows]({% link soda-cloud/failed-rows.md %}) for further detail.
 
-## About failed row samples
+## About failed row samples and analysis
 
-When a scan results in a failed check, the CLI output displays information about the check that failed and why. To offer more insight into the data that failed a check, Soda Cloud displays failed rows in a check result’s history. 
+{% include failed-row-analysis.md %}
 
 There are two ways you can configure a SodaCL check to send failed row samples to your Soda Cloud account:
 
@@ -293,9 +296,9 @@ sampler:
 Skipping samples from query 'retail_orders.last_name.failed_rows[missing_count]'. Excluded column(s) present: ['*'].
 ```
 
-### Failed rows sampling queries
+### About failed rows sampling queries
 
-For the most part, when you exclude a column from failed rows sampling, Soda does not include the column in its query to collect samples. In other words, it does not collect the samples *then* prevent them from sending to Soda Cloud, Soda does not query the column for samples, period. (There are some edge cases in which this is not the case and for those instances, a gatekeeper component ensures that no excluded columns are included in failed rows samples.)
+For the most part, when you exclude a column from failed rows sampling, Soda does not include the column in its query to collect samples. In other words, it does not collect the samples, *then* prevent them from sending to Soda Cloud; Soda does not query the column for samples, period. (There are some edge cases in which this is not the case and for those instances, a gatekeeper component ensures that no excluded columns are included in failed rows samples.)
 
 As an example, imagine a check that looks for NULL values in a column that you included in your `exclude_columns` configuration. (A missing metric in a check implicitly collects failed rows samples.)
 ```yaml
