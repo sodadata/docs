@@ -63,13 +63,13 @@ See https://docs.docker.com/desktop/mac for more info.
 You need to give Docker permission to acccess your configuration.yml and checks.yml files in your environment. To do so:
   1. Access your Docker Dashboard, then select Preferences (gear symbol).
   2. Select Resources, then follow the <a href="https://docs.docker.com/desktop/mac/#file-sharing" target="_blank">Docker instructions</a> to add your Soda project directory -- the one you use to store your configuration.yml and checks.yml files -- to the list of directories that can be bind-mounted into Docker containers. 
-  3. Click Apply & Restart, then repeat steps 2 - 4 [above](#use-docker-to-run-soda-core).
+  3. Click Apply & Restart, then repeat steps 2 - 4 above.
 
 <br />
 
 #### Error: Configuration path does not exist
 
-If you encounter the following error, double check the syntax of the scan command in step 4 [above](#use-docker-to-run-soda-core). 
+If you encounter the following error, double check the syntax of the scan command in step 4 above. 
 * Be sure to prepend `/sodacl/` to both the congifuration.yml filepath and the checks.yml filepath. 
 * Be sure to mount your files into the container by including the `-v` option.  For example, `-v /Users/MyName/soda_core_project:/sodacl`.
 
