@@ -136,7 +136,7 @@ If your data source is very large, you may wish to disable dataset discovery com
 ```yaml
 discover datasets:
   datasets:
-    - exclude %.%
+    - exclude %
 ```
 
 <br />

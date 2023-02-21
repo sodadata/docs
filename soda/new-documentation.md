@@ -378,7 +378,7 @@ checks for dim_customers:
 #### June 6, 2022
 
 * Added clarifying details to [Cross checks]({% link soda-cl/cross-row-checks.md %}) and updated images on [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
-* Added [Use Docker to run Soda Core]({% link soda-core/installation.md %}#use-docker-to-run-soda-core) to Soda Core installation documentation.
+* Added [Use Docker to run Soda Core]({% link soda-core/installation.md %}) to Soda Core installation documentation.
 
 #### June 2, 2022
 

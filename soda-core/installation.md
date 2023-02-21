@@ -18,7 +18,6 @@ Soda Core is a command-line interface (CLI) tool that enables you to scan the da
 [Requirements](#requirements)<br />
 [Install](#install)<br />
 [Upgrade](#upgrade)<br />
-[Use Docker to run Soda Core](#use-docker-to-run-soda-core)<br />
 [Install Soda Core Scientific](#install-soda-core-scientific)<br />
 [Go further](#go-further)<br />
 
@@ -41,9 +40,11 @@ If you have not already installed Python, consider using <a href="https://github
 <div class="warpper">
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
+  <input class="radio" id="three" name="group" type="radio">
   <div class="tabs">
   <label class="tab" id="one-tab" for="one">MacOS, Linux</label>
   <label class="tab" id="two-tab" for="two">Windows</label>
+  <label class="tab" id="three-tab" for="three">Docker</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
@@ -137,6 +138,12 @@ deactivate
 
 Reference the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activate-script" target="_blank">virtualenv documentation</a> for activating a Windows script.
 
+
+  </div>
+  <div class="panel" id="three-panel" markdown="1">
+
+{% include docker-soda-core.md %}
+
   </div>
   </div>
 </div>
@@ -150,10 +157,6 @@ To upgrade your existing Soda Core tool to the latest version, use the following
 pip install soda-core-redshift -U
 ```
 
-## Use Docker to run Soda Core
-
-{% include docker-soda-core.md %}
-
 ## Install Soda Core Scientific
 
 Install Soda Core Scientific to be able to use SodaCL [distribution checks]({% link soda-cl/distribution.md %}) or [anomaly score checks]({% link soda-cl/anomaly-score.md %}).
@@ -162,7 +165,7 @@ You have three installation options to choose from:
 * [Install Soda Core Scientific in a virtual environment (Recommended)](#install-soda-core-scientific-in-a-virtual-environment-recommended)
 * [Use Docker to run Soda Core with Soda Scientific](#use-docker-to-run-soda-core-scientific)
 
-## Install Soda Core Scientific in a virtual environment (Recommended)
+### Install Soda Core Scientific in a virtual environment (Recommended)
 
 {% include install-soda-core-scientific.md %}
 
@@ -172,7 +175,7 @@ You have three installation options to choose from:
 
 {% include troubleshoot-anomaly-check-tbb.md %}
 
-## Use Docker to run Soda Core Scientific
+### Use Docker to run Soda Core Scientific
 
 {% include docker-soda-core.md %}
 
