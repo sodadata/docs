@@ -9,6 +9,19 @@ parent: Reference
 
 <br />
 
+#### February 16, 2023
+* Added documentation for the `invalid values` configuration key. Refer to [Validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) documentation.
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.23.
+* Corrected [custom check templates]({% link soda-cl/check-templates.md %}) to use `fail condition` syntax, not `fail expression`. 
+* Added instructions to [Configure a time partition using the NOW variable]({% link soda-cl/filters.md %}#configure-a-time-partition-using-the-now-variable).
+* Added a note for limitations on using variables in [checks in agreements]({% link soda-cloud/agreements.md %}#2-write-checks) in Soda Cloud. 
+
+#### February 10, 2023
+* Added a new section to Distribution check documentation for [defining a sample size]({% link soda-cl/distribution.md %}#define-the-sample-size).
+
+#### February 9, 2023
+* Add new documentation for [generating API keys]({% link soda-cloud/api-keys.md %}) for use with Soda Cloud.
+
 #### January 25, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.22.
 * Added a detail for adding an [optional scheme property]({% link soda-core/connect-core-to-cloud.md %}#connect) to `soda_cloud` configuration when connecting Soda Core to Soda Cloud. 
@@ -362,7 +375,7 @@ checks for dim_customers:
 #### June 6, 2022
 
 * Added clarifying details to [Cross checks]({% link soda-cl/cross-row-checks.md %}) and updated images on [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
-* Added [Use Docker to run Soda Core]({% link soda-core/installation.md %}#use-docker-to-run-soda-core) to Soda Core installation documentation.
+* Added [Use Docker to run Soda Core]({% link soda-core/installation.md %}) to Soda Core installation documentation.
 
 #### June 2, 2022
 

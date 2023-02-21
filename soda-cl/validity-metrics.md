@@ -12,6 +12,7 @@ Use a validity metric in a check to surface invalid or unexpected values in your
 
 ```yaml
 checks for dim_customer:
+# Check for valid values
   - invalid_count(email_address) = 0:
       valid format: email
   - invalid_percent(english_education) = 0:
@@ -28,10 +29,15 @@ checks for dim_customer:
       valid regex: (0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)
   - invalid_count(house_owner_flag) = 0:
       valid values: ['0', '1']
+# Check for invalid values
+  - invalid_count(first_name) = 0:
+      invalid values: [Antonio]
+  - invalid_count(number_cars_owned) = 0:
+      invalid values: ['0', '3'] 
 ```
 
 [Define checks with validity metrics](#define-checks-with-validity-metrics) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Specify valid values](#specify-valid-values)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Specify valid or invalid values](#specify-valid-or-invalid-values)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Specify valid format](#specify-valid-format)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples)<br />
 [Optional check configurations](#optional-check-configurations)<br />
@@ -47,8 +53,8 @@ checks for dim_customer:
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), you use validity metrics in standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
 
 You can use all validity metrics in checks that apply to individual columns in a dataset; you cannot use validity metrics in checks that apply to entire datasets. Identify the column by adding a value in the argument between brackets in the check. 
-* You must use a [configuration key:value pair](#list-of-configuration-keys) to define what qualifies as an valid value. 
-* If you wish, you can add a `%` character to the threshold for a `invalid_percent` metric for improved readability. 
+* You must use a [configuration key:value pair](#list-of-configuration-keys) to define what qualifies as an valid value or invalid value. 
+* If you wish, you can add a `%` character to the threshold for a `invalid_percent` metric for improved readability. This character does not behave as a wildard in this context.
 
 
 ```yaml
@@ -92,9 +98,9 @@ Percentage thresholds are between 0 and 100, not between 0 and 1.
 </details>
 
 
-### Specify valid values
+### Specify valid or invalid values
 
-Use a nested **configuration key:value pair** to provide your own definition of a valid value. There are several configuration keys that you can use to define what qualifies as valid; the examples below illustrate the use of just a few config keys. See a complete [List of configuration keys](#list-of-configuration-keys) below.
+Use a nested **configuration key:value pair** to provide your own definition of a valid or invalid value. There are several configuration keys that you can use to define what qualifies as valid; the examples below illustrate the use of just a few config keys. See a complete [List of configuration keys](#list-of-configuration-keys) below.
 
 A check that uses a validity metric has six mutable parts:
 
@@ -138,6 +144,18 @@ Second check:
 | threshold | `0` | 
 | configuration key | `valid regex` |
 | configuration value(s) | `(0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)` |
+
+<br />
+
+The `invalid values` configuration key specifies that if a row in that column contains the invalid values in the list, Soda registers them as invalid. In the example below, the check fails if Soda discovers any values that are `Antonio`. 
+* Values in a list must be enclosed in square brackets.
+* Numeric characters in an `invalid values` list must be enclosed in single quotes.
+
+```yaml
+checks for dim_customer:
+  - invalid_count(first_name) = 0:
+      invalid values: [Antonio]
+```
 
 <br />
 
@@ -277,8 +295,8 @@ checks for CUSTOMERS [daily]:
 
 | Metric  | Column config keys | Description | Supported data type | Supported data sources | 
 | ------  | ------------------ | ----------- |---------------------| ---------------------- |
-| `invalid_count` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake   |
-| `invalid_percent` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` | The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  | 
+| `invalid_count` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake   |
+| `invalid_percent` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values`| The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  | 
 
 
 ## List of configuration keys
@@ -295,6 +313,7 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 | `valid min length` | Specifies a valid minimum length for a string. <br />Only works with columns that contain data type TEXT. | integer |
 | `valid regex` | Specifies a regular expression to define your own custom valid values. | regex, no forward slash delimiters |
 | `valid values` | Specifies the values that Soda is to consider valid. Numeric characters in a `valid values` list must be enclosed in single quotes.| values in a list |
+| `invalid values` | Specifies the values that Soda is to consider invalid. Numeric characters in a `valid values` list must be enclosed in single quotes.| values in a list |
 
 ## List of valid formats
 

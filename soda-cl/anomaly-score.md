@@ -150,20 +150,19 @@ for each dataset T:
 ## Troubleshoot Soda Core Scientific installation
 
 While installing Soda Core Scientific works on Linux, you may encounter issues if you install Soda Core Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
-* [Use Docker to run Soda Core (Recommended)](#use-docker-to-run-soda-core)
-* [Install Soda Core locally (Limited support)](#install-soda-core-locally)
+* [Install Soda Core locally](#install-soda-core-scientific-locally)
 * [Troubleshoot Soda Core Scientific installation in a virtual env](#troubleshoot-soda-core-scientific-installation-in-a-virtual-env)
+* [Use Docker to run Soda Core](#use-docker-to-run-soda-core)
 
 Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
+### Install Soda Core Scientific Locally
+
+{% include install-soda-core-scientific.md %}
 
 ### Use Docker to run Soda Core
 
 {% include docker-soda-core.md %}
-
-### Install Soda Core Scientific Locally 
-
-{% include install-local-soda-core-scientific.md %}
 
 ### Troubleshoot Soda Core Scientific installation in a virtual env
 

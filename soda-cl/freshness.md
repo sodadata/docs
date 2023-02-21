@@ -57,7 +57,7 @@ Instead of using the default value for "now" (the time you run the scan that exe
 
 ```yaml
 checks for dim_product:
-  - freshness(end_date, CUST_VAR < 1d
+  - freshness(end_date) CUST_VAR < 1d
 ```
 
 | column name | `end_date` |

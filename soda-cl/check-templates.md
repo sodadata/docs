@@ -134,7 +134,7 @@ The first example is a skeletal query into which you can insert a variety of con
 ```yaml
 checks for dim_product:
   - failed rows: 
-      fail expression: not({{ condition_logic }})
+      fail condition: not({{ condition_logic }})
 ```
 {% endraw %}
 
@@ -156,7 +156,7 @@ checks for dim_product:
 ```yaml
 checks for dim_product:
   - failed rows:
-      fail expression: not(credit_card_amount + wire_tranfer = total_order_value)
+      fail condition: not(credit_card_amount + wire_tranfer = total_order_value)
 ```
 {% endraw %}
 
@@ -178,7 +178,7 @@ checks for dim_product:
 ```yaml
 checks for dim_product:
   - failed rows: 
-      fail expression: not(full_payment_deadline < dateadd(month, number_of_installments, first_payment_date))
+      fail condition: not(full_payment_deadline < dateadd(month, number_of_installments, first_payment_date))
 ```
 {% endraw %}
 

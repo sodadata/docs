@@ -44,7 +44,7 @@ The file in which you configure data source connection details and Soda Cloud co
 A storage location that contains a collection of datasets, such as Snowflake, Amazon Athena, or GCP BigQuery.
 
 ### dataset
-A representation of a tabular data structure with rows and columns. A dataset can take the form of a table in PostgreSQL or Snowflake, a stream in Kafka, or a DataFrame in a Spark application.
+A representation of a tabular data structure with rows and columns. A dataset can take the form of a table in PostgreSQL or Snowflake, a stream, or a DataFrame in a Spark application.
 
 ### incident
 A ticket you create and associate with a failed check result so as to track your team's investigation and resolution of a data quality issue. See [Create and track incidents]({% link soda-cloud/incidents.md %}).
@@ -61,7 +61,6 @@ The component in Soda Cloud that stores metric measurements. This component faci
 ### monitor
 (Deprecated) A set of details you define in Soda Cloud which Soda SQL used when it ran a scan. Now deprecated and replaced by a [check](#check).
 
-
 ### notification
 A setting you configure in a Soda Cloud agreement that defines whom to notify with check results after a scan. 
 
@@ -72,7 +71,7 @@ A command that executes checks to extract information about data in a data sourc
 A collection of checks YAML files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source. Effectively, a scan definition provides the what, when, and where to run a scan. 
 
 ### scan definition name
-A unique identifier that you add to a programmatic scan or to the `soda scan` command using the `-s` option. Include a scan definition name so that Soda Cloud retains the historic measurements of an individual check, even if the check itself changes between scans. 
+A unique identifier that you add to a programmatic scan or to the `soda scan` command using the `-s` option. Soda Cloud uses the scan definition name to correlate subsequent scan results, thus retaining an historical record of the measurements over time. 
 
 ### Soda Agent
 The Helm chart you deploy in your Kubernetes cluster to faciliate a secure connection between your Soda Cloud account and your data sources. See [Soda Agent basic concepts]({% link soda-agent/basics.md %}).

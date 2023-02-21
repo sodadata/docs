@@ -81,6 +81,8 @@ Use these matrices to review the features and functionality that Soda products h
 | Integrate with dbt to review dbt test results from within Soda Cloud |  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 | Use a webhook to integrate Soda Cloud with a third-party service provider, such as Jira or ServiceNow, to send notifications of data quality issues and investigate incidents |  | ![done](/assets/images/done.png){:height="20px" width="20px"} |
 
+Access a list of <a href="https://www.soda.io/integrations" target="_blank">all integrations</a> that Soda Cloud supports.
+
 ## Gain insight
 
 | Feature or functionality |  ![soda-core-logo](/assets/images/soda-core-logo.png){:height="130px" width="130px"} |![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="150px" width="150px"} | 

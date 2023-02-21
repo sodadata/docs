@@ -54,7 +54,8 @@ Use [SodaCL]({% link soda-cl/soda-cl-overview.md %}) to define the checks that S
 
 * For help writing your first checks, consider following the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}), including the [Tips and best practices]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) section.
 * Avoid using an [anomaly score check]({% link soda-cl/anomaly-score.md %}) to test the agreements workflow. The ML algorithm that anomaly score checks use requires a minimum of four, regular-frequency scans before it has collected enough historic measurements against which to gauge an anomaly. Consider using checks with [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metrics, instead.
-* Note that any checks you test in the context of this agreements workflow _do not_ appear as "real" check results in the **Check Results** dashboard. 
+* Note that any checks you test in the context of this step in the agreements workflow _do not_ appear as "real" check results in the **Check Results** dashboard. 
+* Do not use variables to define dynamic values in your checks as you cannot provide scan-time values for those variables with scheduled scans. See [Configuration details and limitations]({% link soda-cl/filters.md %}#configuration-details-and-limitations) for details.
 
 <br />
 
