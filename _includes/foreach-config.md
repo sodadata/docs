@@ -27,6 +27,8 @@ for each dataset T:
 
 * For each is not compatible with dataset filters.
 * Soda Core dataset names matching is case insensitive.
+* You cannot use quotes around dataset names in a for each configuration.
 * If any of your checks specify column names as arguments, make sure the column exists in all datasets listed under the `datasets` heading.
 * To add multiple for each configurations in your checks YAML file, configure another `for each` section header with a different letter identifier, such as `for each dataset R`.
+
 

@@ -39,9 +39,9 @@ for each dataset T:
 | ✓ | Define a name for a for each check; see [example](#example-with-check-name). | [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names)|
 | ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration).| [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations). |
-| ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset; see [example](#example-with-in-check-filer).|  |
-| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark.| [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
-| ✓ | Use wildcard characters ({% raw %} % {% endraw %} in values in the for each configuration; see [example](#example-with-wildcard). | - |
+| ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset; see [example](#example-with-in-check-filter).| [Add an in-check filter]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check). |
+|   | Use quotes when identifying dataset or column names. | - |
+| ✓ | Use wildcard characters ({% raw %} % {% endraw %}) in values in the for each configuration; see [example](#example-with-wildcard). | - |
 |   | Apply a dataset filter to partition data during a scan. | - |
 
 
@@ -83,18 +83,6 @@ for each dataset T:
   checks:
     - max(vacation_hours) < 80:
         filter: sales_territory_key = 11
-```
-
-#### Example with quotes
-
-```yaml
-for each dataset T:
-  datasets:
-    - dim_employee
-    - "dim_customer"
-
-  checks:
-    - row_count > 1
 ```
 
 #### Example with wildcard
