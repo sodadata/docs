@@ -41,6 +41,7 @@ checks for dim_employee:
 
 * Be sure to add the `:` to the end of your check, before the nested content.
 * If `name` is configured, Soda Core sends the value of `name` to Soda Cloud as the check identifier.
+* Avoid applying the same customized check names in multiple [agreements]({% link soda-cloud/agreements.md %}#2-write-checks). Soda Cloud associates check results with agreements according to name so if you reuse custom names, Soda Cloud may become confused about which agreement to which to link check results.
 
 <br />
 
