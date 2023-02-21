@@ -19,6 +19,7 @@ When a Soda scan results in a failed check, Soda Cloud displays details of the s
 [Go further](#go-further)<br />
 <br />
 
+
 ## Failed rows analysis and samples
 
 <div class="warpper">
@@ -39,6 +40,17 @@ Adjust the **Segment By** setting to examine the results by column name.
 
 ![failed-row-analysis](/assets/images/failed-row-analysis.png){:height="600px" width="600px"}
 
+### Compatibility
+
+The following data sources support the failed row analysis feature.
+
+<table>
+  <tr>
+    <td>Amazon Athena<br /> Amazon Redshift<br /> GCP Big Query</td>
+    <td>MySQL<br > PostgreSQL<br /> Snowflake</td>
+  </tr>
+</table>
+
   </div>
   <div class="panel" id="two-panel" markdown="1">
 If you have connected it to **Soda Core**, Soda Cloud displays samples of failed rows for failed check results for which you have [implicitly](#implicitly-send-failed-rows-samples) or [explicitly](#explicitly-send-failed-rows-samples) configured failed rows sample collection. It does not display failed row summary or analysis information; see **Soda Cloud with Soda Agent** tab.
@@ -46,6 +58,17 @@ If you have connected it to **Soda Core**, Soda Cloud displays samples of failed
 From the **Checks Results** dashboard, select a check result to navigate to that indivdual check's result history page, then click the **Failed Row Samples** tab (pictured below) to examine samples associated with a failed check result. 
 
 ![failed-rows](/assets/images/failed-rows.png){:height="600px" width="600px"}
+
+
+#### Troubleshoot
+
+{% include troubleshoot-failed-rows.md %}
+
+### Compatibility
+
+The following data sources support the failed row analysis feature.
+
+{% include compatible-datasources.md %}
 
   </div>
   </div>
@@ -60,9 +83,6 @@ Implicitly, Soda automatically collects 100 failed row samples for the following
 * checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
 * checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
 
-#### Troubleshoot
-
-{% include troubleshoot-failed-rows.md %}
 
 
 ## Explicitly send failed rows samples
