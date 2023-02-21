@@ -77,7 +77,7 @@ Reference the [section below](#define-an-automated-monitoring-check) for how to 
 * **Known issue:** Currently, SodaCL *does not* support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark DataFrame data source (`soda-core-spark-df`).
 * **Data type**: Soda can only profile columns that contain NUMBERS or TEXT type data; it cannot profile columns that contain TIME or DATE data.
 * **Performance:** Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a selected few datasets to keep costs low. See [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
-* Neither profiling nor dataset discovery allow you to use quoted dataset names
+* You cannot use quotes around dataset names with either profiling or dataset discovery.
 
 
 ## Define dataset discovery  

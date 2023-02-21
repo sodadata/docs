@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### February 21, 2023
+* Revised documentation to clarify that you cannot wrap dataset names in quotes with [profiling or dataset discovery]({% link soda-cl/profile.md %}#limitations-and-known-issues), with [sample collection]({% link soda-cl/sample-datasets.md %}#optional-check-configurations), or in [for each]({% link soda-cl/for-each.md %}#limitations-and-specifics) configurations.
+
 #### February 16, 2023
 * Added documentation for the `invalid values` configuration key. Refer to [Validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) documentation.
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.23.
