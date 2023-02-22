@@ -11,6 +11,7 @@ parent: Reference
 
 #### February 22, 2023
 * Removed preview status from agent deployment documentation for Azure Kubernetes Service (AKS) and Google Kubernetes Engine (GKE).
+* Added instructions for programmatically running a Soda scan of the contents of a [local file]({% link soda/connect-file.md %}) using Dask.
 
 #### February 21, 2023
 * Revised documentation to clarify that you cannot wrap dataset names in quotes with [profiling or dataset discovery]({% link soda-cl/profile.md %}#limitations-and-known-issues), with [sample collection]({% link soda-cl/sample-datasets.md %}#optional-check-configurations), or in [for each]({% link soda-cl/for-each.md %}#limitations-and-specifics) configurations.
