@@ -16,7 +16,7 @@ The **Soda Agent** is a tool that empowers Soda Cloud users to securely access d
 
 These deployment instructions offer generic guidance for setting up a Kubernetes cluster and deploying a Soda Agent in it. Alternatively, you may wish to access a cloud service provider-specific set of instructions for:
 * [Amazon Elastic Kubernetes Service (EKS)]({% link soda-agent/deploy-aws.md %})
-* [Microsoft Azure Kubernetes Service (AKS) (Preview)]({% link soda-agent/deploy-azure.md %})
+* [Microsoft Azure Kubernetes Service (AKS)]({% link soda-agent/deploy-azure.md %})
 * [Google Kubernetes Engine (GKE)]({% link soda-agent/deploy-google.md %})
 
 <br />

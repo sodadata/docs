@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Deploy a Soda Agent in Google GKE (Preview)
+title: Deploy a Soda Agent in Google GKE
 description: Learn how to deploy a Soda Agent in a Google Kubernetes Engine cluster.
 parent: Soda Agent
 redirect_from: /soda-agent/deploy-gke.html
 ---
 
-# Deploy a Soda Agent in Google GKE ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+# Deploy a Soda Agent in Google GKE 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
