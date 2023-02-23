@@ -10,7 +10,8 @@ parent: Reference
 <br />
 
 #### February 23, 2023
-* Documented known issue with freshness check. See [Troubleshoot errors with freshness checks]({% link soda-cl/freshness.md %}#troubleshoot-errors-with-freshness-checks)
+* Documented known issue with freshness check. See [Troubleshoot errors with freshness checks]({% link soda-cl/freshness.md %}#troubleshoot-errors-with-freshness-checks).
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.24 & 3.0.25.
 
 #### February 22, 2023
 * Removed preview status from agent deployment documentation for Azure Kubernetes Service (AKS) and Google Kubernetes Engine (GKE).
