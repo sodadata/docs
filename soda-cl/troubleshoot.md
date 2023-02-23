@@ -12,6 +12,7 @@ parent: SodaCL
 [Soda does not recognize variables](#soda-does-not-recognize-variables)<br />
 [Missing check results in Soda Cloud](#missing-check-results-in-soda-cloud)<br />
 [Metrics were not computed for check](#metrics-were-not-computed-for-check)<br />
+[Errors with freshness checks](#errors-with-freshness-checks)<br />
 <br />
 
 ## Errors with valid format
@@ -76,6 +77,39 @@ See also: [Configure a single scan to run in multiple environments]({% link soda
 However, if you were including the schema in the dataset identifier in an attempt to run the same set of checks against multiple environments, you can do so using the instructions to [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}##configure-the-same-scan-to-run-in-multiple-environments).
 
 See also: [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity)
+
+## Errors with freshness checks
+
+**Problem:** When you run a scan to execute a freshness check, the CLI returns one of the following error message.  
+
+```shell
+Invalid staleness threshold "when < 3256d"
+  +-> line=2,col=5 in checks_test.yml
+
+```
+
+```shell
+Invalid check "freshness(start_date) > 1d": no viable alternative at input ' >'
+```
+
+**Solution:** The error indicates that you are using an incorrect comparison symbol. Remember that freshness checks can only use `<` in check, unless the freshness check employs an alert configuration, in which case it can only use `>` in the check. 
+
+<br />
+
+**Problem:** When you run a scan to execute a freshness check that uses a NOW variable, the CLI returns an following error message for `Invalid check`. <!--CORE-449-->
+
+```shell
+Invalid check "freshness(end_date) ${NOW} < 1d": mismatched input '${NOW}' expecting {'between', 'not', '!=', '<>', '<=', '>=', '=', '<', '>'}
+```
+
+**Solution:** Until the known issue is resolved, use a deprecated syntax for freshness checks using a NOW variable, and ignore the `deprecated syntax` message in the output. For example, define a check as per the following.
+
+```yaml
+checks for dim_product:
+  - freshness using end_date with NOW < 1d
+```
+
+<br />
 
 ## Go further
 

@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### February 23, 2023
+* Documented known issue with freshness check. See [Troubleshoot errors with freshness checks]({% link soda-cl/freshness.md %}#troubleshoot-errors-with-freshness-checks)
+
 #### February 22, 2023
 * Removed preview status from agent deployment documentation for Azure Kubernetes Service (AKS) and Google Kubernetes Engine (GKE).
 * Added instructions for programmatically running a Soda scan of the contents of a [local file]({% link soda/connect-file.md %}) using Dask.
