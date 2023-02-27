@@ -54,8 +54,6 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 ## Create a Soda Cloud account and API keys
 
-(Optional) Rather than connect your Soda Agent to Soda Cloud using API keys, you have the option of connecting them and sending information via AWS PrivateLink. Access [Connect a Soda Agent to Soda Cloud via AWS PrivateLink]({% link soda-agent/private-link.md %}) for details.
-
 {% include agent-api-keys.md %}
 
 
@@ -271,6 +269,7 @@ eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --re
 
 * Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed.
 * Access a list of [helpful `kubectl` commands]({% link soda-agent/helpful-commands.md %}) for running commands on your Kubernetes cluster.
+* Use an AWS PrivateLink to private connect to your Soda Cloud account. Access [Connect a Soda Agent to Soda Cloud via AWS PrivateLink]({% link soda-agent/private-link.md %}) for details.
 * [Learn more]({% link soda-agent/secrets.md %}) about securely storing and accessing API keys and data source login credentials.
 * Consider completing the [Quick start for Soda Cloud]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

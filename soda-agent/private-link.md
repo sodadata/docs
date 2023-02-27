@@ -8,9 +8,8 @@ parent: Soda Agent
 # Connect a Soda Agent to Soda Cloud via AWS PrivateLink
 *Last modified on {% last_modified_at %}*
 
-If you use AWS services for your infrastructure and you have deployed a Soda Agent in an EKS cluster, you can use an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to securely connect it with, and send information to, Soda Cloud. 
+If you use AWS services for your infrastructure and you have deployed a Soda Agent in an EKS cluster, you can use an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. <br />
 
-Alternatively, you can send information from a Soda Agent to your Soda Cloud account using API keys. Refer to the [Amazon Elastic Kubernetes Service (EKS)]({% link soda-agent/deploy-aws.md %}#create-a-soda-cloud-account-and-api-keys) deployment documentation for details.
 
 ## Create an Endpoint for a PrivateLink
 
@@ -28,7 +27,7 @@ kubectl -n soda-agent rollout restart deploy
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-* Learn how to [deploy a Soda Agent in AWS using API keys]({% link soda-agent/deploy-aws.md %}#create-a-soda-cloud-account-and-api-keys) for the first time.
+* Learn how to [deploy a Soda Agent in AWS]({% link soda-agent/deploy-aws.md %}).
 <br />
 
 ---

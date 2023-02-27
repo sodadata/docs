@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### February 28, 2023
+* Published instructions for [setting up private connectivity]({% link soda-agent/private-link.md %}) to a Soda Cloud account using AWS PrivateLink.
+
 #### February 23, 2023
 * Documented known issue with freshness check. See [Troubleshoot errors with freshness checks]({% link soda-cl/freshness.md %}#troubleshoot-errors-with-freshness-checks).
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.24 & 3.0.25.
