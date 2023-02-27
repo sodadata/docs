@@ -12,31 +12,17 @@ If you use AWS services for your infrastructure and you have deployed a Soda Age
 
 Alternatively, you can send information from a Soda Agent to your Soda Cloud account using API keys. Refer to the [Amazon Elastic Kubernetes Service (EKS)]({% link soda-agent/deploy-aws.md %}#create-a-soda-cloud-account-and-api-keys) deployment documentation for details.
 
-## Connect to Soda endpoints
+## Create an Endpoint for a PrivateLink
 
-1. Follow the AWS documentation to <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/create-endpoint-service.html" target="_blank">Connect to endpoint services as the service customer</a>. Refer to the [table below](#aws-privatelink-setup-details) for guidance on the values to provide during setup.
-2. Once configured, follow the steps to [Deploy a Soda Agent]({% link soda-agent/deploy-aws.md %}#deploy-a-soda-agent) using Helm *without* including values for the **API Key ID** and **API Key Secret**, and instead using `soda.agent.TBD`, as in the following example of the helm deploy command.
+1. Log in to your AWS console and navigate to your **VPC dashboard**.  
+2. Follow the AWS documentation to <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/create-endpoint-service.html" target="_blank">Connect to an endpoint service as the service customer</a>. For **Service name** enter the value `TBD`.
+3. After creating the endpoint, return to the **VPC dashboard**. When the status of the endpoint becomes **Available**, the PrivateLink is ready to use. 
+4. Restart your Soda Agent to begin sending data to Soda Cloud via the PrivateLink.
 ```shell
-helm install soda-agent soda-agent/soda-agent \
-    --set soda.agent.target=aws-eks \
-    --set soda.agent.name=myuniqueagent \
-    --set soda.agent.tbd=*** \
-    --set soda.core.idle=true \
-    --set soda.core.replicas=1 \
-    --namespace soda-agent
+kubectl -n soda-agent rollout restart deploy
 ```
-3. After you have deployed the agent and validated that it is running, log into your Soda Cloud account, then navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
+5. After you have started the agent and validated that it is running, log into your Soda Cloud account, then navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
-
-### AWS PrivateLink setup details
-
-| Field | Value |
-| ----- | ----- |
-| Name tag | myuniqueagent |
-| Service category | PrivateLink Ready partner services (or Other endpoint services?) |
-| Service name | (several, I imagine, just like DataDog with a service name for each endpoint?) |
-| VPC | Identify the VPC in your network in which to create the endpoint. |
-
 
 
 ## Go further
