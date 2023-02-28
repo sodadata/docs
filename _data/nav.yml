@@ -72,6 +72,8 @@
     page: soda-agent/deploy.md
   - subtitle: Deploy an agent in Amazon
     page: soda-agent/deploy-aws.md
+  - subtitle: Connect to Soda Cloud via AWS PrivateLink
+    page: soda-agent/private-link.md
   - subtitle: Deploy an agent in Azure
     page: soda-agent/deploy-azure.md
   - subtitle: Deploy an agent in Google
@@ -84,7 +86,6 @@
     page: soda-agent/upgrade.md
   - subtitle: Helpful kubectl commands
     page: soda-agent/helpful-commands.md
-
 
 - title: Soda Cloud
   page: soda-cloud/overview.md
@@ -109,10 +110,10 @@
     page: soda-cloud/failed-rows.md
   - subtitle: Create and track incidents
     page: soda-cloud/incidents.md
-  - subtitle: Generate API keys
-    page: soda-cloud/api-keys.md
   - subtitle: Soda Cloud architecture
     page: soda-cloud/soda-cloud-architecture.md
+  - subtitle: Generate API keys
+    page: soda-cloud/api-keys.md
   - subtitle: Soda Cloud resources
     page: soda-cloud/resource-map.md
   - subtitle: Single sign-on with Soda Cloud
