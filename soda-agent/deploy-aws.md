@@ -61,8 +61,9 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 The following offers instructions to create a <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html" target="_blank">Fargate (serverless) cluster</a> to deploy a Soda Agent, but you can create and use a <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html" target="_blank">regular EKS cluster</a> if you wish.
 
-1. If you are deploying to an existing Virtual Private Cloud (VPC), consider supplying public or private subnets with your deployment. Consult the eksctl documentation to <a href="https://eksctl.io/usage/vpc-configuration/#use-existing-vpc-other-custom-configuration" target="_blank">Use existing VPC</a>.
-2. From the command-line, execute the following command to create a new EKS Fargate cluster in your AWS account.  <br/>Replace the value of `--region` with one that is appropriate for your location. 
+1. (Optional) If you wish, you can establish an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. Refer to [Connect to Soda Cloud via AWS PrivateLink]({% link soda-agent/private-link.md %}) before deploying an agent.
+2. (Optional) If you are deploying to an existing Virtual Private Cloud (VPC), consider supplying public or private subnets with your deployment. Consult the eksctl documentation to <a href="https://eksctl.io/usage/vpc-configuration/#use-existing-vpc-other-custom-configuration" target="_blank">Use existing VPC</a>.
+3. From the command-line, execute the following command to create a new EKS Fargate cluster in your AWS account.  <br/>Replace the value of `--region` with one that is appropriate for your location. 
 ```shell
 eksctl create cluster --name soda-agent --region eu-central-1 --fargate
 ```
@@ -71,21 +72,21 @@ eksctl create cluster --name soda-agent --region eu-central-1 --fargate
 aws configure get region
 ```
 * The activity to create a cluster may take awhile, printing messages in the console that read `waiting for CloudFormation stack "eksctl-soda-agent-cluster"`. Be patient! Access <a href="https://aws.amazon.com/premiumsupport/knowledge-center/cloudformation-stack-stuck-progress/" target="_blank">AWS CloudFormation troubleshooting documentation</a> for help. 
-3. To connect to the newly-created cluster and create a namespace, use the following command.
+4. To connect to the newly-created cluster and create a namespace, use the following command.
 ```shell
 kubectl create namespace soda-agent
 ```
-4. Create a namespace and a Fargate profile for EKS Fargate serverless deployment. <br />
+5. Create a namespace and a Fargate profile for EKS Fargate serverless deployment. <br />
 When you deploy a Soda Agent on EKS Fargate, AWS matches the Fargate Profile using annotation labels in the Soda Agent Helm chart. Without the profile, the Helm chart cannot successfully deploy. <br />
 Refer to [Troubleshoot deployment](#troubleshoot-deployment) below if you encounter errors.
 ```shell
 eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --region us-west-1 --namespace soda-agent
 ```
-5. Run the following command to change the context to associate the current namespace to `soda-agent`. 
+6. Run the following command to change the context to associate the current namespace to `soda-agent`. 
 ```shell
 kubectl config set-context --current --namespace=soda-agent
 ```
-6. Run the following command to verify that the cluster kubectl recognizes `soda-agent` as the current namespace.
+7. Run the following command to verify that the cluster kubectl recognizes `soda-agent` as the current namespace.
 ```shell
 kubectl config get-contexts
 ```

@@ -8,15 +8,15 @@ parent: Soda Agent
 # Connect a Soda Agent to Soda Cloud via AWS PrivateLink
 *Last modified on {% last_modified_at %}*
 
-If you use AWS services for your infrastructure and you have deployed a Soda Agent in an EKS cluster, you can use an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. <br />
+If you use AWS services for your infrastructure and you have deployed or will deploy a Soda Agent in an EKS cluster, you can use an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. <br />
 
 
 ## Create an Endpoint for a PrivateLink
 
 1. Log in to your AWS console and navigate to your **VPC dashboard**.  
-2. Follow the AWS documentation to <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/create-endpoint-service.html" target="_blank">Connect to an endpoint service as the service customer</a>. For **Service name** enter the value `TBD`.
-3. After creating the endpoint, return to the **VPC dashboard**. When the status of the endpoint becomes **Available**, the PrivateLink is ready to use. 
-4. Restart your Soda Agent to begin sending data to Soda Cloud via the PrivateLink.
+2. Follow the AWS documentation to <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/create-endpoint-service.html" target="_blank">Connect to an endpoint service as the service customer</a>. <br />For security reasons, Soda does not publish its **Service name**. Email <a href="mailto:support@soda.io">support@soda.io</a> with your **AWS account ID** to request the PrivateLink service name. Refer to <a href="https://docs.aws.amazon.com/signin/latest/userguide/console_account-alias.html" target="_blank"> AWS documentation</a> for instructions on how to obtain your account ID.
+3. After creating the endpoint, return to the **VPC dashboard**. When the status of the endpoint becomes **Available**, the PrivateLink is ready to use. Be aware that this make take more than 10 minutes.
+4. Deploy a Soda Agent to your AWS EKS cluster, or, if you have already deployed one, restart your Soda Agent to begin sending data to Soda Cloud via the PrivateLink.
 ```shell
 kubectl -n soda-agent rollout restart deploy
 ```
