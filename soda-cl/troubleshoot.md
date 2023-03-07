@@ -13,6 +13,7 @@ parent: SodaCL
 [Missing check results in Soda Cloud](#missing-check-results-in-soda-cloud)<br />
 [Metrics were not computed for check](#metrics-were-not-computed-for-check)<br />
 [Errors with freshness checks](#errors-with-freshness-checks)<br />
+[Checks not evaluated](#checks-not-evaluated)<br />
 <br />
 
 ## Errors with valid format
@@ -110,6 +111,24 @@ checks for dim_product:
 ```
 
 <br />
+
+## Checks not evaluated
+
+**Problem:** You have written a check that has accurate syntax but which returns scan results that include a `[NOT EVALUATED]`message like the following:
+
+```shell
+1/3 checks NOT EVALUATED: 
+INFO:soda.scan:[13:50:53]     my_df in dask
+INFO:soda.scan:[13:50:53]       time_key_duplicates < 1 [soda-checks/checks.yaml] [NOT EVALUATED]
+INFO:soda.scan:[13:50:53]         check_value: None
+INFO:soda.scan:[13:50:53] 1 checks not evaluated.
+```
+
+**Solution:** The cause of the issue may be one of the following:
+* Where a check returns `None`, it means there are no results or the values is `0`, which Soda cannot evaluate. In the example above, the check involved calculating a sum which resulted in a value of `0` which, consequently, translates as `[NOT EVALUATED]` by Soda.
+* For a [change-over-time check]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds), if the previous measurement value is `0` and the new value is `0`, Soda calculates the relative change as `0%`. However, if the previous measurement value is `0` and the new value is not `0`, then Soda indicates the check as `[NOT EVALUATED]` because the calculation is a division by zero. 
+* If your check involves a threshold that compares relative values, such as [chage-over-time checks]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds), [anomaly score checks]({% link soda-cl/anomaly-score.md %}#anomaly-score-check-results), or [schema checks]({% link soda-cl/schema.md %}), Soda needs a value for a previous measurement before it can make a comparison. In other words, if you are executing these checks for the first time, there is no previous measurement value against which Soda can compare, so it returns a check result of `[NOT EVALUATED]`. <br />
+Soda begins evaluating shema check results after the first scan; anomaly score after four scan of regular frequency.
 
 ## Go further
 
