@@ -165,7 +165,7 @@
     page: soda-cl/sample-datasets.md
   - subtitle: Custom check templates
     page: soda-cl/check-templates.md
-  - subtitle: Troubleshoot
+  - subtitle: Troubleshoot SodaCL
     page: soda-cl/troubleshoot.md
 
 - title: Soda Core 
