@@ -165,6 +165,8 @@
     page: soda-cl/sample-datasets.md
   - subtitle: Custom check templates
     page: soda-cl/check-templates.md
+  - subtitle: Compare data using SodaCL
+    page: soda-cl/compare.md
   - subtitle: Troubleshoot SodaCL
     page: soda-cl/troubleshoot.md
 

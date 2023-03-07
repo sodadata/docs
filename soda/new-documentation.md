@@ -9,8 +9,9 @@ parent: Reference
 
 <br />
 
-#### March 7, 2023
+#### March 8, 2023
 * Added to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#checks-not-evaluated) with information about checks that return `[NOT EVALUATED]` results.
+* Added new content with advice to [Compare data using SodaCL]({% link soda-cl/compare.md %}).
 
 #### February 28, 2023
 * Published instructions for [setting up private connectivity]({% link soda-agent/private-link.md %}) to a Soda Cloud account using AWS PrivateLink.
