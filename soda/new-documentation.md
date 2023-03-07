@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### March 7, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.26 & 3.0.27.
+
 #### February 28, 2023
 * Published instructions for [setting up private connectivity]({% link soda-agent/private-link.md %}) to a Soda Cloud account using AWS PrivateLink.
 
