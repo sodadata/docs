@@ -122,7 +122,7 @@ The following example accesses a single Snowflake data source and compares value
 - failed rows:
     fail query: |
                 WITH src as (
-              SELECT SPLIT(record_content:payload.content_id, '_')[0]::TEXT as src_page_id, SPLIT(record_content:payload.content_id, '_')[1]::TEXT as src_post_id
+              SELECT src_page_id, src_post_id
                  FROM prod.staging.dmds_scores
               ), tgt as (
               SELECT page_id, post_id, partition_date FROM prod.measurement.post_scores
@@ -133,9 +133,7 @@ The following example accesses a single Snowflake data source and compares value
                   ON src.src_page_id = tgt.page_id AND src.src_post_id = tgt.post_id
                   WHERE (src.src_page_id IS NOT NULL AND src.src_post_id IS NOT NULL) 
                   AND (tgt.page_id IS NULL AND tgt.post_id IS NULL)
-
 ```
-
 
 See also: [Configure the same scan to run in multiple environments]({% link soda-core/scan-core.md %}#configure-the-same-scan-to-run-in-multiple-environments)
 
