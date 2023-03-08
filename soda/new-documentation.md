@@ -10,6 +10,8 @@ parent: Reference
 <br />
 
 #### March 8, 2023
+* Added to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#checks-not-evaluated) with information about checks that return `[NOT EVALUATED]` results.
+* Added new content with advice to [Compare data using SodaCL]({% link soda-cl/compare.md %}).
 * Documented how to prevent Soda from collecting failed rows samples and sending them to Soda Cloud using a [samples limit]({% link soda-cl/optional-config.md %}#disable-failed-row-samples-for-individual-checks).
 * Corrected a prerequisite in [Add a data source]({% link soda-cloud/add-datasource.md %}#prerequisites) to indicate that you can deploy a Soda Agent in any Kubernetes cluster, not just Amazon EKS.
 

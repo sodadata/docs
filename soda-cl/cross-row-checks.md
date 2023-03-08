@@ -82,36 +82,10 @@ checks for dim_customer:
 <br />
 
 
-
-<!--
-## Cross table row count checks with filters
-
-(Coming soon)
-
-TODO Consider if we should push it to the user to define the right variables and avoid clashes between the variable names when comparing?
-
-Check if the row count of a table is the same as another table in the same data source
-```yaml
-checks for CUSTOMERS [daily_date]:
-  - row_count same as RAW_CUSTOMERS [daily_timestamp]
-```
-
-where in the same or another file:
-
-```yaml
-filter CUSTOMERS [daily_date]:
-  where: date = DATE '${date}'
-
-filter RAW_CUSTOMERS [daily_timestamp]:
-  where: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
-```
-
-Row count comparison with table filter also works cross data source.
--->
-
 ## Go further
 
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
+* Learn more about [Comparing data using SodaCL]({% link soda-cl/compare.md %}).
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).

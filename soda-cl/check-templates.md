@@ -358,6 +358,7 @@ checks for exchange_operations:
 
 ## Go further
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Learn more about [Comparing data using SodaCL]({% link soda-cl/compare.md %}).
 * Read more about [Failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 <br />
 
