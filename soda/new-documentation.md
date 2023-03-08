@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### March 8, 2023
+* Documented how to prevent Soda from collecting failed rows samples and sending them to Soda Cloud using a [samples limit]({% link soda-cl/optional-config.md %}#disable-failed-row-samples-for-individual-checks).
+* Corrected a prerequisite in [Add a data source]({% link soda-cloud/add-datasource.md %}#prerequisites) to indicate that you can deploy a Soda Agent in any Kubernetes cluster, not just Amazon EKS.
+
 #### March 7, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.26 & 3.0.27.
 

@@ -32,7 +32,7 @@ Soda Cloud does store the following:
 * aggregated metrics, such as averages
 * sample rows and failed rows, if you explicitly set up your configuration to send this data to Soda Cloud
 
-Where your datasets contain <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/legal-grounds-processing-data/sensitive-data/what-personal-data-considered-sensitive_en" target="_blank"> sensitive data</a> or private information, you may *not* want to send failed row samples from your data source to Soda Cloud. In such a circumstance, you can [disable the failed row samples feature entirely]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples) in Soda Cloud.
+Where your datasets contain <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/legal-grounds-processing-data/sensitive-data/what-personal-data-considered-sensitive_en" target="_blank"> sensitive data</a> or private information, you may *not* want to send failed row samples from your data source to Soda Cloud. In such a circumstance, you can [disable the failed row samples feature entirely]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples) in Soda Cloud. Read more about disabling samples and failed row samples in [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}).
 
 Read more about Soda's <a href="https://www.soda.io/privacy-policy" target="_blank">Privacy Policy</a>. 
 
