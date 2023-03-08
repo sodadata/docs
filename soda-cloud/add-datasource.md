@@ -34,7 +34,7 @@ Soda Cloud can, however, accept scan results from Soda Core for the following da
 
 ## Prerequisites
 * You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
-* You, or an IT Administrator in your organization, has deployed a [Soda Agent]({% link soda-agent/deploy.md %}) in an Amazon Elastic Kubernetes Service (EKS) Fargate environment and connected it to your Soda Cloud account.
+* You, or an IT Administrator in your organization, has deployed a [Soda Agent]({% link soda-agent/deploy.md %}) in an Kubernetes cluster in a cloud services environment and connected it to your Soda Cloud account.
 
 
 ## Add a new data source
