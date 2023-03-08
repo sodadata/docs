@@ -58,6 +58,15 @@ checks for dim_customers_dev:
 
 For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
+Alternatively, you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
+
+```yaml
+checks for dim_customers_dev:
+  - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name):
+      samples limit: 0
+``` 
+<br />
+
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a reference check. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 

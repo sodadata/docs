@@ -17,7 +17,8 @@ Alternatively, you can provide data source connection configurations in the cont
 [Configuration instructions](#configuration-instructions)<br />
 [Provide credentials as system variables](#provide-credentials-as-system-variables)<br />
 [Configure the same scan to run in multiple environments](#configure-the-same-scan-to-run-in-multiple-environments)<br />
-[Disable failed rows sampling for specific columns](#disable-failed-rows-sampling-for-specific-columns)<br/>
+[Disable failed rows samples for specific columns](#disable-failed-rows-samples-for-specific-columns)<br/>
+[Disable failed rows samples for individual checks](#disable-failed-row-samples-for-individual-checks)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -72,11 +73,23 @@ soda scan -d your_datasource -c configuration.yml checks.yml
 
 {% include scan-multiple-envs.md %}
 
-## Disable failed rows sampling for specific columns
+## Disable failed rows samples for specific columns
 
 For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can add a configuration to your configuration YAML file to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
 
 Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+
+
+## Disable failed row samples for individual checks
+
+For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can set the `samples limit` to `0` to prevent Soda from collecting failed rows samples (and sending the samples to Soda Cloud, if you have connected it to Soda Core) for an individual check, as in the following example.
+
+```yaml
+checks for dim_customer:
+  - missing_percent(email_address) < 50:
+      samples limit: 0
+```
+<br />
 
 ## Go further
 

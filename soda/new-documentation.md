@@ -12,6 +12,11 @@ parent: Reference
 #### March 8, 2023
 * Added to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#checks-not-evaluated) with information about checks that return `[NOT EVALUATED]` results.
 * Added new content with advice to [Compare data using SodaCL]({% link soda-cl/compare.md %}).
+* Documented how to prevent Soda from collecting failed rows samples and sending them to Soda Cloud using a [samples limit]({% link soda-cl/optional-config.md %}#disable-failed-row-samples-for-individual-checks).
+* Corrected a prerequisite in [Add a data source]({% link soda-cloud/add-datasource.md %}#prerequisites) to indicate that you can deploy a Soda Agent in any Kubernetes cluster, not just Amazon EKS.
+
+#### March 7, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.26 & 3.0.27.
 
 #### February 28, 2023
 * Published instructions for [setting up private connectivity]({% link soda-agent/private-link.md %}) to a Soda Cloud account using AWS PrivateLink.

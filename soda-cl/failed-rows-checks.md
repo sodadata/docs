@@ -32,6 +32,10 @@ checks for dim_customer:
 [Set a sample limit](#set-a-sample-limit)<br />
 [Group results by category](#group-results-by-category)<br />
 [Disable failed rows sampling for specific columns](#disable-failed-rows-sampling-for-specific-columns)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Configure in Soda Cloud](#configure-in-soda-cloud)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Configure in Soda Core](#configure-in-soda-core)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Disabling options and details](#disabling-options-and-details)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[About failed rows sampling queries](#about-failed-rows-sampling-queries)<br />
 [Reroute failed rows samples](#reroute-failed-rows-samples)<br />
 [Configure a failed row sampler](#configure-a-failed-row-sampler)<br />
 [Go further](#go-further)<br />
@@ -58,7 +62,7 @@ In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#
 
 The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the `fail condition` that any rows in the `dim_customer` dataset must meet in order to qualify as failed rows, during a scan, get sent to Soda Cloud. 
 
-In this rather silly example, Soda Core sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples. The check also uses the `name` key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
+In this rather silly example, Soda Core sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples. The check also uses the `name` configuration key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
 
 ```yaml
 checks for dim_customer:
@@ -74,7 +78,11 @@ checks for dim_customer:
 If you prefer, you can use a SQL query to define what qualifies as a failed row for Soda Core to send to Soda Cloud, as in the following simple example. Use this cofiguration to include complete SQL queries in the Soda scan of your data.
 
 ```yaml
- 
+checks for dim_customer:
+  - failed rows:
+      fail query: |
+        SELECT DISTINCT geography_key
+        FROM dim_customer as customer
 ```
 ![failed-rows-SQL](/assets/images/failed-rows-SQL.png){:height="700px" width="700px"}
 
@@ -144,6 +152,17 @@ checks for dim_customer:
       fail condition: total_children = '2' and number_cars_owned >= 3
 ```
 
+If you wish to prevent Soda from collecting and sending failed row samples to Soda Cloud for an individual check, you can set the `samples limit` to `0`.
+
+```yaml
+checks for dim_customer:
+  - failed rows:
+      samples limit: 0
+      fail condition: total_children = '2' and number_cars_owned >= 3
+```
+
+Additionally, you can [Disable failed rows sampling for specific columns](#disable-failed-rows-sampling-for-specific-columns). 
+
 <br />
 
 
@@ -198,7 +217,7 @@ checks for dim_customers:
 
 ## Disable failed rows sampling for specific columns
 
-For checks which implicitly or explicitly collect [failed rows samples](#about-failed-row-samples), you can add a configuration to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
+For checks which implicitly or explicitly collect [failed rows samples](#about-failed-row-samples), you can add a configuration to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. On a related note, you can [Set a sample limit](#set-a-sample-limit) to `0` on an individual check to avoid collecting or sending failed row samples.
 
 For example, you may wish to exclude a column that contains personal identifiable information (PII) such as credit card numbers from the Soda query that collects samples. 
 
@@ -234,6 +253,7 @@ data_source my_datasource_name:
       dataset_name_other: [column_nameA, column_nameB]
 ```
 <br />
+
 
 #### Configure in Soda Cloud
 
@@ -293,7 +313,7 @@ sampler:
 Skipping samples from query 'retail_orders.last_name.failed_rows[missing_count]'. Excluded column(s) present: ['*'].
 ```
 
-### Failed rows sampling queries
+### About failed rows sampling queries
 
 For the most part, when you exclude a column from failed rows sampling, Soda does not include the column in its query to collect samples. In other words, it does not collect the samples *then* prevent them from sending to Soda Cloud, Soda does not query the column for samples, period. (There are some edge cases in which this is not the case and for those instances, a gatekeeper component ensures that no excluded columns are included in failed rows samples.)
 
