@@ -21,9 +21,7 @@ To send notifications that apply to multiple checks, see [Set notification rules
 
 ## Integration for Soda Cloud incidents
 
-You can use this integration to notify your team when a new incident has been created in Soda Cloud. With such an integration, Soda Cloud displays an external link to the MS Teams channel in the **Incident Details**. 
-
-Soda Cloud sends all incident events to only one channel in MS Teams. As such, you must provide a separate integration link in the **Channel URL** field in the **Define Scope** tab. For example, `https://teams.microsoft.com/mychannel`. To obtain the channel link in MS Teams, right-click on the channel name in the overview sidebar.
+You can use this integration to notify your team when a new incident has been created in Soda Cloud. With such an integration, Soda Cloud displays an external link to an incident-specific Slack channel in the **Incident Details**. 
 
 Refer to [Incidents]({% link soda-cloud/incidents.md %}) for more details about using incidents in Soda Cloud.
 
