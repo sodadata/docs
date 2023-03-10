@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### March 9, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.28.
+
 #### March 8, 2023
 * Added to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#checks-not-evaluated) with information about checks that return `[NOT EVALUATED]` results.
 * Added new content with advice to [Compare data using SodaCL]({% link soda-cl/compare.md %}).
