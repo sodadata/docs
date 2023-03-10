@@ -161,7 +161,7 @@ checks for dim_customer:
 
 ### Specify valid format
 
-If the data type of the column you are checking is TEXT (such as character, character varying, or string) then you can use the `valid format` configuration key. This config key uses built-in values that test the data in the column for specific formats, such as email address format, date format, or uuid format. See [List of valid formats](#list-of-format-values) below.
+If the data type of the column you are checking is TEXT (such as character, character varying, or string) then you can use the `valid format` configuration key. This config key uses built-in values that test the data in the column for specific formats, such as email address format, date format, or uuid format. See [List of valid formats](#list-of-valid-formats) below.
 
  The check below validates that all values in the `email_address` column conform to an email address format. 
 
