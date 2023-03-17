@@ -3,7 +3,7 @@
   "info": {
     "title": "Soda Cloud Reporting API (Preview)",
     "description": "\nThis API enables you to query reporting-oriented data from your Soda Cloud account.\nUse this data to power dashboards and reports on the coverage and quality of your data.\n\nAuthentication\n-----\nThe API supports both `HTTPBasic` authentication and `TokenAuth` authentication. Except for the `/get_token` endpoint,\nwhich only supports HTTP Basic authentication.\n\n- `HTTPBasic` authentication requires you to provide a username and password via headers. Each endpoint \"Try It\" section\nwill show you exactly how to do that.\n\n- `TokenAuth` requires that you obtain a Soda token from the `/get_token` endpoint using your username and password\nin accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token`\nendpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with\nany of the other endpoints.\n\n- `XApiKeyId` and `XApiKeySecret` allow you to use API keys generated in your Cloud Profile. Use this method if\nyour organization is using Single Sign-On (SSO). Provide your API Key Id and API Key Secret in the\n`X-API-KEY-ID` and `X-API-KEY-SECRET` headers, respectively. If you do not know how to generate your API Key and Secret\npair follow the\n[Connect Soda Core to Soda Cloud](https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud)\ndocumentation.\n\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required,\nin the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication\ncredentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
-    "version": "1.0.0a22"
+    "version": "1.0.0a27"
   },
   "servers": [
     {
@@ -58,7 +58,7 @@
               "title": "From Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2023-01-08T11:06:16.962009"
+              "default": "2023-02-13T16:15:02.655046"
             },
             "name": "from_datetime",
             "in": "query"
@@ -69,7 +69,7 @@
               "title": "To Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2023-02-08T11:06:16.962023"
+              "default": "2023-03-16T16:15:02.655061"
             },
             "name": "to_datetime",
             "in": "query"
@@ -134,7 +134,14 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/CheckResult" }
+                "schema": {
+                  "$ref": "#/components/schemas/CheckResult",
+                  "title": "Response Checks Coverage Checks Post",
+                  "anyOf": [
+                    { "$ref": "#/components/schemas/CheckResult" },
+                    { "$ref": "#/components/schemas/PaginatedResult" }
+                  ]
+                }
               }
             }
           },
@@ -188,7 +195,14 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/DatasetsResult" }
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetsResult",
+                  "title": "Response Datasets Coverage Datasets Post",
+                  "anyOf": [
+                    { "$ref": "#/components/schemas/DatasetsResult" },
+                    { "$ref": "#/components/schemas/PaginatedResult" }
+                  ]
+                }
               }
             }
           },
@@ -244,7 +258,14 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/CheckResultsResult" }
+                "schema": {
+                  "$ref": "#/components/schemas/CheckResultsResult",
+                  "title": "Response Check Results Quality Check Results Post",
+                  "anyOf": [
+                    { "$ref": "#/components/schemas/CheckResultsResult" },
+                    { "$ref": "#/components/schemas/PaginatedResult" }
+                  ]
+                }
               }
             }
           },
@@ -300,7 +321,14 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/DatasetHealthResult" }
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetHealthResult",
+                  "title": "Response Dataset Health Quality Dataset Health Post",
+                  "anyOf": [
+                    { "$ref": "#/components/schemas/DatasetHealthResult" },
+                    { "$ref": "#/components/schemas/PaginatedResult" }
+                  ]
+                }
               }
             }
           },
@@ -406,8 +434,8 @@
                   "page": 1,
                   "size": 400,
                   "status": "unresolved",
-                  "from_datetime": "2023-01-08T11:06:16.446868",
-                  "to_datetime": "2023-02-08T11:06:16.446879"
+                  "from_datetime": "2023-02-13T16:15:02.286125",
+                  "to_datetime": "2023-03-16T16:15:02.286134"
                 }
               }
             }
@@ -681,6 +709,15 @@
             "title": "Creator User Type",
             "type": "string",
             "description": "User type of the check creator."
+          },
+          "attributes": {
+            "title": "Attributes",
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "description": "Atributes of a check"
           }
         },
         "description": "Contains information about checks and their results on a per scan basis."
@@ -1198,6 +1235,40 @@
             "type": "string",
             "description": "UTC timestamp of the last scan run on a dataset.",
             "format": "date-time"
+          },
+          "attributes": {
+            "title": "Attributes",
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "description": "Atributes of a dataset"
+          },
+          "datasource_name": {
+            "title": "Datasource Name",
+            "type": "string",
+            "description": "\nName of the datasource in Soda Cloud coresponding to the name of the\n datasource in your configuration file."
+          },
+          "datasource_label": {
+            "title": "Datasource Label",
+            "type": "string",
+            "description": "Label of the datasource corresponding to the name displayed in Soda Cloud"
+          },
+          "datasource_source_owner": {
+            "title": "Datasource Source Owner",
+            "type": "string",
+            "description": "The name of the source application (e.g. soda-core) that owns the data source."
+          },
+          "datasource_owner_id": {
+            "title": "Datasource Owner Id",
+            "type": "string",
+            "description": "UUID corresponding the the configured datasource owner."
+          },
+          "datasource_has_core_agent_enabled": {
+            "title": "Datasource Has Core Agent Enabled",
+            "type": "boolean",
+            "description": "Boolean indicating whether the datasource is onboarded and part of a Soda Agent."
           }
         },
         "description": "Contains information about a dataset."
@@ -1405,14 +1476,14 @@
             "type": "string",
             "description": "ISO timestamp from which you want to retrieve incidents. Defaults to last 31 days.",
             "format": "date-time",
-            "default": "2023-01-08T11:06:16.446868"
+            "default": "2023-02-13T16:15:02.286125"
           },
           "to_datetime": {
             "title": "To Datetime",
             "type": "string",
             "description": "ISO timestamp up to which you want to retrieve incidents. Defaults to today.",
             "format": "date-time",
-            "default": "2023-02-08T11:06:16.446879"
+            "default": "2023-03-16T16:15:02.286134"
           }
         },
         "description": "Incidents request JSON Body."
@@ -1456,6 +1527,17 @@
           }
         },
         "description": "Response Schema of a NoContent Error"
+      },
+      "PaginatedResult": {
+        "title": "PaginatedResult",
+        "required": ["total", "page", "size"],
+        "type": "object",
+        "properties": {
+          "total": { "title": "Total", "type": "integer" },
+          "page": { "title": "Page", "type": "integer" },
+          "size": { "title": "Size", "type": "integer" }
+        },
+        "description": "Pydantic model for a basic paginated result with pagination info."
       },
       "ValidationError": {
         "title": "ValidationError",
