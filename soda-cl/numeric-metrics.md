@@ -29,7 +29,7 @@ checks for retail_orders_postgres:
   - stddev(order_quantity) > 0
   - stddev_pop(order_quantity) between 3 and 4
   - stddev_samp(order_quantity) not between 3 and 4
-  - sum(discount, order_quantity) < 120
+  - sum(discount) < 120
   - variance(discount) > 0
   - var_pop(discount) between 0 and 5
   - var_samp(discount) not between 0 and 5
@@ -135,8 +135,6 @@ checks for dim_reseller:
 
 #### Example with in-check filter
 
-*Known issue:* In-check filters on numeric checks is not consistently applied. <!--Github 1541-->
-
 ```yaml
 checks for dim_employee:
   - max(vacation_hours) < 80:
@@ -148,7 +146,7 @@ checks for dim_employee:
 
 ```yaml
 checks for dim_reseller:
-  - duplicate_count("phone", "address_line1") = 0
+  - duplicate_count("phone") = 0
 ```
 
 #### Example with dataset filter
