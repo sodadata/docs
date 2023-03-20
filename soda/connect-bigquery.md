@@ -156,9 +156,9 @@ soda:
               path: serviceaccount.json
 ```
 
-Use the following command to add the service account information to a Kubernetes secret that the Soda Agent consumes according to the configuration above.
+Use the following command to add the service account information to a Kubernetes secret that the Soda Agent consumes according to the configuration above; replace the angle brackets and the values in them with your own values.
 ```shell
-kubectl create secret -n <soda-agent-namespace> gcloud-credentials --from-file=serviceaccount.json=<local path to the serviceccount.json>
+kubectl create secret generic -n <soda-agent-namespace> gcloud-credentials --from-file=serviceaccount.json=<local path to the serviceccount.json>
 ```
 
 After you make both of these changes, you must redeploy the Soda Agent. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.   

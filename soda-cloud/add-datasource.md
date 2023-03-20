@@ -69,7 +69,7 @@ Access the data source-specific connection configurations listed below to copy+p
 
 During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. It captures basic information about each dataset, including a dataset's schema and the columns it contains.
 
-In the editing panel, specify the datasets that Soda Cloud should include or exclude from this basic discovery activity. The default syntax in the editing panel indicates that Soda Cloud will collect basic dataset information from all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character.
+In the editing panel, specify the datasets that Soda Cloud should include or exclude from this basic discovery activity. The default syntax in the editing panel instructs Soda to collect basic dataset information from all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character. See [Display profile information in Soda Cloud]({% link soda-cl/profile.md %}#limitations-and-known-issues) for more detail on profiling syntax.
 
 ```yaml
 discover datasets:
@@ -87,15 +87,15 @@ To gather more detailed profile information about datasets in your data source, 
 
 Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
 
-In the editing panel, provide details that Soda Cloud uses to determine which datasets to include or exclude when it profiles the columns in a dataset. The default syntax in the editing panel indicates that Soda will profile every column of every dataset in this data source, and, superfluously, all datasets with names that begin with `prod`.  The `%` is a wildcard character.
+In the editing panel, provide details that Soda Cloud uses to determine which datasets to include or exclude when it profiles the columns in a dataset. The default syntax in the editing panel instructs Soda to profile every column of every dataset in this data source, and, superfluously, all datasets with names that begin with `prod`.  The `%` is a wildcard character. See [Display profile information in Soda Cloud]({% link soda-cl/profile.md %}#limitations-and-known-issues) for more detail on profiling syntax.
 
-Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. 
+Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations]({% link soda-cl/profile.md %}#compute-consumption-and-cost-considerations) for more detail.
 
 ```yaml
 profile columns:
   columns:
-    - "%.%"    # Includes all your datasets
-    - "prod%"  # Includes all datasets that begin with 'prod'
+    - "%.%"  # Includes all your datasets
+    - prod%  # Includes all datasets that begin with 'prod'
 ```
 
 <br />
