@@ -279,6 +279,8 @@ checks for dim_customer:
       samples limit: 2
 ```
 
+See also: [Set a sample limit for a data source]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit)
+
 <br />
 
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check that collects failed row samples and has failed. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
