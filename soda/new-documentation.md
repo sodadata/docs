@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### March 30, 2023
+* Published content regarding the set up of [multiple Soda Cloud organizations]({% link soda-cloud/roles-and-rights.md %}#add-multiple-organizations) for use with different environments in your network infrastructure.
+
 #### March 9, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.28.
 

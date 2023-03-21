@@ -13,6 +13,7 @@ To manage the actions of members that belong to a single organization, Soda Clou
 
 [Roles and rights in your account](#roles-and-rights-in-your-account)<br />
 [Change organization roles and settings](#change-organization-roles-and-settings)<br />
+[Add multiple organizations](#add-multiple-organizations)<br />
 [Access an audit trail](#access-an-audit-trail)<br />
 [Access to resources](#access-to-resources)<br />
 [Default roles for datasets and checks](#default-roles-for-datasets-and-checks)<br />
@@ -65,6 +66,15 @@ As an Admin, login to your Soda Cloud account and navigate to **your avatar** > 
 | **Responsibilities** | Adjust the default settings for accessing new datasets. See [Change the default access to datasets](#change-the-default-access-to-datasets). |
 | **Integrations** | Connect Soda Cloud to your organization's Slack workspace. See how to [Integrate with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack). |
 | **Audit Trail** | Download a CSV file that contains user audit trail information. See [Access an audit trail](#access-an-audit-trail). |
+
+
+## Add multiple organizations
+
+You may find it useful to set up multiple organizations in Soda Cloud so that each corresponds with a different environment in your network infrastructure, such as production, staging, and development. Such a setup makes it easy for you and your team to access multiple, independent Soda Cloud organizations using the same profile, or login credentials.
+
+Note that Soda Cloud associates any [API keys]({% link soda-cloud/api-keys.md %}) that you generate within an organization with both your profile *and* the organization in which you generated the keys. API keys are not interchangeable between organizations.
+
+Contact <a href="mailto:support@soda.io">support@soda.io </a> to request multiple organizations for Soda Cloud.
 
 
 ## Access an audit trail
