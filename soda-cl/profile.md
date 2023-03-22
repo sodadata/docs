@@ -79,6 +79,7 @@ Reference the [section below](#define-an-automated-monitoring-check) for how to 
 * **Performance:** Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a selected few datasets to keep costs low. See [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
 * You cannot use quotes around dataset names with either profiling or dataset discovery.
 * If you wish, you can indicate to Soda to include all datasets in its dataset discovery or column profiling by using wildcard characters, as in `%.%`. Because YAML, upon which SodaCL is based, does not naturally recognize `%.%` as a string, you must wrap the value in quotes, as in the following example.
+
 ```yaml
 profile columns:
   columns:
