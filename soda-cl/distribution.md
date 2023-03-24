@@ -136,7 +136,7 @@ To create a DRO, you use the CLI command `soda update-dro`. When you execute the
 4. (Optional) Change the value for `distribution_type` to capture `categorical` or `continuous` data.
 5. (Optional) Define the value of `filter` to specify the portion of the data in your dataset for which you are creating a DRO. If you trained a model on data in which the `date_first_customer` column contained values between 2010-01-01 and 2020-01-01, you can use a filter based on that period to test whether the distribution of the column has changed since then. <br/>
 If you do not wish to define a filter, remove the key-value pair from the file.
-6. (Optional) In case of dealing with large datasets while creating a DRO (e.g. out of memory etc.), `sample` key can be used to define a database specific sampling query. The sample query is database specific. For example, for Postgres, the following query randomly samples 50% of the data with seed 61. For more information, refer to the [Define the sample size](#define-the-sample-size)<br/>
+6. (Optional) In case of dealing with large datasets while creating a DRO (e.g. out of memory etc.), `sample` key can be used to define a database specific sampling query. The sample query is database specific. For example, for Postgres, the following query randomly samples 50% of the data with seed 61. For more information, refer to the [define the sample size](#define-the-sample-size)<br/>
     ```yaml
     sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
     ```
@@ -209,7 +209,7 @@ If you do not wish to define a filter, remove the key-value pair from the file.
 
 5. (Optional), to filter the data in the distribution check, replace the value of `filter` with a filter that specifies the portion of the data in your dataset for which you are checking the distribution.
 
-6. (Optional), to sample the data in the distribution check, replace the value of `sample` with a query that specifies the portion of the data in your dataset for which you are checking the distribution. The query must be supported by the database you are using. For example, for PostgreSQL, you can use the `TABLESAMPLE` clause to randomly sample 50% of the data with seed 61. Sampling is encouraged for large datasets that might not fit in memory. For more information, refer to the [Define the sample size](#define-the-sample-size).
+6. (Optional), to sample the data in the distribution check, replace the value of `sample` with a query that specifies the portion of the data in your dataset for which you are checking the distribution. The query must be supported by the database you are using. For example, for PostgreSQL, you can use the `TABLESAMPLE` clause to randomly sample 50% of the data with seed 61. Sampling is encouraged for large datasets that might not fit in memory. For more information, refer to the [define the sample size](#define-the-sample-size).
 
 7. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to [Soda Core documentation]({% link soda-core/scan-core.md %}) for more details.
 
