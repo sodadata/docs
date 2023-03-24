@@ -136,7 +136,7 @@ To create a DRO, you use the CLI command `soda update-dro`. When you execute the
 4. (Optional) Change the value for `distribution_type` to capture `categorical` or `continuous` data.
 5. (Optional) Define the value of `filter` to specify the portion of the data in your dataset for which you are creating a DRO. If you trained a model on data in which the `date_first_customer` column contained values between 2010-01-01 and 2020-01-01, you can use a filter based on that period to test whether the distribution of the column has changed since then. <br/>
 If you do not wish to define a filter, remove the key-value pair from the file.
-6. (Optional) In case of dealing with large datasets while creating a DRO (e.g. out of memory etc.), `sample` key can be used to define a database specific sampling query. The sample query is database specific. For example, for Postgres, the following query randomly samples 50% of the data with seed 61. <br/>
+6. (Optional) In case of dealing with large datasets while creating a DRO (e.g. out of memory etc.), `sample` key can be used to define a database specific sampling query. The sample query is database specific. For example, for Postgres, the following query randomly samples 50% of the data with seed 61. For more information, refer to the [Define the sample size](#define-the-sample-size)<br/>
     ```yaml
     sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
     ```
@@ -209,7 +209,7 @@ If you do not wish to define a filter, remove the key-value pair from the file.
 
 5. (Optional), to filter the data in the distribution check, replace the value of `filter` with a filter that specifies the portion of the data in your dataset for which you are checking the distribution.
 
-6. (Optional), to sample the data in the distribution check, replace the value of `sample` with a query that specifies the portion of the data in your dataset for which you are checking the distribution. The query must be supported by the database you are using. For example, for PostgreSQL, you can use the `TABLESAMPLE` clause to randomly sample 50% of the data with seed 61. Sampling is encouraged for large datasets that might not fit in memory.
+6. (Optional), to sample the data in the distribution check, replace the value of `sample` with a query that specifies the portion of the data in your dataset for which you are checking the distribution. The query must be supported by the database you are using. For example, for PostgreSQL, you can use the `TABLESAMPLE` clause to randomly sample 50% of the data with seed 61. Sampling is encouraged for large datasets that might not fit in memory. For more information, refer to the [Define the sample size](#define-the-sample-size).
 
 7. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to [Soda Core documentation]({% link soda-core/scan-core.md %}) for more details.
 
@@ -246,6 +246,58 @@ number_of_bins = np.histogram_bin_edges(arr, bins='auto').size # return 3466808
 If the number of bins is greater than the size of data, Soda uses [interquantile range (IQR)](https://en.wikipedia.org/wiki/Interquartile_range) to detect and filter the outliers. Basically, for data that is greater than `Q3 + 1.5 IQR` and less than `Q1 - 1.5 IQR` Soda removes the datasets, then recomputes the number of bins with the same method by taking the maximum of [Sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [Freedman Diaconis Estimator](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule).
 
 After removing the outliers, if the number of bins still exceeds the size of the filtered data, Soda takes the square root of the dataset size to set the number of bins. To cover edge cases, if the square root of dataset size exceeds one million, then Soda sets the number of bins to one million to prevent it from generating too many bins.
+
+### Define the sample size
+
+You can add a `sample` parameter for both distribution check and DRO to include a sample SQL clause that Soda passes when it executes the check during a scan.
+
+#### Using distribution check with sample
+If the data that you want to apply distribution check does not fit in memory or there is a time constraint, it is recommended to use `sample` to specify a SQL query that returns a sample of the data. The SQL query that you provide is specific to the type of data source you use. In the example below, the SQL query for a Postgres data source randomly samples 50% of the data with seed 61. You can customize the `sample` SQL query to meet your needs.
+
+```yaml
+checks for dim_customer:
+  - distribution_difference(number_cars_owned) > 0.05:
+      distribution reference file: ./cars_owned_dist_ref.yml 
+      method: chi_square
+      # (optional) database specific sampling query, for example for postgres\
+      # the following query randomly samples 50% of the data with seed 61
+      sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
+```
+
+#### Using DRO with sample
+While generating a DRO, you can also specify a `sample` parameter to create a DRO using sampled data. The SQL query that you provide is specific to the type of data source you use.
+```yaml
+dataset: your_dataset_name
+column: column_name_in_dataset
+distribution_type: categorical
+# (optional) database specific sampling query, for example for postgres\
+# the following query randomly samples 50% of the data with seed 61
+sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
+```
+
+#### Sampling Caveats
+Some data sources does not have a built-in sampling function. For example, BigQuery does not support `TABLESAMPLE BERNOULLI`. In this case, we can leverage `filter` tag to randomly get a sample. `filter` key basically applies a datasource specific SQL `WHERE` clause to the data. In the example below, the SQL query for a BigQuery data source randomly samples 50% of the data.
+
+**DRO**
+```yaml
+dataset: your_dataset_name
+column: column_name_in_dataset
+distribution_type: categorical
+# (optional) database specific sampling query, for example for postgres\
+# the following query randomly samples 50% of the data
+filter: rand() < 0.5
+```
+
+**Distribution Check**
+```yaml
+checks for dim_customer:
+  - distribution_difference(number_cars_owned) > 0.05:
+      distribution reference file: ./cars_owned_dist_ref.yml 
+      method: chi_square
+      # (optional) database specific sampling query, for example for postgres\
+      # the following query randomly samples 50% of the data
+      filter: rand() < 0.5
+```
 
 ## Distribution check examples
 
