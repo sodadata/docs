@@ -19,12 +19,12 @@ Soda Cloud is able to act as a service provider for any SAML 2.0 SSO identity pr
 
 * [Azure Active Directory](#add-soda-cloud-to-azure-ad)
 * [Okta](#add-soda-cloud-to-okta)
+* [Google Workspace](#add-soda-cloud-to-google-workspace)
 
 Soda has tested and confirmed that SSO setup works with the following identity providers:
 
 * OneLogin
 * Auth0 
-* Google Cloud Identity Platform
 
 ## SSO access to Soda Cloud
 
@@ -98,6 +98,28 @@ The values for these fields are unique to your organization and are provided to 
 12. Test the integration by assigning the Soda application in Okta to a single user, then requesting that they log in.
 13. After a successful single-user test of the sign in, assign access to the Soda Okta app to users and/or user groups in your organization.
 
+
+## Add Soda Cloud to Google Workspace
+
+1. Contact <a href="mailto:support@soda.io">Soda Support</a> to request SSO set-up for Soda Cloud. Soda Support sends you specific values you need to configure the set up with your identity provider.
+1. As an administrator in your Google Workspace, access the admin portal, then navigate to **Apps** > **SAML Apps**. Click the plus sign to add a new app.
+2. In Step 1, click to select **Setup my own custom app**.
+3. In Step 2, record the values of the following Google IDP Information that Soda requires for setup. 
+* **SSO URL**
+* **Entity ID**
+* **Certificate** 
+4. In Step 3, provide a name for the application, Soda Cloud, and upload the <a href="soda-logo.png" download>Soda logo</a>.
+5. In Step 4, use the values that Soda Support provided to complete in the following fields. The values for these fields are unique to your organization and they follow this pattern: `https://cloud.soda.io/sso/<your-organization-identifier>/saml`.
+* **ACS URL (Assertion Consumer Service):**
+* **Entity ID:** 
+* **Signed Response:** check the box
+* **Name ID:** Select **Basic Information** and **Primary Email**
+6. In Step 5, map three case sensitive attributes to your Google Workspace users, then complete the workflow to save.
+* **Email:** Basic Information > Primary Email
+* **FirstName:** Basic Information > First Name
+* **LastName:** Basic Information > Last Name
+11. Send the values and certificate from Step 2 to the Soda support team via email to <a href="mailto:support@soda.io" target="_blank">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
+12. In the Google Workspace admin portal, return to **Apps** > **SAML Apps**, find the Soda app, then click the stacked dots and select **On for everyone**.
 
 
 ## Go further

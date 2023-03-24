@@ -54,14 +54,20 @@ data_source my_datasource_name:
 
 ### Private key authentication
 
-You can use the `private_key` parameter to specify key-value pairs for key pair authentication. In you configuration YML file, add the parameter as per the following example: 
-```yml
-  private_key: |
-     -----BEGIN ENCRYPTED PRIVATE KEY-----
-     MIIExxxxxxxxxxxxxxxxxxxxucRqSZaS
-     ...
-
-     -----END ENCRYPTED PRIVATE KEY-----
+You can use the `private_key` and `private_key_passphrase` parameters to specify for key pair authentication. In you configuration YML file, add the parameters as per the following example. 
+```yaml
+data_source snowflake:
+  type: snowflake
+  connection:
+    username: xxxyyyzzz
+    ...
+    client_session_keep_alive: true
+    Authenticator: SNOWFLAKE_JWT
+    schema: TPCH_SF1
+    private_key_passphrase: "123xxx"
+    private_key: |
+      -----BEGIN ENCRYPTED PRIVATE KEY-----
+      -----END ENCRYPTED PRIVATE KEY-----
 ```
 
 {% include test-connection.md %}
