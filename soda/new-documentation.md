@@ -9,6 +9,11 @@ parent: Reference
 
 <br />
 
+#### March 24, 2023
+* Added content to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check) to address challenges when using a reference check with a dataset filter.
+* Added instructions to add Soda Cloud to [Google Workspace as a SAML app]({% link soda-cloud/sso.md %}#add-soda-cloud-to-google-workspace).
+* Added parameter to Snowflake connection details for using private key encryption for [private key authentication]({% link soda/connect-snowflake.md %}#private-key-authentication).
+
 #### March 21, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.29 and Soda Core 3.0.30.
 * Added instructions for [limiting samples]({% link soda-cl/failed-rows-checks.md %}(#set-a-sample-limit)) for an entire data source.
