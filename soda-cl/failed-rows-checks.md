@@ -161,6 +161,17 @@ checks for dim_customer:
       fail condition: total_children = '2' and number_cars_owned >= 3
 ```
 
+If you wish to set a limit on the samples that Soda collects for an entire data source, you can do so by adjusting the configuration YAML file, or editing the Data Source connection details in Soda Cloud, as per the following syntax. 
+
+```yaml
+data_source soda_test:
+  type: postgres
+  host: xyz.xya.com
+  ...
+  sampler:
+    samples_limit: 99
+```
+
 Additionally, you can [Disable failed rows sampling for specific columns](#disable-failed-rows-sampling-for-specific-columns). 
 
 <br />
@@ -219,7 +230,11 @@ checks for dim_customers:
 
 ## Disable failed rows sampling for specific columns
 
-For checks which implicitly or explicitly collect [failed rows samples](#about-failed-row-samples), you can add a configuration to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. On a related note, you can [Set a sample limit](#set-a-sample-limit) to `0` on an individual check to avoid collecting or sending failed row samples.
+For checks which implicitly or explicitly collect [failed rows samples](#about-failed-row-samples), you can add a configuration to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
+
+See also:
+* [Set a sample limit](#set-a-sample-limit) to `0` on an individual check to avoid collecting or sending failed row samples.
+* [Set a sample limit](#set-a-sample-limit) for an entire data source.
 
 For example, you may wish to exclude a column that contains personal identifiable information (PII) such as credit card numbers from the Soda query that collects samples. 
 
