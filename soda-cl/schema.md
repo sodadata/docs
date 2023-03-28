@@ -56,7 +56,7 @@ checks for dim_product:
 
 ## Define schema checks
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), schema checks are unique. Schema checks always employ alert configurations -- specifying warn and/or fail alert conditions -- with **validation keys** that are unique to this type of check. Refer to [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) for exhaustive alert configuration details.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), schema checks are unique. Schema checks always employ alert configurations -- specifying warn and/or fail alert conditions -- with **validation keys**. Refer to [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) for exhaustive alert configuration details.
 
 The validation key:value pairs in schema checks set the conditions for a warn or a fail check result. See a [List of validation keys](#list-of-validation-keys) below. 
 
@@ -72,7 +72,7 @@ checks for dim_product:
           - weight
 ```
 
-In the example above, the value for the validation key is in a nested list format, but you can use an inline list of comma-separated values inside square brackets instead. The following example yields identical checks results to the example above.
+In the example above, the values for the validation key are in a nested list format, but you can use an inline list of comma-separated values inside square brackets instead. The following example yields identical checks results to the example above.
 
 ```yaml
 checks for dim_product:
@@ -108,7 +108,7 @@ Rather than specifying exact parameters for column changes, you can use the `whe
 
 This type of validation key requires a **Soda Cloud** account. If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future schema checks. Therefore, you must have a created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to use schema evolution checks.
 
-Soda Cloud must have at least two measurements to yield a check result. In other words, the first time you run a scan to execute a schema evolution check, Soda returns no results because it has nothing against which to compare; the second scan that executes the check yields a check result.
+Soda Cloud must have at least two measurements to yield a check result. In other words, the first time you run a scan to execute a schema evolution check, Soda does not evaluate the check because it has nothing against which to compare; the second scan that executes the check yields a check result.
 
 ```yaml
 checks for dim_customer:
@@ -188,9 +188,9 @@ for each dataset T:
   datasets:
     - dim_product_%
   checks:
-    schema:
-      warn:
-        when schema changes: any
+    - schema:
+       warn:
+         when schema changes: any
 ```
 
 #### Example with dataset filter

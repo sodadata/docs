@@ -5,10 +5,12 @@ description: Use a SodaCL group by configuration to customize the group of check
 parent: SodaCL
 ---
 
-# Group by
+# Group by <sup>![preview](/assets/images/preview.png){:height="70px" width="70px"}</sup>
 *Last modified on {% last_modified_at %}*
 
 Use a group by configuration to collect and present check results by category. 
+
+See also: [Group evolution check]({% link soda-cl/group-evolution.md %}) 
 
 ```yaml
 checks for dim_employee:
@@ -57,16 +59,16 @@ checks for dim_employee:
             name: Too much vacation
 ```
 
-| `group by` | configuration section label |
-| `group_limit` | the maximum number of groups, or column values, into which Soda must categorize the results. This value must correspond with the number of unique values in the column you identify in the `fields` section.  |
-| `query` | custom query subsection label. The nested SQL query defines the custom metric `vacation_calc`|
-| `fields`| column subsection label |
-| `marital_status`| column identifier; the values in this column identify how Soda groups the results. In the example, the column contains `[M]` for the married group, and `[S]` for the single group. |
-| `checks` | check subsection label |
-| `vacation_calc`| custom metric identifier  |
-| `fail: when > 60` | fail condition and threshold |
-| `warn: when between 50 and 60` | warn condition and threshold |
-| `name` | custom name for the check |
+| `group by` | required | configuration section label |
+| `group_limit` | optional | the maximum number of groups, or column values, into which Soda must categorize the results. This value must correspond with the number of unique values in the column you identify in the `fields` section.  |
+| `query` | required | custom query subsection label. The nested SQL query defines the custom metric `vacation_calc`|
+| `fields`| required | column subsection label |
+| `marital_status`| required | column identifier; the values in this column identify how Soda groups the results. In the example, the column contains `[M]` for the married group, and `[S]` for the single group. |
+| `checks` | required | check subsection label |
+| `vacation_calc`| required | custom metric identifier  |
+| `fail: when > 60` | only one alert condition is required | fail condition and threshold |
+| `warn: when between 50 and 60` | only one alert condition is required | warn condition and threshold |
+| `name` | required | custom name for the check |
 
 
 ## Group by check results
@@ -179,14 +181,14 @@ Oops! 12 failures. 0 warnings. 0 errors. 0 pass.
 
 | Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
-| ✓ | Define a name for a group by check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
+| ✓ | Define a name for a group by check; see [example](#example-with-check-name). For group by configurations, this normally optional parameter is required. |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration) | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters in the value in the check. | Use wildcard values as you would with SQL. |
 |   | Use for each to apply group by checks to multiple datasets in one scan. | - |
-| ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+|  | Apply a dataset filter to partition data during a scan. | - |
 
 #### Example with check name
 
@@ -242,14 +244,13 @@ checks for dim_employee:
         - vacation_hours > 60:
             name: Too many vacation hours
 ```
-
-#### Example with dataset filter
-
-
-
+<br />
 
 ## Go further
 
+* Use a [group evolution check]({% link soda-cl/group-evolution.md %}) to surface changes in groups in a dataset.
+* Learn more about [alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations).
+* Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

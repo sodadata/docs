@@ -10,7 +10,7 @@ parent: Reference
 <br />
 
 #### March 30, 2023
-* Added documentation for the new [Group by]({% link soda-cl/group-by.md %}) configuration in SodaCL.
+* Added preview documentation for the new [Group by]({% link soda-cl/group-by.md %}) configuration and [Group evolution check]({% link soda-cl/group-evolution.md %}), both in preview state in SodaCL.
 
 #### March 24, 2023
 * Added content to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check) to address challenges when using a reference check with a dataset filter.
