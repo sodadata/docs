@@ -12,6 +12,8 @@ redirect_from: /soda-cl/row-count.html
 
 Use a cross check to compare row counts between datasets within the same, or different, data sources.
 
+See also: [Compare data using SodaCL]({% link soda-cl/compare.md %})
+
 ```yaml
 checks for dim_customer:
 # Check row count between datasets in one data source

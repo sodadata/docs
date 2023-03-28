@@ -11,6 +11,8 @@ parent: SodaCL
 
 Use a reference check to validate that column contents match between datasets in the same data source. 
 
+See also: [Compare data using SodaCL]({% link soda-cl/compare.md %})
+
 ```yaml
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
@@ -36,12 +38,6 @@ checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
 ```
 
-You can use reference checks to compare the values of multiple columns in different datasets, as in the following example. Soda compares the columns in the order you list them, so in the example below, `last_name` compares to `last_name`, and `first_name` compares to `first_name`.
-
-```yaml
-checks for dim_customers_dev:
-  - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name)
-```
 
 ### Failed row samples
 
