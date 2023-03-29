@@ -37,9 +37,7 @@ Once your organization enables SSO for all Soda Cloud users, Soda Cloud blocks a
 
 ## Add Soda Cloud to Azure AD
 
-Use the procedure below to set up Soda Cloud as a web-based application (also known as a service provider) for your users in Azure AD.
-
-1. Contact <a href="mailto:support@soda.io">Soda Support</a> to request SSO set-up for Soda Cloud. Soda Support sends you specific values you need to configure the set up with your identity provider.
+1. Open a <a href="https://soda-io.zendesk.com/">Zendesk Support ticket</a> to request SSO set-up for Soda Cloud and provide your Soda Cloud organization identifier, accessible via **your avatar** > **Organization Settings**, in the **Organization** tab. <br />Soda Support sends you the URL that you need to configure the set up with your identity provider.
 2. As a user with sufficient privileges in your organization's Azure AD account, sign in through <a href="http://portal.azure.com" target="_blank">portal.azure.com<a/>, then navigate to **Enterprise applications**. Click **New application**.
 3. Click **Create your own application**.
 4. In the right pane that appears, provide a name for your app, such as Soda Cloud, then select the **(Non-gallery)** option. Click **Create**.
@@ -51,8 +49,8 @@ Use the procedure below to set up Soda Cloud as a web-based application (also kn
 <br />
 <br />
 7. In the **Basic SAML Configuration** panel, there are two fields to populate: 
-* **Identifier**
-* **Reply URL**. <br />
+* **Identifier** (your Soda Cloud organization identifier)
+* **Reply URL** <br />
 The values for these fields are unique to your organization and are provided to you by Soda and they follow this pattern: `https://cloud.soda.io/sso/<short-name>/saml`.
 8. Click **Save**, then close the confirmation message pop-up.
 9. In the **User Attributes & Claims** panel, click **Edit** to add some attribute mappings.
@@ -66,21 +64,19 @@ The values for these fields are unique to your organization and are provided to 
 * **Azure AD Identifier** (Section 4 in Azure). This is the IdP entity, ID, or Identity Provider Issuer that Soda needs
 * **Login URL** (Section 4 in Azure). This is the IdP SSO service URL, or Identity Provider Single Sign-On URL that Soda needs.
 * **X.509 Certificate**. Click the **Download** link next to **Certificate (Base64)**.
-12. Send the values and certificate to the Soda support team via email to <a href="mailto:support@soda.io" target="_blank">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion. 
+12. Add the copied and downloaded values to the Zendesk ticket. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
 13. Test the integration by assigning the Soda application in Azure AD to a single user, then requesting that they log in.
 14. After a successful single-user test of the sign in, assign access to the Soda Azure AD app to users and/or user groups in your organization.
 
 ## Add Soda Cloud to Okta
 
-Use the procedure below to set up Soda Cloud as a web-based application (also known as a service provider) for your users in Okta.
-
-1. Contact <a href="mailto:support@soda.io">Soda Support</a> to request SSO set-up for Soda Cloud. Soda Support sends you specific values you need to configure the set up with your identity provider.
+1. Open a <a href="https://soda-io.zendesk.com/">Zendesk Support ticket</a> to request SSO set-up for Soda Cloud and provide your Soda Cloud organization identifier, accessible via **your avatar** > **Organization Settings**, in the **Organization** tab. <br />Soda Support sends you the URL that you need to configure the set up with your identity provider.
 2. As an Okta Administrator, log in to Okta and navigate **Applications** > **Applications overview**, then click **Create App Integration**.
 3. Select **SAML 2.0**.
 4. Provide a name for the application, Soda Cloud, and upload the <a href="soda-logo.png" download>Soda logo</a>.
 5. Click **Next**. In the **Configure SAML** tab, there are two fields to populate:
 * **Single sign on URL**
-* **Audience URI (SP Entity ID)**. <br />
+* **Audience URI (SP Entity ID)** (your Soda Cloud organization identifier) <br />
 The values for these fields are unique to your organization and are provided to you by Soda and they follow this pattern: `https://cloud.soda.io/sso/<your-organization-identifier>/saml`.
 6. Be sure to use an email address as the application username.
 7. Scroll down to **Attribute Statements** to map the following values, then click **Next** to continue.
@@ -94,16 +90,14 @@ The values for these fields are unique to your organization and are provided to 
 * **Identity Provider Single Sign-On URL**
 * **Identity Provider Issuer**
 * **X.509 Certificate**
-11. Send the values and certificate to the Soda support team via email to <a href="mailto:support@soda.io" target="_blank">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
+11. Add the copied and downloaded values to the Zendesk ticket. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
 12. Test the integration by assigning the Soda application in Okta to a single user, then requesting that they log in.
 13. After a successful single-user test of the sign in, assign access to the Soda Okta app to users and/or user groups in your organization.
 
 
 ## Add Soda Cloud to Google Workspace
 
-1. Contact <a href="mailto:support@soda.io">Soda Support</a> to request SSO set-up for Soda Cloud. Soda Support sends you specific values you need to configure the set up with your identity provider.
-* **ACS (Assertion Consumer Service) URL** which follows this pattern: `https://cloud.soda.io/sso/<your-organization-identifier>/saml`
-* **Entity ID**
+1. Open a <a href="https://soda-io.zendesk.com/">Zendesk Support ticket</a> to request SSO set-up for Soda Cloud and provide your Soda Cloud organization identifier, accessible via **your avatar** > **Organization Settings**, in the **Organization** tab. <br />Soda Support sends you the URL that you need to configure the set up with your identity provider.
 2. As an administrator in your Google Workspace, follow the instructions in <a href="https://support.google.com/a/answer/6087519?hl=en&ref_topic=7559288" target="_blank">Google Workspace documentation</a> to **Set up your own custom SAML application**.
 3. Optionally, upload the <a href="soda-logo.png" download>Soda logo</a> so it appears in the app launcher with the logo instead of the first two letters of the app name.  
 4. On the **Google Identity Provider details** page, be sure to copy or download the following values:
@@ -111,7 +105,7 @@ The values for these fields are unique to your organization and are provided to 
 * **Entity ID**
 * **IDP metadata**
 * **Certificate** 
-5. Send the values and downloaded IDP details to the Soda support team via email to <a href="mailto:support@soda.io" target="_blank">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
+5. Add the copied and downloaded values to the Zendesk ticket. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
 6. In the Google Workspace admin portal, use Google's instructions to <a href="https://support.google.com/a/answer/6087519?hl=en&ref_topic=7559288" target="_blank">Turn on your SAML app</a> and verify that SSO works with the new custom app for Soda.
 
 
