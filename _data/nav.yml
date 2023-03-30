@@ -38,6 +38,8 @@
     page: soda/connect-duckdb.md
   - subtitle: Connect to IBM DB2
     page: soda/connect-db2.md
+  - subtitle: Connect to a local file
+    page: soda/connect-file.md
   - subtitle: Connect to MS SQL Server
     page: soda/connect-mssql.md
   - subtitle: Connect to MySQL
@@ -70,9 +72,11 @@
     page: soda-agent/deploy.md
   - subtitle: Deploy an agent in Amazon
     page: soda-agent/deploy-aws.md
-  - subtitle: Deploy an agent in Azure (Preview) 
+  - subtitle: Connect to Soda Cloud via AWS PrivateLink
+    page: soda-agent/private-link.md
+  - subtitle: Deploy an agent in Azure
     page: soda-agent/deploy-azure.md
-  - subtitle: Deploy an agent in Google (Preview)
+  - subtitle: Deploy an agent in Google
     page: soda-agent/deploy-google.md
   - subtitle: Manage sensitive values
     page: soda-agent/secrets.md
@@ -82,7 +86,6 @@
     page: soda-agent/upgrade.md
   - subtitle: Helpful kubectl commands
     page: soda-agent/helpful-commands.md
-
 
 - title: Soda Cloud
   page: soda-cloud/overview.md
@@ -107,10 +110,10 @@
     page: soda-cloud/failed-rows.md
   - subtitle: Create and track incidents
     page: soda-cloud/incidents.md
-  - subtitle: Generate API keys
-    page: soda-cloud/api-keys.md
   - subtitle: Soda Cloud architecture
     page: soda-cloud/soda-cloud-architecture.md
+  - subtitle: Generate API keys
+    page: soda-cloud/api-keys.md
   - subtitle: Soda Cloud resources
     page: soda-cloud/resource-map.md
   - subtitle: Single sign-on with Soda Cloud
@@ -162,7 +165,9 @@
     page: soda-cl/sample-datasets.md
   - subtitle: Custom check templates
     page: soda-cl/check-templates.md
-  - subtitle: Troubleshoot
+  - subtitle: Compare data using SodaCL
+    page: soda-cl/compare.md
+  - subtitle: Troubleshoot SodaCL
     page: soda-cl/troubleshoot.md
 
 - title: Soda Core 

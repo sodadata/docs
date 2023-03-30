@@ -6,6 +6,7 @@ parent: SodaCL
 ---
 
 # User-defined checks 
+<!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
 If the built-in set of [metrics and checks]({% link soda-cl/metrics-and-checks.md %}) that SodaCL offers do not quite give you the information you need from a scan, you can define your own metrics to customize your checks. User-defined checks essentially enable you to create common-table expressions or SQL queries that Soda Core runs during a scan.

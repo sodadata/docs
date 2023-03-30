@@ -29,7 +29,7 @@ checks for retail_orders_postgres:
   - stddev(order_quantity) > 0
   - stddev_pop(order_quantity) between 3 and 4
   - stddev_samp(order_quantity) not between 3 and 4
-  - sum(discount, order_quantity) < 120
+  - sum(discount) < 120
   - variance(discount) > 0
   - var_pop(discount) between 0 and 5
   - var_samp(discount) not between 0 and 5
@@ -127,8 +127,6 @@ checks for dim_reseller:
 
 #### Example with in-check filter
 
-*Known issue:* In-check filters on numeric checks is not consistently applied. <!--Github 1541-->
-
 ```yaml
 checks for dim_employee:
   - max(vacation_hours) < 80:
@@ -140,7 +138,7 @@ checks for dim_employee:
 
 ```yaml
 checks for dim_reseller:
-  - duplicate_count("phone", "address_line1") = 0
+  - duplicate_count("phone") = 0
 ```
 
 #### Example with dataset filter
@@ -171,8 +169,8 @@ for each dataset T:
 | ------  | ----------- | ------------------- | ---------------------- |
 | `avg`  | The average value in a numeric column. | number | all  |
 | `avg_length`  | The average length in a text column. | text | all  |
-| `duplicate_count`  | The number of rows that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>Include more than one column in the argument to compare values across columns. See also: [Duplicate check]({% link soda/quick-start-sodacl.md %}#duplicate-check)| number<br /> text<br /> time | all  |
-| `duplicate_percent`  | The percentage of rows in a dataset that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>Include more than one column in the argument to compare values across columns. | number<br /> text<br /> time | all  |
+| `duplicate_count`  | The number of rows that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>See also: [Duplicate check]({% link soda/quick-start-sodacl.md %}#duplicate-check)| number<br /> text<br /> time | all  |
+| `duplicate_percent`  | The percentage of rows in a dataset that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. | number<br /> text<br /> time | all  |
 | `max`  | The greatest value in a numeric column. | number | all  |
 | `max_length`  | The greatest length in a text column. | text | all |
 | `min`  | The smallest value in a numeric column. | number | all  |

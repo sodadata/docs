@@ -11,6 +11,8 @@ parent: SodaCL
 
 Use a reference check to validate that column contents match between datasets in the same data source. 
 
+See also: [Compare data using SodaCL]({% link soda-cl/compare.md %})
+
 ```yaml
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
@@ -36,12 +38,6 @@ checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
 ```
 
-You can use reference checks to compare the values of multiple columns in different datasets, as in the following example. Soda compares the columns in the order you list them, so in the example below, `last_name` compares to `last_name`, and `first_name` compares to `first_name`.
-
-```yaml
-checks for dim_customers_dev:
-  - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name)
-```
 
 ### Failed row samples
 
@@ -67,14 +63,14 @@ To review the failed rows samples and analysis in Soda Cloud, navigate to the **
 
 | Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
-| ✓ | Define a name for a schema check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
+| ✓ | Define a name for a reference check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
 |   | Define alert configurations to specify warn and fail alert conditions. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |
-|   | Use for each to apply schema checks to multiple datasets in one scan. | - |
-|   | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+|   | Use for each to apply reference checks to multiple datasets in one scan. | - |
+| ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 #### Example with check name 
 
@@ -91,11 +87,25 @@ checks for dim_department_group:
   - values in ("department_group_name") must exist in dim_employee ("department_name")
 ```
 
+#### Example with dataset filter
+
+Refer to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check) to address challenges specific to reference checks with dataset filters.
+
+```yaml
+filter customers_c8d90f60 [daily]:
+  where: ts > TIMESTAMP '${NOW}' - interval '100y'
+
+checks for customers_c8d90f60 [daily]:
+  - values in (cat) must exist in customers_europe (cat2)
+```
+
 <br />
 
 ## Go further
 
+
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
+* Learn more about [Comparing data using SodaCL]({% link soda-cl/compare.md %}).
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).

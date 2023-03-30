@@ -105,18 +105,10 @@ sample datasets:
 |   | Add an identity to a check. |  -  |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+|   | Use quotes when identifying dataset names. | - |
 | ✓ | Use wildcard characters ({% raw %} % {% endraw %} with dataset names in the check; see [example](#example-with-wildcards). | - |
 |   | Use for each to apply anomaly score checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan. |  -  |
-
-#### Example with quotes
-
-```yaml
-sample datasets:
-  datasets:
-    - include "prod_customer"
-```
 
 #### Example with wildcards 
 
@@ -139,7 +131,7 @@ Where your datasets contain sensitive or private information, you may *not* want
 {% include disable-all-samples.md %}
 
 <br />
-Note that you cannot use an `exclude_columns` configuration to disable sample row collections from specific columns in a dataset. That configuration applies only to [disabling failed rows sampling]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+Note that you cannot use an `exclude_columns` configuration to disable sample row collections from specific columns in a dataset. That configuration applies _only_ to [disabling failed rows sampling]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
 ## Go further
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

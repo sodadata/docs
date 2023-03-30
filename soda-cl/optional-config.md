@@ -41,6 +41,7 @@ checks for dim_employee:
 
 * Be sure to add the `:` to the end of your check, before the nested content.
 * If `name` is configured, Soda Core sends the value of `name` to Soda Cloud as the check identifier.
+* Avoid applying the same customized check names in multiple [agreements]({% link soda-cloud/agreements.md %}#2-write-checks). Soda Cloud associates check results with agreements according to name so if you reuse custom names, Soda Cloud may become confused about which agreement to which to link check results.
 
 <br />
 
@@ -280,15 +281,40 @@ checks for dim_customer:
       samples limit: 20
 ```
 
+See also: [Set a sample limit for a data source]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit)
+
 <br />
 
 To review the failed rows samples and analysis in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a failed check that collected samples. Examine failed rows in the **Failed rows** tab, or the **Failed Row Analysis** tab if you connected Soda Cloud to a Soda Agent; see [Analyze failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+
+<br />
+
+### Disable failed row samples
+
+Where your datasets contain sensitive or private information, you may *not* want to send failed row samples from your data source to Soda Cloud. In such a circumstance, you can disable the feature completely in Soda Cloud.
+
+{% include disable-all-samples.md %}
+
+<br />
 
 ### Disable failed row samples for specific columns
 
 For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
 
 Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+
+<br />
+
+### Disable failed row samples for individual checks
+
+For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
+
+```yaml
+checks for dim_customer:
+  - missing_percent(email_address) < 50:
+      samples limit: 0
+```
+<br />
 
 
 ## Go further

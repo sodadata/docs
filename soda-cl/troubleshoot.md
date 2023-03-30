@@ -12,6 +12,9 @@ parent: SodaCL
 [Soda does not recognize variables](#soda-does-not-recognize-variables)<br />
 [Missing check results in Soda Cloud](#missing-check-results-in-soda-cloud)<br />
 [Metrics were not computed for check](#metrics-were-not-computed-for-check)<br />
+[Errors with freshness checks](#errors-with-freshness-checks)<br />
+[Checks not evaluated](#checks-not-evaluated)<br />
+[Filter not passed with reference check](#filter-not-passed-with-reference-check)<br />
 <br />
 
 ## Errors with valid format
@@ -76,6 +79,93 @@ See also: [Configure a single scan to run in multiple environments]({% link soda
 However, if you were including the schema in the dataset identifier in an attempt to run the same set of checks against multiple environments, you can do so using the instructions to [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}##configure-the-same-scan-to-run-in-multiple-environments).
 
 See also: [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity)
+
+## Errors with freshness checks
+
+**Problem:** When you run a scan to execute a freshness check, the CLI returns one of the following error message.  
+
+```shell
+Invalid staleness threshold "when < 3256d"
+  +-> line=2,col=5 in checks_test.yml
+
+```
+
+```shell
+Invalid check "freshness(start_date) > 1d": no viable alternative at input ' >'
+```
+
+**Solution:** The error indicates that you are using an incorrect comparison symbol. Remember that freshness checks can only use `<` in check, unless the freshness check employs an alert configuration, in which case it can only use `>` in the check. 
+
+<br />
+
+**Problem:** When you run a scan to execute a freshness check that uses a NOW variable, the CLI returns an following error message for `Invalid check`. <!--CORE-449-->
+
+```shell
+Invalid check "freshness(end_date) ${NOW} < 1d": mismatched input '${NOW}' expecting {'between', 'not', '!=', '<>', '<=', '>=', '=', '<', '>'}
+```
+
+**Solution:** Until the known issue is resolved, use a deprecated syntax for freshness checks using a NOW variable, and ignore the `deprecated syntax` message in the output. For example, define a check as per the following.
+
+```yaml
+checks for dim_product:
+  - freshness using end_date with NOW < 1d
+```
+
+<br />
+
+## Checks not evaluated
+
+**Problem:** You have written a check that has accurate syntax but which returns scan results that include a `[NOT EVALUATED]`message like the following:
+
+```shell
+1/3 checks NOT EVALUATED: 
+INFO:soda.scan:[13:50:53]     my_df in dask
+INFO:soda.scan:[13:50:53]       time_key_duplicates < 1 [soda-checks/checks.yaml] [NOT EVALUATED]
+INFO:soda.scan:[13:50:53]         check_value: None
+INFO:soda.scan:[13:50:53] 1 checks not evaluated.
+```
+
+**Solution:** The cause of the issue may be one of the following:
+* Where a check returns `None`, it means there are no results or the values is `0`, which Soda cannot evaluate. In the example above, the check involved calculating a sum which resulted in a value of `0` which, consequently, translates as `[NOT EVALUATED]` by Soda.
+* For a [change-over-time check]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds), if the previous measurement value is `0` and the new value is `0`, Soda calculates the relative change as `0%`. However, if the previous measurement value is `0` and the new value is not `0`, then Soda indicates the check as `[NOT EVALUATED]` because the calculation is a division by zero. 
+* If your check involves a threshold that compares relative values, such as [chage-over-time checks]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds), [anomaly score checks]({% link soda-cl/anomaly-score.md %}#anomaly-score-check-results), or [schema checks]({% link soda-cl/schema.md %}), Soda needs a value for a previous measurement before it can make a comparison. In other words, if you are executing these checks for the first time, there is no previous measurement value against which Soda can compare, so it returns a check result of `[NOT EVALUATED]`. <br />
+Soda begins evaluating shema check results after the first scan; anomaly score after four scan of regular frequency.
+
+## Filter not passed with reference check
+
+**Problem:** When trying to run a Soda Core reference against a partitioned dataset in combination with a dataset filter, Soda does not pass the filter which results in an execution error.
+
+**Solution:** Where both datasets in a [reference check]({% link soda-cl/reference.md %}) have the same name, the [dataset filter]({% link soda-cl/filters.md %}#configure-dataset-filters) cannot build a valid query because it does not know to which dataset to apply the filter.
+
+For example, this reference check compares values of columns in datasets with the same name, `customers_c8d90f60`. In this case, Soda does not know which `ts` column to use to apply the WHERE clause because the column is present in both datsets. Thus, it produces an error.
+
+```yaml
+filter customers_c8d90f60 [daily]:
+  where: ts > TIMESTAMP '${NOW}' - interval '100y'
+
+checks for customers_c8d90f60 [daily]:
+  - values in (cat) must exist in customers_c8d90f60 (cat2)
+# This is a reference check using the same dataset name as both target and source of the comparison.
+```
+
+As a workaround, you can create a separate dataset filter for such a reference check and prefix the column name with wither `SOURCE.` or `TARGET.` to identify to Soda which column it should apply the filter to. 
+
+In a separate filter in the example below, the `ts` uses the prefix `SOURCE.` to specify that Soda ought to apply the dataset filter to the source of the comparison and not the target.
+
+```yaml
+filter customers_c8d90f60 [daily]:
+  where: ts > TIMESTAMP '${NOW}' - interval '100y'
+
+filter customers_c8d90f60 [daily-ref]:
+  where: SOURCE.ts > TIMESTAMP '${NOW}' - interval '100y'
+
+checks for customers_c8d90f60 [daily]:
+  - duplicate_count(cat) < 10
+  - row_count > 10
+
+checks for customers_c8d90f60 [daily-ref]:
+  - values in (cst_size, cat) must exist in customers_c8d90f60 (cst_size, cat)
+```
 
 ## Go further
 

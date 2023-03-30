@@ -99,7 +99,7 @@ The following image illustrates what Soda Core does when you initiate a scan.
 
 ## Soda Core automation and integrations
 
-To automate scans on your data, you can use the **Soda Core Python library** to programmatically execute scans. Based on a set of conditions or a specific schedule of events, you can instruct Soda Core to automatically run scans. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a warehouse, after it is transformed, and before it is exported to another warehouse. Refer to the [Define rogrammatic scans]({% link soda-core/programmatic.md %}) instructions for details.
+To automate scans on your data, you can use the **Soda Core Python library** to programmatically execute scans. Based on a set of conditions or a specific schedule of events, you can instruct Soda Core to automatically run scans. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a warehouse, after it is transformed, and before it is exported to another warehouse. Refer to the [Define programmatic scans]({% link soda-core/programmatic.md %}) instructions for details.
 
 Alternatively, you can integrate Soda Core with a **data orchestration tool** such as, Airflow, Dagster, or dbt Core™, to schedule automated scans. You can also configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically quarantine the "bad" data or block it from contaminating your data pipeline. Refer to [Orchestrate scans]({% link soda-core/orchestrate-scans.md %}) for details.
 

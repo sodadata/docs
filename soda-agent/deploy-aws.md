@@ -61,8 +61,9 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 The following offers instructions to create a <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html" target="_blank">Fargate (serverless) cluster</a> to deploy a Soda Agent, but you can create and use a <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html" target="_blank">regular EKS cluster</a> if you wish.
 
-1. If you are deploying to an existing Virtual Private Cloud (VPC), consider supplying public or private subnets with your deployment. Consult the eksctl documentation to <a href="https://eksctl.io/usage/vpc-configuration/#use-existing-vpc-other-custom-configuration" target="_blank">Use existing VPC</a>.
-2. From the command-line, execute the following command to create a new EKS Fargate cluster in your AWS account.  <br/>Replace the value of `--region` with one that is appropriate for your location. 
+1. (Optional) If you wish, you can establish an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. Refer to [Connect to Soda Cloud via AWS PrivateLink]({% link soda-agent/private-link.md %}) before deploying an agent.
+2. (Optional) If you are deploying to an existing Virtual Private Cloud (VPC), consider supplying public or private subnets with your deployment. Consult the eksctl documentation to <a href="https://eksctl.io/usage/vpc-configuration/#use-existing-vpc-other-custom-configuration" target="_blank">Use existing VPC</a>.
+3. From the command-line, execute the following command to create a new EKS Fargate cluster in your AWS account.  <br/>Replace the value of `--region` with one that is appropriate for your location. 
 ```shell
 eksctl create cluster --name soda-agent --region eu-central-1 --fargate
 ```
@@ -71,21 +72,21 @@ eksctl create cluster --name soda-agent --region eu-central-1 --fargate
 aws configure get region
 ```
 * The activity to create a cluster may take awhile, printing messages in the console that read `waiting for CloudFormation stack "eksctl-soda-agent-cluster"`. Be patient! Access <a href="https://aws.amazon.com/premiumsupport/knowledge-center/cloudformation-stack-stuck-progress/" target="_blank">AWS CloudFormation troubleshooting documentation</a> for help. 
-3. To connect to the newly-created cluster and create a namespace, use the following command.
+4. To connect to the newly-created cluster and create a namespace, use the following command.
 ```shell
 kubectl create namespace soda-agent
 ```
-4. Create a namespace and a Fargate profile for EKS Fargate serverless deployment. <br />
+5. Create a namespace and a Fargate profile for EKS Fargate serverless deployment. <br />
 When you deploy a Soda Agent on EKS Fargate, AWS matches the Fargate Profile using annotation labels in the Soda Agent Helm chart. Without the profile, the Helm chart cannot successfully deploy. <br />
 Refer to [Troubleshoot deployment](#troubleshoot-deployment) below if you encounter errors.
 ```shell
 eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --region us-west-1 --namespace soda-agent
 ```
-5. Run the following command to change the context to associate the current namespace to `soda-agent`. 
+6. Run the following command to change the context to associate the current namespace to `soda-agent`. 
 ```shell
 kubectl config set-context --current --namespace=soda-agent
 ```
-6. Run the following command to verify that the cluster kubectl recognizes `soda-agent` as the current namespace.
+7. Run the following command to verify that the cluster kubectl recognizes `soda-agent` as the current namespace.
 ```shell
 kubectl config get-contexts
 ```
@@ -113,12 +114,14 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 2. Use the following command to install the Helm chart which deploys a Soda Agent in your custer. 
 * Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud. The cluster stores these key values as Kubernetes secrets.
 * Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
+* Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
 * Optionally, add the `soda.core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions.
 * Read more [about the `helm install` command](#about-the-helm-install-command).
 ```shell
 helm install soda-agent soda-agent/soda-agent \
     --set soda.agent.target=aws-eks \
     --set soda.agent.name=myuniqueagent \
+    --set soda.cloud.endpoint=https://cloud.soda.io \
     --set soda.apikey.id=*** \
     --set soda.apikey.secret=**** \
     --set soda.core.idle=true \
@@ -162,6 +165,7 @@ Containers:
 2. To that file, copy+paste the content below, replacing the following values:
 * `id` and `secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account. 
 * Replace the value of `name` with a custom name for your agent, if you wish.
+* Specify the value for `endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
 * Optionally, add the `soda.core` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions. 
 ```yaml
 soda:
@@ -173,6 +177,8 @@ soda:
         core:
            idle: true
            replicas: 1
+        cloud:
+          endpoint: "https://cloud.soda.io"
 ```
 3. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
 ```shell
@@ -269,8 +275,9 @@ eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --re
 
 * Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed.
 * Access a list of [helpful `kubectl` commands]({% link soda-agent/helpful-commands.md %}) for running commands on your Kubernetes cluster.
+* Use an AWS PrivateLink to private connect to your Soda Cloud account. Access [Connect a Soda Agent to Soda Cloud via AWS PrivateLink]({% link soda-agent/private-link.md %}) for details.
 * [Learn more]({% link soda-agent/secrets.md %}) about securely storing and accessing API keys and data source login credentials.
-* Consider completing the [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
+* Consider completing the [Quick start for Soda Cloud]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

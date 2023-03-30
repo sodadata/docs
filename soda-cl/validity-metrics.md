@@ -6,6 +6,7 @@ parent: Soda CL
 ---
 
 # Validity metrics 
+<!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
 Use a validity metric in a check to surface invalid or unexpected values in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
@@ -161,7 +162,7 @@ checks for dim_customer:
 
 ### Specify valid format
 
-If the data type of the column you are checking is TEXT (such as character, character varying, or string) then you can use the `valid format` configuration key. This config key uses built-in values that test the data in the column for specific formats, such as email address format, date format, or uuid format. See [List of valid formats](#list-of-format-values) below.
+If the data type of the column you are checking is TEXT (such as character, character varying, or string) then you can use the `valid format` configuration key. This config key uses built-in values that test the data in the column for specific formats, such as email address format, date format, or uuid format. See [List of valid formats](#list-of-valid-formats) below.
 
  The check below validates that all values in the `email_address` column conform to an email address format. 
 

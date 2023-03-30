@@ -57,18 +57,22 @@ Instead of using the default value for "now" (the time you run the scan that exe
 
 ```yaml
 checks for dim_product:
-  - freshness(end_date) CUST_VAR < 1d
+  - freshness using end_date with NOW < 1d
 ```
 
 | column name | `end_date` |
-| variable to specify the value of "now" (optional)| `CUST_VAR` |
+| variable to specify the value of "now" (optional)| `NOW` |
 | threshold |  1d |
 
 At scan time, you use a `-v` option to pass a value for the variable that the check expects for the value of "now". The scan command below passes a variable that the check uses. In your scan command, if you pass a variable with a timestamp, the variable must be in ISO8601 format such as `"2022-02-16 21:00:00"` or `"2022-02-16T21:00:00"`.
 
 ```shell
-soda scan -d adventureworks -c configuration.yml -v CUST_VAR=2022-05-31 21:00:00 checks_test.yml
+soda scan -d adventureworks -c configuration.yml -v NOW="2022-05-31 21:00:00" checks_test.yml
 ```
+
+***Known issue:*** <br/> 
+<!--CORE-449-->
+When introducing a NOW variable into a freshness check, you must use the deprecated syntax that includes `using`. This syntax yields an error message in the scan output, `Syntax of freshness check has changed and is deprecated.  Use freshness(column_name) < 24h30m  See docs` but does not prevent Soda from executing the check. Workaround: ignore the deprecated syntax message.
 
 
 ### Details and limitations
@@ -78,6 +82,7 @@ soda scan -d adventureworks -c configuration.yml -v CUST_VAR=2022-05-31 21:00:00
 checks for dim_product:
   - freshness(createdat::datetime) < 1d
 ```
+* Note that casting a column in a check does not work with a NOW variable.
 * The only comparison symbol you can use with freshness checks is `<` *except* when you employ and alert configuration. See [Example with alert configuration](#example-with-alert-configuration) for details.
 * The default value for "now" is the time you run the scan that executes the freshness check.
 * If no timezone information is available in either the timestamp of the check (scan time), or in the data in the column, a freshness check uses the UTC timezone. Soda converts both timestamps to UTC to compare values.
@@ -86,7 +91,7 @@ checks for dim_product:
 
 ### Troubleshoot errors with freshness checks
 
-**Problem:** When you run a scan to execute a freshness check, the CLI returns one of the following error message when you run a scan.  
+**Problem:** When you run a scan to execute a freshness check, the CLI returns one of the following error message.  
 
 ```shell
 Invalid staleness threshold "when < 3256d"
@@ -99,6 +104,21 @@ Invalid check "freshness(start_date) > 1d": no viable alternative at input ' >'
 ```
 
 **Solution:** The error indicates that you are using an incorrect comparison symbol. Remember that freshness checks can only use `<` in check, unless the freshness check employs an alert configuration, in which case it can only use `>` in the check. 
+
+<br />
+
+**Problem:** When you run a scan to execute a freshness check that uses a NOW variable, the CLI returns an following error message for `Invalid check`. <!--CORE-449-->
+
+```shell
+Invalid check "freshness(end_date) ${NOW} < 1d": mismatched input '${NOW}' expecting {'between', 'not', '!=', '<>', '<=', '>=', '=', '<', '>'}
+```
+
+**Solution:** Until the known issue is resolved, use a deprecated syntax for freshness checks using a NOW variable, and ignore the `deprecated syntax` message in the output. For example, define a check as per the following.
+
+```yaml
+checks for dim_product:
+  - freshness using end_date with NOW < 1d
+```
 
 <br />
 

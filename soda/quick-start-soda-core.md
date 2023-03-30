@@ -164,7 +164,7 @@ Continue to the next section to connect Soda Core to a Soda Cloud account.
 
 Though you can use Soda Core as a standalone CLI tool to monitor data quality, you may wish to connect to the Soda Cloud web application that vastly enriches the data quality monitoring experience. 
 
-Beyond increasing the observability of your data, Soda Cloud enables you to automatically detect anomalies, and view samples of the rows that failed a test during a scan. Integrate Soda Cloud with your Slack workspace to collaborate with your team on data monitoring.
+Beyond increasing the observability of your data, Soda Cloud enables you to store historical metrics measurements in the Cloud Metric Store, automatically detect anomalies, and view samples of the rows that failed a test during a scan. Integrate Soda Cloud with your Slack workspace to collaborate with your team on data monitoring.
 
 Soda Core uses an API to connect to Soda Cloud. To use the API, you must generate API keys in your Soda Cloud account, then add them to the configuration YAML file. When it runs a scan, Soda Core pushes the test results to Soda Cloud. 
 
