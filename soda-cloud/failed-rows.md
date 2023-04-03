@@ -34,7 +34,7 @@ When a Soda scan results in a failed check, Soda Cloud displays details of the s
 
 * You have a Soda Cloud account connected to data sources via a **Soda Agent**.
 * You are running Soda scans on one of the data sources that [support](#compatibility) Failed Row Analysis.
-* You have defined checks in your agreement that implicitly collect failed row samples: 
+* You have defined checks in your agreement that *implicitly* collect failed row samples from columns of categorical data. These checks include: 
   * missing
   * validity
   * duplicate
@@ -54,7 +54,16 @@ The following data sources support Failed Row Analysis.
 
 ### Examine the analysis
 
-If you have connected it to a **Soda Agent**, Soda Cloud displays summary and analysis information, and samples of failed rows for failed check results for checks that implicitly collect failed rows samples. Soda Cloud does *not* display failed row analysis details for checks you have defined using a common table expression (CTE) or SQL query in a [failed rows check]({% link soda-cl/failed-rows-checks.md %}).
+If you have connected it to a **Soda Agent**, Soda Cloud displays summary and analysis information, and samples of failed rows for failed check results for checks that implicitly collect failed rows samples from columns of categorical data. 
+
+<details>
+  <summary style="color:#00BC7E">Learn more about categorical data</summary>
+  Soda only presents failed row analysis details for columns containing categorical data, rather than scalar columns with continuous values. <br /><br />
+  Failed rows analysis was designed to help users identify groups of rows that are affected by failed data quality checks, and categorical columns provide more natural segmentation points than continuous scalar columns. <br /><br />
+  Additionally, since scalar columns can have values that span a wide range, it is not useful for humans to segment data by these columns. To identify the categorical columns, Soda uses a combination of machine learning and heuristics, then uses the resulting subset of columns to segment the failed rows for analysis. Users can only segment the failed rows by a subset of the columns in the dataset, as determined by Soda's column selection process.<br /><br />
+</details>
+
+Soda Cloud does *not* display failed row analysis details for checks you have defined using a common table expression (CTE) or SQL query in a [failed rows check]({% link soda-cl/failed-rows-checks.md %}).
 
 Implicitly, Soda automatically collects 100 failed row samples and displays **Failed Row Analysis** details for the following checks:
 * [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 
@@ -62,7 +71,7 @@ Implicitly, Soda automatically collects 100 failed row samples and displays **Fa
 * checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
 * checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
 
-From the **Checks Results** dashboard, select a check result to navigate to that indivdual check's result history page, then click the **Failed Row Analysis** tab (pictured below) to examine samples and analytical information associated with a failed check result. 
+From the **Checks Results** dashboard, select a check result to navigate to that individual check's result history page, then click the **Failed Row Analysis** tab (pictured below) to examine samples and analytical information associated with a failed check result. 
 
 Adjust the **Segment By** setting to examine the results by column. By default, Soda sorts categorical columns from the one with the fewest distinct values to the one with the most, or by cardinality. Columns with the highest cardinality (the most distinct values) are more complex and are more likely to provide insight into your failed rows investigation. 
 
@@ -89,7 +98,7 @@ The following data sources support the Failed Row samples.
 
 ### Examine failed rows
 
-If you have connected it to **Soda Core**, Soda Cloud displays samples of failed rows for failed check results for which you have implicitly or explicitly collect failed row samples. 
+If you have connected it to **Soda Core**, Soda Cloud displays samples of failed rows for failed check results for which you have implicitly or explicitly collected failed row samples. 
 
 * Implicitly, Soda automatically collects 100 failed row samples for the following checks:
   * [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 
@@ -98,9 +107,9 @@ If you have connected it to **Soda Core**, Soda Cloud displays samples of failed
   * checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
 * Explicitly, you can use a common table expression (CTE) or SQL query in a [failed rows check]({% link soda-cl/failed-rows-checks.md %}) to collect failed row samples.
 
-Soda Cloud with Soda Core does not display failed row summary or analysis details, only failed row samples. See **Soda Cloud with Soda Agent** tab.
+Soda Cloud with Soda Core does not display failed row summary or analysis details, only failed row samples. Refer to **Soda Cloud with Soda Agent** tab for information on failed row analysis.
 
-From the **Checks Results** dashboard, select a check result to navigate to that indivdual check's result history page, then click the **Failed Row Analysis** tab (pictured below) to examine samples associated with a failed check result. 
+From the **Checks Results** dashboard, select a check result to navigate to that individual check's result history page, then click the **Failed Row Analysis** tab (pictured below) to examine samples associated with a failed check result. 
 
 ![failed-rows](/assets/images/failed-rows.png){:height="600px" width="600px"}
 
@@ -117,7 +126,7 @@ From the **Checks Results** dashboard, select a check result to navigate to that
 
 ## Set a sample limit
 
-By default, Soda Core sends 100 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda Core using the `samples limit` configuration key:value pair in your agreement or in your checks YAML file, as in the following example.
+By default, Soda Core sends 100 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda collects using the `samples limit` configuration key:value pair in your agreement or in your checks YAML file, as in the following example.
 
 ```yaml
 checks for dim_customer:
@@ -143,7 +152,7 @@ See also: [Set a sample limit for a data source]({% link soda-cl/failed-rows-che
 
 ### Disable sampling for specific columns
 
-For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
+For checks which implicitly or explicitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
 
 Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
@@ -151,7 +160,7 @@ Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/fai
 
 ### Disable failed row samples for individual checks
 
-For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
+For checks which implicitly or explicitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
 
 ```yaml
 checks for dim_customer:
