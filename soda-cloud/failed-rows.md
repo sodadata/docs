@@ -81,6 +81,17 @@ Adjust the **Segment By** setting to examine the results by column. By default, 
 
 {% include troubleshoot-failed-rows.md %}
 
+<br />
+
+**Problem:** A Soda scan ought to have collected and displayed failed row analysis information for a check that failed, but shows only failed row samples.
+
+**Solution:** Soda only displays failed row analysis information for checks that meet *all* of the following criteria:
+* implicitly collect and display failed row samples - missing, validity, duplicate, reference; Soda does not display failed row analysis for checks that are user-defined via a CTE or SQL query in a [failed row check]({% link soda-cl/failed-rows-checks.md %})
+* execute on a column that contains categorical data
+* execute on data in a compatible data source
+* execute during a scheduled scan via a Soda Agent
+
+<br />
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
