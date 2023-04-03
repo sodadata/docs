@@ -444,7 +444,7 @@ checks for dim_customers:
 
 #### May 25, 2022
 
-* Revised and renamed **Data observability** to **[Data concepts]({% link soda/data-concepts.md %})**.
+* Revised and renamed **Data observability** to **Data concepts**.
 
 #### May 24, 2022
 
