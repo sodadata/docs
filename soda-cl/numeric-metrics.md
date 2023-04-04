@@ -12,6 +12,7 @@ redirect_from: soda-cl/duplicates.html
 
 Use a numeric metric in a check to perform basic calculations on the data in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 
+
 ```yaml
 checks for retail_products:
   - avg(size) between 100 and 300 
@@ -49,6 +50,7 @@ checks for retail_orders_postgres:
 In the context of Soda check types, you use numeric metrics in Standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
 
 You can use the `row_count` metric in checks that apply to entire datasets. 
+
 ```yaml
 checks for dim_reseller:
   - row_count > 0
@@ -234,6 +236,7 @@ checks for dim_customer:
 <br />
 
 You can also use use a change-over-time threshold to compare check results relative to the same day in the previous week. The example below uses change-over-time to compare today's value with the same check result from last week to confirm that the delta is greater than 10. 
+
 ```yaml
 checks for dim_customer:
   - change same day last week for row_count > 10

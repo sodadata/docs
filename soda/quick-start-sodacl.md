@@ -261,7 +261,6 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 * It is good practice to add a [custom name]({% link soda-cl/numeric-metrics.md %}#customize-check-names) to your check. Establish a naming convention – word order, underscores, identifiers – and apply easily-digestible check names for any colleagues with whom you collaborate.
 
 #### Syntax tips
-* Column names that contain colons or periods can interfere with SodaCL's YAML-based syntax. For any column names that contain these punctuation marks, [apply quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) to the column name in the check to prevent issues. 
 * Be sure to add a colon to the end of a check whenever you add a second line to a check such as for a missing or invalid configuration key, or if you add a [custom name]({% link soda-cl/numeric-metrics.md %}#customize-check-names) for your check.
 * Indentations in the SodaCL syntax are critical. If you encounter an error, check your indentation first.
 * Spaces in the SodaCL syntax are critical. For example, be sure to add a space before and after your threshold symbol ( `=`, `>`, `>=` ); do *not* add a space between a metric and the column to which it applies, such as `duplicate_count(column1)`.
@@ -270,7 +269,13 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 * If you use `missing values` or `invalid values` configuration keys, note that 
     * Values in a comma-separated list must be enclosed in square brackets. <br />For example, `[US, BE, CN]`.
     * Numeric characters in a values list must be enclosed in single quotes. <br />For example, `[none,'0', NA]`.
+* Column names that contain colons or periods can interfere with SodaCL's YAML-based syntax. For any column names that contain these punctuation marks, [apply quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) to the column name in the check to prevent issues. <br />If you are using a failed row check with a CTE fail condition, however, the syntax checker does not accept an expression that begins with double-quotes. In that case, as a workaround, add a meaningless `true and` to the beginning of the CTE, as in the following example. 
 
+```yaml
+checks for corp_value:
+  - failed rows:
+      fail condition: true and "column.name.PX" IS NOT null
+```
 
 
 
