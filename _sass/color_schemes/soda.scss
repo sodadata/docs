@@ -983,8 +983,41 @@ body {
     }
 }
 
+
 /* Copy code button */
 
+.code-header {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    height: 0;
+}
+
 .copy-code-button {
-    display: block;
-  }
+    position: relative;
+    display: flex;
+    border: none;
+    height: 22px;
+    width: 22px;
+    border-radius: 3px;
+    background-color: #dcdddd;
+    color: #fff;
+    transition: background-color .4s ease-out;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    right: 6px;
+    top: 6px;
+    padding:0;
+
+    &:hover {
+        background-color: #acadad;
+        background-image: none;
+    }
+
+    .copy-icon {
+        display: block;
+        flex: 0 0 auto;
+        font-size: 18px;
+    }
+}

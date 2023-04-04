@@ -221,6 +221,14 @@ Add a table:
 | Content | Content | Content | Content |
 ```
 
+
+Add copy to clipboard button for code blocks:
+
+```
+{% include code-header.html %}
+```
+
+
 ## Redirect site visitors
 
 The `jekyll-redirect-from` plugin enables authors to redirect users if a page is moved. 
