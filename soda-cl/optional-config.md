@@ -32,7 +32,7 @@ The following optional configurations are available to use with most, though not
 Add a customized, plain-language name to your check so that anyone reviewing the check results can easily grasp the intent of the check. 
 
 Add the name to the check as a nested key:value pair, as per the example below.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_employee:
   - max(vacation_hours) < 80:
@@ -46,6 +46,7 @@ checks for dim_employee:
 <br />
 
 If you wish, you can use a variable to customize a dynamic check name. Read more about [Filters and variables]({% link soda-cl/filters.md %}).
+{% include code-header.html %}
 ```yaml
 variables:
   name: Customers UK
@@ -67,11 +68,13 @@ All is good. No failures. No warnings. No errors.
 ## Add a check identity
 
 Soda Cloud identifies a check using details such as the check name, the check YAML file name, the file's location. When you modify an individual check, the check identity changes which results in a new check result in Soda cloud.  For example, the following check sends one check result to Soda Cloud after a scan. 
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_count(last_name) > 0
 ```
 If you changed the threshold from `0` to `99`, then after the next scan, Soda Cloud considers this as a new check and discards the previous check result's history; it would appear as though the original check and its results had disappeared. Note that this behaviour *does not* apply to changing values that use an in-check variable, as in the example below.
+{% include code-header.html %}
 ```yaml
 checks for dataset_1:
   - row_count > ${VAR}
@@ -87,10 +90,10 @@ checks for dim_customer:
   - missing_count(last_name) > 99:
       identity: aa457447-60f6-4b09-4h8t-02fbb78f9587
 ```
-3. Save your changes
+3. Save your changes.
 
 You can also use a variable to pass the value of a check identity at scan time, as in the example below. Read more about using [in-check variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl).
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - row_count > 0:
@@ -114,7 +117,7 @@ For example, perhaps 50 missing values in a column is acceptable, but more than 
 ### Configure a single alert 
 
 Add alert configurations as nested key:value pairs, as in the following example which adds a single alert configuration. It produces a `warn` check result when the volume of duplicate phone numbers in the dataset exceeds five. Refer to the CLI output below.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
   - duplicate_count(phone):
@@ -138,7 +141,7 @@ Sending results to Soda Cloud
 Add multiple nested key:value pairs to define both `warn` alert conditions and `fail` alert conditions.
 
 The following example defines the conditions for both a `warn` and a `fail` state. After a scan, the check result is `warn` when there are between one and ten duplicate phone numbers in the dataset, but if Soda Core discovers more than ten duplicates, as it does in the example, the check fails. If there are no duplicate phone numbers, the check passes.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
   - duplicate_count(phone):
@@ -157,6 +160,7 @@ Sending results to Soda Cloud
 ```
 
 You can add multiple conditions to each type of alert, as with the following example, but be aware that a check that contains one or more alert configurations only ever yields a [single check result](#expect-one-check-result).
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
   - duplicate_count(phone):
@@ -180,7 +184,7 @@ checks for dim_reseller:
 Use alert configurations to write checks that define fail or warn zones. By establishing these zones, the check results register as more severe the further a measured value falls outside the threshold parameters you specify as acceptable for your data quality. 
 
 The example that follows defines split warning and failure zones in which inner is good, and outer is bad. The chart below illustrates the pass (white), warn (yellow), and fail (red) zones. Note that an individual check only ever yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more serious, failed check result. See [Expect one check result](#expect-one-check-result) for details.
-
+{% include code-header.html %}
 ```yaml
 checks for CUSTOMERS:
   - row_count:
@@ -193,6 +197,7 @@ checks for CUSTOMERS:
 <br />
 
 The next example defines a different kind of zone in which inner is bad, and outer is good. The chart below illustrates the fail (red), warn (yellow), and pass (white) zones.
+{% include code-header.html %}
 ```yaml
 checks for CUSTOMERS:
   - row_count:
@@ -218,6 +223,7 @@ Note that the type of quotes you use must match that which your data source uses
 Write a check referencing a dataset name with quotes to produce a SQL query that references the dataset name with quotes.
 
 Check:
+{% include code-header.html %}
 ```yaml
 checks for "CUSTOMERS":
   - row_count > 0
@@ -234,6 +240,7 @@ FROM "CUSTOMERS"
 Write a check referencing a column name with quotes to produce a SQL query that references the column name with quotes.
 
 Check:
+{% include code-header.html %}
 ```yaml
 checks for CUSTOMERS:
   - missing("id") = 0
@@ -272,7 +279,7 @@ Implicitly, Soda automatically collects 100 failed row samples for the following
 * checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
 
 If you wish to limit or broaden the sample size, you can use the `samples limit` configuration with any of the above-listed checks, including failed row checks.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - duplicate_count(email_address) < 50:
@@ -306,7 +313,7 @@ Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/fai
 ### Disable failed row samples for individual checks
 
 For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_percent(email_address) < 50:

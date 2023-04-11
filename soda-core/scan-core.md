@@ -12,7 +12,7 @@ redirect_from:
 *Last modified on {% last_modified_at %}*
 
 A **scan** is a command that executes checks to extract information about data in a dataset. 
-
+{% include code-header.html %}
 ```shell
 soda scan -d postgres_retail_db  -c configuration.yml checks.yml
 ```
@@ -39,12 +39,14 @@ Each scan requires the following as input:
 * a `checks.yml` file which contains the checks you write using SodaCL
 
 Scan command:
+{% include code-header.html %}
 ```shell
 soda scan -d postgres_retail -c configuration.yml checks.yml
 ```
 <br />
 
 Note that you can use the `-c` option to include **multiple configuration YAML files** in one scan execution. Include the filepath of each YAML file if you stored them in a directory other than the one in which you installed Soda Core.
+{% include code-header.html %}
 ```shell
 soda scan -d postgres_retail -c other-directory/configuration.yml other-directory/checks.yml
 ```
@@ -52,6 +54,7 @@ soda scan -d postgres_retail -c other-directory/configuration.yml other-director
 <br />
 
 You can also include **multiple checks YAML files** in one scan execution. Use multiple checks YAML files to execute different sets of checks during a scan. 
+{% include code-header.html %}
 ```shell
 soda scan -d postgres_retail -c configuration.yml checks_stats1.yml checks_stats2.yml
 ```
@@ -64,7 +67,7 @@ Use the soda `soda scan --help` command to review options you can include to cus
 There are several ways you can use variables in checks, filters, and in your data source configuration to pass values at scan time; a few examples follow. 
 
 Refer to the comprehensive [Filters and variables]({% link soda-cl/filters.md %}) documentation for details.
-
+{% include code-header.html %}
 ```yaml
 # In-check filter
 checks for dim_employee:
@@ -123,7 +126,7 @@ Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 ### Examine a scan's SQL queries
 
 To examine the SQL queries that Soda Core prepares and executes as part of a scan, you can add the `-V` option to your `soda scan` command. This option prints the queries as part of the scan results.
-
+{% include code-header.html %}
 ```shell
 soda scan -d postgres_retail -c configuration.yml -V checks.yml
 ``` 

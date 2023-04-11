@@ -22,7 +22,7 @@ Based on a set of conditions or a specific event schedule, you can instruct Soda
 <br />
 
 ## Basic programmatic scan
-
+{% include code-header.html %}
 ```python
 from soda.scan import Scan
 
@@ -125,7 +125,7 @@ Soda Core's scan output includes an exit code which indicates the outcome of the
 | 3 | Soda encountered a runtime issue |
 
 To obtain the exit code, you can add the following to your programmatic scan.
-
+{% include code-header.html %}
 ```python
 exit_code = scan.execute()
 print(exit_code)
@@ -135,7 +135,7 @@ print(exit_code)
 ## Configure a failed row sampler
 
 Optionally, you can add a custom sampler to collect samples of rows with a `fail` check result. Refer to the following example that prints the failed row samples in the CLI.
-
+{% include code-header.html %}
 ```python
 from soda.scan import Scan
 from soda.sampler.sampler import Sampler

@@ -4,7 +4,7 @@ Add a **for each** section to your checks YAML file to specify a list of checks 
 2. Nested under the section header, add two nested keys, one for `datasets` and one for `checks`. 
 3. Nested under `datasets`, add a list of datasets against which to run the checks. Refer to the example below that illustrates how to use `include` and `exclude` configurations and wildcard characters {% raw %} (%) {% endraw %}.
 4. Nested under `checks`, write the checks you wish to execute against all the datasets listed under `datasets`. 
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:

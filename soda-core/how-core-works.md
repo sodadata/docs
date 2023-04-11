@@ -30,6 +30,7 @@ This open-source, command-line tool exists to enable Data Engineers to access an
 To connect to a data source such as Snowflake, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. (Except for connections to Spark DataFrames which do not use a configuration YAML file.) See [Configure Soda Core]({% link soda-core/configuration.md %}) for details and links to data source-specific connection configurations.
 
 #### Configuration YAML example
+{% include code-header.html %}
 ```yaml
 data_source adventureworks:
   type: postgres
@@ -49,6 +50,7 @@ To define the data quality checks that Soda Core runs against a dataset, you use
 For example, you can define checks that look for things like missing or forbidden columns in a dataset, or rows that contain data in an invalid format. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) for more details.
 
 #### Checks YAML example
+{% include code-header.html %}
 ```yaml
 # Check for absent or forbidden columns in dataset
 checks for dataset_name:
@@ -71,7 +73,7 @@ You write Soda Checks using SodaCL’s built-in metrics, though you can go beyon
 <br />
 
 To scan your data, you use the `soda scan` CLI command. Soda Core uses the input in the checks YAML file to prepare SQL queries that it runs against the data in one or more datasets in a data source. It returns the output of the scan with each check's results in the CLI. See [Anatomy of a scan command]({% link soda-core/scan-core.md %}#anatomy-of-a-scan-command) for more details.
-
+{% include code-header.html %}
 ```shell
 soda scan -d adventureworks -c configuration.yml checks.yml
 ```

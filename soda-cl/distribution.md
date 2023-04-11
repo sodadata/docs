@@ -12,7 +12,7 @@ Use a distribution check to determine whether the distribution of a column has c
 
 * *Requires Soda Core Scientific.*<br />
 * *Limitation:* Soda Cloud cannot yet maintain the distribution reference object (DRO), but distribution check results appear in the **Check Results** dashboard.<br />
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned) > 0.05:
@@ -255,7 +255,7 @@ You can add a `sample` parameter for both a distribution check and DRO to includ
 #### Apply a sample to a distribution check
 
 If the data to which you wish to apply distribution check does not fit in memory or involves a time constraint, use a `sample` to specify a SQL query that returns a sample of the data. The SQL query that you provide is specific to the type of data source you use. In the example below, the SQL query for a PostgreSQL data source randomly samples 50% of the data with seed 61. You can customize the `sample` SQL query to meet your needs.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned) > 0.05:
@@ -269,6 +269,7 @@ checks for dim_customer:
 #### Apply a sample to a DRO 
 
 While generating a DRO, you can  specify a `sample` parameter to create a DRO using sampled data. The SQL query that you provide is specific to the type of data source you use.
+{% include code-header.html %}
 ```yaml
 dataset: your_dataset_name
 column: column_name_in_dataset
@@ -284,6 +285,7 @@ Some data sources do not have a built-in sampling function. For example, BigQuer
 
 
 **Distribution Check**
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned) > 0.05:
@@ -295,6 +297,7 @@ checks for dim_customer:
 ```
 
 **DRO**
+{% include code-header.html %}
 ```yaml
 dataset: your_dataset_name
 column: column_name_in_dataset
@@ -308,7 +311,7 @@ filter: rand() < 0.5
 ## Distribution check examples
 
 You can define multiple distribution checks in a single `checks.yml` file. If you create a new DRO for another dataset and column in `sales_dist_ref.yml` for example, you can define two distribution checks in the same `checks.yml` file, as per the following.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned) > 0.05:
@@ -322,7 +325,7 @@ checks for fact_sales_quota:
 ```
 
 Alternatively you can define two DROs in `distribution_reference.yml`, naming them `cars_owned_dro` and `calendar_quarter_dro`, and use both in a single `checks.yml` file
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned, cars_owned_dro) > 0.05:
@@ -336,7 +339,7 @@ checks for fact_sales_quota:
 ```
 
 You can also define multiple checks for different columns in the same dataset by generating multiple DROs for those columns. Refer to the following example.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned, cars_owned_dro) > 0.05:
@@ -366,7 +369,7 @@ checks for fact_sales_quota:
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 #### Example with check name
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
 - distribution_difference(number_cars_owned) > 0.05: 
@@ -376,7 +379,7 @@ checks for dim_customer:
 ```
 
 #### Example with quotes
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
 - distribution_difference("number_cars_owned") < 0.2:
@@ -386,7 +389,7 @@ checks for dim_customer:
 ```
 
 #### Example with for each
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
     dataset:
@@ -398,7 +401,7 @@ for each dataset T:
 ```
 
 #### Example with in-check filter
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
 - distribution_difference(number_cars_owned) < 0.05: 
@@ -408,7 +411,7 @@ checks for dim_customer:
 ```
 
 #### Example with dataset filter
-
+{% include code-header.html %}
 ```yaml
 filter dim_customer [first_purchase]:
   where: date_first_purchase between '2010-01-01' and '2022-01-01' 
@@ -425,7 +428,7 @@ checks for dim_customer [first_purchase]:
 
 The following example works for postgres. It randomly samples 50% of the table with seed value 61. 
 Since sampling SQL clauses vary significantly between data sources, consult your data source's documentation.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned) > 0.05:

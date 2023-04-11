@@ -10,7 +10,7 @@ parent: SodaCL
 *Last modified on {% last_modified_at %}*
 
 Use a freshness check to determine the relative age of the data in a column in your dataset. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - freshness(start_date) < 3d
@@ -42,7 +42,7 @@ A freshness check has two or three mutable parts:
 <br />
 
 The example below defines a check that measures freshness relative to "now", where "now" is the moment you run the scan that executes the freshness check. This example discovers when the last row was added to the `start_date` timestamp column, then compares that timestamp to "now". If Soda discovers that the last row was added more than three days ago, the check fails. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - freshness(start_date) < 3d
@@ -54,7 +54,7 @@ checks for dim_product:
 <br />
 
 Instead of using the default value for "now" (the time you run the scan that executes the freshness check), you can use a variable to specify the value of "now" at scan time. For example, the following check measures freshness relative to a date that a user specifies at scan time. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - freshness using end_date with NOW < 1d
@@ -77,7 +77,7 @@ When introducing a NOW variable into a freshness check, you must use the depreca
 
 ### Details and limitations
 * Out-of-the-box, freshness checks *only* work with columns that contain data types TIMESTAMP or DATE. However, you can apply a freshness check to TEXT type data using the following syntax to cast the column: 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - freshness(createdat::datetime) < 1d
@@ -114,7 +114,7 @@ Invalid check "freshness(end_date) ${NOW} < 1d": mismatched input '${NOW}' expec
 ```
 
 **Solution:** Until the known issue is resolved, use a deprecated syntax for freshness checks using a NOW variable, and ignore the `deprecated syntax` message in the output. For example, define a check as per the following.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - freshness using end_date with NOW < 1d
@@ -157,7 +157,7 @@ In **Soda Cloud**, the freshness value represents age of the data in the days, h
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 #### Example with check name
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - freshness(start_date) < 27h:
@@ -167,7 +167,7 @@ checks for dim_product:
 #### Example with alert configuration
 
 The only comparison symbol that you can use with freshness checks that employ an alert configuration is `>`. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - freshness(start_date):
@@ -176,7 +176,7 @@ checks for dim_product:
 ```
 
 OR
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - freshness(start_date):
@@ -187,14 +187,14 @@ checks for dim_product:
 ```
 
 #### Example with quotes
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - freshness("end_date") < 3d
 ```
 
 #### Example with for each
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:
@@ -204,7 +204,7 @@ for each dataset T:
 ```
 
 #### Example with dataset filter
-
+{% include code-header.html %}
 ```yaml
 filter CUSTOMERS [daily]:
   where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'

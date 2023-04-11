@@ -9,7 +9,7 @@ parent: SodaCL
 *Last modified on {% last_modified_at %}*
 
 As a Soda Cloud Admin user, you can define **check attributes** that your team can apply to checks when they write them in an agreement or in a checks YAML file for Soda Core.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - missing_count(discount) < 10:
@@ -73,7 +73,7 @@ OR <br />
 * writing or editing checks in a checks YAML file for Soda Core.
 
 Apply attributes to checks using key:value pairs, as in the following example which applies five Soda Cloud-created attributes to a new `row_count` check. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - row_count = 10:
@@ -106,7 +106,7 @@ Note that users must use the attribute's **NAME** as the attribute's key in a ch
 ## Optional check attribute SodaCL configurations
 
 Using SodaCL, you can use variables to populate either the key or value of an existing attribute, as in the following example. Refer to [Configure variables in SodaCL]({% link soda-cl/filters.md %}#configure-variables-in-sodacl) for further details. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - row_count = 10:
@@ -116,7 +116,7 @@ checks for dim_product:
 ```
 
 You can use attributes in checks that Soda executes as part of a for each configuration, as in the following example. Refer to [Optional check configuration]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) for further details on for each.
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
  datasets:

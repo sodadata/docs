@@ -9,7 +9,7 @@ parent: SodaCL
 *Last modified on {% last_modified_at %}*
 
 Use a for each configuration to execute checks against multiple datasets during a scan.
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:
@@ -46,7 +46,7 @@ for each dataset T:
 
 
 #### Example with check name
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:
@@ -58,7 +58,7 @@ for each dataset T:
 ```
 
 #### Example with alert configuration
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:
@@ -74,7 +74,7 @@ for each dataset T:
 ```
 
 #### Example with in-check filter
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:
@@ -86,7 +86,7 @@ for each dataset T:
 ```
 
 #### Example with wildcard
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:
@@ -100,7 +100,7 @@ for each dataset T:
 ## For each results in Soda Cloud
 
 If you have connected Soda Core to a Soda Cloud account, Soda Core pushes the check results for each dataset to Soda Cloud as individual rows in the **Check Results** table. Filter the results by dataset to review dataset-specific results.
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:

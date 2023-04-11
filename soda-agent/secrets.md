@@ -31,7 +31,7 @@ OR
 * in a values YAML file which you store locally but reference in the `helm install` command; see below
 
 ### Values YAML file
-
+{% include code-header.html %}
 ```yaml
 soda:
   apikey:
@@ -42,7 +42,7 @@ soda:
 ```
 
 #### helm install command
-
+{% include code-header.html %}
 ```shell
 helm install soda-agent soda-agent/soda-agent \
   --values values.yml \

@@ -12,7 +12,7 @@ parent: SodaCL
 Use a reference check to validate that column contents match between datasets in the same data source. 
 
 See also: [Compare data using SodaCL]({% link soda-cl/compare.md %})
-
+{% include code-header.html %}
 ```yaml
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
@@ -32,7 +32,7 @@ In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#
 The example below checks that the values in the source column, `department_group_name`, in the `dim_department_group` dataset exist somewhere in the destination column, `department_name`, in the `dim_employee` dataset. If the values are absent in the `department_name` column, the check fails.
 * Soda CL considers missing values in the source column as invalid.
 * Optionally, do not use brackets around column names. The brackets serve as visual aids to improve check readability.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
@@ -44,7 +44,7 @@ checks for dim_department_group:
 Reference checks automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100.
 
 If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customers:
   - values in (state_code, state_name) must exist in iso_3166-2 (code, subdivision_name):
@@ -55,7 +55,7 @@ checks for dim_customers:
 For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
 Alternatively, you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customers:
   - values in (state_code, state_name) must exist in iso_3166-2 (code, subdivision_name):
@@ -80,7 +80,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 #### Example with check name 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name):
@@ -88,14 +88,14 @@ checks for dim_department_group:
 ```
 
 #### Example with quotes
-
+{% include code-header.html %}
 ```yaml
 checks for dim_department_group:
   - values in ("department_group_name") must exist in dim_employee ("department_name")
 ```
 
 #### Example with dataset filter
-
+{% include code-header.html %}
 ```yaml
 filter customers_c8d90f60 [daily]:
   where: ts > TIMESTAMP '${NOW}' - interval '100y'
