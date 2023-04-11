@@ -29,9 +29,9 @@ checks for dim_department_group:
 
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), reference checks are unique. This check is limited in its syntax variation, with only a few mutable parts to specify column and dataset names.
 
-The example below checks that the values in the source column, `department_group_name`, in the `dim_department_group` dataset exist in the destination column, `department_name`, in the `dim_employee` dataset. If the values are absent in the `department_name` column, the check fails.
+The example below checks that the values in the source column, `department_group_name`, in the `dim_department_group` dataset exist somewhere in the destination column, `department_name`, in the `dim_employee` dataset. If the values are absent in the `department_name` column, the check fails.
 * Soda CL considers missing values in the source column as invalid.
-* Optionally, do not use brackets around column names. The brackets serve as visual aids to improve readability.
+* Optionally, do not use brackets around column names. The brackets serve as visual aids to improve check readability.
 
 ```yaml
 checks for dim_department_group:
@@ -46,8 +46,8 @@ Reference checks automatically collect samples of any failed rows to display Sod
 If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
 
 ```yaml
-checks for dim_customers_dev:
-  - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name):
+checks for dim_customers:
+  - values in (state_code, state_name) must exist in iso_3166-2 (code, subdivision_name):
       samples limit: 20
 ``` 
 <br />
@@ -57,8 +57,8 @@ For security, you can add a configuration to your data source connection details
 Alternatively, you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
 
 ```yaml
-checks for dim_customers_dev:
-  - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name):
+checks for dim_customers:
+  - values in (state_code, state_name) must exist in iso_3166-2 (code, subdivision_name):
       samples limit: 0
 ``` 
 <br />
@@ -96,8 +96,6 @@ checks for dim_department_group:
 
 #### Example with dataset filter
 
-Refer to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check) to address challenges specific to reference checks with dataset filters.
-
 ```yaml
 filter customers_c8d90f60 [daily]:
   where: ts > TIMESTAMP '${NOW}' - interval '100y'
@@ -106,11 +104,13 @@ checks for customers_c8d90f60 [daily]:
   - values in (cat) must exist in customers_europe (cat2)
 ```
 
+Refer to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check) to address challenges specific to reference checks with dataset filters.
+
 <br />
 
 ## Go further
 
-
+* Problems with reference checks and dataset filters? Refer to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check).
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Learn more about [Comparing data using SodaCL]({% link soda-cl/compare.md %}).
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
