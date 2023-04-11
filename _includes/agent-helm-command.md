@@ -1,3 +1,4 @@
+{% include code-header.html %}
 ```shell
 helm install soda-agent soda-agent/soda-agent \
   --set soda.agent.target=azure-aks-virtualnodes \

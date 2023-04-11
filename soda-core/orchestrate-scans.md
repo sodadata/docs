@@ -25,7 +25,7 @@ Configure actions that the orchestration tool can take based on scan output. For
 Access a guide published by <a href="https://www.astronomer.io/" target="_blank">Astronomer</a> for setting up and using <a href="https://www.astronomer.io/guides/soda-data-quality/" target="_blank">Soda Core with Airflow</a>.
 
 ## Apache Airflow using PythonOperator
-
+{% include code-header.html %}
 ```python
 class SodaScanOperator(PythonOperator):
     def __init__(self,
@@ -66,7 +66,7 @@ class SodaScanOperator(PythonOperator):
 ```
 
 Also, configure the following.
-
+{% include code-header.html %}
 ```python
 class SodaAirflow:
 
@@ -102,7 +102,7 @@ class SodaAirflow:
 ```
 
 #### Example DAG
-
+{% include code-header.html %}
 ```python
 from airflow import DAG
 from airflow.models.variable import Variable

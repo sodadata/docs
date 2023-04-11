@@ -61,7 +61,7 @@ You do not need to follow the tutorial sequentially.
 ## Row count and cross checks
 
 One of the most basic checks you can write uses the `row_count` metric. When it executes the following check during a scan, Soda simply counts the rows in the dataset you identify in the `checks for` section header to confirm that the dataset is not empty. If it counts one or more rows, the check result is pass.
-
+{% include code-header.html %}
 ```yaml
 # Check that a dataset contains rows
 checks for dataset_name:
@@ -73,7 +73,7 @@ checks for dataset_name:
 The check above is an example that use a numeric metric in a standard check pattern. By contrast, the following unique cross check compares row counts between datasets within the same data source without setting a threshold for volume, like `> 50`. 
 
 This type of check is useful when, for example, you want to compare row counts to validate that a transformed dataset contains the same volume of data as the source from which it came.
-
+{% include code-header.html %}
 ```yaml
 # Compare row counts between datasets
 checks for dataset_name:
@@ -81,6 +81,7 @@ checks for dataset_name:
 ```
 
 [Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+{% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
 ```
@@ -96,7 +97,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 For the nearly universal use case of making sure that values in a column are not duplicated, you can use the `duplicate_count` or `duplicate_percent` metrics. In the following example, Soda counts the number of duplicate values in the `column_name` column, identified as the argument in parentheses appended to the metric. If there is even one value that is a duplicate of another, the check result is fail.
 
 This type of check is useful when, for example, you need to make sure that values in an `id` column are unique, such `customer_id` or `product_id`.
-
+{% include code-header.html %}
 ```yaml
 # Check that a column does not contain any duplicate values
 checks for dataset_name:
@@ -112,7 +113,7 @@ checks for dataset_name:
 If your dataset contains a column that stores timestamp information, you can configure a freshness check. This type of check is useful when, for example, you need to validate that the data feeding a weekly report or dashboard is not stale. Timely data is reliable data!
 
 In this example, the check fails if the most-recently added row (in other words, the "youngest" row) in the `timestamp_column_name` column is more than 24 hours old.
-
+{% include code-header.html %}
 ```yaml
 # Check that data in dataset is less than one day old
 checks for dataset_name:
@@ -120,6 +121,7 @@ checks for dataset_name:
 ```
 
 [Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+{% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
 ```
@@ -131,7 +133,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 ## Missing and invalid checks
 
 SodaCL's missing metrics make it easy to find null values in a column. You don't even have to specify that `NULL` qualifies as a missing value because SodaCL registers null values as missing by default. The following check passes if there are no null values in `column_name`, identified as the value in parentheses.
-
+{% include code-header.html %}
 ```yaml
 # Check that there are no null values in a column
 checks for dataset_name:
@@ -143,7 +145,7 @@ checks for dataset_name:
 If the type of data a dataset contains is TEXT (string, character varying, etc.), you can use an invalid metric to surface any rows that contain ill-formatted data. This type of check is useful when, for example, you need to validate that all values in an email address column are formatted as `name@domain.extension`.
 
 The following example fails if, during a scan, Soda discovers that more than 5% of the values in the `email_column_name` do not follow the email address format.
-
+{% include code-header.html %}
 ```yaml
 # Check an email column that all values are in email format
 checks for dataset_name:
@@ -156,7 +158,7 @@ checks for dataset_name:
 If you want to surface more than just null values as missing, you can specify a list of values that, in the context of your business rules, qualify as missing. In the example check below, Soda registers `N/A`, `0000`, or `none` as missing values in addition to `NULL`; if it discovers more than 5% of the rows contain one of these values, the check fails. 
 
 Note that the missing value `0000` is wrapped in single quotes; all numeric values you include in such a list must be wrapped in single quotes.
-
+{% include code-header.html %}
 ```yaml
 # Check that fewer than 5% of values in column contain missing values
 checks for dataset_name:
@@ -165,6 +167,7 @@ checks for dataset_name:
 ```
 
 [Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+{% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
 ```
@@ -176,8 +179,8 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 
 ## Reference checks
 
-If you need to validate that two datasets contain the same values, you can use a reference check. The following unique check compares the values of `column_name` and `another_column`, identified as the values in parentheses, between datasets within the same data source. The check passes if the values in the columns are *exactly* the same. 
-
+If you need to validate that two datasets contain the same values, you can use a reference check. The following unique check compares the values of `column_name` and `another_column`, identified as the values in parentheses, between datasets within the same data source. The check passes if the values in the columns contain the same values. 
+{% include code-header.html %}
 ```yaml
 # Check that values in a column exist in another column in a different dataset
 checks for dataset_name:
@@ -187,7 +190,7 @@ checks for dataset_name:
 <br />
 
 If you wish, you can compare the values of multiple columns in one check. Soda compares the column names respectively, so that in the following example, `column_name1` compares to `other_column1`, and `column_name2` compares to `other_column2`.
-
+{% include code-header.html %}
 ```yaml
 # Check that values in two columns exist in two other columns in a different dataset
 checks for dataset_name:
@@ -195,6 +198,7 @@ checks for dataset_name:
 ```
 
 [Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+{% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
 ```
@@ -208,7 +212,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 To eliminate the frustration of the silently evolving dataset schema, use schema checks with alert configurations to notify you when column changes occur.
 
 If you have set up a Soda Cloud account and [connected it to Soda Core]({% link soda/quick-start-soda-core.md %}#connect-soda-core-to-soda-cloud), you can use a catch-all schema check that results in a warning whenever a Soda scan reveals that a column has been added, removed, moved within the context of an index, or changed data type relative to the results of the previous scan. 
-
+{% include code-header.html %}
 ```yaml
 # Requires a Soda Cloud account
 # Check for any schema changes to dataset
@@ -223,7 +227,7 @@ checks for dataset_name:
 If you wish to apply a more granular approach to monitoring schema evolution, you can specify columns in a dataset that ought to be present or which should not exist in the dataset. 
 
 The following example warns you when, during a scan, Soda discovers that `column_name` is missing in the dataset; the check fails if either `column_name1` or `column_name2` exist in the dataset. This type of check is useful when, for example, you need to ensure that datasets do not contain columns of sensitive data such as credit card numbers or personally identifiable information (PII).
-
+{% include code-header.html %}
 ```yaml
 # Check for absent or forbidden columns in dataset
 checks for dataset_name:
@@ -237,6 +241,7 @@ checks for dataset_name:
 Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a warn and a fail, the check result only displays the more severe, failed check result. [Read more]({% link soda-cl/schema.md %}#expect-one-check-result).
 
 [Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+{% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
 ```

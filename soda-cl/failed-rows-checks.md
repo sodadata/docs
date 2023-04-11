@@ -12,13 +12,17 @@ parent: SodaCL
 Use a failed rows check to explicitly send samples of rows that failed a check to Soda Cloud. 
 
 You can also use a failed row check to configure Soda Core to execute a CTE or SQL query against your data, or to group failed check results by one or more categories.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
 # Failed rows defined using common table expression
   - failed rows:
       samples limit: 50
       fail condition: total_children = '2' and number_cars_owned >= 3
+```
+{% include code-header.html %}
+```yaml
+checks for dim_customer:
 # Failed rows defined using SQL query
   - failed rows:
       fail query: |
@@ -64,7 +68,7 @@ In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#
 The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the `fail condition` that any rows in the `dim_customer` dataset must meet in order to qualify as failed rows, during a scan, get sent to Soda Cloud. 
 
 In this rather silly example, Soda Core sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples. The check also uses the `name` configuration key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - failed rows:
@@ -104,7 +108,7 @@ checks for dim_customer:
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). <br /> *Known issue:* Dataset filters are not compatible with failed rows checks which use a SQL query. With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260--> | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 #### Example with check name 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - failed rows:
@@ -115,7 +119,7 @@ checks for dim_customer:
 ```
 
 #### Example with quotes
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - failed rows:
@@ -128,7 +132,7 @@ checks for dim_customer:
 #### Example with dataset filter
 
 *Known issue:* Dataset filters are not compatible with failed rows checks which use a SQL query. With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260--> 
-
+{% include code-header.html %}
 ```yaml
 filter dim_product [new]:
   where: start_date < TIMESTAMP '2015-01-01'
@@ -145,7 +149,7 @@ checks for dim_product [new]:
 ## Set a sample limit
 
 By default, Soda Core sends 100 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda Core using the `samples limit` configuration key:value pair, as in the following example.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - failed rows:
@@ -154,7 +158,7 @@ checks for dim_customer:
 ```
 
 If you wish to prevent Soda from collecting and sending failed row samples to Soda Cloud for an individual check, you can set the `samples limit` to `0`.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - failed rows:
@@ -163,7 +167,7 @@ checks for dim_customer:
 ```
 
 If you wish to set a limit on the samples that Soda collects for an entire data source, you can do so by adjusting the configuration YAML file, or editing the Data Source connection details in Soda Cloud, as per the following syntax. 
-
+{% include code-header.html %}
 ```yaml
 data_source soda_test:
   type: postgres
@@ -238,7 +242,7 @@ See also:
 For example, you may wish to exclude a column that contains personal identifiable information (PII) such as credit card numbers from the Soda query that collects samples. 
 
 To do so, add the `sampler` configuration to your data source connection configuration to specify the columns you wish to exclude, as per the following examples.
-
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name: 
   type: postgres
@@ -259,6 +263,7 @@ data_source my_datasource_name:
         - column_nameB
 ```
 OR
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name: 
   type: postgres
@@ -294,7 +299,7 @@ Alternatively, you can disable the failed row samples feature entirely in Soda C
 ### Disabling options and details
 
 Optionally, you can use wildcard characters `*` in the `sampler` configuration, as in the following examples.
-
+{% include code-header.html %}
 ```yaml
 # disable all failed rows samples on all datasets
 sampler:
@@ -313,6 +318,7 @@ sampler:
 ```
 
 * Soda executes the `exclude_columns` values cumulatively. For example, for the following configuration, Soda excludes the columns `password`, `last_name` and any columns that begin with `pii_` from the `retail_customers` dataset.
+{% include code-header.html %}
 ```yaml
 sampler:
   exclude_columns:
@@ -390,6 +396,7 @@ Soda sends the failed rows samples as a JSON payload and includes:
 * scan definition name
 * check name
 
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name: 
   type: postgres
@@ -434,7 +441,7 @@ data_source my_datasource_name:
 ## Configure a failed row sampler
 
 If you are running Soda scans [programmatically]({% link soda-core/programmatic.md %}), you can add a custom sampler to collect samples of rows with a `fail` check result. Refer to the following example that prints the failed row samples in the CLI.
-
+{% include code-header.html %}
 ```python
 from soda.scan import Scan
 from soda.sampler.sampler import Sampler

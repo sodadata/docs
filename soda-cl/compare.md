@@ -24,7 +24,7 @@ Have you got an idea or example of how to compare data that we haven't documente
 
 Use a [cross check]({% link soda-cl/cross-row-checks.md %}) to conduct a row count comparison between datasets in the same data source. <br /> 
 If you wish to compare datasets in different data sources, or datasets in the same data source but with different schemas, see [Compare data in different data sources or schemas](#compare-data-in-different-data-sources-or-schemas).
-
+{% include code-header.html %}
 ```yaml
 checks for dim_employee:
   - row_count same as dim_department_group
@@ -32,14 +32,14 @@ checks for dim_employee:
 
 Use a [reference check]({% link soda-cl/reference.md %}) to conduct a row-by-row comparison of values in two datasets _in the same data source_ and return a result that indicates the volume and samples of mismatched rows, as in the following example which ensures that the values in each of the two names columns are identical.<br />
 If you wish to compare datasets in the same data source but with different _schemas_, see [Compare data in different data sources or schemas](#compare-data-in-different-data-sources-or-schemas).
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customers_dev:
   - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name)
 ```
 
 Alternatively, you can use a [failed rows check]({% link soda-cl/failed-rows-checks.md %}) to customize a SQL query that compares the values of datasets.
-
+{% include code-header.html %}
 ```yaml
 - failed rows:
       name: Validate that the data is the same as retail customers
@@ -79,7 +79,7 @@ Alternatively, you can use a [failed rows check]({% link soda-cl/failed-rows-che
 
 Use a [cross check]({% link soda-cl/cross-row-checks.md %}) to conduct a simple row count comparison of datasets in two different data sources, as in the following example that compares the row counts of two datasets in different data sources. <br />
 Note that each data source involved in this check has been connected to data source either in the `configuration.yml` file with Soda Core, or in the **Add Data Source** workflow in Soda Cloud.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - row_count same as dim_customer in aws_postgres_retail
@@ -88,6 +88,7 @@ checks for dim_customer:
 You can use a [reference check]({% link soda-cl/reference.md %}) to compare the values of different datasets in the _same_ data source (same data source, same schema), but if the datasets are in different schemas, as might happen when you have different environments like production, staging, development, etc., then Soda considers those datasets as _different data sources_. Where that is the case, you have a couple of options.
 
 You can use a cross check to compare the row count of datasets in the same data source, but with different schemas. First, you must add dataset + schema as a separate data source connection in your `configuration.yml`, as in the following example that uses the same connection details but provides different schemas:
+{% include code-header.html %}
 ```yaml
 data_source retail_customers_stage:
   type: postgres
@@ -108,6 +109,7 @@ data_source retail_customers_prod:
   schema: production
 ```
 Then, you can define a cross check that compares values across these data sources.
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
 # Check row count between datasets in different data sources
@@ -117,7 +119,7 @@ checks for dim_customer:
 Alternatively, depending on the type of data source you are using, you can use a [failed rows check]({% link soda-cl/failed-rows-checks.md %}) to write a custom SQL query that compares contents of datasets that you define by adding the schema before the dataset name, such as `prod.retail_customers` and `staging.retail_customers`. 
 
 The following example accesses a single Snowflake data source and compares values between the same datasets but in different databases and schemas: `prod.staging.dmds_scores` and `prod.measurement.post_scores`.
-
+{% include code-header.html %}
 ```yaml
 - failed rows:
     fail query: |

@@ -11,7 +11,7 @@ parent: Connect a data source
 For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
 
 [Define a programmatic scan]({% link soda-core/programmatic.md %}) for the data in the DataFrames. Refer to the following example.
-
+{% include code-header.html %}
 ```python
 import dask.datasets
 import pandas as pd

@@ -10,7 +10,7 @@ parent: Soda CL
 *Last modified on {% last_modified_at %}*
 
 Use a validity metric in a check to surface invalid or unexpected values in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
 # Check for valid values
@@ -30,6 +30,10 @@ checks for dim_customer:
       valid regex: (0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)
   - invalid_count(house_owner_flag) = 0:
       valid values: ['0', '1']
+```
+{% include code-header.html %}
+```yaml
+checks for dim_customer:
 # Check for invalid values
   - invalid_count(first_name) = 0:
       invalid values: [Antonio]
@@ -57,7 +61,7 @@ You can use all validity metrics in checks that apply to individual columns in a
 * You must use a [configuration key:value pair](#list-of-configuration-keys) to define what qualifies as an valid value or invalid value. 
 * If you wish, you can add a `%` character to the threshold for a `invalid_percent` metric for improved readability. This character does not behave as a wildard in this context.
 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer
   - invalid_count(number_cars_owned) = 0:
@@ -65,7 +69,7 @@ checks for dim_customer
 ```
 
 You can use validity metrics in checks with fixed thresholds, or relative thresholds, but *not* change-over-time thresholds. See [Checks with fixed thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) for more detail. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
 # a check with a fixed threshold
@@ -119,7 +123,7 @@ The example below defines two checks. The first check applies to the column `hou
 * Numeric characters in a `valid values` list must be enclosed in single quotes.
 
 The second check uses a regular expression to define what qualifies as a valid value in the `birthday` column so that any values that do *not* match the pattern defined by the regex qualify as invalid. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - invalid_count(house_owner_flag) = 0:
@@ -151,7 +155,7 @@ Second check:
 The `invalid values` configuration key specifies that if a row in that column contains the invalid values in the list, Soda registers them as invalid. In the example below, the check fails if Soda discovers any values that are `Antonio`. 
 * Values in a list must be enclosed in square brackets.
 * Numeric characters in an `invalid values` list must be enclosed in single quotes.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - invalid_count(first_name) = 0:
@@ -165,7 +169,7 @@ checks for dim_customer:
 If the data type of the column you are checking is TEXT (such as character, character varying, or string) then you can use the `valid format` configuration key. This config key uses built-in values that test the data in the column for specific formats, such as email address format, date format, or uuid format. See [List of valid formats](#list-of-valid-formats) below.
 
  The check below validates that all values in the `email_address` column conform to an email address format. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - invalid_percent(email_address) = 0:
@@ -202,7 +206,7 @@ Error occurred while executing scan.
 Checks with validity metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
 If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - invalid_percent(email_address) < 50:
@@ -214,7 +218,7 @@ checks for dim_customer:
 For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
 Alternatively, you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - invalid_percent(email_address) < 50:
@@ -243,7 +247,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 
 
 #### Example with check name
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - invalid_count(first_name) = 0 :
@@ -252,7 +256,7 @@ checks for dim_customer:
 ```
 
 #### Example with alert configuration
-
+{% include code-header.html %}
 ```yaml
   - invalid_count(house_owner_flag):
       valid values: ['0', '1']
@@ -261,7 +265,7 @@ checks for dim_customer:
 ```
 
 #### Example with in-check filter
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - invalid_percent(marital_status) = 0:
@@ -270,7 +274,7 @@ checks for dim_customer:
 ```
 
 #### Example with quotes
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - invalid_count("number_cars_owned") = 0:
@@ -278,7 +282,7 @@ checks for dim_customer:
 ```
 
 #### Example with for each
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:
@@ -290,7 +294,7 @@ for each dataset T:
 ```
 
 #### Example with dataset filter
-
+{% include code-header.html %}
 ```yaml
 filter CUSTOMERS [daily]:
   where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'

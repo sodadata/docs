@@ -11,7 +11,7 @@ redirect_from: /soda-cl/missing-validity.html
 *Last modified on {% last_modified_at %}*
 
 Use a missing metric in a check to surface missing values in the data in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer
   - missing_count(birthday) = 0
@@ -41,14 +41,14 @@ In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#
 You can use both missing metrics in checks that apply to individual columns in a dataset; you cannot use missing metrics in checks that apply to entire datasets. Identify the column by adding a value in the argument between brackets in the check. 
 * SodaCL considers `NULL` as the default value for "missing". 
 * If you wish, you can add a `%` character to the threshold for a `missing_percent` metric for improved readability. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_count(birthday) = 0
 ```
 
 You can use missing metrics in checks with fixed thresholds, or relative thresholds, but *not* change-over-time thresholds. See [Checks with fixed thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) for more detail. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
 # a check with a fixed threshold
@@ -102,7 +102,7 @@ The example below defines two checks. The first check applies to the column `las
 * Numeric characters in a `missing values` list must be enclosed in single quotes.
 
 The second check uses a regular expression to define what qualifies as a missing value in the `birthday` column so that any values that are `00/00/0000` qualify as missing. This check passes if Soda discovers no values that match the pattern defined by the regex.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_count(last_name) < 5:
@@ -136,7 +136,7 @@ Second check:
 Checks with missing metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
 If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a missing metric. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_percent(email_address) < 50:
@@ -147,7 +147,7 @@ checks for dim_customer:
 For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns). 
 
 Alternatively, you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_percent(email_address) < 50:
@@ -176,7 +176,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 
 
 #### Example with check name
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_count(birthday) = 0:
@@ -185,7 +185,7 @@ checks for dim_customer:
 ```
 
 #### Example with alert configuration
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_percent(marital_status):
@@ -195,7 +195,7 @@ checks for dim_customer:
 ```
 
 #### Example with in-check filter
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_count(first_name) < 5:
@@ -204,14 +204,14 @@ checks for dim_customer:
 ```
 
 #### Example with quotes
-
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
   - missing_percent("phone", "address_line1") = 0
 ```
 
 #### Example with for each
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:
@@ -222,7 +222,7 @@ for each dataset T:
 ```
 
 #### Example with dataset filter
-
+{% include code-header.html %}
 ```yaml
 filter CUSTOMERS [daily]:
   where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'

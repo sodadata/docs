@@ -77,6 +77,7 @@ If your Soda Cloud account is also [connected to Soda Core]({% link soda-core/co
 Note that you can delete resources that appear in Soda Cloud as a result of a manual or programmatic Soda Core scan. However, unless you delete the reference to the resource at its source – the `checks.yml` file or `configuration.yml` file – the resource will reappear in Soda Cloud when Soda Core sends its next set of scan results.
 
 For example, imagine you use Soda Core to run scans and send results to Soda Cloud. In the `checks.yml` file that you use to define your checks, you have the following configuration:
+{% include code-header.html %}
 ```yaml
 checks for dataset-q:
   - missing_count(last_name) < 10

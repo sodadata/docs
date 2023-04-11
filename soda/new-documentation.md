@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### April 11, 2023
+* Added a copy-to-clipboard button to most code snippets in documentation.
+* Added attribute mapping details to add Soda Cloud to [Google Workspace as a SAML app]({% link soda-cloud/sso.md %}#add-soda-cloud-to-google-workspace).
+
 #### March 29, 2023
 * Revised instructions to add Soda Cloud to [Google Workspace as a SAML app]({% link soda-cloud/sso.md %}#add-soda-cloud-to-google-workspace).
 

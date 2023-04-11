@@ -11,7 +11,7 @@ parent: Connect a data source
 {% include connect-to-intro.md %}
 
 ## Configuration
-
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
   type: snowflake
@@ -55,6 +55,7 @@ data_source my_datasource_name:
 ### Private key authentication
 
 You can use the `private_key` and `private_key_passphrase` parameters to specify for key pair authentication. In you configuration YML file, add the parameters as per the following example. 
+{% include code-header.html %}
 ```yaml
 data_source snowflake:
   type: snowflake

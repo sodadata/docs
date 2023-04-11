@@ -46,7 +46,7 @@ Designed as a human-readable language, SodaCL includes over 25 built-in metrics 
 Access [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %}).
 
 #### Example SodaCL checks
-
+{% include code-header.html %}
 ```yaml
 checks for CUSTOMERS:
   - row_count > 0
