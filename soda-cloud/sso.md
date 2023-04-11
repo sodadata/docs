@@ -105,8 +105,11 @@ The values for these fields are unique to your organization and are provided to 
 * **Entity ID**
 * **IDP metadata**
 * **Certificate** 
-5. Email the copied and downloaded values to <a href="mailto:support@soda.io">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
-6. In the Google Workspace admin portal, use Google's instructions to <a href="https://support.google.com/a/answer/6087519?hl=en&ref_topic=7559288" target="_blank">Turn on your SAML app</a> and verify that SSO works with the new custom app for Soda.
+5. On the **SAML Attribute mapping** page, add two Google directory attributes and map as follows:
+* Last Name → User.FamilyName
+* First Name → User.GivenName
+6. Email the copied and downloaded values to <a href="mailto:support@soda.io">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
+7. In the Google Workspace admin portal, use Google's instructions to <a href="https://support.google.com/a/answer/6087519?hl=en&ref_topic=7559288" target="_blank">Turn on your SAML app</a> and verify that SSO works with the new custom app for Soda.
 
 
 ## Go further
