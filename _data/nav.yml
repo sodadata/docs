@@ -228,7 +228,7 @@
   - subtitle: Soda SQL is now Soda Core
     page: soda/deprecated.md
 
-- title: API Documentation
+- title: Soda Cloud Reporting API
   page: api-docs/reporting-api-v1.md
   subcategories:
   - subtitle: Reporting API v1 (Preview)

@@ -59,16 +59,17 @@ profile columns:
 * You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) within your organization's Soda Cloud account.
 * You, or an Administrator in your organization's Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) which enables you to connect to a data source in Soda Cloud.
 
-To define discover and profile datasets, follow the guided steps to create a new data source and add the sample configuration in step 4 [Discover datasets]({% link soda-cloud/add-datasource.md %}#3-discover-datasets). Reference the [section below](#define-an-automated-monitoring-check) for how to configure profiling using SodaCL. 
+To define discover and profile datasets, follow the guided steps to create a new data source and add the sample configuration in step 4 [Discover datasets]({% link soda-cloud/add-datasource.md %}#3-discover-datasets). Refer to the [section below](#define-column-profiling) for how to configure profiling using SodaCL. 
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
+Note that while it is possible to configure dataset discovery and column profiling in a checks YAML file with Soda Core, the profiling information is only displayed in Soda Cloud. Thus, the requirement to have a Soda Cloud account.
 
 * You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
 * You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
 * You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core. <br />
 
-Reference the [section below](#define-an-automated-monitoring-check) for how to configure profiling in a checks YAML file using SodaCL. 
+Refer to the [section below](#define-column-profiling) for how to configure profiling in a checks YAML file using SodaCL. 
 
   </div>
   </div>

@@ -77,7 +77,7 @@ The following example detects anomalies for the count of missing values in the `
 ```yaml
 checks for orders:
   - anomaly score for missing_count(id) < default:
-    missing_values: [None, No Value]
+      missing_values: [None, No Value]
 ```
 
 ## Anomaly score check results 
