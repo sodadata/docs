@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### April 18, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.31 and Soda Core 3.0.32.
+
 #### April 11, 2023
 * Added a copy-to-clipboard button to most code snippets in documentation.
 * Added attribute mapping details to add Soda Cloud to [Google Workspace as a SAML app]({% link soda-cloud/sso.md %}#add-soda-cloud-to-google-workspace).
