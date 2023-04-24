@@ -1,16 +1,12 @@
 ---
 layout: default
-title: Quick start for SodaCL
+title: SodaCL tutorial
 description: Follow the quick start tutorial to get started with SodaCL, a human-readable, domain-specific language for data reliability. 
-parent: Get started
+parent: SodaCL
 ---
 
-# Quick start for SodaCL 
+# SodaCL tutorial
 *Last modified on {% last_modified_at %}*
-
-<br />
-
-![sodacl-logo](/assets/images/sodacl-logo.png){:height="100px" width="100px"}<br />
 
 If you are staring at a blank YAML file wondering what SodaCL checks to write to surface data quality issues, this quick start tutorial is for you. 
 
@@ -52,7 +48,7 @@ You do not need to follow the tutorial sequentially.
 
 ## Tutorial prerequisites
 
-* You have completed the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) <br /> OR <br /> you have followed the instructions to [install]({% link soda-core/installation.md %}) and [configure]({% link soda-core/configuration.md %}) Soda Core on your own. 
+* You have completed the Take a sip of Soda quick start guide <br /> OR <br /> you have followed the instructions to [install]({% link soda-core/installation.md %}) and [configure]({% link soda-core/configuration.md %}) Soda Core on your own. 
 * You have installed a code editor such as Sublime or Visual Studio Code.
 * You have created a new YAML file in your code editor and named it `checks.yml`.
 * (Optional) You have read the first two sections in [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) as a primer for SodaCL.
@@ -211,7 +207,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 
 To eliminate the frustration of the silently evolving dataset schema, use schema checks with alert configurations to notify you when column changes occur.
 
-If you have set up a Soda Cloud account and [connected it to Soda Core]({% link soda/quick-start-soda-core.md %}#connect-soda-core-to-soda-cloud), you can use a catch-all schema check that results in a warning whenever a Soda scan reveals that a column has been added, removed, moved within the context of an index, or changed data type relative to the results of the previous scan. 
+If you have set up a Soda Cloud account and connected it to Soda Core, you can use a catch-all schema check that results in a warning whenever a Soda scan reveals that a column has been added, removed, moved within the context of an index, or changed data type relative to the results of the previous scan. 
 {% include code-header.html %}
 ```yaml
 # Requires a Soda Cloud account
@@ -288,7 +284,7 @@ checks for corp_value:
 
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Read about the [Optional configurations]({% link soda-cl/optional-config.md %}) you can apply to SodaCL checks.
-* [Connect Soda Core to Soda Cloud]({% link soda/quick-start-soda-core.md %}#connect-soda-core-to-soda-cloud) to vastly enrich the data quality monitoring experience.
+* Connect Soda Core to Soda Cloud to vastly enrich the data quality monitoring experience.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

@@ -3,6 +3,7 @@ layout: default
 title: Soda product overview
 description: Soda Core utilizes user-defined input to prepare SQL queries to find bad data. Use the Soda Cloud web app to visualize results of scans and set up alerts.
 parent: Get started
+redirect_from: /soda/product-matrix.html
 ---
 
 # Soda product overview
@@ -141,8 +142,6 @@ The very first Soda OSS tools, Soda SQL and Soda Spark, served their community w
 
 ## Go further
 
-* Access a [Soda product comparison]({% link soda/product-matrix.md %}) to learn about the features and functionalities each tool has to offer.
-* Get up and running in a few minutes using the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}).
 * Learn more about Soda Core [scans]({% link soda-core/scan-core.md %}) and [metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

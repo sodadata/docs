@@ -9,7 +9,7 @@ parent: Soda Core
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-To use all the [features and functionality]({% link soda/product-matrix.md %}) that **Soda Cloud** and **Soda Core** have to offer, you can install and configure the Soda Core command-line tool, then connect it to your Soda Cloud account.
+To use all the features and functionality that **Soda** has to offer, you can install and configure the Soda command-line tool, then connect it to your Soda account.
 
 Soda Core uses an API to connect to Soda Cloud. To use the API, you must generate API keys in your Soda Cloud account, then add them to the configuration YAML file that Soda Core uses to connect to your data sources. Note that the API keys you create do not expire. 
 
@@ -23,7 +23,7 @@ Soda Core uses an API to connect to Soda Cloud. To use the API, you must generat
 ## Prerequisites
 
 * You have [installed]({% link soda-core/installation.md %}) and [configured]({% link soda-core/configuration.md %}) Soda Core and run at least one scan of your data.<br /> OR 
-* You followed steps in the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) to set up Soda Core and run at least one scan of your data.
+* You have set up Soda Core and run at least one scan of your data.
 
 ## Connect
 
