@@ -15,10 +15,10 @@ Is Soda the data quality testing solution you've been looking for? <br />
 Take a sip and see!
 
 1. Learn the basics of Soda in [two minutes](#learn-about-soda).
-2. Make sure you have a [few prerequisite tools](#tutorial-prerequisites) you need to complete this tutorial.
+2. Make sure you have the [tools](#tutorial-prerequisites) you need to complete this tutorial.
 3. [Install Soda from the command-line](#install-soda-from-the-command-line).
 4. Use Docker to [build an example data source](#build-an-example-data-source) against which to run data quality scans.
-5. [Connect Soda to the data source and a Soda account](#connect-soda-to-the-data-source-and-a-soda-account).
+5. [Connect Soda to the data source and a platform account](#connect-soda-to-the-data-source-and-a-platform-account).
 6. [Write some checks](#write-some-checks-and-run-a-scan) that surface “bad” data in a dataset, then run your first scan. Examine the scan results in the command-line output and in the visualized check results in your Soda account. 
 
 <br />
@@ -26,26 +26,7 @@ Take a sip and see!
 
 ## Learn about Soda
 
-Soda is a platform tht enables Data Engineers to test for data quality where and when they need to. 
-
-Is your data fresh? Is it complete or missing values? Are there unexpected duplicate values? Did something go wrong during transformation? Are all the data values valid? These are the questions that Soda answers for Data Engineers.
-
-* Use Soda with GitHub Actions to test data quality during CI/CD development.
-* Use it with AirFlow to test data quality after ingestion and transformation in your pipeline.
-* Import your dbt tests into your Soda account to facilitate issue investigation and track dataset health over time.
-* Integrate Soda with your data catalog to gauge dataset health from within the catalog.
-
-<br />
-
-The Soda platform uses a **CLI tool**, an **online account**, and **YAML files** to enable you test your data for quality. 
-
-* To connect to a data source such as Snowflake, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. 
-* To define the data quality checks that Soda runs against a dataset, you use a `checks.yml` file. A Soda Check is a test that Soda performs when it scans a dataset in your data source. The checks YAML file stores the Soda Checks you write using SodaCL.
-* To scan your dataset amd execute the checks, you use the CLI tool to run a scan manually or programmatically.
-* To review scan results and take action to investigate issues, you login to your online account to see visualized results, tracks trends in data quality over time, and integrate with the messaging, ticketing, and data cataloging tools you already use.
-
-Read more about [How Soda works]({% link soda-core/how-core-works.md %}).<br />
-Read more about [SodaCL Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
+{% include about-soda.md %}
 
 ## Tutorial prerequisites
 
@@ -58,6 +39,8 @@ To see Soda up and running locally in a few minutes, you need a few tool.
 * You have intsalled a code editor such as <a href="https://www.sublimetext.com/" target="_blank">Sublime</a> or <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> in your local environment.
 
 ## Install Soda from the command line
+
+This tutorial references a MacOS environment.
 
 1. In your command-line interface, create a Soda project directory in your local environment, then navigate to the directory.
 ```shell
@@ -110,14 +93,14 @@ docker-compose up
 
 
 
-## Connect Soda to the data source and a Soda account
+## Connect Soda to the data source and a platform account
 
 To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. To connect to your Soda account, you create API keys and add them to the same `configuration.yml` file.
 
 1. Create a new file called `configuration.yml` in your `soda_sip` directory. 
 2. Open the `configuration.yml` file in a code editor, then copy and paste the following connection details into the file. These configuration details connect Soda to the example AdventureWorks data source you set up using Docker.
 ```yaml
-data_source my_database_name:
+data_source adventureworks:
   type: postgres
   connection:
     host: localhost
@@ -126,7 +109,7 @@ data_source my_database_name:
   database: postgres
   schema: public
 ```
-3. Next, add the following configuration that will connect Soda to your new online account. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under the `data_source` syntax.
+3. Next, add the following configuration that connects Soda to your new platform account, leaving the values blank for a moment. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under the `data_source` syntax.
 ```yaml
 soda_cloud:
   host: cloud.soda.io
@@ -197,7 +180,7 @@ Oops! 2 failures. 0 warnings. 0 errors. 3 pass.
 Sending results to Soda Cloud
 Soda Cloud Trace: 4417******32502
 ```
-4. As you can see from the output, some checks failed and Soda sent the results to your online account. To access visualized check results and further examine the failed checks, return to your Soda account in your browser and click **Checks**. <br /> <br />
+4. As you can see from the output, some checks failed and Soda sent the results to your platform account. To access visualized check results and further examine the failed checks, return to your Soda account in your browser and click **Checks**. <br /> <br />
 ![quick-sip-results](/assets/images/quick-sip-results.png)<br /> <br />
 5. In the table of check results Soda displays, you can click the line item for one of the checks that failed to examine the visualized results in a line graph, and to access the failed row samples that Soda automatically collected when it ran the scan and executed the checks.<br />
 Use the failed row samples to figure out what caused a data quality check to fail.
