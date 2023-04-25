@@ -14,7 +14,7 @@ redirect_from:
 Is Soda the data quality testing solution you've been looking for? <br />
 Take a sip and see!
 
-1. Learn the basics of Soda in [one minute](#learn-about-soda).
+1. Learn the basics of Soda in [two minutes](#learn-about-soda).
 2. Make sure you have a [few prerequisite tools](#tutorial-prerequisites) you need to complete this tutorial.
 3. [Install Soda from the command-line](#install-soda-from-the-command-line).
 4. Use Docker to [build an example data source](#build-an-example-data-source) against which to run data quality scans.
@@ -197,7 +197,7 @@ Oops! 2 failures. 0 warnings. 0 errors. 3 pass.
 Sending results to Soda Cloud
 Soda Cloud Trace: 4417******32502
 ```
-4. As you can see from the output, some checks failed and Soda sent results to your online account. To access visualized check results and further examine the failed checks, return to your Soda account in your browser and click **Checks**. <br /> <br />
+4. As you can see from the output, some checks failed and Soda sent the results to your online account. To access visualized check results and further examine the failed checks, return to your Soda account in your browser and click **Checks**. <br /> <br />
 ![quick-sip-results](/assets/images/quick-sip-results.png)<br /> <br />
 5. In the table of check results Soda displays, you can click the line item for one of the checks that failed to examine the visualized results in a line graph, and to access the failed row samples that Soda automatically collected when it ran the scan and executed the checks.<br />
 Use the failed row samples to figure out what caused a data quality check to fail.
