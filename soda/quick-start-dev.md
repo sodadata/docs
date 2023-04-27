@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Test data quality during CI/CD development
-description: 
+description: Follow this guide to set up and run automated Soda scans for data quality during CI/CD development using GitHub Actions.
 parent: Get started
 ---
 
@@ -13,13 +13,13 @@ Use this guide to install and set up Soda to test the quality of your data durin
 ![gh-action-fail](/assets/images/gh-action-fail.png){:width="500px"}
 
 1. Learn the basics of Soda in [two minutes](#soda-basics).
-2. [Get context](#about-this-guide) for this tutorial.
+2. [Get context](#about-this-guide) for this guide.
 3. [Install Soda from the command-line](#install-soda-from-the-command-line).
 4. [Connect Soda](#connect-soda-to-a-data-source-and-a-platform-account) to your data source and platform account.
 5. [Write checks](#write-checks-for-data-quality) for data quality.
 6. Create a [GitHub Action job](#create-a-github-action-job).
 7. Set up [Slack integration and notification rules](#set-up-slack-integration-and-notification-rules).
-8. [Trigger a scan](#trigger-a-scan-and-examine-results) and examine the results.
+8. Trigger a scan and [examine the scan results](#trigger-a-scan-and-examine-the-scan-results).
 <br />
 
 
@@ -35,264 +35,14 @@ For context, the example assumes that a team of people with access to a GitHub r
 
 Where the scan results indicate an issue with data quality, Soda notifies the team via a notification in Slack so that they can investigate and address any issues before merging the PR into production.
 
-Borrow from this tutorial to connect to your own data source, set up a GitHub Action job, and execute your own relevant tests for data quality.
+Borrow from this guide to connect to your own data source, set up a GitHub Action job, and execute your own relevant tests for data quality.
 
-(Not quite ready for this big gulp of Soda? Try [taking a sip]({% link soda/quick-start-sip.md %}) first.)
+(Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
 
 
 ## Install Soda from the command line
 
-<div class="warpper">
-  <input class="radio" id="one" name="group" type="radio" checked>
-  <input class="radio" id="two" name="group" type="radio">
-  <div class="tabs">
-  <label class="tab" id="one-tab" for="one">MacOS, Linux</label>
-  <label class="tab" id="two-tab" for="two">Windows</label>
-    </div>
-  <div class="panels">
-  <div class="panel" id="one-panel" markdown="1">
-
-1. Ensure that you have the following prerequisites installed in your environment.
-* Python 3.8 or greater. To check your existing version, use the CLI command: `python --version` or `python3 --version` <br /> 
-If you have not already installed Python, consider using <a href="https://github.com/pyenv/pyenv/wiki" target="_blank">pyenv</a> to manage multiple versions of Python in your environment.
-* Pip 21.0 or greater. To check your existing version, use the CLI command: `pip --version`
-2. Best practice dictates that you install Soda using a virtual environment. In Terminal, create a virtual environment in the `.venv` directory using the commands below. Depending on your version of Python, you may need to replace `python` with `python3` in the first command.
-```shell
-python -m venv .venv
-source .venv/bin/activate
-```
-3. Upgrade pip inside your new virtual environment.
-```shell
-pip install --upgrade pip
-```
-4. Execute the following command, replacing `soda-core-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
-```shell
-pip install soda-core-postgres
-```
-<details>
-    <summary style="color:#00BC7E">Soda packages</summary>
-<table>
-<thead>
-<tr>
-<th>Data source</th>
-<th>Install package</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon Athena</td>
-<td><code>soda-core-athena</code></td>
-</tr>
-<tr>
-<td>Amazon Redshift</td>
-<td><code>soda-core-redshift</code></td>
-</tr>
-<tr>
-<td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-core/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
-<td><code>soda-core-spark-df</code></td>
-</tr>
-<tr>
-<td>Azure Synapse (Experimental)</td>
-<td><code>soda-core-sqlserver</code></td>
-</tr>
-<tr>
-<td>ClickHouse (Experimental)</td>
-<td><code>soda-core-mysql</code></td>
-</tr>
-<tr>
-<td>Dask and Pandas (Experimental)</td>
-<td><code>soda-core-pandas-dask</code></td>
-</tr>
-<tr>
-<td>Databricks</td>
-<td><code>soda-core-spark[databricks]</code></td>
-</tr>
-<tr>
-<td>Denodo (Experimental)</td>
-<td><code>soda-core-denodo</code></td>
-</tr>
-<tr>
-<td>Dremio</td>
-<td><code>soda-core-dremio</code></td>
-</tr>
-<tr>
-<td>DuckDB (Experimental)</td>
-<td><code>soda-core-duckdb</code></td>
-</tr>
-<tr>
-<td>GCP Big Query</td>
-<td><code>soda-core-bigquery</code></td>
-</tr>
-<tr>
-<td>IBM DB2</td>
-<td><code>soda-core-db2</code></td>
-</tr>
-<tr>
-<td>Local file</td>
-<td>Use Dask.</td>
-</tr>
-<tr>
-<td>MS SQL Server</td>
-<td><code>soda-core-sqlserver</code></td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td><code>soda-core-mysql</code></td>
-</tr>
-<tr>
-<td>OracleDB</td>
-<td><code>soda-core-oracle</code></td>
-</tr>
-<tr>
-<td>PostgreSQL</td>
-<td><code>soda-core-postgres</code></td>
-</tr>
-<tr>
-<td>Snowflake</td>
-<td><code>soda-core-snowflake</code></td>
-</tr>
-<tr>
-<td>Trino</td>
-<td><code>soda-core-trino</code></td>
-</tr>
-<tr>
-<td>Vertica (Experimental)</td>
-<td><code>soda-core-vertica</code></td>
-</tr>
-</tbody>
-</table>
-</details>
-
-To deactivate the virtual environment, use the following command:
-```shell
-deactivate
-```
-
-
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
-
-1. Ensure that you have the following prerequisites installed in your environment.
-* Python 3.8 or greater. To check your existing version, use the CLI command: `python --version` or `python3 --version` <br /> 
-If you have not already installed Python, consider using <a href="https://github.com/pyenv/pyenv/wiki" target="_blank">pyenv</a> to manage multiple versions of Python in your environment.
-* Pip 21.0 or greater. To check your existing version, use the CLI command: `pip --version`
-2. Best practice dictates that you install Soda using a virtual environment. In Terminal, create a virtual environment in the `.venv` directory using the commands below. Depending on your version of Python, you may need to replace `python` with `python3` in the first command. Refer to the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activate-script" target="_blank">virtualenv documentation</a> for activating a Windows script.
-```shell
-python -m venv .venv
-.venv\Scripts\activate
-```
-3. Upgrade pip inside your new virtual environment.
-```shell
-pip install --upgrade pip
-```
-4. Execute the following command, replacing `soda-core-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
-```shell
-pip install soda-core-postgres
-```
-<details>
-    <summary style="color:#00BC7E">Soda packages</summary>
-<table>
-<thead>
-<tr>
-<th>Data source</th>
-<th>Install package</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon Athena</td>
-<td><code>soda-core-athena</code></td>
-</tr>
-<tr>
-<td>Amazon Redshift</td>
-<td><code>soda-core-redshift</code></td>
-</tr>
-<tr>
-<td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-core/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
-<td><code>soda-core-spark-df</code></td>
-</tr>
-<tr>
-<td>Azure Synapse (Experimental)</td>
-<td><code>soda-core-sqlserver</code></td>
-</tr>
-<tr>
-<td>ClickHouse (Experimental)</td>
-<td><code>soda-core-mysql</code></td>
-</tr>
-<tr>
-<td>Dask and Pandas (Experimental)</td>
-<td><code>soda-core-pandas-dask</code></td>
-</tr>
-<tr>
-<td>Databricks</td>
-<td><code>soda-core-spark[databricks]</code></td>
-</tr>
-<tr>
-<td>Denodo (Experimental)</td>
-<td><code>soda-core-denodo</code></td>
-</tr>
-<tr>
-<td>Dremio</td>
-<td><code>soda-core-dremio</code></td>
-</tr>
-<tr>
-<td>DuckDB (Experimental)</td>
-<td><code>soda-core-duckdb</code></td>
-</tr>
-<tr>
-<td>GCP Big Query</td>
-<td><code>soda-core-bigquery</code></td>
-</tr>
-<tr>
-<td>IBM DB2</td>
-<td><code>soda-core-db2</code></td>
-</tr>
-<tr>
-<td>Local file</td>
-<td>Use Dask.</td>
-</tr>
-<tr>
-<td>MS SQL Server</td>
-<td><code>soda-core-sqlserver</code></td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td><code>soda-core-mysql</code></td>
-</tr>
-<tr>
-<td>OracleDB</td>
-<td><code>soda-core-oracle</code></td>
-</tr>
-<tr>
-<td>PostgreSQL</td>
-<td><code>soda-core-postgres</code></td>
-</tr>
-<tr>
-<td>Snowflake</td>
-<td><code>soda-core-snowflake</code></td>
-</tr>
-<tr>
-<td>Trino</td>
-<td><code>soda-core-trino</code></td>
-</tr>
-<tr>
-<td>Vertica (Experimental)</td>
-<td><code>soda-core-vertica</code></td>
-</tr>
-</tbody>
-</table>
-</details>
-
-To deactivate the virtual environment, use the following command:
-```shell
-deactivate
-```
-
-Refer to the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activate-script" target="_blank">virtualenv documentation</a> for deactivating a Windows script.
-
-  </div>
-  </div>
-</div>
+{% include quick-start-install.md %}
 
 <br />
 
@@ -301,7 +51,7 @@ Refer to the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activa
 
 To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. 
 
-This guide also instructs you to connect to a Soda platform account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda platform account gives you access to visualized scan results, tracks trends in data quality over time, set alert notifications, and much more.
+This guide also instructs you to connect to a Soda platform account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda platform account gives you access to visualized scan results, tracks trends in data quality over time, enables you to set alert notifications, and much more.
 
 1. In the GitHub repository in which you work with your dbt models, or ingest and transform data, create a directory to contain your Soda configuration and check YAML files.
 2. Something about setting up GitHub secrets.
@@ -334,6 +84,10 @@ soda_cloud:
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
 8. Save the `configuration.yml` file and close the API modal in your Soda account.
+9. In Terminal, run the following command to test Soda's connection to your data source, replacing the value of `my_datasource_name` with your own value.<br />
+```shell
+soda test-connection -d my_datasource_name -c configuration.yml
+```
 
 ## Write checks for data quality
 
@@ -353,7 +107,7 @@ Learn more about [SodaCL]({% link soda/quick-start-sodacl.md %}).
         # Checks that column contains no NULL values
           - missing_count(column1) = 0:
               name: No NULL values
-        # Checks for columns removed or added, index or type changed
+        # Checks for columns removed or added, or change to index or type
           - schema:
               warn:
                 when schema changes: any
@@ -366,15 +120,35 @@ Learn more about [SodaCL]({% link soda/quick-start-sodacl.md %}).
 
 Use <a href="https://docs.github.com/en/actions" target="_blank">GitHub Actions</a> to execute a [Soda scan]({% link soda-core/scan-core.md %}) for data quality each time you create a new pull request or commit to an existing one, and *after* you have completed a dbt run that executed your dbt tests. 
 
-You must adjust some of the values to apply to your own repo and your own data source, but the sequence of steps is suitable to copy+paste. 
+<details>
+    <summary style="color:#00BC7E">What does the GH action do?</summary>
+To summarize, the action completes the following tasks:
 
-Create a file in the `.github/workflows` directory of your repository called `soda-actions.yml`. Copy and paste the example below into the new file, adjusting environment and data source-specific details as needed.
+<ol>
+  <li>Checks out the repo.</li>
+  <li>Sets up Python 3.10, which Soda requires (In fact, minimum version is Python 3.8.)</li>
+  <li>Installs Soda via <code>pip install</code>.</li>
+  <li>Uses the <code>configuration.yml</code> and <code>checks.yml</code> you created to run a scan of your data and save the results to a JSON file.</li>
+  <li>Extracts and converts Soda scan results from JSON to a markdown table.</li>
+  <li>Searches the PR for any existing comment containing "Soda Scan Summary".</li>
+  <li>If no such comment exists, creates a new comment in the PR and posts "Soda Scan Summary" table of check results.</li>
+  <li>If such a comment <i>does</i> already exist, updates the existing comment with the new "Soda Scan Summary" table of check results.</li>
+  <li>In case the Soda scan failed, sets a comment to advise of scan failure and provides advice to check the job logs in step 4.</li>
+</ol>
+Steps 6 - 8 are designed to keep the check results in the same comment rather than posting a new comment containing scan results with each commit. If you prefer to have a new comment with each commit, remove steps 6 and 8 and adjust step 7 to remove the leading <code>if</code> instruction.
+<br />
+</details>
+<br />
+
+1. Create a file in the `.github/workflows` directory of your repository called `soda-actions.yml`. 
+2. Copy and paste the example below into the new file, adjusting environment and data source-specific details as needed. You must adjust some of the values to apply to your own repo and your own data source, but the sequence of steps is suitable to copy+paste. 
+3. Save the `soda-actions.yml` file.
 
 {% include code-header.html %}
 ```yaml
 # This GitHub Action runs a Soda scan on a Snowflake data source called reporting_api_marts.
 # Best practice dictates that you set one action per data source and point to a folder that contains the relevant Soda files.
-# This examples sets up the action to run on a specific datasource and points `soda scan` to a folder of Soda check files.
+# This example sets up the action to run on a specific datasource and points `soda scan` to a folder of Soda check files.
 name: Run Soda Scan on [reporting_api__marts]
 # GitHub triggers this job when a user creates or updates a pull request.
 on:
@@ -428,7 +202,7 @@ jobs:
             fi
           fi
       # Step 6: Find an existing comment by GitHub Actions bot containing 'Soda Scan Summary'.
-      # This steps determines whether to create a new comment, or update an existing.
+      # This step determines whether to create a new comment, or update an existing.
       - name: Find comment
         uses: peter-evans/find-comment@v2
         id: fc
@@ -465,19 +239,10 @@ jobs:
 
 ## Set up Slack integration and notification rules
 
-Use this integration to enable Soda to send alert notifications to a Slack channel to notify your team of warn and fail check results. If your team does not use Slack, you can skip this step and Soda sends alert notifications via email.
-
-Learn more about [Integrating with Slack]({% link soda/integrate-slack.md %}).<br />
-Learn more about [Setting notification rules]({% link soda-cloud/notif-rules.md %}).
-
-1. As an [Admin]({% link soda-cloud/roles-and-rights.md %}), login to your Soda platform account and navigate to **your avatar** > **Organization Settings**, then navigate to the **Integrations** tab and click the **+** icon to add a new integration.
-2. Follow the guided steps to authorize Soda to connect to your Slack workspace. If necessary, contact your organization's Slack Administrator to approve the integration with Soda. 
-* **Configuration** tab: select the public channels to which Soda can post messages; Soda cannot post to private channels.
-* **Scope** tab: select the Soda features, both alert notifications and incidents, which can access the Slack integration. 
-3. To dictate where Soda should send alert notifications for checks that warn or fail, create a new notification rule. Navigate to **your avatar** > **Notification Rules**, then click **New Notification Rule**. Follow the guided steps to complete the new rule directly Soda to send check results that fail to a specific channel in your Slack workspace.
+{% include quick-start-notifs.md %}
 
 
-## Trigger a scan and examine results
+## Trigger a scan and examine the scan results
 
 To trigger the GitHub Action job and initiate a Soda scan for data quality, create a new pull request in your repository. 
 
@@ -493,9 +258,48 @@ To trigger the GitHub Action job and initiate a Soda scan for data quality, crea
 ...including, for some types of checks, samples of failed rows to help in your investigation of a data quality issue.
 ![gh-failed-rows](/assets/images/gh-failed-rows.png){:width="700px"}
 
-## Go further
 
-* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+✨Well done!✨ You've taken the first step towards a future in which you and your colleagues prevent data quality issues from getting into production. Huzzah!
+
+## Now what?
+<div class="docs-html-content">
+    <section class="docs-section" style="padding-top:0">
+        <div class="docs-section-row">
+            <div class="docs-grid-3cols">
+                <div>
+                    <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
+                    <h2>Experiment</h2>
+                    <a href="/soda/quick-start-sodacl.html">SodaCL tutorial</a>                    
+                    <a href="/soda-cl/metrics-and-checks.html">Study metrics and checks</a>
+                    <a href="/soda-cl/user-defined.md">Write custom SQL checks</a>
+                    <a href="/soda-cl/compare.html">Compare data</a>
+                </div>
+                <div>
+                    <img src="/assets/images/icons/icon-new@2x.png" width="54" height="40">
+                    <h2>Sip more Soda</h2>
+                    <a href="/soda/integrate-webhooks.html" target="_blank">Integrate with your tools</a>
+                    <a href="/soda-cl/check-attributes.html">Add check attributes</a>
+                    <a href="/soda-cloud/failed-rows.html">Examine failed row samples</a>
+                    <a href="/api-docs/reporting-api-v1.html">Report on data health</a>
+                </div>
+                <div>
+                    <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
+                    <h2>Choose your adventure</h2>
+                    <a href="/soda/quick-start-prod.html">Test data in your pipeline</a>
+                    <a href="/soda/quick-start-end-user.html">Enable end-user testing</a>
+                    <a href="/soda/integrate-alation.html">Integrate with Alation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+## Need help?
+
+* <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
+* Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

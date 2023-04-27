@@ -1,54 +1,137 @@
 ---
 layout: default
-title: Enable end-user data quality testing
-description: 
+title: Enable end users to test data quality
+description: Follow this guide to enable Soda platform end users to write their SodaCL checks for data quality for the data that matters to them the most.
 parent: Get started
 redirect_from:
 - /soda/quick-start-sodacloud.html
 ---
 
-# Enable end-user data quality testing
+# Enable end users to test data quality
 *Last modified on {% last_modified_at %}*
 
-Use this tutorial to review the steps that outline how to connect to your data source, set a scan schedule, profile your data, then write an agreement for stakeholder approval. These features enable users across your organization to serve themselves when it comes to testing data quality.
+Use this guide to set up the Soda platform to enable users across your organization to serve themselves when it comes to testing data quality. 
 
-[Tutorial prerequisites](#tutorial-prerequisites-1) <br />
-[Set up a data source and create a new agreement](#set-up-a-data-source-and-create-a-new-agreement)<br />
-[Go further](#go-further)<br />
+Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and the Soda platform, then invite colleagues to join the platform and begin creating Agreements and writing SodaCL checks for data quality. 
+
+1. Learn the basics of Soda in [two minutes](#soda-basics).
+2. [Get context](#about-this-guide) for this guide.
+3. [Deploy a Soda Agent](#deploy-a-soda-agent) in a Kubernetes cluster.
+4. [Connect a data source](#connect-a-data-source) to the Soda platform.
+5. [Invite your colleagues](#write-checks-for-data-quality) to begin writing agreements.
 <br />
 
-## Tutorial prerequisites
-* You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
-* You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) in your Soda Cloud account.
-* You, or an IT Administrator in your organization, has deployed a [Soda Agent]({% link soda-agent/deploy.md %}) in a cluster in your organization's cloud environment.
 
-## Set up a data source and create a new agreement 
+## Soda basics
 
-1. Log in to your Soda Cloud account, then navigate to **your avatar** > **Scans & Data**.
-2. In the **Agents** tab, confirm that an Administrator has deployed a Soda Agent and that its status is "green" in the **Last Seen** column. If not, contact the Soda Cloud user in your organization who deployed the agent to troubleshoot its status.
+Soda works by taking data quality checks that you prepare and using them to run a scan of datasets in a data source. A scan is a CLI command which instructs Soda to prepare optimized SQL queries that execute data quality checks on your data source to find invalid, missing, or unexpected data. When checks fail, they surface bad-quality data and present check results that help you investigate and address quality issues. 
+
+To test your data quality, you install Soda as an **Agent** in your own network infrastructure, and sign up for a **Soda platform account** so that you can complete the following tasks:
+
+* **Connect to your data source.** <br />To connect to a data source such as Snowflake, Amazon Athena, or Big Query, you add a new data source in the Soda platform which stores access details for your data source such as host, port, and data source login credentials. 
+* **Define checks to surface “bad” data.** <br />To define the data quality checks that Soda runs against a dataset, you use an Agreement, a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. These agreements contain checks, which are tests that Soda performs when it scans a dataset in your data source. The agreement stores the checks you write using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.
+* **Run a scan to execute your data quality checks.** <br />During a scheduled scan, Soda does not ingest your data, it only scans it for quality metrics, then uses the metadata to prepare scan results<sup>1</sup>. After a scan, each check results in one of three default states:
+    * pass: the values in the dataset match or fall within the thresholds you specified
+    * fail: the values in the dataset do not match or fall within the thresholds you specified
+    * error: the syntax of the check is invalid
+    * A fourth state, warn, is something you can explicitly configure for individual checks. 
+* **Review scan results and investigate issues.** <br />You can review the scan output in your Soda platform account which offers access to visualized scan results, trends in data quality over time, and the ability to integrate with the messaging, ticketing, and data cataloging tools you already use, like Slack, Jira, and Alation.
+
+<sup>1</sup> An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid issue investigation, a feature you can [disable]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).
+
+Learn more about [How Soda works]({% link soda-core/how-core-works.md %}).<br />
+Learn more about [running Soda scans]({% link soda-core/scan-core.md %}).<br />
+Learn more about [SodaCL Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).<br />
+Access the [Glossary]({% link soda/glossary.md %}) for a full list of Soda terminology. 
+
+## About this guide
+
+The instructions below offer Data Engineers an example of how to set up the Soda platform to enable colleagues to prepare their own data quality tests. Data quality testing is a team sport, after all!
+
+For context, the example assumes that you have the appropriate access to a cloud services provider environment such as Azure, AWS, or Google Cloud that allow you to create and deploy applications to a cluster. Further, it assumes that you, or someone on your team, has access to the login credentials that Soda needs to be able to access a data source such as MS SQL, Big Query, or Athena so that Soda can run scans of the data.
+
+Once you have completed the set-up, you can direct your colleagues to log in to the Soda platform and begin [creating Agreements]({% link soda-cloud/agreements.md %}). An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. It contains data quality checks that run according to the schedule you defined for the data source. 
+
+When checks fail during data quality scans, you and your colleagues get alerts via Slack which enable you to address issues before they have a downstream impact on the users or systems that depend upon the data.
+
+(Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
+<br />
+
+## Deploy a Soda Agent
+
+The Soda Agent is a tool that empowers Soda platform users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster.
+
+Access the exhaustive deployment instructions for the cloud services provider you use.
+* [Amazon Elastic Kubernetes Service (EKS)]({% link soda-agent/deploy-aws.md %})
+* [Microsoft Azure Kubernetes Service (AKS)]({% link soda-agent/deploy-azure.md %})
+* [Google Kubernetes Engine (GKE)]({% link soda-agent/deploy-google.md %})
+* [Cloud services provider-agnostic instructions]({% link soda-agent/deploy.md %})
+
+## Connect a data source
+
+1. Log in to your Soda platform account, then navigate to **your avatar** > **Scans & Data**.
+2. In the **Agents** tab, confirm that you can see the Soda Agent you deployed and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
 3. Navigate to the **Data source** tab, then click **New Data Source** and follow the [guided steps]({% link soda-cloud/add-datasource.md %}) to:
 * identify the new data source and its default scan schedule
-* provide connection configuration details for the data source, including login credentials
+* provide connection configuration details for the data source, and test the connection to the data source
 * profile the datasets in the data source to gather basic metadata about the contents of each
 * identify the datasets to which you wish to apply automated monitoring for anomalies and schema changes
 * assign ownership roles for the data source and its datasets
-4. After testing and saving the new data source, navigate to the **Agreements** dashboard, then click **New Agreement**.
-5. Follow the [guided steps]({% link soda-cloud/agreements.md %}) to:
-* label the agreement and identify the data source to which it applies
-* write checks to establish what good-quality data looks like; this forms the core of the agreement's contract between stakeholders
-* identify stakeholders in your organization that must approve the agreement you have defined 
-* identify whom to notify, and how, when a check in the agreement passes, fails, warns, or produces errors
-* select a scan schedule for your agreement
-6. After testing and saving your agreement, you can return to the **Agreements** dashboard and select the new agreement you just created, which has a status of "Waiting for approval". Click to select your new agreement to review its details and monitor its approval state amongst stakeholders.
-![agreement-done](/assets/images/agreement-done.png){:height="700px" width="700px"}
+4. Save the new data source.
 
-## Go further
+## Set up Slack integration and notification rules
 
-* Consider completing the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}).
-* Learn the basics of deploying a [Soda Agent]({% link soda-agent/basics.md %}).
-* Explore the built-in [metrics and checks]({% link soda-cl/metrics-and-checks.md %}) you can use with SodaCL.
-* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+{% include quick-start-notifs.md %}
+
+## Invite your colleagues
+
+After testing and saving the new data source, invite your colleagues to your Soda platform account so they can begin creating new agreements. 
+
+Navigate to **your avatar** > **Invite Team Members**, then complete the form to send invitations to your colleagues. Provide them with the following links to help them get started:
+* [Create a Soda agreement]({% link soda-cloud/agreements.md %})
+* [SodaCL tutorial]({% link soda/quick-start-sodacl.md %})
+
+<br />
+✨Well done!✨ You've taken the first step towards a future in which you and your colleagues can collaborate on defining and maintaining good-quality data. Huzzah!
+
+## Now what?
+<div class="docs-html-content">
+    <section class="docs-section" style="padding-top:0">
+        <div class="docs-section-row">
+            <div class="docs-grid-3cols">
+                <div>
+                    <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
+                    <h2>Experiment</h2>
+                    <a href="/soda/quick-start-sodacl.html">SodaCL tutorial</a>                    
+                    <a href="/soda-cl/metrics-and-checks.html">Study metrics and checks</a>
+                    <a href="/soda-cl/compare.html">Compare data</a>
+                </div>
+                <div>
+                    <img src="/assets/images/icons/icon-new@2x.png" width="54" height="40">
+                    <h2>Sip more Soda</h2>
+                    <a href="/soda/integrate-webhooks.html" target="_blank">Integrate with your tools</a>
+                    <a href="/soda-cl/check-attributes.html">Add check attributes</a>
+                    <a href="/soda-cloud/failed-rows.html">Examine failed row samples</a>
+                </div>
+                <div>
+                    <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
+                    <h2>Choose your adventure</h2>
+                    <a href="/soda/quick-start-dev.html">Test data during development</a>
+                    <a href="/soda/quick-start-prod.html">Test data in a pipeline</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+## Need help?
+
+* <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
+* Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+<br />
 
 <br />
 

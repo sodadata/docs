@@ -15,13 +15,16 @@ To test your data quality, you install the **Soda CLI tool** and sign up for a *
 
 * **Connect to your data source.** <br />To connect to a data source such as Snowflake, Amazon Athena, or Big Query, you use a `configuration.yml` file which stores access details for your data source such as host, port, and data source login credentials. 
 * **Define checks to surface “bad” data.** <br />To define the data quality checks that Soda runs against a dataset, you use a `checks.yml` file. A Soda Check is a test that Soda performs when it scans a dataset in your data source. The checks YAML file stores the checks you write using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.
-* **Run a scan to execute your data quality checks.** <br />During a scan, Soda does not ingest your data, it only scans it for quality metrics, then uses the metadata to prepare scan results. After a scan, each check results in one of three default states:
+* **Run a scan to execute your data quality checks.** <br />During a scan, Soda does not ingest your data, it only scans it for quality metrics, then uses the metadata to prepare scan results<sup>1</sup>. After a scan, each check results in one of three default states:
     * pass: the values in the dataset match or fall within the thresholds you specified
     * fail: the values in the dataset do not match or fall within the thresholds you specified
     * error: the syntax of the check is invalid
     * A fourth state, warn, is something you can explicitly configure for individual checks. 
-* **Review scan results and investigate issues.** <br />You can review the scan output in the command-line and in your Soda platform account. Add API keys to the same `configuration.yml` file to push check results to your account so you can access visualized scan results, tracks trends in data quality over time, and integrate with the messaging, ticketing, and data cataloging tools you already use, like Slack, Jira, and Alation.
+* **Review scan results and investigate issues.** <br />You can review the scan output in the command-line and in your Soda platform account. Add API keys to the same `configuration.yml` file to push check results to your account so you can access visualized scan results, set alert notifications, track trends in data quality over time, and integrate with the messaging, ticketing, and data cataloging tools you already use, like Slack, Jira, and Alation.
+
+<sup>1</sup> An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid issue investigation, a feature you can [disable]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
 Learn more about [How Soda works]({% link soda-core/how-core-works.md %}).<br />
+Learn more about [running Soda scans]({% link soda-core/scan-core.md %}).<br />
 Learn more about [SodaCL Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).<br />
 Access the [Glossary]({% link soda/glossary.md %}) for a full list of Soda terminology. 

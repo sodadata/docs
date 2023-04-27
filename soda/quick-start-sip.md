@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Take a sip of Soda
-description: 
+description: Follow this tutorial to set up and run a simple Soda scan for data quality using example data.
 parent: Get started
 redirect_from:
 - /soda/core-interactive-demo.html
@@ -11,9 +11,8 @@ redirect_from:
 # Take a sip of Soda
 *Last modified on {% last_modified_at %}*
 
-Is Soda the data quality testing solution you've been looking for? Take a sip and see! 
-
-Use the test data in this tutorial to run a simple Soda scan for data quality.
+Is Soda the data quality testing solution you've been looking for? 🥤Take a sip and see! <br />
+Use the example data in this tutorial to set up and run a simple Soda scan for data quality.
 
 1. Learn the basics of Soda in [two minutes](#soda-basics).
 2. Make sure you have the [tools](#tutorial-prerequisites) you need to complete this tutorial.
@@ -21,8 +20,6 @@ Use the test data in this tutorial to run a simple Soda scan for data quality.
 4. Use Docker to [build an example data source](#build-an-example-data-source) against which to run data quality scans.
 5. [Connect Soda to the data source and a platform account](#connect-soda-to-the-data-source-and-a-platform-account).
 6. [Write some checks](#write-some-checks-and-run-a-scan) that surface “bad” data in a dataset, then run your first scan. Examine the scan results in the command-line output and in the visualized check results in your Soda account. 
-7. [What now?](#what-now)
-8. [Need help?](#need-help)
 
 <br />
 
@@ -125,6 +122,17 @@ soda_cloud:
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
 5. Save the `configuration.yml` file and close the API modal in your Soda account.
+6. In Terminal, run the following command to test Soda's connection to the data source.<br />
+Command:
+```shell
+soda test-connection -d adventureworks -c configuration.yml
+```
+Output:
+```shell
+Soda Core 3.0.xx
+Successfully connected to 'adventureworks'.
+Connection 'adventureworks' is valid.
+```
 
 
 ## Write some checks and run a scan
@@ -191,7 +199,7 @@ Use the failed row samples to figure out what caused a data quality check to fai
 
 ✨Well done!✨ You've taken the first step towards a future in which you and your colleagues can trust the quality and reliability of your data. Huzzah!
 
-## What now?
+## Now what?
 <div class="docs-html-content">
     <section class="docs-section" style="padding-top:0">
         <div class="docs-section-row">
@@ -200,7 +208,7 @@ Use the failed row samples to figure out what caused a data quality check to fai
                     <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
                     <h2>Experiment</h2>
                     <a href="/soda/quick-start-sodacl.html">SodaCL tutorial</a>                    
-                    <a href="/soda-cl/metrics-and-checks.html">Read about metrics and checks</a>
+                    <a href="/soda-cl/metrics-and-checks.html">Study metrics and checks</a>
                     <a href="/soda-cl/compare.html">Compare data</a>
                 </div>
                 <div>
@@ -227,7 +235,7 @@ Use the failed row samples to figure out what caused a data quality check to fai
 
 ## Need help?
 
-* <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, we're here to help!
+* <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
 * Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
