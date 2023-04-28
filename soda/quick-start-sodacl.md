@@ -104,6 +104,21 @@ checks for dataset_name:
   - duplicate_count(column_name) = 0
 ```
 
+<br />
+
+If you wish, you can check for duplicate values in multiple columns. In the following example, Soda counts the number of duplicate values in both `column_name1` and `column_name2`. Be sure to add a space between the comma-separated values in the list of column names.
+
+```yaml
+# Check that duplicate values do not exist in either column
+checks for dataset_name:
+  - duplicate_count(column_name1, column_name2) = 0
+```
+
+[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+```yaml
+soda scan -d datasource_name -c configuration.yml checks.yml
+```
+
 ### Read more
 * [Numeric metrics]({% link soda-cl/numeric-metrics.md %})
 
