@@ -12,7 +12,7 @@ redirect_from:
 
 Use this guide to set up the Soda platform to enable users across your organization to serve themselves when it comes to testing data quality. 
 
-Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and the Soda platform, then invite colleagues to join the platform and begin creating Agreements and writing SodaCL checks for data quality. 
+Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and the Soda platform, then invite your Data Analyst colleagues to join the platform and create Agreements and begin writing their own SodaCL checks for data quality. 
 
 1. Learn the basics of Soda in [two minutes](#soda-basics).
 2. [Get context](#about-this-guide) for this guide.
@@ -26,7 +26,7 @@ Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and
 
 Soda works by taking data quality checks that you prepare and using them to run a scan of datasets in a data source. A scan is a CLI command which instructs Soda to prepare optimized SQL queries that execute data quality checks on your data source to find invalid, missing, or unexpected data. When checks fail, they surface bad-quality data and present check results that help you investigate and address quality issues. 
 
-To test your data quality, you install Soda as an **Agent** in your own network infrastructure, and sign up for a **Soda platform account** so that you can complete the following tasks:
+To enable your colleagues to test data quality, you install Soda as an **Agent** in your own network infrastructure, and sign up for a **Soda platform account** so that you can complete the following tasks:
 
 * **Connect to your data source.** <br />To connect to a data source such as Snowflake, Amazon Athena, or Big Query, you add a new data source in the Soda platform which stores access details for your data source such as host, port, and data source login credentials. 
 * **Define checks to surface “bad” data.** <br />To define the data quality checks that Soda runs against a dataset, you use an Agreement, a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. These agreements contain checks, which are tests that Soda performs when it scans a dataset in your data source. The agreement stores the checks you write using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.
@@ -46,9 +46,9 @@ Access the [Glossary]({% link soda/glossary.md %}) for a full list of Soda termi
 
 ## About this guide
 
-The instructions below offer Data Engineers an example of how to set up the Soda platform to enable colleagues to prepare their own data quality tests. Data quality testing is a team sport, after all!
+The instructions below offer Data Engineers an example of how to set up the Soda platform to enable colleagues to prepare their own data quality tests. After all, data quality testing is a team sport!
 
-For context, the example assumes that you have the appropriate access to a cloud services provider environment such as Azure, AWS, or Google Cloud that allow you to create and deploy applications to a cluster. Further, it assumes that you, or someone on your team, has access to the login credentials that Soda needs to be able to access a data source such as MS SQL, Big Query, or Athena so that Soda can run scans of the data.
+For context, the example assumes that you have the appropriate access to a cloud services provider environment such as Azure, AWS, or Google Cloud that allows you to create and deploy applications to a cluster. Further, it assumes that you, or someone on your team, has access to the login credentials that Soda needs to be able to access a data source such as MS SQL, Big Query, or Athena so that Soda can run scans of the data.
 
 Once you have completed the set-up, you can direct your colleagues to log in to the Soda platform and begin [creating Agreements]({% link soda-cloud/agreements.md %}). An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. It contains data quality checks that run according to the schedule you defined for the data source. 
 

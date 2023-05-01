@@ -80,11 +80,11 @@ soda_cloud:
   api_key_secret:
 ```
 6. In a browser, navigate to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a new Soda account. If you already have a Soda account, log in. 
-7. In your new account, navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys.
+7. In your platform account, navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
 8. Save the `configuration.yml` file and close the API modal in your Soda account.
-9. In Terminal, run the following command to test Soda's connection to your data source, replacing the value of `my_datasource_name` with your own value.<br />
+9. In Terminal, run the following command to test Soda's connection to your data source, replacing the value of `my_datasource_name` with the name of your data source.<br />
 ```shell
 soda test-connection -d my_datasource_name -c configuration.yml
 ```
@@ -93,8 +93,6 @@ soda test-connection -d my_datasource_name -c configuration.yml
 
 A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). You can create multiple `checks.yml` files to organize your data quality checks and run all, or some of them, at scan time.
 
-Learn more about [SodaCL]({% link soda/quick-start-sodacl.md %}).
-
 1. In the same directory in which you created the `configuration.yml`, create another file named `checks.yml`. 
 2. Open the `checks.yml` file in your code editor, then copy and paste the following rather generic checks into the file. Note that the `row_count` check is written to fail to demonstrate alerting when a data quality check fails.
 * Replace the value of `dataset_name` with the name of a dataset in your data source.
@@ -102,7 +100,7 @@ Learn more about [SodaCL]({% link soda/quick-start-sodacl.md %}).
         ```yaml
         checks for dataset_name:
         # Checks that dataset contains fewer than 2 rows; written to fail
-          - row_count < 2
+          - row_count < 2:
               name: Dataset is unreasonably small
         # Checks that column contains no NULL values
           - missing_count(column1) = 0:
@@ -114,6 +112,9 @@ Learn more about [SodaCL]({% link soda/quick-start-sodacl.md %}).
               name: No changes to schema
         ```
 3. Save the `checks.yml` file.
+
+Learn more about [SodaCL]({% link soda/quick-start-sodacl.md %}). <br />
+Learn more about using [multiple checks YAML files]({% link soda-core/scan-core.md %}#anatomy-of-a-scan-command). <br />
 
 
 ## Create a GitHub Action job
@@ -260,8 +261,8 @@ To trigger the GitHub Action job and initiate a Soda scan for data quality, crea
 ![slack-alert](/assets/images/slack-alert.png){:width="500px"}
 6. Navigate to your Soda platform account, then click **Checks** to access the **Check Results** page. The results from the scan that Soda performed during the GitHub Action job appear in the results table where you can click each line item to learn more about the results...  <br />
 ![gh-actions-check-results](/assets/images/gh-actions-check-results.png){:width="700px"}
-...including, for some types of checks, samples of failed rows to help in your investigation of a data quality issue.
-![gh-failed-rows](/assets/images/gh-failed-rows.png){:width="700px"}
+...including, for some types of checks, samples of failed rows to help in your investigation of a data quality issue, as in the example below.
+![quick-sip-failed-rows](/assets/images/quick-sip-failed-rows.png){:width="700px"}
 
 <details>
   <summary style="color:#00BC7E">Troubleshoot Soda scan execution</summary>

@@ -155,10 +155,16 @@ checks for dim_customer:
   - freshness(date_first_purchase) < 7d:
       name: Data is fresh
 ```
-     <details>
+    <details>
         <summary style="color:#00BC7E">What do these checks do?</summary>
-        TO DO: explain checks in plain language
-    </details>
+        <ul>
+          <li><strong>Emails formatted correctly</strong> checks that all entries in the <code>email_address</code> column are formatted as <code>name@domain.extension</code>. See <a href="https://docs.soda.io/soda-cl/validity-metrics.html" target="_blank">Validity metrics</a>.</li>
+          <li><strong>No null values for last name</strong> automatically checks for NULL values in the <code>last_name</code> column. See <a href="https://docs.soda.io/soda-cl/missing-metrics.html" target="_blank">Missing metrics</a>.</li>
+          <li><strong>No duplicate phone numbers</strong> validates that each value in the <code>phone</code> column in unique. See <a href="https://docs.soda.io/soda-cl/numeric-metrics.html#list-of-numeric-metrics" target="_blank">Numeric metrics</a>.</li>
+          <li><strong>No schema changes</strong> compares the schema of the dataset to the last scan result to determine if any columns were added, deleted, changed data type, or changed index. The first time this check executes, the results show <code>[NOT EVALUATED]</code> because there are no previous values to which to compare current results. In other words, this check requires a minimum of two scans to evaluate properly. See <a href="https://docs.soda.io/soda-cl/schema.html" target="_blank">Schema checks</a>.</li>
+          <li><strong>Data is fresh</strong> confirms that the data in the dataset is less than seven days old. See <a href="https://docs.soda.io/soda-cl/freshness.html" target="_blank">Freshness checks</a>.</li>
+        </ul>
+    </details><br />
 3. Save the changes to the `checks.yml` file, then, in Terminal, use the following command to run a scan. A scan is a CLI command which instructs Soda to prepare SQL queries that execute data quality checks on your data source. As input, the command requires:
 * `-d` the name of the data source to scan
 * `-c` the filepath and name of the `configuration.yml` file 
@@ -194,8 +200,9 @@ Soda Cloud Trace: 4417******32502
 ```
 4. As you can see from the output, some checks failed and Soda sent the results to your platform account. To access visualized check results and further examine the failed checks, return to your Soda account in your browser and click **Checks**. <br /> <br />
 ![quick-sip-results](/assets/images/quick-sip-results.png)<br /> <br />
-5. In the table of check results Soda displays, you can click the line item for one of the checks that failed to examine the visualized results in a line graph, and to access the failed row samples that Soda automatically collected when it ran the scan and executed the checks.<br />
-Use the failed row samples to figure out what caused a data quality check to fail.
+5. In the table of check results Soda displays, you can click the line item for one of the checks that failed to examine the visualized results in a line graph, and to access the failed row samples that Soda automatically collected when it ran the scan and executed the checks.<br /><br />
+Use the failed row samples, as in the example below, to determine what caused a data quality check to fail.
+![quick-sip-results](/assets/images/quick-sip-failed-rows.png)<br /><br />
 
 ✨Well done!✨ You've taken the first step towards a future in which you and your colleagues can trust the quality and reliability of your data. Huzzah!
 
