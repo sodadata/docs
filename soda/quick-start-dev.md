@@ -54,7 +54,7 @@ To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP
 This guide also instructs you to connect to a Soda platform account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda platform account gives you access to visualized scan results, tracks trends in data quality over time, enables you to set alert notifications, and much more.
 
 1. In the GitHub repository in which you work with your dbt models, or ingest and transform data, create a directory to contain your Soda configuration and check YAML files.
-2. Something about setting up GitHub secrets.
+2. Use <a href="https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-encrypted-secrets-for-your-repository-and-organization-for-github-codespaces" target="_blank">GitHub Secrets</a> to securely store the values for your data source login credentials. Soda requires access to the credentials so it can access the data source to scan the data.
 3. In your new directory, create a new file called `configuration.yml`. 
 4. Open the `configuration.yml` file in a code editor, then copy and paste the data source connection configuration for the [data source]({% link soda/connect-athena.md %}) that you use. The example below is the connection configuration for a Snowflake data source.
 ```yaml
@@ -118,15 +118,18 @@ Learn more about [SodaCL]({% link soda/quick-start-sodacl.md %}).
 
 ## Create a GitHub Action job
 
-Use <a href="https://docs.github.com/en/actions" target="_blank">GitHub Actions</a> to execute a [Soda scan]({% link soda-core/scan-core.md %}) for data quality each time you create a new pull request or commit to an existing one, and *after* you have completed a dbt run that executed your dbt tests. 
+Use <a href="https://docs.github.com/en/actions" target="_blank">GitHub Actions</a> to execute a [Soda scan]({% link soda-core/scan-core.md %}) for data quality each time you create a new pull request or commit to an existing one. The GitHub action posts the data quality scan results in a PR comment.
+
+* Be sure to trigger a Soda scan *after* you have completed a dbt run that executed your dbt tests. 
+* Note that GitHub PR comments have a 4-byte unicode character limit of 65,536. If the GitHub Action tries to post a comment that exceeds this limit, the job completion may be impacted. 
 
 <details>
-    <summary style="color:#00BC7E">What does the GH action do?</summary>
+    <summary style="color:#00BC7E">What does the GitHub Action do?</summary>
 To summarize, the action completes the following tasks:
 
 <ol>
   <li>Checks out the repo.</li>
-  <li>Sets up Python 3.10, which Soda requires (In fact, minimum version is Python 3.8.)</li>
+  <li>Sets up Python 3.10, which Soda requires (In fact, the minimum version that Soda requires is Python 3.8.)</li>
   <li>Installs Soda via <code>pip install</code>.</li>
   <li>Uses the <code>configuration.yml</code> and <code>checks.yml</code> you created to run a scan of your data and save the results to a JSON file.</li>
   <li>Extracts and converts Soda scan results from JSON to a markdown table.</li>
@@ -135,7 +138,7 @@ To summarize, the action completes the following tasks:
   <li>If such a comment <i>does</i> already exist, updates the existing comment with the new "Soda Scan Summary" table of check results.</li>
   <li>In case the Soda scan failed, sets a comment to advise of scan failure and provides advice to check the job logs in step 4.</li>
 </ol>
-Steps 6 - 8 are designed to keep the check results in the same comment rather than posting a new comment containing scan results with each commit. If you prefer to have a new comment with each commit, remove steps 6 and 8 and adjust step 7 to remove the leading <code>if</code> instruction.
+Steps 6 - 8 keep the check results in the same comment rather than posting a new comment containing scan results with each commit. If you prefer to have a new comment with each commit, remove steps 6 and 8 and adjust step 7 to remove the leading <code>if</code> instruction.
 <br />
 </details>
 <br />
@@ -211,6 +214,8 @@ jobs:
           comment-author: 'github-actions[bot]'
           body-includes: 'Soda Scan Summary'
       # Step 7: If no comment with Soda scan results exists, create new.
+      # The GITHUB_TOKEN variable is present out-of-the-box in all actions.
+      # GH automatically has access to the variable in the container environment.
       - name: Create comment
         if: steps.fc.outputs.comment-id == ''
         uses: peter-evans/create-or-update-comment@v3
@@ -244,7 +249,7 @@ jobs:
 
 ## Trigger a scan and examine the scan results
 
-To trigger the GitHub Action job and initiate a Soda scan for data quality, create a new pull request in your repository. 
+To trigger the GitHub Action job and initiate a Soda scan for data quality, create a new pull request in your repository. Be sure to trigger a Soda scan *after* you have completed a dbt run that executed your dbt tests. 
 
 1. For the purposes of this exercise, create a new branch in your GitHub repo, then make a small change to an existing file and commit and push the change to the branch.
 2. Execute a <a href="https://docs.getdbt.com/reference/commands/run" target="_blank">dbt run</a>.
@@ -257,6 +262,16 @@ To trigger the GitHub Action job and initiate a Soda scan for data quality, crea
 ![gh-actions-check-results](/assets/images/gh-actions-check-results.png){:width="700px"}
 ...including, for some types of checks, samples of failed rows to help in your investigation of a data quality issue.
 ![gh-failed-rows](/assets/images/gh-failed-rows.png){:width="700px"}
+
+<details>
+  <summary style="color:#00BC7E">Troubleshoot Soda scan execution</summary>
+  If the Soda scan did not complete successfully, you can review the scan logs to determine the cause of the problem. 
+  <ol>
+  <li>In the pull request in which the scan failed, navigate to <strong>Actions</strong> > <strong>Jobs</strong> > <strong>run</strong> > <strong>Perform scan</strong>. </li>
+  <li>Expand the step to examine the scan logs.</li>
+  <li>Access <a href="https://docs.soda.io/soda-cl/troubleshoot.html">Troubleshoot SocaCL</a> for help diagnosing issues.</li>
+  </ol>
+</details>
 
 
 ✨Well done!✨ You've taken the first step towards a future in which you and your colleagues prevent data quality issues from getting into production. Huzzah!
