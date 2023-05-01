@@ -1,15 +1,22 @@
 ---
 layout: default
-title: Soda product overview
-description: Soda Core utilizes user-defined input to prepare SQL queries to find bad data. Use the Soda Cloud web app to visualize results of scans and set up alerts.
+title: Soda overview
+description: The Soda platform utilizes user-defined input to prepare SQL queries to find bad data, visualize results, set up alerts, and track dataset health over time.
 parent: Get started
 redirect_from: /soda/product-matrix.html
 ---
 
-# Soda product overview
+# Soda overview
 *Last modified on {% last_modified_at %}*
 
-Soda has three parts that work together to establish and maintain the reliability of data in your organization: **Soda Core**, **Soda Checks Language**, and **Soda Cloud**. The **Soda Agent** serves to facilitate the operation of Soda Cloud.
+Soda is a platform that enables Data Engineers to test data for quality where and when they need to.
+
+Is your data fresh? Is it complete or missing values? Are there unexpected duplicate values? Did something go wrong during transformation? Are all the data values valid? These are the questions that Soda answers for Data Engineers.
+
+* Use Soda with GitHub Actions to test data quality during CI/CD development.
+* Use it with AirFlow to test data quality after ingestion and transformation in your pipeline.
+* Import your dbt tests into the Soda platform to facilitate issue investigation and track dataset health over time.
+* Integrate Soda with your data catalog to gauge dataset health from within the catalog.
 
 [Soda Core ](#soda-core) <br />
 [Soda Checks Language ](#soda-checks-language-sodacl)<br />
@@ -138,7 +145,7 @@ The very first Soda OSS tools, Soda SQL and Soda Spark, served their community w
 
 * ![soda-sql-logo](/assets/images/soda-sql-logo.png){:height="80px" width="80px"} was the original command-line tool that Soda created to test for data quality. 
 
-* ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="103px" width="103px"} was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark]({% link soda/connect-spark.md %}). 
+* ![soda-spark-logo](/assets/images/soda-spark-logo.png){:height="103px" width="103px"} was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda configured to [connect with Apache Spark]({% link soda/connect-spark.md %}). 
 
 ## Go further
 

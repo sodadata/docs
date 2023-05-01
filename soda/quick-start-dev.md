@@ -31,11 +31,11 @@ Use this guide to install and set up Soda to test the quality of your data durin
 
 The instructions below offer Data Engineers an example of how to use <a href="https://docs.github.com/en/actions" target="_blank">GitHub Actions</a> to execute SodaCL checks for data quality on data in a Snowflake data source. 
 
-For context, the example assumes that a team of people with access to a GitHub repository can collaborate to write tests for data quality in SodaCL checks YAML files. With each new PR, or commit to an existing PR, in the repo that adds a transformation or makes changes to a dbt model, for example, a GitHub Action executes a Soda scan for data quality and presents the results of the scan in a comment in the pull request, and in the Soda platform. 
+For context, the example assumes that a team of people use GitHub to collaborate on managing data ingestion and transformation with dbt. In the same repo, team members can collaborate to write tests for data quality in SodaCL checks YAML files. With each new PR, or commit to an existing PR, in the repo that adds a transformation or makes changes to a dbt model, a GitHub Action executes a Soda scan for data quality and presents the results of the scan in a comment in the pull request, and in the Soda platform. 
 
 Where the scan results indicate an issue with data quality, Soda notifies the team via a notification in Slack so that they can investigate and address any issues before merging the PR into production.
 
-Borrow from this guide to connect to your own data source, set up a GitHub Action job, and execute your own relevant tests for data quality.
+Borrow from this guide to connect to your own data source, set up a GitHub Action job, and execute your own relevant tests for data quality to prevent issues in production.
 
 (Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
 
