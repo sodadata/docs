@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### April 28, 2023
+* Corrected the explanation of the [`duplicate_count` check]({% link soda/quick-start-sodacl.md %}#duplicate-check) regarding checks that included multiple arguments (columns).
+
 #### April 18, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.31 and Soda Core 3.0.32.
 

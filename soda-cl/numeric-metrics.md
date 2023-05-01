@@ -181,8 +181,8 @@ for each dataset T:
 | ------  | ----------- | ------------------- | ---------------------- |
 | `avg`  | The average value in a numeric column. | number | all  |
 | `avg_length`  | The average length in a text column. | text | all  |
-| `duplicate_count`  | The number of rows that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>See also: [Duplicate check]({% link soda/quick-start-sodacl.md %}#duplicate-check)| number<br /> text<br /> time | all  |
-| `duplicate_percent`  | The percentage of rows in a dataset that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. | number<br /> text<br /> time | all  |
+| `duplicate_count`  | The number of rows that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>Include more than one column in the argument to search for duplicate values in multiple columns. Be sure to add a space between the comma-separated values in the list of column names. <br />See also: [Duplicate check]({% link soda/quick-start-sodacl.md %}#duplicate-check)| number<br /> text<br /> time | all  |
+| `duplicate_percent`  | The percentage of rows in a dataset that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. Include more than one column in the argument to search for duplicate values in multiple columns. Be sure to add a space between the comma-separated values in the list of column names.| number<br /> text<br /> time | all  |
 | `max`  | The greatest value in a numeric column. | number | all  |
 | `max_length`  | The greatest length in a text column. | text | all |
 | `min`  | The smallest value in a numeric column. | number | all  |
