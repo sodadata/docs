@@ -1,7 +1,7 @@
 Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more severe, failed check result. 
 
 Using the following example, Soda Core, during a scan, discovers that the data in the dataset triggers both alerts, but the check result is still `Only 1 warning`. Nonetheless, the results in the CLI still display both alerts as having both triggered a `warn`.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_employee:
   - schema:
@@ -23,7 +23,7 @@ Sending results to Soda Cloud
 ```
 
 Adding to the example check above, the check in the example below data triggers both `warn` alerts and the `fail` alert, but only returns a single check result, the more severe `Oops! 1 failures.`
-
+{% include code-header.html %}
 ```yaml
 checks for dim_employee:
   - schema:

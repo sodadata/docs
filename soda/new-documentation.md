@@ -9,8 +9,33 @@ parent: Reference
 
 <br />
 
-#### March 30, 2023
+#### May 2, 2023
 * Published content regarding the set up of [multiple Soda Cloud organizations]({% link soda-cloud/roles-and-rights.md %}#add-multiple-organizations) for use with different environments in your network infrastructure.
+
+#### April 28, 2023
+* Corrected the explanation of the [`duplicate_count` check]({% link soda/quick-start-sodacl.md %}#duplicate-check) regarding checks that included multiple arguments (columns).
+
+#### April 18, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.31 and Soda Core 3.0.32.
+
+#### April 11, 2023
+* Added a copy-to-clipboard button to most code snippets in documentation.
+* Added attribute mapping details to add Soda Cloud to [Google Workspace as a SAML app]({% link soda-cloud/sso.md %}#add-soda-cloud-to-google-workspace).
+
+#### March 29, 2023
+* Revised instructions to add Soda Cloud to [Google Workspace as a SAML app]({% link soda-cloud/sso.md %}#add-soda-cloud-to-google-workspace).
+
+#### March 28, 2023
+* Added to Soda Agent documentation to include a setting for which Soda Cloud endpoint to use, according to region. See [Deploy an Soda Agent in a Kubernetes cluster]({% link soda-agent/deploy.md %}#deploy-using-cli-only).
+
+#### March 24, 2023
+* Added content to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check) to address challenges when using a reference check with a dataset filter.
+* Added instructions to add Soda Cloud to [Google Workspace as a SAML app]({% link soda-cloud/sso.md %}#add-soda-cloud-to-google-workspace).
+* Added parameter to Snowflake connection details for using private key encryption for [private key authentication]({% link soda/connect-snowflake.md %}#private-key-authentication).
+
+#### March 21, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.29 and Soda Core 3.0.30.
+* Added instructions for [limiting samples]({% link soda-cl/failed-rows-checks.md %}(#set-a-sample-limit)) for an entire data source.
 
 #### March 9, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.28.
@@ -432,7 +457,7 @@ checks for dim_customers:
 
 #### May 25, 2022
 
-* Revised and renamed **Data observability** to **[Data concepts]({% link soda/data-concepts.md %})**.
+* Revised and renamed **Data observability** to **Data concepts**.
 
 #### May 24, 2022
 

@@ -23,6 +23,7 @@ redirect_from:
 <br />
 
 #### Example checks
+{% include code-header.html %}
 ```yaml
 # Checks for basic validations
 checks for dim_customer:
@@ -34,10 +35,13 @@ checks for dim_customer:
       valid min: 1
       valid max: 6
   - duplicate_count(phone) = 0
-
 checks for dim_product:
   - avg(safety_stock_level) > 50
-# Checks for schema changes
+```
+{% include code-header.html %}
+```yaml
+# Check for schema changes
+checks for dim_product:
   - schema:
       name: Find forbidden, missing, or wrong type
       warn:
@@ -49,10 +53,15 @@ checks for dim_product:
         when forbidden column present: [pii*]
         when wrong column index:
           model_name: 22
-
+```
+{% include code-header.html %}
+```yaml
 # Check for freshness 
+checks for dim_product:
   - freshness(start_date) < 1d
-
+```
+{% include code-header.html %}
+```yaml
 # Check for referential integrity
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)

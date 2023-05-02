@@ -54,6 +54,7 @@ Unlike other data sources, Soda Core does _not_ require a configuration YAML fil
 
 Therefore, to connect to Soda Cloud, include the Soda Cloud API keys (see step 3, above) in your programmatic scan using either `add_configuration_yaml_file(file_path)` or `scan.add_configuration_yaml_str(config_string)` as in the example below.
 
+{% include code-header.html %}
 ```shell
 from pyspark.sql import SparkSession, types
 from soda.scan import Scan
@@ -106,22 +107,22 @@ export API_KEY=1234
 echo $API_KEY
 ```
 3. In the configuration YAML file, set the value of the property to reference the environment variable, as in the following example.
-```yaml
-data_source my_database_name:
-  type: postgres
-  connection:
-    host: soda-temp-demo
-    port: '5432'
-    username: sodademo
-    password: ${POSTGRES_PASSWORD}
-    database: postgres
-    schema: public
-
-soda_cloud:
-  host: cloud.soda.io
-  api_key_id: ${API_KEY}
-  api_key_secret: ${API_SECRET}
-```
+    ```yaml
+    data_source my_database_name:
+      type: postgres
+      connection:
+        host: soda-temp-demo
+        port: '5432'
+        username: sodademo
+        password: ${POSTGRES_PASSWORD}
+        database: postgres
+        schema: public
+    
+    soda_cloud:
+      host: cloud.soda.io
+      api_key_id: ${API_KEY}
+      api_key_secret: ${API_SECRET}
+    ```
 4. Save the configuration YAML file, then run a scan to confirm that Soda Core connects to Soda Cloud without issue.
 ```shell
 soda scan -d your_datasource -c configuration.yml checks.yml

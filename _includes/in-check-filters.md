@@ -1,7 +1,7 @@
 Add a filter to a check to apply conditions that specify a portion of the data against which Soda executes the check. For example, you may wish to use an in-check filter to support a use case in which "Column X must be filled in for all rows that have value Y in column Z".
 
 Add a filter as a nested key:value pair, as in the following example which filters the check results to display only those rows with a value of 81 or greater and which contain `11` in the `sales_territory_key` column. You cannot use a variable to specify an in-check filter.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_employee:
   - max(vacation_hours) < 80:
@@ -10,7 +10,7 @@ checks for dim_employee:
 ```
 
 You can use `AND` or `OR` to add multiple filter conditions to a filter key:value pair to further refine your results, as in the following example.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_employee:
   - max(vacation_hours) < 80:
@@ -19,7 +19,7 @@ checks for dim_employee:
 ```
 
 To improve the readability of multiple filters in a check, consider adding filters as separate line items, as per the following example.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_employee:
   - max(vacation_hours) < 80:

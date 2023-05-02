@@ -12,6 +12,7 @@ redirect_from: soda-cl/duplicates.html
 
 Use a numeric metric in a check to perform basic calculations on the data in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 
+{% include code-header.html %}
 ```yaml
 checks for retail_products:
   - avg(size) between 100 and 300 
@@ -24,7 +25,9 @@ checks for retail_products:
   - min_length(manufacturer) = 5
   - row_count > 0
   - percentile(size, 0.95) > 50
-
+```
+{% include code-header.html %}
+```yaml
 checks for retail_orders_postgres:
   - stddev(order_quantity) > 0
   - stddev_pop(order_quantity) between 3 and 4
@@ -49,20 +52,21 @@ checks for retail_orders_postgres:
 In the context of Soda check types, you use numeric metrics in Standard checks. Refer to [Standard check types]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) for exhaustive configuration details.
 
 You can use the `row_count` metric in checks that apply to entire datasets. 
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
   - row_count > 0
 ```
 
 You can use all numeric metrics in checks that apply to individual columns in a dataset. Identify the column by adding a value in the argument between brackets in the check. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
   - duplicate_count(phone) = 0
 ```
 
 You can use some numeric metrics in checks with either fixed or change-over-time thresholds. See [Change-over-time thresholds](#change-over-time-thresholds) for more detail. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
 # a check with a fixed threshold
@@ -76,7 +80,7 @@ checks for dim_reseller:
 Checks that use the `duplicate_count` or `duplicate_percent` metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
 If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - duplicate_count(email_address) < 50:
@@ -88,7 +92,7 @@ checks for dim_customer:
 For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
 Alternatively, you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - duplicate_count(email_address) < 50:
@@ -117,7 +121,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 
 
 #### Example with alert configuration
-
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
   - duplicate_count(phone):
@@ -126,7 +130,7 @@ checks for dim_reseller:
 ```
 
 #### Example with check name
-
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
   - duplicate_count(phone) = 0:
@@ -134,7 +138,7 @@ checks for dim_reseller:
 ```
 
 #### Example with in-check filter
-
+{% include code-header.html %}
 ```yaml
 checks for dim_employee:
   - max(vacation_hours) < 80:
@@ -143,14 +147,14 @@ checks for dim_employee:
 ```
 
 #### Example with quotes
-
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
   - duplicate_count("phone") = 0
 ```
 
 #### Example with dataset filter
-
+{% include code-header.html %}
 ```yaml
 filter CUSTOMERS [daily]:
   where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
@@ -160,7 +164,7 @@ checks for CUSTOMERS [daily]:
 ```
 
 #### Example with for each
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:
@@ -177,8 +181,8 @@ for each dataset T:
 | ------  | ----------- | ------------------- | ---------------------- |
 | `avg`  | The average value in a numeric column. | number | all  |
 | `avg_length`  | The average length in a text column. | text | all  |
-| `duplicate_count`  | The number of rows that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>Include more than one column in the argument to compare values across columns. See also: [Duplicate check]({% link soda/quick-start-sodacl.md %}#duplicate-check)| number<br /> text<br /> time | all  |
-| `duplicate_percent`  | The percentage of rows in a dataset that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>Include more than one column in the argument to compare values across columns. | number<br /> text<br /> time | all  |
+| `duplicate_count`  | The number of rows that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. <br/>Include more than one column in the argument to search for duplicate values in multiple columns. Be sure to add a space between the comma-separated values in the list of column names. <br />See also: [Duplicate check]({% link soda/quick-start-sodacl.md %}#duplicate-check)| number<br /> text<br /> time | all  |
+| `duplicate_percent`  | The percentage of rows in a dataset that contain duplicate values.<br> Include one column in the argument to compare values relative to that one column. Include more than one column in the argument to search for duplicate values in multiple columns. Be sure to add a space between the comma-separated values in the list of column names.| number<br /> text<br /> time | all  |
 | `max`  | The greatest value in a numeric column. | number | all  |
 | `max_length`  | The greatest length in a text column. | text | all |
 | `min`  | The smallest value in a numeric column. | number | all  |
@@ -222,7 +226,7 @@ The example below defines a check that applies to the entire dataset and counts 
 
 Use `between` for checks with change-over-time thresholds as much as possible to trigger check failures when the measurement falls outside of a range of acceptable values. This practice ensures that you get visibility into changes that either exceed or fall short of threshold expectations. 
 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - change for row_count between -20 and +50
@@ -234,6 +238,7 @@ checks for dim_customer:
 <br />
 
 You can also use use a change-over-time threshold to compare check results relative to the same day in the previous week. The example below uses change-over-time to compare today's value with the same check result from last week to confirm that the delta is greater than 10. 
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - change same day last week for row_count > 10
@@ -250,7 +255,7 @@ For example, the previously-recorded historic measurement for row count is 80, a
 * Percentage thresholds are between 0 and 100, not between 0 and 1. 
 * If you wish, you can add a `%` character to the threshold for a change-over-time threshold for improved readability.   
 * If the previous measurement value is 0 and the new value is 0, Soda calculates the relative change as 0%. However, if the previous measurement value is 0 and the new value is not 0, then Soda indicates the check as `NOT EVALUATED` because the calculation is a division by zero. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - change percent for row_count > 50%
@@ -263,7 +268,7 @@ checks for dim_customer:
 <br />
 
 The example below applies to only the `phone` column in the dataset and counts the rows that contain duplicate values, then compares that value to the preceding value contained in the Cloud Metric Store. If the number of duplicate phone numbers at present is greater than the preceding historic values for `duplicate_count` by more than 20, the check fails.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - change for duplicate_count(phone) < 20
@@ -288,7 +293,7 @@ A more complex change-over-time threshold check includes two more optional mutab
 
 <br />
 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - change avg last 7 for row_count < 50

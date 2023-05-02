@@ -26,19 +26,16 @@ Integrate Soda with Metaphor to access details about the quality of your data fr
 
 1. Sign into your Soda Cloud account and confirm that you see the datasets you expect to see in the data source you wish to test for quality.
 2. To connect your Soda Cloud account to your Metaphor account, create an `.env` file in your integration project in your git repo and include details according to the example below. To obtain the values for your Soda API keys, refer to the [Connect to Soda Cloud documentation]({% link soda-core/connect-core-to-cloud.md %}). <br />
-
-```yaml
-SODA_HOST=cloud.soda.io
-SODA_API_KEY_ID=
-SODA_API_KEY_SECRET=
-
-METAPHOR_ACCESS_KEY_ID=
-METAPHOR_SECRET_ACCESS_KEY=
-# s3 bucker path without trailing slash.
-METAPHOR_S3_PATH=
-
-SODA_LOGGING_LEVEL=INFO
-```
+    ```yaml
+    SODA_HOST=cloud.soda.i
+    SODA_API_KEY_ID
+    SODA_API_KEY_SECRET
+    METAPHOR_ACCESS_KEY_ID
+    METAPHOR_SECRET_ACCESS_KEY
+    # s3 bucker path without trailing slash
+    METAPHOR_S3_PATH
+    SODA_LOGGING_LEVEL=INF
+    ```
 
 
 ## Run the integration

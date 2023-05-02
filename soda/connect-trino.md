@@ -13,7 +13,7 @@ parent: Connect a data source
 ## Configuration
 
 Reference <a href="https://trino.io/docs/current/overview/concepts.html#" target="_blank">Trino documentation</a> for assistance.
-
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
   type: trino

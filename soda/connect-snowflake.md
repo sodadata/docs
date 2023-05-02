@@ -11,7 +11,7 @@ parent: Connect a data source
 {% include connect-to-intro.md %}
 
 ## Configuration
-
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
   type: snowflake
@@ -44,7 +44,7 @@ data_source my_datasource_name:
 | role | optional | See <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Roles</a> for details. |
 | client_session_keep_alive | optional | Use this parameter with a boolean option to keep the session active, even with no user activity. |
 | authenticator <sup>1</sup> | optional | Add an authenticator paramater with value `externalbrowser` to authenticate the connection to your Snowflake data source using any SAML 2.0-compliant identity provider (IdP) such as Okta or OneLogin.  |
-| other params | optional | You can pass any other Snowflake paramters you wish by adding the key:value pairs to your Snowflake connection configuration. See <a ref="https://docs.snowflake.com/en/user-guide/python-connector-api.html#connect" target="_blank"> Snowflake Python Connector API documentation</a>> for a list of passable parameters. |
+| other params | optional | You can pass any other Snowflake paramters you wish by adding the key:value pairs to your Snowflake connection configuration. See <a href="https://docs.snowflake.com/en/user-guide/python-connector-api.html#connect" target="_blank"> Snowflake Python Connector API documentation</a> for a list of passable parameters. |
 | QUERY_TAG | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag" target="_blank">QUERY_TAG</a> in Snowflake documentation. |
 | QUOTED_IDENTIFIERS_<br />IGNORE_CASE | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#quoted-identifiers-ignore-case" target="_blank">QUOTED_IDENTIFIERS_IGNORE_CASE</a> in Snowflake documentation. |
 | schema | required |  |
@@ -54,14 +54,21 @@ data_source my_datasource_name:
 
 ### Private key authentication
 
-You can use the `private_key` parameter to specify key-value pairs for key pair authentication. In you configuration YML file, add the parameter as per the following example: 
-```yml
-  private_key: |
-     -----BEGIN ENCRYPTED PRIVATE KEY-----
-     MIIExxxxxxxxxxxxxxxxxxxxucRqSZaS
-     ...
-
-     -----END ENCRYPTED PRIVATE KEY-----
+You can use the `private_key` and `private_key_passphrase` parameters to specify for key pair authentication. In you configuration YML file, add the parameters as per the following example. 
+{% include code-header.html %}
+```yaml
+data_source snowflake:
+  type: snowflake
+  connection:
+    username: xxxyyyzzz
+    ...
+    client_session_keep_alive: true
+    Authenticator: SNOWFLAKE_JWT
+    schema: TPCH_SF1
+    private_key_passphrase: "123xxx"
+    private_key: |
+      -----BEGIN ENCRYPTED PRIVATE KEY-----
+      -----END ENCRYPTED PRIVATE KEY-----
 ```
 
 {% include test-connection.md %}

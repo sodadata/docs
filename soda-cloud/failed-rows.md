@@ -41,6 +41,8 @@ Where your datasets contain sensitive or private information, you may *not* want
 
 {% include disable-all-samples.md %}
 
+See also: [Set a sample limit for a data source]({% link soda-cl/failed-rows-checks.md %}(#set-a-sample-limit))
+
 <br />
 
 ### Disable sampling for specific columns
@@ -54,7 +56,7 @@ Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/fai
 ### Disable failed row samples for individual checks
 
 For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_percent(email_address) < 50:

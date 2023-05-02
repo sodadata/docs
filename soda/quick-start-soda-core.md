@@ -42,7 +42,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 ```
-2. Execute the following command to install Soda Core in your virtual environment.
+2. Execute the following command to install Soda Core in your virtual environment. 
 ```shell
 pip install soda-core-postgres
 ```
@@ -68,7 +68,7 @@ cd soda_tutorial
 ```
 2. Create a new file called `configuration.yml`. 
 3. Open the `configuration.yml` file in a code editor, then copy and paste the following connection details into the file. Replace the values for each of the fields with your own data source-specific details, then save the file.
-
+{% include code-header.html %}
 ```yaml
 data_source my_database_name:
   type: postgres
@@ -218,7 +218,6 @@ Sending results to Soda Cloud
 ![dataset-metadata-1](/assets/images/dataset-metadata-1.png){:height="700px" width="700px"}
 10. Explore Soda Cloud!
 * [integrate your Slack workspace]({% link soda/integrate-slack.md %}) to receive notifications of failed checks and collaborate on data quality investigations
-* set up or modify notifications for the checks in your account (**Check** > **Check Results** > **stacked dots** > **Edit Check**)
 * open and track [data quality incidents]({% link soda-cloud/incidents.md %}) and collaborate to resolve them with your team in Slack
 
 

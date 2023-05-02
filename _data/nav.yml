@@ -217,8 +217,6 @@
     page: soda/glossary.md
   - subtitle: What's new in docs?
     page: soda/new-documentation.md
-  - subtitle: Data concepts
-    page: soda/data-concepts.md
   - subtitle: Data security and privacy
     page: soda/data-privacy.md
   - subtitle: Soda Core usage statistics
@@ -230,7 +228,7 @@
   - subtitle: Soda SQL is now Soda Core
     page: soda/deprecated.md
 
-- title: API Documentation
+- title: Soda Cloud Reporting API
   page: api-docs/reporting-api-v1.md
   subcategories:
   - subtitle: Reporting API v1 (Preview)

@@ -12,7 +12,7 @@ Use a distribution check to determine whether the distribution of a column has c
 
 * *Requires Soda Core Scientific.*<br />
 * *Limitation:* Soda Cloud cannot yet maintain the distribution reference object (DRO), but distribution check results appear in the **Check Results** dashboard.<br />
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned) > 0.05:
@@ -108,108 +108,124 @@ To create a DRO, you use the CLI command `soda update-dro`. When you execute the
 1. If you have not already done so, create a directory to contain the files that Soda uses for a distribution check.
 2. Use a code editor to create a file called `distribution_reference.yml` (though, you can name it anything you wish) in your Soda project directory, then add the following example content to the file.
 
-```yaml
-dataset: your_dataset_name
-column: column_name_in_dataset
-distribution_type: categorical
-# (optional) filter to a specific point in time or any other dimension 
-filter: "column_name between '2010-01-01' and '2020-01-01'"
-```
+    ```yaml
+    dataset: your_dataset_name
+    column: column_name_in_dataset
+    distribution_type: categorical
+    # (optional) filter to a specific point in time or any other dimension 
+    filter: "column_name between '2010-01-01' and '2020-01-01'"
+    # (optional) database specific sampling query, for example for postgres\
+    # the following query randomly samples 50% of the data with seed 61
+    sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
+    ```
 
-Alternatively, you can define multiple DROs in your `distribution_reference.yml` file by naming them. The following example content defines two DROs
+   Optionally, you can define multiple DROs in your `distribution_reference.yml` file by naming them. The following example defines two DROs.
 
-```yaml
-dro_name1:
-  dataset: your_dataset_name
-  column: column_name_in_dataset
-  distribution_type: categorical
-dro_name2:
-  dataset: your_dataset_name
-  column: column_name2_in_dataset
-  distribution_type: continuous
-```
+    ```yaml
+    dro_name1:
+      dataset: your_dataset_name
+      column: column_name_in_dataset
+      distribution_type: categorical
+    dro_name2:
+      dataset: your_dataset_name
+      column: column_name2_in_dataset
+      distribution_type: continuous
+    ```
 
 3. Change the values for `dataset` and `column` to reflect your own dataset's identifiers.
 4. (Optional) Change the value for `distribution_type` to capture `categorical` or `continuous` data.
-5. (Optional) Define the value of `filter` to specify the portion of the data in your dataset for which you are creating a DRO. If you trained a model on data in which the `date_first_customer` column contained values between 2010-01-01 and 2020-01-01, you can use a filter based on that period to test whether the distribution of the column has changed since then. <br />
+5. (Optional) Define the value of `filter` to specify the portion of the data in your dataset for which you are creating a DRO. If you trained a model on data in which the `date_first_customer` column contained values between 2010-01-01 and 2020-01-01, you can use a filter based on that period to test whether the distribution of the column has changed since then. <br/>
 If you do not wish to define a filter, remove the key-value pair from the file.
-6. (Optional) If you wish to define multiple DROs in a single `distribution_reference.yml` file, change the names `dro_name1` and `dro_name2`.
-7. Save the file, then, while still in your Soda project directory, run the `soda update-dro` command to create a distribution reference object. For a list of options available to use with the command, run `soda update-dro --help`.
+6. (Optional) Where you are  dealing with large datasets while creating a DRO, use the `sample` key to define a data source-specific sampling query. For example, for Postgres, the following query randomly samples 50% of the data with seed 61. For more information, refer to the [define the sample size](#define-the-sample-size).<br/>
+    ```yaml
+    sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
+    ```
+7. (Optional) If you wish to define multiple DROs in a single `distribution_reference.yml` file, change the names `dro_name1` and `dro_name2`.
+8. Save the file, then, while still in your Soda project directory, run the `soda update-dro` command to create a distribution reference object. For a list of options available to use with the command, run `soda update-dro --help`.
 
-```bash
-soda update-dro -d your_datasource_name -c your_configuration_file.yml ./distribution_reference.yml 
-```
+    ```bash
+    soda update-dro -d your_datasource_name -c your_configuration_file.yml ./distribution_reference.yml 
+    ```
 
-If you defined multiple DROs in your `distribution_reference.yml` file, specify which DRO you want to update using the `-n` argument. `-n` stands for name. When multiple DROs are defined in a single `distribution_reference.yml` file, Soda requires all of them to be named. Thus, you must provide the DRO name with the `-n` argument when using the `soda update-dro` command.
+    If you defined multiple DROs in your `distribution_reference.yml` file, specify which DRO you want to update using the `-n` argument. `-n` indicates name. When multiple DROs are defined in a single `distribution_reference.yml` file, Soda requires all of them to be named. Thus, you must provide the DRO name with the `-n` argument when using the `soda update-dro` command.
 
-```bash
-soda update-dro -n dro_name1 -d your_datasource_name -c your_configuration_file.yml ./distribution_reference.yml 
-```
+    ```bash
+    soda update-dro -n dro_name1 -d your_datasource_name -c your_configuration_file.yml ./distribution_reference.yml 
+    ```
 
-8. Review the changed contents of your `distribution_reference.yml` file. The following is an example of the information that Soda added to the file.
+9. Review the changed contents of your `distribution_reference.yml` file. The following is an example of the information that Soda added to the file.
 
-```yaml
-dataset: dim_customer
-column: number_cars_owned
-distribution_type: categorical
-filter: date_first_purchase between '2010-01-01' and '2020-01-01'
-distribution reference:
-  weights:
-    - 0.34932914953473276
-    - 0.2641744211209695
-    - 0.22927937675827742
-    - 0.08899588833585804
-    - 0.06822116425016231
-  bins:
-    - 2
-    - 1
-    - 0
-    - 3
-    - 4
-```
+    ```yaml
+    dataset: dim_customer
+    column: number_cars_owned
+    distribution_type: categorical
+    filter: date_first_purchase between '2010-01-01' and '2020-01-01'
+    distribution reference:
+      weights:
+        - 0.34932914953473276
+        - 0.2641744211209695
+        - 0.22927937675827742
+        - 0.08899588833585804
+        - 0.06822116425016231
+      bins:
+        - 2
+        - 1
+        - 0
+        - 3
+        - 4
+    ```
 
-Soda appended a new key called `distribution reference` to the file, together with an array of `bins` and a corresponding array of `weights`. [Read more](#bins-and-weights) about `bins` and `weights`, and how Soda computes the number of bins for a DRO.
+    Soda appended a new key called `distribution reference` to the file, together with an array of `bins` and a corresponding array of `weights`. [Read more](#bins-and-weights) about `bins` and `weights`, and how Soda computes the number of bins for a DRO.
 
 ## Define a distribution check
 
 1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the [Soda Core documentation]({% link soda-core/configuration.md %}).
 2. In your new file, add the following example content.
 
-```yaml
-checks for your_dataset_name:
-  - distribution_difference(column_name, dro_name) > your_threshold:
-      method: your_method_of_choice
-      distribution reference file: ./distribution_reference.yml
-```
+    ```yaml
+    checks for your_dataset_name:
+      - distribution_difference(column_name, dro_name) > your_threshold:
+          method: your_method_of_choice
+          distribution reference file: ./distribution_reference.yml
+          # (optional) filter to a specific point in time, or any other dimension 
+          filter: column_name > min_allowed_column_value and column_name < max_allowed_value
+          # (optional) data source-specific sampling query; for example for postgres\
+          # the following query randomly samples 50% of the data with seed 61
+          sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
+    ```
 
 3. Replace the following values with your own dataset and threshold details.
+    * `your_dataset_name` - the name of your dataset
+    * `column_name` - the column against which to compare the DRO
+    * `dro_name` - the name of the DRO (optional, required if `distribution_reference.yml` contains named DROs)
+    * `> your_threshold` - the threshold for the distribution check that you specify as acceptable
 
-* `your_dataset_name` - the name of your dataset
-* `column_name` - the column against which to compare the DRO
-* `dro_name` - the name of the DRO (optional, required if `distribution_reference.yml` contains named DROs)
-* `> your_threshold` - the threshold for the distribution check that you specify as acceptable
-
-4. Replace the value of `your_method_of_choice` with the type of test you want to use in the distribution check.
+4. Replace the value of `your_method_of_choice` with the type of test you want to use in the distribution check. If you do not specify a `method`, the distribution check defaults to `ks` for continuous data, or `chi_square` for categorical data.
     * `ks` for the Kolmogorov-Smirnov test
     * `chi_square` for the Chi-square test
     * `psi` for the Population Stability Index metric
     * `swd` for the Standardized Wasserstein Distance (SWD) metric
-    * `semd` for the Standardized Earth Mover's Distance (SEMD) metric (the SWD and the SEMD are the same metric) <br />
-If you do not specify a `method`, the distribution check defaults to `ks` for continuous data or `chi_square` for categorical data respectively.
-5. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to [Soda Core documentation]({% link soda-core/scan-core.md %}) for more details.
+    * `semd` for the Standardized Earth Mover's Distance (SEMD) metric<br />
+    SWD and the SEMD are the same metric. <br>
 
-```bash
-soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yml your_check_file.yml
-```
+5. (Optional), to filter the data in the distribution check, replace the value of `filter` with a filter that specifies the portion of the data in your dataset for which you are checking the distribution.
 
-When Soda Core executes the distribution check above, it compares the values in `column_name` to a sample that Soda creates based on the `bins`, `weights`, and `data_type` in `dro_name` defined in the `distribution_reference.yml` file. Specifically, it checks whether the value of `your_method_of_choice` is larger than `0.05`.
+6. (Optional), to sample the data in the distribution check, replace the value of `sample` with a query that specifies the portion of the data in your dataset for which you are checking the distribution. The data source you are using must support the query you write. <br />For example, for PostgreSQL, you can use the `TABLESAMPLE` clause to randomly sample 50% of the data with seed 61. Best practice dictates that you use sampling for large datasets that might not fit in memory. Refer to the [define the sample size](#define-the-sample-size) for details.
+
+7. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to [Soda Core documentation]({% link soda-core/scan-core.md %}) for more details.
+
+    ```bash
+    soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yml your_check_file.yml
+    ```
+
+    When Soda Core executes the distribution check above, it compares the values in `column_name` to a sample that Soda creates based on the `bins`, `weights`, and `data_type` in `dro_name` defined in the `distribution_reference.yml` file. Specifically, it checks whether the value of `your_method_of_choice` is larger than `0.05`.
 
 ### Distribution check details
 
 * When you execute the `soda scan` command, Soda stores the entire contents of the column(s) you specified in local memory. Before executing the command, examine the volume of data the column(s) contains and ensure that your system can accommodate storing it in local memory.
 
-* As explained in [Generate a Distribution Reference Object (DRO)](#generate-a-distribution-reference-object-dro), Soda uses bins and weights to take random samples from your DRO. Therefore, it is possible that the original dataset that you used to create the DRO resembles a different underlying distribution than the dataset that Soda creates by sampling from the DRO. To limit the impact of this possibility, Soda runs the tests in each distribution check ten times and returns the median of the results (either p-value or distance metric). <br /> <br />
-For example, if you use the Kolmogorov-Smirnov test and a threshold of 0.05, the distribution check uses the Kolmogorov-Smirnov test to compare ten different samples from your DRO to the data in your column.  If the median of the returned p-values is smaller than 0.05, the check issues a warning. This approach does change the interpretation of the distribution check results. For example, the probability of a type I error is multiple orders of magnitude smaller than the signifance level that you choose.
+* As explained in [Generate a Distribution Reference Object (DRO)](#generate-a-distribution-reference-object-dro), Soda uses bins and weights to take random samples from your DRO. Therefore, it is possible that the original dataset that you used to create the DRO resembles a different underlying distribution than the dataset that Soda creates by sampling from the DRO. To limit the impact of this possibility, Soda runs the tests in each distribution check ten times and returns the median of the results, either as a p-value or a distance metric). <br/> <br/>
+For example, if you use the Kolmogorov-Smirnov test and a threshold of 0.05, the distribution check uses the Kolmogorov-Smirnov test to compare ten different samples from your DRO to the data in your column.  If the median of the returned p-values is smaller than 0.05, the check issues a warning. This approach does change the interpretation of the distribution check results. For example, the probability of a type I error is multiple orders of magnitude smaller than the significance level that you choose.
 
 ### Bins and weights
 <!--Linked to UI, access Shlink though actually embedded in CLI help-->
@@ -220,7 +236,7 @@ To compute the number of bins for a DRO, Soda uses different strategies based on
 
 By default Soda automatically computes the number of bins for each DRO by taking the maximum of [Sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [Freedman Diaconis Estimator](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule) methods. [numpy.histogram_bin_edges(data, bins='auto')](https://numpy.org/doc/stable/reference/generated/numpy.histogram_bin_edges.html#numpy.histogram_bin_edges) also applies this practice by default.
 
-For datasets *with* outliers, such as in the example below, the default strategy does not work well. When taking the maximum of [Sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [Freedman Diaconis Estimator](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule) methods, it produces a great number of bins, `3466808`, while there is only nine elements in the array. The outlier value `10e6` causes to obtain this misleading bin size.
+For datasets *with* outliers, such as in the example below, the default strategy does not work well. When taking the maximum of [Sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [Freedman Diaconis Estimator](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule) methods, it produces a great number of bins, `3466808`, while there are only nine elements in the array. The outlier value `10e6` result in a misleading bin size.
 
 ```python
 import numpy as np
@@ -230,28 +246,72 @@ number_of_bins = np.histogram_bin_edges(arr, bins='auto').size # return 3466808
 
 If the number of bins is greater than the size of data, Soda uses [interquantile range (IQR)](https://en.wikipedia.org/wiki/Interquartile_range) to detect and filter the outliers. Basically, for data that is greater than `Q3 + 1.5 IQR` and less than `Q1 - 1.5 IQR` Soda removes the datasets, then recomputes the number of bins with the same method by taking the maximum of [Sturges](https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width) and [Freedman Diaconis Estimator](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule).
 
-After removing the outliers, if the number of bins still exceeds the size of the filtered data, Soda takes the square root of the dataset size to set the number of bins. To cover edge cases, if the square root of dataset size exceeds one million, then Soda sets the number of bins to one million to prevent it from generating too many bins.
+After removing the outliers, if the number of bins still exceeds the size of the filtered data, Soda takes the square root of the dataset size to set the number of bins. To cover edge cases, if the square root of the dataset size exceeds one million, then Soda sets the number of bins to one million to prevent it from generating too many bins.
 
 ### Define the sample size
 
-You can add a `sample` parameter to a distribution check to include a sample SQL clause that Soda passes when it executes the check during a scan. 
+You can add a `sample` parameter for both a distribution check and DRO to include a sample SQL clause that Soda passes when it executes the check during a scan.
 
-The SQL clause that you provide is specific to the type of data source you use. In the example below, the SQL query for a Postgres data source randomly samples 50% of the data with seed 61. You can customize the `sample` SQL query to meet your needs.
+#### Apply a sample to a distribution check
 
+If the data to which you wish to apply distribution check does not fit in memory or involves a time constraint, use a `sample` to specify a SQL query that returns a sample of the data. The SQL query that you provide is specific to the type of data source you use. In the example below, the SQL query for a PostgreSQL data source randomly samples 50% of the data with seed 61. You can customize the `sample` SQL query to meet your needs.
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned) > 0.05:
       distribution reference file: ./cars_owned_dist_ref.yml 
       method: chi_square
-      # (optional) database specific sampling query, for example for postgres\
+      # (optional) data source-specific sampling query; for example for postgres\
       # the following query randomly samples 50% of the data with seed 61
       sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
 ```
 
+#### Apply a sample to a DRO 
+
+While generating a DRO, you can  specify a `sample` parameter to create a DRO using sampled data. The SQL query that you provide is specific to the type of data source you use.
+{% include code-header.html %}
+```yaml
+dataset: your_dataset_name
+column: column_name_in_dataset
+distribution_type: categorical
+# (optional) data source-specific sampling query; for example for postgres\
+# the following query randomly samples 50% of the data with seed 61
+sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
+```
+
+#### Sampling Caveats
+
+Some data sources do not have a built-in sampling function. For example, BigQuery does not support `TABLESAMPLE BERNOULLI`. In such a case, add a `filter` parameter to randomly obtain a sample of the data. The `filter` parameter applies a data source-specific SQL `WHERE` clause to the data. In the example below, the SQL query for a BigQuery data source randomly samples 50% of the data.
+
+
+**Distribution Check**
+{% include code-header.html %}
+```yaml
+checks for dim_customer:
+  - distribution_difference(number_cars_owned) > 0.05:
+      distribution reference file: ./cars_owned_dist_ref.yml 
+      method: chi_square
+      # (optional) data source-specific sampling query, for example for postgres\
+      # the following query randomly samples 50% of the data
+      filter: rand() < 0.5
+```
+
+**DRO**
+{% include code-header.html %}
+```yaml
+dataset: your_dataset_name
+column: column_name_in_dataset
+distribution_type: categorical
+# (optional) data source-specific sampling query; for example for postgres\
+# the following query randomly samples 50% of the data
+filter: rand() < 0.5
+```
+
+
 ## Distribution check examples
 
 You can define multiple distribution checks in a single `checks.yml` file. If you create a new DRO for another dataset and column in `sales_dist_ref.yml` for example, you can define two distribution checks in the same `checks.yml` file, as per the following.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned) > 0.05:
@@ -265,7 +325,7 @@ checks for fact_sales_quota:
 ```
 
 Alternatively you can define two DROs in `distribution_reference.yml`, naming them `cars_owned_dro` and `calendar_quarter_dro`, and use both in a single `checks.yml` file
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned, cars_owned_dro) > 0.05:
@@ -279,7 +339,7 @@ checks for fact_sales_quota:
 ```
 
 You can also define multiple checks for different columns in the same dataset by generating multiple DROs for those columns. Refer to the following example.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned, cars_owned_dro) > 0.05:
@@ -309,7 +369,7 @@ checks for fact_sales_quota:
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 #### Example with check name
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
 - distribution_difference(number_cars_owned) > 0.05: 
@@ -319,7 +379,7 @@ checks for dim_customer:
 ```
 
 #### Example with quotes
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
 - distribution_difference("number_cars_owned") < 0.2:
@@ -329,7 +389,7 @@ checks for dim_customer:
 ```
 
 #### Example with for each
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
     dataset:
@@ -341,7 +401,7 @@ for each dataset T:
 ```
 
 #### Example with in-check filter
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
 - distribution_difference(number_cars_owned) < 0.05: 
@@ -351,7 +411,7 @@ checks for dim_customer:
 ```
 
 #### Example with dataset filter
-
+{% include code-header.html %}
 ```yaml
 filter dim_customer [first_purchase]:
   where: date_first_purchase between '2010-01-01' and '2022-01-01' 
@@ -367,8 +427,8 @@ checks for dim_customer [first_purchase]:
 #### Example with in-check sampling
 
 The following example works for postgres. It randomly samples 50% of the table with seed value 61. 
-Since sampling SQL clauses vary significantly between databases, consult your database documentation.
-
+Since sampling SQL clauses vary significantly between data sources, consult your data source's documentation.
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - distribution_difference(number_cars_owned) > 0.05:
