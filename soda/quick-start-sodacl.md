@@ -106,10 +106,42 @@ checks for dataset_name:
 
 <br />
 
-If you wish, you can check for duplicate values in multiple columns. In the following example, Soda counts the number of duplicate values in both `column_name1` and `column_name2`. Be sure to add a space between the comma-separated values in the list of column names.
+If you wish, you can check for duplicate pairs in multiple columns. In the following example, Soda counts the number of duplicate values in both `column_name1` and `column_name2`. Be sure to add a space between the comma-separated values in the list of column names.
+
+<details>
+  <summary style="color:#00BC7E">Example of duplicate pairs</summary>
+  Rows 1 and 4 are duplicates.
+  <table>
+    <tr>
+      <th> - </th>
+      <th>column 1</th>
+      <th>column 2</th>
+    </tr>
+    <tr>
+      <td>1. </td>
+      <td>apple </td>    
+      <td>banana</td>
+    </tr>
+    <tr>
+      <td>2. </td>
+      <td>apple  </td>   
+      <td>pear</td>
+    </tr>
+    <tr>
+      <td>3. </td>
+      <td>banana  </td>  
+      <td>pear</td>
+    </tr>
+    <tr>
+      <td>4. </td>
+      <td>apple </td>    
+      <td>banana</td>
+    </tr>
+  </table>
+</details>
 
 ```yaml
-# Check that duplicate values do not exist in either column
+# Check that duplicate pairs do not exist between columns
 checks for dataset_name:
   - duplicate_count(column_name1, column_name2) = 0
 ```
