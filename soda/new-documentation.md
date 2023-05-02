@@ -11,6 +11,7 @@ parent: Reference
 
 #### May 2, 2023
 * Published content regarding the set up of [multiple Soda Cloud organizations]({% link soda-cloud/roles-and-rights.md %}#add-multiple-organizations) for use with different environments in your network infrastructure.
+* Added a note about [selecting a region]({% link soda-core/connect-core-to-cloud.md %}#connect) when you sign up for a new Soda Cloud account.
 
 #### April 28, 2023
 * Corrected the explanation of the [`duplicate_count` check]({% link soda/quick-start-sodacl.md %}#duplicate-check) regarding checks that included multiple arguments (columns).

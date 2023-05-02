@@ -27,20 +27,23 @@ Soda Core uses an API to connect to Soda Cloud. To use the API, you must generat
 
 ## Connect
 
-1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. Open your `configuration.yml` file in a text editor, then add the following to the file. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under any other `data_source` syntax. Consider creating system or environment variables for the values of your API key and secret; see [Provide credentials as system variables](#provide-credentials-as-system-variables).
+1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> https://cloud.soda.io/signup</a>. Select a region for your account based on where you wish to store Soda Cloud data.
+2. Open your `configuration.yml` file in a text editor, then add the following to the file, leaving the values blank for now. 
+* Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under any other `data_source` syntax. 
+* Consider creating system or environment variables for the values of your API key and secret; see [Provide credentials as system variables](#provide-credentials-as-system-variables).
 ```yaml
 soda_cloud:
+# For host, use cloud.soda.io for EU region, use cloud.us.soda.io for USA region 
   host: cloud.soda.io
   api_key_id:
   api_key_secret:
   # Optional
   scheme: 
 ```
-3.In your Soda Cloud account, navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
+3. In your Soda Cloud account, navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
-  * Optionally, provide a value for the scheme property to indicate which scheme to use to initialize the URI instance. If you do not explicitly include a `scheme` property, Soda uses the default `https`.
+  * Optionally, provide a value for the `scheme` property to indicate which scheme to use to initialize the URI instance. If you do not explicitly include a `scheme` property, Soda uses the default `https`.
 4. Save the changes to the `configuration.yml` file. Close the **Create API Key** dialog box in Soda Cloud.
 5. From the command-line, use Soda Core to scan the datasets in your data source again.
 ```shell
