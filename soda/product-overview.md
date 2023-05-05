@@ -13,6 +13,8 @@ Soda is a platform that enables Data Engineers to test data for quality where an
 
 Is your data fresh? Is it complete or missing values? Are there unexpected duplicate values? Did something go wrong during transformation? Are all the data values valid? Are anomalous values disrupting downstream reports? These are the questions that Soda answers for Data Engineers.
 
+## What does Soda do?
+
 Soda works by taking the data quality checks that you prepare and using them to run a scan of datasets in a data source. A scan is a command which instructs Soda to execute data quality checks on your data source to find invalid, missing, or unexpected data. When data quality checks fail, they surface bad-quality data and present check results that help you investigate and address quality issues.
 
 Working together, the **engine**, **agent**, **command center** and **checks language** operate as a unified **Soda platform** to empower you and your colleagues to collaborate on data quality testing.
