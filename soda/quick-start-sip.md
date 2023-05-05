@@ -258,7 +258,8 @@ If you are done with the example data, you can delete it from your account to st
 1. Navigate to **your avatar** > **Scans & Data**.
 2. In the **Data Sources** tab, click the stacked dots to the right of the `adventureworks` data source, then select **Delete Data Source**.
 3. Follow the steps to confirm deletion. 
-4. Add your own data by [configuring your data source connections]({% link soda-core/configuration.md %}) in your existing `configuration.yml` file.
+4. Connect to your own data by [configuring your data source connections]({% link soda-core/configuration.md %}) in your existing `configuration.yml` file.
+5. Adjust your `checks.yml` to point to your own dataset in your data source, then adjust the checks to apply to your own data. Go ahead and run a scan!
 
 ## Need help?
 
