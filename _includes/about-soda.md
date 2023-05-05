@@ -9,7 +9,7 @@ Is your data fresh? Is it complete or missing values? Are there unexpected dupli
 
 ### How it works
 
-Soda works by taking data quality checks that you prepare and using them to run a scan of datasets in a data source. A scan is a CLI command which instructs Soda to prepare optimized SQL queries that execute data quality checks on your data source to find invalid, missing, or unexpected data. When checks fail, they surface bad-quality data and present check results that help you investigate and address quality issues. 
+Soda works by taking the data quality checks that you prepare and using them to run a scan of datasets in a data source. A scan is a CLI command which instructs Soda to prepare optimized SQL queries that execute data quality checks on your data source to find invalid, missing, or unexpected data. When checks fail, they surface bad-quality data and present check results that help you investigate and address quality issues. 
 
 To test your data quality, you install the **Soda CLI tool** and sign up for a **Soda platform account** so that you can complete the following tasks:
 

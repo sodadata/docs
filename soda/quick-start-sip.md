@@ -33,7 +33,7 @@ To see Soda up and running locally in a few minutes, you need a few tools.
 
 * You have installed <a href="https://www.python.org/downloads/" target="_blank">Python 3.8</a> or greater. 
 * You have installed Pip 21.0 or greater.
-* You have installed <a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop</a> and a <a href="https://github.com/" target="_blaak">GitHub account</a> (to set up an example data source).
+* You have installed <a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop</a> and have access to <a href="https://github.com/" target="_blaak">GitHub </a> (to set up an example data source).
 
 ## Install Soda from the command line
 
@@ -60,18 +60,21 @@ pip install --upgrade pip
 pip install soda-core-postgres
 ```
 4. Validate the installation using the `soda` command. The command-line output is similar to the following.
-```shell
-Usage: soda [OPTIONS] COMMAND [ARGS]...
-  Soda Core CLI version 3.0.xx
-Options:
-  --version  Show the version and exit.
-  --help     Show this message and exit.
-Commands:
-  ingest           Ingests test results from a different tool
-  scan             Runs a scan
-  test-connection  Tests a connection
-  update-dro       Updates contents of a distribution reference file
-```
+    ```shell
+    Usage: soda [OPTIONS] COMMAND [ARGS]...
+
+      Soda Core CLI version 3.0.XX
+
+    Options:
+      --version  Show the version and exit.
+      --help     Show this message and exit.
+
+    Commands:
+      ingest           Ingests test results from a different tool
+      scan             Runs a scan
+      test-connection  Tests a connection
+      update-dro       Updates contents of a distribution reference file
+    ```
 
 To exit the virtual environment when you are done with this tutorial, use the command `deactivate`.
 
@@ -82,7 +85,7 @@ To enable you to take a first sip of Soda, you can use Docker to quickly build a
 
 Access a quick view of the <a href="/assets/adventureworks_schema.png" target="_blank">AdventureWorks schema</a>.
 
-1. Log in to your GitHub account, then clone the `sip-of-soda` repo locally. Use Terminal to navigate to the newly-cloned repo in your local environment.
+1. Use GitHub to clone the <a href="https://github.com/sodadata/sip-of-soda" target="_blank">`sodadata/sip-of-soda`</a> repo locally. Use Terminal to navigate to the newly-cloned repo in your local environment.
 2. If it is not already running in your local environment, start Docker.
 3. In Terminal, run the following command to set up the prepared example data source.
 ```shell
@@ -90,13 +93,26 @@ docker-compose up
 ```
 4. When the output reads `data system is ready to accept connections`, your data source is set up and you are ready to proceed.
 
+<details>
+  <summary style="color:#00BC7E">Troubleshoot</summary>
+  <strong>Problem:</strong> When you run <code>docker-compose up</code> you get an error that reads <code>[17168] Failed to execute script docker-compose</code>.<br />
+  <strong>Solution:</strong> Start Docker Desktop running.
+  <br /><br />
+  <strong>Problem:</strong> When you run <code>docker-compose up</code> you get an error that reads <code>Cannot start service soda-adventureworks: Ports are not available: exposing port TCP 0.0.0.0:5432 -> 0.0.0.0:0: listen tcp 0.0.0.0:5432: bind: address already in use</code>.<br />
+  <strong>Solution:</strong> 
+  <ol>
+  <li>Execute the command <code>lsof -i tcp:5432</code> to print a list of PIDs using the port. </li>
+  <li>Use the PID value to run the following command to free up the port: <code>kill -9 your_PID_value</code>. You many need to prepend the commands with <code>sudo </code>. </li>
+  <li>Run <code>docker-compose up</code> again.</li>
+  </ol>
+</details>
 
 
 ## Connect Soda to the data source and a platform account
 
 To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. 
 
-This tutorial also instructs you to connect to a Soda platform account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda platform account gives you access to visualized scan results, tracks trends in data quality over time, set alert notifications, and much more.
+This tutorial also instructs you to connect to a Soda platform account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda platform account gives you access to visualized scan results, tracks trends in data quality over time, lets you set alert notifications, and much more.
 
 1. Create a new file called `configuration.yml` in your `soda_sip` directory. 
 2. Open the `configuration.yml` file in a code editor, then copy and paste the following connection details into the file. These configuration details connect Soda to the example AdventureWorks data source you set up using Docker.
@@ -105,12 +121,12 @@ data_source adventureworks:
   type: postgres
   connection:
     host: localhost
-    username: ***
-    password: ***
+    username: postgres
+    password: secret
   database: postgres
   schema: public
 ```
-3. Next, add the following configuration that connects Soda to your new platform account, leaving the values for the keys blank for a moment. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under the `data_source` syntax.
+3. Next, add the following configuration that connects Soda to your platform account, leaving the values for the keys blank for a moment. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under the `data_source` syntax.
 ```yaml
 soda_cloud:
   host: cloud.soda.io
@@ -137,32 +153,32 @@ Connection 'adventureworks' is valid.
 
 ## Write some checks and run a scan
 
-1. Using Finder or Terminal, create another file in the `soda_sip` directory called `checks.yml`. A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). 
+1. Create another file in the `soda_sip` directory called `checks.yml`. A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). 
 2. Open the `checks.yml` file in your code editor, then copy and paste the following checks into the file. 
 ```yaml
 checks for dim_customer:
   - invalid_count(email_address) = 0:
       valid format: email
-      name: Emails formatted correctly
+      name: Ensure values are formatted as email addresses
   - missing_count(last_name) = 0:
-      name: No null values for last name
+      name: Ensure there are no null values in the Last Name column
   - duplicate_count(phone) = 0:
       name: No duplicate phone numbers
   - schema:
       warn:
         when schema changes: any
-      name: No changes to schema
+      name: Columns have not been added, removed, or changed
   - freshness(date_first_purchase) < 7d:
-      name: Data is fresh
+      name: Data in this dataset is less than 7 days old
 ```
     <details>
         <summary style="color:#00BC7E">What do these checks do?</summary>
         <ul>
-          <li><strong>Emails formatted correctly</strong> checks that all entries in the <code>email_address</code> column are formatted as <code>name@domain.extension</code>. See <a href="https://docs.soda.io/soda-cl/validity-metrics.html" target="_blank">Validity metrics</a>.</li>
-          <li><strong>No null values for last name</strong> automatically checks for NULL values in the <code>last_name</code> column. See <a href="https://docs.soda.io/soda-cl/missing-metrics.html" target="_blank">Missing metrics</a>.</li>
+          <li><strong>Ensure values are formatted as email addresses</strong> checks that all entries in the <code>email_address</code> column are formatted as <code>name@domain.extension</code>. See <a href="https://docs.soda.io/soda-cl/validity-metrics.html" target="_blank">Validity metrics</a>.</li>
+          <li><strong>Ensure there are no null values in the Last Name column</strong> automatically checks for NULL values in the <code>last_name</code> column. See <a href="https://docs.soda.io/soda-cl/missing-metrics.html" target="_blank">Missing metrics</a>.</li>
           <li><strong>No duplicate phone numbers</strong> validates that each value in the <code>phone</code> column in unique. See <a href="https://docs.soda.io/soda-cl/numeric-metrics.html#list-of-numeric-metrics" target="_blank">Numeric metrics</a>.</li>
-          <li><strong>No schema changes</strong> compares the schema of the dataset to the last scan result to determine if any columns were added, deleted, changed data type, or changed index. The first time this check executes, the results show <code>[NOT EVALUATED]</code> because there are no previous values to which to compare current results. In other words, this check requires a minimum of two scans to evaluate properly. See <a href="https://docs.soda.io/soda-cl/schema.html" target="_blank">Schema checks</a>.</li>
-          <li><strong>Data is fresh</strong> confirms that the data in the dataset is less than seven days old. See <a href="https://docs.soda.io/soda-cl/freshness.html" target="_blank">Freshness checks</a>.</li>
+          <li><strong>Columns have not been added, removed, or changed</strong> compares the schema of the dataset to the last scan result to determine if any columns were added, deleted, changed data type, or changed index. The first time this check executes, the results show <code>[NOT EVALUATED]</code> because there are no previous values to which to compare current results. In other words, this check requires a minimum of two scans to evaluate properly. See <a href="https://docs.soda.io/soda-cl/schema.html" target="_blank">Schema checks</a>.</li>
+          <li><strong>Data in this dataset is less than 7 days old</strong> confirms that the data in the dataset is less than seven days old. See <a href="https://docs.soda.io/soda-cl/freshness.html" target="_blank">Freshness checks</a>.</li>
         </ul>
     </details><br />
 3. Save the changes to the `checks.yml` file, then, in Terminal, use the following command to run a scan. A scan is a CLI command which instructs Soda to prepare SQL queries that execute data quality checks on your data source. As input, the command requires:
@@ -238,7 +254,11 @@ Use the failed row samples, as in the example below, to determine what caused a 
     </section>
 </div>
 
-
+If you are done with the example data, you can delete it from your account to start fresh with your own data.
+1. Navigate to **your avatar** > **Scans & Data**.
+2. In the **Data Sources** tab, click the stacked dots to the right of the `adventureworks` data source, then select **Delete Data Source**.
+3. Follow the steps to confirm deletion. 
+4. Add your own data by [configuring your data source connections]({% link soda-core/configuration.md %}) in your existing `configuration.yml` file.
 
 ## Need help?
 
