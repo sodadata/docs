@@ -25,6 +25,9 @@ A note about BigQuery datasets: Google uses the term dataset slightly differentl
 Instances of "dataset" in Soda documentation always reference the former.
 
 ## Connection configuration
+
+Install package: `soda-core-bigquery`
+
 {% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
