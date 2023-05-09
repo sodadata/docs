@@ -12,6 +12,8 @@ parent: Connect a data source
 
 ## Configuration
 
+Install package: `soda-core-trino`
+
 Reference <a href="https://trino.io/docs/current/overview/concepts.html#" target="_blank">Trino documentation</a> for assistance.
 {% include code-header.html %}
 ```yaml

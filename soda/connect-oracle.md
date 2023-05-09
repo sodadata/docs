@@ -14,6 +14,9 @@ parent: Connect a data source
 Soda supports Oracle version 21.3 or greater.
 
 ## Configuration
+
+Install package: `soda-core-oracle`
+
 {% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
