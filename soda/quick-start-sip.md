@@ -14,13 +14,12 @@ redirect_from:
 Is Soda the data quality testing solution you've been looking for? 🥤Take a sip and see! <br />
 Use the example data in this tutorial to set up and run a simple Soda scan for data quality.
 
-1. Learn the basics of Soda in [two minutes](#soda-basics).
-2. Make sure you have the [tools](#tutorial-prerequisites) you need to complete this tutorial.
-3. [Install Soda from the command-line](#install-soda-from-the-command-line).
-4. Use Docker to [build an example data source](#build-an-example-data-source) against which to run data quality scans.
-5. [Connect Soda to the data source and a platform account](#connect-soda-to-the-data-source-and-a-platform-account).
-6. [Write some checks](#write-some-checks-and-run-a-scan) that surface “bad” data in a dataset, then run your first scan. Examine the scan results in the command-line output and in the visualized check results in your Soda account. 
-
+[![sip-1](/assets/images/sip-1.png){:height="425px" width="425px"}](#soda-basics)<br />
+[![sip-2](/assets/images/sip-2.png){:height="425px" width="425px"}](#tutorial-prerequisites)<br />
+[![sip-3](/assets/images/sip-3.png){:height="425px" width="425px"}](#install-soda-from-the-command-line)<br />
+[![sip-4](/assets/images/sip-4.png){:height="425px" width="425px"}](#build-an-example-data-source)<br />
+[![sip-5](/assets/images/sip-5.png){:height="425px" width="425px"}](#connect-soda-to-the-data-source-and-a-platform-account)<br />
+[![sip-6](/assets/images/sip-6.png){:height="425px" width="425px"}](#write-some-checks-and-run-a-scan)<br />
 <br />
 
 ## Soda basics
@@ -28,6 +27,7 @@ Use the example data in this tutorial to set up and run a simple Soda scan for d
 {% include about-soda.md %}
 
 ## Tutorial prerequisites
+<!--Linked to UI, access Shlink-->
 
 To see Soda up and running locally in a few minutes, you need a few tools.
 
@@ -36,6 +36,7 @@ To see Soda up and running locally in a few minutes, you need a few tools.
 * You have installed <a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop</a> and have access to <a href="https://github.com/" target="_blaak">GitHub </a> (to set up an example data source).
 
 ## Install Soda from the command line
+<!--Linked to UI, access Shlink-->
 
 This tutorial references a MacOS environment.
 
@@ -109,6 +110,7 @@ docker-compose up
 
 
 ## Connect Soda to the data source and a platform account
+<!--Linked to UI, access Shlink-->
 
 To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. 
 
@@ -116,15 +118,15 @@ This tutorial also instructs you to connect to a Soda platform account using API
 
 1. Create a new file called `configuration.yml` in your `soda_sip` directory. 
 2. Open the `configuration.yml` file in a code editor, then copy and paste the following connection details into the file. These configuration details connect Soda to the example AdventureWorks data source you set up using Docker.
-```yaml
-data_source adventureworks:
-  type: postgres
-  connection:
-    host: localhost
-    username: postgres
-    password: secret
-  database: postgres
-  schema: public
+    ```yaml
+    data_source adventureworks:
+      type: postgres
+      connection:
+        host: localhost
+        username: postgres
+        password: secret
+      database: postgres
+      schema: public
 ```
 3. Next, add the following configuration that connects Soda to your platform account, leaving the values for the keys blank for a moment. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under the `data_source` syntax.
 ```yaml
@@ -159,18 +161,19 @@ Connection 'adventureworks' is valid.
 ```yaml
 checks for dim_customer:
   - invalid_count(email_address) = 0:
-      valid format: email
-      name: Ensure values are formatted as email addresses
+          valid format: email
+          name: Ensure values are formatted as email addresses
   - missing_count(last_name) = 0:
-      name: Ensure there are no null values in the Last Name column
+          name: Ensure there are no null values in the Last Name column
   - duplicate_count(phone) = 0:
-      name: No duplicate phone numbers
-  - schema:
-      warn:
-        when schema changes: any
-      name: Columns have not been added, removed, or changed
+          name: No duplicate phone numbers
   - freshness(date_first_purchase) < 7d:
-      name: Data in this dataset is less than 7 days old
+          name: Data in this dataset is less than 7 days old
+  # Requires a Soda platform account
+  - schema:
+          warn:
+            when schema changes: any
+          name: Columns have not been added, removed, or changed
 ```
     <details>
         <summary style="color:#00BC7E">What do these checks do?</summary>
@@ -181,7 +184,7 @@ checks for dim_customer:
           <li><strong>Columns have not been added, removed, or changed</strong> compares the schema of the dataset to the last scan result to determine if any columns were added, deleted, changed data type, or changed index. The first time this check executes, the results show <code>[NOT EVALUATED]</code> because there are no previous values to which to compare current results. In other words, this check requires a minimum of two scans to evaluate properly. See <a href="https://docs.soda.io/soda-cl/schema.html" target="_blank">Schema checks</a>.</li>
           <li><strong>Data in this dataset is less than 7 days old</strong> confirms that the data in the dataset is less than seven days old. See <a href="https://docs.soda.io/soda-cl/freshness.html" target="_blank">Freshness checks</a>.</li>
         </ul>
-    </details><br />
+    </details>
 3. Save the changes to the `checks.yml` file, then, in Terminal, use the following command to run a scan. A scan is a CLI command which instructs Soda to prepare SQL queries that execute data quality checks on your data source. As input, the command requires:
 * `-d` the name of the data source to scan
 * `-c` the filepath and name of the `configuration.yml` file 
