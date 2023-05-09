@@ -15,8 +15,8 @@ Use this guide to install and set up Soda to test the quality of your data in yo
 3. [Install Soda from the command-line](#install-soda-from-the-command-line).
 4. [Connect Soda](#connect-soda-to-a-data-source-and-a-platform-account) to your data source and platform account.
 5. [Write checks](#write-checks-for-data-quality) for data quality.
-6. Configure [Airflow Operator](#configure-airflow-operator-in-the-right-places) in the right places.
-7. Set up [Slack integration and notification rules](#set-up-slack-integration-and-notification-rules).
+6. Set up [Slack integration and notification rules](#set-up-slack-integration-and-notification-rules).
+7. Configure [Airflow Operator](#configure-airflow-operator-in-the-right-places) in the right places.
 8. Run your Airflow pipeline and [examine scan results](#run-your-airflow-pipeline-and-examine-scan-results).
 <br />
 
@@ -27,11 +27,11 @@ Use this guide to install and set up Soda to test the quality of your data in yo
 
 ## About this guide
 
-The instructions below offer Data Engineers an example of how to execute SodaCL checks for data quality on data in an <a href="https://airflow.apache.org/" target="_blank">Apache Airflow</a> pipeline after ingestion and transformation. 
+The instructions below offer Data Engineers an example of how to execute SodaCL checks for data quality on data in an <a href="https://airflow.apache.org/" target="_blank">Apache Airflow</a> pipeline. 
 
-For context, the example assumes that you use Airflow for scheduling and monitoring workflows for your data, including data ingestion and transformation events. After such events, you can schedule Soda scans for data quality to run, then push results to the Soda platform. 
+For context, this guide presents an example of a Data Engineer at a small firm who was tasked with building a simple products report of sales by category for <a href="/assets/adventureworks_schema.png" target="_blank">AdventureWorks data</a>. This engineer uses <a href="https://www.getdbt.com/" target="_blank">dbt</a> to build a simple model transformation to gather data, then models to push gathered information to a reporting and visualization tool. The engineer uses Airflow for scheduling and monitoring workflows, including data ingestion and transformation events. 
 
-Where the scan results indicate an issue with data quality, Soda notifies the team via a notification in Slack so that they can potentially stop the pipeline and investigate and address any issues before the issue causes problems further down the pipeline.
+The goal in this example is to make sure that after such events, and before pushing information into a reporting tool, they can schedule Soda scans for data quality.  Where the scan results indicate an issue with data quality, Soda notifies the engineer via a notification in Slack so that they can potentially stop the pipeline and investigate and address any issues before the issue causes problems in the report.
 
 Borrow from this guide to connect to your own data source, set up scan points in your pipeline, and execute your own relevant tests for data quality.
 
@@ -39,61 +39,278 @@ Borrow from this guide to connect to your own data source, set up scan points in
 
 ## Install Soda from the command-line
 
-{% include quick-start-install.md %}
+With Python 3.8 installed, the Engineer creates a virtual environment in Terminal, then installs the Soda package for PostgreSQL using the following command.
 
+{% include code-header.html %}
+```shell
+pip install soda-core-postgres
+```
 
-## Connect Soda to your data source and platform account
+Refer to [exhaustive install instructions]({% link soda/quick-start-dev.md %}#install-soda-from-the-command-line), if you wish.
 
-To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. 
+## Connect Soda to a data source and platform account
 
-This guide also instructs you to connect to a Soda platform account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda platform account gives you access to visualized scan results, tracks trends in data quality over time, enables you to set alert notifications, and much more.
+To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or Big Query, you use a `configuration.yml` file which stores access details for your data source. 
 
-1. In the directory in which you work with your pipeline, create a directory to contain your Soda configuration and check YAML files.
-2. In your new directory, create a new file called `configuration.yml`. 
-3. Something about safely storing credential values.
-4. Open the `configuration.yml` file in a code editor, then copy and paste the data source connection configuration for the [data source]({% link soda/connect-athena.md %}) that you use. The example below is the connection configuration for a Snowflake data source.
+This guide also includes instructions for how to connect to a Soda platform account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, a Soda platform account gives you access to visualized scan results, tracks trends in data quality over time, enables you to set alert notifications, and much more.
+
+1. In the directory in which they work with their dbt models, the Data Engineer creates a `soda` directory to contain the Soda configuration and check YAML files.
+2. In the new directory, they create a new file called `configuration.yml`. 
+3. In the `configuration.yml` file, they add the data source connection configuration for the PostgreSQL data source that contains the AdventureWorks data. The example below is the connection configuration for a PostgreSQL data source. See a complete list of supported [data sources]({% link soda/connect-athena.md %}).
 ```yaml
-data_source my_datasource_name:
-  type: snowflake
+data_source adventureworks:
+  type: postgres
   connection:
-    username: ${SNOWFLAKE_USER}
-    password: ${SNOWFLAKE_PASS}
-    account: plu449.us-west-1
-    database: sodadata_test
-    warehouse: compute_wh
-    role: analyst
-    session_parameters:
-      QUERY_TAG: soda-queries
-      QUOTED_IDENTIFIERS_IGNORE_CASE: false
+    host: localhost
+    username: postgres
+    password: secret
+  database: postgres
   schema: public
 ```
-5. Next, add the following configuration that connects Soda to your new platform account, leaving the values blank for a moment. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under the `data_source` syntax.
+5. Next, they add the following configuration that connects Soda to their new platform account, leaving the values blank for a moment. The syntax for `soda_cloud` must be at the root level of the YAML file, *not* nested under the `data_source` syntax.
 ```yaml
 soda_cloud:
-  host: cloud.soda.io
+  host: 
   api_key_id:
   api_key_secret:
 ```
-6. In a browser, navigate to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a new Soda account. If you already have a Soda account, log in. 
-7. In your new account, navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys.
+6. In a browser, they navigate to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a free, 45-day trial Soda account.  
+7. In the new account, they navigate to **your avatar** > **Profile**, then access the **API keys** tab and click the plus icon to generate new API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
-8. Save the `configuration.yml` file and close the API modal in your Soda account.
-9. In Terminal, run the following command to test Soda's connection to your data source, replacing the value of `my_datasource_name` with your own value.<br />
+  * Enter the value for `host` according to the region the Soda platform account uses: `cloud.soda.io` for EU region; `cloud.us.soda.io` for USA region.
+8. They save the `configuration.yml` file and close the API modal in the Soda account.
+9. In Terminal, they run the following command to test Soda's connection to the data source.<br />
 ```shell
-soda test-connection -d my_datasource_name -c configuration.yml
+soda test-connection -d adventureworks -c configuration.yml
 ```
 
 ## Write checks for data quality
 
-A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). You can create multiple `checks.yml` files to organize your data quality checks and run all, or some of them, at scan time.
+A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). You can create multiple `checks.yml` files to organize your data quality checks and run all, or some of them, at scan time. In this example, the Data Engineer creates multiple checks after ingestion, after transformation, and before pushing the information to a visualization and reporting tool.
 
-Learn more about [SodaCL]({% link soda/quick-start-sodacl.md %}).
+### Transformation checks
 
-* Ingestion: In general I would suggest after ingestion - schema, freshness, reference, not null, format, duplicate - this is in approximate order of importance from most to least important. Row count check is useful if there is any reasonable range or threshold available
-* Transform: after transformation - this highly depends on what the transformation is - if tables are being joined, then not null on the joined tables could make sense. Format would generally not be that important since it has already been checked and whatever new is created is under control of the transformation, but it could still be used to verify if some sort of complicated formatting transformation is in place. Row count can be very useful, e.g. if aggregation happens then row count per group would make sense. Then it goes into more domain specific checks, where I would imagine a user defined check, but this is highly dependent on the use case, the data
+After building a simple dbt model transformation that creates a new fact table which gathers data about products, product categories, and subcategories [dbt/models/category/fact_product_category.sql], the engineer realizes that some of the products in the dataset do not have an assigned category or subcategory, which means those values would not be included in the report. To mitigate the issue and get a warning when these values are missing, they write the following checks on the `fact_product_category` dataset that the transformation produced.
 
-## Configure Airflow Operator in the right places
+fact_product_category.yml
+{% include code-header.html %}
+```yaml
+checks for fact_product_category:
+  # Check warns when any NULL values exist in the column
+  - missing_count(category_key): 
+      name: All products have a category
+      warn: when > 0
+  # Check warns when any NULL values exist in the column
+  - missing_count(subcategory_key): 
+      name: All products have a subcategory
+      warn: when > 0
+  # Check warns when any NULL values exist in the column
+  - missing_count(product_key) = 0:
+      name: All products have a key
+```
+
+
+### Ingestion checks
+
+Because the Enginner does not have the ability to fix upstream data, they also write checks to apply to each dataset they use in the transformation, *after* the data is ingested, but before transforming.
+
+dim_product.yml
+{% include code-header.html %}
+```yaml
+checks for dim_product:
+  # Check fails when product_key or english_product_name is missing, OR
+  # when the data type of those columns is other than specified
+  - schema:
+      fail:
+        when required column missing: [product_key, english_product_name]
+        when wrong column type:
+          product_key: integer
+          english_product_name: varchar
+  # Check fails when any NULL values exist in the column
+  - missing_count(product_key) = 0:
+      name: All products have a key
+  # Check fails when any NULL values exist in the column
+  - missing_count(english_product_name) = 0:
+      name: All products have a name
+  # Check fails when any NULL values exist in the column
+  - missing_count(product_subcategory_key):
+      name: All products have a subcategory
+      warn: when > 0     
+  # Check fails when the number of products, relative to the
+  # previous scan, changes by 10 or more
+  # Requires a Soda platform account
+  - change for row_count < 10:
+      name: Products are stable
+```
+
+dim_product_category.yml
+{% include code-header.html %}
+```yaml
+checks for dim_product_category:
+  # Check fails when product_category_key or english_product_category name 
+  # is missing, OR
+  # when the data type of those columns is other than specified
+  - schema:
+      fail:
+        when required column missing:
+          [product_category_key, english_product_category_name]
+        when wrong column type:
+          product_category_key: integer
+          english_product_category_name: varchar
+  # Check fails when any NULL values exist in the column
+  - missing_count(product_category_key) = 0:
+      name: All categories have a key
+  # Check fails when any NULL values exist in the column
+  - missing_count(english_product_category_name) = 0:
+      name: All categories have a name
+  # Check fails when the number of categories, relative to the
+  # previous scan, changes by 5 or more
+  # Requires a Soda platform account
+  - change for row_count < 5:
+      name: Categories are stable
+```
+
+dim_product_subcategory.yml
+{% include code-header.html %}
+```yaml
+checks for dim_product_subcategory:
+  # Check fails when product_subcategory_key or english_product_subcategory_name 
+  # is missing, OR
+  # when the data type of those columns is other than specified
+  - schema:
+      fail:
+        when required column missing:
+          [product_subcategory_key, english_product_subcategory_name]
+        when wrong column type:
+          product_subcategory_key: integer
+          english_product_subcategory_name: varchar
+  # Check fails when any NULL values exist in the column
+  - missing_count(product_subcategory_key) = 0:
+      name: All subcategories have a key
+  # Check fails when any NULL values exist in the column
+  - missing_count(english_product_subcategory_name) = 0:
+      name: All subcategories have a name
+  # Check fails when the number of categories, relative to the
+  # previous scan, changes by 5 or more
+  # Requires Soda platform account
+  - change for row_count < 5:
+      name: Subcategories are stable
+```
+
+fact_internet_sales.yml
+{% include code-header.html %}
+```yaml
+checks for fact_internet_sales:
+  # Check fails when product_key, order_quantity, or sales_amount 
+  # is missing, OR
+  # when the data type of those columns is other than specified
+  - schema:
+      fail:
+        when required column missing:
+          [product_key, order_quantity, sales_amount]
+        when wrong column type:
+          product_key: integer
+          order_quantity: smallint
+          sales_amount: money
+  # Check fails when any NULL values exist in the column
+  - missing_count(product_key) = 0:
+      name: All sales have a product associated
+  # Check fails when any order contains no items 
+  - min(order_quantity) > 0:
+      name: All sales have a non-zero order quantity
+  # Check fails when the amount of any sales order is zero
+  - failed rows:
+      name: All sales have a non-zero order amount
+      fail query: |
+        SELECT sales_order_number, sales_amount::NUMERIC
+          FROM fact_internet_sales
+        WHERE sales_amount::NUMERIC <= 0
+  # Check warns when there are fewer than 5 new internet sales 
+  # relative to the previous scan resuls
+  # Check fails when there are more than 500 new internet sales
+  # relative to the previous scan resuls
+  # Requires Soda platform account
+  - change for row_count:
+      warn: when < 5 
+      fail: when > 500 
+      name: Sales are within expected range
+  # Check fails when the average of the column is abnormal
+  # relative to previous measurements for average sales amount
+  # Requires Soda platform account
+  # sales_amount is cast from data type MONEY to enable calculation
+  - anomaly score for avg(sales_amount::NUMERIC) < default
+```
+
+
+## Checks before loading to reporting tool
+
+The Engineer then builds category and subcategory sales report models and queries using dbt. [dbt/models/category/report_category_sales.sql] and [dbt/models/category/report_subcategory_sales.sql] The checks files they create to run on the new models contain similiar user-defined checks. Ultimately, the Engineer wants data quality checks to fail if the sales of uncategorized products rises above normal (0.85%), and if the sum of sales orders in the model that prepares the report differs greatly from the sum of raw sales order number.
+
+
+soda/checks/report/report_category_sales.yml
+{% include code-header.html %}
+```yaml
+checks for report_category_sales:
+  # Check fails if the percentage of sales of products with no 
+  # catgory exceeds 0.90%
+  - uncategorized_sales_percent < 0.9:
+      uncategorized_sales_percent query: >
+        select ROUND(CAST((sales_total * 100) / (select sum(sales_total) from report_category_sales) AS numeric), 2) as uncategorized_sales_percent from report_category_sales where category_key is NULL
+      name: Most sales are categorized
+  # Check fails if the sum of sales produced by the model is different
+  # than the sum of sales in the fact_internet_sales dataset
+  - sales_diff = 0:
+      name: Category sales total matches
+      sales_diff query: >
+        SELECT CAST((SELECT SUM(fact_internet_sales.sales_amount) FROM fact_internet_sales)
+        - (SELECT SUM(report_category_sales.sales_total) FROM report_category_sales) as numeric) AS sales_diff
+```
+ 
+soda/checks/report/report_subcategory_sales.yml
+{% include code-header.html %}
+```yaml
+checks for report_subcategory_sales:
+  # Check fails if the percentage of sales of products with no 
+  # subcategory exceeds 0.90%
+  - uncategorized_sales_percent < 0.9:
+      uncategorized_sales_percent query: >
+        select ROUND(CAST((sales_total * 100) / (select sum(sales_total) from report_subcategory_sales) AS numeric), 2) as uncategorized_sales_percent from report_subcategory_sales where category_key is NULL OR subcategory_key is NULL
+      name: Most sales are categorized
+  # Check fails if the sum of sales produced by the model is different
+  # than the sum of sales in the fact_internet_sales dataset
+  - sales_diff = 0:
+      name: Subcategory sales total matches
+      sales_diff query: >
+        SELECT CAST((SELECT SUM(fact_internet_sales.sales_amount) FROM fact_internet_sales)
+        - (SELECT SUM(report_subcategory_sales.sales_total) FROM report_subcategory_sales) as numeric) AS sales_diff
+```
+
+
+## Run a scan
+
+Then they run a local scan of the data to validate that the check yield expected results.
+{% include code-header.html %}
+```shell
+soda scan -d adventureworks -c configuration.yml fact_product_category.yml dim_product.yml dim_product_category.yml dim_product_subcategory.yml fact_internet_sales.yml report_category_sales.yml report_subcategory_sales.yml
+```
+
+
+
+## Set up Slack integration, notification rules, and tags
+
+Use this integration to enable Soda to send alert notifications to a Slack channel to notify your team of warn and fail check results. If your team does not use Slack, you can skip this step and Soda sends alert notifications via email.
+
+1. As an [Admin]({% link soda-cloud/roles-and-rights.md %}), login to your Soda platform account and navigate to **your avatar** > **Organization Settings**, then navigate to the **Integrations** tab and click the **+** icon to add a new integration.
+2. Follow the guided steps to authorize Soda to connect to your Slack workspace. If necessary, contact your organization's Slack Administrator to approve the integration with Soda. 
+* **Configuration** tab: select the public channels to which Soda can post messages; Soda cannot post to private channels.
+* **Scope** tab: select the Soda features, both alert notifications and incidents, which can access the Slack integration. 
+3. To dictate where Soda should send alert notifications for checks that fail, create a new notification rule. Navigate to **your avatar** > **Notification Rules**, then click **New Notification Rule**. Follow the guided steps to complete the new rule directly Soda to send check results that fail to a specific channel in your Slack workspace.
+
+Learn more about [Integrating with Slack]({% link soda/integrate-slack.md %}).<br />
+Learn more about [Setting notification rules]({% link soda-cloud/notif-rules.md %}).
+
+## Create an Airflow DAG
 
 1. Configure Airflow PythonOperator.
 ```python
@@ -216,9 +433,7 @@ ingest_data_op >> soda_core_scan_op >> publish_data_op
 ```
 3. ...
 
-## Set up Slack integration and notification rules
 
-{% include quick-start-notifs.md %}
 
 ## Run your Airflow pipeline and examine scan results
 

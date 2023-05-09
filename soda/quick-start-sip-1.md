@@ -128,7 +128,7 @@ data_source adventureworks:
 3. Next, add the following configuration that connects Soda to your platform account, leaving the values for the keys blank for a moment. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under the `data_source` syntax.
 ```yaml
 soda_cloud:
-  host: cloud.soda.io
+  host: 
   api_key_id:
   api_key_secret:
 ```
@@ -136,6 +136,7 @@ soda_cloud:
 4. Navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
+  * Enter the value for `host` according to the region your Soda platform account uses: `cloud.soda.io` for EU region; `cloud.us.soda.io` for USA region.
 5. Save the `configuration.yml` file and close the API modal in your Soda account.
 6. In Terminal, run the following command to test Soda's connection to the data source.<br />
 Command:

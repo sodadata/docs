@@ -75,7 +75,7 @@ data_source my_datasource_name:
 5. Next, add the following configuration that connects Soda to your new platform account, leaving the values blank for a moment. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under the `data_source` syntax.
 ```yaml
 soda_cloud:
-  host: cloud.soda.io
+  host:
   api_key_id:
   api_key_secret:
 ```
@@ -83,6 +83,7 @@ soda_cloud:
 7. In your platform account, navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
+  * Enter the value for `host` according to the region your Soda platform account uses: `cloud.soda.io` for EU region; `cloud.us.soda.io` for USA region.
 8. Save the `configuration.yml` file and close the API modal in your Soda account.
 9. In Terminal, run the following command to test Soda's connection to your data source, replacing the value of `my_datasource_name` with the name of your data source.<br />
 ```shell
