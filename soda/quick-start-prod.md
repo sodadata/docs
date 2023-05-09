@@ -6,6 +6,7 @@ parent: Get started
 ---
 
 # Test data quality in a data pipeline
+<!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
 Use this guide to install and set up Soda to test the quality of your data in your Airflow pipeline. Automatically catch data quality issues after ingestion or transformation and get alerts about issues and prevent negative downstream impact.

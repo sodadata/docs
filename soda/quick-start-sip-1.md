@@ -27,6 +27,7 @@ Use the example data in this tutorial to set up and run a simple Soda scan for d
 {% include about-soda.md %}
 
 ## Tutorial prerequisites
+<!--Linked to UI, access Shlink-->
 
 To see Soda up and running locally in a few minutes, you need a few tools.
 
@@ -35,6 +36,7 @@ To see Soda up and running locally in a few minutes, you need a few tools.
 * You have installed <a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop</a> and have access to <a href="https://github.com/" target="_blaak">GitHub </a> (to set up an example data source).
 
 ## Install Soda from the command line
+<!--Linked to UI, access Shlink-->
 
 This tutorial references a MacOS environment.
 
@@ -108,6 +110,7 @@ docker-compose up
 
 
 ## Connect Soda to the data source and a platform account
+<!--Linked to UI, access Shlink-->
 
 To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. 
 
