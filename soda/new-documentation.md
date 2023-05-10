@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### May 10, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.33 and Soda Core 3.0.34.
+* Added instructions for [user-defined metrics]({% link soda-cl/user-defined.md %}#define-user-defined-checks) to access and use queries in separate SQL files.
+
 #### May 9, 2023
 * Added the install package to each connector's page.
 * Added a connectivity troubleshooting tip to [Connect to Snowflake]({% link soda/connect-snowflake.md %}#troubleshoot).

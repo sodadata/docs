@@ -57,6 +57,17 @@ checks for dim_product:
 | query key | `product_stock query` |
 | query value | `SELECT COUNT(safety_stock_level - days_to_manufacture) FROM dim_product` |
 
+<br />
+
+Instead of embedding an expression or a query directly in the check definition, you can direct Soda to use a query or expression you have defined in a different file. The example check below follow the same pattern as the metrics that use CTE or SQL queries, but this nested key identifies the **file path** of your SQL query file.
+* The name you provide for a custom metric must *not* contain spaces.
+
+{% include code-header.html %}
+```yaml
+checks:
+  - avg_surface between 1068 and 1069:
+      avg_surface sql_file: "filepath/filename.sql"
+```
 
 <br />
 
