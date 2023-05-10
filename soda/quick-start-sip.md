@@ -14,12 +14,12 @@ redirect_from:
 Is Soda the data quality testing solution you've been looking for? 🥤Take a sip and see! <br />
 Use the example data in this tutorial to set up and run a simple Soda scan for data quality.
 
-[![sip-1](/assets/images/sip-1.png){:height="425px" width="425px"}](#soda-basics)<br />
-[![sip-2](/assets/images/sip-2.png){:height="425px" width="425px"}](#tutorial-prerequisites)<br />
-[![sip-3](/assets/images/sip-3.png){:height="425px" width="425px"}](#install-soda-from-the-command-line)<br />
-[![sip-4](/assets/images/sip-4.png){:height="425px" width="425px"}](#build-an-example-data-source)<br />
-[![sip-5](/assets/images/sip-5.png){:height="425px" width="425px"}](#connect-soda-to-the-data-source-and-a-platform-account)<br />
-[![sip-6](/assets/images/sip-6.png){:height="425px" width="425px"}](#write-some-checks-and-run-a-scan)<br />
+**[01](#soda-basics)** Learn the basics of Soda | 2 minutes<br />
+**[02](#tutorial-prerequisites)** Check prerequisites | 1 minute<br />
+**[03](#install-soda-from-the-command-line)** Install Soda | 10 minutes<br />
+**[04](#build-an-example-data-source)** Set up example data source | 5 minutes<br />
+**[05](#connect-soda-to-the-data-source-and-a-platform-account)** Connect Soda to the data source | 5 minutes<br />
+**[06](#write-some-checks-and-run-a-scan)** Write checks and run a scan | 5 minutes<br />
 <br />
 
 ## Soda basics

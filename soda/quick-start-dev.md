@@ -12,14 +12,14 @@ Use this guide to install and set up Soda to test the quality of your data durin
 
 ![gh-action-fail](/assets/images/gh-action-fail.png){:width="500px"}
 
-1. Learn the basics of Soda in [two minutes](#soda-basics).
-2. [Get context](#about-this-guide) for this guide.
-3. [Install Soda from the command-line](#install-soda-from-the-command-line).
-4. [Connect Soda](#connect-soda-to-a-data-source-and-a-platform-account) to your data source and platform account.
-5. [Write checks](#write-checks-for-data-quality) for data quality.
-6. Create a [GitHub Action job](#create-a-github-action-job).
-7. Set up [Slack integration and notification rules](#set-up-slack-integration-and-notification-rules).
-8. Trigger a scan and [examine the scan results](#trigger-a-scan-and-examine-the-scan-results).
+**[01](#soda-basics)** Learn the basics of Soda<br />
+**[02](#about-this-guide)** Get context for this guide<br />
+**[03](#install-soda-from-the-command-line)** Install Soda from the command-line<br />
+**[04](#connect-soda-to-your-data-source-and-platform-account)** Connect Soda to your data source and platform account<br />
+**[05](#write-checks-for-data-quality)** Write checks for data quality<br />
+**[06](#create-a-github-action-job)** Create a GitHub Action job<br />
+**[07](#set-up-slack-integration-and-notification-rules)** Set up Slack integration and notification rules<br />
+**[08](#trigger-a-scan-and-examine-the-scan-results)** Trigger a scan and examine the scan results<br />
 <br />
 
 
