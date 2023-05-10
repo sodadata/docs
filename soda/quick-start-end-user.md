@@ -12,13 +12,14 @@ redirect_from:
 
 Use this guide to set up the Soda platform to enable users across your organization to serve themselves when it comes to testing data quality. 
 
-Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and the Soda platform, then invite your Data Analyst colleagues to join the platform and create Agreements and begin writing their own SodaCL checks for data quality. 
+Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and the Soda platform, then invite your Data Analyst and Scientist colleagues to join the platform to create agreements and begin writing their own SodaCL checks for data quality. 
 
-1. Learn the basics of Soda in [two minutes](#soda-basics).
-2. [Get context](#about-this-guide) for this guide.
-3. [Deploy a Soda Agent](#deploy-a-soda-agent) in a Kubernetes cluster.
-4. [Connect a data source](#connect-a-data-source) to the Soda platform.
-5. [Invite your colleagues](#write-checks-for-data-quality) to begin writing agreements.
+**[01](#soda-basics)** Learn the basics of Soda<br />
+**[02](#about-this-guide)** Get context for this guide<br />
+**[03](#deploy-a-soda-agent)** Deploy a Soda Agent in a Kubernetes cluster<br />
+**[04](#connect-a-data-source)** Connect a data source to the Soda platform<br />
+**[05](#set-up-slack-integration-and-notification-rules)** Set up Slack integration and notification rules<br />
+**[06](#invite-your-colleagues)** Invite your colleagues to begin writing agreements<br />
 <br />
 
 

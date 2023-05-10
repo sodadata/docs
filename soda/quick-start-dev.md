@@ -31,6 +31,8 @@ Use this guide to install and set up Soda to test the quality of your data durin
 
 The instructions below offer Data Engineers an example of how to use <a href="https://docs.github.com/en/actions" target="_blank">GitHub Actions</a> to execute SodaCL checks for data quality on data in a Snowflake data source. 
 
+(Not a GitHub Actions user? Stay tuned for more guides coming soon.)
+
 For context, the example assumes that a team of people use GitHub to collaborate on managing data ingestion and transformation with dbt. In the same repo, team members can collaborate to write tests for data quality in SodaCL checks YAML files. With each new PR, or commit to an existing PR, in the repo that adds a transformation or makes changes to a dbt model, a GitHub Action executes a Soda scan for data quality and presents the results of the scan in a comment in the pull request, and in the Soda platform. 
 
 Where the scan results indicate an issue with data quality, Soda notifies the team via a notification in Slack so that they can investigate and address any issues before merging the PR into production.
@@ -42,7 +44,256 @@ Borrow from this guide to connect to your own data source, set up a GitHub Actio
 
 ## Install Soda from the command line
 
-{% include quick-start-install.md %}
+
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">MacOS, Linux</label>
+  <label class="tab" id="two-tab" for="two">Windows</label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
+1. Ensure that you have the following prerequisites installed in your environment.
+* Python 3.8 or greater
+* Pip 21.0 or greater
+2. Best practice dictates that you install Soda using a virtual environment. In Terminal, create a virtual environment using the commands below. Depending on your version of Python, you may need to replace `python` with `python3` in the first command.
+```shell
+python -m venv .venv
+source .venv/bin/activate
+```
+3. Upgrade pip inside your new virtual environment.
+```shell
+pip install --upgrade pip
+```
+4. Execute the following command, replacing `soda-core-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
+```shell
+pip install soda-core-postgres
+```
+<details>
+    <summary style="color:#00BC7E">Soda packages</summary>
+<table>
+<thead>
+<tr>
+<th>Data source</th>
+<th>Install package</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amazon Athena</td>
+<td><code>soda-core-athena</code></td>
+</tr>
+<tr>
+<td>Amazon Redshift</td>
+<td><code>soda-core-redshift</code></td>
+</tr>
+<tr>
+<td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-core/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
+<td><code>soda-core-spark-df</code></td>
+</tr>
+<tr>
+<td>Azure Synapse (Experimental)</td>
+<td><code>soda-core-sqlserver</code></td>
+</tr>
+<tr>
+<td>ClickHouse (Experimental)</td>
+<td><code>soda-core-mysql</code></td>
+</tr>
+<tr>
+<td>Dask and Pandas (Experimental)</td>
+<td><code>soda-core-pandas-dask</code></td>
+</tr>
+<tr>
+<td>Databricks</td>
+<td><code>soda-core-spark[databricks]</code></td>
+</tr>
+<tr>
+<td>Denodo (Experimental)</td>
+<td><code>soda-core-denodo</code></td>
+</tr>
+<tr>
+<td>Dremio</td>
+<td><code>soda-core-dremio</code></td>
+</tr>
+<tr>
+<td>DuckDB (Experimental)</td>
+<td><code>soda-core-duckdb</code></td>
+</tr>
+<tr>
+<td>GCP Big Query</td>
+<td><code>soda-core-bigquery</code></td>
+</tr>
+<tr>
+<td>IBM DB2</td>
+<td><code>soda-core-db2</code></td>
+</tr>
+<tr>
+<td>Local file</td>
+<td>Use Dask.</td>
+</tr>
+<tr>
+<td>MS SQL Server</td>
+<td><code>soda-core-sqlserver</code></td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td><code>soda-core-mysql</code></td>
+</tr>
+<tr>
+<td>OracleDB</td>
+<td><code>soda-core-oracle</code></td>
+</tr>
+<tr>
+<td>PostgreSQL</td>
+<td><code>soda-core-postgres</code></td>
+</tr>
+<tr>
+<td>Snowflake</td>
+<td><code>soda-core-snowflake</code></td>
+</tr>
+<tr>
+<td>Trino</td>
+<td><code>soda-core-trino</code></td>
+</tr>
+<tr>
+<td>Vertica (Experimental)</td>
+<td><code>soda-core-vertica</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+
+To deactivate the virtual environment, use the following command:
+```shell
+deactivate
+```
+
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
+1. Ensure that you have the following prerequisites installed in your environment.
+* Python 3.8 or greater 
+* Pip 21.0 or greater
+2. Best practice dictates that you install Soda using a virtual environment. In Terminal, create a virtual environment using the commands below. Depending on your version of Python, you may need to replace `python` with `python3` in the first command. Refer to the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activate-script" target="_blank">virtualenv documentation</a> for activating a Windows script.
+```shell
+python -m venv .venv
+.venv\Scripts\activate
+```
+3. Upgrade pip inside your new virtual environment.
+```shell
+pip install --upgrade pip
+```
+4. Execute the following command, replacing `soda-core-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
+```shell
+pip install soda-core-postgres
+```
+<details>
+    <summary style="color:#00BC7E">Soda packages</summary>
+<table>
+<thead>
+<tr>
+<th>Data source</th>
+<th>Install package</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amazon Athena</td>
+<td><code>soda-core-athena</code></td>
+</tr>
+<tr>
+<td>Amazon Redshift</td>
+<td><code>soda-core-redshift</code></td>
+</tr>
+<tr>
+<td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-core/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
+<td><code>soda-core-spark-df</code></td>
+</tr>
+<tr>
+<td>Azure Synapse (Experimental)</td>
+<td><code>soda-core-sqlserver</code></td>
+</tr>
+<tr>
+<td>ClickHouse (Experimental)</td>
+<td><code>soda-core-mysql</code></td>
+</tr>
+<tr>
+<td>Dask and Pandas (Experimental)</td>
+<td><code>soda-core-pandas-dask</code></td>
+</tr>
+<tr>
+<td>Databricks</td>
+<td><code>soda-core-spark[databricks]</code></td>
+</tr>
+<tr>
+<td>Denodo (Experimental)</td>
+<td><code>soda-core-denodo</code></td>
+</tr>
+<tr>
+<td>Dremio</td>
+<td><code>soda-core-dremio</code></td>
+</tr>
+<tr>
+<td>DuckDB (Experimental)</td>
+<td><code>soda-core-duckdb</code></td>
+</tr>
+<tr>
+<td>GCP Big Query</td>
+<td><code>soda-core-bigquery</code></td>
+</tr>
+<tr>
+<td>IBM DB2</td>
+<td><code>soda-core-db2</code></td>
+</tr>
+<tr>
+<td>Local file</td>
+<td>Use Dask.</td>
+</tr>
+<tr>
+<td>MS SQL Server</td>
+<td><code>soda-core-sqlserver</code></td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td><code>soda-core-mysql</code></td>
+</tr>
+<tr>
+<td>OracleDB</td>
+<td><code>soda-core-oracle</code></td>
+</tr>
+<tr>
+<td>PostgreSQL</td>
+<td><code>soda-core-postgres</code></td>
+</tr>
+<tr>
+<td>Snowflake</td>
+<td><code>soda-core-snowflake</code></td>
+</tr>
+<tr>
+<td>Trino</td>
+<td><code>soda-core-trino</code></td>
+</tr>
+<tr>
+<td>Vertica (Experimental)</td>
+<td><code>soda-core-vertica</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+
+To deactivate the virtual environment, use the following command:
+```shell
+deactivate
+```
+
+Refer to the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activate-script" target="_blank">virtualenv documentation</a> for deactivating a Windows script.
+
+  </div>
+  </div>
+</div>
 
 <br />
 

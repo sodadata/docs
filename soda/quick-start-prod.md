@@ -11,14 +11,18 @@ parent: Get started
 
 Use this guide to install and set up Soda to test the quality of your data in your Airflow pipeline. Automatically catch data quality issues after ingestion or transformation and get alerts about issues and prevent negative downstream impact.
 
-1. Learn the basics of Soda in [two minutes](#soda-basics).
-2. [Get context](#about-this-guide) for this guide.
-3. [Install Soda from the command-line](#install-soda-from-the-command-line).
-4. [Connect Soda](#connect-soda-to-a-data-source-and-a-platform-account) to your data source and platform account.
-5. [Write checks](#write-checks-for-data-quality) for data quality.
-6. Set up [Slack integration and notification rules](#set-up-slack-integration-and-notification-rules).
-7. Configure [Airflow Operator](#configure-airflow-operator-in-the-right-places) in the right places.
-8. Run your Airflow pipeline and [examine scan results](#run-your-airflow-pipeline-and-examine-scan-results).
+**[01](#soda-basics)** Learn the basics of Soda<br />
+**[02](#about-this-guide)** Get context for this guide<br />
+**[03](#install-soda-from-the-command-line)** Install Soda from the command-line<br />
+**[04](#connect-soda-to-a-data-source-and-platform-account)** Connect Soda to a data source and platform account<br />
+**[05](#write-checks-for-data-quality)** Write checks for data quality<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[a](#transformation-checks)** Transformation checks<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[b](#ingestion-checks)** Ingestion checks<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[c](#pre-load-checks)** Pre-load checks<br />
+**[06](#run-a-scan)** Run a scan locally<br />
+**[07](#set-up-slack-integration-and-notification-rules)** Set up Slack integration and notification rules<br />
+**[08](#create-an-airflow-dag)** Create an Airflow DAG <br />
+**[09](#run-your-airflow-pipeline-and-examine-scan-results)** Run the pipeline and examine th results <br />
 <br />
 
 
@@ -30,9 +34,9 @@ Use this guide to install and set up Soda to test the quality of your data in yo
 
 The instructions below offer Data Engineers an example of how to execute SodaCL checks for data quality on data in an <a href="https://airflow.apache.org/" target="_blank">Apache Airflow</a> pipeline. 
 
-For context, this guide presents an example of a Data Engineer at a small firm who was tasked with building a simple products report of sales by category for <a href="/assets/adventureworks_schema.png" target="_blank">AdventureWorks data</a>. This engineer uses <a href="https://www.getdbt.com/" target="_blank">dbt</a> to build a simple model transformation to gather data, then models to push gathered information to a reporting and visualization tool. The engineer uses Airflow for scheduling and monitoring workflows, including data ingestion and transformation events. 
+For context, this guide presents an example of a Data Engineer at a small firm who was tasked with building a simple products report of sales by category for <a href="/assets/adventureworks_schema.png" target="_blank">AdventureWorks data</a>. This Engineer uses <a href="https://www.getdbt.com/" target="_blank">dbt</a> to build a simple model transformation to gather data, then models to push gathered information to a reporting and visualization tool. The Engineer uses Airflow for scheduling and monitoring workflows, including data ingestion and transformation events. 
 
-The goal in this example is to make sure that after such events, and before pushing information into a reporting tool, they can schedule Soda scans for data quality.  Where the scan results indicate an issue with data quality, Soda notifies the engineer via a notification in Slack so that they can potentially stop the pipeline and investigate and address any issues before the issue causes problems in the report.
+The Engineer's goal in this example is to make sure that after such events, and before pushing information into a reporting tool, they run scans to check the quality of the data.  Where the scan results indicate an issue with data quality, Soda notifies the Engineer via a notification in Slack so that they can potentially stop the pipeline and investigate and address any issues before the issue causes problems in the report.
 
 Borrow from this guide to connect to your own data source, set up scan points in your pipeline, and execute your own relevant tests for data quality.
 
@@ -47,7 +51,7 @@ With Python 3.8 installed, the Engineer creates a virtual environment in Termina
 pip install soda-core-postgres
 ```
 
-Refer to [exhaustive install instructions]({% link soda/quick-start-dev.md %}#install-soda-from-the-command-line), if you wish.
+Refer to [complete install instructions]({% link soda-core/installation.md %}) for all supported data sources, if you wish.
 
 ## Connect Soda to a data source and platform account
 
@@ -76,7 +80,7 @@ soda_cloud:
   api_key_secret:
 ```
 6. In a browser, they navigate to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a free, 45-day trial Soda account.  
-7. In the new account, they navigate to **your avatar** > **Profile**, then access the **API keys** tab and click the plus icon to generate new API keys.
+7. In the new account, they navigate to **avatar** > **Profile**, then access the **API keys** tab and click the plus icon to generate new API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
   * Enter the value for `host` according to the region the Soda platform account uses: `cloud.soda.io` for EU region; `cloud.us.soda.io` for USA region.
@@ -88,11 +92,13 @@ soda test-connection -d adventureworks -c configuration.yml
 
 ## Write checks for data quality
 
-A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). You can create multiple `checks.yml` files to organize your data quality checks and run all, or some of them, at scan time. In this example, the Data Engineer creates multiple checks after ingestion, after transformation, and before pushing the information to a visualization and reporting tool.
+A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). You can create multiple `checks.yml` files to organize your data quality checks and run all, or some of them, at scan time. 
+
+In this example, the Data Engineer creates multiple checks after ingestion, after transformation, and before pushing the information to a visualization and reporting tool.
 
 ### Transformation checks
 
-After building a simple dbt model transformation that creates a new fact table which gathers data about products, product categories, and subcategories [dbt/models/category/fact_product_category.sql], the engineer realizes that some of the products in the dataset do not have an assigned category or subcategory, which means those values would not be included in the report. To mitigate the issue and get a warning when these values are missing, they write the following checks on the `fact_product_category` dataset that the transformation produced.
+After building a simple dbt model transformation that creates a new fact table which gathers data about products, product categories, and subcategories [dbt/models/category/fact_product_category.sql], the Engineer realizes that some of the products in the dataset do not have an assigned category or subcategory, which means those values would not be included in the report. To mitigate the issue and get a warning when these values are missing, they write the following checks on the `fact_product_category` dataset that the transformation produced.
 
 fact_product_category.yml
 {% include code-header.html %}
@@ -244,7 +250,7 @@ checks for fact_internet_sales:
 ```
 
 
-## Checks before loading to reporting tool
+## Pre-load checks
 
 The Engineer then builds category and subcategory sales report models and queries using dbt. [dbt/models/category/report_category_sales.sql] and [dbt/models/category/report_subcategory_sales.sql] The checks files they create to run on the new models contain similiar user-defined checks. Ultimately, the Engineer wants data quality checks to fail if the sales of uncategorized products rises above normal (0.85%), and if the sum of sales orders in the model that prepares the report differs greatly from the sum of raw sales order number.
 
@@ -313,127 +319,8 @@ Learn more about [Setting notification rules]({% link soda-cloud/notif-rules.md 
 
 ## Create an Airflow DAG
 
-1. Configure Airflow PythonOperator.
-```python
-class SodaScanOperator(PythonOperator):
-    def __init__(self,
-                 task_id: str,
-                 dag: DAG,
-                 data_sources: list,
-                 soda_cl_path: str,
-                 variables: dict = None,
-                 airflow_variables: list = None,
-                 airflow_variables_json: list = None,
-                 soda_cloud_api_key: Optional[str] = None,
-                 soda_cloud_api_key_var_name: Optional[str] = None):
-        if variables is None:
-            variables = {}
-        if isinstance(airflow_variables, list):
-            for airflow_variable in airflow_variables:
-                variables[airflow_variable] = Variable.get(airflow_variable)
-        if isinstance(airflow_variables_json, list):
-            for airflow_variable in airflow_variables_json:
-                variables[airflow_variable] = Variable.get(airflow_variable, deserialize_json=True)
-        if not soda_cloud_api_key and soda_cloud_api_key_var_name:
-            soda_cloud_api_key = Variable.get(soda_cloud_api_key_var_name)
-        super().__init__(
-            task_id=task_id,
-            python_callable=SodaAirflow.scan,
-            op_kwargs={
-                'scan_name': f'{dag.dag_id}.{task_id}',
-                'data_sources': data_sources,
-                'soda_cl_path': soda_cl_path,
-                'variables': variables,
-                'soda_cloud_api_key': soda_cloud_api_key
-            },
-            dag=dag
-        )
-class SodaAirflow:
-
-    @staticmethod
-    def scan(datasource_name,
-             data_sources: list,
-             soda_cl_path: str,
-             schedule_name: Optional[str] = None,
-             variables: dict = None,
-             soda_cloud_api_key: str = None):
-        scan = Scan()
-        scan.set_data_source_name('')
-        if data_sources:
-            for data_source_details in data_sources:
-                data_source_properties = data_source_details.copy()
-                data_source_name = data_source_properties.pop('data_source_name')
-                airflow_conn_id = data_source_properties.pop('airflow_conn_id')
-                connection = Variable.get(f'conn.{airflow_conn_id}')
-                scan.add_environment_provided_data_source_connection(
-                    connection=connection,
-                    data_source_name=data_source_name,
-                    data_source_properties=data_source_properties
-                )
-        scan.add_sodacl_yaml_files(soda_cl_path)
-        scan.add_variables(variables)
-        scan.add_soda_cloud_api_key(soda_cloud_api_key)
-        scan.execute()
-        scan.assert_no_error_logs()
-        scan.assert_no_checks_fail()
-```
-2. Create your Airflow DAG. <br />
-```python
-        from airflow import DAG
-        from airflow.models.variable import Variable
-        from airflow.operators.python import PythonVirtualenvOperator
-        from airflow.operators.dummy import DummyOperator
-        from airflow.utils.dates import days_ago
-        from datetime import timedelta
-        import os
-        from airflow.exceptions import AirflowFailException
-default_args = {
-    'owner': 'soda_core',
-    'retries': 1,
-    'retry_delay': timedelta(minutes=5),
-}
-def run_soda_scan():
-    from soda.scan import Scan
-    print("Running Soda Scan ...")
-    config_file = "/Users/path-to-your-config-file/configuration.yml"
-    checks_file = "/Users/path-to-your-checks-file/checks.yml"
-    data_source = "srcdb"
-    scan = Scan()
-    scan.set_verbose()
-    scan.add_configuration_yaml_file(config_file)
-    scan.set_data_source_name(data_source)
-    scan.add_sodacl_yaml_files(checks_file)
-    scan.execute()
-    print(scan.get_logs_text())
-    if scan.has_check_fails():
-         raise ValueError(f"Soda Scan failed with errors!")
-    else:
-        print("Soda scan successful")
-        return 0
-dag = DAG(
-    'soda_core_python_venv_op',
-    default_args=default_args,
-    description='A simple Soda Core scan DAG',
-    schedule_interval=timedelta(days=1),
-    start_date=days_ago(1),
-)
-ingest_data_op = DummyOperator(
-    task_id='ingest_data'
-)
-soda_core_scan_op = PythonVirtualenvOperator(
-    task_id='soda_core_scan_demodata',
-    python_callable=run_soda_scan,
-    requirements=["soda-core-postgres==3.0.0b9"],
-    system_site_packages=False,
-    dag=dag
-)
-publish_data_op = DummyOperator(
-    task_id='publish_data'
-)
-ingest_data_op >> soda_core_scan_op >> publish_data_op
-```
-3. ...
-
+1. Configure an Airflow PythonOperator.
+2. Create your Airflow DAG. 
 
 
 ## Run your Airflow pipeline and examine scan results
@@ -445,7 +332,7 @@ ingest_data_op >> soda_core_scan_op >> publish_data_op
 4. Navigate to your Soda platform account, then click **Checks** to access the **Check Results** page. The results from the scan that Soda performed during the GitHub Action job appear in the results table where you can click each line item to learn more about the results...  <br />
 ![gh-actions-check-results](/assets/images/gh-actions-check-results.png){:width="700px"}
 ...including, for some types of checks, samples of failed rows to help in your investigation of a data quality issue.
-![gh-failed-rows](/assets/images/gh-failed-rows.png){:width="700px"}
+![gh-failed-rows](/assets/images/quick-sip-failed-rows.png){:width="700px"}
 
 
 ✨Well done!✨ You've taken the first step towards a future in which you and your colleagues can prevent data quality issues from having downstream impact. Huzzah!
