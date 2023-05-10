@@ -10,9 +10,9 @@ parent: SodaCL
 
 If you are staring at a blank YAML file wondering what SodaCL checks to write to surface data quality issues, this quick start tutorial is for you. 
 
-![blank-page](/assets/images/blank-page.png){:height="600px" width="600px"}
+![blank-page](/assets/images/blank-page.png){:height="500px" width="500px"}
 
-[Soda Core and SodaCL: In brief](#soda-core-and-sodacl-in-brief) <br />
+[SodaCL: In brief](#sodacl-in-brief) <br />
 [About this tutorial](#about-this-tutorial) <br />
 [Tutorial prerequisites](#tutorial-prerequisites) <br />
 [Row count and cross checks](#row-count-and-cross-checks) <br />
@@ -26,11 +26,11 @@ If you are staring at a blank YAML file wondering what SodaCL checks to write to
 <br />
 
 
-## Soda Core and SodaCL: In brief
+## SodaCL: In brief
 
-**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with Soda Core, Soda’s open-source, command-line tool, you use SodaCL to write checks for data quality, then use Soda Core to scan the data in your data source and execute those checks.
+**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with the Soda platform, you use SodaCL to write checks for data quality, then run a scan of the data in your data source to execute those checks.
 
-After installing Soda Core, you connect Soda Core to your data source (Snowflake, BigQuery, etc.) by defining connection details such as host, username, and password, in a **configuration YAML** file (except SparkDF, which is [special]({% link soda/connect-spark.md %})). Then, you define your Soda Checks for data quality in a **checks YAML** file. 
+After installing Soda, you connect it to your data source (Snowflake, BigQuery, etc.) by defining connection details such as host, username, and password, in a **configuration YAML** file (except SparkDF, which is [special]({% link soda/connect-spark.md %})). Then, you define your Soda checks for data quality in a **checks YAML** file. 
 
 A **Soda Check** is a test that Soda Core performs when it scans a dataset in your data source. When you use Soda Core to run a scan on data in your data source, you reference both the configuration and checks YAML files in the scan command.
 
@@ -39,7 +39,7 @@ A **Soda scan** executes the checks you defined in the checks YAML file and retu
 
 ## About this tutorial
 
-With over 25 built-in SodaCL checks and metrics to choose from, it can be hard to know where to begin. This tutorial offers suggestions for some basic checks you can write to begin surfacing missing, invalid, unexpected data in your datasets. 
+With over <a href="https://docs.soda.io/soda-cl/metrics-and-checks.html#list-of-sodacl-metrics-and-checks" target="_blank">25 built-in SodaCL checks and metrics</a> to choose from, it can be hard to know where to begin. This tutorial offers suggestions for some basic checks you can write to begin surfacing missing, invalid, unexpected data in your datasets. 
 
 All the example checks in this tutorial use placeholder values for dataset and column name identifiers, but you can copy+paste the examples into your own checks YAML file and adjust the details to correspond to your own data.
 
@@ -48,8 +48,7 @@ You do not need to follow the tutorial sequentially.
 
 ## Tutorial prerequisites
 
-* You have completed the Take a sip of Soda quick start guide <br /> OR <br /> you have followed the instructions to [install]({% link soda-core/installation.md %}) and [configure]({% link soda-core/configuration.md %}) Soda Core on your own. 
-* You have installed a code editor such as Sublime or Visual Studio Code.
+* You have completed the [Take a sip of Soda]({% link soda/quick-start-sip.md %}) tutorial <br /> OR <br /> you have followed the instructions to [install]({% link soda-core/installation.md %}), then [configure]({% link soda-core/configuration.md %}) Soda on your own. 
 * You have created a new YAML file in your code editor and named it `checks.yml`.
 * (Optional) You have read the first two sections in [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) as a primer for SodaCL.
 
@@ -155,7 +154,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 
 If your dataset contains a column that stores timestamp information, you can configure a freshness check. This type of check is useful when, for example, you need to validate that the data feeding a weekly report or dashboard is not stale. Timely data is reliable data!
 
-In this example, the check fails if the most-recently added row (in other words, the "youngest" row) in the `timestamp_column_name` column is more than 24 hours old.
+In this example, the check fails if the most-recently added row (in other words, the youngest row) in the `timestamp_column_name` column is more than 24 hours old.
 {% include code-header.html %}
 ```yaml
 # Check that data in dataset is less than one day old
@@ -192,7 +191,7 @@ The following example fails if, during a scan, Soda discovers that more than 5% 
 ```yaml
 # Check an email column that all values are in email format
 checks for dataset_name:
-  - invalid_percent(email_column_name) > 5:
+  - invalid_percent(email_column_name) > 5%:
       valid format: email
 ```
 
@@ -254,7 +253,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 
 To eliminate the frustration of the silently evolving dataset schema, use schema checks with alert configurations to notify you when column changes occur.
 
-If you have set up a Soda Cloud account and connected it to Soda Core, you can use a catch-all schema check that results in a warning whenever a Soda scan reveals that a column has been added, removed, moved within the context of an index, or changed data type relative to the results of the previous scan. 
+If you have set up a Soda platform account, you can use a catch-all schema check that results in a warning whenever a Soda scan reveals that a column has been added, removed, moved within the context of an index, or changed data type relative to the results of the previous scan. 
 {% include code-header.html %}
 ```yaml
 # Requires a Soda Cloud account
@@ -331,7 +330,7 @@ checks for corp_value:
 
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Read about the [Optional configurations]({% link soda-cl/optional-config.md %}) you can apply to SodaCL checks.
-* Connect Soda Core to Soda Cloud to vastly enrich the data quality monitoring experience.
+* [Take a sip of Soda]({% link soda/quick-start-sip.md %}) to run a simple data quality scan on example data.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
