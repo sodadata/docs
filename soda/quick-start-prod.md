@@ -6,23 +6,21 @@ parent: Get started
 ---
 
 # Test data quality in a data pipeline
-<!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use this guide to install and set up Soda to test the quality of your data in your Airflow pipeline. Automatically catch data quality issues after ingestion or transformation and get alerts about issues and prevent negative downstream impact.
+Use this guide to install and set up Soda to test the quality of your data in your Airflow pipeline. Automatically catch data quality issues after ingestion or transformation to prevent negative downstream impact.
 
 **[01](#soda-basics)** Learn the basics of Soda<br />
 **[02](#about-this-guide)** Get context for this guide<br />
 **[03](#install-soda-from-the-command-line)** Install Soda from the command-line<br />
 **[04](#connect-soda-to-a-data-source-and-platform-account)** Connect Soda to a data source and platform account<br />
 **[05](#write-checks-for-data-quality)** Write checks for data quality<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[a](#transformation-checks)** Transformation checks<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[b](#ingestion-checks)** Ingestion checks<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[c](#pre-load-checks)** Pre-load checks<br />
-**[06](#run-a-scan)** Run a scan locally<br />
-**[07](#set-up-slack-integration-and-notification-rules)** Set up Slack integration and notification rules<br />
-**[08](#create-an-airflow-dag)** Create an Airflow DAG <br />
-**[09](#run-your-airflow-pipeline-and-examine-scan-results)** Run the pipeline and examine th results <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[a](#transform-checks)** Transform checks<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[b](#ingest-checks)** Ingest checks<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[c](#reports-checks)** Reports checks<br />
+**[06](#create-a-dag-and-run-a-scan)** Create a DAG and run a Soda scan<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[a](#run-soda-scans-manually)** Run Soda scans manually<br />
+**[07]()** View results and tag datasets <br />
 <br />
 
 
@@ -37,6 +35,8 @@ The instructions below offer Data Engineers an example of how to execute SodaCL 
 For context, this guide presents an example of a Data Engineer at a small firm who was tasked with building a simple products report of sales by category for <a href="/assets/adventureworks_schema.png" target="_blank">AdventureWorks data</a>. This Engineer uses <a href="https://www.getdbt.com/" target="_blank">dbt</a> to build a simple model transformation to gather data, then models to push gathered information to a reporting and visualization tool. The Engineer uses Airflow for scheduling and monitoring workflows, including data ingestion and transformation events. 
 
 The Engineer's goal in this example is to make sure that after such events, and before pushing information into a reporting tool, they run scans to check the quality of the data.  Where the scan results indicate an issue with data quality, Soda notifies the Engineer via a notification in Slack so that they can potentially stop the pipeline and investigate and address any issues before the issue causes problems in the report.
+
+Access the <a href="https://github.com/sodadata/sip-of-soda/tree/main/test-in-pipeline/soda" target="_blank">sodadata/sip-of-soda/test-data-in-pipeline</a> folder to review the dbt models and Soda checks that the Data Engineer uses.
 
 Borrow from this guide to connect to your own data source, set up scan points in your pipeline, and execute your own relevant tests for data quality.
 
@@ -61,31 +61,31 @@ This guide also includes instructions for how to connect to a Soda platform acco
 
 1. In the directory in which they work with their dbt models, the Data Engineer creates a `soda` directory to contain the Soda configuration and check YAML files.
 2. In the new directory, they create a new file called `configuration.yml`. 
-3. In the `configuration.yml` file, they add the data source connection configuration for the PostgreSQL data source that contains the AdventureWorks data. The example below is the connection configuration for a PostgreSQL data source. See a complete list of supported [data sources]({% link soda/connect-athena.md %}).
+3. In the `configuration.yml` file, they add the data source connection configuration for the PostgreSQL data source that contains the AdventureWorks data. The example below is the connection configuration for a PostgreSQL data source. <br />Access the <a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/configuration.example.yml" target="_blank">example file</a>. <br />See a complete list of supported [data sources]({% link soda/connect-athena.md %}).
 ```yaml
-data_source adventureworks:
+data_source soda-demo:
   type: postgres
   connection:
-    host: localhost
-    username: postgres
-    password: secret
+        host: localhost
+        username: postgres
+        password: secret
   database: postgres
   schema: public
 ```
-5. Next, they add the following configuration that connects Soda to their new platform account, leaving the values blank for a moment. The syntax for `soda_cloud` must be at the root level of the YAML file, *not* nested under the `data_source` syntax.
+4. Next, they add the following configuration that connects Soda to their new platform account, leaving the values blank for a moment. The syntax for `soda_cloud` must be at the root level of the YAML file, *not* nested under the `data_source` syntax.
 ```yaml
 soda_cloud:
   host: 
   api_key_id:
   api_key_secret:
 ```
-6. In a browser, they navigate to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a free, 45-day trial Soda account.  
-7. In the new account, they navigate to **avatar** > **Profile**, then access the **API keys** tab and click the plus icon to generate new API keys.
+5. In a browser, they navigate to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a free, 45-day trial Soda account.  
+6. In the new account, they navigate to **avatar** > **Profile**, then access the **API keys** tab and click the plus icon to generate new API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
   * Enter the value for `host` according to the region the Soda platform account uses: `cloud.soda.io` for EU region; `cloud.us.soda.io` for USA region.
-8. They save the `configuration.yml` file and close the API modal in the Soda account.
-9. In Terminal, they run the following command to test Soda's connection to the data source.<br />
+7. They save the `configuration.yml` file and close the API modal in the Soda account.
+8. In Terminal, they run the following command to test Soda's connection to the data source.<br />
 ```shell
 soda test-connection -d adventureworks -c configuration.yml
 ```
@@ -96,11 +96,13 @@ A check is a test that Soda executes when it scans a dataset in your data source
 
 In this example, the Data Engineer creates multiple checks after ingestion, after transformation, and before pushing the information to a visualization and reporting tool.
 
-### Transformation checks
+### Transform checks
 
-After building a simple dbt model transformation that creates a new fact table which gathers data about products, product categories, and subcategories [dbt/models/category/fact_product_category.sql], the Engineer realizes that some of the products in the dataset do not have an assigned category or subcategory, which means those values would not be included in the report. To mitigate the issue and get a warning when these values are missing, they write the following checks on the `fact_product_category` dataset that the transformation produced.
+After building a simple dbt model transformation that creates a new fact table which gathers data about products, product categories, and subcategories (<a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/dbt%20models/transform/fact_product_category.sql" target="_blank">see dbt model</a>), the Engineer realizes that some of the products in the dataset do not have an assigned category or subcategory, which means those values would erroneously be excluded from the report. 
 
-fact_product_category.yml
+To mitigate the issue and get a warning when these values are missing, they create a new checks YAML file and write the following checks for the `fact_product_category` dataset that the transformation produced.
+
+<a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/transform-checks/fact_product_category.yml" target="_blank">fact_product_category.yml</a>
 {% include code-header.html %}
 ```yaml
 checks for fact_product_category:
@@ -118,11 +120,11 @@ checks for fact_product_category:
 ```
 
 
-### Ingestion checks
+### Ingest checks
 
-Because the Enginner does not have the ability to fix upstream data, they also write checks to apply to each dataset they use in the transformation, *after* the data is ingested, but before transforming.
+Because the Engineer does not have the ability or access to fix upstream data, they create another checks YAML file write checks to apply to each dataset they use in the transformation, *after* the data is ingested, but before it is transformed.
 
-dim_product.yml
+<a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/ingest-checks/dim_product.yml" target="_blank">dim_product.yml</a>
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
@@ -151,7 +153,7 @@ checks for dim_product:
       name: Products are stable
 ```
 
-dim_product_category.yml
+<a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/ingest-checks/dim_product_category.yml" target="_blank">dim_product_category.yml</a>
 {% include code-header.html %}
 ```yaml
 checks for dim_product_category:
@@ -178,7 +180,7 @@ checks for dim_product_category:
       name: Categories are stable
 ```
 
-dim_product_subcategory.yml
+<a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/ingest-checks/dim_product_subcategory.yml" target="_blank">dim_product_subcategory.yml</a>
 {% include code-header.html %}
 ```yaml
 checks for dim_product_subcategory:
@@ -205,7 +207,7 @@ checks for dim_product_subcategory:
       name: Subcategories are stable
 ```
 
-fact_internet_sales.yml
+<a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/ingest-checks/fact_internet_sales.yml" target="_blank">fact_internet_sales.yml</a>
 {% include code-header.html %}
 ```yaml
 checks for fact_internet_sales:
@@ -250,12 +252,14 @@ checks for fact_internet_sales:
 ```
 
 
-## Pre-load checks
+## Reports checks
 
-The Engineer then builds category and subcategory sales report models and queries using dbt. [dbt/models/category/report_category_sales.sql] and [dbt/models/category/report_subcategory_sales.sql] The checks files they create to run on the new models contain similiar user-defined checks. Ultimately, the Engineer wants data quality checks to fail if the sales of uncategorized products rises above normal (0.85%), and if the sum of sales orders in the model that prepares the report differs greatly from the sum of raw sales order number.
+Finally, the Engineer builds category and subcategory sales report models <a href="https://github.com/sodadata/sip-of-soda/tree/main/test-in-pipeline/dbt%20models/report" target="_blank"> sales report models</a> using dbt.
+
+The checks files they create to run on the new transform models contain similiar user-defined checks. Ultimately, the Engineer wants data quality checks to fail if the sales of uncategorized products rises above normal (0.85%), and if the sum of sales orders in the model that prepares the report differs greatly from the sum of raw sales order number.
 
 
-soda/checks/report/report_category_sales.yml
+<a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/reports-checks/report_category_sales.yml" target="_blank">report_category_sales.yml</a>
 {% include code-header.html %}
 ```yaml
 checks for report_category_sales:
@@ -274,7 +278,7 @@ checks for report_category_sales:
         - (SELECT SUM(report_category_sales.sales_total) FROM report_category_sales) as numeric) AS sales_diff
 ```
  
-soda/checks/report/report_subcategory_sales.yml
+<a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/reports-checks/report_subcategory_sales.yml" target="_blank">report_subcategory_sales.yml</a>
 {% include code-header.html %}
 ```yaml
 checks for report_subcategory_sales:
@@ -294,48 +298,50 @@ checks for report_subcategory_sales:
 ```
 
 
-## Run a scan
+## Create a DAG and run a scan 
 
-Then they run a local scan of the data to validate that the check yield expected results.
-{% include code-header.html %}
+Create an Airflow DAG and run a scan locally.
+
+
+### Run Soda scans manually
+
+Without using an Airflow DAG, the Engineer can use Soda locally to run scans for data quality using the checks YAML files they created.
+
+1. They use the `soda scan` command to run the ingest checks on the raw data, pointing Soda to the checks YAML files in the `ingest-checks` folder. 
 ```shell
-soda scan -d adventureworks -c configuration.yml fact_product_category.yml dim_product.yml dim_product_category.yml dim_product_subcategory.yml fact_internet_sales.yml report_category_sales.yml report_subcategory_sales.yml
+soda scan -d soda_demo -c soda/configuration.yml soda/ingest-checks/
 ```
+2. If the ingest check results pass, they run dbt to create the new `fact_product_category` dataset. 
+```shell
+dbt run --project-dir dbt --select transform
+```
+3. Accordingly, they run a scan on the new dataset, pointing Soda to the checks YAML file in the `transform-checks` folder. 
+```shell
+soda scan -d soda_demo -c soda/configuration.yml soda/transform-checks/
+```
+4. If the transform check results pass, they run dbt to create the reports. 
+```shell
+dbt run --project-dir dbt --select report
+```
+5. Lastely, they run a scan on the reports data, pointing Soda to the checks YAML file in the `reports-checks` folder. 
+```shell
+soda scan -d soda_demo -c soda/configuration.yml soda/resports-checks/
+```
+6. If the reports check results pass, the data is reliable enough to push to the reporting or visualization tool for consumers.
 
+Learn more about [running Soda scans]({% link soda-core/scan-core.md %}).
 
+## View results and tag datasets
 
-## Set up Slack integration, notification rules, and tags
-
-Use this integration to enable Soda to send alert notifications to a Slack channel to notify your team of warn and fail check results. If your team does not use Slack, you can skip this step and Soda sends alert notifications via email.
-
-1. As an [Admin]({% link soda-cloud/roles-and-rights.md %}), login to your Soda platform account and navigate to **your avatar** > **Organization Settings**, then navigate to the **Integrations** tab and click the **+** icon to add a new integration.
-2. Follow the guided steps to authorize Soda to connect to your Slack workspace. If necessary, contact your organization's Slack Administrator to approve the integration with Soda. 
-* **Configuration** tab: select the public channels to which Soda can post messages; Soda cannot post to private channels.
-* **Scope** tab: select the Soda features, both alert notifications and incidents, which can access the Slack integration. 
-3. To dictate where Soda should send alert notifications for checks that fail, create a new notification rule. Navigate to **your avatar** > **Notification Rules**, then click **New Notification Rule**. Follow the guided steps to complete the new rule directly Soda to send check results that fail to a specific channel in your Slack workspace.
-
-Learn more about [Integrating with Slack]({% link soda/integrate-slack.md %}).<br />
-Learn more about [Setting notification rules]({% link soda-cloud/notif-rules.md %}).
-
-## Create an Airflow DAG
-
-1. Configure an Airflow PythonOperator.
-2. Create your Airflow DAG. 
-
-
-## Run your Airflow pipeline and examine scan results
-
-1. ...
-2. ...
-3. Access your Slack workspace, then navigate to the channel to which you directed Soda to send fail notifications in the **Notification Rule** you created. Notice the alert notification of the check that purposely failed during the Soda scan. <br />
-![slack-alert](/assets/images/slack-alert.png){:width="500px"}
-4. Navigate to your Soda platform account, then click **Checks** to access the **Check Results** page. The results from the scan that Soda performed during the GitHub Action job appear in the results table where you can click each line item to learn more about the results...  <br />
+1. In their Soda platform account, the Engineer clicks **Checks** to access the **Check Results** page. The results from the scan that Soda performed during the scan appear in the results table where they can click each line item to learn more about the results, as in the example below. <br />
 ![gh-actions-check-results](/assets/images/gh-actions-check-results.png){:width="700px"}
-...including, for some types of checks, samples of failed rows to help in your investigation of a data quality issue.
-![gh-failed-rows](/assets/images/quick-sip-failed-rows.png){:width="700px"}
+2. To more easily retrieve Soda scan results by dbt model, the Engineer navigates to **Datasets**, then clicks the stacked dots at the right of the `dim_product` dataset and selects **Edit Dataset**.
+3. In the **Tags** field, they add a value for `fact_product_category`, the dbt model that uses this dataset, and a tag to indicate the kind of data that Soda is scanning, `raw`, `transformed` or `reporting`, then saves. They repeat these steps to add tags to all the datasets in their Soda platform account.
+4. Navigating again to the **Datasets** page, they use the filters to display datasets according to **Tags** and **Arrival Time** to narrow the search for the most recent quality checks that fail or warn.
+5. After filtering the datasets according to the tages, the Engineer also adds a bookmark in their browser to create an improvised dashboard to revisit often.
+6. If you were in the Data Engineer's shoes, you may further wish to set up [Slack notifications]({% link soda/quick-start-dev.md %}#set-up-slack-integration-and-notification-rules) for any checks that warn or fail during scans.
 
-
-✨Well done!✨ You've taken the first step towards a future in which you and your colleagues can prevent data quality issues from having downstream impact. Huzzah!
+✨Hey, hey!✨ Now you know what it's like to add data quality checks to your production pipeline. Huzzah!
 
 
 ## Now what?
@@ -354,7 +360,7 @@ Learn more about [Setting notification rules]({% link soda-cloud/notif-rules.md 
                 <div>
                     <img src="/assets/images/icons/icon-new@2x.png" width="54" height="40">
                     <h2>Sip more Soda</h2>
-                    <a href="/soda/integrate-webhooks.html" target="_blank">Integrate with your tools</a>
+                    <a href="/soda/quick-start-dev.html#set-up-slack-integration-and-notification-rules" target="_blank">Set up Slack alerts</a>
                     <a href="/soda-cl/check-attributes.html">Add check attributes</a>
                     <a href="/soda-cloud/failed-rows.html">Examine failed row samples</a>
                     <a href="/api-docs/reporting-api-v1.html">Report on data health</a>
@@ -362,8 +368,9 @@ Learn more about [Setting notification rules]({% link soda-cloud/notif-rules.md 
                 <div>
                     <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
                     <h2>Choose your adventure</h2>
+                    <a href="/soda-core/configuration.html">Connect your own data source</a>
+                    <a href="/soda/quick-start-sip.html">Install and scan locally</a>
                     <a href="/soda/quick-start-dev.html">Test data during development</a>
-                    <a href="/soda/quick-start-end-user.html">Enable end-user testing</a>
                     <a href="/soda/integrate-alation.html">Integrate with Alation</a>
                 </div>
             </div>

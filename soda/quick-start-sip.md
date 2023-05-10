@@ -9,6 +9,7 @@ redirect_from:
 ---
 
 # Take a sip of Soda
+<!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
 Is Soda the data quality testing solution you've been looking for? 🥤Take a sip and see! <br />
