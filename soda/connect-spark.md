@@ -22,7 +22,7 @@ parent: Connect a data source
 
 ## Spark packages
 
-There are several Soda Core packages for Spark.
+There are several Soda Core install packages for Spark.
 
 | Package | Description | 
 | ------- | ----- |

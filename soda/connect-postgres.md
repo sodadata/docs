@@ -11,6 +11,9 @@ parent: Connect a data source
 {% include connect-to-intro.md %}
 
 ## Configuration
+
+Install package: `soda-core-postgres`
+
 {% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
