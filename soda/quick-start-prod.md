@@ -8,7 +8,9 @@ parent: Get started
 # Test data quality in a data pipeline
 *Last modified on {% last_modified_at %}*
 
-Use this guide to install and set up Soda to test the quality of your data in your Airflow pipeline. Automatically catch data quality issues after ingestion or transformation to prevent negative downstream impact.
+Use this guide as an example for how to set up and use Soda to test the quality of your data in an Airflow pipeline. Automatically catch data quality issues after ingestion or transformation to prevent negative downstream impact.
+
+![data-pipeline](/assets/images/data-pipeline.png){:width="700px"}
 
 **[01](#soda-basics)** Learn the basics of Soda<br />
 **[02](#about-this-guide)** Get context for this guide<br />
@@ -96,11 +98,15 @@ A check is a test that Soda executes when it scans a dataset in your data source
 
 In this example, the Data Engineer creates multiple checks after ingestion, after transformation, and before pushing the information to a visualization and reporting tool.
 
+![data-pipeline](/assets/images/data-pipeline.png){:width="700px"}
+
 ### Transform checks
 
 After building a simple dbt model transformation that creates a new fact table which gathers data about products, product categories, and subcategories (<a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/dbt%20models/transform/fact_product_category.sql" target="_blank">see dbt model</a>), the Engineer realizes that some of the products in the dataset do not have an assigned category or subcategory, which means those values would erroneously be excluded from the report. 
 
-To mitigate the issue and get a warning when these values are missing, they create a new checks YAML file and write the following checks for the `fact_product_category` dataset that the transformation produced.
+To mitigate the issue and get a warning when these values are missing, they create a new checks YAML file and write the following checks to execute after the transformation produces the `fact_product_category` dataset.
+
+![transform](/assets/images/transform.png){:width="250px"}
 
 <a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/transform-checks/fact_product_category.yml" target="_blank">fact_product_category.yml</a>
 {% include code-header.html %}
@@ -123,6 +129,8 @@ checks for fact_product_category:
 ### Ingest checks
 
 Because the Engineer does not have the ability or access to fix upstream data, they create another checks YAML file write checks to apply to each dataset they use in the transformation, *after* the data is ingested, but before it is transformed.
+
+![ingest](/assets/images/ingest.png){:width="200px"}
 
 <a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/ingest-checks/dim_product.yml" target="_blank">dim_product.yml</a>
 {% include code-header.html %}
@@ -257,6 +265,8 @@ checks for fact_internet_sales:
 Finally, the Engineer builds category and subcategory sales report models <a href="https://github.com/sodadata/sip-of-soda/tree/main/test-in-pipeline/dbt%20models/report" target="_blank"> sales report models</a> using dbt.
 
 The checks files they create to run on the new transform models contain similiar user-defined checks. Ultimately, the Engineer wants data quality checks to fail if the sales of uncategorized products rises above normal (0.85%), and if the sum of sales orders in the model that prepares the report differs greatly from the sum of raw sales order number.
+
+![reports](/assets/images/reports.png){:width="275px"}
 
 
 <a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/reports-checks/report_category_sales.yml" target="_blank">report_category_sales.yml</a>
