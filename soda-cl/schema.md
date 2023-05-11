@@ -224,8 +224,36 @@ checks for CUSTOMERS [daily]:
 
 ## Expect one check result
 
-{% include expect-one-result.md %}
+Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more severe, failed check result.
 
+Using the following example, Soda Core, during a scan, discovers that the data in the dataset triggers both alerts, but the check result at the bottom is `Oops! 1 failures`. Nonetheless, the results in the `Scan summary` section of the CLI output still display both the warn and fail alerts as having been triggered.
+{% include code-header.html %}
+```yaml
+checks for dim_product:
+  - schema:
+      name: Required columns all present
+      warn:
+        when required column missing: [weight_unit_measure_code, product_subcategory_key, made_up_column]
+      fail:
+        when required column missing: [pretend_column]
+```
+```shell
+Soda Core 3.0.xx
+Scan summary:
+1/1 check FAILED: 
+    dim_product in adventureworks
+      Required columns all present [FAILED]
+        fail_missing_column_names = [pretend_column]
+        warn_missing_column_names = [made_up_column]
+        schema_measured = [product_key integer, product_alternate_key character varying ...]
+Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
+Sending results to Soda Cloud
+Soda Cloud Trace: 7845***
+```
+
+The output in Soda Cloud displays the output of all the alert states during the scan.
+
+![schema-results](/assets/images/schema-results.png){:height="700px" width="700px"} 
 
 ## Go further
 
