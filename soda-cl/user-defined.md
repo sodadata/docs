@@ -9,7 +9,7 @@ parent: SodaCL
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-If the built-in set of [metrics and checks]({% link soda-cl/metrics-and-checks.md %}) that SodaCL offers do not quite give you the information you need from a scan, you can define your own metrics to customize your checks. User-defined checks essentially enable you to create common-table expressions or SQL queries that Soda Core runs during a scan.
+If the built-in set of [metrics and checks]({% link soda-cl/metrics-and-checks.md %}) that SodaCL offers do not quite give you the information you need from a scan, you can define your own metrics to customize your checks. User-defined checks essentially enable you to create common-table expressions (CTE) or SQL queries that Soda Core runs during a scan, or you can reference a file that contains your CTE or SQL query.
 
 [Define user-defined checks](#define-user-defined-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />
@@ -57,6 +57,18 @@ checks for dim_product:
 | query key | `product_stock query` |
 | query value | `SELECT COUNT(safety_stock_level - days_to_manufacture) FROM dim_product` |
 
+<br />
+
+Instead of embedding an expression or a query directly in the check definition, you can direct Soda to use a query or expression you have defined in a different file. The example check below follow the same pattern as the metrics that use CTE or SQL queries, but this nested key identifies the **file path** of your query file.
+* The name you provide for a custom metric must *not* contain spaces.
+* Though you specify the dataset against which to run the query in the SQL query, you must also provide the dataset identifier in the `checks for` section header. Without the dataset identifier, Soda Core cannot send the check results to Soda Cloud.
+
+{% include code-header.html %}
+```yaml
+checks for product_desc:
+  - avg_surface between 1068 and 1069:
+      avg_surface sql_file: "filepath/filename.sql"
+```
 
 <br />
 
