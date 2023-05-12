@@ -15,6 +15,8 @@ redirect_from:
 Is Soda the data quality testing solution you've been looking for? 🥤Take a sip and see! <br />
 Use the example data in this tutorial to set up and run a simple Soda scan for data quality.
 
+![sip-path](/assets/images/sip-path.png){:width="700px"}
+
 **[01](#soda-basics)** Learn the basics of Soda | 2 minutes<br />
 **[02](#tutorial-prerequisites)** Check prerequisites | 1 minute<br />
 **[03](#install-soda-from-the-command-line)** Install Soda | 10 minutes<br />
