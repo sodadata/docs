@@ -52,32 +52,17 @@ cd soda_sip
 ```shell
 python3 -m venv .venv
 ```
-2. Activate the virtual environment, then update the version of pip.
+2. Activate the virtual environment.
 ```shell
 source .venv/bin/activate
-```
-```shell
-pip install --upgrade pip
 ```
 3. Execute the following command to install the Soda package for PostgreSQL in your virtual environment. The example data is in a PostgreSQL data source, but there are 15+ data sources with which you can connect your own data beyond this tutorial.
 ```shell
 pip install soda-core-postgres
 ```
-4. Validate the installation using the `soda` command. The command-line output is similar to the following.
+4. Validate the installation.
     ```shell
-    Usage: soda [OPTIONS] COMMAND [ARGS]...
-
-      Soda Core CLI version 3.0.XX
-
-    Options:
-      --version  Show the version and exit.
-      --help     Show this message and exit.
-
-    Commands:
-      ingest           Ingests test results from a different tool
-      scan             Runs a scan
-      test-connection  Tests a connection
-      update-dro       Updates contents of a distribution reference file
+soda --help
     ```
 
 To exit the virtual environment when you are done with this tutorial, use the command `deactivate`.
@@ -86,16 +71,20 @@ To exit the virtual environment when you are done with this tutorial, use the co
 ## Build an example data source
 
 To enable you to take a first sip of Soda, you can use Docker to quickly build an example PostgreSQL data source against which you can run scans for data quality. The example data source contains data for AdventureWorks, an imaginary online e-commerce organization. 
+* Access the <a href="https://github.com/sodadata/sip-of-soda" target="_blank">`sodadata/sip-of-soda`</a> repository in GitHub.
+* Access a quick view of the <a href="/assets/adventureworks_schema.png" target="_blank">AdventureWorks schema</a>.
 
-Access a quick view of the <a href="/assets/adventureworks_schema.png" target="_blank">AdventureWorks schema</a>.
-
-1. Use GitHub to clone the <a href="https://github.com/sodadata/sip-of-soda" target="_blank">`sodadata/sip-of-soda`</a> repo locally. Use Terminal to navigate to the newly-cloned repo in your local environment.
-2. If it is not already running in your local environment, start Docker.
-3. In Terminal, run the following command to set up the prepared example data source.
+With Docker running, run the following command in Termainal to set up the prepared example data source.
+{% include code-header.html %}
 ```shell
-docker-compose up
+docker run \
+ --name sip-of-soda \
+ -p 5432:5432 \
+ -e POSTGRES_PASSWORD=secret \
+ sodadata/soda-adventureworks
 ```
-4. When the output reads `data system is ready to accept connections`, your data source is set up and you are ready to proceed.
+
+When the output reads `data system is ready to accept connections`, your data source is set up and you are ready to proceed.
 
 <details>
   <summary style="color:#00BC7E">Troubleshoot</summary>
@@ -107,7 +96,7 @@ docker-compose up
   <ol>
   <li>Execute the command <code>lsof -i tcp:5432</code> to print a list of PIDs using the port. </li>
   <li>Use the PID value to run the following command to free up the port: <code>kill -9 your_PID_value</code>. You many need to prepend the commands with <code>sudo </code>. </li>
-  <li>Run <code>docker-compose up</code> again.</li>
+  <li>Run the <code>docker run</code> command again.</li>
   </ol>
 </details>
 

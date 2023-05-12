@@ -34,11 +34,11 @@ Use this guide as an example for how to set up and use Soda to test the quality 
 
 The instructions below offer Data Engineers an example of how to execute SodaCL checks for data quality on data in an <a href="https://airflow.apache.org/" target="_blank">Apache Airflow</a> pipeline. 
 
-For context, this guide presents an example of a Data Engineer at a small firm who was tasked with building a simple products report of sales by category for <a href="/assets/adventureworks_schema.png" target="_blank">AdventureWorks data</a>. This Engineer uses <a href="https://www.getdbt.com/" target="_blank">dbt</a> to build a simple model transformation to gather data, then models to push gathered information to a reporting and visualization tool. The Engineer uses Airflow for scheduling and monitoring workflows, including data ingestion and transformation events. 
+For context, this guide presents an example of a Data Engineer at a small firm who was tasked with building a simple products report of sales by category for <a href="/assets/adventureworks_schema.png" target="_blank">AdventureWorks data</a>. This Engineer uses <a href="https://www.getdbt.com/" target="_blank">dbt</a> to build a simple model transformation to gather data, then builds more models to transform and push gathered information to a reporting and visualization tool. The Engineer uses Airflow for scheduling and monitoring workflows, including data ingestion and transformation events. 
 
-The Engineer's goal in this example is to make sure that after such events, and before pushing information into a reporting tool, they run scans to check the quality of the data.  Where the scan results indicate an issue with data quality, Soda notifies the Engineer via a notification in Slack so that they can potentially stop the pipeline and investigate and address any issues before the issue causes problems in the report.
+The Engineer's goal in this example is to make sure that after such events, and before pushing information into a reporting tool, they run scans to check the quality of the data.  Where the scan results indicate an issue with data quality, Soda notifies the Engineer so that they can potentially stop the pipeline and investigate and address any issues before the issue causes problems in the report.
 
-Access the <a href="https://github.com/sodadata/sip-of-soda/tree/main/test-in-pipeline/soda" target="_blank">sodadata/sip-of-soda/test-data-in-pipeline</a> folder to review the dbt models and Soda checks that the Data Engineer uses.
+Access the <a href="https://github.com/sodadata/sip-of-soda/tree/main/test-in-pipeline/soda" target="_blank">sodadata/sip-of-soda/test-data-in-pipeline</a> folder to review the dbt models and Soda checks files that the Data Engineer uses.
 
 Borrow from this guide to connect to your own data source, set up scan points in your pipeline, and execute your own relevant tests for data quality.
 
@@ -96,7 +96,7 @@ soda test-connection -d adventureworks -c configuration.yml
 
 A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). You can create multiple `checks.yml` files to organize your data quality checks and run all, or some of them, at scan time. 
 
-In this example, the Data Engineer creates multiple checks after ingestion, after transformation, and before pushing the information to a visualization and reporting tool.
+In this example, the Data Engineer creates multiple checks after ingestion, after initial transformation, and before pushing the information to a visualization or reporting tool.
 
 ![data-pipeline](/assets/images/data-pipeline.png){:width="700px"}
 
@@ -128,7 +128,9 @@ checks for fact_product_category:
 
 ### Ingest checks
 
-Because the Engineer does not have the ability or access to fix upstream data, they create another checks YAML file write checks to apply to each dataset they use in the transformation, *after* the data is ingested, but before it is transformed.
+Because the Engineer does not have the ability or access to fix upstream data themselves, they create another checks YAML file write checks to apply to each dataset they use in the transformation, *after* the data is ingested, but before it is transformed.
+
+For any checks that fail, the Engineer can notify upstream Data Engineers or Data Product Owners to address the issue of missing categories and subcategories.
 
 ![ingest](/assets/images/ingest.png){:width="200px"}
 
@@ -310,8 +312,8 @@ checks for report_subcategory_sales:
 
 ## Create a DAG and run the workflow 
 
-Create an Airflow DAG and run the workflow locally. <br />
-<a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/dbt%20models/transform/fact_product_category.sql" target="_blank">Access the DAG</a> in the repo.
+The Engineer creates an Airflow DAG and <a href="https://airflow.apache.org/docs/apache-airflow/2.2.3/start/local.html" target="_blank">runs the workflow locally</a>. <br />
+<a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/airflow/model_sales_category.py" target="_blank">Access the DAG</a> in the repo.
 
 ```python
 from airflow import DAG
@@ -456,7 +458,7 @@ Learn more about [running Soda scans]({% link soda-core/scan-core.md %}).
 3. In the **Tags** field, they add a value for `fact_product_category`, the dbt model that uses this dataset, and a tag to indicate the kind of data that Soda is scanning, `raw`, `transformed` or `reporting`, then saves. They repeat these steps to add tags to all the datasets in their Soda platform account.
 4. Navigating again to the **Datasets** page, they use the filters to display datasets according to **Tags** and **Arrival Time** to narrow the search for the most recent quality checks associated with their models which have failed or warned.
 ![datasets-tags](/assets/images/datasets-tags.png){:width="700px"}
-5. After filtering the datasets according to the tags, the Engineer also adds a bookmark in their browser to create an improvised dashboard to revisit often.
+5. After filtering the datasets according to the tags, the Engineer also adds a bookmark in their browser to create an improvised dashboard to revisit daily.
 6. If you were in the Data Engineer's shoes, you may further wish to set up [Slack notifications]({% link soda/quick-start-dev.md %}#set-up-slack-integration-and-notification-rules) for any checks that warn or fail during scans.
 
 ✨Hey, hey!✨ Now you know what it's like to add data quality checks to your production data pipeline. Huzzah!
