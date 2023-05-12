@@ -14,6 +14,8 @@ Use this guide to set up the Soda platform to enable users across your organizat
 
 Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and the Soda platform, then invite your Data Analyst and Scientist colleagues to join the platform to create agreements and begin writing their own SodaCL checks for data quality. 
 
+![end-user-start](/assets/images/end-user-start.png){:width="600px"}
+
 **[01](#soda-basics)** Learn the basics of Soda<br />
 **[02](#about-this-guide)** Get context for this guide<br />
 **[03](#deploy-a-soda-agent)** Deploy a Soda Agent in a Kubernetes cluster<br />

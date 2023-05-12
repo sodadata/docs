@@ -347,11 +347,12 @@ Learn more about [running Soda scans]({% link soda-core/scan-core.md %}).
 ![gh-actions-check-results](/assets/images/gh-actions-check-results.png){:width="700px"}
 2. To more easily retrieve Soda scan results by dbt model, the Engineer navigates to **Datasets**, then clicks the stacked dots at the right of the `dim_product` dataset and selects **Edit Dataset**.
 3. In the **Tags** field, they add a value for `fact_product_category`, the dbt model that uses this dataset, and a tag to indicate the kind of data that Soda is scanning, `raw`, `transformed` or `reporting`, then saves. They repeat these steps to add tags to all the datasets in their Soda platform account.
-4. Navigating again to the **Datasets** page, they use the filters to display datasets according to **Tags** and **Arrival Time** to narrow the search for the most recent quality checks that fail or warn.
-5. After filtering the datasets according to the tages, the Engineer also adds a bookmark in their browser to create an improvised dashboard to revisit often.
+4. Navigating again to the **Datasets** page, they use the filters to display datasets according to **Tags** and **Arrival Time** to narrow the search for the most recent quality checks associated with their models which have failed or warned.
+![datasets-tags](/assets/images/datasets-tags.png){:width="700px"}
+5. After filtering the datasets according to the tags, the Engineer also adds a bookmark in their browser to create an improvised dashboard to revisit often.
 6. If you were in the Data Engineer's shoes, you may further wish to set up [Slack notifications]({% link soda/quick-start-dev.md %}#set-up-slack-integration-and-notification-rules) for any checks that warn or fail during scans.
 
-✨Hey, hey!✨ Now you know what it's like to add data quality checks to your production pipeline. Huzzah!
+✨Hey, hey!✨ Now you know what it's like to add data quality checks to your production data pipeline. Huzzah!
 
 
 ## Now what?

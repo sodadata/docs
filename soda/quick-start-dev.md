@@ -10,7 +10,7 @@ parent: Get started
 
 Use this guide to install and set up Soda to test the quality of your data during your development lifecycle. Catch data quality issues in a GitHub pull request before merging data management changes, such as transformations, into production.
 
-![gh-action-fail](/assets/images/gh-action-fail.png){:width="500px"}
+![cicd-pipeline](/assets/images/cicd-pipeline.png){:width="700px"}
 
 **[01](#soda-basics)** Learn the basics of Soda<br />
 **[02](#about-this-guide)** Get context for this guide<br />
@@ -436,7 +436,7 @@ jobs:
           SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
           SNOWFLAKE_PASS: ${{ secrets.SNOWFLAKE_PASS }}
         run: soda scan -d reporting_api__marts -c ./soda_checks/configs/configuration.yml ./soda_checks/checks -srf ci_scan_results.json
-        # This option allows the rest of the steps to run even if the scan fails.
+        # This option ensures that the rest of the steps to run even if the scan fails.
         # The action as a whole will still results as failed if the scan fails; see last step of action
         continue-on-error: true
       # Step 5: Extract and convert Soda scan results from JSON to a markdown table stored in checks_markdown_table.md.
