@@ -57,7 +57,7 @@ checks for ORDERS:
 ```
 
 
-Soda uses the input in the checks YAML files to prepare SQL queries that it runs against your data during a scan. During a scan, Soda does not ingest your data, it only scans it for quality metrics, then uses the metadata to prepare scan results. (An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid issue investigation, a feature you can [disable]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).)
+Soda uses the input in the checks YAML files to prepare SQL queries that it runs against your data during a scan. During a scan, Soda does not ingest your data, it only scans it for quality metrics, then uses the metadata to prepare scan results. (An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid with issue investigation, a feature you can [disable]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).)
 
 After a scan, each check results in one of three default states:
 * pass: the values in the dataset match or fall within the thresholds you specified

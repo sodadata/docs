@@ -10,6 +10,8 @@ parent: Get started
 
 Use this guide as an example for how to set up and use Soda to test the quality of your data in an Airflow pipeline. Automatically catch data quality issues after ingestion or transformation to prevent negative downstream impact.
 
+(Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
+
 ![data-pipeline](/assets/images/data-pipeline.png){:width="700px"}
 
 **[01](#soda-basics)** Learn the basics of Soda<br />
@@ -42,7 +44,6 @@ Access the <a href="https://github.com/sodadata/sip-of-soda/tree/main/test-in-pi
 
 Borrow from this guide to connect to your own data source, set up scan points in your pipeline, and execute your own relevant tests for data quality.
 
-(Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
 
 ## Install Soda from the command-line
 
@@ -502,6 +503,7 @@ Learn more about [running Soda scans]({% link soda-core/scan-core.md %}).
 
 ## Need help?
 
+* Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.
 * <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
 * Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

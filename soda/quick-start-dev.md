@@ -10,6 +10,9 @@ parent: Get started
 
 Use this guide to install and set up Soda to test the quality of your data during your development lifecycle. Catch data quality issues in a GitHub pull request before merging data management changes, such as transformations, into production.
 
+
+(Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
+
 ![cicd-pipeline](/assets/images/cicd-pipeline.png){:width="700px"}
 
 **[01](#soda-basics)** Learn the basics of Soda<br />
@@ -38,9 +41,6 @@ For context, the example assumes that a team of people use GitHub to collaborate
 Where the scan results indicate an issue with data quality, Soda notifies the team via a notification in Slack so that they can investigate and address any issues before merging the PR into production.
 
 Borrow from this guide to connect to your own data source, set up a GitHub Action job, and execute your own relevant tests for data quality to prevent issues in production.
-
-(Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
-
 
 ## Install Soda from the command line
 
@@ -566,6 +566,7 @@ To trigger the GitHub Action job and initiate a Soda scan for data quality, crea
 
 ## Need help?
 
+* Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.
 * <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
 * Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
