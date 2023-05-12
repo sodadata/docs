@@ -74,7 +74,7 @@ To enable you to take a first sip of Soda, you can use Docker to quickly build a
 * Access the <a href="https://github.com/sodadata/sip-of-soda" target="_blank">`sodadata/sip-of-soda`</a> repository in GitHub.
 * Access a quick view of the <a href="/assets/adventureworks_schema.png" target="_blank">AdventureWorks schema</a>.
 
-With Docker running, run the following command in Termainal to set up the prepared example data source.
+With Docker running, run the following command in Terminal to set up the prepared example data source.
 {% include code-header.html %}
 ```shell
 docker run \

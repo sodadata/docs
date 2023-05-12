@@ -22,7 +22,7 @@ To test your data quality, you install the **Soda CLI tool** and sign up for a *
     * A fourth state, warn, is something you can explicitly configure for individual checks. 
 * **Review scan results and investigate issues.** <br />You can review the scan output in the command-line and in your Soda platform account. Add API keys to the same `configuration.yml` file to push check results to your account so you can access visualized scan results, set alert notifications, track trends in data quality over time, and integrate with the messaging, ticketing, and data cataloging tools you already use, like Slack, Jira, and Alation.
 
-<sup>1</sup> An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid issue investigation, a feature you can [disable]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+<sup>1</sup> An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid with issue investigation, a feature you can [disable]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
 Learn more about [How Soda works]({% link soda-core/how-core-works.md %}).<br />
 Learn more about [running Soda scans]({% link soda-core/scan-core.md %}).<br />
