@@ -24,6 +24,7 @@ In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#
 The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the metric that is then used in the check. The check itself follows the simple pattern of a [standard check]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) that uses a metric, a comparison symbol or phrase, and a threshold. 
 
 You specify the CTE value for the custom metric using a nested **expression key** which also defines the name of the new custom metric. The name you provide for a custom metric must *not* contain spaces.
+
 {% include code-header.html %}
 ```yaml
 checks for dim_reseller:
@@ -42,6 +43,8 @@ checks for dim_reseller:
 Instead of using CTE to define a custom metric, you can use a SQL query. The example check below follows the same standard check pattern, but includes a nested **query key** to define the custom metric and its name.
 * The name you provide for a custom metric must *not* contain spaces.
 * Though you specify the dataset against which to run the query in the SQL query, you must also provide the dataset identifier in the `checks for` section header. Without the dataset identifier, Soda Core cannot send the check results to Soda Cloud.
+
+
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
@@ -62,6 +65,7 @@ checks for dim_product:
 Instead of embedding an expression or a query directly in the check definition, you can direct Soda to use a query or expression you have defined in a different file. The example check below follow the same pattern as the metrics that use CTE or SQL queries, but this nested key identifies the **file path** of your query file.
 * The name you provide for a custom metric must *not* contain spaces.
 * Though you specify the dataset against which to run the query in the SQL query, you must also provide the dataset identifier in the `checks for` section header. Without the dataset identifier, Soda Core cannot send the check results to Soda Cloud.
+
 
 {% include code-header.html %}
 ```yaml
@@ -101,6 +105,7 @@ checks for dim_product:
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). <br />*Known issue:* Dataset filters are not compatible with user-defined checks which use a SQL query. With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260-->| [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 #### Example with check name 
+
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
@@ -112,6 +117,7 @@ checks for dim_product:
 ```
 
 #### Example with alert configuration
+
 {% include code-header.html %}
 ```yaml
   - avg_order_span:
@@ -121,6 +127,7 @@ checks for dim_product:
 ```
 
 #### Example with quotes
+
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
@@ -131,6 +138,7 @@ checks for dim_product:
 ```
 
 #### Example with for each
+
 {% include code-header.html %}
 ```yaml
 for each dataset T:
@@ -142,6 +150,7 @@ for each dataset T:
 ```
 
 #### Example with dataset filter
+
 {% include code-header.html %}
 ```yaml
 filter FULFILLMENT [daily]:
