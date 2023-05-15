@@ -24,7 +24,7 @@ Alternatively, you can provide data source connection configurations in the cont
 
 ## Configuration instructions
 
-Consider following the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) that guides you through the steps to configure Soda Core and run a scan of your data.
+Consider following the Take a sip of Soda quick start that guides you through the steps to configure Soda Core and run a scan of your data.
 
 1. Soda Core connects with Spark DataFrames in a unique way, using programmtic scans.
 * If you are using Spark DataFrames, follow the configuration details in [Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes).

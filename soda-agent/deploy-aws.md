@@ -277,7 +277,7 @@ eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --re
 * Access a list of [helpful `kubectl` commands]({% link soda-agent/helpful-commands.md %}) for running commands on your Kubernetes cluster.
 * Use an AWS PrivateLink to private connect to your Soda Cloud account. Access [Connect a Soda Agent to Soda Cloud via AWS PrivateLink]({% link soda-agent/private-link.md %}) for details.
 * [Learn more]({% link soda-agent/secrets.md %}) about securely storing and accessing API keys and data source login credentials.
-* Consider completing the [Quick start for Soda Cloud]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
+* Consider completing the [Enable end-user data quality testing]({% link soda/quick-start-end-user.md %}) guide for more context around setting up a new data source and creating a new agreement.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
