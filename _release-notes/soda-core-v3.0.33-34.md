@@ -5,7 +5,7 @@ products:
   - soda-core
 ---
 
-## Fixes and Coreures
+## Fixes and Features
 
 * Core: user defined checks using sql file by @vijaykiran in #1859
 * Scientific: implement optional sample field for DRO update by @baturayo in #1848
