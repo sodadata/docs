@@ -15,52 +15,46 @@ redirect_from:
 Is Soda the data quality testing solution you've been looking for? 🥤Take a sip and see! <br />
 Use the example data in this tutorial to set up and run a simple Soda scan for data quality.
 
-![sip-path](/assets/images/sip-path.png){:width="700px"}
+<!--![sip-path](/assets/images/sip-path.png){:width="700px"}-->
 
 **[01](#soda-basics)** Learn the basics of Soda | 2 minutes<br />
-**[02](#tutorial-prerequisites)** Check prerequisites | 1 minute<br />
-**[03](#install-soda-from-the-command-line)** Install Soda | 10 minutes<br />
-**[04](#build-an-example-data-source)** Set up example data source | 5 minutes<br />
-**[05](#connect-soda-to-the-data-source-and-a-platform-account)** Connect Soda to the data source | 5 minutes<br />
-**[06](#write-some-checks-and-run-a-scan)** Write checks and run a scan | 5 minutes<br />
+**[02](#install-soda-from-the-command-line)** Install Soda | 10 minutes<br />
+**[03](#build-an-example-data-source)** Set up example data source | 5 minutes<br />
+**[04](#connect-soda-to-the-data-source-and-a-platform-account)** Connect Soda to the data source | 5 minutes<br />
+**[05](#write-some-checks-and-run-a-scan)** Write checks and run a scan | 5 minutes<br />
 <br />
 
 ## Soda basics
 
 {% include about-soda.md %}
 
-## Tutorial prerequisites
-<!--Linked to UI, access Shlink-->
-
-To see Soda up and running locally in a few minutes, you need a few tools.
-
-* You have installed <a href="https://www.python.org/downloads/" target="_blank">Python 3.8</a> or greater. 
-* You have installed Pip 21.0 or greater.
-* You have installed <a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop</a> and have access to <a href="https://github.com/" target="_blaak">GitHub </a> (to set up an example data source).
-
 ## Install Soda from the command line
 <!--Linked to UI, access Shlink-->
 
 This tutorial references a MacOS environment.
 
-1. In your command-line interface, create a Soda project directory in your local environment, then navigate to the directory.
+1. Check the following prerequisites:
+* You have installed <a href="https://www.python.org/downloads/" target="_blank">Python 3.8</a> or greater. 
+* You have installed Pip 21.0 or greater.
+* You have installed <a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop</a> and have access to <a href="https://github.com/" target="_blaak">GitHub </a> (to set up an example data source).
+2. In your command-line interface, create a Soda project directory in your local environment, then navigate to the directory.
 ```shell
 mkdir soda_sip
 cd soda_sip
 ```
-2. Best practice dictates that you install the Soda using a virtual environment. In your command-line interface, create a virtual environment in the `.venv` directory. 
+3. Best practice dictates that you install the Soda using a virtual environment. In your command-line interface, create a virtual environment in the `.venv` directory. 
 ```shell
 python3 -m venv .venv
 ```
-2. Activate the virtual environment.
+4. Activate the virtual environment.
 ```shell
 source .venv/bin/activate
 ```
-3. Execute the following command to install the Soda package for PostgreSQL in your virtual environment. The example data is in a PostgreSQL data source, but there are 15+ data sources with which you can connect your own data beyond this tutorial.
+5. Execute the following command to install the Soda package for PostgreSQL in your virtual environment. The example data is in a PostgreSQL data source, but there are 15+ data sources with which you can connect your own data beyond this tutorial.
 ```shell
 pip install soda-core-postgres
 ```
-4. Validate the installation.
+6. Validate the installation.
     ```shell
 soda --help
     ```
@@ -71,10 +65,12 @@ To exit the virtual environment when you are done with this tutorial, use the co
 ## Build an example data source
 
 To enable you to take a first sip of Soda, you can use Docker to quickly build an example PostgreSQL data source against which you can run scans for data quality. The example data source contains data for AdventureWorks, an imaginary online e-commerce organization. 
-* Access the <a href="https://github.com/sodadata/sip-of-soda" target="_blank">`sodadata/sip-of-soda`</a> repository in GitHub.
-* Access a quick view of the <a href="/assets/adventureworks_schema.png" target="_blank">AdventureWorks schema</a>.
+* (Optional) Access the <a href="https://github.com/sodadata/sip-of-soda" target="_blank">`sodadata/sip-of-soda`</a> repository in GitHub.
+* (Optional) Access a quick view of the <a href="/assets/adventureworks_schema.png" target="_blank">AdventureWorks schema</a>.
 
-With Docker running, run the following command in Terminal to set up the prepared example data source.
+1. Open a new tab in Terminal. 
+2. If it is not already running, start Docker Desktop. 
+3. Run the following command in Terminal to set up the prepared example data source.
 {% include code-header.html %}
 ```shell
 docker run \
@@ -84,7 +80,7 @@ docker run \
  sodadata/soda-adventureworks
 ```
 
-When the output reads `data system is ready to accept connections`, your data source is set up and you are ready to proceed.
+When the output reads `data system is ready to accept connections`, your data source is set up and you are ready to proceed. 
 
 <details>
   <summary style="color:#00BC7E">Troubleshoot</summary>
@@ -108,8 +104,8 @@ To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP
 
 This tutorial also instructs you to connect to a Soda platform account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda platform account gives you access to visualized scan results, tracks trends in data quality over time, lets you set alert notifications, and much more.
 
-1. Create a new file called `configuration.yml` in your `soda_sip` directory. 
-2. Open the `configuration.yml` file in a code editor, then copy and paste the following connection details into the file. These configuration details connect Soda to the example AdventureWorks data source you set up using Docker.
+1. In a code editor such as Sublime or Visual Studio Code, create a new file called `configuration.yml` and save it in your `soda_sip` directory. 
+2. Copy and paste the following connection details into the file. The `data_source` configuration details connect Soda to the example AdventureWorks data source you set up using Docker. The `soda_cloud` configuration connects Soda to your platform account; leave it blank for a moment.
     ```yaml
     data_source adventureworks:
       type: postgres
@@ -119,21 +115,19 @@ This tutorial also instructs you to connect to a Soda platform account using API
         password: secret
       database: postgres
       schema: public
-```
-3. Next, add the following configuration that connects Soda to your platform account, leaving the values for the keys blank for a moment. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under the `data_source` syntax.
-```yaml
-soda_cloud:
-  host: 
-  api_key_id:
-  api_key_secret:
-```
+
+    soda_cloud:
+      host: 
+      api_key_id:
+      api_key_secret:
+    ```
 3. In a browser, navigate to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a new Soda account. If you already have a Soda account, log in. 
-4. Navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys.
+4. Navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys, and use **Onboarding** as the Description identifier.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
   * Enter the value for `host` according to the region your Soda platform account uses: `cloud.soda.io` for EU region; `cloud.us.soda.io` for USA region.
 5. Save the `configuration.yml` file and close the API modal in your Soda account.
-6. In Terminal, run the following command to test Soda's connection to the data source.<br />
+6. In Terminal, return to the tab in which the virtual environment is active in the `soda_sip` directory. Run the following command to test Soda's connection to the data source.<br />
 Command:
 ```shell
 soda test-connection -d adventureworks -c configuration.yml
@@ -172,7 +166,7 @@ checks for dim_customer:
         <ul>
           <li><strong>Ensure values are formatted as email addresses</strong> checks that all entries in the <code>email_address</code> column are formatted as <code>name@domain.extension</code>. See <a href="https://docs.soda.io/soda-cl/validity-metrics.html" target="_blank">Validity metrics</a>.</li>
           <li><strong>Ensure there are no null values in the Last Name column</strong> automatically checks for NULL values in the <code>last_name</code> column. See <a href="https://docs.soda.io/soda-cl/missing-metrics.html" target="_blank">Missing metrics</a>.</li>
-          <li><strong>No duplicate phone numbers</strong> validates that each value in the <code>phone</code> column in unique. See <a href="https://docs.soda.io/soda-cl/numeric-metrics.html#list-of-numeric-metrics" target="_blank">Numeric metrics</a>.</li>
+          <li><strong>No duplicate phone numbers</strong> validates that each value in the <code>phone</code> column is unique. See <a href="https://docs.soda.io/soda-cl/numeric-metrics.html#list-of-numeric-metrics" target="_blank">Numeric metrics</a>.</li>
           <li><strong>Columns have not been added, removed, or changed</strong> compares the schema of the dataset to the last scan result to determine if any columns were added, deleted, changed data type, or changed index. The first time this check executes, the results show <code>[NOT EVALUATED]</code> because there are no previous values to which to compare current results. In other words, this check requires a minimum of two scans to evaluate properly. See <a href="https://docs.soda.io/soda-cl/schema.html" target="_blank">Schema checks</a>.</li>
           <li><strong>Data in this dataset is less than 7 days old</strong> confirms that the data in the dataset is less than seven days old. See <a href="https://docs.soda.io/soda-cl/freshness.html" target="_blank">Freshness checks</a>.</li>
         </ul>
