@@ -1,6 +1,7 @@
 What could we do to improve this page?
-* <a href="https://github.com/sodadata/docs/issues/new" target="_blank">Suggest</a> a docs change in GitHub.
+* Suggest a docs change in <a href="https://github.com/sodadata/docs/issues/new" target="_blank">GitHub</a>.
 * Share feedback in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>. 
 
-<br />
-*Last modified on {% last_modified_at %}*
+*Last modified on {% last_modified_at %}*<br />
+
+<a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank" class="signup-button">Sign up for Soda</a>
