@@ -23,7 +23,7 @@ For example, you can define a notification rule to instruct Soda Cloud to send a
 
 ## Prerequisites
 
-* You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
+* You have created a <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">Soda Cloud account</a>.
 * (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda/integrate-slack.md %}) or another [third-party service provider]({% link soda/integrate-webhooks.md %}) to enable Soda Cloud to send alert notifications to your team. If you do not integrate with another service-provider, Soda Cloud can send notifications via email.
 
 ## Default rules

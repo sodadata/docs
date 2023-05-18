@@ -121,7 +121,7 @@ This tutorial also instructs you to connect to a Soda platform account using API
       api_key_id:
       api_key_secret:
     ```
-3. In a browser, navigate to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a new Soda account. If you already have a Soda account, log in. 
+3. In a browser, navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a new Soda account. If you already have a Soda account, log in. 
 4. Navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys, and use **Onboarding** as the Description identifier.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.

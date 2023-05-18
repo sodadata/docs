@@ -79,7 +79,7 @@ soda_cloud:
         api_key_id:
         api_key_secret:
 ```
-4. In a browser, they navigate to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a free, 45-day trial Soda account.  
+4. In a browser, they navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a free, 45-day trial Soda account.  
 5. In the new account, they navigate to **avatar** > **Profile**, then access the **API keys** tab and click the plus icon to generate new API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.

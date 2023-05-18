@@ -55,7 +55,7 @@ profile columns:
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
-* You have <a href="https://cloud.soda.io/signup" target="_blank">signed up for a Soda Cloud account</a>.
+* You have <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">signed up for a Soda Cloud account</a>.
 * You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) within your organization's Soda Cloud account.
 * You, or an Administrator in your organization's Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) which enables you to connect to a data source in Soda Cloud.
 
