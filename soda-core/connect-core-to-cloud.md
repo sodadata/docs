@@ -27,7 +27,7 @@ Soda Core uses an API to connect to Soda Cloud. To use the API, you must generat
 
 ## Connect
 
-1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> https://cloud.soda.io/signup</a>. Select a region for your account based on where you wish to store Soda Cloud data.
+1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank"> https://cloud.soda.io/signup</a>. Select a region for your account based on where you wish to store Soda Cloud data.
 2. Open your `configuration.yml` file in a text editor, then add the following to the file, leaving the values blank for now. 
 * Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under any other `data_source` syntax. 
 * Consider creating system or environment variables for the values of your API key and secret; see [Provide credentials as system variables](#provide-credentials-as-system-variables).

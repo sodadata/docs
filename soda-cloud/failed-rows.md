@@ -67,7 +67,7 @@ checks for dim_customer:
 
 ## Go further
 
-* <a href="https://cloud.soda.io/signup" target="_blank"> Sign up</a> for a Soda Cloud account.
+* <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank"> Sign up</a> for a Soda Cloud account.
 * Learn more about [scans in Soda Cloud]({% link soda-cloud/scan-output.md %}).
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
