@@ -81,6 +81,8 @@ data_source snowflake:
       -----END ENCRYPTED PRIVATE KEY-----
 ```
 
+If you use private key authentication with a Soda Agent, refer to [Manage sensitive values for a Soda Agent]({% link soda-agent/secrets.md %}#use-a-values-file-to-store-private-key-authentication-values-for-snowflake).
+
 {% include test-connection.md %}
 
 ## Supported data types
