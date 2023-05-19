@@ -1,4 +1,13 @@
+---
+layout: default
+title: Check Suggestion CLI
+description: The Check Suggestion CLI is a command-line interface tool designed to simplify the process of generating the basic data quality checks in SodaCL format.
+parent: Soda Cloud
+---
+
+
 # Check Suggestion CLI
+*Last modified on {% last_modified_at %}*
 
 The Check Suggestion CLI is a command-line interface tool designed to simplify the process of generating the basic data quality checks in SodaCL format. With this CLI tool, you can quickly walk through the process of creating a SodaCL YAML file that contains the basic data quality checks for your data.
 
@@ -233,3 +242,20 @@ In case you approve duplicate value check for multiple columns, the SodaCL will 
 ## Conclusion
 
 By following these suggested steps in your Check Suggestion CLI, users can systematically generate a SodaCL YAML file that includes these basic data quality checks. This provides a starting point for users to ensure the quality and integrity of their data before further analysis or processing. After generating the SodaCL file, the users can manually add, remove or modify the checks based on their specific needs.
+
+
+## Go further
+
+* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+<br />
+
+---
+
+Was this documentation helpful?
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="tick" data-i18n_like="Yes" data-ef_voting="grow" data-show_dislike_label="true" data-counter_zero_show="true" data-i18n_dislike="No"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
+{% include docs-footer.md %}
