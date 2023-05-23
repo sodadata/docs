@@ -208,6 +208,8 @@ Containers:
 6. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
 
 
+If you use private key authentication with a Soda Agent, refer to [Manage sensitive values for a Soda Agent]({% link soda-agent/secrets.md %}#use-a-values-file-to-store-private-key-authentication-values-for-snowflake).
+
 ## (Optional) Create a practice data source
 
 {% include agent-practice-datasource.md %}

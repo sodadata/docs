@@ -13,6 +13,9 @@ parent: Reference
 * Added a video overview showcasing the integration of [Soda and Alation]({% link soda/integrate-alation.md %}).
 * Added a note for a [Known Issue]({% link soda-cl/profile.md %}#limitations-and-known-issues) regarding the use of variables in profiling configurations.
 
+#### May 20, 2023
+* Added documentation for using [private key authentication for Snowflake]({% link soda-agent/secrets.md %}#use-a-values-file-to-store-private-key-authentication-values-for-snowflake) when deploying a Soda Agent. 
+
 #### May 15, 2023
 * Replaced getting started guides with entirely new content with a focus on data engineering. 
   * [Take a sip of Soda]({% link soda/quick-start-sip.md %})
