@@ -11,6 +11,7 @@ parent: Reference
 
 #### May 23, 2023
 * Added a video overview showcasing the integration of [Soda and Alation]({% link soda/integrate-alation.md %}).
+* Added a note for a [Known Issue]({% link soda-cl/profile.md %}#limitations-and-known-issues) regarding the use of variables in profiling configurations.
 
 #### May 11, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.33 and Soda Core 3.0.34.
