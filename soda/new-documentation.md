@@ -9,6 +9,18 @@ parent: Reference
 
 <br />
 
+#### May 23, 2023
+* Added a video overview showcasing the integration of [Soda and Alation]({% link soda/integrate-alation.md %}).
+* Added a note for a [Known Issue]({% link soda-cl/profile.md %}#limitations-and-known-issues) regarding the use of variables in profiling configurations.
+
+#### May 15, 2023
+* Replaced getting started guides with entirely new content with a focus on data engineering. 
+  * [Take a sip of Soda]({% link soda/quick-start-sip.md %})
+  * [Test data in a pipeline]({% link soda/quick-start-prod.md %})
+  * [Test data during development]({% link soda/quick-start-dev.md %})
+  * [Enable end users to test data]({% link soda/quick-start-end-user.md %})
+* Replaced the [product overview]({% link soda/product-overview.md %}) with newly-written material.
+
 #### May 11, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.33 and Soda Core 3.0.34.
 * Added instructions for [user-defined metrics]({% link soda-cl/user-defined.md %}#define-user-defined-checks) to access and use queries in separate SQL files.
