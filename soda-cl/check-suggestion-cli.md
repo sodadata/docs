@@ -26,14 +26,16 @@ Instead of writing your own data quality checks from scratch, the check suggesti
 
 ## Compatibility
 
-You can add to connect with the following data sources:
+You can use the check suggestion CLI tool with the following data sources:
 
-{% include compatible-datasources.md %}
+* [GCP Big Query]({% link soda/connect-bigquery.md %})
+* [PostgreSQL]({% link soda/connect-postgres.md %})
+* [Snowflake]({% link soda/connect-snowflake.md %})
 
 ## Prerequisites
 
 * You have installed Python 3.10 or greater.
-* You have installed a [Soda Core package]({% link soda-core/installation.md %}#install) in your environment.
+* You have installed a [Soda Core package]({% link soda-core/installation.md %}#install) for Big Query, PostgreSQL, or Snowflake in your environment.
 
 ## Install and use
 
@@ -111,30 +113,23 @@ checks for dataset_A:
   - anomaly score for row_count < default
 ```
 
-**Add time-based partitioning** Also referred to as dataset filtering, this step prompts you to specify a time range on which to apply the data quality checks. By default, the check suggestion tool sets the time-based partition to one day. When generating a list of candidate columns to which to apply the time-based partition, the tool uses heuristic methods to automatically identify and rank column names.
+**Add time-based partitioning** Also referred to as dataset filtering, this step prompts you to specify a time range on which to apply the data quality checks. 
 
+By default, the check suggestion tool sets the time-based partition to one day if the column contains DATE type data, and the preceding 24 hours if the column contains DATETIME data. When generating a list of candidate columns to which to apply the time-based partition, the tool uses heuristic methods to automatically identify and rank column names.
 
 <details>
-  <summary style="color:#00BC7E">Heuristic to rank time based columns</summary>
-  The partition step in the Check Suggestion CLI involves determining the ranking of time-based columns for partitioning purposes. This ranking strategy helps identify the most suitable columns for partitioning your data effectively. The algorithm applies several criteria and heuristic scoring to assess the columns' incrementality, standard deviation, maximum date, missing values, and column names.
-  <br><br>
-  The ranking strategy consists of the following steps:
-  
-  1. **Incrementality**: This criterion checks whether the values in a time-based column increment over time. It assesses if the dates or time values consistently increase as new records are added. Columns with higher incrementality scores are more likely to provide a meaningful partitioning mechanism.
+  <summary style="color:#00BC7E">Read more about heuristic ranking</summary>
+  The heuristic ranking strategy identifies the most suitable columns for effectively partitioning your data. The algorithm it uses for ranking applies several criteria and heuristic scoring to assess the columns' incrementality, standard deviation, maximum date, missing values, and column names.
+  <br /> 
+  <ol>
+  <li> Incrementality: This criterion checks whether the values in a time-based column incrementally change over time. It assesses if the date or time values consistently increase as new records are added. Columns with higher incrementality scores are more likely to provide a meaningful partitioning mechanism.</li>
+  <li>Standard Deviation: The check suggestion tool uses standard deviation between dates to assess the uniformity or distribution of values in a time-based column. Columns with low standard deviation indicate that the dates are closely packed together, suggesting a more consistent and evenly-spaced distribution.</li>
+  <li>Maximum Date: This step examines the maximum date value in a column and compares it to the current date. Columns with a maximum date value that is less than the current date receive a higher score. This criterion helps identify columns with recent data.</li>
+  <li>Missing Value: The tool considers the number of missing values in a column; those with fewer missing values receive a higher score. This criterion helps identify columns with more complete data.</li>
+  <li>Column Name: The check suggestion tool analyzes the names of the columns to determine their relevance for partitioning. The algorithm assigns higher points to columns with names that contain keywords such as "create", "insert", "generate", etc. This criterion aims to identify columns that are likely to represent meaningful, time-based information.</li>
+  </ol>
 
-  2. **Standard Deviation**: The standard deviation between dates is used as a measure to assess the uniformity or distribution of values in a time-based column. Columns with low standard deviation indicate that the dates are closely packed together, suggesting a more consistent and evenly spaced distribution.
-
-  3. **Maximum Date**: This step examines the maximum date value in a column and compares it with the current date. Columns with a maximum date value that is not greater than the current date receive a higher score. This criterion helps identify columns with recent or up-to-date data.
-
-  4. **Missing Value**: The number of missing values in a column is considered in this step. Columns with fewer missing values receive a higher score. This criterion helps identify columns with more complete data.
-
-  5. **Column Name**: In this step, the names of the columns are analyzed to determine their relevance for partitioning. The algorithm assigns higher points to columns with names that contain keywords such as "create", "insert", "generate", etc. This criterion aims to identify columns that are likely to represent meaningful time-based information.
-
-  After calculating scores from each of the five criteria, the algorithm combines them to obtain a comprehensive score for each time-based column. The columns are then ranked from highest to lowest score, providing guidance on the suitability of each column for partitioning.
-
-  By using this ranking strategy, the partition step in your Check Suggestion CLI helps you identify the most appropriate time-based columns for partitioning your data effectively.
-
-
+  After calculating scores from each of the five criteria, the algorithm combines them to obtain a comprehensive score for each time-based column. The tool then ranks the columns from highest to lowest score, providing guidance on the partitioning suitability of each column.
 </details>
 
 Refer to [Configure dataset filters]({% link soda-cl/filters.md %}#configure-dataset-filters) for more information.
