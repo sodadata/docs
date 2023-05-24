@@ -113,7 +113,7 @@ checks for dataset_A:
 
 **Add time-based partitioning** Also referred to as dataset filtering, this step prompts you to specify a time range on which to apply the data quality checks. By default, the check suggestion tool sets the time-based partition to one day. When generating a list of candidate columns to which to apply the time-based partition, the tool uses heuristic methods to automatically identify and rank column names.
 
-<br>
+
 <details>
   <summary style="color:#00BC7E">Heuristic to rank time based columns</summary>
   The partition step in the Check Suggestion CLI involves determining the ranking of time-based columns for partitioning purposes. This ranking strategy helps identify the most suitable columns for partitioning your data effectively. The algorithm applies several criteria and heuristic scoring to assess the columns' incrementality, standard deviation, maximum date, missing values, and column names.
