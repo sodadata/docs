@@ -2,20 +2,18 @@
   page: index.html
 
 - title: Get started
-  page: soda/core-interactive-demo.md
+  page: soda/quick-start-sip.md
   subcategories:
-  - subtitle: Soda Core Interactive demo
-    page: soda/core-interactive-demo.md
-  - subtitle: Quick start for Soda Cloud
-    page: soda/quick-start-sodacloud.md
-  - subtitle: Quick start for SodaCL
-    page: soda/quick-start-sodacl.md
-  - subtitle: Quick start for Soda Core
-    page: soda/quick-start-soda-core.md
-  - subtitle: Soda product overview
+  - subtitle: Take a sip of Soda
+    page: soda/quick-start-sip.md
+  - subtitle: Test data in a pipeline
+    page: soda/quick-start-prod.md
+  - subtitle: Test data during development
+    page: soda/quick-start-dev.md
+  - subtitle: Enable end users to test data
+    page: soda/quick-start-end-user.md
+  - subtitle: Soda overview
     page: soda/product-overview.md
-  - subtitle: Soda product comparison
-    page: soda/product-matrix.md
 
 - title: Connect a data source
   page: soda/connect-athena.md
@@ -125,6 +123,8 @@
   subcategories:
   - subtitle: SodaCL overview
     page: soda-cl/soda-cl-overview.md
+  - subtitle: SodaCL tutorial
+    page: soda/quick-start-sodacl.md
   - subtitle: Metrics and checks
     page: soda-cl/metrics-and-checks.md
   - subtitle: Optional check configurations
@@ -221,8 +221,6 @@
     page: soda/glossary.md
   - subtitle: What's new in docs?
     page: soda/new-documentation.md
-  - subtitle: Data concepts
-    page: soda/data-concepts.md
   - subtitle: Data security and privacy
     page: soda/data-privacy.md
   - subtitle: Soda Core usage statistics
@@ -234,7 +232,7 @@
   - subtitle: Soda SQL is now Soda Core
     page: soda/deprecated.md
 
-- title: API Documentation
+- title: Soda Cloud Reporting API
   page: api-docs/reporting-api-v1.md
   subcategories:
   - subtitle: Reporting API v1 (Preview)

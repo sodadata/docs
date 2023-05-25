@@ -11,7 +11,7 @@ redirect_from: /soda-cloud/schema-evolution.html
 *Last modified on {% last_modified_at %}*
 
 Use a schema check to validate the presence, absence or position of columns in a dataset, or to validate the type of data column contains. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - schema:
@@ -61,7 +61,7 @@ In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#
 The validation key:value pairs in schema checks set the conditions for a warn or a fail check result. See a [List of validation keys](#list-of-validation-keys) below. 
 
 For example, the following check uses the `when required column missing` validation key to validate that specific columns are present in a dataset; if any of columns in the list are absent, the check result is fail.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - schema:
@@ -72,8 +72,8 @@ checks for dim_product:
           - weight
 ```
 
-In the example above, the values for the validation key are in a nested list format, but you can use an inline list of comma-separated values inside square brackets instead. The following example yields identical checks results to the example above.
-
+In the example above, the value for the validation key is in a nested list format, but you can use an inline list of comma-separated values inside square brackets instead. The following example yields identical checks results to the example above.
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - schema:
@@ -85,7 +85,7 @@ checks for dim_product:
 You can define a schema check with both warn and fail alert conditions, each with multiple validation keys. Refer to [Configure multiple alerts]({% link soda-cl/optional-config.md %}#configure-multiple-alerts) for details. Be aware, however, that a single schema check only ever produces a *single check result*. See [Expect one check result](#expect-one-check-result) below for details.
 
 The following example is a single check; Soda executes each of its validations during a scan. Note that unlike the nested list of column names in the example above, the nested key:value pairs that form the value for these validation keys are indented, but do not use a `-`.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - schema:
@@ -108,8 +108,8 @@ Rather than specifying exact parameters for column changes, you can use the `whe
 
 This type of validation key requires a **Soda Cloud** account. If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future schema checks. Therefore, you must have a created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to use schema evolution checks.
 
-Soda Cloud must have at least two measurements to yield a check result. In other words, the first time you run a scan to execute a schema evolution check, Soda does not evaluate the check because it has nothing against which to compare; the second scan that executes the check yields a check result.
-
+Soda Cloud must have at least two measurements to yield a check result. In other words, the first time you run a scan to execute a schema evolution check, Soda returns no results because it has nothing against which to compare; the second scan that executes the check yields a check result.
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - schema:
@@ -139,7 +139,7 @@ checks for dim_customer:
 
 
 #### Example with check name
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - schema:
@@ -149,7 +149,7 @@ checks for dim_product:
 ```
 
 #### Example with alert configuration
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - schema:
@@ -158,7 +158,7 @@ checks for dim_product:
 ```
 
 #### Example with quotes
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - schema:
@@ -170,6 +170,7 @@ checks for dim_product:
 #### Example with wildcards
 
 You can use `*` or `%` as wildcard characters in a list of column names.  If the column name begins with a wildcard character, add single quotes as per the example below. 
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - schema:
@@ -182,7 +183,7 @@ checks for dim_product:
 ```
 
 #### Example with for each
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:
@@ -194,7 +195,7 @@ for each dataset T:
 ```
 
 #### Example with dataset filter
-
+{% include code-header.html %}
 ```yaml
 filter CUSTOMERS [daily]:
   where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
@@ -223,8 +224,36 @@ checks for CUSTOMERS [daily]:
 
 ## Expect one check result
 
-{% include expect-one-result.md %}
+Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more severe, failed check result.
 
+Using the following example, Soda Core, during a scan, discovers that the data in the dataset triggers both alerts, but the check result at the bottom is `Oops! 1 failures`. Nonetheless, the results in the `Scan summary` section of the CLI output still display both the warn and fail alerts as having been triggered.
+{% include code-header.html %}
+```yaml
+checks for dim_product:
+  - schema:
+      name: Required columns all present
+      warn:
+        when required column missing: [weight_unit_measure_code, product_subcategory_key, made_up_column]
+      fail:
+        when required column missing: [pretend_column]
+```
+```shell
+Soda Core 3.0.xx
+Scan summary:
+1/1 check FAILED: 
+    dim_product in adventureworks
+      Required columns all present [FAILED]
+        fail_missing_column_names = [pretend_column]
+        warn_missing_column_names = [made_up_column]
+        schema_measured = [product_key integer, product_alternate_key character varying ...]
+Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
+Sending results to Soda Cloud
+Soda Cloud Trace: 7845***
+```
+
+The output in Soda Cloud displays the output of all the alert states during the scan.
+
+![schema-results](/assets/images/schema-results.png){:height="700px" width="700px"} 
 
 ## Go further
 

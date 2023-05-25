@@ -3,7 +3,9 @@ layout: default
 title: Data privacy
 description: Soda works in several ways to ensure your data and systems remain private. We offer secure connections, SSO, and observe compliance and reporting regulations.
 parent: Reference
-redirect_from: /soda-sql/documentation/data-privacy.html
+redirect_from: 
+- /soda-sql/documentation/data-privacy.html
+- /soda/data-concepts.html
 ---
 
 # Data security and privacy

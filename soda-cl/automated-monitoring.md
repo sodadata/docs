@@ -11,7 +11,7 @@ parent: SodaCL
 
 Use automated monitoring checks to instruct Soda to automatically check for row count anomalies and schema changes in a dataset.<br />
 *Requires Soda Cloud* 
-
+{% include code-header.html %}
 ```yaml
 automated monitoring:
   datasets:
@@ -49,7 +49,7 @@ If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check 
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
-* You have <a href="https://cloud.soda.io/signup" target="_blank">signed up for a Soda Cloud account</a>.
+* You have <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">signed up for a Soda Cloud account</a>.
 * You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) within your organization's Soda Cloud account.
 * You, or an Administrator in your organization's Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) which enables you to connect to a data source in Soda Cloud.
 
@@ -100,7 +100,7 @@ Need help? Ask the team in the <a href="https://community.soda.io/slack" target=
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), automated monitoring checks are unique. This check employs the `anomaly score` and `schema` checks, but is limited in its syntax variation, with only a couple of mutable parts to specify which datasets to automatically apply the anomaly and schema checks.
 
 The example check below uses a wildcard character (`%`) to specify that Soda Core executes automated monitoring checks against all datasets with names that begin with `prod`, and *not* to execute the checks against any dataset with a name that begins with `test`.
-
+{% include code-header.html %}
 ```yaml
 automated monitoring:
   datasets:
@@ -111,7 +111,7 @@ automated monitoring:
 <br />
 
 You can also specify individual datasets to include or exclude, as in the following example.
-
+{% include code-header.html %}
 ```yaml
 automated monitoring:
   datasets:
@@ -137,7 +137,7 @@ To review the checks results for automated monitoring checks in Soda Cloud, navi
 
 
 #### Example with wildcards 
-
+{% include code-header.html %}
 ```yaml
 automated monitoring:
   datasets:

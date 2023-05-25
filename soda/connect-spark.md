@@ -22,7 +22,7 @@ parent: Connect a data source
 
 ## Spark packages
 
-There are several Soda Core packages for Spark.
+There are several Soda Core install packages for Spark.
 
 | Package | Description | 
 | ------- | ----- |
@@ -65,7 +65,7 @@ db.createOrReplaceTempView('customers')
 ```
 5. Use the Spark API to link a DataFrame to the name of each temporary table against which you wish to run Soda scans. Refer to <a href="hhttps://spark.apache.org/docs/3.1.3/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceTempView.html" target="_blank"> PySpark documentation</a>.
 6. [Define a programmatic scan]({% link soda-core/programmatic.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Core: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`. Refer to the example below.
-
+{% include code-header.html %}
 ```python
 spark_session = ...your_spark_session...
 df1.createOrReplaceTempView("TABLE_ONE")
@@ -98,7 +98,7 @@ Use the `soda-core-spark-df` package to connect to Databricks using a Notebook.
 
 1. Follow steps 1-2 in [the instructions](#connect-to-spark-dataframes) to install `soda-core-spark-df`.
 2. Reference the following Notebook example to connect to Databricks. 
-
+{% include code-header.html %}
 ```python
 # import Scan from Soda Core
 from soda.scan import Scan
@@ -137,7 +137,7 @@ print(scan.get_logs_text())
 ## Connect to Spark for Hive
 
 An addition to `soda-core-spark-df`, install and configure this package if you use Apache Hive.
-
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
   type: spark
@@ -165,7 +165,7 @@ data_source my_datasource_name:
 ## Connect to Spark for ODBC
 
 An addition to `soda-core-spark-df`, install and configure this package if you use ODBC.
-
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
   type: spark
@@ -196,7 +196,7 @@ data_source my_datasource_name:
 
 Install and configure `soda-core-spark[databricks]` to connect to Databricks SQL. <br />
 Refer to [Install Soda Core]({% link soda-core/installation.md %}) for details.
-
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
   type: spark

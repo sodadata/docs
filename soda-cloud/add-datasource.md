@@ -33,7 +33,7 @@ Soda Cloud can, however, accept scan results from Soda Core for the following da
 
 
 ## Prerequisites
-* You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
+* You have created a <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">Soda Cloud account</a>.
 * You, or an IT Administrator in your organization, has deployed a [Soda Agent]({% link soda-agent/deploy.md %}) in an Kubernetes cluster in a cloud services environment and connected it to your Soda Cloud account.
 
 
@@ -71,6 +71,9 @@ During its initial scan of your datasource, Soda Cloud discovers all the dataset
 
 In the editing panel, specify the datasets that Soda Cloud should include or exclude from this basic discovery activity. The default syntax in the editing panel instructs Soda to collect basic dataset information from all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character. See [Display profile information in Soda Cloud]({% link soda-cl/profile.md %}#limitations-and-known-issues) for more detail on profiling syntax.
 
+*Known issue:* SodaCL does not support using [variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl) in column profiling and dataset discovery configurations. <!--SAS-1642-->
+
+{% include code-header.html %}
 ```yaml
 discover datasets:
   datasets:
@@ -79,7 +82,6 @@ discover datasets:
 ```
 
 <br />
-
 
 #### 4. Profile datasets
 
@@ -90,7 +92,7 @@ Column profile information includes details such as the calculated mean value of
 In the editing panel, provide details that Soda Cloud uses to determine which datasets to include or exclude when it profiles the columns in a dataset. The default syntax in the editing panel instructs Soda to profile every column of every dataset in this data source, and, superfluously, all datasets with names that begin with `prod`.  The `%` is a wildcard character. See [Display profile information in Soda Cloud]({% link soda-cl/profile.md %}#limitations-and-known-issues) for more detail on profiling syntax.
 
 Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations]({% link soda-cl/profile.md %}#compute-consumption-and-cost-considerations) for more detail.
-
+{% include code-header.html %}
 ```yaml
 profile columns:
   columns:
@@ -105,7 +107,7 @@ profile columns:
 When Soda Cloud automatically discovers the datasets in a data source, it prepares automated monitoring checks for each dataset. These checks detect anomalies and monitor schema evolution, corresponding to the SodaCL [anomaly score]({% link soda-cl/anomaly-score.md %}) and [schema]({% link soda-cl/schema.md %}) checks, respectively.
 
 In the editing panel, specify the datasets that Soda Cloud should include or exclude when preparing automated monitoring checks. The default syntax in the editing panel indicates that Soda will add automated monitoring to all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character.
-
+{% include code-header.html %}
 ```yaml
 automated monitoring:
   datasets:
@@ -128,6 +130,7 @@ If you already store information about your data source in a JSON file in a secu
 * the `account_info_json_path` in your data source connection configuration 
 
 You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deployment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.
+{% include code-header.html %}
 ```yaml
 soda:
   scanlauncher:
@@ -150,7 +153,8 @@ kubectl create secret -n <soda-agent-namespace> gcloud-credentials --from-file=s
 
 After you make both of these changes, you must redeploy the Soda Agent. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.   
 
-Adjust the data source connection configuration to include the `account_info_json_path` configuration, as per the following example. 
+Adjust the data source connection configuration to include the `account_info_json_path` configuration, as per the following example.
+{% include code-header.html %} 
 ```yaml
 my_datasource_name:
   type: bigquery
@@ -168,7 +172,7 @@ my_datasource_name:
 ## Go further
 
 * Next step: Create a new [agreement]({% link soda-cloud/agreements.md %}).
-* Consider completing the [Quick start for Soda Cloud]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source.
+* Consider completing the [Enable end-user data quality testing]({% link soda/quick-start-end-user.md %}) guide for more context around setting up a new data source.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

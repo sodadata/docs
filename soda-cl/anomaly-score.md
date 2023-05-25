@@ -12,7 +12,7 @@ redirect_from: /soda-cloud/anomaly-detection.html
 
 Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
 *Requires Soda Cloud and Soda Core Scientific.*<br />
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - anomaly score for row_count < default
@@ -54,7 +54,7 @@ Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-cor
 ## Define an anomaly score check
 
 The following example demonstrates how to use the anomaly score for the `row_count` metric in a check. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metric in lieu of `row_count`. 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - anomaly score for row_count < default
@@ -66,17 +66,18 @@ checks for dim_customer:
 <br />
 You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metric in anomaly score checks.  The following example detects anomalies for the average of `order_price` in an `orders` dataset.
 
+{% include code-header.html %}
 ```yaml
 checks for orders:
   - anomaly score for avg(order_price) < default
 ```
 
 The following example detects anomalies for the count of missing values in the `id` column. 
-
+{% include code-header.html %}
 ```yaml
 checks for orders:
   - anomaly score for missing_count(id) < default:
-    missing_values: [None, No Value]
+      missing_values: [None, No Value]
 ```
 
 ## Anomaly score check results 
@@ -113,7 +114,7 @@ Consider using the Soda Core Python library to set up a [programmatic scan]({% l
 | ✓ | Define a name for an anomaly score check. |  - |
 | ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
 |   | Define alert configurations to specify warn and fail thresholds. | - |
-|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
+| ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset; see [example](#example-with-filter). | [Add an in-check filter to a check]({% link soda-cl/optional-config.md %} #add-a-filter-to-a-check) | 
 | ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply anomaly score checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
@@ -121,14 +122,14 @@ Consider using the Soda Core Python library to set up a [programmatic scan]({% l
 
 
 #### Example with quotes
-
+{% include code-header.html %}
 ```yaml
 checks for "dim_customer":
   - anomaly score for row_count < default
 ```
 
 #### Example with for each
-
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:

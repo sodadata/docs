@@ -28,7 +28,7 @@ Use SodaCL checks to define the state of "good quality" for data in this data so
 
 ## Prerequisites
 
-* You have created a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a>.
+* You have created a <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">Soda Cloud account</a>.
 * You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) and connected it to your Soda Cloud account.
 * You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [added a new datasource]({% link soda-cloud/add-datasource.md %}) via the Soda Agent in your Soda Cloud account.
 * (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda/integrate-slack.md %}) or another [third-party service provider]({% link soda/integrate-webhooks.md %}) to enable Soda Cloud to send alert notifications to your team. If you do not integrate with another service-provider, Soda Cloud can send notifications via email.
@@ -104,7 +104,7 @@ To review existing scan definitions, navigate to **your avatar** > **Scans & Dat
 
 ## Go further
 
-* Consider completing the [Quick start for Soda Cloud]({% link soda/quick-start-sodacloud.md %}) for more context around creating a new agreement.
+* Consider completing the [Enable end-user data quality testing]({% link soda/quick-start-end-user.md %}) guide for more context around creating an agreement.
 * Complete the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write a few simple checks for data quality.
 * Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account. s
 * Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).

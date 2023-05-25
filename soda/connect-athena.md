@@ -6,12 +6,15 @@ parent: Connect a data source
 ---
 
 # Connect Soda to Amazon Athena
+<!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
 
 ## Configuration
+Install package: `soda-core-athena`
 
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
   type: athena

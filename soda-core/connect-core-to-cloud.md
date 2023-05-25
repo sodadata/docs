@@ -9,7 +9,7 @@ parent: Soda Core
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-To use all the [features and functionality]({% link soda/product-matrix.md %}) that **Soda Cloud** and **Soda Core** have to offer, you can install and configure the Soda Core command-line tool, then connect it to your Soda Cloud account.
+To use all the features and functionality that **Soda** has to offer, you can install and configure the Soda command-line tool, then connect it to your Soda account.
 
 Soda Core uses an API to connect to Soda Cloud. To use the API, you must generate API keys in your Soda Cloud account, then add them to the configuration YAML file that Soda Core uses to connect to your data sources. Note that the API keys you create do not expire. 
 
@@ -23,24 +23,27 @@ Soda Core uses an API to connect to Soda Cloud. To use the API, you must generat
 ## Prerequisites
 
 * You have [installed]({% link soda-core/installation.md %}) and [configured]({% link soda-core/configuration.md %}) Soda Core and run at least one scan of your data.<br /> OR 
-* You followed steps in the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) to set up Soda Core and run at least one scan of your data.
+* You have set up Soda Core and run at least one scan of your data.
 
 ## Connect
 
-1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup" target="_blank"> cloud.soda.io</a>.
-2. Open your `configuration.yml` file in a text editor, then add the following to the file. Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under any other `data_source` syntax. Consider creating system or environment variables for the values of your API key and secret; see [Provide credentials as system variables](#provide-credentials-as-system-variables).
+1. If you have not already done so, create a Soda Cloud account at <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank"> https://cloud.soda.io/signup</a>. Select a region for your account based on where you wish to store Soda Cloud data.
+2. Open your `configuration.yml` file in a text editor, then add the following to the file, leaving the values blank for now. 
+* Be sure to add the syntax for `soda_cloud` at the root level of the YAML file, *not* nested under any other `data_source` syntax. 
+* Consider creating system or environment variables for the values of your API key and secret; see [Provide credentials as system variables](#provide-credentials-as-system-variables).
 ```yaml
 soda_cloud:
+# For host, use cloud.soda.io for EU region, use cloud.us.soda.io for USA region 
   host: cloud.soda.io
   api_key_id:
   api_key_secret:
   # Optional
   scheme: 
 ```
-3.In your Soda Cloud account, navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
+3. In your Soda Cloud account, navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
-  * Optionally, provide a value for the scheme property to indicate which scheme to use to initialize the URI instance. If you do not explicitly include a `scheme` property, Soda uses the default `https`.
+  * Optionally, provide a value for the `scheme` property to indicate which scheme to use to initialize the URI instance. If you do not explicitly include a `scheme` property, Soda uses the default `https`.
 4. Save the changes to the `configuration.yml` file. Close the **Create API Key** dialog box in Soda Cloud.
 5. From the command-line, use Soda Core to scan the datasets in your data source again.
 ```shell
@@ -54,6 +57,7 @@ Unlike other data sources, Soda Core does _not_ require a configuration YAML fil
 
 Therefore, to connect to Soda Cloud, include the Soda Cloud API keys (see step 3, above) in your programmatic scan using either `add_configuration_yaml_file(file_path)` or `scan.add_configuration_yaml_str(config_string)` as in the example below.
 
+{% include code-header.html %}
 ```shell
 from pyspark.sql import SparkSession, types
 from soda.scan import Scan
@@ -106,22 +110,22 @@ export API_KEY=1234
 echo $API_KEY
 ```
 3. In the configuration YAML file, set the value of the property to reference the environment variable, as in the following example.
-```yaml
-data_source my_database_name:
-  type: postgres
-  connection:
-    host: soda-temp-demo
-    port: '5432'
-    username: sodademo
-    password: ${POSTGRES_PASSWORD}
-    database: postgres
-    schema: public
-
-soda_cloud:
-  host: cloud.soda.io
-  api_key_id: ${API_KEY}
-  api_key_secret: ${API_SECRET}
-```
+    ```yaml
+    data_source my_database_name:
+      type: postgres
+      connection:
+        host: soda-temp-demo
+        port: '5432'
+        username: sodademo
+        password: ${POSTGRES_PASSWORD}
+        database: postgres
+        schema: public
+    
+    soda_cloud:
+      host: cloud.soda.io
+      api_key_id: ${API_KEY}
+      api_key_secret: ${API_SECRET}
+    ```
 4. Save the configuration YAML file, then run a scan to confirm that Soda Core connects to Soda Cloud without issue.
 ```shell
 soda scan -d your_datasource -c configuration.yml checks.yml

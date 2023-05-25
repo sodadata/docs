@@ -12,6 +12,8 @@ redirect_from: /soda-cl/row-count.html
 
 Use a cross check to compare row counts between datasets within the same, or different, data sources.
 
+See also: [Compare data using SodaCL]({% link soda-cl/compare.md %})
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
 # Check row count between datasets in one data source
@@ -31,7 +33,7 @@ checks for dim_customer:
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), cross checks are unique. This check employs the `row_count` metric and is limited in its syntax variation, with only a few mutable parts to specify dataset and data source names.
 
 The example check below compares the volume of rows in two datasets in the same data source. If the row count in the `dim_department_group` is not the same as in `dim_customer`, the check fails.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - row_count same as dim_department_group
@@ -42,7 +44,7 @@ checks for dim_customer:
 You can use cross checks to compare row counts between datasets in different data sources, as in the example below. 
 
 In the example, `retail_customers` is the name of the other dataset, and `aws_postgres_retail` is the name of the data source in which `retail_customers` exists.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - row_count same as retail_customers in aws_postgres_retail
@@ -65,7 +67,7 @@ checks for dim_customer:
 |   | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | - |
 
 #### Example with check name 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - row_count same as retail_customers in aws_postgres_retail:
@@ -73,7 +75,7 @@ checks for dim_customer:
 ```
 
 #### Example with quotes
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - row_count same as "dim_department_group"

@@ -11,6 +11,8 @@ parent: SodaCL
 
 Use a reference check to validate that column contents match between datasets in the same data source. 
 
+See also: [Compare data using SodaCL]({% link soda-cl/compare.md %})
+{% include code-header.html %}
 ```yaml
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
@@ -27,31 +29,25 @@ checks for dim_department_group:
 
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), reference checks are unique. This check is limited in its syntax variation, with only a few mutable parts to specify column and dataset names.
 
-The example below checks that the values in the source column, `department_group_name`, in the `dim_department_group` dataset exist in the destination column, `department_name`, in the `dim_employee` dataset. If the values are absent in the `department_name` column, the check fails.
+The example below checks that the values in the source column, `department_group_name`, in the `dim_department_group` dataset exist somewhere in the destination column, `department_name`, in the `dim_employee` dataset. If the values are absent in the `department_name` column, the check fails.
 * Soda CL considers missing values in the source column as invalid.
-* Optionally, do not use brackets around column names. The brackets serve as visual aids to improve readability.
-
+* Optionally, do not use brackets around column names. The brackets serve as visual aids to improve check readability.
+{% include code-header.html %}
 ```yaml
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
 ```
 
-You can use reference checks to compare the values of multiple columns in different datasets, as in the following example. Soda compares the columns in the order you list them, so in the example below, `last_name` compares to `last_name`, and `first_name` compares to `first_name`.
-
-```yaml
-checks for dim_customers_dev:
-  - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name)
-```
 
 ### Failed row samples
 
 Reference checks automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100.
 
 If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration. You can add this configuration to your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
-
+{% include code-header.html %}
 ```yaml
-checks for dim_customers_dev:
-  - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name):
+checks for dim_customers:
+  - values in (state_code, state_name) must exist in iso_3166-2 (code, subdivision_name):
       samples limit: 20
 ``` 
 <br />
@@ -59,10 +55,10 @@ checks for dim_customers_dev:
 For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
 Alternatively, you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
-
+{% include code-header.html %}
 ```yaml
-checks for dim_customers_dev:
-  - values in (last_name, first_name) must exist in dim_customers_prod (last_name, first_name):
+checks for dim_customers:
+  - values in (state_code, state_name) must exist in iso_3166-2 (code, subdivision_name):
       samples limit: 0
 ``` 
 <br />
@@ -84,7 +80,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 #### Example with check name 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name):
@@ -92,16 +88,14 @@ checks for dim_department_group:
 ```
 
 #### Example with quotes
-
+{% include code-header.html %}
 ```yaml
 checks for dim_department_group:
   - values in ("department_group_name") must exist in dim_employee ("department_name")
 ```
 
 #### Example with dataset filter
-
-Refer to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check) to address challenges specific to reference checks with dataset filters.
-
+{% include code-header.html %}
 ```yaml
 filter customers_c8d90f60 [daily]:
   where: ts > TIMESTAMP '${NOW}' - interval '100y'
@@ -110,11 +104,13 @@ checks for customers_c8d90f60 [daily]:
   - values in (cat) must exist in customers_europe (cat2)
 ```
 
+Refer to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check) to address challenges specific to reference checks with dataset filters.
+
 <br />
 
 ## Go further
 
-
+* Problems with reference checks and dataset filters? Refer to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check).
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Learn more about [Comparing data using SodaCL]({% link soda-cl/compare.md %}).
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.

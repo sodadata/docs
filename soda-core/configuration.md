@@ -24,7 +24,7 @@ Alternatively, you can provide data source connection configurations in the cont
 
 ## Configuration instructions
 
-Consider following the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) that guides you through the steps to configure Soda Core and run a scan of your data.
+Consider following the Take a sip of Soda quick start that guides you through the steps to configure Soda Core and run a scan of your data.
 
 1. Soda Core connects with Spark DataFrames in a unique way, using programmtic scans.
 * If you are using Spark DataFrames, follow the configuration details in [Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes).
@@ -83,7 +83,7 @@ Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/fai
 ## Disable failed row samples for individual checks
 
 For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can set the `samples limit` to `0` to prevent Soda from collecting failed rows samples (and sending the samples to Soda Cloud, if you have connected it to Soda Core) for an individual check, as in the following example.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_percent(email_address) < 50:

@@ -12,6 +12,9 @@ parent: Connect a data source
 
 ## Configuration
 
+Install package: `soda-core-db2`
+
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
   type: db2

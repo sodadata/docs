@@ -11,7 +11,7 @@ parent: SodaCL
 
 Use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.<br />
 *Requires Soda Cloud.*
-
+{% include code-header.html %}
 ```yaml
 sample datasets:
   datasets:
@@ -41,7 +41,7 @@ sample datasets:
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
-* You have <a href="https://cloud.soda.io/signup" target="_blank">signed up for a Soda Cloud account</a>.
+* You have <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">signed up for a Soda Cloud account</a>.
 * You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) within your organization's Soda Cloud account.
 * You, or an Administrator in your organization's Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) which enables you to connect to a data source in Soda Cloud.
 
@@ -69,7 +69,7 @@ OR<br />
 *  to either step [3. Discover Datasets]({% link soda-cloud/add-datasource.md %}#3-discover-datasets) or step [4. Profile Datasets]({% link soda-cloud/add-datasource.md %}#4-profile-datasets) when you add a data source directly in Soda Cloud. 
 
 The example configuration below uses a wildcard character (`%`) to specify that Soda Core sends sample rows to Soda Cloud for all datasets with names that begin with `customer`, and *not* to send samples for any dataset with a name that begins with `test`.
-
+{% include code-header.html %}
 ```yaml
 sample datasets:
   datasets:
@@ -80,7 +80,7 @@ sample datasets:
 <br />
 
 You can also specify individual datasets to include or exclude, as in the following example.
-
+{% include code-header.html %}
 ```yaml
 sample datasets:
   datasets:
@@ -111,7 +111,7 @@ sample datasets:
 |   | Apply a dataset filter to partition data during a scan. |  -  |
 
 #### Example with wildcards 
-
+{% include code-header.html %}
 ```yaml
 sample datasets:
   datasets:

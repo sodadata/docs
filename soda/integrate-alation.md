@@ -15,13 +15,11 @@ Integrate Soda with Alation to access details about the quality of your data fro
 * Run data quality checks using Soda and visualize quality metrics and rules within the context of a data source, dataset, or column in Alation. 
 * Use Soda Cloud to flag poor-quality data in lineage diagrams and during live querying. 
 * Give your Alation users the confidence of knowing that the data they are using is sound.
- 
-![alation-integration](/assets/images/alation-integration.png){:height="700px" width="700px"} 
+* 🎥 Watch a <a href="https://vimeo.com/829042977/fed022bd3d" target="_blank">2-minute overview</a> showcasing the integration of Soda and Alation.
 
+![alation-integration](/assets/images/alation-integration.png){:height="600px" width="600px"} 
 <br />
 
-Watch an video that demonstrates the integration between Soda and Alation.
-<iframe src="https://player.vimeo.com/video/563765014?h=672726942b" width="680" height="440" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Prerequisites
@@ -34,6 +32,9 @@ Watch an video that demonstrates the integration between Soda and Alation.
 
 
 ## Set up the integration
+
+🎥 Watch a 5-minute video that demonstrates how to integrate Soda and Alation.
+<iframe src="https://player.vimeo.com/video/563765014?h=672726942b" width="680" height="440" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 1. Sign into your Soda Cloud account and confirm that you see the datasets you expect to see in the data source you wish to test for quality.
 2. To connect your Soda Cloud account to your Alation Service Account, create an `.env` file in your integration project in your git repo and include details according to the example below. To obtain the values for your Soda API keys, refer to the [Connect to Soda Cloud documentation]({% link soda-core/connect-core-to-cloud.md %}). <br />

@@ -3,7 +3,7 @@
   "info": {
     "title": "Soda Cloud Reporting API (Preview)",
     "description": "\nThis API enables you to query reporting-oriented data from your Soda Cloud account.\nUse this data to power dashboards and reports on the coverage and quality of your data.\n\nAuthentication\n-----\nThe API supports both `HTTPBasic` authentication and `TokenAuth` authentication. Except for the `/get_token` endpoint,\nwhich only supports HTTP Basic authentication.\n\n- `HTTPBasic` authentication requires you to provide a username and password via headers. Each endpoint \"Try It\" section\nwill show you exactly how to do that.\n\n- `TokenAuth` requires that you obtain a Soda token from the `/get_token` endpoint using your username and password\nin accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token`\nendpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with\nany of the other endpoints.\n\n- `XApiKeyId` and `XApiKeySecret` allow you to use API keys generated in your Cloud Profile. Use this method if\nyour organization is using Single Sign-On (SSO). Provide your API Key Id and API Key Secret in the\n`X-API-KEY-ID` and `X-API-KEY-SECRET` headers, respectively. If you do not know how to generate your API Key and Secret\npair follow the\n[Connect Soda Core to Soda Cloud](https://docs.soda.io/soda-core/configure.html#connect-soda-core-to-soda-cloud)\ndocumentation.\n\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required,\nin the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication\ncredentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
-    "version": "1.0.0a27"
+    "version": "1.0.0a33"
   },
   "servers": [
     {
@@ -58,7 +58,7 @@
               "title": "From Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2023-02-13T16:15:02.655046"
+              "default": "2023-03-16T11:34:07.095187"
             },
             "name": "from_datetime",
             "in": "query"
@@ -69,7 +69,7 @@
               "title": "To Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2023-03-16T16:15:02.655061"
+              "default": "2023-04-16T11:34:07.095207"
             },
             "name": "to_datetime",
             "in": "query"
@@ -97,6 +97,35 @@
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [
+          { "HTTPBasic": [] },
+          { "SodaBackendToken": [] },
+          { "APIKeyCookie": [] },
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
+        ]
+      }
+    },
+    "/last_etl_refresh": {
+      "get": {
+        "tags": ["Status"],
+        "summary": "Last ETL Refreshed Info (Preview)",
+        "description": "This endpoint returns the last ETL refresh information\n\nUsage\n-----\nUse this endpoint to capture the last ETL refresh information to make sure that the data is\nup-to-date.\n\nReturns\n-------\nAn object of type `LastETLRefreshResult` containing a dictionary of `LastETLRefreshResultData`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.",
+        "operationId": "last_etl_refresh_last_etl_refresh_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LastETLRefreshResult"
+                }
               }
             }
           }
@@ -434,8 +463,8 @@
                   "page": 1,
                   "size": 400,
                   "status": "unresolved",
-                  "from_datetime": "2023-02-13T16:15:02.286125",
-                  "to_datetime": "2023-03-16T16:15:02.286134"
+                  "from_datetime": "2023-03-16T11:34:06.771083",
+                  "to_datetime": "2023-04-16T11:34:06.771092"
                 }
               }
             }
@@ -546,8 +575,21 @@
         "title": "CheckRequest",
         "type": "object",
         "properties": {
-          "page": { "title": "Page", "type": "integer", "default": 1 },
-          "size": { "title": "Size", "type": "integer", "default": 400 },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page number",
+            "default": 1
+          },
+          "size": {
+            "title": "Size",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page size",
+            "default": 400
+          },
           "dataset_ids": {
             "title": "Dataset Ids",
             "type": "array",
@@ -726,8 +768,21 @@
         "title": "CheckResultsRequest",
         "type": "object",
         "properties": {
-          "page": { "title": "Page", "type": "integer", "default": 1 },
-          "size": { "title": "Size", "type": "integer", "default": 400 },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page number",
+            "default": 1
+          },
+          "size": {
+            "title": "Size",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page size",
+            "default": 400
+          },
           "dataset_ids": {
             "title": "Dataset Ids",
             "type": "array",
@@ -1043,8 +1098,21 @@
         "title": "DatasetHealthRequest",
         "type": "object",
         "properties": {
-          "page": { "title": "Page", "type": "integer", "default": 1 },
-          "size": { "title": "Size", "type": "integer", "default": 400 },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page number",
+            "default": 1
+          },
+          "size": {
+            "title": "Size",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page size",
+            "default": 400
+          },
           "dataset_ids": {
             "title": "Dataset Ids",
             "type": "array",
@@ -1245,6 +1313,11 @@
             },
             "description": "Atributes of a dataset"
           },
+          "datasource_id": {
+            "title": "Datasource Id",
+            "type": "string",
+            "description": "UUID of the data source as assigned by the Soda Cloud platform."
+          },
           "datasource_name": {
             "title": "Datasource Name",
             "type": "string",
@@ -1277,8 +1350,21 @@
         "title": "DatasetsRequest",
         "type": "object",
         "properties": {
-          "page": { "title": "Page", "type": "integer", "default": 1 },
-          "size": { "title": "Size", "type": "integer", "default": 400 },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page number",
+            "default": 1
+          },
+          "size": {
+            "title": "Size",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page size",
+            "default": 400
+          },
           "dataset_ids": {
             "title": "Dataset Ids",
             "type": "array",
@@ -1457,8 +1543,21 @@
         "title": "IncidentsRequest",
         "type": "object",
         "properties": {
-          "page": { "title": "Page", "type": "integer", "default": 1 },
-          "size": { "title": "Size", "type": "integer", "default": 400 },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page number",
+            "default": 1
+          },
+          "size": {
+            "title": "Size",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page size",
+            "default": 400
+          },
           "dataset_ids": {
             "title": "Dataset Ids",
             "type": "array",
@@ -1476,14 +1575,14 @@
             "type": "string",
             "description": "ISO timestamp from which you want to retrieve incidents. Defaults to last 31 days.",
             "format": "date-time",
-            "default": "2023-02-13T16:15:02.286125"
+            "default": "2023-03-16T11:34:06.771083"
           },
           "to_datetime": {
             "title": "To Datetime",
             "type": "string",
             "description": "ISO timestamp up to which you want to retrieve incidents. Defaults to today.",
             "format": "date-time",
-            "default": "2023-03-16T16:15:02.286134"
+            "default": "2023-04-16T11:34:06.771092"
           }
         },
         "description": "Incidents request JSON Body."
@@ -1504,6 +1603,38 @@
         },
         "description": "Array of `IncidentsData`."
       },
+      "LastETLRefreshResult": {
+        "title": "LastETLRefreshResult",
+        "type": "object",
+        "properties": {
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "default": "last_etl_refresh"
+          },
+          "data": {
+            "title": "Data",
+            "allOf": [
+              { "$ref": "#/components/schemas/LastETLRefreshResultData" }
+            ],
+            "description": "Contains ETL last refreshed timestamp"
+          }
+        },
+        "description": "Result of request to the last ETL refreshed endpoint."
+      },
+      "LastETLRefreshResultData": {
+        "title": "LastETLRefreshResultData",
+        "type": "object",
+        "properties": {
+          "last_etl_refresh_at": {
+            "title": "Last Etl Refresh At",
+            "type": "string",
+            "description": "ISO timestamp of the date at which ETL was last refreshed.",
+            "format": "date-time"
+          }
+        },
+        "description": "Contains ETL last refreshed timestamp"
+      },
       "NoContentError": {
         "title": "NoContentError",
         "type": "object",
@@ -1523,7 +1654,7 @@
           "detail": {
             "title": "Detail",
             "type": "string",
-            "default": "No results for the requested data. If you think this is a bug and you should be getting results, get in touch with us."
+            "default": "No results for the requested data. Since the data is pre-processed in batches it might be that the data you are looking for has not yet been processed. You can check when the last refresh took place by using the /last_etl_refresh_info endpoint. If you think this is a bug and you should be getting results, get in touch with us."
           }
         },
         "description": "Response Schema of a NoContent Error"

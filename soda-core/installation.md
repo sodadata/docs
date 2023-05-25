@@ -183,7 +183,6 @@ You have three installation options to choose from:
 ## Go further
 
 * Next: [Configure]({% link soda-core/configuration.md %}) your newly-installed Soda Core to connect to your data source.
-* Consider completing the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) for a tutorial-style setup experience.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

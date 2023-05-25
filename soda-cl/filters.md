@@ -13,14 +13,16 @@ redirect_from:
 *Last modified on {% last_modified_at %}*
 
 Use filters or variables to specify portions of data in your dataset against which Soda Core executes checks during a scan.
-
+{% include code-header.html %}
 ```yaml
 # In-check filter
 checks for dim_employee:
   - max(vacation_hours) < 80:
       name: Too many vacation hours for US Sales
       filter: sales_territory_key = 11
-
+```
+{% include code-header.html %}
+```yaml
 # Dataset filter with variables
 filter CUSTOMERS [daily]:
   where: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
@@ -28,7 +30,9 @@ filter CUSTOMERS [daily]:
 checks for CUSTOMERS [daily]:
   - row_count = 6
   - missing(cat) = 2
-
+```
+{% include code-header.html %}
+```yaml
 # In-check variable 
 checks for ${DATASET}:
   - invalid_count(last_name) = 0:
@@ -88,7 +92,7 @@ For a dataset filter, Soda Core generates a separate query and, again, attempts 
 If your data source is partitioned, or if you wish to apply checks in your [agreement]({% link soda-cloud/agreements.md %}) to a specific interval of time, you can do so using a dataset filter. 
 
 Use the built-in `NOW` variable to specify a relative time partition. Reference the following example to add a dataset filter to either your checks YAML file, or to the **Write Checks** step in the agreement workflow in Soda Cloud. The `where` clause in the example defines the time partition to mean "now, less one day". 
-
+{% include code-header.html %}
 ```yaml
 filter sodatest_dataset [daily]:
   where: ts > TIMESTAMP '${NOW}' - interval '1d'
@@ -121,7 +125,7 @@ soda scan -d aws_postgres_retail duplicate_count_filter.yml -v date=2022-07-25 -
 #### Example: customize a check name
 
 See also: [Customize check names]({% link soda-cl/optional-config.md %}#customize-a-check-name).
-
+{% include code-header.html %}
 ```yaml
 variables:
   name: Customers UK
@@ -133,7 +137,7 @@ checks for dim_customer:
 <br />
 
 #### Example: provide a dataset name at scan time
-
+{% include code-header.html %}
 ```yaml
 checks for ${DATASET}:
   - invalid_count(last_name) = 0:
@@ -141,6 +145,7 @@ checks for ${DATASET}:
 ```
 
 Scan command:
+{% include code-header.html %}
 ```shell
 soda scan -d my_datasource_name -c configuration.yml -v DATASET=dim_customer checks.yml
 ```
@@ -148,7 +153,7 @@ soda scan -d my_datasource_name -c configuration.yml -v DATASET=dim_customer che
 <br />
 
 #### Example: provide a column name at scan time
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - invalid_count(${COLUMN}) = 0:
@@ -156,6 +161,7 @@ checks for dim_customer:
 ```
 
 Scan command:
+{% include code-header.html %}
 ```shell
 soda scan -d my_datasource_name -c configuration.yml -v COLUMN=last_name checks.yml
 ```
@@ -163,7 +169,7 @@ soda scan -d my_datasource_name -c configuration.yml -v COLUMN=last_name checks.
 <br />
 
 #### Example: provide a threshold value at scan time
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - invalid_count(last_name) = ${LENGTH}:
@@ -171,12 +177,13 @@ checks for dim_customer:
 ```
 
 Scan command:
+{% include code-header.html %}
 ```shell
 soda scan -d my_datasource_name -c configuration.yml -v LENGTH=0 checks.yml
 ```
 
 #### Example: use a variable in an in-check filter
-
+{% include code-header.html %}
 ```yaml
 checks for dim_employee:
   - max(vacation_hours) < 80:
@@ -187,7 +194,7 @@ checks for dim_employee:
 #### Example: use a variable for a check identity
 
 Read more about adding a [check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity).
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - row_count > 0:
@@ -235,6 +242,7 @@ soda scan -d adventureworks -c configuration.yml -v USERNAME=sodacore -v PASSWOR
 * You cannot use a variable to provide a scan-time value for a [configuration key]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) value, such as the value for `valid length` for an `invalid_count` check.
 * You may need to wrap date values for variables in single quotes for a check to execute properly. The use of single quotes is bound to the data source, so if your data source demands single quotes around date values for SQL queries, you must also include them when providing date values in SodaCL. Refer to the [# Dataset filter with variables](#filters-and-variables) example at the top of this page.  
 * Except for using the `${NOW}` variable in a dataset filter to [configure a time partition](#configure-a-time-partition-using-the-now-variable) for checks, you cannot use variables when defining checks in an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. When using variables, you normally pass the values for those variables at scan time, adding them to the `soda scan` command with a `-v` option. However, because scans that execute checks defined in an agreement run on a schedule according to a [scan definition]({% link soda/glossary.md %}#scan-definition), there is no opportunity to add dynamic values for variables at scan time.
+* *Known issue:* SodaCL does not support using variables in [profiling configurations]({% link soda-cl/profile.md %}). <!--SAS-1642-->
 
 
 ## Go further

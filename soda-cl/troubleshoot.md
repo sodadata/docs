@@ -15,6 +15,8 @@ parent: SodaCL
 [Errors with freshness checks](#errors-with-freshness-checks)<br />
 [Checks not evaluated](#checks-not-evaluated)<br />
 [Filter not passed with reference check](#filter-not-passed-with-reference-check)<br />
+[Failed row check with CTE error](#failed-row-check-with-cte-error)<br />
+[Errors with column names contain periods or colons](#errors-when-column-names-contain-periods-or-colons)<br />
 <br />
 
 ## Errors with valid format
@@ -166,6 +168,26 @@ checks for customers_c8d90f60 [daily]:
 checks for customers_c8d90f60 [daily-ref]:
   - values in (cst_size, cat) must exist in customers_c8d90f60 (cst_size, cat)
 ```
+
+## Failed row check with CTE error
+
+**Problem:** Running scan with a failed row check produces and error that reads `YAML syntax error while parsing a block mapping`.
+
+**Solution:**
+If you are using a failed row check with a CTE fail condition, the syntax checker does not accept an expression that begins with double-quotes. In that case, as a workaround, add a meaningless `true and` to the beginning of the CTE, as in the following example. 
+
+```yaml
+checks for corp_value:
+  - failed rows:
+      fail condition: true and "column.name.PX" IS NOT null
+```
+
+## Errors when column names contain periods or colons
+
+**Problem**: A check you've written executes against a column with a name that includes a period or colon, and scans produce an error.
+
+**Solution**: Column names that contain colons or periods can interfere with SodaCL's YAML-based syntax. For any column names that contain these punctuation marks, [apply quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) to the column name in the check to prevent issues. <br />
+
 
 ## Go further
 

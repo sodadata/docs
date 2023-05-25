@@ -26,6 +26,9 @@ Instances of "dataset" in Soda documentation always reference the former.
 
 ## Connection configuration
 
+Install package: `soda-core-bigquery`
+
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
   type: bigquery
@@ -84,6 +87,7 @@ Using GCP BigQuery, you have the option of using one of several methods to authe
 #### Application Default Credentials
 
 Add the `use_context_auth` property to your connection configuration, as per the following example.
+{% include code-header.html %}
 ```yaml
 data_source my_datasource:
   type: bigquery
@@ -96,6 +100,7 @@ data_source my_datasource:
 #### Application Default Credentials with Service Account impersonation
 
 Add the `use_context_auth` and `impersonation_account` properties to your connection configuration, as per the following example.
+{% include code-header.html %}
 ```yaml
 data_source my_datasource:
   type: bigquery
@@ -109,7 +114,7 @@ data_source my_datasource:
 #### Service Account Key with Service Account impersonation
 
 Add the `impersonation_account` property to your connection configuration, as per the following example.
-
+{% include code-header.html %}
 ```yaml
 data_source my_database_name:
   type: bigquery
@@ -141,6 +146,7 @@ If you already store information about your data source in a JSON file in a secu
 * the `account_info_json_path` in your data source connection configuration 
 
 You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deployment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.
+{% include code-header.html %}
 ```yaml
 soda:
   scanlauncher:
@@ -164,6 +170,7 @@ kubectl create secret generic -n <soda-agent-namespace> gcloud-credentials --fro
 After you make both of these changes, you must redeploy the Soda Agent. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.   
 
 Adjust the data source connection configuration to include the `account_info_json_path` configuration, as per the following example. 
+{% include code-header.html %}
 ```yaml
 my_datasource_name:
   type: bigquery

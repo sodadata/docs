@@ -121,7 +121,7 @@ kubectl logs -l agent.soda.io/component=scanlauncher -n soda-agent
 ## Go further
 
 * Learn more about [Soda Agent basic concepts]({% link soda-agent/basics.md %}).
-* Consider completing the [Quick start for Soda Cloud]({% link soda/quick-start-sodacloud.md %}) for more context around setting up a new data source and creating a new agreement.
+* Consider completing the [Enable end-user data quality testing]({% link soda/quick-start-end-user.md %}) guide for more context around setting up a new data source and creating a new agreement.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

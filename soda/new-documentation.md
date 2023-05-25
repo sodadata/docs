@@ -9,8 +9,52 @@ parent: Reference
 
 <br />
 
-#### March 30, 2023
+#### June 13, 2023
 * Added preview documentation for the new [Group by]({% link soda-cl/group-by.md %}) configuration and [Group evolution check]({% link soda-cl/group-evolution.md %}), both in preview state in SodaCL.
+
+#### May 23, 2023
+* Added a video overview showcasing the integration of [Soda and Alation]({% link soda/integrate-alation.md %}).
+* Added a note for a [Known Issue]({% link soda-cl/profile.md %}#limitations-and-known-issues) regarding the use of variables in profiling configurations.
+
+#### May 20, 2023
+* Added documentation for using [private key authentication for Snowflake]({% link soda-agent/secrets.md %}#use-a-values-file-to-store-private-key-authentication-values-for-snowflake) when deploying a Soda Agent. 
+
+#### May 15, 2023
+* Replaced getting started guides with entirely new content with a focus on data engineering. 
+  * [Take a sip of Soda]({% link soda/quick-start-sip.md %})
+  * [Test data in a pipeline]({% link soda/quick-start-prod.md %})
+  * [Test data during development]({% link soda/quick-start-dev.md %})
+  * [Enable end users to test data]({% link soda/quick-start-end-user.md %})
+* Replaced the [product overview]({% link soda/product-overview.md %}) with newly-written material.
+
+#### May 11, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.33 and Soda Core 3.0.34.
+* Added instructions for [user-defined metrics]({% link soda-cl/user-defined.md %}#define-user-defined-checks) to access and use queries in separate SQL files.
+* Adjusted content for the revised CLI and Soda Cloud scan output for [schema checks]({% link soda-cl/schema.md %}#expect-one-check-result). Schema check results now display the output for all alerts triggered during a scan.
+
+#### May 9, 2023
+* Added the install package to each connector's page.
+* Added a connectivity troubleshooting tip to [Connect to Snowflake]({% link soda/connect-snowflake.md %}#troubleshoot).
+
+#### May 2, 2023
+* Published content regarding the set up of [multiple Soda Cloud organizations]({% link soda-cloud/roles-and-rights.md %}#add-multiple-organizations) for use with different environments in your network infrastructure.
+* Added a note about [selecting a region]({% link soda-core/connect-core-to-cloud.md %}#connect) when you sign up for a new Soda Cloud account.
+
+#### April 28, 2023
+* Corrected the explanation of the [`duplicate_count` check]({% link soda/quick-start-sodacl.md %}#duplicate-check) regarding checks that included multiple arguments (columns).
+
+#### April 18, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.31 and Soda Core 3.0.32.
+
+#### April 11, 2023
+* Added a copy-to-clipboard button to most code snippets in documentation.
+* Added attribute mapping details to add Soda Cloud to [Google Workspace as a SAML app]({% link soda-cloud/sso.md %}#add-soda-cloud-to-google-workspace).
+
+#### March 29, 2023
+* Revised instructions to add Soda Cloud to [Google Workspace as a SAML app]({% link soda-cloud/sso.md %}#add-soda-cloud-to-google-workspace).
+
+#### March 28, 2023
+* Added to Soda Agent documentation to include a setting for which Soda Cloud endpoint to use, according to region. See [Deploy an Soda Agent in a Kubernetes cluster]({% link soda-agent/deploy.md %}#deploy-using-cli-only).
 
 #### March 24, 2023
 * Added content to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check) to address challenges when using a reference check with a dataset filter.
@@ -80,7 +124,7 @@ parent: Reference
 * Updated screenshots of Soda Cloud for [deploying an agent]({% link soda-agent/deploy.md %}#create-a-soda-cloud-account-and-api-keys).
 * Added [explicit detail]({% link soda-cl/filters.md %}#configuration-details-and-limitations) about when to wrap date variables in single quotes.
 * Added a custom check templates for [validating event sequence]({% link soda-cl/check-templates.md %}#compare-dates-to-validate-event-sequence) with date columns.
-* Updated the Soda product [feature list]({% link soda/product-matrix.md %}).
+* Updated the Soda product feature list.
 
 #### January 13, 2023
 
@@ -310,7 +354,7 @@ checks for dim_customers:
 * Added an [example DAG]({% link soda-core/orchestrate-scans.md %}#example-dag) for using Soda with Airflow PythonOperator.
 * Added [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) documentation.
 * Expanded [For each]({% link soda-cl/for-each.md %}) documentation with optional configurations and examples.
-* Published a new [Quick start for Soda Cloud (Preview)]({% link soda/quick-start-sodacloud.md %}) that outlines how to use preview features in Soda Cloud to connect to a data source, then write a new agreement for stakeholder approval.
+* Published a new Quick start for Soda Cloud (Preview) that outlines how to use preview features in Soda Cloud to connect to a data source, then write a new agreement for stakeholder approval.
 
 #### August 11, 2022
 
@@ -368,7 +412,7 @@ checks for dim_customers:
 #### June 21, 2022
 
 * Added details to Soda Core documentation for using [system variables]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables).  to store sensitive credentials.
-* Updated the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}) with slightly changed instructions.
+* Updated the Quick start for Soda Core and Soda Cloudwith slightly changed instructions.
 
 #### June 20, 2022
 
@@ -398,7 +442,7 @@ checks for dim_customers:
 * Added some new [Soda Core content]({% link soda-core/overview-main.md %}) to documentation.
 * Moved Soda SQL and Soda Spark in documentation leftnav.
 * Updated Home page with links to new Soda Core documentation.
-* Fixed formatting in [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}).
+* Fixed formatting in Quick start for Soda Core and Soda Cloud.
 
 #### June 8, 2022
 
@@ -430,7 +474,7 @@ checks for dim_customers:
 #### May 31, 2022
 
 * Updated SodaCL [Schema checks]({% link soda-cl/schema.md %}) and [Reference checks]({% link soda-cl/reference.md %}) documentation.
-* Corrected Soda Cloud connection syntax in the [Quick start for Soda Core and Soda Cloud]({% link soda/quick-start-soda-core.md %}).
+* Corrected Soda Cloud connection syntax in the Quick start for Soda Core and Soda Cloud.
 * Removed separate Duplicate checks documentation, redirecting to [Numeric metrics]({% link soda-cl/numeric-metrics.md %}).
 
 #### May 26, 2022
@@ -441,7 +485,7 @@ checks for dim_customers:
 
 #### May 25, 2022
 
-* Revised and renamed **Data observability** to **[Data concepts]({% link soda/data-concepts.md %})**.
+* Revised and renamed **Data observability** to **Data concepts**.
 
 #### May 24, 2022
 
@@ -461,7 +505,7 @@ checks for dim_customers:
 
 #### April 26, 2022
 
-* Updated a set of [Soda product comparison]({% link soda/product-matrix.md %}) matrices to illustrate the features and functionality available with different Soda tools.
+* Updated a set of Soda product comparison matrices to illustrate the features and functionality available with different Soda tools.
 
 #### April 25, 2022
 

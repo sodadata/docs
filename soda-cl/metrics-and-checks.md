@@ -11,10 +11,10 @@ redirect_from:
 <!--Linked to UI, access Shlink; though actually linked in CLI error message-->
 *Last modified on {% last_modified_at %}*
 
-**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with **Soda Core**, Soda’s open-source, command-line tool, you use SodaCL to write checks for data quality, then use Soda Core to scan the data in your data source and execute those checks.
+**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Use SodaCL to write checks for data quality which Soda then executes when it scans the data in your data source.
 
 A **metric** is a property of the data in your dataset. A **threshold** is the value for a metric that Soda checks against during a scan. Usually, you use both a metric and a threshold to define a SodaCL **check** in a checks YAML file, like the following example that checks that the `dim_customer` dataset is not empty.  
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - row_count > 0
@@ -69,7 +69,7 @@ A **standard** check, as illustrated above with `row_count`, uses a language pat
 Some checks that you write with SodaCL do not use metrics and thresholds, and instead follow **unique patterns** relevant to the data quality parameters they check. Each unique check type has its own documentation.
 
 For example, a reference check that validates that the values in a column in one dataset match exactly with the values in another column in another dataset uses a unique pattern.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_employees_dev:
   - values in salary must exist in dim_employee_prod salary
@@ -92,7 +92,7 @@ checks for dim_employees_dev:
 Finally, the **user-defined** checks make use of common table expressions (CTE) or SQL queries to construct a check; see an example below. This check type is designed to meet the needs of more complex and specific data quality checks, needs which cannot otherwise be met using the built-in standard and unique checks SodaCL provides. Each user-defined check type has its own documentation.
 
 Use these checks to prepare expressions or queries for your data that Soda Core executes during a scan along with all the other checks in your checks YAML file.
-
+{% include code-header.html %}
 ```yaml
 checks for customers:
   - avg_surface < 1068:
@@ -131,7 +131,7 @@ Generally, a fixed threshold check has three or four mutable parts:
 
 
 <br />
-
+{% include code-header.html %}
 ```yaml
 checks for retail_products: 
   - row_count > 0
@@ -170,20 +170,21 @@ The following sections present several ways to set boundaries using the `row_cou
 
 ### Implicitly include thresholds in a check
 By default, SodaCL includes the values that define the boundary thresholds when Soda Core executes a check. In the following example, the check passes if the number of rows is equal to 10, 11, 12, 13, 14, or 15 because SodaCL includes both boundary thresholds, `10` and `15`, when Soda Core executes the check.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - row_count between 10 and 15
 ```
 
 Use negative values to set boundaries, if you wish. The check in the following example passes if the number of rows is equal to -3, -2, -1, 0, 1, 2, 3, 4, or 5.
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - row_count between -3 and 5
 ```
 
 Use the `not between` comparison phrase to establish a range of acceptable thresholds, so that anything that falls *outside* the boundaries you specify yields a fail check result. The check in the following example passes if the number of rows is *not* equal to -3, -2, -1, 0, 1, 2, 3, 4, or 5.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - row_count not between -3 and 5
@@ -191,14 +192,14 @@ checks for dim_customer:
 
 ### Explicitly exclude thresholds in a check
 To exclude the values that define the boundary thresholds, use the opening bracket `(` and closing bracket `)` characters. In the following example, the check passes if the number of rows is equal to 11, 12, 13, 14, or 15 because the opening bracket excludes 10 as an acceptable value.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - row_count between (10 and 15
 ```
 
 Similarly, the following example check passes if the number of rows is equal to 11, 12, 13, or 14.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - row_count between (10 and 15)
@@ -208,7 +209,7 @@ checks for dim_customer:
 Though SodaCL includes the values that define the boundary thresholds during a check by default, you can use square brackets, `[` and `]`, to explicitly specify which values to include, if you wish. 
 
 For example, all of the following checks are equivalent and pass if the number of rows is equal to 10, 11, 12, 13, 14, or 15.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - row_count between 10 and 15
@@ -218,6 +219,7 @@ checks for dim_customer:
 ```
 
 ## List of SodaCL metrics and checks
+{% include code-header.html %}
 ```yaml
 anomaly score
 avg

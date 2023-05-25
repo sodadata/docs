@@ -34,7 +34,7 @@ If you want to compare row counts between two datasets and allow for some accept
 ✅ GCP Big Query  
 ✅ PostgreSQL  
 ✅ Snowflake
-
+{% include code-header.html %}
 {% raw %}
 ```yaml
 checks for dim_product:
@@ -87,7 +87,7 @@ Ideally, you would generate a <a href="https://en.wikipedia.org/wiki/Surrogate_k
 ✅ GCP Big Query  
 ✅ PostgreSQL  
 ✅ Snowflake
-
+{% include code-header.html %}
 {% raw %}
 ```yaml
 checks for dim_product:
@@ -129,7 +129,7 @@ The first example is a skeletal query into which you can insert a variety of con
 ✅ GCP Big Query  
 ✅ PostgreSQL  
 ✅ Snowflake
-
+{% include code-header.html %}
 {% raw %}
 ```yaml
 checks for dim_product:
@@ -151,7 +151,7 @@ checks for dim_product:
 ✅ GCP Big Query  
 ✅ PostgreSQL  
 ✅ Snowflake
-
+{% include code-header.html %}
 {% raw %}
 ```yaml
 checks for dim_product:
@@ -173,7 +173,7 @@ checks for dim_product:
 ✅ GCP Big Query  
 ✅ PostgreSQL  
 ✅ Snowflake
-
+{% include code-header.html %}
 {% raw %}
 ```yaml
 checks for dim_product:
@@ -205,7 +205,7 @@ Use one of the following **data source-specific** custom metric templates in you
 
 ✅ Amazon Redshift  
 ✅ PostgreSQL 
-
+{% include code-header.html %}
 {% raw %}
 ```yaml
 checks for dim_product:
@@ -260,7 +260,7 @@ checks for dim_product:
 
 
 ✅ GCP Big Query  
-
+{% include code-header.html %}
 {% raw %}
 ```yaml
 checks for dim_product:
@@ -295,7 +295,7 @@ checks for dim_product:
 
 
 ✅ Snowflake
-
+{% include code-header.html %}
 {% raw %}
 ```yaml
 checks for dim_product:
@@ -338,7 +338,7 @@ index ; start_date ; end_date
 
 
 ✅ GCP Big Query  
-
+{% include code-header.html %}
 {% raw %}
 ```yaml
 checks for exchange_operations:

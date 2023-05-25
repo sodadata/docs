@@ -6,9 +6,10 @@ parent: SodaCL
 ---
 
 # User-defined checks 
+<!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-If the built-in set of [metrics and checks]({% link soda-cl/metrics-and-checks.md %}) that SodaCL offers do not quite give you the information you need from a scan, you can define your own metrics to customize your checks. User-defined checks essentially enable you to create common-table expressions or SQL queries that Soda Core runs during a scan.
+If the built-in set of [metrics and checks]({% link soda-cl/metrics-and-checks.md %}) that SodaCL offers do not quite give you the information you need from a scan, you can define your own metrics to customize your checks. User-defined checks essentially enable you to create common-table expressions (CTE) or SQL queries that Soda Core runs during a scan, or you can reference a file that contains your CTE or SQL query.
 
 [Define user-defined checks](#define-user-defined-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />
@@ -20,9 +21,11 @@ If the built-in set of [metrics and checks]({% link soda-cl/metrics-and-checks.m
 
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), these are user-defined checks. Truly, it is the metric that you define yourself, then use in a check.
 
-The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the metric that is then used in the check. The check itself follows the simple pattern of a [standard check]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) that uses a metric, a comparison symbol or phrase, and a threshold. You specify the CTE value for the custom metric using a nested **expression key** which also defines the name of the new custom metric.
-* The name you provide for a custom metric must *not* contain spaces.
+The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the metric that is then used in the check. The check itself follows the simple pattern of a [standard check]({% link soda-cl/metrics-and-checks.md %}#standard-check-types) that uses a metric, a comparison symbol or phrase, and a threshold. 
 
+You specify the CTE value for the custom metric using a nested **expression key** which also defines the name of the new custom metric. The name you provide for a custom metric must *not* contain spaces.
+
+{% include code-header.html %}
 ```yaml
 checks for dim_reseller:
   - avg_order_span between 5 and 10:
@@ -41,6 +44,8 @@ Instead of using CTE to define a custom metric, you can use a SQL query. The exa
 * The name you provide for a custom metric must *not* contain spaces.
 * Though you specify the dataset against which to run the query in the SQL query, you must also provide the dataset identifier in the `checks for` section header. Without the dataset identifier, Soda Core cannot send the check results to Soda Cloud.
 
+
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - product_stock >= 50:
@@ -55,13 +60,26 @@ checks for dim_product:
 | query key | `product_stock query` |
 | query value | `SELECT COUNT(safety_stock_level - days_to_manufacture) FROM dim_product` |
 
+<br />
+
+Instead of embedding an expression or a query directly in the check definition, you can direct Soda to use a query or expression you have defined in a different file. The example check below follow the same pattern as the metrics that use CTE or SQL queries, but this nested key identifies the **file path** of your query file.
+* The name you provide for a custom metric must *not* contain spaces.
+* Though you specify the dataset against which to run the query in the SQL query, you must also provide the dataset identifier in the `checks for` section header. Without the dataset identifier, Soda Core cannot send the check results to Soda Cloud.
+
+
+{% include code-header.html %}
+```yaml
+checks for product_desc:
+  - avg_surface between 1068 and 1069:
+      avg_surface sql_file: "filepath/filename.sql"
+```
 
 <br />
 
 Once defined in your checks YAML file, you can reference a user-defined metric in other checks in the same file. The user defined metric must exist in the file *above* other checks that reference it. 
 
 The following example includes a second check that references the custom metric defined above it.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - product_stock >= 50:
@@ -88,6 +106,7 @@ checks for dim_product:
 
 #### Example with check name 
 
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - product_stock >= 50:
@@ -99,6 +118,7 @@ checks for dim_product:
 
 #### Example with alert configuration
 
+{% include code-header.html %}
 ```yaml
   - avg_order_span:
       avg_order_span expression: AVG(last_order_year - first_order_year)
@@ -108,6 +128,7 @@ checks for dim_product:
 
 #### Example with quotes
 
+{% include code-header.html %}
 ```yaml
 checks for dim_product:
   - product_stock >= 50:
@@ -118,6 +139,7 @@ checks for dim_product:
 
 #### Example with for each
 
+{% include code-header.html %}
 ```yaml
 for each dataset T:
   datasets:
@@ -129,6 +151,7 @@ for each dataset T:
 
 #### Example with dataset filter
 
+{% include code-header.html %}
 ```yaml
 filter FULFILLMENT [daily]:
   where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'

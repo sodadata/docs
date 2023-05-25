@@ -10,8 +10,18 @@ parent: Connect a data source
 
 {% include connect-to-intro.md %}
 
+[Configuration](#configuration)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Private key authentication](#private-key-authentication)<br />
+[Test the data source connection](#test-the-data-source-connection)<br />
+[Supported data types](#supported-data-types)<br />
+[Troubleshoot](#troubleshoot)<br />
+<br />
+
 ## Configuration
 
+Install package: `soda-core-snowflake`
+
+{% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
   type: snowflake
@@ -55,6 +65,7 @@ data_source my_datasource_name:
 ### Private key authentication
 
 You can use the `private_key` and `private_key_passphrase` parameters to specify for key pair authentication. In you configuration YML file, add the parameters as per the following example. 
+{% include code-header.html %}
 ```yaml
 data_source snowflake:
   type: snowflake
@@ -70,6 +81,8 @@ data_source snowflake:
       -----END ENCRYPTED PRIVATE KEY-----
 ```
 
+If you use private key authentication with a Soda Agent, refer to [Manage sensitive values for a Soda Agent]({% link soda-agent/secrets.md %}#use-a-values-file-to-store-private-key-authentication-values-for-snowflake).
+
 {% include test-connection.md %}
 
 ## Supported data types
@@ -79,6 +92,14 @@ data_source snowflake:
 | text     | CHAR, VARCHAR, CHARACTER, STRING, TEXT                                                                          |
 | number   | NUMBER, INT, INTEGER, BIGINT, SMALLINT, TINYINT, BYTEINT, FLOAT, FLOAT4, FLOAT8, DOUBLE, DOUBLE PRECISION, REAL |
 | time     | DATE, DATETIME, TIME, TIMESTAMP, TIMESTAMPT_LTZ, TIMESTAMP_NTZ, TIMESTAMP_TZ                                    |
+
+
+## Troubleshoot
+
+**Problem:** When Soda attempts to connect to your Snowflake data source, it produces a connectivity error that includes something like `RunteimError: Command failed with exit code 2: ..... ocsp_response_validation_cash.lock`. 
+
+**Solution:**
+Use <a href="https://community.snowflake.com/s/article/How-to-Triage-OCSP-Related-Connectivity-Problems" target="_blank">Snowflake's troubleshooting guide</a> to triage OCSP-related connectivity issues.
 
 
 <br />
