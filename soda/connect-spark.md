@@ -204,7 +204,7 @@ data_source my_datasource_name:
   schema: nyctaxi
   method: databricks
   host: hostname_from_Databricks_SQL_settings
-  http_path:*http_path_from_Databricks_SQL_settings
+  http_path: http_path_from_Databricks_SQL_settings
   token: my_access_token
 ```
 
