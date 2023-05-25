@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### May 25, 2023
+* Added a step for [configuring]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql) `soda-core-spark[databricks]` to be sure to install `databricks-sql-connector` as well.
+
 #### May 23, 2023
 * Added a video overview showcasing the integration of [Soda and Alation]({% link soda/integrate-alation.md %}).
 * Added a note for a [Known Issue]({% link soda-cl/profile.md %}#limitations-and-known-issues) regarding the use of variables in profiling configurations.

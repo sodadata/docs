@@ -8,11 +8,11 @@ redirect_from:
 - /soda/quick-start-soda-core.html
 ---
 
-# Take a sip of Soda
+# Take a sip of Soda ![SodaCan@0.5x](/assets/images/SodaCan@0.5x.png){:width="40px"} 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Is Soda the data quality testing solution you've been looking for? ![SodaCan@0.5x](/assets/images/SodaCan@0.5x.png){:width="12px"}Take a sip and see! <br />
+Is Soda the data quality testing solution you've been looking for? Take a sip and see! <br />
 Use the example data in this tutorial to set up and run a simple Soda scan for data quality.
 
 <!--![sip-path](/assets/images/sip-path.png){:width="700px"}-->
