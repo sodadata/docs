@@ -14,7 +14,7 @@ As these values are sensitive, you may wish to employ the following strategies t
 
 [Store Kubernetes secrets](#store-kubernetes-secrets)<br />
 [Use a values YAML file to store API key values](#use-a-values-yaml-file-to-store-api-key-values)<br />
-[Use a values file to store private key authentication values for Snowflake](#use-a-values-file-to-store-private-key-authentication-values-for-snowflake)<br />
+[Use a values file to store private key authentication values](#use-a-values-file-to-store-private-key-authentication-values)<br />
 [Use environment variables to store data source connection credentials](#use-environment-variables-to-store-data-source-connection-credentials)<br />
 <br />
 
@@ -56,49 +56,12 @@ Refer to the exhaustive cloud service provider-specific instructions for more de
 * [Deploy a Soda agent in Google GKE]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file)
 
 
-## Use a values file to store private key authentication values for Snowflake
+## Use a values file to store private key authentication values
 
-If you use [private key authentication]({% link soda/connect-snowflake.md %}#private-key-authentication) with Snowflake, you can provide the required private key values in a `values.yml` file when you deploy or redeploy the agent.
+If you use private key with Snowflake or Big Query, you can provide the required private key values in a `values.yml` file when you deploy or redeploy the agent.
+* [Private key authentication with Snowflake]({% link soda/connect-snowflake.md %}#use-a-values-file-to-store-private-key-authentication-values)
+* [Private key authentication with Big Query]({% link soda/connect-bigquery.md %}#use-a-file-reference-for-a-big-query-data-source-connection)
 
-1. First, run the following command to create a local path to the Snowflake private key. Replace the `local path to the Snowflake private key` with your own value.
-```shell
-kubectl create secret generic -n <soda-agent-namespace> snowflake-private-key --from-file=snowflake-private-key.pk8=<local path to the Snowflake private key>
-```
-2. Then, add the following to the your `values.yml` file, adjusting the values to your own specific details.
-    ```yaml
-    soda:
-      scanlauncher:
-        volumeMounts:
-          - name: snowflake-private-key
-            mountPath: /opt/soda/etc
-        volumes:
-          - name: snowflake-private-key
-            secret:
-              secretName: snowflake-private-key
-              items:
-                - key: snowflake-private-key.pk8
-                  path: snowflake-private-key.pk8
-    ```
-3. Adjust the `configuration.yml` file to include the new path in the connection details, as in the following example.
-    ```yaml
-    data_source ltsnowflakecustomer:
-      type: snowflake
-      connection:
-      username: ${SNOWFLAKE_USER}
-      password: password
-      account: ${SNOWFLAKE_ACCOUNT}
-      database: PUBLISH_DEV
-      warehouse: ${SNOWFLAKE_WAREHOUSE}
-      role: ${SNOWFLAKE_ROLE}
-      client_session_keep_alive: true
-      session_parameters:
-        QUERY_TAG: soda-queries
-        QUOTED_IDENTIFIERS_IGNORE_CASE: false
-      schema: CUSTOMER
-      private_key_passphrase: ${SNOWFLAKE_PASSPHRASE}
-      private_key_path: /opt/soda/etc/snowflake-private-key.pk8
-    ```
-4. Deploy, or redeploy, the agent for the changes to take effect.
 
 ## Use environment variables to store data source connection credentials
 

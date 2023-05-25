@@ -12,6 +12,7 @@ parent: Connect a data source
 
 [Configuration](#configuration)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Private key authentication](#private-key-authentication)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Use a values file to store private key authenticaion values](#use-a-values-file-to-store-private-key-authentication-values) <br />
 [Test the data source connection](#test-the-data-source-connection)<br />
 [Supported data types](#supported-data-types)<br />
 [Troubleshoot](#troubleshoot)<br />
@@ -81,7 +82,51 @@ data_source snowflake:
       -----END ENCRYPTED PRIVATE KEY-----
 ```
 
-If you use private key authentication with a Soda Agent, refer to [Manage sensitive values for a Soda Agent]({% link soda-agent/secrets.md %}#use-a-values-file-to-store-private-key-authentication-values-for-snowflake).
+###  Use a values file to store private key authentication values
+
+If you use a private key authentication with Snowflake and have deployed a [Soda Agent]({% link soda-agent/deploy.md %}), you can provide the required private key values in a `values.yml` file when you deploy or redeploy the agent.
+
+You can also use the `values.yml` file to store other environment variables for the Soda Agent to use, such as `SNOFLAKE_USER`, `SNOWFLAKE_ACCOUNT`, `SNOWFLAKE_PASSPHRASE`, etc.
+
+1. First, run the following command to create a local path to the Snowflake private key. Replace the `local path to the Snowflake private key` with your own value.
+```shell
+kubectl create secret generic -n <soda-agent-namespace> snowflake-private-key --from-file=snowflake-private-key.pk8=<local path to the Snowflake private key>
+```
+2. Then, add the following to the your `values.yml` file, adjusting the values to your own specific details.
+    ```yaml
+    soda:
+      scanlauncher:
+        volumeMounts:
+          - name: snowflake-private-key
+            mountPath: /opt/soda/etc
+        volumes:
+          - name: snowflake-private-key
+            secret:
+              secretName: snowflake-private-key
+              items:
+                - key: snowflake-private-key.pk8
+                  path: snowflake-private-key.pk8
+    ```
+3. Adjust the `configuration.yml` file to include the new path in the connection details, as in the following example.
+    ```yaml
+    data_source ltsnowflakecustomer:
+      type: snowflake
+      connection:
+      username: ${SNOWFLAKE_USER}
+      password: password
+      account: ${SNOWFLAKE_ACCOUNT}
+      database: PUBLISH_DEV
+      warehouse: ${SNOWFLAKE_WAREHOUSE}
+      role: ${SNOWFLAKE_ROLE}
+      client_session_keep_alive: true
+      session_parameters:
+        QUERY_TAG: soda-queries
+        QUOTED_IDENTIFIERS_IGNORE_CASE: false
+      schema: CUSTOMER
+      private_key_passphrase: ${SNOWFLAKE_PASSPHRASE}
+      private_key_path: /opt/soda/etc/snowflake-private-key.pk8
+    ```
+4. Deploy, or redeploy, the agent for the changes to take effect.
 
 {% include test-connection.md %}
 
