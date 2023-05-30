@@ -46,45 +46,48 @@ SODA_HOST=cloud.soda.io
 SODA_API_KEY_ID=<your Soda Cloud pubic key>
 SODA_API_KEY_SECRET=<your Soda Cloud private key>
 ```
-3. To sync a data source and schema in the Alation catalog to a data source in Soda Cloud, you must map it from Soda Cloud to Alation. Create a `.datasource-mapping.yml` file in your integration project and populate it with mapping data according to the following example. The table below describes where to retrieve the values for each field.<br />
-```yaml
-- name: Cars
-  soda:
-    datasource_id: 2d33bf0a-9a1c-4c4b-b148-b5af318761b3
-    # optional dataset_mapping   soda: catalog
-    dataset_mapping:
-       Cars_data: Cars
-  catalog:
-    type: "alation"
-    datasource_id: "31"
-    datasource_container_name: "soda"
-    datasource_container_id: "1"
-- name: Soda Demo
-  soda:
-    datasource_id: 8505cbbd-d8b3-48a4-bad4-cfb0bec4c02f
-  catalog:
-    type: "alation"
-    datasource_id: "37"
-    datasource_container_name: "public"
-    datasource_container_id: "2"
-```
-<br />
+3. To sync a data source and schema in the Alation catalog to a data source in Soda Cloud, you must map it from Soda Cloud to Alation. Create a `.datasource-mapping.yml` file in your integration project and populate it with mapping data according to the following example. The table below describes where to retrieve the values for each field.
+
+    ```yaml
+    - name: Cars
+      soda:
+        datasource_id: 2d33bf0a-9a1c-4c4b-b148-b5af318761b3
+        # optional dataset_mapping   soda: catalog
+        dataset_mapping:
+           Cars_data: Cars
+      catalog:
+        type: "alation"
+        datasource_id: "31"
+        datasource_container_name: "soda"
+        datasource_container_id: "1"
+    - name: Soda Demo
+      soda:
+        datasource_id: 8505cbbd-d8b3-48a4-bad4-cfb0bec4c02f
+      catalog:
+        type: "alation"
+        datasource_id: "37"
+        datasource_container_name: "public"
+        datasource_container_id: "2"
+    ```
 
 | Field | Retrieve value from |
 | ----- | ------------------- |
-| name  | A name you choose as an identifier for an integration between Soda Cloud and a data catalog. |
-|soda: <br />    datasource_id | The data source information panel in Soda Cloud. |
-|soda: <br />    dataset_mapping | (Optional) When you run the integration, Soda automatically maps all of the datasets between data sources. However, if the names of the datasets differ in the tools you can use this property to manually map datasets between tools. <br /> |
-|catalog: <br />    type:| The name of the cataloging software; in this case, “alation”. |
-|catalog: <br />    datasource_id | The URL on the data source page in the Alation catalog; see image below. |
-|catalog: <br />    datasource_container_name | Effectively the schema of the data source, retrieve this value from the data source page in the Alation catalog under the subheading **Schemas**; see image below. |
-|catalog: <br />    datasource_container_id | The ID of the datasource_container_name / schema. |
+| `name`  | A name you choose as an identifier for an integration between Soda Cloud and a data catalog. |
+|`soda:` <br />  `datasource_id` | The data source information panel in Soda Cloud. |
+|`soda:` <br />  `dataset_mapping` | (Optional) When you run the integration, Soda automatically maps all of the datasets between data sources. However, if the names of the datasets differ in the tools you can use this property to manually map datasets between tools. <br /> |
+|`catalog:` <br />  `type:`| The name of the cataloging software; in this case, “alation”. |
+|`catalog:` <br />  `datasource_id` | The URL on the data source page in the Alation catalog; see image below. |
+|`catalog:` <br />  `datasource_container_name` | The schema of the data source; retrieve this value from the data source page in the Alation catalog under the subheading **Schemas**; see image below. |
+|`catalog:` <br />  `datasource_container_id` | The ID of the `datasource_container_name` (the schema of the data source). |
 
 Retrieve the Alation `datasource_id` from the URL <br />
 ![alation-figure-1-0](/assets/images/alation-figure-1-0.png){:height="300px" width="300px"}
 
 Retrieve the Alation `datasource_container_name` (schema) from the data source page <br />
 ![alation-figure-1-1](/assets/images/alation-figure-1-1.png){:height="400px" width="400px"}
+
+Retrieve the Alation `datasource_container_id` for the `datasource_container_name` from ...
+
 
 
 ## Customize the catalog
