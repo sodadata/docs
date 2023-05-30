@@ -15,6 +15,27 @@
   - subtitle: Soda overview
     page: soda/product-overview.md
 
+- title: Install and set up Soda
+  page: soda/where-install.md
+  subcategories:
+  - subtitle: Where to install Soda
+    page: soda/where-install.md
+  - subtitle: Install locally
+    page: soda-core/installation.md
+  - subtitle: Deploy using Soda Agent
+    page: soda-agent/deploy.md
+  - subtitle: Use Python library
+    page: soda-core/programmatic.md
+  - subtitle: Generate API Keys
+    page: soda-cloud/api-keys.md
+  - subtitle: Set up SSO
+    page: soda-cloud/sso.md
+  - subtitle: Roles and rights
+    page: soda-cloud/roles-and-rights.md
+  - subtitle: Manage sensitive values
+    page: soda-agent/secrets.md
+
+
 - title: Connect a data source
   page: soda/connect-athena.md
   subcategories:
@@ -59,66 +80,8 @@
   - subtitle: Connect to Vertica
     page: soda/connect-vertica.md
 
-- title: Soda Agent
-  page: soda-agent/overview.md
-  subcategories:
-  - subtitle: Soda Agent
-    page: soda-agent/overview.md
-  - subtitle: Soda Agent basic concepts
-    page: soda-agent/basics.md
-  - subtitle: Deploy an agent in a cluster
-    page: soda-agent/deploy.md
-  - subtitle: Deploy an agent in Amazon
-    page: soda-agent/deploy-aws.md
-  - subtitle: Connect to Soda Cloud via AWS PrivateLink
-    page: soda-agent/private-link.md
-  - subtitle: Deploy an agent in Azure
-    page: soda-agent/deploy-azure.md
-  - subtitle: Deploy an agent in Google
-    page: soda-agent/deploy-google.md
-  - subtitle: Manage sensitive values
-    page: soda-agent/secrets.md
-  - subtitle: Redeploy an agent
-    page: soda-agent/redeploy.md
-  - subtitle: Upgrade an agent
-    page: soda-agent/upgrade.md
-  - subtitle: Helpful kubectl commands
-    page: soda-agent/helpful-commands.md
 
-- title: Soda Cloud
-  page: soda-cloud/overview.md
-  subcategories:
-  - subtitle: Soda Cloud
-    page: soda-cloud/overview.md
-  - subtitle: Roles and rights
-    page: soda-cloud/roles-and-rights.md
-  - subtitle: Add a data source
-    page: soda-cloud/add-datasource.md
-  - subtitle: Create an agreement
-    page: soda-cloud/agreements.md
-  - subtitle: Collaborate on data monitoring
-    page: soda-cloud/collaborate.md
-  - subtitle: Scan output
-    page: soda-cloud/scan-output.md
-  - subtitle: Set notification rules
-    page: soda-cloud/notif-rules.md
-  - subtitle: Organize datasets
-    page: soda-cloud/organize-datasets.md
-  - subtitle: Examine failed rows
-    page: soda-cloud/failed-rows.md
-  - subtitle: Create and track incidents
-    page: soda-cloud/incidents.md
-  - subtitle: Soda Cloud architecture
-    page: soda-cloud/soda-cloud-architecture.md
-  - subtitle: Generate API keys
-    page: soda-cloud/api-keys.md
-  - subtitle: Soda Cloud resources
-    page: soda-cloud/resource-map.md
-  - subtitle: Single sign-on with Soda Cloud
-    page: soda-cloud/sso.md
-
-
-- title: SodaCL 
+- title: Write SodaCL checks 
   page: soda-cl/soda-cl-overview.md
   subcategories:
   - subtitle: SodaCL overview
@@ -129,8 +92,8 @@
     page: soda-cl/metrics-and-checks.md
   - subtitle: Optional check configurations
     page: soda-cl/optional-config.md
-  - subtitle: Add check attributes
-    page: soda-cl/check-attributes.md
+  - subtitle: Get sample data
+    page: soda-cl/sample-datasets.md
   - subtitle: Numeric metrics
     page: soda-cl/numeric-metrics.md
   - subtitle: Missing metrics
@@ -159,10 +122,6 @@
     page: soda-cl/filters.md
   - subtitle: For each
     page: soda-cl/for-each.md
-  - subtitle: Display profile info in Soda Cloud
-    page: soda-cl/profile.md
-  - subtitle: Display sample data in Soda Cloud
-    page: soda-cl/sample-datasets.md
   - subtitle: Custom check templates
     page: soda-cl/check-templates.md
   - subtitle: Compare data using SodaCL
@@ -170,29 +129,40 @@
   - subtitle: Troubleshoot SodaCL
     page: soda-cl/troubleshoot.md
 
-- title: Soda Core 
-  page: soda-core/overview-main.md
+- title: Run a Soda scan
+  page: soda-core/scan-core.md
   subcategories:
-  - subtitle: Soda Core overview
-    page: soda-core/overview-main.md
-  - subtitle: How Soda Core works
-    page: soda-core/how-core-works.md
-  - subtitle: Install Soda Core
-    page: soda-core/installation.md
-  - subtitle: Configure Soda Core
-    page: soda-core/configuration.md
-  - subtitle: Run a Soda Core scan
+  - subtitle: Run a scan
     page: soda-core/scan-core.md
-  - subtitle: Soda Core CLI commands
-    page: soda-core/cli-reference.md
-  - subtitle: Define programmatic scans
+  - subtitle: Program a scan
     page: soda-core/programmatic.md
-  - subtitle: Configure orchestrated scans
-    page: soda-core/orchestrate-scans.md
-  - subtitle: Connect to Soda Cloud
-    page: soda-core/connect-core-to-cloud.md
-  - subtitle: Migrate from Soda SQL
-    page: soda-core/migrate.md
+  - subtitle: Add a scan to a DAG
+    page: soda/quick-start-prod.md
+  - subtitle: Scan in dev workflow
+    page: soda/quick-start-dev.md
+  - subtitle: Profile data
+    page: soda-cl/profile.md
+  - subtitle: Schedule a scan
+    page: soda-cloud/add-datasource.md
+
+- title: Work with scan output
+  page: soda-cloud/scan-output.md
+  subcategories:
+  - subtitle: Explore scan output
+    page: soda-cloud/scan-output.md
+  - subtitle: Examine failed rows
+    page: soda-cloud/failed-rows.md 
+  - subtitle: Set alert notifications
+    page: soda-cloud/notif-rules.md
+  - subtitle: Investigate issues
+    page: soda-cloud/incidents.md
+  - subtitle: Organize check results
+    page: soda-cl/check-attributes.md
+  - subtitle: Organize datasets
+    page: soda-cloud/organize-datasets.md
+  - subtitle: Use a scan object
+    page: soda-core/programmatic.md 
+
 
 - title: Integrate Soda
   page: soda/integrate-alation.md
@@ -210,9 +180,21 @@
   - subtitle: Integrate webhooks
     page: soda/integrate-webhooks.md
 
+- title: Gather data quality insights
+  page: soda-cloud/overview.md
+  subcategories:
+  - subtitle: Review dataset health
+    page: soda-cloud/overview.md
+  - subtitle: Reporting API
+    page: api-docs/reporting-api-v1.md
+
 - title: Reference
   page: soda/glossary.md
   subcategories:
+  - subtitle: How it works
+    page: soda-core/how-core-works.md
+  - subtitle: Soda resources
+    page: soda-cloud/resource-map.md
   - subtitle: Glossary
     page: soda/glossary.md
   - subtitle: What's new in docs?
@@ -228,18 +210,6 @@
   - subtitle: Soda SQL is now Soda Core
     page: soda/deprecated.md
 
-- title: Soda Cloud Reporting API
-  page: api-docs/reporting-api-v1.md
-  subcategories:
-  - subtitle: Reporting API v1 (Preview)
-    page: api-docs/reporting-api-v1.md
-  - subtitle: Reporting API v0
-    page: api-docs/reporting-api.md
-  - subtitle: Changelog and migration guide
-    page: api-docs/reporting-api-v1-migration-guide.md
-  - subtitle: Build a reporting dashboard
-    page: api-docs/reporting-api-to-overview-dashboards.md
-
 
 - title: Release notes
   page: release-notes/all.md
@@ -252,5 +222,7 @@
       page: release-notes/soda-cloud.md
     - subtitle: Soda Cloud Reporting API
       page: release-notes/reporting-api.md
+    - subtitle: Soda Library
+      page: release-notes/soda-library.md
     - subtitle: Soda Core 
       page: release-notes/soda-core.md
