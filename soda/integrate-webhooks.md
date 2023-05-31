@@ -14,6 +14,7 @@ Configure a webhook in Soda Cloud to connect your account to a third-party servi
 Use a webhook to:
 * send [alert notifications]({% link soda-cloud/notif-rules.md %}) for failed or warning check results to a third-party, such as ServiceNow
 * create and track data quality [incidents]({% link soda-cloud/incidents.md %}) with a third-party, such as Jira
+* send a notification to a third-party when a [Soda Agreement]({% link soda-cloud/agreements.md %}) is added, changed, or deleted
 
 ![webhook-example](/assets/images/webhook-example.png){:height="700px" width="700px"} 
 
@@ -21,6 +22,7 @@ Use a webhook to:
 [Configure a webhook](#configure-a-webhook) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud alert notifications](#webhooks-for-soda-cloud-alert-notifications)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud incident integrations](#webhooks-for-soda-cloud-incident-integrations)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud agreements](#webhooks-for-soda-cloud-agreements)<br />
 [Example webhook with Jira for Soda Cloud incidents](#example-webhook-with-jira-for-soda-cloud-incidents)<br />
 [Example webhook with ServiceNow for Soda Cloud incidents](#example-webhook-with-servicenow-for-soda-cloud-incidents)<br />
 [Event payloads](#event-payloads) <br />
@@ -53,6 +55,7 @@ Use a webhook to:
 | Enable to send notifications to this webhook when a check result triggers an alert. | Check to allow users to select this webhook as a destination for alert notifications when check results warn or fail. |
 | Use this webhook as the default notification channel for all check result alerts. | Check to automatically configure check results alert notifications to this webhook by default. <br />Users can deselect the webhook as the notification destination in an individual check, but it is the prepopulated destination by default.   |
 | Enable to use this webhook to track and resolve incidents in Soda Cloud. | Check to allow users to send incident information to a destination. <br />For example, a user creating a new incident can choose to use this webhook to create a new issue in Jira.|
+| Send events to this webhook when an agreement is created, updated, or removed. | Check to automatically send notifications to a third-party service provider whenever a user adds, changes, or removes a [Soda Cloud agreement]({% link soda/glossary.md %}#agreement). |
 
 <br />
 
@@ -123,6 +126,22 @@ Followed by a POST request to incidentLinkCallbackUrl:
   "text": "[SODA-69] Notification & Incident Webhook"
 }
 ```
+
+<br />
+
+### Webhooks for Soda Cloud agreements
+
+You can use a webhook to enable Soda Cloud to send Soda agreement events to a third-party service provider. By integrating Soda with a third-party service provider for version control, such as GitHub, your team can maintain visibility into agreement changes, additions, and deletions 
+
+Soda Cloud agreement notifications make use of the following events:
+* [`validate`](#validate)
+* [`agreementCreated`](#agreementcreated)
+* [`agreementContentsUpdated`](#agreementcontentsupdated)
+* [`agreementDeleted`](#agreementdeleted)
+
+Access a third-party service provider's documentation for details on how to set up an incoming webhook or API call, and obtain a URL to input into the Soda webhook configuration in step 4, above. 
+
+Soda Cloud expects the integration party to return an HTTP status code 200 success response; it ignores the body of the response.
 
 <br />
 
@@ -269,6 +288,70 @@ Soda Cloud sends this event payload to validate that the integration with the th
 {
   "event": "validate",
   "sentAt": "2022-10-01T09:12:10.042323Z" 
+}
+```
+
+### agreementCreated
+
+Soda Cloud sends this event payload when a user creates a new agreement in the Soda Cloud account.
+
+```json
+{
+  "event": "agreementCreated",
+  "agreement": {
+    "id": "string",
+    "sodaCloudUrl": "string",
+    "label": "string",
+    "testsFile": {
+      "path": "string",
+      "contents": "string"
+    },
+    "createdBy": {
+      "email": "julie@company.com"
+    }
+  }
+}
+```
+
+### agreementContentsUpdated
+
+Soda Cloud sends this even payload when a user adjusts the contents of an agreement. Soda Cloud *does not* send this event when an agreement's review status has changed.
+
+```json
+{
+  "event": "agreementContentsUpdated",
+  "agreement": {
+    "id": "string",
+    "sodaCloudUrl": "string",
+    "label": "string",
+    "testsFile": {
+      "path": "string",
+      "contents": "string"
+    },
+    "updatedBy": {
+      "email": "julie@company.com"
+    }
+  }
+}
+```
+
+### agreementDeleted
+
+Soda Cloud sends this event payload when a user deletes an agreement in the Soda Cloud account.
+
+```json
+{
+  "event": "agreementDeleted",
+  "agreement": {
+    "id": "string",
+    "label": "string",
+    "testsFile": {
+      "path": "string",
+    },
+    "deletedBy": {
+      "email": "julie@company.com"
+    }
+  }
 }
 ```
 
