@@ -1,23 +1,23 @@
 ---
 layout: default
 title: Integrate Soda Cloud with Alation
-description: Integrate Soda with Alation to access details about the quality of your data from right within your data catalog. 
+description: Integrate Soda with Alation to access details about the quality of your data from right within your data catalog.
 parent: Integrate Soda
 redirect_from: /soda-cloud/integrate-alation.html
 ---
 
-# Integrate Soda Cloud with Alation 
+# Integrate Soda Cloud with Alation
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
 Integrate Soda with Alation to access details about the quality of your data from within the data catalog.
 
-* Run data quality checks using Soda and visualize quality metrics and rules within the context of a data source, dataset, or column in Alation. 
-* Use Soda Cloud to flag poor-quality data in lineage diagrams and during live querying. 
+* Run data quality checks using Soda and visualize quality metrics and rules within the context of a data source, dataset, or column in Alation.
+* Use Soda Cloud to flag poor-quality data in lineage diagrams and during live querying.
 * Give your Alation users the confidence of knowing that the data they are using is sound.
 * 🎥 Watch a <a href="https://vimeo.com/829042977/fed022bd3d" target="_blank">2-minute overview</a> showcasing the integration of Soda and Alation.
 
-![alation-integration](/assets/images/alation-integration.png){:height="600px" width="600px"} 
+![alation-integration](/assets/images/alation-integration.png){:height="600px" width="600px"}
 <br />
 
 
@@ -46,47 +46,53 @@ SODA_HOST=cloud.soda.io
 SODA_API_KEY_ID=<your Soda Cloud pubic key>
 SODA_API_KEY_SECRET=<your Soda Cloud private key>
 ```
-3. To sync a data source and schema in the Alation catalog to a data source in Soda Cloud, you must map it from Soda Cloud to Alation. Create a `.datasource-mapping.yml` file in your integration project and populate it with mapping data according to the following example. The table below describes where to retrieve the values for each field.<br />
-```yaml
-- name: Cars
-  soda:
-    datasource_id: 2d33bf0a-9a1c-4c4b-b148-b5af318761b3
-    # optional dataset_mapping   soda: catalog
-    dataset_mapping: 
-       Cars_data: Cars
-  catalog:
-    type: "alation"
-    datasource_id: "31"
-    datasource_container_name: "soda"
-- name: Soda Demo
-  soda:
-    datasource_id: 8505cbbd-d8b3-48a4-bad4-cfb0bec4c02f
-  catalog:
-    type: "alation"
-    datasource_id: "37"
-    datasource_container_name: "public"
-```
-<br />
+3. To sync a data source and schema in the Alation catalog to a data source in Soda Cloud, you must map it from Soda Cloud to Alation. Create a `.datasource-mapping.yml` file in your integration project and populate it with mapping data according to the following example. The table below describes where to retrieve the values for each field.
+
+    ```yaml
+    - name: Cars
+      soda:
+        datasource_id: 2d33bf0a-9a1c-4c4b-b148-b5af318761b3
+        # optional dataset_mapping   soda: catalog
+        dataset_mapping:
+           Cars_data: Cars
+      catalog:
+        type: "alation"
+        datasource_id: "31"
+        datasource_container_name: "soda"
+        datasource_container_id: "1"
+    - name: Soda Demo
+      soda:
+        datasource_id: 8505cbbd-d8b3-48a4-bad4-cfb0bec4c02f
+      catalog:
+        type: "alation"
+        datasource_id: "37"
+        datasource_container_name: "public"
+        datasource_container_id: "2"
+    ```
 
 | Field | Retrieve value from |
 | ----- | ------------------- |
-| name  | A name you choose as an identifier for an integration between Soda Cloud and a data catalog. |
-|soda: <br />    datasource_id | The data source information panel in Soda Cloud. |
-|soda: <br />    dataset_mapping | (Optional) When you run the integration, Soda automatically maps all of the datasets between data sources. However, if the names of the datasets differ in the tools you can use this property to manually map datasets between tools. <br /> |
-|catalog: <br />    type:| The name of the cataloging software; in this case, “alation”. |
-|catalog: <br />    datasource_id | Rhe URL on the data source page in the Alation catalog; see image below. |
-|catalog: <br />    datasource_container_name | Effectively the schema of the data source, retrieve this value from the data source page in the Alation catalog under the subheading **Schemas**; see image below. |
+| `name`  | A name you choose as an identifier for an integration between Soda Cloud and a data catalog. |
+|`soda:` <br />  `datasource_id` | The data source information panel in Soda Cloud. |
+|`soda:` <br />  `dataset_mapping` | (Optional) When you run the integration, Soda automatically maps all of the datasets between data sources. However, if the names of the datasets differ in the tools you can use this property to manually map datasets between tools. <br /> |
+|`catalog:` <br />  `type:`| The name of the cataloging software; in this case, “alation”. |
+|`catalog:` <br />  `datasource_id` | Retrieve this value from the URL on the data source page in the Alation catalog; see image below. |
+|`catalog:` <br />  `datasource_container_name` | The schema of the data source; retrieve this value from the data source page in the Alation catalog under the subheading **Schemas**. See image below. |
+|`catalog:` <br />  `datasource_container_id` | The ID of the `datasource_container_name` (the schema of the data source); retrieve this value from the schema page in the Alation catalog. See image below|
 
 Retrieve the Alation `datasource_id` from the URL <br />
-![alation-figure-1-0](/assets/images/alation-figure-1-0.png){:height="300px" width="300px"} 
+![alation-figure-1-0](/assets/images/alation-figure-1-0.png){:height="300px" width="300px"}
 
 Retrieve the Alation `datasource_container_name` (schema) from the data source page <br />
-![alation-figure-1-1](/assets/images/alation-figure-1-1.png){:height="400px" width="400px"} 
+![alation-figure-1-1](/assets/images/alation-figure-1-1.png){:height="400px" width="400px"}
+
+Retrieve the Alation `datasource_container_id` for the `datasource_container_name` from the URL in the **Schema** page.<br />
+![alation-figure-1-3](/assets/images/alation-figure-1-3.png){:height="450px" width="450px"}
 
 
 ## Customize the catalog
 
-1. Create custom fields in Alation that reference information that Soda Cloud pushes to the catalog. These are the fields the catalog users will see that will display Soda Cloud data quality details. 
+1. Create custom fields in Alation that reference information that Soda Cloud pushes to the catalog. These are the fields the catalog users will see that will display Soda Cloud data quality details.
 <br />
 In your Alation account, navigate to **Settings** > **Catalog Admin** > **Customize Catalog**. In the **Custom Fields** tab, create the following fields:
 * Under the **Pickers** heading, create a field for “Has DQ” with Options “True” and “False”.
@@ -113,17 +119,17 @@ Contact <a href="mailto:support@soda.io">Soda Support</a> directly to acquire th
 
 ## Use the integration
 
-Access Soda Cloud to [create agreements]({% link soda-cloud/agreements.md %}) that execute checks against datasets in your data source each time you [run a Soda scan manually]({% link soda-core/scan-core.md %}#run-a-scan), or [orchestrate a scan]({% link soda-core/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Alation so that users can review data quality information from within the catalog. 
+Access Soda Cloud to [create agreements]({% link soda-cloud/agreements.md %}) that execute checks against datasets in your data source each time you [run a Soda scan manually]({% link soda-core/scan-core.md %}#run-a-scan), or [orchestrate a scan]({% link soda-core/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Alation so that users can review data quality information from within the catalog.
 
-In Alation, beyond reviewing data quality information for the data source, users can access the **Joins** and **Lineage** tabs of individual datasets to examine details and investigate the source of any data quality issues. 
+In Alation, beyond reviewing data quality information for the data source, users can access the **Joins** and **Lineage** tabs of individual datasets to examine details and investigate the source of any data quality issues.
 
 ### Open in Soda
 
-In a dataset page in Alation, in the **Overview** tab, users have the opportunity to click links to directly access Soda Cloud to scrutinize data quality details; see image below. 
-* Under the **Soda DQ Overview** heading in Alation, click **Open in Soda** to access the dataset page in Soda Cloud.  
+In a dataset page in Alation, in the **Overview** tab, users have the opportunity to click links to directly access Soda Cloud to scrutinize data quality details; see image below.
+* Under the **Soda DQ Overview** heading in Alation, click **Open in Soda** to access the dataset page in Soda Cloud.
 * Under the **Dataset Level Monitors** heading in Alation, click the title of any monitor to access the check info page in Soda Cloud.
 
-![alation-figure-1-2](/assets/images/alation-figure-1-2.png){:height="600px" width="600px"} 
+![alation-figure-1-2](/assets/images/alation-figure-1-2.png){:height="600px" width="600px"}
 
 
 

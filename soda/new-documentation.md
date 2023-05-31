@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### May 30, 2023
+* Added a new parameter, `datasource_container_id` to the `.datasource-mapping.yml` file neede to map a [Soda Cloud-Alation]({% link soda/integrate-alation.md %}#set-up-the-integration) catalog integration.
+
 #### May 25, 2023
 * Added a step for [configuring]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql) `soda-core-spark[databricks]` to be sure to install `databricks-sql-connector` as well.
 
