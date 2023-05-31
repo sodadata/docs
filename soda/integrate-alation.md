@@ -76,9 +76,9 @@ SODA_API_KEY_SECRET=<your Soda Cloud private key>
 |`soda:` <br />  `datasource_id` | The data source information panel in Soda Cloud. |
 |`soda:` <br />  `dataset_mapping` | (Optional) When you run the integration, Soda automatically maps all of the datasets between data sources. However, if the names of the datasets differ in the tools you can use this property to manually map datasets between tools. <br /> |
 |`catalog:` <br />  `type:`| The name of the cataloging software; in this case, “alation”. |
-|`catalog:` <br />  `datasource_id` | The URL on the data source page in the Alation catalog; see image below. |
-|`catalog:` <br />  `datasource_container_name` | The schema of the data source; retrieve this value from the data source page in the Alation catalog under the subheading **Schemas**; see image below. |
-|`catalog:` <br />  `datasource_container_id` | The ID of the `datasource_container_name` (the schema of the data source). |
+|`catalog:` <br />  `datasource_id` | Retrieve this value from the URL on the data source page in the Alation catalog; see image below. |
+|`catalog:` <br />  `datasource_container_name` | The schema of the data source; retrieve this value from the data source page in the Alation catalog under the subheading **Schemas**. See image below. |
+|`catalog:` <br />  `datasource_container_id` | The ID of the `datasource_container_name` (the schema of the data source); retrieve this value from the schema page in the Alation catalog. See image below|
 
 Retrieve the Alation `datasource_id` from the URL <br />
 ![alation-figure-1-0](/assets/images/alation-figure-1-0.png){:height="300px" width="300px"}
@@ -86,8 +86,8 @@ Retrieve the Alation `datasource_id` from the URL <br />
 Retrieve the Alation `datasource_container_name` (schema) from the data source page <br />
 ![alation-figure-1-1](/assets/images/alation-figure-1-1.png){:height="400px" width="400px"}
 
-Retrieve the Alation `datasource_container_id` for the `datasource_container_name` from ...
-
+Retrieve the Alation `datasource_container_id` for the `datasource_container_name` from the URL in the **Schema** page.<br />
+![alation-figure-1-3](/assets/images/alation-figure-1-3.png){:height="450px" width="450px"}
 
 
 ## Customize the catalog
