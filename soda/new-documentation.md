@@ -9,7 +9,7 @@ parent: Reference
 
 <br />
 
-#### June 1, 2023
+#### May 31, 2023
 * Added instructions and event payload details for using a [webhook]({% link soda/integrate-webhooks.md %}#webhooks-for-soda-cloud-agreement-notifications) to notify a third-party of new, deleted, or changed Soda agreements.
 
 #### May 25, 2023

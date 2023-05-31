@@ -22,7 +22,7 @@ Use a webhook to:
 [Configure a webhook](#configure-a-webhook) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud alert notifications](#webhooks-for-soda-cloud-alert-notifications)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud incident integrations](#webhooks-for-soda-cloud-incident-integrations)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud agreement notifications](#webhooks-for-soda-cloud-agreement-notifications)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud agreements](#webhooks-for-soda-cloud-agreements)<br />
 [Example webhook with Jira for Soda Cloud incidents](#example-webhook-with-jira-for-soda-cloud-incidents)<br />
 [Example webhook with ServiceNow for Soda Cloud incidents](#example-webhook-with-servicenow-for-soda-cloud-incidents)<br />
 [Event payloads](#event-payloads) <br />
@@ -129,9 +129,9 @@ Followed by a POST request to incidentLinkCallbackUrl:
 
 <br />
 
-### Webhooks for Soda Cloud agreement notifications
+### Webhooks for Soda Cloud agreements
 
-You can use a webhook to enable Soda Cloud to send alert notifications to a third-party provider to notify your team when an agreement has been added to, changed, or removed from your Soda account.  
+You can use a webhook to enable Soda Cloud to send Soda agreement events to a third-party service provider. By integrating Soda with a third-party service provider for version control, such as GitHub, your team can maintain visibility into agreement changes, additions, and deletions 
 
 Soda Cloud agreement notifications make use of the following events:
 * [`validate`](#validate)
