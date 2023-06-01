@@ -15,9 +15,9 @@ Integrate Soda with Metaphor to access details about the quality of your data fr
 
 ## Prerequisites
 
-* You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}), [connected]({% link soda-core/connect-core-to-cloud.md %}) to an instance of Soda Core.
-* You have [configured Soda Core]({% link soda-core/configuration.md %}) to access the data source on which you want to run quality checks.
-* You have completed at least one [Soda scan]({% link soda-core/scan-core.md %}) to validate that the data source’s datasets appear in Soda Cloud as expected.
+* You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}), [connected]({% link soda-library/configure.md %}) to an instance of Soda Core.
+* You have [configured Soda Core]({% link soda-library/configure.md %}) to access the data source on which you want to run quality checks.
+* You have completed at least one [Soda scan]({% link soda-library/run-a-scan.md %}) to validate that the data source’s datasets appear in Soda Cloud as expected.
 * You have a Metaphor account with the privileges necessary to allow you to add a data source.
 * You have a git repository in which to store the integration project files.
 
@@ -25,7 +25,7 @@ Integrate Soda with Metaphor to access details about the quality of your data fr
 ## Set up the integration
 
 1. Sign into your Soda Cloud account and confirm that you see the datasets you expect to see in the data source you wish to test for quality.
-2. To connect your Soda Cloud account to your Metaphor account, create an `.env` file in your integration project in your git repo and include details according to the example below. To obtain the values for your Soda API keys, refer to the [Connect to Soda Cloud documentation]({% link soda-core/connect-core-to-cloud.md %}). <br />
+2. To connect your Soda Cloud account to your Metaphor account, create an `.env` file in your integration project in your git repo and include details according to the example below. To obtain the values for your Soda API keys, refer to [Configure Soda Library]({% link soda-library/configure.md %}). <br />
     ```yaml
     SODA_HOST=cloud.soda.i
     SODA_API_KEY_ID
@@ -45,7 +45,7 @@ Contact <a href="mailto:support@soda.io">Soda Support</a> directly to acquire th
 
 ## Use the integration
 
-Access Soda Cloud to [create agreements]({% link soda-cloud/agreements.md %}) that execute checks against datasets in your data source each time you [run a Soda scan manually]({% link soda-core/scan-core.md %}), or [orchestrate a scan]({% link soda-core/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Metaphor so that users can review data quality information from within the catalog. 
+Access Soda Cloud to [create agreements]({% link soda-cloud/agreements.md %}) that execute checks against datasets in your data source each time you [run a Soda scan manually]({% link soda-library/run-a-scan.md %}), or [orchestrate a scan]({% link soda-library/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Metaphor so that users can review data quality information from within the catalog. 
 
 Refer to video above for details.
 

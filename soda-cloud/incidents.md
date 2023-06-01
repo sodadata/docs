@@ -16,8 +16,8 @@ If you have integrated your Soda Cloud account with a [Slack workspace]({% link 
 ![incidents](/assets/images/incidents.png){:height="700px" width="700px"}
 
 ## Prerequisites
-* You have [installed Soda Core]({% link soda-core/installation.md %}) in your environment.
-* You have a Soda Cloud account and you have [connected the account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core.
+* You have [installed Soda Core]({% link soda-library/install.md %}) in your environment.
+* You have a Soda Cloud account and you have [connected the account]({% link soda-library/configure.md %}) to Soda Core.
 * (Optional) You have [integrated a Slack workspace]({% link soda-cloud/collaborate.md %}#integrate-with-slack), or another [third-party tool]({% link soda/integrate-webhooks.md %}) with your Soda Cloud account. 
 
 ## Create Incidents

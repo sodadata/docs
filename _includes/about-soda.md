@@ -24,7 +24,7 @@ To test your data quality, you install the **Soda CLI tool** and sign up for a *
 
 <sup>1</sup> An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid with issue investigation, a feature you can [disable]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
-Learn more about [How Soda works]({% link soda-core/how-core-works.md %}).<br />
-Learn more about [running Soda scans]({% link soda-core/scan-core.md %}).<br />
+Learn more about [How Soda works]({% link soda-library/how-library-works.md %}).<br />
+Learn more about [running Soda scans]({% link soda-library/run-a-scan.md %}).<br />
 Learn more about [SodaCL]({% link soda-cl/metrics-and-checks.md %}).<br />
 Access the [Glossary]({% link soda/glossary.md %}) for a full list of Soda terminology. 

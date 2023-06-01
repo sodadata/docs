@@ -1,28 +1,31 @@
 ---
 layout: default
 title: Configure orchestrated scans
-description: Integrate Soda Core with a data orchestration tool to automate and schedule your search for "bad" data.
-parent: Soda Core
-redirect_from: /soda-core/scans-pipeline.html
+description: Integrate Soda Library with a data orchestration tool to automate and schedule your search for "bad" data.
+parent: Soda Library
+redirect_from:
+- /soda-core/scans-pipeline.html
+- /soda-core/orchestrate-scans.html
 ---
 
 # Configure orchestrated scans 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Integrate Soda Core with a data orchestration tool such as, Airflow, to automate and schedule your search for "bad" data. 
+Integrate Soda Library with a data orchestration tool such as, Airflow, to automate and schedule your search for bad-quality data. 
 
 Configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically block "bad" data from contaminating your data pipeline.
 
-[Apache Airflow using BashOperator](#apache-airflow-using-bashoperator)<br />
+Consider following the [Test data in a pipeline]({% link soda/quick-start-prod.md %}) guide for specific details about embedding Soda tests in an Airflow pipeline.
+
 [Apache Airflow using PythonOperator](#apache-airflow-using-pythonoperator)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; [Example DAG](#example-dag)<br />
-[Soda Core and Prefect](#soda-core-and-prefect)<br />
 <br />
 
+<!--
 ## Apache Airflow using BashOperator
 
-Access a guide published by <a href="https://www.astronomer.io/" target="_blank">Astronomer</a> for setting up and using <a href="https://www.astronomer.io/guides/soda-data-quality/" target="_blank">Soda Core with Airflow</a>.
+Access a guide published by <a href="https://www.astronomer.io/" target="_blank">Astronomer</a> for setting up and using <a href="https://www.astronomer.io/guides/soda-data-quality/" target="_blank">Soda Core with Airflow</a>. -->
 
 ## Apache Airflow using PythonOperator
 {% include code-header.html %}
@@ -145,7 +148,7 @@ def run_soda_scan():
 dag = DAG(
     'soda_core_python_venv_op',
     default_args=default_args,
-    description='A simple Soda Core scan DAG',
+    description='A simple Soda Library scan DAG',
     schedule_interval=timedelta(days=1),
     start_date=days_ago(1),
 )
@@ -171,46 +174,15 @@ ingest_data_op >> soda_core_scan_op >> publish_data_op
 
 
 <!--
-## Apache Airflow
-
-```python
-soda_sql_scan_op = SodaScanOperator(
-    task_id='soda_scan_xyz',
-    dag=dag,
-    data_sources=[{ 
-        'data_source_name': 'soda_data_source_nameone',
-        'airflow_conn_id': 'airflow_conn_id_one', 
-        'database': 'the_db_in_the_connection',
-        'schema': 'the_schema_in_the_db'
-    }],
-    soda_cl_path='../SodaCL',
-    variables={ 'soda_var_name': 'value' },
-    airflow_variables=['airflow_var_name1', 'airflow_var_name2'],
-    airflow_variables_json=['airflow_var_name1', 'airflow_var_name2'],
-    soda_cloud_api_key = '9s8df9s8d7f98sd',
-    soda_cloud_api_key_var_name = 'the_airflow_soda_api_key_key_var_name'
-)
-```
-
-* `data_sources` maps data_source names to the the details Soda Core needs to create a data_source from an Airflow connection.
-* `soda_cl_path` is a file or directory containing the checks.yml files that you must identify in a `soda scan` command.
-* `variables` is a dict and that Soda Core passe "as is" to the scan.
-* `airflow_variables` is a list of Airflow variable names that must propagate to `soda scan` variables with `Variable.get("varname")`.
-* `airflow_variables_json` is a list of Airflow variable names that must propagate to `soda scan` variables with `Variable.get("varname", deserialize_json=True)`
--->
-
-
 ## Soda Core and Prefect
 
 A contribution from our Soda Community, read the documentation for the <a href="https://sodadata.github.io/prefect-soda-core/" target="_blank">Prefect 2.0 collection for Soda Core</a>.
-
-<br />
+-->
 
 ## Go further
 
 * Learn more about the [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) you can use to check for data quality.
-* Learn how to [Connect to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}).
-* Learn how to prepare [programmatic scans]({% link soda-core/programmatic.md %}) of your data.
+* Learn how to prepare [programmatic scans]({% link soda-library/programmatic.md %}) of your data.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

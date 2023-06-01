@@ -48,7 +48,7 @@ You do not need to follow the tutorial sequentially.
 
 ## Tutorial prerequisites
 
-* You have completed the [Take a sip of Soda]({% link soda/quick-start-sip.md %}) tutorial <br /> OR <br /> you have followed the instructions to [install]({% link soda-core/installation.md %}), then [configure]({% link soda-core/configuration.md %}) Soda on your own. 
+* You have completed the [Take a sip of Soda]({% link soda/quick-start-sip.md %}) tutorial <br /> OR <br /> you have followed the instructions to [install]({% link soda-library/install.md %}), then [configure]({% link soda-library/configure.md %}) Soda on your own. 
 * You have created a new YAML file in your code editor and named it `checks.yml`.
 * (Optional) You have read the first two sections in [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) as a primer for SodaCL.
 
@@ -75,7 +75,7 @@ checks for dataset_name:
   - row_count same as other_dataset_name
 ```
 
-[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+[Run a scan]({% link soda-library/run-a-scan.md %}) to execute your checks:
 {% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
@@ -141,7 +141,7 @@ checks for dataset_name:
   - duplicate_count(column_name1, column_name2) = 0
 ```
 
-[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+[Run a scan]({% link soda-library/run-a-scan.md %}) to execute your checks:
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
 ```
@@ -162,7 +162,7 @@ checks for dataset_name:
   - freshness(timestamp_column_name) < 1d
 ```
 
-[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+[Run a scan]({% link soda-library/run-a-scan.md %}) to execute your checks:
 {% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
@@ -208,7 +208,7 @@ checks for dataset_name:
       missing values: [N/A, '0000', none]
 ```
 
-[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+[Run a scan]({% link soda-library/run-a-scan.md %}) to execute your checks:
 {% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
@@ -239,7 +239,7 @@ checks for dataset_name:
   - values in (column_name1, column_name2) must exist in different_dataset_name (other_column1, other_column2)
 ```
 
-[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+[Run a scan]({% link soda-library/run-a-scan.md %}) to execute your checks:
 {% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
@@ -282,7 +282,7 @@ checks for dataset_name:
 
 Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a warn and a fail, the check result only displays the more severe, failed check result. [Read more]({% link soda-cl/schema.md %}#expect-one-check-result).
 
-[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+[Run a scan]({% link soda-library/run-a-scan.md %}) to execute your checks:
 {% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml

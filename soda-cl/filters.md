@@ -206,7 +206,7 @@ checks for dim_product:
 ### Configure variables for connection configuration
 
 You can use variables to:
-* resolve credentials in configuration files using system variables; see [Configure Soda Core]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables)
+* resolve credentials in configuration files using system variables; see [Configure Soda Core]({% link soda-library/configure.md %}#provide-credentials-as-system-variables)
 * pass variables for values in configuration files; see instructions below
 
 If you use Soda Core to execute Soda scans for data quality, you can pass variables at scan time to provide values for data source connection configuration keys in your configuration YAML file. For example, you may wish to pass a variable for the value of `password` in your configuration YAML.

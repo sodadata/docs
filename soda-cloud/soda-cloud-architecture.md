@@ -14,7 +14,7 @@ parent: Soda Cloud
 
 **Soda Core** connects to data sources and performs scans of each dataset in a data source. If you connect Soda Core to a **Soda Cloud** account, it pushes scan results to Soda Cloud where users in your organization can view check results, access Cloud Metric Store data, and integrate with Slack to investigate data quality Incidents.
 
-First, you must [connect your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to your configured instance of Soda Core.  When Soda Core completes a scan, it uses a secure API to push the results to your Soda Cloud account where you can log in and examine the details in the web application. Notably, Soda Core pushes metadata to Soda Cloud; by default all your data (barring any failed rows you explicity instruct Soda Core to send to Soda Cloud) stays inside your private network. See [Data security and privacy]({% link soda/data-privacy.md %})
+First, you must [connect your Soda Cloud account]({% link soda-library/configure.md %}) to your configured instance of Soda Core.  When Soda Core completes a scan, it uses a secure API to push the results to your Soda Cloud account where you can log in and examine the details in the web application. Notably, Soda Core pushes metadata to Soda Cloud; by default all your data (barring any failed rows you explicity instruct Soda Core to send to Soda Cloud) stays inside your private network. See [Data security and privacy]({% link soda/data-privacy.md %})
 
 ![scan-with-cloud](/assets/images/scan-with-cloud.png){:height="350px" width="350px"}
 

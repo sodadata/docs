@@ -54,7 +54,7 @@ With Python 3.8 installed, the Engineer creates a virtual environment in Termina
 pip install soda-core-postgres
 ```
 
-Refer to [complete install instructions]({% link soda-core/installation.md %}) for all supported data sources, if you wish.
+Refer to [complete install instructions]({% link soda-library/install.md %}) for all supported data sources, if you wish.
 
 ## Connect Soda to a data source and platform account
 
@@ -446,7 +446,7 @@ soda scan -d soda_demo -c soda/configuration.yml soda/resports-checks/
 ```
 6. If the reports check results pass, the data is reliable enough to push to the reporting or visualization tool for consumers.
 
-Learn more about [running Soda scans]({% link soda-core/scan-core.md %}).
+Learn more about [running Soda scans]({% link soda-library/run-a-scan.md %}).
 
 ## View results and tag datasets
 

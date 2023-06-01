@@ -137,7 +137,7 @@ The following example accesses a single Snowflake data source and compares value
                   AND (tgt.page_id IS NULL AND tgt.post_id IS NULL)
 ```
 
-See also: [Configure the same scan to run in multiple environments]({% link soda-core/scan-core.md %}#configure-the-same-scan-to-run-in-multiple-environments)
+See also: [Configure the same scan to run in multiple environments]({% link soda-library/run-a-scan.md %}#configure-the-same-scan-to-run-in-multiple-environments)
 
 
 ## Compare dates in a dataset to validate event sequence

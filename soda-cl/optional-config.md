@@ -100,7 +100,7 @@ checks for dim_product:
       identity: ${IDENTITY}
 ```
 
-See also: [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}##configure-the-same-scan-to-run-in-multiple-environments).<br />
+See also: [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments).<br />
 See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
 
 ## Add alert configurations

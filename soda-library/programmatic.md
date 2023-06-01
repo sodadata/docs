@@ -1,17 +1,19 @@
 ---
 layout: default
 title: Define programmatic scans using Python
-description: Use the Soda Sore Python library to programmatically execute scans and automate the checks for "bad" data.
-parent: Soda Core
-redirect_from: /soda-core/programmatic-scans.html
+description: Use Soda Library to programmatically execute scans and automate the checks for bad-quality data.
+parent: Soda Library
+redirect_from:
+- /soda-core/programmatic-scans.html
+- /soda-core/programmatic.html
 ---
 
 # Define programmatic scans using Python
 *Last modified on {% last_modified_at %}*
 
-To automate the search for "bad" data, you can use the **Soda Core Python library** to programmatically execute scans. Alternatively, you can install and use the Soda Core CLI to run scans; see [Install Soda Core]({% link soda-core/installation.md %}).
+To automate the search for bad-quality data, you can use **Soda library** to programmatically execute scans. Alternatively, you can install and use the Soda Library CLI to run scans; see [Install Soda Library]({% link soda-library/install.md %}).
 
-Based on a set of conditions or a specific event schedule, you can instruct Soda Core to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
+Based on a set of conditions or a specific event schedule, you can instruct Soda Library to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
 
 [Basic programmatic scan](#basic-programmatic-scan)<br />
 [Tips and best practices](#tips-and-best-practices)<br />
@@ -111,13 +113,13 @@ scan.get_all_checks_text()
 
 ## Tips and best practices
 
-* You can save Soda Core scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import the Soda Core library in Python so you can utilize the `Scan()` object, [install a Soda Core package]({% link soda-core/installation.md %}), then use `from soda.scan import Scan`.
+* You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import Soda Library in Python so you can utilize the `Scan()` object, [install a Soda Library package]({% link soda-library/install.md %}), then use `from soda.scan import Scan`.
 * Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files. 
-* If Soda Core pushes scan results to Soda Cloud, you may not want to change the scan definition name with each scan. Soda Cloud uses the scan definition name to correlate subsequent scan results, thus retaining an historical record of the measurements over time. <br /> Sometimes, changing the name is useful, like when you wish to [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}##configure-the-same-scan-to-run-in-multiple-environments). Be aware, however, that if you change the scan definition name with each scan for the same environment, Soda Cloud recognizes each set of scan results as independent from previous scan results, thereby making it appear as though it records a new, separate check result with each scan and archives or "disappears" previous results. See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
+* Because Soda Library pushes scan results to Soda Cloud, you may not want to change the scan definition name with each scan. Soda Cloud uses the scan definition name to correlate subsequent scan results, thus retaining an historical record of the measurements over time. <br /> Sometimes, changing the name is useful, like when you wish to [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments). Be aware, however, that if you change the scan definition name with each scan for the same environment, Soda Cloud recognizes each set of scan results as independent from previous scan results, thereby making it appear as though it records a new, separate check result with each scan and archives or "disappears" previous results. See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
 
 ## Scan exit codes
 
-Soda Core's scan output includes an exit code which indicates the outcome of the scan.
+Soda Library's scan output includes an exit code which indicates the outcome of the scan.
 
 | 0 | all checks passed, all good from both runtime and Soda perspective |
 | 1 | Soda issues a warning on a check(s) |
@@ -192,7 +194,7 @@ If you prefer to send the output of the failed row sampler to a destination othe
 ## Go further
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
-* Learn more about configuring [orchestrated scans]({% link soda-core/orchestrate-scans.md %}).
+* Learn more about configuring [orchestrated scans]({% link soda-library/orchestrate-scans.md %}).
 
 
 ---

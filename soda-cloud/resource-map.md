@@ -72,7 +72,7 @@ As the example diagram indicates, deleting a Slack integration prevents Soda Clo
 
 ## Example deployment with Soda Cloud and Soda Core
 
-If your Soda Cloud account is also [connected to Soda Core]({% link soda-core/connect-core-to-cloud.md %}), your deployment may resemble something like the following diagram. 
+If your Soda Cloud account is also [connected to Soda Core]({% link soda-library/configure.md %}), your deployment may resemble something like the following diagram. 
 
 Note that you can delete resources that appear in Soda Cloud as a result of a manual or programmatic Soda Core scan. However, unless you delete the reference to the resource at its source – the `checks.yml` file or `configuration.yml` file – the resource will reappear in Soda Cloud when Soda Core sends its next set of scan results.
 

@@ -289,7 +289,7 @@ Alternatively, you can disable the failed row samples feature entirely in Soda C
 
 #### Configure in Soda Core
 
-1. Open the [configuration YAML file]({% link soda-core/configuration.md %}#configuration-instructions) that contains the data source connection configuration for the data source that contains the dataset that contains the columns that you wish to exclude from failed rows sampling.
+1. Open the [configuration YAML file]({% link soda-library/configure.md %}#configuration-instructions) that contains the data source connection configuration for the data source that contains the dataset that contains the columns that you wish to exclude from failed rows sampling.
 2. To the connection configuration, add the `sampler` configuration to specify the columns you wish to exclude, as outlined above.
 3. Save the changes to the file.
 
@@ -431,7 +431,7 @@ data_source my_datasource_name:
 
 #### Configure in Soda Core
 
-1. Open the [configuration YAML file]({% link soda-core/configuration.md %}#configuration-instructions) that contains the data source connection configuration for the data source for which you wish to reroute failed rows samples.
+1. Open the [configuration YAML file]({% link soda-library/configure.md %}#configuration-instructions) that contains the data source connection configuration for the data source for which you wish to reroute failed rows samples.
 2. To the connection configuration, add the `storage` configuration to specify the columns you wish to exclude, as outlined above.
 3. Save the changes to the file.
 
@@ -440,7 +440,7 @@ data_source my_datasource_name:
 
 ## Configure a failed row sampler
 
-If you are running Soda scans [programmatically]({% link soda-core/programmatic.md %}), you can add a custom sampler to collect samples of rows with a `fail` check result. Refer to the following example that prints the failed row samples in the CLI.
+If you are running Soda scans [programmatically]({% link soda-library/programmatic.md %}), you can add a custom sampler to collect samples of rows with a `fail` check result. Refer to the following example that prints the failed row samples in the CLI.
 {% include code-header.html %}
 ```python
 from soda.scan import Scan

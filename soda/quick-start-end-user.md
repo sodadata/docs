@@ -42,8 +42,8 @@ To enable your colleagues to test data quality, you install Soda as an **Agent**
 
 <sup>1</sup> An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid issue investigation, a feature you can [disable]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).
 
-Learn more about [How Soda works]({% link soda-core/how-core-works.md %}).<br />
-Learn more about [running Soda scans]({% link soda-core/scan-core.md %}).<br />
+Learn more about [How Soda works]({% link soda-library/how-library-works.md %}).<br />
+Learn more about [running Soda scans]({% link soda-library/run-a-scan.md %}).<br />
 Learn more about [SodaCL Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).<br />
 Access the [Glossary]({% link soda/glossary.md %}) for a full list of Soda terminology. 
 

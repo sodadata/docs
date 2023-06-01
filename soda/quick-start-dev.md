@@ -86,7 +86,7 @@ pip install soda-core-postgres
 <td><code>soda-core-redshift</code></td>
 </tr>
 <tr>
-<td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-core/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
+<td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-library/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
 <td><code>soda-core-spark-df</code></td>
 </tr>
 <tr>
@@ -201,7 +201,7 @@ pip install soda-core-postgres
 <td><code>soda-core-redshift</code></td>
 </tr>
 <tr>
-<td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-core/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
+<td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-library/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
 <td><code>soda-core-spark-df</code></td>
 </tr>
 <tr>
@@ -356,12 +356,12 @@ A check is a test that Soda executes when it scans a dataset in your data source
 3. Save the `checks.yml` file.
 
 Learn more about [SodaCL]({% link soda/quick-start-sodacl.md %}). <br />
-Learn more about using [multiple checks YAML files]({% link soda-core/scan-core.md %}#anatomy-of-a-scan-command). <br />
+Learn more about using [multiple checks YAML files]({% link soda-library/run-a-scan.md %}#anatomy-of-a-scan-command). <br />
 
 
 ## Create a GitHub Action job
 
-Use <a href="https://docs.github.com/en/actions" target="_blank">GitHub Actions</a> to execute a [Soda scan]({% link soda-core/scan-core.md %}) for data quality each time you create a new pull request or commit to an existing one. The GitHub action posts the data quality scan results in a PR comment.
+Use <a href="https://docs.github.com/en/actions" target="_blank">GitHub Actions</a> to execute a [Soda scan]({% link soda-library/run-a-scan.md %}) for data quality each time you create a new pull request or commit to an existing one. The GitHub action posts the data quality scan results in a PR comment.
 
 * Be sure to trigger a Soda scan *after* you have completed a dbt run that executed your dbt tests. 
 * Note that GitHub PR comments have a 4-byte unicode character limit of 65,536. If the GitHub Action tries to post a comment that exceeds this limit, the job completion may be impacted. 

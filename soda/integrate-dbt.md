@@ -29,8 +29,7 @@ Use Soda Core to ingest the results of your dbt tests and push them to Soda Clou
 ## Prerequisites
 
 * You have created a Soda Cloud account with [Admin, Manager, or Editor permissions]({% link soda-cloud/roles-and-rights.md %}).
-* You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment and [configured it]]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
-* You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core.
+* You have installed a [Soda Core package]({% link soda-library/install.md %}) in your environment and [configured it]]({% link soda-library/configure.md %}) to connect to a data source and your Soda Cloud account using a `configuration.yml` file. 
 * You use the open-source <a href="https://github.com/dbt-labs/dbt-core" target="_blank">dbt-core</a> version 1.0.0 or later or dbt Cloud.
 * You have installed the optional `soda-core-dbt` sub-package in the Python environment that also runs `soda-core` by running `pip install soda-core-dbt`.
 
@@ -116,8 +115,8 @@ Each row in the table of Check Results represents the result of a check that Sod
 
 ## Go further
 
-* Learn more about [How Soda Core works]({% link soda-core/how-core-works.md %}).
-* Read more about [running a Soda scan]({% link soda-core/scan-core.md %}#run-a-scan).
+* Learn more about [How Soda Core works]({% link soda-library/how-library-works.md %}).
+* Read more about [running a Soda scan]({% link soda-library/run-a-scan.md %}#run-a-scan).
 * Learn more about [creating agreements]({% link soda-cloud/agreements.md %}) in Soda Cloud.
 * Learn more about creating, tracking, and resolving data quality [incidents]({% link soda-cloud/incidents.md %}) in Soda Cloud.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

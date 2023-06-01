@@ -35,7 +35,7 @@ Anomaly score checks require a minimum of four data points (four scans at stable
 **Schema checks**: This check monitors schema changes in datasets, including column addition, deletion, data type changes, and index changes. By default, this automated check results in a failure if a column is deleted, its type changes, or its index changes; it results in a warning if a column is added. Refer to [Schema checks]({% link soda-cl/schema.md %}) for details.<br />
 Schema checks require a minimum of one data point to use as a baseline against which to gauge schema changes. If you do not see check results immediately, wait until after you have scanned the dataset twice.
 
-If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a baseline of normal metric values against which to evaluate future metric values to identify anomalies and schema changes. Therefore, you must have a created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to use automated monitoring checks. 
+If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a baseline of normal metric values against which to evaluate future metric values to identify anomalies and schema changes. Therefore, you must have a created and connected a Soda Cloud account to use automated monitoring checks. 
 
 ## Prerequisites
 
@@ -60,16 +60,16 @@ To define automated monitoring checks, follow the guided steps to [create a new 
   <div class="panel" id="two-panel" markdown="1">
 
 
-* You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
-* You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
-* You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core.
+* You have installed a [Soda Core package]({% link soda-library/install.md %}) in your environment.
+* You have [configured Soda Core]({% link soda-library/configure.md %}) to connect to a data source using a `configuration.yml` file. 
+* You have created and [connected a Soda Cloud account]({% link soda-library/configure.md %}) to Soda Core.
 * You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you installed Soda Core; see instructions below.
 
 ## Install Soda Core Scientific
 
 To use automated monitoring, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core.
 
-{% include install-soda-core-scientific.md %}
+{% include install-soda-scientific.md %}
 
 Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
 
@@ -89,7 +89,7 @@ Need help? Ask the team in the <a href="https://community.soda.io/slack" target=
 
 ### Install Soda Core Scientific Locally 
 
-{% include install-soda-core-scientific.md %}
+{% include install-soda-scientific.md %}
 
   </div>
   </div>

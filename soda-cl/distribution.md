@@ -86,13 +86,13 @@ You can use the following distance metrics in your distribution checks.
 
 ## Prerequisites
 
-* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you [installed Soda Core]({% link soda-core/installation.md %}).
+* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you [installed Soda Core]({% link soda-library/install.md %}).
 
 ## Install Soda Core Scientific
 
 To use a distribution check, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core. Best practice recommends installing Soda Core and Soda Core Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Core Scientific locally](#install-soda-core-scientific-locally) if you prefer.
 
-{% include install-soda-core-scientific.md %}
+{% include install-soda-scientific.md %}
 
 Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
 
@@ -179,7 +179,7 @@ If you do not wish to define a filter, remove the key-value pair from the file.
 
 ## Define a distribution check
 
-1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the [Soda Core documentation]({% link soda-core/configuration.md %}).
+1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the [Soda Core documentation]({% link soda-library/configure.md %}).
 2. In your new file, add the following example content.
 
     ```yaml
@@ -212,7 +212,7 @@ If you do not wish to define a filter, remove the key-value pair from the file.
 
 6. (Optional), to sample the data in the distribution check, replace the value of `sample` with a query that specifies the portion of the data in your dataset for which you are checking the distribution. The data source you are using must support the query you write. <br />For example, for PostgreSQL, you can use the `TABLESAMPLE` clause to randomly sample 50% of the data with seed 61. Best practice dictates that you use sampling for large datasets that might not fit in memory. Refer to the [define the sample size](#define-the-sample-size) for details.
 
-7. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to [Soda Core documentation]({% link soda-core/scan-core.md %}) for more details.
+7. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to [Soda Core documentation]({% link soda-library/run-a-scan.md %}) for more details.
 
     ```bash
     soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yml your_check_file.yml
@@ -452,7 +452,7 @@ Need help? Ask the team in the <a href="https://community.soda.io/slack" target=
 
 ### Install Soda Core Scientific Locally
 
-{% include install-soda-core-scientific.md %}
+{% include install-soda-scientific.md %}
 
 ### Use Docker to run Soda Core
 

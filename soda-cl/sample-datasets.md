@@ -50,9 +50,9 @@ To define samples for datasets, follow the guided steps to create a new data sou
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
-* You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
-* You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
-* You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core. <br />
+* You have installed a [Soda Core package]({% link soda-library/install.md %}) in your environment.
+* You have [configured Soda Core]({% link soda-library/configure.md %}) to connect to a data source using a `configuration.yml` file. 
+* You have created and [connected a Soda Cloud account]({% link soda-library/configure.md %}) to Soda Core. <br />
 
 Reference the [section below](#define-an-automated-monitoring-check) for how to configure profiling in a checks YAML file using SodaCL. 
 
@@ -91,7 +91,7 @@ sample datasets:
 
 ### Scan results in Soda Cloud
 
-1. To review the sample rows in Soda Cloud, first [run a scan]({% link soda-core/scan-core.md %}) of your data source so that Soda Core can gather and send samples to Soda Cloud.
+1. To review the sample rows in Soda Cloud, first [run a scan]({% link soda-library/run-a-scan.md %}) of your data source so that Soda Core can gather and send samples to Soda Cloud.
 2. In Soda Cloud, navigate to the **Datasets** dashboard, then click a dataset name to open the dataset's info page. 
 3. Access the **Sample Data** tab to review the sample rows.
 

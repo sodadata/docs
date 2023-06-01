@@ -33,20 +33,20 @@ checks for dim_customer:
 
 The anomaly score check is powered by a machine learning algorithm that works with measured values for a metric that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalies in time-series data. 
 
-If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a baseline of normal metric values against which to evaluate future metric values to identify anomalies. Therefore, you must have a created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to use anomaly score checks.
+If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a baseline of normal metric values against which to evaluate future metric values to identify anomalies. Therefore, you must have a created and connected a Soda Cloud account to use anomaly score checks.
 
 
 ## Prerequisites
 
-* You have a Soda Cloud account and have [connected Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}). 
-* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you [installed Soda Core]({% link soda-core/installation.md %}).
+* You have a Soda Cloud account and have [connected Soda Core to Soda Cloud]({% link soda-library/configure.md %}). 
+* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you [installed Soda Core]({% link soda-library/install.md %}).
 
 
 ## Install Soda Core Scientific
 
 To use an anomaly score check, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core. Best practice recommends installing Soda Core and Soda Core Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Core Scientific locally](#install-soda-core-scientific-locally) if you prefer.
 
-{% include install-soda-core-scientific.md %}
+{% include install-soda-scientific.md %}
 
 Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
 
@@ -104,7 +104,7 @@ Though your first instinct may be to run several scans in a row to product the f
 
 If, for example, you attempt to run eight back-to-back scans in five minutes, the anomaly score does not register the measurements resulting from those scans as a reliable pattern against which to evaluate an anomaly. 
 
-Consider using the Soda Core Python library to set up a [programmatic scan]({% link soda-core/programmatic.md %}) that produces a check result for an anomaly score check on a regular schedule.
+Consider using the Soda Core Python library to set up a [programmatic scan]({% link soda-library/programmatic.md %}) that produces a check result for an anomaly score check on a regular schedule.
 
 
 ## Optional check configurations
@@ -159,7 +159,7 @@ Need help? Ask the team in the <a href="https://community.soda.io/slack" target=
 
 ### Install Soda Core Scientific Locally
 
-{% include install-soda-core-scientific.md %}
+{% include install-soda-scientific.md %}
 
 ### Use Docker to run Soda Core
 
