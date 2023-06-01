@@ -9,6 +9,12 @@ parent: Reference
 
 <br />
 
+#### May 31, 2023
+* Added instructions and event payload details for using a [webhook]({% link soda/integrate-webhooks.md %}#webhooks-for-soda-cloud-agreement-notifications) to notify a third-party of new, deleted, or changed Soda agreements.
+
+#### May 30, 2023
+* Added a new parameter, `datasource_container_id` to the `.datasource-mapping.yml` file neede to map a [Soda Cloud-Alation]({% link soda/integrate-alation.md %}#set-up-the-integration) catalog integration.
+
 #### May 25, 2023
 * Added a step for [configuring]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql) `soda-core-spark[databricks]` to be sure to install `databricks-sql-connector` as well.
 
