@@ -21,6 +21,7 @@ Soda Library is a Python library and command-line interface (CLI) tool that enab
 [Requirements](#requirements)<br />
 [Install](#install)<br />
 [Upgrade](#upgrade)<br />
+[Migrate from Soda Core](#migrate-from-soda-core)<br />
 [Install Soda Scientific](#install-soda-scientific)<br />
 [Go further](#go-further)<br />
 
@@ -167,7 +168,7 @@ Soda Core, the free, open-source Python library and CLI tool upon which Soda Lib
 
 To migrate from an existing Soda Core installation to Soda Library, simply uninstall the old and install the new from the command-line. 
 
-1. Uninstall your existing Soda Core package using the following command; repace `postgres` with the data source-specific package that you use.
+1. Uninstall your existing Soda Core package using the following command; replace `postgres` with the data source-specific package that you use.
 ```shell
 pip uninstall soda-core-postgres
 ```
