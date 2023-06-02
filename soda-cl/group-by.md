@@ -11,7 +11,7 @@ parent: SodaCL
 Use a group by configuration to collect and present check results by category. 
 
 See also: [Group evolution check]({% link soda-cl/group-evolution.md %}) 
-
+{% include code-header.html %}
 ```yaml
 checks for dim_employee:
   - group by:
