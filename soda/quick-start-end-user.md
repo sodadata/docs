@@ -57,7 +57,7 @@ Once you have completed the set-up, you can direct your colleagues to log in to 
 
 When checks fail during data quality scans, you and your colleagues get alerts via Slack which enable you to address issues before they have a downstream impact on the users or systems that depend upon the data.
 
-(Not quite ready for this big gulp of Soda? ![SodaCan@0.5x](/assets/images/SodaCan@0.5x.png){:width="12px"}Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
+(Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
 <br />
 
 ## Deploy a Soda Agent

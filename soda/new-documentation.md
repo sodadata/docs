@@ -9,8 +9,20 @@ parent: Reference
 
 <br />
 
-#### June 13, 2023
+#### June 15, 2023
 * Added preview documentation for the new [Group by]({% link soda-cl/group-by.md %}) configuration and [Group evolution check]({% link soda-cl/group-evolution.md %}), both in preview state in SodaCL.
+
+#### June 8, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.38 and Soda Core 3.0.39.
+
+#### May 31, 2023
+* Added instructions and event payload details for using a [webhook]({% link soda/integrate-webhooks.md %}#webhooks-for-soda-cloud-agreement-notifications) to notify a third-party of new, deleted, or changed Soda agreements.
+
+#### May 30, 2023
+* Added a new parameter, `datasource_container_id` to the `.datasource-mapping.yml` file neede to map a [Soda Cloud-Alation]({% link soda/integrate-alation.md %}#set-up-the-integration) catalog integration.
+
+#### May 25, 2023
+* Added a step for [configuring]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql) `soda-core-spark[databricks]` to be sure to install `databricks-sql-connector` as well.
 
 #### May 23, 2023
 * Added a video overview showcasing the integration of [Soda and Alation]({% link soda/integrate-alation.md %}).

@@ -17,7 +17,7 @@ Based on a set of conditions or a specific event schedule, you can instruct Soda
 [Tips and best practices](#tips-and-best-practices)<br />
 [Scan exit codes](#scan-exit-codes)<br />
 [Configure a failed row sampler](#configure-a-failed-row-sampler)<br />
-[Save failed row samples to an alternate destination](#save-failed-row-samples-to-an-alternate-desination)<br />
+[Save failed row samples to an alternate destination](#save-failed-row-samples-to-an-alternate-destination)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -184,7 +184,7 @@ if __name__ == '__main__':
     print(s.get_logs_text())
 ```
 
-### Save failed row samples to an alternate desination
+### Save failed row samples to an alternate destination
 
 If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">docs.python.org</a> for details.
 
