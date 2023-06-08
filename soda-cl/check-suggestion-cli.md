@@ -35,7 +35,7 @@ You can use the check suggestion CLI tool with the following data sources:
 ## Prerequisites
 
 * You have installed Python 3.10 or greater.
-* You have installed a [Soda Core package]({% link soda-core/installation.md %}#install) for Big Query, PostgreSQL, or Snowflake in your environment.
+* You have installed a [Soda Core package]({% link soda-library/install.md %}#install) for Big Query, PostgreSQL, or Snowflake in your environment.
 
 ## Install and use
 
@@ -51,7 +51,7 @@ You can use the check suggestion CLI tool with the following data sources:
     soda-generator --help
     ```
 
-3. If you have not already done so, prepare a `configuration.yml` file to connect Soda Core to your data source. Refer to [Configure Soda Core]({% link soda-core/configuration.md %}#configuration-instructions) for details.
+3. If you have not already done so, prepare a `configuration.yml` file to connect Soda Core to your data source. Refer to [Configure Soda Core]({% link soda-library/configure.md %}#configuration-instructions) for details.
 
 4. Use the following command to run the check suggestion CLI tool. Refer to the table below for input values for the command options.
 
@@ -70,7 +70,7 @@ When running, the check suggestion tool automatically prompts you with a series 
 
 Following best practice, the check suggestion tool prepares one `checks.yml` file per dataset; if you wish, you can run the tool multiple times to prepare suggested checks and `checks.yml` files for each dataset in your data source. After it generates the `checks.yml` file, you can manually add, remove, or modify data quality checks in the file as you wish.
 
-With both a `configuration.yml` and a prepared `checks.yml` file, you can proceed to [Run a Soda scan]({% link soda-core/scan-core.md %}) for data quality.
+With both a `configuration.yml` and a prepared `checks.yml` file, you can proceed to [Run a Soda scan]({% link soda-library/run-a-scan.md %}) for data quality.
 
 ## Suggestion details
 
@@ -218,7 +218,7 @@ checks for dataset_A:
 
 ## Go further
 
-* With both a `configuration.yml` and a prepared `checks.yml` file, you can proceed to [run a Soda scan]({% link soda-core/scan-core.md %}) for data quality.
+* With both a `configuration.yml` and a prepared `checks.yml` file, you can proceed to [run a Soda scan]({% link soda-library/run-a-scan.md %}) for data quality.
 * Read more about Soda [metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
