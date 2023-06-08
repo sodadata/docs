@@ -69,26 +69,26 @@ pip install -i https://pypi.soda.io soda[postgres]
 
 | Data source | Install package | 
 | ----------- | --------------- | 
-| Amazon Athena | `soda[athena]` |
-| Amazon Redshift | `soda[redshift]` | 
-| Apache Spark DataFrames <br /> (For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.) | `soda[spark-df` |
-| Azure Synapse (Experimental) | `soda[sqlserver]` |
-| ClickHouse (Experimental) | `soda[mysql]` |
-| Dask and Pandas (Experimental)  | `soda[pandas-dask]` |
-| Databricks  | `soda[spark][databricks]` |
-| Denodo (Experimental) | `soda[denodo]` |
-| Dremio | `soda[dremio]` | 
-| DuckDB (Experimental)  | `soda[duckdb]` |
-| GCP Big Query | `soda[bigquery]` | 
-| IBM DB2 | `soda[db2]` |
+| Amazon Athena | `soda-athena` |
+| Amazon Redshift | `soda-redshift` | 
+| Apache Spark DataFrames <br /> (For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.) | `soda-spark-df` |
+| Azure Synapse (Experimental) | `soda-sqlserver` |
+| ClickHouse (Experimental) | `soda-mysql` |
+| Dask and Pandas (Experimental)  | `soda-pandas-dask` |
+| Databricks  | `soda-spark[databricks]` |
+| Denodo (Experimental) | `soda-denodo` |
+| Dremio | `soda-dremio` | 
+| DuckDB (Experimental)  | `soda-duckdb` |
+| GCP Big Query | `soda-bigquery` | 
+| IBM DB2 | `soda-db2` |
 | Local file | Use Dask. |
-| MS SQL Server | `soda[sqlserver]` |
-| MySQL | `soda[mysql]` |
-| OracleDB | `soda[oracle]` |
-| PostgreSQL | `soda[postgres]` |
-| Snowflake | `soda[snowflake]` | 
-| Trino | `soda[trino]` |
-| Vertica (Experimental) | `soda[vertica]` |
+| MS SQL Server | `soda-sqlserver` |
+| MySQL | `soda-mysql` |
+| OracleDB | `soda-oracle` |
+| PostgreSQL | `soda-postgres` |
+| Snowflake | `soda-snowflake` | 
+| Trino | `soda-trino` |
+| Vertica (Experimental) | `soda-vertica` |
 
 
 To deactivate the virtual environment, use the following command:
@@ -116,25 +116,25 @@ pip install -i https://pypi.soda.io soda[postgres]
 
 | Data source | Install package | 
 | ----------- | --------------- | 
-| Amazon Athena | `soda[athena]` |
-| Amazon Redshift | `soda[redshift]` | 
-| Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.) | `soda[spark-df]` |
-| Azure Synapse (Experimental) | `soda[sqlserver]` |
-| ClickHouse (Experimental) | `soda[mysql]` |
-| Dask and Pandas (Experimental)  | `soda[pandas-dask]` |
-| Databricks  | `soda[spark][databricks]` |
-| Denodo (Experimental) | `soda[denodo]` |
-| Dremio | `soda[dremio]` | 
-| DuckDB (Experimental) | `soda[duckdb]` |
-| GCP Big Query | `soda[bigquery]` | 
-| IBM DB2 | `soda[db2]` |
-| MS SQL Server | `soda[sqlserver]` |
-| MySQL | `soda[mysql]` |
-| OracleDB | `soda[oracle]` |
-| PostgreSQL | `soda[postgres]` |
-| Snowflake | `soda[snowflake]` | 
-| Trino | `soda[trino]` |
-| Vertica (Experimental) | `soda[vertica]` |
+| Amazon Athena | `soda-athena` |
+| Amazon Redshift | `soda-redshift` | 
+| Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.) | `soda-spark-df` |
+| Azure Synapse (Experimental) | `soda-sqlserver` |
+| ClickHouse (Experimental) | `soda-mysql` |
+| Dask and Pandas (Experimental)  | `soda-pandas-dask` |
+| Databricks  | `soda-spark[databricks]` |
+| Denodo (Experimental) | `soda-denodo` |
+| Dremio | `soda-dremio` | 
+| DuckDB (Experimental) | `soda-duckdb` |
+| GCP Big Query | `soda-bigquery` | 
+| IBM DB2 | `soda-db2` |
+| MS SQL Server | `soda-sqlserver` |
+| MySQL | `soda-mysql` |
+| OracleDB | `soda-oracle` |
+| PostgreSQL | `soda-postgres` |
+| Snowflake | `soda-snowflake` | 
+| Trino | `soda-trino` |
+| Vertica (Experimental) | `soda-vertica` |
 
 To deactivate the virtual environment, use the following command:
 ```shell
