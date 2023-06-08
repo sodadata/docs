@@ -160,7 +160,7 @@ ingest_data_op = DummyOperator(
 soda_core_scan_op = PythonVirtualenvOperator(
     task_id='soda_core_scan_demodata',
     python_callable=run_soda_scan,
-    requirements=["-i https://pypi.cloud.soda.io", "soda[postgres]"],
+    requirements=["-i https://pypi.cloud.soda.io", "soda-postgres"],
     system_site_packages=False,
     dag=dag
 )
