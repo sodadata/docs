@@ -63,9 +63,9 @@ Borrow from this guide to connect to your own data source, set up a GitHub Actio
 python -m venv .venv
 source .venv/bin/activate
 ```
-3. Execute the following command, replacing `soda-core-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
+3. Execute the following command, replacing `soda-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
 ```shell
-pip install soda-core-postgres
+pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
 <details>
     <summary style="color:#00BC7E">Soda packages</summary>
@@ -180,7 +180,7 @@ python -m venv .venv
 ```
 3. Execute the following command, replacing `soda-core-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
 ```shell
-pip install soda-core-postgres
+pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
 <details>
     <summary style="color:#00BC7E">Soda packages</summary>
@@ -415,7 +415,7 @@ jobs:
       # Be sure to install the package that corresponds to your specific datasource
       # This example connects to Snowflake
       - name: Install Soda
-        run: pip install -U pip && pip install -q soda-core-snowflake
+        run: pip install -U pip && pip install -i https://pypi.cloud.soda.io -q soda-snowflake
       # Step 4: Perform a Soda scan on the dataset and save the result as ci_scan_results.json.
       # Store sensitive information such as credentials in the GitHub repository secrets.
       # The configuration.yaml file expects the username and password to come from the environment

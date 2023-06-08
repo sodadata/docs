@@ -52,7 +52,7 @@ source .venv/bin/activate
 ```
 5. Execute the following command to install the Soda package for PostgreSQL in your virtual environment. The example data is in a PostgreSQL data source, but there are 15+ data sources with which you can connect your own data beyond this tutorial.
 ```shell
-pip install soda-core-postgres
+pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
 6. Validate the installation.
     ```shell

@@ -51,7 +51,7 @@ With Python 3.8 installed, the Engineer creates a virtual environment in Termina
 
 {% include code-header.html %}
 ```shell
-pip install soda-core-postgres
+pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
 
 Refer to [complete install instructions]({% link soda-library/install.md %}) for all supported data sources, if you wish.
