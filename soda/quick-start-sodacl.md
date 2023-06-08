@@ -28,7 +28,7 @@ If you are staring at a blank YAML file wondering what SodaCL checks to write to
 
 ## SodaCL: In brief
 
-**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with the Soda platform, you use SodaCL to write checks for data quality, then run a scan of the data in your data source to execute those checks.
+**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with Soda tools, you use SodaCL to write checks for data quality, then run a scan of the data in your data source to execute those checks.
 
 After installing Soda, you connect it to your data source (Snowflake, BigQuery, etc.) by defining connection details such as host, username, and password, in a **configuration YAML** file (except SparkDF, which is [special]({% link soda/connect-spark.md %})). Then, you define your Soda checks for data quality in a **checks YAML** file. 
 
@@ -253,7 +253,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 
 To eliminate the frustration of the silently evolving dataset schema, use schema checks with alert configurations to notify you when column changes occur.
 
-If you have set up a Soda platform account, you can use a catch-all schema check that results in a warning whenever a Soda scan reveals that a column has been added, removed, moved within the context of an index, or changed data type relative to the results of the previous scan. 
+If you have set up a Soda Cloud account, you can use a catch-all schema check that results in a warning whenever a Soda scan reveals that a column has been added, removed, moved within the context of an index, or changed data type relative to the results of the previous scan. 
 {% include code-header.html %}
 ```yaml
 # Requires a Soda Cloud account

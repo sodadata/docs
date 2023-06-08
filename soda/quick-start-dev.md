@@ -18,7 +18,7 @@ Use this guide to install and set up Soda to test the quality of your data durin
 **[01](#soda-basics)** Learn the basics of Soda<br />
 **[02](#about-this-guide)** Get context for this guide<br />
 **[03](#install-soda-from-the-command-line)** Install Soda from the command-line<br />
-**[04](#connect-soda-to-your-data-source-and-platform-account)** Connect Soda to your data source and platform account<br />
+**[04](#connect-soda-to-your-data-source-and-soda-cloud-account)** Connect Soda to your data source and Soda Cloud account<br />
 **[05](#write-checks-for-data-quality)** Write checks for data quality<br />
 **[06](#create-a-github-action-job)** Create a GitHub Action job<br />
 **[07](#set-up-slack-integration-and-notification-rules)** Set up Slack integration and notification rules<br />
@@ -36,7 +36,7 @@ The instructions below offer Data Engineers an example of how to use <a href="ht
 
 (Not a GitHub Actions user? Stay tuned for more guides coming soon.)
 
-For context, the example assumes that a team of people use GitHub to collaborate on managing data ingestion and transformation with dbt. In the same repo, team members can collaborate to write tests for data quality in SodaCL checks YAML files. With each new PR, or commit to an existing PR, in the repo that adds a transformation or makes changes to a dbt model, a GitHub Action executes a Soda scan for data quality and presents the results of the scan in a comment in the pull request, and in the Soda platform. 
+For context, the example assumes that a team of people use GitHub to collaborate on managing data ingestion and transformation with dbt. In the same repo, team members can collaborate to write tests for data quality in SodaCL checks YAML files. With each new PR, or commit to an existing PR, in the repo that adds a transformation or makes changes to a dbt model, a GitHub Action executes a Soda scan for data quality and presents the results of the scan in a comment in the pull request, and in Soda Cloud. 
 
 Where the scan results indicate an issue with data quality, Soda notifies the team via a notification in Slack so that they can investigate and address any issues before merging the PR into production.
 
@@ -290,16 +290,16 @@ Refer to the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activa
 <br />
 
 
-## Connect Soda to your data source and platform account
+## Connect Soda to your data source and Soda Cloud account
 
 To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. 
 
-This guide also instructs you to connect to a Soda platform account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda platform account gives you access to visualized scan results, tracks trends in data quality over time, enables you to set alert notifications, and much more.
+This guide also instructs you to connect to a Soda Cloud account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda Cloud account gives you access to visualized scan results, tracks trends in data quality over time, enables you to set alert notifications, and much more.
 
 1. In the GitHub repository in which you work with your dbt models, or ingest and transform data, create a directory to contain your Soda configuration and check YAML files.
 2. Use <a href="https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-encrypted-secrets-for-your-repository-and-organization-for-github-codespaces" target="_blank">GitHub Secrets</a> to securely store the values for your data source login credentials. Soda requires access to the credentials so it can access the data source to scan the data.
 3. In your new directory, create a new file called `configuration.yml`. 
-4. Open the `configuration.yml` file in a code editor, then copy and paste the connection configuration for the [data source]({% link soda/connect-athena.md %}) that you use. <br />The `data_source` configuration details connect Soda to your data source; the example below is the connection configuration for Snowflake. The `soda_cloud` configuration connects Soda to your platform account; leave it blank for a moment.
+4. Open the `configuration.yml` file in a code editor, then copy and paste the connection configuration for the [data source]({% link soda/connect-athena.md %}) that you use. <br />The `data_source` configuration details connect Soda to your data source; the example below is the connection configuration for Snowflake. The `soda_cloud` configuration connects Soda to your Cloud account; leave it blank for a moment.
     ```yaml
     data_source my_datasource_name:
       type: snowflake
@@ -321,10 +321,10 @@ This guide also instructs you to connect to a Soda platform account using API ke
       api_key_secret:
     ```
 5. In a browser, navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a new Soda account. If you already have a Soda account, log in. 
-6. In your platform account, navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate a new set of API keys.
+6. In your Cloud account, navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate a new set of API keys.
   * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
   * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
-  * Enter the value for `host` according to the region your Soda platform account uses: `cloud.soda.io` for EU region; `cloud.us.soda.io` for USA region.
+  * Enter the value for `host` according to the region your Soda Cloud account uses: `cloud.soda.io` for EU region; `cloud.us.soda.io` for USA region.
 7. Save the `configuration.yml` file and close the API modal in your Soda account.
 8. In Terminal, run the following command to test Soda's connection to your data source, replacing the value of `my_datasource_name` with the name of your data source.<br />
 ```shell
@@ -501,7 +501,7 @@ To trigger the GitHub Action job and initiate a Soda scan for data quality, crea
 ![gh-action-fail](/assets/images/gh-action-fail.png){:width="500px"}
 5. Access your Slack workspace, then navigate to the channel to which you directed Soda to send fail notifications in the **Notification Rule** you created. Notice the alert notification of the check that purposely failed during the Soda scan. <br />
 ![slack-alert](/assets/images/slack-alert.png){:width="500px"}
-6. Navigate to your Soda platform account, then click **Checks** to access the **Check Results** page. The results from the scan that Soda performed during the GitHub Action job appear in the results table where you can click each line item to learn more about the results... <br />
+6. Navigate to your Soda Cloud account, then click **Checks** to access the **Check Results** page. The results from the scan that Soda performed during the GitHub Action job appear in the results table where you can click each line item to learn more about the results... <br />
 ![gh-actions-check-results](/assets/images/gh-actions-check-results.png){:width="700px"}
 ...including, for some types of checks, samples of failed rows to help in your investigation of a data quality issue, as in the example below.
 ![quick-sip-failed-rows](/assets/images/quick-sip-failed-rows.png){:width="700px"}

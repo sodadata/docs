@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda overview
-description: The Soda platform utilizes user-defined input to prepare SQL queries to find bad data, visualize results, set up alerts, and track dataset health over time.
+description: Soda utilizes user-defined input to prepare SQL queries to find bad data, visualize results, set up alerts, and track dataset health over time.
 parent: Get started
 redirect_from: /soda/product-matrix.html
 ---
@@ -9,7 +9,7 @@ redirect_from: /soda/product-matrix.html
 # Soda overview
 *Last modified on {% last_modified_at %}*
 
-Soda is a platform that enables Data Engineers to test data for quality where and when they need to.
+Soda is a tool that enables Data Engineers to test data for quality where and when they need to.
 
 Is your data fresh? Is it complete or missing values? Are there unexpected duplicate values? Did something go wrong during transformation? Are all the data values valid? Are anomalous values disrupting downstream reports? These are the questions that Soda answers for Data Engineers.
 
@@ -17,13 +17,13 @@ Is your data fresh? Is it complete or missing values? Are there unexpected dupli
 
 Soda works by taking the data quality checks that you prepare and using them to run a scan of datasets in a data source. A scan is a command which instructs Soda to execute data quality checks on your data source to find invalid, missing, or unexpected data. When data quality checks fail, they surface bad-quality data and present check results that help you investigate and address quality issues.
 
-Working together, the **engine**, **agent**, **command center** and **checks language** operate as a unified **Soda platform** to empower you and your colleagues to collaborate on data quality testing.
+Working together, the **engine**, **agent**, **command center** and **checks language** empower you and your colleagues to collaborate on data quality testing.
 
 * The **engine** is a term that describes the Soda CLI tool, the software that performs the work of converting user-defined input into SQL queries that execute when you run scans for data quality. The engine uses the data source connection information you provide in a configuration YAML file, and the data quality checks you define in a checks YAML file, to run on-demand or scheduled scans of your data. The engine feeds scan results to the command center to enable you and your colleagues to analyze check results, investigate issues, and track dataset health over time.
 
 * The **agent** is a containerized engine you deploy in a Kubernetes cluster in your cloud services provider environment, such as Azure or AWS.
 
-* The cloud-based **command center** (fka. Soda Cloud) communicates with the engine installed as a CLI tool in your development environment, or as an agent in your cloud service-based environment. While the engine is the mechanism that executes scans, the command center is what makes data quality results accessible and shareable by multiple team members. Use it to access visualized scan results, discover data quality anomalies, set up alerts for quality checks that fail, and track data quality health over time. Connect your Soda platform account to the ticketing, messaging, and data cataloging tools you already use to embed Soda quality checks into your team's existing processes and pipelines. 
+* The cloud-based **command center** (fka. Soda Cloud) communicates with the engine installed as a CLI tool in your development environment, or as an agent in your cloud service-based environment. While the engine is the mechanism that executes scans, the command center is what makes data quality results accessible and shareable by multiple team members. Use it to access visualized scan results, discover data quality anomalies, set up alerts for quality checks that fail, and track data quality health over time. Connect your Soda account to the ticketing, messaging, and data cataloging tools you already use to embed Soda quality checks into your team's existing processes and pipelines. 
 
 * To define data quality checks, you use the **checks language (SodaCL)**, which is a YAML-based, domain-specific language for data quality testing. A Soda check is a test that Soda Core executes when it scans a dataset in your data source. Technically, it is a Python expression that checks metrics to see if they match the parameters you defined for a measurement. <br />
 Designed as a human-readable language, SodaCL includes over 25 built-in metrics and checks that you can use to write Soda Checks for data quality, including metrics for missing values, duplicates, schema changes, and freshness; see example below. 
@@ -67,16 +67,42 @@ After a scan, each check results in one of three default states:
 
 
 
-Soda makes the results available in the command-line and in your platform account, and notifies you of failed checks by email, Slack, MS Teams, or any messaging platform your team already uses. 
+Soda makes the results available in the command-line and in your online account, and notifies you of failed checks by email, Slack, MS Teams, or any messaging platform your team already uses. 
 
 ![overview-results](/assets/images/overview-results.png){:width="700px"}
 
 
 ## Where do you use Soda?
 
-You can programmatically embed Soda scan executions in your data pipeline after ingestion and transformation to get early and precise warnings in the Soda platform about data quality issues before they have a downstream impact. Upon receiving a data quality alert in Slack, for example, your team can take quick action in the Soda platform to identify the issue and open an incident to investigate the root cause. See [Test data quality in a data pipeline]({% link soda/quick-start-prod.md %}).
+You can programmatically embed Soda scan executions in your data pipeline after ingestion and transformation to get early and precise warnings in Soda about data quality issues before they have a downstream impact. Upon receiving a data quality alert in Slack, for example, your team can take quick action in Soda Cloud to identify the issue and open an incident to investigate the root cause. See [Test data quality in a data pipeline]({% link soda/quick-start-prod.md %}).
 
 You can also add Soda scans to your CI/CD development lifecycle to ensure that any changes you make to dbt models or other changes or added transformations are checked for data quality before merging into production, preventing data quality issues from impacting business operations. In conjunction with GitHub Actions, for example, you can automate scans for data quality whenever a team member creates a new pull request to ensure that "checking for data quality" is a regular part of your software development lifecycle. An ounce of prevention in development is worth a pound of cure in production! See [Test data quality during CI/CD development]({% link soda/quick-start-dev.md %}).
+
+## Soda Core
+
+🟢 Supported<br />
+🟠 Deprecating soon
+
+| Feature or functionality | Soda Core OSS | Soda Library |
+| ----------------------- | :-----------: | :----------: |
+|Connect to Soda Cloud | 🟠 | 🟢 |
+|Available for free, forever | 🟢 |  |
+|Available for free for a 45-day free trial | 🟠 | 🟢 |
+|Supports Cloud Metric Store for historic metrics | 🟠 | 🟢 |
+|Set alert notifications | 🟠 | 🟢 |
+|Use check attributes | 🟠 | 🟢 |
+|Profile data | 🟠 | 🟢 |
+|Add automated monitoring checks | 🟠 | 🟢 |
+|Automated anomaly detection and schema evolution | 🟠 | 🟢 |
+|Use change-over-time checks for relative measurements | 🟠 | 🟢 |
+|All other SodaCL checks and configurations | 🟢 | 🟢 |
+|Requires a Soda Cloud connection via API keys to validate licensing or trial status and run scans. |  | 🟢 |
+|Compatible with Check Suggestions |  | 🟢 |
+|Use Group By + Group Evolution checks |  | 🟢 |
+|Extensive documentation on docs.soda.io |  | 🟢 |
+
+
+
 
 ## Go further
 
@@ -88,7 +114,7 @@ You can also add Soda scans to your CI/CD development lifecycle to ensure that a
 * Automatically [profile]({% link soda-cl/profile.md %}) your datasets.
 * Use [failed row samples]({% link soda-cloud/failed-rows.md %}) to investigate data quality issues.
 * Write [custom SQL checks]({% link soda-cl/user-defined.md %}) for your own use cases.
-* [Ingest dbt test results]({% link soda/integrate-dbt.md %}) into your Soda platform account to visualize results and track trends over time.
+* [Ingest dbt test results]({% link soda/integrate-dbt.md %}) into your Soda Cloud account to visualize results and track trends over time.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

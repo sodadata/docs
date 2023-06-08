@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Enable end users to test data quality
-description: Follow this guide to enable Soda platform end users to write their SodaCL checks for data quality for the data that matters to them the most.
+description: Follow this guide to enable Soda Cloud end users to write their SodaCL checks for data quality for the data that matters to them the most.
 parent: Get started
 redirect_from:
 - /soda/quick-start-sodacloud.html
@@ -10,16 +10,16 @@ redirect_from:
 # Enable end users to test data quality
 *Last modified on {% last_modified_at %}*
 
-Use this guide to set up the Soda platform to enable users across your organization to serve themselves when it comes to testing data quality. 
+Use this guide to set up the Soda Cloud to enable users across your organization to serve themselves when it comes to testing data quality. 
 
-Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and the Soda platform, then invite your Data Analyst and Scientist colleagues to join the platform to create agreements and begin writing their own SodaCL checks for data quality. 
+Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and the Soda Cloud, then invite your Data Analyst and Scientist colleagues to join the account to create agreements and begin writing their own SodaCL checks for data quality. 
 
 ![end-user-start](/assets/images/end-user-start.png){:width="500px"}
 
 **[01](#soda-basics)** Learn the basics of Soda<br />
 **[02](#about-this-guide)** Get context for this guide<br />
 **[03](#deploy-a-soda-agent)** Deploy a Soda Agent in a Kubernetes cluster<br />
-**[04](#connect-a-data-source)** Connect a data source to the Soda platform<br />
+**[04](#connect-a-data-source)** Connect a data source to Soda Cloud<br />
 **[05](#set-up-slack-integration-and-notification-rules)** Set up Slack integration and notification rules<br />
 **[06](#invite-your-colleagues)** Invite your colleagues to begin writing agreements<br />
 <br />
@@ -29,16 +29,16 @@ Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and
 
 Soda works by taking data quality checks that you prepare and using them to run a scan of datasets in a data source. A scan is a CLI command which instructs Soda to prepare optimized SQL queries that execute data quality checks on your data source to find invalid, missing, or unexpected data. When checks fail, they surface bad-quality data and present check results that help you investigate and address quality issues. 
 
-To enable your colleagues to test data quality, you install Soda as an **Agent** in your own network infrastructure, and sign up for a **Soda platform account** so that you can complete the following tasks:
+To enable your colleagues to test data quality, you install Soda as an **Agent** in your own network infrastructure, and sign up for a **Soda Cloud account** so that you can complete the following tasks:
 
-* **Connect to your data source.** <br />To connect to a data source such as Snowflake, Amazon Athena, or Big Query, you add a new data source in the Soda platform which stores access details for your data source such as host, port, and data source login credentials. 
+* **Connect to your data source.** <br />To connect to a data source such as Snowflake, Amazon Athena, or Big Query, you add a new data source in Soda Cloud which stores access details for your data source such as host, port, and data source login credentials. 
 * **Define checks to surface “bad” data.** <br />To define the data quality checks that Soda runs against a dataset, you use an Agreement, a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. These agreements contain checks, which are tests that Soda performs when it scans a dataset in your data source. The agreement stores the checks you write using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.
 * **Run a scan to execute your data quality checks.** <br />During a scheduled scan, Soda does not ingest your data, it only scans it for quality metrics, then uses the metadata to prepare scan results<sup>1</sup>. After a scan, each check results in one of three default states:
     * pass: the values in the dataset match or fall within the thresholds you specified
     * fail: the values in the dataset do not match or fall within the thresholds you specified
     * error: the syntax of the check is invalid
     * A fourth state, warn, is something you can explicitly configure for individual checks. 
-* **Review scan results and investigate issues.** <br />You can review the scan output in your Soda platform account which offers access to visualized scan results, trends in data quality over time, and the ability to integrate with the messaging, ticketing, and data cataloging tools you already use, like Slack, Jira, and Alation.
+* **Review scan results and investigate issues.** <br />You can review the scan output in your Soda Cloud account which offers access to visualized scan results, trends in data quality over time, and the ability to integrate with the messaging, ticketing, and data cataloging tools you already use, like Slack, Jira, and Alation.
 
 <sup>1</sup> An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid issue investigation, a feature you can [disable]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).
 
@@ -49,11 +49,11 @@ Access the [Glossary]({% link soda/glossary.md %}) for a full list of Soda termi
 
 ## About this guide
 
-The instructions below offer Data Engineers an example of how to set up the Soda platform to enable colleagues to prepare their own data quality tests. After all, data quality testing is a team sport!
+The instructions below offer Data Engineers an example of how to set up the Soda Cloud to enable colleagues to prepare their own data quality tests. After all, data quality testing is a team sport!
 
 For context, the example assumes that you have the appropriate access to a cloud services provider environment such as Azure, AWS, or Google Cloud that allows you to create and deploy applications to a cluster. Further, it assumes that you, or someone on your team, has access to the login credentials that Soda needs to be able to access a data source such as MS SQL, Big Query, or Athena so that Soda can run scans of the data.
 
-Once you have completed the set-up, you can direct your colleagues to log in to the Soda platform and begin [creating Agreements]({% link soda-cloud/agreements.md %}). An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. It contains data quality checks that run according to the schedule you defined for the data source. 
+Once you have completed the set-up, you can direct your colleagues to log in to Soda Cloud and begin [creating Agreements]({% link soda-cloud/agreements.md %}). An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. It contains data quality checks that run according to the schedule you defined for the data source. 
 
 When checks fail during data quality scans, you and your colleagues get alerts via Slack which enable you to address issues before they have a downstream impact on the users or systems that depend upon the data.
 
@@ -62,7 +62,7 @@ When checks fail during data quality scans, you and your colleagues get alerts v
 
 ## Deploy a Soda Agent
 
-The Soda Agent is a tool that empowers Soda platform users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster.
+The Soda Agent is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster.
 
 Access the exhaustive deployment instructions for the cloud services provider you use.
 * [Amazon Elastic Kubernetes Service (EKS)]({% link soda-agent/deploy-aws.md %})
@@ -72,7 +72,7 @@ Access the exhaustive deployment instructions for the cloud services provider yo
 
 ## Connect a data source
 
-1. Log in to your Soda platform account, then navigate to **your avatar** > **Scans & Data**.
+1. Log in to your Soda Cloud account, then navigate to **your avatar** > **Scans & Data**.
 2. In the **Agents** tab, confirm that you can see the Soda Agent you deployed and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
 3. Navigate to the **Data source** tab, then click **New Data Source** and follow the [guided steps]({% link soda-cloud/add-datasource.md %}) to:
@@ -89,7 +89,7 @@ Access the exhaustive deployment instructions for the cloud services provider yo
 
 ## Invite your colleagues
 
-After testing and saving the new data source, invite your colleagues to your Soda platform account so they can begin creating new agreements. 
+After testing and saving the new data source, invite your colleagues to your Soda Cloud account so they can begin creating new agreements. 
 
 Navigate to **your avatar** > **Invite Team Members**, then complete the form to send invitations to your colleagues. Provide them with the following links to help them get started:
 * [Create a Soda agreement]({% link soda-cloud/agreements.md %})

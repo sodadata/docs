@@ -5,8 +5,19 @@ products:
   - soda-library
 ---
 
-## Release
+## General availability release
 
 Introducing the launch of [Soda Library]({% link soda-library/overview.md %}), a Python library and CLI tool for testing data quality.  
 
-Soda Core, the free, open-source Python library and CLI tool upon which Soda Library is built, continues to exist as an OSS project in <a href="https://github.com/sodadata/soda-core" target="_blank">GitHub</a>. Going forward, Soda Core does not support connecting to Soda Cloud or any of the checks or features that require Soda Cloud. 
+Built on top of Soda Core, Soda Library leverages all the features and functionality of the open-source tool, with newly added features. [Install Soda Library]({% link soda-library/install.md %}) from the command line, then configure it to connect to Soda Cloud using API keys that are valid for a free, 45-day trial.
+
+```shell
+pip install -i https://pypi.cloud.soda.io soda-postgres
+```
+
+If you already use Soda Core, you can seamlessly upgrade to Soda Library without changing any configurations, checks, or integrations. See [Migrate from Soda Core]({% link soda-library/install.md %}#migrate-from-soda-core) for details.
+
+## New features
+* Soda Library supports SodaCL’s newest checks: [Group By]({% link soda-cl/group-by.md %}) and [Group Evolution]({% link soda-cl/group-evolution.md %}). For an individual dataset, add a **Group By** configuration to specify the categories into which Soda must group the check results. When you run a scan, Soda groups the results according to the unique values in the column you identified. Use a **Group Evolution** check to validate the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state. 
+* Soda Library supports [Check Suggestions]({% link soda-cl/check-suggestions.md %}), a helpful CLI tool that assists you in generating basic data quality checks.  Instead of writing your own data quality checks from scratch, the check suggestions tool prompts you through a series of questions about your dataset so that it can leverage the built-in Soda metrics and prepare quality checks tailored to your data.
+

@@ -148,7 +148,7 @@
   - subtitle: Metrics and checks
     page: soda-cl/metrics-and-checks.md
   - subtitle: Check suggestions
-    page: soda-cl/check-suggestion-cli.md
+    page: soda-cl/check-suggestions.md
   - subtitle: Optional check configurations
     page: soda-cl/optional-config.md
   - subtitle: Add check attributes
