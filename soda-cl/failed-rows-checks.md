@@ -184,7 +184,9 @@ Additionally, you can [Disable failed rows sampling for specific columns](#disab
 
 ## Group results by category
 
-You can use a SQL query in a failed row check to group failed check results by one or more categories. Use a SQL editor to build and test a SQL query with your data source, then add the query to a failed rows check to execute it during a Soda scan.
+See [Group by]({% link soda-cl/group-by.md %}).
+
+<!--You can use a SQL query in a failed row check to group failed check results by one or more categories. Use a SQL editor to build and test a SQL query with your data source, then add the query to a failed rows check to execute it during a Soda scan.
 
 The following example illustrates how to build a query that identifies the countries where the average age of people is less than 25.
 
@@ -229,7 +231,7 @@ checks for dim_customers:
             WHERE avg_age < 25
 ```
 
-<br />
+-->
 
 ## Disable failed rows sampling for specific columns
 

@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### June 15, 2023
+* Added preview documentation for the new [Group by]({% link soda-cl/group-by.md %}) configuration and [Group evolution check]({% link soda-cl/group-evolution.md %}), both in preview state in SodaCL.
+
 #### June 8, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.38 and Soda Core 3.0.39.
 

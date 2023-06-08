@@ -56,7 +56,7 @@ checks for dim_product:
 
 ## Define schema checks
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), schema checks are unique. Schema checks always employ alert configurations -- specifying warn and/or fail alert conditions -- with **validation keys** that are unique to this type of check. Refer to [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) for exhaustive alert configuration details.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), schema checks are unique. Schema checks always employ alert configurations -- specifying warn and/or fail alert conditions -- with **validation keys**. Refer to [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) for exhaustive alert configuration details.
 
 The validation key:value pairs in schema checks set the conditions for a warn or a fail check result. See a [List of validation keys](#list-of-validation-keys) below. 
 
@@ -189,9 +189,9 @@ for each dataset T:
   datasets:
     - dim_product_%
   checks:
-    schema:
-      warn:
-        when schema changes: any
+    - schema:
+       warn:
+         when schema changes: any
 ```
 
 #### Example with dataset filter

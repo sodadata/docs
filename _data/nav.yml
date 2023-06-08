@@ -181,6 +181,10 @@
     page: soda-cl/filters.md
   - subtitle: For each
     page: soda-cl/for-each.md
+  - subtitle: Group by
+    page: soda-cl/group-by.md
+  - subtitle: Group evolution
+    page: soda-cl/group-evolution.md
   - subtitle: Display profile info in Soda Cloud
     page: soda-cl/profile.md
   - subtitle: Display sample data in Soda Cloud
