@@ -154,6 +154,7 @@ When you run a scan in Soda Library, you can specify some options that modify th
 | `-s TEXT` or<br /> `--scan-definition TEXT` |  | Use this option to provide a [scan definition name]({% link soda/glossary.md %}#scan-definition-name) so that Soda Cloud keeps check results from different environments (dev, prod, staging) separate. See [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}#configure-the-same-scan-to-run-in-multiple-environments).|
 | `-srf` or <br /> `--scan-results-file TEXT` |  | Specify the file name and file path to which Soda Library sends a JSON file of the scan results. You can use this in addition to, or instead of, sending results to Soda Cloud. <br /> `soda scan -d adventureworks -c configuration.yml -srf test.json checks.yml`|
 | `-t TEXT` or<br /> `--data-timestamp TEXT` |  | Placeholder, only. |
+| `-T TEXT` or<br /> `--template TEXT` | Use this option to specify the file path and file name for a templates YAML file.|
 | `-v TEXT` or<br /> `--variable TEXT` |  | Replace `TEXT` with variables you wish to apply to the scan, such as a [filter for a date]({% link soda-cl/filters.md %}). Put single or double quotes around any value with spaces. <br />  `soda scan -d my_datasource -v start=2020-04-12 -c configuration.yml checks.yml` |
 | `V` or <br /> `--verbose` |  | Return scan output in verbose mode to review query details. |
 
