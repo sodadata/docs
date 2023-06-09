@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### June 9, 2023
+* Added Known Issue for using BigQuery and specifying numeric [missing values]({% link soda-cl/missing-metrics.md %}#specify-missing-values-or-missing-regex) or [valid values]({% link soda-cl/validity-metrics.md %}#specify-valid-or-invalid-values) with single quotes. TL;DR: Don't use single quotes.
+
 #### June 8, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.38 and Soda Core 3.0.39.
 

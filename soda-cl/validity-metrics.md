@@ -120,7 +120,7 @@ A check that uses a validity metric has six mutable parts:
 
 The example below defines two checks. The first check applies to the column `house_owner_flag`. The `valid values` configuration key specifies that if a row in that column contains *anything other than* the two valid values in the list, Soda registers them as invalid. The check fails if Soda discovers any values that are *not* `0` or `1`. 
 * Values in a list must be enclosed in square brackets.
-* Numeric characters in a `valid values` list must be enclosed in single quotes.
+* Numeric characters in a `valid values` list must be enclosed in single quotes. <br />*Known issue:* This rule does not apply to BigQuery. Do not wrap numeric values in single quotes if you are scanning data in a BigQuery data source. 
 
 The second check uses a regular expression to define what qualifies as a valid value in the `birthday` column so that any values that do *not* match the pattern defined by the regex qualify as invalid. 
 {% include code-header.html %}
