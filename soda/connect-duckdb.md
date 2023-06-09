@@ -18,7 +18,7 @@ Install package: `soda-core-duckdb`
 ```yaml
 data_source my_datasource_name:
   type: duckdb
-  path: xxx
+  path: filename.db
   read_only: true
   
 ```
@@ -26,7 +26,7 @@ data_source my_datasource_name:
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
 | type     | required |                                                            |
-| path     | required |                                                            |
+| path     | required | The location of the duckdb file. Refer to <a href="https://duckdb.org/docs/api/python/overview#persistent-storage" target="_blank">DuckDB documentation</a>.                                                       |
 | read_only | required | Value is boolean: `true` or `false`                       |
 
 {% include test-connection.md %}
