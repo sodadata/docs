@@ -8,7 +8,7 @@ redirect_from:
 - /soda/quick-start-soda-core.html
 ---
 
-# Take a sip of Soda ![SodaCan@0.5x](/assets/images/SodaCan@0.5x.png){:width="40px"} 
+# Take a sip of Soda ![SodaCan@0.5x](/assets/images/SodaCan@0.5x.png){:width="25px"}
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 

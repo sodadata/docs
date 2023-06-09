@@ -556,7 +556,7 @@ To trigger the GitHub Action job and initiate a Soda scan for data quality, crea
 
 ## Need help?
 
-* Not quite ready for this big gulp of Soda? ![SodaCan@0.5x](/assets/images/SodaCan@0.5x.png){:width="12px"}Try [taking a sip]({% link soda/quick-start-sip.md %}), first.
+* Not quite ready for this big gulp of Soda? Try [taking a sip]({% link soda/quick-start-sip.md %}), first.
 * <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
 * Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
