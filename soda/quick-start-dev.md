@@ -299,7 +299,7 @@ This guide also instructs you to connect to a Soda platform account using API ke
 1. In the GitHub repository in which you work with your dbt models, or ingest and transform data, create a directory to contain your Soda configuration and check YAML files.
 2. Use <a href="https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-encrypted-secrets-for-your-repository-and-organization-for-github-codespaces" target="_blank">GitHub Secrets</a> to securely store the values for your data source login credentials. Soda requires access to the credentials so it can access the data source to scan the data.
 3. In your new directory, create a new file called `configuration.yml`. 
-4. Open the `configuration.yml` file in a code editor, then copy and paste the connection configuration for the [data source]({% link soda/connect-athena.md %}) that you use. <br />The `data_source` configuration details connect Soda to your data source; the example below is the connection configuration for Snowflake. The `soda_cloud` configuration connects Soda to your platform account; leave it blank for a moment.
+4. Open the `configuration.yml` file in a code editor, then copy and paste the connection configuration for the [data source]({% link soda/connect-athena.md %}) that you use. <br />The `data_source` configuration details connect Soda to your data source; the example below is the connection configuration for Snowflake.
     ```yaml
     data_source my_datasource_name:
       type: snowflake
@@ -314,17 +314,12 @@ This guide also instructs you to connect to a Soda platform account using API ke
           QUERY_TAG: soda-queries
           QUOTED_IDENTIFIERS_IGNORE_CASE: false
       schema: public
-
-    soda_cloud:
-      host:
-      api_key_id:
-      api_key_secret:
     ```
 5. In a browser, navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a new Soda account. If you already have a Soda account, log in. 
-6. In your platform account, navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate a new set of API keys.
-  * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
-  * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
-  * Enter the value for `host` according to the region your Soda platform account uses: `cloud.soda.io` for EU region; `cloud.us.soda.io` for USA region.
+6. Navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
+  * Copy the syntax for the `soda_cloud` configuration, including the values **API Key ID** and **API Key Secret**, and paste it into the `configuration.yml`.
+  * Do not nest the `soda_cloud` configuration in the `data_source` configuration.
+  * Optionally, add a `scheme` property to the `soda_cloud` configuration to indicate which scheme to use to initialize the URI instance. If you do not explicitly include a `scheme` property, Soda uses `https` by default.
 7. Save the `configuration.yml` file and close the API modal in your Soda account.
 8. In Terminal, run the following command to test Soda's connection to your data source, replacing the value of `my_datasource_name` with the name of your data source.<br />
 ```shell
