@@ -99,7 +99,7 @@ A check that uses a missing metric has four or six mutable parts:
 
 The example below defines two checks. The first check applies to the column `last_name`. The `missing values` configuration key specifies that any of the three values in the list exist in a row in that column, Soda recognizes those values as missing values. The check fails if Soda discovers more than five values that match `NA`, `n/a`, or `'0'`. 
 * Values in a list must be enclosed in square brackets.
-* Numeric characters in a `missing values` list must be enclosed in single quotes.
+* Numeric characters in a `missing values` list must be enclosed in single quotes. <br />*Known issue:* This rule does not apply to BigQuery. Do not wrap numeric values in single quotes if you are scanning data in a BigQuery data source. 
 
 The second check uses a regular expression to define what qualifies as a missing value in the `birthday` column so that any values that are `00/00/0000` qualify as missing. This check passes if Soda discovers no values that match the pattern defined by the regex.
 {% include code-header.html %}
