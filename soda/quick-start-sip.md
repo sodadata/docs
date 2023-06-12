@@ -8,7 +8,7 @@ redirect_from:
 - /soda/quick-start-soda-core.html
 ---
 
-# Take a sip of Soda ![SodaCan@0.5x](/assets/images/SodaCan@0.5x.png){:width="40px"} 
+# Take a sip of Soda ![SodaCan@0.5x](/assets/images/SodaCan@0.5x.png){:width="25px"}
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
@@ -122,10 +122,10 @@ This tutorial also instructs you to connect to a Soda Cloud account using API ke
       api_key_secret:
     ```
 3. In a browser, navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a new Soda account. If you already have a Soda account, log in. 
-4. Navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys, and use **Onboarding** as the Description identifier.
-  * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
-  * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
-  * Enter the value for `host` according to the region your Soda Cloud account uses: `cloud.soda.io` for EU region; `cloud.us.soda.io` for USA region.
+4. Navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
+  * Copy the syntax for the `soda_cloud` configuration, including the values **API Key ID** and **API Key Secret**, and paste it into the `configuration.yml`.
+  * Do not nest the `soda_cloud` configuration in the `data_source` configuration.
+  * Optionally, add a `scheme` property to the `soda_cloud` configuration to indicate which scheme to use to initialize the URI instance. If you do not explicitly include a `scheme` property, Soda uses `https` by default.
 5. Save the `configuration.yml` file and close the API modal in your Soda account.
 6. In Terminal, return to the tab in which the virtual environment is active in the `soda_sip` directory. Run the following command to test Soda's connection to the data source.<br />
 Command:

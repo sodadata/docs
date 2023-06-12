@@ -64,7 +64,7 @@ This guide also includes instructions for how to connect to a Soda Cloud account
 
 1. In the directory in which they work with their dbt models, the Data Engineer creates a `soda` directory to contain the Soda configuration and check YAML files.
 2. In the new directory, they create a new file called `configuration.yml`. 
-3. In the `configuration.yml` file, they add the data source connection configuration for the PostgreSQL data source that contains the AdventureWorks data. The example below is the connection configuration for a PostgreSQL data source. The `soda_cloud` configuration connects Soda to your account; leave it blank for a moment. Access the <a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/configuration.example.yml" target="_blank">example file</a>. See a complete list of supported [data sources]({% link soda/connect-athena.md %}).
+3. In the `configuration.yml` file, they add the data source connection configuration for the PostgreSQL data source that contains the AdventureWorks data. The example below is the connection configuration for a PostgreSQL data source. Access the <a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/configuration.example.yml" target="_blank">example file</a>. See a complete list of supported [data sources]({% link soda/connect-athena.md %}).
 ```yaml
 data_source soda-demo:
         type: postgres
@@ -74,16 +74,11 @@ data_source soda-demo:
             password: secret
         database: postgres
         schema: public
-soda_cloud:
-        host: 
-        api_key_id:
-        api_key_secret:
 ```
 4. In a browser, they navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a free, 45-day trial Soda account.  
-5. In the new account, they navigate to **avatar** > **Profile**, then access the **API keys** tab and click the plus icon to generate new API keys.
-  * Copy the **API Key ID**, then paste it into the `configuration.yml` as the value for `api_key_id`.
-  * Copy the **API Key Secret**, then paste it into the `configuration.yml` as the value for `api_key_secret`.
-  * Enter the value for `host` according to the region the Soda Cloud account uses: `cloud.soda.io` for EU region; `cloud.us.soda.io` for USA region.
+5. They navigate to **avatar** > **Profile**, then navigate to the **API Keys** tab and click the plus icon to generate new API keys.
+  * They copy the syntax for the `soda_cloud` configuration, including the values **API Key ID** and **API Key Secret**, and paste it into the `configuration.yml`.
+  * They are careful not to nest the `soda_cloud` configuration in the `data_source` configuration.
 6. They save the `configuration.yml` file and close the API modal in the Soda account.
 7. In Terminal, they run the following command to test Soda's connection to the data source.<br />
 ```shell
@@ -500,7 +495,7 @@ Learn more about [running Soda scans]({% link soda-library/run-a-scan.md %}).
 
 ## Need help?
 
-* Not quite ready for this big gulp of Soda? ![SodaCan@0.5x](/assets/images/SodaCan@0.5x.png){:width="12px"}Try [taking a sip]({% link soda/quick-start-sip.md %}), first.
+* Not quite ready for this big gulp of Soda? Try [taking a sip]({% link soda/quick-start-sip.md %}), first.
 * <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
 * Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
