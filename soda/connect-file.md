@@ -16,7 +16,7 @@ For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}),
 import dask.datasets as dd
 from soda.scan import Scan
 
-# Create Soda Core Scan object and set a few required properties
+# Create Soda Library Scan object and set a few required properties
 scan = Scan()
 scan.set_scan_definition_name("test")
 scan.set_data_source_name("dask")

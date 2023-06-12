@@ -12,7 +12,7 @@ parent: Connect a data source
 
 ## Configuration
 
-Install package: `soda-core-vertica`
+Install package: `soda-vertica`
 
 {% include code-header.html %}
 ```yaml

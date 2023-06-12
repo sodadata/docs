@@ -12,7 +12,7 @@ parent: Connect a data source
 
 ## Configuration
 
-Install package: `soda-core-db2`
+Install package: `soda-db2`
 
 {% include code-header.html %}
 ```yaml
@@ -21,7 +21,7 @@ data_source my_datasource_name:
   host: localhost
   port: 50000
   username: xxx
-  password: ...
+  password: xxx
   database: 
   schema: 
 ```

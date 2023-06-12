@@ -20,7 +20,7 @@ parent: Connect a data source
 
 ## Configuration
 
-Install package: `soda-core-snowflake`
+Install package: `soda-snowflake`
 
 {% include code-header.html %}
 ```yaml

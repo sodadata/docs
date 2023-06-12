@@ -26,7 +26,7 @@ Instances of "dataset" in Soda documentation always reference the former.
 
 ## Connection configuration
 
-Install package: `soda-core-bigquery`
+Install package: `soda-bigquery`
 
 {% include code-header.html %}
 ```yaml
@@ -181,7 +181,7 @@ my_datasource_name:
     - https://www.googleapis.com/auth/cloud-platform
     - https://www.googleapis.com/auth/drive
     project_id: ***
-    dataset: sodacore
+    dataset: sodalibrary
 ```
 
 <br />

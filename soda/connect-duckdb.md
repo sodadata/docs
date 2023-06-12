@@ -12,7 +12,7 @@ parent: Connect a data source
 
 ## Configuration
 
-Install package: `soda-core-duckdb`
+Install package: `soda-duckdb`
 
 {% include code-header.html %}
 ```yaml

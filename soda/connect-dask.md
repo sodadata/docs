@@ -12,7 +12,7 @@ For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}),
 
 [Define a programmatic scan]({% link soda-library/programmatic.md %}) for the data in the DataFrames. Refer to the following example.
 
-Install package: `soda-core-pandas-dask`
+Install package: `soda-pandas-dask`
 
 {% include code-header.html %}
 ```python

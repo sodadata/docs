@@ -12,7 +12,7 @@ parent: Connect a data source
 
 ## Configuration
 
-Install package: `soda-core-postgres`
+Install package: `soda-postgres`
 
 {% include code-header.html %}
 ```yaml
