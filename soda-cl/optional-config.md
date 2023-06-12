@@ -57,7 +57,8 @@ checks for dim_customer:
 
 When you run a scan, Soda Core uses the value you specified for your variable in the scan results, as in the example below.
 ```shell
-Soda Core 3.0.4
+Soda Library 1.0.x
+Soda Core 3.0.x
 Scan summary:
 1/1 check PASSED: 
     dim_customer in adventureworks
@@ -125,7 +126,8 @@ checks for dim_reseller:
 ```
 
 ```shell
-Soda Core 3.0.xxx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Scan summary:
 1/1 check WARNED: 
     dim_reseller in adventureworks
@@ -149,7 +151,8 @@ checks for dim_reseller:
       fail: when > 10
 ```
 ```shell
-Soda Core 3.0.xxx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Scan summary:
 1/1 check FAILED: 
     dim_reseller in adventureworks

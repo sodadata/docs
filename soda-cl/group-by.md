@@ -73,12 +73,13 @@ checks for dim_employee:
 
 ## Group by check results
 
-When you run a scan that includes checks nested in a group by configuration, the output in **Soda Core CLI** groups the results according to the unique values in the column you identified in the `fields` subsection. The number of unique values in the column must match the value you provided for `group_limit`. 
+When you run a scan that includes checks nested in a group by configuration, the output in **Soda Library CLI** groups the results according to the unique values in the column you identified in the `fields` subsection. The number of unique values in the column must match the value you provided for `group_limit`. 
 
 In the example results below, the calculated average of `vacation_hours` for rows with an `M` value in their corresponding `marital_status` column was less than 50, so the check for that group passed. The calculated average of `vacation_hours` for rows with an `S` value in their corresponding `marital_status` column was `53`, which is between 50 and 60, so the check for that group warned. The value in the square brackets next to the custom check name identifies the group.
 
 ```shell
-Soda Core 3.0.xx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Scan summary:
 2/3 checks PASSED: 
     dim_employee in adventureworks
@@ -111,7 +112,8 @@ checks for dim_employee:
 ```
 
 ```shell
-Soda Core 3.0.xx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Evaluation of check group by failed: Total number of groups 11 exceeds configured group limit: 2
   | Total number of groups 11 exceeds configured group limit: 2
   +-> line=2,col=5 in checks_groupby.yml
@@ -147,7 +149,8 @@ checks for dim_employee:
 ```
 
 ```shell
-Soda Core 3.0.xx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Scan summary:
 12/12 checks FAILED: 
     dim_employee in adventureworks

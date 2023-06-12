@@ -94,7 +94,7 @@ soda scan -d adventureworks -c configuration.yml checks.yml
 
 The following image illustrates what Soda Library does when you initiate a scan.
 
-![soda-core-operation](/assets/images/soda-core-operation.png){:height="800px" width="800px"}
+![soda-library-operation](/assets/images/soda-library-operation.png){:height="800px" width="800px"}
 
 **1** - You trigger a scan using the `soda scan` CLI command from your Soda project directory which contains the `configuration.yml` and `checks.yml` files. The scan specifies which data source to scan, where to get data source access info,  and which checks to run on which datasets.
 
@@ -115,10 +115,10 @@ The web app serves to complement Soda Library. Use Soda Cloud to:
 
 * access visualized check results
 * track check results over time with the Cloud Metric Store that records past measurements 
-* set up and send alert notifications when "bad" data surfaces
+* set up and send alert notifications when bad-quality data surfaces
 * examine failed row samples
-* profile datasets and columns
-* create and track data quality [Incidents]({% link soda-cloud/incidents.md %}) so your team can collaborate in Slack to resolve them
+* profile columns and examine sample data
+* create and track data quality [incidents]({% link soda-cloud/incidents.md %}) so your team can collaborate in Slack to resolve them
 * collaborate with team members to review details of scan results that can help you to diagnose data issues
 
 

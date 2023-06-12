@@ -134,7 +134,8 @@ soda test-connection -d adventureworks -c configuration.yml
 ```
 Output:
 ```shell
-Soda Core 3.0.xx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Successfully connected to 'adventureworks'.
 Connection 'adventureworks' is valid.
 ```
@@ -181,7 +182,8 @@ soda scan -d adventureworks -c configuration.yml checks.yml
 ```
 Output:
 ```shell
-Soda Core 3.0.xx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Sending failed row samples to Soda Cloud
 Scan summary:
 3/5 checks PASSED: 

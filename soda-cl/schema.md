@@ -226,7 +226,7 @@ checks for CUSTOMERS [daily]:
 
 Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more severe, failed check result.
 
-Using the following example, Soda Core, during a scan, discovers that the data in the dataset triggers both alerts, but the check result at the bottom is `Oops! 1 failures`. Nonetheless, the results in the `Scan summary` section of the CLI output still display both the warn and fail alerts as having been triggered.
+Using the following example, Soda Library, during a scan, discovers that the data in the dataset triggers both alerts, but the check result at the bottom is `Oops! 1 failures`. Nonetheless, the results in the `Scan summary` section of the CLI output still display both the warn and fail alerts as having been triggered.
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
@@ -238,7 +238,8 @@ checks for dim_product:
         when required column missing: [pretend_column]
 ```
 ```shell
-Soda Core 3.0.xx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Scan summary:
 1/1 check FAILED: 
     dim_product in adventureworks

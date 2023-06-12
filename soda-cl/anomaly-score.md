@@ -86,7 +86,8 @@ checks for orders:
 Because the anomaly score check requires at least four data points before it can start detecting what counts as an anomalous measurement, your first few scans will yield a check result that indicates that Soda does not have enough data.
 
 ```shell
-Soda Core 3.0.0xx
+Soda Library 1.0.x
+Soda Core 3.0.0x
 Anomaly Detection Frequency Warning: Coerced into daily dataset with last daily time point kept
 Data frame must have at least 4 measurements
 Skipping anomaly metric check eval because there is not enough historic data yet
