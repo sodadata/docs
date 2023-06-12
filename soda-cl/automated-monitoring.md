@@ -85,7 +85,7 @@ Need help? Ask the team in the <a href="https://community.soda.io/slack" target=
 
 ### Use Docker to run Soda Core
 
-{% include docker-soda-core.md %}
+{% include docker-soda-library.md %}
 
 ### Install Soda Core Scientific Locally 
 

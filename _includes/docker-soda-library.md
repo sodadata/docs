@@ -1,26 +1,30 @@
-Use <a href="https://hub.docker.com/repository/docker/sodadata/soda-core" target="_blank">Soda's Docker image</a> in which Soda Core Scientific is pre-installed.
+Use <a href="https://hub.docker.com/repository/docker/sodadata/soda-core" target="_blank">Soda's Docker image</a> in which Soda Scientific is pre-installed.
 
 1. If you have not already done so, <a href="https://docs.docker.com/get-docker/" target="_blank">install Docker</a> in your local environment. 
-2. From Terminal, run the following command to pull the latest Soda Core's official Docker image.
+2. From Terminal, run the following command to pull the latest Soda Library's official Docker image.
 ```shell
-docker pull sodadata/soda-core
+docker pull sodadata/soda-library
 ```
 3. Verify the pull by running the following command.
 ```shell
-docker run sodadata/soda-core --help
+docker run sodadata/soda-library --help
 ```
 Output:
 ```shell
     Usage: soda [OPTIONS] COMMAND [ARGS]...
 
-    Soda Core CLI version 3.0.xxx
+      Soda Library CLI version 1.0.x, Soda Core CLI version 3.0.xx
 
     Options:
-    --help  Show this message and exit.
+      --version  Show the version and exit.
+      --help     Show this message and exit.
 
     Commands:
-    scan    runs a scan
-    update-dro  updates a distribution reference file
+      ingest           Ingests test results from a different tool
+      scan             Runs a scan
+      suggest          Generates suggestions for a dataset
+      test-connection  Tests a connection
+      update-dro       Updates contents of a distribution reference file
     ```
 When you run the Docker image on a non-Linux/amd64 platform, you may see the following warning from Docker, which you can ignore.
 ```shell
@@ -28,11 +32,11 @@ WARNING: The requested image's platform (linux/amd64) does not match the detecte
 ```
 4. When you are ready to run a Soda scan, use the following command to run the scan via the docker image. Replace the placeholder values with your own file paths and names.
 ```bash
-docker run -v /path/to/your_soda_directory:/sodacl sodadata/soda-core scan -d your_data_source -c /sodacl/your_configuration.yml /sodacl/your_checks.yml
+docker run -v /path/to/your_soda_directory:/sodacl sodadata/soda-library scan -d your_data_source -c /sodacl/your_configuration.yml /sodacl/your_checks.yml
 ``` 
-Optionally, you can specify the version of Soda Core to use to execute the scan. This may be useful when you do not wish to use the latest released version of Soda Core to run your scans. The example scan command below specifies Soda Core version 3.0.0.
+Optionally, you can specify the version of Soda Library to use to execute the scan. This may be useful when you do not wish to use the latest released version of Soda Library to run your scans. The example scan command below specifies Soda Library version 1.0.0.
 ```bash
-docker run -v /path/to/your_soda_directory:/sodacl sodadata/soda-core:v3.0.0 scan -d your_data_source -c /sodacl/your_configuration.yml /sodacl/your_checks.yml
+docker run -v /path/to/your_soda_directory:/sodacl sodadata/soda-library:v1.0.0 scan -d your_data_source -c /sodacl/your_configuration.yml /sodacl/your_checks.yml
 ```
 
 <details>
@@ -41,7 +45,7 @@ docker run -v /path/to/your_soda_directory:/sodacl sodadata/soda-core:v3.0.0 sca
     <li><code>docker run</code> ensures that the docker engine runs a specific image.</li>
     <li><code>-v</code> mounts your SodaCL files into the container. In other words, it makes the configuration.yml and checks.yml files in your local environment available to the docker container. The command example maps your local directory to <code>/sodacl</code> inside of the docker container. </li>
     <li><code>sodadata/soda-core</code> refers to the image that <code>docker run</code> must use.</li>
-    <li><code>scan</code> instructs Soda Core to execute a scan of your data. </li>
+    <li><code>scan</code> instructs Soda Library to execute a scan of your data. </li>
     <li><code>-d</code> indicates the name of the data source to scan.</li>
     <li><code>-c</code> specifies the filepath and name of the configuration YAML file.</li>
   </ul>
@@ -55,7 +59,7 @@ If you encounter the following error, follow the procedure below.
 
 ```shell
 docker: Error response from daemon: Mounts denied: 
-The path /soda-core-test/files is not shared from the host and is not known to Docker.
+The path /soda-library-test/files is not shared from the host and is not known to Docker.
 You can configure shared paths from Docker -> Preferences... -> Resources -> File Sharing.
 See https://docs.docker.com/desktop/mac for more info.
 ```
@@ -74,7 +78,7 @@ If you encounter the following error, double check the syntax of the scan comman
 * Be sure to mount your files into the container by including the `-v` option.  For example, `-v /Users/MyName/soda_core_project:/sodacl`.
 
 ```shell
-Soda Core 3.0.xxx
+Soda Library 1.0.x
 Configuration path 'configuration.yml' does not exist
 Path "checks.yml" does not exist
 Scan summary:

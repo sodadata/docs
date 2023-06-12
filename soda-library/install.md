@@ -23,6 +23,7 @@ Soda Library is a Python library and command-line interface (CLI) tool that enab
 [Upgrade](#upgrade)<br />
 [Migrate from Soda Core](#migrate-from-soda-core)<br />
 [Install Soda Scientific](#install-soda-scientific)<br />
+[Uninstall](#uninstall)<br />
 [Go further](#go-further)<br />
 
 ## Compatibility
@@ -147,7 +148,7 @@ Reference the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activ
   </div>
   <div class="panel" id="three-panel" markdown="1">
 
-{% include docker-soda-core.md %}
+{% include docker-soda-library.md %}
 
   </div>
   </div>
@@ -183,9 +184,9 @@ pip install -i https://pypi.soda.io soda-postgres
 
 Install Soda Scientific to be able to use SodaCL [distribution checks]({% link soda-cl/distribution.md %}) or [anomaly score checks]({% link soda-cl/anomaly-score.md %}).
 
-You have three installation options to choose from:
+You have two installation options to choose from:
 * [Install Soda Scientific in a virtual environment (Recommended)](#install-soda-scientific-in-a-virtual-environment-recommended)
-* [Use Docker to run Soda Core with Soda Scientific](#use-docker-to-run-soda-core-scientific)
+* [Use Docker to run Soda Library with Soda Scientific](#use-docker-to-run-soda-scientific)
 
 ### Install Soda Scientific in a virtual environment (Recommended)
 
@@ -197,9 +198,24 @@ You have three installation options to choose from:
 
 {% include troubleshoot-anomaly-check-tbb.md %}
 
-### Use Docker to run Soda Core Scientific
+### Use Docker to run Soda Scientific
 
-{% include docker-soda-core.md %}
+{% include docker-soda-library.md %}
+
+## Uninstall
+
+1. (Optional) From the command-line, run the following command to determine which Soda packages exist in your environment.
+```shell
+pip freeze | grep soda
+```
+2. (Optional) Run the following command to uninstall a specific Soda package from your environment.
+```shell
+pip uninstall soda-postgres
+```
+3. Run the following command to uninstall all Soda packages from your environment, completely.
+```shell
+pip freeze | grep soda | xargs pip uninstall -y
+```
 
 ## Go further
 
