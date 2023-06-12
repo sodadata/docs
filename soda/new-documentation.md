@@ -12,6 +12,12 @@ parent: Reference
 #### June 12, 2023
 * Remove "Preview" tag from the [Reporting API v1]({% link api-docs/reporting-api-v1.md %}) documentation.
 
+#### June 9, 2023
+* Added Known Issue for using BigQuery and specifying numeric [missing values]({% link soda-cl/missing-metrics.md %}#specify-missing-values-or-missing-regex) or [valid values]({% link soda-cl/validity-metrics.md %}#specify-valid-or-invalid-values) with single quotes. TL;DR: Don't use single quotes.
+* Added clarification to the value for `path` when connecting a [DuckDB data source]({% link soda/connect-duckdb.md %}).
+* Removed incorrect syntax guidance regarding multiple thresholds for an alert. Each `warn` or `fail` condition can contain only one threshold. See [Optional check configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations).
+* Updated instructions for configuring a `soda_cloud` connection in a `configuration.yml` file. New instructions involve copying the whole configuration instead of just API Key values.
+
 #### June 8, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.38 and Soda Core 3.0.39.
 
