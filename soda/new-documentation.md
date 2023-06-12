@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### June 12, 2023
+* Remove "Preview" tag from the [Reporting API v1]({% link api-docs/reporting-api-v1.md %}) documentation.
+
 #### June 8, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.38 and Soda Core 3.0.39.
 
