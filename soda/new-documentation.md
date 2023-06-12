@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### June 12, 2023
+* Remove "Preview" tag from the [Reporting API v1]({% link api-docs/reporting-api-v1.md %}) documentation.
+
 #### June 9, 2023
 * Added Known Issue for using BigQuery and specifying numeric [missing values]({% link soda-cl/missing-metrics.md %}#specify-missing-values-or-missing-regex) or [valid values]({% link soda-cl/validity-metrics.md %}#specify-valid-or-invalid-values) with single quotes. TL;DR: Don't use single quotes.
 * Added clarification to the value for `path` when connecting a [DuckDB data source]({% link soda/connect-duckdb.md %}).
