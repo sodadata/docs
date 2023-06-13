@@ -78,29 +78,6 @@ You can programmatically embed Soda scan executions in your data pipeline after 
 
 You can also add Soda scans to your CI/CD development lifecycle to ensure that any changes you make to dbt models or other changes or added transformations are checked for data quality before merging into production, preventing data quality issues from impacting business operations. In conjunction with GitHub Actions, for example, you can automate scans for data quality whenever a team member creates a new pull request to ensure that "checking for data quality" is a regular part of your software development lifecycle. An ounce of prevention in development is worth a pound of cure in production! See [Test data quality during CI/CD development]({% link soda/quick-start-dev.md %}).
 
-## Soda Core
-
-🟢 Supported<br />
-🟠 Deprecating soon
-
-| Feature or functionality | Soda Core OSS | Soda Library |
-| ----------------------- | :-----------: | :----------: |
-|Connect to Soda Cloud | 🟠 | 🟢 |
-|Available for free, forever | 🟢 |  |
-|Available for free for a 45-day free trial | 🟠 | 🟢 |
-|Supports Cloud Metric Store for historic metrics | 🟠 | 🟢 |
-|Set alert notifications | 🟠 | 🟢 |
-|Use check attributes | 🟠 | 🟢 |
-|Profile data | 🟠 | 🟢 |
-|Add automated monitoring checks | 🟠 | 🟢 |
-|Automated anomaly detection and schema evolution | 🟠 | 🟢 |
-|Use change-over-time checks for relative measurements | 🟠 | 🟢 |
-|All other SodaCL checks and configurations | 🟢 | 🟢 |
-|Requires a Soda Cloud connection via API keys to validate licensing or trial status and run scans. |  | 🟢 |
-|Compatible with Check Suggestions |  | 🟢 |
-|Use Group By + Group Evolution checks |  | 🟢 |
-|Extensive documentation on docs.soda.io |  | 🟢 |
-
 
 
 

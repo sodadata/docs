@@ -11,79 +11,34 @@ redirect_from:
 
 # Soda Core
 <!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
-&#10004;  A free, open-source, CLI tool and Python library for data reliability<br /> <br />
-&#10004;  Compatible with [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}) and [Soda Cloud]({% link soda-cloud/overview.md %}) <br /> <br />
-&#10004;  Enables data quality testing both in and out of your data pipeline, for data observability and reliability <br /> <br />
-&#10004;  Enables programmatic scans on a time-based schedule <br /> <br />
-&#10004;  Access Soda Core and all its documentation in <a href="https://github.com/sodadata/soda-core" target="_blank">sodadata/soda-core</a> on GitHub.<br /> <br />
-<br />
+**Soda Core** is a free, open-source Python library and CLI tool that enables data engineers to test data quality. Accessible on <a href="https://github.com/sodadata/soda-core" target="_blank">GitHub</a> along with its documentation, you can download the CLI tool or import the Python library to prepare checks for data quality. 
+
+**Soda Library**, an extension of Soda Core, is a commercial offering that enables users to connect to Soda Cloud and offers features and functionality not available with the open-source tool. [Install Soda Library]({% link soda-library/install.md %}) for a free, 45-day trial, or [migrate from Soda Core]({% link soda-library/install.md %}#migrate-from-soda-core) to Soda Library without changing checks or data source connections.
 
 
+![done](/assets/images/done.png){:width="20px"} Supported<br />
+![almost-done](/assets/images/almost-done.png){:width="20px"} Deprecating soon
 
-#### Example checks
-{% include code-header.html %}
-```yaml
-# Checks for basic validations
-checks for dim_customer:
-  - row_count between 10 and 1000
-  - missing_count(birth_date) = 0
-  - invalid_percent(phone) < 1 %:
-      valid format: phone number
-  - invalid_count(number_cars_owned) = 0:
-      valid min: 1
-      valid max: 6
-  - duplicate_count(phone) = 0
-checks for dim_product:
-  - avg(safety_stock_level) > 50
-```
-{% include code-header.html %}
-```yaml
-# Check for schema changes
-checks for dim_product:
-  - schema:
-      name: Find forbidden, missing, or wrong type
-      warn:
-        when required column missing: [dealer_price, list_price]
-        when forbidden column present: [credit_card]
-        when wrong column type:
-          standard_cost: money
-      fail:
-        when forbidden column present: [pii*]
-        when wrong column index:
-          model_name: 22
-```
-{% include code-header.html %}
-```yaml
-# Check for freshness 
-checks for dim_product:
-  - freshness(start_date) < 1d
-```
-{% include code-header.html %}
-```yaml
-# Check for referential integrity
-checks for dim_department_group:
-  - values in (department_group_name) must exist in dim_employee (department_name)
-```
-<br />
-
-<div class="docs-html-content">
-    <section class="docs-section" style="padding-top:0">
-        <div class="docs-section-row">
-            <div class="docs-grid-3cols">
-                <div>
-                    <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
-                    <h2>Get started</h2>
-                    <a href="https://docs.soda.io/soda-core/installation.html" target="_blank">Download and install Soda Core </a> 
-                    <a href="https://docs.soda.io/soda-core/configuration.html" target="_blank">Prepare a configuration.yml file</a>
-                    <a href="https://docs.soda.io/soda/quick-start-sodacl.html" target="_blank">Write checks in a checks.yml file</a>
-                    <a href="https://docs.soda.io/soda-core/scan-core.html" target="_blank">Run a scan</a>
-                </div>
-            </div>
-        </div>        
-    </section>
-</div>
-
+| Feature or functionality | Soda Core OSS | Soda Library |
+| ----------------------- | :-----------: | :----------: |
+|Connect to Soda Cloud | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+|Available for free, forever | ![done](/assets/images/done.png){:width="20px"} |  |
+|Available for free for a 45-day free trial |  | ![done](/assets/images/done.png){:width="20px"}|
+|Supports Cloud Metric Store for historic metrics | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+|Set alert notifications | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+|Define check attributes | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+|Profile data | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+|Add automated monitoring checks | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+|Use anomaly detection and schema evolution checks | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+|Use change-over-time checks for relative measurements | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+|Compatible with basic SodaCL checks and configurations | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+|Requires a Soda Cloud connection via API keys to validate licensing or trial status and run scans. |  | ![done](/assets/images/done.png){:width="20px"} |
+|Compatible with Check Suggestions |  | ![done](/assets/images/done.png){:width="20px"} |
+|Use Check Templates |  | ![done](/assets/images/done.png){:width="20px"} |
+|Use Group By + Group Evolution checks |  | ![done](/assets/images/done.png){:width="20px"} |
+|Access extensive documentation on docs.soda.io |  | ![done](/assets/images/done.png){:width="20px"} |
 
 
 ---

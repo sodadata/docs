@@ -10,8 +10,9 @@ redirect_from:
 ---
 
 # Soda Library
+*Last modified on {% last_modified_at %}*
 <!--Linked to UI, access Shlink-->
-<br />
+<br /><br />
 &#10004;  A Python library and CLI tool for data quality testing<br /> <br />
 &#10004;  Compatible with [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}) and [Soda Cloud]({% link soda-cloud/overview.md %}) <br /> <br />
 &#10004;  Enables data quality testing both in your [data pipeline]({% link soda/quick-start-prod.md %}) and [development workflows]({% link soda/quick-start-dev.md %}) <br /> <br />

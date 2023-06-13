@@ -7,19 +7,19 @@ redirect_from:
 - /soda-cl/
 - /soda-core/soda-cl.html
 ---
-<!--Linked to UI, access Shlink--><br />
 
-![soda-cl-logo](/assets/images/sodacl-logo.png){:height="185px" width="185px"} 
-<br />
-<br />
+# Soda Checks Language 
+<!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 
+<br />
 <p>&#10004;  Soda Checks Language: a human-readable, domain-specific language for data reliability<br /></p>
-<p>&#10004;  Compatible with <a href="https://docs.soda.io/soda-core/overview-main.html" target="_blank">Soda Core </a> and <a href="https://docs.soda.io/soda-cloud/overview.html">Soda Cloud</a><br /></p>
+<p>&#10004;  Compatible with <a href="">Soda Library</a>, <a href="https://docs.soda.io/soda-cloud/overview.html">Soda Cloud</a>, and <a href="https://github.com/sodadata/soda-core" target="_blank">Soda Core</a></p>
 <p>&#10004;  Includes 25+ built-in metrics, plus the ability to <a href="https://docs.soda.io/soda-cl/user-defined.html">include SQL queries</a><br /></p>
 <p>&#10004;  Includes checks with <a href="https://docs.soda.io/soda-cl/numeric-metrics.html#change-over-time-thresholds">change-over-time thresholds</a> to gauge changes to metrics over time<br /></p>
-<p>&#10004;  Collaborate with your team to write SodaCL checks in a YAML file<br /></p>
+<p>&#10004;  Use SQL or CTE to <a href="https://docs.soda.io/soda-cl/user-defined.html">customize queries</a> tailored to your needs <br /></p>
 <br />
-
+<br />
 
 #### Example checks
 {% include code-header.html %}
@@ -72,9 +72,10 @@ checks for dim_department_group:
                 <div>
                     <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
                     <h2>Get started</h2>
-                    <a href="https://docs.soda.io/soda-core/installation.html" target="_blank">Download and install Soda Core </a> 
-                    <a href="https://docs.soda.io/soda-core/configuration.html" target="_blank">Write checks in a checks.yml file</a>
-                    <a href="https://docs.soda.io/soda-core/scan-core.html" target="_blank">Run a scan of your data</a>
+                    <a href="https://docs.soda.io/soda-library/install.html" target="_blank">Download and install Soda Library </a> 
+                    <a href="https://docs.soda.io/soda-cl/check-suggestions.html" target="_blank">Auto-generate basic data quality checks</a>
+                    <a href="https://docs.soda.io/soda/quick-start-sodacl.html" target="_blank">Follow a SodaCL tutorial</a>
+                    <a href="https://docs.soda.io/soda-library/run-a-scan.html" target="_blank">Run a scan of your data</a>
                 </div>
             </div>
         </div>        
