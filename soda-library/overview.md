@@ -10,13 +10,15 @@ redirect_from:
 ---
 
 # Soda Library
-
 <!--Linked to UI, access Shlink-->
-
+<br />
 &#10004;  A Python library and CLI tool for data quality testing<br /> <br />
 &#10004;  Compatible with [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}) and [Soda Cloud]({% link soda-cloud/overview.md %}) <br /> <br />
 &#10004;  Enables data quality testing both in your [data pipeline]({% link soda/quick-start-prod.md %}) and [development workflows]({% link soda/quick-start-dev.md %}) <br /> <br />
-&#10004;  Built on top of Soda Core, a free, open-source CLI and Python library in <a href="https://github.com/sodadata/soda-core" targt="_blank">GitHub</a> <br /> <br />
+&#10004;  Extended from Soda Core, a free, open-source CLI and Python library in <a href="https://github.com/sodadata/soda-core" targt="_blank">GitHub</a> <br /> <br />
+
+{% include banner-core.md %}
+
 <br />
 
 #### Example checks
@@ -72,10 +74,10 @@ checks for dim_department_group:
                 <div>
                     <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
                     <h2>Get started</h2>
-                    <a href="https://docs.soda.io/soda-core/installation.html" target="_blank">Download and install Soda Core </a> 
-                    <a href="https://docs.soda.io/soda-core/configuration.html" target="_blank">Prepare a configuration.yml file</a>
-                    <a href="https://docs.soda.io/soda/quick-start-sodacl.html" target="_blank">Write checks in a checks.yml file</a>
-                    <a href="https://docs.soda.io/soda-core/scan-core.html" target="_blank">Run a scan</a>
+                    <a href="https://docs.soda.io/soda-library/install.html" target="_blank">Download and install Soda Library </a> 
+                    <a href="https://docs.soda.io/soda-library/configure.html" target="_blank">Prepare a configuration.yml file</a>
+                    <a href="https://docs.soda.io/soda-cl/check-suggestions.html" target="_blank">Auto-generate data quality check suggestions</a>
+                    <a href="https://docs.soda.io/soda-library/run-a-scan.html" target="_blank">Run a scan</a>
                 </div>
             </div>
         </div>        
@@ -87,8 +89,8 @@ checks for dim_department_group:
 Simplify the work of testing and maintaining good-quality data.
 * Download the Soda Library (free a 45-day trial!) and configure settings and data quality checks in two simple YAML files to start scanning your data within minutes.
 * Connect Soda Library to over a dozen data sources to scan volumes of data for quality.
-* Use the Soda Library to build programmatic scans that you can use in conjunction with orchestration tools like Airflow or Prefect to automate pipeline actions when data quality checks fails.
 * Write data quality checks using SodaCL, a low-code, human-readable, domain-specific language for data quality management.
+* Use the Soda Library to build programmatic scans that you can use in conjunction with orchestration tools like Airflow or Prefect to automate pipeline actions when data quality checks fails.
 * Run the same scans for data quality in multiple environments such as development, staging, and production.
 
 ---

@@ -10,6 +10,7 @@ redirect_from:
 
 # Define programmatic scans using Python
 *Last modified on {% last_modified_at %}*
+{% include banner-core.md %}
 
 To automate the search for bad-quality data, you can use **Soda library** to programmatically execute scans. Alternatively, you can install and use the Soda Library CLI to run scans; see [Install Soda Library]({% link soda-library/install.md %}).
 

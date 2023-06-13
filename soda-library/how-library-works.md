@@ -8,6 +8,7 @@ redirect_from: /soda-core/how-core-works.html
 
 # How Soda Library works 
 *Last modified on {% last_modified_at %}*
+{% include banner-core.md %}
 
 **Soda Library** is Python library and CLI tool that enables Data Engineers to test data for quality where and when they need to. 
 

@@ -12,6 +12,7 @@ redirect_from:
 # Configure Soda Library 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
+{% include banner-core.md %}
 
 After you [install Soda Library]({% link soda-library/install.md %}), you must create a `configuration.yml` to provide details for Soda Library to:
 * connect your data source (except Apache Spark DataFrames, which does not use a configuration YAML file)

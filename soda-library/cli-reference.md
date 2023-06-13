@@ -10,6 +10,7 @@ redirect_from:
 
 # Soda Library CLI commands 
 *Last modified on {% last_modified_at %}*
+{% include banner-core.md %}
 
 
 | Command               | Description |

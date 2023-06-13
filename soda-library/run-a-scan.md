@@ -11,6 +11,7 @@ redirect_from:
 
 # Run a Soda Library scan 
 *Last modified on {% last_modified_at %}*
+{% include banner-core.md %}
 
 A **scan** is a command that executes checks to extract information about data in a dataset. 
 {% include code-header.html %}

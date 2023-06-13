@@ -11,6 +11,7 @@ redirect_from:
 # Configure orchestrated scans 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
+{% include banner-core.md %}
 
 Integrate Soda Library with a data orchestration tool such as, Airflow, to automate and schedule your search for bad-quality data. 
 
