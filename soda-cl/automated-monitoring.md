@@ -34,7 +34,7 @@ Anomaly score checks require a minimum of four data points (four scans at stable
 **Schema checks**: This check monitors schema changes in datasets, including column addition, deletion, data type changes, and index changes. By default, this automated check results in a failure if a column is deleted, its type changes, or its index changes; it results in a warning if a column is added. Refer to [Schema checks]({% link soda-cl/schema.md %}) for details.<br />
 Schema checks require a minimum of one data point to use as a baseline against which to gauge schema changes. If you do not see check results immediately, wait until after you have scanned the dataset twice.
 
-If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a baseline of normal metric values against which to evaluate future metric values to identify anomalies and schema changes. Therefore, you must have a created and connected a Soda Cloud account to use automated monitoring checks. 
+These types of checks require a **Soda Cloud** account. Soda Library pushes check results to your account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future schema and anomaly score checks. 
 
 ## Prerequisites
 

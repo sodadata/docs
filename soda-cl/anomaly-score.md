@@ -33,7 +33,7 @@ checks for dim_customer:
 
 The anomaly score check is powered by a machine learning algorithm that works with measured values for a metric that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalies in time-series data. 
 
-If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a baseline of normal metric values against which to evaluate future metric values to identify anomalies. Therefore, you must have a created and connected a Soda Cloud account to use anomaly score checks.
+This type of check requires a **Soda Cloud** account. Soda Library pushes check results to your account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future anomaly score checks. 
 
 
 ## Prerequisites

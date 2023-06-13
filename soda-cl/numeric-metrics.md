@@ -209,7 +209,7 @@ Numeric metrics can specify a **fixed threshold** which is not relative to any o
 
 Only checks that use numeric metrics can specify a **change-over-time threshold**, a value that is relative to a previously-measured, or historic, value. Sometimes referred to as a dynamic threshold or historic metrics, you use these change-over-time thresholds to gauge changes to the same metric over time. Most of the examples below use the `row_count` metric, but you can use any numeric metric in checks that use change-over-time thresholds. 
 
-If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account. Soda Cloud stores the measured value of each metric that a check result produces during a scan in a Cloud Metric Store. Over time, these historic values accumulate and you can reference them to detect anomalous values relative to historic values for the same metric. Therefore, you must have a Soda Cloud account to use change-over-time thresholds.
+This type of threshold requires a **Soda Cloud** account. Soda Library pushes check results to your account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future change-over-time checks.
 
 The most basic of change-over-time threshold checks has three or four mutable parts:
 
