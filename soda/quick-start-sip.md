@@ -105,7 +105,7 @@ To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP
 This tutorial also instructs you to connect to a Soda Cloud account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda Cloud account gives you access to visualized scan results, tracks trends in data quality over time, lets you set alert notifications, and much more.
 
 1. In a code editor such as Sublime or Visual Studio Code, create a new file called `configuration.yml` and save it in your `soda_sip` directory. 
-2. Copy and paste the following connection details into the file. The `data_source` configuration details connect Soda to the example AdventureWorks data source you set up using Docker. The `soda_cloud` configuration connects Soda to your account; leave it blank for a moment.
+2. Copy and paste the following connection details into the file. The `data_source` configuration details connect Soda to the example AdventureWorks data source you set up using Docker. 
     ```yaml
     data_source adventureworks:
       type: postgres
@@ -115,17 +115,21 @@ This tutorial also instructs you to connect to a Soda Cloud account using API ke
         password: secret
       database: postgres
       schema: public
-
-    soda_cloud:
-      host: 
-      api_key_id:
-      api_key_secret:
     ```
 3. In a browser, navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a new Soda account. If you already have a Soda account, log in. 
-4. Navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
-  * Copy the syntax for the `soda_cloud` configuration, including the values **API Key ID** and **API Key Secret**, and paste it into the `configuration.yml`.
-  * Do not nest the `soda_cloud` configuration in the `data_source` configuration.
-  * Optionally, add a `scheme` property to the `soda_cloud` configuration to indicate which scheme to use to initialize the URI instance. If you do not explicitly include a `scheme` property, Soda uses `https` by default.
+4. Navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys. Copy+paste the `soda_cloud` configuration syntax, including the API keys, into the `configuration.yml` file, as in the example below.
+    ```yaml
+    data_source adventureworks:
+      type: postgres
+      connection:
+        host: localhost
+        ...
+    
+    soda_cloud:
+      host: cloud.soda.io
+      api_key_id: 2e0ba0cb-**7b
+      api_key_secret: 5wdx**aGuRg
+    ```
 5. Save the `configuration.yml` file and close the API modal in your Soda account.
 6. In Terminal, return to the tab in which the virtual environment is active in the `soda_sip` directory. Run the following command to test Soda's connection to the data source.<br />
 Command:

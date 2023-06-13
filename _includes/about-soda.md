@@ -14,7 +14,7 @@ Soda works by taking the data quality checks that you prepare and using them to 
 To test your data quality, you install the **Soda CLI tool** and sign up for a **Soda Cloud account** so that you can complete the following tasks:
 
 * **Connect to your data source.** <br />To connect to a data source such as Snowflake, Amazon Athena, or Big Query, you use a `configuration.yml` file which stores access details for your data source such as host, port, and data source login credentials. 
-* **Define checks to surface “bad” data.** <br />To define the data quality checks that Soda runs against a dataset, you use a `checks.yml` file. A Soda Check is a test that Soda performs when it scans a dataset in your data source. The checks YAML file stores the checks you write using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.
+* **Define checks to surface bad-quality data.** <br />To define the data quality checks that Soda runs against a dataset, you use a `checks.yml` file. A Soda Check is a test that Soda performs when it scans a dataset in your data source. The checks YAML file stores the checks you write using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.
 * **Run a scan to execute your data quality checks.** <br />During a scan, Soda does not ingest your data, it only scans it for quality metrics, then uses the metadata to prepare scan results<sup>1</sup>. After a scan, each check results in one of three default states:
     * pass: the values in the dataset match or fall within the thresholds you specified
     * fail: the values in the dataset do not match or fall within the thresholds you specified

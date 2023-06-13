@@ -78,7 +78,7 @@ data_source soda-demo:
 4. In a browser, they navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a free, 45-day trial Soda account.  
 5. They navigate to **avatar** > **Profile**, then navigate to the **API Keys** tab and click the plus icon to generate new API keys.
   * They copy the syntax for the `soda_cloud` configuration, including the values **API Key ID** and **API Key Secret**, and paste it into the `configuration.yml`.
-  * They are careful not to nest the `soda_cloud` configuration in the `data_source` configuration.
+  * They are careful *not* to nest the `soda_cloud` configuration in the `data_source` configuration.
 6. They save the `configuration.yml` file and close the API modal in the Soda account.
 7. In Terminal, they run the following command to test Soda's connection to the data source.<br />
 ```shell

@@ -319,7 +319,6 @@ This guide also instructs you to connect to a Soda Cloud account using API keys 
 6. Navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
   * Copy the syntax for the `soda_cloud` configuration, including the values **API Key ID** and **API Key Secret**, and paste it into the `configuration.yml`.
   * Do not nest the `soda_cloud` configuration in the `data_source` configuration.
-  * Optionally, add a `scheme` property to the `soda_cloud` configuration to indicate which scheme to use to initialize the URI instance. If you do not explicitly include a `scheme` property, Soda uses `https` by default.
 7. Save the `configuration.yml` file and close the API modal in your Soda account.
 8. In Terminal, run the following command to test Soda's connection to your data source, replacing the value of `my_datasource_name` with the name of your data source.<br />
 ```shell
