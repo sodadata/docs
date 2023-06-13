@@ -173,6 +173,8 @@
     page: soda-cl/distribution.md
   - subtitle: User-defined checks
     page: soda-cl/user-defined.md
+  - subtitle: Check template
+    page: soda-cl/check-template.md
   - subtitle: Failed rows checks
     page: soda-cl/failed-rows-checks.md
   - subtitle: Automated monitoring checks
