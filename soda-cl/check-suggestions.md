@@ -131,7 +131,7 @@ You can use check suggestions with the following data sources:
 ## Run check suggestions
 
 Use the following command to run the check suggestions assisstant. Refer to the table below for input values for the command options. 
-
+{% include code-header.html %}
 ```shell
 soda suggest -d adventureworks -c configuration.yml -ds dataset_name
 ```
