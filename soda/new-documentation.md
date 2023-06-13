@@ -12,6 +12,7 @@ parent: Reference
 #### June 15, 2023
 * New documentation for the new [Group by]({% link soda-cl/group-by.md %}) configuration and [Group evolution check]({% link soda-cl/group-evolution.md %}), both in preview state in SodaCL.
 * New documentation for [Check Suggestions]({% link soda-cl/check-suggestions.md %}) using the Soda Library CLI.
+* Revised syntax guidance regarding multiple thresholds for an alert. See [Optional check configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations).
 
 #### June 12, 2023
 * Remove "Preview" tag from the [Reporting API v1]({% link api-docs/reporting-api-v1.md %}) documentation.
@@ -117,7 +118,7 @@ parent: Reference
 #### February 16, 2023
 * Added documentation for the `invalid values` configuration key. Refer to [Validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) documentation.
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.23.
-* Corrected [custom check templates]({% link soda-cl/check-templates.md %}) to use `fail condition` syntax, not `fail expression`. 
+* Corrected custom check templates to use `fail condition` syntax, not `fail expression`. 
 * Added instructions to [Configure a time partition using the NOW variable]({% link soda-cl/filters.md %}#configure-a-time-partition-using-the-now-variable).
 * Added a note for limitations on using variables in [checks in agreements]({% link soda-cloud/agreements.md %}#2-write-checks) in Soda Cloud. 
 
@@ -145,7 +146,7 @@ parent: Reference
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.21.
 * Updated screenshots of Soda Cloud for [deploying an agent]({% link soda-agent/deploy.md %}#create-a-soda-cloud-account-and-api-keys).
 * Added [explicit detail]({% link soda-cl/filters.md %}#configuration-details-and-limitations) about when to wrap date variables in single quotes.
-* Added a custom check templates for [validating event sequence]({% link soda-cl/check-templates.md %}#compare-dates-to-validate-event-sequence) with date columns.
+* Added a custom check templates for validating event sequence with date columns.
 * Updated the Soda product feature list.
 
 #### January 13, 2023
@@ -264,7 +265,7 @@ parent: Reference
 #### October 26, 2022
 
 * Removed the Preview status from self-serve features which are now generally available in Soda Cloud, such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
-* Migrated custom metric templates from Soda SQL to SodaCL; see [Custom check templates]({% link soda-cl/check-templates.md %}).
+* Migrated custom metric templates from Soda SQL to SodaCL.
 
 #### October 19, 2022
 

@@ -143,7 +143,7 @@ See also: [Configure the same scan to run in multiple environments]({% link soda
 ## Compare dates in a dataset to validate event sequence
 
 You can use a **user-defined metric** to write a custom SQL query that compares date values in the same dataset. <br />
-Refer to [Custom check templates]({% link soda-cl/check-templates.md %}#compare-dates-to-validate-event-sequence).
+Refer to [Custom check templates]({% link soda-cl/custom-check-examples.md %}#compare-dates-to-validate-event-sequence).
 
 
 

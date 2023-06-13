@@ -1,18 +1,19 @@
 ---
 layout: default
-title: Custom check templates
+title: Custom check examples
 description: If the built-in metrics that SodaCL offers do not quite cover your more specific or complex needs, you can define your own metrics. See examples to copy+paste.
 parent: SodaCL
+redirect_from: /soda-cl/check-templates.html
 ---
 
-# Custom check templates
+# Custom check examples
 *Last modified on {% last_modified_at %}*
 
 Out of the box, Soda Checks Language (SodaCL) makes several [built-in metrics and checks]({% link soda-cl/metrics-and-checks.md %}), such as `row_count`, available for you to use to define checks for data quality. If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs, you can use [user-defined]({% link soda-cl/user-defined.md %}) and [failed rows]({% link soda-cl/failed-rows-checks.md %}) checks. 
 
-**User-defined checks** and **failed rows checks** enable you to define your own metrics that you can use in a SodaCL check. You can also use these checks to simply define SQL queries or Common Table Expressions (CTE) that Soda executes during a scan, which is what most of these templates do.
+**User-defined checks** and **failed rows checks** enable you to define your own metrics that you can use in a SodaCL check. You can also use these checks to simply define SQL queries or Common Table Expressions (CTE) that Soda executes during a scan, which is what most of these examples do.
 
-The templates below offer examples of how you can define user-defined checks in your checks YAML file, if using Soda Core, or within an [agreement]({% link soda-cloud/agreements.md %}), if using Soda Cloud, to extract more complex, customized, business-specific measurements from your data. 
+The examples below offer examples of how you can define user-defined checks in your checks YAML file, if using Soda Core, or within an [agreement]({% link soda-cloud/agreements.md %}), if using Soda Cloud, to extract more complex, customized, business-specific measurements from your data. 
 
 [Set an acceptable threshold for row count delta](#set-an-acceptable-threshold-for-row-count-delta)<br />
 [Find duplicates in a dataset without a unique ID column](#find-duplicates-in-a-dataset-without-a-unique-id-column)<br />
@@ -79,9 +80,9 @@ checks for dim_product:
 
 You can use the built-in [duplicate_count metric]({% link soda-cl/numeric-metrics.md %}) to check the contents of a column for duplicate values and Soda automatically sends any failed rows -- that is, rows containing duplicate values -- to Soda Cloud for you to [examine]({% link soda-cloud/failed-rows.md %}). 
 
-However, if your dataset does not contain a unique ID column, as with a denormalized dataset or a dataset produced from several joins, you may need to define uniqueness using a combination of columns. This template uses a failed rows check with SQL queries to go beyond a simple, single-column check. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+However, if your dataset does not contain a unique ID column, as with a denormalized dataset or a dataset produced from several joins, you may need to define uniqueness using a combination of columns. This example uses a failed rows check with SQL queries to go beyond a simple, single-column check. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
-Ideally, you would generate a <a href="https://en.wikipedia.org/wiki/Surrogate_key" target="_blank"> surrogate key</a> from the concatenation of columns as part of a transformation, such as with this dbt Core™ utility that <a href="https://github.com/dbt-labs/dbt-utils#surrogate_key-source" target="_blank"> generates a `surrogate_key`</a>. However, if that is not possible, you can use the following template to test for uniqueness using a <a href="https://en.wikipedia.org/wiki/Composite_key" target="_blank">composite key</a>.
+Ideally, you would generate a <a href="https://en.wikipedia.org/wiki/Surrogate_key" target="_blank"> surrogate key</a> from the concatenation of columns as part of a transformation, such as with this dbt Core™ utility that <a href="https://github.com/dbt-labs/dbt-utils#surrogate_key-source" target="_blank"> generates a `surrogate_key`</a>. However, if that is not possible, you can use the following example to test for uniqueness using a <a href="https://en.wikipedia.org/wiki/Composite_key" target="_blank">composite key</a>.
 
 ✅ Amazon Redshift  
 ✅ GCP Big Query  
@@ -113,7 +114,7 @@ checks for dim_product:
 <details>
     <summary style="color:#00BC7E">Explain the SQL</summary>
     <ul>
-        <li>First, the <code>duplicated_records</code> <a href="https://en.wikipedia.org/wiki/Hierarchical_and_recursive_queries_in_SQL#Common_table_expression" target="_blank">common table expression (CTE)</a> lists all of the IDs that appear more than once in a dataset, allowing for a pattern that asserts uniqueness using more than one column. The template uses two columns but you can add as many as you need. If you add more, be sure to add them to the join at the end of the query.</li>
+        <li>First, the <code>duplicated_records</code> <a href="https://en.wikipedia.org/wiki/Hierarchical_and_recursive_queries_in_SQL#Common_table_expression" target="_blank">common table expression (CTE)</a> lists all of the IDs that appear more than once in a dataset, allowing for a pattern that asserts uniqueness using more than one column. The example uses two columns but you can add as many as you need. If you add more, be sure to add them to the join at the end of the query.</li>
         <li>Next, it joins the <code>duplicated_records</code> back to the dataset itself so that it can identify and send the failed rows for those duplicate IDs to Soda Cloud. </li>
     </ul>
 </details>
@@ -121,7 +122,7 @@ checks for dim_product:
 
 ## Validate business logic at the row level
 
-Use one of the following templates to validate that data in records in your data source match your expectations. 
+Use one of the following examples to validate that data in records in your data source match your expectations. 
 
 The first example is a skeletal query into which you can insert a variety of conditions; the others offer examples of how you might use the query. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
@@ -200,7 +201,7 @@ Where a dataset does not validate its contents on entry, you may wish to assert 
 | United states  | US           |
 
 
-Use one of the following **data source-specific** custom metric templates in your checks YAML file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
+Use one of the following **data source-specific** custom metric examples in your checks YAML file. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
 
 ✅ Amazon Redshift  

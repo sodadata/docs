@@ -191,8 +191,8 @@
     page: soda-cl/profile.md
   - subtitle: Display sample data in Soda Cloud
     page: soda-cl/sample-datasets.md
-  - subtitle: Custom check templates
-    page: soda-cl/check-templates.md
+  - subtitle: Custom check examples
+    page: soda-cl/custom-check-examples.md
   - subtitle: Compare data using SodaCL
     page: soda-cl/compare.md
   - subtitle: Troubleshoot SodaCL
