@@ -156,7 +156,6 @@ checks for dim_customer:
           name: No duplicate phone numbers
   - freshness(date_first_purchase) < 7d:
           name: Data in this dataset is less than 7 days old
-  # Requires a Soda Cloud account
   - schema:
           warn:
             when schema changes: any

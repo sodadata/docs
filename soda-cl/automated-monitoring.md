@@ -10,7 +10,6 @@ parent: SodaCL
 *Last modified on {% last_modified_at %}*
 
 Use automated monitoring checks to instruct Soda to automatically check for row count anomalies and schema changes in a dataset.<br />
-*Requires Soda Cloud* 
 {% include code-header.html %}
 ```yaml
 automated monitoring:

@@ -258,7 +258,6 @@ To eliminate the frustration of the silently evolving dataset schema, use schema
 If you have set up a Soda Cloud account, you can use a catch-all schema check that results in a warning whenever a Soda scan reveals that a column has been added, removed, moved within the context of an index, or changed data type relative to the results of the previous scan. 
 {% include code-header.html %}
 ```yaml
-# Requires a Soda Cloud account
 # Check for any schema changes to dataset
 checks for dataset_name:
   - schema:

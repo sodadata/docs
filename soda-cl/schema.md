@@ -39,7 +39,6 @@ checks for dim_product:
       fail:
         when wrong column index:
           model_name: 22
-# Requires a Soda Cloud account
   - schema:
       name: Any schema changes
       warn: 
@@ -106,7 +105,7 @@ checks for dim_product:
 
 Rather than specifying exact parameters for column changes, you can use the `when schema changes` validation key to warn or fail when indistinct changes occur in a dataset.
 
-This type of validation key requires a **Soda Cloud** account. If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future schema checks. Therefore, you must have a created and [connected a Soda Cloud account]({% link soda-library/configure.md %}) to use schema evolution checks.
+This type of validation key requires a **Soda Cloud** account. Soda Library pushes check results to your account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future schema checks. 
 
 Soda Cloud must have at least two measurements to yield a check result. In other words, the first time you run a scan to execute a schema evolution check, Soda returns no results because it has nothing against which to compare; the second scan that executes the check yields a check result.
 {% include code-header.html %}
@@ -212,13 +211,13 @@ checks for CUSTOMERS [daily]:
 
 ## List of validation keys
 
-| Validation key | Values | Requires a Soda<br />Cloud account | 
-| -------------- | ------ | :-------------------------: |
-| `when required column missing` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  |
-| `when forbidden column present` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  |
-| `when wrong column type` | nested key:value pair to identify column:expected_data_type |  |
-| `when wrong column index` | nested key:value pair to identify <br />column:expected_position_in_dataset_index |  |
-| `when schema changes` | `any` as an inline value<br /> `column add` as a nested list item<br /> `column delete` as a nested list item<br /> `column index change` as a nested list item <br /> `column type change` as a nested list item | ✓ |
+| Validation key | Values | 
+| -------------- | ------ | 
+| `when required column missing` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  
+| `when forbidden column present` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  
+| `when wrong column type` | nested key:value pair to identify column:expected_data_type |  
+| `when wrong column index` | nested key:value pair to identify <br />column:expected_position_in_dataset_index |  
+| `when schema changes` | `any` as an inline value<br /> `column add` as a nested list item<br /> `column delete` as a nested list item<br /> `column index change` as a nested list item <br /> `column type change` as a nested list item | 
 
 
 

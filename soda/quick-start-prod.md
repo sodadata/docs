@@ -151,7 +151,6 @@ checks for dim_product:
       warn: when > 0     
   # Check fails when the number of products, relative to the
   # previous scan, changes by 10 or more
-  # Requires a Soda Cloud account
   - change for row_count < 10:
       name: Products are stable
 ```
@@ -178,7 +177,6 @@ checks for dim_product_category:
       name: All categories have a name
   # Check fails when the number of categories, relative to the
   # previous scan, changes by 5 or more
-  # Requires a Soda Cloud account
   - change for row_count < 5:
       name: Categories are stable
 ```
@@ -205,7 +203,6 @@ checks for dim_product_subcategory:
       name: All subcategories have a name
   # Check fails when the number of categories, relative to the
   # previous scan, changes by 5 or more
-  # Requires Soda Cloud account
   - change for row_count < 5:
       name: Subcategories are stable
 ```
@@ -242,14 +239,12 @@ checks for fact_internet_sales:
   # relative to the previous scan resuls
   # Check fails when there are more than 500 new internet sales
   # relative to the previous scan resuls
-  # Requires Soda Cloud account
   - change for row_count:
       warn: when < 5 
       fail: when > 500 
       name: Sales are within expected range
   # Check fails when the average of the column is abnormal
   # relative to previous measurements for average sales amount
-  # Requires Soda Cloud account
   # sales_amount is cast from data type MONEY to enable calculation
   - anomaly score for avg(sales_amount::NUMERIC) < default
 ```
