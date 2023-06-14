@@ -79,7 +79,7 @@ redirect_from:
 
 The very first Soda OSS tools, Soda SQL and Soda Spark, served their community well since 2021. They have been deprecated. <a href="https://www.soda.io/resources/introducing-soda-core-the-new-way-for-data-reliability" target="_blank">Read more</a> about the decision to deprecate and move forward with Soda Core.
 
-* **Soda SQL** was the original command-line tool that Soda created to test for data quality. It has been replaced by [Soda Core]({% link soda-core/overview-main.md %}).
+* **Soda SQL** was the original command-line tool that Soda created to test for data quality. It has been replaced by Soda Core.
 
 * **Soda Spark** was an extension of Soda SQL that allowed you to run Soda SQL functionality programmatically on a Spark DataFrame. It has been replaced by Soda Core configured to [connect with Apache Spark]({% link soda/connect-spark.md %}). 
 

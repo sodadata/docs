@@ -12,7 +12,7 @@ parent: Connect a data source
 
 ## Configuration
 
-Install package: `soda-core-sqlserver`
+Install package: `soda-sqlserver`
 
 {% include code-header.html %}
 ```yaml

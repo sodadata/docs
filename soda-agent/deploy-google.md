@@ -183,6 +183,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```shell
 helm install soda-agent soda-agent/soda-agent \
 >   --set soda.agent.name=myuniqueagent \
+    # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
 >   --set soda.cloud.endpoint=https://cloud.soda.io \
 >   --set soda.apikey.id=*** \
 >   --set soda.apikey.secret=*** \
@@ -238,6 +239,7 @@ soda:
         agent:
           name: "myuniqueagent"
         cloud:
+          # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
           endpoint: "https://cloud.soda.io"
         scanlauncher:
           idle:

@@ -10,7 +10,6 @@ parent: SodaCL
 
 Use the `discover datasets` and/or `profile columns` configurations to send information about datasets and columns to Soda Cloud. Examine the profile information to gain insight into the type checks you can prepare to test for data quality.
 
-*Requires Soda Cloud*<br />
 {% include code-header.html %}
 ```yaml
 discover datasets:
@@ -50,7 +49,7 @@ profile columns:
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
   <label class="tab" id="one-tab" for="one">Configure in Soda Cloud</label>
-  <label class="tab" id="two-tab" for="two">Configure using Soda Core </label>
+  <label class="tab" id="two-tab" for="two">Configure using Soda Library </label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
@@ -63,11 +62,11 @@ To define discover and profile datasets, follow the guided steps to create a new
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
-Note that while it is possible to configure dataset discovery and column profiling in a checks YAML file with Soda Core, the profiling information is only displayed in Soda Cloud. Thus, the requirement to have a Soda Cloud account.
+Note that while it is possible to configure dataset discovery and column profiling in a checks YAML file with Soda Library, the profiling information is only displayed in Soda Cloud.
 
-* You have installed a [Soda Core package]({% link soda-core/installation.md %}) in your environment.
-* You have [configured Soda Core]({% link soda-core/configuration.md %}) to connect to a data source using a `configuration.yml` file. 
-* You have created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core. <br />
+* You have installed a [Soda Library package]({% link soda-library/install.md %}) in your environment.
+* You have [configured Soda Library]({% link soda-library/configure.md %}) to connect to a data source using a `configuration.yml` file. 
+* You have created and [connected a Soda Cloud account]({% link soda-library/configure.md %}) to Soda Library. <br />
 
 Refer to the [section below](#define-column-profiling) for how to configure profiling in a checks YAML file using SodaCL. 
 
@@ -77,7 +76,7 @@ Refer to the [section below](#define-column-profiling) for how to configure prof
 
 ## Limitations and known issues
 
-* **Known issue:** Currently, SodaCL does not support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark DataFrame data source (`soda-core-spark-df`).
+* **Known issue:** Currently, SodaCL does not support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark DataFrame data source (`soda-library-spark-df`).
 * **Known issue:** SodaCL does not support using [variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl) in column profiling and dataset discovery configurations. <!--SAS-1642-->
 * **Data type**: Soda can only profile columns that contain NUMBERS or TEXT type data; it cannot profile columns that contain TIME or DATE data.
 * **Performance:** Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a selected few datasets to keep costs low. See [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
@@ -100,7 +99,7 @@ This configuration is limited in its syntax variation, with only a couple of mut
 
 SodaCL supports SQL wildcard characters such as `%`, `*`, or `_`. Refer to your data source's documentation to determine which SQL wildcard characters it suports and how to escape the characters, such as with a backslach `\`, if your dataset or column names use characters that SQL would consider wildcards. 
 
-The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Core discovers all the datasets the data source contains *except* those with names that begin with `test`.
+The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Library discovers all the datasets the data source contains *except* those with names that begin with `test`.
 {% include code-header.html %}
 ```yaml
 discover datasets:
@@ -155,9 +154,9 @@ discover datasets:
 
 ### Scan results in Soda Cloud
 
-1. To review the discovered datasets in Soda Cloud, first [run a scan]({% link soda-core/scan-core.md %}) of your data source so that Soda Core can gather and send dataset information to Soda Cloud.
+1. To review the discovered datasets in Soda Cloud, first [run a scan]({% link soda-library/run-a-scan.md %}) of your data source so that Soda Library can gather and send dataset information to Soda Cloud.
 2. In Soda Cloud, navigate to the **Datasets** dashboard, then click a dataset name to open the dataset's info page.
-3. Access the **Columns** tab to review the datasets that Soda Core discovered, including the type of data each column contains.
+3. Access the **Columns** tab to review the datasets that Soda Library discovered, including the type of data each column contains.
 
 ![discover datasets](../assets/images/discover-datasets.png)
 
@@ -168,7 +167,7 @@ Column profile information includes details such as the calculated mean value of
 
 This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud.
 
-The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Core captures the column profile information for all the columns in the dataset named `retail_orders`. The `.` in the syntax separates the dataset name from the column name. Since `_` is a wildcard character, the example escapes the character with a backslash `\`. Note that your data source may not support backslashes to escape a character, so you may need to use a different escape character.
+The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Library captures the column profile information for all the columns in the dataset named `retail_orders`. The `.` in the syntax separates the dataset name from the column name. Since `_` is a wildcard character, the example escapes the character with a backslash `\`. Note that your data source may not support backslashes to escape a character, so you may need to use a different escape character.
 {% include code-header.html %}
 ```yaml
 profile columns:
@@ -204,9 +203,9 @@ profile columns:
 
 ### Scan results in Soda Cloud
 
-1. To review the profiled columns in Soda Cloud, first [run a scan]({% link soda-core/scan-core.md %}) of your data source so that Soda Core can gather and send column profile information to Soda Cloud.
+1. To review the profiled columns in Soda Cloud, first [run a scan]({% link soda-library/run-a-scan.md %}) of your data source so that Soda Library can gather and send column profile information to Soda Cloud.
 2. In Soda Cloud, navigate to the **Datasets** dashboard, then click a dataset name to open the dataset's info page.
-3. Access the **Columns** tab to review the columns that Soda Core profiled.
+3. Access the **Columns** tab to review the columns that Soda Library profiled.
 
 ![profile columns](../assets/images/profile-columns.png)
 

@@ -124,9 +124,10 @@ checks for dim_product:
 
 ## Freshness check results  
 
-When you run a scan that includes a freshness check, the output in the **Soda Core CLI** provides several values for measurements Soda used to calculate freshness. The value for freshness itself is displayed in days, hours, minutes, seconds, and milliseconds; see the example below. 
+When you run a scan that includes a freshness check, the output in the **Soda Library CLI** provides several values for measurements Soda used to calculate freshness. The value for freshness itself is displayed in days, hours, minutes, seconds, and milliseconds; see the example below. 
 
 ```shell
+Soda Library 1.0.x
 Soda Core 3.0.x
 Scan summary:
 1/1 checks FAILED: 

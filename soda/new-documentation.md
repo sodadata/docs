@@ -9,6 +9,14 @@ parent: Reference
 
 <br />
 
+#### June 15, 2023
+* Introducing Soda Library, a commercial extension of the Soda Core open-source software. It leverages all the power of Soda Core and SodaCL, and offers new features and functionality for Soda customers.
+* New documentation for the new [Group by]({% link soda-cl/group-by.md %}) configuration and [Group evolution check]({% link soda-cl/group-evolution.md %}), both available with Soda Library.
+* New documentation for [Check suggestions]({% link soda-cl/check-suggestions.md %}) using the Soda Library CLI.
+* New documentation for [Check template configuration]({% link soda-cl/check-template.md %}) supported by Soda Library.
+* Revised syntax guidance regarding multiple thresholds for an alert. See [Optional check configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations).
+* All <a href="https://github.com/sodadata/soda-core/tree/main/docs" target="_blank">documentation for Soda Core</a>, the open-source Python library and CLI tool, has moved to the <a href="https://github.com/sodadata/soda-core" target="_blank">Soda Core repository</a> on GitHub.
+
 #### June 12, 2023
 * Remove "Preview" tag from the [Reporting API v1]({% link api-docs/reporting-api-v1.md %}) documentation.
 
@@ -56,7 +64,7 @@ parent: Reference
 
 #### May 2, 2023
 * Published content regarding the set up of [multiple Soda Cloud organizations]({% link soda-cloud/roles-and-rights.md %}#add-multiple-organizations) for use with different environments in your network infrastructure.
-* Added a note about [selecting a region]({% link soda-core/connect-core-to-cloud.md %}#connect) when you sign up for a new Soda Cloud account.
+* Added a note about selecting a region when you sign up for a new Soda Cloud account.
 
 #### April 28, 2023
 * Corrected the explanation of the [`duplicate_count` check]({% link soda/quick-start-sodacl.md %}#duplicate-check) regarding checks that included multiple arguments (columns).
@@ -113,7 +121,7 @@ parent: Reference
 #### February 16, 2023
 * Added documentation for the `invalid values` configuration key. Refer to [Validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) documentation.
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.23.
-* Corrected [custom check templates]({% link soda-cl/check-templates.md %}) to use `fail condition` syntax, not `fail expression`. 
+* Corrected custom check templates to use `fail condition` syntax, not `fail expression`. 
 * Added instructions to [Configure a time partition using the NOW variable]({% link soda-cl/filters.md %}#configure-a-time-partition-using-the-now-variable).
 * Added a note for limitations on using variables in [checks in agreements]({% link soda-cloud/agreements.md %}#2-write-checks) in Soda Cloud. 
 
@@ -125,7 +133,7 @@ parent: Reference
 
 #### January 25, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.22.
-* Added a detail for adding an [optional scheme property]({% link soda-core/connect-core-to-cloud.md %}#connect) to `soda_cloud` configuration when connecting Soda Core to Soda Cloud. 
+* Added a detail for adding an [optional scheme property]({% link soda-library/configure.md %}#connect) to `soda_cloud` configuration when connecting Soda Core to Soda Cloud. 
 * Added documentation to accompany new support for [Dask and Pandas (Experimental)]({% link soda/connect-dask.md %}).
 
 #### January 24, 2023
@@ -141,7 +149,7 @@ parent: Reference
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.21.
 * Updated screenshots of Soda Cloud for [deploying an agent]({% link soda-agent/deploy.md %}#create-a-soda-cloud-account-and-api-keys).
 * Added [explicit detail]({% link soda-cl/filters.md %}#configuration-details-and-limitations) about when to wrap date variables in single quotes.
-* Added a custom check templates for [validating event sequence]({% link soda-cl/check-templates.md %}#compare-dates-to-validate-event-sequence) with date columns.
+* Added a custom check templates for validating event sequence with date columns.
 * Updated the Soda product feature list.
 
 #### January 13, 2023
@@ -197,7 +205,7 @@ parent: Reference
 
 #### November 28, 2022
 
-* Added [troubleshooting instructions]({% link soda-core/installation.md %}#error-library-not-loaded) for Soda Core Scientific on an M1 MacOS machine.
+* Added [troubleshooting instructions]({% link soda-library/install.md %}#error-library-not-loaded) for Soda Core Scientific on an M1 MacOS machine.
 
 #### November 23, 2022
 
@@ -224,7 +232,7 @@ parent: Reference
 
 #### November 14, 2022
 
-* Corrected the location in which to [opt out]({% link soda-core/usage-stats.md %}#opt-out-of-usage-statistics) of sending Soda Core usage statistics.
+* Corrected the location in which to [opt out]({% link soda-library/usage-stats.md %}#opt-out-of-usage-statistics) of sending Soda Core usage statistics.
 
 #### November 10, 2022
 
@@ -260,7 +268,7 @@ parent: Reference
 #### October 26, 2022
 
 * Removed the Preview status from self-serve features which are now generally available in Soda Cloud, such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
-* Migrated custom metric templates from Soda SQL to SodaCL; see [Custom check templates]({% link soda-cl/check-templates.md %}).
+* Migrated custom metric templates from Soda SQL to SodaCL.
 
 #### October 19, 2022
 
@@ -272,8 +280,8 @@ parent: Reference
 #### October 13, 2022
 
 * Added notes about specifying the type of [quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) you use in SodaCL checks must match that which the data source uses. 
-* Added short snippet as an example to obtain scan exit codes in a [programmatic scan]({% link soda-core/programmatic.md %}#scan-exit-codes). 
-* Added detail about using [multiple checks files]({% link soda-core/scan-core.md %}#anatomy-of-a-scan-command) in one scan command.
+* Added short snippet as an example to obtain scan exit codes in a [programmatic scan]({% link soda-library/programmatic.md %}#scan-exit-codes). 
+* Added detail about using [multiple checks files]({% link soda-library/run-a-scan.md %}#anatomy-of-a-scan-command) in one scan command.
 * Added detail about [re-using user-defined metrics]({% link soda-cl/user-defined.md %}#define-user-defined-checks) in multiple checks in the same checks YAML file.
 
 #### October 11, 2022
@@ -289,15 +297,15 @@ parent: Reference
 
 #### September 29, 2022
 
-* Added a [link]({% link soda-core/orchestrate-scans.md %}#soda-core-and-prefect) to a community contribution for Prefect 2.0 collection for Soda Core.
+* Added a link to a community contribution for Prefect 2.0 collection for Soda Core.
 * Updated Reference checks documentation for [displaying failed]({% link soda-cl/reference.md %}#failed-row-samples) rows in Soda Cloud.
 
 #### September 28, 2022
 
 * Added release notes to correspond with the release of Soda Core 3.0.9.
 * Added documentation for a new `samples limit` configuration key that you can add to checks that use [missing]({% link soda-cl/missing-metrics.md %}#failed-row-samples), [validity]({% link soda-cl/validity-metrics.md %}#failed-row-samples), or [duplicate_count]({% link soda-cl/numeric-metrics.md %}#failed-row-samples) metrics which automatically send 1000 failed row samples to Soda Cloud.
-* Added instructions to [save failed row samples to a file]({% link soda-core/programmatic.md %}#save-failed-row-samples-to-a-file).
-* Added [Windows-specific instructions]({% link soda-core/installation.md %}) for installing Soda Core using a virtual environment.
+* Added instructions to [save failed row samples to a file]({% link soda-library/programmatic.md %}#save-failed-row-samples-to-a-file).
+* Added [Windows-specific instructions]({% link soda-library/install.md %}) for installing Soda Core using a virtual environment.
 * Removed known issue for in-check variables which are supported as of Soda Core 3.0.9: "Except for customizing [dynamic names for checks]({% link soda-cl/optional-config.md %}#customize-check-names), you *cannot* use in-check variables. For example, Soda does not support the following check:
 
 ```yaml
@@ -308,7 +316,7 @@ checks for dim_customers:
 #### September 23, 2022
 
 * Added documentation to set up [integration with Microsoft Teams]({% link soda/integrate-webhooks.md %}) so that Soda Cloud can send alert notifications or incident events to MS Teams.
-* Added detail for programmatically inspecting scan results; see [programmatic scans]({% link soda-core/programmatic.md %}). Available with Soda Core 3.0.9.
+* Added detail for programmatically inspecting scan results; see [programmatic scans]({% link soda-library/programmatic.md %}). Available with Soda Core 3.0.9.
 * Added details for using various [authentication methods]({% link soda/connect-bigquery.md %}#authentication-methods) to connect to BigQuery.
 
 #### Septemeber 22, 2022
@@ -324,7 +332,7 @@ checks for dim_customers:
 
 * Added documentation to correspond with the release of Soda Core 3.0.7, including an update to [freshness check results]({% link soda-cl/freshness.md %}#freshness-check-results).
 * Removed the known issue for using variables in the SQL or CTE of a [user-defined check]({% link soda-cl/user-defined.md %}). See <a href="https://github.com/sodadata/soda-core/issues/1577" target="_blank">GitHub Issue 1577</a>.
-* Added instructions for [configuring the same scan to run in multiple environments]({% link soda-core/configuration.md %}#configure-the-same-scan-to-run-in-multiple-environments).
+* Added instructions for [configuring the same scan to run in multiple environments]({% link soda-library/configure.md %}#configure-the-same-scan-to-run-in-multiple-environments).
 * Added information about [passing parameters]({% link soda/connect-snowflake.md %}) to a Snowflake data source in connection configurations, specifically which parameter to use to authenticate a connection via SSO with a SAML 2.0-compliant identity provider (IdP).
 
 #### Septemeber 12, 2022
@@ -369,7 +377,7 @@ checks for dim_customers:
 
 #### August 22, 2022
 
-* Added an [example DAG]({% link soda-core/orchestrate-scans.md %}#example-dag) for using Soda with Airflow PythonOperator.
+* Added an [example DAG]({% link soda-library/orchestrate-scans.md %}#example-dag) for using Soda with Airflow PythonOperator.
 * Added [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) documentation.
 * Expanded [For each]({% link soda-cl/for-each.md %}) documentation with optional configurations and examples.
 * Published a new Quick start for Soda Cloud (Preview) that outlines how to use preview features in Soda Cloud to connect to a data source, then write a new agreement for stakeholder approval.
@@ -385,7 +393,7 @@ checks for dim_customers:
 
 #### August 9, 2022
 
-* Added documentation to describe the [migration path]({% link soda-core/migrate.md %}) from Soda SQL to Soda Core.
+* Added documentation to describe the migration path from Soda SQL to Soda Core.
 
 #### August 2, 2022
 
@@ -396,7 +404,7 @@ checks for dim_customers:
 #### August 1. 2022
 
 * Added a "was this helpful" counter to most documentation pages.
-* Added details for [connecting `soda-core-spark-df` to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}#connect-soda-core-for-sparkdf-to-soda-cloud). 
+* Added details for [connecting `soda-core-spark-df` to Soda Cloud]({% link soda/connect-spark.md %}#connect-soda-for-sparkdf-to-soda-cloud). 
 
 #### July 27, 2022
 
@@ -429,7 +437,7 @@ checks for dim_customers:
 
 #### June 21, 2022
 
-* Added details to Soda Core documentation for using [system variables]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables).  to store sensitive credentials.
+* Added details to Soda Core documentation for using [system variables]({% link soda-library/configure.md %}#provide-credentials-as-system-variables).  to store sensitive credentials.
 * Updated the Quick start for Soda Core and Soda Cloudwith slightly changed instructions.
 
 #### June 20, 2022
@@ -437,7 +445,7 @@ checks for dim_customers:
 * Changed all references to `table` in SodaCL to `dataset`, notably used with [for each]({% link soda-cl/freshness.md %}) and [distribution]({% link soda-cl/distribution.md %}) check syntax.
 * Added deprecation warning banners to all Soda SQL and Soda Spark content.
 * Revised and reorganized content to reframe focus on Soda Core in lieu of Soda SQL.
-* New [How Soda Core works]({% link soda-core/how-core-works.md %}) documentation.
+* New [How Soda Core works]({% link soda-library/how-library-works.md %}) documentation.
 * Added more Soda Core documentation to main docs set. 
 * Updated [Soda product overview]({% link soda/product-overview.md %}) to reflect new focus on Soda Core and imminent deprecation of Soda SQL and Soda Spark.
 * Updated Soda Cloud documentation to reflect new focus on Soda Core.
@@ -445,19 +453,19 @@ checks for dim_customers:
 
 #### June 14, 2022
 
-* Added documentation corresponding to Soda Core support for [Apache Spark DataFrames]({% link soda/connect-spark.md %}). For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
+* Added documentation corresponding to Soda Core support for [Apache Spark DataFrames]({% link soda/connect-spark.md %}). For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.
 * Updated the syntax for [freshness checks]({% link soda-cl/freshness.md %}) to remove `using` from the syntax and identify column name instead by wrapping in parentheses.
     * old: `freshness using created_at < 3h`
     * new: `freshness(created_at) < 3h`
 * Added clarification to the context-specific measning of a [BigQuery dataset]({% link soda/connect-bigquery.md %}) versus a dataset in the context of Soda.
 * Added instructions for setting a [default notification channel]({% link soda/integrate-slack.md %}#set-a-default-slack-channel-for-notifications) in Slack for Soda Cloud alerts.
 * Added an explanation about [anomaly score check results]({% link soda-cl/anomaly-score.md %}#anomaly-score-check-results) and the minimum number of measurements required to gauge an anomaly.
-* Moved installation instructions for Soda Core Scientific to a sub-section of [Install Soda Core]({% link soda-core/installation.md %}#install-soda-core-scientific).
+* Moved installation instructions for Soda Core Scientific to a sub-section of Install Soda Core.
 * Added expanded example for setting up [Soda Core Spark DataFrames]({% link soda/connect-spark.md %}).
 
 #### June 9, 2022
 
-* Added some new [Soda Core content]({% link soda-core/overview-main.md %}) to documentation.
+* Added some new Soda Core content to documentation.
 * Moved Soda SQL and Soda Spark in documentation leftnav.
 * Updated Home page with links to new Soda Core documentation.
 * Fixed formatting in Quick start for Soda Core and Soda Cloud.
@@ -470,13 +478,13 @@ checks for dim_customers:
 
 #### June 7, 2022
 
-* Added new documentation for [Install Soda Core Scientifc]({% link soda-core/installation.md %}#install-soda-core-scientific).
+* Added new documentation for Install Soda Core Scientifc.
 * Add a new [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}).
 
 #### June 6, 2022
 
 * Added clarifying details to [Cross checks]({% link soda-cl/cross-row-checks.md %}) and updated images on [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
-* Added [Use Docker to run Soda Core]({% link soda-core/installation.md %}) to Soda Core installation documentation.
+* Added [Use Docker to run Soda Core]({% link soda-library/install.md %}) to Soda Core installation documentation.
 
 #### June 2, 2022
 
@@ -519,7 +527,7 @@ checks for dim_customers:
 
 #### May 9, 2022
 
-* Updated the [Soda Core installation documentation]({% link soda-core/installation.md %}) to indicate that Python 3.8 or greater is required.
+* Updated the [Soda Core installation documentation]({% link soda-library/install.md %}) to indicate that Python 3.8 or greater is required.
 
 #### April 26, 2022
 
@@ -547,7 +555,7 @@ checks for dim_customers:
 
 #### March 22, 2022
 
-* New documentation for the beta release of [Soda Core]({% link soda-core/overview-main.md %}), a free, open-source, command-line tool that enables you to use the Soda Checks Language to turn user-defined input into aggregated SQL queries.
+* New documentation for the beta release of Soda Core, a free, open-source, command-line tool that enables you to use the Soda Checks Language to turn user-defined input into aggregated SQL queries.
 * New documentation for the beta release of [SodaCL]({% link soda-cl/soda-cl-overview.md %}), a domain-specific language you can use to define Soda Checks in a checks YAML file.
 
 

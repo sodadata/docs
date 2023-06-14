@@ -78,8 +78,8 @@ soda:
     agent:
       name: "myuniqueagent"
     env:
-      POSTGRES_USER: "sodacore"
-      POSTGRES_PASS: "sodacore"
+      POSTGRES_USER: "sodalibrary"
+      POSTGRES_PASS: "sodalibrary"
 ```
 2. After adding the environment variables to the values YAML file, update the Soda Agent using the following command:
 ```shell

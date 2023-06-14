@@ -12,7 +12,7 @@ parent: Connect a data source
 
 ## Configuration
 
-Install package: `soda-core-mysql`
+Install package: `soda-mysql`
 
 {% include code-header.html %}
 ```yaml

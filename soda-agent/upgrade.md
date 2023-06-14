@@ -10,7 +10,7 @@ parent: Soda Agent
 
 The **Soda Agent** is a Helm chart that you deploy on a Kubernetes cluster and connect to your Soda Cloud account using API keys.
 
-To take advantage of new or improved features and functionality in the Soda Agent, you can upgrade your agent when a new version becomes available in <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>.
+To take advantage of new or improved features and functionality in the Soda Agent, including new features in the Soda Library, you can upgrade your agent when a new version becomes available in <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>.
 
 1. If you regularly access multiple clusters, you must ensure that are first accessing the cluster which contains your deployed Soda Agent. Use the following command to determine which cluster you are accessing.
 ```shell
@@ -31,7 +31,7 @@ helm list
 Output:
 ```shell
 NAME      	NAMESPACE 	REVISION	UPDATED                             	STATUS	  CHART            	APP VERSION     
-soda-agent	soda-agent	5       	2023-01-20 11:55:49.387634 -0800 PST	deployed	soda-agent-0.8.26	Soda_Core_3.0.21
+soda-agent	soda-agent	5       	2023-01-20 11:55:49.387634 -0800 PST	deployed	soda-agent-0.8.26	Soda_Library_1.0.0
 ```
 3. Access the API key values by running the following command, replacing the placeholder values with your own details.
 ```shell

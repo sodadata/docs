@@ -13,7 +13,7 @@ parent: Connect a data source
 
 ## Configuration
 
-Because Synapse is compatible with MS SQL server wire protocol, Soda offers indirect, experimental support for Synapse data sources using the `soda-core-sqlserver` package. 
+Because Synapse is compatible with MS SQL server wire protocol, Soda offers indirect, experimental support for Synapse data sources using the `soda-sqlserver` package. 
 
 {% include code-header.html %}
 ```yaml

@@ -59,6 +59,26 @@
   - subtitle: Connect to Vertica
     page: soda/connect-vertica.md
 
+- title: Soda Library
+  page: soda-library/overview.md
+  subcategories:
+  - subtitle: Soda Library overview
+    page: soda-library/overview.md
+  - subtitle: How Soda Library works
+    page: soda-library/how-library-works.md
+  - subtitle: Install Soda Library
+    page: soda-library/install.md
+  - subtitle: Configure Soda Library
+    page: soda-library/configure.md
+  - subtitle: Run a Soda Library scan
+    page: soda-library/run-a-scan.md
+  - subtitle: Soda Library commands
+    page: soda-library/cli-reference.md
+  - subtitle: Define programmatic scans
+    page: soda-library/programmatic.md
+  - subtitle: Configure orchestrated scans
+    page: soda-library/orchestrate-scans.md
+
 - title: Soda Agent
   page: soda-agent/overview.md
   subcategories:
@@ -127,6 +147,8 @@
     page: soda/quick-start-sodacl.md
   - subtitle: Metrics and checks
     page: soda-cl/metrics-and-checks.md
+  - subtitle: Check suggestions
+    page: soda-cl/check-suggestions.md
   - subtitle: Optional check configurations
     page: soda-cl/optional-config.md
   - subtitle: Add check attributes
@@ -151,6 +173,8 @@
     page: soda-cl/distribution.md
   - subtitle: User-defined checks
     page: soda-cl/user-defined.md
+  - subtitle: Check template
+    page: soda-cl/check-template.md
   - subtitle: Failed rows checks
     page: soda-cl/failed-rows-checks.md
   - subtitle: Automated monitoring checks
@@ -159,40 +183,23 @@
     page: soda-cl/filters.md
   - subtitle: For each
     page: soda-cl/for-each.md
+  - subtitle: Group by
+    page: soda-cl/group-by.md
+  - subtitle: Group evolution
+    page: soda-cl/group-evolution.md
   - subtitle: Display profile info in Soda Cloud
     page: soda-cl/profile.md
   - subtitle: Display sample data in Soda Cloud
     page: soda-cl/sample-datasets.md
-  - subtitle: Custom check templates
-    page: soda-cl/check-templates.md
+  - subtitle: Custom check examples
+    page: soda-cl/custom-check-examples.md
   - subtitle: Compare data using SodaCL
     page: soda-cl/compare.md
   - subtitle: Troubleshoot SodaCL
     page: soda-cl/troubleshoot.md
 
-- title: Soda Core 
+- title: Soda Core
   page: soda-core/overview-main.md
-  subcategories:
-  - subtitle: Soda Core overview
-    page: soda-core/overview-main.md
-  - subtitle: How Soda Core works
-    page: soda-core/how-core-works.md
-  - subtitle: Install Soda Core
-    page: soda-core/installation.md
-  - subtitle: Configure Soda Core
-    page: soda-core/configuration.md
-  - subtitle: Run a Soda Core scan
-    page: soda-core/scan-core.md
-  - subtitle: Soda Core CLI commands
-    page: soda-core/cli-reference.md
-  - subtitle: Define programmatic scans
-    page: soda-core/programmatic.md
-  - subtitle: Configure orchestrated scans
-    page: soda-core/orchestrate-scans.md
-  - subtitle: Connect to Soda Cloud
-    page: soda-core/connect-core-to-cloud.md
-  - subtitle: Migrate from Soda SQL
-    page: soda-core/migrate.md
 
 - title: Integrate Soda
   page: soda/integrate-alation.md
@@ -219,8 +226,8 @@
     page: soda/new-documentation.md
   - subtitle: Data security and privacy
     page: soda/data-privacy.md
-  - subtitle: Soda Core usage statistics
-    page: soda-core/usage-stats.md
+  - subtitle: Soda Library usage statistics
+    page: soda-library/usage-stats.md
   - subtitle: Support
     page: soda/support.md
   - subtitle: Soda Community Code of Conduct
@@ -246,6 +253,8 @@
   subcategories:
     - subtitle: Soda products
       page: release-notes/all.md
+    - subtitle: Soda Library
+      page: release-notes/soda-library.md
     - subtitle: Soda Agent
       page: release-notes/soda-agent.md
     - subtitle: Soda Cloud

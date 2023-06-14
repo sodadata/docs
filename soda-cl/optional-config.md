@@ -40,7 +40,7 @@ checks for dim_employee:
 ```
 
 * Be sure to add the `:` to the end of your check, before the nested content.
-* If `name` is configured, Soda Core sends the value of `name` to Soda Cloud as the check identifier.
+* If `name` is configured, Soda Library sends the value of `name` to Soda Cloud as the check identifier.
 * Avoid applying the same customized check names in multiple [agreements]({% link soda-cloud/agreements.md %}#2-write-checks). Soda Cloud associates check results with agreements according to name so if you reuse custom names, Soda Cloud may become confused about which agreement to which to link check results.
 
 <br />
@@ -55,9 +55,10 @@ checks for dim_customer:
      name: Row count in ${name}
 ```
 
-When you run a scan, Soda Core uses the value you specified for your variable in the scan results, as in the example below.
+When you run a scan, Soda Library uses the value you specified for your variable in the scan results, as in the example below.
 ```shell
-Soda Core 3.0.4
+Soda Library 1.0.x
+Soda Core 3.0.x
 Scan summary:
 1/1 check PASSED: 
     dim_customer in adventureworks
@@ -100,12 +101,12 @@ checks for dim_product:
       identity: ${IDENTITY}
 ```
 
-See also: [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}##configure-the-same-scan-to-run-in-multiple-environments).<br />
+See also: [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments).<br />
 See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
 
 ## Add alert configurations
 
-When Soda Core runs a scan of your data, it returns a check result for each check. Each check results in one of three default states:
+When Soda Library runs a scan of your data, it returns a check result for each check. Each check results in one of three default states:
 * **pass**: the values in the dataset match or fall within the thresholds you specified
 * **fail**: the values in the dataset _do not_ match or fall within the thresholds you specified
 * **error**: the syntax of the check is invalid
@@ -125,7 +126,8 @@ checks for dim_reseller:
 ```
 
 ```shell
-Soda Core 3.0.xxx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Scan summary:
 1/1 check WARNED: 
     dim_reseller in adventureworks
@@ -140,7 +142,7 @@ Sending results to Soda Cloud
 
 Add multiple nested key:value pairs to define both `warn` alert conditions and `fail` alert conditions.
 
-The following example defines the conditions for both a `warn` and a `fail` state. After a scan, the check result is `warn` when there are between one and ten duplicate phone numbers in the dataset, but if Soda Core discovers more than ten duplicates, as it does in the example, the check fails. If there are no duplicate phone numbers, the check passes.
+The following example defines the conditions for both a `warn` and a `fail` state. After a scan, the check result is `warn` when there are between one and ten duplicate phone numbers in the dataset, but if Soda Library discovers more than ten duplicates, as it does in the example, the check fails. If there are no duplicate phone numbers, the check passes.
 {% include code-header.html %}
 ```yaml
 checks for dim_reseller:
@@ -149,7 +151,8 @@ checks for dim_reseller:
       fail: when > 10
 ```
 ```shell
-Soda Core 3.0.xxx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Scan summary:
 1/1 check FAILED: 
     dim_reseller in adventureworks
@@ -158,7 +161,18 @@ Scan summary:
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 Sending results to Soda Cloud
 ```
-* Each alert condition can contain *only one* threshold. 
+
+You can add multiple conditions to each type of alert, as with the following example, but be aware that a check that contains one or more alert configurations only ever yields a [single check result](#expect-one-check-result). 
+{% include code-header.html %}
+```yaml
+checks for dim_reseller:
+  - duplicate_count(phone):
+      warn: 
+        when between 1 and 2
+        when > 5
+      fail: when > 10
+```
+
 * Be sure to add the `:` to the end of your check, before the nested content.
 * Be aware that a check that contains one or more alert configurations only ever yields a [single check result](#expect-one-check-result).
 
@@ -204,7 +218,7 @@ See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
 ## Use quotes in a check
 
-In the checks you write with SodaCL, you can apply the quoting style that your data source uses for dataset or column names. Soda Core uses the quoting style you specify in the aggregated SQL queries it prepares, then executes during a scan. 
+In the checks you write with SodaCL, you can apply the quoting style that your data source uses for dataset or column names. Soda Library uses the quoting style you specify in the aggregated SQL queries it prepares, then executes during a scan. 
 
 Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark.
 
@@ -258,7 +272,7 @@ See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
 Soda collects failed rows samples explicitly and implicitly. 
 
-To explicitly collect failed row samples, you can add a [failed row check]({% link soda-cl/failed-rows-checks.md %}) your checks YAML file for Soda Core, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
+To explicitly collect failed row samples, you can add a [failed row check]({% link soda-cl/failed-rows-checks.md %}) your checks YAML file for Soda Library, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
 
 Implicitly, Soda automatically collects 100 failed row samples for the following checks:
 * [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 

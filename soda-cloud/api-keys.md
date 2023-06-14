@@ -1,27 +1,27 @@
 ---
 layout: default
 title: Generate API keys
-description: Generate API keys to securely connect Soda Core or a Soda Avent to Soda Cloud, or to access Soda Cloud via API.
+description: Generate API keys to securely connect Soda Library or a Soda Agent to Soda Cloud, or to access Soda Cloud via API.
 parent: Soda Cloud
 ---
 
 # Generate API keys
 *Last modified on {% last_modified_at %}*
 
-Soda Cloud uses API keys to securely communicate with other entities such as Soda Core and Soda Agents, and to provide secure access to metadata in Soda Cloud via the Reporting API. 
+Soda Cloud uses API keys to securely communicate with other entities such as Soda Library and Soda Agents, and to provide secure access to metadata in Soda Cloud via the Reporting API. 
 
 There are two sets of API keys that you can generage and use with Soda Cloud:
-* API keys for communicating with **Soda Core**, and via the **Reporting API**
+* API keys for communicating with **Soda Library**, and via the **Reporting API**
 * API keys for communicating with a **Soda Agent**
 
 Note that you can use other authentication methods to access Soda Cloud metadata via the Reporting API such as HTTPBasic authentication with username and password, or authentication using tokens; use API keys to authenticate access if your organization employs Single Sign On (SSO) to access Soda Cloud.
 
-## Generate API keys for use with Soda Core or the Reporting API
+## Generate API keys for use with Soda Library or the Reporting API
 
 1. In your Soda Cloud account, navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
 2. Copy the syntax for the `soda_cloud` configuration, including the values **API Key ID** and **API Key Secret**, then apply the keys according to how you intend to use them:
-* for use with Soda Core: follow [Connect Soda Core to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %})
-* for use with the Reporting API if your organization uses Single Sign On (SSO) to access Soda Cloud : follow [Reporting API authentication]({% link api-docs/reporting-api-v1.md %}#/#authentication) 
+* for use with Soda Library: follow [Install Soda Library]({% link soda-library/install.md %})
+* for use with the Reporting API if your organization uses Single Sign On (SSO) to access Soda Cloud: follow [Reporting API authentication]({% link api-docs/reporting-api-v1.md %}#/#authentication) 
 
 
 ## Generate API keys for use with a Soda Agent

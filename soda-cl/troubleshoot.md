@@ -31,9 +31,9 @@ See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.m
 
 ### Soda does not recognize variables 
 
-**Problem:** You execute a programmatic scan using Soda Core, but Soda does not seem to recognize the variables you included in the programmatic scan. 
+**Problem:** You execute a programmatic scan using Soda Library, but Soda does not seem to recognize the variables you included in the programmatic scan. 
 
-**Solution:** Be sure to include any variables in your programmatic scan *before* the check YAML file identification. Refer to [Basic programmatic scan]({% link soda-core/programmatic.md %}#basic-programmatic-scan) for an example.
+**Solution:** Be sure to include any variables in your programmatic scan *before* the check YAML file identification. Refer to [Basic programmatic scan]({% link soda-library/programmatic.md %}#basic-programmatic-scan) for an example.
 
 <br />
 
@@ -67,7 +67,7 @@ soda scan -d adventureworks -c configuration.yml checks_test.yml checks_test2.ym
 
 * [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) parameter to the check so that Soda Cloud can accurately correlate new measurements from scan results to the same check, thus maintaining the history of check results.
 
-See also: [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}#configure-the-same-scan-to-run-in-multiple-environments).
+See also: [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}#configure-the-same-scan-to-run-in-multiple-environments).
 
 
 ## Metrics were not computed for check
@@ -78,7 +78,7 @@ See also: [Configure a single scan to run in multiple environments]({% link soda
 
 **Solution:** In your checks YAML file, you cannot use a dataset identifier that includes a schema, such as `soda.test_table`. You can only use a dataset name as an identifier, such as `test_table`. 
 
-However, if you were including the schema in the dataset identifier in an attempt to run the same set of checks against multiple environments, you can do so using the instructions to [Configure a single scan to run in multiple environments]({% link soda-core/configuration.md %}##configure-the-same-scan-to-run-in-multiple-environments).
+However, if you were including the schema in the dataset identifier in an attempt to run the same set of checks against multiple environments, you can do so using the instructions to [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments).
 
 See also: [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity)
 
@@ -135,7 +135,7 @@ Soda begins evaluating shema check results after the first scan; anomaly score a
 
 ## Filter not passed with reference check
 
-**Problem:** When trying to run a Soda Core reference against a partitioned dataset in combination with a dataset filter, Soda does not pass the filter which results in an execution error.
+**Problem:** When trying to run a Soda Library reference against a partitioned dataset in combination with a dataset filter, Soda does not pass the filter which results in an execution error.
 
 **Solution:** Where both datasets in a [reference check]({% link soda-cl/reference.md %}) have the same name, the [dataset filter]({% link soda-cl/filters.md %}#configure-dataset-filters) cannot build a valid query because it does not know to which dataset to apply the filter.
 

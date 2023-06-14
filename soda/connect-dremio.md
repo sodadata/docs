@@ -15,7 +15,7 @@ Soda supports Dremio version 22 or greater.
 
 ## Configuration
 
-Install package: `soda-core-dremio`
+Install package: `soda-dremio`
 
 {% include code-header.html %}
 ```yaml

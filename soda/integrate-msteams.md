@@ -18,7 +18,7 @@ Configure Soda Cloud to connect your account to MS Teams so that you can:
 ## Prerequisites
 
 * You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}).
-* You have [connected your Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to Soda Core and run at least one scan so as to produce one or more check results.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %}).
+* You have [connected your Soda Cloud account]({% link soda-library/configure.md %}) to Soda Library and run at least one scan so as to produce one or more check results.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %}).
 
 
 ## Configure an MS Teams integration
@@ -70,7 +70,6 @@ Refer to [Incidents]({% link soda-cloud/incidents.md %}) for more details about 
 
 ## Go further
 
-* [Connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account.
 * Learn more about general [webhooks]({% link soda/integrate-webhooks.md %}) to integrate Soda Cloud with other third-party service providers.
 * Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account. 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

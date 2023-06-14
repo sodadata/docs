@@ -26,9 +26,9 @@ A check is a test for data quality that you write using the Soda Checks Language
 
 See a [full list of SodaCL metrics and checks](#list-of-sodacl-metrics-and-checks).
 
-When it scans datasets in your data source, Soda Core executes the checks you defined in your checks YAML file. Technically, a check is a Python expression that, during a Soda scan, checks metrics to see if they match the parameters you defined for a threshold. A single Soda scan executes multiple checks against one or more datasets in your data source. Read more about [running scans on multiple environments]({% link soda-core/scan-core.md %}#configure-the-same-scan-to-run-in-multiple-environments).
+When it scans datasets in your data source, Soda Library executes the checks you defined in your checks YAML file. Technically, a check is a Python expression that, during a Soda scan, checks metrics to see if they match the parameters you defined for a threshold. A single Soda scan executes multiple checks against one or more datasets in your data source. Read more about [running scans on multiple environments]({% link soda-library/run-a-scan.md %}#configure-the-same-scan-to-run-in-multiple-environments).
 
-{% include core-scan-output.md %}
+{% include scan-output.md %}
 
 ## Check types
 
@@ -91,7 +91,7 @@ checks for dim_employees_dev:
 
 Finally, the **user-defined** checks make use of common table expressions (CTE) or SQL queries to construct a check; see an example below. This check type is designed to meet the needs of more complex and specific data quality checks, needs which cannot otherwise be met using the built-in standard and unique checks SodaCL provides. Each user-defined check type has its own documentation.
 
-Use these checks to prepare expressions or queries for your data that Soda Core executes during a scan along with all the other checks in your checks YAML file.
+Use these checks to prepare expressions or queries for your data that Soda Library executes during a scan along with all the other checks in your checks YAML file.
 {% include code-header.html %}
 ```yaml
 checks for customers:
@@ -169,7 +169,7 @@ While the most basic of standard checks use a single value to identify a fixed t
 The following sections present several ways to set boundaries using the `row_count` metric in the example checks. You can use any numeric, missing, or validity metric in lieu of `row_count`.
 
 ### Implicitly include thresholds in a check
-By default, SodaCL includes the values that define the boundary thresholds when Soda Core executes a check. In the following example, the check passes if the number of rows is equal to 10, 11, 12, 13, 14, or 15 because SodaCL includes both boundary thresholds, `10` and `15`, when Soda Core executes the check.
+By default, SodaCL includes the values that define the boundary thresholds when Soda Library executes a check. In the following example, the check passes if the number of rows is equal to 10, 11, 12, 13, 14, or 15 because SodaCL includes both boundary thresholds, `10` and `15`, when Soda Library executes the check.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:

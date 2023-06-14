@@ -10,6 +10,8 @@ parent: SodaCL
 
 If you are staring at a blank YAML file wondering what SodaCL checks to write to surface data quality issues, this quick start tutorial is for you. 
 
+Alternatively, use the [Check suggestions]({% link soda-cl/check-suggestions.md %}) assisstant in the Soda Library CLI tool to profile a dataset and auto-generate basic checks for data quality.
+
 ![blank-page](/assets/images/blank-page.png){:height="500px" width="500px"}
 
 [SodaCL: In brief](#sodacl-in-brief) <br />
@@ -28,11 +30,11 @@ If you are staring at a blank YAML file wondering what SodaCL checks to write to
 
 ## SodaCL: In brief
 
-**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with the Soda platform, you use SodaCL to write checks for data quality, then run a scan of the data in your data source to execute those checks.
+**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with Soda tools, you use SodaCL to write checks for data quality, then run a scan of the data in your data source to execute those checks.
 
 After installing Soda, you connect it to your data source (Snowflake, BigQuery, etc.) by defining connection details such as host, username, and password, in a **configuration YAML** file (except SparkDF, which is [special]({% link soda/connect-spark.md %})). Then, you define your Soda checks for data quality in a **checks YAML** file. 
 
-A **Soda Check** is a test that Soda Core performs when it scans a dataset in your data source. When you use Soda Core to run a scan on data in your data source, you reference both the configuration and checks YAML files in the scan command.
+A **Soda Check** is a test that Soda Library performs when it scans a dataset in your data source. When you use Soda Library to run a scan on data in your data source, you reference both the configuration and checks YAML files in the scan command.
 
 A **Soda scan** executes the checks you defined in the checks YAML file and returns a result for each check: pass, fail, or error. (Optionally, you can configure a check to warn instead of fail by setting an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations).)
 
@@ -48,7 +50,7 @@ You do not need to follow the tutorial sequentially.
 
 ## Tutorial prerequisites
 
-* You have completed the [Take a sip of Soda]({% link soda/quick-start-sip.md %}) tutorial <br /> OR <br /> you have followed the instructions to [install]({% link soda-core/installation.md %}), then [configure]({% link soda-core/configuration.md %}) Soda on your own. 
+* You have completed the [Take a sip of Soda]({% link soda/quick-start-sip.md %}) tutorial <br /> OR <br /> you have followed the instructions to [install]({% link soda-library/install.md %}), then [configure]({% link soda-library/configure.md %}) Soda on your own. 
 * You have created a new YAML file in your code editor and named it `checks.yml`.
 * (Optional) You have read the first two sections in [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) as a primer for SodaCL.
 
@@ -75,7 +77,7 @@ checks for dataset_name:
   - row_count same as other_dataset_name
 ```
 
-[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+[Run a scan]({% link soda-library/run-a-scan.md %}) to execute your checks:
 {% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
@@ -141,7 +143,7 @@ checks for dataset_name:
   - duplicate_count(column_name1, column_name2) = 0
 ```
 
-[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+[Run a scan]({% link soda-library/run-a-scan.md %}) to execute your checks:
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
 ```
@@ -162,7 +164,7 @@ checks for dataset_name:
   - freshness(timestamp_column_name) < 1d
 ```
 
-[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+[Run a scan]({% link soda-library/run-a-scan.md %}) to execute your checks:
 {% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
@@ -208,7 +210,7 @@ checks for dataset_name:
       missing values: [N/A, '0000', none]
 ```
 
-[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+[Run a scan]({% link soda-library/run-a-scan.md %}) to execute your checks:
 {% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
@@ -239,7 +241,7 @@ checks for dataset_name:
   - values in (column_name1, column_name2) must exist in different_dataset_name (other_column1, other_column2)
 ```
 
-[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+[Run a scan]({% link soda-library/run-a-scan.md %}) to execute your checks:
 {% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml
@@ -253,10 +255,9 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 
 To eliminate the frustration of the silently evolving dataset schema, use schema checks with alert configurations to notify you when column changes occur.
 
-If you have set up a Soda platform account, you can use a catch-all schema check that results in a warning whenever a Soda scan reveals that a column has been added, removed, moved within the context of an index, or changed data type relative to the results of the previous scan. 
+If you have set up a Soda Cloud account, you can use a catch-all schema check that results in a warning whenever a Soda scan reveals that a column has been added, removed, moved within the context of an index, or changed data type relative to the results of the previous scan. 
 {% include code-header.html %}
 ```yaml
-# Requires a Soda Cloud account
 # Check for any schema changes to dataset
 checks for dataset_name:
   - schema:
@@ -282,7 +283,7 @@ checks for dataset_name:
 
 Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a warn and a fail, the check result only displays the more severe, failed check result. [Read more]({% link soda-cl/schema.md %}#expect-one-check-result).
 
-[Run a scan]({% link soda-core/scan-core.md %}) to execute your checks:
+[Run a scan]({% link soda-library/run-a-scan.md %}) to execute your checks:
 {% include code-header.html %}
 ```yaml
 soda scan -d datasource_name -c configuration.yml checks.yml

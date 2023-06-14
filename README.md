@@ -9,7 +9,7 @@ The following outlines the workflow to contribute to Soda documentation.
 1. [Set up docs tooling](#set-up-docs-tooling) locally on your machine and clone the GitHub repo.
 2. Create a new branch for your work. Include the word `docs` in the name of your branch.
 3. Follow the [style guidelines](#style-guidelines) to edit existing or write new content using [markdown](#use-jekyll-markdown).
-4. Adjust the nav order of any new files in the `docs` > `nav.yml` file, or `docs` > `navcore.yml` for Soda Core docs.
+4. Adjust the nav order of any new files in the `docs` > `nav.yml` file.
 5. Spell check your content (select all and copy to Google Docs for a thorough check) and test all links.
 6. Commit your contributions, create a pull request, and request a review, if you wish.
 7. When all tests pass, merge your pull request.
@@ -110,8 +110,8 @@ Soda uses the [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGu
 
 ### Content
 - Categorize your new content according to the following macro groups:
-   - Concepts - content that explains in general, without including procedural steps. Characterized by a title that does not use present tense imperative such as, "How Soda Core works" or "Metrics".
-   - Tasks - content that describes the steps a user takes to complete a task or reach a goal. Characterized by a title that is in present tense imperative such as, "Install Soda Core" or "Apply filters".
+   - Concepts - content that explains in general, without including procedural steps. Characterized by a title that does not use present tense imperative such as, "How Soda Library works" or "Metrics".
+   - Tasks - content that describes the steps a user takes to complete a task or reach a goal. Characterized by a title that is in present tense imperative such as, "Install Soda Library" or "Apply filters".
    - Reference - content that presents lists or tables of reference material such as error codes or glossary.
 - Produce content that focuses on how to achieve a goal or solve a problem and, insofar as it is practical, is inclusive of all products. 
 - Remember that Every Page is Page One for your reader. Most people enter the docs by clicking on the result of a Google search, so they could land anywhere and you should assume your new page is the first page that a reader lands on. Give them the context for what they are reading, lots of "escape hatches" to the glossary or pre-requisite procedures, and instructions on what to read next in a "Go further" section at the bottom of all Concept or Task pages.

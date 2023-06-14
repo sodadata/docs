@@ -47,7 +47,6 @@ If you have integrated your Soda Cloud account with a Slack workspace, you can u
 ## Go further
 
 * Create a new [agreement]({% link soda-cloud/agreements.md %}) to establish an agreed-upon expectation of good-quality data.
-* [Connect]({% link soda-core/connect-core-to-cloud.md %}) Soda Core to your Soda Cloud account.
 * [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
 * Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

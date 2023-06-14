@@ -78,7 +78,7 @@ Alternatively, you can use a [failed rows check]({% link soda-cl/failed-rows-che
 ## Compare data in different data sources or schemas
 
 Use a [cross check]({% link soda-cl/cross-row-checks.md %}) to conduct a simple row count comparison of datasets in two different data sources, as in the following example that compares the row counts of two datasets in different data sources. <br />
-Note that each data source involved in this check has been connected to data source either in the `configuration.yml` file with Soda Core, or in the **Add Data Source** workflow in Soda Cloud.
+Note that each data source involved in this check has been connected to data source either in the `configuration.yml` file with Soda Library, or in the **Add Data Source** workflow in Soda Cloud.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -137,13 +137,13 @@ The following example accesses a single Snowflake data source and compares value
                   AND (tgt.page_id IS NULL AND tgt.post_id IS NULL)
 ```
 
-See also: [Configure the same scan to run in multiple environments]({% link soda-core/scan-core.md %}#configure-the-same-scan-to-run-in-multiple-environments)
+See also: [Configure the same scan to run in multiple environments]({% link soda-library/run-a-scan.md %}#configure-the-same-scan-to-run-in-multiple-environments)
 
 
 ## Compare dates in a dataset to validate event sequence
 
 You can use a **user-defined metric** to write a custom SQL query that compares date values in the same dataset. <br />
-Refer to [Custom check templates]({% link soda-cl/check-templates.md %}#compare-dates-to-validate-event-sequence).
+Refer to [Custom check templates]({% link soda-cl/custom-check-examples.md %}#compare-dates-to-validate-event-sequence).
 
 
 

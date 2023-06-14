@@ -7,4 +7,14 @@
 kubectl scale deployment/soda-agent-scanlauncher \
   --replicas 2 -n soda-agent
 ```
-Please be aware that this will only increase the number of idle scan launchers until another configuration value is changed via helm.
+Be aware that this adjustment only increases the number of idle scan launchers until you change another configuration value via helm.
+
+<br />
+
+**Problem:** After setting up a cluster and deploying the agent, you are unable to see the agent running in Soda Cloud.
+
+**Solution:** The value you specify for the `soda-cloud-enpoint` must correspond with the region you selected when you signed up for a Soda Cloud account: 
+* Use`https://cloud.us.soda.io` for the United States
+* Use `https://cloud.soda.io` for all else
+
+<br />

@@ -12,7 +12,7 @@ parent: Connect a data source
 
 ## Configuration
 
-Install package: `soda-core-denodo`
+Install package: `soda-denodo`
 
 {% include code-header.html %}
 ```yaml
