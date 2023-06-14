@@ -14,7 +14,7 @@ redirect_from:
 <!--Linked to UI, access Shlink-->
 <div class="alert">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  🎉 Introducing <strong>Soda Library</strong>, a new commercial extension of the Soda Core open-source Python library and CLI tool. <br /> <br />
+  🎉 Introducing <strong>Soda Library</strong>, a new extension of the Soda Core open-source Python library and CLI tool. <br /> <br />
   Leveraging all the power of Soda Core and SodaCL, the extension offers new features and functionality for Soda customers. <br /><br />
   <strong>New with Soda Library</strong><br/>
   <ul>
