@@ -86,7 +86,7 @@ checks for dataset-q:
 In Soda Cloud, you can see `dataset-q` because Soda Library pushed the scan results to Soda Cloud which resulted in the creation of a resource for that dataset. In Soda Cloud, you can use the UI to delete `dataset-q`, but unless you also remove the `checks for dataset-q` configuration from your `checks.yml` file, the dataset reappears in Soda Cloud the next time you run a scan. 
 
 
-![example-cloud-with-core](/assets/images/example-cloud-with-core.png){:height="700px" width="700px"}
+![example-cloud-with-library](/assets/images/example-cloud-with-library.png){:height="700px" width="700px"}
 
 ## Go further
 

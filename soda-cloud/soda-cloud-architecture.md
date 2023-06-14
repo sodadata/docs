@@ -10,7 +10,7 @@ parent: Soda Cloud
 
 <br />
 
-![soda-cloud-arch-core](/assets/images/soda-cloud-arch-core.png){:height="700px" width="700px"}
+![soda-cloud-arch-library](/assets/images/soda-cloud-arch-library.png){:height="700px" width="700px"}
 
 **Soda Library** connects to data sources and performs scans of each dataset in a data source. If you connect Soda Library to a **Soda Cloud** account, it pushes scan results to Soda Cloud where users in your organization can view check results, access Cloud Metric Store data, and integrate with Slack to investigate data quality Incidents.
 
