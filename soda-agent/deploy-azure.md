@@ -263,7 +263,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 * Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud. The cluster stores these key values as Kubernetes secrets.
 * Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
 * Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
-* Optionally, add the `soda.library` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions. <br />
+* Optionally, add the `soda.scanlauncher.idle` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions. <br />
 ```shell
 helm install soda-agent soda-agent/soda-agent \
     --set soda.agent.name=myuniqueagent \
@@ -271,8 +271,8 @@ helm install soda-agent soda-agent/soda-agent \
     --set soda.cloud.endpoint=https://cloud.soda.io \
     --set soda.apikey.id=*** \
     --set soda.apikey.secret=**** \
-    --set soda.library.idle=true \
-    --set soda.library.replicas=1 \
+    --set soda.scanlauncher.idle=true \
+    --set soda.scanlauncher.idle.replicas=1 \
     --namespace soda-agent
 ```
 The command-line produces output like the following message:
@@ -314,17 +314,17 @@ namespace/soda-agent created
 * Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud. The cluster stores these key values as Kubernetes secrets.
 * Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
 * Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
-* Optionally, add the `soda.library` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions.
+* Optionally, add the `soda.scanlauncher.idle` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions.
 ```shell
 helm install soda-agent soda-agent/soda-agent \
-    --set soda.agent.target=azure-aks-virtualnodes \
+    --set provider.aks.virtualNodes.enabled=true \ 
     --set soda.agent.name=myuniqueagent \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
     --set soda.cloud.endpoint=https://cloud.soda.io \
     --set soda.apikey.id=*** \
     --set soda.apikey.secret=**** \
-    --set soda.library.idle=true \
-    --set soda.library.replicas=1 \
+    --set soda.scanlauncher.idle=true \
+    --set soda.scanlauncher.idle.replicas=1 \
     --namespace soda-agent
 ```
 The command-line produces output like the following message:
@@ -360,7 +360,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 * `id` and `secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account.
 * Replace the value of `name` with a custom name for your agent, if you wish.
 * Specify the value for `endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
-* Optionally, add the `soda.library` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions.  
+* Optionally, add the `soda.scanlauncher.idle` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions.  
 ```yaml
 soda:
         apikey:
@@ -368,12 +368,13 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
-        library:
-          idle: true
-          replicas: 1
         cloud:
           # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
           endpoint: "https://cloud.soda.io"
+        scanlauncher:
+          idle:
+            enabled: true
+            replicas: 1
 ```
 4. Save the file. Then, create a namespace for the agent.
 ```shell
@@ -390,7 +391,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```
 6. (Optional) Validate the Soda Agent deployment by running the following command:
 ```shell
-kubectl -- describe pods
+kubectl describe pods -n soda-agent
 ```
 7. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
