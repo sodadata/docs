@@ -198,6 +198,9 @@
   - subtitle: Troubleshoot SodaCL
     page: soda-cl/troubleshoot.md
 
+- title: Soda Core
+  page: soda-core/overview-main.md
+
 - title: Integrate Soda
   page: soda/integrate-alation.md
   subcategories:
@@ -231,8 +234,6 @@
     page: soda/community-coc.md
   - subtitle: Soda SQL is now Soda Core
     page: soda/deprecated.md
-  - subtitle: Soda Core
-    page: soda-core/overview-main.md
 
 - title: Soda Cloud Reporting API
   page: api-docs/reporting-api-v1.md

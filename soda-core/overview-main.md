@@ -15,7 +15,11 @@ redirect_from:
 
 **Soda Core** is a free, open-source Python library and CLI tool that enables data engineers to test data quality. Accessible on <a href="https://github.com/sodadata/soda-core" target="_blank">GitHub</a> along with its documentation, you can download the CLI tool or import the Python library to prepare checks for data quality. 
 
-**Soda Library**, an extension of Soda Core, is a commercial offering that enables users to connect to Soda Cloud and offers features and functionality not available with the open-source tool. [Install Soda Library]({% link soda-library/install.md %}) for a free, 45-day trial, or [migrate from Soda Core]({% link soda-library/install.md %}#migrate-from-soda-core) to Soda Library without changing checks or data source connections.
+<a href="https://github.com/sodadata/soda-core" target="_blank" class="signup-button">Soda Core on GitHub</a>
+
+<br />
+
+**Soda Library**, an extension of Soda Core, enables users to connect to Soda Cloud and offers features and functionality not available with the open-source tool. [Install Soda Library]({% link soda-library/install.md %}) for a free, 45-day trial, or [migrate from Soda Core]({% link soda-library/install.md %}#migrate-from-soda-core) to Soda Library without changing checks or data source connections.
 
 
 ![done](/assets/images/done.png){:width="20px"} Supported<br />
@@ -23,9 +27,10 @@ redirect_from:
 
 | Feature or functionality | Soda Core OSS | Soda Library |
 | ----------------------- | :-----------: | :----------: |
-|Connect to Soda Cloud | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 |Available for free, forever | ![done](/assets/images/done.png){:width="20px"} |  |
 |Available for free for a 45-day free trial |  | ![done](/assets/images/done.png){:width="20px"}|
+|Connect to Soda Cloud | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+|Compatible with basic SodaCL checks and configurations | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 |Supports Cloud Metric Store for historic metrics | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 |Set alert notifications | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 |Define check attributes | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
@@ -33,7 +38,6 @@ redirect_from:
 |Add automated monitoring checks | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 |Use anomaly detection and schema evolution checks | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 |Use change-over-time checks for relative measurements | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
-|Compatible with basic SodaCL checks and configurations | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 |Requires a Soda Cloud connection via API keys to validate licensing or trial status and run scans. |  | ![done](/assets/images/done.png){:width="20px"} |
 |Compatible with Check Suggestions |  | ![done](/assets/images/done.png){:width="20px"} |
 |Use Check Templates |  | ![done](/assets/images/done.png){:width="20px"} |
