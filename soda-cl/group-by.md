@@ -8,9 +8,9 @@ parent: SodaCL
 # Group by
 *Last modified on {% last_modified_at %}*
 
-Use a group by configuration to collect and present check results by category. 
+Use a group by configuration to collect and present check results by category. <br /> 
+*Requires Soda Library*
 
-See also: [Group evolution check]({% link soda-cl/group-evolution.md %}) 
 {% include code-header.html %}
 ```yaml
 checks for fact_internet_sales:

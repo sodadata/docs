@@ -9,7 +9,7 @@ parent: SodaCL
 *Last modified on {% last_modified_at %}*
 
 Use a check template to define a reusable, user-defined metric that you can apply to many checks in multiple checks files.<br />
-*Soda Cloud does not support check templates.*
+*Soda Cloud does not support check templates.* <br /> *Requires Soda Library*
 {% include code-header.html %}
 ```yaml
 templates:
@@ -37,7 +37,7 @@ checks:
 <br />
 
 ## Define a check template
-
+*Requires Soda Library* <br />
 A check template involves both a **template YAML** file in which you define resuable user-defined metrics, and at least one **checks YAML** file, in which you use the metric in a check for data quality. 
 
 A check template borrows from the [user-defined check]({% link soda-cl/user-defined.md %}) syntax and has several parameters to define:
