@@ -150,7 +150,7 @@ checks for customers_c8d90f60 [daily]:
 # This is a reference check using the same dataset name as both target and source of the comparison.
 ```
 
-As a workaround, you can create a separate dataset filter for such a reference check and prefix the column name with wither `SOURCE.` or `TARGET.` to identify to Soda which column it should apply the filter to. 
+As a workaround, you can create a separate dataset filter for such a reference check and prefix the column name with wither `SOURCE.` or `TARGET.` to identify to Soda the column to which it should apply the filter. 
 
 In a separate filter in the example below, the `ts` uses the prefix `SOURCE.` to specify that Soda ought to apply the dataset filter to the source of the comparison and not the target.
 
