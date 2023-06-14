@@ -26,10 +26,10 @@ automated monitoring:
 
 ## About automated monitoring checks
 
-When you add automated monitoring checks to your checks.yml file, Soda Core prepares and executes two checks on all the datasets you indicate as included in your checks YAML file. 
+When you add automated monitoring checks to your checks.yml file, Soda Library prepares and executes two checks on all the datasets you indicate as included in your checks YAML file. 
 
 **Anomaly score check on row count**: This check counts the number of rows in a dataset during scan and registers anomalous counts relative to previous measurements for the row count metric. Refer to [Anomaly score checks]({% link soda-cl/anomaly-score.md %}) for details. <br />
-Anomaly score checks require a minimum of four data points (four scans at stable intervals) to establish a baseline against which to gauge anomalies. If you do not see check results immediately, allow Soda Core to accumulate the necessary data points. 
+Anomaly score checks require a minimum of four data points (four scans at stable intervals) to establish a baseline against which to gauge anomalies. If you do not see check results immediately, allow Soda Library to accumulate the necessary data points. 
 
 **Schema checks**: This check monitors schema changes in datasets, including column addition, deletion, data type changes, and index changes. By default, this automated check results in a failure if a column is deleted, its type changes, or its index changes; it results in a warning if a column is added. Refer to [Schema checks]({% link soda-cl/schema.md %}) for details.<br />
 Schema checks require a minimum of one data point to use as a baseline against which to gauge schema changes. If you do not see check results immediately, wait until after you have scanned the dataset twice.
@@ -43,7 +43,7 @@ These types of checks require a **Soda Cloud** account. Soda Library pushes chec
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
   <label class="tab" id="one-tab" for="one">Configure in Soda Cloud</label>
-  <label class="tab" id="two-tab" for="two">Configure using Soda Core </label>
+  <label class="tab" id="two-tab" for="two">Configure using Soda Library </label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
@@ -59,34 +59,30 @@ To define automated monitoring checks, follow the guided steps to [create a new 
   <div class="panel" id="two-panel" markdown="1">
 
 
-* You have installed a [Soda Core package]({% link soda-library/install.md %}) in your environment.
-* You have [configured Soda Core]({% link soda-library/configure.md %}) to connect to a data source using a `configuration.yml` file. 
-* You have created and [connected a Soda Cloud account]({% link soda-library/configure.md %}) to Soda Core.
-* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you installed Soda Core; see instructions below.
+* You have installed a [Soda Library package]({% link soda-library/install.md %}) in your environment.
+* You have [configured Soda Library]({% link soda-library/configure.md %}) to connect to a data source using a `configuration.yml` file. 
+* You have created and [connected a Soda Cloud account]({% link soda-library/configure.md %}) to Soda Library.
+* You have [installed Soda Scientific](#install-soda-scientific) in the same directory or virtual environment in which you installed Soda Library; see instructions below.
 
-## Install Soda Core Scientific
+## Install Soda Scientific
 
-To use automated monitoring, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core.
+To use automated monitoring, you must install Soda Scientific in the same directory or virtual environment in which you installed Soda Library.
 
 {% include install-soda-scientific.md %}
 
-Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
+Refer to [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation) for help with issues during installation.
 
 
-## Troubleshoot Soda Core Scientific installation
+## Troubleshoot Soda Scientific installation
 
-While installing Soda Core Scientific works on Linux, you may encounter issues if you install Soda Core Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
+While installing Soda Scientific works on Linux, you may encounter issues if you install Soda Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
 
-* [Install Soda Core locally](#install-soda-core-locally)
-* [Use Docker to run Soda Core](#use-docker-to-run-soda-core)
+* [Install Soda Scientific locally](#install-soda-scientific-locally)
+* [Use Docker to run Soda Library](#use-docker-to-run-soda-library)
 
 Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
-### Use Docker to run Soda Core
-
-{% include docker-soda-library.md %}
-
-### Install Soda Core Scientific Locally 
+### Install Soda Scientific Locally 
 
 {% include install-soda-scientific.md %}
 
@@ -94,11 +90,16 @@ Need help? Ask the team in the <a href="https://community.soda.io/slack" target=
   </div>
 </div>
 
+### Use Docker to run Soda Library
+
+{% include docker-soda-library.md %}
+
+
 ## Define an automated monitoring check
 
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), automated monitoring checks are unique. This check employs the `anomaly score` and `schema` checks, but is limited in its syntax variation, with only a couple of mutable parts to specify which datasets to automatically apply the anomaly and schema checks.
 
-The example check below uses a wildcard character (`%`) to specify that Soda Core executes automated monitoring checks against all datasets with names that begin with `prod`, and *not* to execute the checks against any dataset with a name that begins with `test`.
+The example check below uses a wildcard character (`%`) to specify that Soda Library executes automated monitoring checks against all datasets with names that begin with `prod`, and *not* to execute the checks against any dataset with a name that begins with `test`.
 {% include code-header.html %}
 ```yaml
 automated monitoring:

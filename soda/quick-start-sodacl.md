@@ -34,7 +34,7 @@ Alternatively, use the [Check suggestions]({% link soda-cl/check-suggestions.md 
 
 After installing Soda, you connect it to your data source (Snowflake, BigQuery, etc.) by defining connection details such as host, username, and password, in a **configuration YAML** file (except SparkDF, which is [special]({% link soda/connect-spark.md %})). Then, you define your Soda checks for data quality in a **checks YAML** file. 
 
-A **Soda Check** is a test that Soda Core performs when it scans a dataset in your data source. When you use Soda Core to run a scan on data in your data source, you reference both the configuration and checks YAML files in the scan command.
+A **Soda Check** is a test that Soda Library performs when it scans a dataset in your data source. When you use Soda Library to run a scan on data in your data source, you reference both the configuration and checks YAML files in the scan command.
 
 A **Soda scan** executes the checks you defined in the checks YAML file and returns a result for each check: pass, fail, or error. (Optionally, you can configure a check to warn instead of fail by setting an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations).)
 

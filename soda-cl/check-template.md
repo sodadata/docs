@@ -129,8 +129,8 @@ soda scan -d adventureworks -c configuration.yml checks.yml -T templates.yml
 Output:
 ```shell
 soda scan -d adventureworks -c configuration.yml checks2.yml -T templates.yml
-Soda 1.0.0beta5
-Soda Core 3.0.39
+Soda 1.0.x
+Soda Core 3.0.x
 Loaded check templates from templates.yml
 Processing template $template_beta 
 Scan summary:

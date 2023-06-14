@@ -31,7 +31,7 @@ See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.m
 
 ### Soda does not recognize variables 
 
-**Problem:** You execute a programmatic scan using Soda Core, but Soda does not seem to recognize the variables you included in the programmatic scan. 
+**Problem:** You execute a programmatic scan using Soda Library, but Soda does not seem to recognize the variables you included in the programmatic scan. 
 
 **Solution:** Be sure to include any variables in your programmatic scan *before* the check YAML file identification. Refer to [Basic programmatic scan]({% link soda-library/programmatic.md %}#basic-programmatic-scan) for an example.
 
@@ -135,7 +135,7 @@ Soda begins evaluating shema check results after the first scan; anomaly score a
 
 ## Filter not passed with reference check
 
-**Problem:** When trying to run a Soda Core reference against a partitioned dataset in combination with a dataset filter, Soda does not pass the filter which results in an execution error.
+**Problem:** When trying to run a Soda Library reference against a partitioned dataset in combination with a dataset filter, Soda does not pass the filter which results in an execution error.
 
 **Solution:** Where both datasets in a [reference check]({% link soda-cl/reference.md %}) have the same name, the [dataset filter]({% link soda-cl/filters.md %}#configure-dataset-filters) cannot build a valid query because it does not know to which dataset to apply the filter.
 

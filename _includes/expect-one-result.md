@@ -11,7 +11,7 @@ checks for dim_customer:
 ```
 ```shell
 Soda Library 1.0.x
-Soda Core 3.0.xx
+Soda Core 3.0.x
 Scan summary:
 1/1 check WARNED: 
     dim_customer in adventureworks
@@ -35,7 +35,7 @@ checks for dim_product:
 ```
 ```shell
 Soda Library 1.0.x
-Soda Core 3.0.xx
+Soda Core 3.0.x
 Scan summary:
 1/1 check FAILED: 
     dim_product in adventureworks

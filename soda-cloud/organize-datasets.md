@@ -55,7 +55,7 @@ While only a Soda Cloud Admin can define or revise dataset attributes, any Admin
 
 * Create [alerts]({% link soda-cloud/agreements.md %}) to notify your team of data quality issues.
 * Learn how to create and track data quality [Incidents]({% link soda-cloud/incidents.md %}).
-* Use Soda Core to [add datasets]({% link soda-library/configure.md %}) to your Soda Cloud account.
+* Use Soda Library to [add datasets]({% link soda-library/configure.md %}) to your Soda Cloud account.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

@@ -78,7 +78,7 @@ Alternatively, you can use a [failed rows check]({% link soda-cl/failed-rows-che
 ## Compare data in different data sources or schemas
 
 Use a [cross check]({% link soda-cl/cross-row-checks.md %}) to conduct a simple row count comparison of datasets in two different data sources, as in the following example that compares the row counts of two datasets in different data sources. <br />
-Note that each data source involved in this check has been connected to data source either in the `configuration.yml` file with Soda Core, or in the **Add Data Source** workflow in Soda Cloud.
+Note that each data source involved in this check has been connected to data source either in the `configuration.yml` file with Soda Library, or in the **Add Data Source** workflow in Soda Cloud.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:

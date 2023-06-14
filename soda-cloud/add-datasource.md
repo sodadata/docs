@@ -27,7 +27,7 @@ You can connect Soda Cloud with the following data sources via a [Soda Agent]({%
 {% include compatible-cloud-datasources.md %}
 
 <br />
-Soda Cloud can, however, accept scan results from Soda Core for the following data sources:
+Soda Cloud can, however, accept scan results from Soda Library for the following data sources:
 
 {% include compatible-datasources.md %}
 

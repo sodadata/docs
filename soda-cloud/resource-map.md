@@ -15,7 +15,7 @@ It is helpful to understand these resources and how they relate, or connect, to 
 
 [Example Soda Cloud deployment](#example-soda-cloud-deployment)<br />
 [Delete resources](#delete-resources)<br />
-[Example deployment with Soda Cloud and Soda Core](#example-deployment-with-soda-cloud-and-soda-core)<br />
+[Example deployment with Soda Cloud and Soda Library](#example-deployment-with-soda-cloud-and-soda-library)<br />
 <br />
 
 ## Example Soda Cloud deployment
@@ -24,7 +24,7 @@ The following diagram illustrates an example deployment of a single Soda Cloud a
 
 ![example-deployment](/assets/images/example-deployment.png){:height="700px" width="700px"}
 
-* A **Soda Agent** is Soda Core that has been deployed in Kubernetes cluster in a cloud services provider environment. It enables Soda Cloud users to securely connect to data sources such as Snowflake, BigQuery, and PostgreSQL. [Read more]({% link soda-agent/basics.md %}).
+* A **Soda Agent** is Soda Library that has been deployed in Kubernetes cluster in a cloud services provider environment. It enables Soda Cloud users to securely connect to data sources such as Snowflake, BigQuery, and PostgreSQL. [Read more]({% link soda-agent/basics.md %}).
 * A **data source** in Soda Cloud is a representation of the connection to your data source. Notably, it does not contain any of your data<sup>†</sup>, only data source metadata that it uses to check for data quality. [Read more]({% link soda-cloud/add-datasource.md %}). <br />Within the context of Soda Cloud, a data source contains:
   * **datasets** which represent tabular structures with rows and columns in your data source; like data sources, they do not contain your data<sup>†</sup>, only metadata. Datasets can contain user-defined **attributes** that help filter and organize check results. [Read more]({% link soda-cloud/organize-datasets.md %}).
   * **scan definitions** which you use to define a Soda scan schedule for the data source. [Read more]({% link soda-cloud/add-datasource.md %}#1-attributes).
@@ -70,20 +70,20 @@ As the example diagram indicates, deleting a Slack integration prevents Soda Clo
 
 ![delete-integration](/assets/images/delete-integration.png){:height="700px" width="700px"}
 
-## Example deployment with Soda Cloud and Soda Core
+## Example deployment with Soda Cloud and Soda Library
 
-If your Soda Cloud account is also [connected to Soda Core]({% link soda-library/configure.md %}), your deployment may resemble something like the following diagram. 
+If your Soda Cloud account is also [connected to Soda Library]({% link soda-library/configure.md %}), your deployment may resemble something like the following diagram. 
 
-Note that you can delete resources that appear in Soda Cloud as a result of a manual or programmatic Soda Core scan. However, unless you delete the reference to the resource at its source – the `checks.yml` file or `configuration.yml` file – the resource will reappear in Soda Cloud when Soda Core sends its next set of scan results.
+Note that you can delete resources that appear in Soda Cloud as a result of a manual or programmatic Soda Library scan. However, unless you delete the reference to the resource at its source – the `checks.yml` file or `configuration.yml` file – the resource will reappear in Soda Cloud when Soda Library sends its next set of scan results.
 
-For example, imagine you use Soda Core to run scans and send results to Soda Cloud. In the `checks.yml` file that you use to define your checks, you have the following configuration:
+For example, imagine you use Soda Library to run scans and send results to Soda Cloud. In the `checks.yml` file that you use to define your checks, you have the following configuration:
 {% include code-header.html %}
 ```yaml
 checks for dataset-q:
   - missing_count(last_name) < 10
 ```
 
-In Soda Cloud, you can see `dataset-q` because Soda Core pushed the scan results to Soda Cloud which resulted in the creation of a resource for that dataset. In Soda Cloud, you can use the UI to delete `dataset-q`, but unless you also remove the `checks for dataset-q` configuration from your `checks.yml` file, the dataset reappears in Soda Cloud the next time you run a scan. 
+In Soda Cloud, you can see `dataset-q` because Soda Library pushed the scan results to Soda Cloud which resulted in the creation of a resource for that dataset. In Soda Cloud, you can use the UI to delete `dataset-q`, but unless you also remove the `checks for dataset-q` configuration from your `checks.yml` file, the dataset reappears in Soda Cloud the next time you run a scan. 
 
 
 ![example-cloud-with-core](/assets/images/example-cloud-with-core.png){:height="700px" width="700px"}

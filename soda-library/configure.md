@@ -142,7 +142,7 @@ echo $API_KEY
       api_key_id: ${API_KEY}
       api_key_secret: ${API_SECRET}
     ```
-4. Save the configuration YAML file, then run a scan to confirm that Soda Core connects to Soda Cloud without issue.
+4. Save the configuration YAML file, then run a scan to confirm that Soda Library connects to Soda Cloud without issue.
 ```shell
 soda scan -d your_datasource -c configuration.yml checks.yml
 ```

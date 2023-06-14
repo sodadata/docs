@@ -352,7 +352,7 @@ def run_soda_scan(project_root, scan_name, checks_subpath = None):
 with DAG(
     "model_adventureworks_sales_category",
     default_args=default_args,
-    description="A simple Soda Core scan DAG",
+    description="A simple Soda Library scan DAG",
     schedule_interval=timedelta(days=1),
     start_date=days_ago(1),
 ):

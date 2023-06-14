@@ -26,7 +26,7 @@ Consider following the [Test data in a pipeline]({% link soda/quick-start-prod.m
 <!--
 ## Apache Airflow using BashOperator
 
-Access a guide published by <a href="https://www.astronomer.io/" target="_blank">Astronomer</a> for setting up and using <a href="https://www.astronomer.io/guides/soda-data-quality/" target="_blank">Soda Core with Airflow</a>. -->
+Access a guide published by <a href="https://www.astronomer.io/" target="_blank">Astronomer</a> for setting up and using <a href="https://www.astronomer.io/guides/soda-data-quality/" target="_blank">Soda Library with Airflow</a>. -->
 
 ## Apache Airflow using PythonOperator
 {% include code-header.html %}

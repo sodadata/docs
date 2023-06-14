@@ -166,13 +166,11 @@ pip install -i https://pypi.soda.io soda-redshift -U
 
 ## Migrate from Soda Core
 
-Soda Core, the free, open-source Python library and CLI tool upon which Soda Library is built, continues to exist as an OSS project in <a href="https://github.com/sodadata/soda-core" target="_blank">GitHub</a>. Going forward, Soda Core does not support connecting to Soda Cloud or any of the checks or features that require Soda Cloud. 
+Soda Core, the free, open-source Python library and CLI tool upon which Soda Library is built, continues to exist as an OSS project in <a href="https://github.com/sodadata/soda-core" target="_blank">GitHub</a>. To migrate from an existing Soda Core installation to Soda Library, simply uninstall the old and install the new from the command-line. 
 
-To migrate from an existing Soda Core installation to Soda Library, simply uninstall the old and install the new from the command-line. 
-
-1. Uninstall your existing Soda Core package using the following command; replace `postgres` with the data source-specific package that you use.
+1. Uninstall your existing Soda Core packages using the following command.
 ```shell
-pip uninstall soda-core-postgres
+pip freeze | grep soda | xargs pip uninstall -y
 ```
 2. Install a Soda Library package that corresponds to your data source. Your new package automatically comes with a 45-day free trial. Our Soda team will contact you with licensing options after the trial period.
 ```shell

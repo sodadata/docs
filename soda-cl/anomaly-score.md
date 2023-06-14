@@ -11,7 +11,7 @@ redirect_from: /soda-cloud/anomaly-detection.html
 *Last modified on {% last_modified_at %}*
 
 Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
-*Requires Soda Core Scientific.*<br />
+*Requires Soda Scientific.*<br />
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -20,12 +20,12 @@ checks for dim_customer:
 
 [About anomaly score checks](#about-anomaly-score-checks)<br />
 [Prerequisites](#prerequisites)<br />
-[Install Soda Core Scientific](#install-soda-core-scientific)<br />
+[Install Soda Scientific](#install-soda-scientific)<br />
 [Define an anomaly score check](#define-an-anomaly-score-check) <br />
 [Anomaly score check results](#anomaly-score-check-results) <br />
 [Optional check configurations](#optional-check-configurations) <br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
-[Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation)<br />
+[Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -38,17 +38,17 @@ This type of check requires a **Soda Cloud** account. Soda Library pushes check 
 
 ## Prerequisites
 
-* You have a Soda Cloud account and have [connected Soda Core to Soda Cloud]({% link soda-library/configure.md %}). 
-* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you [installed Soda Core]({% link soda-library/install.md %}).
+* You have a Soda Cloud account and have [connected Soda Library to Soda Cloud]({% link soda-library/configure.md %}). 
+* You have [installed Soda Scientific](#install-soda-scientific) in the same directory or virtual environment in which you [installed Soda Library]({% link soda-library/install.md %}).
 
 
-## Install Soda Core Scientific
+## Install Soda Scientific
 
-To use an anomaly score check, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core. Best practice recommends installing Soda Core and Soda Core Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Core Scientific locally](#install-soda-core-scientific-locally) if you prefer.
+To use an anomaly score check, you must install Soda Scientific in the same directory or virtual environment in which you installed Soda Library. Best practice recommends installing Soda Library and Soda Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Scientific locally](#install-soda-scientific-locally) if you prefer.
 
 {% include install-soda-scientific.md %}
 
-Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
+Refer to [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation) for help with issues during installation.
 
 
 ## Define an anomaly score check
@@ -105,7 +105,7 @@ Though your first instinct may be to run several scans in a row to product the f
 
 If, for example, you attempt to run eight back-to-back scans in five minutes, the anomaly score does not register the measurements resulting from those scans as a reliable pattern against which to evaluate an anomaly. 
 
-Consider using the Soda Core Python library to set up a [programmatic scan]({% link soda-library/programmatic.md %}) that produces a check result for an anomaly score check on a regular schedule.
+Consider using the Soda library to set up a [programmatic scan]({% link soda-library/programmatic.md %}) that produces a check result for an anomaly score check on a regular schedule.
 
 
 ## Optional check configurations
@@ -149,24 +149,24 @@ for each dataset T:
 ```
 
 
-## Troubleshoot Soda Core Scientific installation
+## Troubleshoot Soda Scientific installation
 
-While installing Soda Core Scientific works on Linux, you may encounter issues if you install Soda Core Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
-* [Install Soda Core locally](#install-soda-core-scientific-locally)
-* [Troubleshoot Soda Core Scientific installation in a virtual env](#troubleshoot-soda-core-scientific-installation-in-a-virtual-env)
-* [Use Docker to run Soda Core](#use-docker-to-run-soda-core)
+While installing Soda Scientific works on Linux, you may encounter issues if you install Soda Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
+* [Install Soda Scientify locally](#install-soda-scientific-locally)
+* [Troubleshoot Soda Scientific installation in a virtual env](#troubleshoot-soda-scientific-installation-in-a-virtual-env)
+* [Use Docker to run Soda Library](#use-docker-to-run-soda-library)
 
 Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
-### Install Soda Core Scientific Locally
+### Install Soda Scientific Locally
 
 {% include install-soda-scientific.md %}
 
-### Use Docker to run Soda Core
+### Use Docker to run Soda Library
 
 {% include docker-soda-library.md %}
 
-### Troubleshoot Soda Core Scientific installation in a virtual env
+### Troubleshoot Soda Scientific installation in a virtual env
 
 {% include troubleshoot-anomaly-check-tbb.md %}
 

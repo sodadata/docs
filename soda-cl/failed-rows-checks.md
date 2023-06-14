@@ -11,7 +11,7 @@ parent: SodaCL
 
 Use a failed rows check to explicitly send samples of rows that failed a check to Soda Cloud. 
 
-You can also use a failed row check to configure Soda Core to execute a CTE or SQL query against your data, or to group failed check results by one or more categories.
+You can also use a failed row check to configure Soda Library to execute a CTE or SQL query against your data, or to group failed check results by one or more categories.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -38,7 +38,7 @@ checks for dim_customer:
 [Group results by category](#group-results-by-category)<br />
 [Disable failed rows sampling for specific columns](#disable-failed-rows-sampling-for-specific-columns)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Configure in Soda Cloud](#configure-in-soda-cloud)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Configure in Soda Core](#configure-in-soda-core)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Configure in Soda Library](#configure-in-soda-library)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Disabling options and details](#disabling-options-and-details)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[About failed rows sampling queries](#about-failed-rows-sampling-queries)<br />
 [Reroute failed rows samples](#reroute-failed-rows-samples)<br />
@@ -67,7 +67,7 @@ In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#
 
 The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the `fail condition` that any rows in the `dim_customer` dataset must meet in order to qualify as failed rows, during a scan, get sent to Soda Cloud. 
 
-In this rather silly example, Soda Core sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples. The check also uses the `name` configuration key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
+In this rather silly example, Soda Library sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples. The check also uses the `name` configuration key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -80,7 +80,7 @@ checks for dim_customer:
 
 <br />
 
-If you prefer, you can use a SQL query to define what qualifies as a failed row for Soda Core to send to Soda Cloud, as in the following simple example. Use this cofiguration to include complete SQL queries in the Soda scan of your data.
+If you prefer, you can use a SQL query to define what qualifies as a failed row for Soda Library to send to Soda Cloud, as in the following simple example. Use this cofiguration to include complete SQL queries in the Soda scan of your data.
 
 ```yaml
 checks for dim_customer:
@@ -148,7 +148,7 @@ checks for dim_product [new]:
 
 ## Set a sample limit
 
-By default, Soda Core sends 100 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda Core using the `samples limit` configuration key:value pair, as in the following example.
+By default, Soda Library sends 100 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda Library using the `samples limit` configuration key:value pair, as in the following example.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -289,7 +289,7 @@ Alternatively, you can disable the failed row samples feature entirely in Soda C
 
 <br />
 
-#### Configure in Soda Core
+#### Configure in Soda Library
 
 1. Open the [configuration YAML file]({% link soda-library/configure.md %}#configuration-instructions) that contains the data source connection configuration for the data source that contains the dataset that contains the columns that you wish to exclude from failed rows sampling.
 2. To the connection configuration, add the `sampler` configuration to specify the columns you wish to exclude, as outlined above.
@@ -332,7 +332,7 @@ sampler:
 
 * The `exclude_columns` configuration does not apply to [sample data collection]({% link soda-cl/sample-datasets.md %}).
 
-* Checks in which you provide a complete SQL query, such as failed rows checks that use a `fail query`, do not honor the `exclude_column` configuration. Instead, a gatekeeper component parses all queries that Soda runs to collect samples and ensures that none of columns listed in an `exclude_column` configuration slip through when generating the sample queries. In such a case, the Soda Core CLI provides a message to indicate the gatekeeper's behavior:
+* Checks in which you provide a complete SQL query, such as failed rows checks that use a `fail query`, do not honor the `exclude_column` configuration. Instead, a gatekeeper component parses all queries that Soda runs to collect samples and ensures that none of columns listed in an `exclude_column` configuration slip through when generating the sample queries. In such a case, the Soda Library CLI provides a message to indicate the gatekeeper's behavior:
 ```shell
 Skipping samples from query 'retail_orders.last_name.failed_rows[missing_count]'. Excluded column(s) present: ['*'].
 ```
@@ -431,7 +431,7 @@ data_source my_datasource_name:
 
 <br />
 
-#### Configure in Soda Core
+#### Configure in Soda Library
 
 1. Open the [configuration YAML file]({% link soda-library/configure.md %}#configuration-instructions) that contains the data source connection configuration for the data source for which you wish to reroute failed rows samples.
 2. To the connection configuration, add the `storage` configuration to specify the columns you wish to exclude, as outlined above.

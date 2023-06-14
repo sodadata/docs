@@ -16,7 +16,7 @@ redirect_from:
 | Command               | Description |
 | --------------------- | ----------- |
 | `soda ingest` | Ingests dbt test results to display in Soda Cloud. See [Integrate with dbt]({% link soda/integrate-dbt.md %}). |
-| `soda scan` | Uses the configurations in your checks YAML file to prepare, then run SQL queries against the data in your data source. See [Run a Soda Core scan]({% link soda-library/run-a-scan.md %}) for details. |
+| `soda scan` | Uses the configurations in your checks YAML file to prepare, then run SQL queries against the data in your data source. See [Run a Soda Library scan]({% link soda-library/run-a-scan.md %}) for details. |
 | `soda suggest` | Generates a checks YAML file based on your responses to prompts in the Soda Library CLI. |
 | `soda test-connection` | Tests the connection to the data sources for which you configured a connection in your configuration YAML file. |
 | `soda update-dro` | Updates a distribution reference file that a [distribution check]({% link soda-cl/distribution.md %}) uses. |
