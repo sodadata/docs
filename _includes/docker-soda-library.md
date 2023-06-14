@@ -1,4 +1,4 @@
-Use <a href="https://hub.docker.com/repository/docker/sodadata/soda-core" target="_blank">Soda's Docker image</a> in which Soda Scientific is pre-installed.
+Use <a href="https://hub.docker.com/repository/docker/sodadata/soda-library" target="_blank">Soda's Docker image</a> in which Soda Scientific is pre-installed.
 
 1. If you have not already done so, <a href="https://docs.docker.com/get-docker/" target="_blank">install Docker</a> in your local environment. 
 2. From Terminal, run the following command to pull the latest Soda Library's official Docker image.
@@ -44,7 +44,7 @@ docker run -v /path/to/your_soda_directory:/sodacl sodadata/soda-library:v1.0.0 
   <ul>
     <li><code>docker run</code> ensures that the docker engine runs a specific image.</li>
     <li><code>-v</code> mounts your SodaCL files into the container. In other words, it makes the configuration.yml and checks.yml files in your local environment available to the docker container. The command example maps your local directory to <code>/sodacl</code> inside of the docker container. </li>
-    <li><code>sodadata/soda-core</code> refers to the image that <code>docker run</code> must use.</li>
+    <li><code>sodadata/soda-library</code> refers to the image that <code>docker run</code> must use.</li>
     <li><code>scan</code> instructs Soda Library to execute a scan of your data. </li>
     <li><code>-d</code> indicates the name of the data source to scan.</li>
     <li><code>-c</code> specifies the filepath and name of the configuration YAML file.</li>

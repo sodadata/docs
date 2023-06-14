@@ -7,7 +7,7 @@ cd path_to_your_python_virtual_env/lib/pythonyour_version/site_packages/prophet/
   ```
 For example, if you have created a python virtual environment in a `/venvs` directory in your home directory and you use Python 3.9, you would use the following command.
 ```shell
-cd ~/venvs/soda-core-prophet11/lib/python3.9/site-packages/prophet/stan_model/
+cd ~/venvs/soda-library-prophet11/lib/python3.9/site-packages/prophet/stan_model/
   ```
 3. Use the `ls` command to determine the version number of `cmndstan` that `prophet` installed. The `cmndstan` directory name includes the version number.
 ```shell

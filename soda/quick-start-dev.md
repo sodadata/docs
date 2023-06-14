@@ -79,51 +79,51 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 <tbody>
 <tr>
 <td>Amazon Athena</td>
-<td><code>soda-core-athena</code></td>
+<td><code>soda-athena</code></td>
 </tr>
 <tr>
 <td>Amazon Redshift</td>
-<td><code>soda-core-redshift</code></td>
+<td><code>soda-redshift</code></td>
 </tr>
 <tr>
 <td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-library/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
-<td><code>soda-core-spark-df</code></td>
+<td><code>soda-spark-df</code></td>
 </tr>
 <tr>
 <td>Azure Synapse (Experimental)</td>
-<td><code>soda-core-sqlserver</code></td>
+<td><code>soda-sqlserver</code></td>
 </tr>
 <tr>
 <td>ClickHouse (Experimental)</td>
-<td><code>soda-core-mysql</code></td>
+<td><code>soda-mysql</code></td>
 </tr>
 <tr>
 <td>Dask and Pandas (Experimental)</td>
-<td><code>soda-core-pandas-dask</code></td>
+<td><code>soda-pandas-dask</code></td>
 </tr>
 <tr>
 <td>Databricks</td>
-<td><code>soda-core-spark[databricks]</code></td>
+<td><code>soda-spark[databricks]</code></td>
 </tr>
 <tr>
 <td>Denodo (Experimental)</td>
-<td><code>soda-core-denodo</code></td>
+<td><code>soda-denodo</code></td>
 </tr>
 <tr>
 <td>Dremio</td>
-<td><code>soda-core-dremio</code></td>
+<td><code>soda-dremio</code></td>
 </tr>
 <tr>
 <td>DuckDB (Experimental)</td>
-<td><code>soda-core-duckdb</code></td>
+<td><code>soda-duckdb</code></td>
 </tr>
 <tr>
 <td>GCP Big Query</td>
-<td><code>soda-core-bigquery</code></td>
+<td><code>soda-bigquery</code></td>
 </tr>
 <tr>
 <td>IBM DB2</td>
-<td><code>soda-core-db2</code></td>
+<td><code>soda-db2</code></td>
 </tr>
 <tr>
 <td>Local file</td>
@@ -131,31 +131,31 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 </tr>
 <tr>
 <td>MS SQL Server</td>
-<td><code>soda-core-sqlserver</code></td>
+<td><code>soda-sqlserver</code></td>
 </tr>
 <tr>
 <td>MySQL</td>
-<td><code>soda-core-mysql</code></td>
+<td><code>soda-mysql</code></td>
 </tr>
 <tr>
 <td>OracleDB</td>
-<td><code>soda-core-oracle</code></td>
+<td><code>soda-oracle</code></td>
 </tr>
 <tr>
 <td>PostgreSQL</td>
-<td><code>soda-core-postgres</code></td>
+<td><code>soda-postgres</code></td>
 </tr>
 <tr>
 <td>Snowflake</td>
-<td><code>soda-core-snowflake</code></td>
+<td><code>soda-snowflake</code></td>
 </tr>
 <tr>
 <td>Trino</td>
-<td><code>soda-core-trino</code></td>
+<td><code>soda-trino</code></td>
 </tr>
 <tr>
 <td>Vertica (Experimental)</td>
-<td><code>soda-core-vertica</code></td>
+<td><code>soda-vertica</code></td>
 </tr>
 </tbody>
 </table>
@@ -178,7 +178,7 @@ deactivate
 python -m venv .venv
 .venv\Scripts\activate
 ```
-3. Execute the following command, replacing `soda-core-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
+3. Execute the following command, replacing `soda-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
 ```shell
 pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
@@ -194,51 +194,51 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 <tbody>
 <tr>
 <td>Amazon Athena</td>
-<td><code>soda-core-athena</code></td>
+<td><code>soda-athena</code></td>
 </tr>
 <tr>
 <td>Amazon Redshift</td>
-<td><code>soda-core-redshift</code></td>
+<td><code>soda-redshift</code></td>
 </tr>
 <tr>
 <td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-library/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
-<td><code>soda-core-spark-df</code></td>
+<td><code>soda-spark-df</code></td>
 </tr>
 <tr>
 <td>Azure Synapse (Experimental)</td>
-<td><code>soda-core-sqlserver</code></td>
+<td><code>soda-sqlserver</code></td>
 </tr>
 <tr>
 <td>ClickHouse (Experimental)</td>
-<td><code>soda-core-mysql</code></td>
+<td><code>soda-mysql</code></td>
 </tr>
 <tr>
 <td>Dask and Pandas (Experimental)</td>
-<td><code>soda-core-pandas-dask</code></td>
+<td><code>soda-pandas-dask</code></td>
 </tr>
 <tr>
 <td>Databricks</td>
-<td><code>soda-core-spark[databricks]</code></td>
+<td><code>soda-spark[databricks]</code></td>
 </tr>
 <tr>
 <td>Denodo (Experimental)</td>
-<td><code>soda-core-denodo</code></td>
+<td><code>soda-denodo</code></td>
 </tr>
 <tr>
 <td>Dremio</td>
-<td><code>soda-core-dremio</code></td>
+<td><code>soda-dremio</code></td>
 </tr>
 <tr>
 <td>DuckDB (Experimental)</td>
-<td><code>soda-core-duckdb</code></td>
+<td><code>soda-duckdb</code></td>
 </tr>
 <tr>
 <td>GCP Big Query</td>
-<td><code>soda-core-bigquery</code></td>
+<td><code>soda-bigquery</code></td>
 </tr>
 <tr>
 <td>IBM DB2</td>
-<td><code>soda-core-db2</code></td>
+<td><code>soda-db2</code></td>
 </tr>
 <tr>
 <td>Local file</td>
@@ -246,31 +246,31 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 </tr>
 <tr>
 <td>MS SQL Server</td>
-<td><code>soda-core-sqlserver</code></td>
+<td><code>soda-sqlserver</code></td>
 </tr>
 <tr>
 <td>MySQL</td>
-<td><code>soda-core-mysql</code></td>
+<td><code>soda-mysql</code></td>
 </tr>
 <tr>
 <td>OracleDB</td>
-<td><code>soda-core-oracle</code></td>
+<td><code>soda-oracle</code></td>
 </tr>
 <tr>
 <td>PostgreSQL</td>
-<td><code>soda-core-postgres</code></td>
+<td><code>soda-postgres</code></td>
 </tr>
 <tr>
 <td>Snowflake</td>
-<td><code>soda-core-snowflake</code></td>
+<td><code>soda-snowflake</code></td>
 </tr>
 <tr>
 <td>Trino</td>
-<td><code>soda-core-trino</code></td>
+<td><code>soda-trino</code></td>
 </tr>
 <tr>
 <td>Vertica (Experimental)</td>
-<td><code>soda-core-vertica</code></td>
+<td><code>soda-vertica</code></td>
 </tr>
 </tbody>
 </table>

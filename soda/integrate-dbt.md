@@ -31,7 +31,7 @@ Use Soda Library to ingest the results of your dbt tests and push them to Soda C
 * You have created a Soda Cloud account with [Admin, Manager, or Editor permissions]({% link soda-cloud/roles-and-rights.md %}).
 * You have installed a [Soda Library package]({% link soda-library/install.md %}) in your environment and [configured it]]({% link soda-library/configure.md %}) to connect to a data source and your Soda Cloud account using a `configuration.yml` file. 
 * You use the open-source <a href="https://github.com/dbt-labs/dbt-core" target="_blank">dbt-core</a> version 1.0.0 or later or dbt Cloud.
-* You have installed the optional `soda-core-dbt` sub-package in the Python environment that also runs `soda-core` by running `pip install soda-core-dbt`.
+* You have installed the optional `soda-dbt` sub-package in the Python environment that also runs your Soda Library package by running `pip install -i https://pypi.cloud.soda.io soda-dbt`.
 
 ## Videos
 
@@ -49,7 +49,7 @@ Integrate dbt Cloud with Soda.
 
 Every time you execute tests in dbt, dbt captures information about the test results. Soda Library can access this information and translate it into test results that Soda Cloud can display. You must first run your tests in dbt before Soda Library can find and translate test results, then push them to Soda Cloud. <br />
 
-1. If you have not already done so, install the `soda-core-dbt` sub-package in the Python environment that also runs `soda-core` by running `pip install soda-core-dbt`.
+1. If you have not already done so, install the `soda-dbt` sub-package in the Python environment that also runs your Soda Library package by running `pip install -i https://pypi.cloud.soda.io soda-dbt`.
 2. Run your dbt pipeline using one of the following commands:
 * <a href="https://docs.getdbt.com/reference/commands/build" target="_blank">`dbt build`</a>  
 * <a href="https://docs.getdbt.com/reference/commands/test" target="_blank">`dbt test`</a>
@@ -72,7 +72,7 @@ Run `soda ingest --help` to review a list of all command options.
 
 Every run that is part of a [Job on dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud/cloud-quickstart#create-a-new-job) generates metadata about your dbt project as well as the results from the run. Use Soda Library to get this data directly from the dbt Cloud API. 
 
-1. If you have not already done so, install the `soda-dbt` sub-package in the Python environment that also runs `soda-core` by running the following command. 
+1. If you have not already done so, install the `soda-dbt` sub-package in the Python environment that also runs you Soda Library package by running the following command. 
 ```
 pip install -i https://cloud.soda.io soda-dbt
 ```

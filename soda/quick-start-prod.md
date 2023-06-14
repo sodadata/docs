@@ -476,7 +476,7 @@ Learn more about [running Soda scans]({% link soda-library/run-a-scan.md %}).
                 <div>
                     <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
                     <h2>Choose your adventure</h2>
-                    <a href="/soda-core/configuration.html">Connect your own data source</a>
+                    <a href="/soda-library/configure.html">Connect your own data source</a>
                     <a href="/soda/quick-start-sip.html">Install and scan locally</a>
                     <a href="/soda/quick-start-dev.html">Test data during development</a>
                     <a href="/soda/integrate-alation.html">Integrate with Alation</a>

@@ -297,7 +297,7 @@ parent: Reference
 
 #### September 29, 2022
 
-* Added a [link]({% link soda-library/orchestrate-scans.md %}#soda-core-and-prefect) to a community contribution for Prefect 2.0 collection for Soda Core.
+* Added a link to a community contribution for Prefect 2.0 collection for Soda Core.
 * Updated Reference checks documentation for [displaying failed]({% link soda-cl/reference.md %}#failed-row-samples) rows in Soda Cloud.
 
 #### September 28, 2022
