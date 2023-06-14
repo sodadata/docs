@@ -13,9 +13,9 @@ redirect_from:
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-**Soda Core** is a free, open-source Python library and CLI tool that enables data engineers to test data quality. Accessible on <a href="https://github.com/sodadata/soda-core" target="_blank">GitHub</a> along with its documentation, you can download the CLI tool or import the Python library to prepare checks for data quality. 
+**Soda Core** is a free, open-source Python library and CLI tool that enables data engineers to test data quality. Accessible on along with its documentation, you can download the CLI tool or import the Python library to prepare checks for data quality. 
 
-<a href="https://github.com/sodadata/soda-core" target="_blank" class="signup-button">Soda Core on GitHub</a>
+<a href="https://github.com/sodadata/soda-core" target="_blank" class="signup-button">Soda Core on GitHub</a> &nbsp;&nbsp;&nbsp; <a href="https://github.com/sodadata/soda-core/tree/main/docs/overview.md" target="_blank" class="signup-button">Soda Core Docs</a>
 
 <br />
 

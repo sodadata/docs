@@ -16,8 +16,6 @@ redirect_from:
 
 Soda Library is a Python library and command-line interface (CLI) tool that enables Data Engineers to test the data in a data source to surface invalid, missing, or unexpected data. 
 
-<br />
-
 [Compatibility](#compatibility)<br />
 [Requirements](#requirements)<br />
 [Install](#install)<br />

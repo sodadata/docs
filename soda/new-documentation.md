@@ -15,7 +15,7 @@ parent: Reference
 * New documentation for [Check suggestions]({% link soda-cl/check-suggestions.md %}) using the Soda Library CLI.
 * New documentation for [Check template configuration]({% link soda-cl/check-template.md %}) supported by Soda Library.
 * Revised syntax guidance regarding multiple thresholds for an alert. See [Optional check configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations).
-* All documentation for Soda Core, the open-source Python library and CLI tool, has moved to the Soda Core repository on GitHub.
+* All <a href="https://github.com/sodadata/soda-core/tree/main/docs" target="_blank">documentation for Soda Core</a>, the open-source Python library and CLI tool, has moved to the <a href="https://github.com/sodadata/soda-core" target="_blank">Soda Core repository</a> on GitHub.
 
 #### June 12, 2023
 * Remove "Preview" tag from the [Reporting API v1]({% link api-docs/reporting-api-v1.md %}) documentation.
