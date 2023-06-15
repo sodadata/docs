@@ -10,7 +10,7 @@ parent: Soda Cloud
 
 *Last modified on {% last_modified_at %}*
 
-**Check suggestions** assists Soda users in auto-generating basic data quality checks using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.<br /> *Requires Soda Library*
+**Check suggestions** assists Soda users in auto-generating basic data quality checks using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.<br /> *Requires Soda Library*<br /> *Requires Soda Scientific*
 
 A Soda check is a test that Soda executes when it scans a dataset in your data source. SodaCL includes over 25 built-in metrics and checks that you can use to write Soda Checks for data quality, including metrics for missing values, duplicates, schema changes, and freshness. You use a `checks.yml` file to store the checks you write using SodaCL.
 
