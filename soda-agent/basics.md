@@ -18,13 +18,13 @@ What follows is an extremely abridged introduction to a few basic elements invol
 
 ![agent-diagram](/assets/images/agent-diagram.png){:height="700px" width="700px"}
 
-**Soda Core** is an open-source, command-line tool that serves as the backbone of Soda technology. It is the software that performs the work of converting user-defined input into SQL queries that execute when you run scans for data quality in a data source. You can connect Soda Core to a **Soda Cloud** account where you and your team can use the web application to collaborate on data quality monitoring. 
+**Soda Library** is a Python library and command-line tool that serves as the backbone of Soda technology. It is the software that performs the work of converting user-defined input into SQL queries that execute when you run scans for data quality in a data source. Connect Soda Library to a **Soda Cloud** account where you and your team can use the web application to collaborate on data quality monitoring. 
 
-Both Soda Core and Soda Cloud make use of **Soda Checks Language (SodaCL)** to write checks for data quality. The checks are tests that Soda Core executes when it runs a scan of your data. Read [more]({% link soda/product-overview.md %}). 
+Both Soda Library and Soda Cloud make use of **Soda Checks Language (SodaCL)** to write checks for data quality. The checks are tests that Soda Library executes when it runs a scan of your data. Read [more]({% link soda/product-overview.md %}). 
 
-**Soda Agent** is essentially Soda Core functionality that you deploy in a Kubernetes cluster in your own cloud services provider environment. When you deploy an agent, you also deploy two types of workloads in your Kubernetes cluster from a Docker image:
+**Soda Agent** is essentially Soda Library functionality that you deploy in a Kubernetes cluster in your own cloud services provider environment. When you deploy an agent, you also deploy two types of workloads in your Kubernetes cluster from a Docker image:
 * a **Soda Agent Orchestrator** which creates Kubernetes Jobs and CronJobs to trigger scheduled scans of data
-* a **Soda Agent Scan Launcher** which wraps around Soda Core, the tool which performs the scan itself 
+* a **Soda Agent Scan Launcher** which wraps around Soda Library, the tool which performs the scan itself 
 
 **Kubernetes** is a system for orchestrating containerized applications; a **Kubernetes cluster** is a set of resources that supports an application deployment. 
 

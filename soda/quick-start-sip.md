@@ -20,7 +20,7 @@ Use the example data in this tutorial to set up and run a simple Soda scan for d
 **[01](#soda-basics)** Learn the basics of Soda | 2 minutes<br />
 **[02](#install-soda-from-the-command-line)** Install Soda | 10 minutes<br />
 **[03](#build-an-example-data-source)** Set up example data source | 5 minutes<br />
-**[04](#connect-soda-to-the-data-source-and-a-platform-account)** Connect Soda to the data source | 5 minutes<br />
+**[04](#connect-soda-to-the-data-source-and-a-soda-cloud-account)** Connect Soda to the data source | 5 minutes<br />
 **[05](#write-some-checks-and-run-a-scan)** Write checks and run a scan | 5 minutes<br />
 <br />
 
@@ -52,7 +52,7 @@ source .venv/bin/activate
 ```
 5. Execute the following command to install the Soda package for PostgreSQL in your virtual environment. The example data is in a PostgreSQL data source, but there are 15+ data sources with which you can connect your own data beyond this tutorial.
 ```shell
-pip install soda-core-postgres
+pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
 6. Validate the installation.
     ```shell
@@ -97,15 +97,15 @@ When the output reads `data system is ready to accept connections`, your data so
 </details>
 
 
-## Connect Soda to the data source and a platform account
+## Connect Soda to the data source and a cloud account
 <!--Linked to UI, access Shlink-->
 
 To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. 
 
-This tutorial also instructs you to connect to a Soda platform account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda platform account gives you access to visualized scan results, tracks trends in data quality over time, lets you set alert notifications, and much more.
+This tutorial also instructs you to connect to a Soda Cloud account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda Cloud account gives you access to visualized scan results, tracks trends in data quality over time, lets you set alert notifications, and much more.
 
 1. In a code editor such as Sublime or Visual Studio Code, create a new file called `configuration.yml` and save it in your `soda_sip` directory. 
-2. Copy and paste the following connection details into the file. The `data_source` configuration details connect Soda to the example AdventureWorks data source you set up using Docker. The `soda_cloud` configuration connects Soda to your platform account; leave it blank for a moment.
+2. Copy and paste the following connection details into the file. The `data_source` configuration details connect Soda to the example AdventureWorks data source you set up using Docker. 
     ```yaml
     data_source adventureworks:
       type: postgres
@@ -115,17 +115,21 @@ This tutorial also instructs you to connect to a Soda platform account using API
         password: secret
       database: postgres
       schema: public
-
-    soda_cloud:
-      host: 
-      api_key_id:
-      api_key_secret:
     ```
 3. In a browser, navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a new Soda account. If you already have a Soda account, log in. 
-4. Navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
-  * Copy the syntax for the `soda_cloud` configuration, including the values **API Key ID** and **API Key Secret**, and paste it into the `configuration.yml`.
-  * Do not nest the `soda_cloud` configuration in the `data_source` configuration.
-  * Optionally, add a `scheme` property to the `soda_cloud` configuration to indicate which scheme to use to initialize the URI instance. If you do not explicitly include a `scheme` property, Soda uses `https` by default.
+4. Navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys. Copy+paste the `soda_cloud` configuration syntax, including the API keys, into the `configuration.yml` file, as in the example below.
+    ```yaml
+    data_source adventureworks:
+      type: postgres
+      connection:
+        host: localhost
+        ...
+    
+    soda_cloud:
+      host: cloud.soda.io
+      api_key_id: 2e0ba0cb-**7b
+      api_key_secret: 5wdx**aGuRg
+    ```
 5. Save the `configuration.yml` file and close the API modal in your Soda account.
 6. In Terminal, return to the tab in which the virtual environment is active in the `soda_sip` directory. Run the following command to test Soda's connection to the data source.<br />
 Command:
@@ -134,7 +138,8 @@ soda test-connection -d adventureworks -c configuration.yml
 ```
 Output:
 ```shell
-Soda Core 3.0.xx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Successfully connected to 'adventureworks'.
 Connection 'adventureworks' is valid.
 ```
@@ -155,7 +160,6 @@ checks for dim_customer:
           name: No duplicate phone numbers
   - freshness(date_first_purchase) < 7d:
           name: Data in this dataset is less than 7 days old
-  # Requires a Soda platform account
   - schema:
           warn:
             when schema changes: any
@@ -181,7 +185,8 @@ soda scan -d adventureworks -c configuration.yml checks.yml
 ```
 Output:
 ```shell
-Soda Core 3.0.xx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Sending failed row samples to Soda Cloud
 Scan summary:
 3/5 checks PASSED: 
@@ -204,7 +209,7 @@ Oops! 2 failures. 0 warnings. 0 errors. 3 pass.
 Sending results to Soda Cloud
 Soda Cloud Trace: 4417******32502
 ```
-4. As you can see from the output, some checks failed and Soda sent the results to your platform account. To access visualized check results and further examine the failed checks, return to your Soda account in your browser and click **Checks**. <br /> <br />
+4. As you can see from the output, some checks failed and Soda sent the results to your Cloud account. To access visualized check results and further examine the failed checks, return to your Soda account in your browser and click **Checks**. <br /> <br />
 ![quick-sip-results](/assets/images/quick-sip-results.png)<br /> <br />
 5. In the table of check results Soda displays, you can click the line item for one of the checks that failed to examine the visualized results in a line graph, and to access the failed row samples that Soda automatically collected when it ran the scan and executed the checks.<br /><br />
 Use the failed row samples, as in the example below, to determine what caused a data quality check to fail.
@@ -248,7 +253,7 @@ If you are done with the example data, you can delete it from your account to st
 1. Navigate to **your avatar** > **Scans & Data**.
 2. In the **Data Sources** tab, click the stacked dots to the right of the `adventureworks` data source, then select **Delete Data Source**.
 3. Follow the steps to confirm deletion. 
-4. Connect to your own data by [configuring your data source connections]({% link soda-core/configuration.md %}) in your existing `configuration.yml` file.
+4. Connect to your own data by [configuring your data source connections]({% link soda-library/configure.md %}) in your existing `configuration.yml` file.
 5. Adjust your `checks.yml` to point to your own dataset in your data source, then adjust the checks to apply to your own data. Go ahead and run a scan!
 
 ## Need help?

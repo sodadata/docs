@@ -879,14 +879,14 @@ body {
   
 /* The alert message box */
 .alert {
-    padding: 20px 20px 20px 75px;
-    background-color: #F5F5F5;
-    color: black;
+    padding: 20px 20px 20px 20px;
+    background-color: #f2f2f2;
+    color: #333;
     margin-bottom: 15px;
     position: relative;
 
     &::before {
-        content: '⚠';
+        /*content: '⚠';*/
         position: absolute;
         left: 20px;
         top: 33px;

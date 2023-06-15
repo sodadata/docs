@@ -1,20 +1,22 @@
 ---
 layout: default
-title: Soda Core usage statistics
-description: To understand how users are using Soda Core, the Soda dev team added telemetry event tracking to Soda Core. See instructions to opt-out.
+title: Soda Library usage statistics
+description: To understand how users are using Soda Library, the Soda dev team added telemetry event tracking to Soda Library. See instructions to opt-out.
 parent: Reference
+redirect_from: /soda-core/usage-stats.html
 ---
 
-# Soda Core usage statistics
+# Soda Library usage statistics
 *Last modified on {% last_modified_at %}*
+{% include banner-core.md %}
 
-To understand how users are using Soda Core, and to proactively capture bugs and performance issues, the Soda development team has added telemetry event tracking to Soda Core. 
+To understand how users are using Soda Library, and to proactively capture bugs and performance issues, the Soda development team has added telemetry event tracking to Soda Library. 
 
 Soda tracks usage statistics using the Open Telemetry Framework. The data Soda tracks is completely anonymous, does not contain any personally identifiying information (PII) in any form, and is purely for internal use.
 
 ## Opt out of usage statistics
 
-Soda Core collects usage statistics by default. You can opt-out from sending Soda Core usage statistics at any time by adding the following to your `~/.soda/config.yml` or `.soda/config.yml` file:
+Soda Library collects usage statistics by default. You can opt-out from sending Soda Library usage statistics at any time by adding the following to your `~/.soda/config.yml` or `.soda/config.yml` file:
 {% include code-header.html %}
 ```yaml
 send_anonymous_usage_stats: false
@@ -22,7 +24,7 @@ send_anonymous_usage_stats: false
 
 ## Go further
 
-* Learn [How Soda Core works]({% link soda-core/how-core-works.md %}).
+* Learn [How Soda Library works]({% link soda-library/how-library-works.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

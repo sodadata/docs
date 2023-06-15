@@ -39,7 +39,6 @@ checks for dim_product:
       fail:
         when wrong column index:
           model_name: 22
-# Requires a Soda Cloud account
   - schema:
       name: Any schema changes
       warn: 
@@ -56,7 +55,7 @@ checks for dim_product:
 
 ## Define schema checks
 
-In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), schema checks are unique. Schema checks always employ alert configurations -- specifying warn and/or fail alert conditions -- with **validation keys** that are unique to this type of check. Refer to [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) for exhaustive alert configuration details.
+In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), schema checks are unique. Schema checks always employ alert configurations -- specifying warn and/or fail alert conditions -- with **validation keys**. Refer to [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) for exhaustive alert configuration details.
 
 The validation key:value pairs in schema checks set the conditions for a warn or a fail check result. See a [List of validation keys](#list-of-validation-keys) below. 
 
@@ -106,7 +105,7 @@ checks for dim_product:
 
 Rather than specifying exact parameters for column changes, you can use the `when schema changes` validation key to warn or fail when indistinct changes occur in a dataset.
 
-This type of validation key requires a **Soda Cloud** account. If you have connected Soda Core to a Soda Cloud account, Soda Core pushes check results to your cloud account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future schema checks. Therefore, you must have a created and [connected a Soda Cloud account]({% link soda-core/connect-core-to-cloud.md %}) to use schema evolution checks.
+This type of validation key requires a **Soda Cloud** account. Soda Library pushes check results to your account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future schema checks. 
 
 Soda Cloud must have at least two measurements to yield a check result. In other words, the first time you run a scan to execute a schema evolution check, Soda returns no results because it has nothing against which to compare; the second scan that executes the check yields a check result.
 {% include code-header.html %}
@@ -189,9 +188,9 @@ for each dataset T:
   datasets:
     - dim_product_%
   checks:
-    schema:
-      warn:
-        when schema changes: any
+    - schema:
+       warn:
+         when schema changes: any
 ```
 
 #### Example with dataset filter
@@ -212,13 +211,13 @@ checks for CUSTOMERS [daily]:
 
 ## List of validation keys
 
-| Validation key | Values | Requires a Soda<br />Cloud account | 
-| -------------- | ------ | :-------------------------: |
-| `when required column missing` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  |
-| `when forbidden column present` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  |
-| `when wrong column type` | nested key:value pair to identify column:expected_data_type |  |
-| `when wrong column index` | nested key:value pair to identify <br />column:expected_position_in_dataset_index |  |
-| `when schema changes` | `any` as an inline value<br /> `column add` as a nested list item<br /> `column delete` as a nested list item<br /> `column index change` as a nested list item <br /> `column type change` as a nested list item | ✓ |
+| Validation key | Values | 
+| -------------- | ------ | 
+| `when required column missing` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  
+| `when forbidden column present` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  
+| `when wrong column type` | nested key:value pair to identify column:expected_data_type |  
+| `when wrong column index` | nested key:value pair to identify <br />column:expected_position_in_dataset_index |  
+| `when schema changes` | `any` as an inline value<br /> `column add` as a nested list item<br /> `column delete` as a nested list item<br /> `column index change` as a nested list item <br /> `column type change` as a nested list item | 
 
 
 
@@ -226,7 +225,7 @@ checks for CUSTOMERS [daily]:
 
 Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more severe, failed check result.
 
-Using the following example, Soda Core, during a scan, discovers that the data in the dataset triggers both alerts, but the check result at the bottom is `Oops! 1 failures`. Nonetheless, the results in the `Scan summary` section of the CLI output still display both the warn and fail alerts as having been triggered.
+Using the following example, Soda Library, during a scan, discovers that the data in the dataset triggers both alerts, but the check result at the bottom is `Oops! 1 failures`. Nonetheless, the results in the `Scan summary` section of the CLI output still display both the warn and fail alerts as having been triggered.
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
@@ -238,7 +237,8 @@ checks for dim_product:
         when required column missing: [pretend_column]
 ```
 ```shell
-Soda Core 3.0.xx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Scan summary:
 1/1 check FAILED: 
     dim_product in adventureworks

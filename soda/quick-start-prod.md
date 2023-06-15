@@ -17,7 +17,7 @@ Use this guide as an example for how to set up and use Soda to test the quality 
 **[01](#soda-basics)** Learn the basics of Soda<br />
 **[02](#about-this-guide)** Get context for this guide<br />
 **[03](#install-soda-from-the-command-line)** Install Soda from the command-line<br />
-**[04](#connect-soda-to-a-data-source-and-platform-account)** Connect Soda to a data source and platform account<br />
+**[04](#connect-soda-to-a-data-source-and-soda-cloud-account)** Connect Soda to a data source and Soda Cloud account<br />
 **[05](#write-checks-for-data-quality)** Write checks for data quality<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[a](#transform-checks)** Transform checks<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[b](#ingest-checks)** Ingest checks<br />
@@ -51,16 +51,16 @@ With Python 3.8 installed, the Engineer creates a virtual environment in Termina
 
 {% include code-header.html %}
 ```shell
-pip install soda-core-postgres
+pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
 
-Refer to [complete install instructions]({% link soda-core/installation.md %}) for all supported data sources, if you wish.
+Refer to [complete install instructions]({% link soda-library/install.md %}) for all supported data sources, if you wish.
 
-## Connect Soda to a data source and platform account
+## Connect Soda to a data source and Soda Cloud account
 
 To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or Big Query, you use a `configuration.yml` file which stores access details for your data source. 
 
-This guide also includes instructions for how to connect to a Soda platform account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, a Soda platform account gives you access to visualized scan results, tracks trends in data quality over time, enables you to set alert notifications, and much more.
+This guide also includes instructions for how to connect to a Soda Cloud account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, a Soda Cloud account gives you access to visualized scan results, tracks trends in data quality over time, enables you to set alert notifications, and much more.
 
 1. In the directory in which they work with their dbt models, the Data Engineer creates a `soda` directory to contain the Soda configuration and check YAML files.
 2. In the new directory, they create a new file called `configuration.yml`. 
@@ -78,7 +78,7 @@ data_source soda-demo:
 4. In a browser, they navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a free, 45-day trial Soda account.  
 5. They navigate to **avatar** > **Profile**, then navigate to the **API Keys** tab and click the plus icon to generate new API keys.
   * They copy the syntax for the `soda_cloud` configuration, including the values **API Key ID** and **API Key Secret**, and paste it into the `configuration.yml`.
-  * They are careful not to nest the `soda_cloud` configuration in the `data_source` configuration.
+  * They are careful *not* to nest the `soda_cloud` configuration in the `data_source` configuration.
 6. They save the `configuration.yml` file and close the API modal in the Soda account.
 7. In Terminal, they run the following command to test Soda's connection to the data source.<br />
 ```shell
@@ -151,7 +151,6 @@ checks for dim_product:
       warn: when > 0     
   # Check fails when the number of products, relative to the
   # previous scan, changes by 10 or more
-  # Requires a Soda platform account
   - change for row_count < 10:
       name: Products are stable
 ```
@@ -178,7 +177,6 @@ checks for dim_product_category:
       name: All categories have a name
   # Check fails when the number of categories, relative to the
   # previous scan, changes by 5 or more
-  # Requires a Soda platform account
   - change for row_count < 5:
       name: Categories are stable
 ```
@@ -205,7 +203,6 @@ checks for dim_product_subcategory:
       name: All subcategories have a name
   # Check fails when the number of categories, relative to the
   # previous scan, changes by 5 or more
-  # Requires Soda platform account
   - change for row_count < 5:
       name: Subcategories are stable
 ```
@@ -242,14 +239,12 @@ checks for fact_internet_sales:
   # relative to the previous scan resuls
   # Check fails when there are more than 500 new internet sales
   # relative to the previous scan resuls
-  # Requires Soda platform account
   - change for row_count:
       warn: when < 5 
       fail: when > 500 
       name: Sales are within expected range
   # Check fails when the average of the column is abnormal
   # relative to previous measurements for average sales amount
-  # Requires Soda platform account
   # sales_amount is cast from data type MONEY to enable calculation
   - anomaly score for avg(sales_amount::NUMERIC) < default
 ```
@@ -357,7 +352,7 @@ def run_soda_scan(project_root, scan_name, checks_subpath = None):
 with DAG(
     "model_adventureworks_sales_category",
     default_args=default_args,
-    description="A simple Soda Core scan DAG",
+    description="A simple Soda Library scan DAG",
     schedule_interval=timedelta(days=1),
     start_date=days_ago(1),
 ):
@@ -366,7 +361,7 @@ with DAG(
     checks_ingest = PythonVirtualenvOperator(
         task_id="checks_ingest",
         python_callable=run_soda_scan,
-        requirements=["soda-core-postgres", "soda-core-scientific"],
+        requirements=[ "-i https://pypi.cloud.soda.io", "soda-postgres", "soda-scientific"],
         system_site_packages=False,
         op_kwargs={
             "project_root": PROJECT_ROOT,
@@ -383,7 +378,7 @@ with DAG(
     checks_transform = PythonVirtualenvOperator(
         task_id="checks_transform",
         python_callable=run_soda_scan,
-        requirements=["soda-core-postgres", "soda-core-scientific"],
+        requirements=["-i https://pypi.cloud.soda.io", "soda-postgres", "soda-scientific"],
         system_site_packages=False,
         op_kwargs={
             "project_root": PROJECT_ROOT,
@@ -400,7 +395,7 @@ with DAG(
     checks_report = PythonVirtualenvOperator(
         task_id="checks_report",
         python_callable=run_soda_scan,
-        requirements=["soda-core-postgres", "soda-core-scientific"],
+        requirements=["-i https://pypi.cloud.soda.io", "soda-postgres", "soda-scientific"],
         system_site_packages=False,
         op_kwargs={
             "project_root": PROJECT_ROOT,
@@ -441,14 +436,14 @@ soda scan -d soda_demo -c soda/configuration.yml soda/resports-checks/
 ```
 6. If the reports check results pass, the data is reliable enough to push to the reporting or visualization tool for consumers.
 
-Learn more about [running Soda scans]({% link soda-core/scan-core.md %}).
+Learn more about [running Soda scans]({% link soda-library/run-a-scan.md %}).
 
 ## View results and tag datasets
 
-1. In their Soda platform account, the Engineer clicks **Checks** to access the **Check Results** page. The results from the scan that Soda performed during the scan appear in the results table where they can click each line item to learn more about the results, as in the example below. <br />
+1. In their Soda Cloud account, the Engineer clicks **Checks** to access the **Check Results** page. The results from the scan that Soda performed during the scan appear in the results table where they can click each line item to learn more about the results, as in the example below. <br />
 ![gh-actions-check-results](/assets/images/gh-actions-check-results.png){:width="700px"}
 2. To more easily retrieve Soda scan results by dbt model, the Engineer navigates to **Datasets**, then clicks the stacked dots at the right of the `dim_product` dataset and selects **Edit Dataset**.
-3. In the **Tags** field, they add a value for `fact_product_category`, the dbt model that uses this dataset, and a tag to indicate the kind of data that Soda is scanning, `raw`, `transformed` or `reporting`, then saves. They repeat these steps to add tags to all the datasets in their Soda platform account.
+3. In the **Tags** field, they add a value for `fact_product_category`, the dbt model that uses this dataset, and a tag to indicate the kind of data that Soda is scanning, `raw`, `transformed` or `reporting`, then saves. They repeat these steps to add tags to all the datasets in their Soda Cloud account.
 4. Navigating again to the **Datasets** page, they use the filters to display datasets according to **Tags** and **Arrival Time** to narrow the search for the most recent quality checks associated with their models which have failed or warned.
 ![datasets-tags](/assets/images/datasets-tags.png){:width="700px"}
 5. After filtering the datasets according to the tags, the Engineer also adds a bookmark in their browser to create an improvised dashboard to revisit daily.
@@ -481,7 +476,7 @@ Learn more about [running Soda scans]({% link soda-core/scan-core.md %}).
                 <div>
                     <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
                     <h2>Choose your adventure</h2>
-                    <a href="/soda-core/configuration.html">Connect your own data source</a>
+                    <a href="/soda-library/configure.html">Connect your own data source</a>
                     <a href="/soda/quick-start-sip.html">Install and scan locally</a>
                     <a href="/soda/quick-start-dev.html">Test data during development</a>
                     <a href="/soda/integrate-alation.html">Integrate with Alation</a>

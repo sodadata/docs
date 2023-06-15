@@ -4,4 +4,4 @@
     <td>GCP Big Query<br /> IBM DB2<br /> Local file using Dask<sup>1</sup><br />MS SQL Server<br /> MySQL<br > OracleDB<br /> PostgreSQL<br /> Snowflake<br /> Trino<br /> Vertica (Experimental)</td>
   </tr>
 </table>
-<sup>1</sup> For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
+<sup>1</sup> For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.

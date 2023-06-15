@@ -8,11 +8,11 @@ parent: Connect a data source
 # Connect Soda to Dask and Pandas (Experimental)
 *Last modified on {% last_modified_at %}*
 
-For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
+For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.
 
-[Define a programmatic scan]({% link soda-core/programmatic.md %}) for the data in the DataFrames. Refer to the following example.
+[Define a programmatic scan]({% link soda-library/programmatic.md %}) for the data in the DataFrames. Refer to the following example.
 
-Install package: `soda-core-pandas-dask`
+Install package: `soda-pandas-dask`
 
 {% include code-header.html %}
 ```python

@@ -18,7 +18,7 @@ Use this guide to install and set up Soda to test the quality of your data durin
 **[01](#soda-basics)** Learn the basics of Soda<br />
 **[02](#about-this-guide)** Get context for this guide<br />
 **[03](#install-soda-from-the-command-line)** Install Soda from the command-line<br />
-**[04](#connect-soda-to-your-data-source-and-platform-account)** Connect Soda to your data source and platform account<br />
+**[04](#connect-soda-to-your-data-source-and-soda-cloud-account)** Connect Soda to your data source and Soda Cloud account<br />
 **[05](#write-checks-for-data-quality)** Write checks for data quality<br />
 **[06](#create-a-github-action-job)** Create a GitHub Action job<br />
 **[07](#set-up-slack-integration-and-notification-rules)** Set up Slack integration and notification rules<br />
@@ -36,7 +36,7 @@ The instructions below offer Data Engineers an example of how to use <a href="ht
 
 (Not a GitHub Actions user? Stay tuned for more guides coming soon.)
 
-For context, the example assumes that a team of people use GitHub to collaborate on managing data ingestion and transformation with dbt. In the same repo, team members can collaborate to write tests for data quality in SodaCL checks YAML files. With each new PR, or commit to an existing PR, in the repo that adds a transformation or makes changes to a dbt model, a GitHub Action executes a Soda scan for data quality and presents the results of the scan in a comment in the pull request, and in the Soda platform. 
+For context, the example assumes that a team of people use GitHub to collaborate on managing data ingestion and transformation with dbt. In the same repo, team members can collaborate to write tests for data quality in SodaCL checks YAML files. With each new PR, or commit to an existing PR, in the repo that adds a transformation or makes changes to a dbt model, a GitHub Action executes a Soda scan for data quality and presents the results of the scan in a comment in the pull request, and in Soda Cloud. 
 
 Where the scan results indicate an issue with data quality, Soda notifies the team via a notification in Slack so that they can investigate and address any issues before merging the PR into production.
 
@@ -63,9 +63,9 @@ Borrow from this guide to connect to your own data source, set up a GitHub Actio
 python -m venv .venv
 source .venv/bin/activate
 ```
-3. Execute the following command, replacing `soda-core-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
+3. Execute the following command, replacing `soda-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
 ```shell
-pip install soda-core-postgres
+pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
 <details>
     <summary style="color:#00BC7E">Soda packages</summary>
@@ -79,51 +79,51 @@ pip install soda-core-postgres
 <tbody>
 <tr>
 <td>Amazon Athena</td>
-<td><code>soda-core-athena</code></td>
+<td><code>soda-athena</code></td>
 </tr>
 <tr>
 <td>Amazon Redshift</td>
-<td><code>soda-core-redshift</code></td>
+<td><code>soda-redshift</code></td>
 </tr>
 <tr>
-<td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-core/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
-<td><code>soda-core-spark-df</code></td>
+<td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-library/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
+<td><code>soda-spark-df</code></td>
 </tr>
 <tr>
 <td>Azure Synapse (Experimental)</td>
-<td><code>soda-core-sqlserver</code></td>
+<td><code>soda-sqlserver</code></td>
 </tr>
 <tr>
 <td>ClickHouse (Experimental)</td>
-<td><code>soda-core-mysql</code></td>
+<td><code>soda-mysql</code></td>
 </tr>
 <tr>
 <td>Dask and Pandas (Experimental)</td>
-<td><code>soda-core-pandas-dask</code></td>
+<td><code>soda-pandas-dask</code></td>
 </tr>
 <tr>
 <td>Databricks</td>
-<td><code>soda-core-spark[databricks]</code></td>
+<td><code>soda-spark[databricks]</code></td>
 </tr>
 <tr>
 <td>Denodo (Experimental)</td>
-<td><code>soda-core-denodo</code></td>
+<td><code>soda-denodo</code></td>
 </tr>
 <tr>
 <td>Dremio</td>
-<td><code>soda-core-dremio</code></td>
+<td><code>soda-dremio</code></td>
 </tr>
 <tr>
 <td>DuckDB (Experimental)</td>
-<td><code>soda-core-duckdb</code></td>
+<td><code>soda-duckdb</code></td>
 </tr>
 <tr>
 <td>GCP Big Query</td>
-<td><code>soda-core-bigquery</code></td>
+<td><code>soda-bigquery</code></td>
 </tr>
 <tr>
 <td>IBM DB2</td>
-<td><code>soda-core-db2</code></td>
+<td><code>soda-db2</code></td>
 </tr>
 <tr>
 <td>Local file</td>
@@ -131,31 +131,31 @@ pip install soda-core-postgres
 </tr>
 <tr>
 <td>MS SQL Server</td>
-<td><code>soda-core-sqlserver</code></td>
+<td><code>soda-sqlserver</code></td>
 </tr>
 <tr>
 <td>MySQL</td>
-<td><code>soda-core-mysql</code></td>
+<td><code>soda-mysql</code></td>
 </tr>
 <tr>
 <td>OracleDB</td>
-<td><code>soda-core-oracle</code></td>
+<td><code>soda-oracle</code></td>
 </tr>
 <tr>
 <td>PostgreSQL</td>
-<td><code>soda-core-postgres</code></td>
+<td><code>soda-postgres</code></td>
 </tr>
 <tr>
 <td>Snowflake</td>
-<td><code>soda-core-snowflake</code></td>
+<td><code>soda-snowflake</code></td>
 </tr>
 <tr>
 <td>Trino</td>
-<td><code>soda-core-trino</code></td>
+<td><code>soda-trino</code></td>
 </tr>
 <tr>
 <td>Vertica (Experimental)</td>
-<td><code>soda-core-vertica</code></td>
+<td><code>soda-vertica</code></td>
 </tr>
 </tbody>
 </table>
@@ -178,9 +178,9 @@ deactivate
 python -m venv .venv
 .venv\Scripts\activate
 ```
-3. Execute the following command, replacing `soda-core-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
+3. Execute the following command, replacing `soda-postgres` with the install package that matches the type of data source you use to store data; expand **Soda packages** link below for a complete list.
 ```shell
-pip install soda-core-postgres
+pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
 <details>
     <summary style="color:#00BC7E">Soda packages</summary>
@@ -194,51 +194,51 @@ pip install soda-core-postgres
 <tbody>
 <tr>
 <td>Amazon Athena</td>
-<td><code>soda-core-athena</code></td>
+<td><code>soda-athena</code></td>
 </tr>
 <tr>
 <td>Amazon Redshift</td>
-<td><code>soda-core-redshift</code></td>
+<td><code>soda-redshift</code></td>
 </tr>
 <tr>
-<td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-core/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
-<td><code>soda-core-spark-df</code></td>
+<td>Apache Spark DataFrames <br /> (For use with <a href="{% link soda-library/programmatic.md %}">programmatic Soda scans</a>, only.)</td>
+<td><code>soda-spark-df</code></td>
 </tr>
 <tr>
 <td>Azure Synapse (Experimental)</td>
-<td><code>soda-core-sqlserver</code></td>
+<td><code>soda-sqlserver</code></td>
 </tr>
 <tr>
 <td>ClickHouse (Experimental)</td>
-<td><code>soda-core-mysql</code></td>
+<td><code>soda-mysql</code></td>
 </tr>
 <tr>
 <td>Dask and Pandas (Experimental)</td>
-<td><code>soda-core-pandas-dask</code></td>
+<td><code>soda-pandas-dask</code></td>
 </tr>
 <tr>
 <td>Databricks</td>
-<td><code>soda-core-spark[databricks]</code></td>
+<td><code>soda-spark[databricks]</code></td>
 </tr>
 <tr>
 <td>Denodo (Experimental)</td>
-<td><code>soda-core-denodo</code></td>
+<td><code>soda-denodo</code></td>
 </tr>
 <tr>
 <td>Dremio</td>
-<td><code>soda-core-dremio</code></td>
+<td><code>soda-dremio</code></td>
 </tr>
 <tr>
 <td>DuckDB (Experimental)</td>
-<td><code>soda-core-duckdb</code></td>
+<td><code>soda-duckdb</code></td>
 </tr>
 <tr>
 <td>GCP Big Query</td>
-<td><code>soda-core-bigquery</code></td>
+<td><code>soda-bigquery</code></td>
 </tr>
 <tr>
 <td>IBM DB2</td>
-<td><code>soda-core-db2</code></td>
+<td><code>soda-db2</code></td>
 </tr>
 <tr>
 <td>Local file</td>
@@ -246,31 +246,31 @@ pip install soda-core-postgres
 </tr>
 <tr>
 <td>MS SQL Server</td>
-<td><code>soda-core-sqlserver</code></td>
+<td><code>soda-sqlserver</code></td>
 </tr>
 <tr>
 <td>MySQL</td>
-<td><code>soda-core-mysql</code></td>
+<td><code>soda-mysql</code></td>
 </tr>
 <tr>
 <td>OracleDB</td>
-<td><code>soda-core-oracle</code></td>
+<td><code>soda-oracle</code></td>
 </tr>
 <tr>
 <td>PostgreSQL</td>
-<td><code>soda-core-postgres</code></td>
+<td><code>soda-postgres</code></td>
 </tr>
 <tr>
 <td>Snowflake</td>
-<td><code>soda-core-snowflake</code></td>
+<td><code>soda-snowflake</code></td>
 </tr>
 <tr>
 <td>Trino</td>
-<td><code>soda-core-trino</code></td>
+<td><code>soda-trino</code></td>
 </tr>
 <tr>
 <td>Vertica (Experimental)</td>
-<td><code>soda-core-vertica</code></td>
+<td><code>soda-vertica</code></td>
 </tr>
 </tbody>
 </table>
@@ -290,11 +290,11 @@ Refer to the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activa
 <br />
 
 
-## Connect Soda to your data source and platform account
+## Connect Soda to your data source and Soda Cloud account
 
 To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. 
 
-This guide also instructs you to connect to a Soda platform account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda platform account gives you access to visualized scan results, tracks trends in data quality over time, enables you to set alert notifications, and much more.
+This guide also instructs you to connect to a Soda Cloud account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda Cloud account gives you access to visualized scan results, tracks trends in data quality over time, enables you to set alert notifications, and much more.
 
 1. In the GitHub repository in which you work with your dbt models, or ingest and transform data, create a directory to contain your Soda configuration and check YAML files.
 2. Use <a href="https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-encrypted-secrets-for-your-repository-and-organization-for-github-codespaces" target="_blank">GitHub Secrets</a> to securely store the values for your data source login credentials. Soda requires access to the credentials so it can access the data source to scan the data.
@@ -319,7 +319,6 @@ This guide also instructs you to connect to a Soda platform account using API ke
 6. Navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
   * Copy the syntax for the `soda_cloud` configuration, including the values **API Key ID** and **API Key Secret**, and paste it into the `configuration.yml`.
   * Do not nest the `soda_cloud` configuration in the `data_source` configuration.
-  * Optionally, add a `scheme` property to the `soda_cloud` configuration to indicate which scheme to use to initialize the URI instance. If you do not explicitly include a `scheme` property, Soda uses `https` by default.
 7. Save the `configuration.yml` file and close the API modal in your Soda account.
 8. In Terminal, run the following command to test Soda's connection to your data source, replacing the value of `my_datasource_name` with the name of your data source.<br />
 ```shell
@@ -351,12 +350,12 @@ A check is a test that Soda executes when it scans a dataset in your data source
 3. Save the `checks.yml` file.
 
 Learn more about [SodaCL]({% link soda/quick-start-sodacl.md %}). <br />
-Learn more about using [multiple checks YAML files]({% link soda-core/scan-core.md %}#anatomy-of-a-scan-command). <br />
+Learn more about using [multiple checks YAML files]({% link soda-library/run-a-scan.md %}#anatomy-of-a-scan-command). <br />
 
 
 ## Create a GitHub Action job
 
-Use <a href="https://docs.github.com/en/actions" target="_blank">GitHub Actions</a> to execute a [Soda scan]({% link soda-core/scan-core.md %}) for data quality each time you create a new pull request or commit to an existing one. The GitHub action posts the data quality scan results in a PR comment.
+Use <a href="https://docs.github.com/en/actions" target="_blank">GitHub Actions</a> to execute a [Soda scan]({% link soda-library/run-a-scan.md %}) for data quality each time you create a new pull request or commit to an existing one. The GitHub action posts the data quality scan results in a PR comment.
 
 * Be sure to trigger a Soda scan *after* you have completed a dbt run that executed your dbt tests. 
 * Note that GitHub PR comments have a 4-byte unicode character limit of 65,536. If the GitHub Action tries to post a comment that exceeds this limit, the job completion may be impacted. 
@@ -410,7 +409,7 @@ jobs:
       # Be sure to install the package that corresponds to your specific datasource
       # This example connects to Snowflake
       - name: Install Soda
-        run: pip install -U pip && pip install -q soda-core-snowflake
+        run: pip install -U pip && pip install -i https://pypi.cloud.soda.io -q soda-snowflake
       # Step 4: Perform a Soda scan on the dataset and save the result as ci_scan_results.json.
       # Store sensitive information such as credentials in the GitHub repository secrets.
       # The configuration.yaml file expects the username and password to come from the environment
@@ -496,7 +495,7 @@ To trigger the GitHub Action job and initiate a Soda scan for data quality, crea
 ![gh-action-fail](/assets/images/gh-action-fail.png){:width="500px"}
 5. Access your Slack workspace, then navigate to the channel to which you directed Soda to send fail notifications in the **Notification Rule** you created. Notice the alert notification of the check that purposely failed during the Soda scan. <br />
 ![slack-alert](/assets/images/slack-alert.png){:width="500px"}
-6. Navigate to your Soda platform account, then click **Checks** to access the **Check Results** page. The results from the scan that Soda performed during the GitHub Action job appear in the results table where you can click each line item to learn more about the results... <br />
+6. Navigate to your Soda Cloud account, then click **Checks** to access the **Check Results** page. The results from the scan that Soda performed during the GitHub Action job appear in the results table where you can click each line item to learn more about the results... <br />
 ![gh-actions-check-results](/assets/images/gh-actions-check-results.png){:width="700px"}
 ...including, for some types of checks, samples of failed rows to help in your investigation of a data quality issue, as in the example below.
 ![quick-sip-failed-rows](/assets/images/quick-sip-failed-rows.png){:width="700px"}

@@ -15,9 +15,9 @@ Soda works in several ways to ensure your data and systems remain private.
 
 ## Making secure connections
 
-Installed in your environment, you use the Soda Core command-line tools to securely connect to a data source using system variables to store login credentials.
+Installed in your environment, you use the Soda Library command-line tools to securely connect to a data source using system variables to store login credentials.
 
-You can connect Soda Core to your Soda Cloud account. To communicate with your data source, Soda Cloud uses a Network Address Translation (NAT) gateway with the IP address 54.78.91.111. You may wish to add this IP address to your data source's passlist.
+You can connect Soda Library to your Soda Cloud account. To communicate with your data source, Soda Cloud uses a Network Address Translation (NAT) gateway with the IP address 54.78.91.111. You may wish to add this IP address to your data source's passlist.
 
 ## Single sign-on with Soda Cloud
 
@@ -25,9 +25,9 @@ Organizations that use a SAML 2.0 single sign-on (SSO) identity provider can add
 
 ## Sending data to Soda Cloud
 
-Soda Core usse a secure API to connect to Soda Cloud. When Soda Core completes a scan, it pushes the scan results to your Soda Cloud account where you can log in and examine the details in the web application.
+Soda Library usse a secure API to connect to Soda Cloud. When Soda Library completes a scan, it pushes the scan results to your Soda Cloud account where you can log in and examine the details in the web application.
 
-Notably, your Soda Cloud account does *not* store the raw data that Soda Core scans. Soda Core pushes metadata to Soda Cloud; by default all your data stays inside your private network.
+Notably, your Soda Cloud account does *not* store the raw data that Soda Library scans. Soda Library pushes metadata to Soda Cloud; by default all your data stays inside your private network.
 
 Soda Cloud does store the following:
 * metadata, such as column names

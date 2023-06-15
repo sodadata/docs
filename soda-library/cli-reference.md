@@ -1,25 +1,29 @@
 ---
 layout: default
-title: Soda Core CLI Commands
-description: Review the Soda Core command-line interface (CLI) commands.
-parent: Soda Core
-redirect_from: /soda-core/cli.html
+title: Soda Librarby CLI Commands
+description: Review the Soda Library command-line interface (CLI) commands.
+parent: Soda Library
+redirect_from:
+- /soda-core/cli.html
+- /soda-core/cli-reference.html
 ---
 
-# Soda Core CLI commands 
+# Soda Library CLI commands 
 *Last modified on {% last_modified_at %}*
+{% include banner-core.md %}
 
 
 | Command               | Description |
 | --------------------- | ----------- |
 | `soda ingest` | Ingests dbt test results to display in Soda Cloud. See [Integrate with dbt]({% link soda/integrate-dbt.md %}). |
-| `soda scan` | Uses the configurations in your checks YAML file to prepare, then run SQL queries against the data in your data source. See [Run a Soda Core scan]({% link soda-core/scan-core.md %}) for details. |
+| `soda scan` | Uses the configurations in your checks YAML file to prepare, then run SQL queries against the data in your data source. See [Run a Soda Library scan]({% link soda-library/run-a-scan.md %}) for details. |
+| `soda suggest` | Generates a checks YAML file based on your responses to prompts in the Soda Library CLI. |
 | `soda test-connection` | Tests the connection to the data sources for which you configured a connection in your configuration YAML file. |
 | `soda update-dro` | Updates a distribution reference file that a [distribution check]({% link soda-cl/distribution.md %}) uses. |
 
 ## List of commands
 
-To see a list of Soda Core command-line interface (CLI) commands, use the `soda` command.
+To see a list of Soda Library command-line interface (CLI) commands, use the `soda` command.
 
 Command:
 ```shell
@@ -30,31 +34,34 @@ Output:
 ```shell
 Usage: soda [OPTIONS] COMMAND [ARGS]...
 
-  Soda Core CLI version 3.0.0xx
+  Soda Library CLI version 1.0.x
 
 Options:
   --help  Show this message and exit.
 
 Commands:
-  scan    runs a scan
-  update-dro  updates a distribution reference file
+  ingest           Ingests test results from a different tool
+  scan             Runs a scan
+  test-connection  Tests a connection
+  update-dro       Updates contents of a distribution reference file
 ```
 
 ## List of command options
 
 To see a list of configurable options for each command, use the command-line help.
 ```shell
-soda scan --help
 soda ingest --help
+soda scan --help
+soda suggest --help
 soda update-dro --help
 ```
 
-Refer to [Add scan options]({% link soda-core/scan-core.md %}#add-scan-options) for more information.
+Refer to [Add scan options]({% link soda-library/run-a-scan.md %}#add-scan-options) for more information.
 
 
 ## Go further
 
-* Learn [How Soda Core works]({% link soda-core/how-core-works.md %}).
+* Learn [How Soda Library works]({% link soda-library/how-library-works.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

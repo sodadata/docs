@@ -12,7 +12,7 @@ parent: Connect a data source
 
 [Spark packages](#spark-packages)<br />
 [Connect to Spark DataFrames](#connect-to-spark-dataframes)<br />
-[Use Soda Core with Spark DataFrames on Databricks](#use-soda-core-with-spark-dataframes-on-databricks)<br />
+[Use Soda Library with Spark DataFrames on Databricks](#use-soda-library-with-spark-dataframes-on-databricks)<br />
 [Connect to Spark for Hive](#connect-to-spark-for-hive)<br />
 [Connect to Spark for ODBC](#connect-to-spark-for-odbc)<br />
 [Connect to Spark for Databricks SQL](#connect-to-spark-for-databricks-sql) <br />
@@ -22,35 +22,34 @@ parent: Connect a data source
 
 ## Spark packages
 
-There are several Soda Core install packages for Spark.
+There are several Soda Library install packages for Spark.
 
 | Package | Description | 
 | ------- | ----- |
-| [`soda-core-spark-df`](#connect-to-spark-dataframes) | Enables you to pass dataframe objects into Soda scans programatically, after you have associated the temporary tables to DataFrames via the Spark API. <br />- For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only. <br />- Supports Delta Lake Tables on Databricks.<br />- [Use for Spark DataFrames on Databricks](#use-soda-core-with-spark-dataframes-on-databricks).<br  /> |
-| [`soda-core-spark[hive]`](#connect-to-spark-for-hive) | A package you add to `soda-core-spark-df` if you are using Apache Hive. |
-| [`soda-core-spark[odbc]`](#connect-to-spark-for-odbc) | A package you add to `soda-core-spark-df` if you are using ODBC. |
-| [`soda-core-spark[databricks]`](#connect-to-spark-for-databricks-sql) | A package you use to install Soda Core for Databricks SQL on the Databricks Lakehouse Platform. |
-| `soda-core-spark` | A work-in-progress, this package will connect to Soda Core much the same as other data sources, via connection details in a configuration YAML. |
+| [`soda-spark-df`](#connect-to-spark-dataframes) | Enables you to pass dataframe objects into Soda scans programatically, after you have associated the temporary tables to DataFrames via the Spark API. <br />- For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only. <br />- Supports Delta Lake Tables on Databricks.<br />- [Use for Spark DataFrames on Databricks](#use-soda-library-with-spark-dataframes-on-databricks).<br  /> |
+| [`soda-spark[hive]`](#connect-to-spark-for-hive) | A package you add to `soda-spark-df` if you are using Apache Hive. |
+| [`soda-spark[odbc]`](#connect-to-spark-for-odbc) | A package you add to `soda-spark-df` if you are using ODBC. |
+| [`soda-spark[databricks]`](#connect-to-spark-for-databricks-sql) | A package you use to install Soda Library for Databricks SQL on the Databricks Lakehouse Platform. |
+| `soda-spark` | A work-in-progress, this package will connect to Soda Library much the same as other data sources, via connection details in a configuration YAML. |
 
 
 ## Connect to Spark DataFrames
 
-- For use with [programmatic Soda scans]({% link soda-core/programmatic.md %}), only.
-- Unlike other data sources, Soda Core for SparkDf does _not_ require a configuration YAML file to run scans against Spark DataFrames.
+- For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.
+- Unlike other data sources, Soda Library for SparkDF does _not_ require a configuration YAML file to run scans against Spark DataFrames.
 
 A Spark cluster contains a distributed collection of data. Spark DataFrames are distributed collections of data that are organized into named columns, much like a table in a database, and which are stored in-memory in a cluster. 
 
-To make a DataFrame available to Soda Core to run scans against, you must use a driver program like PySpark and the Spark API to link DataFrames to individual, named, temporary tables in the cluster. You pass this information into a Soda scan programatically. You can also pass Soda Cloud connection details programmatically; see [Connect Soda Core for SparkDF to Soda Cloud]({% link soda-core/connect-core-to-cloud.md %}#connect-soda-core-for-sparkdf-to-soda-cloud). Refer to <a href="https://github.com/sodadata/soda-core/blob/main/soda/core/tests/examples/example_python_api.py" target="_blank">the soda-core repo in GitHub</a> for details.
+To make a DataFrame available to Soda Library to run scans against, you must use a driver program like PySpark and the Spark API to link DataFrames to individual, named, temporary tables in the cluster. You pass this information into a Soda scan programatically. You can also pass Soda Cloud connection details programmatically; see [below](#connect-soda-library-for-sparkdf-to-soda-cloud). 
 
-1. If you are _not_ installing Soda Core Spark DataFrames on a cluster, skip to step 2. To install Soda Core Spark DataFrames on a cluster, such as a Kubernetes cluster or a Databricks cluster, install <a href="https://packages.debian.org/buster/libsasl2-dev" target="_blank"> `libsasl2-dev` </a> _before_ installing `soda-core-spark-df`. For Ubuntu users, install `libsasl2-dev` using the following command:
+1. If you are _not_ installing Soda Library Spark DataFrames on a cluster, skip to step 2. To install Soda Library Spark DataFrames on a cluster, such as a Kubernetes cluster or a Databricks cluster, install <a href="https://packages.debian.org/buster/libsasl2-dev" target="_blank"> `libsasl2-dev` </a> _before_ installing `soda-spark-df`. For Ubuntu users, install `libsasl2-dev` using the following command:
 ```shell
 sh sudo apt-get -y install unixodbc-dev libsasl2-dev gcc python-dev
 ```
 2. If you are _not_ using Spark with Hive or ODBC, skip to step 3. Otherwise, install the separate dependencies as needed, and configure connection details for each dependency; see below.
-* for Hive, use: `pip install soda-core-spark[hive]` and [configure](#connect-to-spark-for-hive)
-* for ODBC, use: `pip install soda-core-spark[odbc]` and [configure](#connect-to-spark-for-odbc)
-3. Confirm that you have completed the following.
-* installed `soda-core-spark-df`
+* for Hive, use: `pip install -i https://pypi.cloud.soda.io soda-spark[hive]` and [configure](#connect-to-spark-for-hive)
+* for ODBC, use: `pip install -i https://pypi.cloud.soda.io soda-spark[odbc]` and [configure](#connect-to-spark-for-odbc)
+3. Install `soda-spark-df` (see [Install Soda Library]({% link soda-library/install.md %})) and confirm that you have completed the following.
 * set up a a Spark session
 ```python
 spark_session: SparkSession = ...user-defined-way-to-create-the-spark-session...
@@ -64,7 +63,7 @@ df = ...user-defined-way-to-build-the-dataframe...
 db.createOrReplaceTempView('customers')
 ```
 5. Use the Spark API to link a DataFrame to the name of each temporary table against which you wish to run Soda scans. Refer to <a href="hhttps://spark.apache.org/docs/3.1.3/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceTempView.html" target="_blank"> PySpark documentation</a>.
-6. [Define a programmatic scan]({% link soda-core/programmatic.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Core: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`. Refer to the example below.
+6. [Define a programmatic scan]({% link soda-library/programmatic.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Library: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`. Refer to the example below.
 {% include code-header.html %}
 ```python
 spark_session = ...your_spark_session...
@@ -92,15 +91,60 @@ scan.add_spark_session(spark_session)
 <br />
 
 
-## Use Soda Core with Spark DataFrames on Databricks
+## Connect Soda Library for SparkDF to Soda Cloud
 
-Use the `soda-core-spark-df` package to connect to Databricks using a Notebook. 
+Unlike other data sources, Soda Library does _not_ require a configuration YAML file to run scans against Spark DataFrames. It is for use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.
 
-1. Follow steps 1-2 in [the instructions](#connect-to-spark-dataframes) to install `soda-core-spark-df`.
+Therefore, to connect to Soda Cloud, include the Soda Cloud API keys in your programmatic scan using either `add_configuration_yaml_file(file_path)` or `scan.add_configuration_yaml_str(config_string)` as in the example below.
+
+{% include code-header.html %}
+```shell
+from pyspark.sql import SparkSession, types
+from soda.scan import Scan
+
+spark_session = SparkSession.builder.master("local").appName("test").getOrCreate()
+df = spark_session.createDataFrame(
+    data=[{"id": "1", "name": "John Doe"}],
+    schema=types.StructType(
+        [types.StructField("id", types.StringType()), types.StructField("name", types.StringType())]
+    ),
+)
+df.createOrReplaceTempView("users")
+
+scan = Scan()
+scan.set_verbose(True)
+scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
+scan.set_data_source_name("spark_df")
+scan.add_configuration_yaml_file(file_path="sodacl_spark_df/configuration.yml")
+scan.add_configuration_yaml_str(
+    """
+soda_cloud:
+  # use cloud.soda.io for EU region; use cloud.us.soda.io for USA region
+  host: cloud.soda.io
+  api_key_id: "[key]"
+  api_key_secret: "[secret]"
+"""
+)
+scan.add_spark_session(spark_session)
+scan.add_sodacl_yaml_file(file_path="sodacl_spark_df/checks.yml")
+# ... all other scan methods in the standard programmatic scan ...
+scan.execute()
+
+# print(scan.get_all_checks_text())
+print(scan.get_logs_text())
+# scan.assert_no_checks_fail()
+```
+
+
+## Use Soda Library with Spark DataFrames on Databricks
+
+Use the `soda-spark-df` package to connect to Databricks using a Notebook. 
+
+1. Follow steps 1-2 in [the instructions](#connect-to-spark-dataframes) to install `soda-spark-df`.
 2. Reference the following Notebook example to connect to Databricks. 
 {% include code-header.html %}
 ```python
-# import Scan from Soda Core
+# import Scan from Soda Library
 from soda.scan import Scan
 # Create a Spark DataFrame, or use the Spark API to read data and create a DataFrame
 df = spark.createDataFrame([(1, "a"), (2, "b")], ("id", "name"))
@@ -121,6 +165,7 @@ scan.add_sodacl_yaml_str(checks)
 # Optionally, add a configuration file with Soda Cloud credentials 
 # config = """
 # soda_cloud:
+#   host: cloud.soda.io
 #   api_key_id: xyz
 #   api_key_secret: xyz
 # """
@@ -136,7 +181,7 @@ print(scan.get_logs_text())
 
 ## Connect to Spark for Hive
 
-An addition to `soda-core-spark-df`, install and configure this package if you use Apache Hive.
+An addition to `soda-spark-df`, install and configure the `soda-spark[hive]` package if you use Apache Hive.
 {% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
@@ -164,7 +209,7 @@ data_source my_datasource_name:
 
 ## Connect to Spark for ODBC
 
-An addition to `soda-core-spark-df`, install and configure this package if you use ODBC.
+An addition to `soda-spark-df`, install and configure the `soda-spark[odbc]` package if you use ODBC.
 {% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
@@ -194,8 +239,7 @@ data_source my_datasource_name:
 
 ## Connect to Spark for Databricks SQL
 
-1. Install `soda-core-spark[databricks]` to connect to Databricks SQL. <br />
-Refer to [Install Soda Core]({% link soda-core/installation.md %}) for details.
+1. Install `soda-spark[databricks]` to connect to Databricks SQL. Refer to [Install Soda Library]({% link soda-library/install.md %}) for details.
 2. If you have not done so already, install `databricks-sql-connector`. Refer to <a href="https://docs.databricks.com/dev-tools/python-sql-connector.html" target="_blank">Databricks documentation</a> for details.
 3. Configure the data source connection in your `configuration.yml` file as per the following example.
 

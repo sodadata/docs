@@ -10,9 +10,10 @@ redirect_from:
 - /soda-cloud/
 - /soda-core/soda-cloud.html
 ---
-<!--Linked to UI, access Shlink--><br />
 
-![soda-cloud-logo](/assets/images/soda-cloud-logo.png){:height="240px" width="240px"}
+# Soda Cloud
+<!--Linked to UI, access Shlink-->
+*Last modified on {% last_modified_at %}*
 <br />
 <br />
 

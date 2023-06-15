@@ -15,14 +15,14 @@ Soda supports Oracle version 21.3 or greater.
 
 ## Configuration
 
-Install package: `soda-core-oracle`
+Install package: `soda-oracle`
 
 {% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
   type: oracle
-  username: 
-  password:
+  username: ***
+  password: ***
   connectstring:
 ```
 

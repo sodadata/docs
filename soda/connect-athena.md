@@ -12,7 +12,7 @@ parent: Connect a data source
 {% include connect-to-intro.md %}
 
 ## Configuration
-Install package: `soda-core-athena`
+Install package: `soda-athena`
 
 {% include code-header.html %}
 ```yaml

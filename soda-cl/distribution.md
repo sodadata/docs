@@ -10,7 +10,7 @@ parent: SodaCL
 
 Use a distribution check to determine whether the distribution of a column has changed between two points in time. For example, if you trained a model at a particular moment in time, you can use a distribution check to find out how much the data in the column has changed over time, or if it has changed all.
 
-* *Requires Soda Core Scientific.*<br />
+* *Requires Soda Scientific.*<br />
 * *Limitation:* Soda Cloud cannot yet maintain the distribution reference object (DRO), but distribution check results appear in the **Check Results** dashboard.<br />
 {% include code-header.html %}
 ```yaml
@@ -27,7 +27,7 @@ checks for dim_customer:
 
 [About distribution checks](#about-distribution-checks)<br />
 [Prerequisites](#prerequisites)<br />
-[Install Soda Core Scientific](#install-soda-core-scientific)<br />
+[Install Soda Scientific](#install-soda-scientific)<br />
 [Generate a distribution reference object (DRO)](#generate-a-distribution-reference-object-dro)<br />
 [Define a distribution check](#define-a-distribution-check)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Distribution check details](#distribution-check-details)<br />
@@ -36,7 +36,7 @@ checks for dim_customer:
 [Distribution check examples](#distribution-check-examples)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
-[Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation)<br />
+[Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -86,15 +86,15 @@ You can use the following distance metrics in your distribution checks.
 
 ## Prerequisites
 
-* You have [installed Soda Core Scientific](#install-soda-core-scientific) in the same directory or virtual environment in which you [installed Soda Core]({% link soda-core/installation.md %}).
+* You have [installed Soda Scientific](#install-soda-scientific) in the same directory or virtual environment in which you [installed Soda Library]({% link soda-library/install.md %}).
 
-## Install Soda Core Scientific
+## Install Soda Scientific
 
-To use a distribution check, you must install Soda Core Scientific in the same directory or virtual environment in which you installed Soda Core. Best practice recommends installing Soda Core and Soda Core Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Core Scientific locally](#install-soda-core-scientific-locally) if you prefer.
+To use a distribution check, you must install Soda Scientific in the same directory or virtual environment in which you installed Soda Library. Best practice recommends installing Soda Library and Soda Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Scientific locally](#install-soda-scientific-locally) if you prefer.
 
-{% include install-soda-core-scientific.md %}
+{% include install-soda-scientific.md %}
 
-Refer to [Troubleshoot Soda Core Scientific installation](#troubleshoot-soda-core-scientific-installation) for help with issues during installation.
+Refer to [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation) for help with issues during installation.
 
 ## Generate a distribution reference object (DRO)
 <!--Linked to UI, access Shlink though actually embedded in CLI help-->
@@ -179,7 +179,7 @@ If you do not wish to define a filter, remove the key-value pair from the file.
 
 ## Define a distribution check
 
-1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Core executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the [Soda Core documentation]({% link soda-core/configuration.md %}).
+1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Library executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the [Soda Library documentation]({% link soda-library/configure.md %}).
 2. In your new file, add the following example content.
 
     ```yaml
@@ -212,13 +212,13 @@ If you do not wish to define a filter, remove the key-value pair from the file.
 
 6. (Optional), to sample the data in the distribution check, replace the value of `sample` with a query that specifies the portion of the data in your dataset for which you are checking the distribution. The data source you are using must support the query you write. <br />For example, for PostgreSQL, you can use the `TABLESAMPLE` clause to randomly sample 50% of the data with seed 61. Best practice dictates that you use sampling for large datasets that might not fit in memory. Refer to the [define the sample size](#define-the-sample-size) for details.
 
-7. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to [Soda Core documentation]({% link soda-core/scan-core.md %}) for more details.
+7. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to [Soda Library documentation]({% link soda-library/run-a-scan.md %}) for more details.
 
     ```bash
     soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yml your_check_file.yml
     ```
 
-    When Soda Core executes the distribution check above, it compares the values in `column_name` to a sample that Soda creates based on the `bins`, `weights`, and `data_type` in `dro_name` defined in the `distribution_reference.yml` file. Specifically, it checks whether the value of `your_method_of_choice` is larger than `0.05`.
+    When Soda Library executes the distribution check above, it compares the values in `column_name` to a sample that Soda creates based on the `bins`, `weights`, and `data_type` in `dro_name` defined in the `distribution_reference.yml` file. Specifically, it checks whether the value of `your_method_of_choice` is larger than `0.05`.
 
 ### Distribution check details
 
@@ -441,22 +441,22 @@ checks for dim_customer:
 
 {% include list-symbols.md %}
 
-## Troubleshoot Soda Core Scientific installation
+## Troubleshoot Soda Scientific installation
 
-While installing Soda Core Scientific works on Linux, you may encounter issues if you install Soda Core Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
+While installing Soda Scientific works on Linux, you may encounter issues if you install Soda Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
 
-* [Install Soda Core locally](#install-soda-core-locally)
-* [Use Docker to run Soda Core](#use-docker-to-run-soda-core)
+* [Install Soda Scientific locally](#install-soda-scientific-locally)
+* [Use Docker to run Soda Library](#use-docker-to-run-soda-library)
 
 Need help? Ask the team in the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
-### Install Soda Core Scientific Locally
+### Install Soda Scientific Locally
 
-{% include install-soda-core-scientific.md %}
+{% include install-soda-scientific.md %}
 
-### Use Docker to run Soda Core
+### Use Docker to run Soda Library
 
-{% include docker-soda-core.md %}
+{% include docker-soda-library.md %}
 
 
 ## Go further

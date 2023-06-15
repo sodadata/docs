@@ -12,7 +12,7 @@ redirect_from:
 # Filters and variables
 *Last modified on {% last_modified_at %}*
 
-Use filters or variables to specify portions of data in your dataset against which Soda Core executes checks during a scan.
+Use filters or variables to specify portions of data in your dataset against which Soda Library executes checks during a scan.
 {% include code-header.html %}
 ```yaml
 # In-check filter
@@ -66,11 +66,11 @@ In-check filters provide the ability to create conditions, or business rules, th
 When you find yourself adding the same in-check filters to multiple checks, you may wish to promote an in-check filter to a dataset filter. 
 
 <details>
-  <summary style="color:#00BC7E">How Soda Core applies filters</summary>
+  <summary style="color:#00BC7E">How Soda Library applies filters</summary>
 <br />
-Soda Core uses the checks you define to prepare SQL queries that it executes against the datasets in your data source. It puts as many checks under the same <code>checks for</code> header into a single query as it can. An in-check filter translates to a <a href="https://www.w3schools.com/sql/sql_case.asp" target="_blank">CASE syntax</a> which Soda puts into that same query with other unfiltered checks.
+Soda Library uses the checks you define to prepare SQL queries that it executes against the datasets in your data source. It puts as many checks under the same <code>checks for</code> header into a single query as it can. An in-check filter translates to a <a href="https://www.w3schools.com/sql/sql_case.asp" target="_blank">CASE syntax</a> which Soda puts into that same query with other unfiltered checks.
 <br /><br />
-For a dataset filter, Soda Core generates a separate query and, again, attempts to put all checks under a <code>checks for</code> header into one query including any checks that also have a in-check filter. If your checks YAML has defined some unfiltered checks for a dataset, and applied a dataset filter to other checks on a particular partition of that data, Soda Core prepares two queries, each of which has several calculated metrics in the <code>SELECT</code> statement and which then flow back to their respective checks to evaluate whether they pass, warn, or fail.
+For a dataset filter, Soda Library generates a separate query and, again, attempts to put all checks under a <code>checks for</code> header into one query including any checks that also have a in-check filter. If your checks YAML has defined some unfiltered checks for a dataset, and applied a dataset filter to other checks on a particular partition of that data, Soda Library prepares two queries, each of which has several calculated metrics in the <code>SELECT</code> statement and which then flow back to their respective checks to evaluate whether they pass, warn, or fail.
 </details>
 
 ## Configure in-check filters
@@ -206,10 +206,10 @@ checks for dim_product:
 ### Configure variables for connection configuration
 
 You can use variables to:
-* resolve credentials in configuration files using system variables; see [Configure Soda Core]({% link soda-core/configuration.md %}#provide-credentials-as-system-variables)
+* resolve credentials in configuration files using system variables; see [Configure Soda Library]({% link soda-library/configure.md %}#provide-credentials-as-system-variables)
 * pass variables for values in configuration files; see instructions below
 
-If you use Soda Core to execute Soda scans for data quality, you can pass variables at scan time to provide values for data source connection configuration keys in your configuration YAML file. For example, you may wish to pass a variable for the value of `password` in your configuration YAML.
+If you use Soda Library to execute Soda scans for data quality, you can pass variables at scan time to provide values for data source connection configuration keys in your configuration YAML file. For example, you may wish to pass a variable for the value of `password` in your configuration YAML.
 
 1. Adjust the data source connection configuration in your configuration YAML to include a variable.
 ```shell

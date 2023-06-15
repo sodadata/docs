@@ -12,7 +12,7 @@ parent: Connect a data source
 
 ## Configuration
 
-Install package: `soda-core-redshift`
+Install package: `soda-redshift`
 
 {% include code-header.html %}
 ```yaml

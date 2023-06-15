@@ -1,6 +1,6 @@
 Be aware that a check that contains one or more alert configurations only ever yields a *single* check result; one check yields one check result. If your check triggers both a `warn` and a `fail`, the check result only displays the more severe, failed check result. (Schema checks behave slightly differently; see [Schema checks]({% link soda-cl/schema.md %}#expect-one-check-result).)
 
-Using the following example, Soda Core, during a scan, discovers that the data in the dataset triggers both alerts, but the check result is still `Only 1 warning`. Nonetheless, the results in the CLI still display both alerts as having both triggered a `[WARNED]` state.
+Using the following example, Soda Library, during a scan, discovers that the data in the dataset triggers both alerts, but the check result is still `Only 1 warning`. Nonetheless, the results in the CLI still display both alerts as having both triggered a `[WARNED]` state.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -10,7 +10,8 @@ checks for dim_customer:
         when > 3
 ```
 ```shell
-Soda Core 3.0.xx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Scan summary:
 1/1 check WARNED: 
     dim_customer in adventureworks
@@ -33,7 +34,8 @@ checks for dim_product:
         when > 0
 ```
 ```shell
-Soda Core 3.0.xx
+Soda Library 1.0.x
+Soda Core 3.0.x
 Scan summary:
 1/1 check FAILED: 
     dim_product in adventureworks
