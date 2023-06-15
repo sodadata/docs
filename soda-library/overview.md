@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda Library overview
-description: Soda Library is Python library and CLI tool that enables you to use the Soda Checks Language to turn user-defined input into SQL queries.
+description: Soda Library is a Python library and CLI tool that enables you to use the Soda Checks Language to turn user-defined input into SQL queries.
 parent: Soda Library
 redirect_from: 
 - /soda-core/
@@ -19,7 +19,7 @@ redirect_from:
   <strong>New with Soda Library</strong><br/>
   <ul>
     <li>Run <a href="https://docs.soda.io/soda-cl/check-suggestions.html">Check Suggestions</a> in the Soda Library CLI to profile your data and auto-generate basic checks for data quality.</li>
-    <li>Use <a href="https://docs.soda.io/soda-cl/group-by.html">Group By</a> configuration and <a href="https://docs.soda.io/soda-cl/group-evolution.html">Group By Evolution</a> checks to organize data qaulity check results by category.</li>
+    <li>Use <a href="https://docs.soda.io/soda-cl/group-by.html">Group By</a> configuration and <a href="https://docs.soda.io/soda-cl/group-evolution.html">Group By Evolution</a> checks to organize data quality check results by category.</li>
     <li>Configure a <a href="https://docs.soda.io/soda-cl/check-template.html">Check Template</a> to customize a metric you can reuse in multiple checks.</li>
   </ul>
   New users can <a href="https://docs.soda.io/soda-library/install.html" target="_blank">install Soda Library</a> for a free, 45-day trial.<br />
@@ -31,7 +31,7 @@ redirect_from:
 &#10004;  Compatible with [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}) and [Soda Cloud]({% link soda-cloud/overview.md %}) <br /> <br />
 &#10004;  Supports [Check suggestions]({% link soda-cl/check-suggestions.md %}) to auto-generate basic quality checks tailored to your data <br /> <br />
 &#10004;  Enables data quality testing both in your [data pipeline]({% link soda/quick-start-prod.md %}) and [development workflows]({% link soda/quick-start-dev.md %}) <br /> <br />
-&#10004;  Extended from Soda Core, a free, open-source CLI and Python library in <a href="https://github.com/sodadata/soda-core" targt="_blank">GitHub</a> <br /> <br />
+&#10004;  Extended from Soda Core, a free, open-source CLI and Python library in <a href="https://github.com/sodadata/soda-core" target="_blank">GitHub</a> <br /> <br />
 
 <br />
 
@@ -104,7 +104,7 @@ Simplify the work of testing and maintaining good-quality data.
 * Download the Soda Library (free a 45-day trial!) and configure settings and data quality checks in two simple YAML files to start scanning your data within minutes.
 * Connect Soda Library to over a dozen data sources to scan volumes of data for quality.
 * Write data quality checks using SodaCL, a low-code, human-readable, domain-specific language for data quality management.
-* Use the Soda Library to build programmatic scans that you can use in conjunction with orchestration tools like Airflow or Prefect to automate pipeline actions when data quality checks fails.
+* Use the Soda Library to build programmatic scans that you can use in conjunction with orchestration tools like Airflow or Prefect to automate pipeline actions when data quality checks fail.
 * Run the same scans for data quality in multiple environments such as development, staging, and production.
 
 ---
