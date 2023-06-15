@@ -64,7 +64,7 @@ pip install --upgrade pip
 ```
 3. Execute the following command, replacing `soda-postgres` with the install package that matches the type of data source you use to store data.
 ```shell
-pip install -i https://pypi.soda.io soda-postgres
+pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
 
 | Data source | Install package | 
@@ -111,7 +111,7 @@ pip install --upgrade pip
 ```
 3. Execute the following command, replacing `soda-postgres` with the install package that matches the type of data source you use to store data.
 ```shell
-pip install -i https://pypi.soda.io soda-postgres
+pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
 
 | Data source | Install package | 
@@ -159,7 +159,7 @@ Reference the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activ
 
 To upgrade your existing Soda Library tool to the latest version, use the following command, replacing `redshift` with the install package that matches the type of data source you are using.
 ```shell
-pip install -i https://pypi.soda.io soda-redshift -U
+pip install -i https://pypi.cloud.soda.io soda-redshift -U
 ```
 
 ## Migrate from Soda Core
@@ -172,7 +172,7 @@ pip freeze | grep soda | xargs pip uninstall -y
 ```
 2. Install a Soda Library package that corresponds to your data source. Your new package automatically comes with a 45-day free trial. Our Soda team will contact you with licensing options after the trial period.
 ```shell
-pip install -i https://pypi.soda.io soda-postgres
+pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
 3. If you had connected Soda Core to Soda Cloud, you do not need to change anything for Soda Library to work with your Soda Cloud account. <br /> If you had not connected Soda Core to Soda Cloud, you need to connect Soda Library to Soda Cloud. Soda Library requires API keys to validate licensing or trial status and run scans for data quality. See [Configure Soda Library]({% link soda-library/configure.md %}) for instructions.
 4. You *do not need* to adjust your existing `configuration.yml` or `checks.yml` files which will continue to work as before.
