@@ -18,9 +18,9 @@ redirect_from:
   Leveraging all the power of Soda Core and SodaCL, the extension offers new features and functionality for Soda customers. <br /><br />
   <strong>New with Soda Library</strong><br/>
   <ul>
-    <li>Run <a href="https://docs.soda.io/soda-cl/check-suggestion.html">Check Suggestions</a> in the Soda Library CLI to profile your data and auto-generate basic checks for data quality.</li>
+    <li>Run <a href="https://docs.soda.io/soda-cl/check-suggestions.html">Check Suggestions</a> in the Soda Library CLI to profile your data and auto-generate basic checks for data quality.</li>
     <li>Use <a href="https://docs.soda.io/soda-cl/group-by.html">Group By</a> configuration and <a href="https://docs.soda.io/soda-cl/group-evolution.html">Group By Evolution</a> checks to organize data qaulity check results by category.</li>
-    <li>Configure a <a href="https://docs.soda.io/soda-cl/check-template.heml">Check Template</a> to customize a metric you can reuse in multiple checks.</li>
+    <li>Configure a <a href="https://docs.soda.io/soda-cl/check-template.html">Check Template</a> to customize a metric you can reuse in multiple checks.</li>
   </ul>
   New users can <a href="https://docs.soda.io/soda-library/install.html" target="_blank">install Soda Library</a> for a free, 45-day trial.<br />
   Existing customers can seamlessly <a href="https://docs.soda.io/soda-library/install.html#migrate-from-soda-core">migrate</a> from Soda Core to Soda Library.
