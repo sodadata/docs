@@ -116,6 +116,8 @@
     page: soda-cloud/add-datasource.md
   - subtitle: Create an agreement
     page: soda-cloud/agreements.md
+  - subtitle: Write checks with SodaGPT
+    page: soda-cloud/sodagpt.md
   - subtitle: Collaborate on data monitoring
     page: soda-cloud/collaborate.md
   - subtitle: Scan output
