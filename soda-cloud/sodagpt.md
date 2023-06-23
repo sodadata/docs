@@ -19,6 +19,8 @@ Use the generated checks to test data quality in your data pipeline, in your dev
 
 ## Instruction parameters
 
+Log in to your **Soda Cloud** account, click the **Ask SodaGPT** button in the main nav, then provide natural language instructions to the interface to receive fully-formed, syntax-correct checks in the Soda Checks Language (SodaCL).
+
 * Provide instructions in English.
 * SodaGPT is capable of writing one data quality check at a time.
 * SodaGPT *only* outputs SodaCL.

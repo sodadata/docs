@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### June 27, 2023
+* Documentation to accompany the preview launch of [SodaGPT]({% link soda-cloud/sodagpt.md %}).
+
 #### June 15, 2023
 * Introducing Soda Library, a commercial extension of the Soda Core open-source software. It leverages all the power of Soda Core and SodaCL, and offers new features and functionality for Soda customers.
 * New documentation for the new [Group by]({% link soda-cl/group-by.md %}) configuration and [Group evolution check]({% link soda-cl/group-evolution.md %}), both available with Soda Library.
