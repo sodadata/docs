@@ -13,6 +13,7 @@ parent: Reference
 * Changed requirement for [check template]({% link soda-cl/check-template.md %}) to include the dataset identifier in the first line of the check so that Soda Cloud can properly render the check results.
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.40 and Soda Core 3.0.41.
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.1 and Soda Library 1.0.2.
+* Reverted Soda Agent to describe configuring Soda Core settings instead of Library. Will update to Soda Library details when updates are complete.
 
 #### June 15, 2023
 * Introducing Soda Library, a commercial extension of the Soda Core open-source software. It leverages all the power of Soda Core and SodaCL, and offers new features and functionality for Soda customers.
