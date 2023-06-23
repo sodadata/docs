@@ -9,7 +9,7 @@ parent: Soda Agent
 *Last modified on {% last_modified_at %}*
 <br />
 
-<p>&#10004;  Deploy an instance of Soda Library in a cluster in your own cloud service environment.<br /></p>
+<p>&#10004;  Deploy an instance of Soda Core in a cluster in your own cloud service environment.<br /></p>
 <p>&#10004;  Connect to Soda Cloud via API keys.<br /></p>
 <p>&#10004;  Enable Soda Cloud to securely access multiple data sources such as Snowflake or BigQuery.<br /></p>
 <p>&#10004;  Try it out locally by deploying to a Minikube cluster.<br /></p>
