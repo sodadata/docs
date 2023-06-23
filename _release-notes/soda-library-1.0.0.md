@@ -24,3 +24,4 @@ If you already use Soda Core, you can seamlessly upgrade to Soda Library without
 * Soda Library supports **[Check Suggestions]({% link soda-cl/check-suggestions.md %})**, a helpful CLI tool that assists you in generating basic data quality checks.  Instead of writing your own data quality checks from scratch, the check suggestions assisstant profiles your dataset, then prompts you through a series of questions so that it can leverage the built-in Soda metrics and auto-generate quality checks tailored to your data.
 * Soda Library supports **[Check template]({% link soda-cl/check-template.md %})** configurations that enable you to prepare a user-defined metric that you can reuse in checks in multiple checks YAML files.
 
+Refer to the <a href="https://github.com/sodadata/soda-library/releases" target="_blank">Soda Library Release Notes </a> for details.
