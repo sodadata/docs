@@ -16,6 +16,13 @@ A Soda check is a test that Soda executes when it scans a dataset in your data s
 
 Instead of writing your own data quality checks from scratch, check suggestions profiles your dataset and prompts you through a series of questions so that it can leverage the built-in Soda metrics and quickly prepare data quality checks tailored to that individual dataset.  
 
+[Compatibility](#compatibility)<br />
+[Prerequisites](#prerequisites)<br />
+[Run check suggestions](#run-check-suggestions)<br />
+[Go further](#go-further)<br />
+<br />
+<br />
+
 ```shell
 $ soda suggest -d adventureworks -c configuration.yml -ds dim_customer
 ✅ Connected to 'adventureworks' successfully!
@@ -106,13 +113,7 @@ No valid checks found, 0 checks evaluated.
 🌑  Running Soda Scan...
 ```
 
-[Compatibility](#compatibility)<br />
-[Prerequisites](#prerequisites)<br />
-[Run check suggestions](#run-check-suggestions)<br />
-[Suggestion details](#suggestion-details)<br />
-[Go further](#go-further)<br />
-<br />
-<br />
+
 
 ## Compatibility
 
@@ -150,11 +151,11 @@ Following best practice, check suggestions prepares one `checks.yml` file per da
 
 With both a `configuration.yml` and a prepared `checks.yml` file, you can follow the assistant's final prompt to run a scan for data quality, or [Run a Soda scan]({% link soda-library/run-a-scan.md %}) manually when wish.
 
-## Suggestion details
+#### Select a dataset
+Check suggestions prompts you to select a dataset from the list of available datasets in the data source. It prepares one `checks.yml` file per dataset.
 
-**Select a dataset** Check suggestions prompts you to select a dataset from the list of available datasets in the data source. It prepares one `checks.yml` file per dataset.
-
-**Select checks for basic data quality coverage** The assistant prompts you to select the checks you wish to include in the `checks.yml`. It can prepare only the following types of basic checks:
+#### Select checks
+The assistant prompts you to select the checks for basic data quality coverage you wish to include in the `checks.yml`. It can prepare only the following types of basic checks:
 
 * [schema]({% link soda-cl/schema.md %})
 * [row count]({% link soda-cl/numeric-metrics.md %})
@@ -163,9 +164,11 @@ With both a `configuration.yml` and a prepared `checks.yml` file, you can follow
 * [missing]({% link soda-cl/missing-metrics.md %})
 * [duplicate]({% link soda-cl/numeric-metrics.md %})
 
-**Set column filtering** If your dataset contains more than 20 columns, the assisstant prompts you to shorten the list by asking you to select the column names to which you wish to add checks for missing and duplicate values.
+#### Set column filtering
+If your dataset contains more than 20 columns, the assisstant prompts you to shorten the list by asking you to select the column names to which you wish to add checks for missing and duplicate values.
 
-**Add a schema check** This type of check validates the schema, or structure, of your data. It ensures that the columns you expect to exist are present in the dataset, and that they have the correct data type and index location.
+#### Add a schema check
+This type of check validates the schema, or structure, of your data. It ensures that the columns you expect to exist are present in the dataset, and that they have the correct data type and index location.
 
 Refer to [Schema checks]({% link soda-cl/schema.md %}) for more information.
 
@@ -181,7 +184,8 @@ checks for dataset_A:
           - column type change
 ```
 
-**Add row count checks** This step adds two checks: one to confirm that the dataset is not empty, and one to ensure that the current row count is not significantly different from the expected row count. Soda determines the expected row count relative to the previous row count value using a time series-based anomaly detection model.
+#### Add row count checks
+This step adds two checks: one to confirm that the dataset is not empty, and one to ensure that the current row count is not significantly different from the expected row count. Soda determines the expected row count relative to the previous row count value using a time series-based anomaly detection model.
 
 Refer to [Anomaly score checks]({% link soda-cl/anomaly-score.md %}) for more information.
 
@@ -191,7 +195,8 @@ checks for dataset_A:
   - anomaly score for row_count < default
 ```
 
-**Add time-based partitioning** Also referred to as dataset filtering, this step prompts you to specify a time range on which to apply the data quality checks. 
+#### Add time-based partitioning
+Also referred to as dataset filtering, this step prompts you to specify a time range on which to apply the data quality checks. 
 
 By default, check suggestions sets the time-based partition to one day if the column contains DATE type data, and the preceding 24 hours if the column contains DATETIME data. When generating a list of candidate columns to which to apply the time-based partition, the assisstant uses heuristic methods to automatically identify and rank column names.
 
@@ -221,7 +226,8 @@ checks for customer [daily]:
   - duplicate_count(phone) = 0
 ```
 
-**Add a freshness check** A freshness check ensures that the data in the dataset is up-to-date according to the latest value entered in a column containing date or timestamp values. Check suggestions uses the same heuristic methods with the time based partitioning to rank the columns. After ranking the columns, the CLI estimates the threshold by using the standard error of date differences. It then prompts you to select the column and threshold to use for the freshness check.
+#### Add a freshness check
+A freshness check ensures that the data in the dataset is up-to-date according to the latest value entered in a column containing date or timestamp values. Check suggestions uses the same heuristic methods with the time based partitioning to rank the columns. After ranking the columns, the CLI estimates the threshold by using the standard error of date differences. It then prompts you to select the column and threshold to use for the freshness check.
 
 Refer to [Freshness checks]({% link soda-cl/freshness.md %}) for more information.
 
@@ -230,7 +236,8 @@ checks for dataset_A:
   - freshness(date_first_purchase) < 24h
 ```
 
-**Add validity checks** A validity check compares the data in text columns to a specific format (see the list that follows) to determine whether the content is valid. For example, such a check can validate that all rows in an `id` column contain UUID-formatted values.
+#### Add validity checks
+A validity check compares the data in text columns to a specific format (see the list that follows) to determine whether the content is valid. For example, such a check can validate that all rows in an `id` column contain UUID-formatted values.
 
 Check suggestions prompts you to select the columns that are candidates for validity checks, which must contain text type data such as CHAR, VARCHAR, or TEXT.
 
@@ -254,7 +261,8 @@ checks for dataset_A:
       valid format: email
 ```
 
-**Add missing checks** A missing check automatically identifies any NULL values within your dataset. Check suggestions prompts you to select the columns to which you want to apply a missing check. By default, it sets each check threshold to `0`, which means that a check fails if there are any NULL values in the column.
+#### Add missing checks
+A missing check automatically identifies any NULL values within your dataset. Check suggestions prompts you to select the columns to which you want to apply a missing check. By default, it sets each check threshold to `0`, which means that a check fails if there are any NULL values in the column.
 
 Refer to [Missing metrics]({% link soda-cl/missing-metrics.md %}) for more information.
 
@@ -274,7 +282,8 @@ checks for dataset_A:
   - missing_count(gender) = 0
 ```
 
-**Add duplicate checks** A duplicate check identifies duplicate records or entries within your dataset. By default, it sets each check threshold to `0`, which means that a check fails if there are any duplicate values in the column.
+#### Add duplicate checks
+ A duplicate check identifies duplicate records or entries within your dataset. By default, it sets each check threshold to `0`, which means that a check fails if there are any duplicate values in the column.
 
 Refer to [Numeric metrics]({% link soda-cl/numeric-metrics.md %}#list-of-numeric-metrics) for more information.
 

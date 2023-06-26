@@ -9,7 +9,7 @@ parent: SodaCL
 *Last modified on {% last_modified_at %}*
 
 Use a check template to define a reusable, user-defined metric that you can apply to many checks in multiple checks files.<br />
-*Soda Cloud does not support check templates.* <br /> *Requires Soda Library*
+*Requires Soda Library*
 {% include code-header.html %}
 ```yaml
 templates:
@@ -23,7 +23,7 @@ templates:
 
 {% include code-header.html %}
 ```yaml
-checks:
+checks for dim_account:
   - $template_alpha:
       parameters:
         table: dim_account
@@ -66,10 +66,13 @@ templates:
 | a metric | `alpha`
 | a query | `SELECT count(*) as alpha FROM ${table}`
 
-Having defined the check template, you can now use it in a check in your `checks.yml` file, as in the following example. Because the SQL query in the check template uses a variable for the value of `table`, you must supply the value in the check as a parameter; in such a case, you do not need to provide a dataset identifer in the first line. The check must include at least one [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations) to define when the check result ought to fail or warn.
+Having defined the check template, you can now use it in a check in your `checks.yml` file, as in the following example. 
+* Because the SQL query in the check template uses a variable for the value of `table`, you must supply the value in the check as a parameter.  
+* Be sure to add an identifier for the dataset in the first line, even if you supply the name of the dataset in the check using a parameter. To render properly in Soda Cloud, the check must include a dataset identifier.
+* The check must include at least one [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations) to define when the check result ought to fail or warn.
 {% include code-header.html %}
 ```yaml
-checks:
+checks for dim_account:
   - $template_alpha:
       parameters:
         table: dim_account
@@ -110,10 +113,10 @@ In the following example, the same `template.yml` file contains a second templat
       SELECT count(*) as beta FROM dim_customer
 ```
 
-You can then use the template in a check in the same, or different, `checks.yml` file. The name of the dataset is included in the SQL query so you do not need to identify it in the check. The check must include at least one [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations) to define when the check result ought to fail or warn.
+You can then use the template in a check in the same, or different, `checks.yml` file. Even though the name of the dataset is included in the SQL query, you need to identify it in the check. The check must include at least one [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations) to define when the check result ought to fail or warn.
 {% include code-header.html %}
 ```yaml
-checks:
+checks for dim_customer:
   - $template_beta:
       warn: when between 1000 and 9999
 ```
