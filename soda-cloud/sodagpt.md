@@ -5,12 +5,13 @@ description: Use SodaGPT to turn natural language into production-ready data qua
 parent: Soda Cloud
 ---
 
-# Write checks with SodaGPT![preview](/assets/images/preview.png){:height="100px" width="100px"}
+# Write checks with SodaGPT <br/>
+![preview](/assets/images/preview.png){:height="85px" width="85px"}<br/>
 *Last modified on {% last_modified_at %}*
 
 **SodaGPT** is a generative AI assistant for data quality testing.
 
-Log in to your **Soda Cloud** account, click the **Ask SodaGPT** button in the main nav, then provide natural language instructions to the interface to receive fully-formed, syntax-correct checks in the Soda Checks Language (SodaCL). If you do not already have an account, <a href="https://cloud.soda.io/signup" target="_blank">sign up for Soda Cloud</a> for a 45-day free trial.
+<a href="https://cloud.soda.io/login" target="_blank">Log in</a> to your **Soda Cloud** account, click the **Ask SodaGPT** button in the main nav, then provide natural language instructions to the interface to receive fully-formed, syntax-correct checks in the [Soda Checks Language (SodaCL)]({% link soda-cl/metrics-and-checks.md %}). If you do not already have an account, <a href="https://cloud.soda.io/signup" target="_blank">sign up for Soda Cloud</a> for a 45-day free trial.
 
 Use the generated checks to test data quality in your data pipeline, in your development workflow, and in your Soda Agreements to prevent data quality issues from causing downstream impact.
 
@@ -40,11 +41,15 @@ Log in to your **Soda Cloud** account, click the **Ask SodaGPT** button in the m
 
 ## About the AI
 
-SodaGPT uses Soda technology to translate natural language requirements into SodaCL checks. It is not related to GPT3, CPT4, chatGPT or OpenAI. Soda trained a very specialized Large Language Model (LLM) for SodaGPT's functionality. 
+SodaGPT uses Soda technology to translate natural language requirements into SodaCL checks. It is not related to GPT3, CPT4, chatGPT or OpenAI. 
+
+For SodaGPT's functionality, Soda trained a very specialized Large Language Model (LLM) based on the open-source Falcon-7b model. 
 
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Get started with Soda by following a [tutorial]({% link soda/quick-start-sip.md %}).
+* Consider using [check suggestions]({% link soda-cl/check-suggestions.md %}) to profile your data and suggest basic checks for data quality.
 <br />
 
 ---
