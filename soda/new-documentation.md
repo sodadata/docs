@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### June 27, 2023
+* Documentation to accompany the preview launch of [SodaGPT]({% link soda-cloud/sodagpt.md %}).
+
 #### June 23, 2023
 * Changed requirement for [check template]({% link soda-cl/check-template.md %}) to include the dataset identifier in the first line of the check so that Soda Cloud can properly render the check results.
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.40 and Soda Core 3.0.41.
