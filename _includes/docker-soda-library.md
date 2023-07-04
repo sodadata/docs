@@ -1,13 +1,13 @@
 Use <a href="https://hub.docker.com/repository/docker/sodadata/soda-library" target="_blank">Soda's Docker image</a> in which Soda Scientific is pre-installed.
 
 1. If you have not already done so, <a href="https://docs.docker.com/get-docker/" target="_blank">install Docker</a> in your local environment. 
-2. From Terminal, run the following command to pull the latest Soda Library's official Docker image.
+2. From Terminal, run the following command to pull Soda Library's official Docker image; adjust the version to reflect the most [recent release]({% link release-notes/soda-library.md %}).
 ```shell
-docker pull sodadata/soda-library
+docker pull sodadata/soda-library:v1.0.3
 ```
 3. Verify the pull by running the following command.
 ```shell
-docker run sodadata/soda-library --help
+docker run sodadata/soda-library:v1.0.3 --help
 ```
 Output:
 ```shell

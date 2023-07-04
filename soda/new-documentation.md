@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### July 4, 2023
+* Updated commands for [installing]({% link soda-library/install.md %}#install) Soda Library using a Docker image.
+
 #### June 27, 2023
 * Documentation to accompany the preview launch of [SodaGPT]({% link soda-cloud/sodagpt.md %}).
 
