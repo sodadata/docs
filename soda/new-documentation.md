@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### July 5, 2023
+* Added documentation for the `samples columns` check configuration for metrics and checks that implicitly collect failed row samples: [missing]({% link soda-cl/missing-metrics.md %}#failed-row-samples), [validity]({% link soda-cl/validity-metrics.md %}#failed-row-samples), [duplicates]({% link soda-cl/numeric-metrics.md %}#failed-row-samples), [reference]({% link soda-cl/reference.md %}#failed-row-samples).
+
 #### July 4, 2023
 * Updated commands for [installing]({% link soda-library/install.md %}#install) Soda Library using a Docker image.
 

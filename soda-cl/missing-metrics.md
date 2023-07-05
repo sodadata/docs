@@ -155,6 +155,17 @@ checks for dim_customer:
 ```
 <br />
 
+You can also use a `samples columns` configuration to a check to specify the columns for which Soda must implicitly collect failed row sample values, as in the following example. Soda only collects this check's failed row samples for the columns you specify in the list. 
+
+Note that the list list of samples columns does not support wildcard characters (%).
+```yaml
+checks for dim_employee:
+  - missing_count(gender) = 0:
+      missing values: ["M", "Q"]
+      samples columns: [employee_key, first_name]
+```
+<br />
+
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for missing values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-missing-count](/assets/images/failed-missing-count.png){:height="700px" width="700px"}
@@ -255,25 +266,6 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 {% include list-symbols.md %}
 
-<!--
-## Configure global missing values (experimental)
-
-Optionally, you can use a global configuration to define what qualifies as a missing value.  Global configurations apply to all checks in a dataset so that you can write checks that use missing metrics without having to declare what qualifies as a missing value in each individual check.
-
-The following example defines a global column configuration for what qualifies as a missing value for the `growth_pct` column. You can add the global configuration section to any part of your checks.yml file. The check that uses a `missing_percent` references the global configuration to determine what qualifies as a missing value.
-
-```yaml
-configurations for dim_customer:
-  missing values for first_name: [none]
-
-checks for dim_customer:
-  - missing_percent(first_name) < 1%
-```
-
-* In your global column configurations, you can identify column names with or without quotes. If you use quotes with the column name, any checks you write that do *not* use the quotes, do not use the global configuration. Refer to [Use quotes in a check]({% link soda-cl/metrics-and-checks.md %}##use-quotes-in-a-check).
-* Globally defined missing values do not have an effect on aggregation checks. For example, if you globally define `0` as a missing value for a column named `value`, SodaCL still uses `0` when calculating the following aggregation check: `- avg(value) between 30 and 70`.
-* You can define both global and local column configurations in a checks YAML file. If you accidentally configure the same property both globally and locally and the values conflict, SodaCL uses the local configuration to execute the check.
--->
 
 ## Go further
 
