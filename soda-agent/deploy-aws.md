@@ -80,7 +80,7 @@ kubectl create namespace soda-agent
 When you deploy a Soda Agent on EKS Fargate, AWS matches the Fargate Profile using annotation labels in the Soda Agent Helm chart. Without the profile, the Helm chart cannot successfully deploy. <br />
 Refer to [Troubleshoot deployment](#troubleshoot-deployment) below if you encounter errors.
 ```shell
-eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --region us-west-1 --namespace soda-agent
+eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --region eu-central-1 --namespace soda-agent
 ```
 6. Run the following command to change the context to associate the current namespace to `soda-agent`. 
 ```shell
@@ -115,7 +115,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 * Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud. The cluster stores these key values as Kubernetes secrets.
 * Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
 * Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
-* Optionally, add `soda.core` settings to configure idle workers in the cluster. Launch an idle worker so that at scan time, the agent passes instructions to an already-running idle Scan Launcher and avoids the time-consuming task of starting the pod from scratch. This helps your Soda Cloud test scans run faster. If you wish, you can configure multiple idle scan launchers waiting for instructions.  
+* Optionally, add `soda.scanlauncher` settings to configure idle workers in the cluster. Launch an idle worker so that at scan time, the agent passes instructions to an already-running idle Scan Launcher and avoids the time-consuming task of starting the pod from scratch. This helps your Soda Cloud test scans run faster. If you wish, you can configure multiple idle scan launchers waiting for instructions.  
 * Read more [about the `helm install` command](#about-the-helm-install-command).
 ```shell
 helm install soda-agent soda-agent/soda-agent \
@@ -125,8 +125,8 @@ helm install soda-agent soda-agent/soda-agent \
     --set soda.cloud.endpoint=https://cloud.soda.io \
     --set soda.apikey.id=*** \
     --set soda.apikey.secret=**** \
-    --set soda.core.idle=true \
-    --set soda.core.replicas=1 \
+    --set soda.scanlauncher.idle.enabled=true \
+    --set soda.scanlauncher.idle.replicas=1 \
     --namespace soda-agent
 ```
 The command-line produces output like the following message:
@@ -167,7 +167,7 @@ Containers:
 * `id` and `secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account. 
 * Replace the value of `name` with a custom name for your agent, if you wish.
 * Specify the value for `endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
-* Optionally, add `soda.core` settings to configure idle workers in the cluster. Launch an idle worker so that at scan time, the agent passes instructions to an already-running idle Scan Launcher and avoids the time-consuming task of starting the pod from scratch. This helps your Soda Cloud test scans run faster. If you wish, you can configure multiple idle scan launchers waiting for instructions. 
+* Optionally, add `soda.scanlauncher` settings to configure idle workers in the cluster. Launch an idle worker so that at scan time, the agent passes instructions to an already-running idle Scan Launcher and avoids the time-consuming task of starting the pod from scratch. This helps your Soda Cloud test scans run faster. If you wish, you can configure multiple idle scan launchers waiting for instructions. 
 ```yaml
 soda:
         apikey:
@@ -175,9 +175,10 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
-        core:
-           idle: true
-           replicas: 1
+        scanlauncher:
+          idle: 
+            enabled: true
+            replicas: 1
         cloud:
           # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
           endpoint: "https://cloud.soda.io"
@@ -258,17 +259,17 @@ Refer to [Helpful kubectl commands]({% link soda-agent/helpful-commands.md %}) f
 **Problem:** `ResourceNotFoundException: No cluster found for name: soda-agent.` 
 
 **Solution:**  If you get an error like this when you attempt to create a Fargate profile, it may be a question of region. 
-1. Access your <a href="https://us-west-1.console.aws.amazon.com/cloudformation/home" target="_blank">AWS CloudFormation console</a>, then click **Stacks** to find the eksctl-soda-agent-cluster that you created. If you do not see the stack, adjust the region of your CloudFormation console (top nav bar, next to your username).
+1. Access your <a href="https://eu-central-1.console.aws.amazon.com/cloudformation/home" target="_blank">AWS CloudFormation console</a>, then click **Stacks** to find the eksctl-soda-agent-cluster that you created. If you do not see the stack, adjust the region of your CloudFormation console (top nav bar, next to your username).
 2. Try running the command: `aws eks list-clusters`. It likely returns the following.
 ```
 {
     "clusters": []
 }
 ```
-2. Try running the command: `aws cloudformation list-stacks --region us-west-1` replacing the value of `--region` with the value you used for `region` when you created the EKS Fargate cluster. 
+2. Try running the command: `aws cloudformation list-stacks --region eu-central-1` replacing the value of `--region` with the value you used for `region` when you created the EKS Fargate cluster. 
 3. If that command returns information about the cluster you just created, add the `--region` option to the command to create a Fargate profile.
 ```shell
-eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --region us-west-1 --namespace soda-agent
+eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --region eu-central-1 --namespace soda-agent
 ```
 
 
