@@ -242,7 +242,7 @@
   subcategories:
   - subtitle: Reporting API v1
     page: api-docs/reporting-api-v1.md
-  - subtitle: Reporting API v0
+  - subtitle: Reporting API v0 (Soon Deprecated)
     page: api-docs/reporting-api.md
   - subtitle: Changelog and migration guide
     page: api-docs/reporting-api-v1-migration-guide.md
