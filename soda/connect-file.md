@@ -13,7 +13,7 @@ For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}),
 [Define a programmatic scan]({% link soda-library/programmatic.md %}) to use Soda to scan a local file for data quality. Refer to the following example that executes a simple check for row count of the dataset.
 {% include code-header.html %}
 ```python
-import dask.datasets as dd
+import dask.dataframe as dd
 from soda.scan import Scan
 
 # Create Soda Library Scan object and set a few required properties
