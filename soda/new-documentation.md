@@ -11,6 +11,9 @@ parent: Reference
 
 #### July 21, 2023
 * Added documentation to complement [Google CloudSQL]({% link soda/connect-cloudsql.md %}) support.
+* Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.3 and Soda Library 1.0.4.
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.42 - 3.0.47.
+* Added new `http_headers` configuration parameter for [Trino data source]({% link soda/connect-trino.md %}).
 
 #### July 4, 2023
 * Updated commands for [installing]({% link soda-library/install.md %}#install) Soda Library using a Docker image.
