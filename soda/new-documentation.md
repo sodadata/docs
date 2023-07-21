@@ -107,7 +107,7 @@ parent: Reference
 
 #### March 21, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.29 and Soda Core 3.0.30.
-* Added instructions for [limiting samples]({% link soda-cl/failed-rows-checks.md %}(#set-a-sample-limit)) for an entire data source.
+* Added instructions for [limiting samples]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit) for an entire data source.
 
 #### March 9, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.28.
