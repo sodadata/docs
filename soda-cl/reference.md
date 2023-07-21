@@ -63,6 +63,16 @@ checks for dim_customers:
 ``` 
 <br />
 
+You can also use a `samples columns` configuration to a check to specify the columns for which Soda must implicitly collect failed row sample values, as in the following example. Soda only collects this check's failed row samples for the columns you specify in the list. 
+
+Note that the list of samples columns does not support wildcard characters (%).
+```yaml
+checks for dim_customers:
+  - values in (state_code, state_name) must exist in iso_3166-2 (code, subdivision_name):
+      samples columns: [state_code]
+```
+<br />
+
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a reference check. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 

@@ -15,6 +15,9 @@ parent: Reference
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.42 - 3.0.47.
 * Added new `http_headers` configuration parameter for [Trino data source]({% link soda/connect-trino.md %}).
 
+#### July 6, 2023
+* Added documentation for the `samples columns` check configuration for metrics and checks that implicitly collect failed row samples: [missing]({% link soda-cl/missing-metrics.md %}#failed-row-samples), [validity]({% link soda-cl/validity-metrics.md %}#failed-row-samples), [duplicates]({% link soda-cl/numeric-metrics.md %}#failed-row-samples), [reference]({% link soda-cl/reference.md %}#failed-row-samples).
+
 #### July 4, 2023
 * Updated commands for [installing]({% link soda-library/install.md %}#install) Soda Library using a Docker image.
 
