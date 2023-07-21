@@ -26,6 +26,7 @@ data_source my_datasource_name:
   catalog: 
   schema:
   http_headers:
+  client_tags:
 ```
 
 | Property | Required | Notes |
@@ -38,6 +39,7 @@ data_source my_datasource_name:
 | catalog  | required |       |
 | schema   | required |       |
 | http_headers | optional |   |
+| client_tags | optional |    |
 
 
 {% include test-connection.md %}
