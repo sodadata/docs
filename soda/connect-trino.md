@@ -24,7 +24,9 @@ data_source my_datasource_name:
   username: 
   password: 
   catalog: 
-  schema: 
+  schema:
+  http_headers:
+  client_tags:
 ```
 
 | Property | Required | Notes |
@@ -36,6 +38,8 @@ data_source my_datasource_name:
 | password | required | Consider using system variables to retrieve this value securely using, for example, `${TRINO_PASSWORD}`. |
 | catalog  | required |       |
 | schema   | required |       |
+| http_headers | optional |   |
+| client_tags | optional |    |
 
 
 {% include test-connection.md %}

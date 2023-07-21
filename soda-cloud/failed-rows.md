@@ -41,7 +41,7 @@ Where your datasets contain sensitive or private information, you may *not* want
 
 {% include disable-all-samples.md %}
 
-See also: [Set a sample limit for a data source]({% link soda-cl/failed-rows-checks.md %}(#set-a-sample-limit))
+See also: [Set a sample limit for a data source]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit)
 
 <br />
 

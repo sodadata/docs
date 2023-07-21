@@ -9,7 +9,13 @@ parent: Reference
 
 <br />
 
-#### July 5, 2023
+#### July 21, 2023
+* Added documentation to complement [Google CloudSQL]({% link soda/connect-cloudsql.md %}) support.
+* Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.3 and Soda Library 1.0.4.
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.42 - 3.0.47.
+* Added new `http_headers` configuration parameter for [Trino data source]({% link soda/connect-trino.md %}).
+
+#### July 6, 2023
 * Added documentation for the `samples columns` check configuration for metrics and checks that implicitly collect failed row samples: [missing]({% link soda-cl/missing-metrics.md %}#failed-row-samples), [validity]({% link soda-cl/validity-metrics.md %}#failed-row-samples), [duplicates]({% link soda-cl/numeric-metrics.md %}#failed-row-samples), [reference]({% link soda-cl/reference.md %}#failed-row-samples).
 
 #### July 4, 2023
@@ -104,7 +110,7 @@ parent: Reference
 
 #### March 21, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.29 and Soda Core 3.0.30.
-* Added instructions for [limiting samples]({% link soda-cl/failed-rows-checks.md %}(#set-a-sample-limit)) for an entire data source.
+* Added instructions for [limiting samples]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit) for an entire data source.
 
 #### March 9, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.28.

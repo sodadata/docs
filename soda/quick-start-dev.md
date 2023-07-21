@@ -523,7 +523,7 @@ To trigger the GitHub Action job and initiate a Soda scan for data quality, crea
                     <h2>Experiment</h2>
                     <a href="/soda/quick-start-sodacl.html">SodaCL tutorial</a>                    
                     <a href="/soda-cl/metrics-and-checks.html">Study metrics and checks</a>
-                    <a href="/soda-cl/user-defined.md">Write custom SQL checks</a>
+                    <a href="/soda-cl/user-defined.html">Write custom SQL checks</a>
                     <a href="/soda-cl/compare.html">Compare data</a>
                 </div>
                 <div>
