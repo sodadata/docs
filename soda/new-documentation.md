@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### July 21, 2023
+* Added documentation to complement [Google CloudSQL]({% link soda/connect-cloudsql.md %}) support.
+
 #### July 4, 2023
 * Updated commands for [installing]({% link soda-library/install.md %}#install) Soda Library using a Docker image.
 
