@@ -9,7 +9,8 @@ parent: SodaCL
 *Last modified on {% last_modified_at %}*
 
 Use a check template to define a reusable, user-defined metric that you can apply to many checks in multiple checks files.<br />
-*Requires Soda Library*
+*Requires Soda Library* <br />
+*Not yet supported in Soda Cloud*
 {% include code-header.html %}
 ```yaml
 templates:
@@ -38,6 +39,8 @@ checks for dim_account:
 
 ## Define a check template
 *Requires Soda Library* <br />
+*Not yet supported in Soda Cloud*
+
 A check template involves both a **template YAML** file in which you define resuable user-defined metrics, and at least one **checks YAML** file, in which you use the metric in a check for data quality. 
 
 A check template borrows from the [user-defined check]({% link soda-cl/user-defined.md %}) syntax and has several parameters to define:
@@ -102,6 +105,18 @@ Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 
 <br />
 
+In a variation of the example above, you can use a template within a [failed row check]({% link soda-cl/failed-rows-checks.md %}) so as to collect failed row samples, as in the example below.  
+
+```yaml
+checks for dim_account:
+  - failed rows:
+      $template_alpha:
+        parameters:
+          table: dim_account
+```
+
+<br />
+
 In the following example, the same `template.yml` file contains a second template definition for `beta`. Together with the other parameters, this user-defined metric forms the template named `template_beta` and does not use a variable for the table name.
 {% include code-header.html %}
 ```yaml
@@ -141,8 +156,9 @@ Scan summary:
     $template_beta warn when between 1000 and 9999 [PASSED]
 All is good. No failures. No warnings. No errors.
 ```
-
 <br />
+
+
 
 ## Optional check configurations
 

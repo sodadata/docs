@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### July 24, 2023
+* Added support for failed row checks when using [check templates]({% link soda-cl/check-template.md %}).
+
 #### July 21, 2023
 * Added documentation to complement [Google CloudSQL]({% link soda/connect-cloudsql.md %}) support.
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.3 and Soda Library 1.0.4.
