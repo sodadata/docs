@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### August 10, 2023
+* Added documentation for the new, native integration of [Soda in Atlan]({% link soda/integrate-atlan.md %}).
+
 #### July 24, 2023
 * Added support for failed row checks when using [check templates]({% link soda-cl/check-template.md %}).
 
