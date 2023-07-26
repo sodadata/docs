@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### July 26, 2023
+* Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.5.
+
 #### July 24, 2023
 * Added support for failed row checks when using [check templates]({% link soda-cl/check-template.md %}).
 

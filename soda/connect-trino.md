@@ -25,6 +25,7 @@ data_source my_datasource_name:
   password: 
   catalog: 
   schema:
+  source:
   http_headers:
   client_tags:
 ```
@@ -38,6 +39,7 @@ data_source my_datasource_name:
 | password | required | Consider using system variables to retrieve this value securely using, for example, `${TRINO_PASSWORD}`. |
 | catalog  | required |       |
 | schema   | required |       |
+| source   | optional |       |
 | http_headers | optional |   |
 | client_tags | optional |    |
 
