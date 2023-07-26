@@ -11,6 +11,7 @@ parent: Reference
 
 #### July 26, 2023
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.5.
+* Added detail to [schema check]({% link soda-cl/schema.md %}) documentation for new `schema_name` parameter.
 
 #### July 24, 2023
 * Added support for failed row checks when using [check templates]({% link soda-cl/check-template.md %}).

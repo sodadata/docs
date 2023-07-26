@@ -46,6 +46,7 @@ checks for dim_product:
 ```
 
 [Define schema checks](#define-schema-checks) <br />
+[Define schema evolution checks](#define-schema-evolution-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of validation keys](#list-of-validation-keys) <br />
 [Expect one check result](#expect-one-check-result)<br />
@@ -101,7 +102,20 @@ checks for dim_product:
 
 <br />
 
-### Define schema evolution checks
+Add a `schema_name` parameter to a schema check to address a situation in which you need to explicitly identify or override a dataset's schema in the data source.
+
+```yaml
+checks for dim_employee:
+   - schema:
+      schema_name: staff.pr
+      name: Required columns present
+      warn:
+        when required column missing: [last_name, birth_date]
+```
+
+<br />
+
+## Define schema evolution checks
 
 Rather than specifying exact parameters for column changes, you can use the `when schema changes` validation key to warn or fail when indistinct changes occur in a dataset.
 
