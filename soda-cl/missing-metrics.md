@@ -248,8 +248,8 @@ checks for CUSTOMERS [daily]:
 
 | Metric | Column config keys | Description | Supported data type | Supported data sources | 
 | ------ | ------------------ | ----------- | ------------------- |------------------------| 
-| `missing_count` | `missing regex` <br /> `missing values` | The number of rows in a column that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake   |
-| `missing_percent` | `missing regex` <br /> `missing values` | The percentage of rows in a column, relative to the total row count, that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Redshift <br />  Apache Spark DataFrames <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Snowflake  | 
+| `missing_count` | `missing regex` <br /> `missing values` | The number of rows in a column that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames |
+| `missing_percent` | `missing regex` <br /> `missing values` | The percentage of rows in a column, relative to the total row count, that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames  | 
 
 
 ## List of configuration keys
