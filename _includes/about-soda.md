@@ -11,7 +11,7 @@ Is your data fresh? Is it complete or missing values? Are there unexpected dupli
 
 Soda works by taking the data quality checks that you prepare and using them to run a scan of datasets in a data source. A scan is a CLI command which instructs Soda to prepare optimized SQL queries that execute data quality checks on your data source to find invalid, missing, or unexpected data. When checks fail, they surface bad-quality data and present check results that help you investigate and address quality issues. 
 
-To test your data quality, you install the **Soda CLI tool** and sign up for a **Soda Cloud account** so that you can complete the following tasks:
+To test your data quality, you install the **Soda Library**, and sign up for a **Soda Cloud account** that connects to your Soda Library using API keys so that you can complete the following tasks:
 
 * **Connect to your data source.** <br />To connect to a data source such as Snowflake, Amazon Athena, or Big Query, you use a `configuration.yml` file which stores access details for your data source such as host, port, and data source login credentials. 
 * **Define checks to surface bad-quality data.** <br />To define the data quality checks that Soda runs against a dataset, you use a `checks.yml` file. A Soda Check is a test that Soda performs when it scans a dataset in your data source. The checks YAML file stores the checks you write using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.
