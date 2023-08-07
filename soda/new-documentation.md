@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### August 10, 2023
+* Published new documentation for the [GitHub Action for Soda]({% link soda/integrate-github.md %}).
+
 #### July 26, 2023
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.5.
 * Added detail to [schema check]({% link soda-cl/schema.md %}) documentation for new `schema_name` parameter.
