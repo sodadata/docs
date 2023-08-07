@@ -26,12 +26,12 @@ Soda works by taking the data quality checks that you prepare and using them to 
 
 A scan is a command which instructs Soda to execute data quality checks on your data source to find invalid, missing, or unexpected data. When data quality checks fail, they surface bad-quality data and present check results that help you investigate and address quality issues.
 
-Working together, **Soda Library** or a **Soda Agent**, **Soda Cloud** and **Soda Checks Language (SodaCL) ** empower you and your colleagues to collaborate on data quality testing.
+Working together, **Soda Library** or a **Soda Agent**, **Soda Cloud** and **Soda Checks Language (SodaCL)** empower you and your colleagues to collaborate on data quality testing.
 
 * **Soda Library** is a Python library and CLI tool that performs the work of converting user-defined input into SQL queries that execute when you run scans for data quality. This "engine" of Soda uses the data source connection information you provide in a configuration YAML file, and the data quality checks you define in a checks YAML file, to run on-demand or scheduled scans of your data. Soda Library pushes scan results to your Soda Cloud account to enable you and your colleagues to analyze check results, investigate issues, and track dataset health over time. 
 {% include banner-core.md %}
 
-* The **Soda Agent** is a containerized Soda Library that you deploy in a Kubernetes cluster in your cloud services provider environment, such as Azure or AWS.
+* The **Soda Agent** is a containerized Soda Library that you deploy in a Kubernetes cluster in your cloud services provider environment, such as Azure or AWS. Deploy a Soda Agent to use Soda Library while meeting infrastructure team's security rules and requirements. See [Soda Agent basic concepts]({% link soda-agent/basics.md %}) for details.
 
 * **Soda Cloud** communicates with Soda Library installed as a library and CLI tool in your development environment, or as an agent in your cloud service-based environment. While Soda Library is the mechanism that executes scans, Soda Cloud is what makes data quality results accessible and shareable by multiple team members. Use it to access visualized scan results, discover data quality anomalies, set up alerts for quality checks that fail, and track data quality health over time. Connect your Soda Cloud account to the ticketing, messaging, and data cataloging tools you already use to embed Soda quality checks into your team's existing processes and pipelines. 
 
