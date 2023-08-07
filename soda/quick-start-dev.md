@@ -19,8 +19,7 @@ Use this guide to install and set up Soda to test the quality of your data durin
 **[02](#about-this-guide)** Get context for this guide<br />
 **[03](#add-the-github-action-for-soda-to-a-workflow)** Add the GitHub Action for Soda to a Workflow<br />
 **[04](#write-checks-for-data-quality)** Write checks for data quality<br />
-**[05](#set-up-slack-integration-and-notification-rules)** Set up Slack integration and notification rules<br />
-**[06](#trigger-a-scan-and-examine-the-scan-results)** Trigger a scan and examine the scan results<br />
+**[05](#trigger-a-scan-and-examine-the-scan-results)** Trigger a scan and examine the scan results<br />
 <br />
 
 
@@ -40,12 +39,16 @@ Borrow from this guide to connect to your own data source, add the GitHub Action
 
 ## Add the GitHub Action for Soda to a Workflow
 
-1. If you have not already done so, <a href="https://cloud.soda.io/signup" target="_blank">create a Soda Cloud account</a>, which is free for a 45-day trial. You need a Soda Cloud account to be able to run scans. 
-2. In the GitHub repository in which you wish to include data quality scans in a workflow, create a folder named `soda` for the configuration files that Soda requires as input to run a scan. 
+1. If you have not already done so, <a href="https://cloud.soda.io/signup" target="_blank">create a Soda Cloud account</a>, which is free for a 45-day trial. <br />
+    <details>
+        <summary style="color:#00BC7E">Why do I need a Soda Cloud account?</summary>
+    To validate your account license or free trial, the Soda Library Docker image that the GitHub Action uses to execute scans must communicate with a Soda Cloud account via API keys. <br />Create <a href="https://go.soda.io/api-keys" target="_blank">new API keys</a> in your Soda Cloud account, then use them to configure the connection between the Soda Library Docker image and your account in step 4 of this procedure. <br /><br />
+    </details>
+2. In the GitHub repository in which you wish to include data quality scans in a Workflow, create a folder named `soda` for the configuration files that Soda requires as input to run a scan. 
 3. In this folder, create two files:
 * a `configuration.yml` file to store the connection configuration Soda needs to connect to your data source and your Soda Cloud account.
 * a `checks.yml` file to store the SodaCL checks you wish to execute to test for data quality; see [next section](#write-checks-for-data-quality).
-4. Follow the the [instructions]({% link soda-library/configure.md %}) to add connection configuration details for your data source and Soda Cloud account to the `configuration.yml`, as per the example below. Use <a href="https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-encrypted-secrets-for-your-repository-and-organization-for-github-codespaces" target="_blank">GitHub Secrets</a> to securely store the values for your data source login credentials, if you wish.
+4. Follow the [instructions]({% link soda-library/configure.md %}) to add connection configuration details for both your data source and your Soda Cloud account to the `configuration.yml`, as per the example below. 
   ```yaml
       data_source my_datasource_name:
         type: snowflake
@@ -66,55 +69,54 @@ Borrow from this guide to connect to your own data source, add the GitHub Action
         api_key_id: ${SODA_CLOUD_API_KEY}
         api_key_secret: ${SODA_CLOUD_API_SECRET} 
   ```
-5. In the `.github/workflows` folder in your GitHub repository, open an existing worfklow or <a href="https://docs.github.com/en/actions/using-workflows/about-workflows#create-an-example-workflow" target="_blank">create a new workflow</a> file. Determine where you wish to add a Soda scan for data quality in your workflow. Refer to [Test data in development]({% link soda/quick-start-dev.md %}) for a recommended approach.
-6. Access the GitHub Marketplace to access the <a href="https://github.com/marketplace/actions/soda-library-action" target="_blank">Soda GitHub Action</a>. Click **Use latest version** to copy the code snippet for the Action.
-7. Paste the snippet into your new or existing workflow as an independent step, then add the required action inputs as in the following example. Refer to [table below](#required-action-inputs) for input details. 
-```yaml
-- name: Soda Library Action
-     uses: sodadata/soda-github-action@v1.0.0
-     with:
-       soda_library_version: v1.0.4
-       data_source: snowflake
-       configuration: .soda/configuration.yaml
-       checks: .soda/checks.yaml
-```
-8. Optionally, add a list of variables for sensitive login credentials and keys, as in the following example. Read more about <a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets" target="_blank">GitHub encrypted secrets</a>.
-```yaml
-- name: Perform Soda Scan
-     uses: sodadata/soda-github-action@v1
-     env:
-       SODA_CLOUD_API_KEY: {% raw %}${{ secrets.SODA_CLOUD_API_KEY }}{% endraw %}
-       SODA_CLOUD_API_SECRET: {% raw %}${{ secrets.SODA_CLOUD_API_SECRET }}{% endraw %}
-       SNOWFLAKE_USER: {% raw %}${{ secrets.SNOWFLAKE_USER }}{% endraw %}
-       SNOWFLAKE_PASS: {% raw %}${{ secrets.SNOWFLAKE_PASS }}{% endraw %}
-     with:
-       soda_library_version: v1.0.4
-       data_source: snowflake1
-       configuration: .soda/configuration.yaml
-       checks: .soda/checks.yaml
-```
+5. In the `.github/workflows` folder in your GitHub repository, open an existing Workflow or <a href="https://docs.github.com/en/actions/using-workflows/about-workflows#create-an-example-workflow" target="_blank">create a new workflow</a> file.  
+6. In your browser, navigate to the GitHub Marketplace to access the <a href="https://github.com/marketplace/actions/soda-library-action" target="_blank">Soda GitHub Action</a>. Click **Use latest version** to copy the code snippet for the Action.
+7. Paste the snippet into your new or existing workflow as an independent step, then add the required action inputs and environment variable as in the following example. 
+* Be sure to add the Soda Action *after* the step in the workflow that completes a dbt run that executes your dbt tests. 
+* Best practice dictates that you configure sensitive credentials using GitHub secrets. Read more about <a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets" target="_blank">GitHub encrypted secrets</a>. <br />
+    ```yaml
+    # This GitHub Action runs a Soda scan on a Snowflake data source called reporting_api_marts.
+    name: Run Soda Scan on [reporting_api_marts]
+    # GitHub triggers this job when a user creates or updates a pull request.
+    on: pull_request
+    jobs:
+      soda_scan:
+        runs-on: ubuntu-latest
+        name: Run Soda Scan
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+
+          - name: Perform Soda Scan
+            uses: sodadata/soda-github-action@main
+            env:
+              SODA_CLOUD_API_KEY: {% raw %}${{ secrets.SODA_CLOUD_API_KEY }}{% endraw %}
+              SODA_CLOUD_API_SECRET: {% raw %}${{ secrets.SODA_CLOUD_API_SECRET }}{% endraw %}
+              SNOWFLAKE_USERNAME: {% raw %}${{ secrets.SNOWFLAKE_USERNAME }}{% endraw %}
+              SNOWFLAKE_PASSWORD: {% raw %}${{ secrets.SNOWFLAKE_PASSWORD }}{% endraw %}
+            with:
+              soda_library_version: v1.0.4
+              data_source: snowflake_api_marts
+              configuration: ./soda/configuration.yml
+              checks: ./soda/checks.yml
+    ```
 9. Save the changes to your workflow file.
 
 ## Write checks for data quality
 
 A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). You can create multiple `checks.yml` files to organize your data quality checks and run all, or some of them, at scan time.
 
-1. In your `soda` folder, open the `checks.yml` file, then copy and paste the following rather generic checks into the file. Note that the `row_count` check is written to fail to demonstrate alerting when a data quality check fails.
+1. In your `soda` folder, open the `checks.yml` file, then copy and paste the following rather generic checks into the file. 
 * Replace the value of `dataset_name` with the name of a dataset in your data source.
 * Replace the value of `column1` with the name of a column in the dataset. <br />
         ```yaml
         checks for dataset_name:
-        # Checks that dataset contains fewer than 2 rows; written to fail
-          - row_count < 2:
-              name: Dataset is unreasonably small
+        # Checks that dataset contains rows
+          - row_count > 0:
+              name: Dataset contains data
         # Checks that column contains no NULL values
           - missing_count(column1) = 0:
               name: No NULL values
-        # Checks for columns removed or added, or change to index or type
-          - schema:
-              warn:
-                when schema changes: any
-              name: No changes to schema
         ```
 3. Save the `checks.yml` file.
 
@@ -122,14 +124,9 @@ Learn more about [SodaCL]({% link soda/quick-start-sodacl.md %}). <br />
 Learn more about using [multiple checks YAML files]({% link soda-library/run-a-scan.md %}#anatomy-of-a-scan-command). <br />
 
 
-## Set up Slack integration and notification rules
-
-{% include quick-start-notifs.md %}
-
-
 ## Trigger a scan and examine the scan results
 
-To trigger the GitHub Action job and initiate a Soda scan for data quality, create a new pull request in your repository. Be sure to trigger a Soda scan *after* you have completed a dbt run that executed your dbt tests. 
+To trigger the GitHub Action and initiate a Soda scan for data quality, create a new pull request in your repository. Be sure to trigger a Soda scan *after* the step in your Workflow that completes the dbt run that executed your dbt tests. 
 
 <details>
     <summary style="color:#00BC7E">What does the GitHub Action do?</summary>
@@ -140,7 +137,7 @@ To summarize, the action completes the following tasks:
    <li>Expands the environment variables to pass to the Docker run command as these variables can be configured in the workflow file and contain secrets.</li>
    <li>Runs the built image to trigger the Soda scan for data quality.</li>
    <li>Converts the Soda Library scan results to a markdown table using newest hash from 1.0.0 version.</li>
-   <li>Creates the pull request comment.</li>
+   <li>Creates a pull request comment.</li>
    <li>Posts any additional messages to make it clear whether or not the scan failed.</li>
   </ol>
 See the public <a href="https://github.com/sodadata/soda-github-action" target="_blank">soda-github-action</a> repository for more detail. <br /><br />
@@ -149,12 +146,11 @@ See the public <a href="https://github.com/sodadata/soda-github-action" target="
 1. For the purposes of this exercise, create a new branch in your GitHub repo, then make a small change to an existing file and commit and push the change to the branch.
 2. Execute a <a href="https://docs.getdbt.com/reference/commands/run" target="_blank">dbt run</a>.
 3. Create a new pull request, then navigate to your GitHub account and review the pull request you just created. Notice that the Soda scan action is queued and perhaps already running against your data to check for quality.
-4. When the job completes, navigate to the pull request's **Conversation** tab to view the comment the Action posted via the github-action bot. The table indicates the states and volumes of the check results.<br />
-**NEED IMAGE HERE**
-5. To examine the full scan report and troubleshoot any issues, click the link to Soda Cloud in the comment, then click **View Logs**. Use [Troubleshoot SocaCL]({% link soda-cl/troubleshoot.md %}) for help diagnosing issues.
-**NEED IMAGE HERE**
-6. Access your Slack workspace, then navigate to the channel to which you directed Soda to send fail notifications in the **Notification Rule** you created. Notice the alert notification of the check that purposely failed during the Soda scan. <br />
-**NEED IMAGE HERE**
+4. When the job completes, navigate to the pull request's **Conversation** tab to view the comment the Action posted via the github-action bot. The table indicates the states and volumes of the check results.x<br /> <br />
+![github-comment-fail](/assets/images/github-comment-fail.png){:height="450px" width="450px"}
+5. To examine the full scan report and troubleshoot any issues, click the link in the comment to **View full scan results**, then click **View Scan Log**. Use [Troubleshoot SocaCL]({% link soda-cl/troubleshoot.md %}) for help diagnosing issues. <br /> <br />
+![scan-report-fail](/assets/images/scan-report-fail.png){:height="500px" width="500px"}
+
 
 ✨Well done!✨ You've taken the first step towards a future in which you and your colleagues prevent data quality issues from getting into production. Huzzah!
 
@@ -175,8 +171,7 @@ See the public <a href="https://github.com/sodadata/soda-github-action" target="
                     <img src="/assets/images/icons/icon-new@2x.png" width="54" height="40">
                     <h2>Sip more Soda</h2>
                     <a href="/soda/integrate-webhooks.html" target="_blank">Integrate with your tools</a>
-                    <a href="/soda-cl/check-attributes.html">Add check attributes</a>
-                    <a href="/soda-cloud/failed-rows.html">Examine failed row samples</a>
+                    <a href="/soda/integrate-github.html">Learn about the GitHub Action for Soda</a>
                     <a href="/api-docs/reporting-api-v1.html">Report on data health</a>
                 </div>
                 <div>

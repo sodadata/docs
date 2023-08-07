@@ -83,13 +83,13 @@ See the public <a href="https://github.com/sodadata/soda-github-action" target="
 1. If you have not already done so, <a href="https://cloud.soda.io/signup" target="_blank">create a Soda Cloud account</a>, which is free for a 45-day trial. <br />
     <details>
         <summary style="color:#00BC7E">Why do I need a Soda Cloud account?</summary>
-    To validate your account licence or free trial, the Soda Library Docker image that the GitHub Action uses to execute scans must communicate with a Soda Cloud account via API keys. <br />Create <a href="https://go.soda.io/api-keys" target="_blank">new API keys</a> in your Soda Cloud account, then use them to configure the connection between the Soda Library Docker image and your account in step 4 of this procedure. <br /><br />
+    To validate your account license or free trial, the Soda Library Docker image that the GitHub Action uses to execute scans must communicate with a Soda Cloud account via API keys. <br />Create <a href="https://go.soda.io/api-keys" target="_blank">new API keys</a> in your Soda Cloud account, then use them to configure the connection between the Soda Library Docker image and your account in step 4 of this procedure. <br /><br />
     </details>
-2. In the GitHub repository in which you wish to include data quality scans in a workflow, create a folder named `soda` for the configuration files that Soda requires as input to run a scan. 
+2. In the GitHub repository in which you wish to include data quality scans in a Workflow, create a folder named `soda` for the configuration files that Soda requires as input to run a scan. 
 3. In this folder, create two files:
 * a `configuration.yml` file to store the connection configuration Soda needs to connect to your data source and your Soda Cloud account.
 * a `checks.yml` file to store the SodaCL checks you wish to execute to test for data quality. A check is a test that Soda executes when it scans a dataset in your data source.
-4. Follow the the [instructions]({% link soda-library/configure.md %}) to add connection configuration details for both your data source and Soda Cloud account to the `configuration.yml`, and add checks for data quality for a dataset to your `checks.yml`. Examples of each follow. <br />
+4. Follow the [instructions]({% link soda-library/configure.md %}) to add connection configuration details for both your data source and Soda Cloud account to the `configuration.yml`, and add checks for data quality for a dataset to your `checks.yml`. Examples of each follow. <br />
 ```yaml
 # configuration.yml file
 data_source aws_postgres_retail:
@@ -112,7 +112,7 @@ checks for retail_orders:
   - row_count > 0
   - missing_count(order_quantity) < 3
 ```
-5. In the `.github/workflows` folder in your GitHub repository, open an existing worfklow or <a href="https://docs.github.com/en/actions/using-workflows/about-workflows#create-an-example-workflow" target="_blank">create a new workflow</a> file. Determine where you wish to add a Soda scan for data quality in your workflow. Refer to [Test data in development]({% link soda/quick-start-dev.md %}) for a recommended approach.
+5. In the `.github/workflows` folder in your GitHub repository, open an existing Workflow or <a href="https://docs.github.com/en/actions/using-workflows/about-workflows#create-an-example-workflow" target="_blank">create a new workflow</a> file. Determine where you wish to add a Soda scan for data quality in your workflow. Refer to [Test data in development]({% link soda/quick-start-dev.md %}) for a recommended approach.
 6. Access the GitHub Marketplace to access the <a href="https://github.com/marketplace/actions/soda-library-action" target="_blank">Soda GitHub Action</a>. Click **Use latest version** to copy the code snippet for the Action.
 7. Paste the snippet into your new or existing workflow as an independent step, then add the required action inputs as in the following example. Refer to [table below](#required-action-inputs) for input details. 
 ```yaml
@@ -140,7 +140,7 @@ checks for retail_orders:
        checks: .soda/checks.yaml
 ```
 9. Save the changes to your workflow file, then test the action's functionality by triggering the event that workflow job in GitHub, such as creating a pull request. <br />To monitor the progress of the workflow, access the **Actions** tab in your GitHub repository, select the workflow in which you added the GitHub Action for Soda, then find the run in the list of **Workflow Runs**. 
-10. When the job completes, navigate to the pull request's **Conversation** tab to view the comment the Action posted via the github-action bot. To examine the full scan report and troubleshoot any issues, click the link to **View the full scan results** in the comment, then click **View Logs**. Use [Troubleshoot SocaCL]({% link soda-cl/troubleshoot.md %}) for help diagnosing issues with SodaCL checks.
+10. When the job completes, navigate to the pull request's **Conversation** tab to view the comment the Action posted via the github-action bot. To examine the full scan report and troubleshoot any issues, click the link to **View the full scan results** in the comment, then click **View Scan Log**. Use [Troubleshoot SocaCL]({% link soda-cl/troubleshoot.md %}) for help diagnosing issues with SodaCL checks.
 
 **Next:**
 * Add more SodaCL checks to your `checks.yml` file to validate data according to your own use cases and requirements. Refer to [SodaCL]({% link soda-cl/soda-cl-overview.md %}) reference documentation, and the [SodaCL tutorial]({% link soda/quick-start-sodacl.md %}).
@@ -163,6 +163,8 @@ checks for retail_orders:
 * Be aware that for self-hosted runners in GitHub:
   * Windows runners are not supported, including the use of official Windows-based images such as windows-latest
   * MacOS runners require installation of Docker because macos-latest does not come with Docker pre-installed.
+* The scan results that the GitHub Action for Soda produces do not appear among your primary checks results. The results are ephemeral and serve only to flag and fix issues during development.
+* The ephemeral scan results that the GitHub Action for Soda produces do not persist historical measurements. Thus, checks that normally evaluate against stored values in the Cloud Metric Store, such as schema checks, do not evaluate in scans that the GitHub Action for Soda executes.  
 
 ## Go further
 
