@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### August 7, 2023
+* Moved [Check suggestions]({% link soda-library/check-suggestions.md %}) documentation from SodaCL section to Soda Library.
+
 #### July 26, 2023
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.5.
 * Added detail to [schema check]({% link soda-cl/schema.md %}) documentation for new `schema_name` parameter.
