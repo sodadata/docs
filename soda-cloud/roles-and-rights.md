@@ -106,7 +106,7 @@ The following table outlines the rights of each role associated with each resour
 |----------------------------------------------------------------------------|:-----:|:--------:|:------:|:------:|
 | Create and track incidents associated with one or more check results       |   ✓   |    ✓     |    ✓   |    ✓   |
 | Delete an incident                                                         |   ✓   |    ✓     |    ✓   |        |
-| View Check Results of checks associated with a dataset or agreement        |   ✓   |    ✓     |    ✓   |    ✓   |
+| View scan results of checks associated with a dataset or agreement         |   ✓   |    ✓     |    ✓   |    ✓   |
 | Edit individual checks associated with a dataset ingested via Soda Library    |   ✓   |    ✓     |    ✓   |        |
 | Delete a check                                                             |   ✓   |    ✓     |    ✓   |        |
 | View agreements                                                            |   ✓   |    ✓     |    ✓   |    ✓   |
