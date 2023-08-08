@@ -10,7 +10,7 @@ parent: SodaCL
 
 If you are staring at a blank YAML file wondering what SodaCL checks to write to surface data quality issues, this quick start tutorial is for you. 
 
-Alternatively, use the [Check suggestions]({% link soda-cl/check-suggestions.md %}) assisstant in the Soda Library CLI tool to profile a dataset and auto-generate basic checks for data quality.
+Alternatively, use the [Check suggestions]({% link soda-library/check-suggestions.md %}) assisstant in the Soda Library CLI tool to profile a dataset and auto-generate basic checks for data quality.
 
 ![blank-page](/assets/images/blank-page.png){:height="500px" width="500px"}
 

@@ -76,6 +76,8 @@
     page: soda-library/run-a-scan.md
   - subtitle: Soda Library commands
     page: soda-library/cli-reference.md
+  - subtitle: Check suggestions
+    page: soda-library/check-suggestions.md
   - subtitle: Define programmatic scans
     page: soda-library/programmatic.md
   - subtitle: Configure orchestrated scans
@@ -151,8 +153,6 @@
     page: soda/quick-start-sodacl.md
   - subtitle: Metrics and checks
     page: soda-cl/metrics-and-checks.md
-  - subtitle: Check suggestions
-    page: soda-cl/check-suggestions.md
   - subtitle: Optional check configurations
     page: soda-cl/optional-config.md
   - subtitle: Add check attributes

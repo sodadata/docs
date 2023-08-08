@@ -2,9 +2,10 @@
 layout: default
 title: Check Suggestions
 description: The Check Suggestions CLI assisstant is designed to simplify the process of auto-generating basic data quality checks in SodaCL.
-parent: Soda Cloud
+parent: Soda Library
+redirect_from:
+- /soda-cl/check-suggestions.html
 ---
-
 
 # Check suggestions
 

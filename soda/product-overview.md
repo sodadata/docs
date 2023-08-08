@@ -97,7 +97,7 @@ You can also add Soda scans to your CI/CD development lifecycle to ensure that a
 ## Go further
 
 * [Integrate Soda]({% link soda/integrate-metaphor.md %}) with your data catalog.
-* Auto-generate [check suggestions]({% link soda-cl/check-suggestions.md %}) tailored to your data.
+* Auto-generate [check suggestions]({% link soda-library/check-suggestions.md %}) tailored to your data.
 * Set up bulk [notification rules]({% link soda-cloud/notif-rules.md %}) to send alerts for failed checks.
 * Create [incidents]({% link soda-cloud/incidents.md %}) to track issue investigation.
 * Use the Soda Cloud Reporting API to [prepare reports]({% link api-docs/reporting-api-to-overview-dashboards.md %}) on dataset test coverage and overall health.
