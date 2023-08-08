@@ -40,7 +40,7 @@ parent: Reference
 #### June 15, 2023
 * Introducing Soda Library, a commercial extension of the Soda Core open-source software. It leverages all the power of Soda Core and SodaCL, and offers new features and functionality for Soda customers.
 * New documentation for the new [Group by]({% link soda-cl/group-by.md %}) configuration and [Group evolution check]({% link soda-cl/group-evolution.md %}), both available with Soda Library.
-* New documentation for [Check suggestions]({% link soda-cl/check-suggestions.md %}) using the Soda Library CLI.
+* New documentation for [Check suggestions]({% link soda-library/check-suggestions.md %}) using the Soda Library CLI.
 * New documentation for [Check template configuration]({% link soda-cl/check-template.md %}) supported by Soda Library.
 * Revised syntax guidance regarding multiple thresholds for an alert. See [Optional check configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations).
 * All <a href="https://github.com/sodadata/soda-core/tree/main/docs" target="_blank">documentation for Soda Core</a>, the open-source Python library and CLI tool, has moved to the <a href="https://github.com/sodadata/soda-core" target="_blank">Soda Core repository</a> on GitHub.
