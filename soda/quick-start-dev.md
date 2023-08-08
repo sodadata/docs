@@ -495,7 +495,7 @@ To trigger the GitHub Action job and initiate a Soda scan for data quality, crea
 ![gh-action-fail](/assets/images/gh-action-fail.png){:width="500px"}
 5. Access your Slack workspace, then navigate to the channel to which you directed Soda to send fail notifications in the **Notification Rule** you created. Notice the alert notification of the check that purposely failed during the Soda scan. <br />
 ![slack-alert](/assets/images/slack-alert.png){:width="500px"}
-6. Navigate to your Soda Cloud account, then click **Checks** to access the **Check Results** page. The results from the scan that Soda performed during the GitHub Action job appear in the results table where you can click each line item to learn more about the results... <br />
+6. Navigate to your Soda Cloud account, then click **Checks** to access the **Checks** page. The checks from the scan that Soda performed during the GitHub Action job appear in the table where you can click each line item to learn more about the results... <br />
 ![gh-actions-check-results](/assets/images/gh-actions-check-results.png){:width="700px"}
 ...including, for some types of checks, samples of failed rows to help in your investigation of a data quality issue, as in the example below.
 ![quick-sip-failed-rows](/assets/images/quick-sip-failed-rows.png){:width="700px"}

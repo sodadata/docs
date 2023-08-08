@@ -72,7 +72,7 @@ checks for dim_product:
           - weight
 ```
 
-In the example above, the value for the validation key is in a nested list format, but you can use an inline list of comma-separated values inside square brackets instead. The following example yields identical checks results to the example above.
+In the example above, the value for the validation key is in a nested list format, but you can use an inline list of comma-separated values inside square brackets instead. The following example yields identical check results to the example above.
 {% include code-header.html %}
 ```yaml
 checks for dim_product:

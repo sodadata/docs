@@ -11,7 +11,7 @@ redirect_from: /soda-sql/documentation/failed-rows.html
 
 When a Soda scan results in a failed check, Soda Cloud displays details of the scan results in each check's **Check History** view. To offer more insight into the data that failed a check during a scan, Soda Cloud can display **failed rows samples** in a check's history. 
 
-From the **Checks Results** dashboard, navigate to an indivdual check result history page, then click the **Failed rows** tab (pictured below) to see the failed rows samples associated with a failed check result. 
+From the **Checks** dashboard, select an indivdual check to access its result history page, then click the **Failed rows** tab (pictured below) to see the failed rows samples associated with a failed check result. 
 
 ![failed-rows](/assets/images/failed-rows.png){:height="600px" width="600px"}
 

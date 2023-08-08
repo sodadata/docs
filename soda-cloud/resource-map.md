@@ -58,7 +58,7 @@ If an agreement contains a [cross check]({% link soda-cl/cross-row-checks.md %})
 
 Deleting a scan definition has the potential to impact multiple agreements in a data source. Among other things, the scan definition defines the schedule that Soda Cloud uses to execute scans of data in the data source. 
 
-Any agreements that reference a deleted scan definition would no longer be scanned for data quality. Consequently, your **Check Results** dashboard in Soda Cloud no longer displays check results for the agreement, nor would Soda Cloud send alert notifications.
+Soda does not scan any agreements that reference a deleted scan definition. Consequently, your **Checks** dashboard in Soda Cloud no longer displays checks for the agreement, nor would Soda Cloud send alert notifications.
 
 ![delete-scan-def](/assets/images/delete-scan-def.png){:height="700px" width="700px"}
 
