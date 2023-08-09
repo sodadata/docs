@@ -99,7 +99,7 @@ for each dataset T:
 
 ## For each results in Soda Cloud
 
-Soda Library pushes the check results for each dataset to Soda Cloud as individual rows in the **Check Results** table. Filter the results by dataset to review dataset-specific results.
+Soda Library pushes the check results for each dataset to Soda Cloud where each check appears in the **Checks** dashboard, with an icon indicating their latest scan result. Filter the results by dataset to review dataset-specific results.
 {% include code-header.html %}
 ```yaml
 for each dataset T:

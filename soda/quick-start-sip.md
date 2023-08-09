@@ -211,7 +211,7 @@ Soda Cloud Trace: 4417******32502
 ```
 4. As you can see from the output, some checks failed and Soda sent the results to your Cloud account. To access visualized check results and further examine the failed checks, return to your Soda account in your browser and click **Checks**. <br /> <br />
 ![quick-sip-results](/assets/images/quick-sip-results.png)<br /> <br />
-5. In the table of check results Soda displays, you can click the line item for one of the checks that failed to examine the visualized results in a line graph, and to access the failed row samples that Soda automatically collected when it ran the scan and executed the checks.<br /><br />
+5. In the table of checks that Soda displays, you can click the line item for one of the checks that failed to examine the visualized results in a line graph, and to access the failed row samples that Soda automatically collected when it ran the scan and executed the checks.<br /><br />
 Use the failed row samples, as in the example below, to determine what caused a data quality check to fail.
 ![quick-sip-results](/assets/images/quick-sip-failed-rows.png)<br /><br />
 

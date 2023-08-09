@@ -440,8 +440,8 @@ Learn more about [running Soda scans]({% link soda-library/run-a-scan.md %}).
 
 ## View results and tag datasets
 
-1. In their Soda Cloud account, the Engineer clicks **Checks** to access the **Check Results** page. The results from the scan that Soda performed during the scan appear in the results table where they can click each line item to learn more about the results, as in the example below. <br />
-![gh-actions-check-results](/assets/images/gh-actions-check-results.png){:width="700px"}
+1. In their Soda Cloud account, the Engineer clicks **Checks** to access the **Checks** dashboard. The checks from the scan that Soda performed during the scan appear in the table where they can click each line item to learn more about the results, as in the example below. <br />
+![check-dashboard](/assets/images/check-dashboard.png){:width="700px"}
 2. To more easily retrieve Soda scan results by dbt model, the Engineer navigates to **Datasets**, then clicks the stacked dots at the right of the `dim_product` dataset and selects **Edit Dataset**.
 3. In the **Tags** field, they add a value for `fact_product_category`, the dbt model that uses this dataset, and a tag to indicate the kind of data that Soda is scanning, `raw`, `transformed` or `reporting`, then saves. They repeat these steps to add tags to all the datasets in their Soda Cloud account.
 4. Navigating again to the **Datasets** page, they use the filters to display datasets according to **Tags** and **Arrival Time** to narrow the search for the most recent quality checks associated with their models which have failed or warned.

@@ -29,7 +29,7 @@ redirect_from:
 <br />
 &#10004;  A Python library and CLI tool for data quality testing<br /> <br />
 &#10004;  Compatible with [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}) and [Soda Cloud]({% link soda-cloud/overview.md %}) <br /> <br />
-&#10004;  Supports [Check suggestions]({% link soda-cl/check-suggestions.md %}) to auto-generate basic quality checks tailored to your data <br /> <br />
+&#10004;  Supports [Check suggestions]({% link soda-library/check-suggestions.md %}) to auto-generate basic quality checks tailored to your data <br /> <br />
 &#10004;  Enables data quality testing both in your [data pipeline]({% link soda/quick-start-prod.md %}) and [development workflows]({% link soda/quick-start-dev.md %}) <br /> <br />
 &#10004;  Extended from Soda Core, a free, open-source CLI and Python library in <a href="https://github.com/sodadata/soda-core" target="_blank">GitHub</a> <br /> <br />
 

@@ -13,6 +13,12 @@ parent: Reference
 * Published new documentation for the [GitHub Action for Soda]({% link soda/integrate-github.md %}).
 * Updated [Test data during development]({% link soda/quick-start-dev.md %}) to replace the GitHub Action recipe with the new <a href="https://github.com/marketplace/actions/soda-library-action" target="_blank">GitHub Action for Soda</a>.
 
+#### August 8, 2023
+* Revised documentation to reflect the new **Checks** dashboard, that displays checks and their latest scan results. This replaces the **Check Results** dashboard, that displayed all individual check results.
+
+#### August 7, 2023
+* Moved [Check suggestions]({% link soda-library/check-suggestions.md %}) documentation from SodaCL section to Soda Library.
+
 #### July 26, 2023
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.5.
 * Added detail to [schema check]({% link soda-cl/schema.md %}) documentation for new `schema_name` parameter.
@@ -44,7 +50,7 @@ parent: Reference
 #### June 15, 2023
 * Introducing Soda Library, a commercial extension of the Soda Core open-source software. It leverages all the power of Soda Core and SodaCL, and offers new features and functionality for Soda customers.
 * New documentation for the new [Group by]({% link soda-cl/group-by.md %}) configuration and [Group evolution check]({% link soda-cl/group-evolution.md %}), both available with Soda Library.
-* New documentation for [Check suggestions]({% link soda-cl/check-suggestions.md %}) using the Soda Library CLI.
+* New documentation for [Check suggestions]({% link soda-library/check-suggestions.md %}) using the Soda Library CLI.
 * New documentation for [Check template configuration]({% link soda-cl/check-template.md %}) supported by Soda Library.
 * Revised syntax guidance regarding multiple thresholds for an alert. See [Optional check configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations).
 * All <a href="https://github.com/sodadata/soda-core/tree/main/docs" target="_blank">documentation for Soda Core</a>, the open-source Python library and CLI tool, has moved to the <a href="https://github.com/sodadata/soda-core" target="_blank">Soda Core repository</a> on GitHub.
