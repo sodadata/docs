@@ -124,7 +124,7 @@ checks for retail_orders:
        configuration: .soda/configuration.yaml
        checks: .soda/checks.yaml
 ```
-8. Following best practice, add a list of variables for sensitive login credentials and keys, as in the following example. Read more about <a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets" target="_blank">GitHub encrypted secrets</a>.
+8. (Optional) Following best practice, add a list of variables for sensitive login credentials and keys, as in the following example. Read more about <a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets" target="_blank">GitHub encrypted secrets</a>.
 ```yaml
 - name: Perform Soda Scan
      uses: sodadata/soda-github-action@v1
@@ -163,8 +163,11 @@ checks for retail_orders:
 * Be aware that for self-hosted runners in GitHub:
   * Windows runners are not supported, including the use of official Windows-based images such as windows-latest
   * MacOS runners require installation of Docker because macos-latest does not come with Docker pre-installed.
-* The scan results that the GitHub Action for Soda produces do not appear among your primary checks results. The results are ephemeral and serve only to flag and fix issues during development.
-* The ephemeral scan results that the GitHub Action for Soda produces do not persist historical measurements. Thus, checks that normally evaluate against stored values in the Cloud Metric Store, such as schema checks, do not evaluate in scans that the GitHub Action for Soda executes.  
+* The scan results that the GitHub Action for Soda produces *do not* appear among your primary checks results. The results are ephemeral and serve only to flag and fix issues during development. Though the results are ephemeral, checks that Soda executes via the GitHub Action for Soda count towards the check allotment associated with your licence.
+* The ephemeral scan results that the GitHub Action for Soda produces *do not* persist historical measurements. Thus, checks that normally evaluate against stored values in the Cloud Metric Store, such as schema checks, do not evaluate in scans that the GitHub Action for Soda executes.  
+* The ephemeral scan results that the GitHub Action for Soda produces *cannot* send notifications according to **Notification Rules** in your Soda Cloud account. The only notifications for the results are:
+  * the status report in the GitHub PR comment
+  * an email to the email address you used to create your Soda Cloud account
 
 ## Go further
 
