@@ -212,6 +212,8 @@
     page: soda/integrate-alation.md
   - subtitle: Integrate with dbt
     page: soda/integrate-dbt.md
+  - subtitle: Integrate with GitHub
+    page: soda/integrate-github.md
   - subtitle: Integrate with Metaphor
     page: soda/integrate-metaphor.md
   - subtitle: Integrate with MS Teams

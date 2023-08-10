@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### August 10, 2023
+* Published new documentation for the [GitHub Action for Soda]({% link soda/integrate-github.md %}).
+* Updated [Test data during development]({% link soda/quick-start-dev.md %}) to replace the GitHub Action recipe with the new <a href="https://github.com/marketplace/actions/soda-library-action" target="_blank">GitHub Action for Soda</a>.
+
 #### August 8, 2023
 * Revised documentation to reflect the new **Checks** dashboard, that displays checks and their latest scan results. This replaces the **Check Results** dashboard, that displayed all individual check results.
 
