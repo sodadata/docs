@@ -20,7 +20,7 @@ As these values are sensitive, you may wish to employ the following strategies t
 
 ## Integrate with your secrets manager
 
-Use External Secrets Operator (ECS) to integrate your Soda Agent with your secrets manager, such as a Hashicorp Vault or Azure Key Vault, and securely reconcile the login credentials that Soda Agent uses for your Soda Cloud account and data sources.
+Use External Secrets Operator (ESO) to integrate your Soda Agent with your secrets manager, such as a Hashicorp Vault, AWS Secrets Manager or Azure Key Vault, and securely reconcile the login credentials that Soda Agent uses for your data sources.
 
 For example, imagine you use a Hashicorp Vault to store data source login credentials and your security protocol demands frequent rotation of passwords. The problem is that apps running in your Kubernetes cluster, like a Soda Agent, need access to those passwords. You can set up and configure ESO in your Kubernetes cluster to regularly reconcile externally-stored password values so that your the apps always have the credentials they need. Doing so subverts the need to manually redeploy a values YAML file with new passwords for apps like a Soda Agent, to use each time your system refreshes the passwords.
 
