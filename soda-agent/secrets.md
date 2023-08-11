@@ -38,7 +38,7 @@ The following procedure outlines how to use ESO to integrate with a **Hashicorp 
 * You have set up and are using a Hashicorp Vault which contains a key-value pair `SODA_USERNAME` and `SODA_PASSWORD` at the path `local/soda`.
 
 ### Install and set up the External Secrets Operator
-1. Use helm to install the External Secrets Operator from the <a href="https://charts.external-secrets.io" target="_blank">helm chart repository</a> into the same Kubernetes cluster in which you deployed your Soda Agent. 
+1. Use helm to install the External Secrets Operator from the <a href="https://charts.external-secrets.io" target="_blank">Helm chart repository</a> into the same Kubernetes cluster in which you deployed your Soda Agent. 
     ```shell
     helm repo add external-secrets https://charts.external-secrets.io
 
