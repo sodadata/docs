@@ -109,7 +109,7 @@ spec:
           engineVersion: v2
 ```
 This example identifies:
-* the `namespace` of the cluster
+* the `namespace` of the Soda Agent
 * two `remoteRef` configurations, including the filepath in the vault, one each for the Soda Cloud account username and password, to detail what the `ExternalSecret` must fetch from the Hashicorp Vault
 * a `refreshInterval` to indicate how often the ESO must reconcile the `remoteRef` values
 * the `secretStoreRef` to indicate the `ClusterSecretStore` through which to access the vault
