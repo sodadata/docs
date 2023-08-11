@@ -11,6 +11,7 @@ parent: Reference
 
 #### August 11, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.48.
+* Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.6 - 1.0.8.
 
 #### August 10, 2023
 * Published new documentation for the [GitHub Action for Soda]({% link soda/integrate-github.md %}).
