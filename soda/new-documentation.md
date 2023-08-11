@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### August 11, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.48.
+
 #### August 10, 2023
 * Published new documentation for the [GitHub Action for Soda]({% link soda/integrate-github.md %}).
 * Updated [Test data during development]({% link soda/quick-start-dev.md %}) to replace the GitHub Action recipe with the new <a href="https://github.com/marketplace/actions/soda-library-action" target="_blank">GitHub Action for Soda</a>.
