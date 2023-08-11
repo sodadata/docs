@@ -25,7 +25,7 @@ Use External Secrets Operator (ESO) to integrate your Soda Agent with your secre
 For example, imagine you use a Hashicorp Vault to store data source login credentials and your security protocol demands frequent rotation of passwords. The problem is that apps running in your Kubernetes cluster, like a Soda Agent, need access to those passwords. You can set up and configure ESO in your Kubernetes cluster to regularly reconcile externally-stored password values so that your the apps always have the credentials they need. Doing so subverts the need to manually redeploy a values YAML file with new passwords for apps like a Soda Agent, to use each time your system refreshes the passwords.
 
 To integrate with a secret manager, you need:
-* **External Secrets Operator (ESO)** which is an ECS that facilitates a connection between the Soda Agent and your secrets manager
+* **External Secrets Operator (ESO)** which is an Kubernetes operator that facilitates a connection between the Soda Agent and your secrets manager
 * a **ClusterSecretStore** resource which provides all the namespaces in your Kubernetes cluster with instructions on how to access the secrets in the secrets manager
 * an **ExternalSecret** resource which instructs the cluster on what values to fetch, and references the ClusterSecretStore
 
