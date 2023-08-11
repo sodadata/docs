@@ -44,6 +44,9 @@ Access the <a href="https://github.com/sodadata/sip-of-soda/tree/main/test-in-pi
 
 Borrow from this guide to connect to your own data source, set up scan points in your pipeline, and execute your own relevant tests for data quality.
 
+Also, consider watching a video by Marc Lamberti at Astronomer which demonstrates a similar project tutorial to the one documented in this guide. Just be sure to use Soda Library over Soda Core! 🎥 🍿 
+<a href="https://youtu.be/DzxtCxi4YaA" target="_blank">Data Engineer Project: An end-to-end Airflow data pipeline with BigQuery, dbt, Soda, and more</a> 
+
 
 ## Install Soda from the command-line
 
