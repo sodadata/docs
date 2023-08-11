@@ -110,7 +110,7 @@ spec:
 ```
 This example identifies:
 * the `namespace` of the Soda Agent
-* two `remoteRef` configurations, including the filepath in the vault, one each for the Soda Cloud account username and password, to detail what the `ExternalSecret` must fetch from the Hashicorp Vault
+* two `remoteRef` configurations, including the path in the vault, one each for `SODA_USERNAME` and `SODA_PASSWORD`, to detail what the `ExternalSecret` must fetch from the Hashicorp Vault
 * a `refreshInterval` to indicate how often the ESO must reconcile the `remoteRef` values
 * the `secretStoreRef` to indicate the `ClusterSecretStore` through which to access the vault
 * a `target template` that creates a file called `soda-agent.conf` into which it adds the username and password values in the `.env` format that the Soda Agent expects.
