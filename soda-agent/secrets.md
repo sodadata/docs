@@ -26,7 +26,7 @@ For example, imagine you use a Hashicorp Vault to store data source login creden
 
 To integrate with a secret manager, you need:
 * **External Secrets Operator (ESO)** which is an Kubernetes operator that facilitates a connection between the Soda Agent and your secrets manager
-* a **ClusterSecretStore** resource which provides all the namespaces in your Kubernetes cluster with instructions on how to access the secrets in the secrets manager
+* a **ClusterSecretStore** resource which provides a central gateway to your secret backend.
 * an **ExternalSecret** resource which instructs the cluster on what values to fetch, and references the ClusterSecretStore
 
 Read more about the <a href="https://external-secrets.io/latest/introduction/overview/" target="_blank">ESO's Resource Model</a>.
