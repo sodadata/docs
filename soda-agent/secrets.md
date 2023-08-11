@@ -28,9 +28,9 @@ To address the challenge, you can set up and configure ESO in your Kubernetes cl
 
 The current integration of Soda Agent and a secrets manager *does not* yet support the configuration of the Soda Cloud credentials. For those credentials, use a tool such as <a href="https://github.com/jkroepke/helm-secrets" target="_blank">helm-secrets</a> or <a href="https://github.com/helmfile/vals" target="_blank">vals</a>.
 
-To integrate Soda Agent with a secret manager, you need:
-* **External Secrets Operator (ESO)** which is an Kubernetes operator that facilitates a connection between the Soda Agent and your secrets manager
-* a **ClusterSecretStore** resource which provides a central gateway to your secret backend
+To integrate Soda Agent with a secret manager, you need the following:
+* **External Secrets Operator (ESO)** which is a Kubernetes operator that facilitates a connection between the Soda Agent and your secrets manager
+* a **ClusterSecretStore** resource which provides a central gateway with instructions on how to access your secret backend
 * an **ExternalSecret** resource which instructs the cluster on what values to fetch, and references the ClusterSecretStore
 
 Read more about the <a href="https://external-secrets.io/latest/introduction/overview/" target="_blank">ESO's Resource Model</a>.
