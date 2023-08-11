@@ -26,6 +26,8 @@ For example, imagine you use a Hashicorp Vault to store data source login creden
 
 To address the challenge, you can set up and configure ESO in your Kubernetes cluster to regularly reconcile externally-stored password values so that your apps always have the credentials they need. Doing so subverts the need to manually redeploy a values YAML file with new passwords for apps running in the cluster each time your system refreshes the passwords.
 
+The current integration of Soda Agent and a secrets manager *does not* yet support the configuration of the Soda Cloud credentials. For those credentials, use a tool such as <a href="https://github.com/jkroepke/helm-secrets" target="_blank">helm-secrets</a> or <a href="https://github.com/helmfile/vals" target="_blank">vals</a>.
+
 To integrate Soda Agent with a secret manager, you need:
 * **External Secrets Operator (ESO)** which is an Kubernetes operator that facilitates a connection between the Soda Agent and your secrets manager
 * a **ClusterSecretStore** resource which provides a central gateway to your secret backend
@@ -37,7 +39,7 @@ The following procedure outlines how to use ESO to integrate with a **Hashicorp 
 
 ### Prerequisites
 * You have set up a Kubernetes cluster in your cloud services environment and deployed a Soda Agent in the cluster.
-* You have set up and are using a Hashicorp Vault which contains a key-value pair `SODA_USERNAME` and `SODA_PASSWORD` at the path `local/soda`.
+* For the purpose of this example proceudre, you have set up and are using a Hashicorp Vault which contains a key-value pair for `POSTGRES_USERNAME` and `POSTGRES_PASSWORD` at the path `local/soda`.
 
 ### Install and set up the External Secrets Operator
 1. Use helm to install the External Secrets Operator from the <a href="https://charts.external-secrets.io" target="_blank">Helm chart repository</a> into the same Kubernetes cluster in which you deployed your Soda Agent. 
@@ -53,7 +55,7 @@ The following procedure outlines how to use ESO to integrate with a **Hashicorp 
 ```shell
 kubectl -n external-secrets get all
 ```
-3. Create a `cluster-secret-store.yml` file for the `ClusterSecretStore` configuration. This example uses <a href="https://external-secrets.io/latest/provider/hashicorp-vault/#approle-authentication-example" target="_blank">Hashicorp Vault AppRole authentication</a>. AppRole authenticates with Vault using the <a href="https://developer.hashicorp.com/vault/docs/auth/approle" target="_blank">App Role auth mechanism</a> to access the contents of the secret store. It uses the SecretID in the Kubernetes secret referenced by `secretRef` and the `roleID` to acquire a temporary access token so that it can fetch secrets.
+3. Create a `cluster-secret-store.yml` file for the `ClusterSecretStore` configuration. This example uses <a href="https://external-secrets.io/latest/provider/hashicorp-vault/#approle-authentication-example" target="_blank">Hashicorp Vault AppRole authentication</a>. AppRole authenticates with Vault using the <a href="https://developer.hashicorp.com/vault/docs/auth/approle" target="_blank">App Role auth mechanism</a> to access the contents of the secret store. It uses the SecretID in the Kubernetes secret, referenced by `secretRef` and the `roleID`, to acquire a temporary access token so that it can fetch secrets.
     ```yaml
     apiVersion: external-secrets.io/v1beta1
     kind: ClusterSecretStore
@@ -89,12 +91,12 @@ spec:
   data:
   - remoteRef:
           key: local/soda
-          property: SODA_USERNAME
-        secretKey: SODA_USERNAME
+          property: POSTGRES_USERNAME
+        secretKey: POSTGRES_USERNAME
   - remoteRef:
           key: local/soda
-          property: SODA_PASSWORD
-        secretKey: SODA_PASSWORD
+          property: POSTGRES_PASSWORD
+        secretKey: POSTGRES_PASSWORD
   refreshInterval: 1m
   secretStoreRef:
         kind: ClusterSecretStore
@@ -104,13 +106,13 @@ spec:
         template:
           data:
             soda-agent.conf: |
-              SODA_USERNAME={% raw %}{{ .SODA_USERNAME }}{% endraw %}
-              SODA_PASSWORD={% raw %}{{ .SODA_PASSWORD }}{% endraw %}
+              POSTGRES_USERNAME={% raw %}{{ .POSTGRES_USERNAME }}{% endraw %}
+              POSTGRES_PASSWORD={% raw %}{{ .POSTGRES_PASSWORD }}{% endraw %}
           engineVersion: v2
 ```
 This example identifies:
 * the `namespace` of the Soda Agent
-* two `remoteRef` configurations, including the path in the vault, one each for `SODA_USERNAME` and `SODA_PASSWORD`, to detail what the `ExternalSecret` must fetch from the Hashicorp Vault
+* two `remoteRef` configurations, including the file path in the vault, one each for `POSTGRES_USERNAME` and `POSTGRES_PASSWORD`, to detail what the `ExternalSecret` must fetch from the Hashicorp Vault
 * a `refreshInterval` to indicate how often the ESO must reconcile the `remoteRef` values
 * the `secretStoreRef` to indicate the `ClusterSecretStore` through which to access the vault
 * a `target template` that creates a file called `soda-agent.conf` into which it adds the username and password values in the dotenv format that the Soda Agent expects.
@@ -118,11 +120,16 @@ This example identifies:
 ```shell
 kubectl  apply -n soda-agent -f soda-secret.yaml
 ```
-7. Use the following command to get the `ExternalSecret` to authenticate to the Hashicorp Vault using the `ClusterSecretStore`.
+7. Use the following command to get the `ExternalSecret` to authenticate to the Hashicorp Vault using the `ClusterSecretStore` and fetch secrets.
 ```shell
 kubectl get secret -n soda-agent soda-agent-secrets
 ```
-8. Adjust ?? the Soda Agent values.yml file to use the ESO??
+Output:
+```shell
+NAME                 TYPE     DATA   AGE
+soda-agent-secrets   Opaque   1      24h
+```
+8. Adjust ?? the Soda Agent `values.yml` file to use the ESO??
 
 ## Use a values YAML file to store API key values 
 
