@@ -9,6 +9,13 @@ parent: Reference
 
 <br />
 
+#### August 11, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.48.
+* Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.6 - 1.0.8.
+* Added Known issue: [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}#optional-check-configurations) do not support the check identity parameter. <!--SAS-2005-->
+* Added a note to [Create an agreement]({% link soda-cloud/agreements.md %}#1-select-a-data-source) to clarify that you can only create agreements using data sources that have been added to Soda Cloud via a Soda Agent.
+* Added [collection]({% link soda/glossary.md %}#collection) as a new term in the Glossary.
+
 #### August 10, 2023
 * Published new documentation for the [GitHub Action for Soda]({% link soda/integrate-github.md %}).
 * Updated [Test data during development]({% link soda/quick-start-dev.md %}) to replace the GitHub Action recipe with the new <a href="https://github.com/marketplace/actions/soda-library-action" target="_blank">GitHub Action for Soda</a>.
