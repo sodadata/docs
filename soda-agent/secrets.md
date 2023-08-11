@@ -116,7 +116,7 @@ This example identifies:
 * a `target template` that creates a file called `soda-agent.conf` into which it adds the username and password values in the `.env` format that the Soda Agent expects.
 8. Deploy the `ExternalSecret` to your cluster.
 ```shell
-kubectl -n external-secrets apply -f soda-secret.yaml
+kubectl  apply -n soda-agent -f soda-secret.yaml
 ```
 9. Use the following command to get the `ExternalSecret` to authenticate to the Hashicorp Vault using the `ClusterSecretStore`.
 ```shell
