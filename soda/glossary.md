@@ -31,6 +31,9 @@ The file in which you define SodaCL checks. Soda Library uses the input from thi
 ### cloud metric store
 The place in Soda Cloud that stores the values of measurements collected over time as Soda Library executes checks.  
 
+### collection
+A saved set of filters in the Checks dashboard that you can access via a dropdown. Also known as a Saved View. 
+
 ### column
 A column in a dataset in your data source.
 
