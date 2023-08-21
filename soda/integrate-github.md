@@ -37,7 +37,6 @@ jobs:
 ```
 
 [About Soda and the GitHub Action for Soda](#about-soda-and-the-github-action-for-soda)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[What the Action does](#what-the-action-does)<br />
 [Prerequisites](#prerequisites)<br />
 [Add the Action to a Workflow](#add-the-action-to-a-workflow)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Required Action input](#required-action-input)<br />
@@ -58,19 +57,6 @@ Where the scan results indicate an issue with data quality, Soda notifies you in
 Further, you can access a full report of the data quality scan results, including scan logs, in your Soda Cloud account via the link in the PR comment. 
 
 ![scan-report](/assets/images/scan-report.png){:height="700px" width="700px"}
-
-### What the Action does
-
-Briefly, the action completes the following tasks:
-1. Checks to validate that the required Action input values are set.
-2. Builds a Docker image with a specific Soda Library version for the base image.
-3. Expands the environment variables to pass to the Docker run command as these variables can be configured in the workflow file and contain secrets.
-4. Runs the built image to trigger the Soda scan for data quality.
-5. Converts the Soda Library scan results to a markdown table using newest hash from 1.0.0 version.
-6. Creates a pull request comment.
-7. Posts any additional messages to make it clear whether or not the scan failed.
-
-See the public <a href="https://github.com/sodadata/soda-github-action" target="_blank">soda-github-action</a> repository for more detail. 
 
 
 ## Prerequisites
@@ -112,7 +98,7 @@ checks for retail_orders:
   - row_count > 0
   - missing_count(order_quantity) < 3
 ```
-5. In the `.github/workflows` folder in your GitHub repository, open an existing Workflow or <a href="https://docs.github.com/en/actions/using-workflows/about-workflows#create-an-example-workflow" target="_blank">create a new workflow</a> file. Determine where you wish to add a Soda scan for data quality in your workflow. Refer to [Test data in development]({% link soda/quick-start-dev.md %}) for a recommended approach.
+5. In the `.github/workflows` folder in your GitHub repository, open an existing Workflow or <a href="https://docs.github.com/en/actions/using-workflows/about-workflows#create-an-example-workflow" target="_blank">create a new workflow</a> file. Determine where you wish to add a Soda scan for data quality in your workflow, such as after a trasnformation and dbt run. Refer to [Test data in development]({% link soda/quick-start-dev.md %}) for a recommended approach.
 6. Access the GitHub Marketplace to access the <a href="https://github.com/marketplace/actions/soda-library-action" target="_blank">Soda GitHub Action</a>. Click **Use latest version** to copy the code snippet for the Action.
 7. Paste the snippet into your new or existing workflow as an independent step, then add the required action inputs as in the following example. Refer to [table below](#required-action-inputs) for input details. 
 ```yaml
@@ -162,7 +148,7 @@ checks for retail_orders:
 
 * Be aware that for self-hosted runners in GitHub:
   * Windows runners are not supported, including the use of official Windows-based images such as windows-latest
-  * MacOS runners require installation of Docker because macos-latest does not come with Docker pre-installed.
+  * MacOS runners require Docker installation because the macos-latest does not come with Docker pre-installed.
 * The scan results that the GitHub Action for Soda produces *do not* appear among your primary checks results. The results are ephemeral and serve only to flag and fix issues during development. Though the results are ephemeral, checks that Soda executes via the GitHub Action for Soda count towards the check allotment associated with your licence.
 * The ephemeral scan results that the GitHub Action for Soda produces *do not* persist historical measurements. Thus, checks that normally evaluate against stored values in the Cloud Metric Store, such as schema checks, do not evaluate in scans that the GitHub Action for Soda executes.  
 * The ephemeral scan results that the GitHub Action for Soda produces *cannot* send notifications according to **Notification Rules** in your Soda Cloud account. The only notifications for the results are:
