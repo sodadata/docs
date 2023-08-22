@@ -106,12 +106,12 @@ soda ingest dbt -d my_datasource_name -c configuration.yml --dbt-cloud-job-id th
 
 ## View dbt test results in Soda Cloud
 
-After completing the steps above to ingest dbt tests, log in to your Soda Cloud account, then navigate to the **Check Results** dashboard. 
+After completing the steps above to ingest dbt tests, log in to your Soda Cloud account, then navigate to the **Checks** dashboard. 
 
-Each row in the table of Check Results represents the result of a check that Soda Library executed,or the result of a dbt test that Soda Library ingested. dbt test results are prefixed with `dbt:` in the table of Check Results.
+Each row in the table of Check represents a check that Soda Library executed, or a dbt test that Soda Library ingested. dbt tests are prefixed with `dbt:` in the table of Checks.
 
-* Click the row of a dbt check result to examine visualized historic data for the test, details of the results, and information that can help you diagnose a data quality issue.
-* Click the stacked dots at the far right of a dbt check result, then select **Create Incident** to begin [investigating a data quality issue]({% link soda-cloud/incidents.md %}) with your team.
+* Click the row of a dbt test to examine visualized historic data for the test, details of the results, and information that can help you diagnose a data quality issue.
+* Click the stacked dots at the far right of a dbt check, then select **Create Incident** to begin [investigating a data quality issue]({% link soda-cloud/incidents.md %}) with your team.
 * Set up an [alert notification rule]({% link soda-cloud/notif-rules.md %}) for checks with fail or warn results. Navigate to **your avatar** > **Notification Rules**, then click **New Notification Rule**. Follow the guided steps to complete the new rule. Send notifications to an individual or a team in [Slack]({% link soda/integrate-slack.md %}).
 
 

@@ -49,7 +49,7 @@ For SodaGPT's functionality, Soda trained a very specialized Large Language Mode
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Get started with Soda by following a [tutorial]({% link soda/quick-start-sip.md %}).
-* Consider using [check suggestions]({% link soda-cl/check-suggestions.md %}) to profile your data and suggest basic checks for data quality.
+* Consider using [check suggestions]({% link soda-library/check-suggestions.md %}) to profile your data and suggest basic checks for data quality.
 <br />
 
 ---

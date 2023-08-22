@@ -120,7 +120,7 @@ automated monitoring:
 
 ### Scan results in Soda Cloud
 
-To review the checks results for automated monitoring checks in Soda Cloud, navigate to the **Checks** dashboard to see the automated monitoring check results with an INSIGHT tag. 
+To review the check results for automated monitoring checks in Soda Cloud, navigate to the **Checks** dashboard to see the automated monitoring check results with an INSIGHT tag. 
 
 
 ## Optional check configurations
