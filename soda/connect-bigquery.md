@@ -15,6 +15,7 @@ parent: Connect a data source
 [Test the datasource connection](#test-the-data-source-connection)<br />
 [Supported data types](#supported-data-types)<br />
 [Use a file reference for a Big Query data source connection](#use-a-file-reference-for-a-big-query-data-source-connection)<br />
+[Troubleshoot](#troubleshoot)<br />
 <br />
 
 
@@ -187,6 +188,16 @@ my_datasource_name:
 <br />
 <br />
 
+## Troubleshoot
+
+**Problem:** When running a scan, you encounter an error that reads, `400 Cannot query over table 'event_logs' without a filter over column(s) 'serverTimestamp' that can be used for partition elimination`.
+
+**Workaround:** 
+The error occurs because the table in BigQuery is configured to require partitioning. 
+* If the error occurs when you are [profiling]({% link soda-cl/profile.md %}) your data with Soda, you must disable profiling. 
+* If the error occurs when the scan is executing regular SodaCL checks, be sure you always apply a filter on `serverTimestamp`. See [Dataset filters]({% link soda-cl/filters.md %}#configure-dataset-filters)
+
+<br />
 ---
 
 Was this documentation helpful?

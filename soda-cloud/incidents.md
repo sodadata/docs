@@ -9,7 +9,7 @@ parent: Soda Cloud
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-When you create checks in an [agreement]({% link soda-cloud/agreements.md %}) or in a checks YAML file and you have connected Soda Library to a Soda Cloud account, Soda Cloud displays the checks results from each scan in the **Checks** dashboard. For a check that failed or triggered a warning, you have the option of creating an **Incident** for that check result in Soda Cloud to track your team's investigation and resolution of a data quality issue. 
+When you create checks in an [agreement]({% link soda-cloud/agreements.md %}) or in a checks YAML file and you have connected Soda Library to a Soda Cloud account, Soda Cloud displays the checks and their latest scan results in the **Checks** dashboard. For a check that failed or triggered a warning, you have the option of creating an **Incident** for that check result in Soda Cloud to track your team's investigation and resolution of a data quality issue. 
 
 If you have integrated your Soda Cloud account with a [Slack workspace]({% link soda/integrate-slack.md %}), or [MS Teams channel]({% link soda/integrate-msteams.md %}), or another [third-party messaging or ticketing tool]({% link soda/integrate-webhooks.md %}) that your team uses such as [Jira]({% link soda/integrate-webhooks.md %}#example-webhook-with-jira-for-soda-cloud-incidents) or [ServiceNow]({% link soda/integrate-webhooks.md %}#example-webhook-with-servicenow-for-soda-cloud-incidents), you can use an Incident's built-in ability to create an incident-specific link where you and your team can collaborate on the issue investigation. 
 
@@ -23,7 +23,7 @@ If you have integrated your Soda Cloud account with a [Slack workspace]({% link 
 ## Create Incidents
 
 1. Log in to your Soda Cloud account, then navigate to the **Checks** dashboard. 
-2. For the check result you wish to investigate, click the stacked dots at right, then select **Create Incident**. Provide a **Title**, **Severity**, and **Description** of your new incident, then save. 
+2. For the check you wish to investigate, click the stacked dots at right, then select **Create Incident**. Provide a **Title**, **Severity**, and **Description** of your new incident, then save. 
 3. In the **Incident** column of the check result, click the Incident link to access the Incident page where you can record the following details:
 * **Severity**: Minor, Major, or Critical
 * **Status**: Reported, Investigating, Fixing, Resolved

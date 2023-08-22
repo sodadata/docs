@@ -83,6 +83,8 @@ checks for dataset_1:
 
 If you anticipate modifying a check, you can explicitly specify a check identity so that Soda Cloud can correctly accumulate the results of a single check and retain its history even if the check has been modified. 
 
+***Known issue:*** [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}) do not support the check identity parameter. <!--SAS-2005-->
+
 1. First, navigate to an existing check in your Soda Cloud account, then copy the UUID of the check from the URL; see the example below.
 ![check-identity](/assets/images/check-identity.png){:height="700px" width="700px"}
 2. Add an identity property to your check using the UUID you copied as the identity's value.

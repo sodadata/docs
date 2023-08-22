@@ -9,6 +9,26 @@ parent: Reference
 
 <br />
 
+#### August 21, 2023
+* Removed "What the Action does" section from [Integrate Soda with a GitHub Workflow]({% link soda/integrate-github.md %}).
+
+#### August 11, 2023
+* Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.48.
+* Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.6 - 1.0.8.
+* Added Known issue: [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}#optional-check-configurations) do not support the check identity parameter. <!--SAS-2005-->
+* Added a note to [Create an agreement]({% link soda-cloud/agreements.md %}#1-select-a-data-source) to clarify that you can only create agreements using data sources that have been added to Soda Cloud via a Soda Agent.
+* Added [collection]({% link soda/glossary.md %}#collection) as a new term in the Glossary.
+
+#### August 10, 2023
+* Published new documentation for the [GitHub Action for Soda]({% link soda/integrate-github.md %}).
+* Updated [Test data during development]({% link soda/quick-start-dev.md %}) to replace the GitHub Action recipe with the new <a href="https://github.com/marketplace/actions/soda-library-action" target="_blank">GitHub Action for Soda</a>.
+
+#### August 8, 2023
+* Revised documentation to reflect the new **Checks** dashboard, that displays checks and their latest scan results. This replaces the **Check Results** dashboard, that displayed all individual check results.
+
+#### August 7, 2023
+* Moved [Check suggestions]({% link soda-library/check-suggestions.md %}) documentation from SodaCL section to Soda Library.
+
 #### July 26, 2023
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.5.
 * Added detail to [schema check]({% link soda-cl/schema.md %}) documentation for new `schema_name` parameter.
@@ -40,7 +60,7 @@ parent: Reference
 #### June 15, 2023
 * Introducing Soda Library, a commercial extension of the Soda Core open-source software. It leverages all the power of Soda Core and SodaCL, and offers new features and functionality for Soda customers.
 * New documentation for the new [Group by]({% link soda-cl/group-by.md %}) configuration and [Group evolution check]({% link soda-cl/group-evolution.md %}), both available with Soda Library.
-* New documentation for [Check suggestions]({% link soda-cl/check-suggestions.md %}) using the Soda Library CLI.
+* New documentation for [Check suggestions]({% link soda-library/check-suggestions.md %}) using the Soda Library CLI.
 * New documentation for [Check template configuration]({% link soda-cl/check-template.md %}) supported by Soda Library.
 * Revised syntax guidance regarding multiple thresholds for an alert. See [Optional check configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations).
 * All <a href="https://github.com/sodadata/soda-core/tree/main/docs" target="_blank">documentation for Soda Core</a>, the open-source Python library and CLI tool, has moved to the <a href="https://github.com/sodadata/soda-core" target="_blank">Soda Core repository</a> on GitHub.
