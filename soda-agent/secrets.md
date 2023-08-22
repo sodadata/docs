@@ -22,9 +22,9 @@ As these values are sensitive, you may wish to employ the following strategies t
 
 Use External Secrets Operator (ESO) to integrate your Soda Agent with your secrets manager, such as a Hashicorp Vault, AWS Secrets Manager or Azure Key Vault, and securely reconcile the login credentials that Soda Agent uses for your data sources.
 
-For example, imagine you use a Hashicorp Vault to store data source login credentials and your security protocol demands frequent rotation of passwords. In this situation, the challenge is that apps running in your Kubernetes cluster, like a Soda Agent, need access to those passwords. 
+For example, imagine you use a Hashicorp Vault to store data source login credentials and your security protocol demands frequent rotation of passwords. In this situation, the challenge is that apps running in your Kubernetes cluster, like a Soda Agent, need access to the up-to-date passwords. 
 
-To address the challenge, you can set up and configure ESO in your Kubernetes cluster to regularly reconcile externally-stored password values so that your apps always have the credentials they need. Doing so subverts the need to manually redeploy a values YAML file with new passwords for apps running in the cluster each time your system refreshes the passwords.
+To address the challenge, you can set up and configure ESO in your Kubernetes cluster to regularly reconcile externally-stored password values so that your apps always have the credentials they need. Doing so obviates the need to manually redeploy a values YAML file with new passwords for apps running in the cluster each time your system refreshes the passwords.
 
 The current integration of Soda Agent and a secrets manager *does not* yet support the configuration of the Soda Cloud credentials. For those credentials, use a tool such as <a href="https://github.com/jkroepke/helm-secrets" target="_blank">helm-secrets</a> or <a href="https://github.com/helmfile/vals" target="_blank">vals</a>.
 
@@ -113,7 +113,7 @@ spec:
 This example identifies:
 * the `namespace` of the Soda Agent
 * two `remoteRef` configurations, including the file path in the vault, one each for `POSTGRES_USERNAME` and `POSTGRES_PASSWORD`, to detail what the `ExternalSecret` must fetch from the Hashicorp Vault
-* a `refreshInterval` to indicate how often the ESO must reconcile the `remoteRef` values
+* a `refreshInterval` to indicate how often the ESO must reconcile the `remoteRef` values; this ought to correspond to the frequency with which your passwords are reset
 * the `secretStoreRef` to indicate the `ClusterSecretStore` through which to access the vault
 * a `target template` that creates a file called `soda-agent.conf` into which it adds the username and password values in the dotenv format that the Soda Agent expects.
 6. Deploy the `ExternalSecret` to your cluster.
