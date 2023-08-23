@@ -187,22 +187,6 @@ if __name__ == '__main__':
     print(s.get_logs_text())
 ```
 
-Some users have reported success using the custom sampler to write output to a JSON file, as in the following example that sends only failed row samples to a file.
-
-```python
-...
-        # Check SampleContext for more details that you can extract.
-        # print(sample_context.sample.get_schema())
-        if len(rows) > 0:
-        print(name, query, rows)
-        with open(f"{root_dir}/logs/sodacore_failed_records.json", "a") as file:
-            file.write('"check_name": ' + name + "\n")
-            file.write('"query": \n' + query + "\n")
-            file.write(json.dumps(rows, default=str, indent=1))
-            file.write("\n")
-...
-```
-
 
 ### Save failed row samples to an alternate destination
 
