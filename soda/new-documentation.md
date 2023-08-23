@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### August 23, 2023
+* Updated documentation for [custom sampler]({% link soda-library/programmatic.md %}#configure-a-failed-row-sampler) for failed rows collection.
+* Update agreement documentation to reflect the [change in behaviour]({% link soda-cloud/agreements.md %}#3-identify-stakeholders) where scans do not run until stakeholders have approved of the agreement.
+
 #### August 21, 2023
 * Removed "What the Action does" section from [Integrate Soda with a GitHub Workflow]({% link soda/integrate-github.md %}).
 
