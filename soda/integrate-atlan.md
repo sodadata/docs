@@ -25,9 +25,10 @@ Integrate Soda with Atlan to access details about the quality of your data from 
 
 ## Set up the integration
 
-Follow <a href="https://ask.atlan.com/hc/en-us/articles/7241035988113-Supported-sources#business-intelligence-tools-0-2" target="_blank">Atlan's documentation</a> to set up the Connection to Soda in your Atlan workspace.
+1. Follow the instructions to [Generate API keys]({% link soda-cloud/api-keys.md %}) in Soda to use for authentication in your Atlan connection.
+2. Follow <a href="https://ask.atlan.com/hc/en-us/articles/7524581020175-How-to-crawl-Soda#select-the-source-0-0" target="_blank">Atlan's documentation</a> to set up the Connection to Soda in your Atlan workspace.
 
-Follow the instructions to [Generate API keys]({% link soda-cloud/api-keys.md %}) in Soda to use for authentication in your Atlan connection.
+
 
 
 ## Go further
