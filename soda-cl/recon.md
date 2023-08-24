@@ -30,13 +30,10 @@ reconciliation Production:
   checks:
   # Reconciliation metric checks
     - row_count diff = 0
-    
     - duplicate_count(last_name):
         fail: when diff > 10%
         warn: when diff < 5%
-        
     - avg(total_children) diff < 10
-
     - name_combo diff = 0:
         name: Name Combo
         source query: |
@@ -64,8 +61,9 @@ reconciliation Production:
 &nbsp;&nbsp;&nbsp;&nbsp;[Reconciliation metric checks](#reconciliation-metric-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Reconciliation diff checks](#reconciliation-diff-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Add attributes](#add-attributes) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[List of compatible metrics and checks](#list-of-compatible-metrics-and-checks) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Add a filter](#add-a-filter) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[List of compatible metrics and checks](#list-of-compatible-metrics-and-checks-for-reconciliation-metric-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />
 [Limitations and constraints](#limitations-and-constraints)
 [Go further](#go-further)<br />
@@ -73,16 +71,19 @@ reconciliation Production:
 
 ## Prerequisites
 * Python version 3.9.x or greater.
-* Soda Library; one package for each of the source and target data sources involved in your migration. See step 1, below.
 * A Soda Cloud account connected to Soda Library via API keys. See [Take a sip of Soda]({% link soda/quick-start-sip.md %}).
+* Soda Library; [install]({% link soda-library/install.md %}) one Soda Library package for each of the source and target data sources involved in your migration. See step 1, below.
+
 
 ## Types of reconciliation checks
 
-Soda supports two types of reconciliation checks.
+Soda supports two types of reconciliation checks: 
+* reconciliation metric checks
+* reconciliation diff checks
 
-A **reconciliation metric check** calculates the measurement of a dataset or column metric that exists in datasets in two different data sources; where the delta between calculated measurements differs to the extent that it exceeds the threshold you set in the check, the check fails.  
+A **reconciliation metric check** calculates the measurement of a metric such as `sum` or `avg` on data in the same dataset in two different data sources; where the delta between calculated measurements differs to the extent that it exceeds the threshold you set in the check, the check fails.  
 
-In other words, the check validates the delta between calculated measurements.
+In other words, the check validates the delta between calculated measurements of a metric.
 
 In the following example, the reconciliation check calculates the sum of column 1 in dataset X in both data source A and data source B. The calculated value of each is the measurement for the sum metric. It then compares the calculated measurements and gauges the difference between them. In this example, the difference between measurements is `4`, so the check passes.
 
@@ -100,15 +101,15 @@ reconciliation Production:
     - sum(column1) < 5
 ```
 
-![recon metric](/assets/images/recon-metric.png){:height="450px" width="450px"}
+![recon metric](/assets/images/recon-metric.png){:height="480px" width="480px"}
 
-Read more about [metrics, measurements, and thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds).
+Read more about [metrics, measurements, and thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) in general.
 
 
 A **reconciliation diff check** performs a row-to-row comparison of the contents of each column, or specific columns, in datasets in two different data sources; where the values do not match exactly, the check fails. The numeric value the check result produces represents the number of rows with different, additional, or missing contents.
 
 For example, the following check compares the entire contents of dataset Y in data source A and dataset Y in data source B. Though the contents of the rows match exactly, one dataset contains additional rows, so it is not an exact match and the reconciliation check fails with a numeric value of `2`.
-
+{% include code-header.html %}
 ```yaml
 reconciliation Production:
   label: "Recon diff check"
@@ -123,13 +124,13 @@ reconciliation Production:
     - rows diff = 0
 ```
 
-![recon diff](/assets/images/recon-diff.png){:height="450px" width="450px"}
+![recon diff](/assets/images/recon-diff.png){:height="480px" width="480px"}
 
 
-In a slight variation of a reconciliation diff check, you can specify key columns to compare, or different target and source columns. 
+In a slight variation of a reconciliation diff check, you can specify key columns to compare, or different target and source columns, as in the example below. 
 
 Limited to a comparison of specific columns, the first check fails because of the mismatched value for Jupiter's size, and the second check passes because it is comparing only the contents of the source column to the contents of the target column, which match.
-
+{% include code-header.html %}
 ```yaml
 reconciliation Production:
 ...
@@ -143,7 +144,7 @@ checks:
         target column: Relative Temp
 ```
 
-![recon diff2](/assets/images/recon-diff2.png){:height="480px" width="480px"}
+![recon diff2](/assets/images/recon-diff2.png){:height="500px" width="500px"}
 
 Learn about reconciliation check [Limitations and constraints](#limitations-and-constraints).
 
@@ -186,16 +187,15 @@ reconciliation Production:
 | `reconciliation my_project_name` | required | An identifier for the reconciliation project. |
 | `label` | required | An identifier that prepends check result name identifiers in Soda Cloud. |
 | `attributes` | optional | A list of attributes that Soda applies to the reconciliation project's check results in Soda Cloud so that you can filter and find the project's results. <br />See: [Add attributes](#add-attributes) |
-| `datasets` | required | A subheading to contain the list of datasets to apply your reconciliation checks. |
-| `source` | required | Key-value pairs to identify the `dataset` and `data source` of the source, or origin location of the data to be migrated. Identify only one source.|
-| `target` | required | Key-value pairs to identify the `dataset` and `data source` of the target, or destination location of the data to be migrated. Identify only one target.|
-| `checks` | required | A subheading to contain the checks that reconcile the data between source and target. |
-
-Use the `checks` subsection of the reconciliation project to identify all the checks that reconcile data between the source and target data sources. In this section, you can define any number of both reconciliation metric and reconciliation diff checks.
+| `datasets` | required | A subheading to contain the list of datasets to apply your reconciliation checks.|
+| `source` | required | Key-value pairs to identify the `dataset` and `data source` of the source, or origin location of the data to be migrated. You can provide a comma-separated list of datasets; identify only one data source.|
+| `target` | required | Key-value pairs to identify the `dataset` and `data source` of the target, or destination location of the data to be migrated. You can provide a comma-separated list of datasets; identify only one data source.|
+| `checks` | required | A subheading to contain the checks that reconcile the data between source and target. In this section, you can define any number of both reconciliation metric and reconciliation diff checks; see details below.|
+ 
 
 ### Reconciliation metric checks
 
-The syntax of the reconciliation metrics checks follows the basic patterns of the [compatible checks and metrics](#list-of-compatible-metrics-and-checks), with the addition of `diff`. 
+The syntax of the reconciliation metrics checks follows the basic patterns of standard SodaCL metrics and checks with the addition of `diff` in the syntax. Reconciliation metrics checks do not support *all* SodaCL metrics and checks; see [compatible checks and metrics](#list-of-compatible-metrics-and-checks) below.
 
 For example, you define a regular SodaCL check for data quality that checks for duplicate values in a `last_name` column as follows:
 {% include code-header.html %}
@@ -204,7 +204,7 @@ checks for dim_customer:
   - duplicate_count(last_name) = 0
 ```
 
-For a reconciliation metric check, you add the word `diff` to indicate that it ought to compare duplicate values between the source dataset and the target dataset to confirm that the delta between those counts is zero. Refer to several examples below. 
+For a reconciliation metric check, you add the word `diff` to indicate that it ought to compare the count of duplicate values between the source dataset and the target dataset to confirm that the delta between those counts is zero. Refer to examples below. 
 
 Note that with reconciliation checks, there is no need to identify the dataset as you specified both source and target datasets in the project metadata configuration.
 {% include code-header.html %}
@@ -212,16 +212,12 @@ Note that with reconciliation checks, there is no need to identify the dataset a
 reconciliation Production:
 ...
   checks: 
-    - duplicate_count(last_name) diff = 0
-        
+    - duplicate_count(last_name) diff = 0  
     - avg(total_children) diff < 10
-   
     - freshness(date_first_purchase) diff < 100h
-    
     - row_count:
         fail: when diff > 10%
         warn: when diff < 5%
-   
     - missing_count(middle_name) diff = 0:
         samples columns: [last_name, first_name]
 ```
@@ -230,9 +226,9 @@ When you [run a scan]({% link soda-library/run-a-scan.md %}) against either the 
 
 ```shell
 soda scan -d adventureworks -c configuration.yml recon2.yml
-Soda Library 1.0.x
+Soda Library 1.x.x
 Soda Core 3.0.xx
-By downloading and using Soda Library, you agree to Sodas Terms & Conditions (https://go.soda.io/t&c) and Privacy Policy (https://go.soda.io/privacy). 
+xxx 
 Sending failed row samples to Soda Cloud
 Sending failed row samples to Soda Cloud
 Sending failed row samples to Soda Cloud
@@ -350,35 +346,48 @@ reconciliation Production:
         warn: when between 5 and 9
 ```
 
-### List of compatible metrics and checks
+<br />
 
-| Metric or check | Supported data sources|
-| --------------- | --------------------- |
-| `avg` | all | 
-| `avg_length` | all | 
-| `duplicate_count` | all | 
-| `duplicate_percent` | all | 
-| `failed rows` | all | 
-| `freshness` | all | 
-| `invalid_count` |Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames |
-| `invalid_percent` | Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames |
-| `max` | all | 
-| `max_length` | all | 
-| `min` | all | 
-| `min_length` | all | 
-| `missing_count` | Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames |
-| `missing_percent` | Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames |
-| `percentile` | PostgreSQL<br />Snowflake |
-| `row_count` | all | 
-| `stddev` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
-| `stddev_pop` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
-| `stddev_samp` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
-| `sum` | all | 
-| `user-defined` | all | 
-| `variance` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
-| `var_pop` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
-| `var_samp` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
+### Add a filter
 
+You can add a filter to a reconciliation project's configuration to constrain the data on which Soda executes the recon checks. Refer to the example below.
+
+```yaml
+reconciliation Production:
+  label: "Recon Test"
+  datasets:
+    source:
+      dataset: dim_customer
+      datasource: adventureworks
+      filter: total_children > 3
+    target:
+      dataset: dim_customer
+      datasource: aws_postgres_retail
+
+  checks:
+    - row_count diff = 0
+```
+Output:
+```shell
+soda scan -d adventureworks -c configuration.yml recon2.yml
+Soda Library 1.x.x
+Soda Core 3.0.x
+...
+Scan summary:
+1/1 check FAILED: 
+    dim_customer in aws_postgres_retail
+      row_count diff = 0 [FAILED]
+        check_value: 14757
+        source_row_count: 3727
+        target_row_count: 18484
+        diff_value: 14757
+        diff_percentage: 395.95%
+Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
+Sending results to Soda Cloud
+Soda Cloud Trace: 4380***10
+```
+
+<br />
 
 ### Failed row samples
 
@@ -415,7 +424,7 @@ checks:
 ``` 
 <br />
 
-You can also use a `samples columns` configuration to a reconciliation metric check to specify the columns for which Soda must implicitly collect failed row sample values, as in the following example. Soda only collects this check's failed row samples for the columns you specify in the list. 
+You can also use a `samples columns` configuration to a reconciliation metric check (*not* a reconciliation diff check) to specify the columns for which Soda must implicitly collect failed row sample values, as in the following example. Soda only collects this check's failed row samples for the columns you specify in the list. 
 
 Note that the list of samples columns does not support wildcard characters (%).
 ```yaml
@@ -427,19 +436,52 @@ checks:
 
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a reference check. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
+<br />
+
+
+### List of compatible metrics and checks for reconciliation metric checks
+
+| Metric or check | Supported data sources|
+| --------------- | --------------------- |
+| `avg` | all | 
+| `avg_length` | all | 
+| `duplicate_count` | all | 
+| `duplicate_percent` | all | 
+| `failed rows` | all | 
+| `freshness` | all | 
+| `invalid_count` |Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames |
+| `invalid_percent` | Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames |
+| `max` | all | 
+| `max_length` | all | 
+| `min` | all | 
+| `min_length` | all | 
+| `missing_count` | Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames |
+| `missing_percent` | Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames |
+| `percentile` | PostgreSQL<br />Snowflake |
+| `row_count` | all | 
+| `stddev` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
+| `stddev_pop` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
+| `stddev_samp` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
+| `sum` | all | 
+| `user-defined` | all | 
+| `variance` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
+| `var_pop` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
+| `var_samp` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
+
+
 
 ## Optional check configurations
 
 | Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
 | ✓ | Define a name for a reconciliation check; see [example](#example-with-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
-|   | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
+| ✓ | Add an identity to a check; see [example](#example-with-identity). | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alerts). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |
 |   | Use for each to apply reconciliation checks to multiple datasets in one scan. | - |
-|   | Apply a dataset filter to partition data during a scan. | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+|   | Apply a dataset filter to partition data during a scan. | - |
 
 
 #### Example with name
@@ -448,6 +490,14 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
   checks:
     - rows diff between 35000 and 36000:
         name: Simple row diff
+```
+
+#### Example with identity
+{% include code-header.html %}
+```yaml
+  checks:
+    - duplicate_count(last_name) diff < 1:
+        identity: 05229d67-e3f0-4921-a327-b2***84
 ```
 
 #### Example with alerts
@@ -472,9 +522,10 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 ## Limitations and constraints
 
 * Reconciliation checks on TEXT type columns are case sensitive.
+* Reconciliation diff checks do not support `samples columns` configuration.
 * Because the data comparison exercise is dense, executing scans with reconciliation diff checks cause usage spikes in the data source, and cost spikes in case of cloud-managed data sources.
 * The Python environment in which reconciliation diff checks run consumes more time/CPU/memory as this type of check loads all data into memory to execute a comparison.
-* Reconciliation diff checks do not support `samples columns` in check configuration, nor `exclude columns` in the data source configuration in a configuration YAML file; see Disable failed rows sampling for [specific columns]({% link soda-cl/failed-rows-checks.md %}##disable-failed-rows-sampling-for-specific-columns)
+* Reconciliation diff checks do not support `samples columns` in check configuration, nor `exclude columns` in the data source configuration in a configuration YAML file; see Disable failed rows sampling for [specific columns]({% link soda-cl/failed-rows-checks.md %}##disable-failed-rows-sampling-for-specific-columns).
 
 
 ## Go further

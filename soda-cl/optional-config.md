@@ -87,11 +87,11 @@ If you anticipate modifying a check, you can explicitly specify a check identity
 
 1. First, navigate to an existing check in your Soda Cloud account, then copy the UUID of the check from the URL; see the example below.
 ![check-identity](/assets/images/check-identity.png){:height="700px" width="700px"}
-2. Add an identity property to your check using the UUID you copied as the identity's value.
+2. Add an identity property to your check using the UUID you copied as the identity's value.<br />
 ```yaml
 checks for dim_customer:
   - missing_count(last_name) > 99:
-      identity: aa457447-60f6-4b09-4h8t-02fbb78f9587
+         identity: aa457447-60f6-4b09-4h8t-02fbb78f9587
 ```
 3. Save your changes.
 
