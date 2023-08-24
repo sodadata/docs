@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Integrate using webhooks
-description: Configure webhooks to connect Soda Cloud to any number of third-party service providers.
+title: Integrate webhooks with Soda
+description: Configure webhooks to connect Soda to any number of third-party service providers.
 parent: Integrate
 ---
 
-# Integrate webhooks with Soda Cloud 
+# Integrate webhooks with Soda 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 

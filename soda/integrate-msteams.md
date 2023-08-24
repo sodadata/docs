@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Integrate Soda Cloud with MS Teams
+title: Integrate Soda with MS Teams
 description: Integrate MS Teams in your Soda Cloud account so that Soda sends alert notifications and incident events to your MS Teams conversation.
 parent: Integrate Soda
 ---
 
-# Integrate Soda Cloud with Microsoft Teams 
+# Integrate Soda with Microsoft Teams 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 

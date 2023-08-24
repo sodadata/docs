@@ -210,6 +210,8 @@
   subcategories:
   - subtitle: Integrate with Alation
     page: soda/integrate-alation.md
+  - subtitle: Integrate with Atlan
+    page: soda/integrate-atlan.md
   - subtitle: Integrate with dbt
     page: soda/integrate-dbt.md
   - subtitle: Integrate with GitHub

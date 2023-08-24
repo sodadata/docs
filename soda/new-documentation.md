@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### August 24, 2023
+* Added documentation for the new, native integration of [Soda in Atlan]({% link soda/integrate-atlan.md %}).
+
 #### August 23, 2023
 * Update agreement documentation to reflect the [change in behaviour]({% link soda-cloud/agreements.md %}#3-identify-stakeholders) where scans do not run until stakeholders have approved of the agreement.
 

@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Integrate Soda Cloud with Metaphor
+title: Integrate Soda with Metaphor
 description: Integrate Soda with Metaphor to access details about the quality of your data from right within the data catalog.
 parent: Integrate Soda
 ---
 
-# Integrate Soda Cloud with Metaphor
+# Integrate Soda with Metaphor
 *Last modified on {% last_modified_at %}*
 
 Integrate Soda with Metaphor to access details about the quality of your data from within the data catalog. The following video illustrates how to take advantage of the integration.
