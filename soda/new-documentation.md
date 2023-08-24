@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### August 31, 2023
+* Added documentation for SodaCL [reconciliation checks]({% link soda-cl/recon.md %}), tailored for data migration use cases.
+
 #### August 24, 2023
 * Added documentation for the new, native integration of [Soda in Atlan]({% link soda/integrate-atlan.md %}).
 
