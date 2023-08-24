@@ -187,6 +187,7 @@ if __name__ == '__main__':
     print(s.get_logs_text())
 ```
 
+
 ### Save failed row samples to an alternate destination
 
 If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">docs.python.org</a> for details.
