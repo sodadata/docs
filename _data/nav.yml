@@ -163,25 +163,25 @@
     page: soda-cl/missing-metrics.md
   - subtitle: Validity metrics
     page: soda-cl/validity-metrics.md
-  - subtitle: Freshness check
+  - subtitle: Freshness checks
     page: soda-cl/freshness.md
-  - subtitle: Schema check
+  - subtitle: Schema checks
     page: soda-cl/schema.md
-  - subtitle: Reference check
+  - subtitle: Reference checks
     page: soda-cl/reference.md
-  - subtitle: Cross check
+  - subtitle: Cross checks
     page: soda-cl/cross-row-checks.md
-  - subtitle: Reconciliation check
+  - subtitle: Reconciliation checks
     page: soda-cl/recon.md
-  - subtitle: Anomaly score check
+  - subtitle: Anomaly score checks
     page: soda-cl/anomaly-score.md
-  - subtitle: Distribution check
+  - subtitle: Distribution checks
     page: soda-cl/distribution.md
-  - subtitle: User-defined check
+  - subtitle: User-defined checks
     page: soda-cl/user-defined.md
   - subtitle: Check template
     page: soda-cl/check-template.md
-  - subtitle: Failed rows check
+  - subtitle: Failed rows checks
     page: soda-cl/failed-rows-checks.md
   - subtitle: Automated monitoring checks
     page: soda-cl/automated-monitoring.md
