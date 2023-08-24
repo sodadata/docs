@@ -9,6 +9,7 @@ parent: SodaCL
 *Last modified on {% last_modified_at %}*
 
 [Errors with valid format](#errors-with-valid-format)<br />
+[Errors with missing checks](#errors-with-missing-checks)<br />
 [Soda does not recognize variables](#soda-does-not-recognize-variables)<br />
 [Missing check results in Soda Cloud](#missing-check-results-in-soda-cloud)<br />
 [Metrics were not computed for check](#metrics-were-not-computed-for-check)<br />
@@ -26,6 +27,18 @@ parent: SodaCL
 **Solution:** The `valid format` configuration key only works with data type TEXT. See [Specify valid format]({% link soda-cl/validity-metrics.md %}#specify-valid-format).
 
 See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl)
+
+<br />
+
+## Errors with missing checks
+
+**Problem:** You have implemented a `missing_count` check on a Redshift dataset and it was able to properly detect NULL values, but when applying the same check to an Athena dataset, the check will not detect the missing values.
+
+**Solution:** In some data sources, rather than detecting NULL values, Soda ought to look for empty strings. Configure your missing check to explicitly check for empty strings as in the example below.
+```yaml
+- missing_count(column) = 0:
+      missing values: ['']
+```
 
 <br />
 
