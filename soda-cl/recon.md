@@ -81,7 +81,7 @@ Soda supports two types of reconciliation checks:
 * metric reconciliation checks
 * record reconciliation checks
 
-A **metric reconciliation check** calculates the measurement of a metric such as `sum` or `avg` on data in the same dataset in two different data sources; where the delta between calculated measurements differs to the extent that it exceeds the threshold you set in the check, the check fails.  
+A **metric reconciliation check** calculates the measurement of a metric such as `sum` or `avg` on data in the same dataset in two different data sources; where the delta between calculated measurements differs to the extent that it exceeds the threshold you set in the check, the check fails. Note, you can also compare data between datasets within the same data source. 
 
 In other words, the check validates the delta between calculated measurements of a metric.
 
