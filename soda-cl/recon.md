@@ -46,13 +46,10 @@ reconciliation Production:
           WHERE last_name = 'Walters'
 
   # Record reconciliation checks
+    - rows diff < 5
     - rows diff = 0:
-        key columns:
-          - customer_key
-          - birth_date
-    - rows diff = 0:
-        source column: customer_key
-        target column: birth_date
+        source columns: [customer_key, region_id]
+        target column: [customer_base_key, region]
 ```
 
 [Prerequisites](#prerequisites)<br />
@@ -83,7 +80,7 @@ Soda supports two types of reconciliation checks:
 
 A **metric reconciliation check** calculates the measurement of a metric such as `sum` or `avg` on data in the same dataset in two different data sources; where the delta between calculated measurements differs to the extent that it exceeds the threshold you set in the check, the check fails. Note, you can also compare data between datasets within the same data source. 
 
-In other words, the check validates the delta between calculated measurements of a metric.
+In other words, the check validates the delta between calculated measurements of a metric in multiple datasets.
 
 In the following example, the metric reconciliation check calculates the sum of column 1 in dataset X in both data source A and data source B. The calculated value of each is the measurement for the sum metric. It then compares the calculated measurements and gauges the difference between them. In this example, the difference between measurements is `4`, so the check passes.
 
@@ -127,21 +124,29 @@ reconciliation Production:
 ![recon diff](/assets/images/recon-diff.png){:height="480px" width="480px"}
 
 
-In a slight variation of a record reconciliation check, you can specify key columns to compare, or different target and source columns, as in the example below. 
+In a variation of a record reconciliation check, you can specify columns to compare as in the example below. 
 
-Limited to a comparison of specific columns, the first check fails because of the mismatched value for Jupiter's size, and the second check passes because it is comparing only the contents of the source column to the contents of the target column, which match.
+* **Column constrained** The first check compares *only* the contents of the listed columns, mapping the columns according to the order in which they appear in the list– Planet to Planet, Hotness to Relative Temp. This check passes because the values of the mapped columns are the same. 
+* **With primary key** The second check uses the `key columns` you identify to form a primary key in the source that defines a single record. Soda uses the key to compare all the records in all the columns of dataset A to dataset B. This check fails because of the mismatched value for Jupiter's size. 
+* **With multiple primary keys** The third check enables you to define a the primary key the defines a single record in both the source and target datasets. Soda uses the primary keys to compare all the records in all the columns of dataset A to dataset B. This check fails because of the mismatched value for Jupiter's size. 
 {% include code-header.html %}
 ```yaml
 reconciliation Production:
 ...
 checks:
+    # Only compares data in the columns listed, mapped according to order
+    - rows diff = 0:
+        source columns: [Planet, Hotness]
+        target columns: [Planet, Relative Temp]
+    # Defines a primary key in source, compares all records
     - rows diff = 0:
         key columns:
           - Planet
           - Size
-    - rows diff = 0:
-        source column: Hotness
-        target column: Relative Temp
+    # Defines primary keys in source and target, compares all records
+    - rows diff < 5:
+        source key columns: [Planet, Hotness]
+        target key columns: [Planet, Relative Temp]
 ```
 
 ![recon diff2](/assets/images/recon-diff2.png){:height="500px" width="500px"}
@@ -286,23 +291,31 @@ Learn about reconciliation check [Limitations and constraints](#limitations-and-
 
 ### Record reconciliation checks
 
-The syntax of record reconciliation checks is simple in that it only expects a `rows diff` input. You can choose to compare the entire contents of datasets, or add key configurations to specify key columns or different source and target columns to compare.
+The syntax of record reconciliation checks is simple in that it only expects a `rows diff` input. You can choose to compare:
+* the entire contents of datasets
+* only the data in a specified list of columns 
+* the entire contents of datasets, specifying columns to define a primary key
+* the entire contents of datasets, specifying columns to define multiple primary keys
 
 ```yaml
 reconciliation Production:
 ...
   checks:
-    # Compares all columns
+    # Compares entire datasets
     - rows diff between 35000 and 36000
-    # Compares only the values of the two specified columns
+    # Compares only the records in the lists of columns, mapped according to order
+    - rows diff = 0:
+        source columns: [customer_key, region_id] 
+        target columns: [customer_base_key, region]
+    # Compares entire datasets with primary key
     - rows diff = 0:
         key columns:
           - customer_key
           - birth_date
-    # Compares only the values of the source and target columns
-    - rows diff = 0:
-        source column: customer_key
-        target column: birth_date
+    # Compares entire data sets with two primary keys
+    - rows diff < 5:
+        source key columns: [first_name, last_name]
+        target key columns: [first_name, surname]
 ```
 
 Learn about reconciliation check [Limitations and constraints](#limitations-and-constraints).
@@ -523,7 +536,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 
 * Reconciliation checks on TEXT type columns are case sensitive.
 * Record reconciliation checks do not support `samples columns` configuration.
-* Because the data comparison exercise is dense, executing scans with recird reconciliation checks cause usage spikes in the data source, and cost spikes in case of cloud-managed data sources.
+* Because the data comparison exercise is dense, exercise caution when executing scans with recird reconciliation checks as they can cause usage spikes in the data source, and cost spikes in case of cloud-managed data sources.
 * The Python environment in which record reconciliation checks run consumes more time/CPU/memory because this type of check loads all data into memory to execute a comparison.
 * Record reconciliation checks do not support `samples columns` in check configuration, nor `exclude columns` in the data source configuration in a configuration YAML file; see Disable failed rows sampling for [specific columns]({% link soda-cl/failed-rows-checks.md %}##disable-failed-rows-sampling-for-specific-columns).
 
