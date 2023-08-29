@@ -9,6 +9,14 @@ parent: Reference
 
 <br />
 
+#### August 24, 2023
+* Added documentation for the new, native integration of [Soda in Atlan]({% link soda/integrate-atlan.md %}).
+* Updated [orchestration]({% link soda-library/orchestrate-scans.md %}) documentation to include a link to an Astronomer tutorial for Data Quality Checks with Airflow, Snowflake, and Soda.
+* Added to item to Troublshoot SodaCL for dealing with unexpected [missing checks]({% link soda-cl/troubleshoot.md %}#errors-with-missing-checks) behaviour.
+
+#### August 23, 2023
+* Update agreement documentation to reflect the [change in behaviour]({% link soda-cloud/agreements.md %}#3-identify-stakeholders) where scans do not run until stakeholders have approved of the agreement.
+
 #### August 21, 2023
 * Removed "What the Action does" section from [Integrate Soda with a GitHub Workflow]({% link soda/integrate-github.md %}).
 
