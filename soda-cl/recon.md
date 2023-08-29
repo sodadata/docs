@@ -127,23 +127,23 @@ reconciliation Production:
 In a variation of a record reconciliation check, you can specify columns to compare as in the example below. 
 
 * **Column constrained** The first check compares *only* the contents of the listed columns, mapping the columns according to the order in which they appear in the list– Planet to Planet, Hotness to Relative Temp. This check passes because the values of the mapped columns are the same. 
-* **With primary key** The second check uses the `key columns` you identify to form a primary key in the source that defines a single record. Soda uses the key to compare all the records in all the columns of dataset A to dataset B. This check fails because of the mismatched value for Jupiter's size. 
-* **With multiple primary keys** The third check enables you to define a the primary key the defines a single record in both the source and target datasets. Soda uses the primary keys to compare all the records in all the columns of dataset A to dataset B. This check fails because of the mismatched value for Jupiter's size. 
+* **With primary key** The second check uses the `key columns` you identify to form a primary key in the source that defines a single record. Soda uses the key to map records from dataset A to dataset B, similar to what a primary key does. This check fails because of the mismatched value for Jupiter's size. 
+* **With multiple primary keys** The third check enables you to define a the primary key the defines a single record in both the source and target datasets. Soda uses the key to map records from dataset A to dataset B, similar to what a primary key does. This check fails because of the mismatched value for Jupiter's size. 
 {% include code-header.html %}
 ```yaml
 reconciliation Production:
 ...
 checks:
-    # Only compares data in the columns listed, mapped according to order
+    # Column constrained
     - rows diff = 0:
         source columns: [Planet, Hotness]
         target columns: [Planet, Relative Temp]
-    # Defines a primary key in source, compares all records
+    # With primary key
     - rows diff = 0:
         key columns:
           - Planet
           - Size
-    # Defines primary keys in source and target, compares all records
+    # With multiple primary keys
     - rows diff < 5:
         source key columns: [Planet, Hotness]
         target key columns: [Planet, Relative Temp]
@@ -293,7 +293,7 @@ Learn about reconciliation check [Limitations and constraints](#limitations-and-
 
 The syntax of record reconciliation checks is simple in that it only expects a `rows diff` input. You can choose to compare:
 * the entire contents of datasets
-* only the data in a specified list of columns 
+* only the data in a specified list of columns; **Recommended best practice**; see [Limitations and constraints](#limitations-and-constraints).
 * the entire contents of datasets, specifying columns to define a primary key
 * the entire contents of datasets, specifying columns to define multiple primary keys
 
@@ -318,7 +318,6 @@ reconciliation Production:
         target key columns: [first_name, surname]
 ```
 
-Learn about reconciliation check [Limitations and constraints](#limitations-and-constraints).
 
 ### Add attributes
 
@@ -364,6 +363,8 @@ reconciliation Production:
 ### Add a filter
 
 You can add a filter to a reconciliation project's configuration to constrain the data on which Soda executes the reconciliation checks. Refer to the example below.
+
+**Best practice** dictates that you add filters when using record reconciliation checks to mitigate heavy memory usage and long scan times when performing record-to-record comparisons of data. See [Limitations and constraints](#limitations-and-constraints).
 
 ```yaml
 reconciliation Production:
@@ -534,10 +535,9 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 
 ## Limitations and constraints
 
+* The Python environment in which record reconciliation checks run consumes more time/CPU/memory because this type of check loads all data into memory to execute a comparison. Because data comparison is dense, exercise caution when executing scans with record reconciliation checks as they can cause usage spikes in the data source, and cost spikes in case of cloud-managed data sources. Best practice dictates that you [add filters](#add-a-filter) and use [column constrained](#record-reconciliation-checks) record reconciliation checks whenever possible to mitigate performance issues.
 * Reconciliation checks on TEXT type columns are case sensitive.
 * Record reconciliation checks do not support `samples columns` configuration.
-* Because the data comparison exercise is dense, exercise caution when executing scans with recird reconciliation checks as they can cause usage spikes in the data source, and cost spikes in case of cloud-managed data sources.
-* The Python environment in which record reconciliation checks run consumes more time/CPU/memory because this type of check loads all data into memory to execute a comparison.
 * Record reconciliation checks do not support `samples columns` in check configuration, nor `exclude columns` in the data source configuration in a configuration YAML file; see Disable failed rows sampling for [specific columns]({% link soda-cl/failed-rows-checks.md %}##disable-failed-rows-sampling-for-specific-columns).
 
 
