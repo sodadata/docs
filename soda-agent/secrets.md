@@ -15,7 +15,7 @@ As these values are sensitive, you may wish to employ the following strategies t
 [Use a values YAML file to store API key values](#use-a-values-yaml-file-to-store-api-key-values)<br />
 [Use a values file to store private key authentication values](#use-a-values-file-to-store-private-key-authentication-values)<br />
 [Use environment variables to store data source connection credentials](#use-environment-variables-to-store-data-source-connection-credentials)<br />
-[Integrate with your secrets manager](#integrate-with-your-secrets-manager)<br />
+[Integrate with a secrets manager](#integrate-with-a-secrets-manager)<br />
 <br />
 
 
@@ -96,15 +96,17 @@ data_source local_postgres_test:
 ```
 4. Follow the remaining guided steps to add a new data source in Soda Cloud. When you save the data source and test the connection, Soda Cloud uses the values you stored as environment variables in the values YAML file you supplied during redeployment.
 
-## Integrate with your secrets manager
+## Integrate with a secrets manager
 
-Use External Secrets Operator (ESO) to integrate your Soda Agent with your secrets manager, such as a Hashicorp Vault, AWS Secrets Manager or Azure Key Vault, and securely reconcile the login credentials that Soda Agent uses for your data sources.
+Use External Secrets Operator (ESO) to integrate your Soda Agent with your secrets manager, such as a Hashicorp Vault, AWS Secrets Manager, or Azure Key Vault, and securely reconcile the login credentials that Soda Agent uses for your data sources.
 
 For example, imagine you use a Hashicorp Vault to store data source login credentials and your security protocol demands frequent rotation of passwords. In this situation, the challenge is that apps running in your Kubernetes cluster, like a Soda Agent, need access to the up-to-date passwords. 
 
 To address the challenge, you can set up and configure ESO in your Kubernetes cluster to regularly reconcile externally-stored password values so that your apps always have the credentials they need. Doing so obviates the need to manually redeploy a values YAML file with new passwords for apps running in the cluster each time your system refreshes the passwords.
 
-The current integration of Soda Agent and a secrets manager *does not* yet support the configuration of the Soda Cloud credentials. For those credentials, use a tool such as <a href="https://github.com/jkroepke/helm-secrets" target="_blank">helm-secrets</a> or <a href="https://github.com/helmfile/vals" target="_blank">vals</a>.
+The current integration of Soda Agent and a secrets manager *does not* yet support the configuration of the Soda Cloud credentials. For those credentials, use a tool such as:
+* <a href="https://github.com/jkroepke/helm-secrets" target="_blank">helm-secrets</a>
+* <a href="https://github.com/helmfile/vals" target="_blank">vals</a>.
 
 To integrate Soda Agent with a secret manager, you need the following:
 * **External Secrets Operator (ESO)** which is a Kubernetes operator that facilitates a connection between the Soda Agent and your secrets manager
@@ -133,7 +135,7 @@ The following procedure outlines how to use ESO to integrate with a **Hashicorp 
 ```shell
 kubectl -n external-secrets get all
 ```
-3. Create a `cluster-secret-store.yml` file for the `ClusterSecretStore` configuration. This example uses <a href="https://external-secrets.io/latest/provider/hashicorp-vault/#approle-authentication-example" target="_blank">Hashicorp Vault AppRole authentication</a>. AppRole authenticates with Vault using the <a href="https://developer.hashicorp.com/vault/docs/auth/approle" target="_blank">App Role auth mechanism</a> to access the contents of the secret store. It uses the SecretID in the Kubernetes secret, referenced by `secretRef` and the `roleID`, to acquire a temporary access token so that it can fetch secrets.
+3. Create a `cluster-secret-store.yml` file for the `ClusterSecretStore` configuration. The details in this file instruct the Soda Agent how to access the external secrets manager vault. This example uses <a href="https://external-secrets.io/latest/provider/hashicorp-vault/#approle-authentication-example" target="_blank">Hashicorp Vault AppRole authentication</a>. AppRole authenticates with Vault using the <a href="https://developer.hashicorp.com/vault/docs/auth/approle" target="_blank">App Role auth mechanism</a> to access the contents of the secret store. It uses the SecretID in the Kubernetes secret, referenced by `secretRef` and the `roleID`, to acquire a temporary access token so that it can fetch secrets.
     ```yaml
     apiVersion: external-secrets.io/v1beta1
     kind: ClusterSecretStore
@@ -158,7 +160,7 @@ kubectl -n external-secrets get all
 ```shell
 kubectl apply -f cluster-secret-store.yaml
 ```
-5. Create an `soda-secret.yml` file for the `ExternalSecret` configuration.
+5. Create an `soda-secret.yml` file for the `ExternalSecret` configuration. The details in this file instruct the Soda Agent which values to fetch from the external secrets manager vault.
 ```yaml
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -207,11 +209,37 @@ Output:
 NAME                 TYPE     DATA   AGE
 soda-agent-secrets   Opaque   1      24h
 ```
-8. Adjust ?? the Soda Agent `values.yml` file to use the ESO??
+8. Prepare a `values.yml` file to deploy the Soda Agent with the `existingSecrets` parameter that instructs it to access the `ExternalSecret` file to fetch data source login credentials. Refer to [complete instructions]({% link soda-agent/deploy.md %}deploy-using-a-values-yaml-file).
+    ```yaml
+    soda:
+      apikey:
+        id: "154k***889"
+        secret: "9sfjf****ff4"
+      agent:
+        name: "my-soda-agent-external-secrets"
+      scanlauncher:
+        existingSecrets:
+          # from spec.target.name in the ExternalSecret file
+          - soda-agent-secrets 
+        idle:
+          enabled: true
+          replicas: 1
+      cloud:
+        # Use https://cloud.us.soda.io for US region 
+        # Use https://cloud.soda.io for EU region
+        endpoint: "https://cloud.soda.io"
+    ```
+9. Deploy the Soda Agent using the following command:
+   ```bash
+   helm install soda-agent soda-agent/soda-agent \
+     --values values.yml \
+     --namespace soda-agent
+   ```
 
 ## Go further
 
 * Learn more about [Soda Agent basic concepts]({% link soda-agent/basics.md %}).
+* Add a [new data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud that accesses your data source via a Soda Agent.
 * Consider completing the [Enable end-user data quality testing]({% link soda/quick-start-end-user.md %}) guide for more context around setting up a new data source and creating a new agreement.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
