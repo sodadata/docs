@@ -62,7 +62,7 @@ reconciliation Production:
 &nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[List of compatible metrics and checks](#list-of-compatible-metrics-and-checks-for-metric-reconciliation-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />
-[Limitations and constraints](#limitations-and-constraints)
+[Limitations and constraints](#limitations-and-constraints)<br />
 [Go further](#go-further)<br />
 <br />
 
