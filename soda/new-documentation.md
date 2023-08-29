@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### August 30, 2023
+* Added instructions for integrating wiht an [external secrets manager]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager) with a Soda Agent to manage frequently-changed data source login credentials.
+
 #### August 24, 2023
 * Added documentation for the new, native integration of [Soda in Atlan]({% link soda/integrate-atlan.md %}).
 * Updated [orchestration]({% link soda-library/orchestrate-scans.md %}) documentation to include a link to an Astronomer tutorial for Data Quality Checks with Airflow, Snowflake, and Soda.

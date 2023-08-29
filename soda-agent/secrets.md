@@ -100,13 +100,11 @@ data_source local_postgres_test:
 
 Use External Secrets Operator (ESO) to integrate your Soda Agent with your secrets manager, such as a Hashicorp Vault, AWS Secrets Manager, or Azure Key Vault, and securely reconcile the login credentials that Soda Agent uses for your data sources.
 
-For example, imagine you use a Hashicorp Vault to store data source login credentials and your security protocol demands frequent rotation of passwords. In this situation, the challenge is that apps running in your Kubernetes cluster, like a Soda Agent, need access to the up-to-date passwords. 
+For example, imagine you use a Hashicorp Vault to store data source login credentials and your security protocol demands frequent rotation of passwords. In this situation, the challenge is that apps running in your Kubernetes cluster, such as a Soda Agent, need access to the up-to-date passwords. 
 
 To address the challenge, you can set up and configure ESO in your Kubernetes cluster to regularly reconcile externally-stored password values so that your apps always have the credentials they need. Doing so obviates the need to manually redeploy a values YAML file with new passwords for apps running in the cluster each time your system refreshes the passwords.
 
-The current integration of Soda Agent and a secrets manager *does not* yet support the configuration of the Soda Cloud credentials. For those credentials, use a tool such as:
-* <a href="https://github.com/jkroepke/helm-secrets" target="_blank">helm-secrets</a>
-* <a href="https://github.com/helmfile/vals" target="_blank">vals</a>.
+The current integration of Soda Agent and a secrets manager *does not* yet support the configuration of the Soda Cloud credentials. For those credentials, use a tool such as <a href="https://github.com/jkroepke/helm-secrets" target="_blank">helm-secrets</a> or <a href="https://github.com/helmfile/vals" target="_blank">vals</a>.
 
 To integrate Soda Agent with a secret manager, you need the following:
 * **External Secrets Operator (ESO)** which is a Kubernetes operator that facilitates a connection between the Soda Agent and your secrets manager
@@ -115,11 +113,13 @@ To integrate Soda Agent with a secret manager, you need the following:
 
 Read more about the <a href="https://external-secrets.io/latest/introduction/overview/" target="_blank">ESO's Resource Model</a>.
 
-The following procedure outlines how to use ESO to integrate with a **Hashicorp Vault** that uses a KV Secrets Engine v2. Extrapolate from this procedure to integrate with another secrets manager such as <a href="https://external-secrets.io/latest/provider/aws-secrets-manager/" target="_blank">AWS Secrets Manager</a> or <a href="https://external-secrets.io/latest/provider/azure-key-vault/" target="_blank">Azure Key Vault</a>.
+The following procedure outlines how to use ESO to integrate with a **Hashicorp Vault** that uses a KV Secrets Engine v2. Extrapolate from this procedure to integrate with another secrets manager such as:
+* <a href="https://external-secrets.io/latest/provider/aws-secrets-manager/" target="_blank">AWS Secrets Manager</a> 
+* <a href="https://external-secrets.io/latest/provider/azure-key-vault/" target="_blank">Azure Key Vault</a>
 
 ### Prerequisites
 * You have set up a Kubernetes cluster in your cloud services environment and deployed a Soda Agent in the cluster.
-* For the purpose of this example proceudre, you have set up and are using a Hashicorp Vault which contains a key-value pair for `POSTGRES_USERNAME` and `POSTGRES_PASSWORD` at the path `local/soda`.
+* For the purpose of this example procedure, you have set up and are using a Hashicorp Vault which contains a key-value pair for `POSTGRES_USERNAME` and `POSTGRES_PASSWORD` at the path `local/soda`.
 
 ### Install and set up the External Secrets Operator
 1. Use helm to install the External Secrets Operator from the <a href="https://charts.external-secrets.io" target="_blank">Helm chart repository</a> into the same Kubernetes cluster in which you deployed your Soda Agent. 
@@ -135,7 +135,9 @@ The following procedure outlines how to use ESO to integrate with a **Hashicorp 
 ```shell
 kubectl -n external-secrets get all
 ```
-3. Create a `cluster-secret-store.yml` file for the `ClusterSecretStore` configuration. The details in this file instruct the Soda Agent how to access the external secrets manager vault. This example uses <a href="https://external-secrets.io/latest/provider/hashicorp-vault/#approle-authentication-example" target="_blank">Hashicorp Vault AppRole authentication</a>. AppRole authenticates with Vault using the <a href="https://developer.hashicorp.com/vault/docs/auth/approle" target="_blank">App Role auth mechanism</a> to access the contents of the secret store. It uses the SecretID in the Kubernetes secret, referenced by `secretRef` and the `roleID`, to acquire a temporary access token so that it can fetch secrets.
+3. Create a `cluster-secret-store.yml` file for the `ClusterSecretStore` configuration. The details in this file instruct the Soda Agent how to access the external secrets manager vault. <br />This example uses <a href="https://external-secrets.io/latest/provider/hashicorp-vault/#approle-authentication-example" target="_blank">Hashicorp Vault AppRole authentication</a>. AppRole authenticates with Vault using the <a href="https://developer.hashicorp.com/vault/docs/auth/approle" target="_blank">App Role auth mechanism</a> to access the contents of the secret store. It uses the SecretID in the Kubernetes secret, referenced by `secretRef` and the `roleID`, to acquire a temporary access token so that it can fetch secrets.<br /> Access external-secrets.io documentation for configuration examples for:
+* <a href="https://external-secrets.io/latest/provider/aws-secrets-manager/" target="_blank">AWS Secrets Manager</a> 
+* <a href="https://external-secrets.io/latest/provider/azure-key-vault/" target="_blank">Azure Key Vault</a>
     ```yaml
     apiVersion: external-secrets.io/v1beta1
     kind: ClusterSecretStore
@@ -209,7 +211,7 @@ Output:
 NAME                 TYPE     DATA   AGE
 soda-agent-secrets   Opaque   1      24h
 ```
-8. Prepare a `values.yml` file to deploy the Soda Agent with the `existingSecrets` parameter that instructs it to access the `ExternalSecret` file to fetch data source login credentials. Refer to [complete instructions]({% link soda-agent/deploy.md %}deploy-using-a-values-yaml-file).
+8. Prepare a `values.yml` file to deploy the Soda Agent with the `existingSecrets` parameter that instructs it to access the `ExternalSecret` file to fetch data source login credentials. Refer to complete [deploy instructions]({% link soda-agent/deploy.md %}deploy-using-a-values-yaml-file), or [redeploy instructions]({% link soda-agent/redeploy.md %}) if you already have an agent running in a cluster.
     ```yaml
     soda:
       apikey:
@@ -234,6 +236,20 @@ soda-agent-secrets   Opaque   1      24h
    helm install soda-agent soda-agent/soda-agent \
      --values values.yml \
      --namespace soda-agent
+   ```
+   Output:<br />
+   ```shell
+  NAME: soda-agent
+  LAST DEPLOYED: Tue Aug 29 13:08:51 2023
+  NAMESPACE: soda-agent
+  STATUS: deployed
+  REVISION: 1
+  TEST SUITE: None
+  NOTES:
+  Success, the Soda Agent is now running. 
+  You can inspect the Orchestrators logs if you like, but if all was configured correctly, the Agent should show up in Soda Cloud. 
+  Check the logs using:
+        kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent
    ```
 
 ## Go further
