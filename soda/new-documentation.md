@@ -13,6 +13,7 @@ parent: Reference
 * Added documentation for SodaCL [reconciliation checks]({% link soda-cl/recon.md %}), tailored for data migration use cases.
 
 #### August 30, 2023
+* Added instructions for integrating wiht an [external secrets manager]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager) with a Soda Agent to manage frequently-changed data source login credentials.
 * Added screenchots to [Integrate Soda with Atlan]({% link soda/integrate-atlan.md %}) documentation.
 * Added to [Troubleshoot]({% link soda-library/run-a-scan.md %}#troubleshoot) content for running a scan that produces an SSL certificate error.
 
