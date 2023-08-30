@@ -102,7 +102,6 @@ reconciliation Production:
 
 Read more about [metrics, measurements, and thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) in general.
 
-
 A **record reconciliation check** performs a row-to-row comparison of the contents of each column, or specific columns, in datasets in two different data sources; where the values do not match exactly, the check fails. The numeric value the check result produces represents the number of rows with different, additional, or missing contents.
 
 For example, the following check compares the entire contents of dataset Y in data source A and dataset Y in data source B. Though the contents of the rows match exactly, one dataset contains additional rows, so it is not an exact match and the reconciliation check fails with a numeric value of `2`.
@@ -123,42 +122,15 @@ reconciliation Production:
 
 ![recon diff](/assets/images/recon-diff.png){:height="480px" width="480px"}
 
+Read more about the [optional configurations](#reconciliation-checks) you can add to a record reconciliation check.
 
-In a variation of a record reconciliation check, you can specify columns to compare as in the example below. 
-
-* **Column constrained** The first check compares *only* the contents of the listed columns, mapping the columns according to the order in which they appear in the list– Planet to Planet, Hotness to Relative Temp. This check passes because the values of the mapped columns are the same. 
-* **With primary key** The second check uses the `key columns` you identify to form a primary key in the source that defines a single record. Soda uses the key to map records from dataset A to dataset B, similar to what a primary key does. This check fails because of the mismatched value for Jupiter's size. 
-* **With multiple primary keys** The third check enables you to define a the primary key the defines a single record in both the source and target datasets. Soda uses the key to map records from dataset A to dataset B, similar to what a primary key does. This check fails because of the mismatched value for Jupiter's size. 
-{% include code-header.html %}
-```yaml
-reconciliation Production:
-...
-checks:
-    # Column constrained
-    - rows diff = 0:
-        source columns: [Planet, Hotness]
-        target columns: [Planet, Relative Temp]
-    # With primary key
-    - rows diff = 0:
-        key columns:
-          - Planet
-          - Size
-    # With multiple primary keys
-    - rows diff < 5:
-        source key columns: [Planet, Hotness]
-        target key columns: [Planet, Relative Temp]
-```
-
-![recon diff2](/assets/images/recon-diff2.png){:height="500px" width="500px"}
-
-Learn about reconciliation check [Limitations and constraints](#limitations-and-constraints).
 
 ## Define reconciliation checks
 
 The following outlines the basic steps to configure and execute reconciliation checks.
-1. [Install]({% link soda-library/install.md %}) a Soda Library package for both the migration source and target data sources. For the first example above, you would install both `soda-mysql` and `soda-snowflake`.  
-2. [Configure]({% link soda-library/configure.md %}) both data sources in a configuration YAML file, and add your `soda_cloud` configuration. For the example above, you would add both [MySQL]({% link soda/connect-mysql.md %}) and [Snowflake]({% link soda/connect-snowflake.md %}) connection configuration details to a configuration YAML file.
-3. Prepare a **recon YAML** file and configure the reconciliation metadata; see details below.
+1. [Install]({% link soda-library/install.md %}) a Soda Library package for both the migration source and target data sources. For the very first example above, you would install both `soda-mysql` and `soda-snowflake`.  
+2. [Configure]({% link soda-library/configure.md %}) both data sources in a configuration YAML file, and add your `soda_cloud` configuration. For the very first example above, you would add both [MySQL]({% link soda/connect-mysql.md %}) and [Snowflake]({% link soda/connect-snowflake.md %}) connection configuration details to a configuration YAML file.
+3. Prepare a `recon.yml` file and configure the reconciliation metadata; see details below.
 4. Define reconciliation checks to compare data between data sources; see details below.
 5. [Run a Soda scan]({% link soda-library/run-a-scan.md %}) against either the source or target data source to execute the reconciliation checks and review results in the command-line output and in Soda Cloud. 
 {% include code-header.html %}
@@ -168,9 +140,9 @@ soda scan -d mysql_adventureworks -c configuration.yml recon.yml
 
 <br />
 
-To define reconciliation checks, best practice dictates that you prepare a **recon YAML** file separate from your checks YAML file which contains regular, non-reconciliation checks for data quality in your data source. Technically, you can use one YAML file to contain all recon and regular SodaCL checks, but troubleshooting and issue investigation is easier if you use separate files.
+To define reconciliation checks, best practice dictates that you prepare a `recon.yml` file separate from your checks YAML file which contains regular, non-reconciliation checks for data quality in your data source. Technically, you can use one YAML file to contain all recon and regular SodaCL checks, but troubleshooting and issue investigation is easier if you use separate files.
 
-In a recon YAML file, you must first provide reconciliation metadata for the checks, as per the configuration in the example and table below.
+In a `recon.yml` file, you must first provide reconciliation metadata for the checks, as per the configuration in the example and table below.
 {% include code-header.html %}
 ```yaml
 reconciliation my_project_name:
@@ -222,7 +194,7 @@ reconciliation Production:
     - freshness(date_first_purchase) diff < 100h
     - row_count:
         fail: when diff > 10%
-        warn: when diff < 5%
+        warn: when diff between 5% and 9%
     - missing_count(middle_name) diff = 0:
         samples columns: [last_name, first_name]
 ```
@@ -291,32 +263,40 @@ Learn about reconciliation check [Limitations and constraints](#limitations-and-
 
 ### Record reconciliation checks
 
-The syntax of record reconciliation checks is simple in that it only expects a `rows diff` input. You can choose to compare:
-* the entire contents of datasets
-* only the data in a specified list of columns; **Recommended best practice**; see [Limitations and constraints](#limitations-and-constraints).
-* the entire contents of datasets, specifying columns to define a primary key
-* the entire contents of datasets, specifying columns to define multiple primary keys
+The syntax of record reconciliation checks is simple in that it only expects a `rows diff` input. You can use key configurations to refine how this type of check executes during a Soda scan.
 
+| Configuration | Compares | Description and example |
+| ------------- | -------- | ----------------------- |
+| Simple    | the entire contents the datasets | In the example below, the first check compares all the records in the target dataset to the source dataset. This check fails because of the mismatched value for Jupiter's size.  |
+|  Column constrained | **Best practice**<sup>1</sup><br />only the data in a specified list of columns | In the example below, the second check compares *only* the contents of the listed columns, mapping the columns according to the order in which they appear in the list– Planet to Planet, Hotness to Relative Temp. This check passes because the values of the mapped columns are the same. |
+| With primary key | the entire contents of the datasets, specifying columns to define a primary key in the source | In the example below, he third check uses the `key columns` you identify to form a primary key in the source that defines a single record. Soda uses the key to map records from dataset A to dataset B, similar to what a primary key does. This check fails because of the mismatched value for Jupiter's size. |
+| With multiple primary keys | the entire contents of the datasets, specifying columns to define multiple primary keys | In the example below, the fourth check enables you to define a the primary key the defines a single record in both the source and target datasets. Soda uses the key to map records from dataset A to dataset B, similar to what a primary key does. This check passes because with only one failed row, it does not exceed the threshold of `5` that the check sets. |
+
+<sup>1</sup> See [Limitations and constraints](#limitations-and-constraints).
+
+{% include code-header.html %}
 ```yaml
 reconciliation Production:
 ...
   checks:
-    # Compares entire datasets
-    - rows diff between 35000 and 36000
-    # Compares only the records in the lists of columns, mapped according to order
+    # Simple
+    - rows diff = 0
+    # Column constrained
     - rows diff = 0:
-        source columns: [customer_key, region_id] 
-        target columns: [customer_base_key, region]
-    # Compares entire datasets with primary key
+        source columns: [Planet, Hotness]
+        target columns: [Planet, Relative Temp]
+    # With primary key
     - rows diff = 0:
         key columns:
-          - customer_key
-          - birth_date
-    # Compares entire data sets with two primary keys
+          - Planet
+          - Size
+    # With multiple primary keys
     - rows diff < 5:
-        source key columns: [first_name, last_name]
-        target key columns: [first_name, surname]
+        source key columns: [Planet, Hotness]
+        target key columns: [Planet, Relative Temp]
 ```
+
+![recon diff2](/assets/images/recon-diff2.png){:height="500px" width="500px"}
 
 
 ### Add attributes
@@ -405,47 +385,27 @@ Soda Cloud Trace: 4380***10
 
 ### Failed row samples
 
-Reconciliation checks that use the following checks and metrics *implicitly* collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
-* `duplicate_count`
-* `duplicate_percent`
-* `invalid_count`
-* `invalid_percent`
-* `missing_count`
-* `missing_percent`
-
-Recon checks that borrow from `failed rows` check syntax, such as the `name_combo` check in the example above, *explicitly* collect samples of any failed rows to display in Soda Cloud. Again, the default number of failed row samples that Soda collects and displays is 100.
+Record reconciliation checks, and reconcilication metric checks that borrow from `failed rows` check syntax such as the `name_combo` check in the example above, *explicitly* collect samples of any failed rows to display in Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
 Read more [About failed row samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples)
 
 <br />
-If you wish to limit or broaden the sample size, you can add the `samples limit` configuration to one of the above-listed reconciliation metric checks.  Read more about [Setting a sample limit]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit).
+If you wish to limit or broaden the sample size, you can add the `samples limit` configuration to a check.  Read more about [Setting a sample limit]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit).
 {% include code-header.html %}
 ```yaml
 checks:  
-  - duplicate_count(last_name) diff = 0:
+  - rows diff = 0:
       samples limit: 20
 ``` 
 <br />
-
-For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 
 Alternatively, you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
 {% include code-header.html %}
 ```yaml
 checks:  
-  - duplicate_count(last_name) diff = 0:
+  - rows diff = 0:
       samples limit: 0
 ``` 
-<br />
-
-You can also use a `samples columns` configuration to a metric reconciliation check (*not* a record reconciliation check) to specify the columns for which Soda must implicitly collect failed row sample values, as in the following example. Soda only collects this check's failed row samples for the columns you specify in the list. 
-
-Note that the list of samples columns does not support wildcard characters (%).
-```yaml
-checks:  
-  - duplicate_count(last_name) diff = 0:
-      samples columns: [last_name, first_name]
-```
 <br />
 
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a the grouped reference checks. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
@@ -511,7 +471,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 ```yaml
   checks:
     - duplicate_count(last_name) diff < 1:
-        identity: 05229d67-e3f0-4921-a327-b2***84
+        identity: 05229d67-e3f0-***-a327-b2***84
 ```
 
 #### Example with alerts
@@ -520,7 +480,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
   checks:
     - row_count:
         fail: when diff > 10%
-        warn: when diff < 5%
+        warn: when diff between 5% and 9%
 ```
 
 #### Example with quotes
@@ -535,10 +495,11 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 
 ## Limitations and constraints
 
-* The Python environment in which record reconciliation checks run consumes more time/CPU/memory because this type of check loads all data into memory to execute a comparison. Because data comparison is dense, exercise caution when executing scans with record reconciliation checks as they can cause usage spikes in the data source, and cost spikes in case of cloud-managed data sources. Best practice dictates that you [add filters](#add-a-filter) and use [column constrained](#record-reconciliation-checks) record reconciliation checks whenever possible to mitigate performance issues.
+* The Python environment in which record reconciliation checks run consumes more time/CPU/memory because this type of check loads all data into memory to execute a comparison. Because record-to-record comparison is dense, exercise caution when executing scans with record reconciliation checks as they can cause usage spikes in the data source, and cost spikes in case of cloud-managed data sources. Best practice dictates that you [add filters](#add-a-filter) and use [column constrained](#record-reconciliation-checks) record reconciliation checks whenever possible to mitigate cost and performance issues.
 * Reconciliation checks on TEXT type columns are case sensitive.
 * Record reconciliation checks do not support `samples columns` configuration.
-* Record reconciliation checks do not support `samples columns` in check configuration, nor `exclude columns` in the data source configuration in a configuration YAML file; see Disable failed rows sampling for [specific columns]({% link soda-cl/failed-rows-checks.md %}##disable-failed-rows-sampling-for-specific-columns).
+* Reconciliation checks do not support `samples columns` in check configuration, nor `exclude columns` in the data source configuration in a configuration YAML file; see Disable failed rows sampling for [specific columns]({% link soda-cl/failed-rows-checks.md %}##disable-failed-rows-sampling-for-specific-columns).
+* ***Known issue***: Do not define a threshold as a percentage `%` if you expect the measurement of a metric to equal `0`. Using a percentage for a threshold causes an error for an absolute check; the check evaluates correctly but the error persists with a non-zero exit command.
 
 
 ## Go further
