@@ -12,6 +12,10 @@ parent: Reference
 #### August 31, 2023
 * Added documentation for SodaCL [reconciliation checks]({% link soda-cl/recon.md %}), tailored for data migration use cases.
 
+#### August 30, 2023
+* Added screenchots to [Integrate Soda with Atlan]({% link soda/integrate-atlan.md %}) documentation.
+* Added to [Troubleshoot]({% link soda-library/run-a-scan.md %}#troubleshoot) content for running a scan that produces an SSL certificate error.
+
 #### August 24, 2023
 * Added documentation for the new, native integration of [Soda in Atlan]({% link soda/integrate-atlan.md %}).
 * Updated [orchestration]({% link soda-library/orchestrate-scans.md %}) documentation to include a link to an Astronomer tutorial for Data Quality Checks with Airflow, Snowflake, and Soda.
