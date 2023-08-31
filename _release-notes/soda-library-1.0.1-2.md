@@ -16,4 +16,3 @@ products:
 * Upgrade BigQuery client to 3.x by @m1n0 in #19
 * Include basic data source info in scan payload by @m1n0 in #15
 
-Refer to the <a href="https://github.com/sodadata/soda-library/releases" target="_blank">Soda Library Release Notes </a> for details.

@@ -11,6 +11,7 @@ parent: Reference
 
 #### August 31, 2023
 * Added documentation for SodaCL [reconciliation checks]({% link soda-cl/recon.md %}), tailored for data migration use cases.
+* Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.1.0 - 1.1.5.
 
 #### August 30, 2023
 * Added instructions for integrating wiht an [external secrets manager]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager) with a Soda Agent to manage frequently-changed data source login credentials.

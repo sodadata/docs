@@ -40,4 +40,3 @@ products:
 * HIVE: add configuration parameters by @vijaykiran in #36
 * CLOUD-3861 pass scanType with cicd option by @gregkaczan in #34
 
-Refer to the <a href="https://github.com/sodadata/soda-library/releases" target="_blank">Soda Library Release Notes </a> for details.
