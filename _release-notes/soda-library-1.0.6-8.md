@@ -17,4 +17,3 @@ products:
 * Reconciliation row diff checks WIP by @vijaykiran in #64
 * Recon row diff: fix threshold-based outcome WIP
 
-Refer to the <a href="https://github.com/sodadata/soda-library/releases" target="_blank">Soda Library Release Notes </a> for details.
