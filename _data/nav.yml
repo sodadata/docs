@@ -171,6 +171,8 @@
     page: soda-cl/reference.md
   - subtitle: Cross checks
     page: soda-cl/cross-row-checks.md
+  - subtitle: Reconciliation checks
+    page: soda-cl/recon.md
   - subtitle: Anomaly score checks
     page: soda-cl/anomaly-score.md
   - subtitle: Distribution checks

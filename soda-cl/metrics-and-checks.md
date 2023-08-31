@@ -82,6 +82,7 @@ checks for dim_employees_dev:
     anomaly score<br />
     distribution<br />
     freshness<br />
+    reconciliation <br />
     reference<br />
     cross<br />
     schema<br />
@@ -239,6 +240,7 @@ min_length
 missing_count
 missing_percent
 percentile
+reconciliation 
 reference
 row_count
 schema

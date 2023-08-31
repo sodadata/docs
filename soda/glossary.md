@@ -67,6 +67,9 @@ The component in Soda Cloud that stores metric measurements. This component faci
 ### notification
 A setting you configure in a Soda Cloud agreement that defines whom to notify with check results after a scan. 
 
+### recon YAML
+The file in which you define SodaCL reconciliation checks. See [Reconciliation checks]({% link soda-cl/recon.md %}).
+
 ### scan
 A command that executes checks to extract information about data in a data source. See [Run a Soda Library scan]({% link soda-library/run-a-scan.md %}).
 

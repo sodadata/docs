@@ -11,6 +11,8 @@ redirect_from: /soda-cl/row-count.html
 
 There are several ways to use SodaCL metrics and checks to compare data across datasets and data sources. The following offers some advice about how and when to use different types of checks to obtain the comparison results you need.
 
+See also: [Reconciliation checks]({% link soda-cl/recon.md %})
+
 Have you got an idea or example of how to compare data that we haven't documented here? <a href="https://github.com/sodadata/docs/issues" target="_blank">Let us know!</a> 
 
 [Compare data in the same data source and schema](#compare-data-in-the-same-data-source-and-schema)<br />
