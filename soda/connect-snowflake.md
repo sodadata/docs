@@ -146,6 +146,26 @@ kubectl create secret generic -n <soda-agent-namespace> snowflake-private-key --
 **Solution:**
 Use <a href="https://community.snowflake.com/s/article/How-to-Triage-OCSP-Related-Connectivity-Problems" target="_blank">Snowflake's troubleshooting guide</a> to triage OCSP-related connectivity issues.
 
+<br />
+
+**Problem:** You have defined a Group By check and the scan that executes the check yields an error.
+
+**Solution:**  Be aware that, by default, Snowflake returns columns names in uppercase. Therefore, when defining a Group By check, you must specify the custom name of the check in uppercase as in the following example.
+```yaml
+checks for VOLUME:
+  - group by:
+      group_limit: 50
+      query: |
+        SELECT TRADER, count(*) as trader_row_count
+        FROM TRADEVOLUME
+        WHERE TRADE_DATE = '2023-01-01'
+        GROUP BY TRADER
+      fields:
+        - TRADER
+      checks:
+        - TRADER_ROW_COUNT > 40:
+            name: Trader row count
+```
 
 <br />
 <br />
