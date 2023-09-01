@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### September 1, 2023
+* Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.1.0 - 1.1.5.
+* Added item to [Troubleshoot]({% link soda/connect-snowflake.md %}#troubleshoot) section for Snowflake.
+
 #### August 31, 2023
 * Added documentation for SodaCL [reconciliation checks]({% link soda-cl/recon.md %}), tailored for data migration use cases.
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.1.0 - 1.1.5.
