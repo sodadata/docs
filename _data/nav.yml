@@ -2,18 +2,33 @@
   page: index.html
 
 - title: Get started
-  page: soda/quick-start-sip.md
+  page: soda/setup-guide.md
   subcategories:
   - subtitle: Take a sip of Soda
     page: soda/quick-start-sip.md
+  - subtitle: Set up guide
+    page: soda/setup-guide.md
+  - subtitle: How Soda works
+    page: soda-library/how-library-works.md
+  - subtitle: Soda overview
+    page: soda/product-overview.md
+
+- title: Setup examples
+  page: soda/quick-start-sip.md
+  subcategories:
   - subtitle: Test data in a pipeline
     page: soda/quick-start-prod.md
   - subtitle: Test data during development
     page: soda/quick-start-dev.md
-  - subtitle: Enable end users to test data
+  - subtitle: Self-serve test data quality
     page: soda/quick-start-end-user.md
-  - subtitle: Soda overview
-    page: soda/product-overview.md
+  - subtitle: Test for data migration
+    page: soda/quick-start-migration.md
+  - subtitle: Test data as a product
+    page: soda/quick-start-product.md
+  - subtitle: Automate data quality
+    page: soda/quick-start-automate.md
+
 
 - title: Connect a data source
   page: soda/connect-athena.md
@@ -66,8 +81,7 @@
   subcategories:
   - subtitle: Soda Library overview
     page: soda-library/overview.md
-  - subtitle: How Soda Library works
-    page: soda-library/how-library-works.md
+
   - subtitle: Install Soda Library
     page: soda-library/install.md
   - subtitle: Configure Soda Library
