@@ -10,11 +10,20 @@ redirect_from:
 
 # Define programmatic scans using Python
 *Last modified on {% last_modified_at %}*
-{% include banner-core.md %}
 
-To automate the search for bad-quality data, you can use **Soda library** to programmatically execute scans. Alternatively, you can install and use the Soda Library CLI to run scans; see [Install Soda Library]({% link soda-library/install.md %}).
+To automate the search for bad-quality data, you can use **Soda library** to programmatically set up and execute scans. Alternatively, you can install and use the Soda Library CLI to run scans; see [Install Soda Library]({% link soda-library/install.md %}). Based on a set of conditions or a specific event schedule, you can instruct Soda Library to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
 
-Based on a set of conditions or a specific event schedule, you can instruct Soda Library to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
+As a step in the **Get started roadmap**, this guide offers instructions to set up, install, and configure Soda in a [programmatic deployment model]({% link soda/setup-guide.md %}#programmatic).
+
+#### Get started roadmap
+
+1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
+2. **Set up Soda: programmatic** 📍 You are here!
+3. Write SodaCL checks
+4. Run scans, review results
+5. Organize, alert, investigate
+
+
 
 [Basic programmatic scan](#basic-programmatic-scan)<br />
 [Tips and best practices](#tips-and-best-practices)<br />

@@ -1,12 +1,14 @@
 ---
 layout: default
-title: Setup examples
+title: Use case guides
 description: 
-parent: Setup examples
+parent: Use case guides
 ---
 
-# Setup examples
+# Use case guides
 *Last modified on {% last_modified_at %}*
+
+Use the following guides as example implementations based on how you intend to use Soda for data quality testing. For standard set up instructions, see [Get started]({% link soda/setup-guide.md %}).
 
 <div class="docs-html-content">
     <section class="docs-section" style="padding-top:0">

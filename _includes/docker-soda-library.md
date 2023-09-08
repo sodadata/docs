@@ -1,4 +1,4 @@
-Use <a href="https://hub.docker.com/repository/docker/sodadata/soda-library" target="_blank">Soda's Docker image</a> in which Soda Scientific is pre-installed.
+Use <a href="https://hub.docker.com/repository/docker/sodadata/soda-library" target="_blank">Soda's Docker image</a> in which Soda Scientific is pre-installed. You need Soda Scientific to be able to use SodaCL [distribution checks]({% link soda-cl/distribution.md %}) or [anomaly score checks]({% link soda-cl/anomaly-score.md %}).
 
 1. If you have not already done so, <a href="https://docs.docker.com/get-docker/" target="_blank">install Docker</a> in your local environment. 
 2. From Terminal, run the following command to pull Soda Library's official Docker image; adjust the version to reflect the most [recent release]({% link release-notes/soda-library.md %}).
