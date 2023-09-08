@@ -1,21 +1,23 @@
 - title: Home
   page: index.html
 
-- title: Get started
+- title: Set up Soda
   page: soda/setup-guide.md
   subcategories:
-  - subtitle: Take a sip of Soda
-    page: soda/quick-start-sip.md
   - subtitle: Set up guide
     page: soda/setup-guide.md
-  - subtitle: Manage sensitive values
+  - subtitle: What is Soda?
+    page: soda/about.md
+  - subtitle: Take a sip of Soda
+    page: soda/quick-start-sip.md
+  - subtitle: Install Soda Library
+    page: soda-library/install.md
+  - subtitle: Deploy a Soda Agent
+    page: soda-agent/deploy.md
+  - subtitle: Invoke Soda Library
+    page: soda-library/programmatic.md
+  - subtitle: Soda Agent extras
     page: soda-agent/secrets.md
-  - subtitle: Connect to Soda Cloud via AWS PrivateLink
-    page: soda-agent/private-link.md
-  - subtitle: Set roles and rights
-    page: soda-cloud/roles-and-rights.md
-  - subtitle: Add Soda to single sign-on
-    page: soda-cloud/sso.md
   - subtitle: Upgrade, redeploy, uninstall
     page: soda/upgrade.md
 
@@ -39,7 +41,7 @@
   - subtitle: Add Soda to a data catalog
     page: soda/quick-start-catalog.md
   - subtitle: Add Soda to Databricks notebook
-    page: soda/notebook.md
+    page: soda/quick-start-notebook.md
 
 - title: Write SodaCL checks 
   page: soda-cl/soda-cl-overview.md
@@ -82,8 +84,12 @@
     page: soda-cloud/failed-rows.md
 
 - title: Organize, alert, investigate
-  page: 
+  page: soda-cloud/roles-and-rights.md
   subcategories:
+  - subtitle: Set roles and rights
+    page: soda-cloud/roles-and-rights.md
+  - subtitle: Add Soda to SSO
+    page: soda-cloud/sso.md
   - subtitle: Add check attributes
     page: soda-cl/check-attributes.md
   - subtitle: Set notification rules
@@ -132,6 +138,8 @@
 - title: SodaCL reference
   page: soda-cl/optional-config.md
   subcategories:
+  - subtitle: Metrics and checks
+    page: soda-cl/metrics-and-checks.md
   - subtitle: Optional check configurations
     page: soda-cl/optional-config.md
   - subtitle: Numeric metrics
@@ -220,7 +228,7 @@
 - title: Learning resources
   page: soda/product-overview.md
   subcategories:
-  - subtitle: Soda overview
+  - subtitle: Soda product overview
     page: soda/product-overview.md
   - subtitle: How Soda works
     page: soda-library/how-library-works.md
