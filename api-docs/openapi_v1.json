@@ -1,1 +1,1715 @@
-{"openapi": "3.1.0", "info": {"title": "Soda Cloud Reporting API", "description": "\nThis API enables you to query reporting-oriented data from your Soda Cloud account.\nUse this data to power dashboards and reports on the coverage and quality of your data.\n\nAuthentication\n-----\nThe API supports authentication via `HTTPBasic`, `TokenAuth`, and `ApiKey` authentication. Except for the `/get_token` endpoint, which only supports HTTP Basic authentication.\n\n- `HTTPBasic` authentication requires you to provide your username and password as a Base64 encoded `Authorization` header. Send your HTTP requests with an `Authorization` header that contains the word `Basic` followed by a space and a base64-encoded string `username:password`.\n\n- `TokenAuth` requires that you obtain a Soda token from the `/get_token` endpoint using your username and password in accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token` endpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with any of the other endpoints.\n\n- `ApiKey` authentication allows you to use API keys generated in your Cloud Profile. Use this method if your organization is using Single Sign-On (SSO). Provide your API Key ID and API Key Secret as `API_KEY_ID` and `API_KEY_SECRET` headers, respectively. If you do not know how to generate your API Key and Secret pair follow the [Configure and run Soda Library](https://docs.soda.io/soda-library/configure.html#configure-and-run-soda-library) instructions.\n\n## Examples\n**`HTTPBasic`**\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'Authorization: Basic bXl1c2VybmFtZUBzb2RhLmlvOm15c2VjcmV0cGFzc3dvcmQ='\n```\n\n**`TokenAuth`**\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'SODA_TOKEN: ZAT2BM4sceKCGggHfawz_Ji5cfHKkiPjoN123yM0wCrWaxSkN4CGdg'\n```\n\n**`ApiKey`**\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'X-API-KEY-ID: 60ef2406-6492-4236-a6b8-2cb9240d803c' \\\n  --header 'X-API-KEY-SECRET: 918TcsFViYYEBtXlbzMeX6lT4SVm70'\n```\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required, in the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication credentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n", "version": "1.0.9"}, "servers": [{"url": "https://reporting.cloud.soda.io", "description": "Soda Cloud"}], "paths": {"/ping": {"get": {"tags": ["Status"], "summary": "Soda can is open", "description": "Ping this endpoint to test whether the Reporting API is live.\nReturns the sound of a Soda can opening along with a 200.", "operationId": "soda_can_is_open_ping_get", "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {}}}}}}}, "/get_token": {"get": {"tags": ["Authentication"], "summary": "Get token", "description": "This enpoint allows you to obtain a limited duration API token to use in any of the other endpoints.\n\nMake a query to this endpoint according to the `HTTPBasic` authentication headers\n(see \"Live testing\" section on the right).\n\nThe expiration limit of the token is given to you in the response.\n\nReturns\n-------\nAn object of type `GetTokenResult`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.", "operationId": "get_token_get_token_get", "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/GetTokenResult"}}}}}, "security": [{"HTTPBasic": []}]}}, "/audit_trail": {"get": {"tags": ["Auditing"], "summary": "Audit Trail", "description": "This endpoint returns a list of audit trail events for the authenticated user's organization.\n\nTo obtain data from this endpoint, the authenticated user must be an **organization admin**\nand the data returned is equivalent to the what an Organization admin would be able to get from\nthe Soda Cloud UI under \"Organization Settings > Audit Trail\".\n\nUsage\n-----\nUse this endpoint to capture audit trail events for security and usage monitoring purposes.\n\nReturns\n-------\nAn object of type `AuditTrailResult` containing an array of `AuditTrailData`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.", "operationId": "audit_trail_audit_trail_get", "parameters": [{"required": false, "schema": {"type": "string", "format": "date-time", "title": "From Datetime", "default": "2023-06-12T14:17:26.330957"}, "name": "from_datetime", "in": "query"}, {"required": false, "schema": {"type": "string", "format": "date-time", "title": "To Datetime", "default": "2023-07-13T14:17:26.330982"}, "name": "to_datetime", "in": "query"}], "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AuditTrailResult"}}}}, "202": {"description": "Successful request but no data was returned", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/NoContentError"}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}, "security": [{"HTTPBasic": []}, {"SodaBackendToken": []}, {"APIKeyCookie": []}, {"ApiKeyId[Soon Deprecated] Use XApiKeyID": []}, {"APIKeySecret[Soon Deprecated] Use XApiKeySecret": []}, {"XApiKeyId": []}, {"XApiKeySecret": []}]}}, "/last_etl_refresh": {"get": {"tags": ["Status"], "summary": "Last ETL Refreshed Info", "description": "This endpoint returns the last ETL refresh information\n\nUsage\n-----\nUse this endpoint to capture the last ETL refresh information to make sure that the data is\nup-to-date.\n\nReturns\n-------\nAn object of type `LastETLRefreshResult` containing a dictionary of `LastETLRefreshResultData`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.", "operationId": "last_etl_refresh_last_etl_refresh_get", "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/LastETLRefreshResult"}}}}}, "security": [{"HTTPBasic": []}, {"SodaBackendToken": []}, {"APIKeyCookie": []}, {"ApiKeyId[Soon Deprecated] Use XApiKeyID": []}, {"APIKeySecret[Soon Deprecated] Use XApiKeySecret": []}, {"XApiKeyId": []}, {"XApiKeySecret": []}]}}, "/coverage/checks": {"post": {"tags": ["Coverage"], "summary": "Checks [Paginated]", "description": "This endpoint provides a real-time list of all the check that exist in your organization's account,\nas well as the datasets upon which each check depends.\n\nUsage\n-----\nUse this endpoint to enrich results from the `/datasets` or `/check_results` endpoints.\n\nReturns\n-------\nAn object of type `CheckResult` containing an array of `CheckData` for each check.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.", "operationId": "checks_coverage_checks_post", "requestBody": {"content": {"application/json": {"schema": {"allOf": [{"$ref": "#/components/schemas/CheckRequest"}], "title": "Request Body", "default": {"page": 1, "size": 400}}}}}, "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CheckResult", "anyOf": [{"$ref": "#/components/schemas/CheckResult"}, {"$ref": "#/components/schemas/PaginatedResult"}], "title": "Response Checks Coverage Checks Post"}}}}, "202": {"description": "Successful request but no data was returned", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/NoContentError"}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}, "security": [{"HTTPBasic": []}, {"SodaBackendToken": []}, {"APIKeyCookie": []}, {"ApiKeyId[Soon Deprecated] Use XApiKeyID": []}, {"APIKeySecret[Soon Deprecated] Use XApiKeySecret": []}, {"XApiKeyId": []}, {"XApiKeySecret": []}]}}, "/coverage/datasets": {"post": {"tags": ["Coverage"], "summary": "Datasets [Paginated]", "description": "This endpoint provides information about all the datasets that your team has connected to your organization's\nSoda Cloud account.\n\nUsage\n-----\nUse this endpoint to review the number of datasets Soda Cloud accesses, including each dataset's most recent scan\ntime and test failure counts.\n\nUse the data from this endpoint to enrich other endpoints' data such as `/dataset_health` and\n`/dataset_coverage`\n\nReturns\n-------\nAn object of type `DatasetsResult` containing an array of `DatasetsData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.", "operationId": "datasets_coverage_datasets_post", "requestBody": {"content": {"application/json": {"schema": {"allOf": [{"$ref": "#/components/schemas/DatasetsRequest"}], "title": "Request Body", "default": {"page": 1, "size": 400}}}}}, "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/DatasetsResult", "anyOf": [{"$ref": "#/components/schemas/DatasetsResult"}, {"$ref": "#/components/schemas/PaginatedResult"}], "title": "Response Datasets Coverage Datasets Post"}}}}, "202": {"description": "Successful request but no data was returned", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/NoContentError"}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}, "security": [{"HTTPBasic": []}, {"SodaBackendToken": []}, {"APIKeyCookie": []}, {"ApiKeyId[Soon Deprecated] Use XApiKeyID": []}, {"APIKeySecret[Soon Deprecated] Use XApiKeySecret": []}, {"XApiKeyId": []}, {"XApiKeySecret": []}]}}, "/quality/check_results": {"post": {"tags": ["Quality"], "summary": "Check results [Paginated]", "description": "This endpoint provides a list of checks along with each checks's historical evaluation results.\n\nUsage\n-----\nUse this endpoint to build reports that show the outcome of your checks over time. If you gathered high-level data\nfrom the `/dataset_health` and `/dataset_coverage` endpoints, you can use this endpoint to examine more granular\ndata about checks that apply to each dataset.\n\nYou can provide multiple `dataset_ids` per request, and use the `from_datetime` parameter to optimize performance.\nUse the `datasets` endpoint to first get a list of available datasets along with their IDs, then issue separate\nqueries one dataset at a time.\n\nKeep the number of potentially parallel queries that you make to this endpoint small as they can face rate\nlimitations or poor performance.\n\nReturns\n-------\nAn object of type `CheckResultsResult` containing an array of `CheckResultsData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.", "operationId": "check_results_quality_check_results_post", "requestBody": {"content": {"application/json": {"schema": {"allOf": [{"$ref": "#/components/schemas/CheckResultsRequest"}], "title": "Request Body", "default": {"page": 1, "size": 400}}}}}, "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CheckResultsResult", "anyOf": [{"$ref": "#/components/schemas/CheckResultsResult"}, {"$ref": "#/components/schemas/PaginatedResult"}], "title": "Response Check Results Quality Check Results Post"}}}}, "202": {"description": "Successful request but no data was returned", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/NoContentError"}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}, "security": [{"HTTPBasic": []}, {"SodaBackendToken": []}, {"APIKeyCookie": []}, {"ApiKeyId[Soon Deprecated] Use XApiKeyID": []}, {"APIKeySecret[Soon Deprecated] Use XApiKeySecret": []}, {"XApiKeyId": []}, {"XApiKeySecret": []}]}}, "/quality/dataset_health": {"post": {"tags": ["Quality"], "summary": "Dataset health [Paginated]", "description": "This endpoint provides you with a daily measure of the health of each of your datasets. Soda calculates a dataset's\nhealth based on the number of checks that pass during a scan. In calculating health, this endpoint returns an\naggregation of the pass results from multiple scans on the same day.\n\nUsage\n-----\nUse this endpoint to get review the health of your datasets, and to see a high-level view of the more granular\ninformation that the `/check_results` endpoint provides.\n\nUse this endpoint in conjunction with the `/datasets` endpoint as the latter adds information about each\ndataset.\n\nMultiple `dataset_ids` are allowed per request, and use the `from_datetime` parameter to optimize performance.\n\nUse the datasets endpoint to first get a list of available datasets along with their IDs, then issue separate\nqueries one dataset at a time.\n\nKeep the number of potentially parallel queries that you make to this endpoint small as they can face rate\nlimitations or poor performance.\n\nReturns\n-------\nAn object of type `DatasetHealthResult` containing an array of `DatasetHealthData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.", "operationId": "dataset_health_quality_dataset_health_post", "requestBody": {"content": {"application/json": {"schema": {"allOf": [{"$ref": "#/components/schemas/DatasetHealthRequest"}], "title": "Request Body", "default": {"page": 1, "size": 400}}}}}, "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/DatasetHealthResult", "anyOf": [{"$ref": "#/components/schemas/DatasetHealthResult"}, {"$ref": "#/components/schemas/PaginatedResult"}], "title": "Response Dataset Health Quality Dataset Health Post"}}}}, "202": {"description": "Successful request but no data was returned", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/NoContentError"}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}, "security": [{"HTTPBasic": []}, {"SodaBackendToken": []}, {"APIKeyCookie": []}, {"ApiKeyId[Soon Deprecated] Use XApiKeyID": []}, {"APIKeySecret[Soon Deprecated] Use XApiKeySecret": []}, {"XApiKeyId": []}, {"XApiKeySecret": []}]}}, "/coverage/dataset_coverage": {"post": {"tags": ["Coverage"], "summary": "Dataset coverage", "description": "This endpoint provides a daily measure of the test coverage of your datasets.\nIt derives a `relative_coverage_score` which compares the number of checks that apply to a single dataset to\nother datasets connected to your organization's Soda Cloud account. (Refer to the `DatasetCoverageData` schema\nfor more information.)\n\nUsage\n-----\nUse this endpoint to review the relative test coverage of your datasets, and to see a high-level view of the more\ngranular information that the `/tests_and_results` endpoint provides.\n\nThis endpoint is best used in conjunction with the `/datasets` endpoint as the latter augments the level of\ninformation about each dataset.\n\nReturns\n-------\nAn object of type `DatasetCoverageResult` containing an array of `DatasetCoverageData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.", "operationId": "dataset_coverage_coverage_dataset_coverage_post", "requestBody": {"content": {"application/json": {"schema": {"allOf": [{"$ref": "#/components/schemas/DatasetCoverageRequest"}], "title": "Request Body", "default": {}}}}}, "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/DatasetCoverageResult"}}}}, "202": {"description": "Successful request but no data was returned", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/NoContentError"}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}, "security": [{"HTTPBasic": []}, {"SodaBackendToken": []}, {"APIKeyCookie": []}, {"ApiKeyId[Soon Deprecated] Use XApiKeyID": []}, {"APIKeySecret[Soon Deprecated] Use XApiKeySecret": []}, {"XApiKeyId": []}, {"XApiKeySecret": []}]}}, "/impact/incidents": {"post": {"tags": ["Platform Impact"], "summary": "Incidents [Paginated]", "description": "This endpoint provides a list of incidents (as well as basic information --see field definitions in the\n`IncidentsData` schema) per report date.\n\nYou can filter for specific incident statuses, datasets, and report dates. See `IncidentsRequest` schema\nfor an exhaustive list of filter and aggregation options.\n\n**NOTE:** In some rare cases, incidents are not attached to any monitors, in that case we cannot check wich\ndataset they are attached to. These incidents are therefore ignored from the output.\n\nUsage\n-----\nUse to build reports about the number of incidents at any given time on your Soda Cloud account.\n\nReturns\n-------\nAn object of type `IncidentsResult` containing an array of `IncidentsData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.", "operationId": "incidents_impact_incidents_post", "requestBody": {"content": {"application/json": {"schema": {"allOf": [{"$ref": "#/components/schemas/IncidentsRequest"}], "title": "Request Body", "default": {"page": 1, "size": 400, "status": "unresolved", "from_datetime": "2023-06-12T14:17:25.884993", "to_datetime": "2023-07-13T14:17:25.885002"}}}}}, "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/IncidentsResult"}}}}, "202": {"description": "Successful request but no data was returned", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/NoContentError"}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}, "security": [{"HTTPBasic": []}, {"SodaBackendToken": []}, {"APIKeyCookie": []}, {"ApiKeyId[Soon Deprecated] Use XApiKeyID": []}, {"APIKeySecret[Soon Deprecated] Use XApiKeySecret": []}, {"XApiKeyId": []}, {"XApiKeySecret": []}]}}}, "components": {"schemas": {"AuditTrailData": {"properties": {"correlation_id": {"type": "string", "title": "Correlation Id", "description": "Identifier of a given audited request. Note this column cannot be used as a primary key as it can span over multiple rows."}, "eventTime": {"type": "string", "format": "date-time", "title": "Eventtime", "description": "ISO UTC datetime at which the event happened."}, "ipAddress": {"type": "string", "title": "Ipaddress", "description": "IP address of the user who performed the logged action."}, "email": {"type": "string", "title": "Email", "description": "Email address of the user who performed the logged action."}, "apiKey": {"type": "string", "title": "Apikey", "description": "Obfuscated API key of the user who performed the logged action."}, "comment": {"type": "string", "title": "Comment", "description": "Explanation of the audited event."}, "hash": {"type": "string", "title": "Hash", "description": "A tamper-proof security and verification hash."}}, "type": "object", "title": "AuditTrailData", "description": "Contains audited events from the authorized user's organization."}, "AuditTrailResult": {"properties": {"data": {"items": {"$ref": "#/components/schemas/AuditTrailData"}, "type": "array", "title": "Data"}, "resource": {"type": "string", "title": "Resource", "default": "audit_trail"}}, "type": "object", "required": ["data"], "title": "AuditTrailResult", "description": "Array of `AuditTrailData`."}, "CheckRequest": {"properties": {"page": {"type": "integer", "minimum": 1.0, "title": "Page", "description": "Page number", "default": 1}, "size": {"type": "integer", "maximum": 1000.0, "minimum": 1.0, "title": "Size", "description": "Page size", "default": 400}, "dataset_ids": {"items": {"type": "string"}, "type": "array", "title": "Dataset Ids", "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."}, "check_ids": {"items": {"type": "string"}, "type": "array", "title": "Check Ids", "description": "Check IDs (UUIDs from the Soda Cloud platform) to use as filter."}}, "type": "object", "title": "CheckRequest", "description": "Tests request JSON Body."}, "CheckResult": {"properties": {"total": {"type": "integer", "title": "Total"}, "page": {"type": "integer", "title": "Page"}, "size": {"type": "integer", "title": "Size"}, "data": {"items": {"$ref": "#/components/schemas/ChecksData"}, "type": "array", "title": "Data"}}, "type": "object", "required": ["total", "page", "size", "data"], "title": "CheckResult", "description": "Array of `TestsData`."}, "CheckResultsData": {"properties": {"result_id": {"type": "string", "title": "Result Id", "description": "Identifier (UUID) of a test result in Soda Cloud."}, "scan_time": {"type": "string", "format": "date-time", "title": "Scan Time", "description": "UTC timestamp of the scan that generated a specific test result."}, "level": {"type": "string", "title": "Level", "description": "Severity level of a check result. Levels are: 'info', 'warning', and 'critical'."}, "check_id": {"type": "string", "title": "Check Id", "description": "Identifier (UUID) of a check in Soda Cloud."}, "check_name": {"type": "string", "title": "Check Name", "description": "Name of a specific check in Soda Cloud."}, "created_at": {"type": "string", "format": "date-time", "title": "Created At", "description": "UTC timestamp at which the check was created."}, "dataset_id": {"type": "string", "title": "Dataset Id", "description": "Identifier (UUID) of a dataset in Soda Cloud."}, "organization_id": {"type": "string", "title": "Organization Id", "description": "Identifier (UUID) of an organization in Soda Cloud."}, "metric_value": {"type": "number", "title": "Metric Value", "description": "Value of a Soda metric"}, "owner_id": {"type": "string", "title": "Owner Id", "description": "Identifier (UUID) of the check owner in Soda Cloud."}, "owner_first_name": {"type": "string", "title": "Owner First Name", "description": "First name of the check owner."}, "owner_last_name": {"type": "string", "title": "Owner Last Name", "description": "Last name of the check owner."}, "owner_email": {"type": "string", "title": "Owner Email", "description": "Email of the check owner."}, "owner_job_title": {"type": "string", "title": "Owner Job Title", "description": "Job title of the check owner."}, "owner_phone_number": {"type": "string", "title": "Owner Phone Number", "description": "Phone number of the check owner."}, "owner_country": {"type": "string", "title": "Owner Country", "description": "Country of the check owner."}, "owner_user_type": {"type": "string", "title": "Owner User Type", "description": "User type of the check owner."}, "creator_id": {"type": "string", "title": "Creator Id", "description": "Identifier (UUID) of the check creator in Soda Cloud."}, "creator_first_name": {"type": "string", "title": "Creator First Name", "description": "First name of the check creator."}, "creator_last_name": {"type": "string", "title": "Creator Last Name", "description": "Last name of the check creator."}, "creator_email": {"type": "string", "title": "Creator Email", "description": "Email of the check creator."}, "creator_job_title": {"type": "string", "title": "Creator Job Title", "description": "Job title of the check creator."}, "creator_phone_number": {"type": "string", "title": "Creator Phone Number", "description": "Phone number of the check creator."}, "creator_country": {"type": "string", "title": "Creator Country", "description": "Country of the check creator."}, "creator_user_type": {"type": "string", "title": "Creator User Type", "description": "User type of the check creator."}, "attributes": {"additionalProperties": {"items": {"type": "string"}, "type": "array"}, "type": "object", "title": "Attributes", "description": "Atributes of a check"}}, "type": "object", "title": "CheckResultsData", "description": "Contains information about checks and their results on a per scan basis."}, "CheckResultsRequest": {"properties": {"page": {"type": "integer", "minimum": 1.0, "title": "Page", "description": "Page number", "default": 1}, "size": {"type": "integer", "maximum": 1000.0, "minimum": 1.0, "title": "Size", "description": "Page size", "default": 400}, "dataset_ids": {"items": {"type": "string"}, "type": "array", "title": "Dataset Ids", "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."}, "check_ids": {"items": {"type": "string"}, "type": "array", "title": "Check Ids", "description": "Check IDs (UUIDs from the Soda Cloud platform) to use as filter."}, "from_datetime": {"type": "string", "format": "date-time", "title": "From Datetime", "description": "\nISO 8601 datetime to specify the point in time from which you would like to get health historical data.\n"}}, "type": "object", "title": "CheckResultsRequest", "description": "Test results request JSON Body."}, "CheckResultsResult": {"properties": {"total": {"type": "integer", "title": "Total"}, "page": {"type": "integer", "title": "Page"}, "size": {"type": "integer", "title": "Size"}, "data": {"items": {"$ref": "#/components/schemas/CheckResultsData"}, "type": "array", "title": "Data"}}, "type": "object", "required": ["total", "page", "size", "data"], "title": "CheckResultsResult", "description": "Array of `CheckResultsData`."}, "ChecksData": {"properties": {"check_id": {"type": "string", "title": "Check Id", "description": "Identifier (UUID) of a check in Soda Cloud."}, "organization_id": {"type": "string", "title": "Organization Id", "description": "Identifier (UUID) of an organization in Soda Cloud."}, "check_name": {"type": "string", "title": "Check Name", "description": "Name of a specific check in Soda Cloud."}, "check_type": {"type": "string", "title": "Check Type", "description": "\nType of Soda check. For example, the type is \"metric\" if the check uses a metric in Soda Cloud;\n\"external\" if the check is evaluated by Soda SQL.\n        "}, "created_at": {"type": "string", "format": "date-time", "title": "Created At", "description": "UTC timestamp at which the check was created."}, "is_archived": {"type": "string", "title": "Is Archived", "description": "Whether the check is archived."}, "dataset_id": {"type": "string", "title": "Dataset Id", "description": "Identifier (UUID) of a dataset in Soda Cloud."}, "source": {"type": "string", "title": "Source", "description": "Source type of a check (E.g. soda-core, dbt etc.)"}, "creator_id": {"type": "string", "title": "Creator Id", "description": "Identifier (UUID) of the check creator in Soda Cloud."}, "creator_first_name": {"type": "string", "title": "Creator First Name", "description": "First name of the check creator."}, "creator_last_name": {"type": "string", "title": "Creator Last Name", "description": "Last name of the check creator."}, "creator_email": {"type": "string", "title": "Creator Email", "description": "Email of the check creator."}, "creator_job_title": {"type": "string", "title": "Creator Job Title", "description": "Job title of the check creator."}, "creator_phone_number": {"type": "string", "title": "Creator Phone Number", "description": "Phone number of the check creator."}, "creator_country": {"type": "string", "title": "Creator Country", "description": "Country of the check creator."}, "creator_user_type": {"type": "string", "title": "Creator User Type", "description": "User type of the check creator."}, "owner_id": {"type": "string", "title": "Owner Id", "description": "Identifier (UUID) of the check owner in Soda Cloud."}, "owner_first_name": {"type": "string", "title": "Owner First Name", "description": "First name of the check owner."}, "owner_last_name": {"type": "string", "title": "Owner Last Name", "description": "Last name of the check owner."}, "owner_email": {"type": "string", "title": "Owner Email", "description": "Email of the check owner."}, "owner_job_title": {"type": "string", "title": "Owner Job Title", "description": "Job title of the check owner."}, "owner_phone_number": {"type": "string", "title": "Owner Phone Number", "description": "Phone number of the check owner."}, "owner_country": {"type": "string", "title": "Owner Country", "description": "Country of the check owner."}, "owner_user_type": {"type": "string", "title": "Owner User Type", "description": "User type of the check owner."}, "attributes": {"additionalProperties": {"items": {"type": "string"}, "type": "array"}, "type": "object", "title": "Attributes", "description": "Atributes of a check"}}, "type": "object", "title": "ChecksData", "description": "Contains information about a check and its associated datasets."}, "DatasetCoverageDataObject": {"properties": {"descriptives": {"$ref": "#/components/schemas/DatasetCoverageDescriptivesData"}, "dataset_info": {"items": {"$ref": "#/components/schemas/DatasetInfoData"}, "type": "array", "title": "Dataset Info"}}, "type": "object", "required": ["descriptives", "dataset_info"], "title": "DatasetCoverageDataObject", "description": "Array of `DatasetInfoData` and `DatasetCoverageDescriptivesData`."}, "DatasetCoverageDescriptivesData": {"properties": {"median_number_of_checks": {"type": "number", "title": "Median Number Of Checks", "description": "Median number of checks across all datasets in your organization.", "default": 0.0}, "max_number_of_checks": {"type": "number", "title": "Max Number Of Checks", "description": "Maximum number of checks across all datasets in your organization.", "default": 0.0}, "min_number_of_checks": {"type": "number", "title": "Min Number Of Checks", "description": "Minimum number of checks across all datasets in your organization.", "default": 0.0}, "standard_deviation_number_of_checks": {"anyOf": [{"type": "number"}, {"type": "string"}, {"type": "integer"}], "title": "Standard Deviation Number Of Checks", "description": "Standard deviation of the number of checks across all datasets in your organization.", "default": 0.0}, "mean_number_of_checks": {"type": "number", "title": "Mean Number Of Checks", "description": "Mean number of checks across all datasets in your organization.", "default": 0.0}}, "type": "object", "title": "DatasetCoverageDescriptivesData", "description": "Contains coverage descriptives across datasets."}, "DatasetCoverageRequest": {"properties": {"dataset_ids": {"items": {"type": "string"}, "type": "array", "title": "Dataset Ids", "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."}}, "type": "object", "title": "DatasetCoverageRequest", "description": "Dataset coverage request JSON Body."}, "DatasetCoverageResult": {"properties": {"data": {"$ref": "#/components/schemas/DatasetCoverageDataObject"}}, "type": "object", "required": ["data"], "title": "DatasetCoverageResult", "description": "Array of `DatasetInfoData` and `DatasetCoverageDescriptivesData`."}, "DatasetHealthData": {"properties": {"organization_id": {"type": "string", "title": "Organization Id", "description": "Identifier (UUID) of an organization in Soda Cloud."}, "dataset_id": {"type": "string", "title": "Dataset Id", "description": "Identifier (UUID) of a dataset in Soda Cloud."}, "scan_date": {"type": "string", "format": "date-time", "title": "Scan Date", "description": "Date at which any number of scans were run."}, "critical": {"type": "integer", "title": "Critical", "description": "Number of checks and monitors that failed with a Critical level alert."}, "info": {"type": "integer", "title": "Info", "description": "Number of checks and monitors that passed."}, "warning": {"type": "integer", "title": "Warning", "description": "Number of checks and monitors that failed with a Warning level alert."}, "number_of_checks": {"type": "integer", "title": "Number Of Checks", "description": "Number of checks and monitors executed."}, "percentage_passing_checks": {"type": "number", "title": "Percentage Passing Checks", "description": "Proportion of checks and monitors that passed."}, "last_point_percent_change": {"type": "number", "title": "Last Point Percent Change", "description": "Percentage change from last point."}, "percent_change_percentage_passing_checks": {"type": "number", "title": "Percent Change Percentage Passing Checks", "description": "\n        Percentage change of the last data health point compared to a rolling average over the last\n        3\n        "}}, "type": "object", "title": "DatasetHealthData", "description": "Dataset health information containing counts of passing or failing checks (warning or critical) per scan date."}, "DatasetHealthRequest": {"properties": {"page": {"type": "integer", "minimum": 1.0, "title": "Page", "description": "Page number", "default": 1}, "size": {"type": "integer", "maximum": 1000.0, "minimum": 1.0, "title": "Size", "description": "Page size", "default": 400}, "dataset_ids": {"items": {"type": "string"}, "type": "array", "title": "Dataset Ids", "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."}, "from_datetime": {"type": "string", "format": "date-time", "title": "From Datetime", "description": "\nISO 8601 datetime to specify the point in time from which you would like to get health historical data.\n"}}, "type": "object", "title": "DatasetHealthRequest", "description": "Dataset health request JSON Body."}, "DatasetHealthResult": {"properties": {"total": {"type": "integer", "title": "Total"}, "page": {"type": "integer", "title": "Page"}, "size": {"type": "integer", "title": "Size"}, "data": {"items": {"$ref": "#/components/schemas/DatasetHealthData"}, "type": "array", "title": "Data"}}, "type": "object", "required": ["total", "page", "size", "data"], "title": "DatasetHealthResult", "description": "Array of `DatasetHealthData`."}, "DatasetInfoData": {"properties": {"dataset_id": {"type": "string", "title": "Dataset Id", "description": "Identifier (UUID) of a dataset in Soda Cloud."}, "number_of_checks": {"type": "integer", "title": "Number Of Checks", "description": "Number of checks covering a specific dataset."}, "relative_coverage_score": {"type": "string", "title": "Relative Coverage Score", "description": "\nA score derived by comparing the number of checks that apply to a single dataset to the number of checks\nthat apply to other datasets in your organization's Soda Cloud account. Soda applies the labels \"good\", \"medium\", and\n\"poor\" based on a 3-ntile split.\n        "}}, "type": "object", "title": "DatasetInfoData", "description": "Information about a dataset including whether a dataset is active or deleted,\nand check coverage metrics."}, "DatasetsData": {"properties": {"dataset_id": {"type": "string", "title": "Dataset Id", "description": "Identifier (UUID) of a dataset in Soda Cloud."}, "organization_id": {"type": "string", "title": "Organization Id", "description": "Identifier (UUID) of an organization in Soda Cloud."}, "dataset_name": {"type": "string", "title": "Dataset Name", "description": "Name of the dataset in Soda Cloud corresponding to the name of the dataset in the data source."}, "dataset_label": {"type": "string", "title": "Dataset Label", "description": "Custom name given to a dataset in Soda Cloud. Will often be identical to dataset_name"}, "tags": {"items": {"type": "string"}, "type": "array", "title": "Tags", "description": "User-provided list of tags."}, "creator_id": {"type": "string", "title": "Creator Id", "description": "Identifier (UUID) of the check creator in Soda Cloud."}, "creator_first_name": {"type": "string", "title": "Creator First Name", "description": "First name of the check creator."}, "creator_last_name": {"type": "string", "title": "Creator Last Name", "description": "Last name of the check creator."}, "creator_email": {"type": "string", "title": "Creator Email", "description": "Email of the check creator."}, "creator_job_title": {"type": "string", "title": "Creator Job Title", "description": "Job title of the check creator."}, "creator_phone_number": {"type": "string", "title": "Creator Phone Number", "description": "Phone number of the check creator."}, "creator_country": {"type": "string", "title": "Creator Country", "description": "Country of the check creator."}, "creator_user_type": {"type": "string", "title": "Creator User Type", "description": "User type of the check creator."}, "creator_last_login_at": {"type": "string", "format": "date-time", "title": "Creator Last Login At", "description": "Timestamp corresponding to the last time the owner logged into Soda Cloud."}, "owner_id": {"type": "string", "title": "Owner Id", "description": "Identifier (UUID) of the check owner in Soda Cloud."}, "owner_first_name": {"type": "string", "title": "Owner First Name", "description": "First name of the check owner."}, "owner_last_name": {"type": "string", "title": "Owner Last Name", "description": "Last name of the check owner."}, "owner_email": {"type": "string", "title": "Owner Email", "description": "Email of the check owner."}, "owner_job_title": {"type": "string", "title": "Owner Job Title", "description": "Job title of the check owner."}, "owner_phone_number": {"type": "string", "title": "Owner Phone Number", "description": "Phone number of the check owner."}, "owner_country": {"type": "string", "title": "Owner Country", "description": "Country of the check owner."}, "owner_user_type": {"type": "string", "title": "Owner User Type", "description": "User type of the check owner."}, "owner_last_login_at": {"type": "string", "format": "date-time", "title": "Owner Last Login At", "description": "Timestamp corresponding to the last time the owner logged into Soda Cloud."}, "number_of_rows": {"anyOf": [{"type": "integer"}, {"type": "string"}], "title": "Number Of Rows", "description": "Current (and latest known) number of rows in the dataset."}, "number_of_failed_checks": {"anyOf": [{"type": "integer"}, {"type": "string"}], "title": "Number Of Failed Checks", "description": "Number of checks that failed on a specific dataset."}, "last_scan_time": {"type": "string", "format": "date-time", "title": "Last Scan Time", "description": "UTC timestamp of the last scan run on a dataset."}, "attributes": {"additionalProperties": {"items": {"type": "string"}, "type": "array"}, "type": "object", "title": "Attributes", "description": "Atributes of a dataset"}, "datasource_id": {"type": "string", "title": "Datasource Id", "description": "UUID of the data source as assigned by the Soda Cloud platform."}, "datasource_name": {"type": "string", "title": "Datasource Name", "description": "\nName of the datasource in Soda Cloud coresponding to the name of the\n datasource in your configuration file."}, "datasource_label": {"type": "string", "title": "Datasource Label", "description": "Label of the datasource corresponding to the name displayed in Soda Cloud"}, "datasource_source_owner": {"type": "string", "title": "Datasource Source Owner", "description": "The name of the source application (e.g. soda-core) that owns the data source."}, "datasource_owner_id": {"type": "string", "title": "Datasource Owner Id", "description": "UUID corresponding the the configured datasource owner."}, "datasource_has_core_agent_enabled": {"type": "boolean", "title": "Datasource Has Core Agent Enabled", "description": "Boolean indicating whether the datasource is onboarded and part of a Soda Agent."}}, "type": "object", "title": "DatasetsData", "description": "Contains information about a dataset."}, "DatasetsRequest": {"properties": {"page": {"type": "integer", "minimum": 1.0, "title": "Page", "description": "Page number", "default": 1}, "size": {"type": "integer", "maximum": 1000.0, "minimum": 1.0, "title": "Size", "description": "Page size", "default": 400}, "dataset_ids": {"items": {"type": "string"}, "type": "array", "title": "Dataset Ids", "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."}}, "type": "object", "title": "DatasetsRequest", "description": "Datasets request JSON Body."}, "DatasetsResult": {"properties": {"total": {"type": "integer", "title": "Total"}, "page": {"type": "integer", "title": "Page"}, "size": {"type": "integer", "title": "Size"}, "data": {"items": {"$ref": "#/components/schemas/DatasetsData"}, "type": "array", "title": "Data"}}, "type": "object", "required": ["total", "page", "size", "data"], "title": "DatasetsResult", "description": "Array of `DatasetsData`."}, "GetTokenResult": {"properties": {"user": {"type": "string", "title": "User", "description": "User's username (email addess used at sign up)."}, "token": {"type": "string", "title": "Token", "description": "\n            API Token to use for authentication. This token expires. Its expiration is also provided in the response.\n            "}, "organization_id": {"type": "string", "title": "Organization Id", "description": "Identifier (UUID) of an organization in Soda Cloud."}, "expires_in": {"type": "integer", "title": "Expires In", "description": "Token's expiration time in seconds."}}, "type": "object", "title": "GetTokenResult", "description": "Soda Cloud API token and organisation ID information to use in this API's endpoints."}, "HTTPValidationError": {"properties": {"detail": {"items": {"$ref": "#/components/schemas/ValidationError"}, "type": "array", "title": "Detail"}}, "type": "object", "title": "HTTPValidationError"}, "IncidentData": {"properties": {"incident_id_report_date_id": {"type": "string", "title": "Incident Id Report Date Id", "description": "Incident report date Id (UUID) that uniquely identifies an incident and a report_date as shown in the Soda Cloud Incidents page."}, "incident_id": {"type": "string", "title": "Incident Id", "description": "Incident ID (UUID) of the incident in the Soda Cloud Incidents page."}, "organization_id": {"type": "string", "title": "Organization Id", "description": "Identifier (UUID) of an organization in Soda Cloud."}, "created_at": {"type": "string", "format": "date-time", "title": "Created At", "description": "ISO timestamp of the date at which the incidents was created in the Soda Cloud Dataset page."}, "last_updated": {"type": "string", "format": "date-time", "title": "Last Updated", "description": "ISO timestamp of the date at which the incident was last updated."}, "check_id": {"type": "string", "title": "Check Id", "description": "Identifier (UUID) of a check in Soda Cloud."}, "check_result_id": {"type": "string", "title": "Check Result Id", "description": "Check result Id (UUID) of check result to which incident corresponds."}, "dataset_id": {"type": "string", "title": "Dataset Id", "description": "Identifier (UUID) of a dataset in Soda Cloud."}, "title": {"type": "string", "title": "Title", "description": "Title of the incident as shown in the Soda Cloud Incidents page."}, "check_name": {"type": "string", "title": "Check Name", "description": "Name of a specific check in Soda Cloud."}, "severity": {"type": "string", "title": "Severity", "description": "Severity of the incident as shown in the Soda Cloud Incidents page."}, "description_notes": {"type": "string", "title": "Description Notes", "description": "Description notes of the incident as shown in the incident overview."}, "resolution_notes": {"type": "string", "title": "Resolution Notes", "description": "Resolution notes of the incident as shown in the incident overview."}, "lead_id": {"type": "string", "title": "Lead Id", "description": "Lead ID (UUID) of the lead assigned to the incident in the Soda Cloud Incidents page."}, "lead_email": {"type": "string", "title": "Lead Email", "description": "Email of the lead assigned to the incident in the Soda Cloud Incidents page."}, "reporter_id": {"type": "string", "title": "Reporter Id", "description": "Reporter ID (UUID) of the user that reported the incident in the Soda Cloud Incidents page."}, "reporter_email": {"type": "string", "title": "Reporter Email", "description": "Reporter email of the user that reported the incident in the incident overview."}, "report_date": {"type": "string", "format": "date", "title": "Report Date", "description": "Report date for which the incident information is shown."}, "resolved_at": {"type": "string", "format": "date-time", "title": "Resolved At", "description": "ISO timestamp of the date at which incident was resolved in the Soda Cloud Incidents page."}, "status": {"type": "string", "title": "Status", "description": "Status of the incident as shown in the Soda Cloud Incidents page."}}, "type": "object", "title": "IncidentData", "description": "Contains incident information (see field documentation for explanations)"}, "IncidentsRequest": {"properties": {"page": {"type": "integer", "minimum": 1.0, "title": "Page", "description": "Page number", "default": 1}, "size": {"type": "integer", "maximum": 1000.0, "minimum": 1.0, "title": "Size", "description": "Page size", "default": 400}, "dataset_ids": {"items": {"type": "string"}, "type": "array", "title": "Dataset Ids", "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."}, "status": {"type": "string", "title": "Status", "description": "\nString representing the status of issues you want to retrieve. Currently you can retrieve either:\n- all 'resolved' issues or\n- all 'unresolved' issues\n", "default": "unresolved"}, "from_datetime": {"type": "string", "format": "date-time", "title": "From Datetime", "description": "ISO timestamp from which you want to retrieve incidents. Defaults to last 31 days.", "default": "2023-06-12T14:17:25.884993"}, "to_datetime": {"type": "string", "format": "date-time", "title": "To Datetime", "description": "ISO timestamp up to which you want to retrieve incidents. Defaults to today.", "default": "2023-07-13T14:17:25.885002"}}, "type": "object", "title": "IncidentsRequest", "description": "Incidents request JSON Body."}, "IncidentsResult": {"properties": {"total": {"type": "integer", "title": "Total"}, "page": {"type": "integer", "title": "Page"}, "size": {"type": "integer", "title": "Size"}, "data": {"items": {"$ref": "#/components/schemas/IncidentData"}, "type": "array", "title": "Data"}}, "type": "object", "required": ["total", "page", "size", "data"], "title": "IncidentsResult", "description": "Array of `IncidentsData`."}, "LastETLRefreshResult": {"properties": {"resource": {"type": "string", "title": "Resource", "default": "last_etl_refresh"}, "data": {"allOf": [{"$ref": "#/components/schemas/LastETLRefreshResultData"}], "title": "Data", "description": "Contains ETL last refreshed timestamp"}}, "type": "object", "title": "LastETLRefreshResult", "description": "Result of request to the last ETL refreshed endpoint."}, "LastETLRefreshResultData": {"properties": {"last_etl_refresh_at": {"type": "string", "format": "date-time", "title": "Last Etl Refresh At", "description": "ISO timestamp of the date at which ETL was last refreshed."}}, "type": "object", "title": "LastETLRefreshResultData", "description": "Contains ETL last refreshed timestamp"}, "NoContentError": {"properties": {"resource": {"type": "string", "title": "Resource", "description": "Name of the resource. Usually the same string as the endpoint."}, "data": {"items": {"type": "object"}, "type": "array", "title": "Data", "description": "Generic data payload from the query. Should be overidden with a more specific pydandic model.", "default": []}, "detail": {"type": "string", "title": "Detail", "default": "No results for the requested data. Since the data is pre-processed in batches it might be that the data you are looking for has not yet been processed. You can check when the last refresh took place by using the /last_etl_refresh_info endpoint. If you think this is a bug and you should be getting results, get in touch with us."}}, "type": "object", "title": "NoContentError", "description": "Response Schema of a NoContent Error"}, "PaginatedResult": {"properties": {"total": {"type": "integer", "title": "Total"}, "page": {"type": "integer", "title": "Page"}, "size": {"type": "integer", "title": "Size"}}, "type": "object", "required": ["total", "page", "size"], "title": "PaginatedResult", "description": "Pydantic model for a basic paginated result with pagination info."}, "ValidationError": {"properties": {"loc": {"items": {"anyOf": [{"type": "string"}, {"type": "integer"}]}, "type": "array", "title": "Location"}, "msg": {"type": "string", "title": "Message"}, "type": {"type": "string", "title": "Error Type"}}, "type": "object", "required": ["loc", "msg", "type"], "title": "ValidationError"}}, "securitySchemes": {"HTTPBasic": {"type": "http", "scheme": "basic"}, "SodaBackendToken": {"type": "apiKey", "in": "header", "name": "SODA_TOKEN"}, "APIKeyCookie": {"type": "apiKey", "in": "cookie", "name": "token"}, "ApiKeyId[Soon Deprecated] Use XApiKeyID": {"type": "apiKey", "in": "header", "name": "API_KEY_ID"}, "APIKeySecret[Soon Deprecated] Use XApiKeySecret": {"type": "apiKey", "in": "header", "name": "API_KEY_SECRET"}, "XApiKeyId": {"type": "apiKey", "in": "header", "name": "X-API-KEY-ID"}, "XApiKeySecret": {"type": "apiKey", "in": "header", "name": "X-API-KEY-SECRET"}}}}
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Soda Cloud Reporting API",
+    "description": "\nThis API enables you to query reporting-oriented data from your Soda Cloud account.\nUse this data to power dashboards and reports on the coverage and quality of your data.\n\nAuthentication\n-----\nThe API supports authentication via `HTTPBasic`, `TokenAuth`, and `ApiKey` authentication. Except for the `/get_token` endpoint, which only supports HTTP Basic authentication.\n\n- `HTTPBasic` authentication requires you to provide your username and password as a Base64 encoded `Authorization` header. Send your HTTP requests with an `Authorization` header that contains the word `Basic` followed by a space and a base64-encoded string `username:password`.\n\n- `TokenAuth` requires that you obtain a Soda token from the `/get_token` endpoint using your username and password in accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token` endpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with any of the other endpoints.\n\n- `ApiKey` authentication allows you to use API keys generated in your Cloud Profile. Use this method if your organization is using Single Sign-On (SSO). Provide your API Key ID and API Key Secret as `API_KEY_ID` and `API_KEY_SECRET` headers, respectively. If you do not know how to generate your API Key and Secret pair follow the [Configure and run Soda Library](https://docs.soda.io/soda-library/configure.html#configure-and-run-soda-library) instructions.\n\n## Examples\n**`HTTPBasic`**\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'Authorization: Basic bXl1c2VybmFtZUBzb2RhLmlvOm15c2VjcmV0cGFzc3dvcmQ='\n```\n\n**`TokenAuth`**\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'SODA_TOKEN: ZAT2BM4sceKCGggHfawz_Ji5cfHKkiPjoN123yM0wCrWaxSkN4CGdg'\n```\n\n**`ApiKey`**\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'X-API-KEY-ID: 60ef2406-6492-4236-a6b8-2cb9240d803c' \\\n  --header 'X-API-KEY-SECRET: 918TcsFViYYEBtXlbzMeX6lT4SVm70'\n```\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required, in the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication credentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
+    "version": "1.0.11"
+  },
+  "servers": [
+    { "url": "https://reporting.cloud.soda.io/v1/", "description": "Cloud EU" },
+    {
+      "url": "https://reporting.cloud.us.soda.io/v1/",
+      "description": "Cloud US"
+    }
+  ],
+  "paths": {
+    "/ping": {
+      "get": {
+        "tags": ["Status"],
+        "summary": "Soda can is open",
+        "description": "Ping this endpoint to test whether the Reporting API is live.\nReturns the sound of a Soda can opening along with a 200.",
+        "operationId": "soda_can_is_open_ping_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/get_token": {
+      "get": {
+        "tags": ["Authentication"],
+        "summary": "Get token",
+        "description": "This enpoint allows you to obtain a limited duration API token to use in any of the other endpoints.\n\nMake a query to this endpoint according to the `HTTPBasic` authentication headers\n(see \"Live testing\" section on the right).\n\nThe expiration limit of the token is given to you in the response.\n\nReturns\n-------\nAn object of type `GetTokenResult`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.",
+        "operationId": "get_token_get_token_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GetTokenResult" }
+              }
+            }
+          }
+        },
+        "security": [{ "HTTPBasic": [] }]
+      }
+    },
+    "/audit_trail": {
+      "get": {
+        "tags": ["Auditing"],
+        "summary": "Audit Trail",
+        "description": "This endpoint returns a list of audit trail events for the authenticated user's organization.\n\nTo obtain data from this endpoint, the authenticated user must be an **organization admin**\nand the data returned is equivalent to the what an Organization admin would be able to get from\nthe Soda Cloud UI under \"Organization Settings > Audit Trail\".\n\nUsage\n-----\nUse this endpoint to capture audit trail events for security and usage monitoring purposes.\n\nReturns\n-------\nAn object of type `AuditTrailResult` containing an array of `AuditTrailData`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.",
+        "operationId": "audit_trail_audit_trail_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "From Datetime",
+              "type": "string",
+              "format": "date-time",
+              "default": "2023-08-11T10:13:44.611144"
+            },
+            "name": "from_datetime",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "To Datetime",
+              "type": "string",
+              "format": "date-time",
+              "default": "2023-09-11T10:13:44.611159"
+            },
+            "name": "to_datetime",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AuditTrailResult" }
+              }
+            }
+          },
+          "202": {
+            "description": "Successful request but no data was returned",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/NoContentError" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [
+          { "HTTPBasic": [] },
+          { "SodaBackendToken": [] },
+          { "APIKeyCookie": [] },
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
+        ]
+      }
+    },
+    "/last_etl_refresh": {
+      "get": {
+        "tags": ["Status"],
+        "summary": "Last ETL Refreshed Info",
+        "description": "This endpoint returns the last ETL refresh information\n\nUsage\n-----\nUse this endpoint to capture the last ETL refresh information to make sure that the data is\nup-to-date.\n\nReturns\n-------\nAn object of type `LastETLRefreshResult` containing a dictionary of `LastETLRefreshResultData`.\n\nFind details about the response objects in the **Schemas** section or by unfurling the response\ndetails.",
+        "operationId": "last_etl_refresh_last_etl_refresh_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LastETLRefreshResult"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          { "HTTPBasic": [] },
+          { "SodaBackendToken": [] },
+          { "APIKeyCookie": [] },
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
+        ]
+      }
+    },
+    "/coverage/checks": {
+      "post": {
+        "tags": ["Coverage"],
+        "summary": "Checks [Paginated]",
+        "description": "This endpoint provides a real-time list of all the check that exist in your organization's account,\nas well as the datasets upon which each check depends.\n\nUsage\n-----\nUse this endpoint to enrich results from the `/datasets` or `/check_results` endpoints.\n\nReturns\n-------\nAn object of type `CheckResult` containing an array of `CheckData` for each check.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "operationId": "checks_coverage_checks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Request Body",
+                "allOf": [{ "$ref": "#/components/schemas/CheckRequest" }],
+                "default": { "page": 1, "size": 400 }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckResult",
+                  "title": "Response Checks Coverage Checks Post",
+                  "anyOf": [
+                    { "$ref": "#/components/schemas/CheckResult" },
+                    { "$ref": "#/components/schemas/PaginatedResult" }
+                  ]
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Successful request but no data was returned",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/NoContentError" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [
+          { "HTTPBasic": [] },
+          { "SodaBackendToken": [] },
+          { "APIKeyCookie": [] },
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
+        ]
+      }
+    },
+    "/coverage/datasets": {
+      "post": {
+        "tags": ["Coverage"],
+        "summary": "Datasets [Paginated]",
+        "description": "This endpoint provides information about all the datasets that your team has connected to your organization's\nSoda Cloud account.\n\nUsage\n-----\nUse this endpoint to review the number of datasets Soda Cloud accesses, including each dataset's most recent scan\ntime and test failure counts.\n\nUse the data from this endpoint to enrich other endpoints' data such as `/dataset_health` and\n`/dataset_coverage`\n\nReturns\n-------\nAn object of type `DatasetsResult` containing an array of `DatasetsData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "operationId": "datasets_coverage_datasets_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Request Body",
+                "allOf": [{ "$ref": "#/components/schemas/DatasetsRequest" }],
+                "default": { "page": 1, "size": 400 }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetsResult",
+                  "title": "Response Datasets Coverage Datasets Post",
+                  "anyOf": [
+                    { "$ref": "#/components/schemas/DatasetsResult" },
+                    { "$ref": "#/components/schemas/PaginatedResult" }
+                  ]
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Successful request but no data was returned",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/NoContentError" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [
+          { "HTTPBasic": [] },
+          { "SodaBackendToken": [] },
+          { "APIKeyCookie": [] },
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
+        ]
+      }
+    },
+    "/quality/check_results": {
+      "post": {
+        "tags": ["Quality"],
+        "summary": "Check results [Paginated]",
+        "description": "This endpoint provides a list of checks along with each checks's historical evaluation results.\n\nUsage\n-----\nUse this endpoint to build reports that show the outcome of your checks over time. If you gathered high-level data\nfrom the `/dataset_health` and `/dataset_coverage` endpoints, you can use this endpoint to examine more granular\ndata about checks that apply to each dataset.\n\nYou can provide multiple `dataset_ids` per request, and use the `from_datetime` parameter to optimize performance.\nUse the `datasets` endpoint to first get a list of available datasets along with their IDs, then issue separate\nqueries one dataset at a time.\n\nKeep the number of potentially parallel queries that you make to this endpoint small as they can face rate\nlimitations or poor performance.\n\nReturns\n-------\nAn object of type `CheckResultsResult` containing an array of `CheckResultsData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "operationId": "check_results_quality_check_results_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Request Body",
+                "allOf": [
+                  { "$ref": "#/components/schemas/CheckResultsRequest" }
+                ],
+                "default": { "page": 1, "size": 400 }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckResultsResult",
+                  "title": "Response Check Results Quality Check Results Post",
+                  "anyOf": [
+                    { "$ref": "#/components/schemas/CheckResultsResult" },
+                    { "$ref": "#/components/schemas/PaginatedResult" }
+                  ]
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Successful request but no data was returned",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/NoContentError" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [
+          { "HTTPBasic": [] },
+          { "SodaBackendToken": [] },
+          { "APIKeyCookie": [] },
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
+        ]
+      }
+    },
+    "/quality/dataset_health": {
+      "post": {
+        "tags": ["Quality"],
+        "summary": "Dataset health [Paginated]",
+        "description": "This endpoint provides you with a daily measure of the health of each of your datasets. Soda calculates a dataset's\nhealth based on the number of checks that pass during a scan. In calculating health, this endpoint returns an\naggregation of the pass results from multiple scans on the same day.\n\nUsage\n-----\nUse this endpoint to get review the health of your datasets, and to see a high-level view of the more granular\ninformation that the `/check_results` endpoint provides.\n\nUse this endpoint in conjunction with the `/datasets` endpoint as the latter adds information about each\ndataset.\n\nMultiple `dataset_ids` are allowed per request, and use the `from_datetime` parameter to optimize performance.\n\nUse the datasets endpoint to first get a list of available datasets along with their IDs, then issue separate\nqueries one dataset at a time.\n\nKeep the number of potentially parallel queries that you make to this endpoint small as they can face rate\nlimitations or poor performance.\n\nReturns\n-------\nAn object of type `DatasetHealthResult` containing an array of `DatasetHealthData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "operationId": "dataset_health_quality_dataset_health_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Request Body",
+                "allOf": [
+                  { "$ref": "#/components/schemas/DatasetHealthRequest" }
+                ],
+                "default": { "page": 1, "size": 400 }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetHealthResult",
+                  "title": "Response Dataset Health Quality Dataset Health Post",
+                  "anyOf": [
+                    { "$ref": "#/components/schemas/DatasetHealthResult" },
+                    { "$ref": "#/components/schemas/PaginatedResult" }
+                  ]
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Successful request but no data was returned",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/NoContentError" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [
+          { "HTTPBasic": [] },
+          { "SodaBackendToken": [] },
+          { "APIKeyCookie": [] },
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
+        ]
+      }
+    },
+    "/coverage/dataset_coverage": {
+      "post": {
+        "tags": ["Coverage"],
+        "summary": "Dataset coverage",
+        "description": "This endpoint provides a daily measure of the test coverage of your datasets.\nIt derives a `relative_coverage_score` which compares the number of checks that apply to a single dataset to\nother datasets connected to your organization's Soda Cloud account. (Refer to the `DatasetCoverageData` schema\nfor more information.)\n\nUsage\n-----\nUse this endpoint to review the relative test coverage of your datasets, and to see a high-level view of the more\ngranular information that the `/tests_and_results` endpoint provides.\n\nThis endpoint is best used in conjunction with the `/datasets` endpoint as the latter augments the level of\ninformation about each dataset.\n\nReturns\n-------\nAn object of type `DatasetCoverageResult` containing an array of `DatasetCoverageData`\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "operationId": "dataset_coverage_coverage_dataset_coverage_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Request Body",
+                "allOf": [
+                  { "$ref": "#/components/schemas/DatasetCoverageRequest" }
+                ],
+                "default": {}
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetCoverageResult"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Successful request but no data was returned",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/NoContentError" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [
+          { "HTTPBasic": [] },
+          { "SodaBackendToken": [] },
+          { "APIKeyCookie": [] },
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
+        ]
+      }
+    },
+    "/impact/incidents": {
+      "post": {
+        "tags": ["Platform Impact"],
+        "summary": "Incidents [Paginated]",
+        "description": "This endpoint provides a list of incidents (as well as basic information --see field definitions in the\n`IncidentsData` schema) per report date.\n\nYou can filter for specific incident statuses, datasets, and report dates. See `IncidentsRequest` schema\nfor an exhaustive list of filter and aggregation options.\n\n**NOTE:** In some rare cases, incidents are not attached to any monitors, in that case we cannot check wich\ndataset they are attached to. These incidents are therefore ignored from the output.\n\nUsage\n-----\nUse to build reports about the number of incidents at any given time on your Soda Cloud account.\n\nReturns\n-------\nAn object of type `IncidentsResult` containing an array of `IncidentsData`.\n\nFind details about the response objects in the **Schemas** section or by\nunfurling the response details.",
+        "operationId": "incidents_impact_incidents_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Request Body",
+                "allOf": [{ "$ref": "#/components/schemas/IncidentsRequest" }],
+                "default": {
+                  "page": 1,
+                  "size": 400,
+                  "status": "unresolved",
+                  "from_datetime": "2023-08-11T10:13:44.268273",
+                  "to_datetime": "2023-09-11T10:13:44.268285"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/IncidentsResult" }
+              }
+            }
+          },
+          "202": {
+            "description": "Successful request but no data was returned",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/NoContentError" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [
+          { "HTTPBasic": [] },
+          { "SodaBackendToken": [] },
+          { "APIKeyCookie": [] },
+          { "ApiKeyId[Soon Deprecated] Use XApiKeyID": [] },
+          { "APIKeySecret[Soon Deprecated] Use XApiKeySecret": [] },
+          { "XApiKeyId": [] },
+          { "XApiKeySecret": [] }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuditTrailData": {
+        "title": "AuditTrailData",
+        "type": "object",
+        "properties": {
+          "correlation_id": {
+            "title": "Correlation Id",
+            "type": "string",
+            "description": "Identifier of a given audited request. Note this column cannot be used as a primary key as it can span over multiple rows."
+          },
+          "eventTime": {
+            "title": "Eventtime",
+            "type": "string",
+            "description": "ISO UTC datetime at which the event happened.",
+            "format": "date-time"
+          },
+          "ipAddress": {
+            "title": "Ipaddress",
+            "type": "string",
+            "description": "IP address of the user who performed the logged action."
+          },
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "description": "Email address of the user who performed the logged action."
+          },
+          "apiKey": {
+            "title": "Apikey",
+            "type": "string",
+            "description": "Obfuscated API key of the user who performed the logged action."
+          },
+          "comment": {
+            "title": "Comment",
+            "type": "string",
+            "description": "Explanation of the audited event."
+          },
+          "hash": {
+            "title": "Hash",
+            "type": "string",
+            "description": "A tamper-proof security and verification hash."
+          }
+        },
+        "description": "Contains audited events from the authorized user's organization."
+      },
+      "AuditTrailResult": {
+        "title": "AuditTrailResult",
+        "required": ["data"],
+        "type": "object",
+        "properties": {
+          "data": {
+            "title": "Data",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/AuditTrailData" }
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "default": "audit_trail"
+          }
+        },
+        "description": "Array of `AuditTrailData`."
+      },
+      "CheckRequest": {
+        "title": "CheckRequest",
+        "type": "object",
+        "properties": {
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page number",
+            "default": 1
+          },
+          "size": {
+            "title": "Size",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page size",
+            "default": 400
+          },
+          "dataset_ids": {
+            "title": "Dataset Ids",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."
+          },
+          "check_ids": {
+            "title": "Check Ids",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Check IDs (UUIDs from the Soda Cloud platform) to use as filter."
+          }
+        },
+        "description": "Tests request JSON Body."
+      },
+      "CheckResult": {
+        "title": "CheckResult",
+        "required": ["total", "page", "size", "data"],
+        "type": "object",
+        "properties": {
+          "total": { "title": "Total", "type": "integer" },
+          "page": { "title": "Page", "type": "integer" },
+          "size": { "title": "Size", "type": "integer" },
+          "data": {
+            "title": "Data",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ChecksData" }
+          }
+        },
+        "description": "Array of `TestsData`."
+      },
+      "CheckResultsData": {
+        "title": "CheckResultsData",
+        "type": "object",
+        "properties": {
+          "result_id": {
+            "title": "Result Id",
+            "type": "string",
+            "description": "Identifier (UUID) of a test result in Soda Cloud."
+          },
+          "scan_time": {
+            "title": "Scan Time",
+            "type": "string",
+            "description": "UTC timestamp of the scan that generated a specific test result.",
+            "format": "date-time"
+          },
+          "level": {
+            "title": "Level",
+            "type": "string",
+            "description": "Severity level of a check result. Levels are: 'info', 'warning', and 'critical'."
+          },
+          "check_id": {
+            "title": "Check Id",
+            "type": "string",
+            "description": "Identifier (UUID) of a check in Soda Cloud."
+          },
+          "check_name": {
+            "title": "Check Name",
+            "type": "string",
+            "description": "Name of a specific check in Soda Cloud."
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string",
+            "description": "UTC timestamp at which the check was created.",
+            "format": "date-time"
+          },
+          "dataset_id": {
+            "title": "Dataset Id",
+            "type": "string",
+            "description": "Identifier (UUID) of a dataset in Soda Cloud."
+          },
+          "organization_id": {
+            "title": "Organization Id",
+            "type": "string",
+            "description": "Identifier (UUID) of an organization in Soda Cloud."
+          },
+          "metric_value": {
+            "title": "Metric Value",
+            "type": "number",
+            "description": "Value of a Soda metric"
+          },
+          "owner_id": {
+            "title": "Owner Id",
+            "type": "string",
+            "description": "Identifier (UUID) of the check owner in Soda Cloud."
+          },
+          "owner_first_name": {
+            "title": "Owner First Name",
+            "type": "string",
+            "description": "First name of the check owner."
+          },
+          "owner_last_name": {
+            "title": "Owner Last Name",
+            "type": "string",
+            "description": "Last name of the check owner."
+          },
+          "owner_email": {
+            "title": "Owner Email",
+            "type": "string",
+            "description": "Email of the check owner."
+          },
+          "owner_job_title": {
+            "title": "Owner Job Title",
+            "type": "string",
+            "description": "Job title of the check owner."
+          },
+          "owner_phone_number": {
+            "title": "Owner Phone Number",
+            "type": "string",
+            "description": "Phone number of the check owner."
+          },
+          "owner_country": {
+            "title": "Owner Country",
+            "type": "string",
+            "description": "Country of the check owner."
+          },
+          "owner_user_type": {
+            "title": "Owner User Type",
+            "type": "string",
+            "description": "User type of the check owner."
+          },
+          "creator_id": {
+            "title": "Creator Id",
+            "type": "string",
+            "description": "Identifier (UUID) of the check creator in Soda Cloud."
+          },
+          "creator_first_name": {
+            "title": "Creator First Name",
+            "type": "string",
+            "description": "First name of the check creator."
+          },
+          "creator_last_name": {
+            "title": "Creator Last Name",
+            "type": "string",
+            "description": "Last name of the check creator."
+          },
+          "creator_email": {
+            "title": "Creator Email",
+            "type": "string",
+            "description": "Email of the check creator."
+          },
+          "creator_job_title": {
+            "title": "Creator Job Title",
+            "type": "string",
+            "description": "Job title of the check creator."
+          },
+          "creator_phone_number": {
+            "title": "Creator Phone Number",
+            "type": "string",
+            "description": "Phone number of the check creator."
+          },
+          "creator_country": {
+            "title": "Creator Country",
+            "type": "string",
+            "description": "Country of the check creator."
+          },
+          "creator_user_type": {
+            "title": "Creator User Type",
+            "type": "string",
+            "description": "User type of the check creator."
+          },
+          "attributes": {
+            "title": "Attributes",
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "description": "Atributes of a check"
+          }
+        },
+        "description": "Contains information about checks and their results on a per scan basis."
+      },
+      "CheckResultsRequest": {
+        "title": "CheckResultsRequest",
+        "type": "object",
+        "properties": {
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page number",
+            "default": 1
+          },
+          "size": {
+            "title": "Size",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page size",
+            "default": 400
+          },
+          "dataset_ids": {
+            "title": "Dataset Ids",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."
+          },
+          "check_ids": {
+            "title": "Check Ids",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Check IDs (UUIDs from the Soda Cloud platform) to use as filter."
+          },
+          "from_datetime": {
+            "title": "From Datetime",
+            "type": "string",
+            "description": "\nISO 8601 datetime to specify the point in time from which you would like to get health historical data.\n",
+            "format": "date-time"
+          }
+        },
+        "description": "Test results request JSON Body."
+      },
+      "CheckResultsResult": {
+        "title": "CheckResultsResult",
+        "required": ["total", "page", "size", "data"],
+        "type": "object",
+        "properties": {
+          "total": { "title": "Total", "type": "integer" },
+          "page": { "title": "Page", "type": "integer" },
+          "size": { "title": "Size", "type": "integer" },
+          "data": {
+            "title": "Data",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/CheckResultsData" }
+          }
+        },
+        "description": "Array of `CheckResultsData`."
+      },
+      "ChecksData": {
+        "title": "ChecksData",
+        "type": "object",
+        "properties": {
+          "check_id": {
+            "title": "Check Id",
+            "type": "string",
+            "description": "Identifier (UUID) of a check in Soda Cloud."
+          },
+          "organization_id": {
+            "title": "Organization Id",
+            "type": "string",
+            "description": "Identifier (UUID) of an organization in Soda Cloud."
+          },
+          "check_name": {
+            "title": "Check Name",
+            "type": "string",
+            "description": "Name of a specific check in Soda Cloud."
+          },
+          "check_type": {
+            "title": "Check Type",
+            "type": "string",
+            "description": "\nType of Soda check. For example, the type is \"metric\" if the check uses a metric in Soda Cloud;\n\"external\" if the check is evaluated by Soda SQL.\n        "
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string",
+            "description": "UTC timestamp at which the check was created.",
+            "format": "date-time"
+          },
+          "is_archived": {
+            "title": "Is Archived",
+            "type": "string",
+            "description": "Whether the check is archived."
+          },
+          "dataset_id": {
+            "title": "Dataset Id",
+            "type": "string",
+            "description": "Identifier (UUID) of a dataset in Soda Cloud."
+          },
+          "source": {
+            "title": "Source",
+            "type": "string",
+            "description": "Source type of a check (E.g. soda-core, dbt etc.)"
+          },
+          "creator_id": {
+            "title": "Creator Id",
+            "type": "string",
+            "description": "Identifier (UUID) of the check creator in Soda Cloud."
+          },
+          "creator_first_name": {
+            "title": "Creator First Name",
+            "type": "string",
+            "description": "First name of the check creator."
+          },
+          "creator_last_name": {
+            "title": "Creator Last Name",
+            "type": "string",
+            "description": "Last name of the check creator."
+          },
+          "creator_email": {
+            "title": "Creator Email",
+            "type": "string",
+            "description": "Email of the check creator."
+          },
+          "creator_job_title": {
+            "title": "Creator Job Title",
+            "type": "string",
+            "description": "Job title of the check creator."
+          },
+          "creator_phone_number": {
+            "title": "Creator Phone Number",
+            "type": "string",
+            "description": "Phone number of the check creator."
+          },
+          "creator_country": {
+            "title": "Creator Country",
+            "type": "string",
+            "description": "Country of the check creator."
+          },
+          "creator_user_type": {
+            "title": "Creator User Type",
+            "type": "string",
+            "description": "User type of the check creator."
+          },
+          "owner_id": {
+            "title": "Owner Id",
+            "type": "string",
+            "description": "Identifier (UUID) of the check owner in Soda Cloud."
+          },
+          "owner_first_name": {
+            "title": "Owner First Name",
+            "type": "string",
+            "description": "First name of the check owner."
+          },
+          "owner_last_name": {
+            "title": "Owner Last Name",
+            "type": "string",
+            "description": "Last name of the check owner."
+          },
+          "owner_email": {
+            "title": "Owner Email",
+            "type": "string",
+            "description": "Email of the check owner."
+          },
+          "owner_job_title": {
+            "title": "Owner Job Title",
+            "type": "string",
+            "description": "Job title of the check owner."
+          },
+          "owner_phone_number": {
+            "title": "Owner Phone Number",
+            "type": "string",
+            "description": "Phone number of the check owner."
+          },
+          "owner_country": {
+            "title": "Owner Country",
+            "type": "string",
+            "description": "Country of the check owner."
+          },
+          "owner_user_type": {
+            "title": "Owner User Type",
+            "type": "string",
+            "description": "User type of the check owner."
+          },
+          "attributes": {
+            "title": "Attributes",
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "description": "Atributes of a check"
+          }
+        },
+        "description": "Contains information about a check and its associated datasets."
+      },
+      "DatasetCoverageDataObject": {
+        "title": "DatasetCoverageDataObject",
+        "required": ["descriptives", "dataset_info"],
+        "type": "object",
+        "properties": {
+          "descriptives": {
+            "$ref": "#/components/schemas/DatasetCoverageDescriptivesData"
+          },
+          "dataset_info": {
+            "title": "Dataset Info",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/DatasetInfoData" }
+          }
+        },
+        "description": "Array of `DatasetInfoData` and `DatasetCoverageDescriptivesData`."
+      },
+      "DatasetCoverageDescriptivesData": {
+        "title": "DatasetCoverageDescriptivesData",
+        "type": "object",
+        "properties": {
+          "median_number_of_checks": {
+            "title": "Median Number Of Checks",
+            "type": "number",
+            "description": "Median number of checks across all datasets in your organization.",
+            "default": 0.0
+          },
+          "max_number_of_checks": {
+            "title": "Max Number Of Checks",
+            "type": "number",
+            "description": "Maximum number of checks across all datasets in your organization.",
+            "default": 0.0
+          },
+          "min_number_of_checks": {
+            "title": "Min Number Of Checks",
+            "type": "number",
+            "description": "Minimum number of checks across all datasets in your organization.",
+            "default": 0.0
+          },
+          "standard_deviation_number_of_checks": {
+            "title": "Standard Deviation Number Of Checks",
+            "anyOf": [
+              { "type": "number" },
+              { "type": "string" },
+              { "type": "integer" }
+            ],
+            "description": "Standard deviation of the number of checks across all datasets in your organization.",
+            "default": 0.0
+          },
+          "mean_number_of_checks": {
+            "title": "Mean Number Of Checks",
+            "type": "number",
+            "description": "Mean number of checks across all datasets in your organization.",
+            "default": 0.0
+          }
+        },
+        "description": "Contains coverage descriptives across datasets."
+      },
+      "DatasetCoverageRequest": {
+        "title": "DatasetCoverageRequest",
+        "type": "object",
+        "properties": {
+          "dataset_ids": {
+            "title": "Dataset Ids",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."
+          }
+        },
+        "description": "Dataset coverage request JSON Body."
+      },
+      "DatasetCoverageResult": {
+        "title": "DatasetCoverageResult",
+        "required": ["data"],
+        "type": "object",
+        "properties": {
+          "data": { "$ref": "#/components/schemas/DatasetCoverageDataObject" }
+        },
+        "description": "Array of `DatasetInfoData` and `DatasetCoverageDescriptivesData`."
+      },
+      "DatasetHealthData": {
+        "title": "DatasetHealthData",
+        "type": "object",
+        "properties": {
+          "organization_id": {
+            "title": "Organization Id",
+            "type": "string",
+            "description": "Identifier (UUID) of an organization in Soda Cloud."
+          },
+          "dataset_id": {
+            "title": "Dataset Id",
+            "type": "string",
+            "description": "Identifier (UUID) of a dataset in Soda Cloud."
+          },
+          "scan_date": {
+            "title": "Scan Date",
+            "type": "string",
+            "description": "Date at which any number of scans were run.",
+            "format": "date-time"
+          },
+          "critical": {
+            "title": "Critical",
+            "type": "integer",
+            "description": "Number of checks and monitors that failed with a Critical level alert."
+          },
+          "info": {
+            "title": "Info",
+            "type": "integer",
+            "description": "Number of checks and monitors that passed."
+          },
+          "warning": {
+            "title": "Warning",
+            "type": "integer",
+            "description": "Number of checks and monitors that failed with a Warning level alert."
+          },
+          "number_of_checks": {
+            "title": "Number Of Checks",
+            "type": "integer",
+            "description": "Number of checks and monitors executed."
+          },
+          "percentage_passing_checks": {
+            "title": "Percentage Passing Checks",
+            "type": "number",
+            "description": "Proportion of checks and monitors that passed."
+          },
+          "last_point_percent_change": {
+            "title": "Last Point Percent Change",
+            "type": "number",
+            "description": "Percentage change from last point."
+          },
+          "percent_change_percentage_passing_checks": {
+            "title": "Percent Change Percentage Passing Checks",
+            "type": "number",
+            "description": "\n        Percentage change of the last data health point compared to a rolling average over the last\n        3\n        "
+          }
+        },
+        "description": "Dataset health information containing counts of passing or failing checks (warning or critical) per scan date."
+      },
+      "DatasetHealthRequest": {
+        "title": "DatasetHealthRequest",
+        "type": "object",
+        "properties": {
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page number",
+            "default": 1
+          },
+          "size": {
+            "title": "Size",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page size",
+            "default": 400
+          },
+          "dataset_ids": {
+            "title": "Dataset Ids",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."
+          },
+          "from_datetime": {
+            "title": "From Datetime",
+            "type": "string",
+            "description": "\nISO 8601 datetime to specify the point in time from which you would like to get health historical data.\n",
+            "format": "date-time"
+          }
+        },
+        "description": "Dataset health request JSON Body."
+      },
+      "DatasetHealthResult": {
+        "title": "DatasetHealthResult",
+        "required": ["total", "page", "size", "data"],
+        "type": "object",
+        "properties": {
+          "total": { "title": "Total", "type": "integer" },
+          "page": { "title": "Page", "type": "integer" },
+          "size": { "title": "Size", "type": "integer" },
+          "data": {
+            "title": "Data",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/DatasetHealthData" }
+          }
+        },
+        "description": "Array of `DatasetHealthData`."
+      },
+      "DatasetInfoData": {
+        "title": "DatasetInfoData",
+        "type": "object",
+        "properties": {
+          "dataset_id": {
+            "title": "Dataset Id",
+            "type": "string",
+            "description": "Identifier (UUID) of a dataset in Soda Cloud."
+          },
+          "number_of_checks": {
+            "title": "Number Of Checks",
+            "type": "integer",
+            "description": "Number of checks covering a specific dataset."
+          },
+          "relative_coverage_score": {
+            "title": "Relative Coverage Score",
+            "type": "string",
+            "description": "\nA score derived by comparing the number of checks that apply to a single dataset to the number of checks\nthat apply to other datasets in your organization's Soda Cloud account. Soda applies the labels \"good\", \"medium\", and\n\"poor\" based on a 3-ntile split.\n        "
+          }
+        },
+        "description": "Information about a dataset including whether a dataset is active or deleted,\nand check coverage metrics."
+      },
+      "DatasetsData": {
+        "title": "DatasetsData",
+        "type": "object",
+        "properties": {
+          "dataset_id": {
+            "title": "Dataset Id",
+            "type": "string",
+            "description": "Identifier (UUID) of a dataset in Soda Cloud."
+          },
+          "organization_id": {
+            "title": "Organization Id",
+            "type": "string",
+            "description": "Identifier (UUID) of an organization in Soda Cloud."
+          },
+          "dataset_name": {
+            "title": "Dataset Name",
+            "type": "string",
+            "description": "Name of the dataset in Soda Cloud corresponding to the name of the dataset in the data source."
+          },
+          "dataset_label": {
+            "title": "Dataset Label",
+            "type": "string",
+            "description": "Custom name given to a dataset in Soda Cloud. Will often be identical to dataset_name"
+          },
+          "tags": {
+            "title": "Tags",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "User-provided list of tags."
+          },
+          "creator_id": {
+            "title": "Creator Id",
+            "type": "string",
+            "description": "Identifier (UUID) of the check creator in Soda Cloud."
+          },
+          "creator_first_name": {
+            "title": "Creator First Name",
+            "type": "string",
+            "description": "First name of the check creator."
+          },
+          "creator_last_name": {
+            "title": "Creator Last Name",
+            "type": "string",
+            "description": "Last name of the check creator."
+          },
+          "creator_email": {
+            "title": "Creator Email",
+            "type": "string",
+            "description": "Email of the check creator."
+          },
+          "creator_job_title": {
+            "title": "Creator Job Title",
+            "type": "string",
+            "description": "Job title of the check creator."
+          },
+          "creator_phone_number": {
+            "title": "Creator Phone Number",
+            "type": "string",
+            "description": "Phone number of the check creator."
+          },
+          "creator_country": {
+            "title": "Creator Country",
+            "type": "string",
+            "description": "Country of the check creator."
+          },
+          "creator_user_type": {
+            "title": "Creator User Type",
+            "type": "string",
+            "description": "User type of the check creator."
+          },
+          "creator_last_login_at": {
+            "title": "Creator Last Login At",
+            "type": "string",
+            "description": "Timestamp corresponding to the last time the owner logged into Soda Cloud.",
+            "format": "date-time"
+          },
+          "owner_id": {
+            "title": "Owner Id",
+            "type": "string",
+            "description": "Identifier (UUID) of the check owner in Soda Cloud."
+          },
+          "owner_first_name": {
+            "title": "Owner First Name",
+            "type": "string",
+            "description": "First name of the check owner."
+          },
+          "owner_last_name": {
+            "title": "Owner Last Name",
+            "type": "string",
+            "description": "Last name of the check owner."
+          },
+          "owner_email": {
+            "title": "Owner Email",
+            "type": "string",
+            "description": "Email of the check owner."
+          },
+          "owner_job_title": {
+            "title": "Owner Job Title",
+            "type": "string",
+            "description": "Job title of the check owner."
+          },
+          "owner_phone_number": {
+            "title": "Owner Phone Number",
+            "type": "string",
+            "description": "Phone number of the check owner."
+          },
+          "owner_country": {
+            "title": "Owner Country",
+            "type": "string",
+            "description": "Country of the check owner."
+          },
+          "owner_user_type": {
+            "title": "Owner User Type",
+            "type": "string",
+            "description": "User type of the check owner."
+          },
+          "owner_last_login_at": {
+            "title": "Owner Last Login At",
+            "type": "string",
+            "description": "Timestamp corresponding to the last time the owner logged into Soda Cloud.",
+            "format": "date-time"
+          },
+          "number_of_rows": {
+            "title": "Number Of Rows",
+            "anyOf": [{ "type": "integer" }, { "type": "string" }],
+            "description": "Current (and latest known) number of rows in the dataset."
+          },
+          "number_of_failed_checks": {
+            "title": "Number Of Failed Checks",
+            "anyOf": [{ "type": "integer" }, { "type": "string" }],
+            "description": "Number of checks that failed on a specific dataset."
+          },
+          "last_scan_time": {
+            "title": "Last Scan Time",
+            "type": "string",
+            "description": "UTC timestamp of the last scan run on a dataset.",
+            "format": "date-time"
+          },
+          "attributes": {
+            "title": "Attributes",
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "description": "Atributes of a dataset"
+          },
+          "datasource_id": {
+            "title": "Datasource Id",
+            "type": "string",
+            "description": "UUID of the data source as assigned by the Soda Cloud platform."
+          },
+          "datasource_name": {
+            "title": "Datasource Name",
+            "type": "string",
+            "description": "\nName of the datasource in Soda Cloud coresponding to the name of the\n datasource in your configuration file."
+          },
+          "datasource_label": {
+            "title": "Datasource Label",
+            "type": "string",
+            "description": "Label of the datasource corresponding to the name displayed in Soda Cloud"
+          },
+          "datasource_source_owner": {
+            "title": "Datasource Source Owner",
+            "type": "string",
+            "description": "The name of the source application (e.g. soda-core) that owns the data source."
+          },
+          "datasource_owner_id": {
+            "title": "Datasource Owner Id",
+            "type": "string",
+            "description": "UUID corresponding the the configured datasource owner."
+          },
+          "datasource_has_core_agent_enabled": {
+            "title": "Datasource Has Core Agent Enabled",
+            "type": "boolean",
+            "description": "Boolean indicating whether the datasource is onboarded and part of a Soda Agent."
+          }
+        },
+        "description": "Contains information about a dataset."
+      },
+      "DatasetsRequest": {
+        "title": "DatasetsRequest",
+        "type": "object",
+        "properties": {
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page number",
+            "default": 1
+          },
+          "size": {
+            "title": "Size",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page size",
+            "default": 400
+          },
+          "dataset_ids": {
+            "title": "Dataset Ids",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."
+          }
+        },
+        "description": "Datasets request JSON Body."
+      },
+      "DatasetsResult": {
+        "title": "DatasetsResult",
+        "required": ["total", "page", "size", "data"],
+        "type": "object",
+        "properties": {
+          "total": { "title": "Total", "type": "integer" },
+          "page": { "title": "Page", "type": "integer" },
+          "size": { "title": "Size", "type": "integer" },
+          "data": {
+            "title": "Data",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/DatasetsData" }
+          }
+        },
+        "description": "Array of `DatasetsData`."
+      },
+      "GetTokenResult": {
+        "title": "GetTokenResult",
+        "type": "object",
+        "properties": {
+          "user": {
+            "title": "User",
+            "type": "string",
+            "description": "User's username (email addess used at sign up)."
+          },
+          "token": {
+            "title": "Token",
+            "type": "string",
+            "description": "\n            API Token to use for authentication. This token expires. Its expiration is also provided in the response.\n            "
+          },
+          "organization_id": {
+            "title": "Organization Id",
+            "type": "string",
+            "description": "Identifier (UUID) of an organization in Soda Cloud."
+          },
+          "expires_in": {
+            "title": "Expires In",
+            "type": "integer",
+            "description": "Token's expiration time in seconds."
+          }
+        },
+        "description": "Soda Cloud API token and organisation ID information to use in this API's endpoints."
+      },
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ValidationError" }
+          }
+        }
+      },
+      "IncidentData": {
+        "title": "IncidentData",
+        "type": "object",
+        "properties": {
+          "incident_id_report_date_id": {
+            "title": "Incident Id Report Date Id",
+            "type": "string",
+            "description": "Incident report date Id (UUID) that uniquely identifies an incident and a report_date as shown in the Soda Cloud Incidents page."
+          },
+          "incident_id": {
+            "title": "Incident Id",
+            "type": "string",
+            "description": "Incident ID (UUID) of the incident in the Soda Cloud Incidents page."
+          },
+          "organization_id": {
+            "title": "Organization Id",
+            "type": "string",
+            "description": "Identifier (UUID) of an organization in Soda Cloud."
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string",
+            "description": "ISO timestamp of the date at which the incidents was created in the Soda Cloud Dataset page.",
+            "format": "date-time"
+          },
+          "last_updated": {
+            "title": "Last Updated",
+            "type": "string",
+            "description": "ISO timestamp of the date at which the incident was last updated.",
+            "format": "date-time"
+          },
+          "check_id": {
+            "title": "Check Id",
+            "type": "string",
+            "description": "Identifier (UUID) of a check in Soda Cloud."
+          },
+          "check_result_id": {
+            "title": "Check Result Id",
+            "type": "string",
+            "description": "Check result Id (UUID) of check result to which incident corresponds."
+          },
+          "dataset_id": {
+            "title": "Dataset Id",
+            "type": "string",
+            "description": "Identifier (UUID) of a dataset in Soda Cloud."
+          },
+          "title": {
+            "title": "Title",
+            "type": "string",
+            "description": "Title of the incident as shown in the Soda Cloud Incidents page."
+          },
+          "check_name": {
+            "title": "Check Name",
+            "type": "string",
+            "description": "Name of a specific check in Soda Cloud."
+          },
+          "severity": {
+            "title": "Severity",
+            "type": "string",
+            "description": "Severity of the incident as shown in the Soda Cloud Incidents page."
+          },
+          "description_notes": {
+            "title": "Description Notes",
+            "type": "string",
+            "description": "Description notes of the incident as shown in the incident overview."
+          },
+          "resolution_notes": {
+            "title": "Resolution Notes",
+            "type": "string",
+            "description": "Resolution notes of the incident as shown in the incident overview."
+          },
+          "lead_id": {
+            "title": "Lead Id",
+            "type": "string",
+            "description": "Lead ID (UUID) of the lead assigned to the incident in the Soda Cloud Incidents page."
+          },
+          "lead_email": {
+            "title": "Lead Email",
+            "type": "string",
+            "description": "Email of the lead assigned to the incident in the Soda Cloud Incidents page."
+          },
+          "reporter_id": {
+            "title": "Reporter Id",
+            "type": "string",
+            "description": "Reporter ID (UUID) of the user that reported the incident in the Soda Cloud Incidents page."
+          },
+          "reporter_email": {
+            "title": "Reporter Email",
+            "type": "string",
+            "description": "Reporter email of the user that reported the incident in the incident overview."
+          },
+          "report_date": {
+            "title": "Report Date",
+            "type": "string",
+            "description": "Report date for which the incident information is shown.",
+            "format": "date"
+          },
+          "resolved_at": {
+            "title": "Resolved At",
+            "type": "string",
+            "description": "ISO timestamp of the date at which incident was resolved in the Soda Cloud Incidents page.",
+            "format": "date-time"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string",
+            "description": "Status of the incident as shown in the Soda Cloud Incidents page."
+          }
+        },
+        "description": "Contains incident information (see field documentation for explanations)"
+      },
+      "IncidentsRequest": {
+        "title": "IncidentsRequest",
+        "type": "object",
+        "properties": {
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page number",
+            "default": 1
+          },
+          "size": {
+            "title": "Size",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Page size",
+            "default": 400
+          },
+          "dataset_ids": {
+            "title": "Dataset Ids",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Dataset IDs (UUIDs from the Soda Cloud platform) to use as filter."
+          },
+          "status": {
+            "title": "Status",
+            "type": "string",
+            "description": "\nString representing the status of issues you want to retrieve. Currently you can retrieve either:\n- all 'resolved' issues or\n- all 'unresolved' issues\n",
+            "default": "unresolved"
+          },
+          "from_datetime": {
+            "title": "From Datetime",
+            "type": "string",
+            "description": "ISO timestamp from which you want to retrieve incidents. Defaults to last 31 days.",
+            "format": "date-time",
+            "default": "2023-08-11T10:13:44.268273"
+          },
+          "to_datetime": {
+            "title": "To Datetime",
+            "type": "string",
+            "description": "ISO timestamp up to which you want to retrieve incidents. Defaults to today.",
+            "format": "date-time",
+            "default": "2023-09-11T10:13:44.268285"
+          }
+        },
+        "description": "Incidents request JSON Body."
+      },
+      "IncidentsResult": {
+        "title": "IncidentsResult",
+        "required": ["total", "page", "size", "data"],
+        "type": "object",
+        "properties": {
+          "total": { "title": "Total", "type": "integer" },
+          "page": { "title": "Page", "type": "integer" },
+          "size": { "title": "Size", "type": "integer" },
+          "data": {
+            "title": "Data",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/IncidentData" }
+          }
+        },
+        "description": "Array of `IncidentsData`."
+      },
+      "LastETLRefreshResult": {
+        "title": "LastETLRefreshResult",
+        "type": "object",
+        "properties": {
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "default": "last_etl_refresh"
+          },
+          "data": {
+            "title": "Data",
+            "allOf": [
+              { "$ref": "#/components/schemas/LastETLRefreshResultData" }
+            ],
+            "description": "Contains ETL last refreshed timestamp"
+          }
+        },
+        "description": "Result of request to the last ETL refreshed endpoint."
+      },
+      "LastETLRefreshResultData": {
+        "title": "LastETLRefreshResultData",
+        "type": "object",
+        "properties": {
+          "last_etl_refresh_at": {
+            "title": "Last Etl Refresh At",
+            "type": "string",
+            "description": "ISO timestamp of the date at which ETL was last refreshed.",
+            "format": "date-time"
+          }
+        },
+        "description": "Contains ETL last refreshed timestamp"
+      },
+      "NoContentError": {
+        "title": "NoContentError",
+        "type": "object",
+        "properties": {
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "Name of the resource. Usually the same string as the endpoint."
+          },
+          "data": {
+            "title": "Data",
+            "type": "array",
+            "items": { "type": "object" },
+            "description": "Generic data payload from the query. Should be overidden with a more specific pydandic model.",
+            "default": []
+          },
+          "detail": {
+            "title": "Detail",
+            "type": "string",
+            "default": "No results for the requested data. Since the data is pre-processed in batches it might be that the data you are looking for has not yet been processed. You can check when the last refresh took place by using the /last_etl_refresh_info endpoint. If you think this is a bug and you should be getting results, get in touch with us."
+          }
+        },
+        "description": "Response Schema of a NoContent Error"
+      },
+      "PaginatedResult": {
+        "title": "PaginatedResult",
+        "required": ["total", "page", "size"],
+        "type": "object",
+        "properties": {
+          "total": { "title": "Total", "type": "integer" },
+          "page": { "title": "Page", "type": "integer" },
+          "size": { "title": "Size", "type": "integer" }
+        },
+        "description": "Pydantic model for a basic paginated result with pagination info."
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": ["loc", "msg", "type"],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": { "anyOf": [{ "type": "string" }, { "type": "integer" }] }
+          },
+          "msg": { "title": "Message", "type": "string" },
+          "type": { "title": "Error Type", "type": "string" }
+        }
+      }
+    },
+    "securitySchemes": {
+      "HTTPBasic": { "type": "http", "scheme": "basic" },
+      "SodaBackendToken": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "SODA_TOKEN"
+      },
+      "APIKeyCookie": { "type": "apiKey", "in": "cookie", "name": "token" },
+      "ApiKeyId[Soon Deprecated] Use XApiKeyID": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "API_KEY_ID"
+      },
+      "APIKeySecret[Soon Deprecated] Use XApiKeySecret": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "API_KEY_SECRET"
+      },
+      "XApiKeyId": { "type": "apiKey", "in": "header", "name": "X-API-KEY-ID" },
+      "XApiKeySecret": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-KEY-SECRET"
+      }
+    }
+  }
+}
