@@ -20,7 +20,10 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 #### Get started roadmap
 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
-2. **Set up Soda: self-operated** 📍 You are here!
+2. **Set up Soda: self-operated** 📍 You are here! <br />
+&nbsp;&nbsp;&nbsp;&nbsp; a. [Check requirements](#requirements)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; b. [Install Soda Library](#install-soda-library)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; c. [Configure Soda](#configure-soda)<br />
 3. Write SodaCL checks
 4. Run scans, review results
 5. Organize, alert, investigate
@@ -60,7 +63,7 @@ If you have not already installed Python, consider using <a href="https://github
 
 <details>
     <summary style="color:#00BC7E">Why do I need a Soda Cloud account?</summary>
-To validate your account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library. <br /><a href="https://docs.soda.io/soda/about.html">Learn more</a>.<br /><br />
+To validate your account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library. <br /><a href="https://docs.soda.io/soda/about.html">Learn more</a><br /><br />
 </details>
 
 ## Install Soda Library

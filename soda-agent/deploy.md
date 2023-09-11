@@ -21,7 +21,10 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 #### Get started roadmap
 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
-2. **Set up Soda: self-hosted agent** 📍 You are here!
+2. **Set up Soda: self-hosted agent** 📍 You are here! <br />
+&nbsp;&nbsp;&nbsp;&nbsp; a. [Create a Soda Cloud account](#create-a-soda-cloud-account)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; b. [Deploy a Soda Agent in a Kubernetes cluster](#deploy-a-soda-agent-in-a-kubernetes-cluster)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; c. [Add a new data source](#add-a-new-data-source)<br />
 3. Write SodaCL checks
 4. Run scans, review results
 5. Organize, alert, investigate
@@ -32,7 +35,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 {% include agent-api-keys.md %}
 
 
-## Set up a Kubernetes cluster and deploy a Soda Agent
+## Deploy a Soda Agent in a Kubernetes cluster
 
 <div class="warpper">
   <input class="radio" id="one" name="group" type="radio" checked>
@@ -47,28 +50,26 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
-These deployment instructions offer generic guidance for setting up a Kubernetes cluster and deploying a Soda Agent in it. 
+These deployment instructions offer generic guidance for deploying a Soda Agent in a Kubernetes cluster. 
 
 [Deployment overview](#deployment-overview)<br />
 [Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
-[Create a Kubernetes cluster](#create-a-kubernetes-cluster)<br />
 [Deploy a Soda Agent](#deploy-a-soda-agent)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only](#deploy-using-cli-only)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file)<br />
-[(Optional) Create a practice data source](#optional-create-a-practice-data-source)<br />
 [About the `helm install` command](#about-the-helm-install-command)<br />
 [Decommission the Soda Agent and cluster](#decomission-the-soda-agent-and-cluster)<br />
 [Troubleshoot deployment](#troubleshoot-deployment)<br />
 <br />
 
 
-## Deployment overview
+### Deployment overview
 
 {% include agent-deploy-overview.md %}
 
 
-## Compatibility
+### Compatibility
 
 Soda supports Kubernetes cluster version 1.21 or greater.
 
@@ -76,13 +77,12 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 {% include compatible-cloud-datasources.md %}
 
-## Prerequisites
+### Prerequisites
 
-* (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
 * You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. With Docker running, use the command `kubectl version --output=yaml` to check the version of an existing install.
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
 
-
+<!--
 ## Create a Kubernetes cluster
 
 To deploy a Soda Agent in a Kubernetes cluster, you must first create a cluster. 
@@ -116,8 +116,9 @@ minikube kubectl -- config get-contexts
 CURRENT   NAME               CLUSTER          AUTHINFO          NAMESPACE
 *         minikube           minikube         minikube          soda-agent
 ``` 
+-->
 
-## Deploy a Soda Agent
+### Deploy a Soda Agent
 
 The following table outlines the two ways you can install the Helm chart to deploy a Soda Agent in your cluster.
 
@@ -126,14 +127,16 @@ The following table outlines the two ways you can install the Helm chart to depl
 | [CLI only](#deploy-using-cli-only) | Install the Helm chart via CLI by providing values directly in the install command. | Use this as a straight-forward way of deploying an agent on a cluster in a secure or local environment. | 
 | [Use a values YAML file](#deploy-using-a-values-yaml-file) | Install the Helm chart via CLI by providing values in a values YAML file. | Use this as a way of deploying an agent on a cluster while keeping sensitive values secure. <br /> - provide sensitive API key values in this local file <br /> - store data source login credentials as environment variables in this local file or in an external secrets manager; Soda needs access to the credentials to be able to connect to your data source to run scans of your data. See: [Manage sensitive values]({% link soda-agent/secrets.md %}).|
 
+<br />
 
-### Deploy using CLI only
+#### Deploy using CLI only
 
-1. Add the Soda Agent Helm chart repository.
-```shell
+1. (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
+2. Add the Soda Agent Helm chart repository.
+` ``shell
 helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```
-2. Use the following comand to install the Helm chart to deploy a Soda Agent in your custer. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
+3. Use the following comand to install the Helm chart to deploy a Soda Agent in your custer. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
 * Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account.
 * Replace the value of `soda.agent.name` with a custom name for you agent, if you wish.
 * Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
@@ -177,13 +180,14 @@ Containers:
         ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="600px" width="600px"}
-5. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
 
+<br />
 
-### Deploy using a values YAML file
+#### Deploy using a values YAML file
 
-1. Using a code editor, create a new YAML file called `values.yml`.
-2. In that file, copy+paste the content below, replacing the following values:
+1. (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 1. 
+2. Using a code editor, create a new YAML file called `values.yml`.
+3. In that file, copy+paste the content below, replacing the following values:
 * `id` and `secret` with the values you copy+pasted from the **New Soda Agent** dialog box in your Soda Cloud account. 
 * Replace the value of `name` with a custom name for your agent, if you wish.
 * Specify the value for `endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
@@ -200,20 +204,21 @@ soda:
             enabled: true
             replicas: 1
         cloud:
-          # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
+          # Use https://cloud.us.soda.io for US region
+          # Use https://cloud.soda.io for EU region
           endpoint: "https://cloud.soda.io"
 ```
-3. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
+4. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
 ```shell
 helm install soda-agent soda-agent/soda-agent \
   --values values.yml \
   --namespace soda-agent
 ```
-4. (Optional) Validate the Soda Agent deployment by running the following command:
+5. (Optional) Validate the Soda Agent deployment by running the following command:
 ```shell
 minikube kubectl -- describe pods
 ```
-5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+6. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -230,20 +235,16 @@ Containers:
 ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
-6. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
 
+If you use private key authentication with a Soda Agent, refer to [Soda Agent extras]({% link soda-agent/secrets.md %}).
 
-If you use private key authentication with a Soda Agent, refer to [Manage sensitive values for a Soda Agent]({% link soda-agent/secrets.md %}#use-a-values-file-to-store-private-key-authentication-values-for-snowflake).
+<br />
 
-## (Optional) Create a practice data source
-
-{% include agent-practice-datasource.md %}
-
-## About the `helm install` command
+### About the `helm install` command
 
 {% include agent-helm-command.md %}
 
-## Decomission the Soda Agent and cluster
+### Decomission the Soda Agent and cluster
 
 1. Uninstall the Soda Agent in the cluster.
 ```shell
@@ -257,7 +258,7 @@ minikube delete
 💀  Removed all traces of the "minikube" cluster.
 ```
 
-## Troubleshoot deployment
+### Troubleshoot deployment
 
 Refer to [Helpful kubectl commands]({% link soda-agent/helpful-commands.md %}) for instructions on accessing logs and investigating issues.
 <br /><br />
@@ -274,25 +275,23 @@ These deployment instructions offer guidance for setting up an Amazon Elastic Ku
 [Deployment overview](#deployment-overview)<br />
 [Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
-[Create an EKS Fargate cluster](#create-an-eks-fargate-cluster) <br />
 [Deploy a Soda Agent](#deploy-a-soda-agent)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only](#deploy-using-cli-only)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file)<br />
-[(Optional) Create a practice data source](#optional-create-a-practice-data-source)<br />
+[Connect a via AWS PrivateLink](#connect-a-soda-agent-to-soda-cloud-via-aws-privatelink)<br />
 [About the `helm install` command](#about-the-helm-install-command)<br />
 [Decommission the Soda Agent and the EKS cluster](#decommission-the-soda-agent-and-the-eks-cluster)<br />
 [Troubleshoot deployment](#troubleshoot-deployment)<br />
-[Go further](#go-further)<br />
 <br />
 
 
 
-## Deployment overview
+### Deployment overview
 
 {% include agent-deploy-overview.md %}
 
 
-## Compatibility
+### Compatibility
 
 Soda supports Kubernetes cluster version 1.21 or greater.
 
@@ -300,21 +299,21 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 {% include compatible-cloud-datasources.md %}
 
-## Prerequisites
+### Prerequisites
 
-* (Optional) You have familiarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
 * You have an AWS account and the necessary permissions to enable you to create an EKS cluster in your region.
-* You have installed <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" target="_blank">aws-cli</a>. This is the command-line tool you need to access your AWS account from the command-line. Run `aws --version` to check the version of an existing install.
-* You have installed <a href="https://eksctl.io/introduction/#installation" target="_blank">eksctl</a>. This is the command-line tool for Amazon EKS that you use to create and manage Kubernetes clusters on EKS. Run `eksctl version` to check the version of an existing install.
+<!--* You have installed <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" target="_blank">aws-cli</a>. This is the command-line tool you need to access your AWS account from the command-line. Run `aws --version` to check the version of an existing install.
+* You have installed <a href="https://eksctl.io/introduction/#installation" target="_blank">eksctl</a>. This is the command-line tool for Amazon EKS that you use to create and manage Kubernetes clusters on EKS. Run `eksctl version` to check the version of an existing install.-->
 * You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. Run `kubectl version --output=yaml` to check the version of an existing install.
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
 
-
+<!--
 ## Create an EKS Fargate cluster
 
 The following offers instructions to create a <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html" target="_blank">Fargate (serverless) cluster</a> to deploy a Soda Agent, but you can create and use a <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html" target="_blank">regular EKS cluster</a> if you wish.
 
-1. (Optional) If you wish, you can establish an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. Refer to [Connect to Soda Cloud via AWS PrivateLink]({% link soda-agent/private-link.md %}) before deploying an agent.
+1. (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}).
+2. (Optional) If you wish, you can establish an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. Refer to [Connect to Soda Cloud via AWS PrivateLink]({% link soda-agent/private-link.md %}) before deploying an agent.
 2. (Optional) If you are deploying to an existing Virtual Private Cloud (VPC), consider supplying public or private subnets with your deployment. Consult the eksctl documentation to <a href="https://eksctl.io/usage/vpc-configuration/#use-existing-vpc-other-custom-configuration" target="_blank">Use existing VPC</a>.
 3. From the command-line, execute the following command to create a new EKS Fargate cluster in your AWS account.  <br/>Replace the value of `--region` with one that is appropriate for your location. 
 ```shell
@@ -347,8 +346,9 @@ kubectl config get-contexts
 CURRENT   NAME               CLUSTER          AUTHINFO          NAMESPACE
 *         testing@soda...    soda-agent.eu..  testing@soda...   soda-agent
 ```
+-->
 
-## Deploy a Soda Agent
+### Deploy a Soda Agent
 
 The following table outlines the two ways you can install the Helm chart to deploy a Soda Agent in your cluster.
 
@@ -358,13 +358,16 @@ The following table outlines the two ways you can install the Helm chart to depl
 | [Use a values YAML file](#deploy-using-a-values-yaml-file) | Install the Helm chart via CLI by providing values in a values YAML file. | Use this as a way of deploying an agent on a cluster while keeping sensitive values secure. <br /> - provide sensitive API key values in this local file <br /> - store data source login credentials as environment variables in this local file or in an external secrets manager; Soda needs access to the credentials to be able to connect to your data source to run scans of your data. See: [Manage sensitive values]({% link soda-agent/secrets.md %}).|
 
 
-### Deploy using CLI only
+#### Deploy using CLI only
 
-1. Use Helm to add the Soda Agent Helm chart repository.
+1. (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}).
+2. (Optional) If you wish, you can establish an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. Refer to [Connect to Soda Cloud via AWS PrivateLink](#connect-a-soda-agent-to-soda-cloud-via-aws-privatelink) before deploying an agent.
+3. (Optional) If you are deploying to an existing Virtual Private Cloud (VPC), consider supplying public or private subnets with your deployment. Consult the eksctl documentation to <a href="https://eksctl.io/usage/vpc-configuration/#use-existing-vpc-other-custom-configuration" target="_blank">Use existing VPC</a>.
+4. Use Helm to add the Soda Agent Helm chart repository.
 ```shell
 helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```
-2. Use the following command to install the Helm chart which deploys a Soda Agent in your custer. 
+5. Use the following command to install the Helm chart which deploys a Soda Agent in your custer. 
 * Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud. The cluster stores these key values as Kubernetes secrets.
 * Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
 * Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
@@ -390,11 +393,11 @@ NAMESPACE: soda-agent
 STATUS: deployed
 REVISION: 1
 ```
-3. (Optional) Validate the Soda Agent deployment by running the following command:
+6. (Optional) Validate the Soda Agent deployment by running the following command:
 ```shell
 kubectl describe pods
 ```
-4. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+7. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -411,12 +414,16 @@ Containers:
 ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
-5. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
 
-### Deploy using a values YAML file
+<br />
 
-1. Using a code editor, create a new YAML file called `values.yml`.
-2. To that file, copy+paste the content below, replacing the following values:
+#### Deploy using a values YAML file
+
+1. (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}).
+2. (Optional) If you wish, you can establish an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. Refer to [Connect to Soda Cloud via AWS PrivateLink](#connect-a-soda-agent-to-soda-cloud-via-aws-privatelink) before deploying an agent.
+3. (Optional) If you are deploying to an existing Virtual Private Cloud (VPC), consider supplying public or private subnets with your deployment. Consult the eksctl documentation to <a href="https://eksctl.io/usage/vpc-configuration/#use-existing-vpc-other-custom-configuration" target="_blank">Use existing VPC</a>.
+4. Using a code editor, create a new YAML file called `values.yml`.
+5. To that file, copy+paste the content below, replacing the following values:
 * `id` and `secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account. 
 * Replace the value of `name` with a custom name for your agent, if you wish.
 * Specify the value for `endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
@@ -436,17 +443,17 @@ soda:
           # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
           endpoint: "https://cloud.soda.io"
 ```
-3. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
+6. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
 ```shell
 helm install soda-agent soda-agent/soda-agent \
   --values values.yml \
   --namespace soda-agent
 ```
-4. (Optional) Validate the Soda Agent deployment by running the following command:
+7. (Optional) Validate the Soda Agent deployment by running the following command:
 ```shell
 kubectl describe pods -n soda-agent
 ```
-5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+8. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step four to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -463,20 +470,30 @@ Containers:
         ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
-6. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
+
+<br />
+
+### Connect a Soda Agent to Soda Cloud via AWS PrivateLink
+
+If you use AWS services for your infrastructure and you have deployed or will deploy a Soda Agent in an EKS cluster, you can use an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. <br />
+
+1. Log in to your AWS console and navigate to your **VPC dashboard**.  
+2. Follow the AWS documentation to <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/create-endpoint-service.html" target="_blank">Connect to an endpoint service as the service customer</a>. <br />For security reasons, Soda does not publish its **Service name**. Email <a href="mailto:support@soda.io">support@soda.io</a> with your **AWS account ID** to request the PrivateLink service name. Refer to <a href="https://docs.aws.amazon.com/signin/latest/userguide/console_account-alias.html" target="_blank"> AWS documentation</a> for instructions on how to obtain your account ID.
+3. After creating the endpoint, return to the **VPC dashboard**. When the status of the endpoint becomes **Available**, the PrivateLink is ready to use. Be aware that this make take more than 10 minutes.
+4. Deploy a Soda Agent to your AWS EKS cluster, or, if you have already deployed one, restart your Soda Agent to begin sending data to Soda Cloud via the PrivateLink.
+```shell
+kubectl -n soda-agent rollout restart deploy
+```
+5. After you have started the agent and validated that it is running, log into your Soda Cloud account, then navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
+![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
 
-## (Optional) Create a practice data source
-
-{% include agent-practice-datasource.md %}
-
-
-## About the `helm install` command
+### About the `helm install` command
 
 {% include agent-helm-command.md %}
 
 
-## Decommission the Soda Agent and the EKS cluster
+### Decommission the Soda Agent and the EKS cluster
 
 1. Uninstall the Soda Agent in the cluster.
 ```shell
@@ -493,7 +510,7 @@ eksctl delete cluster --name soda-agent
 4. (Optional) Access your <a href="https://eu-central-1.console.aws.amazon.com/cloudformation/home" target="_blank"> CloudFormation console</a>, then click **Stacks** to view the status of your decommissioned cluster. <br /> If you do not see your Stack, use the region drop-down menu at upper-right to select the region in which you created the cluster.
 
 
-## Troubleshoot deployment
+### Troubleshoot deployment
 
 Refer to [Helpful kubectl commands]({% link soda-agent/helpful-commands.md %}) for instructions on accessing logs, etc.
 
@@ -533,27 +550,22 @@ These deployment instructions offer guidance for setting up an Azure Kubernetes 
 [Deployment overview](#deployment-overview)<br />
 [Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
-[Create an AKS cluster](#create-an-aks-cluster) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Create a regular cluster](#create-a-soda-cloud-account-and-api-keys)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Create a virtual cluster](#create-a-virtual-cluster)<br />
 [Deploy a Soda Agent](#deploy-a-soda-agent)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only - regular cluster](#deploy-using-cli-only---regular-cluster)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only - virtual cluster](#deploy-using-cli-only---virtual-cluster)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file)<br />
-[(Optional) Create a practice data source](#optional-create-a-practice-data-source)<br />
 [About the `helm install` command](#about-the-helm-install-command)<br />
 [Decommission the Soda Agent and the AKS cluster](#decommission-the-soda-agent-and-the-aks-cluster)<br />
 [Troubleshoot deployment](#troubleshoot-deployment)<br />
-[Go further](#go-further)<br />
 <br />
 
 
-## Deployment overview
+### Deployment overview
 
 {% include agent-deploy-overview.md %}
 
 
-## Compatibility
+### Compatibility
 
 Soda supports Kubernetes cluster version 1.21 or greater.
 
@@ -561,9 +573,8 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 {% include compatible-cloud-datasources.md %}
 
-## Prerequisites
+### Prerequisites
 
-* (Optional) You have familiarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
 * You have an Azure account and the necessary permissions to enable you to create an AKS cluster in your region. Consult the <a href="https://learn.microsoft.com/en-us/azure/role-based-access-control/overview" target="_blank">Azure access control documentation</a> for details.
 * You have installed the <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli" target="_blank">Azure CLI tool</a>. This is the command-line tool you need to access your Azure account from the command-line. Run `az --version` to check the version of an existing install. Consult the <a href="https://learn.microsoft.com/en-us/cli/azure/" target="_blank"> Azure Command-Line Interface documentation</a> for details.
 * You have logged in to your Azure account. Run `az login` to open a browser and log in to your account.
@@ -571,8 +582,7 @@ You can deploy a Soda Agent to connect with the following data sources:
 Run `kubectl version --output=yaml` to check the version of an existing install. 
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
 
-
-
+<!--
 ## Create an AKS cluster
 
 
@@ -753,9 +763,9 @@ Output:
 CURRENT   NAME                CLUSTER              AUTHINFO                                 NAMESPACE
 *         SodaAgentCluster    SodaAgentCluster     clusterUser_SodaAgent_SodaAgentCluster   soda-agent
 ```
+-->
 
-
-## Deploy a Soda Agent
+### Deploy a Soda Agent
 
 The following table outlines the ways you can install the Helm chart to deploy a Soda Agent in your cluster.
 
@@ -766,71 +776,20 @@ The following table outlines the ways you can install the Helm chart to deploy a
 | [Use a values YAML file](#deploy-using-a-values-yaml-file) | Install the Helm chart via CLI by providing values in a values YAML file. | Use this as a way of deploying an agent on a cluster while keeping sensitive values secure. <br /> - provide sensitive API key values in this local file  or in an external secrets manager<br /> - store data source login credentials as environment variables in this local file; Soda needs access to the credentials to be able to connect to your data source to run scans of your data. See: [Manage sensitive values]({% link soda-agent/secrets.md %}).|
 
 
-### Deploy using CLI only - regular cluster
+#### Deploy using CLI only - regular cluster
 
-1. Use Helm to add the Soda Agent Helm chart repository.
+1. (Optional) You have familiarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
+2. Use Helm to add the Soda Agent Helm chart repository.
 ```shell
 helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```
-2. Use the following command to install the Helm chart which deploys a Soda Agent in your cluster. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
+3. Use the following command to install the Helm chart which deploys a Soda Agent in your cluster. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
 * Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud. The cluster stores these key values as Kubernetes secrets.
 * Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
 * Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
 * Optionally, add the `soda.scanlauncher` settings to configure idle workers in the cluster. Launch an idle worker so at scan time, the agent can hand over instructions to an already running idle Scan Launcher to avoid the start-from-scratch setup time for a pod. This helps your test scans from Soda Cloud run faster. You can have multiple idle scan launchers waiting for instructions. <br />
 ```shell
 helm install soda-agent soda-agent/soda-agent \
-    --set soda.agent.name=myuniqueagent \
-    # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
-    --set soda.cloud.endpoint=https://cloud.soda.io \
-    --set soda.apikey.id=*** \
-    --set soda.apikey.secret=**** \
-    --set soda.scanlauncher.idle.enabled=true \
-    --set soda.scanlauncher.idle.replicas=1 \
-    --namespace soda-agent
-```
-The command-line produces output like the following message:
-```shell
-NAME: soda-agent
-LAST DEPLOYED: Mon Nov 21 16:29:38 2022
-NAMESPACE: soda-agent
-STATUS: deployed
-REVISION: 1
-```
-3. (Optional) Validate the Soda Agent deployment by running the following command:
-```shell
-kubectl get pods -n soda-agent
-```
-```shell
-NAME                                     READY   STATUS    RESTARTS   AGE
-soda-agent-orchestrator-ffd74c76-5g7tl   1/1     Running   0          32s
-```
-4. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
-Be aware that this may take several minutes to appear in your list of Soda Agents. 
-![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
-5. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
-
-### Deploy using CLI only - virtual cluster
-
-
-1. Use Helm to add the Soda Agent Helm chart repository.
-```shell
-helm repo add soda-agent https://helm.soda.io/soda-agent/
-```
-2. Create a namespace for the agent.
-```shell
-kubectl create ns soda-agent
-```
-```shell
-namespace/soda-agent created
-```
-3. Use the following command to install the Helm chart which deploys a Soda Agent in your cluster. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
-* Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud. The cluster stores these key values as Kubernetes secrets.
-* Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
-* Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
-* Optionally, add `soda.scanlauncher` settings to configure idle workers in the cluster. Launch an idle worker so that at scan time, the agent passes instructions to an already-running idle Scan Launcher and avoids the time-consuming task of starting the pod from scratch. This helps your Soda Cloud test scans run faster. If you wish, you can configure multiple idle scan launchers waiting for instructions. 
-```shell
-helm install soda-agent soda-agent/soda-agent \
-    --set soda.agent.target=azure-aks-virtualnodes \ 
     --set soda.agent.name=myuniqueagent \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
     --set soda.cloud.endpoint=https://cloud.soda.io \
@@ -859,17 +818,71 @@ soda-agent-orchestrator-ffd74c76-5g7tl   1/1     Running   0          32s
 5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
-5. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
 
+<br /> 
 
-### Deploy using a values YAML file
+#### Deploy using CLI only - virtual cluster
 
-1. Use Helm to add the Soda Agent Helm chart repository.
+1. (Optional) You have familiarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
+2. Use Helm to add the Soda Agent Helm chart repository.
 ```shell
 helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```
-2. Using a code editor, create a new YAML file called `values.yml`.
-3. To that file, copy+paste the content below, replacing the following values:
+3. Create a namespace for the agent.
+```shell
+kubectl create ns soda-agent
+```
+```shell
+namespace/soda-agent created
+```
+4. Use the following command to install the Helm chart which deploys a Soda Agent in your cluster. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
+* Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud. The cluster stores these key values as Kubernetes secrets.
+* Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
+* Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
+* Optionally, add `soda.scanlauncher` settings to configure idle workers in the cluster. Launch an idle worker so that at scan time, the agent passes instructions to an already-running idle Scan Launcher and avoids the time-consuming task of starting the pod from scratch. This helps your Soda Cloud test scans run faster. If you wish, you can configure multiple idle scan launchers waiting for instructions. 
+```shell
+helm install soda-agent soda-agent/soda-agent \
+    --set soda.agent.target=azure-aks-virtualnodes \ 
+    --set soda.agent.name=myuniqueagent \
+    # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
+    --set soda.cloud.endpoint=https://cloud.soda.io \
+    --set soda.apikey.id=*** \
+    --set soda.apikey.secret=**** \
+    --set soda.scanlauncher.idle.enabled=true \
+    --set soda.scanlauncher.idle.replicas=1 \
+    --namespace soda-agent
+```
+The command-line produces output like the following message:
+```shell
+NAME: soda-agent
+LAST DEPLOYED: Mon Nov 21 16:29:38 2022
+NAMESPACE: soda-agent
+STATUS: deployed
+REVISION: 1
+```
+5. (Optional) Validate the Soda Agent deployment by running the following command:
+```shell
+kubectl get pods -n soda-agent
+```
+```shell
+NAME                                     READY   STATUS    RESTARTS   AGE
+soda-agent-orchestrator-ffd74c76-5g7tl   1/1     Running   0          32s
+```
+6. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+Be aware that this may take several minutes to appear in your list of Soda Agents. 
+![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
+
+<br /> 
+
+#### Deploy using a values YAML file
+
+1. (Optional) You have familiarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
+2. Use Helm to add the Soda Agent Helm chart repository.
+```shell
+helm repo add soda-agent https://helm.soda.io/soda-agent/
+```
+3. Using a code editor, create a new YAML file called `values.yml`.
+4. To that file, copy+paste the content below, replacing the following values:
 * `id` and `secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account.
 * Replace the value of `name` with a custom name for your agent, if you wish.
 * Specify the value for `endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
@@ -889,32 +902,27 @@ soda:
           # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
           endpoint: "https://cloud.soda.io"
 ```
-4. Save the file. Then, create a namespace for the agent.
+5. Save the file. Then, create a namespace for the agent.
 ```shell
 kubectl create ns soda-agent
 ```
 ```shell
 namespace/soda-agent created
 ```
-5. In the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
+6. In the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
 ```shell
 helm install soda-agent soda-agent/soda-agent \
   --values values.yml \
   --namespace soda-agent
 ```
-6. (Optional) Validate the Soda Agent deployment by running the following command:
+7. (Optional) Validate the Soda Agent deployment by running the following command:
 ```shell
 kubectl describe pods -n soda-agent
 ```
-7. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
+8. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
-8. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. 
 
-
-## (Optional) Create a practice data source
-
-{% include agent-practice-datasource.md %}
-
+<br /> 
 
 ## About the `helm install` command
 
@@ -970,24 +978,21 @@ These deployment instructions offer guidance for setting up a Google Kubernetes 
 [Deployment overview](#deployment-overview)<br />
 [Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
-[Create a Kubernetes cluster](#create-a-kubernetes-cluster)<br />
 [Deploy a Soda Agent](#deploy-a-soda-agent)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only](#deploy-using-cli-only)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file)<br />
-[(Optional) Create a practice data source](#optional-create-a-practice-data-source)<br />
 [About the `helm install` command](#about-the-helm-install-command)<br />
 [Decommission the Soda Agent and cluster](#decommission-the-soda-agent-and-cluster)<br />
 [Troubleshoot deployment](#troubleshoot-deployment)<br />
-[Go further](#go-further)<br />
 <br />
 
 
-## Deployment overview
+### Deployment overview
 
 {% include agent-deploy-overview.md %}
 
 
-## Compatibility
+### Compatibility
 
 Soda supports Kubernetes cluster version 1.21 or greater.
 
@@ -995,9 +1000,8 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 {% include compatible-cloud-datasources.md %}
 
-## Prerequisites
+### Prerequisites
 
-* (Optional) You have familiarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
 * You have a Google Cloud Platform (GCP) account and the necessary permissions to enable you to create a Google Kubernetes Engine (GKE) cluster in Autopilot mode in your region.
 * You have installed the <a href="https://cloud.google.com/sdk/docs/install" target="_blank"> gcloud CLI tool</a>. Use the command `glcoud version` to verify the version of an existing install. 
   * If you have already installed the gcloud CLI, use the following commands to login and verify your configuration settings, respectively: `gcloud auth login` `gcloud config list`
@@ -1006,7 +1010,7 @@ You can deploy a Soda Agent to connect with the following data sources:
 * You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. With Docker running, use the command `kubectl version --output=yaml` to check the version of an existing install.
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
 
-
+<!--
 ## Create a GKE Autopilot cluster
 
 To deploy a Soda Agent in a Kubernetes cluster, you must first create a network and a cluster. 
@@ -1106,8 +1110,9 @@ Output:
 CURRENT   NAME                             CLUSTER                          AUTHINFO                        NAMESPACE
 *         gke_soda-agent-gke_us-west1...   gke_soda-agent-gke_us-west1...   gke_soda-agent-gke_us-west1***  soda-agent
 ```
+-->
 
-## Deploy a Soda Agent
+### Deploy a Soda Agent
 
 The following table outlines the two ways you can install the Helm chart to deploy a Soda Agent in your cluster.
 
@@ -1117,13 +1122,14 @@ The following table outlines the two ways you can install the Helm chart to depl
 | [Use a values YAML file](#deploy-using-a-values-yaml-file) | Install the Helm chart via CLI by providing values in a values YAML file. | Use this as a way of deploying an agent on a cluster while keeping sensitive values secure. <br /> - provide sensitive API key values in this local file <br /> - store data source login credentials as environment variables in this local file or in an external secrets manager; Soda needs access to the credentials to be able to connect to your data source to run scans of your data. See: [Manage sensitive values]({% link soda-agent/secrets.md %}).|
 
 
-### Deploy using CLI only
+#### Deploy using CLI only
 
-1. Add the Soda Agent Helm chart repository.
+1. (Optional) You have familiarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
+2. Add the Soda Agent Helm chart repository.
 ```shell
 helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```
-2. Use the following command to install the Helm chart to deploy a Soda Agent in your custer. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
+3. Use the following command to install the Helm chart to deploy a Soda Agent in your custer. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
 * Replace the values of `soda.apikey.id` and `soda-apikey.secret` with the values you copy+pasted from the New Soda Agent dialog box in your Soda Cloud account.
 * Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
 * Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
@@ -1147,11 +1153,11 @@ NAMESPACE: soda-agent
 STATUS: deployed
 REVISION: 1
 ```
-3. (Optional) Validate the Soda Agent deployment by running the following command:
+4. (Optional) Validate the Soda Agent deployment by running the following command:
 ```shell
 kubectl describe pods
 ```
-4. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
+5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 Name:             soda-agent-orchestrator-66-snip
 Namespace:        soda-agent
@@ -1168,13 +1174,14 @@ Status:           Running
 ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="600px" width="600px"}
-6. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
 
+<br />
 
-### Deploy using a values YAML file
+#### Deploy using a values YAML file
 
-1. Using a code editor, create a new YAML file called `values.yml`.
-2. In that file, copy+paste the content below, replacing the following values:
+1. (Optional) You have familiarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
+2. Using a code editor, create a new YAML file called `values.yml`.
+3. In that file, copy+paste the content below, replacing the following values:
 * `id` and `secret` with the values you copy+pasted from the **New Soda Agent** dialog box in your Soda Cloud account. 
 * Replace the value of `name` with a custom name for your agent, if you wish.
 * Specify the value for `endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
@@ -1194,17 +1201,17 @@ soda:
           # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
           endpoint: "https://cloud.soda.io"
 ```
-3. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
+4. Save the file. Then, in the same directory in which the `values.yml` file exists, use the following command to install the Soda Agent helm chart.
 ```shell
 helm install soda-agent soda-agent/soda-agent \
   --values values.yml \
   --namespace soda-agent
 ```
-4. (Optional) Validate the Soda Agent deployment by running the following command:
+5. (Optional) Validate the Soda Agent deployment by running the following command:
 ```shell
 kubectl describe pods
 ```
-5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+6. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step four to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 Name:             soda-agent-orchestrator-66-snip
@@ -1222,12 +1229,8 @@ Status:           Running
 ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
-6. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
- 
 
-## (Optional) Create a practice data source
-
-{% include agent-practice-datasource.md %}
+<br /> 
 
 ## About the `helm install` command
 
@@ -1253,11 +1256,144 @@ Refer to [Helpful kubectl commands]({% link soda-agent/helpful-commands.md %}) f
 
 {% include agent-troubleshoot.md %}
 
-
   </div>
 
   </div>
 </div>
+
+
+## Add a new data source
+
+In your Soda Cloud account, navigate to **your avatar** > **Scans & Data**. Click **New Data Source**, then follow the guided steps to create a new data source. Refer to the sections below for insight into the values to enter in the fields and editing panels in the guided steps. 
+
+#### 1. Attributes
+
+| Field or Label | Guidance |
+| -----------------------   | ---------- |
+| Data Source Label | Provide a unique identifier for the [data source]({% link soda/glossary.md %}#data-source). Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
+| Default Scan Definition Label | Provide a name for the default scan definition. A collection of [checks YAML]({% link soda/glossary.md %}#checks-yaml) files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source.  |
+| Default Scan Definition Agent | Select the name of a Soda Agent that you have previously set up in your secure environment and connected to a specific data source. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
+| Schedule Definition | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
+| Starting At | Select the time of day to run the scan. The default value is midnight. |
+| Time Zone | Select a timezone. The default value is UTC. |
+| Cron Expression | (Optional) Write your own <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">cron expression</a> to define the schedule Soda Cloud uses to run scans. |
+
+<br />
+
+#### 2. Connect the Data Source
+
+In the editing panel, provide the connection configurations Soda Cloud needs to be able to access the data in the data source. Connection configurations are data source-specific and include values for things such as a database's host and access credentials. 
+
+To more securely provide sensitive values such as usernames and passwords, use environment variables in a `values.yml` file when you deploy the Soda Agent. See [Use environment variables for data source connection credentials]({% link soda-agent/deploy.md %}#use-environment-variables-for-data-source-connection-credentials) for details.
+
+Access the data source-specific connection configurations listed below to copy+paste the connection syntax into the editing panel, then adjust the values to correspond with your data source's details. Access connection configuration details in [Data source reference]({% link soda/connect-athena.md %}) section of Soda documentation.
+ 
+<br />
+
+#### 3. Discover Datasets
+
+During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. It captures basic information about each dataset, including a dataset names and the columns each contains.
+
+In the editing panel, specify the datasets that Soda Cloud must include or exclude from this basic discovery activity. The default syntax in the editing panel instructs Soda to collect basic dataset information from all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character. See [Display profile information in Soda Cloud]({% link soda-cl/profile.md %}#limitations-and-known-issues) for more detail on profiling syntax.
+
+*Known issue:* SodaCL does not support using [variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl) in column profiling and dataset discovery configurations. <!--SAS-1642-->
+
+{% include code-header.html %}
+```yaml
+discover datasets:
+  datasets:
+    - include %
+    - exclude test_%
+```
+
+<br />
+
+#### 4. Profile datasets
+
+To gather more detailed profile information about datasets in your data source, you can configure Soda Cloud to profile the columns in datasets. 
+
+Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
+
+In the editing panel, provide details that Soda Cloud uses to determine which datasets to include or exclude when it profiles the columns in a dataset. The default syntax in the editing panel instructs Soda to profile every column of every dataset in this data source, and, superfluously, all datasets with names that begin with `prod`.  The `%` is a wildcard character. See [Display profile information in Soda Cloud]({% link soda-cl/profile.md %}#limitations-and-known-issues) for more detail on profiling syntax.
+
+Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations]({% link soda-cl/profile.md %}#compute-consumption-and-cost-considerations) for more detail.
+{% include code-header.html %}
+```yaml
+profile columns:
+  columns:
+    - "%.%"  # Includes all your datasets
+    - prod%  # Includes all datasets that begin with 'prod'
+```
+
+<br />
+
+#### 5. Check Datasets
+
+When Soda Cloud automatically discovers the datasets in a data source, it prepares automated monitoring checks for each dataset. These checks detect anomalies and monitor schema evolution, corresponding to the SodaCL [anomaly score]({% link soda-cl/anomaly-score.md %}) and [schema]({% link soda-cl/schema.md %}) checks, respectively.
+
+In the editing panel, specify the datasets that Soda Cloud must include or exclude when preparing automated monitoring checks. The default syntax in the editing panel indicates that Soda will add automated monitoring to all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character.
+{% include code-header.html %}
+```yaml
+automated monitoring:
+  datasets:
+    - include %
+    - exclude test_%
+```
+
+#### 6. Assign Owner
+
+| Field or Label | Guidance | 
+|----------------|----------|
+| Data Source Owner | The Data Source Owner maintains the connection details and settings for this data source and its Default Scan Schedule. |
+| Default Dataset Owner | The Datasets Owner is the user who, by default, becomes the owner of each dataset the Default Scan discovers. Refer to [Roles and Rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) to learn how to adjust the Dataset Owner of individual datasets.|
+
+
+### Use a file reference for a Big Query data source connection
+
+If you already store information about your data source in a JSON file in a secure location, you can configure your BigQuery data source connection details in Soda Cloud to refer to the JSON file for service account information. To do so, you must add two elements:
+* `volumes` and `volumeMounts` parameters in the `values.yml` file that your Soda Agent helm chart uses
+* the `account_info_json_path` in your data source connection configuration 
+
+You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deployment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.
+{% include code-header.html %}
+```yaml
+soda:
+  scanlauncher:
+    volumeMounts:
+      - name: gcloud-credentials
+        mountPath: /opt/soda/etc
+    volumes:
+      - name: gcloud-credentials
+        secret:
+          secretName: gcloud-credentials
+          items:
+            - key: serviceaccount.json
+              path: serviceaccount.json
+```
+
+Use the following command to add the service account information to a Kubernetes secret that the Soda Agent consumes according to the configuration above.
+```shell
+kubectl create secret -n <soda-agent-namespace> gcloud-credentials --from-file=serviceaccount.json=<local path to the serviceccount.json>
+```
+
+After you make both of these changes, you must redeploy the Soda Agent. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.   
+
+Adjust the data source connection configuration to include the `account_info_json_path` configuration, as per the following example.
+{% include code-header.html %} 
+```yaml
+my_datasource_name:
+  type: bigquery
+  connection:
+    account_info_json_path: /opt/soda/etc/serviceaccount.json
+    auth_scopes:
+    - https://www.googleapis.com/auth/bigquery
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/drive
+    project_id: ***
+    dataset: sodacore
+```
+
+
 
 ## Next
 

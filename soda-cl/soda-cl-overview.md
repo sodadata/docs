@@ -12,7 +12,14 @@ redirect_from:
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Soda Checks Language: a human-readable, domain-specific language for data reliability. Add more.
+**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with Soda tools, you use SodaCL to write checks for data quality, then run a scan of the data in your data source to execute those checks.
+
+After installing Soda, you connect it to your data source (Snowflake, BigQuery, etc.) by defining connection details such as host, username, and password, in a **configuration YAML** file (except SparkDF, which is [special]({% link soda/connect-spark.md %})). Then, you define your Soda checks for data quality in a **checks YAML** file. 
+
+A **Soda Check** is a test that Soda Library performs when it scans a dataset in your data source. When you use Soda Library to run a scan on data in your data source, you reference both the configuration and checks YAML files in the scan command.
+
+A **Soda scan** executes the checks you defined in the checks YAML file and returns a result for each check: pass, fail, or error. (Optionally, you can configure a check to warn instead of fail by setting an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations).)
+
 {% include code-header.html %}
 ```yaml
 # Checks for basic validations
@@ -25,9 +32,7 @@ checks for dim_customer:
       valid min: 1
       valid max: 6
   - duplicate_count(phone) = 0
-```
-{% include code-header.html %}
-```yaml
+
 checks for dim_product:
   - avg(safety_stock_level) > 50
 # Checks for schema changes
@@ -42,18 +47,15 @@ checks for dim_product:
         when forbidden column present: [pii*]
         when wrong column index:
           model_name: 22
-```
-{% include code-header.html %}
-```yaml
+
 # Check for freshness 
   - freshness (start_date) < 1d
-```
-{% include code-header.html %}
-```yaml
+
 # Check for referential integrity
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
 ```
+
 
 ## Define SodaCL checks
 
@@ -78,7 +80,6 @@ Use SodaCL checks to define the state of "good quality" for data in this data so
 * You have created a <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">Soda Cloud account</a>.
 * You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) and connected it to your Soda Cloud account.
 * You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [added a new datasource]({% link soda-cloud/add-datasource.md %}) via the Soda Agent in your Soda Cloud account.
-* (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda/integrate-slack.md %}) or another [third-party service provider]({% link soda/integrate-webhooks.md %}) to enable Soda Cloud to send alert notifications to your team. If you do not integrate with another service-provider, Soda Cloud can send notifications via email.
 
 ## Create a new agreement
 
@@ -101,11 +102,12 @@ You can only create an agreement that uses a data source that has been added to 
 
 Use [SodaCL]({% link soda-cl/soda-cl-overview.md %}) to define the checks that Soda Cloud executes on a regular schedule to uphold the tenets of this agreement. If any of these checks fail during a regularly-scheduled scan, Soda Cloud notifies the stakeholders you specify in the Notifications section.
 
-* For help writing your first checks, consider following the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}), including the [Tips and best practices]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) section.
-* Avoid applying the same [customized check names]({% link soda-cl/optional-config.md %}#customize-check-names) in multiple agreements. Soda Cloud associates check results with agreements according to name so if you reuse custom names, Soda Cloud may become confused about which agreement to which to link check results.
-* Avoid using an [anomaly score check]({% link soda-cl/anomaly-score.md %}) to test the agreements workflow. The ML algorithm that anomaly score checks use requires a minimum of four, regular-frequency scans before it has collected enough historic measurements against which to gauge an anomaly. Consider using checks with [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metrics, instead.
-* Note that any checks you test in the context of this step in the agreements workflow _do not_ appear as "real" checks in the **Checks** dashboard. 
-* Do not use variables to define dynamic values in your checks as you cannot provide scan-time values for those variables with scheduled scans. See [Configuration details and limitations]({% link soda-cl/filters.md %}#configuration-details-and-limitations) for details.
+For help writing your first checks:
+* browse the library of **SodaCL snippets** that insert correctly-formatted syntax for the most commonly-used checks for basic data quality.
+* use **Ask SodaGPT**, a generative AI assistant that turns natural-language requests into production-ready SodaCL checks. [Read more]({% link soda-cloud/sodagpt.md %}).
+* consider following the **[Quick start for SodaCL]({% link soda/quick-start-sodacl.md %})**, including the [Tips and best practices]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) section.
+
+![sodacl-start](/assets/images/sodacl-start.png){:height="700px" width="700px"}
 
 <br />
 
@@ -121,9 +123,9 @@ Soda Cloud sends emails to request review and approval from all stakeholders, an
 
 By default, Soda Cloud includes an out-of-the-box email notification to all the agreement's stakeholders when a check in your agreement fails. You can remove or adjust this notification, or use the search bar to add more. Access [Scan output]({% link soda-cloud/scan-output.md %}#) to learn more about pass, warn, and fail check results.
 
-If you have integrated your Soda Cloud account with [Slack]({% link soda/integrate-slack.md %}) or another third-party service provider via a [webhook]({% link soda/integrate-webhooks.md %}), use the search field to type a channel name to add the channel as a notification recipient. Alternatively, use the field to enter names of individual teammates with whom you collaborate in Soda Cloud.
-
 Note that Soda Cloud does not send a notification when a *scan* fails because of an error, only when *checks* pass, warn, or fail. Refer to [Scan output]({% link soda-cloud/scan-output.md %}#scan-failed) for details.
+
+(Optional) If you have integrated your Soda Cloud account with [Slack]({% link soda/integrate-slack.md %}) or another third-party service provider via a [webhook]({% link soda/integrate-webhooks.md %}), use the search field to type a channel name to add the channel as a notification recipient. Alternatively, use the field to enter names of individual teammates with whom you collaborate in Soda Cloud.
 
 <br />
 
@@ -144,12 +146,13 @@ To review existing scan definitions, navigate to **your avatar** > **Scans & Dat
 {% include ad-hoc-scan.md %}
 
 
-## Edit an agreement
+## Tip and best practices
 
-1. Navigate to the **Agreements** dashboard, then click the stacked dots at the right of the agreement you wish to edit and select **Edit Agreement**.
-2. Navigate the tabs to locate the details you wish to change.  
-3. When you **Save**, Soda Cloud sends new approval request emails to all the agreement's stakeholders.  The next scheduled scan applies your changes, regardless of stakeholder approval status.
-
+Further, take into account the following tips and best practices when writing SodaCL checks in an agreement.
+* Avoid applying the same [customized check names]({% link soda-cl/optional-config.md %}#customize-check-names) in multiple agreements. Soda Cloud associates check results with agreements according to name so if you reuse custom names, Soda Cloud may become confused about which agreement to which to link check results.
+* Avoid using an [anomaly score check]({% link soda-cl/anomaly-score.md %}) to test the agreements workflow. The ML algorithm that anomaly score checks use requires a minimum of four, regular-frequency scans before it has collected enough historic measurements against which to gauge an anomaly. Consider using checks with [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metrics, instead.
+* Note that any checks you test in the context of this step in the agreements workflow _do not_ appear as "real" checks in the **Checks** dashboard. 
+* Do not use variables to define dynamic values in your checks as you cannot provide scan-time values for those variables with scheduled scans. See [Configuration details and limitations]({% link soda-cl/filters.md %}#configuration-details-and-limitations) for details.
 
 
   </div>
@@ -290,6 +293,8 @@ scan.get_all_checks_text()
 * You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import Soda Library in Python so you can utilize the `Scan()` object, [install a Soda Library package]({% link soda-library/install.md %}), then use `from soda.scan import Scan`.
 * Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files. 
 * Because Soda Library pushes scan results to Soda Cloud, you may not want to change the scan definition name with each scan. Soda Cloud uses the scan definition name to correlate subsequent scan results, thus retaining an historical record of the measurements over time. <br /> Sometimes, changing the name is useful, like when you wish to [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments). Be aware, however, that if you change the scan definition name with each scan for the same environment, Soda Cloud recognizes each set of scan results as independent from previous scan results, thereby making it appear as though it records a new, separate check result with each scan and archives or "disappears" previous results. See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
+
+carry on
 
   </div>
   </div>

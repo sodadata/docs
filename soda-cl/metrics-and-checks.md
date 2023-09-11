@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Metrics and checks
+title: SodaCL metrics and checks
 description: SodaCL uses metrics in checks for data quality in one or more datasets.
 parent: Soda CL
 redirect_from:
 - /soda-cl/metrics-thresholds.html 
 ---
 
-# Metrics and checks 
+# SodaCL metrics and checks 
 <!--Linked to UI, access Shlink; though actually linked in CLI error message-->
 *Last modified on {% last_modified_at %}*
 

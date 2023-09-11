@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Manage sensitive values for a Soda Agent
-description: Learn how to manage sensitive values using Kubernetes secrets and environment variables.
+title: Soda Agent extras
+description: Learn how to manage sensitive values using Kubernetes secrets and environment variables, and how to connect via AWS PrivateLink.
 parent: Soda Agent
 ---
 
-# Manage sensitive values for a Soda Agent
+# Soda Agent extras
 *Last modified on {% last_modified_at %}*
 
 When you deploy a Soda Agent to a Kubernetes cluster in your cloud service provider environment, you need to provide a few essential values that the agent needs to connect to your Soda Cloud account (API keys), and connect to your data sources (data source login credentials) so that Soda can run data quality scans on the data.
@@ -16,6 +16,7 @@ As these values are sensitive, you may wish to employ the following strategies t
 [Use a values file to store private key authentication values](#use-a-values-file-to-store-private-key-authentication-values)<br />
 [Use environment variables to store data source connection credentials](#use-environment-variables-to-store-data-source-connection-credentials)<br />
 [Integrate with a secrets manager](#integrate-with-a-secrets-manager)<br />
+[Go further](#go-further)<br />
 <br />
 
 
@@ -252,26 +253,7 @@ soda-agent-secrets   Opaque   1      24h
         kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent
    ```
 
-
-
-# Connect a Soda Agent to Soda Cloud via AWS PrivateLink
-*Last modified on {% last_modified_at %}*
-
-If you use AWS services for your infrastructure and you have deployed or will deploy a Soda Agent in an EKS cluster, you can use an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. <br />
-
-
-## Create an Endpoint for a PrivateLink
-
-1. Log in to your AWS console and navigate to your **VPC dashboard**.  
-2. Follow the AWS documentation to <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/create-endpoint-service.html" target="_blank">Connect to an endpoint service as the service customer</a>. <br />For security reasons, Soda does not publish its **Service name**. Email <a href="mailto:support@soda.io">support@soda.io</a> with your **AWS account ID** to request the PrivateLink service name. Refer to <a href="https://docs.aws.amazon.com/signin/latest/userguide/console_account-alias.html" target="_blank"> AWS documentation</a> for instructions on how to obtain your account ID.
-3. After creating the endpoint, return to the **VPC dashboard**. When the status of the endpoint becomes **Available**, the PrivateLink is ready to use. Be aware that this make take more than 10 minutes.
-4. Deploy a Soda Agent to your AWS EKS cluster, or, if you have already deployed one, restart your Soda Agent to begin sending data to Soda Cloud via the PrivateLink.
-```shell
-kubectl -n soda-agent rollout restart deploy
-```
-5. After you have started the agent and validated that it is running, log into your Soda Cloud account, then navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
-![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
-
+<br />
 
 ## Go further
 

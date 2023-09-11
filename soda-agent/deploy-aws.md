@@ -20,6 +20,7 @@ This setup enables Soda Cloud users to securely connect to data sources (Snowfla
 [Deploy a Soda Agent](#deploy-a-soda-agent)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only](#deploy-using-cli-only)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Connect via AWS PrivateLink](#connect-a-soda-agent-to-soda-cloud-via-aws-privatelink)<br />
 [(Optional) Create a practice data source](#optional-create-a-practice-data-source)<br />
 [About the `helm install` command](#about-the-helm-install-command)<br />
 [Decommission the Soda Agent and the EKS cluster](#decommission-the-soda-agent-and-the-eks-cluster)<br />
@@ -211,6 +212,7 @@ Containers:
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 6. Next: [Add a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud using the Soda Agent you just deployed. If you wish, you can [create a practice data source](#optional-create-a-practice-data-source) so you can try adding a data source in Soda Cloud using the Soda Agent you just deployed.
+
 
 
 ## (Optional) Create a practice data source

@@ -48,9 +48,7 @@
   subcategories:
   - subtitle: Write SodaCL checks
     page: soda-cl/soda-cl-overview.md
-  - subtitle: What are checks?
-    page: soda-cl/metrics-and-checks.md
-  - subtitle: Where do you start?
+  - subtitle: SodaCL tutorial
     page: soda/quick-start-sodacl.md
   - subtitle: Write checks with SodaGPT
     page: soda-cloud/sodagpt.md

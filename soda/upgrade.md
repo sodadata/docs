@@ -8,8 +8,15 @@ parent: Get started
 # Upgrade, redeploy, or uninstall Soda
 *Last modified on {% last_modified_at %}*
 
+[Redeploy a Soda Agent](#redeploy-a-soda-agent)<br />
+[Upgrade a Soda Agent](#upgrade-a-soda-agent)<br />
+[Upgrade Soda Library](#upgrade-soda-library)<br />
+[Uninstall Soda Library](#uninstall-soda-library)<br />
+[Migrate from Soda Core](#migrate-from-soda-core)<br />
+<br />
 
-# Redeploy a Soda Agent
+
+## Redeploy a Soda Agent
 *Last modified on {% last_modified_at %}*
 
 The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster. [Read more]({% link soda-agent/basics.md %}).
@@ -55,7 +62,7 @@ helm install soda-agent soda-agent/soda-agent \
 kubectl describe pods
 ```
 
-# Upgrade a Soda Agent 
+## Upgrade a Soda Agent 
 *Last modified on {% last_modified_at %}*
 
 The **Soda Agent** is a Helm chart that you deploy on a Kubernetes cluster and connect to your Soda Cloud account using API keys.
@@ -117,6 +124,13 @@ helm upgrade soda-agent soda-agent/soda-agent \
    --values values-local.yml --namespace soda-agent
 ```
 
+## Upgrade Soda Library
+
+To upgrade your existing Soda Library tool to the latest version, use the following command, replacing `redshift` with the install package that matches the type of data source you are using.
+```shell
+pip install -i https://pypi.cloud.soda.io soda-redshift -U
+```
+
 
 ## Uninstall Soda Library
 
@@ -133,12 +147,6 @@ pip uninstall soda-postgres
 pip freeze | grep soda | xargs pip uninstall -y
 ```
 
-## Upgrade Soda Library
-
-To upgrade your existing Soda Library tool to the latest version, use the following command, replacing `redshift` with the install package that matches the type of data source you are using.
-```shell
-pip install -i https://pypi.cloud.soda.io soda-redshift -U
-```
 
 ## Migrate from Soda Core
 

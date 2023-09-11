@@ -11,29 +11,47 @@ redirect_from:
 # Define programmatic scans using Python
 *Last modified on {% last_modified_at %}*
 
-To automate the search for bad-quality data, you can use **Soda library** to programmatically set up and execute scans. Alternatively, you can install and use the Soda Library CLI to run scans; see [Install Soda Library]({% link soda-library/install.md %}). Based on a set of conditions or a specific event schedule, you can instruct Soda Library to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
+To automate the search for bad-quality data, you can use **Soda library** to programmatically set up and execute scans. Alternatively, you can install and use the Soda Library CLI to run scans; see [Install Soda Library]({% link soda-library/install.md %}). 
 
 As a step in the **Get started roadmap**, this guide offers instructions to set up, install, and configure Soda in a [programmatic deployment model]({% link soda/setup-guide.md %}#programmatic).
 
 #### Get started roadmap
 
-1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
-2. **Set up Soda: programmatic** 📍 You are here!
-3. Write SodaCL checks
-4. Run scans, review results
-5. Organize, alert, investigate
+1. <s><font color="#777777"> Choose a flavor of Soda </font></s> 
+2. **Set up Soda: programmatic** 📍 You are here! <br />
+&nbsp;&nbsp;&nbsp;&nbsp; a. [Check requirements](#requirements)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; b. [Create a Soda Cloud account](#create-a-soda-cloud-account)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; c. [Set up basic programmatic invocation](#set-up-basic-programmatic-invocation)<br />
+3. Write SodaCL checks 
+4. Run scans, review results 
+5. Organize, alert, investigate 
 
-
-
-[Basic programmatic scan](#basic-programmatic-scan)<br />
-[Tips and best practices](#tips-and-best-practices)<br />
-[Scan exit codes](#scan-exit-codes)<br />
-[Configure a failed row sampler](#configure-a-failed-row-sampler)<br />
-[Save failed row samples to an alternate destination](#save-failed-row-samples-to-an-alternate-destination)<br />
-[Go further](#go-further)<br />
 <br />
 
-## Basic programmatic scan
+## Requirements
+
+To use Soda Library, you must have installed the following on your system.
+
+* Python 3.8 or greater
+* Pip 21.0 or greater
+
+## Create a Soda Cloud account
+
+1. In a browser, navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a new Soda account, which is free for a 45-day trial. If you already have a Soda account, log in. 
+2. Navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys. 
+3. Copy+paste the API key values to a temporary, secure place in your local environment.
+
+<details>
+    <summary style="color:#00BC7E">Why do I need a Soda Cloud account?</summary>
+To validate your account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library. <br /><a href="https://docs.soda.io/soda/about.html">Learn more</a><br /><br />
+</details>
+
+## Set up basic programmatic invocation
+
+As in the simple example below, invoke the Python library and provide:
+* your data source connection configuration details, including environment variables, using one of the listed methods; consult [Data source reference]({% link soda/connect-athena.md %}) for data source-specific connection config
+* your Soda Cloud account API key values: use cloud.soda.io for EU region; use cloud.us.soda.io for US region
+
 {% include code-header.html %}
 ```python
 from soda.scan import Scan
@@ -51,6 +69,7 @@ scan.add_configuration_yaml_from_env_var(env_var_name="SODA_ENV")
 # 3) From environment variables using a prefix
 scan.add_configuration_yaml_from_env_vars(prefix="SODA_")
 # 4) Inline in the code
+# For host, use cloud.soda.io for EU region; use cloud.us.soda.io for US region
 scan.add_configuration_yaml_str(
     """
     data_source events:
@@ -61,153 +80,29 @@ scan.add_configuration_yaml_str(
       password: ${SNOWFLAKE_PASSWORD}
       database: events
       schema: public
+
+    soda_cloud:
+      host: cloud.soda.io
+      api_key_id: 2e0ba0cb-your-api-key-7b
+      api_key_secret: 5wd-your-api-key-secret-aGuRg
+      scheme:
 """
 )
-
-# Add variables
-###############
-scan.add_variables({"date": "2022-01-01"})
-
-
-# Add check YAML files
-##################
-scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_one.yml")
-scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_two.yml")
-scan.add_sodacl_yaml_files("./my_scan_dir")
-scan.add_sodacl_yaml_files("./my_scan_dir/sodacl_file_three.yml")
-
-
-# Execute the scan
-##################
-scan.execute()
-
-# Set logs to verbose mode, equivalent to CLI -V option
-##################
-scan.set_verbose(True)
-
-# Set scan definition name, equivalent to CLI -s option;
-# see Tips and best practices below
-##################
-scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
-
-
-# Inspect the scan result
-#########################
-scan.get_scan_results()
-
-# Inspect the scan logs
-#######################
-scan.get_logs_text()
-
-# Typical log inspection
-##################
-scan.assert_no_error_logs()
-scan.assert_no_checks_fail()
-
-# Advanced methods to inspect scan execution logs 
-#################################################
-scan.has_error_logs()
-scan.get_error_logs_text()
-
-# Advanced methods to review check results details
-########################################
-scan.get_checks_fail()
-scan.has_check_fails()
-scan.get_checks_fail_text()
-scan.assert_no_checks_warn_or_fail()
-scan.get_checks_warn_or_fail()
-scan.has_checks_warn_or_fail()
-scan.get_checks_warn_or_fail_text()
-scan.get_all_checks_text()
 ```
 
-## Tips and best practices
+See also: [Complete Soda scan snippet]({% link soda-library/run-a-scan.md %}#basic-programming-scan)
 
-* You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import Soda Library in Python so you can utilize the `Scan()` object, [install a Soda Library package]({% link soda-library/install.md %}), then use `from soda.scan import Scan`.
-* Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files. 
-* Because Soda Library pushes scan results to Soda Cloud, you may not want to change the scan definition name with each scan. Soda Cloud uses the scan definition name to correlate subsequent scan results, thus retaining an historical record of the measurements over time. <br /> Sometimes, changing the name is useful, like when you wish to [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments). Be aware, however, that if you change the scan definition name with each scan for the same environment, Soda Cloud recognizes each set of scan results as independent from previous scan results, thereby making it appear as though it records a new, separate check result with each scan and archives or "disappears" previous results. See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
+## Next
 
-## Scan exit codes
-
-Soda Library's scan output includes an exit code which indicates the outcome of the scan.
-
-| 0 | all checks passed, all good from both runtime and Soda perspective |
-| 1 | Soda issues a warning on a check(s) |
-| 2 | Soda issues a failure on a check(s) |
-| 3 | Soda encountered a runtime issue |
-
-To obtain the exit code, you can add the following to your programmatic scan.
-{% include code-header.html %}
-```python
-exit_code = scan.execute()
-print(exit_code)
-```
+1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
+2. <s><font color="#777777">Set up Soda: programmatic</font></s> 
+3. **[Write SodaCL checks]({% link soda-cl/soda-cl-overview.md %})**
+4. Run scans, review results
+5. Organize, alert, investigate
 
 
-## Configure a failed row sampler
-
-Optionally, you can add a custom sampler to collect samples of rows with a `fail` check result. Refer to the following example that prints the failed row samples in the CLI.
-{% include code-header.html %}
-```python
-from soda.scan import Scan
-from soda.sampler.sampler import Sampler
-from soda.sampler.sample_context import SampleContext
-
-
-# Create a custom sampler by extending the Sampler class
-class CustomSampler(Sampler):
-    def store_sample(self, sample_context: SampleContext):
-        # Retrieve the rows from the sample for a check
-        rows = sample_context.sample.get_rows()
-        # Check SampleContext for more details that you can extract
-        # This example simply prints the failed row samples
-        print(sample_context.query)
-        print(sample_context.sample.get_schema())
-        print(rows)
-
-
-if __name__ == '__main__':
-    # Create Scan object
-    s = Scan()
-    # Configure an instance of custom sampler
-    s.sampler = CustomSampler()
-
-    s.set_scan_definition_name("test_scan")
-    s.set_data_source_name("aa_vk")
-    s.add_configuration_yaml_str(f"""
-    data_source test:
-      type: postgres
-      schema: public
-      connection:
-        host: localhost
-        port: 5433
-        username: ***
-        password: ***
-        database: postgres
-    """)
-
-    s.add_sodacl_yaml_str(f"""
-    checks for dim_account:
-        - invalid_percent(account_type) = 0:
-            valid format: email
-
-    """)
-    s.execute()
-    print(s.get_logs_text())
-```
-
-
-### Save failed row samples to an alternate destination
-
-If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">docs.python.org</a> for details.
-
-
-## Go further
-* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-* Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
-* Learn more about configuring [orchestrated scans]({% link soda-library/orchestrate-scans.md %}).
-
-
+Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+<br />
 ---
 
 Was this documentation helpful?
