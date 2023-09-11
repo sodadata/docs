@@ -8,7 +8,7 @@
   "servers": [
     { "url": "https://reporting.cloud.soda.io/v1/", "description": "Cloud EU" },
     {
-      "url": "https://reporting.cloud.soda.us.io/v1/",
+      "url": "https://reporting.cloud.us.soda.io/v1/",
       "description": "Cloud US"
     }
   ],
