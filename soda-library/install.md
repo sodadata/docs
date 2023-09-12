@@ -22,7 +22,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
 2. **Set up Soda: self-operated** 📍 You are here! <br />
 &nbsp;&nbsp;&nbsp;&nbsp; a. [Check requirements](#requirements)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; b. [Install Soda Library](#install-soda-library)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; b. [Install Soda Library](#install-soda-library-1)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; c. [Configure Soda](#configure-soda)<br />
 3. Write SodaCL checks
 4. Run scans, review results

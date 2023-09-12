@@ -9,13 +9,13 @@ redirect_from: /soda-core/community.html
 # Choose a flavor of Soda
 *Last modified on {% last_modified_at %}*
 
-As a step in the **Get started roadmap**, this guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. After choosing a flavor of Soda (type of deployment model), access the corresponding [Set up Soda](#next) below.
+As a step in the **Get started roadmap**, this guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. After choosing a flavor of Soda (type of deployment model), access the corresponding [Set up Soda](#next) instructions below.
 <br /><br />
 
 #### Get started roadmap
 
 1. **Choose a flavor of Soda** 📍 You are here!
-2. Set up Soda
+2. Set up Soda: install, deploy, or invoke
 3. Write SodaCL checks
 4. Run scans, review results
 5. Organize, alert, investigate
@@ -27,12 +27,12 @@ As a step in the **Get started roadmap**, this guide helps you decide how to set
 
 This guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. After choosing your flavor of Soda (type of deployment model), access the corresponding [Set up Soda](#next-set-up-soda) below.
 
-You can set up Soda in one of three flavors: 
+You can set up Soda in one of three (soon to be four!) flavors: 
 
 | Flavor | Description | Soda Library | Soda Agent | Soda Cloud |
 | ----- | ----------- | :----------: | :--------: | :--------: |
 | [Self-operated](#self-operated) | A simple setup in which you install Soda Library locally and connect it to Soda Cloud via API keys. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
-| [Self-hosted agent](#self-hosted-agent) | A setup in which you deploy a Soda Agent in a Kubernetes cluster in a cloud-services environment and connect it to Soda Cloud via different API keys. |   | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+| [Self-hosted agent](#self-hosted-agent)<br /> | *Recommended* <br />A setup in which you deploy a Soda Agent in a Kubernetes cluster in a cloud-services environment and connect it to Soda Cloud via different API keys. |   | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 | Fully-managed SaaS | **Coming soon!**<br />A setup in which you manage data quality entirely from your Soda Cloud account. |  |  | ![done](/assets/images/done.png){:width="20px"} |
 | [Programmatic](#programmatic-setup) | A setup in which you invoke Soda Library programmatically. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
 
@@ -58,14 +58,14 @@ Use this setup for: <br />
 Requirements:
 * Python 3.8 or greater
 * Pip 21.0 or greater
-* A Soda Cloud account
 * Login credentials for your data source (Snowflake, Athena, MS SQL Server, etc.)
 
 ![with-library](/assets/images/with-library.png){:height="500px" width="500px"}
 
 <br />
 
-#### Self-hosted agent 
+#### Self-hosted agent <br />
+*Recommended*
 
 This setup enables a data or infrastructure engineer to deploy Soda Libary as an agent in a Kubernetes cluster within a cloud-services environment such as Google Cloud Platform, Azure, or AWS. 
 
@@ -80,7 +80,6 @@ Use this setup for:<br />
 
 Requirements:
 * Access to your cloud-services environment, plus the authorization to deploy containerized apps in a new or existing Kubernetes cluster
-* A Soda Cloud account
 * Login credentials for your data source (Snowflake, Athena, MS SQL Server, etc.)
 
 ![with-agent](/assets/images/with-agent.png){:height="60px" width="600px"}
@@ -99,7 +98,6 @@ Use this setup for:<br />
 Requirements:
 * Python 3.8 or greater
 * Pip 21.0 or greater
-* A Soda Cloud account
 * Login credentials for your data source (Snowflake, Athena, MS SQL Server, etc.)
 
 ![programmatic](/assets/images/programmatic.png){:height="500px" width="500px"}

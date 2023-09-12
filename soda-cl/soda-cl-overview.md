@@ -12,14 +12,23 @@ redirect_from:
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with Soda tools, you use SodaCL to write checks for data quality, then run a scan of the data in your data source to execute those checks.
+**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with Soda tools, you use SodaCL to write checks for data quality, then run a scan of the data in your data source to execute those checks. A **Soda Check** is a test that Soda Library performs when it scans a dataset in your data source.  
 
-After installing Soda, you connect it to your data source (Snowflake, BigQuery, etc.) by defining connection details such as host, username, and password, in a **configuration YAML** file (except SparkDF, which is [special]({% link soda/connect-spark.md %})). Then, you define your Soda checks for data quality in a **checks YAML** file. 
+A **Soda scan** executes the checks you write in an agreement, in a checks YAML file, or inline in a programmatic invocation, and returns a result for each check: pass, fail, or error. (Optionally, you can configure a check to warn instead of fail by setting an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations).)
 
-A **Soda Check** is a test that Soda Library performs when it scans a dataset in your data source. When you use Soda Library to run a scan on data in your data source, you reference both the configuration and checks YAML files in the scan command.
+As a step in the **Get started roadmap**, this guide offers instructions to write your first SodaCL checks in the Soda Cloud UI, in a checks YAML file, or within a programmatic invocation of Soda.
 
-A **Soda scan** executes the checks you defined in the checks YAML file and returns a result for each check: pass, fail, or error. (Optionally, you can configure a check to warn instead of fail by setting an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations).)
+#### Get started roadmap
 
+1. <s><font color="#777777"> Choose a flavor of Soda </font></s> 
+2. <s><font color="#777777">Set up Soda: install, deploy, or invoke</font></s> 
+3. **Write SodaCL checks** 📍 You are here! 
+4. Run scans, review results 
+5. Organize, alert, investigate 
+
+<br/>
+
+#### Examples
 {% include code-header.html %}
 ```yaml
 # Checks for basic validations
@@ -63,25 +72,29 @@ checks for dim_department_group:
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <input class="radio" id="three" name="group" type="radio">
+  <input class="radio" id="four" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Soda Cloud</label>
+  <label class="tab" id="one-tab" for="one">Soda Agreement</label>
   <label class="tab" id="two-tab" for="two">Checks YAML</label>
-  <label class="tab" id="three-tab" for="three">Programmatic</label>
+  <label class="tab" id="three-tab" for="three">Check Suggestions</label>
+  <label class="tab" id="four-tab" for="four">Programmatic</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
-In Soda Cloud, you define SodaCL checks within an agreement. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
+In Soda Cloud, you write SodaCL checks in the user interface within a **Soda Agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. <br />
+*Requires Soda Agent*<br />
+*Requires Soda Cloud*
 
-Use SodaCL checks to define the state of "good quality" for data in this data source, then identify and get approval from stakeholders in your organization. Define whom Soda Cloud will notify when a check in this Agreement fails, then set a schedule to regularly execute the Soda Checks to uphold the tenets of the agreement.
+In an agreement, use SodaCL checks to define the state of "good quality" for data in this data source, then identify and get approval from stakeholders in your organization. Define whom Soda Cloud will notify when a check in the agreement fails, then set a schedule to regularly execute the Soda Checks to uphold the tenets of the agreement.
 
-## Prerequisites
+### Prerequisites
 
 * You have created a <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">Soda Cloud account</a>.
 * You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) and connected it to your Soda Cloud account.
-* You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [added a new datasource]({% link soda-cloud/add-datasource.md %}) via the Soda Agent in your Soda Cloud account.
+* You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [added a new datasource]({% link soda-agent/deploy.md %}l#add-a-new-data-source) via the Soda Agent in your Soda Cloud account.
 
-## Create a new agreement
+### Create a new agreement
 
 For a new agreement, you define several details including which data to check, what checks to execute during a scan, and whom to notify when bad data triggers an alert.
 
@@ -94,7 +107,7 @@ You can only create an agreement that uses a data source that has been added to 
 | Field or Label  | Guidance |
 | -----------------  | ----------- |
 | Agreement Label  | Provide a name for your agreement. |
-| Data Source | Select the data source that contains the datasets to which your agreement applies. <br /> If you have no options to select in the dropdown, it is because you have not added a data source via a Soda Agent. You can only create agreements on datasets that are in a data source that has been onboarded into Soda Cloud via a Soda Agent. <br /> See [Create a data source]({% link soda-cloud/add-datasource.md %}).|
+| Data Source | Select the data source that contains the datasets to which your agreement applies. <br /> If you have no options to select in the dropdown, it is because you have not added a data source via a Soda Agent. You can only create agreements on datasets that are in a data source that has been onboarded into Soda Cloud via a Soda Agent. <br /> See [Add a new datasource]({% link soda-agent/deploy.md %}l#add-a-new-data-source).|
 
 <br />
 
@@ -106,6 +119,7 @@ For help writing your first checks:
 * browse the library of **SodaCL snippets** that insert correctly-formatted syntax for the most commonly-used checks for basic data quality.
 * use **Ask SodaGPT**, a generative AI assistant that turns natural-language requests into production-ready SodaCL checks. [Read more]({% link soda-cloud/sodagpt.md %}).
 * consider following the **[Quick start for SodaCL]({% link soda/quick-start-sodacl.md %})**, including the [Tips and best practices]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) section.
+* refer to the [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for exhaustive details on every type of metric and check.
 
 ![sodacl-start](/assets/images/sodacl-start.png){:height="700px" width="700px"}
 
@@ -141,12 +155,12 @@ To review existing scan definitions, navigate to **your avatar** > **Scans & Dat
 
 <br />
 
-## Run an ad hoc scan
+### Run a scan in Soda Cloud
 
 {% include ad-hoc-scan.md %}
 
 
-## Tip and best practices
+### Agreement tips and best practices
 
 Further, take into account the following tips and best practices when writing SodaCL checks in an agreement.
 * Avoid applying the same [customized check names]({% link soda-cl/optional-config.md %}#customize-check-names) in multiple agreements. Soda Cloud associates check results with agreements according to name so if you reuse custom names, Soda Cloud may become confused about which agreement to which to link check results.
@@ -154,19 +168,25 @@ Further, take into account the following tips and best practices when writing So
 * Note that any checks you test in the context of this step in the agreements workflow _do not_ appear as "real" checks in the **Checks** dashboard. 
 * Do not use variables to define dynamic values in your checks as you cannot provide scan-time values for those variables with scheduled scans. See [Configuration details and limitations]({% link soda-cl/filters.md %}#configuration-details-and-limitations) for details.
 
+See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl)
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
-A Soda Check is a test that Soda Library performs when it scans a dataset in your data source. The checks YAML file stores the Soda Checks you write using [SodaCL]({% link soda-cl/soda-cl-overview.md %}). 
+The checks YAML file stores the Soda Checks you write using [SodaCL]({% link soda-cl/soda-cl-overview.md %}). Use this file to manually write your own SodaCL checks. <br /> 
+*Requires Soda Library*<br />
+*Requires Soda Cloud*
 
-1. Copy+paste the following basic check syntax in your file, then adjust the value for `dataset_name` to correspond with the name of one of the datasets in your data source.
+Alternatively, use **Check Suggestions** to profile a dataset and prepare production-ready checks to execute in a scan immediately.
+
+1. Using a code editor, create a new file called `checks.yml`.
+2. Copy+paste the following basic check syntax in your file, then adjust the value for `dataset_name` to correspond with the name of one of the datasets in your data source.
 ```yaml
 checks for dataset_name:
   - row_count > 0
 ```
 2. Save the changes to the `checks.yml` file.
-3. Use the following command to run a scan of the data in your data source. Replace the value for `my_datasource` with the name of the data source you added to your `configuration.yml` file. Read more about [scans]({% link soda-library/run-a-scan.md %}).
+3. To test the check and confirm the syntax is valid and error-free, use the following command to run a scan of the data in your data source. Replace the value for `my_datasource` with the name of the data source you added to your `configuration.yml` file. Read more about [scans]({% link soda-library/run-a-scan.md %}).
 ```shell
 soda scan -d my_datasource -c configuration.yml checks.yml
 ```
@@ -181,26 +201,45 @@ All is good. No failures. No warnings. No errors.
 Sending results to Soda Cloud
 Soda Cloud Trace: 67592***474
 ```
-4. Access your Soda Cloud account in your browser and navigate to **Checks** to review the same scan output that Soda Library printed in the command-line.
-![configure-results](/assets/images/configure-results.png){:height="700px" width="700px"}
-
+4. Add more checks to the `checks.yml` file to test for multiple data quality metrics. Consult the [SodaCL tutoria]({% link soda/quick-start-sodacl.md %}) for advice and the [Use case guides]({% link soda/setup-examples.md %}) for example checks. Refer to the [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for exhaustive details on every type of metric and check.
 
   </div>
   <div class="panel" id="three-panel" markdown="1">
 
-To automate the search for bad-quality data, you can use **Soda library** to programmatically execute scans. Alternatively, you can install and use the Soda Library CLI to run scans; see [Install Soda Library]({% link soda-library/install.md %}).
+**Check suggestions** assists Soda users in auto-generating basic data quality checks using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.<br /> 
+*Requires Soda Library*<br /> 
+*Requires Soda Scientific*<br />
+*Requires Soda Cloud*
 
-Based on a set of conditions or a specific event schedule, you can instruct Soda Library to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
+Instead of writing your own data quality checks from scratch, check suggestions profiles your dataset and prompts you through a series of questions so that it can leverage the built-in Soda metrics and quickly prepare data quality checks tailored to that individual dataset.  
 
-[Basic programmatic scan](#basic-programmatic-scan)<br />
-[Tips and best practices](#tips-and-best-practices)<br />
-[Scan exit codes](#scan-exit-codes)<br />
-[Configure a failed row sampler](#configure-a-failed-row-sampler)<br />
-[Save failed row samples to an alternate destination](#save-failed-row-samples-to-an-alternate-destination)<br />
-[Go further](#go-further)<br />
+### Compatibility
+
+You can use check suggestions with the following data sources:
+
+* [GCP Big Query]({% link soda/connect-bigquery.md %})
+* [PostgreSQL]({% link soda/connect-postgres.md %})
+* [Snowflake]({% link soda/connect-snowflake.md %})
+
+### Prerequisites
+
+* You have installed Python 3.10 or greater.
+* You have installed a [Soda Library package]({% link soda-library/install.md %}#install-soda-library-1) for Big Query, PostgreSQL, or Snowflake in your environment.
+* You have [configured Soda Library]({% link soda-library/configure.md %}) to connect to your data source.
+
+### Run check suggestions
+
+{% include check-suggest.md %}
+
+  </div>
+  <div class="panel" id="four-panel" markdown="1">
+
+To automate the search for bad-quality data, you can use **Soda library** to programmatically execute scans using Python. <br />
+*Requires Soda Library* <br />
+*Requires Soda Cloud*
 <br />
 
-## Basic programmatic scan
+Follow the steps to create a `checks.yml` file to write your checks for data quality. Then, add the file(s) to your Python program as in the example below.
 {% include code-header.html %}
 ```python
 from soda.scan import Scan
@@ -208,28 +247,8 @@ from soda.scan import Scan
 scan = Scan()
 scan.set_data_source_name("events")
 
-# Add configuration YAML files
-#########################
-# Choose one of the following to specify data source connection configurations :
-# 1) From a file
 scan.add_configuration_yaml_file(file_path="~/.soda/my_local_soda_environment.yml")
-# 2) From explicit environment variable(s)
-scan.add_configuration_yaml_from_env_var(env_var_name="SODA_ENV")
-# 3) From environment variables using a prefix
-scan.add_configuration_yaml_from_env_vars(prefix="SODA_")
-# 4) Inline in the code
-scan.add_configuration_yaml_str(
-    """
-    data_source events:
-      type: snowflake
-      connection:
-      host: ${SNOWFLAKE_HOST}
-      username: ${SNOWFLAKE_USERNAME}
-      password: ${SNOWFLAKE_PASSWORD}
-      database: events
-      schema: public
-"""
-)
+
 
 # Add variables
 ###############
@@ -242,69 +261,26 @@ scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_one.yml")
 scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_two.yml")
 scan.add_sodacl_yaml_files("./my_scan_dir")
 scan.add_sodacl_yaml_files("./my_scan_dir/sodacl_file_three.yml")
-
-
-# Execute the scan
-##################
-scan.execute()
-
-# Set logs to verbose mode, equivalent to CLI -V option
-##################
-scan.set_verbose(True)
-
-# Set scan definition name, equivalent to CLI -s option;
-# see Tips and best practices below
-##################
-scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
-
-
-# Inspect the scan result
-#########################
-scan.get_scan_results()
-
-# Inspect the scan logs
-#######################
-scan.get_logs_text()
-
-# Typical log inspection
-##################
-scan.assert_no_error_logs()
-scan.assert_no_checks_fail()
-
-# Advanced methods to inspect scan execution logs 
-#################################################
-scan.has_error_logs()
-scan.get_error_logs_text()
-
-# Advanced methods to review check results details
-########################################
-scan.get_checks_fail()
-scan.has_check_fails()
-scan.get_checks_fail_text()
-scan.assert_no_checks_warn_or_fail()
-scan.get_checks_warn_or_fail()
-scan.has_checks_warn_or_fail()
-scan.get_checks_warn_or_fail_text()
-scan.get_all_checks_text()
 ```
 
-## Tips and best practices
-
-* You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import Soda Library in Python so you can utilize the `Scan()` object, [install a Soda Library package]({% link soda-library/install.md %}), then use `from soda.scan import Scan`.
-* Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files. 
-* Because Soda Library pushes scan results to Soda Cloud, you may not want to change the scan definition name with each scan. Soda Cloud uses the scan definition name to correlate subsequent scan results, thus retaining an historical record of the measurements over time. <br /> Sometimes, changing the name is useful, like when you wish to [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments). Be aware, however, that if you change the scan definition name with each scan for the same environment, Soda Cloud recognizes each set of scan results as independent from previous scan results, thereby making it appear as though it records a new, separate check result with each scan and archives or "disappears" previous results. See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
-
-carry on
+[See entire snippet]({% link soda-library/run-a-scan.md %}#basic-programming-scan)
 
   </div>
   </div>
 </div>
 
+## Scan output
+
+## Next
+
+1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
+2. <s><font color="#777777">Set up Soda: programmatic</font></s> 
+3. <s><font color="#777777">Write SodaCL checks</font></s> 
+4. <s><font color="#777777">Run scans, review results]</font></s>
+5. **[Organize, alert, investigate]
+
+Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
-
-
-
-
 
 ---
 

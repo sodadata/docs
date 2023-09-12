@@ -56,9 +56,7 @@
     page: soda-library/check-suggestions.md
   - subtitle: Set up automated monitoring
     page: soda-cl/automated-monitoring.md
-  - subtitle: Use case examples
-    page: soda-cl/usecases.md
-  - subtitle: Access data profile info
+  - subtitle: Access dataset profile info
     page: soda-cl/profile.md
   - subtitle: Access sample data
     page: soda-cl/sample-datasets.md
@@ -70,24 +68,18 @@
 - title: Run scans, review results
   page: soda-library/run-a-scan.md
   subcategories:
-  - subtitle: Run a Soda Library scan
+  - subtitle: Run a Soda scan
     page: soda-library/run-a-scan.md
   - subtitle: Scan output
     page: soda-cloud/scan-output.md
-  - subtitle: Define programmatic scans
-    page: soda-library/programmatic.md
   - subtitle: Configure orchestrated scans
     page: soda-library/orchestrate-scans.md
   - subtitle: Examine failed rows
     page: soda-cloud/failed-rows.md
 
 - title: Organize, alert, investigate
-  page: soda-cloud/roles-and-rights.md
+  page: soda-cl/check-attributes.md
   subcategories:
-  - subtitle: Set roles and rights
-    page: soda-cloud/roles-and-rights.md
-  - subtitle: Add Soda to SSO
-    page: soda-cloud/sso.md
   - subtitle: Add check attributes
     page: soda-cl/check-attributes.md
   - subtitle: Set notification rules
@@ -98,6 +90,10 @@
     page: soda-cloud/collaborate.md
   - subtitle: Create and track incidents
     page: soda-cloud/incidents.md
+  - subtitle: Set roles and rights
+    page: soda-cloud/roles-and-rights.md
+  - subtitle: Add Soda to SSO
+    page: soda-cloud/sso.md
 
 - title: Integrate Soda
   page: soda/integrate-alation.md
@@ -134,7 +130,7 @@
     page: api-docs/reporting-api-to-overview-dashboards.md
 
 - title: SodaCL reference
-  page: soda-cl/optional-config.md
+  page: soda-cl/metrics-and-checks.md
   subcategories:
   - subtitle: Metrics and checks
     page: soda-cl/metrics-and-checks.md

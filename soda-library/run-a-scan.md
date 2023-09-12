@@ -1,38 +1,84 @@
 ---
 layout: default
-title: Run a Soda Library scan
-description:  Soda Library uses the input in the checks and configuration YAML file to prepare a scan that it runs against the data in a dataset.
-parent: Soda Library
+title: Run a Soda scan
+description:  Soda uses the input in the checks and data source connection configurations to prepare a scan that it runs against the data in a dataset.
+parent: Run scans, review results
 redirect_from:
 - /soda-core/first-scan.html
 - /soda-core/scan-reference.html
 - /soda-core/scan-core.html
 ---
 
-# Run a Soda Library scan 
+# Run a Soda scan 
 *Last modified on {% last_modified_at %}*
-{% include banner-core.md %}
 
-A **scan** is a command that executes checks to extract information about data in a dataset. 
-{% include code-header.html %}
-```shell
-soda scan -d postgres_retail_db  -c configuration.yml checks.yml
-```
+Soda uses checks and the data source connection configurations to prepare a scan that it runs against datasets to extract metadata and gauge data quality. 
 
-A **check** is a test that Soda Library performs when it scans a dataset in your data source. Soda Library uses the checks you define in the **checks YAML** file to prepare SQL queries that it runs against the data in a table. Soda Library can execute multiple checks against one or more datasets in a single scan. 
+A check is a test that Soda performs when it scans a dataset in your data source. Soda uses the checks you define in a Soda Agreement, or in checks YAML file, to prepare SQL queries that it runs against the data in a dataset. Soda can execute multiple checks against one or more datasets in a single scan. 
 
-[Anatomy of a scan command](#anatomy-of-a-scan-command)<br />
-[Variables](#variables)<br />
-[Scan output](#scan-output)<br />
-[Examine a scan's SQL queries](#examine-a-scans-sql-queries)<br />
-[Programmatically use scan output](#programmatically-use-scan-output)<br />
+As a step in the **Get started roadmap**, this guide offers instructions to schedule a Soda scan, run a scan, or invoke a scan programmatically.
+
+#### Get started roadmap
+
+1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
+2. <s><font color="#777777"> Set up Soda: self-operated</font></s>
+3. <s><font color="#777777"> Write SodaCL checks</font></s>
+4. **Run scans, review results** 📍 You are here! <br />
+&nbsp;&nbsp;&nbsp;&nbsp; a. [Scan for data quality](#scan-for-data-quality)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; b. [Review scan output](#review-scan-output)<br />
+5. Organize, alert, investigate
+
+## Scan for data quality
+
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <input class="radio" id="three" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Schedule a scan</label>
+  <label class="tab" id="two-tab" for="two">Run a scan</label>
+  <label class="tab" id="three-tab" for="three">Program a scan</label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
+### Set a scan definition
+*Requires Soda Agent*
+<br/>*Requires Soda Cloud*
+
+When you create a Soda Agreement in Soda Cloud, the last step in the flow demands that you select a **scan definition**. A scan definition is a collection of files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source. Effectively, a scan definition provides the what, when, and where to run a scheduled scan.
+
+If you wish to change an agreement's existing scan definition/scan schedule: 
+1. Navigate to **Agreements**, then click the stacked dots next to the agreement you wish to change and select **Edit Agreement**.
+2. In the **Set a Scan Defintion** tab, then use the dropdown menu to select a different scan schedule. 
+3. **Save** your change. The agreement edit triggers a new stakeholder approval request to all stakeholders. Your revised agreement *does not run again* until all stakehoders have approved it.
+
+If you wish to schedule a new scan to execute the checks in an agreement more or less frequently, or at a different time of day: 
+1. Navigate to **Agreements**, then click the stacked dots next to the agreement you wish to change and select **Edit Agreement**.
+2. In the **Set a Scan Defintion** tab, then click **new Scan Definition** and populate the fields as in the example below.
+3. **Save** your change. The agreement edit triggers a new stakeholder approval request to all stakeholders. Your revised agreement *does not run again* until all stakehoders have approved it.
+
+![new-scan-def](/assets/images/new-scan-def.png){:height="600px" width="600px"}
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
+[Run a scan in Soda Cloud](#run-a-scan-in-soda-cloud)<br />
+[Run a scan from the command-line](#run-a-scan-from-the-command-line)<br />
+[Input variables](#input-variables)<br />
 [Configure the same scan to run in multiple environments](#configure-the-same-scan-to-run-in-multiple-environments)<br />
 [Add scan options](#add-scan-options)<br />
 [Troubleshoot](#troubleshoot)<br />
-[Go further](#go-further) <br />
-<br />
 
-## Anatomy of a scan command
+### Run a scan in Soda Cloud
+*Requires Soda Agent*
+<br/>*Requires Soda Cloud*
+
+{% include ad-hoc-scan.md %}
+
+### Run a scan from the command-line 
+*Requires Soda Library*
+<br/>*Requires Soda Cloud*
 
 Each scan requires the following as input:
 
@@ -64,19 +110,13 @@ soda scan -d postgres_retail -c configuration.yml checks_stats1.yml checks_stats
 <br />
 Use the soda `soda scan --help` command to review options you can include to customize the scan. See also: [Add scan options](#add-scan-options).
 
-## Variables
+### Input variables
 
 There are several ways you can use variables in checks, filters, and in your data source configuration to pass values at scan time; a few examples follow. 
 
 Refer to the comprehensive [Filters and variables]({% link soda-cl/filters.md %}) documentation for details.
 {% include code-header.html %}
 ```yaml
-# In-check filter
-checks for dim_employee:
-  - max(vacation_hours) < 80:
-      name: Too many vacation hours for US Sales
-      filter: sales_territory_key = 11
-
 # Dataset filter with variables
 filter CUSTOMERS [daily]:
   where: TIMESTAMP '${ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
@@ -91,60 +131,23 @@ checks for ${DATASET}:
       valid length: 10 
 ```
 
-
-## Scan output
-
-{% include scan-output.md %}
-
-Example output with a check that triggered a warning:
+To provide a variable at scan time, as with dynamic dataset filters or with in-check values, add a `-v` option to the scan command and specify the key:value pair for the variable, as in the following example.
 ```shell
-Soda Library 1.0.x
-Scan summary:
-1/1 check WARNED: 
-    CUSTOMERS in postgres_retail
-      schema [WARNED]
-        missing_column_names = [sombrero]
-        schema_measured = [geography_key, customer_alternate_key, title, first_name, last_name ...]
-Only 1 warning. 0 failure. 0 errors. 0 pass.
+soda scan -d aws_postgres_retail -c configuration.yml -v TODAY=2022-03-31 checks.yml
 ```
 
-Example output with a check that failed:
-```shell
-Soda Library 1.0.x
-Scan summary:
-1/1 check FAILED: 
-    CUSTOMERS in postgres_retail
-      freshness(full_date_alternate_key) < 3d [FAILED]
-        max_column_timestamp: 2020-06-24 00:04:10+00:00
-        max_column_timestamp_utc: 2020-06-24 00:04:10+00:00
-        now_variable_name: NOW
-        now_timestamp: 2022-03-10T16:30:12.608845
-        now_timestamp_utc: 2022-03-10 16:30:12.608845+00:00
-        freshness: 624 days, 16:26:02.608845
-Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
+If you wish, you can provide the value more than one variable at scan time, as in the following example.
 
+```shell
+soda scan -d aws_postgres_retail duplicate_count_filter.yml -v date=2022-07-25 -v name='rowcount check'
 ```
 
-### Examine a scan's SQL queries
 
-To examine the SQL queries that Soda Library prepares and executes as part of a scan, you can add the `-V` option to your `soda scan` command. This option prints the queries as part of the scan results.
-{% include code-header.html %}
-```shell
-soda scan -d postgres_retail -c configuration.yml -V checks.yml
-``` 
-
-## Programmatically use scan output
-
-Optionally, you can insert the output of Soda Library scans into your data orchestration tool such as Dagster, or Apache Airflow. 
-
-You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import the Soda Library library in Python so you can utilize the `Scan()` object, [install a Soda Library package]({% link soda-library/install.md %}), then use `from soda.scan import Scan`. Refer to [Define programmatic scans]({% link soda-library/programmatic.md %}) and [Test data in a pipeline]({% link soda/quick-start-prod.md %}) for details.
-
-
-## Configure the same scan to run in multiple environments
+### Configure the same scan to run in multiple environments
 
 {% include scan-multiple-envs.md %}
 
-## Add scan options
+### Add scan options
 
 When you run a scan in Soda Library, you can specify some options that modify the scan actions or output. Add one or more of the following options to a `soda scan` command.
 
@@ -159,11 +162,18 @@ When you run a scan in Soda Library, you can specify some options that modify th
 | `-v TEXT` or<br /> `--variable TEXT` |  | Replace `TEXT` with variables you wish to apply to the scan, such as a [filter for a date]({% link soda-cl/filters.md %}). Put single or double quotes around any value with spaces. <br />  `soda scan -d my_datasource -v start=2020-04-12 -c configuration.yml checks.yml` |
 | `V` or <br /> `--verbose` |  | Return scan output in verbose mode to review query details. |
 
-## Troubleshoot
+### Troubleshoot
 
 **Problem:** When you run a scan, you get an error that reads, `Exception while exporting Span batch.`
 
 **Solution:** Without an internet connection, Soda Library is unable to communicate with `soda.connect.io` to transmit anonymous usage statistics about the software. <br /> If you are using Soda Library offline, you can resolve the issue by setting `send_anonymous_usage_stats: false` in your `configuration.yml` file. Refer to [Soda Library usage statistics]({% link soda-library/usage-stats.md %}) for further details.
+
+<br />
+
+**Problem:** Check results to be missing in Soda Cloud.
+
+**Solution:** <br />
+Because Soda Library pushes scan results to Soda Cloud, you may not want to change the scan definition name with each scan. Soda Cloud uses the scan definition name to correlate subsequent scan results, thus retaining a historical record of the measurements over time. <br /> Sometimes, changing the name is useful, like when you wish to [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments). Be aware, however, that if you change the scan definition name with each scan for the same environment, Soda Cloud recognizes each set of scan results as independent from previous scan results, thereby making it appear as though it records a new, separate check result with each scan and archives or "disappears" previous results. See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
 
 <br />
 
@@ -173,10 +183,12 @@ When you run a scan in Soda Library, you can specify some options that modify th
 
 **Short-term solution:** Contact your Operations or System Admin team to obtain the proxy certificate.
 
+  </div>
+  <div class="panel" id="three-panel" markdown="1">
 
-## Basic programmatic scan
+### Run a basic programmatic scan using Python
 
-Based on a set of conditions or a specific event schedule, you can instruct Soda Library to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
+Based on a set of conditions or a specific event schedule, you can programmatically invoke Soda Library to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
 
 {% include code-header.html %}
 ```python
@@ -265,13 +277,22 @@ scan.get_checks_warn_or_fail_text()
 scan.get_all_checks_text()
 ```
 
-## Tips and best practices
+### Tips and best practices
 
 * You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import Soda Library in Python so you can utilize the `Scan()` object, [install a Soda Library package]({% link soda-library/install.md %}), then use `from soda.scan import Scan`.
 * Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files. 
-* Because Soda Library pushes scan results to Soda Cloud, you may not want to change the scan definition name with each scan. Soda Cloud uses the scan definition name to correlate subsequent scan results, thus retaining an historical record of the measurements over time. <br /> Sometimes, changing the name is useful, like when you wish to [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments). Be aware, however, that if you change the scan definition name with each scan for the same environment, Soda Cloud recognizes each set of scan results as independent from previous scan results, thereby making it appear as though it records a new, separate check result with each scan and archives or "disappears" previous results. See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
 
-## Scan exit codes
+
+  </div>
+
+  </div>
+</div>
+
+## Review scan output
+
+add from scan-output
+
+### Scan exit codes
 
 Soda Library's scan output includes an exit code which indicates the outcome of the scan.
 
@@ -280,77 +301,29 @@ Soda Library's scan output includes an exit code which indicates the outcome of 
 | 2 | Soda issues a failure on a check(s) |
 | 3 | Soda encountered a runtime issue |
 
-To obtain the exit code, you can add the following to your programmatic scan.
+To obtain the exit code, you can add the following to a programmatic scan.
 {% include code-header.html %}
 ```python
 exit_code = scan.execute()
 print(exit_code)
 ```
 
+### Programmatically use scan output
 
-## Configure a failed row sampler
+Optionally, you can insert the output of Soda Library scans into your data orchestration tool such as Dagster, or Apache Airflow. 
 
-Optionally, you can add a custom sampler to collect samples of rows with a `fail` check result. Refer to the following example that prints the failed row samples in the CLI.
-{% include code-header.html %}
-```python
-from soda.scan import Scan
-from soda.sampler.sampler import Sampler
-from soda.sampler.sample_context import SampleContext
+You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import the Soda Library library in Python so you can utilize the `Scan()` object, [install a Soda Library package]({% link soda-library/install.md %}), then use `from soda.scan import Scan`. Refer to [Define programmatic scans]({% link soda-library/programmatic.md %}) and [Test data in a pipeline]({% link soda/quick-start-prod.md %}) for details.
 
 
-# Create a custom sampler by extending the Sampler class
-class CustomSampler(Sampler):
-    def store_sample(self, sample_context: SampleContext):
-        # Retrieve the rows from the sample for a check
-        rows = sample_context.sample.get_rows()
-        # Check SampleContext for more details that you can extract
-        # This example simply prints the failed row samples
-        print(sample_context.query)
-        print(sample_context.sample.get_schema())
-        print(rows)
+## Next
 
+1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
+2. <s><font color="#777777">Set up Soda: programmatic</font></s> 
+3. <s><font color="#777777">Write SodaCL checks</font></s> 
+4. <s><font color="#777777">Run scans, review results</font></s>
+5. **[Organize, alert, investigate]({% link soda-cl/check-attributes.md %})**
 
-if __name__ == '__main__':
-    # Create Scan object
-    s = Scan()
-    # Configure an instance of custom sampler
-    s.sampler = CustomSampler()
-
-    s.set_scan_definition_name("test_scan")
-    s.set_data_source_name("aa_vk")
-    s.add_configuration_yaml_str(f"""
-    data_source test:
-      type: postgres
-      schema: public
-      connection:
-        host: localhost
-        port: 5433
-        username: ***
-        password: ***
-        database: postgres
-    """)
-
-    s.add_sodacl_yaml_str(f"""
-    checks for dim_account:
-        - invalid_percent(account_type) = 0:
-            valid format: email
-
-    """)
-    s.execute()
-    print(s.get_logs_text())
-```
-
-
-### Save failed row samples to an alternate destination
-
-If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">docs.python.org</a> for details.
-
-
-
-## Go further
-
-* Consider completing the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}) to learn how to write more checks for data quality.
-* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

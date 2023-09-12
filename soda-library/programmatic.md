@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Define programmatic scans using Python
+title: Invoke Soda Library
 description: Use Soda Library to programmatically execute scans and automate the checks for bad-quality data.
 parent: Soda Library
 redirect_from:
@@ -8,7 +8,7 @@ redirect_from:
 - /soda-core/programmatic.html
 ---
 
-# Define programmatic scans using Python
+# Invoke Soda Library
 *Last modified on {% last_modified_at %}*
 
 To automate the search for bad-quality data, you can use **Soda library** to programmatically set up and execute scans. Alternatively, you can install and use the Soda Library CLI to run scans; see [Install Soda Library]({% link soda-library/install.md %}). 
@@ -21,7 +21,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 2. **Set up Soda: programmatic** 📍 You are here! <br />
 &nbsp;&nbsp;&nbsp;&nbsp; a. [Check requirements](#requirements)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; b. [Create a Soda Cloud account](#create-a-soda-cloud-account)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; c. [Set up basic programmatic invocation](#set-up-basic-programmatic-invocation)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; c. [Set up basic programmatic invocation in Python](#set-up-basic-programmatic-invocation-in-python)<br />
 3. Write SodaCL checks 
 4. Run scans, review results 
 5. Organize, alert, investigate 
@@ -46,7 +46,7 @@ To use Soda Library, you must have installed the following on your system.
 To validate your account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library. <br /><a href="https://docs.soda.io/soda/about.html">Learn more</a><br /><br />
 </details>
 
-## Set up basic programmatic invocation
+## Set up basic programmatic invocation in Python
 
 As in the simple example below, invoke the Python library and provide:
 * your data source connection configuration details, including environment variables, using one of the listed methods; consult [Data source reference]({% link soda/connect-athena.md %}) for data source-specific connection config
@@ -90,7 +90,7 @@ scan.add_configuration_yaml_str(
 )
 ```
 
-See also: [Complete Soda scan snippet]({% link soda-library/run-a-scan.md %}#basic-programming-scan)
+[See entire snippet]({% link soda-library/run-a-scan.md %}#basic-programming-scan)
 
 ## Next
 

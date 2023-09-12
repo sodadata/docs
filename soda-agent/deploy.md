@@ -1287,6 +1287,8 @@ In the editing panel, provide the connection configurations Soda Cloud needs to 
 To more securely provide sensitive values such as usernames and passwords, use environment variables in a `values.yml` file when you deploy the Soda Agent. See [Use environment variables for data source connection credentials]({% link soda-agent/deploy.md %}#use-environment-variables-for-data-source-connection-credentials) for details.
 
 Access the data source-specific connection configurations listed below to copy+paste the connection syntax into the editing panel, then adjust the values to correspond with your data source's details. Access connection configuration details in [Data source reference]({% link soda/connect-athena.md %}) section of Soda documentation.
+
+See also: [Use a file reference for a Big Query data source connection](#use-a-file-reference-for-a-big-query-data-source-connection)
  
 <br />
 
@@ -1347,6 +1349,7 @@ automated monitoring:
 | Data Source Owner | The Data Source Owner maintains the connection details and settings for this data source and its Default Scan Schedule. |
 | Default Dataset Owner | The Datasets Owner is the user who, by default, becomes the owner of each dataset the Default Scan discovers. Refer to [Roles and Rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) to learn how to adjust the Dataset Owner of individual datasets.|
 
+<br />
 
 ### Use a file reference for a Big Query data source connection
 

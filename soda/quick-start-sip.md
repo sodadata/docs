@@ -14,7 +14,6 @@ redirect_from:
 
 Is Soda the data quality testing solution you've been looking for? Take a sip and see! <br />
 Use the example data in this quick tutorial to set up and run a simple Soda scan for data quality.<br />
-💡 For standard set up instructions, see [Get started]({% link soda/setup-guide.md %}).
 
 [Set up Soda](#install-soda-from-the-command-line)| 2 minutes<br />
 [Build an example data source](#build-an-example-data-source) | 2 minutes<br />
@@ -22,6 +21,7 @@ Use the example data in this quick tutorial to set up and run a simple Soda scan
 [Write checks and run a scan](#write-some-checks-and-run-a-scan) | 5 minutes<br />
 <br />
 
+💡 For standard set up instructions, begin with [Choose a flavor of Soda]({% link soda/setup-guide.md %}).
 
 
 ## Set up Soda

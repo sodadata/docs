@@ -30,6 +30,21 @@ Log in to view the **Checks** dashboard; each row in the table represents a chec
 
 {% include scan-output.md %}
 
+
+## Programmatically use scan output
+
+Optionally, you can insert the output of Soda Library scans into your data orchestration tool such as Dagster, or Apache Airflow. 
+
+You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import the Soda Library library in Python so you can utilize the `Scan()` object, [install a Soda Library package]({% link soda-library/install.md %}), then use `from soda.scan import Scan`. Refer to [Define programmatic scans]({% link soda-library/programmatic.md %}) and [Test data in a pipeline]({% link soda/quick-start-prod.md %}) for details.
+
+## Examine a scan's SQL queries
+
+To examine the SQL queries that Soda Library prepares and executes as part of a scan, you can add the `-V` option to your `soda scan` command. This option prints the queries as part of the scan results.
+{% include code-header.html %}
+```shell
+soda scan -d postgres_retail -c configuration.yml -V checks.yml
+``` 
+
 ## Scan failed
 
 Check results indicate whether check passed, warned, or failed during the scan. However, if a scan itself failed to complete successfully, Soda Cloud displays a warning message in the **Datasets** dashboard under the dataset for which scans have failed. Soda Cloud does not send an email or Slack notification when a scan fails.
