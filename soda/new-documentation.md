@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### September 11, 2023
+* Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.1.6 - 1.1.8.
+* Added a new section for [Best practice for using reconciliation checks]({% link soda-cl/recon.md %}#best-practice-for-using-reconciliation-checks)
+
 #### September 1, 2023
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.1.0 - 1.1.5.
 * Added item to [Troubleshoot]({% link soda/connect-snowflake.md %}#troubleshoot) section for Snowflake.

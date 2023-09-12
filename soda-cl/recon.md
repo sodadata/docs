@@ -54,6 +54,7 @@ reconciliation Production:
 
 [Prerequisites](#prerequisites)<br />
 [Types of reconciliation checks](#types-of-reconciliation-checks)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Best practice for using reconciliation checks](#best-practice-for-using-reconciliation-checks) <br />
 [Define reconciliation checks](#define-reconciliation-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Metric reconciliation checks](#metric-reconciliation-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Record reconciliation checks](#record-reconciliation-checks) <br />
@@ -124,6 +125,14 @@ reconciliation Production:
 
 Read more about the [optional configurations](#reconciliation-checks) you can add to a record reconciliation check.
 
+### Best practice for using reconciliation checks
+
+To efficiently use resources at scan time, best practice dictates that you first configure and run metric reconcilitation checks, then use the output to write refined record reconciliation checks to fine-tune the comparison. 
+
+Depending on the volume of data on which you must perform reconciliation checks, metric recon checks run considerably faster and use much fewer resources. Start by defining metric reconciliation checks that test grouping, filters, and joins to get meaningful insight into whether your ingestion or transformation works as expected. Where these checks do not surface all the details you need, or does not provide enough confidence in the output, then proceed with record reconciliation checks.
+
+Read more about [Limitations and constraints](#limitations-and-constraints).
+
 
 ## Define reconciliation checks
 
@@ -132,7 +141,7 @@ The following outlines the basic steps to configure and execute reconciliation c
 2. [Configure]({% link soda-library/configure.md %}) both data sources in a configuration YAML file, and add your `soda_cloud` configuration. For the very first example above, you would add both [MySQL]({% link soda/connect-mysql.md %}) and [Snowflake]({% link soda/connect-snowflake.md %}) connection configuration details to a configuration YAML file.
 3. Prepare a `recon.yml` file and configure the reconciliation metadata; see details below.
 4. Define reconciliation checks to compare data between data sources; see details below.
-5. [Run a Soda scan]({% link soda-library/run-a-scan.md %}) against either the source or target data source to execute the reconciliation checks and review results in the command-line output and in Soda Cloud. 
+5. [Run a Soda scan]({% link soda-library/run-a-scan.md %}) against either the source or target data source to execute the reconciliation checks and review results in the command-line output and in Soda Cloud. Note that check results are associated with the *target* dataset in Soda Cloud.
 {% include code-header.html %}
 ```shell
 soda scan -d mysql_adventureworks -c configuration.yml recon.yml
@@ -495,7 +504,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 
 ## Limitations and constraints
 
-* The Python environment in which record reconciliation checks run consumes more time/CPU/memory because this type of check loads all data into memory to execute a comparison. Because record-to-record comparison is dense, exercise caution when executing scans with record reconciliation checks as they can cause usage spikes in the data source, and cost spikes in case of cloud-managed data sources. Best practice dictates that you [add filters](#add-a-filter) and use [column constrained](#record-reconciliation-checks) record reconciliation checks whenever possible to mitigate cost and performance issues.
+* The Python environment in which record reconciliation checks run consumes more time/CPU/memory because this type of check loads all data into memory to execute a comparison. Because record-to-record comparison is dense, exercise caution when executing scans with record reconciliation checks as they can cause usage spikes in the data source, and cost spikes in case of cloud-managed data sources. Best practice dictates that you [add filters](#add-a-filter) and use [column constrained](#record-reconciliation-checks) record reconciliation checks whenever possible to mitigate cost and performance issues. See also: [Best practice for using reconciliation checks](#best-practice-for-using-reconciliation-checks).
 * Reconciliation checks on TEXT type columns are case sensitive.
 * Record reconciliation checks do not support `samples columns` configuration.
 * Reconciliation checks do not support `samples columns` in check configuration, nor `exclude columns` in the data source configuration in a configuration YAML file; see Disable failed rows sampling for [specific columns]({% link soda-cl/failed-rows-checks.md %}##disable-failed-rows-sampling-for-specific-columns).
