@@ -9,6 +9,15 @@ parent: Reference
 
 <br />
 
+#### September 14, 2023
+* Removed known issue for inability to use check identity with failed row checks. This is now supported in Soda Library.
+
+#### September 13, 2023
+* Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.1.10.
+
+#### September 12, 2023
+* Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.1.9.
+
 #### September 11, 2023
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.1.6 - 1.1.8.
 * Added a new section for [Best practice for using reconciliation checks]({% link soda-cl/recon.md %}#best-practice-for-using-reconciliation-checks)
