@@ -30,7 +30,7 @@ Use Soda Library to ingest the results of your dbt tests and push them to Soda C
 
 * You have created a Soda Cloud account with [Admin, Manager, or Editor permissions]({% link soda-cloud/roles-and-rights.md %}).
 * You have installed a [Soda Library package]({% link soda-library/install.md %}) in your environment and [configured it]]({% link soda-library/configure.md %}) to connect to a data source and your Soda Cloud account using a `configuration.yml` file. 
-* You use the open-source <a href="https://github.com/dbt-labs/dbt-core" target="_blank">dbt-core</a> version 1.0.0 or later or dbt Cloud.
+* You use dbt Cloud or <a href="https://github.com/dbt-labs/dbt-core" target="_blank">dbt-core</a> version 1.3, 1.5 or 1.6. Note: As <a href="https://docs.getdbt.com/guides/migration/versions/upgrading-to-v1.4" target="_blank">dbt no longer supports v1.4</a>, Soda does not support that version.
 * You have installed the optional `soda-dbt` sub-package in the Python environment that also runs your Soda Library package by running `pip install -i https://pypi.cloud.soda.io soda-dbt`
 
 ## Videos

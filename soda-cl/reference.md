@@ -16,6 +16,8 @@ See also: [Compare data using SodaCL]({% link soda-cl/compare.md %})
 ```yaml
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
+
+  - values in (birthdate) must not exist in dim_department_group_prod (birthdate)
 ```
 
 [Define reference checks](#define-reference-checks) <br />
@@ -38,6 +40,12 @@ checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
 ```
 
+You can also validate that data in one dataset does not exist in another.  
+{% include code-header.html %}
+```yaml
+checks for dim_customer_staging:
+  - values in (birthdate) must not exist in dim_customer_prod (birthdate)
+```
 
 ### Failed row samples
 
