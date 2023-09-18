@@ -240,6 +240,9 @@ data_source my_datasource_name:
 ## Connect to Spark for Databricks SQL
 
 1. Install `soda-spark[databricks]` to connect to Databricks SQL. Refer to [Install Soda Library]({% link soda-library/install.md %}) for details.
+```shell
+pip install -i https://pypi.cloud.soda.io soda-spark[databricks]
+```
 2. If you have not done so already, install `databricks-sql-connector`. Refer to <a href="https://docs.databricks.com/dev-tools/python-sql-connector.html" target="_blank">Databricks documentation</a> for details.
 3. Configure the data source connection in your `configuration.yml` file as per the following example.
 
