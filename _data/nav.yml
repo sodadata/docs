@@ -2,10 +2,8 @@
   page: index.html
 
 - title: Get started
-  page: soda/about.md
+  page: soda/quick-start-sip.md
   subcategories:
-  - subtitle: What is Soda?
-    page: soda/about.md
   - subtitle: Take a sip of Soda
     page: soda/quick-start-sip.md
   - subtitle: Choose a flavor of Soda
@@ -20,6 +18,8 @@
     page: soda-agent/secrets.md
   - subtitle: Upgrade, redeploy, uninstall
     page: soda/upgrade.md
+  - subtitle: What is Soda?
+    page: soda/about.md
 
 - title: Use case guides
   page: soda/setup-examples.md
@@ -65,29 +65,27 @@
   - subtitle: Custom check examples
     page: soda-cl/custom-check-examples.md
 
-- title: Run scans, review results
+- title: Run scans and view results
   page: soda-library/run-a-scan.md
   subcategories:
-  - subtitle: Run a Soda scan
+  - subtitle: Run a scan and view results
     page: soda-library/run-a-scan.md
-  - subtitle: Scan output
-    page: soda-cloud/scan-output.md
-  - subtitle: Configure orchestrated scans
-    page: soda-library/orchestrate-scans.md
   - subtitle: Examine failed rows
     page: soda-cloud/failed-rows.md
+  - subtitle: Configure orchestrated scans
+    page: soda-library/orchestrate-scans.md
 
 - title: Organize, alert, investigate
-  page: soda-cl/check-attributes.md
+  page: soda-cloud/collaborate.md
   subcategories:
+  - subtitle: Organize, alert, investigate
+    page: soda-cloud/collaborate.md
   - subtitle: Add check attributes
     page: soda-cl/check-attributes.md
   - subtitle: Set notification rules
     page: soda-cloud/notif-rules.md
   - subtitle: Organize datasets
     page: soda-cloud/organize-datasets.md
-  - subtitle: Collaborate on data monitoring
-    page: soda-cloud/collaborate.md
   - subtitle: Create and track incidents
     page: soda-cloud/incidents.md
   - subtitle: Set roles and rights

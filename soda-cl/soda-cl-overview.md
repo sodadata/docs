@@ -71,18 +71,14 @@ checks for dim_department_group:
 <div class="warpper">
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
-  <input class="radio" id="three" name="group" type="radio">
-  <input class="radio" id="four" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Soda Agreement</label>
-  <label class="tab" id="two-tab" for="two">Checks YAML</label>
-  <label class="tab" id="three-tab" for="three">Check Suggestions</label>
-  <label class="tab" id="four-tab" for="four">Programmatic</label>
+  <label class="tab" id="one-tab" for="one">Business Users</label>
+  <label class="tab" id="two-tab" for="two">Data Engineers</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
-In Soda Cloud, you write SodaCL checks in the user interface within a **Soda Agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. <br />
+As a business user of Soda Cloud, you write SodaCL checks directly in the user interface within a **Soda Agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. <br />
 *Requires Soda Agent*<br />
 *Requires Soda Cloud*
 
@@ -114,6 +110,8 @@ You can only create an agreement that uses a data source that has been added to 
 #### 2. Write Checks
 
 Use [SodaCL]({% link soda-cl/soda-cl-overview.md %}) to define the checks that Soda Cloud executes on a regular schedule to uphold the tenets of this agreement. If any of these checks fail during a regularly-scheduled scan, Soda Cloud notifies the stakeholders you specify in the Notifications section.
+
+Be sure to click **Test checks** to validate that the SodaCL syntax you have written is valid, and that Soda can execute the checks against your datasets without errors.
 
 For help writing your first checks:
 * browse the library of **SodaCL snippets** that insert correctly-formatted syntax for the most commonly-used checks for basic data quality.
@@ -155,16 +153,12 @@ To review existing scan definitions, navigate to **your avatar** > **Scans & Dat
 
 <br />
 
-### Run a scan in Soda Cloud
-
-{% include ad-hoc-scan.md %}
-
 
 ### Agreement tips and best practices
 
 Further, take into account the following tips and best practices when writing SodaCL checks in an agreement.
 * Avoid applying the same [customized check names]({% link soda-cl/optional-config.md %}#customize-check-names) in multiple agreements. Soda Cloud associates check results with agreements according to name so if you reuse custom names, Soda Cloud may become confused about which agreement to which to link check results.
-* Avoid using an [anomaly score check]({% link soda-cl/anomaly-score.md %}) to test the agreements workflow. The ML algorithm that anomaly score checks use requires a minimum of four, regular-frequency scans before it has collected enough historic measurements against which to gauge an anomaly. Consider using checks with [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metrics, instead.
+* If you use an [anomaly score check]({% link soda-cl/anomaly-score.md %}), be aware that when you **Test Checks**, this type of checks results in `[NOT EVALUATED]`. The ML algorithm that anomaly score checks use requires a minimum of four, regular-frequency scans before it has collected enough historic measurements against which to gauge an anomaly. Therefore, until it has collected enough historical measurements to use to gauge anomolies, Soda does not evaluate the check.
 * Note that any checks you test in the context of this step in the agreements workflow _do not_ appear as "real" checks in the **Checks** dashboard. 
 * Do not use variables to define dynamic values in your checks as you cannot provide scan-time values for those variables with scheduled scans. See [Configuration details and limitations]({% link soda-cl/filters.md %}#configuration-details-and-limitations) for details.
 
@@ -173,11 +167,16 @@ See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.m
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
+[Manually write SodaCL checks](#manually-write-sodacl-checks)<br />
+[Use check suggestions](#use-check-suggestions)<br />
+[Programmatically add checks](#programmatically-add-checks)<br />
+<br />
+
+### Manually write SodaCL checks
+
 The checks YAML file stores the Soda Checks you write using [SodaCL]({% link soda-cl/soda-cl-overview.md %}). Use this file to manually write your own SodaCL checks. <br /> 
 *Requires Soda Library*<br />
 *Requires Soda Cloud*
-
-Alternatively, use **Check Suggestions** to profile a dataset and prepare production-ready checks to execute in a scan immediately.
 
 1. Using a code editor, create a new file called `checks.yml`.
 2. Copy+paste the following basic check syntax in your file, then adjust the value for `dataset_name` to correspond with the name of one of the datasets in your data source.
@@ -201,10 +200,9 @@ All is good. No failures. No warnings. No errors.
 Sending results to Soda Cloud
 Soda Cloud Trace: 67592***474
 ```
-4. Add more checks to the `checks.yml` file to test for multiple data quality metrics. Consult the [SodaCL tutoria]({% link soda/quick-start-sodacl.md %}) for advice and the [Use case guides]({% link soda/setup-examples.md %}) for example checks. Refer to the [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for exhaustive details on every type of metric and check.
+4. Add more checks to the `checks.yml` file to test for multiple data quality metrics. Consult the [SodaCL tutorial]({% link soda/quick-start-sodacl.md %}) for advice and the [Use case guides]({% link soda/setup-examples.md %}) for example checks. Refer to the [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for exhaustive details on every type of metric and check.
 
-  </div>
-  <div class="panel" id="three-panel" markdown="1">
+### Use check suggestions
 
 **Check suggestions** assists Soda users in auto-generating basic data quality checks using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.<br /> 
 *Requires Soda Library*<br /> 
@@ -213,7 +211,7 @@ Soda Cloud Trace: 67592***474
 
 Instead of writing your own data quality checks from scratch, check suggestions profiles your dataset and prompts you through a series of questions so that it can leverage the built-in Soda metrics and quickly prepare data quality checks tailored to that individual dataset.  
 
-### Compatibility
+#### Compatibility
 
 You can use check suggestions with the following data sources:
 
@@ -221,25 +219,23 @@ You can use check suggestions with the following data sources:
 * [PostgreSQL]({% link soda/connect-postgres.md %})
 * [Snowflake]({% link soda/connect-snowflake.md %})
 
-### Prerequisites
+#### Prerequisites
 
 * You have installed Python 3.10 or greater.
 * You have installed a [Soda Library package]({% link soda-library/install.md %}#install-soda-library-1) for Big Query, PostgreSQL, or Snowflake in your environment.
 * You have [configured Soda Library]({% link soda-library/configure.md %}) to connect to your data source.
 
-### Run check suggestions
+#### Run check suggestions
 
 {% include check-suggest.md %}
 
-  </div>
-  <div class="panel" id="four-panel" markdown="1">
+### Programmatically add checks
 
-To automate the search for bad-quality data, you can use **Soda library** to programmatically execute scans using Python. <br />
+Follow the [steps above](#manually-write-sodacl-checks) to create a `checks.yml` file to define your checks for data quality. Then, add the file(s) to your Python program as in the example below.<br /> Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files. 
 *Requires Soda Library* <br />
 *Requires Soda Cloud*
 <br />
 
-Follow the steps to create a `checks.yml` file to write your checks for data quality. Then, add the file(s) to your Python program as in the example below.
 {% include code-header.html %}
 ```python
 from soda.scan import Scan
@@ -263,21 +259,18 @@ scan.add_sodacl_yaml_files("./my_scan_dir")
 scan.add_sodacl_yaml_files("./my_scan_dir/sodacl_file_three.yml")
 ```
 
-[See entire snippet]({% link soda-library/run-a-scan.md %}#basic-programming-scan)
-
   </div>
   </div>
 </div>
 
-## Scan output
 
 ## Next
 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
 2. <s><font color="#777777">Set up Soda: programmatic</font></s> 
 3. <s><font color="#777777">Write SodaCL checks</font></s> 
-4. <s><font color="#777777">Run scans, review results]</font></s>
-5. **[Organize, alert, investigate]
+4. **[Run scans, review results]({% link soda-library/run-a-scan.md %})**
+5. Organize, alert, investigate
 
 Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

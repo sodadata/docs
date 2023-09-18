@@ -24,7 +24,7 @@ Use the following guides as example implementations based on how you intend to u
                     <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
                     <h2>Soda + GitHub</h2>
                     <a href="/soda-cloud/collaborate.html#invite-your-team-members">Test data during development</a>
-                    <p>Use this guide to set up Soda to test the quality of your data during your development lifecycle.</p>
+                    <p>Use this guide to set up Soda to test the quality of your data during your development lifecycle in a GitHub Workflow.</p>
                 </div>
                 <div>
                     <img src="/assets/images/icons/icon-collaboration@2x.png" width="54" height="40">

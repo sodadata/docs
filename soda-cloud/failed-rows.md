@@ -15,6 +15,13 @@ From the **Checks** dashboard, select an indivdual check to access its result hi
 
 ![failed-rows](/assets/images/failed-rows.png){:height="600px" width="600px"}
 
+
+#### Troubleshoot
+
+{% include troubleshoot-failed-rows.md %}
+
+<br />
+
 ## Implicitly send failed rows samples
 
 Implicitly, Soda automatically collects 100 failed row samples for the following checks:
@@ -23,13 +30,6 @@ Implicitly, Soda automatically collects 100 failed row samples for the following
 * checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
 * checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
 
-<br />
-
-#### Troubleshoot
-
-{% include troubleshoot-failed-rows.md %}
-
-<br />
 
 ## Explicitly send failed rows samples
 

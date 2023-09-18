@@ -8,14 +8,14 @@ redirect_from:
 - /soda/quick-start-soda-core.html
 ---
 
-# Take a sip of Soda ![SodaCan@0.5x](/assets/images/SodaCan@0.5x.png){:width="25px"}
-<!--Linked to UI, access Shlink-->
+# Take a sip of Soda   
+<!--Linked to UI, access Shlink--> 
 *Last modified on {% last_modified_at %}*
 
 Is Soda the data quality testing solution you've been looking for? Take a sip and see! <br />
 Use the example data in this quick tutorial to set up and run a simple Soda scan for data quality.<br />
 
-[Set up Soda](#install-soda-from-the-command-line)| 2 minutes<br />
+[Set up Soda](#install-soda-from-the-command-line)| 2 minutes <br />
 [Build an example data source](#build-an-example-data-source) | 2 minutes<br />
 [Connect Soda to the data source](#connect-soda-to-the-data-source-and-a-soda-cloud-account) | 5 minutes<br />
 [Write checks and run a scan](#write-some-checks-and-run-a-scan) | 5 minutes<br />

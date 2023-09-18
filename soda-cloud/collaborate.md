@@ -1,17 +1,41 @@
 ---
 layout: default
-title: Collaborate on data monitoring
+title: Organize results, set alerts, investigate issues
 description: Data quality is a team sport! Integrate with Slack so Soda Cloud can send alerts to your team. Invite your team to join your Soda Cloud account.
-parent: Soda Cloud
+parent: Organize, alert, investigate
 redirect_from:
   - /soda-sql/documentation/integrate-slack.html
   - /soda-cloud/integrate-slack.html
 ---
 
-# Collaborate on data monitoring
+# Organize results, set alerts, investigate issues
 *Last modified on {% last_modified_at %}*
 
 One of the main benefits of using Soda Cloud is the ability to collaborate with your teammates on the work to monitor and maintain data quality. Including multiple perspectives yields a more robust interpretation of "good quality data".
+
+As the last step in the **Get started roadmap**, this guide offers instructions to organize your check results, customize alert notifications, and open incidents to investigate issues.
+
+#### Get started roadmap
+
+1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
+2. <s><font color="#777777"> Set up Soda: self-operated</font></s>
+3. <s><font color="#777777"> Write SodaCL checks</font></s>
+4. <s><font color="#777777"> Run scans, review results</font></s>
+5. **Organize, alert, investigate** 📍 You are here! <br />
+&nbsp;&nbsp;&nbsp;&nbsp; a. [Scan for data quality](#scan-for-data-quality)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; b. [View scan results](#view-scan-results)<br />
+<br />
+
+integrate with Slack
+check attributes
+alert notifications
+create incidents
+dataset attributes
+build collections
+invite others
+organize users
+integrate with a catalog
+
 
 ## Integrate with Slack
 

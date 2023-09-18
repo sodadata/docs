@@ -13,11 +13,8 @@ parent: Get started
 [Upgrade Soda Library](#upgrade-soda-library)<br />
 [Uninstall Soda Library](#uninstall-soda-library)<br />
 [Migrate from Soda Core](#migrate-from-soda-core)<br />
-<br />
-
 
 ## Redeploy a Soda Agent
-*Last modified on {% last_modified_at %}*
 
 The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster. [Read more]({% link soda-agent/basics.md %}).
 
@@ -63,7 +60,6 @@ kubectl describe pods
 ```
 
 ## Upgrade a Soda Agent 
-*Last modified on {% last_modified_at %}*
 
 The **Soda Agent** is a Helm chart that you deploy on a Kubernetes cluster and connect to your Soda Cloud account using API keys.
 

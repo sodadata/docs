@@ -5,7 +5,7 @@ As a result of a scan, each check results in one of three default states:
 
 A fourth state, **warn**, is something you can explicitly configure for individual checks. See [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations).
 
-The scan results appear in your Soda Library command-line interface (CLI) and the latest result appears in the **Checks** dashboard in Soda Cloud. 
+If you are using the Soda Library command-line interface (CLI), the scan results appear in the command-line scan output, and the latest result appears in the **Checks** dashboard in Soda Cloud. 
 
 ```shell
 Soda Library 1.0.x

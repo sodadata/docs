@@ -11,10 +11,15 @@ redirect_from:
 # Invoke Soda Library
 *Last modified on {% last_modified_at %}*
 
-To automate the search for bad-quality data, you can use **Soda library** to programmatically set up and execute scans. Alternatively, you can install and use the Soda Library CLI to run scans; see [Install Soda Library]({% link soda-library/install.md %}). 
+To automate the search for bad-quality data, you can use **Soda library** to programmatically set up and execute scans. As a Python library, you can invoke Soda just about anywhere you need it; the invocation instructions below offers a very simple invocation example to extrapolate from. Consult the [Use case guides]({% link soda/setup-examples.md %}) for more examples of how to programmatically run Soda scans for data quality.
+
+Alternatively, you can install and use the Soda Library CLI to run scans; see [Install Soda Library]({% link soda-library/install.md %}). 
 
 As a step in the **Get started roadmap**, this guide offers instructions to set up, install, and configure Soda in a [programmatic deployment model]({% link soda/setup-guide.md %}#programmatic).
 
+{% include banner-roadmap-2c.md %}
+
+<!-- 
 #### Get started roadmap
 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s> 
@@ -25,8 +30,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 3. Write SodaCL checks 
 4. Run scans, review results 
 5. Organize, alert, investigate 
-
-<br />
+-->
 
 ## Requirements
 
