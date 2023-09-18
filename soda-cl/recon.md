@@ -49,7 +49,7 @@ reconciliation Production:
     - rows diff < 5
     - rows diff = 0:
         source columns: [customer_key, region_id]
-        target column: [customer_base_key, region]
+        target columns: [customer_base_key, region]
 ```
 
 [Prerequisites](#prerequisites)<br />
