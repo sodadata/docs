@@ -11,10 +11,7 @@ redirect_from: /soda-core/community.html
 
 A lightweight, verstile tool for testing amd monitoring data quality, you can have several options for deploying Soda in your environment.
 
-As a step in the **Get started roadmap**, this guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. After choosing a flavor of Soda (type of deployment model), access the corresponding [Set up Soda](#next) instructions below.
-<br />
-
-💡 **TL;DR:** Follow a [15-min tutorial]({% link soda/quick-start-sip.md %}) to set up and run Soda.
+As the first step in the **Get started roadmap**, this guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. After choosing a flavor of Soda (type of deployment model), access the corresponding [Set up Soda](#next) instructions below.
 <br />
 
 #### Get started roadmap
@@ -22,7 +19,7 @@ As a step in the **Get started roadmap**, this guide helps you decide how to set
 1. **Choose a flavor of Soda** 📍 You are here!
 2. Set up Soda: install, deploy, or invoke
 3. Write SodaCL checks
-4. Run scans, review results
+4. Run scans and review results
 5. Organize, alert, investigate
 
 
@@ -36,7 +33,7 @@ You can set up Soda in one of three (soon to be four!) flavors:
 | Flavor | Description | Soda<br />Library | Soda<br />Agent | Soda<br />Cloud |
 | ----- | ----------- | :--: | :--: | :--: |
 | [Self-operated](#self-operated) | A simple setup in which you install Soda Library locally and connect it to Soda Cloud via API keys. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
-| [Self-hosted agent](#self-hosted-agent)<br /> | *Recommended* <br />A setup in which you deploy a Soda Agent in a Kubernetes cluster in a cloud-services environment and connect it to Soda Cloud via different API keys. |   | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+| [Self-hosted agent](#self-hosted-agent)<br /> | ***Recommended*** <br />A setup in which you deploy a Soda Agent in a Kubernetes cluster in a cloud-services environment and connect it to Soda Cloud via different API keys. |   | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 | Fully-managed SaaS | **Coming soon!**<br />A setup in which you manage data quality entirely from your Soda Cloud account. |  |  | ![done](/assets/images/done.png){:width="20px"} |
 | [Programmatic](#programmatic-setup) | A setup in which you invoke Soda Library programmatically. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
 
@@ -133,7 +130,7 @@ Consult the following matrix for further guidance on which flavor best suits you
 * [Self-hosted agent]({% link soda-agent/deploy.md %})
 * [Programmatic]({% link soda-library/programmatic.md %})
 3. Write SodaCL checks
-4. Run scans, review results
+4. Run scans and review results
 5. Organize, alert, investigate
 
 

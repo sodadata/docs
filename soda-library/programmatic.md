@@ -17,9 +17,6 @@ Alternatively, you can install and use the Soda Library CLI to run scans; see [I
 
 As a step in the **Get started roadmap**, this guide offers instructions to set up, install, and configure Soda in a [programmatic deployment model]({% link soda/setup-guide.md %}#programmatic).
 
-{% include banner-roadmap-2c.md %}
-
-<!-- 
 #### Get started roadmap
 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s> 
@@ -28,9 +25,10 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 &nbsp;&nbsp;&nbsp;&nbsp; b. [Create a Soda Cloud account](#create-a-soda-cloud-account)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; c. [Set up basic programmatic invocation in Python](#set-up-basic-programmatic-invocation-in-python)<br />
 3. Write SodaCL checks 
-4. Run scans, review results 
+4. Run scans and review results 
 5. Organize, alert, investigate 
--->
+
+<br />
 
 ## Requirements
 
@@ -94,14 +92,13 @@ scan.add_configuration_yaml_str(
 )
 ```
 
-[See entire snippet]({% link soda-library/run-a-scan.md %}#basic-programming-scan)
 
 ## Next
 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
 2. <s><font color="#777777">Set up Soda: programmatic</font></s> 
 3. **[Write SodaCL checks]({% link soda-cl/soda-cl-overview.md %})**
-4. Run scans, review results
+4. Run scans and review results
 5. Organize, alert, investigate
 
 

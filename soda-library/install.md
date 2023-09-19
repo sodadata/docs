@@ -25,7 +25,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 &nbsp;&nbsp;&nbsp;&nbsp; b. [Install Soda Library](#install-soda-library-1)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; c. [Configure Soda](#configure-soda)<br />
 3. Write SodaCL checks
-4. Run scans, review results
+4. Run scans and review results
 5. Organize, alert, investigate
 
 💡 **TL;DR:** Follow a [15-min tutorial]({% link soda/quick-start-sip.md %}) to set up and run Soda.
@@ -313,7 +313,7 @@ soda scan -d your_datasource -c configuration.yml checks.yml
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
 2. <s><font color="#777777">Set up Soda: self-operated</font></s> 
 3. **[Write SodaCL checks]({% link soda-cl/soda-cl-overview.md %})**
-4. Run scans, review results
+4. Run scans and review results
 5. Organize, alert, investigate
 
 

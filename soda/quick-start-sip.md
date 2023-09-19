@@ -21,7 +21,7 @@ Use the example data in this quick tutorial to set up and run a simple Soda scan
 [Write checks and run a scan](#write-some-checks-and-run-a-scan) | 5 minutes<br />
 <br />
 
-💡 For standard set up instructions, begin with [Choose a flavor of Soda]({% link soda/setup-guide.md %}).
+💡 For standard set up instructions, access the [Get started roadmap]({% link soda/about.md %}).
 
 
 ## Set up Soda

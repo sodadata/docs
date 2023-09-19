@@ -1,20 +1,39 @@
 ---
 layout: default
-title: What is Soda?
+title: Get started roadmap
 description: 
 parent: Get started
 ---
 
-# What is Soda?
+# Get started roadmap
 *Last modified on {% last_modified_at %}*
+
+The roadmap to get started offers a curated experience to help you get from zero to productive with Soda software. 
+
+If a guided experience is not your style, you can take a different path:
+* Follow a [15-min tutorial]({% link soda/quick-start-sip.md %}) to set up and run Soda using demo data.
+* Follow a [Use case guide]({% link soda/setup-examples.md %}) for implementation instructions that target a specific outcome.
+* <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a> so we can help you get the most out of your Soda experience.
+
+
+## Get started roadmap
+
+1. [Choose a flavor of Soda]({% link soda/setup-guide.md %}) 🚀 Start here!
+2. Set up Soda
+* [Self-operated]({% link soda-library/install.md %})
+* [Self-hosted agent]({% link soda-agent/deploy.md %})
+* [Programmatic]({% link soda-library/programmatic.md %})
+3. [Write SodaCL checks]({% link soda-cl/soda-cl-overview.md %})
+4. [Run scans and review results]({% link soda-library/run-a-scan.md %})
+5. [Organize, alert, investigate]({% link soda-cloud/collaborate.md %})
+
+
+Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+
+## About Soda
 
 {% include about-soda.md %}
 
-
-## Go further
-
-* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-<br />
 
 ---
 

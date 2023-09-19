@@ -21,9 +21,9 @@ As a step in the **Get started roadmap**, this guide offers instructions to sche
 #### Get started roadmap
 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
-2. <s><font color="#777777"> Set up Soda: self-operated</font></s>
+2. <s><font color="#777777"> Set up Soda: install, deploy, or invoke</font></s>
 3. <s><font color="#777777"> Write SodaCL checks</font></s>
-4. **Run scans, review results** 📍 You are here! <br />
+4. **Run scans and review results** 📍 You are here! <br />
 &nbsp;&nbsp;&nbsp;&nbsp; a. [Scan for data quality](#scan-for-data-quality)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; b. [View scan results](#view-scan-results)<br />
 5. Organize, alert, investigate
@@ -347,9 +347,9 @@ You can save Soda Library scan results anywhere in your system; the `scan_result
 ## Next
 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
-2. <s><font color="#777777">Set up Soda: programmatic</font></s> 
+2. <s><font color="#777777">Set up Soda: install, deploy, or invoke</font></s> 
 3. <s><font color="#777777">Write SodaCL checks</font></s> 
-4. <s><font color="#777777">Run scans, review results</font></s>
+4. <s><font color="#777777">Run scans and review results</font></s>
 5. **[Organize, alert, investigate]({% link soda-cl/check-attributes.md %})**
 
 Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

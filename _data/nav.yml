@@ -1,11 +1,14 @@
 - title: Home
   page: index.html
 
-- title: Get started
+- title: Take a sip of Soda
   page: soda/quick-start-sip.md
+
+- title: Get started
+  page: soda/about.md
   subcategories:
-  - subtitle: Take a sip of Soda
-    page: soda/quick-start-sip.md
+  - subtitle: Get started roadmap
+    page: soda/about.md
   - subtitle: Choose a flavor of Soda
     page: soda/setup-guide.md
   - subtitle: Install Soda Library
@@ -18,8 +21,6 @@
     page: soda-agent/secrets.md
   - subtitle: Upgrade, redeploy, uninstall
     page: soda/upgrade.md
-  - subtitle: What is Soda?
-    page: soda/about.md
 
 - title: Use case guides
   page: soda/setup-examples.md

@@ -26,7 +26,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 &nbsp;&nbsp;&nbsp;&nbsp; b. [Deploy a Soda Agent in a Kubernetes cluster](#deploy-a-soda-agent-in-a-kubernetes-cluster)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; c. [Add a new data source](#add-a-new-data-source)<br />
 3. Write SodaCL checks
-4. Run scans, review results
+4. Run scans and review results
 5. Organize, alert, investigate
 
 
@@ -1403,7 +1403,7 @@ my_datasource_name:
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
 2. <s><font color="#777777">Set up Soda: self-hosted agent</font></s> 
 3. **[Write SodaCL checks]({% link soda-cl/soda-cl-overview.md %})**
-4. Run scans, review results
+4. Run scans and review results
 5. Organize, alert, investigate
 
 Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

@@ -23,7 +23,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to writ
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s> 
 2. <s><font color="#777777">Set up Soda: install, deploy, or invoke</font></s> 
 3. **Write SodaCL checks** 📍 You are here! 
-4. Run scans, review results 
+4. Run scans and review results 
 5. Organize, alert, investigate 
 
 <br/>
@@ -267,9 +267,9 @@ scan.add_sodacl_yaml_files("./my_scan_dir/sodacl_file_three.yml")
 ## Next
 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
-2. <s><font color="#777777">Set up Soda: programmatic</font></s> 
+2. <s><font color="#777777">Set up Soda: install, deploy, or invoke</font></s> 
 3. <s><font color="#777777">Write SodaCL checks</font></s> 
-4. **[Run scans, review results]({% link soda-library/run-a-scan.md %})**
+4. **[Run scans and review results]({% link soda-library/run-a-scan.md %})**
 5. Organize, alert, investigate
 
 Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
