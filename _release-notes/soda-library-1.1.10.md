@@ -1,6 +1,6 @@
 ---
-name: "1.1.9"
-date: 2023-09-12
+name: "1.1.10"
+date: 2023-09-13
 products:
   - soda-library
 ---

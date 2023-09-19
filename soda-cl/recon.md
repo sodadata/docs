@@ -49,7 +49,10 @@ reconciliation Production:
     - rows diff < 5
     - rows diff = 0:
         source columns: [customer_key, region_id]
-        target column: [customer_base_key, region]
+        target columns: [customer_base_key, region]
+
+  # Schema reconciliation check
+    - schema
 ```
 
 [Prerequisites](#prerequisites)<br />
@@ -58,6 +61,7 @@ reconciliation Production:
 [Define reconciliation checks](#define-reconciliation-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Metric reconciliation checks](#metric-reconciliation-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Record reconciliation checks](#record-reconciliation-checks) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Schema reconciliation checks](#schema-reconciliation-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Add attributes](#add-attributes) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Add a filter](#add-a-filter) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples)<br />
@@ -75,9 +79,10 @@ reconciliation Production:
 
 ## Types of reconciliation checks
 
-Soda supports two types of reconciliation checks: 
+Soda supports three types of reconciliation checks: 
 * metric reconciliation checks
 * record reconciliation checks
+* schema reconciliation checks
 
 A **metric reconciliation check** calculates the measurement of a metric such as `sum` or `avg` on data in the same dataset in two different data sources; where the delta between calculated measurements differs to the extent that it exceeds the threshold you set in the check, the check fails. Note, you can also compare data between datasets within the same data source. 
 
@@ -124,6 +129,24 @@ reconciliation Production:
 ![recon diff](/assets/images/recon-diff.png){:height="480px" width="480px"}
 
 Read more about the [optional configurations](#reconciliation-checks) you can add to a record reconciliation check.
+
+A **schema reconciliation check** compares the columns of two datasets to reveal any differences between target and source; where the schema differs, Soda registers a mismatch and the check fails.
+
+```yaml
+reconciliation Production:
+  label: "Recon diff check"
+  datasets:
+    source:
+      dataset: dataset Y
+      datasource: Data source A
+    target:
+      dataset: dataset Y
+      datasource: Data source B
+  checks:
+    - schema
+```
+
+![recon schema](/assets/images/recon-schema.png){:height="700px" width="700px"}
 
 ### Best practice for using reconciliation checks
 
@@ -308,6 +331,18 @@ reconciliation Production:
 ![recon diff2](/assets/images/recon-diff2.png){:height="500px" width="500px"}
 
 
+### Schema reconciliation checks
+
+The syntax of schema reconciliation checks is simple, and without configuration details beyond the check identifier.
+{% include code-header.html %}
+```yaml
+reconciliation Production:
+...
+  checks:
+    - schema
+```
+
+
 ### Add attributes
 
 Add attributes to metric or record reconciliation checks to organize your checks and alert notifications in Soda Cloud. For example, you can apply attributes to checks to label and sort check results by department, priority, location, etc.
@@ -459,7 +494,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 | :-: | ------------|---------------|
 | ✓ | Define a name for a reconciliation check; see [example](#example-with-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Add an identity to a check; see [example](#example-with-identity). | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
-| ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alerts). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
+| ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alerts). <br />*Exception:* schema reconciliation checks do not support alert configurations.| [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |

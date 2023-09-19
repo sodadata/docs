@@ -9,6 +9,14 @@ parent: Reference
 
 <br />
 
+#### September 19, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.11 and Soda Core 3.0.49.
+
+#### September 18, 2023
+* Added to [Reference check documentation]({% link soda-cl/reference.md %}#define-reference-checks) for the new configuration `must not exist`.
+* Updated support for dbt-core 1.3, 1.5, and 1.6 for [ingesting tests]({% link soda/integrate-dbt.md %}#prerequisites) into Soda Cloud. 
+* Added documentation for [schema reconciliation checks]({% link soda-cl/recon.md %}#types-of-reconciliation-checks).
+
 #### September 14, 2023
 * Removed known issue for inability to use check identity with failed row checks. This is now supported in Soda Library.
 
