@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### September 20, 2023
+* Updated [schema reconciliation checks]({% link soda-cl/recon.md %}#types-of-reconciliation-checks) to clarify that the check validates columns names *and* data types.
+
 #### September 19, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.11 and Soda Core 3.0.49.
 

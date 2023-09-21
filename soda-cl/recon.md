@@ -130,7 +130,7 @@ reconciliation Production:
 
 Read more about the [optional configurations](#reconciliation-checks) you can add to a record reconciliation check.
 
-A **schema reconciliation check** compares the columns of two datasets to reveal any differences between target and source; where the schema differs, Soda registers a mismatch and the check fails.
+A **schema reconciliation check** compares the columns of two datasets to reveal any differences between target and source; where the columns names differ, or the data type has changed, Soda registers a mismatch and the check fails.
 
 ```yaml
 reconciliation Production:
@@ -345,7 +345,7 @@ reconciliation Production:
 
 ### Add attributes
 
-Add attributes to metric or record reconciliation checks to organize your checks and alert notifications in Soda Cloud. For example, you can apply attributes to checks to label and sort check results by department, priority, location, etc.
+Add attributes to reconciliation checks to organize your checks and alert notifications in Soda Cloud. For example, you can apply attributes to checks to label and sort check results by department, priority, location, etc.
 
 You can add custom attributes to reconciliation checks in two ways:
 * in bulk, so that Soda adds the attribute to all checks in the reconciliation project
@@ -429,7 +429,7 @@ Soda Cloud Trace: 4380***10
 
 ### Failed row samples
 
-Record reconciliation checks, and reconcilication metric checks that borrow from `failed rows` check syntax such as the `name_combo` check in the example above, *explicitly* collect samples of any failed rows to display in Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
+Record reconciliation checks and reconcilication metric checks that borrow from `failed rows` check syntax such as the `name_combo` check in the example above, *explicitly* collect samples of any failed rows to display in Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
 Read more [About failed row samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples)
 
