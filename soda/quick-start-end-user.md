@@ -1,51 +1,33 @@
 ---
 layout: default
-title: Enable end users to test data quality
+title: Self-serve data quality
 description: Follow this guide to enable Soda Cloud end users to write their SodaCL checks for data quality for the data that matters to them the most.
-parent: Get started
+parent: Use case guides
 redirect_from:
 - /soda/quick-start-sodacloud.html
 ---
 
-# Enable end users to test data quality
+# Self-serve data quality
 *Last modified on {% last_modified_at %}*
 
 Use this guide to set up the Soda Cloud to enable users across your organization to serve themselves when it comes to testing data quality. 
 
 Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and the Soda Cloud, then invite your Data Analyst and Scientist colleagues to join the account to create agreements and begin writing their own SodaCL checks for data quality. 
 
-![end-user-start](/assets/images/end-user-start.png){:width="500px"}
+(Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
 
-**[01](#soda-basics)** Learn the basics of Soda<br />
-**[02](#about-this-guide)** Get context for this guide<br />
-**[03](#deploy-a-soda-agent)** Deploy a Soda Agent in a Kubernetes cluster<br />
-**[04](#connect-a-data-source)** Connect a data source to Soda Cloud<br />
-**[05](#set-up-slack-integration-and-notification-rules)** Set up Slack integration and notification rules<br />
-**[06](#invite-your-colleagues)** Invite your colleagues to begin writing agreements<br />
 <br />
 
+![end-user-start](/assets/images/end-user-start.png){:width="500px"}
 
-## Soda basics
+[About this guide](#about-this-guide)<br />
+[Deploy a Soda Agent in a Kubernetes cluster](#deploy-a-soda-agent)<br />
+[Connect a data source to Soda Cloud](#connect-a-data-source)<br />
+[Set up Slack integration and notification rules](#set-up-slack-integration-and-notification-rules)<br />
+[Invite your colleagues to begin writing agreements](#invite-your-colleagues)<br />
+[Go further](#go-further)<br />
+<br />
 
-Soda works by taking data quality checks that you prepare and using them to run a scan of datasets in a data source. A scan is a CLI command which instructs Soda to prepare optimized SQL queries that execute data quality checks on your data source to find invalid, missing, or unexpected data. When checks fail, they surface bad-quality data and present check results that help you investigate and address quality issues. 
-
-To enable your colleagues to test data quality, you install Soda as an **Agent** in your own network infrastructure, and sign up for a **Soda Cloud account** so that you can complete the following tasks:
-
-* **Connect to your data source.** <br />To connect to a data source such as Snowflake, Amazon Athena, or Big Query, you add a new data source in Soda Cloud which stores access details for your data source such as host, port, and data source login credentials. 
-* **Define checks to surface “bad” data.** <br />To define the data quality checks that Soda runs against a dataset, you use an Agreement, a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. These agreements contain checks, which are tests that Soda performs when it scans a dataset in your data source. The agreement stores the checks you write using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.
-* **Run a scan to execute your data quality checks.** <br />During a scheduled scan, Soda does not ingest your data, it only scans it for quality metrics, then uses the metadata to prepare scan results<sup>1</sup>. After a scan, each check results in one of three default states:
-    * pass: the values in the dataset match or fall within the thresholds you specified
-    * fail: the values in the dataset do not match or fall within the thresholds you specified
-    * error: the syntax of the check is invalid
-    * A fourth state, warn, is something you can explicitly configure for individual checks. 
-* **Review scan results and investigate issues.** <br />You can review the scan output in your Soda Cloud account which offers access to visualized scan results, trends in data quality over time, and the ability to integrate with the messaging, ticketing, and data cataloging tools you already use, like Slack, Jira, and Alation.
-
-<sup>1</sup> An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid issue investigation, a feature you can [disable]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).
-
-Learn more about [How Soda works]({% link soda-library/how-library-works.md %}).<br />
-Learn more about [running Soda scans]({% link soda-library/run-a-scan.md %}).<br />
-Learn more about [SodaCL Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).<br />
-Access the [Glossary]({% link soda/glossary.md %}) for a full list of Soda terminology. 
 
 ## About this guide
 
@@ -56,9 +38,6 @@ For context, the example assumes that you have the appropriate access to a cloud
 Once you have completed the set-up, you can direct your colleagues to log in to Soda Cloud and begin [creating Agreements]({% link soda-cloud/agreements.md %}). An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. It contains data quality checks that run according to the schedule you defined for the data source. 
 
 When checks fail during data quality scans, you and your colleagues get alerts via Slack which enable you to address issues before they have a downstream impact on the users or systems that depend upon the data.
-
-(Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
-<br />
 
 ## Deploy a Soda Agent
 
@@ -98,40 +77,10 @@ Navigate to **your avatar** > **Invite Team Members**, then complete the form to
 <br />
 ✨Well done!✨ You've taken the first step towards a future in which you and your colleagues can collaborate on defining and maintaining good-quality data. Huzzah!
 
-## Now what?
-<div class="docs-html-content">
-    <section class="docs-section" style="padding-top:0">
-        <div class="docs-section-row">
-            <div class="docs-grid-3cols">
-                <div>
-                    <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
-                    <h2>Experiment</h2>
-                    <a href="/soda/quick-start-sodacl.html">SodaCL tutorial</a>                    
-                    <a href="/soda-cl/metrics-and-checks.html">Study metrics and checks</a>
-                    <a href="/soda-cl/compare.html">Compare data</a>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-new@2x.png" width="54" height="40">
-                    <h2>Sip more Soda</h2>
-                    <a href="/soda/integrate-webhooks.html" target="_blank">Integrate with your tools</a>
-                    <a href="/soda-cl/check-attributes.html">Add check attributes</a>
-                    <a href="/soda-cloud/failed-rows.html">Examine failed row samples</a>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
-                    <h2>Choose your adventure</h2>
-                    <a href="/soda/quick-start-dev.html">Test data during development</a>
-                    <a href="/soda/quick-start-prod.html">Test data in a pipeline</a>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
 
+## Go further?
 
-
-## Need help?
-
+* [Get organized]({% link soda-cloud/collaborate.md %}) in Soda!
 * <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
 * Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

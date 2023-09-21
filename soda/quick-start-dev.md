@@ -2,7 +2,7 @@
 layout: default
 title: Test data quality during CI/CD development
 description: Follow this guide to set up and run automated Soda scans for data quality during CI/CD development using GitHub Actions.
-parent: Get started
+parent: Use case guides
 ---
 
 # Test data quality during CI/CD development
@@ -15,17 +15,13 @@ Use this guide to install and set up Soda to test the quality of your data durin
 
 ![cicd-pipeline](/assets/images/cicd-pipeline.png){:width="700px"}
 
-**[01](#soda-basics)** Learn the basics of Soda<br />
-**[02](#about-this-guide)** Get context for this guide<br />
-**[03](#add-the-github-action-for-soda-to-a-workflow)** Add the GitHub Action for Soda to a Workflow<br />
-**[04](#write-checks-for-data-quality)** Write checks for data quality<br />
-**[05](#trigger-a-scan-and-examine-the-scan-results)** Trigger a scan and examine the scan results<br />
+[About this guide](#about-this-guide)<br />
+[Add the GitHub Action for Soda to a Workflow](#add-the-github-action-for-soda-to-a-workflow)<br />
+[Write checks for data quality](#write-checks-for-data-quality)<br />
+[Trigger a scan and examine the scan results](#trigger-a-scan-and-examine-the-scan-results)<br />
+[Go further](#go-further)<br />
 <br />
 
-
-## Soda basics
-
-{% include about-soda.md %}
 
 ## About this guide
 
@@ -154,42 +150,10 @@ See the public <a href="https://github.com/sodadata/soda-github-action" target="
 
 ✨Well done!✨ You've taken the first step towards a future in which you and your colleagues prevent data quality issues from getting into production. Huzzah!
 
-## Now what?
-<div class="docs-html-content">
-    <section class="docs-section" style="padding-top:0">
-        <div class="docs-section-row">
-            <div class="docs-grid-3cols">
-                <div>
-                    <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
-                    <h2>Experiment</h2>
-                    <a href="/soda/quick-start-sodacl.html">SodaCL tutorial</a>                    
-                    <a href="/soda-cl/metrics-and-checks.html">Study metrics and checks</a>
-                    <a href="/soda-cl/user-defined.html">Write custom SQL checks</a>
-                    <a href="/soda-cl/compare.html">Compare data</a>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-new@2x.png" width="54" height="40">
-                    <h2>Sip more Soda</h2>
-                    <a href="/soda/integrate-webhooks.html" target="_blank">Integrate with your tools</a>
-                    <a href="/soda/integrate-github.html">Learn about the GitHub Action for Soda</a>
-                    <a href="/api-docs/reporting-api-v1.html">Report on data health</a>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
-                    <h2>Choose your adventure</h2>
-                    <a href="/soda/quick-start-prod.html">Test data in your pipeline</a>
-                    <a href="/soda/quick-start-end-user.html">Enable end-user testing</a>
-                    <a href="/soda/integrate-alation.html">Integrate with Alation</a>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
 
+## Go further
 
-
-## Need help?
-
+* [Get organized]({% link soda-cloud/collaborate.md %}) in Soda!
 * Not quite ready for this big gulp of Soda? Try [taking a sip]({% link soda/quick-start-sip.md %}), first.
 * <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
 * Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

@@ -2,7 +2,7 @@
 layout: default
 title: Add Soda to a Databricks notebook
 description: 
-parent: Setup examples
+parent: Use case guides
 ---
 
 # Add Soda to a Databricks notebook

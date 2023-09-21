@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Use case guides
-description: 
+description: Access examples of Soda implmentations according to use case and data quality testing needs.
 parent: Use case guides
 ---
 
@@ -30,7 +30,7 @@ Use the following guides as example implementations based on how you intend to u
                     <img src="/assets/images/icons/icon-collaboration@2x.png" width="54" height="40">
                     <h2>Self-serve Soda</h2>
                     <a href="/soda/quick-start-end-user.html" target="_blank">Self-serve data quality</a>
-                    <p>Use this guide to set up the Soda Cloud to enable users across your organization to serve themselves when it comes to testing data quality. </p>
+                    <p>Use this guide to set up Soda Cloud to enable users across your organization to serve themselves when it comes to testing data quality. </p>
                 </div>
                 <div>
                     <img src="/assets/images/icons/icon-investigate.png" width="50" height="40">

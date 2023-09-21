@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Install Soda Library
-description: From your command-line interface, execute a pip install command to install Soda Library.
-parent: Soda Library
+description: From your command-line interface, execute a pip install command to install Soda Library in your environment.
+parent: Get started
 redirect_from: 
 - /soda-core/install-scientific.html
 - /soda-core/get-started.html
@@ -241,7 +241,10 @@ You have two installation options to choose from:
           api_key_secret: 5wd-your-api-key-secret-aGuRg
           scheme:
     ```
-5. Save the `configuration.yml` file.
+5. Save the `configuration.yml` file. Run the following scan to confirm that Soda can successfully connect with your data source.
+```shell
+soda test-connection -d my_datasource -c configuration.yml
+```
 
 
 ## Provide credentials as system variables
@@ -272,7 +275,7 @@ data_source my_database_name:
 ```
 4. Save the configuration YAML file, then run a scan to confirm that Soda Library connects to your data source without issue.
 ```shell
-soda scan -d your_datasource -c configuration.yml checks.yml
+soda test-connection -d my_datasource -c configuration.yml
 ```
 
 ### For API key values
@@ -304,7 +307,7 @@ echo $API_KEY
     ```
 4. Save the configuration YAML file, then run a scan to confirm that Soda Library connects to Soda Cloud without issue.
 ```shell
-soda scan -d your_datasource -c configuration.yml checks.yml
+soda test-connection -d my_datasource -c configuration.yml
 ```
 
 

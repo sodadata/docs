@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Soda Agent extras
-description: Learn how to manage sensitive values using Kubernetes secrets and environment variables, and how to connect via AWS PrivateLink.
-parent: Soda Agent
+description: Learn how to manage sensitive values using Kubernetes secrets and environment variables, and how to integrate with an extermal secrets manager.
+parent: Get started
 ---
 
 # Soda Agent extras

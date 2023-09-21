@@ -2,7 +2,7 @@
 layout: default
 title: Add Soda to a data catalog
 description: 
-parent: Setup examples
+parent: Use case guides
 ---
 
 # Add Soda to a data catalog

@@ -2,7 +2,7 @@
 layout: default
 title: Test data as a product
 description: 
-parent: Use case setup guide
+parent: Use case guides
 ---
 
 # Test data as a product

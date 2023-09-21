@@ -2,7 +2,7 @@
 layout: default
 title: Automate data quality testing
 description: 
-parent: Setup examples
+parent: Use case guides
 ---
 
 # Automate data quality testing

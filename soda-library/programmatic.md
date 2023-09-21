@@ -2,7 +2,7 @@
 layout: default
 title: Invoke Soda Library
 description: Use Soda Library to programmatically execute scans and automate the checks for bad-quality data.
-parent: Soda Library
+parent: Get started
 redirect_from:
 - /soda-core/programmatic-scans.html
 - /soda-core/programmatic.html

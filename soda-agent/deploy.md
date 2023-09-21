@@ -2,7 +2,7 @@
 layout: default
 title: Deploy a Soda Agent in a Kubernetes cluster
 description: Learn how to deploy a Soda Agent in a Kubernetes cluster.
-parent: Soda Agent
+parent: Get started
 redirect_from: 
 - /soda-agent/test-deploy.html
 - /soda-agent/delete.html

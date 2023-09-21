@@ -41,7 +41,7 @@
     page: soda/quick-start-automate.md
   - subtitle: Add Soda to a data catalog
     page: soda/quick-start-catalog.md
-  - subtitle: Add Soda to Databricks notebook
+  - subtitle: Add Soda to a Databricks notebook
     page: soda/quick-start-notebook.md
 
 - title: Write SodaCL checks 

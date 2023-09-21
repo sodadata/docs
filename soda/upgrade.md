@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Upgrade, redploy, or uninstall Soda
-description: 
+description: Learn how to upgrade or uninstall Soda Library, or redploy a Soda Agent.
 parent: Get started
 ---
 
