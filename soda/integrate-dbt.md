@@ -48,7 +48,7 @@ Integrate dbt Cloud with Soda.
 
 Every time you execute tests in dbt, dbt captures information about the test results. Soda Library can access this information and translate it into test results that Soda Cloud can display. You must first run your tests in dbt before Soda Library can find and translate test results, then push them to Soda Cloud. <br />
 
-1. If you have not already done so, install one of the supported `soda-dbt` sub-package in the Python environment that also runs your Soda Library package.
+1. If you have not already done so, install one of the supported `soda-dbt` sub-packages in the Python environment that also runs your Soda Library package.
 ```shell
 pip install -i https://pypi.cloud.soda.io soda-dbt[v15]
 # OR
