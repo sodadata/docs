@@ -49,7 +49,6 @@ data_source my_datasource_name:
 | password | required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_PASSWORD}`. |
 | account| required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`. |
 | database| required | |
-| schema | required | |
 | warehouse| required | |
 | connection_timeout| required | |
 | role | optional | See <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Roles</a> for details. |
