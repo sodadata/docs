@@ -10,6 +10,7 @@ parent: Reference
 <br />
 
 #### September 26, 2023
+* Added documentation for reconciliation schema checks which now support [data type mapping]({% link soda-cl/recon.md %}#schema-reconciliation-checks).
 * Documented a new scan option, `--local` that you can add to a `soda scan` command to prevent Soda Library from pushing any check results to Soda Cloud. See: [Add scan options]({% link soda-library/run-a-scan.md %}#add-scan-options) and [Scan output in Soda Cloud]({% link soda-cloud/scan-output.md %}#do-not-send-scan-results-to-soda-cloud)
 * Revised and tigtened [Soda Core]({% link soda-core/overview-main.md %}) information.
 * Documented the global configuration to disable sending any samples of data to Soda Cloud; see [Disable samples in Soda Cloud]({% link soda-cl/sample-datasets.md %}#disable-samples-in-soda-cloud).
