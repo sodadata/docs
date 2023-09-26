@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### September 26, 2023
+* Added documentation for reconciliation schema checks which now support [data type mapping]({% link soda-cl/recon.md %}#schema-reconciliation-checks).
+
 #### September 21, 2023
 * Updated support for dbt for [ingesting tests]({% link soda/integrate-dbt.md %}#prerequisites) into Soda Cloud. You must now install a `soda-dbt` subpackage that uses dbt 1.5 or 1.6.
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.1.12. 

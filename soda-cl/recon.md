@@ -342,6 +342,27 @@ reconciliation Production:
     - schema
 ```
 
+Optionally, you can add a mapping configuration to a schema check to properly compare columns that use different data types. For example, you can use this configuration to map the comparison of a Snowflake column that uses Boolean and an MSSQL Server column that uses bit.
+{% include code-header.html %}
+```yaml
+reconciliation Production:
+  label: "Reconcile MS SQL to Snowflake"
+  datasets:
+    source:
+      dataset: opt-in-campaign
+      datasource: sqlserver1
+    target:
+      dataset: optin-campaign
+      datasource: snowflake_retail
+
+  checks:
+    - schema
+        types:
+          - source: bit
+            target: boolean
+          - source: enum
+            target: string
+```
 
 ### Add attributes
 
