@@ -11,6 +11,7 @@ parent: Reference
 
 #### September 26, 2023
 * Documented a new scan option, `--local` that you can add to a `soda scan` command to prevent Soda Library from pushing any check results to Soda Cloud. See: [Add scan options]({% link soda-library/run-a-scan.md %}#add-scan-options) and [Scan output in Soda Cloud]({% link soda-cloud/scan-output.md %}#do-not-send-scan-results-to-soda-cloud)
+* Revised and tigtened [Soda Core]({% link soda-core/overview-main.md %}) information.
 
 #### September 21, 2023
 * Updated support for dbt for [ingesting tests]({% link soda/integrate-dbt.md %}#prerequisites) into Soda Cloud. You must now install a `soda-dbt` subpackage that uses dbt 1.5 or 1.6.

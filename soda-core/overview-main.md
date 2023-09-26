@@ -15,13 +15,17 @@ redirect_from:
 
 **Soda Core** is a free, open-source Python library and CLI tool that enables data engineers to test data quality. Accessible on along with its documentation, you can download the CLI tool or import the Python library to prepare checks for data quality. 
 
+* Available for free
+* Compatible with basic SodaCL checks and configurations
+* Supports connections to 18+ data sources, same as Soda Library
+
 <a href="https://github.com/sodadata/soda-core" target="_blank" class="signup-button">Soda Core on GitHub</a> &nbsp;&nbsp;&nbsp; <a href="https://github.com/sodadata/soda-core/blob/main/docs/overview-main.md" target="_blank" class="signup-button">Soda Core Docs</a>
 
 <br />
 
-**Soda Library**, an extension of Soda Core, enables users to connect to Soda Cloud and offers features and functionality not available with the open-source tool. [Install Soda Library]({% link soda-library/install.md %}) for a free, 45-day trial, or [migrate from Soda Core]({% link soda-library/install.md %}#migrate-from-soda-core) to Soda Library without changing checks or data source connections.
+**Soda Library**, an extension of Soda Core, enables users to connect to Soda Cloud and is compatible with complex SodaCL checks, and offers other features and functionality not available with the open-source tool. [Install Soda Library]({% link soda-library/install.md %}) for a free, 45-day trial, or [migrate from Soda Core]({% link soda-library/install.md %}#migrate-from-soda-core) to Soda Library without changing checks or data source connections.
 
-
+<!-- 
 ![done](/assets/images/done.png){:width="20px"} Supported<br />
 ![almost-done](/assets/images/almost-done.png){:width="20px"} Deprecating soon
 
@@ -43,7 +47,7 @@ redirect_from:
 |Use Check Templates |  | ![done](/assets/images/done.png){:width="20px"} |
 |Use Group By + Group Evolution checks |  | ![done](/assets/images/done.png){:width="20px"} |
 |Access extensive documentation on docs.soda.io |  | ![done](/assets/images/done.png){:width="20px"} |
-
+-->
 
 ---
 
