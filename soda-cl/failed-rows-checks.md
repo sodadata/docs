@@ -157,7 +157,7 @@ checks for dim_customer:
       fail condition: total_children = '2' and number_cars_owned >= 3
 ```
 
-If you wish to prevent Soda from collecting and sending failed row samples to Soda Cloud for an individual check, you can set the `samples limit` to `0`.
+If you wish to prevent Soda from collecting and sending failed row samples to Soda Cloud for an individual check, you can set the `samples limit` to `0`. Alternatively, you can disable all samples for all your data; see [Disable samples in Soda Cloud]({% link soda-cl/sample-datasets.md %}#disable-samples-in-soda-cloud).
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
