@@ -22,6 +22,7 @@ Log in to view the **Checks** dashboard; each row in the table represents a chec
 [Scan failed](#scan-failed)<br />
 [Sending scan results to Soda Cloud](#sending-scan-results-to-soda-cloud)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Troubleshoot](#troubleshoot)<br />
+[Do not send scan results to Soda Cloud](#do-not-send-scan-results-to-soda-cloud)<br />
 [Run an ad hoc scan](#run-an-ad-hoc-scan)<br />
 [Go further](#go-further)<br />
 <br />
@@ -77,8 +78,15 @@ checks:
             when schema changes: any
 ```
 
-
 <br />
+
+## Do not send scan results to Soda Cloud
+
+When you execute a scan from the command-line using Soda Library, you can add `--local` option to the scan command to prevent Soda Library from sending check results and any other metadata to Soda Cloud. Learn more about [scan options]({% link soda-library/run-a-scan.md %}#add-scan-options)
+{% include code-header.html %}
+```shell
+soda scan -d my_datasource -c configuration.yml checks.yml --local
+```
 
 ## Run an ad hoc scan in Soda Cloud
 
