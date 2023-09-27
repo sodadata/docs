@@ -39,12 +39,6 @@ Use the following guides as example implementations based on how you intend to u
                     <p>Use this guide to set up Soda to test before and after data migration.</p>
                 </div>
                 <div>
-                    <img src="/assets/images/icons/icon-new@2x.png" width="54" height="40">
-                    <h2>Soda for data products</h2>
-                    <a href="/soda-cloud/collaborate.html#invite-your-team-members">Test data as a product</a>
-                    <p>Use this guide to set up Soda to test the quality of your data product.</p>
-                </div>
-                <div>
                     <img src="/assets/images/icons/icon-pacman@2x.png" width="50" height="40">
                     <h2>Soda Automated monitoring</h2>
                     <a href="/soda/quick-start-migration.md">Automate data quality tests</a>

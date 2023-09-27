@@ -356,7 +356,7 @@ reconciliation Production:
       datasource: snowflake_retail
 
   checks:
-    - schema
+    - schema:
         types:
           - source: bit
             target: boolean

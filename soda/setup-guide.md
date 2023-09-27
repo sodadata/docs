@@ -75,7 +75,6 @@ The engineer can manage access to data sources while giving Soda Cloud end-users
 Use this setup for:<br />
 ✅ **Self-serve data quality**: Empower data analysts and scientists to self-serve and write their own checks for data quality. See: [Self-serve data quality]({% link soda/quick-start-end-user.md %})<br />
 ✅ **Data migration**: Migrate good-quality data from one data source to another. See: [Test during data migration]({% link soda/quick-start-migration.md %})<br />
-✅ **Data products**: Test data products to ensure clients, customers, or downstream users can trust the data they use for analysis and decisions. See: [Test data as a product]({% link soda/quick-start-product.md %})<br />
 ✅ **Automated data monitoring**: Set up data profiling and automated data quality monitoring. See: [Automate data quality tests]({% link soda/quick-start-automate.md %})<br />
 ✅ **Data catalog integration**: Integrate Soda with a data catalog such as Atlan, Alation, or Metaphor. See: [Add Soda to a data catalog]({% link soda/quick-start-catalog.md %})<br />
 
@@ -104,23 +103,6 @@ Requirements:
 ![programmatic](/assets/images/programmatic.png){:height="500px" width="500px"}
 
 <br />
-
-<!--
-Consult the following matrix for further guidance on which flavor best suits your needs.
-
-| Use case or data quality need | Flavor | Example setup | 
-| Manage data quality within a small data engineering team or data anlytics team who is comfortable working with the command-line and YAML files to design and execute scans for data quality. |  Local  | [Take a sip of Soda]({% link soda/quick-start-sip.md %}) |
-| Conduct a proof-of-concept evaluation of Soda as a data quality testing and monitoring tool. | Local |[Take a sip of Soda]({% link soda/quick-start-sip.md %})|
-| Tackle a data migration project from one data source to another. | Local | [Test during data migration]({% link soda/quick-start-migration.md %})|
-| Start from scratch to set up basic data quality checks on key datasets. | Local | TBD w/ check suggetions |
-| Empower data analysts and scientists to self-serve and write their own checks for data quality. | Agent | [Self-serve data quality]({% link soda/quick-start-end-user.md %})|
-| Test data products to ensure clients, customers, or downstream users can trust the data they use for analysis and decisions. | Agent | [Test data as a product]({% link soda/quick-start-product.md %})|
-| Set up data profiling and automated data quality monitoring.| Agent |[Automate data quality tests]({% link soda/quick-start-automate.md %}) |
-| Integrate Soda with a data catalog such as Atlan, Alation, or Metaphor.| Agent |[Add Soda to a data catalog]({% link soda/quick-start-catalog.md %})|
-| Test data before and after ingestion and transformation during development.| Programmatic | [Test data during development]({% link soda/quick-start-dev.md %})|
-| Test data in a pipeline so as enable circuit breaking that prevents bad-quality data from having a downstream impact.| Programmatic |[Test data in production]({% link soda/quick-start-prod.md %})|
-| Invoke Soda data quality scans in a Databricks Notebook.| Programmatic |[Add Soda to a Databricks notebook]({% link soda/quick-start-notebook.md %})|
--->
 
 ## Next
 
