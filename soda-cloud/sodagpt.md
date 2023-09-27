@@ -43,7 +43,9 @@ Log in to your **Soda Cloud** account, click the **Ask SodaGPT** button in the m
 
 SodaGPT uses Soda technology to translate natural language requirements into SodaCL checks. It is not related to GPT3, CPT4, chatGPT or OpenAI. 
 
-For SodaGPT's functionality, Soda trained a very specialized Large Language Model (LLM) based on the open-source Falcon-7b model. 
+For SodaGPT's functionality, Soda trained a very specialized Large Language Model (LLM) based on the open-source Falcon-7b model. The model currently does not learn from user input, and will never learn sensitive information from one user and expose it to another.
+
+SodaGPT only accepts the instructions you input in the chat; it does not collect or store any other data. Soda does not send the input to third parties. 
 
 ## Go further
 

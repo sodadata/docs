@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### September 27, 2023
+* Added clarifying information about user input and how it is used by [SodaGPT]({% link soda-cloud/sodagpt.md %}#about-the-ai).
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.13 and Soda Core 3.0.50.
+
 #### September 26, 2023
 * Added documentation for reconciliation schema checks which now support [data type mapping]({% link soda-cl/recon.md %}#schema-reconciliation-checks).
 * Documented a new scan option, `--local` that you can add to a `soda scan` command to prevent Soda Library from pushing any check results to Soda Cloud. See: [Add scan options]({% link soda-library/run-a-scan.md %}#add-scan-options) and [Scan output in Soda Cloud]({% link soda-cloud/scan-output.md %}#do-not-send-scan-results-to-soda-cloud)
