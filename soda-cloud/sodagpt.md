@@ -6,8 +6,8 @@ parent: Soda Cloud
 ---
 
 # Write checks with SodaGPT <br/>
+*Last modified on {% last_modified_at %}* <br />
 ![preview](/assets/images/preview.png){:height="85px" width="85px"}<br/>
-*Last modified on {% last_modified_at %}*
 
 **SodaGPT** is a generative AI assistant for data quality testing.
 

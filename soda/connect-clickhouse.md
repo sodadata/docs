@@ -5,8 +5,9 @@ description: Access configuration details to connect Soda to a ClickHouse data s
 parent: Connect a data source
 ---
 
-# Connect Soda to ClickHouse (Experimental)
-*Last modified on {% last_modified_at %}*
+# Connect Soda to ClickHouse
+*Last modified on {% last_modified_at %}* <br />
+![experimental](/assets/images/experimental.png){:height="125px" width="125px"}<br/>
 
 {% include connect-to-intro.md %}
 

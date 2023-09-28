@@ -23,7 +23,7 @@ data_source my_datasource_name:
   username: xxx
   password: xxx
   database: 
-  schema: 
+  schema: public
 ```
 
 | Property | Required | Notes                                                      |

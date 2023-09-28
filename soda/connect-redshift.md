@@ -18,15 +18,14 @@ Install package: `soda-redshift`
 ```yaml
 data_source my_datasource_name:
   type: redshift
-  connection:
-    host: db
-    username:
-    password:
-    database: 
-    access_key_id:
-    secret_access_key:
-    role_arn:
-    region: eu-west-1
+  host: db
+  username:
+  password:
+  database: 
+  access_key_id:
+  secret_access_key:
+  role_arn:
+  region: eu-west-1
   schema: public
 ```
 

@@ -10,7 +10,6 @@ parent: Use case guides
 
 Use this guide to install and set up Soda to test the quality in a data migration project. Test data quality at both source and target, both before and after migration to prevent data quality issues from polluting a new data source.
 
-
 (Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
 
 [About this guide](#about-this-guide)<br />

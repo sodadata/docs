@@ -5,8 +5,9 @@ description: Access configuration details to connect Soda to a Denodo data sourc
 parent: Connect a data source
 ---
 
-# Connect Soda to Denodo (Experimental)
-*Last modified on {% last_modified_at %}*
+# Connect Soda to Denodo
+*Last modified on {% last_modified_at %}*<br />
+![experimental](/assets/images/experimental.png){:height="125px" width="125px"}<br/>
 
 {% include connect-to-intro.md %}
 

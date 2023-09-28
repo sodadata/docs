@@ -20,7 +20,7 @@ parent: Connect a data source
 
 
 A note about BigQuery datasets: Google uses the term dataset slightly differently than Soda (and many others) do. 
-* In the context of Soda, a [dataset]({% link soda/glossary.md %}#dataset) is a representation of a tabular data structure with rows and columns. A dataset can take the form of a table in PostgreSQL or Snowflake, a stream, or a DataFrame in a Spark application. 
+* In the context of Soda, a [dataset]({% link soda/glossary.md %}#dataset) is a representation of a tabular data structure with rows and columns. A dataset can take the form of a table in PostgreSQL or Snowflake, or a DataFrame in a Spark application. 
 * In the context of BigQuery, a <a href="https://cloud.google.com/bigquery/docs/datasets-intro" target="_blank"> dataset</a> is "a top-level container that is used to organize and control access to your tables and views. A table or view must belong to a dataset..."
 
 Instances of "dataset" in Soda documentation always reference the former.
@@ -33,25 +33,24 @@ Install package: `soda-bigquery`
 ```yaml
 data_source my_datasource_name:
   type: bigquery
-  connection:
-    account_info_json: '{
-        "type": "service_account",
-        "project_id": "...",
-        "private_key_id": "...",
-        "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
-        "client_email": "...@project.iam.gserviceaccount.com",
-        "client_id": "...",
-        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-        "token_uri": "https://accounts.google.com/o/oauth2/token",
-        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/..."
-}'
-    auth_scopes:
-    - https://www.googleapis.com/auth/bigquery
-    - https://www.googleapis.com/auth/cloud-platform
-    - https://www.googleapis.com/auth/drive
-    project_id: "..."
-    dataset: sodacore
+  account_info_json: '{
+      "type": "service_account",
+      "project_id": "...",
+      "private_key_id": "...",
+      "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
+      "client_email": "...@project.iam.gserviceaccount.com",
+      "client_id": "...",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://accounts.google.com/o/oauth2/token",
+      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/..."
+    }'
+  auth_scopes:
+  - https://www.googleapis.com/auth/bigquery
+  - https://www.googleapis.com/auth/cloud-platform
+  - https://www.googleapis.com/auth/drive
+  project_id: "..."
+  dataset: sodacore
 ```
 
 | Property                                | Required                                                             |

@@ -18,12 +18,11 @@ Install package: `soda-postgres`
 ```yaml
 data_source my_datasource_name:
   type: postgres
-  connection:
-    host: db
-    port: "5432"
-    username:
-    password:
-    database: postgres
+  host: db
+  port: "5432"
+  username: soda
+  password: secret
+  database: postgres
   schema: public
 ```
 

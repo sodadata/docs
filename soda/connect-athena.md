@@ -18,12 +18,11 @@ Install package: `soda-athena`
 ```yaml
 data_source my_datasource_name:
   type: athena
-  connection:
-    access_key_id: 
-    secret_access_key: 
-    region_name: eu-west-1
-    staging_dir: 
-    schema: 
+  access_key_id: 
+  secret_access_key: 
+  region_name: eu-west-1
+  staging_dir: 
+  schema: 
 ```
 
 | Property          | Required | Notes                                                      |

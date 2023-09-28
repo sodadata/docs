@@ -18,13 +18,12 @@ Install package: `soda-vertica`
 ```yaml
 data_source my_datasource_name:
   type: vertica
-  connection:
-    host: abc
-    port: "5433"
-    username: ***
-    password: ***
-    database: vmart
-    schema: public
+  host: abc
+  port: "5433"
+  username: ***
+  password: ***
+  database: vmart
+  schema: public
 ```
 
 | Property | Required | Notes                                              |

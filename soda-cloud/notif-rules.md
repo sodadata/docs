@@ -39,7 +39,7 @@ Refer to [Data source, dataset, and check owners]({% link soda-cloud/roles-and-r
 
 For a new rule, you define conditions for sending notifications including the severity of a check result and whom to notify when bad data triggers an alert.
 
-In Soda Cloud, navigate to **your avatar** > **Notification Rules**, then click **New Notification Rule**. Follow the guided steps to complete the new rule. Use the sections below for insight into the values to enter in the fields and editing panels in the guided steps.
+In Soda Cloud, navigate to **your avatar** > **Notification Rules**, then click **New Notification Rule**. Follow the guided steps to complete the new rule. Use the table below for insight into the values to enter in the fields and editing panels in the guided steps.
 
 | Field or Label  | Guidance |
 | -----------------  | ----------- |

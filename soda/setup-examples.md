@@ -21,10 +21,10 @@ Use the following guides as example implementations based on how you intend to u
                     <p>Use this guide as an example for how to set up and use Soda to test the quality of your data in an Airflow pipeline.</p>
                 </div>
                 <div>
-                    <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
-                    <h2>Soda + GitHub</h2>
-                    <a href="/soda-cloud/collaborate.html#invite-your-team-members">Test data during development</a>
-                    <p>Use this guide to set up Soda to test the quality of your data during your development lifecycle in a GitHub Workflow.</p>
+                    <img src="/assets/images/icons/icon-investigate.png" width="50" height="40">
+                    <h2>Soda for data migration</h2>
+                    <a href="/soda/quick-start-migration.md">Test during data migration</a>
+                    <p>Use this guide to set up Soda to test before and after data migration.</p>
                 </div>
                 <div>
                     <img src="/assets/images/icons/icon-collaboration@2x.png" width="54" height="40">
@@ -33,28 +33,22 @@ Use the following guides as example implementations based on how you intend to u
                     <p>Use this guide to set up Soda Cloud to enable users across your organization to serve themselves when it comes to testing data quality. </p>
                 </div>
                 <div>
-                    <img src="/assets/images/icons/icon-investigate.png" width="50" height="40">
-                    <h2>Soda for data migration</h2>
-                    <a href="/soda/quick-start-migration.md">Test during data migration</a>
-                    <p>Use this guide to set up Soda to test before and after data migration.</p>
+                    <img src="/assets/images/icons/icon-dev-tools@2x.png" width="50" height="40">
+                    <h2>Soda + Databricks notebook</h2>
+                    <a href="/soda/quick-start-migration.md">Invoke Soda in Databricks</a>
+                    <p>Use this guide to invoke Soda data quality tests in a Databricks notebook.</p>
+                </div>
+                <div>
+                    <img src="/assets/images/icons/icon-new@2x.png" width="54" height="40">
+                    <h2>Soda + GitHub</h2>
+                    <a href="/soda-cloud/collaborate.html#invite-your-team-members">Test data during development</a>
+                    <p>Use this guide to set up Soda to test the quality of your data during your development lifecycle in a GitHub Workflow.</p>
                 </div>
                 <div>
                     <img src="/assets/images/icons/icon-pacman@2x.png" width="50" height="40">
-                    <h2>Soda Automated monitoring</h2>
+                    <h2>Soda + automated monitoring</h2>
                     <a href="/soda/quick-start-migration.md">Automate data quality tests</a>
                     <p>Use this guide to set up Soda to automatically monitor data quality.</p>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-investigate.png" width="50" height="40">
-                    <h2>Soda + Atlan</h2>
-                    <a href="/soda/quick-start-migration.md">Add Soda to a data catalog</a>
-                    <p>Use this guide to set up Soda to surface data quality results in your Atlan data catalog.</p>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-dev-tools@2x.png" width="50" height="40">
-                    <h2>Soda + Databricks notebook</h2>
-                    <a href="/soda/quick-start-migration.md">Add Soda to a Databricks notebook</a>
-                    <p>Use this guide to invoke Soda data quality tests from a Databricks notebook.</p>
                 </div>
             </div>
         </div>        
@@ -62,9 +56,7 @@ Use the following guides as example implementations based on how you intend to u
 </div>
 
 
-## Go further
-
-* Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
 ---

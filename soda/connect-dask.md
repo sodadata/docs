@@ -5,8 +5,9 @@ description: Access configuration details to connect Soda to Dask and Pandas.
 parent: Connect a data source
 ---
 
-# Connect Soda to Dask and Pandas (Experimental)
-*Last modified on {% last_modified_at %}*
+# Connect Soda to Dask and Pandas
+*Last modified on {% last_modified_at %}* <br />
+![experimental](/assets/images/experimental.png){:height="125px" width="125px"}<br/>
 
 For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.
 

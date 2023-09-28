@@ -76,7 +76,7 @@ Use this setup for:<br />
 ✅ **Self-serve data quality**: Empower data analysts and scientists to self-serve and write their own checks for data quality. See: [Self-serve data quality]({% link soda/quick-start-end-user.md %})<br />
 ✅ **Data migration**: Migrate good-quality data from one data source to another. See: [Test during data migration]({% link soda/quick-start-migration.md %})<br />
 ✅ **Automated data monitoring**: Set up data profiling and automated data quality monitoring. See: [Automate data quality tests]({% link soda/quick-start-automate.md %})<br />
-✅ **Data catalog integration**: Integrate Soda with a data catalog such as Atlan, Alation, or Metaphor. See: [Add Soda to a data catalog]({% link soda/quick-start-catalog.md %})<br />
+✅ **Data catalog integration**: Integrate Soda with a data catalog such as Atlan, Alation, or Metaphor. See: [Integrate Soda]({% link soda/integrate-alation.md %})<br />
 
 Requirements:
 * Access to your cloud-services environment, plus the authorization to deploy containerized apps in a new or existing Kubernetes cluster

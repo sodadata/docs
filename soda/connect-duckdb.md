@@ -5,8 +5,9 @@ description: Access configuration details to connect Soda to a DuckDB data sourc
 parent: Connect a data source
 ---
 
-# Connect Soda to DuckDB (Experimental)
-*Last modified on {% last_modified_at %}*
+# Connect Soda to DuckDB
+*Last modified on {% last_modified_at %}* <br />
+![experimental](/assets/images/experimental.png){:height="125px" width="125px"}<br/>
 
 {% include connect-to-intro.md %}
 
@@ -20,7 +21,6 @@ data_source my_datasource_name:
   type: duckdb
   path: filename.db
   read_only: true
-  
 ```
 
 | Property | Required | Notes                                                      |

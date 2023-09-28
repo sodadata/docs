@@ -35,10 +35,8 @@
     page: soda/quick-start-end-user.md
   - subtitle: Test before data migration
     page: soda/quick-start-migration.md
-  - subtitle: Automate data quality tests
+  - subtitle: Automate data quality monitoring
     page: soda/quick-start-automate.md
-  - subtitle: Add Soda to a data catalog
-    page: soda/quick-start-catalog.md
   - subtitle: Add Soda to a Databricks notebook
     page: soda/quick-start-notebook.md
 
@@ -114,18 +112,6 @@
   - subtitle: Integrate webhooks
     page: soda/integrate-webhooks.md
 
-- title: Access metadata via API
-  page: api-docs/reporting-api-v1.md
-  subcategories:
-  - subtitle: Reporting API v1
-    page: api-docs/reporting-api-v1.md
-  - subtitle: Reporting API v0 (Soon deprecated)
-    page: api-docs/reporting-api.md
-  - subtitle: Changelog and migration guide
-    page: api-docs/reporting-api-v1-migration-guide.md
-  - subtitle: Build a reporting dashboard
-    page: api-docs/reporting-api-to-overview-dashboards.md
-
 - title: SodaCL reference
   page: soda-cl/metrics-and-checks.md
   subcategories:
@@ -133,42 +119,42 @@
     page: soda-cl/metrics-and-checks.md
   - subtitle: Optional check configurations
     page: soda-cl/optional-config.md
-  - subtitle: Numeric metrics
-    page: soda-cl/numeric-metrics.md
-  - subtitle: Missing metrics
-    page: soda-cl/missing-metrics.md
-  - subtitle: Validity metrics
-    page: soda-cl/validity-metrics.md
-  - subtitle: Freshness checks
-    page: soda-cl/freshness.md
-  - subtitle: Schema checks
-    page: soda-cl/schema.md
-  - subtitle: Reference checks
-    page: soda-cl/reference.md
-  - subtitle: Cross checks
-    page: soda-cl/cross-row-checks.md
-  - subtitle: Reconciliation checks
-    page: soda-cl/recon.md
   - subtitle: Anomaly score checks
     page: soda-cl/anomaly-score.md
-  - subtitle: Distribution checks
-    page: soda-cl/distribution.md
-  - subtitle: User-defined checks
-    page: soda-cl/user-defined.md
   - subtitle: Check template
     page: soda-cl/check-template.md
+  - subtitle: Cross checks
+    page: soda-cl/cross-row-checks.md
+  - subtitle: Distribution checks
+    page: soda-cl/distribution.md
   - subtitle: Failed rows checks
     page: soda-cl/failed-rows-checks.md
   - subtitle: Filters and variables
     page: soda-cl/filters.md
   - subtitle: For each
     page: soda-cl/for-each.md
+  - subtitle: Freshness checks
+    page: soda-cl/freshness.md
   - subtitle: Group by
     page: soda-cl/group-by.md
   - subtitle: Group evolution
     page: soda-cl/group-evolution.md
+  - subtitle: Missing metrics
+    page: soda-cl/missing-metrics.md
+  - subtitle: Numeric metrics
+    page: soda-cl/numeric-metrics.md
+  - subtitle: Reconciliation checks
+    page: soda-cl/recon.md
+  - subtitle: Reference checks
+    page: soda-cl/reference.md
+  - subtitle: Schema checks
+    page: soda-cl/schema.md
   - subtitle: Troubleshoot SodaCL
     page: soda-cl/troubleshoot.md
+  - subtitle: User-defined checks
+    page: soda-cl/user-defined.md
+  - subtitle: Validity metrics
+    page: soda-cl/validity-metrics.md
 
 - title: Data source reference
   page: soda/connect-athena.md
@@ -215,6 +201,18 @@
     page: soda/connect-trino.md
   - subtitle: Connect to Vertica
     page: soda/connect-vertica.md
+
+- title: Access metadata via API
+  page: api-docs/reporting-api-v1.md
+  subcategories:
+  - subtitle: Reporting API v1
+    page: api-docs/reporting-api-v1.md
+  - subtitle: Reporting API v0 (Soon deprecated)
+    page: api-docs/reporting-api.md
+  - subtitle: Changelog and migration guide
+    page: api-docs/reporting-api-v1-migration-guide.md
+  - subtitle: Build a reporting dashboard
+    page: api-docs/reporting-api-to-overview-dashboards.md
 
 - title: Learning resources
   page: soda/product-overview.md

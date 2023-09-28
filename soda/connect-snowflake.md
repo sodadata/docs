@@ -26,19 +26,18 @@ Install package: `soda-snowflake`
 ```yaml
 data_source my_datasource_name:
   type: snowflake
-  connection:
-    username: 
-    password: 
-    account: 
-    database: 
-    warehouse:
-    connection_timeout: 
-    role: PUBLIC
-    client_session_keep_alive: true
-    authenticator: externalbrowser
-    session_parameters:
-      QUERY_TAG: soda-queries
-      QUOTED_IDENTIFIERS_IGNORE_CASE: false
+  username: 
+  password: 
+  account: 
+  database: 
+  warehouse:
+  connection_timeout: 
+  role: PUBLIC
+  client_session_keep_alive: true
+  authenticator: externalbrowser
+  session_parameters:
+    QUERY_TAG: soda-queries
+    QUOTED_IDENTIFIERS_IGNORE_CASE: false
   schema: public
 ```
 

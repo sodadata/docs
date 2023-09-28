@@ -18,12 +18,11 @@ Because Google CloudSQL is compatible with PostgreSQL wire protocol, Soda offers
 ```yaml
 data_source my_datasource_name:
   type: postgres
-  connection:
-    host: db
-    port: "5432"
-    username:
-    password:
-    database: postgres
+  host: db
+  port: "5432"
+  username:
+  password:
+  database: postgres
   schema: public
 ```
 

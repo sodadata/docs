@@ -43,11 +43,12 @@ When checks fail during data quality scans, you and your colleagues get alerts v
 
 The Soda Agent is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster.
 
-Access the exhaustive deployment instructions for the cloud services provider you use.
-* [Amazon Elastic Kubernetes Service (EKS)]({% link soda-agent/deploy-aws.md %})
-* [Microsoft Azure Kubernetes Service (AKS)]({% link soda-agent/deploy-azure.md %})
-* [Google Kubernetes Engine (GKE)]({% link soda-agent/deploy-google.md %})
-* [Cloud services provider-agnostic instructions]({% link soda-agent/deploy.md %})
+Access the [exhaustive deployment instructions]({% link soda-agent/deploy.md %}#deploy-a-soda-agent-in-a-kubernetes-cluster) for the cloud services provider you use.
+* Cloud services provider-agnostic instructions
+* Amazon Elastic Kubernetes Service (EKS)
+* Microsoft Azure Kubernetes Service (AKS)
+* Google Kubernetes Engine (GKE)
+
 
 ## Connect a data source
 

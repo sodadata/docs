@@ -5,8 +5,9 @@ description: Access configuration details to connect Soda to a Microsoft Azure S
 parent: Connect a data source
 ---
 
-# Connect Soda to Azure Synapse (Experimental)
-*Last modified on {% last_modified_at %}*
+# Connect Soda to Azure Synapse
+*Last modified on {% last_modified_at %}* <br />
+![experimental](/assets/images/experimental.png){:height="125px" width="125px"}<br/>
 
 {% include connect-to-intro.md %}
 

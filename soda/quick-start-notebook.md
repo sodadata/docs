@@ -14,9 +14,8 @@ Use this guide to install and set up Soda in a Databricks notebook so you can ru
 
 [About this guide](#about-this-guide)<br />
 [Sign up for Soda Cloud](#prepare-for-data-migration)<br />
-[Install and set up Soda](#install-and-set-up-soda)<br />
+[Set up Soda](#set-up-soda)<br />
 [Go further](#go-further)<br />
-<br />
 
 ## About this guide
 
@@ -32,11 +31,13 @@ To validate your account license or free trial, Soda Library must communicate wi
 2. Navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys. 
 3. Copy+paste the API key values to a temporary, secure place in your local environment.
 
-## Install and set up Soda
+## Set up Soda
 
 Soda Library has the following requirements:
 * Python 3.8 or greater
 * Pip 21.0 or greater
+
+Download the notebook: <a href="soda-databricks-notebook.ipynb" download>Soda Databricks notebook</a>
 
 {% include code-header.html %}
 ```python
@@ -49,65 +50,73 @@ from soda.scan import Scan
 
 # Create a Spark DataFrame, or use the Spark API to read data and create a DataFrame
 # A Spark DataFrame is a distributed collection of data organized into named columns which provides a structured and tabular representation of data within the Apache Spark framework. 
-df = spark.table("delta.`/databricks-datasets/nyctaxi/tables/adventureworks`")
+df = spark.table("delta.`/databricks-datasets/adventureworks/tables/adventureworks`")
 
 # Create a view that Soda uses as a dataset
-df.createOrReplaceTempView("NYC_Taxi_Data")
+df.createOrReplaceTempView("adventureworks")
 
 # Create a scan object
 scan = Scan()
 
 # Set a scan definition
-# Use a scan definition to configure how to execute the scan, which data to scan.
+# Use a scan definition to configure which data to scan and how to execute the scan.
 scan.set_scan_definition_name("Databricks Notebook")
 scan.set_data_source_name("spark_df")
 
-### Attach a Spark session
-
+# Attach a Spark session
 scan.add_spark_session(spark)
 
-### Define checks for datasets
-
-# TODO: Extend checks for demo purposes
+# Define checks for datasets
+# A Soda Check is a test that Soda Library performs when it scans a dataset in your data source. You can define your checks in-line in the notebook, or define them in a separate checks.yml fail that is accessible by Spark.
 checks = """
-checks for NYC_Taxi_Data:
-  - row_count > 0:
-      name: Row Count Not Zero
+checks for dim_customer:
+  - invalid_count(email_address) = 0:
+      valid format: email
+      name: Ensure values are formatted as email addresses
+  - missing_count(last_name) = 0:
+      name: Ensure there are no null values in the Last Name column
+  - duplicate_count(phone) = 0:
+      name: No duplicate phone numbers
+  - freshness(date_first_purchase) < 7d:
+      name: Data in this dataset is less than 7 days old
+  - schema:
+      warn:
+        when schema changes: any
+      name: Columns have not been added, removed, or changed
 sample datasets:
   datasets:
-    - include NYC_Taxi_Data
+    - include dim_%
 """
 
-#### If you defined checks in a file accessible via Spark, you can use the scan.add_sodacl_yaml_file method to retrieve the checks.
-
+# OR, define checks in a file accessible via Spark, then use the scan.add_sodacl_yaml method to retrieve the checks
 scan.add_sodacl_yaml_str(checks)
 
-### Optionally, add a configuration file with Soda Cloud credentials
+# Add your Soda Cloud connection configuration using the API Keys you created in Soda Cloud
+# Use cloud.soda.io for EU region
+# Use cloud.us.soda.io for US region
 
 config ="""
 soda_cloud:
-  host: demo.soda.io
-  api_key_id: 399b27f5-f51a-4463-9992-3ce241ab53c9
-  api_key_secret: hNSg7Fu4NngGVX--95RmdwIkpVpjVGrhr0cvVxpUPSQ4PD77xD_W1Q
+  host: cloud.soda.io
+  api_key_id: 39**9
+  api_key_secret: hN**_W1Q
 """
+
+# OR, configure the connection details in a file accessible via Spark, then use the scan.add_configuration_yaml method to retrieve the config
 scan.add_configuration_yaml_str(config)
 
-### Execute a scan
-
+# Execute a scan
 scan.execute()
 
-### Check the Scan object for methods to inspect the scan result
-
-The following prints all logs to the console
-
+# Check the Scan object for methods to inspect the scan result
+# The following prints all logs to the console
 print(scan.get_logs_text()) 
-
-### Use the additional scan methods to insert circuit breakers into your processes, e.g. scan.assert_no_checks_fail
-
 ```
 
 ## Go further
 
+* Learn more about [SodaCL checks and metrics]({% link soda-cl/metrics-and-checks.md %}).
+* Access instructions to [Generate API Keys]({% link soda-cloud/api-keys.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 
