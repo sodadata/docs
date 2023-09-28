@@ -261,7 +261,7 @@ $code-background-color: #f8f9f9;
 
         .site-title {
             padding-left: 30px;
-            padding-right: 30px;
+            padding-right: 27px;
         }
 
         .site-title:hover {
@@ -270,12 +270,12 @@ $code-background-color: #f8f9f9;
 
         .site-title::after {
             white-space: nowrap;
-            content: "Help Center";
+            content: "Documentation";
             font-size: 15px;
             line-height: 40px;
             font-weight: 600;
             display: block;
-            padding-left: 20px;
+            padding-left: 5px;
             border-left: 1px solid #C2C2C2;
         }
     }

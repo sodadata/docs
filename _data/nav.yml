@@ -15,10 +15,10 @@
     page: soda-library/install.md
   - subtitle: Deploy a Soda Agent
     page: soda-agent/deploy.md
-  - subtitle: Invoke Soda Library
-    page: soda-library/programmatic.md
   - subtitle: Soda Agent extras
     page: soda-agent/secrets.md
+  - subtitle: Invoke Soda Library
+    page: soda-library/programmatic.md
   - subtitle: Upgrade, redeploy, uninstall
     page: soda/upgrade.md
 
@@ -29,16 +29,17 @@
     page: soda/setup-examples.md 
   - subtitle: Test data in a pipeline
     page: soda/quick-start-prod.md
-  - subtitle: Test data during development
-    page: soda/quick-start-dev.md
-  - subtitle: Self-serve data quality
-    page: soda/quick-start-end-user.md
   - subtitle: Test before data migration
     page: soda/quick-start-migration.md
-  - subtitle: Automate data quality monitoring
-    page: soda/quick-start-automate.md
-  - subtitle: Add Soda to a Databricks notebook
+  - subtitle: Self-serve data quality
+    page: soda/quick-start-end-user.md
+  - subtitle: Invoke Soda in Databricks
     page: soda/quick-start-notebook.md
+  - subtitle: Test data during development
+    page: soda/quick-start-dev.md
+  - subtitle: Automate monitoring
+    page: soda/quick-start-automate.md
+
 
 - title: Write SodaCL checks 
   page: soda-cl/soda-cl-overview.md
@@ -51,11 +52,11 @@
     page: soda-cloud/sodagpt.md
   - subtitle: Adopt check suggestions
     page: soda-library/check-suggestions.md
-  - subtitle: Set up automated monitoring
+  - subtitle: Add automated monitoring
     page: soda-cl/automated-monitoring.md
-  - subtitle: Access dataset profile info
+  - subtitle: Profile data
     page: soda-cl/profile.md
-  - subtitle: Access sample data
+  - subtitle: Sample data
     page: soda-cl/sample-datasets.md
   - subtitle: Compare data using SodaCL
     page: soda-cl/compare.md

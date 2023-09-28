@@ -8,9 +8,9 @@ parent: SodaCL
 # SodaCL tutorial
 *Last modified on {% last_modified_at %}*
 
-If you are staring at a blank YAML file wondering what SodaCL checks to write to surface data quality issues, this quick start tutorial is for you. 
+If you are staring at a blank page wondering what SodaCL checks to write to surface data quality issues, this quick start tutorial is for you. 
 
-Alternatively, use the [Check suggestions]({% link soda-library/check-suggestions.md %}) assisstant in the Soda Library CLI tool to profile a dataset and auto-generate basic checks for data quality.
+Alternatively, use the [Check suggestions]({% link soda-library/check-suggestions.md %}) assisstant in the Soda Library CLI to profile a dataset and auto-generate basic checks for data quality.
 
 ![blank-page](/assets/images/blank-page.png){:height="500px" width="500px"}
 
@@ -30,13 +30,9 @@ Alternatively, use the [Check suggestions]({% link soda-library/check-suggestion
 
 ## SodaCL: In brief
 
-**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with Soda tools, you use SodaCL to write checks for data quality, then run a scan of the data in your data source to execute those checks.
+**Soda Checks Language (SodaCL)** is a YAML-based, domain-specific language for data reliability. Used in conjunction with Soda software, you use SodaCL to write checks for data quality, then run a scan of the data in your data source to execute those checks.
 
-After installing Soda, you connect it to your data source (Snowflake, BigQuery, etc.) by defining connection details such as host, username, and password, in a **configuration YAML** file (except SparkDF, which is [special]({% link soda/connect-spark.md %})). Then, you define your Soda checks for data quality in a **checks YAML** file. 
-
-A **Soda Check** is a test that Soda Library performs when it scans a dataset in your data source. When you use Soda Library to run a scan on data in your data source, you reference both the configuration and checks YAML files in the scan command.
-
-A **Soda scan** executes the checks you defined in the checks YAML file and returns a result for each check: pass, fail, or error. (Optionally, you can configure a check to warn instead of fail by setting an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations).)
+A **Soda Check** is a test that Soda performs when it scans a dataset in your data source. A **Soda scan** executes the checks you defined and returns a result for each check: pass, fail, or error. Optionally, you can configure a check to warn instead of fail by setting an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations).
 
 
 ## About this tutorial
@@ -50,8 +46,8 @@ You do not need to follow the tutorial sequentially.
 
 ## Tutorial prerequisites
 
-* You have completed the [Take a sip of Soda]({% link soda/quick-start-sip.md %}) tutorial <br /> OR <br /> you have followed the instructions to [install]({% link soda-library/install.md %}), then [configure]({% link soda-library/configure.md %}) Soda on your own. 
-* You have created a new YAML file in your code editor and named it `checks.yml`.
+* You have completed the [Take a sip of Soda]({% link soda/quick-start-sip.md %}) tutorial <br /> OR <br /> you have followed the instructions to [Get started]({% link soda/about.md %}) Soda on your own. 
+* You have created a new YAML file in your code editor and named it `checks.yml` <br /> OR <br /> you are on step 2 in the guided flow to create a new Soda Agreement.
 * (Optional) You have read the first two sections in [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) as a primer for SodaCL.
 
 
@@ -223,12 +219,12 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 
 ## Reference checks
 
-If you need to validate that two datasets contain the same values, you can use a reference check. The following unique check compares the values of `column_name` and `another_column`, identified as the values in parentheses, between datasets within the same data source. The check passes if the values in the columns contain the same values. 
+If you need to validate that data in one column of a dataset exists in a column in another dataset, you can use a reference check. The following unique check compares the values of `state_code` to confirm that those values exist in `code` in the `iso_3166-2` dataset in the same data source. The check passes if the values in the `state_code` exist in `code`. 
 {% include code-header.html %}
 ```yaml
 # Check that values in a column exist in another column in a different dataset
 checks for dataset_name:
-  - values in (column_name) must exist in different_dataset_name (another_column)
+  - values in (state_code) must exist in iso_3166-2 (code)
 ```
 
 <br />
@@ -255,7 +251,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 
 To eliminate the frustration of the silently evolving dataset schema, use schema checks with alert configurations to notify you when column changes occur.
 
-If you have set up a Soda Cloud account, you can use a catch-all schema check that results in a warning whenever a Soda scan reveals that a column has been added, removed, moved within the context of an index, or changed data type relative to the results of the previous scan. 
+If you have set up a Soda Cloud account, you can use a catch-all schema check, also known as a schema evolution check, that results in a warning whenever a Soda scan reveals that a column has been added, removed, moved within the context of an index, or changed data type relative to the results of the previous scan. 
 {% include code-header.html %}
 ```yaml
 # Check for any schema changes to dataset
@@ -267,7 +263,7 @@ checks for dataset_name:
 
 <br />
 
-If you wish to apply a more granular approach to monitoring schema evolution, you can specify columns in a dataset that ought to be present or which should not exist in the dataset. 
+If you wish to apply a more granular approach to monitoring schema changes, you can specify columns in a dataset that ought to be present or which should not exist in the dataset. 
 
 The following example warns you when, during a scan, Soda discovers that `column_name` is missing in the dataset; the check fails if either `column_name1` or `column_name2` exist in the dataset. This type of check is useful when, for example, you need to ensure that datasets do not contain columns of sensitive data such as credit card numbers or personally identifiable information (PII).
 {% include code-header.html %}
@@ -318,12 +314,11 @@ soda scan -d datasource_name -c configuration.yml checks.yml
     * Values in a comma-separated list must be enclosed in square brackets. <br />For example, `[US, BE, CN]`.
     * Numeric characters in a values list must be enclosed in single quotes. <br />For example, `[none,'0', NA]`.
 * Column names that contain colons or periods can interfere with SodaCL's YAML-based syntax. For any column names that contain these punctuation marks, [apply quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) to the column name in the check to prevent issues. <br />If you are using a failed row check with a CTE fail condition, however, the syntax checker does not accept an expression that begins with double-quotes. In that case, as a workaround, add a meaningless `true and` to the beginning of the CTE, as in the following example. 
-
-```yaml
-checks for corp_value:
-  - failed rows:
-      fail condition: true and "column.name.PX" IS NOT null
-```
+    ```yaml
+    checks for corp_value:
+      - failed rows:
+          fail condition: true and "column.name.PX" IS NOT null
+    ```
 
 
 

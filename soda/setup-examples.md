@@ -23,7 +23,7 @@ Use the following guides as example implementations based on how you intend to u
                 <div>
                     <img src="/assets/images/icons/icon-investigate.png" width="50" height="40">
                     <h2>Soda for data migration</h2>
-                    <a href="/soda/quick-start-migration.md">Test during data migration</a>
+                    <a href="/soda/quick-start-migration.md">Test before data migration</a>
                     <p>Use this guide to set up Soda to test before and after data migration.</p>
                 </div>
                 <div>
@@ -40,14 +40,14 @@ Use the following guides as example implementations based on how you intend to u
                 </div>
                 <div>
                     <img src="/assets/images/icons/icon-new@2x.png" width="54" height="40">
-                    <h2>Soda + GitHub</h2>
+                    <h2>Soda + GitHub</h2><br />
                     <a href="/soda-cloud/collaborate.html#invite-your-team-members">Test data during development</a>
                     <p>Use this guide to set up Soda to test the quality of your data during your development lifecycle in a GitHub Workflow.</p>
                 </div>
                 <div>
                     <img src="/assets/images/icons/icon-pacman@2x.png" width="50" height="40">
                     <h2>Soda + automated monitoring</h2>
-                    <a href="/soda/quick-start-migration.md">Automate data quality tests</a>
+                    <a href="/soda/quick-start-migration.md">Automate monitoring</a>
                     <p>Use this guide to set up Soda to automatically monitor data quality.</p>
                 </div>
             </div>
