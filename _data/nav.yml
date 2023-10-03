@@ -155,6 +155,8 @@
     page: soda-cl/metrics-and-checks.md
   - subtitle: Optional check configurations
     page: soda-cl/optional-config.md
+  - subtitle: Active checks
+    page: soda-cl/active-check.md
   - subtitle: Add check attributes
     page: soda-cl/check-attributes.md
   - subtitle: Numeric metrics

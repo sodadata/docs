@@ -13,6 +13,9 @@ redirect_from:
 <!--This glossary contains Soda-specific terms only. Do not define industry terminology such as "SQL" or "query".-->
 *Last modified on {% last_modified_at %}*
 
+### active check
+Soda's licensing model is based on the volume of active checks.  An active check is one that Soda has executed during a scan at least once in the past 90 days. A single check, whether it has been executed during a scan one time, fifty times, or five hundred times in the last 90 days counts as an active check.
+
 ### agreement
 A collection of checks that serve as a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
 
