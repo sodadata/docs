@@ -9,7 +9,7 @@ parent: Write SodaCL checks
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.
+When you add or edit a data source in Soda Cloud, use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.
 
 {% include code-header.html %}
 ```yaml
@@ -21,7 +21,6 @@ sample datasets:
 ```
 
 [Sample datasets](#sample-datasets)<br />
-[Optional check configurations](#optional-check-configurations) <br />
 [Inclusion and exclusion rules](#inclusion-and-exclusion-rules)<br />
 [Disable samples in Soda Cloud](#disable-samples-in-soda-cloud)<br />
 [Go further](#go-further) <br />
@@ -30,10 +29,10 @@ sample datasets:
 
 ## Sample datasets
 
-This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud. You can add this configuration to one of two places:
-* to your `checks.yml` file <br />
+Sample datasets captures sample rows from datasets you identify. You add sample datasets configurations as part of the guided workflow to create a new data source or edit an existing one. Navigate to **your avatar** > **Scans & Data** > **New Data Source**, or select an existing data source, to begin. You can add this configuration to one of two places:
+* to either step [3. Discover Datasets]({% link soda-agent/deploy.md %}#3-discover-datasets) <br />
 OR<br />
-*  to either step [3. Discover Datasets]({% link soda-cloud/add-datasource.md %}#3-discover-datasets) or step [4. Profile Datasets]({% link soda-cloud/add-datasource.md %}#4-profile-datasets) when you add a data source directly in Soda Cloud. 
+*   or step [4. Profile Datasets]({% link soda-agent/deploy.md %}#4-profile-datasets) 
 
 The example configuration below uses a wildcard character (`%`) to specify that Soda Library sends sample rows to Soda Cloud for all datasets with names that begin with `customer`, and *not* to send samples for any dataset with a name that begins with `test`.
 {% include code-header.html %}
@@ -64,27 +63,6 @@ sample datasets:
 
 ![Example sample datasets screenshot](../assets/images/soda-sample-datasets.png)
 
-## Optional check configurations
-
-| Supported | Configuration | Documentation |
-| :-: | ------------|---------------|
-|   | Define a name for sample data configuration. |  - |
-|   | Add an identity to a check. |  -  |
-|   | Define alert configurations to specify warn and fail thresholds. | - |
-|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-|   | Use quotes when identifying dataset names. | - |
-| ✓ | Use wildcard characters ({% raw %} % {% endraw %} with dataset names in the check; see [example](#example-with-wildcards). | - |
-|   | Use for each to apply anomaly score checks to multiple datasets in one scan. | - |
-|   | Apply a dataset filter to partition data during a scan. |  -  |
-
-#### Example with wildcards 
-{% include code-header.html %}
-```yaml
-sample datasets:
-  datasets:
-    - include prod%
-    - exclude test%
-```
 
 ## Inclusion and exclusion rules
 

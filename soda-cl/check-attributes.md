@@ -8,7 +8,7 @@ parent: SodaCL
 # Add check attributes
 *Last modified on {% last_modified_at %}*
 
-As a Soda Cloud Admin user, you can define **check attributes** that your team can apply to checks when they write them in an agreement or in a checks YAML file for Soda Library.
+As a Soda Cloud Admin user, you can define **check attributes** that your team can apply to checks when they write them.
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
@@ -38,7 +38,6 @@ Use attributes to organize your checks and alert notifications in Soda Cloud.
 
 ## Prerequisites
 
-* You have created a <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">Soda Cloud account</a>.
 * To *define* new check attributes, you must have [Admin rights]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account. Any Soda Cloud user or Soda Library user can *apply* existing attributes to new or existing checks.
 
 ## Define a check attribute
@@ -98,13 +97,15 @@ The following table outlines the expected values for each type of attribute.
 | Date | ISO-formatted date or datetime. |
 
 
-Note that users must use the attribute's **NAME** as the attribute's key in a check, not the **Label** as defined by a Soda Admin in Soda Cloud. Refer to screenshot below. 
+Note that users must use the attribute's **NAME** as the attribute's key in a check, not the **LABEL** as defined by a Soda Admin in Soda Cloud. Refer to screenshot below. 
 
 ![name-not-label](/assets/images/name-not-label.png){:height="200px" width="200px"}
 
 ## Optional check attribute SodaCL configurations
 
-Using SodaCL, you can use variables to populate either the key or value of an existing attribute, as in the following example. Refer to [Configure variables in SodaCL]({% link soda-cl/filters.md %}#configure-variables-in-sodacl) for further details. 
+Using SodaCL, you can use variables to populate either the key or value of an existing attribute, as in the following example. Refer to [Configure variables in SodaCL]({% link soda-cl/filters.md %}#configure-variables-in-sodacl) for further details.
+
+You cannot use variables in checks you write in an agrrement in Soda Cloud as it is impossible to provide the variable values at scan time.  
 {% include code-header.html %}
 ```yaml
 checks for dim_product:

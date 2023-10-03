@@ -68,7 +68,7 @@ All is good. No failures. No warnings. No errors.
 
 ## Add a check identity
 
-Soda Cloud identifies a check using details such as the check name, the check YAML file name, the file's location. When you modify an individual check, the check identity changes which results in a new check result in Soda cloud.  For example, the following check sends one check result to Soda Cloud after a scan. 
+Soda Cloud identifies a check using details such as the check name, the check YAML file name, the file's location. When you modify an individual check, the check identity changes which results in a new check result in Soda Cloud.  For example, the following check sends one check result to Soda Cloud after a scan. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -82,8 +82,6 @@ checks for dataset_1:
 ```
 
 If you anticipate modifying a check, you can explicitly specify a check identity so that Soda Cloud can correctly accumulate the results of a single check and retain its history even if the check has been modified. 
-
-***Known issue:*** [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}) do not support the check identity parameter. <!--SAS-2005-->
 
 1. First, navigate to an existing check in your Soda Cloud account, then copy the UUID of the check from the URL; see the example below.
 ![check-identity](/assets/images/check-identity.png){:height="700px" width="700px"}
@@ -108,7 +106,7 @@ See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md 
 
 ## Add alert configurations
 
-When Soda Library runs a scan of your data, it returns a check result for each check. Each check results in one of three default states:
+When Soda runs a scan of your data, it returns a check result for each check. Each check results in one of three default states:
 * **pass**: the values in the dataset match or fall within the thresholds you specified
 * **fail**: the values in the dataset _do not_ match or fall within the thresholds you specified
 * **error**: the syntax of the check is invalid

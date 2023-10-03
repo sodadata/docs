@@ -10,7 +10,7 @@ parent: Get started
 
 The roadmap to get started offers a curated experience to help you get from zero to productive with Soda software. 
 
-If a guided experience is not your style, take a different path!
+However, if a guided experience is not your style, take a different path!
 * Follow a [15-min tutorial]({% link soda/quick-start-sip.md %}) to set up and run Soda using demo data.
 * Follow a [Use case guide]({% link soda/setup-examples.md %}) for implementation instructions that target a specific outcome.
 * <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a> so we can help you get the most out of your Soda experience.

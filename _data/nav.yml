@@ -88,8 +88,6 @@
     page: soda-cloud/incidents.md
   - subtitle: Set roles and rights
     page: soda-cloud/roles-and-rights.md
-  - subtitle: Add Soda to SSO
-    page: soda-cloud/sso.md
 
 - title: Integrate Soda
   page: soda/integrate-alation.md
@@ -157,7 +155,7 @@
   - subtitle: Validity metrics
     page: soda-cl/validity-metrics.md
 
-- title: Data source reference
+- title: Connect a data source
   page: soda/connect-athena.md
   subcategories:
   - subtitle: Connect to Athena

@@ -48,7 +48,6 @@ checks for dim_customer:
 
 ## Prerequisites
 
-* To view failed rows that a failed rows check collects, you ideally have a **Soda Cloud** account. It is not necessary to view failed rows samples in Soda Cloud, but easy to view in the context of a check result. 
 * To use failed row checks to send failed rows samples to Soda Cloud, samples collection must *not* be [disabled in Soda Cloud]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).
 
 ## About failed row samples

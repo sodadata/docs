@@ -18,7 +18,6 @@ Use a webhook to:
 
 ![webhook-example](/assets/images/webhook-example.png){:height="700px" width="700px"} 
 
-[Prerequisites](#prerequisites)<br />
 [Configure a webhook](#configure-a-webhook) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud alert notifications](#webhooks-for-soda-cloud-alert-notifications)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud incident integrations](#webhooks-for-soda-cloud-incident-integrations)<br />
@@ -28,12 +27,6 @@ Use a webhook to:
 [Event payloads](#event-payloads) <br />
 [Go further](#go-further)<br />
 <br />
-
-
-## Prerequisites
-
-* You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}).
-* You have [connected your Soda Cloud account]({% link soda-library/configure.md %}) to Soda Library and run at least one scan so as to produce one or more check results.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %}).
 
 
 ## Configure a webhook

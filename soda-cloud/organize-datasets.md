@@ -20,6 +20,8 @@ Define new attributes for datasets in your organization that your colleagues can
 * by data domain: Customer data, Product data, Order & Fulfillment data
 * by internal objectives and key results (OKR)
 
+<br />
+
 1. As an [Admin member]({% link soda-cloud/roles-and-rights.md %}) of your Soda Cloud account, navigate to **your avatar** > **Attributes** > **New Attribute**.
 2. Follow the guided steps to create the new attribute. Use the details below for insight into the values to enter in the fields in the guided steps. 
 
@@ -41,14 +43,14 @@ Define new attributes for datasets in your organization that your colleagues can
 
 While only a Soda Cloud Admin can define or revise dataset attributes, any Admin, Manager, or Editor for a dataset can apply attributes to it.
 
-1. As an Admin, Manager, or Editor in your Soda Cloud account, navigate to the **Datasets** dashboard, click the stacked dots next to a dataset, then select **Edit Dataset**. Use the attributes fields to apply the appropriate attributes to the dataset. 
+1. Navigate to the **Datasets** dashboard, click the stacked dots next to a dataset, then select **Edit Dataset**. Use the attributes fields to apply the appropriate attributes to the dataset. 
 2. While editing a dataset, consider adding **Tags** to the dataset as well. Use tags to:
 * identify datasets that are associated with a particular marketing campaign
 * identify datasets that are relevant for a particular customer account
 * identify datasets whose quality is critical to business operations, or to categorize datasets according to their criticality in general, such as "high", "medium", and "low".
 * identify datasets that populate a particular report or dashboard 
-3. After saving your changes and applying tags and attributes to multiple datasets, use the **Filters** in the **Datasets** dashboard to display the datasets that help narrow your study of data quality. 
-4. Share a filtered view of your datasets with colleagues by sharing the URL of your narrowed search. 
+3. After saving your changes and applying tags and attributes to multiple datasets, use the **Filters** in the **Datasets** dashboard to display the datasets that help narrow your study of data quality, then click **Save Collection** to name the custom filtered view.
+4. In the future, use the dropdown in the **Checks** dashboard to quickly access your collection again.
 
 
 ## Go further

@@ -8,7 +8,7 @@ parent: Write SodaCL checks
 # Profile data with Soda
 *Last modified on {% last_modified_at %}*
 
-Use the `discover datasets` and/or `profile columns` configurations to automatically profile data in your data source. Examine the profile information to gain insight into the type of SodaCL checks you can prepare to test for data quality.<br />
+When you add or edit a data source in Soda Cloud, use the `discover datasets` and/or `profile columns` configurations to automatically profile data in your data source. Examine the profile information to gain insight into the type of SodaCL checks you can prepare to test for data quality.<br />
 *Requires Soda Cloud*
 
 {% include code-header.html %}
