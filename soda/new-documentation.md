@@ -9,6 +9,9 @@ parent: Reference
 
 <br />
 
+#### October 4, 2023
+* Added new content to clarify what an [active check]({% link soda/active-check.md %}) is. Soda's licensing model can inlcude volume-based measures of active checks.
+
 #### September 27, 2023
 * Added clarifying information about user input and how it is used by [SodaGPT]({% link soda-cloud/sodagpt.md %}#about-the-ai).
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.13 and Soda Core 3.0.50.

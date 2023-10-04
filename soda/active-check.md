@@ -8,7 +8,7 @@ parent: Soda CL
 # Active checks
 *Last modified on {% last_modified_at %}*
 
-Soda's licensing model is based on the volume of **active checks**.  
+Soda's licensing model can include volume-based measures of **active checks**.  
 
 An active check is one that Soda has executed during a scan at least once in the past 90 days. A single check, whether it has been executed during one scan, fifty scans, or five hundred scans in the last 90 days counts as one active check.
 
@@ -76,7 +76,7 @@ reconciliation Production:
     - row_count diff = 0
     - duplicate_count(last_name):
         fail: when diff > 10%
-        warn: when diff < 5%
+        warn: when diff is between 5% and 9%
     - avg(total_children) diff < 10
     - rows diff < 5
     - schema:
