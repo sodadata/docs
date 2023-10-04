@@ -35,13 +35,13 @@ Use Soda Library to ingest the results of your dbt tests and push them to Soda C
 
 Integrate dbt core with Soda.
 
-<iframe width="660" height="415" src="https://www.youtube.com/embed/V4cGCniBpMg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="660" height="415" src="https://www.youtube.com/embed/V4cGCniBpMg" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <br />
 
 Integrate dbt Cloud with Soda.
 
-<iframe width="660" height="415" src="https://www.youtube.com/embed/lcGHJxVLOLI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="660" height="415" src="https://www.youtube.com/embed/lcGHJxVLOLI" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Ingest dbt test results from dbt-core into Soda Cloud
 
