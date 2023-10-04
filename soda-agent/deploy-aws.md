@@ -119,7 +119,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 * Read more [about the `helm install` command](#about-the-helm-install-command).
 ```shell
 helm install soda-agent soda-agent/soda-agent \
-    --set provider.aws.eks.fargate.enabled=true \
+    --set provider.eks.fargate.enabled=true \
     --set soda.agent.name=myuniqueagent \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
     --set soda.cloud.endpoint=https://cloud.soda.io \
