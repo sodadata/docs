@@ -9,6 +9,10 @@ parent: Reference
 
 <br />
 
+#### October 5, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Cloud dashboard.
+* Added `schema_name` parameter to [DuckDB configuration]({% link soda/connect-duckdb.md %}).
+
 #### September 27, 2023
 * Added clarifying information about user input and how it is used by [SodaGPT]({% link soda-cloud/sodagpt.md %}#about-the-ai).
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.13 and Soda Core 3.0.50.

@@ -21,6 +21,7 @@ data_source my_datasource_name:
   type: duckdb
   path: filename.db
   read_only: true
+  schema_name: public
 ```
 
 | Property | Required | Notes                                                      |
@@ -28,6 +29,7 @@ data_source my_datasource_name:
 | type     | required |                                                            |
 | path     | required | The location of the duckdb file. Refer to DuckDB documentation for details on <a href="https://duckdb.org/docs/api/python/overview#persistent-storage" target="_blank">persistent storage</a> and <a href="https://duckdb.org/docs/api/cli.html#getting-started" target="_blank">how to create a .db file</a>.                                                       |
 | read_only | required | Value is boolean: `true` or `false`                       |
+| schema_name | optional |                                                         |
 
 {% include test-connection.md %}
 
