@@ -158,14 +158,13 @@ Adjust the data source connection configuration to include the `account_info_jso
 ```yaml
 my_datasource_name:
   type: bigquery
-  connection:
-    account_info_json_path: /opt/soda/etc/serviceaccount.json
-    auth_scopes:
-    - https://www.googleapis.com/auth/bigquery
-    - https://www.googleapis.com/auth/cloud-platform
-    - https://www.googleapis.com/auth/drive
-    project_id: ***
-    dataset: sodacore
+  account_info_json_path: /opt/soda/etc/serviceaccount.json
+  auth_scopes:
+  - https://www.googleapis.com/auth/bigquery
+  - https://www.googleapis.com/auth/cloud-platform
+  - https://www.googleapis.com/auth/drive
+  project_id: ***
+  dataset: sodacore
 ```
 
 

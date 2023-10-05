@@ -141,7 +141,7 @@ Use the links below to access catalog-specific integration instructions. <br />
 #### What's next? 
 * Use the [Reporting API]({% link api-docs/reporting-api-v1.md %}) to access metadata about your Soda Cloud account.
 * Are you a dbt user? Consider [ingesting dbt tests]({% link soda/integrate-dbt.md %}) into Soda Cloud for a single-pane-of-glass view of your data quality tests.
-* Access the [Use case guides]({% link soda/setup-examples.md %}) for example implementations of Soda.
+* Access the [Use case guides]({% link soda/use-case-guides.md %}) for example implementations of Soda.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

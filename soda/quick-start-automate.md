@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Automate data quality monitoring
-description: 
+description: Use this guide to set up Soda and start automatically monitoring your data for quality.
 parent: Use case guides
 ---
 
@@ -12,14 +12,14 @@ Use this guide to set up Soda and begin automatically monitoring the data qualit
 
 [About this guide](#about-this-guide)<br />
 [Set up a Soda Agent](#set-up-a-soda-agent)<br />
-[Automate data quality monitoring](#automate-data-quality-monitoring)<br />
+[Automate data quality monitoring](#automate-data-quality-monitoring-1)<br />
 [Set up alert notifications](#set-up-alert-notifications)<br/>
 [Go further](#go-further)<br />
 <br />
 
 ## About this guide
 
-The instructions below offer data analysts, data scientists, and business users to set up Soda to profile and begin monitoring data for quality, right out of the box.
+This guide offers Data Analysts, Data Scientists, and business users instructions to set up Soda to profile and begin monitoring data for quality, right out of the box.
 
 This example uses a self-hosted agent deployment model which uses Soda Cloud connected to a Soda Agent which securely accesses data sources and executes scheduled scans for data quality. See: [Choose a flavor of Soda]({% link soda/setup-guide.md %}). 
 
@@ -30,7 +30,7 @@ The Soda Agent is a tool that empowers Soda Cloud users to securely access data 
 If you do not have the access or authorization to set up a cluster or deploy the containerized agent, pass the instructions to your data engineering or IT team to complete the exercise for you.
 
 1. <a href="https://cloud.soda.io/signup" target="_blank">Create a Soda Cloud account</a> which is free for a 45-day trial. 
-2. Access the [exhaustive deployment instructions]({% link soda-agent/deploy.md %}#deploy-a-soda-agent-in-a-kubernetes-cluster) to deploy a Soda Agent in the cloud services provider you use. 
+2. Access the [exhaustive deployment instructions]({% link soda-agent/deploy.md %}) to deploy a Soda Agent in the cloud services provider you use. 
 * Cloud services provider-agnostic instructions
 * Amazon Elastic Kubernetes Service (EKS)
 * Microsoft Azure Kubernetes Service (AKS)
@@ -44,14 +44,14 @@ If you do not have the access or authorization to set up a cluster or deploy the
 2. In Soda Cloud, navigate to **your avatar** > **Scans & Data**.
 3. In the **Agents** tab, confirm that you can see the Soda Agent you deployed and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
-3. Navigate to the **Data source** tab, then click **New Data Source** and follow the guided steps to connect to a new data source and opt-in to auotmated monitoring checks. <br />Refer to the sections below for insight into the values to enter in the fields and editing panels in the guided steps. 
+3. Navigate to the **Data source** tab, then click **New Data Source** and follow the guided steps to connect to a new data source and opt-in to automated monitoring checks. <br />Refer to the sections below for insight into the values to enter in the fields and editing panels in the guided steps. 
 
 #### Attributes
 
 | Field or Label | Guidance |
 | -----------------------   | ---------- |
-| Data Source Label | Provide a unique identifier for the [data source]({% link soda/glossary.md %}#data-source). Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
-| Default Scan Definition Label | Provide a name for the default scan definition. A collection of [checks YAML]({% link soda/glossary.md %}#checks-yaml) files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source.  |
+| Data Source Label | Provide a unique identifier for the data source. Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
+| Default Scan Definition Label | Provide a name for the default scan definition. A scan definition is a collection of checks YAML files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source.  |
 | Default Scan Definition Agent | Select the name of a Soda Agent that you have previously set up in your secure environment and connected to a specific data source. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
 | Schedule Definition | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
 | Starting At | Select the time of day to run the scan. The default value is midnight. |
@@ -64,7 +64,7 @@ If you do not have the access or authorization to set up a cluster or deploy the
 
 In the editing panel, provide the connection configurations Soda Cloud needs to be able to access the data in the data source. Connection configurations are data source-specific and include values for things such as a database's host and access credentials. 
 
-To more securely provide sensitive values such as usernames and passwords, use environment variables in a `values.yml` file when you deploy the Soda Agent. See [Use environment variables for data source connection credentials]({% link soda-agent/deploy.md %}#use-environment-variables-for-data-source-connection-credentials) for details.
+To more securely provide sensitive values such as usernames and passwords, use environment variables in a `values.yml` file when you deploy the Soda Agent. See [Use environment variables for data source connection credentials]({% link soda-agent/secrets.md %}#use-environment-variables-to-store-data-source-connection-credentials) for details.
 
 Access the [data source-specific connection configurations]({% link soda/connect-athena.md %}) to copy+paste the connection syntax into the editing panel, then adjust the values to correspond with your data source's details. 
  
@@ -74,9 +74,9 @@ Access the [data source-specific connection configurations]({% link soda/connect
 
 During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. It captures basic information about each dataset, including a dataset's schema and the columns it contains.
 
-In the editing panel, specify the datasets that Soda Cloud must include or exclude from this basic discovery activity. The default syntax in the editing panel instructs Soda to collect basic dataset information from all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character. See [Display profile information in Soda Cloud]({% link soda-cl/profile.md %}#limitations-and-known-issues) for more detail on profiling syntax.
+In the editing panel, specify the datasets that Soda Cloud must include or exclude from this basic discovery activity. The default syntax in the editing panel instructs Soda to collect basic dataset information from all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character. See [Add dataset discovery]({% link soda-cl/profile.md %}#add-dataset-discovery) for more detail on profiling syntax.
 
-*Known issue:* SodaCL does not support using [variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl) in column profiling and dataset discovery configurations. <!--SAS-1642-->
+*Known issue:* SodaCL does not support using variables in column profiling and dataset discovery configurations. <!--SAS-1642-->
 
 {% include code-header.html %}
 ```yaml
@@ -94,7 +94,7 @@ To gather more detailed profile information about datasets in your data source, 
 
 Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
 
-In the editing panel, provide details that Soda Cloud uses to determine which datasets to include or exclude when it profiles the columns in a dataset. The default syntax in the editing panel instructs Soda to profile every column of every dataset in this data source, and, superfluously, all datasets with names that begin with `prod`.  The `%` is a wildcard character. 
+In the editing panel, provide details that Soda Cloud uses to determine which datasets to include or exclude when it profiles the columns in a dataset. The default syntax in the editing panel instructs Soda to profile every column of every dataset in this data source, and, superfluously, all datasets with names that begin with `prod`.  The `%` is a wildcard character. See [Add column profiling]({% link soda-cl/profile.md %}#add-column-profiling) for more detail on profiling syntax.
 
 Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations]({% link soda-cl/profile.md %}#compute-consumption-and-cost-considerations) for more detail.
 {% include code-header.html %}

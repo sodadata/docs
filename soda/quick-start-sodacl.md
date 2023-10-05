@@ -46,7 +46,7 @@ You do not need to follow the tutorial sequentially.
 
 ## Tutorial prerequisites
 
-* You have completed the [Take a sip of Soda]({% link soda/quick-start-sip.md %}) tutorial <br /> OR <br /> you have followed the instructions to [Get started]({% link soda/about.md %}) Soda on your own. 
+* You have completed the [Take a sip of Soda]({% link soda/quick-start-sip.md %}) tutorial <br /> OR <br /> you have followed the instructions to [Get started]({% link soda/get-started-roadmap.md %}) Soda on your own. 
 * You have created a new YAML file in your code editor and named it `checks.yml` <br /> OR <br /> you are on step 2 in the guided flow to create a new Soda Agreement.
 * (Optional) You have read the first two sections in [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) as a primer for SodaCL.
 

@@ -32,12 +32,11 @@ if __name__ == '__main__':
     data_source test:
       type: postgres
       schema: public
-      connection:
-        host: localhost
-        port: 5433
-        username: ***
-        password: ***
-        database: postgres
+      host: localhost
+      port: 5433
+      username: ***
+      password: ***
+      database: postgres
     """)
 
     s.add_sodacl_yaml_str(f"""

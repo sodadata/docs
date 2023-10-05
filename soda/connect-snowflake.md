@@ -68,16 +68,15 @@ You can use the `private_key` and `private_key_passphrase` parameters to specify
 ```yaml
 data_source snowflake:
   type: snowflake
-  connection:
-    username: xxxyyyzzz
-    ...
-    client_session_keep_alive: true
-    Authenticator: SNOWFLAKE_JWT
-    schema: TPCH_SF1
-    private_key_passphrase: "123xxx"
-    private_key: |
-      -----BEGIN ENCRYPTED PRIVATE KEY-----
-      -----END ENCRYPTED PRIVATE KEY-----
+  username: xxxyyyzzz
+  ...
+  client_session_keep_alive: true
+  Authenticator: SNOWFLAKE_JWT
+  schema: TPCH_SF1
+  private_key_passphrase: "123xxx"
+  private_key: |
+    -----BEGIN ENCRYPTED PRIVATE KEY-----
+    -----END ENCRYPTED PRIVATE KEY-----
 ```
 
 ###  Use a values file to store private key authentication values
@@ -109,7 +108,6 @@ kubectl create secret generic -n <soda-agent-namespace> snowflake-private-key --
     ```yaml
     data_source ltsnowflakecustomer:
       type: snowflake
-      connection:
       username: ${SNOWFLAKE_USER}
       password: password
       account: ${SNOWFLAKE_ACCOUNT}

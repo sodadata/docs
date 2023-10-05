@@ -91,8 +91,8 @@ Add the `use_context_auth` property to your connection configuration, as per the
 ```yaml
 data_source my_datasource:
   type: bigquery
-  connection:
-    use_context_auth: True
+  ...
+  use_context_auth: True
 ```
 
 <br />
@@ -104,9 +104,9 @@ Add the `use_context_auth` and `impersonation_account` properties to your connec
 ```yaml
 data_source my_datasource:
   type: bigquery
-  connection:
-    use_context_auth: True
-    impersonation_account: <SA_EMAIL>
+  ...
+  use_context_auth: True
+  impersonation_account: <SA_EMAIL>
 ```
 
 <br />
@@ -118,13 +118,13 @@ Add the `impersonation_account` property to your connection configuration, as pe
 ```yaml
 data_source my_database_name:
   type: bigquery
-  connection:
-    account_info_json: '{
-        "type": "service_account",
-        "project_id": "...",
-        "private_key_id": "...",
-      ...}'
-    impersonation_account: <SA_EMAIL>
+  ...
+  account_info_json: '{
+      "type": "service_account",
+      "project_id": "...",
+      "private_key_id": "...",
+    ...}'
+  impersonation_account: <SA_EMAIL>
 ```
 
 <br />
@@ -174,14 +174,13 @@ Adjust the data source connection configuration to include the `account_info_jso
 ```yaml
 my_datasource_name:
   type: bigquery
-  connection:
-    account_info_json_path: /opt/soda/etc/serviceaccount.json
-    auth_scopes:
-    - https://www.googleapis.com/auth/bigquery
-    - https://www.googleapis.com/auth/cloud-platform
-    - https://www.googleapis.com/auth/drive
-    project_id: ***
-    dataset: sodalibrary
+  account_info_json_path: /opt/soda/etc/serviceaccount.json
+  auth_scopes:
+  - https://www.googleapis.com/auth/bigquery
+  - https://www.googleapis.com/auth/cloud-platform
+  - https://www.googleapis.com/auth/drive
+  project_id: ***
+  dataset: sodalibrary
 ```
 
 <br />

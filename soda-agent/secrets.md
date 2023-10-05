@@ -46,10 +46,7 @@ helm install soda-agent soda-agent/soda-agent \
   --namespace soda-agent
 ```
 
-Refer to the exhaustive cloud service provider-specific instructions for more detail on how to deploy an agent using a values YAML file:
-* [Deploy a Soda Agent in Amazon EKS]({% link soda-agent/deploy-aws.md %}#deploy-using-a-values-yaml-file)
-* [Deploy a Soda Agent in Azure AKS]({% link soda-agent/deploy-azure.md %}#deploy-using-a-values-yaml-file)
-* [Deploy a Soda agent in Google GKE]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file)
+Refer to the exhaustive [cloud service provider-specific instructions]({% link soda-agent/deploy.md %}#deploy-a-soda-agent-in-a-kubernetes-cluster) for more detail on how to deploy an agent using a values YAML file.
 
 
 ## Use a values file to store private key authentication values
@@ -61,11 +58,11 @@ If you use private key with Snowflake or Big Query, you can provide the required
 
 ## Use environment variables to store data source connection credentials
 
-When you, or someone in your organization, follows the guided steps to [create a data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud, one of the steps involves providing the connection details and credentials Soda needs to connect to the data source to run scans. 
+When you, or someone in your organization, follows the guided steps to [add a data source]({% link soda-agent/deploy.md %}#add-a-new-data-source) in Soda Cloud, one of the steps involves providing the connection details and credentials Soda needs to connect to the data source to run scans. 
 
 You can add those details directly in Soda Cloud, but because any user can then access these values, you may wish to store them securely in the values YAML file as environment variables. 
 
-1. Create or edit your local [values YAML file]({% link soda-agent/deploy.md %}#deploy-using-a-values-yaml-file) to include the values for the environment variables you input into the connection configuration. 
+1. Create or edit your local values YAML file to include the values for the environment variables you input into the connection configuration. 
 ```yaml
 soda:
     apikey:
@@ -83,16 +80,15 @@ helm upgrade soda-agent soda-agent/soda-agent \
   --values values.yml \
   --namespace soda-agent
 ```
-3. In [step 2]({% link soda-cloud/add-datasource.md %}#2-connect-the-data-source) of the create a data source guided steps, add data source connection configuration which look something like the following example for a PostgreSQL data source. Note the environment variable values for username and password.
+3. In [step 2]({% link soda-agent/deploy.md %}#2-connect-the-data-source) of the add a data source guided steps, add data source connection configuration which look something like the following example for a PostgreSQL data source. Note the environment variable values for username and password.
 ```yaml
 data_source local_postgres_test:
     type: postgres
-    connection:
-        host: 172.17.0.7
-        port: 5432
-        username: ${POSTGRES_USER}
-        password: ${POSTGRES_PASS}
-        database: postgres
+    host: 172.17.0.7
+    port: 5432
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASS}
+    database: postgres
     schema: new_york
 ```
 4. Follow the remaining guided steps to add a new data source in Soda Cloud. When you save the data source and test the connection, Soda Cloud uses the values you stored as environment variables in the values YAML file you supplied during redeployment.
@@ -212,7 +208,7 @@ Output:
 NAME                 TYPE     DATA   AGE
 soda-agent-secrets   Opaque   1      24h
 ```
-8. Prepare a `values.yml` file to deploy the Soda Agent with the `existingSecrets` parameter that instructs it to access the `ExternalSecret` file to fetch data source login credentials. Refer to complete [deploy instructions]({% link soda-agent/deploy.md %}deploy-using-a-values-yaml-file), or [redeploy instructions]({% link soda-agent/redeploy.md %}) if you already have an agent running in a cluster.
+8. Prepare a `values.yml` file to deploy the Soda Agent with the `existingSecrets` parameter that instructs it to access the `ExternalSecret` file to fetch data source login credentials. Refer to complete [deploy instructions]({% link soda-agent/deploy.md %}#deploy-using-a-values-yaml-file), or [redeploy instructions]({% link soda/upgrade.md %}#redeploy-a-soda-agent) if you already have an agent running in a cluster.
     ```yaml
     soda:
       apikey:
@@ -258,8 +254,6 @@ soda-agent-secrets   Opaque   1      24h
 ## Go further
 
 * Learn more about [Soda Agent basic concepts]({% link soda-agent/basics.md %}).
-* Add a [new data source]({% link soda-cloud/add-datasource.md %}) in Soda Cloud that accesses your data source via a Soda Agent.
-* Consider completing the [Enable end-user data quality testing]({% link soda/quick-start-end-user.md %}) guide for more context around setting up a new data source and creating a new agreement.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

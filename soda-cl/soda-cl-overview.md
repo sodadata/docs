@@ -86,7 +86,6 @@ In an agreement, use SodaCL checks to define the state of "good quality" for dat
 
 ### Prerequisites
 
-* You have created a <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">Soda Cloud account</a>.
 * You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) and connected it to your Soda Cloud account.
 * You, or an [Admin]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account, has [added a new datasource]({% link soda-agent/deploy.md %}l#add-a-new-data-source) via the Soda Agent in your Soda Cloud account.
 
@@ -167,6 +166,10 @@ See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.m
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
+As a Data Engineer, you can write SodaCL checks directly in a `checks.yml` file, or leverage check suggestions in the Soda Library CLI to prepare a basic set of data quality checks for you. Alternatively, you can add SodaCL checks to a progrmmatic invocation of Soda Library.<br />
+*Requires Soda Library*<br />
+*Requires Soda Cloud*
+
 [Manually write SodaCL checks](#manually-write-sodacl-checks)<br />
 [Use check suggestions](#use-check-suggestions)<br />
 [Programmatically add checks](#programmatically-add-checks)<br />
@@ -174,9 +177,7 @@ See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.m
 
 ### Manually write SodaCL checks
 
-The checks YAML file stores the Soda Checks you write using [SodaCL]({% link soda-cl/soda-cl-overview.md %}). Use this file to manually write your own SodaCL checks. <br /> 
-*Requires Soda Library*<br />
-*Requires Soda Cloud*
+The checks YAML file stores the Soda Checks you write using [SodaCL]({% link soda-cl/soda-cl-overview.md %}). Use this file to manually write your own SodaCL checks. 
 
 1. Using a code editor, create a new file called `checks.yml`.
 2. Copy+paste the following basic check syntax in your file, then adjust the value for `dataset_name` to correspond with the name of one of the datasets in your data source.
@@ -200,14 +201,13 @@ All is good. No failures. No warnings. No errors.
 Sending results to Soda Cloud
 Soda Cloud Trace: 67592***474
 ```
-4. Add more checks to the `checks.yml` file to test for multiple data quality metrics. Consult the [SodaCL tutorial]({% link soda/quick-start-sodacl.md %}) for advice and the [Use case guides]({% link soda/setup-examples.md %}) for example checks. Refer to the [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for exhaustive details on every type of metric and check.
+4. Add more checks to the `checks.yml` file to test for multiple data quality metrics. Consult the [SodaCL tutorial]({% link soda/quick-start-sodacl.md %}) for advice and the [Use case guides]({% link soda/use-case-guides.md %}) for example checks. Refer to the [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for exhaustive details on every type of metric and check.
 
 ### Use check suggestions
 
 **Check suggestions** assists Soda users in auto-generating basic data quality checks using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.<br /> 
-*Requires Soda Library*<br /> 
 *Requires Soda Scientific*<br />
-*Requires Soda Cloud*
+*Compatible with Big Query, PostgreSQL, and Snowflake data sources*
 
 Instead of writing your own data quality checks from scratch, check suggestions profiles your dataset and prompts you through a series of questions so that it can leverage the built-in Soda metrics and quickly prepare data quality checks tailored to that individual dataset.  
 
@@ -232,9 +232,6 @@ You can use check suggestions with the following data sources:
 ### Programmatically add checks
 
 Follow the [steps above](#manually-write-sodacl-checks) to create a `checks.yml` file to define your checks for data quality. Then, add the file(s) to your Python program as in the example below.<br /> Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files. 
-*Requires Soda Library* <br />
-*Requires Soda Cloud*
-<br />
 
 {% include code-header.html %}
 ```python

@@ -156,12 +156,14 @@ pip freeze | grep soda | xargs pip uninstall -y
 ```shell
 pip install -i https://pypi.cloud.soda.io soda-postgres
 ```
-3. If you had connected Soda Core to Soda Cloud, you do not need to change anything for Soda Library to work with your Soda Cloud account. <br /> If you had not connected Soda Core to Soda Cloud, you need to connect Soda Library to Soda Cloud. Soda Library requires API keys to validate licensing or trial status and run scans for data quality. See [Configure Soda Library]({% link soda-library/configure.md %}) for instructions.
+3. If you had connected Soda Core to Soda Cloud, you do not need to change anything for Soda Library to work with your Soda Cloud account. <br /> If you had not connected Soda Core to Soda Cloud, you need to connect Soda Library to Soda Cloud. Soda Library requires API keys to validate licensing or trial status and run scans for data quality. See [Configure Soda]({% link soda-library/install.md %}#configure-soda) for instructions.
 4. You *do not need* to adjust your existing `configuration.yml` or `checks.yml` files which will continue to work as before.
 
 
 ## Go further
 
+* Learn more about the ways you can use Soda in [Use case guides]({% link soda/use-case-guides.md %}).
+* Write [custom SQL checks]({% link soda-cl/user-defined.md %}) for your own use cases.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

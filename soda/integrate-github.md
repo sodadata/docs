@@ -80,11 +80,10 @@ Further, you can access a full report of the data quality scan results, includin
 # configuration.yml file
 data_source aws_postgres_retail:
   type: postgres
-  connection:
-    host: soda-demo
-    username: ${POSTGRES_USERNAME}
-    password: ${POSTGRES_PASSWORD}
-    database: postgres
+  host: soda-demo
+  username: ${POSTGRES_USERNAME}
+  password: ${POSTGRES_PASSWORD}
+  database: postgres
   schema: public
 # Refer to https://go.soda.io/api-keys
 soda_cloud:

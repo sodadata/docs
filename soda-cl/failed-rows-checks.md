@@ -195,11 +195,10 @@ To do so, add the `sampler` configuration to your data source connection configu
 ```yaml
 data_source my_datasource_name: 
   type: postgres
-  connection:
-    host: localhost
-    port: '5432'
-    username: ***
-    password: ***
+  host: localhost
+  port: '5432'
+  username: ***
+  password: ***
   database: postgres
   schema: public
   sampler:
@@ -349,11 +348,10 @@ Soda sends the failed rows samples as a JSON payload and includes:
 ```yaml
 data_source my_datasource_name: 
   type: postgres
-  connection:
-    host: localhost
-    port: '5432'
-    username: ***
-    password: ***
+  host: localhost
+  port: '5432'
+  username: ***
+  password: ***
   database: postgres
   schema: public
   sampler:
@@ -421,12 +419,11 @@ if __name__ == '__main__':
     data_source test:
       type: postgres
       schema: public
-      connection:
-        host: localhost
-        port: 5433
-        username: postgres
-        password: secret
-        database: postgres
+      host: localhost
+      port: 5433
+      username: postgres
+      password: secret
+      database: postgres
     """)
 
     s.add_sodacl_yaml_str(f"""

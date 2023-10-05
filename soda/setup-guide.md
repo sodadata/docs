@@ -9,7 +9,7 @@ redirect_from: /soda-core/community.html
 # Choose a flavor of Soda
 *Last modified on {% last_modified_at %}*
 
-A lightweight, verstile tool for testing amd monitoring data quality, you can have several options for deploying Soda in your environment.
+A lightweight, versatile tool for testing and monitoring data quality, you have several options for deploying Soda in your environment.
 
 As the first step in the **Get started roadmap**, this guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. After choosing a flavor of Soda (type of deployment model), access the corresponding [Set up Soda](#next) instructions below.
 <br />
@@ -26,7 +26,7 @@ As the first step in the **Get started roadmap**, this guide helps you decide ho
 
 ## Choose a flavor of Soda
 
-This guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. After choosing your flavor of Soda (type of deployment model), access the corresponding [Set up Soda](#next-set-up-soda) below. Optionally, access a full [Soda product overview]({% link soda/product-overview.md %}).
+This guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. Optionally, access a full [Soda product overview]({% link soda/product-overview.md %}).
 
 You can set up Soda in one of three (soon to be four!) flavors: 
 
@@ -35,11 +35,11 @@ You can set up Soda in one of three (soon to be four!) flavors:
 | [Self-operated](#self-operated) | A simple setup in which you install Soda Library locally and connect it to Soda Cloud via API keys. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
 | [Self-hosted agent](#self-hosted-agent)<br /> | ***Recommended*** <br />A setup in which you deploy a Soda Agent in a Kubernetes cluster in a cloud-services environment and connect it to Soda Cloud via different API keys. |   | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 | Fully-managed SaaS | **Coming soon!**<br />A setup in which you manage data quality entirely from your Soda Cloud account. |  |  | ![done](/assets/images/done.png){:width="20px"} |
-| [Programmatic](#programmatic-setup) | A setup in which you invoke Soda Library programmatically. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
+| [Programmatic](#programmatic) | A setup in which you invoke Soda Library programmatically. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
 
 <details>
     <summary style="color:#00BC7E">Why do I need a Soda Cloud account?</summary>
-To validate your account license or free trial, Soda Library or a Soda Agent must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library or a Soda Agent. <br /><a href="https://docs.soda.io/soda/about.html">Learn more</a><br /><br />
+To validate your account license or free trial, Soda Library or a Soda Agent must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library or a Soda Agent. <br /><a href="https://docs.soda.io/soda/get-started-roadmap.html#about-soda">Learn more</a><br /><br />
 </details>
 
 <br />
@@ -52,9 +52,9 @@ This simple setup enables you to `pip install` Soda Library from the command-lin
 * write data quality checks
 
 Use this setup for: <br />
-✅ **A small team**: Manage data quality within a small data engineering team or data anlytics team who is comfortable working with the command-line and YAML files to design and execute scans for data quality. <br />
+✅ **A small team**: Manage data quality within a small data engineering team or data analytics team who is comfortable working with the command-line and YAML files to design and execute scans for data quality. <br />
 ✅ **POC**: Conduct a proof-of-concept evaluation of Soda as a data quality testing and monitoring tool. See: [Take a sip of Soda]({% link soda/quick-start-sip.md %})<br />
-✅ **Basic DQ**: Start from scratch to set up basic data quality checks on key datasets. See: TBD w/ check suggetions
+✅ **Basic DQ**: Start from scratch to set up basic data quality checks on key datasets. See: [Check suggestions]({% link soda-library/check-suggestions.md %})<br />
 
 Requirements:
 * Python 3.8 or greater
@@ -65,17 +65,17 @@ Requirements:
 
 <br />
 
-#### Self-hosted agent <br />
+#### Self-hosted agent
 *Recommended*
 
-This setup enables a data or infrastructure engineer to deploy Soda Libary as an agent in a Kubernetes cluster within a cloud-services environment such as Google Cloud Platform, Azure, or AWS. 
+This setup enables a data or infrastructure engineer to deploy Soda Library as an agent in a Kubernetes cluster within a cloud-services environment such as Google Cloud Platform, Azure, or AWS. 
 
-The engineer can manage access to data sources while giving Soda Cloud end-users easy access to Soda check results and enabling to write their own checks for data quality. Users connect to data sources and write checks for data quality directly in the Soda Cloud user interface.
+The engineer can manage access to data sources while giving Soda Cloud end-users easy access to Soda check results and enabling them to write their own checks for data quality. Users connect to data sources and write checks for data quality directly in the Soda Cloud user interface.
 
 Use this setup for:<br />
-✅ **Self-serve data quality**: Empower data analysts and scientists to self-serve and write their own checks for data quality. See: [Self-serve data quality]({% link soda/quick-start-end-user.md %})<br />
-✅ **Data migration**: Migrate good-quality data from one data source to another. See: [Test during data migration]({% link soda/quick-start-migration.md %})<br />
-✅ **Automated data monitoring**: Set up data profiling and automated data quality monitoring. See: [Automate data quality tests]({% link soda/quick-start-automate.md %})<br />
+✅ **Self-serve data quality**: Empower data analysts and scientists to self-serve and write their own checks for data quality. See: [Self-serve Soda]({% link soda/quick-start-end-user.md %})<br />
+✅ **Data migration**: Migrate good-quality data from one data source to another. See: [Test before data migration]({% link soda/quick-start-migration.md %})<br />
+✅ **Automated data monitoring**: Set up data profiling and automated data quality monitoring. See: [Automate monitoring]({% link soda/quick-start-automate.md %})<br />
 ✅ **Data catalog integration**: Integrate Soda with a data catalog such as Atlan, Alation, or Metaphor. See: [Integrate Soda]({% link soda/integrate-alation.md %})<br />
 
 Requirements:
@@ -92,8 +92,8 @@ Use this setup to invoke Soda programmatically in, for example, and Airflow DAG 
 
 Use this setup for:<br />
 ✅ **Testing during development**: Test data before and after ingestion and transformation during development.  See: [Test data during development]({% link soda/quick-start-dev.md %}) <br />
-✅ **Circuit-breaking in a pipeline**: Test data in a pipeline so as enable circuit breaking that prevents bad-quality data from having a downstream impact. See: [Test data in production]({% link soda/quick-start-prod.md %})<br />
-✅ **Databricks Notebook**: Invoke Soda data quality scans in a Databricks Notebook. See: [Add Soda to a Databricks notebook]({% link soda/quick-start-notebook.md %})<br />
+✅ **Circuit-breaking in a pipeline**: Test data in a pipeline so as to enable circuit breaking that prevents bad-quality data from having a downstream impact. See: [Test data in production]({% link soda/quick-start-prod.md %})<br />
+✅ **Databricks Notebook**: Invoke Soda data quality scans in a Databricks Notebook. See: [Add Soda to a Databricks notebook]({% link soda/quick-start-databricks.md %})<br />
 
 Requirements:
 * Python 3.8 or greater

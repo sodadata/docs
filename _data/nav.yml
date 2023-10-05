@@ -5,10 +5,10 @@
   page: soda/quick-start-sip.md
 
 - title: Get started
-  page: soda/about.md
+  page: soda/get-started-roadmap.md
   subcategories:
   - subtitle: Get started roadmap
-    page: soda/about.md
+    page: soda/get-started-roadmap.md
   - subtitle: Choose a flavor of Soda
     page: soda/setup-guide.md
   - subtitle: Install Soda Library
@@ -23,18 +23,18 @@
     page: soda/upgrade.md
 
 - title: Use case guides
-  page: soda/setup-examples.md
+  page: soda/use-case-guides.md
   subcategories:
   - subtitle: Use case guides
-    page: soda/setup-examples.md 
+    page: soda/use-case-guides.md 
   - subtitle: Test data in a pipeline
     page: soda/quick-start-prod.md
   - subtitle: Test before data migration
     page: soda/quick-start-migration.md
-  - subtitle: Self-serve data quality
+  - subtitle: Self-serve Soda
     page: soda/quick-start-end-user.md
   - subtitle: Invoke Soda in Databricks
-    page: soda/quick-start-notebook.md
+    page: soda/quick-start-databricks.md
   - subtitle: Test data during development
     page: soda/quick-start-dev.md
   - subtitle: Automate monitoring

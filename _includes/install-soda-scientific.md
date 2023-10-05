@@ -1,13 +1,12 @@
-1. Set up a virtual environment, as described in the [Soda Library install documentation]({% link soda-library/install.md %}).
-2. [Install Soda Library]({% link soda-library/install.md %}) in your new virtual environment. 
-3. Use the following command to install Soda Scientific.
+1. Set up a virtual environment, and install Soda Library in your new virtual environment. 
+2. Use the following command to install Soda Scientific.
 
 ```bash
 pip install -i https://pypi.cloud.soda.io soda-scientific
 ```
 
 <details>
-    <summary style="color:#00BC7E"> List of Soda Scientific dependencis </summary>
+    <summary style="color:#00BC7E"> List of Soda Scientific dependencies </summary>
   <ul>
     <li>pandas<2.0.0</li>
     <li>wheel</li>

@@ -20,12 +20,11 @@ Because ClickHouse is compatible with MySQL wire protocol, Soda offers indirect,
 ```yaml
 data_source my_datasource_name:
   type: mysql
-  connection:
-    host: 
-    port: `9004`
-    username: xxx
-    password: ...
-    database:
+  host: 
+  port: `9004`
+  username: xxx
+  password: ...
+  database:
 ```
 
 | Property | Required | Notes                                                      |

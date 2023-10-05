@@ -1,12 +1,12 @@
 ---
 layout: default
-title: How Soda Library works
-description: Learn Soda Library Basics, Soda Library Operation, Soda Library Automation and Integration with orchestration tools and Soda Cloud.
+title: How Soda works
+description: Learn Soda Library Basics, Soda Library Operation, Soda Library Automation and Soda Cloud.
 parent: Soda Library
 redirect_from: /soda-core/how-core-works.html
 ---
 
-# How Soda Library works 
+# How Soda works 
 *Last modified on {% last_modified_at %}*
 
 **Soda Library** is Python library and CLI tool that enables Data Engineers to test data for quality where and when they need to. The **Soda Agent** is a containerized Soda Library that you deploy in a Kubernetes cluster, so the behavior described below for Soda Library is more or less the same for Soda Agent.
@@ -38,11 +38,10 @@ To connect to a data source such as Snowflake, Amazon Athena, or GCP Big Query, 
 ```yaml
 data_source adventureworks:
   type: postgres
-  connection:
-    host: localhost
-    port: '5432'
-    username: postgres
-    password: secret
+  host: localhost
+  port: '5432'
+  username: postgres
+  password: secret
   database: postgres
   schema: public
 
@@ -133,7 +132,7 @@ Alternatively, you can integrate Soda Library with a **data orchestration tool**
 
 * Learn more about the [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) you can use to check for data quality.
 * Learn how to prepare [programmatic scans]({% link soda-library/programmatic.md %}) of your data.
-* Learn more about the ways you can use Soda in [Use case guides]({% link soda/setup-examples.md %}).
+* Learn more about the ways you can use Soda in [Use case guides]({% link soda/use-case-guides.md %}).
 * Use [failed row samples]({% link soda-cloud/failed-rows.md %}) to investigate data quality issues.
 * Write [custom SQL checks]({% link soda-cl/user-defined.md %}) for your own use cases.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

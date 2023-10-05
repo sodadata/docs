@@ -216,7 +216,6 @@ scan.add_configuration_yaml_str(
     """
     data_source events:
       type: snowflake
-      connection:
       host: ${SNOWFLAKE_HOST}
       username: ${SNOWFLAKE_USERNAME}
       password: ${SNOWFLAKE_PASSWORD}

@@ -94,20 +94,18 @@ You can use a cross check to compare the row count of datasets in the same data 
 ```yaml
 data_source retail_customers_stage:
   type: postgres
-  connection:
-    host: location.eu-west-1.rds.amazonaws.com
-    username: ${USER}
-    password: ${PASS}
-    database: postgres
+  host: location.eu-west-1.rds.amazonaws.com
+  username: ${USER}
+  password: ${PASS}
+  database: postgres
   schema: staging
 
 data_source retail_customers_prod:
   type: postgres
-  connection:
-    host: location.eu-west-1.rds.amazonaws.com
-    username: ${USER}
-    password: ${PASS}
-    database: postgres
+  host: location.eu-west-1.rds.amazonaws.com
+  username: ${USER}
+  password: ${PASS}
+  database: postgres
   schema: production
 ```
 Then, you can define a cross check that compares values across these data sources.

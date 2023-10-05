@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Test data quality before migration
-description: 
+description: Use this guide to set up Soda to check data quality before and after migrating data between data sources.
 parent: Use case guides
 ---
 
@@ -40,7 +40,7 @@ This example imagines moving data from PostgreSQL to Snowflake. The following ou
 4. [Install and set up Soda](#install-and-set-up-soda) to perform preliminary tests for data quality in the source data. Use this opportunity to make sure that the quality of the data you are about to migrate is in a good state. Ideally, you perform this step in a production environment, before replicating the source data source in a staging environment to ensure that you begin the project with good-quality data.
 5. You have backed up the existing data in the PostgreSQL source data source, and created a staging environment which replicates the production PostgreSQL data source.
 6. Use Airflow to execute the data migration from PostgreSQL to Snowflake in a staging environment. 
-7. In the staging environment, use Soda to [run reconciliation checks](#run-reconciliation-checks) on both the source and target data sources to validate that the data has been transformed and loaded as expected, and the quality of data in the target is sound. 
+7. In the staging environment, use Soda to run reconciliation checks on both the source and target data sources to validate that the data has been transformed and loaded as expected, and the quality of data in the target is sound. 
 8. Adjust your data transformations as needed in order to address any issues surfaced by Soda. Repeat the data migration in staging, checking for quality after each run, until you are satisfied with the outcome and the data that loads into the target Snowflake data source.
 9. Prepare an Airflow DAG to execute the data migration in production. Execute the data migration in production, then use Soda to scan for data quality on the target data source for final validation.
 10. (Optional) For regular migration events, consider invoking Soda scans for data quality after extraction and transformation(s) in the DAG. 
@@ -61,13 +61,12 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
     ```yaml
     data_source my_database_name:
       type: postgres
-      connection:
-        host: 
-        port: 
-        username: 
-        password: 
-        database: 
-        schema: 
+      host: 
+      port: 
+      username: 
+      password: 
+      database: 
+      schema: 
 
     soda_cloud:
       # For US region, use cloud.us.soda.io
@@ -91,7 +90,7 @@ soda suggest -d my_datasource -c configuration.yml -ds your_dataset_name
 * pass: the values in the dataset match or fall within the thresholds you specified
 * fail: the values in the dataset do not match or fall within the thresholds you specified
 * error: the syntax of the check is invalid, or there are runtime or credential errors
-8. Based on the check results from the first scan, address any data quality issues that Soda surfaced so that your data migration project begins with good-quality data. Refer to [Runs scans and review results]({% link soda-library/run-a-scan.md %}) for much more detail.
+8. Based on the check results from the first scan, address any data quality issues that Soda surfaced so that your data migration project begins with good-quality data. Refer to [Runs a scan and review results]({% link soda-library/run-a-scan.md %}) for much more detail.
 9. If you wish, open the `checks.yml` that the check suggestions command saved locally for you and add more checks for data quality, then use the following command to run the scan again. Refer to [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for exhaustive details on all types of checks.
 ```shell
 soda scan -d my_datasource -c configuration.yml checks.yml
@@ -106,27 +105,24 @@ soda scan -d my_datasource -c configuration.yml checks.yml
       ```yaml
       data_source fulfillment_apac_prod:
         type: postgres
-        connection:
-          host: 127.0.0.1
-          port: '5432'
-          username: ${POSTGRES_USER}
-          password: ${POSTGRES_PASSWORD}
-          database: postgres
-          schema: public
+        host: 127.0.0.1
+        port: '5432'
+        username: ${POSTGRES_USER}
+        password: ${POSTGRES_PASSWORD}
+        database: postgres
+        schema: public
 
       data_source fulfillment_apac_staging:
         type: postgres
-        connection:
-          host: localhost
-          port: '5432'
-          username: ${POSTGRES_USER}
-          password: ${POSTGRES_PASSWORD}
-          database: postgres
-          schema: public
+        host: localhost
+        port: '5432'
+        username: ${POSTGRES_USER}
+        password: ${POSTGRES_PASSWORD}
+        database: postgres
+        schema: public
 
       data_source fulfillment_apac1_staging:
         type: snowflake
-        connection:
           username: ${SNOWFLAKE_USER}
           password: ${SNOWFLAKE_USER}
           account: my_account

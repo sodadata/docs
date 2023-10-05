@@ -102,7 +102,7 @@ Use Soda to test the quality in a data migration project at both source and targ
 
 ## Go further
 
-* Learn more about the ways you can use Soda in [Use case guides]({% link soda/setup-examples.md %}).
+* Learn more about the ways you can use Soda in [Use case guides]({% link soda/use-case-guides.md %}).
 * [Integrate Soda]({% link soda/integrate-metaphor.md %}) with your data catalog.
 * Auto-generate [check suggestions]({% link soda-library/check-suggestions.md %}) tailored to your data.
 * Set up bulk [notification rules]({% link soda-cloud/notif-rules.md %}) to send alerts for failed checks.

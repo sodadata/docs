@@ -15,13 +15,13 @@ redirect_from:
 Is Soda the data quality testing solution you've been looking for? Take a sip and see! <br />
 Use the example data in this quick tutorial to set up and run a simple Soda scan for data quality.<br />
 
-[Set up Soda](#install-soda-from-the-command-line) | 3 minutes <br />
+[Set up Soda](#set-up-soda) | 3 minutes <br />
 [Build an example data source](#build-an-example-data-source) | 2 minutes<br />
 [Connect Soda to the data source](#connect-soda-to-the-data-source-and-a-soda-cloud-account) | 5 minutes<br />
 [Write checks and run a scan](#write-some-checks-and-run-a-scan) | 5 minutes<br />
 <br />
 
-💡 For standard set up instructions, access the [Get started roadmap]({% link soda/about.md %}).
+💡 For standard set up instructions, access the [Get started roadmap]({% link soda/get-started-roadmap.md %}).
 
 
 ## Set up Soda
@@ -113,10 +113,9 @@ This tutorial also instructs you to connect to a Soda Cloud account using API ke
     ```yaml
     data_source adventureworks:
       type: postgres
-      connection:
-        host: localhost
-        username: postgres
-        password: secret
+      host: localhost
+      username: postgres
+      password: secret
       database: postgres
       schema: public
     ```
@@ -124,9 +123,8 @@ This tutorial also instructs you to connect to a Soda Cloud account using API ke
     ```yaml
     data_source adventureworks:
       type: postgres
-      connection:
-        host: localhost
-        ...
+      host: localhost
+      ...
       schema: public
     
     soda_cloud:
@@ -151,7 +149,7 @@ Connection 'adventureworks' is valid.
 
 ## Write some checks and run a scan
 
-1. Create another file in the `soda_sip` directory called `checks.yml`. A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). 
+1. Create another file in the `soda_sip` directory called `checks.yml`. A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the Soda Checks Language (SodaCL). 
 2. Open the `checks.yml` file in your code editor, then copy and paste the following checks into the file. 
 ```yaml
 checks for dim_customer:
@@ -227,12 +225,12 @@ If you are done with the example data, you can delete it from your account to st
 1. Navigate to **your avatar** > **Scans & Data**.
 2. In the **Data Sources** tab, click the stacked dots to the right of the `adventureworks` data source, then select **Delete Data Source**.
 3. Follow the steps to confirm deletion. 
-4. Connect to your own data by [configuring your data source connections]({% link soda-library/configure.md %}) in your existing `configuration.yml` file.
+4. Connect to your own data by [configuring your data source connections]({% link soda-library/install.md %}#configure-soda) in your existing `configuration.yml` file.
 5. Adjust your `checks.yml` to point to your own dataset in your data source, then adjust the checks to apply to your own data. Go ahead and run a scan!
 
 ## Go further
 
-* Get inspired on how to set up Soda to meet your [use case needs]({% link soda/setup-examples.md %}).
+* Get inspired on how to set up Soda to meet your [use case needs]({% link soda/use-case-guides.md %}).
 * Use [check suggestions]({% link soda-library/check-suggestions.md %}) or [SodaGPT]({% link soda-cloud/sodagpt.md %}) to quickly get off the ground with basic checks for data quality.
 * Learn [how to start]({% link soda/quick-start-sodacl.md %}) writing SodaCL checks.
 * Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.

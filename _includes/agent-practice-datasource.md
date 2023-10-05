@@ -50,11 +50,10 @@ Once the pod of practice data is running, you can use the following configuratio
 ```yaml 
 data_source your_datasource_name:
   type: postgres
-  connection:
-    host: nybusbreakdowns
-    port: 5432
-    username: sodacore
-    password: sodacore
-    database: sodacore
-    schema: new_york
+  host: nybusbreakdowns
+  port: 5432
+  username: sodacore
+  password: sodacore
+  database: sodacore
+  schema: new_york
 ```

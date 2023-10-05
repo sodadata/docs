@@ -11,7 +11,7 @@ redirect_from:
 # Invoke Soda Library
 *Last modified on {% last_modified_at %}*
 
-To automate the search for bad-quality data, you can use **Soda library** to programmatically set up and execute scans. As a Python library, you can invoke Soda just about anywhere you need it; the invocation instructions below offers a very simple invocation example to extrapolate from. Consult the [Use case guides]({% link soda/setup-examples.md %}) for more examples of how to programmatically run Soda scans for data quality.
+To automate the search for bad-quality data, you can use **Soda library** to programmatically set up and execute scans. As a Python library, you can invoke Soda just about anywhere you need it; the invocation instructions below offers a very simple invocation example to extrapolate from. Consult the [Use case guides]({% link soda/use-case-guides.md %}) for more examples of how to programmatically run Soda scans for data quality.
 
 Alternatively, you can install and use the Soda Library CLI to run scans; see [Install Soda Library]({% link soda-library/install.md %}). 
 
@@ -21,7 +21,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s> 
 2. **Set up Soda: programmatic** 📍 You are here! <br />
-&nbsp;&nbsp;&nbsp;&nbsp; a. [Check requirements](#requirements)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; a. [Review requirements](#requirements)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; b. [Create a Soda Cloud account](#create-a-soda-cloud-account)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; c. [Set up basic programmatic invocation in Python](#set-up-basic-programmatic-invocation-in-python)<br />
 3. Write SodaCL checks 
@@ -45,7 +45,7 @@ To use Soda Library, you must have installed the following on your system.
 
 <details>
     <summary style="color:#00BC7E">Why do I need a Soda Cloud account?</summary>
-To validate your account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library. <br /><a href="https://docs.soda.io/soda/about.html">Learn more</a><br /><br />
+To validate your account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library. <br /><a href="https://docs.soda.io/soda/get-started-roadmap.html#about-soda">Learn more</a><br /><br />
 </details>
 
 ## Set up basic programmatic invocation in Python
@@ -76,7 +76,6 @@ scan.add_configuration_yaml_str(
     """
     data_source events:
       type: snowflake
-      connection:
       host: ${SNOWFLAKE_HOST}
       username: ${SNOWFLAKE_USERNAME}
       password: ${SNOWFLAKE_PASSWORD}

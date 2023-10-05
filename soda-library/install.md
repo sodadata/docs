@@ -21,31 +21,17 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
 2. **Set up Soda: self-operated** 📍 You are here! <br />
-&nbsp;&nbsp;&nbsp;&nbsp; a. [Check requirements](#requirements)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; a. [Review requirements](#requirements)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; b. [Install Soda Library](#install-soda-library-1)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; c. [Configure Soda](#configure-soda)<br />
 3. Write SodaCL checks
 4. Run scans and review results
 5. Organize, alert, investigate
 
-💡 **TL;DR:** Follow a [15-min tutorial]({% link soda/quick-start-sip.md %}) to set up and run Soda.
+💡 **TL;DR:** Follow a [15-min tutorial]({% link soda/quick-start-sip.md %}) to set up and run Soda with example data.
 
 <br />
 
-<!--
-[Requirements](#requirements)<br />
-[Create a Soda Cloud account](#create-a-soda-cloud-account)<br />
-[Install Soda Library](#install-soda-library)<br />
-[Configure Soda](#configure-soda)<br />
-[Next](#next)<br />
--->
-<!--
-## Compatibility
-
-Use Soda Library to scan a variety of data sources.<br />
-
-{% include compatible-datasources.md %}
--->
 
 ## Requirements
 
@@ -63,7 +49,7 @@ If you have not already installed Python, consider using <a href="https://github
 
 <details>
     <summary style="color:#00BC7E">Why do I need a Soda Cloud account?</summary>
-To validate your account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library. <br /><a href="https://docs.soda.io/soda/about.html">Learn more</a><br /><br />
+To validate your account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library. <br /><a href="https://docs.soda.io/soda/get-started-roadmap.html#about-soda">Learn more</a><br /><br />
 </details>
 
 ## Install Soda Library
@@ -100,7 +86,7 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 | ----------- | --------------- | 
 | Amazon Athena | `soda-athena` |
 | Amazon Redshift | `soda-redshift` | 
-| Apache Spark DataFrames <br /> (For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.) | `soda-spark-df` |
+| Apache Spark DataFrames <br /> (For use with programmatic Soda scans, only.) | `soda-spark-df` |
 | Azure Synapse (Experimental) | `soda-sqlserver` |
 | ClickHouse (Experimental) | `soda-mysql` |
 | Dask and Pandas (Experimental)  | `soda-pandas-dask` |
@@ -148,7 +134,7 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 | ----------- | --------------- | 
 | Amazon Athena | `soda-athena` |
 | Amazon Redshift | `soda-redshift` | 
-| Apache Spark DataFrame <br /> (For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.) | `soda-spark-df` |
+| Apache Spark DataFrame <br /> (For use with programmatic Soda scans, only.) | `soda-spark-df` |
 | Azure Synapse (Experimental) | `soda-sqlserver` |
 | ClickHouse (Experimental) | `soda-mysql` |
 | Dask and Pandas (Experimental)  | `soda-pandas-dask` |
@@ -215,16 +201,15 @@ You have two installation options to choose from:
 ## Configure Soda
 
 1. Soda Library connects with Spark DataFrames in a unique way, using programmtic scans.
-* If you are using Spark DataFrames, follow the configuration details in [Connect to Apache Spark DataFrames](#connect-to-apache-spark-dataframes).
+* If you are using Spark DataFrames, follow the configuration details in [Connect to Spark]({% link soda/connect-spark.md %}).
 * If you are *not* using Spark DataFrames, continue to step 2.
-2. In the same directory and environment in which you installed Soda Library, use a code editor to create a new `configuration.yml` file. This file stores connection details for your data sources and your Soda Cloud account. <br />Use the data source-specific connection configurations [details]({% link soda/connect-athena.md %}) to copy+paste the connection syntax into your file, then adjust the values to correspond with your data source's details, as in the following example for PostgreSQL. <br />You can use [system variables](#provide-credentials-as-system-variables) to pass sensitive values, if you wish.
+2. In the same directory and environment in which you installed Soda Library, use a code editor to create a new `configuration.yml` file. This file stores connection details for your data sources and your Soda Cloud account. <br />Use the data source-specific connection configurations (see: [Data source reference]({% link soda/connect-athena.md %})) to copy+paste the connection syntax into your file, then adjust the values to correspond with your data source's details, as in the following example for PostgreSQL. <br />You can use [system variables](#provide-credentials-as-system-variables) to pass sensitive values, if you wish.
 ```yaml
     data_source adventureworks:
       type: postgres
-      connection:
-        host: localhost
-        username: postgres
-        password: secret
+      host: localhost
+      username: postgres
+      password: secret
       database: postgres
       schema: public
 ```
@@ -265,13 +250,12 @@ echo $POSTGRES_PASSWORD
 ```yaml
 data_source my_database_name:
   type: postgres
-  connection:
-    host: soda-temp-demo
-    port: '5432'
-    username: sodademo
-    password: ${POSTGRES_PASSWORD}
-    database: postgres
-    schema: public
+  host: soda-temp-demo
+  port: '5432'
+  username: sodademo
+  password: ${POSTGRES_PASSWORD}
+  database: postgres
+  schema: public
 ```
 4. Save the configuration YAML file, then run a scan to confirm that Soda Library connects to your data source without issue.
 ```shell
@@ -292,13 +276,12 @@ echo $API_KEY
     ```yaml
     data_source my_database_name:
       type: postgres
-      connection:
-        host: soda-temp-demo
-        port: '5432'
-        username: sodademo
-        password: ${POSTGRES_PASSWORD}
-        database: postgres
-        schema: public
+      host: soda-temp-demo
+      port: '5432'
+      username: sodademo
+      password: ${POSTGRES_PASSWORD}
+      database: postgres
+      schema: public
     
     soda_cloud:
       host: cloud.soda.io

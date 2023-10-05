@@ -39,10 +39,9 @@ Consider following the [Take a sip of Soda]({% link soda/quick-start-sip.md %}) 
 ```yaml
     data_source adventureworks:
       type: postgres
-      connection:
-        host: localhost
-        username: postgres
-        password: secret
+      host: localhost
+      username: postgres
+      password: secret
       database: postgres
       schema: public
 ```
@@ -102,13 +101,12 @@ echo $POSTGRES_PASSWORD
 ```yaml
 data_source my_database_name:
   type: postgres
-  connection:
-    host: soda-temp-demo
-    port: '5432'
-    username: sodademo
-    password: ${POSTGRES_PASSWORD}
-    database: postgres
-    schema: public
+  host: soda-temp-demo
+  port: '5432'
+  username: sodademo
+  password: ${POSTGRES_PASSWORD}
+  database: postgres
+  schema: public
 ```
 4. Save the configuration YAML file, then run a scan to confirm that Soda Library connects to your data source without issue.
 ```shell
@@ -129,13 +127,12 @@ echo $API_KEY
     ```yaml
     data_source my_database_name:
       type: postgres
-      connection:
-        host: soda-temp-demo
-        port: '5432'
-        username: sodademo
-        password: ${POSTGRES_PASSWORD}
-        database: postgres
-        schema: public
+      host: soda-temp-demo
+      port: '5432'
+      username: sodademo
+      password: ${POSTGRES_PASSWORD}
+      database: postgres
+      schema: public
     
     soda_cloud:
       host: cloud.soda.io

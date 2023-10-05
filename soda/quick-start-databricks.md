@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Add Soda to a Databricks notebook
-description: 
+description: Use this guide to invoke Soda data quality tests from inside a Databricks notebook.
 parent: Use case guides
 ---
 
@@ -13,7 +13,7 @@ Use this guide to install and set up Soda in a Databricks notebook so you can ru
 (Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
 
 [About this guide](#about-this-guide)<br />
-[Sign up for Soda Cloud](#prepare-for-data-migration)<br />
+[Create a Soda Cloud account](#create-a-soda-cloud-account)<br />
 [Set up Soda](#set-up-soda)<br />
 [Go further](#go-further)<br />
 
@@ -23,7 +23,7 @@ The instructions below offer Data Engineers an example of how to write Python in
 
 This example uses a programmatic deployment model which invokes the Soda Python library, and uses Soda Cloud to validate a commercial usage license and display visualized data quality test results. See: [Choose a flavor of Soda]({% link soda/setup-guide.md %}).
 
-## Sign up for Soda Cloud
+## Create a Soda Cloud account
 
 To validate your account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library. <a href="https://docs.soda.io/soda/about.html">Learn more</a>
 

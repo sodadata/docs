@@ -63,13 +63,12 @@ This guide also includes instructions for how to connect to a Soda Cloud account
 3. In the `configuration.yml` file, they add the data source connection configuration for the PostgreSQL data source that contains the AdventureWorks data. The example below is the connection configuration for a PostgreSQL data source. Access the <a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/configuration.example.yml" target="_blank">example file</a>. See a complete list of supported [data sources]({% link soda/connect-athena.md %}).
 ```yaml
 data_source soda-demo:
-        type: postgres
-        connection:
-            host: localhost
-            username: postgres
-            password: secret
-        database: postgres
-        schema: public
+      type: postgres
+      host: localhost
+      username: postgres
+      password: secret
+      database: postgres
+      schema: public
 ```
 4. In a browser, they navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a free, 45-day trial Soda account.  
 5. They navigate to **avatar** > **Profile**, then navigate to the **API Keys** tab and click the plus icon to generate new API keys.
@@ -83,7 +82,7 @@ soda test-connection -d adventureworks -c configuration.yml
 
 ## Write checks for data quality
 
-A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). You can create multiple `checks.yml` files to organize your data quality checks and run all, or some of them, at scan time. 
+A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the Soda Checks Language (SodaCL). You can create multiple `checks.yml` files to organize your data quality checks and run all, or some of them, at scan time. 
 
 In this example, the Data Engineer creates multiple checks after ingestion, after initial transformation, and before pushing the information to a visualization or reporting tool.
 
@@ -443,7 +442,7 @@ Learn more about [running Soda scans]({% link soda-library/run-a-scan.md %}).
 4. Navigating again to the **Datasets** page, they use the filters to display datasets according to **Tags** and **Arrival Time** to narrow the search for the most recent quality checks associated with their models which have failed or warned.<br /><br />
 ![datasets-tags](/assets/images/datasets-tags.png){:width="700px"}
 5. After filtering the datasets according to the tags, the Engineer saves the filter setup as a **Collection** that they can revisit daily.
-6. If you were in the Data Engineer's shoes, you may further wish to set up [Slack notifications]({% link soda/quick-start-dev.md %}#set-up-slack-integration-and-notification-rules) for any checks that warn or fail during scans.
+6. If you were in the Data Engineer's shoes, you may further wish to set up [Slack notifications]({% link soda/integrate-slack.md %}) for any checks that warn or fail during scans.
 
 ✨Hey, hey!✨ Now you know what it's like to add data quality checks to your production data pipeline. Huzzah!
 

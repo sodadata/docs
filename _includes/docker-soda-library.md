@@ -1,4 +1,4 @@
-Use <a href="https://hub.docker.com/repository/docker/sodadata/soda-library" target="_blank">Soda's Docker image</a> in which Soda Scientific is pre-installed. You need Soda Scientific to be able to use SodaCL [distribution checks]({% link soda-cl/distribution.md %}) or [anomaly score checks]({% link soda-cl/anomaly-score.md %}).
+Use Soda's Docker image in which Soda Scientific is pre-installed. You need Soda Scientific to be able to use SodaCL [distribution checks]({% link soda-cl/distribution.md %}) or [anomaly score checks]({% link soda-cl/anomaly-score.md %}).
 
 1. If you have not already done so, <a href="https://docs.docker.com/get-docker/" target="_blank">install Docker</a> in your local environment. 
 2. From Terminal, run the following command to pull Soda Library's official Docker image; adjust the version to reflect the most [recent release]({% link release-notes/soda-library.md %}).
@@ -66,7 +66,7 @@ See https://docs.docker.com/desktop/mac for more info.
 
 You need to give Docker permission to acccess your configuration.yml and checks.yml files in your environment. To do so:
   1. Access your Docker Dashboard, then select Preferences (gear symbol).
-  2. Select Resources, then follow the <a href="https://docs.docker.com/desktop/mac/#file-sharing" target="_blank">Docker instructions</a> to add your Soda project directory -- the one you use to store your configuration.yml and checks.yml files -- to the list of directories that can be bind-mounted into Docker containers. 
+  2. Select Resources, then follow the <a href="https://www.docker.com/blog/file-sharing-with-docker-desktop/" target="_blank">Docker instructions</a> to add your Soda project directory -- the one you use to store your configuration.yml and checks.yml files -- to the list of directories that can be bind-mounted into Docker containers. 
   3. Click Apply & Restart, then repeat steps 2 - 4 above.
 
 <br />
