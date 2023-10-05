@@ -12,7 +12,7 @@ parent: Connect a data source
 {% include connect-to-intro.md %}
 
 
-## Configuration
+## Connection configuration reference
 
 Because ClickHouse is compatible with MySQL wire protocol, Soda offers indirect, experimental support for ClickHouse data sources using the `soda-mysql` package. 
 

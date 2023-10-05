@@ -214,34 +214,32 @@
     page: api-docs/reporting-api-to-overview-dashboards.md
 
 - title: Learning resources
-  page: soda/product-overview.md
+  page: soda/glossary.md
   subcategories:
+  - subtitle: Glossary
+    page: soda/glossary.md
   - subtitle: Soda product overview
     page: soda/product-overview.md
   - subtitle: How Soda works
     page: soda-library/how-library-works.md
   - subtitle: Soda Agent basic concepts
     page: soda-agent/basics.md
-  - subtitle: Glossary
-    page: soda/glossary.md
   - subtitle: Soda architecture
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Generate API keys
     page: soda-cloud/api-keys.md
-  - subtitle: Soda Cloud resources
-    page: soda-cloud/resource-map.md
   - subtitle: Data security and privacy
     page: soda/data-privacy.md
   - subtitle: Soda Library usage statistics
     page: soda-library/usage-stats.md
+  - subtitle: What's new in docs?
+    page: soda/new-documentation.md
   - subtitle: Support
     page: soda/support.md
   - subtitle: Soda Community Code of Conduct
     page: soda/community-coc.md
   - subtitle: Soda SQL is now Soda Core
     page: soda/deprecated.md
-  - subtitle: What's new in docs?
-    page: soda/new-documentation.md
 
 - title: Soda Core
   page: soda-core/overview-main.md

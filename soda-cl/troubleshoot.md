@@ -17,7 +17,7 @@ parent: SodaCL
 [Checks not evaluated](#checks-not-evaluated)<br />
 [Filter not passed with reference check](#filter-not-passed-with-reference-check)<br />
 [Failed row check with CTE error](#failed-row-check-with-cte-error)<br />
-[Errors with column names contain periods or colons](#errors-when-column-names-contain-periods-or-colons)<br />
+[Errors with column names containing periods or colons](#errors-when-column-names-containing-periods-or-colons)<br />
 <br />
 
 ## Errors with valid format
@@ -195,7 +195,7 @@ checks for corp_value:
       fail condition: true and "column.name.PX" IS NOT null
 ```
 
-## Errors when column names contain periods or colons
+## Errors when column names containing periods or colons
 
 **Problem**: A check you've written executes against a column with a name that includes a period or colon, and scans produce an error.
 

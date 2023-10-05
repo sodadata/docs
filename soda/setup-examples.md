@@ -23,7 +23,7 @@ Use the following guides as example implementations based on how you intend to u
                 <div>
                     <img src="/assets/images/icons/icon-investigate.png" width="50" height="40">
                     <h2>Soda for data migration</h2>
-                    <a href="/soda/quick-start-migration.md">Test before data migration</a>
+                    <a href="/soda/quick-start-migration.html">Test before data migration</a>
                     <p>Use this guide to set up Soda to test before and after data migration.</p>
                 </div>
                 <div>
@@ -35,7 +35,7 @@ Use the following guides as example implementations based on how you intend to u
                 <div>
                     <img src="/assets/images/icons/icon-dev-tools@2x.png" width="50" height="40">
                     <h2>Soda + Databricks notebook</h2>
-                    <a href="/soda/quick-start-migration.md">Invoke Soda in Databricks</a>
+                    <a href="/soda/quick-start-migration.html">Invoke Soda in Databricks</a>
                     <p>Use this guide to invoke Soda data quality tests in a Databricks notebook.</p>
                 </div>
                 <div>
@@ -47,7 +47,7 @@ Use the following guides as example implementations based on how you intend to u
                 <div>
                     <img src="/assets/images/icons/icon-pacman@2x.png" width="50" height="40">
                     <h2>Soda + automated monitoring</h2>
-                    <a href="/soda/quick-start-migration.md">Automate monitoring</a>
+                    <a href="/soda/quick-start-migration.html">Automate monitoring</a>
                     <p>Use this guide to set up Soda to automatically monitor data quality.</p>
                 </div>
             </div>

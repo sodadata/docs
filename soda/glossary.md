@@ -23,7 +23,7 @@ A configuration in a SodaCL check that you use to explicitly specify the conditi
 An out-of-the-box metric that you can configure in a checks YAML file. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
 
 ### check 
-A test for data quality that you write using the Soda Checks Language (SodaCL). See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
+A test for data quality that you write using the Soda Checks Language (SodaCL). Technically, it is a Python expression that checks metrics to see if they match the parameters you defined for a measurement. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
 
 ### checks YAML 
 The file in which you define SodaCL checks. Soda Library uses the input from this file to prepare, then run SQL queries against your data. See [How Soda Library works]({% link soda-library/how-library-works.md %}).

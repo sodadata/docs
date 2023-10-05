@@ -26,7 +26,7 @@ As the first step in the **Get started roadmap**, this guide helps you decide ho
 
 ## Choose a flavor of Soda
 
-This guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. After choosing your flavor of Soda (type of deployment model), access the corresponding [Set up Soda](#next-set-up-soda) below.
+This guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. After choosing your flavor of Soda (type of deployment model), access the corresponding [Set up Soda](#next-set-up-soda) below. Optionally, access a full [Soda product overview]({% link soda/product-overview.md %}).
 
 You can set up Soda in one of three (soon to be four!) flavors: 
 

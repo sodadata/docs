@@ -11,7 +11,13 @@ redirect_from:
 # Data security and privacy
 *Last modified on {% last_modified_at %}*
 
-Soda works in several ways to ensure your data and systems remain private.
+Soda works in several ways to ensure your data and systems are secure and remain private.
+
+## Compliance and reporting
+
+As a result of an independent review in April 2022, Soda has been found to be **SOCII Type 2** compliant. Contact <a href="mailto:support@soda.io">support@soda.io</a> for more information.
+
+![soc2](/assets/images/soc2.png){:width="100px"}
 
 ## Making secure connections
 
@@ -37,10 +43,6 @@ Soda Cloud does store the following:
 Where your datasets contain <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/legal-grounds-processing-data/sensitive-data/what-personal-data-considered-sensitive_en" target="_blank"> sensitive data</a> or private information, you may *not* want to send failed row samples from your data source to Soda Cloud. In such a circumstance, you can [disable the failed row samples feature entirely]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples) in Soda Cloud. Read more about disabling samples and failed row samples in [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}).
 
 Read more about Soda's <a href="https://www.soda.io/privacy-policy" target="_blank">Privacy Policy</a>. 
-
-## Compliance and reporting
-
-As a result of an independent review in April 2022, Soda has been found to be **SOCII Type 2** compliant. Contact <a href="mailto:support@soda.io">support@soda.io</a> for more information.
 
 <br />
 

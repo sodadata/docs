@@ -13,7 +13,7 @@ parent: Connect a data source
 ## Compatibility
 Soda supports Dremio version 22 or greater.
 
-## Configuration
+## Connection configuration reference
 
 Install package: `soda-dremio`
 

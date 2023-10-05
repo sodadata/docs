@@ -18,7 +18,7 @@ parent: Connect a data source
 [Troubleshoot](#troubleshoot)<br />
 <br />
 
-## Configuration
+## Connection configuration reference
 
 Install package: `soda-snowflake`
 

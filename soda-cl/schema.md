@@ -10,7 +10,7 @@ redirect_from: /soda-cloud/schema-evolution.html
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use a schema check to validate the presence, absence or position of columns in a dataset, or to validate the type of data column contains. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general. 
+Use a schema check to validate the presence, absence or position of columns in a dataset, or to validate the type of data column contains. 
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
@@ -134,6 +134,9 @@ checks for dim_customer:
          - column type change
 ```
 
+The output in Soda Cloud displays the output of all the alert states during the scan.
+
+![schema-results](/assets/images/schema-results.png){:height="700px" width="700px"} 
 
 ## Optional check configurations
 
@@ -263,9 +266,6 @@ Sending results to Soda Cloud
 Soda Cloud Trace: 7845***
 ```
 
-The output in Soda Cloud displays the output of all the alert states during the scan.
-
-![schema-results](/assets/images/schema-results.png){:height="700px" width="700px"} 
 
 ## Go further
 

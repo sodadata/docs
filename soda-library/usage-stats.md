@@ -8,7 +8,6 @@ redirect_from: /soda-core/usage-stats.html
 
 # Soda Library usage statistics
 *Last modified on {% last_modified_at %}*
-{% include banner-core.md %}
 
 To understand how users are using Soda Library, and to proactively capture bugs and performance issues, the Soda development team has added telemetry event tracking to Soda Library. 
 

@@ -10,7 +10,7 @@ parent: Connect a data source
 
 {% include connect-to-intro.md %}
 
-## Configuration
+## Connection configuration reference
 
 Because Google CloudSQL is compatible with PostgreSQL wire protocol, Soda offers support for Google CloudSQL data sources using the `soda-postgres` package.
 

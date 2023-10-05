@@ -12,6 +12,8 @@ Use this guide to install and set up Soda to test the quality in a data migratio
 
 (Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
 
+![rconciliation](/assets/images/reconciliation.gif){:width="600px"}
+
 [About this guide](#about-this-guide)<br />
 [Prepare for data migration](#prepare-for-data-migration)<br />
 [Install and set up Soda](#install-and-set-up-soda)<br />

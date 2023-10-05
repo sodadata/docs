@@ -13,7 +13,7 @@ parent: Connect a data source
 ## Compatibility
 Soda supports Oracle version 21.3 or greater.
 
-## Configuration
+## Connection configuration reference
 
 Install package: `soda-oracle`
 

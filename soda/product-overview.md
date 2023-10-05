@@ -9,7 +9,7 @@ redirect_from: /soda/product-matrix.html
 # Soda overview
 *Last modified on {% last_modified_at %}*
 
-Soda is a tool that enables Data Engineers to test data for quality where and when they need to.
+Soda is a tool that enables Data Engineers, Data Scientists, and Data Analysts to test data for quality where and when they need to.
 
 * Is your data fresh?
 * Is it complete or missing values? 
@@ -18,7 +18,7 @@ Soda is a tool that enables Data Engineers to test data for quality where and wh
 * Are all the data values valid? 
 * Are anomalous values disrupting downstream reports? 
 
-These are the questions that Soda answers for Data Engineers.
+These are the questions that Soda answers.
 
 ## What does Soda do?
 
@@ -29,7 +29,6 @@ A scan is a command which instructs Soda to execute data quality checks on your 
 Working together, **Soda Library** or a **Soda Agent**, **Soda Cloud** and **Soda Checks Language (SodaCL)** empower you and your colleagues to collaborate on data quality testing.
 
 * **Soda Library** is a Python library and CLI tool that performs the work of converting user-defined input into SQL queries that execute when you run scans for data quality. This "engine" of Soda uses the data source connection information you provide in a configuration YAML file, and the data quality checks you define in a checks YAML file, to run on-demand or scheduled scans of your data. Soda Library pushes scan results to your Soda Cloud account to enable you and your colleagues to analyze check results, investigate issues, and track dataset health over time. 
-{% include banner-core.md %}
 
 * The **Soda Agent** is a containerized Soda Library that you deploy in a Kubernetes cluster in your cloud services provider environment, such as Azure or AWS. Deploy a Soda Agent to use Soda Library while meeting infrastructure team's security rules and requirements. See [Soda Agent basic concepts]({% link soda-agent/basics.md %}) for details.
 
@@ -38,6 +37,9 @@ Working together, **Soda Library** or a **Soda Agent**, **Soda Cloud** and **Sod
 * To define data quality checks, you use the **Soda Checks Language (SodaCL)**, which is a YAML-based, domain-specific language for data quality testing. A Soda check is a test that Soda Library executes when it scans a dataset in your data source. Technically, it is a Python expression that checks metrics to see if they match the parameters you defined for a measurement. <br />
 Designed as a human-readable language, SodaCL includes over 25 built-in metrics and checks that you can use to write Soda Checks for data quality, including metrics for missing values, duplicates, schema changes, and freshness; see example below. 
 
+{% include banner-core.md %}
+
+<br />
 
 #### Example SodaCL checks
 {% include code-header.html %}
@@ -93,9 +95,14 @@ You can also add Soda scans to your CI/CD development lifecycle to ensure that a
 
 ![cicd-pipeline](/assets/images/cicd-pipeline.png){:width="700px"}
 
+Use Soda to test the quality in a data migration project at both source and target, both before and after migration to prevent data quality issues from polluting a new data source. See [Test data quality before migration]({% link soda/quick-start-migration.md %}).
+
+![rconciliation](/assets/images/reconciliation.gif){:width="600px"}
+
 
 ## Go further
 
+* Learn more about the ways you can use Soda in [Use case guides]({% link soda/setup-examples.md %}).
 * [Integrate Soda]({% link soda/integrate-metaphor.md %}) with your data catalog.
 * Auto-generate [check suggestions]({% link soda-library/check-suggestions.md %}) tailored to your data.
 * Set up bulk [notification rules]({% link soda-cloud/notif-rules.md %}) to send alerts for failed checks.
