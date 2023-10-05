@@ -105,7 +105,7 @@ Note that users must use the attribute's **NAME** as the attribute's key in a ch
 
 Using SodaCL, you can use variables to populate either the key or value of an existing attribute, as in the following example. Refer to [Configure variables in SodaCL]({% link soda-cl/filters.md %}#configure-variables-in-sodacl) for further details.
 
-You cannot use variables in checks you write in an agrrement in Soda Cloud as it is impossible to provide the variable values at scan time.  
+You cannot use variables in checks you write in an agreement in Soda Cloud as it is impossible to provide the variable values at scan time.  
 {% include code-header.html %}
 ```yaml
 checks for dim_product:

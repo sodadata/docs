@@ -10,7 +10,7 @@ parent: SodaCL
 
 Use a check template to define a reusable, user-defined metric that you can apply to many checks in multiple checks files.<br />
 *Requires Soda Library* <br />
-*Not yet supported in Soda Cloud*
+*Limitation:* Soda Cloud cannot yet run scans that include a template, but check template results appear in the **Checks** dashboard.<br />
 {% include code-header.html %}
 ```yaml
 templates:

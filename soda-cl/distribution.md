@@ -8,9 +8,8 @@ parent: SodaCL
 # Distribution checks
 *Last modified on {% last_modified_at %}*
 
-Use a distribution check to determine whether the distribution of a column has changed between two points in time. For example, if you trained a model at a particular moment in time, you can use a distribution check to find out how much the data in the column has changed over time, or if it has changed all.
-
-![library](/assets/images/library.png){:height="30px" width="30px"} ![cloud](/assets/images/cloud.png){:height="30px" width="30px"} ![scientific](/assets/images/scientific.png){:height="30px" width="30px"}<br />
+Use a distribution check to determine whether the distribution of a column has changed between two points in time. For example, if you trained a model at a particular moment in time, you can use a distribution check to find out how much the data in the column has changed over time, or if it has changed all.<br />
+*Requires Soda Library* <br />
 *Limitation:* Soda Cloud cannot yet maintain the distribution reference object (DRO), but distribution check appears in the **Checks** dashboard.<br />
 {% include code-header.html %}
 ```yaml
@@ -26,7 +25,6 @@ checks for dim_customer:
 ```
 
 [About distribution checks](#about-distribution-checks)<br />
-[Prerequisites](#prerequisites)<br />
 [Install Soda Scientific](#install-soda-scientific)<br />
 [Generate a distribution reference object (DRO)](#generate-a-distribution-reference-object-dro)<br />
 [Define a distribution check](#define-a-distribution-check)<br />
@@ -84,10 +82,6 @@ You can use the following distance metrics in your distribution checks.
   During simulations, for a difference in mean between distributions of size relative to 10% of their standard deviation, the SWD value converged to approximately 0.1.
 </details>
 
-## Prerequisites
-
-* You have [installed Soda Scientific](#install-soda-scientific) in the same directory or virtual environment in which you [installed Soda Library]({% link soda-library/install.md %}).
-
 ## Install Soda Scientific
 
 To use a distribution check, you must install Soda Scientific in the same directory or virtual environment in which you installed Soda Library. Best practice recommends installing Soda Library and Soda Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Scientific locally](#install-soda-scientific-locally) if you prefer.
@@ -98,6 +92,7 @@ Refer to [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientif
 
 ## Generate a distribution reference object (DRO)
 <!--Linked to UI, access Shlink though actually embedded in CLI help-->
+*Not yet supported in Soda Cloud*
 
 Before defining a distribution check, you must generate a distribution reference object (DRO).
 
@@ -179,7 +174,7 @@ If you do not wish to define a filter, remove the key-value pair from the file.
 
 ## Define a distribution check
 
-1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Library executes the checks in the file when it runs a scan of your data. Refer to more detailed instructions in the [Soda Library documentation]({% link soda-library/configure.md %}).
+1. If you have not already done so, create a `checks.yml` file in your Soda project directory. The checks YAML file stores the Soda Checks you write, including distribution checks; Soda Library executes the checks in the file when it runs a scan of your data. 
 2. In your new file, add the following example content.
 
     ```yaml
@@ -212,7 +207,7 @@ If you do not wish to define a filter, remove the key-value pair from the file.
 
 6. (Optional), to sample the data in the distribution check, replace the value of `sample` with a query that specifies the portion of the data in your dataset for which you are checking the distribution. The data source you are using must support the query you write. <br />For example, for PostgreSQL, you can use the `TABLESAMPLE` clause to randomly sample 50% of the data with seed 61. Best practice dictates that you use sampling for large datasets that might not fit in memory. Refer to the [define the sample size](#define-the-sample-size) for details.
 
-7. Run a soda scan of your data source to execute the distribution check(s) you defined. Refer to [Soda Library documentation]({% link soda-library/run-a-scan.md %}) for more details.
+7. Run a soda scan of your data source to execute the distribution check(s) you defined. 
 
     ```bash
     soda scan -d your_datasource_name checks.yml -c /path/to/your_configuration_file.yml your_check_file.yml
@@ -367,6 +362,7 @@ checks for fact_sales_quota:
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply distribution checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+| ✓ | Instruct Soda to collect random samples. Because sampling SQL clauses vary significantly between data sources, consult your data source's documentation; see [example](#example-with-in-check-sampling). | - |
 
 #### Example with check name
 {% include code-header.html %}
@@ -422,12 +418,8 @@ checks for dim_customer [first_purchase]:
     distribution reference file: dist_ref.yml
 ```
 
-<br />
-
 #### Example with in-check sampling
-
-The following example works for postgres. It randomly samples 50% of the table with seed value 61. 
-Since sampling SQL clauses vary significantly between data sources, consult your data source's documentation.
+The following example works for PostgreSQL data sources. It randomly samples 50% of the dataset with seed value 61.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:

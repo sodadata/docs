@@ -55,7 +55,7 @@ checks for dim_customer:
      name: Row count in ${name}
 ```
 
-When you run a scan, Soda Library uses the value you specified for your variable in the scan results, as in the example below.
+When you run a scan with Soda Library, it uses the value you specified for your variable in the scan results, as in the example below.
 ```shell
 Soda Library 1.0.x
 Soda Core 3.0.x
@@ -93,7 +93,7 @@ checks for dim_customer:
 ```
 3. Save your changes.
 
-You can also use a variable to pass the value of a check identity at scan time, as in the example below. Read more about using [in-check variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl).
+You can also use a variable to pass the value of a check identity at scan time, as in the example below. You cannot use variables in checks you write in an agreement in Soda Cloud as it is impossible to provide the variable values at scan time. Read more about using [in-check variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl). 
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
@@ -292,7 +292,7 @@ See also: [Set a sample limit for a data source]({% link soda-cl/failed-rows-che
 
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check that collects failed row samples and has failed. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check that collects failed row samples and has failed. Examine failed rows in the **Failed Rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 <br />
 

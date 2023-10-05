@@ -119,8 +119,6 @@ checks for dim_employee:
 
 Rather than specifying exact parameters for column changes, you can use the `when schema changes` validation key to warn or fail when indistinct changes occur in a dataset.
 
-This type of validation key requires a **Soda Cloud** account. Soda Library pushes check results to your account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future schema checks. 
-
 Soda Cloud must have at least two measurements to yield a check result. In other words, the first time you run a scan to execute a schema evolution check, Soda returns no results because it has nothing against which to compare; the second scan that executes the check yields a check result.
 {% include code-header.html %}
 ```yaml

@@ -9,7 +9,7 @@ parent: Soda CL
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use a validity metric in a check to surface invalid or unexpected values in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
+Use a validity metric in a check to surface invalid or unexpected values in your dataset. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -238,7 +238,7 @@ checks for dim_employee:
 ```
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for validity values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for validity values. Examine failed rows in the **Failed Rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-invalid-count](/assets/images/failed-invalid-count.png){:height="700px" width="700px"}
 
@@ -319,10 +319,10 @@ checks for CUSTOMERS [daily]:
 
 ## List of validity metrics
 
-| Metric  | Column config keys | Description | Supported data type | Supported data sources | 
-| ------  | ------------------ | ----------- |---------------------| ---------------------- |
-| `invalid_count` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |  Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames |
-| `invalid_percent` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values`| The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames  | 
+| Metric  | Column config keys | Description | Supported data type |  
+| ------  | ------------------ | ----------- |---------------------| 
+| `invalid_count` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |
+| `invalid_percent` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values`| The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  
 
 
 ## List of configuration keys

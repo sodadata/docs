@@ -9,7 +9,7 @@ parent: SodaCL
 *Last modified on {% last_modified_at %}*
 
 Use a group by configuration to collect and present check results by category. <br /> 
-*Requires Soda Library*
+*Not supported in Soda Core*
 
 {% include code-header.html %}
 ```yaml

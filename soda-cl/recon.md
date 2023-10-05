@@ -9,7 +9,7 @@ parent: SodaCL
 *Last modified on {% last_modified_at %}*
 
 Use a reconciliation check to validate that target data matches source data before and/or after migrating between data sources.<br />
-*Requires Soda Library* 
+*Not supported in Soda Core*
 
 For example, if you must migrate data from a MySQL data source to a Snowflake data source, you can use reconciliation checks to make sure the MySQL data appears intact in Snowflake in staging before conducting the migration in production.
 
@@ -473,7 +473,7 @@ checks:
 ``` 
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a the grouped reference checks. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a the grouped reference checks. Examine failed rows in the **Failed Rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 <br />
 

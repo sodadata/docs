@@ -10,7 +10,7 @@ redirect_from: /soda-cl/missing-validity.html
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use a missing metric in a check to surface missing values in the data in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
+Use a missing metric in a check to surface missing values in the data in your dataset. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer
@@ -166,7 +166,7 @@ checks for dim_employee:
 ```
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for missing values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for missing values. Examine failed rows in the **Failed Rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-missing-count](/assets/images/failed-missing-count.png){:height="700px" width="700px"}
 
@@ -246,10 +246,10 @@ checks for CUSTOMERS [daily]:
 
 ## List of missing metrics
 
-| Metric | Column config keys | Description | Supported data type | Supported data sources | 
-| ------ | ------------------ | ----------- | ------------------- |------------------------| 
-| `missing_count` | `missing regex` <br /> `missing values` | The number of rows in a column that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames |
-| `missing_percent` | `missing regex` <br /> `missing values` | The percentage of rows in a column, relative to the total row count, that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames  | 
+| Metric | Column config keys | Description | Supported data type |
+| ------ | ------------------ | ----------- | ------------------- | 
+| `missing_count` | `missing regex` <br /> `missing values` | The number of rows in a column that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  
+| `missing_percent` | `missing regex` <br /> `missing values` | The percentage of rows in a column, relative to the total row count, that contain NULL values and any other user-defined values that qualify as missing. | number, text, time | 
 
 
 ## List of configuration keys

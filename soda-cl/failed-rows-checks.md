@@ -66,7 +66,7 @@ In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#
 
 The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the `fail condition` that any rows in the `dim_customer` dataset must meet in order to qualify as failed rows, during a scan, get sent to Soda Cloud. 
 
-In this rather silly example, Soda Library sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples. The check also uses the `name` configuration key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
+In this rather silly example, Soda sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples. The check also uses the `name` configuration key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -147,7 +147,7 @@ checks for dim_product [new]:
 
 ## Set a sample limit
 
-By default, Soda Library sends 100 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda Library using the `samples limit` configuration key:value pair, as in the following example.
+By default, Soda sends 100 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda sends using the `samples limit` configuration key:value pair, as in the following example.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -179,58 +179,6 @@ data_source soda_test:
 Additionally, you can [Disable failed rows sampling for specific columns](#disable-failed-rows-sampling-for-specific-columns). 
 
 <br />
-
-
-## Group results by category
-
-See [Group by]({% link soda-cl/group-by.md %}).
-
-<!--You can use a SQL query in a failed row check to group failed check results by one or more categories. Use a SQL editor to build and test a SQL query with your data source, then add the query to a failed rows check to execute it during a Soda scan.
-
-The following example illustrates how to build a query that identifies the countries where the average age of people is less than 25.
-
-1. Beginning with a basic query, the output shows the data this example works with.
-```sql
-SELECT * FROM Customers;
-```
-![group-by-1](/assets/images/group-by-1.png){:height="600px" width="600px"}
-2. Build a query to select groups with the relevant aggregations.
-```sql
-SELECT country, AVG(age) as avg_age
-FROM Customers
-GROUP BY country
-```
-![group-by-2](/assets/images/group-by-2.png){:height="600px" width="600px"}
-3. Add a common table expression (CTE) to identify the "bad" group (where the average age is less than 25) from among the grouped results.
-```sql
-WITH groups AS (
-	SELECT country, AVG(age) as avg_age
-	FROM Customers
-	GROUP BY country
-)
-SELECT * 
-FROM groups
-WHERE avg_age < 25
-```
-![group-by-3](/assets/images/group-by-3.png){:height="600px" width="600px"}
-4. Now that the query yields the expected results, add the query to a failed row check, as per the following example.
-```yaml
-checks for dim_customers:
-  - failed rows:
-          name: Average age of citizens is less than 25
-          fail query: |
-            WITH groups AS (
-	            SELECT country, AVG(age) as avg_age
-	            FROM Customers
-	            GROUP BY country
-            )
-  
-            SELECT * 
-            FROM groups
-            WHERE avg_age < 25
-```
-
--->
 
 ## Disable failed rows sampling for specific columns
 

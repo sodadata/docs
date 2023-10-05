@@ -155,7 +155,7 @@
   - subtitle: Validity metrics
     page: soda-cl/validity-metrics.md
 
-- title: Connect a data source
+- title: Data source reference
   page: soda/connect-athena.md
   subcategories:
   - subtitle: Connect to Athena
