@@ -80,7 +80,8 @@ checks for cities:
 ####################
 scan.add_sodacl_yaml_str(checks)
 
-# OR Add the checks to scan with virtual filename identifier for concurrent scans
+# OR Add the checks to scan with virtual filename identifier 
+# for advanced use cases such as partial/concurrent scans
 ####################
 scan.add_sodacl_yaml_str(
     checks
