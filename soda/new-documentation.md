@@ -9,6 +9,12 @@ parent: Reference
 
 <br />
 
+#### October 6, 2023
+* Updated `session_parameters` config to `session_params` in [Snowflake]({% link soda/connect-snowflake.md %}) connection config reference.
+* Added instructions for how to [reset anomaly history]({% link soda-cl/anomaly-score.md %}#reset-anomaly-history) for an anolamy score check.
+* Added detail to [programmatic scan]({% link soda-library/programmatic.md %}#basic-programmatic-scan) to include a filename in a scan when checks are included inline.
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.13.
+
 #### October 5, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Cloud dashboard.
 * Added `schema_name` parameter to [DuckDB configuration]({% link soda/connect-duckdb.md %}).

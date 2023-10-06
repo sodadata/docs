@@ -23,6 +23,7 @@ checks for dim_customer:
 [Install Soda Scientific](#install-soda-scientific)<br />
 [Define an anomaly score check](#define-an-anomaly-score-check) <br />
 [Anomaly score check results](#anomaly-score-check-results) <br />
+[Reset anomaly history](#reset-anomaly-history)<br />
 [Optional check configurations](#optional-check-configurations) <br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
 [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation)<br />
@@ -106,6 +107,16 @@ Though your first instinct may be to run several scans in a row to product the f
 If, for example, you attempt to run eight back-to-back scans in five minutes, the anomaly score does not register the measurements resulting from those scans as a reliable pattern against which to evaluate an anomaly. 
 
 Consider using the Soda library to set up a [programmatic scan]({% link soda-library/programmatic.md %}) that produces a check result for an anomaly score check on a regular schedule.
+
+## Reset anomaly history
+
+If you wish, you can reset an anomaly score's history, effectively recalibrating what Soda considers anomalous on a dataset. 
+
+1. In Soda Cloud, navigate to the **Check History** page of the anomaly check you wish to reset.
+2. Click to select a node in the graph that represents a measurement, then click **Feedback**.
+3. In the modal that appears, you can choose to exclude the individual measurement, or all previous data up to that measurement, the latter of which "resets" the anomaly score's history. 
+
+![reset-anomaly-score](/assets/images/reset-anomaly-score.png){:height="600px" width="600px"}
 
 
 ## Optional check configurations
