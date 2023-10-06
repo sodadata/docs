@@ -35,7 +35,7 @@ data_source my_datasource_name:
   role: PUBLIC
   client_session_keep_alive: true
   authenticator: externalbrowser
-  session_parameters:
+  session_params:
     QUERY_TAG: soda-queries
     QUOTED_IDENTIFIERS_IGNORE_CASE: false
   schema: public

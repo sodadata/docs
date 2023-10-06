@@ -89,6 +89,104 @@ scan.add_configuration_yaml_str(
       scheme:
 """
 )
+
+# Add variables
+###############
+scan.add_variables({"date": "2022-01-01"})
+
+
+# Add check YAML files
+##################
+scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_one.yml")
+scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_two.yml")
+scan.add_sodacl_yaml_files("./my_scan_dir")
+scan.add_sodacl_yaml_files("./my_scan_dir/sodacl_file_three.yml")
+
+# OR
+
+# Define checks using SodaCL
+##################
+checks = """
+checks for cities:
+    - row_count > 0
+"""
+
+# Add the checks to the scan
+####################
+scan.add_sodacl_yaml_str(checks)
+
+# OR Add the checks to scan with virtual filename identifier 
+# for advanced use cases such as partial/concurrent scans
+####################
+scan.add_sodacl_yaml_str(
+    checks
+    file_name=f"checks-{scan_name}.yml",
+)
+
+# Execute the scan
+##################
+scan.execute()
+
+# Set logs to verbose mode, equivalent to CLI -V option
+##################
+scan.set_verbose(True)
+
+# Set scan definition name, equivalent to CLI -s option;
+# see Tips and best practices below
+##################
+scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
+
+
+# Inspect the scan result
+#########################
+scan.get_scan_results()
+
+# Inspect the scan logs
+#######################
+scan.get_logs_text()
+
+# Typical log inspection
+##################
+scan.assert_no_error_logs()
+scan.assert_no_checks_fail()
+
+# Advanced methods to inspect scan execution logs 
+#################################################
+scan.has_error_logs()
+scan.get_error_logs_text()
+
+# Advanced methods to review check results details
+########################################
+scan.get_checks_fail()
+scan.has_check_fails()
+scan.get_checks_fail_text()
+scan.assert_no_checks_warn_or_fail()
+scan.get_checks_warn_or_fail()
+scan.has_checks_warn_or_fail()
+scan.get_checks_warn_or_fail_text()
+scan.get_all_checks_text()
+```
+
+## Tips and best practices
+
+* You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import Soda Library in Python so you can utilize the `Scan()` object, [install a Soda Library package]({% link soda-library/install.md %}), then use `from soda.scan import Scan`.
+* Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files. 
+* Because Soda Library pushes scan results to Soda Cloud, you may not want to change the scan definition name with each scan. Soda Cloud uses the scan definition name to correlate subsequent scan results, thus retaining an historical record of the measurements over time. <br /> Sometimes, changing the name is useful, like when you wish to [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments). Be aware, however, that if you change the scan definition name with each scan for the same environment, Soda Cloud recognizes each set of scan results as independent from previous scan results, thereby making it appear as though it records a new, separate check result with each scan and archives or "disappears" previous results. See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
+
+## Scan exit codes
+
+Soda Library's scan output includes an exit code which indicates the outcome of the scan.
+
+| 0 | all checks passed, all good from both runtime and Soda perspective |
+| 1 | Soda issues a warning on a check(s) |
+| 2 | Soda issues a failure on a check(s) |
+| 3 | Soda encountered a runtime issue |
+
+To obtain the exit code, you can add the following to your programmatic scan.
+{% include code-header.html %}
+```python
+exit_code = scan.execute()
+print(exit_code)
 ```
 
 
