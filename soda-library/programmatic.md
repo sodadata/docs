@@ -67,6 +67,25 @@ scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_two.yml")
 scan.add_sodacl_yaml_files("./my_scan_dir")
 scan.add_sodacl_yaml_files("./my_scan_dir/sodacl_file_three.yml")
 
+# OR
+
+# Define checks using SodaCL
+##################
+checks = """
+checks for cities:
+    - row_count > 0
+"""
+
+# Add the checks to the scan
+####################
+scan.add_sodacl_yaml_str(checks)
+
+# OR Add the checks to scan with virtual filename identifier for concurrent scans
+####################
+scan.add_sodacl_yaml_str(
+    checks
+    file_name=f"checks-{scan_name}.yml",
+)
 
 # Execute the scan
 ##################
