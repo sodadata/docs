@@ -12,11 +12,11 @@ soda suggest -d adventureworks -c configuration.yml -ds dataset_name
 | `-ds TEXT` OR<br />`--dataset TEXT` | optional | Specify the dataset name for the `checks.yml` file. If you do not specify a name, it asks you to identify a dataset during the suggestion workflow.
 | `--disable-color BOOLEAN` | optional | Set to `false` if don't wish to see colors. |
 
-When running, check suggestions automatically prompts you with a series of questions to gather information about your data and the quality checks that you ought to apply; see the [section below](#suggestion-steps). After you answer, or skip the questions, it generates a `checks.yml` file with suggested checks based on your input.
+When running, check suggestions automatically prompts you with a series of questions to gather information about your data and the quality checks that you ought to apply. After you answer, or skip the questions, it generates a `checks.yml` file with suggested checks based on your input.
 
 Following best practice, check suggestions prepares one `checks.yml` file per dataset; if you wish, you can run `soda suggest` multiple times to prepare suggested checks and `checks.yml` files for each dataset in your data source. After it generates the `checks.yml` file, you can manually add, remove, or modify data quality checks in the file as you wish.
 
-With both a `configuration.yml` and a prepared `checks.yml` file, you can follow the assistant's final prompt to run a scan for data quality, or [Run a Soda scan]({% link soda-library/run-a-scan.md %}) manually when wish.
+With both a `configuration.yml` and a prepared `checks.yml` file, you can follow the assistant's final prompt to run a scan for data quality.
 
 #### Select a dataset
 Check suggestions prompts you to select a dataset from the list of available datasets in the data source. It prepares one `checks.yml` file per dataset.

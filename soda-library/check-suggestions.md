@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Check Suggestions
+title: Adopt check Suggestions
 description: The Check Suggestions CLI assisstant is designed to simplify the process of auto-generating basic data quality checks in SodaCL.
-parent: Soda Library
+parent: Write SodaCL checks
 redirect_from:
 - /soda-cl/check-suggestions.html
 ---
 
-# Check suggestions
+# Adopt check suggestions
 
 *Last modified on {% last_modified_at %}*
 
@@ -120,16 +120,15 @@ No valid checks found, 0 checks evaluated.
 
 You can use check suggestions with the following data sources:
 
-* [GCP Big Query]({% link soda/connect-bigquery.md %})
-* [PostgreSQL]({% link soda/connect-postgres.md %})
-* [Snowflake]({% link soda/connect-snowflake.md %})
+* GCP Big Query
+* PostgreSQL
+* Snowflake
 
 ## Prerequisites
 
 * You have installed Python 3.10 or greater.
-* You have installed a [Soda Library package]({% link soda-library/install.md %}#install-soda-library-1) for Big Query, PostgreSQL, or Snowflake in your environment.
+* You have installed a [Soda Library package]({% link soda-library/install.md %}#install-soda-library-1) for Big Query, PostgreSQL, or Snowflake in your environment and [configured Soda Library]({% link soda-library/install.md %}#configure-soda) to connect to your data source.
 * You have installed [Soda Scientific]({% link soda-library/install.md %}#install-soda-library-1).
-* You have [configured Soda Library]({% link soda-library/install.md %}#configure-soda) to connect to your data source.
 
 ## Run check suggestions
 

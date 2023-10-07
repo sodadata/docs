@@ -2,7 +2,7 @@
 layout: default
 title: SodaCL tutorial
 description: Follow the quick start tutorial to get started with SodaCL, a human-readable, domain-specific language for data reliability. 
-parent: SodaCL
+parent: Write SodaCL checks
 ---
 
 # SodaCL tutorial

@@ -2,7 +2,7 @@
 layout: default
 title: Write checks with SodaGPT
 description: Use SodaGPT to turn natural language into production-ready data quality checks in SodaCL.
-parent: Soda Cloud
+parent: Write SodaCL checks
 ---
 
 # Write checks with SodaGPT <br/>
