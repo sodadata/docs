@@ -8,4 +8,4 @@ products:
 
 Released in Preview state, you can now deploy a Soda Agent in a Google Kubernetes Engine cluster. 
 
-Access the [documentation]({% link soda-agent/deploy-google.md %}) to learn how to set up a cluster, then deploy an agent that connects to your Soda Cloud via account API keys. 
+Access the [documentation]({% link soda-agent/deploy.md %}) to learn how to set up a cluster, then deploy an agent that connects to your Soda Cloud via account API keys. 

@@ -3,7 +3,9 @@ layout: default
 title: Choose a flavor of Soda
 description: Use this guide to help you decide which Soda deployment model best fits your data quality testing needs.
 parent: Get started
-redirect_from: /soda-core/community.html
+redirect_from:
+- /soda-core/community.html
+- /soda-cloud/overview.html
 ---
 
 # Choose a flavor of Soda

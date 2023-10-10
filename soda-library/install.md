@@ -8,6 +8,8 @@ redirect_from:
 - /soda-core/get-started.html
 - /soda-core/installation.hmtl
 - /soda-core/migrate.html
+- /soda-library/overview.html
+- /soda-library/configure.html
 ---
 
 # Install Soda Library 

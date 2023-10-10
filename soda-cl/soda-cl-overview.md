@@ -6,6 +6,7 @@ parent: Write SodaCL checks
 redirect_from: 
 - /soda-cl/
 - /soda-core/soda-cl.html
+- /soda-cloud/agreements.html
 ---
 
 # Write SodaCL checks 
@@ -82,6 +83,8 @@ As a business user of Soda Cloud, you write SodaCL checks directly in the user i
 *Requires Soda Agent*<br />
 
 In an agreement, use SodaCL checks to define the state of "good quality" for data in this data source, then identify and get approval from stakeholders in your organization. Define whom Soda Cloud will notify when a check in the agreement fails, then set a schedule to regularly execute the Soda Checks to uphold the tenets of the agreement.
+
+![agreement-1](/assets/images/agreement-1.png){:height="500px" width="500px"}
 
 ### Prerequisites
 

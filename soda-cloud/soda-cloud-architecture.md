@@ -3,7 +3,8 @@ layout: default
 title: Soda architecture
 description: Review the architecture and resources of Soda which connects to data sources to perform scans of datasets
 parent: Learning resources
-redirect_from: /soda-cloud/resource-map.html
+redirect_from:
+- /soda-cloud/resource-map.html
 ---
 
 # Soda architecture

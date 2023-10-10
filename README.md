@@ -157,7 +157,7 @@ Add a markdown file of your logically-named include content to the `docs/_includ
 
 Relative links:
 ```
-[warehouse yaml]({% link soda-cloud/agreements.md %})
+[warehouse yaml]({% link soda/product-overview.md %})
 
 [airflow_bash.py](/../examples/airflow_bash.py)
 ```
@@ -165,7 +165,7 @@ Relative links:
 Link to an anchor on a different page:
 
 ```
-[warehouse yaml]({% link soda-cloud/agreements.md %}#to-anchor)
+[warehouse yaml]({% link soda/product-overview.md %}#to-anchor)
 ```
 
 Link to section on same page:

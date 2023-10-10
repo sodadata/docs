@@ -6,6 +6,13 @@ parent: Get started
 redirect_from: 
 - /soda-agent/test-deploy.html
 - /soda-agent/delete.html
+- /soda-agent/overview.html
+- /soda-agent/deploy-aws.html
+- /soda-agent/deploy-azure.html
+- /soda-agent/deploy-google.html
+- /soda-agent/helpful-commands.html
+- /soda-agent/private-link.html
+- /soda-cloud/add-datasource.html
 ---
 
 # Deploy a Soda Agent
@@ -311,7 +318,7 @@ You can deploy a Soda Agent to connect with the following data sources:
 The following offers instructions to create a <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html" target="_blank">Fargate (serverless) cluster</a> to deploy a Soda Agent, but you can create and use a <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html" target="_blank">regular EKS cluster</a> if you wish.
 
 1. (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}).
-2. (Optional) If you wish, you can establish an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. Refer to [Connect to Soda Cloud via AWS PrivateLink]({% link soda-agent/private-link.md %}) before deploying an agent.
+2. (Optional) If you wish, you can establish an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. Refer to Connect to Soda Cloud via AWS PrivateLink before deploying an agent.
 2. (Optional) If you are deploying to an existing Virtual Private Cloud (VPC), consider supplying public or private subnets with your deployment. Consult the eksctl documentation to <a href="https://eksctl.io/usage/vpc-configuration/#use-existing-vpc-other-custom-configuration" target="_blank">Use existing VPC</a>.
 3. From the command-line, execute the following command to create a new EKS Fargate cluster in your AWS account.  <br/>Replace the value of `--region` with one that is appropriate for your location. 
 ```shell

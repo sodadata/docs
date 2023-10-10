@@ -79,7 +79,7 @@ Using GCP BigQuery, you have the option of using one of several methods to authe
 
 1. Application Default Credentials
 2. Application Default Credentials with Service Account impersonation
-3. Service Account Key (see [connection configuration](#connection-configuration) above)
+3. Service Account Key (see [connection configuration](#connection-configuration-reference) above)
 4. Service Account Key with Service Account Impersonation
 
 <br />
@@ -145,7 +145,7 @@ If you already store information about your data source in a JSON file in a secu
 * `volumes` and `volumeMounts` parameters in the `values.yml` file that your Soda Agent helm chart uses
 * the `account_info_json_path` in your data source connection configuration 
 
-You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deployment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.
+You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deployment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy.md %}) for details.
 {% include code-header.html %}
 ```yaml
 soda:
@@ -167,7 +167,7 @@ Use the following command to add the service account information to a Kubernetes
 kubectl create secret generic -n <soda-agent-namespace> gcloud-credentials --from-file=serviceaccount.json=<local path to the serviceccount.json>
 ```
 
-After you make both of these changes, you must redeploy the Soda Agent. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.   
+After you make both of these changes, you must redeploy the Soda Agent. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy.md %}) for details.   
 
 Adjust the data source connection configuration to include the `account_info_json_path` configuration, as per the following example. 
 {% include code-header.html %}

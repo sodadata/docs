@@ -3,6 +3,9 @@ layout: default
 title: Upgrade, redploy, or uninstall Soda
 description: Learn how to upgrade or uninstall Soda Library, or redploy a Soda Agent.
 parent: Get started
+redirect_from:
+- /soda-agent/redeploy.html
+- /soda-agent/upgrade.html
 ---
 
 # Upgrade, redeploy, or uninstall Soda

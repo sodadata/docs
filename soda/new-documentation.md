@@ -25,7 +25,7 @@ parent: Learning resources
 
 #### September 26, 2023
 * Added documentation for reconciliation schema checks which now support [data type mapping]({% link soda-cl/recon.md %}#schema-reconciliation-checks).
-* Documented a new scan option, `--local` that you can add to a `soda scan` command to prevent Soda Library from pushing any check results to Soda Cloud. See: [Add scan options]({% link soda-library/run-a-scan.md %}#add-scan-options) and [Scan output in Soda Cloud]({% link soda-cloud/scan-output.md %}#do-not-send-scan-results-to-soda-cloud)
+* Documented a new scan option, `--local` that you can add to a `soda scan` command to prevent Soda Library from pushing any check results to Soda Cloud. See: [Add scan options]({% link soda-library/run-a-scan.md %}#add-scan-options) and Scan output in Soda Cloud.
 * Revised and tigtened [Soda Core]({% link soda-core/overview-main.md %}) information.
 * Documented the global configuration to disable sending any samples of data to Soda Cloud; see [Disable samples in Soda Cloud]({% link soda-cl/sample-datasets.md %}#disable-samples-in-soda-cloud).
 
@@ -76,7 +76,7 @@ parent: Learning resources
 * Added to item to Troublshoot SodaCL for dealing with unexpected [missing checks]({% link soda-cl/troubleshoot.md %}#errors-with-missing-checks) behaviour.
 
 #### August 23, 2023
-* Update agreement documentation to reflect the [change in behaviour]({% link soda-cloud/agreements.md %}#3-identify-stakeholders) where scans do not run until stakeholders have approved of the agreement.
+* Update agreement documentation to reflect the change in behaviour where scans do not run until stakeholders have approved of the agreement.
 
 #### August 21, 2023
 * Removed "What the Action does" section from [Integrate Soda with a GitHub Workflow]({% link soda/integrate-github.md %}).
@@ -85,7 +85,7 @@ parent: Learning resources
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.48.
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.0.6 - 1.0.8.
 * Added Known issue: [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}#optional-check-configurations) do not support the check identity parameter. <!--SAS-2005-->
-* Added a note to [Create an agreement]({% link soda-cloud/agreements.md %}#1-select-a-data-source) to clarify that you can only create agreements using data sources that have been added to Soda Cloud via a Soda Agent.
+* Added a note to Create an agreement to clarify that you can only create agreements using data sources that have been added to Soda Cloud via a Soda Agent.
 * Added [collection]({% link soda/glossary.md %}#collection) as a new term in the Glossary.
 
 #### August 10, 2023
@@ -215,13 +215,13 @@ parent: Learning resources
 * Added to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#checks-not-evaluated) with information about checks that return `[NOT EVALUATED]` results.
 * Added new content with advice to [Compare data using SodaCL]({% link soda-cl/compare.md %}).
 * Documented how to prevent Soda from collecting failed rows samples and sending them to Soda Cloud using a [samples limit]({% link soda-cl/optional-config.md %}#disable-failed-row-samples-for-individual-checks).
-* Corrected a prerequisite in [Add a data source]({% link soda-cloud/add-datasource.md %}#prerequisites) to indicate that you can deploy a Soda Agent in any Kubernetes cluster, not just Amazon EKS.
+* Corrected a prerequisite in Add a data source to indicate that you can deploy a Soda Agent in any Kubernetes cluster, not just Amazon EKS.
 
 #### March 7, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.26 & 3.0.27.
 
 #### February 28, 2023
-* Published instructions for [setting up private connectivity]({% link soda-agent/private-link.md %}) to a Soda Cloud account using AWS PrivateLink.
+* Published instructions for setting up private connectivity to a Soda Cloud account using AWS PrivateLink.
 
 #### February 23, 2023
 * Documented known issue with freshness check. See [Troubleshoot errors with freshness checks]({% link soda-cl/freshness.md %}#troubleshoot-errors-with-freshness-checks).
@@ -240,7 +240,7 @@ parent: Learning resources
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.23.
 * Corrected custom check templates to use `fail condition` syntax, not `fail expression`. 
 * Added instructions to [Configure a time partition using the NOW variable]({% link soda-cl/filters.md %}#configure-a-time-partition-using-the-now-variable).
-* Added a note for limitations on using variables in [checks in agreements]({% link soda-cloud/agreements.md %}#2-write-checks) in Soda Cloud. 
+* Added a note for limitations on using variables in checks in agreements in Soda Cloud. 
 
 #### February 10, 2023
 * Added a new section to Distribution check documentation for [defining a sample size]({% link soda-cl/distribution.md %}#define-the-sample-size).
@@ -250,7 +250,7 @@ parent: Learning resources
 
 #### January 25, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.22.
-* Added a detail for adding an [optional scheme property]({% link soda-library/configure.md %}#connect) to `soda_cloud` configuration when connecting Soda Core to Soda Cloud. 
+* Added a detail for adding an optional scheme property to `soda_cloud` configuration when connecting Soda Core to Soda Cloud. 
 * Added documentation to accompany new support for [Dask and Pandas (Experimental)]({% link soda/connect-dask.md %}).
 
 #### January 24, 2023
@@ -258,7 +258,7 @@ parent: Learning resources
 * Added [troubleshooting tip]({% link soda-cl/troubleshoot.md %}#metrics-were-not-computed-for-check) for errors in which Soda does not compute metrics for a dataset that includes a schema in its identifier.
 
 #### January 20, 2023
-* Updated [agent upgrade]({% link soda-agent/upgrade.md %}) docs with more detail.
+* Updated [agent upgrade]({% link soda/upgrade.md %}) docs with more detail.
 
 #### January 19, 2023
 * Added clarity to the documentation for [adding a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) and using a scan definition name.
@@ -271,7 +271,7 @@ parent: Learning resources
 
 #### January 13, 2023
 
-* Updated Soda Agent for GKE documentation so that the instructions for [using a file reference for a Big Query data source connection]({% link soda-cloud/add-datasource.md %}#use-a-file-reference-for-a-big-query-data-source-connection) use a Kubernetes secret instead of an Kubernetes ConfigMap.  
+* Updated Soda Agent for GKE documentation so that the instructions for using a file reference for a Big Query data source connection use a Kubernetes secret instead of an Kubernetes ConfigMap.  
 
 #### January 11, 2023
 * Added documentation for the ability to create and use [check attributes]({% link soda-cl/check-attributes.md %}).
@@ -280,13 +280,13 @@ parent: Learning resources
 * Removed the known issue for using `duplicate_count` and `duplicate_percent` metrics with an in-check filter.
 
 #### January 10, 2023
-* Added note about the new ability to add co-owners to an agreement; see [Create an agreement]({% link soda-cloud/agreements.md %}).
+* Added note about the new ability to add co-owners to an agreement.
 
 #### December 28, 2022
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.17.
 
 #### December 20, 2022
-* Added preview documentation for [deploying a Soda Agent in a GKE cluster]({% link soda-agent/deploy-google.md %}). 
+* Added preview documentation for [deploying a Soda Agent in a GKE cluster]({% link soda-agent/deploy.md %}). 
 
 #### December 15, 2022
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.16.
@@ -302,9 +302,9 @@ parent: Learning resources
 
 #### December 2, 2022
 
-* Added preview documentation for [deploying a Soda Agent in an AKS cluster]({% link soda-agent/deploy-azure.md %}). Reorganized and expanded Soda Agent documentation in general.
+* Added preview documentation for [deploying a Soda Agent in an AKS cluster]({% link soda-agent/deploy.md %}). Reorganized and expanded Soda Agent documentation in general.
 * Added documentation to cast a column so as to use TEXT type data in a [freshness check]({% link soda-cl/freshness.md %}#details-and-limitations).
-* Documented [troubleshooting tips]({% link soda-cloud/scan-output.md %}#troubleshoot) for Soda Cloud 400 response.
+* Documented troubleshooting tips for Soda Cloud 400 response.
 
 #### December 1, 2022
 
@@ -384,7 +384,7 @@ parent: Learning resources
 
 #### October 26, 2022
 
-* Removed the Preview status from self-serve features which are now generally available in Soda Cloud, such as [agreements]({% link soda-cloud/agreements.md %}) and [profiling]({% link soda-cl/profile.md %}).
+* Removed the Preview status from self-serve features which are now generally available in Soda Cloud, such as agreements and [profiling]({% link soda-cl/profile.md %}).
 * Migrated custom metric templates from Soda SQL to SodaCL.
 
 #### October 19, 2022
@@ -449,12 +449,12 @@ checks for dim_customers:
 
 * Added documentation to correspond with the release of Soda Core 3.0.7, including an update to [freshness check results]({% link soda-cl/freshness.md %}#freshness-check-results).
 * Removed the known issue for using variables in the SQL or CTE of a [user-defined check]({% link soda-cl/user-defined.md %}). See <a href="https://github.com/sodadata/soda-core/issues/1577" target="_blank">GitHub Issue 1577</a>.
-* Added instructions for [configuring the same scan to run in multiple environments]({% link soda-library/configure.md %}#configure-the-same-scan-to-run-in-multiple-environments).
+* Added instructions for configuring the same scan to run in multiple environments.
 * Added information about [passing parameters]({% link soda/connect-snowflake.md %}) to a Snowflake data source in connection configurations, specifically which parameter to use to authenticate a connection via SSO with a SAML 2.0-compliant identity provider (IdP).
 
 #### Septemeber 12, 2022
 
-* Documented [Soda Cloud resources]({% link soda-cloud/resource-map.md %}) to add visual context to the parts that exist in Soda Cloud, and how they relate to each other, particularly when you delete a resource.
+* Documented [Soda Cloud resources]({% link soda-cloud/soda-cloud-architecture.md %}#soda-cloud-resources) to add visual context to the parts that exist in Soda Cloud, and how they relate to each other, particularly when you delete a resource.
 * Added documentation to correspond with Soda Cloud's new support for [webhooks]({% link soda/integrate-webhooks.md %}) to integrate with third-party service providers to send alert notifications or create and track incidents externally.
 * Corrected documentation to indicate that [reference checks]({% link soda-cl/reference.md %}) do *not* support dataset filters.
 
@@ -478,7 +478,7 @@ checks for dim_customers:
 #### August 29, 2022
 
 * Added instructions for how to [disable dataset discovery]({% link soda-cl/profile.md %}#disable-dataset-discovery) and [disable column profiling]({% link soda-cl/profile.md %}#disable-column-profiling).
-* Added details for obtaining info when [upgrading]({% link soda-agent/upgrade.md %}#troubleshoot) a Soda Agent.
+* Added details for obtaining info when [upgrading]({% link soda/upgrade.md %}#troubleshoot) a Soda Agent.
 * Organized and tightened Soda Core documentation.
 
 #### August 26, 2022
@@ -501,7 +501,7 @@ checks for dim_customers:
 
 #### August 11, 2022
 
-* Added documentation for the new `-t` option for use with scan commands to [overwrite scan output in Soda Cloud]({% link soda-cloud/scan-output.md %}#overwrite-scan-output-in-soda-cloud).
+* Added documentation for the new `-t` option for use with scan commands to overwrite scan output in Soda Cloud.
 
 #### August 10, 2022
 
@@ -554,7 +554,7 @@ checks for dim_customers:
 
 #### June 21, 2022
 
-* Added details to Soda Core documentation for using [system variables]({% link soda-library/configure.md %}#provide-credentials-as-system-variables).  to store sensitive credentials.
+* Added details to Soda Core documentation for using system variables.  to store sensitive credentials.
 * Updated the Quick start for Soda Core and Soda Cloudwith slightly changed instructions.
 
 #### June 20, 2022

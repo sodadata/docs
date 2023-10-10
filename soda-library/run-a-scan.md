@@ -7,6 +7,8 @@ redirect_from:
 - /soda-core/first-scan.html
 - /soda-core/scan-reference.html
 - /soda-core/scan-core.html
+- /soda-cloud/scan-output.html
+- /soda-library/cli-reference.html
 ---
 
 # Run a scan and view results
