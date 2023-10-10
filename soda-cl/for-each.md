@@ -2,7 +2,7 @@
 layout: default
 title: For each checks
 description: Use a SodaCL for each check to specify a list of checks you wish to execute on a multiple datasets. 
-parent: SodaCL
+parent: SodaCL reference
 ---
 
 # For each 

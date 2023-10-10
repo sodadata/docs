@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to IBM DB2
 description: Access configuration details to connect Soda to an IBM DB2 data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to IBM DB2

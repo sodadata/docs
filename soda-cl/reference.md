@@ -2,7 +2,7 @@
 layout: default
 title: Reference checks
 description: Use a SodaCL reference check to validate that the values in a column in a table are present in a column in a different table. 
-parent: SodaCL
+parent: SodaCL reference
 ---
 
 # Reference checks 
@@ -51,7 +51,7 @@ checks for dim_customer_staging:
 
 Reference checks automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100.
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration. You can add this configuration to your checks YAML file for Soda Library, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a reference check configuration. You can add this configuration to your checks YAML file for Soda Library, or when writing checks as part of an agreement in Soda Cloud. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customers:
@@ -81,7 +81,7 @@ checks for dim_customers:
 ```
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a reference check. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a reference check. Examine failed rows in the **Failed rows** tab; see [Examine failed row samples]({% link soda-cloud/failed-rows.md %}) for further details.
 
 
 ## Optional check configurations
@@ -130,7 +130,7 @@ Refer to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-pas
 
 * Problems with reference checks and dataset filters? Refer to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check).
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
-* Learn more about [Comparing data using SodaCL]({% link soda-cl/compare.md %}).
+* Learn more about [comparing data]({% link soda-cl/compare.md %}) using SodaCL.
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).

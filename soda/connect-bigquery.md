@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to GCP BigQuery
 description: Access configuration details to connect Soda to a BigQuery data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to GCP Big Query

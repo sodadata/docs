@@ -2,7 +2,7 @@
 layout: default
 title: Group by checks
 description: Use a SodaCL group by configuration to customize the group of data quality check results by category.
-parent: SodaCL
+parent: SodaCL reference
 ---
 
 # Group by

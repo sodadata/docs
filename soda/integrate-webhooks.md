@@ -2,7 +2,7 @@
 layout: default
 title: Integrate webhooks with Soda
 description: Configure webhooks to connect Soda to any number of third-party service providers.
-parent: Integrate
+parent: Integrate Soda
 ---
 
 # Integrate webhooks with Soda 
@@ -12,9 +12,9 @@ parent: Integrate
 Configure a webhook in Soda Cloud to connect your account to a third-party service provider such as Jira, ServiceNow, PagerDuty, and more.
 
 Use a webhook to:
-* send [alert notifications]({% link soda-cloud/notif-rules.md %}) for failed or warning check results to a third-party, such as ServiceNow
-* create and track data quality [incidents]({% link soda-cloud/incidents.md %}) with a third-party, such as Jira
-* send a notification to a third-party when a [Soda Agreement]({% link soda-cloud/agreements.md %}) is added, changed, or deleted
+* send alert notifications for failed or warning check results to a third-party, such as ServiceNow
+* create and track data quality incidents with a third-party, such as Jira
+* send a notification to a third-party when a user adds, changes, or deletes a Soda agreement
 
 ![webhook-example](/assets/images/webhook-example.png){:height="700px" width="700px"} 
 
@@ -48,7 +48,7 @@ Use a webhook to:
 | Enable to send notifications to this webhook when a check result triggers an alert. | Check to allow users to select this webhook as a destination for alert notifications when check results warn or fail. |
 | Use this webhook as the default notification channel for all check result alerts. | Check to automatically configure check results alert notifications to this webhook by default. <br />Users can deselect the webhook as the notification destination in an individual check, but it is the prepopulated destination by default.   |
 | Enable to use this webhook to track and resolve incidents in Soda Cloud. | Check to allow users to send incident information to a destination. <br />For example, a user creating a new incident can choose to use this webhook to create a new issue in Jira.|
-| Send events to this webhook when an agreement is created, updated, or removed. | Check to automatically send notifications to a third-party service provider whenever a user adds, changes, or removes a [Soda Cloud agreement]({% link soda/glossary.md %}#agreement). |
+| Send events to this webhook when an agreement is created, updated, or removed. | Check to automatically send notifications to a third-party service provider whenever a user adds, changes, or removes an agreement. |
 
 <br />
 
@@ -198,7 +198,7 @@ The following steps offer a brief overview of how to set up a ServiceNow Scripte
 3. In the Scipted Rest APIs list, find and open your newly-created API, then, in the **Resources** tab, click **New** to create a new resource.
 4. Provide a **Name** for your resource, then select POST as the **HTTP method**. 
 5. In the **Script** field, define a script that creates new tickets when a Soda Cloud incident is opened, and updates existing tickets when a Soda Cloud incident status is updated. Use the example below for reference. You may also need to define Security settings according to your organizations authentication rules.
-6. Click **Submit**, then copy the value of the **Resource path** to use in the URL field in the [Soda Cloud integration setup](#configure-a-webhook).
+6. Click **Submit**, then copy the value of the **Resource path** to use in the URL field in the Soda Cloud integration setup.
 
 ```javascript
 (function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
@@ -472,9 +472,9 @@ Soda Cloud sends this event payload when an incident has been updated with, for 
 
 ## Go further
 
-* Learn more about [creating agreements]({% link soda-cloud/agreements.md %}) in Soda Cloud.
+* As a business user, learn more about [writing SodaCL checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in Soda Cloud.
 * Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account. 
-* Learn more about creating, tracking, and resolving data quality [Incidents]({% link soda-cloud/incidents.md %}) in Soda Cloud.
+* Learn more about creating, tracking, and resolving data quality [Incidents]({% link soda-cloud/incidents.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Access a list of <a href="https://www.soda.io/integrations" target="_blank">all integrations</a> that Soda Cloud supports.
 <br />

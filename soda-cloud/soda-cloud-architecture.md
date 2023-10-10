@@ -53,11 +53,11 @@ The following diagram illustrates an example deployment of a single Soda Cloud a
 ![example-deployment](/assets/images/example-deployment.png){:height="700px" width="700px"}
 
 * A **Soda Agent** is Soda Library that has been deployed in Kubernetes cluster in a cloud services provider environment. It enables Soda Cloud users to securely connect to data sources such as Snowflake, BigQuery, and PostgreSQL. [Read more]({% link soda-agent/basics.md %}).
-* A **data source** in Soda Cloud is a representation of the connection to your data source. Notably, it does not contain any of your data<sup>†</sup>, only data source metadata that it uses to check for data quality. [Read more]({% link soda-cloud/add-datasource.md %}). <br />Within the context of Soda Cloud, a data source contains:
-  * **datasets** which represent tabular structures with rows and columns in your data source; like data sources, they do not contain your data<sup>†</sup>, only metadata. Datasets can contain user-defined **attributes** that help filter and organize check results. [Read more]({% link soda-cloud/organize-datasets.md %}).
-  * **scan definitions** which you use to define a Soda scan schedule for the data source. [Read more]({% link soda-cloud/add-datasource.md %}#1-attributes).
-  * **agreements** in which you write **checks** to define what good data looks like. Agreements also specify where to send alert notifications when a check result warns or fails, such as to a Slack channel in your organization. [Read more]({% link soda-cloud/agreements.md %}).
-* An **integration** is a built-in Soda Cloud feature that enables you to connect with a third-party service provider, such as Slack. [Read more]({% link soda/integrate-slack.md %}).
+* A **data source** in Soda Cloud is a representation of the connection to your data source. Notably, it does not contain any of your data<sup>†</sup>, only data source metadata that it uses to check for data quality. [Read more]({% link soda-agent/deploy.md %}#add-a-new-data-source). <br />Within the context of Soda Cloud, a data source contains:
+  * **datasets** which represent tabular structures with rows and columns in your data source; like data sources, they do not contain your data<sup>†</sup>, only metadata. Datasets can contain user-defined **attributes** that help filter and organize check results. 
+  * **scan definitions** which you use to define a Soda scan schedule for the data source. 
+  * **agreements** in which you write **checks** to define what good data looks like. Agreements also specify where to send alert notifications when a check result warns or fails, such as to a Slack channel in your organization. 
+* An **integration** is a built-in Soda Cloud feature that enables you to connect with a third-party service provider, such as Slack. 
 * A **notification rule** is a tool to bulk-edit where and when to send alert notifications when check results warn or fail. [Read more]({% link soda-cloud/notif-rules.md %}).
 
 <sup>†</sup> An exception to this rule exists when you configure Soda Cloud to collect sample data from a dataset, or samples of failed rows from a dataset when a check result fails.
@@ -100,7 +100,7 @@ As the example diagram indicates, deleting a Slack integration prevents Soda Clo
 
 ## Example combination deployment
 
-If your Soda Cloud account is also [connected to Soda Library]({% link soda-library/configure.md %}), your deployment may resemble something like the following diagram. 
+If your Soda Cloud account is also connected to Soda Library, your deployment may resemble something like the following diagram. 
 
 Note that you can delete resources that appear in Soda Cloud as a result of a manual or programmatic Soda Library scan. However, unless you delete the reference to the resource at its source – the `checks.yml` file or `configuration.yml` file – the resource will reappear in Soda Cloud when Soda Library sends its next set of scan results.
 
@@ -120,9 +120,8 @@ In Soda Cloud, you can see `dataset-q` because Soda Library pushed the scan resu
 ## Go further
 
 * Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup).
-* Learn more about what happens during a [scan]({% link soda-cloud/scan-output.md %}).
-* Learn how to configure [agreements]({% link soda-cloud/agreements.md %}) in Soda Cloud.
-* Learn more about viewing [failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
+* As a business user, learn how to write SodaCL checks in [agreements]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in Soda Cloud.
+* Learn more about viewing [failed row samples]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

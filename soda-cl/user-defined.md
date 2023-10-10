@@ -2,14 +2,14 @@
 layout: default
 title: User-defined checks
 description: Use a SodaCL user-defined check to define elements of a check using SQL expressions or queries.
-parent: SodaCL
+parent: SodaCL reference
 ---
 
 # User-defined checks 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-If the built-in set of [metrics and checks]({% link soda-cl/metrics-and-checks.md %}) that SodaCL offers do not quite give you the information you need from a scan, you can define your own metrics to customize your checks. User-defined checks essentially enable you to create common-table expressions (CTE) or SQL queries that Soda Library runs during a scan, or you can reference a file that contains your CTE or SQL query.
+If the built-in set of metrics and checks that SodaCL offers do not quite give you the information you need from a scan, you can define your own metrics to customize your checks. User-defined checks essentially enable you to create common-table expressions (CTE) or SQL queries that Soda Library runs during a scan, or you can reference a file that contains your CTE or SQL query.
 
 [Define user-defined checks](#define-user-defined-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />

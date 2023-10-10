@@ -2,7 +2,7 @@
 layout: default
 title: Create and track incidents
 description: If you have integrated Soda Cloud with Slack, you can use an Incident’s built-in ability to create a channel that your team can use to investigate an issue.
-parent: Soda Cloud
+parent: Organize, alert, investigate
 ---
 
 # Create and track incidents 
@@ -29,7 +29,7 @@ If you have integrated your Soda Cloud account with a [Slack workspace]({% link 
 
 ## Go further
 
-* [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
+* [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) to facilitate your search for the right data.
 * [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for a check result.
 * Collaborate with your team using a [Single Sign-on IdP]({% link soda-cloud/sso.md %}).
 * Integrate Soda with your [data catalogs]({% link soda/integrate-alation.md %}) or [data pipeline tools]({% link soda/integrate-dbt.md %}).

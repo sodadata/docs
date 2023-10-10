@@ -10,7 +10,6 @@ parent: Write SodaCL checks
 *Last modified on {% last_modified_at %}*
 
 Use automated monitoring checks to instruct Soda to automatically check for row count anomalies and schema changes in a dataset.<br />
-*Requires Soda Cloud*
 {% include code-header.html %}
 ```yaml
 automated monitoring:
@@ -19,7 +18,7 @@ automated monitoring:
     - exclude test%
 ```
 [About automated monitoring checks](#about-automated-monitoring-checks)<br />
-[Add automated monitoring checks](#add-automated-monitoring-checks)<br />
+[Add automated monitoring checks](#add-automated-monitoring-checks-1)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -59,7 +58,9 @@ automated monitoring:
 
 ### Scan results in Soda Cloud
 
-To review the check results for automated monitoring checks in Soda Cloud, navigate to the **Checks** dashboard to see the check results with an INSIGHT tag. 
+To review the check results for automated monitoring checks in Soda Cloud, you can:
+* navigate to the **Checks** dashboard to see the check results
+* navigate to the **Datasets** dashboard to find the check results
 
 
 ## Go further

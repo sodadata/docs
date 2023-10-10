@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to a local file using Dask
 description: Set up Soda to programmatically scan the contents of a local file using Dask.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to a local file using Dask

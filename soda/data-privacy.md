@@ -2,7 +2,7 @@
 layout: default
 title: Data privacy
 description: Soda works in several ways to ensure your data and systems remain private. We offer secure connections, SSO, and observe compliance and reporting regulations.
-parent: Reference
+parent: Learning resources
 redirect_from: 
 - /soda-sql/documentation/data-privacy.html
 - /soda/data-concepts.html
@@ -27,7 +27,7 @@ You can connect Soda Library to your Soda Cloud account. To communicate with you
 
 ## Single sign-on with Soda Cloud
 
-Organizations that use a SAML 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider. Once added, employees of the organization can gain authorized and authenticated access to the organization's Soda Cloud account by successfully logging in to their SSO. Refer to [Single sign-on with Soda Cloud]({% link soda-cloud/sso.md %}) for details.
+Organizations that use a SAML 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider. Once added, employees of the organization can gain authorized and authenticated access to the organization's Soda Cloud account by successfully logging in to their SSO. Refer to [Set up single sign-on with Soda Cloud]({% link soda-cloud/sso.md %}) for details.
 
 ## Sending data to Soda Cloud
 

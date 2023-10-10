@@ -2,7 +2,7 @@
 layout: default
 title: Compare data using SodaCL
 description: Learn how to use the Soda Checks Language to compare data across datasets in the same, or different, data sources.
-parent: SodaCL
+parent: Write SodaCL checks
 redirect_from: /soda-cl/row-count.html
 ---
 

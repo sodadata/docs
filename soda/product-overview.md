@@ -2,7 +2,7 @@
 layout: default
 title: Soda overview
 description: Soda utilizes user-defined input to prepare SQL queries to find bad data, visualize results, set up alerts, and track dataset health over time.
-parent: Get started
+parent: Learning resources
 redirect_from: /soda/product-matrix.html
 ---
 
@@ -90,11 +90,14 @@ You can programmatically embed Soda scan executions in your data pipeline after 
 
 ![data-pipeline](/assets/images/data-pipeline.png){:width="700px"}
 
+<br />
+
 You can also add Soda scans to your CI/CD development lifecycle to ensure that any changes you make to dbt models or other changes or added transformations are checked for data quality before merging into production, preventing data quality issues from impacting business operations. In conjunction with GitHub Actions, for example, you can automate scans for data quality whenever a team member creates a new pull request to ensure that "checking for data quality" is a regular part of your software development lifecycle. An ounce of prevention in development is worth a pound of cure in production! See [Test data quality during CI/CD development]({% link soda/quick-start-dev.md %}).
 <br /><br />
 
 ![cicd-pipeline](/assets/images/cicd-pipeline.png){:width="700px"}
 
+<br />
 Use Soda to test the quality in a data migration project at both source and target, both before and after migration to prevent data quality issues from polluting a new data source. See [Test data quality before migration]({% link soda/quick-start-migration.md %}).
 
 ![rconciliation](/assets/images/reconciliation.gif){:width="600px"}

@@ -2,15 +2,15 @@
 layout: default
 title: Check template
 description: Use a check template to write one SQL query that you can reuse in multiple Soda checks for data quality.
-parent: SodaCL
+parent: SodaCL reference
 ---
 
 # Check template
 *Last modified on {% last_modified_at %}*
 
 Use a check template to define a reusable, user-defined metric that you can apply to many checks in multiple checks files.<br />
-*Requires Soda Library* <br />
-*Limitation:* Soda Cloud cannot yet run scans that include a template, but check template results appear in the **Checks** dashboard.<br />
+*Not supported in Soda Core* <br />
+*Limitation:* You cannot use Soda Cloud to run scans that include a template, but check template results appear in the **Checks** dashboard when you run a scan using Soda Library CLI.<br />
 {% include code-header.html %}
 ```yaml
 templates:

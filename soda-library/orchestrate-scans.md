@@ -2,7 +2,7 @@
 layout: default
 title: Configure orchestrated scans
 description: Integrate Soda Library with a data orchestration tool to automate and schedule your search for "bad" data.
-parent: Soda Library
+parent: Run scans and review results
 redirect_from:
 - /soda-core/scans-pipeline.html
 - /soda-core/orchestrate-scans.html
@@ -179,7 +179,7 @@ A contribution from our Soda Community, read the documentation for the <a href="
 ## Go further
 
 * Learn more about the [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) you can use to check for data quality.
-* Learn how to prepare [programmatic scans]({% link soda-library/programmatic.md %}) of your data.
+* Follow an example implementation in [Test data in a pipeline]({% link soda/quick-start-prod.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to PostgreSQL
 description: Access configuration details to connect Soda to a PostgreSQL data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to PostgreSQL

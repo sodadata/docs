@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to OracleDB
 description: Access configuration details to connect Soda to an OracleDB data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to OracleDB

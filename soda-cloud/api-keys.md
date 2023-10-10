@@ -2,7 +2,7 @@
 layout: default
 title: Generate API keys
 description: Generate API keys to securely connect Soda Library or a Soda Agent to Soda Cloud, or to access Soda Cloud via API.
-parent: Soda Cloud
+parent: Learning resources
 ---
 
 # Generate API keys
@@ -20,14 +20,14 @@ Note that you can use other authentication methods to access Soda Cloud metadata
 
 1. In your Soda Cloud account, navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
 2. Copy the syntax for the `soda_cloud` configuration, including the values **API Key ID** and **API Key Secret**, then apply the keys according to how you intend to use them:
-* for use in a `configuration.yml` file: follow [Configure Soda]({% link soda-library/install.md %}http://localhost:4000/soda-library/install.html#configure-soda)
+* for use in a `configuration.yml` file: follow [Configure Soda]({% link soda-library/install.md %}#configure-soda)
 * for use with the Reporting API if your organization uses Single Sign On (SSO) to access Soda Cloud: follow [Reporting API authentication]({% link api-docs/reporting-api-v1.md %}#/#authentication) 
 
 
 ## Generate API keys for use with a Soda Agent
 
 1. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data**, then navigate to the **Agents** tab. Click **New Soda Agent**.
-2. Copy the values of the **API Key ID** and **API Key Secret** to a secure location, then apply the keys according to the instructions in the [Deploy a Soda Agent]({% link soda-agent/deploy.md %}#create-a-soda-cloud-account) documentation.
+2. Copy the values of the **API Key ID** and **API Key Secret** to a secure location, then apply the keys according to the instructions in the [Deploy a Soda Agent]({% link soda-agent/deploy.md %}#deploy-a-soda-agent-in-a-kubernetes-cluster) documentation.
 
 ## Go further
 

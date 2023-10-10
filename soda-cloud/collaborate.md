@@ -26,7 +26,7 @@ As the last step in the **Get started roadmap**, this guide offers instructions 
 &nbsp;&nbsp;&nbsp;&nbsp; b. [Invite your team membrs](#invite-your-team-members)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; c. [Add check attributes](#add-check-attributes)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; d. [Set alert notification rules](#set-alert-notification-rules)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; e. [Build collections](#build-collections)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; e. [Build check collections](#build-check-collections)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; f. [Create incidents](#create-incidents)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; g. [Add dataset attributes](#add-dataset-attributes)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; h. [Integrate with a data catalog](#integrate-with-a-data-catalog)<br />
@@ -36,7 +36,7 @@ As the last step in the **Get started roadmap**, this guide offers instructions 
 ## Integrate with Slack
 
 {% include integrate-slack-steps.md %}
-
+Organize results, set alerts, investigate issues
 Alternatively, you can integrate Soda with [MS Teams]({% link soda/integrate-msteams.md %}) or another third-party ticketing or messaging tool using a [webhook]({% link soda/integrate-webhooks.md %}).
 
 ## Invite your team members
@@ -130,15 +130,15 @@ Use the links below to access catalog-specific integration instructions. <br />
 
 ## Go further
 
-🌟 Well done! You've complete the roadmap! 🌟
-
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
 2. <s><font color="#777777"> Set up Soda: install, deploy, or invoke</font></s>
 3. <s><font color="#777777"> Write SodaCL checks</font></s>
 4. <s><font color="#777777"> Run scans and review results</font></s>
-5. <s><font color="#777777">Organize, alert, investigate</font></s> <br />
+5. <s><font color="#777777">Organize, alert, investigate</font></s> 
 
-#### What's next? 
+🌟 Well done! You've complete the roadmap! 🌟
+<br />
+
 * Use the [Reporting API]({% link api-docs/reporting-api-v1.md %}) to access metadata about your Soda Cloud account.
 * Are you a dbt user? Consider [ingesting dbt tests]({% link soda/integrate-dbt.md %}) into Soda Cloud for a single-pane-of-glass view of your data quality tests.
 * Access the [Use case guides]({% link soda/use-case-guides.md %}) for example implementations of Soda.

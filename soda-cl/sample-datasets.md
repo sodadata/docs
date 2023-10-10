@@ -57,7 +57,7 @@ sample datasets:
 
 ### Scan results in Soda Cloud
 
-1. To review the sample rows in Soda Cloud, first [run a scan]({% link soda-library/run-a-scan.md %}) of your data source so that Soda Library can gather and send samples to Soda Cloud.
+1. To review the sample rows in Soda Cloud, first [run a scan]({% link soda-library/run-a-scan.md %}) of your data source so that Soda can gather and send samples to Soda Cloud.
 2. In Soda Cloud, navigate to the **Datasets** dashboard, then click a dataset name to open the dataset's info page. 
 3. Access the **Sample Data** tab to review the sample rows.
 

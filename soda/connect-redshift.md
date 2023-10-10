@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to Amazon Redshift
 description: Access configuration details to connect Soda to a Redshift data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to Amazon Redshift

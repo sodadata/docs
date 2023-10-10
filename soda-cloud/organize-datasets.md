@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Organize datasets in Soda Cloud
+title: Organize datasets
 description: Use attributes, tags, and filters to facilitate your search for the specific data quality status of your datasets.
-parent: Soda Cloud
+parent: Organize, alert, investigate
 ---
 
-# Organize datasets in Soda Cloud 
+# Organize datasets 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
@@ -55,9 +55,8 @@ While only a Soda Cloud Admin can define or revise dataset attributes, any Admin
 
 ## Go further
 
-* Create [alerts]({% link soda-cloud/agreements.md %}) to notify your team of data quality issues.
+* Create [alerts]({% link soda-cloud/notif-rules.md %}) to notify your team of data quality issues.
 * Learn how to create and track data quality [Incidents]({% link soda-cloud/incidents.md %}).
-* Use Soda Library to [add datasets]({% link soda-library/configure.md %}) to your Soda Cloud account.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

@@ -2,7 +2,7 @@
 layout: default
 title: Missing metrics
 description: Use missing metrics in SodaCL checks to detect missing values in a dataset.
-parent: Soda CL
+parent: Soda CL reference
 redirect_from: /soda-cl/missing-validity.html
 ---
 
@@ -135,7 +135,7 @@ Second check:
 
 Checks with missing metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a missing metric. You can add this configuration to your checks YAML file for Soda Library, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a missing metric. You can add this configuration to your checks YAML file for Soda Library, or when writing checks as part of an agreement in Soda Cloud. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -166,7 +166,7 @@ checks for dim_employee:
 ```
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for missing values. Examine failed rows in the **Failed Rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for missing values. Examine failed rows in the **Failed Rows** tab; see [Examine failed row samples]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-missing-count](/assets/images/failed-missing-count.png){:height="700px" width="700px"}
 

@@ -2,12 +2,12 @@
 layout: default
 title: Connect Soda to Denodo (Experimental)
 description: Access configuration details to connect Soda to a Denodo data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to Denodo
 *Last modified on {% last_modified_at %}*<br />
-![experimental](/assets/images/experimental.png){:height="125px" width="125px"}<br/>
+*Experimental in Soda Core OSS*
 
 {% include connect-to-intro.md %}
 

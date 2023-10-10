@@ -2,7 +2,7 @@
 layout: default
 title: Group evolution checks
 description: Use a SodaCL group evolution data quality check to validate changes to the categorical groups you defined.
-parent: SodaCL
+parent: SodaCL reference
 ---
 
 # Group evolution checks

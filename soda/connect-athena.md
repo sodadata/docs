@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to Amazon Athena
 description: Access configuration details to connect Soda to an Athena data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to Amazon Athena

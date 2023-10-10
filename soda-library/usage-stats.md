@@ -2,7 +2,7 @@
 layout: default
 title: Soda Library usage statistics
 description: To understand how users are using Soda Library, the Soda dev team added telemetry event tracking to Soda Library. See instructions to opt-out.
-parent: Reference
+parent: Learning resources
 redirect_from: /soda-core/usage-stats.html
 ---
 
@@ -23,7 +23,7 @@ send_anonymous_usage_stats: false
 
 ## Go further
 
-* Learn [How Soda Library works]({% link soda-library/how-library-works.md %}).
+* Learn [How Soda works]({% link soda-library/how-library-works.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

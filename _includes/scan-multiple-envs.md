@@ -19,7 +19,7 @@ data_source nyc_prod:
   database: postgres
   schema: public
 ```
-2. Provide a `scan definition` name at scan time using the `-s` option. The [scan definition]({% link soda/glossary.md %}#scan-definition) helps Soda Cloud to distinguish different scan contexts and therefore plays a crucial role when the `checks.yml` file names and the checks themselves are the same. 
+2. Provide a `scan definition` name at scan time using the `-s` option. The scan definition helps Soda Cloud to distinguish different scan contexts and therefore plays a crucial role when the `checks.yml` file names and the checks themselves are the same. 
 ```shell
 # for NYC data source for dev
 soda scan -d nyc_dev -c configuration.yml -s nyc_a checks.yml

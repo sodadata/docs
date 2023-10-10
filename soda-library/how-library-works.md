@@ -2,7 +2,7 @@
 layout: default
 title: How Soda works
 description: Learn Soda Library Basics, Soda Library Operation, Soda Library Automation and Soda Cloud.
-parent: Soda Library
+parent: Learning resources
 redirect_from: /soda-core/how-core-works.html
 ---
 
@@ -27,11 +27,11 @@ This tool checks the quality of data inside [data sources]({% link soda/glossary
 
 - connect to your data source
 - connect to a Soda Cloud account
-- define checks to surface "bad" data
+- define checks to surface bad-quality data
 - run a scan for data quality against your data
 
 
-To connect to a data source such as Snowflake, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source and connection details for your Soda Cloud account. (Except for connections to Spark DataFrames which do not use a configuration YAML file.) Refer to [Configure Soda Library]({% link soda-library/configure.md %}) for details and links to data source-specific connection configurations.
+To connect to a data source such as Snowflake, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source and connection details for your Soda Cloud account. (Except for connections to Spark DataFrames which do not use a configuration YAML file.) Refer to [Configure Soda]({% link soda-library/install.md %}#configure-soda) for details and links to data source-specific connection configurations.
 
 #### Configuration YAML example
 {% include code-header.html %}
@@ -76,11 +76,11 @@ checks for dataset_name:
 
 In your own local environment, you create and store your checks YAML file anywhere you wish, then identify its name and filepath in the scan command. In fact, you can name the file whatever you like, as long as it is a `.yml` file and it contains checks using the SodaCL syntax.
 
-You write Soda Checks using SodaCL’s built-in metrics, though you can go beyond the built-in metrics and write your own SQL queries, if you wish. The example above illustrates two simple checks on two datasets, but SodaCL offers a wealth of [built-in metrics]({% link soda-cl/metrics-and-checks.md %}) that enable you to define checks for more complex situations.
+You write Soda Checks using SodaCL’s built-in metrics, though you can go beyond the built-in metrics and write your own SQL queries, if you wish. The example above illustrates two simple checks on two datasets, but SodaCL offers a wealth of [built-in metrics]({% link soda-cl/metrics-and-checks.md %}#list-of-sodacl-metrics-and-checks) that enable you to define checks for more complex situations.
 
 <br />
 
-To scan your data, you use the `soda scan` CLI command. Soda Library uses the input in the checks YAML file to prepare SQL queries that it runs against the data in one or more datasets in a data source. It returns the output of the scan with each check's results in the CLI. See [Anatomy of a scan command]({% link soda-library/run-a-scan.md %}#anatomy-of-a-scan-command) for more details.
+To scan your data, you use the `soda scan` CLI command. Soda Library uses the input in the checks YAML file to prepare SQL queries that it runs against the data in one or more datasets in a data source. It returns the output of the scan with each check's results in the CLI.
 {% include code-header.html %}
 ```shell
 soda scan -d adventureworks -c configuration.yml checks.yml

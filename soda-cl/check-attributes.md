@@ -2,7 +2,7 @@
 layout: default
 title: Add check attributes
 description: Define and apply check attributes to categorize and organize SodaCL checks in Soda Cloud.
-parent: SodaCL
+parent: Organize, alert, investigate
 ---
 
 # Add check attributes
@@ -24,7 +24,7 @@ checks for dim_product:
 Use attributes to organize your checks and alert notifications in Soda Cloud.
 * Apply attributes to checks to label and sort them by department, priority, location, etc.
 * Add a check attribute to identify, for example, checks that execute against personally identifiable information (PII).
-* Use the [Soda Cloud Reporting API]({% link api-docs/reporting-api-v1.md %}) to access information about checks according to their attributes.
+* Use the Reporting API to access information about checks according to their attributes.
 * Define rules to route alert notifications according to check attributes.
 
 

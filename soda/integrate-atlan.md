@@ -22,8 +22,6 @@ Integrate Soda with Atlan to access details about the quality of your data from 
 
 ## Prerequisites
 
-* You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}), [connected]({% link soda-library/configure.md %}) to an instance of Soda Library.
-* You have [configured Soda Library]({% link soda-library/configure.md %}) to access the data source on which you want to run quality checks.
 * You have completed at least one [Soda scan]({% link soda-library/run-a-scan.md %}) to validate that the data source’s datasets appear in Soda Cloud as expected.
 * You have an Atlan account with the privileges necessary to allow you to set up a Connection in your Atlan workspace.
 

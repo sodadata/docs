@@ -2,12 +2,12 @@
 layout: default
 title: SodaCL optional check configurations
 description: Add optional configurations to your SodaCL checks to optimize and clarify.
-parent: SodaCL
+parent: SodaCL reference
 redirect_from:
 - /soda-cl/quotes.html
 ---
 
-# Optional check configurations 
+# SodaCL optional check configurations 
 *Last modified on {% last_modified_at %}*
 
 When you define SodaCL checks for data quality in your checks YAML file, you have the option of adding one or more extra configurations or syntax variations. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
@@ -23,7 +23,7 @@ The following optional configurations are available to use with most, though not
 [Scan a portion of your dataset](#scan-a-portion-of-your-dataset)<br />
 [Collect failed rows samples](#collect-failed-rows-samples)<br />
 [Disable failed rows samples for specific columns](#disable-failed-row-samples-for-specific-columns)<br />
-<br />
+[Go further](#go-further)<br />
 <br />
 
 
@@ -41,7 +41,7 @@ checks for dim_employee:
 
 * Be sure to add the `:` to the end of your check, before the nested content.
 * If `name` is configured, Soda Library sends the value of `name` to Soda Cloud as the check identifier.
-* Avoid applying the same customized check names in multiple [agreements]({% link soda-cloud/agreements.md %}#2-write-checks). Soda Cloud associates check results with agreements according to name so if you reuse custom names, Soda Cloud may become confused about which agreement to which to link check results.
+* Avoid applying the same customized check names in multiple agreements. Soda Cloud associates check results with agreements according to name so if you reuse custom names, Soda Cloud may become confused about which agreement to which to link check results.
 
 <br />
 
@@ -101,7 +101,6 @@ checks for dim_product:
       identity: ${IDENTITY}
 ```
 
-See also: [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments).<br />
 See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
 
 ## Add alert configurations
@@ -272,7 +271,7 @@ See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
 Soda collects failed rows samples explicitly and implicitly. 
 
-To explicitly collect failed row samples, you can add a [failed row check]({% link soda-cl/failed-rows-checks.md %}) your checks YAML file for Soda Library, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
+To explicitly collect failed row samples, you can add a [failed row check]({% link soda-cl/failed-rows-checks.md %}) your checks YAML file for Soda Library, or when writing checks as part of an agreement in Soda Cloud. 
 
 Implicitly, Soda automatically collects 100 failed row samples for the following checks:
 * [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 
@@ -292,7 +291,7 @@ See also: [Set a sample limit for a data source]({% link soda-cl/failed-rows-che
 
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check that collects failed row samples and has failed. Examine failed rows in the **Failed Rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check that collects failed row samples and has failed. Examine failed rows in the **Failed Rows** tab; see [Examine failed row samples]({% link soda-cloud/failed-rows.md %}) for further details.
 
 <br />
 
@@ -306,7 +305,7 @@ Where your datasets contain sensitive or private information, you may *not* want
 
 ### Disable failed row samples for specific columns
 
-For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
+For checks which implicitly or explicitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
 
 Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 

@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to Google CloudSQL
 description: Access configuration details to connect Soda to a Google CloudSQL data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to Google CloudSQL

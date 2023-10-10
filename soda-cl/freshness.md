@@ -2,7 +2,7 @@
 layout: default
 title: Freshness checks
 description: Use a SodaCL freshness check to infer data freshness according to the age of the most recently added row in a table.
-parent: SodaCL
+parent: SodaCL reference
 ---
 
 # Freshness checks  
@@ -127,6 +127,8 @@ checks for dim_product:
 
 When you run a scan that includes a freshness check, the output in the **Soda Library CLI** provides several values for measurements Soda used to calculate freshness. The value for freshness itself is displayed in days, hours, minutes, seconds, and milliseconds; see the example below. 
 
+In **Soda Cloud**, the freshness value represents age of the data in the days, hours, minutes, etc. relative to `now_timestamp`. In other words, `(scan time - (max of date_column))`.
+
 ```shell
 Soda Library 1.0.x
 Soda Core 3.0.x
@@ -141,8 +143,6 @@ Scan summary:
         freshness: 3361 days, 16:40:39.196522
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 ```
-
-In **Soda Cloud**, the freshness value represents age of the data in the days, hours, minutes, etc. relative to `now_timestamp`.
 
 
 ## Optional check configurations

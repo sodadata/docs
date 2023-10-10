@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Integrate Soda Library with dbt
+title: Integrate Soda with dbt
 description: Integrate Soda with dbt-core or dbt Cloud to access dbt test results from within your Soda Cloud account and leverage all its features.
-parent: Integrate
+parent: Integrate Soda
 ---
 
-# Integrate Soda Library with dbt
+# Integrate Soda with dbt
 *Last modified on {% last_modified_at %}*
 
 Integrate Soda with dbt to access dbt test results from within your Soda Cloud account.
@@ -73,7 +73,7 @@ Run `soda ingest --help` to review a list of all command options.
 
 ## Ingest results from dbt Cloud into Soda Cloud
 
-Every run that is part of a [Job on dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud/cloud-quickstart#create-a-new-job) generates metadata about your dbt project as well as the results from the run. Use Soda Library to get this data directly from the dbt Cloud API. 
+Every run that is part of a <a href="https://docs.getdbt.com/docs/dbt-cloud/cloud-quickstart#create-a-new-job" target="_blank">Job on dbt Cloud</a> generates metadata about your dbt project as well as the results from the run. Use Soda Library to get this data directly from the dbt Cloud API. 
 
 1. If you have not already done so, install the `soda-dbt` sub-package in the Python environment that also runs you Soda Library package by running the following command. 
 ```
@@ -86,7 +86,7 @@ dbt_cloud:
   account_id: account_id
   api_token: serviceAccountTokenFromDbt1234
 ```
-4. From the command-line, run the `soda ingest` command to capture the test results from dbt Cloud and send them to Soda Cloud and include *one* of two identifiers from dbt Cloud. Refer to [dbt Cloud documentation](https://docs.getdbt.com/docs/dbt-cloud/cloud-overview) for more information. 
+4. From the command-line, run the `soda ingest` command to capture the test results from dbt Cloud and send them to Soda Cloud and include *one* of two identifiers from dbt Cloud. Refer to <a href="https://docs.getdbt.com/docs/dbt-cloud/cloud-overview" target="_blank">dbt Cloud documentation</a> for more information. 
 * Use the **run ID** from which you want Soda to ingest results. <br /> Look for the run ID at the top of any Run page "Run #40732579" in dbt Cloud, or in the URL of the Run page. For example, `https://cloud.getdbt.com/#/accounts/ 1234/projects/1234/runs/40732579/`
 ```bash
 soda ingest dbt -d my_datasource_name -c configuration.yml --dbt-cloud-run-id the_run_id
@@ -121,9 +121,9 @@ Each row in the table of Check represents a check that Soda Library executed, or
 
 ## Go further
 
-* Learn more about [How Soda Library works]({% link soda-library/how-library-works.md %}).
-* Read more about [running a Soda scan]({% link soda-library/run-a-scan.md %}#run-a-scan).
-* Learn more about [creating agreements]({% link soda-cloud/agreements.md %}) in Soda Cloud.
+* Learn more about [How Soda works]({% link soda-library/how-library-works.md %}).
+* Read more about [running a Soda scan]({% link soda-library/run-a-scan.md %}).
+* As a business user, learn how to [write SodaCL checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in an agreement in Soda Cloud.
 * Learn more about creating, tracking, and resolving data quality [incidents]({% link soda-cloud/incidents.md %}) in Soda Cloud.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Access a list of <a href="https://www.soda.io/integrations" target="_blank">all integrations</a> that Soda Cloud supports.

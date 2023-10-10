@@ -80,7 +80,6 @@ checks for dim_department_group:
 
 As a business user of Soda Cloud, you write SodaCL checks directly in the user interface within a **Soda Agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. <br />
 *Requires Soda Agent*<br />
-*Requires Soda Cloud*
 
 In an agreement, use SodaCL checks to define the state of "good quality" for data in this data source, then identify and get approval from stakeholders in your organization. Define whom Soda Cloud will notify when a check in the agreement fails, then set a schedule to regularly execute the Soda Checks to uphold the tenets of the agreement.
 
@@ -166,9 +165,7 @@ See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.m
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
-As a Data Engineer, you can write SodaCL checks directly in a `checks.yml` file, or leverage check suggestions in the Soda Library CLI to prepare a basic set of data quality checks for you. Alternatively, you can add SodaCL checks to a progrmmatic invocation of Soda Library.<br />
-*Requires Soda Library*<br />
-*Requires Soda Cloud*
+As a Data Engineer, you can write SodaCL checks directly in a `checks.yml` file, or leverage check suggestions in the Soda Library CLI to prepare a basic set of data quality checks for you. Alternatively, you can add SodaCL checks to a progrmmatic invocation of Soda Library.
 
 [Manually write SodaCL checks](#manually-write-sodacl-checks)<br />
 [Use check suggestions](#use-check-suggestions)<br />
