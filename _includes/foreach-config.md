@@ -1,4 +1,4 @@
-Add a **for each** section to your checks YAML file to specify a list of checks you wish to execute on multiple datasets. 
+Add a **for each** section to your checks configuration to specify a list of checks you wish to execute on multiple datasets. 
 
 1. Add a `for each dataset T` section header anywhere in your YAML file. The purpose of the `T` is only to ensure that every `for each` configuration has a unique name. 
 2. Nested under the section header, add two nested keys, one for `datasets` and one for `checks`. 
@@ -23,12 +23,12 @@ for each dataset T:
 ```
 
 
-## Limitations and specifics
+### Limitations and specifics for for each
 
 * For each is not compatible with dataset filters.
-* Soda Library dataset names matching is case insensitive.
+* Soda dataset names matching is case insensitive.
 * You cannot use quotes around dataset names in a for each configuration.
 * If any of your checks specify column names as arguments, make sure the column exists in all datasets listed under the `datasets` heading.
-* To add multiple for each configurations in your checks YAML file, configure another `for each` section header with a different letter identifier, such as `for each dataset R`.
+* To add multiple for each configurations, configure another `for each` section header with a different letter identifier, such as `for each dataset R`.
 
 

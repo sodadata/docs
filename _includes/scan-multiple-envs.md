@@ -4,24 +4,22 @@ When you want to run a scan that executes the same checks on different environme
 ```yaml
 data_source nyc_dev:
   type: postgres
-  connection:
-    host: host
-    port: '5432'
-    username: ${POSTGRES_USER}
-    password: ${POSTGRES_PASSWORD}
-    database: postgres
-    schema: public
+  host: host
+  port: '5432'
+  username: ${POSTGRES_USER}
+  password: ${POSTGRES_PASSWORD}
+  database: postgres
+  schema: public
 data_source nyc_prod:
   type: postgres
-  connection:
-    host: host
-    port: '5432'
-    username: ${POSTGRES_USER}
-    password: ${POSTGRES_PASSWORD}
-    database: postgres
-    schema: public
+  host: host
+  port: '5432'
+  username: ${POSTGRES_USER}
+  password: ${POSTGRES_PASSWORD}
+  database: postgres
+  schema: public
 ```
-2. Provide a `scan definition` name at scan time using the `-s` option. The [scan definition]({% link soda/glossary.md %}#scan-definition) helps Soda Cloud to distinguish different scan contexts and therefore plays a crucial role when the `checks.yml` file names and the checks themselves are the same. 
+2. Provide a `scan definition` name at scan time using the `-s` option. The scan definition helps Soda Cloud to distinguish different scan contexts and therefore plays a crucial role when the `checks.yml` file names and the checks themselves are the same. 
 ```shell
 # for NYC data source for dev
 soda scan -d nyc_dev -c configuration.yml -s nyc_a checks.yml

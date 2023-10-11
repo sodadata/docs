@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to OracleDB
 description: Access configuration details to connect Soda to an OracleDB data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to OracleDB
@@ -13,7 +13,7 @@ parent: Connect a data source
 ## Compatibility
 Soda supports Oracle version 21.3 or greater.
 
-## Configuration
+## Connection configuration reference
 
 Install package: `soda-oracle`
 

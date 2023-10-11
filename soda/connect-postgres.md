@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to PostgreSQL
 description: Access configuration details to connect Soda to a PostgreSQL data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to PostgreSQL
@@ -10,7 +10,7 @@ parent: Connect a data source
 
 {% include connect-to-intro.md %}
 
-## Configuration
+## Connection configuration reference
 
 Install package: `soda-postgres`
 
@@ -18,12 +18,11 @@ Install package: `soda-postgres`
 ```yaml
 data_source my_datasource_name:
   type: postgres
-  connection:
-    host: db
-    port: "5432"
-    username:
-    password:
-    database: postgres
+  host: db
+  port: "5432"
+  username: soda
+  password: secret
+  database: postgres
   schema: public
 ```
 

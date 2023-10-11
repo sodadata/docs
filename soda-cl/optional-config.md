@@ -2,12 +2,12 @@
 layout: default
 title: SodaCL optional check configurations
 description: Add optional configurations to your SodaCL checks to optimize and clarify.
-parent: SodaCL
+parent: SodaCL reference
 redirect_from:
 - /soda-cl/quotes.html
 ---
 
-# Optional check configurations 
+# SodaCL optional check configurations 
 *Last modified on {% last_modified_at %}*
 
 When you define SodaCL checks for data quality in your checks YAML file, you have the option of adding one or more extra configurations or syntax variations. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
@@ -23,7 +23,7 @@ The following optional configurations are available to use with most, though not
 [Scan a portion of your dataset](#scan-a-portion-of-your-dataset)<br />
 [Collect failed rows samples](#collect-failed-rows-samples)<br />
 [Disable failed rows samples for specific columns](#disable-failed-row-samples-for-specific-columns)<br />
-<br />
+[Go further](#go-further)<br />
 <br />
 
 
@@ -41,7 +41,7 @@ checks for dim_employee:
 
 * Be sure to add the `:` to the end of your check, before the nested content.
 * If `name` is configured, Soda Library sends the value of `name` to Soda Cloud as the check identifier.
-* Avoid applying the same customized check names in multiple [agreements]({% link soda-cloud/agreements.md %}#2-write-checks). Soda Cloud associates check results with agreements according to name so if you reuse custom names, Soda Cloud may become confused about which agreement to which to link check results.
+* Avoid applying the same customized check names in multiple agreements. Soda Cloud associates check results with agreements according to name so if you reuse custom names, Soda Cloud may become confused about which agreement to which to link check results.
 
 <br />
 
@@ -55,7 +55,7 @@ checks for dim_customer:
      name: Row count in ${name}
 ```
 
-When you run a scan, Soda Library uses the value you specified for your variable in the scan results, as in the example below.
+When you run a scan with Soda Library, it uses the value you specified for your variable in the scan results, as in the example below.
 ```shell
 Soda Library 1.0.x
 Soda Core 3.0.x
@@ -68,7 +68,7 @@ All is good. No failures. No warnings. No errors.
 
 ## Add a check identity
 
-Soda Cloud identifies a check using details such as the check name, the check YAML file name, the file's location. When you modify an individual check, the check identity changes which results in a new check result in Soda cloud.  For example, the following check sends one check result to Soda Cloud after a scan. 
+Soda Cloud identifies a check using details such as the check name, the check YAML file name, the file's location. When you modify an individual check, the check identity changes which results in a new check result in Soda Cloud.  For example, the following check sends one check result to Soda Cloud after a scan. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -83,8 +83,6 @@ checks for dataset_1:
 
 If you anticipate modifying a check, you can explicitly specify a check identity so that Soda Cloud can correctly accumulate the results of a single check and retain its history even if the check has been modified. 
 
-***Known issue:*** [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}) do not support the check identity parameter. <!--SAS-2005-->
-
 1. First, navigate to an existing check in your Soda Cloud account, then copy the UUID of the check from the URL; see the example below.
 ![check-identity](/assets/images/check-identity.png){:height="700px" width="700px"}
 2. Add an identity property to your check using the UUID you copied as the identity's value.<br />
@@ -95,7 +93,7 @@ checks for dim_customer:
 ```
 3. Save your changes.
 
-You can also use a variable to pass the value of a check identity at scan time, as in the example below. Read more about using [in-check variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl).
+You can also use a variable to pass the value of a check identity at scan time, as in the example below. You cannot use variables in checks you write in an agreement in Soda Cloud as it is impossible to provide the variable values at scan time. Read more about using [in-check variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl). 
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
@@ -103,12 +101,11 @@ checks for dim_product:
       identity: ${IDENTITY}
 ```
 
-See also: [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments).<br />
 See also: [Missing check results in Soda Cloud]({% link soda-cl/troubleshoot.md %}#missing-check-results-in-soda-cloud)
 
 ## Add alert configurations
 
-When Soda Library runs a scan of your data, it returns a check result for each check. Each check results in one of three default states:
+When Soda runs a scan of your data, it returns a check result for each check. Each check results in one of three default states:
 * **pass**: the values in the dataset match or fall within the thresholds you specified
 * **fail**: the values in the dataset _do not_ match or fall within the thresholds you specified
 * **error**: the syntax of the check is invalid
@@ -274,7 +271,7 @@ See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
 Soda collects failed rows samples explicitly and implicitly. 
 
-To explicitly collect failed row samples, you can add a [failed row check]({% link soda-cl/failed-rows-checks.md %}) your checks YAML file for Soda Library, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
+To explicitly collect failed row samples, you can add a [failed row check]({% link soda-cl/failed-rows-checks.md %}) your checks YAML file for Soda Library, or when writing checks as part of an agreement in Soda Cloud. 
 
 Implicitly, Soda automatically collects 100 failed row samples for the following checks:
 * [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 
@@ -294,7 +291,7 @@ See also: [Set a sample limit for a data source]({% link soda-cl/failed-rows-che
 
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check that collects failed row samples and has failed. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check that collects failed row samples and has failed. Examine failed rows in the **Failed Rows** tab; see [Examine failed row samples]({% link soda-cloud/failed-rows.md %}) for further details.
 
 <br />
 
@@ -308,7 +305,7 @@ Where your datasets contain sensitive or private information, you may *not* want
 
 ### Disable failed row samples for specific columns
 
-For checks which implicitly or explcitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
+For checks which implicitly or explicitly collect [failed rows samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples), you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
 
 Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
 

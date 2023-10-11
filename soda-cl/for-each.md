@@ -2,7 +2,7 @@
 layout: default
 title: For each checks
 description: Use a SodaCL for each check to specify a list of checks you wish to execute on a multiple datasets. 
-parent: SodaCL
+parent: SodaCL reference
 ---
 
 # For each 
@@ -99,7 +99,7 @@ for each dataset T:
 
 ## For each results in Soda Cloud
 
-Soda Library pushes the check results for each dataset to Soda Cloud where each check appears in the **Checks** dashboard, with an icon indicating their latest scan result. Filter the results by dataset to review dataset-specific results.
+Soda pushes the check results for each dataset to Soda Cloud where each check appears in the **Checks** dashboard, with an icon indicating their latest scan result. Filter the results by dataset to review dataset-specific results.
 {% include code-header.html %}
 ```yaml
 for each dataset T:

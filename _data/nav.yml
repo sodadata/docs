@@ -1,21 +1,161 @@
 - title: Home
   page: index.html
 
-- title: Get started
+- title: Take a sip of Soda
   page: soda/quick-start-sip.md
+
+- title: Get started
+  page: soda/get-started-roadmap.md
   subcategories:
-  - subtitle: Take a sip of Soda
-    page: soda/quick-start-sip.md
+  - subtitle: Get started roadmap
+    page: soda/get-started-roadmap.md
+  - subtitle: Choose a flavor of Soda
+    page: soda/setup-guide.md
+  - subtitle: Install Soda Library
+    page: soda-library/install.md
+  - subtitle: Deploy a Soda Agent
+    page: soda-agent/deploy.md
+  - subtitle: Soda Agent extras
+    page: soda-agent/secrets.md
+  - subtitle: Invoke Soda Library
+    page: soda-library/programmatic.md
+  - subtitle: Upgrade, redeploy, uninstall
+    page: soda/upgrade.md
+
+- title: Use case guides
+  page: soda/use-case-guides.md
+  subcategories:
+  - subtitle: Use case guides
+    page: soda/use-case-guides.md 
   - subtitle: Test data in a pipeline
     page: soda/quick-start-prod.md
+  - subtitle: Test before data migration
+    page: soda/quick-start-migration.md
+  - subtitle: Self-serve Soda
+    page: soda/quick-start-end-user.md
+  - subtitle: Invoke Soda in Databricks
+    page: soda/quick-start-databricks.md
   - subtitle: Test data during development
     page: soda/quick-start-dev.md
-  - subtitle: Enable end users to test data
-    page: soda/quick-start-end-user.md
-  - subtitle: Soda overview
-    page: soda/product-overview.md
+  - subtitle: Automate monitoring
+    page: soda/quick-start-automate.md
 
-- title: Connect a data source
+
+- title: Write SodaCL checks 
+  page: soda-cl/soda-cl-overview.md
+  subcategories:
+  - subtitle: Write SodaCL checks
+    page: soda-cl/soda-cl-overview.md
+  - subtitle: SodaCL tutorial
+    page: soda/quick-start-sodacl.md
+  - subtitle: Write checks with SodaGPT
+    page: soda-cloud/sodagpt.md
+  - subtitle: Adopt check suggestions
+    page: soda-library/check-suggestions.md
+  - subtitle: Add automated monitoring
+    page: soda-cl/automated-monitoring.md
+  - subtitle: Profile data
+    page: soda-cl/profile.md
+  - subtitle: Sample data
+    page: soda-cl/sample-datasets.md
+  - subtitle: Compare data using SodaCL
+    page: soda-cl/compare.md
+  - subtitle: Custom check examples
+    page: soda-cl/custom-check-examples.md
+
+- title: Run scans and view results
+  page: soda-library/run-a-scan.md
+  subcategories:
+  - subtitle: Run a scan and view results
+    page: soda-library/run-a-scan.md
+  - subtitle: Examine failed rows
+    page: soda-cloud/failed-rows.md
+  - subtitle: Configure orchestrated scans
+    page: soda-library/orchestrate-scans.md
+
+- title: Organize, alert, investigate
+  page: soda-cloud/collaborate.md
+  subcategories:
+  - subtitle: Organize, alert, investigate
+    page: soda-cloud/collaborate.md
+  - subtitle: Add check attributes
+    page: soda-cl/check-attributes.md
+  - subtitle: Set notification rules
+    page: soda-cloud/notif-rules.md
+  - subtitle: Organize datasets
+    page: soda-cloud/organize-datasets.md
+  - subtitle: Create and track incidents
+    page: soda-cloud/incidents.md
+  - subtitle: Set roles and rights
+    page: soda-cloud/roles-and-rights.md
+
+- title: Integrate Soda
+  page: soda/integrate-alation.md
+  subcategories:
+  - subtitle: Integrate with Alation
+    page: soda/integrate-alation.md
+  - subtitle: Integrate with Atlan
+    page: soda/integrate-atlan.md
+  - subtitle: Integrate with dbt
+    page: soda/integrate-dbt.md
+  - subtitle: Integrate with GitHub
+    page: soda/integrate-github.md
+  - subtitle: Integrate with Metaphor
+    page: soda/integrate-metaphor.md
+  - subtitle: Integrate with MS Teams
+    page: soda/integrate-msteams.md
+  - subtitle: Integrate with Slack
+    page: soda/integrate-slack.md
+  - subtitle: Integrate with SSO
+    page: soda-cloud/sso.md
+  - subtitle: Integrate webhooks
+    page: soda/integrate-webhooks.md
+
+- title: SodaCL reference
+  page: soda-cl/metrics-and-checks.md
+  subcategories:
+  - subtitle: Metrics and checks
+    page: soda-cl/metrics-and-checks.md
+  - subtitle: Optional check configurations
+    page: soda-cl/optional-config.md
+  - subtitle: Anomaly score checks
+    page: soda-cl/anomaly-score.md
+  - subtitle: Check template
+    page: soda-cl/check-template.md
+  - subtitle: Cross checks
+    page: soda-cl/cross-row-checks.md
+  - subtitle: Distribution checks
+    page: soda-cl/distribution.md
+  - subtitle: Failed rows checks
+    page: soda-cl/failed-rows-checks.md
+  - subtitle: Filters and variables
+    page: soda-cl/filters.md
+  - subtitle: For each
+    page: soda-cl/for-each.md
+  - subtitle: Freshness checks
+    page: soda-cl/freshness.md
+  - subtitle: Group by
+    page: soda-cl/group-by.md
+  - subtitle: Group evolution
+    page: soda-cl/group-evolution.md
+  - subtitle: Missing metrics
+    page: soda-cl/missing-metrics.md
+  - subtitle: Numeric metrics
+    page: soda-cl/numeric-metrics.md
+  - subtitle: Reconciliation checks
+    page: soda-cl/recon.md
+  - subtitle: Reference checks
+    page: soda-cl/reference.md
+  - subtitle: Schema checks
+    page: soda-cl/schema.md
+  - subtitle: Troubleshoot SodaCL
+    page: soda-cl/troubleshoot.md
+  - subtitle: User-defined checks
+    page: soda-cl/user-defined.md
+  - subtitle: Validity metrics
+    page: soda-cl/validity-metrics.md
+
+- title: Data source reference
   page: soda/connect-athena.md
   subcategories:
   - subtitle: Connect to Athena
@@ -61,183 +201,39 @@
   - subtitle: Connect to Vertica
     page: soda/connect-vertica.md
 
-- title: Soda Library
-  page: soda-library/overview.md
+- title: Access metadata via API
+  page: api-docs/reporting-api-v1.md
   subcategories:
-  - subtitle: Soda Library overview
-    page: soda-library/overview.md
-  - subtitle: How Soda Library works
-    page: soda-library/how-library-works.md
-  - subtitle: Install Soda Library
-    page: soda-library/install.md
-  - subtitle: Configure Soda Library
-    page: soda-library/configure.md
-  - subtitle: Run a Soda Library scan
-    page: soda-library/run-a-scan.md
-  - subtitle: Soda Library commands
-    page: soda-library/cli-reference.md
-  - subtitle: Check suggestions
-    page: soda-library/check-suggestions.md
-  - subtitle: Define programmatic scans
-    page: soda-library/programmatic.md
-  - subtitle: Configure orchestrated scans
-    page: soda-library/orchestrate-scans.md
+  - subtitle: Reporting API v1
+    page: api-docs/reporting-api-v1.md
+  - subtitle: Reporting API v0 (Soon deprecated)
+    page: api-docs/reporting-api.md
+  - subtitle: Changelog and migration guide
+    page: api-docs/reporting-api-v1-migration-guide.md
+  - subtitle: Build a reporting dashboard
+    page: api-docs/reporting-api-to-overview-dashboards.md
 
-- title: Soda Agent
-  page: soda-agent/overview.md
-  subcategories:
-  - subtitle: Soda Agent
-    page: soda-agent/overview.md
-  - subtitle: Soda Agent basic concepts
-    page: soda-agent/basics.md
-  - subtitle: Deploy an agent in a cluster
-    page: soda-agent/deploy.md
-  - subtitle: Deploy an agent in Amazon
-    page: soda-agent/deploy-aws.md
-  - subtitle: Connect to Soda Cloud via AWS PrivateLink
-    page: soda-agent/private-link.md
-  - subtitle: Deploy an agent in Azure
-    page: soda-agent/deploy-azure.md
-  - subtitle: Deploy an agent in Google
-    page: soda-agent/deploy-google.md
-  - subtitle: Manage sensitive values
-    page: soda-agent/secrets.md
-  - subtitle: Redeploy an agent
-    page: soda-agent/redeploy.md
-  - subtitle: Upgrade an agent
-    page: soda-agent/upgrade.md
-  - subtitle: Helpful kubectl commands
-    page: soda-agent/helpful-commands.md
-
-- title: Soda Cloud
-  page: soda-cloud/overview.md
-  subcategories:
-  - subtitle: Soda Cloud
-    page: soda-cloud/overview.md
-  - subtitle: Roles and rights
-    page: soda-cloud/roles-and-rights.md
-  - subtitle: Add a data source
-    page: soda-cloud/add-datasource.md
-  - subtitle: Create an agreement
-    page: soda-cloud/agreements.md
-  - subtitle: Write checks with SodaGPT
-    page: soda-cloud/sodagpt.md
-  - subtitle: Collaborate on data monitoring
-    page: soda-cloud/collaborate.md
-  - subtitle: Scan output
-    page: soda-cloud/scan-output.md
-  - subtitle: Set notification rules
-    page: soda-cloud/notif-rules.md
-  - subtitle: Organize datasets
-    page: soda-cloud/organize-datasets.md
-  - subtitle: Examine failed rows
-    page: soda-cloud/failed-rows.md
-  - subtitle: Create and track incidents
-    page: soda-cloud/incidents.md
-  - subtitle: Soda Cloud architecture
-    page: soda-cloud/soda-cloud-architecture.md
-  - subtitle: Generate API keys
-    page: soda-cloud/api-keys.md
-  - subtitle: Soda Cloud resources
-    page: soda-cloud/resource-map.md
-  - subtitle: Single sign-on with Soda Cloud
-    page: soda-cloud/sso.md
-
-
-- title: SodaCL 
-  page: soda-cl/soda-cl-overview.md
-  subcategories:
-  - subtitle: SodaCL overview
-    page: soda-cl/soda-cl-overview.md
-  - subtitle: SodaCL tutorial
-    page: soda/quick-start-sodacl.md
-  - subtitle: Metrics and checks
-    page: soda-cl/metrics-and-checks.md
-  - subtitle: Optional check configurations
-    page: soda-cl/optional-config.md
-  - subtitle: Add check attributes
-    page: soda-cl/check-attributes.md
-  - subtitle: Numeric metrics
-    page: soda-cl/numeric-metrics.md
-  - subtitle: Missing metrics
-    page: soda-cl/missing-metrics.md
-  - subtitle: Validity metrics
-    page: soda-cl/validity-metrics.md
-  - subtitle: Freshness checks
-    page: soda-cl/freshness.md
-  - subtitle: Schema checks
-    page: soda-cl/schema.md
-  - subtitle: Reference checks
-    page: soda-cl/reference.md
-  - subtitle: Cross checks
-    page: soda-cl/cross-row-checks.md
-  - subtitle: Reconciliation checks
-    page: soda-cl/recon.md
-  - subtitle: Anomaly score checks
-    page: soda-cl/anomaly-score.md
-  - subtitle: Distribution checks
-    page: soda-cl/distribution.md
-  - subtitle: User-defined checks
-    page: soda-cl/user-defined.md
-  - subtitle: Check template
-    page: soda-cl/check-template.md
-  - subtitle: Failed rows checks
-    page: soda-cl/failed-rows-checks.md
-  - subtitle: Automated monitoring checks
-    page: soda-cl/automated-monitoring.md
-  - subtitle: Filters and variables
-    page: soda-cl/filters.md
-  - subtitle: For each
-    page: soda-cl/for-each.md
-  - subtitle: Group by
-    page: soda-cl/group-by.md
-  - subtitle: Group evolution
-    page: soda-cl/group-evolution.md
-  - subtitle: Display profile info in Soda Cloud
-    page: soda-cl/profile.md
-  - subtitle: Display sample data in Soda Cloud
-    page: soda-cl/sample-datasets.md
-  - subtitle: Custom check examples
-    page: soda-cl/custom-check-examples.md
-  - subtitle: Compare data using SodaCL
-    page: soda-cl/compare.md
-  - subtitle: Troubleshoot SodaCL
-    page: soda-cl/troubleshoot.md
-
-- title: Soda Core
-  page: soda-core/overview-main.md
-
-- title: Integrate Soda
-  page: soda/integrate-alation.md
-  subcategories:
-  - subtitle: Integrate with Alation
-    page: soda/integrate-alation.md
-  - subtitle: Integrate with Atlan
-    page: soda/integrate-atlan.md
-  - subtitle: Integrate with dbt
-    page: soda/integrate-dbt.md
-  - subtitle: Integrate with GitHub
-    page: soda/integrate-github.md
-  - subtitle: Integrate with Metaphor
-    page: soda/integrate-metaphor.md
-  - subtitle: Integrate with MS Teams
-    page: soda/integrate-msteams.md
-  - subtitle: Integrate with Slack
-    page: soda/integrate-slack.md
-  - subtitle: Integrate webhooks
-    page: soda/integrate-webhooks.md
-
-- title: Reference
+- title: Learning resources
   page: soda/glossary.md
   subcategories:
   - subtitle: Glossary
     page: soda/glossary.md
-  - subtitle: What's new in docs?
-    page: soda/new-documentation.md
+  - subtitle: Soda product overview
+    page: soda/product-overview.md
+  - subtitle: How Soda works
+    page: soda-library/how-library-works.md
+  - subtitle: Soda Agent basic concepts
+    page: soda-agent/basics.md
+  - subtitle: Soda architecture
+    page: soda-cloud/soda-cloud-architecture.md
+  - subtitle: Generate API keys
+    page: soda-cloud/api-keys.md
   - subtitle: Data security and privacy
     page: soda/data-privacy.md
   - subtitle: Soda Library usage statistics
     page: soda-library/usage-stats.md
+  - subtitle: What's new in docs?
+    page: soda/new-documentation.md
   - subtitle: Support
     page: soda/support.md
   - subtitle: Soda Community Code of Conduct
@@ -245,18 +241,8 @@
   - subtitle: Soda SQL is now Soda Core
     page: soda/deprecated.md
 
-- title: Soda Cloud Reporting API
-  page: api-docs/reporting-api-v1.md
-  subcategories:
-  - subtitle: Reporting API v1
-    page: api-docs/reporting-api-v1.md
-  - subtitle: Reporting API v0 (Soon Deprecated)
-    page: api-docs/reporting-api.md
-  - subtitle: Changelog and migration guide
-    page: api-docs/reporting-api-v1-migration-guide.md
-  - subtitle: Build a reporting dashboard
-    page: api-docs/reporting-api-to-overview-dashboards.md
-
+- title: Soda Core
+  page: soda-core/overview-main.md
 
 - title: Release notes
   page: release-notes/all.md

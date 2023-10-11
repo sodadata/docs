@@ -15,15 +15,10 @@ Configure Soda Cloud to connect your account to MS Teams so that you can:
 * start conversations to track and resolve data quality [incidents]({% link soda-cloud/incidents.md %}) with MS Teams
 
 
-## Prerequisites
-
-* You have a Soda Cloud account with [Admin permissions]({% link soda-cloud/roles-and-rights.md %}).
-* You have [connected your Soda Cloud account]({% link soda-library/configure.md %}) to Soda Library and run at least one scan so as to produce one or more check results.<br /> OR<br /> You have [added a datasource]({% link soda-cloud/add-datasource.md %}) via a [Soda Agent]({% link soda-agent/deploy.md %}) and are ready to create an [agreement]({% link soda-cloud/agreements.md %}).
-
 
 ## Configure an MS Teams integration
 
-1. In your Soda Cloud account, navigate to **your avatar** > **Organization Settings**, then select the **Integrations** tab.
+1. As an [Admin user]({% link soda-cloud/roles-and-rights.md %}), log in to your Soda Cloud account, navigate to **your avatar** > **Organization Settings**, then select the **Integrations** tab.
 2. Click the **+** at the upper right of the table of integrations to add a new integration. 
 3. In the **Add Integration** dialog box, select **Microsoft Teams**.
 4. In the first step of the guided integration workflow, download the <a href="/assets/ms-teams-soda.png" download>Soda logo</a> that you need to set up an incoming webhook with MS Teams. 

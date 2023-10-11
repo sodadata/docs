@@ -2,7 +2,7 @@
 layout: default
 title: Schema checks
 description: Use a SodaCL schema check to validate column presence, absence, or position in a table, or the type of data column contains.
-parent: SodaCL
+parent: SodaCL reference
 redirect_from: /soda-cloud/schema-evolution.html
 ---
 
@@ -10,7 +10,7 @@ redirect_from: /soda-cloud/schema-evolution.html
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use a schema check to validate the presence, absence or position of columns in a dataset, or to validate the type of data column contains. Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general. 
+Use a schema check to validate the presence, absence or position of columns in a dataset, or to validate the type of data column contains. 
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
@@ -119,8 +119,6 @@ checks for dim_employee:
 
 Rather than specifying exact parameters for column changes, you can use the `when schema changes` validation key to warn or fail when indistinct changes occur in a dataset.
 
-This type of validation key requires a **Soda Cloud** account. Soda Library pushes check results to your account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future schema checks. 
-
 Soda Cloud must have at least two measurements to yield a check result. In other words, the first time you run a scan to execute a schema evolution check, Soda returns no results because it has nothing against which to compare; the second scan that executes the check yields a check result.
 {% include code-header.html %}
 ```yaml
@@ -136,6 +134,9 @@ checks for dim_customer:
          - column type change
 ```
 
+The output in Soda Cloud displays the output of all the alert states during the scan.
+
+![schema-results](/assets/images/schema-results.png){:height="700px" width="700px"} 
 
 ## Optional check configurations
 
@@ -265,9 +266,6 @@ Sending results to Soda Cloud
 Soda Cloud Trace: 7845***
 ```
 
-The output in Soda Cloud displays the output of all the alert states during the scan.
-
-![schema-results](/assets/images/schema-results.png){:height="700px" width="700px"} 
 
 ## Go further
 

@@ -1,3 +1,2 @@
-For Soda to run quality scans of your data, you must configure it to connect to your data source. 
-* For **Soda Library**, add the connection configurations to your `configuration.yml` file. [Read more]({% link soda-library/configure.md %}).
-* For **Soda Cloud**, add the connection configurations to step 3 of the New Data Source workflow. [Read more]({% link soda-cloud/add-datasource.md %}#2-connect-the-data-source).
+For Soda to run quality scans on your data, you must configure it to connect to your data source. <br />
+To learn how to set up Soda and configure it to connect to your data sources, see [Get started]({% link soda/setup-guide.md %}).

@@ -8,4 +8,4 @@ products:
 
 Released in Preview state, you can now deploy a Soda Agent in an Azure Kubernetes Service cluster. 
 
-Access the [documentation]({% link soda-agent/deploy-azure.md %}) to learn how to set up a regular or virtual cluster, then deploy an agent that connects to your Soda Cloud via account API keys. 
+Access the [documentation]({% link soda-agent/deploy.md %}) to learn how to set up a regular or virtual cluster, then deploy an agent that connects to your Soda Cloud via account API keys. 

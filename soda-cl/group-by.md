@@ -2,14 +2,14 @@
 layout: default
 title: Group by checks
 description: Use a SodaCL group by configuration to customize the group of data quality check results by category.
-parent: SodaCL
+parent: SodaCL reference
 ---
 
 # Group by
 *Last modified on {% last_modified_at %}*
 
 Use a group by configuration to collect and present check results by category. <br /> 
-*Requires Soda Library*
+*Not supported in Soda Core*
 
 {% include code-header.html %}
 ```yaml

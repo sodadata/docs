@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Examine failed rows samples
+title: Examine failed row samples
 description: To offer more insight into the data that failed a test during a scan, Soda Cloud can display failed rows in a check's history.
-parent: Soda Cloud
+parent: Run scans and view results
 redirect_from: /soda-sql/documentation/failed-rows.html
 ---
 
-# Examine failed rows samples
+# Examine failed row samples
 *Last modified on {% last_modified_at %}*
 
 When a Soda scan results in a failed check, Soda Cloud displays details of the scan results in each check's **Check History** view. To offer more insight into the data that failed a check during a scan, Soda Cloud can display **failed rows samples** in a check's history. 
@@ -14,6 +14,13 @@ When a Soda scan results in a failed check, Soda Cloud displays details of the s
 From the **Checks** dashboard, select an indivdual check to access its result history page, then click the **Failed rows** tab (pictured below) to see the failed rows samples associated with a failed check result. 
 
 ![failed-rows](/assets/images/failed-rows.png){:height="600px" width="600px"}
+
+
+#### Troubleshoot
+
+{% include troubleshoot-failed-rows.md %}
+
+<br />
 
 ## Implicitly send failed rows samples
 
@@ -23,13 +30,6 @@ Implicitly, Soda automatically collects 100 failed row samples for the following
 * checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
 * checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
 
-<br />
-
-#### Troubleshoot
-
-{% include troubleshoot-failed-rows.md %}
-
-<br />
 
 ## Explicitly send failed rows samples
 
@@ -68,8 +68,7 @@ checks for dim_customer:
 ## Go further
 
 * <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank"> Sign up</a> for a Soda Cloud account.
-* Learn more about [scans in Soda Cloud]({% link soda-cloud/scan-output.md %}).
-* Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
+* Learn more about creating and tracking [Soda Incidents]({% link soda-cloud/incidents.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to IBM DB2
 description: Access configuration details to connect Soda to an IBM DB2 data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to IBM DB2
@@ -10,7 +10,7 @@ parent: Connect a data source
 
 {% include connect-to-intro.md %}
 
-## Configuration
+## Connection configuration reference
 
 Install package: `soda-db2`
 
@@ -23,7 +23,7 @@ data_source my_datasource_name:
   username: xxx
   password: xxx
   database: 
-  schema: 
+  schema: public
 ```
 
 | Property | Required | Notes                                                      |

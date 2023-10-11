@@ -2,7 +2,7 @@
 layout: default
 title: Roles and rights in Soda Cloud
 description: To manage the actions of users that belong to a single organization, Soda Cloud uses roles and access rights. Admins can access an Audit Trail of user actions.
-parent: Soda Cloud
+parent: Organize, alert, investigate
 ---
 
 # Roles and rights in Soda Cloud
@@ -62,7 +62,7 @@ As an Admin, login to your Soda Cloud account and navigate to **your avatar** > 
 | --- | ------ |
 | **Organization** | Adjust the name of the organization and the type of Soda Cloud Plan to which your organization subscribes.|
 | **Members** | View a list of people who have access to the Soda Cloud account. Use the dropdown next to each name to adjust their role to be either **Admin** or **User**. Review each member's **License** status as an **Author** or **Viewer**. Refer to [Review member licenses](#review-member-licenses). |
-| **Attributes** | Create new attributes for datasets in your organization that your colleagues can use to categorize datasets. See [Organize datasets in Soda Cloud]({% link soda-cloud/organize-datasets.md %}). |
+| **Attributes** | Create new attributes for datasets in your organization that your colleagues can use to categorize datasets. See [Organize datasets]({% link soda-cloud/organize-datasets.md %}). |
 | **Responsibilities** | Adjust the default settings for accessing new datasets. See [Change the default access to datasets](#change-the-default-access-to-datasets). |
 | **Integrations** | Connect Soda Cloud to your organization's Slack workspace. See how to [Integrate with Slack]({% link soda-cloud/collaborate.md %}#integrate-with-slack). |
 | **Audit Trail** | Download a CSV file that contains user audit trail information. See [Access an audit trail](#access-an-audit-trail). |
@@ -90,17 +90,17 @@ Alternatively, you can use the [Audit Trail endpoint]({% link api-docs/reporting
 ## Access to resources
 
 Where the roles and rights described above apply to your organization's Soda Account, the roles and rights described in the table below apply to the following resources in your account:
-* [incidents]({% link soda/glossary.md %}#incident)
-* [checks]({% link soda/glossary.md %}#check)
-* [agreements]({% link soda/glossary.md %}#agreement)
-* [datasets]({% link soda/glossary.md %}#dataset)
-* [data sources]({% link soda/glossary.md %}#data-source)
-* [scan definitions]({% link soda/glossary.md %}#scan-definition)
-* [agents]({% link soda/glossary.md %}#soda-agent)
+* incidents
+* checks
+* agreements
+* datasets
+* data sources
+* scan definitions
+* agents
 
 The roles that define who can make changes to resources in Soda Cloud are **Manager**, **Editor**, and **Viewer**. 
 
-The following table outlines the rights of each role associated with each resource. Note that because of its universal access to all things in your Soda Cloud account, an **Admin** member as described above has all the rights of a **Manager** relative to resources. Learn more about [Soda Cloud resources]({% link soda-cloud/resource-map.md %}) in general.
+The following table outlines the rights of each role associated with each resource. Note that because of its universal access to all things in your Soda Cloud account, an **Admin** member as described above has all the rights of a **Manager** relative to resources. Learn more about [Soda architecture]({% link soda-cloud/soda-cloud-architecture.md %}) in general.
 
 | Rights                                                                     | Admin | Manager  | Editor | Viewer |
 |----------------------------------------------------------------------------|:-----:|:--------:|:------:|:------:|
@@ -197,8 +197,8 @@ As an Admin or a Manager of a dataset, you can access the **Responsibilities** t
 ## Review member licenses
 
 Each Soda Cloud Plan (Soda Teams or Soda Enterprise) includes a specific number of **Author** licenses for members of the Soda Cloud account. A member's license status controls whether they can make changes to any datasets, checks, and agreements in the Soda Cloud account.
-* **Authors** essentially have read-write access in Soda Cloud and maintain the role of Admin, Manager, or Editor relative to checks, agreements, and datasets. See [Roles and rights](#roles-and-rights) above.
-* **Viewers** essentially have read-only acecss in Soda Cloud and maintain the role of Viewer relative to checks, agreements, and datasets. See [Roles and rights](#roles-and-rights) above.
+* **Authors** essentially have read-write access in Soda Cloud and maintain the role of Admin, Manager, or Editor relative to checks, agreements, and datasets. 
+* **Viewers** essentially have read-only acecss in Soda Cloud and maintain the role of Viewer relative to checks, agreements, and datasets. 
 
 1. To review the licenses that your members have, as an Admin, login to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**. Only Soda Cloud Admin members can view Organization Settings. 
 2. Access the **Members** tab to view a list of people who have access to your Soda Cloud account, the role they have in the organization (Admin or User), and their License status (Author or Viewer). 
@@ -208,9 +208,9 @@ Each Soda Cloud Plan (Soda Teams or Soda Enterprise) includes a specific number 
 
 There are four ownership roles in Soda Cloud that identify the member that owns a data source, a dataset, an agreement, or a check. These ownership roles do not enforce any rights or permissions on these resources, they are simply identifiers.
 
-* By default, the member who [created the data source]({% link soda-cloud/add-datasource.md %}) becomes the **Data Source Owner** and **Dataset Owner** of all datasets in that data source. The default role that Soda Cloud assigns to the Dataset Owner is that of Manager.
-* By default, the member who [creates an agreement]({% link soda-cloud/agreements.md %}) become the **Check Owner** of all checks defined in the agreement. 
-* By default, all Owners use an [Author license](#review-member-licenses).
+* By default, the member who added the data source becomes the **Data Source Owner** and **Dataset Owner** of all datasets in that data source. The default role that Soda Cloud assigns to the Dataset Owner is that of Manager.
+* By default, the member who creates an agreement becomes the **Check Owner** of all checks defined in the agreement. 
+* By default, all Owners use an Author license.
 * You cannot change the Agreement Owner.
 <br />
 <br />
@@ -245,10 +245,10 @@ To bulk-change the owner of all new datasets added to a data source, follow the 
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-* Learn more about [Soda Cloud resources]({% link soda-cloud/resource-map.md %}).
-* [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) in Soda Cloud to facilitate your search for the right data.
+* Learn more about [Soda architecture]({% link soda-cloud/soda-cloud-architecture.md %}).
+* [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) to facilitate your search for the right data.
 * [Invite colleagues]({% link soda-cloud/collaborate.md %}#invite-your-team-members) to join your organization's Soda Cloud account.
-* Learn more about creating and tracking [Soda Cloud Incidents]({% link soda-cloud/incidents.md %}).
+* Learn more about creating and tracking [Soda Incidents]({% link soda-cloud/incidents.md %}).
 <br />
 
 ---

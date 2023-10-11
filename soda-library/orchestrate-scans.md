@@ -2,7 +2,7 @@
 layout: default
 title: Configure orchestrated scans
 description: Integrate Soda Library with a data orchestration tool to automate and schedule your search for "bad" data.
-parent: Soda Library
+parent: Run scans and review results
 redirect_from:
 - /soda-core/scans-pipeline.html
 - /soda-core/orchestrate-scans.html
@@ -11,26 +11,20 @@ redirect_from:
 # Configure orchestrated scans 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
-{% include banner-core.md %}
 
 Integrate Soda Library with a data orchestration tool such as, Airflow, to automate and schedule your search for bad-quality data. 
 
-🎥 Consider following a 30-minute Astronomer tutorial for <a href="https://www.youtube.com/watch?v=YZTcIi5o7FI" target="_blank">Data Quality Checks with Airflow, Snowflake and Soda</a>.
-
 Configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically block "bad" data from contaminating your data pipeline.
 
-Consider following the [Test data in a pipeline]({% link soda/quick-start-prod.md %}) guide for specific details about embedding Soda tests in an Airflow pipeline.
-
-[Apache Airflow using PythonOperator](#apache-airflow-using-pythonoperator)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; [Example DAG](#example-dag)<br />
-<br />
+📚 Consider following the [Test data in a pipeline]({% link soda/quick-start-prod.md %}) guide for specific details about embedding Soda tests in an Airflow pipeline. <br />
+🎥 Consider following a 30-minute Astronomer tutorial for <a href="https://www.youtube.com/watch?v=YZTcIi5o7FI" target="_blank">Data Quality Checks with Airflow, Snowflake and Soda</a>.
 
 <!--
 ## Apache Airflow using BashOperator
 
 Access a guide published by <a href="https://www.astronomer.io/" target="_blank">Astronomer</a> for setting up and using <a href="https://www.astronomer.io/guides/soda-data-quality/" target="_blank">Soda Library with Airflow</a>. -->
 
-## Apache Airflow using PythonOperator
+## Airflow using PythonOperator
 {% include code-header.html %}
 ```python
 class SodaScanOperator(PythonOperator):
@@ -185,7 +179,7 @@ A contribution from our Soda Community, read the documentation for the <a href="
 ## Go further
 
 * Learn more about the [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) you can use to check for data quality.
-* Learn how to prepare [programmatic scans]({% link soda-library/programmatic.md %}) of your data.
+* Follow an example implementation in [Test data in a pipeline]({% link soda/quick-start-prod.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

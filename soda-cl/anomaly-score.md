@@ -2,7 +2,7 @@
 layout: default
 title: Anomaly score checks
 description: Anomaly score checks use a machine learning algorithm to automatically detect anomalies in your time-series data.
-parent: Soda CL 
+parent: Soda CL reference
 redirect_from: /soda-cloud/anomaly-detection.html
 ---
 
@@ -19,7 +19,6 @@ checks for dim_customer:
 ```
 
 [About anomaly score checks](#about-anomaly-score-checks)<br />
-[Prerequisites](#prerequisites)<br />
 [Install Soda Scientific](#install-soda-scientific)<br />
 [Define an anomaly score check](#define-an-anomaly-score-check) <br />
 [Anomaly score check results](#anomaly-score-check-results) <br />
@@ -34,18 +33,10 @@ checks for dim_customer:
 
 The anomaly score check is powered by a machine learning algorithm that works with measured values for a metric that occur over time. The algorithm learns the patterns of your data – its trends and seasonality – to identify and flag anomalies in time-series data. 
 
-This type of check requires a **Soda Cloud** account. Soda Library pushes check results to your account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future anomaly score checks. 
-
-
-## Prerequisites
-
-* You have a Soda Cloud account and have [connected Soda Library to Soda Cloud]({% link soda-library/configure.md %}). 
-* You have [installed Soda Scientific](#install-soda-scientific) in the same directory or virtual environment in which you [installed Soda Library]({% link soda-library/install.md %}).
-
 
 ## Install Soda Scientific
 
-To use an anomaly score check, you must install Soda Scientific in the same directory or virtual environment in which you installed Soda Library. Best practice recommends installing Soda Library and Soda Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Scientific locally](#install-soda-scientific-locally) if you prefer.
+To use an anomaly score check, you must install Soda Scientific in the same directory or virtual environment in which you installed Soda Library. Soda Scientific is included in Soda Agent deployment. Best practice recommends installing Soda Library and Soda Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Scientific locally](#install-soda-scientific-locally) if you prefer.
 
 {% include install-soda-scientific.md %}
 

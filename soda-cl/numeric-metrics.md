@@ -2,7 +2,7 @@
 layout: default
 title: Numeric metrics
 description: Use numeric metrics in SodaCL checks for data quality.
-parent: Soda CL
+parent: Soda CL reference
 redirect_from: soda-cl/duplicates.html
 ---
 
@@ -10,7 +10,7 @@ redirect_from: soda-cl/duplicates.html
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use a numeric metric in a check to perform basic calculations on the data in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
+Use a numeric metric in a check to perform basic calculations on the data in your dataset. 
 
 {% include code-header.html %}
 ```yaml
@@ -79,7 +79,7 @@ checks for dim_reseller:
 
 Checks that use the `duplicate_count` or `duplicate_percent` metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Library, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Library, or when writing checks as part of an agreement in Soda Cloud. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -111,7 +111,7 @@ checks for dim_customer:
 ```
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for duplicate values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for duplicate values. Examine failed rows in the **Failed Rows** tab; see [Examine failed row samples]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-duplicate-count](/assets/images/failed-duplicate-count.png){:height="700px" width="700px"}
 
@@ -218,8 +218,6 @@ for each dataset T:
 Numeric metrics can specify a **fixed threshold** which is not relative to any other threshold. `row_count > 0` is an example of a check with a fixed threshold as the threshold value, `0`, is absolute. Refer to [Checks with fixed thresholds]({% link soda-cl/metrics-and-checks.md %}#checks-with-fixed-thresholds) for details.
 
 Only checks that use numeric metrics can specify a **change-over-time threshold**, a value that is relative to a previously-measured, or historic, value. Sometimes referred to as a dynamic threshold or historic metrics, you use these change-over-time thresholds to gauge changes to the same metric over time. Most of the examples below use the `row_count` metric, but you can use any numeric metric in checks that use change-over-time thresholds. 
-
-This type of threshold requires a **Soda Cloud** account. Soda Library pushes check results to your account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future change-over-time checks.
 
 The most basic of change-over-time threshold checks has three or four mutable parts:
 

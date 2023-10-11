@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Metrics and checks
+title: SodaCL metrics and checks
 description: SodaCL uses metrics in checks for data quality in one or more datasets.
-parent: Soda CL
+parent: Soda CL reference
 redirect_from:
 - /soda-cl/metrics-thresholds.html 
 ---
 
-# Metrics and checks 
+# SodaCL metrics and checks 
 <!--Linked to UI, access Shlink; though actually linked in CLI error message-->
 *Last modified on {% last_modified_at %}*
 
@@ -26,7 +26,7 @@ A check is a test for data quality that you write using the Soda Checks Language
 
 See a [full list of SodaCL metrics and checks](#list-of-sodacl-metrics-and-checks).
 
-When it scans datasets in your data source, Soda Library executes the checks you defined in your checks YAML file. Technically, a check is a Python expression that, during a Soda scan, checks metrics to see if they match the parameters you defined for a threshold. A single Soda scan executes multiple checks against one or more datasets in your data source. Read more about [running scans on multiple environments]({% link soda-library/run-a-scan.md %}#configure-the-same-scan-to-run-in-multiple-environments).
+When it scans datasets in your data source, Soda Library executes the checks you defined in your checks YAML file. Technically, a check is a Python expression that, during a Soda scan, checks metrics to see if they match the parameters you defined for a threshold. A single Soda scan executes multiple checks against one or more datasets in your data source. Read more about [running scans on multiple environments]({% link soda-library/run-a-scan.md %}).
 
 {% include scan-output.md %}
 
@@ -165,7 +165,7 @@ Refer to [change-over-time thresholds]({% link soda-cl/numeric-metrics.md %}#cha
 
 ### Define boundaries with fixed thresholds
 
-While the most basic of standard checks use a single value to identify a fixed threshold, such as `row_count >= 10`, you can use comparison phrases to define the upper and lower boundaries for a fixed threshold value. Read more about [fixed](#checks-with-fixed-thresholds) and [dynamic](#checks-with-dynamic-thresholds) thresholds.
+While the most basic of standard checks use a single value to identify a fixed threshold, such as `row_count >= 10`, you can use comparison phrases to define the upper and lower boundaries for a fixed threshold value. Read more about [fixed](#checks-with-fixed-thresholds) and [dynamic](#checks-with-change-over-time-thresholds) thresholds.
 
 The following sections present several ways to set boundaries using the `row_count` metric in the example checks. You can use any numeric, missing, or validity metric in lieu of `row_count`.
 

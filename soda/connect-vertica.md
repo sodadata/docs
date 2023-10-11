@@ -1,16 +1,17 @@
 ---
 layout: default
-title: Connect Soda to Vertica (Experimental)
+title: Connect Soda to Vertica 
 description: Access configuration details to connect Soda to a Vertica data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
-# Connect Soda to Vertica (Experimental)
-*Last modified on {% last_modified_at %}*
+# Connect Soda to Vertica
+*Last modified on {% last_modified_at %}* <br >
+*Experimental in Soda Core OSS*
 
 {% include connect-to-intro.md %}
 
-## Configuration
+## Connection configuration reference
 
 Install package: `soda-vertica`
 
@@ -18,13 +19,12 @@ Install package: `soda-vertica`
 ```yaml
 data_source my_datasource_name:
   type: vertica
-  connection:
-    host: abc
-    port: "5433"
-    username: ***
-    password: ***
-    database: vmart
-    schema: public
+  host: abc
+  port: "5433"
+  username: ***
+  password: ***
+  database: vmart
+  schema: public
 ```
 
 | Property | Required | Notes                                              |

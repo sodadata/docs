@@ -2,29 +2,23 @@
 layout: default
 title: Set notification rules
 description: Use Soda Cloud to set alert notification rules for multiple checks across datasets in your account.
-parent: Soda Cloud
+parent: Organize, alert, investigate
 redirect_from: /soda-cloud/edit-checks.html
 ---
 
 # Set notification rules 
 
 In Soda Cloud, you can define where and when to send alert notifications when check results warn or fail. You can define these parameters for:
-* **agreements** as you create or edit them; see [Create agreements]({% link soda-cloud/agreements.md %}#4-set-notifications)
-* **multiple checks** by defining notification rules; read on
-* The ability to create alert notifications for **individual checks** is deprecated.
+* **agreements** as you create or edit them; see [Define SodaCL checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) for business users
+* **multiple checks** by defining notification rules; read on!
 
 For example, you can define a notification rule to instruct Soda Cloud to send an alert to your #sales-engineering Slack channel whenever a data quality check on the `snowflake_sales` data source fails.
 
-[Prerequisites](#prerequisites)<br />
+[Default rules](#default-rules)<br />
 [Set new rules](#set-new-rules) <br />
 [Edit or delete rules](#edit-or-delete-rules)<br />
 [Go further](#go-further)<br />
 <br />
-
-## Prerequisites
-
-* You have created a <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">Soda Cloud account</a>.
-* (Optional) An Admin on your Soda Cloud account has [integrated with Slack]({% link soda/integrate-slack.md %}) or another [third-party service provider]({% link soda/integrate-webhooks.md %}) to enable Soda Cloud to send alert notifications to your team. If you do not integrate with another service-provider, Soda Cloud can send notifications via email.
 
 ## Default rules
 
@@ -33,13 +27,13 @@ By default, Soda Cloud establishes two notification rules on your Soda Cloud acc
 | Send all check alerts to the Check Owner | Soda Cloud sends all check results that fail or warn to the Soda Cloud user who created or owns an individual check. |
 | Send all check alerts to the Dataset Owner | Soda Cloud sends all check results that fail or warn to the Soda Cloud user who created or owns the dataset to which the checks are associated. |
 
-Refer to [Data source, dataset, and check owners]({% link soda-cloud/roles-and-rights.md %}#data-source-dataset-and-check-owners) for details on resource ownership.
+Refer to [Data source, dataset, agreement, and check owners]({% link soda-cloud/roles-and-rights.md %}#data-source-dataset-agreement-and-check-owners) for details on resource ownership.
 
 ## Set new rules
 
 For a new rule, you define conditions for sending notifications including the severity of a check result and whom to notify when bad data triggers an alert.
 
-In Soda Cloud, navigate to **your avatar** > **Notification Rules**, then click **New Notification Rule**. Follow the guided steps to complete the new rule. Use the sections below for insight into the values to enter in the fields and editing panels in the guided steps.
+In Soda Cloud, navigate to **your avatar** > **Notification Rules**, then click **New Notification Rule**. Follow the guided steps to complete the new rule. Use the table below for insight into the values to enter in the fields and editing panels in the guided steps.
 
 | Field or Label  | Guidance |
 | -----------------  | ----------- |

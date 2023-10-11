@@ -2,14 +2,14 @@
 layout: default
 title: Validity metrics
 description: Use validity metrics in SodaCL checks to detect invalid values in a dataset.
-parent: Soda CL
+parent: Soda CL reference
 ---
 
 # Validity metrics 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use a validity metric in a check to surface invalid or unexpected values in your dataset. <br />Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
+Use a validity metric in a check to surface invalid or unexpected values in your dataset. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -205,7 +205,7 @@ Error occurred while executing scan.
 
 Checks with validity metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Library, or when writing checks as part of an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. 
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Library, or when writing checks as part of an agreement in Soda Cloud. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -238,7 +238,7 @@ checks for dim_employee:
 ```
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for validity values. Examine failed rows in the **Failed rows** tab; see [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for validity values. Examine failed rows in the **Failed Rows** tab; see [Examine failed row samples]({% link soda-cloud/failed-rows.md %}) for further details.
 
 ![failed-invalid-count](/assets/images/failed-invalid-count.png){:height="700px" width="700px"}
 
@@ -319,10 +319,10 @@ checks for CUSTOMERS [daily]:
 
 ## List of validity metrics
 
-| Metric  | Column config keys | Description | Supported data type | Supported data sources | 
-| ------  | ------------------ | ----------- |---------------------| ---------------------- |
-| `invalid_count` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |  Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames |
-| `invalid_percent` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values`| The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames  | 
+| Metric  | Column config keys | Description | Supported data type |  
+| ------  | ------------------ | ----------- |---------------------| 
+| `invalid_count` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |
+| `invalid_percent` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values`| The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  
 
 
 ## List of configuration keys
@@ -410,27 +410,6 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 ## List of comparison symbols and phrases
 
 {% include list-symbols.md %}
-
-<!--
-## Configure global valid values (experimental)
-
-Optionally, you can use a global configuration to define what qualifies as a valid value.  Global configurations apply to all checks in a dataset so that you can write checks that use validity metrics without having to declare what qualifies as a valid value in each individual check.
-
-The following example defines a global column configuration for what qualifies as a valid value for the `house_owner_flag` column. You can add the global configuration section to any part of your checks.yml file. The check that uses a `invalid_percent` references the global configuration to determine what qualifies as a valid value.
-
-```yaml
-configurations for dim_customer:
-  valid values for house_owner_flag: ['0','1']
-
-checks for dim_customer:
-  - invalid_percent(house_owner_flag) < 1%
-```
-
-* In your global column configurations, you can identify column names with or without quotes. If you use quotes with the column name, any checks you write that do *not* use the quotes, do not use the global configuration. Refer to [Use quotes in a check]({% link soda-cl/metrics-and-checks.md %}##use-quotes-in-a-check).
-* Globally defined valid values do not have an effect on aggregation checks. For example, if you globally define `0` as a valid value for a column named `value`, SodaCL still uses `0` when calculating the following aggregation check: `- avg(value) between 30 and 70`.
-* You can define both global and local column configurations in a checks YAML file. If you accidentally configure the same property both globally and locally and the values conflict, SodaCL uses the local configuration to execute the check.
-
--->
 
 ## Go further
 

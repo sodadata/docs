@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to Dremio
 description: Access configuration details to connect Soda to a Dremio data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to Dremio
@@ -13,7 +13,7 @@ parent: Connect a data source
 ## Compatibility
 Soda supports Dremio version 22 or greater.
 
-## Configuration
+## Connection configuration reference
 
 Install package: `soda-dremio`
 

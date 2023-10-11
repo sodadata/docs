@@ -1,16 +1,17 @@
 ---
 layout: default
-title: Connect Soda to DuckDB (Experimental)
+title: Connect Soda to DuckDB
 description: Access configuration details to connect Soda to a DuckDB data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
-# Connect Soda to DuckDB (Experimental)
-*Last modified on {% last_modified_at %}*
+# Connect Soda to DuckDB
+*Last modified on {% last_modified_at %}* <br />
+*Experimental in Soda Core OSS*
 
 {% include connect-to-intro.md %}
 
-## Configuration
+## Connection configuration reference
 
 Install package: `soda-duckdb`
 

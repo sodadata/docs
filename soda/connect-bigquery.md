@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to GCP BigQuery
 description: Access configuration details to connect Soda to a BigQuery data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to GCP Big Query
@@ -20,12 +20,12 @@ parent: Connect a data source
 
 
 A note about BigQuery datasets: Google uses the term dataset slightly differently than Soda (and many others) do. 
-* In the context of Soda, a [dataset]({% link soda/glossary.md %}#dataset) is a representation of a tabular data structure with rows and columns. A dataset can take the form of a table in PostgreSQL or Snowflake, a stream, or a DataFrame in a Spark application. 
+* In the context of Soda, a [dataset]({% link soda/glossary.md %}#dataset) is a representation of a tabular data structure with rows and columns. A dataset can take the form of a table in PostgreSQL or Snowflake, or a DataFrame in a Spark application. 
 * In the context of BigQuery, a <a href="https://cloud.google.com/bigquery/docs/datasets-intro" target="_blank"> dataset</a> is "a top-level container that is used to organize and control access to your tables and views. A table or view must belong to a dataset..."
 
 Instances of "dataset" in Soda documentation always reference the former.
 
-## Connection configuration
+## Connection configuration reference
 
 Install package: `soda-bigquery`
 
@@ -33,25 +33,24 @@ Install package: `soda-bigquery`
 ```yaml
 data_source my_datasource_name:
   type: bigquery
-  connection:
-    account_info_json: '{
-        "type": "service_account",
-        "project_id": "...",
-        "private_key_id": "...",
-        "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
-        "client_email": "...@project.iam.gserviceaccount.com",
-        "client_id": "...",
-        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-        "token_uri": "https://accounts.google.com/o/oauth2/token",
-        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/..."
-}'
-    auth_scopes:
-    - https://www.googleapis.com/auth/bigquery
-    - https://www.googleapis.com/auth/cloud-platform
-    - https://www.googleapis.com/auth/drive
-    project_id: "..."
-    dataset: sodacore
+  account_info_json: '{
+      "type": "service_account",
+      "project_id": "...",
+      "private_key_id": "...",
+      "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
+      "client_email": "...@project.iam.gserviceaccount.com",
+      "client_id": "...",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://accounts.google.com/o/oauth2/token",
+      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/..."
+    }'
+  auth_scopes:
+  - https://www.googleapis.com/auth/bigquery
+  - https://www.googleapis.com/auth/cloud-platform
+  - https://www.googleapis.com/auth/drive
+  project_id: "..."
+  dataset: sodacore
 ```
 
 | Property                                | Required                                                             |
@@ -80,7 +79,7 @@ Using GCP BigQuery, you have the option of using one of several methods to authe
 
 1. Application Default Credentials
 2. Application Default Credentials with Service Account impersonation
-3. Service Account Key (see [connection configuration](#connection-configuration) above)
+3. Service Account Key (see [connection configuration](#connection-configuration-reference) above)
 4. Service Account Key with Service Account Impersonation
 
 <br />
@@ -92,8 +91,8 @@ Add the `use_context_auth` property to your connection configuration, as per the
 ```yaml
 data_source my_datasource:
   type: bigquery
-  connection:
-    use_context_auth: True
+  ...
+  use_context_auth: True
 ```
 
 <br />
@@ -105,9 +104,9 @@ Add the `use_context_auth` and `impersonation_account` properties to your connec
 ```yaml
 data_source my_datasource:
   type: bigquery
-  connection:
-    use_context_auth: True
-    impersonation_account: <SA_EMAIL>
+  ...
+  use_context_auth: True
+  impersonation_account: <SA_EMAIL>
 ```
 
 <br />
@@ -119,13 +118,13 @@ Add the `impersonation_account` property to your connection configuration, as pe
 ```yaml
 data_source my_database_name:
   type: bigquery
-  connection:
-    account_info_json: '{
-        "type": "service_account",
-        "project_id": "...",
-        "private_key_id": "...",
-      ...}'
-    impersonation_account: <SA_EMAIL>
+  ...
+  account_info_json: '{
+      "type": "service_account",
+      "project_id": "...",
+      "private_key_id": "...",
+    ...}'
+  impersonation_account: <SA_EMAIL>
 ```
 
 <br />
@@ -146,7 +145,7 @@ If you already store information about your data source in a JSON file in a secu
 * `volumes` and `volumeMounts` parameters in the `values.yml` file that your Soda Agent helm chart uses
 * the `account_info_json_path` in your data source connection configuration 
 
-You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deployment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.
+You, or an IT Admin in your organization, can add the following `scanlauncher` parameters to the existing `values.yml` that your Soda Agent uses for deployment and redployment in your Kubernetes cluster. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy.md %}) for details.
 {% include code-header.html %}
 ```yaml
 soda:
@@ -168,21 +167,20 @@ Use the following command to add the service account information to a Kubernetes
 kubectl create secret generic -n <soda-agent-namespace> gcloud-credentials --from-file=serviceaccount.json=<local path to the serviceccount.json>
 ```
 
-After you make both of these changes, you must redeploy the Soda Agent. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy-google.md %}#deploy-using-a-values-yaml-file) for details.   
+After you make both of these changes, you must redeploy the Soda Agent. Refer to [Deploy using a values YAML file]({% link soda-agent/deploy.md %}) for details.   
 
 Adjust the data source connection configuration to include the `account_info_json_path` configuration, as per the following example. 
 {% include code-header.html %}
 ```yaml
 my_datasource_name:
   type: bigquery
-  connection:
-    account_info_json_path: /opt/soda/etc/serviceaccount.json
-    auth_scopes:
-    - https://www.googleapis.com/auth/bigquery
-    - https://www.googleapis.com/auth/cloud-platform
-    - https://www.googleapis.com/auth/drive
-    project_id: ***
-    dataset: sodalibrary
+  account_info_json_path: /opt/soda/etc/serviceaccount.json
+  auth_scopes:
+  - https://www.googleapis.com/auth/bigquery
+  - https://www.googleapis.com/auth/cloud-platform
+  - https://www.googleapis.com/auth/drive
+  project_id: ***
+  dataset: sodalibrary
 ```
 
 <br />

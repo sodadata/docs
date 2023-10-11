@@ -2,7 +2,7 @@
 layout: default
 title: Failed rows checks
 description: Use a SodaCL failed rows check to explicitly send sample failed rows to Soda Cloud. 
-parent: SodaCL
+parent: SodaCL reference
 ---
 
 # Failed rows checks 
@@ -48,7 +48,6 @@ checks for dim_customer:
 
 ## Prerequisites
 
-* To view failed rows that a failed rows check collects, you ideally have a **Soda Cloud** account. It is not necessary to view failed rows samples in Soda Cloud, but easy to view in the context of a check result. 
 * To use failed row checks to send failed rows samples to Soda Cloud, samples collection must *not* be [disabled in Soda Cloud]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).
 
 ## About failed row samples
@@ -67,7 +66,7 @@ In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#
 
 The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the `fail condition` that any rows in the `dim_customer` dataset must meet in order to qualify as failed rows, during a scan, get sent to Soda Cloud. 
 
-In this rather silly example, Soda Library sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples. The check also uses the `name` configuration key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
+In this rather silly example, Soda sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples. The check also uses the `name` configuration key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -80,7 +79,7 @@ checks for dim_customer:
 
 <br />
 
-If you prefer, you can use a SQL query to define what qualifies as a failed row for Soda Library to send to Soda Cloud, as in the following simple example. Use this cofiguration to include complete SQL queries in the Soda scan of your data.
+If you prefer, you can use a SQL query to define what qualifies as a failed row for Soda to send to Soda Cloud, as in the following simple example. Use this cofiguration to include complete SQL queries in the Soda scan of your data.
 
 ```yaml
 checks for dim_customer:
@@ -148,7 +147,7 @@ checks for dim_product [new]:
 
 ## Set a sample limit
 
-By default, Soda Library sends 100 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda Library using the `samples limit` configuration key:value pair, as in the following example.
+By default, Soda sends 100 failed row samples to Soda Cloud. You can limit the number of sample rows that Soda sends using the `samples limit` configuration key:value pair, as in the following example.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -181,58 +180,6 @@ Additionally, you can [Disable failed rows sampling for specific columns](#disab
 
 <br />
 
-
-## Group results by category
-
-See [Group by]({% link soda-cl/group-by.md %}).
-
-<!--You can use a SQL query in a failed row check to group failed check results by one or more categories. Use a SQL editor to build and test a SQL query with your data source, then add the query to a failed rows check to execute it during a Soda scan.
-
-The following example illustrates how to build a query that identifies the countries where the average age of people is less than 25.
-
-1. Beginning with a basic query, the output shows the data this example works with.
-```sql
-SELECT * FROM Customers;
-```
-![group-by-1](/assets/images/group-by-1.png){:height="600px" width="600px"}
-2. Build a query to select groups with the relevant aggregations.
-```sql
-SELECT country, AVG(age) as avg_age
-FROM Customers
-GROUP BY country
-```
-![group-by-2](/assets/images/group-by-2.png){:height="600px" width="600px"}
-3. Add a common table expression (CTE) to identify the "bad" group (where the average age is less than 25) from among the grouped results.
-```sql
-WITH groups AS (
-	SELECT country, AVG(age) as avg_age
-	FROM Customers
-	GROUP BY country
-)
-SELECT * 
-FROM groups
-WHERE avg_age < 25
-```
-![group-by-3](/assets/images/group-by-3.png){:height="600px" width="600px"}
-4. Now that the query yields the expected results, add the query to a failed row check, as per the following example.
-```yaml
-checks for dim_customers:
-  - failed rows:
-          name: Average age of citizens is less than 25
-          fail query: |
-            WITH groups AS (
-	            SELECT country, AVG(age) as avg_age
-	            FROM Customers
-	            GROUP BY country
-            )
-  
-            SELECT * 
-            FROM groups
-            WHERE avg_age < 25
-```
-
--->
-
 ## Disable failed rows sampling for specific columns
 
 For checks which implicitly or explicitly collect [failed rows samples](#about-failed-row-samples), you can add a configuration to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
@@ -248,11 +195,10 @@ To do so, add the `sampler` configuration to your data source connection configu
 ```yaml
 data_source my_datasource_name: 
   type: postgres
-  connection:
-    host: localhost
-    port: '5432'
-    username: ***
-    password: ***
+  host: localhost
+  port: '5432'
+  username: ***
+  password: ***
   database: postgres
   schema: public
   sampler:
@@ -291,8 +237,8 @@ Alternatively, you can disable the failed row samples feature entirely in Soda C
 
 #### Configure in Soda Library
 
-1. Open the [configuration YAML file]({% link soda-library/configure.md %}#configuration-instructions) that contains the data source connection configuration for the data source that contains the dataset that contains the columns that you wish to exclude from failed rows sampling.
-2. To the connection configuration, add the `sampler` configuration to specify the columns you wish to exclude, as outlined above.
+1. Open the configuration YAML file that contains the data source connection configuration for the data source that contains the dataset that contains the columns that you wish to exclude from failed rows sampling.
+2. To the connection configuration, add the `sampler` configuration above to specify the columns you wish to exclude, as outlined above.
 3. Save the changes to the file.
 
 
@@ -402,11 +348,10 @@ Soda sends the failed rows samples as a JSON payload and includes:
 ```yaml
 data_source my_datasource_name: 
   type: postgres
-  connection:
-    host: localhost
-    port: '5432'
-    username: ***
-    password: ***
+  host: localhost
+  port: '5432'
+  username: ***
+  password: ***
   database: postgres
   schema: public
   sampler:
@@ -433,7 +378,7 @@ data_source my_datasource_name:
 
 #### Configure in Soda Library
 
-1. Open the [configuration YAML file]({% link soda-library/configure.md %}#configuration-instructions) that contains the data source connection configuration for the data source for which you wish to reroute failed rows samples.
+1. Open the configuration YAML file that contains the data source connection configuration for the data source for which you wish to reroute failed rows samples.
 2. To the connection configuration, add the `storage` configuration to specify the columns you wish to exclude, as outlined above.
 3. Save the changes to the file.
 
@@ -442,7 +387,7 @@ data_source my_datasource_name:
 
 ## Configure a failed row sampler
 
-If you are running Soda scans [programmatically]({% link soda-library/programmatic.md %}), you can add a custom sampler to collect samples of rows with a `fail` check result. Refer to the following example that prints the failed row samples in the CLI.
+If you are running Soda scans programmatically, you can add a custom sampler to collect samples of rows with a `fail` check result. Refer to the following example that prints the failed row samples in the CLI.
 {% include code-header.html %}
 ```python
 from soda.scan import Scan
@@ -474,12 +419,11 @@ if __name__ == '__main__':
     data_source test:
       type: postgres
       schema: public
-      connection:
-        host: localhost
-        port: 5433
-        username: postgres
-        password: secret
-        database: postgres
+      host: localhost
+      port: 5433
+      username: postgres
+      password: secret
+      database: postgres
     """)
 
     s.add_sodacl_yaml_str(f"""

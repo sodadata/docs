@@ -2,7 +2,7 @@
 layout: default
 title: Test data quality in a data pipeline
 description: Follow this guide to set up and run scheduled Soda scans for data quality in your Airflow data pipeline.
-parent: Get started
+parent: Use case guides
 ---
 
 # Test data quality in a data pipeline
@@ -14,23 +14,19 @@ Use this guide as an example for how to set up and use Soda to test the quality 
 
 ![data-pipeline](/assets/images/data-pipeline.png){:width="700px"}
 
-**[01](#soda-basics)** Learn the basics of Soda<br />
-**[02](#about-this-guide)** Get context for this guide<br />
-**[03](#install-soda-from-the-command-line)** Install Soda from the command-line<br />
-**[04](#connect-soda-to-a-data-source-and-soda-cloud-account)** Connect Soda to a data source and Soda Cloud account<br />
-**[05](#write-checks-for-data-quality)** Write checks for data quality<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[a](#transform-checks)** Transform checks<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[b](#ingest-checks)** Ingest checks<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[c](#reports-checks)** Reports checks<br />
-**[06](#create-a-dag-and-run-the-workflow)** Create a DAG and run the workflow<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[a](#run-soda-scans-manually)** Run Soda scans manually<br />
-**[07](#view-results-and-tag-datasets)** View results and tag datasets <br />
+[About this guide](#about-this-guide) <br />
+[Install Soda from the command-line](#install-soda-from-the-command-line)<br />
+[Connect Soda to a data source and Soda Cloud account](#connect-soda-to-a-data-source-and-soda-cloud-account)<br />
+[Write checks for data quality](#write-checks-for-data-quality)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Transform checks](#transform-checks)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Ingest checks](#ingest-checks)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Reports checks](#reports-checks)<br />
+[Create a DAG and run the workflow](#create-a-dag-and-run-the-workflow)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Run Soda scans manually](#run-soda-scans-manually) <br />
+[View results and tag datasets](#view-results-and-tag-datasets) <br />
+[Go further](#go-further)<br />
 <br />
 
-
-## Soda basics
-
-{% include about-soda.md %}
 
 ## About this guide
 
@@ -67,13 +63,12 @@ This guide also includes instructions for how to connect to a Soda Cloud account
 3. In the `configuration.yml` file, they add the data source connection configuration for the PostgreSQL data source that contains the AdventureWorks data. The example below is the connection configuration for a PostgreSQL data source. Access the <a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/soda/configuration.example.yml" target="_blank">example file</a>. See a complete list of supported [data sources]({% link soda/connect-athena.md %}).
 ```yaml
 data_source soda-demo:
-        type: postgres
-        connection:
-            host: localhost
-            username: postgres
-            password: secret
-        database: postgres
-        schema: public
+      type: postgres
+      host: localhost
+      username: postgres
+      password: secret
+      database: postgres
+      schema: public
 ```
 4. In a browser, they navigate to <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">cloud.soda.io/signup</a> to create a free, 45-day trial Soda account.  
 5. They navigate to **avatar** > **Profile**, then navigate to the **API Keys** tab and click the plus icon to generate new API keys.
@@ -87,7 +82,7 @@ soda test-connection -d adventureworks -c configuration.yml
 
 ## Write checks for data quality
 
-A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the [Soda Checks Language (SodaCL)]({% link soda-cl/soda-cl-overview.md %}). You can create multiple `checks.yml` files to organize your data quality checks and run all, or some of them, at scan time. 
+A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the Soda Checks Language (SodaCL). You can create multiple `checks.yml` files to organize your data quality checks and run all, or some of them, at scan time. 
 
 In this example, the Data Engineer creates multiple checks after ingestion, after initial transformation, and before pushing the information to a visualization or reporting tool.
 
@@ -440,57 +435,21 @@ Learn more about [running Soda scans]({% link soda-library/run-a-scan.md %}).
 
 ## View results and tag datasets
 
-1. In their Soda Cloud account, the Engineer clicks **Checks** to access the **Checks** dashboard. The checks from the scan that Soda performed during the scan appear in the table where they can click each line item to learn more about the results, as in the example below. <br />
+1. In their Soda Cloud account, the Engineer clicks **Checks** to access the **Checks** dashboard. The checks from the scan that Soda performed during the scan appear in the table where they can click each line item to learn more about the results, as in the example below. <br /><br />
 ![check-dashboard](/assets/images/check-dashboard.png){:width="700px"}
 2. To more easily retrieve Soda scan results by dbt model, the Engineer navigates to **Datasets**, then clicks the stacked dots at the right of the `dim_product` dataset and selects **Edit Dataset**.
 3. In the **Tags** field, they add a value for `fact_product_category`, the dbt model that uses this dataset, and a tag to indicate the kind of data that Soda is scanning, `raw`, `transformed` or `reporting`, then saves. They repeat these steps to add tags to all the datasets in their Soda Cloud account.
-4. Navigating again to the **Datasets** page, they use the filters to display datasets according to **Tags** and **Arrival Time** to narrow the search for the most recent quality checks associated with their models which have failed or warned.
+4. Navigating again to the **Datasets** page, they use the filters to display datasets according to **Tags** and **Arrival Time** to narrow the search for the most recent quality checks associated with their models which have failed or warned.<br /><br />
 ![datasets-tags](/assets/images/datasets-tags.png){:width="700px"}
 5. After filtering the datasets according to the tags, the Engineer saves the filter setup as a **Collection** that they can revisit daily.
-6. If you were in the Data Engineer's shoes, you may further wish to set up [Slack notifications]({% link soda/quick-start-dev.md %}#set-up-slack-integration-and-notification-rules) for any checks that warn or fail during scans.
+6. If you were in the Data Engineer's shoes, you may further wish to set up [Slack notifications]({% link soda/integrate-slack.md %}) for any checks that warn or fail during scans.
 
 ✨Hey, hey!✨ Now you know what it's like to add data quality checks to your production data pipeline. Huzzah!
 
 
-## Now what?
-<div class="docs-html-content">
-    <section class="docs-section" style="padding-top:0">
-        <div class="docs-section-row">
-            <div class="docs-grid-3cols">
-                <div>
-                    <img src="/assets/images/icons/icon-pacman@2x.png" width="54" height="40">
-                    <h2>Experiment</h2>
-                    <a href="/soda/quick-start-sodacl.html">SodaCL tutorial</a>                    
-                    <a href="/soda-cl/metrics-and-checks.html">Study metrics and checks</a>
-                    <a href="/soda-cl/user-defined.html">Write custom SQL checks</a>
-                    <a href="/soda-cl/compare.html">Compare data</a>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-new@2x.png" width="54" height="40">
-                    <h2>Sip more Soda</h2>
-                    <a href="/soda/quick-start-dev.html#set-up-slack-integration-and-notification-rules" target="_blank">Set up Slack alerts</a>
-                    <a href="/soda-cl/check-attributes.html">Add check attributes</a>
-                    <a href="/soda-cloud/failed-rows.html">Examine failed row samples</a>
-                    <a href="/api-docs/reporting-api-v1.html">Report on data health</a>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
-                    <h2>Choose your adventure</h2>
-                    <a href="/soda-library/configure.html">Connect your own data source</a>
-                    <a href="/soda/quick-start-sip.html">Install and scan locally</a>
-                    <a href="/soda/quick-start-dev.html">Test data during development</a>
-                    <a href="/soda/integrate-alation.html">Integrate with Alation</a>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+## Go further
 
-
-
-## Need help?
-
-* Not quite ready for this big gulp of Soda? Try [taking a sip]({% link soda/quick-start-sip.md %}), first.
+* [Get organized]({% link soda-cloud/collaborate.md %}) in Soda!
 * <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
 * Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

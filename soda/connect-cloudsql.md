@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to Google CloudSQL
 description: Access configuration details to connect Soda to a Google CloudSQL data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to Google CloudSQL
@@ -10,7 +10,7 @@ parent: Connect a data source
 
 {% include connect-to-intro.md %}
 
-## Configuration
+## Connection configuration reference
 
 Because Google CloudSQL is compatible with PostgreSQL wire protocol, Soda offers support for Google CloudSQL data sources using the `soda-postgres` package.
 
@@ -18,12 +18,11 @@ Because Google CloudSQL is compatible with PostgreSQL wire protocol, Soda offers
 ```yaml
 data_source my_datasource_name:
   type: postgres
-  connection:
-    host: db
-    port: "5432"
-    username:
-    password:
-    database: postgres
+  host: db
+  port: "5432"
+  username:
+  password:
+  database: postgres
   schema: public
 ```
 

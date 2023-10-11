@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Single sign-on with Soda Cloud
+title: Set up single sign-on with Soda Cloud
 description: Organizations that use a Security Assertion Markup Language (SAML) 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider.
-parent: Soda Cloud
+parent: Integrate Soda
 ---
 
-# Single sign-on with Soda Cloud
+# Set up single sign-on with Soda Cloud
 *Last modified on {% last_modified_at %}*
 
 Organizations that use a Security Assertion Markup Language (SAML) 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider. 

@@ -1,17 +1,18 @@
 ---
 layout: default
-title: Connect Soda to ClickHouse (Experimental)
+title: Connect Soda to ClickHouse
 description: Access configuration details to connect Soda to a ClickHouse data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
-# Connect Soda to ClickHouse (Experimental)
-*Last modified on {% last_modified_at %}*
+# Connect Soda to ClickHouse
+*Last modified on {% last_modified_at %}* <br />
+*Experimental in Soda Core OSS*
 
 {% include connect-to-intro.md %}
 
 
-## Configuration
+## Connection configuration reference
 
 Because ClickHouse is compatible with MySQL wire protocol, Soda offers indirect, experimental support for ClickHouse data sources using the `soda-mysql` package. 
 
@@ -19,12 +20,11 @@ Because ClickHouse is compatible with MySQL wire protocol, Soda offers indirect,
 ```yaml
 data_source my_datasource_name:
   type: mysql
-  connection:
-    host: 
-    port: `9004`
-    username: xxx
-    password: ...
-    database:
+  host: 
+  port: `9004`
+  username: xxx
+  password: ...
+  database:
 ```
 
 | Property | Required | Notes                                                      |

@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Soda Community Code of Conduct
+title: Soda community code of conduct
 description: Reference the Soda Community Code of Conduct for guidelines for behaviors. Be safe, be respectful, be yourself.
-parent: Reference
+parent: Learning resources
 redirect_from: /soda-core/community.html
 ---
 
-# Soda Community Code of Conduct
+# Soda community code of conduct
 *Last modified on {% last_modified_at %}*
 
 This code of conduct describes the tenets of the inclusive and harassment-free environment that is the Soda Community. We do not tolerate harassment or discrimination of any participant in any form.

@@ -2,13 +2,14 @@
 layout: default
 title: Group evolution checks
 description: Use a SodaCL group evolution data quality check to validate changes to the categorical groups you defined.
-parent: SodaCL
+parent: SodaCL reference
 ---
 
 # Group evolution checks
 *Last modified on {% last_modified_at %}*
 
-Use a group evolution check to validate the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state. <br /> *Requires Soda Library*
+Use a group evolution check to validate the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state. <br /> 
+*Not supported in Soda Core*
 
 {% include code-header.html %}
 ```yaml
@@ -95,8 +96,6 @@ checks for dim_employee:
 ### Define group changes
 
 Rather than specifying exact parameters for group changes, you can use the `when groups change` validation key to warn or fail when indistinct changes occur in a dataset.
-
-This type of validation key requires a **Soda Cloud** account. Soda Library pushes check results to your account where Soda Cloud stores all the previously-measured, historic values for your checks in the Cloud Metric Store. SodaCL can then use these stored values to establish a relative state against which to evaluate future group by evolution checks. 
 
 Soda Cloud must have at least two measurements to yield a check result for group changes. In other words, the first time you run a scan to execute a group evolution check, Soda does not evaluate the check because it has nothing against which to compare; the second scan that executes the check yields a check result.
 {% include code-header.html %}
