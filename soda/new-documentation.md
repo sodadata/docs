@@ -10,7 +10,10 @@ parent: Learning resources
 <br />
 
 #### October 11, 2023
-* Refactored the content on docs.soda.io to focus more on use cases, tasks, and reader goals. Notably, you can access a new [Get started roadmap]({% link soda/get-started-roadmap.md %}) to help you quickly become productive and confident using Soda for data quality testing.
+* Refactored the content on docs.soda.io to focus more on use cases, tasks, and reader goals. The goal of the project was to pivot from a products-based set of documentation to task-based/use case-based content. <br />You may notice a change to the navigation on docs.soda.io that is organized by actions (Install, Deploy, Run Scans, Set alerts, etc.) instead of by product (Soda Library, Soda Cloud, Soda Agent, etc.)
+  * Access a new [Get started roadmap]({% link soda/get-started-roadmap.md %}) with recommendations to help you quickly become productive and confident using Soda for data quality testing. 
+  * Get inspired by new [Use case guides]({% link soda/use-case-guides.md %}) to offer guidance in setting up Soda to meet a specific need.
+  * Get your Soda account [organized]({% link soda-cloud/collaborate.md %}) and set up to maximize your team's data quality testing efficiency.
 
 #### October 6, 2023
 * Updated `session_parameters` config to `session_params` in [Snowflake]({% link soda/connect-snowflake.md %}) connection config reference.
