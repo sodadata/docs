@@ -35,7 +35,7 @@ Use the following guides as example implementations based on how you intend to u
                 <div>
                     <img src="/assets/images/icons/icon-dev-tools@2x.png" width="50" height="40">
                     <h2>Soda + Databricks notebook</h2>
-                    <a href="/soda/quick-start-notebook.html">Invoke Soda in Databricks</a>
+                    <a href="/soda/quick-start-databricks.html">Invoke Soda in Databricks</a>
                     <p>Use this guide to invoke Soda data quality tests in a Databricks notebook.</p>
                 </div>
                 <div>
