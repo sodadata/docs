@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### October 11, 2023
+* Refactored the content on docs.soda.io to focus more on use cases, tasks, and reader goals. Notably, you can access a new [Get started roadmap]({% link soda/get-started-roadmap.md %}) to help you quickly become productive and confident using Soda for data quality testing.
+
 #### October 6, 2023
 * Updated `session_parameters` config to `session_params` in [Snowflake]({% link soda/connect-snowflake.md %}) connection config reference.
 * Added instructions for how to [reset anomaly history]({% link soda-cl/anomaly-score.md %}#reset-anomaly-history) for an anolamy score check.
