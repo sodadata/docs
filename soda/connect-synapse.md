@@ -7,14 +7,13 @@ parent: Data source reference
 
 # Connect Soda to Azure Synapse
 *Last modified on {% last_modified_at %}* <br />
-*Experimental in Soda Core OSS*
 
 {% include connect-to-intro.md %}
 
 
 ## Connection configuration reference
 
-Because Synapse is compatible with MS SQL server wire protocol, Soda offers indirect, experimental support for Synapse data sources using the `soda-sqlserver` package. 
+Because Synapse is compatible with MS SQL server wire protocol, Soda offers indirect support for Synapse data sources using the `soda-sqlserver` package. 
 
 {% include code-header.html %}
 ```yaml

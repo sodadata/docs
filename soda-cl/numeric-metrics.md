@@ -187,7 +187,7 @@ for each dataset T:
 
 ## List of numeric metrics
 
-| Metric  | Description | Supported data type | Supported data sources<sup>1</sup> |
+| Metric  | Description | Supported data type | Supported data sources |
 | ------  | ----------- | ------------------- | ---------------------- |
 | `avg`  | The average value in a numeric column. | number | all  |
 | `avg_length`  | The average length in a text column. | text | all  |
@@ -207,7 +207,6 @@ for each dataset T:
 | `var_pop`  | The calculated population variance of the values in a numeric column. | number<br /> time | Athena <br />  Big Query <br /> PostgreSQL <br /> Redshift <br /> Snowflake |
 | `var_samp`  | The calculated sample variance of the values in a numeric column.| number<br /> time | Athena <br />  Big Query <br /> PostgreSQL <br />  Redshift <br />Snowflake |
 
-<sup>1</sup> Soda has not validated metric functionality for any data source labeled as "Experimental".
 
 ## List of comparison symbols and phrases
 
