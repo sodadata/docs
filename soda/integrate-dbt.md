@@ -49,9 +49,9 @@ Every time you execute tests in dbt, dbt captures information about the test res
 
 1. If you have not already done so, install one of the supported `soda-dbt` sub-packages in the Python environment that also runs your Soda Library package.
 ```shell
-pip install -i https://pypi.cloud.soda.io soda-dbt[v15]
+pip install -i https://pypi.cloud.soda.io "soda-dbt[v15]"
 # OR
-pip install -i https://pypi.cloud.soda.io soda-dbt[v16]
+pip install -i https://pypi.cloud.soda.io "soda-dbt[v16]"
 ```
 2. Run your dbt pipeline using one of the following commands:
 * <a href="https://docs.getdbt.com/reference/commands/build" target="_blank">`dbt build`</a>  
