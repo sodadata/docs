@@ -7,7 +7,6 @@ parent: Data source reference
 
 # Connect Soda to Vertica
 *Last modified on {% last_modified_at %}* <br >
-*Experimental in Soda Core OSS*
 
 {% include connect-to-intro.md %}
 
