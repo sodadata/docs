@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Connect Soda to Denodo (Experimental)
+title: Connect Soda to Denodo
 description: Access configuration details to connect Soda to a Denodo data source.
 parent: Data source reference
 ---

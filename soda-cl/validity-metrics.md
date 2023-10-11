@@ -411,27 +411,6 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 {% include list-symbols.md %}
 
-<!--
-## Configure global valid values (experimental)
-
-Optionally, you can use a global configuration to define what qualifies as a valid value.  Global configurations apply to all checks in a dataset so that you can write checks that use validity metrics without having to declare what qualifies as a valid value in each individual check.
-
-The following example defines a global column configuration for what qualifies as a valid value for the `house_owner_flag` column. You can add the global configuration section to any part of your checks.yml file. The check that uses a `invalid_percent` references the global configuration to determine what qualifies as a valid value.
-
-```yaml
-configurations for dim_customer:
-  valid values for house_owner_flag: ['0','1']
-
-checks for dim_customer:
-  - invalid_percent(house_owner_flag) < 1%
-```
-
-* In your global column configurations, you can identify column names with or without quotes. If you use quotes with the column name, any checks you write that do *not* use the quotes, do not use the global configuration. Refer to [Use quotes in a check]({% link soda-cl/metrics-and-checks.md %}##use-quotes-in-a-check).
-* Globally defined valid values do not have an effect on aggregation checks. For example, if you globally define `0` as a valid value for a column named `value`, SodaCL still uses `0` when calculating the following aggregation check: `- avg(value) between 30 and 70`.
-* You can define both global and local column configurations in a checks YAML file. If you accidentally configure the same property both globally and locally and the values conflict, SodaCL uses the local configuration to execute the check.
-
--->
-
 ## Go further
 
 * Use validity metrics in checks with alert configurations to establish [warn and fail zones]({% link soda-cl/optional-config.md %}#define-zones-using-alert-configurations)

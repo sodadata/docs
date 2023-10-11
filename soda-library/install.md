@@ -90,13 +90,13 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 | Amazon Athena | `soda-athena` |
 | Amazon Redshift | `soda-redshift` | 
 | Apache Spark DataFrames <br /> (For use with programmatic Soda scans, only.) | `soda-spark-df` |
-| Azure Synapse (Experimental) | `soda-sqlserver` |
-| ClickHouse (Experimental) | `soda-mysql` |
-| Dask and Pandas (Experimental)  | `soda-pandas-dask` |
+| Azure Synapse  | `soda-sqlserver` |
+| ClickHouse  | `soda-mysql` |
+| Dask and Pandas   | `soda-pandas-dask` |
 | Databricks  | `soda-spark[databricks]` |
-| Denodo (Experimental) | `soda-denodo` |
+| Denodo  | `soda-denodo` |
 | Dremio | `soda-dremio` | 
-| DuckDB (Experimental)  | `soda-duckdb` |
+| DuckDB   | `soda-duckdb` |
 | GCP Big Query | `soda-bigquery` | 
 | Google CloudSQL | `soda-postgres` |
 | IBM DB2 | `soda-db2` |
@@ -107,7 +107,7 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 | PostgreSQL | `soda-postgres` |
 | Snowflake | `soda-snowflake` | 
 | Trino | `soda-trino` |
-| Vertica (Experimental) | `soda-vertica` |
+| Vertica  | `soda-vertica` |
 
 
 To deactivate the virtual environment, use the following command:
@@ -138,13 +138,13 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 | Amazon Athena | `soda-athena` |
 | Amazon Redshift | `soda-redshift` | 
 | Apache Spark DataFrame <br /> (For use with programmatic Soda scans, only.) | `soda-spark-df` |
-| Azure Synapse (Experimental) | `soda-sqlserver` |
-| ClickHouse (Experimental) | `soda-mysql` |
-| Dask and Pandas (Experimental)  | `soda-pandas-dask` |
+| Azure Synapse  | `soda-sqlserver` |
+| ClickHouse  | `soda-mysql` |
+| Dask and Pandas   | `soda-pandas-dask` |
 | Databricks  | `soda-spark[databricks]` |
-| Denodo (Experimental) | `soda-denodo` |
+| Denodo  | `soda-denodo` |
 | Dremio | `soda-dremio` | 
-| DuckDB (Experimental) | `soda-duckdb` |
+| DuckDB  | `soda-duckdb` |
 | GCP Big Query | `soda-bigquery` | 
 | Google CloudSQL | `soda-postgres` |
 | IBM DB2 | `soda-db2` |
@@ -154,7 +154,7 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 | PostgreSQL | `soda-postgres` |
 | Snowflake | `soda-snowflake` | 
 | Trino | `soda-trino` |
-| Vertica (Experimental) | `soda-vertica` |
+| Vertica  | `soda-vertica` |
 
 To deactivate the virtual environment, use the following command:
 ```shell

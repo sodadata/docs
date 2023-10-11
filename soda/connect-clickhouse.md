@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Connect Soda to ClickHouse (Experimental)
+title: Connect Soda to ClickHouse
 description: Access configuration details to connect Soda to a ClickHouse data source.
 parent: Data source reference
 ---

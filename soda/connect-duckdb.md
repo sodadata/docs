@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Connect Soda to DuckDB (Experimental)
+title: Connect Soda to DuckDB
 description: Access configuration details to connect Soda to a DuckDB data source.
 parent: Data source reference
 ---

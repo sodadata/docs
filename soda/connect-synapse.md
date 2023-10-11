@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Connect Soda to Synapse (Experimental)
+title: Connect Soda to Synapse
 description: Access configuration details to connect Soda to a Microsoft Azure Synapse data source.
 parent: Data source reference
 ---

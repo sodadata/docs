@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Connect Soda to Dask and Pandas (Experimental)
+title: Connect Soda to Dask and Pandas
 description: Access configuration details to connect Soda to Dask and Pandas.
 parent: Data source reference
 ---
