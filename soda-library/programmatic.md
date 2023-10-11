@@ -36,6 +36,7 @@ To use Soda Library, you must have installed the following on your system.
 
 * Python 3.8 or greater
 * Pip 21.0 or greater
+* A Soda Cloud account; see next section.
 
 ## Create a Soda Cloud account
 

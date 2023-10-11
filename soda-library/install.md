@@ -42,6 +42,7 @@ To use Soda Library, you must have installed the following on your system.
 * Python 3.8 or greater. To check your existing version, use the CLI command: `python --version` or `python3 --version` <br /> 
 If you have not already installed Python, consider using <a href="https://github.com/pyenv/pyenv/wiki" target="_blank">pyenv</a> to manage multiple versions of Python in your environment.
 * Pip 21.0 or greater. To check your existing version, use the CLI command: `pip --version`
+* A Soda Cloud account; see next section.
 
 ## Create a Soda Cloud account
 
