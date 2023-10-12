@@ -105,7 +105,7 @@ If you wish, you can reset an anomaly score's history, effectively recalibrating
 
 1. In Soda Cloud, navigate to the **Check History** page of the anomaly check you wish to reset.
 2. Click to select a node in the graph that represents a measurement, then click **Feedback**.
-3. In the modal that appears, you can choose to exclude the individual measurement, or all previous data up to that measurement, the latter of which "resets" the anomaly score's history. 
+3. In the modal that appears, you can choose to exclude the individual measurement, or all previous data up to that measurement, the latter of which resets the anomaly score's history. 
 
 ![reset-anomaly-score](/assets/images/reset-anomaly-score.png){:height="600px" width="600px"}
 
@@ -127,8 +127,8 @@ If you wish, you can reset an anomaly score's history, effectively recalibrating
 #### Example with quotes
 {% include code-header.html %}
 ```yaml
-checks for "dim_customer":
-  - anomaly score for row_count < default
+checks for dim_product:
+  - anomaly score for avg("order_price") < default
 ```
 
 #### Example with for each
