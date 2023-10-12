@@ -30,21 +30,21 @@ df_timeseries["email"] = "a@soda.io"
 # Create an artificial pandas dataframe
 df_employee = pd.DataFrame({"email": ["a@soda.io", "b@soda.io", "c@soda.io"]})
 
-# Either add Dask dataframe to scan and assign a dataset name to refer from checks yaml
+# Either add Dask dataframe to scan and assign a dataset name to refer from checks.yaml
 scan.add_dask_dataframe(dataset_name="timeseries", dask_df=df_timeseries, data_source_name="orders")
-# Or, add Pandas dataframe to scan and assign a dataset name to refer from checks yaml
+# OR, add Pandas dataframe to scan and assign a dataset name to refer from checks.yaml
 scan.add_pandas_dataframe(dataset_name="employee", pandas_df=df_employee, data_source_name="orders")
 
-# Optionally you can add multiple dataframes as unique data sources. Note how we're changing 
+# Optionally, add multiple dataframes as unique data sources. Note the change of 
 # the data_source_name parameter. 
 scan.add_dask_dataframe(dataset_name="inquiries", dask_df=[...], data_source_name="customers")
 
-# Set scan definition name and default data source to use
+# Set the scan definition name and default data source to use
 scan.set_scan_definition_name("test")
 scan.set_data_source_name("orders")
 
 # Define checks in yaml format
-# Alternatively, you can refer to a yaml file using scan.add_sodacl_yaml_file(<filepath>)
+# Alternatively, refer to a yaml file using scan.add_sodacl_yaml_file(<filepath>)
 checks = """
 for each dataset T:
   datasets:
