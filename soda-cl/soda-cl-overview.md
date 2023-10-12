@@ -73,14 +73,13 @@ checks for dim_department_group:
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Business Users</label>
-  <label class="tab" id="two-tab" for="two">Data Engineers</label>
+  <label class="tab" id="one-tab" for="one">Using an agreement</label>
+  <label class="tab" id="two-tab" for="two">Using a YAML file</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
-
-As a business user of Soda Cloud, you write SodaCL checks directly in the user interface within a **Soda Agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. <br />
-*Requires Soda Agent*<br />
+You can write SodaCL checks directly in the Soda Cloud user interface within an **agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source.<br />
+*Requires a Soda Agent*
 
 In an agreement, use SodaCL checks to define the state of "good quality" for data in this data source, then identify and get approval from stakeholders in your organization. Define whom Soda Cloud will notify when a check in the agreement fails, then set a schedule to regularly execute the Soda Checks to uphold the tenets of the agreement.
 
