@@ -11,4 +11,4 @@ As of this release, agreements do not run scans without stakeholder approval. Wh
 
 Previously, Soda did not require stakeholder approval before running scans scheduled in an agreement. 
 
-See: [Set a scan schedule]({% link soda-cloud/agreements.md %}#set-a-scan-schedule)
+See: [Schedule a scan]({% link soda-library/run-a-scan.md %}scan-for-data-quality)

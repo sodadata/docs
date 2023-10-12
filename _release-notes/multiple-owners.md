@@ -5,4 +5,4 @@ products:
   - soda-cloud
 ---
 
-For all our Soda Cloud Agreements users, we’ve made it possible to assign [multiple owners to agreements]({% link soda-cloud/agreements.md %}#3-identify-stakeholders).
+For all our Soda Cloud Agreements users, we’ve made it possible to assign multiple owners to agreements.

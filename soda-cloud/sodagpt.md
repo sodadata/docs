@@ -2,12 +2,12 @@
 layout: default
 title: Write checks with SodaGPT
 description: Use SodaGPT to turn natural language into production-ready data quality checks in SodaCL.
-parent: Soda Cloud
+parent: Write SodaCL checks
 ---
 
 # Write checks with SodaGPT <br/>
+*Last modified on {% last_modified_at %}* <br />
 ![preview](/assets/images/preview.png){:height="85px" width="85px"}<br/>
-*Last modified on {% last_modified_at %}*
 
 **SodaGPT** is a generative AI assistant for data quality testing.
 

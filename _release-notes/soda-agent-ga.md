@@ -6,4 +6,4 @@ products:
 ---
 
 This release marks the general availbility of the Soda Agent. <br />
-Access [Soda Agent documentation]({% link soda-agent/overview.md %}) for details.
+Access [Soda Agent documentation]({% link soda-agent/deploy.md %}) for details.

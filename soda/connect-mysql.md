@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to MySQL
 description: Access configuration details to connect Soda to a MySQL data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to MySQL
@@ -10,7 +10,7 @@ parent: Connect a data source
 
 {% include connect-to-intro.md %}
 
-## Configuration
+## Connection configuration reference
 
 Install package: `soda-mysql`
 

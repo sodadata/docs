@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to Snowflake
 description: Access configuration details to connect Soda to a Snowflake data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to Snowflake
@@ -18,7 +18,7 @@ parent: Connect a data source
 [Troubleshoot](#troubleshoot)<br />
 <br />
 
-## Configuration
+## Connection configuration reference
 
 Install package: `soda-snowflake`
 
@@ -26,19 +26,18 @@ Install package: `soda-snowflake`
 ```yaml
 data_source my_datasource_name:
   type: snowflake
-  connection:
-    username: 
-    password: 
-    account: 
-    database: 
-    warehouse:
-    connection_timeout: 
-    role: PUBLIC
-    client_session_keep_alive: true
-    authenticator: externalbrowser
-    session_parameters:
-      QUERY_TAG: soda-queries
-      QUOTED_IDENTIFIERS_IGNORE_CASE: false
+  username: 
+  password: 
+  account: 
+  database: 
+  warehouse:
+  connection_timeout: 
+  role: PUBLIC
+  client_session_keep_alive: true
+  authenticator: externalbrowser
+  session_params:
+    QUERY_TAG: soda-queries
+    QUOTED_IDENTIFIERS_IGNORE_CASE: false
   schema: public
 ```
 
@@ -69,16 +68,15 @@ You can use the `private_key` and `private_key_passphrase` parameters to specify
 ```yaml
 data_source snowflake:
   type: snowflake
-  connection:
-    username: xxxyyyzzz
-    ...
-    client_session_keep_alive: true
-    Authenticator: SNOWFLAKE_JWT
-    schema: TPCH_SF1
-    private_key_passphrase: "123xxx"
-    private_key: |
-      -----BEGIN ENCRYPTED PRIVATE KEY-----
-      -----END ENCRYPTED PRIVATE KEY-----
+  username: xxxyyyzzz
+  ...
+  client_session_keep_alive: true
+  Authenticator: SNOWFLAKE_JWT
+  schema: TPCH_SF1
+  private_key_passphrase: "123xxx"
+  private_key: |
+    -----BEGIN ENCRYPTED PRIVATE KEY-----
+    -----END ENCRYPTED PRIVATE KEY-----
 ```
 
 ###  Use a values file to store private key authentication values
@@ -110,7 +108,6 @@ kubectl create secret generic -n <soda-agent-namespace> snowflake-private-key --
     ```yaml
     data_source ltsnowflakecustomer:
       type: snowflake
-      connection:
       username: ${SNOWFLAKE_USER}
       password: password
       account: ${SNOWFLAKE_ACCOUNT}

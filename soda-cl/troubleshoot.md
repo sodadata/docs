@@ -2,7 +2,7 @@
 layout: default
 title: Troubleshoot SodaCL
 description: Access guidance for resolving issues with Soda Checks Language checks and metrics.
-parent: SodaCL
+parent: SodaCL reference
 ---
 
 # Troubleshoot SodaCL
@@ -17,7 +17,7 @@ parent: SodaCL
 [Checks not evaluated](#checks-not-evaluated)<br />
 [Filter not passed with reference check](#filter-not-passed-with-reference-check)<br />
 [Failed row check with CTE error](#failed-row-check-with-cte-error)<br />
-[Errors with column names contain periods or colons](#errors-when-column-names-contain-periods-or-colons)<br />
+[Errors with column names containing periods or colons](#errors-when-column-names-containing-periods-or-colons)<br />
 <br />
 
 ## Errors with valid format
@@ -46,7 +46,7 @@ See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.m
 
 **Problem:** You execute a programmatic scan using Soda Library, but Soda does not seem to recognize the variables you included in the programmatic scan. 
 
-**Solution:** Be sure to include any variables in your programmatic scan *before* the check YAML file identification. Refer to [Basic programmatic scan]({% link soda-library/programmatic.md %}#basic-programmatic-scan) for an example.
+**Solution:** Be sure to include any variables in your programmatic scan *before* the check YAML file identification. Refer to a [basic programmatic scan]({% link soda-library/programmatic.md %}#set-up-basic-programmatic-invocation-in-python) for an example.
 
 <br />
 
@@ -80,7 +80,6 @@ soda scan -d adventureworks -c configuration.yml checks_test.yml checks_test2.ym
 
 * [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) parameter to the check so that Soda Cloud can accurately correlate new measurements from scan results to the same check, thus maintaining the history of check results.
 
-See also: [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}#configure-the-same-scan-to-run-in-multiple-environments).
 
 
 ## Metrics were not computed for check
@@ -91,7 +90,7 @@ See also: [Configure a single scan to run in multiple environments]({% link soda
 
 **Solution:** In your checks YAML file, you cannot use a dataset identifier that includes a schema, such as `soda.test_table`. You can only use a dataset name as an identifier, such as `test_table`. 
 
-However, if you were including the schema in the dataset identifier in an attempt to run the same set of checks against multiple environments, you can do so using the instructions to [Configure a single scan to run in multiple environments]({% link soda-library/configure.md %}##configure-the-same-scan-to-run-in-multiple-environments).
+However, if you were including the schema in the dataset identifier in an attempt to run the same set of checks against multiple environments, you can do so using the instructions to [Configure a single scan to run in multiple environments]({% link soda-library/run-a-scan.md %}) in the Run a scan tab.
 
 See also: [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity)
 
@@ -143,7 +142,7 @@ INFO:soda.scan:[13:50:53] 1 checks not evaluated.
 **Solution:** The cause of the issue may be one of the following:
 * Where a check returns `None`, it means there are no results or the values is `0`, which Soda cannot evaluate. In the example above, the check involved calculating a sum which resulted in a value of `0` which, consequently, translates as `[NOT EVALUATED]` by Soda.
 * For a [change-over-time check]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds), if the previous measurement value is `0` and the new value is `0`, Soda calculates the relative change as `0%`. However, if the previous measurement value is `0` and the new value is not `0`, then Soda indicates the check as `[NOT EVALUATED]` because the calculation is a division by zero. 
-* If your check involves a threshold that compares relative values, such as [chage-over-time checks]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds), [anomaly score checks]({% link soda-cl/anomaly-score.md %}#anomaly-score-check-results), or [schema checks]({% link soda-cl/schema.md %}), Soda needs a value for a previous measurement before it can make a comparison. In other words, if you are executing these checks for the first time, there is no previous measurement value against which Soda can compare, so it returns a check result of `[NOT EVALUATED]`. <br />
+* If your check involves a threshold that compares relative values, such as [chage-over-time checks]({% link soda-cl/numeric-metrics.md %}#change-over-time-thresholds), [anomaly score checks]({% link soda-cl/anomaly-score.md %}), or [schema checks]({% link soda-cl/schema.md %}), Soda needs a value for a previous measurement before it can make a comparison. In other words, if you are executing these checks for the first time, there is no previous measurement value against which Soda can compare, so it returns a check result of `[NOT EVALUATED]`. <br />
 Soda begins evaluating shema check results after the first scan; anomaly score after four scan of regular frequency.
 
 ## Filter not passed with reference check
@@ -195,7 +194,7 @@ checks for corp_value:
       fail condition: true and "column.name.PX" IS NOT null
 ```
 
-## Errors when column names contain periods or colons
+## Errors when column names containing periods or colons
 
 **Problem**: A check you've written executes against a column with a name that includes a period or colon, and scans produce an error.
 

@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to Apache Spark
 description: Access configuration details to connect Soda to a Spark data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to Apache Spark
@@ -30,7 +30,6 @@ There are several Soda Library install packages for Spark.
 | [`soda-spark[hive]`](#connect-to-spark-for-hive) | A package you add to `soda-spark-df` if you are using Apache Hive. |
 | [`soda-spark[odbc]`](#connect-to-spark-for-odbc) | A package you add to `soda-spark-df` if you are using ODBC. |
 | [`soda-spark[databricks]`](#connect-to-spark-for-databricks-sql) | A package you use to install Soda Library for Databricks SQL on the Databricks Lakehouse Platform. |
-| `soda-spark` | A work-in-progress, this package will connect to Soda Library much the same as other data sources, via connection details in a configuration YAML. |
 
 
 ## Connect to Spark DataFrames
@@ -239,7 +238,7 @@ data_source my_datasource_name:
 
 ## Connect to Spark for Databricks SQL
 
-1. Install `soda-spark[databricks]` to connect to Databricks SQL. Refer to [Install Soda Library]({% link soda-library/install.md %}) for details.
+1. Install `soda-spark-df` (see [above](#connect-to-spark-dataframes)) and `soda-spark[databricks]` to connect to Databricks SQL. Refer to [Install Soda Library]({% link soda-library/install.md %}) for details.
 ```shell
 pip install -i https://pypi.cloud.soda.io soda-spark[databricks]
 ```

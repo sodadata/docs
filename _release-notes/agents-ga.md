@@ -6,5 +6,5 @@ products:
 ---
 
 Soda Agent deployment instructions have been made generally available, no longer in Preview state. See:
-* [Deploy a Soda Agent in Azure AKS]({% link soda-agent/deploy-azure.md %})
-* [Deploy a Soda Agent in Google GKE]({% link soda-agent/deploy-google.md %})
+* [Deploy a Soda Agent in Azure AKA]({% link soda-agent/deploy.md %})
+* [Deploy a Soda Agent in Google GKE]({% link soda-agent/deploy.md %})

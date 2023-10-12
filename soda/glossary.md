@@ -2,7 +2,7 @@
 layout: default
 title: Glossary
 description: Access a glossary of Soda terminology. 
-parent: Reference
+parent: Learning resources
 redirect_from: 
 - /soda-sql/documentation/glossary.html
 - /soda/common-terms.html
@@ -26,10 +26,10 @@ A configuration in a SodaCL check that you use to explicitly specify the conditi
 An out-of-the-box metric that you can configure in a checks YAML file. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
 
 ### check 
-A test for data quality that you write using the Soda Checks Language (SodaCL). See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
+A test for data quality that you write using the Soda Checks Language (SodaCL). Technically, it is a Python expression that checks metrics to see if they match the parameters you defined for a measurement. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
 
 ### checks YAML 
-The file in which you define SodaCL checks. Soda Library uses the input from this file to prepare, then run SQL queries against your data. See [How Soda Library works]({% link soda-library/how-library-works.md %}).
+The file in which you define SodaCL checks. Soda Library uses the input from this file to prepare, then run SQL queries against your data. See [How Soda works]({% link soda-library/how-library-works.md %}).
 
 ### cloud metric store
 The place in Soda Cloud that stores the values of measurements collected over time as Soda Library executes checks.  
@@ -44,7 +44,7 @@ A column in a dataset in your data source.
 The key in the key-value pair that you use to define what qualifies as a missing or valid value in a column. A Soda scan uses the value of a column configuration key to determine if a check should pass, warn, or fail. For example, in `valid format: UUID` , `valid format` is a column configuration key and `UUID` is the only format of the data in the column that Soda considers valid. See [Missing metrics]({% link soda-cl/missing-metrics.md %}) and [Validity metrics]({% link soda-cl/validity-metrics.md %}).
 
 ### configuration YAML 
-The file in which you configure data source connection details and Soda Cloud connection details. See [How Soda Library works]({% link soda-library/how-library-works.md %}).
+The file in which you configure data source connection details and Soda Cloud connection details. 
 
 ### data source
 A storage location that contains a collection of datasets, such as Snowflake, Amazon Athena, or GCP BigQuery.
@@ -74,7 +74,7 @@ A setting you configure in a Soda Cloud agreement that defines whom to notify wi
 The file in which you define SodaCL reconciliation checks. See [Reconciliation checks]({% link soda-cl/recon.md %}).
 
 ### scan
-A command that executes checks to extract information about data in a data source. See [Run a Soda Library scan]({% link soda-library/run-a-scan.md %}).
+A command that executes checks to extract information about data in a data source. See [Run a scan and view results]({% link soda-library/run-a-scan.md %}).
 
 ### scan definition
 A collection of checks YAML files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source. Effectively, a scan definition provides the what, when, and where to run a scan. 
@@ -86,13 +86,13 @@ A unique identifier that you add to a programmatic scan or to the `soda scan` co
 The Helm chart you deploy in your Kubernetes cluster to faciliate a secure connection between your Soda Cloud account and your data sources. See [Soda Agent basic concepts]({% link soda-agent/basics.md %}).
 
 ### SodaCL 
-The domain-specific language to define Soda Checks in a checks YAML file. A Soda Check is a test that Soda Library executes when it scans a dataset in your data source. See [SodaCL documentation]({% link soda-cl/soda-cl-overview.md %}).
+The domain-specific language to define Soda Checks in a checks YAML file. A Soda Check is a test that Soda Library executes when it scans a dataset in your data source. 
 
 ### Soda Cloud
 A web application that enables you to examine scan results and create agreements. Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup). 
 
 ### Soda Core 
-A free, open-source, Python library and command-line tool that enables you to use the Soda Checks Language to turn user-defined input into aggregated SQL queries that test for data quality. See the Soda Core<a href="https://github.com/sodadata/soda-core" target="_blank">GitHub</a>.
+A free, open-source, Python library and command-line tool that enables you to use the Soda Checks Language to turn user-defined input into aggregated SQL queries that test for data quality. See  Soda Core in<a href="https://github.com/sodadata/soda-core" target="_blank"> GitHub</a>.
 
 ### Soda Library 
 A Python library and CLI tool that is a commercial extension of Soda Core. Connect Soda Library with over a dozen data sources and Soda Cloud, and use the Soda Checks Language to turn user-defined input into aggregated SQL queries that test for data quality.

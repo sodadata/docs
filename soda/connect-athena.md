@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to Amazon Athena
 description: Access configuration details to connect Soda to an Athena data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to Amazon Athena
@@ -11,19 +11,18 @@ parent: Connect a data source
 
 {% include connect-to-intro.md %}
 
-## Configuration
+## Connection configuration reference
 Install package: `soda-athena`
 
 {% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
   type: athena
-  connection:
-    access_key_id: 
-    secret_access_key: 
-    region_name: eu-west-1
-    staging_dir: 
-    schema: 
+  access_key_id: 
+  secret_access_key: 
+  region_name: eu-west-1
+  staging_dir: 
+  schema: 
 ```
 
 | Property          | Required | Notes                                                      |

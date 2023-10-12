@@ -2,7 +2,7 @@
 layout: default
 title: Connect Soda to Databricks
 description: Access configuration details to connect Soda to Databricks using a Spark data source.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to Databricks

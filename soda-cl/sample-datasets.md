@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Display sample data in Soda Cloud
-description: Use SodaCL to send sample data to Soda Cloud to quickly review the contents of your dataset.
-parent: SodaCL
+title: Sample data with Soda
+description: Configure Soda Cloud to retrieve sample data from your datasets so you can leverage the information to write SodaCL checks for data quality.
+parent: Write SodaCL checks
 ---
 
-# Display sample data in Soda Cloud 
+# Sample data with Soda 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.
+When you add or edit a data source in Soda Cloud, use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.
 
 {% include code-header.html %}
 ```yaml
@@ -20,53 +20,19 @@ sample datasets:
     - exclude test%
 ```
 
-[Prerequisites](#prerequisites)<br />
-[Define sample datasets](#define-sample-datasets)<br />
-[Optional check configurations](#optional-check-configurations) <br />
+[Sample datasets](#sample-datasets)<br />
 [Inclusion and exclusion rules](#inclusion-and-exclusion-rules)<br />
 [Disable samples in Soda Cloud](#disable-samples-in-soda-cloud)<br />
 [Go further](#go-further) <br />
 <br />
 
 
-## Prerequisites
+## Sample datasets
 
-<div class="warpper">
-  <input class="radio" id="one" name="group" type="radio" checked>
-  <input class="radio" id="two" name="group" type="radio">
-  <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Configure in Soda Cloud</label>
-  <label class="tab" id="two-tab" for="two">Configure using Soda Library </label>
-    </div>
-  <div class="panels">
-  <div class="panel" id="one-panel" markdown="1">
-
-* You have <a href="https://cloud.soda.io/signup?utm_source=docs" target="_blank">signed up for a Soda Cloud account</a>.
-* You have [Administrator rights]({% link soda-cloud/roles-and-rights.md %}) within your organization's Soda Cloud account.
-* You, or an Administrator in your organization's Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) which enables you to connect to a data source in Soda Cloud.
-
-To define samples for datasets, follow the guided steps to create a new data source and add the sample configuration in step 4 [Profile datasets]({% link soda-cloud/add-datasource.md %}#4-profile-datasets). Reference the [section below](#define-an-automated-monitoring-check) for how to configure profiling using SodaCL. 
-
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
-
-* You have installed a [Soda Library package]({% link soda-library/install.md %}) in your environment.
-* You have [configured Soda Library]({% link soda-library/configure.md %}) to connect to a data source using a `configuration.yml` file. 
-* You have created and [connected a Soda Cloud account]({% link soda-library/configure.md %}) to Soda Library. <br />
-
-Reference the [section below](#define-an-automated-monitoring-check) for how to configure profiling in a checks YAML file using SodaCL. 
-
-  </div>
-  </div>
-</div>
-
-
-## Define sample datasets
-
-This configuration is limited in its syntax variation, with only a couple of mutable parts to specify the datasets from which to gather and send sample rows to Soda Cloud. You can add this configuration to one of two places:
-* to your `checks.yml` file <br />
+Sample datasets captures sample rows from datasets you identify. You add sample datasets configurations as part of the guided workflow to create a new data source or edit an existing one. Navigate to **your avatar** > **Scans & Data** > **New Data Source**, or select an existing data source, to begin. You can add this configuration to one of two places:
+* to either step [3. Discover Datasets]({% link soda-agent/deploy.md %}#3-discover-datasets) <br />
 OR<br />
-*  to either step [3. Discover Datasets]({% link soda-cloud/add-datasource.md %}#3-discover-datasets) or step [4. Profile Datasets]({% link soda-cloud/add-datasource.md %}#4-profile-datasets) when you add a data source directly in Soda Cloud. 
+*   or step [4. Profile Datasets]({% link soda-agent/deploy.md %}#4-profile-datasets) 
 
 The example configuration below uses a wildcard character (`%`) to specify that Soda Library sends sample rows to Soda Cloud for all datasets with names that begin with `customer`, and *not* to send samples for any dataset with a name that begins with `test`.
 {% include code-header.html %}
@@ -91,33 +57,12 @@ sample datasets:
 
 ### Scan results in Soda Cloud
 
-1. To review the sample rows in Soda Cloud, first [run a scan]({% link soda-library/run-a-scan.md %}) of your data source so that Soda Library can gather and send samples to Soda Cloud.
+1. To review the sample rows in Soda Cloud, first [run a scan]({% link soda-library/run-a-scan.md %}) of your data source so that Soda can gather and send samples to Soda Cloud.
 2. In Soda Cloud, navigate to the **Datasets** dashboard, then click a dataset name to open the dataset's info page. 
 3. Access the **Sample Data** tab to review the sample rows.
 
 ![Example sample datasets screenshot](../assets/images/soda-sample-datasets.png)
 
-## Optional check configurations
-
-| Supported | Configuration | Documentation |
-| :-: | ------------|---------------|
-|   | Define a name for sample data configuration. |  - |
-|   | Add an identity to a check. |  -  |
-|   | Define alert configurations to specify warn and fail thresholds. | - |
-|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-|   | Use quotes when identifying dataset names. | - |
-| ✓ | Use wildcard characters ({% raw %} % {% endraw %} with dataset names in the check; see [example](#example-with-wildcards). | - |
-|   | Use for each to apply anomaly score checks to multiple datasets in one scan. | - |
-|   | Apply a dataset filter to partition data during a scan. |  -  |
-
-#### Example with wildcards 
-{% include code-header.html %}
-```yaml
-sample datasets:
-  datasets:
-    - include prod%
-    - exclude test%
-```
 
 ## Inclusion and exclusion rules
 

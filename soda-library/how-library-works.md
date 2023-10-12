@@ -1,20 +1,19 @@
 ---
 layout: default
-title: How Soda Library works
-description: Learn Soda Library Basics, Soda Library Operation, Soda Library Automation and Integration with orchestration tools and Soda Cloud.
-parent: Soda Library
+title: How Soda works
+description: Learn Soda Library Basics, Soda Library Operation, Soda Library Automation and Soda Cloud.
+parent: Learning resources
 redirect_from: /soda-core/how-core-works.html
 ---
 
-# How Soda Library works 
+# How Soda works 
 *Last modified on {% last_modified_at %}*
-{% include banner-core.md %}
 
-**Soda Library** is Python library and CLI tool that enables Data Engineers to test data for quality where and when they need to. 
+**Soda Library** is Python library and CLI tool that enables Data Engineers to test data for quality where and when they need to. The **Soda Agent** is a containerized Soda Library that you deploy in a Kubernetes cluster, so the behavior described below for Soda Library is more or less the same for Soda Agent.
 
 Soda Library utilizes user-defined input to prepare SQL queries that run checks on datasets in a data source to find invalid, missing, or unexpected data. When checks fail, they surface the data that you defined as "bad" in the check. Armed with this information, you and your data engineering team can diagnose where the "bad" data entered your data pipeline and take steps to prioritize and resolve issues.
 
-Use Soda Library to manually or programmatically scan the data that your organization uses to make decisions. Optionally, you can integrate Soda Library with your data orchestration tool to schedule scans and automate actions based on scan results. Connect Soda Library to a Soda Cloud account where you and your team can use the web application to monitor check results and collaborate to keep your data issue-free.
+Use Soda Library to manually or programmatically scan the data that your organization uses to make decisions. Optionally, you can integrate Soda Library with your data orchestration tool, such as Airflow, to schedule scans and automate actions based on scan results. Connect Soda Library to a Soda Cloud account where you and your team can use the web application to monitor check results and collaborate to keep your data issue-free.
 
 [Soda Library basics](#soda-Library-basics)<br />
 [Soda Library operation](#soda-library-operation)<br />
@@ -28,22 +27,21 @@ This tool checks the quality of data inside [data sources]({% link soda/glossary
 
 - connect to your data source
 - connect to a Soda Cloud account
-- define checks to surface "bad" data
+- define checks to surface bad-quality data
 - run a scan for data quality against your data
 
 
-To connect to a data source such as Snowflake, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source and connection details for your Soda Cloud account. (Except for connections to Spark DataFrames which do not use a configuration YAML file.) Refer to [Configure Soda Library]({% link soda-library/configure.md %}) for details and links to data source-specific connection configurations.
+To connect to a data source such as Snowflake, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source and connection details for your Soda Cloud account. (Except for connections to Spark DataFrames which do not use a configuration YAML file.) Refer to [Configure Soda]({% link soda-library/install.md %}#configure-soda) for details and links to data source-specific connection configurations.
 
 #### Configuration YAML example
 {% include code-header.html %}
 ```yaml
 data_source adventureworks:
   type: postgres
-  connection:
-    host: localhost
-    port: '5432'
-    username: postgres
-    password: secret
+  host: localhost
+  port: '5432'
+  username: postgres
+  password: secret
   database: postgres
   schema: public
 
@@ -78,11 +76,11 @@ checks for dataset_name:
 
 In your own local environment, you create and store your checks YAML file anywhere you wish, then identify its name and filepath in the scan command. In fact, you can name the file whatever you like, as long as it is a `.yml` file and it contains checks using the SodaCL syntax.
 
-You write Soda Checks using SodaCL’s built-in metrics, though you can go beyond the built-in metrics and write your own SQL queries, if you wish. The example above illustrates two simple checks on two datasets, but SodaCL offers a wealth of [built-in metrics]({% link soda-cl/metrics-and-checks.md %}) that enable you to define checks for more complex situations.
+You write Soda Checks using SodaCL’s built-in metrics, though you can go beyond the built-in metrics and write your own SQL queries, if you wish. The example above illustrates two simple checks on two datasets, but SodaCL offers a wealth of [built-in metrics]({% link soda-cl/metrics-and-checks.md %}#list-of-sodacl-metrics-and-checks) that enable you to define checks for more complex situations.
 
 <br />
 
-To scan your data, you use the `soda scan` CLI command. Soda Library uses the input in the checks YAML file to prepare SQL queries that it runs against the data in one or more datasets in a data source. It returns the output of the scan with each check's results in the CLI. See [Anatomy of a scan command]({% link soda-library/run-a-scan.md %}#anatomy-of-a-scan-command) for more details.
+To scan your data, you use the `soda scan` CLI command. Soda Library uses the input in the checks YAML file to prepare SQL queries that it runs against the data in one or more datasets in a data source. It returns the output of the scan with each check's results in the CLI.
 {% include code-header.html %}
 ```shell
 soda scan -d adventureworks -c configuration.yml checks.yml
@@ -110,7 +108,7 @@ The following image illustrates what Soda Library does when you initiate a scan.
 
 The **Soda Cloud** web application integrates with your Soda Library implementation giving your team broader visibility into your organization's data quality. Soda Library pushes scan results to your Soda Cloud account where you can examine the results. 
 
-Except when you explicitly demand that it do so, Soda Library only ever pushes *metadata* to the cloud; all your data stays inside your private network. (An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid with issue investigation, a feature you can [disable]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).)
+Soda Library does not send data to Soda Cloud; it only ever pushes *metadata* to the cloud. All your data stays inside your private network. (An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid with issue investigation, a feature you can [disable]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).)
 
 The web app serves to complement Soda Library. Use Soda Cloud to:
 
@@ -123,7 +121,7 @@ The web app serves to complement Soda Library. Use Soda Cloud to:
 * collaborate with team members to review details of scan results that can help you to diagnose data issues
 
 
-## Soda Library automation and integrations
+## Soda Library automation
 
 To automate scans on your data, you can use **Soda Library** to programmatically execute scans. Based on a set of conditions or a specific schedule of events, you can instruct Soda Library to, for example, automatically run scans in your development workflow in GitHub.  Refer to the [Test data during development]({% link soda/quick-start-dev.md %}) for details.
 
@@ -134,6 +132,9 @@ Alternatively, you can integrate Soda Library with a **data orchestration tool**
 
 * Learn more about the [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) you can use to check for data quality.
 * Learn how to prepare [programmatic scans]({% link soda-library/programmatic.md %}) of your data.
+* Learn more about the ways you can use Soda in [Use case guides]({% link soda/use-case-guides.md %}).
+* Use [failed row samples]({% link soda-cloud/failed-rows.md %}) to investigate data quality issues.
+* Write [custom SQL checks]({% link soda-cl/user-defined.md %}) for your own use cases.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

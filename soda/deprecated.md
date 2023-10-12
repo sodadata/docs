@@ -2,7 +2,7 @@
 layout: default
 title: Soda SQL and Soda Spark are now Soda Core
 description: Soda SQL and Soda Spark have been deprecated and replaced by Soda Core.
-parent: Reference
+parent: Learning resources
 redirect_from: 
 - /soda-sql/
 - /soda-sql/documentation/index

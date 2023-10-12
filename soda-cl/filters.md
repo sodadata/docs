@@ -2,7 +2,7 @@
 layout: default
 title: Filters and variables
 description: Instead of checking whole sets of data, use filters to specify a portion of data against which to execute a check. Use variables to specify values at scan time.
-parent: SodaCL
+parent: SodaCL reference
 redirect_from:
 - soda-cl/table-filters.html
 - soda-cl/dataset-filters.html
@@ -12,7 +12,7 @@ redirect_from:
 # Filters and variables
 *Last modified on {% last_modified_at %}*
 
-Use filters or variables to specify portions of data in your dataset against which Soda Library executes checks during a scan.
+Use filters or variables to specify portions of data in your dataset against which Soda executes checks during a scan.
 {% include code-header.html %}
 ```yaml
 # In-check filter
@@ -57,7 +57,8 @@ Use **dataset filters** to create one or more partitions of data, commonly time 
 
 Instead of executing a great many checks on *all* the data in a dataset, you can specify a smaller portion of data against which to execute all the checks. Doing so helps avoid having to repeatedly apply the same filter to many checks, and it produces a `WHERE` clause in the SQL query that Soda prepares and executes against your data. 
 
-*Known issue:* Dataset filters are not compatible with [failed rows checks which use a SQL query]({% link soda-cl/failed-rows-checks.md %}#define-failed-rows-checks). With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260-->
+* Except with a `NOW` variable, you cannot use variables in checks you write in an agreement in Soda Cloud as it is impossible to provide the variable values at scan time.
+* *Known issue:* Dataset filters are not compatible with [failed rows checks which use a SQL query]({% link soda-cl/failed-rows-checks.md %}#define-failed-rows-checks). With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260-->
 
 Use **in-check filters** to exclude rows from an individual check evaluation. 
 
@@ -66,11 +67,11 @@ In-check filters provide the ability to create conditions, or business rules, th
 When you find yourself adding the same in-check filters to multiple checks, you may wish to promote an in-check filter to a dataset filter. 
 
 <details>
-  <summary style="color:#00BC7E">How Soda Library applies filters</summary>
+  <summary style="color:#00BC7E">How Soda applies filters</summary>
 <br />
-Soda Library uses the checks you define to prepare SQL queries that it executes against the datasets in your data source. It puts as many checks under the same <code>checks for</code> header into a single query as it can. An in-check filter translates to a <a href="https://www.w3schools.com/sql/sql_case.asp" target="_blank">CASE syntax</a> which Soda puts into that same query with other unfiltered checks.
+Soda uses the checks you define to prepare SQL queries that it executes against the datasets in your data source. It puts as many checks under the same <code>checks for</code> header into a single query as it can. An in-check filter translates to a <a href="https://www.w3schools.com/sql/sql_case.asp" target="_blank">CASE syntax</a> which Soda puts into that same query with other unfiltered checks.
 <br /><br />
-For a dataset filter, Soda Library generates a separate query and, again, attempts to put all checks under a <code>checks for</code> header into one query including any checks that also have a in-check filter. If your checks YAML has defined some unfiltered checks for a dataset, and applied a dataset filter to other checks on a particular partition of that data, Soda Library prepares two queries, each of which has several calculated metrics in the <code>SELECT</code> statement and which then flow back to their respective checks to evaluate whether they pass, warn, or fail.
+For a dataset filter, Soda generates a separate query and, again, attempts to put all checks under a <code>checks for</code> header into one query including any checks that also have a in-check filter. If your checks YAML has defined some unfiltered checks for a dataset, and applied a dataset filter to other checks on a particular partition of that data, Soda prepares two queries, each of which has several calculated metrics in the <code>SELECT</code> statement and which then flow back to their respective checks to evaluate whether they pass, warn, or fail.
 </details>
 
 ## Configure in-check filters
@@ -89,7 +90,7 @@ For a dataset filter, Soda Library generates a separate query and, again, attemp
 
 ## Configure a time partition using the NOW variable
 
-If your data source is partitioned, or if you wish to apply checks in your [agreement]({% link soda-cloud/agreements.md %}) to a specific interval of time, you can do so using a dataset filter. 
+If your data source is partitioned, or if you wish to apply checks in your agreement to a specific interval of time, you can do so using a dataset filter. 
 
 Use the built-in `NOW` variable to specify a relative time partition. Reference the following example to add a dataset filter to either your checks YAML file, or to the **Write Checks** step in the agreement workflow in Soda Cloud. The `where` clause in the example defines the time partition to mean "now, less one day". 
 {% include code-header.html %}
@@ -108,6 +109,8 @@ You can use variables in SodaCL to:
 * customize dynamic [check names](#example-customize-a-check-name)
 * define dynamic in-check values; see examples below
 * define dynamic in-check filters; see [example below](#example-use-a-variable-in-an-in-check-filter)
+
+Except with a `NOW` variable, you cannot use variables in checks you write in an agreement in Soda Cloud as it is impossible to provide the variable values at scan time.
 
 To provide a variable at scan time, as with dynamic dataset filters or with in-check values, add a `-v` option to the scan command and specify the key:value pair for the variable, as in the following example.
 ```shell
@@ -206,10 +209,10 @@ checks for dim_product:
 ### Configure variables for connection configuration
 
 You can use variables to:
-* resolve credentials in configuration files using system variables; see [Configure Soda Library]({% link soda-library/configure.md %}#provide-credentials-as-system-variables)
+* resolve credentials in configuration files using system variables; see [Configure Soda]({% link soda-library/install.md %}#provide-credentials-as-system-variables)
 * pass variables for values in configuration files; see instructions below
 
-If you use Soda Library to execute Soda scans for data quality, you can pass variables at scan time to provide values for data source connection configuration keys in your configuration YAML file. For example, you may wish to pass a variable for the value of `password` in your configuration YAML.
+If you use Soda Library to execute Soda scans for data quality, you can pass variables at scan time to provide values for data source connection configuration keys in your configuration YAML file. For example, you may wish to pass a variable for the value of `password` in your configuration YAML. Except with a `NOW` variable, you cannot use variables in checks you write in an agreement in Soda Cloud as it is impossible to provide the variable values at scan time.
 
 1. Adjust the data source connection configuration in your configuration YAML to include a variable.
 ```shell
@@ -241,8 +244,9 @@ soda scan -d adventureworks -c configuration.yml -v USERNAME=sodacore -v PASSWOR
 * If you do not explicitly specify a variable value at scan time to resolve credentials for a connection configuration, Soda uses environment variables.
 * You cannot use a variable to provide a scan-time value for a [configuration key]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) value, such as the value for `valid length` for an `invalid_count` check.
 * You may need to wrap date values for variables in single quotes for a check to execute properly. The use of single quotes is bound to the data source, so if your data source demands single quotes around date values for SQL queries, you must also include them when providing date values in SodaCL. Refer to the [# Dataset filter with variables](#filters-and-variables) example at the top of this page.  
-* Except for using the `${NOW}` variable in a dataset filter to [configure a time partition](#configure-a-time-partition-using-the-now-variable) for checks, you cannot use variables when defining checks in an [agreement]({% link soda-cloud/agreements.md %}) in Soda Cloud. When using variables, you normally pass the values for those variables at scan time, adding them to the `soda scan` command with a `-v` option. However, because scans that execute checks defined in an agreement run on a schedule according to a [scan definition]({% link soda/glossary.md %}#scan-definition), there is no opportunity to add dynamic values for variables at scan time.
+* Except for using the `${NOW}` variable in a dataset filter to [configure a time partition](#configure-a-time-partition-using-the-now-variable) for checks, you cannot use variables when defining checks in an agreement in Soda Cloud. When using variables, you normally pass the values for those variables at scan time, adding them to the `soda scan` command with a `-v` option. However, because scans that execute checks defined in an agreement run on a schedule according to a scan definition, there is no opportunity to add dynamic values for variables at scan time.
 * *Known issue:* SodaCL does not support using variables in [profiling configurations]({% link soda-cl/profile.md %}). <!--SAS-1642-->
+* Except with a `NOW` variable, you cannot use variables in checks you write in an agreement in Soda Cloud as it is impossible to provide the variable values at scan time.
 
 
 ## Go further

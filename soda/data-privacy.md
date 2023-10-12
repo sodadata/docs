@@ -2,7 +2,7 @@
 layout: default
 title: Data privacy
 description: Soda works in several ways to ensure your data and systems remain private. We offer secure connections, SSO, and observe compliance and reporting regulations.
-parent: Reference
+parent: Learning resources
 redirect_from: 
 - /soda-sql/documentation/data-privacy.html
 - /soda/data-concepts.html
@@ -11,7 +11,13 @@ redirect_from:
 # Data security and privacy
 *Last modified on {% last_modified_at %}*
 
-Soda works in several ways to ensure your data and systems remain private.
+Soda works in several ways to ensure your data and systems are secure and remain private.
+
+## Compliance and reporting
+
+As a result of an independent review in April 2022, Soda has been found to be **SOCII Type 2** compliant. Contact <a href="mailto:support@soda.io">support@soda.io</a> for more information.
+
+![soc2](/assets/images/soc2.png){:width="100px"}
 
 ## Making secure connections
 
@@ -21,7 +27,7 @@ You can connect Soda Library to your Soda Cloud account. To communicate with you
 
 ## Single sign-on with Soda Cloud
 
-Organizations that use a SAML 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider. Once added, employees of the organization can gain authorized and authenticated access to the organization's Soda Cloud account by successfully logging in to their SSO. Refer to [Single sign-on with Soda Cloud]({% link soda-cloud/sso.md %}) for details.
+Organizations that use a SAML 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider. Once added, employees of the organization can gain authorized and authenticated access to the organization's Soda Cloud account by successfully logging in to their SSO. Refer to [Set up single sign-on with Soda Cloud]({% link soda-cloud/sso.md %}) for details.
 
 ## Sending data to Soda Cloud
 
@@ -37,10 +43,6 @@ Soda Cloud does store the following:
 Where your datasets contain <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/legal-grounds-processing-data/sensitive-data/what-personal-data-considered-sensitive_en" target="_blank"> sensitive data</a> or private information, you may *not* want to send failed row samples from your data source to Soda Cloud. In such a circumstance, you can [disable the failed row samples feature entirely]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples) in Soda Cloud. Read more about disabling samples and failed row samples in [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}).
 
 Read more about Soda's <a href="https://www.soda.io/privacy-policy" target="_blank">Privacy Policy</a>. 
-
-## Compliance and reporting
-
-As a result of an independent review in April 2022, Soda has been found to be **SOCII Type 2** compliant. Contact <a href="mailto:support@soda.io">support@soda.io</a> for more information.
 
 <br />
 

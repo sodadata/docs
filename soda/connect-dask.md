@@ -1,14 +1,17 @@
 ---
 layout: default
-title: Connect Soda to Dask and Pandas (Experimental)
+title: Connect Soda to Dask and Pandas
 description: Access configuration details to connect Soda to Dask and Pandas.
-parent: Connect a data source
+parent: Data source reference
 ---
 
-# Connect Soda to Dask and Pandas (Experimental)
-*Last modified on {% last_modified_at %}*
+# Connect Soda to Dask and Pandas
+*Last modified on {% last_modified_at %}* <br />
 
-For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only.
+For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only. You do not need to set up a `configuration.yml` file to configure a connection to a data source; you only need to set the data source name to `dask` to work with either pandas or dask dataframes.
+```python
+scan.set_data_source_name("dask")
+```
 
 [Define a programmatic scan]({% link soda-library/programmatic.md %}) for the data in the DataFrames. Refer to the following example.
 

@@ -2,13 +2,13 @@
 layout: default
 title: Connect Soda to a local file using Dask
 description: Set up Soda to programmatically scan the contents of a local file using Dask.
-parent: Connect a data source
+parent: Data source reference
 ---
 
 # Connect Soda to a local file using Dask
 *Last modified on {% last_modified_at %}*
 
-For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only. <br />Refer to [Connect Soda to Dask and Pandas (Experimental)]({% link soda/connect-dask.md %}).
+For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only. <br />Refer to [Connect Soda to Dask and Pandas]({% link soda/connect-dask.md %}).
 
 [Define a programmatic scan]({% link soda-library/programmatic.md %}) to use Soda to scan a local file for data quality. Refer to the following example that executes a simple check for row count of the dataset.
 {% include code-header.html %}

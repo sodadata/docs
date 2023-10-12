@@ -7,7 +7,7 @@ products:
 
 ## General availability release
 
-Introducing the launch of [Soda Library]({% link soda-library/overview.md %}), a Python library and CLI tool for testing data quality.  
+Introducing the launch of Soda Library, a Python library and CLI tool for testing data quality.  
 
 Built on top of Soda Core, Soda Library leverages all the features and functionality of the open-source tool, with newly added features. [Install Soda Library]({% link soda-library/install.md %}) from the command line, then configure it to connect to Soda Cloud using API keys that are valid for a free, 45-day trial.
 

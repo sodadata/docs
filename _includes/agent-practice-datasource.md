@@ -45,16 +45,15 @@ service/nybusbreakdowns created
 ```
 
 <br />
-Once the pod of practice data is running, you can use the following configuration details when you add a data source in Soda Cloud, in [step 2]({% link soda-cloud/add-datasource.md %}#2-connect-the-data-source), **Connect the Data Source**.
+Once the pod of practice data is running, you can use the following configuration details when you add a data source in Soda Cloud, in step 2, **Connect the Data Source**.
 {% include code-header.html %}
 ```yaml 
 data_source your_datasource_name:
   type: postgres
-  connection:
-    host: nybusbreakdowns
-    port: 5432
-    username: sodacore
-    password: sodacore
-    database: sodacore
-    schema: new_york
+  host: nybusbreakdowns
+  port: 5432
+  username: sodacore
+  password: sodacore
+  database: sodacore
+  schema: new_york
 ```

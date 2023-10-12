@@ -2,7 +2,7 @@
 layout: default
 title: Support
 description: For the open source developer tools and free trial version of our software, Soda offers free support to the Soda community of users in Slack.
-parent: Reference
+parent: Learning resources
 ---
 
 # Support
