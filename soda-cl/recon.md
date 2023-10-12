@@ -160,9 +160,9 @@ Read more about [Limitations and constraints](#limitations-and-constraints).
 ## Define reconciliation checks
 
 The following outlines the basic steps to configure and execute reconciliation checks.
-1. [Install]({% link soda-library/install.md %}) a Soda Library package for both the migration source and target data sources. For the very first example above, you would install both `soda-mysql` and `soda-snowflake`.  
+1. [Install]({% link soda-library/install.md %}) a Soda Library package for both the migration source and target data sources. For the very first example above, you would install both `soda-mysql` and `soda-snowflake`.  If you use a Soda Agent and connect data sources via Soda Cloud, add both data sources to your account.
 2. [Configure]({% link soda-library/install.md %}#configure-soda) both data sources in a configuration YAML file, and add your `soda_cloud` configuration. For the very first example above, you would add both [MySQL]({% link soda/connect-mysql.md %}) and [Snowflake]({% link soda/connect-snowflake.md %}) connection configuration details to a configuration YAML file.
-3. Prepare a `recon.yml` file and configure the reconciliation metadata; see details below.
+3. Prepare a `recon.yml` file or new Soda agreement and configure the reconciliation metadata; see details below. 
 4. Define reconciliation checks to compare data between data sources; see details below.
 5. [Run a Soda scan]({% link soda-library/run-a-scan.md %}) against either the source or target data source to execute the reconciliation checks and review results in the command-line output and in Soda Cloud. Note that check results are associated with the *target* dataset in Soda Cloud.
 {% include code-header.html %}
@@ -172,7 +172,7 @@ soda scan -d mysql_adventureworks -c configuration.yml recon.yml
 
 <br />
 
-To define reconciliation checks, best practice dictates that you prepare a `recon.yml` file separate from your checks YAML file which contains regular, non-reconciliation checks for data quality in your data source. Technically, you can use one YAML file to contain all recon and regular SodaCL checks, but troubleshooting and issue investigation is easier if you use separate files.
+To define reconciliation checks, best practice dictates that you prepare a separate agreement or a `recon.yml` file separate from your checks YAML file which contains regular, non-reconciliation checks for data quality in your data source. Technically, you can use one YAML file or agreement to contain all recon and regular SodaCL checks, but troubleshooting and issue investigation is easier if you use separate files.
 
 In a `recon.yml` file, you must first provide reconciliation metadata for the checks, as per the configuration in the example and table below.
 {% include code-header.html %}
