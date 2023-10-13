@@ -11,7 +11,7 @@ parent: Integrate Soda
 Integrate Soda with Atlan to access details about the quality of your data from within the data catalog.
 
 * Run data quality checks using Soda and visualize quality metrics and rules within the context of a data source, dataset, or column in Atlan.
-* Use Soda Cloud to flag poor-quality data in lineage diagrams and during live querying.
+* Use Soda Cloud to flag poor-quality data in lineage diagrams.
 * Give your Atlan users the confidence of knowing that the data they are using is sound.
 
 ![atlan1](/assets/images/atlan1.png){:height="700px" width="700px"} 
@@ -31,7 +31,7 @@ Integrate Soda with Atlan to access details about the quality of your data from 
 1. Follow the instructions to [Generate API keys]({% link soda-cloud/api-keys.md %}) in Soda to use for authentication in your Atlan connection.
 2. Follow <a href="https://ask.atlan.com/hc/en-us/articles/7524581020175-How-to-crawl-Soda#select-the-source-0-0" target="_blank">Atlan's documentation</a> to set up the Connection to Soda in your Atlan workspace.
 
-
+🎥 Watch the <a href="https://www.soda.io/resources/achieving-trusted-data-atlan-soda-integration-showcase" target="_blank">Atlan-Soda integration</a> in action!
 
 
 ## Go further

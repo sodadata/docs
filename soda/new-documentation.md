@@ -9,6 +9,10 @@ parent: Learning resources
 
 <br />
 
+#### October 13, 2023
+* Added new content to clarify what an [active check]({% link soda/active-check.md %}) is. Soda's licensing model can inlcude volume-based measures of active checks.
+* Added link to new video for [Atlan integration]({% link soda/integrate-atlan.md %}).
+
 #### October 12, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.17 - 1.1.18.
 * Removed support for quotes in dataset name identifiers in checks; see [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check).

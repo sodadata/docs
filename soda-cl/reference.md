@@ -16,7 +16,6 @@ See also: [Compare data using SodaCL]({% link soda-cl/compare.md %})
 ```yaml
 checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
-
   - values in (birthdate) must not exist in dim_department_group_prod (birthdate)
 ```
 

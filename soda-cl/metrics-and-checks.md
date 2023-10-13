@@ -30,6 +30,7 @@ When it scans datasets in your data source, Soda Library executes the checks you
 
 {% include scan-output.md %}
 
+
 ## Check types
 
 In general, SodaCL checks fall into one of three broad categories:
@@ -253,6 +254,7 @@ variance
 var_pop
 var_samp
 ```
+
 
 ## Go further
 

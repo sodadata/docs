@@ -218,6 +218,8 @@
   subcategories:
   - subtitle: Glossary
     page: soda/glossary.md
+  - subtitle: Active checks
+    page: soda/active-check.md
   - subtitle: Soda product overview
     page: soda/product-overview.md
   - subtitle: How Soda works
