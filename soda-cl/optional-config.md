@@ -219,26 +219,8 @@ See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
 In the checks you write with SodaCL, you can apply the quoting style that your data source uses for dataset or column names. Soda Library uses the quoting style you specify in the aggregated SQL queries it prepares, then executes during a scan. 
 
-Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark.
-
-Write a check referencing a dataset name with quotes to produce a SQL query that references the dataset name with quotes.
-
-Check:
-{% include code-header.html %}
-```yaml
-checks for "CUSTOMERS":
-  - row_count > 0
-```
-
-Resulting SQL query:
-```sql
-SELECT
-  COUNT(*)
-FROM "CUSTOMERS"
-```
-<br />
-
-Write a check referencing a column name with quotes to produce a SQL query that references the column name with quotes.
+* Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark.
+* Soda does not support quotes in the dataset name identifier, as in `checks for "CUSTOMERS":`
 
 Check:
 {% include code-header.html %}

@@ -9,8 +9,13 @@ parent: Learning resources
 
 <br />
 
-#### October 12, 2023
+#### October 13, 2023
 * Added new content to clarify what an [active check]({% link soda/active-check.md %}) is. Soda's licensing model can inlcude volume-based measures of active checks.
+* Added link to new video for [Atlan integration]({% link soda/integrate-atlan.md %}).
+
+#### October 12, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.17 - 1.1.18.
+* Removed support for quotes in dataset name identifiers in checks; see [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check).
 
 #### October 11, 2023
 * Refactored the content on docs.soda.io to focus more on use cases, tasks, and reader goals. The goal of the project was to pivot from a products-based set of documentation to task-based/use case-based content. <br />You may notice a change to the navigation on docs.soda.io that is organized by actions (Install, Deploy, Run Scans, Set alerts, etc.) instead of by product (Soda Library, Soda Cloud, Soda Agent, etc.)
