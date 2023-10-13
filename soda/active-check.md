@@ -2,7 +2,7 @@
 layout: default
 title: Active checks
 description: Learn more about active checks as they are defined in Soda's licensing model.
-parent: Soda CL
+parent: Learning resources
 ---
 
 # Active checks
