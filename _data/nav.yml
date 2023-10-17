@@ -118,6 +118,8 @@
     page: soda-cl/metrics-and-checks.md
   - subtitle: Optional check configurations
     page: soda-cl/optional-config.md
+  - subtitle: Troubleshoot SodaCL
+    page: soda-cl/troubleshoot.md
   - subtitle: Anomaly score checks
     page: soda-cl/anomaly-score.md
   - subtitle: Check template
@@ -148,8 +150,6 @@
     page: soda-cl/reference.md
   - subtitle: Schema checks
     page: soda-cl/schema.md
-  - subtitle: Troubleshoot SodaCL
-    page: soda-cl/troubleshoot.md
   - subtitle: User-defined checks
     page: soda-cl/user-defined.md
   - subtitle: Validity metrics
