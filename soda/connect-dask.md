@@ -8,10 +8,7 @@ parent: Data source reference
 # Connect Soda to Dask and Pandas
 *Last modified on {% last_modified_at %}* <br />
 
-For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only. You do not need to set up a `configuration.yml` file to configure a connection to a data source; you only need to set the data source name to `dask` to work with either pandas or dask dataframes.
-```python
-scan.set_data_source_name("dask")
-```
+For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only. You do not need to set up a `configuration.yml` file to configure a connection to a data source.
 
 [Define a programmatic scan]({% link soda-library/programmatic.md %}) for the data in the DataFrames. Refer to the following example.
 
@@ -25,8 +22,6 @@ from soda.scan import Scan
 
 # Create a Soda scan object
 scan = Scan()
-scan.set_scan_definition_name("test")
-scan.set_data_source_name("dask")
 
 # Load timeseries data from dask datasets
 df_timeseries = dask.datasets.timeseries().reset_index()
@@ -35,14 +30,21 @@ df_timeseries["email"] = "a@soda.io"
 # Create an artificial pandas dataframe
 df_employee = pd.DataFrame({"email": ["a@soda.io", "b@soda.io", "c@soda.io"]})
 
-# Add Dask dataframe to scan and assign a dataset name to refer from checks yaml
-scan.add_dask_dataframe(dataset_name="timeseries", dask_df=df_timeseries)
+# Either add Dask dataframe to scan and assign a dataset name to refer from checks.yaml
+scan.add_dask_dataframe(dataset_name="timeseries", dask_df=df_timeseries, data_source_name="orders")
+# OR, add Pandas dataframe to scan and assign a dataset name to refer from checks.yaml
+scan.add_pandas_dataframe(dataset_name="employee", pandas_df=df_employee, data_source_name="orders")
 
-# Add Pandas dataframe to scan and assign a dataset name to refer from checks yaml
-scan.add_pandas_dataframe(dataset_name="employee", pandas_df=df_employee)
+# Optionally, add multiple dataframes as unique data sources. Note the change of 
+# the data_source_name parameter. 
+scan.add_dask_dataframe(dataset_name="inquiries", dask_df=[...], data_source_name="customers")
+
+# Set the scan definition name and default data source to use
+scan.set_scan_definition_name("test")
+scan.set_data_source_name("orders")
 
 # Define checks in yaml format
-# Alternatively, you can refer to a yaml file using scan.add_sodacl_yaml_file(<filepath>)
+# Alternatively, refer to a yaml file using scan.add_sodacl_yaml_file(<filepath>)
 checks = """
 for each dataset T:
   datasets:
