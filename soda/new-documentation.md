@@ -11,6 +11,7 @@ parent: Learning resources
 
 #### October 17, 2023
 * Deprecated sampling from [distribution check]({% link soda-cl/distribution.md %}) DRO generation.
+* Documented the support for adding alert coniditions to a [failed row check.]({% link soda-cl/failed-rows-checks.md %}#optional-check-configurations).
 
 #### October 13, 2023
 * Added new content to clarify what an [active check]({% link soda/active-check.md %}) is. Soda's licensing model can inlcude volume-based measures of active checks.
