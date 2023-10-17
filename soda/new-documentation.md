@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### October 17, 2023
+* Deprecated sampling from [distribution check]({% link soda-cl/distribution.md %}) DRO generation.
+
 #### October 13, 2023
 * Added new content to clarify what an [active check]({% link soda/active-check.md %}) is. Soda's licensing model can inlcude volume-based measures of active checks.
 * Added link to new video for [Atlan integration]({% link soda/integrate-atlan.md %}).
