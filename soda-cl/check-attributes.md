@@ -30,7 +30,7 @@ Use attributes to organize your checks and alert notifications in Soda Cloud.
 
 [Prerequisites](#prerequisites)<br />
 [Define a check attribute](#define-a-check-attribute)<br />
-[Apply an attribute to a check](#apply-an-attribute-to-a-check)<br />
+[Apply an attribute to one or more checks](#apply-an-attribute-to-one-or-more-checks)<br />
 [Optional check attribute SodaCL configurations](#optional-check-attribute-sodacl-configurations)<br />
 [Go further](#go-further)<br />
 <br />
@@ -42,14 +42,14 @@ Use attributes to organize your checks and alert notifications in Soda Cloud.
 
 ## Define a check attribute
 
-Note that you can only define or edit check attributes as an [Admin]({% link soda-cloud/roles-and-rights.md %}) in Soda Cloud. You cannot define new attributes in Soda Library. Once defined in Soda Cloud, any Soda Cloud or Soda Library user can [apply the attribute](#apply-an-attribute-to-a-check) to new or existing checks.
+Note that you can only define or edit check attributes as an [Admin]({% link soda-cloud/roles-and-rights.md %}) in Soda Cloud. You cannot define new attributes in Soda Library. Once defined in Soda Cloud, any Soda Cloud or Soda Library user can [apply the attribute](#apply-an-attribute-to-one-or-more-checks) to new or existing checks.
 
 1. In your Soda Cloud account, navigate to **your avatar** > **Attributes** > **New Attribute**. 
 2. Follow the guided steps to create the new attribute. Use the details below for insight into the values to enter in the fields in the guided steps. 
 
 | Field or Label  | Guidance |
 | -----------------  | ----------- |
-| Label | Enter the key for the key:value pair that makes up the attribute. In the example above, the check attribute's key is `department` and the value is `marketing`.<br /> Note that though you enter a value for label that may contain spaces or uppercase characters, users must use the attribute's **NAME** as the key, not the **Label** as Soda Cloud automatically formats the label into SodaCL-friendly syntax. Refer to the screenshot in the [section below](#apply-an-attribute-to-a-check).|
+| Label | Enter the key for the key:value pair that makes up the attribute. In the example above, the check attribute's key is `department` and the value is `marketing`.<br /> Note that though you enter a value for label that may contain spaces or uppercase characters, users must use the attribute's **NAME** as the key, not the **Label** as Soda Cloud automatically formats the label into SodaCL-friendly syntax. Refer to the screenshot in the [section below](#apply-an-attribute-to-one-or-more-checks).|
 | Resource Type |  Select `Check` to define an attribute for a check. |
 | Type | Define the type of input a check author may use for the value that pairs with the attribute's key.<br /> &nbsp;&nbsp;&nbsp;&nbsp;- Single select<br /> &nbsp;&nbsp;&nbsp;&nbsp;- Multi select<br /> &nbsp;&nbsp;&nbsp;&nbsp;- Checkbox<br /> &nbsp;&nbsp;&nbsp;&nbsp;- Text<br /> &nbsp;&nbsp;&nbsp;&nbsp;- Number<br /> &nbsp;&nbsp;&nbsp;&nbsp;- Date |
 | Allowed Values | Applies only to Single select and Multi select. Provide a list of values that a check author may use when applying the attribute key:value pair to a check. |
@@ -63,7 +63,7 @@ Note that you can only define or edit check attributes as an [Admin]({% link sod
 * For a single- or multi-select attribute, you can remove, change, or add values to the list of available selections. However, if you remove or change values on such a list, you cannot use a previous value to route alert notifications. 
 
 
-## Apply an attribute to a check
+## Apply an attribute to one or more checks
 
 While only a Soda Cloud Admin can define or revise check attributes, any Author user can apply attributes to new or existing checks when:
 * writing or editing checks in an agreement in Soda Cloud, <br />
@@ -81,6 +81,18 @@ checks for dim_product:
         tags: [event_campaign, webinar]
         pii: true
         best_before: 2022-02-20
+```
+
+Optionally, you can add attributes to *all* the checks in a single `checks for dataset_name` block. Using the following example configuration, Soda applies the check attributes to the `duplicate_count`, `missing_percent` and `anomaly_score` checks.
+
+```yaml
+checks for dim_customer:
+  - attributes:
+      department: Marketing
+      priority: 1
+  - duplicate_count(last_name) < 10
+  - missing_percent(phone) = 0
+  - anomaly_score for row_count < default
 ```
 
 During a scan, Soda validates the attribute's input – **NAME** (the key in the key:value pair), **Type**, **Allowed Values** – to ensure that the key:value pairs match the expected input. If the input is unexpected, Soda evaluates no checks, and the scan results in an error. For example, if your attribute's type is Number and the check author enters a value of `one` instead of `1`, the scan produces an error to indicate the incorrect attribute value.

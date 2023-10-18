@@ -99,7 +99,7 @@ checks for dim_customer:
 | :-: | ------------|---------------|
 | ✓ | Define a name for a failed rows check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
-|   | Define alert configurations to specify warn and fail alert conditions. | - |
+| ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓  | Use wildcard characters in the value in the check. | Use wildcard values as you would with CTE or SQL. |
@@ -115,6 +115,17 @@ checks for dim_customer:
       fail query: |
         SELECT DISTINCT geography_key
         FROM dim_customer as customer
+```
+
+#### Example with alert
+{% include code-header.html %}
+```yaml
+checks for dim_customer:
+  - failed rows:
+      samples limit: 50
+      fail condition: total_children = '2' and number_cars_owned >= 3
+      warn: when between 1 and 10
+      fail: when > 10
 ```
 
 #### Example with quotes
