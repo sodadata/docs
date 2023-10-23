@@ -11,6 +11,7 @@ parent: Learning resources
 
 #### October 23, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.19.
+* Clarify instructions about adding a check identity to a check; see [Add a check identity]({% link soda-cl/optional-config.md %})#add-a-check-identity.
 
 #### October 17, 2023
 * Deprecated sampling from [distribution check]({% link soda-cl/distribution.md %}) DRO generation.
