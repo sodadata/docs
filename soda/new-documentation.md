@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### October 23, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.19.
+
 #### October 17, 2023
 * Deprecated sampling from [distribution check]({% link soda-cl/distribution.md %}) DRO generation.
 * Documented the support for adding alert coniditions to a [failed row check.]({% link soda-cl/failed-rows-checks.md %}#optional-check-configurations).
