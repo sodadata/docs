@@ -12,6 +12,7 @@ parent: Learning resources
 #### October 23, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.19.
 * Clarify instructions about adding a check identity to a check; see [Add a check identity]({% link soda-cl/optional-config.md %})#add-a-check-identity.
+* Corrected the syntax for data source connection values when using the GitHub Action for Soda in a Workflow; needed spaces before and after variables in single curly braces. See [Add the GitHub Action for Soda to a Workflow]({% link soda/quick-start-dev.md %}#add-the-github-action-for-soda-to-a-workflow).
 
 #### October 17, 2023
 * Deprecated sampling from [distribution check]({% link soda-cl/distribution.md %}) DRO generation.

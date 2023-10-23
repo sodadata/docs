@@ -49,9 +49,9 @@ Borrow from this guide to connect to your own data source, add the GitHub Action
   ```yaml
       data_source my_datasource_name:
         type: snowflake
-        username: ${SNOWFLAKE_USER}
-        password: ${SNOWFLAKE_PASS}
-        account: plu449.us-west-1
+        username: ${ SNOWFLAKE_USER }
+        password: ${ SNOWFLAKE_PASS }
+        account: ${ SNOWFLAKE_ACCOUNT } 
         database: sodadata_test
         warehouse: compute_wh
         role: analyst
@@ -62,8 +62,8 @@ Borrow from this guide to connect to your own data source, add the GitHub Action
       
       soda_cloud:
         host: cloud.us.soda.io
-        api_key_id: ${SODA_CLOUD_API_KEY}
-        api_key_secret: ${SODA_CLOUD_API_SECRET} 
+        api_key_id: ${ SODA_CLOUD_API_KEY }
+        api_key_secret: ${ SODA_CLOUD_API_SECRET } 
   ```
 6. In the `.github/workflows` folder in your GitHub repository, open an existing Workflow or <a href="https://docs.github.com/en/actions/using-workflows/about-workflows#create-an-example-workflow" target="_blank">create a new workflow</a> file.  
 7. In your browser, navigate to the GitHub Marketplace to access the <a href="https://github.com/marketplace/actions/soda-library-action" target="_blank">Soda Library Action</a>. Click **Use latest version** to copy the code snippet for the Action.
