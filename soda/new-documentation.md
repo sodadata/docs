@@ -95,7 +95,7 @@ parent: Learning resources
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.1.0 - 1.1.5.
 
 #### August 30, 2023
-* Added instructions for integrating wiht an [external secrets manager]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager) with a Soda Agent to manage frequently-changed data source login credentials.
+* Added instructions for integrating with an [external secrets manager]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager) with a Soda Agent to manage frequently-changed data source login credentials.
 * Added screenchots to [Integrate Soda with Atlan]({% link soda/integrate-atlan.md %}) documentation.
 * Added to [Troubleshoot]({% link soda-library/run-a-scan.md %}#troubleshoot) content for running a scan that produces an SSL certificate error.
 
