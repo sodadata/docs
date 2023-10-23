@@ -281,30 +281,51 @@ $code-background-color: #f8f9f9;
     }
 }
 
-.aux-nav .aux-nav-list-item {
-    display: flex !important;
-    align-content: center;
-    align-items: center;
-
-    .site-button {
-        display: block;
-        height: 40px;
-        padding: 10px 20px;
+.aux-nav {
+    .aux-nav-list-item {
+        display: flex !important;
+        align-content: center;
         align-items: center;
-        width: 150px;
-        text-align: center;
-        border-radius: 20px;
-        background-color: #00D891;
-        font-size: 15px;
-        line-height: 20px;
-        font-weight: 500;
-        color: #fff;
-        transition: background-color .4s ease-out;
+
+        .site-button {
+            display: block;
+            height: 40px;
+            padding: 10px 20px;
+            align-items: center;
+            width: 150px;
+            text-align: center;
+            border-radius: 20px;
+            background-color: #00D891;
+            font-size: 15px;
+            line-height: 20px;
+            font-weight: 500;
+            color: #fff;
+            transition: background-color .4s ease-out;
+
+            &:hover {
+                background-color: #00b474;
+                background-image: none;
+            }
+        }
+    }
+    .nav-slack-link {
+        text-decoration: none;
+        border: 1px solid transparent;
+        display: block;
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        border-radius: 7px;
 
         &:hover {
-            background-color: #00b474;
+            background-color: #eeeded;
             background-image: none;
         }
+    }
+    .nav-slack-img {
+        display: block;
+        width: 100%;
+        height: 100%;
     }
 }
 

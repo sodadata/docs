@@ -38,6 +38,11 @@
       githubLi.setAttribute('class', 'aux-nav-list-item');
       githubLi.innerHTML = '<iframe frameborder="0" scrolling="0" width="152" height="30" title="GitHub" src="https://ghbtns.com/github-btn.html?user=sodadata&repo=soda-core&type=star&count=true&size=large" class="aux-nav-list-item-github-iframe"></iframe>';
       document.querySelector(".aux-nav-list").prepend(githubLi);
+
+      var slackLi = document.createElement('li');
+      slackLi.setAttribute('class', 'aux-nav-list-item');
+      slackLi.innerHTML = '<a href="https://community.soda.io/slack" target="_blank" class="nav-slack-link"><img src="/assets/images/icon-slack.png" alt="Slack"  class="nav-slack-img"/></a>';
+      document.querySelector(".aux-nav-list").prepend(slackLi);
     });
   })();
 </script>
