@@ -81,17 +81,20 @@ checks for dataset_1:
   - row_count > ${VAR}
 ```
 
-If you anticipate modifying a check, you can explicitly specify a check identity so that Soda Cloud can correctly accumulate the results of a single check and retain its history even if the check has been modified. 
+<br />
 
-1. First, navigate to an existing check in your Soda Cloud account, then copy the UUID of the check from the URL; see the example below.
+If you anticipate modifying a check, you can explicitly specify a check identity so that Soda Cloud can correctly accumulate the results of a single check and retain its history even if the check has been modified. Be sure to complete the steps below *before* making any changes to the check so that you do not lose the existing check result history.
+
+1. First, navigate to an existing check in your Soda Cloud account, then copy the numeric identifier of the check from the URL; see the example below.
 ![check-identity](/assets/images/check-identity.png){:height="700px" width="700px"}
-2. Add an identity property to your check using the UUID you copied as the identity's value.<br />
+2. Add an identity property to your check using the identifier you copied as the identity's value.<br />
 ```yaml
 checks for dim_customer:
   - missing_count(last_name) > 99:
          identity: aa457447-60f6-4b09-4h8t-02fbb78f9587
 ```
-3. Save your changes.
+3. Save your changes, then run a scan to push new results to Soda Cloud that include the check identity.
+4. With the check identity now associated with the check in Soda Cloud, you may proceed to make changes to the check.
 
 You can also use a variable to pass the value of a check identity at scan time, as in the example below. You cannot use variables in checks you write in an agreement in Soda Cloud as it is impossible to provide the variable values at scan time. Read more about using [in-check variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl). 
 {% include code-header.html %}
