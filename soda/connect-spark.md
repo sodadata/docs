@@ -62,7 +62,7 @@ df = ...user-defined-way-to-build-the-dataframe...
 db.createOrReplaceTempView('customers')
 ```
 5. Use the Spark API to link a DataFrame to the name of each temporary table against which you wish to run Soda scans. Refer to <a href="hhttps://spark.apache.org/docs/3.1.3/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceTempView.html" target="_blank"> PySpark documentation</a>.
-6. [Define a programmatic scan]({% link soda-library/programmatic.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Library: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`. Refer to the example below.
+6. [Define a programmatic scan]({% link soda-library/programmatic.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Library: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`,  but we suggest to change this to something which makes sense for your implementation. Refer to the example below.
 {% include code-header.html %}
 ```python
 spark_session = ...your_spark_session...
@@ -71,10 +71,10 @@ df2.createOrReplaceTempView("TABLE_TWO")
 ...
 
 scan = Scan()
+scan.add_spark_session(spark_session, data_source_name="orders")
+scan.set_data_source_name("orders")
 scan.set_scan_definition_name('YOUR_SCHEDULE_NAME')
-scan.set_data_source_name("spark_df")
 scan.add_configuration_yaml_file(file_path="somedirectory/your_configuration.yml")
-scan.add_spark_session(spark_session)
 ... all other scan methods in the standard programmatic scan ...
 ```
 
@@ -113,7 +113,7 @@ df.createOrReplaceTempView("users")
 scan = Scan()
 scan.set_verbose(True)
 scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
-scan.set_data_source_name("spark_df")
+scan.set_data_source_name("customers")
 scan.add_configuration_yaml_file(file_path="sodacl_spark_df/configuration.yml")
 scan.add_configuration_yaml_str(
     """
@@ -124,7 +124,7 @@ soda_cloud:
   api_key_secret: "[secret]"
 """
 )
-scan.add_spark_session(spark_session)
+scan.add_spark_session(spark_session, data_source_name="customers")
 scan.add_sodacl_yaml_file(file_path="sodacl_spark_df/checks.yml")
 # ... all other scan methods in the standard programmatic scan ...
 scan.execute()
@@ -152,8 +152,8 @@ df.createOrReplaceTempView("my_df")
 # Create a Scan object, set a scan definition, and attach a Spark session
 scan = Scan()
 scan.set_scan_definition_name("test")
-scan.set_data_source_name("spark_df")
-scan.add_spark_session(spark)
+scan.set_data_source_name("customers")
+scan.add_spark_session(spark, data_source_name="customers")
 # Define checks for datasets 
 checks  ="""
 checks for my_df:
