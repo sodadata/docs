@@ -62,7 +62,7 @@ df = ...user-defined-way-to-build-the-dataframe...
 db.createOrReplaceTempView('customers')
 ```
 5. Use the Spark API to link a DataFrame to the name of each temporary table against which you wish to run Soda scans. Refer to <a href="hhttps://spark.apache.org/docs/3.1.3/api/python/reference/api/pyspark.sql.DataFrame.createOrReplaceTempView.html" target="_blank"> PySpark documentation</a>.
-6. [Define a programmatic scan]({% link soda-library/programmatic.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Library: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`,  but we suggest to change this to something which makes sense for your implementation. Refer to the example below.
+6. [Define a programmatic scan]({% link soda-library/programmatic.md %}) for the data in the DataFrames, and include one extra method to pass all the DataFrames to Soda Library: `add_spark_session(self, spark_session, data_source_name: str)`. The default value for `data_source_name` is `"spark_df"`;  best practice dictates that you customize the name to your implementation. Refer to the example below.
 {% include code-header.html %}
 ```python
 spark_session = ...your_spark_session...
@@ -103,7 +103,7 @@ from soda.scan import Scan
 
 spark_session = SparkSession.builder.master("local").appName("test").getOrCreate()
 df = spark_session.createDataFrame(
-    data=[{"id": "1", "name": "John Doe"}],
+    data=[{"id": "1", "name": "John Frome"}],
     schema=types.StructType(
         [types.StructField("id", types.StringType()), types.StructField("name", types.StringType())]
     ),
