@@ -25,6 +25,7 @@ Log in to your **Soda Cloud** account, click the **Ask SodaGPT** button in the m
 * Provide instructions in English.
 * SodaGPT is capable of writing one data quality check at a time.
 * SodaGPT *only* outputs SodaCL.
+* SodaGPT exclusively supports the `fail` condition. Please note that the `warn` condition is not supported yet.
 * Provide the following information in your instruction:
     * the name of your dataset
     * the name of at least one column in that dataset
@@ -36,6 +37,8 @@ Log in to your **Soda Cloud** account, click the **Ask SodaGPT** button in the m
     * [anomaly score]({% link soda-cl/anomaly-score.md %})
     * [schema]({% link soda-cl/schema.md %})
     * all [numeric]({% link soda-cl/numeric-metrics.md %}) (`avg`, `sum`, `max`, etc.)
+    * [group by]({% link soda-cl/group-by.md %})
+    * [group evolution]({% link soda-cl/group-evolution.md %})
 * SodaGPT does not retain a history of interactions, so it cannot reference a previously-asked question or response.
 
 
