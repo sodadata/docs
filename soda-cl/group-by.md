@@ -70,6 +70,28 @@ checks for fact_internet_sales:
 | `name` | required | custom name for the check |
 
 
+You can also use multi-column groups in a group by check, as in the example below that groups results both by `gender` and `english_education`. 
+
+```yaml
+checks for dim_customer:
+    - group by:
+        name: sum_total_children_groupby_check
+        query: |
+            SELECT
+                gender,
+                english_education,
+                sum(total_children) as sum_total_children
+            FROM dim_customer
+            GROUP BY gender, english_education
+        fields:
+            - gender
+            - english_education
+        checks:
+            - sum_total_children:
+                fail: when < 100000
+                name: Total number of children
+```
+
 ## Group by check results
 
 When you run a scan that includes checks nested in a group by configuration, the output in **Soda Library CLI** groups the results according to the unique values in the column you identified in the `fields` subsection. The number of unique values in the column must match the value you provided for `group_limit`. 
@@ -193,7 +215,7 @@ Oops! 12 failures. 0 warnings. 0 errors. 0 pass.
 
 | Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
-| ✓ | Define a name for a group by; see [example](#example-with-check-name). For group by configurations, this normally optional parameter is required. |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
+| ✓ | Define a name for a group by; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration) | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
@@ -207,6 +229,7 @@ Oops! 12 failures. 0 warnings. 0 errors. 0 pass.
 ```yaml
 checks for dim_employee:
   - group by:
+      name: Grouped vacation hours
       group_limit: 2
       query: |
         SELECT marital_status, AVG(vacation_hours) as vacation_hours
