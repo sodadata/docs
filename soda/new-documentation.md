@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### October 24, 2023
+* Added instructions to [Connect Soda to Spark]({% link soda/connect-spark.md %}#connect-to-spark-dataframes) to recommend changing the name of the `data_source_name` in step 5.
+
 #### October 23, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.19.
 * Clarify instructions about adding a check identity to a check; see [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity).
