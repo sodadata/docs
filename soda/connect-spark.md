@@ -74,18 +74,8 @@ scan = Scan()
 scan.add_spark_session(spark_session, data_source_name="orders")
 scan.set_data_source_name("orders")
 scan.set_scan_definition_name('YOUR_SCHEDULE_NAME')
-scan.add_configuration_yaml_file(file_path="somedirectory/your_configuration.yml")
 ... all other scan methods in the standard programmatic scan ...
 ```
-
-<!--### Supported data types
-
-| Category | Data type |
-| ---- | --------- |
-| text | STRING |
-| number | DECIMAL, INTEGER |
-| time | DATE, TIMESTAMP, TIMESTAMPTZ |
--->
 
 <br />
 
@@ -114,7 +104,6 @@ scan = Scan()
 scan.set_verbose(True)
 scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
 scan.set_data_source_name("customers")
-scan.add_configuration_yaml_file(file_path="sodacl_spark_df/configuration.yml")
 scan.add_configuration_yaml_str(
     """
 soda_cloud:
