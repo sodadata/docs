@@ -11,7 +11,7 @@ parent: Learning resources
 
 #### October 25, 2023
 * Added to the list of supported check types in [SodaGPT]({% soda-cloud/sodagpt.md %}#instruction-parameters).
-* Added another example to [Group By checks]({% link soda-cl/group-by.md %}).
+* Added another example snippet to [Group By checks]({% link soda-cl/group-by.md %}).
 
 #### October 24, 2023
 * Added instructions to [Connect Soda to Spark]({% link soda/connect-spark.md %}#connect-to-spark-dataframes) to recommend changing the name of the `data_source_name` in step 5.
