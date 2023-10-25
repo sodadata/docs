@@ -9,9 +9,19 @@ parent: Use case guides
 *Last modified on {% last_modified_at %}*
 
 
-Use this guide to set up a Soda Agent to securely retrieve frequently-rotated and/or encrypted data source login credentials. Rather than managing sensitive login credentials for data sources passed via the Helm chart value `soda.env`, you can set up a Soda Agent to integrate with external secrets managers such as Hashicorp Vault, AWS Secrets Manager, or Azure Key Vault, so that it can securely access up-to-date, externally-stored login credentials for data sources.
+Use this guide to set up a Soda Agent to securely retrieve frequently-rotated and/or encrypted data source login credentials. 
 
-[About this guide](#about-this-guide) <br />
+Rather than managing sensitive login credentials for data sources passed via the Helm chart value `soda.env`, you can set up a Soda Agent to integrate with external secrets managers such as Hashicorp Vault, AWS Secrets Manager, or Azure Key Vault, so that it can securely access up-to-date, externally-stored login credentials for data sources.
+
+[About this guide](#about-this-guide)<br />
+[Prerequisites](#prerequisites)<br />
+[Set up](#set-up)<br />
+[Configure](#configure)<br />
+[Access the Hashicorp Vault](#access-the-hashicorp-vault)<br />
+[Deploy a Soda Agent and pass login credentials](#deploy-a-soda-agent-and-pass-login-credentials)<br />
+[Create the example data source in Soda Cloud](#create-the-example-data-source-in-soda-cloud)<br />
+[About the ClusterSecretStore](#about-the-clustersecretstore)<br />
+[About the ExternalSecret](#about-the-externalsecret)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -21,11 +31,11 @@ Use this guide to set up a Soda Agent to securely retrieve frequently-rotated an
 This exercise points to a GitHub repository from which you can set up a locally-run, example Kubernetes cluster to illustrate what an integration between a Soda Agent and an external secrets manager looks like. 
 
 When you complete the exercise, you will have examples of the things you need for a Soda Agent to access an external secrets manager:
-* **External Secrets Operator (ESO)** which is a Kubernetes operator that facilitates a connection between the Soda Agent and your secrets manager; see [external-secrets.io](https://external-secrets.io/latest/)
+* **External Secrets Operator (ESO)** which is a Kubernetes operator that facilitates a connection between the Soda Agent and your secrets manager; see <a href="https://external-secrets.io/latest/" target="_blank">external-secrets.io</a>.
 * a **ClusterSecretStore** resource which provides a central gateway with instructions on how to access your secret backend
 * an **ExternalSecret** resource which instructs the cluster on which values to fetch, and references the ClusterSecretStore
 
-Follow the instructions below to use the Terraform files in this repository to:
+Follow the instructions below to use the Terraform files in the repository to:
 * set up and configure a local Kubernetes cluster
 * deploy External Secrets Operator
 * configure both a ClusterSecretStore and ExternalSecrets to access username and password examples in a Hashicorp Vault
@@ -36,23 +46,23 @@ Follow the instructions below to use the Terraform files in this repository to:
 
 ## Prerequisites
 
-For this exercise, install the following tools:
+For this exercise, you must have installed the following tools:
 
-* [Terraform](https://developer.hashicorp.com/terraform/downloads) to build your locally-run example environment
+* <a href="https://developer.hashicorp.com/terraform/downloads" target="_blank">Terraform</a> to build a locally-run example environment
 * One container runtime that provides containers to use as local Kubernetes cluster nodes, either:
-  * [Docker Desktop](https://docs.docker.com/desktop/), for users who prefer to use a UI
-  * [Docker engine](https://docs.docker.com/engine/install/), for users who prefer to use the command-line
-  OR
-  * [Podman Desktop](https://podman-desktop.io/docs/Installation), for users who prefer to use a UI
-  * [Podman engine](https://podman.io/docs/installation), for users who prefer to use the command-line
-* (Optional) [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) to create and run a Kubernetes cluster locally
-* (Optional) [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) to execute commands against the Kubernetes cluster
+  * <a href="https://docs.docker.com/desktop/" target="_blank">Docker Desktop</a>, for users who prefer to use a UI
+  * <a href="https://docs.docker.com/engine/install/" target="_blank">Docker engine</a>, for users who prefer to use the command-line <br />
+  OR <br />
+  * <a href="https://podman-desktop.io/docs/Installation" target="_blank">Podman Desktop</a>, for users who prefer to use a UI
+  * <a href="https://podman.io/docs/installation" target="_blank">Podman engine</a>, for users who prefer to use the command-line
+* (Optional) <a href="https://kind.sigs.k8s.io/docs/user/quick-start/#installation" target="_blank">kind</a> to create and run a Kubernetes cluster locally
+* (Optional) <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a> to execute commands against the Kubernetes cluster
 
 
 ## Set up
 
-1. Clone this repository locally.
-2. Navigate to the `setup` directory in this repository.
+1. Clone the repository locally.
+2. Navigate to the `setup` directory in the repository.
     ```
     cd terraform/soda-agent-external-secrets/setup
     ```
@@ -61,17 +71,16 @@ For this exercise, install the following tools:
     * setup a Hashicorp Vault,
     * deploy External Secrets Operator, 
     * setup a Kubernetes UI dashboard called Headlamp
-    * create a PostgreSQL data source containing the NYC bus breakdowns and delays dataset
-    ```
+    * create a PostgreSQL data source containing a NYC bus breakdowns and delays dataset
+    ```shell
     terraform init
     terraform apply -auto-approve
     ```
     Output (last few lines):
-    ```
+    ```shell
+    ...
     Apply complete! Resources: 13 added, 0 changed, 0 destroyed.
-
     Outputs:
-
     base_port = 30200
     cluster_admin_token = <sensitive>
     cluster_name = "soda-agent-external-secrets"
@@ -85,7 +94,7 @@ For this exercise, install the following tools:
 
 ## Configure 
 
-1. Navigate to the `configure` directory in this repository.
+1. Navigate to the `configure` directory in the repository.
     ```
     cd ..
     cd configure
@@ -97,16 +106,15 @@ For this exercise, install the following tools:
     * create an `ExternalSecret`, 
     * create a `ClusterSecretstore`,
     * populate some secret values into Vault
-    ```
+    ```shell
     terraform init
     terraform apply -auto-approve
     ```
     Output (last few lines):
-    ```
+    ```shell
+    ...
     Apply complete! Resources: 20 added, 0 changed, 0 destroyed.
-
     Outputs:
-
     dashboard_access = "http://127.0.0.1:30202"
     dashboard_token = <sensitive>
     vault_access = "http://127.0.0.1:30200"
@@ -121,8 +129,8 @@ For this exercise, install the following tools:
 
 ## Access the Hashicorp Vault
 
-1. The configuration output produces a URL value for `vault_access` which, by default, is [https://127.0.0.1:30200](https://127.0.0.1:30200). Click the link to access the Hashicorp Vault login page in your browser.
-![Hashicorp Vault login page](vault-login.png)
+1. The configuration output produces a URL value for `vault_access` which, by default, is <a href="https://127.0.0.1:30200" target="_blank">https://127.0.0.1:30200</a>. Click the link to access the Hashicorp Vault login page in your browser.
+![Hashicorp Vault login page](/assets/images/vault-login.png){:height="500px" width="500px"} 
 2. To log in, change the Method to `Username`, then use the `vault_admin_username` to populate the first field. To extract the value for `vault_admin_password` for the second field, use the following command:
     ```
     terraform output -raw vault_admin_password
@@ -139,16 +147,15 @@ For this exercise, install the following tools:
     terraform output -raw vault_admin_password | xclip -selection clipboard
     ```
 
-3. Now logged in, from the list of Secret Engines, navigate to `kv/local/soda` to see the example username and password secrets in the vault. If you wish, you can set new secrets that the Soda Agent can use.
-![Hashicorp Vault secrets](soda-secrets.png)
+3. Now logged in, from the list of Secret Engines, navigate to `kv/local/soda` to see the example username and password secrets in the vault. If you wish, you can set new secrets that the Soda Agent can use. <br />
+![Hashicorp Vault secrets](/assets/images/soda-secrets.png){:height="500px" width="500px"}
 
 ## Deploy a Soda Agent and pass login credentials
 
-1. If you haven't already done so, create a [Soda Cloud account](https://cloud.soda.io/signup) for free for a 45-day trial. 
-2. Access [Soda documentation](https://docs.soda.io/soda-agent/deploy.html#create-a-soda-cloud-account-and-api-keys) and follow the instructions to create an API key id and an API key secret for the Soda Agent. 
-3. Prepare a values YAML file to deploy a Soda Agent in your cluster, as per the following example. Refer to [Soda documentation](https://docs.soda.io/soda-agent/deploy.html#deploy-using-a-values-yaml-file) for details.
-
-   ```YAML
+1. If you haven't already done so, create a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a> for free for a 45-day trial. 
+2. Access [Deploy a Soda Agent]({% link soda-agent/deploy.md %}#create-a-soda-cloud-account) and follow the instructions to create an API key id and an API key secret for the Soda Agent. 
+3. Prepare a values YAML file to deploy a Soda Agent in your cluster, as per the following example. 
+   ```yaml
    soda:
      apikey:
        id: "value-from-step1"
@@ -168,7 +175,7 @@ For this exercise, install the following tools:
        endpoint: "https://cloud.soda.io"
     ```
 4. Deploy the Soda Agent using the following command:
-   ```bash
+   ```shell
    helm install soda-agent soda-agent/soda-agent \
      --values values.yml \
      --namespace soda-agent
@@ -178,9 +185,9 @@ For this exercise, install the following tools:
 
 To use your newly-deployed Soda Agent, you start by creating a new data source in your Soda Cloud account, then you can create a Soda Agreement to write checks for data quality. 
 
-1. In your Soda Cloud account, navigate to your **avatar** > **Scans & Data**. Click **New Data Source**, then follow the guided steps to create a new data source. Refer to [Soda documentation](https://docs.soda.io/soda-cloud/add-datasource.html) for full instructions for setting up a data source.
+1. In your Soda Cloud account, navigate to your **avatar** > **Scans & Data**. Click **New Data Source**, then follow the guided steps to create a new data source. Refer to [Add a new data source]({% link soda-agent/deploy.md %}#add-a-new-data-source) for full instructions for setting up a data source.
 2. In step 2 of the flow, use the following data source connection configuration. This connects to the example data source you created during [Set up](#set-up).
-    ```YAML
+    ```yaml
     data_source nyc_bus_breakdowns_and_delays:
       type: postgres
       connection:
@@ -192,7 +199,7 @@ To use your newly-deployed Soda Agent, you start by creating a new data source i
       schema: public
     ```
 3. Complete the guided workflow to **Save & Run** a scan of the data source to validate that Soda Cloud can access the data in the example data source via the Soda Agent. It uses the external secrets manager configuration you set up to fetch, then pass the username and password to the data source.
-4. Follow the [instructions](https://docs.soda.io/soda-cloud/agreements.html) to create a Soda Agreement in which you can define checks and run scans for data quality.
+4. Follow the instructions to [Define SodaCL checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in a Soda Agreement, then run scans for data quality.
 
 ## About the ClusterSecretStore
 
@@ -248,15 +255,16 @@ spec:
     template:
       data:
         soda-agent.conf: |
-          POSTGRES_USERNAME={{ .POSTGRES_USERNAME }}
-          POSTGRES_PASSWORD={{ .POSTGRES_PASSWORD }}
+          POSTGRES_USERNAME={% raw %}{{ .POSTGRES_USERNAME }}{% endraw %}
+          POSTGRES_PASSWORD={% raw %}{{ .POSTGRES_PASSWORD }}{% endraw %}
       engineVersion: v2
 ```
 
-The `target template` configuration in the `ExernalSecret` creates a file called `soda-agent.conf` into which it adds the username and password values in the [dotenv format](https://saurabh-kumar.com/python-dotenv/#file-format) that the Soda Agent expects.
+The `target template` configuration in the `ExernalSecret` creates a file called `soda-agent.conf` into which it adds the username and password values in the <a href="https://saurabh-kumar.com/python-dotenv/#file-format" target="_blank">dotenv format</a> that the Soda Agent expects.
 
 ## Go further
 
+* Access standard instructions to [integrate with a secrets manager]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager).
 * [Get organized]({% link soda-cloud/collaborate.md %}) in Soda!
 * <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
 * Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

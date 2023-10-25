@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### October 27
+* Published a new use case guide for [integrating an External Secrets Manager]({% link soda/quick-start-secrets.md %}) with a Soda Agent.
+
 #### October 24, 2023
 * Added instructions to [Connect Soda to Spark]({% link soda/connect-spark.md %}#connect-to-spark-dataframes) to recommend changing the name of the `data_source_name` in step 5.
 
