@@ -10,7 +10,7 @@ parent: Learning resources
 <br />
 
 #### October 25, 2023
-* Added to the list of supported check types in [SodaGPT]({% soda-cloud/sodagpt.md %}#instruction-parameters).
+* Added to the list of supported check types in [SodaGPT]({% link soda-cloud/sodagpt.md %}#instruction-parameters).
 * Added another example snippet to [Group By checks]({% link soda-cl/group-by.md %}).
 
 #### October 24, 2023
