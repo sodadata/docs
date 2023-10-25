@@ -18,7 +18,7 @@ Use this guide to set up a Soda Agent to securely retrieve frequently-rotated an
 
 ## About this guide
 
-This exercise sets up a locally-run, example Kubernetes cluster to illustrate what an integration between a Soda Agent and an external secrets manager looks like. 
+This exercise points to a GitHub repository from which you can set up a locally-run, example Kubernetes cluster to illustrate what an integration between a Soda Agent and an external secrets manager looks like. 
 
 When you complete the exercise, you will have examples of the things you need for a Soda Agent to access an external secrets manager:
 * **External Secrets Operator (ESO)** which is a Kubernetes operator that facilitates a connection between the Soda Agent and your secrets manager; see [external-secrets.io](https://external-secrets.io/latest/)
