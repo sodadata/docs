@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### October 26, 2023
+* Added documentation to accompany new support for [MotherDuck]({% link soda/connect-motherduck.md %}) data source.
+
 #### October 25, 2023
 * Added to the list of supported check types in [SodaGPT]({% link soda-cloud/sodagpt.md %}#instruction-parameters).
 * Added another example snippet to [Group By checks]({% link soda-cl/group-by.md %}).
