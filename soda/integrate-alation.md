@@ -50,6 +50,7 @@ SODA_API_KEY_SECRET=<your Soda Cloud private key>
     - name: Cars
       soda:
         datasource_id: 2d33bf0a-9a1c-4c4b-b148-b5af318761b3
+        datasource_name: adventureworks
         # optional dataset_mapping   soda: catalog
         dataset_mapping:
            Cars_data: Cars
@@ -72,6 +73,7 @@ SODA_API_KEY_SECRET=<your Soda Cloud private key>
 | ----- | ------------------- |
 | `name`  | A name you choose as an identifier for an integration between Soda Cloud and a data catalog. |
 |`soda:` <br />  `datasource_id` | The data source information panel in Soda Cloud. |
+|`soda:` <br />  `datasource_name` | The data source information panel in Soda Cloud. |
 |`soda:` <br />  `dataset_mapping` | (Optional) When you run the integration, Soda automatically maps all of the datasets between data sources. However, if the names of the datasets differ in the tools you can use this property to manually map datasets between tools. <br /> |
 |`catalog:` <br />  `type:`| The name of the cataloging software; in this case, “alation”. |
 |`catalog:` <br />  `datasource_id` | Retrieve this value from the URL on the data source page in the Alation catalog; see image below. |
