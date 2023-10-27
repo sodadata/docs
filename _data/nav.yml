@@ -180,6 +180,8 @@
     page: soda/connect-db2.md
   - subtitle: Connect to a local file
     page: soda/connect-file.md
+  - subtitle: Connect to MotherDuck
+    page: soda/connect-motherduck.md
   - subtitle: Connect to MS SQL Server
     page: soda/connect-mssql.md
   - subtitle: Connect to MySQL

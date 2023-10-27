@@ -25,7 +25,7 @@ Log in to your **Soda Cloud** account, click the **Ask SodaGPT** button in the m
 * Provide instructions in English.
 * SodaGPT is capable of writing one data quality check at a time.
 * SodaGPT *only* outputs SodaCL.
-* SodaGPT exclusively supports the `fail` condition. Please note that the `warn` condition is not supported yet.
+* SodaGPT exclusively supports the `fail` condition; it does not yet support the `warn`.
 * Provide the following information in your instruction:
     * the name of your dataset
     * the name of at least one column in that dataset
