@@ -106,6 +106,7 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 | MySQL | `soda-mysql` |
 | OracleDB | `soda-oracle` |
 | PostgreSQL | `soda-postgres` |
+| Presto | `soda-presto` |
 | Snowflake | `soda-snowflake` | 
 | Trino | `soda-trino` |
 | Vertica  | `soda-vertica` |

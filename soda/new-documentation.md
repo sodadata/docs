@@ -9,6 +9,10 @@ parent: Learning resources
 
 <br />
 
+#### October 30, 2023
+* Updated [anomaly score]({% link soda-cl/anomaly-score.md %}) documentation to include support for dataset filters.
+* Added documentation to accompany new support for [Presto]({% link soda/connect-presto.md %}) data source.
+
 #### October 26, 2023
 * Added documentation to accompany new support for [MotherDuck]({% link soda/connect-motherduck.md %}) data source.
 
