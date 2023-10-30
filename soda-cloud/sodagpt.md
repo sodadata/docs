@@ -24,12 +24,12 @@ Log in to your **Soda Cloud** account, click the **Ask SodaGPT** button in the m
 
 * Provide instructions in English.
 * SodaGPT is capable of writing one data quality check at a time.
-* SodaGPT *only* outputs SodaCL.
-* SodaGPT exclusively supports the `fail` condition; it does not yet support the `warn`.
-* Provide the following information in your instruction:
+* SodaGPT **only** outputs SodaCL.
+* SodaGPT **exclusively supports the `fail` condition**; it does not yet support the `warn`.
+* Provide the following information in your instruction for best results:
     * the name of your dataset
     * the name of at least one column in that dataset
-* SodaGPT is capable of writing the following types of SodaCL checks:
+* SodaGPT is **exclusively capable** of writing the following types of SodaCL checks:
     * [missing]({% link soda-cl/missing-metrics.md %})
     * [validity]({% link soda-cl/validity-metrics.md %})
     * [freshness]({% link soda-cl/freshness.md %})
@@ -44,7 +44,7 @@ Log in to your **Soda Cloud** account, click the **Ask SodaGPT** button in the m
 
 ## About the AI
 
-SodaGPT uses Soda technology to translate natural language requirements into SodaCL checks. It is not related to GPT3, CPT4, chatGPT or OpenAI. 
+SodaGPT uses Soda technology to translate natural language requirements into SodaCL checks. It is not related to GPT3, GPT4, chatGPT or OpenAI. 
 
 For SodaGPT's functionality, Soda trained a very specialized Large Language Model (LLM) based on the open-source Falcon-7b model. The model currently does not learn from user input, and will never learn sensitive information from one user and expose it to another.
 
