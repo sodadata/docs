@@ -20,14 +20,14 @@ Refer to <a href="https://motherduck.com/docs/getting-started/connect-query-from
 ```yaml
 data_source quack:
   type: duckdb
-  path: "md:sample_data?motherduck_token=eyJhbGciOxxxxx.eyJzZXxxxxx.l4sxxxxx"
+  database: "md:sample_data?motherduck_token=eyJhbGciOxxxxx.eyJzZXxxxxx.l4sxxxxx"
   read_only: true
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
 | type     | required |                                                            |
-| path | required |                                                            |
+| database | required |                                                            |
 | read_only  | required |                                                          |
 
 

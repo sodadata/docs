@@ -18,7 +18,7 @@ Install package: `soda-duckdb`
 ```yaml
 data_source my_datasource_name:
   type: duckdb
-  path: filename.db
+  database: filename.db
   read_only: true
   schema_name: public
 ```
@@ -26,7 +26,7 @@ data_source my_datasource_name:
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
 | type     | required |                                                            |
-| path     | required | The location of the duckdb file. Refer to DuckDB documentation for details on <a href="https://duckdb.org/docs/api/python/overview#persistent-storage" target="_blank">persistent storage</a> and <a href="https://duckdb.org/docs/api/cli.html#getting-started" target="_blank">how to create a .db file</a>.                                                       |
+| database     | required | The location of the <a href="https://duckdb.org/docs/connect" target="_blank">duckdb database</a>. Refer to DuckDB documentation for details on <a href="https://duckdb.org/docs/api/python/overview#persistent-storage" target="_blank">persistent storage</a> and <a href="https://duckdb.org/docs/api/cli.html#getting-started" target="_blank">how to create a .db file</a>. This can also be a [MotherDuck database]({% link soda/connect-motherduck.md %}).                                                       |
 | read_only | required | Value is boolean: `true` or `false`                       |
 | schema_name | optional |                                                         |
 
