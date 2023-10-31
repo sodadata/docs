@@ -15,20 +15,26 @@ Use the following guides as example implementations based on how you intend to u
         <div class="docs-section-row">
             <div class="docs-grid-3cols">
                 <div>
+                    <img src="/assets/images/icons/icon-pacman@2x.png" width="50" height="40">
+                    <h2>Basic data quality testing</h2>
+                    <a href="/soda/quick-start-basic-dq.html">Set up basic testing</a>
+                    <p>Use this guide to write your first tests for basic data quality that surface missing, invalid, or unexpected data.</p>
+                </div>
+                <div>
                     <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
-                    <h2>Soda + dbt + Airflow</h2>
+                    <h2>Soda + dbt + Airflow</h2><br />
                     <a href="/soda/quick-start-prod.html">Test data in a pipeline</a>
                     <p>Use this guide as an example for how to set up and use Soda to test the quality of your data in an Airflow pipeline.</p>
                 </div>
                 <div>
                     <img src="/assets/images/icons/icon-investigate.png" width="50" height="40">
-                    <h2>Soda for data migration</h2>
+                    <h2>Soda for data migration</h2><br />
                     <a href="/soda/quick-start-migration.html">Test before data migration</a>
                     <p>Use this guide to set up Soda to test before and after data migration.</p>
                 </div>
                 <div>
                     <img src="/assets/images/icons/icon-collaboration@2x.png" width="54" height="40">
-                    <h2>Self-serve Soda</h2>
+                    <h2>Self-serve Soda</h2><br />
                     <a href="/soda/quick-start-end-user.html">Self-serve Soda</a>
                     <p>Use this guide to set up Soda Cloud to enable users across your organization to serve themselves when it comes to testing data quality. </p>
                 </div>

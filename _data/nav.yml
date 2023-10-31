@@ -27,6 +27,8 @@
   subcategories:
   - subtitle: Use case guides
     page: soda/use-case-guides.md 
+  - subtitle: Basic data quality testing
+    page: soda/quick-start-basic-dq.md
   - subtitle: Test data in a pipeline
     page: soda/quick-start-prod.md
   - subtitle: Test before data migration
