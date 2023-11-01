@@ -3,7 +3,7 @@
   "info": {
     "title": "Soda Cloud Reporting API",
     "description": "\nThis API enables you to query reporting-oriented data from your Soda Cloud account.\nUse this data to power dashboards and reports on the coverage and quality of your data.\n\nAuthentication\n-----\nThe API supports authentication via `HTTPBasic`, `TokenAuth`, and `ApiKey` authentication. Except for the `/get_token` endpoint, which only supports HTTP Basic authentication.\n\n- `HTTPBasic` authentication requires you to provide your username and password as a Base64 encoded `Authorization` header. Send your HTTP requests with an `Authorization` header that contains the word `Basic` followed by a space and a base64-encoded string `username:password`.\n\n- `TokenAuth` requires that you obtain a Soda token from the `/get_token` endpoint using your username and password in accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token` endpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with any of the other endpoints.\n\n- `ApiKey` authentication allows you to use API keys generated in your Cloud Profile. Use this method if your organization is using Single Sign-On (SSO). Provide your API Key ID and API Key Secret as `API_KEY_ID` and `API_KEY_SECRET` headers, respectively. If you do not know how to generate your API Key and Secret pair follow the [Configure and run Soda Library](https://docs.soda.io/soda-library/configure.html#configure-and-run-soda-library) instructions.\n\n## Examples\n**`HTTPBasic`**\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'Authorization: Basic bXl1c2VybmFtZUBzb2RhLmlvOm15c2VjcmV0cGFzc3dvcmQ='\n```\n\n**`TokenAuth`**\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'SODA_TOKEN: ZAT2BM4sceKCGggHfawz_Ji5cfHKkiPjoN123yM0wCrWaxSkN4CGdg'\n```\n\n**`ApiKey`**\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'X-API-KEY-ID: 60ef2406-6492-4236-a6b8-2cb9240d803c' \\\n  --header 'X-API-KEY-SECRET: 918TcsFViYYEBtXlbzMeX6lT4SVm70'\n```\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required, in the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication credentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
-    "version": "1.0.11"
+    "version": "1.2.2"
   },
   "servers": [
     { "url": "https://reporting.cloud.soda.io/v1/", "description": "Cloud EU" },
@@ -59,7 +59,7 @@
               "title": "From Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2023-08-11T10:13:44.611144"
+              "default": "2023-10-01T10:52:00.927077"
             },
             "name": "from_datetime",
             "in": "query"
@@ -70,7 +70,7 @@
               "title": "To Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2023-09-11T10:13:44.611159"
+              "default": "2023-11-01T10:52:00.927095"
             },
             "name": "to_datetime",
             "in": "query"
@@ -464,8 +464,8 @@
                   "page": 1,
                   "size": 400,
                   "status": "unresolved",
-                  "from_datetime": "2023-08-11T10:13:44.268273",
-                  "to_datetime": "2023-09-11T10:13:44.268285"
+                  "from_datetime": "2023-10-01T10:52:00.419418",
+                  "to_datetime": "2023-11-01T10:52:00.419427"
                 }
               }
             }
@@ -703,11 +703,6 @@
             "type": "string",
             "description": "Phone number of the check owner."
           },
-          "owner_country": {
-            "title": "Owner Country",
-            "type": "string",
-            "description": "Country of the check owner."
-          },
           "owner_user_type": {
             "title": "Owner User Type",
             "type": "string",
@@ -742,11 +737,6 @@
             "title": "Creator Phone Number",
             "type": "string",
             "description": "Phone number of the check creator."
-          },
-          "creator_country": {
-            "title": "Creator Country",
-            "type": "string",
-            "description": "Country of the check creator."
           },
           "creator_user_type": {
             "title": "Creator User Type",
@@ -896,11 +886,6 @@
             "type": "string",
             "description": "Phone number of the check creator."
           },
-          "creator_country": {
-            "title": "Creator Country",
-            "type": "string",
-            "description": "Country of the check creator."
-          },
           "creator_user_type": {
             "title": "Creator User Type",
             "type": "string",
@@ -936,11 +921,6 @@
             "type": "string",
             "description": "Phone number of the check owner."
           },
-          "owner_country": {
-            "title": "Owner Country",
-            "type": "string",
-            "description": "Country of the check owner."
-          },
           "owner_user_type": {
             "title": "Owner User Type",
             "type": "string",
@@ -954,6 +934,21 @@
               "items": { "type": "string" }
             },
             "description": "Atributes of a check"
+          },
+          "check_group_aggregate_id": {
+            "title": "Check Group Aggregate Id",
+            "type": "string",
+            "description": "\nIn the UI, group checks are displayed as a single expandable check or group.\nWhen not null, this field holds the ID of the group, allowing sub-checks to be paired\nusing the check_group_aggregate_id. Checks with a check_group_id are termed \"aggregate checks\".\nThey lack associated results and don't count for coverage, but their sub-checks do.\n    "
+          },
+          "check_group_id": {
+            "title": "Check Group Id",
+            "type": "string",
+            "description": "\nUse this field to group sub-checks that are part of a group check type.\n"
+          },
+          "is_group_aggregate_check": {
+            "title": "Is Group Aggregate Check",
+            "type": "boolean",
+            "description": "\nIn the UI, group checks are displayed as a single expendable check or group.\nWhen true, this field allows you to filter or know that this record of a check corresponds\nto the group check (the \"aggregate if you will). This check does not have check results associated.\n"
           }
         },
         "description": "Contains information about a check and its associated datasets."
@@ -1091,6 +1086,26 @@
             "title": "Percent Change Percentage Passing Checks",
             "type": "number",
             "description": "\n        Percentage change of the last data health point compared to a rolling average over the last\n        3\n        "
+          },
+          "number_of_distinct_checks": {
+            "title": "Number Of Distinct Checks",
+            "type": "integer",
+            "description": "Number of distinct checks and monitors executed."
+          },
+          "percentage_passing_distinct_passing_checks": {
+            "title": "Percentage Passing Distinct Passing Checks",
+            "type": "number",
+            "description": "\n            This calculation divides the number of checks that passed by\n            the total number of checks evaluated. Soda aggregates the\n            score daily and, in the calculation, uses the results from the\n            latest check evaluations on that day.\n            "
+          },
+          "last_point_distinct_checks_percent_change": {
+            "title": "Last Point Distinct Checks Percent Change",
+            "type": "number",
+            "description": "Percentage change from last previous result of percent_change_percentage_distinct_passing_checks"
+          },
+          "percent_change_percentage_distinct_passing_checks": {
+            "title": "Percent Change Percentage Distinct Passing Checks",
+            "type": "number",
+            "description": "\n        Percentage change from the last percent_change_percentage_distinct_passing point compared to\n        a rolling average over the last\n        3\n        "
           }
         },
         "description": "Dataset health information containing counts of passing or failing checks (warning or critical) per scan date."
@@ -1227,11 +1242,6 @@
             "type": "string",
             "description": "Phone number of the check creator."
           },
-          "creator_country": {
-            "title": "Creator Country",
-            "type": "string",
-            "description": "Country of the check creator."
-          },
           "creator_user_type": {
             "title": "Creator User Type",
             "type": "string",
@@ -1272,11 +1282,6 @@
             "title": "Owner Phone Number",
             "type": "string",
             "description": "Phone number of the check owner."
-          },
-          "owner_country": {
-            "title": "Owner Country",
-            "type": "string",
-            "description": "Country of the check owner."
           },
           "owner_user_type": {
             "title": "Owner User Type",
@@ -1576,14 +1581,14 @@
             "type": "string",
             "description": "ISO timestamp from which you want to retrieve incidents. Defaults to last 31 days.",
             "format": "date-time",
-            "default": "2023-08-11T10:13:44.268273"
+            "default": "2023-10-01T10:52:00.419418"
           },
           "to_datetime": {
             "title": "To Datetime",
             "type": "string",
             "description": "ISO timestamp up to which you want to retrieve incidents. Defaults to today.",
             "format": "date-time",
-            "default": "2023-09-11T10:13:44.268285"
+            "default": "2023-11-01T10:52:00.419427"
           }
         },
         "description": "Incidents request JSON Body."
