@@ -1,2 +1,0 @@
-**Problem:** You open the check that failed during a scan but cannot click the **Failed Rows** tab. <br />
-**Solution:** Click a failed data point in the chart that shows the check's scan results over time. This action identifies the specific set of failed rows associated with an individual scan result so it can display the failed rows associated with that individual scan. 

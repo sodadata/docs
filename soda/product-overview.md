@@ -37,7 +37,10 @@ Working together, **Soda Library** or a **Soda Agent**, **Soda Cloud** and **Sod
 * To define data quality checks, you use the **Soda Checks Language (SodaCL)**, which is a YAML-based, domain-specific language for data quality testing. A Soda check is a test that Soda Library executes when it scans a dataset in your data source. Technically, it is a Python expression that checks metrics to see if they match the parameters you defined for a measurement. <br />
 Designed as a human-readable language, SodaCL includes over 25 built-in metrics and checks that you can use to write Soda Checks for data quality, including metrics for missing values, duplicates, schema changes, and freshness; see example below. 
 
-{% include banner-core.md %}
+<div class="info">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>Soda Core</strong>, the free, open-source Python library and CLI tool from which Soda Library extends, continues to exist as an OSS project in GitHub, including all <a href="https://github.com/sodadata/soda-core/blob/main/docs/overview-main.md" target="_blank">Soda Core documentation</a>.<br /><br /><a href="https://docs.soda.io/soda/upgrade.html#migrate-from-soda-core">Migrate to Soda Library</a> to connect to Soda Cloud and access all the newest Soda features.
+</div>
 
 <br />
 
