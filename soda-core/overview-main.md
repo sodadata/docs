@@ -27,29 +27,6 @@ redirect_from:
 
 [Install Soda Library]({% link soda-library/install.md %}) for a free, 45-day trial, or [migrate from Soda Core]({% link soda/upgrade.md %}#migrate-from-soda-core) to Soda Library without changing checks or data source connections.
 
-<!-- 
-![done](/assets/images/done.png){:width="20px"} Supported<br />
-![almost-done](/assets/images/almost-done.png){:width="20px"} Deprecating soon
-
-| Feature or functionality | Soda Core OSS | Soda Library |
-| ----------------------- | :-----------: | :----------: |
-|Available for free, forever | ![done](/assets/images/done.png){:width="20px"} |  |
-|Available for free for a 45-day free trial |  | ![done](/assets/images/done.png){:width="20px"}|
-|Connect to Soda Cloud | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
-|Compatible with basic SodaCL checks and configurations | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
-|Supports Cloud Metric Store for historic metrics | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
-|Set alert notifications | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
-|Define check attributes | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
-|Profile data | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
-|Add automated monitoring checks | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
-|Use anomaly detection and schema evolution checks | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
-|Use change-over-time checks for relative measurements | ![almost-done](/assets/images/almost-done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
-|Requires a Soda Cloud connection via API keys to validate licensing or trial status and run scans. |  | ![done](/assets/images/done.png){:width="20px"} |
-|Compatible with Check Suggestions |  | ![done](/assets/images/done.png){:width="20px"} |
-|Use Check Templates |  | ![done](/assets/images/done.png){:width="20px"} |
-|Use Group By + Group Evolution checks |  | ![done](/assets/images/done.png){:width="20px"} |
-|Access extensive documentation on docs.soda.io |  | ![done](/assets/images/done.png){:width="20px"} |
--->
 
 ---
 

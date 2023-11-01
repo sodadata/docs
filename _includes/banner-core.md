@@ -1,4 +1,0 @@
-<div class="info">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  <strong>Soda Core</strong>, the free, open-source Python library and CLI tool from which Soda Library extends, continues to exist as an OSS project in GitHub, including all <a href="https://github.com/sodadata/soda-core/blob/main/docs/overview-main.md" target="_blank">Soda Core documentation</a>.<br /><br /><a href="https://docs.soda.io/soda/upgrade.html#migrate-from-soda-core">Migrate to Soda Library</a> to connect to Soda Cloud and access all the newest Soda features.
-</div>
