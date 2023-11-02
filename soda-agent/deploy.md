@@ -141,7 +141,7 @@ The following table outlines the two ways you can install the Helm chart to depl
 
 1. (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
 2. Add the Soda Agent Helm chart repository.
-` ``shell
+```shell
 helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```
 3. Use the following comand to install the Helm chart to deploy a Soda Agent in your custer. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
