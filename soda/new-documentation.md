@@ -9,6 +9,11 @@ parent: Learning resources
 
 <br />
 
+#### November 2, 2023
+* Added `pollingInterval` to Soda Agent [deployment]({% link soda-agent/deploy.md %}) instructions.
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.20 - 1.1.21 and Soda Core 3.0.52 - 3.0.53.
+* Added sample input values and clarifying notes to data source connection config reference for Athena.
+
 #### October 30, 2023
 * Updated [anomaly score]({% link soda-cl/anomaly-score.md %}) documentation to include support for dataset filters.
 * Added documentation to accompany new support for [Presto]({% link soda/connect-presto.md %}) data source.
