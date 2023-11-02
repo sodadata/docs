@@ -152,6 +152,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```shell
 helm install soda-agent soda-agent/soda-agent \
     --set soda.agent.name=myuniqueagent \
+    --set soda.polling.interval=5 \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
     --set soda.cloud.endpoint=https://cloud.soda.io \
     --set soda.apikey.id=*** \
@@ -207,6 +208,7 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
+          pollingIntervall: 5
         scanlauncher:
           idle:
             enabled: true
@@ -380,6 +382,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 helm install soda-agent soda-agent/soda-agent \
     --set provider.aws.eks.fargate.enabled=true \
     --set soda.agent.name=myuniqueagent \
+    --set soda.polling.interval=5 \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
     --set soda.cloud.endpoint=https://cloud.soda.io \
     --set soda.apikey.id=*** \
@@ -438,6 +441,7 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
+          pollingIntervall: 5
         scanlauncher:
           idle: 
             enabled: true
@@ -790,6 +794,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```shell
 helm install soda-agent soda-agent/soda-agent \
     --set soda.agent.name=myuniqueagent \
+    --set soda.polling.interval=5 \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
     --set soda.cloud.endpoint=https://cloud.soda.io \
     --set soda.apikey.id=*** \
@@ -843,6 +848,7 @@ namespace/soda-agent created
 helm install soda-agent soda-agent/soda-agent \
     --set soda.agent.target=azure-aks-virtualnodes \ 
     --set soda.agent.name=myuniqueagent \
+    --set soda.polling.interval=5 \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
     --set soda.cloud.endpoint=https://cloud.soda.io \
     --set soda.apikey.id=*** \
@@ -893,6 +899,7 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
+          pollingIntervall: 5
         scanlauncher:
           idle:
             enabled: true
@@ -1132,6 +1139,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```shell
 helm install soda-agent soda-agent/soda-agent \
 >   --set soda.agent.name=myuniqueagent \
+    --set soda.polling.interval=5 \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
 >   --set soda.cloud.endpoint=https://cloud.soda.io \
 >   --set soda.apikey.id=*** \
@@ -1188,6 +1196,7 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
+          pollingIntervall: 5
         scanlauncher:
           idle:
             enabled: true
