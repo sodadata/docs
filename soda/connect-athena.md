@@ -18,8 +18,8 @@ Install package: `soda-athena`
 ```yaml
 data_source my_datasource_name:
   type: athena
-  access_key_id: xxxx
-  secret_access_key: xxxx
+  access_key_id: kk9gDU6800xxxx
+  secret_access_key: 88f&eeTuT47xxxx
   region_name: eu-west-1
   staging_dir: s3://s3-results-bucket/output/
   schema: public
@@ -27,12 +27,12 @@ data_source my_datasource_name:
 
 | Property          | Required | Notes                                                      |
 | ----------------- | -------- | ---------------------------------------------------------- |
-| type              | required | The type of data source.                                   |
+| type              | required | Identify the type of data source for Soda.                 |
 | access_key_id     | optional <sup>1</sup> | Consider using system variables to retrieve this value securely. See <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html" target="_blank">Manage access keys for IAM users</a>.|
 | secret_access_key | optional <sup>1</sup> | Consider using system variables to retrieve this value securely. |
 | region_name       | optional | The endpoint your AWS account uses. Refer to <a href="https://docs.aws.amazon.com/general/latest/gr/athena.html" target="_blank">Amazon Athena endpoints and quotas</a>. |
-| staging_dir       | required | Amazon S3 Staging Directory (the Query Result Location in AWS); see <a href="https://docs.aws.amazon.com/athena/latest/ug/querying.html#query-results-specify-location" target="_blank">Specifying a query result location</a> |
-| schema            | required | The schema in the data source in which your tables exist.           |
+| staging_dir       | required | Identify the Amazon S3 Staging Directory (the Query Result Location in AWS); see <a href="https://docs.aws.amazon.com/athena/latest/ug/querying.html#query-results-specify-location" target="_blank">Specifying a query result location</a> |
+| schema            | required | Identify the schema in the data source in which your tables exist. |
 
 <sup>1</sup> Access keys and IAM role are mutually exclusive: if you provide values for `access_key_id` and `secret_access_key`, you cannot use Identity and Access Management role; if you provide value for `role_arn`, then you cannot use the access keys. Refer to [Identity and Access Management in Athena](https://docs.aws.amazon.com/athena/latest/ug/security-iam-athena.html) for details.
 

@@ -28,13 +28,13 @@ data_source my_datasource_name:
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
-| type     | required |                                                            |
-| host     | required |                                                            |
-| port     | optional |                                                            |
-| username | required | Consider using system variables to retrieve this value securely.      |
-| password | required | Consider using system variables to retrieve this value securely.      |
-| database | required |                                                            |
-| schema   | required |                                                            |
+| type      | required  | Identify the type of data source for Soda.               |
+| host      | required  | Provide a host identifier.                               |
+| port      | required  | Provide a port identifier.                               |
+| username  | required  | Consider using system variables to retrieve this value securely. |
+| password  | required  | Consider using system variables to retrieve this value securely. |
+| database  | required  | Provide an identifier for your database.                 |
+| schema    | optional  | Provide an identifier for the schema in which your dataset exists.|
 
 
 {% include test-connection.md %}

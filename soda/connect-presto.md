@@ -18,21 +18,21 @@ Install package: `soda-presto`
 ```yaml
 data_source my_datasource_name:
   type: presto
-  host: localhost
-  username: ***
-  password: ***
-  catalog: soda
+  host: 127.0.0.1
+  username: simple
+  password: simple_pass
+  catalog: hive
   schema: public
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
-| type     | required |                                                            |
-| host     | required |                                                            |
+| type      | required  | Identify the type of data source for Soda.               |
+| host      | required  | Provide a host identifier.                               |
 | username | required | Consider using system variables to retrieve this value securely.      |
 | password | required | Consider using system variables to retrieve this value securely.      |
-| catalog  | optional |                                                            |
-| schema   | optional |                                                            |
+| catalog  | optional | Provide an identifier for the catalog which contains schemas and which references a data source using a connector. See <a href="https://prestodb.io/docs/current/overview/concepts.html#catalog" target="_blank">Catalog</a> in the Presto documentation. |
+| schema   | optional | Provide an identifier for the schema in which your dataset exists. |
 
 {% include test-connection.md %}
 

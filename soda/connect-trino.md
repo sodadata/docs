@@ -19,29 +19,29 @@ Reference <a href="https://trino.io/docs/current/overview/concepts.html#" target
 ```yaml
 data_source my_datasource_name:
   type: trino
-  host: 
-  port: 
-  username: 
-  password: 
-  catalog: 
-  schema:
-  source:
-  http_headers:
-  client_tags:
+  host: 127.0.0.1
+  port: "5432"
+  username: simple
+  password: simple_pass
+  catalog: hive
+  schema: public
+  source: 
+  http_headers: 
+  client_tags: ["test","test2"]
 ```
 
 | Property | Required | Notes |
 | -------- | -------- | ----- |
-| type     | required |       |
-| host     | required |       |
-| port     | optional |       |
+| type     | required | Identify the type of data source for Soda. |
+| host     | required | Provide a host identifier.                 |
+| port     | optional | Provide a port identifier.                 |
 | username | required | Consider using system variables to retrieve this value securely using, for example, `${TRINO_USER}`. |
 | password | required | Consider using system variables to retrieve this value securely using, for example, `${TRINO_PASSWORD}`. |
-| catalog  | required |       |
-| schema   | required |       |
-| source   | optional |       |
-| http_headers | optional |   |
-| client_tags | optional |    |
+| catalog  | required | Provide an identifier for the catalog which contains schemas and which references a data source using a connector. See <a href="https://trino.io/docs/current/overview/concepts.html#catalog" target="_blank">Catalog</a> in the Trino documentation. |
+| schema   | required | Provide an identifier for the schema in which your dataset exists. |
+| source   | optional |  |
+| http_headers | optional | Provide any HTTP headers as needed. See <a href="https://trino.io/docs/current/develop/client-protocol.html#client-request-headers" target="_blank">Trino documentation</a> for details.  |
+| client_tags | optional |  Provide a list of tag strings to identify Trino resource groups. See <a href="https://trino.io/docs/current/develop/client-protocol.html#client-request-headers" target="_blank">Trino documentation</a> for details.  |
 
 
 {% include test-connection.md %}

@@ -20,21 +20,21 @@ data_source my_datasource_name:
   type: postgres
   host: db
   port: "5432"
-  username:
-  password:
+  username: simple
+  password: simple_pass
   database: postgres
   schema: public
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
-| type     | required |                                                            |
-| host     | required |                                                            |
-| port     | optional |                                                            |
-| username | required | Consider using system variables to retrieve this value securely.      |
-| password | required | Consider using system variables to retrieve this value securely.      |
-| database | required |                                                            |
-| schema   | required |                                                            |
+| type     | required | Identify the type of data source for Soda.                 |
+| host     | required | Provide a host identifier.                                 |
+| port     | required | Provide a port identifier.                                 |
+| username | required | Consider using system variables to retrieve this value securely. |
+| password | required | Consider using system variables to retrieve this value securely. |
+| database | required | Identify the name of your database.                        |
+| schema   | required | Provide an identifier for the schema in which your table exists.|
 
 
 {% include test-connection.md %}

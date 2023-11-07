@@ -18,23 +18,23 @@ Install package: `soda-db2`
 ```yaml
 data_source my_datasource_name:
   type: db2
-  host: localhost
+  host: 127.0.0.1
   port: 50000
-  username: xxx
-  password: xxx
-  database: 
+  username: simple
+  password: simple_pass
+  database: database
   schema: public
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
-| type     | required |                                                            |
-| host     | required |                                                            |
-| port     | optional |                                                            |
-| username | required | Consider using system variables to retrieve this value securely.      |
-| password | required | Consider using system variables to retrieve this value securely.      |
-| database | required |                                                            |
-| schema   | required |                                                            |
+| type      | required  | Identify the type of data source for Soda.               |
+| host      | required  | Provide a host identifier.                               |
+| port      | required  | Provide a port identifier.                               |
+| username  | required | Consider using system variables to retrieve this value securely.      |
+| password  | required | Consider using system variables to retrieve this value securely.      |
+| database  | required | Provide an identifier for your database.                  |
+| schema    | optional | Provide an identifier for the schema in which your dataset exists.|
 
 
 {% include test-connection.md %}

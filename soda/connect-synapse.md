@@ -23,21 +23,21 @@ data_source my_datasource_name:
   host: my_server.sql.azuresynapse.net
   port: '1433'
   database: my_database
-  username: my_user_name
-  password: my_password
+  username: simple
+  password: simple_pass
   encrypt: true
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
-| type     | required |                                                            |
+| type     | required | Identify the type of data source for Soda.                 |
 | driver   | required | Use this config setting to specify the ODBC driver version you use, such as `SQL Server Native Client 11.0` |
-| host     | required |                                                            |
-| port     | optional | You can remove the `port` config setting entirely; defaults to `1433`.|
-| database | required |                                                            |
+| host     | required | Provide a host identifier.                                 |
+| port     | optional | Provide a port identifier. You can remove the `port` config setting entirely. Default: `1433`.|
+| database | required | Provide an identifier for your database.                   |
 | username | required | Use system variables to retrieve this value securely.      |
 | password | required | Use system variables to retrieve this value securely.      |
-| encrypt  | optional |   The default value is `false`.                            |
+| encrypt  | optional | Indicate the encryption status by providing a boolean value: `true` or `false`. The default value is `false`. |
 
 
 {% include test-connection.md %}

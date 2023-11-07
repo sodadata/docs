@@ -26,9 +26,9 @@ data_source quack:
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
-| type     | required |                                                            |
-| database | required |                                                            |
-| read_only  | required |                                                          |
+| type     | required | Identify the type of data source for Soda.                 |
+| database | required | Provide an idenfitier for your database.                   |
+| read_only  | required | Indicate users' access by providing a boolean value: `true` or `false` |
 
 
 {% include test-connection.md %}
