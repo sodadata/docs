@@ -321,8 +321,8 @@ checks for CUSTOMERS [daily]:
 
 | Metric  | Column config keys | Description | Supported data type |  
 | ------  | ------------------ | ----------- |---------------------| 
-| `invalid_count` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |
-| `invalid_percent` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values`| The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  
+| `invalid_count` | `invalid format`<br /> `invalid regex`<br /> `invalid values`<br />`valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |
+| `invalid_percent` | `invalid format`<br /> `invalid regex`<br /> `invalid values`<br /> `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values`| The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  
 
 
 ## List of configuration keys
@@ -331,6 +331,9 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 | Column config key  | Description  | Values | 
 | ------------------ | ------------ | ------ |
+| `invalid format` | Defines the format of a value that Soda ought to register as invalid. <br />Only works with columns that contain data type TEXT. | See [List of valid formats](#list-of-valid-formats).  |
+| `invalid regex` | Specifies a regular expression to define your own custom invalid values. | regex, no forward slash delimiters |
+| `invalid values` | Specifies the values that Soda ought to consider invalid. Numeric characters in a `valid values` list must be enclosed in single quotes.| values in a list |
 | `valid format` | Defines the format of a value that Soda ought to register as valid. <br />Only works with columns that contain data type TEXT. | See [List of valid formats](#list-of-valid-formats).  |
 | `valid length` | Specifies a valid length for a string. <br />Only works with columns that contain data type TEXT. | integer |
 | `valid max` | Specifies a maximum numerical value for valid values. | integer or float|
@@ -338,11 +341,11 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 | `valid min` | Specifies a minimum numerical value for valid values. | integer or float |
 | `valid min length` | Specifies a valid minimum length for a string. <br />Only works with columns that contain data type TEXT. | integer |
 | `valid regex` | Specifies a regular expression to define your own custom valid values. | regex, no forward slash delimiters |
-| `valid values` | Specifies the values that Soda is to consider valid. Numeric characters in a `valid values` list must be enclosed in single quotes.| values in a list |
-| `invalid values` | Specifies the values that Soda is to consider invalid. Numeric characters in a `valid values` list must be enclosed in single quotes.| values in a list |
+| `valid values` | Specifies the values that Soda ought to consider valid. Numeric characters in a `valid values` list must be enclosed in single quotes.| values in a list |
 
 ## List of valid formats
 
+* Though table below lists valid formats, the same apply for invalid formats.
 * Valid formats apply *only* to columns using data type **TEXT**, not DATE or NUMBER.
 * The Soda Library package for **MS SQL Server** has limited support for valid formats. See the [separate list below](#formats-supported-with-soda-for-ms-sql-server) of formats supported for MS SQL Server.
 
