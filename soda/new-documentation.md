@@ -11,6 +11,7 @@ parent: Learning resources
 
 #### November 7, 2023
 * Added two configuration keys for use with [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics): `invalid format`, `invalid regex`.
+* Soda Cloud Reporting API v0 is now deprecated. Please use [Reporting API v1]({% link api-docs/reporting-api-v1.md %}).
 
 #### November 2, 2023
 * Added `pollingInterval` to Soda Agent [deployment]({% link soda-agent/deploy.md %}) instructions.
