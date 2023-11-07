@@ -26,12 +26,12 @@ Install package: `soda-snowflake`
 ```yaml
 data_source my_datasource_name:
   type: snowflake
-  username: 
-  password: 
-  account: 
-  database: 
-  warehouse:
-  connection_timeout: 
+  username: ${SNOWFLAKE_USER}
+  password: ${SNOWFLAKE_PASSWORD}
+  account: ${SNOWFLAKE_ACCOUNT}
+  database: soda
+  warehouse: soda_wh
+  connection_timeout: 240
   role: PUBLIC
   client_session_keep_alive: true
   authenticator: externalbrowser
@@ -43,22 +43,22 @@ data_source my_datasource_name:
 
 | Property | Required | Notes |
 | -------- | -------- | ----- |
-| type   | required |   |
+| type     | required | Identify the type of data source for Soda.|
 | username | required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_USER}`. |
 | password | required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_PASSWORD}`. |
-| account| required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`. |
-| database| required | |
-| warehouse| required | |
-| connection_timeout| required | |
+| account| required | Provide the unique value that identifies your account. Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`. |
+| database| required | Provide an idenfier for your database. |
+| warehouse| required | Provide an identifier for the cluster of resources that is a Snowflake virtual warehouse. See <a href="https://docs.snowflake.com/en/user-guide/warehouses-overview" target="_blank">Overview of Warehouses</a>.|
+| connection_timeout| required | Set the timeout period in minutes for an inactive login session.  |
 | role | optional | See <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Roles</a> for details. |
-| client_session_keep_alive | optional | Use this parameter with a boolean option to keep the session active, even with no user activity. |
+| client_session_keep_alive | optional | Use this parameter to keep the session active, even with no user activity. Provide a boolean value: `true` or `false`|
 | authenticator <sup>1</sup> | optional | Add an authenticator paramater with value `externalbrowser` to authenticate the connection to your Snowflake data source using any SAML 2.0-compliant identity provider (IdP) such as Okta or OneLogin.  |
 | other params | optional | You can pass any other Snowflake paramters you wish by adding the key:value pairs to your Snowflake connection configuration. See <a href="https://docs.snowflake.com/en/user-guide/python-connector-api.html#connect" target="_blank"> Snowflake Python Connector API documentation</a> for a list of passable parameters. |
 | QUERY_TAG | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag" target="_blank">QUERY_TAG</a> in Snowflake documentation. |
 | QUOTED_IDENTIFIERS_<br />IGNORE_CASE | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#quoted-identifiers-ignore-case" target="_blank">QUOTED_IDENTIFIERS_IGNORE_CASE</a> in Snowflake documentation. |
-| schema | required |  |
+| schema | required | Identify the schema in the data source in which your tables exist. |
 
-<sup>1</sup> Use this parameter when adding Snowflake connection configurations to a `configuration.`yml file. However, if you are adding connection configuration details directly in Soda Cloud (connecting to your Snowflake data source via a Soda Agent) to authenticate using Okta, you must follow the instructions documented by Snowflake for <a href="https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#native-sso-okta-only" target="_blank">Native SSO - Okta Only</a>.
+<sup>1</sup> Use this parameter when adding Snowflake connection configurations to a `configuration.yml` file. However, if you are adding connection configuration details directly in Soda Cloud (connecting to your Snowflake data source via a Soda Agent) to authenticate using Okta, you must follow the instructions documented by Snowflake for <a href="https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#native-sso-okta-only" target="_blank">Native SSO - Okta Only</a>.
  
 
 ### Private key authentication

@@ -25,10 +25,10 @@ data_source my_datasource_name:
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
-| type     | required |                                                            |
-| database     | required | The location of the <a href="https://duckdb.org/docs/connect" target="_blank">duckdb database</a>. Refer to DuckDB documentation for details on <a href="https://duckdb.org/docs/api/python/overview#persistent-storage" target="_blank">persistent storage</a> and <a href="https://duckdb.org/docs/api/cli.html#getting-started" target="_blank">how to create a .db file</a>. This can also be a [MotherDuck database]({% link soda/connect-motherduck.md %}).                                                       |
-| read_only | required | Value is boolean: `true` or `false`                       |
-| schema_name | optional |                                                         |
+| type     | required | Identify the type of data source for Soda.                 |
+| database     | required | Identify the location of the <a href="https://duckdb.org/docs/connect" target="_blank">duckdb database</a>. Refer to DuckDB documentation for details on <a href="https://duckdb.org/docs/api/python/overview#persistent-storage" target="_blank">persistent storage</a> and <a href="https://duckdb.org/docs/api/cli.html#getting-started" target="_blank">how to create a .db file</a>. This can also be a [MotherDuck database]({% link soda/connect-motherduck.md %}).                                                       |
+| read_only | required | Indicate users' access by providing a boolean value: `true` or `false` |
+| schema_name | optional | Provide an identifier for the schema in which your dataset exists. |
 
 {% include test-connection.md %}
 

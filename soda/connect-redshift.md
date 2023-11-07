@@ -18,29 +18,29 @@ Install package: `soda-redshift`
 ```yaml
 data_source my_datasource_name:
   type: redshift
-  host: db
-  username:
-  password:
-  database: 
-  access_key_id:
-  secret_access_key:
-  role_arn:
-  region: eu-west-1
+  host: 127.0.0.1
+  username: simple
+  password: simple_pass
+  database: soda
   schema: public
+  access_key_id: ${KEY_ID}
+  secret_access_key: ${ACCESS_KEY}
+  role_arn: arn:aws:ec2:us-east-1:123456789012:instance/i-012abcd34exxx56
+  region: us-east-1
 ```
 
 | Property          | Required | Notes                    |
 | ----------------- | -------- | ------------------------ |
-| type              | required |                          |
-| host              | required |                          |
-| username          | required | If you provide a value for `username` and `password`, the connection ignores cluster credentials.          |
+| type              | required | Identify the type of data source for Soda.|
+| host              | required | Provide a host identifier. |
+| username          | required | If you provide a value for `username` and `password`, the connection ignores cluster credentials. |
 | password          | required | As above.                |
-| database          | required |                          |
-| schema            |          |                          |
+| database          | required | Provide an idenfier for your database. |
+| schema            | required | Provide an identifier for the schema in which your dataset exists. |
 | access_key_id     | optional <sup>1</sup> | Consider using system variables to retrieve this value securely.  |
 | secret_access_key | optional <sup>1</sup>| Consider using system variables to retrieve this value securely.   |
-| role_arn          | optional | The [Amazon Resource Name](https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-role_arn.html) of an IAM role that you want to use. |
-| region            | optional |                         |
+| role_arn          | optional | Provide an Amazon Resource Name, which is a string that identifies an AWS resource such as an S3 bucket or EC2 instance. Learn how to <a href="https://docs.aws.amazon.com/managedservices/latest/userguide/find-arn.html" target="_blank">find your arn</a>.|
+| region            | optional | Provide an identifier for your geographic area. |
 
 <sup>1</sup> Access keys and IAM role are mutually exclusive: if you provide values for `access_key_id` and `secret_access_key`, you cannot use Identity and Access Management role; if you provide value for `role_arn`, then you cannot use the access keys. Refer to [Amazon Redshift Authorization parameters](https://docs.aws.amazon.com/redshift/latest/dg/copy-parameters-authorization.html) for details.
 

@@ -18,20 +18,19 @@ Install package: `soda-denodo`
 ```yaml
 data_source my_datasource_name:
   type: denodo
-  username: ***
-  password: **
-  host: xxx
-  port: xxxx
-  
+  username: simple
+  password: simple_pass
+  host: 127.0.0.1
+  port: 5432 
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
-| type     | required |                                                            |
+| type     | required | Identify the type of data source for Soda.                 |
 | username | required | Consider using system variables to retrieve this value securely.      |
 | password | required | Consider using system variables to retrieve this value securely.      |
-| host     | required |                                                            |
-| port     | optional |                                                            |
+| host     | required | Provide a host identifier.                                 |
+| port     | optional | Provide a port identifier.                                 |
 
 
 {% include test-connection.md %}

@@ -31,15 +31,17 @@ Install package: `soda-bigquery`
 
 {% include code-header.html %}
 ```yaml
+# Service Account Key authentication method
+# See Authentication methods below for more config options
 data_source my_datasource_name:
   type: bigquery
   account_info_json: '{
       "type": "service_account",
-      "project_id": "...",
-      "private_key_id": "...",
+      "project_id": "gold-platform-67883",
+      "private_key_id": "d0121d000000870xxx",
       "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
-      "client_email": "...@project.iam.gserviceaccount.com",
-      "client_id": "...",
+      "client_email": "abc333@project.iam.gserviceaccount.com",
+      "client_id": "XXXXXXXXXXXXXXXXXXXX.apps.googleusercontent.com",
       "auth_uri": "https://accounts.google.com/o/oauth2/auth",
       "token_uri": "https://accounts.google.com/o/oauth2/token",
       "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
@@ -49,28 +51,28 @@ data_source my_datasource_name:
   - https://www.googleapis.com/auth/bigquery
   - https://www.googleapis.com/auth/cloud-platform
   - https://www.googleapis.com/auth/drive
-  project_id: "..."
+  project_id: "platinum-platform-67883"
   dataset: sodacore
 ```
 
-| Property                                | Required                                                             |
-| --------------------------------------- | -------------------------------------------------------------------- |
-| type                                    | required                                                             |
-| account_info_json                       | optional; inline properties listed below; if not provided, Soda uses Google Application Default Credentials |
-| &ensp;&ensp;type                        | required                                                             |
-| &ensp;&ensp;project_id                  | required                                                             |
-| &ensp;&ensp;private_key_id              | required                                                             |
-| &ensp;&ensp;private_key                 | required                                                             |
-| &ensp;&ensp;client_email                | required                                                             |
-| &ensp;&ensp;client_id                   | required                                                             |
-| &ensp;&ensp;auth_uri                    | required                                                             |
-| &ensp;&ensp;token_uri                   | required                                                             |
-| &ensp;&ensp;auth_provider_x509_cert_url | required                                                             |
-| &ensp;&ensp;client_x509_cert_url        | required                                                             |
-| auth_scopes                             | optional; Soda applies the three scopes listed above by default      |
-| project_id                              | optional; overrides project_id from account_info_json                |
-| storage_project_id                      | optional; enables you to use separate project for compute and storage|
-| dataset                                 | required                                                             |
+| Property   | Required | Notes <br />(See <a href="https://cloud.google.com/chronicle/docs/soar/marketplace-integrations/google-big-query#integration_parameters" target="_blank">Google BigQuery Integration parameters</a>)|
+| --------------------------------------- | -------- | ----- |
+| type                                    | required | Identify the type of data source for Soda.  |
+| account_info_json                       | required | The integration parameters for account info are listed below. If you do not provide values for the properties, Soda uses the Google application default values. |
+| type                        | required | This the type of BigQuery account.  Default: `service_account` |
+| project_id                  | required | This is the unique identifier for the project in your console. See <a href="https://support.google.com/googleapi/answer/7014113?hl=en" target="_blank"> Locate the project ID</a>.  |
+| private_key_id              | required | A unique identifier that you generate in your console. See <a href="https://cloud.google.com/docs/authentication/api-keys?sjid=11146678289001295316-NC" target="_blank">Create an API key</a>. |
+| private_key                 | required | A unique identifier that you generate in your console. See <a href="https://cloud.google.com/docs/authentication/api-keys?sjid=11146678289001295316-NC" target="_blank">Create an API key</a>.        |
+| client_email                | required | Also known as the service account ID, find this value in the IAM & Admin > Service Accounts > Details tab in your Google Cloud Console. |
+| client_id                   | required | Your unique ID, find this value in the IAM & Admin > Service Accounts > Details tab in your Google Cloud Console.       |
+| auth_uri                    | required | BigQuery's authentication URI to which you send auth credentials. Default: `https://accounts.google.com/o/oauth2/auth`|
+| token_uri                   | required | BigQuery's token URI to which you send access tokens. Default: `https://oauth2.googleapis.com/ token` |
+| auth_provider_x509_cert_url | required | BigQuery's public x509 certificate URL that it uses to verify the JWT signed by the authentication provider. Default: `https://www.googleapis.com/ oauth2/v1/certs`  |
+| client_x509_cert_url        | required | BigQuery's public x509 certificate URL that it uses to verify the JWT signed by the client. |
+| auth_scopes                             | optional | Soda applies three <a href="https://developers.google.com/identity/protocols/oauth2/scopes" target="_blank">OAuth 2.0 scopes</a>: <br /> • `https://www.googleapis.com/auth/bigquery` to view and manage your data in BigQuery<br /> • `https://www.googleapis.com/auth/cloud-platform` to view, configure, and delete your Google Cloud data<br /> •  `https://www.googleapis.com/auth/drive` to view and add to the record of file activity in your Google Drive |
+| project_id                              | optional | Add an identifier to override the `project_id` from the `account_info_json` |
+| storage_project_id                      | optional | Add an identifier to use a separate BigQuery project for compute and storage.|
+| dataset                                 | required | The identifier for your BigQuery dataset, the top-level container that is used to organize and control access to your tables and views.  |
 
 
 ## Authentication methods

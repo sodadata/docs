@@ -20,29 +20,29 @@ data_source my_datasource_name:
   type: sqlserver
   host: host
   port: '1433'
-  username: xxx
-  password: ...
-  database: 
+  username: simple
+  password: simple_pass
+  database: database
   schema: dbo
   trusted_connection: false
   encrypt: false 
   trust_server_certificate: false
-  driver: 
+  driver: SQL Server Native Client 11.0
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
-| type     | required |                                                            |
-| host     | required |                                                            |
-| port     | optional | You can remove the `port` config setting entirely; defaults to `1433`.|
-| username | required | Use system variables to retrieve this value securely.      |
-| password | required | Use system variables to retrieve this value securely.      |
-| database | required |                                                            |
-| schema   | required |                                                            |
-| trusted_connection | optional |  The default value is `false`. Set to `true` if using Active Directory authentication. |  
-| encrypt | optional |   The default value is `false`.                             |
-| trust_server_certificate | optional |   The default value is `false`.  |
-| driver  | optional | Use this config setting to specify the ODBC driver version you use, such as `SQL Server Native Client 11.0` |
+| type      | required  | Identify the type of data source for Soda.               |
+| host      | required  | Provide a host identifier.                               |
+| port      | optional  | Provide a port identifier. You can remove the `port` config setting entirely. Default: `1433`.|
+| username  | required  | Use system variables to retrieve this value securely.    |
+| password  | required  | Use system variables to retrieve this value securely.    |
+| database  | required  | Provide an identifier for your database.                 |
+| schema    | required  | Provide an identifier for the schema in which your dataset exists. |
+| trusted_connection    | optional |  Indicate connection trustworthiness by providing a boolean value: `true` or `false`. The default value is `false`. Set to `true` if you are using Active Directory authentication. |  
+| encrypt   | optional | Indicate the encryption status by providing a boolean value: `true` or `false`.  The default value is `false`. |
+| trust_server_certificate | optional | Specifies whether encryption occurs if there is no verifiable server certificate. Providing a boolean value: `true` or `false`.  The default value is `false`.  |
+| driver    | optional | Use this config setting to specify the ODBC driver version you use, such as `SQL Server Native Client 11.0` |
 
 {% include test-connection.md %}
 
