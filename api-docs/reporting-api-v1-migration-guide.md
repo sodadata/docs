@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Reporting API changelog and migration guide
+title: Reporting API migration guide
 description: Review the changes for the latest version of Soda Cloud's Reporting API and learn how to migrate existing calls.
 parent: API Documentation
 fullwidth: false
 ---
 
-# Reporting API changelog and migration guide
+# Reporting API migration guide
 
-## Version 1: New and changed ![preview](/assets/images/preview.png){:height="70px" width="70px" align="top"}
+## Version 1: New and changed
 
 * Version 1 of the reporting API (Preview) retrieves all of its data from pre-processed and aggregated data sources. This change addresses the issue of application performance impact in v0 when deriving some metrics "on the fly", such as health and coverage.
 * The reporting API refreshes the data for all endpoints once per day between 10:00pm and 11:00pm EST. This update frequency may increase in the future if the need for intra-day reporting arises.
