@@ -210,7 +210,7 @@
   subcategories:
   - subtitle: Reporting API v1
     page: api-docs/reporting-api-v1.md
-  - subtitle: Changelog and migration guide
+  - subtitle: Migration guide
     page: api-docs/reporting-api-v1-migration-guide.md
   - subtitle: Build a reporting dashboard
     page: api-docs/reporting-api-to-overview-dashboards.md
