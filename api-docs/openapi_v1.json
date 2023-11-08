@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Soda Cloud Reporting API",
-    "description": "\nThis API enables you to query reporting-oriented data from your Soda Cloud account.\nUse this data to power dashboards and reports on the coverage and quality of your data.\n\nAuthentication\n-----\nThe API supports authentication via `ApiKey` (Strongly Recommended) `HTTPBasic` (Up for deprecation), `TokenAuth` (Up for Deprecation). Except for the `/get_token` (up for deprecation) endpoint, which only supports HTTP Basic authentication.\n\n- `ApiKey` (**Strongly Recommended**) authentication allows you to use API keys generated in your Cloud Profile. This method is the only one that will work in all cases whether your user is part of more than one organizations, or whether your organization uses Single Sign-On (SSO) authentication. Provide your API Key ID and API Key Secret as `X-API-KEY-ID` and `X-API-KEY-SECRET` headers, respectively. If you do not know how to generate your API Key and Secret pair follow the\n[Configure and run Soda Library](https://docs.soda.io/soda-library/configure.html#configure-and-run-soda-library) instructions.\n\n- `HTTPBasic` **(Up for deprecation)** authentication requires you to provide your username and password as a Base64 encoded `Authorization` header. Send your HTTP requests with an `Authorization` header that contains the word `Basic` followed by a space and a base64-encoded string `username:password`.\n\n- `TokenAuth` **(Up for deprecation)** requires that you obtain a Soda token from the `/get_token` endpoint using your username and password in accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token` endpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with any of the other endpoints.\n\n\n## Examples\n**`ApiKey` (Strongly Recommended)**\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'X-API-KEY-ID: 60ef2406-6492-4236-a6b8-2cb9240d803c' \\\n  --header 'X-API-KEY-SECRET: 918TcsFViYYEBtXlbzMeX6lT4SVm70'\n```\n\n**`HTTPBasic`** (Up for Deprecation)\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'Authorization: Basic bXl1c2VybmFtZUBzb2RhLmlvOm15c2VjcmV0cGFzc3dvcmQ='\n```\n\n**`TokenAuth`** (Up for Deprecation)\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'SODA_TOKEN: ZAT2BM4sceKCGggHfawz_Ji5cfHKkiPjoN123yM0wCrWaxSkN4CGdg'\n```\n\n\nTesting\n-----\nYou can test the API using the following methods.\n* Test the API endpoints within the documentation. Provide the authentication credentials, when required, in the **Auth** toggle in the testing window embedded in each endpoint's documentation.\n* Test the API using an API testing platform such as Postman. Provide the `Basic Auth` authentication credentials in your chosen testing platform.\n* Test the API using an HTTP request library such as `httpx` in Python, an example of which follows.\n```python\nimport httpx\nrequest_result = httpx.post(\"<endpoint_URL>\", auth=(\"username\", \"password\"))\n```\n",
+    "description": "\nThis API enables you to query reporting-oriented data from your Soda Cloud account.\nUse this data to power dashboards and reports on the coverage and quality of your data.\n\nAuthentication\n-----\nThe API supports authentication via `ApiKey` (Strongly Recommended) `HTTPBasic` (Up for deprecation), `TokenAuth` (Up for Deprecation). Except for the `/get_token` (up for deprecation) endpoint, which only supports HTTP Basic authentication.\n\n- `ApiKey` (**Strongly Recommended**) authentication allows you to use API keys generated in your Cloud Profile. This method is the only one that will work in all cases whether your user is part of more than one organizations, or whether your organization uses Single Sign-On (SSO) authentication. Provide your API Key ID and API Key Secret as `X-API-KEY-ID` and `X-API-KEY-SECRET` headers, respectively. If you do not know how to generate your API Key and Secret pair follow the\n[Configure and run Soda Library](https://docs.soda.io/soda-library/configure.html#configure-and-run-soda-library) instructions.\n\n- `HTTPBasic` **(Up for deprecation)** authentication requires you to provide your username and password as a Base64 encoded `Authorization` header. Send your HTTP requests with an `Authorization` header that contains the word `Basic` followed by a space and a base64-encoded string `username:password`.\n\n- `TokenAuth` **(Up for deprecation)** requires that you obtain a Soda token from the `/get_token` endpoint using your username and password in accordance with the HTTPBasic Authentication framework. This token has an expiration of 30 minutes. The `/get_token` endpoint makes this clear to you (see endpoint documentation below). You can then use this token to authenticate with any of the other endpoints.\n\n\n## Examples\n**`ApiKey` (Strongly Recommended)**\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'X-API-KEY-ID: 60ef2406-6492-4236-a6b8-2cb9240d803c' \\\n  --header 'X-API-KEY-SECRET: 918TcsFViYYEBtXlbzMeX6lT4SVm70'\n```\n\n**`HTTPBasic`** (Up for Deprecation)\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'Authorization: Basic bXl1c2VybmFtZUBzb2RhLmlvOm15c2VjcmV0cGFzc3dvcmQ='\n```\n\n**`TokenAuth`** (Up for Deprecation)\n```curl\ncurl --request POST \\\n  --url https://reporting.cloud.soda.io/v1/coverage/dataset_coverage \\\n  --header 'Content-Type: application/json' \\\n  --header 'SODA_TOKEN: ZAT2BM4sceKCGggHfawz_Ji5cfHKkiPjoN123yM0wCrWaxSkN4CGdg'\n```\n",
     "version": "1.3.0"
   },
   "servers": [
@@ -59,7 +59,7 @@
               "title": "From Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2023-10-08T13:34:02.426391"
+              "default": "2023-10-08T14:49:02.297160"
             },
             "name": "from_datetime",
             "in": "query"
@@ -70,7 +70,7 @@
               "title": "To Datetime",
               "type": "string",
               "format": "date-time",
-              "default": "2023-11-08T13:34:02.426412"
+              "default": "2023-11-08T14:49:02.297180"
             },
             "name": "to_datetime",
             "in": "query"
@@ -464,8 +464,8 @@
                   "page": 1,
                   "size": 400,
                   "status": "unresolved",
-                  "from_datetime": "2023-10-08T13:34:01.986944",
-                  "to_datetime": "2023-11-08T13:34:01.986951"
+                  "from_datetime": "2023-10-08T14:49:01.934809",
+                  "to_datetime": "2023-11-08T14:49:01.934817"
                 }
               }
             }
@@ -1546,14 +1546,14 @@
             "type": "string",
             "description": "ISO timestamp from which you want to retrieve incidents. Defaults to last 31 days.",
             "format": "date-time",
-            "default": "2023-10-08T13:34:01.986944"
+            "default": "2023-10-08T14:49:01.934809"
           },
           "to_datetime": {
             "title": "To Datetime",
             "type": "string",
             "description": "ISO timestamp up to which you want to retrieve incidents. Defaults to today.",
             "format": "date-time",
-            "default": "2023-11-08T13:34:01.986951"
+            "default": "2023-11-08T14:49:01.934817"
           }
         },
         "description": "Incidents request JSON Body."
