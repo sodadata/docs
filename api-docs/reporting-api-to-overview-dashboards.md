@@ -29,7 +29,7 @@ This example aims to help you build a data quality reporting dashboard using the
 * You have a Soda Cloud account.
 * You have [installed Soda Library]({% link soda-library/install.md %}) in your environment and [connected]({% link soda-library/install.md %}#configure-soda) it to your Soda Cloud account.
 * You have used Soda Library to run at least one scan against data in a dataset.
-* You are familiar with the [Soda Cloud Reporting API]({% link api-docs/reporting-api.md %}). 
+* You are familiar with the [Soda Cloud Reporting API]({% link api-docs/reporting-api-v1.md %}). 
 * This example does not support SSO.
 
 ## Set up a virtual Python environment
@@ -223,7 +223,7 @@ To build a dashboard, this example uses <a href="https://redash.io/" target="_bl
 3. Make a second plot that displays the number of checks implemented on each dataset over time, as well as a project-wide benchmark, using the median calculation we derived in the SQL query above. Use two other metrics: 
 * {% raw %}#{% endraw %}of tests on dataset
 * median number of tests in project<br />
-By setting the median number of tests metric as a line, viewers get insight into the check coverage of your dataset relative to other datasets in your project. You can also get similar information from the [`dataset_coverage` endpoint]({% link api-docs/reporting-api.md %}#/operations/dataset_coverage_v0_coverage_dataset_coverage_post).<br /><br />
+By setting the median number of tests metric as a line, viewers get insight into the check coverage of your dataset relative to other datasets in your project. You can also get similar information from the [`dataset_coverage` endpoint]({% link api-docs/reporting-api-v1.md %}#/operations/dataset_coverage_v0_coverage_dataset_coverage_post).<br /><br />
 ![Plot of dataset test coverage over time](/assets/images/rep-api-test-setup-over-time.png)
 <br />
 4. Make a third plot to get an overview of the latest Dataset Health results for your project. For this plot, the SQL query captures only the last-known scan date for each dataset.

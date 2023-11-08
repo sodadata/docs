@@ -84,7 +84,7 @@ To meet your organization's regulatory and policy mandates, you can download a C
 1. As an Admin, login to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**. Only Admins can view Organization Settings.
 2. Access the **Audit Trail** tab, then set the date range of usage details you wish to examine and click **Download**.
 
-Alternatively, you can use the [Audit Trail endpoint]({% link api-docs/reporting-api.md %}#/operations/audit_trail_v0_audit_trail_get) in Soda Cloud's Reporting API to access audit trail data. 
+Alternatively, you can use the [Audit Trail endpoint]({% link api-docs/reporting-api-v1.md %}#/operations/audit_trail_v0_audit_trail_get) in Soda Cloud's Reporting API to access audit trail data. 
 
 
 ## Access to resources

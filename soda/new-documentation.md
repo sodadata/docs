@@ -790,7 +790,7 @@ checks for dim_customers:
 
 #### November 24, 2021
 
-* Added new API docs for the [Soda Cloud Reporting API]({% link api-docs/reporting-api.md %}).
+* Added new API docs for the [Soda Cloud Reporting API]({% link api-docs/reporting-api-v1.md %}).
 * Added instructions to [Build a reporting dashboard]({% link api-docs/reporting-api-to-overview-dashboards.md %}) using the Soda Cloud Reporting API.
 
 #### November 23, 2021
