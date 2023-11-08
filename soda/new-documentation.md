@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### November 8, 2023
+* Removed Reporting API v0 documentation as the version is now deprecated.
+
 #### November 7, 2023
 * Added two configuration keys for use with [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics): `invalid format`, `invalid regex`.
 * Soda Cloud Reporting API v0 is now deprecated. Please use [Reporting API v1]({% link api-docs/reporting-api-v1.md %}).
@@ -790,7 +793,7 @@ checks for dim_customers:
 
 #### November 24, 2021
 
-* Added new API docs for the [Soda Cloud Reporting API]({% link api-docs/reporting-api.md %}).
+* Added new API docs for the [Soda Cloud Reporting API]({% link api-docs/reporting-api-v1.md %}).
 * Added instructions to [Build a reporting dashboard]({% link api-docs/reporting-api-to-overview-dashboards.md %}) using the Soda Cloud Reporting API.
 
 #### November 23, 2021
