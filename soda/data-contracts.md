@@ -34,6 +34,12 @@ checks:
   - missing_count(id) = 0
 ```
 
+[Install data contracts](#install-data-contracts)<br />
+[Define a data contract](#define-a-data-contract)<br />
+[Enforce a dta contract](#enforce-a-data-contract)<br />
+[Go further](#go-further)<br />
+<br />
+
 ## Install data contracts
 
 Data contracts are only available for use in programmatic scans using Soda Core or Soda Library. <br />
@@ -88,24 +94,14 @@ A data contract consists of two required top-level configuration keys for `datas
 
 Optionally, you can use a `checks` configuration key to add SodaCL checks to the same file so that Soda executes both your defined checks, and the data contract standards as checks, during a scan of your data.
 
-The following simple data contract example ensures that the data type of all values in the `last_name` column in the `dim_customer` dataset are `character varying`. Soda translates the contract language into a SodaCL check; see below. During a scan, Soda executes the SodaCL check it prepared and, if any value in that column is not character varying, the check fails indicating a breach of the data contract standard.
+The following simple data contract example ensures that the data type of all values in the `last_name` column in the `dim_customer` dataset are `character varying`. Soda translates the contract language into a SodaCL check. During a scan, Soda executes the SodaCL check it prepared and, if any value in that column is not character varying, the check fails indicating a breach of the data contract standard.
 
 ```yaml
-# Data contract
 dataset: dim_customer
 
 columns: 
   - name: last_name
     data_type: character varying
-```
-
-```yaml
-# Translated into SodaCL
-checks for dim_customer:
-    - schema
-        fail:
-          when wrong column type:
-            last_name: character varying
 ```
 
 <br />
