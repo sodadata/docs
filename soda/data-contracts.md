@@ -8,7 +8,7 @@ parent: Create data contracts
 # Create a data contract ![experimental](/assets/images/experimental.png){:height="150px" width="150px"} 
 *Last modified on {% last_modified_at %}*
 
-Use data contract YAML-based language to set data quality standards for data products. In a programmatic scans, Soda translates contract standards into Soda Checks Language, then executes the standards as data quality checks during a scan. 
+Use Soda's data contract YAML-based language to set data quality standards for data products. In a programmatic scans, Soda translates contract standards into Soda Checks Language, then executes the standards as data quality checks during a scan. 
 ```yaml
 dataset: dim_customer
 
