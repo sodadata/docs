@@ -8,7 +8,7 @@ parent: Create data contracts
 # Create a data contract ![experimental](/assets/images/experimental.png){:height="150px" width="150px"} 
 *Last modified on {% last_modified_at %}*
 
-Use Soda's data contract YAML-based language to set data quality standards for data products. In a programmatic scans, Soda translates contract standards into Soda Checks Language, then executes the standards as data quality checks during a scan. 
+Use Soda's data contract YAML-based language to set data quality standards for data products. In a programmatic scan, Soda translates contract standards into Soda Checks Language, then executes the standards as data quality checks during a scan. 
 ```yaml
 dataset: dim_customer
 
@@ -52,7 +52,7 @@ Soda Core CLI and Soda Library CLI *do not* support data contracts.
 pip install soda-core
 pip install soda-core-contracts
 ```
-4. Execute the following command, replacing the pacakge name with the install package that matches the type of data source you use to store data. <br />If you install Soda Library, you must also [create a Soda Cloud account]({% link soda-library/install.md %}#create-a-soda-cloud-account) in order to execute scans.
+4. Execute the following command, replacing the package name with the install package that matches the type of data source you use to store data. <br />If you install Soda Library, you must also [create a Soda Cloud account]({% link soda-library/install.md %}#create-a-soda-cloud-account) in order to execute scans.
 ```shell
 # For Soda Library, enterprise software
 pip install -i https://pypi.cloud.soda.io soda-postgres
@@ -91,7 +91,7 @@ pip install soda-postgres
 
 Using a code editor, create a new YAML file name `contracts.yml`. In the `contracts.yml` file, define the data quality standards you want to enforce for your data quality product. 
 
-A data contract consists of two required top-level configuration keys for `dataset` and `columns`, one required column key for `name`, and any nummber of optional column keys to define the quality standards for your data that you wish to enforce. 
+A data contract consists of two required top-level configuration keys for `dataset` and `columns`, one required column key for `name`, and any number of optional column keys to define the quality standards for your data that you wish to enforce. 
 
 Optionally, you can use a `checks` configuration key to add SodaCL checks to the same file so that Soda executes both your defined checks, and the data contract standards as checks, during a scan of your data.
 
@@ -173,18 +173,18 @@ columns:
 | `valid_regex` | Specify a regular expression to define your own custom valid values. | Optional | regex, no forward slash delimiters |
 | `valid_values` | Specify the values that Soda ought to consider valid. Numeric characters in a `valid values` list must be enclosed in single quotes.| Optional | values in a list |
 | `unique` | Use the value `true` to ensure that all values in the column are unique; use `false` to ensure that all values in a column are the same. | Optional | boolean |
-| `reference` | This contract standard ensure that values in the named column exist in a column in a different dataset in the same data source. Configure at least two required reference keys to indicate indicate the dataset and column to which Soda ought to compare values in the named column. | Optional | object |
+| `reference` | This contract standard ensures that values in the named column exist in a column in a different dataset in the same data source. Configure at least two required reference keys to indicate the dataset and column to which Soda ought to compare values in the named column. | Optional | object |
 
 | Reference key | Value | Required | YAML data type |
 | ------------- | ----- | -------- | -------------- |
 | `dataset` | Provide the name of the dataset that contains the values which must exist in the named column to which the `reference` standard applies. | Required | string | 
-| `column` | Provide the name of the column that cotains the values which must exist in the named column to which the `reference` standard applies. | Required | string |
-| `samples_limit` | Specify the maximum number of failed row samples that Soda collects whem this standard is breached. | Optional | number |
+| `column` | Provide the name of the column that contains the values which must exist in the named column to which the `reference` standard applies. | Required | string |
+| `samples_limit` | Specify the maximum number of failed row samples that Soda collects when this standard is breached. | Optional | number |
 
 
 ## Enforce a data contract
 
-In a programmatic scans, Soda translates data contract standards into Soda Checks Language, then executes the standards as data quality checks during a scan. To initiate the translation and scan, prepare a programmatic scan using the following example.
+In a programmatic scan, Soda translates data contract standards into Soda Checks Language, then executes the standards as data quality checks during a scan. To initiate the translation and scan, prepare a programmatic scan using the following example.
 
 ```python
 from contracts.data_contract_translator import DataContractTranslator
