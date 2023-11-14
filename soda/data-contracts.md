@@ -45,17 +45,18 @@ checks:
 Data contracts are only available for use in programmatic scans using Soda Core or Soda Library. <br />
 Soda Core CLI and Soda Library CLI *do not* support data contracts.
 
-1. Best practice dictates that you install data contracts in a virtual environment. In your command-line interface tool, create a virtual environment.
-2. Use the following command to install `soda-core` and `soda-core-contracts`
+1. Confirm that you are using Python 3.8 or greater and Pip 21.0 or greater.
+2. Best practice dictates that you install data contracts in a virtual environment. In your command-line interface tool, create a virtual environment.
+3. Use the following command to install `soda-core` and `soda-core-contracts`
 ```shell
 pip install soda-core
 pip install soda-core-contracts
 ```
-3. Execute the following command, replacing the pacakge naem with the install package that matches the type of data source you use to store data.
+4. Execute the following command, replacing the pacakge name with the install package that matches the type of data source you use to store data. <br />If you install Soda Library, you must also [create a Soda Cloud account]({% link soda-library/install.md %}#create-a-soda-cloud-account) in order to execute scans.
 ```shell
-# For Soda Library
+# For Soda Library, enterprise software
 pip install -i https://pypi.cloud.soda.io soda-postgres
-# For Soda Core
+# For Soda Core, OSS
 pip install soda-postgres
 ```
 
