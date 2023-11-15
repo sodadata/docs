@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### November 15, 2023
+* Corrected the rule that numeric characters in a list of `valid values`, `invalid values`, or `missing values`, must be wrapped in single quotes. This is not the case. See [Specify valid or invalid values]({% link soda-cl/validity-metrics.md %}#specify-valid-or-invalid-values) for corrected content.
+
 #### November 14, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.22 and Soda Core 3.0.54.
 
