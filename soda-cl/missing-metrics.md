@@ -97,16 +97,16 @@ A check that uses a missing metric has four or six mutable parts:
 
 <br />
 
-The example below defines two checks. The first check applies to the column `last_name`. The `missing values` configuration key specifies that any of the three values in the list exist in a row in that column, Soda recognizes those values as missing values. The check fails if Soda discovers more than five values that match `NA`, `n/a`, or `'0'`. 
+The example below defines two checks. The first check applies to the column `last_name`. The `missing values` configuration key specifies that any of the three values in the list exist in a row in that column, Soda recognizes those values as missing values. The check fails if Soda discovers more than five values that match `NA`, `n/a`, or `0`. 
 * Values in a list must be enclosed in square brackets.
-* Numeric characters in a `missing values` list must be enclosed in single quotes. <br />*Known issue:* This rule does not apply to BigQuery. Do not wrap numeric values in single quotes if you are scanning data in a BigQuery data source. 
+* *Known issue:* Do not wrap numeric values in single quotes if you are scanning data in a BigQuery data source. 
 
 The second check uses a regular expression to define what qualifies as a missing value in the `birthday` column so that any values that are `00/00/0000` qualify as missing. This check passes if Soda discovers no values that match the pattern defined by the regex.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_count(last_name) < 5:
-      missing values: [NA, n/a, '0']
+      missing values: [NA, n/a, 0]
   - missing_count(birthday) = 0:
       missing regex: (0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)
 ```
@@ -118,7 +118,7 @@ First check:
 | comparison symbol | `<` |
 | threshold | `5` | 
 | configuration key | `missing values` |
-| configuration value(s) | `NA, n/a, '0'` |
+| configuration value(s) | `NA, n/a, 0` |
 
 Second check:
 
@@ -259,7 +259,7 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 | Column config key  | Description  | Values | 
 | ------------------ | ------------ | ------ |
 | `missing regex` | Specifies a regular expression to define your own custom missing values.| regex, no forward slash delimiters, string only |
-| `missing values` | Specifies the values that Soda is to consider missing. Numeric characters in a `valid values` list must be enclosed in single quotes. | values in a list |
+| `missing values` | Specifies the values that Soda is to consider missing. | values in a list |
 
 
 ## List of comparison symbols and phrases
