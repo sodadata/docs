@@ -8,7 +8,7 @@ parent: Create data contracts
 # Create a data contract ![experimental](/assets/images/experimental.png){:height="150px" width="150px"} 
 *Last modified on {% last_modified_at %}*
 
-Use Soda's data contract YAML-based language to set data quality standards for data products. In a programmatic scan, Soda translates contract standards into Soda Checks Language, then executes the standards as data quality checks during a scan. 
+Use Soda's data contracts to set data quality standards for data products. In a programmatic scan, Soda translates contract standards into Soda Checks Language, then executes the standards as data quality checks during a scan. 
 ```yaml
 dataset: dim_customer
 
@@ -43,7 +43,7 @@ checks:
 ## Install data contracts
 
 Data contracts are only available for use in programmatic scans using Soda Core or Soda Library. <br />
-Soda Core CLI and Soda Library CLI *do not* support data contracts.
+Soda Core CLI, Soda Library CLI, and Soda Cloud *do not* support data contracts.
 
 1. Confirm that you are using Python 3.8 or greater and Pip 21.0 or greater.
 2. Best practice dictates that you install data contracts in a virtual environment. In your command-line interface tool, create a virtual environment.
@@ -95,7 +95,7 @@ A data contract consists of two required top-level configuration keys for `datas
 
 Optionally, you can use a `checks` configuration key to add SodaCL checks to the same file so that Soda executes both your defined checks, and the data contract standards as checks, during a scan of your data.
 
-The following simple data contract example ensures that the data type of all values in the `last_name` column in the `dim_customer` dataset are `character varying`. Soda translates the contract language into a SodaCL check. During a scan, Soda executes the SodaCL check it prepared and, if any value in that column is not character varying, the check fails indicating a breach of the data contract standard.
+The following simple data contract example ensures that the data type of all values in the `last_name` column in the `dim_customer` dataset are `character varying`. Soda translates the contract standards into a SodaCL check. During a scan, Soda executes the SodaCL check it prepared and, if any value in that column is not character varying, the check fails indicating a breach of the data contract standard.
 
 ```yaml
 dataset: dim_customer

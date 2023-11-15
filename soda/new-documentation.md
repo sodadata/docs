@@ -10,7 +10,7 @@ parent: Learning resources
 <br />
 
 #### November 16, 2023
-* Introducing the launch of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental, YAML-based language to set data quality standards for data products. 
+* Introducing the launch of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
 
 #### November 14, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.22 and Soda Core 3.0.54.
