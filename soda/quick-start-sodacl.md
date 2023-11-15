@@ -310,9 +310,7 @@ soda scan -d datasource_name -c configuration.yml checks.yml
 * Spaces in the SodaCL syntax are critical. For example, be sure to add a space before and after your threshold symbol ( `=`, `>`, `>=` ); do *not* add a space between a metric and the column to which it applies, such as `duplicate_count(column1)`.
 * All comma-separated values in lists in SodaCL use a comma + space syntax, such as `duplicate_count(column1, column2)`; do not forget to add the space.
 * Note that multi-word checks such as `missing_count` use underscores, but configuration keys, such as `missing regex`, do not. See [List of missing metrics](#list-of-missing-metrics) and [List of validity metrics](#list-of-validity-metrics).
-* If you use `missing values` or `invalid values` configuration keys, note that 
-    * Values in a comma-separated list must be enclosed in square brackets. <br />For example, `[US, BE, CN]`.
-    * Numeric characters in a values list must be enclosed in single quotes. <br />For example, `[none,'0', NA]`.
+* If you use `missing values` or `invalid values` configuration keys, note that values in a comma-separated list must be enclosed in square brackets. For example, `[US, BE, CN]`.
 * Column names that contain colons or periods can interfere with SodaCL's YAML-based syntax. For any column names that contain these punctuation marks, [apply quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) to the column name in the check to prevent issues. <br />If you are using a failed row check with a CTE fail condition, however, the syntax checker does not accept an expression that begins with double-quotes. In that case, as a workaround, add a meaningless `true and` to the beginning of the CTE, as in the following example. 
     ```yaml
     checks for corp_value:
