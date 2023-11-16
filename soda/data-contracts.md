@@ -5,6 +5,7 @@ description: Use Soda to write data contracts that set data quality standards fo
 parent: Create data contracts
 redirect_from: 
 - /data-contracts.html
+- /soda/data-contracts
 ---
 
 # Create a data contract ![experimental](/assets/images/experimental.png){:height="150px" width="150px"} 
