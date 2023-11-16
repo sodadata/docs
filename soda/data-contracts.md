@@ -38,7 +38,7 @@ checks:
 
 [Install data contracts](#install-data-contracts)<br />
 [Define a data contract](#define-a-data-contract)<br />
-[Enforce a dta contract](#enforce-a-data-contract)<br />
+[Enforce a data contract](#enforce-a-data-contract)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -210,7 +210,7 @@ scan.set_data_source_name("SALESDB")
 scan.add_configuration_yaml_file(file_path="~/.soda/my_local_soda_environment.yml")
 scan.add_sodacl_yaml_str(sodacl_yaml_str)
 scan.execute()
-scan.assert_all_checks_pass()
+scan.assert_no_checks_fail()
 ```
 
 ## Go further
