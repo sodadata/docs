@@ -215,6 +215,9 @@
   - subtitle: Build a reporting dashboard
     page: api-docs/reporting-api-to-overview-dashboards.md
 
+- title: Create a data contract
+  page: soda/data-contracts.md
+
 - title: Learning resources
   page: soda/glossary.md
   subcategories:

@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### November 16, 2023
+* Introducing the launch of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
+
 #### November 15, 2023
 * Corrected the rule that numeric characters in a list of `valid values`, `invalid values`, or `missing values`, must be wrapped in single quotes. This is not the case. See [Specify valid or invalid values]({% link soda-cl/validity-metrics.md %}#specify-valid-or-invalid-values) for corrected content.
 
