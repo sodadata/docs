@@ -177,7 +177,8 @@ Soda Library's scan output includes an exit code which indicates the outcome of 
 | 0 | all checks passed, all good from both runtime and Soda perspective |
 | 1 | Soda issues a warning on a check(s) |
 | 2 | Soda issues a failure on a check(s) |
-| 3 | Soda encountered a runtime issue |
+| 3 | Soda encountered a runtime issue, and was able to submit scan results to Soda Cloud |
+| 4 | Soda encountered a runtime issue, but was not able to submit any results to Soda Cloud |
 
 To obtain the exit code, you can add the following to your programmatic scan.
 {% include code-header.html %}
