@@ -52,7 +52,7 @@ Access the [exhaustive deployment instructions]({% link soda-agent/deploy.md %}#
 
 ## Connect a data source
 
-1. Log in to your Soda Cloud account, then navigate to **your avatar** > **Scans & Data**.
+1. Log in to your Soda Cloud account, then navigate to **your avatar** > **Data Sources**.
 2. In the **Agents** tab, confirm that you can see the Soda Agent you deployed and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
 3. Navigate to the **Data source** tab, then click **New Data Source** and follow the [guided steps]({% link soda-agent/deploy.md %}#add-a-new-data-source) to:

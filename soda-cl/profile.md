@@ -44,7 +44,7 @@ profile columns:
 ## Add dataset discovery  
 <!--Linked to UI, access Shlink-->
 
-Dataset discovery captures basic information about each dataset, including a dataset's schema and the data type of each column. You add dataset discovery as part of the guided workflow to create a new data source. Navigate to **your avatar** > **Scans & Data** > **New Data Source** to begin. 
+Dataset discovery captures basic information about each dataset, including a dataset's schema and the data type of each column. You add dataset discovery as part of the guided workflow to create a new data source. Navigate to **your avatar** > **Data Sources** > **New Data Source** to begin. 
 
 In step 3 of the guided workflow, you have the option of listing the datasets you wish to profile. Dataset discovery can be resource-heavy, so carefully consider the datasets about which you truly need profile information. Refer to [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail. 
 
@@ -114,7 +114,7 @@ Navigate to the **Datasets** dashboard, then click a dataset name to open the da
 ## Add column profiling  
 <!--Linked to UI, access Shlink-->
 
-Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. You add column profiling as part of the guided workflow to create a new data source. Navigate to **your avatar** > **Scans & Data** > **New Data Source** to begin. 
+Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. You add column profiling as part of the guided workflow to create a new data source. Navigate to **your avatar** > **Data Sources** > **New Data Source** to begin. 
 
 In step 4 of the guided workflow, you have the option of listing the columns of datasets you wish to profile. Be aware that Soda can only profile columns that contain NUMBERS or TEXT type data; it cannot profile columns that contain TIME or DATE data. Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
 

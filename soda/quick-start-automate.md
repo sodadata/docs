@@ -41,7 +41,7 @@ If you do not have the access or authorization to set up a cluster or deploy the
 ## Automate data quality monitoring
 
 1. If you have not already done so, <a href="https://cloud.soda.io/signup" target="_blank">create a Soda Cloud account</a>, or accept your colleague's emailed invitation to create an account and join their Soda Cloud organization. 
-2. In Soda Cloud, navigate to **your avatar** > **Scans & Data**.
+2. In Soda Cloud, navigate to **your avatar** > **Data Sources**.
 3. In the **Agents** tab, confirm that you can see the Soda Agent you deployed and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
 3. Navigate to the **Data source** tab, then click **New Data Source** and follow the guided steps to connect to a new data source and opt-in to automated monitoring checks. <br />Refer to the sections below for insight into the values to enter in the fields and editing panels in the guided steps. 

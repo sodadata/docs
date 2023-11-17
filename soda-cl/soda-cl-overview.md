@@ -149,7 +149,7 @@ Regardless of the approval status of the agreement, however, Soda Cloud begins r
 
 (Optional) You can create a new [scan definition]({% link soda/glossary.md %}#scan-definition) if you wish to run a scan to execute the checks in this agreement more or less frequently, or a different time of day, relative to the default scan definition for the data source. 
 
-To review existing scan definitions, navigate to **your avatar** > **Scans & Data** > **Scan Definitions** tab. 
+To review existing scan definitions, navigate to the **Scans** menu item. 
 
 <br />
 

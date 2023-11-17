@@ -70,6 +70,8 @@
     page: soda-library/run-a-scan.md
   - subtitle: Examine failed rows
     page: soda-cloud/failed-rows.md
+  - subtitle: Manage scheduled scans
+    page: soda-cloud/scan-mgmt.md
   - subtitle: Configure orchestrated scans
     page: soda-library/orchestrate-scans.md
 

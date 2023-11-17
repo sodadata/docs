@@ -23,7 +23,7 @@ The **Soda Agent** is a tool that empowers Soda Cloud users to securely access d
 
 When you delete the Soda Agent Helm chart from your cluster, you also delete all the agent resources on your cluster. However, if you wish to redeploy the previously-registered agent (use the same name), you need to specify the agent ID in your override values in your values YAML file.
 
-1. In Soda Cloud, navigate to **your avatar** > **Scans & Data** > **Agents** tab.
+1. In Soda Cloud, navigate to **your avatar** > **Data Sources** > **Agents** tab.
 2. Click to select the agent you wish to redeploy, then copy the agent ID of the previously-registered agent from the URL.<br /><br />
 For example, in the following URL, the agent ID is the long UUID at the end. `https://cloud.soda.io/agents/842feab3-snip-87eb-06d2813a72c1`.<br /><br />
 Alternatively, if you use the base64 CLI tool, you can run the following command to obtain the agentID.
