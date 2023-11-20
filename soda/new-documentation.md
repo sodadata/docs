@@ -11,6 +11,8 @@ parent: Learning resources
 
 #### November 21, 2023
 * Added documentation for [managing scans]({% link soda-cloud/scan-mgmt.md %}) and setting up failed scan notifications. 
+* Added `work_group` as an optional connection configuration property for [Athena]({% link soda/connect-athena.md %}).
+* Added troubleshooting tip for using quotes on column names within an in-check filter. See [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#errors-when-using-in-check-filters).
 
 #### November 16, 2023
 * Introducing the launch of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
