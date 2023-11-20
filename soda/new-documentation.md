@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### November 21, 2023
+* Added documentation for [managing scans]({% link soda-cloud/scan-mgmt.md %}) and setting up failed scan notifications. 
+
 #### November 16, 2023
 * Introducing the launch of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.1.0.

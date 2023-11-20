@@ -237,7 +237,7 @@ data_source my_datasource_name:
 
 #### Configure in Soda Cloud
 
-1. As an Admin user, log in to Soda Cloud, then navigate to an existing data source: **your avatar** > **Scans & Data**.
+1. As an Admin user, log in to Soda Cloud, then navigate to an existing data source: **your avatar** > **Data Sources**.
 2. In the **Data Sources** tab, click to open the data source that contains the columns in the dataset that you wish to exclude from failed rows sampling, then navigate to the **Connect the Data Source** tab.
 3. To the connection configuration, add the `sampler` configuration as outlined above.
 4. Save the changes.
@@ -380,7 +380,7 @@ data_source my_datasource_name:
 
 #### Configure in Soda Cloud
 
-1. As an Admin user, log in to Soda Cloud, then navigate to an existing data source: **your avatar** > **Scans & Data**.
+1. As an Admin user, log in to Soda Cloud, then navigate to an existing data source: **your avatar** > **Data Sources**.
 2. In the **Data Sources** tab, click to open the data source for which you wish to reroute failed rows samples, then navigate to the **Connect the Data Source** tab.
 3. To the connection configuration, add the `storage` configuration as outlined above.
 4. Save the changes.

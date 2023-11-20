@@ -173,7 +173,7 @@ REVISION: 1
 ```shell
 minikube kubectl -- describe pods
 ```
-4. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
+4. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
 Containers:
@@ -228,7 +228,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 minikube kubectl -- describe pods
 ```
-6. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+6. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -403,7 +403,7 @@ REVISION: 1
 ```shell
 kubectl describe pods
 ```
-7. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+7. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -460,7 +460,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 kubectl describe pods -n soda-agent
 ```
-8. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+8. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step four to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -491,7 +491,7 @@ If you use AWS services for your infrastructure and you have deployed or will de
 ```shell
 kubectl -n soda-agent rollout restart deploy
 ```
-5. After you have started the agent and validated that it is running, log into your Soda Cloud account, then navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
+5. After you have started the agent and validated that it is running, log into your Soda Cloud account, then navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
 
@@ -819,7 +819,7 @@ kubectl get pods -n soda-agent
 NAME                                     READY   STATUS    RESTARTS   AGE
 soda-agent-orchestrator-ffd74c76-5g7tl   1/1     Running   0          32s
 ```
-5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+5. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
@@ -873,7 +873,7 @@ kubectl get pods -n soda-agent
 NAME                                     READY   STATUS    RESTARTS   AGE
 soda-agent-orchestrator-ffd74c76-5g7tl   1/1     Running   0          32s
 ```
-6. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+6. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
@@ -925,7 +925,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 kubectl describe pods -n soda-agent
 ```
-8. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
+8. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
 <br /> 
@@ -1160,7 +1160,7 @@ REVISION: 1
 ```shell
 kubectl describe pods
 ```
-5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
+5. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 Name:             soda-agent-orchestrator-66-snip
 Namespace:        soda-agent
@@ -1215,7 +1215,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 kubectl describe pods
 ```
-6. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+6. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step four to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 Name:             soda-agent-orchestrator-66-snip
@@ -1265,7 +1265,7 @@ Refer to <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/deletin
 
 ## Add a new data source
 
-In your Soda Cloud account, navigate to **your avatar** > **Scans & Data**. Click **New Data Source**, then follow the guided steps to create a new data source. Refer to the sections below for insight into the values to enter in the fields and editing panels in the guided steps. 
+In your Soda Cloud account, navigate to **your avatar** > **Data Sources**. Click **New Data Source**, then follow the guided steps to create a new data source. Refer to the sections below for insight into the values to enter in the fields and editing panels in the guided steps. 
 
 #### 1. Attributes
 

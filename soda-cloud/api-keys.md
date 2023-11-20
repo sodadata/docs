@@ -26,7 +26,7 @@ Note that you can use other authentication methods to access Soda Cloud metadata
 
 ## Generate API keys for use with a Soda Agent
 
-1. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data**, then navigate to the **Agents** tab. Click **New Soda Agent**.
+1. In your Soda Cloud account, navigate to **your avatar** > **Data Sources**, then navigate to the **Agents** tab. Click **New Soda Agent**.
 2. Copy the values of the **API Key ID** and **API Key Secret** to a secure location, then apply the keys according to the instructions in the [Deploy a Soda Agent]({% link soda-agent/deploy.md %}#deploy-a-soda-agent-in-a-kubernetes-cluster) documentation.
 
 ## Go further

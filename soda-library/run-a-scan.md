@@ -56,7 +56,7 @@ If you wish to change an agreement's existing scan definition/scan schedule:
 
 If you wish to schedule a new scan to execute the checks in an agreement more or less frequently, or at a different time of day:
 1. Navigate to **Agreements**, then click the stacked dots next to the agreement you wish to change and select **Edit Agreement**.
-2. In the **Set a Scan Defintion** tab, then click **new Scan Definition** and populate the fields as in the example below.
+2. In the **Set a Scan Defintion** tab, then click **New Scan Definition** and populate the fields as in the example below.
 3. **Save** your change. The agreement edit triggers a new stakeholder approval request to all stakeholders. Your revised agreement *does not run again* until all stakehoders have approved it.
 
 ![new-scan-def](/assets/images/new-scan-def.png){:height="600px" width="600px"}
@@ -338,12 +338,18 @@ Soda Cloud displays the latest status of all of your checks in the **Checks** da
 
 ### Scan failed
 
-Check results indicate whether check passed, warned, or failed during the scan. However, if a scan itself failed to complete successfully, Soda Cloud displays a warning message in the **Datasets** dashboard under the dataset for which scans have failed. Soda Cloud does not send an email or Slack notification when a scan fails.
+Check results indicate whether check passed, warned, or failed during the scan. However, if a scan itself failed to complete successfully, Soda Cloud displays a warning in the **Datasets** dashboard to indicate the dataset for which a scheuled scan has failed. 
+
+See [Manage scheduled scans]({% link soda-cloud/scan-mgmt.md %}) for instructions on how to set up scan failure alerts.
 
 ![scan-failed](/assets/images/scan-failed.png){:height="550px" width="550px"}
 
 
 ### Examine scan logs
+
+{% include scan-logs.md %}
+
+Alternatively, you can access the scan logs from within an agreement.
 
 1. To examine a detailed scan log of the lastest scheduled scan for an agreement, navigate to **Agreements**, then click to select an agreement.
 2. In the **Agreement** dashboard, click **See results** in the **Last scan** tile, then click the **Scan Logs** tabs.

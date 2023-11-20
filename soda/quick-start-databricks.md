@@ -59,7 +59,7 @@ df.createOrReplaceTempView("adventureworks")
 scan = Scan()
 
 # Set a scan definition
-# Use a scan definition to configure which data to scan and how to execute the scan.
+# Use a scan definition to configure which data to scan, and when and how to execute the scan.
 scan.set_scan_definition_name("Databricks Notebook")
 scan.set_data_source_name("spark_df")
 

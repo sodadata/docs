@@ -82,6 +82,9 @@ A collection of checks YAML files that contain the checks for data quality you w
 ### scan definition name
 A unique identifier that you add to a programmatic scan or to the `soda scan` command using the `-s` option. Soda Cloud uses the scan definition name to correlate subsequent scan results, thus retaining an historical record of the measurements over time. 
 
+### scan schedule
+The schedule you customize for a Soda Agent to execute scans at a regular cadence. 
+
 ### Soda Agent
 The Helm chart you deploy in your Kubernetes cluster to faciliate a secure connection between your Soda Cloud account and your data sources. See [Soda Agent basic concepts]({% link soda-agent/basics.md %}).
 

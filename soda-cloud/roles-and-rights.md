@@ -217,7 +217,7 @@ There are four ownership roles in Soda Cloud that identify the member that owns 
 
 #### Change the Data Source Owner
 
-1. If you are the Admin of the organization, or have a Manager or Editor role for the data source, login to your Soda Cloud account and navigate to **your avatar** > **Scans & Data**.
+1. If you are the Admin of the organization, or have a Manager or Editor role for the data source, login to your Soda Cloud account and navigate to **your avatar** > **Data Sources**.
 2. In the **Data Sources** tab, click the stacked dots to the right of the data source for which you wish to adjust the ownership, then select **Edit Datasource**.
 3. In the **Assign Owner** tab, use the dropdown to select the name of another member to take ownership of the data source, then **Save**.
 
