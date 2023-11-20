@@ -18,6 +18,7 @@ parent: SodaCL reference
 [Filter not passed with reference check](#filter-not-passed-with-reference-check)<br />
 [Failed row check with CTE error](#failed-row-check-with-cte-error)<br />
 [Errors with column names containing periods or colons](#errors-when-column-names-containing-periods-or-colons)<br />
+[Errors when using in-check filters](#errors-when-using-in-check-filters)<br />
 <br />
 
 ## Errors with valid format
@@ -201,6 +202,31 @@ checks for corp_value:
 **Solution**: Column names that contain colons or periods can interfere with SodaCL's YAML-based syntax. For any column names that contain these punctuation marks, [apply quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) to the column name in the check to prevent issues. <br />
 
 
+## Errors when using in-check filters
+
+**Problem:** When preparing an in-check filter using quotes for the column names, the Soda scan produces an error.<br>
+```yaml
+checks for my_dataset:
+- missing_count("Email") = 0:
+    name: missing email
+    filter: "Status" = 'Client'
+```
+
+**Solution:** The quotes are the cause of the problem; they produce invalid YAML syntax which results in an error message. Instead, write the check without the quotes or, if the quotes are mandatory for the filter to work, escape the quotes using one of the following syntaxes: <br />
+```yaml
+checks for my_dataset:
+  - missing_count("Email") = 0:
+      name: missing email
+      filter: \"Status\" = 'Client'
+
+#OR
+
+checks for my_dataset:
+  - missing_count("Email") = 0:
+      name: missing email
+      filter: |
+        "Status" = 'Client'  
+```
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

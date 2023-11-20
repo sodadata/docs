@@ -78,6 +78,8 @@ For a dataset filter, Soda generates a separate query and, again, attempts to pu
 
 {% include in-check-filters.md %}
 
+See also: [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#errors-when-using-in-check-filters).
+
 ### List of compatible metrics and checks
 
 * all numeric metrics, *except* `duplicate_count` and `duplicate_percent`
