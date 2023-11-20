@@ -1,4 +1,4 @@
-When notice or receive a notification about a scan failure or delay, you can access the scan's logs to investigate what is causing the issue.  allowing you to check scan logs for a detailed understanding of the root cause and identify which specific checks encountered problems.
+When you notice or receive a notification about a scan failure or delay, you can access the scan's logs to investigate what is causing the issue.  
 
 1. Log in to your Soda Cloud account, then navigate to **Scans**, and access the **Agents** tab. 
 2. From the list of scans, select the one that failed or timed out. 
