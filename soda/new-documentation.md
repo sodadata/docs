@@ -11,6 +11,7 @@ parent: Learning resources
 
 #### November 21, 2023
 * Added documentation for [managing scans]({% link soda-cloud/scan-mgmt.md %}) and setting up failed scan notifications. 
+* Added `work_group` as an optional connection configuration property for [Athena]({% link soda/connect-athena.md %}).
 
 #### November 16, 2023
 * Introducing the launch of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
