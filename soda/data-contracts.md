@@ -188,7 +188,7 @@ columns:
 In a programmatic scan, Soda translates data contract standards into Soda Checks Language, then executes the standards as data quality checks during a scan. To initiate the translation and scan, prepare a programmatic scan using the following example.
 
 ```python
-from contracts.data_contract_translator import DataContractTranslator
+from soda.contracts.data_contract_translator import DataContractTranslator
 from soda.scan import Scan
 import logging
 
