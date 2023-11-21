@@ -135,8 +135,6 @@ Soda Cloud sends emails to request review and approval from all stakeholders, an
 
 By default, Soda Cloud includes an out-of-the-box email notification to all the agreement's stakeholders when a check in your agreement fails. You can remove or adjust this notification, or use the search bar to add more. Access [View scan results]({% link soda-library/run-a-scan.md %}#view-scan-results) to learn more about pass, warn, and fail check results.
 
-Note that Soda Cloud does not send a notification when a *scan* fails because of an error, only when *checks* pass, warn, or fail. Refer to [Scan output]({% link soda-library/run-a-scan.md %}#scan-failed) for details.
-
 (Optional) If you have integrated your Soda Cloud account with [Slack]({% link soda/integrate-slack.md %}) or another third-party service provider via a [webhook]({% link soda/integrate-webhooks.md %}), use the search field to type a channel name to add the channel as a notification recipient. Alternatively, use the field to enter names of individual teammates with whom you collaborate in Soda Cloud.
 
 <br />
@@ -147,9 +145,9 @@ After you have set up a new agreement, Soda Cloud sends approval requests to the
 
 Regardless of the approval status of the agreement, however, Soda Cloud begins running scans of your data according to the scan schedule you set. Soda Cloud sends notifications after each scan according to the settings you defined in step 4. 
 
-(Optional) You can create a new [scan definition]({% link soda/glossary.md %}#scan-definition) if you wish to run a scan to execute the checks in this agreement more or less frequently, or a different time of day, relative to the default scan definition for the data source. 
+(Optional) You can click the link provided to create a new scan schedule if you wish to run a scan to execute the checks in this agreement more or less frequently, or a different time of day, relative to the default scan schedule for the data source. 
 
-To review existing scan definitions, navigate to the **Scans** menu item. 
+To review existing scan schedules, navigate to the **Scans** menu item. 
 
 <br />
 

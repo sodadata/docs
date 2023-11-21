@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### November 22, 2023
+* In the context of Soda Cloud, changed instances of `scan defintion` to `scan schedule` to reflect the updated naming in the Soda Cloud UI.
+
 #### November 21, 2023
 * Added documentation for [managing scans]({% link soda-cloud/scan-mgmt.md %}) and setting up failed scan notifications. 
 * Added `work_group` as an optional connection configuration property for [Athena]({% link soda/connect-athena.md %}).

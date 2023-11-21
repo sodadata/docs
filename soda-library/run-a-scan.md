@@ -44,22 +44,22 @@ As a step in the **Get started roadmap**, this guide offers instructions to sche
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
-### Set a scan definition
+### Set a scan schedule
 *Requires Soda Agent*
 
-When you create a Soda Agreement in Soda Cloud, the last step in the flow demands that you select a **scan definition**. A scan definition is a collection of files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source. Effectively, a scan definition provides the what, when, and where to run a scheduled scan.
+When you create a Soda Agreement in Soda Cloud, the last step in the flow demands that you select a **scan schedule**. The scan schedule indicates which Soda Agent to use to execute the scan, on which data source, and when. Effectively, a scan schedule defines the what, when, and where to run a scheduled scan.
 
-If you wish to change an agreement's existing scan definition/scan schedule:
+If you wish to change an agreement's existing scan schedule:
 1. Navigate to **Agreements**, then click the stacked dots next to the agreement you wish to change and select **Edit Agreement**.
-2. In the **Set a Scan Defintion** tab, then use the dropdown menu to select a different scan schedule.
+2. In the **Set a Scan Schedule** tab, then use the dropdown menu to select a different scan schedule.
 3. **Save** your change. The agreement edit triggers a new stakeholder approval request to all stakeholders. Your revised agreement *does not run again* until all stakehoders have approved it.
 
-If you wish to schedule a new scan to execute the checks in an agreement more or less frequently, or at a different time of day:
+If you wish to schedule a *new* scan to execute the checks in an agreement more or less frequently, or at a different time of day:
 1. Navigate to **Agreements**, then click the stacked dots next to the agreement you wish to change and select **Edit Agreement**.
-2. In the **Set a Scan Defintion** tab, then click **New Scan Definition** and populate the fields as in the example below.
+2. In the **Set a Scan Schedule** tab, then click the **new Scan Schedule** link and populate the fields as in the example below.
 3. **Save** your change. The agreement edit triggers a new stakeholder approval request to all stakeholders. Your revised agreement *does not run again* until all stakehoders have approved it.
 
-![new-scan-def](/assets/images/new-scan-def.png){:height="600px" width="600px"}
+![new-scan-sched](/assets/images/new-scan-sched.png){:height="600px" width="600px"}
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
