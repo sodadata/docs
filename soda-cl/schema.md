@@ -50,6 +50,7 @@ checks for dim_product:
 [Optional check configurations](#optional-check-configurations)<br />
 [List of validation keys](#list-of-validation-keys) <br />
 [Expect one check result](#expect-one-check-result)<br />
+[Example: Detect PII](#example-detect-pii)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -266,6 +267,20 @@ Sending results to Soda Cloud
 Soda Cloud Trace: 7845***
 ```
 
+## Example: Detect PII
+
+To address a common use case, you may wish to use a schema check in combination with a for each configuration and wildcard characters to automatically detect columns that contain personally identifiable information (PII) in your datasets, as in the following example. 
+{% include code-header.html %}
+```yaml
+for each dataset R:
+  tables:
+    # Apply the check to any dataset that begins with retail.
+    - retail%
+  checks:
+    - schema:
+        fail:
+          when forbidden column present: ['*name*', '*address*', '*phone*', '*email*']
+```
 
 ## Go further
 
