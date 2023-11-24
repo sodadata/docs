@@ -72,12 +72,23 @@ checks for dim_department_group:
 <div class="warpper">
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
+  <input class="radio" id="three" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Using an agreement</label>
-  <label class="tab" id="two-tab" for="two">Using a YAML file</label>
+  <label class="tab" id="one-tab" for="one">Using no-code checks</label>
+  <label class="tab" id="two-tab" for="two">Using an agreement</label>
+  <label class="tab" id="three-tab" for="three">Using a YAML file</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
+
+1. Navigate to **Datasets**, then click **Add Check**. 
+2. Fill in the blanks.
+3. Pick a schedule.
+4. Save
+
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
 You can write SodaCL checks directly in the Soda Cloud user interface within an **agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source.<br />
 *Requires a Soda Agent*
 
@@ -163,7 +174,7 @@ Further, take into account the following tips and best practices when writing So
 See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl)
 
   </div>
-  <div class="panel" id="two-panel" markdown="1">
+  <div class="panel" id="three-panel" markdown="1">
 
 As a Data Engineer, you can write SodaCL checks directly in a `checks.yml` file, or leverage check suggestions in the Soda Library CLI to prepare a basic set of data quality checks for you. Alternatively, you can add SodaCL checks to a progrmmatic invocation of Soda Library.
 
