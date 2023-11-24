@@ -9,6 +9,12 @@ parent: Learning resources
 
 <br />
 
+#### November 24, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.24 - 1.1.25.
+* Added Known issue to [Group By]({% link soda-cl/group-by.md %}) configuration; does not support anomaly score checks.
+* Adjusted workaround advice for troubleshooting error using quotes with an [in-check filter]({% link soda-cl/troubleshoot.md %}#errors-when-using-in-check-filters).
+* Added [Advanced configuration]({% link soda-cl/recon.md %}#advanced-configuration) for setting key column identifiers.
+
 #### November 22, 2023
 * Added an [example]({% link soda-cl/schema.md %}#example-detect-pii) of a schema check that detects columns which could contain PII.
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 0.8.49 - 0.8.50.

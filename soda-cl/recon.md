@@ -302,7 +302,7 @@ The syntax of record reconciliation checks is simple in that it only expects a `
 | Simple    | the entire contents the datasets | In the example below, the first check compares all the records in the target dataset to the source dataset. This check fails because of the mismatched value for Jupiter's size.  |
 |  Column constrained | **Best practice**<sup>1</sup><br />only the data in a specified list of columns | In the example below, the second check compares *only* the contents of the listed columns, mapping the columns according to the order in which they appear in the list– Planet to Planet, Hotness to Relative Temp. This check passes because the values of the mapped columns are the same. |
 | With primary key | the entire contents of the datasets, specifying columns to define a primary key in the source | In the example below, he third check uses the `key columns` you identify to form a primary key in the source that defines a single record. Soda uses the key to map records from dataset A to dataset B, similar to what a primary key does. This check fails because of the mismatched value for Jupiter's size. |
-| With multiple primary keys | the entire contents of the datasets, specifying columns to define multiple primary keys | In the example below, the fourth check enables you to define a the primary key the defines a single record in both the source and target datasets. Soda uses the key to map records from dataset A to dataset B, similar to what a primary key does. This check passes because with only one failed row, it does not exceed the threshold of `5` that the check sets. |
+| With multiple primary keys | the entire contents of the datasets, specifying columns to define multiple primary keys | In the example below, the fourth check enables you to define a the primary key the defines a single record in both the source and target datasets. Soda uses the key to map records from dataset A to dataset B, similar to what a primary key does. This check passes because with only one failed row, it does not exceed the threshold of `5` that the check sets. <br /> See also: [Advanced configuration](#advanced-configuration)|
 
 <sup>1</sup> See [Limitations and constraints](#limitations-and-constraints).
 
@@ -330,6 +330,33 @@ reconciliation Production:
 
 ![recon diff2](/assets/images/recon-diff2.png){:height="500px" width="500px"}
 
+<br />
+
+#### Advanced configuration
+
+When identifying key columns for a `row diff`, be sure to set the source and target columns in matching order, as opposed to the actual order of columns in the dataset. 
+
+The following example sets the `source key columns` and `target key columns` in matching order, even though the actual ordering of columns in the target dataset is different.
+
+```shell
+# source dataset schema:
+country, id, ts_with_tz, id_txt, value
+
+# target dataset schema:
+ts_with_tz, value, country, id_txt_changed, id
+```
+
+```yaml
+checks:
+...
+- rows diff = 0:
+    source key columns: [id, id_txt]
+    source columns: [country, id, ts_with_tz, id_txt, value]
+    target key columns: [id, id_txt_changed]
+    target columns: [country, id, ts_with_tz, id_txt_changed, value]
+```
+
+<br />
 
 ### Schema reconciliation checks
 

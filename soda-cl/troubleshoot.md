@@ -212,15 +212,8 @@ checks for my_dataset:
     filter: "Status" = 'Client'
 ```
 
-**Solution:** The quotes are the cause of the problem; they produce invalid YAML syntax which results in an error message. Instead, write the check without the quotes or, if the quotes are mandatory for the filter to work, escape the quotes using one of the following syntaxes: <br />
+**Solution:** The quotes are the cause of the problem; they produce invalid YAML syntax which results in an error message. Instead, write the check without the quotes or, if the quotes are mandatory for the filter to work, prepare the filter in a text block as in the following example. <br />
 ```yaml
-checks for my_dataset:
-  - missing_count("Email") = 0:
-      name: missing email
-      filter: \"Status\" = 'Client'
-
-#OR
-
 checks for my_dataset:
   - missing_count("Email") = 0:
       name: missing email
