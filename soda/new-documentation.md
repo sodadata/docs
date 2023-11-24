@@ -11,6 +11,7 @@ parent: Learning resources
 
 #### November 24, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.24 - 1.1.25.
+* Added Known issue to [Group By]({% link soda-cl/group-by.md %}) configuration; does not support anomaly score checks.
 
 
 #### November 22, 2023
