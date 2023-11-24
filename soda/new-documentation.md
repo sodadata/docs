@@ -9,6 +9,10 @@ parent: Learning resources
 
 <br />
 
+#### November 24, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.24 - 1.1.25.
+
+
 #### November 22, 2023
 * Added an [example]({% link soda-cl/schema.md %}#example-detect-pii) of a schema check that detects columns which could contain PII.
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 0.8.49 - 0.8.50.
