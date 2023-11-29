@@ -19,6 +19,7 @@ parent: SodaCL reference
 [Failed row check with CTE error](#failed-row-check-with-cte-error)<br />
 [Errors with column names containing periods or colons](#errors-when-column-names-containing-periods-or-colons)<br />
 [Errors when using in-check filters](#errors-when-using-in-check-filters)<br />
+[Using reference checks with Spark DataFrames](#using-reference-checks-with-spark-dataframes)
 <br />
 
 ## Errors with valid format
@@ -220,6 +221,13 @@ checks for my_dataset:
       filter: |
         "Status" = 'Client'  
 ```
+
+## Using reference checks with Spark DataFrames
+
+{% include reference-with-spark.md %}
+
+
+
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

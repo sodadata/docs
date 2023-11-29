@@ -9,6 +9,11 @@ parent: Learning resources
 
 <br />
 
+#### November 28, 2023
+* Added to [Best practice for using reconciliation checks]({% link soda-cl/recon.md %}#best-practice-for-using-reconciliation-checks) with advice on batch processing.
+* Added instruction for using reference checks with DataFrames; see [Use Soda Library with Spark DataFrames on Databricks]({% link soda/connect-spark.md %}#use-soda-library-with-spark-dataframes-on-databricks).
+* Added content to the Self-serve Soda use case guide with a list of [compatible data sources]({% link soda/quick-start-end-user.md %}#connect-a-data-source) and a link to data source configuration reference content.
+
 #### November 24, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.24 - 1.1.25.
 * Added Known issue to [Group By]({% link soda-cl/group-by.md %}) configuration; does not support anomaly score checks.

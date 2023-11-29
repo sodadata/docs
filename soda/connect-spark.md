@@ -79,6 +79,10 @@ scan.set_scan_definition_name('YOUR_SCHEDULE_NAME')
 
 <br />
 
+{% include reference-with-spark.md %}
+
+<br />
+
 
 ## Connect Soda Library for SparkDF to Soda Cloud
 
@@ -164,6 +168,10 @@ scan.execute()
 # Check the Scan object for methods to inspect the scan result; the following prints all logs to console
 print(scan.get_logs_text())
 ```
+
+<br />
+
+{% include reference-with-spark.md %}
 
 <br />
 

@@ -50,7 +50,7 @@ jobs:
 
 For example, in a repository in which are adding a transformation or making changes to a dbt model, you can add the **GitHub Action for Soda** to your workflow, as above. With each new pull request, or commit to an existing one, it executes a Soda scan for data quality and presents the results of the scan in a comment in the pull request, and in a report in Soda Cloud.
 
-Where the scan results indicate an issue with data quality, Soda notifies you in both a PR comment and by email so that you can investigate and address any issues before merging your PR into production.
+Where the scan results indicate an issue with data quality, Soda notifies you in both a PR comment and by email so that you can investigate and address any issues before merging your PR into production. Note that the Action does not yet support sending notifications via Slack, only email; see [Notes and limitations](#notes-and-limitations).
 
 ![github-comment](/assets/images/github-comment.png){:height="500px" width="500px"}
 
