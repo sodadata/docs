@@ -154,6 +154,8 @@ To efficiently use resources at scan time, best practice dictates that you first
 
 Depending on the volume of data on which you must perform reconciliation checks, metric recon checks run considerably faster and use much fewer resources. Start by defining metric reconciliation checks that test grouping, filters, and joins to get meaningful insight into whether your ingestion or transformation works as expected. Where these checks do not surface all the details you need, or does not provide enough confidence in the output, then proceed with record reconciliation checks.
 
+For running record reconciliation checks, you may also consider executing scans in batches. Internal experimentation continues, but early results indicate that processing about 5 MB per batch when running unordered checks, and about 10 MB for ordered checks yields the fastest processing time.
+
 Read more about [Limitations and constraints](#limitations-and-constraints).
 
 

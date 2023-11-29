@@ -52,12 +52,17 @@ Access the [exhaustive deployment instructions]({% link soda-agent/deploy.md %}#
 
 ## Connect a data source
 
+The Soda Agent supports connections with the following data sources.
+{% include compatible-cloud-datasources.md %}
+
+<br />
+
 1. Log in to your Soda Cloud account, then navigate to **your avatar** > **Data Sources**.
 2. In the **Agents** tab, confirm that you can see the Soda Agent you deployed and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
 3. Navigate to the **Data source** tab, then click **New Data Source** and follow the [guided steps]({% link soda-agent/deploy.md %}#add-a-new-data-source) to:
 * identify the new data source and its default scan schedule
-* provide connection configuration details for the data source, and test the connection to the data source
+* provide [connection configuration]({% link soda/connect-athena.md %}) details for the data source, and test the connection to the data source
 * profile the datasets in the data source to gather basic metadata about the contents of each
 * identify the datasets to which you wish to apply automated monitoring for anomalies and schema changes
 * assign ownership roles for the data source and its datasets
