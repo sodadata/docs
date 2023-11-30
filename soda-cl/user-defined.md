@@ -80,7 +80,7 @@ You can also use a user-defined metric with an anomaly score metric by defining 
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
-  - anomaly score for product_stock < default
+  - anomaly score for product_stock < default:
       product_stock query: |
         SELECT COUNT(safety_stock_level - days_to_manufacture)
         FROM dim_product
