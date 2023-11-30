@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### November 29, 2023
+* Corrected the example included in [User-defined checks]({% link soda-cl/user-defined.md %}#define-user-defined-checks).
+
 #### November 28, 2023
 * Added to [Best practice for using reconciliation checks]({% link soda-cl/recon.md %}#best-practice-for-using-reconciliation-checks) with advice on batch processing.
 * Added instruction for using reference checks with DataFrames; see [Use Soda Library with Spark DataFrames on Databricks]({% link soda/connect-spark.md %}#use-soda-library-with-spark-dataframes-on-databricks).
