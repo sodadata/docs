@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### December 7, 2023
+* Introducting [no-code check creation]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in Soda Cloud. Create checks via the Soda Cloud user interface that creates SodaCL checks without writing any SodaCL.
+
 #### November 29, 2023
 * Corrected the example included in [User-defined checks]({% link soda-cl/user-defined.md %}#define-user-defined-checks).
 

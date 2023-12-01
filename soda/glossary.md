@@ -67,6 +67,9 @@ The component in Soda Cloud that stores metric measurements. This component faci
 ### monitor
 (Deprecated) A set of details you define in Soda Cloud which Soda SQL used when it ran a scan. Now deprecated and replaced by a [check](#check).
 
+### no-code check
+A SodaCL check you create via the Soda Cloud user interface. 
+
 ### notification
 A setting you configure in a Soda Cloud agreement that defines whom to notify with check results after a scan. 
 

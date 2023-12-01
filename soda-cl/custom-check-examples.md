@@ -13,7 +13,7 @@ Out of the box, Soda Checks Language (SodaCL) makes several built-in metrics and
 
 **User-defined checks** and **failed rows checks** enable you to define your own metrics that you can use in a SodaCL check. You can also use these checks to simply define SQL queries or Common Table Expressions (CTE) that Soda executes during a scan, which is what most of these examples do.
 
-The examples below offer examples of how you can define user-defined checks in your checks YAML file, if using Soda Library, or within an agreement, if using Soda Cloud, to extract more complex, customized, business-specific measurements from your data. 
+The examples below offer examples of how you can define user-defined checks in your checks YAML file, if using Soda Library or, if using Soda Cloud, within a no-code SQL Failed Rows check or an agreement, to extract more complex, customized, business-specific measurements from your data. 
 
 [Set an acceptable threshold for row count delta](#set-an-acceptable-threshold-for-row-count-delta)<br />
 [Find duplicates in a dataset without a unique ID column](#find-duplicates-in-a-dataset-without-a-unique-id-column)<br />

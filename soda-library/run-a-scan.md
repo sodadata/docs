@@ -44,7 +44,22 @@ As a step in the **Get started roadmap**, this guide offers instructions to sche
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
-### Set a scan schedule
+### Set a scan schedule in a no-code check
+*Requires Soda Agent*
+
+When you create a no-code check in Soda Cloud, one of the required fields asks that you associate the check with an existing scan schedule, or that you create a new scan schedule.
+
+If you wish to change a no-code check's existing scan schedule:
+1. As an Admin, or Manager or Editor of a dataset in which the no-code check exists, navigate to the dataset.
+2. From the dataset's page, locate the check you wish to adjust, and click the stacked dots at right, then select **Edit Check**. You can only edit a check via the no-code interface if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
+3. Adjust the value in the **Schedule** field as needed, then save. Soda executes the check during the next scan according to the schedule you selected.
+
+If you wish to schedule a *new* scan to execute a no-code check more or less frequently, or at a different time of day:
+1. From the dataset's page, locate the check you wish to adjust and click the stacked dots at right, then select **Edit Check**. You can only edit a check via the no-code interface if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
+2. Use the dropdown in the **Schedule** field to access the **Create a New Schedule** link. 
+3. Fill out the form to define your new schedule, then save it. Save the change to your no-code check. Soda executes the check during the next scan according to your new schedule.
+
+### Set a scan schedule in an agreement
 *Requires Soda Agent*
 
 When you create a Soda Agreement in Soda Cloud, the last step in the flow demands that you select a **scan schedule**. The scan schedule indicates which Soda Agent to use to execute the scan, on which data source, and when. Effectively, a scan schedule defines the what, when, and where to run a scheduled scan.
@@ -64,16 +79,28 @@ If you wish to schedule a *new* scan to execute the checks in an agreement more 
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
-[Run a scan in Soda Cloud](#run-a-scan-in-soda-cloud)<br />
+[Run a scan for a no-code check](#run-a-scan-for-a-no-code-check)<br />
+[Run a scan in an agreement](#run-a-scan-in-an-agreement)<br />
 [Run a scan from the command-line](#run-a-scan-from-the-command-line)<br />
 [Input scan-time variables](#input-scan-time-variables)<br />
 [Configure the same scan to run in multiple environments](#configure-the-same-scan-to-run-in-multiple-environments)<br />
 [Add scan options](#add-scan-options)<br />
 [Troubleshoot](#troubleshoot)<br />
 
-### Run a scan in Soda Cloud
+
+### Run a scan for a no-code check
+
+If you wish to run a scan immediately to see the scan results for a no-code check, you can execute an ad hoc scan for the check.
+
+1. As an Admin, or Manager or Editor of a dataset with the no-code check you wish to execute, navigate to the dataset.
+2. In the table of checks, locate the check you wish to execute and click the stacked dots, then select **Execute Check**. You can only execute an individual check if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
+3. Soda executes *only* your check.
+
+
+### Run a scan in an agreement
 
 {% include ad-hoc-scan.md %}
+
 
 ### Run a scan from the command-line
 
@@ -329,11 +356,19 @@ checks:
 
 ## View scan results
 
+[Scan failed](#scan-failed)<br />
+[Examine scan logs](#examine-scan-logs)<br />
+[Examine a scan's SQL queries in the command-line output](#examine-a-scans-sql-queries-in-the-command-line-output)<br />
+[Programmatically use scan output](#programmatically-use-scan-output)<br />
+<br />
+
+
 Soda Cloud displays the latest status of all of your checks in the **Checks** dashboard. There two methods through which a check and its latest result appears on the dashboard.
 * When you define checks in a checks YAML file and use Soda Library to run a scan, the checks and their latest results manifest in the **Checks** dashboard in Soda Cloud.
 * Any time Soda Cloud runs a scheduled scan of your data as part of an agreement, it displays the checks and their latest results in the **Checks** dashboard.
 
 {% include scan-output.md %}
+
 
 
 ### Scan failed
