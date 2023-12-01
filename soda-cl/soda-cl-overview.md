@@ -74,9 +74,9 @@ checks for dim_department_group:
   <input class="radio" id="two" name="group" type="radio">
   <input class="radio" id="three" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Using no-code checks</label>
-  <label class="tab" id="two-tab" for="two">Using an agreement</label>
-  <label class="tab" id="three-tab" for="three">Using a YAML file</label>
+  <label class="tab" id="one-tab" for="one">Use no-code checks</label>
+  <label class="tab" id="two-tab" for="two">Use an agreement</label>
+  <label class="tab" id="three-tab" for="three">Use a YAML file</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
@@ -85,6 +85,30 @@ checks for dim_department_group:
 2. Fill in the blanks.
 3. Pick a schedule.
 4. Save
+
+Pre-requisites being the same as the agreement:
+
+agent must be installed. (we should indicate the version as well)
+
+data source must be connected to the agent
+
+The user must have the permissions to edit the dataset (admin, editor, or manager of the dataset)
+
+The list of supported checks
+
+Check filters
+
+How to trigger checks manually
+
+Set a scan schedule is the same as the agreement
+
+How to find UI checks in Soda Cloud and edit them
+
+Further:
+
+Review existing content to see where the advice to create agreements should be replaced by writing checks via the UI feature. 
+
+Primer on “what is a check”.
 
 
   </div>
