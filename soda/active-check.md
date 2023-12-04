@@ -105,15 +105,6 @@ checks for fact_internet_sales:
             name: Average discount percentage is less than 40% (grouped-by sales territory)
 ```
 
-<br />
-Using Soda Library CLI, you have the option of running the scan locally, which is to say that Soda Library prints results in the command-line, but does not push results to Soda Cloud. As the scan executed the check, the check counts as active. The following example has one check which counts as active when you run the scan command below it. See also: [Add scan options]({% link soda-library/run-a-scan.md %}#add-scan-options)
-```yaml
-checks for dim_customer:
-    - row_count > 0
-```
-```shell
-soda scan -d adventureworks -c configuration.yml --local checks.yml
-```
 
 ## Go further
 
