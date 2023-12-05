@@ -89,22 +89,30 @@ If you wish to schedule a *new* scan to execute the checks in an agreement more 
 
 
 ### Run a scan for a no-code check
+*Requires a Soda Agent*
 
-If you wish to run a scan immediately to see the scan results for a no-code check, you can execute an ad hoc scan for the check.
+If you wish to run a scan immediately to see the scan results for a no-code check, you can execute an ad hoc scan for a single check.
 
 1. As an Admin, or Manager or Editor of a dataset with the no-code check you wish to execute, navigate to the dataset.
-2. In the table of checks, locate the check you wish to execute and click the stacked dots, then select **Execute Check**. You can only execute an individual check if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
+2. In the table of checks, locate the check you wish to execute and click the stacked dots, then select **Execute Check**. Alternatively, click the check and in the check's page, click **Execute**. You can only execute an individual check if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
 3. Soda executes *only* your check.
 
+You can also run and ad hoc scan to execute all checks associated with a scan schedule. 
+
+1. In Soda Cloud, navigate to Scans.
+2. In the list of Scans, click the one that is associated with the checks you wish to execute. 
+3. In the scan schedule page, click **Run Scan** to immediately execute all checks that use this scan schedule.
 
 ### Run a scan in an agreement
+*Requires a Soda Agent*
 
 {% include ad-hoc-scan.md %}
 
 
 ### Run a scan from the command-line
+*Requires Soda Library*
 
-Each scan requires the following as input:
+Eeach scan requires the following as input:
 
 * the name of the data source that contains the dataset you wish to scan, identified using the `-d` option
 * a `configuration.yml` file, which contains details about how Soda Library can connect to your data source, identified using the `-c` option
@@ -135,6 +143,7 @@ soda scan -d postgres_retail -c configuration.yml checks_stats1.yml checks_stats
 Use the soda `soda scan --help` command to review options you can include to customize the scan. See also: [Add scan options](#add-scan-options).
 
 ### Input scan-time variables
+*Requires Soda Library*
 
 There are several ways you can use variables in checks, filters, and in your data source configuration to pass values at scan time; a few examples follow.
 

@@ -123,7 +123,7 @@ SodaCL includes over 25 built-in metrics that you can use to write checks, a sub
 
 ### Define alert notification rules
 
-By default, alert notifications for your no-code check go to the **Dataset Owner**. If you wish to send alerts elsewhere, in addition to the owner, create a notification rule.
+By default, alert notifications for your no-code check go to the **Dataset Owner** and **Check Owner**. If you wish to send alerts elsewhere, in addition to the owner, create a notification rule.
 
 {% include notif-rule.md %}
 
