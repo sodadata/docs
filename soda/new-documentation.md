@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### December 4, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.26, Soda Core 3.1.1, and Soda Agent 0.8.51 - 0.8.52.
+
 #### November 29, 2023
 * Corrected the example included in [User-defined checks]({% link soda-cl/user-defined.md %}#define-user-defined-checks).
 
