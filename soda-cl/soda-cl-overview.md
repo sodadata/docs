@@ -226,7 +226,7 @@ See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.m
   </div>
   <div class="panel" id="three-panel" markdown="1">
 
-As a Data Engineer, you can write SodaCL checks directly in a `checks.yml` file, or leverage check suggestions in the Soda Library CLI to prepare a basic set of data quality checks for you. Alternatively, you can add SodaCL checks to a progrmmatic invocation of Soda Library.
+As a Data Engineer, you can write SodaCL checks directly in a `checks.yml` file, or leverage check suggestions in the Soda Library CLI to prepare a basic set of data quality checks for you. Alternatively, you can add SodaCL checks to a programmatic invocation of Soda Library.
 
 [Manually write SodaCL checks](#manually-write-sodacl-checks)<br />
 [Use check suggestions](#use-check-suggestions)<br />
