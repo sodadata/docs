@@ -53,6 +53,7 @@ SodaGPT only accepts the instructions you input in the chat; it does not collect
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Create [no-code checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) via the Soda Cloud user interface.
 * Get started with Soda by following a [tutorial]({% link soda/quick-start-sip.md %}).
 * Consider using [check suggestions]({% link soda-library/check-suggestions.md %}) to profile your data and suggest basic checks for data quality.
 <br />

@@ -119,7 +119,7 @@ Contact<a href="mailto:support@soda.io">support@soda.io</a>directly to acquire t
 
 ## Use the integration
 
-Access Soda Cloud to [create agreements]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) that execute checks against datasets in your data source each time you [run a Soda scan manually]({% link soda-library/run-a-scan.md %}#run-a-scan), or [orchestrate a scan]({% link soda-library/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Alation so that users can review data quality information from within the catalog.
+Access Soda Cloud to [create no-code checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) or [create agreements]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) that execute checks against datasets in your data source each time you [run a Soda scan manually]({% link soda-library/run-a-scan.md %}#run-a-scan), or [orchestrate a scan]({% link soda-library/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Alation so that users can review data quality information from within the catalog.
 
 In Alation, beyond reviewing data quality information for the data source, users can access the **Joins** and **Lineage** tabs of individual datasets to examine details and investigate the source of any data quality issues.
 

@@ -37,6 +37,7 @@ The following table outlines the rights of each role.
 | Invite colleagues to join the organization's Soda Cloud account as members                                   |   ✓   |   ✓  |
 | Set and edit notification rules                                                                              |   ✓   |   ✓  |
 | Apply check attributes to checks                                                                             |   ✓   |   ✓  |
+| Create no-code checks                                                                                        |   ✓   |   ✓  |
 | Create or edit check attributes                                                                              |   ✓   |      |
 | View Organization Settings for a Soda Cloud account                                                          |   ✓   |      |
 | Change the name of the organization                                                                          |   ✓   |      |
@@ -113,6 +114,7 @@ The following table outlines the rights of each role associated with each resour
 | Approve and reject agreements as a stakeholder                             |   ✓   |    ✓     |    ✓   |    ✓   |
 | Create a new agreement                                                     |   ✓   |    ✓     |    ✓   |        |
 | Edit an existing agreement, including adding a new scan schedule           |   ✓   |    ✓     |    ✓   |        |
+| Create no-code checks                                                      |   ✓   |    ✓     |    ✓   |        |
 | Add and edit dataset Attributes, such as Description or Tags               |   ✓   |    ✓     |    ✓   |        |
 | Control member access to a dataset and its checks (add or remove access)   |   ✓   |    ✓     |        |        |
 | Change the roles of members with access to a dataset and its checks        |   ✓   |    ✓     |        |        |
@@ -210,6 +212,7 @@ There are four ownership roles in Soda Cloud that identify the member that owns 
 
 * By default, the member who added the data source becomes the **Data Source Owner** and **Dataset Owner** of all datasets in that data source. The default role that Soda Cloud assigns to the Dataset Owner is that of Manager.
 * By default, the member who creates an agreement becomes the **Check Owner** of all checks defined in the agreement. 
+* By default, the member who creates a no-code check becomes its **Check Owner**.
 * By default, all Owners use an Author license.
 * You cannot change the Agreement Owner.
 <br />

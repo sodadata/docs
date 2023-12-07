@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### December 7, 2023
+* Introducting [no-code check creation]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in Soda Cloud. Create checks via the Soda Cloud user interface that creates SodaCL checks without writing any SodaCL.
+
 #### December 4, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.26, Soda Core 3.1.1, and Soda Agent 0.8.51 - 0.8.52.
 
