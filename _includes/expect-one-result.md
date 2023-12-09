@@ -7,7 +7,7 @@ checks for dim_customer:
   - row_count:
       warn:
         when > 2
-        when > 3
+        when < 0
 ```
 ```shell
 Soda Library 1.0.x
