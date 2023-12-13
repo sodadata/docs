@@ -34,6 +34,7 @@ profile columns:
 
 [Add dataset discovery](#add-dataset-discovery) <br />
 [Add column profiling](#add-column-profiling)<br />
+[Add quotes to all datasets](#add-quotes-to-all-datasets)<br />
 [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations)<br />
 [Inclusion and exclusion rules](#inclusion-and-exclusion-rules)<br />
 [Limitations and known issues](#limitations-and-known-issues)<br />
@@ -160,6 +161,14 @@ After you have added the data source in Soda Cloud and the first scan to profile
 Navigate to the **Datasets** dashboard, then click a dataset name to open the dataset's info page. Access the **Columns** tab to review the datasets that Soda Library discovered, including the column profile details you can expand to review as in the example below.
 
 ![profile columns](../assets/images/profile-columns.png)
+
+<br />
+
+## Add quotes to all datasets
+
+{% include quotes-tables.md %}
+
+<br />
 
 ## Compute consumption and cost considerations
 

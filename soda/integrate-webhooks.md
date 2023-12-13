@@ -22,12 +22,12 @@ Use a webhook to:
 &nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud alert notifications](#webhooks-for-soda-cloud-alert-notifications)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud incident integrations](#webhooks-for-soda-cloud-incident-integrations)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Webhooks for Soda Cloud agreements](#webhooks-for-soda-cloud-agreements)<br />
-[Example webhook with Jira for Soda Cloud incidents](#example-webhook-with-jira-for-soda-cloud-incidents)<br />
-[Example webhook with ServiceNow for Soda Cloud incidents](#example-webhook-with-servicenow-for-soda-cloud-incidents)<br />
 [Event payloads](#event-payloads) <br />
 [Go further](#go-further)<br />
-<br />
 
+See also: [Integrate with Jira]({% link soda/integrate-jira.md %})<br />
+See also: [Integrate with ServiceNow]({% link soda/integrate-servicenow.md %})<br />
+<br />
 
 ## Configure a webhook
 
@@ -71,7 +71,7 @@ Access a third-party service provider's documentation for details on how to set 
 
 ### Webhooks for Soda Cloud incident integrations
 
-You can use a webhook to integrate with a third-party service provider, such as Jira, to track incidents. With such an integration, Soda Cloud displays an external link for the integration in the **Incident Details**. See [image below](#example-webhook-with-jira-for-soda-cloud-incidents) for an example. 
+You can use a webhook to integrate with a third-party service provider, such as Jira, to track incidents. With such an integration, Soda Cloud displays an external link for the integration in the **Incident Details**. 
 
 Soda Cloud incident integrations make use of the following events:
 * [`validate`](#validate)
@@ -97,7 +97,7 @@ When Soda Cloud sends an `incidentCreated` event to a webhook endpoint, the thir
 
 <br />
 
-For incident integrations with third-party service providers that *do not* provide a link message in the response, you can use a callback URL. In such a case, when Soda Cloud sends an `incidentCreated` event to the third-party, you can configure the third-party response to include an `incidentLinkCallbackUrl` property. See an [example with Jira](#example-webhook-with-jira-for-soda-cloud-incidents) below.
+For incident integrations with third-party service providers that *do not* provide a link message in the response, you can use a callback URL. In such a case, when Soda Cloud sends an `incidentCreated` event to the third-party, you can configure the third-party response to include an `incidentLinkCallbackUrl` property. 
 
 Configure the third-party response to make a POST request to this callback URL, including the text and url in the body of the JSON payload. Soda Cloud adds the callback URL as an integration link in the incident details. 
 
@@ -138,135 +138,6 @@ Soda Cloud expects the integration party to return an HTTP status code 200 succe
 
 <br />
 
-## Example webhook with Jira for Soda Cloud incidents
-
-In Jira, you can set up an Automation Rule that enables you to define what you want an incoming webhook to do, then provides you with a URL that you use in the URL field in the Soda Cloud integration setup. 
-
-This example offers guidance on how to set up a webhook to generate an external link to which Soda Cloud displays in the **Incident Details**. When you change the status of a Soda Cloud incident, the webhook also updates the status of the Jira issue that corresponds with the incident.
-
-![webhook-incident](/assets/images/webhook-incident.png){:height="700px" width="700px"} 
-
-<br />
-
-In Jira, start by navigating to **Project settings** > **Automation**, then click **Create rule** and, for the type of **New trigger**, select **Incoming webhook**. Reference the Jira documentation for details on how to create an <a href="https://confluence.atlassian.com/automation070/triggers-1014664599.html" target="_blank">Incoming webhook</a>. 
-
-The images below offer details for an example of an Automation Rule in Jira to set up an incoming webhook that processes incident events from Soda Cloud. 
-
-<details>
-  <summary style="color:#00BC7E">See full Jira Automation example</summary>
-  <img src="/assets/images/webhook-automation.png" width="350">
-</details>
-
-<br />
-
-When configuring the **Incoming webhook**, note the value for the **Webhook URL** that Jira provides for the automation; input this URL into the Soda Cloud URL field for the webhook (step 4, [above](#configure-a-webhook)). 
-
-![webhook-incoming](/assets/images/webhook-incoming.png){:height="700px" width="700px"} 
-
-![webhook-config](/assets/images/webhook-config.png){:height="450px" width="450px"} 
-
-<br />
-
-When configuring **Send web request**, note the **Web request URL** that Jira sends back to Soda Cloud for the incident. This example uses `incidentLinkCallbackUrl` to send a POST request back to Soda Cloud to display a link to the Jira issue in the **Incident Details** page.
-
-![webhook-send-request](/assets/images/webhook-send-request.png){:height="700px" width="700px"} 
-
-<br />
-
-When configuring a **Branch rule** to update the status of an existing Jira issue, note the value in the **JQL** field that identifies which issue to update when the incident status in Soda Cloud changes.
-
-![webhook-branch-rule](/assets/images/webhook-branch-rule.png){:height="700px" width="700px"} 
-
-<br />
-
-## Example webhook with ServiceNow for Soda Cloud incidents
-
-In ServiceNow, you can create a Scripted REST API that enables you to prepare a resource to work as an incoming webhook. Use the **ServiceNow Resource Path** in the URL field in the Soda Cloud integration setup.
-
-This example offers guidance on how to set up a Scripted REST API Resource to generate an external link which Soda Cloud displays in the **Incident Details**; see image below. When you change the status of a Soda Cloud incident, the webhook also updates the status of the SNOW issue that corresponds with the incident.
-
-![webhook-incident-snow](/assets/images/webhook-incident-snow.png){:height="700px" width="700px"} 
-
-<br />
-
-The following steps offer a brief overview of how to set up a ServiceNow Scripted REST API Resource to integrate with a Soda Cloud webhook. Reference the ServiceNow documentation for details: 
-* <a href="https://docs.servicenow.com/en-US/bundle/tokyo-application-development/page/integrate/custom-web-services/task/t_CreateAScriptedRESTService.html" target="_blank">Create a Scripted REST API</a> and <a href="https://docs.servicenow.com/bundle/tokyo-application-development/page/integrate/custom-web-services/task/t_CreateAScriptedRESTAPIResource.html" target="_blank">Create a Scripted REST API Resource</a> 
-* <a href="https://developer.servicenow.com/dev.do#!/learn/courses/quebec/app_store_learnv2_rest_quebec_rest_integrations/app_store_learnv2_rest_quebec_scripted_rest_apis/app_store_learnv2_rest_quebec_creating_scripted_rest_apis" target="_blank">ServiceNow Developer: Creating Scripted REST APIs</a>
-
-1. In ServiceNow, start by navigating to the **All** menu, then use the filter to search for and select **Scripted REST APIs**. 
-2. Click **New** to create a new scripted REST API. Provide a name and API ID, then click **Submit** to save.
-3. In the Scipted Rest APIs list, find and open your newly-created API, then, in the **Resources** tab, click **New** to create a new resource.
-4. Provide a **Name** for your resource, then select POST as the **HTTP method**. 
-5. In the **Script** field, define a script that creates new tickets when a Soda Cloud incident is opened, and updates existing tickets when a Soda Cloud incident status is updated. Use the example below for reference. You may also need to define Security settings according to your organizations authentication rules.
-6. Click **Submit**, then copy the value of the **Resource path** to use in the URL field in the Soda Cloud integration setup.
-
-```javascript
-(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
-
-
-	var businessServiceId = '28***';
-	var snowInstanceId = 'dev***';
-	
-	var requestBody = request.body;
-	var requestData = requestBody.data;
-	gs.info(requestData.event);
-	if (requestData.event == 'incidentCreated'){
-		gs.log("*** Incident Created ***");
-		var grIncident = new GlideRecord('incident');
-		grIncident.initialize();
-		grIncident.short_description = requestData.incident.description;
-
-		grIncident.description = requestData.incident.sodaCloudUrl;
-		grIncident.correlation_id = requestData.incident.id;
-		if(requestData.incident.severity == 'critical'){
-			grIncident.impact = 1;
-		}else if(requestData.incident.severity == 'major'){
-			grIncident.impact = 2;
-		}else if(requestData.incident.severity == 'minor'){
-			grIncident.impact = 3;
-		}
-		
-		grIncident.business_service = businessServiceId;
-		grIncident.insert();
-		var incidentNumber = grIncident.number;
-		var sysid = grIncident.sys_id;
-		var callBackURL = requestData.incidentLinkCallbackUrl;
-		var req, rsp;
-		
-		req = new sn_ws.RESTMessageV2();
-
-
-		req.setEndpoint(callBackURL.toString());
-		req.setHttpMethod("post");
-		var sodaUpdate = '{"url":"https://'+ snowInstanceId +'.service-now.com/incident.do?sys_id='+sysid + '", "text":"SNOW Incident '+incidentNumber+'"}';
-		req.setRequestBody(sodaUpdate.toString());
-		resp = req.execute();
-		gs.log(resp.getBody());
-		
-
-	}else if(requestData.event == 'incidentUpdated'){
-		gs.log("*** Incident Updated ***");
-		var target = new GlideRecord('incident');
-		target.addQuery('correlation_id', requestData.incident.id);
-		target.query();
-		target.next();
-
-		if(requestData.incident.status == 'resolved'){
-			//Change this according to how SNOW is used.
-			target.state = 6;
-			target.close_notes = requestData.incident.resolutionNotes;
-		}else{
-			//Change this according to how SNOW is used.
-			target.state = 4;
-		}
-		target.update();
-		
-	}
-
-
-})(request, response);
-```
-<br />
 
 ## Event payloads 
 
@@ -472,7 +343,7 @@ Soda Cloud sends this event payload when an incident has been updated with, for 
 
 ## Go further
 
-* As a business user, learn more about [writing SodaCL checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in Soda Cloud.
+* As a business user, learn more about [writing no-code checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in Soda Cloud.
 * Set [notification rules]({% link soda-cloud/notif-rules.md %}) that apply to multiple checks in your account. 
 * Learn more about creating, tracking, and resolving data quality [Incidents]({% link soda-cloud/incidents.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

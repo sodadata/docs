@@ -13,7 +13,8 @@ parent: Data source reference
 
 ## Connection configuration reference
 
-Because Synapse is compatible with MS SQL server wire protocol, Soda offers indirect support for Synapse data sources using the `soda-sqlserver` package. 
+Because Synapse is compatible with MS SQL server wire protocol, Soda offers indirect support for Synapse data sources using the `soda-sqlserver` package. <br /> 
+Soda also supports Azure Data Factory (ADF) with Airflow using this configuration. 
 
 {% include code-header.html %}
 ```yaml

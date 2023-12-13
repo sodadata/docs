@@ -9,6 +9,15 @@ parent: Learning resources
 
 <br />
 
+#### December 13, 2023
+* Updated [freshness check]({% link soda-cl/freshness.md %}#optional-check-configurations) to include support for in-check filters.
+* Added documentation to clarify that Soda supports Azure Data Factory (ADF) with Airflow using [Synapse]({% link soda/connect-synapse.md %}) connection configuration.
+* Documented the support for adding quotes to all datasets that Soda acts upon automatically such as with [profiling or discovering]({% link soda-cl/profile.md %}#add-quotes-to-all-datasets) datasets. 
+* Added an example of an [in-check filter]({% link soda-cl/filters.md %}#configure-in-check-filters) that uses a string value.
+* Added a troubleshooting item for the error [NoneType object is not iteratable]({% link soda-cl/troubleshoot.md %}#nonetype-object-is-not-iteratable).
+* Added instructions for dynamically including a [dataset name]({% link soda-cl/for-each.md %}#add-a-dynamic-name-to-for-each-checks) in a for each configuration.
+* Prepared new, independent documentation for integrating Soda with [Jira]({% link soda/integrate-jira.md %}) and [ServiceNow]({% link soda/integrate-servicenow.md %}).
+
 #### December 7, 2023
 * Introducting [no-code check creation]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in Soda Cloud. Create checks via the Soda Cloud user interface that creates SodaCL checks without writing any SodaCL.
 
@@ -455,7 +464,7 @@ parent: Learning resources
 
 #### November 8, 2022
 
-* Added an [example webhook integration]({% link soda/integrate-webhooks.md %}#example-webhook-with-servicenow-for-soda-cloud-incidents) for Soda Cloud and ServiceNow.
+* Added an example webhook integration for Soda Cloud and ServiceNow.
 
 #### November 7, 2022
 
