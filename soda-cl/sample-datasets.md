@@ -21,6 +21,7 @@ sample datasets:
 ```
 
 [Sample datasets](#sample-datasets)<br />
+[Add quotes to all datasets](#add-quotes-to-all-datasets)<br />
 [Inclusion and exclusion rules](#inclusion-and-exclusion-rules)<br />
 [Disable samples in Soda Cloud](#disable-samples-in-soda-cloud)<br />
 [Go further](#go-further) <br />
@@ -63,6 +64,13 @@ sample datasets:
 
 ![Example sample datasets screenshot](../assets/images/soda-sample-datasets.png)
 
+<br />
+
+## Add quotes to all datasets
+
+{% include quotes-tables.md %}
+
+<br />
 
 ## Inclusion and exclusion rules
 

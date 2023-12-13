@@ -8,6 +8,7 @@ parent: SodaCL reference
 # Troubleshoot SodaCL
 *Last modified on {% last_modified_at %}*
 
+[NoneType object is not iteratable](#nonetype-object-is-not-iteratable)
 [Errors with valid format](#errors-with-valid-format)<br />
 [Errors with missing checks](#errors-with-missing-checks)<br />
 [Soda does not recognize variables](#soda-does-not-recognize-variables)<br />
@@ -21,6 +22,12 @@ parent: SodaCL reference
 [Errors when using in-check filters](#errors-when-using-in-check-filters)<br />
 [Using reference checks with Spark DataFrames](#using-reference-checks-with-spark-dataframes)
 <br />
+
+## NoneType object is not iteratable
+
+**Problem:** During a scan, Soda returns an error that reads `| NoneType object is not iteratable`.
+
+**Solution:** The most likely cause of the error is incorrect indentation of your SodaCL. Double check that nested items in checks have proper indentation; refer to [SodaCL reference docs]({% link soda-cl/metrics-and-checks.md %}) to validate your syntax.
 
 ## Errors with valid format
 

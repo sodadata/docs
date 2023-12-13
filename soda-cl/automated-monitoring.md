@@ -19,6 +19,7 @@ automated monitoring:
 ```
 [About automated monitoring checks](#about-automated-monitoring-checks)<br />
 [Add automated monitoring checks](#add-automated-monitoring-checks-1)<br />
+[Add quotes to all datasets](#add-quotes-to-all-datasets)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -62,6 +63,13 @@ To review the check results for automated monitoring checks in Soda Cloud, you c
 * navigate to the **Checks** dashboard to see the check results
 * navigate to the **Datasets** dashboard to find the check results
 
+<br />
+
+## Add quotes to all datasets
+
+{% include quotes-tables.md %}
+
+<br />
 
 ## Go further
 
