@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### December 21, 2021
+* Documented the support for tracking [anomalies and changes over time]({% link soda-cl/group-by.md %}#track-anomalies-and-relative-changes-by-group) in checks grouped by category.
+
 #### December 13, 2023
 * Updated [freshness check]({% link soda-cl/freshness.md %}#optional-check-configurations) to include support for in-check filters.
 * Added documentation to clarify that Soda supports Azure Data Factory (ADF) with Airflow using [Synapse]({% link soda/connect-synapse.md %}) connection configuration.

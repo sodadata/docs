@@ -25,6 +25,7 @@ checks for dim_customer:
 [Reset anomaly history](#reset-anomaly-history)<br />
 [Optional check configurations](#optional-check-configurations) <br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
+[Track anomalies and relative changes by group](#track-anomalies-and-relative-changes-by-group)<br />
 [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation)<br />
 [Go further](#go-further) <br />
 <br />
@@ -149,6 +150,10 @@ for each dataset T:
 ```yaml
 <
 ```
+
+## Track anomalies and relative changes by group
+
+{% include group-anomaly.md %}
 
 
 ## Troubleshoot Soda Scientific installation
