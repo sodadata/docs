@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### December 21, 2023
+* Updated the [Self-serve Soda]({% link soda/quick-start-end-user.md %}#begin-a-discussion-and-propose-checks) use case guide to include instructions for using no-code checks and Discussions to empower non-coders to join the team effort of establishing good-quality data. 
+
 #### December 13, 2023
 * Updated [freshness check]({% link soda-cl/freshness.md %}#optional-check-configurations) to include support for in-check filters.
 * Added documentation to clarify that Soda supports Azure Data Factory (ADF) with Airflow using [Synapse]({% link soda/connect-synapse.md %}) connection configuration.
