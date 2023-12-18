@@ -61,10 +61,10 @@ For this exercise, you must have installed the following tools:
 
 ## Set up
 
-1. Clone the repository locally.
+1. Clone the <a href="https://github.com/sodadata/soda-agent-use-cases" target="_blank">`soda-agent-use-cases`</a> repository locally. 
 2. Navigate to the `setup` directory in the repository.
     ```
-    cd terraform/soda-agent-external-secrets/setup
+    cd soda-agent-external-secrets/setup
     ```
 3. Use the Terraform commands below to: 
     * create a local Kubernetes cluster,
@@ -129,8 +129,8 @@ For this exercise, you must have installed the following tools:
 
 ## Access the Hashicorp Vault
 
-1. The configuration output produces a URL value for `vault_access` which, by default, is <a href="https://127.0.0.1:30200" target="_blank">https://127.0.0.1:30200</a>. Click the link to access the Hashicorp Vault login page in your browser.
-![Hashicorp Vault login page](/assets/images/vault-login.png){:height="500px" width="500px"} 
+1. The configuration output produces a URL value for `vault_access` which, by default, is <a href="https://127.0.0.1:30200" target="_blank">https://127.0.0.1:30200</a>. Click the link to access the Hashicorp Vault login page in your browser. <br /><br />
+![Hashicorp Vault login page](/assets/images/vault-login.png){:height="500px" width="500px"} <br /><br />
 2. To log in, change the Method to `Username`, then use the `vault_admin_username` to populate the first field. To extract the value for `vault_admin_password` for the second field, use the following command:
     ```
     terraform output -raw vault_admin_password
@@ -147,14 +147,13 @@ For this exercise, you must have installed the following tools:
     terraform output -raw vault_admin_password | xclip -selection clipboard
     ```
 
-3. Now logged in, from the list of Secret Engines, navigate to `kv/local/soda` to see the example username and password secrets in the vault. If you wish, you can set new secrets that the Soda Agent can use. <br />
+3. Now logged in, from the list of Secret Engines, navigate to `kv/local/soda` to see the example username and password secrets in the vault. If you wish, you can set new secrets that the Soda Agent can use. <br /><br />
 ![Hashicorp Vault secrets](/assets/images/soda-secrets.png){:height="500px" width="500px"}
 
 ## Deploy a Soda Agent and pass login credentials
 
-1. If you haven't already done so, create a <a href="https://cloud.soda.io/signup" target="_blank">Soda Cloud account</a> for free for a 45-day trial. 
-2. Access [Deploy a Soda Agent]({% link soda-agent/deploy.md %}#create-a-soda-cloud-account) and follow the instructions to create an API key id and an API key secret for the Soda Agent. 
-3. Prepare a values YAML file to deploy a Soda Agent in your cluster, as per the following example. 
+1. Access [Deploy a Soda Agent]({% link soda-agent/deploy.md %}#create-a-soda-cloud-account) and follow the instructions to create a free, 45-day trial Soda Cloud account and an API key id, and an API key secret for the Soda Agent. 
+2. Prepare a values YAML file to deploy a Soda Agent in your cluster, as per the following example. 
    ```yaml
    soda:
      apikey:
@@ -174,7 +173,7 @@ For this exercise, you must have installed the following tools:
        # Use https://cloud.soda.io for EU region
        endpoint: "https://cloud.soda.io"
     ```
-4. Deploy the Soda Agent using the following command:
+3. Deploy the Soda Agent using the following command:
    ```shell
    helm install soda-agent soda-agent/soda-agent \
      --values values.yml \
@@ -199,7 +198,7 @@ To use your newly-deployed Soda Agent, you start by creating a new data source i
       schema: public
     ```
 3. Complete the guided workflow to **Save & Run** a scan of the data source to validate that Soda Cloud can access the data in the example data source via the Soda Agent. It uses the external secrets manager configuration you set up to fetch, then pass the username and password to the data source.
-4. Follow the instructions to [Define SodaCL checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in a Soda Agreement, then run scans for data quality.
+4. Follow the instructions to [Define SodaCL checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) using no-code checks in Soda Cloud, then run scans for data quality.
 
 ## About the ClusterSecretStore
 
