@@ -101,10 +101,12 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 | Google CloudSQL | `soda-postgres` |
 | IBM DB2 | `soda-db2` |
 | Local file | Use Dask. |
+| MotherDuck | `soda-duckdb` |
 | MS SQL Server | `soda-sqlserver` |
 | MySQL | `soda-mysql` |
 | OracleDB | `soda-oracle` |
 | PostgreSQL | `soda-postgres` |
+| Presto | `soda-presto` |
 | Snowflake | `soda-snowflake` | 
 | Trino | `soda-trino` |
 | Vertica  | `soda-vertica` |

@@ -79,6 +79,10 @@ scan.set_scan_definition_name('YOUR_SCHEDULE_NAME')
 
 <br />
 
+{% include reference-with-spark.md %}
+
+<br />
+
 
 ## Connect Soda Library for SparkDF to Soda Cloud
 
@@ -167,6 +171,10 @@ print(scan.get_logs_text())
 
 <br />
 
+{% include reference-with-spark.md %}
+
+<br />
+
 ## Connect to Spark for Hive
 
 An addition to `soda-spark-df`, install and configure the `soda-spark[hive]` package if you use Apache Hive.
@@ -174,22 +182,24 @@ An addition to `soda-spark-df`, install and configure the `soda-spark[hive]` pac
 ```yaml
 data_source my_datasource_name:
   type: spark
+  method: hive
   username: 
   password: 
   host: 
   port: 
-  database: 
+  catalog: 
   auth_method: 
 ```
 
 | Property      | Required    |
 | ------------- | ----------- |
 | type          | required    |
+| method        | required    |
 | username      | required    |
 | password      | required    |
 | host          | required    |
 | port          | required    |
-| database      | required    |
+| catalog       | required    |
 | auth_method   | required    |
 
 
@@ -202,6 +212,7 @@ An addition to `soda-spark-df`, install and configure the `soda-spark[odbc]` pac
 ```yaml
 data_source my_datasource_name:
   type: spark
+  method: odbc
   driver: 
   host: 
   port: 
@@ -214,6 +225,7 @@ data_source my_datasource_name:
 | Property      | Required    |
 | ------------- | ----------- |
 | type          | required    |
+| method        | required    |
 | driver        | required    |
 | host          | required    |
 | port          | required    |
@@ -238,9 +250,9 @@ pip install -i https://pypi.cloud.soda.io soda-spark[databricks]
 ```yaml
 data_source my_datasource_name:
   type: spark
+  method: databricks
   catalog: samples
   schema: nyctaxi
-  method: databricks
   host: hostname_from_Databricks_SQL_settings
   http_path: http_path_from_Databricks_SQL_settings
   token: my_access_token
@@ -249,9 +261,9 @@ data_source my_datasource_name:
 | Property      | Required    |
 | ------------- | ----------- |
 | type          | required    |
+| method        | required    |
 | catalog       | required    |
 | schema        | required    |
-| method        | required    |
 | host          | required    |
 | token         | required    |
 

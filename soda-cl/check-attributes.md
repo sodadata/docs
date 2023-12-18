@@ -66,9 +66,9 @@ Note that you can only define or edit check attributes as an [Admin]({% link sod
 ## Apply an attribute to one or more checks
 
 While only a Soda Cloud Admin can define or revise check attributes, any Author user can apply attributes to new or existing checks when:
-* writing or editing checks in an agreement in Soda Cloud, <br />
-OR <br />
-* writing or editing checks in a checks YAML file for Soda Library.
+* writing or editing checks in an agreement in Soda Cloud
+* creating or editing no-code checks in Soda Cloud
+* writing or editing checks in a checks YAML file for Soda Library
 
 Apply attributes to checks using key:value pairs, as in the following example which applies five Soda Cloud-created attributes to a new `row_count` check. 
 {% include code-header.html %}

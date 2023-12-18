@@ -72,12 +72,73 @@ checks for dim_department_group:
 <div class="warpper">
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
+  <input class="radio" id="three" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Using an agreement</label>
-  <label class="tab" id="two-tab" for="two">Using a YAML file</label>
+  <label class="tab" id="one-tab" for="one">Use no-code checks</label>
+  <label class="tab" id="two-tab" for="two">Use an agreement</label>
+  <label class="tab" id="three-tab" for="three">Use a YAML file</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
+Create **no-code checks** for data quality directly in the Soda Cloud user interface. When you create a no-code check, you also set a schedule for Soda to execute your check when it runs a scan of your data source. <br />
+*Requires a Soda Agent*
+
+![no-code-checks](/assets/images/no-code-checks.png){:height="500px" width="500px"}
+
+
+### Prerequisites
+
+* You, or an Admin on your Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) version 0.8.52 or greater, and connected it to your Soda Cloud account.
+* You, or an Admin on your Soda Cloud account, has [added a new datasource]({% link soda-agent/deploy.md %}#add-a-new-data-source) via the Soda Agent in your Soda Cloud account.
+* You must have permission to edit the dataset as an Admin, Manager, or Editor; see [Roles and rights]({% link soda-cloud/roles-and-rights.md %}).
+
+### Create a new check
+
+SodaCL includes over 25 built-in metrics that you can use to write checks, a subset of which are accessible via no-codecheck creation. The table below lists the checks available to create via the no-code interface; access [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for detailed information about each metric or check.
+
+<table>
+  <tr>
+    <td>Missing<br /> Validity<br />  Numeric<br /> Duplicate <br /> Row count </td>
+    <td>Freshness<br /> Schema <br /> SQL Failed rows<br /> SQL Metric<br ></td>
+  </tr>
+</table>
+
+1. As an Admin, or Manager or Editor of a dataset to which you wish to add checks, navigate to the dataset, then click **Add Check**. You can only create a check via the no-code interface for datasets in data sources connected via a Soda Agent. 
+2. Select the type of check you wish to create, then complete the form to create the check. Refer to table below for guidance on the values to enter.
+3. Optionally, test your check, then save. Soda executes the check during the next scan according to the schedule you selected, or whenever a Soda Cloud user runs the schedule scan manually.
+4. Optionally, you can execute your check immediately. From the dataset's page, locate the check you just created and click the stacked dots, then select **Execute Check**. Soda executes *only* your check.
+
+| Field or Label  | Guidance |
+| --------------- | -------- |
+| Dataset         | Select the dataset to which you want the check to apply. |
+| Check Name      | Provide a unique name for your check. |
+| Schedule        | Select the scan schedule to which you wish to add your check. Optionally, you can click **Create a New Schedule** if you want Soda to execute the check more or less frequently, or at a different time of day than existing schedules dictate. See [Manage scheduled scans]({% link soda-cloud/scan-mgmt.md %}) for details. |
+| Filter fields   | Optionally, add an [in-check filter]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) to apply conditions that specify a portion of the data against which Soda executes the check. |
+| Define Metric/Values/Column/SQL | As each metric or check requires different values, refer to [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for detailed information about each metric or check. |
+| Alert Level | Select the check result state(s) for which you wish to be notified: Fail, Warn, or Fail and Warn. See [View scan results]({% link soda-library/run-a-scan.md %}#view-scan-results) for details. <br />By default, alert notifications for your check go to the **Dataset Owner**. See [Define alert notification rules](#define-alert-notification-rules) to set up more alert notifications. |
+| Fail Condition, Value, and Value Type | Set the values of these fields to specify the threshold that constitutes a fail or warn check result. <br /> For example, if you are creating a **Duplicate Check** and you want to make sure that less than 5% of the rows in the column you identified contain duplicates, set <br />• **Fail Condition** to `>` <br />• **Value** to `5` <br />• **Value Type** to `Percent`|
+| Attribute fields | Select from among the list of existing attributes to apply to your check so as to organize your checks and alert notifications in Soda Cloud. Refer to [Add check attributes]({% link soda-cl/check-attributes.md %}) for details. |
+
+<br />
+
+### Define alert notification rules
+
+By default, alert notifications for your no-code check go to the **Dataset Owner** and **Check Owner**. If you wish to send alerts elsewhere, in addition to the owner, create a notification rule.
+
+{% include notif-rule.md %}
+
+<br />
+
+### Edit an existing check
+
+1. As an Admin, or Manager or Editor of a dataset in which the no-code check exists, navigate to the dataset.
+2. To the right of the check you wish to edit, click the stacked dots, then select **Edit Check**. You can only edit a check via the no-code interface if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
+3. Adjust the check as needed, test your check, then save. Soda executes the check during the next scan according to the schedule you selected.
+4. Optionally, you can execute your check immediately. Locate the check you just edited and click the stacked dots, then select **Execute Check**. Soda executes *only* your check.
+
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
 You can write SodaCL checks directly in the Soda Cloud user interface within an **agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source.<br />
 *Requires a Soda Agent*
 
@@ -135,8 +196,6 @@ Soda Cloud sends emails to request review and approval from all stakeholders, an
 
 By default, Soda Cloud includes an out-of-the-box email notification to all the agreement's stakeholders when a check in your agreement fails. You can remove or adjust this notification, or use the search bar to add more. Access [View scan results]({% link soda-library/run-a-scan.md %}#view-scan-results) to learn more about pass, warn, and fail check results.
 
-Note that Soda Cloud does not send a notification when a *scan* fails because of an error, only when *checks* pass, warn, or fail. Refer to [Scan output]({% link soda-library/run-a-scan.md %}#scan-failed) for details.
-
 (Optional) If you have integrated your Soda Cloud account with [Slack]({% link soda/integrate-slack.md %}) or another third-party service provider via a [webhook]({% link soda/integrate-webhooks.md %}), use the search field to type a channel name to add the channel as a notification recipient. Alternatively, use the field to enter names of individual teammates with whom you collaborate in Soda Cloud.
 
 <br />
@@ -147,9 +206,9 @@ After you have set up a new agreement, Soda Cloud sends approval requests to the
 
 Regardless of the approval status of the agreement, however, Soda Cloud begins running scans of your data according to the scan schedule you set. Soda Cloud sends notifications after each scan according to the settings you defined in step 4. 
 
-(Optional) You can create a new [scan definition]({% link soda/glossary.md %}#scan-definition) if you wish to run a scan to execute the checks in this agreement more or less frequently, or a different time of day, relative to the default scan definition for the data source. 
+(Optional) You can click the link provided to create a new scan schedule if you wish to run a scan to execute the checks in this agreement more or less frequently, or a different time of day, relative to the default scan schedule for the data source. 
 
-To review existing scan definitions, navigate to **your avatar** > **Scans & Data** > **Scan Definitions** tab. 
+To review existing scan schedules, navigate to the **Scans** menu item. 
 
 <br />
 
@@ -165,9 +224,9 @@ Further, take into account the following tips and best practices when writing So
 See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl)
 
   </div>
-  <div class="panel" id="two-panel" markdown="1">
+  <div class="panel" id="three-panel" markdown="1">
 
-As a Data Engineer, you can write SodaCL checks directly in a `checks.yml` file, or leverage check suggestions in the Soda Library CLI to prepare a basic set of data quality checks for you. Alternatively, you can add SodaCL checks to a progrmmatic invocation of Soda Library.
+As a Data Engineer, you can write SodaCL checks directly in a `checks.yml` file, or leverage check suggestions in the Soda Library CLI to prepare a basic set of data quality checks for you. Alternatively, you can add SodaCL checks to a programmatic invocation of Soda Library.
 
 [Manually write SodaCL checks](#manually-write-sodacl-checks)<br />
 [Use check suggestions](#use-check-suggestions)<br />

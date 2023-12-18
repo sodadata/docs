@@ -9,6 +9,16 @@ checks for dim_employee:
       filter: sales_territory_key = 11
 ```
 
+If your filter uses a string as a value, be sure to wrap the string in single quotes, as in the following example.
+{% include code-header.html %}
+```yaml
+checks for dim_employee:
+  - max(vacation_hours) < 80:
+      name: Too many vacation hours for US Sales
+      filter: middle_name = 'Henry'
+```
+
+
 You can use `AND` or `OR` to add multiple filter conditions to a filter key:value pair to further refine your results, as in the following example.
 {% include code-header.html %}
 ```yaml

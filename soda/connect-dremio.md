@@ -21,21 +21,21 @@ Install package: `soda-dremio`
 ```yaml
 data_source my_datasource_name:
   type: dremio
-  host: 
-  port: 
-  username:
-  password: 
-  schema:
+  host: 127.0.0.1
+  port: 5432
+  username: simple
+  password: simple_pass
+  schema: public
 ```
 
 | Property  | Required | Notes                                                            |
 | --------- | -------- | -----------------------------------------------------------------|
-| type      | required |                                                                  |
-| host      | required |                                                                  |
-| port      | required |                                                                  |
+| type      | required  | Identify the type of data source for Soda.                      |
+| host      | required  | Provide a host identifier.                                      |
+| port      | required  | Provide a port identifier.                                      |
 | username  | required | Consider using system variables to retrieve this value securely. |
 | password  | required | Consider using system variables to retrieve this value securely. |
-| schema    | optional |                                                                  |
+| schema    | optional | Provide an identifier for the schema in which your dataset exists.|
 
 
 {% include test-connection.md %}

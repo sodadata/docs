@@ -39,12 +39,16 @@ checks for dim_department_group:
   - values in (department_group_name) must exist in dim_employee (department_name)
 ```
 
-You can also validate that data in one dataset does not exist in another.  
+You can also validate that data in one dataset does *not* exist in another.  
 {% include code-header.html %}
 ```yaml
 checks for dim_customer_staging:
   - values in (birthdate) must not exist in dim_customer_prod (birthdate)
 ```
+
+### Reference checks and dataframes
+
+{% include reference-with-spark.md %}
 
 ### Failed row samples
 

@@ -50,6 +50,7 @@ SODA_API_KEY_SECRET=<your Soda Cloud private key>
     - name: Cars
       soda:
         datasource_id: 2d33bf0a-9a1c-4c4b-b148-b5af318761b3
+        datasource_name: adventureworks
         # optional dataset_mapping   soda: catalog
         dataset_mapping:
            Cars_data: Cars
@@ -72,6 +73,7 @@ SODA_API_KEY_SECRET=<your Soda Cloud private key>
 | ----- | ------------------- |
 | `name`  | A name you choose as an identifier for an integration between Soda Cloud and a data catalog. |
 |`soda:` <br />  `datasource_id` | The data source information panel in Soda Cloud. |
+|`soda:` <br />  `datasource_name` | The data source information panel in Soda Cloud. |
 |`soda:` <br />  `dataset_mapping` | (Optional) When you run the integration, Soda automatically maps all of the datasets between data sources. However, if the names of the datasets differ in the tools you can use this property to manually map datasets between tools. <br /> |
 |`catalog:` <br />  `type:`| The name of the cataloging software; in this case, “alation”. |
 |`catalog:` <br />  `datasource_id` | Retrieve this value from the URL on the data source page in the Alation catalog; see image below. |
@@ -117,7 +119,7 @@ Contact<a href="mailto:support@soda.io">support@soda.io</a>directly to acquire t
 
 ## Use the integration
 
-Access Soda Cloud to [create agreements]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) that execute checks against datasets in your data source each time you [run a Soda scan manually]({% link soda-library/run-a-scan.md %}#run-a-scan), or [orchestrate a scan]({% link soda-library/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Alation so that users can review data quality information from within the catalog.
+Access Soda Cloud to [create no-code checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) or [create agreements]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) that execute checks against datasets in your data source each time you [run a Soda scan manually]({% link soda-library/run-a-scan.md %}#run-a-scan), or [orchestrate a scan]({% link soda-library/orchestrate-scans.md %}) using a data pipeline tool such as Airflow. Soda Cloud pushes data quality scan results to the corresponding data source in Alation so that users can review data quality information from within the catalog.
 
 In Alation, beyond reviewing data quality information for the data source, users can access the **Joins** and **Lineage** tabs of individual datasets to examine details and investigate the source of any data quality issues.
 

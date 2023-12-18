@@ -21,7 +21,7 @@ redirect_from:
 
 The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster, then use Helm to deploy a Soda Agent in the cluster. 
 
-This setup enables Soda Cloud users to securely connect to data sources (BigQuery, Snowflake, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own agreements to check for data quality in the new data source.
+This setup enables Soda Cloud users to securely connect to data sources (BigQuery, Snowflake, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own no-code checks and agreements to check for data quality in the new data source.
 
 As a step in the **Get started roadmap**, this guide offers instructions to set up, install, and configure Soda in a [self-hosted agent deployment model]({% link soda/setup-guide.md %}#self-hosted-agent).
 
@@ -141,7 +141,7 @@ The following table outlines the two ways you can install the Helm chart to depl
 
 1. (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
 2. Add the Soda Agent Helm chart repository.
-` ``shell
+```shell
 helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```
 3. Use the following comand to install the Helm chart to deploy a Soda Agent in your custer. (Learn more about the [`helm install` command](#about-the-helm-install-command).)
@@ -152,6 +152,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```shell
 helm install soda-agent soda-agent/soda-agent \
     --set soda.agent.name=myuniqueagent \
+    --set soda.polling.interval=5 \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
     --set soda.cloud.endpoint=https://cloud.soda.io \
     --set soda.apikey.id=*** \
@@ -172,7 +173,7 @@ REVISION: 1
 ```shell
 minikube kubectl -- describe pods
 ```
-4. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
+4. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
 Containers:
@@ -207,6 +208,7 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
+          pollingIntervall: 5
         scanlauncher:
           idle:
             enabled: true
@@ -226,7 +228,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 minikube kubectl -- describe pods
 ```
-6. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+6. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -380,6 +382,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 helm install soda-agent soda-agent/soda-agent \
     --set provider.aws.eks.fargate.enabled=true \
     --set soda.agent.name=myuniqueagent \
+    --set soda.polling.interval=5 \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
     --set soda.cloud.endpoint=https://cloud.soda.io \
     --set soda.apikey.id=*** \
@@ -400,7 +403,7 @@ REVISION: 1
 ```shell
 kubectl describe pods
 ```
-7. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+7. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -438,6 +441,7 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
+          pollingIntervall: 5
         scanlauncher:
           idle: 
             enabled: true
@@ -456,7 +460,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 kubectl describe pods -n soda-agent
 ```
-8. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+8. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step four to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -487,7 +491,7 @@ If you use AWS services for your infrastructure and you have deployed or will de
 ```shell
 kubectl -n soda-agent rollout restart deploy
 ```
-5. After you have started the agent and validated that it is running, log into your Soda Cloud account, then navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
+5. After you have started the agent and validated that it is running, log into your Soda Cloud account, then navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
 
@@ -790,6 +794,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```shell
 helm install soda-agent soda-agent/soda-agent \
     --set soda.agent.name=myuniqueagent \
+    --set soda.polling.interval=5 \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
     --set soda.cloud.endpoint=https://cloud.soda.io \
     --set soda.apikey.id=*** \
@@ -814,7 +819,7 @@ kubectl get pods -n soda-agent
 NAME                                     READY   STATUS    RESTARTS   AGE
 soda-agent-orchestrator-ffd74c76-5g7tl   1/1     Running   0          32s
 ```
-5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+5. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
@@ -843,6 +848,7 @@ namespace/soda-agent created
 helm install soda-agent soda-agent/soda-agent \
     --set soda.agent.target=azure-aks-virtualnodes \ 
     --set soda.agent.name=myuniqueagent \
+    --set soda.polling.interval=5 \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
     --set soda.cloud.endpoint=https://cloud.soda.io \
     --set soda.apikey.id=*** \
@@ -867,7 +873,7 @@ kubectl get pods -n soda-agent
 NAME                                     READY   STATUS    RESTARTS   AGE
 soda-agent-orchestrator-ffd74c76-5g7tl   1/1     Running   0          32s
 ```
-6. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+6. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
@@ -893,6 +899,7 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
+          pollingIntervall: 5
         scanlauncher:
           idle:
             enabled: true
@@ -918,7 +925,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 kubectl describe pods -n soda-agent
 ```
-8. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
+8. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
 <br /> 
@@ -1132,6 +1139,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```shell
 helm install soda-agent soda-agent/soda-agent \
 >   --set soda.agent.name=myuniqueagent \
+    --set soda.polling.interval=5 \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
 >   --set soda.cloud.endpoint=https://cloud.soda.io \
 >   --set soda.apikey.id=*** \
@@ -1152,7 +1160,7 @@ REVISION: 1
 ```shell
 kubectl describe pods
 ```
-5. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
+5. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 Name:             soda-agent-orchestrator-66-snip
 Namespace:        soda-agent
@@ -1188,6 +1196,7 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
+          pollingIntervall: 5
         scanlauncher:
           idle:
             enabled: true
@@ -1206,7 +1215,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 kubectl describe pods
 ```
-6. In your Soda Cloud account, navigate to **your avatar** > **Scans & Data** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+6. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step four to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 Name:             soda-agent-orchestrator-66-snip
@@ -1256,15 +1265,15 @@ Refer to <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/deletin
 
 ## Add a new data source
 
-In your Soda Cloud account, navigate to **your avatar** > **Scans & Data**. Click **New Data Source**, then follow the guided steps to create a new data source. Refer to the sections below for insight into the values to enter in the fields and editing panels in the guided steps. 
+In your Soda Cloud account, navigate to **your avatar** > **Data Sources**. Click **New Data Source**, then follow the guided steps to create a new data source. Refer to the sections below for insight into the values to enter in the fields and editing panels in the guided steps. 
 
 #### 1. Attributes
 
 | Field or Label | Guidance |
 | -----------------------   | ---------- |
 | Data Source Label | Provide a unique identifier for the data source. Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
-| Default Scan Definition Label | Provide a name for the default scan definition. A scan definition is a collection of checks YAML files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source.  |
-| Default Scan Definition Agent | Select the name of a Soda Agent that you have previously set up in your secure environment and connected to a specific data source. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
+| Default Scan Schedule Label | Provide a name for the default scan schedule for this data sources. The scan schedule indicates which Soda Agent to use to execute the scan, and when.  |
+| Default Scan Schedule Agent | Select the name of a Soda Agent that you have previously set up in your secure environment and connected to a specific data source. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
 | Schedule Definition | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
 | Starting At | Select the time of day to run the scan. The default value is midnight. |
 | Time Zone | Select a timezone. The default value is UTC. |

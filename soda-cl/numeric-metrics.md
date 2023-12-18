@@ -170,7 +170,7 @@ filter CUSTOMERS [daily]:
   where: TIMESTAMP '{ts_start}' <= "ts" AND "ts" < TIMESTAMP '${ts_end}'
 
 checks for CUSTOMERS [daily]:
-  - duplicate_count(phone) < 10
+  - duplicate_count(phone) > 10
 ```
 
 #### Example with for each

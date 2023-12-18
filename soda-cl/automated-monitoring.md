@@ -19,6 +19,7 @@ automated monitoring:
 ```
 [About automated monitoring checks](#about-automated-monitoring-checks)<br />
 [Add automated monitoring checks](#add-automated-monitoring-checks-1)<br />
+[Add quotes to all datasets](#add-quotes-to-all-datasets)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -35,7 +36,7 @@ Schema checks require a minimum of one data point to use as a baseline against w
 
 ## Add automated monitoring checks
 
-You add automated monitoring checks as part of the guided workflow to create a new data source. Navigate to **your avatar** > **Scans & Data** > **New Data Source** to begin. 
+You add automated monitoring checks as part of the guided workflow to create a new data source. Navigate to **your avatar** > **Data Sources** > **New Data Source** to begin. 
 
 In step 4 of the guided workflow, you have the option of listing the datasets to which you wish to automatically add anomaly score and schema evolution checks. The example check below uses a wildcard character (`%`) to specify that Soda Library executes automated monitoring checks against all datasets with names that begin with `prod`, and *not* to execute the checks against any dataset with a name that begins with `test`.
 {% include code-header.html %}
@@ -62,6 +63,13 @@ To review the check results for automated monitoring checks in Soda Cloud, you c
 * navigate to the **Checks** dashboard to see the check results
 * navigate to the **Datasets** dashboard to find the check results
 
+<br />
+
+## Add quotes to all datasets
+
+{% include quotes-tables.md %}
+
+<br />
 
 ## Go further
 

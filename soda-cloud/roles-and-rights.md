@@ -37,6 +37,7 @@ The following table outlines the rights of each role.
 | Invite colleagues to join the organization's Soda Cloud account as members                                   |   ✓   |   ✓  |
 | Set and edit notification rules                                                                              |   ✓   |   ✓  |
 | Apply check attributes to checks                                                                             |   ✓   |   ✓  |
+| Create no-code checks                                                                                        |   ✓   |   ✓  |
 | Create or edit check attributes                                                                              |   ✓   |      |
 | View Organization Settings for a Soda Cloud account                                                          |   ✓   |      |
 | Change the name of the organization                                                                          |   ✓   |      |
@@ -84,7 +85,7 @@ To meet your organization's regulatory and policy mandates, you can download a C
 1. As an Admin, login to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**. Only Admins can view Organization Settings.
 2. Access the **Audit Trail** tab, then set the date range of usage details you wish to examine and click **Download**.
 
-Alternatively, you can use the [Audit Trail endpoint]({% link api-docs/reporting-api.md %}#/operations/audit_trail_v0_audit_trail_get) in Soda Cloud's Reporting API to access audit trail data. 
+Alternatively, you can use the [Audit Trail endpoint]({% link api-docs/reporting-api-v1.md %}#/operations/audit_trail_v0_audit_trail_get) in Soda Cloud's Reporting API to access audit trail data. 
 
 
 ## Access to resources
@@ -95,7 +96,7 @@ Where the roles and rights described above apply to your organization's Soda Acc
 * agreements
 * datasets
 * data sources
-* scan definitions
+* scan schedules
 * agents
 
 The roles that define who can make changes to resources in Soda Cloud are **Manager**, **Editor**, and **Viewer**. 
@@ -107,18 +108,19 @@ The following table outlines the rights of each role associated with each resour
 | Create and track incidents associated with one or more check results       |   ✓   |    ✓     |    ✓   |    ✓   |
 | Delete an incident                                                         |   ✓   |    ✓     |    ✓   |        |
 | View scan results of checks associated with a dataset or agreement         |   ✓   |    ✓     |    ✓   |    ✓   |
-| Edit individual checks associated with a dataset ingested via Soda Library    |   ✓   |    ✓     |    ✓   |        |
+| Edit individual checks associated with a dataset ingested via Soda Library |   ✓   |    ✓     |    ✓   |        |
 | Delete a check                                                             |   ✓   |    ✓     |    ✓   |        |
 | View agreements                                                            |   ✓   |    ✓     |    ✓   |    ✓   |
 | Approve and reject agreements as a stakeholder                             |   ✓   |    ✓     |    ✓   |    ✓   |
 | Create a new agreement                                                     |   ✓   |    ✓     |    ✓   |        |
-| Edit an existing agreement, including adding a new scan definition         |   ✓   |    ✓     |    ✓   |        |
+| Edit an existing agreement, including adding a new scan schedule           |   ✓   |    ✓     |    ✓   |        |
+| Create no-code checks                                                      |   ✓   |    ✓     |    ✓   |        |
 | Add and edit dataset Attributes, such as Description or Tags               |   ✓   |    ✓     |    ✓   |        |
 | Control member access to a dataset and its checks (add or remove access)   |   ✓   |    ✓     |        |        |
 | Change the roles of members with access to a dataset and its checks        |   ✓   |    ✓     |        |        |
 | Add, edit, or delete a data source                                         |   ✓   |          |        |        |
 | Change the owner of a data source                                          |   ✓   |          |        |        |
-| Add, edit, or delete a scan definition                                     |   ✓   |          |        |        |
+| Add, edit, or delete a scan schedule                                       |   ✓   |          |        |        |
 | Add, edit, or delete an agent                                              |   ✓   |          |        |        |
 
 
@@ -210,6 +212,7 @@ There are four ownership roles in Soda Cloud that identify the member that owns 
 
 * By default, the member who added the data source becomes the **Data Source Owner** and **Dataset Owner** of all datasets in that data source. The default role that Soda Cloud assigns to the Dataset Owner is that of Manager.
 * By default, the member who creates an agreement becomes the **Check Owner** of all checks defined in the agreement. 
+* By default, the member who creates a no-code check becomes its **Check Owner**.
 * By default, all Owners use an Author license.
 * You cannot change the Agreement Owner.
 <br />
@@ -217,7 +220,7 @@ There are four ownership roles in Soda Cloud that identify the member that owns 
 
 #### Change the Data Source Owner
 
-1. If you are the Admin of the organization, or have a Manager or Editor role for the data source, login to your Soda Cloud account and navigate to **your avatar** > **Scans & Data**.
+1. If you are the Admin of the organization, or have a Manager or Editor role for the data source, login to your Soda Cloud account and navigate to **your avatar** > **Data Sources**.
 2. In the **Data Sources** tab, click the stacked dots to the right of the data source for which you wish to adjust the ownership, then select **Edit Datasource**.
 3. In the **Assign Owner** tab, use the dropdown to select the name of another member to take ownership of the data source, then **Save**.
 

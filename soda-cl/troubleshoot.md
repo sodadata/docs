@@ -8,6 +8,7 @@ parent: SodaCL reference
 # Troubleshoot SodaCL
 *Last modified on {% last_modified_at %}*
 
+[NoneType object is not iteratable](#nonetype-object-is-not-iteratable)
 [Errors with valid format](#errors-with-valid-format)<br />
 [Errors with missing checks](#errors-with-missing-checks)<br />
 [Soda does not recognize variables](#soda-does-not-recognize-variables)<br />
@@ -18,7 +19,15 @@ parent: SodaCL reference
 [Filter not passed with reference check](#filter-not-passed-with-reference-check)<br />
 [Failed row check with CTE error](#failed-row-check-with-cte-error)<br />
 [Errors with column names containing periods or colons](#errors-when-column-names-containing-periods-or-colons)<br />
+[Errors when using in-check filters](#errors-when-using-in-check-filters)<br />
+[Using reference checks with Spark DataFrames](#using-reference-checks-with-spark-dataframes)
 <br />
+
+## NoneType object is not iteratable
+
+**Problem:** During a scan, Soda returns an error that reads `| NoneType object is not iteratable`.
+
+**Solution:** The most likely cause of the error is incorrect indentation of your SodaCL. Double check that nested items in checks have proper indentation; refer to [SodaCL reference docs]({% link soda-cl/metrics-and-checks.md %}) to validate your syntax.
 
 ## Errors with valid format
 
@@ -199,6 +208,31 @@ checks for corp_value:
 **Problem**: A check you've written executes against a column with a name that includes a period or colon, and scans produce an error.
 
 **Solution**: Column names that contain colons or periods can interfere with SodaCL's YAML-based syntax. For any column names that contain these punctuation marks, [apply quotes]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) to the column name in the check to prevent issues. <br />
+
+
+## Errors when using in-check filters
+
+**Problem:** When preparing an in-check filter using quotes for the column names, the Soda scan produces an error.<br>
+```yaml
+checks for my_dataset:
+- missing_count("Email") = 0:
+    name: missing email
+    filter: "Status" = 'Client'
+```
+
+**Solution:** The quotes are the cause of the problem; they produce invalid YAML syntax which results in an error message. Instead, write the check without the quotes or, if the quotes are mandatory for the filter to work, prepare the filter in a text block as in the following example. <br />
+```yaml
+checks for my_dataset:
+  - missing_count("Email") = 0:
+      name: missing email
+      filter: |
+        "Status" = 'Client'  
+```
+
+## Using reference checks with Spark DataFrames
+
+{% include reference-with-spark.md %}
+
 
 
 ## Go further

@@ -29,7 +29,7 @@ checks for dim_customer:
   - invalid_percent(birthday) < 5%:
       valid regex: (0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)
   - invalid_count(house_owner_flag) = 0:
-      valid values: ['0', '1']
+      valid values: [0, 1]
 ```
 {% include code-header.html %}
 ```yaml
@@ -38,7 +38,7 @@ checks for dim_customer:
   - invalid_count(first_name) = 0:
       invalid values: [Antonio]
   - invalid_count(number_cars_owned) = 0:
-      invalid values: ['0', '3'] 
+      invalid values: [0, 3] 
 ```
 
 [Define checks with validity metrics](#define-checks-with-validity-metrics) <br />
@@ -120,14 +120,14 @@ A check that uses a validity metric has six mutable parts:
 
 The example below defines two checks. The first check applies to the column `house_owner_flag`. The `valid values` configuration key specifies that if a row in that column contains *anything other than* the two valid values in the list, Soda registers them as invalid. The check fails if Soda discovers any values that are *not* `0` or `1`. 
 * Values in a list must be enclosed in square brackets.
-* Numeric characters in a `valid values` list must be enclosed in single quotes. <br />*Known issue:* This rule does not apply to BigQuery. Do not wrap numeric values in single quotes if you are scanning data in a BigQuery data source. 
+* *Known issue:*  Do not wrap numeric values in single quotes if you are scanning data in a BigQuery data source. 
 
 The second check uses a regular expression to define what qualifies as a valid value in the `birthday` column so that any values that do *not* match the pattern defined by the regex qualify as invalid. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - invalid_count(house_owner_flag) = 0:
-      valid values: ['0', '1']
+      valid values: [0, 1]
   - invalid_count(birthday) = 0:
       valid regex: ^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$
 ```
@@ -139,7 +139,7 @@ First check:
 | comparison symbol | `=` |
 | threshold | `0` | 
 | configuration key | `valid values` |
-| configuration value(s) | `'0', '1'` |
+| configuration value(s) | `0, 1` |
 
 Second check:
 
@@ -153,8 +153,8 @@ Second check:
 <br />
 
 The `invalid values` configuration key specifies that if a row in that column contains the invalid values in the list, Soda registers them as invalid. In the example below, the check fails if Soda discovers any values that are `Antonio`. 
-* Values in a list must be enclosed in square brackets.
-* Numeric characters in an `invalid values` list must be enclosed in single quotes.
+
+Values in a list must be enclosed in square brackets.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -270,7 +270,7 @@ checks for dim_customer:
 {% include code-header.html %}
 ```yaml
   - invalid_count(house_owner_flag):
-      valid values: ['0', '1']
+      valid values: [0, 1]
       warn: when between 1 and 5
       fail: when > 6  
 ```
@@ -321,8 +321,8 @@ checks for CUSTOMERS [daily]:
 
 | Metric  | Column config keys | Description | Supported data type |  
 | ------  | ------------------ | ----------- |---------------------| 
-| `invalid_count` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |
-| `invalid_percent` | `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` <br /> `invalid values`| The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  
+| `invalid_count` | `invalid format`<br /> `invalid regex`<br /> `invalid values`<br />`valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |
+| `invalid_percent` | `invalid format`<br /> `invalid regex`<br /> `invalid values`<br /> `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values`| The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  
 
 
 ## List of configuration keys
@@ -331,6 +331,9 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 
 | Column config key  | Description  | Values | 
 | ------------------ | ------------ | ------ |
+| `invalid format` | Defines the format of a value that Soda ought to register as invalid. <br />Only works with columns that contain data type TEXT. | See [List of valid formats](#list-of-valid-formats).  |
+| `invalid regex` | Specifies a regular expression to define your own custom invalid values. | regex, no forward slash delimiters |
+| `invalid values` | Specifies the values that Soda ought to consider invalid. |
 | `valid format` | Defines the format of a value that Soda ought to register as valid. <br />Only works with columns that contain data type TEXT. | See [List of valid formats](#list-of-valid-formats).  |
 | `valid length` | Specifies a valid length for a string. <br />Only works with columns that contain data type TEXT. | integer |
 | `valid max` | Specifies a maximum numerical value for valid values. | integer or float|
@@ -338,11 +341,11 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 | `valid min` | Specifies a minimum numerical value for valid values. | integer or float |
 | `valid min length` | Specifies a valid minimum length for a string. <br />Only works with columns that contain data type TEXT. | integer |
 | `valid regex` | Specifies a regular expression to define your own custom valid values. | regex, no forward slash delimiters |
-| `valid values` | Specifies the values that Soda is to consider valid. Numeric characters in a `valid values` list must be enclosed in single quotes.| values in a list |
-| `invalid values` | Specifies the values that Soda is to consider invalid. Numeric characters in a `valid values` list must be enclosed in single quotes.| values in a list |
+| `valid values` | Specifies the values that Soda ought to consider valid.| values in a list |
 
 ## List of valid formats
 
+* Though table below lists valid formats, the same apply for invalid formats.
 * Valid formats apply *only* to columns using data type **TEXT**, not DATE or NUMBER.
 * The Soda Library package for **MS SQL Server** has limited support for valid formats. See the [separate list below](#formats-supported-with-soda-for-ms-sql-server) of formats supported for MS SQL Server.
 

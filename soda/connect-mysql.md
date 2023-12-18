@@ -18,19 +18,19 @@ Install package: `soda-mysql`
 ```yaml
 data_source my_datasource_name:
   type: mysql
-  host: 
-  username: xxx
-  password: ...
-  database:
+  host: 127.0.0.1
+  username: simple
+  password: simple_pass
+  database: customers
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
-| type     | required |                                                            |
-| host     | required |                                                            |
+| type     | required | Identify the type of data source for Soda.                 |
+| host     | required | Provide a host identifier.                                 |
 | username | required | Use system variables to retrieve this value securely.      |
 | password | required | Use system variables to retrieve this value securely.      |
-| database | required |                                                            |
+| database | required | Provide an identifier for your database.                   |
 
 
 {% include test-connection.md %}

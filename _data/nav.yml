@@ -72,6 +72,8 @@
     page: soda-library/run-a-scan.md
   - subtitle: Examine failed rows
     page: soda-cloud/failed-rows.md
+  - subtitle: Manage scheduled scans
+    page: soda-cloud/scan-mgmt.md
   - subtitle: Configure orchestrated scans
     page: soda-library/orchestrate-scans.md
 
@@ -102,10 +104,14 @@
     page: soda/integrate-dbt.md
   - subtitle: Integrate with GitHub
     page: soda/integrate-github.md
+  - subtitle: Integrate with Jira
+    page: soda/integrate-jira.md
   - subtitle: Integrate with Metaphor
     page: soda/integrate-metaphor.md
   - subtitle: Integrate with MS Teams
     page: soda/integrate-msteams.md
+  - subtitle: Integrate with ServiceNow
+    page: soda/integrate-servicenow.md
   - subtitle: Integrate with Slack
     page: soda/integrate-slack.md
   - subtitle: Integrate with SSO
@@ -182,6 +188,8 @@
     page: soda/connect-db2.md
   - subtitle: Connect to a local file
     page: soda/connect-file.md
+  - subtitle: Connect to MotherDuck
+    page: soda/connect-motherduck.md
   - subtitle: Connect to MS SQL Server
     page: soda/connect-mssql.md
   - subtitle: Connect to MySQL
@@ -190,6 +198,8 @@
     page: soda/connect-oracle.md
   - subtitle: Connect to PostgreSQL
     page: soda/connect-postgres.md
+  - subtitle: Connect to Presto
+    page: soda/connect-presto.md
   - subtitle: Connect to Redshift
     page: soda/connect-redshift.md
   - subtitle: Connect to Snowflake
@@ -208,12 +218,13 @@
   subcategories:
   - subtitle: Reporting API v1
     page: api-docs/reporting-api-v1.md
-  - subtitle: Reporting API v0 (Soon deprecated)
-    page: api-docs/reporting-api.md
-  - subtitle: Changelog and migration guide
+  - subtitle: Migration guide
     page: api-docs/reporting-api-v1-migration-guide.md
   - subtitle: Build a reporting dashboard
     page: api-docs/reporting-api-to-overview-dashboards.md
+
+- title: Create a data contract
+  page: soda/data-contracts.md
 
 - title: Learning resources
   page: soda/glossary.md

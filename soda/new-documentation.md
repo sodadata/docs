@@ -9,8 +9,85 @@ parent: Learning resources
 
 <br />
 
-#### October 27
+#### December 19, 2023
 * Published a new use case guide for [integrating an External Secrets Manager]({% link soda/quick-start-secrets.md %}) with a Soda Agent.
+
+#### December 15, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.27 and Soda Agent 0.8.53.
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.28 and Soda Core 3.1.2.
+
+#### December 13, 2023
+* Updated [freshness check]({% link soda-cl/freshness.md %}#optional-check-configurations) to include support for in-check filters.
+* Added documentation to clarify that Soda supports Azure Data Factory (ADF) with Airflow using [Synapse]({% link soda/connect-synapse.md %}) connection configuration.
+* Documented the support for adding quotes to all datasets that Soda acts upon automatically such as with [profiling or discovering]({% link soda-cl/profile.md %}#add-quotes-to-all-datasets) datasets. 
+* Added an example of an [in-check filter]({% link soda-cl/filters.md %}#configure-in-check-filters) that uses a string value.
+* Added a troubleshooting item for the error [NoneType object is not iteratable]({% link soda-cl/troubleshoot.md %}#nonetype-object-is-not-iteratable).
+* Added instructions for dynamically including a [dataset name]({% link soda-cl/for-each.md %}#add-a-dynamic-name-to-for-each-checks) in a for each configuration.
+* Prepared new, independent documentation for integrating Soda with [Jira]({% link soda/integrate-jira.md %}) and [ServiceNow]({% link soda/integrate-servicenow.md %}).
+
+#### December 7, 2023
+* Introducting [no-code check creation]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in Soda Cloud. Create checks via the Soda Cloud user interface that creates SodaCL checks without writing any SodaCL.
+
+#### December 4, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.26, Soda Core 3.1.1, and Soda Agent 0.8.51 - 0.8.52.
+
+#### November 29, 2023
+* Corrected the example included in [User-defined checks]({% link soda-cl/user-defined.md %}#define-user-defined-checks).
+
+#### November 28, 2023
+* Added to [Best practice for using reconciliation checks]({% link soda-cl/recon.md %}#best-practice-for-using-reconciliation-checks) with advice on batch processing.
+* Added instruction for using reference checks with DataFrames; see [Use Soda Library with Spark DataFrames on Databricks]({% link soda/connect-spark.md %}#use-soda-library-with-spark-dataframes-on-databricks).
+* Added content to the Self-serve Soda use case guide with a list of [compatible data sources]({% link soda/quick-start-end-user.md %}#connect-a-data-source) and a link to data source configuration reference content.
+
+#### November 24, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.24 - 1.1.25.
+* Added Known issue to [Group By]({% link soda-cl/group-by.md %}) configuration; does not support anomaly score checks.
+* Adjusted workaround advice for troubleshooting error using quotes with an [in-check filter]({% link soda-cl/troubleshoot.md %}#errors-when-using-in-check-filters).
+* Added [Advanced configuration]({% link soda-cl/recon.md %}#advanced-configuration) for setting key column identifiers.
+
+#### November 22, 2023
+* Added an [example]({% link soda-cl/schema.md %}#example-detect-pii) of a schema check that detects columns which could contain PII.
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 0.8.49 - 0.8.50.
+
+#### November 21, 2023
+* Added documentation for [managing scans]({% link soda-cloud/scan-mgmt.md %}) and setting up failed scan notifications. 
+* Added `work_group` as an optional connection configuration property for [Athena]({% link soda/connect-athena.md %}).
+* Added troubleshooting tip for using quotes on column names within an in-check filter. See [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#errors-when-using-in-check-filters).
+* In the context of Soda Cloud, changed instances of `scan defintion` to `scan schedule` to reflect the updated naming in the Soda Cloud UI.
+
+#### November 16, 2023
+* Introducing the launch of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.1.0.
+
+#### November 15, 2023
+* Corrected the rule that numeric characters in a list of `valid values`, `invalid values`, or `missing values`, must be wrapped in single quotes. This is not the case. See [Specify valid or invalid values]({% link soda-cl/validity-metrics.md %}#specify-valid-or-invalid-values) for corrected content.
+
+#### November 14, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.22 and Soda Core 3.0.54.
+
+#### November 8, 2023
+* Removed Reporting API v0 documentation as the version is now deprecated.
+
+#### November 7, 2023
+* Added two configuration keys for use with [validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics): `invalid format`, `invalid regex`.
+* Soda Cloud Reporting API v0 is now deprecated. Please use [Reporting API v1]({% link api-docs/reporting-api-v1.md %}).
+* Updated data source configuration reference content to fill in blanks and offer more examples.
+
+#### November 2, 2023
+* Added `pollingInterval` to Soda Agent [deployment]({% link soda-agent/deploy.md %}) instructions.
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.20 - 1.1.21 and Soda Core 3.0.52 - 3.0.53.
+* Added sample input values and clarifying notes to data source connection config reference for Athena.
+
+#### October 30, 2023
+* Updated [anomaly score]({% link soda-cl/anomaly-score.md %}) documentation to include support for dataset filters.
+* Added documentation to accompany new support for [Presto]({% link soda/connect-presto.md %}) data source.
+
+#### October 26, 2023
+* Added documentation to accompany new support for [MotherDuck]({% link soda/connect-motherduck.md %}) data source.
+
+#### October 25, 2023
+* Added to the list of supported check types in [SodaGPT]({% link soda-cloud/sodagpt.md %}#instruction-parameters).
+* Added another example snippet to [Group By checks]({% link soda-cl/group-by.md %}).
 
 #### October 24, 2023
 * Added instructions to [Connect Soda to Spark]({% link soda/connect-spark.md %}#connect-to-spark-dataframes) to recommend changing the name of the `data_source_name` in step 5.
@@ -394,7 +471,7 @@ parent: Learning resources
 
 #### November 8, 2022
 
-* Added an [example webhook integration]({% link soda/integrate-webhooks.md %}#example-webhook-with-servicenow-for-soda-cloud-incidents) for Soda Cloud and ServiceNow.
+* Added an example webhook integration for Soda Cloud and ServiceNow.
 
 #### November 7, 2022
 
@@ -772,7 +849,7 @@ checks for dim_customers:
 
 #### November 24, 2021
 
-* Added new API docs for the [Soda Cloud Reporting API]({% link api-docs/reporting-api.md %}).
+* Added new API docs for the [Soda Cloud Reporting API]({% link api-docs/reporting-api-v1.md %}).
 * Added instructions to [Build a reporting dashboard]({% link api-docs/reporting-api-to-overview-dashboards.md %}) using the Soda Cloud Reporting API.
 
 #### November 23, 2021

@@ -216,7 +216,8 @@ checks for CUSTOMERS:
 
 {% include in-check-filters.md %}
 
-See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
+See [Filters and variables]({% link soda-cl/filters.md %}) for further details.<br />
+See also: [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#errors-when-using-in-check-filters).
 
 ## Use quotes in a check
 

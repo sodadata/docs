@@ -67,6 +67,9 @@ The component in Soda Cloud that stores metric measurements. This component faci
 ### monitor
 (Deprecated) A set of details you define in Soda Cloud which Soda SQL used when it ran a scan. Now deprecated and replaced by a [check](#check).
 
+### no-code check
+A SodaCL check you create via the Soda Cloud user interface. 
+
 ### notification
 A setting you configure in a Soda Cloud agreement that defines whom to notify with check results after a scan. 
 
@@ -81,6 +84,9 @@ A collection of checks YAML files that contain the checks for data quality you w
 
 ### scan definition name
 A unique identifier that you add to a programmatic scan or to the `soda scan` command using the `-s` option. Soda Cloud uses the scan definition name to correlate subsequent scan results, thus retaining an historical record of the measurements over time. 
+
+### scan schedule
+The schedule you customize in Soda Cloud to instruct a Soda Agent to execute scans at a regular cadence. 
 
 ### Soda Agent
 The Helm chart you deploy in your Kubernetes cluster to faciliate a secure connection between your Soda Cloud account and your data sources. See [Soda Agent basic concepts]({% link soda-agent/basics.md %}).

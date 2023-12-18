@@ -21,6 +21,7 @@ sample datasets:
 ```
 
 [Sample datasets](#sample-datasets)<br />
+[Add quotes to all datasets](#add-quotes-to-all-datasets)<br />
 [Inclusion and exclusion rules](#inclusion-and-exclusion-rules)<br />
 [Disable samples in Soda Cloud](#disable-samples-in-soda-cloud)<br />
 [Go further](#go-further) <br />
@@ -29,7 +30,7 @@ sample datasets:
 
 ## Sample datasets
 
-Sample datasets captures sample rows from datasets you identify. You add sample datasets configurations as part of the guided workflow to create a new data source or edit an existing one. Navigate to **your avatar** > **Scans & Data** > **New Data Source**, or select an existing data source, to begin. You can add this configuration to one of two places:
+Sample datasets captures sample rows from datasets you identify. You add sample datasets configurations as part of the guided workflow to create a new data source or edit an existing one. Navigate to **your avatar** > **Data Sources** > **New Data Source**, or select an existing data source, to begin. You can add this configuration to one of two places:
 * to either step [3. Discover Datasets]({% link soda-agent/deploy.md %}#3-discover-datasets) <br />
 OR<br />
 *   or step [4. Profile Datasets]({% link soda-agent/deploy.md %}#4-profile-datasets) 
@@ -63,6 +64,13 @@ sample datasets:
 
 ![Example sample datasets screenshot](../assets/images/soda-sample-datasets.png)
 
+<br />
+
+## Add quotes to all datasets
+
+{% include quotes-tables.md %}
+
+<br />
 
 ## Inclusion and exclusion rules
 

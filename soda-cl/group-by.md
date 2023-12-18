@@ -38,6 +38,8 @@ checks for fact_internet_sales:
 
 For an individual dataset, add a **group by** configuration to specify the categories into which Soda must group the check results.
 
+*Known issue:* Group by configurations do not support anomaly score checks. <!-- CLOUD-5249 -->
+
 The example below uses a SQL query to define a custom metric for the `fact_internet_sales` dataset. It calculates the average order discount based on the contents of the `discount_amount` column, then groups the results according to the value in the `sales_territory_key`. 
 
 The check itself uses the custom metric `average_discount` and an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations) to determine if the measurement for each group passes, warns, or fails. In this case, any calculated measurement for average that exceeds 40 results in a fail.
@@ -69,6 +71,28 @@ checks for fact_internet_sales:
 | `warn: when between 50 and 60` | only one alert condition is required | warn condition and threshold |
 | `name` | required | custom name for the check |
 
+
+You can also use multi-column groups in a group by check, as in the example below that groups results both by `gender` and `english_education`. 
+
+```yaml
+checks for dim_customer:
+    - group by:
+        name: sum_total_children_groupby_check
+        query: |
+            SELECT
+                gender,
+                english_education,
+                sum(total_children) as sum_total_children
+            FROM dim_customer
+            GROUP BY gender, english_education
+        fields:
+            - gender
+            - english_education
+        checks:
+            - sum_total_children:
+                fail: when < 100000
+                name: Total number of children
+```
 
 ## Group by check results
 
@@ -193,7 +217,7 @@ Oops! 12 failures. 0 warnings. 0 errors. 0 pass.
 
 | Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
-| ✓ | Define a name for a group by; see [example](#example-with-check-name). For group by configurations, this normally optional parameter is required. |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
+| ✓ | Define a name for a group by; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration) | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 |   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
@@ -207,6 +231,7 @@ Oops! 12 failures. 0 warnings. 0 errors. 0 pass.
 ```yaml
 checks for dim_employee:
   - group by:
+      name: Grouped vacation hours
       group_limit: 2
       query: |
         SELECT marital_status, AVG(vacation_hours) as vacation_hours

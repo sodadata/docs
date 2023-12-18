@@ -41,7 +41,7 @@ If you do not have the access or authorization to set up a cluster or deploy the
 ## Automate data quality monitoring
 
 1. If you have not already done so, <a href="https://cloud.soda.io/signup" target="_blank">create a Soda Cloud account</a>, or accept your colleague's emailed invitation to create an account and join their Soda Cloud organization. 
-2. In Soda Cloud, navigate to **your avatar** > **Scans & Data**.
+2. In Soda Cloud, navigate to **your avatar** > **Data Sources**.
 3. In the **Agents** tab, confirm that you can see the Soda Agent you deployed and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
 3. Navigate to the **Data source** tab, then click **New Data Source** and follow the guided steps to connect to a new data source and opt-in to automated monitoring checks. <br />Refer to the sections below for insight into the values to enter in the fields and editing panels in the guided steps. 
@@ -51,8 +51,8 @@ If you do not have the access or authorization to set up a cluster or deploy the
 | Field or Label | Guidance |
 | -----------------------   | ---------- |
 | Data Source Label | Provide a unique identifier for the data source. Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
-| Default Scan Definition Label | Provide a name for the default scan definition. A scan definition is a collection of checks YAML files that contain the checks for data quality you wish to scan at a specific time, including details for which Soda Agent to use to connect to which data source.  |
-| Default Scan Definition Agent | Select the name of a Soda Agent that you have previously set up in your secure environment and connected to a specific data source. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
+| Default Scan Schedule Label | Provide a name for the default scan schedule for this data sources. The scan schedule indicates which Soda Agent to use to execute the scan, and when. |
+| Default Scan Schedule Agent | Select the name of a Soda Agent that you have previously set up in your secure environment and connected to a specific data source. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
 | Schedule Definition | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
 | Starting At | Select the time of day to run the scan. The default value is midnight. |
 | Time Zone | Select a timezone. The default value is UTC. |

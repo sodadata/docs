@@ -123,7 +123,7 @@ Each row in the table of Check represents a check that Soda Library executed, or
 
 * Learn more about [How Soda works]({% link soda-library/how-library-works.md %}).
 * Read more about [running a Soda scan]({% link soda-library/run-a-scan.md %}).
-* As a business user, learn how to [write SodaCL checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in an agreement in Soda Cloud.
+* As a business user, learn how to [create no-code checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in Soda Cloud.
 * Learn more about creating, tracking, and resolving data quality [incidents]({% link soda-cloud/incidents.md %}) in Soda Cloud.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Access a list of <a href="https://www.soda.io/integrations" target="_blank">all integrations</a> that Soda Cloud supports.

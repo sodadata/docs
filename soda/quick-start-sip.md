@@ -222,7 +222,7 @@ Use the failed row samples, as in the example below, to determine what caused a 
 
 
 If you are done with the example data, you can delete it from your account to start fresh with your own data.
-1. Navigate to **your avatar** > **Scans & Data**.
+1. Navigate to **your avatar** > **Data Sources**.
 2. In the **Data Sources** tab, click the stacked dots to the right of the `adventureworks` data source, then select **Delete Data Source**.
 3. Follow the steps to confirm deletion. 
 4. Connect to your own data by [configuring your data source connections]({% link soda-library/install.md %}#configure-soda) in your existing `configuration.yml` file.

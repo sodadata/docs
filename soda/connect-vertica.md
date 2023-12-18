@@ -18,23 +18,23 @@ Install package: `soda-vertica`
 ```yaml
 data_source my_datasource_name:
   type: vertica
-  host: abc
+  host: 127.0.0.1
   port: "5433"
-  username: ***
-  password: ***
+  username: ${VERTICA_USER}
+  password: ${VERTICA_PASSWORD}
   database: vmart
   schema: public
 ```
 
-| Property | Required | Notes                                              |
-| -------- | -------- | -------------------------------------------------- |
-| type     | required |                                                    |
-| host     | required |                                                    |
-| port     | required |                                                    |
+| Property | Required | Notes                                             |
+| -------- | -------- | ------------------------------------------------- |
+| type     | required | Identify the type of data source for Soda.        |
+| host     | required | Provide a host identifier.                        |
+| port     | required | Provide a port identifier.                        |
 | username | required | Consider using system variables to retrieve this value securely using, for example, `${VERTICA_USER}`. |
 | password | required | Consider using system variables to retrieve this value securely using, for example, `${VERTICA_PASSWORD}`. |
-| database| required |                                                     |
-| schema | required |                                                      |
+| database  | required  | Provide an identifier for your database.        |
+| schema    | required  | Provide an identifier for the schema in which your dataset exists. |
 
 {% include test-connection.md %}
 

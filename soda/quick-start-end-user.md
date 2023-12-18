@@ -52,12 +52,17 @@ Access the [exhaustive deployment instructions]({% link soda-agent/deploy.md %}#
 
 ## Connect a data source
 
-1. Log in to your Soda Cloud account, then navigate to **your avatar** > **Scans & Data**.
+The Soda Agent supports connections with the following data sources.
+{% include compatible-cloud-datasources.md %}
+
+<br />
+
+1. Log in to your Soda Cloud account, then navigate to **your avatar** > **Data Sources**.
 2. In the **Agents** tab, confirm that you can see the Soda Agent you deployed and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
 3. Navigate to the **Data source** tab, then click **New Data Source** and follow the [guided steps]({% link soda-agent/deploy.md %}#add-a-new-data-source) to:
 * identify the new data source and its default scan schedule
-* provide connection configuration details for the data source, and test the connection to the data source
+* provide [connection configuration]({% link soda/connect-athena.md %}) details for the data source, and test the connection to the data source
 * profile the datasets in the data source to gather basic metadata about the contents of each
 * identify the datasets to which you wish to apply automated monitoring for anomalies and schema changes
 * assign ownership roles for the data source and its datasets
@@ -65,7 +70,16 @@ Access the [exhaustive deployment instructions]({% link soda-agent/deploy.md %}#
 
 ## Set up Slack integration and notification rules
 
-{% include quick-start-notifs.md %}
+Use this integration to enable Soda to send alert notifications to a Slack channel to notify your team of warn and fail check results. If your team does not use Slack, you can skip this step and Soda sends alert notifications via email.
+
+1. Log in to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**, then navigate to the **Integrations** tab and click the **+** icon to add a new integration.
+2. Follow the guided steps to authorize Soda to connect to your Slack workspace. If necessary, contact your organization's Slack Administrator to approve the integration with Soda. 
+* **Configuration** tab: select the public channels to which Soda can post messages; Soda cannot post to private channels.
+* **Scope** tab: select the Soda features, both alert notifications and incidents, which can access the Slack integration. 
+3. To dictate where Soda must send alert notifications for checks that fail, create a new notification rule. Navigate to **your avatar** > **Notification Rules**, then click **New Notification Rule**. Follow the guided steps to complete the new rule directly Soda to send check results that fail to a specific channel in your Slack workspace.
+
+Learn more about [Integrating with Slack]({% link soda/integrate-slack.md %}).<br />
+Learn more about [Setting notification rules]({% link soda-cloud/notif-rules.md %}).
 
 ## Invite your colleagues
 
