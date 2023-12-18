@@ -12,6 +12,10 @@ parent: Learning resources
 #### December 21, 2023
 * Updated the [Self-serve Soda]({% link soda/quick-start-end-user.md %}#begin-a-discussion-and-propose-checks) use case guide to include instructions for using no-code checks and Discussions to empower non-coders to join the team effort of establishing good-quality data. 
 
+#### December 15, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.27 and Soda Agent 0.8.53.
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.28 and Soda Core 3.1.2.
+
 #### December 13, 2023
 * Updated [freshness check]({% link soda-cl/freshness.md %}#optional-check-configurations) to include support for in-check filters.
 * Added documentation to clarify that Soda supports Azure Data Factory (ADF) with Airflow using [Synapse]({% link soda/connect-synapse.md %}) connection configuration.
