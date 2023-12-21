@@ -38,8 +38,6 @@ checks for fact_internet_sales:
 
 For an individual dataset, add a **group by** configuration to specify the categories into which Soda must group the check results.
 
-*Known issue:* Group by configurations do not support anomaly score checks. <!-- CLOUD-5249 -->
-
 The example below uses a SQL query to define a custom metric for the `fact_internet_sales` dataset. It calculates the average order discount based on the contents of the `discount_amount` column, then groups the results according to the value in the `sales_territory_key`. 
 
 The check itself uses the custom metric `average_discount` and an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations) to determine if the measurement for each group passes, warns, or fails. In this case, any calculated measurement for average that exceeds 40 results in a fail.
