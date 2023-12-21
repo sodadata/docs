@@ -9,7 +9,8 @@ parent: Learning resources
 
 <br />
 
-#### December 21, 2023
+#### December 21, 2021
+* Documented the support for tracking [anomalies and changes over time]({% link soda-cl/group-by.md %}#track-anomalies-and-relative-changes-by-group) in checks grouped by category.
 * Updated the [Self-serve Soda]({% link soda/quick-start-end-user.md %}#begin-a-discussion-and-propose-checks) use case guide to include instructions for using no-code checks and Discussions to empower non-coders to join the team effort of establishing good-quality data. 
 
 #### December 15, 2023

@@ -31,6 +31,8 @@ checks for fact_internet_sales:
 [Define reference checks](#define-reference-checks) <br />
 [Group by check results](#group-by-check-results)<br />
 [Optional check configurations](#optional-check-configurations)<br />
+[Expect one check result](#expect-one-check-result)<br />
+[Track anomalies and relative changes by group](#track-anomalies-and-relative-changes-by-group)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -285,6 +287,10 @@ checks for dim_employee:
 ## Expect one check result
 
 {% include expect-one-result.md %}
+
+## Track anomalies and relative changes by group
+
+{% include group-anomaly.md %}
 
 ## Go further
 
