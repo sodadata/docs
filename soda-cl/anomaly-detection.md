@@ -1,9 +1,8 @@
 ---
 layout: default
-title: Anomaly Detection Checks []
+title: Anomaly Detection Checks
 description: Anomaly detection checks use a machine learning algorithm to automatically detect anomalies in your time-series data.
 parent: Soda CL reference
-redirect_from: /soda-cloud/anomaly-detection.html
 ---
 
 # Anomaly detection checks
