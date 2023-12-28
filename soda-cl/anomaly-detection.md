@@ -15,12 +15,14 @@ Use an anomaly detection check to automatically discover anomalies in your check
 {% include code-header.html %}
 
 **Basic Anomaly Detection Example for Row Count**
+
 ```yaml
 checks for dim_customer:
   - anomaly detection for row_count
 ```
 
 **Advanced Anomaly Detection Example with Optional Configurations**
+
 ```yaml
 checks for dim_customer:
   - anomaly detection for row_count:
