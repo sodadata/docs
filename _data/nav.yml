@@ -128,8 +128,8 @@
     page: soda-cl/troubleshoot.md
   - subtitle: Anomaly score checks [deprecated]
     page: soda-cl/anomaly-score.md
-  - subtitle: Anomaly detection checks
-    page: soda-cl/anomaly-detection.md [new]
+  - subtitle: Anomaly detection checks [new]
+    page: soda-cl/anomaly-detection.md
   - subtitle: Check template
     page: soda-cl/check-template.md
   - subtitle: Cross checks
