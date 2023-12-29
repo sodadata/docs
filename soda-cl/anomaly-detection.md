@@ -185,7 +185,6 @@ If you wish, you can reset an anomaly detection's history, effectively recalibra
 | ✓ | Use for each to apply anomaly detection checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
-
 ### Example with quotes
 
 {% include code-header.html %}
@@ -212,7 +211,6 @@ for each dataset T:
 ## Track anomalies and relative changes by group
 
 {% include group-anomaly.md %}
-
 
 ## Optional Anomaly Detection Model Configurations
 
@@ -282,7 +280,7 @@ checks for dim_customer:
 
 In our anomaly detection model, we have focused on fine-tuning key hyperparameters to optimize performance. Specifically, our tuning targets two main objectives: `coverage` and `mape (Mean Absolute Percentage Error)`. These objectives guide our adjustments to two critical hyperparameters: `changepoint_prior_scale` and `seasonality_prior_scale`. For detailed insights into the most effective combinations of these hyperparameters, refer to the best practices outlined [here](###Best-Practices-for-Prophet-Model)
 
-- `coverage`: This is the default recommended value. Coverage refers to the percentage of actual data points that fall within the model's predicted confidence intervals. When a prediction lies outside these intervals, it's flagged as an anomaly. A higher coverage indicates that the model is less sensitive to anomalies, making it more resilient to noise in your data. However, this might lead to underfitting, potentially causing the model to miss some anomalies. In such situations, optimizing for `MAPE` (Mean Absolute Percentage Error) might be more appropriate. For your reference, specific hyperparameters are set for the coverage profile as shown below.
+- **coverage**: This is the default recommended value. Coverage refers to the percentage of actual data points that fall within the model's predicted confidence intervals. When a prediction lies outside these intervals, it's flagged as an anomaly. A higher coverage indicates that the model is less sensitive to anomalies, making it more resilient to noise in your data. However, this might lead to underfitting, potentially causing the model to miss some anomalies. In such situations, optimizing for `MAPE` (Mean Absolute Percentage Error) might be more appropriate. For your reference, specific hyperparameters are set for the coverage profile as shown below.
 
   ```python
     # Non-default tuned hyperparameters for coverage profile
@@ -308,7 +306,7 @@ In our anomaly detection model, we have focused on fine-tuning key hyperparamete
     holidays_mode = None
   ```
 
-- `mape`: [Mean absolute percentage error (MAPE)](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) is a statistical measure of how accurate a forecasting method is. It calculates the average percentage error between the forecasted and the actual values. The lower the `MAPE` value, the more accurate the model's predictions are. When optimizing for `MAPE`, the model becomes more sensitive to changepoints and seasonal variations, providing a tighter fit to the training data. However, this increased sensitivity can sometimes lead to overfitting. In such cases, the model might mistakenly identify normal data points as anomalies. If overfitting becomes an issue, switching to `coverage` profile might be more beneficial. For your guidance, specific hyperparameters are associated with the `MAPE` as shown below:
+- **mape**: [Mean absolute percentage error (MAPE)](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) is a statistical measure of how accurate a forecasting method is. It calculates the average percentage error between the forecasted and the actual values. The lower the `MAPE` value, the more accurate the model's predictions are. When optimizing for `MAPE`, the model becomes more sensitive to changepoints and seasonal variations, providing a tighter fit to the training data. However, this increased sensitivity can sometimes lead to overfitting. In such cases, the model might mistakenly identify normal data points as anomalies. If overfitting becomes an issue, switching to `coverage` profile might be more beneficial. For your guidance, specific hyperparameters are associated with the `MAPE` as shown below:
 
   ```python
     # Non-default tuned hyperparameters for coverage profile
@@ -371,19 +369,19 @@ This configuration allows the anomaly detection model to adapt and improve over 
 
 The `tune` configuration in your anomaly detection model provides several parameters to optimize hyperparameter tuning:
 
-- `objective_metric`: This is a crucial parameter used to evaluate the model's performance. You can choose from metrics like `MSE`, `RMSE`, `MAE`, `MAPE`, `MDAPE`, `SMAPE`, `coverage`. You can set it as a single string or a list of strings. If you provide a list, the model optimizes each metric in sequence. For example, with `["coverage", "smape"]`, it first optimizes for `coverage`, then `smape` in the event of a tie. This parameter is essential for automatic tuning. We recommend using `coverage` as the first objective metric and `smape` as the second objective metric to come up with a robust model that is less sensitive to the noise in the data.
+- **objective_metric**: This is a crucial parameter used to evaluate the model's performance. You can choose from metrics like `MSE`, `RMSE`, `MAE`, `MAPE`, `MDAPE`, `SMAPE`, `coverage`. You can set it as a single string or a list of strings. If you provide a list, the model optimizes each metric in sequence. For example, with `["coverage", "smape"]`, it first optimizes for `coverage`, then `smape` in the event of a tie. This parameter is essential for automatic tuning. We recommend using `coverage` as the first objective metric and `smape` as the second objective metric to come up with a robust model that is less sensitive to the noise in the data.
 
-- `parallel`: If `True`, it will use the `multiprocess` to parallelize the cross validations to save time. It is recommended to set this parameter to `True` if you have multiple cores. This parameter is optional with the default set to `True`.
+- **parallel**: If `True`, it will use the `multiprocess` to parallelize the cross validations to save time. It is recommended to set this parameter to `True` if you have multiple cores. This parameter is optional with the default set to `True`.
 
-- `cv_period`: This parameter sets the number of periods for each cross-validation fold. For example, with a daily frequency (`D`) and `cv_period` of `5`, the model conducts cross-validation in 5-day intervals. It trains on the first `n-5` days, then tests on the `n-4`th day. Subsequently, it trains on `n-4` days, testing on the `n-3`rd day, and so forth. Cross validation process is crucial to compute `objective_metric` across different data segments for each hyperparameter combination. Then, we choose the best `objective_metric` based on our configuration. `cv_period` parameter is optional with the default set to `5`.
+- **cv_period**: This parameter sets the number of periods for each cross-validation fold. For example, with a daily frequency (`D`) and `cv_period` of `5`, the model conducts cross-validation in 5-day intervals. It trains on the first `n-5` days, then tests on the `n-4`th day. Subsequently, it trains on `n-4` days, testing on the `n-3`rd day, and so forth. Cross validation process is crucial to compute `objective_metric` across different data segments for each hyperparameter combination. Then, we choose the best `objective_metric` based on our configuration. `cv_period` parameter is optional with the default set to `5`.
 
-- `parameter_grid`: This is a dictionary that lists hyperparameters and their possible values. The model tests every possible combination to find the best one. The default settings are `changepoint_prior_scale: [0.001, 0.01, 0.1, 0.5]` and `seasonality_prior_scale: [0.01, 0.1, 1.0, 10.0]`, as these have a significant impact on the model's performance. Other hyperparameters follow the defaults set in the [`coverage` profile](####Hyperparameter-Profile-Configuration). Additionally, you can include any other Prophet supported hyperparameters, like `seasonality_mode: ['additive', 'multiplicative']`. This parameter is optional, allowing for flexibility in model tuning.
+- **parameter_grid**: This is a dictionary that lists hyperparameters and their possible values. The model tests every possible combination to find the best one. The default settings are `changepoint_prior_scale: [0.001, 0.01, 0.1, 0.5]` and `seasonality_prior_scale: [0.01, 0.1, 1.0, 10.0]`, as these have a significant impact on the model's performance. Other hyperparameters follow the defaults set in the [`coverage` profile](####Hyperparameter-Profile-Configuration). Additionally, you can include any other Prophet supported hyperparameters, like `seasonality_mode: ['additive', 'multiplicative']`. This parameter is optional, allowing for flexibility in model tuning.
 
 ### Best Practices for Prophet Model
 
 1. **Use `coverage` profile as a default option.** It is less sensitive and it is more robust for small noises in the data that may lead to false positive alarms. If you need a very sensitive model, then try to use `MAPE` profile.
 
-2. **Use `custom_hyperparameters` configuration if you know how Facebook Prophet works.** Before customizing make sure to read the official documentation of Facebook Prophet to understand the hyperparameters from [here](https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning:~:text=Parameters%20that%20can%20be%20tuned). `change_point_prior_scale` and `seasonality_prior_scale` hyperparameters have the most impact on the model. Therefore, we recommend to start playing with these two hyperparameters before trying other parameters. 
+2. **Use `custom_hyperparameters` configuration if you know how Facebook Prophet works.** Before customizing make sure to read the official documentation of Facebook Prophet to understand the hyperparameters from [here](https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning:~:text=Parameters%20that%20can%20be%20tuned). `change_point_prior_scale` and `seasonality_prior_scale` hyperparameters have the most impact on the model. Therefore, we recommend to start playing with these two hyperparameters before trying other parameters.
 
 3. **Use different `interval_width` hyperparameter if you want more sensitive model**. The default value is `0.999` which means that the model will use 99.9% confidence interval. It means that if the predicted value is outside of 99.9% interval, it will be marked as an anomaly. If you want to have a more sensitive model, you can try to decrease this value. However, it may lead to false positive alarms.
 
