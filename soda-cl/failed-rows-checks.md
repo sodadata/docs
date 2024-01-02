@@ -73,6 +73,14 @@ checks for dim_customer:
   - failed rows:
       name: Failed rows with CTE
       fail condition: total_children = '2' and number_cars_owned >= 3
+
+# OR
+
+  - failed rows:
+      name: Failed rows with CTE
+      fail condition: |
+        total_children = '2' and number_cars_owned >= 3
+
 ```
 
 ![failed-rows-CTE](/assets/images/failed-rows-CTE.png){:height="700px" width="700px"}
