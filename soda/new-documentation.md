@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### January 3, 2024
+* Updated [Integrate Jira with Soda]({% link soda/integrate-jira.md %}) to include copy-able code snippets for the field values in Jira.
+
 #### January 2, 2024
 * Added [alertnate syntax]({% link soda-cl/failed-rows-checks.md %}#define-failed-rows-checks) for failed row check using a failed row condition.
 
