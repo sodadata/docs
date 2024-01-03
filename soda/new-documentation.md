@@ -11,6 +11,8 @@ parent: Learning resources
 
 #### January 3, 2024
 * Updated [Integrate Jira with Soda]({% link soda/integrate-jira.md %}) to include copy-able code snippets for the field values in Jira.
+* Documented the [optional syntax]({% link soda-cl/anomaly-score.md %}#produce-warnings-instead-of-fails) for anomaly score checks to produce warnings instead of fails.
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.29 and Soda Core 3.1.3.
 
 #### January 2, 2024
 * Added [alertnate syntax]({% link soda-cl/failed-rows-checks.md %}#define-failed-rows-checks) for failed row check using a failed row condition.
