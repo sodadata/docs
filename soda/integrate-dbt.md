@@ -13,7 +13,7 @@ Integrate Soda with dbt to access dbt test results from within your Soda Cloud a
 Use Soda Library to ingest the results of your dbt tests and push them to Soda Cloud so you can leverage features such as:
 * visualizing your data quality over time
 * setting up alert notifications for your team when dbt tests fail
-* creating and tracking data quality incidents 
+* creating and tracking data quality incidents
 
 
 [Prerequisites](#prerequisites)<br />
@@ -28,7 +28,7 @@ Use Soda Library to ingest the results of your dbt tests and push them to Soda C
 
 ## Prerequisites
 
-* You have installed a [Soda Library package]({% link soda-library/install.md %}) in your environment and have [configured it]({% link soda-library/install.md %}#configure-soda) to connect to a data source and your Soda Cloud account using a `configuration.yml` file. 
+* You have installed a [Soda Library package]({% link soda-library/install.md %}) in your environment and have [configured it]({% link soda-library/install.md %}#configure-soda) to connect to a data source and your Soda Cloud account using a `configuration.yml` file.
 * You use dbt Cloud or <a href="https://github.com/dbt-labs/dbt-core" target="_blank">dbt-core</a> version 1.5 or 1.6. Note: As <a href="https://docs.getdbt.com/guides/migration/versions/upgrading-to-v1.4" target="_blank">dbt no longer supports v1.4</a>, Soda does not support that version.
 
 ## Videos
@@ -54,7 +54,7 @@ pip install -i https://pypi.cloud.soda.io "soda-dbt[v15]"
 pip install -i https://pypi.cloud.soda.io "soda-dbt[v16]"
 ```
 2. Run your dbt pipeline using one of the following commands:
-* <a href="https://docs.getdbt.com/reference/commands/build" target="_blank">`dbt build`</a>  
+* <a href="https://docs.getdbt.com/reference/commands/build" target="_blank">`dbt build`</a>
 * <a href="https://docs.getdbt.com/reference/commands/test" target="_blank">`dbt test`</a>
 3. To ingest dbt test results, Soda Library uses the files that dbt generates when it builds or tests models: `manifest.json` and `run_results.json`. Use Soda Library to execute *one* of the following ingest commands to ingest the JSON files into Soda Cloud.
 * Specify the file path for the directory in which you store both the `manifest.json` and `run_results.json` files; Soda finds the files it needs in this directory.
@@ -73,9 +73,9 @@ Run `soda ingest --help` to review a list of all command options.
 
 ## Ingest results from dbt Cloud into Soda Cloud
 
-Every run that is part of a <a href="https://docs.getdbt.com/docs/dbt-cloud/cloud-quickstart#create-a-new-job" target="_blank">Job on dbt Cloud</a> generates metadata about your dbt project as well as the results from the run. Use Soda Library to get this data directly from the dbt Cloud API. 
+Every run that is part of a <a href="https://docs.getdbt.com/docs/dbt-cloud/cloud-quickstart#create-a-new-job" target="_blank">Job on dbt Cloud</a> generates metadata about your dbt project as well as the results from the run. Use Soda Library to get this data directly from the dbt Cloud API.
 
-1. If you have not already done so, install the `soda-dbt` sub-package in the Python environment that also runs you Soda Library package by running the following command. 
+1. If you have not already done so, install the `soda-dbt` sub-package in the Python environment that also runs you Soda Library package by running the following command.
 ```
 pip install -i https://cloud.soda.io soda-dbt
 ```
@@ -86,7 +86,7 @@ dbt_cloud:
   account_id: account_id
   api_token: serviceAccountTokenFromDbt1234
 ```
-4. From the command-line, run the `soda ingest` command to capture the test results from dbt Cloud and send them to Soda Cloud and include *one* of two identifiers from dbt Cloud. Refer to <a href="https://docs.getdbt.com/docs/dbt-cloud/cloud-overview" target="_blank">dbt Cloud documentation</a> for more information. 
+4. From the command-line, run the `soda ingest` command to capture the test results from dbt Cloud and send them to Soda Cloud and include *one* of two identifiers from dbt Cloud. Refer to <a href="https://docs.getdbt.com/docs/dbt-cloud/cloud-overview" target="_blank">dbt Cloud documentation</a> for more information.
 * Use the **run ID** from which you want Soda to ingest results. <br /> Look for the run ID at the top of any Run page "Run #40732579" in dbt Cloud, or in the URL of the Run page. For example, `https://cloud.getdbt.com/#/accounts/ 1234/projects/1234/runs/40732579/`
 ```bash
 soda ingest dbt -d my_datasource_name -c configuration.yml --dbt-cloud-run-id the_run_id
@@ -104,12 +104,15 @@ soda ingest dbt -d my_datasource_name -c configuration.yml --dbt-cloud-job-id th
 * When you call the ingestion integration, Soda Library reads the information from `manifest.json` and `run_results.json` files (or gets them from the dbt Cloud API), then maps the information onto the corresponding datasets in Soda Cloud.  If the mapping fails, Soda Library creates a new dataset and Soda Cloud displays the dbt monitor results associated with the new dataset.
 * In Soda Cloud, the displayed scan time of a dbt test is the time that Soda Library ingested the test result from dbt. The scan time in Soda Cloud *does not* represent the time that the dbt pipeline executed the test. If you want those times to be close to each other, we recommend running a `soda ingest` right after your dbt transformation or testing pipeline has completed.
 * The command `soda scan` cannot trigger a dbt run, and the command `dbt run` cannot trigger a Soda scan. You must execute Soda scans and dbt runs individually, then ingest the results from a `dbt run` into Soda by explicitly executing a `soda ingest` command.
+* Soda can ingest dbt tests that:
+    * have test metadata (`test_metadata` in the test node json)
+    * have a run result
 
 
 
 ## View dbt test results in Soda Cloud
 
-After completing the steps above to ingest dbt tests, log in to your Soda Cloud account, then navigate to the **Checks** dashboard. 
+After completing the steps above to ingest dbt tests, log in to your Soda Cloud account, then navigate to the **Checks** dashboard.
 
 Each row in the table of Check represents a check that Soda Library executed, or a dbt test that Soda Library ingested. dbt tests are prefixed with `dbt:` in the table of Checks.
 
