@@ -214,11 +214,11 @@ for each dataset T:
 
 ## Optional Anomaly Detection Model Configurations
 
-To enhance the flexibility of anomaly detection, we offer optional configurations that allow you to tailor the model according to your specific needs. These configurations can be applied to the training dataset, facebook prophet model, and the anomaly detection check itself.
+To enhance the flexibility of anomaly detection, we offer optional configurations that allow you to tailor the model according to your specific needs. These configurations can be applied to the training dataset, time series prediction model, and the anomaly detection check itself.
 
 ### Training Dataset Configuration
 
-The training dataset is crucial as it trains the anomaly detection model.The `training_dataset` configuration allows you to specify the `frequency`, `window_length`, and `aggregation_function` for your training dataset. You can customize the training dataset configurations by specifying the following parameters:
+The training dataset is crucial as it trains the anomaly detection model. The `training_dataset` configuration allows you to specify the `frequency`, `window_length`, and `aggregation_function` for your training dataset. You can customize the training dataset configurations by specifying the following parameters:
 
 ```yaml
 checks for dim_customer:
@@ -229,7 +229,9 @@ checks for dim_customer:
         aggregation_function: last
 ```
 
-**frequency**: The `frequency` parameter determines how often your data is aggregated for training purposes. The default is `auto`, where the system automatically detects the best frequency based on your time series data. However, you can set specific frequencies like minutely, hourly, daily, etc. For example, if you execute your data quality checks every day, the frequency of the training dataset is `D` (daily). The available options are:
+**frequency**: The `frequency` parameter determines the regularity of each data points in the training dataset. The default is set to `auto`. In that case, Soda attempts to detect the frequency automatically. If Soda cannot detect a clear frequency, it will default to assuming that your data is "once-daily" and will take the last measurements for each day if there are more than one measurements per day. 
+
+If you have a specific frequency and want to make sure that the algorithm uses that, you can specify if as shown below. The available options are:
 
 - `auto`: Default value. The frequency is automatically determined based on the time series data.
 - `T` or `min`: Minutely frequency
@@ -246,9 +248,11 @@ checks for dim_customer:
 - Multiple Frequencies:
   - Example: `5H` for every 5 hours
 
-**window_length**: It sets the size of the rolling window used for training. It uses the last `window_length` data points for model training, ensuring that the model is always updated with the most recent data. The default length is `1000`. For instance, if your frequency is hourly (H), the model trains on the last 1000 hours of data.
+**window_length**: It sets the number of data points used for training. The default length is `1000`. For instance, if your frequency is daily (D), the model trains on the last 1000 days of available historical data. Data points that occurred earlier will be ignored. We recommend to change this value if you want your model to only be applied to more recent data, knowing that you may loose sensitivity to learn longer seasonalities.
 
-**aggregation_function**: This parameter defines how the data within each window is aggregated. The default `aggregation_function` is last, but there are several other options:
+**aggregation_function**: This parameter defines how the data within each window is aggregated in cases where you have more data points than the detected or provided frequency. The default `aggregation_function` is last. For example, if your dataset is hourly but you have 2 data points for the same hour and the chosen `aggregation_function` is `last` we will take the most recent (or latest) data point for that hour.
+
+, but there are several other options:
 
 - `last`: Uses the last non-null value in the window.
 - `first`: Uses the first non-null value.
@@ -257,15 +261,15 @@ checks for dim_customer:
 - `max`: Finds the maximum value.
 - `quantile`: Calculates a specified quantile (e.g., 0.25, 0.5, 0.75).
 
-### Facebook Prophet Model Configuration
+### Model Configuration
 
 Anomaly detection uses Facebook Prophet to train the model. The `model` configuration allows you to specify or automatically tune the `hyperparameters` of your Facebook Prophet model.
 
 #### Hyperparameter Profile Configuration
 
-Facebook Prophet, the underlying engine for our anomaly detection model, comes with a variety of default hyperparameters. These hyperparameters are critical as they influence the model's ability to accurately detect anomalies in time-series data. However, tuning these parameters requires a deep understanding of the model's mechanics and can be a complex task.
+Facebook Prophet, the underlying engine for our anomaly detection model, comes with a variety of hyperparameters. These hyperparameters are critical as they influence the model's ability to accurately detect anomalies in time-series data. However, tuning these parameters requires a deep understanding of the model's mechanics and can be a complex task.
 
-Recognizing this, we have introduced a profile configuration option. This feature allows users to easily select from two different profiles, `coverage` and `mape`. Each profile is tailored to suit different types of time series data and anomaly detection requirements. The SodaCL configuration for the `coverage` profile is shown below:
+Recognizing this, we have introduced several profiles with different optimization goals as convenience for you in case you do not want to or know how to set each of the model's hyperparameters a profile configuration option. Each profile is tailored to suit different types of time series data and anomaly detection requirements. The SodaCL configuration for the `coverage` profile is shown below:
 
 ```yaml
 checks for dim_customer:
@@ -306,7 +310,7 @@ In our anomaly detection model, we have focused on fine-tuning key hyperparamete
     holidays_mode = None
   ```
 
-- **mape**: [Mean absolute percentage error (MAPE)](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) is a statistical measure of how accurate a forecasting method is. It calculates the average percentage error between the forecasted and the actual values. The lower the `MAPE` value, the more accurate the model's predictions are. When optimizing for `MAPE`, the model becomes more sensitive to changepoints and seasonal variations, providing a tighter fit to the training data. However, this increased sensitivity can sometimes lead to overfitting. In such cases, the model might mistakenly identify normal data points as anomalies. If overfitting becomes an issue, switching to `coverage` profile might be more beneficial. For your guidance, specific hyperparameters are associated with the `MAPE` as shown below:
+- **mape**: [Mean absolute percentage error (MAPE)](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) is a statistical measure of how accurate a forecasting method is. It calculates the average percentage error between the forecasted and the actual values. If you choose this profile, we aim to maximize prediction precision. The lower the `MAPE` value, the more accurate the model's predictions are. When optimizing for `MAPE`, the model becomes more sensitive to changepoints and seasonal variations, providing a tighter fit to the training data. However, this increased sensitivity can sometimes lead to overfitting. In such cases, the model might mistakenly identify normal data points as anomalies. If overfitting becomes an issue, switching to `coverage` profile might be more beneficial. For your guidance, specific hyperparameters are associated with the `MAPE` as shown below:
 
   ```python
     # Non-default tuned hyperparameters for coverage profile
