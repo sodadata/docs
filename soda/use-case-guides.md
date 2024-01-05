@@ -41,7 +41,7 @@ Use the following guides as example implementations based on how you intend to u
                 <div>
                     <img src="/assets/images/icons/icon-new@2x.png" width="54" height="40">
                     <h2>Soda + GitHub</h2><br />
-                    <a href="/soda/quick-start-dev.html">Test data during development</a>
+                    <a href="/soda/quick-start-dev.html">Test data in development</a>
                     <p>Use this guide to set up Soda to test the quality of your data during your development lifecycle in a GitHub Workflow.</p>
                 </div>
                 <div>
@@ -49,6 +49,12 @@ Use the following guides as example implementations based on how you intend to u
                     <h2>Soda + automated monitoring</h2>
                     <a href="/soda/quick-start-automate.html">Automate monitoring</a>
                     <p>Use this guide to set up Soda to automatically monitor data quality.</p>
+                </div>
+                <div>
+                    <img src="/assets/images/icons/icon-new@2x.png" width="50" height="40">
+                    <h2>Soda Agent + External Secrets Manager</h2>
+                    <a href="/soda/quick-start-secrets.html">Add a Secrets Manager</a>
+                    <p>Use this guide to set up a Soda Agent to use an External Secrets Manager to retrieve frequently-rotated data source passwords.</p>
                 </div>
             </div>
         </div>        

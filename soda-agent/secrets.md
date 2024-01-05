@@ -119,6 +119,9 @@ The following procedure outlines how to use ESO to integrate with a **Hashicorp 
 * For the purpose of this example procedure, you have set up and are using a Hashicorp Vault which contains a key-value pair for `POSTGRES_USERNAME` and `POSTGRES_PASSWORD` at the path `local/soda`.
 
 ### Install and set up the External Secrets Operator
+
+Consider referencing the [use case guide]({% link soda/quick-start-secrets.md %}) for integrating an External Secrets Manager with a Soda Agent which offers step-by-step instructions to set everything up locally to see the integration in action. 
+
 1. Use helm to install the External Secrets Operator from the <a href="https://charts.external-secrets.io" target="_blank">Helm chart repository</a> into the same Kubernetes cluster in which you deployed your Soda Agent. 
     ```shell
     helm repo add external-secrets https://charts.external-secrets.io
@@ -253,6 +256,7 @@ soda-agent-secrets   Opaque   1      24h
 
 ## Go further
 
+* Consider referencing the [use case guide]({% link soda/quick-start-secrets.md %}) for integrating an External Secrets Manager with a Soda Agent which offers step-by-step instructions to set everything up locally to see the integration in action. 
 * Learn more about [Soda Agent basic concepts]({% link soda-agent/basics.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

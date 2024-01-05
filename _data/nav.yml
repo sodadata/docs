@@ -39,6 +39,8 @@
     page: soda/quick-start-dev.md
   - subtitle: Automate monitoring
     page: soda/quick-start-automate.md
+  - subtitle: Add a Secrets Manager
+    page: soda/quick-start-secrets.md
 
 
 - title: Write SodaCL checks 

@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### January 5, 2024
+* Published a new use case guide for [integrating an External Secrets Manager]({% link soda/quick-start-secrets.md %}) with a Soda Agent.
+
 #### January 3, 2024
 * Updated [Integrate Jira with Soda]({% link soda/integrate-jira.md %}) to include copy-able code snippets for the field values in Jira.
 * Documented the [optional syntax]({% link soda-cl/anomaly-score.md %}#produce-warnings-instead-of-fails) for anomaly score checks to produce warnings instead of fails.
