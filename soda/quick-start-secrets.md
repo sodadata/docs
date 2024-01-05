@@ -61,7 +61,7 @@ For this exercise, you must have installed the following tools:
 
 ## Set up
 
-1. Clone the <a href="https://github.com/sodadata/soda-agent-use-cases" target="_blank">`soda-agent-use-cases`</a> repository locally. 
+1. Clone the <a href="https://github.com/sodadata/soda-agent-use-cases" target="_blank">`github.com/sodadata/soda-agent-use-cases`</a> repository locally. 
 2. Navigate to the `setup` directory in the repository.
     ```
     cd soda-agent-external-secrets/setup
@@ -138,12 +138,12 @@ For this exercise, you must have installed the following tools:
     Hint: To copy the password directly to the clipboard the command, use one of the following commands:
     
     ```
-    # Windows
+    # MacOS
     terraform output -raw vault_admin_password | pbcopy
     ```
         
     ```
-    # MacOS or Linux
+    # Linux
     terraform output -raw vault_admin_password | xclip -selection clipboard
     ```
 
@@ -202,7 +202,7 @@ To use your newly-deployed Soda Agent, you start by creating a new data source i
 
 ## About the ClusterSecretStore
 
-The `ClusterSecretStore` is a YAML-configured set of instructions for accessing the external secrets manager which, in this case, is a Hashicorp Vault using a KV Secrets Engine V2.
+The `ClusterSecretStore` is a YAML-configured set of instructions for accessing the external secrets manager which, in this case, is a Hashicorp Vault using a KV Secrets Engine V2. Note that some values in the example are generated; values in your own file vary. 
 
 ```
 apiVersion: external-secrets.io/v1beta1
@@ -227,7 +227,7 @@ spec:
 
 ## About the ExternalSecret
 
-The `ExternalSecret` is a separate YAML-based set of instructions for which secrets to fetch. The example below references the `ClusterSecretStore` above, which facilitates access to the Hashicorp Vault. The Soda Agent uses the `ExternalSecret` to retrieve data source credential values.
+The `ExternalSecret` is a separate YAML-based set of instructions for which secrets to fetch. The example below references the `ClusterSecretStore` above, which facilitates access to the Hashicorp Vault. The Soda Agent uses the `ExternalSecret` to retrieve data source credential values. 
 
 ```
 apiVersion: external-secrets.io/v1beta1
