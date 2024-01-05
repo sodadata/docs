@@ -9,7 +9,7 @@ fullwidth: false
 # Build a reporting dashboard 
 *Last modified on {% last_modified_at %}*
 
-This example aims to help you build a data quality reporting dashboard using the Soda Cloud Reporting API. The dashboard enables your team to understand how healthy your data is and how the team is using Soda Cloud. The following diagram represents the system this example builds.
+This article offers an example for building a data quality reporting dashboard using the Soda Cloud Reporting API. Such a dashboard enables your team to understand how healthy your data is and how the team is using Soda Cloud. The following diagram represents the system this example builds.
 
 ![Overview of API to Dashboards system](/assets/images/rep-api-system-diagram.png){:height="900px" width="900px"}
 
@@ -69,13 +69,13 @@ pip install httpx pandas sqlalchemy
         "dataset_health": "/quality/dataset_health",
         "datasets": "/coverage/datasets",
 
-    # you can assign defaults in the classes, if you prefer
+    # You can assign defaults in the classes, if you prefer
     @dataclass
     class ApiAuth:
     	soda_username: str
     	soda_password: str
     ```
-4. All the Soda Cloud Reporting API payloads have a structure as per the following example.
+4. All the Soda Cloud Reporting API payloads use the following type of structure.
 ```json
 {
   "resource": "string",
