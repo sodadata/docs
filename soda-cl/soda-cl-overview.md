@@ -83,6 +83,8 @@ checks for dim_department_group:
 Create **no-code checks** for data quality directly in the Soda Cloud user interface. When you create a no-code check, you also set a schedule for Soda to execute your check when it runs a scan of your data source. <br />
 *Requires a Soda Agent*
 
+🎥 Watch a <a href="https://www.soda.io/resources/introducing-no-code-checks" target="_blank">5-minute video</a> for no-code checks and discussions, if you like!
+
 ![no-code-checks](/assets/images/no-code-checks.png){:height="500px" width="500px"}
 
 

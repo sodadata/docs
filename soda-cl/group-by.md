@@ -31,14 +31,14 @@ checks for fact_internet_sales:
 [Define reference checks](#define-reference-checks) <br />
 [Group by check results](#group-by-check-results)<br />
 [Optional check configurations](#optional-check-configurations)<br />
+[Expect one check result](#expect-one-check-result)<br />
+[Track anomalies and relative changes by group](#track-anomalies-and-relative-changes-by-group)<br />
 [Go further](#go-further)<br />
 <br />
 
 ## Define a group by configuration
 
 For an individual dataset, add a **group by** configuration to specify the categories into which Soda must group the check results.
-
-*Known issue:* Group by configurations do not support anomaly score checks. <!-- CLOUD-5249 -->
 
 The example below uses a SQL query to define a custom metric for the `fact_internet_sales` dataset. It calculates the average order discount based on the contents of the `discount_amount` column, then groups the results according to the value in the `sales_territory_key`. 
 
@@ -287,6 +287,10 @@ checks for dim_employee:
 ## Expect one check result
 
 {% include expect-one-result.md %}
+
+## Track anomalies and relative changes by group
+
+{% include group-anomaly.md %}
 
 ## Go further
 

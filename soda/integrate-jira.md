@@ -29,7 +29,18 @@ The images below offer details for an example of an Automation Rule in Jira to s
 
 <br />
 
-When configuring the **Incoming webhook**, note the value for the **Webhook URL** that Jira provides for the automation; input this URL into the Soda Cloud URL field for the webhook (step 4, [above](#configure-a-webhook)). 
+When configuring the **Incoming webhook**, note the value for the **Webhook URL** that Jira provides for the automation; input this URL into the Soda Cloud URL field for the webhook (step 4, [above](#configure-a-webhook)).
+{% include code-header.html %}
+```shell
+# Example Webhook URL
+https://automation.atlassian.com/pro/hooks/98fbb...
+```
+{% include code-header.html %}
+```shell
+# Example automation rule
+curl -X POST -H 'Content-type: application/json' \
+https://automation.atlassian.com/pro/hooks/98fbb...
+```
 
 ![webhook-incoming](/assets/images/webhook-incoming.png){:height="700px" width="700px"} 
 
@@ -38,13 +49,30 @@ When configuring the **Incoming webhook**, note the value for the **Webhook URL*
 <br />
 
 When configuring **Send web request**, note the **Web request URL** that Jira sends back to Soda Cloud for the incident. This example uses `incidentLinkCallbackUrl` to send a POST request back to Soda Cloud to display a link to the Jira issue in the **Incident Details** page.
+{% include code-header.html %}
+```json
+# Example Web request URL
+{% raw %}{{webhookData.incidentLinkCallbackURL}}{% endraw %}
+```
+{% include code-header.html %}
+```json
+# Example Custom data
+{% raw %}{
+"url": "{{createdIssue.url}}",
+"text": "{{createdIssue.key}}"
+}{% endraw %}
+```
 
 ![webhook-send-request](/assets/images/webhook-send-request.png){:height="700px" width="700px"} 
 
 <br />
 
 When configuring a **Branch rule** to update the status of an existing Jira issue, note the value in the **JQL** field that identifies which issue to update when the incident status in Soda Cloud changes.
-
+{% include code-header.html %}
+```json
+# Example JQL
+summary ~ "SODA-{% raw %}{{webhookData.incident.number}}{% endraw %}"
+```
 ![webhook-branch-rule](/assets/images/webhook-branch-rule.png){:height="700px" width="700px"} 
 
 <br />
