@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### January 18, 2024
+* Introducing [anomaly detection checks]({% link soda-cl/anomaly-detection.md %})! Designed as a more refined replacement of the deprecated anomaly score checks, you can use anomaly detection to automatically detect anomlous measurements over time in your data. Fine tune the model the check uses to identify anomalies by adjust the hyperparametes made available by Facebook Prophet, the algorithm Soda leverages to gauge anomalies.
+
 #### January 5, 2024
 * Published a new use case guide for [integrating an External Secrets Manager]({% link soda/quick-start-secrets.md %}) with a Soda Agent.
 * Adjusted [Roles and Rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) to accommodate licensing models that are not based on Author or Viewer volumnes.

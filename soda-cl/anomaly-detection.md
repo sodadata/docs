@@ -21,8 +21,7 @@ checks for dim_customer:
 ```yaml
 # Advanced example with optional training and model configurations**
   - anomaly detection for row_count:
-      name: "Anomaly detection for row_count" # optional
-      identity: "anomaly-detection-row-count" # optional
+      name: Anomaly detection for row_count # optional
       training_dataset: # optional
         frequency: auto
         window_length: 1000
@@ -56,6 +55,10 @@ checks for dim_customer:
 [Anomaly detection check results](#anomaly-detection-check-results) <br />
 [Reset anomaly history](#reset-anomaly-history)<br />
 [Optional check configurations](#optional-check-configurations) <br />
+[Add optional training dataset configurations](#add-optional-training-dataset-configurations)<br />
+[Add optional model configurations](#add-optional-model-configurations)<br />
+[Add optional automatic tuning configurations](#add-optional-automatic-tuning-configurations)<br />
+[Best practices for model configurations](#best-practices-for-model-configurations)<br />
 [Track anomalies and relative changes by group](#track-anomalies-and-relative-changes-by-group)<br />
 [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation)<br />
 [Go further](#go-further) <br />
@@ -63,9 +66,9 @@ checks for dim_customer:
 
 ## About anomaly detection checks
 
-The anomaly score check is powered by a machine learning algorithm that works with measured values for a metric that occurs over time. Soda levergages the <a href="https://facebook.github.io/prophet/" target="_blank">Facebook Prophet</a> algorithm to learn the patterns of your data to identify and flag anomalies in your data. As a relatively easy algorithm to use and tune, Facebook Prophet is ideally suited to both analyzing metrics and giving you control over optional configurations.
+The anomaly detection check is powered by a machine learning algorithm that works with measured values for a metric that occurs over time. Soda levergages the <a href="https://facebook.github.io/prophet/" target="_blank">Facebook Prophet</a> algorithm to learn the patterns of your data to identify and flag anomalies in your data. As a relatively easy algorithm to use and tune, Facebook Prophet is ideally suited to both analyzing metrics and giving you control over optional configurations.
 
-As a check that tracks and analyzes metrics over time, the algorithm it uses learns from historical patterns in your data, including trends and seasonal variations in the measurements it collects. After learning the normal behavior of your data, the check becomes capable of detecting variations from the norm which it flags as anomalies. 
+As this check that tracks and analyzes metrics over time, the algorithm it uses learns from historical patterns in your data, including trends and seasonal variations in the measurements it collects. After learning the normal behavior of your data, the check becomes capable of detecting variations from the norm which it flags as anomalies. 
 
 Once flagged, Soda can alert you to the anomaly so that you can take action to correct any issues with your data. Alternatively, you can add a notation to an anomalous measurement to indicate that the anomaly is something you expected to see, such as a spike in order volumes during an aggressive marketing campaign, so that the check knows to discount the measurement as an anomaly. 
 
@@ -85,7 +88,7 @@ Refer to [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientif
 
 ## Define an anomaly detection check
 
-The following basic examples demonstrate how to use the anomaly detection with numeric metrics. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}). The first example simply detects anomalies in `row_count` measurements for the dataset over time, while the second identifies anomalies in the calculated average of values in the `order_price` column.
+The following basic examples demonstrate how to use the anomaly detection with a few metrics. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metrics with an anomaly detection check. The first example simply detects anomalies in `row_count` measurements for the dataset over time, while the second identifies anomalies in the calculated average of values in the `order_price` column.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -115,7 +118,7 @@ checks for dim_customer:
 ## Anomaly detection check results
 <!--Linked to UI, access Shlink-->
 
-Because the anomaly detection check requires at least four data points before it can start detecting what counts as an anomalous measurement, your first few scans  yield a `[NOT EVALUATED]` check result that indicates that Soda does not have enough historical data to be able to detec an anomaly.
+Because the anomaly detection check requires at least four data points before it can start detecting what counts as an anomalous measurement, your first few scans  yield a `[NOT EVALUATED]` check result that indicates that Soda does not have enough historical data to be able to detect an anomaly.
 
 ```shell
 Soda Library 1.0.x
@@ -133,7 +136,7 @@ Apart from the checks that have not been evaluated, no failures, no warnings and
 Sending results to Soda Cloud
 ```
 
-Though your first instinct may be to run several scans in a row to product the four measurments that the anomaly detection needs, the measurements don’t “count” if the frequency of occurrence is too random, or rather, the measurements don't represent enough of a stable frequency.
+Though your first instinct may be to run several scans in a row to produce the four measurements that the anomaly detection needs, the measurements don’t “count” if the frequency of occurrence is too random, or rather, the measurements don't represent enough of a stable frequency.
 
 If, for example, you attempt to run eight back-to-back scans in five minutes, the anomaly detection does not register the measurements resulting from those scans as a reliable pattern against which to evaluate an anomaly.
 
@@ -148,20 +151,20 @@ If you wish, you can reset an anomaly detection's history, effectively recalibra
 3. In the modal that appears, you can choose to exclude the individual measurement, or all previous data up to that measurement, the latter of which resets the anomaly detection's history.
 
 <!--To replace this image, add a new PNG file to the /assets/images folder, then adjust the name of the file in the link to display. -->
-![reset-anomaly-score](/assets/images/reset-anomaly-score.png){:height="600px" width="600px"}
+![reset-anomaly-detection](/assets/images/reset-anomaly-detection.png){:height="600px" width="600px"}
 
 ## Optional check configurations
 
 | Supported | Configuration | Documentation |
 | :-: | ------------|---------------|
-| ✓ | Define a name for an anomaly detection check. |  - |
-| ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
+| ✓ | Define a name for an anomaly detection check. | [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names)  |
+| ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) | 
 |   | Define alert configurations to specify warn and fail thresholds. | - |
-| ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset; see [example](#example-with-filter). | [Add an in-check filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) |
+| ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset. | [Add an in-check filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) |
 | ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
 | ✓ | Use for each to apply anomaly detection checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
-| ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+| ✓ | Apply a dataset filter to partition data during a scan;. | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 ### Example with quotes
 
@@ -185,13 +188,11 @@ for each dataset T:
 
 <br />
 
-## Track anomalies and relative changes by group
-
-{% include group-anomaly.md %}
-
 ## Add optional training dataset configurations
 
-The training dataset is one that Soda uses to teach the algorithm to identify patterns in the measurements the check collects. To enhance the flexibility of anomaly detection, you can specify the `frequency`, `window_length`, and `aggregation_function` of your training dataset. The following example demonstrates how you can customize the training dataset configurations.
+A training dataset is one that Soda uses to teach the algorithm to identify patterns in the measurements the check collects. To enhance the flexibility of anomaly detection, you can add an optional `training_dataset` configuration to your anomaly detection check to customize the way that the check uses the training dataset. 
+
+The following example includes three optional, customizable training dataset parameters.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -202,118 +203,120 @@ checks for dim_customer:
         aggregation_function: last
 ```
 
-| Configuration key | Description | Required | 
-| ----------------- | ----------- | -------- |
-|  |  |
+| Configuration key | Value | Default |
+| ----------------- | ----- | ------- |
+| `frequency` | `auto`: automatically detected by Soda<br /> `T` or `min`: by minute<br /> `H`: by hour<br />`D`: by calendar day<br /> `B`: by business day<br /> `W`: by week<br /> `M`: by month end<br /> `MS`: by month start<br /> `Q`: by quarter end<br /> `QS`: by quarter start<br /> `A`: by year end<br /> `AS`: by year start<br /> customized, such as `5H` for every 5 hours<br /> | `auto` |
+| `window_length` | integer, number of historical measurements | `1000` |
+| `aggregation_function` | `last`: uses the last non-null value in the window <br /> `first`: uses the first non-null value in the window<br /> `mean`: calculates the average of values in the window<br /> `min`: uses the minimum value in the window<br /> `max`: uses the maximum value in the window<br /> `quantile`: calculates a specified quantile, such as 0.25, 0.5, 0.75 | `last` |
 
-**frequency**: The `frequency` parameter determines the regularity of each data points in the training dataset. The default is set to `auto`. In that case, Soda attempts to detect the frequency automatically. If Soda cannot detect a clear frequency, it will default to assuming that your data is "once-daily" and will take the last measurements for each day if there are more than one measurements per day. 
+The `frequency` parameter determines the regularity of each measurement in the training dataset.  If Soda cannot detect a clear frequency, it assumes a frequency of once-daily, and uses the last measurement for each day, if there is more than one measurement per day.
 
-If you have a specific frequency and want to make sure that the algorithm uses that, you can specify if as shown below. The available options are:
+The `window_length` parameter sets the number of historical measurements that Soda uses for training the model. The default value is `1000`. For instance, if your frequency is daily `D`, the model trains on the last 1000 days of available historical data to recognize anomalies, ignoring earlier measurements. Be aware that a small value for this parameter may result in less sensitivity to seasonality that Soda recognizes in your data.
 
-- `auto`: Default value. The frequency is automatically determined based on the time series data.
-- `T` or `min`: Minutely frequency
-- `H`: Hourly frequency
-- `D`: Calendar day frequency
-- `B`: Business day frequency
-- `W`: Weekly frequency
-- `M`: Month end frequency
-- `MS`: Month start frequency
-- `Q`: Quarter end frequency
-- `QS`: Quarter start frequency
-- `A`: Year end frequency
-- `AS`: Year start frequency
-- Multiple Frequencies:
-  - Example: `5H` for every 5 hours
+When Soda collects more measurements than the automatically-detected or specified frequency, the `aggregation_function` parameter defines how Soda aggregates the data within each window. For example, if your frequency is hourly and your aggregation function is last and Soda collected two measurements for the same hour, Soda uses the most recent, or latest, measurement for that hour to gauge anomalies. 
 
-**window_length**: It sets the number of data points used for training. The default length is `1000`. For instance, if your frequency is daily (D), the model trains on the last 1000 days of available historical data. Data points that occurred earlier will be ignored. We recommend to change this value if you want your model to only be applied to more recent data, knowing that you may loose sensitivity to learn longer seasonalities.
 
-**aggregation_function**: This parameter defines how the data within each window is aggregated in cases where you have more data points than the detected or provided frequency. The default `aggregation_function` is last. For example, if your dataset is hourly but you have 2 data points for the same hour and the chosen `aggregation_function` is `last` we will take the most recent (or latest) data point for that hour.
+## Add optional model configurations
 
-, but there are several other options:
+The anomaly detection check uses <a href="https://facebook.github.io/prophet/" target="_blank">Facebook Prophet</a> to train the model that detects anomalies. If you wish, you can add a `model` configuration to customize the hyperparameters and tune the model.
 
-- `last`: Uses the last non-null value in the window.
-- `first`: Uses the first non-null value.
-- `mean`: Calculates the average.
-- `min`: Finds the minimum value.
-- `max`: Finds the maximum value.
-- `quantile`: Calculates a specified quantile (e.g., 0.25, 0.5, 0.75).
+Facebook Prophet uses a variety of hyperparameters that influence the model's ability to accurately detect anomalies in time-series data. Because fine-tuning these customizable parameters can be quite complex, Soda offers two out-of-the-box, fine-tuned profiles that automatically optimize the model's performance according to your anomaly sensitivity preference.
 
-### Model Configuration
+There are two values you can use for the `profile` parameter: 
+* `coverage`
+* `MAPE`
+* alternatively, you can customize your own hyperparameters; [see below](#customize-hyperparameters)
 
-Anomaly detection uses Facebook Prophet to train the model. The `model` configuration allows you to specify or automatically tune the `hyperparameters` of your Facebook Prophet model.
-
-#### Hyperparameter Profile Configuration
-
-Facebook Prophet, the underlying engine for our anomaly detection model, comes with a variety of hyperparameters. These hyperparameters are critical as they influence the model's ability to accurately detect anomalies in time-series data. However, tuning these parameters requires a deep understanding of the model's mechanics and can be a complex task.
-
-Recognizing this, we have introduced several profiles with different optimization goals as convenience for you in case you do not want to or know how to set each of the model's hyperparameters a profile configuration option. Each profile is tailored to suit different types of time series data and anomaly detection requirements. The SodaCL configuration for the `coverage` profile is shown below:
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - anomaly detection for row_count:
-      name: "Anomaly detection for row_count"
-      model: # optional
+      name: Anomaly detection for row_count
+      model: 
         type: prophet 
         hyperparameters:
           static:
-            profile: "coverage" # default value is "coverage"
+            profile: coverage 
 ```
 
-In our anomaly detection model, we have focused on fine-tuning key hyperparameters to optimize performance. Specifically, our tuning targets two main objectives: `coverage` and `mape (Mean Absolute Percentage Error)`. These objectives guide our adjustments to two critical hyperparameters: `changepoint_prior_scale` and `seasonality_prior_scale`. For detailed insights into the most effective combinations of these hyperparameters, refer to the best practices outlined [here](###Best-Practices-for-Prophet-Model)
+| Configuration key | Value                           | Default   |
+| ----------------- | ------------------------------- | --------- |
+| `type`            | `prophet`                       | `prophet` |
+| `profile`         | `coverage` <br /> `MAPE`        | `coverage`|
 
-- **coverage**: This is the default recommended value. Coverage refers to the percentage of actual data points that fall within the model's predicted confidence intervals. When a prediction lies outside these intervals, it's flagged as an anomaly. A higher coverage indicates that the model is less sensitive to anomalies, making it more resilient to noise in your data. However, this might lead to underfitting, potentially causing the model to miss some anomalies. In such situations, optimizing for `MAPE` (Mean Absolute Percentage Error) might be more appropriate. For your reference, specific hyperparameters are set for the coverage profile as shown below.
 
-  ```python
-    # Non-default tuned hyperparameters for coverage profile
-    seasonality_mode = "multiplicative"
-    seasonality_prior_scale = 0.01
-    changepoint_prior_scale = 0.001
-    interval_width = 0.999
-    
-    # Other default hyperparameters by Facebook Prophet 
-    growth = "linear"
-    changepoints = None
-    n_changepoints: = 25
-    changepoint_range = 0.8
-    yearly_seasonality = "auto"
-    weekly_seasonality = "auto"
-    daily_seasonality = "auto"
-    holidays = None
-    holidays_prior_scale = 10.0
-    mcmc_samples = 0
-    uncertainty_samples = 1000
-    stan_backend = None
-    scaling = "absmax"
-    holidays_mode = None
-  ```
+For each of these values, Soda has adjusted the values of a few of the model's hyperparameters to tailor its performance, particularly with regard to the `changepoint_prior_scale` and `seasonality_prior_scale`. 
 
-- **mape**: [Mean absolute percentage error (MAPE)](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) is a statistical measure of how accurate a forecasting method is. It calculates the average percentage error between the forecasted and the actual values. If you choose this profile, we aim to maximize prediction precision. The lower the `MAPE` value, the more accurate the model's predictions are. When optimizing for `MAPE`, the model becomes more sensitive to changepoints and seasonal variations, providing a tighter fit to the training data. However, this increased sensitivity can sometimes lead to overfitting. In such cases, the model might mistakenly identify normal data points as anomalies. If overfitting becomes an issue, switching to `coverage` profile might be more beneficial. For your guidance, specific hyperparameters are associated with the `MAPE` as shown below:
+The `coverage` value refers to the percentage of measurements that fall within the model's predicted confidence intervals. When a prediction lies outside these intervals, Soda flags it as an anomaly. A higher coverage indicates that the model is less sensitive to anomalies, making it more tolerant of noise in your data. 
 
-  ```python
-    # Non-default tuned hyperparameters for coverage profile
-    seasonality_mode = "multiplicative"
-    seasonality_prior_scale = 0.1
-    changepoint_prior_scale = 0.1
-    interval_width = 0.999
+For reference, the following lists the hyperparameters that Soda has set for the `coverage` profile. 
 
-    # Other default hyperparameters by Facebook Prophet
-    ...
-  ```
+```python
+# hyperparameters set by Soda for the coverage profile
+seasonality_mode = "multiplicative"
+seasonality_prior_scale = 0.01
+changepoint_prior_scale = 0.001
+interval_width = 0.999
 
-#### Custom Hyperparameter Configuration
+# other default hyperparameters set by Facebook Prophet 
+growth = "linear"
+changepoints = None
+n_changepoints: = 25
+changepoint_range = 0.8
+yearly_seasonality = "auto"
+weekly_seasonality = "auto"
+daily_seasonality = "auto"
+holidays = None
+holidays_prior_scale = 10.0
+mcmc_samples = 0
+uncertainty_samples = 1000
+stan_backend = None
+scaling = "absmax"
+holidays_mode = None
+```
 
-You can customize the Prophet hyperparameters with the  `custom_hyperparameter` configuration. This feature lets you tailor the model to suit your specific data and forecasting requirements.
+The `MAPE` value refers to <a href="https://en.wikipedia.org/wiki/Mean_absolute_percentage_error" target="_blank">mean absolute percentage error (MAPE)</a> which is a statistical measure of how accurate a forecasting method is. It calculates the average percentage error between the forecasted and the actual values. This profile aims to maximize prediction precision as the lower the MAPE value, the more accurate the model's predictions are. When optimizing for MAPE, the model is more sensitive to changepoints and seasonal variations, providing a tighter fit to the training data. 
 
-We recommend that you first familiarize yourself with the hyperparameters and their effects. For in-depth guidance, please refer to the official Prophet hyperparameter tuning guide available [here](https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning:~:text=Parameters%20that%20can%20be%20tuned). This guide will help you understand the best practices for adjusting hyperparameters.
+For reference, the following lists the hyperparameters that Soda has set for the `MAPE` profile. 
+```python
+# hyperparameters set by Soda for the MAPE profile
+seasonality_mode = "multiplicative"
+seasonality_prior_scale = 0.1
+changepoint_prior_scale = 0.1
+interval_width = 0.999
 
-In our example below, we show you how to change the `seasonality_mode` and `interval_width` hyperparameters. We set all other hyperparameters to the values from the [`coverage` profile](####Hyperparameter-Profile-Configuration), ensuring a solid base for your customizations.
+# other default hyperparameters set by Facebook Prophet
+growth = "linear"
+changepoints = None
+n_changepoints: = 25
+changepoint_range = 0.8
+yearly_seasonality = "auto"
+weekly_seasonality = "auto"
+daily_seasonality = "auto"
+holidays = None
+holidays_prior_scale = 10.0
+mcmc_samples = 0
+uncertainty_samples = 1000
+stan_backend = None
+scaling = "absmax"
+holidays_mode = None
+```
 
-You have the option to modify any hyperparameter supported by Facebook Prophet in the `custom_hyperparameters` section of your configuration. This flexibility allows you to optimize the model for precise anomaly detection.
+`coverage` is less sensitive to anomalies than `MAPE`. If you have set the profile value to `coverage` and find that the model is underfitting, meaning it seems to miss some anomalies, try changing the value to `MAPE`. Conversely, if you set the value to `MAPE` and find that the model is overfitting, meaning it mistakenly identifies normal measurements as anomalies, try changing the value to `coverage`. See [Best practices for model configuration](#best-practices-for-model-configurations) for further guidance.
 
+
+### Customize hyperparameters
+
+If the Soda-tuned profiles do not meet your specific data and forecasting needs for model sensitivity, you can customize the Prophet's hyperparameters using the  `custom_hyperparameter` configuration. 
+
+You can modify any hyperparameter supported by Facebook Prophet in the `custom_hyperparameters` section of your configuration. For in-depth guidance, refer to Prophet's <a href="https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning:~:text=Parameters%20that%20can%20be%20tuned" target="_blank">hyperparameter tuning guide</a>.
+
+The following example specifies custom values for the `seasonality_mode` and `interval_width` hyperparameters; not shown are the remaining parameters set to mimic the `coverage` profile settings.
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - anomaly detection for row_count:
-      name: "Anomaly detection for row_count"
+      name: Anomaly detection for row_count
       model:
         type: prophet
         hyperparameters:
@@ -322,14 +325,17 @@ checks for dim_customer:
               custom_hyperparameters:
                 seasonality_mode: additive
                 interval_width: 0.8
+                ...
 ```
 
-#### Automatic Hyperparameter Tuning Configuration
+<br />
 
-You have the option to automatically tune your model's hyperparameters using the `tune` configuration. This feature reevaluates and selects the best hyperparameters before each scan. However, it's important to note that hyperparameter tuning can be time-consuming and resource-intensive. As such, we recommend using this feature only when absolutely necessary.
+## Add optional automatic tuning configurations
 
-Here's an example of how you can set up automatic hyperparameter tuning in your YAML configuration:
+To dynamically tune Prophet to evaluate and select the best hyperparameters values to use before each scan, you can add a `tune` parameter and any number of optional hyperparameter configurations. Be aware that hyperparameter tuning can be time-consuming and resource-intensive, so best practice dictates that you use these configurations sparingly.
 
+The following offers an example of how to add automatic hyperparameter tuning. This configuration allows the anomaly detection model to adapt and improve over time by identifying the most effective hyperparameter settings for your specific data. Remember to weigh the benefits of improved accuracy against the increased computational demands of this process.
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - anomaly detection for row_count:
@@ -337,7 +343,7 @@ checks for dim_customer:
         type: prophet
         hyperparameters:
           tune:
-            objective_metric: ["coverage", "smape"]
+            objective_metric: ["coverage", "SMAPE"]
             parallel: True
             cv_period: 5
             parameter_grid:
@@ -346,33 +352,39 @@ checks for dim_customer:
               seasonality_mode: ['additive', 'multiplicative']
 ```
 
-This configuration allows the anomaly detection model to adapt and improve over time by finding the most effective hyperparameter settings for your specific data. Remember, though, to weigh the benefits of improved accuracy against the increased computational demands of this process.
+| Configuration key | Value                           | Default | 
+| ----------------- | ------------------------------- | ------- |
+| `objective_metric`| `coverage` <br /> `MSE` <br /> `RMSE`<br /> `MAE`<br /> `MAPE`<br /> `MDAPE`<br /> `SMAPE` | n/a |
+| `parallel`        | `true`<br /> `false` |  `true` |
+| `cv_period`       | integer | `5` |
+| `parameter_grid`  | any Prophet-supported hyperparameters | `changepoint_prior_scale: [0.001, 0.01, 0.1, 0.5]` <br /> `seasonality_prior_scale: [0.01, 0.1, 1.0, 10.0]` <br /> other hyperparameters set to the defaults in the `coverage` profile |
 
-The `tune` configuration in your anomaly detection model provides several parameters to optimize hyperparameter tuning:
+The `objective_metric` hyperparameter evaluates the model's performance. You can set the value to use a single string, or a list of strings. If you provide a list, the model optimizes each metric in sequence. In the example above, the model first optimizes for `coverage`, then `SMAPE` in the event of a tie. Best practice dictates that you use `coverage` as the first objective metric, and `SMAPE` as the second objective metric to optimize for a model that is more tolerant of noise in your data.
 
-- **objective_metric**: This is a crucial parameter used to evaluate the model's performance. You can choose from metrics like `MSE`, `RMSE`, `MAE`, `MAPE`, `MDAPE`, `SMAPE`, `coverage`. You can set it as a single string or a list of strings. If you provide a list, the model optimizes each metric in sequence. For example, with `["coverage", "smape"]`, it first optimizes for `coverage`, then `smape` in the event of a tie. This parameter is essential for automatic tuning. We recommend using `coverage` as the first objective metric and `smape` as the second objective metric to come up with a robust model that is less sensitive to the noise in the data.
+The `parallel` hyperparameter specifies whether the model saves time by using multiprocess to parallelize the cross validations.  Set the value to `True` if you have multiple cores. 
 
-- **parallel**: If `True`, it will use the `multiprocess` to parallelize the cross validations to save time. It is recommended to set this parameter to `True` if you have multiple cores. This parameter is optional with the default set to `True`.
+The `cv_period` hyperparameter sets the number of periods for each cross-validation fold. For example, with the `frequency` set to daily `D` and a `cv_period` of `5`, the model conducts cross-validation in five-day intervals. It trains on the first `n-5` days, then tests on the `n-4`th day. Subsequently, it trains on `n-4` days, testing on the `n-3`rd day, and so on. The cross-validation process computes the `objective_metric` across different data segments for each hyperparameter combination. The model then uses the best `objective_metric` according to the value or list of values configured for that hyperparameter. 
 
-- **cv_period**: This parameter sets the number of periods for each cross-validation fold. For example, with a daily frequency (`D`) and `cv_period` of `5`, the model conducts cross-validation in 5-day intervals. It trains on the first `n-5` days, then tests on the `n-4`th day. Subsequently, it trains on `n-4` days, testing on the `n-3`rd day, and so forth. Cross validation process is crucial to compute `objective_metric` across different data segments for each hyperparameter combination. Then, we choose the best `objective_metric` based on our configuration. `cv_period` parameter is optional with the default set to `5`.
+The `parameter_grid` hyperparameter is a dictionary that lists hyperparameters and their possible values. The model tests every possible combination of the listed values for each hyperparameter to identify the best value to use to detect anomalies.  You can configure any <a href="https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning:~:text=Parameters%20that%20can%20be%20tuned" target="_blank">Prophet-supported hyperparameter</a>.
 
-- **parameter_grid**: This is a dictionary that lists hyperparameters and their possible values. The model tests every possible combination to find the best one. The default settings are `changepoint_prior_scale: [0.001, 0.01, 0.1, 0.5]` and `seasonality_prior_scale: [0.01, 0.1, 1.0, 10.0]`, as these have a significant impact on the model's performance. Other hyperparameters follow the defaults set in the [`coverage` profile](####Hyperparameter-Profile-Configuration). Additionally, you can include any other Prophet supported hyperparameters, like `seasonality_mode: ['additive', 'multiplicative']`. This parameter is optional, allowing for flexibility in model tuning.
+## Best practices for model configurations
 
-### Best Practices for Prophet Model
+* Set the value of the `profile` parameter to `coverage`. This profile is more tolerant of small noises in the data that could lead to falsely identified anomalies. If you need a very sensitive model, then try to use `MAPE` profile.
+* Only use the `custom_hyperparameters` configuration if you know how Facebook Prophet works. Before making any customizations, consult the <a href="https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning:~:text=Parameters%20that%20can%20be%20tuned" target="_blank">Facebook Prophet documentation</a>. The`change_point_prior_scale` and `seasonality_prior_scale` hyperparameters have the most impact on the model so best practice dictates that you experiment with the values of these two hyperparameters first before customizing or tuning others.
+* Adjust the value of the `interval_width` hyperparameter to obtain a more anomaly-sensitive model. The default value for this hyperparameter is `0.999` which means that the model applies a confidence interval of 99.9% which, in turn, means that if the predicted value is outside of the 99.9% interval, Soda flags it as an anomaly. If you want to have a more sensitive model, you can decrease this value though be aware that a lower value may result in more falsely-identified anomalies.
+* Use the `tune` configuration only if necessary. Hyperparameter tuning is a computationally expensive process since the model tries all possible combinations of each hyperparameter's listed values to dynamically determine the best value to use to detect anomalies. If you need to use hyperparameter tuning, experiment with tuning the values of the `change_point_prior_scale` and `seasonality_prior_scale` hyperparameters first as these two have the most impact on the model's sensitivity.
 
-1. **Use `coverage` profile as a default option.** It is less sensitive and it is more robust for small noises in the data that may lead to false positive alarms. If you need a very sensitive model, then try to use `MAPE` profile.
 
-2. **Use `custom_hyperparameters` configuration if you know how Facebook Prophet works.** Before customizing make sure to read the official documentation of Facebook Prophet to understand the hyperparameters from [here](https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning:~:text=Parameters%20that%20can%20be%20tuned). `change_point_prior_scale` and `seasonality_prior_scale` hyperparameters have the most impact on the model. Therefore, we recommend to start playing with these two hyperparameters before trying other parameters.
+## Track anomalies and relative changes by group
 
-3. **Use different `interval_width` hyperparameter if you want more sensitive model**. The default value is `0.999` which means that the model will use 99.9% confidence interval. It means that if the predicted value is outside of 99.9% interval, it will be marked as an anomaly. If you want to have a more sensitive model, you can try to decrease this value. However, it may lead to false positive alarms.
+{% include group-anomaly.md %}
 
-4. **Use `tune` configuration only if it is necessary.** Hyperparameter tuning is an expensive process since the model tries all possible combinations of the hyperparameters. Therefore, we discourage using hyperparameter tuning unless it is really necessary. If you need to use hyperparameter tuning, then we recommend to tune `change_point_prior_scale` and `seasonality_prior_scale` hyperparameters. These two hyperparameters have the most impact on the model.
 
 ## Troubleshoot Soda Scientific installation
 
 While installing Soda Scientific works on Linux, you may encounter issues if you install Soda Scientific on Mac OS (particularly, machines with the M1 ARM-based processor) or any other operating system. If that is the case, consider using one of the following alternative installation procedures.
 
-- [Install Soda Scientify locally](#install-soda-scientific-locally)
+- [Install Soda Scientific locally](#install-soda-scientific-locally)
 - [Troubleshoot Soda Scientific installation in a virtual env](#troubleshoot-soda-scientific-installation-in-a-virtual-env)
 - [Use Docker to run Soda Library](#use-docker-to-run-soda-library)
 

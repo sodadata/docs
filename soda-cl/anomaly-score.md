@@ -9,6 +9,8 @@ parent: Soda CL reference
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
+{% include banner-deprecated.md %}
+
 Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
 *Requires Soda Scientific.*<br />
 {% include code-header.html %}
