@@ -10,20 +10,16 @@ parent: Soda CL reference
 *Last modified on {% last_modified_at %}*
 
 Use an anomaly detection check to automatically discover anomalies in your check metrics. <br>
-*Requires Soda Scientific.*<br />
+*Requires Soda Scientific*<br />
 {% include code-header.html %}
-
-**Basic Anomaly Detection Example for Row Count**
-
 ```yaml
+# Basic example for row count
 checks for dim_customer:
   - anomaly detection for row_count
 ```
-
-**Advanced Anomaly Detection Example with Optional Configurations**
-
+{% include code-header.html %}
 ```yaml
-checks for dim_customer:
+# Advanced example with optional training and model configurations**
   - anomaly detection for row_count:
       name: "Anomaly detection for row_count" # optional
       identity: "anomaly-detection-row-count" # optional
@@ -60,25 +56,20 @@ checks for dim_customer:
 [Anomaly detection check results](#anomaly-detection-check-results) <br />
 [Reset anomaly history](#reset-anomaly-history)<br />
 [Optional check configurations](#optional-check-configurations) <br />
-[List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
 [Track anomalies and relative changes by group](#track-anomalies-and-relative-changes-by-group)<br />
 [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation)<br />
 [Go further](#go-further) <br />
 <br />
 
-## About Anomaly Detection Checks
+## About anomaly detection checks
 
-This section details the anomaly detection feature, which is a critical component for ensuring data quality. Our anomaly detection is powered by a machine learning algorithm, specifically leveraging [Facebook Prophet](https://facebook.github.io/prophet/). Here's how it works:
+The anomaly score check is powered by a machine learning algorithm that works with measured values for a metric that occurs over time. Soda levergages the <a href="https://facebook.github.io/prophet/" target="_blank">Facebook Prophet</a> algorithm to learn the patterns of your data to identify and flag anomalies in your data. As a relatively easy algorithm to use and tune, Facebook Prophet is ideally suited to both analyzing metrics and giving you control over optional configurations.
 
-- **Time Series Analysis**: The core function of this feature is to analyze metrics that are tracked over time. These metrics could be anything that you measure regularly as part of your data quality checks.
+As a check that tracks and analyzes metrics over time, the algorithm it uses learns from historical patterns in your data, including trends and seasonal variations in the measurements it collects. After learning the normal behavior of your data, the check becomes capable of detecting variations from the norm which it flags as anomalies. 
 
-- **Learning Patterns**: At its heart, the algorithm is designed to understand and learn from the historical patterns in your data. This includes recognizing typical trends and seasonal variations in your metrics.
+Once flagged, Soda can alert you to the anomaly so that you can take action to correct any issues with your data. Alternatively, you can add a notation to an anomalous measurement to indicate that the anomaly is something you expected to see, such as a spike in order volumes during an aggressive marketing campaign, so that the check knows to discount the measurement as an anomaly. 
 
-- **Identifying Anomalies**: Once the algorithm has learned the normal behavior of your metrics, it becomes capable of detecting when something deviates from this norm. These deviations are flagged as anomalies.
-
-- **Use Case**: For instance, if your data typically shows a certain trend or pattern over the course of a week or a month, the algorithm will learn this. Then, if there's a sudden and unusual change in this pattern, it's identified as an anomaly. This could signal an issue in your data quality that requires attention.
-
-By using Facebook Prophet, this anomaly detection check offers a robust way to monitor your data quality metrics, ensuring that any irregularities are caught promptly and accurately. Another benefit of Facebook Prophet is that it's designed to be easy to use and tune, so you don't need to be an expert in machine learning to take advantage of this feature.
+Importantly, you can fine tune an anomaly detection check to customize some of the algorithm's parameters and improve the check's ability to recognize truly anomalous behavior in your data.
 
 <!---
 TODO: Add a screenshot of the anomaly detection check from the UI
@@ -92,43 +83,29 @@ To use an anomaly detection check, you must install Soda Scientific in the same 
 
 Refer to [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation) for help with issues during installation.
 
-## Define an Anomaly Detection Check
+## Define an anomaly detection check
 
-Anomaly detection checks can be applied to various metrics such as [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}). Below are examples of how to configure anomaly detection checks for different types of metrics in YAML format.
-
-### Example 1: Row Count Anomaly Detection
-
-Apply an anomaly detection check for the `row_count` metric in a `dim_customer` dataset.
-
+The following basic examples demonstrate how to use the anomaly detection with numeric metrics. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}). The first example simply detects anomalies in `row_count` measurements for the dataset over time, while the second identifies anomalies in the calculated average of values in the `order_price` column.
+{% include code-header.html %}
 ```yaml
-# Anomaly Detection Check for Row Count
 checks for dim_customer:
   - anomaly detection for row_count
 ```
 
-### Example 2: Average Order Price Anomaly Detection
-
-This example sets up an anomaly detection check for the average of order_price in an orders dataset.
-
+{% include code-header.html %}
 ```yaml
 checks for orders:
   - anomaly detection for avg(order_price)
 ```
 
-### Example 3: Missing Values Anomaly Detection
-
-Configure anomaly detection for the count of missing values in the `id` column of an `orders` dataset. The `missing_values` parameter is used to define which values are considered missing.
-
+The following examples demonstrate how to define a check that detects anomalies in the number of missing values in the `id` column relative to historical volumes; the second example detects anomalies in the volume of incorrectly formatted email addresses.
+{% include code-header.html %}
 ```yaml
 checks for orders:
   - anomaly detection for missing_count(id):
-      missing values: [None, "No Value"]
+      missing values: [None, No Value] 
 ```
-
-### Example 4: Anomaly Detection with Validity Metric
-
-This example sets up an anomaly detection check for the count of invalid values in the `user_email` column of a `dim_customer` dataset. The `invalid_values` parameter is used to define which values are considered invalid.
-
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - anomaly detection for invalid_count(user_email):
@@ -138,7 +115,7 @@ checks for dim_customer:
 ## Anomaly detection check results
 <!--Linked to UI, access Shlink-->
 
-Because the anomaly detection check requires at least four data points before it can start detecting what counts as an anomalous measurement, your first few scans will yield a check result that indicates that Soda does not have enough data.
+Because the anomaly detection check requires at least four data points before it can start detecting what counts as an anomalous measurement, your first few scans  yield a `[NOT EVALUATED]` check result that indicates that Soda does not have enough historical data to be able to detec an anomaly.
 
 ```shell
 Soda Library 1.0.x
@@ -170,7 +147,8 @@ If you wish, you can reset an anomaly detection's history, effectively recalibra
 2. Click to select a node in the graph that represents a measurement, then click **Feedback**.
 3. In the modal that appears, you can choose to exclude the individual measurement, or all previous data up to that measurement, the latter of which resets the anomaly detection's history.
 
-![reset-anomaly-detection](/assets/images/reset-anomaly-detection.png){:height="600px" width="600px"}
+<!--To replace this image, add a new PNG file to the /assets/images folder, then adjust the name of the file in the link to display. -->
+![reset-anomaly-score](/assets/images/reset-anomaly-score.png){:height="600px" width="600px"}
 
 ## Optional check configurations
 
@@ -197,7 +175,6 @@ checks for dim_product:
 ### Example with for each
 
 {% include code-header.html %}
-
 ```yaml
 for each dataset T:
   datasets:
@@ -212,14 +189,10 @@ for each dataset T:
 
 {% include group-anomaly.md %}
 
-## Optional Anomaly Detection Model Configurations
+## Add optional training dataset configurations
 
-To enhance the flexibility of anomaly detection, we offer optional configurations that allow you to tailor the model according to your specific needs. These configurations can be applied to the training dataset, time series prediction model, and the anomaly detection check itself.
-
-### Training Dataset Configuration
-
-The training dataset is crucial as it trains the anomaly detection model. The `training_dataset` configuration allows you to specify the `frequency`, `window_length`, and `aggregation_function` for your training dataset. You can customize the training dataset configurations by specifying the following parameters:
-
+The training dataset is one that Soda uses to teach the algorithm to identify patterns in the measurements the check collects. To enhance the flexibility of anomaly detection, you can specify the `frequency`, `window_length`, and `aggregation_function` of your training dataset. The following example demonstrates how you can customize the training dataset configurations.
+{% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - anomaly detection for row_count:
@@ -228,6 +201,10 @@ checks for dim_customer:
         window_length: 1000
         aggregation_function: last
 ```
+
+| Configuration key | Description | Required | 
+| ----------------- | ----------- | -------- |
+|  |  |
 
 **frequency**: The `frequency` parameter determines the regularity of each data points in the training dataset. The default is set to `auto`. In that case, Soda attempts to detect the frequency automatically. If Soda cannot detect a clear frequency, it will default to assuming that your data is "once-daily" and will take the last measurements for each day if there are more than one measurements per day. 
 
