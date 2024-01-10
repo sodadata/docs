@@ -9,6 +9,18 @@ parent: Learning resources
 
 <br />
 
+#### January 5, 2024
+* Published a new use case guide for [integrating an External Secrets Manager]({% link soda/quick-start-secrets.md %}) with a Soda Agent.
+* Adjusted [Roles and Rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) to accommodate licensing models that are not based on Author or Viewer volumnes.
+
+#### January 3, 2024
+* Updated [Integrate Jira with Soda]({% link soda/integrate-jira.md %}) to include copy-able code snippets for the field values in Jira.
+* Documented the [optional syntax]({% link soda-cl/anomaly-score.md %}#produce-warnings-instead-of-fails) for anomaly score checks to produce warnings instead of fails.
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.29 and Soda Core 3.1.3.
+
+#### January 2, 2024
+* Added [alertnate syntax]({% link soda-cl/failed-rows-checks.md %}#define-failed-rows-checks) for failed row check using a failed row condition.
+
 #### December 21, 2021
 * Documented the support for tracking [anomalies and changes over time]({% link soda-cl/group-by.md %}#track-anomalies-and-relative-changes-by-group) in checks grouped by category.
 * Updated the [Self-serve Soda]({% link soda/quick-start-end-user.md %}#begin-a-discussion-and-propose-checks) use case guide to include instructions for using no-code checks and Discussions to empower non-coders to join the team effort of establishing good-quality data. 
