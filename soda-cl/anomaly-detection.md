@@ -382,13 +382,46 @@ The `parameter_grid` hyperparameter is a dictionary that lists hyperparameters a
 
 ## Handling Common Anomaly Detection Issues
 
-### Dealing with tight confidence intervals
+### Dealing with underfitting
 
-lorem ipsum
+The default `coverage` hyperparameter profile is more tolerant of small noises in the data. However, as seen in the following example, it may underfit the data if there is a fluctuating patterns. The reason is that `coverage` profile uses a low `changepoint_prior_scale=0.001` value and a low `seasonality_prior_scale=0.01` with which makes the model less sensitive to changepoints. For these kind of cases, it's likely that the model will miss some anomalies. For this kind of scenerios, you can try to use the `MAPE` profile which is more sensitive to changepoints and seasonal variations. Refer to the SodaCL below to set the `profile` parameter to `MAPE`.
+
+![underfitting-coverage](/assets/images/underfitting-coverage.png){:height="600px" width="600px"}
+
+{% include code-header.html %}
+```yaml
+checks for your-table-name:
+  - anomaly detection for your-metric-name:
+      model:
+        type: prophet
+        hyperparameters:
+          static:
+            profile: MAPE
+```
+
+Then, we end up having a graph like the following when setting the profile to `MAPE`. `MAPE` profile uses higher `changepoint_prior_scale=0.1` and `seasonality_prior_scale=0.1` values which makes the model more sensitive to changepoints and seasonal variations.
+
+![underfitting-coverage](/assets/images/underfitting-coverage.png){:height="600px" width="600px"}
 
 ### Dealing with sudden pattern changes
 
-lorem ipsum
+The default hyperparameters of the anomaly detection check are optimized to detect anomalies in time-series data that exhibit a stable pattern to decrease the false positive rates. If your data exhibits sudden pattern changes, you may need to adjust the default parameters to improve the model's ability to detect anomalies. See [default model configurations](#Add-optional-model-configurations) for guidance.
+
+![coverage-profile](/assets/images/coverage-profile.png){:height="600px" width="600px"}
+
+In the case we clearly see an example of underfitting. Due to this underfitting, the anomaly detection raises too much consequtive false positives. For this kind of scenerios the first option would be to shorten the `window_length` parameter to make the model more sensitive to recent changes. The default `window_length` is `1000` which means that the model uses the last 1000 measurements to detect anomalies. If you set the `window_length` to lower values such as `30`, the model will use the last 30 measurements or days for this use case. Experiment with different values to find the optimal `window_length` for your data and business use case. Refer to the SodaCL below to set the `window_length` parameter.
+
+{% include code-header.html %}
+```yaml
+checks for your-table-name:
+  - anomaly detection for your-metric-name:
+      training_dataset:
+        window_length: 30
+```
+
+Then, we end up having a graph like the following when setting the window length to `30`. The model become more sensitive to recent changes and detects the anomaly in the last measurement.
+
+![coverage-profile-window-length-30](/assets/images/coverage-profile-window-length-30.png){:height="600px" width="600px"}
 
 ### Dealing with seasonality
 
