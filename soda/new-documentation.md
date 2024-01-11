@@ -9,6 +9,10 @@ parent: Learning resources
 
 <br />
 
+#### January 18, 2024
+* Documented configuration changes and performance improvements for [record reconciliation checks]({% link soda-cl/recon.md %}#record-reconciliation-checks). 
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.2.0.
+
 #### January 5, 2024
 * Published a new use case guide for [integrating an External Secrets Manager]({% link soda/quick-start-secrets.md %}) with a Soda Agent.
 * Adjusted [Roles and Rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) to accommodate licensing models that are not based on Author or Viewer volumnes.
