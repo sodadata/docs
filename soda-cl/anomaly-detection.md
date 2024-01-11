@@ -27,7 +27,7 @@ checks for dim_customer:
   - anomaly detection for row_count:
       name: "Anomaly detection for row_count" # optional
       identity: "anomaly-detection-row-count" # optional
-      training_dataset: # optional
+      training_dataset_parameters: # optional
         frequency: auto
         window_length: 1000
         aggregation_function: last
@@ -42,10 +42,10 @@ checks for dim_customer:
                 seasonality_mode: additive
                 interval_width: 0.999
                 changepoint_range: 0.8
-          tune:
+          dynamic:
             objective_metric: ["mape", "rmse"]
-            parallel: True
-            cv_period: 2
+            parallelize_cross_validation: True
+            cross_validation_folds: 2
             parameter_grid:
               changepoint_prior_scale: [0.001]
               seasonality_prior_scale: [0.01, 0.1]
@@ -218,18 +218,18 @@ To enhance the flexibility of anomaly detection, we offer optional configuration
 
 ### Training Dataset Configuration
 
-The training dataset is crucial as it trains the anomaly detection model. The `training_dataset` configuration allows you to specify the `frequency`, `window_length`, and `aggregation_function` for your training dataset. You can customize the training dataset configurations by specifying the following parameters:
+The training dataset is crucial as it trains the anomaly detection model. The `training_dataset_parameters` configuration allows you to specify the `frequency`, `window_length`, and `aggregation_function` for your training dataset. You can customize the training dataset configurations by specifying the following parameters:
 
 ```yaml
 checks for dim_customer:
   - anomaly detection for row_count:
-      training_dataset:
+      training_dataset_parameters:
         frequency: auto
         window_length: 1000
         aggregation_function: last
 ```
 
-**frequency**: The `frequency` parameter determines the regularity of each data points in the training dataset. The default is set to `auto`. In that case, Soda attempts to detect the frequency automatically. If Soda cannot detect a clear frequency, it will default to assuming that your data is "once-daily" and will take the last measurements for each day if there are more than one measurements per day. 
+**frequency**: The `frequency` parameter determines the regularity of each data points in the training dataset. The default is set to `auto`. In that case, Soda attempts to detect the frequency automatically. If Soda cannot detect a clear frequency, it will default to assuming that your data is "once-daily" and will take the last measurements for each day if there are more than one measurements per day.
 
 If you have a specific frequency and want to make sure that the algorithm uses that, you can specify if as shown below. The available options are:
 
@@ -349,7 +349,7 @@ checks for dim_customer:
 
 #### Automatic Hyperparameter Tuning Configuration
 
-You have the option to automatically tune your model's hyperparameters using the `tune` configuration. This feature reevaluates and selects the best hyperparameters before each scan. However, it's important to note that hyperparameter tuning can be time-consuming and resource-intensive. As such, we recommend using this feature only when absolutely necessary.
+You have the option to automatically tune your model's hyperparameters using the `dynamic` configuration. This feature reevaluates and selects the best hyperparameters before each scan. However, it's important to note that hyperparameter tuning can be time-consuming and resource-intensive. As such, we recommend using this feature only when absolutely necessary.
 
 Here's an example of how you can set up automatic hyperparameter tuning in your YAML configuration:
 
@@ -359,10 +359,10 @@ checks for dim_customer:
       model:
         type: prophet
         hyperparameters:
-          tune:
+          dynamic:
             objective_metric: ["coverage", "smape"]
-            parallel: True
-            cv_period: 5
+            parallelize_cross_validation: True
+            cross_validation_folds: 5
             parameter_grid:
               changepoint_prior_scale: [0.001, 0.01, 0.1, 0.5]
               seasonality_prior_scale: [0.01, 0.1, 1.0, 10.0]
@@ -371,13 +371,13 @@ checks for dim_customer:
 
 This configuration allows the anomaly detection model to adapt and improve over time by finding the most effective hyperparameter settings for your specific data. Remember, though, to weigh the benefits of improved accuracy against the increased computational demands of this process.
 
-The `tune` configuration in your anomaly detection model provides several parameters to optimize hyperparameter tuning:
+The `dynamic` configuration in your anomaly detection model provides several parameters to optimize hyperparameter tuning:
 
 - **objective_metric**: This is a crucial parameter used to evaluate the model's performance. You can choose from metrics like `MSE`, `RMSE`, `MAE`, `MAPE`, `MDAPE`, `SMAPE`, `coverage`. You can set it as a single string or a list of strings. If you provide a list, the model optimizes each metric in sequence. For example, with `["coverage", "smape"]`, it first optimizes for `coverage`, then `smape` in the event of a tie. This parameter is essential for automatic tuning. We recommend using `coverage` as the first objective metric and `smape` as the second objective metric to come up with a robust model that is less sensitive to the noise in the data.
 
-- **parallel**: If `True`, it will use the `multiprocess` to parallelize the cross validations to save time. It is recommended to set this parameter to `True` if you have multiple cores. This parameter is optional with the default set to `True`.
+- **parallelize_cross_validation**: If `True`, it will use the `multiprocess` to parallelize the cross validations to save time. It is recommended to set this parameter to `True` if you have multiple cores. This parameter is optional with the default set to `True`.
 
-- **cv_period**: This parameter sets the number of periods for each cross-validation fold. For example, with a daily frequency (`D`) and `cv_period` of `5`, the model conducts cross-validation in 5-day intervals. It trains on the first `n-5` days, then tests on the `n-4`th day. Subsequently, it trains on `n-4` days, testing on the `n-3`rd day, and so forth. Cross validation process is crucial to compute `objective_metric` across different data segments for each hyperparameter combination. Then, we choose the best `objective_metric` based on our configuration. `cv_period` parameter is optional with the default set to `5`.
+- **cross_validation_folds**: This parameter sets the number of periods for each cross-validation fold. For example, with a daily frequency (`D`) and `cross_validation_folds` of `5`, the model conducts cross-validation in 5-day intervals. It trains on the first `n-5` days, then tests on the `n-4`th day. Subsequently, it trains on `n-4` days, testing on the `n-3`rd day, and so forth. Cross validation process is crucial to compute `objective_metric` across different data segments for each hyperparameter combination. Then, we choose the best `objective_metric` based on our configuration. `cross_validation_folds` parameter is optional with the default set to `5`.
 
 - **parameter_grid**: This is a dictionary that lists hyperparameters and their possible values. The model tests every possible combination to find the best one. The default settings are `changepoint_prior_scale: [0.001, 0.01, 0.1, 0.5]` and `seasonality_prior_scale: [0.01, 0.1, 1.0, 10.0]`, as these have a significant impact on the model's performance. Other hyperparameters follow the defaults set in the [`coverage` profile](####Hyperparameter-Profile-Configuration). Additionally, you can include any other Prophet supported hyperparameters, like `seasonality_mode: ['additive', 'multiplicative']`. This parameter is optional, allowing for flexibility in model tuning.
 
@@ -389,7 +389,21 @@ The `tune` configuration in your anomaly detection model provides several parame
 
 3. **Use different `interval_width` hyperparameter if you want more sensitive model**. The default value is `0.999` which means that the model will use 99.9% confidence interval. It means that if the predicted value is outside of 99.9% interval, it will be marked as an anomaly. If you want to have a more sensitive model, you can try to decrease this value. However, it may lead to false positive alarms.
 
-4. **Use `tune` configuration only if it is necessary.** Hyperparameter tuning is an expensive process since the model tries all possible combinations of the hyperparameters. Therefore, we discourage using hyperparameter tuning unless it is really necessary. If you need to use hyperparameter tuning, then we recommend to tune `change_point_prior_scale` and `seasonality_prior_scale` hyperparameters. These two hyperparameters have the most impact on the model.
+4. **Use `dynamic` configuration only if it is necessary.** Hyperparameter tuning is an expensive process since the model tries all possible combinations of the hyperparameters. Therefore, we discourage using hyperparameter tuning unless it is really necessary. If you need to use hyperparameter tuning, then we recommend to tune `change_point_prior_scale` and `seasonality_prior_scale` hyperparameters. These two hyperparameters have the most impact on the model.
+
+## Handling Common Anomaly Detection Issues
+
+### Dealing with tight confidence intervals
+
+lorem ipsum
+
+### Dealing with sudden pattern changes
+
+lorem ipsum
+
+### Dealing with seasonality
+
+lorem ipsum
 
 ## Troubleshoot Soda Scientific installation
 
