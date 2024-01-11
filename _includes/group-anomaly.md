@@ -19,7 +19,7 @@ checks for dim_customer:
       checks:
         - average_children > 2:
             name: Average children per gender should be more than 2
-        - anomaly score for average_children < default:
+        - anomaly detection for average_children:
             name: Detect anomaly for average children
         - change for average_children between -5 and 5:
             name: Detect unexpected changes for average children

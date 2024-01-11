@@ -35,7 +35,6 @@ checks for dim_customer:
 [Define failed rows checks](#define-failed-rows-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />
 [Set a sample limit](#set-a-sample-limit)<br />
-[Group results by category](#group-results-by-category)<br />
 [Disable failed rows sampling for specific columns](#disable-failed-rows-sampling-for-specific-columns)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Configure in Soda Cloud](#configure-in-soda-cloud)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Configure in Soda Library](#configure-in-soda-library)<br />
@@ -73,6 +72,14 @@ checks for dim_customer:
   - failed rows:
       name: Failed rows with CTE
       fail condition: total_children = '2' and number_cars_owned >= 3
+
+# OR
+
+  - failed rows:
+      name: Failed rows with CTE
+      fail condition: |
+        total_children = '2' and number_cars_owned >= 3
+
 ```
 
 ![failed-rows-CTE](/assets/images/failed-rows-CTE.png){:height="700px" width="700px"}

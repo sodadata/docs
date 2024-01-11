@@ -101,14 +101,14 @@ for each dataset T:
 
 To keep your for each check results organized in Soda Cloud, you may wish to dynamically add a name to each check so that you can easily identify to which dataset the check result applies. 
 
-For example, if you use for each to execute an anomaly score check on many datasets, you can use a variable in the syntax of the check name so that Soda dynamically adds a dataset name to each check result.
+For example, if you use for each to execute an anomaly detection check on many datasets, you can use a variable in the syntax of the check name so that Soda dynamically adds a dataset name to each check result.
 {% include code-header.html %}
 ```yaml
 for each dataset R:
   datasets:
     - retail%
   checks:
-    - anomaly score for row_count < default:
+    - anomaly detection for row_count:
         name: Row count anomaly for ${R}
 ```
 

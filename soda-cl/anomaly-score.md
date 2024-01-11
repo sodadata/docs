@@ -9,6 +9,8 @@ parent: Soda CL reference
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
+{% include banner-deprecated.md %}
+
 Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
 *Requires Soda Scientific.*<br />
 {% include code-header.html %}
@@ -21,6 +23,7 @@ checks for dim_customer:
 [Install Soda Scientific](#install-soda-scientific)<br />
 [Define an anomaly score check](#define-an-anomaly-score-check) <br />
 [Anomaly score check results](#anomaly-score-check-results) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Produce warnings instead of fails](#produce-warnings-instead-of-fails)<br />
 [Reset anomaly history](#reset-anomaly-history)<br />
 [Optional check configurations](#optional-check-configurations) <br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases) <br />
@@ -75,7 +78,7 @@ checks for orders:
 ## Anomaly score check results 
 <!--Linked to UI, access Shlink-->
 
-Because the anomaly score check requires at least four data points before it can start detecting what counts as an anomalous measurement, your first few scans will yield a check result that indicates that Soda does not have enough data.
+Because the anomaly score check requires at least four data points before it can start detecting what counts as an anomalous measurement, the first few scans yield a check result that indicates that Soda does not have enough data.
 
 ```shell
 Soda Library 1.0.x
@@ -98,6 +101,18 @@ Though your first instinct may be to run several scans in a row to product the f
 If, for example, you attempt to run eight back-to-back scans in five minutes, the anomaly score does not register the measurements resulting from those scans as a reliable pattern against which to evaluate an anomaly. 
 
 Consider using the Soda library to set up a [programmatic scan]({% link soda-library/programmatic.md %}) that produces a check result for an anomaly score check on a regular schedule.
+
+### Produce warnings instead of fails
+
+By default, an anomaly score check yields either a pass or fail result; pass if Soda does not detect an anomaly, fail if it does. 
+
+If you wish, you can instruct Soda to issue warn check results instead of fails by adding a `warn_only` configuration, as in the following example.
+{% include code-header.html %}
+```yaml
+checks for dim_customer:
+  - anomaly score for row_count < default:
+      warn_only: True
+```
 
 ## Reset anomaly history
 
