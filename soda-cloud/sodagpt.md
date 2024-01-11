@@ -34,7 +34,7 @@ Log in to your **Soda Cloud** account, click the **Ask SodaGPT** button in the m
     * [validity]({% link soda-cl/validity-metrics.md %})
     * [freshness]({% link soda-cl/freshness.md %})
     * [duplicate]({% link soda/quick-start-sodacl.md %}#duplicate-check)
-    * [anomaly score]({% link soda-cl/anomaly-score.md %})
+    * [anomaly detection]({% link soda-cl/anomaly-detection.md %})
     * [schema]({% link soda-cl/schema.md %})
     * all [numeric]({% link soda-cl/numeric-metrics.md %}) (`avg`, `sum`, `max`, etc.)
     * [group by]({% link soda-cl/group-by.md %})

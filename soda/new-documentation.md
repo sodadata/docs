@@ -95,7 +95,7 @@ parent: Learning resources
 * Added sample input values and clarifying notes to data source connection config reference for Athena.
 
 #### October 30, 2023
-* Updated [anomaly score]({% link soda-cl/anomaly-score.md %}) documentation to include support for dataset filters.
+* Updated anomaly score documentation to include support for dataset filters.
 * Added documentation to accompany new support for [Presto]({% link soda/connect-presto.md %}) data source.
 
 #### October 26, 2023
@@ -704,7 +704,7 @@ checks for dim_customers:
     * new: `freshness(created_at) < 3h`
 * Added clarification to the context-specific measning of a [BigQuery dataset]({% link soda/connect-bigquery.md %}) versus a dataset in the context of Soda.
 * Added instructions for setting a [default notification channel]({% link soda/integrate-slack.md %}#set-a-default-slack-channel-for-notifications) in Slack for Soda Cloud alerts.
-* Added an explanation about [anomaly score check results]({% link soda-cl/anomaly-score.md %}#anomaly-score-check-results) and the minimum number of measurements required to gauge an anomaly.
+* Added an explanation about anomaly score check results and the minimum number of measurements required to gauge an anomaly.
 * Moved installation instructions for Soda Core Scientific to a sub-section of Install Soda Core.
 * Added expanded example for setting up [Soda Core Spark DataFrames]({% link soda/connect-spark.md %}).
 
@@ -764,7 +764,7 @@ checks for dim_customers:
 
 #### May 19, 2022
 
-* Added new SodaCL documentation to elaborate on some configuration and offer broad language rules. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}), [Optional check configurations]({% link soda-cl/optional-config.md %}), [Numeric metrics]({% link soda-cl/numeric-metrics.md %}), [Filters]({% link soda-cl/filters.md %}), [Anomaly score check]({% link soda-cl/anomaly-score.md %}) and [For each]({% link soda-cl/for-each.md %}).
+* Added new SodaCL documentation to elaborate on some configuration and offer broad language rules. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}), [Optional check configurations]({% link soda-cl/optional-config.md %}), [Numeric metrics]({% link soda-cl/numeric-metrics.md %}), [Filters]({% link soda-cl/filters.md %}), Anomaly score check and [For each]({% link soda-cl/for-each.md %}).
 
 #### May 18, 2022
 
