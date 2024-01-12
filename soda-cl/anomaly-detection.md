@@ -362,7 +362,7 @@ checks for dim_customer:
 | ----------------- | ------------------------------- | ------- |
 | `objective_metric`| `coverage` <br /> `MSE` <br /> `RMSE`<br /> `MAE`<br /> `MAPE`<br /> `MDAPE`<br /> `SMAPE` | n/a |
 | `parallel`        | `true`<br /> `false` |  `true` |
-| `cv_period`       | integer | `5` |
+| `cross_validation_folds`       | integer | `5` |
 | `parameter_grid`  | any Prophet-supported hyperparameters | `changepoint_prior_scale: [0.001, 0.01, 0.1, 0.5]` <br /> `seasonality_prior_scale: [0.01, 0.1, 1.0, 10.0]` <br /> other hyperparameters set to the defaults in the `coverage` profile |
 
 The `objective_metric` hyperparameter evaluates the model's performance. You can set the value to use a single string, or a list of strings. If you provide a list, the model optimizes each metric in sequence. In the example above, the model first optimizes for `coverage`, then `SMAPE` in the event of a tie. Best practice dictates that you use `coverage` as the first objective metric, and `SMAPE` as the second objective metric to optimize for a model that is more tolerant of noise in your data.
@@ -401,7 +401,7 @@ checks for your-table-name:
 
 Then, we end up having a graph like the following when setting the profile to `MAPE`. `MAPE` profile uses higher `changepoint_prior_scale=0.1` and `seasonality_prior_scale=0.1` values which makes the model more sensitive to changepoints and seasonal variations.
 
-![underfitting-coverage](/assets/images/underfitting-coverage.png){:height="600px" width="600px"}
+![underfitting-coverage](/assets/images/better-fit-mape.png){:height="600px" width="600px"}
 
 ### Dealing with sudden pattern changes
 
@@ -409,7 +409,7 @@ The default hyperparameters of the anomaly detection check are optimized to dete
 
 ![coverage-profile](/assets/images/coverage-profile.png){:height="600px" width="600px"}
 
-In the case we clearly see an example of underfitting. Due to this underfitting, the anomaly detection raises too much consequtive false positives. For this kind of scenerios the first option would be to shorten the `window_length` parameter to make the model more sensitive to recent changes. The default `window_length` is `1000` which means that the model uses the last 1000 measurements to detect anomalies. If you set the `window_length` to lower values such as `30`, the model will use the last 30 measurements or days for this use case. Experiment with different values to find the optimal `window_length` for your data and business use case. Refer to the SodaCL below to set the `window_length` parameter.
+In this case, we clearly see an example of underfitting. Due to this underfitting, the anomaly detection raises too much consequtive false positives. For this kind of scenerios the first option would be to shorten the `window_length` parameter to make the model more sensitive to recent changes. The default `window_length` is `1000` which means that the model uses the last 1000 measurements to detect anomalies. If you set the `window_length` to lower values such as `30`, the model will use the last 30 measurements or days for this use case. Experiment with different values to find the optimal `window_length` for your data and business use case. Refer to the SodaCL below to set the `window_length` parameter.
 
 {% include code-header.html %}
 ```yaml
@@ -419,13 +419,30 @@ checks for your-table-name:
         window_length: 30
 ```
 
-Then, we end up having a graph like the following when setting the window length to `30`. The model become more sensitive to recent changes and detects the anomaly in the last measurement.
+Then, we end up having a graph like the following when setting the window length to `30`. The model become more sensitive to recent change sand can adapt better for pattern changes.
 
 ![coverage-profile-window-length-30](/assets/images/coverage-profile-window-length-30.png){:height="600px" width="600px"}
 
-### Dealing with seasonality
+### Dealing with very tight confidence intervals
 
-lorem ipsum
+If the time series data is very easy to predict, then the model is likely to have very tight confidence intervals. In this case, the model may raise too much false positives. For this kind of scenerios, you can try to decrease the `window_length` to a very low value to increase the model's uncertainty. For instance, the following daily row count graph has a very tight confidence interval since it has a very predictable linear pattern. Since the default `window_length` is `1000`, the uncertainty decreases over time and the model becomes more confident about its predictions. For this reason, the model raises too much false positives.
+
+![ad-linear-pattern-7-window-width](/assets/images/ad-linear-false-positives.png){:height="600px" width="600px"}
+
+Decreasing the `window_length` to a very low value such as `7` will increase the model's uncertainty and decrease the false positive rates. Refer to the SodaCL below to set the `window_length` parameter.
+
+{% include code-header.html %}
+```yaml
+checks for your-table-name:
+  - anomaly detection for your-metric-name:
+      training_dataset:
+        window_length: 7
+```
+
+Then, we end up having a graph like the following when setting the window length to `7`.
+
+![ad-linear-pattern-7-window-width](/assets/images/ad-linear-pattern-7-window-width.png){:height="600px" width="600px"}
+
 
 ## Track anomalies and relative changes by group
 
