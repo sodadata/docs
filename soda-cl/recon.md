@@ -299,7 +299,7 @@ reconciliation Production:
 Learn about reconciliation check [Limitations and constraints](#limitations-and-constraints).
 
 ### Record reconciliation checks
-
+*Requires Soda Library 1.2.0 or greater*<br/>
 The syntax of record reconciliation checks expects a `rows diff` input to perform a record-by-record comparison of data between datasets. Choose between two strategies to refine how this type of check executes during a Soda scan:
 
 * `simple` 
