@@ -46,8 +46,10 @@ reconciliation Production:
           WHERE last_name = 'Walters'
 
   # Record reconciliation checks
-    - rows diff < 5
+    - rows diff < 5:
+        key columns: [customer_key]
     - rows diff = 0:
+        strategy: deepdiff
         source columns: [customer_key, region_id]
         target columns: [customer_base_key, region]
 
@@ -123,7 +125,8 @@ reconciliation Production:
       dataset: dataset Y
       datasource: Data source B
   checks:
-    - rows diff = 0
+    - rows diff = 0:
+        key columns: [Planet]
 ```
 
 ![recon diff](/assets/images/recon-diff.png){:height="480px" width="480px"}
@@ -297,9 +300,9 @@ Learn about reconciliation check [Limitations and constraints](#limitations-and-
 
 ### Record reconciliation checks
 
-The syntax of record reconciliation checks is quite basic in that it expects a `rows diff` input to perform a record-by-record comparison of data between datasets. Choose between two strategies to refine how this type of check executes during a Soda scan:
+The syntax of record reconciliation checks expects a `rows diff` input to perform a record-by-record comparison of data between datasets. Choose between two strategies to refine how this type of check executes during a Soda scan:
 
-* `simple`
+* `simple` 
 * `deepdiff`
 
 ```yaml
@@ -315,6 +318,7 @@ reconciliation Production:
 
   checks:
   # simple strategy with default page and batch sizes
+  # If not explicitly defined, Soda defaults to simple strategy
     - rows diff = 0:
         key columns: [Planet, Size]
   # simple strategy with custom page and batch sizes
@@ -341,7 +345,7 @@ The `deepdiff` strategy works by processing record comparisons of entire dataset
 | -- | --------------- | ----------------- |
 | Default strategy |  ✓  |    |
 | Processing | Loads rows into memory one by one, or by batch for comparison | Loads all rows into memory for comparison |
-| Specify primary Key | Required; can be one or more keys | Optional |
+| Specify key columns | Required; can be one or more keys | Optional |
 | Specify batch and page sizes | Optional | N/A |
 | Specify column-constrained comparisons | Optional | Optional |
 | Best for | Standard comparisons in which a primary key exists in the data | Comparisons in which no primary key exists in the data |
