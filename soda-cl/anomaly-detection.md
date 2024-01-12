@@ -19,7 +19,7 @@ checks for dim_customer:
 ```
 {% include code-header.html %}
 ```yaml
-# Advanced example with optional training and model configurations**
+# Advanced example with optional training and model configurations
   - anomaly detection for row_count:
     name: "Anomaly detection for row_count" # optional
     identity: "anomaly-detection-row-count" # optional
