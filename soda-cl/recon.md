@@ -332,7 +332,7 @@ reconciliation Production:
 ```
 
 The `simple` strategy works by processing record comparisons according to one or more primary key identifiers in batches and pages. This type of processing serves to temper large-scale comparisons by loading rows into memory in batches so that a system is not overloaded; it is typically faster than the `deepdiff` strategy. 
-* If you do not specify a strategy, Soda executes the record reconciliation check using the `simple` strategy. 
+* If you do not specify a `strategy`, Soda executes the record reconciliation check using the `simple` strategy. 
 * If you do not specify `batch size` and/or `page size`, Soda applies default values of `1` and `100000`, respectively.
 
 The `deepdiff` strategy works by processing record comparisons of entire datasets by loading all rows into memory at once. This type of processing is more memory-heavy but allows you to work without primary key identifiers, or without specifying any other details about the data to be compared; it is typically slower than the `simple` strategy.
@@ -340,11 +340,11 @@ The `deepdiff` strategy works by processing record comparisons of entire dataset
 |    | Simple strategy | Deepdiff strategy | 
 | -- | --------------- | ----------------- |
 | Default strategy |  ✓  |    |
-| Processing | Loads rows into memory for comparison one by one, or by batch | Loads all rows into memory for comparison |
+| Processing | Loads rows into memory one by one, or by batch for comparison | Loads all rows into memory for comparison |
 | Specify primary Key | Required; can be one or more keys | Optional |
 | Specify batch and page sizes | Optional | N/A |
 | Specify column-constrained comparisons | Optional | Optional |
-| Best for | Standard comparisons in which a primary key exists | Comparisons in which no primary key exists |
+| Best for | Standard comparisons in which a primary key exists in the data | Comparisons in which no primary key exists in the data |
 | Benchmark: <br />&nbsp;&nbsp;&nbsp;&nbsp;10 columns <br />&nbsp;&nbsp;&nbsp;&nbsp;1% changes in target <br />&nbsp;&nbsp;&nbsp;&nbsp;500K rows | <80MB RAM <br/> 9s to execute diff | 8GB RAM <br />136s to execute diff |
 | Benchmark: <br />&nbsp;&nbsp;&nbsp;&nbsp;360 columns <br />&nbsp;&nbsp;&nbsp;&nbsp;1% changes in target <br />&nbsp;&nbsp;&nbsp;&nbsp;100K rows | <80MB RAM <br/> 1m to execute diff | 8GB RAM <br />~6m to execute diff |
 | Benchmark: <br />&nbsp;&nbsp;&nbsp;&nbsp;360 columns <br />&nbsp;&nbsp;&nbsp;&nbsp;1% changes in target <br />&nbsp;&nbsp;&nbsp;&nbsp;1M rows | <80MB RAM <br/> 35m to execute diff | does not compute on 16GB RAM machine |
@@ -356,8 +356,8 @@ Beyond choosing a strategy, you can configure a number of granular details for S
 | Configuration | Compares | Description and example |
 | ------------- | -------- | ----------------------- |
 |  Column-constrained | Only the data in a specified list of columns. | In the example below, the first check applies a `deepdiff` strategy and compares *only* the contents of the listed columns, mapping the columns according to the order in which they appear in the list– Planet to Planet, Hotness to Relative Temp. This check passes because the values of the mapped columns are the same. |
-| With primary key | The entire contents of the datasets, specifying columns to define a primary key in the source. | In the example below, the second check applies a `simple` strategy by default and uses the `key columns` you identify to form a primary key in the source that defines a single record. Soda uses the key to map records between datasets. Note that you can list column names as comma-separated values in square brackets, or as an unordered list as in the example. This check fails because of the mismatched value for Jupiter's size. |
-| With multiple primary keys | The entire contents of the datasets, specifying columns to define multiple primary keys in both the source and target. This is useful when the column names in your datasets are different. | In the example below, the third check applies a `simple` strategy by default and enables you to define the primary keys in both the source and target datasets. Soda uses the key to map records between datasets. This check passes because with only one failed row, it does not exceed the threshold of `5` that the check sets. |
+| With composite primary key | The entire contents of the datasets, specifying columns to define a primary key in the source. | In the example below, the second check applies a `simple` strategy by default and uses the `key columns` you identify to form a primary key in the source that defines a single record. Soda uses the key to map records between datasets. Note that you can list column names as comma-separated values in square brackets, or as an unordered list as in the example. This check fails because of the mismatched value for Jupiter's size. |
+| With different primary keys in source and target | The entire contents of the datasets, specifying columns to define mutiple primary keys in both the source and target. This is useful when the column names in your datasets are different. | In the example below, the third check applies a `simple` strategy by default and enables you to define the primary keys in both the source and target datasets. Soda uses the key to map records between datasets. This check passes because with only one failed row, it does not exceed the threshold of `5` that the check sets. |
 
 
 {% include code-header.html %}
@@ -370,12 +370,12 @@ reconciliation Production:
         strategy: deepdiff
         source columns: [Planet, Hotness]
         target columns: [Planet, Relative Temp]
-    # With primary key
+    # With composite primary key
     - rows diff = 0:
         key columns:
           - Planet
           - Size
-    # With multiple primary keys
+    # With different primary keys in source and target
     - rows diff < 5:
         source key columns: [Planet, Hotness]
         target key columns: [Planet, Relative Temp]
@@ -442,6 +442,8 @@ if __name__ == "__main__":
 
     print(s.build_scan_results())
 ```
+
+<br />
 
 ### Schema reconciliation checks
 
