@@ -46,8 +46,10 @@ reconciliation Production:
           WHERE last_name = 'Walters'
 
   # Record reconciliation checks
-    - rows diff < 5
+    - rows diff < 5:
+        key columns: [customer_key]
     - rows diff = 0:
+        strategy: deepdiff
         source columns: [customer_key, region_id]
         target columns: [customer_base_key, region]
 
@@ -123,12 +125,13 @@ reconciliation Production:
       dataset: dataset Y
       datasource: Data source B
   checks:
-    - rows diff = 0
+    - rows diff = 0:
+        key columns: [Planet]
 ```
 
 ![recon diff](/assets/images/recon-diff.png){:height="480px" width="480px"}
 
-Read more about the [optional configurations](#optional-check-configurations) you can add to a record reconciliation check.
+Read more about the strategies and optional configurations you can add to a [record reconciliation check](#record-reconciliation-checks).
 
 A **schema reconciliation check** compares the columns of two datasets to reveal any differences between target and source; where the columns names differ, or the data type has changed, Soda registers a mismatch and the check fails.
 
@@ -154,7 +157,7 @@ To efficiently use resources at scan time, best practice dictates that you first
 
 Depending on the volume of data on which you must perform reconciliation checks, metric recon checks run considerably faster and use much fewer resources. Start by defining metric reconciliation checks that test grouping, filters, and joins to get meaningful insight into whether your ingestion or transformation works as expected. Where these checks do not surface all the details you need, or does not provide enough confidence in the output, then proceed with record reconciliation checks.
 
-For running record reconciliation checks, you may also consider executing scans in batches. Internal experimentation continues, but early results indicate that processing about 5 MB per batch when running unordered checks, and about 10 MB for ordered checks yields the fastest processing time.
+For running record reconciliation checks, if primary keys exist in your dataset, best practice recommends that you use a `simple` strategy for executing a record-by-record comparison. This strategy loads rows into memory in batches, thereby reducing the risk of system overload and increasing the speed with which Soda can execute the comparison. See [Record reconciliation checks](#record-reconciliation-checks) for details about strategies.
 
 Read more about [Limitations and constraints](#limitations-and-constraints).
 
@@ -296,35 +299,87 @@ reconciliation Production:
 Learn about reconciliation check [Limitations and constraints](#limitations-and-constraints).
 
 ### Record reconciliation checks
+*Requires Soda Library 1.2.0 or greater*<br/>
+The syntax of record reconciliation checks expects a `rows diff` input to perform a record-by-record comparison of data between datasets. Choose between two strategies to refine how this type of check executes during a Soda scan:
 
-The syntax of record reconciliation checks is simple in that it only expects a `rows diff` input. You can use key configurations to refine how this type of check executes during a Soda scan.
+* `simple` 
+* `deepdiff`
+
+```yaml
+reconciliation Production:
+  label: "Reconcile Planet Info"
+  datasets:
+    source:
+      dataset: dataset_Y
+      datasource: datasource_A
+    target:
+      dataset: dataset_Y
+      datasource: datasource_B
+
+  checks:
+  # simple strategy with default page and batch sizes
+  # If not explicitly defined, Soda defaults to simple strategy
+    - rows diff = 0:
+        key columns: [Planet, Size]
+  # simple strategy with custom page and batch sizes
+    - rows diff = 0:
+        key columns: [Planet, Size]
+        batch size: 100
+        page size: 1000
+  # simple strategy with different primary key column names
+    - rows diff < 5:
+        source key columns: [Planet, Hotness]
+        target key columns: [Planet, Relative Temp]
+  # deepdiff strategy
+    - rows diff = 0:
+        strategy: deepdiff
+```
+
+The `simple` strategy works by processing record comparisons according to one or more primary key identifiers in batches and pages. This type of processing serves to temper large-scale comparisons by loading rows into memory in batches so that a system is not overloaded; it is typically faster than the `deepdiff` strategy. 
+* If you do not specify a `strategy`, Soda executes the record reconciliation check using the `simple` strategy. 
+* If you do not specify `batch size` and/or `page size`, Soda applies default values of `1` and `100000`, respectively.
+
+The `deepdiff` strategy works by processing record comparisons of entire datasets by loading all rows into memory at once. This type of processing is more memory-heavy but allows you to work without primary key identifiers, or without specifying any other details about the data to be compared; it is typically slower than the `simple` strategy.
+
+|    | Simple strategy | Deepdiff strategy | 
+| -- | --------------- | ----------------- |
+| Default strategy |  ✓  |    |
+| Processing | Loads rows into memory one by one, or by batch for comparison | Loads all rows into memory for comparison |
+| Specify key columns | Required; can be one or more keys | Optional |
+| Specify batch and page sizes | Optional | N/A |
+| Specify column-constrained comparisons | Optional | Optional |
+| Best for | Standard comparisons in which a primary key exists in the data | Comparisons in which no primary key exists in the data |
+| Benchmark: <br />&nbsp;&nbsp;&nbsp;&nbsp;10 columns <br />&nbsp;&nbsp;&nbsp;&nbsp;1% changes in target <br />&nbsp;&nbsp;&nbsp;&nbsp;500K rows | <80MB RAM <br/> 9s to execute diff | 8GB RAM <br />136s to execute diff |
+| Benchmark: <br />&nbsp;&nbsp;&nbsp;&nbsp;360 columns <br />&nbsp;&nbsp;&nbsp;&nbsp;1% changes in target <br />&nbsp;&nbsp;&nbsp;&nbsp;100K rows | <80MB RAM <br/> 1m to execute diff | 8GB RAM <br />~6m to execute diff |
+| Benchmark: <br />&nbsp;&nbsp;&nbsp;&nbsp;360 columns <br />&nbsp;&nbsp;&nbsp;&nbsp;1% changes in target <br />&nbsp;&nbsp;&nbsp;&nbsp;1M rows | <80MB RAM <br/> 35m to execute diff | does not compute on 16GB RAM machine |
+
+<br />
+
+Beyond choosing a strategy, you can configure a number of granular details for Soda to refine its execution of a record reconciliation check.  
 
 | Configuration | Compares | Description and example |
 | ------------- | -------- | ----------------------- |
-| Simple    | the entire contents the datasets | In the example below, the first check compares all the records in the target dataset to the source dataset. This check fails because of the mismatched value for Jupiter's size.  |
-|  Column constrained | **Best practice**<sup>1</sup><br />only the data in a specified list of columns | In the example below, the second check compares *only* the contents of the listed columns, mapping the columns according to the order in which they appear in the list– Planet to Planet, Hotness to Relative Temp. This check passes because the values of the mapped columns are the same. |
-| With primary key | the entire contents of the datasets, specifying columns to define a primary key in the source | In the example below, he third check uses the `key columns` you identify to form a primary key in the source that defines a single record. Soda uses the key to map records from dataset A to dataset B, similar to what a primary key does. This check fails because of the mismatched value for Jupiter's size. |
-| With multiple primary keys | the entire contents of the datasets, specifying columns to define multiple primary keys | In the example below, the fourth check enables you to define a the primary key the defines a single record in both the source and target datasets. Soda uses the key to map records from dataset A to dataset B, similar to what a primary key does. This check passes because with only one failed row, it does not exceed the threshold of `5` that the check sets. <br /> See also: [Advanced configuration](#advanced-configuration)|
+|  Column-constrained | Only the data in a specified list of columns. | In the example below, the first check applies a `deepdiff` strategy and compares *only* the contents of the listed columns, mapping the columns according to the order in which they appear in the list– Planet to Planet, Hotness to Relative Temp. This check passes because the values of the mapped columns are the same. |
+| With composite primary key | The entire contents of the datasets, specifying columns to define a primary key in the source. | In the example below, the second check applies a `simple` strategy by default and uses the `key columns` you identify to form a primary key in the source that defines a single record. Soda uses the key to map records between datasets. Note that you can list column names as comma-separated values in square brackets, or as an unordered list as in the example. This check fails because of the mismatched value for Jupiter's size. |
+| With different primary keys in source and target | The entire contents of the datasets, specifying columns to define mutiple primary keys in both the source and target. This is useful when the column names in your datasets are different. | In the example below, the third check applies a `simple` strategy by default and enables you to define the primary keys in both the source and target datasets. Soda uses the key to map records between datasets. This check passes because with only one failed row, it does not exceed the threshold of `5` that the check sets. |
 
-<sup>1</sup> See [Limitations and constraints](#limitations-and-constraints).
 
 {% include code-header.html %}
 ```yaml
 reconciliation Production:
 ...
   checks:
-    # Simple
-    - rows diff = 0
-    # Column constrained
+    # Column-constrained
     - rows diff = 0:
+        strategy: deepdiff
         source columns: [Planet, Hotness]
         target columns: [Planet, Relative Temp]
-    # With primary key
+    # With composite primary key
     - rows diff = 0:
         key columns:
           - Planet
           - Size
-    # With multiple primary keys
+    # With different primary keys in source and target
     - rows diff < 5:
         source key columns: [Planet, Hotness]
         target key columns: [Planet, Relative Temp]
@@ -334,28 +389,62 @@ reconciliation Production:
 
 <br />
 
-#### Advanced configuration
 
-When identifying key columns for a `row diff`, be sure to set the source and target columns in matching order, as opposed to the actual order of columns in the dataset. 
 
-The following example sets the `source key columns` and `target key columns` in matching order, even though the actual ordering of columns in the target dataset is different.
+#### Custom value comparator
 
-```shell
-# source dataset schema:
-country, id, ts_with_tz, id_txt, value
+If you use programmtic Soda scans to execute reconciliation checks, you may wish to use a custom value comparator, an example of which follows.
 
-# target dataset schema:
-ts_with_tz, value, country, id_txt_changed, id
-```
+```python
+from soda.scan import Scan
 
-```yaml
-checks:
-...
-- rows diff = 0:
-    source key columns: [id, id_txt]
-    source columns: [country, id, ts_with_tz, id_txt, value]
-    target key columns: [id, id_txt_changed]
-    target columns: [country, id, ts_with_tz, id_txt_changed, value]
+from soda.execution.compare.value_comparator import ValueComparator
+
+from datetime import datetime
+
+class CustomValueComparator(ValueComparator):
+
+    def equals(self, x, y):
+
+        # Ignore microsecond difference less than 4ms in datetimes
+
+        if isinstance(x, datetime) and isinstance(y, datetime):
+
+            xms = x.microsecond
+
+            yms = y.microsecond
+
+            ms_diff = abs(xms - yms)
+
+            if ms_diff > 0 and ms_diff <= 4000:
+
+                x = x.replace(microsecond=0)
+
+                y = y.replace(microsecond=0)
+
+        return x == y
+
+if __name__ == "__main__":
+
+    s = Scan()
+
+    s.value_comparator = CustomValueComparator()
+
+    s.set_scan_definition_name("test_scan")
+
+    s.set_verbose(True)
+
+    s.set_data_source_name("soda_demo")
+
+    s.add_configuration_yaml_file("configuration.yml")
+
+    s.add_sodacl_yaml_file("perf.yml")
+
+    s.execute()
+
+    print(s.get_logs_text())
+
+    print(s.build_scan_results())
 ```
 
 <br />
@@ -438,7 +527,7 @@ reconciliation Production:
 
 You can add a filter to a reconciliation project's configuration to constrain the data on which Soda executes the reconciliation checks. Refer to the example below.
 
-**Best practice** dictates that you add filters when using record reconciliation checks to mitigate heavy memory usage and long scan times when performing record-to-record comparisons of data. See [Limitations and constraints](#limitations-and-constraints).
+Best practice dictates that you add filters when using record reconciliation checks to mitigate heavy memory usage and long scan times when performing record-to-record comparisons of data. See [Limitations and constraints](#limitations-and-constraints).
 
 ```yaml
 reconciliation Production:
@@ -479,11 +568,12 @@ Soda Cloud Trace: 4380***10
 
 ### Failed row samples
 
-Record reconciliation checks and reconcilication metric checks that borrow from `failed rows` check syntax such as the `name_combo` check in the example above, *explicitly* collect samples of any failed rows to display in Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
+Record reconciliation checks and metric reconcilication checks that borrow from `failed rows` check syntax such as the `name_combo` check in the example above, explicitly collect samples of any failed rows to display in Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
 Read more [About failed row samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples).
 
 <br />
+
 If you wish to limit or broaden the sample size, you can add the `samples limit` configuration to a check.  Read more about [Setting a sample limit]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit).
 {% include code-header.html %}
 ```yaml
@@ -589,10 +679,10 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 
 ## Limitations and constraints
 
-* The Python environment in which record reconciliation checks run consumes more time/CPU/memory because this type of check loads all data into memory to execute a comparison. Because record-to-record comparison is dense, exercise caution when executing scans with record reconciliation checks as they can cause usage spikes in the data source, and cost spikes in case of cloud-managed data sources. Best practice dictates that you [add filters](#add-a-filter) and use [column-constrained](#record-reconciliation-checks) record reconciliation checks whenever possible to mitigate cost and performance issues. See also: [Best practice for using reconciliation checks](#best-practice-for-using-reconciliation-checks).
+* The Python environment in which `deepdiff` record reconciliation checks run consumes more time/CPU/memory because this type of check loads all data into memory to execute a comparison. Because record-to-record comparison is dense, exercise caution when executing scans with record reconciliation checks as they can cause usage spikes in the data source, and cost spikes in case of cloud-managed data sources. Best practice dictates that you [add filters](#add-a-filter) and use [column-constrained](#record-reconciliation-checks) record reconciliation checks whenever possible to mitigate cost and performance issues. See also: [Best practice for using reconciliation checks](#best-practice-for-using-reconciliation-checks).
 * Reconciliation checks on TEXT type columns are case sensitive.
 * Record reconciliation checks do not support `samples columns` configuration.
-* Reconciliation checks do not support `samples columns` in check configuration, nor `exclude columns` in the data source configuration in a configuration YAML file; see Disable failed rows sampling for [specific columns]({% link soda-cl/failed-rows-checks.md %}##disable-failed-rows-sampling-for-specific-columns).
+* Reconciliation checks do not support `exclude columns` in the data source configuration in a configuration YAML file; see Disable failed rows sampling for [specific columns]({% link soda-cl/failed-rows-checks.md %}##disable-failed-rows-sampling-for-specific-columns).
 * ***Known issue***: Do not define a threshold as a percentage `%` if you expect the measurement of a metric to equal `0`. Using a percentage for a threshold causes an error for an absolute check; the check evaluates correctly but the error persists with a non-zero exit command.
 
 
