@@ -20,7 +20,7 @@ checks for dim_customer
       missing regex: (0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)
   - missing_count(last_name) < 5:
       missing values: [n/a, NA, none]
-  - missing_percent(email_address) = 0
+  - missing_percent(email_address) = 0%
 ```
 
 [Define checks with missing metrics](#define-checks-with-missing-metrics) <br />
@@ -52,9 +52,9 @@ You can use missing metrics in checks with fixed thresholds, or relative thresho
 ```yaml
 checks for dim_reseller:
 # a check with a fixed threshold
-  - missing_percent(phone) = 5%
+  - missing_count(phone) < 5
 # a check with a relative threshold
-  - missing_percent(number_employees) < 5
+  - missing_percent(number_employees) < 5%
 ```
 
 <details>
@@ -75,7 +75,7 @@ missing percent(name) + invalid percent(name) + valid percent(name) = 100
 <br/><br/>
 These calculations enable you to write checks that use <strong>relative thresholds</strong>. <br />
 <br />
-In the example above, the missing values (in this case, NULL) of the <code>number_employees</code> column must be less than five percent of the total row count, or the check fails.<br /><br />
+In the <code>missing_percent</code> example above, the missing values (in this case, NULL) of the <code>number_employees</code> column must be less than five percent of the total row count, or the check fails.<br /><br />
 Percentage thresholds are between 0 and 100, not between 0 and 1.
 </details>
 
