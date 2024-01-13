@@ -253,7 +253,9 @@ checks for dim_customer:
 
 For each of these values, Soda has adjusted the values of a few of the model's hyperparameters to tailor its performance, particularly with regard to the `changepoint_prior_scale` and `seasonality_prior_scale`. 
 
-The `coverage` value refers to the percentage of measurements that fall within the model's predicted confidence intervals. When a prediction lies outside these intervals, Soda flags it as an anomaly. A higher coverage indicates that the model is less sensitive to anomalies, making it more tolerant of noise in your data. 
+### `coverage` Profile
+
+Coverage in Facebook Prophet represents the percentage of actual measurements within the model's predicted confidence intervals. For example, if a model forecasts sales between 10-20 units on certain days and 90 out of 100 actual sales figures fall within this range, the coverage is 90%. When predictions fall outside these intervals, as in the remaining 10 cases, they're flagged as anomalies. Coverage optimized models are more tolerant of small noises in the data that could lead to falsely identified anomalies. However, it might underfit the data if there is a fluctuating pattern.
 
 For reference, the following lists the hyperparameters that Soda has set for the `coverage` profile. 
 
@@ -281,6 +283,7 @@ scaling = "absmax"
 holidays_mode = None
 ```
 
+### `MAPE` Profile
 The `MAPE` value refers to <a href="https://en.wikipedia.org/wiki/Mean_absolute_percentage_error" target="_blank">mean absolute percentage error (MAPE)</a> which is a statistical measure of how accurate a forecasting method is. It calculates the average percentage error between the forecasted and the actual values. This profile aims to maximize prediction precision as the lower the MAPE value, the more accurate the model's predictions are. When optimizing for MAPE, the model is more sensitive to changepoints and seasonal variations, providing a tighter fit to the training data. 
 
 For reference, the following lists the hyperparameters that Soda has set for the `MAPE` profile. 
@@ -308,6 +311,7 @@ scaling = "absmax"
 holidays_mode = None
 ```
 
+### `coverage` vs. `MAPE` profiles
 `coverage` is less sensitive to anomalies than `MAPE`. If you have set the profile value to `coverage` and find that the model is underfitting, meaning it seems to miss some anomalies, try changing the value to `MAPE`. Conversely, if you set the value to `MAPE` and find that the model is overfitting, meaning it mistakenly identifies normal measurements as anomalies, try changing the value to `coverage`. See [Best practices for model configuration](#best-practices-for-model-configurations) for further guidance.
 
 
