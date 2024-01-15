@@ -11,6 +11,7 @@ parent: Soda CL reference
 
 Use an anomaly detection check to automatically discover anomalies in your check metrics. <br>
 *Requires Soda Scientific*<br />
+*Not supported in Soda Core*<br />
 {% include code-header.html %}
 ```yaml
 # Basic example for row count
@@ -61,6 +62,11 @@ checks for dim_customer:
 [Add optional model configurations](#add-optional-model-configurations)<br />
 [Add optional automatic tuning configurations](#add-optional-automatic-tuning-configurations)<br />
 [Best practices for model configurations](#best-practices-for-model-configurations)<br />
+[Address common anomaly detection issues](#address-common-anomaly-detection-issues)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Underfit detection](#underfit-detection)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;[Sudden pattern changes](#sudden-pattern-changes)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;[Overfit detection](#overfit-detection)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;[Large boundaries that ignore anomalies](#large-boundaries-that-ignore-anomalies)<br/>
 [Track anomalies and relative changes by group](#track-anomalies-and-relative-changes-by-group)<br />
 [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation)<br />
 [Go further](#go-further) <br />
@@ -70,7 +76,7 @@ checks for dim_customer:
 
 The anomaly detection check is powered by a machine learning algorithm that works with measured values for a metric that occurs over time. Soda levergages the <a href="https://facebook.github.io/prophet/" target="_blank">Facebook Prophet</a> algorithm to learn the patterns of your data to identify and flag anomalies in your data. As a relatively easy algorithm to use and tune, Facebook Prophet is ideally suited to both analyzing metrics and giving you control over optional configurations.
 
-As this check that tracks and analyzes metrics over time, the algorithm it uses learns from historical patterns in your data, including trends and seasonal variations in the measurements it collects. After learning the normal behavior of your data, the check becomes capable of detecting variations from the norm which it flags as anomalies. 
+As this check tracks and analyzes metrics over time, the algorithm it uses learns from historical patterns in your data, including trends and seasonal variations in the measurements it collects. After learning the normal behavior of your data, the check becomes capable of detecting variations from the norm which it flags as anomalies. 
 
 Once flagged, Soda can alert you to the anomaly so that you can take action to correct any issues with your data. Alternatively, you can add a notation to an anomalous measurement to indicate that the anomaly is something you expected to see, such as a spike in order volumes during an aggressive marketing campaign, so that the check knows to discount the measurement as an anomaly.
 
@@ -192,11 +198,7 @@ for each dataset T:
 
 ## Add optional training dataset configurations
 
-To enhance the flexibility of anomaly detection, we offer optional configurations that allow you to tailor the model according to your specific needs. These configurations can be applied to the training dataset, time series prediction model, and the anomaly detection check itself.
-
-### Training Dataset Configuration
-
-A training dataset is one that Soda uses to teach the algorithm to identify patterns in the measurements the check collects. To enhance the flexibility of anomaly detection, you can add an optional `training_dataset_parameters` configuration to your anomaly detection check to customize the way that the check uses the training dataset.
+A training dataset is one that Soda uses to teach the algorithm to identify patterns in the measurements the check collects. To enhance the flexibility of anomaly detection, you can add an optional `training_dataset_parameters` configuration to your anomaly detection check to customize the way that the check uses the training dataset. Apply training dataset configurations to the training dataset, time-series prediction model, and/or the anomaly detection check itself.
 
 The following example includes three optional, customizable training dataset parameters.
 {% include code-header.html %}
@@ -253,12 +255,9 @@ checks for dim_customer:
 
 For each of these values, Soda has adjusted the values of a few of the model's hyperparameters to tailor its performance, particularly with regard to the `changepoint_prior_scale` and `seasonality_prior_scale`. 
 
-### `coverage` Profile
-
-Coverage in Facebook Prophet represents the percentage of actual measurements within the model's predicted confidence intervals. For example, if a model forecasts sales between 10-20 units on certain days and 90 out of 100 actual sales figures fall within this range, the coverage is 90%. When predictions fall outside these intervals, as in the remaining 10 cases, they're flagged as anomalies. Coverage optimized models are more tolerant of small noises in the data that could lead to falsely identified anomalies. However, it might underfit the data if there is a fluctuating pattern.
+`coverage` represents the percentage of actual measurements within the model's predicted confidence intervals. For example, if a model forecasts sales between 10-20 units on certain days and 90 out of 100 actual sales figures fall within this range, the coverage is 90%. When predictions fall outside these intervals, as in the remaining 10 cases, the model flags them as anomalies. Coverage-optimized models are more tolerant of small noises in the data that can lead to falsely-identified anomalies. However, it might underfit the data if there is a fluctuating pattern.
 
 For reference, the following lists the hyperparameters that Soda has set for the `coverage` profile. 
-
 ```python
 # hyperparameters set by Soda for the coverage profile
 seasonality_mode = "multiplicative"
@@ -283,7 +282,6 @@ scaling = "absmax"
 holidays_mode = None
 ```
 
-### `MAPE` Profile
 The `MAPE` value refers to <a href="https://en.wikipedia.org/wiki/Mean_absolute_percentage_error" target="_blank">mean absolute percentage error (MAPE)</a> which is a statistical measure of how accurate a forecasting method is. It calculates the average percentage error between the forecasted and the actual values. This profile aims to maximize prediction precision as the lower the MAPE value, the more accurate the model's predictions are. When optimizing for MAPE, the model is more sensitive to changepoints and seasonal variations, providing a tighter fit to the training data. 
 
 For reference, the following lists the hyperparameters that Soda has set for the `MAPE` profile. 
@@ -311,7 +309,6 @@ scaling = "absmax"
 holidays_mode = None
 ```
 
-### `coverage` vs. `MAPE` profiles
 `coverage` is less sensitive to anomalies than `MAPE`. If you have set the profile value to `coverage` and find that the model is underfitting, meaning it seems to miss some anomalies, try changing the value to `MAPE`. Conversely, if you set the value to `MAPE` and find that the model is overfitting, meaning it mistakenly identifies normal measurements as anomalies, try changing the value to `coverage`. See [Best practices for model configuration](#best-practices-for-model-configurations) for further guidance.
 
 
@@ -354,7 +351,7 @@ checks for dim_customer:
         type: prophet
         hyperparameters:
           dynamic:
-            objective_metric: ["coverage", "smape"]
+            objective_metric: ["coverage", "SMAPE"]
             parallelize_cross_validation: True
             cross_validation_folds: 5
             parameter_grid:
@@ -367,7 +364,7 @@ checks for dim_customer:
 | ----------------- | ------------------------------- | ------- |
 | `objective_metric`| `coverage` <br /> `MSE` <br /> `RMSE`<br /> `MAE`<br /> `MAPE`<br /> `MDAPE`<br /> `SMAPE` | n/a |
 | `parallel`        | `true`<br /> `false` |  `true` |
-| `cross_validation_folds`       | integer | `5` |
+| `cross_validation_folds`| integer | `5` |
 | `parameter_grid`  | any Prophet-supported hyperparameters | `changepoint_prior_scale: [0.001, 0.01, 0.1, 0.5]` <br /> `seasonality_prior_scale: [0.01, 0.1, 1.0, 10.0]` <br /> other hyperparameters set to the defaults in the `coverage` profile |
 
 The `objective_metric` hyperparameter evaluates the model's performance. You can set the value to use a single string, or a list of strings. If you provide a list, the model optimizes each metric in sequence. In the example above, the model first optimizes for `coverage`, then `SMAPE` in the event of a tie. Best practice dictates that you use `coverage` as the first objective metric, and `SMAPE` as the second objective metric to optimize for a model that is more tolerant of noise in your data.
@@ -380,28 +377,28 @@ The `parameter_grid` hyperparameter is a dictionary that lists hyperparameters a
 
 ### Execution time analysis for dynamic hyperparameter tuning
 
-To provide a rough estimate of the execution time for dynamic hyperparameter tuning, refer to the following table. The execution time depends on the number of hyperparameters. For example, the default hyperparameter grid has 16 combinations since `changepoint_prior_scale` and `seasonality_prior_scale` has 4 values each. Soda recommends to use a small number of hyperparameters to avoid long execution times. Number of folds also affects the execution time. By default, each fold is processed in parallel. If you have multiple cores, you can set the `parallel` parameter to `True` to speed up the execution time.
+The execution time for dynamic hyperparameter tuning varies based on several factors including the number of hyperparameters and the number of folds. For example, the default hyperparameter grid has 16 combinations since `changepoint_prior_scale` and `seasonality_prior_scale` have four values each. Best practice recommends that you use a small number of hyperparameters to avoid long execution times. By default, the model processes each fold in parallel. If you use multiple cores, you can set the `parallel` parameter to `True` to speed up the execution time.
 
-We made the test by using the following specifications:
+Use the following tables to estimate the execution time for checks with dynamic hypertuning.
 
-- **Model Name**: MacBook Pro
-- **Model Identifier**: MacBookPro18,3
-- **Chip**: Apple M1 Pro
-- **Total Number of Cores**: 10 (8 performance and 2 efficiency)
-- **Memory**: 16 GB
+| Model Name        | MacBook Pro                       |
+| Model Identifier  | MacBookPro18,3                    |
+| Chip              | Apple M1 Pro                      |
+| Number of Cores   | 10; 8 performance and 2 efficiency|
+| Memory            | 16 GB                             |
 
-| Parallel | N. of Hyperparameters | N. of Folds | Training Dataset Size | Execution Time |
-|----------|-----------------------|-------------|-----------------------|----------------|
-| Yes      | 4                     | 5           | 30                    | 2.23 sec       |
-| Yes      | 4                     | 5           | 90                    | 2.80 sec       |
-| Yes      | 8                     | 5           | 30                    | 4.5 sec        |
-| Yes      | 8                     | 5           | 90                    | 6.05 sec       |
-| No       | 4                     | 5           | 30                    | 5.8 sec        |
-| No       | 4                     | 5           | 90                    | 8.05 sec       |
-| No       | 4                     | 10          | 30                    | 7.2 sec        |
-| No       | 4                     | 10          | 90                    | 10.6 sec       |
-| Yes      | 4                     | 10          | 30                    | 2.5 sec        |
-| Yes      | 4                     | 10          | 90                    | 3.06 sec       |
+| Parallel | Number of hyperparameters | Number of folds | Training dataset size | Execution time |
+|----------|---------------------------|-----------------|-----------------------|----------------|
+| Yes      | 4                         | 5               | 30                    | 2.23 sec       |
+| Yes      | 4                         | 5               | 90                    | 2.80 sec       |
+| Yes      | 8                         | 5               | 30                    | 4.5 sec        |
+| Yes      | 8                         | 5               | 90                    | 6.05 sec       |
+| No       | 4                         | 5               | 30                    | 5.8 sec        |
+| No       | 4                         | 5               | 90                    | 8.05 sec       |
+| No       | 4                         | 10              | 30                    | 7.2 sec        |
+| No       | 4                         | 10              | 90                    | 10.6 sec       |
+| Yes      | 4                         | 10              | 30                    | 2.5 sec        |
+| Yes      | 4                         | 10              | 90                    | 3.06 sec       |
 
 
 ## Best practices for model configurations
@@ -409,16 +406,19 @@ We made the test by using the following specifications:
 * Set the value of the `profile` parameter to `coverage`. This profile is more tolerant of small noises in the data that could lead to falsely identified anomalies. If you need a very sensitive model, then try to use `MAPE` profile.
 * Only use the `custom_hyperparameters` configuration if you know how Facebook Prophet works. Before making any customizations, consult the <a href="https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning:~:text=Parameters%20that%20can%20be%20tuned" target="_blank">Facebook Prophet documentation</a>. The`change_point_prior_scale` and `seasonality_prior_scale` hyperparameters have the most impact on the model so best practice dictates that you experiment with the values of these two hyperparameters first before customizing or tuning others.
 * Adjust the value of the `interval_width` hyperparameter to obtain a more anomaly-sensitive model. The default value for this hyperparameter is `0.999` which means that the model applies a confidence interval of 99.9% which, in turn, means that if the predicted value is outside of the 99.9% interval, Soda flags it as an anomaly. If you want to have a more sensitive model, you can decrease this value though be aware that a lower value may result in more falsely-identified anomalies.
-* Use the `dynamic` tuning configuration only if necessary. Hyperparameter tuning is a computationally expensive process since the model tries all possible combinations of each hyperparameter's listed values to dynamically determine the best value to use to detect anomalies. If you need to use hyperparameter tuning, experiment with tuning the values of the `change_point_prior_scale` and `seasonality_prior_scale` hyperparameters first as these two have the most impact on the model's sensitivity.
+* Use the `dynamic` tuning configuration only if necessary. Hyperparameter tuning is a computationally expensive process since the model tries all possible combinations of each hyperparameter's listed values to dynamically determine the best value to use to detect anomalies. See [Execution time analysis for dynamic hyperparameter tuning](#execution-time-analysis-for-dynamic-hyperparameter-tuning). If you need to use hyperparameter tuning, experiment with tuning the values of the `change_point_prior_scale` and `seasonality_prior_scale` hyperparameters first as these two have the most impact on the model's sensitivity.
 
-## Handling Common Anomaly Detection Issues
+## Address common anomaly detection issues
 
-### Dealing with underfitting
+What follows are some examples of how to adjust optional configurations to address common issues with the sensitivity of anomaly detection checks.
 
-The default `coverage` hyperparameter profile is more tolerant of small noises in the data. However, as seen in the following example, it may underfit the data if there is a fluctuating patterns. The reason is that `coverage` profile uses a low `changepoint_prior_scale=0.001` value and a low `seasonality_prior_scale=0.01` with which makes the model less sensitive to changepoints. For these kind of cases, it's likely that the model will miss some anomalies. For this kind of scenerios, you can try to use the `MAPE` profile which is more sensitive to changepoints and seasonal variations. Refer to the SodaCL below to set the `profile` parameter to `MAPE`.
+### Underfit detection
 
-![underfitting-coverage](/assets/images/underfitting-coverage.png){:height="600px" width="600px"}
+The default `coverage` hyperparameter profile is more tolerant of small noises in data quality measurements. However, as in the following example, the profile may underfit the data if there are fluctuating patterns. The reason is that `coverage` profile uses a low `changepoint_prior_scale=0.001` value and a low `seasonality_prior_scale=0.01` which make the model less sensitive to changepoints which makes it more likely that the model misses some anomalies, as indicated in the following graph. 
 
+![underfitting-coverage](/assets/images/underfitting-coverage.png){:height="700px" width="700px"}
+
+In such a case, consider using the `MAPE` profile which is more sensitive to changepoints and seasonal variations. 
 {% include code-header.html %}
 ```yaml
 checks for your-table-name:
@@ -430,18 +430,17 @@ checks for your-table-name:
             profile: MAPE
 ```
 
-Then, we end up having a graph like the following when setting the profile to `MAPE`. `MAPE` profile uses higher `changepoint_prior_scale=0.1` and `seasonality_prior_scale=0.1` values which makes the model more sensitive to changepoints and seasonal variations.
+With the profile set to `MAPE`, the model uses higher `changepoint_prior_scale=0.1` and `seasonality_prior_scale=0.1` values which makes it more sensitive to changepoints and seasonal variations. The graph below illustrates the higher sensitivity with more measurements recognized as anomalous.
 
-![underfitting-coverage](/assets/images/better-fit-mape.png){:height="600px" width="600px"}
+![underfitting-coverage](/assets/images/better-fit-mape.png){:height="700px" width="700px"}
 
-### Dealing with sudden pattern changes
+### Sudden pattern changes
 
-The default hyperparameters of the anomaly detection check are optimized to detect anomalies in time-series data that exhibit a stable pattern to decrease the false positive rates. If your data exhibits sudden pattern changes, you may need to adjust the default parameters to improve the model's ability to detect anomalies. See [default model configurations](#Add-optional-model-configurations) for guidance.
+To decrease the rate of false detection of anomalies, Soda optimized the default hyperparameters of the anomaly detection check to detect anomalies in time-series data that exhibits a stable pattern. If the data exhibits sudden pattern changes, as illustrated in the graph below, you may need to adjust the default parameters to improve the model's ability to detect anomalies. 
 
-![coverage-profile](/assets/images/coverage-profile.png){:height="600px" width="600px"}
+![coverage-profile](/assets/images/coverage-profile.png){:height="700px" width="700px"}
 
-In this case, we clearly see an example of underfitting. Due to this underfitting, the anomaly detection raises too much consequtive false positives. For this kind of scenerios the first option would be to shorten the `window_length` parameter to make the model more sensitive to recent changes. The default `window_length` is `1000` which means that the model uses the last 1000 measurements to detect anomalies. If you set the `window_length` to lower values such as `30`, the model will use the last 30 measurements or days for this use case. Experiment with different values to find the optimal `window_length` for your data and business use case. Refer to the SodaCL below to set the `window_length` parameter.
-
+In this situation, consider shortening the `window_length` parameter to make the model more sensitive to recent changes. By default, the `window_length` is `1000` which means that the model uses the last 1000 measurements to detect anomalies. If you set the `window_length` to a lower value such as  `30`, the model uses the last 30 measurements. Experiment with different values to find the optimal `window_length` for your data and business use case. Refer to [default model configurations](#add-optional-training-dataset-configurations) for guidance.
 {% include code-header.html %}
 ```yaml
 checks for your-table-name:
@@ -450,18 +449,17 @@ checks for your-table-name:
         window_length: 30
 ```
 
-Then, we end up having a graph like the following when setting the window length to `30`. The model become more sensitive to recent change sand can adapt better for pattern changes.
+Having adjusted the window length, the graph below illustrates that the model is more sensitive to recent measurements and can better adapt to pattern changes.
 
-![coverage-profile-window-length-30](/assets/images/coverage-profile-window-length-30.png){:height="600px" width="600px"}
+![coverage-profile-window-length-30](/assets/images/coverage-profile-window-length-30.png){:height="700px" width="700px"}
 
-### Dealing with very tight confidence intervals
+### Overfit detection
 
-If the time series data is very easy to predict, then the model is likely to have very tight confidence intervals. In this case, the model may raise too much false positives. For this kind of scenerios, you can try to decrease the `window_length` to a very low value to increase the model's uncertainty. For instance, the following daily row count graph has a very tight confidence interval since it has a very predictable linear pattern. Since the default `window_length` is `1000`, the uncertainty decreases over time and the model becomes more confident about its predictions. For this reason, the model raises too much false positives.
+If the time series data is very easy to predict, then the model is likely to have very tight confidence intervals which can result in a model that falsely detects too many anomalies. For instance, the following daily row count graph has a very tight confidence interval since it has a very predictable linear pattern. Because the default `window_length` is `1000`, the uncertainty decreases over time and the model becomes more confident about its predictions and raises too many false positives.
 
-![ad-linear-pattern-7-window-width](/assets/images/ad-linear-false-positives.png){:height="600px" width="600px"}
+![ad-linear-pattern-7-window-width](/assets/images/ad-linear-false-positives.png){:height="700px" width="700px"}
 
-Decreasing the `window_length` to a very low value such as `7` will increase the model's uncertainty and decrease the false positive rates. Refer to the SodaCL below to set the `window_length` parameter.
-
+In such a case, consider decreasing the `window_length` to a very low value to increase the model's uncertainty. Decreasing this example's `window_length` to a very low value such as `7` increases the model's uncertainty and decreases the volume of falsely-identified anomalies. 
 {% include code-header.html %}
 ```yaml
 checks for your-table-name:
@@ -470,17 +468,17 @@ checks for your-table-name:
         window_length: 7
 ```
 
-Then, we end up having a graph like the following when setting the window length to `7`.
+Having adjusted the window length, the graph below illustrates that the model is less confident and recognizes far fewer measurements as anomalies.
 
-![ad-linear-pattern-7-window-width](/assets/images/ad-linear-pattern-7-window-width.png){:height="600px" width="600px"}
+![ad-linear-pattern-7-window-width](/assets/images/ad-linear-pattern-7-window-width.png){:height="700px" width="700px"}
 
-### Handling very large boundaries by ignoring the anomalies
+### Large boundaries that ignore anomalies
 
-Consider the graph below. There is two issues with this graph. First issue is that, the predicted trend underfits the area encapsulated with the blue rectangle. The underfitted model might raise false negatives and it might cause you to miss some anomalies. The second issue is that, due to the anomalous records that are shown in the red rectangle, the model's confidence interval becomes very large. This large confidence interval might also cause you to miss some anomalies.
+Consider the graph below that illustrates two issues with the anomaly detection behavior. First, the predicted trend underfits the area encapsulated within the blue rectangle. The underfitted model may raise false negatives and could some anomalies. The second issue is that due to the anomalous records inside the red rectangle, the model's confidence interval becomes very large. This large confidence interval may also result in missed anomalies.
 
-![ad-coverage-anomaly-feedbacks](/assets/images/ad-coverage-anomaly-feedbacks.png){:height="600px" width="600px"}
+![ad-coverage-anomaly-feedbacks](/assets/images/ad-coverage-anomaly-feedbacks.png){:height="700px" width="700px"}
 
-The first issue can be solved by using the `MAPE` profile. The `MAPE` profile is more sensitive to changepoints and seasonal variations. Refer to the SodaCL below to set the `profile` parameter.
+To address the first issue, you can change the `profile` to `MAPE` which is more sensitive to changepoints and seasonal variations. 
 
 {% include code-header.html %}
 ```yaml
@@ -493,16 +491,16 @@ checks for your-table-name:
             profile: MAPE
 ```
 
-Then, we end up having a graph like the following when setting the profile to `MAPE`.
-![ad-mape-anomaly-feedbacks](/assets/images/ad-mape-anomaly-feedbacks.png){:height="600px" width="600px"}
+Having set the profile to `MAPE`, the graph indicates that the model is more sensitive to anomalies in data earlier in the year.
+![ad-mape-anomaly-feedbacks](/assets/images/ad-mape-anomaly-feedbacks.png){:height="700px" width="700px"}
 
-The second issue can be solved by ignoring the anomalies in the red rectangle. Soda recommends to ignore the anomalous records if they cause very large bounds as this example. You can ignore the anomalies by using the `feedback` feature of the Soda Cloud. Hover over the anomaly in your anomaly detection check page and click the `Feedback` button. Then, you can choose to `ignore this value in future anomaly detection`.  Refer to the screenshot below.
+To address the second issue, use Soda Cloud to ignore the anomalies in the red rectangle. Where they crete very large anomaly boundaries, best practice dictates that you ignore the anomalies by using the **Feedback** feature. Hover over the anomalous measurement in your anomaly detection check page, then click the **Feedback** button and choose to **Ignore this value in future anomaly detection** as in the screenshot below.
 
-![ad-cloud-feedback.png](/assets/images/ad-cloud-feedback.png){:height="600px" width="600px"}
+![ad-cloud-feedback.png](/assets/images/ad-cloud-feedback.png){:height="700px" width="700px"}
 
-After ignoring the anomalous records, we end up having a graph like the following. The model's confidence interval becomes smaller and the model becomes more sensitive to anomalies.
+After instructing Soda to ignore the anomalous measurements, the graph below indicates that the model's confidence interval is smaller and the model is more sensitive to anomalies.
 
-![ad-feedback-processed-mape](/assets/images/ad-feedback-processed-mape.png){:height="600px" width="600px"}
+![ad-feedback-processed-mape](/assets/images/ad-feedback-processed-mape.png){:height="700px" width="700px"}
 
 ## Track anomalies and relative changes by group
 
