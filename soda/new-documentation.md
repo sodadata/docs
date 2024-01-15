@@ -12,6 +12,9 @@ parent: Learning resources
 #### January 18, 2024
 * Introducing [anomaly detection checks]({% link soda-cl/anomaly-detection.md %})! Designed as a more refined replacement of the deprecated anomaly score checks, you can use anomaly detection to automatically detect anomlous measurements over time in your data. Fine tune the model the check uses to identify anomalies by adjust the hyperparametes made available by Facebook Prophet, the algorithm Soda leverages to gauge anomalies.
 
+#### January 15, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.2.1.
+
 #### January 12, 2024
 * Documented configuration changes and performance improvements for [record reconciliation checks]({% link soda-cl/recon.md %}#record-reconciliation-checks). 
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.2.0.
