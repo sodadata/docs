@@ -378,6 +378,31 @@ The `cross_validation_folds` hyperparameter sets the number of periods for each 
 
 The `parameter_grid` hyperparameter is a dictionary that lists hyperparameters and their possible values. The model tests every possible combination of the listed values for each hyperparameter to identify the best value to use to detect anomalies.  You can configure any <a href="https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning:~:text=Parameters%20that%20can%20be%20tuned" target="_blank">Prophet-supported hyperparameter</a>.
 
+### Execution time analysis for dynamic hyperparameter tuning
+
+To provide a rough estimate of the execution time for dynamic hyperparameter tuning, refer to the following table. The execution time depends on the number of hyperparameters. For example, the default hyperparameter grid has 16 combinations since `changepoint_prior_scale` and `seasonality_prior_scale` has 4 values each. Soda recommends to use a small number of hyperparameters to avoid long execution times. Number of folds also affects the execution time. By default, each fold is processed in parallel. If you have multiple cores, you can set the `parallel` parameter to `True` to speed up the execution time.
+
+We made the test by using the following specifications:
+
+- **Model Name**: MacBook Pro
+- **Model Identifier**: MacBookPro18,3
+- **Chip**: Apple M1 Pro
+- **Total Number of Cores**: 10 (8 performance and 2 efficiency)
+- **Memory**: 16 GB
+
+| Parallel | N. of Hyperparameters | N. of Folds | Training Dataset Size | Execution Time |
+|----------|-----------------------|-------------|-----------------------|----------------|
+| Yes      | 4                     | 5           | 30                    | 2.23 sec       |
+| Yes      | 4                     | 5           | 90                    | 2.80 sec       |
+| Yes      | 8                     | 5           | 30                    | 4.5 sec        |
+| Yes      | 8                     | 5           | 90                    | 6.05 sec       |
+| No       | 4                     | 5           | 30                    | 5.8 sec        |
+| No       | 4                     | 5           | 90                    | 8.05 sec       |
+| No       | 4                     | 10          | 30                    | 7.2 sec        |
+| No       | 4                     | 10          | 90                    | 10.6 sec       |
+| Yes      | 4                     | 10          | 30                    | 2.5 sec        |
+| Yes      | 4                     | 10          | 90                    | 3.06 sec       |
+
 
 ## Best practices for model configurations
 
