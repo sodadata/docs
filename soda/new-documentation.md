@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### January 15, 2023
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.2.1.
+
 #### January 12, 2024
 * Documented configuration changes and performance improvements for [record reconciliation checks]({% link soda-cl/recon.md %}#record-reconciliation-checks). 
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.2.0.
