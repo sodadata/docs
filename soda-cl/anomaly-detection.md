@@ -341,7 +341,7 @@ checks for dim_customer:
 <br />
 
 
-## Add optional automatic dynamic hyperparameter tuning configurations
+## Add optional dynamic hyperparameter tuning configurations
 
 To dynamically tune Prophet to evaluate and select the best hyperparameters values to use before each scan, you can add a `dynamic` parameter and any number of optional hyperparameter configurations. Be aware that hyperparameter tuning can be time-consuming and resource-intensive, so best practice dictates that you use these configurations sparingly.
 
@@ -377,6 +377,7 @@ The `parallel` hyperparameter specifies whether the model saves time by using mu
 The `cross_validation_folds` hyperparameter sets the number of periods for each cross-validation fold. For example, with the `frequency` set to daily `D` and a `cross_validation_folds` of `5`, the model conducts cross-validation in five-day intervals. It trains on the first `n-5` days, then tests on the `n-4`th day. Subsequently, it trains on `n-4` days, testing on the `n-3`rd day, and so on. The cross-validation process computes the `objective_metric` across different data segments for each hyperparameter combination. The model then uses the best `objective_metric` according to the value or list of values configured for that hyperparameter.
 
 The `parameter_grid` hyperparameter is a dictionary that lists hyperparameters and their possible values. The model tests every possible combination of the listed values for each hyperparameter to identify the best value to use to detect anomalies.  You can configure any <a href="https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning:~:text=Parameters%20that%20can%20be%20tuned" target="_blank">Prophet-supported hyperparameter</a>.
+
 
 ## Best practices for model configurations
 
