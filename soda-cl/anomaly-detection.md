@@ -9,8 +9,10 @@ parent: Soda CL reference
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use an anomaly detection check to automatically discover anomalies in your check metrics. <br>
+Use an anomaly detection check to automatically discover anomalies in your check metrics. 
+
 *Requires Soda Scientific*<br />
+*Requires Soda Library 1.2.2 or greater, or Soda Agent 0.8.54 or greater*<br />
 *Not supported in Soda Core*<br />
 {% include code-header.html %}
 ```yaml
@@ -63,9 +65,9 @@ checks for dim_customer:
 [Add optional automatic tuning configurations](#add-optional-automatic-tuning-configurations)<br />
 [Best practices for model configurations](#best-practices-for-model-configurations)<br />
 [Address common anomaly detection issues](#address-common-anomaly-detection-issues)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Underfit detection](#underfit-detection)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;[Insensitive detection](#insensitive-detection)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;[Sudden pattern changes](#sudden-pattern-changes)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;[Overfit detection](#overfit-detection)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;[Overly-sensitive detection](#overly-sensitive-detection)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;[Large boundaries that ignore anomalies](#large-boundaries-that-ignore-anomalies)<br/>
 [Track anomalies and relative changes by group](#track-anomalies-and-relative-changes-by-group)<br />
 [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation)<br />
@@ -412,9 +414,9 @@ Use the following tables to estimate the execution time for checks with dynamic 
 
 What follows are some examples of how to adjust optional configurations to address common issues with the sensitivity of anomaly detection checks.
 
-### Underfit detection
+### Insensitive detection
 
-The default `coverage` hyperparameter profile is more tolerant of small noises in data quality measurements. However, as in the following example, the profile may underfit the data if there are fluctuating patterns. The reason is that `coverage` profile uses a low `changepoint_prior_scale=0.001` value and a low `seasonality_prior_scale=0.01` which make the model less sensitive to changepoints which makes it more likely that the model misses some anomalies, as indicated in the following graph. 
+The default `coverage` hyperparameter profile is more tolerant of small noises in data quality measurements. However, as in the following example, the profile may not be sensitive enough if there are fluctuating data patterns. The reason is that `coverage` profile uses a low `changepoint_prior_scale=0.001` value and a low `seasonality_prior_scale=0.01` which make the model less sensitive to changepoints which makes it more likely that the model misses some anomalies, as indicated in the following graph. 
 
 ![underfitting-coverage](/assets/images/underfitting-coverage.png){:height="700px" width="700px"}
 
@@ -453,7 +455,7 @@ Having adjusted the window length, the graph below illustrates that the model is
 
 ![coverage-profile-window-length-30](/assets/images/coverage-profile-window-length-30.png){:height="700px" width="700px"}
 
-### Overfit detection
+### Overly-sensitive detection
 
 If the time series data is very easy to predict, then the model is likely to have very tight confidence intervals which can result in a model that falsely detects too many anomalies. For instance, the following daily row count graph has a very tight confidence interval since it has a very predictable linear pattern. Because the default `window_length` is `1000`, the uncertainty decreases over time and the model becomes more confident about its predictions and raises too many false positives.
 
@@ -474,7 +476,7 @@ Having adjusted the window length, the graph below illustrates that the model is
 
 ### Large boundaries that ignore anomalies
 
-Consider the graph below that illustrates two issues with the anomaly detection behavior. First, the predicted trend underfits the area encapsulated within the blue rectangle. The underfitted model may raise false negatives and could some anomalies. The second issue is that due to the anomalous records inside the red rectangle, the model's confidence interval becomes very large. This large confidence interval may also result in missed anomalies.
+Consider the graph below that illustrates two issues with the anomaly detection behavior. First, the predicted trend underfits the area encapsulated within the blue rectangle. The model may recognize false negatives, ignoring some anomalies. The second issue is that due to the anomalous records inside the red rectangle, the model's confidence interval becomes very large. This large confidence interval may also result in missed anomalies.
 
 ![ad-coverage-anomaly-feedbacks](/assets/images/ad-coverage-anomaly-feedbacks.png){:height="700px" width="700px"}
 
