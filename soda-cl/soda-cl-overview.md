@@ -141,6 +141,10 @@ By default, alert notifications for your no-code check go to the **Dataset Owner
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
+<div class="info">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  This feature is available only upon request. <br />Contact Soda Support to <a href="mailto:support@soda.io">request access.</a>
+</div>
 You can write SodaCL checks directly in the Soda Cloud user interface within an **agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source.<br />
 *Requires a Soda Agent*
 
