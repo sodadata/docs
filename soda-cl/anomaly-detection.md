@@ -76,7 +76,7 @@ checks for dim_customer:
 
 ## About anomaly detection checks
 
-The anomaly detection check is powered by a machine learning algorithm that works with measured values for a metric that occurs over time. Soda levergages the <a href="https://facebook.github.io/prophet/" target="_blank">Facebook Prophet</a> algorithm to learn the patterns of your data to identify and flag anomalies in your data. As a relatively easy algorithm to use and tune, Facebook Prophet is ideally suited to both analyzing metrics and giving you control over optional configurations.
+The anomaly detection check is powered by a machine learning algorithm that works with measured values for a metric that occurs over time. Soda leverages the <a href="https://facebook.github.io/prophet/" target="_blank">Facebook Prophet</a> algorithm to learn the patterns of your data to identify and flag anomalies in your data. As a relatively easy algorithm to use and tune, Facebook Prophet is ideally suited to both analyzing metrics and giving you control over optional configurations.
 
 As this check tracks and analyzes metrics over time, the algorithm it uses learns from historical patterns in your data, including trends and seasonal variations in the measurements it collects. After learning the normal behavior of your data, the check becomes capable of detecting variations from the norm which it flags as anomalies. 
 
@@ -200,7 +200,7 @@ for each dataset T:
 
 ## Add optional training dataset configurations
 
-A training dataset is one that Soda uses to teach the algorithm to identify patterns in the measurements the check collects. To enhance the flexibility of anomaly detection, you can add an optional `training_dataset_parameters` configuration to your anomaly detection check to customize the way that the check uses the training dataset. Apply training dataset configurations to the training dataset, time-series prediction model, and/or the anomaly detection check itself.
+A training dataset is one that Soda uses to teach the algorithm to identify patterns in the measurements the check collects. To enhance the flexibility of anomaly detection, you can add an optional `training_dataset_parameters` configuration to your anomaly detection check to customize the way that the check uses the training dataset. You can apply training dataset configurations to the training dataset, time-series prediction model, and/or the anomaly detection check itself.
 
 The following example includes three optional, customizable training dataset parameters.
 {% include code-header.html %}
@@ -255,9 +255,9 @@ checks for dim_customer:
 | `profile`         | `coverage` <br /> `MAPE`        | `coverage`|
 
 
-For each of these values, Soda has adjusted the values of a few of the model's hyperparameters to tailor its performance, particularly with regard to the `changepoint_prior_scale` and `seasonality_prior_scale`. 
+For each of these values, Soda has adjusted the values of a few of the model's hyperparameters to tailor its sensitivity to anomalies, particularly the `changepoint_prior_scale` and `seasonality_prior_scale` hyperparameters. 
 
-`coverage` represents the percentage of actual measurements within the model's predicted confidence intervals. For example, if a model forecasts sales between 10-20 units on certain days and 90 out of 100 actual sales figures fall within this range, the coverage is 90%. When predictions fall outside these intervals, as in the remaining 10 cases, the model flags them as anomalies. Coverage-optimized models are more tolerant of small noises in the data that can lead to falsely-identified anomalies. However, it might underfit the data if there is a fluctuating pattern.
+`coverage` refers to the concept of <a href="" target="_blnak">coverage </a> and represents the percentage of actual measurements within the model's predicted confidence intervals. For example, if a model forecasts sales between 10-20 units on certain days and 90 out of 100 actual sales figures fall within this range, the coverage is 90%. When predictions fall outside these intervals, as in the remaining 10 cases, the model flags them as anomalies. This coverage-optimized profile is more tolerant of small noises in the data that can lead to falsely-identified anomalies. However, it might underfit the data if there is a fluctuating pattern.
 
 For reference, the following lists the hyperparameters that Soda has set for the `coverage` profile. 
 ```python
@@ -311,7 +311,7 @@ scaling = "absmax"
 holidays_mode = None
 ```
 
-`coverage` is less sensitive to anomalies than `MAPE`. If you have set the profile value to `coverage` and find that the model is underfitting, meaning it seems to miss some anomalies, try changing the value to `MAPE`. Conversely, if you set the value to `MAPE` and find that the model is overfitting, meaning it mistakenly identifies normal measurements as anomalies, try changing the value to `coverage`. See [Best practices for model configuration](#best-practices-for-model-configurations) for further guidance.
+`coverage` is less sensitive to anomalies than `MAPE`. If you have set the profile value to `coverage` and find that the model seems to miss some anomalies, try changing the value to `MAPE`. Conversely, if you set the value to `MAPE` and find that the model is mistakenly identifying normal measurements as anomalies, try changing the value to `coverage`. See [Best practices for model configuration](#best-practices-for-model-configurations) for further guidance.
 
 
 ### Customize hyperparameters
@@ -379,7 +379,7 @@ The `parameter_grid` hyperparameter is a dictionary that lists hyperparameters a
 
 ### Execution time analysis for dynamic hyperparameter tuning
 
-The execution time for dynamic hyperparameter tuning varies based on several factors including the number of hyperparameters and the number of folds. For example, the default hyperparameter grid has 16 combinations since `changepoint_prior_scale` and `seasonality_prior_scale` have four values each. Best practice recommends that you use a small number of hyperparameters to avoid long execution times. By default, the model processes each fold in parallel. If you use multiple cores, you can set the `parallel` parameter to `True` to speed up the execution time.
+The execution time for dynamic hyperparameter tuning varies based on several factors including the number of hyperparameters and the number of folds. For example, the default hyperparameter grid has 16 combinations since `changepoint_prior_scale` and `seasonality_prior_scale` have four values each. Consider using a small number of hyperparameters to avoid long execution times. By default, the model processes each fold in parallel. If you use multiple cores, you can set the `parallel` parameter to `True` to speed up the execution time.
 
 Use the following tables to estimate the execution time for checks with dynamic hypertuning.
 
@@ -493,7 +493,7 @@ checks for your-table-name:
             profile: MAPE
 ```
 
-Having set the profile to `MAPE`, the graph indicates that the model is more sensitive to anomalies in data earlier in the year.
+Having set the profile to `MAPE`, the graph below indicates that the model is more sensitive to anomalies in data earlier in the year, where the increased red and yellow measurements indicate that the model identifies them as anomalies where it previously did not.
 ![ad-mape-anomaly-feedbacks](/assets/images/ad-mape-anomaly-feedbacks.png){:height="700px" width="700px"}
 
 To address the second issue, use Soda Cloud to ignore the anomalies in the red rectangle. Where they crete very large anomaly boundaries, best practice dictates that you ignore the anomalies by using the **Feedback** feature. Hover over the anomalous measurement in your anomaly detection check page, then click the **Feedback** button and choose to **Ignore this value in future anomaly detection** as in the screenshot below.
