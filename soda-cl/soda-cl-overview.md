@@ -101,7 +101,7 @@ SodaCL includes over 25 built-in metrics that you can use to write checks, a sub
 <table>
   <tr>
     <td>Missing<br /> Validity<br />  Numeric<br /> Duplicate <br /> Row count </td>
-    <td>Freshness<br /> Schema <br /> SQL Failed rows<br /> SQL Metric<br ></td>
+    <td>Freshness<br /> SQL Failed rows<br /> SQL Metric<br ></td>
   </tr>
 </table>
 
