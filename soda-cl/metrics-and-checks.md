@@ -224,6 +224,7 @@ checks for dim_customer:
 {% include code-header.html %}
 ```yaml
 anomaly detection
+anomaly score (deprecated)
 avg
 avg_length
 cross
@@ -232,6 +233,8 @@ duplicate_count
 duplicate_percent
 failed rows
 freshness
+group by
+group evolution
 invalid_count
 invalid_percent
 max
@@ -245,6 +248,7 @@ reconciliation
 reference
 row_count
 schema
+schema evolution
 stddev
 stddev_pop
 stddev_samp
