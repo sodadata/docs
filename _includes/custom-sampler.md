@@ -1,0 +1,3 @@
+* You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import Soda Library in Python so you can utilize the `Scan()` object, [install a Soda Library package]({% link soda-library/programmatic.md %}), then use `from soda.scan import Scan`.
+* If you wish to collect samples of failed rows when a check fails, you can employ a custom sampler; see [Configure a failed row sampler]({% link soda-cl/failed-rows-checks.md %}#configure-a-failed-row-sampler).
+* Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files.

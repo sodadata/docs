@@ -53,7 +53,12 @@ To validate your account license or free trial, Soda Library must communicate wi
 
 As in the simple example below, invoke the Python library and provide:
 * your data source connection configuration details, including environment variables, using one of the listed methods; consult [Data source reference]({% link soda/connect-athena.md %}) for data source-specific connection config
-* your Soda Cloud account API key values: use cloud.soda.io for EU region; use cloud.us.soda.io for US region
+* your Soda Cloud account API key values: 
+    * use cloud.soda.io for EU region 
+    * use cloud.us.soda.io for US region
+
+Use the following guidance for optional elements of a programmatic scan.
+{% include custom-sampler.md %}
 
 {% include code-header.html %}
 ```python
