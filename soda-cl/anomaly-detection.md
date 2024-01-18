@@ -225,6 +225,9 @@ The `window_length` parameter sets the number of historical measurements that So
 
 When Soda collects more measurements than the automatically-detected or specified frequency, the `aggregation_function` parameter defines how Soda aggregates the data within each window. For example, if your frequency is hourly and your aggregation function is last and Soda collected two measurements for the same hour, Soda uses the most recent, or latest, measurement for that hour to gauge anomalies.
 
+See the example below for a demonstration of how Soda aggregates the training data using the configurations.
+
+![underfitting-coverage](/assets/images/ad-training-dataset-aggregation.png){:height="700px" width="700px"}
 
 ## Add optional model configurations
 
@@ -257,7 +260,7 @@ checks for dim_customer:
 
 For each of these values, Soda has adjusted the values of a few of the model's hyperparameters to tailor its sensitivity to anomalies, particularly the `changepoint_prior_scale` and `seasonality_prior_scale` hyperparameters. 
 
-`coverage` refers to the concept of <a href="" target="_blnak">coverage </a> and represents the percentage of actual measurements within the model's predicted confidence intervals. For example, if a model forecasts sales between 10-20 units on certain days and 90 out of 100 actual sales figures fall within this range, the coverage is 90%. When predictions fall outside these intervals, as in the remaining 10 cases, the model flags them as anomalies. This coverage-optimized profile is more tolerant of small noises in the data that can lead to falsely-identified anomalies. However, it might underfit the data if there is a fluctuating pattern.
+`coverage` refers to the concept of <a href="" target="_blnak">coverage </a> and represents the percentage of actual measurements within the model's predicted confidence intervals. For example, if a model forecasts a sales between 10-20 units on certain days and 90 out of 100 actual sales figures fall within this range, the coverage is 90%. This coverage-optimized profile is more tolerant of small noises in the data that can lead to falsely-identified anomalies since it has larger confidence intervals to cover as much as possible. However, the model might underfit the data if there is a fluctuating pattern.
 
 For reference, the following lists the hyperparameters that Soda has set for the `coverage` profile. 
 ```python
@@ -381,7 +384,7 @@ The `parameter_grid` hyperparameter is a dictionary that lists hyperparameters a
 
 The execution time for dynamic hyperparameter tuning varies based on several factors including the number of hyperparameters and the number of folds. For example, the default hyperparameter grid has 16 combinations since `changepoint_prior_scale` and `seasonality_prior_scale` have four values each. Consider using a small number of hyperparameters to avoid long execution times. By default, the model processes each fold in parallel. If you use multiple cores, you can set the `parallel` parameter to `True` to speed up the execution time.
 
-Use the following tables to estimate the execution time for checks with dynamic hypertuning.
+Use the following tables to estimate the execution time for checks with dynamic hyperparameter tuning.
 
 | Model Name        | MacBook Pro                       |
 | Model Identifier  | MacBookPro18,3                    |
