@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### January 19, 2023
+* Updated [compatible data sources]({% link soda-agent/deploy.md %}#deploy-a-soda-agent-in-a-kubernetes-cluster) for Soda Agent to include Databricks SQL.
+
 #### January 15, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.2.1.
 
