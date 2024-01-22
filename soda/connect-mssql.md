@@ -42,7 +42,7 @@ data_source my_datasource_name:
 | trusted_connection    | optional |  Indicate connection trustworthiness by providing a boolean value: `true` or `false`. The default value is `false`. Set to `true` if you are using Active Directory authentication. |  
 | encrypt   | optional | Indicate the encryption status by providing a boolean value: `true` or `false`.  The default value is `false`. |
 | trust_server_certificate | optional | Specifies whether encryption occurs if there is no verifiable server certificate. Providing a boolean value: `true` or `false`.  The default value is `false`.  |
-| driver    | optional | Use this config setting to specify the ODBC driver version you use, such as `SQL Server Native Client 11.0` |
+| driver    | optional | Use this config setting to specify the ODBC driver version you use. For example, `SQL Server Native Client 11.0` or `ODBC Driver 18 for SQL Server`. |
 
 {% include test-connection.md %}
 
