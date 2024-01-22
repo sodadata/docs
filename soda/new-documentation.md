@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### January 22, 2023
+* Updated the documentation for [rerouting failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to include new, optional configuration parameters that offer users direct access to the failed row sample data.
+
 #### January 19, 2023
 * Updated [compatible data sources]({% link soda-agent/deploy.md %}#deploy-a-soda-agent-in-a-kubernetes-cluster) for Soda Agent to include Databricks SQL.
 
