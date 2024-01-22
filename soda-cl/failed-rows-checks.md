@@ -385,9 +385,9 @@ data_source my_datasource_name:
 | ---------- | ---------- | ----------- |
 | `type`     | `http`     | Provide an HTTP endpoint such as a Lambda function, or a custom Python HTTP service. |
 | `url`      |  any URL   | Provide a valid URL that accepts JSON payloads.|
-| `message ` | any string | (Optional) Provide a customized message that Soda Cloud displays in the failed rows tab, prepended to the sampler response, to direct your fellow Soda Cloud users to the location where the failed rows samples are stored in your environment. <br />For example, if you wish the complete message to read: "Failed rows have been sent to dir/file.json", configure the SodaCL syntax as in the example above and return the file location path in the samplers response.|
-| `link`    | any URL     | (Optional) Provide a link for Soda Cloud to help users to navigate to the stored sample. |
-| `link_text`| any string | (Optional) Provide a link text for the `link` button.
+| `message ` | any string | (Optional) Provide a customized message that Soda Cloud displays in the failed rows tab, prepended to the sampler response, to instruct your fellow Soda Cloud users how to find where the failed rows samples are stored in your environment. <br />For example, if you wish the complete message to read: "Failed rows have been sent to dir/file.json", configure the syntax as in the example above and return the file location path in the sampler's response.|
+| `link`     | any URL    | (Optional) Provide a link to a web application through which users can access the stored sample. |
+| `link_text`| any string | (Optional) Provide text for the `link` button. For example, "View Failed Samples".|
 
 #### Configure in Soda Cloud
 
