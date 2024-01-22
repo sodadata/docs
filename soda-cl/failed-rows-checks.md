@@ -1,15 +1,15 @@
 ---
 layout: default
 title: Failed rows checks
-description: Use a SodaCL failed rows check to explicitly send sample failed rows to Soda Cloud. 
+description: Use a SodaCL failed rows check to explicitly send sample failed rows to Soda Cloud.
 parent: SodaCL reference
 ---
 
-# Failed rows checks 
+# Failed rows checks
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use a failed rows check to explicitly send samples of rows that failed a check to Soda Cloud. 
+Use a failed rows check to explicitly send samples of rows that failed a check to Soda Cloud.
 
 You can also use a failed row check to configure Soda Library to execute a CTE or SQL query against your data, or to group failed check results by one or more categories.
 {% include code-header.html %}
@@ -51,7 +51,7 @@ checks for dim_customer:
 
 ## About failed row samples
 
-When a scan results in a failed check, the CLI output displays information about the check that failed and why. To offer more insight into the data that failed a check, Soda Cloud displays failed rows in a check result’s history. 
+When a scan results in a failed check, the CLI output displays information about the check that failed and why. To offer more insight into the data that failed a check, Soda Cloud displays failed rows in a check result’s history.
 
 There are two ways you can configure a SodaCL check to send failed row samples to your Soda Cloud account:
 
@@ -63,7 +63,7 @@ There are two ways you can configure a SodaCL check to send failed row samples t
 
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), failed row checks are user-defined. This check is limited in its syntax variation, but you can customize your expression or query as much as you like.
 
-The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the `fail condition` that any rows in the `dim_customer` dataset must meet in order to qualify as failed rows, during a scan, get sent to Soda Cloud. 
+The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the `fail condition` that any rows in the `dim_customer` dataset must meet in order to qualify as failed rows, during a scan, get sent to Soda Cloud.
 
 In this rather silly example, Soda sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples. The check also uses the `name` configuration key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
 {% include code-header.html %}
@@ -107,13 +107,13 @@ checks for dim_customer:
 | ✓ | Define a name for a failed rows check; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
-|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
+|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - |
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓  | Use wildcard characters in the value in the check. | Use wildcard values as you would with CTE or SQL. |
 |   | Use for each to apply failed rows checks to multiple datasets in one scan. | - |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). <br /> *Known issue:* Dataset filters are not compatible with failed rows checks which use a SQL query. With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260--> | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
-#### Example with check name 
+#### Example with check name
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -148,7 +148,7 @@ checks for dim_customer:
 
 #### Example with dataset filter
 
-*Known issue:* Dataset filters are not compatible with failed rows checks which use a SQL query. With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260--> 
+*Known issue:* Dataset filters are not compatible with failed rows checks which use a SQL query. With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260-->
 {% include code-header.html %}
 ```yaml
 filter dim_product [new]:
@@ -183,7 +183,7 @@ checks for dim_customer:
       fail condition: total_children = '2' and number_cars_owned >= 3
 ```
 
-If you wish to set a limit on the samples that Soda collects for an entire data source, you can do so by adjusting the configuration YAML file, or editing the Data Source connection details in Soda Cloud, as per the following syntax. 
+If you wish to set a limit on the samples that Soda collects for an entire data source, you can do so by adjusting the configuration YAML file, or editing the Data Source connection details in Soda Cloud, as per the following syntax.
 {% include code-header.html %}
 ```yaml
 data_source soda_test:
@@ -194,24 +194,24 @@ data_source soda_test:
     samples_limit: 99
 ```
 
-Additionally, you can [Disable failed rows sampling for specific columns](#disable-failed-rows-sampling-for-specific-columns). 
+Additionally, you can [Disable failed rows sampling for specific columns](#disable-failed-rows-sampling-for-specific-columns).
 
 <br />
 
 ## Disable failed rows sampling for specific columns
 
-For checks which implicitly or explicitly collect [failed rows samples](#about-failed-row-samples), you can add a configuration to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. 
+For checks which implicitly or explicitly collect [failed rows samples](#about-failed-row-samples), you can add a configuration to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data.
 
 See also:
 * [Set a sample limit](#set-a-sample-limit) to `0` on an individual check to avoid collecting or sending failed row samples.
 * [Set a sample limit](#set-a-sample-limit) for an entire data source.
 
-For example, you may wish to exclude a column that contains personal identifiable information (PII) such as credit card numbers from the Soda query that collects samples. 
+For example, you may wish to exclude a column that contains personal identifiable information (PII) such as credit card numbers from the Soda query that collects samples.
 
 To do so, add the `sampler` configuration to your data source connection configuration to specify the columns you wish to exclude, as per the following examples.
 {% include code-header.html %}
 ```yaml
-data_source my_datasource_name: 
+data_source my_datasource_name:
   type: postgres
   host: localhost
   port: '5432'
@@ -231,7 +231,7 @@ data_source my_datasource_name:
 OR
 {% include code-header.html %}
 ```yaml
-data_source my_datasource_name: 
+data_source my_datasource_name:
   type: postgres
   ...
   sampler:
@@ -275,12 +275,12 @@ sampler:
 # disable failed rows samples on all columns named "password" in all datasets
 sampler:
   exclude_columns:
-    '*': [password] 
+    '*': [password]
 
 # disable failed rows samples on the "last_name" column and all columns that begin with "pii_" from all datasets that begin with "soda_"
 sampler:
   exclude_columns:
-    soda_*: [last_name, pii_*] 
+    soda_*: [last_name, pii_*]
 ```
 
 * Soda executes the `exclude_columns` values cumulatively. For example, for the following configuration, Soda excludes the columns `password`, `last_name` and any columns that begin with `pii_` from the `retail_customers` dataset.
@@ -312,7 +312,7 @@ checks for retail_orders:
 ```
 
 If the `cat` column were *not* an excluded column, Soda would generate two queries:
-* a query that executes the check 
+* a query that executes the check
 * another query to collect failed rows samples for checks that failed
 
 ```shell
@@ -325,7 +325,7 @@ SELECT * FROM dev_m1n0.sodatest_customers_6c2f3574
 ```
 
 But because the `cat` column is excluded, Soda must generate three queries:
-* a query that executes the check 
+* a query that executes the check
 * a query to gather the schema of the dataset to identify all columns
 * another query to collect failed rows samples for checks that failed, only on columns identified on the list returned by the preceding query
 
@@ -354,7 +354,7 @@ SELECT id, cst_size, cst_size_txt, distance, pct, country, zip, email, date_upda
 ## Reroute failed rows samples
 <!--Linked to UI, access Shlink-->
 
-If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. To do so, [configure a custom failed row sampler](#configure-a-failed-row-sampler), then convert the python object/dict into JSON or whatever the format you need. Then, add the `storage` configuration to your sampler configuration to specify the columns you wish to exclude, as per the following examples. 
+If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. To do so, [configure a custom failed row sampler](#configure-a-failed-row-sampler), then convert the python object/dict into JSON or whatever the format you need. Then, add the `storage` configuration to your sampler configuration to specify the columns you wish to exclude, as per the following examples.
 
 Soda sends the failed rows samples as a JSON payload and includes:
 * data source name
@@ -364,7 +364,7 @@ Soda sends the failed rows samples as a JSON payload and includes:
 
 {% include code-header.html %}
 ```yaml
-data_source my_datasource_name: 
+data_source my_datasource_name:
   type: postgres
   host: localhost
   port: '5432'
@@ -376,14 +376,18 @@ data_source my_datasource_name:
     storage:
       type: http
       url: http://failedrows.example.com
-      message: Failed rows have been sent to 
+      message: Failed rows have been sent to
+      link: https://www.example.url
+      link_text: S3
 ```
 
 | Parameter  | Value      | Description |
 | ---------- | ---------- | ----------- |
 | `type`     | `http`     | Provide an HTTP endpoint such as a Lambda function, or a custom Python HTTP service. |
 | `url`      |  any URL   | Provide a valid URL that accepts JSON payloads.|
-| `message ` | any string | (Optional) Provide a customized message that Soda Cloud displays in the failed rows tab, prepended to your URL, to direct your fellow Soda Cloud users to the location where the failed rows samples are stored in your environment. <br />For example, if you wish the complete message to read: "Failed rows have been sent to http://failedrows.exmple.com", configure the SodaCL syntax as in the example above.|
+| `message ` | any string | (Optional) Provide a customized message that Soda Cloud displays in the failed rows tab, prepended to the sampler response, to instruct your fellow Soda Cloud users how to find where the failed rows samples are stored in your environment. <br />For example, if you wish the complete message to read: "Failed rows have been sent to dir/file.json", configure the syntax as in the example above and return the file location path in the sampler's response.|
+| `link`     | any URL    | (Optional) Provide a link to a web application through which users can access the stored sample. |
+| `link_text`| any string | (Optional) Provide text for the `link` button. For example, "View Failed Samples".|
 
 #### Configure in Soda Cloud
 
