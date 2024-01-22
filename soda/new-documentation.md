@@ -9,8 +9,8 @@ parent: Learning resources
 
 <br />
 
-#### January 18, 2024
-* Introducing [anomaly detection checks]({% link soda-cl/anomaly-detection.md %})! Designed as a more refined replacement of the deprecated anomaly score checks, you can use anomaly detection to automatically detect anomlous measurements over time in your data. Fine tune the model the check uses to identify anomalies by adjust the hyperparametes made available by Facebook Prophet, the algorithm Soda leverages to gauge anomalies.
+#### January 19, 2023
+* Updated [compatible data sources]({% link soda-agent/deploy.md %}#deploy-a-soda-agent-in-a-kubernetes-cluster) for Soda Agent to include Databricks SQL.
 
 #### January 15, 2023
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.2.1.
