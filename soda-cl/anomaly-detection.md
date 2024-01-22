@@ -449,7 +449,7 @@ The default `coverage` profile has very low `changepoint_prior_scale=0.001` and 
 
 ![coverage-profile](/assets/images/ad-false-positive-mape.png){:height="700px" width="700px"}
 
-`MAPE` profile achieved a much better fit since `yˆ` values closely follow the actual measurements. Compared to `coverage` profile, `MAPE` causes a littly less false positives. However, it still falsely identifies consecutive measurements as anomalies for a long time. Thus, we need to take another action to decrease the false positives.
+`MAPE` profile achieved a much better fit since `yˆ` values closely follow the actual measurements. Compared to `coverage` profile, `MAPE` causes less false positives. However, it still falsely identifies consecutive measurements as anomalies for a long time. Thus, we need to take another action to decrease the false positives.
 
 The reason of consequtive false positives is that the model uses the last 1000 measurements and in case of unexpected pattern changes compared to the previous 1000 measurements, it takes time to adapt to the new pattern. In this use case, we have a weekly seasonality. As seen from the graph, each mondays there is a jump on the `y` value and the other days follow a steady increase. Thus, considering last 4 weeks or 30 data points instead of 1000 is sufficient for our use case since in 30 days, the model can capture the weekly seasonality effect.  In such a case, we can decrease the `window_length` parameter to `30`. Experiment with different values to find the optimal `window_length` for your data and business use case. Refer to [default model configurations](#add-optional-training-dataset-configurations) for guidance.
   
