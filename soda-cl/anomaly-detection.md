@@ -235,7 +235,7 @@ The anomaly detection check uses <a href="https://facebook.github.io/prophet/" t
 
 Facebook Prophet uses a variety of hyperparameters that influence the model's ability to accurately detect anomalies in time-series data. Because fine-tuning these customizable parameters can be quite complex, Soda offers two out-of-the-box, fine-tuned profiles that automatically optimize the model's performance according to your anomaly sensitivity preference.
 
-There are two values you can use for the `profile` parameter: 
+There are two values you can use for the `profile` parameter:
 * `coverage`
 * `MAPE`
 * alternatively, you can customize your own hyperparameters; [see below](#customize-hyperparameters)
@@ -419,11 +419,11 @@ What follows are some examples of how to adjust optional configurations to addre
 
 ### Insensitive detection
 
-The default `coverage` hyperparameter profile is more tolerant of small noises in data quality measurements. However, as in the following example, the profile may not be sensitive enough if there are fluctuating data patterns. The reason is that `coverage` profile uses a low `changepoint_prior_scale=0.001` value and a low `seasonality_prior_scale=0.01` which make the model less sensitive to changepoints which makes it more likely that the model misses some anomalies, as indicated in the following graph. 
+The default `coverage` hyperparameter profile is more tolerant of small noises in data quality measurements. However, as in the following example, the profile may not be sensitive enough if there are fluctuating data patterns. The reason is that `coverage` profile uses a low `changepoint_prior_scale=0.001` value and a low `seasonality_prior_scale=0.01` which make the model less sensitive to changepoints. As seen in the following graph, predicted `yˆ` values has a steady trend and does not capture the fluctuating pattern of the actual measurements. In return, it missed an anomaly as indicated by the red rectangle.
 
-![underfitting-coverage](/assets/images/underfitting-coverage.png){:height="700px" width="700px"}
+![underfitting-coverage](/assets/images/ad-underfitting-coverage.png){:height="700px" width="700px"}
 
-In such a case, consider using the `MAPE` profile which is more sensitive to changepoints and seasonal variations. 
+In such a case, consider using the `MAPE` profile which is more sensitive to changepoints and seasonal variations.
 {% include code-header.html %}
 ```yaml
 checks for your-table-name:
@@ -435,9 +435,9 @@ checks for your-table-name:
             profile: MAPE
 ```
 
-With the profile set to `MAPE`, the model uses higher `changepoint_prior_scale=0.1` and `seasonality_prior_scale=0.1` values which makes it more sensitive to changepoints and seasonal variations. The graph below illustrates the higher sensitivity with more measurements recognized as anomalous.
+With the profile set to `MAPE`, the model uses higher `changepoint_prior_scale=0.1` and `seasonality_prior_scale=0.1` values which makes it more sensitive to changepoints and seasonal variations. The graph below illustrates the higher sensitivity with more measurements recognized as anomalous. As a result, `yˆ` values better capture the fluctuating pattern of the actual measurements over time.
 
-![underfitting-coverage](/assets/images/better-fit-mape.png){:height="700px" width="700px"}
+![underfitting-coverage](/assets/images/ad-better-fit-mape.png){:height="700px" width="700px"}
 
 ### Sudden pattern changes
 
