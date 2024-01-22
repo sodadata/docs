@@ -255,8 +255,7 @@ Because Soda Library pushes scan results to Soda Cloud, you may not want to chan
 
 Based on a set of conditions or a specific event schedule, you can programmatically invoke Soda Library to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
 
-* You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import Soda Library in Python so you can utilize the `Scan()` object, [install a Soda Library package]({% link soda-library/programmatic.md %}), then use `from soda.scan import Scan`.
-* Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files.
+{% include custom-sampler.md %}
 
 {% include code-header.html %}
 ```python
