@@ -66,8 +66,7 @@ checks for dim_customer:
 [Best practices for model configurations](#best-practices-for-model-configurations)<br />
 [Address common anomaly detection issues](#address-common-anomaly-detection-issues)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Insensitive detection](#insensitive-detection)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;[Sudden pattern changes](#sudden-pattern-changes)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;[Overly-sensitive detection](#overly-sensitive-detection)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;[Consecutive falsely-identified anomalies](#consecutive-falsely-identified-anomalies)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;[Large boundaries that ignore anomalies](#large-boundaries-that-ignore-anomalies)<br/>
 [Track anomalies and relative changes by group](#track-anomalies-and-relative-changes-by-group)<br />
 [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation)<br />
@@ -422,7 +421,9 @@ What follows are some examples of how to adjust optional configurations to addre
 
 ### Insensitive detection
 
-The default `coverage` hyperparameter profile is more tolerant of small noises in data quality measurements. However, as in the following example, the profile may not be sensitive enough if there are fluctuating data patterns. The reason is that `coverage` profile uses a low `changepoint_prior_scale=0.001` value and a low `seasonality_prior_scale=0.01` which make the model less sensitive to changepoints. As seen in the following graph, predicted `yˆ` values has a steady trend and does not capture the fluctuating pattern of the actual measurements. In return, it missed an anomaly as indicated by the red rectangle.
+The default `coverage` hyperparameter profile is more tolerant of small noises in data quality measurements. However, as in the following example, the profile may not be sensitive enough if there are fluctuating data patterns. This is because the `coverage` profile uses a low `changepoint_prior_scale=0.001` value and a low `seasonality_prior_scale=0.01` which make the model less sensitive to changepoints. 
+
+As in the following graph, the predicted `yˆ` values produce a steady trend and the algorithm does not capture the fluctuating pattern of the actual measurements. As a result, it missed the anomaly in the red rectangle.
 
 ![underfitting-coverage](/assets/images/ad-underfitting-coverage.png){:height="700px" width="700px"}
 
@@ -438,23 +439,25 @@ checks for your-table-name:
             profile: MAPE
 ```
 
-With the profile set to `MAPE`, the model uses higher `changepoint_prior_scale=0.1` and `seasonality_prior_scale=0.1` values which makes it more sensitive to changepoints and seasonal variations. The graph below illustrates the higher sensitivity with more measurements recognized as anomalous. As a result, `yˆ` values better capture the fluctuating pattern of the actual measurements over time.
+With the profile set to `MAPE`, the model uses higher `changepoint_prior_scale=0.1` and `seasonality_prior_scale=0.1` values which makes it more sensitive to changepoints and seasonal variations. The graph below illustrates the higher sensitivity wherein the algorithm recognizes more measurements as anomalous. As a result, `yˆ` values better capture the fluctuating pattern of the actual measurements over time.
 
 ![underfitting-coverage](/assets/images/ad-better-fit-mape.png){:height="700px" width="700px"}
 
-### Handling consequtive falsely identified anomalies
+### Consecutive falsely-identified anomalies
 
-To decrease the rate of false detection of anomalies, Soda optimized the default hyperparameters of the anomaly detection check to detect anomalies in time-series data that exhibits a stable pattern. If the data exhibits pattern changes, as illustrated in the graph below, you may need to adjust the default parameters to improve the model's ability to detect anomalies to prevent alert fatigue. Until November 2023, we see that the data follows a stable pattern and using `coverage` profile is sufficient to detect anomalies. However, after November 2023, the pattern changes and the model needs to adapt to the new pattern.
+To decrease the rate of falsely-detected anomalies, Soda optimized the default hyperparameters of the anomaly detection check to detect anomalies in time-series data which exhibits a stable pattern. If the data exhibits pattern changes, as illustrated in the graph below, you may need to adjust the default parameters to improve the model's ability to detect anomalies to prevent alert fatigue. 
+
+As an example, the graph below indicates that up until November 2023, the data follows a stable pattern and the `coverage` profile is sufficient to detect anomalies. However, after November 2023, the pattern changes and the model needs to adapt to the new pattern. The default `coverage` profile has very low `changepoint_prior_scale=0.001` and `seasonality_prior_scale=0.01` values which makes the model insensitive for the trend changes. For this reason, during the adaptation period, the model falsely identified consecutive measurements as anomalies for a long time; refer to the red rectangle in the graph below. 
 
 ![coverage-profile](/assets/images/ad-false-positive-coverage.png){:height="700px" width="700px"}
 
-The default `coverage` profile has very low `changepoint_prior_scale=0.001` and `seasonality_prior_scale=0.01` values which makes the model insensitive for the trend changes. For this reason, during the adaptation period, the model falsely identified consecutive measurements as anomalies for a long time as seen in the red rectangle. In such a case, consider using the `MAPE` as the first action as it is explained in the [previous section](#Insensitive-detection). Since, `MAPE` profile is more sensitive and it converges faster than `coverage` profile in case of pattern changes. The graph below illustrates the `MAPE` profile.
+In such a case, consider using the `MAPE` as the first action as it is explained in the [previous section](#Insensitive-detection). Because the `MAPE` profile is more sensitive, it converges faster than the `coverage` profile when a pattern changes; see graph below.
 
 ![coverage-profile](/assets/images/ad-false-positive-mape.png){:height="700px" width="700px"}
 
-`MAPE` profile achieved a much better fit since `yˆ` values closely follow the actual measurements. Compared to `coverage` profile, `MAPE` causes less false positives. However, it still falsely identifies consecutive measurements as anomalies for a long time. Thus, we need to take another action to decrease the false positives.
+The `MAPE` profile achieves a much better fit since `yˆ` values closely follow the actual measurements. Compared to the `coverage` profile, `MAPE` causes fewer false positives but it still falsely identifies consecutive measurements as anomalies for a long time. This is because the model uses the last 1000 measurements to gauge pattern changes and it takes time to adapt to the new pattern which, in this case, is a weekly seasonality. 
 
-The reason of consequtive false positives is that the model uses the last 1000 measurements and in case of unexpected pattern changes compared to the previous 1000 measurements, it takes time to adapt to the new pattern. In this use case, we have a weekly seasonality. As seen from the graph, each mondays there is a jump on the `y` value and the other days follow a steady increase. Thus, considering last 4 weeks or 30 data points instead of 1000 is sufficient for our use case since in 30 days, the model can capture the weekly seasonality effect.  In such a case, we can decrease the `window_length` parameter to `30`. Experiment with different values to find the optimal `window_length` for your data and business use case. Refer to [default model configurations](#add-optional-training-dataset-configurations) for guidance.
+Each Monday, there is a jump in the `y` value and the other days follow a steady increase. Thus, using last four weeks' data points, or the 30 measurements, is a better way to calibrate the model than using the last 1000 measurements so it can capture the weekly seasonality effect.  In such a case, consider decreasing the `window_length` parameter to `30` or experiment with different values to find the optimal `window_length` for your data and business use case. Refer to the [default model configurations](#add-optional-training-dataset-configurations) for guidance.
   
 {% include code-header.html %}
 ```yaml
@@ -469,7 +472,7 @@ checks for your-table-name:
             profile: MAPE
 ```
 
-Having adjusted the `window_length` and `MAPE` profile, the graph below illustrates that the model is more sensitive to recent measurements and do not create an alert fatigue after November 2023 as seen in the green rectangle.
+Having adjusted the `window_length` and `MAPE` profile, the graph below illustrates that the model is more sensitive to recent measurements and does not create alert fatigue after November 2023; refer to the green rectangle.
 
 ![coverage-profile-window-length-30](/assets/images/ad-false-positive-mape-30.png){:height="700px" width="700px"}
 
@@ -493,17 +496,17 @@ Having adjusted the window length, the graph below illustrates that the model is
 
 ![ad-linear-pattern-7-window-width](/assets/images/ad-linear-pattern-7-window-width.png){:height="700px" width="700px"} -->
 
-### Handling large boundraies after detecting an anomaly
+### Large boundaries that ignore anomalies
 
-Anomolous records can confuse the model and cause very large confidence intervals if anomalous records are not ignored by the model. Consider the graph below. Due to the anomalies in the red rectangle, the model's confidence interval is very large and the model is not sensitive to anomalies in the blue rectangle. Thus, the model does not detect the anomalies in the blue rectangle.
+Anomalous records can confuse the model and cause excessively large confidence intervals if the model does not ignore anomalous measurements. Consider the graph below: because of the anomalies in the red rectangle, the model's confidence interval is very large and the model is not sensitive to anomalies in the blue rectangle. 
 
 ![ad-coverage-anomaly-feedbacks](/assets/images/ad-coverage-anomaly-feedbacks.png){:height="700px" width="700px"}
 
-The anomalies causes larger intervals since the model is using them in training training data. A strait forward solution is to remove these anomolous records from the training dataset. Use Soda Cloud to ignore the anomalies in the red rectangle by using the **Feedback** feature. Hover over the anomalous measurement in your anomaly detection check page, then click the **Feedback** button and choose to **Ignore this value in future anomaly detection** as in the screenshot below.
+The anomalies create larger intervals because the model uses them for training data. To address the issue, consider removing these anomalous records from the training dataset. Use Soda Cloud to ignore the anomalies in the red rectangle by using the **Feedback** feature. Hover over the anomalous measurement in your anomaly detection check page, then click the **Feedback** button and choose to **Ignore this value in future anomaly detection** as in the screenshot below.
 
 ![ad-cloud-feedback.png](/assets/images/ad-cloud-feedback.png){:height="700px" width="700px"}
 
-After instructing Soda to ignore the anomalous measurements, the graph below indicates that the model's confidence interval is smaller and the model is more sensitive to anomalies.
+After instructing Soda to ignore the anomalous measurements, the model's confidence interval is smaller and the model is more sensitive to anomalies, as indicated in the graph below.
 
 ![ad-feedback-processed-mape](/assets/images/ad-feedback-processed-mape.png){:height="700px" width="700px"}
 
