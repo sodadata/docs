@@ -341,6 +341,8 @@ The `simple` strategy works by processing record comparisons according to one or
 
 The `deepdiff` strategy works by processing record comparisons of entire datasets by loading all rows into memory at once. This type of processing is more memory-heavy but allows you to work without primary key identifiers, or without specifying any other details about the data to be compared; it is typically slower than the `simple` strategy.
 
+#### Record reconciliation strategy comparison
+
 |    | Simple strategy | Deepdiff strategy | 
 | -- | --------------- | ----------------- |
 | Default strategy |  ✓  |    |
