@@ -76,7 +76,7 @@ checks for dim_customer:
 
 ## About anomaly detection checks
 
-The anomaly detection check is powered by a machine learning algorithm that works with measured values for a metric that occurs over time. Soda leverages the <a href="https://facebook.github.io/prophet/" target="_blank">Facebook Prophet</a> algorithm to learn the patterns of your data to identify and flag anomalies in your data. As a relatively easy algorithm to use and tune, Facebook Prophet is ideally suited to both analyzing metrics and giving you control over optional configurations.
+The anomaly detection check is powered by a machine learning algorithm that works with measured values for a metric that occurs over time. Soda leverages the <a href="https://facebook.github.io/prophet/" target="_blank">Facebook Prophet</a> algorithm to learn patterns in your data so it can identify and flag anomalies. As a relatively easy algorithm to use and tune, Facebook Prophet is ideally suited to both analyzing metrics and giving you control over optional configurations.
 
 As this check tracks and analyzes metrics over time, the algorithm it uses learns from historical patterns in your data, including trends and seasonal variations in the measurements it collects. After learning the normal behavior of your data, the check becomes capable of detecting variations from the norm which it flags as anomalies. 
 
@@ -90,7 +90,9 @@ TODO: Add a screenshot of the anomaly detection check from the UI
 
 ## Install Soda Scientific
 
-To use an anomaly detection check, you must install Soda Scientific in the same directory or virtual environment in which you installed Soda Library. Soda Scientific is included in Soda Agent deployment. Best practice recommends installing Soda Library and Soda Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Scientific locally](#install-soda-scientific-locally) if you prefer.
+To use an anomaly detection check, you must install Soda Scientific in the same directory or virtual environment in which you installed Soda Library. Best practice recommends installing Soda Library and Soda Scientific in a virtual environment to avoid library conflicts, but you can [Install Soda Scientific locally](#install-soda-scientific-locally) if you prefer.
+
+Soda Scientific is included in Soda Agent deployment. 
 
 {% include install-soda-scientific.md %}
 
@@ -111,6 +113,8 @@ checks for orders:
   - anomaly detection for avg(order_price)
 ```
 
+<br />
+
 The following examples demonstrate how to define a check that detects anomalies in the number of missing values in the `id` column relative to historical volumes; the second example detects anomalies in the volume of incorrectly formatted email addresses.
 {% include code-header.html %}
 ```yaml
@@ -128,7 +132,7 @@ checks for dim_customer:
 ## Anomaly detection check results
 <!--Linked to UI, access Shlink-->
 
-Because the anomaly detection check requires at least four data points before it can start detecting what counts as an anomalous measurement, your first few scans  yield a `[NOT EVALUATED]` check result that indicates that Soda does not have enough historical data to be able to detect an anomaly.
+Because the anomaly detection check requires at least four measurements before it can start detecting what counts as an anomalous measurement, your first few scans  yield a `[NOT EVALUATED]` check result that indicates that Soda does not have enough historical data to be able to detect an anomaly.
 
 ```shell
 Soda Library 1.0.x
@@ -146,7 +150,7 @@ Apart from the checks that have not been evaluated, no failures, no warnings and
 Sending results to Soda Cloud
 ```
 
-Though your first instinct may be to run several scans in a row to produce the four measurements that the anomaly detection needs, the measurements don’t “count” if the frequency of occurrence is too random, or rather, the measurements don't represent enough of a stable frequency.
+Though your first instinct may be to run several scans in a row to produce the four measurements that the anomaly detection needs, the measurements don’t count if the frequency of occurrence is too random, or rather, the measurements don't represent enough of a stable frequency.
 
 If, for example, you attempt to run eight back-to-back scans in five minutes, the anomaly detection does not register the measurements resulting from those scans as a reliable pattern against which to evaluate an anomaly.
 
@@ -160,7 +164,6 @@ If you wish, you can reset an anomaly detection's history, effectively recalibra
 2. Click to select a node in the graph that represents a measurement, then click **Feedback**.
 3. In the modal that appears, you can choose to exclude the individual measurement, or all previous data up to that measurement, the latter of which resets the anomaly detection's history.
 
-<!--To replace this image, add a new PNG file to the /assets/images folder, then adjust the name of the file in the link to display. -->
 ![reset-anomaly-detection](/assets/images/reset-anomaly-detection.png){:height="600px" width="600px"}
 
 ## Optional check configurations
