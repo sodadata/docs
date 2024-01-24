@@ -344,6 +344,26 @@ checks for dim_customer:
 
 <br />
 
+#### Customizing country specific holidays
+
+You can customize the `holidays` hyperparameter to include country-specific holidays. For example, the following configuration includes the US holidays to the model. Note that, you may need to play with `holidays_prior_scale` optional hyperparameter to get the best results. The default value is `10.0`and if the holidays do not create significant changes in your data, you can decrease this value to `0.1` or `1.0` to make the model less sensitive to holidays.
+
+The supported country codes can be found from <a href="https://github.com/vacanza/python-holidays/" target="_blank">python-holidays</a> repo.
+
+{% include code-header.html %}
+```yaml
+checks for dim_customer:
+  - anomaly detection for row_count:
+      name: Anomaly detection for row_count
+      model:
+        type: prophet
+        hyperparameters:
+          static:
+            profile:
+              custom_hyperparameters:
+                holidays: US
+```
+
 
 ## Add optional dynamic hyperparameter tuning configurations
 
