@@ -325,6 +325,8 @@ If the Soda-tuned profiles do not meet your specific data and forecasting needs 
 
 You can modify any hyperparameter supported by Facebook Prophet in the `custom_hyperparameters` section of your configuration. For in-depth guidance, refer to Prophet's <a href="https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning:~:text=Parameters%20that%20can%20be%20tuned" target="_blank">hyperparameter tuning guide</a>.
 
+It is important to note that customized hyperparameters overrides the soda-tuned `coverage` hyperparameter profile. For example, if you set the `changepoint_prior_scale` hyperparameter to `0.05` in the `custom_hyperparameters` section, the model uses this value instead of the `0.001` value set by Soda for the `coverage` profile. The other hyperparameters remain the same as the `coverage` profile.
+
 The following example specifies custom values for the `seasonality_mode` and `interval_width` hyperparameters; not shown are the remaining parameters set to mimic the `coverage` profile settings.
 {% include code-header.html %}
 ```yaml
@@ -344,11 +346,9 @@ checks for dim_customer:
 
 <br />
 
-#### Customizing country specific holidays
+### Customizing country specific holidays
 
-You can customize the `holidays` hyperparameter to include country-specific holidays. For example, the following configuration includes the US holidays to the model. Note that, you may need to play with `holidays_prior_scale` optional hyperparameter to get the best results. The default value is `10.0`and if the holidays do not create significant changes in your data, you can decrease this value to `0.1` or `1.0` to make the model less sensitive to holidays.
-
-The supported country codes can be found from <a href="https://github.com/vacanza/python-holidays/" target="_blank">python-holidays</a> repo.
+You can customize the `holidays_country_code` parameter to include country-specific holidays. For example, the following configuration includes the US holidays to the model. The supported country codes can be found from <a href="https://github.com/vacanza/python-holidays/" target="_blank">python-holidays</a> repo.
 
 {% include code-header.html %}
 ```yaml
@@ -357,13 +357,27 @@ checks for dim_customer:
       name: Anomaly detection for row_count
       model:
         type: prophet
+        holidays_country_code: US
+```
+
+The `holidays_prior_scale` hyperparameter of facebook prophet, defaulted at `10.0`, controls how much holidays influence the model. If holidays have a minimal impact on your data, use lower `holidays_prior_scale` between `0.01` and `10` to decrease holiday sensitivity, ensuring a more accurate model representation for non-holiday periods.
+
+Refer to the following sodacl if you need to update `holidays_prior_scale` parameter. To read more about customizing hyperparameters, see [Customize hyperparameters](#customize-hyperparameters).
+
+{% include code-header.html %}
+```yaml
+checks for dim_customer:
+  - anomaly detection for row_count:
+      name: Anomaly detection for row_count
+      model:
+        type: prophet
+        holidays_country_code: US
         hyperparameters:
           static:
             profile:
               custom_hyperparameters:
-                holidays: US
+                holidays_prior_scale: 0.1
 ```
-
 
 ## Add optional dynamic hyperparameter tuning configurations
 
