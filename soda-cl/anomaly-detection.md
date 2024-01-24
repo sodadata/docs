@@ -13,7 +13,6 @@ Use an anomaly detection check to automatically discover anomalies in your check
 
 *Requires Soda Scientific*<br />
 *Requires Soda Library 1.2.2 or greater, or Soda Agent 0.8.54 or greater*<br />
-*Not supported in Soda Core*<br />
 {% include code-header.html %}
 ```yaml
 # Basic example for row count
