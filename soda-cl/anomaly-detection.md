@@ -346,10 +346,11 @@ checks for dim_customer:
 
 <br />
 
-### Customizing country specific holidays
+### Customize country-specific holidays
 
-You can customize the `holidays_country_code` parameter to include country-specific holidays. For example, the following configuration includes the US holidays to the model. The supported country codes can be found from <a href="https://github.com/vacanza/python-holidays/" target="_blank">python-holidays</a> repo.
+Add a `holidays_country_code` parameter to customize your anomaly detection check to account for country-specific holidays. Access the list of available country codes in the public <a href="https://github.com/vacanza/python-holidays/" target="_blank">python-holidays</a> repository.
 
+For example, the following configuration accounts for American holidays in the model.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -360,10 +361,7 @@ checks for dim_customer:
         holidays_country_code: US
 ```
 
-The `holidays_prior_scale` hyperparameter of facebook prophet, defaulted at `10.0`, controls how much holidays influence the model. If holidays have a minimal impact on your data, use lower `holidays_prior_scale` between `0.01` and `10` to decrease holiday sensitivity, ensuring a more accurate model representation for non-holiday periods.
-
-Refer to the following sodacl if you need to update `holidays_prior_scale` parameter. To read more about customizing hyperparameters, see [Customize hyperparameters](#customize-hyperparameters).
-
+Facebook Prophet's `holidays_prior_scale` hyperparameter, defaulted at `10.0`, controls how much holidays influence the model. If holidays have a minimal impact on your data, set a lower value for `holidays_prior_scale` between `0.01` and `10` as in the following example, to decrease holiday sensitivity and ensure more accurate model representation for non-holiday periods.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
