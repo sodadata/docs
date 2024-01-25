@@ -57,6 +57,7 @@ checks for dim_customer:
 [Install Soda Scientific](#install-soda-scientific)<br />
 [Define an anomaly detection check](#define-an-anomaly-detection-check) <br />
 [Anomaly detection check results](#anomaly-detection-check-results) <br />
+[Migrate to anomaly detection](#migrate-to-anomaly-detection) <br />
 [Reset anomaly history](#reset-anomaly-history)<br />
 [Optional check configurations](#optional-check-configurations) <br />
 [Add optional training dataset configurations](#add-optional-training-dataset-configurations)<br />
@@ -82,9 +83,6 @@ Once flagged, Soda can alert you to the anomaly so that you can take action to c
 
 Importantly, you can fine tune an anomaly detection check to customize some of the algorithm's parameters and improve the check's ability to recognize truly anomalous behavior in your data.
 
-<!---
-TODO: Add a screenshot of the anomaly detection check from the UI
--->
 
 ## Install Soda Scientific
 
@@ -153,6 +151,23 @@ Though your first instinct may be to run several scans in a row to produce the f
 If, for example, you attempt to run eight back-to-back scans in five minutes, the anomaly detection does not register the measurements resulting from those scans as a reliable pattern against which to evaluate an anomaly.
 
 Consider using the Soda library to set up a [programmatic scan]({% link soda-library/programmatic.md %}) that produces a check result for an anomaly detection check on a regular schedule.
+
+## Migrate to anomaly detection
+
+As an entirely new SodaCL check, adding an anomaly detection check results in a new check in the Soda Cloud application.
+
+However, you may wish to migrate your existing anomaly score checks to anomaly detection checks so that you can:
+* preserve any feedback you have applied to historical measurements, such as exclusions, resets, or corrected classifications
+* see the results of the anomaly detection algorithm carry on from and existing anomaly score check 
+
+To do so, add a configuration as per the example below to automatically port past results and feedback to your new anomaly detection check. The default value is `False`.
+
+{% include code-header.html %}
+```yaml
+checks for dim_customer:
+  - anomaly detection for row_count:
+      take_over_existing_anomaly_score_check: True
+```
 
 ## Reset anomaly history
 
