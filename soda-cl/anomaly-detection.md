@@ -152,33 +152,22 @@ If, for example, you attempt to run eight back-to-back scans in five minutes, th
 
 Consider using the Soda library to set up a [programmatic scan]({% link soda-library/programmatic.md %}) that produces a check result for an anomaly detection check on a regular schedule.
 
-## Transition existing anomaly score checks to anomaly detection checks seamlessly.
+## Transition existing anomaly score checks to anomaly detection checks seamlessly
 
-Since the anomaly detection check is an entirely new check (with an improved algorithm and better configurability, using that check will, by default, lead to the creation of a **new check** in the Soda Cloud application.
+The anomaly detection check is an entirely new check with an improved algorithm and better configurability. Thus, using anomaly detection check will, by default, lead to the creation of a **new check** in the Soda Cloud application.
 
 However, you may want to seamlessly transition your check meaning that:
 - you want to preserve feedback you have given on prior data points (exclusions, resets, correct or incorrect classifications)
 - you want to see the results of the new algorithm continue to populate the same check
 
-To achieve this, set the `take_over_existing_anomaly_score_check` variable to `true` in your SodaCL configuration.
-
-If you have an existing anomaly score check that has been running for a while, you can take over the historical check results and provided feedbacks from that check to an anomaly detection check. This is useful if you want to switch from an anomaly score check to an anomaly detection check. By taking over the historical check results, you can still visualize the historical anomaly scores in the Soda Cloud UI and preserve the given feedbacks to the model.
-
-To take over the anomaly history from an existing anomaly score check, you must set the `take_over_existing_anomaly_score_check` configuration to `True` for your anomaly detection check. The default value is `False`.
+To achieve this, set the `take_over_existing_anomaly_score_check` variable to `True` in your SodaCL configuration. The default value is `False`.
 
 {% include code-header.html %}
 ```yaml
-# Anomaly score check that you want to take over the anomaly history from
-# checks for dim_customer:
-#   - anomaly score for row_count < default
-
-# New anomaly detection check that takes over the anomaly history from the anomaly score check
 checks for dim_customer:
   - anomaly detection for row_count:
       take_over_existing_anomaly_score_check: True
 ```
-
-, or if you want to use the anomaly detection check to take over the anomaly history from an anomaly score check that you are about to delete.
 
 ## Reset anomaly history
 
