@@ -57,7 +57,7 @@ checks for dim_customer:
 [Install Soda Scientific](#install-soda-scientific)<br />
 [Define an anomaly detection check](#define-an-anomaly-detection-check) <br />
 [Anomaly detection check results](#anomaly-detection-check-results) <br />
-[Transition existing anomaly score checks to anomaly detection checks seamlessly](#transition-existing-anomaly-score-checks-to-anomaly-detection-checks-seamlessly) <br />
+[Migrate to anomaly detection](#migrate-to-anomaly-detection) <br />
 [Reset anomaly history](#reset-anomaly-history)<br />
 [Optional check configurations](#optional-check-configurations) <br />
 [Add optional training dataset configurations](#add-optional-training-dataset-configurations)<br />
@@ -152,15 +152,15 @@ If, for example, you attempt to run eight back-to-back scans in five minutes, th
 
 Consider using the Soda library to set up a [programmatic scan]({% link soda-library/programmatic.md %}) that produces a check result for an anomaly detection check on a regular schedule.
 
-## Transition existing anomaly score checks to anomaly detection checks seamlessly
+## Migrate to anomaly detection
 
-The anomaly detection check is an entirely new check with an improved algorithm and better configurability. Thus, using anomaly detection check will, by default, lead to the creation of a **new check** in the Soda Cloud application.
+As an entirely new SodaCL check, adding an anomaly detection check results in a new check in the Soda Cloud application.
 
-However, you may want to seamlessly transition your check meaning that:
-- you want to preserve feedback you have given on prior data points (exclusions, resets, correct or incorrect classifications)
-- you want to see the results of the new algorithm continue to populate the same check
+However, you may wish to migrate your existing anomaly score checks to anomaly detection checks so that you can:
+* preserve any feedback you have applied to historical measurements, such as exclusions, resets, or corrected classifications
+* see the results of the anomaly detection algorithm carry on from and existing anomaly score check 
 
-To achieve this, set the `take_over_existing_anomaly_score_check` variable to `True` in your SodaCL configuration. The default value is `False`.
+To do so, add a configuration as per the example below to automatically port past results and feedback to your new anomaly detection check. The default value is `False`.
 
 {% include code-header.html %}
 ```yaml
