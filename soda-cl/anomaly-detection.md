@@ -152,7 +152,7 @@ If, for example, you attempt to run eight back-to-back scans in five minutes, th
 
 Consider using the Soda library to set up a [programmatic scan]({% link soda-library/programmatic.md %}) that produces a check result for an anomaly detection check on a regular schedule.
 
-## Taking over anomaly history from existing anomaly score check to anomaly detection check
+## Transition existing anomaly score checks to anomaly detection checks seamlessly.
 
 Since the anomaly detection check is an entirely new check (with an improved algorithm and better configurability, using that check will, by default, lead to the creation of a **new check** in the Soda Cloud application.
 
