@@ -154,7 +154,13 @@ Consider using the Soda library to set up a [programmatic scan]({% link soda-lib
 
 ## Taking over anomaly history from existing anomaly score check to anomaly detection check
 
-Anomaly detection check is a new check type that replaces the existing anomaly score check.
+Since the anomaly detection check is an entirely new check (with an improved algorithm and better configurability, using that check will, by default, lead to the creation of a **new check** in the Soda Cloud application.
+
+However, you may want to seamlessly transition your check meaning that:
+- you want to preserve feedback you have given on prior data points (exclusions, resets, correct or incorrect classifications)
+- you want to see the results of the new algorithm continue to populate the same check
+
+To achieve this, set the `take_over_existing_anomaly_score_check` variable to `true` in your SodaCL configuration.
 
 If you have an existing anomaly score check that has been running for a while, you can take over the historical check results and provided feedbacks from that check to an anomaly detection check. This is useful if you want to switch from an anomaly score check to an anomaly detection check. By taking over the historical check results, you can still visualize the historical anomaly scores in the Soda Cloud UI and preserve the given feedbacks to the model.
 
