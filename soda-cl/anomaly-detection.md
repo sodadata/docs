@@ -57,7 +57,7 @@ checks for dim_customer:
 [Install Soda Scientific](#install-soda-scientific)<br />
 [Define an anomaly detection check](#define-an-anomaly-detection-check) <br />
 [Anomaly detection check results](#anomaly-detection-check-results) <br />
-[Taking over anomaly history from existing anomaly score check to anomaly detection check](#taking-over-anomaly-history-from-existing-anomaly-score-check-to-anomaly-detection-check) <br />
+[Transition existing anomaly score checks to anomaly detection checks seamlessly](#transition-existing-anomaly-score-checks-to-anomaly-detection-checks-seamlessly) <br />
 [Reset anomaly history](#reset-anomaly-history)<br />
 [Optional check configurations](#optional-check-configurations) <br />
 [Add optional training dataset configurations](#add-optional-training-dataset-configurations)<br />
