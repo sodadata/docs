@@ -104,7 +104,7 @@ Alternatively, you can use your own data for this tutorial. To do so:
 ## Connect Soda
 <!--Linked to UI, access Shlink-->
 
-To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. 
+To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP BigQuery, you use a `configuration.yml` file which stores access details for your data source. 
 
 This tutorial also instructs you to connect to a Soda Cloud account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda Cloud account validates your free trial or license, gives you access to visualized scan results, tracks trends in data quality over time, lets you set alert notifications, and much more.
 

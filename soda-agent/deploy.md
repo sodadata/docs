@@ -19,9 +19,9 @@ redirect_from:
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster, then use Helm to deploy a Soda Agent in the cluster. 
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster, then use Helm to deploy a Soda Agent in the cluster.
 
-This setup enables Soda Cloud users to securely connect to data sources (BigQuery, Snowflake, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own no-code checks and agreements to check for data quality in the new data source.
+This setup enables Soda Cloud users to securely connect to data sources (BigQuery, Snowflake, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own no-code checks and agreements to check for data quality in the new data source. Alternatively, if you use a BigQuery, MySQL, PostgreSQL, or Snowflake data source, you can use a secure, out-of-the-box [Soda-managed agent]({% link soda-agent/managed-agent.md %}) made available for every Soda Cloud organization.
 
 As a step in the **Get started roadmap**, this guide offers instructions to set up, install, and configure Soda in a [self-hosted agent deployment model]({% link soda/setup-guide.md %}#self-hosted-agent).
 
@@ -258,7 +258,7 @@ If you use private key authentication with a Soda Agent, refer to [Soda Agent ex
 
 1. Uninstall the Soda Agent in the cluster.
 ```shell
-helm delete soda-agent -n soda-agent
+helm uninstall soda-agent -n soda-agent
 ```
 2. Delete the cluster.
 ```shell
@@ -504,7 +504,7 @@ kubectl -n soda-agent rollout restart deploy
 
 1. Uninstall the Soda Agent in the cluster.
 ```shell
-helm delete soda-agent -n soda-agent
+helm uninstall soda-agent -n soda-agent
 ```
 2. Remove the Fargate profile.
 ```shell
@@ -1244,7 +1244,7 @@ Status:           Running
 
 1. Uninstall the Soda Agent in the cluster.
 ```shell
-helm delete soda-agent -n soda-agent
+helm uninstall soda-agent -n soda-agent
 ```
 2. Delete the cluster.
 ```shell
@@ -1273,7 +1273,7 @@ In your Soda Cloud account, navigate to **your avatar** > **Data Sources**. Clic
 | -----------------------   | ---------- |
 | Data Source Label | Provide a unique identifier for the data source. Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
 | Default Scan Schedule Label | Provide a name for the default scan schedule for this data sources. The scan schedule indicates which Soda Agent to use to execute the scan, and when.  |
-| Default Scan Schedule Agent | Select the name of a Soda Agent that you have previously set up in your secure environment and connected to a specific data source. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
+| Default Scan Schedule Agent | Select the name of a Soda Agent that you have previously set up in your secure environment. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
 | Schedule Definition | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
 | Starting At | Select the time of day to run the scan. The default value is midnight. |
 | Time Zone | Select a timezone. The default value is UTC. |
@@ -1289,7 +1289,7 @@ To more securely provide sensitive values such as usernames and passwords, use e
 
 Access the data source-specific connection configurations listed below to copy+paste the connection syntax into the editing panel, then adjust the values to correspond with your data source's details. Access connection configuration details in [Data source reference]({% link soda/connect-athena.md %}) section of Soda documentation.
 
-See also: [Use a file reference for a Big Query data source connection](#use-a-file-reference-for-a-big-query-data-source-connection)
+See also: [Use a file reference for a BigQuery data source connection](#use-a-file-reference-for-a-bigquery-data-source-connection)
  
 <br />
 
@@ -1352,7 +1352,7 @@ automated monitoring:
 
 <br />
 
-### Use a file reference for a Big Query data source connection
+### Use a file reference for a BigQuery data source connection
 
 If you already store information about your data source in a JSON file in a secure location, you can configure your BigQuery data source connection details in Soda Cloud to refer to the JSON file for service account information. To do so, you must add two elements:
 * `volumes` and `volumeMounts` parameters in the `values.yml` file that your Soda Agent helm chart uses

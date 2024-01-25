@@ -17,7 +17,7 @@ redirect_from:
 
 A **Soda scan** executes the checks you write in an agreement, in a checks YAML file, or inline in a programmatic invocation, and returns a result for each check: pass, fail, or error. Optionally, you can configure a check to warn instead of fail by setting an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations).
 
-As a step in the **Get started roadmap**, this guide offers instructions to write your first SodaCL checks in the Soda Cloud UI, in a checks YAML file, or within a programmatic invocation of Soda.
+As a step in the **Get started roadmap**, this guide offers instructions to define your first SodaCL checks in the Soda Cloud UI, in a checks YAML file, or within a programmatic invocation of Soda.
 
 #### Get started roadmap
 
@@ -141,6 +141,9 @@ By default, alert notifications for your no-code check go to the **Dataset Owner
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
+
+{% include banner-agreements.md %}
+
 You can write SodaCL checks directly in the Soda Cloud user interface within an **agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source.<br />
 *Requires a Soda Agent*
 
@@ -154,6 +157,8 @@ In an agreement, use SodaCL checks to define the state of "good quality" for dat
 * You, or an Admin on your Soda Cloud account, has [added a new datasource]({% link soda-agent/deploy.md %}#add-a-new-data-source) via the Soda Agent in your Soda Cloud account.
 
 ### Create a new agreement
+
+{% include banner-agreements.md %}
 
 For a new agreement, you define several details including which data to check, what checks to execute during a scan, and whom to notify when bad data triggers an alert.
 
@@ -267,21 +272,21 @@ Soda Cloud Trace: 67592***474
 
 **Check suggestions** assists Soda users in auto-generating basic data quality checks using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.<br /> 
 *Requires Soda Scientific*<br />
-*Compatible with Big Query, PostgreSQL, and Snowflake data sources*
+*Compatible with BigQuery, PostgreSQL, and Snowflake data sources*
 
 Instead of writing your own data quality checks from scratch, check suggestions profiles your dataset and prompts you through a series of questions so that it can leverage the built-in Soda metrics and quickly prepare data quality checks tailored to that individual dataset.  
 
 #### Compatibility
 
 You can use check suggestions with the following data sources:
-* GCP Big Query
+* GCP BigQuery
 * PostgreSQL
 * Snowflake
 
 #### Prerequisites
 
 * You have installed Python 3.10 or greater.
-* You have installed a [Soda Library package]({% link soda-library/install.md %}#install-soda-library-1) for Big Query, PostgreSQL, or Snowflake in your environment and [configured]({% link soda-library/install.md %}#configure-soda) it to connect to your data source.
+* You have installed a [Soda Library package]({% link soda-library/install.md %}#install-soda-library-1) for BigQuery, PostgreSQL, or Snowflake in your environment and [configured]({% link soda-library/install.md %}#configure-soda) it to connect to your data source.
 
 #### Run check suggestions
 

@@ -19,7 +19,7 @@ As the first step in the **Get started roadmap**, this guide helps you decide ho
 #### Get started roadmap
 
 1. **Choose a flavor of Soda** 📍 You are here!
-2. Set up Soda: install, deploy, or invoke
+2. Set up Soda: sign up and install, deploy, or invoke
 3. Write SodaCL checks
 4. Run scans and review results
 5. Organize, alert, investigate
@@ -28,15 +28,15 @@ As the first step in the **Get started roadmap**, this guide helps you decide ho
 
 ## Choose a flavor of Soda
 
-This guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. Optionally, access a full [Soda product overview]({% link soda/product-overview.md %}).
+This guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. See also: [Soda product overview]({% link soda/product-overview.md %}).
 
-You can set up Soda in one of three (soon to be four!) flavors: 
+You can set up Soda in one of four flavors: 
 
 | Flavor | Description | Soda<br />Library | Soda<br />Agent | Soda<br />Cloud |
 | ----- | ----------- | :--: | :--: | :--: |
 | [Self-operated](#self-operated) | A simple setup in which you install Soda Library locally and connect it to Soda Cloud via API keys. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
-| [Self-hosted agent](#self-hosted-agent)<br /> | ***Recommended*** <br />A setup in which you deploy a Soda Agent in a Kubernetes cluster in a cloud-services environment and connect it to Soda Cloud via different API keys. |   | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
-| Fully-managed SaaS | **Coming soon!**<br />A setup in which you manage data quality entirely from your Soda Cloud account. |  |  | ![done](/assets/images/done.png){:width="20px"} |
+| [Soda-managed agent](#soda-managed-agent) | ***Recommended*** <br />A setup in which you manage data quality entirely from your Soda Cloud account. |  |  | ![done](/assets/images/done.png){:width="20px"} |
+| [Self-hosted agent](#self-hosted-agent)<br /> | A setup in which you deploy a Soda Agent in a Kubernetes cluster in a cloud-services environment and connect it to Soda Cloud via different API keys. |   | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 | [Programmatic](#programmatic) | A setup in which you invoke Soda Library programmatically. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
 
 <details>
@@ -67,8 +67,27 @@ Requirements:
 
 <br />
 
-#### Self-hosted agent
+#### Soda-managed agent
 *Recommended*
+
+This setup provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. Quickly configure connections to your data sources in the Soda Cloud user interface, then empower all your colleagues to explore datasets, access check results, customize collections, and create their own no-code checks for data quality.
+
+Use this setup for:<br /> 
+✅ **A quick start**: Use the out-of-the-box agent to start testing data quality right away from within the Soda Cloud user interface, without the need to install or deploy any other tools. <br />
+✅ **Self-serve data quality**: Empower data analysts and scientists to self-serve and create their own no-code checks for data quality. See: [Self-serve Soda]({% link soda/quick-start-end-user.md %})<br />
+✅ **Automated data monitoring**: Set up data profiling and automated data quality monitoring. See: [Automate monitoring]({% link soda/quick-start-automate.md %})<br />
+✅ **Data catalog integration**: Integrate Soda with a data catalog such as Atlan, Alation, or Metaphor. See: [Integrate Soda]({% link soda/integrate-alation.md %})<br />
+
+{% include managed-agent-secure.md %}
+
+Requirements:
+* Login credentials for your data source (BigQuery, MySQL, PostgreSQL, or Snowflake)
+
+![with-managed-agent](/assets/images/with-managed-agent.png){:height="60px" width="600px"}
+
+<br />
+
+#### Self-hosted agent
 
 This setup enables a data or infrastructure engineer to deploy Soda Library as an agent in a Kubernetes cluster within a cloud-services environment such as Google Cloud Platform, Azure, or AWS. 
 
@@ -79,6 +98,7 @@ Use this setup for:<br />
 ✅ **Data migration**: Migrate good-quality data from one data source to another. See: [Test before data migration]({% link soda/quick-start-migration.md %})<br />
 ✅ **Automated data monitoring**: Set up data profiling and automated data quality monitoring. See: [Automate monitoring]({% link soda/quick-start-automate.md %})<br />
 ✅ **Data catalog integration**: Integrate Soda with a data catalog such as Atlan, Alation, or Metaphor. See: [Integrate Soda]({% link soda/integrate-alation.md %})<br />
+✅ **Secrets manager integration**: Integrate you Soda Agent with an external secrets manager to securely access frequently-rotated data source login credentials. See: [Integrate with a Secrets Manager]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager)
 
 Requirements:
 * Access to your cloud-services environment, plus the authorization to deploy containerized apps in a new or existing Kubernetes cluster
@@ -87,6 +107,7 @@ Requirements:
 ![with-agent](/assets/images/with-agent.png){:height="60px" width="600px"}
 
 <br />
+
 
 #### Programmatic 
 
@@ -111,6 +132,7 @@ Requirements:
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
 2. **Set up Soda.** Select the setup instructions that correspond with your flavor of Soda:
 * [Self-operated]({% link soda-library/install.md %})
+* [Soda-managed agent]({% link soda-agent/managed-agent.md %})
 * [Self-hosted agent]({% link soda-agent/deploy.md %})
 * [Programmatic]({% link soda-library/programmatic.md %})
 3. Write SodaCL checks

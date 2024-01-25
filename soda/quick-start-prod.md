@@ -54,7 +54,7 @@ Refer to [complete install instructions]({% link soda-library/install.md %}) for
 
 ## Connect Soda to a data source and Soda Cloud account
 
-To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or Big Query, you use a `configuration.yml` file which stores access details for your data source. 
+To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or BigQuery, you use a `configuration.yml` file which stores access details for your data source. 
 
 This guide also includes instructions for how to connect to a Soda Cloud account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, a Soda Cloud account gives you access to visualized scan results, tracks trends in data quality over time, enables you to set alert notifications, and much more.
 

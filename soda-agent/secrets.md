@@ -51,9 +51,9 @@ Refer to the exhaustive [cloud service provider-specific instructions]({% link s
 
 ## Use a values file to store private key authentication values
 
-If you use private key with Snowflake or Big Query, you can provide the required private key values in a `values.yml` file when you deploy or redeploy the agent.
+If you use private key with Snowflake or BigQuery, you can provide the required private key values in a `values.yml` file when you deploy or redeploy the agent.
 * [Private key authentication with Snowflake]({% link soda/connect-snowflake.md %}#use-a-values-file-to-store-private-key-authentication-values)
-* [Private key authentication with Big Query]({% link soda/connect-bigquery.md %}#use-a-file-reference-for-a-big-query-data-source-connection)
+* [Private key authentication with BigQuery]({% link soda/connect-bigquery.md %}#use-a-file-reference-for-a-big-query-data-source-connection)
 
 
 ## Use environment variables to store data source connection credentials

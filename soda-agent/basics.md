@@ -10,11 +10,11 @@ redirect_from: /soda-agent/
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster. 
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. For a self-hosted agent, create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster. 
 
-This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own no-code checks and agreements to check for data quality in the new data source. 
+This setup enables Soda Cloud users to securely connect to data sources (Snowflake, Amazon Athena, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own no-code checks to check for data quality in the new data source. 
 
-What follows is an extremely abridged introduction to a few basic elements involved in the deployment and setup of a Soda Agent.
+What follows is an extremely abridged introduction to a few basic elements involved in the deployment and setup of a self-hosted Soda Agent.
 
 ![agent-diagram](/assets/images/agent-diagram.png){:height="700px" width="700px"}
 

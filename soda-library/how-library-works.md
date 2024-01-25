@@ -31,7 +31,7 @@ This tool checks the quality of data inside [data sources]({% link soda/glossary
 - run a scan for data quality against your data
 
 
-To connect to a data source such as Snowflake, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source and connection details for your Soda Cloud account. (Except for connections to Spark DataFrames which do not use a configuration YAML file.) Refer to [Configure Soda]({% link soda-library/install.md %}#configure-soda) for details and links to data source-specific connection configurations.
+To connect to a data source such as Snowflake, Amazon Athena, or GCP BigQuery, you use a `configuration.yml` file which stores access details for your data source and connection details for your Soda Cloud account. (Except for connections to Spark DataFrames which do not use a configuration YAML file.) Refer to [Configure Soda]({% link soda-library/install.md %}#configure-soda) for details and links to data source-specific connection configurations.
 
 #### Configuration YAML example
 {% include code-header.html %}

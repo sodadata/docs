@@ -16,7 +16,7 @@ redirect_from:
 
 Soda uses checks and the data source connection configurations to prepare a scan that it runs against datasets to extract metadata and gauge data quality.
 
-A check is a test that Soda performs when it scans a dataset in your data source. Soda uses the checks you define in a Soda Agreement, or in checks YAML file, to prepare SQL queries that it runs against the data in a dataset. Soda can execute multiple checks against one or more datasets in a single scan.
+A check is a test that Soda performs when it scans a dataset in your data source. Soda uses the checks you defined as no-code checks in Soda Cloud, or wrote in a checks YAML file, to prepare SQL queries that it runs against the data in a dataset. Soda can execute multiple checks against one or more datasets in a single scan.
 
 As a step in the **Get started roadmap**, this guide offers instructions to schedule a Soda scan, run a scan, or invoke a scan programmatically.
 
@@ -62,6 +62,8 @@ If you wish to schedule a *new* scan to execute a no-code check more or less fre
 ### Set a scan schedule in an agreement
 *Requires Soda Agent*
 
+{% include banner-agreements.md %}
+
 When you create a Soda Agreement in Soda Cloud, the last step in the flow demands that you select a **scan schedule**. The scan schedule indicates which Soda Agent to use to execute the scan, on which data source, and when. Effectively, a scan schedule defines the what, when, and where to run a scheduled scan.
 
 If you wish to change an agreement's existing scan schedule:
@@ -106,6 +108,7 @@ You can also run and ad hoc scan to execute all checks associated with a scan sc
 ### Run a scan in an agreement
 *Requires a Soda Agent*
 
+{% include banner-agreements.md %}
 {% include ad-hoc-scan.md %}
 
 

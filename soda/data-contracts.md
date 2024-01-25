@@ -73,7 +73,7 @@ pip install soda-core-postgres
 | Denodo  | `soda-denodo` | `soda-core-denodo` |
 | Dremio | `soda-dremio` |  `soda-core-dremio` |
 | DuckDB   | `soda-duckdb` | `soda-core-duckdb` |
-| GCP Big Query | `soda-bigquery` |  `soda-core-bigquery` |
+| GCP BigQuery | `soda-bigquery` |  `soda-core-bigquery` |
 | Google CloudSQL | `soda-postgres` | `soda-core-postgres` |
 | IBM DB2 | `soda-db2` | `soda-core-db2` |
 | Local file | Use Dask. | Use Dask. |

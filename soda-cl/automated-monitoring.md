@@ -10,6 +10,8 @@ parent: Write SodaCL checks
 *Last modified on {% last_modified_at %}*
 
 Use automated monitoring checks to instruct Soda to automatically check for row count anomalies and schema changes in a dataset.<br />
+*Requires Soda Agent* 
+
 {% include code-header.html %}
 ```yaml
 automated monitoring:
@@ -25,7 +27,7 @@ automated monitoring:
 
 ## About automated monitoring checks
 
-When you add automated monitoring checks to your data source, Soda prepares and executes two checks on all the datasets you indicate as included in your checks YAML file. 
+When you add automated monitoring checks to your data source in Soda Cloud, Soda prepares and executes two checks on all the datasets you indicated as `included` in the configuration.
 
 **Anomaly score check on row count**: This check counts the number of rows in a dataset during scan and registers anomalous counts relative to previous measurements for the row count metric. Refer to [Anomaly score checks]({% link soda-cl/anomaly-score.md %}) for details. <br />
 Anomaly score checks require a minimum of four data points (four scans at stable intervals) to establish a baseline against which to gauge anomalies. If you do not see check results immediately, allow Soda Library to accumulate the necessary data points for relative comparison. 

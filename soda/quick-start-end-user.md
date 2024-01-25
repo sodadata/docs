@@ -13,13 +13,11 @@ redirect_from:
 Use this guide to set up Soda Cloud and enable users across your organization to serve themselves when it comes to testing data quality. 
 
 Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and the Soda Cloud, then invite your Data Analyst and Data Scientist colleagues to join the account, start data quality discussions, and begin creating their own SodaCL checks for data quality. 
-
-<br />
-
-![end-user-start](/assets/images/end-user-start.png){:width="500px"}
+<!-- ![end-user-start](/assets/images/end-user-start.png){:width="500px"}
+-->
 
 [About this guide](#about-this-guide)<br />
-[Deploy a Soda Agent](#deploy-a-soda-agent)<br />
+[Access or deploy a Soda Agent](#access-a-soda-managed-agent)<br />
 [Connect a data source](#connect-a-data-source)<br />
 [Set up Slack integration and notification rules](#set-up-slack-integration-and-notification-rules)<br />
 [Invite your colleagues](#invite-your-colleagues)<br />
@@ -32,17 +30,34 @@ Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and
 
 The instructions below offer Data Engineers an example of how to set up the Soda Cloud to enable non-coder colleagues to propose, discuss, and create their own data quality tests. After all, data quality testing is a team sport!
 
-For context, the example assumes that:
-* you have the appropriate access to a cloud services provider environment such as Azure, AWS, or Google Cloud that allows you to create and deploy applications to a cluster, 
-* you, or someone on your team, has access to the login credentials that Soda needs to be able to access a data source such as MS SQL, Big Query, or Athena so that it can run scans of the data.
-
 Once you have completed the set-up, you can direct your non-coding colleagues to log in to Soda Cloud and begin creating Discussions. A Discussion in Soda is a messaging space that facilitates collaboration between data producers and data consumers. Together, colleagues can establish the expected and agreed-upon state of data quality in a dataset by proposing, then approving data quality checks that execute as part of a scheduled scan in Soda.  
 
 When checks fail during data quality scans, you and your colleagues get alerts via Slack which enable you to address issues before they have a downstream impact on the users or applications that depend upon the data.
 
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Access a Soda-managed agent</label>
+  <label class="tab" id="two-tab" for="two">Deploy a self-hosted agent</label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
+## Access a Soda-managed agent
+
+{% include access-managed-agent.md %}
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
 ## Deploy a Soda Agent
 
 Soda Agent is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster.
+
+For context, the example assumes that:
+* you have the appropriate access to a cloud services provider environment such as Azure, AWS, or Google Cloud that allows you to create and deploy applications to a cluster, 
+* you, or someone on your team, has access to the login credentials that Soda needs to be able to access a data source such as MS SQL, BigQuery, or Athena so that it can run scans of the data.
 
 Access the [exhaustive deployment instructions]({% link soda-agent/deploy.md %}#deploy-a-soda-agent-in-a-kubernetes-cluster) for the cloud services provider you use.
 * Cloud services provider-agnostic instructions
@@ -50,16 +65,31 @@ Access the [exhaustive deployment instructions]({% link soda-agent/deploy.md %}#
 * Microsoft Azure Kubernetes Service (AKS)
 * Google Kubernetes Engine (GKE)
 
+See also: [Soda Agent basic concepts]({% link soda-agent/basics.md %}) 
+
+  </div>
+
+  </div>
+</div>
+
 
 ## Connect a data source
 
-The Soda Agent supports connections with the following data sources.
+Depending on your deployment model, Soda Agent supports connections with the following data sources.
+
+#### Self-hosted agent
 {% include compatible-cloud-datasources.md %}
 
+#### Soda-managed agent
+<table>
+  <tr>
+    <td>GCP BigQuery<br /> MySQL<br/> PostgreSQL<br /> Snowflake</td>
+  </tr>
+</table> 
 <br />
 
 1. Log in to your Soda Cloud account, then navigate to **your avatar** > **Data Sources**.
-2. In the **Agents** tab, confirm that you can see the Soda Agent you deployed and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
+2. In the **Agents** tab, confirm that you can see a Soda-managed agent, or the Soda Agent you deployed, and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
 3. Navigate to the **Data Sources** tab, then click **New Data Source** and follow the [guided steps]({% link soda-agent/deploy.md %}#add-a-new-data-source) to:
 * identify the new data source and its default scan schedule
@@ -100,7 +130,7 @@ While waiting for your colleagues to accept your Soda invitation, get a head sta
 ![new-discussion](/assets/images/new-discussion.png){:height="500px" width="500px"}
 3. Kick off the data quality discussion with your colleagues: begin with **Propose Check**, then use the no-code check interface to select from the list available checks for the dataset. Most common baseline data quality checks include: missing, invalid, duplicate, and freshness. Refer to [Define SodaCL checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) for more detail on how to leverage no-code checks.
 4. After filling in the blanks and testing the check, **Propose Check** to add the SodaCL check to the discussion. When your colleagues join and review the Discussions, they can add comments or propose new or different checks to address the data quality issues of this dataset. 
-5. When you and your team agree on the data quality checks to add to the dataset, you, as the data producer, can **Review & Add** the check to a scan schedule for the dataset – either existing or new – so that Soda begins executing the check as per the schedule.
+5. When you and your team agree on the data quality checks to add to the dataset, you, as the data producer, can **Review & Add** the check to a scan schedule for the dataset – either existing or new – so that Soda begins executing the check as per the data source's decfault scan schedule.
 
 
 <br />
