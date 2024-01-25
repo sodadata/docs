@@ -57,6 +57,7 @@ checks for dim_customer:
 [Install Soda Scientific](#install-soda-scientific)<br />
 [Define an anomaly detection check](#define-an-anomaly-detection-check) <br />
 [Anomaly detection check results](#anomaly-detection-check-results) <br />
+[Taking over anomaly history from existing anomaly score check to anomaly detection check](#taking-over-anomaly-history-from-existing-anomaly-score-check-to-anomaly-detection-check) <br />
 [Reset anomaly history](#reset-anomaly-history)<br />
 [Optional check configurations](#optional-check-configurations) <br />
 [Add optional training dataset configurations](#add-optional-training-dataset-configurations)<br />
@@ -82,9 +83,6 @@ Once flagged, Soda can alert you to the anomaly so that you can take action to c
 
 Importantly, you can fine tune an anomaly detection check to customize some of the algorithm's parameters and improve the check's ability to recognize truly anomalous behavior in your data.
 
-<!---
-TODO: Add a screenshot of the anomaly detection check from the UI
--->
 
 ## Install Soda Scientific
 
@@ -153,6 +151,28 @@ Though your first instinct may be to run several scans in a row to produce the f
 If, for example, you attempt to run eight back-to-back scans in five minutes, the anomaly detection does not register the measurements resulting from those scans as a reliable pattern against which to evaluate an anomaly.
 
 Consider using the Soda library to set up a [programmatic scan]({% link soda-library/programmatic.md %}) that produces a check result for an anomaly detection check on a regular schedule.
+
+## Taking over anomaly history from existing anomaly score check to anomaly detection check
+
+Anomaly detection check is a new check type that replaces the existing anomaly score check.
+
+If you have an existing anomaly score check that has been running for a while, you can take over the historical check results and provided feedbacks from that check to an anomaly detection check. This is useful if you want to switch from an anomaly score check to an anomaly detection check. By taking over the historical check results, you can still visualize the historical anomaly scores in the Soda Cloud UI and preserve the given feedbacks to the model.
+
+To take over the anomaly history from an existing anomaly score check, you must set the `take_over_existing_anomaly_score_check` configuration to `True` for your anomaly detection check. The default value is `False`.
+
+{% include code-header.html %}
+```yaml
+# Anomaly score check that you want to take over the anomaly history from
+# checks for dim_customer:
+#   - anomaly score for row_count < default
+
+# New anomaly detection check that takes over the anomaly history from the anomaly score check
+checks for dim_customer:
+  - anomaly detection for row_count:
+      take_over_existing_anomaly_score_check: True
+```
+
+, or if you want to use the anomaly detection check to take over the anomaly history from an anomaly score check that you are about to delete.
 
 ## Reset anomaly history
 
