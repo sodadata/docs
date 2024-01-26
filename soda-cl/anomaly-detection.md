@@ -6,7 +6,6 @@ parent: Soda CL reference
 ---
 
 # Anomaly detection checks
-<!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
 Use an anomaly detection check to automatically discover anomalies in your check metrics. 
@@ -126,7 +125,6 @@ checks for dim_customer:
 ```
 
 ## Anomaly detection check results
-<!--Linked to UI, access Shlink-->
 
 Because the anomaly detection check requires at least four measurements before it can start detecting what counts as an anomalous measurement, your first few scans  yield a `[NOT EVALUATED]` check result that indicates that Soda does not have enough historical data to be able to detect an anomaly.
 
