@@ -10,7 +10,9 @@ parent: Get started
 
 When you deploy a Soda Agent to a Kubernetes cluster in your cloud service provider environment, you need to provide a few essential values that the agent needs to connect to your Soda Cloud account (API keys), and connect to your data sources (data source login credentials) so that Soda can run data quality scans on the data.
 
-As these values are sensitive, you may wish to employ the following strategies to keep them secure.
+{% include k8-secrets.md %}
+
+As these values are sensitive, you may wish to employ the following alternative strategies to keep them secure.
 
 [Use a values YAML file to store API key values](#use-a-values-yaml-file-to-store-api-key-values)<br />
 [Use a values file to store private key authentication values](#use-a-values-file-to-store-private-key-authentication-values)<br />
