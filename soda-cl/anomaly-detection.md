@@ -26,6 +26,9 @@ checks for dim_customer:
   - anomaly detection for row_count:
     name: "Anomaly detection for row_count" # optional
     identity: "anomaly-detection-row-count" # optional
+    severity_level_parameters: # optional
+      warning_ratio: 0.1
+      min_confidence_interval_ratio: 0.001
     training_dataset_parameters: # optional
         frequency: auto
         window_length: 1000
@@ -213,6 +216,67 @@ for each dataset T:
 ```
 
 <br />
+
+## Add optional severity level configurations
+
+You can add optional `severity_level_parameters` to an anomaly detection check to customize the way that Soda determines the severity level of an anomaly. The following example includes two optional severity level parameters.
+
+{% include code-header.html %}
+```yaml
+checks for dim_customer:
+  - anomaly detection for row_count:
+      severity_level_parameters:
+        warning_ratio: 0.1
+        min_confidence_interval_ratio: 0.001
+```
+
+| Configuration key | Value | Default |
+| ----------------- | ----- | ------- |
+| `warning_ratio` | decimal between 0 and 1 | `0.1` |
+| `min_confidence_interval_ratio` | decimal between 0 and 1 | `0.001` |
+
+### Warning Ratio Configuration
+
+The `warning_ratio` parameter determines the area of warning range. Warning range is a buffer on top of the confidence interval to decrease the false positives. The aim is to distinguish between warning and critical alerts. If the soda scan check result is within the warning range, the check result is flagged as a warning. The warning range is computed with the following formula:
+
+```latex
+upper confidence interval: u
+lower confidence interval: l
+confidence interval width: w = u - l
+upper warning range = between u and (u + warning_ratio * w)
+lower warning range = between l and (l - warning_ratio * w)
+```
+
+As an example to this formula, if the confidence interval is `[10, 20]` and the `warning_ratio` is `0.1`, the upper warning range is `]20, 22]` and the lower warning range is `[9, 10[`. If the check result is within the warning ranges, soda flags the check result as a warning. Thus, if you need wider warning ranges to decrease the amount of critical alerts, you can increase the `warning_ratio` value gradually until you reach the desired warning range and vice versa.
+
+See the visual example below for a demonstration of how the warning range is computed. In the following example, the yellow area represents the warning range and warning ratio is 0.1. It means that if the confidence interval width is 10, the warning with is 1 as shown with blue and red arrows.
+
+![warning-range](/assets/images/ad-warning-area.png){:height="700px" width="700px"}
+
+### Minimum Confidence Interval Ratio Configuration
+
+The `min_confidence_interval_ratio` parameter determines the minimum width of the confidence interval. The confidence interval is the range of values that the model predicts for the next measurement. If the prediction problem is too easy for the model, the confidence interval becomes too narrow and the model becomes too sensitive to small noises in the data. In these kind of cases, the model may flag normal measurements as anomalies due some small decimal differences. To avoid these scenerios, soda uses a minimum confidence interval width parameter to handle very narrow confidence intervals. The formula of updating the confidence interval is as follows:
+
+```latex
+upper confidence interval: u
+lower confidence interval: l
+predicted value: y^
+upper confidence interval width: w_u = u - y^
+lower confidence interval width: w_l = y^ - l
+
+u = max(u, y^ + y^ * min_confidence_interval_ratio)
+l = min(l, y^ - y^ * min_confidence_interval_ratio)
+```
+
+If you want to increase the minimum confidence interval width, you can increase the `min_confidence_interval_ratio` value gradually until you reach the desired minimum confidence interval width and vice versa.
+
+To better see the impact of `min_confidence_interval_ratio` parameter, see the visual example below. In the following example, propblem is very easy to predict and `min_confidence_interval_ratio` set to `0` for demonstration purposes. For this reason, the confidence interval is very narrow and it creates lots of false positives due to insignificant noises.
+
+![ad-linear-false-positives](/assets/images/ad-linear-false-positives.png){:height="700px" width="700px"}
+
+When setting `min_confidence_interval_ratio` to the default `0.001`, we artifically introduce a minimum confidence interval buffer to prevent false positives that are caused by small noises. See the graph below for the same example with `min_confidence_interval_ratio` set to `0.001`. As you can see, the confidence interval is wider and it does not create false positives due to small noises.
+
+![ad-linear-green](/assets/images/ad-linear-pattern-7-window-width.png){:height="700px" width="700px"}
 
 ## Add optional training dataset configurations
 
@@ -521,26 +585,6 @@ checks for your-table-name:
 Having adjusted the `window_length` and `MAPE` profile, the graph below illustrates that the model is more sensitive to recent measurements and does not create alert fatigue after November 2023; refer to the green rectangle.
 
 ![coverage-profile-window-length-30](/assets/images/ad-false-positive-mape-30.png){:height="700px" width="700px"}
-
-<!-- TODO: enable this FAQ in the second release together with the fail/warn buffer feature. -->
-<!-- ### Overly-sensitive detection
-
-If the time series data is very easy to predict, then the model is likely to have very tight confidence intervals which can result in a model that falsely detects too many anomalies. For instance, the following daily row count graph has a very tight confidence interval since it has a very predictable linear pattern. Because the default `window_length` is `1000`, the uncertainty decreases over time and the model becomes more confident about its predictions and raises too many false positives.
-
-![ad-linear-pattern-7-window-width](/assets/images/ad-linear-false-positives.png){:height="700px" width="700px"}
-
-In such a case, consider decreasing the `window_length` to a very low value to increase the model's uncertainty. Decreasing this example's `window_length` to a very low value such as `7` increases the model's uncertainty and decreases the volume of falsely-identified anomalies. 
-{% include code-header.html %}
-```yaml
-checks for your-table-name:
-  - anomaly detection for your-metric-name:
-      training_dataset:
-        window_length: 7
-```
-
-Having adjusted the window length, the graph below illustrates that the model is less confident and recognizes far fewer measurements as anomalies.
-
-![ad-linear-pattern-7-window-width](/assets/images/ad-linear-pattern-7-window-width.png){:height="700px" width="700px"} -->
 
 ### Large boundaries that ignore anomalies
 
