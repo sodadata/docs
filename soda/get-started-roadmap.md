@@ -21,7 +21,7 @@ However, if a guided experience is not your style, take a different path!
 1. [Choose a flavor of Soda]({% link soda/setup-guide.md %}) 🚀 Start here!
 2. Set up Soda
 * [Self-operated]({% link soda-library/install.md %})
-* [Soda-managed agent]({% link soda-agent/managed-agent.md %})
+* [Soda-hosted agent]({% link soda-agent/managed-agent.md %})
 * [Self-hosted agent]({% link soda-agent/deploy.md %})
 * [Programmatic]({% link soda-library/programmatic.md %})
 3. [Write SodaCL checks]({% link soda-cl/soda-cl-overview.md %})

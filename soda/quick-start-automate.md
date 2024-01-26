@@ -21,13 +21,29 @@ Use this guide to set up Soda and begin automatically monitoring the data qualit
 
 This guide offers Data Analysts, Data Scientists, and business users instructions to set up Soda to profile and begin monitoring data for quality, right out of the box.
 
-This example uses a self-hosted agent deployment model which uses Soda Cloud connected to a Soda Agent which securely accesses data sources and executes scheduled scans for data quality. See: [Choose a flavor of Soda]({% link soda/setup-guide.md %}). 
+This example offers instructions for both self-hosted and Soda-hosted agent deployment models, each of which use Soda Cloud connected to a Soda Agent to securely accesses data sources and execute scheduled scans for data quality. See: [Choose a flavor of Soda]({% link soda/setup-guide.md %}). 
 
 ## Set up a Soda Agent
 
-The Soda Agent is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. To set up a Soda Agent, you create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster. 
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Self-hosted agent</label>
+  <label class="tab" id="two-tab" for="two">Soda-hosted agent </label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
 
-If you do not have the access or authorization to set up a cluster or deploy the containerized agent, pass the instructions to your data engineering or IT team to complete the exercise for you.
+The Soda Agent is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. To set up a self-hosted Soda Agent, you create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster. 
+
+If you do not have the access or authorization to set up a cluster or deploy the containerized agent, pass the instructions to your data engineering or IT team to complete the exercise for you. Alternatively, consider using the Soda-hosted agent.
+
+### Compatibility
+
+{% include compatible-cloud-datasources.md %}
+
+<br />
 
 1. <a href="https://cloud.soda.io/signup" target="_blank">Create a Soda Cloud account</a> which is free for a 45-day trial. 
 2. Access the [exhaustive deployment instructions]({% link soda-agent/deploy.md %}) to deploy a Soda Agent in the cloud services provider you use. 
@@ -38,11 +54,34 @@ If you do not have the access or authorization to set up a cluster or deploy the
 3. Use the instructions for [managing sensitive values]({% link soda-agent/secrets.md %}) to securely store API key values and data source login credential values that the Soda Agent needs to connect to both Soda Cloud and your data sources. Pass the environment variable identifiers to your colleagues to use when adding a new data source in Soda Cloud.
 4. Invite your colleague(s) to your Soda Cloud organization so they can access the newly-deployed Soda Agent to connect to data sources and begin monitoring data quality. In your Soda Cloud account, navigate to **your avatar** > **Invite Team Members** and fill in the blanks.
 
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
+
+This setup provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. 
+
+### Compatibility
+
+The Soda-hosted agent supports connections to the following data sources:
+
+| BigQuery <br /> MySQL<br /> PostgreSQL<br />  Snowflake |
+
+<br />
+
+{% include access-managed-agent.md %}
+
+<br />
+
+Invite your colleague(s) to your Soda Cloud organization so they can access the newly-deployed Soda Agent to connect to data sources and begin monitoring data quality. In your Soda Cloud account, navigate to **your avatar** > **Invite Team Members** and fill in the blanks.
+
+  </div>
+
+  </div>
+</div>
+
 ## Automate data quality monitoring
 
-1. If you have not already done so, <a href="https://cloud.soda.io/signup" target="_blank">create a Soda Cloud account</a>, or accept your colleague's emailed invitation to create an account and join their Soda Cloud organization. 
-2. In Soda Cloud, navigate to **your avatar** > **Data Sources**.
-3. In the **Agents** tab, confirm that you can see the Soda Agent you deployed and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
+1. As an [Admin]({% link soda-cloud/roles-and-rights.md %}) in your Soda Cloud account, navigate to **your avatar** > **Data Sources**.
+2. In the **Agents** tab, confirm that you can see your Soda-manage agent, or the Soda Agent you deployed and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
 3. Navigate to the **Data source** tab, then click **New Data Source** and follow the guided steps to connect to a new data source and opt-in to automated monitoring checks. <br />Refer to the sections below for insight into the values to enter in the fields and editing panels in the guided steps. 
 
@@ -52,7 +91,7 @@ If you do not have the access or authorization to set up a cluster or deploy the
 | -----------------------   | ---------- |
 | Data Source Label | Provide a unique identifier for the data source. Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
 | Default Scan Schedule Label | Provide a name for the default scan schedule for this data sources. The scan schedule indicates which Soda Agent to use to execute the scan, and when. |
-| Default Scan Schedule Agent | Select the name of a Soda Agent that you have previously set up in your secure environment and connected to a specific data source. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
+| Default Scan Schedule Agent | Select the Soda-hosted agent, or the name of a Soda Agent that you have previously set up in your secure environment. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
 | Schedule Definition | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
 | Starting At | Select the time of day to run the scan. The default value is midnight. |
 | Time Zone | Select a timezone. The default value is UTC. |
@@ -64,9 +103,9 @@ If you do not have the access or authorization to set up a cluster or deploy the
 
 In the editing panel, provide the connection configurations Soda Cloud needs to be able to access the data in the data source. Connection configurations are data source-specific and include values for things such as a database's host and access credentials. 
 
-To more securely provide sensitive values such as usernames and passwords, use environment variables in a `values.yml` file when you deploy the Soda Agent. See [Use environment variables for data source connection credentials]({% link soda-agent/secrets.md %}#use-environment-variables-to-store-data-source-connection-credentials) for details.
+Access the [data source-specific connection configurations]({% link soda/connect-athena.md %}) for the connection syntax and descriptions; adjust the values to correspond with your data source's details. 
 
-Access the [data source-specific connection configurations]({% link soda/connect-athena.md %}) to copy+paste the connection syntax into the editing panel, then adjust the values to correspond with your data source's details. 
+To more securely provide sensitive values such as usernames and passwords in a self-hosted agent deployment model, use environment variables in a `values.yml` file when you deploy the Soda Agent. See [Use environment variables for data source connection credentials]({% link soda-agent/secrets.md %}#use-environment-variables-to-store-data-source-connection-credentials) for details.
  
 <br />
 

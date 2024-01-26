@@ -1,26 +1,26 @@
 ---
 layout: default
-title: Set up a Soda-managed agent
-description: Use an out-of-the-box Soda-managed agent to connect to your data sources and begin testing data quality.
+title: Set up a Soda-hosted agent
+description: Use an out-of-the-box Soda-hosted agent to connect to your data sources and begin testing data quality.
 parent: Get started
 ---
 
-# Set up a Soda-managed agent
+# Set up a Soda-hosted agent
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
 The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. 
 
-You can create a Kubernetes cluster in your organization's environment and use Helm to deploy a Self-hosted Soda Agent in the cluster, or you can use the secure, out-of-the-box **Soda-managed Agent** made available for every Soda Cloud organization.
+You can create a Kubernetes cluster in your organization's environment and use Helm to deploy a Self-hosted Soda Agent in the cluster, or you can use the secure, out-of-the-box **Soda-hosted agent** made available for every Soda Cloud organization.
 
-A Soda-managed agent enables Soda Cloud users to securely connect to BigQuery, MySQL, PostgreSQL, or Snowflake data sources and create checks for data quality in the new data source.
+A Soda-hosted agent enables Soda Cloud users to securely connect to BigQuery, MySQL, PostgreSQL, or Snowflake data sources and create checks for data quality in the new data source.
 
-As a step in the **Get started roadmap**, this guide offers instructions to set up Soda in a [Soda-managed agent deployment model]({% link soda/setup-guide.md %}#soda-managed-agent).
+As a step in the **Get started roadmap**, this guide offers instructions to set up Soda in a [Soda-hosted agent deployment model]({% link soda/setup-guide.md %}#soda-managed-agent).
 
 #### Get started roadmap
 
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
-2. **Set up Soda: Soda-managed agent** 📍 You are here! <br />
+2. **Set up Soda: Soda-hosted agent** 📍 You are here! <br />
 &nbsp;&nbsp;&nbsp;&nbsp; a. [Create a Soda Cloud account](#create-a-soda-cloud-account)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; b. [Add a new data source](#add-a-new-data-source)<br />
 3. Write SodaCL checks

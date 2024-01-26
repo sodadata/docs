@@ -34,26 +34,26 @@ Once you have completed the set-up, you can direct your non-coding colleagues to
 
 When checks fail during data quality scans, you and your colleagues get alerts via Slack which enable you to address issues before they have a downstream impact on the users or applications that depend upon the data.
 
+## Access or deploy a Soda Agent
+
 <div class="warpper">
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Access a Soda-managed agent</label>
+  <label class="tab" id="one-tab" for="one">Access a Soda-hosted agent</label>
   <label class="tab" id="two-tab" for="two">Deploy a self-hosted agent</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
-## Access a Soda-managed agent
 
 {% include access-managed-agent.md %}
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
-## Deploy a Soda Agent
 
-Soda Agent is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster.
+Soda Agent is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a self-hosted Soda Agent in the cluster.
 
 For context, the example assumes that:
 * you have the appropriate access to a cloud services provider environment such as Azure, AWS, or Google Cloud that allows you to create and deploy applications to a cluster, 
@@ -80,7 +80,7 @@ Depending on your deployment model, Soda Agent supports connections with the fol
 #### Self-hosted agent
 {% include compatible-cloud-datasources.md %}
 
-#### Soda-managed agent
+#### Soda-hosted agent
 <table>
   <tr>
     <td>GCP BigQuery<br /> MySQL<br/> PostgreSQL<br /> Snowflake</td>
@@ -89,7 +89,7 @@ Depending on your deployment model, Soda Agent supports connections with the fol
 <br />
 
 1. Log in to your Soda Cloud account, then navigate to **your avatar** > **Data Sources**.
-2. In the **Agents** tab, confirm that you can see a Soda-managed agent, or the Soda Agent you deployed, and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
+2. In the **Agents** tab, confirm that you can see a Soda-hosted agent, or the Soda Agent you deployed, and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
 3. Navigate to the **Data Sources** tab, then click **New Data Source** and follow the [guided steps]({% link soda-agent/deploy.md %}#add-a-new-data-source) to:
 * identify the new data source and its default scan schedule

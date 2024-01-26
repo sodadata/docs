@@ -35,7 +35,7 @@ You can set up Soda in one of four flavors:
 | Flavor | Description | Soda<br />Library | Soda<br />Agent | Soda<br />Cloud |
 | ----- | ----------- | :--: | :--: | :--: |
 | [Self-operated](#self-operated) | A simple setup in which you install Soda Library locally and connect it to Soda Cloud via API keys. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
-| [Soda-managed agent](#soda-managed-agent) | ***Recommended*** <br />A setup in which you manage data quality entirely from your Soda Cloud account. |  |  | ![done](/assets/images/done.png){:width="20px"} |
+| [Soda-hosted agent](#soda-managed-agent) | ***Recommended*** <br />A setup in which you manage data quality entirely from your Soda Cloud account. |  |  | ![done](/assets/images/done.png){:width="20px"} |
 | [Self-hosted agent](#self-hosted-agent)<br /> | A setup in which you deploy a Soda Agent in a Kubernetes cluster in a cloud-services environment and connect it to Soda Cloud via different API keys. |   | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 | [Programmatic](#programmatic) | A setup in which you invoke Soda Library programmatically. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
 
@@ -67,7 +67,7 @@ Requirements:
 
 <br />
 
-#### Soda-managed agent
+#### Soda-hosted agent
 *Recommended*
 
 This setup provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. Quickly configure connections to your data sources in the Soda Cloud user interface, then empower all your colleagues to explore datasets, access check results, customize collections, and create their own no-code checks for data quality.
@@ -132,7 +132,7 @@ Requirements:
 1. <s><font color="#777777"> Choose a flavor of Soda </font></s>
 2. **Set up Soda.** Select the setup instructions that correspond with your flavor of Soda:
 * [Self-operated]({% link soda-library/install.md %})
-* [Soda-managed agent]({% link soda-agent/managed-agent.md %})
+* [Soda-hosted agent]({% link soda-agent/managed-agent.md %})
 * [Self-hosted agent]({% link soda-agent/deploy.md %})
 * [Programmatic]({% link soda-library/programmatic.md %})
 3. Write SodaCL checks

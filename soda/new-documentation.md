@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### February 1, 2024
+* Published new documentation for the [Soda-hosted agent]({% link soda-agent/managed-agent.md %}), a secure, out-of-the-box agent you can use to connect to data sources from within the Soda Cloud user interface.
+
 #### January 22, 2023
 * Updated the documentation for [rerouting failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to include new, optional configuration parameters that offer users direct access to the failed row sample data.
 

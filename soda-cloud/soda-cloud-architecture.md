@@ -13,6 +13,7 @@ redirect_from:
 Your Soda architecture depends upon the flavor of Soda (deployment model) you chose when you set up your environment. The following offers a high-level view of the architecture of a few flavors of Soda.
 
 [Self-operated deployment](#self-operated-deployment)<br />
+[Soda-hosted agent deployment](#soda-hosted-agent-deployment)<br />
 [Self-hosted agent deployment](#self-hosted-agent-deployment)<br />
 [Soda Cloud resources](#soda-cloud-resources)<br />
 [Delete resources](#delete-resources)<br />
@@ -34,6 +35,11 @@ When Soda Library completes a scan, it uses a secure API to push the results to 
 
 You can use checks to view samples of data that [failed a check]({% link soda-cloud/failed-rows.md %}), and track data quality over time. Soda Cloud stores your scan results and prepares charts that represent the volume of failed checks in each scan. These visualizations of your scan results enable you to see where your data quality is improving or deteriorating over time.
 
+## Soda-hosted agent deployment
+
+This deployment model provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. Quickly configure connections to your data sources in the Soda Cloud user interface, then empower all your colleagues to explore datasets, access check results, customize collections, and create their own no-code checks for data quality. Soda-hosted agent supports connections to BigQuery, MySQL, PostgreSQL, and Snowflake data sources.
+
+![with-managed-agent](/assets/images/with-managed-agent.png){:height="60px" width="600px"}
 
 ## Self-hosted agent deployment
 

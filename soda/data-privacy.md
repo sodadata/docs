@@ -44,6 +44,10 @@ Where your datasets contain <a href="https://ec.europa.eu/info/law/law-topic/dat
 
 Read more about Soda's <a href="https://www.soda.io/privacy-policy" target="_blank">Privacy Policy</a>. 
 
+## Using a Soda-hosted agent
+
+{% include managed-agent-secure.md %}
+
 <br />
 
 ---

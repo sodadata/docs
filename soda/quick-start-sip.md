@@ -21,8 +21,8 @@ Use the example data in this quick tutorial to set up and run a simple Soda scan
 [Write some checks and run a scan](#write-some-checks-and-run-a-scan) | 5 minutes<br />
 <br />
 
-💡 For standard set up instructions, access the [Get started roadmap]({% link soda/get-started-roadmap.md %}).
-
+💡 For standard set up instructions, access the [Get started roadmap]({% link soda/get-started-roadmap.md %}). <br />
+✨ Want a total UI experience? Use the out-of-the-box [Soda-managed agent]({% link soda-agent/managed-agent.md %}) to skip the CLI.
 
 ## Set up Soda
 <!--Linked to UI, access Shlink-->

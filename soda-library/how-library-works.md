@@ -9,7 +9,7 @@ redirect_from: /soda-core/how-core-works.html
 # How Soda works 
 *Last modified on {% last_modified_at %}*
 
-**Soda Library** is Python library and CLI tool that enables Data Engineers to test data for quality where and when they need to. The **Soda Agent** is a containerized Soda Library that you deploy in a Kubernetes cluster, so the behavior described below for Soda Library is more or less the same for Soda Agent.
+**Soda Library** is Python library and CLI tool that enables Data Engineers to test data for quality where and when they need to. The **Soda Agent** is a self-hosted or Soda-hosted containerized Soda Library deployed in a Kubernetes cluster, so the behavior described below for Soda Library is more or less the same for Soda Agent.
 
 Soda Library utilizes user-defined input to prepare SQL queries that run checks on datasets in a data source to find invalid, missing, or unexpected data. When checks fail, they surface the data that you defined as "bad" in the check. Armed with this information, you and your data engineering team can diagnose where the "bad" data entered your data pipeline and take steps to prioritize and resolve issues.
 

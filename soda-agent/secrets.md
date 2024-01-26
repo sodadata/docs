@@ -8,7 +8,7 @@ parent: Get started
 # Soda Agent extras
 *Last modified on {% last_modified_at %}*
 
-When you deploy a Soda Agent to a Kubernetes cluster in your cloud service provider environment, you need to provide a few essential values that the agent needs to connect to your Soda Cloud account (API keys), and connect to your data sources (data source login credentials) so that Soda can run data quality scans on the data.
+When you deploy a self-hosted Soda Agent to a Kubernetes cluster in your cloud service provider environment, you need to provide a few essential values that the agent needs to connect to your Soda Cloud account (API keys), and connect to your data sources (data source login credentials) so that Soda can run data quality scans on the data.
 
 As these values are sensitive, you may wish to employ the following strategies to keep them secure.
 
@@ -22,7 +22,7 @@ As these values are sensitive, you may wish to employ the following strategies t
 
 ## Use a values YAML file to store API key values 
 
-When you deploy a Soda Agent from the command-line, you provide values for the API key id and API key secret which the agent uses to connect to your Soda Cloud account. You can provide these values during agent deployment in one of two ways:
+When you deploy a self-hosted Soda Agent from the command-line, you provide values for the API key id and API key secret which the agent uses to connect to your Soda Cloud account. You can provide these values during agent deployment in one of two ways:
 * directly in the `helm install` command that deploys the agent and stores the values as <a href="https://kubernetes.io/docs/concepts/configuration/secret/" target="_blank">Kubernetes secrets</a> in your cluster; see [deploy using CLI only]({% link soda-agent/deploy.md %}#deploy-using-cli-only)<br />
 OR
 * in a values YAML file which you store locally but reference in the `helm install` command; see below
@@ -58,7 +58,7 @@ If you use private key with Snowflake or BigQuery, you can provide the required 
 
 ## Use environment variables to store data source connection credentials
 
-When you, or someone in your organization, follows the guided steps to [add a data source]({% link soda-agent/deploy.md %}#add-a-new-data-source) in Soda Cloud, one of the steps involves providing the connection details and credentials Soda needs to connect to the data source to run scans. 
+When you, or someone in your organization, follows the guided steps to use a self-hosted Soda Agent to [add a data source]({% link soda-agent/deploy.md %}#add-a-new-data-source) in Soda Cloud, one of the steps involves providing the connection details and credentials Soda needs to connect to the data source to run scans. 
 
 You can add those details directly in Soda Cloud, but because any user can then access these values, you may wish to store them securely in the values YAML file as environment variables. 
 
@@ -95,7 +95,7 @@ data_source local_postgres_test:
 
 ## Integrate with a secrets manager
 
-Use External Secrets Operator (ESO) to integrate your Soda Agent with your secrets manager, such as a Hashicorp Vault, AWS Secrets Manager, or Azure Key Vault, and securely reconcile the login credentials that Soda Agent uses for your data sources.
+Use External Secrets Operator (ESO) to integrate your self-hosted Soda Agent with your secrets manager, such as a Hashicorp Vault, AWS Secrets Manager, or Azure Key Vault, and securely reconcile the login credentials that Soda Agent uses for your data sources.
 
 For example, imagine you use a Hashicorp Vault to store data source login credentials and your security protocol demands frequent rotation of passwords. In this situation, the challenge is that apps running in your Kubernetes cluster, such as a Soda Agent, need access to the up-to-date passwords. 
 
@@ -115,7 +115,7 @@ The following procedure outlines how to use ESO to integrate with a **Hashicorp 
 * <a href="https://external-secrets.io/latest/provider/azure-key-vault/" target="_blank">Azure Key Vault</a>
 
 ### Prerequisites
-* You have set up a Kubernetes cluster in your cloud services environment and deployed a Soda Agent in the cluster.
+* You have set up a Kubernetes cluster in your cloud services environment and deployed a self-hosted Soda Agent in the cluster.
 * For the purpose of this example procedure, you have set up and are using a Hashicorp Vault which contains a key-value pair for `POSTGRES_USERNAME` and `POSTGRES_PASSWORD` at the path `local/soda`.
 
 ### Install and set up the External Secrets Operator
