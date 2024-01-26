@@ -63,6 +63,7 @@ checks for dim_customer:
 [Migrate to anomaly detection](#migrate-to-anomaly-detection) <br />
 [Reset anomaly history](#reset-anomaly-history)<br />
 [Optional check configurations](#optional-check-configurations) <br />
+[Add optional severity level configuration](#add-optional-severity-level-configurations)<br/>
 [Add optional training dataset configurations](#add-optional-training-dataset-configurations)<br />
 [Add optional model configurations](#add-optional-model-configurations)<br />
 [Add optional automatic tuning configurations](#add-optional-automatic-tuning-configurations)<br />
@@ -235,9 +236,10 @@ checks for dim_customer:
 | `warning_ratio` | decimal between 0 and 1 | `0.1` |
 | `min_confidence_interval_ratio` | decimal between 0 and 1 | `0.001` |
 
-### Warning Ratio Configuration
 
-The `warning_ratio` parameter determines the area of warning range. Warning range is a buffer on top of the confidence interval to decrease the false positives. The aim is to distinguish between warning and critical alerts. If the soda scan check result is within the warning range, the check result is flagged as a warning. The warning range is computed with the following formula:
+The `warning_ratio` parameter determines the area of warning range. Warning range is a buffer on top of the confidence interval to decrease the volume of falsely-identified anomalies. The aim is to distinguish between warning and critical alerts. If the check result is within the warning range, Soda flags the check result as a warning. 
+
+Soda calculates the warning range using the following formula:
 
 ```latex
 upper confidence interval: u
@@ -247,15 +249,17 @@ upper warning range = between u and (u + warning_ratio * w)
 lower warning range = between l and (l - warning_ratio * w)
 ```
 
-As an example to this formula, if the confidence interval is `[10, 20]` and the `warning_ratio` is `0.1`, the upper warning range is `]20, 22]` and the lower warning range is `[9, 10[`. If the check result is within the warning ranges, soda flags the check result as a warning. Thus, if you need wider warning ranges to decrease the amount of critical alerts, you can increase the `warning_ratio` value gradually until you reach the desired warning range and vice versa.
+For example, if the model's confidence interval is `[10, 20]` and the `warning_ratio` is `0.1`, the upper warning range is `]20, 22]` and the lower warning range is `[9, 10[`. If the check result is within the warning ranges, Soda flags the check result as a warning. If you need wider warning ranges to decrease the amount of critical alerts, you can gradually increase the `warning_ratio` value to achieve your ideal range.
 
-See the visual example below for a demonstration of how the warning range is computed. In the following example, the yellow area represents the warning range and warning ratio is 0.1. It means that if the confidence interval width is 10, the warning with is 1 as shown with blue and red arrows.
+The graph below illustrates how Soda computes the warning range. The yellow area represents the warning range and the warning ratio is 0.1. This means that if the model's confidence interval width is 10, the warning width is 1, as shown with blue and red arrows.
 
 ![warning-range](/assets/images/ad-warning-area.png){:height="700px" width="700px"}
 
-### Minimum Confidence Interval Ratio Configuration
+<br />
 
-The `min_confidence_interval_ratio` parameter determines the minimum width of the confidence interval. The confidence interval is the range of values that the model predicts for the next measurement. If the prediction problem is too easy for the model, the confidence interval becomes too narrow and the model becomes too sensitive to small noises in the data. In these kind of cases, the model may flag normal measurements as anomalies due some small decimal differences. To avoid these scenerios, soda uses a minimum confidence interval width parameter to handle very narrow confidence intervals. The formula of updating the confidence interval is as follows:
+The `min_confidence_interval_ratio` parameter determines the minimum width of the confidence interval. The confidence interval is the range of values that the model predicts for the next measurement. If the prediction problem is too easy for the model, the confidence interval becomes too narrow and the model becomes too sensitive to small noises in the data. 
+
+In such cases, the model may flag normal measurements as anomalies due to small decimal differences. To avoid these scenarios, Soda uses a minimum confidence interval width parameter to handle very narrow confidence intervals. The formula that updates the confidence interval is as follows:
 
 ```latex
 upper confidence interval: u
@@ -268,15 +272,17 @@ u = max(u, y^ + y^ * min_confidence_interval_ratio)
 l = min(l, y^ - y^ * min_confidence_interval_ratio)
 ```
 
-If you want to increase the minimum confidence interval width, you can increase the `min_confidence_interval_ratio` value gradually until you reach the desired minimum confidence interval width and vice versa.
+To increase the minimum confidence interval width, you can gradually increase the `min_confidence_interval_ratio` value until you reach your ideal minimum confidence interval.
 
-To better see the impact of `min_confidence_interval_ratio` parameter, see the visual example below. In the following example, propblem is very easy to predict and `min_confidence_interval_ratio` set to `0` for demonstration purposes. For this reason, the confidence interval is very narrow and it creates lots of false positives due to insignificant noises.
+The graph below illustrates the impact of the `min_confidence_interval_ratio` parameter. For this example, the `min_confidence_interval_ratio` set to `0` and the measurements are very easy to predict. With such a low setting, the confidence interval is very narrow and insignificant noises produce many falsely-identified anomalies.
 
 ![ad-linear-false-positives](/assets/images/ad-linear-false-positives.png){:height="700px" width="700px"}
 
-When setting `min_confidence_interval_ratio` to the default `0.001`, we artifically introduce a minimum confidence interval buffer to prevent false positives that are caused by small noises. See the graph below for the same example with `min_confidence_interval_ratio` set to `0.001`. As you can see, the confidence interval is wider and it does not create false positives due to small noises.
+To artificially introduce a minimum confidence interval buffer to prevent falsely-identified anomalies, this example sets the `min_confidence_interval_ratio` to the default value of `0.001`. The result is a wider confidence interval that is far less sensitive to small noises in the data.
 
 ![ad-linear-green](/assets/images/ad-linear-pattern-7-window-width.png){:height="700px" width="700px"}
+
+<br />
 
 ## Add optional training dataset configurations
 
