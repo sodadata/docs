@@ -9,6 +9,10 @@ parent: Learning resources
 
 <br />
 
+#### January 26, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.2.2 & 1.2.3 and Soda Core 3.1.4 & 3.1.5.
+* Added instructions for [customizing a dashboard]({% link soda-cloud/collaborate.md %}#customize-your-dashboard).
+
 #### January 22, 2023
 * Updated the documentation for [rerouting failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to include new, optional configuration parameters that offer users direct access to the failed row sample data.
 

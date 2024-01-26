@@ -22,16 +22,22 @@ As the last step in the **Get started roadmap**, this guide offers instructions 
 3. <s><font color="#777777"> Write SodaCL checks</font></s>
 4. <s><font color="#777777"> Run scans and review results</font></s>
 5. **Organize, alert, investigate** 📍 You are here! <br />
-&nbsp;&nbsp;&nbsp;&nbsp; a. [Integrate with Slack](#integrate-with-slack)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; b. [Invite your team membrs](#invite-your-team-members)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; c. [Add check attributes](#add-check-attributes)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; d. [Set alert notification rules](#set-alert-notification-rules)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; e. [Build check collections](#build-check-collections)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; f. [Create incidents](#create-incidents)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; g. [Add dataset attributes](#add-dataset-attributes)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; h. [Integrate with a data catalog](#integrate-with-a-data-catalog)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; a. [Customize your dashboard](#customize-your-dashboard)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; b. [Integrate with Slack](#integrate-with-slack)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; c. [Invite your team membrs](#invite-your-team-members)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; d. [Add check attributes](#add-check-attributes)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; e. [Set alert notification rules](#set-alert-notification-rules)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; f. [Build check collections](#build-check-collections)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; g. [Create incidents](#create-incidents)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; h. [Add dataset attributes](#add-dataset-attributes)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; i. [Integrate with a data catalog](#integrate-with-a-data-catalog)<br />
 <br />
 
+## Customize your dashboard
+
+Customize your dashboard by adding filters to distill the data the dashboard displays. Save your customized dashboard so you can easily return to your distilled view.
+
+![customize-dashboard](/assets/images/customize-dashboard.png){:height="700px" width="700px"}
 
 ## Integrate with Slack
 
@@ -77,7 +83,7 @@ Ascribing to a "No noise" policy, Soda enables you define rules to customize the
 
 In Soda Cloud, navigate to **your avatar** > **Notification Rules**, then click **New Notification Rule** and follow the guided steps to complete the new rule. [Learn more]({% link soda-cloud/notif-rules.md %})
 
-![alert-rule](/assets/images/alert-rule.png){:height="500px" width="600px"}
+![alert-rule](/assets/images/alert-rule.png){:height="500px" width="500px"}
 
 ## Build check collections
 
