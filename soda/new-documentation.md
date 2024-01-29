@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### January 29, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 0.8.54, which maps to Soda Library 1.2.3.
+
 #### January 26, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.2.2 & 1.2.3 and Soda Core 3.1.4 & 3.1.5.
 * Added instructions for [customizing a dashboard]({% link soda-cloud/collaborate.md %}#customize-your-dashboard).
