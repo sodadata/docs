@@ -35,7 +35,7 @@ You can set up Soda in one of four flavors:
 | Flavor | Description | Soda<br />Library | Soda<br />Agent | Soda<br />Cloud |
 | ----- | ----------- | :--: | :--: | :--: |
 | [Self-operated](#self-operated) | A simple setup in which you install Soda Library locally and connect it to Soda Cloud via API keys. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
-| [Soda-hosted agent](#soda-managed-agent) | ***Recommended*** <br />A setup in which you manage data quality entirely from your Soda Cloud account. |  |  | ![done](/assets/images/done.png){:width="20px"} |
+| [Soda-hosted agent](#soda-hosted-agent) | ***Recommended*** <br />A setup in which you manage data quality entirely from your Soda Cloud account. |  |  | ![done](/assets/images/done.png){:width="20px"} |
 | [Self-hosted agent](#self-hosted-agent)<br /> | A setup in which you deploy a Soda Agent in a Kubernetes cluster in a cloud-services environment and connect it to Soda Cloud via different API keys. |   | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 | [Programmatic](#programmatic) | A setup in which you invoke Soda Library programmatically. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
 
