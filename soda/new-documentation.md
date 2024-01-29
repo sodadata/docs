@@ -9,16 +9,23 @@ parent: Learning resources
 
 <br />
 
-#### January 24, 2023
+#### February 1, 2024
 * Added documentation for the new [anomaly detection]({% link soda-cl/anomaly-detection.md %}) check, which replaces the [anomaly score]({% link soda-cl/anomaly-score.md %}) check.
 
-#### January 22, 2023
+#### January 29, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 0.8.54, which maps to Soda Library 1.2.3.
+
+#### January 26, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.2.2 & 1.2.3 and Soda Core 3.1.4 & 3.1.5.
+* Added instructions for [customizing a dashboard]({% link soda-cloud/collaborate.md %}#customize-your-dashboard).
+
+#### January 22, 2024
 * Updated the documentation for [rerouting failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to include new, optional configuration parameters that offer users direct access to the failed row sample data.
 
-#### January 19, 2023
+#### January 19, 2024
 * Updated [compatible data sources]({% link soda-agent/deploy.md %}#deploy-a-soda-agent-in-a-kubernetes-cluster) for Soda Agent to include Databricks SQL.
 
-#### January 15, 2023
+#### January 15, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.2.1.
 
 #### January 12, 2024
