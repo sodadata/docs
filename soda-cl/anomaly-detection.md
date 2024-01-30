@@ -156,7 +156,6 @@ If you have an existing `anomaly score` check, you can migrate to use an anomaly
 
 *Default* &nbsp; The first option is to create a new anomaly detection check to replace an existing anomaly score check. This is the easiest path and the default behavior, but you lose all the historic check results for the anomaly score check and any feedback that you applied to the anomaly score check's measurements. This means that the algorithm starts from scratch to learn patterns in your data that eventually enable it to identify anomalous measurements. 
 
-2. Create a new anomaly detection check and port the historic check results and feedback from the old anomaly score check to the new anomaly detection check. This is the recommended option if you want to preserve the historic check results and feedbacks. However, you won't be able to see the old anomaly score check results in the Soda Cloud. Refer to following SodaCL to apply this option.
 To follow this path, revise your existing anomaly score check to use the anomaly detection syntax, as in the following example.
 {% include code-header.html %}
 ```yaml
