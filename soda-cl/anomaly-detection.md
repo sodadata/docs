@@ -34,7 +34,6 @@ checks for dim_customer:
         window_length: 1000
         aggregation_function: last
     model: # optional
-      type: prophet 
       hyperparameters:
         static:
           profile:
@@ -63,10 +62,10 @@ checks for dim_customer:
 [Migrate to anomaly detection](#migrate-to-anomaly-detection) <br />
 [Reset anomaly history](#reset-anomaly-history)<br />
 [Optional check configurations](#optional-check-configurations) <br />
-[Add optional severity level configuration](#add-optional-severity-level-configurations)<br/>
+[Manage alert severity levels](#manage-alert-severity-levels) <br/>
 [Add optional training dataset configurations](#add-optional-training-dataset-configurations)<br />
 [Add optional model configurations](#add-optional-model-configurations)<br />
-[Add optional automatic tuning configurations](#add-optional-automatic-tuning-configurations)<br />
+[Add optional dynamic hyperparameter tuning configurations](#add-optional-dynamic-hyperparameter-tuning-configurations)<br />
 [Best practices for model configurations](#best-practices-for-model-configurations)<br />
 [Address common anomaly detection issues](#address-common-anomaly-detection-issues)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Insensitive detection](#insensitive-detection)<br/>
@@ -218,7 +217,7 @@ for each dataset T:
 
 <br />
 
-## Add optional severity level configurations
+## Manage alert severity levels
 
 You can add optional `severity_level_parameters` to an anomaly detection check to customize the way that Soda determines the severity level of an anomaly. The following example includes two optional severity level parameters.
 
@@ -237,7 +236,7 @@ checks for dim_customer:
 | `min_confidence_interval_ratio` | decimal between 0 and 1 | `0.001` |
 
 
-The `warning_ratio` parameter determines the area of warning range. Warning range is a buffer on top of the confidence interval to decrease the volume of falsely-identified anomalies. The aim is to distinguish between warning and critical alerts. If the check result is within the warning range, Soda flags the check result as a warning. 
+The `warning_ratio` parameter determines the area of warning range. Warning range is a buffer on top of the confidence interval. The aim is to distinguish between warning and critical alerts. If the check result is within the warning range, Soda flags the check result as a warning. This behavior is similar with `fail` and `warn` conditions in other Soda checks.
 
 Soda calculates the warning range using the following formula:
 
@@ -251,7 +250,7 @@ lower warning range = between l and (l - warning_ratio * w)
 
 For example, if the model's confidence interval is `[10, 20]` and the `warning_ratio` is `0.1`, the upper warning range is `]20, 22]` and the lower warning range is `[9, 10[`. If the check result is within the warning ranges, Soda flags the check result as a warning. If you need wider warning ranges to decrease the amount of critical alerts, you can gradually increase the `warning_ratio` value to achieve your ideal range.
 
-The graph below illustrates how Soda computes the warning range. The yellow area represents the warning range and the warning ratio is 0.1. This means that if the model's confidence interval width is 10, the warning width is 1, as shown with blue and red arrows.
+The graph below illustrates how Soda computes the warning range. The yellow area represents the warning range which is 10% of the confidence interval with as shown with blue and red arrows.
 
 ![warning-range](/assets/images/ad-warning-area.png){:height="700px" width="700px"}
 
@@ -332,7 +331,6 @@ checks for dim_customer:
   - anomaly detection for row_count:
       name: Anomaly detection for row_count
       model: 
-        type: prophet 
         hyperparameters:
           static:
             profile: coverage 
@@ -418,7 +416,6 @@ checks for dim_customer:
   - anomaly detection for row_count:
       name: Anomaly detection for row_count
       model:
-        type: prophet
         hyperparameters:
           static:
             profile:
@@ -441,7 +438,6 @@ checks for dim_customer:
   - anomaly detection for row_count:
       name: Anomaly detection for row_count
       model:
-        type: prophet
         holidays_country_code: US
 ```
 
@@ -452,7 +448,6 @@ checks for dim_customer:
   - anomaly detection for row_count:
       name: Anomaly detection for row_count
       model:
-        type: prophet
         holidays_country_code: US
         hyperparameters:
           static:
@@ -471,7 +466,6 @@ The following offers an example of how to add automatic hyperparameter tuning. T
 checks for dim_customer:
   - anomaly detection for row_count:
       model:
-        type: prophet
         hyperparameters:
           dynamic:
             objective_metric: ["coverage", "SMAPE"]
@@ -549,7 +543,6 @@ In such a case, consider using the `MAPE` profile which is more sensitive to cha
 checks for your-table-name:
   - anomaly detection for your-metric-name:
       model:
-        type: prophet
         hyperparameters:
           static:
             profile: MAPE
@@ -582,7 +575,6 @@ checks for your-table-name:
       training_dataset:
         window_length: 30
       model:
-        type: prophet
         hyperparameters:
           static:
             profile: MAPE
