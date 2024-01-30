@@ -152,20 +152,20 @@ Consider using the Soda library to set up a [programmatic scan]({% link soda-lib
 
 ## Migrate to anomaly detection
 
-As an entirely new SodaCL check, adding an anomaly detection check results in a new check in the Soda Cloud application.
+If you have an existing old `anomaly score` check, you can migrate to the new anomaly detection check. When migrating to the new check, you have three options:
 
-However, you may wish to migrate your existing anomaly score checks to anomaly detection checks so that you can:
-* preserve any feedback you have applied to historical measurements, such as exclusions, resets, or corrected classifications
-* see the results of the anomaly detection algorithm carry on from and existing anomaly score check 
+1. Create a new anomaly detection check and forget about the old anomaly score check. This is the easiest and the default behavior. However, you lose all the historic check results and feedback you have applied to the old anomaly score check.
 
-To do so, add a configuration as per the example below to automatically port past results and feedback to your new anomaly detection check. The default value is `False`.
+2. Create a new anomaly detection check and port the historic check results and feedback from the old anomaly score check to the new anomaly detection check. This is the recommended option if you want to preserve the historic check results and feedbacks. However, you won't be able to see the old anomaly score check results in the Soda Cloud. Refer to following SodaCL to apply this option.
 
-{% include code-header.html %}
-```yaml
-checks for dim_customer:
-  - anomaly detection for row_count:
-      take_over_existing_anomaly_score_check: True
-```
+    {% include code-header.html %}
+    ```yaml
+    checks for dim_customer:
+      - anomaly detection for row_count:
+          take_over_existing_anomaly_score_check: True
+    ```
+
+3. Create a new anomaly detection check by keeping the historic check results and feedbacks from the old anomaly score check and continue to monitor the old anomaly score check from the Soda Cloud. If you choose this option, then we recommend that you create a new `checks` yaml file with a different name and add the new anomaly detection check to the new yaml file. So that, both the old and new checks are monitored from the Soda Cloud.
 
 ## Reset anomaly history
 
