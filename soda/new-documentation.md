@@ -9,7 +9,7 @@ parent: Learning resources
 
 <br />
 
-#### February 1, 2024
+#### January 31, 2024
 * Added documentation for the new [anomaly detection]({% link soda-cl/anomaly-detection.md %}) check, which replaces the [anomaly score]({% link soda-cl/anomaly-score.md %}) check.
 
 #### January 29, 2024
