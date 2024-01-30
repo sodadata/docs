@@ -1,3 +1,0 @@
-Soda hosts managed agents in a secure environment in Amazon AWS. As a SOC 2 Type 2 certified business, Soda responsibly manages managed agents to ensure that they remain private, secure, and independent of all other managed agents. Data pertaining to data source connections is encrypted and used only to access data in a data source to perform scans for data quality. 
-
-If your data source accepts allowlisted IP addresses, add the Soda Cloud IP address to the allowlist to access your data sources via the Soda-manage Agent. Access the IP address in Soda Cloud when connecting a new data source, 

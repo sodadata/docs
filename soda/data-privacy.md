@@ -13,21 +13,33 @@ redirect_from:
 
 Soda works in several ways to ensure your data and systems are secure and remain private.
 
+[Compliance and reporting](#compliance-and-reporting)<br />
+[Using a Soda-hosted agent](#using-a-soda-hosted-agent)<br />
+[Connecting with Soda Library](#connecting-with-soda-library)<br />
+[Sending data to Soda Cloud](#sending-data-to-soda-cloud)<br />
+[Single sign-on with Soda Cloud](#single-sign-on-with-soda-cloud)<br />
+<br />
+
 ## Compliance and reporting
 
 As a result of an independent review in April 2022, Soda has been found to be **SOCII Type 2** compliant. Contact <a href="mailto:support@soda.io">support@soda.io</a> for more information.
 
 ![soc2](/assets/images/soc2.png){:width="100px"}
 
-## Making secure connections
+## Using a Soda-hosted agent
+
+Soda hosts agents in a secure environment in Amazon AWS. As a SOC 2 Type 2 certified business, Soda responsibly manages Soda-hosted agents to ensure that they remain private, secure, and independent of all other hosted agents. 
+
+* Soda encrypts values pertaining to data source connections and only uses the values to access the data to perform scans for data quality. It uses <a href="https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html" target="_blank">asymmetric keys in AWS KMS</a> to encrypt and store  the values you provide for access to your data source. AMS KMS keys are certified under the <a href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4523" target="_blank">FIPS 140-2 Cryptographic Module Validation Program</a>. 
+* Soda encrypts the secrets you provide via Soda Cloud both in transit and at rest. This <a href="https://en.wikipedia.org/wiki/End-to-end_encryption" target="_blank">end-to-end encryption</a> means that secrets leave your browser already encrypted and can only be decrypted using a Private Key that only the Soda Agent can access.
+* Once you enter data source access credentials into Soda Cloud, neither you or any user or entity can access the values because they have been encrypted and can only be decrypted by the Soda Agent. 
+* If your data source accepts allowlisted IP addresses, add the Soda Cloud IP address to the allowlist to access your data sources via the Soda-hosted Agent. Obtain this IP address in Soda Cloud when connecting a new data source.
+
+## Connecting with Soda Library
 
 Installed in your environment, you use the Soda Library command-line tools to securely connect to a data source using system variables to store login credentials.
 
-You can connect Soda Library to your Soda Cloud account. To communicate with your data source, Soda Cloud uses a Network Address Translation (NAT) gateway with the IP address 54.78.91.111. You may wish to add this IP address to your data source's passlist.
-
-## Single sign-on with Soda Cloud
-
-Organizations that use a SAML 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider. Once added, employees of the organization can gain authorized and authenticated access to the organization's Soda Cloud account by successfully logging in to their SSO. Refer to [Set up single sign-on with Soda Cloud]({% link soda-cloud/sso.md %}) for details.
+You can connect Soda Library to your Soda Cloud account. To communicate with your data source, Soda Cloud uses a Network Address Translation (NAT) gateway with the IP address 54.78.91.111. You may wish to add this IP address to your data source's allowlist.
 
 ## Sending data to Soda Cloud
 
@@ -44,9 +56,9 @@ Where your datasets contain <a href="https://ec.europa.eu/info/law/law-topic/dat
 
 Read more about Soda's <a href="https://www.soda.io/privacy-policy" target="_blank">Privacy Policy</a>. 
 
-## Using a Soda-hosted agent
+## Single sign-on with Soda Cloud
 
-{% include managed-agent-secure.md %}
+Organizations that use a SAML 2.0 single sign-on (SSO) identity provider can add Soda Cloud as a service provider. Once added, employees of the organization can gain authorized and authenticated access to the organization's Soda Cloud account by successfully logging in to their SSO. Refer to [Set up single sign-on with Soda Cloud]({% link soda-cloud/sso.md %}) for details.
 
 <br />
 
