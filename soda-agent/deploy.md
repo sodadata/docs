@@ -173,7 +173,7 @@ REVISION: 1
 ```shell
 minikube kubectl -- describe pods
 ```
-4. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
+4. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud. 
 ```shell
 ...
 Containers:
@@ -190,7 +190,11 @@ Containers:
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="600px" width="600px"}
 
-<br />
+If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
+```shell
+kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
+```
+<br/>
 
 #### Deploy using a values YAML file
 
@@ -245,6 +249,11 @@ Containers:
 ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
+
+If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
+```shell
+kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
+```
 
 If you use private key authentication with a Soda Agent, refer to [Soda Agent extras]({% link soda-agent/secrets.md %}#use-a-values-file-to-store-private-key-authentication-values).
 
@@ -421,6 +430,11 @@ Containers:
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
+If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
+```shell
+kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
+```
+
 <br />
 
 #### Deploy using a values YAML file
@@ -478,6 +492,11 @@ Containers:
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
+If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
+```shell
+kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
+```
+
 <br />
 
 ### (Optional) Connect via AWS PrivateLink
@@ -493,6 +512,11 @@ kubectl -n soda-agent rollout restart deploy
 ```
 5. After you have started the agent and validated that it is running, log into your Soda Cloud account, then navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
+
+If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
+```shell
+kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
+```
 
 
 ### About the `helm install` command
@@ -823,6 +847,11 @@ soda-agent-orchestrator-ffd74c76-5g7tl   1/1     Running   0          32s
 Be aware that this may take several minutes to appear in your list of Soda Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
+If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
+```shell
+kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
+```
+
 <br /> 
 
 #### Deploy using CLI only - virtual cluster
@@ -877,6 +906,11 @@ soda-agent-orchestrator-ffd74c76-5g7tl   1/1     Running   0          32s
 Be aware that this may take several minutes to appear in your list of Soda Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
+If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
+```shell
+kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
+```
+
 <br /> 
 
 #### Deploy using a values YAML file
@@ -927,6 +961,11 @@ kubectl describe pods -n soda-agent
 ```
 8. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
+
+If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
+```shell
+kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
+```
 
 <br /> 
 
@@ -1178,6 +1217,11 @@ Status:           Running
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="600px" width="600px"}
 
+If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
+```shell
+kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
+```
+
 <br />
 
 #### Deploy using a values YAML file
@@ -1233,6 +1277,11 @@ Status:           Running
 ...
 ```
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
+
+If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
+```shell
+kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
+```
 
 <br /> 
 
