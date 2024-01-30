@@ -188,7 +188,7 @@ If you wish, you can reset an anomaly detection's history, effectively recalibra
 | :-: | ------------|---------------|
 | ✓ | Define a name for an anomaly detection check. | [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names)  |
 | ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) | 
-|   | Define alert configurations to specify warn and fail thresholds. | - |
+|   | Define alert configurations to specify warn and fail thresholds. See alternative: [Manage alert security levels](#manage-alert-severity-levels) | - |
 | ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset. | [Add an in-check filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) |
 | ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
@@ -236,7 +236,7 @@ checks for dim_customer:
 | `min_confidence_interval_ratio` | decimal between 0 and 1 | `0.001` |
 
 
-The `warning_ratio` parameter determines the area of warning range. Warning range is a buffer on top of the confidence interval. The aim is to distinguish between warning and critical alerts. If the check result is within the warning range, Soda flags the check result as a warning. This behavior is similar with `fail` and `warn` conditions in other Soda checks.
+The `warning_ratio` parameter determines the area of warning range, which is a buffer on top of the confidence interval. The aim is to help the anomaly detectio ncheck distinguish between warning and critical alerts. If the check result is within the warning range, Soda flags the check result as a warning. This behavior is similar to setting `fail` and `warn` conditions in other Soda checks.
 
 Soda calculates the warning range using the following formula:
 
@@ -250,7 +250,7 @@ lower warning range = between l and (l - warning_ratio * w)
 
 For example, if the model's confidence interval is `[10, 20]` and the `warning_ratio` is `0.1`, the upper warning range is `]20, 22]` and the lower warning range is `[9, 10[`. If the check result is within the warning ranges, Soda flags the check result as a warning. If you need wider warning ranges to decrease the amount of critical alerts, you can gradually increase the `warning_ratio` value to achieve your ideal range.
 
-The graph below illustrates how Soda computes the warning range. The yellow area represents the warning range which is 10% of the confidence interval with as shown with blue and red arrows.
+The graph below illustrates how Soda computes the warning range. The yellow area represents the warning range which is 10% of the confidence interval, as shown with blue and red arrows.
 
 ![warning-range](/assets/images/ad-warning-area.png){:height="700px" width="700px"}
 
@@ -273,7 +273,7 @@ l = min(l, y^ - y^ * min_confidence_interval_ratio)
 
 To increase the minimum confidence interval width, you can gradually increase the `min_confidence_interval_ratio` value until you reach your ideal minimum confidence interval.
 
-The graph below illustrates the impact of the `min_confidence_interval_ratio` parameter. For this example, the `min_confidence_interval_ratio` set to `0` and the measurements are very easy to predict. With such a low setting, the confidence interval is very narrow and insignificant noises produce many falsely-identified anomalies.
+The graph below illustrates the impact of the `min_confidence_interval_ratio` parameter. For this example, the `min_confidence_interval_ratio` is set to `0` and the measurements are very easy to predict. With such a low setting, the confidence interval is very narrow and insignificant noises produce many falsely-identified anomalies.
 
 ![ad-linear-false-positives](/assets/images/ad-linear-false-positives.png){:height="700px" width="700px"}
 
