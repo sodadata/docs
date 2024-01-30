@@ -152,20 +152,44 @@ Consider using the Soda library to set up a [programmatic scan]({% link soda-lib
 
 ## Migrate to anomaly detection
 
-If you have an existing old `anomaly score` check, you can migrate to the new anomaly detection check. When migrating to the new check, you have three options:
+If you have an existing `anomaly score` check, you can migrate to use an anomaly detection check. To migrate to the new check, you have three options.
 
-1. Create a new anomaly detection check and forget about the old anomaly score check. This is the easiest and the default behavior. However, you lose all the historic check results and feedback you have applied to the old anomaly score check.
+*Default* &nbsp; The first option is to create a new anomaly detection check to replace an existing anomaly score check. This is the easiest path and the default behavior, but you lose all the historic check results for the anomaly score check and any feedback that you applied to the anomaly score check's measurements. This means that the algorithm starts from scratch to learn patterns in your data that eventually enable it to identify anomalous measurements. 
 
 2. Create a new anomaly detection check and port the historic check results and feedback from the old anomaly score check to the new anomaly detection check. This is the recommended option if you want to preserve the historic check results and feedbacks. However, you won't be able to see the old anomaly score check results in the Soda Cloud. Refer to following SodaCL to apply this option.
+To follow this path, revise your existing anomaly score check to use the anomaly detection syntax, as in the following example.
+{% include code-header.html %}
+```yaml
+checks for dim_customer:
+# previous syntax
+#  - anomaly score for row_count < default
+# new syntax
+  - anomaly detection for row_count
+      name: Anomalies in dataset
+```
 
-    {% include code-header.html %}
-    ```yaml
-    checks for dim_customer:
-      - anomaly detection for row_count:
-          take_over_existing_anomaly_score_check: True
-    ```
+<br />
 
-3. Create a new anomaly detection check by keeping the historic check results and feedbacks from the old anomaly score check and continue to monitor the old anomaly score check from the Soda Cloud. If you choose this option, then we recommend that you create a new `checks` yaml file with a different name and add the new anomaly detection check to the new yaml file. So that, both the old and new checks are monitored from the Soda Cloud.
+*Recommended* &nbsp; The second option is to create a new anomaly detection check and port the historic anomaly score check results and feedback to the new check. This path retains the anomaly score's historic check results and feedback to preserve the algorithm's memory of patterns in your data, though you cannot directly access the retained information via Soda Cloud. 
+
+To follow this path, revise your existing anomaly score check to use the anomaly detection syntax, and add the `take-over...` parameter.
+{% include code-header.html %}
+```yaml
+checks for dim_customer:
+  - anomaly detection for row_count:
+      name: Anomalies in dataset
+      take_over_existing_anomaly_score_check: True
+```
+
+<br />
+
+The third option is to keep the existing anomaly score check as is, and create an anomaly detection check in a separate checks YAML file, essentially running two checks in parallel. This path retains the existing anomaly score's historic check results and feedback which you can continue to access directly in Soda Cloud. At the same time, the anomaly detection check begins learning the patterns in your data and accruing separate feedback you add to help it identify anomalous measurements. 
+
+To follow this path, create a new checks YAML file, then add an anomaly detection check to the file. Be sure to include both file names in any Soda scan you run programmatically or via the Soda Library CLI, as in the following example command.
+{% include code-header.html %}
+```shell
+soda scan -d adventureworks -c configuration.yml checks_anomaly_score.yml checks_anomaly_detection.yml
+```
 
 ## Reset anomaly history
 
