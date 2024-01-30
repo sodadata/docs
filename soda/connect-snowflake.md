@@ -50,7 +50,7 @@ data_source my_datasource_name:
 | database| required | Provide an idenfier for your database. |
 | warehouse| required | Provide an identifier for the cluster of resources that is a Snowflake virtual warehouse. See <a href="https://docs.snowflake.com/en/user-guide/warehouses-overview" target="_blank">Overview of Warehouses</a>.|
 | connection_timeout| required | Set the timeout period in minutes for an inactive login session.  |
-| role<sup>1</sup> | optional | Specify the Snowflake role that has permission to access the `database` and `schema` of your data source. |
+| role<sup>1</sup> | optional | Specify a Snowflake role that has permission to access the `database` and `schema` of your data source. |
 | client_session_keep_alive | optional | Use this parameter to keep the session active, even with no user activity. Provide a boolean value: `true` or `false`|
 | authenticator<sup>2</sup> | optional | Add an authenticator paramater with value `externalbrowser` to authenticate the connection to your Snowflake data source using any SAML 2.0-compliant identity provider (IdP) such as Okta or OneLogin.  |
 | other params | optional | You can pass any other Snowflake paramters you wish by adding the key:value pairs to your Snowflake connection configuration. See <a href="https://docs.snowflake.com/en/user-guide/python-connector-api.html#connect" target="_blank"> Snowflake Python Connector API documentation</a> for a list of passable parameters. |
@@ -138,6 +138,12 @@ kubectl create secret generic -n <soda-agent-namespace> snowflake-private-key --
 
 
 ## Troubleshoot
+<!--Linked to UI, access Shlink-->
+**Problem:** When testing the connection to your Snowflake data source, Snowflake returns an error message about using the `use database` command.
+
+**Solution:** Use the `role` parameter to specify a Snowflake role that has permission to access the `database` and `schema` of your data source. <br />Though optional, best practice dictates that you provide a value for `role`. If you do not provide a role, and Snowflake has not assigned a <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Role</a> to the user account, Snowflake may, confusingly, deny access to the data source. 
+
+<br />
 
 **Problem:** When Soda attempts to connect to your Snowflake data source, it produces a connectivity error that includes something like `RunteimError: Command failed with exit code 2: ..... ocsp_response_validation_cash.lock`. 
 
