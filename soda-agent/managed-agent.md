@@ -46,13 +46,15 @@ You can use a Soda-manage agent to connect with the following data sources:
 
 In your Soda Cloud account, navigate to **your avatar** > **Data Sources**. Click **New Data Source**, then follow the guided steps to create a new data source. Refer to the sections below for insight into the values to enter in the fields and editing panels in the guided steps. 
 
+💡 Already have data source connected to a self-hosted agent? You can [migrate]({% link soda/upgrade.md %}#migrate-a-data-source-from-a-self-hosted-to-a-soda-hosted-agent) a data source to a Soda-hosted agent.
+
 #### 1. Attributes
 
 | Field or Label            | Guidance |
 | -----------------------   | ---------- |
 | Data Source Label | Provide a unique identifier for the data source. Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
 | Default Scan Schedule Label | Provide a name for the default scan schedule for this data sources. The scan schedule indicates which Soda Agent to use to execute the scan, and when.  |
-| Default Scan Schedule Agent | Select `SodaManagedAgent`. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
+| Default Scan Schedule Agent | Select `soda-hosted-agent`. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
 | Schedule Definition | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
 | Starting At | Select the time of day to run the scan. The default value is midnight. |
 | Time Zone | Select a timezone. The default value is UTC. |
