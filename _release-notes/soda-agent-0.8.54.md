@@ -5,5 +5,5 @@ products:
   - soda-agent
 ---
 
-This release includes bug fixes and features and maps to [Soda Library 1.1.3]({% link release-notes/soda-library.md %}). <br />
+This release includes bug fixes and features and maps to [Soda Library 1.2.3]({% link release-notes/soda-library.md %}). <br />
 Access [Soda documentation]({% link soda/upgrade.md %}#upgrade-a-soda-agent) for instructions to upgrade a Soda Agent helm chart to use the latest version of Soda Library.
