@@ -25,12 +25,14 @@ checks for dim_customer:
   - anomaly detection for row_count:
     name: "Anomaly detection for row_count" # optional
     identity: "anomaly-detection-row-count" # optional
+    severity_level_parameters: # optional
+      warning_ratio: 0.1
+      min_confidence_interval_ratio: 0.001
     training_dataset_parameters: # optional
         frequency: auto
         window_length: 1000
         aggregation_function: last
     model: # optional
-      type: prophet 
       hyperparameters:
         static:
           profile:
@@ -59,9 +61,10 @@ checks for dim_customer:
 [Migrate to anomaly detection](#migrate-to-anomaly-detection) <br />
 [Reset anomaly history](#reset-anomaly-history)<br />
 [Optional check configurations](#optional-check-configurations) <br />
+[Manage alert severity levels](#manage-alert-severity-levels) <br/>
 [Add optional training dataset configurations](#add-optional-training-dataset-configurations)<br />
 [Add optional model configurations](#add-optional-model-configurations)<br />
-[Add optional automatic tuning configurations](#add-optional-automatic-tuning-configurations)<br />
+[Add optional dynamic hyperparameter tuning configurations](#add-optional-dynamic-hyperparameter-tuning-configurations)<br />
 [Best practices for model configurations](#best-practices-for-model-configurations)<br />
 [Address common anomaly detection issues](#address-common-anomaly-detection-issues)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Insensitive detection](#insensitive-detection)<br/>
@@ -183,7 +186,7 @@ If you wish, you can reset an anomaly detection's history, effectively recalibra
 | :-: | ------------|---------------|
 | ✓ | Define a name for an anomaly detection check. | [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names)  |
 | ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) | 
-|   | Define alert configurations to specify warn and fail thresholds. | - |
+|   | Define alert configurations to specify warn and fail thresholds. See alternative: [Manage alert security levels](#manage-alert-severity-levels) | - |
 | ✓ | Apply an in-check filter to return results for a specific portion of the data in your dataset. | [Add an in-check filter to a check]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) |
 | ✓ | Use quotes when identifying dataset names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. |  - |
@@ -209,6 +212,72 @@ for each dataset T:
   checks:
     - anomaly detection for row_count
 ```
+
+<br />
+
+## Manage alert severity levels
+
+You can add optional `severity_level_parameters` to an anomaly detection check to customize the way that Soda determines the severity level of an anomaly. The following example includes two optional severity level parameters.
+
+{% include code-header.html %}
+```yaml
+checks for dim_customer:
+  - anomaly detection for row_count:
+      severity_level_parameters:
+        warning_ratio: 0.1
+        min_confidence_interval_ratio: 0.001
+```
+
+| Configuration key | Value | Default |
+| ----------------- | ----- | ------- |
+| `warning_ratio` | decimal between 0 and 1 | `0.1` |
+| `min_confidence_interval_ratio` | decimal between 0 and 1 | `0.001` |
+
+
+The `warning_ratio` parameter determines the area of warning range, which is a buffer on top of the confidence interval. The aim is to help the anomaly detectio ncheck distinguish between warning and critical alerts. If the check result is within the warning range, Soda flags the check result as a warning. This behavior is similar to setting `fail` and `warn` conditions in other Soda checks.
+
+Soda calculates the warning range using the following formula:
+
+```latex
+upper confidence interval: u
+lower confidence interval: l
+confidence interval width: w = u - l
+upper warning range = between u and (u + warning_ratio * w)
+lower warning range = between l and (l - warning_ratio * w)
+```
+
+For example, if the model's confidence interval is `[10, 20]` and the `warning_ratio` is `0.1`, the upper warning range is `]20, 22]` and the lower warning range is `[9, 10[`. If the check result is within the warning ranges, Soda flags the check result as a warning. If you need wider warning ranges to decrease the amount of critical alerts, you can gradually increase the `warning_ratio` value to achieve your ideal range.
+
+The graph below illustrates how Soda computes the warning range. The yellow area represents the warning range which is 10% of the confidence interval, as shown with blue and red arrows.
+
+![warning-range](/assets/images/ad-warning-area.png){:height="700px" width="700px"}
+
+<br />
+
+The `min_confidence_interval_ratio` parameter determines the minimum width of the confidence interval. The confidence interval is the range of values that the model predicts for the next measurement. If the prediction problem is too easy for the model, the confidence interval becomes too narrow and the model becomes too sensitive to small noises in the data. 
+
+In such cases, the model may flag normal measurements as anomalies due to small decimal differences. To avoid these scenarios, Soda uses a minimum confidence interval width parameter to handle very narrow confidence intervals. The formula that updates the confidence interval is as follows:
+
+```latex
+upper confidence interval: u
+lower confidence interval: l
+predicted value: y^
+upper confidence interval width: w_u = u - y^
+lower confidence interval width: w_l = y^ - l
+
+u = max(u, y^ + y^ * min_confidence_interval_ratio)
+l = min(l, y^ - y^ * min_confidence_interval_ratio)
+```
+
+To increase the minimum confidence interval width, you can gradually increase the `min_confidence_interval_ratio` value until you reach your ideal minimum confidence interval.
+
+The graph below illustrates the impact of the `min_confidence_interval_ratio` parameter. For this example, the `min_confidence_interval_ratio` is set to `0` and the measurements are very easy to predict. With such a low setting, the confidence interval is very narrow and insignificant noises produce many falsely-identified anomalies.
+
+![ad-linear-false-positives](/assets/images/ad-linear-false-positives.png){:height="700px" width="700px"}
+
+To artificially introduce a minimum confidence interval buffer to prevent falsely-identified anomalies, this example sets the `min_confidence_interval_ratio` to the default value of `0.001`. The result is a wider confidence interval that is far less sensitive to small noises in the data.
+
+![ad-linear-green](/assets/images/ad-linear-pattern-7-window-width.png){:height="700px" width="700px"}
 
 <br />
 
@@ -260,7 +329,6 @@ checks for dim_customer:
   - anomaly detection for row_count:
       name: Anomaly detection for row_count
       model: 
-        type: prophet 
         hyperparameters:
           static:
             profile: coverage 
@@ -346,7 +414,6 @@ checks for dim_customer:
   - anomaly detection for row_count:
       name: Anomaly detection for row_count
       model:
-        type: prophet
         hyperparameters:
           static:
             profile:
@@ -369,7 +436,6 @@ checks for dim_customer:
   - anomaly detection for row_count:
       name: Anomaly detection for row_count
       model:
-        type: prophet
         holidays_country_code: US
 ```
 
@@ -380,7 +446,6 @@ checks for dim_customer:
   - anomaly detection for row_count:
       name: Anomaly detection for row_count
       model:
-        type: prophet
         holidays_country_code: US
         hyperparameters:
           static:
@@ -399,7 +464,6 @@ The following offers an example of how to add automatic hyperparameter tuning. T
 checks for dim_customer:
   - anomaly detection for row_count:
       model:
-        type: prophet
         hyperparameters:
           dynamic:
             objective_metric: ["coverage", "SMAPE"]
@@ -477,7 +541,6 @@ In such a case, consider using the `MAPE` profile which is more sensitive to cha
 checks for your-table-name:
   - anomaly detection for your-metric-name:
       model:
-        type: prophet
         hyperparameters:
           static:
             profile: MAPE
@@ -510,7 +573,6 @@ checks for your-table-name:
       training_dataset:
         window_length: 30
       model:
-        type: prophet
         hyperparameters:
           static:
             profile: MAPE
@@ -519,26 +581,6 @@ checks for your-table-name:
 Having adjusted the `window_length` and `MAPE` profile, the graph below illustrates that the model is more sensitive to recent measurements and does not create alert fatigue after November 2023; refer to the green rectangle.
 
 ![coverage-profile-window-length-30](/assets/images/ad-false-positive-mape-30.png){:height="700px" width="700px"}
-
-<!-- TODO: enable this FAQ in the second release together with the fail/warn buffer feature. -->
-<!-- ### Overly-sensitive detection
-
-If the time series data is very easy to predict, then the model is likely to have very tight confidence intervals which can result in a model that falsely detects too many anomalies. For instance, the following daily row count graph has a very tight confidence interval since it has a very predictable linear pattern. Because the default `window_length` is `1000`, the uncertainty decreases over time and the model becomes more confident about its predictions and raises too many false positives.
-
-![ad-linear-pattern-7-window-width](/assets/images/ad-linear-false-positives.png){:height="700px" width="700px"}
-
-In such a case, consider decreasing the `window_length` to a very low value to increase the model's uncertainty. Decreasing this example's `window_length` to a very low value such as `7` increases the model's uncertainty and decreases the volume of falsely-identified anomalies. 
-{% include code-header.html %}
-```yaml
-checks for your-table-name:
-  - anomaly detection for your-metric-name:
-      training_dataset:
-        window_length: 7
-```
-
-Having adjusted the window length, the graph below illustrates that the model is less confident and recognizes far fewer measurements as anomalies.
-
-![ad-linear-pattern-7-window-width](/assets/images/ad-linear-pattern-7-window-width.png){:height="700px" width="700px"} -->
 
 ### Large boundaries that ignore anomalies
 
