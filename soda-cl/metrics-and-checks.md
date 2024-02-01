@@ -80,7 +80,7 @@ checks for dim_employees_dev:
 
 <details>
     <summary style="color:#00BC7E">Quick view of unique check types</summary>
-    anomaly score<br />
+    anomaly detection<br />
     distribution<br />
     freshness<br />
     reconciliation <br />
@@ -223,7 +223,8 @@ checks for dim_customer:
 ## List of SodaCL metrics and checks
 {% include code-header.html %}
 ```yaml
-anomaly score
+anomaly detection
+anomaly score (deprecated)
 avg
 avg_length
 cross

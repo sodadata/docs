@@ -177,7 +177,7 @@ soda test-connection -d fulfillment_apac1_staging -c configuration.yml
               - column index change
               - column type change
       - row_count > 0
-      - anomaly score for row_count < default
+      - anomaly detection for row_count
       - freshness(start_date) < 398d
       - missing_count(weight_unit_measure_code) = 0
       - missing_count(color) = 0

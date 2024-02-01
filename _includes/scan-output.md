@@ -25,7 +25,7 @@ Scan summary:
         duplicate_count: 0
       missing_count(adjusted_passenger_count) = 0  [PASSED]
         check_value: 0
-      anomaly score for row_count < default  [PASSED]
+      anomaly detection for row_count  [PASSED]
         check_value: 0.0
       Schema Check [PASSED]
 1/9 checks WARNED: 

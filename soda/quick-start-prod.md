@@ -241,7 +241,7 @@ checks for fact_internet_sales:
   # Check fails when the average of the column is abnormal
   # relative to previous measurements for average sales amount
   # sales_amount is cast from data type MONEY to enable calculation
-  - anomaly score for avg(sales_amount::NUMERIC) < default
+  - anomaly detection for avg(sales_amount::NUMERIC)
 ```
 
 

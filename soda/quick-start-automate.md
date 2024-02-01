@@ -109,8 +109,8 @@ profile columns:
 
 #### Check Datasets
 
-When Soda Cloud automatically discovers the datasets in a data source, it prepares **automated monitoring checks** for each dataset. These checks detect anomalies and monitor schema evolution, corresponding to the SodaCL anomaly score and schema checks, respectively.  
-* [Anomaly score]({% link soda-cl/anomaly-score.md %}) automatically detects anomalies in your time-series data. Its algorithm learns the patterns of your data – including trends and seasonality – to identify and flag anomalies in your data. A detected anomaly yields a failed check result. 
+When Soda Cloud automatically discovers the datasets in a data source, it prepares **automated monitoring checks** for each dataset. These checks detect anomalies and monitor schema evolution, corresponding to the SodaCL anomaly detection and schema checks, respectively.  
+* [Anomaly detection]({% link soda-cl/anomaly-detection.md %}) automatically detects anomalies in your time-series data. Its algorithm learns the patterns of your data – including trends and seasonality – to identify and flag anomalies in your data. A detected anomaly yields a failed check result. 
 * [Schema evolution]({% link soda-cl/schema.md %}) automatically detects changes in a dataset's schema, whether columns are added, removed, or the index or data type of a column has changed. Any of those schema changes yield a failed check result.
 
 In the editing panel, specify the datasets that Soda Cloud must include or exclude when preparing automated monitoring checks. The default syntax in the editing panel indicates that Soda adds automated monitoring to all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character.
@@ -136,7 +136,7 @@ Best practice dictates that you send a notification to someone on your team when
 
 In Soda Cloud, navigate to **your avatar** > **Notification Rules**, then click **New Notification Rule**. Follow the guided steps to complete the new rule, supplying values that will trigger a notification any time one of your automated monitoring checks fails. 
 
-The example below sends such notifications for the automated anomaly score check on the `paxstats` dataset.
+The example below sends such notifications for the automated anomaly detection check on the `paxstats` dataset.
 
 ![automated-alert](/assets/images/automated-alert.png){:height="500px" width="500px"}
 
