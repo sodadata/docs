@@ -546,6 +546,89 @@ Use the following tables to estimate the execution time for checks with dynamic 
 * Adjust the value of the `interval_width` hyperparameter to obtain a more anomaly-sensitive model. The default value for this hyperparameter is `0.999` which means that the model applies a confidence interval of 99.9% which, in turn, means that if the predicted value is outside of the 99.9% interval, Soda flags it as an anomaly. If you want to have a more sensitive model, you can decrease this value though be aware that a lower value may result in more falsely-identified anomalies.
 * Use the `dynamic` tuning configuration only if necessary. Hyperparameter tuning is a computationally expensive process since the model tries all possible combinations of each hyperparameter's listed values to dynamically determine the best value to use to detect anomalies. See [Execution time analysis for dynamic hyperparameter tuning](#execution-time-analysis-for-dynamic-hyperparameter-tuning). If you need to use hyperparameter tuning, experiment with tuning the values of the `change_point_prior_scale` and `seasonality_prior_scale` hyperparameters first as these two have the most impact on the model's sensitivity.
 
+## Anomaly detection simulator to test optional configurations
+
+Anomaly detection simulator helps you to understand how anomaly detection works by visualizing the anomaly detection process. The simulator allows you to observe how confidence interval and detected anomaly changes when you change the parameters of the anomaly detection model. The main purpose of the simulator is to help you to choose the most suitable parameters for your data.
+
+### Installing and running the simulator
+
+The simulator is essentially a streamlit application that you run locally. To run the simulator, you need to first install the `soda-scientific[simulator]` package using the following command:
+
+```bash
+pip install soda-scientific[simulator]
+```
+
+After installing the package, you can run the simulator using the following command:
+
+```bash
+soda simulate-anomaly-detection -c configuration.yaml
+```
+
+`configuration.yaml` is necessary to get the Soda Cloud credentials. You can find more information about the configuration file [here](https://docs.soda.io/soda-library/install.html#configure-soda).
+
+### Using the simulator
+
+The welcome page of the simulator is shown below:
+
+![ad-simulator-welcome](/assets/images/ad-simulator-welcome.png){:height="700px" width="700px"}
+
+In the welcome page, you first need to provide your anomaly detection or old anomaly score check ID. You can find the ID of your check in the Soda Cloud URL.
+
+On the sidebar, you can see three configuration options:
+
+1. Model Hyperparameter Profiles
+2. Training Dataset Parameters
+3. Severity Level Parameters
+
+Each section will be explained in detail in the following sections. The values of the parameters are set to the default values of the anomaly detection check. You can change the values of the parameters and observe how the anomaly detection process changes.
+
+#### Model Hyperparameter Profiles
+
+In this section, there are three options which are `coverage`, `MAPE`, and `custom`. The `coverage` and `MAPE` options are the same as the `profile` parameter of the anomaly detection check. To read more about hyperparameter profiles refer to [here](#add-optional-model-configurations). Before using the `custom` option, we recommend that you first experiment with the `coverage` and `MAPE` options.
+
+If you choose the `custom` option, you can change the values of the hyperparameters. The default values of the hyperparameters are the same as the `coverage` profile. We identified that for the anomaly detection use case, the `changepoint_prior_scale`, `seasonality_prior_scale` and `seasonality_mode` hyperparameters have the most impact on the model. Therefore, we recommend that you first experiment with the values of these three hyperparameters before customizing or tuning others. To read more about hyperparameters refer to [here](#customize-hyperparameters).
+
+For all other hyperparameters, you can turn on the `Advanced` toggle and paste the hyperparameters in the `Custom Prophet Hyperparameters` text area. Note that all hyperparameters that does not exist in your input will be defaulted to the `coverage` profile. `Advanced` mode is discouraged unless you know how Facebook Prophet works and you have a very specific use case.
+
+See the example below;
+
+```python
+{
+  "growth": "linear",
+  "change_pointprior_scale": 0.1,
+  "seasonality_prior_scale": 0.1,
+  "n_changepoints": 20,
+}
+```
+
+#### Training Dataset Parameters
+
+In this section, you can change the values of the `frequency`, `window_length` and `aggregation_function` parameters. To read more about these parameters refer to [here](#add-optional-training-dataset-configurations).
+
+The `window_length` parameter defines the number of historical measurements that Soda uses for training the model. The default value is `1000`. For instance, if your frequency is daily `D`, the model trains on the last 1000 days of available historical data to recognize anomalies, ignoring earlier measurements. You may want to shorthen the `window_length` parameter if you want to give more importance to the recent measurements. This parameter is one of the most important parameter to tune. We recommend playing with this parameter if you need to give more importance to the recent measurements.
+
+The `frequency` parameter is set to `auto` by default which means that Soda automatically detects the frequency of the data. If you think that Soda misinterprets the `frequency`, you can experiment different `frequency` values. For example, if you think that the frequency is weekly, you can set the `frequency` parameter to `W`. It is less likely that you will need to change this parameter.
+
+The `aggregation_function` parameter defines how Soda aggregates the data within each window. For example, if your frequency is hourly and your aggregation function is last and Soda collected two measurements for the same hour, Soda uses the most recent, or latest, measurement for that hour to gauge anomalies. You may want to change this parameter if you think that the default value does not fit your use case. It is also less likely that you will need to change this parameter.
+
+#### Severity Level Parameters
+
+In this section, you can change the values of the `warning_ratio` and `min_confidence_interval_ratio` parameters. To read more about these parameters refer to [here](#manage-alert-severity-levels). 
+
+`warning_ratio` is helpful if you want to increase the warning range percentage to decrease the amount of critical alerts.
+
+`min_confidence_interval_ratio` is mainly used to handle very narrow confidence intervals. If you think that the model is too sensitive to small noises in the data, you can increase this parameter to artificially introduce a minimum confidence interval buffer to prevent falsely-identified anomalies.
+
+For both parameters, we recommend that you first experiment with the default values before changing them. It is less likely that you will need to change these parameters.
+
+#### Anomaly Detection Simulator Results
+
+After you paste the check URL, you will see a slider to simulate the last `n` measurements. You can change the value of `n` to see how the anomaly detection process changes over time. We recommend to focus on not more than 30-60 measurements at a time. After you change the value of `n`, you can press `Start Simulation` button to start the simulation.
+
+Our recommendation is to first start the simulation with the default values of the parameters to see whether default values are sufficient for your use case. If you think that the default values are not sufficient, for example you get too many false positives or false negatives, you can change the values of the parameters and observe how the anomaly detection process changes. An example of the simulator results is shown below:
+
+![ad-simulator-results](/assets/images/ad-simulator-results.png){:height="700px" width="700px"}
+
 ## Address common anomaly detection issues
 
 What follows are some examples of how to adjust optional configurations to address common issues with the sensitivity of anomaly detection checks.
