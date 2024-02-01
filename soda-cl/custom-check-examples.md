@@ -32,7 +32,7 @@ If you want to compare row counts between two datasets and allow for some accept
 
 
 ✅ Amazon Redshift  
-✅ GCP Big Query  
+✅ GCP BigQuery  
 ✅ PostgreSQL  
 ✅ Snowflake
 {% include code-header.html %}
@@ -85,7 +85,7 @@ However, if your dataset does not contain a unique ID column, as with a denormal
 Ideally, you would generate a <a href="https://en.wikipedia.org/wiki/Surrogate_key" target="_blank"> surrogate key</a> from the concatenation of columns as part of a transformation, such as with this dbt Core™ utility that <a href="https://github.com/dbt-labs/dbt-utils#surrogate_key-source" target="_blank"> generates a `surrogate_key`</a>. However, if that is not possible, you can use the following example to test for uniqueness using a <a href="https://en.wikipedia.org/wiki/Composite_key" target="_blank">composite key</a>.
 
 ✅ Amazon Redshift  
-✅ GCP Big Query  
+✅ GCP BigQuery  
 ✅ PostgreSQL  
 ✅ Snowflake
 {% include code-header.html %}
@@ -127,7 +127,7 @@ Use one of the following examples to validate that data in records in your data 
 The first example is a skeletal query into which you can insert a variety of conditions; the others offer examples of how you might use the query. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
 ✅ Amazon Redshift  
-✅ GCP Big Query  
+✅ GCP BigQuery  
 ✅ PostgreSQL  
 ✅ Snowflake
 {% include code-header.html %}
@@ -149,7 +149,7 @@ checks for dim_product:
 #### Check the sum of column values
 
 ✅ Amazon Redshift  
-✅ GCP Big Query  
+✅ GCP BigQuery  
 ✅ PostgreSQL  
 ✅ Snowflake
 {% include code-header.html %}
@@ -171,7 +171,7 @@ checks for dim_product:
 #### Confirm Paid in Full
 
 ✅ Amazon Redshift  
-✅ GCP Big Query  
+✅ GCP BigQuery  
 ✅ PostgreSQL  
 ✅ Snowflake
 {% include code-header.html %}
@@ -260,7 +260,7 @@ checks for dim_product:
 <br />
 
 
-✅ GCP Big Query  
+✅ GCP BigQuery  
 {% include code-header.html %}
 {% raw %}
 ```yaml
@@ -338,7 +338,7 @@ index ; start_date ; end_date
 ```
 
 
-✅ GCP Big Query  
+✅ GCP BigQuery  
 {% include code-header.html %}
 {% raw %}
 ```yaml

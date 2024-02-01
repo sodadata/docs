@@ -21,8 +21,8 @@ Use the example data in this quick tutorial to set up and run a simple Soda scan
 [Write some checks and run a scan](#write-some-checks-and-run-a-scan) | 5 minutes<br />
 <br />
 
-💡 For standard set up instructions, access the [Get started roadmap]({% link soda/get-started-roadmap.md %}).
-
+💡 For standard set up instructions, access the [Get started roadmap]({% link soda/get-started-roadmap.md %}). <br />
+✨ Want a total UI experience? Use the out-of-the-box [Soda-hosted agent]({% link soda-agent/managed-agent.md %}) to skip the CLI.
 
 ## Set up Soda
 <!--Linked to UI, access Shlink-->
@@ -104,7 +104,7 @@ Alternatively, you can use your own data for this tutorial. To do so:
 ## Connect Soda
 <!--Linked to UI, access Shlink-->
 
-To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP Big Query, you use a `configuration.yml` file which stores access details for your data source. 
+To connect to a data source such as Snowflake, PostgreSQL, Amazon Athena, or GCP BigQuery, you use a `configuration.yml` file which stores access details for your data source. 
 
 This tutorial also instructs you to connect to a Soda Cloud account using API keys that you create and add to the same `configuration.yml` file. Available for free as a 45-day trial, your Soda Cloud account validates your free trial or license, gives you access to visualized scan results, tracks trends in data quality over time, lets you set alert notifications, and much more.
 

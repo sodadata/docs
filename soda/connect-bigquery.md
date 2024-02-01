@@ -5,7 +5,7 @@ description: Access configuration details to connect Soda to a BigQuery data sou
 parent: Data source reference
 ---
 
-# Connect Soda to GCP Big Query
+# Connect Soda to GCP BigQuery
 *Last modified on {% last_modified_at %}*
 
 {% include connect-to-intro.md %}
@@ -14,7 +14,7 @@ parent: Data source reference
 [Authentication methods](#authentication-methods)<br />
 [Test the datasource connection](#test-the-data-source-connection)<br />
 [Supported data types](#supported-data-types)<br />
-[Use a file reference for a Big Query data source connection](#use-a-file-reference-for-a-big-query-data-source-connection)<br />
+[Use a file reference for a BigQuery data source connection](#use-a-file-reference-for-a-bigquery-data-source-connection)<br />
 [Troubleshoot](#troubleshoot)<br />
 <br />
 
@@ -141,7 +141,7 @@ data_source my_database_name:
 | number   | INT64, DECIMAL, BINUMERIC, BIGDECIMAL, FLOAT64 |
 | time     | DATE, DATETIME, TIME, TIMESTAMP                |
 
-## Use a file reference for a Big Query data source connection
+## Use a file reference for a BigQuery data source connection
 
 If you already store information about your data source in a JSON file in a secure location, you can configure your BigQuery data source connection details in Soda Cloud to refer to the JSON file for service account information. To do so, you must add two elements:
 * `volumes` and `volumeMounts` parameters in the `values.yml` file that your Soda Agent helm chart uses

@@ -97,7 +97,7 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 | Denodo  | `soda-denodo` |
 | Dremio | `soda-dremio` | 
 | DuckDB   | `soda-duckdb` |
-| GCP Big Query | `soda-bigquery` | 
+| GCP BigQuery | `soda-bigquery` | 
 | Google CloudSQL | `soda-postgres` |
 | IBM DB2 | `soda-db2` |
 | Local file | Use Dask. |
@@ -147,7 +147,7 @@ pip install -i https://pypi.cloud.soda.io soda-postgres
 | Denodo  | `soda-denodo` |
 | Dremio | `soda-dremio` | 
 | DuckDB  | `soda-duckdb` |
-| GCP Big Query | `soda-bigquery` | 
+| GCP BigQuery | `soda-bigquery` | 
 | Google CloudSQL | `soda-postgres` |
 | IBM DB2 | `soda-db2` |
 | MS SQL Server | `soda-sqlserver` |

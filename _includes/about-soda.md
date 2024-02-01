@@ -14,7 +14,7 @@ Soda works by taking the data quality checks that you prepare and using them to 
 
 To test your data quality, you choose a flavor of Soda (choose a deployment model) which enables you to configure connections with your data sources and define data quality checks, then run scans that execute your data quality checks.
 
-* **Connect to your data source.** <br />Connect Soda to a data source such as Snowflake, Amazon Athena, or Big Query by providing access details for your data source such as host, port, and data source login credentials. 
+* **Connect to your data source.** <br />Connect Soda to a data source such as Snowflake, Amazon Athena, or BigQuery by providing access details for your data source such as host, port, and data source login credentials. 
 * **Define checks to surface bad-quality data.** <br />Define data quality checks using Soda Checks Language (SodaCL), a domain-specific language for data quality testing. A Soda Check is a test that Soda performs when it scans a dataset in your data source. 
 * **Run a scan to execute your data quality checks.** <br />During a scan, Soda does not ingest your data, it only scans it for quality metrics, then uses the metadata to prepare scan results<sup>1</sup>. After a scan, each check results in one of three default states:
     * pass: the values in the dataset match or fall within the thresholds you specified

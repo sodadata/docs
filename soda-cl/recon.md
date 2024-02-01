@@ -609,14 +609,14 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 | `duplicate_percent` | all | 
 | `failed rows` | all | 
 | `freshness` | all | 
-| `invalid_count` |Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames |
-| `invalid_percent` | Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames |
+| `invalid_count` |Athena <br /> BigQuery <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames |
+| `invalid_percent` | Athena <br /> BigQuery <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames |
 | `max` | all | 
 | `max_length` | all | 
 | `min` | all | 
 | `min_length` | all | 
-| `missing_count` | Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames |
-| `missing_percent` | Athena <br /> Big Query <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames |
+| `missing_count` | Athena <br /> BigQuery <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames |
+| `missing_percent` | Athena <br /> BigQuery <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames |
 | `percentile` | PostgreSQL<br />Snowflake |
 | `row_count` | all | 
 | `stddev` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |

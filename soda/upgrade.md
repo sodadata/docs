@@ -11,15 +11,33 @@ redirect_from:
 # Upgrade, redeploy, or uninstall Soda
 *Last modified on {% last_modified_at %}*
 
-[Redeploy a Soda Agent](#redeploy-a-soda-agent)<br />
-[Upgrade a Soda Agent](#upgrade-a-soda-agent)<br />
-[Upgrade Soda Library](#upgrade-soda-library)<br />
+[Migrate from self-hosted to Soda-hosted agent](#migrate-a-data-source-from-a-self-hosted-to-a-soda-hosted-agent)<br />
+[Redeploy a self-hosted Soda Agent](#redeploy-a-self-hosted-soda-agent)<br />
+[Upgrade a self-hosted Soda Agent](#upgrade-a-self-hosted-soda-agent)<br />
+[Upgrade a Soda Library](#upgrade-soda-library)<br />
 [Uninstall Soda Library](#uninstall-soda-library)<br />
 [Migrate from Soda Core](#migrate-from-soda-core)<br />
+<br />
 
-## Redeploy a Soda Agent
+## Migrate a data source from a self-hosted to a Soda-hosted agent
 
-The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster. [Read more]({% link soda-agent/basics.md %}).
+If you already use a self-hosted Soda Agent deployed in a Kubernetes cluster to connect to your data source(s), you have the option of migrating a connected data source to a Soda-hosted agent. Though you must reconfigure your data source connection to the new Soda agent, your checks, check history, and scan schedule remain intact.
+
+* Be aware that Soda-hosted agents are only compatible with the following data sources: BigQuery, MySQL, PostgreSQL, Snowflake. 
+* 🔴 When you migrate to a Soda-hosted agent, Soda Cloud *resets* all the connection configuration details for your data source. Be sure to capture all existing data source connection details before migrating so you can re-enter the details for the data source connection.
+
+1. As an [Admin]({% link soda-cloud/roles-and-rights.md %}) in Soda Cloud, navigate to **your avatar** > **Organization Settings**. In the **Organization tab**, click the checkbox to **Enable Soda-hosted Agent**.
+2. Navigate to **your avatar** > **Data Sources**, then access the **Agents** tab. Notice your out-of-the-box Soda-hosted agent that is up and running.
+![soda-hosted-agent1](/assets/images/soda-hosted-agent1.png){:height="700px" width="700px"}
+3. Navigate to the **Data Sources** tab, then click to select the data source you wish to migrate to the Soda-hosted agent.
+4. In the **2. Connect the Data Source** tab, copy+paste the contents of the editing panel to a temporary, secure, local place in your system. Switching agents resets all connection configuration parameters, so be sure to record existing parameter settings before proceeding. 
+4. In the **1. Attributes** tab, use the dropdown for **Default Scan Schedule Agent** to select `soda-hosted-agent`.
+5. Return to the **2. Connect the Data Source** tab, then, using the configuration values you recorded in step 3, use the dropdowns to re-enter the values, then **Test Data Source**.
+6. When the test completes successfully, **Save** your changes to the data source.
+
+## Redeploy a self-hosted Soda Agent
+
+The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a sefl-hosted Soda Agent in the cluster. [Read more]({% link soda-agent/basics.md %}).
 
 When you delete the Soda Agent Helm chart from your cluster, you also delete all the agent resources on your cluster. However, if you wish to redeploy the previously-registered agent (use the same name), you need to specify the agent ID in your override values in your values YAML file.
 
@@ -62,7 +80,7 @@ helm install soda-agent soda-agent/soda-agent \
 kubectl describe pods
 ```
 
-## Upgrade a Soda Agent 
+## Upgrade a self-hosted Soda Agent 
 
 The **Soda Agent** is a Helm chart that you deploy on a Kubernetes cluster and connect to your Soda Cloud account using API keys.
 

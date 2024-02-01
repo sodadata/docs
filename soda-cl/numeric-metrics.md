@@ -199,13 +199,13 @@ for each dataset T:
 | `min_length`  | The smallest length in a text column. | text | all  |
 | `percentile` | The value below which a percentage of observations fall within a group of observations. <br /> For example, `percentile(distance, 0.7)`. | number | PostgreSQL <br /> Snowflake |
 | `row_count` | The number of rows in a dataset or column, if specified. | number<br /> text<br /> time | all |
-| `stddev`  | The calculated standard deviation of values in a numeric column. | number | Athena <br />  Big Query <br /> PostgreSQL <br />Redshift <br /> Snowflake |
-| `stddev_pop`  | The calculated population standard deviation of values in a numeric column. | number |  Athena <br />  Big Query <br /> PostgreSQL <br /> Redshift <br /> Snowflake |
-| `stddev_samp`  | The calculated sample standard deviation of values in a numeric column. | number | Athena <br />  Big Query <br /> PostgreSQL <br /> Redshift <br /> Snowflake |
+| `stddev`  | The calculated standard deviation of values in a numeric column. | number | Athena <br />  BigQuery <br /> PostgreSQL <br />Redshift <br /> Snowflake |
+| `stddev_pop`  | The calculated population standard deviation of values in a numeric column. | number |  Athena <br />  BigQuery <br /> PostgreSQL <br /> Redshift <br /> Snowflake |
+| `stddev_samp`  | The calculated sample standard deviation of values in a numeric column. | number | Athena <br />  BigQuery <br /> PostgreSQL <br /> Redshift <br /> Snowflake |
 | `sum`  | The calculated sum of the values in a numeric column. | number | all  |
-| `variance`  | The calculated variance of the values in a numeric column. | number<br /> time | Athena <br />  Big Query <br /> PostgreSQL <br />Redshift <br /> Snowflake |
-| `var_pop`  | The calculated population variance of the values in a numeric column. | number<br /> time | Athena <br />  Big Query <br /> PostgreSQL <br /> Redshift <br /> Snowflake |
-| `var_samp`  | The calculated sample variance of the values in a numeric column.| number<br /> time | Athena <br />  Big Query <br /> PostgreSQL <br />  Redshift <br />Snowflake |
+| `variance`  | The calculated variance of the values in a numeric column. | number<br /> time | Athena <br />  BigQuery <br /> PostgreSQL <br />Redshift <br /> Snowflake |
+| `var_pop`  | The calculated population variance of the values in a numeric column. | number<br /> time | Athena <br />  BigQuery <br /> PostgreSQL <br /> Redshift <br /> Snowflake |
+| `var_samp`  | The calculated sample variance of the values in a numeric column.| number<br /> time | Athena <br />  BigQuery <br /> PostgreSQL <br />  Redshift <br />Snowflake |
 
 
 ## List of comparison symbols and phrases

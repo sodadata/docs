@@ -9,7 +9,8 @@ parent: Learning resources
 
 <br />
 
-#### January 31, 2024
+#### February 1, 2024
+* Published new documentation for the [Soda-hosted agent]({% link soda-agent/managed-agent.md %}), a secure, out-of-the-box agent you can use to connect to data sources from within the Soda Cloud user interface.
 * Added documentation for the new [anomaly detection]({% link soda-cl/anomaly-detection.md %}) check, which replaces the [anomaly score]({% link soda-cl/anomaly-score.md %}) check.
 
 #### January 29, 2024
@@ -419,7 +420,7 @@ parent: Learning resources
 
 #### January 13, 2023
 
-* Updated Soda Agent for GKE documentation so that the instructions for using a file reference for a Big Query data source connection use a Kubernetes secret instead of an Kubernetes ConfigMap.  
+* Updated Soda Agent for GKE documentation so that the instructions for using a file reference for a BigQuery data source connection use a Kubernetes secret instead of an Kubernetes ConfigMap.  
 
 #### January 11, 2023
 * Added documentation for the ability to create and use [check attributes]({% link soda-cl/check-attributes.md %}).
@@ -941,7 +942,7 @@ checks for dim_customers:
     * limiting the datasets that Soda SQL analyzes,
     * preventing Soda SQL from sending scan results to Soda Cloud after a scan, and
     * instructing Soda SQL to skip confirmations before running a scan.
-* Added information about how to use a new option, `account_info_path`, to direct Soda SQL to your Big Query service account JSON key file for configuration details.
+* Added information about how to use a new option, `account_info_path`, to direct Soda SQL to your BigQuery service account JSON key file for configuration details.
 
 #### August 31, 2021
 
@@ -963,7 +964,7 @@ checks for dim_customers:
 #### August 2, 2021
 
 * Added new document to ouline the [Support]({% link soda/support.md %}) that Soda provides its users and customers.
-* Updated Big Query data source configuration to include `auth_scopes`.
+* Updated BigQuery data source configuration to include `auth_scopes`.
 
 
 #### July 29, 2021

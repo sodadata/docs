@@ -120,14 +120,14 @@ No valid checks found, 0 checks evaluated.
 
 You can use check suggestions with the following data sources:
 
-* GCP Big Query
+* GCP BigQuery
 * PostgreSQL
 * Snowflake
 
 ## Prerequisites
 
 * You have installed Python 3.10 or greater.
-* You have installed a [Soda Library package]({% link soda-library/install.md %}#install-soda-library-1) for Big Query, PostgreSQL, or Snowflake in your environment and [configured Soda Library]({% link soda-library/install.md %}#configure-soda) to connect to your data source.
+* You have installed a [Soda Library package]({% link soda-library/install.md %}#install-soda-library-1) for BigQuery, PostgreSQL, or Snowflake in your environment and [configured Soda Library]({% link soda-library/install.md %}#configure-soda) to connect to your data source.
 * You have installed [Soda Scientific]({% link soda-library/install.md %}#install-soda-library-1).
 
 ## Run check suggestions

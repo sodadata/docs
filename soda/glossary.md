@@ -17,7 +17,7 @@ redirect_from:
 Soda's licensing model is based on the volume of active checks.  An active check is one that Soda has executed during a scan at least once in the past 90 days. A single check, whether it has been executed during a scan one time, fifty times, or five hundred times in the last 90 days counts as an active check.
 
 ### agreement
-A collection of checks that serve as a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
+(Deprecating) A collection of checks that serve as a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source. 
 
 ### alert configuration 
 A configuration in a SodaCL check that you use to explicitly specify the conditions that warrant a warn result. See [Optional check configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations).
@@ -32,7 +32,7 @@ A test for data quality that you write using the Soda Checks Language (SodaCL). 
 The file in which you define SodaCL checks. Soda Library uses the input from this file to prepare, then run SQL queries against your data. See [How Soda works]({% link soda-library/how-library-works.md %}).
 
 ### cloud metric store
-The place in Soda Cloud that stores the values of measurements collected over time as Soda Library executes checks.  
+The component in Soda Cloud that stores metric measurements. This component facilities the visualization of changes to your data over time. 
 
 ### collection
 A saved set of filters in the Checks dashboard that you can access via a dropdown. Also known as a Saved View. 
@@ -61,9 +61,6 @@ The value for a metric that Soda Library collects during a scan.
 ### metric
 A property of the data in your dataset. See [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}).
 
-### metric store
-The component in Soda Cloud that stores metric measurements. This component facilities the visualization of changes to your data over time.
-
 ### monitor
 (Deprecated) A set of details you define in Soda Cloud which Soda SQL used when it ran a scan. Now deprecated and replaced by a [check](#check).
 
@@ -89,7 +86,7 @@ A unique identifier that you add to a programmatic scan or to the `soda scan` co
 The schedule you customize in Soda Cloud to instruct a Soda Agent to execute scans at a regular cadence. 
 
 ### Soda Agent
-The Helm chart you deploy in your Kubernetes cluster to faciliate a secure connection between your Soda Cloud account and your data sources. See [Soda Agent basic concepts]({% link soda-agent/basics.md %}).
+The self-hosted or Soda-hosted Helm chart that faciliates a secure connection between your Soda Cloud account and your data sources. See [Soda Agent basic concepts]({% link soda-agent/basics.md %}).
 
 ### SodaCL 
 The domain-specific language to define Soda Checks in a checks YAML file. A Soda Check is a test that Soda Library executes when it scans a dataset in your data source. 

@@ -13,7 +13,7 @@ parent: Write SodaCL checks
 
 <a href="https://cloud.soda.io/login" target="_blank">Log in</a> to your **Soda Cloud** account, click the **Ask SodaGPT** button in the main nav, then provide natural language instructions to the interface to receive fully-formed, syntax-correct checks in the [Soda Checks Language (SodaCL)]({% link soda-cl/metrics-and-checks.md %}). If you do not already have an account, <a href="https://cloud.soda.io/signup" target="_blank">sign up for Soda Cloud</a> for a 45-day free trial.
 
-Use the generated checks to test data quality in your data pipeline, in your development workflow, and in your Soda Agreements to prevent data quality issues from causing downstream impact.
+Use the generated checks to test data quality in your data pipeline or in your development workflow to prevent data quality issues from causing downstream impact.
 
 ![sodagpt](/assets/images/sodagpt.png){:height="500px" width="500px"}
 

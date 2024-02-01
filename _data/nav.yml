@@ -13,6 +13,8 @@
     page: soda/setup-guide.md
   - subtitle: Install Soda Library
     page: soda-library/install.md
+  - subtitle: Set up a Soda-hosted agent
+    page: soda-agent/managed-agent.md
   - subtitle: Deploy a Soda Agent
     page: soda-agent/deploy.md
   - subtitle: Soda Agent extras

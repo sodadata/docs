@@ -14,6 +14,14 @@ You can view the status of scans that are in progress, queuing, completed, or pa
 
 ![scan-mgmt](/assets/images/scan-mgmt.png){:height="700px" width="700px"}
 
+[Set alert notifications](#set-alert-notifications)<br />
+[Investigate scan issues](#investigate-scan-issues)<br />
+[Cancel and restart scans](#cancel-and-restart-scans)<br />
+[Configure scan timeouts](#configure-scan-timeouts)<br />
+[Best practices for optimized scheduled scans](#best-practices-for-optimized-scheduled-scans)<br />
+[Go further](#go-further)<br />
+<br />
+
 ## Set alert notifications
 
 To provide visibility into slow, incomplete, or failed Soda scans, you can set up customized alerts notifications for each **Scan Schedule** that you created using Soda Cloud.
@@ -60,7 +68,7 @@ By default, Soda sets the scan timeout to two hours; follow the steps below to a
 ## Best practices for optimized scheduled scans
 
 * Best practice dictates that to enhance scan efficiency, you avoid scheduling resource-intensive tasks, such as [data profiling]({% link soda-cl/profile.md %}), concurrently with checks. This practice minimizes the likelihood of delays caused by resource contention, ensuring smoother execution of scans.
-* Do not set all of your scan schedules to run at the same time, particularly if the scans are using the same Soda Agent. Mindfully stagger scheduled scan times to more evenly distribute executions and reduce the risk of bottlenecks, delays, and failed scans.
+* Do not set all of your scan schedules to run at the same time, particularly if the scans use the same Soda Agent. Mindfully stagger scheduled scan times to more evenly distribute executions and reduce the risk of bottlenecks, delays, and failed scans.
 * As the volume of checks a scan executes organically increases over time, scans may take longer to execute. If your scheduled scans are timing out too frequently, adjust the [scan timeout](#configure-scan-timeouts) to a higher threshold.
 
 

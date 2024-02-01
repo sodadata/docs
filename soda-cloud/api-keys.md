@@ -8,11 +8,11 @@ parent: Learning resources
 # Generate API keys
 *Last modified on {% last_modified_at %}*
 
-Soda Cloud uses API keys to securely communicate with other entities such as Soda Library and Soda Agents, and to provide secure access to metadata in Soda Cloud via the Reporting API. 
+Soda Cloud uses API keys to securely communicate with other entities such as Soda Library and self-hosted Soda Agents, and to provide secure access to metadata in Soda Cloud via the Reporting API. 
 
 There are two sets of API keys that you can generate and use with Soda Cloud:
 * API keys for communicating with **Soda Library**, the **Reporting API**, and the Soda Library Docker image that the **GitHub Action for Soda** uses
-* API keys for communicating with a **Soda Agent**
+* API keys for communicating with a self-hosted **Soda Agent**
 
 Note that you can use other authentication methods to access Soda Cloud metadata via the Reporting API such as HTTPBasic authentication with username and password, or authentication using tokens; use API keys to authenticate access if your organization employs Single Sign On (SSO) to access Soda Cloud.
 
