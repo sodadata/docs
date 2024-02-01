@@ -174,7 +174,7 @@ Reference the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activ
   </div>
   <div class="panel" id="four-panel" markdown="1">
 
-Install Soda Scientific to be able to use SodaCL [distribution checks]({% link soda-cl/distribution.md %}) or [anomaly score checks]({% link soda-cl/anomaly-score.md %}).
+Install Soda Scientific to be able to use SodaCL [distribution checks]({% link soda-cl/distribution.md %}) or [anomaly detection checks]({% link soda-cl/anomaly-detection.md %}).
 
 You have two installation options to choose from:
 * [Install Soda Scientific in a virtual environment (Recommended)](#install-soda-scientific-in-a-virtual-environment-recommended)

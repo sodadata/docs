@@ -54,12 +54,12 @@ checks for dataset_A:
 #### Add row count checks
 This step adds two checks: one to confirm that the dataset is not empty, and one to ensure that the current row count is not significantly different from the expected row count. Soda determines the expected row count relative to the previous row count value using a time series-based anomaly detection model.
 
-Refer to [Anomaly score checks]({% link soda-cl/anomaly-score.md %}) for more information.
+Refer to [Anomaly detection checks]({% link soda-cl/anomaly-detection.md %}) for more information.
 
 ```yaml
 checks for dataset_A:
   - row_count > 0
-  - anomaly score for row_count < default
+  - anomaly detection for row_count
 ```
 
 #### Add time-based partitioning

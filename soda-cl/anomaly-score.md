@@ -3,12 +3,13 @@ layout: default
 title: Anomaly score checks
 description: Anomaly score checks use a machine learning algorithm to automatically detect anomalies in your time-series data.
 parent: Soda CL reference
-redirect_from: /soda-cloud/anomaly-detection.html
 ---
 
 # Anomaly score checks 
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
+
+{% include banner-deprecated.md %}
 
 Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
 *Requires Soda Scientific.*<br />

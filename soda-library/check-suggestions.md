@@ -90,7 +90,7 @@ No valid checks found, 0 checks evaluated.
 │                                                                                                                             │
 │   # Add a row count check - https://go.soda.io/row-count                                                                    │
 │   - row_count > 0                                                                                                           │
-│   - anomaly score for row_count < default                                                                                   │
+│   - anomaly detection for row_count                                                                                   │
 │                                                                                                                             │
 │   # Add freshness check - https://go.soda.io/freshness                                                                      │
 │   - freshness(date_first_purchase) < 19h                                                                                    │
