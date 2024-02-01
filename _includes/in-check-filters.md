@@ -38,6 +38,16 @@ checks for dim_employee:
               sick_leave_hours > 0 OR
               pay_frequency > 1
 ```
+
+If your column names use quotes, these quotes produce invalid YAML syntax which results in an error message. Instead, write the check without the quotes or, if the quotes are mandatory for the filter to work, prepare the filter in a text block as in the following example. <br />
+```yaml
+checks for my_dataset:
+  - missing_count("Email") = 0:
+      name: missing email
+      filter: |
+        "Status" = 'Client'  
+```
+
 <br />
 
 Be aware that if no rows match the filter parameters you set, Soda does not evaluate the check. In other words, Soda first finds rows that match the filter, *then* executes the check on those rows. 
