@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### February 2, 2024
+* Added links to a [video]({% link soda/quick-start-databricks.md %}) that demonstrates how to add Soda to a Databricks pipeline. 
+
 #### February 1, 2024
 * Published new documentation for the [Soda-hosted agent]({% link soda-agent/managed-agent.md %}), a secure, out-of-the-box agent you can use to connect to data sources from within the Soda Cloud user interface.
 * Added documentation for the new [anomaly detection]({% link soda-cl/anomaly-detection.md %}) check, which replaces the [anomaly score]({% link soda-cl/anomaly-score.md %}) check.
