@@ -11,10 +11,12 @@ parent: Learning resources
 
 #### February 2, 2024
 * Added links to a [video]({% link soda/quick-start-databricks.md %}) that demonstrates how to add Soda to a Databricks pipeline. 
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 0.8.56, which maps to Soda Library 1.2.4.
 
 #### February 1, 2024
 * Published new documentation for the [Soda-hosted agent]({% link soda-agent/managed-agent.md %}), a secure, out-of-the-box agent you can use to connect to data sources from within the Soda Cloud user interface.
 * Added documentation for the new [anomaly detection]({% link soda-cl/anomaly-detection.md %}) check, which replaces the [anomaly score]({% link soda-cl/anomaly-score.md %}) check.
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 0.8.55, which maps to Soda Library 1.2.3.
 
 #### January 29, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 0.8.54, which maps to Soda Library 1.2.3.
