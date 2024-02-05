@@ -572,7 +572,7 @@ The welcome page of the simulator is shown below:
 
 ![ad-simulator-welcome](/assets/images/ad-simulator-welcome.png){:height="700px" width="700px"}
 
-In the welcome page, you first need to provide your anomaly detection or old anomaly score check ID. You can find the ID of your check in the Soda Cloud URL.
+In the welcome page, you first need to provide your anomaly detection or old anomaly score check URL by simply pasting from Soda Cloud UI.
 
 On the sidebar, you can see three configuration options:
 
