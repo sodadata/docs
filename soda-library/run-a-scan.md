@@ -202,7 +202,7 @@ data_source nyc_dev:
   username: ${POSTGRES_USER}
   password: ${POSTGRES_PASSWORD}
   database: postgres
-  schema: public
+  schema: staging
 data_source nyc_prod:
   type: postgres
   host: host
