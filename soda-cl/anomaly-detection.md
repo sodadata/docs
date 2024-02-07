@@ -557,15 +557,15 @@ Soda provides an anomaly detection simulator to enable you to test and observe h
 pip install soda-scientific[simulator]
 ```
 2. Ensure you have configured the connection details to both your data source and your Soda Cloud account in a `configuration.yml` file. See: [Configure Soda]({% link soda-library/install.md %}#configure-soda).
-3. Log in to your Soda Cloud account, then navigate to the **Check History** page of your existing anomaly detection or anomaly score check. From the URL, copy+paste the value of the check identifier; refer to image below.
-![check-id](/assets/images/check-id.png){:height="700px" width="700px"}
+3. Log in to your Soda Cloud account, then navigate to the **Check History** page of your existing anomaly detection or anomaly score check. From your browser copy the URL; refer to image below.
+![check-id](/assets/images/check-url.png){:height="700px" width="700px"}
 4. To launch the application, use the following command.
 ```bash
 soda simulate-anomaly-detection -c configuration.yaml
 ```
+5. Paste the check URL you copied for your anomaly check into the main field; refer to the image below.
 ![ad-simulator-welcome](/assets/images/ad-simulator-welcome.png){:height="700px" width="700px"}
-5. Paste the value you copied for your anomaly check id into the main field.
-6. Use the slider that appears to adjust the value of `n` to indicate the number of most recent measurements the simulator ought to use to apply simulated parameter changes, ideally not more than 30. 
+6. Use the slider that appears to simulate the most recent `n` measurements, ideally not more than 60 due to execution time.
 7. Click **Start Simulation** to display graphic results using the default parameter values. 
 8. Use the tools in the sidebar to [adjust parameter settings](#adjust-simulator-parameters) until the simulator displays your ideal anomaly sensitivity results. Apply your optimized parameter settings to the check configuration in your checks YAML file.
 ![ad-simulator-results](/assets/images/ad-simulator-results.png){:height="700px" width="700px"}
