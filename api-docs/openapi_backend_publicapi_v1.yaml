@@ -1,0 +1,913 @@
+components:
+  schemas:
+    AgreementSlimDTO:
+      properties:
+        cloudUrl:
+          type: string
+        name:
+          type: string
+      type: object
+    ChecksContentDTO:
+      properties:
+        agreements:
+          items:
+            $ref: '#/components/schemas/AgreementSlimDTO'
+          nullable: false
+          type: array
+        attributes:
+          $ref: '#/components/schemas/MapOfStringToString'
+        cloudUrl:
+          type: string
+        column:
+          type: string
+        datasets:
+          items:
+            $ref: '#/components/schemas/DatasetSlimDTO'
+          nullable: false
+          type: array
+        definition:
+          type: string
+        description:
+          type: string
+        evaluationStatus:
+          $ref: '#/components/schemas/EvaluationStatusDTO'
+        group:
+          $ref: '#/components/schemas/ChecksContentDTO_Group'
+        id:
+          nullable: false
+          type: string
+        incidents:
+          items:
+            $ref: '#/components/schemas/IncidentSlimDTO'
+          nullable: false
+          type: array
+        lastCheckRunTime:
+          type: string
+        lastUpdated:
+          type: string
+        name:
+          nullable: false
+          type: string
+        owner:
+          $ref: '#/components/schemas/OwnerDTO'
+      required:
+      - agreements
+      - datasets
+      - evaluationStatus
+      - id
+      - incidents
+      - name
+      - owner
+      type: object
+    ChecksContentDTO_Group:
+      properties:
+        groupType:
+          type: string
+        identity:
+          type: string
+        name:
+          type: string
+      type: object
+    DataQualityStatusDTO:
+      enum:
+      - pass
+      - warn
+      - fail
+      type: string
+    DatasetSlimDTO:
+      properties:
+        cloudUrl:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    DatasetsContentDTO:
+      properties:
+        checks:
+          nullable: false
+          type: number
+        cloudUrl:
+          nullable: false
+          type: string
+        dataQualityStatus:
+          $ref: '#/components/schemas/DataQualityStatusDTO'
+        datasource:
+          $ref: '#/components/schemas/DatasourcePropertiesDTO'
+        healthStatus:
+          format: int32
+          nullable: false
+          type: integer
+        id:
+          nullable: false
+          type: string
+        incidents:
+          nullable: false
+          type: number
+        lastUpdated:
+          type: string
+        name:
+          nullable: false
+          type: string
+        qualifiedName:
+          type: string
+      required:
+      - checks
+      - cloudUrl
+      - healthStatus
+      - id
+      - incidents
+      - name
+      type: object
+    DatasourcePropertiesDTO:
+      properties:
+        name:
+          type: string
+        prefix:
+          type: string
+        type:
+          type: string
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      type: object
+    EvaluationStatusDTO:
+      enum:
+      - pass
+      - warn
+      - fail
+      - notEvaluated
+      type: string
+    IncidentSlimDTO:
+      properties:
+        cloudUrl:
+          nullable: false
+          type: string
+        id:
+          nullable: false
+          type: string
+        name:
+          nullable: false
+          type: string
+        number:
+          format: int32
+          nullable: false
+          type: integer
+        status:
+          $ref: '#/components/schemas/IncidentStatusDTO'
+      required:
+      - cloudUrl
+      - id
+      - name
+      - number
+      - status
+      type: object
+    IncidentStatusDTO:
+      enum:
+      - reported
+      - investigating
+      - fixing
+      - resolved
+      type: string
+    LogLevelDTO:
+      enum:
+      - debug
+      - info
+      - warning
+      - error
+      type: string
+    LogsContentDTO:
+      properties:
+        index:
+          format: int32
+          nullable: false
+          type: integer
+        level:
+          $ref: '#/components/schemas/LogLevelDTO'
+        message:
+          nullable: false
+          type: string
+        timestamp:
+          nullable: false
+          type: string
+      required:
+      - index
+      - level
+      - message
+      - timestamp
+      type: object
+    MapOfStringToString:
+      additionalProperties: true
+      type: object
+    OwnerDTO:
+      properties:
+        email:
+          type: string
+        firstName:
+          type: string
+        fullName:
+          type: string
+        lastName:
+          type: string
+      type: object
+    PublicApiCheckSlimDTO:
+      properties:
+        evaluationStatus:
+          $ref: '#/components/schemas/EvaluationStatusDTO'
+        id:
+          type: string
+      type: object
+    PublicApiChecksResponse:
+      properties:
+        content:
+          items:
+            $ref: '#/components/schemas/ChecksContentDTO'
+          nullable: false
+          type: array
+        first:
+          nullable: false
+          type: boolean
+        last:
+          nullable: false
+          type: boolean
+        number:
+          format: int32
+          nullable: false
+          type: integer
+        size:
+          format: int32
+          nullable: false
+          type: integer
+        totalElements:
+          format: int32
+          nullable: false
+          type: integer
+        totalPages:
+          format: int32
+          nullable: false
+          type: integer
+      required:
+      - content
+      - first
+      - last
+      - number
+      - size
+      - totalElements
+      - totalPages
+      type: object
+    PublicApiDatasetsResponse:
+      properties:
+        content:
+          items:
+            $ref: '#/components/schemas/DatasetsContentDTO'
+          nullable: false
+          type: array
+        first:
+          nullable: false
+          type: boolean
+        last:
+          nullable: false
+          type: boolean
+        number:
+          format: int32
+          nullable: false
+          type: integer
+        size:
+          format: int32
+          nullable: false
+          type: integer
+        totalElements:
+          format: int32
+          nullable: false
+          type: integer
+        totalPages:
+          format: int32
+          nullable: false
+          type: integer
+      required:
+      - content
+      - first
+      - last
+      - number
+      - size
+      - totalElements
+      - totalPages
+      type: object
+    PublicApiScanDefinitionSlim:
+      properties:
+        id:
+          nullable: false
+          type: string
+        name:
+          nullable: false
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    PublicApiScanLogsResponse:
+      properties:
+        content:
+          items:
+            $ref: '#/components/schemas/LogsContentDTO'
+          nullable: false
+          type: array
+        first:
+          nullable: false
+          type: boolean
+        last:
+          nullable: false
+          type: boolean
+        number:
+          format: int32
+          nullable: false
+          type: integer
+        size:
+          format: int32
+          nullable: false
+          type: integer
+        totalElements:
+          format: int32
+          nullable: false
+          type: integer
+        totalPages:
+          format: int32
+          nullable: false
+          type: integer
+      required:
+      - content
+      - first
+      - last
+      - number
+      - size
+      - totalElements
+      - totalPages
+      type: object
+    PublicApiScanStatusResponse:
+      properties:
+        agentId:
+          type: string
+        checks:
+          items:
+            $ref: '#/components/schemas/PublicApiCheckSlimDTO'
+          type: array
+        cloudUrl:
+          nullable: false
+          type: string
+        created:
+          nullable: false
+          type: string
+        ended:
+          type: string
+        errors:
+          format: int32
+          type: integer
+        failures:
+          format: int32
+          type: integer
+        id:
+          nullable: false
+          type: string
+        scanDefinition:
+          $ref: '#/components/schemas/PublicApiScanDefinitionSlim'
+        scanTime:
+          type: string
+        started:
+          type: string
+        state:
+          $ref: '#/components/schemas/ScanStateDTO'
+        submitted:
+          type: string
+        warnings:
+          format: int32
+          type: integer
+      required:
+      - cloudUrl
+      - created
+      - id
+      - state
+      type: object
+    PublicApiTestLoginResponse:
+      properties:
+        organisationName:
+          type: string
+      type: object
+    ScanStateDTO:
+      enum:
+      - queuing
+      - executing
+      - cancelationRequested
+      - timeOutRequested
+      - canceled
+      - timedOut
+      - failed
+      - completedWithErrors
+      - completedWithFailures
+      - completedWithWarnings
+      - completed
+      type: string
+  securitySchemes:
+    basicAuthApiKey:
+      scheme: basic
+      type: http
+info:
+  description: Public API for Soda Cloud
+  title: Soda Cloud Public API
+  version: v1
+openapi: 3.0.1
+paths:
+  /api/v1/checks:
+    get:
+      description: |-
+        Default `size` in case nothing is set: 10.
+
+        Allowed values for `size` (inclusive): between 10 and 100.
+
+        Default `page` in case nothing is set: 0.
+
+        In case no `datasetId` is supplied, we fetch checks for all the datasets.
+
+        Responses will always be sorted by check name, ascending.
+
+        ## Authentication
+
+        User authentication required: **true**
+
+        Authentication is enforced using _API key pair in Basic authentication header_.
+
+        ## Authorization
+
+        Only organization administrators may execute this call.
+
+        ## Tags
+
+        Has tags: `checks`
+
+        ## Rate limiting
+
+        Has rate limiting: **10** requests allowed per **60** seconds
+      operationId: /api/v1/checks
+      parameters:
+      - in: query
+        name: datasetId
+      - in: query
+        name: page
+      - in: query
+        name: size
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiChecksResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      tags:
+      - checks
+  /api/v1/datasets:
+    get:
+      description: |-
+        Default `size` in case nothing is set: 10.
+
+        Allowed values for `size` (inclusive): between 10 and 100.
+
+        Default `page` in case nothing is set: 0.
+
+        In case no `from` is supplied, we fetch all the datasets.
+
+        Responses will always be sorted by dataset name, ascending.
+
+        ## Authentication
+
+        User authentication required: **true**
+
+        Authentication is enforced using _API key pair in Basic authentication header_.
+
+        ## Authorization
+
+        Only organization administrators may execute this call.
+
+        ## Tags
+
+        Has tags: `datasets`
+
+        ## Rate limiting
+
+        Has rate limiting: **10** requests allowed per **60** seconds
+      operationId: /api/v1/datasets
+      parameters:
+      - in: query
+        name: from
+      - in: query
+        name: page
+      - in: query
+        name: size
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiDatasetsResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      tags:
+      - datasets
+  /api/v1/scans:
+    post:
+      description: |-
+        Response, if successful, will contain header Location that will point to the submitted scan.
+
+        ## Authentication
+
+        User authentication required: **true**
+
+        Authentication is enforced using _API key pair in Basic authentication header_.
+
+        ## Authorization
+
+        Only organization administrators may execute this call.
+
+        ## Tags
+
+        Has tags: `scans`
+
+        ## Rate limiting
+
+        Has rate limiting: **10** requests allowed per **60** seconds
+      operationId: /api/v1/scans
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                dataTimestamp:
+                  type: string
+                scanDefinition:
+                  nullable: false
+                  type: string
+              required:
+              - scanDefinition
+              type: object
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "201":
+          description: Created
+          headers:
+            Location:
+              schema:
+                type: string
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      tags:
+      - scans
+  /api/v1/scans/{scanId}:
+    get:
+      description: |-
+        ## Authentication
+
+        User authentication required: **true**
+
+        Authentication is enforced using _API key pair in Basic authentication header_.
+
+        ## Authorization
+
+        Only organization administrators may execute this call.
+
+        ## Tags
+
+        Has tags: `scans`
+
+        ## Rate limiting
+
+        Has rate limiting: **60** requests allowed per **60** seconds
+      operationId: "/api/v1/scans/{scanId}"
+      parameters:
+      - in: path
+        name: scanId
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiScanStatusResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      tags:
+      - scans
+  /api/v1/scans/{scanId}/logs:
+    get:
+      description: |-
+        Default `size` in case nothing is set: 1000.
+
+        Allowed values for `size` (inclusive): between 1000 and 1000.
+
+        Default `page` in case nothing is set: 0.
+
+        Responses will always be sorted by timestamp they were created, ascending.
+
+        ## Authentication
+
+        User authentication required: **true**
+
+        Authentication is enforced using _API key pair in Basic authentication header_.
+
+        ## Authorization
+
+        Only organization administrators may execute this call.
+
+        ## Tags
+
+        Has tags: `scans`
+
+        ## Rate limiting
+
+        Has rate limiting: **60** requests allowed per **60** seconds
+      operationId: "/api/v1/scans/{scanId}/logs"
+      parameters:
+      - in: path
+        name: scanId
+        required: true
+      - in: query
+        name: page
+      - in: query
+        name: size
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiScanLogsResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      tags:
+      - scans
+  /api/v1/test-login:
+    get:
+      description: |-
+        ## Authentication
+
+        User authentication required: **true**
+
+        Authentication is enforced using _API key pair in Basic authentication header_.
+
+        ## Authorization
+
+        Only organization administrators may execute this call.
+
+        ## Tags
+
+        Has tags: `utility`
+
+        ## Rate limiting
+
+        Has rate limiting: **10** requests allowed per **10** seconds
+      operationId: /api/v1/test-login
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiTestLoginResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      tags:
+      - utility
+servers:
+- url: https://cloud.soda.io
+- url: https://cloud.us.soda.io
+tags:
+- description: Soda Public API Check Endpoints
+  name: checks
+- description: Soda Public API Dataset Endpoints
+  name: datasets
+- description: Soda Public API Scan Endpoints
+  name: scans
+- description: Soda Public API Utility Endpoints
+  name: utility
