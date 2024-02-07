@@ -416,15 +416,15 @@ components:
       scheme: basic
       type: http
 info:
-  description: "# Soda Cloud Public API\n\nThis API enables you to interact with the\
-    \ Soda Cloud product using an officially supported API.\n\nUse this API to:\n\n\
-    - connect with your data catalog,\n- engage in interaction with Soda Cloud from\
-    \ within your data pipeline,\n- create custom solutions that communicate directly\
-    \ with Soda Cloud.\n\n## Authentication\n\nThe API supports authentication via\
-    \ HTTP `Basic` authentication header. This method will work in all cases whether\
-    \ your\nuser is part of more than one organization, or whether your organization\
-    \ uses Single Sign-On (SSO) authentication.\n\nIf you do not know how to generate\
-    \ your API Key and Secret pair follow\nthe [Configure and run Soda Library](https://docs.soda.io/soda-library/configure.html#configure-and-run-soda-library)\n\
+  description: "This API enables you to interact with the Soda Cloud product using\
+    \ an officially supported API.\n\nUse this API to:\n\n- connect with your data\
+    \ catalog,\n- engage in interaction with Soda Cloud from within your data pipeline,\n\
+    - create custom solutions that communicate directly with Soda Cloud.\n\n## Authentication\n\
+    \nThe API supports authentication via HTTP `Basic` authentication header. This\
+    \ method will work in all cases whether your\nuser is part of more than one organization,\
+    \ or whether your organization uses Single Sign-On (SSO) authentication.\n\nIf\
+    \ you do not know how to generate your API Key and Secret pair follow\nthe [Configure\
+    \ and run Soda Library](https://docs.soda.io/soda-library/configure.html#configure-and-run-soda-library)\n\
     instructions.\n\n## Examples\n\n```curl\ncurl -X GET \\ \n    --location \"https://cloud.soda.io/api/v1/test-login\"\
     \ \\\n    --basic \n    --user 5100a9bc-8cbe-44ab-8263-136ba0f35c1d:VIorf5ZGgE5yqMc-gT7amAsAiotqgySSUh98VBtek_6x6fP3asnybQ\n\
     ```\n"
