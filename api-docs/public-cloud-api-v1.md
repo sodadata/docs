@@ -12,5 +12,6 @@ fullwidth: true
 apiDescriptionUrl="/api-docs/openapi_backend_publicapi_v1.yaml"
 router="hash"
 hideMocking="false"
+hideTryIt="true"
 layout="sidebar"
 ></elements-api>

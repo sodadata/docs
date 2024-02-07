@@ -51,13 +51,13 @@ components:
         owner:
           $ref: '#/components/schemas/OwnerDTO'
       required:
-      - agreements
-      - datasets
-      - evaluationStatus
-      - id
-      - incidents
-      - name
-      - owner
+        - agreements
+        - datasets
+        - evaluationStatus
+        - id
+        - incidents
+        - name
+        - owner
       type: object
     ChecksContentDTO_Group:
       properties:
@@ -70,9 +70,9 @@ components:
       type: object
     DataQualityStatusDTO:
       enum:
-      - pass
-      - warn
-      - fail
+        - pass
+        - warn
+        - fail
       type: string
     DatasetSlimDTO:
       properties:
@@ -113,12 +113,12 @@ components:
         qualifiedName:
           type: string
       required:
-      - checks
-      - cloudUrl
-      - healthStatus
-      - id
-      - incidents
-      - name
+        - checks
+        - cloudUrl
+        - healthStatus
+        - id
+        - incidents
+        - name
       type: object
     DatasourcePropertiesDTO:
       properties:
@@ -138,10 +138,10 @@ components:
       type: object
     EvaluationStatusDTO:
       enum:
-      - pass
-      - warn
-      - fail
-      - notEvaluated
+        - pass
+        - warn
+        - fail
+        - notEvaluated
       type: string
     IncidentSlimDTO:
       properties:
@@ -161,25 +161,25 @@ components:
         status:
           $ref: '#/components/schemas/IncidentStatusDTO'
       required:
-      - cloudUrl
-      - id
-      - name
-      - number
-      - status
+        - cloudUrl
+        - id
+        - name
+        - number
+        - status
       type: object
     IncidentStatusDTO:
       enum:
-      - reported
-      - investigating
-      - fixing
-      - resolved
+        - reported
+        - investigating
+        - fixing
+        - resolved
       type: string
     LogLevelDTO:
       enum:
-      - debug
-      - info
-      - warning
-      - error
+        - debug
+        - info
+        - warning
+        - error
       type: string
     LogsContentDTO:
       properties:
@@ -196,10 +196,10 @@ components:
           nullable: false
           type: string
       required:
-      - index
-      - level
-      - message
-      - timestamp
+        - index
+        - level
+        - message
+        - timestamp
       type: object
     MapOfStringToString:
       additionalProperties: true
@@ -252,13 +252,13 @@ components:
           nullable: false
           type: integer
       required:
-      - content
-      - first
-      - last
-      - number
-      - size
-      - totalElements
-      - totalPages
+        - content
+        - first
+        - last
+        - number
+        - size
+        - totalElements
+        - totalPages
       type: object
     PublicApiDatasetsResponse:
       properties:
@@ -290,13 +290,13 @@ components:
           nullable: false
           type: integer
       required:
-      - content
-      - first
-      - last
-      - number
-      - size
-      - totalElements
-      - totalPages
+        - content
+        - first
+        - last
+        - number
+        - size
+        - totalElements
+        - totalPages
       type: object
     PublicApiScanDefinitionSlim:
       properties:
@@ -307,8 +307,8 @@ components:
           nullable: false
           type: string
       required:
-      - id
-      - name
+        - id
+        - name
       type: object
     PublicApiScanLogsResponse:
       properties:
@@ -340,13 +340,13 @@ components:
           nullable: false
           type: integer
       required:
-      - content
-      - first
-      - last
-      - number
-      - size
-      - totalElements
-      - totalPages
+        - content
+        - first
+        - last
+        - number
+        - size
+        - totalElements
+        - totalPages
       type: object
     PublicApiScanStatusResponse:
       properties:
@@ -387,10 +387,10 @@ components:
           format: int32
           type: integer
       required:
-      - cloudUrl
-      - created
-      - id
-      - state
+        - cloudUrl
+        - created
+        - id
+        - state
       type: object
     PublicApiTestLoginResponse:
       properties:
@@ -399,24 +399,35 @@ components:
       type: object
     ScanStateDTO:
       enum:
-      - queuing
-      - executing
-      - cancelationRequested
-      - timeOutRequested
-      - canceled
-      - timedOut
-      - failed
-      - completedWithErrors
-      - completedWithFailures
-      - completedWithWarnings
-      - completed
+        - queuing
+        - executing
+        - cancelationRequested
+        - timeOutRequested
+        - canceled
+        - timedOut
+        - failed
+        - completedWithErrors
+        - completedWithFailures
+        - completedWithWarnings
+        - completed
       type: string
   securitySchemes:
     basicAuthApiKey:
       scheme: basic
       type: http
 info:
-  description: Public API for Soda Cloud
+  description: "# Soda Cloud Public API\n\nThis API enables you to interact with the\
+    \ Soda Cloud product using an officially supported API.\n\nUse this API to:\n\n\
+    - connect with your data catalog,\n- engage in interaction with Soda Cloud from\
+    \ within your data pipeline,\n- create custom solutions that communicate directly\
+    \ with Soda Cloud.\n\n## Authentication\n\nThe API supports authentication via\
+    \ HTTP `Basic` authentication header. This method will work in all cases whether\
+    \ your\nuser is part of more than one organization, or whether your organization\
+    \ uses Single Sign-On (SSO) authentication.\n\nIf you do not know how to generate\
+    \ your API Key and Secret pair follow\nthe [Configure and run Soda Library](https://docs.soda.io/soda-library/configure.html#configure-and-run-soda-library)\n\
+    instructions.\n\n## Examples\n\n```curl\ncurl -X GET \\ \n    --location \"https://cloud.soda.io/api/v1/test-login\"\
+    \ \\\n    --basic \n    --user 5100a9bc-8cbe-44ab-8263-136ba0f35c1d:VIorf5ZGgE5yqMc-gT7amAsAiotqgySSUh98VBtek_6x6fP3asnybQ\n\
+    ```\n"
   title: Soda Cloud Public API
   version: v1
 openapi: 3.0.1
@@ -424,6 +435,12 @@ paths:
   /api/v1/checks:
     get:
       description: |-
+        Provides the ability to query the checks present in the organization's Soda Cloud account.
+
+        You can limit the checks only to a specific dataset (using `dataset` query parameter).
+
+        This is a paging query and uses `size`, `page` and `from` parameters to request a specific page.
+
         Default `size` in case nothing is set: 10.
 
         Allowed values for `size` (inclusive): between 10 and 100.
@@ -446,19 +463,19 @@ paths:
 
         ## Tags
 
-        Has tags: `checks`
+        Has tags: `Checks`
 
         ## Rate limiting
 
         Has rate limiting: **10** requests allowed per **60** seconds
       operationId: /api/v1/checks
       parameters:
-      - in: query
-        name: datasetId
-      - in: query
-        name: page
-      - in: query
-        name: size
+        - in: query
+          name: datasetId
+        - in: query
+          name: page
+        - in: query
+          name: size
       responses:
         "400":
           content:
@@ -503,12 +520,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-      - basicAuthApiKey: []
+        - basicAuthApiKey: []
       tags:
-      - checks
+        - Checks
   /api/v1/datasets:
     get:
       description: |-
+        Provides the ability to query the datasets present in the organization's Soda Cloud account, including the most relevant properties of the linked resources (datasource, incident, health information, etc.).
+
+        In case you wish to limit datasets to those that have been updated after a certain point in time, please use `from` parameter. The expected value is a ISO8601 timestamp, e.g. `2023-12-31T10:15:30+01:00`. In case you don't supply this value, all datasets will be returned.
+
+        This is a paging query and uses `size` and `page` parameters to request a specific page.
+
         Default `size` in case nothing is set: 10.
 
         Allowed values for `size` (inclusive): between 10 and 100.
@@ -531,19 +554,19 @@ paths:
 
         ## Tags
 
-        Has tags: `datasets`
+        Has tags: `Datasets`
 
         ## Rate limiting
 
         Has rate limiting: **10** requests allowed per **60** seconds
       operationId: /api/v1/datasets
       parameters:
-      - in: query
-        name: from
-      - in: query
-        name: page
-      - in: query
-        name: size
+        - in: query
+          name: from
+        - in: query
+          name: page
+        - in: query
+          name: size
       responses:
         "400":
           content:
@@ -588,13 +611,19 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-      - basicAuthApiKey: []
+        - basicAuthApiKey: []
       tags:
-      - datasets
+        - Datasets
   /api/v1/scans:
     post:
       description: |-
-        Response, if successful, will contain header Location that will point to the submitted scan.
+        This API allows users to trigger an execution of the scan on a Soda Agent.
+
+        As long as there is a scan definition on the Cloud with name equal to the value of the parameter `scanDefinition` and it is connected to has an active agent, the scan will commence.
+
+        Response, if successful, will contain header `Location` that will point to the submitted scan, and the response code will be `201`.
+
+        To get the current state of the scan that was submitted, please use API `/api/v1/scans/{scanId}`.
 
         ## Authentication
 
@@ -608,7 +637,7 @@ paths:
 
         ## Tags
 
-        Has tags: `scans`
+        Has tags: `Scans`
 
         ## Rate limiting
 
@@ -625,7 +654,7 @@ paths:
                   nullable: false
                   type: string
               required:
-              - scanDefinition
+                - scanDefinition
               type: object
         required: true
       responses:
@@ -672,12 +701,42 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-      - basicAuthApiKey: []
+        - basicAuthApiKey: []
       tags:
-      - scans
+        - Scans
   /api/v1/scans/{scanId}:
     get:
       description: |-
+        Use this API to get the current state of the API.
+
+        As the scan progresses, properties will progressively receive values based on the scan state.
+
+        Scan will first enqueue for processing, then be submitted, eventually it will be processing and, finally, it will reach one of the final states.
+
+        - `queuing`: the scan has been enqueued for execution, awaiting a pick-up from a Soda Agent
+
+        - `executing`: the scan has been picked up and is being executed on a Soda Agent
+
+        - `cancelationRequested`: cancelation of this scan has been requested, pending pick-up from the Soda Agent responsible for the scan
+
+        - `timeOutRequested`: time out has been detected, and an automatic request to shutdown the running scan is pending pick-up from the Soda Agent responsible for the scan
+
+        - `canceled`: Soda Agent confirmed that the scan has been cancelled. This is a final state of a scan
+
+        - `timedOut`: Soda Agent confirmed that the scan has been marked as timed-out. This is a final state of a scan
+
+        - `failed`: The scan did not start or successfully complete because of an unexpected cause. This is a final state of a scan
+
+        - `completedWithErrors`: The scan finished with some execution errors detected in the Soda Library. This is a final state of a scan
+
+        - `completedWithFailures`: The scan finished with some data check failures detected in the Soda Library. This is a final state of a scan
+
+        - `completedWithWarnings`: The scan finished with some data check warnings detected in the Soda Library. This is a final state of a scan
+
+        - `completed`: The scan finished without any issues. This is a final state of a scan
+
+        To get the logs of the completed scan, please use API `/api/v1/scans/{scanId}/logs`.
+
         ## Authentication
 
         User authentication required: **true**
@@ -690,16 +749,16 @@ paths:
 
         ## Tags
 
-        Has tags: `scans`
+        Has tags: `Scans`
 
         ## Rate limiting
 
         Has rate limiting: **60** requests allowed per **60** seconds
       operationId: "/api/v1/scans/{scanId}"
       parameters:
-      - in: path
-        name: scanId
-        required: true
+        - in: path
+          name: scanId
+          required: true
       responses:
         "400":
           content:
@@ -744,12 +803,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-      - basicAuthApiKey: []
+        - basicAuthApiKey: []
       tags:
-      - scans
+        - Scans
   /api/v1/scans/{scanId}/logs:
     get:
       description: |-
+        In case a scan with `scanId` is in the final state, this API can be used to fetch the execution logs for the local analysis. In case scan doesn't exist or it does exist but is still incomplete the server will return a client error.
+
+        To get the current state of the scan, please use API `/api/v1/scans/{scanId}`.
+
+        This is a paging query and uses `size` and `page` parameters to request a specific page.
+
         Default `size` in case nothing is set: 1000.
 
         Allowed values for `size` (inclusive): between 1000 and 1000.
@@ -770,20 +835,20 @@ paths:
 
         ## Tags
 
-        Has tags: `scans`
+        Has tags: `Scans`
 
         ## Rate limiting
 
         Has rate limiting: **60** requests allowed per **60** seconds
       operationId: "/api/v1/scans/{scanId}/logs"
       parameters:
-      - in: path
-        name: scanId
-        required: true
-      - in: query
-        name: page
-      - in: query
-        name: size
+        - in: path
+          name: scanId
+          required: true
+        - in: query
+          name: page
+        - in: query
+          name: size
       responses:
         "400":
           content:
@@ -828,12 +893,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-      - basicAuthApiKey: []
+        - basicAuthApiKey: []
       tags:
-      - scans
+        - Scans
   /api/v1/test-login:
     get:
       description: |-
+        This is a simple query that verifies the authorization is correct and if the communication with the Soda Cloud API is functional.
+
+        Response is very simple and only includes the most basic information of the caller's organization in the Soda Cloud database.
+
         ## Authentication
 
         User authentication required: **true**
@@ -846,7 +915,7 @@ paths:
 
         ## Tags
 
-        Has tags: `utility`
+        Has tags: `Utility`
 
         ## Rate limiting
 
@@ -896,18 +965,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-      - basicAuthApiKey: []
+        - basicAuthApiKey: []
       tags:
-      - utility
+        - Utility
 servers:
-- url: https://cloud.soda.io
-- url: https://cloud.us.soda.io
+  - url: https://cloud.soda.io
+  - url: https://cloud.us.soda.io
 tags:
-- description: Soda Public API Check Endpoints
-  name: checks
-- description: Soda Public API Dataset Endpoints
-  name: datasets
-- description: Soda Public API Scan Endpoints
-  name: scans
-- description: Soda Public API Utility Endpoints
-  name: utility
+  - description: Soda Public API Check Endpoints
+    name: Checks
+  - description: Soda Public API Dataset Endpoints
+    name: Datasets
+  - description: Soda Public API Scan Endpoints
+    name: Scans
+  - description: Soda Public API Utility Endpoints
+    name: Utility

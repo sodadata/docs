@@ -218,7 +218,7 @@
     page: soda/connect-vertica.md
 
 - title: Access Soda Cloud Public API
-  page: api-docs/reporting-api-v1.md
+  page: api-docs/public-cloud-api-v1.md
   subcategories:
     - subtitle: Soda Cloud Public API v1
       page: api-docs/public-cloud-api-v1.md
