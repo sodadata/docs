@@ -11,7 +11,7 @@ parent: Data source reference
 You can use the Soda Library packages for Apache Spark to connect to Databricks SQL or to use Spark DataFrames on Databricks.
 
 * Refer to [Connect to Spark for Databricks SQL]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql).
-* Refer to [Use Soda Library with Spark DataFrames on Databricks]({% link soda/connect-spark.md %}#use-soda-library-with-spark-dataframes-on-databricks).
+* Refer to [Use Soda Library with Spark DataFrames on Databricks]({% link soda/connect-spark.md %}#use-soda-library-with-spark-dataframes-on-databricks). <br />🎥 Watch a video that demonstrates how to add Soda to your Databricks pipeline: <a href="https://go.soda.io/soda-databricks-video" target="_blank">https://go.soda.io/soda-databricks-video<a/>
 
 <br />
 

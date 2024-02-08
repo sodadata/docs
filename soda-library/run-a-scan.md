@@ -85,6 +85,7 @@ If you wish to schedule a *new* scan to execute the checks in an agreement more 
 [Run a scan in an agreement](#run-a-scan-in-an-agreement)<br />
 [Run a scan from the command-line](#run-a-scan-from-the-command-line)<br />
 [Input scan-time variables](#input-scan-time-variables)<br />
+[Prevent pushing scan results to Soda Cloud](#prevent-pushing-scan-results-to-soda-cloud)
 [Configure the same scan to run in multiple environments](#configure-the-same-scan-to-run-in-multiple-environments)<br />
 [Add scan options](#add-scan-options)<br />
 [Troubleshoot](#troubleshoot)<br />
@@ -175,9 +176,18 @@ soda scan -d aws_postgres_retail -c configuration.yml -v TODAY=2022-03-31 checks
 If you wish, you can provide the value more than one variable at scan time, as in the following example.
 
 ```shell
-soda scan -d aws_postgres_retail duplicate_count_filter.yml -v date=2022-07-25 -v name='rowcount check'
+soda scan -d aws_postgres_retail duplicate_count_filter.yml -c configuration.yml -v date=2022-07-25 -v name='rowcount check'
 ```
 
+### Prevent pushing scan results to Soda Cloud
+
+If you wish, you can execute a scan using the Soda Library CLI and avoid sending any scan results to Soda Cloud. This is useful if, for example, you are testing checks locally and do not wish to muddy the measurements in your Soda Cloud account with test run metadata.
+
+To do so, add a `--local` option to your scan command in the CLI, as in the following example.
+
+```shell
+soda scan -d aws_postgres_retail -c configuration.yml checks.yml --local
+```
 
 ### Configure the same scan to run in multiple environments
 
@@ -192,7 +202,7 @@ data_source nyc_dev:
   username: ${POSTGRES_USER}
   password: ${POSTGRES_PASSWORD}
   database: postgres
-  schema: public
+  schema: staging
 data_source nyc_prod:
   type: postgres
   host: host
@@ -222,7 +232,7 @@ When you run a scan in Soda Library, you can specify some options that modify th
 | ------ | :------: | ---------------------- |
 | `-c TEXT` or<br /> `--configuration TEXT` | ✓ | Use this option to specify the file path and file name for the configuration YAML file.|
 | `-d TEXT` or<br /> `--data-source TEXT` |  ✓ | Use this option to specify the data source that contains the datasets you wish to scan.|
-| `-l` or<br /> `--local` |  | Use this option to prevent Soda Library from pushing check results or any other metadata to Soda Cloud. |
+| `-l` or<br /> `--local` |  | Use this local option to prevent Soda Library from pushing check results or any other metadata to Soda Cloud. |
 | `-s TEXT` or<br /> `--scan-definition TEXT` |  | Use this option to provide a scan definition name so that Soda Cloud keeps check results from different environments (dev, prod, staging) separate. See [Configure a single scan to run in multiple environments](#configure-the-same-scan-to-run-in-multiple-environments).|
 | `-srf` or <br /> `--scan-results-file TEXT` |  | Specify the file name and file path to which Soda Library sends a JSON file of the scan results. You can use this in addition to, or instead of, sending results to Soda Cloud. <br /> `soda scan -d adventureworks -c configuration.yml -srf test.json checks.yml`|
 | `-t TEXT` or<br /> `--data-timestamp TEXT` |  | Placeholder, only. |

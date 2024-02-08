@@ -130,7 +130,7 @@ print(scan.get_logs_text())
 
 ## Use Soda Library with Spark DataFrames on Databricks
 
-Use the `soda-spark-df` package to connect to Databricks using a Notebook. 
+Use the `soda-spark-df` package to connect to Databricks using a Notebook. <br />🎥 Watch a video that demonstrates how to add Soda to your Databricks pipeline: <a href="https://go.soda.io/soda-databricks-video" target="_blank">https://go.soda.io/soda-databricks-video<a/>
 
 1. Follow steps 1-2 in [the instructions](#connect-to-spark-dataframes) to install `soda-spark-df`.
 2. Reference the following Notebook example to connect to Databricks. 

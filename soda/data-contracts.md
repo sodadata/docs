@@ -8,6 +8,7 @@ redirect_from:
 ---
 
 # Create a data contract ![experimental](/assets/images/experimental.png){:height="150px" width="150px"} 
+<!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
 Use Soda's data contracts to set data quality standards for data products. In a programmatic scan, Soda translates contract standards into Soda Checks Language, then executes the standards as data quality checks during a scan. 
