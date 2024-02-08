@@ -564,7 +564,7 @@ pip install "soda-scientific[simulator]"
 soda simulate-anomaly-detection -c configuration.yaml
 ```
 5. Paste the check URL you copied for your anomaly check into the main field; refer to the image below.
-![ad-simulator-welcome](/assets/images/ad-simulator-welcome.png){:height="700px" width="700px"}
+![ad-simulator-welcome](/assets/images/ad-simulator-welcome.png){:height="800px" width="800px"}
 6. Use the slider that appears to simulate the most recent `n` measurements, ideally not more than 60 due to execution time.
 7. Click **Start Simulation** to display graphic results using the default parameter values. 
 8. Use the tools in the sidebar to [adjust parameter settings](#adjust-simulator-parameters) until the simulator displays your ideal anomaly sensitivity results. Apply your optimized parameter settings to the check configuration in your checks YAML file.
