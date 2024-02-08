@@ -11,6 +11,7 @@ parent: Learning resources
 
 #### February 8, 2024
 * Documented how to use the [anomaly detection simulator]({% link soda-cl/anomaly-detection.md %}#test-optional-configuration-using-a-simulator).
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.3.0 and Soda Core 3.2.0.
 
 #### February 2, 2024
 * Added links to a [video]({% link soda/quick-start-databricks.md %}) that demonstrates how to add Soda to a Databricks pipeline. 
