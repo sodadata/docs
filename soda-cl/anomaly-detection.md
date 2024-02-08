@@ -553,24 +553,22 @@ Use the following tables to estimate the execution time for checks with dynamic 
 Soda provides an anomaly detection simulator to enable you to test and observe how parameter adjustments you make impact the algorithm's confidence interval and anomaly detection sensitivity. The purpose of this local, <a href="https://streamlit.io/" target="_blank">streamlit</a> simulator application is to help you to choose the most suitable parameter settings for your anomaly detection needs.
 
 1. From the command-line, install the simulator package using the following command.
-
 ```bash
-pip install "soda-scientific[simulator]"
+pip install soda-scientific[simulator]
 ```
 2. Ensure you have configured the connection details to both your data source and your Soda Cloud account in a `configuration.yml` file. See: [Configure Soda]({% link soda-library/install.md %}#configure-soda).
-3. Log in to your Soda Cloud account, then navigate to the **Check History** page of your existing anomaly detection or anomaly score check. From your browser copy the URL; refer to image below.
+3. Log in to your Soda Cloud account, then navigate to the **Check History** page of your existing anomaly detection or anomaly score check. From your browser copy the entire URL; refer to image below.
 ![check-url](/assets/images/check-url.png){:height="700px" width="700px"}
 4. To launch the application, use the following command. After running the command, a new tab opens in your default browser displaying the simulator as shown in the screenshot below.
 ```bash
 soda simulate-anomaly-detection -c configuration.yaml
 ```
 ![ad-simulator-welcome](/assets/images/ad-simulator-welcome.png){:height="700px" width="700px"}
-5. Paste the check URL you copied for your anomaly check into the main field and hit enter. Refer to the screenshot below.
+5. Paste the check URL you copied for your anomaly check into the main field and press enter. Refer to the screenshot below.
 ![ad-check-url](/assets/images/ad-check-url.png){:height="700px" width="700px"}
-6. Use the slider that appears to simulate the most recent `n` measurements, ideally not more than 60 due to execution time.
+6. Use the slider that appears to simulate the most recent `n` measurements, ideally not more than 60 so as to keep the simulator execution time reasonable.
 7. Click **Start Simulation** to display graphic results using the default parameter values.
 8. Use the tools in the sidebar to [adjust parameter settings](#adjust-simulator-parameters) until the simulator displays your ideal anomaly sensitivity results. Apply your optimized parameter settings to the check configuration in your checks YAML file.
-
 ![ad-simulator-results](/assets/images/ad-simulator-results.png){:height="700px" width="700px"}
 
 ### Adjust simulator parameters
@@ -588,7 +586,7 @@ For further hyperparameter customization, turn on the `Advanced` toggle and edit
 }
 ```
 
-For **Training Dataset Parameters***, the adjustable settings correspond to the parameters in [Add optional training dataset configurations](#add-optional-training-dataset-configurations).
+For **Training Dataset Parameters**, the adjustable settings correspond to the parameters in [Add optional training dataset configurations](#add-optional-training-dataset-configurations).
 
 For **Severity Level Parameters**, the adjustable settings correspond to the parameters in [Manage alert severity levels](#manage-alert-severity-levels).
 
