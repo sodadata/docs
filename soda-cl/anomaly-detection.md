@@ -554,11 +554,11 @@ Soda provides an anomaly detection simulator to enable you to test and observe h
 
 1. From the command-line, install the simulator package using the following command.
 ```bash
-pip install soda-scientific[simulator]
+pip install "soda-scientific[simulator]"
 ```
 2. Ensure you have configured the connection details to both your data source and your Soda Cloud account in a `configuration.yml` file. See: [Configure Soda]({% link soda-library/install.md %}#configure-soda).
 3. Log in to your Soda Cloud account, then navigate to the **Check History** page of your existing anomaly detection or anomaly score check. From your browser copy the URL; refer to image below.
-![check-id](/assets/images/check-url.png){:height="700px" width="700px"}
+![check-url](/assets/images/check-url.png){:height="700px" width="700px"}
 4. To launch the application, use the following command.
 ```bash
 soda simulate-anomaly-detection -c configuration.yaml
@@ -574,7 +574,7 @@ soda simulate-anomaly-detection -c configuration.yaml
 
 For **Model Hyperparameter Profiles**, the first two options correspond with the `coverage`, `MAPE` profiles described in [Add optional model configuration](#add-optional-model-configurations), and the third option, `custom` corresponds to the ability to [Customize hyperparameter](#customize-hyperparameters). Experiment with the `coverage` and `MAPE` profiles first, before considering the `custom` profile. 
 
-For further hyperparameter customization, turn on the `Advanced` toggle and edit hyperparameters in the `Custom Prophet Hyperparameters` text field, as in the example below. Note that if you do not specify a customized value for a hyperparameter, Soda uses the default values from the `coverage` profile. 
+For further hyperparameter customization, turn on the `Advanced` toggle and edit hyperparameters in the `Custom Prophet Hyperparameters` text field, as in the example below. Note that if you do not specify a customized value for a hyperparameter, Soda uses the default values from the `coverage` profile.
 
 ```python
 {
