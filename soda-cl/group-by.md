@@ -15,7 +15,6 @@ Use a group by configuration to collect and present check results by category. <
 ```yaml
 checks for fact_internet_sales:
   - group by:
-      group_limit: 10
       query: |
         SELECT sales_territory_key, AVG(discount_amount) as average_discount
         FROM fact_internet_sales
@@ -25,13 +24,14 @@ checks for fact_internet_sales:
       checks:
         - average_discount:
             fail: when > 40
-            name: Average discount percentage is less than 40% (grouped-by sales territory)
+            name: Average discount percentage is less than 40% (grouped by sales territory)
 ```
 
-[Define reference checks](#define-reference-checks) <br />
+[Define a group by configuration checks](#define-a-group-by-configuration) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Add multiple group configurations](#add-multiple-group-configurations)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Change configurations and preserve check history](#change-configurations-and-preserve-check-history)<br />
 [Group by check results](#group-by-check-results)<br />
 [Optional check configurations](#optional-check-configurations)<br />
-[Expect one check result](#expect-one-check-result)<br />
 [Track anomalies and relative changes by group](#track-anomalies-and-relative-changes-by-group)<br />
 [Go further](#go-further)<br />
 <br />
@@ -48,6 +48,7 @@ The check itself uses the custom metric `average_discount` and an [alert configu
 checks for fact_internet_sales:
   - group by:
       group_limit: 10
+      name: average discount
       query: |
         SELECT sales_territory_key, AVG(discount_amount) as average_discount
         FROM fact_internet_sales
@@ -61,7 +62,8 @@ checks for fact_internet_sales:
 ```
 
 | `group by` | required | configuration section label |
-| `group_limit` | optional | the maximum number of groups, or column values, into which Soda must categorize the results. This value must correspond with the number of unique values in the column you identify in the `fields` section.  |
+| `group_limit` | optional | the maximum number of groups, or column values, into which Soda must categorize the results. This value must correspond with the number of unique values in the column you identify in the `fields` section; see example below. |
+| `group_name` | optional | specify a name for the group; Soda does not evaluate this parameter |
 | `query` | required | custom query subsection label. The nested SQL query defines the custom metric `average_discount`|
 | `fields`| required | column subsection label |
 | `sales_territory_key`| required | column identifier; the values in this column identify how Soda groups the results. |
@@ -69,15 +71,15 @@ checks for fact_internet_sales:
 | `average_discount`| required | custom metric identifier  |
 | `fail: when > 40` | required | fail condition and threshold |
 | `warn: when between 50 and 60` | only one alert condition is required | warn condition and threshold |
-| `name` | required | custom name for the check |
+| `name` | optional | custom name for the check; it not defined, Soda derives the name of the check in Soda Cloud from the check syntax |
 
+<br />
 
 You can also use multi-column groups in a group by check, as in the example below that groups results both by `gender` and `english_education`. 
 
 ```yaml
 checks for dim_customer:
     - group by:
-        name: sum_total_children_groupby_check
         query: |
             SELECT
                 gender,
@@ -94,41 +96,9 @@ checks for dim_customer:
                 name: Total number of children
 ```
 
-## Group by check results
-
-When you run a scan that includes checks nested in a group by configuration, the output in **Soda Library CLI** groups the results according to the unique values in the column you identified in the `fields` subsection. The number of unique values in the column must match the value you provided for `group_limit`. 
-
-In the example results below, the calculated average of `average_discount` for each sales territory is less than 40%, so the check for each group passed. The value in the square brackets next to the custom check name identifies the group which, in this case, is a number that corresponds to a territory.
-
-```shell
-Soda 1.0.x
-Soda Core 3.0.x
-Scan summary:
-11/11 checks PASSED: 
-    fact_internet_sales in adventureworks
-      group by [PASSED]
-      Average discount percentage is less than 40% (grouped-by sales territory) [8] [PASSED]
-      Average discount percentage is less than 40% (grouped-by sales territory) [10] [PASSED]
-      Average discount percentage is less than 40% (grouped-by sales territory) [9] [PASSED]
-      Average discount percentage is less than 40% (grouped-by sales territory) [7] [PASSED]
-      Average discount percentage is less than 40% (grouped-by sales territory) [1] [PASSED]
-      Average discount percentage is less than 40% (grouped-by sales territory) [5] [PASSED]
-      Average discount percentage is less than 40% (grouped-by sales territory) [2] [PASSED]
-      Average discount percentage is less than 40% (grouped-by sales territory) [4] [PASSED]
-      Average discount percentage is less than 40% (grouped-by sales territory) [6] [PASSED]
-      Average discount percentage is less than 40% (grouped-by sales territory) [3] [PASSED]
-All is good. No failures. No warnings. No errors.
-Sending results to Soda Cloud
-Soda Cloud Trace: 14733***37
-```
-
-In Soda Cloud, the check results appear by territory.
-
-![group-by-4](/assets/images/group-by-4.png){:height="600px" width="600px"}
-
 <br />
 
-You must always match the number of unique values in the group by column to the value you provide for the `group_limit`. In the following example, the number of unique values in the `sales_territory_key` column is greater than the `group_limit: 2` so Soda does not evaluate the check.  
+If you use an optional `group_limit` parameter, you must always match the number of unique values in the group by column to the value you provide for the parameter. In the following example, the number of unique values in the `sales_territory_key` column is greater than the `group_limit: 2` so Soda does not evaluate the check.  
 {% include code-header.html %}
 ```yaml
 checks for dim_employee:
@@ -164,7 +134,7 @@ Evaluation of check group by failed: Total number of groups 11 exceeds configure
   +-> line=2,col=5 in checks_groupby.yml
 ```
 
-Resolve the issue by increasing the group limit value.
+Resolve the issue by increasing the group limit value, or by removing the parameter entirely.
 {% include code-header.html %}
 ```yaml
 checks for dim_employee:
@@ -213,6 +183,107 @@ Scan summary:
 Oops! 12 failures. 0 warnings. 0 errors. 0 pass.
 ```
 
+### Add multiple group configurations
+
+You can add multiple `group by` configurations to the same checks YAML file and produce separately grouped check results. To do so, you must include an identifier in the `group by` configuration key of the extra group configurations you add, as in the example below. 
+
+* The first `group by` in the example requires no identifier, though for readability and completeness, you have the option of adding one. 
+* The second `group by` includes `gender` as an identifier to differentiate it from the first. 
+
+The `group by` identifiers do not appear in the check results Soda Cloud.
+{% include code-header.html %}
+```yaml
+checks for dim_employee:
+  - group by:
+      query: |
+        SELECT marital_status, AVG(vacation_hours) as vacation_hours, MAX(vacation_hours) as max_vacation_hours
+        FROM dim_employee
+        GROUP BY marital_status
+      fields:
+        - marital_status
+      checks:
+        - vacation_hours > 0:
+            identity: custom_identity
+        - max_vacation_hours < 1000:
+            name: MAX vacation hours less than 1000 [marital_status]
+  - group by gender:
+      query: |
+        SELECT gender, AVG(vacation_hours) as vacation_hours, MAX(vacation_hours) as max_vacation_hours
+        FROM dim_employee
+        GROUP BY gender
+      fields:
+        - gender
+      checks:
+        - vacation_hours > 0:
+            identity: custom_identity
+        - max_vacation_hours < 1000:
+            name: MAX vacation hours less than 1000 [gender]
+```
+
+When the check results appear in Soda Cloud, the checks use the `name` you define for each check or, if you do not specify a `name` parameter, the syntax of the checks themselves. The `group by` identifiers do not appear the the check results in Soda Cloud.
+
+
+### Change configurations and preserve check history
+
+When you make changes to your `group by` configuration, some changes result in a resetting of the check history in Soda Cloud. 
+
+The following changes result in a reset of a group by check's history; all historical measurements disappear.
+* change the list of `fields`, either adding, removing, or changing an existing field
+* change the `group by` identifier when more than one `group by` configurations exist; see [Add multiple group configurations](#add-multiple-group-configurations)
+* change the syntax of a group by check such as, a change to the threshold value; see [Configure variables in SodaCL]({% link soda-cl/filters.md %}#example-provide-a-threshold-value-at-scan-time) to mitigate disruption using dynamic threshold values
+
+The following changes result in no changes to the check's history; Soda preserves historical measurements.
+* change the SQL query that forms part of the `group by` configuration
+* add a check to the `group by` configuration
+
+Further, you can add an `identity` parameter to a group by check to be able to make changes to the check and still preserve its historical measurements, as in the example below. See also: [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity).
+```yaml
+checks for dim_employee:
+  - group by:
+    ...
+      checks:
+        - vacation_hours > 0:
+            identity: custom_identity
+```
+
+
+## Group by check results
+
+When you run a scan that includes checks nested in a group by configuration, the output in **Soda Library CLI** groups the results according to the unique values in the column you identified in the `fields` subsection. The number of unique values in the column must match the value you provided for `group_limit`. 
+
+In the example results below, the calculated average of `average_discount` for each sales territory is less than 40%, so the check for each group passed. The value in the square brackets next to the custom check name identifies the group which, in this case, is a number that corresponds to a territory.
+
+```shell
+Soda 1.0.x
+Soda Core 3.0.x
+Scan summary:
+11/11 checks PASSED: 
+    fact_internet_sales in adventureworks
+      group by [PASSED]
+      Average discount percentage is less than 40% (grouped-by sales territory) [8] [PASSED]
+      Average discount percentage is less than 40% (grouped-by sales territory) [10] [PASSED]
+      Average discount percentage is less than 40% (grouped-by sales territory) [9] [PASSED]
+      Average discount percentage is less than 40% (grouped-by sales territory) [7] [PASSED]
+      Average discount percentage is less than 40% (grouped-by sales territory) [1] [PASSED]
+      Average discount percentage is less than 40% (grouped-by sales territory) [5] [PASSED]
+      Average discount percentage is less than 40% (grouped-by sales territory) [2] [PASSED]
+      Average discount percentage is less than 40% (grouped-by sales territory) [4] [PASSED]
+      Average discount percentage is less than 40% (grouped-by sales territory) [6] [PASSED]
+      Average discount percentage is less than 40% (grouped-by sales territory) [3] [PASSED]
+All is good. No failures. No warnings. No errors.
+Sending results to Soda Cloud
+Soda Cloud Trace: 14733***37
+```
+
+In Soda Cloud, the check results appear by territory.
+
+![group-by-4](/assets/images/group-by-4.png){:height="600px" width="600px"}
+
+<br />
+
+{% include expect-one-result.md %}
+
+
 ## Optional check configurations
 
 | Supported | Configuration | Documentation |
@@ -224,9 +295,10 @@ Oops! 12 failures. 0 warnings. 0 errors. 0 pass.
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters in the value in the check. | Use wildcard values as you would with SQL. |
 |   | Use for each to apply group by checks to multiple datasets in one scan. | - |
-|  | Apply a dataset filter to partition data during a scan. | - |
+|   | Apply a dataset filter to partition data during a scan. | - |
 
 #### Example with check name
+When the check results appear in Soda Cloud, the checks use the `name` you define for the check or, if you do not specify a `name` parameter, the syntax of the check itself.
 {% include code-header.html %}
 ```yaml
 checks for dim_employee:
@@ -242,6 +314,18 @@ checks for dim_employee:
       checks:
         - vacation_hours > 60:
             name: Too many vacation hours
+```
+
+#### Example with identity
+See aslo: [Change configurations and preserve check history](#change-configurations-and-preserve-check-history).
+{% include code-header.html %}
+```yaml
+checks for dim_employee:
+  - group by:
+    ...
+      checks:
+        - vacation_hours > 0:
+            identity: custom_identity
 ```
 
 #### Example with alert configuration
@@ -284,9 +368,6 @@ checks for dim_employee:
 ```
 <br />
 
-## Expect one check result
-
-{% include expect-one-result.md %}
 
 ## Track anomalies and relative changes by group
 
