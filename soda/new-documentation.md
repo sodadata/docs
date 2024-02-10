@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### February 9, 2024
+* Published documentation for the new ability to add [multiple group by configurations]({% link soda-cl/group-by.md %}#add-multiple-group-configurations), and instructions for how to [preserve historical measurements]({% link soda-cl/group-by.md %}#change-configurations-and-preserve-check-history) when making changes to a `group by` configuration.
+
 #### February 8, 2024
 * Documented how to use the [anomaly detection simulator]({% link soda-cl/anomaly-detection.md %}#test-optional-configuration-using-a-simulator).
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.3.0 and Soda Core 3.2.0.
