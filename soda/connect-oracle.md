@@ -25,13 +25,27 @@ data_source my_datasource_name:
   password: simple_pass
   connectstring: "User Id=maya;password=j*5YTd3;data source=oracle"
 ```
+or without `connectstring`:
 
-| Property | Required | Notes                                                      |
-| -------- | -------- | ---------------------------------------------------------- |
-| type     | required |  Identify the type of data source for Soda.                |
-| username | required | Consider using system variables to retrieve this value securely.      |
-| password | required | Consider using system variables to retrieve this value securely.      |
-| connectstring | required | Specifies connection information for the Oracle database. Must be a semicolon-separated list of attribute name and value pairings. See <a href="https://docs.oracle.com/en/database/oracle/oracle-database/21/odpnt/ConnectionConnectionString.html#GUID-DF4ED9A3-1AAF-445D-AEEF-016E6CD5A0C0" target="_blank">ConnectionString</a> in Oracle documentation. |
+{% include code-header.html %}
+```yaml
+data_source my_datasource_name:
+  type: oracle
+  username: simple
+  password: simple_pass
+  host: host
+  service_name: service
+```
+
+| Property      | Required | Notes                                                      |
+| ------------- | -------- | ---------------------------------------------------------- |
+| type          | required |  Identify the type of data source for Soda.                |
+| username      | required | Consider using system variables to retrieve this value securely.      |
+| password      | required | Consider using system variables to retrieve this value securely.      |
+| host          | optional | Provide a host identifier. Only used when connectstring is not provided. |
+| port          | optional | Provide a port identifier. Default is 1523. Only used when connectstring is not provided.|
+| service_name  | optional | Provide a service_name. Only used when connectstring is not provided. |
+| connectstring | optional | Specify connection information for the Oracle database. Must be a semicolon-separated list of attribute name and value pairings. See <a href="https://docs.oracle.com/en/database/oracle/oracle-database/21/odpnt/ConnectionConnectionString.html#GUID-DF4ED9A3-1AAF-445D-AEEF-016E6CD5A0C0" target="_blank">ConnectionString</a> in Oracle documentation. If not specified, Soda attempts to construct a `connectstring` using `host`, `port` and `service_name` properties. |
 
 
 {% include test-connection.md %}

@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### February 14, 2024
+* Updated connection configuration parameters for [Athena]({% link soda/connect-athena.md %}) and [Oracle]({% link soda/connect-oracle.md %}).
+
 #### February 13, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.3.3.
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.3.2 and Soda Core 3.2.1.
