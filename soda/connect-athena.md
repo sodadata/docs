@@ -35,9 +35,9 @@ data_source my_datasource_name:
 | schema            | required | Identify the schema in the data source in which your tables exist. |
 | catalog           | optional | Identify the name of the Data Source, also referred to as a Catalog. The default value is `awsdatacatalog`. |
 | work_group        | optional | Identify a non-default workgroup in your region. In your Athena console, access your current workgroup in the Workgroup option on the upper right. Read more about <a href="https://docs.aws.amazon.com/athena/latest/ug/user-created-workgroups.html" target="_blank">Athena Workgroups</a>.
-| role_arn          | optional | Role to use for authentication and authorization. |
-| session_token     | optional | Session Token to use for authentication and authorization. |
-| profile_name      | optional | Profile Name from local aws configuration to use for authentication and authorization. |
+| role_arn          | optional | Specify role to use for authentication and authorization. |
+| session_token     | optional | Add a session Token to use for authentication and authorization. |
+| profile_name      | optional | Specify the profile Name from local AWS configuration to use for authentication and authorization. |
 
 <sup>1</sup> Access keys and IAM role are mutually exclusive: if you provide values for `access_key_id` and `secret_access_key`, you cannot use Identity and Access Management role; if you provide value for `role_arn`, then you cannot use the access keys. Refer to [Identity and Access Management in Athena](https://docs.aws.amazon.com/athena/latest/ug/security-iam-athena.html) for details.
 

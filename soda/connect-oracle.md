@@ -45,7 +45,7 @@ data_source my_datasource_name:
 | host          | optional | Provide a host identifier. Only used when connectstring is not provided. |
 | port          | optional | Provide a port identifier. Default is 1523. Only used when connectstring is not provided.|
 | service_name  | optional | Provide a service_name. Only used when connectstring is not provided. |
-| connectstring | optional | Specifies connection information for the Oracle database. Must be a semicolon-separated list of attribute name and value pairings. See <a href="https://docs.oracle.com/en/database/oracle/oracle-database/21/odpnt/ConnectionConnectionString.html#GUID-DF4ED9A3-1AAF-445D-AEEF-016E6CD5A0C0" target="_blank">ConnectionString</a> in Oracle documentation. Soda will attempt to construct one using `host`, `port` and `service_name` properties if not provided. |
+| connectstring | optional | Specify connection information for the Oracle database. Must be a semicolon-separated list of attribute name and value pairings. See <a href="https://docs.oracle.com/en/database/oracle/oracle-database/21/odpnt/ConnectionConnectionString.html#GUID-DF4ED9A3-1AAF-445D-AEEF-016E6CD5A0C0" target="_blank">ConnectionString</a> in Oracle documentation. If not specified, Soda attempts to construct a `connectstring` using `host`, `port` and `service_name` properties. |
 
 
 {% include test-connection.md %}
