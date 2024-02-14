@@ -66,10 +66,11 @@ checks for dim_customer:
 [Add optional model configurations](#add-optional-model-configurations)<br />
 [Add optional dynamic hyperparameter tuning configurations](#add-optional-dynamic-hyperparameter-tuning-configurations)<br />
 [Best practices for model configurations](#best-practices-for-model-configurations)<br />
+[Test optional configurations using a simulator](#test-optional-configuration-using-a-simulator)<br />
 [Address common anomaly detection issues](#address-common-anomaly-detection-issues)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Insensitive detection](#insensitive-detection)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;[Consecutive falsely-identified anomalies](#consecutive-falsely-identified-anomalies)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;[Large boundaries that ignore anomalies](#large-boundaries-that-ignore-anomalies)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;[Consecutive falsely-identified anomalies](#consecutive-falsely-identified-anomalies)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Large boundaries that ignore anomalies](#large-boundaries-that-ignore-anomalies)<br />
 [Track anomalies and relative changes by group](#track-anomalies-and-relative-changes-by-group)<br />
 [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientific-installation)<br />
 [Go further](#go-further) <br />
@@ -545,6 +546,50 @@ Use the following tables to estimate the execution time for checks with dynamic 
 * Only use the `custom_hyperparameters` configuration if you know how Facebook Prophet works. Before making any customizations, consult the <a href="https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning:~:text=Parameters%20that%20can%20be%20tuned" target="_blank">Facebook Prophet documentation</a>. The`change_point_prior_scale` and `seasonality_prior_scale` hyperparameters have the most impact on the model so best practice dictates that you experiment with the values of these two hyperparameters first before customizing or tuning others.
 * Adjust the value of the `interval_width` hyperparameter to obtain a more anomaly-sensitive model. The default value for this hyperparameter is `0.999` which means that the model applies a confidence interval of 99.9% which, in turn, means that if the predicted value is outside of the 99.9% interval, Soda flags it as an anomaly. If you want to have a more sensitive model, you can decrease this value though be aware that a lower value may result in more falsely-identified anomalies.
 * Use the `dynamic` tuning configuration only if necessary. Hyperparameter tuning is a computationally expensive process since the model tries all possible combinations of each hyperparameter's listed values to dynamically determine the best value to use to detect anomalies. See [Execution time analysis for dynamic hyperparameter tuning](#execution-time-analysis-for-dynamic-hyperparameter-tuning). If you need to use hyperparameter tuning, experiment with tuning the values of the `change_point_prior_scale` and `seasonality_prior_scale` hyperparameters first as these two have the most impact on the model's sensitivity.
+
+## Test optional configuration using a simulator
+*Requires Soda Library CLI*
+
+Soda provides an anomaly detection simulator to enable you to test and observe how parameter adjustments you make impact the algorithm's confidence interval and anomaly detection sensitivity. The purpose of this local, <a href="https://streamlit.io/" target="_blank">streamlit</a> simulator application is to help you to choose the most suitable parameter settings for your anomaly detection needs.
+
+1. From the command-line, install the simulator package using the following command.
+```bash
+pip install soda-scientific[simulator]
+```
+2. Ensure you have configured the connection details to both your data source and your Soda Cloud account in a `configuration.yml` file. See: [Configure Soda]({% link soda-library/install.md %}#configure-soda).
+3. Log in to your Soda Cloud account, then navigate to the **Check History** page of your existing anomaly detection or anomaly score check. From your browser copy the entire URL; refer to image below.
+![check-url](/assets/images/check-url.png){:height="700px" width="700px"}
+4. To launch the application, use the following command. After running the command, a new tab opens in your default browser displaying the simulator as shown in the screenshot below.
+```bash
+soda simulate-anomaly-detection -c configuration.yaml
+```
+![ad-simulator-welcome](/assets/images/ad-simulator-welcome.png){:height="700px" width="700px"}
+5. Paste the check URL you copied for your anomaly check into the main field and press enter. Refer to the screenshot below.
+![ad-check-url](/assets/images/ad-check-url.png){:height="700px" width="700px"}
+6. Use the slider that appears to simulate the most recent `n` measurements, ideally not more than 60 so as to keep the simulator execution time reasonable.
+7. Click **Start Simulation** to display graphic results using the default parameter values.
+8. Use the tools in the sidebar to [adjust parameter settings](#adjust-simulator-parameters) until the simulator displays your ideal anomaly sensitivity results. Apply your optimized parameter settings to the check configuration in your checks YAML file.
+![ad-simulator-results](/assets/images/ad-simulator-results.png){:height="700px" width="700px"}
+
+### Adjust simulator parameters
+
+For **Model Hyperparameter Profiles**, the first two options correspond with the `coverage`, `MAPE` profiles described in [Add optional model configuration](#add-optional-model-configurations), and the third option, `custom` corresponds to the ability to [Customize hyperparameter](#customize-hyperparameters). Experiment with the `coverage` and `MAPE` profiles first, before considering the `custom` profile. 
+
+For further hyperparameter customization, turn on the `Advanced` toggle and edit hyperparameters in the `Custom Prophet Hyperparameters` text field, as in the example below. Note that if you do not specify a customized value for a hyperparameter, Soda uses the default values from the `coverage` profile.
+
+```python
+{
+  "growth": "linear",
+  "change_pointprior_scale": 0.1,
+  "seasonality_prior_scale": 0.1,
+  "n_changepoints": 20,
+}
+```
+
+For **Training Dataset Parameters**, the adjustable settings correspond to the parameters in [Add optional training dataset configurations](#add-optional-training-dataset-configurations).
+
+For **Severity Level Parameters**, the adjustable settings correspond to the parameters in [Manage alert severity levels](#manage-alert-severity-levels).
+
 
 ## Address common anomaly detection issues
 

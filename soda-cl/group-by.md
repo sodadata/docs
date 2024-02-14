@@ -14,8 +14,7 @@ Use a group by configuration to collect and present check results by category. <
 {% include code-header.html %}
 ```yaml
 checks for fact_internet_sales:
-  - group by:
-      group_limit: 10
+  - group by: # Not supported in Soda Core
       query: |
         SELECT sales_territory_key, AVG(discount_amount) as average_discount
         FROM fact_internet_sales
@@ -25,14 +24,16 @@ checks for fact_internet_sales:
       checks:
         - average_discount:
             fail: when > 40
-            name: Average discount percentage is less than 40% (grouped-by sales territory)
+            name: Average discount percentage is less than 40% (grouped by sales territory)
 ```
 
-[Define reference checks](#define-reference-checks) <br />
+[Define a group by configuration checks](#define-a-group-by-configuration) <br />
 [Group by check results](#group-by-check-results)<br />
 [Optional check configurations](#optional-check-configurations)<br />
-[Expect one check result](#expect-one-check-result)<br />
-[Track anomalies and relative changes by group](#track-anomalies-and-relative-changes-by-group)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Add multiple group configurations](#add-multiple-group-configurations)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Change configurations and preserve check history](#change-configurations-and-preserve-check-history)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Track anomalies and relative changes by group](#track-anomalies-and-relative-changes-by-group)<br />
+[Troubleshoot](#troubleshoot)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -48,6 +49,7 @@ The check itself uses the custom metric `average_discount` and an [alert configu
 checks for fact_internet_sales:
   - group by:
       group_limit: 10
+      name: average discount
       query: |
         SELECT sales_territory_key, AVG(discount_amount) as average_discount
         FROM fact_internet_sales
@@ -61,7 +63,8 @@ checks for fact_internet_sales:
 ```
 
 | `group by` | required | configuration section label |
-| `group_limit` | optional | the maximum number of groups, or column values, into which Soda must categorize the results. This value must correspond with the number of unique values in the column you identify in the `fields` section.  |
+| `group_limit` | optional | the maximum number of groups, or column values, into which Soda must categorize the results. This value must correspond with the number of unique values in the column you identify in the `fields` section; see example below. |
+| `group_name` | optional | specify a name for the group; Soda does not evaluate this parameter |
 | `query` | required | custom query subsection label. The nested SQL query defines the custom metric `average_discount`|
 | `fields`| required | column subsection label |
 | `sales_territory_key`| required | column identifier; the values in this column identify how Soda groups the results. |
@@ -69,15 +72,15 @@ checks for fact_internet_sales:
 | `average_discount`| required | custom metric identifier  |
 | `fail: when > 40` | required | fail condition and threshold |
 | `warn: when between 50 and 60` | only one alert condition is required | warn condition and threshold |
-| `name` | required | custom name for the check |
+| `name` | optional | custom name for the check; it not defined, Soda derives the name of the check in Soda Cloud from the check syntax |
 
+<br />
 
 You can also use multi-column groups in a group by check, as in the example below that groups results both by `gender` and `english_education`. 
 
 ```yaml
 checks for dim_customer:
     - group by:
-        name: sum_total_children_groupby_check
         query: |
             SELECT
                 gender,
@@ -93,6 +96,8 @@ checks for dim_customer:
                 fail: when < 100000
                 name: Total number of children
 ```
+
+<br />
 
 ## Group by check results
 
@@ -128,7 +133,211 @@ In Soda Cloud, the check results appear by territory.
 
 <br />
 
-You must always match the number of unique values in the group by column to the value you provide for the `group_limit`. In the following example, the number of unique values in the `sales_territory_key` column is greater than the `group_limit: 2` so Soda does not evaluate the check.  
+{% include expect-one-result.md %}
+
+
+## Optional check configurations
+
+| Supported | Configuration | Documentation |
+| :-: | ------------|---------------|
+| ✓ | Define a name for a group by; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
+| ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
+| ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration) | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
+|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
+| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use wildcard characters in the value in the check. | Use wildcard values as you would with SQL. |
+|   | Use for each to apply group by checks to multiple datasets in one scan. | - |
+|   | Apply a dataset filter to partition data during a scan. | - |
+
+#### Example with check name
+When the check results appear in Soda Cloud, the checks use the `name` you define for the check or, if you do not specify a `name` parameter, the syntax of the check itself.
+{% include code-header.html %}
+```yaml
+checks for dim_employee:
+  - group by:
+      name: Grouped vacation hours
+      group_limit: 2
+      query: |
+        SELECT marital_status, AVG(vacation_hours) as vacation_hours
+        FROM dim_employee
+        GROUP BY marital_status
+      fields:
+        - marital_status
+      checks:
+        - vacation_hours > 60:
+            name: Too many vacation hours
+```
+
+#### Example with identity
+See also: [Change configurations and preserve check history](#change-configurations-and-preserve-check-history).
+{% include code-header.html %}
+```yaml
+checks for dim_employee:
+  - group by:
+    ...
+      checks:
+        - vacation_hours > 0:
+            identity: custom_identity
+```
+
+#### Example with alert configuration
+Be aware that Soda only ever returns a single check result per check. See [Expect one check result](#expect-one-check-result) for details.
+{% include code-header.html %}
+```yaml
+checks for dim_employee:
+  - group by:
+      group_limit: 2
+      query: |
+        SELECT marital_status, AVG(vacation_hours) as vacation_hours
+        FROM dim_employee
+        GROUP BY marital_status
+      fields:
+        - marital_status
+      checks:
+        - vacation_hours:
+            fail: when > 65
+            warn: when between 50 and 65
+            name: Too many vacation hours
+```
+
+#### Example with quotes
+
+Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark.
+{% include code-header.html %}
+```yaml
+checks for dim_employee:
+  - group by:
+      group_limit: 2
+      query: |
+        SELECT "marital_status", AVG("vacation_hours") as vacation_hours
+        FROM "dim_employee"
+        GROUP BY marital_status
+      fields:
+        - marital_status
+      checks:
+        - vacation_hours > 60:
+            name: Too many vacation hours
+```
+<br />
+
+### Add multiple group configurations
+
+You can add multiple `group by` configurations to the same dataset in the same checks YAML file and produce separately grouped check results. To do so, you must include an identifier in the `group by` configuration key of the extra group configurations you add, as in the example below. 
+
+* The first `group by` in the example requires no identifier, though for readability and completeness, you have the option of adding one. 
+* The second `group by` includes `title` as an identifier to differentiate it from the first. 
+
+{% include code-header.html %}
+```yaml
+checks for dim_employee:
+  - group by:
+      query: |
+        SELECT marital_status, AVG(vacation_hours) as vacation_hours, MAX(vacation_hours) as max_vacation_hours
+        FROM dim_employee
+        GROUP BY marital_status
+      fields:
+        - marital_status
+      checks:
+        - vacation_hours > 0
+        - max_vacation_hours < 100:
+            name: MAX vacation hours less than 100 [marital_status]
+  - group by title:
+      query: |
+        SELECT title, AVG(vacation_hours) as vacation_hours, MAX(vacation_hours) as max_vacation_hours
+        FROM dim_employee
+        GROUP BY title
+      fields:
+        - title
+      checks:
+        - vacation_hours > 0:
+        - max_vacation_hours < 100:
+            name: MAX vacation hours less than 100 [title]
+```
+
+<br />
+
+When the check results appear in Soda Cloud, the checks use the `name` you define for each check or, if you do not specify a `name` parameter, the syntax of the checks themselves. The `group by` identifiers appear in the CLI output, but do not appear the the check results in Soda Cloud.
+
+```shell
+Soda Library 1.3.1
+Soda Core 3.0.47
+By downloading and using Soda Library, you agree to Sodas Terms & Conditions (https://go.soda.io/t&c) and Privacy Policy (https://go.soda.io/privacy). 
+Scan summary:
+138/140 checks PASSED: 
+    dim_employee in adventureworks
+      group by [PASSED]
+      vacation_hours > 0 [M] [PASSED]
+      MAX vacation hours less than 100 [marital_status] [M] [PASSED]
+      vacation_hours > 0 [S] [PASSED]
+      MAX vacation hours less than 100 [marital_status] [S] [PASSED]
+      vacation_hours > 0 [Database Administrator] [PASSED]
+      MAX vacation hours less than 100 [title] [Database Administrator] [PASSED]
+      vacation_hours > 0 [Design Engineer] [PASSED]
+      MAX vacation hours less than 100 [title] [Design Engineer] [PASSED]
+      vacation_hours > 0 [Production Supervisor - WC20] [PASSED]
+      MAX vacation hours less than 100 [title] [Production Supervisor - WC20] [PASSED]
+      vacation_hours > 0 [Research and Development Engineer] [PASSED]
+      MAX vacation hours less than 100 [title] [Research and Development Engineer] [PASSED]
+      vacation_hours > 0 [Research and Development Manager] [PASSED]
+      ...
+2/140 checks FAILED: 
+    dim_employee in adventureworks
+      group by title [FAILED]
+      vacation_hours > 0 [Chief Financial Officer] [FAILED]
+        check_value: 0E-20
+Oops! 2 failures. 0 warnings. 0 errors. 138 pass.
+Sending results to Soda Cloud
+Soda Cloud Trace: 693****
+```
+
+![multiple-group-results](/assets/images/multiple-group-results.png){:height="700px" width="700px"}
+
+![group1-results](/assets/images/group1-results.png){:height="700px" width="700px"}
+
+![group2-results](/assets/images/group2-results.png){:height="700px" width="700px"}
+
+![group3-results](/assets/images/group3-results.png){:height="700px" width="700px"}
+
+![group4-results](/assets/images/group4-results.png){:height="700px" width="700px"}
+
+<br />
+
+### Change configurations and preserve check history
+
+When you make changes to your `group by` configuration, some changes result in a resetting of the check history in Soda Cloud. 
+
+The following changes result in a reset of a group by check's history; all historical measurements disappear.
+* change the list of `fields`, either adding, removing, or changing an existing field
+* change the `group by` identifier when more than one `group by` configurations exist; see [Add multiple group configurations](#add-multiple-group-configurations)
+* change the syntax of a group by check such as, a change to the threshold value; see [Configure variables in SodaCL]({% link soda-cl/filters.md %}#example-provide-a-threshold-value-at-scan-time) to mitigate disruption using dynamic threshold values
+
+The following changes result in *no changes* to the check's history; Soda preserves all historical measurements to a maximum of 90 days.
+* change the SQL query that forms part of the `group by` configuration
+* add a check to the `group by` configuration
+
+Further, you can add an `identity` parameter to a group by check to be able to make changes to the check and still preserve its historical measurements, as in the example below. See also: [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity).
+```yaml
+checks for dim_employee:
+  - group by:
+    ...
+      checks:
+        - vacation_hours > 0:
+            identity: custom_identity
+```
+
+<br />
+
+### Track anomalies and relative changes by group
+
+{% include group-anomaly.md %}
+
+<br />
+
+## Troubleshoot
+
+If you use an optional `group_limit` parameter, you must always match the number of unique values in the group by column to the value you provide for the parameter. 
+
+In the following example, the number of unique values in the `sales_territory_key` column is greater than the `group_limit: 2` so Soda does not evaluate the check.  
 {% include code-header.html %}
 ```yaml
 checks for dim_employee:
@@ -164,7 +373,7 @@ Evaluation of check group by failed: Total number of groups 11 exceeds configure
   +-> line=2,col=5 in checks_groupby.yml
 ```
 
-Resolve the issue by increasing the group limit value.
+Resolve the issue by increasing the group limit value, or by removing the parameter entirely.
 {% include code-header.html %}
 ```yaml
 checks for dim_employee:
@@ -212,85 +421,6 @@ Scan summary:
         check_value: 32.0000000000000000
 Oops! 12 failures. 0 warnings. 0 errors. 0 pass.
 ```
-
-## Optional check configurations
-
-| Supported | Configuration | Documentation |
-| :-: | ------------|---------------|
-| ✓ | Define a name for a group by; see [example](#example-with-check-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
-| ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
-| ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration) | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
-|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
-| ✓ | Use wildcard characters in the value in the check. | Use wildcard values as you would with SQL. |
-|   | Use for each to apply group by checks to multiple datasets in one scan. | - |
-|  | Apply a dataset filter to partition data during a scan. | - |
-
-#### Example with check name
-{% include code-header.html %}
-```yaml
-checks for dim_employee:
-  - group by:
-      name: Grouped vacation hours
-      group_limit: 2
-      query: |
-        SELECT marital_status, AVG(vacation_hours) as vacation_hours
-        FROM dim_employee
-        GROUP BY marital_status
-      fields:
-        - marital_status
-      checks:
-        - vacation_hours > 60:
-            name: Too many vacation hours
-```
-
-#### Example with alert configuration
-Be aware that Soda only ever returns a single check result per check. See [Expect one check result](#expect-one-check-result) for details.
-{% include code-header.html %}
-```yaml
-checks for dim_employee:
-  - group by:
-      group_limit: 2
-      query: |
-        SELECT marital_status, AVG(vacation_hours) as vacation_hours
-        FROM dim_employee
-        GROUP BY marital_status
-      fields:
-        - marital_status
-      checks:
-        - vacation_hours:
-            fail: when > 65
-            warn: when between 50 and 65
-            name: Too many vacation hours
-```
-
-#### Example with quotes
-
-Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark.
-{% include code-header.html %}
-```yaml
-checks for dim_employee:
-  - group by:
-      group_limit: 2
-      query: |
-        SELECT "marital_status", AVG("vacation_hours") as vacation_hours
-        FROM "dim_employee"
-        GROUP BY marital_status
-      fields:
-        - marital_status
-      checks:
-        - vacation_hours > 60:
-            name: Too many vacation hours
-```
-<br />
-
-## Expect one check result
-
-{% include expect-one-result.md %}
-
-## Track anomalies and relative changes by group
-
-{% include group-anomaly.md %}
 
 ## Go further
 

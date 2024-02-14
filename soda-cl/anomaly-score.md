@@ -122,7 +122,7 @@ If you wish, you can reset an anomaly score's history, effectively recalibrating
 2. Click to select a node in the graph that represents a measurement, then click **Feedback**.
 3. In the modal that appears, you can choose to exclude the individual measurement, or all previous data up to that measurement, the latter of which resets the anomaly score's history. 
 
-![reset-anomaly-score](/assets/images/reset-anomaly-score.png){:height="600px" width="600px"}
+![reset-anomaly-detection](/assets/images/reset-anomaly-detection.png){:height="600px" width="600px"}
 
 
 ## Optional check configurations
