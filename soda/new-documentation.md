@@ -9,6 +9,10 @@ parent: Learning resources
 
 <br />
 
+#### February 15, 2024
+* Added API documentation for the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) that enables you to trigger Soda Cloud scans programmatically.
+* Added a new section to [Scan for data quality](#scan-for-data-quality) for triggering a scan via API.
+
 #### February 14, 2024
 * Updated connection configuration parameters for [Athena]({% link soda/connect-athena.md %}) and [Oracle]({% link soda/connect-oracle.md %}).
 
