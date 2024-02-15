@@ -37,13 +37,14 @@ data_source my_datasource_name:
 | password          | required | As above.                |
 | database          | required | Provide an idenfier for your database. |
 | schema            | required | Provide an identifier for the schema in which your dataset exists. |
-| access_key_id     | optional <sup>1</sup> | Consider using system variables to retrieve this value securely.  |
-| secret_access_key | optional <sup>1</sup>| Consider using system variables to retrieve this value securely.   |
-| role_arn          | optional | Provide an Amazon Resource Name, which is a string that identifies an AWS resource such as an S3 bucket or EC2 instance. Learn how to <a href="https://docs.aws.amazon.com/managedservices/latest/userguide/find-arn.html" target="_blank">find your arn</a>.|
+| access_key_id     | required <sup>1</sup> | Consider using system variables to retrieve this value securely.  |
+| secret_access_key | required <sup>1</sup>| Consider using system variables to retrieve this value securely.   |
+| role_arn          | optional <sup>1</sup>| Provide an Amazon Resource Name, which is a string that identifies an AWS resource such as an S3 bucket or EC2 instance. Learn how to <a href="https://docs.aws.amazon.com/managedservices/latest/userguide/find-arn.html" target="_blank">find your arn</a>.|
 | region            | optional | Provide an identifier for your geographic area. |
+| session_token     | optional | Add a session Token to use for authentication and authorization. |
+| profile_name      | optional | Specify the profile Name from local AWS configuration to use for authentication and authorization. |
 
-<sup>1</sup> Access keys and IAM role are mutually exclusive: if you provide values for `access_key_id` and `secret_access_key`, you cannot use Identity and Access Management role; if you provide value for `role_arn`, then you cannot use the access keys. Refer to [Amazon Redshift Authorization parameters](https://docs.aws.amazon.com/redshift/latest/dg/copy-parameters-authorization.html) for details.
-
+{% include access-keys-role-arn.md %}
 
 {% include test-connection.md %}
 
