@@ -15,6 +15,7 @@ parent: Learning resources
 
 #### February 14, 2024
 * Updated connection configuration parameters for [Athena]({% link soda/connect-athena.md %}) and [Oracle]({% link soda/connect-oracle.md %}).
+* Made corrections to the connection details for [Athena]({% link soda/connect-athena.md %}) and [Redshift]({% link soda/connect-redshift.md %}); access keys are required parameters for each, regardless of whether you also use a `role_arn` parameter.
 
 #### February 13, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.3.3.
