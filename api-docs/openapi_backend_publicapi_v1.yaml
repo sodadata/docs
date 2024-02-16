@@ -417,65 +417,69 @@ components:
       type: http
 info:
   description: "This API enables you to interact with the Soda Cloud product using\
-    \ an officially supported API.\n\nUse this API to:\n\n- connect with your data\
-    \ catalog,\n- engage in interaction with Soda Cloud from within your data pipeline,\n\
-    - create custom solutions that communicate directly with Soda Cloud.\n\n## Authentication\n\
-    \nThe API supports authentication via HTTP `Basic` authentication header. This\
-    \ method will work in all cases whether your\nuser is part of more than one organization,\
-    \ or whether your organization uses Single Sign-On (SSO) authentication.\n\nIf\
-    \ you do not know how to generate your API Key and Secret pair follow\nthe [Configure\
-    \ and run Soda Library](https://docs.soda.io/soda-library/configure.html#configure-and-run-soda-library)\n\
-    instructions.\n\n## Examples\n\n```curl\ncurl -X GET \\ \n    --location \"https://cloud.soda.io/api/v1/test-login\"\
+    \ an officially supported API.\n\nUse Soda Cloud's public API to:\n- connect Soda\
+    \ Cloud to your data catalog\n- trigger scheduled scans in Soda Cloud from within\
+    \ your data pipeline\n- access dataset and check info in Soda Cloud\n\n## Authentication\n\
+    \nThis API supports authentication using a HTTP `Basic` authentication header.\
+    \ This authentication method works with Single Sign-On (SSO) and for users who\
+    \ belong to more than one organization in Soda Cloud.\n\nTo learn how to generate\
+    \ the API keys that you need for basic authentication, \naccess the [Generate\
+    \ API keys for use with Soda Library or a Soda Cloud API](https://docs.soda.io/soda-cloud/api-keys.html#generate-api-keys-for-use-with-soda-library-or-a-soda-cloud-api).\n\
+    \n## Examples\n\n```curl\ncurl -X GET \\ \n    --location \"https://cloud.soda.io/api/v1/test-login\"\
     \ \\\n    --basic \n    --user 5100a9bc-8cbe-44ab-8263-136ba0f35c1d:VIorf5ZGgE5yqMc-gT7amAsAiotqgySSUh98VBtek_6x6fP3asnybQ\n\
     ```\n"
-  title: Soda Cloud Public API
+  title: Soda Cloud API
   version: v1
 openapi: 3.0.1
 paths:
   /api/v1/checks:
     get:
       description: |-
-        Provides the ability to query the checks present in the organization's Soda Cloud account.
+        This endpoint enables you to gather information about the checks that in exist in your organization's Soda Cloud account, including information about the datasets and agreements with which they are associated and the incidents to which they are linked. .
 
-        You can limit the checks only to a specific dataset (using `dataset` query parameter).
+        This GET is a paginated query that uses the following parameters to request a specific details:
 
-        This is a paging query and uses `size`, `page` and `from` parameters to request a specific page.
+        - `size`: Supply an integer value between 10 and 100, inclusive. The default value is 10.
 
-        Default `size` in case nothing is set: 10.
+        - `page`: Supply an integer value. The default value is 0.
 
-        Allowed values for `size` (inclusive): between 10 and 100.
+        - `datasetID`: Optionally, use this parameter to collect only the information for checks associated with a specific dataset. Find the `datasetID` in the URL of the dataset page in Soda Cloud.
 
-        Default `page` in case nothing is set: 0.
-
-        In case no `datasetId` is supplied, we fetch checks for all the datasets.
-
-        Responses will always be sorted by check name, ascending.
+        If not specified, the query gathers information for all checks in the account and sorts the results by check name in ascending order.
 
         ## Authentication
 
-        User authentication required: **true**
+        User authentication required: `true`
 
-        Authentication is enforced using _API key pair in Basic authentication header_.
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
         ## Authorization
 
-        Only organization administrators may execute this call.
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
 
         ## Tags
 
-        Has tags: `Checks`
+        `Checks`
 
         ## Rate limiting
 
-        Has rate limiting: **10** requests allowed per **60** seconds
+        10 requests/60 seconds
       operationId: /api/v1/checks
       parameters:
         - in: query
           name: datasetId
+          schema:
+            type: string
         - in: query
           name: page
+          schema:
+            format: int32
+            type: integer
         - in: query
           name: size
+          schema:
+            format: int32
+            type: integer
       responses:
         "400":
           content:
@@ -521,52 +525,57 @@ paths:
           description: Too many requests
       security:
         - basicAuthApiKey: []
+      summary: Check information
       tags:
         - Checks
   /api/v1/datasets:
     get:
       description: |-
-        Provides the ability to query the datasets present in the organization's Soda Cloud account, including the most relevant properties of the linked resources (datasource, incident, health information, etc.).
+        This endpoint enables you to gather information about the datasets that in exist in your organization's Soda Cloud account, including information about the Soda Cloud resources with which it is associated, such as data source, incidents, and health status.
 
-        In case you wish to limit datasets to those that have been updated after a certain point in time, please use `from` parameter. The expected value is a ISO8601 timestamp, e.g. `2023-12-31T10:15:30+01:00`. In case you don't supply this value, all datasets will be returned.
+        This GET is a paginated query that uses the following parameters to request a specific details:
 
-        This is a paging query and uses `size` and `page` parameters to request a specific page.
+        - `size`: Supply an integer value between 10 and 100, inclusive. The default value is 10.
 
-        Default `size` in case nothing is set: 10.
+        - `page`: Supply an integer value. The default value is 0.
 
-        Allowed values for `size` (inclusive): between 10 and 100.
+        - `from`: Optionally, use this parameter to collect only the information for datasets that have been updated after a particular point in time.  Supply an ISO8601 timestamp value. Example: `2023-12-31T10:15:30+01:00`
 
-        Default `page` in case nothing is set: 0.
-
-        In case no `from` is supplied, we fetch all the datasets.
-
-        Responses will always be sorted by dataset name, ascending.
+        If not specified, the query gathers information for all datasets in the account and sorts the results by dataset name in ascending order.
 
         ## Authentication
 
-        User authentication required: **true**
+        User authentication required: `true`
 
-        Authentication is enforced using _API key pair in Basic authentication header_.
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
         ## Authorization
 
-        Only organization administrators may execute this call.
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
 
         ## Tags
 
-        Has tags: `Datasets`
+        `Datasets`
 
         ## Rate limiting
 
-        Has rate limiting: **10** requests allowed per **60** seconds
+        10 requests/60 seconds
       operationId: /api/v1/datasets
       parameters:
         - in: query
           name: from
+          schema:
+            type: string
         - in: query
           name: page
+          schema:
+            format: int32
+            type: integer
         - in: query
           name: size
+          schema:
+            format: int32
+            type: integer
       responses:
         "400":
           content:
@@ -612,36 +621,39 @@ paths:
           description: Too many requests
       security:
         - basicAuthApiKey: []
+      summary: Dataset information
       tags:
         - Datasets
   /api/v1/scans:
     post:
       description: |-
-        This API allows users to trigger an execution of the scan on a Soda Agent.
+        This endpoint enables you to execute a scan that has been defined within Soda Cloud and which runs on a Soda Agent connected to the account. Call this endpoint from within your data pipeline to programmatically execute scans from outside the Soda Cloud environment.
 
-        As long as there is a scan definition on the Cloud with name equal to the value of the parameter `scanDefinition` and it is connected to has an active agent, the scan will commence.
+        This POST uses the following parameters to provide specific details:
 
-        Response, if successful, will contain header `Location` that will point to the submitted scan, and the response code will be `201`.
+        - `dataTimestamp`: Supply a string value to indicate xxx.
 
-        To get the current state of the scan that was submitted, please use API `/api/v1/scans/{scanId}`.
+        - `scanDefinition`: Supply a string value to specify the identifier of the scan definition in Soda Cloud. To retrieve this ID in Soda Cloud, navigate to the Scans page, then select the scan definition you wish to execute remotely and copy the string that is the scan definition identifier from the URL. <br /> The scan definition _must be_ connected to a Soda Agent in order to execute a scan remotely, _not_ Soda Library.
+
+        The Response of this call, when successful, is `201` and contains a header for `Location` that identifies the executed scan. Use the value of `Location` in the `scanID` parameter of the **Get scan status** endpoint.
 
         ## Authentication
 
-        User authentication required: **true**
+        User authentication required: `true`
 
-        Authentication is enforced using _API key pair in Basic authentication header_.
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
         ## Authorization
 
-        Only organization administrators may execute this call.
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
 
         ## Tags
 
-        Has tags: `Scans`
+        `Scans`
 
         ## Rate limiting
 
-        Has rate limiting: **10** requests allowed per **60** seconds
+        10 requests/60 seconds
       operationId: /api/v1/scans
       requestBody:
         content:
@@ -702,63 +714,70 @@ paths:
           description: Too many requests
       security:
         - basicAuthApiKey: []
+      summary: Trigger a scan
       tags:
         - Scans
   /api/v1/scans/{scanId}:
     get:
       description: |-
-        Use this API to get the current state of the API.
+        This endpoint enables you to check on the state of a scan that you executed using the **Trigger a scan** endpoint. Call this endpoint to monitor the status of a scan during its execution.
 
-        As the scan progresses, properties will progressively receive values based on the scan state.
+        If you wish to access the logs of a completed scan, use the **Get scan logs** endpoint.
 
-        Scan will first enqueue for processing, then be submitted, eventually it will be processing and, finally, it will reach one of the final states.
+        This POST uses the following parameter to provide specific details:
 
-        - `queuing`: the scan has been enqueued for execution, awaiting a pick-up from a Soda Agent
+        - `scanID`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
 
-        - `executing`: the scan has been picked up and is being executed on a Soda Agent
+        As a scan executes, you can call this endpoint to progressively collect values based on the state of the scan. Refer to the list below for the states that calls to this endpoint return.
 
-        - `cancelationRequested`: cancelation of this scan has been requested, pending pick-up from the Soda Agent responsible for the scan
+        - `queuing`: The scan is in the queue for execution, awaiting a pick-up from a Soda Agent.
 
-        - `timeOutRequested`: time out has been detected, and an automatic request to shutdown the running scan is pending pick-up from the Soda Agent responsible for the scan
+        - `executing`: A Soda Agent has picked up the scan and is executing.
 
-        - `canceled`: Soda Agent confirmed that the scan has been cancelled. This is a final state of a scan
+        - `cancelationRequested`: An entity requested cancelation of this scan and the request is awaiting pick-up from the Soda Agent responsible for the scan.
 
-        - `timedOut`: Soda Agent confirmed that the scan has been marked as timed-out. This is a final state of a scan
+        - `timeOutRequested`: A time out has been detected, and an automatic request to stop the scan execution is awaiting pick-up from the Soda Agent responsible for the scan.
 
-        - `failed`: The scan did not start or successfully complete because of an unexpected cause. This is a final state of a scan
+        - `canceled`: A Soda Agent confirmed that the scan has been cancelled. This is the final state of the scan.
 
-        - `completedWithErrors`: The scan finished with some execution errors detected in the Soda Library. This is a final state of a scan
+        - `timedOut`: A Soda Agent confirmed that the scan has timed-out. This is the final state of the scan.
 
-        - `completedWithFailures`: The scan finished with some data check failures detected in the Soda Library. This is a final state of a scan
+        - `failed`: The scan did not start, or it did not successfully complete because of an unexpected cause. This is the final state of the scan.
 
-        - `completedWithWarnings`: The scan finished with some data check warnings detected in the Soda Library. This is a final state of a scan
+        - `completedWithErrors`: The scan completed successfully, but there were errors involving some of the checks in the scan. This is the final state of the scan.
 
-        - `completed`: The scan finished without any issues. This is a final state of a scan
+        - `completedWithFailures`: The scan completed successfully and reveals failed results for some checks. This is the final state of the scan.
+
+        - `completedWithWarnings`: The scan completed successfully and reveals warning results for some checks. This is the final state of the scan.
+
+        - `completed`: The scan completed successfully and reveals passing results for all checks. This is a final state of a scan
 
         To get the logs of the completed scan, please use API `/api/v1/scans/{scanId}/logs`.
 
         ## Authentication
 
-        User authentication required: **true**
+        User authentication required: `true`
 
-        Authentication is enforced using _API key pair in Basic authentication header_.
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
         ## Authorization
 
-        Only organization administrators may execute this call.
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
 
         ## Tags
 
-        Has tags: `Scans`
+        `Scans`
 
         ## Rate limiting
 
-        Has rate limiting: **60** requests allowed per **60** seconds
+        60 requests/60 seconds
       operationId: "/api/v1/scans/{scanId}"
       parameters:
         - in: path
           name: scanId
           required: true
+          schema:
+            type: string
       responses:
         "400":
           content:
@@ -804,51 +823,60 @@ paths:
           description: Too many requests
       security:
         - basicAuthApiKey: []
+      summary: Get scan status
       tags:
         - Scans
   /api/v1/scans/{scanId}/logs:
     get:
       description: |-
-        In case a scan with `scanId` is in the final state, this API can be used to fetch the execution logs for the local analysis. In case scan doesn't exist or it does exist but is still incomplete the server will return a client error.
+        This endpoint enables you to gather log details about the final state of a scan you executed using the **Trigger a scan** endpoint. Use this endpoint to study scan logs to investigate issues with its execution.
 
-        To get the current state of the scan, please use API `/api/v1/scans/{scanId}`.
+        If you wish to access the state of a scan in progress, use the **Get scan status** endpoint.
 
-        This is a paging query and uses `size` and `page` parameters to request a specific page.
+        This GET is a paginated query that uses the following parameters to request a specific details:
 
-        Default `size` in case nothing is set: 1000.
+        - `scanID`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
 
-        Allowed values for `size` (inclusive): between 1000 and 1000.
+        - `size`: Supply an integer value between 1000 and 1000, inclusive. The default value is 1000.
 
-        Default `page` in case nothing is set: 0.
+        - `page`: Supply an integer value. The default value is 0.
 
-        Responses will always be sorted by timestamp they were created, ascending.
+        The response sorts the the log information by creation timestamp in ascending order.
 
         ## Authentication
 
-        User authentication required: **true**
+        User authentication required: `true`
 
-        Authentication is enforced using _API key pair in Basic authentication header_.
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
         ## Authorization
 
-        Only organization administrators may execute this call.
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
 
         ## Tags
 
-        Has tags: `Scans`
+        `Scans`
 
         ## Rate limiting
 
-        Has rate limiting: **60** requests allowed per **60** seconds
+        60 requests/60 seconds
       operationId: "/api/v1/scans/{scanId}/logs"
       parameters:
         - in: path
           name: scanId
           required: true
+          schema:
+            type: string
         - in: query
           name: page
+          schema:
+            format: int32
+            type: integer
         - in: query
           name: size
+          schema:
+            format: int32
+            type: integer
       responses:
         "400":
           content:
@@ -894,32 +922,31 @@ paths:
           description: Too many requests
       security:
         - basicAuthApiKey: []
+      summary: Get scan logs
       tags:
         - Scans
   /api/v1/test-login:
     get:
       description: |-
-        This is a simple query that verifies the authorization is correct and if the communication with the Soda Cloud API is functional.
-
-        Response is very simple and only includes the most basic information of the caller's organization in the Soda Cloud database.
+        This endpoint enables you to test the API connection to your organization's Soda Cloud account. Use this endpoint to verify that the authentication and authorization details are accurate and the API is ready to accept calls.
 
         ## Authentication
 
-        User authentication required: **true**
+        User authentication required: `true`
 
-        Authentication is enforced using _API key pair in Basic authentication header_.
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
         ## Authorization
 
-        Only organization administrators may execute this call.
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
 
         ## Tags
 
-        Has tags: `Utility`
+        `Utility`
 
         ## Rate limiting
 
-        Has rate limiting: **10** requests allowed per **10** seconds
+        10 requests/10 seconds
       operationId: /api/v1/test-login
       responses:
         "400":
@@ -966,17 +993,18 @@ paths:
           description: Too many requests
       security:
         - basicAuthApiKey: []
+      summary: Test connection
       tags:
         - Utility
 servers:
   - url: https://cloud.soda.io
   - url: https://cloud.us.soda.io
 tags:
-  - description: Soda Public API Check Endpoints
+  - description: Soda Cloud API Check Endpoints
     name: Checks
-  - description: Soda Public API Dataset Endpoints
+  - description: Soda Cloud API Dataset Endpoints
     name: Datasets
-  - description: Soda Public API Scan Endpoints
+  - description: Soda Cloud API Scan Endpoints
     name: Scans
-  - description: Soda Public API Utility Endpoints
+  - description: Soda Cloud API Utility Endpoints
     name: Utility

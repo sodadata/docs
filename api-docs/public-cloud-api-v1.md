@@ -1,8 +1,7 @@
 ---
 layout: default
-title: Soda Cloud Public API v1
-description: This API enables you to query data from your Soda Cloud account using the official Soda Cloud API. Use the data
-  to build data pipelines.
+title: Soda Cloud Public API
+description: The Soda Cloud API enables you to trigger actions and query data in your Soda Cloud account.
 parent: API Docs
 apidoc: true
 fullwidth: true
