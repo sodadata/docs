@@ -718,6 +718,90 @@ paths:
       tags:
         - Scans
   /api/v1/scans/{scanId}:
+    delete:
+      description: |-
+        This API allows users to request cancelation of an existing scan.
+
+        In case scan is in `pending` state, the scan will be immediately change state to `canceled`.
+
+        In case scan is in `submitted` state, the scan will change state to `cancelationRequested`. After some time, when Agent picks up cancelation request and processes it, scan will reach the final state `canceled`.
+
+        In case scan is in any other state, this API will return a 400 (bad request).
+
+        Response will provide information about the current state of the scan, including the state change.
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+
+        ## Tags
+
+        `Scans`
+
+        ## Rate limiting
+
+        10 requests/60 seconds
+      operationId: "/api/v1/scans/{scanId}"
+      parameters:
+        - in: path
+          name: scanId
+          required: true
+          schema:
+            type: string
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          description: Successful response
+          headers:
+            Location:
+              schema:
+                type: string
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: []
+      summary: Cancel a scan
+      tags:
+        - Scans
     get:
       description: |-
         This endpoint enables you to check on the state of a scan that you executed using the **Trigger a scan** endpoint. Call this endpoint to monitor the status of a scan during its execution.
