@@ -27,7 +27,7 @@ data_source my_datasource_name:
   trusted_connection: false
   encrypt: false 
   trust_server_certificate: false
-  driver: SQL Server Native Client 11.0
+  driver: ODBC Driver 18 for SQL Server
 ```
 
 | Property | Required | Notes                                                      |
