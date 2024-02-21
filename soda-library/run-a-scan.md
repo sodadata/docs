@@ -84,7 +84,6 @@ If you wish to schedule a *new* scan to execute the checks in an agreement more 
 [Run a scan for a no-code check](#run-a-scan-for-a-no-code-check)<br />
 [Run a scan in an agreement](#run-a-scan-in-an-agreement)<br />
 [Run a scan from the command-line](#run-a-scan-from-the-command-line)<br />
-[Trigger a scan via API](#trigger-a-scan-via-api)<br />
 [Input scan-time variables](#input-scan-time-variables)<br />
 [Prevent pushing scan results to Soda Cloud](#prevent-pushing-scan-results-to-soda-cloud)
 [Configure the same scan to run in multiple environments](#configure-the-same-scan-to-run-in-multiple-environments)<br />
@@ -146,19 +145,6 @@ soda scan -d postgres_retail -c configuration.yml checks_stats1.yml checks_stats
 
 <br />
 Use the soda `soda scan --help` command to review options you can include to customize the scan. See also: [Add scan options](#add-scan-options).
-
-### Trigger a scan via API
-*Requires Soda Agent*
-
-You can programmatically initiate a scan in Soda Cloud using the Soda Cloud API. 
-
-If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) rights in your Soda Cloud account, you can use the API to:
-* retrieve information about checks and datasets in your Soda Cloud account 
-* execute scans
-* retrieve information about the state of a scan during execution
-* access the scan logs of an executed scan.
-
-Access the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) documentation to get details about how to programmatically get info and execute Soda Cloud scans.
 
 ### Input scan-time variables
 *Requires Soda Library*

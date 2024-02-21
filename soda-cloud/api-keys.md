@@ -16,7 +16,7 @@ There are two sets of API keys that you can generate and use with Soda Cloud:
 
 Note that you can use other authentication methods to access Soda Cloud metadata via the Reporting API such as HTTPBasic authentication with username and password, or authentication using tokens; use API keys to authenticate access if your organization employs Single Sign On (SSO) to access Soda Cloud.
 
-## Generate API keys for use with Soda Library or a Soda Cloud API
+## Generate API keys for use with Soda Library or the Reporting API
 
 1. In your Soda Cloud account, navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
 2. Copy the syntax for the `soda_cloud` configuration, including the values **API Key ID** and **API Key Secret**, then apply the keys according to how you intend to use them:

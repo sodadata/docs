@@ -217,13 +217,7 @@
   - subtitle: Connect to Vertica
     page: soda/connect-vertica.md
 
-- title: Soda Cloud API
-  page: api-docs/public-cloud-api-v1.md
-  subcategories:
-    - subtitle: Soda Cloud API v1
-      page: api-docs/public-cloud-api-v1.md
-
-- title: Soda Cloud Reporting API
+- title: Access metadata via API
   page: api-docs/reporting-api-v1.md
   subcategories:
   - subtitle: Reporting API v1
