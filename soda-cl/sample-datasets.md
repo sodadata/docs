@@ -9,7 +9,7 @@ parent: Write SodaCL checks
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-When you add or edit a data source in Soda Cloud, use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type checks you can prepare to test for data quality.
+When you add or edit a data source in Soda Cloud, use the `sample datasets` configuration to send 100 sample rows to Soda Cloud. Examine the sample rows to gain insight into the type of checks you can prepare to test for data quality.
 
 {% include code-header.html %}
 ```yaml
