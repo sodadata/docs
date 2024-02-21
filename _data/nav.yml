@@ -280,6 +280,8 @@
       page: release-notes/soda-agent.md
     - subtitle: Soda Cloud
       page: release-notes/soda-cloud.md
+    - subtitle: Soda Cloud API
+      page: release-notes/soda-cloud-api.md
     - subtitle: Soda Cloud Reporting API
       page: release-notes/reporting-api.md
     - subtitle: Soda Core 
