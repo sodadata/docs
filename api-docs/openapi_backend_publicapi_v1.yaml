@@ -631,9 +631,9 @@ paths:
 
         This POST uses the following parameters to provide specific details:
 
-        - `dataTimestamp`: Supply a string value to indicate xxx.
-
         - `scanDefinition`: Supply a string value to specify the identifier of the scan definition in Soda Cloud. To retrieve this ID in Soda Cloud, navigate to the Scans page, then select the scan definition you wish to execute remotely and copy the string that is the scan definition identifier from the URL. <br /> The scan definition _must be_ connected to a Soda Agent in order to execute a scan remotely, _not_ Soda Library.
+
+        - `dataTimestamp`: Supply an (optional) value to indicate the moment for which the scan is taking place. In case this value is not supplied, the current moment in time is going to be used. Supply an ISO8601 timestamp value. Example: `2023-12-31T10:15:30+01:00`
 
         The Response of this call, when successful, is `201` and contains a header for `Location` that identifies the executed scan. Use the value of `Location` in the `scanID` parameter of the **Get scan status** endpoint.
 
