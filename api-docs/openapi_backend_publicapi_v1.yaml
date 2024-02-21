@@ -1,0 +1,1094 @@
+components:
+  schemas:
+    AgreementSlimDTO:
+      properties:
+        cloudUrl:
+          type: string
+        name:
+          type: string
+      type: object
+    ChecksContentDTO:
+      properties:
+        agreements:
+          items:
+            $ref: '#/components/schemas/AgreementSlimDTO'
+          nullable: false
+          type: array
+        attributes:
+          $ref: '#/components/schemas/MapOfStringToString'
+        cloudUrl:
+          type: string
+        column:
+          type: string
+        datasets:
+          items:
+            $ref: '#/components/schemas/DatasetSlimDTO'
+          nullable: false
+          type: array
+        definition:
+          type: string
+        description:
+          type: string
+        evaluationStatus:
+          $ref: '#/components/schemas/EvaluationStatusDTO'
+        group:
+          $ref: '#/components/schemas/ChecksContentDTO_Group'
+        id:
+          nullable: false
+          type: string
+        incidents:
+          items:
+            $ref: '#/components/schemas/IncidentSlimDTO'
+          nullable: false
+          type: array
+        lastCheckRunTime:
+          type: string
+        lastUpdated:
+          type: string
+        name:
+          nullable: false
+          type: string
+        owner:
+          $ref: '#/components/schemas/OwnerDTO'
+      required:
+        - agreements
+        - datasets
+        - evaluationStatus
+        - id
+        - incidents
+        - name
+        - owner
+      type: object
+    ChecksContentDTO_Group:
+      properties:
+        groupType:
+          type: string
+        identity:
+          type: string
+        name:
+          type: string
+      type: object
+    DataQualityStatusDTO:
+      enum:
+        - pass
+        - warn
+        - fail
+      type: string
+    DatasetSlimDTO:
+      properties:
+        cloudUrl:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    DatasetsContentDTO:
+      properties:
+        checks:
+          nullable: false
+          type: number
+        cloudUrl:
+          nullable: false
+          type: string
+        dataQualityStatus:
+          $ref: '#/components/schemas/DataQualityStatusDTO'
+        datasource:
+          $ref: '#/components/schemas/DatasourcePropertiesDTO'
+        healthStatus:
+          format: int32
+          nullable: false
+          type: integer
+        id:
+          nullable: false
+          type: string
+        incidents:
+          nullable: false
+          type: number
+        lastUpdated:
+          type: string
+        name:
+          nullable: false
+          type: string
+        qualifiedName:
+          type: string
+      required:
+        - checks
+        - cloudUrl
+        - healthStatus
+        - id
+        - incidents
+        - name
+      type: object
+    DatasourcePropertiesDTO:
+      properties:
+        name:
+          type: string
+        prefix:
+          type: string
+        type:
+          type: string
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      type: object
+    EvaluationStatusDTO:
+      enum:
+        - pass
+        - warn
+        - fail
+        - notEvaluated
+      type: string
+    IncidentSlimDTO:
+      properties:
+        cloudUrl:
+          nullable: false
+          type: string
+        id:
+          nullable: false
+          type: string
+        name:
+          nullable: false
+          type: string
+        number:
+          format: int32
+          nullable: false
+          type: integer
+        status:
+          $ref: '#/components/schemas/IncidentStatusDTO'
+      required:
+        - cloudUrl
+        - id
+        - name
+        - number
+        - status
+      type: object
+    IncidentStatusDTO:
+      enum:
+        - reported
+        - investigating
+        - fixing
+        - resolved
+      type: string
+    LogLevelDTO:
+      enum:
+        - debug
+        - info
+        - warning
+        - error
+      type: string
+    LogsContentDTO:
+      properties:
+        index:
+          format: int32
+          nullable: false
+          type: integer
+        level:
+          $ref: '#/components/schemas/LogLevelDTO'
+        message:
+          nullable: false
+          type: string
+        timestamp:
+          nullable: false
+          type: string
+      required:
+        - index
+        - level
+        - message
+        - timestamp
+      type: object
+    MapOfStringToString:
+      additionalProperties: true
+      type: object
+    OwnerDTO:
+      properties:
+        email:
+          type: string
+        firstName:
+          type: string
+        fullName:
+          type: string
+        lastName:
+          type: string
+      type: object
+    PublicApiCheckSlimDTO:
+      properties:
+        evaluationStatus:
+          $ref: '#/components/schemas/EvaluationStatusDTO'
+        id:
+          type: string
+      type: object
+    PublicApiChecksResponse:
+      properties:
+        content:
+          items:
+            $ref: '#/components/schemas/ChecksContentDTO'
+          nullable: false
+          type: array
+        first:
+          nullable: false
+          type: boolean
+        last:
+          nullable: false
+          type: boolean
+        number:
+          format: int32
+          nullable: false
+          type: integer
+        size:
+          format: int32
+          nullable: false
+          type: integer
+        totalElements:
+          format: int32
+          nullable: false
+          type: integer
+        totalPages:
+          format: int32
+          nullable: false
+          type: integer
+      required:
+        - content
+        - first
+        - last
+        - number
+        - size
+        - totalElements
+        - totalPages
+      type: object
+    PublicApiDatasetsResponse:
+      properties:
+        content:
+          items:
+            $ref: '#/components/schemas/DatasetsContentDTO'
+          nullable: false
+          type: array
+        first:
+          nullable: false
+          type: boolean
+        last:
+          nullable: false
+          type: boolean
+        number:
+          format: int32
+          nullable: false
+          type: integer
+        size:
+          format: int32
+          nullable: false
+          type: integer
+        totalElements:
+          format: int32
+          nullable: false
+          type: integer
+        totalPages:
+          format: int32
+          nullable: false
+          type: integer
+      required:
+        - content
+        - first
+        - last
+        - number
+        - size
+        - totalElements
+        - totalPages
+      type: object
+    PublicApiScanDefinitionSlim:
+      properties:
+        id:
+          nullable: false
+          type: string
+        name:
+          nullable: false
+          type: string
+      required:
+        - id
+        - name
+      type: object
+    PublicApiScanLogsResponse:
+      properties:
+        content:
+          items:
+            $ref: '#/components/schemas/LogsContentDTO'
+          nullable: false
+          type: array
+        first:
+          nullable: false
+          type: boolean
+        last:
+          nullable: false
+          type: boolean
+        number:
+          format: int32
+          nullable: false
+          type: integer
+        size:
+          format: int32
+          nullable: false
+          type: integer
+        totalElements:
+          format: int32
+          nullable: false
+          type: integer
+        totalPages:
+          format: int32
+          nullable: false
+          type: integer
+      required:
+        - content
+        - first
+        - last
+        - number
+        - size
+        - totalElements
+        - totalPages
+      type: object
+    PublicApiScanStatusResponse:
+      properties:
+        agentId:
+          type: string
+        checks:
+          items:
+            $ref: '#/components/schemas/PublicApiCheckSlimDTO'
+          type: array
+        cloudUrl:
+          nullable: false
+          type: string
+        created:
+          nullable: false
+          type: string
+        ended:
+          type: string
+        errors:
+          format: int32
+          type: integer
+        failures:
+          format: int32
+          type: integer
+        id:
+          nullable: false
+          type: string
+        scanDefinition:
+          $ref: '#/components/schemas/PublicApiScanDefinitionSlim'
+        scanTime:
+          type: string
+        started:
+          type: string
+        state:
+          $ref: '#/components/schemas/ScanStateDTO'
+        submitted:
+          type: string
+        warnings:
+          format: int32
+          type: integer
+      required:
+        - cloudUrl
+        - created
+        - id
+        - state
+      type: object
+    PublicApiTestLoginResponse:
+      properties:
+        organisationName:
+          type: string
+      type: object
+    ScanStateDTO:
+      enum:
+        - queuing
+        - executing
+        - cancelationRequested
+        - timeOutRequested
+        - canceled
+        - timedOut
+        - failed
+        - completedWithErrors
+        - completedWithFailures
+        - completedWithWarnings
+        - completed
+      type: string
+  securitySchemes:
+    basicAuthApiKey:
+      scheme: basic
+      type: http
+info:
+  description: "This API enables you to interact with the Soda Cloud product using\
+    \ an officially supported API.\n\nUse Soda Cloud's public API to:\n- connect Soda\
+    \ Cloud to your data catalog\n- trigger scheduled scans in Soda Cloud from within\
+    \ your data pipeline\n- access dataset and check info in Soda Cloud\n\n## Authentication\n\
+    \nThis API supports authentication using a HTTP `Basic` authentication header.\
+    \ This authentication method works with Single Sign-On (SSO) and for users who\
+    \ belong to more than one organization in Soda Cloud.\n\nTo learn how to generate\
+    \ the API keys that you need for basic authentication, \naccess the [Generate\
+    \ API keys for use with Soda Library or a Soda Cloud API](https://docs.soda.io/soda-cloud/api-keys.html#generate-api-keys-for-use-with-soda-library-or-a-soda-cloud-api).\n\
+    \n## Examples\n\n```curl\ncurl -X GET \\ \n    --location \"https://cloud.soda.io/api/v1/test-login\"\
+    \ \\\n    --basic \n    --user 5100a9bc-8cbe-44ab-8263-136ba0f35c1d:VIorf5ZGgE5yqMc-gT7amAsAiotqgySSUh98VBtek_6x6fP3asnybQ\n\
+    ```\n"
+  title: Soda Cloud API
+  version: v1
+openapi: 3.0.1
+paths:
+  /api/v1/checks:
+    get:
+      description: |-
+        This endpoint enables you to gather information about the checks that in exist in your organization's Soda Cloud account, including information about the datasets and agreements with which they are associated and the incidents to which they are linked. .
+
+        This GET is a paginated query that uses the following parameters to request a specific details:
+
+        - `size`: Supply an integer value between 10 and 100, inclusive. The default value is 10.
+
+        - `page`: Supply an integer value. The default value is 0.
+
+        - `datasetID`: Optionally, use this parameter to collect only the information for checks associated with a specific dataset. Find the `datasetID` in the URL of the dataset page in Soda Cloud.
+
+        If not specified, the query gathers information for all checks in the account and sorts the results by check name in ascending order.
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+
+        ## Tags
+
+        `Checks`
+
+        ## Rate limiting
+
+        10 requests/60 seconds
+      operationId: /api/v1/checks
+      parameters:
+        - in: query
+          name: datasetId
+          schema:
+            type: string
+        - in: query
+          name: page
+          schema:
+            format: int32
+            type: integer
+        - in: query
+          name: size
+          schema:
+            format: int32
+            type: integer
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiChecksResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: []
+      summary: Check information
+      tags:
+        - Checks
+  /api/v1/datasets:
+    get:
+      description: |-
+        This endpoint enables you to gather information about the datasets that in exist in your organization's Soda Cloud account, including information about the Soda Cloud resources with which it is associated, such as data source, incidents, and health status.
+
+        This GET is a paginated query that uses the following parameters to request a specific details:
+
+        - `size`: Supply an integer value between 10 and 100, inclusive. The default value is 10.
+
+        - `page`: Supply an integer value. The default value is 0.
+
+        - `from`: Optionally, use this parameter to collect only the information for datasets that have been updated after a particular point in time.  Supply an ISO8601 timestamp value. Example: `2023-12-31T10:15:30+01:00`
+
+        If not specified, the query gathers information for all datasets in the account and sorts the results by dataset name in ascending order.
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+
+        ## Tags
+
+        `Datasets`
+
+        ## Rate limiting
+
+        10 requests/60 seconds
+      operationId: /api/v1/datasets
+      parameters:
+        - in: query
+          name: from
+          schema:
+            type: string
+        - in: query
+          name: page
+          schema:
+            format: int32
+            type: integer
+        - in: query
+          name: size
+          schema:
+            format: int32
+            type: integer
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiDatasetsResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: []
+      summary: Dataset information
+      tags:
+        - Datasets
+  /api/v1/scans:
+    post:
+      description: |-
+        This endpoint enables you to execute a scan that has been defined within Soda Cloud and which runs on a Soda Agent connected to the account. Call this endpoint from within your data pipeline to programmatically execute scans from outside the Soda Cloud environment.
+
+        This POST uses the following parameters to provide specific details:
+
+        - `dataTimestamp`: Supply a string value to indicate xxx.
+
+        - `scanDefinition`: Supply a string value to specify the identifier of the scan definition in Soda Cloud. To retrieve this ID in Soda Cloud, navigate to the Scans page, then select the scan definition you wish to execute remotely and copy the string that is the scan definition identifier from the URL. <br /> The scan definition _must be_ connected to a Soda Agent in order to execute a scan remotely, _not_ Soda Library.
+
+        The Response of this call, when successful, is `201` and contains a header for `Location` that identifies the executed scan. Use the value of `Location` in the `scanID` parameter of the **Get scan status** endpoint.
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+
+        ## Tags
+
+        `Scans`
+
+        ## Rate limiting
+
+        10 requests/60 seconds
+      operationId: /api/v1/scans
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                dataTimestamp:
+                  type: string
+                scanDefinition:
+                  nullable: false
+                  type: string
+              required:
+                - scanDefinition
+              type: object
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "201":
+          description: Created
+          headers:
+            Location:
+              schema:
+                type: string
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: []
+      summary: Trigger a scan
+      tags:
+        - Scans
+  /api/v1/scans/{scanId}:
+    delete:
+      description: |-
+        This API allows users to request cancelation of an existing scan.
+
+        In case scan is in `pending` state, the scan will be immediately change state to `canceled`.
+
+        In case scan is in `submitted` state, the scan will change state to `cancelationRequested`. After some time, when Agent picks up cancelation request and processes it, scan will reach the final state `canceled`.
+
+        In case scan is in any other state, this API will return a 400 (bad request).
+
+        Response will provide information about the current state of the scan, including the state change.
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+
+        ## Tags
+
+        `Scans`
+
+        ## Rate limiting
+
+        10 requests/60 seconds
+      operationId: "/api/v1/scans/{scanId}"
+      parameters:
+        - in: path
+          name: scanId
+          required: true
+          schema:
+            type: string
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          description: Successful response
+          headers:
+            Location:
+              schema:
+                type: string
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: []
+      summary: Cancel a scan
+      tags:
+        - Scans
+    get:
+      description: |-
+        This endpoint enables you to check on the state of a scan that you executed using the **Trigger a scan** endpoint. Call this endpoint to monitor the status of a scan during its execution.
+
+        If you wish to access the logs of a completed scan, use the **Get scan logs** endpoint.
+
+        This POST uses the following parameter to provide specific details:
+
+        - `scanID`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
+
+        As a scan executes, you can call this endpoint to progressively collect values based on the state of the scan. Refer to the list below for the states that calls to this endpoint return.
+
+        - `queuing`: The scan is in the queue for execution, awaiting a pick-up from a Soda Agent.
+
+        - `executing`: A Soda Agent has picked up the scan and is executing.
+
+        - `cancelationRequested`: An entity requested cancelation of this scan and the request is awaiting pick-up from the Soda Agent responsible for the scan.
+
+        - `timeOutRequested`: A time out has been detected, and an automatic request to stop the scan execution is awaiting pick-up from the Soda Agent responsible for the scan.
+
+        - `canceled`: A Soda Agent confirmed that the scan has been cancelled. This is the final state of the scan.
+
+        - `timedOut`: A Soda Agent confirmed that the scan has timed-out. This is the final state of the scan.
+
+        - `failed`: The scan did not start, or it did not successfully complete because of an unexpected cause. This is the final state of the scan.
+
+        - `completedWithErrors`: The scan completed successfully, but there were errors involving some of the checks in the scan. This is the final state of the scan.
+
+        - `completedWithFailures`: The scan completed successfully and reveals failed results for some checks. This is the final state of the scan.
+
+        - `completedWithWarnings`: The scan completed successfully and reveals warning results for some checks. This is the final state of the scan.
+
+        - `completed`: The scan completed successfully and reveals passing results for all checks. This is a final state of a scan
+
+        To get the logs of the completed scan, please use API `/api/v1/scans/{scanId}/logs`.
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+
+        ## Tags
+
+        `Scans`
+
+        ## Rate limiting
+
+        60 requests/60 seconds
+      operationId: "/api/v1/scans/{scanId}"
+      parameters:
+        - in: path
+          name: scanId
+          required: true
+          schema:
+            type: string
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiScanStatusResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: []
+      summary: Get scan status
+      tags:
+        - Scans
+  /api/v1/scans/{scanId}/logs:
+    get:
+      description: |-
+        This endpoint enables you to gather log details about the final state of a scan you executed using the **Trigger a scan** endpoint. Use this endpoint to study scan logs to investigate issues with its execution.
+
+        If you wish to access the state of a scan in progress, use the **Get scan status** endpoint.
+
+        This GET is a paginated query that uses the following parameters to request a specific details:
+
+        - `scanID`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
+
+        - `size`: Supply an integer value between 1000 and 1000, inclusive. The default value is 1000.
+
+        - `page`: Supply an integer value. The default value is 0.
+
+        The response sorts the the log information by creation timestamp in ascending order.
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+
+        ## Tags
+
+        `Scans`
+
+        ## Rate limiting
+
+        60 requests/60 seconds
+      operationId: "/api/v1/scans/{scanId}/logs"
+      parameters:
+        - in: path
+          name: scanId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: page
+          schema:
+            format: int32
+            type: integer
+        - in: query
+          name: size
+          schema:
+            format: int32
+            type: integer
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiScanLogsResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: []
+      summary: Get scan logs
+      tags:
+        - Scans
+  /api/v1/test-login:
+    get:
+      description: |-
+        This endpoint enables you to test the API connection to your organization's Soda Cloud account. Use this endpoint to verify that the authentication and authorization details are accurate and the API is ready to accept calls.
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+
+        ## Tags
+
+        `Utility`
+
+        ## Rate limiting
+
+        10 requests/10 seconds
+      operationId: /api/v1/test-login
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiTestLoginResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: []
+      summary: Test connection
+      tags:
+        - Utility
+servers:
+  - url: https://cloud.soda.io
+  - url: https://cloud.us.soda.io
+tags:
+  - description: Soda Cloud API Check Endpoints
+    name: Checks
+  - description: Soda Cloud API Dataset Endpoints
+    name: Datasets
+  - description: Soda Cloud API Scan Endpoints
+    name: Scans
+  - description: Soda Cloud API Utility Endpoints
+    name: Utility
