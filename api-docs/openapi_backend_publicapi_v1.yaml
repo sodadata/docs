@@ -463,7 +463,7 @@ paths:
         ## Rate limiting
 
         10 requests/60 seconds
-      operationId: /api/v1/checks
+      operationId: GET/api/v1/checks
       parameters:
         - in: query
           name: datasetId
@@ -559,7 +559,7 @@ paths:
         ## Rate limiting
 
         10 requests/60 seconds
-      operationId: /api/v1/datasets
+      operationId: GET/api/v1/datasets
       parameters:
         - in: query
           name: from
@@ -653,7 +653,7 @@ paths:
         ## Rate limiting
 
         10 requests/60 seconds
-      operationId: /api/v1/scans
+      operationId: POST/api/v1/scans
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -751,7 +751,7 @@ paths:
         ## Rate limiting
 
         10 requests/60 seconds
-      operationId: "/api/v1/scans/{scanId}"
+      operationId: "DELETE/api/v1/scans/{scanId}"
       parameters:
         - in: path
           name: scanId
@@ -859,7 +859,7 @@ paths:
         ## Rate limiting
 
         60 requests/60 seconds
-      operationId: "/api/v1/scans/{scanId}"
+      operationId: "GET/api/v1/scans/{scanId}"
       parameters:
         - in: path
           name: scanId
@@ -948,7 +948,7 @@ paths:
         ## Rate limiting
 
         60 requests/60 seconds
-      operationId: "/api/v1/scans/{scanId}/logs"
+      operationId: "GET/api/v1/scans/{scanId}/logs"
       parameters:
         - in: path
           name: scanId
@@ -1035,7 +1035,7 @@ paths:
         ## Rate limiting
 
         10 requests/10 seconds
-      operationId: /api/v1/test-login
+      operationId: GET/api/v1/test-login
       responses:
         "400":
           content:
