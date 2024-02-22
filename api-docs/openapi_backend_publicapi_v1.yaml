@@ -634,7 +634,7 @@ paths:
 
         - `dataTimestamp`: Supply an (optional) value to indicate the moment for which the scan is taking place. In case this value is not supplied, the current moment in time is going to be used. Supply an ISO8601 timestamp value. Example: `2023-12-31T10:15:30+01:00`
 
-        The Response of this call, when successful, is `201` and contains a header for `Location` that identifies the executed scan. Use the value of `Location` in the `scanID` parameter of the **Get scan status** endpoint.
+        The Response of this call, when successful, is `201` and contains headers `Location` and `X-Soda-Scan-Id` that identify the executed scan. Use the value of `X-Soda-Scan-Id` in the `scanId` parameter of the **Get scan status** endpoint.
 
         ## Authentication
 
@@ -644,7 +644,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+        Default cloud user authorization is applied.
 
         ## Tags
 
@@ -705,6 +705,9 @@ paths:
             Location:
               schema:
                 type: string
+            X-Soda-Scan-Id:
+              schema:
+                type: string
         "429":
           content:
             application/json:
@@ -739,7 +742,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+        Default cloud user authorization is applied.
 
         ## Tags
 
@@ -811,7 +814,7 @@ paths:
 
         This POST uses the following parameter to provide specific details:
 
-        - `scanID`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
+        - `scanId`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
 
         As a scan executes, you can call this endpoint to progressively collect values based on the state of the scan. Refer to the list below for the states that calls to this endpoint return.
 
@@ -847,7 +850,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+        Default cloud user authorization is applied.
 
         ## Tags
 
@@ -920,7 +923,7 @@ paths:
 
         This GET is a paginated query that uses the following parameters to request a specific details:
 
-        - `scanID`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
+        - `scanId`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
 
         - `size`: Supply an integer value between 100 and 1000, inclusive. The default value is 1000.
 
@@ -936,7 +939,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+        Default cloud user authorization is applied.
 
         ## Tags
 
