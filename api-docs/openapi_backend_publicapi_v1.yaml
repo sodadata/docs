@@ -1026,7 +1026,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+        Default cloud user authorization is applied.
 
         ## Tags
 
