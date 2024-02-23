@@ -318,7 +318,7 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 The following offers instructions to create a <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html" target="_blank">EKS cluster</a> to deploy a Soda Agent.
 We recommend to also setup a <a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html" target="_blank">Node Group</a> to automate the provisioning and lifecycle management of nodes.
-We do not recommend to use fargate profiles, because fargate node provisioning will increase job execution time leading not not the best experience.
+We advise against using Fargate profiles, as provisioning Fargate nodes extends job execution times, resulting in suboptimal user experiences.
 
 1. (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}).
 2. (Optional) If you wish, you can establish an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. Refer to Connect to Soda Cloud via AWS PrivateLink before deploying an agent.
