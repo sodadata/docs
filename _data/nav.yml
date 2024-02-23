@@ -235,6 +235,14 @@
 
 - title: Create a data contract
   page: soda/data-contracts.md
+  subcategories:
+  - subtitle: Data contract basics
+    page: soda/data-contracts.md
+  - subtitle: Write a data contract
+    page: soda/data-contracts-write.md
+  - subtitle: Verify a data contract
+    page: soda/data-contracts-verify.md
+  
 
 - title: Learning resources
   page: soda/glossary.md

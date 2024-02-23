@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Create a data contract
+title: Data contract basics
 description: Use Soda to write data contracts that set data quality standards for data products.
 parent: Create data contracts
 redirect_from: 
@@ -11,30 +11,39 @@ redirect_from:
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use Soda's data contracts to set data quality standards for data products. In a programmatic scan, Soda translates contract standards into Soda Checks Language, then executes the standards as data quality checks during a scan. 
+Use Soda's data contracts to set data quality standards for data products. In a programmatic Soda scan, Soda executes the standards as data quality checks during a scan. 
 ```yaml
-dataset: dim_customer
+dataset: CUSTOMERS
+
+owner: mahalijones@example.com
+
+pii_category: very sensitive
 
 columns:
-  - name: id
-    data_type: character varying
-    unique: true
-  - name: cst_size
-    data_type: decimal
-  - name: cst_size_txt
-    valid_values: [1, 2, 3]
-  - name: distance
-    data_type: integer
-  - name: country
-    data_type: varchar
-    not_null: true
-    reference:
-      dataset: COUNTRIES
-      column: id
-  - name: ts
 
-checks: 
-  - missing_count(id) = 0
+  - name: id
+    data_type: VARCHAR
+    checks:
+      - type: duplicates_count
+
+  - name: size
+    data_type: VARCHAR
+    checks:
+      - type: invalid_count
+        valid_values: ['S', 'M', 'L']
+        fail_when_greater_than_or_equal: 10
+
+  - name: distance
+    checks:
+      - type: invalid_count
+        valid_min: 0
+        valid_max: 1000
+
+  - name: created
+    optional: true
+
+checks:
+  - type: row_count
 ```
 
 [Install data contracts](#install-data-contracts)<br />
