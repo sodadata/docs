@@ -322,16 +322,18 @@ You can deploy a Soda Agent to connect with the following data sources:
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
 
 <!--
-## Create an EKS Fargate cluster
+## Create an EKS cluster
 
-The following offers instructions to create a <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html" target="_blank">Fargate (serverless) cluster</a> to deploy a Soda Agent, but you can create and use a <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html" target="_blank">regular EKS cluster</a> if you wish.
+The following offers instructions to create a <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html" target="_blank">EKS cluster</a> to deploy a Soda Agent.
+We recommend to also setup a <a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html" target="_blank">Node Group</a> to automate the provisioning and lifecycle management of nodes.
+We do not recommend to use fargate profiles, because fargate node provisioning will increase job execution time leading not not the best experience.
 
 1. (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}).
 2. (Optional) If you wish, you can establish an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. Refer to Connect to Soda Cloud via AWS PrivateLink before deploying an agent.
 2. (Optional) If you are deploying to an existing Virtual Private Cloud (VPC), consider supplying public or private subnets with your deployment. Consult the eksctl documentation to <a href="https://eksctl.io/usage/vpc-configuration/#use-existing-vpc-other-custom-configuration" target="_blank">Use existing VPC</a>.
-3. From the command-line, execute the following command to create a new EKS Fargate cluster in your AWS account.  <br/>Replace the value of `--region` with one that is appropriate for your location. 
+3. From the command-line, execute the following command to create a new EKS cluster in your AWS account.  <br/>Replace the value of `--region` with one that is appropriate for your location. Consult the eksctl documentation to <a href="https://eksctl.io/usage/creating-and-managing-clusters/#creating-a-cluster" target="_blank">Creating a cluster</a>.
 ```shell
-eksctl create cluster --name soda-agent --region eu-central-1 --fargate
+eksctl create cluster --name soda-agent --region eu-central-1
 ```
 * If you are not sure which region to use, execute the following command to find your region:
 ```shell
@@ -342,17 +344,11 @@ aws configure get region
 ```shell
 kubectl create namespace soda-agent
 ```
-5. Create a namespace and a Fargate profile for EKS Fargate serverless deployment. <br />
-When you deploy a Soda Agent on EKS Fargate, AWS matches the Fargate Profile using annotation labels in the Soda Agent Helm chart. Without the profile, the Helm chart cannot successfully deploy. <br />
-Refer to [Troubleshoot deployment](#troubleshoot-deployment) below if you encounter errors.
-```shell
-eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --region eu-central-1 --namespace soda-agent
-```
-6. Run the following command to change the context to associate the current namespace to `soda-agent`. 
+5. Run the following command to change the context to associate the current namespace to `soda-agent`. 
 ```shell
 kubectl config set-context --current --namespace=soda-agent
 ```
-7. Run the following command to verify that the cluster kubectl recognizes `soda-agent` as the current namespace.
+6. Run the following command to verify that the cluster kubectl recognizes `soda-agent` as the current namespace.
 ```shell
 kubectl config get-contexts
 ```
@@ -389,7 +385,6 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 * Read more [about the `helm install` command](#about-the-helm-install-command-1).
 ```shell
 helm install soda-agent soda-agent/soda-agent \
-    --set provider.aws.eks.fargate.enabled=true \
     --set soda.agent.name=myuniqueagent \
     --set soda.polling.interval=5 \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
@@ -530,11 +525,7 @@ kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
 ```shell
 helm uninstall soda-agent -n soda-agent
 ```
-2. Remove the Fargate profile.
-```shell
-eksctl delete fargateprofile --cluster soda-agent --name soda-agent-profile
-```
-3. Wait for the Fargate profile deletion to complete, then delete the EKS cluster itself.
+3. Delete the EKS cluster itself.
 ```shell
 eksctl delete cluster --name soda-agent
 ```
@@ -550,24 +541,6 @@ eksctl delete cluster --name soda-agent
 **Problem:** `UnauthorizedOperation: You are not authorized to perform this operation.`
 
 **Solution:** This error indicates that your user profile is not authorized to create the cluster. Contact your AWS Administrator to request the appropriate permissions.
-
-<br />
-
-**Problem:** `ResourceNotFoundException: No cluster found for name: soda-agent.` 
-
-**Solution:**  If you get an error like this when you attempt to create a Fargate profile, it may be a question of region. 
-1. Access your <a href="https://eu-central-1.console.aws.amazon.com/cloudformation/home" target="_blank">AWS CloudFormation console</a>, then click **Stacks** to find the eksctl-soda-agent-cluster that you created. If you do not see the stack, adjust the region of your CloudFormation console (top nav bar, next to your username).
-2. Try running the command: `aws eks list-clusters`. It likely returns the following.
-```
-{
-    "clusters": []
-}
-```
-2. Try running the command: `aws cloudformation list-stacks --region eu-central-1` replacing the value of `--region` with the value you used for `region` when you created the EKS Fargate cluster. 
-3. If that command returns information about the cluster you just created, add the `--region` option to the command to create a Fargate profile.
-```shell
-eksctl create fargateprofile --cluster soda-agent --name soda-agent-profile --region eu-central-1 --namespace soda-agent
-```
 
   </div>
   <div class="panel" id="three-panel" markdown="1">
