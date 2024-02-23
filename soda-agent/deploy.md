@@ -170,7 +170,7 @@ REVISION: 1
 ```shell
 minikube kubectl -- describe pods
 ```
-4. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud. 
+4. In your Soda Cloud account, navigate to **your avatar** > **Agents**. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud. 
 ```shell
 ...
 Containers:
@@ -224,7 +224,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 minikube kubectl -- describe pods
 ```
-6. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+6. In your Soda Cloud account, navigate to **your avatar** > **Agents**. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -316,14 +316,12 @@ You can deploy a Soda Agent to connect with the following data sources:
 <!--
 ## Create an EKS cluster
 
-The following offers instructions to create a <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html" target="_blank">EKS cluster</a> to deploy a Soda Agent.
-We recommend to also setup a <a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html" target="_blank">Node Group</a> to automate the provisioning and lifecycle management of nodes.
-We advise against using Fargate profiles, as provisioning Fargate nodes extends job execution times, resulting in suboptimal user experiences.
+The following offers instructions to create a <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html" target="_blank">EKS cluster</a> in which to deploy a Soda Agent. Best practice dictates that you also setup a <a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html" target="_blank">Node Group</a> to automate the provisioning and lifecycle management of cluster nodes. Avoid using Fargate profiles as provisioning Fargate nodes extends job execution times and results in suboptimal user experiences.
 
 1. (Optional) You have familarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}).
 2. (Optional) If you wish, you can establish an <a href="https://aws.amazon.com/privatelink/" target="_blank">AWS PrivateLink</a> to provide private connectivity with Soda Cloud. Refer to Connect to Soda Cloud via AWS PrivateLink before deploying an agent.
 2. (Optional) If you are deploying to an existing Virtual Private Cloud (VPC), consider supplying public or private subnets with your deployment. Consult the eksctl documentation to <a href="https://eksctl.io/usage/vpc-configuration/#use-existing-vpc-other-custom-configuration" target="_blank">Use existing VPC</a>.
-3. From the command-line, execute the following command to create a new EKS cluster in your AWS account.  <br/>Replace the value of `--region` with one that is appropriate for your location. Consult the eksctl documentation to <a href="https://eksctl.io/usage/creating-and-managing-clusters/#creating-a-cluster" target="_blank">Creating a cluster</a>.
+3. From the command-line, execute the following command to create a new EKS cluster in your AWS account.  <br/>Replace the value of `--region` with one that is appropriate for your location. Consult the eksctl documentation for <a href="https://eksctl.io/usage/creating-and-managing-clusters/#creating-a-cluster" target="_blank">Creating a cluster</a>.
 ```shell
 eksctl create cluster --name soda-agent --region eu-central-1
 ```
@@ -396,7 +394,7 @@ REVISION: 1
 ```shell
 kubectl describe pods
 ```
-7. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+7. In your Soda Cloud account, navigate to **your avatar** > **Agents**. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step 3 to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -453,7 +451,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 kubectl describe pods -n soda-agent
 ```
-8. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+8. In your Soda Cloud account, navigate to **your avatar** > **Agents**. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step four to check the status of the deployment. When `State: Running` and `Ready: True`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 ...
@@ -489,7 +487,7 @@ If you use AWS services for your infrastructure and you have deployed or will de
 ```shell
 kubectl -n soda-agent rollout restart deploy
 ```
-5. After you have started the agent and validated that it is running, log into your Soda Cloud account, then navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
+5. After you have started the agent and validated that it is running, log into your Soda Cloud account, then navigate to **your avatar** > **Agents**. Refresh the page to verify that you see the agent you just created in the list of Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
 If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
@@ -519,8 +517,6 @@ eksctl delete cluster --name soda-agent
 ### Troubleshoot deployment
 
 {% include agent-troubleshoot.md %}
-
-<br />
 
 **Problem:** `UnauthorizedOperation: You are not authorized to perform this operation.`
 
@@ -797,7 +793,7 @@ kubectl get pods -n soda-agent
 NAME                                     READY   STATUS    RESTARTS   AGE
 soda-agent-orchestrator-ffd74c76-5g7tl   1/1     Running   0          32s
 ```
-5. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+5. In your Soda Cloud account, navigate to **your avatar** > **Agents**. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
@@ -853,7 +849,7 @@ kubectl get pods -n soda-agent
 NAME                                     READY   STATUS    RESTARTS   AGE
 soda-agent-orchestrator-ffd74c76-5g7tl   1/1     Running   0          32s
 ```
-6. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+6. In your Soda Cloud account, navigate to **your avatar** > **Agents**. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
@@ -905,7 +901,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 kubectl describe pods -n soda-agent
 ```
-8. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. 
+8. In your Soda Cloud account, navigate to **your avatar** > **Agents**. Refresh the page to verify that you see the agent you just created in the list of Agents. 
 ![agent-deployed](/assets/images/agent-deployed.png){:height="700px" width="700px"}
 
 If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
@@ -943,8 +939,6 @@ az network vnet subnet delete \
 ## Troubleshoot deployment 
 
 {% include agent-troubleshoot.md %}
-
-<br />
 
 **Problem:** When you attempt to create a cluster, you get an error that reads, `An RSA key file or key value must be supplied to SSH Key Value. You can use --generate-ssh-keys to let CLI generate one for you`. 
 
@@ -1123,8 +1117,8 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 ```shell
 helm install soda-agent soda-agent/soda-agent \
 >   --set soda.agent.name=myuniqueagent \
-    --set soda.polling.interval=5 \
-    # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
+>   --set soda.polling.interval=5 \
+# Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
 >   --set soda.cloud.endpoint=https://cloud.soda.io \
 >   --set soda.apikey.id=*** \
 >   --set soda.apikey.secret=*** \
@@ -1142,7 +1136,7 @@ REVISION: 1
 ```shell
 kubectl describe pods
 ```
-5. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
+5. In your Soda Cloud account, navigate to **your avatar** > **Agents**. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/><br/>Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step three to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 Name:             soda-agent-orchestrator-66-snip
 Namespace:        soda-agent
@@ -1197,7 +1191,7 @@ helm install soda-agent soda-agent/soda-agent \
 ```shell
 kubectl describe pods
 ```
-6. In your Soda Cloud account, navigate to **your avatar** > **Data Sources** > **Agents** tab. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
+6. In your Soda Cloud account, navigate to **your avatar** > **Agents**. Refresh the page to verify that you see the agent you just created in the list of Agents. <br/> <br/> 
 Be aware that this may take several minutes to appear in your list of Soda Agents. Use the `describe pods` command in step four to check the status of the deployment. When `Status: Running`, then you can refresh and see the agent in Soda Cloud.
 ```shell
 Name:             soda-agent-orchestrator-66-snip
