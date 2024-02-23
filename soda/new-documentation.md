@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### February 28, 2024
+* Included schema checks as available to add as a no-code check to a dataset in a data source that uses a Soda Agent to execute scans.
+
 #### February 22, 2024
 * Updated [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) documentation to clarify details.
 
