@@ -218,7 +218,7 @@ checks for dim_customer:
 {% include code-header.html %}
 ```yaml
 checks for dim_reseller:
-  - missing_percent("phone", "address_line1") = 0
+  - missing_percent("phone") = 0
 ```
 
 #### Example with for each
