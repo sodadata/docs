@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Soda Cloud Public API
+title: Soda Cloud API
 description: The Soda Cloud API enables you to trigger actions and query data in your Soda Cloud account.
 parent: API Docs
 apidoc: true

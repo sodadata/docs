@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### February 22, 2024
+* Updated [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) documentation to clarify details.
+
 #### February 21, 2024
 * Added API documentation for the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) that enables you to trigger Soda Cloud scans programmatically.
 * Added a new section to [Scan for data quality](#scan-for-data-quality) for triggering a scan via API.
