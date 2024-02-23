@@ -632,9 +632,9 @@ paths:
 
         - `scanDefinition`: Supply a string value to specify the identifier of the scan definition in Soda Cloud. To retrieve this ID in Soda Cloud, navigate to the Scans page, then select the scan definition you wish to execute remotely and copy the string that is the scan definition identifier from the URL. <br /> The scan definition _must be_ connected to a Soda Agent in order to execute a scan remotely, _not_ Soda Library.
 
-        - `dataTimestamp`: Supply an (optional) value to indicate the moment for which the scan is taking place. In case this value is not supplied, the current moment in time is going to be used. Supply an ISO8601 timestamp value. Example: `2023-12-31T10:15:30+01:00`
+        - `dataTimestamp`: (Optional) Supply a value to indicate a specific timestamp for the scan for Soda Cloud. For example, provide a time in the past so that although Soda executes the scan when you call the endpoint, it timestamps the scan with the value you provide so that it appears in the user interface with your supplied timestamp value, not the time at which it actually executed the scan. Supply an ISO8601 timestamp value such as: `2023-12-31T10:15:30+01:00`. If you do not specify a value, Soda uses the current moment to timestamp the scan.
 
-        The Response of this call, when successful, is `201` and contains headers `Location` and `X-Soda-Scan-Id` that identify the executed scan. Use the value of `X-Soda-Scan-Id` in the `scanId` parameter of the **Get scan status** endpoint.
+        The Response of this call, when successful, is `201` and contains headers `Location` and `X-Soda-Scan-Id` which identify the executed scan. Use the value of `X-Soda-Scan-Id` in the `scanId` parameter of the **Get scan status**, **Get scan logs**, and **Cancel a scan** endpoints.
 
         ## Authentication
 
@@ -644,7 +644,7 @@ paths:
 
         ## Authorization
 
-        Default cloud user authorization is applied.
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -732,7 +732,7 @@ paths:
 
         This DELETE uses the following parameters to provide specific details:
 
-        - `scanID`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
+        - `scanId`: Use the value of `X-Soda-Scan-Id` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
 
         ## Authentication
 
@@ -742,7 +742,7 @@ paths:
 
         ## Authorization
 
-        Default cloud user authorization is applied.
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -814,7 +814,7 @@ paths:
 
         This POST uses the following parameter to provide specific details:
 
-        - `scanId`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
+        - `scanId`: Use the value of `X-Soda-Scan-Id` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
 
         As a scan executes, you can call this endpoint to progressively collect values based on the state of the scan. Refer to the list below for the states that calls to this endpoint return.
 
@@ -850,7 +850,7 @@ paths:
 
         ## Authorization
 
-        Default cloud user authorization is applied.
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -923,7 +923,7 @@ paths:
 
         This GET is a paginated query that uses the following parameters to request a specific details:
 
-        - `scanId`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
+        - `scanId`: Use the value of `X-Soda-Scan-Id` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
 
         - `size`: Supply an integer value between 100 and 1000, inclusive. The default value is 1000.
 
@@ -939,7 +939,7 @@ paths:
 
         ## Authorization
 
-        Default cloud user authorization is applied.
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -1026,7 +1026,7 @@ paths:
 
         ## Authorization
 
-        Default cloud user authorization is applied.
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
