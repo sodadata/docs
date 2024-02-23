@@ -225,9 +225,6 @@ soda-agent-secrets   Opaque   1      24h
         existingSecrets:
           # from spec.target.name in the ExternalSecret file
           - soda-agent-secrets 
-        idle:
-          enabled: true
-          replicas: 1
       cloud:
         # Use https://cloud.us.soda.io for US region 
         # Use https://cloud.soda.io for EU region
