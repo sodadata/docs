@@ -85,6 +85,7 @@ If you wish to schedule a *new* scan to execute the checks in an agreement more 
 [Run a scan in an agreement](#run-a-scan-in-an-agreement)<br />
 [Run a scan from the command-line](#run-a-scan-from-the-command-line)<br />
 [Trigger a scan via API](#trigger-a-scan-via-api)<br />
+[Run a Soda Cloud scan from the command-line](#run-a-soda-cloud-scan-from-the-command-line)<br />
 [Input scan-time variables](#input-scan-time-variables)<br />
 [Prevent pushing scan results to Soda Cloud](#prevent-pushing-scan-results-to-soda-cloud)
 [Configure the same scan to run in multiple environments](#configure-the-same-scan-to-run-in-multiple-environments)<br />
@@ -150,15 +151,53 @@ Use the soda `soda scan --help` command to review options you can include to cus
 ### Trigger a scan via API
 *Requires Soda Agent*
 
-You can programmatically initiate a scan in Soda Cloud using the Soda Cloud API. 
+You can programmatically initiate a scan your team defined in Soda Cloud using the Soda Cloud API. 
 
-If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) rights in your Soda Cloud account, you can use the API to:
+If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) rights in your Soda Cloud account, you can use the API to:
 * retrieve information about checks and datasets in your Soda Cloud account 
 * execute scans
 * retrieve information about the state of a scan during execution
-* access the scan logs of an executed scan.
+* access the scan logs of an executed scan
 
 Access the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) documentation to get details about how to programmatically get info and execute Soda Cloud scans.
+
+### Run a Soda Cloud scan from the command-line
+*Requires Soda Agent*<br />
+*Requires Soda Library*
+
+You can initiate a scan your team defined in Soda Cloud using the Soda Library CLI.
+
+If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) rights in your Soda Cloud account, you can use Soda Library CLI to: 
+* execute a remote scan and receive logs of the scan execution result
+* execute a remote scan and asynchronously retrieve status and logs of the scan during, and after its execution
+
+To execute a remote scan and receive scan results:
+1. In Soda Cloud, navigate to **Scans**, then, from the list of scans, click to open the one which you wish to execute remotely.
+2. To retrieve the scan definition ID that you need for the remote scan command, copy the string that is the scan definition identifier from the URL. 
+![scan-def-id](/assets/images/scan-def-id.png){:height="600px" width="600px"}
+3. Run the following command to execute the Soda Cloud scan remotely, where the value of the `-s` option is the scan definition identifier you copied from the URL.
+```shell
+soda scan -c configuration.yml --remote -s b3bbcb3d-364e-4ef6-4ef6-4ef64ef64ef6898
+```
+4. The Soda Agent that executes your scan definition proceeds to run the scan and returns the result of the scan in the CLI output.
+
+<br />
+
+To execute a remote scan and asynchonously retrieve the status and results of the scan:
+1. In Soda Cloud, navigate to **Scans**, then, from the list of scans, click to open the one which you wish to execute remotely.
+2. To retrieve the scan definition ID that you need for the remote scan command, copy the string that is the scan definition identifier from the URL. 
+![scan-def-id](/assets/images/scan-def-id.png){:height="600px" width="600px"}
+3. Run the following command to execute the Soda Cloud scan remotely, where the value of the `-s` option is the scan definition identifier you copied from the URL.
+```shell
+soda scan -c configuration.yml --remote -s b3bbcb3d-364e-4ef6-4ef6-4ef64ef64ef6898 -rm async
+```
+4. The Soda Agent that executes your scan definition proceeds to run the scan. The agent does not automatically return scan status or logs to the CLI output.
+5. To retrieve the status of the scan execution, use the following command. Refer to the [Soda Cloud API documentation](https://docs.soda.io/api-docs/public-cloud-api-v1.html#/operations/GET/api/v1/scans/{scanId}) for the possible status messages the Soda Agent can return.
+```shell
+soda scan-status -c configuration.yml -s b3bbcb3d-364e-4ef6-4ef6-4ef64ef64ef6898
+```
+
+<br />
 
 ### Input scan-time variables
 *Requires Soda Library*
