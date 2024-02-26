@@ -208,7 +208,6 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
-          pollingIntervall: 5
         cloud:
           # Use https://cloud.us.soda.io for US region
           # Use https://cloud.soda.io for EU region
@@ -436,7 +435,6 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
-          pollingIntervall: 5
         cloud:
           # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
           endpoint: "https://cloud.soda.io"
@@ -879,7 +877,6 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
-          pollingIntervall: 5
         cloud:
           # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
           endpoint: "https://cloud.soda.io"
@@ -1176,7 +1173,6 @@ soda:
           secret: "***"
         agent:
           name: "myuniqueagent"
-          pollingIntervall: 5
         cloud:
           # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
           endpoint: "https://cloud.soda.io"
