@@ -10,7 +10,7 @@ parent: Learning resources
 <br />
 
 #### February 26, 2024
-* Following improvements and changes to the self-hosted Soda Agent, removed the documented details for including idle replicas in a cluster that aimed to improve scan times. Further, where it was noted, removed any references to using EKS Fargate profiles to mitigate suboptimal experiences using the agent.
+* Following improvements and changes to the self-hosted Soda Agent 1.0.0, removed the documented details for including idle replicas and polling intervals in a cluster that aimed to improve scan times. Also, added release notes to inform existing Soda Agent users about changes to parameter configuration with 1.0.0 and advice for optimal performance in Amazon EKS using managed node groups instead of Fargate profiles. See [Soda Agent release notes]({% link release-notes/soda-agent.md %}#upgrade-to-100) for upgrade details.
 
 #### February 22, 2024
 * Updated [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) documentation to clarify details.
