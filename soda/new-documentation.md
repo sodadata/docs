@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### February 26, 2024
+* Added [release notes]({% link release-notes/soda-agent.md %}) documentation for Soda Agent 0.9.1, which maps to Soda Library 1.3.2.
+
 #### February 22, 2024
 * Updated [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) documentation to clarify details.
 
