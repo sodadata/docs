@@ -10,7 +10,7 @@ parent: Learning resources
 <br />
 
 #### February 29, 2024
-* Added instructions for how to run a Soda Cloud-defined scan remotely using the Soda Library CLI. See the **Run a scan** tab in [Scan for data quality]({% link soda-library/run-a-scan.md %}l#scan-for-data-quality).
+* Added instructions for how to run a Soda Cloud-defined scan remotely using the Soda Library CLI. See the **Remotely run a scan** tab in [Scan for data quality]({% link soda-library/run-a-scan.md %}l#scan-for-data-quality).
 
 #### February 26, 2024
 * Added [release notes]({% link release-notes/soda-agent.md %}) documentation for Soda Agent 0.9.1, which maps to Soda Library 1.3.2.
