@@ -8,6 +8,7 @@ redirect_from:
 ---
 
 # Self-serve Soda
+<!--Linked to via Shlink-->
 *Last modified on {% last_modified_at %}*
 
 Use this guide to set up Soda Cloud and enable users across your organization to serve themselves when it comes to testing data quality. 
