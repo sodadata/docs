@@ -554,7 +554,7 @@ Soda provides an anomaly detection simulator to enable you to test and observe h
 
 1. From the command-line, install the simulator package using the following command.
 ```bash
-pip install soda-scientific[simulator]
+pip install -i https://pypi.cloud.soda.io "soda-scientific[simulator]"
 ```
 2. Ensure you have configured the connection details to both your data source and your Soda Cloud account in a `configuration.yml` file. See: [Configure Soda]({% link soda-library/install.md %}#configure-soda).
 3. Log in to your Soda Cloud account, then navigate to the **Check History** page of your existing anomaly detection or anomaly score check. From your browser copy the entire URL; refer to image below.

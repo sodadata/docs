@@ -6,6 +6,7 @@ parent: Use case guides
 ---
 
 # Test data quality during CI/CD development
+<!--Linked to via Shlink-->
 *Last modified on {% last_modified_at %}*
 
 Use this guide to install and set up Soda to test the quality of your data during your development lifecycle. Catch data quality issues in a GitHub pull request before merging data management changes, such as transformations, into production.

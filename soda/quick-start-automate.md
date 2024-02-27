@@ -6,6 +6,7 @@ parent: Use case guides
 ---
 
 # Automate data quality monitoring
+<!--Linked to email campaign, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
 Use this guide to set up Soda and begin automatically monitoring the data quality of datasets in a data source. Use the guided workflow in Soda Cloud to connect to a data source, profile your data, and add automated checks for data quality.
@@ -29,11 +30,31 @@ This example offers instructions for both self-hosted and Soda-hosted agent depl
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Self-hosted agent</label>
-  <label class="tab" id="two-tab" for="two">Soda-hosted agent </label>
+  <label class="tab" id="one-tab" for="one">Soda-hosted agent</label>
+  <label class="tab" id="two-tab" for="two">Self-hosted agent</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
+
+This setup provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. 
+
+### Compatibility
+
+The Soda-hosted agent supports connections to the following data sources:
+
+| BigQuery <br /> MySQL<br /> PostgreSQL<br />  Snowflake |
+
+<br />
+
+{% include access-managed-agent.md %}
+
+<br />
+
+Invite your colleague(s) to your Soda Cloud organization so they can access the newly-deployed Soda Agent to connect to data sources and begin monitoring data quality. In your Soda Cloud account, navigate to **your avatar** > **Invite Team Members** and fill in the blanks.
+
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
 
 The Soda Agent is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. To set up a self-hosted Soda Agent, you create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster. 
 
@@ -53,25 +74,6 @@ If you do not have the access or authorization to set up a cluster or deploy the
 * Google Kubernetes Engine (GKE)
 3. Use the instructions for [managing sensitive values]({% link soda-agent/secrets.md %}) to securely store API key values and data source login credential values that the Soda Agent needs to connect to both Soda Cloud and your data sources. Pass the environment variable identifiers to your colleagues to use when adding a new data source in Soda Cloud.
 4. Invite your colleague(s) to your Soda Cloud organization so they can access the newly-deployed Soda Agent to connect to data sources and begin monitoring data quality. In your Soda Cloud account, navigate to **your avatar** > **Invite Team Members** and fill in the blanks.
-
-  </div>
-  <div class="panel" id="two-panel" markdown="1">
-
-This setup provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. 
-
-### Compatibility
-
-The Soda-hosted agent supports connections to the following data sources:
-
-| BigQuery <br /> MySQL<br /> PostgreSQL<br />  Snowflake |
-
-<br />
-
-{% include access-managed-agent.md %}
-
-<br />
-
-Invite your colleague(s) to your Soda Cloud organization so they can access the newly-deployed Soda Agent to connect to data sources and begin monitoring data quality. In your Soda Cloud account, navigate to **your avatar** > **Invite Team Members** and fill in the blanks.
 
   </div>
 
