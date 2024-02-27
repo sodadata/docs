@@ -6,6 +6,7 @@ parent: Use case guides
 ---
 
 # Test data quality in a data pipeline
+<!--Linked to via Shlink-->
 *Last modified on {% last_modified_at %}*
 
 Use this guide as an example for how to set up and use Soda to test the quality of your data in an Airflow pipeline. Automatically catch data quality issues after ingestion or transformation to prevent negative downstream impact.
