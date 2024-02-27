@@ -62,6 +62,7 @@ These deployment instructions offer generic guidance for deploying a Soda Agent 
 [Deployment overview](#deployment-overview)<br />
 [Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
+[System requirements](#system-requirements)<br />
 [Deploy an agent](#deploy-an-agent)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only](#deploy-using-cli-only)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file)<br />
@@ -89,6 +90,12 @@ You can deploy a Soda Agent to connect with the following data sources:
 * You can create, or have access to an existing Kubernetes cluster into which you can deploy a Soda Agent.
 * You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. With Docker running, use the command `kubectl version --output=yaml` to check the version of an existing install.
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
+
+### System requirements
+
+* Kubernetes cluster size and capacity: 2 CPU and 2GB of RAM. In general, this is sufficient to run up to six scans in parallel.
+* Scan performance may vary according to the workload, or the number of scans running in parallel. To improve performance for larger workloads, consider fine-tuning the cluster size using the `resources` parameter for the `agent-orchestrator` and `soda.scanlauncher.resources` for the `scan-launcher`. Adding more resources to the `scan-launcher` can improve scan times by as much as 30%.
+* Be aware that allocating too many resources may be costly relative to the small benefit of improved scan times.
 
 <!--
 ## Create a Kubernetes cluster
@@ -290,6 +297,7 @@ These deployment instructions offer guidance for setting up an Amazon Elastic Ku
 [Deployment overview](#deployment-overview-1)<br />
 [Compatibility](#compatibility-1)<br />
 [Prerequisites](#prerequisites-1)<br />
+[System requirements](#system-requirements-1)<br />
 [Deploy an agent](#deploy-an-agent-1)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only](#deploy-using-cli-only-1)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file-1)<br />
@@ -319,6 +327,15 @@ You can deploy a Soda Agent to connect with the following data sources:
 * You have an AWS account and the necessary permissions to enable you to create, or gain access to an EKS cluster in your region.
 * You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. Run `kubectl version --output=yaml` to check the version of an existing install.
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
+
+### System requirements
+
+* Kubernetes cluster size and capacity: 2 CPU and 2GB of RAM. In general, this is sufficient to run up to six scans in parallel.
+* Scan performance may vary according to the workload, or the number of scans running in parallel. To improve performance for larger workloads, consider:
+  * fine-tuning the cluster size using the `resources` parameter for the `agent-orchestrator` and `soda.scanlauncher.resources` for the `scan-launcher`. Adding more resources to the `scan-launcher` can improve scan times by as much as 30%.
+  * adding more nodes to the node group; see AWS documentation for <a href="https://eksctl.io/usage/nodegroup-managed/#scaling-managed-nodegroups" target="_blank">Scaling Managed Nodegroups</a>.
+  * adding a cluster auto-scaler to your Kubernetes cluster; see AWS documentation for <a href="https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html" target="_blank">Autoscaling</a>(for AWS see )
+* Be aware that allocating too many resources may be costly relative to the small benefit of improved scan times.
 
 <!--
 ## Create an EKS cluster
@@ -545,6 +562,7 @@ These deployment instructions offer guidance for setting up an Azure Kubernetes 
 [Deployment overview](#deployment-overview-2)<br />
 [Compatibility](#compatibility-2)<br />
 [Prerequisites](#prerequisites-2)<br />
+[System requirements](#system-requirements-2)<br />
 [Deploy an agent](#deploy-an-agent-2)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only - regular cluster](#deploy-using-cli-only---regular-cluster)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only - virtual cluster](#deploy-using-cli-only---virtual-cluster)<br />
@@ -576,6 +594,12 @@ You can deploy a Soda Agent to connect with the following data sources:
 * You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have already installed the Azure CLI tool, you can install kubectl using the following command: `az aks install-cli`. <br /> 
 Run `kubectl version --output=yaml` to check the version of an existing install. 
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
+
+### System requirements
+
+* Kubernetes cluster size and capacity: 2 CPU and 2GB of RAM. In general, this is sufficient to run up to six scans in parallel.
+* Scan performance may vary according to the workload, or the number of scans running in parallel. To improve performance for larger workloads, consider fine-tuning the cluster size using the `resources` parameter for the `agent-orchestrator` and `soda.scanlauncher.resources` for the `scan-launcher`. Adding more resources to the `scan-launcher` can improve scan times by as much as 30%.
+* Be aware that allocating too many resources may be costly relative to the small benefit of improved scan times.
 
 <!--
 ## Create an AKS cluster
@@ -986,6 +1010,7 @@ These deployment instructions offer guidance for setting up a Google Kubernetes 
 [Deployment overview](#deployment-overview-3)<br />
 [Compatibility](#compatibility-3)<br />
 [Prerequisites](#prerequisites-3)<br />
+[System requirements](#system-requirements-3)<br />
 [Deploy an agent](#deploy-an-agent-3)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only](#deploy-using-cli-only-2)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file-3)<br />
@@ -1017,6 +1042,12 @@ You can deploy a Soda Agent to connect with the following data sources:
   * Consider using the following command to learn a few basic glcoud commands: `gcloud cheat-sheet`.
 * You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. With Docker running, use the command `kubectl version --output=yaml` to check the version of an existing install.
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
+
+### System requirements
+
+* Kubernetes cluster size and capacity: 2 CPU and 2GB of RAM. In general, this is sufficient to run up to six scans in parallel.
+* Scan performance may vary according to the workload, or the number of scans running in parallel. To improve performance for larger workloads, consider fine-tuning the cluster size using the `resources` parameter for the `agent-orchestrator` and `soda.scanlauncher.resources` for the `scan-launcher`. Adding more resources to the `scan-launcher` can improve scan times by as much as 30%.
+* Be aware that allocating too many resources may be costly relative to the small benefit of improved scan times.
 
 <!--
 ## Create a GKE Autopilot cluster

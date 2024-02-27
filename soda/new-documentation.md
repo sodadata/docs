@@ -11,6 +11,7 @@ parent: Learning resources
 
 #### February 29, 2024
 * Following improvements and changes to the self-hosted Soda Agent 1.0.0, removed the documented details for including idle replicas and polling intervals in a cluster that aimed to improve scan times. Also, added release notes to inform existing Soda Agent users about changes to parameter configuration with 1.0.0 and advice for optimal performance in Amazon EKS using managed node groups instead of Fargate profiles. See [Soda Agent release notes]({% link release-notes/soda-agent.md %}#upgrade-to-100) for upgrade details.
+* Added details for [system requirements]({% link soda-agent/deploy.md %}#system-requirements) for deploying a Soda Agent in a Kubernetes cluster.
 
 #### February 26, 2024
 * Added [release notes]({% link release-notes/soda-agent.md %}) documentation for Soda Agent 0.9.1, which maps to Soda Library 1.3.2.
