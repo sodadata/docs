@@ -37,7 +37,7 @@ Once your organization enables SSO for all Soda Cloud users, Soda Cloud blocks a
 
 ## Add Soda Cloud to Azure AD
 
-1. Email <a href="mailto:support@soda.io">support@soda.io</a> to request SSO set-up for Soda Cloud and provide your Soda Cloud organization identifier, accessible via **your avatar** > **Organization Settings**, in the **Organization** tab. <br />Soda Support sends you the URL that you need to configure the set up with your identity provider.
+1. Email <a href="mailto:support@soda.io">support@soda.io</a> to request SSO set-up for Soda Cloud and provide your Soda Cloud organization identifier, accessible via **your avatar** > **Organization Settings**, in the **Organization** tab. <br />Soda Support sends you the `samlUrl` that you need to configure the set up with your identity provider.
 2. As a user with sufficient privileges in your organization's Azure AD account, sign in through <a href="http://portal.azure.com" target="_blank">portal.azure.com<a/>, then navigate to **Enterprise applications**. Click **New application**.
 3. Click **Create your own application**.
 4. In the right pane that appears, provide a name for your app, such as Soda Cloud, then select the **(Non-gallery)** option. Click **Create**.
@@ -49,7 +49,7 @@ Once your organization enables SSO for all Soda Cloud users, Soda Cloud blocks a
 <br />
 <br />
 7. In the **Basic SAML Configuration** panel, there are two fields to populate: 
-* **Identifier** (your Soda Cloud organization identifier)
+* **Identifier (Entity ID)**, which is the value of `samlUrl` from step 1.
 * **Reply URL** <br />
 The values for these fields are unique to your organization and are provided to you by Soda and they follow this pattern: `https://cloud.soda.io/sso/<short-name>/saml`.
 8. Click **Save**, then close the confirmation message pop-up.

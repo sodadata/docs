@@ -44,36 +44,36 @@ As a step in the **Get started roadmap**, this guide offers instructions to sche
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
-### Set a scan schedule in a no-code check
+### Set a scan definition in a no-code check
 *Requires Soda Agent*
 
-When you create a no-code check in Soda Cloud, one of the required fields asks that you associate the check with an existing scan schedule, or that you create a new scan schedule.
+When you create a no-code check in Soda Cloud, one of the required fields asks that you associate the check with an existing scan definition, or that you create a new scan definition.
 
-If you wish to change a no-code check's existing scan schedule:
+If you wish to change a no-code check's existing scan definition:
 1. As an Admin, or Manager or Editor of a dataset in which the no-code check exists, navigate to the dataset.
 2. From the dataset's page, locate the check you wish to adjust, and click the stacked dots at right, then select **Edit Check**. You can only edit a check via the no-code interface if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
-3. Adjust the value in the **Schedule** field as needed, then save. Soda executes the check during the next scan according to the schedule you selected.
+3. Adjust the value in the **Add to Scan Definition** field as needed, then save. Soda executes the check during the next scan according to the definition you selected.
 
 If you wish to schedule a *new* scan to execute a no-code check more or less frequently, or at a different time of day:
 1. From the dataset's page, locate the check you wish to adjust and click the stacked dots at right, then select **Edit Check**. You can only edit a check via the no-code interface if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
-2. Use the dropdown in the **Schedule** field to access the **Create a New Schedule** link. 
-3. Fill out the form to define your new schedule, then save it. Save the change to your no-code check. Soda executes the check during the next scan according to your new schedule.
+2. Use the dropdown in the **Add to Scan Definition** field to access the **create a new Scan Definition** link. 
+3. Fill out the form to define your new scan definition, then save it. Save the change to your no-code check. Soda executes the check during the next scan according to your new definition.
 
-### Set a scan schedule in an agreement
+### Set a scan definition in an agreement
 *Requires Soda Agent*
 
 {% include banner-agreements.md %}
 
-When you create a Soda Agreement in Soda Cloud, the last step in the flow demands that you select a **scan schedule**. The scan schedule indicates which Soda Agent to use to execute the scan, on which data source, and when. Effectively, a scan schedule defines the what, when, and where to run a scheduled scan.
+When you create a Soda Agreement in Soda Cloud, the last step in the flow demands that you select a **scan definition**. The scan definition indicates which Soda Agent to use to execute the scan, on which data source, and when. Effectively, a scan definition defines the what, when, and where to run a scheduled scan.
 
-If you wish to change an agreement's existing scan schedule:
+If you wish to change an agreement's existing scan definition:
 1. Navigate to **Agreements**, then click the stacked dots next to the agreement you wish to change and select **Edit Agreement**.
-2. In the **Set a Scan Schedule** tab, then use the dropdown menu to select a different scan schedule.
+2. In the **Set a Scan schedule** tab, then use the dropdown menu to select a different scan definition.
 3. **Save** your change. The agreement edit triggers a new stakeholder approval request to all stakeholders. Your revised agreement *does not run again* until all stakehoders have approved it.
 
 If you wish to schedule a *new* scan to execute the checks in an agreement more or less frequently, or at a different time of day:
 1. Navigate to **Agreements**, then click the stacked dots next to the agreement you wish to change and select **Edit Agreement**.
-2. In the **Set a Scan Schedule** tab, then click the **new Scan Schedule** link and populate the fields as in the example below.
+2. In the **Set a Scan schedule** tab, then click the **new Scan Definition** link and populate the fields as in the example below.
 3. **Save** your change. The agreement edit triggers a new stakeholder approval request to all stakeholders. Your revised agreement *does not run again* until all stakehoders have approved it.
 
 ![new-scan-sched](/assets/images/new-scan-sched.png){:height="600px" width="600px"}
@@ -101,11 +101,11 @@ If you wish to run a scan immediately to see the scan results for a no-code chec
 2. In the table of checks, locate the check you wish to execute and click the stacked dots, then select **Execute Check**. Alternatively, click the check and in the check's page, click **Execute**. You can only execute an individual check if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
 3. Soda executes *only* your check.
 
-You can also run and ad hoc scan to execute all checks associated with a scan schedule. 
+You can also run and ad hoc scan to execute all checks associated with a scan definition. 
 
 1. In Soda Cloud, navigate to Scans.
-2. In the list of Scans, click the one that is associated with the checks you wish to execute. 
-3. In the scan schedule page, click **Run Scan** to immediately execute all checks that use this scan schedule.
+2. In the list of scan definitions, click the one that is associated with the checks you wish to execute. 
+3. In the scan definition page, click **Run Scan** to immediately execute all checks that use this scan definition.
 
 ### Run a scan in an agreement
 *Requires a Soda Agent*
@@ -421,7 +421,7 @@ See [Manage scheduled scans]({% link soda-cloud/scan-mgmt.md %}) for instruction
 
 Alternatively, you can access the scan logs from within an agreement.
 
-1. To examine a detailed scan log of the lastest scheduled scan for an agreement, navigate to **Agreements**, then click to select an agreement.
+1. To examine a detailed scan log of the lastest scan for an agreement, navigate to **Agreements**, then click to select an agreement.
 2. In the **Agreement** dashboard, click **See results** in the **Last scan** tile, then click the **Scan Logs** tabs.
 
 ![scan-logs](/assets/images/scan-logs.png){:height="550px" width="550px"}

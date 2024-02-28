@@ -9,6 +9,13 @@ parent: Learning resources
 
 <br />
 
+#### February 28, 2024
+* Added notation for opting out of [usage statistics]({% link soda-library/usage-stats.md %}) with a Soda Agent.
+* Added notation that [Group By checks]({% link soda-cl/group-by.md %}#define-a-group-by-configuration) support a maximum of 1000 groups.
+* Changed instances of **scheduled scan** and **scan schedule** to **scan definition** to match the Soda Cloud user interface.
+* Clarified the support for [casting columns]({% link soda-cl/freshness.md %}#details-and-limitations) when using a freshness check.
+* Clarified the Basic SAML Configuration values to provide during SSO integration with [Azure AD]({% link soda-cloud/sso.md %}#add-soda-cloud-to-azure-ad).
+
 #### February 26, 2024
 * Added [release notes]({% link release-notes/soda-agent.md %}) documentation for Soda Agent 0.9.1, which maps to Soda Library 1.3.2.
 
