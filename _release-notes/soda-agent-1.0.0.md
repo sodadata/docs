@@ -15,8 +15,8 @@ This release includes several key changes to the way the Soda Agent works. If yo
 * Soda Agent 1.0.0 removes idle mode in the `scan-launcher`. The agent now starts a separate job for each scan, ensuring better concurrency and resource utilization and obviates the need for <a href="https://redis.io/docs/about/" target="_blank">Redis</a>. When you upgrade your agent, be sure to remove the following properties, if you have configured them, as they will not be supported in future releases:
     * `soda.core.idle` 
     * `soda.core.replicas`
-    * `soda.scanlauncher.idle.enabled`
-    * `soda.agent.redis`
+    * `soda.scanlauncher.idle.*`
+    * `soda.agent.redis.*`
     * `externalRedis`
 
 <br />
