@@ -28,7 +28,7 @@ This release includes several key changes to the way the Soda Agent works. If yo
 
 <br />
 
-* Soda Agent 1.0.0 changed default value for `soda.polling.interval` to `5 seconds`.
+* Soda Agent 1.0.0 changed default value for `soda.polling.interval` to `5 seconds`. We do not recommend to change this value. if you have configured it we recommend to unset the value.
 
 <br />
 
