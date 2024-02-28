@@ -3,5 +3,5 @@ In Amazon EKS, Soda Agent 1.0.0 favors manged or self-managed node groups  over 
 2. Check Amazon's recommendations for node size and adapt it for your needs based on volume of scans you anticipate.
 3. [Upgrade to Soda Agent 1.0.0]({% link soda/upgrade.md %}#upgrade-a-soda-agent), configuring the helm chart to *not* use Fargate by:
    - removing the `provider.eks.fargate.enabled` property, or setting the value to `false`
-   - removing the `soda.agent.target` property if it's value was set to `aws-eks`
+   - removing the `soda.agent.target` property
 4. <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#delete-fargate-profile" target="_blank">Remove the Fargate profile(s)</a> in the namespace in which you deployed the Soda Agent so that the agent uses the node group to execute scans.

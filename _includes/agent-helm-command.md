@@ -1,7 +1,6 @@
 {% include code-header.html %}
 ```shell
 helm install soda-agent soda-agent/soda-agent \
-  --set soda.agent.target=azure-aks-virtualnodes \
   --set soda.agent.name=myuniqueagent \
   --set soda.apikey.id=*** \
   --set soda.apikey.secret=**** \
@@ -19,7 +18,6 @@ The `--set` options either override or set some of the values defined in and use
 
 | Parameter key      | Parameter value, description   |
 |-----------------|--------------------------------|
-| `--set soda.agent.target` | (Optional) The cluster the command targets. Use when deploying to `aws-eks` or `azure-aks-virtualnodes`. |
 | `--set soda.agent.name`   | A unique name for your Soda Agent. Choose any name you wish, as long as it is unique in your Soda Cloud account. |
 | `--set soda.apikey.id`    | With the apikey.secret, this connects the Soda Agent to your Soda Cloud account. Use the value you copied from the dialog box in Soda Cloud when adding a new agent. You can use a values.yml file to pass this value to the cluster instead of exposing it here.|
 | `--set soda.apikey.secret`    | With the apikey.id, this connects the Soda Agent to your Soda Cloud account. Use the value you copied from the dialog box in Soda Cloud when adding a new agent. You can use a values.yml file to pass this value to the cluster instead of exposing it here.|

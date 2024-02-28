@@ -870,7 +870,6 @@ namespace/soda-agent created
 * (Optional) Specify the leve of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
 ```shell
 helm install soda-agent soda-agent/soda-agent \
-    --set soda.agent.target=azure-aks-virtualnodes \ 
     --set soda.agent.name=myuniqueagent \
     # Use https://cloud.us.soda.io for US region; use https://cloud.soda.io for EU region
     --set soda.cloud.endpoint=https://cloud.soda.io \
