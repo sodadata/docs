@@ -565,7 +565,6 @@ These deployment instructions offer guidance for setting up an Azure Kubernetes 
 [System requirements](#system-requirements-2)<br />
 [Deploy an agent](#deploy-an-agent-2)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only - regular cluster](#deploy-using-cli-only---regular-cluster)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only - virtual cluster](#deploy-using-cli-only---virtual-cluster)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file-2)<br />
 [About the `helm install` command](#about-the-helm-install-command-2)<br />
 [Decommission the Soda Agent and the AKS cluster](#decommission-the-soda-agent-and-the-aks-cluster)<br />
@@ -791,7 +790,6 @@ The following table outlines the ways you can install the Helm chart to deploy a
 | Method | Description | When to use |
 |--------|-------------|-------------|
 | [CLI only - regular cluster](#deploy-using-cli-only---regular-cluster) | Install the Helm chart via CLI by providing values directly in the install command. | Use this as a straight-forward way of deploying an agent on a cluster. | 
-| [CLI only - virtual cluster](#deploy-using-cli-only---virtual-cluster) | Install the Helm chart via CLI by providing values directly in the install command. | Use this as a straight-forward way of deploying an agent on a virtual cluster. | 
 | [Use a values YAML file](#deploy-using-a-values-yaml-file-2) | Install the Helm chart via CLI by providing values in a values YAML file. | Use this as a way of deploying an agent on a cluster while keeping sensitive values secure. <br /> - provide sensitive API key values in this local file  or in an external secrets manager<br /> - store data source login credentials as environment variables in this local file; Soda needs access to the credentials to be able to connect to your data source to run scans of your data. See: [Soda Agent extras]({% link soda-agent/secrets.md %}).|
 
 
@@ -845,9 +843,8 @@ If you do no see the agent listed in Soda Cloud, use the following command to re
 kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
 ```
 
-<br /> 
 
-#### Deploy using CLI only - virtual cluster
+<!--#### Deploy using CLI only - virtual cluster
 
 1. (Optional) You have familiarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
 2. Create or navigate to an existing Kubernetes virtual cluster in your environment in which you can deploy the Soda Agent helm chart.
@@ -902,7 +899,7 @@ Be aware that this may take several minutes to appear in your list of Soda Agent
 If you do no see the agent listed in Soda Cloud, use the following command to review status and investigate the logs.
 ```shell
 kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
-```
+```-->
 
 <br /> 
 
@@ -1034,7 +1031,7 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 ### Prerequisites
 
-* You have a Google Cloud Platform (GCP) account and the necessary permissions to enable you to create, or gain access to an existing Google Kubernetes Engine (GKE) cluster in Autopilot mode in your region.
+* You have a Google Cloud Platform (GCP) account and the necessary permissions to enable you to create, or gain access to an existing Google Kubernetes Engine (GKE) cluster in your region.
 * You have installed the <a href="https://cloud.google.com/sdk/docs/install" target="_blank"> gcloud CLI tool</a>. Use the command `glcoud version` to verify the version of an existing install. 
   * If you have already installed the gcloud CLI, use the following commands to login and verify your configuration settings, respectively: `gcloud auth login` `gcloud config list`
   * If you are installing the gcloud CLI for the first time, be sure to complete <a href="https://cloud.google.com/sdk/docs/install" target="_blank"> all the steps</a> in the installation to properly install and configure the setup.
