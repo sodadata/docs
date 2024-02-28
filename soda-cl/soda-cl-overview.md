@@ -107,14 +107,14 @@ SodaCL includes over 25 built-in metrics that you can use to write checks, a sub
 
 1. As an Admin, or Manager or Editor of a dataset to which you wish to add checks, navigate to the dataset, then click **Add Check**. You can only create a check via the no-code interface for datasets in data sources connected via a Soda Agent. 
 2. Select the type of check you wish to create, then complete the form to create the check. Refer to table below for guidance on the values to enter.
-3. Optionally, test your check, then save. Soda executes the check during the next scan according to the schedule you selected, or whenever a Soda Cloud user runs the schedule scan manually.
+3. Optionally, test your check, then save. Soda executes the check during the next scan according to the scan definition you selected, or whenever a Soda Cloud user runs the schedule scan manually.
 4. Optionally, you can execute your check immediately. From the dataset's page, locate the check you just created and click the stacked dots, then select **Execute Check**. Soda executes *only* your check.
 
 | Field or Label  | Guidance |
 | --------------- | -------- |
 | Dataset         | Select the dataset to which you want the check to apply. |
 | Check Name      | Provide a unique name for your check. |
-| Schedule        | Select the scan schedule to which you wish to add your check. Optionally, you can click **Create a New Schedule** if you want Soda to execute the check more or less frequently, or at a different time of day than existing schedules dictate. See [Manage scheduled scans]({% link soda-cloud/scan-mgmt.md %}) for details. |
+| Add to Scan Definition | Select the scan definition to which you wish to add your check. Optionally, you can click **create a new Scan Definition** if you want Soda to execute the check more or less frequently, or at a different time of day than existing scan definitions dictate. See [Manage scheduled scans]({% link soda-cloud/scan-mgmt.md %}) for details. |
 | Filter fields   | Optionally, add an [in-check filter]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) to apply conditions that specify a portion of the data against which Soda executes the check. |
 | Define Metric/Values/Column/SQL | As each metric or check requires different values, refer to [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for detailed information about each metric or check. |
 | Alert Level | Select the check result state(s) for which you wish to be notified: Fail, Warn, or Fail and Warn. See [View scan results]({% link soda-library/run-a-scan.md %}#view-scan-results) for details. <br />By default, alert notifications for your check go to the **Dataset Owner**. See [Define alert notification rules](#define-alert-notification-rules) to set up more alert notifications. |
@@ -135,7 +135,7 @@ By default, alert notifications for your no-code check go to the **Dataset Owner
 
 1. As an Admin, or Manager or Editor of a dataset in which the no-code check exists, navigate to the dataset.
 2. To the right of the check you wish to edit, click the stacked dots, then select **Edit Check**. You can only edit a check via the no-code interface if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
-3. Adjust the check as needed, test your check, then save. Soda executes the check during the next scan according to the schedule you selected.
+3. Adjust the check as needed, test your check, then save. Soda executes the check during the next scan according to the scan definition you selected.
 4. Optionally, you can execute your check immediately. Locate the check you just edited and click the stacked dots, then select **Execute Check**. Soda executes *only* your check.
 
 
@@ -207,15 +207,15 @@ By default, Soda Cloud includes an out-of-the-box email notification to all the 
 
 <br />
 
-#### 5. Set a Scan Schedule
+#### 5. Set a Scan Definition
 
 After you have set up a new agreement, Soda Cloud sends approval requests to the stakeholders you identified in step 3. When stakeholders approve or reject your agreement, Soda Cloud sends you an email notification.
 
-Regardless of the approval status of the agreement, however, Soda Cloud begins running scans of your data according to the scan schedule you set. Soda Cloud sends notifications after each scan according to the settings you defined in step 4. 
+Regardless of the approval status of the agreement, however, Soda Cloud begins running scans of your data according to the scan definition you set. Soda Cloud sends notifications after each scan according to the settings you defined in step 4. 
 
-(Optional) You can click the link provided to create a new scan schedule if you wish to run a scan to execute the checks in this agreement more or less frequently, or a different time of day, relative to the default scan schedule for the data source. 
+(Optional) You can click the link provided to create a new scan definition if you wish to run a scan to execute the checks in this agreement more or less frequently, or a different time of day, relative to the default scan definition for the data source. 
 
-To review existing scan schedules, navigate to the **Scans** menu item. 
+To review existing scan definitions, navigate to the **Scans** menu item. 
 
 <br />
 

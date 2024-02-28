@@ -76,7 +76,7 @@ When introducing a NOW variable into a freshness check, you must use the depreca
 
 
 ### Details and limitations
-* Out-of-the-box, freshness checks *only* work with columns that contain data types TIMESTAMP or DATE. However, you can apply a freshness check to TEXT type data using the following syntax to cast the column: 
+* Out-of-the-box, freshness checks *only* work with columns that contain data types TIMESTAMP or DATE. However, though it does not universally apply to all data sources, you *may* be able to apply a freshness check to TEXT type data using the following syntax to cast the column: 
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
