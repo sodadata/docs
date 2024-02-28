@@ -38,7 +38,7 @@ This release includes several key changes to the way the Soda Agent works. If yo
 
 <br />
 
-* {% include agent-fargate.md %}
+* {% include agent-node-groups.md %}
 
 
 

@@ -146,7 +146,7 @@ helm upgrade soda-agent soda-agent/soda-agent \
 
 Soda Agent 1.0.0 includes several key changes to the way the Soda Agent works. If you already use a Soda Agent, carefully consider the [changes that Soda Agent 1.0.0 introduces]({% link release-notes/soda-agent.md %}#upgrade-to-100) and make appropriate changes to your configured parameters. 
 
-{% include agent-fargate.md %}
+{% include agent-node-groups.md %}
 
 ## Upgrade Soda Library
 
