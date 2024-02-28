@@ -14,7 +14,7 @@ redirect_from:
 [Migrate from self-hosted to Soda-hosted agent](#migrate-a-data-source-from-a-self-hosted-to-a-soda-hosted-agent)<br />
 [Redeploy a self-hosted Soda Agent](#redeploy-a-self-hosted-soda-agent)<br />
 [Upgrade a self-hosted Soda Agent](#upgrade-a-self-hosted-soda-agent)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Upgrade to Soda Agent 1.0.0 or greater](#upgrade-to-soda-agent-100-or-greater)<br />
+[Upgrade to Soda Agent 1.0.0 or greater](#upgrade-to-soda-agent-100-or-greater)<br />
 [Upgrade a Soda Library](#upgrade-soda-library)<br />
 [Uninstall Soda Library](#uninstall-soda-library)<br />
 [Migrate from Soda Core](#migrate-from-soda-core)<br />
