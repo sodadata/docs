@@ -12,7 +12,7 @@ Access [Soda documentation]({% link soda/upgrade.md %}#upgrade-a-soda-agent) for
 
 This release includes several key changes to the way the Soda Agent works. If you already use a Soda Agent, carefully consider the changes that Soda Agent 1.0.0 introduces and make appropriate changes to your configured parameters.
 
-* Soda Agent 1.0.0 removes idle mode in the `scan-launcher`. The agent now starts a separate job for each scan, ensuring better concurrency and resource utilization and obviates the need for <a href="https://redis.io/docs/about/" target="_blank">Redis</a>. When you upgrade your agent, be sure to remove the following properties, if you have configured them, as they will not be supported in future releases:
+* Soda Agent 1.0.0 removes idle mode in the `scan-launcher`. The new agent version starts a separate job for each scan, ensuring better concurrency and resource utilization and obviates the need for <a href="https://redis.io/docs/about/" target="_blank">Redis</a>. When you upgrade your agent, be sure to remove the following properties, if you have configured them, as they will not be supported in future releases:
     * `soda.core.idle` 
     * `soda.core.replicas`
     * `soda.scanlauncher.idle.*`
@@ -28,7 +28,7 @@ This release includes several key changes to the way the Soda Agent works. If yo
 
 <br />
 
-* Soda Agent 1.0.0 changed default value for `soda.polling.interval` to `5 seconds`. We do not recommend to change this value. if you have configured it we recommend to unset the value.
+* Soda Agent 1.0.0 changes the default value for `soda.polling.interval` to `5 seconds`. Do not change this value. If you have already configured a custom polling interval, remove the setting.
 
 <br />
 
