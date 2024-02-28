@@ -1,5 +1,7 @@
 In Amazon EKS, Soda Agent 1.0.0 favors managed node groups over Fargate profiles. Though this version still functions in Fargate-built clusters, it leads to slower scan times as Fargate must start a new container for each scan. To migrate your agent to a managed node group: 
 1. Add a <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html" target="_blank">managed node group</a> to your Kubernetes cluster.
 2. Check Amazon's recommendations for node size and adapt it for your needs based on volume of scans you anticipate.
-3. [Upgrade to Soda Agent 1.0.0]({% link soda/upgrade.md %}#upgrade-a-soda-agent), configuring the helm chart to *not* use Fargate by removing the `provider.eks.fargate.enabled` property, or setting the value to `false`.
+3. [Upgrade to Soda Agent 1.0.0]({% link soda/upgrade.md %}#upgrade-a-soda-agent), configuring the helm chart to *not* use Fargate by:
+   - removing the `provider.eks.fargate.enabled` property, or setting the value to `false`
+   - removing the `soda.agent.target` property if it's value was set to `aws-eks`
 4. <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#delete-fargate-profile" target="_blank">Remove the Fargate profile(s)</a> in the namespace in which you deployed the Soda Agent so that the agent uses the node group to execute scans.
