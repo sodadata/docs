@@ -109,6 +109,17 @@ var stoplightElementsLoaded = function stoplightElementsLoaded() {
     });
   });
 
+  // replace Username and Password with API Key ID and API Key Secret for Public Cloud API
+  if (location.href.indexOf('public-cloud-api') > -1) {
+    document.querySelectorAll('#main-content div[data-test=auth-try-it-row] div').forEach(function(elem) {
+      if (elem.innerHTML === "Username") {
+        elem.innerHTML = "API Key ID";
+      } else if (elem.innerHTML === "Password") {
+        elem.innerHTML = "API Key Secret";
+      }
+    });
+  }
+
   document.querySelectorAll('#main-content div[data-test=auth-try-it-row] div').forEach(function(elem) {
     if (elem.innerHTML === "Username") {
       elem.innerHTML = "API Key ID";
@@ -123,7 +134,7 @@ var stoplightElementsLoaded = function stoplightElementsLoaded() {
       if (elem.parentNode.classList.contains('reporting-api-open-mobile-menu')) {
         e.preventDefault();
         e.stopPropagation();
-        
+
         elem.parentNode.classList.remove('reporting-api-open-mobile-menu');
       }
     });
