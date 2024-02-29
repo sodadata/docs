@@ -36,10 +36,12 @@ As a step in the **Get started roadmap**, this guide offers instructions to sche
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <input class="radio" id="three" name="group" type="radio">
+  <input class="radio" id="four" name="group" type="radio">
   <div class="tabs">
   <label class="tab" id="one-tab" for="one">Schedule a scan</label>
   <label class="tab" id="two-tab" for="two">Run a scan</label>
   <label class="tab" id="three-tab" for="three">Program a scan</label>
+  <label class="tab" id="four-tab" for="four">Remotely run a scan</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
@@ -84,7 +86,6 @@ If you wish to schedule a *new* scan to execute the checks in an agreement more 
 [Run a scan for a no-code check](#run-a-scan-for-a-no-code-check)<br />
 [Run a scan in an agreement](#run-a-scan-in-an-agreement)<br />
 [Run a scan from the command-line](#run-a-scan-from-the-command-line)<br />
-[Trigger a scan via API](#trigger-a-scan-via-api)<br />
 [Input scan-time variables](#input-scan-time-variables)<br />
 [Prevent pushing scan results to Soda Cloud](#prevent-pushing-scan-results-to-soda-cloud)
 [Configure the same scan to run in multiple environments](#configure-the-same-scan-to-run-in-multiple-environments)<br />
@@ -147,18 +148,7 @@ soda scan -d postgres_retail -c configuration.yml checks_stats1.yml checks_stats
 <br />
 Use the soda `soda scan --help` command to review options you can include to customize the scan. See also: [Add scan options](#add-scan-options).
 
-### Trigger a scan via API
-*Requires Soda Agent*
-
-You can programmatically initiate a scan in Soda Cloud using the Soda Cloud API. 
-
-If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) rights in your Soda Cloud account, you can use the API to:
-* retrieve information about checks and datasets in your Soda Cloud account 
-* execute scans
-* retrieve information about the state of a scan during execution
-* access the scan logs of an executed scan.
-
-Access the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) documentation to get details about how to programmatically get info and execute Soda Cloud scans.
+<br />
 
 ### Input scan-time variables
 *Requires Soda Library*
@@ -365,6 +355,134 @@ scan.has_checks_warn_or_fail()
 scan.get_checks_warn_or_fail_text()
 scan.get_all_checks_text()
 ```
+
+  </div>
+  <div class="panel" id="four-panel" markdown="1">
+
+[Trigger a scan via API](#trigger-a-scan-via-api)<br />
+[Run a Soda Cloud scan from the command-line](#run-a-soda-cloud-scan-from-the-command-line)<br />
+<br />
+
+### Trigger a scan via API
+*Requires Soda Agent*
+
+You can programmatically initiate a scan your team defined in Soda Cloud using the Soda Cloud API. 
+
+If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) rights in your Soda Cloud account, you can use the API to:
+* retrieve information about checks and datasets in your Soda Cloud account 
+* execute scans
+* retrieve information about the state of a scan during execution
+* access the scan logs of an executed scan
+
+Access the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) documentation to get details about how to programmatically get info and execute Soda Cloud scans.
+
+<br />
+
+### Run a Soda Cloud scan from the command-line
+*Requires Soda Agent*<br />
+*Requires Soda Library*
+
+You can initiate a scan your team defined in Soda Cloud using the Soda Library CLI.
+
+If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) rights in your Soda Cloud account, you can use Soda Library CLI to: 
+* execute a remote scan and synchronously receive logs of the scan execution result
+* execute a remote scan and asynchronously retrieve status and logs of the scan during, and after its execution
+
+<br />
+
+To execute a remote scan and synchonously receive scan results:
+1. In Soda Cloud, navigate to **Scans**, then, from the list of scans, click to open the one which you wish to execute remotely.
+2. To retrieve the scan definition ID that you need for the remote scan command, copy the scan definition identifier; see image below.
+![scan-def-id](/assets/images/scan-def-id.png){:height="600px" width="600px"}
+3. Run the following command to execute the Soda Cloud scan remotely, where the value of the `-s` option is the scan definition identifier you copied from the URL.
+```shell
+soda scan -c configuration.yml --remote -s paxstats_default_scan
+```
+4. The Soda Agent that executes your scan definition proceeds to run the scan and returns the result of the scan in the CLI output. A truncated example follows. <br />Notice that the version of Soda Library that you use to execute the remote scan command *may be different* from the version of Soda Library that is deployed as an Agent in your environment and which performs the actual scan execution. This does not present any issues for remote scan execution.
+```shell
+Soda Library 1.3.x
+Soda Core 3.0.x
+By downloading and using Soda Library, you agree to Sodas Terms & Conditions (https://go.soda.io/t&c) and Privacy Policy (https://go.soda.io/privacy). 
+Remote scan sync mode
+Remote Scan started.
+Status URL: https://dev.sodadata.io/api/v1/scans/14b38f00-bc69-47dc-801b-676e676e676
+Waiting for remote scan to complete.
+Remote scan completed.
+Fetching scan logs.
+Scan logs fetched.
+Soda Library 1.2.4
+Soda Core 3.0.47
+Reading configuration file "datasources/soda_cloud_configuration.yml"
+Reading configuration file "datasources/configuration_paxstats.yml"
+...
+Scan summary:
+48/48 queries OK
+  paxstats.discover-tables-find-tables-and-row-counts [OK] 0:00:00.156126
+  ...
+2/2 checks PASSED: 
+    paxstats in paxstats
+      anomaly score for row_count < default [scan_definitions/paxstats_default_scan/automated_monitoring_paxstats.yml] [PASSED]
+        check_value: None
+      Schema Check [scan_definitions/paxstats_default_scan/automated_monitoring_paxstats.yml] [PASSED]
+        schema_measured = [id integer, index integer, activity_period character varying, operating_airline character varying, ...]
+All is good. No failures. No warnings. No errors.
+Sending results to Soda Cloud
+Soda Cloud Trace: 3015***
+```
+5. In your Soda Cloud account, refresh the scan definition page to display the results of the scan you ran remotely. 
+
+<br />
+
+To execute a remote scan and asynchonously retrieve the status and results of the scan:
+1. In Soda Cloud, navigate to **Scans**, then, from the list of scans, click to open the one which you wish to execute remotely.
+2. To retrieve the scan definition ID that you need for the remote scan command, copy the scan definition identifier; see image below. 
+![scan-def-id](/assets/images/scan-def-id.png){:height="600px" width="600px"}
+3. Run the following command to execute the Soda Cloud scan remotely, where the value of the `-s` option is the scan definition identifier you copied from the URL.
+```shell
+soda scan -c configuration.yml --remote -s paxstats_default_scan -rm async
+```
+4. The Soda Agent that executes your scan definition proceeds to run the scan. The agent does not automatically return scan status or logs to the CLI output. Instead, it returns a unique value for `Status URL`. Copy the last part of the URL that identifies the scan you started.
+```shell
+[10:38:36] Soda Library 1.3.3
+[10:38:36] Soda Core 3.0.47
+[10:38:36] By downloading and using Soda Library, you agree to Sodas Terms & Conditions (https://go.soda.io/t&c) and Privacy Policy (https://go.soda.io/privacy). 
+[10:38:38] Remote scan async mode
+[10:38:39] Remote Scan started.
+[10:38:39] Status URL: https://cloud.soda.io/api/v1/scans/4651ba64-04ae-4b21-9fad-552314552314
+[10:38:39] Remote scan started in async mode.
+```
+5. To retrieve the status of the scan as it executes and completes, use the following command, pasting the value you copied from the `Status URL` as the scan identifier. Refer to the [Soda Cloud API documentation](https://docs.soda.io/api-docs/public-cloud-api-v1.html#/operations/GET/api/v1/scans/{scanId}) for the possible status messages the Soda Agent can return. <br />Notice that the version of Soda Library that you use to execute the remote scan command *may be different* from the version of Soda Library that is deployed as an Agent in your environment and which performs the actual scan execution. This does not present any issues for remote scan execution.
+```shell
+soda scan-status -c configuration.yml -s 4651ba64-04ae-4b21-9fad-552314552314
+```
+Truncated output:
+```shell
+Soda Library 1.3.3
+Soda Core 3.0.47
+Retrieving state of the scan '4651ba64-04ae-4b21-9fad-552314552314'.
+Current state of the scan: 'completed'.
+Fetching scan logs.
+Parsing scan logs.
+Soda Library 1.2.4
+Soda Core 3.0.47
+Reading configuration file "datasources/soda_cloud_configuration.yml"
+Reading configuration file "datasources/configuration_paxstats.yml"
+...
+Scan summary:
+48/48 queries OK
+  paxstats.discover-tables-find-tables-and-row-counts [OK] 0:00:00.156002
+  ...
+2/2 checks PASSED: 
+    paxstats in paxstats
+      anomaly score for row_count < default [scan_definitions/paxstats_default_scan/automated_monitoring_paxstats.yml] [PASSED]
+        check_value: None
+      Schema Check [scan_definitions/paxstats_default_scan/automated_monitoring_paxstats.yml] [PASSED]
+        schema_measured = [id integer, index integer, activity_period character varying, ...]
+All is good. No failures. No warnings. No errors.
+Sending results to Soda Cloud
+Soda Cloud Trace: 6974126***
+```
+6. In your Soda Cloud account, refresh the scan definition page to display the results of the scan you ran remotely.
 
   </div>
 
