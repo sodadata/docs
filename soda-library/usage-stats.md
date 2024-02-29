@@ -21,6 +21,8 @@ Soda Library collects usage statistics by default. You can opt-out from sending 
 send_anonymous_usage_stats: false
 ```
 
+Note, if you use a Soda Agent you deployed in a Kubernetes cluster, you *cannot* opt out of sending usage statistics.
+
 ## Go further
 
 * Learn [How Soda works]({% link soda-library/how-library-works.md %}).
