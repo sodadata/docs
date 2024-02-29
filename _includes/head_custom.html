@@ -109,7 +109,7 @@ var stoplightElementsLoaded = function stoplightElementsLoaded() {
     });
   });
 
-  // replace Username and Password with API Key ID and API Key Secret for Public Cloud API
+  /* replace Username and Password with API Key ID and API Key Secret for Public Cloud API */
   if (location.href.indexOf('public-cloud-api') > -1) {
     document.querySelectorAll('#main-content div[data-test=auth-try-it-row] div').forEach(function(elem) {
       if (elem.innerHTML === "Username") {
