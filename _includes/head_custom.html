@@ -109,20 +109,13 @@ var stoplightElementsLoaded = function stoplightElementsLoaded() {
     });
   });
 
-  document.querySelectorAll('#main-content div[data-test=auth-try-it-row] div').forEach(function(elem) {
-    if (elem.innerHTML === "Username") {
-      elem.innerHTML = "API Key ID";
-    } else if (elem.innerHTML === "Password") {
-      elem.innerHTML = "API Key Secret";
-    }
-  });
-
   document.querySelectorAll('#main-content .sl-elements-api .sl-bg-canvas-100.sl-border-r  > .sl-flex.sl-items-center.sl-mb-5.sl-ml-4').forEach(function(elem) {
      console.log('adding click handler to', elem);
     elem.addEventListener('click', function(e) {
       if (elem.parentNode.classList.contains('reporting-api-open-mobile-menu')) {
         e.preventDefault();
         e.stopPropagation();
+
 
         elem.parentNode.classList.remove('reporting-api-open-mobile-menu');
       }
