@@ -93,7 +93,7 @@ Depending on your deployment model, Soda Agent supports connections with the fol
 2. In the **Agents** tab, confirm that you can see a Soda-hosted agent, or the Soda Agent you deployed, and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
 3. Navigate to the **Data Sources** tab, then click **New Data Source** and follow the [guided steps]({% link soda-agent/deploy.md %}#add-a-new-data-source) to:
-* identify the new data source and its default scan schedule
+* identify the new data source and its default scan definition
 * provide [connection configuration]({% link soda/connect-athena.md %}) details for the data source, and test the connection to the data source
 * profile the datasets in the data source to gather basic metadata about the contents of each
 * identify the datasets to which you wish to apply automated monitoring for anomalies and schema changes
@@ -131,7 +131,7 @@ While waiting for your colleagues to accept your Soda invitation, get a head sta
 ![new-discussion](/assets/images/new-discussion.png){:height="500px" width="500px"}
 3. Kick off the data quality discussion with your colleagues: begin with **Propose Check**, then use the no-code check interface to select from the list available checks for the dataset. Most common baseline data quality checks include: missing, invalid, duplicate, and freshness. Refer to [Define SodaCL checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) for more detail on how to leverage no-code checks.
 4. After filling in the blanks and testing the check, **Propose Check** to add the SodaCL check to the discussion. When your colleagues join and review the Discussions, they can add comments or propose new or different checks to address the data quality issues of this dataset. 
-5. When you and your team agree on the data quality checks to add to the dataset, you, as the data producer, can **Review & Add** the check to a scan schedule for the dataset – either existing or new – so that Soda begins executing the check as per the data source's decfault scan schedule.
+5. When you and your team agree on the data quality checks to add to the dataset, you, as the data producer, can **Review & Add** the check to a scan for the dataset – either existing or new – so that Soda begins executing the check as per the data source's default scan schedule.
 
 
 <br />

@@ -96,7 +96,7 @@ Where the roles and rights described above apply to your organization's Soda Acc
 * agreements
 * datasets
 * data sources
-* scan schedules
+* scan definitions
 * agents
 
 The roles that define who can make changes to resources in Soda Cloud are **Manager**, **Editor**, and **Viewer**. 
@@ -113,14 +113,14 @@ The following table outlines the rights of each role associated with each resour
 | View agreements                                                            |   ✓   |    ✓     |    ✓   |    ✓   |
 | Approve and reject agreements as a stakeholder                             |   ✓   |    ✓     |    ✓   |    ✓   |
 | Create a new agreement                                                     |   ✓   |    ✓     |    ✓   |        |
-| Edit an existing agreement, including adding a new scan schedule           |   ✓   |    ✓     |    ✓   |        |
+| Edit an existing agreement, including adding a new scan definition         |   ✓   |    ✓     |    ✓   |        |
 | Create no-code checks                                                      |   ✓   |    ✓     |    ✓   |        |
 | Add and edit dataset Attributes, such as Description or Tags               |   ✓   |    ✓     |    ✓   |        |
 | Control member access to a dataset and its checks (add or remove access)   |   ✓   |    ✓     |        |        |
 | Change the roles of members with access to a dataset and its checks        |   ✓   |    ✓     |        |        |
 | Add, edit, or delete a data source                                         |   ✓   |          |        |        |
 | Change the owner of a data source                                          |   ✓   |          |        |        |
-| Add, edit, or delete a scan schedule                                       |   ✓   |          |        |        |
+| Add, edit, or delete a scan definition                                     |   ✓   |          |        |        |
 | Run a scan                                                                 |   ✓   |    ✓     |        |        |
 | Add, edit, or delete an agent                                              |   ✓   |          |        |        |
 | Begin or participate in a discussion                                       |   ✓   |    ✓     |    ✓   |    ✓   |
