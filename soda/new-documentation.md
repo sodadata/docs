@@ -10,6 +10,7 @@ parent: Learning resources
 <br />
 
 #### February 29, 2024
+* Included schema checks as available to add as a no-code check to a dataset in a data source that uses a Soda Agent to execute scans.
 * Added instructions for how to run a Soda Cloud-defined scan remotely using the Soda Library CLI. See the **Remotely run a scan** tab in [Scan for data quality]({% link soda-library/run-a-scan.md %}l#scan-for-data-quality).
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.3.4, 1.4.0 and Soda Core 1.3.3.
 

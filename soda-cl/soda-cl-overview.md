@@ -101,14 +101,15 @@ SodaCL includes over 25 built-in metrics that you can use to write checks, a sub
 <table>
   <tr>
     <td>Missing<br /> Validity<br />  Numeric<br /> Duplicate <br /> Row count </td>
-    <td>Freshness<br /> SQL Failed rows<br /> SQL Metric<br ></td>
+    <td>Freshness<br /> Schema <br /> SQL Failed rows<br /> SQL Metric<br >&nbsp;<br /></td>
   </tr>
 </table>
 
 1. As an Admin, or Manager or Editor of a dataset to which you wish to add checks, navigate to the dataset, then click **Add Check**. You can only create a check via the no-code interface for datasets in data sources connected via a Soda Agent. 
 2. Select the type of check you wish to create, then complete the form to create the check. Refer to table below for guidance on the values to enter.
-3. Optionally, test your check, then save. Soda executes the check during the next scan according to the scan definition you selected, or whenever a Soda Cloud user runs the schedule scan manually.
-4. Optionally, you can execute your check immediately. From the dataset's page, locate the check you just created and click the stacked dots, then select **Execute Check**. Soda executes *only* your check.
+3. Optionally, **Test** your check, then click **Propose check** to initiate a **[Discussion]({% link soda/glossary.md %}#discussion)** with colleagues. Soda executes the check during the next scan according to the schedule you selected, or whenever a Soda Cloud user runs the schedule scan manually. <br />Be aware that a schema check requires a minimum of two measurements before it yields a useful check result because it needs at least one historical measurement of the existing schema against which to compare a new measurement to look for changes. Thus, the first time Soda executes this check, the result is `[NOT EVALUATED]`, indicated by a gray, question mark status icon.
+4. Click **Add Check** to include the new, no-code check in the next scheduled scan of the dataset.
+5. Optionally, you can manually execute your check immediately. From the dataset's page, locate the check you just created and click the stacked dots, then select **Execute Check**. Soda executes *only* your check.
 
 | Field or Label  | Guidance |
 | --------------- | -------- |
