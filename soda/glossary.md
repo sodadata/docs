@@ -52,6 +52,9 @@ A storage location that contains a collection of datasets, such as Snowflake, Am
 ### dataset
 A representation of a tabular data structure with rows and columns. A dataset can take the form of a table in PostgreSQL or Snowflake, a stream, or a DataFrame in a Spark application.
 
+### discussion
+A collaborative messaging and check proposal space that data producers and consumers can use to establish agreed-upon rules for data quality. See: [Begin a discussion and propose checks]({% link soda/quick-start-end-user.md %}#begin-a-discussion-and-propose-checks).
+
 ### incident
 A ticket you create and associate with a failed check result so as to track your team's investigation and resolution of a data quality issue. See [Create and track incidents]({% link soda-cloud/incidents.md %}).
 

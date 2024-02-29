@@ -12,6 +12,9 @@ parent: Learning resources
 #### February 29, 2024
 * Following improvements and changes to the self-hosted Soda Agent 1.0.0, removed the documented details for including idle replicas and polling intervals in a cluster that aimed to improve scan times. Also, added release notes to inform existing Soda Agent users about changes to parameter configuration with 1.0.0 and advice for optimal performance using managed node groups instead of Fargate profiles in Amazon EKS, GCP Autopilot, or AKS Virtual Clusters. See [Soda Agent release notes]({% link release-notes/soda-agent.md %}#upgrade-to-100) for upgrade details.
 * Added details for [system requirements]({% link soda-agent/deploy.md %}#system-requirements) for deploying a Soda Agent in a Kubernetes cluster.
+* Included schema checks as available to add as a no-code check to a dataset in a data source that uses a Soda Agent to execute scans.
+* Added instructions for how to run a Soda Cloud-defined scan remotely using the Soda Library CLI. See the **Remotely run a scan** tab in [Scan for data quality]({% link soda-library/run-a-scan.md %}l#scan-for-data-quality).
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.3.4, 1.4.0 and Soda Core 1.3.3.
 
 #### February 28, 2024
 * Added notation for opting out of [usage statistics]({% link soda-library/usage-stats.md %}) with a Soda Agent.
