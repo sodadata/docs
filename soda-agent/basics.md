@@ -23,14 +23,14 @@ What follows is an extremely abridged introduction to a few basic elements invol
 Both Soda Library and Soda Cloud make use of **Soda Checks Language (SodaCL)** to write checks for data quality. The checks are tests that Soda Library executes when it runs a scan of your data. 
 
 **Soda Agent** is essentially Soda Library functionality that you deploy in a Kubernetes cluster in your own cloud services provider environment. When you deploy an agent, you also deploy two types of workloads in your Kubernetes cluster from a Docker image:
-* a **Soda Agent Orchestrator** which creates Kubernetes Jobs and CronJobs to trigger scheduled scans of data
+* a **Soda Agent Orchestrator** which creates Kubernetes Jobs to trigger scheduled and on-demand scans of data
 * a **Soda Agent Scan Launcher** which wraps around Soda Library, the tool which performs the scan itself 
 
 **Kubernetes** is a system for orchestrating containerized applications; a **Kubernetes cluster** is a set of resources that supports an application deployment. 
 
 You need a Kubernetes cluster in which to deploy the containerized applications that make up the **Soda Agent**. Kubernetes uses the concept of **Secrets** that the Soda Agent Helm chart employs to store connection secrets that you specify as values during the Helm release of the Soda Agent. Depending on your cloud provider, you can arrange to store these Secrets in a specialized storage such as <a href="https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts" target="_blank">Azure Key Vault</a> or <a href="https://docs.aws.amazon.com/kms/latest/developerguide/overview.html" target="_blank">AWS Key Management Service (KMS)</a>. See: [Integrate with a secrets manager]({% link soda-agent/secrets.md %}#Integrate-with-a-secrets-manager). 
 
-The Jobs and CronJobs that the agent creates access these Secrets when they execute. Learn more about <a href="https://www.youtube.com/watch?v=BOj1sgWVXko" target="_blank" >Kubernetes concepts</a>.
+The Jobs that the agent creates access these Secrets when they execute. Learn more about <a href="https://www.youtube.com/watch?v=BOj1sgWVXko" target="_blank" >Kubernetes concepts</a>.
 
 Within a cloud services provider environment is *where* you create your Kubernetes cluster. You can deploy a Soda Agent in any environment in which you can create Kubernetes clusters such as:
 

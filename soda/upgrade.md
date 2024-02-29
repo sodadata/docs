@@ -14,6 +14,7 @@ redirect_from:
 [Migrate from self-hosted to Soda-hosted agent](#migrate-a-data-source-from-a-self-hosted-to-a-soda-hosted-agent)<br />
 [Redeploy a self-hosted Soda Agent](#redeploy-a-self-hosted-soda-agent)<br />
 [Upgrade a self-hosted Soda Agent](#upgrade-a-self-hosted-soda-agent)<br />
+[Upgrade to Soda Agent 1.0.0 or greater](#upgrade-to-soda-agent-100-or-greater)<br />
 [Upgrade a Soda Library](#upgrade-soda-library)<br />
 [Uninstall Soda Library](#uninstall-soda-library)<br />
 [Migrate from Soda Core](#migrate-from-soda-core)<br />
@@ -41,7 +42,7 @@ The **Soda Agent** is a tool that empowers Soda Cloud users to securely access d
 
 When you delete the Soda Agent Helm chart from your cluster, you also delete all the agent resources on your cluster. However, if you wish to redeploy the previously-registered agent (use the same name), you need to specify the agent ID in your override values in your values YAML file.
 
-1. In Soda Cloud, navigate to **your avatar** > **Data Sources** > **Agents** tab.
+1. In Soda Cloud, navigate to **your avatar** > **Agents**.
 2. Click to select the agent you wish to redeploy, then copy the agent ID of the previously-registered agent from the URL.<br /><br />
 For example, in the following URL, the agent ID is the long UUID at the end. `https://cloud.soda.io/agents/842feab3-snip-87eb-06d2813a72c1`.<br /><br />
 Alternatively, if you use the base64 CLI tool, you can run the following command to obtain the agentID.
@@ -140,6 +141,12 @@ OR, if you use a values YAML file,
 helm upgrade soda-agent soda-agent/soda-agent \
    --values values-local.yml --namespace soda-agent
 ```
+
+### Upgrade to Soda Agent 1.0.0 or greater
+
+Soda Agent 1.0.0 includes several key changes to the way the Soda Agent works. If you already use a Soda Agent, carefully consider the [changes that Soda Agent 1.0.0 introduces]({% link release-notes/soda-agent.md %}#upgrade-to-100) and make appropriate changes to your configured parameters. 
+
+{% include agent-node-groups.md %}
 
 ## Upgrade Soda Library
 
