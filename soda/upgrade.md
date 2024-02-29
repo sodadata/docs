@@ -21,7 +21,7 @@ redirect_from:
 
 ## Migrate a data source from a self-hosted to a Soda-hosted agent
 
-If you already use a self-hosted Soda Agent deployed in a Kubernetes cluster to connect to your data source(s), you have the option of migrating a connected data source to a Soda-hosted agent. Though you must reconfigure your data source connection to the new Soda agent, your checks, check history, and scan schedule remain intact.
+If you already use a self-hosted Soda Agent deployed in a Kubernetes cluster to connect to your data source(s), you have the option of migrating a connected data source to a Soda-hosted agent. Though you must reconfigure your data source connection to the new Soda agent, your checks, check history, and scan definition remain intact.
 
 * Be aware that Soda-hosted agents are only compatible with the following data sources: BigQuery, MySQL, PostgreSQL, Snowflake. 
 * 🔴 When you migrate to a Soda-hosted agent, Soda Cloud *resets* all the connection configuration details for your data source. Be sure to capture all existing data source connection details before migrating so you can re-enter the details for the data source connection.
@@ -31,7 +31,7 @@ If you already use a self-hosted Soda Agent deployed in a Kubernetes cluster to 
 ![soda-hosted-agent1](/assets/images/soda-hosted-agent1.png){:height="700px" width="700px"}
 3. Navigate to the **Data Sources** tab, then click to select the data source you wish to migrate to the Soda-hosted agent.
 4. In the **2. Connect the Data Source** tab, copy+paste the contents of the editing panel to a temporary, secure, local place in your system. Switching agents resets all connection configuration parameters, so be sure to record existing parameter settings before proceeding. 
-4. In the **1. Attributes** tab, use the dropdown for **Default Scan Schedule Agent** to select `soda-hosted-agent`.
+4. In the **1. Attributes** tab, use the dropdown for **Default Scan Agent** to select `soda-hosted-agent`.
 5. Return to the **2. Connect the Data Source** tab, then, using the configuration values you recorded in step 3, use the dropdowns to re-enter the values, then **Test Data Source**.
 6. When the test completes successfully, **Save** your changes to the data source.
 
