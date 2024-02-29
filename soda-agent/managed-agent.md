@@ -13,7 +13,7 @@ The **Soda Agent** is a tool that empowers Soda Cloud users to securely access d
 
 Use the secure, out-of-the-box **Soda-hosted agent** made available for every Soda Cloud organization or, alternatively, you can create a Kubernetes cluster in your organization's environment and use Helm to deploy a Self-hosted Soda Agent in the cluster; see [Deploy a Soda Agent]({% link soda-agent/deploy.md %}).
 
-A Soda-hosted agent enables Soda Cloud users to securely connect to BigQuery, MySQL, PostgreSQL, or Snowflake data sources and create checks for data quality in the new data source.
+A Soda-hosted agent enables Soda Cloud users to securely connect to [supported data sources](#compatibility) and create checks for data quality in the new data source.
 
 As a step in the **Get started roadmap**, this guide offers instructions to set up Soda in a [Soda-hosted agent deployment model]({% link soda/setup-guide.md %}#soda-managed-agent).
 
@@ -32,6 +32,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 
 You can use a Soda-manage agent to connect with the following data sources:
 * BigQuery
+* Databricks SQL
 * MySQL
 * PostgreSQL
 * Snowflake
@@ -68,6 +69,7 @@ Soda hosts agents in a secure environment in Amazon AWS. As a SOC 2 Type 2 certi
 
 Use the following data source-specific connection configuration pages to populate the connection fields in Soda Cloud.
 *  [Connect to BigQuery]({% link soda/connect-bigquery.md %})
+*  [Connect to Databricks SQL]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql)
 *  [Connect to MySQL]({% link soda/connect-mysql.md %})
 *  [Connect to PostgreSQL]({% link soda/connect-postgres.md %})
 *  [Connect to Snowflake]({% link soda/connect-snowflake.md %})
