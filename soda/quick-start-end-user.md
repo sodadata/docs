@@ -84,7 +84,8 @@ Depending on your deployment model, Soda Agent supports connections with the fol
 #### Soda-hosted agent
 <table>
   <tr>
-    <td>GCP BigQuery<br /> MySQL<br/> PostgreSQL<br /> Snowflake</td>
+    <td>Databricks SQL<br /> GCP BigQuery<br /> MySQL </td>
+    <td>PostgreSQL<br /> Snowflake<br />&nbsp;</td>
   </tr>
 </table> 
 <br />

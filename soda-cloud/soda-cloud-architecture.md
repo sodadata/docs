@@ -37,7 +37,7 @@ You can use checks to view samples of data that [failed a check]({% link soda-cl
 
 ## Soda-hosted agent deployment
 
-This deployment model provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. Quickly configure connections to your data sources in the Soda Cloud user interface, then empower all your colleagues to explore datasets, access check results, customize collections, and create their own no-code checks for data quality. Soda-hosted agent supports connections to BigQuery, MySQL, PostgreSQL, and Snowflake data sources.
+This deployment model provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. Quickly configure connections to your data sources in the Soda Cloud user interface, then empower all your colleagues to explore datasets, access check results, customize collections, and create their own no-code checks for data quality. Soda-hosted agent supports connections to BigQuery, Databricks SQL, MySQL, PostgreSQL, and Snowflake data sources.
 
 ![with-managed-agent](/assets/images/with-managed-agent.png){:height="60px" width="600px"}
 
