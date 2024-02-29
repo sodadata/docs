@@ -7,4 +7,4 @@ products:
 
 ## Fixes and features
 
-* Feature: remote scan via CLI
+* Cloud 6550: remote scans by @m1n0 in #192
