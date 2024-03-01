@@ -47,7 +47,11 @@ As a step in the **Get started roadmap**, this guide offers instructions to sche
   <div class="panel" id="one-panel" markdown="1">
 
 ### Set a scan definition in a no-code check
-*Requires Soda Agent*
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 When you create a no-code check in Soda Cloud, one of the required fields asks that you associate the check with an existing scan definition, or that you create a new scan definition.
 
@@ -62,7 +66,11 @@ If you wish to schedule a *new* scan to execute a no-code check more or less fre
 3. Fill out the form to define your new scan definition, then save it. Save the change to your no-code check. Soda executes the check during the next scan according to your new definition.
 
 ### Set a scan definition in an agreement
-*Requires Soda Agent*
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 {% include banner-agreements.md %}
 
@@ -94,7 +102,11 @@ If you wish to schedule a *new* scan to execute the checks in an agreement more 
 
 
 ### Run a scan for a no-code check
-*Requires a Soda Agent*
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 If you wish to run a scan immediately to see the scan results for a no-code check, you can execute an ad hoc scan for a single check.
 
@@ -109,14 +121,22 @@ You can also run and ad hoc scan to execute all checks associated with a scan de
 3. In the scan definition page, click **Run Scan** to immediately execute all checks that use this scan definition.
 
 ### Run a scan in an agreement
-*Requires a Soda Agent*
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 {% include banner-agreements.md %}
 {% include ad-hoc-scan.md %}
 
 
 ### Run a scan from the command-line
-*Requires Soda Library*
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 Eeach scan requires the following as input:
 
@@ -151,7 +171,11 @@ Use the soda `soda scan --help` command to review options you can include to cus
 <br />
 
 ### Input scan-time variables
-*Requires Soda Library*
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 There are several ways you can use variables in checks, filters, and in your data source configuration to pass values at scan time; a few examples follow.
 
@@ -269,6 +293,11 @@ Because Soda Library pushes scan results to Soda Cloud, you may not want to chan
   <div class="panel" id="three-panel" markdown="1">
 
 ### Run a basic programmatic scan using Python
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 Based on a set of conditions or a specific event schedule, you can programmatically invoke Soda Library to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
 
@@ -364,7 +393,11 @@ scan.get_all_checks_text()
 <br />
 
 ### Trigger a scan via API
-*Requires Soda Agent*
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 You can programmatically initiate a scan your team defined in Soda Cloud using the Soda Cloud API. 
 
@@ -379,8 +412,11 @@ Access the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) document
 <br />
 
 ### Run a Soda Cloud scan from the command-line
-*Requires Soda Agent*<br />
-*Requires Soda Library*
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 You can initiate a scan your team defined in Soda Cloud using the Soda Library CLI.
 

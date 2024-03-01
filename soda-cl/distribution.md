@@ -8,9 +8,7 @@ parent: SodaCL reference
 # Distribution checks
 *Last modified on {% last_modified_at %}*
 
-Use a distribution check to determine whether the distribution of a column has changed between two points in time. For example, if you trained a model at a particular moment in time, you can use a distribution check to find out how much the data in the column has changed over time, or if it has changed all.<br />
-*Requires Soda Library* <br />
-*Limitation:* Soda Cloud cannot yet maintain the distribution reference object (DRO), but distribution check appears in the **Checks** dashboard.<br />
+Use a distribution check to determine whether the distribution of a column has changed between two points in time. For example, if you trained a model at a particular moment in time, you can use a distribution check to find out how much the data in the column has changed over time, or if it has changed all.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -24,6 +22,12 @@ checks for dim_customer:
       # with seed 61.
       sample: TABLESAMPLE BERNOULLI (50) REPEATABLE (61)
 ```
+<small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
 
 [About distribution checks](#about-distribution-checks)<br />
 [Install Soda Scientific](#install-soda-scientific)<br />

@@ -8,9 +8,7 @@ parent: SodaCL reference
 # Check template
 *Last modified on {% last_modified_at %}*
 
-Use a check template to define a reusable, user-defined metric that you can apply to many checks in multiple checks files.<br />
-*Not supported in Soda Core* <br />
-*Limitation:* You cannot use Soda Cloud to run scans that include a template, but check template results appear in the **Checks** dashboard when you run a scan using Soda Library CLI.<br />
+Use a check template to define a reusable, user-defined metric that you can apply to many checks in multiple checks files.
 {% include code-header.html %}
 ```yaml
 templates:
@@ -30,7 +28,14 @@ checks for dim_account:
         table: dim_account
       fail: when > 0
 ```
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
 
+<br />
 [Define a check template](#define-a-check-template)<br />
 [Optional check configruations](#optional-check-configurations)<br />
 [List of comparison symbols and phrases](#list-of-comparison-symbols-and-phrases)<br />

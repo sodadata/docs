@@ -8,8 +8,7 @@ parent: SodaCL reference
 # Reconciliation checks
 *Last modified on {% last_modified_at %}*
 
-Use a reconciliation check to validate that target data matches source data before and/or after migrating between data sources.<br />
-*Not supported in Soda Core*
+Use a reconciliation check to validate that target data matches source data before and/or after migrating between data sources.
 
 For example, if you must migrate data from a MySQL data source to a Snowflake data source, you can use reconciliation checks to make sure the MySQL data appears intact in Snowflake in staging before conducting the migration in production.
 
@@ -56,6 +55,13 @@ reconciliation Production:
   # Schema reconciliation check
     - schema
 ```
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+<br />
 
 [Prerequisites](#prerequisites)<br />
 [Types of reconciliation checks](#types-of-reconciliation-checks)<br />
