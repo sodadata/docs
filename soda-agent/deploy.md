@@ -1322,7 +1322,7 @@ In your Soda Cloud account, navigate to **your avatar** > **Data Sources**. Clic
 
 <br />
 
-#### 2. Connect the Data Source
+#### 2. Connect
 
 In the editing panel, provide the connection configurations Soda Cloud needs to be able to access the data in the data source. Connection configurations are data source-specific and include values for things such as a database's host and access credentials. 
 
@@ -1334,7 +1334,7 @@ See also: [Use a file reference for a BigQuery data source connection](#use-a-fi
  
 <br />
 
-#### 3. Discover Datasets
+#### 3. Discover
 
 During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. It captures basic information about each dataset, including a dataset names and the columns each contains.
 
@@ -1352,7 +1352,7 @@ discover datasets:
 
 <br />
 
-#### 4. Profile datasets
+#### 4. Profile
 
 To gather more detailed profile information about datasets in your data source, you can configure Soda Cloud to profile the columns in datasets. 
 
@@ -1371,7 +1371,7 @@ profile columns:
 
 <br />
 
-#### 5. Check Datasets
+#### 5. Check
 
 When Soda Cloud automatically discovers the datasets in a data source, it prepares automated monitoring checks for each dataset. These checks detect anomalies and monitor schema evolution, corresponding to the SodaCL [anomaly detection]({% link soda-cl/anomaly-detection.md %}) and [schema]({% link soda-cl/schema.md %}) checks, respectively.
 
