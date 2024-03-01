@@ -253,6 +253,8 @@
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Generate API keys
     page: soda-cloud/api-keys.md
+  - subtitle: Manage sensitive data
+    page: soda/sensitive-data.md
   - subtitle: Data security and privacy
     page: soda/data-privacy.md
   - subtitle: Soda Library usage statistics
