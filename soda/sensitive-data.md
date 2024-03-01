@@ -25,7 +25,7 @@ Refer to [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md
 
 
 ## Deploy a self-hosted Soda Agent
-The self-hosted Soda Agent is a containerized Soda Library deployed in a Kubernetes cluster in your cloud services provider environment, such as Azure or AWS. It enables users of Soda Cloud to securely access data sources so it can perform data quality scanning while meeting infrastructure team’s security rules and requirements that  protect credentials and record-level data from exposure.
+Soda's self-hosted agent is a containerized Soda Library deployed in a Kubernetes cluster in your cloud services provider environment, such as Azure or AWS. It enables users of Soda Cloud to securely access your data sources so it can perform data quality scanning while meeting your infrastructure team’s security rules and requirements that protect credentials and record-level data from exposure.
 
 Consider [deploying a self-hosted agent]({% link soda-agent/deploy.md %}) in your own infrastructure to securely manage access to your data sources. See also: [Soda architecture]({% link soda-cloud/soda-cloud-architecture.md %})
 
@@ -36,7 +36,7 @@ Further, if you use an external secrets manager such as Hashicorp Vault or AWS S
 
 During the data source onboarding process, you have the option to [configure Soda]({% link soda-cl/sample-datasets.md %}) to collect and store 100 rows of sample data for the datasets in the data source. This is a feature you must implicitly configure; Soda does not collect sample rows of data by default. 
 
-Available to access in Soda Cloud as in the example below, these samples enable users to gain insight into the data's characteristics, facilitating the formulation of data quality rules.
+These samples, accessible in Soda Cloud as in the example below, enable users to gain insight into the data's characteristics, facilitating the formulation of data quality rules.
 
 ![sample-rows](/assets/images/sample-rows.png){:width="700px"}
 
@@ -50,11 +50,11 @@ Where your datasets contain sensitive or private information, you may not want t
 If you wish to provide sample rows for some datasets and only wish to limit the ones for which Soda collects samples, you can add a `sample datasets` configuration to your data source. 
 
 Navigate to **your avatar** > **Data Sources** > **New Data Source**, or select an existing data source, to begin. You can add this configuration to one of two places:
-* to either step [3. Discover Datasets]({% link soda-agent/deploy.md %}#3-discover-datasets) <br />
+* to either step [3. Discover]({% link soda-agent/deploy.md %}#3-discover) <br />
 OR<br />
-*   or step [4. Profile Datasets]({% link soda-agent/deploy.md %}#4-profile-datasets) 
+*   or step [4. Profile]({% link soda-agent/deploy.md %}#4-profile) 
 
-The example configuration below uses a wildcard character (`%`) to specify that collects sample rows for all datasets with names that begin with `region`, and *not* to send samples for any other datasets in the data source.
+The example configuration below uses a wildcard character (`%`) to specify that Soda collects sample rows for all datasets with names that begin with `region`, and *not* to send samples for any other datasets in the data source.
 {% include code-header.html %}
 ```yaml
 sample datasets:
@@ -69,6 +69,8 @@ sample datasets:
   datasets:
     - exclude [credit_card, birth_date]
 ```
+
+<br />
 
 * If you configure `sample datasets` to include specific datasets, Soda implicitly *excludes* all other datasets from sampling. 
 * If you combine an include config and an exclude config and a dataset fits both patterns, Soda excludes the dataset from sampling.
@@ -87,7 +89,7 @@ When it **discovers datasets**, as in the example below, Soda captures only the 
 
 When it **profiles datasets**, as in the example below, Soda automatically evaluates several data quality metrics for each column of a dataset based on the column's data type, such as missing and distinct values, calculated statistical metrics, and frequently occurring values. The majority of these metrics are aggregated which safeguards against the exposure of record-level data. 
 
-In instances where a column contains categorical data, profiling provides insights into the most extreme and frequent values, which could potentially reveal information about the data. However, as Soda only exposes individual values, end-users cannot link these calculated values to specific records.
+In instances where a column contains categorical data, profiling provides insights into the most extreme and frequent values, which could potentially reveal information about the data. However, as Soda only exposes individual metric values, end-users cannot link these calculated metrics to specific records.
 
 ![profile-dataset](/assets/images/profile-dataset.png){:width="700px"}
 
@@ -126,6 +128,7 @@ profile columns:
 ```
 
 To avoid profiling *any* datasets in your data source, use the following configuration.
+{% include code-header.html %}
 ```yaml
 profile columns:
   columns:
@@ -194,24 +197,24 @@ Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/fai
 
 ### Reroute failed row samples
 
-If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. To do so, you can:
+If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. 
 1. [Configure a custom failed row sampler]({% link soda-cl/failed-rows-checks.md %}#configure-a-failed-row-sampler).
 2. Convert the python object/dict into JSON or whatever the format you need. 
 3. Add a [storage configuration]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to your sampler configuration to specify the columns you wish to exclude, as in the following example.
-```yaml
-data_source nyc_breakdowns_gke:
-  type: postgres
-  host: localhost
-  ...
-  sampler:
-    samples_limit: 10000
-    storage:
-      type: http
-      url: https://webhook.site/1a27e512-53e2-4f06-b648-f4141fb1c763
-      message: Kindly use the link below to access the failed row samples.
-      link_text: Amazon S3 Bucket
-      link: https://s3.amazonaws.com/soda-failed-records
-```
+    ```yaml
+    data_source nyc_breakdowns_gke:
+      type: postgres
+      host: localhost
+      ...
+      sampler:
+        samples_limit: 10000
+        storage:
+          type: http
+          url: https://webhook.site/1a27e512-53e2-4f06-b648-f4141fb1c763
+          message: Kindly use the link below to access the failed row samples.
+          link_text: Amazon S3 Bucket
+          link: https://s3.amazonaws.com/soda-failed-records
+    ```
 ![custom-sampler](/assets/images/custom-sampler.png){:width="600px"}
 
 <br />
