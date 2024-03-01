@@ -19,6 +19,13 @@ for each dataset T:
   checks:
     - row_count > 0
 ```
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+<br />
 
 [Define a for each configuration](#define-a-for-each-configuration)<br />
 [Limitations and specifics](#limitations-and-specifics)<br />

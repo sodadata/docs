@@ -12,6 +12,7 @@ parent: Learning resources
 #### March 1, 2024
 * Published guidance for [managing sensitive data]({% link soda/sensitive-data.md %}) in Soda.
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.1.
+* Added a compatibility legend to SodaCL reference documentation to clarify which checks are available via various means; see [example]({% link soda-cl/cross-row-checks.md %}).
 
 #### February 29, 2024
 * Following improvements and changes to the self-hosted Soda Agent 1.0.0, removed the documented details for including idle replicas and polling intervals in a cluster that aimed to improve scan times. Also, added release notes to inform existing Soda Agent users about changes to parameter configuration with 1.0.0 and advice for optimal performance using managed node groups instead of Fargate profiles in Amazon EKS, GCP Autopilot, or AKS Virtual Clusters. See [Soda Agent release notes]({% link release-notes/soda-agent.md %}#upgrade-to-100) for upgrade details.

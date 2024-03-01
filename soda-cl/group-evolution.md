@@ -8,9 +8,7 @@ parent: SodaCL reference
 # Group evolution checks
 *Last modified on {% last_modified_at %}*
 
-Use a group evolution check to validate the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state. <br /> 
-*Not supported in Soda Core*
-
+Use a group evolution check to validate the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -24,6 +22,13 @@ checks for dim_customer:
       fail:
         when groups change: any
 ```
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+<br />
 
 [Define group evolution checks](#define-group-evolution-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />

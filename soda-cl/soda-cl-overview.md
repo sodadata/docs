@@ -80,10 +80,15 @@ checks for dim_department_group:
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
-Create **no-code checks** for data quality directly in the Soda Cloud user interface. When you create a no-code check, you also set a schedule for Soda to execute your check when it runs a scan of your data source. <br />
-*Requires a Soda Agent*
+Create **no-code checks** for data quality directly in the Soda Cloud user interface. When you create a no-code check, you also set a schedule for Soda to execute your check when it runs a scan of your data source. 
 
 🎥 Watch a <a href="https://www.soda.io/resources/introducing-no-code-checks" target="_blank">5-minute video</a> for no-code checks and discussions, if you like!
+
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 ![no-code-checks](/assets/images/no-code-checks.png){:height="500px" width="500px"}
 
@@ -145,10 +150,15 @@ By default, alert notifications for your no-code check go to the **Dataset Owner
 
 {% include banner-agreements.md %}
 
-You can write SodaCL checks directly in the Soda Cloud user interface within an **agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source.<br />
-*Requires a Soda Agent*
+You can write SodaCL checks directly in the Soda Cloud user interface within an **agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source.
 
 In an agreement, use SodaCL checks to define the state of "good quality" for data in this data source, then identify and get approval from stakeholders in your organization. Define whom Soda Cloud will notify when a check in the agreement fails, then set a schedule to regularly execute the Soda Checks to uphold the tenets of the agreement.
+
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 ![agreement-1](/assets/images/agreement-1.png){:height="500px" width="500px"}
 
@@ -236,12 +246,18 @@ See also: [Tips and best practices for SodaCL]({% link soda/quick-start-sodacl.m
 
 As a Data Engineer, you can write SodaCL checks directly in a `checks.yml` file, or leverage check suggestions in the Soda Library CLI to prepare a basic set of data quality checks for you. Alternatively, you can add SodaCL checks to a programmatic invocation of Soda Library.
 
+
 [Manually write SodaCL checks](#manually-write-sodacl-checks)<br />
 [Use check suggestions](#use-check-suggestions)<br />
 [Programmatically add checks](#programmatically-add-checks)<br />
 <br />
 
 ### Manually write SodaCL checks
+<small>✔️ &nbsp;&nbsp; May require Soda Core Scientific</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<br />
 
 The checks YAML file stores the Soda Checks you write using SodaCL. Use this file to manually write your own SodaCL checks. 
 
@@ -270,10 +286,14 @@ Soda Cloud Trace: 67592***474
 5. Add more checks to the `checks.yml` file to test for multiple data quality metrics. Consult the [SodaCL tutorial]({% link soda/quick-start-sodacl.md %}) for advice and the [Use case guides]({% link soda/use-case-guides.md %}) for example checks. Refer to [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for exhaustive details on every type of metric and check.
 
 ### Use check suggestions
+<small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Compatible with BigQuery, PostgreSQL, Snowflake data sources</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<br />
 
-**Check suggestions** assists Soda users in auto-generating basic data quality checks using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.<br /> 
-*Requires Soda Scientific*<br />
-*Compatible with BigQuery, PostgreSQL, and Snowflake data sources*
+**Check suggestions** assists Soda users in auto-generating basic data quality checks using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.
 
 Instead of writing your own data quality checks from scratch, check suggestions profiles your dataset and prompts you through a series of questions so that it can leverage the built-in Soda metrics and quickly prepare data quality checks tailored to that individual dataset.  
 
@@ -294,6 +314,11 @@ You can use check suggestions with the following data sources:
 {% include check-suggest.md %}
 
 ### Programmatically add checks
+<small>✔️ &nbsp;&nbsp; May require Soda Core Scientific</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<br />
 
 Follow the [steps above](#manually-write-sodacl-checks) to create a `checks.yml` file to define your checks for data quality. Then, add the file(s) to your Python program as in the example below.<br /> Be sure to include any variables in your programmatic scan *before* the check YAML files. Soda requires the variable input for any variables defined in the check YAML files. 
 

@@ -8,8 +8,7 @@ parent: SodaCL reference
 # Group by
 *Last modified on {% last_modified_at %}*
 
-Use a group by configuration to collect and present check results by category. <br /> 
-*Not supported in Soda Core*
+Use a group by configuration to collect and present check results by category.
 
 {% include code-header.html %}
 ```yaml
@@ -26,6 +25,13 @@ checks for fact_internet_sales:
             fail: when > 40
             name: Average discount percentage is less than 40% (grouped by sales territory)
 ```
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+<br />
 
 [Define a group by configuration checks](#define-a-group-by-configuration) <br />
 [Group by check results](#group-by-check-results)<br />

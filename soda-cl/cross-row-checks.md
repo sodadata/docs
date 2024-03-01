@@ -21,6 +21,14 @@ checks for dim_customer:
 # Check row count between datasets in different data sources
   - row_count same as retail_customers in aws_postgres_retail
 ```
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+
+<br />
 
 [Define cross checks](#define-cross-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />

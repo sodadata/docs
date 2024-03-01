@@ -22,6 +22,13 @@ checks for dim_customer
       missing values: [n/a, NA, none]
   - missing_percent(email_address) = 0%
 ```
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✔️ &nbsp;&nbsp; Available as a no-code check</small>
+<br />
 
 [Define checks with missing metrics](#define-checks-with-missing-metrics) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Specify missing values or missing regex](#specify-missing-values-or-missing-regex)<br />
