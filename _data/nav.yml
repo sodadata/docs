@@ -236,7 +236,7 @@
 - title: Create a data contract
   page: soda/data-contracts.md
   subcategories:
-  - subtitle: Data contract basics
+  - subtitle: Set up data contracts
     page: soda/data-contracts.md
   - subtitle: Write a data contract
     page: soda/data-contracts-write.md
