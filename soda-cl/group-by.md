@@ -8,8 +8,7 @@ parent: SodaCL reference
 # Group by
 *Last modified on {% last_modified_at %}*
 
-Use a group by configuration to collect and present check results by category. <br /> 
-*Not supported in Soda Core*
+Use a group by configuration to collect and present check results by category.
 
 {% include code-header.html %}
 ```yaml
@@ -26,6 +25,13 @@ checks for fact_internet_sales:
             fail: when > 40
             name: Average discount percentage is less than 40% (grouped by sales territory)
 ```
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+<br />
 
 [Define a group by configuration checks](#define-a-group-by-configuration) <br />
 [Group by check results](#group-by-check-results)<br />
@@ -41,9 +47,9 @@ checks for fact_internet_sales:
 
 For an individual dataset, add a **group by** configuration to specify the categories into which Soda must group the check results.
 
-The example below uses a SQL query to define a custom metric for the `fact_internet_sales` dataset. It calculates the average order discount based on the contents of the `discount_amount` column, then groups the results according to the value in the `sales_territory_key`. 
+The example below uses a SQL query to define a custom metric for the `fact_internet_sales` dataset. It calculates the average order discount based on the contents of the `discount_amount` column, then groups the results according to the value in the `sales_territory_key`. This check supports up to a maximum of 1000 groups.
 
-The check itself uses the custom metric `average_discount` and an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations) to determine if the measurement for each group passes, warns, or fails. In this case, any calculated measurement for average that exceeds 40 results in a fail.
+The check itself uses the custom metric `average_discount` and an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations) to determine if the measurement for each group passes, warns, or fails. In this case, any calculated measurement for average that exceeds 40 results in a fail. 
 {% include code-header.html %}
 ```yaml
 checks for fact_internet_sales:
@@ -63,7 +69,7 @@ checks for fact_internet_sales:
 ```
 
 | `group by` | required | configuration section label |
-| `group_limit` | optional | the maximum number of groups, or column values, into which Soda must categorize the results. This value must correspond with the number of unique values in the column you identify in the `fields` section; see example below. |
+| `group_limit` | optional | the maximum number of groups, or column values, into which Soda must categorize the results. This value must correspond with the number of unique values in the column you identify in the `fields` section; see example below. This check supports up to a maximum of 1000 groups.|
 | `group_name` | optional | specify a name for the group; Soda does not evaluate this parameter |
 | `query` | required | custom query subsection label. The nested SQL query defines the custom metric `average_discount`|
 | `fields`| required | column subsection label |

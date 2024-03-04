@@ -416,15 +416,15 @@ components:
       scheme: basic
       type: http
 info:
-  description: "This API enables you to interact with the Soda Cloud product using\
-    \ an officially supported API.\n\nUse Soda Cloud's public API to:\n- connect Soda\
-    \ Cloud to your data catalog\n- trigger scheduled scans in Soda Cloud from within\
-    \ your data pipeline\n- access dataset and check info in Soda Cloud\n\n## Authentication\n\
-    \nThis API supports authentication using a HTTP `Basic` authentication header.\
-    \ This authentication method works with Single Sign-On (SSO) and for users who\
-    \ belong to more than one organization in Soda Cloud.\n\nTo learn how to generate\
-    \ the API keys that you need for basic authentication, \naccess the [Generate\
-    \ API keys for use with Soda Library or a Soda Cloud API](https://docs.soda.io/soda-cloud/api-keys.html#generate-api-keys-for-use-with-soda-library-or-a-soda-cloud-api).\n\
+  description: "Use Soda Cloud's public API to:\n- connect Soda Cloud to your data\
+    \ catalog\n- trigger scheduled scans in Soda Cloud from within your data pipeline\n\
+    - access dataset and check info in Soda Cloud\n\n## Authentication\n\nThis API\
+    \ supports authentication using a HTTP `Basic` authentication header. This authentication\
+    \ method works with Single Sign-On (SSO) and for users who belong to more than\
+    \ one organization in Soda Cloud. For Basic authentication, this API uses API\
+    \ keys rather than username and password values.\n\nTo learn how to generate the\
+    \ API keys that you need for basic authentication, access the [Generate API keys\
+    \ for use with Soda Library or a Soda Cloud API](https://docs.soda.io/soda-cloud/api-keys.html#generate-api-keys-for-use-with-soda-library-or-a-soda-cloud-api).\n\
     \n## Examples\n\n```curl\ncurl -X GET \\ \n    --location \"https://cloud.soda.io/api/v1/test-login\"\
     \ \\\n    --basic \n    --user 5100a9bc-8cbe-44ab-8263-136ba0f35c1d:VIorf5ZGgE5yqMc-gT7amAsAiotqgySSUh98VBtek_6x6fP3asnybQ\n\
     ```\n"
@@ -633,9 +633,9 @@ paths:
 
         - `scanDefinition`: Supply a string value to specify the identifier of the scan definition in Soda Cloud. To retrieve this ID in Soda Cloud, navigate to the Scans page, then select the scan definition you wish to execute remotely and copy the string that is the scan definition identifier from the URL. <br /> The scan definition _must be_ connected to a Soda Agent in order to execute a scan remotely, _not_ Soda Library.
 
-        - `dataTimestamp`: Supply an (optional) value to indicate the moment for which the scan is taking place. In case this value is not supplied, the current moment in time is going to be used. Supply an ISO8601 timestamp value. Example: `2023-12-31T10:15:30+01:00`
+        - `dataTimestamp`: (Optional) Supply a value to indicate a specific timestamp for the scan for Soda Cloud. For example, provide a time in the past so that although Soda executes the scan when you call the endpoint, it timestamps the scan with the value you provide so that it appears in the user interface with your supplied timestamp value, not the time at which it actually executed the scan. Supply an ISO8601 timestamp value such as: `2023-12-31T10:15:30+01:00`. If you do not specify a value, Soda uses the current moment to timestamp the scan.
 
-        The Response of this call, when successful, is `201` and contains a header for `Location` that identifies the executed scan. Use the value of `Location` in the `scanID` parameter of the **Get scan status** endpoint.
+        The Response of this call, when successful, is `201` and contains headers `Location` and `X-Soda-Scan-Id` which identify the executed scan. Use the value of `X-Soda-Scan-Id` in the `scanId` parameter of the **Get scan status**, **Get scan logs**, and **Cancel a scan** endpoints.
 
         ## Authentication
 
@@ -645,7 +645,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -706,6 +706,9 @@ paths:
             Location:
               schema:
                 type: string
+            X-Soda-Scan-Id:
+              schema:
+                type: string
         "429":
           content:
             application/json:
@@ -720,15 +723,17 @@ paths:
   /api/v1/scans/{scanId}:
     delete:
       description: |-
-        This API allows users to request cancelation of an existing scan.
+        This endpoint enables you to cancel a scan.
 
-        In case scan is in `pending` state, the scan will be immediately change state to `canceled`.
+        Depending on the state of the scan when you call this endpoint, the response returns one of the following:
 
-        In case scan is in `submitted` state, the scan will change state to `cancelationRequested`. After some time, when Agent picks up cancelation request and processes it, scan will reach the final state `canceled`.
+        - Where the state is `pending`, Soda immediately changes the state to `canceled`.
 
-        In case scan is in any other state, this API will return a 400 (bad request).
+        - Where the state is `submitted`, Soda immediately changes the state to `cancelationRequested`. - Where the scan is in any other state, the endpoint returns a `400` (Bad request) response.
 
-        Response will provide information about the current state of the scan, including the state change.
+        This DELETE uses the following parameters to provide specific details:
+
+        - `scanId`: Use the value of `X-Soda-Scan-Id` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
 
         ## Authentication
 
@@ -738,7 +743,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -810,7 +815,7 @@ paths:
 
         This POST uses the following parameter to provide specific details:
 
-        - `scanID`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
+        - `scanId`: Use the value of `X-Soda-Scan-Id` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
 
         As a scan executes, you can call this endpoint to progressively collect values based on the state of the scan. Refer to the list below for the states that calls to this endpoint return.
 
@@ -846,7 +851,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -919,7 +924,7 @@ paths:
 
         This GET is a paginated query that uses the following parameters to request a specific details:
 
-        - `scanID`: Supply a string value. Use the value of `Location` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
+        - `scanId`: Use the value of `X-Soda-Scan-Id` returned as part of the `201` response when you called the **Trigger a scan** endpoint.
 
         - `size`: Supply an integer value between 100 and 1000, inclusive. The default value is 1000.
 
@@ -935,7 +940,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -1022,7 +1027,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 

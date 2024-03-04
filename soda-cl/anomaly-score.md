@@ -11,13 +11,20 @@ parent: Soda CL reference
 
 {% include banner-deprecated.md %}
 
-Use an anomaly score check to automatically discover anomalies in your time-series data. <br> 
-*Requires Soda Scientific.*<br />
+Use an anomaly score check to automatically discover anomalies in your time-series data. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - anomaly score for row_count < default
 ```
+
+<small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+<br/>
 
 [About anomaly score checks](#about-anomaly-score-checks)<br />
 [Install Soda Scientific](#install-soda-scientific)<br />

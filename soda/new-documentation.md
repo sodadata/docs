@@ -9,6 +9,32 @@ parent: Learning resources
 
 <br />
 
+#### March 1, 2024
+* Published guidance for [managing sensitive data]({% link soda/sensitive-data.md %}) in Soda.
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.1.
+* Added a compatibility legend to SodaCL reference documentation to clarify which checks are available via various means; see [example]({% link soda-cl/cross-row-checks.md %}).
+
+#### February 29, 2024
+* Following improvements and changes to the self-hosted Soda Agent 1.0.0, removed the documented details for including idle replicas and polling intervals in a cluster that aimed to improve scan times. Also, added release notes to inform existing Soda Agent users about changes to parameter configuration with 1.0.0 and advice for optimal performance using managed node groups instead of Fargate profiles in Amazon EKS, GCP Autopilot, or AKS Virtual Clusters. See [Soda Agent release notes]({% link release-notes/soda-agent.md %}#upgrade-to-100) for upgrade details.
+* Added details for [system requirements]({% link soda-agent/deploy.md %}#system-requirements) for deploying a Soda Agent in a Kubernetes cluster.
+* Included schema checks as available to add as a no-code check to a dataset in a data source that uses a Soda Agent to execute scans.
+* Added instructions for how to run a Soda Cloud-defined scan remotely using the Soda Library CLI. See the **Remotely run a scan** tab in [Scan for data quality]({% link soda-library/run-a-scan.md %}l#scan-for-data-quality).
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.3.4, 1.4.0 and Soda Core 1.3.3.
+* Added Databricks SQL to the [list of data sources]({% link soda-agent/managed-agent.md %}#compatibility) you can connect to using a Soda-hosted Agent. 
+
+#### February 28, 2024
+* Added notation for opting out of [usage statistics]({% link soda-library/usage-stats.md %}) with a Soda Agent.
+* Added notation that [Group By checks]({% link soda-cl/group-by.md %}#define-a-group-by-configuration) support a maximum of 1000 groups.
+* Changed instances of **scheduled scan** and **scan schedule** to **scan definition** to match the Soda Cloud user interface.
+* Clarified the support for [casting columns]({% link soda-cl/freshness.md %}#details-and-limitations) when using a freshness check.
+* Clarified the Basic SAML Configuration values to provide during SSO integration with [Azure AD]({% link soda-cloud/sso.md %}#add-soda-cloud-to-azure-ad).
+
+#### February 26, 2024
+* Added [release notes]({% link release-notes/soda-agent.md %}) documentation for Soda Agent 0.9.1, which maps to Soda Library 1.3.2.
+
+#### February 22, 2024
+* Updated [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) documentation to clarify details.
+
 #### February 21, 2024
 * Added API documentation for the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) that enables you to trigger Soda Cloud scans programmatically.
 * Added a new section to [Scan for data quality](#scan-for-data-quality) for triggering a scan via API.

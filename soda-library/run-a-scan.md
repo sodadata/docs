@@ -36,44 +36,54 @@ As a step in the **Get started roadmap**, this guide offers instructions to sche
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <input class="radio" id="three" name="group" type="radio">
+  <input class="radio" id="four" name="group" type="radio">
   <div class="tabs">
   <label class="tab" id="one-tab" for="one">Schedule a scan</label>
   <label class="tab" id="two-tab" for="two">Run a scan</label>
   <label class="tab" id="three-tab" for="three">Program a scan</label>
+  <label class="tab" id="four-tab" for="four">Remotely run a scan</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
 
-### Set a scan schedule in a no-code check
-*Requires Soda Agent*
+### Set a scan definition in a no-code check
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
-When you create a no-code check in Soda Cloud, one of the required fields asks that you associate the check with an existing scan schedule, or that you create a new scan schedule.
+When you create a no-code check in Soda Cloud, one of the required fields asks that you associate the check with an existing scan definition, or that you create a new scan definition.
 
-If you wish to change a no-code check's existing scan schedule:
+If you wish to change a no-code check's existing scan definition:
 1. As an Admin, or Manager or Editor of a dataset in which the no-code check exists, navigate to the dataset.
 2. From the dataset's page, locate the check you wish to adjust, and click the stacked dots at right, then select **Edit Check**. You can only edit a check via the no-code interface if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
-3. Adjust the value in the **Schedule** field as needed, then save. Soda executes the check during the next scan according to the schedule you selected.
+3. Adjust the value in the **Add to Scan Definition** field as needed, then save. Soda executes the check during the next scan according to the definition you selected.
 
 If you wish to schedule a *new* scan to execute a no-code check more or less frequently, or at a different time of day:
 1. From the dataset's page, locate the check you wish to adjust and click the stacked dots at right, then select **Edit Check**. You can only edit a check via the no-code interface if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
-2. Use the dropdown in the **Schedule** field to access the **Create a New Schedule** link. 
-3. Fill out the form to define your new schedule, then save it. Save the change to your no-code check. Soda executes the check during the next scan according to your new schedule.
+2. Use the dropdown in the **Add to Scan Definition** field to access the **create a new Scan Definition** link. 
+3. Fill out the form to define your new scan definition, then save it. Save the change to your no-code check. Soda executes the check during the next scan according to your new definition.
 
-### Set a scan schedule in an agreement
-*Requires Soda Agent*
+### Set a scan definition in an agreement
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 {% include banner-agreements.md %}
 
-When you create a Soda Agreement in Soda Cloud, the last step in the flow demands that you select a **scan schedule**. The scan schedule indicates which Soda Agent to use to execute the scan, on which data source, and when. Effectively, a scan schedule defines the what, when, and where to run a scheduled scan.
+When you create a Soda Agreement in Soda Cloud, the last step in the flow demands that you select a **scan definition**. The scan definition indicates which Soda Agent to use to execute the scan, on which data source, and when. Effectively, a scan definition defines the what, when, and where to run a scheduled scan.
 
-If you wish to change an agreement's existing scan schedule:
+If you wish to change an agreement's existing scan definition:
 1. Navigate to **Agreements**, then click the stacked dots next to the agreement you wish to change and select **Edit Agreement**.
-2. In the **Set a Scan Schedule** tab, then use the dropdown menu to select a different scan schedule.
+2. In the **Set a Scan schedule** tab, then use the dropdown menu to select a different scan definition.
 3. **Save** your change. The agreement edit triggers a new stakeholder approval request to all stakeholders. Your revised agreement *does not run again* until all stakehoders have approved it.
 
 If you wish to schedule a *new* scan to execute the checks in an agreement more or less frequently, or at a different time of day:
 1. Navigate to **Agreements**, then click the stacked dots next to the agreement you wish to change and select **Edit Agreement**.
-2. In the **Set a Scan Schedule** tab, then click the **new Scan Schedule** link and populate the fields as in the example below.
+2. In the **Set a Scan schedule** tab, then click the **new Scan Definition** link and populate the fields as in the example below.
 3. **Save** your change. The agreement edit triggers a new stakeholder approval request to all stakeholders. Your revised agreement *does not run again* until all stakehoders have approved it.
 
 ![new-scan-sched](/assets/images/new-scan-sched.png){:height="600px" width="600px"}
@@ -84,7 +94,6 @@ If you wish to schedule a *new* scan to execute the checks in an agreement more 
 [Run a scan for a no-code check](#run-a-scan-for-a-no-code-check)<br />
 [Run a scan in an agreement](#run-a-scan-in-an-agreement)<br />
 [Run a scan from the command-line](#run-a-scan-from-the-command-line)<br />
-[Trigger a scan via API](#trigger-a-scan-via-api)<br />
 [Input scan-time variables](#input-scan-time-variables)<br />
 [Prevent pushing scan results to Soda Cloud](#prevent-pushing-scan-results-to-soda-cloud)
 [Configure the same scan to run in multiple environments](#configure-the-same-scan-to-run-in-multiple-environments)<br />
@@ -93,7 +102,11 @@ If you wish to schedule a *new* scan to execute the checks in an agreement more 
 
 
 ### Run a scan for a no-code check
-*Requires a Soda Agent*
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 If you wish to run a scan immediately to see the scan results for a no-code check, you can execute an ad hoc scan for a single check.
 
@@ -101,21 +114,29 @@ If you wish to run a scan immediately to see the scan results for a no-code chec
 2. In the table of checks, locate the check you wish to execute and click the stacked dots, then select **Execute Check**. Alternatively, click the check and in the check's page, click **Execute**. You can only execute an individual check if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
 3. Soda executes *only* your check.
 
-You can also run and ad hoc scan to execute all checks associated with a scan schedule. 
+You can also run and ad hoc scan to execute all checks associated with a scan definition. 
 
 1. In Soda Cloud, navigate to Scans.
-2. In the list of Scans, click the one that is associated with the checks you wish to execute. 
-3. In the scan schedule page, click **Run Scan** to immediately execute all checks that use this scan schedule.
+2. In the list of scan definitions, click the one that is associated with the checks you wish to execute. 
+3. In the scan definition page, click **Run Scan** to immediately execute all checks that use this scan definition.
 
 ### Run a scan in an agreement
-*Requires a Soda Agent*
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 {% include banner-agreements.md %}
 {% include ad-hoc-scan.md %}
 
 
 ### Run a scan from the command-line
-*Requires Soda Library*
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 Eeach scan requires the following as input:
 
@@ -147,21 +168,14 @@ soda scan -d postgres_retail -c configuration.yml checks_stats1.yml checks_stats
 <br />
 Use the soda `soda scan --help` command to review options you can include to customize the scan. See also: [Add scan options](#add-scan-options).
 
-### Trigger a scan via API
-*Requires Soda Agent*
-
-You can programmatically initiate a scan in Soda Cloud using the Soda Cloud API. 
-
-If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) rights in your Soda Cloud account, you can use the API to:
-* retrieve information about checks and datasets in your Soda Cloud account 
-* execute scans
-* retrieve information about the state of a scan during execution
-* access the scan logs of an executed scan.
-
-Access the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) documentation to get details about how to programmatically get info and execute Soda Cloud scans.
+<br />
 
 ### Input scan-time variables
-*Requires Soda Library*
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 There are several ways you can use variables in checks, filters, and in your data source configuration to pass values at scan time; a few examples follow.
 
@@ -279,6 +293,11 @@ Because Soda Library pushes scan results to Soda Cloud, you may not want to chan
   <div class="panel" id="three-panel" markdown="1">
 
 ### Run a basic programmatic scan using Python
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
 
 Based on a set of conditions or a specific event schedule, you can programmatically invoke Soda Library to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
 
@@ -367,6 +386,141 @@ scan.get_all_checks_text()
 ```
 
   </div>
+  <div class="panel" id="four-panel" markdown="1">
+
+[Trigger a scan via API](#trigger-a-scan-via-api)<br />
+[Run a Soda Cloud scan from the command-line](#run-a-soda-cloud-scan-from-the-command-line)<br />
+<br />
+
+### Trigger a scan via API
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
+
+You can programmatically initiate a scan your team defined in Soda Cloud using the Soda Cloud API. 
+
+If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) rights in your Soda Cloud account, you can use the API to:
+* retrieve information about checks and datasets in your Soda Cloud account 
+* execute scans
+* retrieve information about the state of a scan during execution
+* access the scan logs of an executed scan
+
+Access the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) documentation to get details about how to programmatically get info and execute Soda Cloud scans.
+
+<br />
+
+### Run a Soda Cloud scan from the command-line
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✖️ &nbsp;&nbsp; Requires Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
+<br />
+
+You can initiate a scan your team defined in Soda Cloud using the Soda Library CLI.
+
+If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) rights in your Soda Cloud account, you can use Soda Library CLI to: 
+* execute a remote scan and synchronously receive logs of the scan execution result
+* execute a remote scan and asynchronously retrieve status and logs of the scan during, and after its execution
+
+<br />
+
+To execute a remote scan and synchonously receive scan results:
+1. In Soda Cloud, navigate to **Scans**, then, from the list of scans, click to open the one which you wish to execute remotely.
+2. To retrieve the scan definition ID that you need for the remote scan command, copy the scan definition identifier; see image below.
+![scan-def-id](/assets/images/scan-def-id.png){:height="600px" width="600px"}
+3. Run the following command to execute the Soda Cloud scan remotely, where the value of the `-s` option is the scan definition identifier you copied from the URL.
+```shell
+soda scan -c configuration.yml --remote -s paxstats_default_scan
+```
+4. The Soda Agent that executes your scan definition proceeds to run the scan and returns the result of the scan in the CLI output. A truncated example follows. <br />Notice that the version of Soda Library that you use to execute the remote scan command *may be different* from the version of Soda Library that is deployed as an Agent in your environment and which performs the actual scan execution. This does not present any issues for remote scan execution.
+```shell
+Soda Library 1.3.x
+Soda Core 3.0.x
+By downloading and using Soda Library, you agree to Sodas Terms & Conditions (https://go.soda.io/t&c) and Privacy Policy (https://go.soda.io/privacy). 
+Remote scan sync mode
+Remote Scan started.
+Status URL: https://dev.sodadata.io/api/v1/scans/14b38f00-bc69-47dc-801b-676e676e676
+Waiting for remote scan to complete.
+Remote scan completed.
+Fetching scan logs.
+Scan logs fetched.
+Soda Library 1.2.4
+Soda Core 3.0.47
+Reading configuration file "datasources/soda_cloud_configuration.yml"
+Reading configuration file "datasources/configuration_paxstats.yml"
+...
+Scan summary:
+48/48 queries OK
+  paxstats.discover-tables-find-tables-and-row-counts [OK] 0:00:00.156126
+  ...
+2/2 checks PASSED: 
+    paxstats in paxstats
+      anomaly score for row_count < default [scan_definitions/paxstats_default_scan/automated_monitoring_paxstats.yml] [PASSED]
+        check_value: None
+      Schema Check [scan_definitions/paxstats_default_scan/automated_monitoring_paxstats.yml] [PASSED]
+        schema_measured = [id integer, index integer, activity_period character varying, operating_airline character varying, ...]
+All is good. No failures. No warnings. No errors.
+Sending results to Soda Cloud
+Soda Cloud Trace: 3015***
+```
+5. In your Soda Cloud account, refresh the scan definition page to display the results of the scan you ran remotely. 
+
+<br />
+
+To execute a remote scan and asynchonously retrieve the status and results of the scan:
+1. In Soda Cloud, navigate to **Scans**, then, from the list of scans, click to open the one which you wish to execute remotely.
+2. To retrieve the scan definition ID that you need for the remote scan command, copy the scan definition identifier; see image below. 
+![scan-def-id](/assets/images/scan-def-id.png){:height="600px" width="600px"}
+3. Run the following command to execute the Soda Cloud scan remotely, where the value of the `-s` option is the scan definition identifier you copied from the URL.
+```shell
+soda scan -c configuration.yml --remote -s paxstats_default_scan -rm async
+```
+4. The Soda Agent that executes your scan definition proceeds to run the scan. The agent does not automatically return scan status or logs to the CLI output. Instead, it returns a unique value for `Status URL`. Copy the last part of the URL that identifies the scan you started.
+```shell
+[10:38:36] Soda Library 1.3.3
+[10:38:36] Soda Core 3.0.47
+[10:38:36] By downloading and using Soda Library, you agree to Sodas Terms & Conditions (https://go.soda.io/t&c) and Privacy Policy (https://go.soda.io/privacy). 
+[10:38:38] Remote scan async mode
+[10:38:39] Remote Scan started.
+[10:38:39] Status URL: https://cloud.soda.io/api/v1/scans/4651ba64-04ae-4b21-9fad-552314552314
+[10:38:39] Remote scan started in async mode.
+```
+5. To retrieve the status of the scan as it executes and completes, use the following command, pasting the value you copied from the `Status URL` as the scan identifier. Refer to the [Soda Cloud API documentation](https://docs.soda.io/api-docs/public-cloud-api-v1.html#/operations/GET/api/v1/scans/{scanId}) for the possible status messages the Soda Agent can return. <br />Notice that the version of Soda Library that you use to execute the remote scan command *may be different* from the version of Soda Library that is deployed as an Agent in your environment and which performs the actual scan execution. This does not present any issues for remote scan execution.
+```shell
+soda scan-status -c configuration.yml -s 4651ba64-04ae-4b21-9fad-552314552314
+```
+Truncated output:
+```shell
+Soda Library 1.3.3
+Soda Core 3.0.47
+Retrieving state of the scan '4651ba64-04ae-4b21-9fad-552314552314'.
+Current state of the scan: 'completed'.
+Fetching scan logs.
+Parsing scan logs.
+Soda Library 1.2.4
+Soda Core 3.0.47
+Reading configuration file "datasources/soda_cloud_configuration.yml"
+Reading configuration file "datasources/configuration_paxstats.yml"
+...
+Scan summary:
+48/48 queries OK
+  paxstats.discover-tables-find-tables-and-row-counts [OK] 0:00:00.156002
+  ...
+2/2 checks PASSED: 
+    paxstats in paxstats
+      anomaly score for row_count < default [scan_definitions/paxstats_default_scan/automated_monitoring_paxstats.yml] [PASSED]
+        check_value: None
+      Schema Check [scan_definitions/paxstats_default_scan/automated_monitoring_paxstats.yml] [PASSED]
+        schema_measured = [id integer, index integer, activity_period character varying, ...]
+All is good. No failures. No warnings. No errors.
+Sending results to Soda Cloud
+Soda Cloud Trace: 6974126***
+```
+6. In your Soda Cloud account, refresh the scan definition page to display the results of the scan you ran remotely.
+
+  </div>
 
   </div>
 </div>
@@ -421,7 +575,7 @@ See [Manage scheduled scans]({% link soda-cloud/scan-mgmt.md %}) for instruction
 
 Alternatively, you can access the scan logs from within an agreement.
 
-1. To examine a detailed scan log of the lastest scheduled scan for an agreement, navigate to **Agreements**, then click to select an agreement.
+1. To examine a detailed scan log of the lastest scan for an agreement, navigate to **Agreements**, then click to select an agreement.
 2. In the **Agreement** dashboard, click **See results** in the **Last scan** tile, then click the **Scan Logs** tabs.
 
 ![scan-logs](/assets/images/scan-logs.png){:height="550px" width="550px"}

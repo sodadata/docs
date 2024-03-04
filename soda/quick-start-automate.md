@@ -6,6 +6,7 @@ parent: Use case guides
 ---
 
 # Automate data quality monitoring
+<!--Linked to email campaign, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
 Use this guide to set up Soda and begin automatically monitoring the data quality of datasets in a data source. Use the guided workflow in Soda Cloud to connect to a data source, profile your data, and add automated checks for data quality.
@@ -29,11 +30,31 @@ This example offers instructions for both self-hosted and Soda-hosted agent depl
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
   <div class="tabs">
-  <label class="tab" id="one-tab" for="one">Self-hosted agent</label>
-  <label class="tab" id="two-tab" for="two">Soda-hosted agent </label>
+  <label class="tab" id="one-tab" for="one">Soda-hosted agent</label>
+  <label class="tab" id="two-tab" for="two">Self-hosted agent</label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
+
+This setup provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. 
+
+### Compatibility
+
+The Soda-hosted agent supports connections to the following data sources:
+
+| BigQuery <br /> MySQL<br /> PostgreSQL<br />  Snowflake |
+
+<br />
+
+{% include access-managed-agent.md %}
+
+<br />
+
+Invite your colleague(s) to your Soda Cloud organization so they can access the newly-deployed Soda Agent to connect to data sources and begin monitoring data quality. In your Soda Cloud account, navigate to **your avatar** > **Invite Team Members** and fill in the blanks.
+
+
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
 
 The Soda Agent is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. To set up a self-hosted Soda Agent, you create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a Soda Agent in the cluster. 
 
@@ -55,25 +76,6 @@ If you do not have the access or authorization to set up a cluster or deploy the
 4. Invite your colleague(s) to your Soda Cloud organization so they can access the newly-deployed Soda Agent to connect to data sources and begin monitoring data quality. In your Soda Cloud account, navigate to **your avatar** > **Invite Team Members** and fill in the blanks.
 
   </div>
-  <div class="panel" id="two-panel" markdown="1">
-
-This setup provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. 
-
-### Compatibility
-
-The Soda-hosted agent supports connections to the following data sources:
-
-| BigQuery <br /> MySQL<br /> PostgreSQL<br />  Snowflake |
-
-<br />
-
-{% include access-managed-agent.md %}
-
-<br />
-
-Invite your colleague(s) to your Soda Cloud organization so they can access the newly-deployed Soda Agent to connect to data sources and begin monitoring data quality. In your Soda Cloud account, navigate to **your avatar** > **Invite Team Members** and fill in the blanks.
-
-  </div>
 
   </div>
 </div>
@@ -90,11 +92,9 @@ Invite your colleague(s) to your Soda Cloud organization so they can access the 
 | Field or Label | Guidance |
 | -----------------------   | ---------- |
 | Data Source Label | Provide a unique identifier for the data source. Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
-| Default Scan Schedule Label | Provide a name for the default scan schedule for this data sources. The scan schedule indicates which Soda Agent to use to execute the scan, and when. |
-| Default Scan Schedule Agent | Select the Soda-hosted agent, or the name of a Soda Agent that you have previously set up in your secure environment. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
-| Schedule Definition | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
+| Default Scan Agent | Select the Soda-hosted agent, or the name of a Soda Agent that you have previously set up in your secure environment. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
+| Schedule | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
 | Starting At | Select the time of day to run the scan. The default value is midnight. |
-| Time Zone | Select a timezone. The default value is UTC. |
 | Cron Expression | (Optional) Write your own <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">cron expression</a> to define the schedule Soda Cloud uses to run scans. |
 
 <br />
@@ -165,7 +165,7 @@ automated monitoring:
 
 | Field or Label | Guidance | 
 |----------------|----------|
-| Data Source Owner | The Data Source Owner maintains the connection details and settings for this data source and its Default Scan Schedule. |
+| Data Source Owner | The Data Source Owner maintains the connection details and settings for this data source and its Default Scan Definition. |
 | Default Dataset Owner | The Datasets Owner is the user who, by default, becomes the owner of each dataset the Default Scan discovers. Refer to [Roles and Rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) to learn how to adjust the Dataset Owner of individual datasets.|
 
 

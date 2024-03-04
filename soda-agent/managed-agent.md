@@ -13,7 +13,7 @@ The **Soda Agent** is a tool that empowers Soda Cloud users to securely access d
 
 Use the secure, out-of-the-box **Soda-hosted agent** made available for every Soda Cloud organization or, alternatively, you can create a Kubernetes cluster in your organization's environment and use Helm to deploy a Self-hosted Soda Agent in the cluster; see [Deploy a Soda Agent]({% link soda-agent/deploy.md %}).
 
-A Soda-hosted agent enables Soda Cloud users to securely connect to BigQuery, MySQL, PostgreSQL, or Snowflake data sources and create checks for data quality in the new data source.
+A Soda-hosted agent enables Soda Cloud users to securely connect to [supported data sources](#compatibility) and create checks for data quality in the new data source.
 
 As a step in the **Get started roadmap**, this guide offers instructions to set up Soda in a [Soda-hosted agent deployment model]({% link soda/setup-guide.md %}#soda-managed-agent).
 
@@ -32,6 +32,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 
 You can use a Soda-manage agent to connect with the following data sources:
 * BigQuery
+* Databricks SQL
 * MySQL
 * PostgreSQL
 * Snowflake
@@ -53,16 +54,14 @@ In your Soda Cloud account, navigate to **your avatar** > **Data Sources**. Clic
 | Field or Label            | Guidance |
 | -----------------------   | ---------- |
 | Data Source Label | Provide a unique identifier for the data source. Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
-| Default Scan Schedule Label | Provide a name for the default scan schedule for this data sources. The scan schedule indicates which Soda Agent to use to execute the scan, and when.  |
-| Default Scan Schedule Agent | Select `soda-hosted-agent`. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
-| Schedule Definition | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
+| Default Scan Agent | Select the Soda-hosted agent, or the name of a Soda Agent that you have previously set up in your secure environment. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
+| Schedule | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
 | Starting At | Select the time of day to run the scan. The default value is midnight. |
-| Time Zone | Select a timezone. The default value is UTC. |
 | Cron Expression | (Optional) Write your own <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">cron expression</a> to define the schedule Soda Cloud uses to run scans. |
 
 <br />
 
-#### 2. Connect the Data Source
+#### 2. Connect
 
 Enter values in the fields to provide the connection configurations Soda Cloud needs to be able to access the data in the data source. Connection configurations are data source-specific and include values for things such as a database's host and access credentials. 
 
@@ -70,13 +69,14 @@ Soda hosts agents in a secure environment in Amazon AWS. As a SOC 2 Type 2 certi
 
 Use the following data source-specific connection configuration pages to populate the connection fields in Soda Cloud.
 *  [Connect to BigQuery]({% link soda/connect-bigquery.md %})
+*  [Connect to Databricks SQL]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql)
 *  [Connect to MySQL]({% link soda/connect-mysql.md %})
 *  [Connect to PostgreSQL]({% link soda/connect-postgres.md %})
 *  [Connect to Snowflake]({% link soda/connect-snowflake.md %})
  
 <br />
 
-#### 3. Discover Datasets
+#### 3. Discover
 
 During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. It captures basic information about each dataset, including a dataset names and the columns each contains.
 
@@ -94,7 +94,7 @@ discover datasets:
 
 <br />
 
-#### 4. Profile datasets
+#### 4. Profile
 
 To gather more detailed profile information about datasets in your data source, you can configure Soda Cloud to profile the columns in datasets. 
 
@@ -113,7 +113,7 @@ profile columns:
 
 <br />
 
-#### 5. Check Datasets
+#### 5. Check
 
 When Soda Cloud automatically discovers the datasets in a data source, it prepares automated monitoring checks for each dataset. These checks detect anomalies and monitor schema evolution, corresponding to the SodaCL [anomaly score]({% link soda-cl/anomaly-score.md %}) and [schema]({% link soda-cl/schema.md %}) checks, respectively.
 
@@ -130,7 +130,7 @@ automated monitoring:
 
 | Field or Label | Guidance | 
 |----------------|----------|
-| Data Source Owner | The Data Source Owner maintains the connection details and settings for this data source and its Default Scan Schedule. |
+| Data Source Owner | The Data Source Owner maintains the connection details and settings for this data source and its Default Scan Definition. |
 | Default Dataset Owner | The Datasets Owner is the user who, by default, becomes the owner of each dataset the Default Scan discovers. Refer to [Roles and Rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) to learn how to adjust the Dataset Owner of individual datasets.|
 
 <br />

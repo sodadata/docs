@@ -15,6 +15,13 @@ Use a freshness check to determine the relative age of the data in a column in y
 checks for dim_product:
   - freshness(start_date) < 3d
 ```
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✔️ &nbsp;&nbsp; Available as a no-code check</small>
+<br />
 
 [Define freshness checks](#define-freshness-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Details and limitations](#details-and-limitations)<br />
@@ -76,7 +83,7 @@ When introducing a NOW variable into a freshness check, you must use the depreca
 
 
 ### Details and limitations
-* Out-of-the-box, freshness checks *only* work with columns that contain data types TIMESTAMP or DATE. However, you can apply a freshness check to TEXT type data using the following syntax to cast the column: 
+* Out-of-the-box, freshness checks *only* work with columns that contain data types TIMESTAMP or DATE. However, though it does not universally apply to all data sources, you *may* be able to apply a freshness check to TEXT type data using the following syntax to cast the column: 
 {% include code-header.html %}
 ```yaml
 checks for dim_product:

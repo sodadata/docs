@@ -8,9 +8,7 @@ parent: SodaCL reference
 # Group evolution checks
 *Last modified on {% last_modified_at %}*
 
-Use a group evolution check to validate the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state. <br /> 
-*Not supported in Soda Core*
-
+Use a group evolution check to validate the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -24,6 +22,13 @@ checks for dim_customer:
       fail:
         when groups change: any
 ```
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+<br />
 
 [Define group evolution checks](#define-group-evolution-checks) <br />
 [Optional check configurations](#optional-check-configurations)<br />
@@ -121,7 +126,7 @@ Soda Cloud must have at least two measurements to yield a check result for group
 | ✓ | Add an identity to a check. | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alert-configuration). | [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
 |  | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
-| ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
+| ✓ | Use quotes when identifying dataset or group names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 | ✓ | Use wildcard characters  ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check; see [example](#example-with-wildcards). | See note in [example](#example-with-wildcards) below. |
 |   | Use for each to apply group evolution checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan. | - |
@@ -176,7 +181,7 @@ You can use `*` or `%` as wildcard characters in a list of column names.  If the
     query: | 
       SELECT style FROM dim_product GROUP BY style
     warn:
-      when forbidden column present: [T%]
+      when forbidden group present: [T%]
 ```
 
 <br />
@@ -186,8 +191,8 @@ You can use `*` or `%` as wildcard characters in a list of column names.  If the
 
 | Validation key | Values | 
 | -------------- | ------ | 
-| `when required group missing` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  
-| `when forbidden group present` | one or more column names in an inline <br />list of comma-separated values, or a nested list |  
+| `when required group missing` | one or more group names in an inline <br />list of comma-separated values, or a nested list |  
+| `when forbidden group present` | one or more group names in an inline <br />list of comma-separated values, or a nested list |  
 | `when groups change` | `any` as an inline value<br /> `group add` as a nested list item<br /> `group delete` as a nested list item<br />  |
 
 

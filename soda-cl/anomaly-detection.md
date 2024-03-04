@@ -9,9 +9,6 @@ parent: Soda CL reference
 *Last modified on {% last_modified_at %}*
 
 Use an anomaly detection check to automatically discover anomalies in your check metrics. 
-
-*Requires Soda Scientific*<br />
-*Requires Soda Library 1.2.2 or greater, or Soda Agent 0.8.54 or greater*<br />
 {% include code-header.html %}
 ```yaml
 # Basic example for row count
@@ -53,6 +50,14 @@ checks for dim_customer:
             changepoint_range: [0.8]
             interval_width: [0.999]
 ```
+<small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library 1.2.2 or greater + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+
+<br />
 
 [About anomaly detection checks](#about-anomaly-detection-checks)<br />
 [Install Soda Scientific](#install-soda-scientific)<br />
@@ -554,7 +559,7 @@ Soda provides an anomaly detection simulator to enable you to test and observe h
 
 1. From the command-line, install the simulator package using the following command.
 ```bash
-pip install soda-scientific[simulator]
+pip install -i https://pypi.cloud.soda.io "soda-scientific[simulator]"
 ```
 2. Ensure you have configured the connection details to both your data source and your Soda Cloud account in a `configuration.yml` file. See: [Configure Soda]({% link soda-library/install.md %}#configure-soda).
 3. Log in to your Soda Cloud account, then navigate to the **Check History** page of your existing anomaly detection or anomaly score check. From your browser copy the entire URL; refer to image below.

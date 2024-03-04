@@ -75,6 +75,16 @@ For a dataset filter, Soda generates a separate query and, again, attempts to pu
 </details>
 
 ## Configure in-check filters
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✔️ &nbsp;&nbsp; Available as a no-code check with a self-hosted Soda Agent connected to any <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soda-supported data source, except Spark, and Dask and Pandas</small><br />
+<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR</small><br />
+<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with a Soda-hosted Agent connected to a BigQuery, Databricks SQL,<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MySQL, PostgreSQL, or Snowflake data source</small>
+<br />
+<br />
 
 {% include in-check-filters.md %}
 
@@ -87,6 +97,14 @@ See also: [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#errors-when-u
 * both validity metrics
 
 ## Configure dataset filters
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+<br />
+<br />
 
 {% include dataset-filters.md %}
 
@@ -105,6 +123,14 @@ checks for sodatest_dataset [daily]:
 ```
 
 ## Configure variables in SodaCL
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+<br />
+<br />
 
 You can use variables in SodaCL to:
 * define dynamic [dataset filters]({% link soda-cl/filters.md %}#configure-dataset-filters)
@@ -246,7 +272,7 @@ soda scan -d adventureworks -c configuration.yml -v USERNAME=sodacore -v PASSWOR
 * If you do not explicitly specify a variable value at scan time to resolve credentials for a connection configuration, Soda uses environment variables.
 * You cannot use a variable to provide a scan-time value for a [configuration key]({% link soda-cl/validity-metrics.md %}#list-of-configuration-keys) value, such as the value for `valid length` for an `invalid_count` check.
 * You may need to wrap date values for variables in single quotes for a check to execute properly. The use of single quotes is bound to the data source, so if your data source demands single quotes around date values for SQL queries, you must also include them when providing date values in SodaCL. Refer to the [# Dataset filter with variables](#filters-and-variables) example at the top of this page.  
-* Except for using the `${NOW}` variable in a dataset filter to [configure a time partition](#configure-a-time-partition-using-the-now-variable) for checks, you cannot use variables when defining checks in an agreement in Soda Cloud. When using variables, you normally pass the values for those variables at scan time, adding them to the `soda scan` command with a `-v` option. However, because scans that execute checks defined in an agreement run according to a scan schedule, there is no opportunity to add dynamic values for variables at scan time.
+* Except for using the `${NOW}` variable in a dataset filter to [configure a time partition](#configure-a-time-partition-using-the-now-variable) for checks, you cannot use variables when defining checks in an agreement in Soda Cloud. When using variables, you normally pass the values for those variables at scan time, adding them to the `soda scan` command with a `-v` option. However, because scans that execute checks defined in an agreement run according to a scan definition, there is no opportunity to add dynamic values for variables at scan time.
 * *Known issue:* SodaCL does not support using variables in [profiling configurations]({% link soda-cl/profile.md %}). <!--SAS-1642-->
 * Except with a `NOW` variable, you cannot use variables in checks you write in an agreement in Soda Cloud as it is impossible to provide the variable values at scan time.
 

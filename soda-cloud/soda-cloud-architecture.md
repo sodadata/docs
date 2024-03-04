@@ -37,7 +37,7 @@ You can use checks to view samples of data that [failed a check]({% link soda-cl
 
 ## Soda-hosted agent deployment
 
-This deployment model provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. Quickly configure connections to your data sources in the Soda Cloud user interface, then empower all your colleagues to explore datasets, access check results, customize collections, and create their own no-code checks for data quality. Soda-hosted agent supports connections to BigQuery, MySQL, PostgreSQL, and Snowflake data sources.
+This deployment model provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. Quickly configure connections to your data sources in the Soda Cloud user interface, then empower all your colleagues to explore datasets, access check results, customize collections, and create their own no-code checks for data quality. Soda-hosted agent supports connections to BigQuery, Databricks SQL, MySQL, PostgreSQL, and Snowflake data sources.
 
 ![with-managed-agent](/assets/images/with-managed-agent.png){:height="60px" width="600px"}
 
@@ -62,7 +62,7 @@ The following diagram illustrates an example deployment of a single Soda Cloud a
 * A **Soda Agent** is Soda Library that has been deployed in Kubernetes cluster in a cloud services provider environment. It enables Soda Cloud users to securely connect to data sources such as Snowflake, BigQuery, and PostgreSQL. [Read more]({% link soda-agent/basics.md %}).
 * A **data source** in Soda Cloud is a representation of the connection to your data source. Notably, it does not contain any of your data<sup>†</sup>, only data source metadata that it uses to check for data quality. [Read more]({% link soda-agent/deploy.md %}#add-a-new-data-source). <br />Within the context of Soda Cloud, a data source contains:
   * **datasets** which represent tabular structures with rows and columns in your data source; like data sources, they do not contain your data<sup>†</sup>, only metadata. Datasets can contain user-defined **attributes** that help filter and organize check results. 
-  * **scan schedules** which you use to define a Soda scan execution schedule for the data source. 
+  * **scan definitions**, sometimes referred to as a scan schedule, which you use to define a Soda scan execution schedule for the data source. 
   * **agreements** in which you write **checks** to define what good data looks like. Agreements also specify where to send alert notifications when a check result warns or fails, such as to a Slack channel in your organization. 
 * An **integration** is a built-in Soda Cloud feature that enables you to connect with a third-party service provider, such as Slack. 
 * A **notification rule** is a tool to bulk-edit where and when to send alert notifications when check results warn or fail. [Read more]({% link soda-cloud/notif-rules.md %}).
@@ -83,17 +83,17 @@ Deleting a dataset affects individual checks defined inside an agreement. If you
 
 ### Delete a data source
 
-Deleting a data source affects many other resources in Soda Cloud. As the following diagram illustrates, when you delete a data source, you delete all its datasets, scan schedules, agreements, and the checks in the agreements. 
+Deleting a data source affects many other resources in Soda Cloud. As the following diagram illustrates, when you delete a data source, you delete all its datasets, scan definitions, agreements, and the checks in the agreements. 
 
 If an agreement contains a [cross check]({% link soda-cl/cross-row-checks.md %}) that compares the row count of datasets between data sources (as does the agreement in Data source C in the diagram), deleting a data source affects more than the checks and agreements it contains.
 
 ![delete-datasource](/assets/images/delete-datasource.png){:height="700px" width="700px"}
 
-### Delete a scan schedule
+### Delete a scan definitions
 
-Deleting a scan schedule has the potential to impact multiple agreements in a data source. Among other things, the scan schedule defines the cadence that Soda Cloud uses to execute scans of data in the data source. 
+Deleting a scan definition has the potential to impact multiple agreements in a data source. Among other things, the scan definition defines the cadence that Soda Cloud uses to execute scans of data in the data source. 
 
-Soda does not scan any agreements that reference a deleted scan schedule. Consequently, your **Checks** dashboard in Soda Cloud no longer displays checks for the agreement, nor would Soda Cloud send alert notifications.
+Soda does not scan any agreements that reference a deleted scan definition. Consequently, your **Checks** dashboard in Soda Cloud no longer displays checks for the agreement, nor would Soda Cloud send alert notifications.
 
 ![delete-scan-sched](/assets/images/delete-scan-sched.png){:height="700px" width="700px"}
 

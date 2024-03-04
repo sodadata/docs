@@ -57,7 +57,7 @@ Note that if your organization uses a single sign-on (SSO) identity provider to 
 
 ## Add check attributes
 
-Define check attributes that your team can apply to checks to filter check results and customie alert notifications.
+Define check attributes that your team can apply to checks to filter check results and customize alert notifications.
 * Apply attributes to checks to label and sort them by department, priority, location, etc.
 * Add a check attribute to identify, for example, checks that execute against personally identifiable information (PII).
 * Define rules to route alert notifications according to check attributes. <br />
