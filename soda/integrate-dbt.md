@@ -80,11 +80,18 @@ Every run that is part of a <a href="https://docs.getdbt.com/docs/dbt-cloud/clou
 pip install -i https://cloud.soda.io soda-dbt
 ```
 2. Obtain a <a href="https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens" target="_blank"> dbt Cloud Admin API Service Token</a>.
-3. Add the following configuration in your Soda `configuration.yml` file as in the following example. Look for the `account ID` after the word "account" in a dbt Cloud URL. For example, `https://cloud.getdbt.com/#/accounts/840923545***/`
+3. Add the following configuration in your Soda `configuration.yml` file as in the following example. Look for the `account ID` after the word "account" in a dbt Cloud URL. For example, `https://cloud.getdbt.com/#/accounts/840923545***/` or head over to your dbtCloud "Account Settings" page.
 ```yaml
 dbt_cloud:
   account_id: account_id
   api_token: serviceAccountTokenFromDbt1234
+```
+**Note:** As of March 1st, 2024, dbtCloud users will be given region-specific access URLs for API connections. Since the integration with dbtCloud interacts with dbt's admin API, users may have to specify the base URL of the admin api via the `access_url` property. Users will progressively be given an access URL and they can find it in their "Account Settings". If users do not provide this in their configuration Soda will default to `"cloud.getdbt.com"`. Find out more on dbt's doc on [Access, Regions & IP Addresses](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses). A configuration file with access URL specified will look something like this:
+```yaml
+dbt_cloud:
+  account_id: account_id
+  api_token: serviceAccountTokenFromDbt1234
+  access_url: ab123.us1.dbt.com
 ```
 4. From the command-line, run the `soda ingest` command to capture the test results from dbt Cloud and send them to Soda Cloud and include *one* of two identifiers from dbt Cloud. Refer to <a href="https://docs.getdbt.com/docs/dbt-cloud/cloud-overview" target="_blank">dbt Cloud documentation</a> for more information.
 * Use the **run ID** from which you want Soda to ingest results. <br /> Look for the run ID at the top of any Run page "Run #40732579" in dbt Cloud, or in the URL of the Run page. For example, `https://cloud.getdbt.com/#/accounts/ 1234/projects/1234/runs/40732579/`
