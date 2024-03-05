@@ -40,11 +40,9 @@ This setup provides a secure, out-of-the-box Soda Agent to manage access to data
 
 ### Compatibility
 
-The Soda-hosted agent supports connections to the following data sources:
+{% include compatible-soda-hosted.md %}
 
-| BigQuery <br /> MySQL<br /> PostgreSQL<br />  Snowflake |
-
-<br />
+### Set up
 
 {% include access-managed-agent.md %}
 

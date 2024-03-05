@@ -82,13 +82,7 @@ Depending on your deployment model, Soda Agent supports connections with the fol
 {% include compatible-cloud-datasources.md %}
 
 #### Soda-hosted agent
-<table>
-  <tr>
-    <td>Databricks SQL<br /> GCP BigQuery<br /> MySQL </td>
-    <td>PostgreSQL<br /> Snowflake<br />&nbsp;</td>
-  </tr>
-</table> 
-<br />
+{% include compatible-soda-hosted.md %}
 
 1. Log in to your Soda Cloud account, then navigate to **your avatar** > **Data Sources**.
 2. In the **Agents** tab, confirm that you can see a Soda-hosted agent, or the Soda Agent you deployed, and that its status is "green" in the **Last Seen** column. If not, refer to the Soda Agent documentation to [troubleshoot]({% link soda-agent/deploy.md %}#troubleshoot-deployment) its status.

@@ -11,6 +11,7 @@ parent: Learning resources
 
 #### March 5, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.0.1.
+* Added MS SQL Server and Redshift to the [list of data sources]({% link soda-agent/managed-agent.md %}#compatibility) you can connect to using a Soda-hosted Agent. 
 
 #### March 1, 2024
 * Published guidance for [managing sensitive data]({% link soda/sensitive-data.md %}) in Soda.
