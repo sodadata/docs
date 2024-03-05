@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### March 6, 2024
+* Update Soda [integration with dbtCloud]({% link soda/integrate-dbt.md %}#ingest-results-from-dbt-cloud-into-soda-cloud) to include instruction for dbt's new `access_URL`. 
+
 #### March 1, 2024
 * Published guidance for [managing sensitive data]({% link soda/sensitive-data.md %}) in Soda.
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.1.

@@ -80,13 +80,13 @@ Every run that is part of a <a href="https://docs.getdbt.com/docs/dbt-cloud/clou
 pip install -i https://cloud.soda.io soda-dbt
 ```
 2. Obtain a <a href="https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens" target="_blank"> dbt Cloud Admin API Service Token</a>.
-3. Add the following configuration in your Soda `configuration.yml` file as in the following example. Look for the `account ID` after the word "account" in a dbt Cloud URL. For example, `https://cloud.getdbt.com/#/accounts/840923545***/` or head over to your dbtCloud "Account Settings" page.
+3. Add the following configuration in your Soda `configuration.yml` file as in the following example. Look for the account ID after the word `account` in a dbt Cloud URL. For example, `https://cloud.getdbt.com/#/accounts/840923545***/` or navigate to your dbtCloud Account Settings page.
 ```yaml
 dbt_cloud:
   account_id: account_id
   api_token: serviceAccountTokenFromDbt1234
 ```
-**Note:** As of March 1st, 2024, dbtCloud users will be given region-specific access URLs for API connections. Since the integration with dbtCloud interacts with dbt's admin API, users may have to specify the base URL of the admin api via the `access_url` property. Users will progressively be given an access URL and they can find it in their "Account Settings". If users do not provide this in their configuration Soda will default to `"cloud.getdbt.com"`. Find out more on dbt's doc on [Access, Regions & IP Addresses](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses). A configuration file with access URL specified will look something like this:
+Note that as of March 1, 2024, dbtCloud users must use region-specific access URLs for API connections. Because the Soda integration with dbtCloud interacts with dbt's admin API, users may have to specify the base URL of the admin api via the `access_url` property, as in the example below. Find your access URL in your dbtCloud account in Account Settings. If you do not provide this in your configuration, Soda defaults to `"cloud.getdbt.com"`. Find out more in <a href="https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses" target="_blank">Access, Regions & IP Addresses</a>. 
 ```yaml
 dbt_cloud:
   account_id: account_id
