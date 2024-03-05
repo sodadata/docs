@@ -12,7 +12,7 @@ redirect_from:
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use Soda's data contracts to set data quality standards for data products. In a programmatic Soda scan, Soda executes the standards as data quality checks. 
+Use **Soda data contracts** to set data quality standards for data products. In a programmatic Soda scan, Soda executes the standards as data quality checks. 
 {% include code-header.html %}
 ```yaml
 dataset: CUSTOMERS
@@ -96,7 +96,7 @@ pip install -i https://pypi.cloud.soda.io soda-core-contracts
 soda --help
 ```
 
-To exit the virtual environment when you are done with this tutorial, use the command `deactivate`.
+To exit the virtual environment, use the command `deactivate`.
 
 
 
