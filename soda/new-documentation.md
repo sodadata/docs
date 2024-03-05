@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### March 5, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.0.1.
+
 #### March 1, 2024
 * Published guidance for [managing sensitive data]({% link soda/sensitive-data.md %}) in Soda.
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.1.
