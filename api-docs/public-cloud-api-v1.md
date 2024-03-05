@@ -5,6 +5,7 @@ description: The Soda Cloud API enables you to trigger actions and query data in
 parent: API Docs
 apidoc: true
 fullwidth: true
+switchbasicwithapikey: true
 ---
 
 <elements-api
