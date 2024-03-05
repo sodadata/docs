@@ -30,12 +30,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 
 ### Compatibility
 
-You can use a Soda-manage agent to connect with the following data sources:
-* BigQuery
-* Databricks SQL
-* MySQL
-* PostgreSQL
-* Snowflake
+{% include compatible-soda-hosted.md %}
 
 
 ## Create a Soda Cloud account

@@ -24,7 +24,7 @@ redirect_from:
 
 If you already use a self-hosted Soda Agent deployed in a Kubernetes cluster to connect to your data source(s), you have the option of migrating a connected data source to a Soda-hosted agent. Though you must reconfigure your data source connection to the new Soda agent, your checks, check history, and scan definition remain intact.
 
-* Be aware that Soda-hosted agents are only compatible with the following data sources: BigQuery, Databricks SQL, MySQL, PostgreSQL, Snowflake. 
+* Be aware that Soda-hosted agents are only compatible with the following data sources: BigQuery, Databricks SQL, MS SQL Server, MySQL, PostgreSQL, Redshift, Snowflake. 
 * 🔴 When you migrate to a Soda-hosted agent, Soda Cloud *resets* all the connection configuration details for your data source. Be sure to capture all existing data source connection details before migrating so you can re-enter the details for the data source connection.
 
 1. As an [Admin]({% link soda-cloud/roles-and-rights.md %}) in Soda Cloud, navigate to **your avatar** > **Organization Settings**. In the **Organization tab**, click the checkbox to **Enable Soda-hosted Agent**.

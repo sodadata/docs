@@ -81,7 +81,7 @@ Use this setup for:<br />
 Soda hosts agents in a secure environment in Amazon AWS. As a SOC 2 Type 2 certified business, Soda responsibly manages Soda-hosted agents to ensure that they remain private, secure, and independent of all other hosted agents. See [Data security and privacy]({% link soda/data-privacy.md %}#using-a-soda-hosted-agent) for details.
 
 Requirements:
-* Login credentials for your data source (BigQuery, MySQL, PostgreSQL, or Snowflake)
+* Login credentials for your data source (BigQuery, Databricks SQL, MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake)
 
 ![with-managed-agent](/assets/images/with-managed-agent.png){:height="60px" width="600px"}
 
