@@ -19,7 +19,6 @@
     color: transparent; 
 }
 [data-test='auth-try-it-row']>div:nth-child(3) input {
-    background: #324865;
     padding-left: 9px;
     margin-left: 9px;
     width: 97%;
@@ -28,7 +27,6 @@
     color: transparent; 
 }
 [data-test='auth-try-it-row']>div:nth-child(6) input {
-    background: #324865;
     padding-left: 9px;
     margin-left: 9px;
     width: 97%;
