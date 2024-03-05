@@ -92,12 +92,9 @@ Retrieve the Alation `datasource_container_id` for the `datasource_container_nam
 
 ## Enable API access to Alation with SSO
 
-If your Alation account employs single sign-on (SSO) access, you must take a few extra steps to ensure that Soda can securely access the catalog via API. If you do not use SSO, skip ahead to [Customize the catalog](#customize-the-catalog).
+If your Alation account employs single sign-on (SSO) access, you must <a href="https://developer.alation.com/dev/docs/creating-an-api-service-account" target="_blank">Create an API service account</a> for Soda to integrate with Alation. 
 
-1. In Alation, follow the instructions to <a href="https://developer.alation.com/dev/docs/creating-an-api-service-account" target="_blank">Create an API service account</a>. This type of account exists expressly for bypassing SSO to access an Alation account via API.
-2. Once you have created the account, use the Alation UI to <a href="https://developer.alation.com/dev/reference/createrefreshtoken" target="_blank">Create a refresh token</a>. See also: <a href="https://developer.alation.com/dev/reference/refresh-access-token-overview" target="_blank">Refresh & Access Token Overview</a>.
-3. Securely record/copy the value of the `refresh_token` generated from the API service account user to send to Soda Support when you send the request to [run the integration](#run-the-integration).
-4. Save the file, then continue to [Customize the catalog](#customize-the-catalog).
+If your Alation account does not use SSO, skip this step and proceed to [Customize the catalog](#customize-the-catalog).
 
 ## Customize the catalog
 

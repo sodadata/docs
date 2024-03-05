@@ -14,6 +14,7 @@ parent: Learning resources
 * Added MS SQL Server and Redshift to the [list of data sources]({% link soda-agent/managed-agent.md %}#compatibility) you can connect to using a Soda-hosted Agent. 
 * Added details to Integrate with Alation documentation to [access an Alation account]({% link soda/integrate-alation.md %}#enable-api-access-to-alation-with-sso) guarded by SSO.
 * Added example for [loading a JSON file]({% link soda/connect-dask.md %}#load-json-file-into-dataframe) into a Dataframe using Dask and Pandas.
+* Added example for [comparing partitioned datasets]({% link soda-cl/compare.md %}#compare-partitioned-data-in-the-same-data-source-but-different-schemas) in different schemas in the same data source. 
 
 #### March 1, 2024
 * Published guidance for [managing sensitive data]({% link soda/sensitive-data.md %}) in Soda.

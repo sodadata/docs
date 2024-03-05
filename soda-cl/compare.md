@@ -16,6 +16,7 @@ See also: [Reconciliation checks]({% link soda-cl/recon.md %})
 Have you got an idea or example of how to compare data that we haven't documented here? <a href="https://github.com/sodadata/docs/issues" target="_blank">Let us know!</a> 
 
 [Compare data in the same data source and schema](#compare-data-in-the-same-data-source-and-schema)<br />
+[Compare partitioned data in the same data source but different schemas](#compare-partitioned-data-in-the-same-data-source-but-different-schemas)<br />
 [Compare data in different data sources or schemas](#compare-data-in-different-data-sources-or-schemas)<br />
 [Compare dates in a dataset to validate event sequence](#compare-dates-in-a-dataset-to-validate-event-sequence)<br />
 <br />
@@ -76,6 +77,39 @@ Alternatively, you can use a [failed rows check]({% link soda-cl/failed-rows-che
 ```
 
 <br />
+
+## Compare partitioned data in the same data source but different schemas
+
+If you wish to compare data between datasets in different schemas, but only compare *partitioned* data from each dataset, you can use dataset filters.
+{% include code-header.html %}
+```yaml
+filter public.employee_dimension [west]:
+where: employee_region = 'West'
+
+# Add a second filter for the dataset
+filter online_sales.online_page_dimension [monthly]:
+where: page_type = 'monthly'
+
+checks for public.employee_dimension [west]:
+  # Add the second filter to the check but without brackets
+  - row_count same as online_sales.online_page_dimension monthly: 
+```
+
+Output:
+```shell
+...
+DEBUG | Query vertica_local.public.employee_dimension[west].aggregation[0]:
+SELECT
+COUNT(*)
+FROM public.employee_dimension
+WHERE employee_region = 'West'
+DEBUG | Query vertica_local.online_sales.online_page_dimension[monthly].aggregation[0]:
+SELECT
+COUNT(*)
+FROM online_sales.online_page_dimension
+WHERE page_type = 'monthly'
+...
+```
 
 ## Compare data in different data sources or schemas
 
