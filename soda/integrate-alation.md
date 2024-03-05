@@ -96,7 +96,7 @@ If your Alation account employs single sign-on (SSO) access, you must take a few
 
 1. In Alation, follow the instructions to <a href="https://developer.alation.com/dev/docs/creating-an-api-service-account" target="_blank">Create an API service account</a>. This type of account exists expressly for bypassing SSO to access an Alation account via API.
 2. Once you have created the account, use the Alation UI to <a href="https://developer.alation.com/dev/reference/createrefreshtoken" target="_blank">Create a refresh token</a>. See also: <a href="https://developer.alation.com/dev/reference/refresh-access-token-overview" target="_blank">Refresh & Access Token Overview</a>.
-3. Add the value of the `refresh_token` generated from the API service account user to the `refresh_token` element in the `alation_refresh_payload_soda-alation-poc.txt` file.
+3. Securely record/copy the value of the `refresh_token` generated from the API service account user to send to Soda Support when you send the request to [run the integration](#run-the-integration).
 4. Save the file, then continue to [Customize the catalog](#customize-the-catalog).
 
 ## Customize the catalog
