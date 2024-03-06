@@ -1,0 +1,44 @@
+.TryItPanel:before {
+    content: "Try It";
+    font-size: 20px;
+    padding: 15px;
+    display: block;
+    color: white;
+}
+
+[data-test='auth-try-it-row']>div:nth-child(1) {
+    visibility: hidden;
+    width: 70px;
+}
+[data-test='auth-try-it-row']>div:nth-child(1):before {
+    content: "API Key";
+    visibility: visible;
+    text-wrap: nowrap;
+}
+[data-test='auth-try-it-row']>div:nth-child(3) input::placeholder {
+    color: transparent; 
+}
+[data-test='auth-try-it-row']>div:nth-child(3) input {
+    background: #324865;
+    padding-left: 9px;
+    margin-left: 9px;
+    width: 97%;
+}
+[data-test='auth-try-it-row']>div:nth-child(6) input::placeholder {
+    color: transparent; 
+}
+[data-test='auth-try-it-row']>div:nth-child(6) input {
+    background: #324865;
+    padding-left: 9px;
+    margin-left: 9px;
+    width: 97%;
+}
+[data-test='auth-try-it-row']>div:nth-child(4) {
+    visibility: hidden;
+    width: 70px;
+}
+[data-test='auth-try-it-row']>div:nth-child(4):before {
+    content: "API Secret";
+    visibility: visible;
+    text-wrap: nowrap;
+}
