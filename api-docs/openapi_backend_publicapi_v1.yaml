@@ -1086,8 +1086,10 @@ paths:
       tags:
         - Utility
 servers:
-  - url: https://cloud.soda.io
-  - url: https://cloud.us.soda.io
+  - description: Cloud EU
+    url: https://cloud.soda.io
+  - description: Cloud US
+    url: https://cloud.us.soda.io
 tags:
   - description: Soda Cloud API Check Endpoints
     name: Checks

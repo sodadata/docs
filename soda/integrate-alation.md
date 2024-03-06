@@ -90,6 +90,12 @@ Retrieve the Alation `datasource_container_id` for the `datasource_container_nam
 ![alation-figure-1-3](/assets/images/alation-figure-1-3.png){:height="450px" width="450px"}
 
 
+## Enable API access to Alation with SSO
+
+If your Alation account employs single sign-on (SSO) access, you must <a href="https://developer.alation.com/dev/docs/creating-an-api-service-account" target="_blank">Create an API service account</a> for Soda to integrate with Alation. 
+
+If your Alation account does not use SSO, skip this step and proceed to [Customize the catalog](#customize-the-catalog).
+
 ## Customize the catalog
 
 1. Create custom fields in Alation that reference information that Soda Cloud pushes to the catalog. These are the fields the catalog users will see that will display Soda Cloud data quality details.

@@ -14,6 +14,9 @@ For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}),
 
 Install package: `soda-pandas-dask`
 
+
+### Load CSV file into Dataframe
+
 {% include code-header.html %}
 ```python
 import dask.datasets
@@ -83,6 +86,22 @@ scan.add_sodacl_yaml_str(checks)
 
 scan.set_verbose(True)
 scan.execute()
+```
+
+### Load JSON file into Dataframe
+
+{% include code-header.html %}
+```python
+import pandas as pd
+from soda.scan import Scan
+
+# Create a Soda scan object
+scan = Scan()
+
+# Load JSON file into DataFrame
+df = pd.read_json('your_file.json')
+
+...
 ```
 
 <br />
