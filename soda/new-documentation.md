@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### March 6, 2024
+* Updated the [Integrate Soda with Microsoft Teams]({% link soda/integrate-msteams.md %}) documentation to accommodate new MS isntructions for creating an incoming webhook.
+
 #### March 5, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.0.1.
 * Added MS SQL Server and Redshift to the [list of data sources]({% link soda-agent/managed-agent.md %}#compatibility) you can connect to using a Soda-hosted Agent. 
