@@ -81,6 +81,8 @@ Alternatively, you can use a [failed rows check]({% link soda-cl/failed-rows-che
 ## Compare partitioned data in the same data source but different schemas
 
 If you wish to compare data between datasets in different schemas, but only compare *partitioned* data from each dataset, you can use dataset filters.
+
+Note that not all data sources fully support the `schema.dataset` format for the dataset identifier in a check, as included in the following example. Some users have reported success using this syntax.
 {% include code-header.html %}
 ```yaml
 filter public.employee_dimension [west]:
