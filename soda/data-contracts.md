@@ -66,7 +66,7 @@ Soda data contracts is a Python library that verifies data quality standards as 
 
 Begin by preparing a contract in a YAML file that stipulates the quality standards to which any newly ingested or transformed data must adhere, such as schema and column data type, freshness, and missing or validity standards. Each time the pipeline accepts or produces new data, Soda executes the checks in the contract; where a check fails, it indicates that new data does not meet the contract's data quality standards and warrants investigation or quarantining. 
 
-If you consider a data pipeline as a set of components -- data transformations, and ingestions, etc. -- you can apply a data contract to each of these components to frequently guage data quality standards. Doing so frequently and consistently enables you to effectively break apart a dense data pipeline into manageable parts wherein data quality is verified before it moves into the next component. Use the same strategy of frequent verification in a CI/CD workflow to make sure that newly-committed code adheres to your stipulated data quality standards.
+If you consider a data pipeline as a set of components -- data transformations, and ingestions, etc. -- you can apply a data contract to each of these components to frequently gauge data quality standards. Doing so frequently and consistently enables you to effectively break apart a dense data pipeline into manageable parts wherein data quality is verified before data moves from one component to the next. Use the same strategy of frequent verification in a CI/CD workflow to make sure that newly-committed code adheres to your stipulated data quality standards.
 
 
 ## Prerequisites
