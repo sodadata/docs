@@ -17,7 +17,6 @@ When you programmatically run a scan, the Soda data contracts Python library ver
 dataset: dim_customer
 
 owner: mahalijones@example.com
-
 pii_category: very sensitive
 
 sql_filter: |
@@ -55,8 +54,6 @@ checks:
 - type: rows_exist
 - type: no_duplicate_count
   columns: ['phone', 'email']
-- type: freshness_in_days
-  must_be_less_than: 3
 ```
 
 [Prepare a data contract](#prepare-a-data-contract)<br />
@@ -69,7 +66,7 @@ checks:
 
 ## Prepare a data contract
 
-1. After completing the Soda data contracts [install requirements]({% link soda/data-contracts.md %}), use a code editor to create a new YAML file name `contracts.yml`. 
+1. After completing the Soda data contracts [install requirements]({% link soda/data-contracts.md %}), use a code or text editor to create a new YAML file name `contracts.yml`. 
 2. In the `contracts.yml` file, define the schema, or list of columns, that a data contract must verify, and any data contract checks you wish to enforce for your dataset.  At a minimum, you must include the following required parameters; refer to [List of configuration keys](#list-of-configuration-keys) below:
     ```yaml
     # an identifier for the dataset or view to which the contract applies
@@ -132,7 +129,7 @@ checks:
     - name: id
       data_type: VARCHAR
       checks:
-      - type: duplicates_count
+      - type: duplicate_count
       ...
     ```
 
@@ -152,23 +149,22 @@ See also: <a href="https://www.jetbrains.com/help/pycharm/json.html#ws_json_sche
 ## List of configuration keys
 
 | Top-level key	| Value | Required 
-| ------------- | ----------- | -------- | 
+| ------------- | ----------- | :--------: | 
 | `dataset` | Specify the name of the dataset upon which you wish to enforce the contract. | required | 
-| `owner`   | Provide the email address of the owner of the data contract. | optional |
-| `pii_category` | Specify the level of sensitivity of the data contract. | optional |
-| `sql_filter` | Write a SQL query to partition the data on which you wish to verify the data contract. <br /> Supply the value of any variables at scan time. | optional |
 | `columns` | Provide a list of columns that form part of the data contract. | required | 
+| any   | Provide a custom key-value pair to record any data contract detail you wish, such as dataset owner, department, created_at date, etc. | optional |
+| `sql_filter` | Write a SQL query to partition the data on which you wish to verify the data contract. <br /> Supply the value of any variables in the filter at scan time. | optional |
 | `checks`  | Define data contract checks that Soda executes against the entire dataset | optional | 
 
 | Column key | Value | Required | 
-| ---------- | ----- | -------- | 
+| ---------- | ----- | :--------: | 
 | `name` | Specify the name of a column in your dataset. | required | 
 | `data_type` | Identify the type of data the column must contain. | optional | 
 | `optional` | Indicate that a column in a schema is not required. | optional |
 | `checks` | Provide a list of data contract checks that Soda executes against the column. | optional | 
 
 | Checks key | Value | Required |
-| ---------- | ----- | -------- |
+| ---------- | ----- | :--------: |
 | `type` | several; see [Data contract checks](#data-contract-checks) | optional |
 
 | Threshold key | Expected value | Example |
@@ -225,13 +221,13 @@ dataset: dim_customer
 
 columns:
   - name: total_children
-    # check passes if values are outside the range 
+    # check passes if values are outside the range, inclusive of 20 
     checks:
       - type: avg
         must_be_less_than: 10
         must_be_greater_than_or_equal_to: 20
   - name: yearly_income
-    # check passes if values are inside the range
+    # check passes if values are inside the range, inclusive of 100
     checks:
     - type: avg
       must_be_greater_than_or_equal_to: 100
@@ -288,8 +284,6 @@ checks:
 ### Freshness
 This check compares the maximum value in the column to the time the scan runs; the check fails if that computed value exceeds the threshold you specified in the check.
 
-When you add a freshness check at the dataset level using the `checks` [top-level configuration key](#list-of-configuration-keys), Soda automatically applies the check to a column that Soda recognizes as containing timestamp data. If a dataset does not contain a column of timestamp data, Soda data contracts does not evaluate the check.
-
 | Type of check | Accepts <br /> threshold values| Column config <br />keys: required | Column config <br />keys: optional |
 |---------------- | :-------------: | :-------------------------------: | --------------------------------- |
 | `freshness_in_days`   | required  | - | `name`  |
@@ -304,11 +298,7 @@ columns:
   - name: date_first_purchase
     type: freshness_in_days
     must_be_less_than: 2
-
-checks:
-  - type: freshness_in_hours
-    must_be_less_than: 6
-    name: New data arrived in the last 6 hours
+    name: New data arrived within the last 2 days
 ```
 
 ### Missing
@@ -317,7 +307,7 @@ If you *do not* use an optional column configuration key to identify the values 
 See also: [Combine missing and validity](#combine-missing-and-validity).
 
 | Type of check | Accepts <br /> threshold values| Column config <br />keys: required | Column config <br />keys: optional |
-|---------------- | :-------------: | :-------------------------------: | --------------------------------- |
+|---------------- | :-------------: | ------------------------------- | --------------------------------- |
 | `no_missing_values` | no  | - | `name`<br /> `missing_values`<br /> `missing_sql_regex`<br />  |
 | `missing_count`     | required | - | `name`<br /> `missing_values`<br /> `missing_sql_ regex`<br />  |
 | `missing_percent`   | required | - | `name`<br /> `missing_values`<br /> `missing_sql_regex`<br />  |
@@ -402,7 +392,7 @@ columns:
 Use a SQL expression or SQL query check to customize your data contract check. Apply these checks at the column or dataset level.
 
 | Type of check | Accepts <br /> threshold values| Column config <br />keys: required | Column config <br />keys: optional |
-|---------------- | :-------------: | :-------------------------------: | --------------------------------- |
+|---------------- | :-------------: | ------------------------------- | --------------------------------- |
 | `sql_expression`   | required  | `metric`<br /> `metric_sql_expression` | `name`  |
 | `user_defined_sql`  | required  | `metric`<br /> `sql_query` | `name`  |
 
@@ -414,13 +404,15 @@ columns:
   - name: country
     checks:
     - type: sql_expression
+      # define a name for your custom metric
       metric: us_count
       metric_sql_expression: COUNT(CASE WHEN country = 'US' THEN 1 END)
       must_be_not_between: [100, 120]
 
 checks:
   - type: user_defined_sql
-    metric: us_count
+    # define a name for your custom metric
+    metric: count_america
     sql_query: |
         SELECT COUNT(*)
         FROM {table_name}
@@ -465,7 +457,7 @@ dataset: dim_customer
       valid_min: 0
       valid_max: 12
       must_be_less_than: 10
-      name: Range of offspring count
+      name: Acceptable range of offspring count
     - name: comment
       checks:
       - type: no_invalid_values
@@ -477,7 +469,7 @@ dataset: dim_customer
 
 #### Valid formats
 
-For a list of the available formats to use with the `valid_formats` column configuration key, see: [List of valid formats]({% link soda-cl/validity-metrics.md %}#list-of-valid-formats) and [Formats supported with Soda for MS SQL Server]({% link soda-cl/validity-metrics.md %}#formats-supported-with-soda-for-ms-sql-server).
+For a list of the available formats to use with the `valid_formats` column configuration key, see: [List of valid formats]({% link soda-cl/validity-metrics.md %}#list-of-valid-formats)<!-- and [Formats supported with Soda for MS SQL Server]({% link soda-cl/validity-metrics.md %}#formats-supported-with-soda-for-ms-sql-server)--> for SodaCL.
 
 <br />
 
@@ -485,7 +477,7 @@ For a list of the available formats to use with the `valid_formats` column confi
 
 Also known as a referential integrity or foreign key check, Soda executes a validity check with a `valid_values_reference_data` column configuration key as a separate query, relative to other validity queries. The query counts all values that exist in the named column which also *do not* exist in the column in the referenced dataset. 
 
-The referential dataset must exist in the same data source as the dataset identified by the contract.
+The referential dataset must exist in the same warehouse as the dataset identified by the contract.
 
 {% include code-header.html %} 
 ```yaml
@@ -513,9 +505,9 @@ dataset: dim_product
 columns:
   - name: size
     checks:
-      - type: no_invalid_values
-        missing_values: ['N/A']
-        valid_values: ['S', 'M', 'L']
+    - type: no_invalid_values
+      missing_values: ['N/A']
+      valid_values: ['S', 'M', 'L']
 ```
 
 <br />
@@ -530,10 +522,10 @@ dataset: dim_product
 columns:
   - name: size
     checks:
-      - type: no_missing_values
-        missing_values: ['N/A']
-      - type: no_invalid_values
-        valid_values: ['S', 'M', 'L']
+    - type: no_missing_values
+      missing_values: ['N/A']
+    - type: no_invalid_values
+      valid_values: ['S', 'M', 'L']
 ```
 
 In the case where you have configured multiple missing checks that specify different missing values, Soda does not merge the results of the check evaluation; it only honors that last set of missing values. Not supported by `valid_values_reference_data`.
@@ -542,6 +534,7 @@ In the case where you have configured multiple missing checks that specify diffe
 
 ## Go further
 
+* Next: [Verify a data contract]({% link soda/data-contracts-verify.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

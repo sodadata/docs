@@ -15,32 +15,27 @@ redirect_from:
 Use **Soda data contracts** to set data quality standards for data products. In a programmatic Soda scan, Soda executes the standards as data quality checks. 
 {% include code-header.html %}
 ```yaml
-dataset: CUSTOMERS
+dataset: dim_product
 
 owner: mahalijones@example.com
-
 pii_category: very sensitive
 
 columns:
-
   - name: id
     data_type: VARCHAR
     checks:
-      - type: duplicates_count
-
+    - type: duplicate_count
   - name: size
     data_type: VARCHAR
     checks:
-      - type: invalid_count
-        valid_values: ['S', 'M', 'L']
-        fail_when_greater_than_or_equal: 10
-
+    - type: invalid_count
+      valid_values: ['S', 'M', 'L']
+      must_be_greater_than_or_equal: 10
   - name: distance
     checks:
-      - type: invalid_count
-        valid_min: 0
-        valid_max: 1000
-
+    - type: invalid_count
+      valid_min: 0
+      valid_max: 1000
   - name: created
     optional: true
 
@@ -72,7 +67,8 @@ If you consider a data pipeline as a set of components -- data transformations, 
 ## Prerequisites
 * Python 3.8 or greater
 * Pip 21.0 or greater
-* a text editor or IDE
+* a code or text editor
+* your data source connection credentials and details
 * (optional) a local development environment in which to test data contract execution
 * (optional) a git repository to store and control the versions of your data contract YAML files
 
@@ -89,7 +85,7 @@ pip install soda-core-postgres
 ```
 3. Use the following command to install `soda-core-contracts`
 ```shell
-pip install -i https://pypi.cloud.soda.io soda-core-contracts
+pip install soda-core-contracts
 ```
 4. Validate the installation using the following command.
 ```shell
