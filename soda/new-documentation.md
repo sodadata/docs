@@ -13,6 +13,7 @@ parent: Learning resources
 * Published documentation for V2 of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
 
 #### March 6, 2024
+* Update Soda [integration with dbtCloud]({% link soda/integrate-dbt.md %}#ingest-results-from-dbt-cloud-into-soda-cloud) to include instruction for dbt's new `access_URL`. 
 * Updated the [Integrate Soda with Microsoft Teams]({% link soda/integrate-msteams.md %}) documentation to accommodate new MS isntructions for creating an incoming webhook.
 
 #### March 5, 2024
