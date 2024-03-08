@@ -11,6 +11,15 @@ parent: Learning resources
 
 #### March 6, 2024
 * Update Soda [integration with dbtCloud]({% link soda/integrate-dbt.md %}#ingest-results-from-dbt-cloud-into-soda-cloud) to include instruction for dbt's new `access_URL`. 
+* Updated the [Integrate Soda with Microsoft Teams]({% link soda/integrate-msteams.md %}) documentation to accommodate new MS isntructions for creating an incoming webhook.
+
+#### March 5, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.0.1.
+* Added MS SQL Server and Redshift to the [list of data sources]({% link soda-agent/managed-agent.md %}#compatibility) you can connect to using a Soda-hosted Agent. 
+* Added details to Integrate with Alation documentation to [access an Alation account]({% link soda/integrate-alation.md %}#enable-api-access-to-alation-with-sso) guarded by SSO.
+* Added example for [loading a JSON file]({% link soda/connect-dask.md %}#load-json-file-into-dataframe) into a Dataframe using Dask and Pandas.
+* Added example for [comparing partitioned datasets]({% link soda-cl/compare.md %}#compare-partitioned-data-in-the-same-data-source-but-different-schemas) in different schemas in the same data source. 
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.2, Soda Core 3.2.3, Soda Agent 1.0.2, and Soda Agent 0.9.2.
 
 #### March 1, 2024
 * Published guidance for [managing sensitive data]({% link soda/sensitive-data.md %}) in Soda.

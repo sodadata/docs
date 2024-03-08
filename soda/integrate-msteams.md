@@ -22,7 +22,7 @@ Configure Soda Cloud to connect your account to MS Teams so that you can:
 2. Click the **+** at the upper right of the table of integrations to add a new integration. 
 3. In the **Add Integration** dialog box, select **Microsoft Teams**.
 4. In the first step of the guided integration workflow, download the <a href="/assets/ms-teams-soda.png" download>Soda logo</a> that you need to set up an incoming webhook with MS Teams. 
-5. Navigate to your MS Teams account to set up an incoming webhook; see [detailed instructions](#set-up-incoming-webhook-in-ms-teams) below.
+5. Navigate to your MS Teams account to set up an incoming webhook; see Microsoft's documentation for <a href="https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=newteams%2Cdotnet#create-an-incoming-webhook" target="_blank">Create Incoming Webhooks</a>. Use this <a href="/assets/ms-teams-soda.png" download>Soda logo</a>, if you wish, to customize the incoming webhook.
 5. Returning to Soda Cloud with the URL for the incoming webhook, continue to follow the guided steps to complete the integration. Reference the following tables for guidance on the values to input in the guided steps. <br /> 
 
 | Field or Label  |  Guidance |
@@ -36,16 +36,6 @@ Configure Soda Cloud to connect your account to MS Teams so that you can:
 
 <br />
 
-### Set up incoming webhook in MS Teams
-
-Refer to the Microsoft documentation for creating <a href="https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook" target="_blank">Incoming Webhooks</a>. What follows are instructions for quick reference. 
-
-1. Go to Microsoft Teams and navigate to the team and channel you wish to integrate with Soda Cloud.
-2. Open the channel's context menu (three dots) and navigate to Connectors.
-3. Search for, then select, Incoming Webhook.
-4. Once added, open the Context menu for your channel and navigate to Connectors. Select your new incoming webhook, then click Configure.
-5. Provide a name for your webhook, then upload the <a href="/assets/ms-teams-soda.png" download>Soda logo</a>.
-6. Click Create, then wait for the fields to display `readonly`.  Copy the incoming webhook URL to input into the guided Soda Cloud integration workflow.
 
 ## Integration for Soda Cloud alert notifications
 

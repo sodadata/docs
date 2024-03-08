@@ -21,7 +21,7 @@ redirect_from:
 
 The **Soda Agent** is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster, then use Helm to deploy a self-hosted Soda Agent in the cluster.
 
-This setup enables Soda Cloud users to securely connect to data sources (BigQuery, Snowflake, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own no-code checks and agreements to check for data quality in the new data source. Alternatively, if you use a BigQuery, Databricks SQL, MySQL, PostgreSQL, or Snowflake data source, you can use a secure, out-of-the-box [Soda-hosted agent]({% link soda-agent/managed-agent.md %}) made available for every Soda Cloud organization.
+This setup enables Soda Cloud users to securely connect to data sources (BigQuery, Snowflake, etc.) from within the Soda Cloud web application. Any user in your Soda Cloud account can add a new data source via the agent, then write their own no-code checks and agreements to check for data quality in the new data source. Alternatively, if you use a BigQuery, Databricks SQL, MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake data source, you can use a secure, out-of-the-box [Soda-hosted agent]({% link soda-agent/managed-agent.md %}) made available for every Soda Cloud organization.
 
 As a step in the **Get started roadmap**, this guide offers instructions to set up, install, and configure Soda in a [self-hosted agent deployment model]({% link soda/setup-guide.md %}#self-hosted-agent).
 
