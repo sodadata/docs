@@ -10,56 +10,25 @@ parent: Use case guides
 
 Use the following guides as example implementations based on how you intend to use Soda for data quality testing. For standard set up instructions, see [Get started]({% link soda/get-started-roadmap.md %}).
 
-<div class="docs-html-content">
-    <section class="docs-section" style="padding-top:0">
-        <div class="docs-section-row">
-            <div class="docs-grid-3cols">
-                <div>
-                    <img src="/assets/images/icons/icon-dev-tools@2x.png" width="54" height="40">
-                    <h2>Soda + dbt + Airflow</h2>
-                    <a href="/soda/quick-start-prod.html">Test data in a pipeline</a>
-                    <p>Use this guide as an example for how to set up and use Soda to test the quality of your data in an Airflow pipeline.</p>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-investigate.png" width="50" height="40">
-                    <h2>Soda for data migration</h2>
-                    <a href="/soda/quick-start-migration.html">Test before data migration</a>
-                    <p>Use this guide to set up Soda to test before and after data migration.</p>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-collaboration@2x.png" width="54" height="40">
-                    <h2>Self-serve Soda</h2>
-                    <a href="/soda/quick-start-end-user.html">Self-serve Soda</a>
-                    <p>Use this guide to set up Soda Cloud to enable users across your organization to serve themselves when it comes to testing data quality. </p>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-dev-tools@2x.png" width="50" height="40">
-                    <h2>Soda + Databricks notebook</h2>
-                    <a href="/soda/quick-start-databricks.html">Invoke Soda in Databricks</a>
-                    <p>Use this guide to invoke Soda data quality tests in a Databricks notebook.</p>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-new@2x.png" width="54" height="40">
-                    <h2>Soda + GitHub</h2><br />
-                    <a href="/soda/quick-start-dev.html">Test data in development</a>
-                    <p>Use this guide to set up Soda to test the quality of your data during your development lifecycle in a GitHub Workflow.</p>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-pacman@2x.png" width="50" height="40">
-                    <h2>Soda + automated monitoring</h2>
-                    <a href="/soda/quick-start-automate.html">Automate monitoring</a>
-                    <p>Use this guide to set up Soda to automatically monitor data quality.</p>
-                </div>
-                <div>
-                    <img src="/assets/images/icons/icon-new@2x.png" width="50" height="40">
-                    <h2>Soda Agent + External Secrets Manager</h2>
-                    <a href="/soda/quick-start-secrets.html">Add a Secrets Manager</a>
-                    <p>Use this guide to set up a Soda Agent to use an External Secrets Manager to retrieve frequently-rotated data source passwords.</p>
-                </div>
-            </div>
-        </div>        
-    </section>
-</div>
+| Guide | Description | [Soda product]({% link soda/product-overview.md %}) <br/>requirements |
+| ----- | ----------- | ------------ |
+| [Test data in a pipeline]({% link soda/quick-start-prod.md %}) | Use this guide as an example for how to set up Soda to test the quality of your data in an Airflow pipeline that uses dbt transformations.| Soda Library<br /> Soda Cloud |
+| [Test data before migration]({% link soda/quick-start-migration.md %}) | Use this guide to set up Soda to test before and after data migration between data sources. |  Soda Library<br /> Soda Cloud |
+| [Self-serve Soda]({% link soda/quick-start-end-user.md %}) | Use this guide to set up Soda Cloud to enable users across your organization to serve themselves when it comes to testing data quality. | Soda Cloud<br /> Soda Agent |
+| [Test data during development]({% link soda/quick-start-dev.md %}) | Use this guide to set up Soda to test the quality of your data during your development lifecycle in a GitHub Workflow. | Soda Library<br /> Soda Cloud |
+| [Automate monitoring]({% link soda/quick-start-automate.md %}) | Use this guide to set up Soda to automatically monitor data quality.  | Soda Cloud<br /> Soda Agent |
+
+<br />
+
+Use the following How tos for practical advice, examples, and instructions for using Soda.
+
+| How to | Description | [Soda product]({% link soda/product-overview.md %}) <br/>requirements |
+| ----- | ----------- | ------------ |
+| [Invoke Soda in Databricks]({% link soda/quick-start-databricks.md %}) | Learn how to invoke Soda data quality tests in a Databricks notebook. | Soda Library<br /> Soda Cloud |
+| [Add a Secrets Manager]({% link soda/quick-start-secrets.md %}) | Learn how to set up a Soda Agent to use an External Secrets Manager to retrieve frequently-rotated data source passwords.| Soda Cloud<br /> Self-hosted Agent |
+| [Generate API keys]({% link soda-cloud/api-keys.md %}) | Learn how to use Soda Cloud API keys to securely communicate with other entities such as Soda Library and self-hosted Soda Agents, and to provide secure access to Soda Cloud via API. | Soda Cloud |
+| [Manage sensitive data]({% link soda/sensitive-data.md %}) | Learn how to adjust several configurable settings that help you manage access to sensitive data in Soda Cloud. | Soda Cloud | 
+| [Reroute failed row samples]({% link soda/route-failed-rows.md %}) | Learn how to programmatically set up Soda Library to display failed row samples in the command-line. | Soda Library<br /> Soda Cloud |
 
 
 Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

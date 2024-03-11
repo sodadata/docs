@@ -419,6 +419,9 @@ data_source my_datasource_name:
 ## Configure a failed row sampler
 
 If you are running Soda scans programmatically, you can add a custom sampler to collect samples of rows with a `fail` check result. Refer to the following example that prints the failed row samples in the CLI.
+
+💡 Copy+paste and run an [example script]({% link soda/route-failed-rows.md %}) locally to print failed row samples in the CLI scan output.
+
 {% include code-header.html %}
 ```python
 from soda.scan import Scan
