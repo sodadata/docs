@@ -9,7 +9,7 @@ parent: Learning resources
 
 <br />
 
-#### March 11, 2024
+#### March 12, 2024
 * Add instructions for how to programmatically use Soda Library with an example script to [reroute failed row samples]({% link soda/route-failed-rows.md %}) to the CLI output instead of Soda Cloud.
 
 #### March 6, 2024
