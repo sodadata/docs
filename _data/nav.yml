@@ -35,14 +35,20 @@
     page: soda/quick-start-migration.md
   - subtitle: Self-serve Soda
     page: soda/quick-start-end-user.md
-  - subtitle: Invoke Soda in Databricks
-    page: soda/quick-start-databricks.md
   - subtitle: Test data during development
     page: soda/quick-start-dev.md
   - subtitle: Automate monitoring
     page: soda/quick-start-automate.md
-  - subtitle: Add a Secrets Manager
+  - subtitle: 'How to: Invoke Soda in Databricks'
+    page: soda/quick-start-databricks.md
+  - subtitle: 'How to: Add a Secrets Manager'
     page: soda/quick-start-secrets.md
+  - subtitle: 'How to: Generate API Keys'
+    page: soda-cloud/api-keys.md
+  - subtitle: 'How to: Manage sensitive data'
+    page: soda/sensitive-data.md
+  - subtitle: 'How to: Reroute failed rows'
+    page: soda/route-failed-rows.md
 
 
 - title: Write SodaCL checks 
@@ -261,8 +267,6 @@
     page: soda-cloud/soda-cloud-architecture.md
   - subtitle: Generate API keys
     page: soda-cloud/api-keys.md
-  - subtitle: Manage sensitive data
-    page: soda/sensitive-data.md
   - subtitle: Data security and privacy
     page: soda/data-privacy.md
   - subtitle: Soda Library usage statistics

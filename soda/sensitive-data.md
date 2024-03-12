@@ -2,7 +2,7 @@
 layout: default
 title: Manage sensitive data
 description: Learn how to mitigate the exposure of sensitive information in Soda Cloud. 
-parent: Learning resources
+parent: Use case guides
 ---
 
 # Manage sensitive data 
