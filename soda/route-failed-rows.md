@@ -18,6 +18,7 @@ Note that although the example does not send failed row samples to Soda Cloud, i
 
 See also: [Reroute failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples)<br />
 See also: [Disable samples in Soda Cloud]({% link soda-cl/sample-datasets.md %}#disable-samples-in-soda-cloud)<br />
+See also: [Examine failed row samples]({% link soda-cloud/failed-rows.md %})<br />
 
 ## Prerequisites
 * a code or text editor such as PyCharm or Visual Studio Code
@@ -27,13 +28,15 @@ See also: [Disable samples in Soda Cloud]({% link soda-cl/sample-datasets.md %}#
 
 ## Set up and run example script
 
+Jump to: [script](#example-script)
+
 1. In a browser, navigate to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a new Soda account, which is free for a 45-day trial. If you already have a Soda account, log in.
 2. Navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys. Copy+paste the API key values to a temporary, secure place in your local environment.
     <details>
         <summary style="color:#00BC7E">Why do I need a Soda Cloud account?</summary>
     To validate your account license or free trial, the Soda Library Docker image that the GitHub Action uses to execute scans must communicate with a Soda Cloud account via API keys. <br />Create new API keys in your Soda Cloud account, then use them to configure the connection between the Soda Library Docker image and your account later in this procedure. <br /><br />
     </details>
-4. Best practice dictates that you run Soda in a virtual environment. Create a new directory in your environment, then use the following command to create, then activate, a virtual environment called `.sodadataframes`.
+3. Best practice dictates that you run Soda in a virtual environment. From the command line, create a new directory in your environment, then use the following command to create, then activate, a virtual environment called `.sodadataframes`.
     ```shell
     python -m venv .sodadataframes
     # MacOS
@@ -41,7 +44,7 @@ See also: [Disable samples in Soda Cloud]({% link soda-cl/sample-datasets.md %}#
     # Windows
     source .sodadataframes\Scripts\activate
     ```
-5. Run the following commands to upgrade pip, then install Soda Library for Dask and Pandas. 
+4. Run the following commands to upgrade pip, then install Soda Library for Dask and Pandas. 
     ```shell
     # MacOS
     pip install --upgrade pip  
@@ -50,10 +53,10 @@ See also: [Disable samples in Soda Cloud]({% link soda-cl/sample-datasets.md %}#
 
     pip install -i https://pypi.cloud.soda.io soda-pandas-dask
     ```
-6. Copy + paste the [script](#example-script) below into a new `Soda-dask-pandas-example.py` file in the same directory in which you created your virtual environment. In the file, replace the above-the-line values with your own Soda Cloud values, then save the file. 
-7. From the command-line, use the following command to run the example and see both the scan results and the failed row samples as command-line output. <br />
+5. Copy + paste the [script](#example-script) below into a new `Soda-dask-pandas-example.py` file in the same directory in which you created your virtual environment. In the file, replace the above-the-line values with your own Soda Cloud values, then save the file. 
+6. From the command-line, use the following command to run the example and see both the scan results and the failed row samples as command-line output. <br />
 ```shell
-python3 Soda-dask-pandas-example.py 
+python Soda-dask-pandas-example.py 
 ``` 
 Output:
 ```shell
@@ -78,18 +81,18 @@ Scan summary:
 Oops! 2 failures. 0 warnings. 0 errors. 5 pass.
 Sending results to Soda Cloud
 Soda Cloud Trace: 628131****
-Failed Rows in a DataFrame Example
+Failed Rows in a Dataframe Example
 -----------------------------------
-      name  age         city              email country                     soda_check_name
-0    Alice   25     New York  alice@example.net      US        No duplicate Email Addresses
-1      Bob   30  Los Angeles  alice@example.net      BT        No duplicate Email Addresses
-2  Charlie   66      Chicago  alice@example.net      BO        No duplicate Email Addresses
-3    David   87     Chicago1  alice@example.net     ABC        No duplicate Email Addresses
-4    David   87     Chicago1  alice@example.net     ABC  Alpha2 country codes must be valid
+      name  age         city              email country                        failed_check                  created_at
+0    Alice   25     New York  alice@example.net      US        No duplicate Email Addresses  2024-03-12 10:40:55.681690
+1      Bob   30  Los Angeles  alice@example.net      BT        No duplicate Email Addresses  2024-03-12 10:40:55.681690
+2  Charlie   66      Chicago  alice@example.net      BO        No duplicate Email Addresses  2024-03-12 10:40:55.681690
+3    David   87     Chicago1  alice@example.net     ABC        No duplicate Email Addresses  2024-03-12 10:40:55.681690
+4    David   87     Chicago1  alice@example.net     ABC  Alpha2 Country Codes must be valid  2024-03-12 10:40:55.731225
 ```
-8. In your Soda Cloud account, navigate to **Datasets**, then click to open **soda.pandas.example**. Soda displays the check results for the scan you just executed via the command-line. <br />If you wish, click the **Columns** tab to view the dataset profile information Soda Library collected and pushed to Soda Cloud. 
+7. In your Soda Cloud account, navigate to **Datasets**, then click to open **soda.pandas.example**. Soda displays the check results for the scan you just executed via the command-line. <br />If you wish, click the **Columns** tab to view the dataset profile information Soda Library collected and pushed to Soda Cloud. 
 ![script-example-results](/assets/images/script-example-results.png){:height="700px" width="700px"}
-9. Click the **Alpha2 Country Codes must be valid** row to view the latest check result, which failed. Note that Soda Cloud does not display a tab for **Failed Rows Analysis** which would normally contain samples of failed rows from the scan.
+8. Click the **Alpha2 Country Codes must be valid** row to view the latest check result, which failed. Note that Soda Cloud does not display a tab for **Failed Rows Analysis** which would normally contain samples of failed rows from the scan.
 ![script-no-samples](/assets/images/script-no-samples.png){:height="700px" width="700px"}
 
 <br />
@@ -102,6 +105,7 @@ import pandas as pd
 from soda.scan import Scan
 from soda.sampler.sampler import Sampler
 from soda.sampler.sample_context import SampleContext
+from datetime import datetime
 import json
 import os
 
@@ -127,16 +131,17 @@ failed_rows_cloud = "false"
 class CustomSampler(Sampler):
     def store_sample(self, sample_context: SampleContext):
         rows = sample_context.sample.get_rows()
-        json_data = json.dumps(rows) # converts failed row samples to JSON
-        exceptions_df = pd.read_json(json_data) # creates a DataFrame with failed row samples
-        # defines exceptions DataFrame
+        json_data = json.dumps(rows) # Convert failed rows to JSON
+        exceptions_df = pd.read_json(json_data) #create dataframe with failed rows
+        # Define exceptions dataframe
         exceptions_schema = sample_context.sample.get_schema().get_dict()
         exception_df_schema = []
         for n in exceptions_schema:
             exception_df_schema.append(n["name"])
         exceptions_df.columns = exception_df_schema
         check_name = sample_context.check_name
-        exceptions_df['soda_check_name'] = check_name
+        exceptions_df['failed_check'] = check_name
+        exceptions_df['created_at'] = datetime.now()
         exceptions_df.to_csv(check_name+".csv", sep=",", index=False, encoding="utf-8")
 
 
@@ -158,6 +163,12 @@ reference_list = [
 
 # Convert Sample data1 to a Pandas DataFrame
 pandas_frame1 = pd.DataFrame(data_list)
+
+# Soda executes checks on column names in lowercase. 
+# Where applicable, identify camel case column names and convert them to lowercase. 🐪
+camelcase_columns = [col for col in pandas_frame1.columns if col != col.lower()]
+camelcase_to_lower = {col: col.lower() for col in camelcase_columns}
+pandas_frame1.rename(columns=camelcase_to_lower, inplace=True)
 
 # Convert Sample data2 to a Pandas DataFrame
 pandas_frame2 = pd.DataFrame(reference_list)
@@ -238,6 +249,8 @@ else:
         combined_df = pd.concat(dfs, ignore_index=True)
     print("Failed Rows in a DataFrame Example")
     print("-----------------------------------")
+    lower_to_camelcase = {v: k for k, v in camelcase_to_lower.items()} # convert any failed row column names back to camel case
+    combined_df.rename(columns=lower_to_camelcase, inplace=True)
     print(combined_df)
     for file in csv_files: # remove the CSV files that were created
         os.remove(os.path.join(current_dir, file))
