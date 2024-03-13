@@ -131,13 +131,11 @@ SodaCL includes over 25 built-in metrics that you can use to write checks, a sub
 
 #### Use SQL and Regex assistants
 
-Powered by OpenAI's GPT-3.5 & GPT-4, the generative SQL and regular expression assistants available in Soda Cloud's no-code checks helps you write the queries and expressions you can add to validity, missing, SQL failed rows, and SQL metric checks.  
+Powered by OpenAI's GPT-3.5 & GPT-4, the generative SQL and regular expression assistants available in Soda Cloud's no-code checks helps you write the queries and expressions you can add to validity, missing, SQL failed rows, and SQL metric checks. Soda acknowledges that the output of the assistants may not be fully accurate or reliable. Leverage the assistants' output, but be sure to carefully review all queries and expressions you add to your checks. Refer to <a href="https://www.soda.io/terms-and-conditions" target="_blank">Soda's General Terms & Conditions</a> for further details.
 
-In leveraging OpenAI's technology, Soda's SQL and Regex assistants serve to help prepare queries and expressions you can use in your checks, and acknowledges that the output of the assistants may not be fully accurate or reliable. Leverage the assistants' output, but be sure to carefully review all queries and expressions you add to your checks. Refer to <a href="https://www.soda.io/terms-and-conditions" target="_blank">Soda's General Terms & Conditions</a> for further details.
+Be aware that Soda shares the content of all SQL and Regex assistant prompts/input and output with OpenAI to perform the processing that yields the output. Following OpenAI's suggestion, Soda also sends metadata, such as schema information, to OpenAI along with the prompts/input in order to improve the quality of the output. Read more about OpenAI at <a href="https://openai.com/policies" target="_blank">https://openai.com/policies</a>.
 
-Be aware that Soda shares the content of all SQL and Regex assistant prompts/input and output with OpenAI to perform the processing that yields the output. Following OpenAIs terms and policies, Soda also sends metadata, such as schema information, to OpenAI along with the prompts/input in order to improve the quality of the output. Read more about OpenAI's terms and policies at <a href="https://openai.com/policies" target="_blank">https://openai.com/policies</a>.
-
-Soda's SQL or Regex assistants are enabled by default. If you do not wish to use them, navigate to **your avatar** > **Organization Settings**, then click to remove the check from the box for **Enable SQL and Regex Assistants Powered By Powered by OpenAI’s GPT-4/GPT3.5**.     
+Soda's SQL or Regex assistants are enabled by default. If you do not wish to use them, navigate to **your avatar** > **Organization Settings**, then click to remove the check from the box for **Enable SQL and Regex Assistants Powered By Powered by OpenAI**.     
 
 <br />
 

@@ -165,7 +165,7 @@ reference_list = [
 pandas_frame1 = pd.DataFrame(data_list)
 
 # Soda executes checks on column names in lowercase. 
-# Where applicable, identify camel case column names and convert them to lowercase. 🐪
+# Where applicable, identify camel or snake case column names and convert them to lowercase. 🐪 🐍
 camelcase_columns = [col for col in pandas_frame1.columns if col != col.lower()]
 camelcase_to_lower = {col: col.lower() for col in camelcase_columns}
 pandas_frame1.rename(columns=camelcase_to_lower, inplace=True)
