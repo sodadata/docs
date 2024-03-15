@@ -33,19 +33,23 @@ When deciding when to verify a data contract, consider that contract verificatio
     Alternatively, you can use a YAML string or dict to define connection details; use one of the `Connection.from_*` methods.
 3. Add the following block to your Python working environment. Replace the values of the file names with your own `connection.yml` file and `contract.yml` respectively.
     ```python
-    from soda.contracts.connection import Connection
+    from soda.contracts.connection import Connection, SodaException
     from soda.contracts.contract import Contract, ContractResult
 
     try:
-        with Connection.from_yaml_file("./postgres_localhost_dev.scn.yml") as connection:
-            contract: Contract = Contract.from_yaml_file("./customers.sdc.yml")
+        with Connection.from_yaml_file("./postgres_localhost_dev.connection.yml") as connection:
+            contract: Contract = Contract.from_yaml_file("./dim_customer.contract.yml")
             contract_result: ContractResult = contract.verify(connection)
     except SodaException as e:
         # make the orchestration job fail and report all problems
     ```
 4. At runtime, Soda connects with your warehouse and verifies the contract by executing the data contract checks in your file. Use `${SCHEMA}` syntax to provide any environment variable values in a contract YAML file. Soda returns results of the verification as pass or fail check results, or indicate errors if any exist; see below.
 
-### Verification output
+### Contract result output
+
+When Soda surfaces an issue with data quality in your pipeline, or if something goes wrong during contract verification, you may wish to stop the pipeline from further processing the data. With that use case in mind, the Soda data contracts API raises a `SodaException` for both outcomes. 
+
+The table that follows offers insight into the differentiation between check failures and contract verification errors.
 
 | Output | Meaning | Action |
 | ------ | ------- | ------ |
@@ -54,7 +58,7 @@ When deciding when to verify a data contract, consider that contract verificatio
 | Error | Soda could not evaluate one or more checks in the data contract. Incorrect inputs such as missing files, invalid files, connection issues, or invalid contract format, or query execution exceptions can cause errors. | Use the error logs to investigate the root cause of the issue. |
 | Problem | Either one or more checks in the contract have failed or something has produced an error. | Access the methods related to problems in the `ContractResult`, such as `has_problems` and `assert_no_problems`. |
 
-Note that the Soda data contract library does not comply with the standard Python language convention of errors for invalid inputs and exceptions. The base class for all Soda exceptions is `SodaException`, which inherits from `Exception`. 
+Note that Soda raises a `SodaException` for both value errors as well as execution exceptions. The base class for all Soda exceptions is `SodaException`, which inherits from `Exception`. 
 
 ## Go further
 

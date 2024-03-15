@@ -17,27 +17,28 @@ Use **Soda data contracts** to set data quality standards for data products. In 
 ```yaml
 dataset: dim_product
 
-owner: mahalijones@example.com
-pii_category: very sensitive
-
 columns:
-  - name: id
-    data_type: VARCHAR
-    checks:
-    - type: duplicate_count
-  - name: size
-    data_type: VARCHAR
-    checks:
-    - type: invalid_count
-      valid_values: ['S', 'M', 'L']
-      must_be_greater_than_or_equal: 10
-  - name: distance
-    checks:
-    - type: invalid_count
-      valid_min: 0
-      valid_max: 1000
-  - name: created
-    optional: true
+
+- name: id
+  data_type: VARCHAR
+  checks:
+  - type: duplicate_count
+
+- name: size
+  data_type: VARCHAR
+  checks:
+  - type: invalid_count
+    valid_values: ['S', 'M', 'L']
+    must_be_greater_than_or_equal: 10
+
+- name: distance
+  checks:
+  - type: invalid_count
+    valid_min: 0
+    valid_max: 1000
+
+- name: created
+  optional: true
 
 checks:
   - type: row_count
