@@ -7,6 +7,33 @@ components:
         name:
           type: string
       type: object
+    CheckResultValueDTO:
+      properties:
+        measure:
+          $ref: '#/components/schemas/MeasureDTO'
+        value:
+          type: number
+        valueLabel:
+          type: string
+        valueSeries:
+          $ref: '#/components/schemas/CheckResultValueSeriesDTO'
+      type: object
+    CheckResultValueSeriesDTO:
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/CheckResultValueSeriesDTO_ValueSeriesValue'
+          type: array
+      type: object
+    CheckResultValueSeriesDTO_ValueSeriesValue:
+      properties:
+        label:
+          type: string
+        level:
+          $ref: '#/components/schemas/EvaluationStatusDTO'
+        value:
+          type: number
+      type: object
     ChecksContentDTO:
       properties:
         agreements:
@@ -41,6 +68,8 @@ components:
             $ref: '#/components/schemas/IncidentSlimDTO'
           nullable: false
           type: array
+        lastCheckResultValue:
+          $ref: '#/components/schemas/CheckResultValueDTO'
         lastCheckRunTime:
           type: string
         lastUpdated:
@@ -204,6 +233,10 @@ components:
     MapOfStringToString:
       additionalProperties: true
       type: object
+    MeasureDTO:
+      enum:
+        - time
+      type: string
     OwnerDTO:
       properties:
         email:
