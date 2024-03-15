@@ -45,12 +45,11 @@ When deciding when to verify a data contract, consider that contract verificatio
     ```
 4. At runtime, Soda connects with your warehouse and verifies the contract by executing the data contract checks in your file. Use `${SCHEMA}` syntax to provide any environment variable values in a contract YAML file. Soda returns results of the verification as pass or fail check results, or indicate errors if any exist; see below.
 
-### Contract result terminology
+### Contract result output
 
-What you typically want is to stop your pipeline in case there is a problem with the data or if there is something wrong with 
-the contract verification process itself.  For that reason, the API is designed so it raises a SodaException in both cases, 
-which makes that easy from a coding perspective.  Here's a bit more detail on the terminology abd how we differentiate between 
-check failures and verification errors.
+When Soda surfaces an issue with data quality in your pipeline, or if something goes wrong during contract verification, you may wish to stop the pipeline from further processing the data. With that use case in mind, the Soda data contracts API raises a `SodaException` for both outcomes. 
+
+The table that follows offers insight into the differentiation between check failures and contract verification errors.
 
 | Output | Meaning | Action |
 | ------ | ------- | ------ |

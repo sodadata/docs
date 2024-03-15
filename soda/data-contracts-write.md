@@ -9,9 +9,9 @@ parent: Create a data contract
 <br />![experimental](/assets/images/experimental.png){:height="150px" width="150px"} <br />
 *Last modified on {% last_modified_at %}*
 
-**Soda data contracts** is a Python library that verifies data based on checks. It's intended to protect data quality standards in a data pipeline so as to prevent negative downstream impact. To verify the data quality standards on a dataset, you prepare a data **contract YAML file**, which is a formal description of the data. The data contract describes how good data looks like in the form of checks. Using the Python API, you can add data contract verification ideally right after new data has been produced. 
+**Soda data contracts** is a Python library that uses checks to verify data. Contracts enforce data quality standards in a data pipeline so as to prevent negative downstream impact. To verify the data quality standards for a dataset, you prepare a data **contract YAML file**, which is a formal description of the data. In the data contract, you use checks to define your expectations for good-quality data. Using the Python API, you can add data contract verification ideally right after new data has been produced. 
 
-When you programmatically run a scan, the Soda data contracts Python library verifies the contract, executing the checks contained within the contract and producing results which indicate whether the checks passed or failed.
+In your data pipeline, add a data contract after data has been been produced or transformed so that when you programmatically run a scan via the Python API, Soda data contracts verifies the contract, executing the checks contained within the contract and producing results which indicate whether the checks passed or failed.
 
 ```yaml
 dataset: dim_customer
@@ -66,12 +66,12 @@ checks:
 1. After completing the Soda data contracts [install requirements]({% link soda/data-contracts.md %}), use a code or text editor to create a new YAML file name `dim_customer.contract.yml`. 
 2. In the `dim_customer.contract.yml` file, define the schema, or list of columns, that a data contract must verify, and any data contract checks you wish to enforce for your dataset.  At a minimum, you must include the following required parameters; refer to [List of configuration keys](#list-of-configuration-keys) below:
     ```yaml
-    # an identifier for the table or view as known by the SQL warehouse
+    # an identifier for the table or view in the SQL warehouse
     dataset: dim_customer
 
     # a list of columns that represents the dataset's schema, 
-    # each of which is identified by a name that has to match 
-    # the name as known in the SQL warehouse
+    # each of which is identified by the name of a column  
+    # in the SQL warehouse
     columns: 
     - name: first_name
     - name: last_name
@@ -81,7 +81,7 @@ checks:
     ```yaml
     dataset: dim_customer
 
-    # a filter to verify only on the newly produced partition of data
+    # a filter to verify a partition of data
     sql_filter: |
       created > ${FILTER_START_TIME}
 
@@ -110,10 +110,10 @@ checks:
 
 ### (Optional) Add Soda data contracts YAML code completion in Visual Studio Code
 
-1. If you have not already done so, install <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">the (Red Hat) VS Code YAML extension</a>.
+1. If you have not already done so, install the Red Hat <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">VS Code YAML extension</a>.
    
-2. From the public soda-core repo, download the `./soda/contracts/soda_data_contract_schema_1_0_0.json` to a local folder, relative to your contract YAML files.
-3. Add the following `yaml-language-server` details to the top of your contract YAML file. The $schema url can be a relative path. If a relative path is specified, it is calculated from yaml file path, not from workspace root path
+2. From the public soda-core repo, download the `./soda/contracts/soda_data_contract_schema_1_0_0.json` to a local folder that contains, or will contain, your contract YAML files.
+3. Add the following `yaml-language-server` details to the top of your contract YAML file. You can supply a relative file path for the `$schema` which the extension determines according to the YAML file path, not from the workspace root path.
     ```yaml
     # yaml-language-server: $schema=./soda_data_contract_schema_1_0_0.json
     
@@ -126,7 +126,7 @@ checks:
       - type: duplicate_count
     ```
 
-Alternatively if that doesn't work, you can try this other approach: <a href="https://dev.to/brpaz/how-to-create-your-own-auto-completion-for-json-and-yaml-files-on-vs-code-with-the-help-of-json-schema-k1i" target="_blank">How to create your own auto-completion</a>.
+Alternatively, access instructions to <a href="https://dev.to/brpaz/how-to-create-your-own-auto-completion-for-json-and-yaml-files-on-vs-code-with-the-help-of-json-schema-k1i" target="_blank">create your own auto-completion</a>.
 
 
 ### (Optional) Add Soda data contracts YAML code completion in PyCharm
@@ -134,7 +134,7 @@ Alternatively if that doesn't work, you can try this other approach: <a href="ht
 1. Choose an extension for your contract files.  For example `.contract.yml`
 2. From the public soda-core repo, download the `./soda/contracts/soda_data_contract_schema_1_0_0.json` to a local drive that also contains, or will contain, your contract YAML files.
 2. In your PyCharm environment, navigate to Preferences > Languages & Frameworks > Schemas and DTDs > JSON Schema Mappings.
-3. Add a mapping between the extension chosen in step (1) For example `*.contract.yml` files and the schema file that you saved on your local file system.
+3. Add a mapping between the extension you chose in step 1. For example, use `*.contract.yml` files and map to the schema file that you saved on your local file system.
 
 See also: <a href="https://www.jetbrains.com/help/pycharm/json.html#ws_json_schema_add_custom" target="_blank">Using custom JSON schemas</a>.
 
@@ -142,11 +142,11 @@ See also: <a href="https://www.jetbrains.com/help/pycharm/json.html#ws_json_sche
 
 ## List of configuration keys
 
-| Top-level key | Value | Required 
+| Top-level key | Value | Required |
 | ------------- | ----------- | :--------: | 
 | `dataset` | Specify the name of the dataset upon which you wish to enforce the contract. | required | 
 | `columns` | Provide a list of columns that form part of the data contract. | required | 
-| any   | Provide a custom key-value pair to record any data contract detail you wish, such as dataset owner, department, created_at date, etc. | optional |
+| any   | Provide a custom key-value pair to record any data contract detail you wish, such as dataset owner, department, created_at date, etc. See: [Leverage Soda YAML extensibility](#leverage-soda-yaml-extensibility)| optional |
 | `sql_filter` | Write a SQL query to partition the data on which you wish to verify the data contract. <br /> Supply the value of any variables in the filter at scan time. | optional |
 | `checks`  | Define data contract checks that Soda executes against the entire dataset | optional | 
 
@@ -526,35 +526,32 @@ In the case where you have configured multiple missing checks that specify diffe
 
 <br />
 
-## Soda YAML extensibility
+## Leverage Soda YAML extensibility
 
-Soda data contract YAML is intended to be extensible. Other tools can leverage the YAML file and include 
-their own configuration parameters.  This way, a single data contract file can contain configurations for 
-many of the data stack tools.  This makes it easier to manage a dataset.
+Because the Soda data contract YAML is extensible, you can add your own custom configuration parameters to a data contract YAML file for other tools in your data stack to use. Soda data contracts ignores these custom keys during verification.
 
+For example, you may wish to include a parameter to identify a dataset's owner, or to identify role-based access that another tool enforces.
+
+{% include code-header.html %}
 ```yaml
 dataset: dim_product
 
-# For example: the owner field here is ignored by Soda data contract verification
-# Other tools can also use this contract file and leverage the existing and this owner
+# Soda data contract verification ignores this parameter.
 owner: mahalijones@example.com
 
-# Configuring access is another aspect that could be done in a contract
-# It requires a different tool than Soda to use such a configuration and use it
-# This example only shows the extensibility of Soda to accommodate other tools' 
-# keys inside the Soda contract YAML. 
+# Configure parameters for other tools to use.
+# Soda data contract verification ignores this parameter.
 default_column_view_roles: 
 - admin 
 - product_mgr
 
+# Soda data contract verification ignores this parameter.
 sensitive_column_view_roles: 
 - admin 
 
 columns:
-- name: purchase_price
-  
-  # Also on column level, any key can be used by other tools like eg 'sensitive'  
-  # Soda contract verification will ignore it.
+- name: discount_percent
+  # Soda data contract verification ignores this parameter.
   sensitive: true
 ```
 
