@@ -9,6 +9,10 @@ parent: Learning resources
 
 <br />
 
+#### March 18, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.2.4 and 3.3.0.
+* Added details for [passlisting domain names]({% link soda-agent/deploy.md %}#troubleshoot-deployment) for Soda Agent to communicate with Soda Cloud. 
+
 #### March 15, 2024
 * Published documentation for V2 of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
 

@@ -44,7 +44,7 @@ checks:
   - type: row_count
 ```
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.0 or greater</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
@@ -66,6 +66,9 @@ If you consider a data pipeline as a set of components -- data transformations, 
 
 
 ## Prerequisites
+
+Soda Core 3.3.0 supports the newest, experimental version of `soda-contracts`. The new version introduces changes that may not be compatible with the previous experimental version of `soda-contracts`. To continue using the first version of `soda-contracts` without any adjustments, upgrade to Soda Core 3.2.4 for the latest in bug fixes and updates.
+
 * Python 3.8 or greater
 * Pip 21.0 or greater
 * a code or text editor
