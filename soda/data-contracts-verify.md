@@ -13,6 +13,13 @@ To verify a **Soda data contract** is to scan the data in a warehouse to execute
 
 When deciding when to verify a data contract, consider that contract verification works best on new data as soon as it is produced so as to limit its exposure to other systems or users who might access it. The earlier in a pipeline or workflow, the better!  Further, best practice suggests that you store batches of new data in a temporary table, verify a contract on the batches, then append the data to a larger table.
 
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.0 or greater</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+
 ## Prerequisites
 * Python 3.8 or greater
 * a code or text editor
