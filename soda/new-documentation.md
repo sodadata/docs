@@ -9,6 +9,10 @@ parent: Learning resources
 
 <br />
 
+#### March 20, 2024
+* Updated [Oracle connection]({% link soda/connect-oracle.md %}) configuration to use a more generic `connectstring` value.
+* Prepred a separate reference section for [data contract checks]({% link soda/data-contracts-checks.md %}).
+
 #### March 18, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.2.4 and 3.3.0.
 * Added details for [passlisting domain names]({% link soda-agent/deploy.md %}#troubleshoot-deployment) for Soda Agent to communicate with Soda Cloud. 

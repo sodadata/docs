@@ -248,6 +248,8 @@
     page: soda/data-contracts-write.md
   - subtitle: Verify a data contract
     page: soda/data-contracts-verify.md
+  - subtitle: Data contract check reference
+    page: soda/data-contracts-checks.md
   
 
 - title: Learning resources
