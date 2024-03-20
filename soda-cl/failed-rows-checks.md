@@ -363,7 +363,7 @@ SELECT id, cst_size, cst_size_txt, distance, pct, country, zip, email, date_upda
 ## Reroute failed rows samples
 <!--Linked to UI, access Shlink-->
 
-If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. To do so, [configure a custom failed row sampler](#configure-a-failed-row-sampler), then convert the python object/dict into JSON or whatever the format you need. Then, add the `storage` configuration to your sampler configuration to specify the columns you wish to exclude, as per the following examples.
+If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. To do so, configure a custom failed row sampler to receive the failed rows, then convert the python object/dict into JSON or whatever the format you need. Then, add the `storage` configuration to your sampler configuration to specify the columns you wish to exclude, as per the following examples.
 
 Soda sends the failed rows samples as a JSON payload and includes:
 * data source name
