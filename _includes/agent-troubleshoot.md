@@ -13,7 +13,7 @@
 OR <br />
 * `cloud.soda.io` for Soda Cloud account created in the EU region<br />
 AND<br />
-* `collect.us.soda.io`
+* `collect.soda.io`
 
 <br />
 
