@@ -19,6 +19,15 @@ automated monitoring:
     - include %
     - exclude test%
 ```
+
+<small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as no-code checks</small>
+<br /><br />
+
 [About automated monitoring checks](#about-automated-monitoring-checks)<br />
 [Add automated monitoring checks](#add-automated-monitoring-checks-1)<br />
 [Add quotes to all datasets](#add-quotes-to-all-datasets)<br />

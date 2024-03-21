@@ -19,6 +19,12 @@ sample datasets:
     - include prod%
     - exclude test%
 ```
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<br />
 
 [Sample datasets](#sample-datasets)<br />
 [Add quotes to all datasets](#add-quotes-to-all-datasets)<br />
