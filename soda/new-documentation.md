@@ -12,6 +12,7 @@ parent: Learning resources
 #### March 21, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.3.
 * Added more content and example for [rerouting failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples).
+* Added [requirement]({% link soda-cl/anomaly-detection.md %}#track-anomalies-and-relative-changes-by-group) for using anomaly detection checks in group by configurations: requires Soda Library 1.1.27 or greater, or Soda Agent 0.8.57 or greater. 
 
 #### March 20, 2024
 * Updated [Oracle connection]({% link soda/connect-oracle.md %}) configuration to use a more generic `connectstring` value.

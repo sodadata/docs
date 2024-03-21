@@ -11,12 +11,17 @@ parent: Write SodaCL checks
 
 **SodaGPT** is a generative AI assistant for data quality testing.
 
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<br />
+
 <a href="https://cloud.soda.io/login" target="_blank">Log in</a> to your **Soda Cloud** account, click the **Ask SodaGPT** button in the main nav, then provide natural language instructions to the interface to receive fully-formed, syntax-correct checks in the [Soda Checks Language (SodaCL)]({% link soda-cl/metrics-and-checks.md %}). If you do not already have an account, <a href="https://cloud.soda.io/signup" target="_blank">sign up for Soda Cloud</a> for a 45-day free trial.
 
 Use the generated checks to test data quality in your data pipeline or in your development workflow to prevent data quality issues from causing downstream impact.
 
 ![sodagpt](/assets/images/sodagpt.png){:height="500px" width="500px"}
-
 
 ## Instruction parameters
 

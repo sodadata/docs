@@ -32,6 +32,13 @@ profile columns:
     - exclude dimgeography.% # exclude all columns of dimgeography dataset 
 ```
 
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<br />
+
 [Add dataset discovery](#add-dataset-discovery) <br />
 [Add column profiling](#add-column-profiling)<br />
 [Add quotes to all datasets](#add-quotes-to-all-datasets)<br />

@@ -253,10 +253,10 @@ As a Data Engineer, you can write SodaCL checks directly in a `checks.yml` file,
 <br />
 
 ### Manually write SodaCL checks
-<small>✔️ &nbsp;&nbsp; May require Soda Core Scientific</small><br />
+<small>✔️ &nbsp;&nbsp; Some checks require Soda Core Scientific</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
-<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <br />
 
 The checks YAML file stores the Soda Checks you write using SodaCL. Use this file to manually write your own SodaCL checks. 
@@ -314,8 +314,8 @@ You can use check suggestions with the following data sources:
 {% include check-suggest.md %}
 
 ### Programmatically add checks
-<small>✔️ &nbsp;&nbsp; May require Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Some checks require Soda Core Scientific</small><br />
+<small>✔️ &nbsp;&nbsp; Some checks supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <br />
