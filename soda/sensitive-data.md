@@ -198,8 +198,7 @@ Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/fai
 ### Reroute failed row samples
 
 If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. 
-1. [Configure a custom failed row sampler]({% link soda-cl/failed-rows-checks.md %}#configure-a-failed-row-sampler).
-2. Convert the python object/dict into JSON or whatever the format you need. 
+1. [Configure a custom failed row sampler]({% link soda-cl/failed-rows-checks.md %}#example-custom-failed-row-sampler)to receive the failed rows into a JSON and then convert them into the format you need.
 3. Add a [storage configuration]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to your sampler configuration to specify the columns you wish to exclude, as in the following example.
     ```yaml
     data_source nyc_breakdowns_gke:
