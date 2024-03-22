@@ -14,6 +14,14 @@ Alternatively, use the [Check suggestions]({% link soda-library/check-suggestion
 
 ![blank-page](/assets/images/blank-page.png){:height="500px" width="500px"}
 
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Some checks supported by SodaGPT</small><br />
+<small>✔️ &nbsp;&nbsp; Some available as no-code checks</small>
+<br /><br />
+
 [SodaCL: In brief](#sodacl-in-brief) <br />
 [About this tutorial](#about-this-tutorial) <br />
 [Tutorial prerequisites](#tutorial-prerequisites) <br />

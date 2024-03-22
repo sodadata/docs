@@ -50,7 +50,7 @@ checks for dim_customer:
 &nbsp;&nbsp;&nbsp;&nbsp;[Disabling options and details](#disabling-options-and-details)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[About failed rows sampling queries](#about-failed-rows-sampling-queries)<br />
 [Reroute failed rows samples](#reroute-failed-rows-samples)<br />
-[Configure a failed row sampler](#configure-a-failed-row-sampler)<br />
+[Configure a failed row sampler for programmatic scans](#configure-a-failed-row-sampler-for-programmatic-scans)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -363,32 +363,72 @@ SELECT id, cst_size, cst_size_txt, distance, pct, country, zip, email, date_upda
 ## Reroute failed rows samples
 <!--Linked to UI, access Shlink-->
 
-If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. To do so, [configure a custom failed row sampler](#configure-a-failed-row-sampler), then convert the python object/dict into JSON or whatever the format you need. Then, add the `storage` configuration to your sampler configuration to specify the columns you wish to exclude, as per the following examples.
+If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. 
 
-Soda sends the failed rows samples as a JSON payload and includes:
+To do so, configure a custom failed row sampler to receive the failed rows into a JSON and then convert them into the format you need. Then, add the storage configuration to your sampler configuration in your data source connection configuration.
+
+Soda sends the failed rows samples as a JSON event payload and includes the following, as in the example below.
 * data source name
 * dataset name
 * scan definition name
 * check name
 
 {% include code-header.html %}
-```yaml
-data_source my_datasource_name:
-  type: postgres
-  host: localhost
-  port: '5432'
-  username: ***
-  password: ***
-  database: postgres
-  schema: public
-  sampler:
-    storage:
-      type: http
-      url: http://failedrows.example.com
-      message: Failed rows have been sent to
-      link: https://www.example.url
-      link_text: S3
+```json
+{
+    "check_name": "String",
+    "count": "Integer",
+    "dataset": "String",
+    "datasource": "String",
+    "rows": [
+        {
+            "column1": "String|Number|Boolean",
+            "column2": "String|Number|Boolean"
+            ...
+        }
+    ],
+    "schema": [
+        {
+            "name": "String",
+            "type": "String"
+        }
+    ]
+}
 ```
+
+
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Configure in Soda Cloud</label>
+  <label class="tab" id="two-tab" for="two">Configure in YAML file </label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
+
+
+1. Configure a custom failed row sampler; see [example](#example-custom-failed-row-sampler).
+2. As an Admin user, log in to Soda Cloud, then navigate to an existing data source: **your avatar** > **Data Sources**.
+3. In the **Data Sources** tab, click to open the data source for which you wish to reroute failed rows samples, then navigate to the **Connect the Data Source** tab.
+4. To the connection configuration, add the `storage` configuration as outlined below, then save.
+  ```yaml
+  data_source my_datasource_name:
+    type: postgres
+    host: localhost
+    port: '5432'
+    username: ***
+    password: ***
+    database: postgres
+    schema: public
+    sampler:
+      storage:
+        type: http
+        url: http://failedrows.example.com
+        message: Failed rows have been sent to
+        link: https://www.example.url
+        link_text: S3
+  ```
 
 | Parameter  | Value      | Description |
 | ---------- | ---------- | ----------- |
@@ -398,25 +438,102 @@ data_source my_datasource_name:
 | `link`     | any URL    | (Optional) Provide a link to a web application through which users can access the stored sample. |
 | `link_text`| any string | (Optional) Provide text for the `link` button. For example, "View Failed Samples".|
 
-#### Configure in Soda Cloud
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
 
-1. As an Admin user, log in to Soda Cloud, then navigate to an existing data source: **your avatar** > **Data Sources**.
-2. In the **Data Sources** tab, click to open the data source for which you wish to reroute failed rows samples, then navigate to the **Connect the Data Source** tab.
-3. To the connection configuration, add the `storage` configuration as outlined above.
-4. Save the changes.
+
+1. Configure a custom failed row sampler; see [example](#example-custom-failed-row-sampler).
+2. Open the configuration YAML file that contains the data source connection configuration for the data source for which you wish to reroute failed rows samples.
+3. To the connection configuration, add the `storage` configuration to specify the columns you wish to exclude, as outlined below, then save the changes to the file.
+  ```yaml
+  data_source my_datasource_name:
+    type: postgres
+    host: localhost
+    port: '5432'
+    username: ***
+    password: ***
+    database: postgres
+    schema: public
+    sampler:
+      storage:
+        type: http
+        url: http://failedrows.example.com
+        message: Failed rows have been sent to
+        link: https://www.example.url
+        link_text: S3
+  ```
+
+| Parameter  | Value      | Description |
+| ---------- | ---------- | ----------- |
+| `type`     | `http`     | Provide an HTTP endpoint such as a Lambda function, or a custom Python HTTP service. |
+| `url`      |  any URL   | Provide a valid URL that accepts JSON payloads.|
+| `message ` | any string | (Optional) Provide a customized message that Soda Cloud displays in the failed rows tab, prepended to the sampler response, to instruct your fellow Soda Cloud users how to find where the failed rows samples are stored in your environment. <br />For example, if you wish the complete message to read: "Failed rows have been sent to dir/file.json", configure the syntax as in the example above and return the file location path in the sampler's response.|
+| `link`     | any URL    | (Optional) Provide a link to a web application through which users can access the stored sample. |
+| `link_text`| any string | (Optional) Provide text for the `link` button. For example, "View Failed Samples".|
+
+  </div>
+
+  </div>
+</div>
 
 <br />
 
-#### Configure in Soda Library
+#### Example: Custom failed row sampler
 
-1. Open the configuration YAML file that contains the data source connection configuration for the data source for which you wish to reroute failed rows samples.
-2. To the connection configuration, add the `storage` configuration to specify the columns you wish to exclude, as outlined above.
-3. Save the changes to the file.
+The following is an example of a custom failed row sampler that gets the failed rows from the Soda event object (JSON payload, see example below) and prints the failed rows in CSV format. 
+
+Borrow from this example to create your own custom sampler that you can use to reroute failed row samples.
+
+{% include code-header.html %}
+```python
+import csv
+import io
+
+# Function to put failed row samples in a AWS Lambda / Azure function / Google Cloud function
+def lambda_handler(event):
+    check_name = event['check_name']
+    count = event['count']
+    dataset = event['dataset']
+    datasource = event['datasource']
+    rows = event['rows']
+    schema = event['schema']
+
+    csv_buffer = io.StringIO()
+
+    # Write data to CSV buffer
+    csv_writer = csv.writer(csv_buffer)
+
+    # Write row header
+    header_row = [column['name'] for column in schema]
+    csv_writer.writerow(header_row)
+
+    # Write each row of data
+    for row in rows:
+        csv_writer.writerow(row)
+
+    # Move to the beginning of the buffer
+    csv_buffer.seek(0)
+
+    # Read the content of the buffer
+    csv_content = csv_buffer.getvalue()
+
+    # Print the content
+    print(csv_content) 
+```
+
+Example CSV output:
+
+{% include code-header.html %}
+```shell
+column_1_name,column_2_name
+row_1_column_1_value,row_1_column_2_value
+row_2_column_1_value,row_2_column_2_value
+```
 
 <br />
 
 
-## Configure a failed row sampler
+### Configure a failed row sampler for programmatic scans
 
 If you are running Soda scans programmatically, you can add a custom sampler to collect samples of rows with a `fail` check result. Refer to the following example that prints the failed row samples in the CLI.
 
@@ -473,7 +590,7 @@ if __name__ == '__main__':
 
 ### Save failed row samples to alternate desination
 
-If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">docs.python.org</a> for details.
+If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler [as above](#configure-a-failed-row-sampler-for-programmatic-scans), then using the Python API to save the rows to a JSON file. Refer to Python docs for <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">Reading and writing files</a> for details.
 
 
 ## Go further
