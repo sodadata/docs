@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### March 27, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.1, Soda Library 1.4.4, and Soda Agent 1.0.3.
+
 #### March 21, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.3.
 * Added more content and example for [rerouting failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples).
