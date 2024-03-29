@@ -40,7 +40,7 @@ When deciding when to verify a data contract, consider that contract verificatio
     Alternatively, you can use a YAML string or dict to define connection details; use one of the `Connection.from_*` methods.
 3. Add the following block to your Python working environment. Replace the values of the file names with your own `connection.yml` file and `contract.yml` respectively.
     ```python
-    from soda.contracts.connection import Connection, SodaException
+    from soda.contracts.impl.data_source import Connection, SodaException
     from soda.contracts.contract import Contract, ContractResult
 
     try:

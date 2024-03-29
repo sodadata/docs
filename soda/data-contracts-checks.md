@@ -176,7 +176,7 @@ Use a SQL expression or SQL query check to customize your data contract check. A
 | Type of check | Accepts <br /> [threshold values](#list-of-threhold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
 |---------------- | :-------------: | ------------------------------- | --------------------------------- |
 | `sql_expression`   | required  | `metric`<br /> `metric_sql_expression` | `name`  |
-| `user_defined_sql`  | required  | `metric`<br /> `sql_query` | `name`  |
+| `metric_query`  | required  | `metric`<br /> `query_sql` | `name`  |
 
 {% include code-header.html %}
 ```yaml
@@ -192,10 +192,10 @@ columns:
     must_be_not_between: [100, 120]
 
 checks:
-- type: user_defined_sql
+- type: metric_query
   # define a name for your custom metric
   metric: count_america
-  sql_query: |
+  query_sql: |
       SELECT COUNT(*)
       FROM {table_name}
       WHERE country = 'US'
