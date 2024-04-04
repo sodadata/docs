@@ -11,6 +11,7 @@ parent: Learning resources
 
 #### April 4, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.5 & 1.4.6, and Soda Agent 1.0.4 and 1.0.5.
+* Updated the [example script]({% link soda/route-failed-rows.md %}#example-script) in Reroute failed row samples guide.
 
 #### March 27, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.1, Soda Library 1.4.4, and Soda Agent 1.0.3.
