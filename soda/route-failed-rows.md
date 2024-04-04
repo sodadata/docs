@@ -164,19 +164,13 @@ reference_list = [
 # Convert Sample data1 to a Pandas DataFrame
 pandas_frame1 = pd.DataFrame(data_list)
 
-# Soda executes checks on column names in lowercase. 
-# Where applicable, identify camel or snake case column names and convert them to lowercase. 🐪 🐍
-camelcase_columns = [col for col in pandas_frame1.columns if col != col.lower()]
-camelcase_to_lower = {col: col.lower() for col in camelcase_columns}
-pandas_frame1.rename(columns=camelcase_to_lower, inplace=True)
-
 # Convert Sample data2 to a Pandas DataFrame
 pandas_frame2 = pd.DataFrame(reference_list)
 
 # Setup Soda data quality scan
 scan = Scan()
 scan.add_pandas_dataframe(dataset_name="soda_pandas_example", pandas_df=pandas_frame1, data_source_name="pandas_reference_example")
-scan.add_pandas_dataframe(dataset_name="reference", pandas_df=pandas_frame2, data_source_name="pandas_reference_example") # reference list
+scan.add_pandas_dataframe(dataset_name="reference", pandas_df=pandas_frame2, data_source_name="pandas_reference_example") # reference List
 scan.set_scan_definition_name("pandas_reference_example")
 scan.set_data_source_name("pandas_reference_example")
 if failed_rows_cloud == "false":
@@ -225,35 +219,37 @@ soda_cloud:
 
 scan.add_sodacl_yaml_str(checks)
 scan.add_configuration_yaml_str(config)
+#scan.set_verbose(True)
+# When testing, you can set scan.set_is_local(True) to avoid sending failed row samples to Soda Cloud.
+scan.set_is_local(False)
 scan.execute()
-#scan.set_verbose(False)
 #print(scan.get_logs_text())
 #print(scan.get_checks_fail_text())
 
 
 # Create a DataFrame for any exceptions
 # Optionally, you can write this DataFrame to an external table.
-current_dir = os.path.dirname(os.path.realpath(__file__))
-csv_files = [file for file in os.listdir(current_dir) if file.endswith('.csv')]
-if len(csv_files) == 0:
-    pass
-else:
-    dfs = []
-    for file in csv_files:
-        file_path = os.path.join(current_dir, file)
-        df = pd.read_csv(file_path)
-        dfs.append(df)
-    if len(dfs) == 1:
-        combined_df = dfs[0]
+if failed_rows_cloud == "false":
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+    csv_files = [file for file in os.listdir(current_dir) if file.endswith('.soda')]
+    if len(csv_files) == 0:
+        pass
     else:
-        combined_df = pd.concat(dfs, ignore_index=True)
-    print("Failed Rows in a DataFrame Example")
-    print("-----------------------------------")
-    lower_to_camelcase = {v: k for k, v in camelcase_to_lower.items()} # convert any failed row column names back to camel case
-    combined_df.rename(columns=lower_to_camelcase, inplace=True)
-    print(combined_df)
-    for file in csv_files: # remove the CSV files that were created
-        os.remove(os.path.join(current_dir, file))
+        dfs = []
+        for file in csv_files:
+            file_path = os.path.join(current_dir, file)
+            df = pd.read_csv(file_path)
+            dfs.append(df)
+        if len(dfs) == 1:
+            combined_df = dfs[0]
+        else:
+            combined_df = pd.concat(dfs, ignore_index=True)
+        print("Failed Rows in a Dataframe Example")
+        print("-----------------------------------")
+        print(combined_df)
+    # remove the CSV files that were created
+        for file in csv_files:
+            os.remove(os.path.join(current_dir, file))
 ```
 
 
