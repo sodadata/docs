@@ -72,7 +72,7 @@ checks for dim_customer:
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |
 |   | Use for each to apply schema checks to multiple datasets in one scan. | - |
-|   | Apply a dataset filter to partition data during a scan. | - |
+| ✓ | Apply a dataset filter to partition data during a scan. | - |
 
 #### Example with check name 
 {% include code-header.html %}
