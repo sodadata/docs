@@ -26,16 +26,23 @@ data_source my_datasource_name:
   username: simple
   password: simple_pass
   schema: public
+  use_encryption: "false"
+  routing_queue: "queue"
+  disable_certificate_verification: "false"
+
 ```
 
-| Property  | Required | Notes                                                            |
-| --------- | -------- | -----------------------------------------------------------------|
-| type      | required  | Identify the type of data source for Soda.                      |
-| host      | required  | Provide a host identifier.                                      |
-| port      | required  | Provide a port identifier.                                      |
-| username  | required | Consider using system variables to retrieve this value securely. |
-| password  | required | Consider using system variables to retrieve this value securely. |
-| schema    | optional | Provide an identifier for the schema in which your dataset exists.|
+| Property                         | Required | Notes                                                                                          |
+| -------------------------------- | -------- | ---------------------------------------------------------------------------------------------- |
+| type                             | required | Identify the type of data source for Soda.                                                     |
+| host                             | required | Provide a host identifier.                                                                     |
+| port                             | required | Provide a port identifier.                                                                     |
+| username                         | required | Consider using system variables to retrieve this value securely.                               |
+| password                         | required | Consider using system variables to retrieve this value securely.                               |
+| schema                           | optional | Provide an identifier for the schema in which your dataset exists.                             |
+| use_encryption                   | optional | Use encryption or not. False by default.                                                       |
+| routing_queue                    | optional | Provide an identifier for the routing queue to use.                                            |
+| disable_certificate_verification | optional | If true, Dremio does not verify the host certificate against the truststore. False by default. |
 
 
 {% include test-connection.md %}
