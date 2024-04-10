@@ -156,7 +156,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 * Replace the value of `soda.agent.name` with a custom name for you agent, if you wish. 
 * Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
 * (Optional) Specify the format for log output: `raw` for plain text, or `json` for JSON format.
-* (Optional) Specify the leve of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
+* (Optional) Specify the level of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
 ```shell
 helm install soda-agent soda-agent/soda-agent \
     --set soda.agent.name=myuniqueagent \
@@ -213,7 +213,7 @@ kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
 * Replace the value of `name` with a custom name for your agent, if you wish.
 * Specify the value for `endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
 * (Optional) Specify the format for log output: `raw` for plain text, or `json` for JSON format.
-* (Optional) Specify the leve of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
+* (Optional) Specify the level of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
 ```yaml
 soda:
         apikey:
@@ -397,7 +397,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 * Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
 * Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else. 
 * (Optional) Specify the format for log output: `raw` for plain text, or `json` for JSON format.
-* (Optional) Specify the leve of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
+* (Optional) Specify the level of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
 * Read more [about the `helm install` command](#about-the-helm-install-command-1).
 ```shell
 helm install soda-agent soda-agent/soda-agent \
@@ -459,7 +459,7 @@ kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
 * Replace the value of `name` with a custom name for your agent, if you wish.
 * Specify the value for `endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
 * (Optional) Specify the format for log output: `raw` for plain text, or `json` for JSON format.
-* (Optional) Specify the leve of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
+* (Optional) Specify the level of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
 ```yaml
 soda:
         apikey:
@@ -806,7 +806,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 * Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
 * Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
 * (Optional) Specify the format for log output: `raw` for plain text, or `json` for JSON format.
-* (Optional) Specify the leve of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
+* (Optional) Specify the level of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
 ```shell
 helm install soda-agent soda-agent/soda-agent \
     --set soda.agent.name=myuniqueagent \
@@ -864,7 +864,7 @@ namespace/soda-agent created
 * Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
 * Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
 * (Optional) Specify the format for log output: `raw` for plain text, or `json` for JSON format.
-* (Optional) Specify the leve of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
+* (Optional) Specify the level of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
 ```shell
 helm install soda-agent soda-agent/soda-agent \
     --set soda.agent.name=myuniqueagent \
@@ -917,7 +917,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 * Replace the value of `name` with a custom name for your agent, if you wish.
 * Specify the value for `endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
 * (Optional) Specify the format for log output: `raw` for plain text, or `json` for JSON format.
-* (Optional) Specify the leve of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
+* (Optional) Specify the level of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
 ```yaml
 soda:
         apikey:
@@ -1170,7 +1170,7 @@ helm repo add soda-agent https://helm.soda.io/soda-agent/
 * Replace the value of `soda.agent.name` with a custom name for your agent, if you wish.
 * Specify the value for `soda.cloud.endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
 * (Optional) Specify the format for log output: `raw` for plain text, or `json` for JSON format.
-* (Optional) Specify the leve of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
+* (Optional) Specify the level of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
 ```shell
 helm install soda-agent soda-agent/soda-agent \
    --set soda.agent.name=myuniqueagent \
@@ -1229,7 +1229,7 @@ kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent -f
 * Replace the value of `name` with a custom name for your agent, if you wish.
 * Specify the value for `endpoint` according to your local region: `https://cloud.us.soda.io` for the United States, or `https://cloud.soda.io` for all else.
 * (Optional) Specify the format for log output: `raw` for plain text, or `json` for JSON format.
-* (Optional) Specify the leve of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
+* (Optional) Specify the level of log information you wish to see when deploying the agent: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`.
 ```yaml
 soda:
         apikey:
