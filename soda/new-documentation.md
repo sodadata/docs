@@ -9,7 +9,8 @@ parent: Learning resources
 
 <br />
 
-#### April 10, 20224
+#### April 10, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.0.6.
 * Documented new parameters for [Dremio data source]({% link soda/connect-dremio.md %}) connections.
 
 #### April 4, 2024
