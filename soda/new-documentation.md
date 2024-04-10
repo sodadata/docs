@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### April 10, 20224
+* Documented new parameters for [Dremio data source]({% link soda/connect-dremio.md %}) connections.
+
 #### April 4, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.5 & 1.4.6, and Soda Agent 1.0.4 and 1.0.5.
 * Updated the [example script]({% link soda/route-failed-rows.md %}#example-script) in Reroute failed row samples guide.

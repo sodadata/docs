@@ -40,9 +40,9 @@ data_source my_datasource_name:
 | username                         | required | Consider using system variables to retrieve this value securely.                               |
 | password                         | required | Consider using system variables to retrieve this value securely.                               |
 | schema                           | optional | Provide an identifier for the schema in which your dataset exists.                             |
-| use_encryption                   | optional | Use encryption or not. False by default.                                                       |
+| use_encryption                   | optional | Specify a boolean value to use, or not use, encryption. Default is `false`.                    |
 | routing_queue                    | optional | Provide an identifier for the routing queue to use.                                            |
-| disable_certificate_verification | optional | If true, Dremio does not verify the host certificate against the truststore. False by default. |
+| disable_certificate_verification | optional | Specify a boolean value to demand that Dremio verify the host certificate against the truststore. If set to `true`, Dremio does *not* verify the host certificate. Default value is `false` to verify certificate. |
 
 
 {% include test-connection.md %}
