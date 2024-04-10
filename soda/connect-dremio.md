@@ -27,7 +27,7 @@ data_source my_datasource_name:
   password: simple_pass
   schema: public
   use_encryption: "false"
-  routing_queue: "queue"
+  routing_queue: queue
   disable_certificate_verification: "false"
 
 ```
@@ -40,9 +40,9 @@ data_source my_datasource_name:
 | username                         | required | Consider using system variables to retrieve this value securely.                               |
 | password                         | required | Consider using system variables to retrieve this value securely.                               |
 | schema                           | optional | Provide an identifier for the schema in which your dataset exists.                             |
-| use_encryption                   | optional | Specify a boolean value to use, or not use, encryption. Default is `false`.                    |
+| use_encryption                   | optional | Specify a boolean value to use, or not use, encryption. Default is `false`. Value requires double quotes. |
 | routing_queue                    | optional | Provide an identifier for the routing queue to use.                                            |
-| disable_certificate_verification | optional | Specify a boolean value to demand that Dremio verify the host certificate against the truststore. If set to `true`, Dremio does *not* verify the host certificate. Default value is `false` to verify certificate. |
+| disable_certificate_verification | optional | Specify a boolean value to demand that Dremio verify the host certificate against the truststore. If set to `true`, Dremio does *not* verify the host certificate. Default value is `false` to verify certificate. Value requires double quotes. |
 
 
 {% include test-connection.md %}
