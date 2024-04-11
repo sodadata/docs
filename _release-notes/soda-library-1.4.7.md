@@ -1,6 +1,6 @@
 ---
 name: "1.4.7"
-date: 2024-04-010
+date: 2024-04-10
 products:
   - soda-library
 ---
