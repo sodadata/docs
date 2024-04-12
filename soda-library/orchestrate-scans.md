@@ -19,6 +19,17 @@ Configure actions that the orchestration tool can take based on scan output. For
 📚 Consider following the [Test data in a pipeline]({% link soda/quick-start-prod.md %}) guide for specific details about embedding Soda tests in an Airflow pipeline. <br />
 🎥 Consider following a 30-minute Astronomer tutorial for <a href="https://www.youtube.com/watch?v=YZTcIi5o7FI" target="_blank">Data Quality Checks with Airflow, Snowflake and Soda</a>.
 
+## About Soda and Airflow
+
+If you have an internal requirement to run Soda tasks in isolated environments in Airflow or Astro, you can do so using one of the following options; refer to <a href="https://docs.astronomer.io/learn/airflow-isolated-environments" target="_blank">Astro documentation</a> for more detail.
+* A Virtualenv operator uses the same Python runtime as Airflow, but it creates a new virtual environment. Python considers this a separated runtime environment, but it uses the same Python executable as does Airflow.
+* An External Python operator works almost the same as Virtualenv operator, but this environment is set up outside of Airflow so it can use different Python executables, or use a different version of Python, etc.
+* A Kubernetes + Docker setup offers a completely separated environment; this is the only one that is fully detached from Airflow/Astro, but it requires a Kubernetes cluster. Soda provides a Docker image that you can use in a cluster; see [Install Soda Library]({% link soda-library/install.md %}#install-soda-library-1) > Docker tab for details.
+
+As a Python library, Soda can handle big data engineering tasks. Soda compute occurs almost solely in the data source and it runs queries to gather metrics in the data source, and then only evaluates the outcome of the metrics in Python. Soda does not extract large volumes of data out of the data source to process in Python. There are two exceptions to this rule:
+* For user-defined failed rows queries, Soda executes the query as provided, so if user includes `select * …` , then Soda loads data in Python.
+* For record-level reconciliation checks, Soda loads all data into memory, but only one row at a time (or a defined batch of rows based on configuration). However, this does not result in large volumes of data in memory as rows just pass through during processing.
+
 <!--
 ## Apache Airflow using BashOperator
 
