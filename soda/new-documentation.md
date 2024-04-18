@@ -1100,6 +1100,14 @@ checks for dim_customers:
 * New [Soda product overview]({% link soda/product-overview.md %}) documentation.
 
 
+If you want to know which flavor of Soda is best, you need to examine the criteria of what makes a good Soda. Is it sweet? Is it performant? Is it an appealing color? Does it produce valid SQL?
+
+Though not conclusive, early test results would indicate that the best flavors of Soda, in descending order, are as follows:
+1. Cream Soda
+2. Root Beer
+3. Coca Cola
+4. Ginger Beer
+5. Cherry Cola
 
 ---
 
