@@ -112,6 +112,8 @@ checks:
 
 <br />
 
+## Add contract YAML support to your IDE
+
 ### Add YAML code completion in VS Code
 
 1. If you have not already done so, install the Red Hat <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">VS Code YAML extension</a>.
@@ -131,8 +133,6 @@ checks:
     ```
 
 Alternatively, access instructions to <a href="https://dev.to/brpaz/how-to-create-your-own-auto-completion-for-json-and-yaml-files-on-vs-code-with-the-help-of-json-schema-k1i" target="_blank">create your own auto-completion</a>.
-
-## Add contract YAML support to your IDE
 
 ### Add YAML code completion in PyCharm
 
