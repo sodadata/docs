@@ -145,6 +145,31 @@ See also: <a href="https://www.jetbrains.com/help/pycharm/json.html#ws_json_sche
 
 <br />
 
+## Recommended file structure
+
+We recommend you to structure your files that resembles the structure of your warehouse like this:  
+
+In your root git repository folder, create a `soda` folder.
+In the soda folder, create a folder per warehouse and include a `warehouse.yml` file in each. 
+In each warehouse folder, create folders per schema.  Put the contract files in the schema folders.
+
+Here's an example:
+
+```
++ soda
+|  + postgres_local
+|  |  + warehouse.yml
+|  |  + public
+|  |  |  + customers.yml
+|  |  |  + suppliers.yml
+|  + snowflake_sales
+|  |  warehouse.yml
+|  |  + RAW
+|  |  |  + opportunities.yml
+|  |  |  + contacts.yml
++ README.md (your files) 
+```
+
 ## List of configuration keys
 
 | Top-level key | Value | Required |
