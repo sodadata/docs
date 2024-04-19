@@ -27,7 +27,9 @@ Note that data contracts checks do not follow SodaCL syntax.
 [Missing](#missing)<br />
 [Row count](#row-count)<br />
 [SQL aggregation](#sql-aggregation)<br />
-[User-defined SQL checks](#user-defined-sql-checks)<br />
+[SQL failed rows](#sql-failed-rows)<br />
+[SQL metric expression](#sql-metric-expression)<br />
+[SQL metric query](#sql-metric-query)<br />
 [Validity](#validity)<br />
 [List of threshold keys](#list-of-threhold-keys)<br />
 <br />
@@ -169,39 +171,94 @@ columns:
     must_be_less_than: 10
 ```
 
-## User-defined SQL checks
+## SQL failed rows
 
-Use a SQL expression or SQL query check to customize your data contract check. Apply these checks at the column or dataset level.
+TODO: It's on the roadmap to support capturing of failed rows in contracts.
 
-| Type of check | Accepts <br /> [threshold values](#list-of-threhold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
-|---------------- | :-------------: | ------------------------------- | --------------------------------- |
-| `sql_expression`   | required  | `metric`<br /> `metric_sql_expression` | `name`  |
-| `metric_query`  | required  | `metric`<br /> `query_sql` | `name`  |
+## SQL metric expression
+
+Use SQL metric expression check to monitor a custom metric defined by a SQL expression.
+SQL metric checks can be applied on a column or on the dataset level.
+
+Example of a SQL metric expression on a column:
 
 {% include code-header.html %}
 ```yaml
 dataset: CUSTOMERS
-
 columns:
-- name: country
-  checks:
-  - type: sql_expression
-    # define a name for your custom metric
-    metric: us_count
-    metric_sql_expression: COUNT(CASE WHEN country = 'US' THEN 1 END)
-    must_be_not_between: [100, 120]
+  - name: id
+  - name: country
+    checks:
+    - type: metric_expression
+      metric: us_count
+      expression_sql: COUNT(CASE WHEN country = 'US' THEN 1 END)
+      must_be: 0
+```
 
+Example of a SQL metric expression on a dataset:
+
+{% include code-header.html %}
+```yaml
+dataset: CUSTOMERS
+columns:
+  - name: id
+  - name: country
 checks:
-- type: metric_query
-  # define a name for your custom metric
-  metric: count_america
-  query_sql: |
+- type: metric_expression
+  metric: us_count
+  expression_sql: COUNT(CASE WHEN country = 'US' THEN 1 END)
+  must_be: 0
+```
+
+The difference between applying the check on a column or on the dataset level is the 
+association of the check with the column in Soda Cloud.
+
+There is a performance advantage of using a SQL metric expression over a SQL metric query.
+In case there are other metrics to be computed, a SQL metric expression is appended to the 
+same query so that it only requires a single pass over the data to compute all the metrics.
+
+## SQL metric query
+
+Use SQL metric query check to monitor a custom metric defined by a SQL query.
+SQL metric checks can be applied on a column or on the dataset level.
+
+Example of a SQL metric query on a column:
+
+{% include code-header.html %}
+```yaml
+dataset: CUSTOMERS
+columns:
+  - name: id
+    checks:
+    - type: metric_query
+      metric: us_count
+      query_sql: |
+        SELECT COUNT(*)
+        FROM {table_name}
+        WHERE country = 'US'
+      must_be_not_between: [0, 5]
+  - name: country
+```
+
+Example of a SQL metric query on the dataset:
+
+{% include code-header.html %}
+```yaml
+dataset: CUSTOMERS
+columns:
+  - name: id
+checks:
+  - type: metric_query
+    metric: us_count
+    query_sql: |
       SELECT COUNT(*)
       FROM {table_name}
       WHERE country = 'US'
-  must_be_between: [0, 5]
+    must_be_not_between: [0, 5]
 ```
 
+The difference between applying the check on a column or on the dataset level is the 
+association of the check with the column in Soda Cloud.
 
 ## Validity
 
