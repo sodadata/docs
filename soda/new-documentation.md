@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### April 26, 2024
+* Published documentation for V3 of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
+
 #### March 21, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.3.
 * Added more content and example for [rerouting failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples).

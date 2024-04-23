@@ -18,18 +18,29 @@ When deciding when to verify a data contract, consider that contract verificatio
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
-<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small><br />
+<br />
+
+[Prerequisites](#prerequisites)<br />
+[Verify a data contract via API](#verify-a-data-contract-via-api)<br />
+[Review contract verification results](#review-contract-verification-results)<br />
+[About warehouse configurations](#about-warehouse-configurations)<br />
+[Verify data contracts with Spark](#verify-data-contracts-with-spark)<br />
+[Validate data contracts](#validate-data-contracts)<br />
+[Skip checks during contract verification](#skip-checks-during-contract-verification)<br />
+[Go further](#go-further)<br />
+<br />
 
 ## Prerequisites
 * Python 3.8 or greater
 * a code or text editor
 * your warehouse connection credentials and details
-* a `soda-core-contracts` package and a `soda-core[package]` [installed]({% link soda/data-contracts.md %}) in a virtual environment. Refer to the list of warehouse-specific <a href="https://github.com/sodadata/soda-core/blob/main/docs/installation.md" target="_blank">Soda Core pacakges</a> available to use.
+* a `soda-core-contracts` package and a `soda-core[package]` [installed]({% link soda/data-contracts.md %}) in a virtual environment. Refer to the list of warehouse-specific <a href="https://github.com/sodadata/soda-core/blob/main/docs/installation.md" target="_blank">Soda Core packages</a> available to use.
 * a Soda data contracts YAML file; see [Write a data contract]({% link soda/data-contracts-write.md %})
 
 ## Verify a data contract via API
 1. In your code or text editor, create a new file name `warehouse.yml` accessible from within your working directory in your virtual environment.
-2. To that file, add a warehouse configuration for Soda to connect to your warehouse and access the data within it to verify the contract. The example that follows is for a PostgreSQL warehouse; See below for more [warehouse configuration](#warehouse-configurations). <br />Best practice dictates that you store sensitive credential values as environment variables using uppercase and underscores for the variables. 
+2. To that file, add a warehouse configuration for Soda to connect to your warehouse and access the data within it to verify the contract. The example that follows is for a PostgreSQL warehouse; see [warehouse configuration](#about-warehouse-configurations) for further details . <br />Best practice dictates that you store sensitive credential values as environment variables using uppercase and underscores for the variables. 
     ```yaml
     name: local_postgres
     type: postgres
@@ -55,38 +66,32 @@ When deciding when to verify a data contract, consider that contract verificatio
     ```
 4. At runtime, Soda connects with your warehouse and verifies the contract by executing the data contract checks in your file. Use `${SCHEMA}` syntax to provide any environment variable values in a contract YAML file. Soda returns results of the verification as pass or fail check results, or indicate errors if any exist; see below.
 
-### Contract verification result
+## Review contract verification results
 
-The contract verification result makes a distinction between two types of problems: 
+Contract verification results make a distinction between two types of problems: failed checks, and execution errors.
 
-| Output           | Meaning                                                                                                                                                                                                                                              | Action                                                            | Method            |
-|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|-------------------|
-| Check failures   | A check failure indicates that a data contract check for a dataset resulted in a value that is outside the parameters of the thresholds you set and failed.                                                                                          | Review the data at source to determine the cause of the failure.  | `.has_failures()` |
-| Execution errors | An execution error means that Soda could not evaluate one or more checks in the data contract. Incorrect inputs such as missing files, invalid files, connection issues, or invalid contract format, or query execution exceptions can cause errors. | Use the error logs to investigate the root cause of the issue.    | `.has_errors()`   |
+| Output | Meaning | Action | Method |
+|------- |---------|--------|--------|
+| Failed checks   | A failed check indicates that the values in the dataset do not match or fall within the thresholds you specified in the check.| Review the data at its source to determine the cause of the failure.  | `.has_failures()` |
+| Execution errors | An execution error means that Soda could not evaluate one or more checks in the data contract. Errors include incorrect inputs such as missing files, invalid files, connection issues, or invalid contract format, or query execution exceptions. | Use the error logs to investigate the root cause of the issue.  | `.has_errors()`   |
 
-When Soda surfaces a check failure to indicate an issue with data quality in your pipeline, or if there are execution errors indicating something goes wrong during contract verification, you may wish to stop the pipeline from further processing the data. With that use case in mind, the Soda data contracts API has two options:
-* Append `.assert_ok()` at the end on the contract verification result.  That will cause a SodaException in case of check failures or execution errors.  The exception message includes a full report.
-* Test for the result with `if not contract_verification_result.is_ok():`  In this case, you can use `str(contract_verification_result)` to get a report.
+When Soda surfaces a failed check or an execution error, you may wish to stop the pipeline from processing the data any further. To do so, you can use the Soda data contracts API in one of two ways:
+* Append `.assert_ok()` at the end of the contract verification result which produces a SodaException when a check fails or when or execution errors occur.  The exception message includes a full report.
+* Test for the result using `if not contract_verification_result.is_ok():`  Use `str(contract_verification_result)` to get a report.
 
-## Warehouse configurations
+## About warehouse configurations
 
-Data contracts are used to verify data stored in a warehouse. This means data can stay where it is and Soda uses 
-a connection to performs queries to verify that the schema and data quality checks in the data contract pass.
+Soda data contracts connects to a warehouse to perform queries, and verify schemas and data quality checks on data stored in a warehouse. Notably, it does not extract or ingest data, it only scans your data to complete contract verification. If you are using the Contract API, you only need to provide one warehouse configuration in the contract verification which Soda uses to verify contracts. 
 
-Best practice dictates that you store sensitive credential values as environment variables using uppercase and 
-underscores for the variables.  For example `password: ${WAREHOUSE_PASSWORD}`.  Environment variables are used 
-by default and you can pass in extra variables via the API using `.with_variables({"WAREHOUSE_PASSWORD": "***"})`
+Best practice dictates that you store sensitive credential values as environment variables that use uppercase and underscores, such as `password: ${WAREHOUSE_PASSWORD}`.  Soda data contracts uses environment variables by default; you can pass extra variables via the API using `.with_variables({"WAREHOUSE_PASSWORD": "***"})`.
+ 
 
-If in the API, you only provide a single warehouse in the contract verification, that single warehouse will be 
-for verifying the contracts.  
+## Verify data contracts with Spark
 
-## Contract API with Spark
+Where you have a Spark session that potentially includes data frames that live in-memory, you can pass a Spark session into the contract verification API to verify 
+a data contract in data frames without persisting and reloading.
 
-When using Spark, you have a Spark session that potentially include data frames that live in memory.  To verify 
-a data contract in data frames without persisting and reloading, you can pass a spark session into the 
-contract verification API.
-
-Use `with_warehouse_spark_session` to pass your Spark session into the contract verification.
+Use `with_warehouse_spark_session` to pass your Spark session into the contract verification, as in the example below.
 
 ```python
 spark_session: SparkSession = ...
@@ -99,10 +104,9 @@ contract_verification: ContractVerification = (
 )
 ```
 
-## Verifying contract files without executing
+## Validate data contracts
 
-When you want to verify if the syntax and semantics of a data contract are ok without actually executing the 
-contract verification, use `build` instead of the `execute` method on the contract verification builder:
+If you wish to validate the syntax of a data contract without actually executing the contract verification, use the `build` method instead of `execute`  on the contract verification builder, as in the following example.
 
 ```python
 contract_verification: ContractVerification = (
@@ -115,10 +119,9 @@ if contract_verification.logs.has_errors():
   logging.error(f"The contract has syntax or semantic errors: \n{contract_verification.logs}")
 ```
 
-## Skipping checks
+## Skip checks during contract verification
 
-During a contract verification, checks can be skipped.  This example shows how to skip the 
-schema check:
+During a contract verification, you can arrange skip checks using `check.skip` as in the following example that does not check the schema of the dataset.
 
 ```python
 contract_verification: ContractVerification = (

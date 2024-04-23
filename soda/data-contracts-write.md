@@ -11,7 +11,7 @@ parent: Create a data contract
 
 **Soda data contracts** is a Python library that uses checks to verify data. Contracts enforce data quality standards in a data pipeline so as to prevent negative downstream impact. To verify the data quality standards for a dataset, you prepare a data **contract YAML file**, which is a formal description of the data. In the data contract, you use checks to define your expectations for good-quality data. Using the Python API, you can add data contract verification ideally right after new data has been produced. 
 
-In your data pipeline, add a data contract after data has been been produced or transformed so that when you programmatically run a scan via the Python API, Soda data contracts verifies the contract, executing the checks contained within the contract and producing results which indicate whether the checks passed or failed.
+In your data pipeline, add a data contract after data has been produced or transformed so that when you programmatically run a scan via the Python API, Soda data contracts verifies the contract, executing the checks contained within the contract and producing results which indicate whether the checks passed or failed.
 
 ```yaml
 dataset: dim_customer
@@ -53,14 +53,17 @@ checks:
   columns: ['phone', 'email']
 ```
 
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.0 or greater</small><br />
-
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.2 or greater</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small><br />
 <br />
 
 [Prepare a data contract](#prepare-a-data-contract)<br />
-[Add contract YAML support to your IDE](#add-contract-yaml-support-to-your-ide)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Add YAML code completion in PyCharm](#add-yaml-code-completion-in-pycharm)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Add YAML code completion in VS Code](#add-yaml-code-completion-in-vs-code)<br />
+[(Optional) Add YAML code completion in VS Code](#optional-add-yaml-code-completion-in-vs-code)<br />
+[(Optional) Add YAML code completion in PyCharm](#optional-add-yaml-code-completion-in-vs-code)<br />
 [List of contract configuration keys](#list-of-configuration-keys)<br />
 [Go further](#go-further)<br />
 <br />
@@ -110,14 +113,31 @@ checks:
 4. Save the file, then reference it when you add a contract verification step to your programmatic Soda scan; see [Verify a data contract]({% link soda/data-contracts-verify.md %}). 
 
 
-<br />
+### Organize your data contracts
 
-## Add contract YAML support to your IDE
+Best practice dictates that you structure your data contracts files in a way that resembles the structure of your warehouse.  
+1. In your root git repository folder, create a `soda` folder.
+2. In the `soda` folder, create one folder per warehouse, then add a `warehouse.yml` file in each. 
+3. In each warehouse folder, create folders in each schema, then add the contract files in the schema folders.
 
-### Add YAML code completion in VS Code
+```shell
++ soda
+|  + postgres_local
+|  |  + warehouse.yml
+|  |  + public
+|  |  |  + customers.yml
+|  |  |  + suppliers.yml
+|  + snowflake_sales
+|  |  warehouse.yml
+|  |  + RAW
+|  |  |  + opportunities.yml
+|  |  |  + contacts.yml
++ README.md 
+```
+
+## (Optional) Add YAML code completion in VS Code
 
 1. If you have not already done so, install the Red Hat <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">VS Code YAML extension</a>.
-   
 2. From the public soda-core repo, download the `./soda/contracts/soda_data_contract_schema_1_0_0.json` to a local folder that contains, or will contain, your contract YAML files.
 3. Add the following `yaml-language-server` details to the top of your contract YAML file. You can supply a relative file path for the `$schema` which the extension determines according to the YAML file path, not from the workspace root path.
     ```yaml
@@ -134,41 +154,18 @@ checks:
 
 Alternatively, access instructions to <a href="https://dev.to/brpaz/how-to-create-your-own-auto-completion-for-json-and-yaml-files-on-vs-code-with-the-help-of-json-schema-k1i" target="_blank">create your own auto-completion</a>.
 
-### Add YAML code completion in PyCharm
+## (Optional) Add YAML code completion in PyCharm
 
 1. Choose an extension for your contract files.  For example `.contract.yml`
 2. From the public soda-core repo, download the `./soda/contracts/soda_data_contract_schema_1_0_0.json` to a local drive that also contains, or will contain, your contract YAML files.
 2. In your PyCharm environment, navigate to Preferences > Languages & Frameworks > Schemas and DTDs > JSON Schema Mappings.
-3. Add a mapping between the extension you chose in step 1. For example, use `*.contract.yml` files and map to the schema file that you saved on your local file system.
+3. Add a mapping between the extensions you chose in step 1. For example, use `*.contract.yml` files and map to the schema file that you saved on your local file system.
 
 See also: <a href="https://www.jetbrains.com/help/pycharm/json.html#ws_json_schema_add_custom" target="_blank">Using custom JSON schemas</a>.
 
 <br />
 
-## Recommended file structure
 
-We recommend you to structure your files that resembles the structure of your warehouse like this:  
-
-In your root git repository folder, create a `soda` folder.
-In the soda folder, create a folder per warehouse and include a `warehouse.yml` file in each. 
-In each warehouse folder, create folders per schema.  Put the contract files in the schema folders.
-
-Here's an example:
-
-```
-+ soda
-|  + postgres_local
-|  |  + warehouse.yml
-|  |  + public
-|  |  |  + customers.yml
-|  |  |  + suppliers.yml
-|  + snowflake_sales
-|  |  warehouse.yml
-|  |  + RAW
-|  |  |  + opportunities.yml
-|  |  |  + contacts.yml
-+ README.md (your files) 
-```
 
 ## List of configuration keys
 
@@ -204,263 +201,6 @@ For example, you may wish to include a parameter to identify a dataset's owner, 
 
 {% include code-header.html %}
 ```yaml
-dataset: dim_employee
-
-columns:
-- name: id
-  checks:
-  - type: no_duplicate_values
-- name: last_name
-  checks:
-  - type: duplicate_count
-    must_be_less_than: 10
-    name: Fewer than 10 duplicate names
-- name: address_line1
-  checks:
-  - type: duplicate_percent
-    must_be_less_than: 1
-
-checks:
-- type: no_duplicate_values
-  columns: ['phone', 'email']
-```
-
-### Freshness
-This check compares the maximum value in the column to the time the scan runs; the check fails if that computed value exceeds the threshold you specified in the check.
-
-| Type of check | Accepts <br /> threshold values| Column config <br />keys: required | Column config <br />keys: optional |
-|---------------- | :-------------: | :-------------------------------: | --------------------------------- |
-| `freshness_in_days`   | required  | - | `name`  |
-| `freshness_in_hours`  | required  | - | `name`  |
-| `freshness_in_minutes`| required  | - | `name`  |
-
-{% include code-header.html %}
-```yaml
-dataset: dim_customer
-
-columns:
-- name: date_first_purchase
-  checks:
-    type: freshness_in_days
-    must_be_less_than: 2
-    name: New data arrived within the last 2 days
-```
-
-### Missing
-If you *do not* use an optional column configuration key to identify the values Soda ought to consider as missing, Soda uses NULL to identify missing values. 
-
-See also: [Combine missing and validity](#combine-missing-and-validity).
-
-| Type of check | Accepts <br /> threshold values| Column config <br />keys: required | Column config <br />keys: optional                            |
-|---------------- | :-------------: | ------------------------------- |---------------------------------------------------------------|
-| `no_missing_values` | no  | - | `name`<br /> `missing_values`<br /> `missing_regex_sql`<br /> |
-| `missing_count`     | required | - | `name`<br /> `missing_values`<br /> `missing_regex_sql`<br /> |
-| `missing_percent`   | required | - | `name`<br /> `missing_values`<br /> `missing_regex_sql`<br /> |
-
-{% include code-header.html %}
-```yaml
-dataset: dim_customer
-
-columns: 
-- name: title
-  checks: 
-  - type: no_missing_values 
-- name: middle_name
-  checks: 
-  - type: missing_count
-    must_be_less_than: 10
-    # Soda includes 'NULL' in list of values by default
-    missing_values: ['xxx', 'none', 'NA']
-- name: last_name
-  checks:
-  - type: missing_count
-    must_be_less_than: 5 
-- name: first_name
-  checks: 
-  - type: missing_percent
-    must_be_less_than: 1
-    name: No whitespace entries
-    # regular expression must match the dialect of your SQL engine
-    missing_regex_sql: '[\s]'
-```
-
-
-### Row count
-
-| Type of check | Accepts <br /> threshold values | Column config <br />keys: required | Column config <br />keys: optional |
-|---------------- | :-------------: | :-------------------------------: | --------------------------------- |
-| `rows_exist`    | no  | - | `name`  |
-| `row_count`     | required | - | `name`  |
-
-{% include code-header.html %}
-```yaml
-dataset: dim_customer
-
-columns: 
-- name: first_name
-  checks: 
-  - type: row_count
-    must_be_between: [100, 120]
-    name: Verify row count range
-
-checks: 
-- type: rows_exist
-```
-
-### SQL aggregation
-
-| Type of check | Accepts <br /> threshold values| Column config <br />keys: required | Column config <br />keys: optional |
-|---------------- | :-------------: | :-------------------------------: | --------------------------------- |
-| `avg`   | required  | - | `name`  |
-| `sum`  | required  | - | `name`  |
-
-{% include code-header.html %}
-```yaml
-dataset: dim_customer
-
-columns:
-- name: yearly_income
-  checks:
-  - type: avg
-    must_be_between: [50000, 80000]
-    name: Average salary within expected range
-
-- name: total_children
-  checks:
-  - type: sum
-    must_be_less_than: 10
-```
-
-### User-defined SQL checks
-
-Use a SQL expression or SQL query check to customize your data contract check. Apply these checks at the column or dataset level.
-
-User defined checks can be specified in the checks of a specific column or on the top level checks of the dataset.
-If you specify the checks on a column, the expression_sql or the query_sql does not have to use the column.  The link with the 
-column is only used in Soda Cloud to display the check in relation to the column.    
-
-| Type of check       | Accepts <br /> threshold values| Column config <br />keys: required | Column config <br />keys: optional |
-|---------------------| :-------------: | ------------------------------- | --------------------------------- |
-| `metric_expression` | required  | `metric`<br /> `expression_sql` | `name`  |
-| `metric_query`      | required  | `metric`<br /> `query_sql` | `name`  |
-
-{% include code-header.html %}
-```yaml
-dataset: CUSTOMERS
-
-columns:
-- name: country
-  checks:
-  - type: metric_expression_sql
-    # define a name for your custom metric
-    metric: us_count
-    expression_sql: COUNT(CASE WHEN country = 'US' THEN 1 END)
-    must_be_not_between: [100, 120]
-- type: metric_query
-  # define a name for your custom metric
-  metric: count_america
-  query_sql: |
-      SELECT COUNT(*)
-      FROM {table_name}
-      WHERE country = 'US'
-  must_be_between: [0, 5]
-
-checks:
-- type: metric_expression_sql
-  metric: us_count
-  expression_sql: COUNT(CASE WHEN country = 'US' THEN 1 END)
-  must_be_not_between: [100, 120]
-- type: metric_query
-  # define a name for your custom metric
-  metric: count_america
-  query_sql: |
-      SELECT COUNT(*)
-      FROM {table_name}
-      WHERE country = 'US'
-  must_be_between: [0, 5]
-```
-
-
-### Validity
-
-| Type of check | Accepts <br /> threshold values| Column config <br />keys: required | Column config <br />keys: optional |
-|---------------- | :-------------: | --------------------------------- | --------------------------------- |
-| `no_invalid_values` | no  | At least one of:<br /> `valid_values`<br /> `valid_format` [Valid formats](#valid-formats)<br /> `valid_regex_sql`<br /> `valid_min`<br /> `valid_max`<br /> `valid_length`<br /> `valid_min_length`<br /> `valid_max_length`<br /> `valid_values_reference_data`<br /> `invalid_values`<br /> `invalid_format`<br /> `invalid_regex_sql`| `name`  |
-| `invalid_count`     | required | At least one of:<br />`valid_values`<br /> `valid_format` [Valid formats](#valid-formats)<br /> `valid_regex_sql`<br /> `valid_min`<br /> `valid_max`<br /> `valid_length`<br /> `valid_min_length`<br /> `valid_max_length`<br /> `valid_values_reference_data`<br /> `invalid_values`<br /> `invalid_format`<br /> `invalid_regex_sql` | `name`  |
-| `invalid_percent`   | required | At least one of:<br />`valid_values`<br /> `valid_format` [Valid formats](#valid-formats)<br /> `valid_regex_sql`<br /> `valid_min`<br /> `valid_max`<br /> `valid_length`<br /> `valid_min_length`<br /> `valid_max_length`<br /> `valid_values_reference_data`<br /> `invalid_values`<br /> `invalid_format`<br /> `invalid_regex_sql` | `name`  |
-
-{% include code-header.html %}
-```yaml
-dataset: dim_customer
-
-columns: 
-- name: first_name
-  data_type: character varying
-  checks: 
-  - type: no_invalid_values
-    valid_min_length: 2
-- name: email_address
-  checks: 
-  - type: invalid_count
-    must_be_less_than: 25
-    valid_format: email
-- name: id
-  checks:
-  - type: invalid_percent
-    must_be_less_than: 5
-    valid_regex_sql: '^ID.$'
-    name: Less than 5% invalid
-- name: total_children
-  checks:
-  - type: invalid_count
-    # With multiple configurations, rows must meet ALL criteria
-    valid_min: 0
-    valid_max: 12
-    must_be_less_than: 10
-    name: Acceptable range of offspring count
-  - name: comment
-    checks:
-    - type: no_invalid_values
-      valid_min_length: 0
-      valid_max_length: 160
-```
-
-<br />
-
-#### Valid formats
-
-For a list of the available formats to use with the `valid_formats` column configuration key, see: [List of valid formats]({% link soda-cl/validity-metrics.md %}#list-of-valid-formats)<!-- and [Formats supported with Soda for MS SQL Server]({% link soda-cl/validity-metrics.md %}#formats-supported-with-soda-for-ms-sql-server)--> for SodaCL.
-
-<br />
-
-#### Validity reference
-
-Also known as a referential integrity or foreign key check, Soda executes a validity check with a `valid_values_reference_data` column configuration key as a separate query, relative to other validity queries. The query counts all values that exist in the named column which also *do not* exist in the column in the referenced dataset. 
-
-The referential dataset must exist in the same warehouse as the dataset identified by the contract.
-
-{% include code-header.html %} 
-```yaml
-dataset: dim_employee
-
-columns:
-- name: country
-  checks:
-  - type: invalid_percent
-    must_be_less_than: 3
-    valid_values_reference_data: 
-      dataset: countryID
-      column: id
-```
-
-<br />
-
-#### Combine missing and validity
-
-You can combine column configuration keys to include both missing and validity parameters. Soda separately evaluates the parameters to prevent double-counting any rows that fail to meet the specified thresholds so that a row that fails both parameters only counts as one failed row.
-
-```yaml
->>>>>>> Stashed changes
 dataset: dim_product
 
 # Soda data contract verification ignores this parameter.
@@ -481,6 +221,7 @@ columns:
   # Soda data contract verification ignores this parameter.
   sensitive: true
 ```
+
 
 ## Go further
 
