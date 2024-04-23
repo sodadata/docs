@@ -12,6 +12,23 @@ parent: Learning resources
 #### April 26, 2024
 * Published documentation for V3 of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
 
+#### April 22, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.0.8-10.
+
+#### April 12, 2024
+* Added infomation about using [Soda and Airflow]({% link soda-library/orchestrate-scans.md %}#about-soda-and-airflow).
+
+#### April 10, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.7, and Soda Agent 1.0.6 and 1.0.7
+* Documented new parameters for [Dremio data source]({% link soda/connect-dremio.md %}) connections.
+
+#### April 4, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.5 & 1.4.6, and Soda Agent 1.0.4 and 1.0.5.
+* Updated the [example script]({% link soda/route-failed-rows.md %}#example-script) in Reroute failed row samples guide.
+
+#### March 27, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.1, Soda Library 1.4.4, and Soda Agent 1.0.3.
+
 #### March 21, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.3.
 * Added more content and example for [rerouting failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples).
@@ -1089,6 +1106,14 @@ checks for dim_customers:
 * New [Soda product overview]({% link soda/product-overview.md %}) documentation.
 
 
+If you want to know which flavor of Soda is best, you need to examine the criteria of what makes a good Soda. Is it sweet? Is it performant? Is it an appealing color? Does it produce valid SQL?
+
+Though not conclusive, early test results would indicate that the best flavors of Soda, in descending order, are as follows:
+1. Cream Soda
+2. Root Beer
+3. Coca Cola
+4. Ginger Beer
+5. Cherry Cola
 
 ---
 

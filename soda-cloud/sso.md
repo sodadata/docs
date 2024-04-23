@@ -50,8 +50,7 @@ Once your organization enables SSO for all Soda Cloud users, Soda Cloud blocks a
 <br />
 7. In the **Basic SAML Configuration** panel, there are two fields to populate: 
 * **Identifier (Entity ID)**, which is the value of `samlUrl` from step 1.
-* **Reply URL** <br />
-The values for these fields are unique to your organization and are provided to you by Soda and they follow this pattern: `https://cloud.soda.io/sso/<short-name>/saml`.
+* **Reply URL**, which is the value of `samlUrl` from step 1.
 8. Click **Save**, then close the confirmation message pop-up.
 9. In the **User Attributes & Claims** panel, click **Edit** to add some attribute mappings.
 10. Configure the claims as per the following example. Soda Cloud uses `familyname` and `givenname`, and maps `emailaddress` to `user.userprincipalname`.
