@@ -138,7 +138,7 @@ You can also run and ad hoc scan to execute all checks associated with a scan de
 <small>✖️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
 <br />
 
-Eeach scan requires the following as input:
+Each scan requires the following as input:
 
 * the name of the data source that contains the dataset you wish to scan, identified using the `-d` option
 * a `configuration.yml` file, which contains details about how Soda Library can connect to your data source, identified using the `-c` option

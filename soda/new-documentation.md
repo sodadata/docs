@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### April 24, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.2.
+
 #### April 22, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.0.8-10.
 
