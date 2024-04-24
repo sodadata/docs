@@ -133,11 +133,17 @@ SodaCL includes over 25 built-in metrics that you can use to write checks, a sub
 
 Powered by OpenAI's GPT-3.5 & GPT-4, the generative SQL and regular expression assistants available in Soda Cloud's no-code checks helps you write the queries and expressions you can add to validity, missing, SQL failed rows, and SQL metric checks. 
 
+When creating a Missing or Validity check in the no-code user interface in Soda Cloud, you can click for help from Soda’s **Regex AI Assistant** to translate an English request into a regular expression you can use to define missing or valid values. Similarly, access the **SQL AI Assistant** in SQL Failed Rows or SQL Metric checks to generate SQL queries based on requests in plain English. 
+
+![ask-ai](/assets/images/ask-ai.png){:height="600px" width="600px"}
+
 Soda acknowledges that the output of the assistants may not be fully accurate or reliable. Leverage the assistants' output, but be sure to carefully review all queries and expressions you add to your checks. Refer to <a href="https://www.soda.io/terms-and-conditions" target="_blank">Soda's General Terms & Conditions</a> for further details.
 
 Be aware that Soda shares the content of all SQL and Regex assistant prompts/input and output with OpenAI to perform the processing that yields the output. Following OpenAI's suggestion, Soda also sends metadata, such as schema information, to OpenAI along with the prompts/input in order to improve the quality of the output. Read more about OpenAI at <a href="https://openai.com/policies" target="_blank">https://openai.com/policies</a>.
 
-Soda's SQL or Regex assistants are enabled for new Soda Cloud accounts by default. If you do not wish to use them, navigate to **your avatar** > **Organization Settings**, then click to remove the check from the box for **Enable SQL and Regex Assistants Powered By Powered by OpenAI**.     
+Soda's SQL or Regex assistants are enabled for *new* Soda Cloud accounts by default. If you do not wish to use them, navigate to **your avatar** > **Organization Settings**, then click to remove the check from the box for **Enable SQL and Regex Assistants Powered By Powered by OpenAI**. 
+
+Existing Soda customers can contact <a href="mailto:support@soda.io">Soda Support</a> to request access.
 
 <br />
 
