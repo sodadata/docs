@@ -12,7 +12,7 @@ parent: Create a data contract
 Soda data contracts is a Python library that verifies data quality standards as early and often as possible in a data pipeline so as to prevent negative downstream impact. Learn more [About Soda data contracts]({% link soda/data-contracts.md %}#about-data-contracts).
 
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.2 or greater</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.3 or greater</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />

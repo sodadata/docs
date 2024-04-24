@@ -44,7 +44,7 @@ checks:
   - type: row_count
 ```
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.2 or greater</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.3 or greater</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
