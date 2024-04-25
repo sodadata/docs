@@ -30,6 +30,7 @@ Note that data contracts checks do not follow SodaCL syntax.
 [SQL metric expression](#sql-metric-expression)<br />
 [SQL metric query](#sql-metric-query)<br />
 [Validity](#validity)<br />
+[Check filters](#check-filters)<br >
 [List of threshold keys](#list-of-threshold-keys)<br />
 <br />
 
@@ -374,13 +375,13 @@ In the case where you have configured multiple missing checks that specify diffe
 
 ## Check filters
 
-Most check types allow for a `filter_sql` property to be specified:
+Optionally, you can apply a `filter_sql` for the following checks:
 
-* all numeric metrics, except `duplicate_count` and `duplicate_percent`
+* numeric metrics, except `duplicate_count` and `duplicate_percent`
 * `no_missing_values`, `missing_count` and `missing_percent`
 * `no_invalid_values`, `invalid_count` and `invalid_percent`
 
-The filter will be applied to the check.  For example:
+The example below verifies that the only valid value for the column `currency` is `pounds` when the value of the `country` column for the fow is `UK`. 
 
 ```yaml
 dataset: dim_product

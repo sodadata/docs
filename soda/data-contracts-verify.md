@@ -27,6 +27,7 @@ When deciding when to verify a data contract, consider that contract verificatio
 [About warehouse configurations](#about-warehouse-configurations)<br />
 [Verify data contracts with Spark](#verify-data-contracts-with-spark)<br />
 [Validate data contracts](#validate-data-contracts)<br />
+[Add a check identity](#add-a-check-identity)<br />
 [Skip checks during contract verification](#skip-checks-during-contract-verification)<br />
 [Go further](#go-further)<br />
 <br />
@@ -119,27 +120,16 @@ if contract_verification.logs.has_errors():
   logging.error(f"The contract has syntax or semantic errors: \n{contract_verification.logs}")
 ```
 
-## Check identity
+## Add a check identity
 
-The check identity is used to correlate checks in the contract files with checks on Soda Cloud.
+Add an identity to a check to correlate the check's verification results with a check in Soda Cloud.
 
-In a contract YAML file, every check must have a unique identity.  To make it easy on users, the 
-identity is generated based on the location of the checks list and the two properties: `type` and `name`
-In many cases this is sufficient and you don't need to do anything.
+In a contract YAML file, every check must have a unique identity.  By default, Soda generates a check identity based on the location of the checks list and two properties: `type` and `name`. This is generally enough information to correlate a data contracts check with a check in Soda Cloud.
 
-If you see the error `Duplicate check identity`, then it must be that there are 2 checks in a 
-list having the same `type` with no `name` or the same `name`.  This happens sometimes in the dataset 
-list of checks where chances are that there are multiple `metric_query` or `metric_expression` checks.
-In that case, the simple solution is to add a `name` to one or all of the checks to make the identity
-unique.
+However, if the error `Duplicate check identity` appears in the verification output, that indicates that two checks exist with the same type and name, or same type and no name. Where this occurs,  manually change the name of one of the checks or, in the case where neither check has a name, add a name to one of the checks. 
 
-> IMPORTANT NOTE : When changing the name of a check, the identity is also changed.  This breaks the 
-> correlation between the check in the contract YAML file and the Soda Cloud check.  The check will 
-> still work with a different identity, but the history and potential Soda Cloud configurations will 
-> be lost. 
-> 
-> ~~~~Later we will provide a mechanism to change the name of a check without loosing the history on 
-> Soda Cloud. 
+Be aware that if you do change or add a name to a data contract check, Soda Cloud considers this as a new check and discards the previous check result’s history; it would appear as though the original check and its results had disappeared.
+
 
 ## Skip checks during contract verification
 
