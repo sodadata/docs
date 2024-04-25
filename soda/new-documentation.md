@@ -12,6 +12,9 @@ parent: Learning resources
 #### April 26, 2024
 * Published documentation for V3 of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
 
+#### April 25, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.0.
+
 #### April 24, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.2.
 
