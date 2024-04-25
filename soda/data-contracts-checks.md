@@ -372,6 +372,28 @@ In the case where you have configured multiple missing checks that specify diffe
 
 <br />
 
+## Check filters
+
+Most check types allow for a `filter_sql` property to be specified:
+
+* all numeric metrics, except `duplicate_count` and `duplicate_percent`
+* `no_missing_values`, `missing_count` and `missing_percent`
+* `no_invalid_values`, `invalid_count` and `invalid_percent`
+
+The filter will be applied to the check.  For example:
+
+```yaml
+dataset: dim_product
+
+columns:
+- name: country
+- name: currency
+  checks:
+  - type: no_invalid_values
+    valid_values: ['pounds']
+    filter_sql: country = 'UK'
+```
+
 ## List of threshold keys
 
 {% include contracts-threshold-keys.md %}

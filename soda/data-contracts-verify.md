@@ -119,6 +119,28 @@ if contract_verification.logs.has_errors():
   logging.error(f"The contract has syntax or semantic errors: \n{contract_verification.logs}")
 ```
 
+## Check identity
+
+The check identity is used to correlate checks in the contract files with checks on Soda Cloud.
+
+In a contract YAML file, every check must have a unique identity.  To make it easy on users, the 
+identity is generated based on the location of the checks list and the two properties: `type` and `name`
+In many cases this is sufficient and you don't need to do anything.
+
+If you see the error `Duplicate check identity`, then it must be that there are 2 checks in a 
+list having the same `type` with no `name` or the same `name`.  This happens sometimes in the dataset 
+list of checks where chances are that there are multiple `metric_query` or `metric_expression` checks.
+In that case, the simple solution is to add a `name` to one or all of the checks to make the identity
+unique.
+
+> IMPORTANT NOTE : When changing the name of a check, the identity is also changed.  This breaks the 
+> correlation between the check in the contract YAML file and the Soda Cloud check.  The check will 
+> still work with a different identity, but the history and potential Soda Cloud configurations will 
+> be lost. 
+> 
+> ~~~~Later we will provide a mechanism to change the name of a check without loosing the history on 
+> Soda Cloud. 
+
 ## Skip checks during contract verification
 
 During a contract verification, you can arrange skip checks using `check.skip` as in the following example that does not check the schema of the dataset.
