@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Integrate Soda with Purview
-description: 
-parent: 
+description: Integrate Soda with Microsoft Purview to access details about the quality of your data from right within your data catalog.
+parent: Integrate Soda
 ---
 
 # Integrate Soda with Purview
