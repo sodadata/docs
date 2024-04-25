@@ -10,7 +10,7 @@ parent: Integrate Soda
 
 Integrate Soda with Microsoft's Purview data catalog to access details about the quality of your data from within the catalog.
 
-* Run data quality checks using Soda and visualize quality metrics and rules within the context of a data source, dataset, or column in Purview.
+* Run data quality checks using Soda and visualize quality metrics and rules within the context of a table in Purview.
 * Give your Purview-using colleagues the confidence of knowing that the data they are using is sound.
 * Encourage others to add data quality checks using a link in Purview that connects directly to Soda.
 
@@ -30,6 +30,7 @@ If Soda is performing no data quality checks on a dataset, the instructions in P
 
 * You have completed at least one [Soda scan]({% link soda-library/run-a-scan.md %}) to validate that the data source’s datasets appear in Soda Cloud as expected.
 * You have a Purview account with the privileges necessary to collect the information Soda needs to complete the integration.
+* The data source that contains the data you wish to check for data quality is available in Purview.
 
 
 ## Set up the integration
