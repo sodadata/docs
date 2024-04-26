@@ -93,9 +93,12 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 ### System requirements
 
-* Kubernetes cluster size and capacity: 2 CPU and 2GB of RAM. In general, this is sufficient to run up to six scans in parallel.
-* Scan performance may vary according to the workload, or the number of scans running in parallel. To improve performance for larger workloads, consider fine-tuning the cluster size using the `resources` parameter for the `agent-orchestrator` and `soda.scanlauncher.resources` for the `scan-launcher`. Adding more resources to the `scan-launcher` can improve scan times by as much as 30%.
-* Be aware that allocating too many resources may be costly relative to the small benefit of improved scan times.
+Kubernetes cluster size and capacity: 2 CPU and 2GB of RAM. In general, this is sufficient to run up to six scans in parallel.
+
+Scan performance may vary according to the workload, or the number of scans running in parallel. To improve performance for larger workloads, consider fine-tuning the cluster size using the `resources` parameter for the `agent-orchestrator` and `soda.scanlauncher.resources` for the `scan-launcher`. Adding more resources to the `scan-launcher` can improve scan times by as much as 30%. Be aware, however, that allocating too many resources may be costly relative to the small benefit of improved scan times.
+
+{% include agent-resources.md %}
+
 
 <!--
 ## Create a Kubernetes cluster
@@ -330,12 +333,16 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 ### System requirements
 
-* Kubernetes cluster size and capacity: 2 CPU and 2GB of RAM. In general, this is sufficient to run up to six scans in parallel.
-* Scan performance may vary according to the workload, or the number of scans running in parallel. To improve performance for larger workloads, consider:
-  * fine-tuning the cluster size using the `resources` parameter for the `agent-orchestrator` and `soda.scanlauncher.resources` for the `scan-launcher`. Adding more resources to the `scan-launcher` can improve scan times by as much as 30%.
-  * adding more nodes to the node group; see AWS documentation for <a href="https://eksctl.io/usage/nodegroup-managed/#scaling-managed-nodegroups" target="_blank">Scaling Managed Nodegroups</a>.
-  * adding a cluster auto-scaler to your Kubernetes cluster; see AWS documentation for <a href="https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html" target="_blank">Autoscaling</a>(for AWS see )
-* Be aware that allocating too many resources may be costly relative to the small benefit of improved scan times.
+Kubernetes cluster size and capacity: 2 CPU and 2GB of RAM. In general, this is sufficient to run up to six scans in parallel.
+
+Scan performance may vary according to the workload, or the number of scans running in parallel. To improve performance for larger workloads, consider:
+* fine-tuning the cluster size using the `resources` parameter for the `agent-orchestrator` and `soda.scanlauncher.resources` for the `scan-launcher`. Adding more resources to the `scan-launcher` can improve scan times by as much as 30%.
+* adding more nodes to the node group; see AWS documentation for <a href="https://eksctl.io/usage/nodegroup-managed/#scaling-managed-nodegroups" target="_blank">Scaling Managed Nodegroups</a>.
+* adding a cluster auto-scaler to your Kubernetes cluster; see AWS documentation for <a href="https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html" target="_blank">Autoscaling</a>(for AWS see )
+
+Be aware, however, that allocating too many resources may be costly relative to the small benefit of improved scan times.
+
+{% include agent-resources.md %}
 
 <!--
 ## Create an EKS cluster
@@ -596,9 +603,11 @@ Run `kubectl version --output=yaml` to check the version of an existing install.
 
 ### System requirements
 
-* Kubernetes cluster size and capacity: 2 CPU and 2GB of RAM. In general, this is sufficient to run up to six scans in parallel.
-* Scan performance may vary according to the workload, or the number of scans running in parallel. To improve performance for larger workloads, consider fine-tuning the cluster size using the `resources` parameter for the `agent-orchestrator` and `soda.scanlauncher.resources` for the `scan-launcher`. Adding more resources to the `scan-launcher` can improve scan times by as much as 30%.
-* Be aware that allocating too many resources may be costly relative to the small benefit of improved scan times.
+Kubernetes cluster size and capacity: 2 CPU and 2GB of RAM. In general, this is sufficient to run up to six scans in parallel.
+
+Scan performance may vary according to the workload, or the number of scans running in parallel. To improve performance for larger workloads, consider fine-tuning the cluster size using the `resources` parameter for the `agent-orchestrator` and `soda.scanlauncher.resources` for the `scan-launcher`. Adding more resources to the `scan-launcher` can improve scan times by as much as 30%. Be aware that allocating too many resources may be costly relative to the small benefit of improved scan times.
+
+{% include agent-resources.md %}
 
 <!--
 ## Create an AKS cluster
@@ -1041,9 +1050,11 @@ You can deploy a Soda Agent to connect with the following data sources:
 
 ### System requirements
 
-* Kubernetes cluster size and capacity: 2 CPU and 2GB of RAM. In general, this is sufficient to run up to six scans in parallel.
-* Scan performance may vary according to the workload, or the number of scans running in parallel. To improve performance for larger workloads, consider fine-tuning the cluster size using the `resources` parameter for the `agent-orchestrator` and `soda.scanlauncher.resources` for the `scan-launcher`. Adding more resources to the `scan-launcher` can improve scan times by as much as 30%.
-* Be aware that allocating too many resources may be costly relative to the small benefit of improved scan times.
+Kubernetes cluster size and capacity: 2 CPU and 2GB of RAM. In general, this is sufficient to run up to six scans in parallel.
+
+Scan performance may vary according to the workload, or the number of scans running in parallel. To improve performance for larger workloads, consider fine-tuning the cluster size using the `resources` parameter for the `agent-orchestrator` and `soda.scanlauncher.resources` for the `scan-launcher`. Adding more resources to the `scan-launcher` can improve scan times by as much as 30%. Be aware, however, that allocating too many resources may be costly relative to the small benefit of improved scan times.
+
+{% include agent-resources.md %}
 
 <!--
 ## Create a GKE Autopilot cluster

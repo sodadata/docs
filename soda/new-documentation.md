@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### April 26, 2024
+* Included information about [allocating resources]({% link soda-agent/deploy.md %}#system-requirements) for improved performance of a self-hosted Soda Agent.
+
 #### April 25, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.0.
 * Added documentation to initiate an [integration]({% link soda/integrate-purview.md %}) between Soda Cloud and Microscoft Purview.
