@@ -37,9 +37,14 @@ If Soda is performing no data quality checks on a dataset, the instructions in P
 
 1. Sign into your Soda Cloud account and confirm that you see the datasets you expect to see in the data source you wish to test for quality.
 2. In your Soda Cloud account, navigate to **your avatar** > **Profile**, then navigate to the **API Keys** tab. Click the plus icon to generate new API keys.
-3. Copy the the values for **API Key ID** and **API Key Secret** and paste to a temporary secure, local location.
-4. Access <a href="https://learn.microsoft.com/en-us/purview/tutorial-using-rest-apis" target="_blank"> Purview tutorial using REST APIs</a> for instructions on how to create `client_id`, `client_secret`, and `tenant_id`, then paste to a temporary secure, local location.
-5. Copy the value of your purview endpoint from the URL (https://XXX.purview.azure.com) and paste to a temporary secure, local location.
+3. Copy the following values and paste to a temporary, secure, local location.
+* API Key ID
+* API Key Secret
+4. Access <a href="https://learn.microsoft.com/en-us/purview/tutorial-using-rest-apis" target="_blank"> Purview tutorial using REST APIs</a> for instructions on how to create the following values, then paste to a temporary, secure, local location. 
+* `client_id`
+* `client_secret`
+* `tenant_id` 
+5. Copy the value of your purview endpoint from the URL (`https://XXX.purview.azure.com`) and paste to a temporary, secure, local location.
 6. To connect your Soda Cloud account to your Purview Account, contact your Soda Account Executive or email <a href="mailto:support@soda.io">Soda Support</a> with the details you collected in the previous steps to request Purview integration.
 
 
