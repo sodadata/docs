@@ -21,7 +21,7 @@ soda:
         memory: x
 ```
 
-For reference, a Soda-hosted agent specifies resoureces as follows:
+For reference, a Soda-hosted agent specifies resources as follows:
 ```yaml
 soda:
   agent:
