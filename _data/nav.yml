@@ -136,8 +136,6 @@
     page: soda-cl/metrics-and-checks.md
   - subtitle: Optional check configurations
     page: soda-cl/optional-config.md
-  - subtitle: Troubleshoot SodaCL
-    page: soda-cl/troubleshoot.md
   - subtitle: Anomaly detection checks
     page: soda-cl/anomaly-detection.md
   - subtitle: Anomaly score checks (Deprecated)
@@ -174,6 +172,8 @@
     page: soda-cl/user-defined.md
   - subtitle: Validity metrics
     page: soda-cl/validity-metrics.md
+  - subtitle: Troubleshoot SodaCL
+    page: soda-cl/troubleshoot.md
 
 - title: Data source reference
   page: soda/connect-athena.md
