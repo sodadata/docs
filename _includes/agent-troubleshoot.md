@@ -17,4 +17,3 @@ AND<br />
 
 <br />
 
-Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

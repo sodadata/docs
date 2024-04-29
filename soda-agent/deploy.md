@@ -44,6 +44,19 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 
 ## Deploy a Soda Agent in a Kubernetes cluster
 
+What follows are detailed deployment instructions according to the type of environment in which you create a cluster to deploy an agent. The high-level steps to complete the deployment remain the same regardless of environment.
+
+{% include agent-deploy-overview.md %}
+
+
+### Compatibility
+
+Soda supports Kubernetes cluster version 1.21 or greater.
+
+You can deploy a Soda Agent to connect with the following data sources:
+
+{% include compatible-cloud-datasources.md %}
+
 <div class="warpper">
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
@@ -59,8 +72,6 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
   <div class="panel" id="one-panel" markdown="1">
 These deployment instructions offer generic guidance for deploying a Soda Agent in a Kubernetes cluster. 
 
-[Deployment overview](#deployment-overview)<br />
-[Compatibility](#compatibility)<br />
 [Prerequisites](#prerequisites)<br />
 [System requirements](#system-requirements)<br />
 [Deploy an agent](#deploy-an-agent)<br />
@@ -72,22 +83,9 @@ These deployment instructions offer generic guidance for deploying a Soda Agent 
 <br />
 
 
-### Deployment overview
-
-{% include agent-deploy-overview.md %}
-
-
-### Compatibility
-
-Soda supports Kubernetes cluster version 1.21 or greater.
-
-You can deploy a Soda Agent to connect with the following data sources:
-
-{% include compatible-cloud-datasources.md %}
-
 ### Prerequisites
 
-* You can create, or have access to an existing Kubernetes cluster into which you can deploy a Soda Agent.
+* You have created, or have access to an existing Kubernetes cluster into which you can deploy a Soda Agent.
 * You have installed v1.22 or v1.23 of <a href="https://kubernetes.io/docs/tasks/tools/#kubectl" target="_blank">kubectl</a>. This is the command-line tool you use to run commands against Kubernetes clusters. If you have installed Docker Desktop, kubectl is included out-of-the-box. With Docker running, use the command `kubectl version --output=yaml` to check the version of an existing install.
 * You have installed <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm</a>. This is the package manager for Kubernetes which you will use to deploy the Soda Agent Helm chart. Run `helm version` to check the version of an existing install. 
 
@@ -296,9 +294,6 @@ minikube delete
 
 These deployment instructions offer guidance for setting up an Amazon Elastic Kubernetes Service (EKS) cluster and deploying a Soda Agent in it.
 
-
-[Deployment overview](#deployment-overview-1)<br />
-[Compatibility](#compatibility-1)<br />
 [Prerequisites](#prerequisites-1)<br />
 [System requirements](#system-requirements-1)<br />
 [Deploy an agent](#deploy-an-agent-1)<br />
@@ -310,20 +305,6 @@ These deployment instructions offer guidance for setting up an Amazon Elastic Ku
 [Troubleshoot deployment](#troubleshoot-deployment-1)<br />
 <br />
 
-
-
-### Deployment overview
-
-{% include agent-deploy-overview.md %}
-
-
-### Compatibility
-
-Soda supports Kubernetes cluster version 1.21 or greater.
-
-You can deploy a Soda Agent to connect with the following data sources:
-
-{% include compatible-cloud-datasources.md %}
 
 ### Prerequisites
 
@@ -566,31 +547,16 @@ eksctl delete cluster --name soda-agent
 
 These deployment instructions offer guidance for setting up an Azure Kubernetes Service (AKS) cluster and deploying a Soda Agent in it.
 
-[Deployment overview](#deployment-overview-2)<br />
-[Compatibility](#compatibility-2)<br />
 [Prerequisites](#prerequisites-2)<br />
 [System requirements](#system-requirements-2)<br />
 [Deploy an agent](#deploy-an-agent-2)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only - regular cluster](#deploy-using-cli-only---regular-cluster)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Deploy using CLI only](#deploy-using-cli-only)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Deploy using a values YAML file](#deploy-using-a-values-yaml-file-2)<br />
 [About the `helm install` command](#about-the-helm-install-command-2)<br />
 [Decommission the Soda Agent and the AKS cluster](#decommission-the-soda-agent-and-the-aks-cluster)<br />
 [Troubleshoot deployment](#troubleshoot-deployment-2)<br />
 <br />
 
-
-### Deployment overview
-
-{% include agent-deploy-overview.md %}
-
-
-### Compatibility
-
-Soda supports Kubernetes cluster version 1.21 or greater.
-
-You can deploy a Soda Agent to connect with the following data sources:
-
-{% include compatible-cloud-datasources.md %}
 
 ### Prerequisites
 
@@ -802,7 +768,7 @@ The following table outlines the ways you can install the Helm chart to deploy a
 | [Use a values YAML file](#deploy-using-a-values-yaml-file-2) | Install the Helm chart via CLI by providing values in a values YAML file. | Use this as a way of deploying an agent on a cluster while keeping sensitive values secure. <br /> - provide sensitive API key values in this local file  or in an external secrets manager<br /> - store data source login credentials as environment variables in this local file; Soda needs access to the credentials to be able to connect to your data source to run scans of your data. See: [Soda Agent extras]({% link soda-agent/secrets.md %}).|
 
 
-#### Deploy using CLI only - regular cluster
+#### Deploy using CLI only
 
 1. (Optional) You have familiarized yourself with [basic Soda, Kubernetes, and Helm concepts]({% link soda-agent/basics.md %}). 
 2. Create or navigate to an existing Kubernetes cluster in your environment in which you can deploy the Soda Agent helm chart.
@@ -982,13 +948,6 @@ kubectl delete ns soda-agent
 ```shell
 az aks delete --resource-group SodaAgent --name soda-agent-cli-test --yes
 ```
-3. If you created an additional subnet for virtual nodes, delete the subnet. The `subnet` and `vnet` values must match the names you used during deployment.
-```shell
-az network vnet subnet delete \
-  --resource-group SodaAgent \
-  --name SodaAgentVirtualNodeSubnet \
-  --vnet-name SodaAgentVnet
-```
 
 <br />
 
@@ -1012,8 +971,6 @@ az aks create \
 
 These deployment instructions offer guidance for setting up a Google Kubernetes Engine (GKE) cluster and deploying a Soda Agent in it. 
 
-[Deployment overview](#deployment-overview-3)<br />
-[Compatibility](#compatibility-3)<br />
 [Prerequisites](#prerequisites-3)<br />
 [System requirements](#system-requirements-3)<br />
 [Deploy an agent](#deploy-an-agent-3)<br />
@@ -1024,19 +981,6 @@ These deployment instructions offer guidance for setting up a Google Kubernetes 
 [Troubleshoot deployment](#troubleshoot-deployment-3)<br />
 <br />
 
-
-### Deployment overview
-
-{% include agent-deploy-overview.md %}
-
-
-### Compatibility
-
-Soda supports Kubernetes cluster version 1.21 or greater.
-
-You can deploy a Soda Agent to connect with the following data sources:
-
-{% include compatible-cloud-datasources.md %}
 
 ### Prerequisites
 
