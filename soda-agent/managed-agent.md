@@ -51,8 +51,8 @@ In your Soda Cloud account, navigate to **your avatar** > **Data Sources**. Clic
 | Data Source Label | Provide a unique identifier for the data source. Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
 | Default Scan Agent | Select the Soda-hosted agent, or the name of a Soda Agent that you have previously set up in your secure environment. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
 | Schedule | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
-| Starting At | Select the time of day to run the scan. The default value is midnight. |
-| Cron Expression | (Optional) Write your own <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">cron expression</a> to define the schedule Soda Cloud uses to run scans. |
+| Starting At (UTC) | Select the time of day to run the scan. The default value is midnight. |
+| Custom Cron Expression | (Optional) Write your own <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">cron expression</a> to define the schedule Soda Cloud uses to run scans. |
 
 <br />
 
@@ -65,15 +65,17 @@ Soda hosts agents in a secure environment in Amazon AWS. As a SOC 2 Type 2 certi
 Use the following data source-specific connection configuration pages to populate the connection fields in Soda Cloud.
 *  [Connect to BigQuery]({% link soda/connect-bigquery.md %})
 *  [Connect to Databricks SQL]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql)
+*  [Connect to MS SQL Server]({% link soda/connect-mssql.md %})
 *  [Connect to MySQL]({% link soda/connect-mysql.md %})
 *  [Connect to PostgreSQL]({% link soda/connect-postgres.md %})
+*  [Connect to Redshift]({% link soda/connect-redshift.md %})
 *  [Connect to Snowflake]({% link soda/connect-snowflake.md %})
  
 <br />
 
 #### 3. Discover
 
-During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. It captures basic information about each dataset, including a dataset names and the columns each contains.
+During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. It captures basic information about each dataset, including a dataset names, the columns each contains, and the type of data each column contains such as integer, character varying, timestamp, etc.
 
 In the editing panel, specify the datasets that Soda Cloud must include or exclude from this basic discovery activity. The default syntax in the editing panel instructs Soda to collect basic dataset information from all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character. See [Add dataset discovery]({% link soda-cl/profile.md %}l#add-dataset-discovery) for more detail on profiling syntax.
 
@@ -91,13 +93,17 @@ discover datasets:
 
 #### 4. Profile
 
-To gather more detailed profile information about datasets in your data source, you can configure Soda Cloud to profile the columns in datasets. 
+To gather more detailed profile information about datasets in your data source and automatically build an Anomaly Detection Dashboard for Observability, you can configure Soda Cloud to profile the columns in datasets. 
 
-Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
+Profiling a dataset produces two tabs' worth of data in a dataset page:
+* In the **Columns** tab, you can see column profile information including details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
+![profile-columns2](/assets/images/profile-columns2.png){:height="500px" width="500px"}
+* In the **Anomalies** tab, you can access an out-of-the-box Anomaly Detection Dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorightm learns over the course of approximately five days. [Learn more]({% link soda-cloud/anomaly-dashboard.md %})<br /> 
+![profile-anomalies](/assets/images/profile-anomalies.png){:height="500px" width="500px"}
 
 In the editing panel, provide details that Soda Cloud uses to determine which datasets to include or exclude when it profiles the columns in a dataset. The default syntax in the editing panel instructs Soda to profile every column of every dataset in this data source, and, superfluously, all datasets with names that begin with `prod`.  The `%` is a wildcard character. See [Add column profiling]({% link soda-cl/profile.md %}#add-column-profiling) for more detail on profiling syntax.
 
-Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations]({% link soda-cl/profile.md %}#compute-consumption-and-cost-considerations) for more detail.
+Column profiling and automated anomaly detection can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations]({% link soda-cl/profile.md %}#compute-consumption-and-cost-considerations) for more detail.
 {% include code-header.html %}
 ```yaml
 profile columns:
@@ -108,20 +114,8 @@ profile columns:
 
 <br />
 
-#### 5. Check
 
-When Soda Cloud automatically discovers the datasets in a data source, it prepares automated monitoring checks for each dataset. These checks detect anomalies and monitor schema evolution, corresponding to the SodaCL [anomaly score]({% link soda-cl/anomaly-score.md %}) and [schema]({% link soda-cl/schema.md %}) checks, respectively.
-
-In the editing panel, specify the datasets that Soda Cloud must include or exclude when preparing automated monitoring checks. The default syntax in the editing panel indicates that Soda will add automated monitoring to all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character.
-{% include code-header.html %}
-```yaml
-automated monitoring:
-  datasets:
-    - include %
-    - exclude test_%
-```
-
-#### 6. Assign Owner
+#### 5. Assign
 
 | Field or Label | Guidance | 
 |----------------|----------|

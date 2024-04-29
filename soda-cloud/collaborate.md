@@ -133,6 +133,7 @@ Use the links below to access catalog-specific integration instructions. <br />
 [Integrate with Alation]({% link soda/integrate-alation.md %})<br />
 [Integrate with Atlan]({% link soda/integrate-atlan.md %})<br />
 [Integrate with Metaphor]({% link soda/integrate-metaphor.md %})<br />
+[Integrate with Microsoft Purview]({% link soda/integrate-purview.md %}) <br />
 
 ## Go further
 
