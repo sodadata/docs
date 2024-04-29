@@ -145,6 +145,10 @@ Sending results to Soda Cloud
 Add multiple nested key:value pairs to define both `warn` alert conditions and `fail` alert conditions.
 
 The following example defines the conditions for both a `warn` and a `fail` state. After a scan, the check result is `warn` when there are between one and ten duplicate phone numbers in the dataset, but if Soda Library discovers more than ten duplicates, as it does in the example, the check fails. If there are no duplicate phone numbers, the check passes.
+
+* Be sure to add the `:` to the end of your check, before the nested content.
+* Be aware that a check that contains one or more alert configurations only ever yields a [single check result](#expect-one-check-result).
+
 {% include code-header.html %}
 ```yaml
 checks for dim_reseller:
@@ -163,21 +167,6 @@ Scan summary:
 Oops! 1 failures. 0 warnings. 0 errors. 0 pass.
 Sending results to Soda Cloud
 ```
-
-You can add multiple conditions to each type of alert, as with the following example, but be aware that a check that contains one or more alert configurations only ever yields a [single check result](#expect-one-check-result). 
-{% include code-header.html %}
-```yaml
-checks for dim_reseller:
-  - duplicate_count(phone):
-      warn: 
-        when between 1 and 2
-        when > 5
-      fail: when > 10
-```
-
-* Be sure to add the `:` to the end of your check, before the nested content.
-* Be aware that a check that contains one or more alert configurations only ever yields a [single check result](#expect-one-check-result).
-
 
 ### Expect one check result
 
