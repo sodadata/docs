@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### April 29, 2024
+* Added optional connection parameters to [Denodo]({% link soda/connect-denodo.md %}) data source configuration.
+
 #### April 26, 2024
 * Included information about [allocating resources]({% link soda-agent/deploy.md %}#system-requirements) for improved performance of a self-hosted Soda Agent.
 

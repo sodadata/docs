@@ -31,6 +31,9 @@ data_source my_datasource_name:
 | password | required | Consider using system variables to retrieve this value securely.      |
 | host     | required | Provide a host identifier.                                 |
 | port     | optional | Provide a port identifier.                                 |
+| database | optional | Provide a virtual database (VDB) name.                     |
+| connection_timeout | optional | Provide an integer value to represent seconds.   |
+| sslmode  | optional | Provide a value to indicate the type of SSL support: <br />`prefer`<br /> `require`<br /> `allow`<br /> `diable`<br /> Default value is `prefer`. |
 
 
 {% include test-connection.md %}
