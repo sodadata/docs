@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### April 30, 2024
+* Published documentation for V3 of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
+
 #### April 29, 2024
 * Added optional connection parameters to [Denodo]({% link soda/connect-denodo.md %}) data source configuration.
 

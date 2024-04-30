@@ -11,12 +11,12 @@ parent: Create a data contract
 
 **Soda data contracts** is a Python library that uses checks to verify data. Contracts enforce data quality standards in a data pipeline so as to prevent negative downstream impact. To verify the data quality standards for a dataset, you prepare a data **contract YAML file**, which is a formal description of the data. In the data contract, you use checks to define your expectations for good-quality data. Using the Python API, you can add data contract verification ideally right after new data has been produced. 
 
-In your data pipeline, add a data contract after data has been been produced or transformed so that when you programmatically run a scan via the Python API, Soda data contracts verifies the contract, executing the checks contained within the contract and producing results which indicate whether the checks passed or failed.
+In your data pipeline, add a data contract after data has been produced or transformed so that when you programmatically run a scan via the Python API, Soda data contracts verifies the contract, executing the checks contained within the contract and producing results which indicate whether the checks passed or failed.
 
 ```yaml
 dataset: dim_customer
 
-sql_filter: |
+filter_sql: |
   created > ${FILTER_START_TIME}
 
 columns:
@@ -49,23 +49,22 @@ columns:
 
 checks:
 - type: rows_exist
-- type: no_duplicate_count
+- type: no_duplicate_values
   columns: ['phone', 'email']
 ```
 
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.0 or greater</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.3 or greater</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
-<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
-
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small><br />
 <br />
 
 [Prepare a data contract](#prepare-a-data-contract)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[(Optional) Add Soda data contracts YAML code completion in PyCharm](#optional-add-soda-data-contracts-yaml-code-completion-in-pycharm)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[(Optional) Add Soda data contracts YAML code completion in VS Code](#optional-add-soda-data-contracts-yaml-code-completion-in-visual-studio-code)<br />
-[List of configuration keys](#list-of-configuration-keys)<br />
+[(Optional) Add YAML code completion in VS Code](#optional-add-yaml-code-completion-in-vs-code)<br />
+[(Optional) Add YAML code completion in PyCharm](#optional-add-yaml-code-completion-in-vs-code)<br />
+[List of contract configuration keys](#list-of-configuration-keys)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -90,7 +89,7 @@ checks:
     dataset: dim_customer
 
     # a filter to verify a partition of data
-    sql_filter: |
+    filter_sql: |
       created > ${FILTER_START_TIME}
 
     columns: 
@@ -114,12 +113,31 @@ checks:
 4. Save the file, then reference it when you add a contract verification step to your programmatic Soda scan; see [Verify a data contract]({% link soda/data-contracts-verify.md %}). 
 
 
-<br />
+### Organize your data contracts
 
-### (Optional) Add Soda data contracts YAML code completion in Visual Studio Code
+Best practice dictates that you structure your data contracts files in a way that resembles the structure of your warehouse.  
+1. In your root git repository folder, create a `soda` folder.
+2. In the `soda` folder, create one folder per warehouse, then add a `warehouse.yml` file in each. 
+3. In each warehouse folder, create folders in each schema, then add the contract files in the schema folders.
+
+```shell
++ soda
+|  + postgres_local
+|  |  + warehouse.yml
+|  |  + public
+|  |  |  + customers.yml
+|  |  |  + suppliers.yml
+|  + snowflake_sales
+|  |  warehouse.yml
+|  |  + RAW
+|  |  |  + opportunities.yml
+|  |  |  + contacts.yml
++ README.md 
+```
+
+## (Optional) Add YAML code completion in VS Code
 
 1. If you have not already done so, install the Red Hat <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">VS Code YAML extension</a>.
-   
 2. From the public soda-core repo, download the `./soda/contracts/soda_data_contract_schema_1_0_0.json` to a local folder that contains, or will contain, your contract YAML files.
 3. Add the following `yaml-language-server` details to the top of your contract YAML file. You can supply a relative file path for the `$schema` which the extension determines according to the YAML file path, not from the workspace root path.
     ```yaml
@@ -136,17 +154,18 @@ checks:
 
 Alternatively, access instructions to <a href="https://dev.to/brpaz/how-to-create-your-own-auto-completion-for-json-and-yaml-files-on-vs-code-with-the-help-of-json-schema-k1i" target="_blank">create your own auto-completion</a>.
 
-
-### (Optional) Add Soda data contracts YAML code completion in PyCharm
+## (Optional) Add YAML code completion in PyCharm
 
 1. Choose an extension for your contract files.  For example `.contract.yml`
 2. From the public soda-core repo, download the `./soda/contracts/soda_data_contract_schema_1_0_0.json` to a local drive that also contains, or will contain, your contract YAML files.
 2. In your PyCharm environment, navigate to Preferences > Languages & Frameworks > Schemas and DTDs > JSON Schema Mappings.
-3. Add a mapping between the extension you chose in step 1. For example, use `*.contract.yml` files and map to the schema file that you saved on your local file system.
+3. Add a mapping between the extensions you chose in step 1. For example, use `*.contract.yml` files and map to the schema file that you saved on your local file system.
 
 See also: <a href="https://www.jetbrains.com/help/pycharm/json.html#ws_json_schema_add_custom" target="_blank">Using custom JSON schemas</a>.
 
 <br />
+
+
 
 ## List of configuration keys
 
@@ -155,7 +174,7 @@ See also: <a href="https://www.jetbrains.com/help/pycharm/json.html#ws_json_sche
 | `dataset` | Specify the name of the dataset upon which you wish to enforce the contract. | required | 
 | `columns` | Provide a list of columns that form part of the data contract. | required | 
 | any   | Provide a custom key-value pair to record any data contract detail you wish, such as dataset owner, department, created_at date, etc. See: [Leverage Soda YAML extensibility](#leverage-soda-yaml-extensibility)| optional |
-| `sql_filter` | Write a SQL query to partition the data on which you wish to verify the data contract. <br /> Supply the value of any variables in the filter at scan time. | optional |
+| `filter_sql` | Write a SQL query to partition the data on which you wish to verify the data contract. <br /> Supply the value of any variables in the filter at scan time. | optional |
 | `checks`  | Define data contract checks that Soda executes against the entire dataset | optional | 
 
 | Column key | Value | Required | 
@@ -202,6 +221,7 @@ columns:
   # Soda data contract verification ignores this parameter.
   sensitive: true
 ```
+
 
 ## Go further
 
