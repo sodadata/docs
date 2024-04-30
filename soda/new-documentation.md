@@ -9,8 +9,14 @@ parent: Learning resources
 
 <br />
 
-#### April 26, 2024
+#### April 30, 2024
 * Published documentation for V3 of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
+
+#### April 29, 2024
+* Added optional connection parameters to [Denodo]({% link soda/connect-denodo.md %}) data source configuration.
+
+#### April 26, 2024
+* Included information about [allocating resources]({% link soda-agent/deploy.md %}#system-requirements) for improved performance of a self-hosted Soda Agent.
 
 #### April 25, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.0.
