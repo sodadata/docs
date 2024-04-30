@@ -69,6 +69,8 @@ checks for dim_customer:
 [Manage alert severity levels](#manage-alert-severity-levels) <br/>
 [Add optional training dataset configurations](#add-optional-training-dataset-configurations)<br />
 [Add optional model configurations](#add-optional-model-configurations)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Customize hyperparameters](#customize-hyperparameters)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Customize country-specific holidays](#customize-country-specific-holidays)<br />
 [Add optional dynamic hyperparameter tuning configurations](#add-optional-dynamic-hyperparameter-tuning-configurations)<br />
 [Best practices for model configurations](#best-practices-for-model-configurations)<br />
 [Test optional configurations using a simulator](#test-optional-configuration-using-a-simulator)<br />
