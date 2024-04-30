@@ -86,7 +86,7 @@ checks for dim_reseller:
 
 ### Failed row samples
 
-Checks that use the `duplicate_count` or `duplicate_percent` metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
+Checks that use the `duplicate_count` or `duplicate_percent` metrics automatically collect samples of any failed rows to display in Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
 If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Library, or when writing checks as part of an agreement in Soda Cloud. 
 {% include code-header.html %}
