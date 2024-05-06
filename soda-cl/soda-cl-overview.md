@@ -165,8 +165,6 @@ By default, alert notifications for your no-code check go to the **Dataset Owner
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
-{% include banner-agreements.md %}
-
 You can write SodaCL checks directly in the Soda Cloud user interface within an **agreement**. An agreement is a contract between stakeholders that stipulates the expected and agreed-upon state of data quality in a data source.
 
 In an agreement, use SodaCL checks to define the state of "good quality" for data in this data source, then identify and get approval from stakeholders in your organization. Define whom Soda Cloud will notify when a check in the agreement fails, then set a schedule to regularly execute the Soda Checks to uphold the tenets of the agreement. 
@@ -185,8 +183,6 @@ In an agreement, use SodaCL checks to define the state of "good quality" for dat
 * You, or an Admin on your Soda Cloud account, has [added a new datasource]({% link soda-agent/deploy.md %}#add-a-new-data-source) via the Soda Agent in your Soda Cloud account.
 
 ### Create a new agreement
-
-{% include banner-agreements.md %}
 
 For a new agreement, you define several details including which data to check, what checks to execute during a scan, and whom to notify when bad data triggers an alert.
 

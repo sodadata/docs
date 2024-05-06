@@ -72,8 +72,6 @@ If you wish to schedule a *new* scan to execute a no-code check more or less fre
 <small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
 <br />
 
-{% include banner-agreements.md %}
-
 When you create a Soda Agreement in Soda Cloud, the last step in the flow demands that you select a **scan definition**. The scan definition indicates which Soda Agent to use to execute the scan, on which data source, and when. Effectively, a scan definition defines the what, when, and where to run a scheduled scan.
 
 If you wish to change an agreement's existing scan definition:
@@ -127,7 +125,6 @@ You can also run and ad hoc scan to execute all checks associated with a scan de
 <small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
 <br />
 
-{% include banner-agreements.md %}
 {% include ad-hoc-scan.md %}
 
 
