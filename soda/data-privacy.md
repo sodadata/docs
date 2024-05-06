@@ -43,7 +43,7 @@ You can connect Soda Library to your Soda Cloud account. To communicate with you
 
 ## Sending data to Soda Cloud
 
-Soda Library usse a secure API to connect to Soda Cloud. When Soda Library completes a scan, it pushes the scan results to your Soda Cloud account where you can log in and examine the details in the web application.
+Soda Library uses a secure API to connect to Soda Cloud. When Soda Library completes a scan, it pushes the scan results to your Soda Cloud account where you can log in and examine the details in the web application.
 
 Notably, your Soda Cloud account does *not* store the raw data that Soda Library scans. Soda Library pushes metadata to Soda Cloud; by default all your data stays inside your private network.
 
