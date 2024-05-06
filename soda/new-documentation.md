@@ -7,7 +7,10 @@ parent: Learning resources
 
 # What's new in Soda docs?
 
-<br />
+<br /> 
+
+#### May 6, 2024
+* Removed the Agreement deprecation notice as the decision to deprecate the feature has been reversed. 
 
 #### April 30, 2024
 * Published documentation for V3 of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
