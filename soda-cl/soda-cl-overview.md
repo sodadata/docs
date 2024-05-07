@@ -96,7 +96,7 @@ Create **no-code checks** for data quality directly in the Soda Cloud user inter
 ### Prerequisites
 
 * You, or an Admin on your Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) version 0.8.52 or greater, and connected it to your Soda Cloud account.
-* You, or an Admin on your Soda Cloud account, has [added a new datasource]({% link soda-agent/deploy.md %}#add-a-new-data-source) via the Soda Agent in your Soda Cloud account.
+* You, or an Admin on your Soda Cloud account, has [added a new datasource]({% link soda-agent/deploy.md %}#add-a-new-data-source) via the Soda Agent in your Soda Cloud account *and* configured the data source to [discover the datasets]({% link soda-cl/profile.md %}#add-dataset-discovery) in the data source for which you want to write no-code checks. (Soda must have access to dataset names and column names to present those values in dropdown menus during no-code check creation.)
 * You must have permission to edit the dataset as an Admin, Manager, or Editor; see [Roles and rights]({% link soda-cloud/roles-and-rights.md %}).
 
 ### Create a new check

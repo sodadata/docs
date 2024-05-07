@@ -74,6 +74,7 @@ checks for dim_customer:
 [Add optional dynamic hyperparameter tuning configurations](#add-optional-dynamic-hyperparameter-tuning-configurations)<br />
 [Best practices for model configurations](#best-practices-for-model-configurations)<br />
 [Test optional configurations using a simulator](#test-optional-configuration-using-a-simulator)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Adjust advanced simulator parameters](#adjust-advanced-simulator-parameters)<br />
 [Address common anomaly detection issues](#address-common-anomaly-detection-issues)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Insensitive detection](#insensitive-detection)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;[Consecutive falsely-identified anomalies](#consecutive-falsely-identified-anomalies)<br />
@@ -578,13 +579,13 @@ soda simulate-anomaly-detection -c configuration.yaml
 8. Use the tools in the sidebar to [adjust parameter settings](#adjust-simulator-parameters) until the simulator displays your ideal anomaly sensitivity results. Apply your optimized parameter settings to the check configuration in your checks YAML file.
 ![ad-simulator-results](/assets/images/ad-simulator-results.png){:height="700px" width="700px"}
 
-### Adjust simulator parameters
+### Adjust advanced simulator parameters
 
 For **Model Hyperparameter Profiles**, the first two options correspond with the `coverage`, `MAPE` profiles described in [Add optional model configuration](#add-optional-model-configurations), and the third option, `custom` corresponds to the ability to [Customize hyperparameter](#customize-hyperparameters). Experiment with the `coverage` and `MAPE` profiles first, before considering the `custom` profile. 
 
-For further hyperparameter customization, turn on the `Advanced` toggle and edit hyperparameters in the `Custom Prophet Hyperparameters` text field, as in the example below. Note that if you do not specify a customized value for a hyperparameter, Soda uses the default values from the `coverage` profile.
-
-```python
+For further hyperparameter customization, turn on the `Advanced` toggle in the simulator and edit hyperparameters in the `Custom Prophet Hyperparameters` field which accepts JSON, as in the example below. Note that if you do not specify a customized value for a hyperparameter, Soda uses the default values from the `coverage` profile.
+{% include code-header.html %}
+```json
 {
   "growth": "linear",
   "change_pointprior_scale": 0.1,
