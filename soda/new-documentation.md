@@ -12,6 +12,7 @@ parent: Learning resources
 #### May 7, 2024
 * Added to example script for a programmatic scan to include a [check template]({% link soda-cl/check-template.md %}) file path. 
 * Added [prerequisite]({% link soda-cl/soda-cl-overview.md %}#prerequisites) to no-code check creation that datasets must be discovered during data source onboarding.
+* Touched up some details for advanced configuration of the [anomaly detection simulator]({% link soda-cl/anomaly-detection.md %}#adjust-advanced-simulator-parameters).
 
 #### May 6, 2024
 * Removed the Agreement deprecation notice as the decision to deprecate the feature has been reversed. 
