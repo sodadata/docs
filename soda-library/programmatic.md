@@ -113,6 +113,11 @@ checks for cities:
     - row_count > 0
 """
 
+# Add template YAML files, if used
+##################
+scan.add_template_files(template_path)
+
+
 # Add the checks to the scan
 ####################
 scan.add_sodacl_yaml_str(checks)

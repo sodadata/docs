@@ -87,12 +87,18 @@ checks for dim_account:
       fail: when > 0
 ```
 
-When you run a scan, you must incude a `-T` option to idenfity the file path and file name of the template YAML file in which you defined your reuseable metric(s). 
+When you run a scan from the command-line, you must incude a `-T` option to idenfity the file path and file name of the template YAML file in which you defined your reuseable metric(s). In a programmatic scan, add the path to the template file.
 
 Command:
 {% include code-header.html %}
 ```shell
 soda scan -d adventureworks -c configuration.yml checks.yml -T templates.yml
+```
+
+Add to programmatic scan:
+{% include code-header.html %}
+```python
+scan.add_template_files(template_path)
 ```
 
 Output:
@@ -141,12 +147,18 @@ checks for dim_customer:
       warn: when between 1000 and 9999
 ```
 
-When you run a scan, you must incude a `-T` option to idenfity the file path and file name of the template YAML file in which you defined your reuseable metric(s). 
+When you run a scan from the command-line, you must incude a `-T` option to idenfity the file path and file name of the template YAML file in which you defined your reuseable metric(s). In a programmatic scan, add the path to the template file.
 
-Command:
+CLI command:
 {% include code-header.html %}
 ```shell
 soda scan -d adventureworks -c configuration.yml checks.yml -T templates.yml
+```
+
+Add to programmatic scan:
+{% include code-header.html %}
+```python
+scan.add_template_files(template_path)
 ```
 
 Output:

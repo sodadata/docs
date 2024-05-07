@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### May 7, 2024
+* Added to example script for a programmatic scan to include a [check template]({% link soda-cl/check-template.md %}) file path. 
+
 #### May 6, 2024
 * Removed the Agreement deprecation notice as the decision to deprecate the feature has been reversed. 
 
