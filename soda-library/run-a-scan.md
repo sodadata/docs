@@ -337,6 +337,18 @@ scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_two.yml")
 scan.add_sodacl_yaml_files("./my_scan_dir")
 scan.add_sodacl_yaml_files("./my_scan_dir/sodacl_file_three.yml")
 
+# OR
+
+# Define checks using SodaCL
+##################
+checks = """
+checks for cities:
+    - row_count > 0
+"""
+
+# Add template YAML files, if used
+##################
+scan.add_template_files(template_path)
 
 # Execute the scan
 ##################
@@ -346,11 +358,13 @@ scan.execute()
 ##################
 scan.set_verbose(True)
 
-# Set scan definition name, equivalent to CLI -s option;
-# see Tips and best practices below
+# Set scan definition name, equivalent to CLI -s option
 ##################
 scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
 
+# Do not send results to Soda Cloud, equivalent to CLI -l option;
+##################
+scan.set_is_local(True)
 
 # Inspect the scan result
 #########################
