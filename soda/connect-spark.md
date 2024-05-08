@@ -276,8 +276,15 @@ data_source my_datasource_name:
 | Category | Data type  |
 | -------- | ---------- |
 | text     | CHAR, VARCHAR, TEXT  |
-| number   | BIG INT, NUMERIC, BIT, SMALLINT, DECIMAL, SMALLMONEY, INT, TINYINT, MONEY, FLOAT, REAL  |
+| number   | NUMERIC, BIT, SMALLMONEY, INT, MONEY, FLOAT, REAL  |
 | time     | DATE, TIME, DATETIME, DATETIMEOFFSET |
+
+Not supported:
+* BIGINT
+* BOOLEAN
+* DECIMAL
+* TIMESTAMP
+
 
 <br />
 <br />
