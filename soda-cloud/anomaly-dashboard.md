@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Add anomaly detection dashboards
-description: 
+description: Use Soda's anomaly detection dashboard to get automated insights into your data quality.
 parent: Run scans and view results
 ---
 

@@ -74,6 +74,7 @@ This setup provides a secure, out-of-the-box Soda Agent to manage access to data
 
 Use this setup for:<br /> 
 ✅ **A quick start**: Use the out-of-the-box agent to start testing data quality right away from within the Soda Cloud user interface, without the need to install or deploy any other tools. <br />
+✅ **Anomaly detection dashboard**: Use Soda's out-of-the-box **anomaly detection dashboards** to get automated insights into basic data quality metrics for your datasets. See: [Add anomaly detection dashboards]({% link soda-cloud/anomaly-dashboard.md %})<br />
 ✅ **Self-serve data quality**: Empower data analysts and scientists to self-serve and create their own no-code checks for data quality. See: [Self-serve Soda]({% link soda/quick-start-end-user.md %})<br />
 ✅ **Automated data monitoring**: Set up data profiling and automated data quality monitoring. See: [Automate monitoring]({% link soda/quick-start-automate.md %})<br />
 ✅ **Data catalog integration**: Integrate Soda with a data catalog such as Atlan, Alation, or Metaphor. See: [Integrate Soda]({% link soda/integrate-alation.md %})<br />
