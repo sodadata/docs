@@ -80,8 +80,6 @@
     page: soda-library/run-a-scan.md
   - subtitle: Examine failed rows
     page: soda-cloud/failed-rows.md
-  - subtitle: Observe anomalies
-    page: soda-cloud/anomaly-dashboard.md
   - subtitle: Manage scheduled scans
     page: soda-cloud/scan-mgmt.md
   - subtitle: Configure orchestrated scans
@@ -92,6 +90,8 @@
   subcategories:
   - subtitle: Organize, alert, investigate
     page: soda-cloud/collaborate.md
+  - subtitle: Add anomaly dashboards
+    page: soda-cloud/anomaly-dashboard.md
   - subtitle: Add check attributes
     page: soda-cl/check-attributes.md
   - subtitle: Set notification rules

@@ -28,7 +28,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to set 
 5. Organize, alert, investigate
 
 
-### Compatibility
+## Compatibility
 
 {% include compatible-soda-hosted.md %}
 
@@ -93,7 +93,7 @@ discover datasets:
 
 #### 4. Profile
 
-To gather more detailed profile information about datasets in your data source and automatically build an Anomaly Detection Dashboard for Observability, you can configure Soda Cloud to profile the columns in datasets. 
+To gather more detailed profile information about datasets in your data source and automatically build an **anomaly detection dashboard** for data quality observability, you can configure Soda Cloud to profile the columns in datasets. 
 
 Profiling a dataset produces two tabs' worth of data in a dataset page:
 * In the **Columns** tab, you can see column profile information including details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
