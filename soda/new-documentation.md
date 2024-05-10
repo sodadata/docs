@@ -7,7 +7,22 @@ parent: Learning resources
 
 # What's new in Soda docs?
 
-<br />
+<br /> 
+
+#### May 8, 2024
+* Added to programmatic scan to include option to [run the scan locally]({% link soda-library/programmatic.md %}#set-up-basic-programmatic-invocation-in-python) and not send results to Soda Cloud.
+
+#### May 7, 2024
+* Added to example script for a programmatic scan to include a [check template]({% link soda-cl/check-template.md %}) file path. 
+* Added [prerequisite]({% link soda-cl/soda-cl-overview.md %}#prerequisites) to no-code check creation that datasets must be discovered during data source onboarding.
+* Touched up some details for advanced configuration of the [anomaly detection simulator]({% link soda-cl/anomaly-detection.md %}#adjust-advanced-simulator-parameters).
+* * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.3 and 3.3.4, and Soda Library 1.4.8.
+
+#### May 6, 2024
+* Removed the Agreement deprecation notice as the decision to deprecate the feature has been reversed. 
+
+#### April 30, 2024
+* Published documentation for V3 of [data contracts]({% link soda/data-contracts.md %}), Soda's experimental way to set data quality standards for data products. 
 
 #### April 29, 2024
 * Added optional connection parameters to [Denodo]({% link soda/connect-denodo.md %}) data source configuration.

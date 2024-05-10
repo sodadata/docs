@@ -72,8 +72,6 @@ If you wish to schedule a *new* scan to execute a no-code check more or less fre
 <small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
 <br />
 
-{% include banner-agreements.md %}
-
 When you create a Soda Agreement in Soda Cloud, the last step in the flow demands that you select a **scan definition**. The scan definition indicates which Soda Agent to use to execute the scan, on which data source, and when. Effectively, a scan definition defines the what, when, and where to run a scheduled scan.
 
 If you wish to change an agreement's existing scan definition:
@@ -127,7 +125,6 @@ You can also run and ad hoc scan to execute all checks associated with a scan de
 <small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
 <br />
 
-{% include banner-agreements.md %}
 {% include ad-hoc-scan.md %}
 
 
@@ -340,6 +337,18 @@ scan.add_sodacl_yaml_file("./my_programmatic_test_scan/sodacl_file_two.yml")
 scan.add_sodacl_yaml_files("./my_scan_dir")
 scan.add_sodacl_yaml_files("./my_scan_dir/sodacl_file_three.yml")
 
+# OR
+
+# Define checks using SodaCL
+##################
+checks = """
+checks for cities:
+    - row_count > 0
+"""
+
+# Add template YAML files, if used
+##################
+scan.add_template_files(template_path)
 
 # Execute the scan
 ##################
@@ -349,11 +358,13 @@ scan.execute()
 ##################
 scan.set_verbose(True)
 
-# Set scan definition name, equivalent to CLI -s option;
-# see Tips and best practices below
+# Set scan definition name, equivalent to CLI -s option
 ##################
 scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
 
+# Do not send results to Soda Cloud, equivalent to CLI -l option;
+##################
+scan.set_is_local(True)
 
 # Inspect the scan result
 #########################

@@ -12,11 +12,11 @@ parent: Create a data contract
 Soda data contracts is a Python library that verifies data quality standards as early and often as possible in a data pipeline so as to prevent negative downstream impact. Learn more [About Soda data contracts]({% link soda/data-contracts.md %}#about-data-contracts).
 
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.0 or greater</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.3 or greater</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
-<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small><br />
 <br />
 
 What follows is reference documentation and examples of each type of data contract check. <br />
@@ -27,14 +27,16 @@ Note that data contracts checks do not follow SodaCL syntax.
 [Missing](#missing)<br />
 [Row count](#row-count)<br />
 [SQL aggregation](#sql-aggregation)<br />
-[User-defined SQL checks](#user-defined-sql-checks)<br />
+[SQL metric expression](#sql-metric-expression)<br />
+[SQL metric query](#sql-metric-query)<br />
 [Validity](#validity)<br />
-[List of threshold keys](#list-of-threhold-keys)<br />
+[Check filters](#check-filters)<br >
+[List of threshold keys](#list-of-threshold-keys)<br />
 <br />
 
 ## Duplicate
 
-| Type of check | Accepts <br /> [threshold values](#list-of-threhold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
+| Type of check | Accepts <br /> [threshold values](#list-of-threshold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
 |---------------- | :-------------: | :-------------------------------: | --------------------------------- |
 | `no_duplicate_values` | no  | - | `name`<br /> `columns`  |
 | `duplicate_count`     | required | - | `name`  |
@@ -66,7 +68,7 @@ checks:
 ## Freshness
 This check compares the maximum value in the column to the time the scan runs; the check fails if that computed value exceeds the threshold you specified in the check.
 
-| Type of check | Accepts <br /> [threshold values](#list-of-threhold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
+| Type of check | Accepts <br /> [threshold values](#list-of-threshold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
 |---------------- | :-------------: | :-------------------------------: | --------------------------------- |
 | `freshness_in_days`   | required  | - | `name`  |
 | `freshness_in_hours`  | required  | - | `name`  |
@@ -89,7 +91,7 @@ If you *do not* use an optional column configuration key to identify the values 
 
 See also: [Combine missing and validity](#combine-missing-and-validity)
 
-| Type of check | Accepts <br /> [threshold values](#list-of-threhold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
+| Type of check | Accepts <br /> [threshold values](#list-of-threshold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
 |---------------- | :-------------: | ------------------------------- | --------------------------------- |
 | `no_missing_values` | no  | - | `name`<br /> `missing_values`<br /> `missing_sql_regex`<br />  |
 | `missing_count`     | required | - | `name`<br /> `missing_values`<br /> `missing_sql_ regex`<br />  |
@@ -125,7 +127,7 @@ columns:
 
 ## Row count
 
-| Type of check | Accepts <br /> [threshold values](#list-of-threhold-keys) | Column config <br />keys: required | Column config <br />keys: optional |
+| Type of check | Accepts <br /> [threshold values](#list-of-threshold-keys) | Column config <br />keys: required | Column config <br />keys: optional |
 |---------------- | :-------------: | :-------------------------------: | --------------------------------- |
 | `rows_exist`    | no  | - | `name`  |
 | `row_count`     | required | - | `name`  |
@@ -147,7 +149,7 @@ checks:
 
 ## SQL aggregation
 
-| Type of check | Accepts <br /> [threshold values](#list-of-threhold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
+| Type of check | Accepts <br /> [threshold values](#list-of-threshold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
 |---------------- | :-------------: | :-------------------------------: | --------------------------------- |
 | `avg`   | required  | - | `name`  |
 | `sum`  | required  | - | `name`  |
@@ -169,43 +171,100 @@ columns:
     must_be_less_than: 10
 ```
 
-## User-defined SQL checks
+<!--## SQL failed rows
 
-Use a SQL expression or SQL query check to customize your data contract check. Apply these checks at the column or dataset level.
+TODO: It's on the roadmap to support capturing of failed rows in contracts.-->
 
-| Type of check | Accepts <br /> [threshold values](#list-of-threhold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
-|---------------- | :-------------: | ------------------------------- | --------------------------------- |
-| `sql_expression`   | required  | `metric`<br /> `metric_sql_expression` | `name`  |
-| `user_defined_sql`  | required  | `metric`<br /> `sql_query` | `name`  |
+## SQL metric expression
+
+| Type of check | Accepts <br /> [threshold values](#list-of-threshold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
+|---------------- | :-------------: | :-------------------------------: | --------------------------------- |
+| `metric_expression`   | required  | - | `name`  |
+
+Use a SQL metric expression check to monitor a custom metric that you define using a SQL expression. 
+
+You can apply a SQL metric check to one or more columns or to an entire dataset. As Soda data contracts pushes results to Soda Cloud, it associates column checks with the column name in Soda Cloud.
+
+Relative to a [SQL metric query](#sql-metric-query) check, a SQL metric expression check offers slightly better performance during contract verification. In the case where Soda must also compute other metrics during verification, it appends a SQL metric expression to the same query so that it only requires a single pass over the data to compute all the metrics. A SQL metric query executes independently of other queries during verification, essentially requiring a separate pass.
 
 {% include code-header.html %}
 ```yaml
 dataset: CUSTOMERS
-
 columns:
-- name: country
-  checks:
-  - type: sql_expression
-    # define a name for your custom metric
-    metric: us_count
-    metric_sql_expression: COUNT(CASE WHEN country = 'US' THEN 1 END)
-    must_be_not_between: [100, 120]
+  - name: id
+  # SQL metric expression check for a column
+  - name: country
+    checks:
+    - type: metric_expression
+      metric: us_count
+      expression_sql: COUNT(CASE WHEN country = 'US' THEN 1 END)
+      must_be: 0
+```
 
+
+{% include code-header.html %}
+```yaml
+dataset: CUSTOMERS
+columns:
+  - name: id
+  - name: country
 checks:
-- type: user_defined_sql
-  # define a name for your custom metric
-  metric: count_america
-  sql_query: |
+# SQL metric expression check for a dataset
+- type: metric_expression
+  metric: us_count
+  expression_sql: COUNT(CASE WHEN country = 'US' THEN 1 END)
+  must_be: 0
+```
+
+<br />
+
+## SQL metric query
+
+| Type of check | Accepts <br /> [threshold values](#list-of-threshold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
+|---------------- | :-------------: | :-------------------------------: | --------------------------------- |
+| `metric_expression`   | required  | - | `name`  |
+
+Use a SQL metric query check to monitor a custom metric that you define using a SQL query.
+
+You can apply a SQL metric check to one or more columns or to an entire dataset. As Soda data contracts pushes results to Soda Cloud, it associates column checks with the column name in Soda Cloud.
+
+{% include code-header.html %}
+```yaml
+dataset: CUSTOMERS
+columns:
+  # SQL metric query check for a column
+  - name: id
+    checks:
+    - type: metric_query
+      metric: us_count
+      query_sql: |
+        SELECT COUNT(*)
+        FROM {table_name}
+        WHERE country = 'US'
+      must_be_not_between: [0, 5]
+  - name: country
+```
+
+{% include code-header.html %}
+```yaml
+dataset: CUSTOMERS
+columns:
+  - name: id
+checks:
+  # SQL metric expression check for a dataset
+  - type: metric_query
+    metric: us_count
+    query_sql: |
       SELECT COUNT(*)
       FROM {table_name}
       WHERE country = 'US'
-  must_be_between: [0, 5]
+    must_be_not_between: [0, 5]
 ```
 
 
 ## Validity
 
-| Type of check | Accepts <br /> [threshold values](#list-of-threhold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
+| Type of check | Accepts <br /> [threshold values](#list-of-threshold-keys)| Column config <br />keys: required | Column config <br />keys: optional |
 |---------------- | :-------------: | --------------------------------- | --------------------------------- |
 | `no_invalid_values` | no  | At least one of:<br /> `valid_values`<br /> `valid_format` [Valid formats](#valid-formats)<br /> `valid_sql_regex`<br /> `valid_min`<br /> `valid_max`<br /> `valid_length`<br /> `valid_min_length`<br /> `valid_max_length`<br /> `valid_values_reference_data`<br /> `invalid_values`<br /> `invalid_format`<br /> `invalid_sql_regex`| `name`  |
 | `invalid_count`     | required | At least one of:<br />`valid_values`<br /> `valid_format` [Valid formats](#valid-formats)<br /> `valid_sql_regex`<br /> `valid_min`<br /> `valid_max`<br /> `valid_length`<br /> `valid_min_length`<br /> `valid_max_length`<br /> `valid_values_reference_data`<br /> `invalid_values`<br /> `invalid_format`<br /> `invalid_sql_regex` | `name`  |
@@ -314,7 +373,29 @@ In the case where you have configured multiple missing checks that specify diffe
 
 <br />
 
-## List of threhold keys
+## Check filters
+
+Optionally, you can apply a `filter_sql` for the following checks:
+
+* numeric metrics, except `duplicate_count` and `duplicate_percent`
+* `no_missing_values`, `missing_count` and `missing_percent`
+* `no_invalid_values`, `invalid_count` and `invalid_percent`
+
+The example below verifies that the only valid value for the column `currency` is `pounds` when the value of the `country` column for the fow is `UK`. 
+
+```yaml
+dataset: dim_product
+
+columns:
+- name: country
+- name: currency
+  checks:
+  - type: no_invalid_values
+    valid_values: ['pounds']
+    filter_sql: country = 'UK'
+```
+
+## List of threshold keys
 
 {% include contracts-threshold-keys.md %}
 

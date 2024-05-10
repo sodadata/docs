@@ -44,7 +44,7 @@ checks:
   - type: row_count
 ```
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.0 or greater</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.3 or greater</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
@@ -62,7 +62,7 @@ Soda data contracts is a Python library that verifies data quality standards as 
 
 Begin by preparing a contract in a YAML file that stipulates the quality standards to which any newly ingested or transformed data must adhere, such as schema and column data type, freshness, and missing or validity standards. Each time the pipeline accepts or produces new data, Soda executes the checks in the contract; where a check fails, it indicates that new data does not meet the contract's data quality standards and warrants investigation or quarantining. 
 
-If you consider a data pipeline as a set of components -- data transformations, and ingestions, etc. -- you can apply a data contract to each of these components to frequently gauge data quality standards. Doing so frequently and consistently enables you to effectively break apart a dense data pipeline into manageable parts wherein data quality is verified before data moves from one component to the next. Use the same strategy of frequent verification in a CI/CD workflow to make sure that newly-committed code adheres to your stipulated data quality standards.
+If you consider a data pipeline as a set of components -- data transformations, and ingestions, etc. -- you can apply a data contract to verify the data interface between these components and measure data quality standards. Doing so frequently and consistently enables you to effectively break apart a dense data pipeline into manageable parts wherein data quality is verified before data moves from one component to the next. Use the same strategy of frequent verification in a CI/CD workflow to make sure that newly-committed code adheres to your stipulated data quality standards.
 
 
 ## Prerequisites
@@ -72,7 +72,7 @@ Soda Core 3.3.0 supports the newest, experimental version of `soda-contracts`. T
 * Python 3.8 or greater
 * Pip 21.0 or greater
 * a code or text editor
-* your data source connection credentials and details
+* your warehouse connection credentials and details
 * (optional) a local development environment in which to test data contract execution
 * (optional) a git repository to store and control the versions of your data contract YAML files
 
@@ -83,7 +83,7 @@ Data contracts are only available for use in programmatic scans using Soda Core.
 Soda Core CLI *does not* support data contracts.
 
 1. Best practice dictates that you install data contracts in a virtual environment. In your command-line interface tool, create and activate a <a  href="https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments" target="_blank">Python virtual environment</a>.
-2. Execute the following command, replacing the package name with the install package that matches the type of data source you use to store data; see the <a href="https://github.com/sodadata/soda-core/blob/main/docs/installation.md" target="_blank">complete list</a> of packages.
+2. Execute the following command, replacing the package name with the install package that matches the type of warehouse you use to store data; see the <a href="https://github.com/sodadata/soda-core/blob/main/docs/installation.md" target="_blank">complete list</a> of packages.
 ```shell
 pip install soda-core-postgres
 ```
