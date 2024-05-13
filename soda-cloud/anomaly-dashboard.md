@@ -1,18 +1,19 @@
 ---
 layout: default
-title: Add anomaly detection dashboards
-description: Use Soda's anomaly detection dashboard to get automated insights into your data quality.
+title: Activate anomaly detection dashboards
+description: Use Soda's anomaly detection dashboard to get automated observability insights into your data quality.
 parent: Run scans and view results
 ---
 
-# Add anomaly detection dashboards
+# Activate anomaly detection dashboards
+<!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
 Use Soda's **anomaly detection dashboards** to get automated insights into basic data quality metrics for your datasets. 
 
 ![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
 
-To prepare this out-of-the-box dashboard, Soda learns enough about your data to automatically create checks that monitor several built-in metrics for anomalous measurements. To offer this observability into the basic quality of your data, the anomaly detection dashboard gauges:
+To activate these out-of-the-box dashboards, Soda learns enough about your data to automatically create checks for your datasets that monitor several built-in metrics for anomalous measurements. To offer this observability into the basic quality of your data, the anomaly detection dashboard gauges:
 * anomalies in a dataset's **row count** volume
 * anomalies in the **timeliness** of new data in a dataset that contain a column with a TIME data type 
 * evolutions in a dataset's **schemas**, monitoring columns that have been moved, added, or removed
@@ -20,7 +21,7 @@ To prepare this out-of-the-box dashboard, Soda learns enough about your data to 
 * anomalies in the volume of **duplicate** values in columns in a dataset
 * anomalies in the calculated **average** of ...
 
-Using a Soda-hosted agent in your Soda Cloud account, you configure a data source to partition, then profile the datasets to which you wish to add an anomaly detection dashboard. Soda then leverages machine learning algorithms to run daily scans of your datasets to gather measurements which, after a few days, enables it to recognize patterns in your data. 
+Using a Soda-hosted agent in your Soda Cloud account, you configure a data source to partition, then profile the datasets to which you wish to add an anomaly detection dashboard. Soda then leverages machine learning algorithms to run daily scans of your datasets to gather measurements which, after a few days, enable Soda to recognize patterns in your data. 
 
 After establishing these patterns, Soda automatically detects anomalies relative to the patterns and flags them for your review in each dataset's anomaly detection dashboard.  
 
@@ -43,7 +44,7 @@ After establishing these patterns, Soda automatically detects anomalies relative
 
 ## Set up anomaly detection dashboards
 
-Add an anomaly detection dashboard to one or more datasets by configuring profiling for a new data source in Soda Cloud. Refer to the [Get started]({% link soda-agent/managed-agent.md %}#add-a-new-data-source) documentation for full data source onboarding instructions. 
+Activate an anomaly detection dashboard to one or more datasets by configuring profiling for a new data source in Soda Cloud. Refer to the [Get started]({% link soda-agent/managed-agent.md %}#add-a-new-data-source) documentation for full data source onboarding instructions. 
 
 1. As a Soda Admin in your Soda Cloud account, navigate to **your avatar** > **Organization Settings** to validate that the checkbox for **Enable Soda-hosted Agent** is checked. 
 2. If your data source is [compatible]({% link soda-agent/managed-agent.md %}#compatibility) with a Soda-hosted agent, navigate to **your avatar** > **Data Sources**, then click **Add New** to begin the guided data source onboarding workflow. 
@@ -80,15 +81,7 @@ Use the following procedure to activate the anomaly detection dashboard for an e
 
 To access a dataset's anomaly dashboard in Soda Cloud, navigate to the **Datasets** dashboard, then select a dataset from the presented list to open an individual dataset page. Navigate to the **Anomalies** tab. 
 
-![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
-
-The three **Dataset Metrics** tiles represent the most recent measurement or, in other words, one day's worth of data anomaly detection. The three **Column Metrics** tiles display the last seven days' worth of measurements and any anomalies that Soda detected. 
-
-When you click a **Column Metrics** tile to access more information, the list below details which columns contained anomalies. A grayed-out icon for a column indicates that ... 
-
-Click a Dataset Metric tile or the column name for a Column Metric to open the **Check History** for the anomaly detection check. Optionally, you can add feedback to individual data points in the check history graph to help refine the anomaly detection's algorithm pattern recognition and its ability to recognize anomalies. 
-
-![check-feedback](/assets/images/check-feedback.png){:height="600px" width="600px"}
+{% include about-anomaly-dashboard.md %}
 
 
 ### Empty metrics tiles
@@ -100,19 +93,7 @@ If, after the anomaly detection algorithm has completed its pattern training, th
 
 ## Add anomaly notifications
 
-The anomaly detection dashboard adheres to Soda's "no noise" policy when it comes to alert notifications for data quality issues. As such, the dashboard does not automatically send any notifications out of the box. If you wish to received alert notifications for any of the anomalies the dashboard detects, use the bell (🔔) icon. 
-
-If your Soda Admin has integrated your Soda Cloud account with [Slack]({% link soda/integrate-slack.md %}) or [MS Teams]({% link soda/integrate-msteams.md %}) to receive check notifications, you can direct anomaly detection dashboard alerts to those channels. The dashboard does not support sending alerts via [webhook]({% link soda/integrate-webhooks.md %}). 
-
-For a **Dataset Metric**, click the bell to follow the guided instructions to set up a rule that defines where to send an alert notification when Soda detects an anomalous measurement for the metric. 
-
-![dataset-notifs](/assets/images/dataset-notifs.png){:height="500px" width="500px"}
-
-For a **Column Metric**, click the bell next to an individual column name from those listed in the table below the three column metric tiles. Follow the guided instructions to set up a rule that defines where to send an alert notification when Soda detects an anomalous measurement for the metric. 
-
-For example, if you want to receive notifications any time Soda detects an anomalous volume of duplicate values in an `order_id` column, click the **Duplicate** tile to display all the columns for which Soda automatically detects anomalies, then click the bell for `order_id` and set up a rule. If you also wish to receive notifications for anomalous volumes of missing values in the same column, click the **Missing** tile, then click the bell for `order_id` to set up a second rule. 
-
-![column-notifs](/assets/images/column-notifs.png){:height="500px" width="500px"}
+{% include anomaly-notifs.md %}
 
 <br />
 

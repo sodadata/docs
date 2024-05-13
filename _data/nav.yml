@@ -37,7 +37,7 @@
     page: soda/quick-start-end-user.md
   - subtitle: Test data during development
     page: soda/quick-start-dev.md
-  - subtitle: Automate monitoring
+  - subtitle: Automate anomaly detection
     page: soda/quick-start-automate.md
   - subtitle: 'How to: Invoke Soda in Databricks'
     page: soda/quick-start-databricks.md
@@ -90,7 +90,7 @@
   subcategories:
   - subtitle: Organize, alert, investigate
     page: soda-cloud/collaborate.md
-  - subtitle: Add anomaly dashboards
+  - subtitle: Activate anomaly dashboards
     page: soda-cloud/anomaly-dashboard.md
   - subtitle: Add check attributes
     page: soda-cl/check-attributes.md

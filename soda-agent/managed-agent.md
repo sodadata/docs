@@ -50,9 +50,10 @@ In your Soda Cloud account, navigate to **your avatar** > **Data Sources**. Clic
 | -----------------------   | ---------- |
 | Data Source Label | Provide a unique identifier for the data source. Soda Cloud uses the label you provide to define the immutable name of the data source against which it runs the Default Scan.|
 | Default Scan Agent | Select the Soda-hosted agent, or the name of a Soda Agent that you have previously set up in your secure environment. This identifies the Soda Agent to which Soda Cloud must connect in order to run its scan. |
-| Schedule | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
+| Check Schedule | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
 | Starting At (UTC) | Select the time of day to run the scan. The default value is midnight. |
 | Custom Cron Expression | (Optional) Write your own <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">cron expression</a> to define the schedule Soda Cloud uses to run scans. |
+| Anomaly Dashboard Scan Schedule | Provide the scan frequency details Soda Cloud uses to execute a daily scan to automatically detect anomalies for the anomaly detection dashboard. |
 
 <br />
 
@@ -75,7 +76,7 @@ Use the following data source-specific connection configuration pages to populat
 
 #### 3. Discover
 
-During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. It captures basic information about each dataset, including a dataset names, the columns each contains, and the type of data each column contains such as integer, character varying, timestamp, etc.
+During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. It captures basic information about each dataset, including dataset names, the columns each contains, and the type of data each column contains such as integer, character varying, timestamp, etc.
 
 In the editing panel, specify the datasets that Soda Cloud must include or exclude from this basic discovery activity. The default syntax in the editing panel instructs Soda to collect basic dataset information from all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character. See [Add dataset discovery]({% link soda-cl/profile.md %}l#add-dataset-discovery) for more detail on profiling syntax.
 
@@ -98,7 +99,7 @@ To gather more detailed profile information about datasets in your data source a
 Profiling a dataset produces two tabs' worth of data in a dataset page:
 * In the **Columns** tab, you can see column profile information including details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
 ![profile-columns2](/assets/images/profile-columns2.png){:height="500px" width="500px"}
-* In the **Anomalies** tab, you can access an out-of-the-box Anomaly Detection Dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorightm learns over the course of approximately five days. [Learn more]({% link soda-cloud/anomaly-dashboard.md %})<br /> 
+* In the **Anomalies** tab, you can access an out-of-the-box Anomaly Detection Dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorithm learns over the course of approximately five days. [Learn more]({% link soda-cloud/anomaly-dashboard.md %})<br /> 
 ![profile-anomalies](/assets/images/profile-anomalies.png){:height="500px" width="500px"}
 
 In the editing panel, provide details that Soda Cloud uses to determine which datasets to include or exclude when it profiles the columns in a dataset. The default syntax in the editing panel instructs Soda to profile every column of every dataset in this data source, and, superfluously, all datasets with names that begin with `prod`.  The `%` is a wildcard character. See [Add column profiling]({% link soda-cl/profile.md %}#add-column-profiling) for more detail on profiling syntax.

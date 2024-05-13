@@ -18,7 +18,7 @@ Deploy a Soda Agent in a Kubernetes cluster to connect to both a data source and
 -->
 
 [About this guide](#about-this-guide)<br />
-[Access or deploy a Soda Agent](#access-a-soda-managed-agent)<br />
+[Access or deploy a Soda Agent](#access-or-deploy-a-soda-agent)<br />
 [Connect a data source](#connect-a-data-source)<br />
 [Set up Slack integration and notification rules](#set-up-slack-integration-and-notification-rules)<br />
 [Invite your colleagues](#invite-your-colleagues)<br />
@@ -89,9 +89,9 @@ Depending on your deployment model, Soda Agent supports connections with the fol
 ![agent-running](/assets/images/agent-running.png){:height="700px" width="700px"}
 3. Navigate to the **Data Sources** tab, then click **New Data Source** and follow the [guided steps]({% link soda-agent/deploy.md %}#add-a-new-data-source) to:
 * identify the new data source and its default scan definition
-* provide [connection configuration]({% link soda/connect-athena.md %}) details for the data source, and test the connection to the data source
+* provide connection configuration details for the data source such as name, schema, and login credentials, and test the connection to the data source
 * profile the datasets in the data source to gather basic metadata about the contents of each
-* identify the datasets to which you wish to apply automated monitoring for anomalies and schema changes
+* *self-hosted Soda agent, only* identify the datasets to which you wish to apply automated monitoring for anomalies and schema changes
 * assign ownership roles for the data source and its datasets
 4. Save the new data source.
 
