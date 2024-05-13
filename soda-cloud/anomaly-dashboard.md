@@ -19,7 +19,7 @@ To activate these out-of-the-box dashboards, Soda learns enough about your data 
 * evolutions in a dataset's **schemas**, monitoring columns that have been moved, added, or removed
 * anomalies in the volume of **missing** values in columns in a dataset
 * anomalies in the volume of **duplicate** values in columns in a dataset
-* anomalies in the calculated **average** of ...
+* anomalies in the calculated **average** of the values in columns in a dataset that contain numeric values
 
 Using a Soda-hosted agent in your Soda Cloud account, you configure a data source to partition, then profile the datasets to which you wish to add an anomaly detection dashboard. Soda then leverages machine learning algorithms to run daily scans of your datasets to gather measurements which, after a few days, enable Soda to recognize patterns in your data. 
 
@@ -33,7 +33,7 @@ After establishing these patterns, Soda automatically detects anomalies relative
 <br />
 
 [Set up anomaly detection dashboards](#set-up-anomaly-detection-dashboards)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;[Add an anomaly dashboard to an existing dataset](#add-an-anomaly-dashboard-to-an-existing-dataset)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Activate an anomaly dashboard to an existing dataset](#activate-an-anomaly-dashboard-to-an-existing-dataset)<br />
 [About the anomaly detection dashboard](#about-the-anomaly-detection-dashboard)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Empty metrics tiles](#empty-metrics-tiles)<br />
 [Add anomaly notifications](#add-anomaly-notifications)<br />
@@ -58,10 +58,10 @@ Activate an anomaly detection dashboard to one or more datasets by configuring p
 3. Continue the remaining steps to add your new data source, then **Test Connection**, if you wish, and **Save** the data source configuration. Soda begins profiling the datasets according to your **Profile** configuration while the algorithm uses the first measurements collected from a scan of your data to begin the work of identifying patterns in the data. 
 4. After approximately five days, during which Soda's machine learning studies your data, you can navigate to the **Dataset** page for a dataset you included in profiling. Click the **Anomalies** tab to view the issues Soda automatically detected.
 5. (Optional) Consider setting up a notification for any of the automated anomaly detection checks in the dashboard; see [Add anomaly notification](#add-anomaly-notifications).
-6. (Optional) If you wish, you can adjust the time of day that the daily anomaly detection scan definition runs to collect its measurements. To do so, navigate to ...
+6. (Optional) If you wish, you can adjust the time of day that the daily anomaly detection scan definition runs to collect its measurements. To do so, navigate to the **Scans** dashboard, then, for the scan definition that runs daily for your anomaly detection dashboard updates, click the stacked dots at right and select **Edit Scan Definition**. Adjust the time of day as you wish, then **Save**.
 
 
-### Add an anomaly dashboard to an existing dataset
+### Activate an anomaly dashboard to an existing dataset
 
 Use the following procedure to activate the anomaly detection dashboard for an existing dataset in a data source you already connected to your Soda Cloud account via the Soda-hosted agent.
 
@@ -74,7 +74,7 @@ Use the following procedure to activate the anomaly detection dashboard for an e
 * all non-automated checks for datasets on this data source remain intact
 4. After approximately five days, during which Soda's machine learning studies your data, you can return to the **Anomalies** tab on the **Dataset** page to view the issues Soda automatically detected.
 5. (Optional) Consider setting up a notification for any of the automated anomaly detection checks in the dashboard; see [Add anomaly notification](#add-anomaly-notifications).
-6. (Optional) If you wish, you can adjust the time of day that the daily anomaly detection scan definition runs to collect its measurements. To do so, navigate to ...
+6. (Optional) If you wish, you can adjust the time of day that the daily anomaly detection scan definition runs to collect its measurements. To do so, navigate to the **Scans** dashboard, then, for the scan definition that runs daily for your anomaly detection dashboard updates, click the stacked dots at right and select **Edit Scan Definition**. Adjust the time of day as you wish, then **Save**.
 
 
 ## About the anomaly detection dashboard
