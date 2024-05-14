@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### May 23, 2024
+* Documented the new feature for data quality observability, the automated, ML-driven [Anomaly Dashboard]({% link soda-cloud/anomaly-dashboard.md %}). 
+
 #### May 8, 2024
 * Added to programmatic scan to include option to [run the scan locally]({% link soda-library/programmatic.md %}#set-up-basic-programmatic-invocation-in-python) and not send results to Soda Cloud.
 
