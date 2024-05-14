@@ -50,7 +50,7 @@ Schema checks require a minimum of one data point to use as a baseline against w
 <small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + self-hosted Soda Agent connected to any <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soda-supported data source, except Spark, and Dask and Pandas</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud + Soda-hosted Agent</small><br />
 
-Add automated monitoring checks as part of the guided workflow to create a new data source only in deployment models that use a self-hosted Soda agent, not a Soda-hosted Soda agent. For a Soda-hosted agent, consider using the automated [anomaly detection dashboard]({% link soda-cloud/anomaly-dashboard.md %}) for observability into basic data quality in your datasets.
+Add automated monitoring checks as part of the guided workflow to create a new data source only in deployment models that use a self-hosted Soda agent, not a Soda-hosted Soda agent. For a Soda-hosted agent, consider using the automated [anomaly dashboard]({% link soda-cloud/anomaly-dashboard.md %}) for observability into basic data quality in your datasets.
 
 If you are using a self-operated deployment model that leverages Soda Library, add the column profiling configuration outlined below to your checks YAML file.
 
@@ -92,7 +92,7 @@ To review the check results for automated monitoring checks in Soda Cloud, you c
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-* Learn more about the [anomaly detection dashboard]({% link soda-cloud/anomaly-dashboard.md %}) for datasets.
+* Learn more about the [anomaly dashboard]({% link soda-cloud/anomaly-dashboard.md %}) for datasets.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.

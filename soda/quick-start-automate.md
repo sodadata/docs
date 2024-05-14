@@ -9,14 +9,14 @@ parent: Use case guides
 <!--Linked to email campaign, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
-Use this guide to set up Soda and begin automatically monitoring the data quality of datasets in a data source. Use the guided workflow in Soda Cloud to connect to a data source, profile your data, and activate **anomaly detection dashboards** for your datasets.
+Use this guide to set up Soda and begin automatically monitoring the data quality of datasets in a data source. Use the guided workflow in Soda Cloud to connect to a data source, profile your data, and activate **anomaly dashboards** for your datasets.
 
 ![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
 
 [About this guide](#about-this-guide)<br />
 [Set up a Soda Agent](#set-up-a-soda-agent)<br />
 [Automate data quality monitoring](#automate-data-quality-monitoring-1)<br />
-[Access an anomaly detection dashboard](#access-an-anomaly-detection-dashboard)<br />
+[Access an anomaly dashboard](#access-an-anomaly dashboard)<br />
 [Set up alert notifications](#set-up-alert-notifications)<br/>
 [Go further](#go-further)<br />
 <br />
@@ -62,7 +62,7 @@ Invite your colleague(s) to your Soda Cloud organization so they can access the 
 | Check Schedule | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
 | Starting At | Select the time of day to run the scan. The default value is midnight. |
 | Cron Expression | (Optional) Write your own <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">cron expression</a> to define the schedule Soda Cloud uses to run scans. |
-| Anomaly Dashboard Scan Schedule | Provide the scan frequency details Soda Cloud uses to execute a daily scan to automatically detect anomalies for the anomaly detection dashboard. |
+| Anomaly Dashboard Scan Schedule | Provide the scan frequency details Soda Cloud uses to execute a daily scan to automatically detect anomalies for the anomaly dashboard. |
 
 
 <br />
@@ -97,12 +97,12 @@ discover datasets:
 
 #### Profile
 
-To gather more detailed profile information about datasets in your data source and automatically build an **anomaly detection dashboard** for data quality observability, you can configure Soda Cloud to profile the columns in datasets. 
+To gather more detailed profile information about datasets in your data source and automatically build an **anomaly dashboard** for data quality observability, you can configure Soda Cloud to profile the columns in datasets. 
 
 Profiling a dataset produces two tabs' worth of data in a dataset page:
 * In the **Columns** tab, you can see column profile information including details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
 ![profile-columns2](/assets/images/profile-columns2.png){:height="500px" width="500px"}
-* In the **Anomalies** tab, you can access an out-of-the-box Anomaly Detection Dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorithm learns over the course of approximately five days. [Learn more]({% link soda-cloud/anomaly-dashboard.md %})<br /> 
+* In the **Anomalies** tab, you can access an out-of-the-box Anomaly Dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorithm learns over the course of approximately five days. [Learn more]({% link soda-cloud/anomaly-dashboard.md %})<br /> 
 ![profile-anomalies](/assets/images/profile-anomalies.png){:height="500px" width="500px"}
 
 In the editing panel, provide details that Soda Cloud uses to determine which datasets to include or exclude when it profiles the columns in a dataset. The default syntax in the editing panel instructs Soda to profile every column of every dataset in this data source, and, superfluously, all datasets with names that begin with `prod`.  The `%` is a wildcard character. See [Add column profiling]({% link soda-cl/profile.md %}#add-column-profiling) for more detail on profiling syntax.
@@ -127,7 +127,7 @@ profile columns:
 | Default Dataset Owner | The Datasets Owner is the user who, by default, becomes the owner of each dataset the Default Scan discovers. Refer to [Roles and Rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) to learn how to adjust the Dataset Owner of individual datasets.|
 
 
-## Access an anomaly detection dashboard
+## Access an anomaly dashboard
 
 After approximately five days, during which Soda's machine learning studies your data, you can navigate to the **Anomalies** tab on the **Dataset** page on one of the datasets you included in profiling to view the issues Soda automatically detected.
 
@@ -143,7 +143,7 @@ After approximately five days, during which Soda's machine learning studies your
 
 ## Go further
 
-* Learn more about the [anomaly detection dashboard]({% link soda-cloud/anomaly-dashboard.md %}) for datasets.
+* Learn more about the [anomaly dashboard]({% link soda-cloud/anomaly-dashboard.md %}) for datasets.
 * Learn more about [organizing check results]({% link soda-cloud/collaborate.md %}), setting alerts, and investigating issues.
 * [Write your own checks]({% link soda-cl/soda-cl-overview.md %}) for data quality.
 * [Integrate Soda with Slack]({% link soda/integrate-slack.md %}) to send alert notifications directly to channels in your workspace.
