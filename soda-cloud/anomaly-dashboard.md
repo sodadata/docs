@@ -7,9 +7,10 @@ parent: Run scans and view results
 
 # Activate anomaly dashboards
 <!--Linked to UI, access Shlink-->
+![preview](/assets/images/preview.png){:height="90px" width="90px"} <br />
 *Last modified on {% last_modified_at %}*
 
-Use Soda's **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. 
+Use Soda's **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. <a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a>
 
 ![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
 
@@ -21,15 +22,15 @@ To activate these out-of-the-box dashboards, Soda learns enough about your data 
 * anomalies in the volume of **duplicate** values in columns in a dataset
 * anomalies in the calculated **average** of the values in columns in a dataset that contain numeric values
 
-Using a Soda-hosted agent in your Soda Cloud account, you configure a data source to partition, then profile the datasets to which you wish to add an anomaly dashboard. Soda then leverages machine learning algorithms to run daily scans of your datasets to gather measurements which, after a few days, enable Soda to recognize patterns in your data. 
+Using a self-hosted or Soda-hosted agent connected to your Soda Cloud account, you configure a data source to partition, then profile the datasets to which you wish to add an anomaly dashboard. Soda then leverages machine learning algorithms to run daily scans of your datasets to gather measurements which, after a few days, enable Soda to recognize patterns in your data. 
 
 After establishing these patterns, Soda automatically detects anomalies relative to the patterns and flags them for your review in each dataset's anomaly dashboard.  
 
-<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
-<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud + Self-hosted Soda Agent</small><br />
-<small>✔️ &nbsp;&nbsp; Supported with a Soda-hosted Agent connected to a BigQuery, Databricks SQL, MS SQL Server,<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MySQL, PostgreSQL, Redshift, or Snowflake data source</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Self-hosted Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda-hosted Agent connected to a BigQuery, Databricks SQL, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake data source</small><br />
 <br />
 
 [Set up anomaly dashboards](#set-up-anomaly-dashboards)<br />
@@ -46,9 +47,11 @@ After establishing these patterns, Soda automatically detects anomalies relative
 
 Activate an anomaly dashboard to one or more datasets by configuring profiling for a new data source in Soda Cloud. Refer to the [Get started]({% link soda-agent/managed-agent.md %}#add-a-new-data-source) documentation for full data source onboarding instructions. 
 
-1. As a Soda Admin in your Soda Cloud account, navigate to **your avatar** > **Organization Settings** to validate that the checkbox for **Enable Soda-hosted Agent** is checked. 
-2. If your data source is [compatible]({% link soda-agent/managed-agent.md %}#compatibility) with a Soda-hosted agent, navigate to **your avatar** > **Data Sources**, then click **Add New** to begin the guided data source onboarding workflow. 
-3. In the editing panel of **4. Profile**, use the include and exclude syntax to indicate which datasets Soda must profile and prepare an anomaly dashboard. The default syntax in the editing panel instructs Soda to profile every column of every dataset in the data source, and, superfluously, all datasets with names that begin with prod. The `%` is a wildcard character. See [Add column profiling]({% link soda-cl/profile.md %}#add-column-profiling) for more detail on profiling syntax.
+1. To activate anomaly dashboards, you must add a new data source via a self-hosted or Soda-hosted agent. If you do not already have an active Soda agent in your Soda Cloud account:
+* navigate to **your avatar** > **Organization Settings** to validate that the checkbox for **Enable Soda-hosted Agent** is checked <br />OR<br />
+* follow the instructions to [deploy self-hosted agent]({% link soda-agent/deploy.md %}) in Kubernetes cluster in your cloud services environment
+2. Navigate to **your avatar** > **Data Sources**, then click **Add New** to begin the guided data source onboarding workflow. 
+3. In the editing panel of **4. Profile**, use the include and exclude syntax to indicate the datasets for which Soda must profile and prepare an anomaly dashboard. The default syntax in the editing panel instructs Soda to profile every column of every dataset in the data source, and, superfluously, all datasets with names that begin with prod. The `%` is a wildcard character. See [Add column profiling]({% link soda-cl/profile.md %}#add-column-profiling) for more detail on profiling syntax.
     ```yaml
     profile columns:
       columns:
@@ -65,9 +68,9 @@ Activate an anomaly dashboard to one or more datasets by configuring profiling f
 
 Use the following procedure to activate the anomaly dashboard for an existing dataset in a data source you already connected to your Soda Cloud account via the Soda-hosted agent.
 
-1. If you have Admin, Manager, or Editor rights to a dataset, navigate to the **Datasets** dashboard, then open the dataset to which you wish to activate an anomaly dashboard. 
+1. If you have Admin, Manager, or Editor [rights]({% link soda-cloud/roles-and-rights.md %}) to a dataset, navigate to the **Datasets** dashboard, then open the dataset to which you wish to activate an anomaly dashboard. 
 2. Navigate to the **Anomalies** tab where a message appears that advises you that the anomaly dashboard has not been activated for this dataset. Click **Activate**. 
-3. Follow the guided steps and carefully read the warning about the changes to any existing profiling you have configured for the data source. If you accept the permanent changes, click to proceed.
+3. Follow the guided steps and carefully read the warning about the changes to any existing profiling you have configured for the data source (see below). If you accept the permanent changes, click to proceed.
 > <i>To activate the Anomaly Dashboard for this data source, Soda creates a new, dedicated scan definition that runs dataset discovery, profiling, and anomaly detection on a daily schedule. With this activation, be aware that:</i>
 * <i>Soda moves your existing dataset [discovery and profiling]({% link soda-cl/profile.md %}) configurations from this data source’s default scan definition to the new scan definition to indicate which datasets the Anomaly Dashboard should profile.</i>
 * <i>Any [automated monitoring]({% link soda-cl/automated-monitoring.md %}) checks you previously configured for this data source cease to exist; the new scan definition runs all automated anomaly detection checks.</i>
@@ -98,7 +101,7 @@ If, after the anomaly detection algorithm has completed its pattern training, th
 
 ## About profiling and partitioning
 
-The anomaly dashboard is powered by a machine learning algorithm that works with measured values for a metric that occurs over time. Soda leverages the <a href="https://facebook.github.io/prophet/" target="_blank">Facebook Prophet</a> algorithm to learn patterns in your data so it can identify and flag anomalies.
+The anomaly dashboard is powered by a machine learning algorithm that works with measured values for a metric that occur over time. Soda leverages the <a href="https://facebook.github.io/prophet/" target="_blank">Facebook Prophet</a> algorithm to learn patterns in your data so it can identify and flag anomalies.
 
 As the checks in the dashboard track and analyze metrics over time, the algorithm learns from historical patterns in your data, including trends and seasonal variations in the measurements it collects. After learning the normal behavior of your data, the checks become capable of detecting variations from the norm which it flags as anomalies.
 
@@ -106,9 +109,9 @@ Notably, it takes some time – approximately five or more days – for the anom
  
 When you set up or activate the anomaly dashboard, Soda begins by partitioning your data. To maximize efficiency, Soda does not profile the *entirety* of data in a dataset; instead, it partitions your data so that it profiles only a sample of the data. 
 
-First, Soda detects a column that contains TIME type data that it can use to partition the data to only the last 30 days' worth of data. If it does not detect a column of TIME type data, it uses one million rows of data against which to perform its profiling. If there are fewer than one million rows in a dataset, it profiles all the data; if there are more than a million rows, it selects a random sample of a million rows to use to profile the data.
+To partition the data, first, Soda detects a column that contains TIME type data that it can use to partition the data to only the last 30 days' worth of data. If it does not detect a column of TIME type data, it uses one million rows of data against which to perform its profiling. If there are fewer than one million rows in a dataset, it profiles all the data; if there are more than a million rows, it selects a random sample of a million rows to use to profile the data.
 
-After partitioning a sample of data, Soda begins profiling your data. The profiling activity collects metadata for your datasets such as the names of the columns in the datasets you configured for profiling, and the type of data that each contains. After profiling the data, Soda automatically creates relevant anomaly detection checks for the dataset and some of its columns.
+After partitioning a sample of data, Soda begins profiling it. The profiling activity collects metadata for your datasets such as the names of the columns in the datasets you configured for profiling, and the type of data that each contains. After profiling the data, Soda automatically creates relevant anomaly detection checks for the dataset and some of its columns.
 
 ### Change the time partitioning column
 

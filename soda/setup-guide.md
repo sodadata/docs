@@ -35,7 +35,7 @@ You can set up Soda in one of four flavors:
 | Flavor | Description | Soda<br />Library | Soda<br />Agent | Soda<br />Cloud |
 | ----- | ----------- | :--: | :--: | :--: |
 | [Self-operated](#self-operated) | A simple setup in which you install Soda Library locally and connect it to Soda Cloud via API keys. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
-| [Soda-hosted agent](#soda-hosted-agent) | ***Recommended*** <br />A setup in which you manage data quality entirely from your Soda Cloud account. |  |  | ![done](/assets/images/done.png){:width="20px"} |
+| [Soda-hosted agent](#soda-hosted-agent) | ***Recommended*** <br />A setup in which you manage data quality entirely from your Soda Cloud account. |  | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 | [Self-hosted agent](#self-hosted-agent)<br /> | A setup in which you deploy a Soda Agent in a Kubernetes cluster in a cloud-services environment and connect it to Soda Cloud via different API keys. |   | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 | [Programmatic](#programmatic) | A setup in which you invoke Soda Library programmatically. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
 
@@ -57,6 +57,7 @@ Use this setup for: <br />
 ✅ **A small team**: Manage data quality within a small data engineering team or data analytics team who is comfortable working with the command-line and YAML files to design and execute scans for data quality. <br />
 ✅ **POC**: Conduct a proof-of-concept evaluation of Soda as a data quality testing and monitoring tool. See: [Take a sip of Soda]({% link soda/quick-start-sip.md %})<br />
 ✅ **Basic DQ**: Start from scratch to set up basic data quality checks on key datasets. See: [Check suggestions]({% link soda-library/check-suggestions.md %})<br />
+✅ **Data migration**: Migrate good-quality data from one data source to another. See: [Test before data migration]({% link soda/quick-start-migration.md %})<br />
 
 Requirements:
 * Python 3.8 or greater
@@ -74,8 +75,10 @@ This setup provides a secure, out-of-the-box Soda Agent to manage access to data
 
 Use this setup for:<br /> 
 ✅ **A quick start**: Use the out-of-the-box agent to start testing data quality right away from within the Soda Cloud user interface, without the need to install or deploy any other tools. <br />
-✅ **Anomaly detection dashboard**: Use Soda's out-of-the-box **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. See: [Add anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %})<br />
+✅ **Anomaly detection dashboard**: ![preview](/assets/images/preview.png){:height="60px" width="60px"} Use Soda's out-of-the-box **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. See: [Add anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %})<br /><a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a><br />
+✅ **Automated data monitoring**: Set up data profiling and automated data quality monitoring. See: [Automate monitoring]({% link soda/quick-start-automate.md %})<br />
 ✅ **Self-serve data quality**: Empower data analysts and scientists to self-serve and create their own no-code checks for data quality. See: [Self-serve Soda]({% link soda/quick-start-end-user.md %})<br />
+✅ **Data migration**: Migrate good-quality data from one data source to another. See: [Test before data migration]({% link soda/quick-start-migration.md %})<br />
 ✅ **Data catalog integration**: Integrate Soda with a data catalog such as Atlan, Alation, or Metaphor. See: [Integrate Soda]({% link soda/integrate-alation.md %})<br />
 
 Soda hosts agents in a secure environment in Amazon AWS. As a SOC 2 Type 2 certified business, Soda responsibly manages Soda-hosted agents to ensure that they remain private, secure, and independent of all other hosted agents. See [Data security and privacy]({% link soda/data-privacy.md %}#using-a-soda-hosted-agent) for details.
@@ -96,6 +99,7 @@ The engineer can manage access to data sources while giving Soda Cloud end-users
 Use this setup for:<br />
 ✅ **Self-serve data quality**: Empower data analysts and scientists to self-serve and create their own checks for data quality. See: [Self-serve Soda]({% link soda/quick-start-end-user.md %})<br />
 ✅ **Data migration**: Migrate good-quality data from one data source to another. See: [Test before data migration]({% link soda/quick-start-migration.md %})<br />
+✅ **Anomaly detection dashboard**: ![preview](/assets/images/preview.png){:height="60px" width="60px"} Use Soda's out-of-the-box **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. See: [Add anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %})<br /><a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a><br />
 ✅ **Automated data monitoring**: Set up data profiling and automated data quality monitoring. See: [Automate monitoring]({% link soda/quick-start-automate.md %})<br />
 ✅ **Data catalog integration**: Integrate Soda with a data catalog such as Atlan, Alation, or Metaphor. See: [Integrate Soda]({% link soda/integrate-alation.md %})<br />
 ✅ **Secrets manager integration**: Integrate your Soda Agent with an external secrets manager to securely access frequently-rotated data source login credentials. See: [Integrate with a Secrets Manager]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager)

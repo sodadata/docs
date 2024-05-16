@@ -53,10 +53,9 @@ When checks fail during data quality scans, you and your colleagues get alerts v
   </div>
   <div class="panel" id="two-panel" markdown="1">
 
-
 Soda Agent is a tool that empowers Soda Cloud users to securely access data sources to scan for data quality. Create a Kubernetes cluster in a cloud services provider environment, then use Helm to deploy a self-hosted Soda Agent in the cluster.
 
-For context, the example assumes that:
+For context, this example assumes that:
 * you have the appropriate access to a cloud services provider environment such as Azure, AWS, or Google Cloud that allows you to create and deploy applications to a cluster, 
 * you, or someone on your team, has access to the login credentials that Soda needs to be able to access a data source such as MS SQL, BigQuery, or Athena so that it can run scans of the data.
 

@@ -1,4 +1,4 @@
-The anomaly dashboard adheres to Soda's "no noise" policy when it comes to alert notifications for data quality issues. As such, the dashboard does not automatically send any notifications out of the box. If you wish to received alert notifications for any of the anomalies the dashboard detects, use the bell (🔔) icon. 
+The anomaly dashboard adheres to Soda's "no noise" policy when it comes to alert notifications for data quality issues. As such, the dashboard does not automatically send any notifications to anyone out of the box. If you wish to received alert notifications for any of the anomalies the dashboard detects, use the bell (🔔) icon. 
 
 If your Soda Admin has integrated your Soda Cloud account with [Slack]({% link soda/integrate-slack.md %}) or [MS Teams]({% link soda/integrate-msteams.md %}) to receive check notifications, you can direct anomaly dashboard alerts to those channels. The dashboard does not support sending alerts via [webhook]({% link soda/integrate-webhooks.md %}). 
 
