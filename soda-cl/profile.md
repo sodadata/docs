@@ -11,7 +11,7 @@ parent: Write SodaCL checks
 When you add or edit a data source in Soda Cloud, use the `discover datasets` and/or `profile columns` configurations to automatically profile data in your data source. 
 * Examine the profile information to gain insight into the type of SodaCL checks you can prepare to test for data quality.
 * Use profiled data to create no-code data quality checks.
-* Activate an anomaly dashboard to automatically gain observability insight into data quality.
+* ![preview](/assets/images/preview.png){:height="45px" width="45px" style="vertical-align:baseline"} Activate an anomaly dashboard to automatically gain observability insight into data quality.
 
 {% include code-header.html %}
 ```yaml
@@ -35,10 +35,11 @@ profile columns:
     - exclude dimgeography.% # exclude all columns of dimgeography dataset 
 ```
 
-<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + self-hosted Soda Agent connected to any <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soda-supported data source, except Spark, and Dask and Pandas</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda-hosted Agent connected to a BigQuery, Databricks SQL, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake data source</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
 <br />
 
@@ -129,18 +130,20 @@ Column profile information includes details such as the calculated mean value of
 
 Depending on your deployment model, or flavor, of Soda, profiling a dataset produces one or two tabs' worth of data in a **Dataset** page in Soda Cloud. 
 
-| Flavor of Soda| Includes **Column** <br/>tab output  | Includes **Anomalies** <br />tab output |
+| Flavor of Soda| Includes **Column** <br/>tab output  | Includes **Anomalies** <br />tab output  |
 | ----- | :-----------: | :------:|
 | [Self-operated]({% link soda/setup-guide.md %}#self-operated) |  ![done](/assets/images/done.png){:width="20px"} |  |
-| [Soda-hosted agent]({% link soda/setup-guide.md %}#soda-hosted-agent) |  ![done](/assets/images/done.png){:width="20px"} |  ![done](/assets/images/done.png){:width="20px"} |
-| [Self-hosted agent]({% link soda/setup-guide.md %}#self-hosted-agent)<br /> |  ![done](/assets/images/done.png){:width="20px"} |  |
+| [Soda-hosted agent]({% link soda/setup-guide.md %}#soda-hosted-agent) |  ![done](/assets/images/done.png){:width="20px"} |  ![preview](/assets/images/preview.png){:height="60px" width="60px"} |
+| [Self-hosted agent]({% link soda/setup-guide.md %}#self-hosted-agent)<br /> |  ![done](/assets/images/done.png){:width="20px"} | ![preview](/assets/images/preview.png){:height="60px" width="60px"} |
 | [Programmatic]({% link soda/setup-guide.md %}#programmatic) |  ![done](/assets/images/done.png){:width="20px"} |  |
 
 In the **Columns** tab, you can see column profile information including details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
 
 ![profile-columns2](/assets/images/profile-columns2.png){:height="500px" width="500px"}
 
-In the **Anomalies** tab, you can access an out-of-the-box anomaly dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorithm learns over the course of approximately five days. [Learn more]({% link soda-cloud/anomaly-dashboard.md %})
+In the **Anomalies** tab, you can access an out-of-the-box anomaly dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorithm learns over the course of approximately five days. <br />
+[Learn more]({% link soda-cloud/anomaly-dashboard.md %}) <br />
+<a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a>
 
 ![profile-anomalies](/assets/images/profile-anomalies.png){:height="500px" width="500px"}
 

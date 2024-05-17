@@ -106,7 +106,7 @@ See also: [Soda Agent basic concepts]({% link soda-agent/basics.md %})
 | Check Schedule | Provide the scan frequency details Soda Cloud uses to execute scans according to your needs. If you wish, you can define the schedule as a cron expression. |
 | Starting At | Select the time of day to run the scan. The default value is midnight. |
 | Cron Expression | (Optional) Write your own <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">cron expression</a> to define the schedule Soda Cloud uses to run scans. |
-| Anomaly Dashboard Scan Schedule <br />![preview](/assets/images/preview.png){:height="75px" width="75px"} <br /> | Provide the scan frequency details Soda Cloud uses to execute a daily scan to automatically detect anomalies for the anomaly dashboard. |
+| Anomaly Dashboard Scan Schedule <br />![preview](/assets/images/preview.png){:height="75px" width="75px"} <br /> | Provide the scan frequency details Soda Cloud uses to execute a daily scan to automatically detect anomalies for the anomaly dashboard. <a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a> |
 
 
 <br />

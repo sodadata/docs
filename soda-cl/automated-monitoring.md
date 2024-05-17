@@ -23,7 +23,7 @@ automated monitoring:
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + self-hosted Soda Agent connected to any <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soda-supported data source, except Spark, and Dask and Pandas</small><br />
-<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud + Soda-hosted Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda-hosted Agent connected to a BigQuery, Databricks SQL, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake data source</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
 <small>✖️ &nbsp;&nbsp; Available as no-code checks</small>
 <br /><br />
@@ -47,16 +47,15 @@ Schema checks require a minimum of one data point to use as a baseline against w
 
 ## Add automated monitoring checks
 
-<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + self-hosted Soda Agent connected to any <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soda-supported data source, except Spark, and Dask and Pandas</small><br />
-<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud + Soda-hosted Agent</small><br />
-
 Add automated monitoring checks as part of the guided workflow to create a new data source only in deployment models that use a self-hosted Soda agent, not a Soda-hosted Soda agent. For a Soda-hosted agent, consider using the automated [anomaly dashboard]({% link soda-cloud/anomaly-dashboard.md %}) for observability into basic data quality in your datasets.
 
 If you are using a self-operated deployment model that leverages Soda Library, add the column profiling configuration outlined below to your checks YAML file.
 
-Navigate to **your avatar** > **Data Sources** > **New Data Source** to begin. 
+In Soda Cloud, navigate to **your avatar** > **Data Sources** > **New Data Source** to begin. 
 
-In step **5. Check** of the guided workflow, you have the option of listing the datasets to which you wish to automatically add anomaly score and schema evolution checks. The example check below uses a wildcard character (`%`) to specify that Soda Library executes automated monitoring checks against all datasets with names that begin with `prod`, and *not* to execute the checks against any dataset with a name that begins with `test`.
+In step **5. Check** of the guided workflow, you have the option of listing the datasets to which you wish to automatically add anomaly score and schema evolution checks. (Note that if you have signed up for early access to [anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %}) for datasets, this **Check** tab is unavailable as Soda performs all automated monitoring automatically in the dashboards.)
+
+The example check below uses a wildcard character (`%`) to specify that Soda Library executes automated monitoring checks against all datasets with names that begin with `prod`, and *not* to execute the checks against any dataset with a name that begins with `test`.
 {% include code-header.html %}
 ```yaml
 automated monitoring:
