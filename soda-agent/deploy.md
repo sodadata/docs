@@ -1347,7 +1347,9 @@ automated monitoring:
 ``` 
 
 
-#### 6. Assign Owner
+#### (5) 6. Assign Owner
+
+This tab is the fifth step in the guided workflow if the **5. Check** tab is absent because you requested access to the anomaly dashboards feature.
 
 | Field or Label | Guidance | 
 |----------------|----------|

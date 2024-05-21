@@ -117,11 +117,11 @@ profile columns:
 
 #### 5. Check
 
-When Soda Cloud automatically discovers the datasets in a data source, it prepares automated monitoring checks for each dataset. These checks detect anomalies and monitor schema evolution, corresponding to the SodaCL [anomaly detection]({% link soda-cl/anomaly-detection.md %}) and [schema]({% link soda-cl/schema.md %}) checks, respectively.
+When Soda Cloud automatically discovers the datasets in a data source, it prepares automated monitoring checks for each dataset. These checks detect anomalies and monitor schema evolution, corresponding to the SodaCL [anomaly detection]({% link soda-cl/anomaly-detection.md %}) and [schema evolution]({% link soda-cl/schema.md %}#define-schema-evolution-checks) checks, respectively.
 
 (Note that if you have signed up for early access to [anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %}) for datasets, this **Check** tab is unavailable as Soda performs all automated monitoring automatically in the dashboards.)
 
-In the editing panel, specify the datasets that Soda Cloud must include or exclude when preparing automated monitoring checks. The default syntax in the editing panel indicates that Soda will add automated monitoring to all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character.
+In the editing panel, specify the datasets that Soda Cloud must include or exclude when preparing automated monitoring checks. The default syntax in the editing panel indicates that Soda will add automated monitoring to all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character. Refer to [Add automated monitoring checks]({% link soda-cl/automated-monitoring.md %}) for further detail.
 {% include code-header.html %}
 ```yaml
 automated monitoring:
@@ -131,7 +131,9 @@ automated monitoring:
 ``` 
 
 
-#### 5 (6). Assign
+#### (5) 6. Assign
+
+This tab is the fifth step in the guided workflow if the **5. Check** tab is absent because you requested access to the anomaly dashboards feature.
 
 | Field or Label | Guidance | 
 |----------------|----------|

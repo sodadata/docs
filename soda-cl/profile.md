@@ -139,21 +139,21 @@ Depending on your deployment model, or flavor, of Soda, profiling a dataset prod
 
 In the **Columns** tab, you can see column profile information including details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
 
-![profile-columns2](/assets/images/profile-columns2.png){:height="500px" width="500px"}
+![profile-columns2](/assets/images/profile-columns2.png){:height="700px" width="700px"}
 
 In the **Anomalies** tab, you can access an out-of-the-box anomaly dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorithm learns over the course of approximately five days. <br />
 [Learn more]({% link soda-cloud/anomaly-dashboard.md %}) <br />
 <a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a>
 
-![profile-anomalies](/assets/images/profile-anomalies.png){:height="500px" width="500px"}
+![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
 
 ### Add column profiling configuration
 
-In Soda Cloud, you add column profiling as part of the guided workflow to create a new data source. Navigate to **your avatar** > **Data Sources** > **New Data Source** to begin. If you have already added a data source to your Soda Cloud account via a Soda-hosted agent and wish to activate an anomaly dashboard for one or more datasets, see [activation instructions]({% link soda-cloud/anomaly-dashboard.md %}#add-an-anomaly-dashboard-to-an-existing-dataset). 
+In Soda Cloud, you add column profiling as part of the guided workflow to create a new data source. Navigate to **your avatar** > **Data Sources** > **New Data Source** to begin. If you have already added a data source to your Soda Cloud account via a self-hosted or Soda-hosted agent and wish to activate an anomaly dashboard for one or more datasets, <a href="https://go.soda.io/join-observability-preview" target="_blank">request preview access</a>, then refer to the [activation instructions]({% link soda-cloud/anomaly-dashboard.md %}#add-an-anomaly-dashboard-to-an-existing-dataset). 
 
 If you are using a self-operated deployment model that leverages Soda Library, add the column profiling configuration outlined below to your checks YAML file.
 
-In step 4 of the guided workflow, or in your checks YAML file, you have the option of listing the columns of datasets you wish to profile. Be aware that Soda can only profile columns that contain NUMBERS or TEXT type data; it cannot profile columns that contain TIME or DATE data except to create a freshness check for the anomaly dashboard. Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
+In step 4 of the guided workflow, or in your checks YAML file, add configuration to list the columns of datasets you wish to profile. Be aware that Soda can only profile columns that contain NUMBERS or TEXT type data; it cannot profile columns that contain TIME or DATE data except to create a freshness check for the anomaly dashboard. Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
 
 The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda captures the column profile information for all the columns in the dataset named `retail_orders`. The `.` in the syntax separates the dataset name from the column name. Since `_` is a wildcard character, the example escapes the character with a backslash `\`. Note that your data source may not support backslashes to escape a character, so you may need to use a different escape character.
 {% include code-header.html %}
@@ -197,10 +197,10 @@ After you have added the data source in Soda Cloud and the first scan to profile
 Navigate to the **Datasets** dashboard, then click a dataset name to open the dataset's info page. 
 
 Access the **Columns** tab to review the datasets that Soda Library discovered, including the column profile details you can expand to review as in the example below.<br />
-![profile-columns2](/assets/images/profile-columns2.png){:height="500px" width="500px"}
+![profile-columns2](/assets/images/profile-columns2.png){:height="700px" width="700px"}
 
-If [supported](#add-column-profiling) by your deployment model, access the **Anomalies** tab to review the automated anomaly detection checks that Soda applied to your data based on the profiling information it collected.<br />
-![profile-anomalies](/assets/images/profile-anomalies.png){:height="500px" width="500px"}
+If you have requested access and activated an anomaly dashboard for a dataset, access the **Anomalies** tab to review the automated anomaly detection checks that Soda applied to your data based on the profiling information it collected.<br />
+![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
 
 <br />
 

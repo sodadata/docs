@@ -73,10 +73,12 @@ Use the following procedure to activate the anomaly dashboard for an existing da
 
 1. If you have Admin, Manager, or Editor [rights]({% link soda-cloud/roles-and-rights.md %}) to a dataset, navigate to the **Datasets** dashboard, then open the dataset to which you wish to activate an anomaly dashboard. 
 2. Navigate to the **Anomalies** tab where a message appears that advises you that the anomaly dashboard has not been activated for this dataset. Click **Activate**. 
-3. Follow the guided steps and carefully read the warning about the changes to any existing profiling you have configured for the data source (see below). If you accept the permanent changes, click to proceed.
-> <i>To activate the Anomaly Dashboard for this data source, Soda creates a new, dedicated scan definition that runs dataset discovery, profiling, and anomaly detection on a daily schedule. With this activation, be aware that:</i>
-* <i>Soda moves your existing dataset [discovery and profiling]({% link soda-cl/profile.md %}) configurations from this data source’s default scan definition to the new scan definition to indicate which datasets the Anomaly Dashboard should profile.</i>
-* <i>Any [automated monitoring]({% link soda-cl/automated-monitoring.md %}) checks you previously configured for this data source cease to exist; the new scan definition runs all automated anomaly detection checks.</i>
+3. Follow the guided steps and carefully read the warning about the changes to any existing profiling you have configured for the data source (see below). If you accept the permanent changes, specify the time of day you wish to run the daily anomaly scan, then proceed.
+><hr>
+> To activate the anomaly dashboard for this dataset, Soda creates a new, dedicated scan definition for its data source that runs dataset discovery, profiling, and anomaly detection on a daily schedule. With this activation, be aware that:
+* Soda moves your existing dataset [discovery and profiling]({% link soda-cl/profile.md %}) configurations from this data source’s default scan definition to the new scan definition to indicate which datasets the anomaly dashboard should profile. 
+* Any [automated monitoring]({% link soda-cl/automated-monitoring.md %}) checks you previously configured for any datasets this data source cease to exist; the new scan definition runs all automated anomaly detection checks.
+><hr>
 4. After approximately five days, during which Soda's machine learning studies your data, you can return to the **Anomalies** tab on the **Dataset** page to view the issues Soda automatically detected.
 5. (Optional) Consider setting up a notification for any of the automated anomaly detection checks in the dashboard; see [Add anomaly notification](#add-anomaly-notifications).
 6. (Optional) If you wish, you can adjust the time of day that the daily anomaly detection scan definition runs to collect its measurements. To do so, navigate to the **Scans** dashboard, then, for the scan definition that runs daily for your anomaly dashboard updates, click the stacked dots at right and select **Edit Scan Definition**. Adjust the time of day as you wish, then **Save**.

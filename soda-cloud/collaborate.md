@@ -23,7 +23,7 @@ As the last step in the **Get started roadmap**, this guide offers instructions 
 4. <s><font color="#777777"> Run scans and review results</font></s>
 5. **Organize, alert, investigate** 📍 You are here! <br />
 &nbsp;&nbsp;&nbsp;&nbsp; a. [Customize your dashboard](#customize-your-dashboard)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; b. [Activate anomaly dashboards](#customize-your-dashboard)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; b. [Activate anomaly dashboards](#activate-anomaly-dashboards)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; c. [Integrate with Slack](#integrate-with-slack)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; d. [Invite your team membrs](#invite-your-team-members)<br />
 &nbsp;&nbsp;&nbsp;&nbsp; e. [Add check attributes](#add-check-attributes)<br />
