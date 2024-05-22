@@ -89,15 +89,16 @@ See also: [Soda Agent basic concepts]({% link soda-agent/basics.md %})
 
 ## Automate data quality monitoring
 
-1. As an [Admin]({% link soda-cloud/roles-and-rights.md %}) in your Soda Cloud account, navigate to **your avatar** > **Data Sources**.
-2. In the **Agents** tab, confirm that you can see your Soda-hosted agent and that its status is "green" in the **Last Seen** column. 
+1. If you have not already done so, <a href="https://go.soda.io/join-observability-preview" target="_blank">request preview access</a> to the anomaly dashboards feature.
+2. As an [Admin]({% link soda-cloud/roles-and-rights.md %}) in your Soda Cloud account, navigate to **your avatar** > **Data Sources**.
+3. In the **Agents** tab, confirm that you can see your Soda-hosted agent and that its status is "green" in the **Last Seen** column. 
 ![soda-hosted-agent](/assets/images/soda-hosted-agent.png){:height="700px" width="700px"}
-3. Navigate to the **Data source** tab, then click **New Data Source** and follow the guided steps to connect to a new data source. Refer to the subsections below for insight into the values to enter in the fields and editing panels in the guided steps. 
+4. Navigate to the **Data source** tab, then click **New Data Source** and follow the guided steps to connect to a new data source. Refer to the subsections below for insight into the values to enter in the fields and editing panels in the guided steps. 
 
 <br />
 
 
-#### Attributes
+#### 1. Attributes
 
 | Field or Label | Guidance |
 | -------------- | ---------- |
@@ -111,7 +112,7 @@ See also: [Soda Agent basic concepts]({% link soda-agent/basics.md %})
 
 <br />
 
-#### Connect
+#### 2. Connect
 
 In the editing panel, provide the connection configurations Soda Cloud needs to be able to access the data in the data source. Connection configurations are data source-specific and include values for things such as a database's host and access credentials. 
 
@@ -121,7 +122,7 @@ To more securely provide sensitive values such as usernames and passwords in a s
  
 <br />
 
-#### Discover 
+#### 3. Discover 
 
 During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. It captures basic information about each dataset, including a dataset's schema and the columns it contains.
 
@@ -139,7 +140,7 @@ discover datasets:
 
 <br />
 
-#### Profile
+#### 4. Profile
 
 To gather more detailed profile information about datasets in your data source and automatically build an **anomaly dashboard** for data quality observability, you can configure Soda Cloud to profile the columns in datasets. 
 
@@ -163,7 +164,7 @@ profile columns:
 <br />
 
 
-#### Assign Owner
+#### 5. Assign Owner
 
 | Field or Label | Guidance | 
 |----------------|----------|

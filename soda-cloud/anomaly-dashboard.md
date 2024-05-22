@@ -48,11 +48,11 @@ After establishing these patterns, Soda automatically detects anomalies relative
 Activate an anomaly dashboard to one or more datasets by configuring profiling for a new data source in Soda Cloud. Refer to the [Get started]({% link soda-agent/managed-agent.md %}#add-a-new-data-source) documentation for full data source onboarding instructions. 
 
 1. <a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a> to the anomaly dashboards feature.
-2. To activate anomaly dashboards, you must use a self-hosted or Soda-hosted agent to connect to your data sources. If you do not already have an active Soda agent in your Soda Cloud account:
+2. To activate anomaly dashboards, you must use a self-hosted or Soda-hosted agent to connect to your data sources. <br />If you already use a self-hosted Soda agent, [upgrade the agent]({% link soda/upgrade.md %}#upgrade-a-self-hosted-soda-agent) to version 1.1.2 or greater. <br />If you do not already have an active Soda agent in your Soda Cloud account:
 * navigate to **your avatar** > **Organization Settings** to validate that the checkbox for **Enable Soda-hosted Agent** is checked <br />OR<br />
 * follow the instructions to [deploy self-hosted agent]({% link soda-agent/deploy.md %}) in Kubernetes cluster in your cloud services environment
 3. You can activate anomaly dashboards on existing data sources or on new ones you add via a Soda agent. 
-* For existing data sources, follow the procedure to activate an anomaly dashboard to an [existing dataset](#activate-an-anomaly-dashboard-to-an-existing-dataset).
+* For existing data sources, follow [the procedure](#activate-an-anomaly-dashboard-to-an-existing-dataset) to activate an anomaly dashboard to an existing dataset.
 * For a new data source, navigate to **your avatar** > **Data Sources**, then click **Add New** to begin the guided data source onboarding workflow. 
 4. In the editing panel of **4. Profile**, use the include and exclude syntax to indicate the datasets for which Soda must profile and prepare an anomaly dashboard. The default syntax in the editing panel instructs Soda to profile every column of every dataset in the data source, and, superfluously, all datasets with names that begin with prod. The `%` is a wildcard character. See [Add column profiling]({% link soda-cl/profile.md %}#add-column-profiling) for more detail on profiling syntax.
     ```yaml
