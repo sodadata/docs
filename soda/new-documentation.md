@@ -11,6 +11,8 @@ parent: Learning resources
 
 #### May 23, 2024
 * Documented the new feature for data quality observability, the automated, ML-driven [Anomaly Dashboard]({% link soda-cloud/anomaly-dashboard.md %}). 
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.1 and Soda Agent 1.1.2.
+* Added note about using a different key for `database` for connecting to a [DuckDB]({% link soda/connect-duckdb.md %}) data source.
 
 #### May 20, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.0.

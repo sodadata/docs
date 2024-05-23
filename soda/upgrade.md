@@ -99,7 +99,7 @@ kubectl config use-context <name of cluster>
 * namespace - the namespace you created, and into which you deployed the Soda Agent
 * release - the name of the instance of a helm chart that is running in your Kubernetes cluster
 * API keys - the values Soda Cloud created which you used to run the agent application in the cluster<br />
-Access the first three values by running the following command.
+Access the first two values by running the following command.
 ```shell
 helm list
 ``` 

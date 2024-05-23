@@ -122,7 +122,8 @@ The following table outlines the rights of each role associated with each resour
 | Change the owner of a data source                                          |   ✓   |          |        |        |
 | Add, edit, or delete a scan definition                                     |   ✓   |          |        |        |
 | Run a scan                                                                 |   ✓   |    ✓     |        |        |
-| Add, edit, or delete an agent                                              |   ✓   |          |        |        |
+| Access failed row samples for a check                                      |   ✓   |    ✓     |    ✓   |    ✓   |
+| Add, or edit         an agent                                              |   ✓   |          |        |        |
 | Begin or participate in a discussion                                       |   ✓   |    ✓     |    ✓   |    ✓   |
 | Propose and test a check                                                   |   ✓   |    ✓     |    ✓   |    ✓   |
 | Review & Add a check; execute a check                                      |   ✓   |    ✓     |    ✓   |        |

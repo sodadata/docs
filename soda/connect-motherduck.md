@@ -27,7 +27,7 @@ data_source quack:
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
 | type     | required | Identify the type of data source for Soda.                 |
-| database | required | Provide an idenfitier for your database.                   |
+| database | required | Provide an idenfitier for your database. <br /> Some users have reported issues using the `database` key, but have been successful using `path` instead.|
 | read_only  | required | Indicate users' access by providing a boolean value: `true` or `false` |
 
 
