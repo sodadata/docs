@@ -17,3 +17,10 @@
 <small>✖️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
 <small>✔️ &nbsp;&nbsp; Requires Soda Agent + Soda Cloud</small><br />
 <br />
+
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Self-hosted Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda-hosted Agent connected to a BigQuery, Databricks SQL, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake data source</small><br />
+<br />

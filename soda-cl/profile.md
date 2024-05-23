@@ -8,7 +8,10 @@ parent: Write SodaCL checks
 # Profile data with Soda
 *Last modified on {% last_modified_at %}*
 
-When you add or edit a data source in Soda Cloud, use the `discover datasets` and/or `profile columns` configurations to automatically profile data in your data source. Examine the profile information to gain insight into the type of SodaCL checks you can prepare to test for data quality.<br />
+When you add or edit a data source in Soda Cloud, use the `discover datasets` and/or `profile columns` configurations to automatically profile data in your data source. 
+* Examine the profile information to gain insight into the type of SodaCL checks you can prepare to test for data quality.
+* Use profiled data to create no-code data quality checks.
+* ![preview](/assets/images/preview.png){:height="45px" width="45px" style="vertical-align:baseline"} Activate an anomaly dashboard to automatically gain observability insight into data quality.
 
 {% include code-header.html %}
 ```yaml
@@ -32,10 +35,11 @@ profile columns:
     - exclude dimgeography.% # exclude all columns of dimgeography dataset 
 ```
 
-<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + self-hosted Soda Agent connected to any <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soda-supported data source, except Spark, and Dask and Pandas</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda-hosted Agent connected to a BigQuery, Databricks SQL, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake data source</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
 <br />
 
@@ -56,7 +60,7 @@ Dataset discovery captures basic information about each dataset, including a dat
 
 In step 3 of the guided workflow, you have the option of listing the datasets you wish to profile. Dataset discovery can be resource-heavy, so carefully consider the datasets about which you truly need profile information. Refer to [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail. 
 
-SodaCL supports SQL wildcard characters such as `%`, `*`, or `_`. Refer to your data source's documentation to determine which SQL wildcard characters it suports and how to escape the characters, such as with a backslach `\`, if your dataset or column names use characters that SQL would consider wildcards. 
+SodaCL supports SQL wildcard characters such as `%`, `*`, or `_`. Refer to your data source's documentation to determine which SQL wildcard characters it supports and how to escape the characters, such as with a backslash `\`, if your dataset or column names use characters that SQL would consider wildcards. 
 
 The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Library discovers all the datasets the data source contains *except* those with names that begin with `test`.
 {% include code-header.html %}
@@ -122,11 +126,36 @@ Navigate to the **Datasets** dashboard, then click a dataset name to open the da
 ## Add column profiling  
 <!--Linked to UI, access Shlink-->
 
-Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. You add column profiling as part of the guided workflow to create a new data source. Navigate to **your avatar** > **Data Sources** > **New Data Source** to begin. 
+Column profile information includes details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
 
-In step 4 of the guided workflow, you have the option of listing the columns of datasets you wish to profile. Be aware that Soda can only profile columns that contain NUMBERS or TEXT type data; it cannot profile columns that contain TIME or DATE data. Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
+Depending on your deployment model, or flavor, of Soda, profiling a dataset produces one or two tabs' worth of data in a **Dataset** page in Soda Cloud. 
 
-The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda Library captures the column profile information for all the columns in the dataset named `retail_orders`. The `.` in the syntax separates the dataset name from the column name. Since `_` is a wildcard character, the example escapes the character with a backslash `\`. Note that your data source may not support backslashes to escape a character, so you may need to use a different escape character.
+| Flavor of Soda| Includes **Column** <br/>tab output  | Includes **Anomalies** <br />tab output  |
+| ----- | :-----------: | :------:|
+| [Self-operated]({% link soda/setup-guide.md %}#self-operated) |  ![done](/assets/images/done.png){:width="20px"} |  |
+| [Soda-hosted agent]({% link soda/setup-guide.md %}#soda-hosted-agent) |  ![done](/assets/images/done.png){:width="20px"} |  ![preview](/assets/images/preview.png){:height="60px" width="60px"} |
+| [Self-hosted agent]({% link soda/setup-guide.md %}#self-hosted-agent)<br /> |  ![done](/assets/images/done.png){:width="20px"} | ![preview](/assets/images/preview.png){:height="60px" width="60px"} |
+| [Programmatic]({% link soda/setup-guide.md %}#programmatic) |  ![done](/assets/images/done.png){:width="20px"} |  |
+
+In the **Columns** tab, you can see column profile information including details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
+
+![profile-columns2](/assets/images/profile-columns2.png){:height="700px" width="700px"}
+
+In the **Anomalies** tab, you can access an out-of-the-box anomaly dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorithm learns over the course of approximately five days. <br />
+[Learn more]({% link soda-cloud/anomaly-dashboard.md %}) <br />
+<a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a>
+
+![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
+
+### Add column profiling configuration
+
+In Soda Cloud, you add column profiling as part of the guided workflow to create a new data source. Navigate to **your avatar** > **Data Sources** > **New Data Source** to begin. If you have already added a data source to your Soda Cloud account via a self-hosted or Soda-hosted agent and wish to activate an anomaly dashboard for one or more datasets, <a href="https://go.soda.io/join-observability-preview" target="_blank">request preview access</a>, then refer to the [activation instructions]({% link soda-cloud/anomaly-dashboard.md %}#add-an-anomaly-dashboard-to-an-existing-dataset). 
+
+If you are using a self-operated deployment model that leverages Soda Library, add the column profiling configuration outlined below to your checks YAML file.
+
+In step 4 of the guided workflow, or in your checks YAML file, add configuration to list the columns of datasets you wish to profile. Be aware that Soda can only profile columns that contain NUMBERS or TEXT type data; it cannot profile columns that contain TIME or DATE data except to create a freshness check for the anomaly dashboard. Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
+
+The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda captures the column profile information for all the columns in the dataset named `retail_orders`. The `.` in the syntax separates the dataset name from the column name. Since `_` is a wildcard character, the example escapes the character with a backslash `\`. Note that your data source may not support backslashes to escape a character, so you may need to use a different escape character.
 {% include code-header.html %}
 ```yaml
 profile columns:
@@ -151,7 +180,7 @@ Refer to the top of the page for more example configurations for column profilin
 
 ### Disable column profiling
 
-If you wish to disable column profiling completely, so that Soda Cloud profiles no columns at all, you can use the following configuration.
+If you wish to disable column profiling and any automated anomaly detection checks completely so that Soda Cloud profiles no columns at all, you can use the following configuration.
 {% include code-header.html %}
 ```yaml
 profile columns:
@@ -165,9 +194,13 @@ profile columns:
 
 After you have added the data source in Soda Cloud and the first scan to profile your data is complete, you can review the profiled columns in Soda Cloud. 
 
-Navigate to the **Datasets** dashboard, then click a dataset name to open the dataset's info page. Access the **Columns** tab to review the datasets that Soda Library discovered, including the column profile details you can expand to review as in the example below.
+Navigate to the **Datasets** dashboard, then click a dataset name to open the dataset's info page. 
 
-![profile columns](../assets/images/profile-columns.png)
+Access the **Columns** tab to review the datasets that Soda Library discovered, including the column profile details you can expand to review as in the example below.<br />
+![profile-columns2](/assets/images/profile-columns2.png){:height="700px" width="700px"}
+
+If you have requested access and activated an anomaly dashboard for a dataset, access the **Anomalies** tab to review the automated anomaly detection checks that Soda applied to your data based on the profiling information it collected.<br />
+![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
 
 <br />
 
@@ -179,7 +212,7 @@ Navigate to the **Datasets** dashboard, then click a dataset name to open the da
 
 ## Compute consumption and cost considerations
 
-Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a select few datasets to keep costs low.
+Both column profiling and dataset discovery can lead to increased computation costs on your data sources. Consider adding these configurations to a select few datasets to keep costs low.
 
 ### Discover Datasets
 
@@ -228,10 +261,8 @@ Text Columns
 * **Known issue:** SodaCL does not support using [variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl) in column profiling and dataset discovery configurations. <!--SAS-1642-->
 * **Data type**: Soda can only profile columns that contain NUMBERS or TEXT type data; it cannot profile columns that contain TIME or DATE data.
 * **Spark**: Soda usually uses the profiling include/exclude pattern to build the query that retrieves a dataset's metadata, but Spark does not support such profiling. Instead, Soda  retrieves all the datasets in a schema, then filters the list based on the include/exclude pattern, changing all `%` wildcard values with `.*` to translate a SQL pattern into a regular expression pattern.
-* **Performance:** Both column profiling and dataset discovery can lead to increased computation costs on your datasources. Consider adding these configurations to a selected few datasets to keep costs low. See [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
-* You cannot use quotes around dataset names with either profiling or dataset discovery.
-* If you wish, you can indicate to Soda to include all datasets in its dataset discovery or column profiling by using wildcard characters, as in `%.%`. Because YAML, upon which SodaCL is based, does not naturally recognize `%.%` as a string, you must wrap the value in quotes, as in the following example.
-
+* **Performance:** Both column profiling and dataset discovery can lead to increased computation costs on your data sources. Consider adding these configurations to a selected few datasets to keep costs low. See [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
+* **Workaround:** If you wish, you can indicate to Soda to include all datasets in its dataset discovery or column profiling by using wildcard characters, as in `%.%`. Because YAML, upon which SodaCL is based, does not naturally recognize `%.%` as a string, you must wrap the value in quotes, as in the following example.
     ```yaml
     profile columns:
       columns:
@@ -242,6 +273,7 @@ Text Columns
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Learn more about the [anomaly dashboard]({% link soda-cloud/anomaly-dashboard.md %}) for datasets.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.
 * Use [reference checks]({% link soda-cl/reference.md %}) to compare the values of one column to another.

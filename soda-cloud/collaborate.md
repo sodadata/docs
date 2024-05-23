@@ -23,14 +23,15 @@ As the last step in the **Get started roadmap**, this guide offers instructions 
 4. <s><font color="#777777"> Run scans and review results</font></s>
 5. **Organize, alert, investigate** 📍 You are here! <br />
 &nbsp;&nbsp;&nbsp;&nbsp; a. [Customize your dashboard](#customize-your-dashboard)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; b. [Integrate with Slack](#integrate-with-slack)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; c. [Invite your team membrs](#invite-your-team-members)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; d. [Add check attributes](#add-check-attributes)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; e. [Set alert notification rules](#set-alert-notification-rules)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; f. [Build check collections](#build-check-collections)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; g. [Create incidents](#create-incidents)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; h. [Add dataset attributes](#add-dataset-attributes)<br />
-&nbsp;&nbsp;&nbsp;&nbsp; i. [Integrate with a data catalog](#integrate-with-a-data-catalog)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; b. [Activate anomaly dashboards](#activate-anomaly-dashboards)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; c. [Integrate with Slack](#integrate-with-slack)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; d. [Invite your team membrs](#invite-your-team-members)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; e. [Add check attributes](#add-check-attributes)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; f. [Set alert notification rules](#set-alert-notification-rules)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; g. [Build check collections](#build-check-collections)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; h. [Create incidents](#create-incidents)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; i. [Add dataset attributes](#add-dataset-attributes)<br />
+&nbsp;&nbsp;&nbsp;&nbsp; j. [Integrate with a data catalog](#integrate-with-a-data-catalog)<br />
 <br />
 
 ## Customize your dashboard
@@ -38,6 +39,21 @@ As the last step in the **Get started roadmap**, this guide offers instructions 
 Customize your dashboard by adding filters to distill the data the dashboard displays. Save your customized dashboard so you can easily return to your distilled view.
 
 ![customize-dashboard](/assets/images/customize-dashboard.png){:height="700px" width="700px"}
+
+## Activate anomaly dashboards
+![preview](/assets/images/preview.png){:height="75px" width="75px"} <br />
+<small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + self-hosted Soda Agent connected to any <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soda-supported data source, except Spark, and Dask and Pandas</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda-hosted Agent connected to a BigQuery, Databricks SQL, MS SQL Server,<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MySQL, PostgreSQL, Redshift, or Snowflake data source</small><br />
+
+To automatically build an **anomaly dashboard** for one or more dataset in a data source, you can configure Soda Cloud to profile the columns in datasets. During the guided workflow to add a new data source, add profiling configuration to indicate the datasets to which you wish to activate an anomaly dashboard. 
+
+During the following five or more days, Soda's machine learning algorithm gathers measurements that allow it to recognize patterns in your data. When it has gathered enough information to reliably discern patterns, it automatically begin detecting anomalies in your data relative to the patterns. In the **Anomalies** tab of a dataset, you can access an anomaly dashboard displays the results of multiple automated anomaly detection checks that Soda calibrated to your data. 
+
+<a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a>, then access [full instructions]({% link soda-cloud/anomaly-dashboard.md %}) to activate anomaly dashboards for your datasets.<br /> 
+![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
 
 ## Integrate with Slack
 
@@ -133,6 +149,7 @@ Use the links below to access catalog-specific integration instructions. <br />
 [Integrate with Alation]({% link soda/integrate-alation.md %})<br />
 [Integrate with Atlan]({% link soda/integrate-atlan.md %})<br />
 [Integrate with Metaphor]({% link soda/integrate-metaphor.md %})<br />
+[Integrate with Microsoft Purview]({% link soda/integrate-purview.md %}) <br />
 
 ## Go further
 
