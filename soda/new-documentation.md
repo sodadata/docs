@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### May 24, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.2, Soda Core 3.3.5, and Soda Agent 1.1.3.
+
 #### May 23, 2024
 * Documented the new feature for data quality observability, the automated, ML-driven [Anomaly Dashboard]({% link soda-cloud/anomaly-dashboard.md %}). 
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.1 and Soda Agent 1.1.2.
