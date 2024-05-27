@@ -122,18 +122,18 @@ SodaCL includes over 25 built-in metrics that you can use to write checks, a sub
 | Check Name      | Provide a unique name for your check. |
 | Add to Scan Definition | Select the scan definition to which you wish to add your check. Optionally, you can click **create a new Scan Definition** if you want Soda to execute the check more or less frequently, or at a different time of day than existing scan definitions dictate. See [Manage scheduled scans]({% link soda-cloud/scan-mgmt.md %}) for details. |
 | Filter fields   | Optionally, add an [in-check filter]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) to apply conditions that specify a portion of the data against which Soda executes the check. |
-| Define Metric/Values/Column/SQL | As each metric or check requires different values, refer to [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for detailed information about each metric or check. <br />Learn more about how [Soda uses OpenAI](#about-sql-and-regex-assistants) to process the input for SQL and Regex assistants in no-code checks. |
+| Define Metric/Values/Column/SQL | As each metric or check requires different values, refer to [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for detailed information about each metric or check. <br />Learn more about how [Soda uses OpenAI](#about-soda-ai-sql-and-regex-assistants) to process the input for SQL and Regex assistants in no-code checks. |
 | Alert Level | Select the check result state(s) for which you wish to be notified: Fail, Warn, or Fail and Warn. See [View scan results]({% link soda-library/run-a-scan.md %}#view-scan-results) for details. <br />By default, alert notifications for your check go to the **Dataset Owner**. See [Define alert notification rules](#define-alert-notification-rules) to set up more alert notifications. |
 | Fail Condition, Value, and Value Type | Set the values of these fields to specify the threshold that constitutes a fail or warn check result. <br /> For example, if you are creating a **Duplicate Check** and you want to make sure that less than 5% of the rows in the column you identified contain duplicates, set <br />• **Fail Condition** to `>` <br />• **Value** to `5` <br />• **Value Type** to `Percent`|
 | Attribute fields | Select from among the list of existing attributes to apply to your check so as to organize your checks and alert notifications in Soda Cloud. Refer to [Add check attributes]({% link soda-cl/check-attributes.md %}) for details. |
 
 <br />
 
-#### About SQL and Regex assistants
+#### About Soda AI SQL and Regex assistants
 
 Powered by OpenAI's GPT-3.5 & GPT-4, the generative SQL and regular expression assistants available in Soda Cloud's no-code checks helps you write the queries and expressions you can add to validity, missing, SQL failed rows, and SQL metric checks. 
 
-When creating a Missing or Validity check in the no-code user interface in Soda Cloud, you can click for help from Soda’s **Regex AI Assistant** to translate an English request into a regular expression you can use to define missing or valid values. Similarly, access the **SQL AI Assistant** in SQL Failed Rows or SQL Metric checks to generate SQL queries based on requests in plain English. 
+When creating a Missing or Validity check in the no-code user interface in Soda Cloud, you can click for help from the **Soda AI Regex Assistant** to translate an English request into a regular expression you can use to define missing or valid values. Similarly, access the **Soda AI SQL Assistant** in SQL Failed Rows or SQL Metric checks to generate SQL queries based on requests in plain English. 
 
 ![ask-ai](/assets/images/ask-ai.png){:height="600px" width="600px"}
 
@@ -141,9 +141,9 @@ Soda acknowledges that the output of the assistants may not be fully accurate or
 
 Be aware that Soda shares the content of all SQL and Regex assistant prompts/input and output with OpenAI to perform the processing that yields the output. Following OpenAI's suggestion, Soda also sends metadata, such as schema information, to OpenAI along with the prompts/input in order to improve the quality of the output. Read more about OpenAI at <a href="https://openai.com/policies" target="_blank">https://openai.com/policies</a>.
 
-Soda's SQL or Regex assistants are enabled for *new* Soda Cloud accounts by default. If you do not wish to use them, navigate to **your avatar** > **Organization Settings**, then click to remove the check from the box for **Enable SQL and Regex Assistants Powered By Powered by OpenAI**. 
+Soda AI SQL and Regex Assistants are enabled for *new* Soda Cloud accounts by default. If you do not wish to use them, navigate to **your avatar** > **Organization Settings**, then click to remove the check from the box for **Enable SQL and Regex Assistants Powered By Powered by OpenAI**. 
 
-Existing Soda customers can contact <a href="mailto:support@soda.io">Soda Support</a> to request access.
+Existing Soda customers can review and accept the revised <a href="https://www.soda.io/terms-and-conditions" target="_blank">Terms & Conditions</a>, then <a href="https://go.soda.io/join-soda-ai-preview" target="_blank">request access</a>.
 
 <br />
 
