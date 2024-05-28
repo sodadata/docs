@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### May 30, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for the Soda AI features generally available or available for preview access upon request.
+
 #### May 28, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.3.
 
