@@ -110,6 +110,7 @@ checks for dim_product:
 | ✓ | Use wildcard characters in the value in the check. | Use wildcard values as you would with CTE or SQL. |
 | ✓ | Use for each to apply user-defined checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). <br />*Known issue:* Dataset filters are not compatible with user-defined checks which use a SQL query. With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260-->| [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+| ✓ | Include a failed rows query inside a SQL or CTE user-defined metric configuration to send failed row samples to Soda Cloud; see [example](#example-with-failed-rows). | Refer to [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}) documentation. |
 
 #### Example with check name 
 
@@ -166,6 +167,22 @@ filter FULFILLMENT [daily]:
 checks for FULFILLMENT [daily]:
   - avg_order_span between 5 and 10:
       avg_order_span expression: AVG(last_order_day - first_order_day)
+```
+
+#### Example with failed rows
+
+{% include code-header.html %}
+```yaml
+checks for CUSTOMERS:
+  - belgium_customers < 6:
+      belgium_customers query: |
+        SELECT count(*) as belgium_customers
+        FROM CUSTOMERS
+        WHERE country = 'BE'
+      failed rows query: |
+          SELECT *
+          FROM CUSTOMERS
+          WHERE country != 'BE'
 ```
 
 <br />

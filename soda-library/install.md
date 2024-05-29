@@ -208,9 +208,10 @@ You have two installation options to choose from:
 1. Soda Library connects with Spark DataFrames in a unique way, using programmtic scans.
 * If you are using Spark DataFrames, follow the configuration details in [Connect to Spark]({% link soda/connect-spark.md %}).
 * If you are *not* using Spark DataFrames, continue to step 2.
-2. In the same directory and environment in which you installed Soda Library, use a code editor to create a new `configuration.yml` file. This file stores connection details for your data sources and your Soda Cloud account. <br />Use the data source-specific connection configurations (see: [Data source reference]({% link soda/connect-athena.md %})) to copy+paste the connection syntax into your file, then adjust the values to correspond with your data source's details, as in the following example for PostgreSQL. <br />You can use [system variables](#provide-credentials-as-system-variables) to pass sensitive values, if you wish.
+* You can use [system variables](#provide-credentials-as-system-variables) to pass sensitive values, if you wish.
+* If you want to run scans on multiple schemas in the data source, add one data source config block per schema.
 ```yaml
-    data_source adventureworks:
+    data_source my_datasource:
       type: postgres
       host: localhost
       username: postgres
