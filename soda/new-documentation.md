@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### May 30, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for the Soda AI features generally available or available for preview access upon request.
+
 #### May 29, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.4 and Soda Agents 1.1.5 and 1.1.6.
 * Added documentation and example of including a failed rows query in a [user-defined check]({% link soda-cl/user-defined.md %}#example-with-failed-rows).
