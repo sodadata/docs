@@ -77,7 +77,7 @@ Every run that is part of a <a href="https://docs.getdbt.com/docs/dbt-cloud/clou
 
 1. If you have not already done so, install the `soda-dbt` sub-package in the Python environment that also runs you Soda Library package by running the following command.
 ```
-pip install -i https://cloud.soda.io soda-dbt
+pip install -i https://pypi.cloud.soda.io soda-dbt
 ```
 2. Obtain a <a href="https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens" target="_blank"> dbt Cloud Admin API Service Token</a>.
 3. Add the following configuration in your Soda `configuration.yml` file as in the following example. Look for the account ID after the word `account` in a dbt Cloud URL. For example, `https://cloud.getdbt.com/#/accounts/840923545***/` or navigate to your dbtCloud Account Settings page.
