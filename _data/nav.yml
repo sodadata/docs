@@ -232,6 +232,8 @@
   subcategories:
     - subtitle: Soda Cloud API v1
       page: api-docs/public-cloud-api-v1.md
+    - subtitle: GET checks into CSV
+      page: api-docs/api2csv-example.md
 
 - title: Soda Cloud Reporting API
   page: api-docs/reporting-api-v1.md

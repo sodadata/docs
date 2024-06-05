@@ -12,6 +12,7 @@ parent: Learning resources
 #### June 5, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.5.
 * Added details about IRSA authentication for Athena and Redshift data sources.
+* Added new [example script]({% link api-docs/api2csv-example.md %}) to fetch dataset and check info from a Soda Cloud account and transfer data into CSV files.
 
 #### May 30, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for the Soda AI features generally available or available for preview access upon request.
