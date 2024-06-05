@@ -1,7 +1,7 @@
 ---
 layout: default
 title: GET checks into CSV files
-description: 
+description: Use a Python and the Soda Cloud API to retrieve check and dataset info from a Soda Cloud account and populate CSV files.
 parent: Soda Cloud API
 ---
 
