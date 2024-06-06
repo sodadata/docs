@@ -34,12 +34,12 @@ source .sodaapi/bin/activate
 pip install --upgrade pip  
 pip install requests pandas
 ``` 
-<br /> Windows:<br />
+Windows:<br />
 ```shell
 python -m venv .sodaapi
 source .sodaapi\Scripts\activate
 python.exe -m pip install --upgrade pip
-pip install requests pandas
+python.exe -m pip install requests pandas
 ```
 2. Create a new Python file called `api2csv.py`, then copy the script below into the file. 
 3. In the `# Soda Cloud account` section of the file, replace the placeholder values with your own Soda Cloud URL and API key values. See [Generate API keys]({% link soda-cloud/api-keys.md %}) for instructions on how to create new keys.
