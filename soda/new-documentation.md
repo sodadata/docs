@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### June 6, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.7.
+
 #### June 5, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.5.
 * Added details about IRSA authentication for Athena and Redshift data sources.
