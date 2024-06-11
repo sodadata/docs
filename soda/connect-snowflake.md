@@ -46,7 +46,7 @@ data_source my_datasource_name:
 | type     | required | Identify the type of data source for Soda.|
 | username | required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_USER}`. |
 | password | required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_PASSWORD}`. |
-| account| required | Provide the unique value that identifies your account. Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`. |
+| account| required | Provide the unique value that identifies your account. Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`. Note: Account sometimes needs to take the form of `<account_identifier>.<region>`. |
 | database| required | Provide an idenfier for your database. |
 | warehouse| required | Provide an identifier for the cluster of resources that is a Snowflake virtual warehouse. See <a href="https://docs.snowflake.com/en/user-guide/warehouses-overview" target="_blank">Overview of Warehouses</a>.|
 | connection_timeout| required | Set the timeout period in minutes for an inactive login session.  |
@@ -58,14 +58,14 @@ data_source my_datasource_name:
 | QUOTED_IDENTIFIERS_<br />IGNORE_CASE | optional | See <a href="https://docs.snowflake.com/en/sql-reference/parameters.html#quoted-identifiers-ignore-case" target="_blank">QUOTED_IDENTIFIERS_IGNORE_CASE</a> in Snowflake documentation. |
 | schema | required | Identify the schema in the data source in which your tables exist. |
 
-<sup>1</sup> Though optional, best practice dictates that you provide a value for `role`. If you do not provide a role, and Snowflake has not assigned a <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Role</a> to the user account, Snowflake may, confusingly, deny access to the data source. 
+<sup>1</sup> Though optional, best practice dictates that you provide a value for `role`. If you do not provide a role, and Snowflake has not assigned a <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Role</a> to the user account, Snowflake may, confusingly, deny access to the data source.
 
 <sup>2</sup> Use this parameter when adding Snowflake connection configurations to a `configuration.yml` file. However, if you are adding connection configuration details directly in Soda Cloud (connecting to your Snowflake data source via a Soda Agent) to authenticate using Okta, you must follow the instructions documented by Snowflake for <a href="https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#native-sso-okta-only" target="_blank">Native SSO - Okta Only</a>.
- 
+
 
 ### Private key authentication
 
-You can use the `private_key` and `private_key_passphrase` parameters to specify for key pair authentication. In you configuration YML file, add the parameters as per the following example. 
+You can use the `private_key` and `private_key_passphrase` parameters to specify for key pair authentication. In you configuration YML file, add the parameters as per the following example.
 {% include code-header.html %}
 ```yaml
 data_source snowflake:
@@ -141,11 +141,11 @@ kubectl create secret generic -n <soda-agent-namespace> snowflake-private-key --
 <!--Linked to UI, access Shlink-->
 **Problem:** When testing the connection to your Snowflake data source, Snowflake returns an error message about using the `use database` command.
 
-**Solution:** Use the `role` parameter to specify a Snowflake role that has permission to access the `database` and `schema` of your data source. <br />Though optional, best practice dictates that you provide a value for `role`. If you do not provide a role, and Snowflake has not assigned a <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Role</a> to the user account, Snowflake may, confusingly, deny access to the data source. 
+**Solution:** Use the `role` parameter to specify a Snowflake role that has permission to access the `database` and `schema` of your data source. <br />Though optional, best practice dictates that you provide a value for `role`. If you do not provide a role, and Snowflake has not assigned a <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles" target="_blank">Snowflake System-Defined Role</a> to the user account, Snowflake may, confusingly, deny access to the data source.
 
 <br />
 
-**Problem:** When Soda attempts to connect to your Snowflake data source, it produces a connectivity error that includes something like `RunteimError: Command failed with exit code 2: ..... ocsp_response_validation_cash.lock`. 
+**Problem:** When Soda attempts to connect to your Snowflake data source, it produces a connectivity error that includes something like `RunteimError: Command failed with exit code 2: ..... ocsp_response_validation_cash.lock`.
 
 **Solution:**
 Use <a href="https://community.snowflake.com/s/article/How-to-Triage-OCSP-Related-Connectivity-Problems" target="_blank">Snowflake's troubleshooting guide</a> to triage OCSP-related connectivity issues.
