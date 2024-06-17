@@ -105,7 +105,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |
 |   | Use for each to apply reference checks to multiple datasets in one scan. | - |
-| ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+| ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). If you encounter difficulties, see [Filter not passed with reference check]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check). | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 
 #### Example with check name 
 {% include code-header.html %}
@@ -123,6 +123,9 @@ checks for dim_department_group:
 ```
 
 #### Example with dataset filter
+
+Refer to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check) to address challenges specific to reference checks with dataset filters.
+
 {% include code-header.html %}
 ```yaml
 filter customers_c8d90f60 [daily]:
@@ -132,7 +135,7 @@ checks for customers_c8d90f60 [daily]:
   - values in (cat) must exist in customers_europe (cat2)
 ```
 
-Refer to [Troubleshoot SodaCL]({% link soda-cl/troubleshoot.md %}#filter-not-passed-with-reference-check) to address challenges specific to reference checks with dataset filters.
+
 
 <br />
 

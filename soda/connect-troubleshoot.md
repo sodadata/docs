@@ -12,9 +12,13 @@ Last modified on {% last_modified_at %}
 
 ## SSL certificate error
 
-**Problem:** You are encountering an SSL certificate error while attempting to connect Soda to a data source.
+**Problem:** You encounter an SSL certificate error while attempting to connect Soda to a data source.
 
 **Solution:** Use `pip install pip-system-certs` to potentially resolve the issue. This install works to resolve the issue only on Windows machines where the Ops team installs all the certificates needed through Group Policy Objects, or similar. 
+
+## Snowflake proxy connection error
+
+{% include snowflake-proxy.md %}
 
 ## Go further
 

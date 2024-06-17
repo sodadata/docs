@@ -9,6 +9,11 @@ parent: Learning resources
 
 <br /> 
 
+#### June 17, 2024
+* Added a new docs page to begin recording data source [connection issues]({% link soda/connect-troubleshoot.md %}) and workarounds.
+* Added link to troubleshooting advice for [reference checks]({% link soda-cl/reference.md %}#example-with-dataset-filter) that use dataset filters.
+* Added troubleshooting advice for [Snowflake connections]({% link soda/connect-snowflake.md %}#troubleshoot) that use proxies.
+
 #### June 10, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.9 and Soda Library 1.5.6.
 
