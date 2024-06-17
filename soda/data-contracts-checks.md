@@ -5,14 +5,14 @@ description: Soda data contract checks enable you to verify data quality early i
 parent: Create a data contract
 ---
 
-# Data contract check reference
-<br />![experimental](/assets/images/experimental.png){:height="150px" width="150px"} <br />
+# Data contract check reference <br />
+![experimental](/assets/images/experimental.png){:height="300px" width="300px"} <br />
 *Last modified on {% last_modified_at %}*
 
 Soda data contracts is a Python library that verifies data quality standards as early and often as possible in a data pipeline so as to prevent negative downstream impact. Learn more [About Soda data contracts]({% link soda/data-contracts.md %}#about-data-contracts).
 
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.3 or greater</small><br />
+<small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Spark, and Snowflake</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
@@ -46,6 +46,8 @@ Note that data contracts checks do not follow SodaCL syntax.
 ```yaml
 dataset: dim_employee
 
+...
+
 columns:
 - name: id
   checks:
@@ -78,6 +80,8 @@ This check compares the maximum value in the column to the time the scan runs; t
 ```yaml
 dataset: dim_customer
 
+...
+
 columns:
 - name: date_first_purchase
   checks:
@@ -100,6 +104,8 @@ See also: [Combine missing and validity](#combine-missing-and-validity)
 {% include code-header.html %}
 ```yaml
 dataset: dim_customer
+
+...
 
 columns: 
 - name: title
@@ -136,6 +142,8 @@ columns:
 ```yaml
 dataset: dim_customer
 
+...
+
 columns: 
 - name: first_name
   checks: 
@@ -157,6 +165,8 @@ checks:
 {% include code-header.html %}
 ```yaml
 dataset: dim_customer
+
+...
 
 columns:
 - name: yearly_income
@@ -190,6 +200,8 @@ Relative to a [SQL metric query](#sql-metric-query) check, a SQL metric expressi
 {% include code-header.html %}
 ```yaml
 dataset: CUSTOMERS
+...
+
 columns:
   - name: id
   # SQL metric expression check for a column
@@ -205,6 +217,8 @@ columns:
 {% include code-header.html %}
 ```yaml
 dataset: CUSTOMERS
+...
+
 columns:
   - name: id
   - name: country
@@ -231,6 +245,8 @@ You can apply a SQL metric check to one or more columns or to an entire dataset.
 {% include code-header.html %}
 ```yaml
 dataset: CUSTOMERS
+...
+
 columns:
   # SQL metric query check for a column
   - name: id
@@ -248,6 +264,8 @@ columns:
 {% include code-header.html %}
 ```yaml
 dataset: CUSTOMERS
+...
+
 columns:
   - name: id
 checks:
@@ -273,6 +291,8 @@ checks:
 {% include code-header.html %}
 ```yaml
 dataset: dim_customer
+
+...
 
 columns: 
 - name: first_name
@@ -324,6 +344,8 @@ The referential dataset must exist in the same warehouse as the dataset identifi
 ```yaml
 dataset: dim_employee
 
+...
+
 columns:
 - name: country
   checks:
@@ -343,6 +365,8 @@ You can combine column configuration keys to include both missing and validity p
 ```yaml
 dataset: dim_product
 
+...
+
 columns:
 - name: size
   checks:
@@ -359,6 +383,8 @@ In the example below, Soda considers any row that failed the `no_missing_values`
 
 ```yaml
 dataset: dim_product
+
+...
 
 columns:
 - name: size
@@ -385,6 +411,8 @@ The example below verifies that the only valid value for the column `currency` i
 
 ```yaml
 dataset: dim_product
+
+...
 
 columns:
 - name: country

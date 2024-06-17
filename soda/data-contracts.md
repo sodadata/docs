@@ -7,8 +7,8 @@ redirect_from:
 - /data-contracts.html
 ---
 
-# Set up data contracts 
-<br />![experimental](/assets/images/experimental.png){:height="150px" width="150px"} <br />
+# Set up data contracts <br />
+![experimental](/assets/images/experimental.png){:height="300px" width="300px"} <br />
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
@@ -17,26 +17,24 @@ Use **Soda data contracts** to set data quality standards for data products. In 
 ```yaml
 dataset: dim_product
 
-columns:
+owner: zaynabissa@company.com
 
+columns:
 - name: id
   data_type: VARCHAR
   checks:
   - type: duplicate_count
-
 - name: size
   data_type: VARCHAR
   checks:
   - type: invalid_count
     valid_values: ['S', 'M', 'L']
     must_be_greater_than_or_equal: 10
-
 - name: distance
   checks:
   - type: invalid_count
     valid_min: 0
     valid_max: 1000
-
 - name: created
   optional: true
 
@@ -44,7 +42,7 @@ checks:
   - type: row_count
 ```
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.3 or greater</small><br />
+<small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Spark, and Snowflake</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
@@ -72,7 +70,7 @@ Soda Core 3.3.0 supports the newest, experimental version of `soda-contracts`. T
 * Python 3.8 or greater
 * Pip 21.0 or greater
 * a code or text editor
-* your warehouse connection credentials and details
+* your PostgreSQL, Spark, or Snowflake warehouse connection credentials and details
 * (optional) a local development environment in which to test data contract execution
 * (optional) a git repository to store and control the versions of your data contract YAML files
 

@@ -34,6 +34,8 @@ When an organization's IT Admin revokes a user's access to Soda Cloud through th
 
 Once your organization enables SSO for all Soda Cloud users, Soda Cloud blocks all non-SSO login attempts and password changes via <a href="https://cloud.soda.io/login" target="_blank">cloud.soda.io/login<a/>. If an employee attempts a non-SSO login or attempts to change a password using "Forgot password?" on <a href="https://cloud.soda.io/login" target="_blank">cloud.soda.io/login<a/>, Soda Cloud presents a message that explains that they must log in or change their password using their SSO provider. 
 
+Soda Cloud supports both Identity Provider Initiated (IdP-initiated), and Service Provider Initiated (SP-initiated) single sign-on integrations. Be sure to incidate which type of SSO your organization uses when setting it up with the Soda Support team.
+
 
 ## Add Soda Cloud to Azure AD
 
@@ -63,7 +65,7 @@ Once your organization enables SSO for all Soda Cloud users, Soda Cloud blocks a
 * **Azure AD Identifier** (Section 4 in Azure). This is the IdP entity, ID, or Identity Provider Issuer that Soda needs
 * **Login URL** (Section 4 in Azure). This is the IdP SSO service URL, or Identity Provider Single Sign-On URL that Soda needs.
 * **X.509 Certificate**. Click the **Download** link next to **Certificate (Base64)**.
-12. Email the copied and downloaded values to <a href="mailto:support@soda.io">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
+12. Email the copied and downloaded values to <a href="mailto:support@soda.io">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion. Soda Cloud supports both Identity Provider Initiated (IdP-initiated), and Service Provider Initiated (SP-initiated) single sign-on integrations; be sure to incidate which type of SSO your organization uses.
 13. Test the integration by assigning the Soda application in Azure AD to a single user, then requesting that they log in.
 14. After a successful single-user test of the sign in, assign access to the Soda Azure AD app to users and/or user groups in your organization.
 
@@ -89,7 +91,7 @@ The values for these fields are unique to your organization and are provided to 
 * **Identity Provider Single Sign-On URL**
 * **Identity Provider Issuer**
 * **X.509 Certificate**
-11. Email the copied and downloaded values to <a href="mailto:support@soda.io">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
+11. Email the copied and downloaded values to <a href="mailto:support@soda.io">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion. Soda Cloud supports both Identity Provider Initiated (IdP-initiated), and Service Provider Initiated (SP-initiated) single sign-on integrations; be sure to incidate which type of SSO your organization uses.
 12. Test the integration by assigning the Soda application in Okta to a single user, then requesting that they log in.
 13. After a successful single-user test of the sign in, assign access to the Soda Okta app to users and/or user groups in your organization.
 
@@ -107,7 +109,7 @@ The values for these fields are unique to your organization and are provided to 
 5. On the **SAML Attribute mapping** page, add two Google directory attributes and map as follows:
 * Last Name → User.FamilyName
 * First Name → User.GivenName
-6. Email the copied and downloaded values to <a href="mailto:support@soda.io">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion.
+6. Email the copied and downloaded values to <a href="mailto:support@soda.io">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion. Soda Cloud supports both Identity Provider Initiated (IdP-initiated), and Service Provider Initiated (SP-initiated) single sign-on integrations; be sure to incidate which type of SSO your organization uses.
 7. In the Google Workspace admin portal, use Google's instructions to <a href="https://support.google.com/a/answer/6087519?hl=en&ref_topic=7559288" target="_blank">Turn on your SAML app</a> and verify that SSO works with the new custom app for Soda.
 
 
