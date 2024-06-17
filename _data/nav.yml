@@ -226,6 +226,8 @@
     page: soda/connect-trino.md
   - subtitle: Connect to Vertica
     page: soda/connect-vertica.md
+  - subtitle: Troubleshoot connections
+    page: soda/connect-troubleshoot.md
 
 - title: Soda Cloud API
   page: api-docs/public-cloud-api-v1.md

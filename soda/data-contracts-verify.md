@@ -5,8 +5,8 @@ description: Use a Python API to verify data contract checks programmatically wi
 parent: Create a data contract
 ---
 
-# Verify a data contract
-<br />![experimental](/assets/images/experimental.png){:height="150px" width="150px"} <br />
+# Verify a data contract <br />
+![experimental](/assets/images/experimental.png){:height="300px" width="300px"} <br />
 *Last modified on {% last_modified_at %}*
 
 To verify a **Soda data contract** is to scan the data in a warehouse to execute the data contract checks you defined in a contracts YAML file. Available as a Python library, you run the scan programmatically, invoking Soda data contracts in a CI/CD workflow when you create a new pull request, or in a data pipeline after importing or transforming new data. 
@@ -14,7 +14,7 @@ To verify a **Soda data contract** is to scan the data in a warehouse to execute
 When deciding when to verify a data contract, consider that contract verification works best on new data as soon as it is produced so as to limit its exposure to other systems or users who might access it. The earlier in a pipeline or workflow, the better!  Further, best practice suggests that you store batches of new data in a temporary table, verify a contract on the batches, then append the data to a larger table.
 
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.3 or greater</small><br />
+<small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Spark, and Snowflake</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
@@ -63,7 +63,7 @@ When deciding when to verify a data contract, consider that contract verificatio
         .execute()
     )
 
-    logging.debug(str(contract_verification_result))
+    print(str(contract_verification_result))
     ```
 4. At runtime, Soda connects with your warehouse and verifies the contract by executing the data contract checks in your file. Use `${SCHEMA}` syntax to provide any environment variable values in a contract YAML file. Soda returns results of the verification as pass or fail check results, or indicate errors if any exist; see below.
 
@@ -117,7 +117,7 @@ contract_verification: ContractVerification = (
 )
 
 if contract_verification.logs.has_errors():
-  logging.error(f"The contract has syntax or semantic errors: \n{contract_verification.logs}")
+  print(f"The contract has syntax or semantic errors: \n{contract_verification.logs}")
 ```
 
 ## Add a check identity

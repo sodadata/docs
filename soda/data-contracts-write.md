@@ -5,8 +5,8 @@ description: Write a contract for data quality that stipulates the standards to 
 parent: Create a data contract
 ---
 
-# Write a data contract
-<br />![experimental](/assets/images/experimental.png){:height="150px" width="150px"} <br />
+# Write a data contract <br />
+![experimental](/assets/images/experimental.png){:height="300px" width="300px"} <br />
 *Last modified on {% last_modified_at %}*
 
 **Soda data contracts** is a Python library that uses checks to verify data. Contracts enforce data quality standards in a data pipeline so as to prevent negative downstream impact. To verify the data quality standards for a dataset, you prepare a data **contract YAML file**, which is a formal description of the data. In the data contract, you use checks to define your expectations for good-quality data. Using the Python API, you can add data contract verification ideally right after new data has been produced. 
@@ -19,6 +19,8 @@ dataset: dim_customer
 filter_sql: |
   created > ${FILTER_START_TIME}
 
+owner: zaynabissa@company.com
+
 columns:
 - name: last_name
   data_type: character varying
@@ -27,13 +29,11 @@ columns:
   - type: no_duplicate_values
   - type: no_invalid_values
     valid_regex: '^(?:[A-Z])$'
-
 - name: total_children
   data_type: integer
   checks:
   - type: avg
     must_be_between: [2, 10]
-
 - name: country_id
   checks:
   - type: invalid_percent
@@ -41,7 +41,6 @@ columns:
       dataset: COUNTRIES
       column: id
     must_be_less_than: 5
-
 - name: date_first_purchase
   checks:
   - type: freshness_in_hours
@@ -54,7 +53,7 @@ checks:
 ```
 
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core 3.3.3 or greater</small><br />
+<small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Spark, and Snowflake</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
@@ -144,6 +143,8 @@ Best practice dictates that you structure your data contracts files in a way tha
     # yaml-language-server: $schema=./soda_data_contract_schema_1_0_0.json
     
     dataset: CUSTOMERS
+
+    owner: zaynabissa@company.com
     
     columns:
     - name: id
@@ -172,6 +173,7 @@ See also: <a href="https://www.jetbrains.com/help/pycharm/json.html#ws_json_sche
 | Top-level key | Value | Required |
 | ------------- | ----------- | :--------: | 
 | `dataset` | Specify the name of the dataset upon which you wish to enforce the contract. | required | 
+| `owner` | Specify the name of the dataset owner. Soda validates owner as a YAML object.  There is no logic associated with the owner key, but if `owner` is not an object, the contract verification fails. | required |
 | `columns` | Provide a list of columns that form part of the data contract. | required | 
 | any   | Provide a custom key-value pair to record any data contract detail you wish, such as dataset owner, department, created_at date, etc. See: [Leverage Soda YAML extensibility](#leverage-soda-yaml-extensibility)| optional |
 | `filter_sql` | Write a SQL query to partition the data on which you wish to verify the data contract. <br /> Supply the value of any variables in the filter at scan time. | optional |
@@ -203,8 +205,7 @@ For example, you may wish to include a parameter to identify a dataset's owner, 
 ```yaml
 dataset: dim_product
 
-# Soda data contract verification ignores this parameter.
-owner: mahalijones@example.com
+owner: zaynabissa@company.com
 
 # Configure parameters for other tools to use.
 # Soda data contract verification ignores this parameter.

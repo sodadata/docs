@@ -282,9 +282,8 @@ Because Soda Library pushes scan results to Soda Cloud, you may not want to chan
 
 **Problem:** In a Windows environment, you see an error that reads `[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (ssl_c:997)`.
 
-**Short-term solution:** Use `pip install pip-system-certs` to temporarily resolve the issue. This install works to resolve the issue only on Windows machines where the Ops team installs all the certificates needed through Group Policy Objects, or similar. However, the fix is short-term because when you try to run this in a pipeline on another machine, the error will reappear.
+**Solution:** Use `pip install pip-system-certs` to potentially resolve the issue. This install works to resolve the issue only on Windows machines where the Ops team installs all the certificates needed through Group Policy Objects, or similar. 
 
-**Short-term solution:** Contact your Operations or System Admin team to obtain the proxy certificate.
 
   </div>
   <div class="panel" id="three-panel" markdown="1">
@@ -359,6 +358,8 @@ scan.execute()
 scan.set_verbose(True)
 
 # Set scan definition name, equivalent to CLI -s option
+# The scan definition name MUST be unique to this scan, and
+# not duplicated in any other programmatic scan
 ##################
 scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
 

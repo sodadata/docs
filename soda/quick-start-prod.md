@@ -296,7 +296,7 @@ checks for report_subcategory_sales:
 
 ## Create a DAG and run the workflow 
 
-The Engineer creates an Airflow DAG and <a href="https://airflow.apache.org/docs/apache-airflow/2.2.3/start/local.html" target="_blank">runs the workflow locally</a>. <br />
+The Engineer creates an Airflow DAG and <a href="https://airflow.apache.org/docs/apache-airflow/2.2.3/start/local.html" target="_blank">runs the workflow locally</a>. Note that the value for `scan-name` must be unique to every programmatic scan you define. In other words, it cannot be the same as a programmatic scan in another pipeline. <br />
 <a href="https://github.com/sodadata/sip-of-soda/blob/main/test-in-pipeline/airflow/model_sales_category.py" target="_blank">Access the DAG</a> in the repo.
 
 ```python

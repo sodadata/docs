@@ -172,6 +172,10 @@ checks for VOLUME:
 ```
 
 <br />
+
+{% include snowflake-proxy.md %}
+
+<br />
 <br />
 
 ---
