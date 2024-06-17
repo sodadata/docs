@@ -15,7 +15,7 @@ parent: Learning resources
 * Added troubleshooting advice for [Snowflake connections]({% link soda/connect-snowflake.md %}#troubleshoot) that use proxies.
 * Clarified the use of [scan definition names]({% link soda-library/programmatic.md %}#set-up-basic-programmatic-invocation-in-python) in multiple programmatic scans in different pipelines.
 * Added requirement for [SSO setup]({% link soda-cloud/sso.md %}#sso-access-to-soda-cloud) for customers to indicate whether they use Identity Provider Initiated (IdP-initiated) or and Service Provider Initiated (SP-initiated) single sign-on integrations. (Also included in procedural instructions.)
-* Updated experimental support for data contracts.
+* Updated experimental support for [data contracts]({% link soda/data-contracts.md %}).
 
 #### June 10, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.9 and Soda Library 1.5.6.
