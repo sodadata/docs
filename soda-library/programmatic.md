@@ -140,6 +140,8 @@ scan.execute()
 scan.set_verbose(True)
 
 # Set scan definition name, equivalent to CLI -s option
+# The scan definition name MUST be unique to this scan, and
+# not duplicated in any other programmatic scan
 ##################
 scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
 

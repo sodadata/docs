@@ -13,6 +13,7 @@ parent: Learning resources
 * Added a new docs page to begin recording data source [connection issues]({% link soda/connect-troubleshoot.md %}) and workarounds.
 * Added link to troubleshooting advice for [reference checks]({% link soda-cl/reference.md %}#example-with-dataset-filter) that use dataset filters.
 * Added troubleshooting advice for [Snowflake connections]({% link soda/connect-snowflake.md %}#troubleshoot) that use proxies.
+* Clarified the use of [scan definition names]({% link soda-library/programmatic.md %}#set-up-basic-programmatic-invocation-in-python) in multiple programmatic scans in different pipelines.
 
 #### June 10, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.9 and Soda Library 1.5.6.
