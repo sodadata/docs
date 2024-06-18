@@ -228,7 +228,7 @@ You have two installation options to choose from:
         soda_cloud:
           # Use cloud.soda.io for EU region
           # Use cloud.us.soda.io for US region
-          host: cloud.soda.io
+          host: https://cloud.soda.io
           api_key_id: 2e0ba0cb-your-api-key-7b
           api_key_secret: 5wd-your-api-key-secret-aGuRg
           scheme:
