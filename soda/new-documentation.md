@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### June 18, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.10 & 1.1.11 and Soda Library 1.5.7 & 1.5.8.
+
 #### June 17, 2024
 * Added a new docs page to begin recording data source [connection issues]({% link soda/connect-troubleshoot.md %}) and workarounds.
 * Added link to troubleshooting advice for [reference checks]({% link soda-cl/reference.md %}#example-with-dataset-filter) that use dataset filters.
