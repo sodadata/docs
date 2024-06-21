@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Double-onboard a data source
-description: 
+description: Learn how to double-onboard a data source to leverage all the features supported by Soda Agents.
 parent: Use case guides
 ---
 
