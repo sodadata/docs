@@ -29,6 +29,7 @@ Use the following How tos for practical advice, examples, and instructions for u
 | [Generate API keys]({% link soda-cloud/api-keys.md %}) | Learn how to use Soda Cloud API keys to securely communicate with other entities such as Soda Library and self-hosted Soda Agents, and to provide secure access to Soda Cloud via API. | Soda Cloud |
 | [Manage sensitive data]({% link soda/sensitive-data.md %}) | Learn how to adjust several configurable settings that help you manage access to sensitive data in Soda Cloud. | Soda Cloud | 
 | [Reroute failed row samples]({% link soda/route-failed-rows.md %}) | Learn how to programmatically set up Soda Library to display failed row samples in the command-line. | Soda Library<br /> Soda Cloud |
+| [Double-onboard a data source]({% link soda/double-onboard-datasource.md %}) | Learn how to onboard a data source in Soda Cloud that you have already onboarded via Soda Library. | Soda Library<br /> Soda Cloud |
 
 
 Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
