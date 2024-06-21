@@ -49,6 +49,8 @@
     page: soda/sensitive-data.md
   - subtitle: 'How to: Reroute failed rows'
     page: soda/route-failed-rows.md
+  - subtitle: 'How to: Double-onboard a data source'
+    page: soda-cloud/double-onboard-datasource.md
 
 
 - title: Write SodaCL checks 
