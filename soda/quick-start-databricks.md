@@ -9,8 +9,8 @@ parent: Use case guides
 *Last modified on {% last_modified_at %}*
 
 Use this guide to install and set up Soda in a Databricks notebook so you can run data quality tests on data in a Spark data source.
-<!--
-🎥 Watch a video that demonstrates how to add Soda to your Databricks pipeline: <a href="https://go.soda.io/soda-databricks-video" target="_blank">https://go.soda.io/soda-databricks-video<a/>-->
+
+🎥 Watch a video that demonstrates how to add Soda to your Databricks pipeline: <a href="https://go.soda.io/soda-databricks-video" target="_blank">https://go.soda.io/soda-databricks-video<a/>
 
 [About this guide](#about-this-guide)<br />
 [Create a Soda Cloud account](#create-a-soda-cloud-account)<br />
