@@ -8,7 +8,13 @@ parent:
 # Troubleshoot data source connections
 Last modified on {% last_modified_at %}
 
+[SSL certificate error](#ssl-certificate-error)<br />
+[Snowflake proxy connection error](#go-further)<br />
+[Spark DataFrame object error](#spark-dataframe-object-error)<br />
+[Go further](#go-further)<br />
+<br />
 
+<hr/>
 
 ## SSL certificate error
 
@@ -19,6 +25,12 @@ Last modified on {% last_modified_at %}
 ## Snowflake proxy connection error
 
 {% include snowflake-proxy.md %}
+
+## Spark DataFrame object error
+
+**Problem:** Using a Soda package for Spark df, you encounter an error that reads, `ERROR  | Error occurred while executing scan. | 'DataFrame' object has no attribute 'offset'`.
+
+**Solution:** Be sure to upgrade your version of PySpark to 3.4.0 or greater for compatibility with Soda packages.
 
 ## Go further
 
