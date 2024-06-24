@@ -23,6 +23,8 @@ parent: SodaCL reference
 [Using reference checks with Spark DataFrames](#using-reference-checks-with-spark-dataframes)
 <br />
 
+<hr/>
+
 ## NoneType object is not iteratable
 
 **Problem:** During a scan, Soda returns an error that reads `| NoneType object is not iteratable`.
