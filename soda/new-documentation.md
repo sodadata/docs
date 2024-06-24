@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### June 24, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.13 and Soda Library 1.5.11.
+
 #### June 21, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.12 and Soda Library 1.5.10.
 * Documented how to [double-onboard a data source]({% link soda-cloud/double-onboard-datasource.md %}).
