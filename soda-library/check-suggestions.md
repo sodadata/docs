@@ -8,8 +8,9 @@ redirect_from:
 ---
 
 # Adopt check suggestions
-
 *Last modified on {% last_modified_at %}*
+
+{% include banner-upgrade.md %}
 
 **Check suggestions** assists Soda users in auto-generating basic data quality checks using the Soda Checks Language (SodaCL), a domain-specific language for data quality testing.
 
@@ -21,7 +22,7 @@ Instead of writing your own data quality checks from scratch, check suggestions 
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Requires Soda Library + Soda Cloud</small><br />
 <small>✔️ &nbsp;&nbsp; Compatible with BigQuery, PostgreSQL, Snowflake data sources</small><br />
-<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud + Soda Agent</small><br />
 <br />
 
 [Compatibility](#compatibility)<br />

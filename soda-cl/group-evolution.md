@@ -8,6 +8,8 @@ parent: SodaCL reference
 # Group evolution checks
 *Last modified on {% last_modified_at %}*
 
+{% include banner-upgrade.md %}
+
 Use a group evolution check to validate the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state.
 {% include code-header.html %}
 ```yaml

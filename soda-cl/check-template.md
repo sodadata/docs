@@ -8,6 +8,8 @@ parent: SodaCL reference
 # Check template
 *Last modified on {% last_modified_at %}*
 
+{% include banner-upgrade.md %}
+
 Use a check template to define a reusable, user-defined metric that you can apply to many checks in multiple checks files.
 {% include code-header.html %}
 ```yaml

@@ -8,6 +8,8 @@ parent: Soda CL reference
 # Anomaly detection checks
 *Last modified on {% last_modified_at %}*
 
+{% include banner-upgrade.md %}
+
 Use an anomaly detection check to automatically discover anomalies in your check metrics. 
 {% include code-header.html %}
 ```yaml
@@ -53,7 +55,7 @@ checks for dim_customer:
 <small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library 1.2.2 or greater + Soda Cloud</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements+ Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
 <small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
 
