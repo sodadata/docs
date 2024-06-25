@@ -127,6 +127,9 @@ checks for dim_employee:
 <br />
 
 ## Define schema evolution checks
+
+{% include banner-upgrade.md %}
+
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
