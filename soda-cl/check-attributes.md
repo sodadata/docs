@@ -38,7 +38,7 @@ Use attributes to organize your checks and alert notifications in Soda Cloud.
 
 ## Prerequisites
 
-* To *define* new check attributes, you must have [Admin rights]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account. Any Soda Cloud user or Soda Library user can *apply* existing attributes to new or existing checks.
+* To *define* new check attributes, you must have [Admin permissions]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account. Any Soda Cloud user or Soda Library user can *apply* existing attributes to new or existing checks.
 
 ## Define a check attribute
 
