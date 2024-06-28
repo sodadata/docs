@@ -72,12 +72,12 @@ checks:
 1. After completing the Soda data contracts [install requirements]({% link soda/data-contracts.md %}), use a code or text editor to create a new YAML file name `dim_customer.contract.yml`. 
 2. In the `dim_customer.contract.yml` file, define the schema, or list of columns, that a data contract must verify, and any data contract checks you wish to enforce for your dataset.  At a minimum, you must include the following required parameters; refer to [List of configuration keys](#list-of-configuration-keys) below.
     ```yaml
-    # an identifier for the table or view in the SQL warehouse
+    # an identifier for the table or view in the SQL data source
     dataset: dim_customer
 
     # a list of columns that represents the dataset's schema, 
     # each of which is identified by the name of a column  
-    # in the SQL warehouse
+    # in the SQL data source
     columns: 
     - name: first_name
     - name: last_name
@@ -114,20 +114,20 @@ checks:
 
 ### Organize your data contracts
 
-Best practice dictates that you structure your data contracts files in a way that resembles the structure of your warehouse.  
+Best practice dictates that you structure your data contracts files in a way that resembles the structure of your data source.  
 1. In your root git repository folder, create a `soda` folder.
-2. In the `soda` folder, create one folder per warehouse, then add a `warehouse.yml` file in each. 
-3. In each warehouse folder, create folders in each schema, then add the contract files in the schema folders.
+2. In the `soda` folder, create one folder per data source, then add a `data source.yml` file in each. 
+3. In each data source folder, create folders in each schema, then add the contract files in the schema folders.
 
 ```shell
 + soda
 |  + postgres_local
-|  |  + warehouse.yml
+|  |  + data_source.yml
 |  |  + public
 |  |  |  + customers.yml
 |  |  |  + suppliers.yml
 |  + snowflake_sales
-|  |  warehouse.yml
+|  |  data_source.yml
 |  |  + RAW
 |  |  |  + opportunities.yml
 |  |  |  + contacts.yml

@@ -338,7 +338,7 @@ For a list of the available formats to use with the `valid_formats` column confi
 
 Also known as a referential integrity or foreign key check, Soda executes a validity check with a `valid_values_reference_data` column configuration key as a separate query, relative to other validity queries. The query counts all values that exist in the named column which also *do not* exist in the column in the referenced dataset. 
 
-The referential dataset must exist in the same warehouse as the dataset identified by the contract.
+The referential dataset must exist in the same data source as the dataset identified by the contract.
 
 {% include code-header.html %} 
 ```yaml
