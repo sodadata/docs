@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 # Set up data contracts <br />
-![experimental](/assets/images/experimental.png){:height="300px" width="300px"} <br />
+![experimental](/assets/images/experimental.png){:height="400px" width="400px"} <br />
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
@@ -43,6 +43,7 @@ checks:
 ```
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
 <small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Spark, and Snowflake</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core CLI</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
@@ -70,7 +71,7 @@ Soda Core 3.3.0 supports the newest, experimental version of `soda-contracts`. T
 * Python 3.8 or greater
 * Pip 21.0 or greater
 * a code or text editor
-* your PostgreSQL, Spark, or Snowflake warehouse connection credentials and details
+* your PostgreSQL, Spark, or Snowflake data source connection credentials and details
 * (optional) a local development environment in which to test data contract execution
 * (optional) a git repository to store and control the versions of your data contract YAML files
 
@@ -81,7 +82,7 @@ Data contracts are only available for use in programmatic scans using Soda Core.
 Soda Core CLI *does not* support data contracts.
 
 1. Best practice dictates that you install data contracts in a virtual environment. In your command-line interface tool, create and activate a <a  href="https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments" target="_blank">Python virtual environment</a>.
-2. Execute the following command, replacing the package name with the install package that matches the type of warehouse you use to store data; see the <a href="https://github.com/sodadata/soda-core/blob/main/docs/installation.md" target="_blank">complete list</a> of packages.
+2. Execute the following command, replacing the package name with the install package that matches the type of data source you use to store data; see the <a href="https://github.com/sodadata/soda-core/blob/main/docs/installation.md" target="_blank">complete list</a> of packages.
 ```shell
 pip install soda-core-postgres
 ```
@@ -96,6 +97,14 @@ soda --help
 
 To exit the virtual environment, use the command `deactivate`.
 
+
+## Upgrade data contracts
+
+In the virtual environment in which you originally installed `soda-core-contracts`, use the following command to ugrade to the latest version of the package.
+
+```shell
+pip install soda-core-contracts -U
+```
 
 
 ## Go further
