@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 # Set up data contracts <br />
-![experimental](/assets/images/experimental.png){:height="300px" width="300px"} <br />
+![experimental](/assets/images/experimental.png){:height="400px" width="400px"} <br />
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
@@ -43,6 +43,7 @@ checks:
 ```
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
 <small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Spark, and Snowflake</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core CLI</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
@@ -96,6 +97,14 @@ soda --help
 
 To exit the virtual environment, use the command `deactivate`.
 
+
+## Upgrade data contracts
+
+In the virtual environment in which you originally installed `soda-core-contracts`, use the following command to ugrade to the latest version of the package.
+
+```shell
+pip install soda-core-contracts -U
+```
 
 
 ## Go further

@@ -11,6 +11,7 @@ parent: Learning resources
 
 #### June 28, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.15 & 1.1.16, Soda Library 1.5.13, and Soda Core 3.3.7, 3.3.8 & 3.3.9. 
+* Published documentation to accompany data contracts version 4 release.
 
 #### June 27, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.14 and Soda Library 1.5.12.
