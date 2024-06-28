@@ -113,6 +113,34 @@ checks:
 4. Save the file, then reference it when you add a contract verification step to your programmatic Soda scan; see [Verify a data contract]({% link soda/data-contracts-verify.md %}). 
 
 
+### Verify contract on new data partition
+
+It can be unnecessarily costly to verify the contract checks on the complete dataset for 
+incremental batch datasets.  In batch workflows, it's common to append new data periodically.
+In those situations, it's often sufficient to verify the contract checks only on the newly 
+produced data.
+
+Using a dataset filter and variables, the checks in a contract can be applied to new 
+time partition that has been produced. 
+
+Most common is a daily batch job that appends the data of the previous day to a 
+table.  In that case, a contract `filter_sql` can be used to run the checks only 
+on the new data.
+
+> Depracation warning: We are considering to rename filter_sql to checks_filter_sql to 
+> make it more clear that this filter applies to the checks and not the rest of the contract.  
+
+```yaml
+dataset: dim_customer
+
+# a filter to verify a partition of data
+filter_sql: |
+  created > ${FILTER_START_TIME}
+
+columns:
+  ...
+```
+
 ### Organize your data contracts
 
 Best practice dictates that you structure your data contracts files in a way that resembles the structure of your warehouse.  
