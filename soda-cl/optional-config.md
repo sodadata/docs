@@ -264,6 +264,18 @@ checks for dim_customer:
 
 See also: [Set a sample limit for a data source]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit)
 
+
+Additionally, you can use a `samples columns` configuration to the above-listed to specify the columns from which Soda must implicitly collect sample values. Soda only collects the check's failed row samples for the columns you specify in the list, as in the `duplicate_count` example below. 
+
+Note that the comma-separated list of samples columns does not support wildcard characters (%).
+```yaml
+checks for dim_customer:
+  - duplicate_count(email_address) < 50:
+      samples columns: [last_name, first_name]
+```
+
+See also: [About failed row samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples)
+
 <br />
 
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check that collects failed row samples and has failed. Examine failed rows in the **Failed Rows** tab; see [Examine failed row samples]({% link soda-cloud/failed-rows.md %}) for further details.
