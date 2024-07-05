@@ -12,6 +12,8 @@ redirect_from:
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
+{% include banner-experimental.md %}
+
 Use **Soda data contracts** to set data quality standards for data products. In a programmatic Soda scan, Soda executes the standards as data quality checks. 
 {% include code-header.html %}
 ```yaml
@@ -42,7 +44,7 @@ checks:
   - type: row_count
 ```
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Spark, and Snowflake</small><br />
+<small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Snowflake, and Spark</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core CLI</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
