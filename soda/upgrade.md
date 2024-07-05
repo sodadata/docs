@@ -87,6 +87,8 @@ The **Soda Agent** is a Helm chart that you deploy on a Kubernetes cluster and c
 
 To take advantage of new or improved features and functionality in the Soda Agent, including new features in the Soda Library, you can upgrade your agent when a new version becomes available in <a href="https://artifacthub.io/packages/helm/soda-agent/soda-agent" target="_blank">ArtifactHub.io</a>.
 
+Note that there is no downtime associated with the exercise of upgrading a self-hosted Soda Agent. Because Soda does not define the `.spec.strategy` in the deployment manifest of the Soda Agent Helm chart, Kubernetes uses the default `RollingUpdate` to upgrade; refer to <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy" target="_blank"> Kubernetes documentation </a>.
+
 1. If you regularly access multiple clusters, you must ensure that are first accessing the cluster which contains your deployed Soda Agent. Use the following command to determine which cluster you are accessing.
 ```shell
 kubectl config get-contexts

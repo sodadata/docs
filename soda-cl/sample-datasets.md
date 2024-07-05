@@ -30,6 +30,7 @@ sample datasets:
 [Add quotes to all datasets](#add-quotes-to-all-datasets)<br />
 [Inclusion and exclusion rules](#inclusion-and-exclusion-rules)<br />
 [Disable samples in Soda Cloud](#disable-samples-in-soda-cloud)<br />
+[Specify columns for failed row sampling](#specify-columns-for-failed-row-sampling)<br />
 [Go further](#go-further) <br />
 <br />
 
@@ -72,6 +73,7 @@ sample datasets:
 
 <br />
 
+
 ## Add quotes to all datasets
 
 {% include quotes-tables.md %}
@@ -91,6 +93,25 @@ Where your datasets contain sensitive or private information, you may *not* want
 
 <br />
 Note that you cannot use an `exclude_columns` configuration to disable sample row collections from specific columns in a dataset. That configuration applies _only_ to [disabling failed rows sampling]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+
+## Specify columns for failed row sampling
+
+Beyond collecting samples of data from datasets, you can also use a `samples columns` configuration to an individual check to specify the columns for which Soda must implicitly collect failed row sample values. Soda only collects the check's failed row samples for the columns you specify in the list, as in the `duplicate_count` example below. 
+
+Soda implicitly collects failed row samples for the following checks:
+* [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 
+* checks that use a [missing metric]({% link soda-cl/missing-metrics.md %}#failed-row-samples)
+* checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
+* checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
+
+Note that the comma-separated list of samples columns does not support wildcard characters (%).
+```yaml
+checks for dim_customer:
+  - duplicate_count(email_address) < 50:
+      samples columns: [last_name, first_name]
+```
+
+See also: [About failed row samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples)
 
 ## Go further
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

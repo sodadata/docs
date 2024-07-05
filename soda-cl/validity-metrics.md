@@ -238,7 +238,7 @@ checks for dim_customer:
 
 You can also use a `samples columns` configuration to a check to specify the columns for which Soda must implicitly collect failed row sample values, as in the following example. Soda only collects this check's failed row samples for the columns you specify in the list. 
 
-Note that the list of samples columns does not support wildcard characters (%).
+Note that the comma-separated list of samples columns does not support wildcard characters (%).
 {% include code-header.html %}
 ```yaml
 checks for dim_employee:

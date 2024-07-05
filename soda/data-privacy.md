@@ -20,6 +20,9 @@ Soda works in several ways to ensure your data and systems are secure and remain
 [Single sign-on with Soda Cloud](#single-sign-on-with-soda-cloud)<br />
 <br />
 
+See also: <a href="https://www.soda.io/privacy-policy" target="_blank">Soda Privacy Policy</a>
+<br />
+
 ## Compliance and reporting
 
 As a result of an independent review in April 2022, Soda has been found to be **SOCII Type 2** compliant. Contact <a href="mailto:support@soda.io">support@soda.io</a> for more information.

@@ -65,6 +65,25 @@ checks for dim_customer:
 ```
 <br />
 
+## Specify columns for failed row sampling
+
+Use a `samples columns` configuration to an individual check to specify the columns for which Soda must implicitly collect failed row sample values. Soda only collects the check's failed row samples for the columns you specify in the list, as in the `duplicate_count` example below. 
+
+Soda implicitly collects failed row samples for the following checks:
+* [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 
+* checks that use a [missing metric]({% link soda-cl/missing-metrics.md %}#failed-row-samples)
+* checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
+* checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
+
+Note that the comma-separated list of samples columns does not support wildcard characters (%).
+```yaml
+checks for dim_customer:
+  - duplicate_count(email_address) < 50:
+      samples columns: [last_name, first_name]
+```
+
+See also: [About failed row samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples)
+
 
 ## Go further
 
