@@ -6,13 +6,14 @@ parent: Create a data contract
 ---
 
 # Data contract check reference <br />
-![experimental](/assets/images/experimental.png){:height="300px" width="300px"} <br />
+![experimental](/assets/images/experimental.png){:height="400px" width="400px"} <br />
 *Last modified on {% last_modified_at %}*
 
 Soda data contracts is a Python library that verifies data quality standards as early and often as possible in a data pipeline so as to prevent negative downstream impact. Learn more [About Soda data contracts]({% link soda/data-contracts.md %}#about-data-contracts).
 
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
 <small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Spark, and Snowflake</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Core CLI</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
@@ -338,7 +339,7 @@ For a list of the available formats to use with the `valid_formats` column confi
 
 Also known as a referential integrity or foreign key check, Soda executes a validity check with a `valid_values_reference_data` column configuration key as a separate query, relative to other validity queries. The query counts all values that exist in the named column which also *do not* exist in the column in the referenced dataset. 
 
-The referential dataset must exist in the same warehouse as the dataset identified by the contract.
+The referential dataset must exist in the same data source as the dataset identified by the contract.
 
 {% include code-header.html %} 
 ```yaml

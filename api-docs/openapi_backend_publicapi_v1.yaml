@@ -664,7 +664,7 @@ paths:
 
         This POST uses the following parameters to provide specific details:
 
-        - `scanDefinition`: Supply a string value to specify the identifier of the scan definition in Soda Cloud. To retrieve this ID in Soda Cloud, navigate to the Scans page, then select the scan definition you wish to execute remotely and copy the string that is the scan definition identifier from the URL. <br /> The scan definition _must be_ connected to a Soda Agent in order to execute a scan remotely, _not_ Soda Library.
+        - `scanDefinition`: Supply a string value to specify the scan definition in Soda Cloud. To retrieve this value, navigate to the Scans page in Soda Cloud, then select the scan definition you wish to execute remotely and copy the scan name, which is the smaller text under the label. For example, `weekday_scan_schedule`. <br /> The scan definition _must be_ connected to a Soda Agent in order to execute a scan remotely, _not_ Soda Library.
 
         - `dataTimestamp`: (Optional) Supply a value to indicate a specific timestamp for the scan for Soda Cloud. For example, provide a time in the past so that although Soda executes the scan when you call the endpoint, it timestamps the scan with the value you provide so that it appears in the user interface with your supplied timestamp value, not the time at which it actually executed the scan. Supply an ISO8601 timestamp value such as: `2023-12-31T10:15:30+01:00`. If you do not specify a value, Soda uses the current moment to timestamp the scan.
 

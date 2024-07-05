@@ -8,6 +8,8 @@ parent: SodaCL reference
 # Reconciliation checks
 *Last modified on {% last_modified_at %}*
 
+{% include banner-upgrade.md %}
+
 Use a reconciliation check to validate that target data matches source data before and/or after migrating between data sources.
 
 For example, if you must migrate data from a MySQL data source to a Snowflake data source, you can use reconciliation checks to make sure the MySQL data appears intact in Snowflake in staging before conducting the migration in production.

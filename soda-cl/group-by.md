@@ -8,6 +8,8 @@ parent: SodaCL reference
 # Group by
 *Last modified on {% last_modified_at %}*
 
+{% include banner-upgrade.md %}
+
 Use a group by configuration to collect and present check results by category.
 
 {% include code-header.html %}
