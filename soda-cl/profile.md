@@ -153,7 +153,10 @@ In Soda Cloud, you add column profiling as part of the guided workflow to create
 
 If you are using a self-operated deployment model that leverages Soda Library, add the column profiling configuration outlined below to your checks YAML file.
 
-In step 4 of the guided workflow, or in your checks YAML file, add configuration to list the columns of datasets you wish to profile. Be aware that Soda can only profile columns that contain NUMBERS or TEXT type data; it cannot profile columns that contain TIME or DATE data except to create a freshness check for the anomaly dashboard. Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
+In step 4 of the guided workflow, or in your checks YAML file, add configuration to list the columns of datasets you wish to profile.
+* Be aware that Soda can only profile columns that contain NUMBERS or TEXT type data; it cannot profile columns that contain TIME or DATE data except to create a freshness check for the anomaly dashboard. 
+* Soda performs the Discover datasets and Profile datasets actions independently, relative to each other. If you define exclude or include rules in the Discover tab, the Profile configuration does not inherit the Discover rules. For example, if, for Discover, you exclude all datasets that begin with `staging_`, then configure Profile to include all datasets, Soda discovers and profiles all datasets.
+* Column profiling can be resource-heavy, so carefully consider the datasets for which you truly need column profile information. Refer to [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
 
 The example configuration below uses a wildcard character (`%`) to specify that, during a scan, Soda captures the column profile information for all the columns in the dataset named `retail_orders`. The `.` in the syntax separates the dataset name from the column name. Since `_` is a wildcard character, the example escapes the character with a backslash `\`. Note that your data source may not support backslashes to escape a character, so you may need to use a different escape character.
 {% include code-header.html %}
@@ -252,7 +255,7 @@ Text Columns
 
 * If you configure `discover datasets` or `profile columns` to include specific datasets or columns, Soda implicitly *excludes* all other datasets or columns from discovery or profiling.
 * If you combine an include config and an exclude config and a dataset or column fits both patterns, Soda excludes the dataset or column from discovery or profiling.
-<!--* If you configured `discover datasets` to exclude a dataset but do not explicitly also exclude its columns in `profile columns`, Soda discovers the dataset and profiles its columns. -->
+* Soda performs the Discover datasets and Profile datasets actions independently, relative to each other. If you configured `discover datasets` to exclude a dataset but do not explicitly also exclude its columns in `profile columns`, Soda discovers the dataset and profiles its columns. For example, if, for `discover datasets`, you exclude all datasets that begin with `staging_`, then configure `profile columns` to include all datasets, Soda discovers and profiles all datasets. 
 
 
 ## Limitations and known issues
