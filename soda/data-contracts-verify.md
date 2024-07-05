@@ -9,12 +9,14 @@ parent: Create a data contract
 ![experimental](/assets/images/experimental.png){:height="400px" width="400px"} <br />
 *Last modified on {% last_modified_at %}*
 
+{% include banner-experimental.md %}
+
 To verify a **Soda data contract** is to scan the data in a data source to execute the data contract checks you defined in a contracts YAML file. Available as a Python library, you run the scan programmatically, invoking Soda data contracts in a CI/CD workflow when you create a new pull request, or in a data pipeline after importing or transforming new data. 
 
 When deciding when to verify a data contract, consider that contract verification works best on new data as soon as it is produced so as to limit its exposure to other systems or users who might access it. The earlier in a pipeline or workflow, the better!  Further, best practice suggests that you store batches of new data in a temporary table, verify a contract on the batches, then append the data to a larger table.
 
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Spark, and Snowflake</small><br />
+<small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Snowflake, and Spark</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core CLI</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />

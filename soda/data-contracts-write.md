@@ -9,7 +9,11 @@ parent: Create a data contract
 ![experimental](/assets/images/experimental.png){:height="400px" width="400px"} <br />
 *Last modified on {% last_modified_at %}*
 
+{% include banner-experimental.md %}
+
 **Soda data contracts** is a Python library that uses checks to verify data. Contracts enforce data quality standards in a data pipeline so as to prevent negative downstream impact. To verify the data quality standards for a dataset, you prepare a data **contract YAML file**, which is a formal description of the data. In the data contract, you use checks to define your expectations for good-quality data. Using the Python API, you can add data contract verification ideally right after new data has been produced. 
+
+Be aware, Soda data contracts checks do not use SodaCL. 
 
 In your data pipeline, add a data contract after data has been produced or transformed so that when you programmatically run a scan via the Python API, Soda data contracts verifies the contract, executing the checks contained within the contract and producing results which indicate whether the checks passed or failed.
 
@@ -53,7 +57,7 @@ checks:
 ```
 
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific</small><br />
-<small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Spark, and Snowflake</small><br />
+<small>✔️ &nbsp;&nbsp; Experimentally supported in Soda Core 3.3.3 or greater for PostgreSQL, Snowflake, and Spark</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core CLI</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
