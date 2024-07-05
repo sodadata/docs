@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### July 8, 2024
+* Documented the new functionality that enables Admin users in Soda Cloud to [create user groups]({% link soda-cloud/roles-and-rights.md %}#create-custom-user-groups). 
+
 #### June 24, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.13 and Soda Library 1.5.11.
 
