@@ -12,7 +12,12 @@ parent: Learning resources
 #### July 8, 2024
 * Documented the new functionality that enables Admin users in Soda Cloud to [create user groups]({% link soda-cloud/roles-and-rights.md %}#create-custom-user-groups). 
 
-#### Jul 2, 2024
+#### July 5, 2024
+* Added clarification to the inclusion and exclusion [rules]({% link soda-cl/profile.md %}#inclusion-and-exclusion-rules) for profiling behavior.
+* Repeated the configuration instructions for `samples columns` when implicitly collecting failed row samples in multiple places, notably in [Collect failed row samples]({% link soda-cl/optional-config.md %}#collect-failed-rows-samples).
+* Added details about `RollingUpdate` when [upgrading]({% link soda/upgrade.md %}#upgrade-a-self-hosted-soda-agent) a self-hosted Soda Agent.
+
+#### July 2, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.17 & 1.1.18 and Soda Library 1.5.14.
 
 #### June 28, 2024
