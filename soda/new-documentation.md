@@ -11,6 +11,7 @@ parent: Learning resources
 
 #### July 8, 2024
 * Documented the new functionality that enables Admin users in Soda Cloud to [create user groups]({% link soda-cloud/roles-and-rights.md %}#create-custom-user-groups). 
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.10.
 
 #### July 5, 2024
 * Added clarification to the inclusion and exclusion [rules]({% link soda-cl/profile.md %}#inclusion-and-exclusion-rules) for profiling behavior.
