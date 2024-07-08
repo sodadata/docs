@@ -102,8 +102,10 @@
     page: soda-cloud/organize-datasets.md
   - subtitle: Create and track incidents
     page: soda-cloud/incidents.md
-  - subtitle: Set roles and rights
+  - subtitle: Manage account roles
     page: soda-cloud/roles-and-rights.md
+  - subtitle: Manage resource permissions
+    page: soda-cloud/roles-resources.md
 
 - title: Integrate Soda
   page: soda/integrate-alation.md

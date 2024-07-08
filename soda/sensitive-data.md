@@ -21,7 +21,7 @@ Soda provides several capabilities and configurable settings that help you manag
 ## Utilize roles and permissions in Soda Cloud
 Soda Cloud employs roles and rights that apply to users of an organization's account. These basic access controls enable you to define who can access, add, change, or delete metadata or access to data in the account.  
 
-Refer to [Roles and rights in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) for much more detail and guidance on how to limit access.
+Refer to [Manage roles and permissions in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) for much more detail and guidance on how to limit access.
 
 
 ## Deploy a self-hosted Soda Agent
