@@ -1294,7 +1294,7 @@ See also: [Use a file reference for a BigQuery data source connection](#use-a-fi
 
 During its initial scan of your datasource, Soda Cloud discovers all the datasets the data source contains. It captures basic information about each dataset, including a dataset names and the columns each contains.
 
-In the editing panel, specify the datasets that Soda Cloud must include or exclude from this basic discovery activity. The default syntax in the editing panel instructs Soda to collect basic dataset information from all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character. See [Add dataset discovery]({% link soda-cl/profile.md %}l#add-dataset-discovery) for more detail on profiling syntax.
+In the editing panel, specify the datasets that Soda Cloud must include or exclude from this basic discovery activity. The default syntax in the editing panel instructs Soda to collect basic dataset information from all datasets in the data source *except* those with names that begin with `test_`.  The `%` is a wildcard character. See [Add dataset discovery]({% link soda-cl/profile.md %}#add-dataset-discovery) for more detail on profiling syntax.
 
 *Known issue:* SodaCL does not support using variables in column profiling and dataset discovery configurations. <!--SAS-1642-->
 
