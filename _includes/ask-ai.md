@@ -1,0 +1,3 @@
+The **Ask AI Assistant** is powered by kapa.ai and replaces SodaGPT. While Soda collaborates with third parties to develop certain AI features, it's important to note that Soda does not disclose any primary data with our partners, such as data samples or data profiling details. We only share prompts and some schema information with OpenAI and kapa.ai to enhance the accuracy of the assistants. 
+
+Refer to <a href="https://www.soda.io/terms-and-conditions" target="_blank">Soda's General Terms & Conditions</a> in the **Use of AI** section for further details.

@@ -4,7 +4,6 @@ You can use a group by configuration to detect anomalies by category, and monito
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library 1.1.27 or greater + Soda Cloud</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent 0.8.57 or greater</small><br />
-<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
 <small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
 <br />
 

@@ -113,7 +113,7 @@ SodaCL includes over 25 built-in metrics that you can use to write checks, a sub
 1. As an Admin, or Manager or Editor of a dataset to which you wish to add checks, navigate to the dataset, then click **Add Check**. You can only create a check via the no-code interface for datasets in data sources connected via a Soda Agent. 
 2. Select the type of check you wish to create, then complete the form to create the check. Refer to table below for guidance on the values to enter.
 3. Optionally, **Test** your check, then click **Propose check** to initiate a **[Discussion]({% link soda/glossary.md %}#discussion)** with colleagues. Soda executes the check during the next scan according to the schedule you selected, or whenever a Soda Cloud user runs the schedule scan manually. <br />Be aware that a schema check requires a minimum of two measurements before it yields a useful check result because it needs at least one historical measurement of the existing schema against which to compare a new measurement to look for changes. Thus, the first time Soda executes this check, the result is `[NOT EVALUATED]`, indicated by a gray, question mark status icon.
-4. Click **Add Check** to include the new, no-code check in the next scheduled scan of the dataset.
+4. Click **Add Check** to include the new, no-code check in the next scheduled scan of the dataset. Note that a user with Viewer permissions cannot add a check, they can only propose checks.
 5. Optionally, you can manually execute your check immediately. From the dataset's page, locate the check you just created and click the stacked dots, then select **Execute Check**. Soda executes *only* your check.
 
 | Field or Label  | Guidance |
@@ -124,7 +124,7 @@ SodaCL includes over 25 built-in metrics that you can use to write checks, a sub
 | Filter fields   | Optionally, add an [in-check filter]({% link soda-cl/optional-config.md %}#add-a-filter-to-a-check) to apply conditions that specify a portion of the data against which Soda executes the check. |
 | Define Metric/Values/Column/SQL | As each metric or check requires different values, refer to [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for detailed information about each metric or check. <br />Learn more about how [Soda uses OpenAI](#about-soda-ai-assistants) to process the input for SQL and Regex assistants in no-code checks. |
 | Alert Level | Select the check result state(s) for which you wish to be notified: Fail, Warn, or Fail and Warn. See [View scan results]({% link soda-library/run-a-scan.md %}#view-scan-results) for details. <br />By default, alert notifications for your check go to the **Dataset Owner**. See [Define alert notification rules](#define-alert-notification-rules) to set up more alert notifications. |
-| Fail Condition, Value, and Value Type | Set the values of these fields to specify the threshold that constitutes a fail or warn check result. <br /> For example, if you are creating a **Duplicate Check** and you want to make sure that less than 5% of the rows in the column you identified contain duplicates, set <br />• **Fail Condition** to `>` <br />• **Value** to `5` <br />• **Value Type** to `Percent`|
+| Fail Condition, Value, and Value Type | Set the values of these fields to specify the threshold that constitutes a fail or warn check result. <br /> For example, if you are creating a **Duplicate Check** and you want to make sure that less than 5% of the rows in the column you identified contain duplicates, set: <br />• **Fail Condition** to `>` <br />• **Value** to `5` <br />• **Value Type** to `Percent`|
 | Attribute fields | Select from among the list of existing attributes to apply to your check so as to organize your checks and alert notifications in Soda Cloud. Refer to [Add check attributes]({% link soda-cl/check-attributes.md %}) for details. |
 
 <br />
@@ -138,15 +138,15 @@ When creating a Missing or Validity check in the no-code user interface in Soda 
 
 ![ask-ai](/assets/images/ask-ai.png){:height="600px" width="600px"}
 
-Soda acknowledges that the output of the assistants may not be fully accurate or reliable. Leverage the assistants' output, but be sure to carefully review all queries and expressions you add to your checks. Refer to <a href="https://www.soda.io/terms-and-conditions" target="_blank">Soda's General Terms & Conditions</a> for further details.
-
-Be aware that Soda shares the content of all SQL and Regex assistant prompts/input and output with OpenAI to perform the processing that yields the output. Following OpenAI's suggestion, Soda also sends metadata, such as schema information, to OpenAI along with the prompts/input in order to improve the quality of the output. Read more about OpenAI at <a href="https://openai.com/policies" target="_blank">https://openai.com/policies</a>.
-
 Soda AI SQL and Regex Assistants are enabled for *new* Soda Cloud accounts by default. If you do not wish to use them, navigate to **your avatar** > **Organization Settings**, then click to remove the check from the box for **Enable SQL and Regex Assistants Powered By Powered by OpenAI**. 
 
 Existing Soda customers can review and accept the revised <a href="https://www.soda.io/terms-and-conditions" target="_blank">Terms & Conditions</a>, then <a href="https://go.soda.io/join-soda-ai-preview" target="_blank">request access</a>.
 
-The **Ask AI Assistant**, available for <a href="https://go.soda.io/join-soda-ai-preview" target="_blank">preview access upon request</a>, is powered, in part, by kapa.ai. While Soda collaborates with third parties to develop certain AI features, it's important to note that Soda does not disclose any primary data with our partners, such as data samples or data profiling details. We only share prompts and some schema information with OpenAI and kapa.ai to enhance the accuracy of the assistants.
+Soda acknowledges that the output of the assistants may not be fully accurate or reliable. Leverage the assistants' output, but be sure to carefully review all queries and expressions you add to your checks. Refer to <a href="https://www.soda.io/terms-and-conditions" target="_blank">Soda's General Terms & Conditions</a> in the Use of AI for further details.
+
+Be aware that Soda shares the content of all SQL and Regex assistant prompts/input and output with OpenAI to perform the processing that yields the output. Following OpenAI's suggestion, Soda also sends metadata, such as schema information, to OpenAI along with the prompts/input in order to improve the quality of the output. Read more about OpenAI at <a href="https://openai.com/policies" target="_blank">https://openai.com/policies</a>.
+
+{% include ask-ai.md %}
 
 <br />
 
@@ -210,7 +210,7 @@ Be sure to click **Test checks** to validate that the SodaCL syntax you have wri
 
 For help writing your first checks:
 * browse the library of **SodaCL snippets** that insert correctly-formatted syntax for the most commonly-used checks for basic data quality
-* use **Ask SodaGPT**, a generative AI assistant that turns natural-language requests into production-ready SodaCL checks. [Read more]({% link soda-cloud/sodagpt.md %})
+* use **Ask AI**, a generative AI assistant that turns natural-language requests into production-ready SodaCL checks. [Read more]({% link soda-cloud/sodagpt.md %})
 * consider following the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}), including the [Tips and best practices]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) section
 * refer to [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for exhaustive details on every type of metric and check
 

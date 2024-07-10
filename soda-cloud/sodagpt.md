@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Write checks with SodaGPT
-description: Use SodaGPT to turn natural language into production-ready data quality checks in SodaCL.
+title: Write checks with Ask AI
+description: Use Soda's Ask AI assistant to turn natural language into production-ready data quality checks in SodaCL.
 parent: Write SodaCL checks
 ---
 
-# Write checks with SodaGPT <br/>
-*Last modified on {% last_modified_at %}* <br />
-![preview](/assets/images/preview.png){:height="85px" width="85px"}<br/>
+# Write checks with Ask AI <br/>
+*Last modified on {% last_modified_at %}* 
 
-**SodaGPT** is a generative AI assistant for data quality testing.
+**Ask AI** is an in-product generative AI assistant for data quality testing. <br />
+Ask AI replaces SodaGPT, the original implementation of a generative AI assistant.
 
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
@@ -17,43 +17,29 @@ parent: Write SodaCL checks
 <small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
 <br />
 
-<a href="https://cloud.soda.io/login" target="_blank">Log in</a> to your **Soda Cloud** account, click the **Ask SodaGPT** button in the main nav, then provide natural language instructions to the interface to receive fully-formed, syntax-correct checks in the [Soda Checks Language (SodaCL)]({% link soda-cl/metrics-and-checks.md %}). If you do not already have an account, <a href="https://cloud.soda.io/signup" target="_blank">sign up for Soda Cloud</a> for a 45-day free trial.
+<a href="https://cloud.soda.io/login" target="_blank">Log in</a> to your **Soda Cloud** account, click the **Ask AI** button in the main nav, then provide natural language instructions to the interface to:
+* get answers to questions about how to configure or use Soda 
+* receive fully-formed, syntax-correct checks in the [Soda Checks Language (SodaCL)]({% link soda-cl/metrics-and-checks.md %})
+* obtain advice about how to resolve an error while using Soda
 
-Use the generated checks to test data quality in your data pipeline or in your development workflow to prevent data quality issues from causing downstream impact.
-
-![sodagpt](/assets/images/sodagpt.png){:height="500px" width="500px"}
-
-## Instruction parameters
-
-Log in to your **Soda Cloud** account, click the **Ask SodaGPT** button in the main nav, then provide natural language instructions to the interface to receive fully-formed, syntax-correct checks in the Soda Checks Language (SodaCL).
-
-* Provide instructions in English.
-* SodaGPT is capable of writing one data quality check at a time.
-* SodaGPT **only** outputs SodaCL.
-* SodaGPT **exclusively supports the `fail` condition**; it does not yet support the `warn`.
-* Provide the following information in your instruction for best results:
-    * the name of your dataset
-    * the name of at least one column in that dataset
-* SodaGPT is **exclusively capable** of writing the following types of SodaCL checks:
-    * [missing]({% link soda-cl/missing-metrics.md %})
-    * [validity]({% link soda-cl/validity-metrics.md %})
-    * [freshness]({% link soda-cl/freshness.md %})
-    * [duplicate]({% link soda/quick-start-sodacl.md %}#duplicate-check)
-    * [anomaly detection]({% link soda-cl/anomaly-detection.md %})
-    * [schema]({% link soda-cl/schema.md %})
-    * all [numeric]({% link soda-cl/numeric-metrics.md %}) (`avg`, `sum`, `max`, etc.)
-    * [group by]({% link soda-cl/group-by.md %})
-    * [group evolution]({% link soda-cl/group-evolution.md %})
-* SodaGPT does not retain a history of interactions, so it cannot reference a previously-asked question or response.
+If you do not already have an account, <a href="https://cloud.soda.io/signup" target="_blank">sign up for Soda Cloud</a> for a 45-day free trial.
 
 
-## About the AI
+<details>
+    <summary style="color:#00BC7E">Can't see the Ask AI button?</summary>
+    <br />
+    If you are an existing Soda customer, you must accept Soda's revised terms and conditions for service that includes the use of third-party tools that facilitate generative AI capabilites. Reply to Soda's Terms & Conditions email to accept the revisions, or contact <a href="mailto:support@soda.io">Soda Support</a> to arrange acceptance and enable the feature.<br /><br />
+    If you have accepted the revised terms and conditions but still cannot see the Ask AI button, as an Admin user, navigate to <strong>your avatar</strong> > <strong>Organization Settings</strong>, then check the box to <strong>Enable Ask AI powered by Kapa</strong>.<br />
+    <br />
+    <img src="/assets/images/enable-ask-ai.png" width="450">
+</details>
 
-SodaGPT uses Soda technology to translate natural language requirements into SodaCL checks. It is not related to GPT3, GPT4, chatGPT or OpenAI. 
+![sodagpt](/assets/images/ask-ai2.png){:height="600px" width="600px"}
 
-For SodaGPT's functionality, Soda trained a very specialized Large Language Model (LLM) based on the open-source Falcon-7b model. The model currently does not learn from user input, and will never learn sensitive information from one user and expose it to another.
+## About Ask AI
 
-SodaGPT only accepts the instructions you input in the chat; it does not collect or store any other data. Soda does not send the input to third parties. 
+{% include ask-ai.md %}
+ 
 
 ## Go further
 

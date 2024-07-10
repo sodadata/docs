@@ -40,7 +40,7 @@ profile columns:
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + self-hosted Soda Agent connected to any <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soda-supported data source, except Spark, and Dask and Pandas</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda-hosted Agent connected to a BigQuery, Databricks SQL, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake data source</small><br />
-<small>✖️ &nbsp;&nbsp; Supported by SodaGPT</small><br />
+
 <br />
 
 [Add dataset discovery](#add-dataset-discovery) <br />
