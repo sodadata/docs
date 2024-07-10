@@ -15,7 +15,7 @@ Integrate Soda with Alation to access details about the quality of your data fro
 * Run data quality checks using Soda and visualize quality metrics and rules within the context of a data source, dataset, or column in Alation.
 * Use Soda Cloud to flag poor-quality data in lineage diagrams and during live querying.
 * Give your Alation users the confidence of knowing that the data they are using is sound.
-* 🎥 Watch a <a href="https://vimeo.com/829042977/fed022bd3d" target="_blank">2-minute overview</a> showcasing the integration of Soda and Alation.
+* 🎥 Watch a <a href="https://vimeo.com/563765014" target="_blank">5-minute overview</a> showcasing the integration of Soda and Alation.
 
 ![alation-integration](/assets/images/alation-integration.png){:height="600px" width="600px"}
 <br />
