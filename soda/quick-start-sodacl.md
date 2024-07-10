@@ -18,7 +18,6 @@ Alternatively, use the [Check suggestions]({% link soda-library/check-suggestion
 <small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
-<small>✔️ &nbsp;&nbsp; Some checks supported by SodaGPT</small><br />
 <small>✔️ &nbsp;&nbsp; Some available as no-code checks</small>
 <br /><br />
 

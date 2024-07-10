@@ -231,7 +231,7 @@ If you are done with the example data, you can delete it from your account to st
 ## Go further
 
 * Get inspired on how to set up Soda to meet your [use case needs]({% link soda/use-case-guides.md %}).
-* Use [check suggestions]({% link soda-library/check-suggestions.md %}) or [SodaGPT]({% link soda-cloud/sodagpt.md %}) to quickly get off the ground with basic checks for data quality.
+* Use [check suggestions]({% link soda-library/check-suggestions.md %}) or [Ask AI]]({% link soda-cloud/sodagpt.md %}) to quickly get off the ground with basic checks for data quality.
 * Learn [how to start]({% link soda/quick-start-sodacl.md %}) writing SodaCL checks.
 * Read more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Learn more about [How Soda works]({% link soda-library/how-library-works.md %}).
