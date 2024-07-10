@@ -15,6 +15,14 @@ Use Soda Library to ingest the results of your dbt tests and push them to Soda C
 * setting up alert notifications for your team when dbt tests fail
 * creating and tracking data quality incidents
 
+<br />
+
+<small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud + Self-hosted Soda Agent</small><br />
+<small>✖️ &nbsp;&nbsp; Supported in Soda Cloud + Soda-hosted Agent</small><br />
+<br />
 
 [Prerequisites](#prerequisites)<br />
 [Videos](#videos)<br />
@@ -74,6 +82,8 @@ Run `soda ingest --help` to review a list of all command options.
 ## Ingest results from dbt Cloud into Soda Cloud
 
 Every run that is part of a <a href="https://docs.getdbt.com/docs/dbt-cloud/cloud-quickstart#create-a-new-job" target="_blank">Job on dbt Cloud</a> generates metadata about your dbt project as well as the results from the run. Use Soda Library to get this data directly from the dbt Cloud API.
+
+Note that you must use Soda Library to run the CLI command to ingest dbt test results into Soda Cloud from dbt cloud. You cannot configure the connection to dbt Cloud from within the Soda Cloud user interface, as with a new data source, for example.
 
 1. If you have not already done so, install the `soda-dbt` sub-package in the Python environment that also runs you Soda Library package by running the following command.
 ```
