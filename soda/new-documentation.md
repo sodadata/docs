@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### July 10
+* Revised SodaGPT documentation to replace it with details about [Ask AI]({% link soda-cloud/sodagpt.md %}), Soda's in-product generative AI assistant.
+
 #### July 8, 2024
 * Documented the new functionality that enables Admin users in Soda Cloud to [create user groups]({% link soda-cloud/roles-and-rights.md %}#create-custom-user-groups). 
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.10.
