@@ -9,7 +9,10 @@ parent: Learning resources
 
 <br /> 
 
-#### July 10
+#### July 15, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.15.
+
+#### July 10, 2024
 * Revised SodaGPT documentation to replace it with details about [Ask AI]({% link soda-cloud/sodagpt.md %}), Soda's in-product generative AI assistant.
 
 #### July 8, 2024
