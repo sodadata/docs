@@ -12,6 +12,9 @@ parent: Learning resources
 #### July 25, 2024
 * Documented instructions for how to add one-way [user group synchronization]({% link soda-cloud/sso.md %}#sync-user-groups-from-okta-or-azure-ad) from an SSO IdP to Soda Cloud. 
 
+#### July 16, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.16 and Soda Agent 1.1.19.
+
 #### July 15, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.15.
 
