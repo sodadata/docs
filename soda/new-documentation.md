@@ -11,6 +11,8 @@ parent: Learning resources
 
 #### July 17, 2024
 * The preview program for anomaly dashboards for observability has reached its quota. Removed "Request preview access" links from documentation.
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.17 and Soda Core 3.3.11.
+* Corrected [Missing metrics]({% link soda-cl/missing-metrics.md %}#list-of-missing-metrics) and [Validity metrics]({% link soda-cl/validity-metrics.md %}#list-of-validity-metrics) to indicate that column config keys that use regex are supported only for text data types.
 
 #### July 16, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.16 and Soda Agent 1.1.19.
