@@ -10,7 +10,7 @@ parent: Run scans and view results
 ![preview](/assets/images/preview.png){:height="90px" width="90px"} <br />
 *Last modified on {% last_modified_at %}*
 
-Use Soda's **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. <a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a>
+Use Soda's **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. 
 
 ![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
 
@@ -45,26 +45,28 @@ After establishing these patterns, Soda automatically detects anomalies relative
 
 ## Set up anomaly dashboards
 
+![preview](/assets/images/preview.png){:height="90px" width="90px"} <br />
+*For preview particpants, only* 
+
 Activate an anomaly dashboard to one or more datasets by configuring profiling for a new data source in Soda Cloud. Refer to the [Get started]({% link soda-agent/managed-agent.md %}#add-a-new-data-source) documentation for full data source onboarding instructions. 
 
-1. <a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a> to the anomaly dashboards feature.
-2. To activate anomaly dashboards, you must use a self-hosted or Soda-hosted agent to connect to your data sources. <br />If you already use a self-hosted Soda agent, [upgrade the agent]({% link soda/upgrade.md %}#upgrade-a-self-hosted-soda-agent) to version 1.1.2 or greater. <br />If you do not already have an active Soda agent in your Soda Cloud account:
+1. To activate anomaly dashboards, you must use a self-hosted or Soda-hosted agent to connect to your data sources. <br />If you already use a self-hosted Soda agent, [upgrade the agent]({% link soda/upgrade.md %}#upgrade-a-self-hosted-soda-agent) to version 1.1.2 or greater. <br />If you do not already have an active Soda agent in your Soda Cloud account:
 * navigate to **your avatar** > **Organization Settings** to validate that the checkbox for **Enable Soda-hosted Agent** is checked <br />OR<br />
 * follow the instructions to [deploy self-hosted agent]({% link soda-agent/deploy.md %}) in Kubernetes cluster in your cloud services environment
-3. You can activate anomaly dashboards on existing data sources or on new ones you add via a Soda agent. 
+2. You can activate anomaly dashboards on existing data sources or on new ones you add via a Soda agent. 
 * For existing data sources, follow [the procedure](#activate-an-anomaly-dashboard-to-an-existing-dataset) to activate an anomaly dashboard to an existing dataset.
 * For a new data source, navigate to **your avatar** > **Data Sources**, then click **Add New** to begin the guided data source onboarding workflow. 
-4. In the editing panel of **4. Profile**, use the include and exclude syntax to indicate the datasets for which Soda must profile and prepare an anomaly dashboard. The default syntax in the editing panel instructs Soda to profile every column of every dataset in the data source, and, superfluously, all datasets with names that begin with prod. The `%` is a wildcard character. See [Add column profiling]({% link soda-cl/profile.md %}#add-column-profiling) for more detail on profiling syntax.
+3. In the editing panel of **4. Profile**, use the include and exclude syntax to indicate the datasets for which Soda must profile and prepare an anomaly dashboard. The default syntax in the editing panel instructs Soda to profile every column of every dataset in the data source, and, superfluously, all datasets with names that begin with prod. The `%` is a wildcard character. See [Add column profiling]({% link soda-cl/profile.md %}#add-column-profiling) for more detail on profiling syntax.
     ```yaml
     profile columns:
       columns:
         - "%.%"  # Includes all your datasets
         - prod%  # Includes all datasets that begin with 'prod'
     ```
-5. Continue the remaining steps to add your new data source, then **Test Connection**, if you wish, and **Save** the data source configuration. Soda begins profiling the datasets according to your **Profile** configuration while the algorithm uses the first measurements collected from a scan of your data to begin the work of identifying patterns in the data. 
-6. After approximately five days, during which Soda's machine learning studies your data, you can navigate to the **Dataset** page for a dataset you included in profiling. Click the **Anomalies** tab to view the issues Soda automatically detected.
-7. (Optional) Consider setting up a notification for any of the automated anomaly detection checks in the dashboard; see [Add anomaly notification](#add-anomaly-notifications).
-8. (Optional) If you wish, you can adjust the time of day that the daily anomaly detection scan definition runs to collect its measurements. To do so, navigate to the **Scans** dashboard, then, for the scan definition that runs daily for your anomaly dashboard updates, click the stacked dots at right and select **Edit Scan Definition**. Adjust the time of day as you wish, then **Save**.
+4. Continue the remaining steps to add your new data source, then **Test Connection**, if you wish, and **Save** the data source configuration. Soda begins profiling the datasets according to your **Profile** configuration while the algorithm uses the first measurements collected from a scan of your data to begin the work of identifying patterns in the data. 
+5. After approximately five days, during which Soda's machine learning studies your data, you can navigate to the **Dataset** page for a dataset you included in profiling. Click the **Anomalies** tab to view the issues Soda automatically detected.
+6. (Optional) Consider setting up a notification for any of the automated anomaly detection checks in the dashboard; see [Add anomaly notification](#add-anomaly-notifications).
+7. (Optional) If you wish, you can adjust the time of day that the daily anomaly detection scan definition runs to collect its measurements. To do so, navigate to the **Scans** dashboard, then, for the scan definition that runs daily for your anomaly dashboard updates, click the stacked dots at right and select **Edit Scan Definition**. Adjust the time of day as you wish, then **Save**.
 
 
 ### Activate an anomaly dashboard to an existing dataset
