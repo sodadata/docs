@@ -26,8 +26,8 @@ checks for dim_customer:
       valid min: 1
   - invalid_percent(marital_status) = 0:
       valid min length: 1
-  - invalid_percent(birthday) < 5%:
-      valid regex: (0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)
+  - invalid_percent(last_name) < 5%:
+      invalid regex: (?:XX)
   - invalid_count(house_owner_flag) = 0:
       valid values: [0, 1]
 ```
@@ -130,14 +130,14 @@ The example below defines two checks. The first check applies to the column `hou
 * Values in a list must be enclosed in square brackets.
 * *Known issue:*  Do not wrap numeric values in single quotes if you are scanning data in a BigQuery data source. 
 
-The second check uses a regular expression to define what qualifies as a valid value in the `birthday` column so that any values that do *not* match the pattern defined by the regex qualify as invalid. 
+The second check uses a regular expression to define what qualifies as an invalid value in the `last_name` column so that any values that match the pattern defined by the regex qualify as invalid. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - invalid_count(house_owner_flag) = 0:
       valid values: [0, 1]
-  - invalid_count(birthday) = 0:
-      valid regex: ^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$
+  - invalid_count(last_name) = 0:
+      invalid regex: (?:XX)
 ```
 
 First check:
@@ -152,11 +152,11 @@ First check:
 Second check:
 
 | metric | `invalid_count` |
-| argument | `birthday` |
+| argument | `last_name` |
 | comparison symbol or phrase| `=` |
 | threshold | `0` | 
-| configuration key | `valid regex` |
-| configuration value(s) | `(0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)` |
+| configuration key | `invalid regex` |
+| configuration value(s) | `(?:XX)` |
 
 <br />
 
@@ -328,10 +328,32 @@ checks for CUSTOMERS [daily]:
 
 ## List of validity metrics
 
-| Metric  | Column config keys | Description | Supported data type |  
-| ------  | ------------------ | ----------- |---------------------| 
-| `invalid_count` | `invalid format`<br /> `invalid regex`<br /> `invalid values`<br />`valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values` | The number of<br /> rows in a<br /> column that<br /> contain values<br /> that are not valid. | number,<br />  text,<br />  time |
-| `invalid_percent` | `invalid format`<br /> `invalid regex`<br /> `invalid values`<br /> `valid format` <br /> `valid length` <br /> `valid max`<br /> `valid max length`<br /> `valid min` <br /> `valid min length`<br /> `valid regex` <br /> `valid values`| The percentage <br />of rows in a <br />column, relative to the total <br />row count, that <br />contain values <br />that are not <br />valid. | number,<br /> text,<br />  time |  
+<table>
+    <th>Metric</th>
+    <th>Column config keys</th>
+    <th>Description</th>
+    <th>Supported data types</th>
+    <tr>
+        <td rowspan="2"><code>invalid_count</code> </td>
+        <td><code>invalid format</code><br />  <code>invalid values</code><br /><code>valid format</code> <br /> <code>valid length</code> <br /> <code>valid max</code><br /> <code>valid max length</code><br /> <code>valid min</code> <br /> <code>valid min length</code><br />  <code>valid values</code></td>
+        <td rowspan="2">The number of rows in a<br /> column that contain<br /> values that are not valid.</td>
+        <td>number<br />  text<br />  time </td>
+    </tr>
+    <tr>
+        <td style="border-left: 1px solid #DCE0E0;"><code>invalid regex</code><br /> <code>valid regex</code></td>
+        <td>text </td>
+    </tr>
+        <tr>
+        <td rowspan="2"><code>invalid_percent</code> </td>
+        <td><code>invalid format</code><br />  <code>invalid values</code><br /><code>valid format</code> <br /> <code>valid length</code> <br /> <code>valid max</code><br /> <code>valid max length</code><br /> <code>valid min</code> <br /> <code>valid min length</code><br />  <code>valid values</code></td>
+        <td rowspan="2">The percentage of rows<br /> in a column, relative to<br /> the total row count, that <br />contain values that <br />are not valid.</td>
+        <td>number<br />  text<br />  time </td>
+    </tr>
+    <tr>
+        <td style="border-left: 1px solid #DCE0E0;"><code>invalid regex</code><br /> <code>valid regex</code></td>
+        <td>text </td>
+    </tr>
+</table> 
 
 
 ## List of configuration keys

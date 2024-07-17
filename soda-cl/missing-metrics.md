@@ -16,8 +16,8 @@ Use a missing metric in a check to surface missing values in the data in your da
 checks for dim_customer
   - missing_count(birthday) = 0
   - missing_percent(gender) < 5%
-  - missing_count(birthday) = 0:
-      missing regex: (0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)
+  - missing_count(first_name) = 0:
+      missing regex: (?:N/A)
   - missing_count(last_name) < 5:
       missing values: [n/a, NA, none]
   - missing_percent(email_address) = 0%
@@ -107,14 +107,14 @@ The example below defines two checks. The first check applies to the column `las
 * Values in a list must be enclosed in square brackets.
 * *Known issue:* Do not wrap numeric values in single quotes if you are scanning data in a BigQuery data source. 
 
-The second check uses a regular expression to define what qualifies as a missing value in the `birthday` column so that any values that are `00/00/0000` qualify as missing. This check passes if Soda discovers no values that match the pattern defined by the regex.
+The second check uses a regular expression to define what qualifies as a missing value in the `first_name` column so that any values that are `N/A` qualify as missing. This check passes if Soda discovers no values that match the pattern defined by the regex.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
   - missing_count(last_name) < 5:
       missing values: [NA, n/a, 0]
-  - missing_count(birthday) = 0:
-      missing regex: (0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)
+  - missing_count(first_name) = 0:
+      missing regex: (?:N/A)
 ```
 
 First check:
@@ -129,11 +129,11 @@ First check:
 Second check:
 
 | metric | `missing_count` |
-| argument | `birthday` |
+| argument | `first_name` |
 | comparison symbol or phrase| `=` |
 | threshold | `0` | 
 | configuration key | `missing regex` |
-| configuration value(s) | `(0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)` |
+| configuration value(s) | `(?:N/A)` |
 
 <br />
 
@@ -196,9 +196,9 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
-  - missing_count(birthday) = 0:
-      missing regex: (0?[0-9]|1[012])[/](0?[0-9]|[12][0-9]|3[01])[/](0000|(19|20)?\d\d)
-      name: Date entered as 00/00/0000
+  - missing_count(first_name) = 0:
+      missing regex: (?:N/A)
+      name: First names valid
 ```
 
 #### Example with alert configuration
@@ -252,10 +252,32 @@ checks for CUSTOMERS [daily]:
 
 ## List of missing metrics
 
-| Metric | Column config keys | Description | Supported data type |
-| ------ | ------------------ | ----------- | ------------------- | 
-| `missing_count` | `missing regex` <br /> `missing values` | The number of rows in a column that contain NULL values and any other user-defined values that qualify as missing. | number, text, time |  
-| `missing_percent` | `missing regex` <br /> `missing values` | The percentage of rows in a column, relative to the total row count, that contain NULL values and any other user-defined values that qualify as missing. | number, text, time | 
+<table>
+    <th>Metric</th>
+    <th>Column config keys</th>
+    <th>Description</th>
+    <th>Supported data types</th>
+    <tr>
+        <td rowspan="2"><code>missing_count</code> </td>
+        <td><code>missing values</code></td>
+        <td rowspan="2">The number of rows in a column that contain NULL values and any other user-defined values that qualify as missing.</td>
+        <td>number<br />  text<br />  time </td>
+    </tr>
+    <tr>
+        <td style="border-left: 1px solid #DCE0E0;"><code>missing regex</code></td>
+        <td>text </td>
+    </tr>
+        <tr>
+        <td rowspan="2"><code>missing_percent</code> </td>
+        <td><code>missing values</code></td>
+        <td rowspan="2">The percentage of rows in a column, relative to the total row count, that contain NULL values and any other user-defined values that qualify as missing.</td>
+        <td>number<br />  text<br />  time </td>
+    </tr>
+    <tr>
+        <td style="border-left: 1px solid #DCE0E0;"><code>missing regex</code></td>
+        <td>text </td>
+    </tr>
+</table> 
 
 
 ## List of configuration keys
