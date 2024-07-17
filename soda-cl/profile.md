@@ -141,15 +141,16 @@ In the **Columns** tab, you can see column profile information including details
 
 ![profile-columns2](/assets/images/profile-columns2.png){:height="700px" width="700px"}
 
-In the **Anomalies** tab, you can access an out-of-the-box anomaly dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorithm learns over the course of approximately five days. <br />
-[Learn more]({% link soda-cloud/anomaly-dashboard.md %}) <br />
-<a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a>
-
+In the **Anomalies** tab, you can access an out-of-the-box anomaly dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorithm learns over the course of approximately five days. [Learn more]({% link soda-cloud/anomaly-dashboard.md %}) <br /> <br />
+![preview](/assets/images/preview.png){:height="75px" width="75px"} <br />
 ![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
 
 ### Add column profiling configuration
 
-In Soda Cloud, you add column profiling as part of the guided workflow to create a new data source. Navigate to **your avatar** > **Data Sources** > **New Data Source** to begin. If you have already added a data source to your Soda Cloud account via a self-hosted or Soda-hosted agent and wish to activate an anomaly dashboard for one or more datasets, <a href="https://go.soda.io/join-observability-preview" target="_blank">request preview access</a>, then refer to the [activation instructions]({% link soda-cloud/anomaly-dashboard.md %}#add-an-anomaly-dashboard-to-an-existing-dataset). 
+In Soda Cloud, you add column profiling as part of the guided workflow to create a new data source. Navigate to **your avatar** > **Data Sources** > **New Data Source** to begin. 
+
+*For preview participants, only* <br />
+If you have already added a data source to your Soda Cloud account via a self-hosted or Soda-hosted agent and wish to activate an anomaly dashboard for one or more datasets, refer to the [activation instructions]({% link soda-cloud/anomaly-dashboard.md %}#add-an-anomaly-dashboard-to-an-existing-dataset). 
 
 If you are using a self-operated deployment model that leverages Soda Library, add the column profiling configuration outlined below to your checks YAML file.
 
