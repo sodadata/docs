@@ -24,13 +24,13 @@ data_source my_datasource_name:
   database: customers
 ```
 
-| Property | Required | Notes                                                      |
-| -------- | -------- | ---------------------------------------------------------- |
-| type     | required | Identify the type of data source for Soda.                 |
-| host     | required | Provide a host identifier.                                 |
-| username | required | Use system variables to retrieve this value securely.      |
-| password | required | Use system variables to retrieve this value securely.      |
-| database | required | Provide an identifier for your database.                   |
+| Property              | Required | Notes                                                      |
+| --------------------- | -------- | ---------------------------------------------------------- |
+| type                  | required | Identify the type of data source for Soda.                 |
+| host                  | required | Provide a host identifier.                                 |
+| username              | required | Use system variables to retrieve this value securely.      |
+| password              | required | Use system variables to retrieve this value securely.      |
+| database              | required | Provide an identifier for your database.                   |
 
 
 {% include test-connection.md %}

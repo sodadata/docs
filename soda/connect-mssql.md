@@ -28,6 +28,8 @@ data_source my_datasource_name:
   encrypt: false 
   trust_server_certificate: false
   driver: ODBC Driver 18 for SQL Server
+  connection_parameters:
+    multi_subnet_failover: true
 ```
 
 | Property | Required | Notes                                                      |
@@ -43,6 +45,7 @@ data_source my_datasource_name:
 | encrypt   | optional | Indicate the encryption status by providing a boolean value: `true` or `false`.  The default value is `false`. |
 | trust_server_certificate | optional | Specifies whether encryption occurs if there is no verifiable server certificate. Providing a boolean value: `true` or `false`.  The default value is `false`.  |
 | driver    | optional | Use this config setting to specify the ODBC driver version you use. For example, `SQL Server Native Client 11.0` or `ODBC Driver 18 for SQL Server`. |
+| `multi_subnet_failover` | optional | Enable MultiSubnetFailover; see <a href="https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/sql/sqlclient-support-for-high-availability-disaster-recovery#connecting-with-multisubnetfailover" target="_blank">MS documentation</a>.
 
 {% include test-connection.md %}
 

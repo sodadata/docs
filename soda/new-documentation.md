@@ -9,6 +9,12 @@ parent: Learning resources
 
 <br /> 
 
+#### July 28, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agnet 1.1.20 and Soda Core 3.3.12.
+* Added `host` and `port` as optional connection configuration parameters for [Snowflake]({% link soda/connect-snowflake.md %}).
+* Added an optional `multi_subnet_failover` parameter to the connection configuration for [MS SQL]({% link soda/connect-mssql.md %}).
+* Added an optional `sslmode` parameter to the connection configurations for [PostgreSQL]({% link soda/connect-postgres.md %}) and [Denodo]({% link soda/connect-denodo.md %}).
+
 #### July 17, 2024
 * The preview program for anomaly dashboards for observability has reached its quota. Removed "Request preview access" links from documentation.
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.17 and Soda Core 3.3.11.

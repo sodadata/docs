@@ -26,6 +26,8 @@ Install package: `soda-snowflake`
 ```yaml
 data_source my_datasource_name:
   type: snowflake
+  host: localhost
+  port: 5432
   username: ${SNOWFLAKE_USER}
   password: ${SNOWFLAKE_PASSWORD}
   account: ${SNOWFLAKE_ACCOUNT}
@@ -44,6 +46,8 @@ data_source my_datasource_name:
 | Property | Required | Notes |
 | -------- | -------- | ----- |
 | type     | required | Identify the type of data source for Soda.|
+| host     | optional | Provide host at which to connect to the data source. |
+| port     | optional | Provide the port through which to connect to the data source. |
 | username | required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_USER}`. |
 | password | required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_PASSWORD}`. |
 | account| required | Provide the unique value that identifies your account. Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`. Note: Account sometimes needs to take the form of `<account_identifier>.<region>`. |
