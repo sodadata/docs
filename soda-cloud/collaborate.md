@@ -42,6 +42,8 @@ Customize your dashboard by adding filters to distill the data the dashboard dis
 
 ## Activate anomaly dashboards
 ![preview](/assets/images/preview.png){:height="75px" width="75px"} <br />
+*For preview participants, only*
+
 <small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
@@ -52,7 +54,6 @@ To automatically build an **anomaly dashboard** for one or more dataset in a dat
 
 During the following five or more days, Soda's machine learning algorithm gathers measurements that allow it to recognize patterns in your data. When it has gathered enough information to reliably discern patterns, it automatically begin detecting anomalies in your data relative to the patterns. In the **Anomalies** tab of a dataset, you can access an anomaly dashboard displays the results of multiple automated anomaly detection checks that Soda calibrated to your data. 
 
-<a href="https://go.soda.io/join-observability-preview" target="_blank">Request preview access</a>, then access [full instructions]({% link soda-cloud/anomaly-dashboard.md %}) to activate anomaly dashboards for your datasets.<br /> 
 ![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
 
 ## Integrate with Slack

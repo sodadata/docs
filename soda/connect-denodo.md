@@ -22,6 +22,7 @@ data_source my_datasource_name:
   password: simple_pass
   host: 127.0.0.1
   port: 5432 
+  sslmode: prefer
 ```
 
 | Property | Required | Notes                                                      |
