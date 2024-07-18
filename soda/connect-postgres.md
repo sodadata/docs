@@ -24,10 +24,11 @@ data_source my_datasource_name:
   password: secret
   database: postgres
   schema: public
+  sslmode: prefer
 ```
 
-| Property | Required | Notes                                                      |
-| -------- | -------- | ---------------------------------------------------------- |
+| Property  | Required  | Notes                                                      |
+| --------- | --------- | ---------------------------------------------------------- |
 | type      | required  | Identify the type of data source for Soda.               |
 | host      | required  | Provide a host identifier.                               |
 | port      | required  | Provide a port identifier.                               |
@@ -35,7 +36,7 @@ data_source my_datasource_name:
 | password  | required  | Consider using system variables to retrieve this value securely. |
 | database  | required  | Provide an identifier for your database.                 |
 | schema    | optional  | Provide an identifier for the schema in which your dataset exists.|
-
+| sslmode   | optional  | Provide a value to indicate the type of SSL support: <br />`prefer`<br /> `require`<br /> `allow`<br /> `diable`<br /> Default value is `prefer`. |
 
 {% include test-connection.md %}
 
