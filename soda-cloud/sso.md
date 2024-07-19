@@ -14,7 +14,7 @@ Once added, employees of the organization can gain authorized and authenticated 
 
 * grant their internal users' access to Soda Cloud from within their existing SSO solution
 * revoke their internal users' access to Soda Cloud from within their existing SSO solution if a user leaves their organization or no longer requires access to Soda Cloud
-* set up one-way user group syncing from their IdP into Soda Cloud (for Azure Active Directory and Okta, only)
+* set up one-way user group syncing from their IdP into Soda Cloud (tested and documented for Azure Active Directory and Okta)
 
 Soda Cloud is able to act as a service provider for any SAML 2.0 SSO identity provider. In particular, Soda has tested and has written instructions for setting up SSO access with the following identity providers: 
 
@@ -36,7 +36,7 @@ When an organization's IT Admin revokes a user's access to Soda Cloud through th
 
 Once your organization enables SSO for all Soda Cloud users, Soda Cloud blocks all non-SSO login attempts and password changes via <a href="https://cloud.soda.io/login" target="_blank">cloud.soda.io/login<a/>. If an employee attempts a non-SSO login or attempts to change a password using "Forgot password?" on <a href="https://cloud.soda.io/login" target="_blank">cloud.soda.io/login<a/>, Soda Cloud presents a message that explains that they must log in or change their password using their SSO provider. 
 
-Optionally, you can set up the SSO integration Soda to include a one-way sync of user groups from Okta or Azure AD into Soda Cloud which synchronizes with each user login to Soda via SSO. [Read more](#sync-user-groups-from-okta-or-azure-ad).
+Optionally, you can set up the SSO integration Soda to include a one-way sync of user groups from your IdP into Soda Cloud which synchronizes with each user login to Soda via SSO. [Read more](#sync-user-groups-from-okta-or-azure-ad).
 
 Soda Cloud supports both **Identity Provider Initiated (IdP-initiated)**, and **Service Provider Initiated (SP-initiated)** single sign-on integrations. Be sure to indicate which type of SSO your organization uses when setting it up with the Soda Support team.
 
@@ -59,7 +59,7 @@ Soda Cloud supports both **Identity Provider Initiated (IdP-initiated)**, and **
 * **Reply URL**, which is the value of `samlUrl` from step 1.
 8. Click **Save**, then close the confirmation message pop-up.
 9. In the **User Attributes & Claims** panel, click **Edit** to add some attribute mappings.
-10. Configure the claims as per the following example. Soda Cloud uses `familyname` and `givenname`, and maps `emailaddress` to `user.userprincipalname`. <br />(Optional) Follow the additional steps to enable one-way user group syncing to your SSO configuration; see [Sync user groups from Okta or Azure AD](#sync-user-groups-from-okta-or-azure-ad).
+10. Configure the claims as per the following example. Soda Cloud uses `familyname` and `givenname`, and maps `emailaddress` to `user.userprincipalname`. <br />(Optional) Follow the additional steps to enable one-way user group syncing to your SSO configuration; see [Set up user group sync in Azure AD](#set-up-user-group-sync-in-azure-ad)).
 <br />
 <br />
 ![additional-claims](/assets/images/additional-claims.png){:height="650px" width="650px"}
@@ -71,7 +71,7 @@ Soda Cloud supports both **Identity Provider Initiated (IdP-initiated)**, and **
 * **X.509 Certificate**. Click the **Download** link next to **Certificate (Base64)**.
 12. Email the copied and downloaded values to <a href="mailto:support@soda.io">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion. 
 * Soda Cloud supports both Identity Provider Initiated (IdP-initiated), and Service Provider Initiated (SP-initiated) single sign-on integrations; be sure to indicate which type of SSO your organization uses.
-* (Optional) Ask Soda to enable one-way user group syncing to your SSO configuration; see [Sync user groups from Okta or Azure AD](#sync-user-groups-from-okta-or-azure-ad).
+* (Optional) Ask Soda to enable one-way user group syncing to your SSO configuration; see [Set up user group sync in Azure AD](#set-up-user-group-sync-in-azure-ad).
 13. Test the integration by assigning the Soda application in Azure AD to a single user, then requesting that they log in.
 14. After a successful single-user test of the sign in, assign access to the Soda Azure AD app to users and/or user groups in your organization.
 
@@ -89,7 +89,7 @@ The values for these fields are unique to your organization and are provided to 
 7. Scroll down to **Attribute Statements** to map the following values, then click **Next** to continue.
 * map `User.GivenName` to `user.firstName`
 * map `User.FamilyName`to `user.lastName`. 
-* (Optional) Follow the additional steps to enable one-way user group syncing to your SSO configuration; see [Sync user groups from Okta or Azure AD](#sync-user-groups-from-okta-or-azure-ad).
+* (Optional) Follow the additional steps to enable one-way user group syncing to your SSO configuration; [Set up user group sync in Okta](#set-up-user-group-sync-in-okta).
 8. Select the following options, then click **Finish**.
 * I'm an Okta customer adding an internal app.
 * This is an internal app that we have created. <br />
@@ -100,7 +100,7 @@ The values for these fields are unique to your organization and are provided to 
 * **X.509 Certificate**
 11. Email the copied and downloaded values to <a href="mailto:support@soda.io">support@soda.io</a>. With those values, Soda completes the SSO configuration for your organization in cloud.soda.io and notifies you of completion. 
 * Soda Cloud supports both Identity Provider Initiated (IdP-initiated), and Service Provider Initiated (SP-initiated) single sign-on integrations; be sure to indicate which type of SSO your organization uses.
-* (Optional) Ask Soda to enable one-way user group syncing to your SSO configuration; see [Sync user groups from Okta or Azure AD](#sync-user-groups-from-okta-or-azure-ad).
+* (Optional) Ask Soda to enable one-way user group syncing to your SSO configuration; see [Set up user group sync in Okta](#set-up-user-group-sync-in-okta).
 12. Test the integration by assigning the Soda application in Okta to a single user, then requesting that they log in.
 13. After a successful single-user test of the sign in, assign access to the Soda Okta app to users and/or user groups in your organization.
 
@@ -122,13 +122,13 @@ The values for these fields are unique to your organization and are provided to 
 7. In the Google Workspace admin portal, use Google's instructions to <a href="https://support.google.com/a/answer/6087519?hl=en&ref_topic=7559288" target="_blank">Turn on your SAML app</a> and verify that SSO works with the new custom app for Soda.
 
 
-## Sync user groups from Okta or Azure AD
+## Sync user groups from an IdP
 
 If you wish, you can choose to regularly one-way sync the user groups you have defined in your IdP into Soda Cloud. 
 
 Doing so obviates the need to manually create user groups in Soda Cloud that you have already defined in your IdP, and enables your team to select an IdP-managed user groups when assigning ownership access permissions to a resource, in addition to any user groups you may have created manually in Soda Cloud. See: [Create custom user groups]({% link soda-cloud/roles-and-rights.md %}#create-custom-user-groups)
 
-* One-way syncing of user groups with Soda Cloud is only available for Okta and Azure Active Directory.
+* Soda has tested and documented one-way syncing of user groups with Soda Cloud for Okta and Azure Active Directory. <a href="https://community.soda.io/slack" target="_blank"> Contact Soda</a> to request tested and documented support for other IdPs.
 * Soda synchronizes user groups with the IdP every time a user in your organization logs in to Soda via SSO. Soda updates the user's group membership according to the IdP user groups to which they belong at each log in.
 * You cannot manage IdP user group settings or membership in Soda Cloud. Any changes that you wish to make to IdP-managed user groups must be done in the IdP itself.
 
@@ -151,8 +151,8 @@ Doing so obviates the need to manually create user groups in Soda Cloud that you
 1. In step 7 of the SAML application integration procedure [above](#add-soda-cloud-to-okta), follow Okta's instructions to <a href="https://help.okta.com/en-us/content/topics/apps/define-group-attribute-statements.htm" target="_blank">Define group attribute statements</a>.
 * For the Name value, use **Group.Authorization**.
 * Leave the optional Name Format value as **Unspecified**.  
-* Use the Filter to find a group that you wish to make available in Soda Cloud to manage access and permissions.<br />
-![group-attribute](/assets/images/group-attribute.png){:height="500px" width="500px"}
+* Use the Filter to find a group that you wish to make available in Soda Cloud to manage access and permissions. Exercise caution! A broad filter may include user groups you do not wish to include in the sync. Double-check that the groups you select are appropriate.<br /><br />
+![group-attribute](/assets/images/group-attribute.png){:height="600px" width="600px"}
 2. Use the **Add Another** button to add as many groups as you wish to make available in Soda Cloud.
 3. In your message to Soda Support or your Soda Customer Engineer, advise Soda that you wish to enable user group syncing. Soda adds a setting to your SSO configuration to enable it. 
 4. When the SSO integration is complete, you and your team can select your IdP user groups from the dropdown list of choices available when assigning ownership or permissions to resources. 

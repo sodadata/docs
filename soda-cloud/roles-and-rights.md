@@ -117,7 +117,7 @@ As an Admin in your Soda Cloud, navigate to **your avatar** > **Organization Set
 * Add a user group to a [discussion]({% link soda/quick-start-end-user.md %}#begin-a-discussion-and-propose-checks) in Soda Cloud so the whole team can review newly-proposed no-code checks.
 * Add user groups as [stakeholders]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in an agreement so that whole teams can collaborate on the expected state of data quality for one or more datasets.
 
-See also: [Sync user groups from Okta or Azure AD]({% link soda-cloud/sso.md %}#sync-user-groups-from-okta-or-azure-ad)
+See also: [Sync user groups from an IdP]({% link soda-cloud/sso.md %}#sync-user-groups-from-an-idp)
 
 <br />
 
