@@ -36,7 +36,7 @@ When an organization's IT Admin revokes a user's access to Soda Cloud through th
 
 Once your organization enables SSO for all Soda Cloud users, Soda Cloud blocks all non-SSO login attempts and password changes via <a href="https://cloud.soda.io/login" target="_blank">cloud.soda.io/login<a/>. If an employee attempts a non-SSO login or attempts to change a password using "Forgot password?" on <a href="https://cloud.soda.io/login" target="_blank">cloud.soda.io/login<a/>, Soda Cloud presents a message that explains that they must log in or change their password using their SSO provider. 
 
-Optionally, you can set up the SSO integration Soda to include a one-way sync of user groups from your IdP into Soda Cloud which synchronizes with each user login to Soda via SSO. [Read more](#sync-user-groups-from-okta-or-azure-ad).
+Optionally, you can set up the SSO integration Soda to include a one-way sync of user groups from your IdP into Soda Cloud which synchronizes with each user login to Soda via SSO. [Read more](#sync-user-groups-from-an-idp).
 
 Soda Cloud supports both **Identity Provider Initiated (IdP-initiated)**, and **Service Provider Initiated (SP-initiated)** single sign-on integrations. Be sure to indicate which type of SSO your organization uses when setting it up with the Soda Support team.
 
