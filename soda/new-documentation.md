@@ -9,6 +9,10 @@ parent: Learning resources
 
 <br /> 
 
+#### July 22, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.18.
+* Updated [compatibility]({% link soda-cloud/anomaly-dashboard.md %}#compatibility) for anomaly dashboard preview activation.
+
 #### July 19, 2024
 * Updated MS Teams integration documentation to reference creating Workflows in MS Teams instead of Office 365 Connectors. Microsoft is retiring the connectors effective August 15, 2024. If you have previously set up a Soda integration with an Office 365 connector, follow the instructions for <a href="https://support.microsoft.com/en-us/office/creating-a-workflow-from-a-channel-in-teams-242eb8f2-f328-45be-b81f-9817b51a5f0e" target="_blank">Creating a workflow from a channel in Teams</a>, then update the integration URL in your existing Soda <> MS Teams integration in Soda Cloud.
 

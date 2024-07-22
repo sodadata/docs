@@ -29,10 +29,11 @@ After establishing these patterns, Soda automatically detects anomalies relative
 <small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + self-hosted Soda Agent connected to any <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soda-supported data source, except Spark, and Dask and Pandas</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + self-hosted Soda Agent connected to a BigQuery, Databricks SQL, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake data source</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda-hosted Agent connected to a BigQuery, Databricks SQL, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake data source</small><br />
 <br />
 
+[Compatibility](#compatibility)<br />
 [Set up anomaly dashboards](#set-up-anomaly-dashboards)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Activate an anomaly dashboard to an existing dataset](#activate-an-anomaly-dashboard-to-an-existing-dataset)<br />
 [About the anomaly dashboard](#about-the-anomaly-dashboard)<br />
@@ -42,6 +43,10 @@ After establishing these patterns, Soda automatically detects anomalies relative
 &nbsp;&nbsp;&nbsp;&nbsp;[Change the time partitioning column](#change-the-time-partitioning-column)<br />
 [Go further](#go-further)<br />
 <br />
+
+## Compatibility
+
+{% include compatible-soda-hosted.md %}
 
 ## Set up anomaly dashboards
 
