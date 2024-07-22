@@ -19,7 +19,7 @@ Configure Soda Cloud to connect your account to MS Teams so that you can:
 
 <div class="info">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  Micrsoft has announced that they are <strong><a href="https://devblogs.microsoft.com/microsoft365dev/retirement-of-office-365-connectors-within-microsoft-teams/">retiring Office 365 connectors</a></strong> within Microsoft Teams effective August 15, 2024. <br /><br />
+  Microsoft has announced that they are <strong><a href="https://devblogs.microsoft.com/microsoft365dev/retirement-of-office-365-connectors-within-microsoft-teams/">retiring Office 365 connectors</a></strong> within Microsoft Teams effective August 15, 2024. <br /><br />
   If you have previously set up a Soda integration with an Office 365 connector, follow the instructions for <a href="https://support.microsoft.com/en-us/office/creating-a-workflow-from-a-channel-in-teams-242eb8f2-f328-45be-b81f-9817b51a5f0e" target="_blank">Creating a workflow from a channel in Teams</a>, then update the integration URL in your existing Soda <> MS Teams integration in Soda Cloud.   
 </div>
 
