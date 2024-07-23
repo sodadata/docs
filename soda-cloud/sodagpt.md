@@ -14,27 +14,32 @@ Ask AI replaces SodaGPT, the original implementation of a generative AI assistan
 <small>✖️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
+<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda Agent</small><br />
 <br />
 
 <a href="https://cloud.soda.io/login" target="_blank">Log in</a> to your **Soda Cloud** account, click the **Ask AI** button in the main nav, then provide natural language instructions to the interface to:
-* get answers to questions about how to configure or use Soda 
 * receive fully-formed, syntax-correct checks in the [Soda Checks Language (SodaCL)]({% link soda-cl/metrics-and-checks.md %})
+* get answers to questions about how to configure or use Soda 
 * obtain advice about how to resolve an error while using Soda
 
-If you do not already have an account, <a href="https://cloud.soda.io/signup" target="_blank">sign up for Soda Cloud</a> for a 45-day free trial.
+![ask-ai3](/assets/images/ask-ai3.png){:height="600px" width="600px"}
 
+![askai-2](/assets/images/ask-ai2.png){:height="600px" width="600px"} 
+
+## Enable Ask AI
+
+If you do not already have an account, <a href="https://cloud.soda.io/signup" target="_blank">sign up for Soda Cloud</a> for a 45-day free trial. Then, as an Admin user, navigate to **your avatar** > **Organization Settings**, then check the box to **Enable Ask AI powered by Kapa**.
+
+![enable-ask-ai](/assets/images/enable-ask-ai.png){:height="600px" width="600px"}
 
 <details>
     <summary style="color:#00BC7E">Can't see the Ask AI button?</summary>
     <br />
     If you are an existing Soda customer, you must accept Soda's revised terms and conditions for service that includes the use of third-party tools that facilitate generative AI capabilites. Reply to Soda's Terms & Conditions email to accept the revisions, or contact <a href="mailto:support@soda.io">Soda Support</a> to arrange acceptance and enable the feature.<br /><br />
-    If you have accepted the revised terms and conditions but still cannot see the Ask AI button, as an Admin user, navigate to <strong>your avatar</strong> > <strong>Organization Settings</strong>, then check the box to <strong>Enable Ask AI powered by Kapa</strong>.<br />
-    <br />
-    <img src="/assets/images/enable-ask-ai.png" width="450">
+    If you have accepted the revised terms and conditions but still cannot see the Ask AI button, as an Admin user, navigate to <strong>your avatar</strong> > <strong>Organization Settings</strong>, then check the box to <strong>Enable Ask AI powered by Kapa</strong>.
 </details>
 
-![sodagpt](/assets/images/ask-ai2.png){:height="600px" width="600px"}
+<br />
 
 ## About Ask AI
 

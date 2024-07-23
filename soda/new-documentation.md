@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### July 23, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.19.
+
 #### July 22, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.18.
 * Updated [compatibility]({% link soda-cloud/anomaly-dashboard.md %}#compatibility) for anomaly dashboard preview activation.
