@@ -52,6 +52,7 @@ checks for dim_customer:
 [Define checks with validity metrics](#define-checks-with-validity-metrics) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Specify valid or invalid values](#specify-valid-or-invalid-values)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Specify valid format](#specify-valid-format)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Troubleshoot valid format and values](#troubleshoot-valid-format-and-values)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples)<br />
 [Optional check configurations](#optional-check-configurations)<br />
 [List of validity metrics](#list-of-validity-metrics)<br />
@@ -193,7 +194,7 @@ checks for dim_customer:
 
 <br />
 
-#### Troubleshoot valid format
+### Troubleshoot valid format and values
 
 **Problem:** You are using a `valid format` to test the format of values in a column and the CLI returns the following error message when you run a scan. 
 
@@ -206,6 +207,10 @@ Error occurred while executing scan.
 ```
 
 **Solution:** The error indicates that the data type of the column is not TEXT. Adjust your check to use a different configuration key, instead.
+
+<br />
+
+{% include single-quotes.md %}
 
 <br />
 
