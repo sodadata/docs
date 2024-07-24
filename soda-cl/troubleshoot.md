@@ -20,7 +20,8 @@ parent: SodaCL reference
 [Failed row check with CTE error](#failed-row-check-with-cte-error)<br />
 [Errors with column names containing periods or colons](#errors-when-column-names-containing-periods-or-colons)<br />
 [Errors when using in-check filters](#errors-when-using-in-check-filters)<br />
-[Using reference checks with Spark DataFrames](#using-reference-checks-with-spark-dataframes)
+[Using reference checks with Spark DataFrames](#using-reference-checks-with-spark-dataframes)<br />
+[Single quotes in valid values list result in error](#single-quotes-in-valid-values-list-result-in-error)<br />
 <br />
 
 <hr/>
@@ -235,6 +236,10 @@ checks for my_dataset:
 
 {% include reference-with-spark.md %}
 
+
+## Single quotes in valid values list result in error
+
+{% include single-quotes.md %}
 
 
 ## Go further
