@@ -10,6 +10,11 @@ parent: Data source reference
 
 {% include connect-to-intro.md %}
 
+## Compatibility
+
+Soda supports connections to IBM DB2 for Linux, UNIX, Windows (LUW). <br />
+Soda does not support connections to IBM DB2 for z/OS. Refer to <a href="https://developer.ibm.com/articles/dm-1108compdb2luwzos/" target="_blank">IBM Developer documentation</a> for more information.
+
 ## Connection configuration reference
 
 Install package: `soda-db2`

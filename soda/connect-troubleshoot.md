@@ -11,6 +11,7 @@ Last modified on {% last_modified_at %}
 [SSL certificate error](#ssl-certificate-error)<br />
 [Snowflake proxy connection error](#go-further)<br />
 [Spark DataFrame object error](#spark-dataframe-object-error)<br />
+[ImportError during programmatic scan](#importerror-during-programmatic-scan)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -31,6 +32,14 @@ Last modified on {% last_modified_at %}
 **Problem:** Using a Soda package for Spark df, you encounter an error that reads, `ERROR  | Error occurred while executing scan. | 'DataFrame' object has no attribute 'offset'`.
 
 **Solution:** Be sure to upgrade your version of PySpark to 3.4.0 or greater for compatibility with Soda packages.
+
+## ImportError during programmatic scan
+
+**Problem:** When importing Soda scan, you get an error that reads, `ImportError: cannot import name 'field_validator' from 'pydantic'...`.
+
+**Solution:** This error typically emerges when your environment is using pydantic v1 instead of v2. Soda requires pydantic v2 to work and this is correctly set via installation requirements in the package, however Python allows you to override those requirements. Use `pip list | grep "pydantic"` to determine which version you are using and upgrade as necessary.
+
+<br />
 
 ## Go further
 
