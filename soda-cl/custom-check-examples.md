@@ -21,7 +21,6 @@ The examples below offer examples of how you can define user-defined checks in y
 [Check for incorrectly mapped values across columns](#check-for-incorrectly-mapped-values-across-columns)<br />
 [Compare dates to validate event sequence](#compare-dates-to-validate-event-sequence)<br />
 [Go further](#go-further)<br />
-
 <br />
 
 ## Set an acceptable threshold for row count delta

@@ -117,6 +117,16 @@ As an Admin in your Soda Cloud, navigate to **your avatar** > **Organization Set
 * Add a user group to a [discussion]({% link soda/quick-start-end-user.md %}#begin-a-discussion-and-propose-checks) in Soda Cloud so the whole team can review newly-proposed no-code checks.
 * Add user groups as [stakeholders]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in an agreement so that whole teams can collaborate on the expected state of data quality for one or more datasets.
 
+See also: [Sync user groups from an IdP]({% link soda-cloud/sso.md %}#sync-user-groups-from-an-idp)
+
+<br />
+
+#### Add multiple permissions
+
+If you have added a user to a group to which you have assigned a level of permission for a resource, then manually assigned a different level of permission to the individual user for a resource, the higher permission trumps the lower. 
+
+For example, as an Admin, say you add Manny Jacinto to user group Marketing Team which has Viewer permission for Dataset_A. Then, you change Manny's individual permission for Dataset_A to Manager. Soda honors the higher level of permission, Manager, for Manny's access to Dataset_A.
+
 <br />
 
 
