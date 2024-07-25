@@ -53,7 +53,7 @@ data_source my_datasource_name:
 
 | Category | Data type  |
 | -------- | ---------- |
-| text     | CHAR, VARCHAR, TEXT  |
+| text     | CHAR, VARCHAR, TEXT, NCHAR, NVARCHAR, BINARY  |
 | number   | BIG INT, NUMERIC, BIT, SMALLINT, DECIMAL, SMALLMONEY, INT, TINYINT, MONEY, FLOAT, REAL  |
 | time     | DATE, TIME, DATETIME, DATETIMEOFFSET |
 
