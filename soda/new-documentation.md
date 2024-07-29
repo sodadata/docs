@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### July 29, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.13.
+
 #### July 25, 2024
 * Documented instructions for how to add one-way [user group synchronization]({% link soda-cloud/sso.md %}#sync-user-groups-from-an-idp) from an SSO IdP to Soda Cloud.
 * Updated [data type support]({% link soda/connect-mssql.md %}#supported-data-types) for MS SQL Server to include NCHAR, NVARCHAR, and BINARY. 
