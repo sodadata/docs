@@ -210,7 +210,7 @@ Be sure to click **Test checks** to validate that the SodaCL syntax you have wri
 
 For help writing your first checks:
 * browse the library of **SodaCL snippets** that insert correctly-formatted syntax for the most commonly-used checks for basic data quality
-* use **Ask AI**, a generative AI assistant that turns natural-language requests into production-ready SodaCL checks. [Read more]({% link soda-cloud/sodagpt.md %})
+* use **Ask AI**, a generative AI assistant that turns natural-language requests into production-ready SodaCL checks. [Read more]({% link soda-cloud/ask-ai.md %})
 * consider following the [Quick start for SodaCL]({% link soda/quick-start-sodacl.md %}), including the [Tips and best practices]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl) section
 * refer to [SodaCL reference]({% link soda-cl/metrics-and-checks.md %}) for exhaustive details on every type of metric and check
 

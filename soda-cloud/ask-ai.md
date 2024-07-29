@@ -3,6 +3,7 @@ layout: default
 title: Write checks with Ask AI
 description: Use Soda's Ask AI assistant to turn natural language into production-ready data quality checks in SodaCL.
 parent: Write SodaCL checks
+redirect_from: /soda-cloud/sodagpt.html
 ---
 
 # Write checks with Ask AI <br/>
