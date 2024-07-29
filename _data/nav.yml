@@ -61,7 +61,7 @@
   - subtitle: SodaCL tutorial
     page: soda/quick-start-sodacl.md
   - subtitle: Write checks with Ask AI
-    page: soda-cloud/sodagpt.md
+    page: soda-cloud/ask-ai.md
   - subtitle: Adopt check suggestions
     page: soda-library/check-suggestions.md
   - subtitle: Add automated monitoring

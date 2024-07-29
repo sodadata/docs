@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### July 29, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.13.
+
 #### July 25, 2024
 * Documented instructions for how to add one-way [user group synchronization]({% link soda-cloud/sso.md %}#sync-user-groups-from-an-idp) from an SSO IdP to Soda Cloud.
 * Updated [data type support]({% link soda/connect-mssql.md %}#supported-data-types) for MS SQL Server to include NCHAR, NVARCHAR, and BINARY. 
@@ -45,7 +48,7 @@ parent: Learning resources
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.15.
 
 #### July 10, 2024
-* Revised SodaGPT documentation to replace it with details about [Ask AI]({% link soda-cloud/sodagpt.md %}), Soda's in-product generative AI assistant.
+* Revised SodaGPT documentation to replace it with details about [Ask AI]({% link soda-cloud/ask-ai.md %}), Soda's in-product generative AI assistant.
 
 #### July 8, 2024
 * Documented the new functionality that enables Admin users in Soda Cloud to [create user groups]({% link soda-cloud/roles-and-rights.md %}#create-custom-user-groups). 
@@ -374,7 +377,7 @@ parent: Learning resources
 * Added documentation to accompany new support for [MotherDuck]({% link soda/connect-motherduck.md %}) data source.
 
 #### October 25, 2023
-* Added to the list of supported check types in [SodaGPT]({% link soda-cloud/sodagpt.md %}#instruction-parameters).
+* Added to the list of supported check types in SodaGPT.
 * Added another example snippet to [Group By checks]({% link soda-cl/group-by.md %}).
 
 #### October 24, 2023
@@ -420,7 +423,7 @@ parent: Learning resources
 * Added `schema_name` parameter to [DuckDB configuration]({% link soda/connect-duckdb.md %}).
 
 #### September 27, 2023
-* Added clarifying information about user input and how it is used by [SodaGPT]({% link soda-cloud/sodagpt.md %}#about-the-ai).
+* Added clarifying information about user input and how it is used by SodaGPT.
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.13 and Soda Core 3.0.50.
 
 #### September 26, 2023
@@ -518,7 +521,7 @@ parent: Learning resources
 * Updated commands for [installing]({% link soda-library/install.md %}#install) Soda Library using a Docker image.
 
 #### June 27, 2023
-* Documentation to accompany the preview launch of [SodaGPT]({% link soda-cloud/sodagpt.md %}).
+* Documentation to accompany the preview launch of SodaGPT.
 
 #### June 23, 2023
 * Changed requirement for [check template]({% link soda-cl/check-template.md %}) to include the dataset identifier in the first line of the check so that Soda Cloud can properly render the check results.
