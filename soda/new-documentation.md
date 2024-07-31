@@ -9,6 +9,10 @@ parent: Learning resources
 
 <br /> 
 
+#### July 31, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.21.
+* Added [troubleshooting tip]({% link soda-cl/troubleshoot.md %}#databricks-issue-with-column-names-that-being-with-a-number) for running Soda scans on Databricks where column names beging with numbers.
+
 #### July 29, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.13.
 
