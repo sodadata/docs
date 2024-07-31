@@ -38,6 +38,7 @@ After establishing these patterns, Soda automatically detects anomalies relative
 &nbsp;&nbsp;&nbsp;&nbsp;[Activate an anomaly dashboard to an existing dataset](#activate-an-anomaly-dashboard-to-an-existing-dataset)<br />
 [About the anomaly dashboard](#about-the-anomaly-dashboard)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Empty metrics tiles](#empty-metrics-tiles)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Known issues and limitations](#known-issues-and-limitations)<br />
 [Add anomaly notifications](#add-anomaly-notifications)<br />
 [About profiling and partitioning](#about-profiling-and-partitioning)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Change the time partitioning column](#change-the-time-partitioning-column)<br />
@@ -104,6 +105,10 @@ If, after the anomaly detection algorithm has completed its pattern training, th
 * There is no column that contains TIME type data (TIMESTAMP, DATE, DATETIME, etc.) which a freshness check requires. Where it cannot detect a column with the necessary data type, Soda leaves the **Freshness** tile blank.
 * There is no column that contains NUMBER type data (INT, FLOAT, etc.) which an average metric check requires. Where it cannot detect a column with the necessary data type, Soda leaves the **Average** tile blank.
 
+
+### Known issues and limitations
+
+* Soda anomaly dashboard does not profile columns that contain timestamps or dates. As such, Soda only executes a freshness check for such columns for the anomaly dashboard to validate data freshness, but not anomalies in the columns that contain dates or timestamps.
 
 ## Add anomaly notifications
 
