@@ -30,7 +30,7 @@ Use the example data in this quick tutorial to set up and run a simple Soda scan
 This tutorial references a MacOS environment.
 
 1. Check the following prerequisites:
-* You have installed <a href="https://www.python.org/downloads/" target="_blank">Python 3.8</a> or greater. 
+* You have installed Python 3.8, 3.9, or 3.10. 
 * You have installed Pip 21.0 or greater.
 * (Optional) You have installed <a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop</a> and have access to <a href="https://github.com/" target="_blaak">GitHub </a>, to set up an example data source.
 2. Visit <a href="https://cloud.soda.io/signup" target="_blank">https://cloud.soda.io/signup</a> to sign up for a Soda Cloud account which is free for a 45-day trial.<br />

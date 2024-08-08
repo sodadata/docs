@@ -34,9 +34,12 @@ To validate your account license or free trial, Soda Library must communicate wi
 ## Set up Soda
 
 Soda Library has the following requirements:
-* Python 3.8 or greater
+* Python 3.8, 3.9, or 3.10
 * Pip 21.0 or greater
 
+{% include python-versions.md %}
+
+<br />
 Download the notebook: <a href="soda-databricks-notebook.ipynb" download>Soda Databricks notebook</a>
 
 {% include code-header.html %}
