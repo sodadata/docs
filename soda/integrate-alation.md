@@ -101,7 +101,7 @@ If your Alation account does not use SSO, skip this step and proceed to [Customi
 1. Create custom fields in Alation that reference information that Soda Cloud pushes to the catalog. These are the fields the catalog users will see that will display Soda Cloud data quality details.
 <br />
 In your Alation account, navigate to **Settings** > **Catalog Admin** > **Customize Catalog**. In the **Custom Fields** tab, create the following fields:
-* Under the **Pickers** heading, create a field for “Has DQ” with Options “True” and “False”. **Use these exact values as Alation API is case-sensitive.**
+* Under the **Pickers** heading, create a field for “Has DQ” with Options “True” and “False”. The Alation API is case sensitive so be sure to use these exact values.
 * Under the **Dates** heading, create a field for “Profile - Last Run”.
 * Under the **Rich Texts** heading, create the following fields:
   * “Soda DQ Overview”
