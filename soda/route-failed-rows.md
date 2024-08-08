@@ -22,7 +22,7 @@ See also: [Examine failed row samples]({% link soda-cloud/failed-rows.md %})<br 
 
 ## Prerequisites
 * a code or text editor such as PyCharm or Visual Studio Code
-* Python 3.8 or greater
+* Python 3.8, 3.9, or 3.10
 * Pip 21.0 or greater
 
 

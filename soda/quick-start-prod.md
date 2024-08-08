@@ -44,7 +44,7 @@ Borrow from this guide to connect to your own data source, set up scan points in
 
 ## Install Soda from the command-line
 
-With Python 3.8 installed, the Engineer creates a virtual environment in Terminal, then installs the Soda package for PostgreSQL using the following command.
+With Python 3.8, 3.9, or 3.10 installed, the Engineer creates a virtual environment in Terminal, then installs the Soda package for PostgreSQL using the following command.
 
 {% include code-header.html %}
 ```shell

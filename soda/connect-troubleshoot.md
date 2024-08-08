@@ -12,6 +12,7 @@ Last modified on {% last_modified_at %}
 [Snowflake proxy connection error](#go-further)<br />
 [Spark DataFrame object error](#spark-dataframe-object-error)<br />
 [ImportError during programmatic scan](#importerror-during-programmatic-scan)<br />
+[Scan error with Soda Dask and Pandas](#scan-error-with-soda-dask-and-pandas)<br />
 [Go further](#go-further)<br />
 <br />
 
