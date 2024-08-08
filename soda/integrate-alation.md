@@ -92,7 +92,7 @@ Retrieve the Alation `datasource_container_id` for the `datasource_container_nam
 
 ## Enable API access to Alation with SSO
 
-If your Alation account employs single sign-on (SSO) access, you must <a href="https://developer.alation.com/dev/docs/creating-an-api-service-account" target="_blank">Create an API service account</a> for Soda to integrate with Alation. 
+If your Alation account employs single sign-on (SSO) access, you must <a href="https://developer.alation.com/dev/docs/creating-an-api-service-account" target="_blank">Create an API service account</a> for Soda to integrate with Alation.
 
 If your Alation account does not use SSO, skip this step and proceed to [Customize the catalog](#customize-the-catalog).
 
@@ -101,7 +101,7 @@ If your Alation account does not use SSO, skip this step and proceed to [Customi
 1. Create custom fields in Alation that reference information that Soda Cloud pushes to the catalog. These are the fields the catalog users will see that will display Soda Cloud data quality details.
 <br />
 In your Alation account, navigate to **Settings** > **Catalog Admin** > **Customize Catalog**. In the **Custom Fields** tab, create the following fields:
-* Under the **Pickers** heading, create a field for “Has DQ” with Options “True” and “False”.
+* Under the **Pickers** heading, create a field for “Has DQ” with Options “True” and “False”. The Alation API is case sensitive so be sure to use these exact values.
 * Under the **Dates** heading, create a field for “Profile - Last Run”.
 * Under the **Rich Texts** heading, create the following fields:
   * “Soda DQ Overview”
