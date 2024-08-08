@@ -96,6 +96,8 @@ Note that you cannot use an `exclude_columns` configuration to disable sample ro
 
 ## Specify columns for failed row sampling
 
+{% include banner-upgrade.md %}
+
 Beyond collecting samples of data from datasets, you can also use a `samples columns` configuration to an individual check to specify the columns for which Soda must implicitly collect failed row sample values. Soda only collects the check's failed row samples for the columns you specify in the list, as in the `duplicate_count` example below. 
 
 Soda implicitly collects failed row samples for the following checks:
