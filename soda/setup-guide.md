@@ -60,7 +60,7 @@ Use this setup for: <br />
 ✅ **Data migration**: Migrate good-quality data from one data source to another. See: [Test before data migration]({% link soda/quick-start-migration.md %})<br />
 
 Requirements:
-* Python 3.8 or greater
+* Python 3.8, 3.9, or 3.10
 * Pip 21.0 or greater
 * Login credentials for your data source (Snowflake, Athena, MS SQL Server, etc.)
 
@@ -122,7 +122,7 @@ Use this setup for:<br />
 ✅ **Databricks Notebook**: Invoke Soda data quality scans in a Databricks Notebook. See: [Add Soda to a Databricks notebook]({% link soda/quick-start-databricks.md %})<br />
 
 Requirements:
-* Python 3.8 or greater
+* Python 3.8, 3.9, or 3.10
 * Pip 21.0 or greater
 * Login credentials for your data source (Snowflake, Athena, MS SQL Server, etc.)
 

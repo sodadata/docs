@@ -51,7 +51,7 @@ What follows is an abridged version of installing and configuring Soda for Postg
 
 1. In a browser, navigate to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a new Soda account, which is free for a 45-day trial. If you already have a Soda account, log in.
 2. Navigate to **your avatar** > **Profile**, then access the **API keys** tab. Click the plus icon to generate new API keys. Copy+paste the API key values to a temporary, secure place in your local environment.
-3. With Python 3.8 or greater and Pip 21.0 or greater, use the command-line to install Soda locally in a new virtual environment. 
+3. With Python 3.8, 3.9, or 3.10 and Pip 21.0 or greater, use the command-line to install Soda locally in a new virtual environment. 
 ```shell
 python3 -m venv .venv
 source .venv/bin/activate 

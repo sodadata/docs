@@ -12,6 +12,7 @@ Last modified on {% last_modified_at %}
 [Snowflake proxy connection error](#go-further)<br />
 [Spark DataFrame object error](#spark-dataframe-object-error)<br />
 [ImportError during programmatic scan](#importerror-during-programmatic-scan)<br />
+[Scan error with Soda Dask and Pandas](#scan-error-with-soda-dask-and-pandas)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -38,6 +39,14 @@ Last modified on {% last_modified_at %}
 **Problem:** When importing Soda scan, you get an error that reads, `ImportError: cannot import name 'field_validator' from 'pydantic'...`.
 
 **Solution:** This error typically emerges when your environment is using pydantic v1 instead of v2. Soda requires pydantic v2 to work and this is correctly set via installation requirements in the package, however Python allows you to override those requirements. Use `pip list | grep "pydantic"` to determine which version you are using and upgrade as necessary.
+
+<br />
+
+## Scan error with Soda Dask and Pandas
+
+**Problem:** You encounter errors when trying to install `soda-dask-pandas` in an environment that uses Python 3.11. This may manifest as an issue with dependencies or as an error that reads, `Pre-scan validation failed, see logs for details.`
+
+**Workaround:** Uninstall the `soda-dask-pandas` package, then downgrade the version of Python your environment uses to Python 3.9. Install the `soda-dask-pandas` package again. 
 
 <br />
 

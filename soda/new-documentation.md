@@ -9,6 +9,20 @@ parent: Learning resources
 
 <br /> 
 
+#### August 8, 2024
+* Added content to clarify that Soda Library officially supports Python 3.8, 3.9, and 3.10.
+
+#### August 2, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.23 and Soda Agent 1.1.23.
+
+#### August 1, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.22 and Soda Agent 1.1.22.
+
+#### July 31, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.21.
+* Added [troubleshooting tip]({% link soda-cl/troubleshoot.md %}#databricks-issue-with-column-names-that-being-with-a-number) for running Soda scans on Databricks where column names beging with numbers.
+* Added [Known issues and limitations]({% link soda-cloud/anomaly-dashboard.md %}#known-issues-and-limitations) section to anomaly dashboard content.
+
 #### July 29, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.13.
 

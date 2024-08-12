@@ -22,6 +22,7 @@ parent: SodaCL reference
 [Errors when using in-check filters](#errors-when-using-in-check-filters)<br />
 [Using reference checks with Spark DataFrames](#using-reference-checks-with-spark-dataframes)<br />
 [Single quotes in valid values list result in error](#single-quotes-in-valid-values-list-result-in-error)<br />
+[Databricks issue with column names that being with a number](#databricks-issue-with-column-names-that-being-with-a-number)<br />
 <br />
 
 <hr/>
@@ -241,6 +242,18 @@ checks for my_dataset:
 
 {% include single-quotes.md %}
 
+
+## Databricks issue with column names that being with a number
+
+**Problem:** When running scans on Databricks, Soda encounters an error on columns that begin with a number.
+
+**Solution:** In Databricks, when dealing with column names that start with numbers or contain special characters such as spaces, you typically need to use backticks to enclose the column identifier. This is because Databricks uses a SQL dialect that is similar to Hive SQL, which supports backticks for escaping identifiers. For example:
+```yaml
+checks for soda_test:
+  - missing_count(`1_bigint`):
+      name: test
+      fail: when > 0
+```
 
 ## Go further
 

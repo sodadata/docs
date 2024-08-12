@@ -25,7 +25,7 @@ This article offers an example for building a data quality reporting dashboard u
 
 ## Prerequisites and limitations
 * You have some knowledge of Python and are familiar with `pandas` and HTTP request libraries such as `httpx`.
-* You have installed Python 3.8 or later.
+* You have installed Python 3.8, 3.9, or 3.10.
 * You have a Soda Cloud account.
 * You have [installed Soda Library]({% link soda-library/install.md %}) in your environment and [connected]({% link soda-library/install.md %}#configure-soda) it to your Soda Cloud account.
 * You have used Soda Library to run at least one scan against data in a dataset.
