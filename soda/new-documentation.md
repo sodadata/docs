@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### August 13, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.5.24 and Soda Agent 1.1.24.
+
 #### August 8, 2024
 * Added content to clarify that Soda Library officially supports Python 3.8, 3.9, and 3.10.
 
