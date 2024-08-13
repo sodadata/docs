@@ -89,7 +89,7 @@ If an agreement contains a [cross check]({% link soda-cl/cross-row-checks.md %})
 
 ![delete-datasource](/assets/images/delete-datasource.png){:height="700px" width="700px"}
 
-### Delete a scan definitions
+### Delete a scan definition
 
 Deleting a scan definition has the potential to impact multiple agreements in a data source. Among other things, the scan definition defines the cadence that Soda Cloud uses to execute scans of data in the data source. 
 
