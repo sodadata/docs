@@ -31,8 +31,8 @@
     page: soda/use-case-guides.md 
   - subtitle: Test data in a pipeline
     page: soda/quick-start-prod.md
-  - subtitle: Test data in a Databricks workflow
-    page: soda/quick-start-databricks-workflow.md
+  - subtitle: Test data in a Databricks pipeline
+    page: soda/quick-start-databricks-pipeline.md
   - subtitle: Test before data migration
     page: soda/quick-start-migration.md
   - subtitle: Self-serve Soda
