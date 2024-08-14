@@ -221,7 +221,7 @@ checks for login_logout [daily]:
 
 The Data Scientists also prepared a second set of SodaCL checks in a separate file to run after transformation in the Input Data Checks notebook.
 
-Two of the checks the Data Scientist prepares involve checking groups of data.  The [group evolution check]({% link soda-cl/group-evolution.md %}) validates the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state; in this case, it confirms the presence of the `Married` group in the data, and when any group changes. Further, the [group by check]({% link soda-cl/grou-by.md %}) collects and presents check results by category; in this case, it groups the results according to `JobLevel`.
+Two of the checks the Data Scientist prepares involve checking groups of data.  The [group evolution check]({% link soda-cl/group-evolution.md %}) validates the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state; in this case, it confirms the presence of the `Married` group in the data, and when any group changes. Further, the [group by check]({% link soda-cl/group-by.md %}) collects and presents check results by category; in this case, it groups the results according to `JobLevel`.
 
 
 input_data_checks.yml
