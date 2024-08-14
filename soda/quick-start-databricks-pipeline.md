@@ -12,13 +12,17 @@ Use this guide as an example for how to set up and use Soda to test the quality 
 
 [Jump to Databricks notebooks](#invoke-soda-in-databricks-notebooks)
 
- 
+![databricks-workflow](/assets/images/databricks-workflow.png){:height="700px" width="700px"}
+
+<br />
 
 [About this guide](#about-this-guide)<br />
 [Prerequisites](#prerequisites)<br />
 [Create a Soda Cloud account](#create-a-soda-cloud-account)<br />
 [Connect Soda Cloud to Soda Library and data source](#connect-soda-cloud-to-soda-library-and-data-source)<br />
 [Write checks for data quality](#write-checks-for-data-quality)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;[Post-ingestion checks](#post-ingestion-checks)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Post-transformation checks](#post-transformation-checks)<br />
 [Invoke Soda in Databricks notebooks](#invoke-soda-in-databricks-notebooks)<br />
 [Review check results](#review-check-results)<br />
 [Go further](#go-further)<br />
@@ -250,7 +254,7 @@ checks for login_logout [daily]:
 
 ## Post-transformation checks
 
-The Data Scientists also prepared a second set of SodaCL checks in a separate file to run after transformation in the Input Data Checks notebook. Curious readers can download the <a href="Data Ingestion Checks.ipynb" download>ETL notebook.ipynb</a> to review transformations and the resulting `input_data_attrition_model` output into a DataFrame.
+The Data Scientists also prepared a second set of SodaCL checks in a separate file to run after transformation in the Input Data Checks notebook. Curious readers can download the <a href="/assets/Data Ingestion Checks.ipynb" download>ETL notebook.ipynb</a> to review transformations and the resulting `input_data_attrition_model` output into a DataFrame.
 
 Two of the checks the Data Scientist prepares involve checking groups of data.  The [group evolution check]({% link soda-cl/group-evolution.md %}) validates the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state; in this case, it confirms the presence of the `Married` group in the data, and when any group changes. Further, the [group by check]({% link soda-cl/group-by.md %}) collects and presents check results by category; in this case, it groups the results according to `JobLevel`.
 
@@ -333,7 +337,7 @@ At the [beginning](#connect-soda-cloud-to-soda-library-and-data-source) of this 
 The following outlines the contents of each notebook and the steps included to install Soda and invoke it to run scans for data quality, thereby executing the data quality checks in the checks YAMLfiles. Beyond invoking Soda to scan for data quality, the notebooks also save the checks' metadata for further analysis.
 
 #### Data Ingestion Checks
-Download: <a href="Data Ingestion Checks.ipynb" download>Data Ingestion Checks.ipynb</a>
+Download: <a href="/assets/Data Ingestion Checks.ipynb" download>Data Ingestion Checks.ipynb</a>
 {% include code-header.html %}
 ```python
 # Install to run checks on data in the Unity catalog
@@ -429,7 +433,7 @@ scan.save_scan_result_to_file(result_path/f"test.json", checks_data_json)
 <br />
 
 #### Input Data Checks
-Download: <a href="Input Data Checks.ipynb" download>Input Data Checks.ipynb</a>
+Download: <a href="/assets/Input Data Checks.ipynb" download>Input Data Checks.ipynb</a>
 {% include code-header.html %}
 ```python
 # Install to run checks on data in the file stored in Databricks file system
