@@ -8,7 +8,7 @@ parent: Use case guides
 # Test data quality in a Databricks pipeline
 *Last modified on {% last_modified_at %}*
 
-Use this guide as an example for how to set up and use Soda to test the quality of data in a Databricks pipeline. Automatically catch data quality issues after ingestion or transformation, and before using the data to train a machine learning model to prevent negative downstream impact.
+Use this guide as an example for how to set up and use Soda to test the quality of data in a Databricks pipeline. Automatically catch data quality issues after ingestion or transformation, and before using the data to train a machine learning model.
 
 [Jump to Databricks notebooks](#invoke-soda-in-databricks-notebooks)
 
@@ -24,7 +24,8 @@ Use this guide as an example for how to set up and use Soda to test the quality 
 &nbsp;&nbsp;&nbsp;&nbsp;[Post-ingestion checks](#post-ingestion-checks)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Post-transformation checks](#post-transformation-checks)<br />
 [Invoke Soda in Databricks notebooks](#invoke-soda-in-databricks-notebooks)<br />
-[Review check results](#review-check-results)<br />
+[Review check results in Soda Cloud](#review-check-results-in-soda-cloud)<br />
+[Review check results in a Unity dashboard](#review-check-results-in-a-unity-dashboard)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -33,7 +34,7 @@ Use this guide as an example for how to set up and use Soda to test the quality 
 
 The instructions below offer Data Scientists an example of how to execute Soda Checks Language (SodaCL) checks for data quality within a Databricks pipeline that handles data which trains a machine learning (ML) model.
 
-For context, this guide demonstrates a Data Scientist working with Human Resources data to build a prediction or forecast model for employee attrition. The Data Scientist uses a Databricks notebook to gather data from SQL-accessible dataset, transforms the data into the correct format for their ML model, then uses the data to train the model.
+For context, this guide demonstrates a Data Scientist working with Human Resources data to build a forecast model for employee attrition. The Data Scientist uses a Databricks notebook to gather data from SQL-accessible dataset, transforms the data into the correct format for their ML model, then uses the data to train the model.
 
 Though they do not have direct access to the data to be able to resolve issues themselves, the Data Scientist can use Soda to detect data quality issues before the data model trains on poor-quality data. The pipeline the Data Scientist creates includes various SodaCL checks embedded at two stages in the pipeline: after data ingestion and after data transformation. At the end of the process, the pipeline stores the checks' metadata in a Databricks table which feeds into a data quality dashboard. The Data Scientist utilizes Databricks workflows to schedule this process on a daily basis.
 
@@ -48,10 +49,10 @@ The Data Scientist in this example uses the following:
 
 ## Create a Soda Cloud account
 
-To validate an account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library. <a href="https://docs.soda.io/soda/about.html">Learn more</a>
+To validate an account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library.
 
 1. In a browser, the Data Scientist navigates to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a new Soda account, which is free for a 45-day trial. 
-2. They navigate to **your avatar** > **Profile**, then access the **API keys** tab, then click the plus icon to generate new API keys. 
+2. They navigate to **your avatar** > **Profile**, access the **API keys** tab, then click the plus icon to generate new API keys. 
 3. They copy+paste the API key values to a temporary, secure place in their local environment.
 
 ## Connect Soda Cloud to Soda Library and data source
@@ -104,7 +105,11 @@ Read more: [SodaCL reference]({% link soda-cl/metrics-and-checks.md %})<br />
 
 The Data Scientist creates a checks YAML file to write checks that apply to the datasets they use to train their ML model. The Data Ingestion Checks notebook runs these checks after the data is ingested into the Unity catalog. For any checks that fail, the Data Scientist can notify upstream Data Engineers or Data Product Owners to address issues such as missing data or invalid entries.
 
-Many of the checks that the Data Scientist prepares include [check attributes]({% link soda-cl/check-attributes.md %}) which they created in Soda Cloud. When added to checks, the Data Scientist can use the attributes to filter check results in Soda Cloud, build custom views ([Collections]({% link soda-cloud/collaborate.md %}#build-check-collections)), and stay organized as they monitor data quality in the Soda Cloud UI. Skip to [Review check results](#review-check-results) to see an example.
+Many of the checks that the Data Scientist prepares include [check attributes]({% link soda-cl/check-attributes.md %}) which they created in Soda Cloud; see image below. When added to checks, the Data Scientist can use the attributes to filter check results in Soda Cloud, build custom views ([Collections]({% link soda-cloud/collaborate.md %}#build-check-collections)), and stay organized as they monitor data quality in the Soda Cloud UI. Skip to [Review check results](#review-check-results) to see an example.
+
+![attributes-pipeline](/assets/images/attributes-pipeline.png){:height="700px" width="700px"}
+
+<br />
 
 The Data Scientist also added a [dataset filter]({% link soda-cl/filters.md %}#configure-dataset-filters) to the quality checks that apply to the application login data. The filter serves to partition the data against which Soda executes the checks; instead of checking for quality on the entire dataset, the filter limits the scan to the previous day's data.
 
@@ -168,7 +173,7 @@ checks for employee_survey:
  - invalid_count(EnvironmentSatisfaction) = 0:
      valid min: 1
      valid max: 5
-     name: Values are formatted are in range 1-5
+     name: Values are formatted in range 1-5
      attributes:
        dimension: [Validity]
        pipeline_stage: Ingest
@@ -188,7 +193,7 @@ checks for employee_survey:
  - invalid_count(WorkLifeBalance) = 0:
      valid min: 1
      valid max: 5
-     name: Values are formatted are in range 1-5
+     name: Values are formatted in range 1-5
      attributes:
        dimension: [Validity]
        pipeline_stage: Ingest
@@ -205,7 +210,7 @@ checks for manager_survey:
  - invalid_count(PerformanceRating) = 0:
      valid min: 1
      valid max: 5
-     name: Values are formatted are in range 1-5
+     name: Values are formatted in range 1-5
      attributes:
        dimension: [Validity]
        pipeline_stage: Ingest
@@ -340,10 +345,10 @@ The following outlines the contents of each notebook and the steps included to i
 Download: <a href="/assets/Data Ingestion Checks.ipynb" download>Data Ingestion Checks.ipynb</a>
 {% include code-header.html %}
 ```python
-# Install to run checks on data in the Unity catalog
+# Install to run checks contained in files
 pip install -i https://pypi.cloud.soda.io soda-spark-df
 
-# Install to run checks on data in the file stored in Databricks file system
+# Install to run checks on data in Unity datasets
 pip install -i https://pypi.cloud.soda.io soda-spark[databricks]
 dbutils.library.restartPython()
 
@@ -355,10 +360,10 @@ from pathlib import Path
 from datetime import datetime, timedelta
 
 # Define file directory
-settings_path = Path('/Workspace/Users/vivi.belogianni@soda.io/employee_attrition/soda_settings')
+settings_path = Path('/Workspace/Users/my_user_id/employee_attrition/soda_settings')
 
 # Define results file directory
-result_path = Path('/Workspace/Users/vivi.belogianni@soda.io/employee_attrition/checks_output')
+result_path = Path('/Workspace/Users/my_user_id/employee_attrition/checks_output')
 
 # Define the file partition
 partition = (datetime.today().date() - timedelta(days=1)).strftime("%Y-%m-%d")
@@ -370,7 +375,7 @@ scan.set_scan_definition_name("Employee Attrition Scan")
 scan.set_data_source_name("employee_info")
 
 # Add file to be scanned 
-df = spark.read.option("header", True).csv(f"dbfs:/Workspace/Users/vivi.belogianni@soda.io/employee_attrition/soda_settings/login_logout/PartitionDate={partition}")
+df = spark.read.option("header", True).csv(f"dbfs:/Workspace/Users/my_user_id/employee_attrition/soda_settings/login_logout/PartitionDate={partition}")
 
 # Create temporary View to run the checks 
 df.createOrReplaceTempView("login_logout")
@@ -410,24 +415,6 @@ metadata = scan.build_scan_results()
 scan_date = datetime.now().date().strftime("%Y-%m-%d")
 
 scan.save_scan_result_to_file(result_path/f"ingestion_result_{scan_date}.json", metadata['checks'])
-checks_data = [
-    {
-        'column': check.get('column'),
-        'dataSource': check.get('dataSource'),
-        'outcome': check.get('outcome'),
-        'name': check.get('name'),
-        'scanEndTimestamp':metadata['scanEndTimestamp'],
-    }
-    for check in metadata.get('checks', [])
-]
-
-# output_data = {
-#     'scanEndTimestamp':metadata['scanEndTimestamp'],
-#     'checks': checks_data
-# }
-import json
-checks_data_json = json.dumps(checks_data)
-scan.save_scan_result_to_file(result_path/f"test.json", checks_data_json)
 ```
 
 <br />
@@ -436,7 +423,7 @@ scan.save_scan_result_to_file(result_path/f"test.json", checks_data_json)
 Download: <a href="/assets/Input Data Checks.ipynb" download>Input Data Checks.ipynb</a>
 {% include code-header.html %}
 ```python
-# Install to run checks on data in the file stored in Databricks file system
+# Install to run checks on data in Unity datasets 
 pip install -i https://pypi.cloud.soda.io soda-spark[databricks]
 
 #restart to use updated packages
@@ -449,7 +436,7 @@ from io import StringIO
 from pathlib import Path
 
 # Define file directory
-settings_path = Path('/Workspace/Users/vivi.belogianni@soda.io/employee_attrition/soda_settings')
+settings_path = Path('/Workspace/Users/my_user_id/employee_attrition/soda_settings')
 
 # Create a scan object
 scan = Scan()
@@ -488,13 +475,24 @@ print(scan.get_logs_text())
 
 <br />
 
-## Review check results
+## Review check results in Soda Cloud
 
 After running the notebooks, the Data Scientist accesses Soda Cloud to review the check results. 
 
 In the **Checks** page, they apply filters to narrow the results to the datasets involved in the Employee Attrition ML model, and distill the results even further by selecting to display only those results with the Pipeline attribute of `Ingest`. They save the results as a Collection labeled **Employee Attrition - Ingestion** to easily access the relevant quality results in the future.
 
 ![review-ingest-results](/assets/images/review-ingest-results.png){:width="700px"}
+
+<br />
+
+## Review check results in a Unity dashboard
+
+After the Data Scientist trains the model to forecast employee attrition, they decide to devise an extra step in the process to use the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) export all the Soda check results and dataset metadata back into the Unity catalog, then build a dashboard to display the results. 
+
+*Coming soon:* a tutorial for building a dashboard using the Soda Cloud API!
+
+![unity-dashboard](/assets/images/unity-dashboard.png){:width="700px"}
+
 
 <br />
 
