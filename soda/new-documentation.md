@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### August 20, 2024
+* Published new use case guide for using Soda to test data quality in a [Databricks pipeline]({% link soda/quick-start-databricks-pipeline.md %}).
+
 #### August 19, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.25.
 

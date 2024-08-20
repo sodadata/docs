@@ -118,6 +118,7 @@ print(scan.get_logs_text())
 
 ## Go further
 
+* Use Soda to [test data in a Databricks pipeline]({% link soda/quick-start-databricks-pipeline.md %}).
 * Learn more about [SodaCL checks and metrics]({% link soda-cl/metrics-and-checks.md %}).
 * Access instructions to [Generate API Keys]({% link soda-cloud/api-keys.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
