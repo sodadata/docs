@@ -35,7 +35,7 @@ You can set up Soda in one of four flavors:
 | Flavor | Description | Soda<br />Library | Soda<br />Agent | Soda<br />Cloud |
 | ----- | ----------- | :--: | :--: | :--: |
 | [Self-operated](#self-operated) | A simple setup in which you install Soda Library locally and connect it to Soda Cloud via API keys. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
-| [Soda-hosted agent](#soda-hosted-agent) | ***Recommended*** <br />A setup in which you manage data quality entirely from your Soda Cloud account. |  | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+| [Soda-hosted agent](#soda-hosted-agent) | ***Recommended*** <br />A Saas-style setup in which you manage data quality entirely from your Soda Cloud account. |  | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 | [Self-hosted agent](#self-hosted-agent)<br /> | A setup in which you deploy a Soda Agent in a Kubernetes cluster in a cloud-services environment and connect it to Soda Cloud via different API keys. |   | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 | [Programmatic](#programmatic) | A setup in which you invoke Soda Library programmatically. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
 
@@ -84,7 +84,8 @@ Use this setup for:<br />
 Soda hosts agents in a secure environment in Amazon AWS. As a SOC 2 Type 2 certified business, Soda responsibly manages Soda-hosted agents to ensure that they remain private, secure, and independent of all other hosted agents. See [Data security and privacy]({% link soda/data-privacy.md %}#using-a-soda-hosted-agent) for details.
 
 Requirements:
-* Login credentials for your data source (BigQuery, Databricks SQL, MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake)
+* Login credentials for your data source (BigQuery, Databricks SQL, MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake); Soda securely stores passwords as <a href="https://kubernetes.io/docs/concepts/configuration/secret/" target="_blank">Kubernetes secrets</a>
+
 
 ![with-managed-agent](/assets/images/with-managed-agent.png){:height="60px" width="600px"}
 
@@ -106,6 +107,8 @@ Use this setup for:<br />
 Requirements:
 * Access to your cloud-services environment, plus the authorization to deploy containerized apps in a new or existing Kubernetes cluster
 * Login credentials for your data source (Snowflake, Athena, MS SQL Server, etc.)
+* Access for scheduled maintenance to the Kubernetes to upgrade a self-hosted Soda Agent as Soda releases new verions
+* Ability to arrange frequent access to stored secrets that enable Soda to access data sources (consider frequently-rotated passwords)
 
 ![with-agent](/assets/images/with-agent.png){:height="60px" width="600px"}
 
