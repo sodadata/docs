@@ -32,15 +32,15 @@ Use this guide as an example for how to set up and use Soda to test the quality 
 
 ## About this guide
 
-The instructions below offer Data Scientists an example of how to execute Soda Checks Language (SodaCL) checks for data quality within a Databricks pipeline that handles data which trains a machine learning (ML) model.
+The instructions below offers an example of how to execute Soda Checks Language (SodaCL) checks for data quality within a Databricks pipeline that handles data which trains a machine learning (ML) model.
 
-For context, this guide demonstrates a Data Scientist working with Human Resources data to build a forecast model for employee attrition. The Data Scientist uses a Databricks notebook to gather data from SQL-accessible dataset, transforms the data into the correct format for their ML model, then uses the data to train the model.
+For context, this guide demonstrates a Data Scientist and Data Engineer working with Human Resources data to build a forecast model for employee attrition. The Data Engineer, working with a Data Scientist, uses a Databricks notebook to gather data from SQL-accessible dataset, transforms the data into the correct format for their ML model, then uses the data to train the model.
 
-Though they do not have direct access to the data to be able to resolve issues themselves, the Data Scientist can use Soda to detect data quality issues before the data model trains on poor-quality data. The pipeline the Data Scientist creates includes various SodaCL checks embedded at two stages in the pipeline: after data ingestion and after data transformation. At the end of the process, the pipeline stores the checks' metadata in a Databricks table which feeds into a data quality dashboard. The Data Scientist utilizes Databricks workflows to schedule this process on a daily basis.
+Though they do not have direct access to the data to be able to resolve issues themselves, the Data Engineer can use Soda to detect data quality issues before the data model trains on poor-quality data. The pipeline the Data Engineer creates includes various SodaCL checks embedded at two stages in the pipeline: after data ingestion and after data transformation. At the end of the process, the pipeline stores the checks' metadata in a Databricks table which feeds into a data quality dashboard. The Data Engineer utilizes Databricks workflows to schedule this process on a daily basis.
 
 ## Prerequisites
 
-The Data Scientist in this example uses the following:
+The Data Engineer in this example uses the following:
 * Python 3.8, 3.9, or 3.10
 * Pip 21.0 or greater
 * a Databricks account 
@@ -51,17 +51,17 @@ The Data Scientist in this example uses the following:
 
 To validate an account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library.
 
-1. In a browser, the Data Scientist navigates to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a new Soda account, which is free for a 45-day trial. 
+1. In a browser, the Data Engineer navigates to <a href="https://cloud.soda.io/signup" target="_blank">cloud.soda.io/signup</a> to create a new Soda account, which is free for a 45-day trial. 
 2. They navigate to **your avatar** > **Profile**, access the **API keys** tab, then click the plus icon to generate new API keys. 
 3. They copy+paste the API key values to a temporary, secure place in their local environment.
 
 ## Connect Soda Cloud to Soda Library and data source
 
-1. Within Databricks, the Data Scientist creates two notebooks:
+1. Within Databricks, the Data Engineer creates two notebooks:
 * **Data Ingestion Checks**, which runs scans for data quality after data is ingested into a Unity catalog 
 * **Input Data Checks**, which prepares data for training a machine learning model and runs data quality scans before submitting to the model for training
-2. In the same directory as the Databricks notebooks, the Data Scientist creates a `soda_settings` directory to contain this configuration file, and, later, the check YAML files that Soda needs to run scans. To connect Soda to the Unity catalog, the Data Scientist prepares a `soda_conf.yml` file which stores the data source connection details.  
-3. To the file, they add the data source connection configuration to the Unity catalog that contains the Human Resources data the Data Scientist uses, and the Soda Cloud API key connection configuration, then they save the file. 
+2. In the same directory as the Databricks notebooks, the Data Engineer creates a `soda_settings` directory to contain this configuration file, and, later, the check YAML files that Soda needs to run scans. To connect Soda to the Unity catalog, the Data Engineer prepares a `soda_conf.yml` file which stores the data source connection details.  
+3. To the file, they add the data source connection configuration to the Unity catalog that contains the Human Resources data the Data Engineer uses, and the Soda Cloud API key connection configuration, then they save the file. 
 {% include code-header.html %}
 ```yaml
 data_source employee_info:
@@ -90,7 +90,7 @@ Read more: [How Soda works]({% link soda-library/how-library-works.md %})  <br /
 
 A check is a test that Soda executes when it scans a dataset in your data source. The `checks.yml` file stores the checks you write using the Soda Checks Language. You can create multiple checks files to organize your data quality checks and run all, or some of them, at scan time.
 
-In this example, the Data Scientist creates two checks files in the `soda_settings` directory in Databricks:
+In this example, the Data Engineer creates two checks files in the `soda_settings` directory in Databricks:
 * `ingestion_checks.yml` to execute quality checks after data ingestion into the Unity catalog in the Data Ingestion Checks notebook
 * `input_data_checks.yml` to execute quality checks after transformation, and before using it to train their ML model in the Input Data Checks notebook. 
 
@@ -103,15 +103,15 @@ Read more: [SodaCL reference]({% link soda-cl/metrics-and-checks.md %})<br />
 
 ### Post-ingestion checks
 
-The Data Scientist creates a checks YAML file to write checks that apply to the datasets they use to train their ML model. The Data Ingestion Checks notebook runs these checks after the data is ingested into the Unity catalog. For any checks that fail, the Data Scientist can notify upstream Data Engineers or Data Product Owners to address issues such as missing data or invalid entries.
+The Data Engineer creates a checks YAML file to write checks that apply to the datasets they use to train their ML model. The Data Ingestion Checks notebook runs these checks after the data is ingested into the Unity catalog. For any checks that fail, the Data Engineer can notify upstream Data Engineers or Data Product Owners to address issues such as missing data or invalid entries.
 
-Many of the checks that the Data Scientist prepares include [check attributes]({% link soda-cl/check-attributes.md %}) which they created in Soda Cloud; see image below. When added to checks, the Data Scientist can use the attributes to filter check results in Soda Cloud, build custom views ([Collections]({% link soda-cloud/collaborate.md %}#build-check-collections)), and stay organized as they monitor data quality in the Soda Cloud UI. Skip to [Review check results](#review-check-results) to see an example.
+Many of the checks that the Data Engineer prepares include [check attributes]({% link soda-cl/check-attributes.md %}) which they created in Soda Cloud; see image below. When added to checks, the Data Engineer can use the attributes to filter check results in Soda Cloud, build custom views ([Collections]({% link soda-cloud/collaborate.md %}#build-check-collections)), and stay organized as they monitor data quality in the Soda Cloud UI. Skip to [Review check results](#review-check-results) to see an example.
 
 ![attributes-pipeline](/assets/images/attributes-pipeline.png){:height="700px" width="700px"}
 
 <br />
 
-The Data Scientist also added a [dataset filter]({% link soda-cl/filters.md %}#configure-dataset-filters) to the quality checks that apply to the application login data. The filter serves to partition the data against which Soda executes the checks; instead of checking for quality on the entire dataset, the filter limits the scan to the previous day's data.
+The Data Engineer also added a [dataset filter]({% link soda-cl/filters.md %}#configure-dataset-filters) to the quality checks that apply to the application login data. The filter serves to partition the data against which Soda executes the checks; instead of checking for quality on the entire dataset, the filter limits the scan to the previous day's data.
 
 ingestion_checks.yml
 {% include code-header.html %}
@@ -259,9 +259,9 @@ checks for login_logout [daily]:
 
 ## Post-transformation checks
 
-The Data Scientists also prepared a second set of SodaCL checks in a separate file to run after transformation in the Input Data Checks notebook. Curious readers can download the <a href="/assets/Data Ingestion Checks.ipynb" download>ETL notebook.ipynb</a> to review transformations and the resulting `input_data_attrition_model` output into a DataFrame.
+The Data Engineer also prepared a second set of SodaCL checks in a separate file to run after transformation in the Input Data Checks notebook. Curious readers can download the <a href="/assets/Data Ingestion Checks.ipynb" download>ETL notebook.ipynb</a> to review transformations and the resulting `input_data_attrition_model` output into a DataFrame.
 
-Two of the checks the Data Scientist prepares involve checking groups of data.  The [group evolution check]({% link soda-cl/group-evolution.md %}) validates the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state; in this case, it confirms the presence of the `Married` group in the data, and when any group changes. Further, the [group by check]({% link soda-cl/group-by.md %}) collects and presents check results by category; in this case, it groups the results according to `JobLevel`.
+Two of the checks the Data Engineer prepares involve checking groups of data.  The [group evolution check]({% link soda-cl/group-evolution.md %}) validates the presence or absence of a group in a dataset, or to check for changes to groups in a dataset relative to their previous state; in this case, it confirms the presence of the `Married` group in the data, and when any group changes. Further, the [group by check]({% link soda-cl/group-by.md %}) collects and presents check results by category; in this case, it groups the results according to `JobLevel`.
 
 input_data_checks.yml
 {% include code-header.html %}
@@ -335,7 +335,7 @@ checks for input_data_attrition_model [daily]:
 
 ## Invoke Soda in Databricks notebooks
 
-At the [beginning](#connect-soda-cloud-to-soda-library-and-data-source) of this exercise, the Data Scientist created two notebooks in their Databricks workflow:
+At the [beginning](#connect-soda-cloud-to-soda-library-and-data-source) of this exercise, the Data Engineer created two notebooks in their Databricks workflow:
 * **Data Ingestion Checks** to run after data is ingested into the Unity catalog
 * **Input Data Check** to run after transformation, and before using the data to train the ML model
 
@@ -477,7 +477,7 @@ print(scan.get_logs_text())
 
 ## Review check results in Soda Cloud
 
-After running the notebooks, the Data Scientist accesses Soda Cloud to review the check results. 
+After running the notebooks, the Data Engineer accesses Soda Cloud to review the check results. 
 
 In the **Checks** page, they apply filters to narrow the results to the datasets involved in the Employee Attrition ML model, and distill the results even further by selecting to display only those results with the Pipeline attribute of `Ingest`. They save the results as a Collection labeled **Employee Attrition - Ingestion** to easily access the relevant quality results in the future.
 
@@ -487,7 +487,7 @@ In the **Checks** page, they apply filters to narrow the results to the datasets
 
 ## Review check results in a Unity dashboard
 
-After the Data Scientist trains the model to forecast employee attrition, they decide to devise an extra step in the process to use the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) export all the Soda check results and dataset metadata back into the Unity catalog, then build a dashboard to display the results. 
+After the Data Engineer trains the model to forecast employee attrition, they decide to devise an extra step in the process to use the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) export all the Soda check results and dataset metadata back into the Unity catalog, then build a dashboard to display the results. 
 
 *Coming soon:* a tutorial for building a dashboard using the Soda Cloud API!
 
