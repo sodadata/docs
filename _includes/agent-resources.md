@@ -28,8 +28,8 @@ soda:
     resources:
       limits:
         cpu: 250m
-        memory: 250Mi
+        memory: 375Mi
       requests:
         cpu: 250m
-        memory: 250Mi
+        memory: 375Mi
 ```
