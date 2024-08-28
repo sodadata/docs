@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### August 28, 2024
+* Updated documentation to [clarify]({% link soda/setup-guide.md %}#soda-hosted-vs-self-hosted-agent) when to deploy a self-hosted vs. Soda-hosted agent. 
+
 #### August 20, 2024
 * Published new use case guide for using Soda to test data quality in a [Databricks pipeline]({% link soda/quick-start-databricks-pipeline.md %}).
 

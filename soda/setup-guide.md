@@ -28,14 +28,12 @@ As the first step in the **Get started roadmap**, this guide helps you decide ho
 
 ## Choose a flavor of Soda
 
-This guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. See also: [Soda product overview]({% link soda/product-overview.md %}).
-
-You can set up Soda in one of four flavors: 
+This guide helps you decide how to set up Soda to best meet your data quality testing and monitoring needs. You can set up Soda in one or more of four flavors. 
 
 | Flavor | Description | Soda<br />Library | Soda<br />Agent | Soda<br />Cloud |
 | ----- | ----------- | :--: | :--: | :--: |
 | [Self-operated](#self-operated) | A simple setup in which you install Soda Library locally and connect it to Soda Cloud via API keys. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
-| [Soda-hosted agent](#soda-hosted-agent) | ***Recommended*** <br />A setup in which you manage data quality entirely from your Soda Cloud account. |  | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
+| [Soda-hosted agent](#soda-hosted-agent) | ***Recommended*** <br />A Saas-style setup in which you manage data quality entirely from your Soda Cloud account. |  | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 | [Self-hosted agent](#self-hosted-agent)<br /> | A setup in which you deploy a Soda Agent in a Kubernetes cluster in a cloud-services environment and connect it to Soda Cloud via different API keys. |   | ![done](/assets/images/done.png){:width="20px"} | ![done](/assets/images/done.png){:width="20px"} |
 | [Programmatic](#programmatic) | A setup in which you invoke Soda Library programmatically. | ![done](/assets/images/done.png){:width="20px"} |   | ![done](/assets/images/done.png){:width="20px"} |
 
@@ -73,6 +71,8 @@ Requirements:
 
 This setup provides a secure, out-of-the-box Soda Agent to manage access to data sources from within your Soda Cloud account. Quickly configure connections to your data sources in the Soda Cloud user interface, then empower all your colleagues to explore datasets, access check results, customize collections, and create their own no-code checks for data quality.
 
+See also: [Soda-hosted vs. self-hosted agent](#soda-hosted-vs-self-hosted-agent)
+
 Use this setup for:<br /> 
 ✅ **A quick start**: Use the out-of-the-box agent to start testing data quality right away from within the Soda Cloud user interface, without the need to install or deploy any other tools. <br />
 ✅ **Anomaly detection dashboard**: ![preview](/assets/images/preview.png){:height="45px" width="45px" style="vertical-align:baseline"} Use Soda's out-of-the-box **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. See: [Add anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %})<br />
@@ -84,7 +84,8 @@ Use this setup for:<br />
 Soda hosts agents in a secure environment in Amazon AWS. As a SOC 2 Type 2 certified business, Soda responsibly manages Soda-hosted agents to ensure that they remain private, secure, and independent of all other hosted agents. See [Data security and privacy]({% link soda/data-privacy.md %}#using-a-soda-hosted-agent) for details.
 
 Requirements:
-* Login credentials for your data source (BigQuery, Databricks SQL, MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake)
+* Login credentials for your data source (BigQuery, Databricks SQL, MS SQL Server, MySQL, PostgreSQL, Redshift, or Snowflake); Soda securely stores passwords as <a href="https://kubernetes.io/docs/concepts/configuration/secret/" target="_blank">Kubernetes secrets</a>
+
 
 ![with-managed-agent](/assets/images/with-managed-agent.png){:height="60px" width="600px"}
 
@@ -94,7 +95,9 @@ Requirements:
 
 This setup enables a data or infrastructure engineer to deploy Soda Library as an agent in a Kubernetes cluster within a cloud-services environment such as Google Cloud Platform, Azure, or AWS. 
 
-The engineer can manage access to data sources while giving Soda Cloud end-users easy access to Soda check results and enabling them to write their own checks for data quality. Users connect to data sources and create no-code checks for data quality directly in the Soda Cloud user interface.
+The engineer can manage access to data sources while giving Soda Cloud end-users easy access to Soda check results and enabling them to write their own checks for data quality. Users connect to data sources and create no-code checks for data quality directly in the Soda Cloud user interface. 
+
+See also: [Soda-hosted vs. self-hosted agent](#soda-hosted-vs-self-hosted-agent)
 
 Use this setup for:<br />
 ✅ **Self-serve data quality**: Empower data analysts and scientists to self-serve and create their own checks for data quality. See: [Self-serve Soda]({% link soda/quick-start-end-user.md %})<br />
@@ -129,6 +132,18 @@ Requirements:
 ![programmatic](/assets/images/programmatic.png){:height="500px" width="500px"}
 
 <br />
+
+#### Soda-hosted vs. self-hosted agent
+
+Though similar, the type of Soda agent you choose to use depends upon the following factors.
+
+| Factor | Soda-hosted agent | Self-hosted agent |
+|----| ----------------- | ----------------- |
+| Data source compatibility | Compatible with a [limited subset]({% link soda-agent/managed-agent.md %}#compatibility) of Soda-supported data sources. | Compatible with [nearly all]({% link soda-agent/deploy.md %}#compatibility) Soda-supported data sources. |
+| Upgrade maintenance | Soda manages all upgrades to the latest available version of the Soda Agent. | You manage all upgrades to your Soda Agent deployed on your Kubernetes cluster. |
+| External Secrets manager integration | Unable to integrate with an External Secrets manager. | Able to [integrate]({% link soda-agent/secrets.md %}l#integrate-with-a-secrets-manager) with an External Secrets manager (Hashicorp Vault, Azure Key Vault, etc.) to better manage frequently-rotated login credentials. |
+
+<!--| Network connectivity | ??  | Easy, secure access to data sources only available within your private cloud or on premise networks |-->
 
 ## Next
 
