@@ -43,6 +43,8 @@
     page: soda/quick-start-automate.md
   - subtitle: 'How to: Invoke Soda in Databricks'
     page: soda/quick-start-databricks.md
+  - subtitle: 'How to: Invoke Soda in Synapse'
+    page: soda/quick-start-adf.md
   - subtitle: 'How to: Add a Secrets Manager'
     page: soda/quick-start-secrets.md
   - subtitle: 'How to: Generate API Keys'
