@@ -13,6 +13,7 @@ Use the following guides as example implementations based on how you intend to u
 | Guide | Description | [Soda product]({% link soda/product-overview.md %}) <br/>requirements |
 | ----- | ----------- | ------------ |
 | [Test data in a pipeline]({% link soda/quick-start-prod.md %}) | Use this guide as an example for how to set up Soda to test the quality of your data in an Airflow pipeline that uses dbt transformations.| Soda Library<br /> Soda Cloud |
+| [Test data quality in an ADF pipeline]({% link soda/quick-start-adf.md %}) | Learn how to invoke Soda data quality tests in an ETL pipeline in Azure Data Factory. | Soda Library<br /> Soda Cloud |
 | [Test data quality in Databricks pipeline]({% link soda/quick-start-databricks-pipeline.md %}) | Learn how to use Databricks notesbooks with Soda to test data quality before feeding a machine learning model. | Soda Library<br /> Soda Cloud |
 | [Test data before migration]({% link soda/quick-start-migration.md %}) | Use this guide to set up Soda to test before and after data migration between data sources. |  Soda Library<br /> Soda Cloud |
 | [Self-serve Soda]({% link soda/quick-start-end-user.md %}) | Use this guide to set up Soda Cloud to enable users across your organization to serve themselves when it comes to testing data quality. | Soda Cloud<br /> Soda Agent |
@@ -26,7 +27,7 @@ Use the following How tos for practical advice, examples, and instructions for u
 | How to | Description | [Soda product]({% link soda/product-overview.md %}) <br/>requirements |
 | ----- | ----------- | ------------ |
 | [Invoke Soda in Databricks]({% link soda/quick-start-databricks.md %}) | Learn how to invoke Soda data quality tests in a Databricks notebook. | Soda Library<br /> Soda Cloud |
-| [Add a Secrets Manager]({% link soda/quick-start-secrets.md %}) | Learn how to set up a Soda Agent to use an External Secrets Manager to retrieve frequently-rotated data source passwords.| Soda Cloud<br /> Self-hosted Agent |
+| [Use a Secrets Manager]({% link soda/quick-start-secrets.md %}) | Learn how to set up a Soda Agent to use an External Secrets Manager to retrieve frequently-rotated data source passwords.| Soda Cloud<br /> Self-hosted Agent |
 | [Generate API keys]({% link soda-cloud/api-keys.md %}) | Learn how to use Soda Cloud API keys to securely communicate with other entities such as Soda Library and self-hosted Soda Agents, and to provide secure access to Soda Cloud via API. | Soda Cloud |
 | [Manage sensitive data]({% link soda/sensitive-data.md %}) | Learn how to adjust several configurable settings that help you manage access to sensitive data in Soda Cloud. | Soda Cloud | 
 | [Reroute failed row samples]({% link soda/route-failed-rows.md %}) | Learn how to programmatically set up Soda Library to display failed row samples in the command-line. | Soda Library<br /> Soda Cloud |

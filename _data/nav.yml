@@ -31,6 +31,8 @@
     page: soda/use-case-guides.md 
   - subtitle: Test data in a pipeline
     page: soda/quick-start-prod.md
+  - subtitle: Test data in an ADF pipeline
+    page: soda/quick-start-adf.md
   - subtitle: Test data in a Databricks pipeline
     page: soda/quick-start-databricks-pipeline.md
   - subtitle: Test before data migration

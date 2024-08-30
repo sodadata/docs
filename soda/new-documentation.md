@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### August 29, 2024
+* Published new use case guide for using Soda to test data quality in an [Azure Data Factory pipeline]({% link soda/quick-start-adf.md %}).
+
 #### August 28, 2024
 * Updated documentation to [clarify]({% link soda/setup-guide.md %}#soda-hosted-vs-self-hosted-agent) when to deploy a self-hosted vs. Soda-hosted agent. 
 
