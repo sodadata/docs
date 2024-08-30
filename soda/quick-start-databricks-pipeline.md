@@ -105,7 +105,7 @@ Read more: [SodaCL reference]({% link soda-cl/metrics-and-checks.md %})<br />
 
 The Data Engineer creates a checks YAML file to write checks that apply to the datasets they use to train their ML model. The Data Ingestion Checks notebook runs these checks after the data is ingested into the Unity catalog. For any checks that fail, the Data Engineer can notify upstream Data Engineers or Data Product Owners to address issues such as missing data or invalid entries.
 
-Many of the checks that the Data Engineer prepares include [check attributes]({% link soda-cl/check-attributes.md %}) which they created in Soda Cloud; see image below. When added to checks, the Data Engineer can use the attributes to filter check results in Soda Cloud, build custom views ([Collections]({% link soda-cloud/collaborate.md %}#build-check-collections)), and stay organized as they monitor data quality in the Soda Cloud UI. Skip to [Review check results](#review-check-results) to see an example.
+Many of the checks that the Data Engineer prepares include [check attributes]({% link soda-cl/check-attributes.md %}) which they created in Soda Cloud; see image below. When added to checks, the Data Engineer can use the attributes to filter check results in Soda Cloud, build custom views ([Collections]({% link soda-cloud/collaborate.md %}#build-check-collections)), and stay organized as they monitor data quality in the Soda Cloud user interface. Skip to [Review check results](#review-check-results) to see an example.
 
 ![attributes-pipeline](/assets/images/attributes-pipeline.png){:height="700px" width="700px"}
 
