@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### September 4, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.0 and Soda Agent 1.1.26.
+
 #### August 29, 2024
 * Published new use case guide for using Soda to test data quality in an [Azure Data Factory pipeline]({% link soda/quick-start-adf.md %}).
 
