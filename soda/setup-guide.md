@@ -121,7 +121,7 @@ Use this setup to invoke Soda programmatically in, for example, and Airflow DAG 
 
 Use this setup for:<br />
 ✅ **Testing during development**: Test data before and after ingestion and transformation during development.  See: [Test data during development]({% link soda/quick-start-dev.md %}) <br />
-✅ **Circuit-breaking in a pipeline**: Test data in a pipeline so as to enable circuit breaking that prevents bad-quality data from having a downstream impact. See: [Test data in production]({% link soda/quick-start-prod.md %})<br />
+✅ **Circuit-breaking in a pipeline**: Test data in an Airflow pipeline so as to enable circuit breaking that prevents bad-quality data from having a downstream impact. See: [Test data in production]({% link soda/quick-start-prod.md %})<br />
 ✅ **Databricks Notebook**: Invoke Soda data quality scans in a Databricks Notebook. See: [Add Soda to a Databricks notebook]({% link soda/quick-start-databricks.md %})<br />
 
 Requirements:

@@ -29,7 +29,7 @@
   subcategories:
   - subtitle: Use case guides
     page: soda/use-case-guides.md 
-  - subtitle: Test data in a pipeline
+  - subtitle: Test data in an Airflow pipeline
     page: soda/quick-start-prod.md
   - subtitle: Test data in an ADF pipeline
     page: soda/quick-start-adf.md
@@ -39,10 +39,10 @@
     page: soda/quick-start-databricks-pipeline.md
   - subtitle: Test before data migration
     page: soda/quick-start-migration.md
-  - subtitle: Self-serve Soda
-    page: soda/quick-start-end-user.md
   - subtitle: Test data during development
     page: soda/quick-start-dev.md
+  - subtitle: Self-serve Soda
+    page: soda/quick-start-end-user.md
   - subtitle: Automate anomaly detection
     page: soda/quick-start-automate.md
   - subtitle: 'How to: Invoke Soda in Databricks'

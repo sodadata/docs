@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Test data quality in a data pipeline
+title: Test data quality in an Airflow data pipeline
 description: Follow this guide to set up and run scheduled Soda scans for data quality in your Airflow data pipeline.
 parent: Use case guides
 ---
 
-# Test data quality in a data pipeline
+# Test data quality in an Airflow data pipeline
 <!--Linked to via Shlink-->
 *Last modified on {% last_modified_at %}*
 
