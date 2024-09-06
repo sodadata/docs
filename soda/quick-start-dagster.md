@@ -265,17 +265,157 @@ checks for orders:
 
 ## Prepare pre-ingestion checks
 
-In the assets.py file, the DE can begin defining the first assets under the @asset decorator.
-They start with an ingestion check to load the S3 data into dataframes, and run the checks on them before they are loaded onto Redshift. Since they are dealing with sensitive customer info, the DE opted to use Soda’s custom sampler in order to send the failed records back to S3 instead of the Soda Cloud. This can all be done using the Soda Library programmatically. The DE will use the just created config.yml with the API keys and the checks.yml with all the SodaCL to execute the scans.
+In the `assets.py` file of their Dagster project, the Data Engineer begins defining the first assets under the `@asset` decorator. Consult the <a href="https://docs.dagster.io/concepts/assets/software-defined-assets#defining-assets" target="_blank">Dagster documentation</a> for details.
+
+The script loads the S3 data into a DataFrame, then runs the pre-ingestion checks on the data. Because the data contains sensitive customer information, the Data Engineer also includes a [Soda custom sampler]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) which sends failed row samples for checks that fail back to an S3 bucket instead of automatically pushing them to Soda Cloud. To execute the scan programmatically, the script references two files that Soda uses:
+* the `congifuation.yml` file which contains the Soda Cloud API key values that Soda Library need to validate the user licence before executing a scan, and 
+* the `checks.yml` file which contains all the pre-ingestion SodaCL checks that the Data Engineer prepared.
+
+{% include code-header.html %}
+```python
+import s3fs
+import boto3
+import pandas as pd
+from soda.scan import Scan
+from soda.sampler import Sampler
+from soda.sampler.sample_contex import SampleContext
+from dagster import asset, Output, get_dagster_logger, MetaDataValue
+
+
+
+
+# Create a class for a Soda Custom Sampler
+class CustomSampler(Sampler):
+    def store_sample(self, sample_context: SampleContext):
+        rows = sample_context.sample.get_rows()
+        json_data = json.dumps(rows) # Convert failed row samples to JSON
+        exceptions_df = pd.read_json(json_data) # Create a DataFrame with failed rows samples
+        # Define exceptions DataFrame
+        exceptions_schema = sample_context.sample.get_schema().get_dict()
+        exception_df_schema = []
+        for n in exceptions_schema:
+            exception_df_schema.append(n["name"])
+        exceptions_df.columns = exception_df_schema
+        check_name = sample_context.check_name
+        exceptions_df['failed_check'] = check_name
+        exceptions_df['created_at'] = datetime.now()
+        exceptions_df.to_csv(check_name+".csv", sep=",", index=False, encoding="utf-8")
+        bytestowrite = exceptions_df.to_csv(None).encode()
+	# Write the failed row samples CSV file to S3
+        fs = s3fs.S3FileSystem(key=AWS_ACCESS_KEY, secret=AWS_SECRET_KEY)
+        with fs.open(f's3://BUCKET-NAME/PATH/{check_name}.csv', 'wb') as f:
+          f.write(bytestowrite)
+        get_dagster_logger().info(f'Successfuly sent failed rows to {check_name}.csv ')
+
+@asset(compute_kind='python')
+def ingestion_checks(context):
+
+
+
+	# Initiate the client
+    s3 = boto3.client('s3')
+    dataframes = {}
+
+    for i, file_key in enumerate(FILE_KEYS, start=1):
+        try:
+            # Read the file from S3
+            response = s3.get_object(Bucket=BUCKET_NAME, Key=file_key)
+            file_content = response['Body']
+
+            # Load CSV into DataFrame
+            df = pd.read_csv(file_content)
+            dataframes[i] = df
+            get_dagster_logger().info(f"Successfully loaded DataFrame for {file_key} with {len(df)} rows.")
+            
+        except Exception as e:
+            get_dagster_logger().error(f"Error loading {file_key}: {e}")
+    failed_rows_cloud= 'false'
+    # Execute a Soda scan
+    scan = Scan()
+    scan.set_scan_definition_name('Soda Dagster Demo')
+    scan.set_data_source_name('soda-dagster')
+   dataset_names = [
+    'customers', 'orders',
+    'stocks', 'stores'
+]
+
+# Add DataFrames to Soda scan in a loop
+    try:
+        for i, dataset_name in enumerate(dataset_names, start=1):
+            scan.add_pandas_dataframe(
+                dataset_name=dataset_name,
+                pandas_df=dataframes[i],
+                data_source_name='soda-dagster'
+            )
+    except KeyError as e:
+        get_dagster_logger().error(f"DataFrame missing for index {e}. Check if all files are loaded correctly.")
+
+# Add the configuration YAML file
+    scan.add_configuration_yaml_file('path/config.yml') 
+# Add the SodaCL checks YAML file
+    scan.add_sodacl_yaml_str('path/checks.yml')
+    if failed_rows_cloud == 'false':
+        scan.sampler= CustomSampler()
+    scan.execute() # Runs the scan
+    logs = scan.get_logs_text()
+
+    scan_results = scan.get_scan_results()
+    context.log.info("Scan executed successfully.")
+    get_dagster_logger().info(scan_results)
+    get_dagster_logger().info(logs)
+    scan.assert_no_checks_fail() # Terminate the pipeline if any checks fail
+
+    return Output(
+        value=scan_results, 
+        metadata={
+            "scan_results": MetadataValue.json(scan_results),
+            'logs':MetadataValue.json(logs)  # Save the results as JSON 
+        },
+    )
+```
 
 
 ## Load data into Redshift and define staging transformations
 
+After all SodaCL checks pass, indicating that the data quality is good, the next step in the Dagster pipeline loads the data from the S3 bucket into Amazon Redshift. As the Redshift data source is connected to Soda Cloud, both Data Engineers and Data Analysts in the Soda Cloud account can access the data and prepare no-code SodaCL checks to test data for quality.
+
+Refer to the <a href="https://github.com/HazemEldabaa/soda-dagster-demo" target="_blank">file in GitHub</a> to view details.
+
+The Data Engineer then defines the dbt models that transform the data and which run under the `@dbt_assets` decorator in the staging environment.
+
+{% include code-header.html %}
+```python
+from dagster_dbt import DbtCliResource, dbt_assets
+from dagster import AssetExecutionContext
+from .project import dbt_project
+
+# Select argument selects only models in the models/staging/ directory 
+
+@dbt_assets(select='staging', manifest=dbt_project.manifest_path)
+def dbt_staging(context: AssetExecutionContext, dbt: DbtCliResource):
+    yield from dbt.cli(["build"],context=context, manifest=dbt_project.manifest_path).stream()
+```
+
+<br />
 
 ## Write post-transformation checks for data quality
 
-Invite Data Analyst colleagues to write no-code checks...
+With the transformed data available in Redshift, in a staging environment, the Data Engineer invites their Data Analyst colleagues to define their own [no-code checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) for data quality. 
 
+The Data Analysts in the organization know their data the best, particularly the data feeding their reports and dashboards. However, as they prefer not to write code -- SQL, Python, or SodaCL -- Soda Cloud offers them a UI-based experience to define the data quality tests they know are required.
+
+![no-code-dagster](/assets/images/no-code-dagster.png){:height="700px" width="700px"}
+
+
+When they create a check for a dataset in Soda Cloud, they also select a scan definition in which to include their check. The [scan definition]({% link soda/glossary.md %}#scan-definition) is what Soda uses to run regularly-scheduled scans of data. For example, a scan definition may instruct Soda to use the Soda-hosted agent connected to a Redshift data source to execute the checks associated to it every day at 07:00 UTC. The creator of a no-code check can select an existing scan definition, or choose to create a new one to define a schedule that runs at a different time of day, or at a different frequency. 
+
+## Trigger a Soda scan via API
+
+## Transform data in production
+
+## Export data quality test results
+
+## Wire together with definitions.py
 
 ## Go further
 
