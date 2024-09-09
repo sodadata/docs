@@ -29,13 +29,13 @@
   subcategories:
   - subtitle: Use case guides
     page: soda/use-case-guides.md 
-  - subtitle: Test data in an Airflow pipeline
+  - subtitle: Test data in Airflow
     page: soda/quick-start-prod.md
-  - subtitle: Test data in an ADF pipeline
+  - subtitle: Test data in ADF
     page: soda/quick-start-adf.md
-  - subtitle: Test data in a Dagster pipeline
+  - subtitle: Test data in Dagster
     page: soda/quick-start-dagster.md
-  - subtitle: Test data in a Databricks pipeline
+  - subtitle: Test data in Databricks
     page: soda/quick-start-databricks-pipeline.md
   - subtitle: Test before data migration
     page: soda/quick-start-migration.md

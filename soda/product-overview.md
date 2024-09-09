@@ -91,7 +91,7 @@ Soda makes the results available in the command-line and in your online account,
 
 You can programmatically embed Soda scan executions in your data pipeline after ingestion and transformation to get early and precise warnings in Soda about data quality issues before they have a downstream impact. Upon receiving a data quality alert in Slack, for example, your team can take quick action in Soda Cloud to identify the issue and open an incident to investigate the root cause. See [Test data quality in a data pipeline]({% link soda/quick-start-prod.md %}).
 
-![data-pipeline](/assets/images/data-pipeline.png){:width="700px"}
+![airflow-pipeline](/assets/images/airflow-pipeline.png){:width="700px"}
 
 <br />
 
