@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Test data quality in a Databricks pipeline
-description: Use this guide to invoke Soda data quality tests in a Databricks pipeline.
+description: Use this guide as an example of how to invoke Soda data quality tests in a Databricks pipeline.
 parent: Use case guides
 ---
 

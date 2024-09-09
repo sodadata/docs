@@ -16,7 +16,7 @@ Integrate Soda Library with a data orchestration tool such as, Airflow, to autom
 
 Configure actions that the orchestration tool can take based on scan output. For example, if the output of a scan reveals a large number of failed tests, the orchestration tool can automatically block "bad" data from contaminating your data pipeline.
 
-📚 Consider following the [Test data in a pipeline]({% link soda/quick-start-prod.md %}) guide for specific details about embedding Soda tests in an Airflow pipeline. <br />
+📚 Consider following the [Test data in an Airflow pipeline]({% link soda/quick-start-prod.md %}) guide for specific details about embedding Soda tests in an Airflow pipeline. <br />
 🎥 Consider following a 30-minute Astronomer tutorial for <a href="https://www.youtube.com/watch?v=YZTcIi5o7FI" target="_blank">Data Quality Checks with Airflow, Snowflake and Soda</a>.
 
 ## About Soda and Airflow
@@ -190,7 +190,7 @@ A contribution from our Soda Community, read the documentation for the <a href="
 ## Go further
 
 * Learn more about the [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) you can use to check for data quality.
-* Follow an example implementation in [Test data in a pipeline]({% link soda/quick-start-prod.md %}).
+* Follow an example implementation in [Test data in an Airflow pipeline]({% link soda/quick-start-prod.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

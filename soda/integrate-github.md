@@ -156,7 +156,7 @@ checks for retail_orders:
 
 ## Go further
 
-* Learn how to [Test data in a pipeline]({% link soda/quick-start-prod.md %}).
+* Learn how to [Test data in an Airflow pipeline]({% link soda/quick-start-prod.md %}).
 * Learn more about using [webhooks]({% link soda/integrate-webhooks.md %}) to integrate Soda Cloud with other third-party service providers.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Access a list of <a href="https://www.soda.io/integrations" target="_blank">all integrations</a> that Soda Cloud supports.

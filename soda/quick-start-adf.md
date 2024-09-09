@@ -222,7 +222,7 @@ database = 'soda'
 username = 'my_sql_user'
 password = mssparkutils.credentials.getSecret("soda-vault" , "sql-pw")
 
-connection_string = f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={password}'
+connection_string = f'DRIVER={% raw %}{{ODBC Driver 18 for SQL Server}}{% endraw %};SERVER={server};DATABASE={database};UID={username};PWD={password}'
 conn = pyodbc.connect(connection_string)
 
 query = 'SELECT * FROM soda_demo_data_testing.retail_customer_count_by_country_code'

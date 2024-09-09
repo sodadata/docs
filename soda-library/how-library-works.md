@@ -125,7 +125,7 @@ The web app serves to complement Soda Library. Use Soda Cloud to:
 
 To automate scans on your data, you can use **Soda Library** to programmatically execute scans. Based on a set of conditions or a specific schedule of events, you can instruct Soda Library to, for example, automatically run scans in your development workflow in GitHub.  Refer to the [Test data during development]({% link soda/quick-start-dev.md %}) for details.
 
-Alternatively, you can integrate Soda Library with a **data orchestration tool** such as, Airflow, Dagster, or Prefect to schedule automated scans. You can also configure actions that the orchestration tool can take based on scan output. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a warehouse, after it is transformed, and before it is exported to another data source or tool. Refer to [Test data in a pipeline]({% link soda/quick-start-prod.md %}) for details.
+Alternatively, you can integrate Soda Library with a **data orchestration tool** such as, Airflow, Dagster, or Prefect to schedule automated scans. You can also configure actions that the orchestration tool can take based on scan output. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a warehouse, after it is transformed, and before it is exported to another data source or tool. Refer to [Test data in an Airflow pipeline]({% link soda/quick-start-prod.md %}) for details.
 
 
 ## Go further

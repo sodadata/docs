@@ -606,7 +606,7 @@ soda scan -d postgres_retail -c configuration.yml -V checks.yml
 
 Optionally, you can insert the output of Soda Library scans into your data orchestration tool such as Dagster, or Apache Airflow.
 
-You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import the Soda Library library in Python so you can utilize the `Scan()` object, install a Soda Library package, then use `from soda.scan import Scan`. Refer to [Define programmatic scans]({% link soda-library/programmatic.md %}) and [Test data in a pipeline]({% link soda/quick-start-prod.md %}) for details.
+You can save Soda Library scan results anywhere in your system; the `scan_result` object contains all the scan result information. To import the Soda Library library in Python so you can utilize the `Scan()` object, install a Soda Library package, then use `from soda.scan import Scan`. Refer to [Define programmatic scans]({% link soda-library/programmatic.md %}) and [Test data in an Airflow pipeline]({% link soda/quick-start-prod.md %}) for details.
 <br />
 
 ## Next
