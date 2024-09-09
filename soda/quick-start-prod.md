@@ -13,7 +13,7 @@ Use this guide as an example for how to set up and use Soda to test the quality 
 
 (Not quite ready for this big gulp of Soda? 🥤Try [taking a sip]({% link soda/quick-start-sip.md %}), first.)
 
-![data-pipeline](/assets/images/data-pipeline.png){:width="700px"}
+![airflow-pipeline](/assets/images/airflow-pipeline.png){:width="700px"}
 
 [About this guide](#about-this-guide) <br />
 [Install Soda from the command-line](#install-soda-from-the-command-line)<br />
@@ -87,7 +87,7 @@ A check is a test that Soda executes when it scans a dataset in your data source
 
 In this example, the Data Engineer creates multiple checks after ingestion, after initial transformation, and before pushing the information to a visualization or reporting tool.
 
-![data-pipeline](/assets/images/data-pipeline.png){:width="700px"}
+![airflow-pipeline](/assets/images/airflow-pipeline.png){:width="700px"}
 
 ### Transform checks
 

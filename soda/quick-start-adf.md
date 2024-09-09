@@ -63,6 +63,8 @@ To validate your account license or free trial, Soda Library must communicate wi
 
 This example executes checks which, after a data migration, validate that the source and target data are matching. The first ADF Notebook Activity links to a notebook which contains the Soda connection details, the check definitions, and the script to run a Soda scan for data quality which executes the [reconciliation checks]({% link soda-cl/recon.md %}).
 
+![soda-adf-reconcile](/assets/images/soda-adf-reconcile.png){:width="700px"}
+
 Download the notebook: <a href="/assets/soda-synapse-recon-notebook.ipynb" download>Soda Synapse Recon notebook</a>
 
 1. In the ADF pipeline, the Data Engineer <a href="https://learn.microsoft.com/en-us/azure/data-factory/transform-data-synapse-notebook#add-a-notebook-activity-for-synapse-to-a-pipeline-with-ui" target="_blank">adds a Notebook activity</a> for Synapse to a pipeline. In the Settings tab, they name the notebook `Reconciliation Checks`. 
@@ -160,6 +162,8 @@ soda-sqlserver
 ## Add post-ingestion checks
 
 Beyond reconciling the copied data, the Data Engineer uses SodaCL checks to gauge the completeness of data. In a new ADF Notebook Activity, they follow the same pattern as the reconciliation check notebook in which they configured connections to Soda Cloud and the data source, defined SodaCL checks, then prepared a script to run the scan and execute the checks.
+
+![soda-adf-ingest](/assets/images/soda-adf-ingest.png){:width="700px"}
 
 Download the notebook: <a href="/assets/soda-synapse-ingest-notebook.ipynb" download>Soda Synapse Ingest notebook</a>
 
