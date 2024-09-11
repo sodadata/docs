@@ -120,7 +120,7 @@ In your Alation account, navigate to **Settings** > **Catalog Admin** > **Custom
 
 ## Run the integration
 
-Contact<a href="mailto:support@soda.io">support@soda.io</a>directly to acquire the assets and instructions to run the integration and view Soda Cloud details in your Alation catalog.
+Contact <a href="mailto:support@soda.io">support@soda.io</a> directly to acquire the assets and instructions to run the integration and view Soda Cloud details in your Alation catalog.
 
 
 ## Use the integration
