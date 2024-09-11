@@ -142,8 +142,7 @@ Though similar, the type of Soda agent you choose to use depends upon the follow
 | Data source compatibility | Compatible with a [limited subset]({% link soda-agent/managed-agent.md %}#compatibility) of Soda-supported data sources. | Compatible with [nearly all]({% link soda-agent/deploy.md %}#compatibility) Soda-supported data sources. |
 | Upgrade maintenance | Soda manages all upgrades to the latest available version of the Soda Agent. | You manage all upgrades to your Soda Agent deployed on your Kubernetes cluster. |
 | External Secrets manager integration | Unable to integrate with an External Secrets manager. | Able to [integrate]({% link soda-agent/secrets.md %}l#integrate-with-a-secrets-manager) with an External Secrets manager (Hashicorp Vault, Azure Key Vault, etc.) to better manage frequently-rotated login credentials. |
-
-<!--| Network connectivity | ??  | Easy, secure access to data sources only available within your private cloud or on premise networks |-->
+| Network connectivity| Access Soda Agent via public networks of passlisting. | Deploy the Soda Agent inside your own private cloud on on premises network infrastructure. |
 
 ## Next
 
