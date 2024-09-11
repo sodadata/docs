@@ -16,6 +16,19 @@ Once added, employees of the organization can gain authorized and authenticated 
 * revoke their internal users' access to Soda Cloud from within their existing SSO solution if a user leaves their organization or no longer requires access to Soda Cloud
 * set up one-way user group syncing from their IdP into Soda Cloud (tested and documented for Azure Active Directory and Okta)
 
+[Compatibility](#compatibility)<br />
+[SSO access to Soda Cloud](#sso-access-to-soda-cloud)<br />
+[Add Soda Cloud to Azure AD](#add-soda-cloud-to-azure-ad)<br />
+[Add Soda Cloud to Okta](#add-soda-cloud-to-okta)<br />
+[Add Soda Cloud to Google Workspace](#add-soda-cloud-to-google-workspace)<br />
+[Sync user groups from an IdP](#sync-user-groups-from-an-idp)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Set up user group sync in Azure AD](#set-up-user-group-sync-in-azure-ad)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Set up user group sync in Okta](#set-up-user-group-sync-in-okta)<br />
+[Go further](#go-further)<br />
+<br />
+
+## Compatibility
+
 Soda Cloud is able to act as a service provider for any SAML 2.0 SSO identity provider. In particular, Soda has tested and has written instructions for setting up SSO access with the following identity providers: 
 
 * [Azure Active Directory](#add-soda-cloud-to-azure-ad)
