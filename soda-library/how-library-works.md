@@ -133,7 +133,7 @@ Alternatively, you can integrate Soda Library with a **data orchestration tool**
 * Learn more about the [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) you can use to check for data quality.
 * Learn how to prepare [programmatic scans]({% link soda-library/programmatic.md %}) of your data.
 * Learn more about the ways you can use Soda in [Use case guides]({% link soda/use-case-guides.md %}).
-* Use [failed row samples]({% link soda-cloud/failed-rows.md %}) to investigate data quality issues.
+* Use [failed row samples]({% link soda-cl/failed-row-samples.md %}) to investigate data quality issues.
 * Write [custom SQL checks]({% link soda-cl/user-defined.md %}) for your own use cases.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 

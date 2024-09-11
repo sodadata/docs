@@ -18,7 +18,7 @@ Note that although the example does not send failed row samples to Soda Cloud, i
 
 See also: [Reroute failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples)<br />
 See also: [Disable samples in Soda Cloud]({% link soda-cl/sample-datasets.md %}#disable-samples-in-soda-cloud)<br />
-See also: [Examine failed row samples]({% link soda-cloud/failed-rows.md %})<br />
+See also: [Manage failed row samples]({% link soda-cl/failed-row-samples.md %})<br />
 
 ## Prerequisites
 * a code or text editor such as PyCharm or Visual Studio Code

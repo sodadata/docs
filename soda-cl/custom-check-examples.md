@@ -77,7 +77,7 @@ checks for dim_product:
 
 ## Find duplicates in a dataset without a unique ID column
 
-You can use the built-in [duplicate_count metric]({% link soda-cl/numeric-metrics.md %}) to check the contents of a column for duplicate values and Soda automatically sends any failed rows -- that is, rows containing duplicate values -- to Soda Cloud for you to [examine]({% link soda-cloud/failed-rows.md %}). 
+You can use the built-in [duplicate_count metric]({% link soda-cl/numeric-metrics.md %}) to check the contents of a column for duplicate values and Soda automatically sends any failed rows -- that is, rows containing duplicate values -- to Soda Cloud for you to [examine]({% link soda-cl/failed-row-samples.md %}). 
 
 However, if your dataset does not contain a unique ID column, as with a denormalized dataset or a dataset produced from several joins, you may need to define uniqueness using a combination of columns. This example uses a failed rows check with SQL queries to go beyond a simple, single-column check. Replace the values in the double curly braces {%raw %} {{ }} {% endraw %} with your own relevant values.
 
@@ -359,7 +359,7 @@ checks for exchange_operations:
 ## Go further
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Learn more about [Comparing data using SodaCL]({% link soda-cl/compare.md %}).
-* Read more about [Failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
+* Read more about [Failed row samples]({% link soda-cl/failed-row-samples.md %}) in Soda Cloud.
 <br />
 
 ---

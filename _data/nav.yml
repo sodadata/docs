@@ -86,8 +86,8 @@
   subcategories:
   - subtitle: Run a scan and view results
     page: soda-library/run-a-scan.md
-  - subtitle: Examine failed rows
-    page: soda-cloud/failed-rows.md
+  - subtitle: Manage failed rows samples
+    page: soda-cl/failed-row-samples.md
   - subtitle: Manage scheduled scans
     page: soda-cloud/scan-mgmt.md
   - subtitle: Configure orchestrated scans

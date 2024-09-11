@@ -119,7 +119,7 @@ checks for dim_customer:
 ```
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for duplicate values. Examine failed rows in the **Failed Rows** tab; see [Examine failed row samples]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a check for duplicate values. Examine failed rows in the **Failed Rows Analysis** tab; see [Manage failed row samples]({% link soda-cl/failed-row-samples.md %}) for further details.
 
 ![failed-duplicate-count](/assets/images/failed-duplicate-count.png){:height="700px" width="700px"}
 

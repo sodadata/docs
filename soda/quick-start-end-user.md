@@ -136,7 +136,7 @@ While waiting for your colleagues to accept your Soda invitation, get a head sta
 
 * [Get organized]({% link soda-cloud/collaborate.md %}) in Soda!
 * [Integrate Soda]({% link soda/integrate-metaphor.md %}) with your data catalog.
-* Use [failed row samples]({% link soda-cloud/failed-rows.md %}) to investigate data quality issues.
+* Use [failed row samples]({% link soda-cl/failed-row-samples.md %}) to investigate data quality issues.
 * <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
 * Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />

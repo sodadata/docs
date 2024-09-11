@@ -146,7 +146,7 @@ There are two ways Soda collects and sends failed row samples to your Soda Cloud
 1. Implicitly: For [reference checks]({% link soda-cl/reference.md %}), [duplicate_count or duplicate_percent metrics]({% link soda-cl/numeric-metrics.md %}#failed-row-samples), [missing metrics]({% link soda-cl/missing-metrics.md %}#failed-row-samples), and [validity metrics]({% link soda-cl/validity-metrics.md %}#failed-row-samples), Soda automatically sends 100 failed row samples to your Soda Cloud account.
 2. Explicitly: When you define a [failed rows check]({% link soda-cl/failed-rows-checks.md %}), you explicitly ask Soda to send failed row samples to Soda Cloud.
 
-![failed-row-samples](/assets/images/failed-row-samples.png){:width="700px"}
+![failed-rows](/assets/images/failed-rows.png){:width="700px"}
 
 ### Turn off failed row sampling
 
