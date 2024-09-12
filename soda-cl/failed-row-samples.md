@@ -17,6 +17,21 @@ After a scan has completed, from the **Checks** dashboard, select an indivdual c
 
 ![failed-rows](/assets/images/failed-rows.png){:height="700px" width="700px"}
 
+[About failed row samples](#about-failed-row-samples)<br />
+[Set a sample limit](#set-a-sample-limit)<br />
+[Disable all failed row samples](#disable-all-failed-row-samples)<br />
+[Disable failed row samples for individual checks](#disable-failed-row-samples-for-individual-checks)<br />
+[Collect failed row samples for specific columns](#collect-failed-row-samples-for-specific-columns)<br />
+[Disable failed row samples for specific solumns](#disable-failed-row-samples-for-specific-columns)<br />
+[Disable failed row samples for specific datasets](#disable-failed-row-samples-for-specific-datasets)<br />
+[Reroute failed row samples](#reroute-failed-row-samples)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Configure an HTTP sampler](#configure-an-http-sampler)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Configure a Python custom sampler](#configure-a-python-custom-sampler)<br />
+[About failed row sampling queries](#about-failed-rows-sampling-queries)<br />
+[Go further](#go-further)<br />
+<br />
+
+
 ## About failed row samples
 
 There are two ways Soda collects and displays failed row samples in your Soda Cloud account.
@@ -35,10 +50,17 @@ There are two ways Soda collects and displays failed row samples in your Soda Cl
 Whether you use checks to implicitly or explicitly collect and display failed row samples in Soda Cloud, you must enable sample collection in Soda Cloud.
 1. As a Soda Cloud Admin, navigate to **your avatar** > **Organization Settings**.
 2. Check the box to **Allow Soda to collect sample data and failed row samples for all datasets**. 
-3. (Optional) Check the nested box to **Allow Soda to collect sample data and failed row samples only for datasets and checks with the explicit configuration to do so** to limit both dataset sampling and implicit failed row collection to only those checks which have configured sample columns. See: [Collect failed row samples for specific columns](#collect-failed-row-samples-for-specific-columns).
+3. (Optional) *Soda Library 1.6.1 or Soda Agent 1.1.27 or greater* Check the nested box to **Allow Soda to collect sample data and failed row samples only for datasets and checks with the explicit configuration to do so** to limit both dataset sampling and implicit failed row collection to only those checks which have configured sample columns. See: [Collect failed row samples for specific columns](#collect-failed-row-samples-for-specific-columns).
 4. **Save** the settings.
 
-Beyond the default behaviour of collecting and sending 100 failed row samples to Soda Cloud when a check fails, you can customize the sample size, disable failed row collection, or reroute failed row samples to a non-Soda Cloud destination, such as an S3 bucket. Read on!
+Beyond the default behaviour of collecting and sending 100 failed row samples to Soda Cloud when a check fails, you can:
+* customize the sample size
+* customize columns from which to collect samples
+* disable failed row collection
+* reroute failed row samples to a non-Soda Cloud destination, such as an S3 bucket. 
+
+Read on!
+
 
 ## Set a sample limit
 
@@ -220,7 +242,7 @@ Skipping samples from query 'retail_orders.last_name.failed_rows[missing_count]'
 
 <br />
 
-## Reroute failed rows samples
+## Reroute failed row samples
 <!--Linked to UI, access Shlink-->
 
 If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. 
@@ -284,7 +306,7 @@ Soda sends the failed rows samples as a JSON event payload and includes the foll
         type: http
         url: http://failedrows.example.com
         message: Failed rows have been sent to
-        link: https://www.example.url
+        link: https://www.example-S3.url
         link_text: S3
   ```
 

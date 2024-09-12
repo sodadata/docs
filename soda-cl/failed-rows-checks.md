@@ -158,6 +158,7 @@ checks for dim_product [new]:
 
 ## Go further
 
+* Learn how to [manage failed row samples]({% link soda-cl/failed-row-samples.md %}).
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 * Borrow user-defined check syntax to define a resuable [check template]({% link soda-cl/check-template.md %}).
 * Use a [schema check]({% link soda-cl/schema.md %}) to discover missing or forbidden columns in a dataset.

@@ -221,8 +221,7 @@ If the data you are checking contains sensitive information, you may wish to sen
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-* [Set a sample limit]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit) to `0` on an individual check to avoid collecting or sending failed row samples.
-* [Set a sample limit]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit) for an entire data source.
+* Learn more about how to [manage failed row samples]({% link soda-cl/failed-row-samples.md %}).
 * Run scans locally to prevent Soda Library from pushing results to Soda Cloud. Access the **Prevent pushing scan results to Soda Cloud** in the [Run a scan]({% link soda-library/run-a-scan.md %}#scan-for-data-quality) tab.
 <br />
 
