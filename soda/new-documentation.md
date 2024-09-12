@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### September 12, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.15 - 3.3.22.
+
 #### September 8, 2024
 * Published new use case guide for using Soda to test data quality in a [Dasger pipeline]({% link soda/quick-start-dagster.md %}).
 
