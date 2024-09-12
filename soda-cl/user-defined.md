@@ -193,7 +193,7 @@ checks for CUSTOMERS:
 checks for product_b:
   - id_for_belgium:
       id_for_belgium query: SELECT count(*) FROM product_b
-      failed rows query: SELECT id FROM product_hier_b WHERE id IS NULL
+      failed rows query: SELECT id FROM product_b WHERE id IS NULL
       name: ID in Belgium is empty
       column: id
       fail: when > 62

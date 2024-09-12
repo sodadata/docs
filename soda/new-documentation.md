@@ -10,8 +10,10 @@ parent: Learning resources
 <br /> 
 
 #### September 13, 2024
-* Compiled and updated failed row samples documentation, including:
-  * option to use `scan context` in a CustomSampler to read/write data to/from a scan
+* Compiled and updated [failed row samples]({% link soda-cl/failed-row-samples.md %}) documentation, including:
+  * the option to use `scan context` in a CustomSampler to read/write data to/from a scan
+  * the options to collect failed row samples from specific columns in a dataset, or disable entirely
+  * the option to disable failed row sample collection from all datasets, expect those with explicit configuration to collect samples
 * Updated [Failed row checks]({% link soda-cl/failed-rows-checks.md %}) and [User-defined checks]({% link soda-cl/user-defined.md %}) to include optional configuration to specify a single column against which to run the check.
 
 #### September 12, 2024
