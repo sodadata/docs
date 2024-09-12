@@ -376,9 +376,14 @@ row_2_column_1_value,row_2_column_2_value
 
 ### Configure a Python custom sampler
 
-If you are running Soda scans programmatically, you can add a custom sampler to collect samples of rows with a `fail` check result. Refer to the following example that prints the failed row samples in the CLI.
+If you are running Soda scans programmatically, you can add a custom sampler to collect samples of rows with a `fail` check result. 
 
 💡 Copy+paste and run an [example script]({% link soda/route-failed-rows.md %}) locally to print failed row samples in the CLI scan output.
+
+<br />
+
+#### Example 1
+The first simple example prints the failed rows samples in the CLI. If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to Python docs for <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">Reading and writing files</a> for details.
 
 {% include code-header.html %}
 ```python
@@ -428,10 +433,111 @@ if __name__ == '__main__':
     print(s.get_logs_text())
 ```
 
+#### Example 2
 
-### Save failed row samples to alternate desination
+This second example uses a `scan context` to read data from, or write data to a scan. This enables users to build some data structure in the custom sampler, then use it after scan execution. 
 
-If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to Python docs for <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">Reading and writing files</a> for details.
+For example, you can use `scan context` to - an example use is to build a DataFrame that contains unique failed row samples (as opposed to standard failed row samples Soda collects per check and which can contain the same sample rows in different checks). 
+
+You can also use `scan context` to pass data to a scan and make it available during execution so as to provide additional context that helps to build a meaningful result using filters, for example.
+
+```python
+from soda.scan import Scan
+from soda.sampler.sampler import Sampler
+from soda.sampler.sample_context import SampleContext
+import pandas as pd
+
+
+class CustomSampler(Sampler):
+    def store_sample(self, sample_context: SampleContext):
+        # Read data from scan context and use it in the sampler.
+        # This example uses a list of unique ids from the scan context to filter the failed row sample DataFrame by ID.
+        unique_ids = sample_context.scan_context_get("unique_ids")
+
+        rows = sample_context.sample.get_rows()
+
+        filtered_rows = [row for row in rows if row[0] in unique_ids]
+
+        columns = [col.name for col in sample_context.sample.get_schema().columns]
+
+        df = pd.DataFrame(filtered_rows, columns=columns)
+
+        # scan_context_set takes both a string and a list of strings to set a nested value
+        # This example stores the sample DataFrame in the scan_context in a nested dictionary "samples.soda_demo.public.dim_employee.duplicate_count(gender) = 0": df
+        sample_context.scan_context_set(
+            [
+                "samples",
+                sample_context.data_source.data_source_name,
+                sample_context.data_source.schema,
+                sample_context.partition.table.table_name,
+                sample_context.check_name,
+            ],
+            df,
+        )
+
+
+if __name__ == "__main__":
+    s = Scan()
+    s.sampler = CustomSampler()
+
+    s.set_scan_definition_name("test_scan")
+    s.set_verbose(True)
+    s.set_data_source_name("soda_demo")
+
+    s.scan_context_set("unique_ids", [1, 2, 3, 4, 5])
+
+    s.add_configuration_yaml_str(
+        f"""
+    data_source soda_demo:
+        type: postgres
+        schema: public
+        host: localhost
+        username: ******
+        password: ******
+        database: postgres
+    """
+    )
+
+    s.add_sodacl_yaml_str(
+        f"""
+    checks for dim_employee:
+        - missing_count(status) = 0
+        - failed rows:
+            fail condition: employee_key = 1
+        # The following check does not collect failed rows samples; it does not invoke the CustomSampler.
+        - duplicate_count(gender) = 0:
+            samples limit: 0
+    """
+    )
+    s.execute()
+
+    # DataFrames created in CustomSampler are available in the scan context.
+    print(s.scan_context["samples"])
+    # Prints:
+    # {
+    #     'soda_demo': {
+    #         'public': {
+    #             'dim_employee': {
+    #                 'missing_count(status) = 0': [df]
+    #                 'failed rows': [df]
+
+    #             }
+    #         }
+    #     }
+    # }
+
+    # This simple example collects all queries that end with ".failing_sql", which you can use to execute failed rows queries manually.
+    failed_rows_queries = [
+        query["sql"] for query in s.scan_results["queries"] if query["name"].endswith(".failing_sql")
+    ]
+    print(failed_rows_queries)
+    # Prints two queries:
+    # [
+    #     'SELECT * FROM public.dim_employee \n WHERE (status IS NULL)',
+    #     '\nWITH frequencies AS (\n    SELECT gender\n    FROM public.dim_employee\n    WHERE gender IS NOT NULL\n    GROUP BY gender\n    HAVING COUNT(*) > 1)\nSELECT main.*\nFROM public.dim_employee main\nJOIN frequencies ON main.gender = frequencies.gender\n'
+    # ]
+```
+
 
 
 ## About failed rows sampling queries

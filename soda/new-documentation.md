@@ -9,6 +9,11 @@ parent: Learning resources
 
 <br /> 
 
+#### September 13, 2024
+* Compiled and updated failed row samples documentation, including:
+  * option to use `scan context` in a CustomSampler to read/write data to/from a scan
+* Updated [Failed row checks]({% link soda-cl/failed-rows-checks.md %}) and [User-defined checks]({% link soda-cl/user-defined.md %}) to include optional configuration to specify a single column against which to run the check.
+
 #### September 12, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.15 - 3.3.22.
 

@@ -111,6 +111,7 @@ checks for dim_product:
 | ✓ | Use for each to apply user-defined checks to multiple datasets in one scan; see [example](#example-with-for-each-checks). | [Apply checks to multiple datasets]({% link soda-cl/optional-config.md %}#apply-checks-to-multiple-datasets) |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). <br />*Known issue:* Dataset filters are not compatible with user-defined checks which use a SQL query. With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260-->| [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 | ✓ | Include a failed rows query inside a SQL or CTE user-defined metric configuration to send failed row samples to Soda Cloud; see [example](#example-with-failed-rows). | Refer to [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}) documentation. |
+| ✓ | Specify a single column against which to run a check that uses a user-defined metric; see [example](#example-with-columm-parameter). |  -  |
 
 #### Example with check name 
 
@@ -183,6 +184,19 @@ checks for CUSTOMERS:
           SELECT *
           FROM CUSTOMERS
           WHERE country != 'BE'
+```
+
+#### Example with columm parameter
+
+{% include code-header.html %}
+```yaml
+checks for product_b:
+  - id_for_belgium:
+      id_for_belgium query: SELECT count(*) FROM product_b
+      failed rows query: SELECT id FROM product_hier_b WHERE id IS NULL
+      name: ID in Belgium is empty
+      column: id
+      fail: when > 62
 ```
 
 <br />

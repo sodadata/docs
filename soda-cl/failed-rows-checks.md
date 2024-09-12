@@ -106,6 +106,7 @@ checks for dim_customer:
 | ✓ | Use wildcard characters in the value in the check. | Use wildcard values as you would with CTE or SQL. |
 |   | Use for each to apply failed rows checks to multiple datasets in one scan. | - |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). <br /> *Known issue:* Dataset filters are not compatible with failed rows checks which use a SQL query. With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260--> | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
+| ✓ | Specify a single column against which to run a failed rows check; see [example](#example-with-column-parameter). |  -  |
 
 #### Example with check name
 {% include code-header.html %}
@@ -152,6 +153,25 @@ checks for dim_product [new]:
       name: Failed CTE with filter
       fail condition: weight < '200' and reorder_point >= 3
 ```
+
+#### Example with column parameter
+{% include code-header.html %}
+```yaml
+checks for dim_product:
+  # with SQL query
+  - failed rows:
+      name: Brand must be LUCKY DOG
+      column: product_line
+      fail query: |
+        SELECT *
+        FROM dim_product
+        WHERE product_line LIKE '%LUCKY DOG%'
+  # with CTE
+  - failed rows:
+      name: Brand must be LUCKY DOG
+      column: product_line
+      fail condition: brand LIKE '%LUCKY DOG%'
+````
 
 <br />
 
