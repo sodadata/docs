@@ -13,16 +13,17 @@ redirect_from:
 
 When a Soda scan results in a failed check, Soda Cloud displays details of the scan results in each check's **Check History** page. To offer more insight into the data that failed a check during a scan, you can enable Soda Cloud to display **failed rows samples** in a check's history. 
 
-After a scan has completed, from the **Checks** dashboard, select an indivdual check to access its **Check History** page, then click the **Failed Rows Analysis** tab (pictured below) to see the failed rows samples associated with a failed check result. 
+After a scan has completed, from the **Checks** dashboard, select an individual check to access its **Check History** page, then click the **Failed Rows Analysis** tab (pictured below) to see the failed rows samples associated with a failed check result. 
 
 ![failed-rows](/assets/images/failed-rows.png){:height="700px" width="700px"}
 
 [About failed row samples](#about-failed-row-samples)<br />
+[Determine which sampling method to use](#determine-which-sampling-method-to-use)<br />
 [Set a sample limit](#set-a-sample-limit)<br />
 [Collect failed row samples for specific columns](#collect-failed-row-samples-for-specific-columns)<br />
 [Disable all failed row samples](#disable-all-failed-row-samples)<br />
 [Disable failed row samples for individual checks](#disable-failed-row-samples-for-individual-checks)<br />
-[Disable failed row samples for specific solumns](#disable-failed-row-samples-for-specific-columns)<br />
+[Disable failed row samples for specific columns](#disable-failed-row-samples-for-specific-columns)<br />
 [Disable failed row samples for specific datasets](#disable-failed-row-samples-for-specific-datasets)<br />
 [Reroute failed row samples](#reroute-failed-row-samples)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Configure an HTTP sampler](#configure-an-http-sampler)<br />
@@ -53,7 +54,7 @@ Whether you use checks to implicitly or explicitly collect and display failed ro
 3. (Optional) *Soda Library 1.6.1 or Soda Agent 1.1.27 or greater* Check the nested box to **Allow Soda to collect sample data and failed row samples only for datasets and checks with the explicit configuration to do so** to limit both dataset sampling and implicit failed row collection to only those checks which have configured sample columns, or to datasets explicitly configured to collect failed row samples in the **Dataset Settings**. This setting does not apply to [failed row checks]({% link soda-cl/failed-rows-checks.md %}). See: [Collect failed row samples for specific columns](#collect-failed-row-samples-for-specific-columns).
 4. **Save** the settings.
 
-Beyond the default behaviour of collecting and sending 100 failed row samples to Soda Cloud when a check fails, you can:
+Beyond the default behavior of collecting and sending 100 failed row samples to Soda Cloud when a check fails, you can:
 * customize the sample size
 * customize columns from which to collect samples
 * disable failed row collection
@@ -61,15 +62,43 @@ Beyond the default behaviour of collecting and sending 100 failed row samples to
 
 Read on!
 
+## Determine which sampling method to use
+
+While the following tables may be useful in deciding how to configure failed row sample collection for your organization, be aware that you can use combinations of configurations to achieve your sampling objectives. Further, some configurations apply only to no-code checks, or only to checks defined using SodaCL in an agreement in Soda Cloud or in a YAML file for use with Soda Library; refer to individual configuration instructions for details.
+
+| **Method:** | Default |
+| **Description:** |Soda collects up to 100 failed row samples for any check that implicitly or explicitly collects samples and displays them in a check's Check History page in Soda Cloud; see [About failed row samples](#about-failed-row-samples) to activate for your Soda Cloud account.|
+| **Appropriate for:**| • Data being scanned by Soda is not sensitive. <br /> • Data is allowed to be stored outside your internal network infrastructure. <br /> • Teams would find failed row samples useful in investigating data quality issues.|
+
+| **Method:** |Disabled |
+| **DescriptionL** | Soda does not collect any failed row samples for any checks; see [Disable all failed row samples](#disable-all-failed-row-samples). |
+| **Appropriate for:** | • All data scanned by Soda is very sensitive. <br /> • No data is allowed to be stored outside your internal network infrastructure. <br /> • Teams do not need samples of failed rows to aid in data quality issue investigation. |
+
+| **Method**: | Partially limited, by check |
+| **Description**: | Soda collects a specific volume of samples, or no samples, according to individual check configuration. Not available for no-code checks in Soda Cloud; see [Set a sample limit](#set-a-sample-limit).|
+| **Appropriate for:** | • Some checks execute against columns of sensitive data and should not collect samples. <br /> • Teams would find it useful to have an increased or decreased volume of samples for certain checks for issue investigation. |
+
+| **Method:** | Partially limited, by data source |
+| **Description:** | Soda collects a specific volume of samples for all checks that Soda executes against all datasets in a data source; see [Set a sample limit](#set-a-sample-limit). |
+|**Appropriate for:** | • Teams would find it useful to have an increased or decreased volume of samples for all checks. |
+
+| **Method:** | Partially enabled, by column, or dataset |
+| **Description:** | Soda collects up to 100 default failed row samples only for checks that have been explicitly configured to do so AND/OR for datasets that have been explicitly set to collect failed row samples for checks running against specific columns; see [Collect failed row samples for specific columns](#collect-failed-row-samples-for-specific-columns). |
+| **Appropriate for:** | • Some data being scanned by Soda is sensitive and it is preferable *not* to collect failed row samples for all checks as default behavior. <br /> • Teams prefer to give those Soda Cloud users with permission to edit checks and/or datasets the ability to opt in to collect failed row samples for specific columns or datasets. |
+
+| **Method:** | Partially disabled |
+| **Description:** | Soda does not collect failed row samples for checks, columns, or datasets which have been explicitly configured *not* to collect samples; see [Disable for a check](#disable-failed-row-samples-for-individual-checks), [Disable for a column ](#disable-failed-row-samples-for-specific-columns), and [Disable for a dataset](#disable-failed-row-samples-for-specific-datasets) |
+| **Appropriate for:** | • Most data scanned by Soda is not sensitive. <br /> • For some data, it would be useful to disable, or opt out of, failed row sample collection. <br /> • Where data is not sensitive, teams would find it useful to have samples of failed rows to aid in data quality issue investigation. |
+
+| **Method:** | Rerouted |
+| **Description:** | Soda collects failed rows samples for checks that implicitly or explicitly do so, but instead of displaying the samples in Soda Cloud, a script or function stores the samples elsewhere, such as in a secure, internal file storage system; see [Reroute failed row samples](#reroute-failed-row-samples).|
+| **Appropriate for:** | • All data scanned by Soda is very sensitive. <br /> • No data is allowed to be stored outside your internal network infrastructure. <br /> • Teams would find it useful to have samples of failed rows to aid in data quality issue investigation. <br /> • Teams wish to use failed row samples to prepare other reports or dashboards outside of Soda Cloud.|
+
+
 
 ## Set a sample limit
 
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda Library</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda Agent</small><br />
-<small>✖️ &nbsp;&nbsp; Available in a no-code check</small>
-
-By default, Soda collects 100 failed row samples. You can limit the number of sample rows that Soda sends using the `samples limit` key:value pair configuration, as in the following failed row check example.
+By default, Soda collects 100 failed row samples. You can limit the number of sample rows that Soda sends using the `samples limit` key:value pair configuration, as in the following failed row check example. This configuration applies only to checks defined in an agreement or in a checks YAML file.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -90,7 +119,7 @@ checks for dim_customer:
 
 <br />
 
-If you wish to set a limit on the samples that Soda collects for an entire data source, you can do so by adjusting the configuration YAML file, or editing the **Data Source** connection details in Soda Cloud, as per the following syntax.
+If you wish to set a limit on the samples that Soda collects for an entire data source, you can do so by adjusting the configuration YAML file, or editing the **Data Source** connection details in Soda Cloud, as per the following syntax. This configuration applies to checks defined as no-code checks, in an agreement, or in a checks YAML file.
 {% include code-header.html %}
 ```yaml
 data_source soda_test:
@@ -106,9 +135,9 @@ data_source soda_test:
 
 ## Collect failed row samples for specific columns
 
-Use a `samples columns` configuration to an individual check to specify the columns for which Soda *implicitly* collects failed row sample values. The configurations and settings described below correspond with the optional Soda Cloud setting in **Organization Settings** which limits failed row sample collection to only those checks which implicitly collect failed row samples and which include the `samples columns` configuration, or to datasets explicitly configured to collect failed row samples in the **Dataset Settings**.. See [About failed row samples](#about-failed-row-samples).
+Use a `samples columns` configuration to an individual check to specify the columns for which Soda *implicitly* collects failed row sample values. The configurations and settings described below correspond with the optional Soda Cloud setting in **Organization Settings** (see [About failed row samples](#about-failed-row-samples)) which limits failed row sample collection to only those checks which implicitly collect failed row samples and which include the `samples columns` configuration, or to datasets explicitly configured to collect failed row samples in the **Dataset Settings** in Soda Cloud, as described below. 
 
-At the check level, Soda only collects the check's failed row samples for the columns you specify in the list, as in the `duplicate_count` example below. The comma-separated list of samples columns supports wildcard characters (`%` or `*`). This configuration applies only to checks defined in an agreement or in a checks YAML file.
+At the check level, Soda only collects the check's failed row samples for the columns you specify in the list, as in the `duplicate_count` example below. The comma-separated list of samples columns supports wildcard characters (`%` or `*`). This configuration applies only to checks defined in an agreement or in a checks YAML file. ***Known issue:*** `samples columns` configuration is not compatible with [reconciliation checks]({% link soda-cl/recon.md %}).
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -131,10 +160,10 @@ checks for dim_product:
 
 <br />
 
-Alternatively, you can adjust a dataset's settings in Soda Cloud so that it collects failed row samples only for specific columns. The setting applies to checks defined as no-code checks, in an agreement, or in a checks YAML file.
+Alternatively, you can adjust a dataset's settings in Soda Cloud so that it collects failed row samples only for specific columns. The setting applies to checks defined as no-code checks.
 1. As an Admin, Manager, or Editor of a dataset, log in to Soda Cloud, then navigate to the **Dataset** for which you never want Soda to collect failed row samples.
 2. Click the stacked dots at the upper-right, then select **Edit Dataset**.
-3. In the **Failed Rows** tab, use the dropdown to select **Specific Columns**, futher selecting the columns from which to gather failed row samples. <br />
+3. In the **Failed Rows** tab, use the dropdown to select **Specific Columns**, further selecting the columns from which to gather failed row samples. <br />
 ![dataset-settings](/assets/images/dataset-settings.png){:height="450px" width="450px"}
 4. **Save** your settings.
 
@@ -143,7 +172,7 @@ Alternatively, you can adjust a dataset's settings in Soda Cloud so that it coll
 
 ## Disable all failed row samples
 
-Where your datasets contain sensitive or private information, you may *not* want to send any failed row samples from your data source to Soda Cloud, whatsoever. In such a circumstance, you can disable the feature completely in Soda Cloud.
+Where your datasets contain sensitive or private information, you may *not* want to send any failed row samples from your data source to Soda Cloud, whatsoever. In such a circumstance, you can disable the feature completely in Soda Cloud. This configuration applies to checks defined as no-code checks, in an agreement, or in a checks YAML file.
 
 {% include disable-all-samples.md %}
 
@@ -151,14 +180,7 @@ Where your datasets contain sensitive or private information, you may *not* want
 
 ## Disable failed row samples for individual checks
 
-<small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda Library</small><br />
-<small>✔️ &nbsp;&nbsp; Supported in Soda Cloud + Soda Agent</small><br />
-<small>✖️ &nbsp;&nbsp; Available in a no-code check</small>
-
-If you wish to prevent Soda from collecting and sending failed row samples to Soda Cloud for an individual check, you can set the `samples limit` to `0`. Alternatively, you can disable all samples for all your data; see [Disable samples in Soda Cloud]({% link soda-cl/sample-datasets.md %}#disable-samples-in-soda-cloud).
-
-This configuration applies only to checks defined in an agreement or in a checks YAML file.
+If you wish to prevent Soda from collecting and sending failed row samples to Soda Cloud for an individual check, you can set the `samples limit` to `0`. Alternatively, you can disable all samples for all your data; see [Disable samples in Soda Cloud]({% link soda-cl/sample-datasets.md %}#disable-samples-in-soda-cloud). This configuration applies only to checks defined in an agreement or in a checks YAML file.
 
 {% include code-header.html %}
 ```yaml
@@ -248,12 +270,13 @@ sampler:
 
 <br />
 
-Alternatively, you can adjust a dataset's settings in Soda Cloud so that it collects no failed row samples. The setting applies to checks defined as no-code checks, in an agreement, or in a checks YAML file.
+Alternatively, you can adjust a dataset's settings in Soda Cloud so that it collects no failed row samples. The setting applies to checks defined as no-code checks.
 1. As an Admin, Manager, or Editor of a dataset, log in to Soda Cloud, then navigate to the **Dataset** for which you never want Soda to collect failed row samples.
 2. Click the stacked dots at the upper-right, then select **Edit Dataset**.
 3. In the **Failed Rows** tab, use the dropdown to select **No Columns**.
 4. **Save** your settings.
 
+<br />
 
 ### Sampler configuration details
 
@@ -277,11 +300,11 @@ Skipping samples from query 'retail_orders.last_name.failed_rows[missing_count]'
 ## Reroute failed row samples
 <!--Linked to UI, access Shlink-->
 
-If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. 
+If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. These configurations apply to checks defined as no-code checks, in an agreement, or in a checks YAML file.
 
 To do so, you have two options:
 1. **HTTP sampler**: Create a function, such as a lambda function, available at a specific URL within your environment that Soda can invoke for every check result in a data source that fails and includes failed row samples. Use the function to perform any necessary parsing from JSON to your desired format (CSV, Parquet, etc.) and store the failed row samples in a location of your choice.
-2. **Python CustomSampler**: If you run programmatic Soda scans of your data, add a custom sampler to your Python script to collect samples of rows with a `fail` check result. Once collected, you can prints the failed row samples in the CLI, for example, or save them to an alternate destination.
+2. **Python CustomSampler**: If you run programmatic Soda scans of your data, add a custom sampler to your Python script to collect samples of rows with a `fail` check result. Once collected, you can print the failed row samples in the CLI, for example, or save them to an alternate destination.
 
 | Characteristic | HTTP sampler | Python CustomSampler |
 | -------------- | :----------: | :------------------: |
@@ -322,7 +345,7 @@ Soda sends the failed rows samples as a JSON event payload and includes the foll
 ```
 
 1. Configure an HTTP failed row sampler; see [example](#example-custom-failed-row-sampler) below.
-2. In Soda Cloud, in the **Data Sources** tab, select the data source for which you wish to reroute failed rows samples, then navigate to its **Connect the Data Source** tab. If you use a `configuration.yml` file to store data source connection congifuration details, open the file.
+2. In Soda Cloud, in the **Data Sources** tab, select the data source for which you wish to reroute failed rows samples, then navigate to its **Connect the Data Source** tab. If you use a `configuration.yml` file to store data source connection configuration details, open the file.
 3. To the connection configuration, add the `sampler` and `storage` configuration as outlined below, then save.
   ```yaml
   data_source my_datasource_name:
@@ -412,17 +435,26 @@ If you are running Soda scans programmatically, you can add a custom sampler to 
 
 💡 Copy+paste and run an [example script]({% link soda/route-failed-rows.md %}) locally to print failed row samples in the CLI scan output.
 
-<br />
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <input class="radio" id="three" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Simple example</label>
+  <label class="tab" id="two-tab" for="two">Example with DataFrames </label>
+  <label class="tab" id="three-tab" for="three">Example with SampleRef </label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel" markdown="1">
 
-#### Example 1
-The first simple example prints the failed rows samples in the CLI. If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to Python docs for <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">Reading and writing files</a> for details.
+This simple example prints the failed rows samples in the CLI. If you prefer to send the output of the failed row sampler to a destination other than Soda Cloud, you can do so by customizing the sampler as above, then using the Python API to save the rows to a JSON file. Refer to Python docs for <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">Reading and writing files</a> for details.
+
 
 {% include code-header.html %}
 ```python
 from soda.scan import Scan
 from soda.sampler.sampler import Sampler
 from soda.sampler.sample_context import SampleContext
-
 
 # Create a custom sampler by extending the Sampler class
 class CustomSampler(Sampler):
@@ -437,7 +469,7 @@ class CustomSampler(Sampler):
 
 
 if __name__ == '__main__':
-    # Create Scan object.
+    # Create a Scan object.
     s = Scan()
     # Configure an instance of custom sampler.
     s.sampler = CustomSampler()
@@ -465,11 +497,12 @@ if __name__ == '__main__':
     print(s.get_logs_text())
 ```
 
-#### Example 2
+  </div>
+  <div class="panel" id="two-panel" markdown="1">
 
-This second example uses a `scan context` to read data from, or write data to a scan. This enables users to build some data structure in the custom sampler, then use it after scan execution. 
+This example uses a `scan context` to read data from, or write data to a scan. This enables users to build some data structure in the custom sampler, then use it after scan execution. 
 
-For example, you can use `scan context` to build a DataFrame that contains unique failed row samples (as opposed to standard failed row samples Soda collects per check and which can contain the same sample rows in different checks). You can also use `scan context` to pass data to a scan and make it available during execution so as to provide additional context that helps to build a meaningful results using filters, for example.
+For example, you can use `scan context` to build a DataFrame that contains unique failed row samples (as opposed to standard failed row samples Soda collects per check and which can contain the same sample rows in different checks). You can also use `scan context` to pass data to a scan and make it available during execution so as to provide additional context that helps to build meaningful results using filters, for example.
 
 ```python
 from soda.scan import Scan
@@ -568,6 +601,72 @@ if __name__ == "__main__":
     # ]
 ```
 
+  </div>
+  <div class="panel" id="three-panel" markdown="1">
+
+Optionally, you can include `SampleRef` to display a message in Soda Cloud that directs users to the alternate location to find the rerouted failed row samples for a check.
+
+![file-storage](/assets/images/file-storage.png){:height="600px" width="600px"}
+
+{% include code-header.html %}
+```python
+from soda.scan import Scan
+from soda.sampler.sampler import Sampler
+from soda.sampler.sample_context import SampleContext
+from soda.sampler.sample_ref import SampleRef
+
+# Create a custom sampler by extending the Sampler class
+class CustomSampler(Sampler):
+    def store_sample(self, sample_context: SampleContext):
+        # Retrieve the rows from the sample for a check.
+        rows = sample_context.sample.get_rows()
+        sample_schema = sample_context.sample.get_schema()
+        # Provide details about where to access failed row samples
+        return SampleRef(
+            name=sample_context.sample_name,
+            schema=sample_schema,
+            total_row_count=row_count,
+            stored_row_count=row_count,
+            type=SampleRef.TYPE_PYTHON_CUSTOM_SAMPLER,
+            link="https://www.example.com",
+            message="Access failed row samples in external file storage.",
+            link_text="File storage",
+        )
+
+
+if __name__ == '__main__':
+    # Create a Scan object.
+    s = Scan()
+    # Configure an instance of custom sampler.
+    s.sampler = CustomSampler()
+
+    s.set_scan_definition_name("test_scan")
+    s.set_data_source_name("aa_vk")
+    s.add_configuration_yaml_str(f"""
+    data_source test:
+      type: postgres
+      schema: public
+      host: localhost
+      port: 5433
+      username: postgres
+      password: secret
+      database: postgres
+    """)
+
+    s.add_sodacl_yaml_str(f"""
+    checks for dim_account:
+        - invalid_percent(account_type) = 0:
+            valid format: email
+
+    """)
+    s.execute()
+```
+
+
+  </div>
+
+  </div>
+</div>
 
 
 ## About failed rows sampling queries
