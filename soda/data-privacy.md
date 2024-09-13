@@ -59,7 +59,7 @@ Where your datasets contain <a href="https://ec.europa.eu/info/law/law-topic/dat
 Read more about Soda's <a href="https://www.soda.io/privacy-policy" target="_blank">Privacy Policy</a>. 
 
 ## Receiving events from Soda Cloud
-Soda Cloud can be setup to send events to your services using integrations like Soda Webhooks. If your destination services are behind a firewall, you may need to whitelist Soda Cloud's Egress IP addresses to allow communication. The current IP addresses used by Soda Cloud are:
+You can set up Soda Cloud to send events to your services using integrations like Soda Webhooks. If your destination services are behind a firewall, you may need to passlist Soda Cloud's egress IP addresses to allow communication. The current IP addresses used by Soda Cloud are:
 
 - EU: `54.78.91.111`, `52.49.181.67`
 - US: `34.208.202.240`, `52.35.114.145`
