@@ -42,7 +42,6 @@ Soda hosts agents in a secure environment in Amazon AWS. As a SOC 2 Type 2 certi
 
 Installed in your environment, you use the Soda Library command-line tools to securely connect to a data source using system variables to store login credentials.
 
-You can connect Soda Library to your Soda Cloud account. To communicate with your data source, Soda Cloud uses a Network Address Translation (NAT) gateway with the IP address 54.78.91.111. You may wish to add this IP address to your data source's allowlist.
 
 ## Sending data to Soda Cloud
 
@@ -58,6 +57,14 @@ Soda Cloud does store the following:
 Where your datasets contain <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/legal-grounds-processing-data/sensitive-data/what-personal-data-considered-sensitive_en" target="_blank"> sensitive data</a> or private information, you may *not* want to send failed row samples from your data source to Soda Cloud. In such a circumstance, you can [disable the failed row samples feature entirely]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples) in Soda Cloud. Read more about disabling samples and failed row samples in [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}).
 
 Read more about Soda's <a href="https://www.soda.io/privacy-policy" target="_blank">Privacy Policy</a>. 
+
+## Receiving events from Soda Cloud
+You can set up Soda Cloud to send events to your services using integrations like Soda Webhooks. If your destination services are behind a firewall, you may need to passlist Soda Cloud's egress IP addresses to allow communication. The current IP addresses used by Soda Cloud are:
+
+- EU: `54.78.91.111`, `52.49.181.67`
+- US: `34.208.202.240`, `52.35.114.145`
+
+Ensure these addresses are allowed in your firewall settings to avoid any disruptions in receiving events from Soda Cloud.
 
 ## Single sign-on with Soda Cloud
 
