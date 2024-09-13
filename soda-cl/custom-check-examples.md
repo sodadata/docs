@@ -9,7 +9,7 @@ redirect_from: /soda-cl/check-templates.html
 # Custom check examples
 *Last modified on {% last_modified_at %}*
 
-Out of the box, Soda Checks Language (SodaCL) makes several built-in metrics and checks, such as `row_count`, available for you to use to define checks for data quality. If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs, you can use [user-defined]({% link soda-cl/user-defined.md %}) and [failed rows]({% link soda-cl/failed-rows-checks.md %}) checks. 
+Out of the box, Soda Checks Language (SodaCL) makes several built-in metrics and checks, such as `row_count`, available for you to use to define checks for data quality. If the built-in metrics that Soda offers do not quite cover some of your more specific or complex needs, you can use [user-defined]({% link soda-cl/user-defined.md %}) and [failed rows checks]({% link soda-cl/failed-rows-checks.md %}). 
 
 **User-defined checks** and **failed rows checks** enable you to define your own metrics that you can use in a SodaCL check. You can also use these checks to simply define SQL queries or Common Table Expressions (CTE) that Soda executes during a scan, which is what most of these examples do.
 

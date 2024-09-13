@@ -11,7 +11,7 @@ parent: Write SodaCL checks
 When you add or edit a data source in Soda Cloud, use the `discover datasets` and/or `profile columns` configurations to automatically profile data in your data source. 
 * Examine the profile information to gain insight into the type of SodaCL checks you can prepare to test for data quality.
 * Use profiled data to create no-code data quality checks.
-* ![preview](/assets/images/preview.png){:height="45px" width="45px" style="vertical-align:baseline"} Activate an anomaly dashboard to automatically gain observability insight into data quality.
+* ![preview](/assets/images/preview.png){:height="48px" width="48px" style="vertical-align:baseline"} Activate an anomaly dashboard to automatically gain observability insight into data quality.
 
 {% include code-header.html %}
 ```yaml
@@ -277,6 +277,7 @@ Text Columns
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
+* Learn about managing [failed row samples]({% link soda-cl/failed-row-samples.md %}) for SodaCL checks that collect and dispaly failed rows in Soda Cloud to aid issue investigation.
 * Learn more about the [anomaly dashboard]({% link soda-cloud/anomaly-dashboard.md %}) for datasets.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.

@@ -92,30 +92,12 @@ Where your datasets contain sensitive or private information, you may *not* want
 {% include disable-all-samples.md %}
 
 <br />
-Note that you cannot use an `exclude_columns` configuration to disable sample row collections from specific columns in a dataset. That configuration applies _only_ to [disabling failed rows sampling]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+Note that you cannot use an `exclude_columns` configuration to disable sample row collections from specific columns in a dataset. That configuration applies *only* to [disabling failed rows sampling]({% link soda-cl/failed-row-samples.md %}#disable-failed-row-samples-for-specific-columns).
 
-## Specify columns for failed row sampling
 
-{% include banner-upgrade.md %}
-
-Beyond collecting samples of data from datasets, you can also use a `samples columns` configuration to an individual check to specify the columns for which Soda must implicitly collect failed row sample values. Soda only collects the check's failed row samples for the columns you specify in the list, as in the `duplicate_count` example below. 
-
-Soda implicitly collects failed row samples for the following checks:
-* [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 
-* checks that use a [missing metric]({% link soda-cl/missing-metrics.md %}#failed-row-samples)
-* checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
-* checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
-
-Note that the comma-separated list of samples columns does not support wildcard characters (%).
-```yaml
-checks for dim_customer:
-  - duplicate_count(email_address) < 50:
-      samples columns: [last_name, first_name]
-```
-
-See also: [About failed row samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples)
 
 ## Go further
+* Learn more about managing [failed row samples]({% link soda-cl/failed-row-samples.md %}) with Soda.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Reference [tips and best practices for SodaCL]({% link soda/quick-start-sodacl.md %}#tips-and-best-practices-for-sodacl).
 * Use a [freshness check]({% link soda-cl/freshness.md %}) to gauge how recently your data was captured.

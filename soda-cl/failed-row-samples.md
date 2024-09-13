@@ -28,7 +28,7 @@ After a scan has completed, from the **Checks** dashboard, select an individual 
 [Reroute failed row samples](#reroute-failed-row-samples)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Configure an HTTP sampler](#configure-an-http-sampler)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Configure a Python custom sampler](#configure-a-python-custom-sampler)<br />
-[About failed row sampling queries](#about-failed-rows-sampling-queries)<br />
+[About failed row sampling queries](#about-failed-row-sampling-queries)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -300,11 +300,7 @@ Skipping samples from query 'retail_orders.last_name.failed_rows[missing_count]'
 ## Reroute failed row samples
 <!--Linked to UI, access Shlink-->
 
-If the data you are checking contains sensitive information, you may wish to send any failed rows samples that Soda collects to a secure, internal location rather than Soda Cloud. These configurations apply to checks defined as no-code checks, in an agreement, or in a checks YAML file.
-
-To do so, you have two options:
-1. **HTTP sampler**: Create a function, such as a lambda function, available at a specific URL within your environment that Soda can invoke for every check result in a data source that fails and includes failed row samples. Use the function to perform any necessary parsing from JSON to your desired format (CSV, Parquet, etc.) and store the failed row samples in a location of your choice.
-2. **Python CustomSampler**: If you run programmatic Soda scans of your data, add a custom sampler to your Python script to collect samples of rows with a `fail` check result. Once collected, you can print the failed row samples in the CLI, for example, or save them to an alternate destination.
+{% include reroute-failed-rows.md %}
 
 | Characteristic | HTTP sampler | Python CustomSampler |
 | -------------- | :----------: | :------------------: |
@@ -438,11 +434,9 @@ If you are running Soda scans programmatically, you can add a custom sampler to 
 <div class="warpper">
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
-  <input class="radio" id="three" name="group" type="radio">
   <div class="tabs">
   <label class="tab" id="one-tab" for="one">Simple example</label>
   <label class="tab" id="two-tab" for="two">Example with DataFrames </label>
-  <label class="tab" id="three-tab" for="three">Example with SampleRef </label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
@@ -602,9 +596,12 @@ if __name__ == "__main__":
 ```
 
   </div>
-  <div class="panel" id="three-panel" markdown="1">
 
-Optionally, you can include `SampleRef` to display a message in Soda Cloud that directs users to the alternate location to find the rerouted failed row samples for a check.
+  </div>
+</div>
+
+
+<!--Optionally, you can include `SampleRef` to display a message in Soda Cloud that directs users to the alternate location to find the rerouted failed row samples for a check.
 
 ![file-storage](/assets/images/file-storage.png){:height="600px" width="600px"}
 
@@ -661,15 +658,9 @@ if __name__ == '__main__':
     """)
     s.execute()
 ```
+-->
 
-
-  </div>
-
-  </div>
-</div>
-
-
-## About failed rows sampling queries
+## About failed row sampling queries
 
 For the most part, when you exclude a column from failed rows sampling, Soda does not include the column in its query to collect samples. In other words, it does not collect the samples *then* prevent them from sending to Soda Cloud, Soda does not query the column for samples, period. (There are some edge cases in which this is not the case and for those instances, a gatekeeper component ensures that no excluded columns are included in failed rows samples.)
 
@@ -721,6 +712,11 @@ SELECT id, cst_size, cst_size_txt, distance, pct, country, zip, email, date_upda
 
 ## Go further
 
+* Follow a hands-on [How-to guide]({% link soda/route-failed-rows.md %}) to reroute failed rows using a Python CustomSampler.
+* Learn more about [sampling data]({% link soda-cl/sample-datasets.md %}) in Soda Cloud.
+* Learn how to [discover and profile]({% link soda-cl/profile.md %}) datasets.
+* Organize datasets in Soda CLoud using [attributes](% link soda-cloud/organize-datasets.md %).
+* [Test data]({% link soda/quick-start-dagster.md %}) in a Dagster pipeline and reroute failed rows to Redshift.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
 

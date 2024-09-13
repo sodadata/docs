@@ -108,7 +108,7 @@ The following image illustrates what Soda Library does when you initiate a scan.
 
 The **Soda Cloud** web application integrates with your Soda Library implementation giving your team broader visibility into your organization's data quality. Soda Library pushes scan results to your Soda Cloud account where you can examine the results. 
 
-Soda Library does not send data to Soda Cloud; it only ever pushes *metadata* to the cloud. All your data stays inside your private network. (An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid with issue investigation, a feature you can [disable]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).)
+Soda Library does not send data to Soda Cloud; it only ever pushes *metadata* to the cloud. All your data stays inside your private network. An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid with issue investigation, a feature you can [disable]({% link soda-cl/failed-row-samples.md %}#disable-all-failed-row-samples.)
 
 The web app serves to complement Soda Library. Use Soda Cloud to:
 

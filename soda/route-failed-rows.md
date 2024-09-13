@@ -10,15 +10,11 @@ parent: Use case guides
 
 Using Soda Library, you can programmatically run scans that reroute failed row samples to display them in the command-line instead of Soda Cloud. 
 
-By default, Soda Library *implicitly* pushes samples of any failed rows to Soda Cloud for missing, validity, duplicate, and reference checks; see [About failed row samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples). Instead of sending the results to Soda Cloud, you can use a [custom sampler]({% link soda-cl/failed-rows-checks.md %}#configure-a-failed-row-sampler) to programmatically instruct Soda to display those samples in the command-line.
+By default, Soda Library *implicitly* pushes samples of any failed rows to Soda Cloud for missing, validity, duplicate, and reference checks; see [About failed row samples]({% link soda-cl/failed-row-samples.md %}#about-failed-row-samples). Instead of sending the results to Soda Cloud, you can use a Python custom sampler to programmatically instruct Soda to display those samples in the command-line.
 
 Follow the instructions below to modify an example script and run it locally to invoke Soda to run a scan on example data and display samples in the command-line for the rows that failed missing, validity, duplicate, and reference checks. This example uses Dask and Pandas to convert CSV sample data into a DataFrame on which Soda can run a scan, and also to convert failed row samples into a CSV to route them to, or display them in, a non-Soda Cloud location.
 
 Note that although the example does not send failed row samples to Soda Cloud, it does still send dataset profile information and the data quality check results to Soda Cloud. 
-
-See also: [Reroute failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples)<br />
-See also: [Disable samples in Soda Cloud]({% link soda-cl/sample-datasets.md %}#disable-samples-in-soda-cloud)<br />
-See also: [Manage failed row samples]({% link soda-cl/failed-row-samples.md %})<br />
 
 ## Prerequisites
 * a code or text editor such as PyCharm or Visual Studio Code
@@ -109,19 +105,16 @@ from datetime import datetime
 import json
 import os
 
-# If you create your Soda Cloud account in the US Region, use "cloud.us.soda.io".
+# For the US Region, use "cloud.us.soda.io".
 # For the EU region, use "cloud.soda.io".
-
 soda_cloud_host = "cloud.soda.io" 
 
 # Input the API keys you generated in step 2.
-
 cloud_apikeyID = "XXX"  
 cloud_apikeySecret = "XXX"
 
 # Set to "true" to view failed row samples in Soda Cloud.
 # Set to "false" to view samples in the CLI/separate DataFrame.
-
 failed_rows_cloud = "false"
 
 # ----------------------------------------------------------------------------------------
@@ -219,12 +212,10 @@ soda_cloud:
 
 scan.add_sodacl_yaml_str(checks)
 scan.add_configuration_yaml_str(config)
-#scan.set_verbose(True)
 # When testing, you can set scan.set_is_local(True) to avoid sending failed row samples to Soda Cloud.
 scan.set_is_local(False)
 scan.execute()
-#print(scan.get_logs_text())
-#print(scan.get_checks_fail_text())
+
 
 
 # Create a DataFrame for any exceptions
@@ -257,9 +248,9 @@ if failed_rows_cloud == "false":
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 * Learn how to [Manage sensitive data]({% link soda/sensitive-data.md %}) in Soda Cloud.
-* Learn how to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+* Learn how to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-row-samples.md %}#disable-failed-row-samples-for-specific-columns).
 * [Disable samples in Soda Cloud]({% link soda-cl/sample-datasets.md %}#disable-samples-in-soda-cloud) entirely.
-* Learn how to use a custom sampler to route failed row samples to an [external storage location]({% link soda-cl/sample-datasets.md %}#reroute-failed-rows-samples).
+* Learn how to use a custom sampler to route failed row samples to an [external storage location]({% link soda-cl/failed-row-samples.md %}#reroute-failed-row-samples).
 <br />
 
 ---
