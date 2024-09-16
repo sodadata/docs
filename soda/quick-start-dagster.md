@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Test data quality in a Dagster pipeline.
+title: Test data quality in a Dagster pipeline
 description: Use this guide as an example of how to invoke Soda data quality tests in a Dagster pipeline.
 parent: Use case guides
 ---
