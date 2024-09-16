@@ -20,6 +20,7 @@ After a scan has completed, from the **Checks** dashboard, select an individual 
 [About failed row samples](#about-failed-row-samples)<br />
 [Determine which sampling method to use](#determine-which-sampling-method-to-use)<br />
 [Set a sample limit](#set-a-sample-limit)<br />
+[Customize a failed row samples query](#customize-a-failed-row-samples-query)<br />
 [Collect failed row samples for specific columns](#collect-failed-row-samples-for-specific-columns)<br />
 [Disable all failed row samples](#disable-all-failed-row-samples)<br />
 [Disable failed row samples for individual checks](#disable-failed-row-samples-for-individual-checks)<br />
@@ -64,7 +65,9 @@ Read on!
 
 ## Determine which sampling method to use
 
-While the following tables may be useful in deciding how to configure failed row sample collection for your organization, be aware that you can use combinations of configurations to achieve your sampling objectives. Further, some configurations apply only to no-code checks, or only to checks defined using SodaCL in an agreement in Soda Cloud or in a YAML file for use with Soda Library; refer to individual configuration instructions for details.
+While the following tables may be useful in deciding how to configure failed row sample collection for your organization, be aware that you can use combinations of configurations to achieve your sampling objectives. 
+
+Further, some configurations apply only to no-code checks, or only to checks defined using SodaCL in an agreement in Soda Cloud or in a YAML file for use with Soda Library; refer to individual configuration instructions for details.
 
 | **Method:** | Default |
 | **Description:** |Soda collects up to 100 failed row samples for any check that implicitly or explicitly collects samples and displays them in a check's Check History page in Soda Cloud; see [About failed row samples](#about-failed-row-samples) to activate for your Soda Cloud account.|
@@ -133,11 +136,35 @@ data_source soda_test:
 
 <br />
 
+## Customize a failed row samples query
+
+At times, you may find it useful to customize a SQL query that Soda can use to collect failed row samples for a **[user-defined check]({% link soda-cl/user-defined.md %})**. To do so, you can add an independent failed row samples query.
+
+For example, you may wish to limit the columns from which Soda draws failed row samples, or limit the volume of samples. Further, you could customize a query to run an aggregate metric such as `avg` on a discount column, for example, and return failed row samples that you can compare to an anomaly such as rows with a discount greater than 50%.
+
+To add a custom failed row sample query to a user-defined check in an agreement or in a checks YAML file, add a `failed rows query` configuration as in the following example.
+{% include code-header.html %}
+```yaml
+checks for retail_orders:
+  - test_sql:
+      test_sql query: SELECT count(*) FROM retail_orders
+      failed rows query: SELECT id FROM retail_orders WHERE id IS NULL
+      name: With failed row samples
+      fail: when > 0
+```
+
+In Soda Cloud, you can add an optional failed rows query to a no-code **SQL Metric** check in the user interface, as in the image below. No-code SQL Metric checks are supported in Soda Cloud with Soda-hosted Agent or self-hosted Agent.
+
+![sql-metric-failed-rows](/assets/images/sql-metric-failed-rows.png){:height="450px" width="450px"}
+
+
 ## Collect failed row samples for specific columns
 
 Use a `samples columns` configuration to an individual check to specify the columns for which Soda *implicitly* collects failed row sample values. The configurations and settings described below correspond with the optional Soda Cloud setting in **Organization Settings** (see [About failed row samples](#about-failed-row-samples)) which limits failed row sample collection to only those checks which implicitly collect failed row samples and which include the `samples columns` configuration, or to datasets explicitly configured to collect failed row samples in the **Dataset Settings** in Soda Cloud, as described below. 
 
-At the check level, Soda only collects the check's failed row samples for the columns you specify in the list, as in the `duplicate_count` example below. The comma-separated list of samples columns supports wildcard characters (`%` or `*`). This configuration applies only to checks defined in an agreement or in a checks YAML file. ***Known issue:*** `samples columns` configuration is not compatible with [reconciliation checks]({% link soda-cl/recon.md %}).
+At the check level, Soda only collects the check's failed row samples for the columns you specify in the list, as in the `duplicate_count` example below. The comma-separated list of samples columns supports wildcard characters (`%` or `*`). This configuration applies only to checks defined in an agreement or in a checks YAML file. 
+
+***Known issue:*** `samples columns` configuration is not compatible with [reconciliation checks]({% link soda-cl/recon.md %}).
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -196,7 +223,9 @@ checks for dim_customer:
 
 For checks which *implicitly* or *explicitly* collect failed rows samples, you can add a configuration to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. For example, you may wish to exclude a column that contains personal identifiable information (PII) such as credit card numbers from the Soda query that collects samples.
 
-To do so, add the `sampler` configuration to your data source connection configuration to specify the columns you wish to exclude, as per the following examples. This configuration applies to checks defined as no-code checks, in an agreement, or in a checks YAML file.
+To do so, add the `sampler` configuration to your data source connection configuration to specify the columns you wish to exclude, as per the following examples. This configuration applies to checks defined as no-code checks, in an agreement, or in a checks YAML file. 
+
+***Known issue:*** [Reconciliation checks]({% link soda-cl/recon.md %}) are incompatible with `exclude_columns` configuration.
 
 Note that the dataset names and the lists of samples columns support wildcard characters (`%` or `*`).
 
