@@ -163,7 +163,7 @@ checks for dim_product:
 Alternatively, you can adjust a dataset's settings in Soda Cloud so that it collects failed row samples only for specific columns. The setting applies to checks defined as no-code checks.
 1. As an Admin, Manager, or Editor of a dataset, log in to Soda Cloud, then navigate to the **Dataset** for which you never want Soda to collect failed row samples.
 2. Click the stacked dots at the upper-right, then select **Edit Dataset**.
-3. In the **Failed Rows** tab, use the dropdown to select **Specific Columns**, further selecting the columns from which to gather failed row samples. <br />
+3. In the **Failed Row Samples** tab, use the dropdown to select **Specific Columns**, further selecting the columns from which to gather failed row samples. <br />
 ![dataset-settings](/assets/images/dataset-settings.png){:height="450px" width="450px"}
 4. **Save** your settings.
 
@@ -273,7 +273,7 @@ sampler:
 Alternatively, you can adjust a dataset's settings in Soda Cloud so that it collects no failed row samples. The setting applies to checks defined as no-code checks.
 1. As an Admin, Manager, or Editor of a dataset, log in to Soda Cloud, then navigate to the **Dataset** for which you never want Soda to collect failed row samples.
 2. Click the stacked dots at the upper-right, then select **Edit Dataset**.
-3. In the **Failed Rows** tab, use the dropdown to select **No Columns**.
+3. In the **Failed Row Samples** tab, use the dropdown to select **No Columns**.
 4. **Save** your settings.
 
 <br />
