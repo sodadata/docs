@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### September 17, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.1.
+
 #### September 13, 2024
 * Added egress IP addresses for Soda Cloud. See: [Receiving events from Soda Cloud]({% link soda/data-privacy.md %}#receiving-events-from-soda-cloud)
 
