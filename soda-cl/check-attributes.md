@@ -83,13 +83,13 @@ checks for dim_product:
         best_before: 2022-02-20
 ```
 
-Optionally, you can add attributes to *all* the checks for a dataset. Using the following example configuration, Soda applies the check attributes to the `duplicate_count`, `missing_percent` checks for the `dim_product` dataset.
+Optionally, you can add attributes to *all* the checks for a dataset. Using the following example configuration, Soda applies the check attributes to the `duplicate_count`, `missing_percent` checks for the `dim_product` dataset. Note that if you specify a different attribute value for an individual check than is defined in the `configurations for` block, Soda obeys the individual check's attribute instructions.
 
 ```yaml
 configurations for dim_product:
   attributes: 
-    department: Marketing
-    priority: 1
+    department: []Marketing]
+    priority: [1]
   
   
 checks for dim_product:

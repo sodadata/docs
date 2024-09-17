@@ -174,7 +174,7 @@ checks for dim_customer:
 
 <br />
 
-Alternatively, you can specify the columns from which Soda must draw failed row samples using a dataset-level configuration, as in the following example. This configuration applies only to checks defined in an agreement or in a checks YAML file.
+Alternatively, you can specify the columns from which Soda must draw failed row samples using a dataset-level configuration, as in the following example. This configuration applies only to checks defined in an agreement or in a checks YAML file. Note that if you specify a different `samples column` value for an individual check than is defined in the `configurations for` block, Soda obeys the individual check's sample column instructions.
 {% include code-header.html %}
 ```yaml
 configurations for dim_product:
