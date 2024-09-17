@@ -13,7 +13,7 @@ parent: Learning resources
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.1.
 
 #### September 13, 2024
-* Added egress IP addresses for Soda Cloud. See: [Receiving events from Soda Cloud]({% link soda/data-privacy.md %}#receiving-events-from-soda-cloud)
+* Added egress IP addresses for Soda Cloud. See: [Receiving events from Soda Cloud]({% link soda/data-privacy.md %}#receiving-events-from-soda-cloud).
 
 #### September 12, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.15 - 3.3.22.
