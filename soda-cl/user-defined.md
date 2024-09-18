@@ -112,6 +112,9 @@ checks for dim_product:
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). <br />*Known issue:* Dataset filters are not compatible with user-defined checks which use a SQL query. With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260-->| [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 | ✓ | Include a failed row sample query inside a SQL or CTE user-defined metric configuration to send failed row samples to Soda Cloud; see [example](#example-with-failed-row-sample-query). | [Customize a failed row samples query]({% link soda-cl/failed-row-samples.md %}#customize-a-failed-row-samples-query) |
 | ✓ | Specify a single column against which to run a check that uses a user-defined metric; see [example](#example-with-columm-parameter). |  -  |
+|   | Supports `samples columns` parameter to specify columns from which Soda draws failed row samples. | [Customize sampling for checks]({% link soda-cl/failed-row-samples.md %}#customize-sampling-for-checks) |
+|   | Supports `samples limit` parameter to control the volume of failed row samples Soda collects. | [Set a sample limit]({% link soda-cl/failed-row-samples.md %}#set-a-sample-limit) |
+|   | Supports `collect failed rows` parameter instruct Soda to collect, or not to collect, failed row samples for a check. | [Customize sampling for checks]({% link soda-cl/failed-row-samples.md %}#customize-sampling-for-checks) |
 
 #### Example with check name 
 

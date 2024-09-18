@@ -57,9 +57,9 @@ As a Soda Cloud Admin, navigate to **your avatar** > **Organization Settings**, 
 
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), failed row checks are user-defined. This check is limited in its syntax variation, but you can customize your expression or query as much as you like.
 
-The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the `fail condition` that any rows in the `dim_customer` dataset must meet in order to qualify as failed rows, during a scan, get sent to Soda Cloud.
+When a failed rows check results in a `warn` or `fail` Soda collects up to 100 failed row samples by default. You can decrease or increase the volume of sample rows using the `samples limit` parameter; see [Set a samples limit]({% link soda-cl/failed-row-samples.md %}#set-a-sample-limit). Note that failed rows checks that use a SQL query support up to a maximum of 10,000 samples.
 
-In this rather silly example, Soda sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples. The check also uses the `name` configuration key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
+The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the `fail condition` that any rows in the `dim_customer` dataset must meet in order to qualify as failed rows, during a scan, get sent to Soda Cloud. Soda sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples, up to a default volume of 100 rows. The check also uses the `name` configuration key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -107,6 +107,9 @@ checks for dim_customer:
 |   | Use for each to apply failed rows checks to multiple datasets in one scan. | - |
 | ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filter). <br /> *Known issue:* Dataset filters are not compatible with failed rows checks which use a SQL query. With such a check, Soda does not apply the dataset filter at scan time. <!--SODA-1260--> | [Scan a portion of your dataset]({% link soda-cl/optional-config.md %}#scan-a-portion-of-your-dataset) |
 | ✓ | Specify a single column against which to run a failed rows check; see [example](#example-with-column-parameter). |  -  |
+|   | Supports `samples columns` parameter to specify columns from which Soda draws failed row samples. | [Customize sampling for checks]({% link soda-cl/failed-row-samples.md %}#customize-sampling-for-checks) |
+|   | Supports `samples limit` parameter to control the volume of failed row samples Soda collects. | [Set a sample limit]({% link soda-cl/failed-row-samples.md %}#set-a-sample-limit) |
+|   | Supports `collect failed rows` parameter instruct Soda to collect, or not to collect, failed row samples for a check. | [Customize sampling for checks]({% link soda-cl/failed-row-samples.md %}#customize-sampling-for-checks) |
 
 #### Example with check name
 {% include code-header.html %}
@@ -171,7 +174,7 @@ checks for dim_product:
       name: Brand must be LUCKY DOG
       column: product_line
       fail condition: brand LIKE '%LUCKY DOG%'
-````
+```
 
 <br />
 
