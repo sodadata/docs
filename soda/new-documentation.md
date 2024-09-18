@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### September 19, 2024
+* Moved [data contract lanugage reference]({% link soda/data-contracts-checks.md %}) content to soda-core GitHub repository to avoid confusion with SodaCL reference. 
+
 #### September 18, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.27.
 
