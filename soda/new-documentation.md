@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### September 18, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.27.
+
 #### September 17, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.1.
 
