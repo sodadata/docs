@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### September 19, 2024
+* Added attribute mapping to [Okta SSO integration]({% link soda-cloud/sso.md %}#add-soda-cloud-to-okta) documentation.
+
 #### September 18, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.27.
 
