@@ -210,8 +210,8 @@ reconciliation my_project_name:
 | `label` | required | An identifier that prepends check result name identifiers in Soda Cloud. |
 | `attributes` | optional | A list of attributes that Soda applies to the reconciliation project's check results in Soda Cloud so that you can filter and find the project's results. <br />See: [Add attributes](#add-attributes) |
 | `datasets` | required | A subheading to contain the list of datasets to apply your reconciliation checks.|
-| `source` | required | Key-value pairs to identify the `dataset` and `data source` of the source, or origin location of the data to be migrated. You can provide a comma-separated list of datasets; identify only one data source.|
-| `target` | required | Key-value pairs to identify the `dataset` and `data source` of the target, or destination location of the data to be migrated. You can provide a comma-separated list of datasets; identify only one data source.|
+| `source` | required | Key-value pairs to identify the `dataset` and `data source` of the source, or origin location of the data to be migrated. |
+| `target` | required | Key-value pairs to identify the `dataset` and `data source` of the target, or destination location of the data to be migrated. |
 | `checks` | required | A subheading to contain the checks that reconcile the data between source and target. In this section, you can define any number of both metric and record reconciliation checks; see details below.|
  
 
