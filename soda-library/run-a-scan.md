@@ -413,7 +413,7 @@ scan.get_all_checks_text()
 
 You can programmatically initiate a scan your team defined in Soda Cloud using the Soda Cloud API. 
 
-If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) permissions in your Soda Cloud account, you can use the API to:
+If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have [Admin]({% link soda-cloud/roles-global.md %}) permissions in your Soda Cloud account, you can use the API to:
 * retrieve information about checks and datasets in your Soda Cloud account 
 * execute scans
 * retrieve information about the state of a scan during execution
@@ -432,7 +432,7 @@ Access the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) document
 
 You can initiate a scan your team defined in Soda Cloud using the Soda Library CLI.
 
-If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) permissions in your Soda Cloud account, you can use Soda Library CLI to: 
+If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have [Admin]({% link soda-cloud/roles-global.md %}) permissions in your Soda Cloud account, you can use Soda Library CLI to: 
 * execute a remote scan and synchronously receive logs of the scan execution result
 * execute a remote scan and asynchronously retrieve status and logs of the scan during, and after its execution
 

@@ -43,9 +43,9 @@ Soda has tested and confirmed that SSO setup works with the following identity p
 
 ## SSO access to Soda Cloud
 
-When an employee uses their SSO provider to access Soda Cloud for the first time, Soda Cloud automatically assigns the new user to roles and groups according to the [Default roles and permissions]({% link soda-cloud/roles-and-rights.md %}#default-roles-and-permissions) for any new users. Soda Cloud also notifies the Soda Cloud Admin that a new user has joined the organization, and the new user receives a message indicating that their Soda Cloud Admin was notified of their first login. A Soda Cloud Admin can adjust users' roles in Organization Settings. See [Change organization roles and settings]({% link soda-cloud/roles-and-rights.md %}#change-organization-roles-and-settings) for details.
+When an employee uses their SSO provider to access Soda Cloud for the first time, Soda Cloud automatically assigns the new user to roles and groups according to the [Default roles and permissions]({% link soda-cloud/roles-global.md %}#default-roles-and-permissions) for any new users. Soda Cloud also notifies the Soda Cloud Admin that a new user has joined the organization, and the new user receives a message indicating that their Soda Cloud Admin was notified of their first login. A Soda Cloud Admin can adjust users' roles in Organization Settings. See [Change organization roles and settings]({% link soda-cloud/roles-global.md %}#change-organization-roles-and-settings) for details.
 
-When an organization's IT Admin revokes a user's access to Soda Cloud through the SSO provider, a Soda cloud Admin is responsible for updating the resources and ownerships linked to the User. Refer to [Manage roles and permissions in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) for details.
+When an organization's IT Admin revokes a user's access to Soda Cloud through the SSO provider, a Soda cloud Admin is responsible for updating the resources and ownerships linked to the User. Refer to [Manage roles and permissions in Soda Cloud]({% link soda-cloud/roles-global.md %}) for details.
 
 Once your organization enables SSO for all Soda Cloud users, Soda Cloud blocks all non-SSO login attempts and password changes via <a href="https://cloud.soda.io/login" target="_blank">cloud.soda.io/login<a/>. If an employee attempts a non-SSO login or attempts to change a password using "Forgot password?" on <a href="https://cloud.soda.io/login" target="_blank">cloud.soda.io/login<a/>, Soda Cloud presents a message that explains that they must log in or change their password using their SSO provider. 
 
@@ -140,7 +140,7 @@ The values for these fields are unique to your organization and are provided to 
 
 If you wish, you can choose to regularly one-way sync the user groups you have defined in your IdP into Soda Cloud. 
 
-Doing so obviates the need to manually create user groups in Soda Cloud that you have already defined in your IdP, and enables your team to select an IdP-managed user groups when assigning ownership access permissions to a resource, in addition to any user groups you may have created manually in Soda Cloud. See: [Create custom user groups]({% link soda-cloud/roles-and-rights.md %}#create-custom-user-groups)
+Doing so obviates the need to manually create user groups in Soda Cloud that you have already defined in your IdP, and enables your team to select an IdP-managed user groups when assigning ownership access permissions to a resource, in addition to any user groups you may have created manually in Soda Cloud. See: [Create custom user groups]({% link soda-cloud/roles-global.md %}#create-custom-user-groups)
 
 * Soda has tested and documented one-way syncing of user groups with Soda Cloud for Okta and Azure Active Directory. <a href="https://community.soda.io/slack" target="_blank"> Contact Soda</a> to request tested and documented support for other IdPs.
 * Soda synchronizes user groups with the IdP every time a user in your organization logs in to Soda via SSO. Soda updates the user's group membership according to the IdP user groups to which they belong at each log in.
@@ -176,7 +176,7 @@ Doing so obviates the need to manually create user groups in Soda Cloud that you
 ## Go further
 
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-* Learn more about [Manage roles and permissions in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}).
+* Learn more about [Manage roles and permissions in Soda Cloud]({% link soda-cloud/roles-global.md %}).
 * Learn more about creating and tracking [Incidents]({% link soda-cloud/incidents.md %}) in Soda Cloud.
 <br />
 

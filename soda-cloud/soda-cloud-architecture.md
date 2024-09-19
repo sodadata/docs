@@ -53,7 +53,7 @@ The engineer can manage access to data sources while giving Soda Cloud end-users
 
 Soda Cloud is made up of several parts, or **resources**, that work together to define checks, execute scans, and display results that help you gauge the quality and reliability of your data. 
 
-It is helpful to understand these resources and how they relate, or connect, to each other if you are establishing [role-based access rules]({% link soda-cloud/roles-and-rights.md %}) for your organization's Soda Cloud account, or if you are planning to delete an existing resource.
+It is helpful to understand these resources and how they relate, or connect, to each other if you are establishing [role-based access rules]({% link soda-cloud/roles-global.md %}) for your organization's Soda Cloud account, or if you are planning to delete an existing resource.
 
 The following diagram illustrates an example deployment of a single Soda Cloud account with two Soda Agents, each of which connects to two data sources. A Soda Cloud Administrator has also created integrations with Slack, Jira (via a webhook), and MS Teams.
 

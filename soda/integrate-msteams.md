@@ -23,7 +23,7 @@ Configure Soda Cloud to connect your account to MS Teams so that you can:
   If you have previously set up a Soda integration with an Office 365 connector, follow the instructions for <a href="https://support.microsoft.com/en-us/office/creating-a-workflow-from-a-channel-in-teams-242eb8f2-f328-45be-b81f-9817b51a5f0e" target="_blank">Creating a workflow from a channel in Teams</a>, then update the integration URL in your existing Soda <> MS Teams integration in Soda Cloud.   
 </div>
 
-1. As an [Admin user]({% link soda-cloud/roles-and-rights.md %}), log in to your Soda Cloud account, navigate to **your avatar** > **Organization Settings**, then select the **Integrations** tab.
+1. As an [Admin user]({% link soda-cloud/roles-global.md %}), log in to your Soda Cloud account, navigate to **your avatar** > **Organization Settings**, then select the **Integrations** tab.
 2. Click the **+** at the upper right of the table of integrations to add a new integration. 
 3. In the **Add Integration** dialog box, select **Microsoft Teams**.
 4. In the first step of the guided integration workflow, follow the instructions to navigate to your MS Teams account to create a Workflow; see Microsoft's documentation for <a href="https://support.microsoft.com/en-us/office/creating-a-workflow-from-a-channel-in-teams-242eb8f2-f328-45be-b81f-9817b51a5f0e" target="_blank">Creating a workflow from a channel in Teams</a>. Use the Workflow template to **Post to a channel when a webhook request is received**.

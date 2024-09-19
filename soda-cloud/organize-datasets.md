@@ -22,7 +22,7 @@ Define new attributes for datasets in your organization that your colleagues can
 
 <br />
 
-1. As an [Admin]({% link soda-cloud/roles-and-rights.md %}) of your Soda Cloud account, navigate to **your avatar** > **Attributes** > **New Attribute**.
+1. As an [Admin]({% link soda-cloud/roles-global.md %}) of your Soda Cloud account, navigate to **your avatar** > **Attributes** > **New Attribute**.
 2. Follow the guided steps to create the new attribute. Use the details below for insight into the values to enter in the fields in the guided steps. 
 
 | Field or Label  | Guidance |

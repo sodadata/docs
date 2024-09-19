@@ -79,7 +79,7 @@ Activate an anomaly dashboard to one or more datasets by configuring profiling f
 
 Use the following procedure to activate the anomaly dashboard for an existing dataset in a data source you already connected to your Soda Cloud account via a self-hosted or Soda-hosted agent.
 
-1. If you have been assigned an Admin, Manager, or Editor [role]({% link soda-cloud/roles-and-rights.md %}#access-to-resources) for a dataset, navigate to the **Datasets** dashboard, then open the dataset to which you wish to activate an anomaly dashboard. 
+1. If you have been assigned an Admin, Manager, or Editor [role]({% link soda-cloud/roles-global.md %}#access-to-resources) for a dataset, navigate to the **Datasets** dashboard, then open the dataset to which you wish to activate an anomaly dashboard. 
 2. Navigate to the **Anomalies** tab where a message appears that advises you that the anomaly dashboard has not been activated for this dataset. Click **Activate**. 
 3. Follow the guided steps and carefully read the warning about the changes to any existing profiling you have configured for the data source (see below). If you accept the permanent changes, specify the time of day you wish to run the daily anomaly scan, then proceed.
 ><hr>

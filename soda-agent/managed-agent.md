@@ -138,7 +138,7 @@ This tab is the fifth step in the guided workflow if the **5. Check** tab is abs
 | Field or Label | Guidance | 
 |----------------|----------|
 | Data Source Owner | The Data Source Owner maintains the connection details and settings for this data source and its Default Scan Definition. |
-| Default Dataset Owner | The Datasets Owner is the user who, by default, becomes the owner of each dataset the Default Scan discovers. Refer to [Manage roles and permissions in Soda Cloud]({% link soda-cloud/roles-and-rights.md %}) to learn how to adjust the Dataset Owner of individual datasets.|
+| Default Dataset Owner | The Datasets Owner is the user who, by default, becomes the owner of each dataset the Default Scan discovers. Refer to [Manage roles and permissions in Soda Cloud]({% link soda-cloud/roles-global.md %}) to learn how to adjust the Dataset Owner of individual datasets.|
 
 <br />
 

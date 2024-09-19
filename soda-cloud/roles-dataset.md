@@ -1,24 +1,26 @@
 ---
 layout: default
-title: Manage resource permissions in Soda Cloud
+title: Manage dataset roles
 description: Learn how to manage user access to datasets in an organization's Soda Cloud account.
 parent: Organize, alert, investigate
+redirect_from:
+  - /soda-cloud/roles-resources.html
 ---
 
-# Manage resource permissions in Soda Cloud
+# Manage dataset roles
 *Last modified on {% last_modified_at %}*
 
 To manage the resource-level permissions of users that belong to a single organization, Soda Cloud uses roles, groups, and access permissions. These role-based access permissions enforce limits on the abilities for people to make additions and changes to resources in Soda Cloud, including agents, data sources, and datasets.
 
-See also: [Manage account roles and permissions in Soda Cloud]({% link soda-cloud/roles-and-rights.md %})
+See also: [Manage account roles and permissions in Soda Cloud]({% link soda-cloud/roles-global.md %})
 <br /><br />
 
 [Resource-level roles and permissions](#resource-level-roles-and-permissions)<br />
 [Change access to a dataset](#change-access-to-a-dataset)<br />
 
-## Resource-level roles and permissions
+## Dataset roles and permissions
 
-Where [account-level]({% link soda-cloud/roles-and-rights.md %}) roles and permissions apply to your organization's Soda Account, the roles and access permissions described in the table below apply to the following resources in your account:
+Where [account-level]({% link soda-cloud/roles-global.md %}) roles and permissions apply to your organization's Soda Account, the roles and access permissions described in the table below apply to the following resources in your account:
 
 | agents<br/> data sources<br/> scan definitions<br/> datasets | checks<br/> agreements<br/> discussions<br/> incidents |
 
@@ -63,6 +65,14 @@ The following table outlines the permissions of each resource-level role.
 | Set the status of a notification rule (Active or Paused)                   |   ✓   |    ✓     |    ✓   |        |
 
 <br/>
+
+#### Add multiple permissions
+
+If you have added a user to a group to which you have assigned a level of permission for a resource, then manually assigned a different level of permission to the individual user for a resource, the higher permission trumps the lower. 
+
+For example, as an Admin, you add Manny Jacinto to user group called Marketing Team which, for Dataset_A, has been assigned the OOTB dataset role of Viewer. Then, you change Manny's individual dataset role for Dataset_A to Manager. Soda honors the permissions of the higher role, Manager, for Manny's access to Dataset_A.
+
+<br />
 
 ## Change access to a dataset
 
