@@ -9,13 +9,20 @@ parent: Learning resources
 
 <br /> 
 
-#### September 19, 2024
+#### September 25, 2024
 * Compiled and updated [failed row samples]({% link soda-cl/failed-row-samples.md %}) documentation, including:
   * the option to use `scan context` in a CustomSampler to read/write data to/from a scan
   * the option to collect failed row samples from specific columns in a dataset in Soda Cloud
   * the option to disable failed row sample collection from all datasets, except those with explicit configuration to collect samples
 * Updated [Failed row checks]({% link soda-cl/failed-rows-checks.md %}) and [User-defined checks]({% link soda-cl/user-defined.md %}) to include optional configuration to specify a single column against which to run the check.
 * Revised [check attributes]({% link soda-cl/check-attributes.md %}#apply-an-attribute-to-one-or-more-checks) configuration when applying attributes to more than one check.
+
+#### September 23, 2024
+* Moved [data contract lanugage reference]({% link soda/data-contracts-checks.md %}) content to soda-core GitHub repository to avoid confusion with SodaCL reference. 
+
+#### September 19, 2024
+* Added attribute mapping to [Okta SSO integration]({% link soda-cloud/sso.md %}#add-soda-cloud-to-okta) documentation.
+* Correct reconciliation check documentation to remove the option to add a list of comma-separated datasets to compare.
 
 #### September 18, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.27.

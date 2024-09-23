@@ -101,7 +101,8 @@ The values for these fields are unique to your organization and are provided to 
 6. Be sure to use an email address as the application username.
 7. Scroll down to **Attribute Statements** to map the following values, then click **Next** to continue.
 * map `User.GivenName` to `user.firstName`
-* map `User.FamilyName`to `user.lastName`. 
+* map `User.FamilyName`to `user.lastName`
+* map `User.Email` to `user.email`
 * (Optional) Follow the additional steps to enable one-way user group syncing to your SSO configuration; [Set up user group sync in Okta](#set-up-user-group-sync-in-okta).
 8. Select the following options, then click **Finish**.
 * I'm an Okta customer adding an internal app.

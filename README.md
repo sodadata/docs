@@ -6,13 +6,13 @@ Join us in our mission to help users become productive and confident using Soda 
 ## Contribute
 
 The following outlines the workflow to contribute to Soda documentation.
-1. [Set up docs tooling](#set-up-docs-tooling) locally on your machine and clone the GitHub repo.
+1. [Set up docs tooling](#set-up-docs-tooling) locally on your machine and clone the GitHub repo.<br /> OR </br> skip the tooling and [use Netlify preview](#use-netlify-preview), instead.
 2. Create a new branch for your work. Include the word `docs` in the name of your branch.
 3. Follow the [style guidelines](#style-guidelines) to edit existing or write new content using [markdown](#use-jekyll-markdown).
 4. Adjust the nav order of any new files in the `docs` > `nav.yml` file.
 5. Spell check your content (select all and copy to Google Docs for a thorough check) and test all links.
-6. Commit your contributions, create a pull request, and request a review, if you wish.
-7. When all tests pass, merge your pull request.
+6. Commit your contributions, create a pull request, and request a review from janet-can.
+7. If you work for Soda, merge your pull request. If not, a Soda employee will review and merge when ready.
 8. Celebrate your new life as a published author!
 
 ### Set up docs tooling
@@ -37,8 +37,9 @@ $ gem install --user-install bundler jekyll
 ```shell
 $ bundle exec jekyll serve
 ```
-7. In a browser, navigate to [http://localhost:4000](http://localhost:4000) to see a preview of the docs site locally. Make changes to docs files in your code editor, save the files, then refresh your browser to preview your changes.
-8. If you are creating a new page, consider copy+pasting the contents of the `template-new-page.md` file and pasting into your new file so that the standard header and footer info are included.
+7. In a browser, navigate to [http://localhost:4000](http://localhost:4000) to see a preview of the docs site locally. 
+8. When you make changes to docs files in your code editor, save the files, then refresh your browser to preview your changes. If you are creating a new page, consider copy+pasting the contents of the `template-new-page.md` file and pasting into your new file so that the standard header and footer info are included.
+
 
 #### Install Ruby on Mac with an Apple M1 chip
 
@@ -68,6 +69,16 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 ```
 7. Source your freshly modified bash profile `source /your/bash_profile/file` or open a new Terminal window.
 8. Follow the [Set up docs tooling](#set-up-docs-tooling) above, starting at step 2.
+
+### Use Netlify preview
+
+Rather than set up all the docs tooling locally to preview your work, you can use Netlify to preview your work.
+1. Clone the repo, then create a new branch and open it in your IDE.
+2. Make changes as you wish to docs files, then save and commit the changes locally.
+3. Push your branch to the repo, and Create a Pull Request.
+4. Once created and saved in GitHub, a new PR triggers a Netlify workflow that prepares a preview of the docs site that you can access via the Deploy Preview link in the PR. Use this link to review your work as it will appear when it is published.
+5. When you are satisfied with the changes, request a review of the PR from janet-can.
+7. If you work for Soda, merge your pull request. If not, a Soda employee will review and merge when ready.
 
 ## Style guidelines
 
