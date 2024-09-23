@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### September 23, 2024
+* Moved [data contract lanugage reference]({% link soda/data-contracts-checks.md %}) content to soda-core GitHub repository to avoid confusion with SodaCL reference. 
+
 #### September 19, 2024
 * Added attribute mapping to [Okta SSO integration]({% link soda-cloud/sso.md %}#add-soda-cloud-to-okta) documentation.
 * Correct reconciliation check documentation to remove the option to add a list of comma-separated datasets to compare.
