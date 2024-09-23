@@ -141,10 +141,21 @@ Dataset profiling can be resource-heavy, so carefully consider the datasets for 
 
 When a scan results in a failed check, the CLI output displays information about the check that failed and why, including the [actual SQL queries]({% link soda-cl/failed-row-samples.md %}#about-failed-row-sampling-queries) that retrieve failed row samples. To offer more insight into the data that failed a check, Soda Cloud displays failed row samples in a check result’s measurement history, as in the example below.
 
-There are two ways Soda collects and sends failed row samples to your Soda Cloud account:
+There are two ways Soda collects and displays failed row samples in your Soda Cloud account.
 
-1. Implicitly: For [reference checks]({% link soda-cl/reference.md %}), [duplicate_count or duplicate_percent metrics]({% link soda-cl/numeric-metrics.md %}#failed-row-samples), [missing metrics]({% link soda-cl/missing-metrics.md %}#failed-row-samples), and [validity metrics]({% link soda-cl/validity-metrics.md %}#failed-row-samples), Soda automatically sends 100 failed row samples to your Soda Cloud account.
-2. Explicitly: When you define a [failed rows check]({% link soda-cl/failed-rows-checks.md %}) or a [reconciliation check]({% link soda-cl/recon.md %}) which borrows from the failed rows check syntax, you explicitly ask Soda to send failed row samples to Soda Cloud.
+* **Implicitly:** Soda automatically collects 100 failed row samples for the following checks:
+  * [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 
+  * checks that use a [missing metric]({% link soda-cl/missing-metrics.md %}#failed-row-samples)
+  * checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
+  * checks that use a [duplicate metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
+  * [metric reconciliation check]({% link soda-cl/recon.md %}#metric-reconciliation-checks) that include missing, validity, or duplicate metrics, or reference checks
+  * [record reconciliation checks]({% link soda-cl/recon.md %}#record-reconciliation-checks)
+    
+
+* **Explicitly:** Soda automatically collects 100 failed row samples for the following explicitly-configured checks:
+  * [failed rows check]({% link soda-cl/failed-rows-checks.md %}) 
+  * [user-defined checks]({% link soda-cl/user-defined.md %}) that use the `failed rows query` configuration
+<!--* the type of [metric reconciliation check]({% link soda-cl/recon.md %}#metric-reconciliation-checks) that borrows from failed rows check syntax-->
 
 ![failed-rows](/assets/images/failed-rows.png){:width="700px"}
 
@@ -154,13 +165,13 @@ Where your datasets contain sensitive or private information, you may not want t
 
 {% include disable-all-samples.md %} 
 
-Users frequently disable failed row sampling in Soda Cloud and, instead, reroute failed row samples to an internal database; see [Reroute failed row samples](#reroute-failed-row-samples).
+Users frequently disable failed row sampling in Soda Cloud and, instead, reroute failed row samples to an internal database; see [Reroute failed row samples](#reroute-failed-row-samples) below.
 
 ### Customize failed row sampling 
 
-For checks which implicitly or explicitly collect failed rows samples, you can add a configuration to prevent Soda from collecting those samples from specific columns or datasets that contain sensitive data. For example, you may wish to exclude a column that contains personal identifiable information (PII) such as credit card numbers from the Soda query that collects samples.
+For checks which implicitly collect failed rows samples, you can add a configuration to prevent Soda from collecting those samples from specific columns or datasets that contain sensitive data. For example, you may wish to exclude a column that contains personal identifiable information (PII) such as credit card numbers from the Soda query that collects samples.
 
-Refer to [manage failed row samples]({% link soda-cl/failed-row-samples.md %}#determine-which-sampling-method-to-use) for instructions on how to custonize the way Soda collects and displays samples.
+Refer to [manage failed row samples]({% link soda-cl/failed-row-samples.md %}) for extensive options and details.
 
 ### Reroute failed row samples
 

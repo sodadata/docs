@@ -246,13 +246,19 @@ See [Filters and variables]({% link soda-cl/filters.md %}) for further details.
 
 Soda collects failed rows samples explicitly and implicitly. 
 
-To explicitly collect failed row samples, you can add a [failed row check]({% link soda-cl/failed-rows-checks.md %}) to a dataset as a no-code check or in an agreement in Soda Cloud, or in a checks YAML file for use with Soda Library, or define a [reconciliation check]({% link soda-cl/recon.md %}) which borrows from the failed row check syntax.
+To explicitly collect failed row samples, you can add a check to explicitly collect samples of failed rows. 
+
+Explicitly, Soda automatically collects 100 failed row samples for the following explicitly-configured checks:
+* [failed rows check]({% link soda-cl/failed-rows-checks.md %}) 
+* [user-defined checks]({% link soda-cl/user-defined.md %}) that use the `failed rows query` configuration
 
 Implicitly, Soda automatically collects 100 failed row samples for the following checks:
 * [reference check]({% link soda-cl/reference.md %}#failed-row-samples) 
 * checks that use a [missing metric]({% link soda-cl/missing-metrics.md %}#failed-row-samples)
 * checks that use a [validity metric]({% link soda-cl/validity-metrics.md %}#failed-row-samples)
-* checks that use a [duplicate_count or duplicate_percent metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
+* checks that use a [duplicate metric]({% link soda-cl/numeric-metrics.md %}#failed-row-samples)
+* [metric reconciliation check]({% link soda-cl/recon.md %}#metric-reconciliation-checks) that include missing, validity, or duplicate metrics, or reference checks
+* [record reconciliation checks]({% link soda-cl/recon.md %}#record-reconciliation-checks)
 
 Beyond the default behavior of collecting and sending 100 failed row samples to Soda Cloud when a check fails, you can:
 * customize the sample size

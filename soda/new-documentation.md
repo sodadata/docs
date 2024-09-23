@@ -9,10 +9,10 @@ parent: Learning resources
 
 <br /> 
 
-#### September 25, 2024
+#### September 23, 2024
 * Compiled and updated [failed row samples]({% link soda-cl/failed-row-samples.md %}) documentation, including:
   * the option to use `scan context` in a CustomSampler to read/write data to/from a scan
-  * the option to collect failed row samples from specific columns in a dataset in Soda Cloud
+  * the option to `collect failed rows` samples from specific columns in a dataset in Soda Cloud
   * the option to disable failed row sample collection from all datasets, except those with explicit configuration to collect samples
 * Updated [Failed row checks]({% link soda-cl/failed-rows-checks.md %}) and [User-defined checks]({% link soda-cl/user-defined.md %}) to include optional configuration to specify a single column against which to run the check.
 * Revised [check attributes]({% link soda-cl/check-attributes.md %}#apply-an-attribute-to-one-or-more-checks) configuration when applying attributes to more than one check.

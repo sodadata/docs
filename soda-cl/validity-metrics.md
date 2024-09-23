@@ -218,7 +218,7 @@ Error occurred while executing scan.
 
 Checks with validity metrics automatically collect samples of any failed rows to display Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
-If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Library, or when writing checks as part of an agreement in Soda Cloud. 
+If you wish to limit or broaden the sample size, you can use the `samples limit` configuration in a check with a validity metric. You can add this configuration to your checks YAML file for Soda Library, or when writing checks as part of an agreement in Soda Cloud. See: [Set a sample limit]({% link soda-cl/failed-row-samples.md %}#set-a-sample-limit).
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -228,7 +228,7 @@ checks for dim_customer:
 
 <br />
 
-For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. Refer to [Disable failed rows sampling for specific columns]({% link soda-cl/failed-row-samples.md %}#disable-failed-row-samples-for-specific-columns).
+For security, you can add a configuration to your data source connection details to prevent Soda from collecting failed rows samples from specific columns that contain sensitive data. See: [Disable failed row samples]({% link soda-cl/failed-row-samples.md %}#disable-failed-row-samples).
 
 Alternatively, you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
 {% include code-header.html %}
@@ -240,7 +240,7 @@ checks for dim_customer:
 
 <br />
 
-You can also use a `samples columns` configuration to a check to specify the columns for which Soda must implicitly collect failed row sample values, as in the following example. Soda only collects this check's failed row samples for the columns you specify in the list. 
+You can also use a `samples columns` or a `collect failed rows` configuration to a check to specify the columns for which Soda must implicitly collect failed row sample values, as in the following example with the former. Soda only collects this check's failed row samples for the columns you specify in the list. See: [Customize sampling for checks]({% link soda-cl/failed-row-samples.md %}#customize-sampling-for-checks).
 
 Note that the comma-separated list of samples columns does not support wildcard characters (%).
 {% include code-header.html %}
