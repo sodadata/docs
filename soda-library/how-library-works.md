@@ -108,7 +108,7 @@ The following image illustrates what Soda Library does when you initiate a scan.
 
 The **Soda Cloud** web application integrates with your Soda Library implementation giving your team broader visibility into your organization's data quality. Soda Library pushes scan results to your Soda Cloud account where you can examine the results. 
 
-Soda Library does not send data to Soda Cloud; it only ever pushes *metadata* to the cloud. All your data stays inside your private network. (An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid with issue investigation, a feature you can [disable]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).)
+Soda Library does not send data to Soda Cloud; it only ever pushes *metadata* to the cloud. All your data stays inside your private network. An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid with issue investigation, a feature you can [disable]({% link soda-cl/failed-row-samples.md %}#disable-all-failed-row-samples.)
 
 The web app serves to complement Soda Library. Use Soda Cloud to:
 
@@ -133,7 +133,7 @@ Alternatively, you can integrate Soda Library with a **data orchestration tool**
 * Learn more about the [Metrics and checks]({% link soda-cl/metrics-and-checks.md %}) you can use to check for data quality.
 * Learn how to prepare [programmatic scans]({% link soda-library/programmatic.md %}) of your data.
 * Learn more about the ways you can use Soda in [Use case guides]({% link soda/use-case-guides.md %}).
-* Use [failed row samples]({% link soda-cloud/failed-rows.md %}) to investigate data quality issues.
+* Use [failed row samples]({% link soda-cl/failed-row-samples.md %}) to investigate data quality issues.
 * Write [custom SQL checks]({% link soda-cl/user-defined.md %}) for your own use cases.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 

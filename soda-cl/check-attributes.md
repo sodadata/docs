@@ -65,7 +65,7 @@ Note that you can only define or edit check attributes as an [Admin]({% link sod
 
 ## Apply an attribute to one or more checks
 
-While only a Soda Cloud Admin can define or revise check attributes, any Author user can apply attributes to new or existing checks when:
+While only a Soda Cloud Admin can define or revise check attributes, any user with permission to define or change checks on a dataset can apply attributes to new or existing checks when:
 * writing or editing checks in an agreement in Soda Cloud
 * creating or editing no-code checks in Soda Cloud
 * writing or editing checks in a checks YAML file for Soda Library
@@ -83,17 +83,21 @@ checks for dim_product:
         best_before: 2022-02-20
 ```
 
-Optionally, you can add attributes to *all* the checks in a single `checks for dataset_name` block. Using the following example configuration, Soda applies the check attributes to the `duplicate_count`, `missing_percent` and `anomaly_score` checks.
+Optionally, you can add attributes to *all* the checks for a dataset. Using the following example configuration, Soda applies the check attributes to the `duplicate_count`, `missing_percent` checks for the `dim_product` dataset. Note that if you specify a different attribute value for an individual check than is defined in the `configurations for` block, Soda obeys the individual check's attribute instructions.
 
 ```yaml
-checks for dim_customer:
-  - attributes:
-      department: Marketing
-      priority: 1
-  - duplicate_count(last_name) < 10
-  - missing_percent(phone) = 0
-  - anomaly_score for row_count < default
+configurations for dim_product:
+  attributes: 
+    department: []Marketing]
+    priority: [1]
+  
+  
+checks for dim_product:
+  - duplicate_count(product_line) = 0
+  - missing_percent(standard_cost) < 3%
 ```
+
+<br />
 
 During a scan, Soda validates the attribute's input – **NAME** (the key in the key:value pair), **Type**, **Allowed Values** – to ensure that the key:value pairs match the expected input. If the input is unexpected, Soda evaluates no checks, and the scan results in an error. For example, if your attribute's type is Number and the check author enters a value of `one` instead of `1`, the scan produces an error to indicate the incorrect attribute value.
 

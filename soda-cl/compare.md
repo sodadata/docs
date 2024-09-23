@@ -185,7 +185,7 @@ Refer to [Custom check templates]({% link soda-cl/custom-check-examples.md %}#co
 
 ## Go further
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-* Read more about [Failed rows]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
+* Read more about [Failed row samples]({% link soda-cl/failed-row-samples.md %}) in Soda Cloud.
 * Learn more about [SodaCL metrics and checks]({% link soda-cl/metrics-and-checks.md %}) in general.
 <br />
 

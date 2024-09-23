@@ -580,11 +580,11 @@ Soda Cloud Trace: 4380***10
 
 Record reconciliation checks and metric reconcilication checks that borrow from `failed rows` check syntax such as the `name_combo` check in the example above, explicitly collect samples of any failed rows to display in Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
 
-Read more [About failed row samples]({% link soda-cl/failed-rows-checks.md %}#about-failed-row-samples).
+Read more [About failed row samples]({% link soda-cl/failed-row-samples.md %}#about-failed-row-samples).
 
 <br />
 
-If you wish to limit or broaden the sample size, you can add the `samples limit` configuration to a check.  Read more about [Setting a sample limit]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit).
+If you wish to limit or broaden the sample size, you can add the `samples limit` configuration to a check.  Read more about [Setting a sample limit]({% link soda-cl/failed-row-samples.md %}#set-a-sample-limit).
 {% include code-header.html %}
 ```yaml
 checks:  
@@ -602,7 +602,7 @@ checks:
 ``` 
 <br />
 
-To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a the grouped reference checks. Examine failed rows in the **Failed Rows** tab; see [Examine failed row samples]({% link soda-cloud/failed-rows.md %}) for further details.
+To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a the grouped reference checks. Examine failed rows in the **Failed Rows Analysis** tab; see [Manage failed row samples]({% link soda-cl/failed-row-samples.md %}) for further details.
 
 <br />
 
@@ -650,6 +650,9 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |
 |   | Use for each to apply reconciliation checks to multiple datasets in one scan. | - |
 |   | Apply a dataset filter to partition data during a scan. | - |
+|   | Supports `samples columns` parameter to specify columns from which Soda draws failed row samples. | [Customize sampling for checks]({% link soda-cl/failed-row-samples.md %}#customize-sampling-for-checks) |
+| ✓ | Supports `samples limit` parameter to control the volume of failed row samples Soda collects. | [Set a sample limit]({% link soda-cl/failed-row-samples.md %}#set-a-sample-limit) |
+| ✓ | Supports `collect failed rows` parameter instruct Soda to collect, or not to collect, failed row samples for a check. | [Customize sampling for checks]({% link soda-cl/failed-row-samples.md %}#customize-sampling-for-checks) |
 
 
 #### Example with name
@@ -692,7 +695,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 * The Python environment in which `deepdiff` record reconciliation checks run consumes more time/CPU/memory because this type of check loads all data into memory to execute a comparison. Because record-to-record comparison is dense, exercise caution when executing scans with record reconciliation checks as they can cause usage spikes in the data source, and cost spikes in case of cloud-managed data sources. Best practice dictates that you [add filters](#add-a-filter) and use [column-constrained](#record-reconciliation-checks) record reconciliation checks whenever possible to mitigate cost and performance issues. See also: [Best practice for using reconciliation checks](#best-practice-for-using-reconciliation-checks).
 * Reconciliation checks on TEXT type columns are case sensitive.
 * Record reconciliation checks do not support `samples columns` configuration.
-* Reconciliation checks do not support `exclude columns` in the data source configuration in a configuration YAML file; see Disable failed rows sampling for [specific columns]({% link soda-cl/failed-rows-checks.md %}##disable-failed-rows-sampling-for-specific-columns).
+* Reconciliation checks do not support `exclude columns` in the data source configuration in a configuration YAML file; see Disable failed rows sampling for [specific columns]({% link soda-cl/failed-row-samples.md %}#disable-failed-row-samples-for-specific-columns).
 * ***Known issue***: Do not define a threshold as a percentage `%` if you expect the measurement of a metric to equal `0`. Using a percentage for a threshold causes an error for an absolute check; the check evaluates correctly but the error persists with a non-zero exit command.
 
 

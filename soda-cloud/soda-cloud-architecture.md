@@ -33,7 +33,7 @@ When Soda Library completes a scan, it uses a secure API to push the results to 
 
 ![scan-with-cloud](/assets/images/scan-with-cloud.png){:height="350px" width="350px"}
 
-You can use checks to view samples of data that [failed a check]({% link soda-cloud/failed-rows.md %}), and track data quality over time. Soda Cloud stores your scan results and prepares charts that represent the volume of failed checks in each scan. These visualizations of your scan results enable you to see where your data quality is improving or deteriorating over time.
+You can use checks to view samples of data that [failed a check]({% link soda-cl/failed-row-samples.md %}), and track data quality over time. Soda Cloud stores your scan results and prepares charts that represent the volume of failed checks in each scan. These visualizations of your scan results enable you to see where your data quality is improving or deteriorating over time.
 
 ## Soda-hosted agent deployment
 
@@ -128,7 +128,7 @@ In Soda Cloud, you can see `dataset-q` because Soda Library pushed the scan resu
 
 * Create a Soda Cloud account at [cloud.soda.io](https://cloud.soda.io/signup).
 * As a business user, learn how to write SodaCL checks in [agreements]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in Soda Cloud.
-* Learn more about viewing [failed row samples]({% link soda-cloud/failed-rows.md %}) in Soda Cloud.
+* Learn more about viewing [failed row samples]({% link soda-cl/failed-row-samples.md %}) in Soda Cloud.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 
 <br />

@@ -48,8 +48,7 @@ checks:
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core CLI</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✖️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
-
-<small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
+<small>✖️ &nbsp;&nbsp; Available as a no-code check</small><br />
 
 [About data contracts](#about-data-contracts)<br />
 [Prerequisites](#prerequisites)<br />
