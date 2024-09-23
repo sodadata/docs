@@ -1,4 +1,4 @@
-As an [Admin]({% link soda-cloud/roles-global.md %}) on your Soda Cloud account, integrate your Slack workspace in your **Soda Cloud** account so that Soda Cloud can interact with individuals and channels in the workspace. Use the Slack integration to:
+As a user with permission to do so in your Soda Cloud account, you can integrate your Slack workspace in your **Soda Cloud** account so that Soda Cloud can interact with individuals and channels in the workspace. Use the Slack integration to:
 
 * send notifications to Slack when a check result triggers an alert
 * create a private channel whenever you open new incident to investigate a failed check result

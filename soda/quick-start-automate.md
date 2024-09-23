@@ -90,7 +90,7 @@ See also: [Soda Agent basic concepts]({% link soda-agent/basics.md %})
 
 *For preview participants, only*
 
-1. As an [Admin]({% link soda-cloud/roles-global.md %}) in your Soda Cloud account, navigate to **your avatar** > **Data Sources**.
+1. As a user with permission to do so in your Soda Cloud account, navigate to **your avatar** > **Data Sources**.
 2. In the **Agents** tab, confirm that you can see your Soda-hosted agent and that its status is "green" in the **Last Seen** column. 
 ![soda-hosted-agent](/assets/images/soda-hosted-agent.png){:height="700px" width="700px"}
 3. Navigate to the **Data source** tab, then click **New Data Source** and follow the guided steps to connect to a new data source. Refer to the subsections below for insight into the values to enter in the fields and editing panels in the guided steps. 
@@ -169,7 +169,7 @@ profile columns:
 | Field or Label | Guidance | 
 |----------------|----------|
 | Data Source Owner | The Data Source Owner maintains the connection details and settings for this data source and its Default Scan Definition. |
-| Default Dataset Owner | The Datasets Owner is the user who, by default, becomes the owner of each dataset the Default Scan discovers. Refer to [Manage roles and permissions in Soda Cloud]({% link soda-cloud/roles-global.md %}) to learn how to adjust the Dataset Owner of individual datasets.|
+| Default Dataset Owner | The Datasets Owner is the user who, by default, becomes the owner of each dataset the Default Scan discovers. Refer to [Manage global roles, user groups, and settings ]({% link soda-cloud/roles-global.md %}#data-source-dataset-agreement-and-check-owners) to learn how to adjust the Dataset Owner of individual datasets.|
 
 
 ## Access an anomaly dashboard

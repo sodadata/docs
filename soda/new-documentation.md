@@ -116,7 +116,7 @@ parent: Learning resources
 * Revised SodaGPT documentation to replace it with details about [Ask AI]({% link soda-cloud/ask-ai.md %}), Soda's in-product generative AI assistant.
 
 #### July 8, 2024
-* Documented the new functionality that enables Admin users in Soda Cloud to [create user groups]({% link soda-cloud/roles-global.md %}#create-custom-user-groups). 
+* Documented the new functionality that enables Admin users in Soda Cloud to [create user groups]({% link soda-cloud/roles-global.md %}). 
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.3.10.
 
 #### July 5, 2024
@@ -648,7 +648,7 @@ parent: Learning resources
 * Added a connectivity troubleshooting tip to [Connect to Snowflake]({% link soda/connect-snowflake.md %}#troubleshoot).
 
 #### May 2, 2023
-* Published content regarding the set up of [multiple Soda Cloud organizations]({% link soda-cloud/roles-global.md %}#add-multiple-organizations) for use with different environments in your network infrastructure.
+* Published content regarding the set up of [multiple Soda Cloud organizations]({% link soda-cloud/roles-global.md %}) for use with different environments in your network infrastructure.
 * Added a note about selecting a region when you sign up for a new Soda Cloud account.
 
 #### April 28, 2023
@@ -1002,7 +1002,7 @@ checks for dim_customers:
 #### June 29, 2022
 
 * Added documentation to correspond with the new `samples limit` configuration for [Failed rows checks]({% link soda-cl/failed-rows-checks.md %}#define-failed-rows-checks)
-* Added documentation for setting the [default role for dataset owners]({% link soda-cloud/roles-global.md %}#change-the-default-access-to-datasets) in Soda Cloud.
+* Added documentation for setting the [default role for dataset owners]({% link soda-cloud/roles-global.md %}) in Soda Cloud.
 
 #### June 28, 2022
 
@@ -1158,11 +1158,11 @@ checks for dim_customers:
 
 #### January 17, 2022
 
-* Added text to [Roles and rights]({% link soda-cloud/roles-global.md %}#access-an-audit-trail) documentation about the option to use the Reporting API to access Audit Trail data.
+* Added text to [Roles and rights]({% link soda-cloud/roles-global.md %}) documentation about the option to use the Reporting API to access Audit Trail data.
 
 #### January 12, 2022
 
-* Added documentation regarding [Licenses]({% link soda-cloud/roles-global.md %}#review-member-licenses) and [changing default access to datasets]({% link soda-cloud/roles-global.md %}#change-the-default-access-to-datasets) in Soda Cloud.
+* Added documentation regarding [Licenses]({% link soda-cloud/roles-global.md %}) in Soda Cloud.
 
 #### January 11, 2022
 
@@ -1187,7 +1187,7 @@ checks for dim_customers:
 
 #### December 6, 2021
 
-* Added documenation for the new [audit trail]({% link soda-cloud/roles-global.md %}#access-an-audit-trail) feature for Soda Cloud.
+* Added documenation for the new [audit trail]({% link soda-cloud/roles-global.md %}) feature for Soda Cloud.
 * Added further detail about which rows Soda SQL sends to Soda Cloud as samples.
 
 #### December 2, 2021
