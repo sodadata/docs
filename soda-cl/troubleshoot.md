@@ -18,7 +18,7 @@ parent: SodaCL reference
 [Checks not evaluated](#checks-not-evaluated)<br />
 [Filter not passed with reference check](#filter-not-passed-with-reference-check)<br />
 [Failed row check with CTE error](#failed-row-check-with-cte-error)<br />
-[Errors with column names containing periods or colons](#errors-when-column-names-containing-periods-or-colons)<br />
+[Errors when column names contain periods or colons](#errors-when-column-names-contain-periods-or-colons)<br />
 [Errors when using in-check filters](#errors-when-using-in-check-filters)<br />
 [Using reference checks with Spark DataFrames](#using-reference-checks-with-spark-dataframes)<br />
 [Single quotes in valid values list result in error](#single-quotes-in-valid-values-list-result-in-error)<br />
@@ -207,7 +207,7 @@ checks for corp_value:
       fail condition: true and "column.name.PX" IS NOT null
 ```
 
-## Errors when column names containing periods or colons
+## Errors when column names contain periods or colons
 
 **Problem**: A check you've written executes against a column with a name that includes a period or colon, and scans produce an error.
 

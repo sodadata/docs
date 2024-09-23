@@ -30,7 +30,7 @@ If you have integrated your Soda Cloud account with a [Slack workspace]({% link 
 ## Go further
 
 * [Organize your datasets]({% link soda-cloud/organize-datasets.md %}) to facilitate your search for the right data.
-* [Examine failed rows]({% link soda-cloud/failed-rows.md %}) for a check result.
+* [Manage failed row samples]({% link soda-cl/failed-row-samples.md %}) for a check result.
 * Collaborate with your team using a [Single Sign-on IdP]({% link soda-cloud/sso.md %}).
 * Integrate Soda with your [data catalogs]({% link soda/integrate-alation.md %}) or [data pipeline tools]({% link soda/integrate-dbt.md %}).
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.

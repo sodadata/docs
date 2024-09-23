@@ -134,7 +134,11 @@ pip install --upgrade pip
 ```
 3. Execute the following command, replacing `soda-postgres` with the install package that matches the type of data source you use to store data.
 ```shell
+# For bash interactive shell
 pip install -i https://pypi.cloud.soda.io soda-postgres
+
+# For zsh interactive shell
+pip install -i https://pypi.cloud.soda.io "soda-spark[databricks]"
 ```
 
 | Data source | Install package | 

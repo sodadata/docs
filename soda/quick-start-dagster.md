@@ -278,7 +278,7 @@ checks for orders:
 
 In the `assets.py` file of their Dagster project, the Data Engineer begins defining the first asset under the `@asset` decorator. Consult the <a href="https://docs.dagster.io/concepts/assets/software-defined-assets#defining-assets" target="_blank">Dagster documentation</a> for details.
 
-The first definition loads the S3 data into a DataFrame, then runs the pre-ingestion checks on the data. Because the data contains sensitive customer information, the Data Engineer also includes a [Soda custom sampler]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) which sends failed row samples for checks that fail to an S3 bucket instead of automatically pushing them to Soda Cloud. To execute the scan programmatically, the script references two files that Soda uses:
+The first definition loads the S3 data into a DataFrame, then runs the pre-ingestion checks on the data. Because the data contains sensitive customer information, the Data Engineer also includes a [Soda custom sampler]({% link soda-cl/failed-row-samples.md %}#configure-a-python-custom-sampler) which sends failed row samples for checks that fail to an S3 bucket instead of automatically pushing them to Soda Cloud. To execute the scan programmatically, the script references two files that Soda uses:
 * the `configuration.yml` file which contains the Soda Cloud API key values that Soda Library need to validate the user license before executing a scan, and 
 * the `checks.yml` file which contains all the pre-ingestion SodaCL checks that the Data Engineer prepared.
 

@@ -10,6 +10,14 @@ parent: Learning resources
 <br /> 
 
 #### September 23, 2024
+* Compiled and updated [failed row samples]({% link soda-cl/failed-row-samples.md %}) documentation, including:
+  * the option to use `scan context` in a CustomSampler to read/write data to/from a scan
+  * the option to `collect failed rows` samples from specific columns in a dataset in Soda Cloud
+  * the option to disable failed row sample collection from all datasets, except those with explicit configuration to collect samples
+* Updated [Failed row checks]({% link soda-cl/failed-rows-checks.md %}) and [User-defined checks]({% link soda-cl/user-defined.md %}) to include optional configuration to specify a single column against which to run the check.
+* Revised [check attributes]({% link soda-cl/check-attributes.md %}#apply-an-attribute-to-one-or-more-checks) configuration when applying attributes to more than one check.
+
+#### September 23, 2024
 * Moved [data contract lanugage reference]({% link soda/data-contracts-checks.md %}) content to soda-core GitHub repository to avoid confusion with SodaCL reference. 
 
 #### September 19, 2024
@@ -238,7 +246,7 @@ parent: Learning resources
 
 #### March 21, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.4.3.
-* Added more content and example for [rerouting failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples).
+* Added more content and example for rerouting failed row samples.
 * Added [requirement]({% link soda-cl/anomaly-detection.md %}#track-anomalies-and-relative-changes-by-group) for using anomaly detection checks in group by configurations: requires Soda Library 1.1.27 or greater, or Soda Agent 0.8.57 or greater. 
 
 #### March 20, 2024
@@ -332,7 +340,7 @@ parent: Learning resources
 * Added instructions for [customizing a dashboard]({% link soda-cloud/collaborate.md %}#customize-your-dashboard).
 
 #### January 22, 2024
-* Updated the documentation for [rerouting failed row samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to include new, optional configuration parameters that offer users direct access to the failed row sample data.
+* Updated the documentation for rerouting failed row samples to include new, optional configuration parameters that offer users direct access to the failed row sample data.
 
 #### January 19, 2024
 * Updated [compatible data sources]({% link soda-agent/deploy.md %}#deploy-a-soda-agent-in-a-kubernetes-cluster) for Soda Agent to include Databricks SQL.
@@ -354,7 +362,7 @@ parent: Learning resources
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.1.29 and Soda Core 3.1.3.
 
 #### January 2, 2024
-* Added [alertnate syntax]({% link soda-cl/failed-rows-checks.md %}#define-failed-rows-checks) for failed row check using a failed row condition.
+* Added alertnate syntax for failed row check using a failed row condition.
 
 #### December 21, 2021
 * Documented the support for tracking [anomalies and changes over time]({% link soda-cl/group-by.md %}#track-anomalies-and-relative-changes-by-group) in checks grouped by category.
@@ -448,7 +456,7 @@ parent: Learning resources
 
 #### October 17, 2023
 * Deprecated sampling from [distribution check]({% link soda-cl/distribution.md %}) DRO generation.
-* Documented the support for adding alert coniditions to a [failed row check.]({% link soda-cl/failed-rows-checks.md %}#optional-check-configurations).
+* Documented the support for adding alert coniditions to a [failed row check]({% link soda-cl/failed-rows-checks.md %}#optional-check-configurations).
 * Added instructions for applying check attributes to [multiple checks]({% link soda-cl/check-attributes.md %}(#apply-an-attribute-to-one-or-more-checks)) in a single `checks for dataset_name` block. 
 
 #### October 13, 2023
@@ -666,7 +674,7 @@ parent: Learning resources
 
 #### March 21, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.29 and Soda Core 3.0.30.
-* Added instructions for [limiting samples]({% link soda-cl/failed-rows-checks.md %}#set-a-sample-limit) for an entire data source.
+* Added instructions for limiting samples for an entire data source.
 
 #### March 9, 2023
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.28.
@@ -770,7 +778,7 @@ parent: Learning resources
 
 * Added [release notes]({% link release-notes/soda-core.md %}) documentation for Soda Core 3.0.14.
 * Documented connection configuration for [Denodo (Experimental)]({% link soda/connect-denodo.md %}).
-* Documented improvments to the feature for [rerouting failed rows samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to an HTTP endpoint.
+* Documented improvments to the feature for[rerouting failed rows samples to an HTTP endpoint.
 * Documented [how to pass scan time variables]({% link soda-cl/filters.md %}#configure-variables-for-connection-configuration) for data source connection configuration values.
 * Add an example to demonstrate how to define a [variable in an in-check filter]({% link soda-cl/filters.md %}#example-use-a-variable-in-an-in-check-filter).
 * Documented how to [add an identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) to a check to preserve check result history in Soda Cloud when a check is modified.
@@ -793,7 +801,7 @@ parent: Learning resources
 #### November 18, 2022
 
 * Added a [list of valid formats]({% link soda-cl/validity-metrics.md %}#formats-supported-with-soda-for-ms-sql-server) for validity metrics that Soda for MS SQL Server supports.
-* Added documentation for [rerouting failed rows samples]({% link soda-cl/failed-rows-checks.md %}#reroute-failed-rows-samples) to an HTTP endpoint; supported as of Soda Core 3.0.13.
+* Added documentation for rerouting failed rows samples to an HTTP endpoint; supported as of Soda Core 3.0.13.
 * Removed content for overwriting Soda Cloud checks results using `-t` option.
 * Archived all Soda SQL and Soda Spark content to the <a href="https://github.com/sodadata/soda-sql/tree/main/docs" target="_blank">sodadata/soda-sql</a> repository in GitHub. 
 
@@ -830,7 +838,7 @@ parent: Learning resources
 * Added [release notes]({% link release-notes/all.md %}) to correspond with the release of Soda Core 3.0.12.
 * Added documentation for a new numeric metric: `duplicate_percent`. See [Numeric metrics]({% link soda-cl/numeric-metrics.md %}#list-of-numeric-metrics).
 * Removed known issue regarding Soda Core for SparkDF not supporting anomaly score or distribution checks; now the checks are supported.
-* Added documentation for a new feature to [disable failed rows samples for specific columns]({% link soda-cl/failed-rows-checks.md %}#disable-failed-rows-sampling-for-specific-columns).
+* Added documentation for a new feature to disable failed rows samples for specific columns.
 * Added documentation for distribution checks which now support dataset and in-check filters. See [Distribution check optional check configurations]({% link soda-cl/distribution.md %}#optional-check-configurations).
 
 #### November 2, 2022
@@ -903,7 +911,7 @@ checks for dim_customers:
 
 #### September 14, 2022
 
-* Added instructions for [configuring a custom sampler for failed rows]({% link soda-cl/failed-rows-checks.md %}#configure-a-failed-row-sampler).
+* Added instructions for configuring a custom sampler for failed rows.
 
 #### September 13, 2022
 

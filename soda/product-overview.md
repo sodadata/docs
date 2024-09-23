@@ -72,7 +72,7 @@ checks for ORDERS:
 ```
 
 
-Soda uses the input in the checks YAML files to prepare SQL queries that it runs against your data during a scan. During a scan, Soda does not ingest your data, it only scans it for quality metrics, then uses the metadata to prepare scan results. (An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid with issue investigation, a feature you can [disable]({% link soda-cloud/failed-rows.md %}#disable-failed-row-samples).)
+Soda uses the input in the checks YAML files to prepare SQL queries that it runs against your data during a scan. During a scan, Soda does not ingest your data, it only scans it for quality metrics, then uses the metadata to prepare scan results. (An exception to this rule is when Soda collects failed row samples that it presents in scan output to aid with issue investigation, a feature you can [disable]({% link soda-cl/failed-row-samples.md %}.)
 
 After a scan, each check results in one of three default states:
 * pass: the values in the dataset match or fall within the thresholds you specified
@@ -115,7 +115,7 @@ Use Soda to test the quality in a data migration project at both source and targ
 * Create [incidents]({% link soda-cloud/incidents.md %}) to track issue investigation.
 * Use the Soda Cloud Reporting API to [prepare reports]({% link api-docs/reporting-api-to-overview-dashboards.md %}) on dataset test coverage and overall health.
 * Automatically [profile]({% link soda-cl/profile.md %}) your datasets.
-* Use [failed row samples]({% link soda-cloud/failed-rows.md %}) to investigate data quality issues.
+* Use [failed row samples]({% link soda-cl/failed-row-samples.md %}) to investigate data quality issues.
 * Write [custom SQL checks]({% link soda-cl/user-defined.md %}) for your own use cases.
 * [Ingest dbt test results]({% link soda/integrate-dbt.md %}) into your Soda Cloud account to visualize results and track trends over time.
 * Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
