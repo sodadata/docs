@@ -29,7 +29,7 @@ Ask AI replaces SodaGPT, the original implementation of a generative AI assistan
 
 ## Enable Ask AI
 
-If you do not already have an account, <a href="https://cloud.soda.io/signup" target="_blank">sign up for Soda Cloud</a> for a 45-day free trial. Then, as an Admin user, navigate to **your avatar** > **Organization Settings**, then check the box to **Enable Ask AI powered by Kapa**.
+If you do not already have an account, <a href="https://cloud.soda.io/signup" target="_blank">sign up for Soda Cloud</a> for a 45-day free trial. Then, as a user with [permission]({% link soda-cloud/roles-global.md %}#global-roles-and-permissions) to do so, navigate to **your avatar** > **Organization Settings**, then check the box to **Enable Ask AI powered by Kapa**.
 
 ![enable-ask-ai](/assets/images/enable-ask-ai.png){:height="600px" width="600px"}
 
@@ -37,7 +37,7 @@ If you do not already have an account, <a href="https://cloud.soda.io/signup" ta
     <summary style="color:#00BC7E">Can't see the Ask AI button?</summary>
     <br />
     If you are an existing Soda customer, you must accept Soda's revised terms and conditions for service that includes the use of third-party tools that facilitate generative AI capabilites. Reply to Soda's Terms & Conditions email to accept the revisions, or contact <a href="mailto:support@soda.io">Soda Support</a> to arrange acceptance and enable the feature.<br /><br />
-    If you have accepted the revised terms and conditions but still cannot see the Ask AI button, as an Admin user, navigate to <strong>your avatar</strong> > <strong>Organization Settings</strong>, then check the box to <strong>Enable Ask AI powered by Kapa</strong>.
+    If you have accepted the revised terms and conditions but still cannot see the Ask AI button, as a user with [permission]({% link soda-cloud/roles-global.md %}#global-roles-and-permissions) to do so, navigate to <strong>your avatar</strong> > <strong>Organization Settings</strong>, then check the box to <strong>Enable Ask AI powered by Kapa</strong>.
 </details>
 
 <br />

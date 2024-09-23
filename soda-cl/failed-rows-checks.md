@@ -50,7 +50,7 @@ checks for dim_customer:
 
 To send failed rows samples to Soda Cloud, samples collection must be enabled in Soda Cloud. 
 
-As a Soda Cloud Admin, navigate to **your avatar** > **Organization Settings**, then check the box to **Allow Soda to collect sample data and failed row samples for all datasets**. 
+As a user with [permission]({% link soda-cloud/roles-global.md %}#global-roles-and-permissions) to do so, navigate to **your avatar** > **Organization Settings**, then check the box to **Allow Soda to collect sample data and failed row samples for all datasets**. 
 
 
 ## Define failed rows checks

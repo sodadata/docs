@@ -8,7 +8,7 @@ parent: Organize, alert, investigate
 # Add check attributes
 *Last modified on {% last_modified_at %}*
 
-As a Soda Cloud Admin user, you can define **check attributes** that your team can apply to checks when they write them.
+As user with [permission]({% link soda-cloud/roles-global.md %}#global-roles-and-permissions) to do so, you can define **check attributes** that your team can apply to checks when they write them.
 {% include code-header.html %}
 ```yaml
 checks for dim_product:

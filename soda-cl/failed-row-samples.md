@@ -255,7 +255,7 @@ The configurations described below correspond with the optional Soda Cloud setti
 
 If your data contains sensitive or private information, you may *not* want to collect any failed row samples, whatsoever. In such a circumstance, you can disable the collection of failed row samples completely. To prevent Soda Cloud from receiving any sample data or failed row samples for any datasets in any data sources to which you have connected your Soda Cloud account, proceed as follows:
 
-1. As an Admin, log in to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**.
+1. As a user with [permission]({% link soda-cloud/roles-global.md %}#global-roles-and-permissions) to do so, log in to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**.
 2. In the **Organization** tab, uncheck the box to **Allow Soda to collect sample data and failed row samples for all datasets**, then **Save**. <br />
 ![disable-all](/assets/images/disable-all.png){:height="450px" width="450px"}
 

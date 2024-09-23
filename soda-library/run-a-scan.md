@@ -56,7 +56,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to sche
 When you create a no-code check in Soda Cloud, one of the required fields asks that you associate the check with an existing scan definition, or that you create a new scan definition.
 
 If you wish to change a no-code check's existing scan definition:
-1. As an Admin, or Manager or Editor of a dataset in which the no-code check exists, navigate to the dataset.
+1. As a user with permission to do so, navigate to the dataset in which the no-code check exists.
 2. From the dataset's page, locate the check you wish to adjust, and click the stacked dots at right, then select **Edit Check**. You can only edit a check via the no-code interface if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
 3. Adjust the value in the **Add to Scan Definition** field as needed, then save. Soda executes the check during the next scan according to the definition you selected.
 
@@ -108,7 +108,7 @@ If you wish to schedule a *new* scan to execute the checks in an agreement more 
 
 If you wish to run a scan immediately to see the scan results for a no-code check, you can execute an ad hoc scan for a single check.
 
-1. As an Admin, or Manager or Editor of a dataset with the no-code check you wish to execute, navigate to the dataset.
+1. As a user with the permission to do so, navigate to the dataset associated with the no-code check you wish to execute.
 2. In the table of checks, locate the check you wish to execute and click the stacked dots, then select **Execute Check**. Alternatively, click the check and in the check's page, click **Execute**. You can only execute an individual check if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
 3. Soda executes *only* your check.
 
