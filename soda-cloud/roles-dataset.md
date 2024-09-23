@@ -10,79 +10,105 @@ redirect_from:
 # Manage dataset roles
 *Last modified on {% last_modified_at %}*
 
-To manage the resource-level permissions of users that belong to a single organization, Soda Cloud uses roles, groups, and access permissions. These role-based access permissions enforce limits on the abilities for people to make additions and changes to resources in Soda Cloud, including agents, data sources, and datasets.
+To manage the dataset-level permissions of users that belong to a single organization, Soda Cloud uses roles, groups, and access permissions. These role-based access permissions enforce limits on the abilities for people to make additions and changes to datasets in Soda Cloud.
 
-See also: [Manage account roles and permissions in Soda Cloud]({% link soda-cloud/roles-global.md %})
-<br /><br />
+There are two type of roles that regulate permissions in Soda Cloud: **Global** and **Dataset**. You can assign each type of role to users or user groups in Soda Cloud to organize role-based access control to resources and functionality in your account. You can also customize the permissions of the out-of-the-box roles Soda Cloud includes, or you can create new roles and assign permissions to roles as you wish. 
 
-[Resource-level roles and permissions](#resource-level-roles-and-permissions)<br />
-[Change access to a dataset](#change-access-to-a-dataset)<br />
+The content that follows offers information about dataset roles. For details on terminology, global roles, custom user groups, and organizational settings, see [Manage global roles, user groups, and settings]({% link soda-cloud/roles-global.md %}).
 
 ## Dataset roles and permissions
 
-Where [account-level]({% link soda-cloud/roles-global.md %}) roles and permissions apply to your organization's Soda Account, the roles and access permissions described in the table below apply to the following resources in your account:
+The out-of-the-box roles that define who has permission to access or make changes to datasets in your Soda Cloud account are **Admin**, **Manager**, **Editor**, and **Viewer**. An Admin role has all permissions to access or act upon a dataset; the following table outlines the permission groups for the remaining out-of-the-box dataset roles.
 
-| agents<br/> data sources<br/> scan definitions<br/> datasets | checks<br/> agreements<br/> discussions<br/> incidents |
+| Permission group  |  Manager | Editor | Viewer |
+| ----------------  | :----: | :----: |:----: |
+| [View dataset](#view-dataset) | ✓ | ✓ | ✓ |
+| [Configure dataset](#configure-dataset) | ✓ | ✓ |   |
+| [Propose checks](#propose-checks) | ✓ | ✓ | ✓ |
+| [Delete dataset](#delete-dataset) | ✓ |  |  |
+| [Manage checks](#manage-checks) | ✓ | ✓ |   |
+| [Manage incidents](#manage-incidents) | ✓ | ✓ | ✓ |
+| [Manage dataset responsibilities](#manage-dataset-responsibilities) | ✓ |  |  |
+| [Manage permissions](#manage-permissions) | ✓ |  |  |
+| [Access failed <br />row samples<br />for checks](#access-failed-row-samples-for-checks) | ✓ | ✓ | ✓ |
+| [Access dataset <br />profiling<br />and samples](#access-dataset-profiling-and-samples) | ✓ | ✓ | ✓ |
 
-The roles that define who can make changes to resources in Soda Cloud are **Admin**, **Manager**, **Editor**, and **Viewer**. As an Admin, you can apply resource-level roles to both individual users and user groups. 
 
-The following table outlines the permissions of each resource-level role. 
+#### View dataset 
+This permission group cannot be removed from any of the out-of-the-box dataset roles.
+* View a dataset in the list on the **Datasets** page 
+* View a dataset's checks in the **Checks** page
+* Access a dataset via API
+* Access a dataset's checks via API
+* View a dataset **Checks** tab
+* View a dataset's **Anomalies** tab
+* View a dataset's **Agreements** tab
+* View a dataset's **Columns** tab, schema info only
+* View the check history for a dataset's checks, though not failed row samples
 
-| Permissions                                                                | Admin | Manager  | Editor | Viewer |
-|----------------------------------------------------------------------------|:-----:|:--------:|:------:|:------:|
-| Add, edit, and delete a self-hosted Soda Agent                             |   ✓   |          |        |        |
-| Add, edit, or delete a data source via a Soda-hosted or self-hosted agent  |   ✓   |          |        |        |
-| Change the owner of a data source                                          |   ✓   |          |        |        |
-| Add or adjust a data source's default scan definition                      |   ✓   |          |        |        |
-| Add a scan definition in an agreement or during no-code check creation     |   ✓   |    ✓     |    ✓   |        |
-| Delete a scan definition                                                   |   ✓   |          |        |        |
-| Control user access to a dataset and its checks (add or remove access)     |   ✓   |    ✓     |        |        |
-| Change the roles of users with access to a dataset and its checks          |   ✓   |    ✓     |        |        |
-| Apply dataset attributes to datasets                                       |   ✓   |    ✓     |    ✓   |        |
-| Configure Soda to collect sample data for a dataset                        |   ✓   |          |        |        |
-| Configure Soda to profile datasets in a data source                        |   ✓   |          |        |        |
-| Activate an anomaly dashboard for a dataset (preview access only)          |   ✓   |    ✓     |        |        |
-| Add and edit dataset Attributes, such as Description or Tags               |   ✓   |    ✓     |    ✓   |        |
-| Access a dataset's page to view metadata and checks, and dataset info      |   ✓   |    ✓     |    ✓   |    ✓   |
-| Edit or delete a dataset                                                   |   ✓   |    ✓     |        |        |
-| Run a scan                                                                 |   ✓   |    ✓     |        |        |
-| View scan results of checks associated with a dataset or agreement         |   ✓   |    ✓     |    ✓   |    ✓   |
-| Propose and test a no-code check                                           |   ✓   |    ✓     |    ✓   |    ✓   |
-| Add, edit, or delete a no-code check                                       |   ✓   |    ✓     |    ✓   |        |
-| Apply check attributes when proposing a check                              |   ✓   |    ✓     |    ✓   |    ✓   |
-| Edit or delete individual checks associated with a dataset ingested via Soda Library |   ✓   |    ✓     |    ✓   |        |
-| Access failed row samples for a check                                      |   ✓   |    ✓     |    ✓   |    ✓   |
-| Create a new agreement                                                     |   ✓   |    ✓     |    ✓   |        |
-| Approve and reject agreements as a stakeholder                             |   ✓   |    ✓     |    ✓   |    ✓   |
-| Edit an existing agreement, including adding a new scan definition         |   ✓   |    ✓     |    ✓   |        |
-| Apply check attributes in an agreement                                     |   ✓   |    ✓     |    ✓   |        |
-| View agreements                                                            |   ✓   |    ✓     |    ✓   |    ✓   |
-| Begin or participate in a discussion                                       |   ✓   |    ✓     |    ✓   |    ✓   |
-| Close a discussion                                                         |   ✓   |    ✓     |    ✓   |    ✓   |
-| Create and track incidents associated with one or more check results       |   ✓   |    ✓     |    ✓   |    ✓   |
-| Delete an incident                                                         |   ✓   |    ✓     |    ✓   |        |
-| Create, edit, or delete a notification rule                                |   ✓   |    ✓     |    ✓   |        |
-| Set the status of a notification rule (Active or Paused)                   |   ✓   |    ✓     |    ✓   |        |
+#### Configure dataset
+* Edit a dataset's attributes
+* Edit a dataset's profiling configuration
+
+#### Propose checks
+* Select a dataset in a **New Discussion** form
+* Select a dataset in an **Add Check** form
+* Click **Propose Check** when creating a no-code check 
+
+#### Delete dataset
+* Delete a dataset
+
+#### Manage checks
+* Push a dataset's check results from Soda Library scans to Soda Cloud. <br />At present, Soda Cloud does not reject check results from a Soda Library scan executed by a user without "Manage checks" permission for a dataset. Instead, Soda issues a soft warning to indicate that the user does not have permission to manage checks for the dataset. In future iterations, the warning will be changed to a rejection of any results pushed without proper permissions for the dataset.
+* Edit the description of a dataset's checks
+* Edit the owner of a dataset's checks
+* Delete a dataset's checks
+* Create no-code checks for a dataset
+* Edit no-code checks for a dataset
+* Delete no-code checks for a dataset
+* Add proposed no-code checks to a dataset
+
+#### Manage incidents
+* Create an incident related to a dataset's check
+* Update an incident related to a dataset's check
+* Delete an incident related to a dataset's check
+
+#### Manage dataset responsibilities
+* Edit a dataset's responsibilities
+
+#### Manage permissions
+* Edit a dataset's access permissions
+
+#### Access failed row samples for checks
+* View the check history for a dataset's checks, including failed row samples
+
+#### Access dataset profiling and samples
+* View a dataset's **Columns** tab, schema and profiling info
+* View a dataset's **Samples** tab
 
 <br/>
 
-#### Add multiple permissions
+### Create dataset roles
 
-If you have added a user to a group to which you have assigned a level of permission for a resource, then manually assigned a different level of permission to the individual user for a resource, the higher permission trumps the lower. 
+You can create or edit dataset roles to assign to users or user groups in Soda Cloud.
 
-For example, as an Admin, you add Manny Jacinto to user group called Marketing Team which, for Dataset_A, has been assigned the OOTB dataset role of Viewer. Then, you change Manny's individual dataset role for Dataset_A to Manager. Soda honors the permissions of the higher role, Manager, for Manny's access to Dataset_A.
+As a user with permission to do so, navigate to **your avatar** > **Organization Settings**, then access the **Dataset Roles** tab. Click **Add Dataset Role**, then follow the guided workflow to name a role and add permissions groups. Refer to the [table above](#dataset-roles-and-permissions) for a list of permissions groups, and their associated permissions, that you can assign to global roles.
 
 <br />
 
-## Change access to a dataset
+### Assign dataset roles 
 
-When any user uses Soda Library to add a new dataset to the Soda Cloud account, the user automatically becomes the Dataset Owner. The new dataset can only be accessed by an Admin and the Dataset Owner, who automatically becomes a Manager of the dataset, until the Admin or Dataset Owner changes access to the dataset to grant other users access.
+When any user uses Soda Library or Soda Cloud to add a new data source, and its datasets, to the Soda Cloud account, the user automatically becomes the Dataset Owner of each dataset in the data source. Depending upon the **Responsibilities** settings in the **Dataset Roles** tab of **Organization Settings**, the Dataset Owner is assigned a role according to the **Default Dataset Owner Role** setting. Refer to [User groups and responsibilities]({% link soda-cloud/roles-global.md %}#user-groups-and-responsibilities) for details.
 
-As an Admin or a Manager of a dataset, you can access the **Responsibilities** tab for an individual dataset to make changes to the default role assignments in the dataset. All users, regardless of their role assignment, can view the Responsibilities tab for a dataset.
+Beyond the default users and roles assigned to a dataset upon addition to Soda Cloud, you can edit the responsibilities for an individual dataset to make changes to the way users and user groups can access or act upon the dataset. 
 
-1. As an Admin or Manager, login to your Soda Cloud account and navigate to the **Datasets** dashboard.
-2. Click the stacked dots to the right of the dataset for which you wish to adjust the role assignments, then select **Edit Dataset**.
-3. In the **Responsibilities** tab, use the search bar to find specific users or user groups to which you wish to assign a role other than the default, Editor, then use the dropdown next to each name to adjust their role. <br /> Alternatively, search for the group **everyone** and change the role of the group.
+1. As a user with the permission to do so, login to your Soda Cloud account and navigate to the **Datasets** dashboard.
+2. Click the stacked dots to the right of the dataset for which you wish to adjust the role assignments, then select **Edit Responsibilities**.
+3. Use the search bar to find specific users or user groups to which you wish to assign a role for the dataset, then use the dropdown next to each name to adjust their role, then **Save** your changes.
+
+If you have added a user to a group to which you have assigned a level of permission for a dataset, then manually assigned a different level of permission to the individual user for a dataset, Soda honors the higher set of permissions.
+
+For example, say you add Manny Jacinto to a user group called Marketing Team. For a new_signups dataset, you assign the Marketing Team the out-of-the-box role of Viewer. Then, for the same dataset, you assign Manny's individual user the out-of-the-box role of Manager. Soda honors the permissions of the higher role, Manager, for Manny's access to new_signups.
 
 <br />
 

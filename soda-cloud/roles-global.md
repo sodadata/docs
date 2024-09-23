@@ -29,16 +29,16 @@ These roles and groups and their associated permissions enforce limits on the ab
 
 ## About roles, groups, and permissions
 
-Soda Cloud makes use of roles, groups, and permissions to manage user access to functionalities, such as alert notifications, and resources, such as datasets and data sources, in the organization. The table that follows defines the terminology Soda Cloud uses.
+Soda Cloud makes use of roles, groups, and permissions to manage user access to functionalities, such as alert notifications, and resources, such as datasets and data sources, in the organization. The following table defines the terminology Soda Cloud uses.
 
 | Term | Description | 
 | ---- | ----------- | 
 | User | Refers to anyone with access to a Soda Cloud account, or organization. Users may belong to multiple Soda Cloud organizations, as when teams set up separate organizations for staging, development, and production environments; see [Add multiple organizations](#add-multiple-organizations). You can invite a person to join your Soda Clould account as a user (**your avatar** > **Invite Users**), or you can use an [SSO integration]({% link soda-cloud/sso.md %}) to manage your team's access to a Soda Cloud account.  | 
 | User Group | Refers to a named collection of individual users in a Soda Cloud account. If you use an SSO integration to manage your team's access to Soda Cloud, you can optionally choose to synchronize the user groups you have defined in your identity provider (Okta, Azure AD, etc.) and assign roles to those synched user groups in Soda Cloud.|
-| Role | Refers to a named set of permissions that, when assigned to a user or user group, define how the user or group may access or act upon resources in Soda Cloud. Roles in Soda Cloud exist at either a global or dataset level. | 
+| Role | Refers to a named set of permissions that, when assigned to a user or user group, define how the user or group may access or act upon resources or functionalities in Soda Cloud. Roles in Soda Cloud exist at either a global or dataset level. | 
 | Permission | Refers to a rule that governs an activity or access as it relates to a resource or functionality in Soda Cloud. |
 | Permission group | Refers to a named set of permissions. When you create a new global or dataset role in Soda Cloud, you add permission groups, instead of individual, granular permissions. For example, you can assign the permission group , "Manage scan definitions" to a custom global role called "Engineers", giving users or user groups who are assigned this role the ability to create, edit, or delete scan definitions for a data source.|
-| Responsibilities | Refers to a subset of role-based access controls for newly-onboarded datasets. These settings determine whether to add newly invited or added user to the out-of-the-box Everyone user group, apply a default role to the Everyone user group, and define a default role to assign to Dataset Owners for datasets when they are onboarded, or discovered, in Soda Cloud. |
+| Responsibilities | Refers to a subset of role-based access controls for newly-onboarded datasets. These settings determine inclusion in the Everyone user group and the roles Dataset Owners get for newly-onboarded datasets; see [User groups and responsibilities](#user-groups-and-responsibilities). |
 | License | Refers to a legacy billing model that encourages unlimited Viewers with read-only access to Soda Cloud, and some Authors with read-write access to resources and functionality. |
 
 <br />
@@ -50,7 +50,7 @@ There are two type of roles that regulate permissions in Soda Cloud: **Global** 
 | Type of role | Description | OOTB roles | Permissions |
 | ------------ | ----------- | ---------- | ----------- |
 | Global | Regulates permissions to access account-level functionalities and resources such as notification rules, integrations, and scan definitions. | Admin <br /> User | [Global roles and permissions](#global-roles-and-permissions)|
-| Dataset | Regulates permissions to access, and act upon, individual datasets. | Manager <br />Editor <br />Viewer | [Dataset roles and permissions]({% link soda-cloud/roles-dataset.md %}) |
+| Dataset | Regulates permissions to access, and act upon, individual datasets. | Manager <br />Editor <br />Viewer | [Dataset roles and permissions]({% link soda-cloud/roles-dataset.md %}#dataset-roles-and-permissions) |
 
 <br />
 
@@ -75,14 +75,14 @@ The following table outlines the permission groups for each out-of-the-box globa
 
 | Permission group | Permissions | Admin | User |
 |------------------| ------------|:-----:|:----:|
-| Manage data <br />sources and agents | • Add, edit, or delete a new data source in Soda Cloud <br />• Add, edit, or delete a new data source via Soda Library <br />• Add, edit, or delete a self-hosted Soda agent | ✓ |   |
-| Manage <br />organization <br />settings | • Manage organization settings <br />• Deactivate users <br />• Create, edit, or delete user groups <br />• Create, edit, or delete dataset roles  <br />• Create, edit, or delete global roles <br />• Assign global roles to users or user groups <br />• Add, edit, or delete integrations <br />• Access and download the audit trail | ✓ |   |
-| Manage attributes | • Create, edit, or delete check attributes | ✓ |   |
-| n/a <sup>1</sup> | • Read-write access to all agreements <br />• Read-write access to all datasets | ✓ |   |
-| Create new datasets <br />and data sources <br />with Soda Library | • Create datasets through Soda Library for an existing data source | ✓ | ✓ |
-| Manage <br />notification <br />rules | • Create, edit, or delete notification rules | ✓ | ✓ |
-| Manage scan <br />definitions | • Create, edit, or delete scan definitions. | ✓ | ✓ |
 | Create agreements | • Create new agreements | ✓ | ✓ |
+| Create new datasets <br />and data sources <br />with Soda Library | • Create datasets through Soda Library for an existing data source | ✓ | ✓ |
+| Manage attributes | • Create, edit, or delete check attributes | ✓ |   |
+| Manage data <br />sources and agents | • Add, edit, or delete a new data source in Soda Cloud <br />• Add, edit, or delete a new data source via Soda Library <br />• Add, edit, or delete a self-hosted Soda agent | ✓ |   |
+| Manage <br />notification <br />rules | • Create, edit, or delete notification rules | ✓ | ✓ |
+| Manage <br />organization <br />settings | • Manage organization settings <br />• Deactivate users <br />• Create, edit, or delete user groups <br />• Create, edit, or delete dataset roles  <br />• Create, edit, or delete global roles <br />• Assign global roles to users or user groups <br />• Add, edit, or delete integrations <br />• Access and download the audit trail | ✓ |   |
+| Manage scan <br />definitions | • Create, edit, or delete scan definitions. | ✓ | ✓ |
+| n/a <sup>1</sup> | • Read-write access to all agreements <br />• Read-write access to all datasets | ✓ |   |
 
 <sup>1</sup> Global admin users have these permissions, but you cannot add this nameless permission group to a custom global role.
 
@@ -92,15 +92,15 @@ The following table outlines the permission groups for each out-of-the-box globa
 
 An Admin is the only account-level role that can make changes to the **Organization Settings** and to the role assignments in the organization. 
 
-As an Admin, login to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**. Use the table below as reference for the tasks you can perform within each tab.
+As a user with the permission to do so, login to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**. Use the table below as reference for the tasks you can perform within each tab.
 
 | Tab | Tasks |
 | --- | ------ |
 | **Organization** | • Adjust the name of the organization.<br/> • Review the type of Soda Cloud Plan to which your organization subscribes.<br/> • Adjust enablement settings for data sampling, access to a Soda-hosted Agent, and access to Soda AI features in your account.  |
 | **Users** | • View a list of people who have access to the Soda Cloud account.<br /> • Review each user's **License** status as an **Author** or **Viewer**, their access to Admin permissions, and the user groups to which they belong.<br /> • Reset a user's password<br /> • Deactivate a user's account. |
 | **User Groups** | Create and manage custom groups of users in your Soda Cloud organization; see [Create custom user groups](#create-custom-user-groups). |
-| **Global Roles** | View create, edit, or delete out-of-the-box or custom global roles. View the users or user groups assigned to each global role. |
-| **Dataset Roles** |View create, edit, or delete out-of-the-box or custom dataset roles. View or edit the datasets that use each dataset role. Review or edit **Responsibilities** for newly onboarded datasets; see [User groups and responsibilities](#user-groups-and-responsibilities).|
+| **Global Roles** | • View create, edit, or delete out-of-the-box or custom global roles. <br /> • View the users or user groups assigned to each global role. |
+| **Dataset Roles** | • View create, edit, or delete out-of-the-box or custom dataset roles. <br /> • View or edit the datasets that use each dataset role. <br /> • Review or edit **Responsibilities** for newly onboarded datasets; see [User groups and responsibilities](#user-groups-and-responsibilities).|
 | **Integrations** | Connect Soda Cloud to your organization's Slack workspace, MS Team channel, or other third-party tool via webhook. |
 | **Audit Trail** | Download a CSV file that contains user audit trail information. |
 
@@ -129,6 +129,7 @@ A few Soda Cloud legacy licensing models include a specific number of **Author**
 * if they have global Admin permissions
 3. Click a user's **Author** or **Viewer** label in the License column to access a **Responsibilities** window that lists the user's access to resources (datasets, agreements, and checks), the role they hold for each resource, and their license status relative to the resource.
 
+<br />
 
 ### Manage user groups
 
@@ -151,14 +152,15 @@ If you use an SSO integration to manage your team's access to Soda Cloud, you ca
 
 Create or edit global and dataset roles to assign to users or user groups in Soda Cloud.
 
-As a user with permission to do so, navigate to **your avatar** > **Organization Settings**, then access the **Global Roles** tab. Click **Add Global Role**, then follow the guided workflow to name a role and add permissions groups. Refer to the [table above](#global-roles-and-permissions) for a list of permissions groups, and its associated permissions, that you can assign to global roles.
+As a user with permission to do so, navigate to **your avatar** > **Organization Settings**, then access the **Global Roles** tab. Click **Add Global Role**, then follow the guided workflow to name a role and add permissions groups. Refer to the [table above](#global-roles-and-permissions) for a list of permissions groups, and their associated permissions, that you can assign to global roles.
 
+<br />
 
 ### Access an audit trail
 
 To meet your organization's regulatory and policy mandates, you can download a CSV file that contains an audit trail of activity on your Soda Cloud account for a date range you specify. The file contains details of each user's actions, their email and IP addresses, and a timestamp of the action. An Admin is the only account-level role that can access an audit trail for a Soda Cloud account. 
 
-1. As an Admin, login to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**. Only Admins can view Organization Settings.
+1. As a user with the permission to do so, login to your Soda Cloud account and navigate to **your avatar** > **Organization Settings**. Only Admins can view Organization Settings.
 2. Access the **Audit Trail** tab, then set the date range of usage details you wish to examine and click **Download**.
 
 Alternatively, you can use the [Audit Trail endpoint]({% link api-docs/reporting-api-v1.md %}#/operations/audit_trail_v0_audit_trail_get) in Soda Cloud's Reporting API to access audit trail data. 
@@ -170,7 +172,7 @@ Alternatively, you can use the [Audit Trail endpoint]({% link api-docs/reporting
 
 There are four types of resource owners in Soda Cloud that identify the user, or user group, that owns a data source, dataset, agreement, or check. These ownership roles do not enforce any permissions, they are simply identifiers.
 
-* By default, the user who added the data source becomes the **Data Source Owner** and **Dataset Owner** of all datasets in that data source. The default role that Soda Cloud assigns to the Dataset Owner is that of Manager.
+* By default, the user who added the data source becomes the **Data Source Owner** and **Dataset Owner** of all datasets in that data source. The default [dataset role]({% link soda-cloud/roles-dataset.md %}#dataset-roles-and-permissions) that Soda Cloud assigns to the Dataset Owner is that of Manager.
 * By default, the user who creates an agreement becomes the **Check Owner** of all checks defined in the agreement. 
 * By default, the user who creates a no-code check becomes its **Check Owner**.
 * By default, all Owners use an Author license, if you use the legacy license billing model.
@@ -192,7 +194,7 @@ There are four types of resource owners in Soda Cloud that identify the user, or
 3. In the **Attributes** tab, use the dropdown to select the name of another user or user group to take ownership of the dataset, then **Save**.
 4. Soda Cloud automatically assigns the role of Manager to the new Dataset Owner.
 
-To bulk-change the owner of all new datasets added to a data source, follow the steps to [Change the Data Source Owner](#change-the-data-source-owner) and, in step 3, use the dropdown to change the owner of *all* the datasets in the data source.
+To bulk-change the owner of all new datasets added to a data source, follow the steps to [Change the Data Source Owner](#change-the-data-source-owner) and, in the **Assign Owner** tab, use the dropdown to change the owner of *all* the datasets in the data source.
 
 <br />
 
