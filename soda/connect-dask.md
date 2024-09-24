@@ -8,9 +8,15 @@ parent: Data source reference
 # Connect Soda to Dask and Pandas
 *Last modified on {% last_modified_at %}* <br />
 
-For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only. You do not need to set up a `configuration.yml` file to configure a connection to a data source.
+For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only. 
 
-[Define a programmatic scan]({% link soda-library/programmatic.md %}) for the data in the DataFrames. Refer to the following example.
+Define a programmatic scan for the data in the DataFrames. You do not need to configure a connection to a data source, but you must still configure a connection to Soda Cloud using API Keys. Refer to the following example.
+
+<details>
+    <summary style="color:#00BC7E">Why do I need a Soda Cloud account?</summary>
+To validate your account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library. <br /><a href="https://docs.soda.io/soda/get-started-roadmap.html#about-soda">Learn more</a><br /><br />
+</details>
+
 
 Install package: `soda-pandas-dask`
 
@@ -45,6 +51,21 @@ scan.add_dask_dataframe(dataset_name="inquiries", dask_df=[...], data_source_nam
 # Set the scan definition name and default data source to use
 scan.set_scan_definition_name("test")
 scan.set_data_source_name("orders")
+
+# Add configuration YAML file
+# You do not need connection to a data source; you must have a connection to Soda Cloud
+# Choose one of the following two options:
+# 1) From a file
+scan.add_configuration_yaml_file(file_path="~/.soda/configuration.yml")
+# 2) Inline in the code
+# For host, use cloud.soda.io for EU region; use cloud.us.soda.io for US region
+scan.add_configuration_yaml_str(
+    """
+    soda_cloud:
+      host: cloud.soda.io
+      api_key_id: 2e0ba0cb-your-api-key-7b
+      api_key_secret: 5wd-your-api-key-secret-aGuRg
+"""
 
 # Define checks in yaml format
 # Alternatively, refer to a yaml file using scan.add_sodacl_yaml_file(<filepath>)
@@ -109,9 +130,9 @@ df = pd.read_json('your_file.json')
 
 ## Troubleshoot
 
-**Problem:** You encounter errors when trying to install `soda-dask-pandas` in an environment that uses Python 3.11. This may manifest as an issue with dependencies or as an error that reads, `Pre-scan validation failed, see logs for details.`
+**Problem:** You encounter errors when trying to install `soda-pandas-dask` in an environment that uses Python 3.11. This may manifest as an issue with dependencies or as an error that reads, `Pre-scan validation failed, see logs for details.`
 
-**Workaround:** Uninstall the `soda-dask-pandas` package, then downgrade the version of Python your environment uses to Python 3.9. Install the `soda-dask-pandas` package again. 
+**Workaround:** Uninstall the `soda-pandas-dask` package, then downgrade the version of Python your environment uses to Python 3.9. Install the `soda-pandas-dask` package again. 
 
 <br />
 <br />
