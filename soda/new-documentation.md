@@ -9,6 +9,11 @@ parent: Learning resources
 
 <br /> 
 
+#### September 24, 2024
+* Add [Configuration and setting hierarchy]({% link soda-cl/failed-row-samples.md %}#configuration-and-setting-hierarchy) section to offer an overview of behavior for failed row sample collection.
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.2.
+* Removed note about an upper limit of 10,000 for collecting failed row samples.
+
 #### September 23, 2024
 * Compiled and updated [failed row samples]({% link soda-cl/failed-row-samples.md %}) documentation, including:
   * the option to use `scan context` in a CustomSampler to read/write data to/from a scan
