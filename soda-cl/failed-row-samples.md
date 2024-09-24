@@ -28,6 +28,7 @@ After a scan has completed, from the **Checks** dashboard, select an individual 
 [Customize sampling for checks](#customize-sampling-for-checks)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Set a sample limit](#set-a-sample-limit)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Customize a failed rows sample query](#customize-a-failed-row-samples-query)<br/>
+[Configuration and setting hierarchy](#configuration-and-setting-hierarchy)<br />
 [Reroute failed row samples](#reroute-failed-row-samples)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Configure an HTTP sampler](#configure-an-http-custom-sampler)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Configure a Python custom sampler](#configure-a-python-custom-sampler)<br />
@@ -97,7 +98,8 @@ Further, some configurations apply only to no-code checks, or only to checks def
 
 Where some of your data is sensitive, you can either disable the Soda Cloud sampler completely for individual data sources, or use one of several ways to customize the Soda Cloud sampler to restrict failed row sample collection to only those datasets and columns you wish. 
 
-See also: [Manage sensitive data]({% link soda/sensitive-data.md %})
+See also: [Manage sensitive data]({% link soda/sensitive-data.md %})<br />
+See also: [Configuration and setting hierarchy](#configuration-and-setting-hierarchy)
 
 ### Disable failed row samples
 
@@ -244,6 +246,9 @@ The configurations described below correspond with the optional Soda Cloud setti
 
 ![allow-limited-collection](/assets/images/allow-limited-collection.png){:height="450px" width="450px"}
 
+See also: [Manage sensitive data]({% link soda/sensitive-data.md %})<br />
+See also: [Configuration and setting hierarchy](#configuration-and-setting-hierarchy)
+
 ### Disable failed row samples in Soda Cloud
 
 <table>
@@ -310,7 +315,9 @@ Alternatively, you can adjust a dataset's settings in Soda Cloud so that it coll
   </tr>
 </table>
 
-When you add sampling parameters to checks -- `collect failed rows` or `samples columns` -- the check level configrations override other settings or configurations according to the following table. 
+💡 Consider customizing sampling for checks via Soda Cloud settings; see [Customize failed row samples for datasets](#customize-failed-row-samples-for-datasets).
+
+When you add sampling parameters to checks -- `collect failed rows` or `samples columns` -- the check level configrations override other settings or configurations according to the following table. See also: [Configuration and setting hierarchy](#configuration-and-setting-hierarchy). 
 
 | Setting or Configuration | Sampling parameters <br />override <br />settings or config | Sampling parameters <br />DO NOT<br />override settings or config | 
 | ----------------- | :---------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
@@ -347,11 +354,12 @@ Note that [reconciliation checks]({% link soda-cl/recon.md %}) do not support th
 
 <br />
 
-Alternatively, you can specify the columns from which Soda must draw failed row samples for multiple checks using a dataset-level configuration, as in the following example. Note that if you specify a different `samples columns` value for an individual check than is defined in the `configurations for` block, Soda obeys the individual check's sample column instructions.
+Alternatively, you can specify sample collection and/or the columns from which Soda must draw failed row samples for multiple checks using a dataset-level configuration, as in the following example. Note that if you specify a different `samples columns` or `collect failed rows` value for an individual check than is defined in the `configurations for` block, Soda obeys the individual check's instructions.
 {% include code-header.html %}
 ```yaml
 configurations for dim_product:
     samples columns: [product_line]
+    collect failed rows: true
   
 checks for dim_product:
   - duplicate_count(product_line) = 0
@@ -381,7 +389,7 @@ checks for dim_customer:
 
 <br />
 
-If you wish to collect a larger volume of failed row checks, you can set the limit to a larger number. Note that failed rows checks that use a SQL query support up to a maximum of 10,000 samples. Be aware, however, that collecting large volumes of failed row samples comes with the compute cost that requires enough memory for Soda Library or a Soda Agent to process the request; see: [About failed row sampling queries](#about-failed-rows-sampling-queries).
+If you wish to collect a larger volume of failed row checks, you can set the limit to a larger number. Be aware, however, that collecting large volumes of failed row samples comes with the compute cost that requires enough memory for Soda Library or a Soda Agent to process the request; see: [About failed row sampling queries](#about-failed-rows-sampling-queries).
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -435,7 +443,31 @@ In Soda Cloud, you can add an optional failed rows query to a no-code **SQL Metr
 
 <br />
 
+## Configuration and setting hierarchy
 
+With many different options available to configure failed row sampling in various formats and at various levels (data source, dataset, check) with Soda, some combinations of customization may be complex. Generally speaking, configurations you define in configuration YAML or checks YAML files override settings defined in Soda Cloud, with the exception of the top-most setting that allows, or disallows, failed row sample collection entirely.
+
+What follows is a hierarchy of configurations and settings to help you determine how Soda enforces failed row sample collection and display, in descending order of obedience. 
+
+[Disabling failed row samples in Soda Cloud](#disable-failed-row-samples-in-soda-cloud) prevents Soda from displaying any failed row samples for any checks as part of a Soda Library scan or Soda Cloud scheduled scan definition. 
+
+[Disabling failed row samples](#disable-failed-row-samples) via data source `disable_samples` configuration prevents Soda from displaying any failed row samples for checks that implicitly collect samples and which are applied to datasets in the data source. If set to `false` while the above **Sample Data** setting in Soda Cloud is unchecked, Soda obeys the setting and does not display any failed rows samples for any checks. 
+
+[Seting a sample limit](#set-a-sample-limit) to `0` via data source `samples limit` configuration prevents Soda from displaying any failed row samples for checks that implicitly collect samples and which are applied to datasets in the data source. If set to `10`, for example, while the above `disable_samples` setting is set to `true`, Soda obeys the `disable_samples` setting and does not display failed row samples for checks for the data source.
+
+[Disabling failed row samples for datasets and columns](#customize-failed-row-samples-for-datasets-and-columns) via data source `exclude_columns` configuration prevents Soda from displaying any failed row samples for checks that implicitly collect samples and which are applied to datasets in the data source. If specified for a data source while the above data source `samples limit` configuration is set to `0`, Soda objeys the `samples limit` and does not display failed row samples for checks for the data source.
+
+[Disabling sampling for checks](#customize-sampling-for-checks) via sampling parameters (`samples columns` or `collect failed rows`) in a SodaCL check configuration specifies sampling instructions, or prevents/allows sampling for individual checks that implicitly collect samples. If any of the above configurations conflict with the individual check settings, Soda obeys the above configurations. For example, if a `duplicate_count` check includes the configuration `collect failed rows: true` but the `samples limit` configuration in the data source configuration is set to `0`, Soda objeys the `samples limit` and does not display failed row samples for the `duplicate_count` check.
+
+However, if you specify a different `samples columns` or `collect failed rows` value for an individual check than is defined in the `configurations for` block for a dataset, Soda obeys the individual check’s instructions.
+
+[Customize sampling via user interface](#customize-sampling-via-user-interface) to **Allow Soda to collect sample data and failed row samples only for datasets and checks with the explicit configuration to do so** setting in **Organization Settings** in Soda Cloud limits failed row sample collection to only those checks which implicitly collect failed row samples and which include a `samples columns` or `collect failed rows` configuration, and/or to checks in datasets that are set to inherit organization settings for failed row samples, or for which failed row samples is disabled. If any of the above configurations conflict with this setting, Soda obeys the above configurations.
+
+[Disabling failed row samples for datasets](#customize-failed-row-samples-for-datasets) via Soda Cloud **Edit Dataset** > **Failed Row Samples** prevents Soda from displaying any failed row samples for checks that implicitly collect samples and which are applied the individual dataset. If any of the above configurations conflict with the dataset's **Failed Row Samples** settings, Soda obeys the above configurations. For example, if you set the value of **Failed Rows Sample Collection** for to **Disabled** for a dataset, then use SodaCL to configure an individual check to `collect failed rows`, Soda obeys the check configuration and displays the failed row samples for the individual check.
+
+[Customizing failed row samples for datasets](#customize-failed-row-samples-for-datasets) via Soda Cloud to collect samples only for columns you specify in the **Collect Failed Row Samples For** instructs Soda to display failed row samples for your specified columns for checks that implicitly collect samples and which are applied the individual dataset. If any of the above configurations conflict with the dataset's **Collect Failed Row Samples For** settings, Soda obeys the above configurations.
+
+<br />
 
 ## Reroute failed row samples
 <!--Linked to UI, access Shlink-->
