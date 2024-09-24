@@ -14,7 +14,7 @@ To manage the dataset-level permissions of users that belong to a single organiz
 
 There are two type of roles that regulate permissions in Soda Cloud: **Global** and **Dataset**. You can assign each type of role to users or user groups in Soda Cloud to organize role-based access control to resources and functionality in your account. You can also customize the permissions of the out-of-the-box roles Soda Cloud includes, or you can create new roles and assign permissions to roles as you wish. 
 
-The content that follows offers information about dataset roles. For details on terminology, global roles, custom user groups, and organizational settings, see [Manage global roles, user groups, and settings]({% link soda-cloud/roles-global.md %}).
+The content that follows offers information about dataset roles. For details on terminology, global roles, custom user groups, and organizational settings, see [Manage global roles, user groups, and settings]({% link soda-cloud/roles-global.md %}#about-roles-groups-and-permissions).
 
 ## Dataset roles and permissions
 
@@ -23,16 +23,16 @@ The out-of-the-box roles that define who has permission to access or make change
 | Permission group  |  Manager | Editor | Viewer |
 | ----------------  | :----: | :----: |:----: |
 | [View dataset](#view-dataset) | ✓ | ✓ | ✓ |
-| [Configure dataset](#configure-dataset) | ✓ | ✓ |   |
+| [Access dataset <br />profiling<br />and samples](#access-dataset-profiling-and-samples) | ✓ | ✓ | ✓ |
+| [Access failed <br />row samples<br />for checks](#access-failed-row-samples-for-checks) | ✓ | ✓ | ✓ |
+ [Configure dataset](#configure-dataset) | ✓ | ✓ |   |
+| [Manage dataset responsibilities](#manage-dataset-responsibilities) | ✓ |  |  |
 | [Propose checks](#propose-checks) | ✓ | ✓ | ✓ |
-| [Delete dataset](#delete-dataset) | ✓ |  |  |
 | [Manage checks](#manage-checks) | ✓ | ✓ |   |
 | [Manage incidents](#manage-incidents) | ✓ | ✓ | ✓ |
-| [Manage dataset responsibilities](#manage-dataset-responsibilities) | ✓ |  |  |
-| [Manage permissions](#manage-permissions) | ✓ |  |  |
-| [Access failed <br />row samples<br />for checks](#access-failed-row-samples-for-checks) | ✓ | ✓ | ✓ |
-| [Access dataset <br />profiling<br />and samples](#access-dataset-profiling-and-samples) | ✓ | ✓ | ✓ |
+| [Delete dataset](#delete-dataset) | ✓ |  |  |
 
+<br />
 
 #### View dataset 
 This permission group cannot be removed from any of the out-of-the-box dataset roles.
@@ -46,17 +46,24 @@ This permission group cannot be removed from any of the out-of-the-box dataset r
 * View a dataset's **Columns** tab, schema info only
 * View the check history for a dataset's checks, though not failed row samples
 
+#### Access dataset profiling and samples
+* View a dataset's **Columns** tab, schema and profiling info
+* View a dataset's **Samples** tab
+
+#### Access failed row samples for checks
+* View the check history for a dataset's checks, including failed row samples
+
 #### Configure dataset
 * Edit a dataset's attributes
 * Edit a dataset's profiling configuration
+
+#### Manage dataset responsibilities
+* Edit a dataset's responsibilities
 
 #### Propose checks
 * Select a dataset in a **New Discussion** form
 * Select a dataset in an **Add Check** form
 * Click **Propose Check** when creating a no-code check 
-
-#### Delete dataset
-* Delete a dataset
 
 #### Manage checks
 * Push a dataset's check results from Soda Library scans to Soda Cloud. <br />At present, Soda Cloud does not reject check results from a Soda Library scan executed by a user without "Manage checks" permission for a dataset. Instead, Soda issues a soft warning to indicate that the user does not have permission to manage checks for the dataset. In future iterations, the warning will be changed to a rejection of any results pushed without proper permissions for the dataset.
@@ -73,28 +80,16 @@ This permission group cannot be removed from any of the out-of-the-box dataset r
 * Update an incident related to a dataset's check
 * Delete an incident related to a dataset's check
 
-#### Manage dataset responsibilities
-* Edit a dataset's responsibilities
+#### Delete dataset
+* Delete a dataset
 
-#### Manage permissions
-* Edit a dataset's access permissions
-
-#### Access failed row samples for checks
-* View the check history for a dataset's checks, including failed row samples
-
-#### Access dataset profiling and samples
-* View a dataset's **Columns** tab, schema and profiling info
-* View a dataset's **Samples** tab
-
-<br/>
+<br/><br/>
 
 ### Create dataset roles
 
 You can create or edit dataset roles to assign to users or user groups in Soda Cloud.
 
 As a user with permission to do so, navigate to **your avatar** > **Organization Settings**, then access the **Dataset Roles** tab. Click **Add Dataset Role**, then follow the guided workflow to name a role and add permissions groups. Refer to the [table above](#dataset-roles-and-permissions) for a list of permissions groups, and their associated permissions, that you can assign to global roles.
-
-<br />
 
 ### Assign dataset roles 
 
