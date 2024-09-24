@@ -52,6 +52,17 @@ Use the **Incident** scope to notify your team when a new incident has been crea
 
 Use the **Discussions** scope to post to a channel when a user creates or modifies a Soda Cloud discussion. Soda Cloud sends all incident events to only one channel in MS Teams. As such, you must provide a separate link in the **Channel URL** field in the **Define Scope** tab. For example, `https://teams.microsoft.com/mychannel`. To obtain the channel link in MS Teams, right-click on the channel name in the overview sidebar. Refer to [Begin a discussion and propose checks]({% link soda/quick-start-end-user.md %}#begin-a-discussion-and-propose-checks) for more details about using incidents in Soda Cloud.
 
+### Troubleshoot
+
+**Problem:** You encounter an error that reads, "Error encountered while rendering this message."
+
+**Solution:** A fix is <a href="https://www.anyviewer.com/kb/microsoft-teams-error-encountered-while-rendering-this-message-2996-ac.html" target="_blank">documented</a>, the short version of which is as follows. 
+1. Restart MS Teams.
+2. Clear your cache and cookies.
+3. If you have not already done so, update to the latest version of MS Teams.
+
+<br />
+
 ## Go further
 
 * Learn more about general [webhooks]({% link soda/integrate-webhooks.md %}) to integrate Soda Cloud with other third-party service providers.

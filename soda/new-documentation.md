@@ -14,6 +14,7 @@ parent: Learning resources
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.2.
 * Removed note about an upper limit of 10,000 for collecting failed row samples.
 * Added Soda Cloud connection configuration details to [Connect to Dask and Pandas]({% link soda/connect-dask.md %}), and corrcted install package names in Troubleshooting section.
+* Added [troubleshooting]({% link soda/integrate-msteams.md %}#troubleshoot) solution to MS Teams integration.
 
 #### September 23, 2024
 * Compiled and updated [failed row samples]({% link soda-cl/failed-row-samples.md %}) documentation, including:
