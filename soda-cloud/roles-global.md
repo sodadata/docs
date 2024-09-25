@@ -122,9 +122,9 @@ Create or edit user groups in Soda Cloud to manage global and dataset role-based
 As a user with permission to do so, navigate to **your avatar** > **Organization Settings**, then access the **User Groups** tab. Click **Create User Group**, then follow the guided workflow to create a group and add individual members. Once created, assign the user group to any of the following resources.
 
 * In the **User Groups** tab, assign an out-of-the-box or custom global role to user groups instead of individually assigning global roles to users.
-* In **Edit Dataset Responsibilities**, add a user group as a member and assign it a dataset role to control the way users in the group access or act upon the dataset.
+* In **Edit Dataset Responsibilities**, add a user group as a member and [assign it a dataset role]({% link soda-cloud/roles-dataset.md %}#assign-dataset-roles) to control the way users in the group access or act upon the dataset.
 * Assign user groups as alert [notification rules]({% link soda-cloud/notif-rules.md %}#set-new-rules) recipients to make sure the right team, with the right permissions for the dataset(s), gets notified when checks warn or fail.
-* For redundancy, assign [dataset ownership](#change-the-dataset-owner) to user groups instead of individual users.
+* For redundancy, assign [dataset ownership]({link soda-cloud/roles-dataset.md}#change-the-dataset-owner) to user groups instead of individual users.
 * Add a user group to a [discussion]({% link soda/quick-start-end-user.md %}#begin-a-discussion-and-propose-checks) in Soda Cloud so the whole team can review newly-proposed no-code checks.
 * Add user groups as [stakeholders]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks) in an agreement so that whole teams can collaborate on the expected state of data quality for one or more datasets.
 
