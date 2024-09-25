@@ -21,8 +21,11 @@
     page: soda-agent/secrets.md
   - subtitle: Invoke Soda Library
     page: soda-library/programmatic.md
+  - subtitle: Python API reference
+    page: soda-library/python_api.md
   - subtitle: Upgrade, redeploy, uninstall
     page: soda/upgrade.md
+
 
 - title: Use case guides
   page: soda/use-case-guides.md
