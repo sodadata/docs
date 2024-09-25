@@ -16,6 +16,7 @@ There are two type of roles that regulate permissions in Soda Cloud: **Global** 
 
 The content that follows offers information about dataset roles. For details on terminology, global roles, custom user groups, and organizational settings, see [Manage global roles, user groups, and settings]({% link soda-cloud/roles-global.md %}#about-roles-groups-and-permissions).
 
+
 ## Dataset roles and permissions
 
 The out-of-the-box roles that define who has permission to access or make changes to datasets in your Soda Cloud account are **Admin**, **Manager**, **Editor**, and **Viewer**. An Admin role has all permissions to access or act upon a dataset; the following table outlines the permission groups for the remaining out-of-the-box dataset roles.
@@ -35,7 +36,7 @@ The out-of-the-box roles that define who has permission to access or make change
 <br />
 
 #### View dataset 
-This permission group cannot be removed from any of the out-of-the-box dataset roles.
+This permission group cannot be removed from any of the out-of-the-box or custom dataset roles.
 * View a dataset in the list on the **Datasets** page 
 * View a dataset's checks in the **Checks** page
 * Access a dataset via API
@@ -58,7 +59,7 @@ This permission group cannot be removed from any of the out-of-the-box dataset r
 * Edit a dataset's profiling configuration
 
 #### Manage dataset responsibilities
-* Edit a dataset's responsibilities
+* Edit a dataset's responsibilities [Read more](#assign-dataset-roles)
 
 #### Propose checks
 * Select a dataset in a **New Discussion** form
@@ -83,17 +84,29 @@ This permission group cannot be removed from any of the out-of-the-box dataset r
 #### Delete dataset
 * Delete a dataset
 
-<br/><br/>
+<br/>
 
-### Create dataset roles
+
+## Create dataset roles
 
 You can create or edit dataset roles to assign to users or user groups in Soda Cloud.
 
 As a user with permission to do so, navigate to **your avatar** > **Organization Settings**, then access the **Dataset Roles** tab. Click **Add Dataset Role**, then follow the guided workflow to name a role and add permissions groups. Refer to the [table above](#dataset-roles-and-permissions) for a list of permissions groups, and their associated permissions, that you can assign to global roles.
 
-### Assign dataset roles 
+## Assign dataset roles 
 
-When any user uses Soda Library or Soda Cloud to add a new data source, and its datasets, to the Soda Cloud account, the user automatically becomes the Dataset Owner of each dataset in the data source. Depending upon the **Responsibilities** settings in the **Dataset Roles** tab of **Organization Settings**, the Dataset Owner is assigned a role according to the **Default Dataset Owner Role** setting. Refer to [User groups and responsibilities]({% link soda-cloud/roles-global.md %}#user-groups-and-responsibilities) for details.
+The only out-of-the-box user group that Soda Cloud provides is called **Everyone**. When a new user accepts an invitation to join an existing Soda Cloud organization, or when they gain access to an organization via SSO, Soda Cloud applies the the global role of user in the organization and, depending on the **Responsibilities** settings, may add the new user to the Everyone user group. You cannot add users to, or remove them from the Everyone user group. To learn about how to create your own user groups, see [Manage user groups]({% link soda-cloud/roles-global.md %}#manage-user-groups).
+
+When setting responsibilities for newly-onboarded, or discovered, datasets, users with permissions to do so can access the **Organization Settings** to define:
+* whether to add newly invited or added users to the out-of-the-box Everyone user group 
+* the default dataset role of the Everyone user group
+* the default dataset role to assign to Dataset Owners to datasets that are onboarded in Soda Cloud
+
+![responsibilities](/assets/images/responsibilities.png){:height="700px" width="700px"}
+
+<br />
+
+When any user uses Soda Library or Soda Cloud to add a new data source, and its datasets, to the Soda Cloud account, the user automatically becomes the Dataset Owner of each dataset in the data source. Depending upon the **Responsibilities** settings in the **Dataset Roles** tab of **Organization Settings**, the Dataset Owner is assigned a role according to the **Default Dataset Owner Role** setting.
 
 Beyond the default users and roles assigned to a dataset upon addition to Soda Cloud, you can edit the responsibilities for an individual dataset to make changes to the way users and user groups can access or act upon the dataset. 
 
@@ -104,6 +117,42 @@ Beyond the default users and roles assigned to a dataset upon addition to Soda C
 If you have added a user to a group to which you have assigned a level of permission for a dataset, then manually assigned a different level of permission to the individual user for a dataset, Soda honors the higher set of permissions.
 
 For example, say you add Manny Jacinto to a user group called Marketing Team. For a new_signups dataset, you assign the Marketing Team the out-of-the-box role of Viewer. Then, for the same dataset, you assign Manny's individual user the out-of-the-box role of Manager. Soda honors the permissions of the higher role, Manager, for Manny's access to new_signups.
+
+## Data source, dataset, agreement, and check owners
+
+There are four types of resource owners in Soda Cloud that identify the user, or user group, that owns a data source, dataset, agreement, or check. These ownership roles do not enforce any permissions, they are simply resource metadata.
+
+* By default, the user who added the data source becomes the **Data Source Owner** and **Dataset Owner** of all datasets in that data source. The default [dataset role]({% link soda-cloud/roles-dataset.md %}#dataset-roles-and-permissions) that Soda Cloud assigns to the Dataset Owner is that of Manager.
+* By default, the user who creates an agreement becomes the **Check Owner** of all checks defined in the agreement. 
+* By default, the user who creates a no-code check becomes its **Check Owner**.
+* By default, all Owners use an Author license, if you use the legacy license billing model.
+<br />
+<br />
+
+### Change the Data Source Owner
+
+1. With the permission to do so, login to your Soda Cloud account and navigate to **your avatar** > **Data Sources**.
+2. In the **Data Sources** tab, click the stacked dots to the right of the data source for which you wish to adjust the ownership, then select **Edit Datasource**.
+3. In the **Assign Owner** tab, use the dropdown to select the name of another user or user group to take ownership of the data source, then **Save**.
+
+<br />
+
+### Change the Dataset Owner
+
+1. With the permission to do so, login to your Soda Cloud account and navigate to the **Datasets** dashboard.
+2. Click the stacked dots to the right of the dataset for which you wish to adjust the ownership, then select **Edit Dataset**.
+3. In the **Attributes** tab, use the dropdown to select the name of another user or user group to take ownership of the dataset, then **Save**.
+4. Soda Cloud automatically assigns the role of Manager to the new Dataset Owner.
+
+To bulk-change the owner of all new datasets added to a data source, follow the steps to [Change the Data Source Owner](#change-the-data-source-owner) and, in the **Assign Owner** tab, use the dropdown to change the owner of *all* the datasets in the data source.
+
+<br />
+
+### Change the Check Owner
+
+1. If you are the Admin of the organization, or have a Manager or Editor role for the check's dataset, login to your Soda Cloud account and navigate to the **Checks** dashboard.
+2. Click the stacked dots to the right of the check for which you wish to adjust the ownership, then select **Edit Check**.
+3. In the **Attributes** tab, use the dropdown to select the name of another user to take ownership of the check, then **Save**. Note that you cannot assign a user group as a check owner.
 
 <br />
 

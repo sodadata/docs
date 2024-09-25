@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### September 26, 2024
+* Updated documentation to include customizable permissions for [global]({% link soda-cloud/roles-global.md %}) and [dataset roles]({% link soda-cloud/roles-dataset.md %}) in Soda Cloud, plus the ability to create new roles.
+
 #### September 25, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.28.
 

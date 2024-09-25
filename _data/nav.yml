@@ -108,7 +108,7 @@
     page: soda-cloud/organize-datasets.md
   - subtitle: Create and track incidents
     page: soda-cloud/incidents.md
-  - subtitle: Manage global roles
+  - subtitle: Manage global roles and user groups
     page: soda-cloud/roles-global.md
   - subtitle: Manage dataset roles
     page: soda-cloud/roles-dataset.md
