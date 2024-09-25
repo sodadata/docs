@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### September 25, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.28.
+
 #### September 24, 2024
 * Add [Configuration and setting hierarchy]({% link soda-cl/failed-row-samples.md %}#configuration-and-setting-hierarchy) section to offer an overview of behavior for failed row sample collection.
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.2.
