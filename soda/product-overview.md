@@ -15,10 +15,10 @@ Soda is a tool that enables Data Engineers, Data Scientists, and Data Analysts t
 * Is it complete or missing values? 
 * Are there unexpected duplicate values? 
 * Did something go wrong during transformation? 
-* Are all the data values valid? 
+* Are all the date values valid? 
 * Are anomalous values disrupting downstream reports? 
 
-These are the questions that Soda answers.
+These are questions that Soda answers.
 
 ## What does Soda do?
 
