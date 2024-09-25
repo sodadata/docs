@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda product release states
-description: 
+description: Access details about the state of new product features or functionality upon release.
 parent: Release notes
 ---
 
