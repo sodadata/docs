@@ -846,13 +846,16 @@ components:
 info:
   description: "Use Soda Cloud's public API to:\n- connect Soda Cloud to your data\
     \ catalog\n- trigger scheduled scans in Soda Cloud from within your data pipeline\n\
-    - access dataset and check info in Soda Cloud\n\n## Authentication\n\nThis API\
-    \ supports authentication using a HTTP `Basic` authentication header. This authentication\
-    \ method works with Single Sign-On (SSO) and for users who belong to more than\
-    \ one organization in Soda Cloud. For Basic authentication, this API uses API\
-    \ keys rather than username and password values.\n\nTo learn how to generate the\
-    \ API keys that you need for basic authentication, access the [Generate API keys\
-    \ for use with Soda Library or a Soda Cloud API](https://docs.soda.io/soda-cloud/api-keys.html#generate-api-keys-for-use-with-soda-library-or-a-soda-cloud-api).\n\
+    - access dataset and check info in Soda Cloud\n- access dataset responsibilities\
+    \ in Soda Cloud\n- access user and user groups in Soda Cloud\n- update datasets\
+    \ in Soda Cloud\n- update dataset responsibilities in Soda Cloud\n- update incidents\
+    \ in Soda Cloud\n\n## Authentication\n\nThis API supports authentication using\
+    \ a HTTP `Basic` authentication header. This authentication method works with\
+    \ Single Sign-On (SSO) and for users who belong to more than one organization\
+    \ in Soda Cloud. For Basic authentication, this API uses API keys rather than\
+    \ username and password values.\n\nTo learn how to generate the API keys that\
+    \ you need for basic authentication, access the [Generate API keys for use with\
+    \ Soda Library or a Soda Cloud API](https://docs.soda.io/soda-cloud/api-keys.html#generate-api-keys-for-use-with-soda-library-or-a-soda-cloud-api).\n\
     \n## Examples\n\n```curl\ncurl -X GET \\ \n    --location \"https://cloud.soda.io/api/v1/test-login\"\
     \ \\\n    --basic \n    --user 5100a9bc-8cbe-44ab-8263-136ba0f35c1d:VIorf5ZGgE5yqMc-gT7amAsAiotqgySSUh98VBtek_6x6fP3asnybQ\n\
     ```\n"
@@ -1200,7 +1203,7 @@ paths:
 
         ## Tags
 
-        `Responsibilities`
+        `Datasets`
 
         ## Rate limiting
 
@@ -1271,7 +1274,7 @@ paths:
       - basicAuthApiKey: []
       summary: List dataset roles
       tags:
-      - Responsibilities
+      - Datasets
   /api/v1/datasets/{datasetId}:
     post:
       description: |-
@@ -1394,7 +1397,7 @@ paths:
 
         ## Tags
 
-        `Responsibilities`
+        `Datasets`
 
         ## Rate limiting
 
@@ -1470,7 +1473,7 @@ paths:
       - basicAuthApiKey: []
       summary: List dataset responsibilities
       tags:
-      - Responsibilities
+      - Datasets
     post:
       description: |-
         This endpoint enables you to update the user and user groups permissions and their associated roles for a dataset in your organization's Soda Cloud account.
@@ -1491,7 +1494,7 @@ paths:
 
         ## Tags
 
-        `Responsibilities`
+        `Datasets`
 
         ## Rate limiting
 
@@ -1564,7 +1567,7 @@ paths:
       - basicAuthApiKey: []
       summary: Update dataset responsibilities
       tags:
-      - Responsibilities
+      - Datasets
   /api/v1/incidents/{incidentId}:
     post:
       description: |-
@@ -2341,8 +2344,6 @@ tags:
   name: Datasets
 - description: Soda Cloud API Incidents Endpoints
   name: Incidents
-- description: Soda Cloud API Responsibilities Endpoints
-  name: Responsibilities
 - description: Soda Cloud API Scan Endpoints
   name: Scans
 - description: Soda Cloud API Users Endpoints
