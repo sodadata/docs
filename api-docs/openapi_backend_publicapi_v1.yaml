@@ -1,83 +1,91 @@
 components:
   schemas:
     AgreementSlimDTO:
+      type: object
       properties:
         cloudUrl:
           type: string
         name:
           type: string
-      type: object
     CheckResultValueDTO:
+      type: object
       properties:
         measure:
+          type: object
           $ref: '#/components/schemas/MeasureDTO'
         value:
           type: number
         valueLabel:
           type: string
         valueSeries:
+          type: object
           $ref: '#/components/schemas/CheckResultValueSeriesDTO'
-      type: object
     CheckResultValueSeriesDTO:
+      type: object
       properties:
         values:
-          items:
-            $ref: '#/components/schemas/CheckResultValueSeriesDTO_ValueSeriesValue'
           type: array
-      type: object
+          items:
+            type: object
+            $ref: '#/components/schemas/CheckResultValueSeriesDTO_ValueSeriesValue'
     CheckResultValueSeriesDTO_ValueSeriesValue:
+      type: object
       properties:
         label:
           type: string
         level:
+          type: object
           $ref: '#/components/schemas/EvaluationStatusDTO'
         value:
           type: number
-      type: object
     ChecksContentDTO:
+      type: object
       properties:
         agreements:
-          items:
-            $ref: '#/components/schemas/AgreementSlimDTO'
-          nullable: false
           type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/AgreementSlimDTO'
         attributes:
+          type: object
           $ref: '#/components/schemas/MapOfStringToString'
         cloudUrl:
           type: string
         column:
           type: string
         datasets:
-          items:
-            $ref: '#/components/schemas/DatasetSlimDTO'
-          nullable: false
           type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/DatasetSlimDTO'
         definition:
           type: string
         description:
           type: string
         evaluationStatus:
+          type: object
           $ref: '#/components/schemas/EvaluationStatusDTO'
         group:
+          type: object
           $ref: '#/components/schemas/ChecksContentDTO_Group'
         id:
-          nullable: false
           type: string
         incidents:
-          items:
-            $ref: '#/components/schemas/IncidentSlimDTO'
-          nullable: false
           type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/IncidentSlimDTO'
         lastCheckResultValue:
+          type: object
           $ref: '#/components/schemas/CheckResultValueDTO'
         lastCheckRunTime:
           type: string
         lastUpdated:
           type: string
         name:
-          nullable: false
           type: string
         owner:
+          type: object
           $ref: '#/components/schemas/OwnerDTO'
       required:
         - agreements
@@ -87,8 +95,8 @@ components:
         - incidents
         - name
         - owner
-      type: object
     ChecksContentDTO_Group:
+      type: object
       properties:
         groupType:
           type: string
@@ -96,14 +104,123 @@ components:
           type: string
         name:
           type: string
-      type: object
     DataQualityStatusDTO:
+      type: string
       enum:
         - pass
         - warn
         - fail
+    DatasetAttributeContentDTO:
+      type: object
+      properties:
+        allowedValues:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/_object'
+        description:
+          type: string
+        id:
+          type: string
+        label:
+          type: string
+        name:
+          type: string
+        type:
+          type: object
+          $ref: '#/components/schemas/DatasetAttributeTypeDTO'
+      required:
+        - id
+        - label
+        - name
+        - type
+    DatasetAttributeTypeDTO:
       type: string
+      enum:
+        - checkbox
+        - datetime
+        - number
+        - text
+        - single_select
+        - multi_select
+    DatasetOwnerDTO:
+      type: object
+      properties:
+        type:
+          type: object
+          $ref: '#/components/schemas/DatasetOwnerTypeDTO'
+        user:
+          type: object
+          $ref: '#/components/schemas/UserContentDTO'
+        userGroup:
+          type: object
+          $ref: '#/components/schemas/UserGroupContentBasicDTO'
+      required:
+        - type
+    DatasetOwnerTypeDTO:
+      type: string
+      enum:
+        - user
+        - userGroup
+    DatasetResponsibilityContentDTO:
+      type: object
+      properties:
+        role:
+          type: object
+          $ref: '#/components/schemas/DatasetRoleContentDTO'
+        type:
+          type: object
+          $ref: '#/components/schemas/ResponsibilityTypeDTO'
+        userGroupId:
+          type: string
+        userId:
+          type: string
+      required:
+        - role
+        - type
+    DatasetResponsibilityContentRequestDTO:
+      type: object
+      properties:
+        roleId:
+          type: string
+        type:
+          type: object
+          $ref: '#/components/schemas/ResponsibilityTypeDTO'
+        userGroupId:
+          type: string
+        userId:
+          type: string
+      required:
+        - roleId
+        - type
+    DatasetRoleContentDTO:
+      type: object
+      properties:
+        configureDataset:
+          type: boolean
+        createCheckProposals:
+          type: boolean
+        deleteDataset:
+          type: boolean
+        id:
+          type: string
+        manageChecks:
+          type: boolean
+        manageIncidents:
+          type: boolean
+        managePermissions:
+          type: boolean
+        name:
+          type: string
+        viewFailedRows:
+          type: boolean
+        viewProfilingAndSamples:
+          type: boolean
+      required:
+        - id
+        - name
     DatasetSlimDTO:
+      type: object
       properties:
         cloudUrl:
           type: string
@@ -111,34 +228,38 @@ components:
           type: string
         name:
           type: string
-      type: object
     DatasetsContentDTO:
+      type: object
       properties:
+        attributes:
+          type: object
+          $ref: '#/components/schemas/MapOfStringTo_object'
         checks:
-          nullable: false
           type: number
         cloudUrl:
-          nullable: false
           type: string
         dataQualityStatus:
+          type: object
           $ref: '#/components/schemas/DataQualityStatusDTO'
         datasource:
+          type: object
           $ref: '#/components/schemas/DatasourcePropertiesDTO'
         healthStatus:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
         id:
-          nullable: false
           type: string
         incidents:
-          nullable: false
           type: number
         lastUpdated:
           type: string
         name:
-          nullable: false
           type: string
+        owners:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/DatasetOwnerDTO'
         qualifiedName:
           type: string
       required:
@@ -148,8 +269,8 @@ components:
         - id
         - incidents
         - name
-      type: object
     DatasourcePropertiesDTO:
+      type: object
       properties:
         name:
           type: string
@@ -157,37 +278,63 @@ components:
           type: string
         type:
           type: string
-      type: object
     ErrorResponse:
+      type: object
       properties:
         code:
           type: string
         message:
           type: string
-      type: object
     EvaluationStatusDTO:
+      type: string
       enum:
         - pass
         - warn
         - fail
         - notEvaluated
-      type: string
-    IncidentSlimDTO:
+    IncidentContentDTO:
+      type: object
       properties:
+        description:
+          type: string
+        severity:
+          type: object
+          $ref: '#/components/schemas/IncidentSeverityDTO'
         cloudUrl:
-          nullable: false
           type: string
         id:
-          nullable: false
           type: string
         name:
-          nullable: false
           type: string
         number:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
         status:
+          type: object
+          $ref: '#/components/schemas/IncidentStatusDTO'
+      required:
+        - description
+        - severity
+    IncidentSeverityDTO:
+      type: string
+      enum:
+        - minor
+        - major
+        - critical
+    IncidentSlimDTO:
+      type: object
+      properties:
+        cloudUrl:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        number:
+          type: integer
+          format: int32
+        status:
+          type: object
           $ref: '#/components/schemas/IncidentStatusDTO'
       required:
         - cloudUrl
@@ -195,49 +342,50 @@ components:
         - name
         - number
         - status
-      type: object
     IncidentStatusDTO:
+      type: string
       enum:
         - reported
         - investigating
         - fixing
         - resolved
-      type: string
     LogLevelDTO:
+      type: string
       enum:
         - debug
         - info
         - warning
         - error
-      type: string
     LogsContentDTO:
+      type: object
       properties:
         index:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
         level:
+          type: object
           $ref: '#/components/schemas/LogLevelDTO'
         message:
-          nullable: false
           type: string
         timestamp:
-          nullable: false
           type: string
       required:
         - index
         - level
         - message
         - timestamp
-      type: object
     MapOfStringToString:
-      additionalProperties: true
       type: object
+      additionalProperties: true
+    MapOfStringTo_object:
+      type: object
+      additionalProperties: true
     MeasureDTO:
+      type: string
       enum:
         - time
-      type: string
     OwnerDTO:
+      type: object
       properties:
         email:
           type: string
@@ -247,43 +395,38 @@ components:
           type: string
         lastName:
           type: string
-      type: object
     PublicApiCheckSlimDTO:
+      type: object
       properties:
         evaluationStatus:
+          type: object
           $ref: '#/components/schemas/EvaluationStatusDTO'
         id:
           type: string
-      type: object
     PublicApiChecksResponse:
+      type: object
       properties:
         content:
+          type: array
           items:
+            type: object
             $ref: '#/components/schemas/ChecksContentDTO'
-          nullable: false
-          type: array
         first:
-          nullable: false
           type: boolean
         last:
-          nullable: false
           type: boolean
         number:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
         size:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
         totalElements:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
         totalPages:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
       required:
         - content
         - first
@@ -292,36 +435,30 @@ components:
         - size
         - totalElements
         - totalPages
+    PublicApiDatasetAttributesResponse:
       type: object
-    PublicApiDatasetsResponse:
       properties:
         content:
-          items:
-            $ref: '#/components/schemas/DatasetsContentDTO'
-          nullable: false
           type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/DatasetAttributeContentDTO'
         first:
-          nullable: false
           type: boolean
         last:
-          nullable: false
           type: boolean
         number:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
         size:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
         totalElements:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
         totalPages:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
       required:
         - content
         - first
@@ -330,48 +467,136 @@ components:
         - size
         - totalElements
         - totalPages
+    PublicApiDatasetResponsibilitiesResponse:
       type: object
+      properties:
+        content:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/DatasetResponsibilityContentDTO'
+        first:
+          type: boolean
+        last:
+          type: boolean
+        number:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int32
+        totalPages:
+          type: integer
+          format: int32
+      required:
+        - content
+        - first
+        - last
+        - number
+        - size
+        - totalElements
+        - totalPages
+    PublicApiDatasetRolesResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/DatasetRoleContentDTO'
+        first:
+          type: boolean
+        last:
+          type: boolean
+        number:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int32
+        totalPages:
+          type: integer
+          format: int32
+      required:
+        - content
+        - first
+        - last
+        - number
+        - size
+        - totalElements
+        - totalPages
+    PublicApiDatasetsResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/DatasetsContentDTO'
+        first:
+          type: boolean
+        last:
+          type: boolean
+        number:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int32
+        totalPages:
+          type: integer
+          format: int32
+      required:
+        - content
+        - first
+        - last
+        - number
+        - size
+        - totalElements
+        - totalPages
     PublicApiScanDefinitionSlim:
+      type: object
       properties:
         id:
-          nullable: false
           type: string
         name:
-          nullable: false
           type: string
       required:
         - id
         - name
-      type: object
     PublicApiScanLogsResponse:
+      type: object
       properties:
         content:
-          items:
-            $ref: '#/components/schemas/LogsContentDTO'
-          nullable: false
           type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/LogsContentDTO'
         first:
-          nullable: false
           type: boolean
         last:
-          nullable: false
           type: boolean
         number:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
         size:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
         totalElements:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
         totalPages:
-          format: int32
-          nullable: false
           type: integer
+          format: int32
       required:
         - content
         - first
@@ -380,57 +605,184 @@ components:
         - size
         - totalElements
         - totalPages
-      type: object
     PublicApiScanStatusResponse:
+      type: object
       properties:
         agentId:
           type: string
         checks:
-          items:
-            $ref: '#/components/schemas/PublicApiCheckSlimDTO'
           type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/PublicApiCheckSlimDTO'
         cloudUrl:
-          nullable: false
           type: string
         created:
-          nullable: false
           type: string
         ended:
           type: string
         errors:
-          format: int32
           type: integer
+          format: int32
         failures:
-          format: int32
           type: integer
+          format: int32
         id:
-          nullable: false
           type: string
         scanDefinition:
+          type: object
           $ref: '#/components/schemas/PublicApiScanDefinitionSlim'
         scanTime:
           type: string
         started:
           type: string
         state:
+          type: object
           $ref: '#/components/schemas/ScanStateDTO'
         submitted:
           type: string
         warnings:
-          format: int32
           type: integer
+          format: int32
       required:
         - cloudUrl
         - created
         - id
         - state
-      type: object
     PublicApiTestLoginResponse:
+      type: object
       properties:
         organisationName:
           type: string
+    PublicApiUpdateDatasetDTO:
       type: object
+      properties:
+        attributes:
+          type: object
+          $ref: '#/components/schemas/MapOfStringTo_object'
+        name:
+          type: string
+        owners:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/PublicApiUpdateDatasetOwnerRequestDTO'
+    PublicApiUpdateDatasetOwnerRequestDTO:
+      type: object
+      properties:
+        type:
+          type: object
+          $ref: '#/components/schemas/DatasetOwnerTypeDTO'
+        userGroupId:
+          type: string
+        userId:
+          type: string
+      required:
+        - type
+    PublicApiUpdateDatasetResponsibilitiesRequestDTO:
+      type: object
+      properties:
+        responsibilities:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/DatasetResponsibilityContentRequestDTO'
+      required:
+        - responsibilities
+    PublicApiUpdateDatasetResponsibilitiesResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/DatasetResponsibilityContentDTO'
+      required:
+        - content
+    PublicApiUpdateIncidentDTO:
+      type: object
+      properties:
+        description:
+          type: string
+        severity:
+          type: object
+          $ref: '#/components/schemas/IncidentSeverityDTO'
+        status:
+          type: object
+          $ref: '#/components/schemas/IncidentStatusDTO'
+        title:
+          type: string
+    PublicApiUserGroupsResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/UserGroupContentDTO'
+        first:
+          type: boolean
+        last:
+          type: boolean
+        number:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int32
+        totalPages:
+          type: integer
+          format: int32
+      required:
+        - content
+        - first
+        - last
+        - number
+        - size
+        - totalElements
+        - totalPages
+    PublicApiUsersResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/UserContentDTO'
+        first:
+          type: boolean
+        last:
+          type: boolean
+        number:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int32
+        totalPages:
+          type: integer
+          format: int32
+      required:
+        - content
+        - first
+        - last
+        - number
+        - size
+        - totalElements
+        - totalPages
+    ResponsibilityTypeDTO:
+      type: string
+      enum:
+        - user
+        - userGroup
     ScanStateDTO:
+      type: string
       enum:
         - queuing
         - executing
@@ -443,7 +795,50 @@ components:
         - completedWithFailures
         - completedWithWarnings
         - completed
-      type: string
+    UserContentDTO:
+      type: object
+      properties:
+        email:
+          type: string
+        firstName:
+          type: string
+        fullName:
+          type: string
+        lastName:
+          type: string
+        userId:
+          type: string
+      required:
+        - email
+        - userId
+    UserGroupContentBasicDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        userGroupId:
+          type: string
+      required:
+        - name
+        - userGroupId
+    UserGroupContentDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        userGroupId:
+          type: string
+        users:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/UserContentDTO'
+      required:
+        - name
+        - userGroupId
+        - users
+    _object:
+      type: object
   securitySchemes:
     basicAuthApiKey:
       scheme: basic
@@ -463,7 +858,7 @@ info:
     ```\n"
   title: Soda Cloud API
   version: v1
-openapi: 3.0.1
+openapi: 3.1.0
 paths:
   /api/v1/checks:
     get:
@@ -472,13 +867,17 @@ paths:
 
         This GET is a paginated query that uses the following parameters to request a specific details:
 
-        - `size`: Supply an integer value between 10 and 100, inclusive. The default value is 10.
+        - `size`: Supply an integer value between 10 and 1000, inclusive. The default value is 10.
 
         - `page`: Supply an integer value. The default value is 0.
 
         - `datasetID`: Optionally, use this parameter to collect only the information for checks associated with a specific dataset. Find the `datasetID` in the URL of the dataset page in Soda Cloud.
 
         If not specified, the query gathers information for all checks in the account and sorts the results by check name in ascending order.
+
+        ## Authorization
+
+        Only Soda Cloud Admins and users with the permission to act upon the checks included in the query may execute this query. See [Soda Cloud documentation](https://go.soda.io/roles ) for more information.
 
         ## Authentication
 
@@ -488,7 +887,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See Soda Cloud roles and rights for more information.
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -506,58 +905,65 @@ paths:
         - in: query
           name: page
           schema:
-            format: int32
             type: integer
+            format: int32
         - in: query
           name: size
           schema:
-            format: int32
             type: integer
+            format: int32
       responses:
         "400":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Bad request
         "401":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Not found
         "500":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Internal server error
         "200":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/PublicApiChecksResponse'
           description: Successful response
         "429":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: []
+        - basicAuthApiKey: [ ]
       summary: Check information
       tags:
         - Checks
@@ -568,13 +974,17 @@ paths:
 
         This GET is a paginated query that uses the following parameters to request a specific details:
 
-        - `size`: Supply an integer value between 10 and 100, inclusive. The default value is 10.
+        - `size`: Supply an integer value between 10 and 1000, inclusive. The default value is 10.
 
         - `page`: Supply an integer value. The default value is 0.
 
         - `from`: Optionally, use this parameter to collect only the information for datasets that have been updated after a particular point in time.  Supply an ISO8601 timestamp value. Example: `2023-12-31T10:15:30+01:00`
 
         If not specified, the query gathers information for all datasets in the account and sorts the results by dataset name in ascending order.
+
+        ## Authorization
+
+        Only Soda Cloud Admins and users with the permission to act upon the datasets included in the query may execute this query. See [Soda Cloud documentation](https://go.soda.io/roles ) for more information.
 
         ## Authentication
 
@@ -584,7 +994,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See Soda Cloud roles and rights for more information.
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -602,61 +1012,612 @@ paths:
         - in: query
           name: page
           schema:
-            format: int32
             type: integer
+            format: int32
         - in: query
           name: size
           schema:
-            format: int32
             type: integer
+            format: int32
       responses:
         "400":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Bad request
         "401":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Not found
         "500":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Internal server error
         "200":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/PublicApiDatasetsResponse'
           description: Successful response
         "429":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: []
+        - basicAuthApiKey: [ ]
       summary: Dataset information
       tags:
         - Datasets
+  /api/v1/datasets/attributes:
+    get:
+      description: |-
+        Work in progress
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
+        ## Tags
+
+        `Attributes`
+
+        ## Rate limiting
+
+        60 requests/60 seconds
+      operationId: GET/api/v1/datasets/attributes
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: size
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/PublicApiDatasetAttributesResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: [ ]
+      summary: Get dataset attributes
+      tags:
+        - Attributes
+  /api/v1/datasets/roles:
+    get:
+      description: |-
+        Work in progress
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
+        ## Tags
+
+        `Datasets`
+
+        ## Rate limiting
+
+        60 requests/60 seconds
+      operationId: GET/api/v1/datasets/roles
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: size
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/PublicApiDatasetRolesResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: [ ]
+      summary: List dataset roles
+      tags:
+        - Datasets
+  /api/v1/datasets/{datasetId}:
+    post:
+      description: |-
+        Work in progress
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
+        ## Tags
+
+        `Datasets`
+
+        ## Rate limiting
+
+        10 requests/60 seconds
+      operationId: "POST/api/v1/datasets/{datasetId}"
+      parameters:
+        - in: path
+          name: datasetId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/PublicApiUpdateDatasetDTO'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/DatasetsContentDTO'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: [ ]
+      summary: Update dataset
+      tags:
+        - Datasets
+  /api/v1/datasets/{datasetId}/responsibilities:
+    get:
+      description: |-
+        Work in progress
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
+        ## Tags
+
+        `Responsibilities`
+
+        ## Rate limiting
+
+        60 requests/60 seconds
+      operationId: "GET/api/v1/datasets/{datasetId}/responsibilities"
+      parameters:
+        - in: path
+          name: datasetId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: page
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: size
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/PublicApiDatasetResponsibilitiesResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: [ ]
+      summary: List dataset responsibilities
+      tags:
+        - Responsibilities
+    post:
+      description: |-
+        Work in progress
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
+        ## Tags
+
+        `Responsibilities`
+
+        ## Rate limiting
+
+        10 requests/60 seconds
+      operationId: "POST/api/v1/datasets/{datasetId}/responsibilities"
+      parameters:
+        - in: path
+          name: datasetId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/PublicApiUpdateDatasetResponsibilitiesRequestDTO'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/PublicApiUpdateDatasetResponsibilitiesResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: [ ]
+      summary: Update dataset responsibilities
+      tags:
+        - Responsibilities
+  /api/v1/incidents/{incidentId}:
+    post:
+      description: |-
+        Work in progress
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
+        ## Tags
+
+        `Incidents`
+
+        ## Rate limiting
+
+        10 requests/60 seconds
+      operationId: "POST/api/v1/incidents/{incidentId}"
+      parameters:
+        - in: path
+          name: incidentId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/PublicApiUpdateIncidentDTO'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/IncidentContentDTO'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: [ ]
+      summary: Update incident
+      tags:
+        - Incidents
   /api/v1/scans:
     post:
       description: |-
@@ -692,45 +1653,49 @@ paths:
         content:
           application/x-www-form-urlencoded:
             schema:
+              type: object
               properties:
                 dataTimestamp:
                   type: string
                 scanDefinition:
-                  nullable: false
                   type: string
               required:
                 - scanDefinition
-              type: object
         required: true
       responses:
         "400":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Bad request
         "401":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Not found
         "500":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Internal server error
         "201":
@@ -746,10 +1711,11 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: []
+        - basicAuthApiKey: [ ]
       summary: Trigger a scan
       tags:
         - Scans
@@ -797,30 +1763,35 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Bad request
         "401":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Not found
         "500":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Internal server error
         "200":
@@ -833,10 +1804,11 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: []
+        - basicAuthApiKey: [ ]
       summary: Cancel a scan
       tags:
         - Scans
@@ -905,46 +1877,53 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Bad request
         "401":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Not found
         "500":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Internal server error
         "200":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/PublicApiScanStatusResponse'
           description: Successful response
         "429":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: []
+        - basicAuthApiKey: [ ]
       summary: Get scan status
       tags:
         - Scans
@@ -992,58 +1971,65 @@ paths:
         - in: query
           name: page
           schema:
-            format: int32
             type: integer
+            format: int32
         - in: query
           name: size
           schema:
-            format: int32
             type: integer
+            format: int32
       responses:
         "400":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Bad request
         "401":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Not found
         "500":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Internal server error
         "200":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/PublicApiScanLogsResponse'
           description: Successful response
         "429":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: []
+        - basicAuthApiKey: [ ]
       summary: Get scan logs
       tags:
         - Scans
@@ -1075,60 +2061,261 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Bad request
         "401":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Not found
         "500":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Internal server error
         "200":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/PublicApiTestLoginResponse'
           description: Successful response
         "429":
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: []
+        - basicAuthApiKey: [ ]
       summary: Test connection
       tags:
         - Utility
+  /api/v1/userGroups:
+    get:
+      description: |-
+        Work in progress
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
+        ## Tags
+
+        `Users`
+
+        ## Rate limiting
+
+        60 requests/60 seconds
+      operationId: GET/api/v1/userGroups
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: search
+          schema:
+            type: string
+        - in: query
+          name: size
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/PublicApiUserGroupsResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: [ ]
+      summary: Get user groups
+      tags:
+        - Users
+  /api/v1/users:
+    get:
+      description: |-
+        Work in progress
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
+        ## Tags
+
+        `Users`
+
+        ## Rate limiting
+
+        60 requests/60 seconds
+      operationId: GET/api/v1/users
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: search
+          schema:
+            type: string
+        - in: query
+          name: size
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/PublicApiUsersResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+        - basicAuthApiKey: [ ]
+      summary: Get users
+      tags:
+        - Users
 servers:
   - description: Cloud EU
     url: https://cloud.soda.io
   - description: Cloud US
     url: https://cloud.us.soda.io
 tags:
+  - description: Soda Cloud API Attributes Endpoints
+    name: Attributes
   - description: Soda Cloud API Check Endpoints
     name: Checks
   - description: Soda Cloud API Dataset Endpoints
     name: Datasets
+  - description: Soda Cloud API Incidents Endpoints
+    name: Incidents
+  - description: Soda Cloud API Responsibilities Endpoints
+    name: Responsibilities
   - description: Soda Cloud API Scan Endpoints
     name: Scans
+  - description: Soda Cloud API Users Endpoints
+    name: Users
   - description: Soda Cloud API Utility Endpoints
     name: Utility
