@@ -97,7 +97,7 @@ Create **no-code checks** for data quality directly in the Soda Cloud user inter
 
 * You, or an Admin on your Soda Cloud account, has [deployed a Soda Agent]({% link soda-agent/deploy.md %}) version 0.8.52 or greater, and connected it to your Soda Cloud account.
 * You, or an Admin on your Soda Cloud account, has [added a new datasource]({% link soda-agent/deploy.md %}#add-a-new-data-source) via the Soda Agent in your Soda Cloud account *and* configured the data source to [discover the datasets]({% link soda-cl/profile.md %}#add-dataset-discovery) in the data source for which you want to write no-code checks. (Soda must have access to dataset names and column names to present those values in dropdown menus during no-code check creation.)
-* You must have permission to edit the dataset as an Admin, Manager, or Editor; see [Manage roles and permissions]({% link soda-cloud/roles-and-rights.md %}).
+* You must have permission to edit the dataset; see [Manage dataset roles]({% link soda-cloud/roles-dataset.md %}).
 
 ### Create a new check
 
@@ -110,7 +110,7 @@ SodaCL includes over 25 built-in metrics that you can use to write checks, a sub
   </tr>
 </table>
 
-1. As an Admin, or Manager or Editor of a dataset to which you wish to add checks, navigate to the dataset, then click **Add Check**. You can only create a check via the no-code interface for datasets in data sources connected via a Soda Agent. 
+1. As a user with [permission]({% link soda-cloud/roles-dataset.md %}#dataset-roles-and-permissions) to do so of a dataset to which you wish to add checks, navigate to the dataset, then click **Add Check**. You can only create a check via the no-code interface for datasets in data sources connected via a Soda Agent. 
 2. Select the type of check you wish to create, then complete the form to create the check. Refer to table below for guidance on the values to enter.
 3. Optionally, **Test** your check, then click **Propose check** to initiate a **[Discussion]({% link soda/glossary.md %}#discussion)** with colleagues. Soda executes the check during the next scan according to the schedule you selected, or whenever a Soda Cloud user runs the schedule scan manually. <br />Be aware that a schema check requires a minimum of two measurements before it yields a useful check result because it needs at least one historical measurement of the existing schema against which to compare a new measurement to look for changes. Thus, the first time Soda executes this check, the result is `[NOT EVALUATED]`, indicated by a gray, question mark status icon.
 4. Click **Add Check** to include the new, no-code check in the next scheduled scan of the dataset. Note that a user with Viewer permissions cannot add a check, they can only propose checks.
@@ -160,7 +160,7 @@ By default, alert notifications for your no-code check go to the **Dataset Owner
 
 ### Edit an existing check
 
-1. As an Admin, or Manager or Editor of a dataset in which the no-code check exists, navigate to the dataset.
+1. As a user with permission to do so, navigate to the dataset in which the no-code check exists.
 2. To the right of the check you wish to edit, click the stacked dots, then select **Edit Check**. You can only edit a check via the no-code interface if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
 3. Adjust the check as needed, test your check, then save. Soda executes the check during the next scan according to the scan definition you selected.
 4. Optionally, you can execute your check immediately. Locate the check you just edited and click the stacked dots, then select **Execute Check**. Soda executes *only* your check.

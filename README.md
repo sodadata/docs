@@ -104,6 +104,8 @@ Soda uses the [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGu
 - Include diagrams.
 - Do not use "Note:" callout boxes. Exception: banner message to indicate deprecated tools or features. 
 - Use \_includes rather than repeat or re-explain something. Refer to <a href="https://jekyllrb.com/docs/includes/" target="_blank">Jekyll Includes</a>.
+- Avoid writing "Soda recommends..." as it has potential legal ramifications. Instead, use something like, "Best practice recommends..."
+- Do not refer to Soda, the product, as "we". If the software is doing something, then refer to it as Soda. For example, "Soda collect 100 failed row samples by default." not, "We collect 100 failed row samples by default."
 
 ### Formatting
 - Use **bold** for the first time you mention a product name or feature in a document or to identify a **Tip:** for using a feature. Otherwise, use it sparingly. Too much bold font renders the format meaningless.

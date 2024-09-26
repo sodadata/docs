@@ -8,7 +8,7 @@ parent: Organize, alert, investigate
 # Add check attributes
 *Last modified on {% last_modified_at %}*
 
-As a Soda Cloud Admin user, you can define **check attributes** that your team can apply to checks when they write them.
+As user with [permission]({% link soda-cloud/roles-global.md %}#global-roles-and-permissions) to do so, you can define **check attributes** that your team can apply to checks when they write them.
 {% include code-header.html %}
 ```yaml
 checks for dim_product:
@@ -38,11 +38,11 @@ Use attributes to organize your checks and alert notifications in Soda Cloud.
 
 ## Prerequisites
 
-* To *define* new check attributes, you must have [Admin permissions]({% link soda-cloud/roles-and-rights.md %}) on your Soda Cloud account. Any Soda Cloud user or Soda Library user can *apply* existing attributes to new or existing checks.
+* To *define* new check attributes, you must have the permission to do so on your Soda Cloud account. Any Soda Cloud user or Soda Library user can *apply* existing attributes to new or existing checks.
 
 ## Define a check attribute
 
-Note that you can only define or edit check attributes as an [Admin]({% link soda-cloud/roles-and-rights.md %}) in Soda Cloud. You cannot define new attributes in Soda Library. Once defined in Soda Cloud, any Soda Cloud or Soda Library user can [apply the attribute](#apply-an-attribute-to-one-or-more-checks) to new or existing checks.
+Note that you can only define or edit check attributes as a user with [permission]({% link soda-cloud/roles-global.md %}) to do so in Soda Cloud. You cannot define new attributes in Soda Library. Once defined in Soda Cloud, any Soda Cloud or Soda Library user can [apply the attribute](#apply-an-attribute-to-one-or-more-checks) to new or existing checks.
 
 1. In your Soda Cloud account, navigate to **your avatar** > **Attributes** > **New Attribute**. 
 2. Follow the guided steps to create the new attribute. Use the details below for insight into the values to enter in the fields in the guided steps. 

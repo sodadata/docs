@@ -28,7 +28,7 @@ By default, Soda Cloud establishes two notification rules on your Soda Cloud acc
 | Send all check alerts to the Check Owner | Soda Cloud sends all check results that fail or warn to the Soda Cloud user who created or owns an individual check. |
 | Send all check alerts to the Dataset Owner | Soda Cloud sends all check results that fail or warn to the Soda Cloud user who created or owns the dataset to which the checks are associated. |
 
-Refer to [Data source, dataset, agreement, and check owners]({% link soda-cloud/roles-and-rights.md %}#data-source-dataset-agreement-and-check-owners) for details on resource ownership.
+Refer to [Data source, dataset, agreement, and check owners]({% link soda-cloud/roles-global.md %}#data-source-dataset-agreement-and-check-owners) for details on resource ownership.
 
 ## Set new rules
 
