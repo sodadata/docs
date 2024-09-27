@@ -261,7 +261,7 @@ Returns a bool representing whether any errors are in the logs from the scan.
 def get_scan_results(self) -> dict
 ```
 Returns a dictionary containing the results of the scan.
-The scan results dictionary with the following keys:
+The scan results dictionary has the following keys:
 ```
 "definitionName"
 "defaultDataSource"
