@@ -488,7 +488,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+        Only Soda Cloud Admins may execute this query. See Soda Cloud roles and rights for more information.
 
         ## Tags
 
@@ -584,7 +584,7 @@ paths:
 
         ## Authorization
 
-        Only Soda Cloud Admins may execute this query. See [Soda Cloud roles and rights](https://docs.soda.io/soda-cloud/roles-and-rights.html) for more information.
+        Only Soda Cloud Admins may execute this query. See Soda Cloud roles and rights for more information.
 
         ## Tags
 

@@ -111,10 +111,10 @@
     page: soda-cloud/organize-datasets.md
   - subtitle: Create and track incidents
     page: soda-cloud/incidents.md
-  - subtitle: Manage account roles
-    page: soda-cloud/roles-and-rights.md
-  - subtitle: Manage resource permissions
-    page: soda-cloud/roles-resources.md
+  - subtitle: Manage global roles and user groups
+    page: soda-cloud/roles-global.md
+  - subtitle: Manage dataset roles
+    page: soda-cloud/roles-dataset.md
 
 - title: Integrate Soda
   page: soda/integrate-alation.md
@@ -278,8 +278,6 @@
   subcategories:
   - subtitle: Glossary
     page: soda/glossary.md
-  - subtitle: Active checks
-    page: soda/active-check.md
   - subtitle: Soda product overview
     page: soda/product-overview.md
   - subtitle: How Soda works
@@ -288,6 +286,8 @@
     page: soda-agent/basics.md
   - subtitle: Soda architecture
     page: soda-cloud/soda-cloud-architecture.md
+  - subtitle: Active checks
+    page: soda/active-check.md
   - subtitle: Data security and privacy
     page: soda/data-privacy.md
   - subtitle: Soda Library usage statistics
@@ -309,6 +309,8 @@
   subcategories:
     - subtitle: Soda products
       page: release-notes/all.md
+    - subtitle: Release states
+      page: release-notes/states.md
     - subtitle: Soda Library
       page: release-notes/soda-library.md
     - subtitle: Soda Agent

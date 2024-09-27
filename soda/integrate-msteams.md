@@ -23,7 +23,7 @@ Configure Soda Cloud to connect your account to MS Teams so that you can:
   If you have previously set up a Soda integration with an Office 365 connector, follow the instructions for <a href="https://support.microsoft.com/en-us/office/creating-a-workflow-from-a-channel-in-teams-242eb8f2-f328-45be-b81f-9817b51a5f0e" target="_blank">Creating a workflow from a channel in Teams</a>, then update the integration URL in your existing Soda <> MS Teams integration in Soda Cloud.   
 </div>
 
-1. As an [Admin user]({% link soda-cloud/roles-and-rights.md %}), log in to your Soda Cloud account, navigate to **your avatar** > **Organization Settings**, then select the **Integrations** tab.
+1. As a user with permission to do so, log in to your Soda Cloud account, navigate to **your avatar** > **Organization Settings**, then select the **Integrations** tab.
 2. Click the **+** at the upper right of the table of integrations to add a new integration. 
 3. In the **Add Integration** dialog box, select **Microsoft Teams**.
 4. In the first step of the guided integration workflow, follow the instructions to navigate to your MS Teams account to create a Workflow; see Microsoft's documentation for <a href="https://support.microsoft.com/en-us/office/creating-a-workflow-from-a-channel-in-teams-242eb8f2-f328-45be-b81f-9817b51a5f0e" target="_blank">Creating a workflow from a channel in Teams</a>. Use the Workflow template to **Post to a channel when a webhook request is received**.
@@ -51,6 +51,17 @@ Use the **Alert Notification** scope to enable Soda Cloud to send alert notifica
 Use the **Incident** scope to notify your team when a new incident has been created in Soda Cloud. With such a scope, Soda Cloud displays an external link to the MS Teams channel in the **Incident Details**. Soda Cloud sends all incident events to only one channel in MS Teams. As such, you must provide a separate link in the **Channel URL** field in the **Define Scope** tab. For example, `https://teams.microsoft.com/mychannel`. To obtain the channel link in MS Teams, right-click on the channel name in the overview sidebar. Refer to [Incidents]({% link soda-cloud/incidents.md %}) for more details about using incidents in Soda Cloud.
 
 Use the **Discussions** scope to post to a channel when a user creates or modifies a Soda Cloud discussion. Soda Cloud sends all incident events to only one channel in MS Teams. As such, you must provide a separate link in the **Channel URL** field in the **Define Scope** tab. For example, `https://teams.microsoft.com/mychannel`. To obtain the channel link in MS Teams, right-click on the channel name in the overview sidebar. Refer to [Begin a discussion and propose checks]({% link soda/quick-start-end-user.md %}#begin-a-discussion-and-propose-checks) for more details about using incidents in Soda Cloud.
+
+### Troubleshoot
+
+**Problem:** You encounter an error that reads, "Error encountered while rendering this message."
+
+**Solution:** A fix is <a href="https://www.anyviewer.com/kb/microsoft-teams-error-encountered-while-rendering-this-message-2996-ac.html" target="_blank">documented</a>, the short version of which is as follows. 
+1. Restart MS Teams.
+2. Clear your cache and cookies.
+3. If you have not already done so, update to the latest version of MS Teams.
+
+<br />
 
 ## Go further
 

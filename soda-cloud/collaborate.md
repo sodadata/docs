@@ -68,7 +68,7 @@ Invite the members of your team to join you in your work to monitor data quality
 
 In your Soda Cloud account, navigate to **your avatar** > **Invite Team Members** and fill in the blanks.
 
-When your team members receive the invitation email, they can click the link in the email to create their own login credentials to access your Soda Cloud account directly. Refer to [Default roles and groups]({% link soda-cloud/roles-and-rights.md %}#default-roles-and-permissions) to learn more about the default access rights Soda Cloud assigns to new users.
+When your team members receive the invitation email, they can click the link in the email to create their own login credentials to access your Soda Cloud account directly. Refer to [Manage global roles, user groups, and settings]({% link soda-cloud/roles-global.md %}) to learn more about the default access rights Soda Cloud assigns to new users.
 
 Note that if your organization uses a single sign-on (SSO) identity provider to access Soda Cloud, you cannot invite team members in Soda Cloud. Instead, contact your IT Admin to request access to Soda Cloud using your SSO. See also, [Single Sign-on with Soda Cloud]({% link soda-cloud/sso.md %}).
 

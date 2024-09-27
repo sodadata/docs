@@ -50,14 +50,14 @@ checks for dim_customer:
 
 To send failed rows samples to Soda Cloud, samples collection must be enabled in Soda Cloud. 
 
-As a Soda Cloud Admin, navigate to **your avatar** > **Organization Settings**, then check the box to **Allow Soda to collect sample data and failed row samples for all datasets**. 
+As a user with [permission]({% link soda-cloud/roles-global.md %}#global-roles-and-permissions) to do so, navigate to **your avatar** > **Organization Settings**, then check the box to **Allow Soda to collect sample data and failed row samples for all datasets**. 
 
 
 ## Define failed rows checks
 
 In the context of [SodaCL check types]({% link soda-cl/metrics-and-checks.md %}#check-types), failed row checks are user-defined. This check is limited in its syntax variation, but you can customize your expression or query as much as you like.
 
-When a failed rows check results in a `warn` or `fail` Soda collects up to 100 failed row samples by default. You can decrease or increase the volume of sample rows using the `samples limit` parameter; see [Set a samples limit]({% link soda-cl/failed-row-samples.md %}#set-a-sample-limit). Note that failed rows checks that use a SQL query support up to a maximum of 10,000 samples.
+When a failed rows check results in a `warn` or `fail` Soda collects up to 100 failed row samples by default. You can decrease or increase the volume of sample rows using the `samples limit` parameter; see [Set a samples limit]({% link soda-cl/failed-row-samples.md %}#set-a-sample-limit).
 
 The example below uses <a href="https://www.essentialsql.com/introduction-common-table-expressions-ctes/" target="_blank">common table expression (CTE)</a> to define the `fail condition` that any rows in the `dim_customer` dataset must meet in order to qualify as failed rows, during a scan, get sent to Soda Cloud. Soda sends any rows which contain the value 2 in the `total_children` column and which contain a value greater than or equal to 3 in the `number_cars_owned` column to Soda Cloud as failed row samples, up to a default volume of 100 rows. The check also uses the `name` configuration key to customize a name for the check so that it displays in a more readable form in Soda Cloud; see image below.
 {% include code-header.html %}

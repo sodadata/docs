@@ -44,9 +44,9 @@ Last modified on {% last_modified_at %}
 
 ## Scan error with Soda Dask and Pandas
 
-**Problem:** You encounter errors when trying to install `soda-dask-pandas` in an environment that uses Python 3.11. This may manifest as an issue with dependencies or as an error that reads, `Pre-scan validation failed, see logs for details.`
+**Problem:** You encounter errors when trying to install `soda-pandas-dask` in an environment that uses Python 3.11. This may manifest as an issue with dependencies or as an error that reads, `Pre-scan validation failed, see logs for details.`
 
-**Workaround:** Uninstall the `soda-dask-pandas` package, then downgrade the version of Python your environment uses to Python 3.9. Install the `soda-dask-pandas` package again. 
+**Workaround:** Uninstall the `soda-pandas-dask` package, then downgrade the version of Python your environment uses to Python 3.9. Install the `soda-pandas-dask` package again. 
 
 <br />
 

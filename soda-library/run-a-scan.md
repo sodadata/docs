@@ -56,7 +56,7 @@ As a step in the **Get started roadmap**, this guide offers instructions to sche
 When you create a no-code check in Soda Cloud, one of the required fields asks that you associate the check with an existing scan definition, or that you create a new scan definition.
 
 If you wish to change a no-code check's existing scan definition:
-1. As an Admin, or Manager or Editor of a dataset in which the no-code check exists, navigate to the dataset.
+1. As a user with permission to do so, navigate to the dataset in which the no-code check exists.
 2. From the dataset's page, locate the check you wish to adjust, and click the stacked dots at right, then select **Edit Check**. You can only edit a check via the no-code interface if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
 3. Adjust the value in the **Add to Scan Definition** field as needed, then save. Soda executes the check during the next scan according to the definition you selected.
 
@@ -108,7 +108,7 @@ If you wish to schedule a *new* scan to execute the checks in an agreement more 
 
 If you wish to run a scan immediately to see the scan results for a no-code check, you can execute an ad hoc scan for a single check.
 
-1. As an Admin, or Manager or Editor of a dataset with the no-code check you wish to execute, navigate to the dataset.
+1. As a user with the permission to do so, navigate to the dataset associated with the no-code check you wish to execute.
 2. In the table of checks, locate the check you wish to execute and click the stacked dots, then select **Execute Check**. Alternatively, click the check and in the check's page, click **Execute**. You can only execute an individual check if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
 3. Soda executes *only* your check.
 
@@ -415,7 +415,7 @@ scan.get_all_checks_text()
 
 You can programmatically initiate a scan your team defined in Soda Cloud using the Soda Cloud API. 
 
-If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) permissions in your Soda Cloud account, you can use the API to:
+If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have the [permission]({% link soda-cloud/roles-global.md %}) to do so in your Soda Cloud account, you can use the API to:
 * retrieve information about checks and datasets in your Soda Cloud account 
 * execute scans
 * retrieve information about the state of a scan during execution
@@ -434,7 +434,7 @@ Access the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) document
 
 You can initiate a scan your team defined in Soda Cloud using the Soda Library CLI.
 
-If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have [Admin]({% link soda-cloud/roles-and-rights.md %}) permissions in your Soda Cloud account, you can use Soda Library CLI to: 
+If you have defined a [scan definition]({% link soda/glossary.md %}#scan-definition) in Soda Cloud, and the scan definition executes on a schedule via a self-hosted or Soda-hosted agent, and you have the [permission]({% link soda-cloud/roles-global.md %}) to do so in your Soda Cloud account, you can use Soda Library CLI to: 
 * execute a remote scan and synchronously receive logs of the scan execution result
 * execute a remote scan and asynchronously retrieve status and logs of the scan during, and after its execution
 
