@@ -13,6 +13,7 @@ parent: Get started
 class Scan()
 ```
 The Scan class is used to programmatically define and execute data quality scans.
+See the [Invoke Soda Library page]({% link soda-library/programmatic.md %} for an example of how the Soda Library Python API is used in a programmatic scan.
 
 ## Methods
 ```python

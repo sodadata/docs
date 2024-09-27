@@ -181,6 +181,7 @@ scan.has_checks_warn_or_fail()
 scan.get_checks_warn_or_fail_text()
 scan.get_all_checks_text()
 ```
+See the [Python API Reference page]({% link soda-library/python_api.md %} for detailed documentation of the `Scan` class in Soda Library.
 
 ## Tips and best practices
 
