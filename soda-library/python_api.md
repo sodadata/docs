@@ -37,7 +37,7 @@ Executes the scan. Returns an integer exit code:
 | 4 | Soda encountered a runtime issue, but was unable to submit any results to Soda Cloud |
 
 <br/><br/>
-### Required scan settings
+### Required Scan Settings
 ```python
 def set_data_source_name(self, data_source_name: str)
 ```
