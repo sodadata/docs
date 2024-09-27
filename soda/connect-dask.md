@@ -114,7 +114,7 @@ scan.set_verbose(True)
 scan.execute()
 ```
 
-The `dask.config.set({"dataframe.convert-string": False})` line is needed due to upgrading `dask>=2023.7.1`.<br /><a href= https://docs.dask.org/en/stable/changelog.html#v2023-7-1>More info here.</a><br /><br />
+The `dask.config.set({"dataframe.convert-string": False})` line is needed due to upgrading `dask>=2023.7.1`.<br /><a href="https://docs.dask.org/en/stable/changelog.html#v2023-7-1">More info here.</a><br /><br />
 <br />
 
 ### Load JSON file into Dataframe
