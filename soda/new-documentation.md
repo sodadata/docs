@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### September 30, 2024
+* Added [Soda Library Python API reference]({% link soda-library/python_api.md %}) documentation.
+
 #### September 23, 2024
 * Compiled and updated [failed row samples]({% link soda-cl/failed-row-samples.md %}) documentation, including:
   * the option to use `scan context` in a CustomSampler to read/write data to/from a scan

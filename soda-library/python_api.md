@@ -1,277 +1,301 @@
 ---
 layout: default
-title: Soda Library Python API Reference
-description: A Python reference for the Soda Scan class and its methods
-parent: Get started
+title: Soda Library Python API reference
+description: Access Python reference content for the Soda Scan class and its methods.
+parent: Run scans and view results
 ---
 
-# Soda Library Python API Reference
+# Soda Library Python API reference
 *Last modified on {% last_modified_at %}*
 
-[Required Scan Settings](#required-scan-settings)<br />
-[Adding Configurations to the Scan](#adding-configurations-to-the-scan)<br />
-[Adding Checks to the Scan](#adding-checks-to-the-scan)<br />
-[Adding Local Data to the Scan](#adding-local-data-to-the-scan)<br />
-[Optional Scan Settings](#optional-scan-settings)<br />
-[Handling Scan Results](#handling-scan-results)<br />
-[Methods for Remote Scans (beta)](#methods-for-remote-scans-beta)<br />
+Use the Python API to programmatically execute Soda scans. The following content offers a reference for the Soda scan class and its methods. 
+
+Refer to [Program a scan]({% link soda-library/run-a-scan.md %}#scan-for-data-quality), Program a scan tab, for instructional details and an example of a complete file.
+
+[Classes](#classes)<br />
+[Methods](#methods)<br />
+[Provide required scan settings](#provide-required-scan-settings)<br />
+[Add configurations to a scan](#add-configurations-to-a-scan)<br />
+[Add SodaCL checks to a scan](#add-sodacl-checks-to-a-scan)<br />
+[Add local data to a scan](#add-local-data-to-a-scan)<br />
+[Add optional scan settings](#add-optional-scan-settings)<br />
+[Add configurations to handle scan results](#add-configurations-to-handle-scan-results)<br />
+[Add configurations to handle check results](#add-configurations-to-handle-check-results)<br />
 <br />
 
+
 ## Classes
+
+Use the `Scan` class to programmatically define and execute data quality scans.
+See [Invoke Soda Library]({% link soda-library/programmatic.md %}) for an example of how to use the Soda Library Python API in a programmatic scan.
+
 ```python
 class Scan()
 ```
-The Scan class is used to programmatically define and execute data quality scans.
-See the [Invoke Soda Library page]({% link soda-library/programmatic.md %}) for an example of how the Soda Library Python API is used in a programmatic scan.
 
 ## Methods
+
+Use this method to execute the scan. When executed, Soda returns an integer exit code as per the table that follows.
+
 ```python
 def execute(self) -> int
 ```
-Executes the scan. Returns an integer exit code:
 
-| 0 | all checks passed, all good from both runtime and Soda perspective |
-| 1 | Soda issues a warning on a check(s) |
-| 2 | Soda issues a failure on a check(s) |
-| 3 | Soda encountered a runtime issue, and was able to submit scan results to Soda Cloud |
-| 4 | Soda encountered a runtime issue, but was unable to submit any results to Soda Cloud |
+|Exit code | Description |
+|:-------: | ----------- |
+| 0 | All checks passed. No runtime errors. |
+| 1 | Soda recorded a warn result for one or more checks.  |
+| 2 | Soda recorded a fail result for one or more checks. |
+| 3 | Soda encountered a runtime issue but was able to send check results to Soda Cloud. |
+| 4 | Soda encountered a runtime issue and was unable to send check results to Soda Cloud. |
+
 
 <br/><br/>
-### Required Scan Settings
+
+### Provide required scan settings
+
+Specify the datasource on which Soda executes the checks.
+{% include code-header.html %}
 ```python
 def set_data_source_name(self, data_source_name: str)
 ```
-Specifies which datasource to use for the checks.
-<br/><br/>
+<br/>
 
+Provide the scan definition name if the scan has been defined in Soda Cloud. By providing this value, Soda correlates subsequent scans from the same pipeline. 
+
+To retrieve this value, navigate to the **Scans** page in Soda Cloud, then select the scan definition you wish to execute remotely and copy the scan name, which is the smaller text under the label. For example, weekday_scan_schedule.
+{% include code-header.html %}
 ```python
 def set_scan_definition_name(self, scan_definition_name: str)
 ```
-The scan definition name is required if the scan is connected to Soda Cloud in order to correlate subsequent scans from the same pipeline.
-<br/><br/>
+<br/>
 
-### Adding Configurations to the Scan
+### Add configurations to a scan
 
+Add data source and Soda Cloud connection configurations from a YAML file. `file_path` is a string that points to a configuration file. `~` expands to the user's home directory.
+{% include code-header.html %}
 ```python
 def add_configuration_yaml_file(self, file_path: str)
 ```
-Adds configurations from a YAML file on the given path.
+<br/>
 
-`file_path` is a string pointing to a configuration file. ~ will be expanded to the user home dir.
-<br/><br/>
-
-
+Optionally, add all connection configurations from all matching YAML files in the file path according to your specifications.
+* `path` is a string that is the path to a directory, but you can use it as a path to a configuration file. `~` expands to the user's home directory or the directory in which to search for configuration files.
+* `recursive` requires a boolean value that controls whether Soda scans nested directories. If unspecified, the default value is `true`.
+* `suffixes` is an optional list of strings that you use when recursively scanning directories to load only those files with a specific extension. If unspecified, the default values are `.yml` and `.yaml`.
+{% include code-header.html %}
 ```python
 def add_configuration_yaml_files(self, path: str, recursive: bool | None = True, suffixes: str | None = None)
 ```
-Adds all configurations all YAML files matching the given file path or scanning the given path as a directory.
+<br/>
 
-`path` is a string that typically is the path to a directory, but it can also be a configuration file. ~ will be expanded to the user home dir the directory in which to search for configuration files.
-
-`recursive` is a bool that controls if nested directories also will be scanned.  Default recursive=True.
-
-`suffixes` is an optional list of strings and is used when recursively scanning directories to only load files having a given extension or suffix. Default suffixes=[".yml", ".yaml"]
-<br/><br/>
-
+Optionally, add connection configurations from a YAML-formatted string. 
+* `environment_yaml_str` is a string that represents a configuration and must be YAML-formatted.
+* `file_path` is an optional string that you use to get the location of errors in the logs.
+{% include code-header.html %}
 ```python
 def add_configuration_yaml_str(self, environment_yaml_str: str, file_path: str = "yaml string")
 ```
-Adds configurations from a YAML-formatted string.
+<br/>
 
-`environment_yaml_str` is a string that represents a configuration; must be YAML-formatted.
+### Add SodaCL checks to a scan
 
-`file_path` is an optional string and can be used to get the location of the log/error in the logs.
-<br/><br/>
-
-### Adding Checks to the Scan
-```python
-def add_sodacl_yaml_files(self, path: str, recursive: bool | None = True, suffixes: list[str] | None = None)
-```
-Adds all the files in the given directory to the scan as SodaCL files.
-
-`path` is a string that typically represents a directory, but it can also be a SodaCL file.
-~ will be expanded to the user home dir the directory in which to search for SodaCL files.
-
-`recursive` is a bool that controls if nested directories also will be scanned.  Default recursive=True.
-
-`suffixes` is an optional list of strings and is used when recursive scanning directories to only load files
-having a given extension or suffix. Default suffixes=[".yml", ".yaml"]
-<br/><br/>
-
-
+Add a SodaCL checks YAML file to the scan according to a file path you specify. `file_path` is a string that identifies a checks YAML file.
+{% include code-header.html %}
 ```python
 def add_sodacl_yaml_file(self, file_path: str)
 ```
-Add a SodaCL YAML file to the scan on the given file_path.
+<br/>
 
-`file_path` is a string that represents a SodaCL file.
-<br/><br/>
+Optionally, add all the files in a directory to the scan as SodaCL checks YAML files.
+* `path` is a string that identifies a directory, but you can use it as a path to a configuration file. `~` expands to the user's home directory or the directory in which to search for checks YAML files.
+* `recursive` is an optional boolean value that controls whether Soda scans nested directories. If unspecified, the default value is `true`.
+* `suffixes` is an optional list of strings that you use when recursively scanning directories to load only those files with a specific extension. If unspecified, the default values are `.yml` and `.yaml`.
+{% include code-header.html %}
+```python
+def add_sodacl_yaml_files(self, path: str, recursive: bool | None = True, suffixes: list[str] | None = None)
+```
+<br/>
 
-
+Optionally, add SodaCL checks from a YAML-formatted string. 
+* `sodacl_yaml_str` is a string that represents the SodaCL checks and must be YAML-formatted.
+* `file_path` is an optional string that you use to get the location of errors in the logs.
+{% include code-header.html %}
 ```python
 def add_sodacl_yaml_str(self, sodacl_yaml_str: str, file_name: str | None = None):
 ```
-Add a SodaCL YAML string to the scan.
+<br/>
 
-`sodacl_yaml_str` is a string that represents SodaCL checks; must be YAML-formatted.
-
-`file_path` is an optional string and can be used to get the location of the log/error in the logs.
-<br/><br/>
-
-```python
-def add_template_files(self, path: str)
-```
-Adds all the files in the given directory to the scan as SodaCL template files.
-
-`path` is a string that represents a directory containing SodaCL template files.
-<br/><br/>
-
-
+If you use a [check template]({% link soda-cl/check-template.md %}) for SodaCL checks, add a SodaCL template file to the scan. `file_path` is a string that identifies a SodaCL template file.
+{% include code-header.html %}
 ```python
 def add_template_file(self, file_path: str)
 ```
-Adds a SodaCL template file to the scan.
+<br/>
 
-`file_path` is a string that represents a SodaCL template file.
-<br/><br/>
+If you use multiple [check templates]({% link soda-cl/check-template.md %}) for SodaCL checks, add all the template files in a directory to the scan. `path` is a string that identifies the directory that contains the SodaCL template files.
+{% include code-header.html %}
+```python
+def add_template_files(self, path: str)
+```
+<br/>
 
-### Adding Local Data to the Scan
+### Add local data to a scan
+
+If you use Pandas, add a Pandas Dataframe dataset to the scan.
+* `dataset_name` is a string to identify a dataset.
+* `pandas_df` is a Pandas Dataframe object.
+* `data_source_name` is a string to identify a data source.
+{% include code-header.html %}
 ```python
 def add_pandas_dataframe(self, dataset_name: str, pandas_df, data_source_name: str = "dask")
 ```
-Add a pandas dataframe dataset to the scan. Only required in case of pandas data scans.
+<br/>
 
-`dataset_name` is a string used to name the dataset.
-
-`pandas_df` is a pandas dataframe object.
-
-`data_source_name` is a string used to name the datasource.
-<br/><br/>
-
-
+If you use Dask, add a Dask Dataframe dataset to the scan.
+* `dataset_name` is a string used to identify a dataset.
+* `dask_df` is a Dask Dataframe object.
+* `data_source_name` is a string to identify a data source.
+{% include code-header.html %}
 ```python
 def add_dask_dataframe(self, dataset_name: str, dask_df, data_source_name: str = "dask")
 ```
-Add a dask dataframe dataset to the scan. Only required in case of dask data scans.
+<br/>
 
-`dataset_name` is string used to name the dataset.
-
-`dask_df` is a dask dataframe object.
-
-`data_source_name` is a string used to name the datasource.
-<br/><br/>
-
-
+If you use PySpark, add a Spark session to the scan.
+* `spark_session` is a Spark session object.
+* `data_source_name` is a string to identify a data source.
+{% include code-header.html %}
 ```python
 def add_spark_session(self, spark_session, data_source_name: str = "spark_df")
 ```
-Add a spark_session to the scan.  Only required in case of PySpark scans.
+<br/>
 
-`spark_session` is a spark session object.
-
-`data_source_name` is a string used to name the datasource
-<br/><br/>
-
-
+If you use a pre-existing DuckDB connection object as a data source, add a DuckDB connection to the scan. 
+* `duckdb_connection` is a DuckDB connection object.
+* `data_source_name` is a string to identify a data source.
+{% include code-header.html %}
 ```python
 def add_duckdb_connection(self, duckdb_connection, data_source_name: str = "duckdb")
  ```
-Adds a duckdb connection to the scan. Only requireed in case of using a pre-existing duckdb connection object as a data source.
+<br/>
 
-`duckdb_connection` is a duckdb connection object.
+### Add optional scan settings
 
-`data_source_name` is a string used to name the datasource
-<br/><br/>
-
-### Optional Scan Settings
-
+Configure a scan to output verbose log information. This is useful when you wish to see the SQL queries that Soda executes or to troubleshoot scan issues.
+{% include code-header.html %}
 ```python
 def set_verbose(self, verbose_var: bool = True)
 ```
-Configures the scan to output verbose logs.
-<br/><br/>
+<br/>
 
-
+Configure Soda to prevent it from sending scan results to Soda Cloud. This is useful if, for example, you are testing checks locally and do not wish to muddy the measurements in your Soda Cloud account with test run metadata.
+{% include code-header.html %}
 ```python
 def set_is_local(self, local_var: bool = True)
 ```
-Prevents the scan results from uploading to the Soda Cloud.
-<br/><br/>
 
-### Handling Scan Results
-```python
-def assert_no_checks_fail(self)
-```
-Raises `AssertionError` in case any checks failed when running the scan.
-<br/><br/>
+<br/>
 
-```python
-def assert_no_checks_warn_or_fail(self)
-```
-Raises an `AssertionError` in case any checks warned or failed when running the scan.
-<br/><br/>
+### Add configurations to handle scan results
 
+Use the following configurations to handle errors and/or warnings that occurred during a Soda scan.
+
+Instruct Soda to raise an `AssertionError` when errors occur in the scan logs.
 ```python
 def assert_no_error_logs(self)
 ```
-Raises an `AssertionError` in case there were errors in the logs from the scan.
-<br/><br/>
+<br/>
 
+Instruct Soda to raise an `AssertionError` when errors or warnings occur in the scan logs.
 ```python
 def assert_no_error_nor_warning_logs(self)
 ```
-Raises an `AssertionError` in case there were errors or warnings in the logs from the scan.
-<br/><br/>
+<br/>
 
+Instruct Soda to raise an `AssertionError` when a specific error message occurs in the scan logs. Use `expected_error_message` to specify the error message as a string. 
 ```python
 def assert_has_error(self, expected_error_message: str)
 ```
-Raises an `AssertionError` in case a specific error message is in the logs from the scan.
+<br/>
 
-`expected_error_message` is a string representing the error message of interest. 
-<br/><br/>
-
-```python
-def has_check_fails(self) -> bool
-```
-Returns a bool representing whether any checks failed in the scan.
-<br/><br/>
-
-```python
-def has_check_warns(self) -> bool
-```
-Returns a bool representing whether any checks warned in the scan.
-<br/><br/>
-
-```python
-def has_check_warns_or_fails(self) -> bool
-```
-Returns a bool representing whether any checks failed or warned in the scan.
-<br/><br/>
-
-```python
-def has_checks_warn_or_fail(self) -> bool
-```
-Returns a bool representing whether any checks failed or warned in the scan.
-<br/><br/>
-
-```python
-def has_error_or_warning_logs(self) -> bool
-```
-Returns a bool representing whether any errors or warnings are in the logs from the scan.
-<br/><br/>
-
+Instruct Soda to return a boolean value to indicate that errors occurred in the scan logs.
 ```python
 def has_error_logs(self) -> bool
 ```
-Returns a bool representing whether any errors are in the logs from the scan.
-<br/><br/>
+<br/>
 
+Instruct Soda to return a boolean value to indicate that errors or warnings occurred in the scan logs.
+```python
+def has_error_or_warning_logs(self) -> bool
+```
+<br/>
+
+Instruct Soda to return a string that represents the logs from the scan.
+```python
+def get_logs_text(self) -> str | None
+```
+<br/>
+
+Instruct Soda to return a list of strings of scan errors in the logs.
+```python
+def get_error_logs(self) -> list[Log]
+```
+<br/>
+
+Instruct Soda to return a list of strings of scan errors and warnings in the logs.
+```python
+def get_error_or_warning_logs(self) -> list[Log]
+```
+<br/>
+
+Instruct Soda to return a string of all scan errors in the logs.
+```python
+def get_error_logs_text(self) -> str | None
+```
+<br/>
+
+
+### Add configurations to handle check results
+
+Use the following configurations to handle the results of checks executed during a Soda scan.
+
+Instruct Soda to raise an `AssertionError` when any check execution results in a fail state.
+```python
+def assert_no_checks_fail(self)
+```
+<br/>
+
+Instruct Soda to raise an `AssertionError` when any check execution results in a fail or warn state.
+```python
+def assert_no_checks_warn_or_fail(self)
+```
+<br/>
+
+Instruct Soda to return a boolean value to indicate that one or more checks executed during the scan resulted in a fail state.
+```python
+def has_check_fails(self) -> bool
+```
+<br/>
+
+Instruct Soda to return a boolean value to indicate that one or more checks executed during the scan resulted in a warn state.
+```python
+def has_check_warns(self) -> bool
+```
+<br/>
+
+Instruct Soda to return a boolean value to indicate that one or more checks executed during the scan resulted in a fail or warn state.
+```python
+def has_check_warns_or_fails(self) -> bool
+```
+<br/>
+
+Instruct Soda to return a dictionary containing the results of the scan. 
 ```python
 def get_scan_results(self) -> dict
 ```
-Returns a dictionary containing the results of the scan.
-The scan results dictionary has the following keys:
+
+The scan results dictionary includes the following keys:
 ```
 "definitionName"
 "defaultDataSource"
@@ -290,61 +314,40 @@ The scan results dictionary has the following keys:
 "metadata"
 "logs"
 ```
-<br/><br/>
-```python
-def get_logs_text(self) -> str | None
-```
-Returns a string representing the logs from the scan.
-<br/><br/>
+<br/>
 
-```python
-def get_error_logs(self) -> list[Log]
-```
-Returns a list of strings representing each error in the logs from the scan.
-<br/><br/>
-
-```python
-def get_error_logs_text(self) -> str | None
-```
-Returns a string representing all errors in the logs from the scan.
-<br/><br/>
-
-```python
-def get_error_or_warning_logs(self) -> list[Log]
-```
-Returns a list of strings representing each error or warning in the logs from the scan.
-<br/><br/>
-
+Instruct Soda to return a list of strings of checks that resulted in a fail state.
 ```python
 def get_checks_fail(self) -> list[Check]
 ```
-Returns a list of strings representing each failed check from the scan.
-<br/><br/>
+<br/>
 
+Instruct Soda to return a string of checks that resulted in a fail state.
 ```python
 def get_checks_fail_text(self) -> str | None
 ```
-Returns a string representing all failed checks from the scan.
-<br/><br/>
+<br/>
 
+Instruct Soda to return a list of strings of checks that resulted in a fail or warn state.
 ```python
 def get_checks_warn_or_fail(self) -> list[Check]
 ```
-Returns a list of strings representing each failed or warned check from the scan.
-<br/><br/>
+<br/>
 
+Instruct Soda to return a string of checks that resulted in a fail or warn state.
 ```python
 def get_checks_warn_or_fail_text(self) -> str | None
 ```
-Returns a string representing all failed or warned checks from the scan.
-<br/><br/>
+<br/>
 
+Instruct Soda to return a string of all check results.
 ```python
 def get_all_checks_text(self) -> str | None
 ```
-Returns a string representing all checks from the scan.
-<br/><br/>
+<br/>
 
+
+<!--
 ### Methods for Remote Scans (beta)
 These methods are used to trigger and get the results of scans defined in the Soda Cloud UI.
 Remote scans are orchestrated by the Soda Agent specified in the scan definition.
@@ -372,9 +375,8 @@ This will throw an error if the scan has not finished.
 `scan_id` is a string representing the latest scan run.
 If no value is given, this will be obtained from the class attribute `self.scan_id`.
 <br/><br/>
+-->
 
-Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
-<br />
 ---
 
 Was this documentation helpful?

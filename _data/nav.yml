@@ -21,8 +21,6 @@
     page: soda-agent/secrets.md
   - subtitle: Invoke Soda Library
     page: soda-library/programmatic.md
-  - subtitle: Python API reference
-    page: soda-library/python_api.md
   - subtitle: Upgrade, redeploy, uninstall
     page: soda/upgrade.md
 
@@ -95,6 +93,8 @@
     page: soda-cloud/scan-mgmt.md
   - subtitle: Configure orchestrated scans
     page: soda-library/orchestrate-scans.md
+  - subtitle: Python API reference
+    page: soda-library/python_api.md
 
 - title: Organize, alert, investigate
   page: soda-cloud/collaborate.md
