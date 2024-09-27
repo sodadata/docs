@@ -8,6 +8,7 @@ parent: Get started
 # Soda Library Python API Reference
 *Last modified on {% last_modified_at %}*
 
+## Classes
 ```python
 class Scan()
 ```
@@ -24,7 +25,8 @@ Executes the scan. Returns an integer exit code:
 | 2 | Soda issues a failure on a check(s) |
 | 3 | Soda encountered a runtime issue, and was able to submit scan results to Soda Cloud |
 | 4 | Soda encountered a runtime issue, but was unable to submit any results to Soda Cloud |
-<br/><br/>
+
+br/><br/>
 
 ### Required scan settings
 ```python
@@ -279,7 +281,7 @@ The scan results dictionary with the following keys:
 "metadata"
 "logs"
 ```
-
+<br/><br/>
 ```python
 def get_logs_text(self) -> str | None
 ```
