@@ -24,6 +24,7 @@ Executes the scan. Returns an integer exit code:
 | 2 | Soda issues a failure on a check(s) |
 | 3 | Soda encountered a runtime issue, and was able to submit scan results to Soda Cloud |
 | 4 | Soda encountered a runtime issue, but was unable to submit any results to Soda Cloud |
+<br/><br/>
 
 ### Required scan settings
 ```python
@@ -32,11 +33,11 @@ def set_data_source_name(self, data_source_name: str)
 Specifies which datasource to use for the checks.
 <br/><br/>
 
-
 ```python
 def set_scan_definition_name(self, scan_definition_name: str)
 ```
 The scan definition name is required if the scan is connected to Soda Cloud in order to correlate subsequent scans from the same pipeline.
+<br/><br/>
 
 ### Adding configurations to the scan (at least one is required)
 
@@ -61,7 +62,6 @@ Adds all configurations all YAML files matching the given file path or scanning 
 `suffixes` optional list of strings and is used when recursively scanning directories to only load files having a given extension or suffix. Default suffixes=[".yml", ".yaml"]
 <br/><br/>
 
-
 ```python
 def add_configuration_yaml_str(self, environment_yaml_str: str, file_path: str = "yaml string")
 ```
@@ -70,6 +70,7 @@ Adds configurations from a YAML-formatted string.
 `environment_yaml_str` is a string represents a configuration; must be YAML-formatted.
 
 `file_path` is an optional string and can be used to get the location of the log/error in the logs.
+<br/><br/>
 
 ### Adding checks to the scan
 ```python
@@ -121,6 +122,7 @@ def add_template_file(self, file_path: str)
 Adds a SodaCL template file to the scan.
 
 `file_path` is a string that represents a SodaCL template file.
+<br/><br/>
 
 ### Adding local data to the scan (required if scanning local data)
 ```python
@@ -168,6 +170,7 @@ Adds a duckdb connection to the scan. Only requireed in case of using a pre-exis
 `duckdb_connection` is a duckdb connection object.
 
 `data_source_name` is a string used to name the datasource
+<br/><br/>
 
 ### Optional scan settings
 
@@ -182,6 +185,7 @@ Configures the scan to output verbose logs.
 def set_is_local(self, local_var: bool = True)
 ```
 Prevents the scan results from uploading to the Soda Cloud.
+<br/><br/>
 
 ### Handling scan results
 ```python
@@ -275,7 +279,6 @@ The scan results dictionary with the following keys:
 "metadata"
 "logs"
 ```
-<br/><br/>
 
 ```python
 def get_logs_text(self) -> str | None
@@ -357,6 +360,7 @@ This will throw an error if the scan has not finished.
 
 `scan_id` is a string representing the latest scan run.
 If no value is given, this will be obtained from the class attribute `self.scan_id`.
+<br/><br/>
 
 Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
 <br />
