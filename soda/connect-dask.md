@@ -25,9 +25,14 @@ Install package: `soda-pandas-dask`
 
 {% include code-header.html %}
 ```python
-import dask.datasets
 import pandas as pd
+
+import dask
+import dask.datasets
 from soda.scan import Scan
+
+# Config needed to avoid default string conversion to string[pyarrow] see below more info
+dask.config.set({"dataframe.convert-string": False})
 
 # Create a Soda scan object
 scan = Scan()
@@ -109,6 +114,7 @@ scan.set_verbose(True)
 scan.execute()
 ```
 
+The `dask.config.set({"dataframe.convert-string": False})` line is needed due to upgrading `dask>=2023.7.1`.<br /><a href= https://docs.dask.org/en/stable/changelog.html#v2023-7-1>More info here.</a><br /><br />
 <br />
 
 ### Load JSON file into Dataframe
