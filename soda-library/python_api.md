@@ -8,7 +8,16 @@ parent: Get started
 # Soda Library Python API Reference
 *Last modified on {% last_modified_at %}*
 
-## **Classes**
+[Required Scan Settings](#required-scan-settings)<br />
+[Adding Configurations to the Scan](#adding-configurations-to-the-scan)<br />
+[Adding Checks to the Scan](#adding-checks-to-the-scan)<br />
+[Adding Local Data to the Scan](#adding-local-data-to-the-scan)<br />
+[Optional Scan Settings](#optional-scan-settings)<br />
+[Handling Scan Results](#handling-scan-results)<br />
+[Methods for Remote Scans (beta)](#methods-for-remote-scans-beta)<br />
+<br />
+
+## Classes
 ```python
 class Scan()
 ```
@@ -41,7 +50,7 @@ def set_scan_definition_name(self, scan_definition_name: str)
 The scan definition name is required if the scan is connected to Soda Cloud in order to correlate subsequent scans from the same pipeline.
 <br/><br/>
 
-### Adding configurations to the scan (at least one is required)
+### Adding Configurations to the Scan
 
 ```python
 def add_configuration_yaml_file(self, file_path: str)
@@ -74,7 +83,7 @@ Adds configurations from a YAML-formatted string.
 `file_path` is an optional string and can be used to get the location of the log/error in the logs.
 <br/><br/>
 
-### Adding checks to the scan
+### Adding Checks to the Scan
 ```python
 def add_sodacl_yaml_files(self, path: str, recursive: bool | None = True, suffixes: list[str] | None = None)
 ```
@@ -126,7 +135,7 @@ Adds a SodaCL template file to the scan.
 `file_path` is a string that represents a SodaCL template file.
 <br/><br/>
 
-### Adding local data to the scan (required if scanning local data)
+### Adding Local Data to the Scan
 ```python
 def add_pandas_dataframe(self, dataset_name: str, pandas_df, data_source_name: str = "dask")
 ```
@@ -174,7 +183,7 @@ Adds a duckdb connection to the scan. Only requireed in case of using a pre-exis
 `data_source_name` is a string used to name the datasource
 <br/><br/>
 
-### Optional scan settings
+### Optional Scan Settings
 
 ```python
 def set_verbose(self, verbose_var: bool = True)
@@ -189,7 +198,7 @@ def set_is_local(self, local_var: bool = True)
 Prevents the scan results from uploading to the Soda Cloud.
 <br/><br/>
 
-### Handling scan results
+### Handling Scan Results
 ```python
 def assert_no_checks_fail(self)
 ```
@@ -336,7 +345,7 @@ def get_all_checks_text(self) -> str | None
 Returns a string representing all checks from the scan.
 <br/><br/>
 
-### Methods for remote scans (beta)
+### Methods for Remote Scans (beta)
 These methods are used to trigger and get the results of scans defined in the Soda Cloud UI.
 Remote scans are orchestrated by the Soda Agent specified in the scan definition.
 These methods provide a Python interface for the Scans endpoint in the Soda Cloud API.
