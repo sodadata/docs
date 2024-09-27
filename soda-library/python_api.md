@@ -1,3 +1,10 @@
+---
+layout: default
+title: Soda Library Python API Reference
+description: A Python reference for the Soda Scan() class and its methods
+parent: Get started
+---
+
 # Soda Library Python API Reference
 *Last modified on {% last_modified_at %}*
 
