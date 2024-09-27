@@ -47,7 +47,7 @@ def add_configuration_yaml_file(self, file_path: str)
 ```
 Adds configurations from a YAML file on the given path.
 
-`file_path` is a string file_path pointing to a configuration file. ~ will be expanded to the user home dir.
+`file_path` is a string pointing to a configuration file. ~ will be expanded to the user home dir.
 <br/><br/>
 
 
@@ -58,9 +58,9 @@ Adds all configurations all YAML files matching the given file path or scanning 
 
 `path` is a string that typically is the path to a directory, but it can also be a configuration file. ~ will be expanded to the user home dir the directory in which to search for configuration files.
 
-`recursive` is a bool controls if nested directories also will be scanned.  Default recursive=True.
+`recursive` is a bool that controls if nested directories also will be scanned.  Default recursive=True.
 
-`suffixes` optional list of strings and is used when recursively scanning directories to only load files having a given extension or suffix. Default suffixes=[".yml", ".yaml"]
+`suffixes` is an optional list of strings and is used when recursively scanning directories to only load files having a given extension or suffix. Default suffixes=[".yml", ".yaml"]
 <br/><br/>
 
 ```python
@@ -68,7 +68,7 @@ def add_configuration_yaml_str(self, environment_yaml_str: str, file_path: str =
 ```
 Adds configurations from a YAML-formatted string.
 
-`environment_yaml_str` is a string represents a configuration; must be YAML-formatted.
+`environment_yaml_str` is a string that represents a configuration; must be YAML-formatted.
 
 `file_path` is an optional string and can be used to get the location of the log/error in the logs.
 <br/><br/>
@@ -131,7 +131,7 @@ def add_pandas_dataframe(self, dataset_name: str, pandas_df, data_source_name: s
 ```
 Add a pandas dataframe dataset to the scan. Only required in case of pandas data scans.
 
-`dataset_name` is string used to name the dataset.
+`dataset_name` is a string used to name the dataset.
 
 `pandas_df` is a pandas dataframe object.
 
