@@ -25,9 +25,14 @@ Install package: `soda-pandas-dask`
 
 {% include code-header.html %}
 ```python
-import dask.datasets
 import pandas as pd
+
+import dask
+import dask.datasets
 from soda.scan import Scan
+
+# Read more info in "Note on new release" section
+dask.config.set({"dataframe.convert-string": False})
 
 # Create a Soda scan object
 scan = Scan()
@@ -109,6 +114,8 @@ scan.set_verbose(True)
 scan.execute()
 ```
 
+#### Note on new release
+ In `dask>=2023.7.1` release and later ones, Dask DataFrame automatically converts text data to `string[pyarrow]` data type if `pandas>=2` and `pyarrow>=12` are installed. We updated our codebase with `dask>=2023.7.1` but it still expects text data to be converted to `object` data type, therefore we add the flag: `dask.config.set({"dataframe.convert-string": False})` to avoid `KeyError: string[pyarrow]` errors. <br /><a href="https://docs.dask.org/en/stable/changelog.html#v2023-7-1">More info here.</a><br /><br />
 <br />
 
 ### Load JSON file into Dataframe
