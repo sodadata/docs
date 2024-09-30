@@ -114,9 +114,38 @@ scan.set_verbose(True)
 scan.execute()
 ```
 
-#### Note on new release
+#### Notes on new release
+
+##### Note 1
  In `dask>=2023.7.1` release and later ones, Dask DataFrame automatically converts text data to `string[pyarrow]` data type if `pandas>=2` and `pyarrow>=12` are installed. We updated our codebase with `dask>=2023.7.1` but it still expects text data to be converted to `object` data type, therefore we add the flag: `dask.config.set({"dataframe.convert-string": False})` to avoid `KeyError: string[pyarrow]` errors. <br /><a href="https://docs.dask.org/en/stable/changelog.html#v2023-7-1">More info here.</a><br /><br />
 <br />
+
+##### Note 2
+As part the new release, we opened an optional user control: `use_dask_count_star_as_count_one`. This flag controls the behaviour of: `scan.add_dask_dataframe()` and `scan.add_pandas_dataframe()`. If True, which is the default, it will replace all the `COUNT(*)` SQL queries with `COUNT(1)`. With the release of `dask-sql==2023.10`, the SQL query: `COUNT(*)` was interpreted as: `COUNT(*)`. If you are interested in running the behaviour of `dask-sql>=2023.10`, then you should call the functions `use_dask_count_star_as_count_one=False`.
+
+Example:
+
+```python
+import pandas as pd
+
+import dask
+import dask.datasets
+from soda.scan import Scan
+
+# Read more info in "Note on new release" section
+dask.config.set({"dataframe.convert-string": False})
+
+# Create a Soda scan object
+scan = Scan()
+
+# Load timeseries data from dask datasets
+df_timeseries = dask.datasets.timeseries().reset_index()
+df_timeseries["email"] = "a@soda.io"
+
+# Either add Dask dataframe to scan and assign a dataset name to refer from checks.yaml
+# Dask will use SQL COUNT(*) operation, instead of COUNT(1)
+scan.add_dask_dataframe(dataset_name="timeseries", dask_df=df_timeseries, data_source_name="orders", use_dask_count_star_as_count_one=False)
+```
 
 ### Load JSON file into Dataframe
 
