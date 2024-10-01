@@ -88,13 +88,13 @@ components:
           type: object
           $ref: '#/components/schemas/OwnerDTO'
       required:
-        - agreements
-        - datasets
-        - evaluationStatus
-        - id
-        - incidents
-        - name
-        - owner
+      - agreements
+      - datasets
+      - evaluationStatus
+      - id
+      - incidents
+      - name
+      - owner
     ChecksContentDTO_Group:
       type: object
       properties:
@@ -107,9 +107,9 @@ components:
     DataQualityStatusDTO:
       type: string
       enum:
-        - pass
-        - warn
-        - fail
+      - pass
+      - warn
+      - fail
     DatasetAttributeContentDTO:
       type: object
       properties:
@@ -130,19 +130,19 @@ components:
           type: object
           $ref: '#/components/schemas/DatasetAttributeTypeDTO'
       required:
-        - id
-        - label
-        - name
-        - type
+      - id
+      - label
+      - name
+      - type
     DatasetAttributeTypeDTO:
       type: string
       enum:
-        - checkbox
-        - datetime
-        - number
-        - text
-        - single_select
-        - multi_select
+      - checkbox
+      - datetime
+      - number
+      - text
+      - single_select
+      - multi_select
     DatasetOwnerDTO:
       type: object
       properties:
@@ -156,12 +156,12 @@ components:
           type: object
           $ref: '#/components/schemas/UserGroupContentBasicDTO'
       required:
-        - type
+      - type
     DatasetOwnerTypeDTO:
       type: string
       enum:
-        - user
-        - userGroup
+      - user
+      - userGroup
     DatasetResponsibilityContentDTO:
       type: object
       properties:
@@ -178,9 +178,9 @@ components:
         userId:
           type: string
       required:
-        - managed
-        - role
-        - type
+      - managed
+      - role
+      - type
     DatasetResponsibilityContentRequestDTO:
       type: object
       properties:
@@ -194,8 +194,8 @@ components:
         userId:
           type: string
       required:
-        - roleId
-        - type
+      - roleId
+      - type
     DatasetRoleContentDTO:
       type: object
       properties:
@@ -220,8 +220,8 @@ components:
         viewProfilingAndSamples:
           type: boolean
       required:
-        - id
-        - name
+      - id
+      - name
     DatasetSlimDTO:
       type: object
       properties:
@@ -268,12 +268,12 @@ components:
         qualifiedName:
           type: string
       required:
-        - checks
-        - cloudUrl
-        - healthStatus
-        - id
-        - incidents
-        - name
+      - checks
+      - cloudUrl
+      - healthStatus
+      - id
+      - incidents
+      - name
     DatasourcePropertiesDTO:
       type: object
       properties:
@@ -293,10 +293,10 @@ components:
     EvaluationStatusDTO:
       type: string
       enum:
-        - pass
-        - warn
-        - fail
-        - notEvaluated
+      - pass
+      - warn
+      - fail
+      - notEvaluated
     IncidentContentDTO:
       type: object
       properties:
@@ -318,14 +318,14 @@ components:
           type: object
           $ref: '#/components/schemas/IncidentStatusDTO'
       required:
-        - description
-        - severity
+      - description
+      - severity
     IncidentSeverityDTO:
       type: string
       enum:
-        - minor
-        - major
-        - critical
+      - minor
+      - major
+      - critical
     IncidentSlimDTO:
       type: object
       properties:
@@ -342,25 +342,25 @@ components:
           type: object
           $ref: '#/components/schemas/IncidentStatusDTO'
       required:
-        - cloudUrl
-        - id
-        - name
-        - number
-        - status
+      - cloudUrl
+      - id
+      - name
+      - number
+      - status
     IncidentStatusDTO:
       type: string
       enum:
-        - reported
-        - investigating
-        - fixing
-        - resolved
+      - reported
+      - investigating
+      - fixing
+      - resolved
     LogLevelDTO:
       type: string
       enum:
-        - debug
-        - info
-        - warning
-        - error
+      - debug
+      - info
+      - warning
+      - error
     LogsContentDTO:
       type: object
       properties:
@@ -375,10 +375,10 @@ components:
         timestamp:
           type: string
       required:
-        - index
-        - level
-        - message
-        - timestamp
+      - index
+      - level
+      - message
+      - timestamp
     MapOfStringToString:
       type: object
       additionalProperties: true
@@ -388,7 +388,7 @@ components:
     MeasureDTO:
       type: string
       enum:
-        - time
+      - time
     OwnerDTO:
       type: object
       properties:
@@ -433,13 +433,13 @@ components:
           type: integer
           format: int32
       required:
-        - content
-        - first
-        - last
-        - number
-        - size
-        - totalElements
-        - totalPages
+      - content
+      - first
+      - last
+      - number
+      - size
+      - totalElements
+      - totalPages
     PublicApiDatasetAttributesResponse:
       type: object
       properties:
@@ -465,13 +465,13 @@ components:
           type: integer
           format: int32
       required:
-        - content
-        - first
-        - last
-        - number
-        - size
-        - totalElements
-        - totalPages
+      - content
+      - first
+      - last
+      - number
+      - size
+      - totalElements
+      - totalPages
     PublicApiDatasetResponsibilitiesResponse:
       type: object
       properties:
@@ -497,13 +497,13 @@ components:
           type: integer
           format: int32
       required:
-        - content
-        - first
-        - last
-        - number
-        - size
-        - totalElements
-        - totalPages
+      - content
+      - first
+      - last
+      - number
+      - size
+      - totalElements
+      - totalPages
     PublicApiDatasetRolesResponse:
       type: object
       properties:
@@ -529,13 +529,13 @@ components:
           type: integer
           format: int32
       required:
-        - content
-        - first
-        - last
-        - number
-        - size
-        - totalElements
-        - totalPages
+      - content
+      - first
+      - last
+      - number
+      - size
+      - totalElements
+      - totalPages
     PublicApiDatasetsResponse:
       type: object
       properties:
@@ -561,13 +561,13 @@ components:
           type: integer
           format: int32
       required:
-        - content
-        - first
-        - last
-        - number
-        - size
-        - totalElements
-        - totalPages
+      - content
+      - first
+      - last
+      - number
+      - size
+      - totalElements
+      - totalPages
     PublicApiScanDefinitionSlim:
       type: object
       properties:
@@ -576,8 +576,8 @@ components:
         name:
           type: string
       required:
-        - id
-        - name
+      - id
+      - name
     PublicApiScanLogsResponse:
       type: object
       properties:
@@ -603,13 +603,13 @@ components:
           type: integer
           format: int32
       required:
-        - content
-        - first
-        - last
-        - number
-        - size
-        - totalElements
-        - totalPages
+      - content
+      - first
+      - last
+      - number
+      - size
+      - totalElements
+      - totalPages
     PublicApiScanStatusResponse:
       type: object
       properties:
@@ -650,10 +650,10 @@ components:
           type: integer
           format: int32
       required:
-        - cloudUrl
-        - created
-        - id
-        - state
+      - cloudUrl
+      - created
+      - id
+      - state
     PublicApiTestLoginResponse:
       type: object
       properties:
@@ -683,7 +683,7 @@ components:
         userId:
           type: string
       required:
-        - type
+      - type
     PublicApiUpdateDatasetResponsibilitiesRequestDTO:
       type: object
       properties:
@@ -693,17 +693,7 @@ components:
             type: object
             $ref: '#/components/schemas/DatasetResponsibilityContentRequestDTO'
       required:
-        - responsibilities
-    PublicApiUpdateDatasetResponsibilitiesResponse:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/DatasetResponsibilityContentDTO'
-      required:
-        - content
+      - responsibilities
     PublicApiUpdateIncidentDTO:
       type: object
       properties:
@@ -742,13 +732,13 @@ components:
           type: integer
           format: int32
       required:
-        - content
-        - first
-        - last
-        - number
-        - size
-        - totalElements
-        - totalPages
+      - content
+      - first
+      - last
+      - number
+      - size
+      - totalElements
+      - totalPages
     PublicApiUsersResponse:
       type: object
       properties:
@@ -774,32 +764,32 @@ components:
           type: integer
           format: int32
       required:
-        - content
-        - first
-        - last
-        - number
-        - size
-        - totalElements
-        - totalPages
+      - content
+      - first
+      - last
+      - number
+      - size
+      - totalElements
+      - totalPages
     ResponsibilityTypeDTO:
       type: string
       enum:
-        - user
-        - userGroup
+      - user
+      - userGroup
     ScanStateDTO:
       type: string
       enum:
-        - queuing
-        - executing
-        - cancelationRequested
-        - timeOutRequested
-        - canceled
-        - timedOut
-        - failed
-        - completedWithErrors
-        - completedWithFailures
-        - completedWithWarnings
-        - completed
+      - queuing
+      - executing
+      - cancelationRequested
+      - timeOutRequested
+      - canceled
+      - timedOut
+      - failed
+      - completedWithErrors
+      - completedWithFailures
+      - completedWithWarnings
+      - completed
     UserContentDTO:
       type: object
       properties:
@@ -814,8 +804,8 @@ components:
         userId:
           type: string
       required:
-        - email
-        - userId
+      - email
+      - userId
     UserGroupContentBasicDTO:
       type: object
       properties:
@@ -824,8 +814,8 @@ components:
         userGroupId:
           type: string
       required:
-        - name
-        - userGroupId
+      - name
+      - userGroupId
     UserGroupContentDTO:
       type: object
       properties:
@@ -839,9 +829,9 @@ components:
             type: object
             $ref: '#/components/schemas/UserContentDTO'
       required:
-        - name
-        - userGroupId
-        - users
+      - name
+      - userGroupId
+      - users
     _object:
       type: object
   securitySchemes:
@@ -902,20 +892,20 @@ paths:
         10 requests/60 seconds
       operationId: GET/api/v1/checks
       parameters:
-        - in: query
-          name: datasetId
-          schema:
-            type: string
-        - in: query
-          name: page
-          schema:
-            type: integer
-            format: int32
-        - in: query
-          name: size
-          schema:
-            type: integer
-            format: int32
+      - in: query
+        name: datasetId
+        schema:
+          type: string
+      - in: query
+        name: page
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: size
+        schema:
+          type: integer
+          format: int32
       responses:
         "400":
           content:
@@ -967,10 +957,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Check information
       tags:
-        - Checks
+      - Checks
   /api/v1/datasets:
     get:
       description: |-
@@ -1005,20 +995,20 @@ paths:
         10 requests/60 seconds
       operationId: GET/api/v1/datasets
       parameters:
-        - in: query
-          name: from
-          schema:
-            type: string
-        - in: query
-          name: page
-          schema:
-            type: integer
-            format: int32
-        - in: query
-          name: size
-          schema:
-            type: integer
-            format: int32
+      - in: query
+        name: from
+        schema:
+          type: string
+      - in: query
+        name: page
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: size
+        schema:
+          type: integer
+          format: int32
       responses:
         "400":
           content:
@@ -1070,10 +1060,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Dataset information
       tags:
-        - Datasets
+      - Datasets
   /api/v1/datasets/attributes:
     get:
       description: |-
@@ -1084,10 +1074,6 @@ paths:
         - `size`: Supply an integer value between 10 and 1000, inclusive. The default value is 1000.
 
         - `page`: Supply an integer value. The default value is 0.
-
-        ## Authorization
-
-        All users in your Soda Cloud account can execute this API.
 
         ## Authentication
 
@@ -1104,16 +1090,16 @@ paths:
         60 requests/60 seconds
       operationId: GET/api/v1/datasets/attributes
       parameters:
-        - in: query
-          name: page
-          schema:
-            type: integer
-            format: int32
-        - in: query
-          name: size
-          schema:
-            type: integer
-            format: int32
+      - in: query
+        name: page
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: size
+        schema:
+          type: integer
+          format: int32
       responses:
         "400":
           content:
@@ -1165,10 +1151,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Get dataset attributes
       tags:
-        - Attributes
+      - Attributes
   /api/v1/datasets/roles:
     get:
       description: |-
@@ -1195,16 +1181,16 @@ paths:
         60 requests/60 seconds
       operationId: GET/api/v1/datasets/roles
       parameters:
-        - in: query
-          name: page
-          schema:
-            type: integer
-            format: int32
-        - in: query
-          name: size
-          schema:
-            type: integer
-            format: int32
+      - in: query
+        name: page
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: size
+        schema:
+          type: integer
+          format: int32
       responses:
         "400":
           content:
@@ -1256,10 +1242,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: List dataset roles
       tags:
-        - Datasets
+      - Datasets
   /api/v1/datasets/{datasetId}:
     post:
       description: |-
@@ -1284,11 +1270,11 @@ paths:
         10 requests/60 seconds
       operationId: "POST/api/v1/datasets/{datasetId}"
       parameters:
-        - in: path
-          name: datasetId
-          required: true
-          schema:
-            type: string
+      - in: path
+        name: datasetId
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -1347,10 +1333,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Update dataset
       tags:
-        - Datasets
+      - Datasets
   /api/v1/datasets/{datasetId}/responsibilities:
     get:
       description: |-
@@ -1381,21 +1367,21 @@ paths:
         60 requests/60 seconds
       operationId: "GET/api/v1/datasets/{datasetId}/responsibilities"
       parameters:
-        - in: path
-          name: datasetId
-          required: true
-          schema:
-            type: string
-        - in: query
-          name: page
-          schema:
-            type: integer
-            format: int32
-        - in: query
-          name: size
-          schema:
-            type: integer
-            format: int32
+      - in: path
+        name: datasetId
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: page
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: size
+        schema:
+          type: integer
+          format: int32
       responses:
         "400":
           content:
@@ -1447,17 +1433,17 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: List dataset responsibilities
       tags:
-        - Datasets
+      - Datasets
     post:
       description: |-
         This endpoint enables you to update the user and user groups permissions and their associated roles for a dataset in your organization's Soda Cloud account.
 
         ## Authorization
 
-        Only users with **Manage dataset responsibilities** permission can update dataset responsibilities. Soda Cloud Admins have permission to update all datasets responsibilities.**See [Manage dataset roles](https://go.soda.io/roles) for more information.**
+        Only users with **Manage dataset responsibilities** permission can update dataset responsibilities. Soda Cloud Admins have permission to update all datasets responsibilities.**See [Manage dataset roles](https://go.soda.io/roles) for more information.**The Response of this call, when successful, is `201` and contains header `Location` which identify the URL where the responsibilities will eventually become available.
 
         ## Authentication
 
@@ -1474,11 +1460,11 @@ paths:
         10 requests/60 seconds
       operationId: "POST/api/v1/datasets/{datasetId}/responsibilities"
       parameters:
-        - in: path
-          name: datasetId
-          required: true
-          schema:
-            type: string
+      - in: path
+        name: datasetId
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -1522,13 +1508,12 @@ paths:
                 type: object
                 $ref: '#/components/schemas/ErrorResponse'
           description: Internal server error
-        "200":
-          content:
-            application/json:
+        "201":
+          description: Created
+          headers:
+            Location:
               schema:
-                type: object
-                $ref: '#/components/schemas/PublicApiUpdateDatasetResponsibilitiesResponse'
-          description: Successful response
+                type: string
         "429":
           content:
             application/json:
@@ -1537,10 +1522,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Update dataset responsibilities
       tags:
-        - Datasets
+      - Datasets
   /api/v1/incidents/{incidentId}:
     post:
       description: |-
@@ -1565,11 +1550,11 @@ paths:
         10 requests/60 seconds
       operationId: "POST/api/v1/incidents/{incidentId}"
       parameters:
-        - in: path
-          name: incidentId
-          required: true
-          schema:
-            type: string
+      - in: path
+        name: incidentId
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -1628,10 +1613,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Update incident
       tags:
-        - Incidents
+      - Incidents
   /api/v1/scans:
     post:
       description: |-
@@ -1670,7 +1655,7 @@ paths:
                 scanDefinition:
                   type: string
               required:
-                - scanDefinition
+              - scanDefinition
         required: true
       responses:
         "400":
@@ -1725,10 +1710,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Trigger a scan
       tags:
-        - Scans
+      - Scans
   /api/v1/scans/{scanId}:
     delete:
       description: |-
@@ -1759,11 +1744,11 @@ paths:
         10 requests/60 seconds
       operationId: "DELETE/api/v1/scans/{scanId}"
       parameters:
-        - in: path
-          name: scanId
-          required: true
-          schema:
-            type: string
+      - in: path
+        name: scanId
+        required: true
+        schema:
+          type: string
       responses:
         "400":
           content:
@@ -1814,10 +1799,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Cancel a scan
       tags:
-        - Scans
+      - Scans
     get:
       description: |-
         This endpoint enables you to check on the state of a scan that you executed using the **Trigger a scan** endpoint. Call this endpoint to monitor the status of a scan during its execution.
@@ -1869,11 +1854,11 @@ paths:
         60 requests/60 seconds
       operationId: "GET/api/v1/scans/{scanId}"
       parameters:
-        - in: path
-          name: scanId
-          required: true
-          schema:
-            type: string
+      - in: path
+        name: scanId
+        required: true
+        schema:
+          type: string
       responses:
         "400":
           content:
@@ -1925,10 +1910,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Get scan status
       tags:
-        - Scans
+      - Scans
   /api/v1/scans/{scanId}/logs:
     get:
       description: |-
@@ -1961,21 +1946,21 @@ paths:
         60 requests/60 seconds
       operationId: "GET/api/v1/scans/{scanId}/logs"
       parameters:
-        - in: path
-          name: scanId
-          required: true
-          schema:
-            type: string
-        - in: query
-          name: page
-          schema:
-            type: integer
-            format: int32
-        - in: query
-          name: size
-          schema:
-            type: integer
-            format: int32
+      - in: path
+        name: scanId
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: page
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: size
+        schema:
+          type: integer
+          format: int32
       responses:
         "400":
           content:
@@ -2027,10 +2012,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Get scan logs
       tags:
-        - Scans
+      - Scans
   /api/v1/test-login:
     get:
       description: |-
@@ -2101,10 +2086,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Test connection
       tags:
-        - Utility
+      - Utility
   /api/v1/userGroups:
     get:
       description: "This endpoint enables you to gather information about the user\
@@ -2121,20 +2106,20 @@ paths:
         ## Tags\n\n`Users`\n\n## Rate limiting\n\n60 requests/60 seconds"
       operationId: GET/api/v1/userGroups
       parameters:
-        - in: query
-          name: page
-          schema:
-            type: integer
-            format: int32
-        - in: query
-          name: search
-          schema:
-            type: string
-        - in: query
-          name: size
-          schema:
-            type: integer
-            format: int32
+      - in: query
+        name: page
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: search
+        schema:
+          type: string
+      - in: query
+        name: size
+        schema:
+          type: integer
+          format: int32
       responses:
         "400":
           content:
@@ -2186,10 +2171,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Get user groups
       tags:
-        - Users
+      - Users
   /api/v1/users:
     get:
       description: "This endpoint enables you to gather information about the users\
@@ -2206,20 +2191,20 @@ paths:
         \n## Rate limiting\n\n60 requests/60 seconds"
       operationId: GET/api/v1/users
       parameters:
-        - in: query
-          name: page
-          schema:
-            type: integer
-            format: int32
-        - in: query
-          name: search
-          schema:
-            type: string
-        - in: query
-          name: size
-          schema:
-            type: integer
-            format: int32
+      - in: query
+        name: page
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: search
+        schema:
+          type: string
+      - in: query
+        name: size
+        schema:
+          type: integer
+          format: int32
       responses:
         "400":
           content:
@@ -2271,27 +2256,27 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Too many requests
       security:
-        - basicAuthApiKey: [ ]
+      - basicAuthApiKey: []
       summary: Get users
       tags:
-        - Users
+      - Users
 servers:
-  - description: Cloud EU
-    url: https://cloud.soda.io
-  - description: Cloud US
-    url: https://cloud.us.soda.io
+- description: Cloud EU
+  url: https://cloud.soda.io
+- description: Cloud US
+  url: https://cloud.us.soda.io
 tags:
-  - description: Soda Cloud API Attributes Endpoints
-    name: Attributes
-  - description: Soda Cloud API Check Endpoints
-    name: Checks
-  - description: Soda Cloud API Dataset Endpoints
-    name: Datasets
-  - description: Soda Cloud API Incidents Endpoints
-    name: Incidents
-  - description: Soda Cloud API Scan Endpoints
-    name: Scans
-  - description: Soda Cloud API Users Endpoints
-    name: Users
-  - description: Soda Cloud API Utility Endpoints
-    name: Utility
+- description: Soda Cloud API Attributes Endpoints
+  name: Attributes
+- description: Soda Cloud API Check Endpoints
+  name: Checks
+- description: Soda Cloud API Dataset Endpoints
+  name: Datasets
+- description: Soda Cloud API Incidents Endpoints
+  name: Incidents
+- description: Soda Cloud API Scan Endpoints
+  name: Scans
+- description: Soda Cloud API Users Endpoints
+  name: Users
+- description: Soda Cloud API Utility Endpoints
+  name: Utility
