@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### October 2, 2024
+* Added documentation of new parameters for the `soda-pandas-dask` package to address changed behavior when upgrading to version 1.6.4 or greater. See [Add optional parameter for `COUNT`]({% link soda/connect-dask.md %}#add-optional-parameter-for-count) and [Add optional parameter for text data conversion]({% link soda/connect-dask.md %}#add-optional-parameter-for-text-data-conversion).
+
 #### September 26, 2024
 * Updated documentation to include customizable permissions for [global]({% link soda-cloud/roles-global.md %}) and [dataset roles]({% link soda-cloud/roles-dataset.md %}) in Soda Cloud, plus the ability to create new roles.
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.3 and Soda Agent 1.1.29.
