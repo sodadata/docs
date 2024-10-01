@@ -883,10 +883,6 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
-        ## Authorization
-
-        Any Soda Cloud user in your organization may execute this query.
-
         ## Tags
 
         `Checks`
@@ -990,10 +986,6 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
-        ## Authorization
-
-        Any Soda Cloud user in your organization may execute this query.
-
         ## Tags
 
         `Datasets`
@@ -1089,6 +1081,10 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
         ## Tags
 
         `Datasets`
@@ -1180,6 +1176,10 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
         ## Tags
 
         `Datasets`
@@ -1268,10 +1268,6 @@ paths:
         User authentication required: `true`
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
-
-        ## Authorization
-
-        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -1370,10 +1366,6 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
-        ## Authorization
-
-        Any Soda Cloud user in your organization may execute this query.
-
         ## Tags
 
         `Datasets`
@@ -1467,10 +1459,6 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
-        ## Authorization
-
-        Any Soda Cloud user in your organization may execute this query.
-
         ## Tags
 
         `Datasets`
@@ -1560,10 +1548,6 @@ paths:
         User authentication required: `true`
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
-
-        ## Authorization
-
-        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -1659,6 +1643,10 @@ paths:
         User authentication required: `true`
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -1758,6 +1746,10 @@ paths:
         User authentication required: `true`
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -1869,6 +1861,10 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
         ## Tags
 
         `Scans`
@@ -1961,6 +1957,10 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
         ## Tags
 
         `Scans`
@@ -2051,6 +2051,10 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
         ## Tags
 
         `Utility`
@@ -2127,7 +2131,8 @@ paths:
         \ results by user group name in ascending order.\n\n## Authentication\n\n\
         User authentication required: `true`\n\nThis endpoint enforces authentication\
         \ using the API keys you provide in the `Basic` authentication header.\n\n\
-        ## Tags\n\n`Users`\n\n## Rate limiting\n\n60 requests/60 seconds"
+        ## Authorization\n\nAny Soda Cloud user in your organization may execute this\
+        \ query.\n\n## Tags\n\n`Users`\n\n## Rate limiting\n\n60 requests/60 seconds"
       operationId: GET/api/v1/userGroups
       parameters:
       - in: query
@@ -2211,8 +2216,9 @@ paths:
         \ the query gathers information for all users in the account and sorts the\
         \ results by user name in ascending order.\n\n## Authentication\n\nUser authentication\
         \ required: `true`\n\nThis endpoint enforces authentication using the API\
-        \ keys you provide in the `Basic` authentication header.\n\n## Tags\n\n`Users`\n\
-        \n## Rate limiting\n\n60 requests/60 seconds"
+        \ keys you provide in the `Basic` authentication header.\n\n## Authorization\n\
+        \nAny Soda Cloud user in your organization may execute this query.\n\n## Tags\n\
+        \n`Users`\n\n## Rate limiting\n\n60 requests/60 seconds"
       operationId: GET/api/v1/users
       parameters:
       - in: query
