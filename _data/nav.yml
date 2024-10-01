@@ -24,6 +24,7 @@
   - subtitle: Upgrade, redeploy, uninstall
     page: soda/upgrade.md
 
+
 - title: Use case guides
   page: soda/use-case-guides.md
   subcategories:
@@ -92,6 +93,8 @@
     page: soda-cloud/scan-mgmt.md
   - subtitle: Configure orchestrated scans
     page: soda-library/orchestrate-scans.md
+  - subtitle: Python API reference
+    page: soda-library/python_api.md
 
 - title: Organize, alert, investigate
   page: soda-cloud/collaborate.md

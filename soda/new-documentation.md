@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### September 30, 2024
+* Added [Soda Library Python API reference]({% link soda-library/python_api.md %}) documentation.
+
 #### September 26, 2024
 * Updated documentation to include customizable permissions for [global]({% link soda-cloud/roles-global.md %}) and [dataset roles]({% link soda-cloud/roles-dataset.md %}) in Soda Cloud, plus the ability to create new roles.
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.3 and Soda Agent 1.1.29.
