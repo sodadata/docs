@@ -883,6 +883,10 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
         ## Tags
 
         `Checks`
@@ -986,6 +990,10 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
         ## Tags
 
         `Datasets`
@@ -1083,7 +1091,7 @@ paths:
 
         ## Tags
 
-        `Attributes`
+        `Datasets`
 
         ## Rate limiting
 
@@ -1154,7 +1162,7 @@ paths:
       - basicAuthApiKey: []
       summary: Get dataset attributes
       tags:
-      - Attributes
+      - Datasets
   /api/v1/datasets/roles:
     get:
       description: |-
@@ -1261,6 +1269,10 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
         ## Tags
 
         `Datasets`
@@ -1358,6 +1370,10 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
         ## Tags
 
         `Datasets`
@@ -1451,6 +1467,10 @@ paths:
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
 
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
         ## Tags
 
         `Datasets`
@@ -1540,6 +1560,10 @@ paths:
         User authentication required: `true`
 
         This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
 
         ## Tags
 
@@ -2266,8 +2290,6 @@ servers:
 - description: Cloud US
   url: https://cloud.us.soda.io
 tags:
-- description: Soda Cloud API Attributes Endpoints
-  name: Attributes
 - description: Soda Cloud API Check Endpoints
   name: Checks
 - description: Soda Cloud API Dataset Endpoints
