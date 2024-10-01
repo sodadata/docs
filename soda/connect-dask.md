@@ -121,7 +121,16 @@ scan.execute()
 <br />
 
 ##### Note 2
-As part the new release, we opened an optional user control: `use_dask_count_star_as_count_one`. This flag controls the behaviour of: `scan.add_dask_dataframe()` and `scan.add_pandas_dataframe()`. If True, which is the default, it will replace all the `COUNT(*)` SQL queries with `COUNT(1)`. With the release of `dask-sql==2023.10`, the SQL query: `COUNT(*)` was interpreted as: `COUNT(*)`. If you are interested in running the behaviour of `dask-sql>=2023.10`, then you should call the functions `use_dask_count_star_as_count_one=False`.
+In our latest release, we’ve introduced an optional setting called `use_dask_count_star_as_count_one`. This flag lets you control how the `scan.add_dask_dataframe()` and `scan.add_pandas_dataframe()` functions handle `COUNT(*)` in SQL queries.
+
+###### Why This Flag Was Added
+Previously, we only supported `dask-sql` versions up to `2023.10`. In those versions, any `COUNT(*)` query was automatically treated as `COUNT(1)`. Starting with `dask-sql` version `2023.10` and later, `COUNT(*)` is now processed as COUNT(*), which might lead to differences in your metric results.
+
+To avoid unexpected changes, we’ve kept the old behavior as the default, meaning `use_dask_count_star_as_count_one=True`.
+
+###### How to Use This Flag
+**Default behavior**: If you don’t change anything, `COUNT(*)` will still act as `COUNT(1)` (just like before).
+**New behavior**: If you want `COUNT(*)` to be interpreted as `COUNT(*)` with the latest `dask-sql` version, set `use_dask_count_star_as_count_one=False` when using the functions.
 
 Example:
 
