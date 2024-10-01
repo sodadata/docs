@@ -297,6 +297,8 @@ Because Soda Library pushes scan results to Soda Cloud, you may not want to chan
 
 Based on a set of conditions or a specific event schedule, you can programmatically invoke Soda Library to automatically scan a data source. For example, you may wish to scan your data at several points along your data pipeline, perhaps when new data enters a data source, after it is transformed, and before it is exported to another data source.
 
+Refer to [Soda Library Python API reference]({% link soda-library/python_api.md %}) for more information.
+
 {% include custom-sampler.md %}
 
 {% include code-header.html %}
