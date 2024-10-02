@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### October 2, 2024
+* Added documentation of new parameters for the `soda-pandas-dask` package to address changed behavior when upgrading to version 1.6.4 or greater. See [Add optional parameter for `COUNT`]({% link soda/connect-dask.md %}#add-optional-parameter-for-count) and [Add optional parameter for text data conversion]({% link soda/connect-dask.md %}#add-optional-parameter-for-text-data-conversion).
+
 #### September 30, 2024
 * Added [Soda Library Python API reference]({% link soda-library/python_api.md %}) documentation.
 

@@ -8,7 +8,19 @@ parent: Data source reference
 # Connect Soda to Dask and Pandas
 *Last modified on {% last_modified_at %}* <br />
 
+[Connect configuration reference](#connection-configuration-reference)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Load CSV file into Dataframe](#load-csv-file-into-dataframe)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Load JSON file into Dataframe](#load-json-file-into-dataframe)<br />
+[Add optional parameter for `COUNT`](#add-optional-parameter-for-count)<br />
+[Add optional parameter for text data conversion](#add-optional-parameter-for-text-data-conversion)<br />
+[Troubleshoot](#troubleshoot)<br />
+<br />
+
+## Connection configuration reference
+
 For use with [programmatic Soda scans]({% link soda-library/programmatic.md %}), only. 
+
+Install package: `soda-pandas-dask`
 
 Define a programmatic scan for the data in the DataFrames. You do not need to configure a connection to a data source, but you must still configure a connection to Soda Cloud using API Keys. Refer to the following example.
 
@@ -17,8 +29,6 @@ Define a programmatic scan for the data in the DataFrames. You do not need to co
 To validate your account license or free trial, Soda Library must communicate with a Soda Cloud account via API keys. You create a set of API keys in your Soda Cloud account, then use them to configure the connection to Soda Library. <br /><a href="https://docs.soda.io/soda/get-started-roadmap.html#about-soda">Learn more</a><br /><br />
 </details>
 
-
-Install package: `soda-pandas-dask`
 
 
 ### Load CSV file into Dataframe
@@ -114,10 +124,6 @@ scan.set_verbose(True)
 scan.execute()
 ```
 
-#### Note on new release
- In `dask>=2023.7.1` release and later ones, Dask DataFrame automatically converts text data to `string[pyarrow]` data type if `pandas>=2` and `pyarrow>=12` are installed. We updated our codebase with `dask>=2023.7.1` but it still expects text data to be converted to `object` data type, therefore we add the flag: `dask.config.set({"dataframe.convert-string": False})` to avoid `KeyError: string[pyarrow]` errors. <br /><a href="https://docs.dask.org/en/stable/changelog.html#v2023-7-1">More info here.</a><br /><br />
-<br />
-
 ### Load JSON file into Dataframe
 
 {% include code-header.html %}
@@ -133,6 +139,69 @@ df = pd.read_json('your_file.json')
 
 ...
 ```
+
+
+## Add optional parameter for `COUNT`
+
+Prior to `soda-pandas-dask` version 1.6.4, Soda only supported `dask-sql` versions up to `2023.10` in which the `COUNT(*)` clause behaved as `COUNT(1)` by default. With `dask-sql` versions greater than `2023.10`, Dask's behavior changed so that `COUNT(*)` behaves as `COUNT(*)`. Therefore, upgrading your `soda-pandas-dask` package, which supports newer versions of `dask-sql` with the new behavior, might lead to unexpected differences in your check results. 
+
+To mitigate confusion, with `soda-pandas-dask` version 1.6.4 or greater, use the optional `use_dask_count_star_as_count_one` parameter when calling `scan.add_dask_dataframe()` or `scan.add_pandas_dataframe()` to explicitly set the behavior of the `COUNT(*)` clause, as in the following example.
+
+|Parameter setting | behavior |
+|----------------- | --------- |
+| `use_dask_count_star_as_count_one=True`| `COUNT(*)` behaves as SQL `COUNT(1)` operation |
+| `use_dask_count_star_as_count_one=False` | `COUNT(*)` behaves as SQL `COUNT(*)` operation |
+
+If you do not add the parameter, Soda defaults to `use_dask_count_star_as_count_one=True`.
+
+{% include code-header.html %}
+```python
+import pandas as pd
+
+import dask
+import dask.datasets
+from soda.scan import Scan
+
+# Create a Soda scan object
+scan = Scan()
+
+# Load timeseries data from Dask datasets
+df_timeseries = dask.datasets.timeseries().reset_index()
+df_timeseries["email"] = "a@soda.io"
+
+# Add Dask Dataframe to scan and assign a dataset name to refer from checks.yaml
+# Dask uses SQL COUNT(*) operation, instead of COUNT(1)
+scan.add_dask_dataframe(dataset_name="timeseries", dask_df=df_timeseries, data_source_name="orders", use_dask_count_star_as_count_one=False)
+```
+
+## Add optional parameter for text data conversion
+
+In `dask>=2023.7.1` and later, if you use `pandas>=2` and `pyarrow>=12`, Dask Dataframe automatically converts text data to `string[pyarrow]` data type. With `soda-pandas-dask` version 1.6.4, Soda's updated codebase uses `dask>=2023.7.1` but it still expects text data to be converted to `object` data type. 
+
+Add the `dask.config.set({"dataframe.convert-string": False})` parameter set to `False`, as in the following example, to avoid `KeyError: string[pyarrow]` errors. Access <a href="https://docs.dask.org/en/stable/changelog.html#v2023-7-1" target="_blank">Dask documentation</a> for further details.
+
+{% include code-header.html %}
+```python
+import pandas as pd
+
+import dask
+import dask.datasets
+from soda.scan import Scan
+
+# Avoid string conversion errors
+dask.config.set({"dataframe.convert-string": False})
+
+# Create a Soda scan object
+scan = Scan()
+
+# Load timeseries data from Dask datasets
+df_timeseries = dask.datasets.timeseries().reset_index()
+df_timeseries["email"] = "a@soda.io"
+
+# Add Dask Dataframe to scan and assign a dataset name to refer from checks.yaml
+scan.add_dask_dataframe(dataset_name="timeseries", dask_df=df_timeseries, data_source_name="orders", use_dask_count_star_as_count_one=False)
+```
+
 <br />
 
 ## Troubleshoot
@@ -142,6 +211,17 @@ df = pd.read_json('your_file.json')
 **Workaround:** Uninstall the `soda-pandas-dask` package, then downgrade the version of Python your environment uses to Python 3.9. Install the `soda-pandas-dask` package again. 
 
 <br />
+
+**Problem:** The `COUNT(*`) behavior in `dask-sql` is behaving unexpectedly or yielding confusing check results.
+
+**Solution:** Upgrade `soda-pandas-dask` to version 1.6.4 or greater and use the optional `use_dask_count_star_as_count_one=True` parameter when calling `scan.add_dask_dataframe()` or `scan.add_pandas_dataframe()` to persist old `dask-sql` behavior. See [Add optional parameter for `COUNT`](#add-optional-parameter-for-count).
+
+<br />
+
+**Problem:** You encounter an error that reads `KeyError: string[pyarrow]`.
+
+**Solution:** Upgrade `soda-pandas-dask` to version 1.6.4 or greater and use the `dask.config.set({"dataframe.convert-string": False})` parameter set to `False`. See [Add optional parameter text data conversion](#add-optional-parameter-for-text-data-conversion).
+
 <br />
 
 ---
