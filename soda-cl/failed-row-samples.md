@@ -606,9 +606,11 @@ If you are running Soda scans programmatically, you can add a custom sampler to 
 <div class="warpper">
   <input class="radio" id="one" name="group" type="radio" checked>
   <input class="radio" id="two" name="group" type="radio">
+  <input class="radio" id="three" name="group" type="radio">
   <div class="tabs">
   <label class="tab" id="one-tab" for="one">Simple example</label>
   <label class="tab" id="two-tab" for="two">Example with DataFrames </label>
+   <label class="tab" id="three-tab" for="three">Example with Sample Reference </label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
@@ -768,12 +770,9 @@ if __name__ == "__main__":
 ```
 
   </div>
+  <div class="panel" id="three-panel" markdown="1">
 
-  </div>
-</div>
-
-
-<!--Optionally, you can include `SampleRef` to display a message in Soda Cloud that directs users to the alternate location to find the rerouted failed row samples for a check.
+Optionally, you can include `SampleRef` to display a message in Soda Cloud that directs users to the alternate location to find the rerouted failed row samples for a check.
 
 ![file-storage](/assets/images/file-storage.png){:height="600px" width="600px"}
 
@@ -782,12 +781,12 @@ if __name__ == "__main__":
 from soda.scan import Scan
 from soda.sampler.sampler import Sampler
 from soda.sampler.sample_context import SampleContext
+# import SampleRef
 from soda.sampler.sample_ref import SampleRef
 
 # Create a custom sampler by extending the Sampler class
 class CustomSampler(Sampler):
     def store_sample(self, sample_context: SampleContext):
-        # Retrieve the rows from the sample for a check.
         rows = sample_context.sample.get_rows()
         sample_schema = sample_context.sample.get_schema()
         # Provide details about where to access failed row samples
@@ -806,31 +805,13 @@ class CustomSampler(Sampler):
 if __name__ == '__main__':
     # Create a Scan object.
     s = Scan()
-    # Configure an instance of custom sampler.
-    s.sampler = CustomSampler()
-
-    s.set_scan_definition_name("test_scan")
-    s.set_data_source_name("aa_vk")
-    s.add_configuration_yaml_str(f"""
-    data_source test:
-      type: postgres
-      schema: public
-      host: localhost
-      port: 5433
-      username: postgres
-      password: secret
-      database: postgres
-    """)
-
-    s.add_sodacl_yaml_str(f"""
-    checks for dim_account:
-        - invalid_percent(account_type) = 0:
-            valid format: email
-
-    """)
-    s.execute()
+    ...
 ```
--->
+
+  </div>
+
+  </div>
+</div>
 
 ## About failed row sampling queries
 
