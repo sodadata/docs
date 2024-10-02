@@ -138,6 +138,12 @@ Create or edit global and dataset roles to assign to users or user groups in Sod
 
 As a user with permission to do so, navigate to **your avatar** > **Organization Settings**, then access the **Global Roles** tab. Click **Add Global Role**, then follow the guided workflow to name a role and add permissions groups. Refer to the [table above](#global-roles-and-permissions) for a list of permissions groups, and their associated permissions, that you can assign to global roles.
 
+To associate individual users or user groups with global roles, you can do so in one of two ways:
+* Add users or groups to role: Navigate to **your avatar** > **Organization Settings**. In the **Global Roles** tab, click the stacked dots next to the role to which you wish to assign to users or groups and select **Assign Members**.
+* Add role to user or group: Navigate to **your avatar** > **Organization Settings**. In the **Users** tab or **User Groups**, click the stacked dots next to the user or group to which you wish to assign a particular global role and select **Assign Global Roles**.
+
+
+
 <br />
 
 ### Access an audit trail

@@ -610,7 +610,7 @@ If you are running Soda scans programmatically, you can add a custom sampler to 
   <div class="tabs">
   <label class="tab" id="one-tab" for="one">Simple example</label>
   <label class="tab" id="two-tab" for="two">Example with DataFrames </label>
-   <label class="tab" id="two-tab" for="three">Example with Sample Reference </label>
+   <label class="tab" id="three-tab" for="three">Example with Sample Reference </label>
     </div>
   <div class="panels">
   <div class="panel" id="one-panel" markdown="1">
