@@ -772,9 +772,14 @@ if __name__ == "__main__":
   </div>
   <div class="panel" id="three-panel" markdown="1">
 
-Optionally, you can include `SampleRef` to display a message in Soda Cloud that directs users to the alternate location to find the rerouted failed row samples for a check.
+Optionally, you can include `SampleRef`, as in the example below, to display a message in Soda Cloud that directs users to the alternate location to find the rerouted failed row samples for a check. 
 
-![file-storage](/assets/images/file-storage.png){:height="600px" width="600px"}
+In the `message` parameter, you can use one or more of the following variables to customize the details of the message that Soda presents to users when directing them to the alternate location.
+
+* `{scan_time}` 
+* `{check_label}`
+* `{data_source_label}`
+* `{dataset_label}`
 
 {% include code-header.html %}
 ```python
@@ -797,7 +802,7 @@ class CustomSampler(Sampler):
             stored_row_count=row_count,
             type=SampleRef.TYPE_PYTHON_CUSTOM_SAMPLER,
             link="https://www.example.com",
-            message="Access failed row samples in external file storage.",
+            message="Access failed row samples for {dataset_label} in external file storage.",
             link_text="File storage",
         )
 
@@ -807,6 +812,9 @@ if __name__ == '__main__':
     s = Scan()
     ...
 ```
+
+![file-storage](/assets/images/file-storage.png){:height="600px" width="600px"}
+
 
   </div>
 
