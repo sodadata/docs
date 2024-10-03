@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### October 3, 2024
+* Added documentation for using [variables]({% link soda-cl/failed-row-samples.md %}#configure-a-python-custom-sampler) in the `SampleRef` `message` parameter for Python custom sampler to collect and display failed row samples.
+
 #### October 2, 2024
 * Added documentation of new parameters for the `soda-pandas-dask` package to address changed behavior when upgrading to version 1.6.4 or greater. See [Add optional parameter for `COUNT`]({% link soda/connect-dask.md %}#add-optional-parameter-for-count) and [Add optional parameter for text data conversion]({% link soda/connect-dask.md %}#add-optional-parameter-for-text-data-conversion).
 * Added example for `SampleRef` with Python Custom Sampler to direct users to a [bespoke location]({% link soda-cl/failed-row-samples.md %}#configure-a-python-custom-sampler) to find failed row samples for checks with failed test results.
