@@ -346,6 +346,20 @@ def get_all_checks_text(self) -> str | None
 ```
 <br/>
 
+## Configuring the Scan by directly modifying its attributes
+
+Configure the (global) samples limit for failed rows sampler. 
+This is useful when scanning Pandas, Dask, or Spark dataframes. 
+```python
+self._configuration.samples_limit: int
+```
+
+Replace the failed rows sampler with a custom sampler. 
+See [Configure a custom sampler]({% link soda-cl/failed-row-samples.md %}#configure-a-python-custom-sampler)
+for instructions about how to define a custom sampler. 
+```python
+self.sampler: Sampler
+```
 
 <!--
 ### Methods for Remote Scans (beta)
