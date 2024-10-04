@@ -330,7 +330,7 @@ def get_all_checks_text(self) -> str | None
 ```
 <br/>
 
-## Configuring the Scan by directly modifying its attributes
+## Attributes
 
 Configure the (global) samples limit for failed rows sampler. 
 This is useful when scanning Pandas, Dask, or Spark dataframes. 
