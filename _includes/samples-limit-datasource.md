@@ -10,7 +10,7 @@ data_source soda_test:
     samples_limit: 50
 ```
 
-Alternatively, you can set a samples limit for a datasource using the Soda Library like so:
+Alternatively, you can set a samples limit for a datasource using the Soda Library by modifying the value of an attribute of the `Scan` class object:
 {% include code-header.html %}
 ```python
 from soda.scan import Scan
