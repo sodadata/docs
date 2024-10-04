@@ -337,7 +337,7 @@ def get_all_checks_text(self) -> str | None
 
 ## Attributes
 
-Configure the (global) samples limit for failed rows sampler. 
+Configure the datasource-level samples limit for the failed rows sampler. 
 This is useful when scanning Pandas, Dask, or Spark dataframes. 
 ```python
 self._configuration.samples_limit: int
