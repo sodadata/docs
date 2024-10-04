@@ -179,6 +179,11 @@ Configure Soda to prevent it from sending scan results to Soda Cloud. This is us
 def set_is_local(self, local_var: bool = True)
 ```
 
+Configure a scan to have access to custom variables that can be referenced in your SodaCL files.
+`variables` is a dictionary with string keys and string values. 
+```python
+def add_variables(self, variables: dict[str, str])
+```
 <br/>
 
 ### Add configurations to handle scan results
