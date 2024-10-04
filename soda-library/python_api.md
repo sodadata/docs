@@ -239,6 +239,32 @@ def get_error_logs_text(self) -> str | None
 ```
 <br/>
 
+Instruct Soda to return a dictionary containing the results of the scan. 
+```python
+def get_scan_results(self) -> dict
+```
+
+The scan results dictionary includes the following keys:
+```
+"definitionName"
+"defaultDataSource"
+"dataTimestamp"
+"scanStartTimestamp"
+"scanEndTimestamp"
+"hasErrors"
+"hasWarnings"
+"hasFailures"
+"metrics"
+"checks"
+"checksMetadata"
+"queries"
+"automatedMonitoringChecks"
+"profiling"
+"metadata"
+"logs"
+```
+<br/>
+
 
 ### Add configurations to handle check results
 
@@ -271,32 +297,6 @@ def has_check_warns(self) -> bool
 Instruct Soda to return a boolean value to indicate that one or more checks executed during the scan resulted in a fail or warn state.
 ```python
 def has_check_warns_or_fails(self) -> bool
-```
-<br/>
-
-Instruct Soda to return a dictionary containing the results of the scan. 
-```python
-def get_scan_results(self) -> dict
-```
-
-The scan results dictionary includes the following keys:
-```
-"definitionName"
-"defaultDataSource"
-"dataTimestamp"
-"scanStartTimestamp"
-"scanEndTimestamp"
-"hasErrors"
-"hasWarnings"
-"hasFailures"
-"metrics"
-"checks"
-"checksMetadata"
-"queries"
-"automatedMonitoringChecks"
-"profiling"
-"metadata"
-"logs"
 ```
 <br/>
 
