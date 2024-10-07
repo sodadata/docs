@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### October 7, 2024
+* Updated the [Soda Library Python API reference]({% link soda-library/python_api.md %}) documentation with attributes for samples limit, and an optional config for using variables.
+
 #### October 3, 2024
 * Added documentation for using [variables]({% link soda-cl/failed-row-samples.md %}#configure-a-python-custom-sampler) in the `SampleRef` `message` parameter for Python custom sampler to collect and display failed row samples.
 
