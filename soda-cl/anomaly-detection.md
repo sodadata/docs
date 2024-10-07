@@ -31,6 +31,7 @@ checks for dim_customer:
         frequency: auto
         window_length: 1000
         aggregation_function: last
+    auto_exclude_anomalies: True  # optional
     model: # optional
       hyperparameters:
         static:
@@ -673,6 +674,8 @@ The anomalies create larger intervals because the model uses them for training d
 After instructing Soda to ignore the anomalous measurements, the model's confidence interval is smaller and the model is more sensitive to anomalies, as indicated in the graph below.
 
 ![ad-feedback-processed-mape](/assets/images/ad-feedback-processed-mape.png){:height="700px" width="700px"}
+
+From `soda-library` version 1.6.4, you can configure Soda to automatically ignore in the training dataset unusual data points (anomalies) by setting the option `auto_exclude_anomalies=True`. With this setting, Soda will automatically exclude these anomalies from future model training, without you the need to manually provide input in the feedback section. However, you’ll still receive alerts if new anomalies occur.
 
 ## Track anomalies and relative changes by group
 
