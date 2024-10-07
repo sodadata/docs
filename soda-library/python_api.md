@@ -21,6 +21,7 @@ Refer to [Program a scan]({% link soda-library/run-a-scan.md %}#scan-for-data-qu
 [Add optional scan settings](#add-optional-scan-settings)<br />
 [Add configurations to handle scan results](#add-configurations-to-handle-scan-results)<br />
 [Add configurations to handle check results](#add-configurations-to-handle-check-results)<br />
+[Attributes](#attributes)<br />
 <br />
 
 
@@ -178,6 +179,7 @@ Configure Soda to prevent it from sending scan results to Soda Cloud. This is us
 ```python
 def set_is_local(self, local_var: bool = True)
 ```
+<br/>
 
 Configure a scan to have access to custom variables that can be referenced in your SodaCL files.
 `variables` is a dictionary with string keys and string values. 
@@ -337,11 +339,11 @@ def get_all_checks_text(self) -> str | None
 
 ## Attributes
 
-Configure the datasource-level samples limit for the failed rows sampler. 
-This is useful when scanning Pandas, Dask, or Spark dataframes. 
+Configure the datasource-level samples limit for the failed rows sampler. This is useful when scanning Pandas, Dask, or Spark Dataframes. 
 ```python
 self._configuration.samples_limit: int
 ```
+<br/>
 
 Replace the failed rows sampler with a custom sampler. 
 See [Configure a custom sampler]({% link soda-cl/failed-row-samples.md %}#configure-a-python-custom-sampler)
