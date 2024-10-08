@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### October 10, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.4.
+
 #### October 7, 2024
 * Updated the [Soda Library Python API reference]({% link soda-library/python_api.md %}) documentation with attributes for samples limit, and an optional config for using variables.
 
