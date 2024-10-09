@@ -342,7 +342,7 @@ At the [beginning](#connect-soda-cloud-to-soda-library-and-data-source) of this 
 
 The following outlines the contents of each notebook and the steps included to install Soda and invoke it to run scans for data quality, thereby executing the data quality checks in the checks YAMLfiles. Beyond invoking Soda to scan for data quality, the notebooks also save the checks' metadata for further analysis.
 
-#### Data Ingestion Checks
+#### Data ingestion checks
 Download: <a href="/assets/Data Ingestion Checks.ipynb" download>Data Ingestion Checks.ipynb</a>
 {% include code-header.html %}
 ```python
@@ -429,7 +429,7 @@ scan.save_scan_result_to_file(result_path/f"ingestion_result_{scan_date}.json", 
 
 <br />
 
-#### Input Data Checks and Model output checks
+#### Input data checks and model output checks
 Download: <a href="/assets/Input Data Checks.ipynb" download>Input Data Checks.ipynb</a>
 {% include code-header.html %}
 ```python
@@ -483,7 +483,7 @@ scan.execute()
 print(scan.get_logs_text())
 ```
 
-Using the same structure the data scientists define some extra checks to validate and monitor the performance of their model after training. They define a ratio between the categories and apply an anomaly detection to make sure that there are no spikes or unexpected swifts in the label distribution. Furthermore, the add a check to ensure that they will notified in the case that the model accuracy is below 60% as well as in the case that the dataset is not complete. 
+Using the same structure the data scientists define some extra checks to validate and monitor the performance of their model after training. They define a ratio between the categories and apply an anomaly detection to make sure that there are no spikes or unexpected swifts in the label distribution. Furthermore, they add a check to ensure that they will notified when the model accuracy is below 60% and/or when the dataset is incomplete. 
 
 model_output_checks.yml
 {% include code-header.html %}
