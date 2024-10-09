@@ -64,7 +64,7 @@ To validate an account license or free trial, Soda Library must communicate with
 3. To the file, they add the data source connection configuration to the Unity catalog that contains the Human Resources data the Data Engineer uses, and the Soda Cloud API key connection configuration, then they save the file. 
 {% include code-header.html %}
 ```yaml
-data_source employee_info:
+data_source employees:
  type: spark
  method: databricks
  catalog: unity_catalog
@@ -77,8 +77,8 @@ soda_cloud:
  # Use cloud.soda.io for EU region
  # Use cloud.us.soda.io for US region
  host: https://cloud.soda.io
- api_key_id: 2e0ba0cb-your-api-key-7b
- api_key_secret: 5wd-your-api-key-secret-aGuRg
+ api_key_id: soda-api-key-id
+ api_key_secret: soda-api-key-secret
 ```
 
 <br />
@@ -92,10 +92,11 @@ A check is a test that Soda executes when it scans a dataset in your data source
 
 In this example, the Data Engineer creates two checks files in the `soda_settings` directory in Databricks:
 * `ingestion_checks.yml` to execute quality checks after data ingestion into the Unity catalog in the Data Ingestion Checks notebook
-* `input_data_checks.yml` to execute quality checks after transformation, and before using it to train their ML model in the Input Data Checks notebook. 
+* `input_data_checks.yml` to execute quality checks after transformation, and before using it to train their ML model in the Input Data Checks notebook.
+* `output_data_checks.yml` to execute quality chechs after training the model and monitor the perdormance of your model.
 
 The raw data in this example is divided into two main categories. 
-* The first category is Human Resources data, which the Unity catalog contains in three datasets: basic employee information, results of manager surveys, and results of employee surveys. The survey datasets are updated on a monthly basis. 
+* The first category is Human Resources data, which the Unity catalog contains in three datasets: basic employee information, results of manager surveys, and results of employee surveys. The survey datasets are updated on a frequent basis. 
 * The second category is application login data, which is a file in the Databricks file system; it is updated daily.
 
 Download: <a href="/assets/employee_info_sample.csv" download>employee_info_sample.csv</a><br />
@@ -341,16 +342,12 @@ At the [beginning](#connect-soda-cloud-to-soda-library-and-data-source) of this 
 
 The following outlines the contents of each notebook and the steps included to install Soda and invoke it to run scans for data quality, thereby executing the data quality checks in the checks YAMLfiles. Beyond invoking Soda to scan for data quality, the notebooks also save the checks' metadata for further analysis.
 
-#### Data Ingestion Checks
+#### Data ingestion checks
 Download: <a href="/assets/Data Ingestion Checks.ipynb" download>Data Ingestion Checks.ipynb</a>
 {% include code-header.html %}
 ```python
 # Install to run checks contained in files
 pip install -i https://pypi.cloud.soda.io soda-spark-df
-
-# Install to run checks on data in Unity datasets
-pip install -i https://pypi.cloud.soda.io soda-spark[databricks]
-dbutils.library.restartPython()
 
 # Import Scan from Soda Library
 from soda.scan import Scan 
@@ -372,7 +369,7 @@ scan = Scan()
 
 # Set scan name and data source name
 scan.set_scan_definition_name("Employee Attrition Scan")
-scan.set_data_source_name("employee_info")
+scan.set_data_source_name("employees")
 
 # Add file to be scanned 
 df = spark.read.option("header", True).csv(f"dbfs:/Workspace/Users/my_user_id/employee_attrition/soda_settings/login_logout/PartitionDate={partition}")
@@ -380,8 +377,21 @@ df = spark.read.option("header", True).csv(f"dbfs:/Workspace/Users/my_user_id/em
 # Create temporary View to run the checks 
 df.createOrReplaceTempView("login_logout")
 
-# Add View to the scan object
-scan.add_spark_session(spark, data_source_name="login_logout.py")
+# Function to create temporary views of the tables to be included in the same scan
+def create_temp_views(spark, schema, table_names):
+    for table in table_names:
+        full_table_name = f"{schema}.{table}"
+        df = spark.table(full_table_name)
+        df.createOrReplaceTempView(table)
+
+# Create the temp view from the table list
+schema = "unity_catalog.employees"
+table_names = ["employee_info", "employee_survey", "manager_survey"]
+
+create_temp_views(spark, schema, table_names)
+
+# Add Views to the scan object
+scan.add_spark_session(spark, data_source_name="employees")
 
 # Access the checks YAML file 
 with open(settings_path/"ingestion_checks.yml") as ing_checks:
@@ -419,7 +429,7 @@ scan.save_scan_result_to_file(result_path/f"ingestion_result_{scan_date}.json", 
 
 <br />
 
-#### Input Data Checks
+#### Input data checks and model output checks
 Download: <a href="/assets/Input Data Checks.ipynb" download>Input Data Checks.ipynb</a>
 {% include code-header.html %}
 ```python
@@ -471,6 +481,58 @@ scan.execute()
 
 # Check the Scan object for methods to inspect the scan result; print all logs to console
 print(scan.get_logs_text())
+```
+
+Using the same structure the data scientists define some extra checks to validate and monitor the performance of their model after training. They define a ratio between the categories and apply an anomaly detection to make sure that there are no spikes or unexpected swifts in the label distribution. Furthermore, they add a check to ensure that they will notified when the model accuracy is below 60% and/or when the dataset is incomplete. 
+
+model_output_checks.yml
+{% include code-header.html %}
+```yaml
+discover datasets:
+  datasets:
+    - attrition_model_output
+
+profile columns:
+  columns:
+    - include attrition_model_output.%
+
+filter attrition_model_output [daily]:
+   where: PartitionDate < CAST(current_date() AS TIMESTAMP) - INTERVAL 1 DAY AND PartitionDate > CAST(current_date() AS TIMESTAMP) - INTERVAL 2 DAY
+
+checks for attrition_model_output [daily]:
+  - row_count > 0:
+      name: Dataset cannot be empty
+      attributes: 
+        pipeline_stage: Training
+        team: Data Science
+        dimension: [Completeness]
+
+  - missing_count(Attrition) = 0:
+      name: Attrition field is not completed
+      attributes: 
+        pipeline_stage: Training
+        team: Data Science
+        dimension: [Completeness]
+
+  - avg(Accuracy):
+      name: Accuracy is not below 60%
+      fail: when < 0.60
+      warn: when < 0.70
+      attributes:
+        pipeline_stage: Training
+        team: Data Science
+        dimension: [Accuracy]
+        
+  - anomaly detection for attrition_ratio:
+      name: Attrition ratio anomaly detection
+      attrition_ratio query: |
+        SELECT (COUNT(CASE WHEN Attrition = true THEN 1 END) * 1.0) / COUNT(*) AS attrition_ratio
+        FROM attrition_model_output
+      attributes:
+        pipeline_stage: Training
+        team: Data Science
+        dimension: [Accuracy]
+    
 ```
 
 <br />
