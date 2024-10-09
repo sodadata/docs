@@ -9,6 +9,16 @@ parent: Learning resources
 
 <br /> 
 
+#### October 9, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.30.
+* Updated Test data quality in a Databricks pipeline to include, among minor edits, [Input data checks and model output checks]({% link soda/quick-start-databricks-pipeline.md %}#input-data-checks-and-model-output-checks).
+
+#### October 8, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.4.
+
+#### October 7, 2024
+* Updated the [Soda Library Python API reference]({% link soda-library/python_api.md %}) documentation with attributes for samples limit, and an optional config for using variables.
+
 #### October 3, 2024
 * Added documentation for using [variables]({% link soda-cl/failed-row-samples.md %}#configure-a-python-custom-sampler) in the `SampleRef` `message` parameter for Python custom sampler to collect and display failed row samples.
 

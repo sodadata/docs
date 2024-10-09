@@ -378,12 +378,11 @@ checks for dim_product:
   </tr>
 </table>
 
-By default, Soda collects 100 failed row samples. You can limit the number of sample rows that Soda sends using the `samples limit` key:value pair configuration, as in the following failed row check example. 
+By default, Soda collects 100 failed row samples. You can limit the number of sample rows that Soda sends using the `samples limit` key:value pair configuration, as in the following missing check example. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
-  - failed rows:
-      fail condition: total_children = '2' and number_cars_owned >= 3
+  - missing_count(number_cars_owned) >= 3
       samples limit: 50
 ```
 
