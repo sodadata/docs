@@ -31,7 +31,7 @@ checks for dim_customer:
         frequency: auto
         window_length: 1000
         aggregation_function: last
-        auto_exclude_anomalies: True  # optional
+        auto_exclude_anomalies: True
     model: # optional
       hyperparameters:
         static:
