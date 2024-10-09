@@ -336,6 +336,7 @@ checks for dim_customer:
 | `frequency` | `auto`: automatically detected by Soda<br /> `T` or `min`: by minute<br /> `H`: by hour<br />`D`: by calendar day<br /> `B`: by business day<br /> `W`: by week<br /> `M`: by month end<br /> `MS`: by month start<br /> `Q`: by quarter end<br /> `QS`: by quarter start<br /> `A`: by year end<br /> `AS`: by year start<br /> customized, such as `5H` for every 5 hours<br /> | `auto` |
 | `window_length` | integer, number of historical measurements | `1000` |
 | `aggregation_function` | `last`: uses the last non-null value in the window <br /> `first`: uses the first non-null value in the window<br /> `mean`: calculates the average of values in the window<br /> `min`: uses the minimum value in the window<br /> `max`: uses the maximum value in the window | `last` |
+| `auto_exclude_anomalies` | boolean, `True` or `False` | `False` as Soda automatically includes anomalies the training dataset unless you add this parameter and set it to `true`. |
 
 The `frequency` parameter determines the regularity of each measurement in the training dataset.  If Soda cannot detect a clear frequency, it assumes a frequency of once-daily, and uses the last measurement for each day, if there is more than one measurement per day.
 
@@ -347,9 +348,9 @@ See the example below for a demonstration of how Soda aggregates the training da
 
 ![underfitting-coverage](/assets/images/ad-training-dataset-aggregation.png){:height="700px" width="700px"}
 
-From `soda-library` version 1.6.4, you can configure Soda to automatically ignore in the training dataset unusual data points (anomalies) by setting the option `auto_exclude_anomalies: True`. With this setting, Soda will automatically exclude these anomalies from future model training, without the need to manually provide input in the feedback section. However, you’ll still receive alerts if new anomalies occur.
+The `auto_exclude_anomalies` parameter determines whether Soda ignores, or includes unusual data points in the training dataset. When set to `True`, Soda excludes anomalies from future model training, without the need to manually provide feedback input in the Soda Cloud user interface. Though excluded from the training dataset, Soda still issues alerts when new anomalies occur.
 
-To understand the effect of `auto_exclude_anomalies`, the example below presents the difference between configurations. On the left image, previously seen anomalies are included in the training dataset, hence: `auto_exclude_anomalies: False`. This leads to wider confidence intervals. In contrast, setting `auto_exclude_anomalies: True` implies that in future runs of anomaly detection, that previously-seen anomaly is excluded from the training dataset automatically, resulting in narrower confidence intervals over time. 
+To understand the effect of the parameter, the examples below present the difference between settings. In the image on the left, the parameter is set to `False`, so Soda includes existing, recorded anomalies in the training dataset which leads to broader confidence intervals indicated in green and yellow. In contrast, with the parameter to `True`, as in the image on the right, Soda excludes existing anomalies in the training dataset resulting in narrower confidence intervals over time. 
 
 ![auto-exclude-anomalies](/assets/images/ad-training-dataset-auto-exclude-anomalies.png){:height="1000px" width="700px"}
 
