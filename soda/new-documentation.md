@@ -9,6 +9,18 @@ parent: Learning resources
 
 <br /> 
 
+#### October 9, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.30.
+
+#### October 8, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.4.
+
+#### October 7, 2024
+* Updated the [Soda Library Python API reference]({% link soda-library/python_api.md %}) documentation with attributes for samples limit, and an optional config for using variables.
+
+#### October 3, 2024
+* Added documentation for using [variables]({% link soda-cl/failed-row-samples.md %}#configure-a-python-custom-sampler) in the `SampleRef` `message` parameter for Python custom sampler to collect and display failed row samples.
+
 #### October 2, 2024
 * Added documentation of new parameters for the `soda-pandas-dask` package to address changed behavior when upgrading to version 1.6.4 or greater. See [Add optional parameter for `COUNT`]({% link soda/connect-dask.md %}#add-optional-parameter-for-count) and [Add optional parameter for text data conversion]({% link soda/connect-dask.md %}#add-optional-parameter-for-text-data-conversion).
 * Added example for `SampleRef` with Python Custom Sampler to direct users to a [bespoke location]({% link soda-cl/failed-row-samples.md %}#configure-a-python-custom-sampler) to find failed row samples for checks with failed test results.

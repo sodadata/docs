@@ -112,9 +112,9 @@ If you wish to run a scan immediately to see the scan results for a no-code chec
 2. In the table of checks, locate the check you wish to execute and click the stacked dots, then select **Execute Check**. Alternatively, click the check and in the check's page, click **Execute**. You can only execute an individual check if it was first created as a no-code check, as indicated by the cloud icon in the **Origin** column of the table of checks.
 3. Soda executes *only* your check.
 
-You can also run and ad hoc scan to execute all checks associated with a scan definition. 
+You can also run an ad hoc scan to execute all checks associated with a scan definition. 
 
-1. In Soda Cloud, navigate to Scans.
+1. In Soda Cloud, navigate to **Scans**.
 2. In the list of scan definitions, click the one that is associated with the checks you wish to execute. 
 3. In the scan definition page, click **Run Scan** to immediately execute all checks that use this scan definition.
 
