@@ -349,7 +349,7 @@ See the example below for a demonstration of how Soda aggregates the training da
 
 From `soda-library` version 1.6.4, you can configure Soda to automatically ignore in the training dataset unusual data points (anomalies) by setting the option `auto_exclude_anomalies: True`. With this setting, Soda will automatically exclude these anomalies from future model training, without the need to manually provide input in the feedback section. However, you’ll still receive alerts if new anomalies occur.
 
-To understand the effect of `auto_exclude_anomalies`, the example below presents the difference between configurations. In the example, an anomaly happened on `23-04-2022`. On the left image, previously seen anomalies are included in the training dataset, hence: `auto_exclude_anomalies: False`. This leads to wider confidence intervals. In contrast, setting `auto_exclude_anomalies: True` implies that in future runs of anomaly detection, that previously-seen anomaly is excluded from the training dataset automatically, resulting in narrower confidence intervals over time. 
+To understand the effect of `auto_exclude_anomalies`, the example below presents the difference between configurations. On the left image, previously seen anomalies are included in the training dataset, hence: `auto_exclude_anomalies: False`. This leads to wider confidence intervals. In contrast, setting `auto_exclude_anomalies: True` implies that in future runs of anomaly detection, that previously-seen anomaly is excluded from the training dataset automatically, resulting in narrower confidence intervals over time. 
 
 ![auto-exclude-anomalies](/assets/images/ad-training-dataset-auto-exclude-anomalies.png){:height="1000px" width="700px"}
 
