@@ -273,11 +273,11 @@ For example, the previously-recorded historic measurement for row count is 80, a
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
-  - change percent for row_count > 50%
+  - change percent for row_count < 50%
 ```
 
 | metric |`row_count` |
-| comparison symbol | `>` |
+| comparison symbol | `<` |
 | threshold | `50 %` | 
 
 <br />
