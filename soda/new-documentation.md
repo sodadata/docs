@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### October 16, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.31.
+
 #### October 10, 2024
 * Added an optional `auto_exclude_anomalies` parameter for [anomaly detection]({% link soda-cl/anomaly-detection.md %}#add-optional-training-dataset-configurations) that you can use to ignore or include existing anomalies in a training dataset.
 
