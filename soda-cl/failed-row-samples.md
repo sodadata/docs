@@ -600,6 +600,11 @@ row_2_column_1_value,row_2_column_2_value
 
 If you are running Soda scans programmatically, you can add a custom sampler to collect samples of rows with a `fail` check result. 
 
+The contents of the tabs below offer examples of how you can implement a custom sampler.
+* The **Simple Example** prints failed rows in the CLI.
+* The **Example with Dataframes** uses a `scan context` to read data from a scan and build a Dataframe with the results.
+* The **Example with Sample Reference** uses `SampleRef` to reroute failed rows and customize the message that appears in Soda Cloud to direct users to the alternate storage location, including using a variable to dynamically populate the message. 
+
 💡 To see this sampler in action, copy+paste and run an [example script]({% link soda/route-failed-rows.md %}) locally to print failed row samples in the CLI scan output.
 
 <div class="warpper">
@@ -608,7 +613,7 @@ If you are running Soda scans programmatically, you can add a custom sampler to 
   <input class="radio" id="three" name="group" type="radio">
   <div class="tabs">
   <label class="tab" id="one-tab" for="one">Simple example</label>
-  <label class="tab" id="two-tab" for="two">Example with DataFrames </label>
+  <label class="tab" id="two-tab" for="two">Example with Dataframes </label>
    <label class="tab" id="three-tab" for="three">Example with Sample Reference </label>
     </div>
   <div class="panels">

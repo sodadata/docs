@@ -10,6 +10,13 @@ parent: Learning resources
 <br /> 
 
 #### October 10, 2024
+* Added an optional `auto_exclude_anomalies` parameter for [anomaly detection]({% link soda-cl/anomaly-detection.md %}#add-optional-training-dataset-configurations) that you can use to ignore or include existing anomalies in a training dataset.
+
+#### October 9, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.30.
+* Updated Test data quality in a Databricks pipeline to include, among minor edits, [Input data checks and model output checks]({% link soda/quick-start-databricks-pipeline.md %}#input-data-checks-and-model-output-checks).
+
+#### October 8, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.4.
 
 #### October 7, 2024
