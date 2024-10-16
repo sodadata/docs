@@ -32,6 +32,7 @@ checks for dim_customer:
         window_length: 1000
         aggregation_function: last
         auto_exclude_anomalies: True
+    bounds_mode: ""both_bounds"
     model: # optional
       hyperparameters:
         static:
@@ -329,6 +330,7 @@ checks for dim_customer:
         frequency: auto
         window_length: 1000
         aggregation_function: last
+        auto_exclude_anomalies: False
 ```
 
 | Configuration key | Value | Default |
@@ -353,6 +355,13 @@ The `auto_exclude_anomalies` parameter determines whether Soda ignores, or inclu
 To understand the effect of the parameter, the examples below present the difference between settings. In the image on the left, the parameter is set to `False`, so Soda includes existing, recorded anomalies in the training dataset which leads to broader confidence intervals indicated in green and yellow. In contrast, with the parameter to `True`, as in the image on the right, Soda excludes existing anomalies in the training dataset resulting in narrower confidence intervals over time. 
 
 ![auto-exclude-anomalies](/assets/images/ad-training-dataset-auto-exclude-anomalies.png){:height="1000px" width="700px"}
+
+## Add optional bounds mode configuration
+The `bounds_mode` setting lets you choose which types of anomalies you want to receive alerts for. For example, if you only want to be alerted about unusually low values (and not high ones), set `bounds_mode: "lower_bounds_only"`.
+
+By default, `bounds_mode` is set to `"both_bounds"`, which means you'll get alerts for both high and low anomalies, just like before this option was available. If you prefer not to be alerted about values that fall below the lower confidence interval, switch to `"upper_bounds_only"`, as shown in the right of the image below.
+
+![auto-exclude-anomalies](/assets/images/ad-bounds-mode.png){:height="1000px" width="700px"}
 
 ## Add optional model configurations
 
