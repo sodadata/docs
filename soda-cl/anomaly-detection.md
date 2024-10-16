@@ -32,7 +32,7 @@ checks for dim_customer:
         window_length: 1000
         aggregation_function: last
         auto_exclude_anomalies: True
-    bounds_mode: ""both_bounds"
+    alert_directionality: "upper_and_lower_bounds"
     model: # optional
       hyperparameters:
         static:
@@ -356,12 +356,12 @@ To understand the effect of the parameter, the examples below present the differ
 
 ![auto-exclude-anomalies](/assets/images/ad-training-dataset-auto-exclude-anomalies.png){:height="1000px" width="700px"}
 
-## Add optional bounds mode configuration
-The `bounds_mode` setting lets you choose which types of anomalies you want to receive alerts for. For example, if you only want to be alerted about unusually low values (and not high ones), set `bounds_mode: "lower_bounds_only"`.
+## Add optional alert directionality configuration
+The `alert_directionality` setting lets you choose which types of anomalies you want to receive alerts for. For example, if you only want to be alerted about unusually low values (and not high ones), set `alert_directionality: "lower_bound_only"`.
 
-By default, `bounds_mode` is set to `"both_bounds"`, which means you'll get alerts for both high and low anomalies, just like before this option was available. If you prefer not to be alerted about values that fall below the lower confidence interval, switch to `"upper_bounds_only"`, as shown in the right of the image below.
+By default, `alert_directionality` is set to `"upper_and_lower_bounds"`, which means you'll get alerts for both high and low anomalies, just like before this option was available. If you prefer not to be alerted about values that fall below the lower confidence interval, switch to `"upper_bound_only"`, as shown in the right of the image below.
 
-![auto-exclude-anomalies](/assets/images/ad-bounds-mode.png){:height="1000px" width="700px"}
+![auto-exclude-anomalies](/assets/images/ad-alert-directionality.png){:height="1000px" width="700px"}
 
 ## Add optional model configurations
 
