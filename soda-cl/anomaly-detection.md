@@ -32,7 +32,7 @@ checks for dim_customer:
         window_length: 1000
         aggregation_function: last
         auto_exclude_anomalies: True
-    alert_directionality: "upper_and_lower_bounds"
+    alert_directionality: "upper_and_lower_bounds" # optional
     model: # optional
       hyperparameters:
         static:
