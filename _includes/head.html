@@ -1,6 +1,6 @@
 {% comment %}
   Copied from https://github.com/pmarsceill/just-the-docs/blob/v0.3.3/_includes/head.html
-  too match the version of the installed gem
+  to match the version of the installed gem
 {% endcomment %}
 <head>
   <meta charset="UTF-8">
@@ -52,5 +52,11 @@
     <link rel="stylesheet" href="{{ '/css/fullwidth-override.css' | relative_url }}">
   {% endif %}
 
+  <!-- Reddit Pixel -->
+  <script>
+  !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','t2_95bvy8de');rdt('track', 'PageVisit');
+  </script>
+  <!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
+  <!-- End Reddit Pixel -->
 
 </head>
