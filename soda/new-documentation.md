@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br /> 
 
+#### October 21, 2024
+* Published a new How To guide for building a custom Soda data quality [reporting dashboard]({% link api-docs/reporting-api-to-overview-dashboards.md %}) in Sigma. 
+
 #### October 10, 2024
 * Added an optional `auto_exclude_anomalies` parameter for [anomaly detection]({% link soda-cl/anomaly-detection.md %}#add-optional-training-dataset-configurations) that you can use to ignore or include existing anomalies in a training dataset.
 

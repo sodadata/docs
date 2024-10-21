@@ -27,6 +27,7 @@ Use the following How tos for practical advice, examples, and instructions for u
 
 | How to | Description | [Soda product]({% link soda/product-overview.md %}) <br/>requirements |
 | ----- | ----------- | ------------ |
+| [Build a customized dashboard]({% link api-docs/reporting-api-to-overview-dashboards.md %}) | Learn how to build a customized data quality reporting dashboard in Sigma using the Soda Cloud API.| Soda Library<br /> Soda Cloud |
 | [Invoke Soda in Databricks]({% link soda/quick-start-databricks.md %}) | Learn how to invoke Soda data quality tests in a Databricks notebook. | Soda Library<br /> Soda Cloud |
 | [Use a Secrets Manager]({% link soda/quick-start-secrets.md %}) | Learn how to set up a Soda Agent to use an External Secrets Manager to retrieve frequently-rotated data source passwords.| Soda Cloud<br /> Self-hosted Agent |
 | [Generate API keys]({% link soda-cloud/api-keys.md %}) | Learn how to use Soda Cloud API keys to securely communicate with other entities such as Soda Library and self-hosted Soda Agents, and to provide secure access to Soda Cloud via API. | Soda Cloud |
