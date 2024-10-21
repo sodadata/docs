@@ -7,7 +7,13 @@ parent: Learning resources
 
 # What's new in Soda docs?
 
-<br /> 
+<br />
+
+#### October 17, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.6.5 and 1.7.0, and Soda Cloud Bulk-edit of dataset responsibilities and attributes.
+
+#### October 16, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Agent 1.1.31.
 
 #### October 21, 2024
 * Published a new How To guide for building a custom Soda data quality [reporting dashboard]({% link api-docs/reporting-api-to-overview-dashboards.md %}) in Sigma. 
