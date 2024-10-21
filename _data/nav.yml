@@ -46,6 +46,8 @@
     page: soda/quick-start-end-user.md
   - subtitle: Automate anomaly detection
     page: soda/quick-start-automate.md
+  - subtitle: 'How to: Build a dashboard'
+    page: api-docs/reporting-api-to-overview-dashboards.md
   - subtitle: 'How to: Invoke Soda in Databricks'
     page: soda/quick-start-databricks.md
   - subtitle: 'How to: Add a Secrets Manager'
@@ -257,8 +259,6 @@
     page: api-docs/reporting-api-v1.md
   - subtitle: Migration guide
     page: api-docs/reporting-api-v1-migration-guide.md
-  - subtitle: Build a reporting dashboard
-    page: api-docs/reporting-api-to-overview-dashboards.md
 
 - title: Create a data contract
   page: soda/data-contracts.md
