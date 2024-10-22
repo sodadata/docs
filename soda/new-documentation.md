@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### October 22, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.4.1.
+
 #### October 21, 2024
 * Published a new How To guide for building a custom Soda data quality [reporting dashboard]({% link api-docs/reporting-api-to-overview-dashboards.md %}) in Sigma. 
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.4.0.
