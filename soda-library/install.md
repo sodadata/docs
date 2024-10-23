@@ -84,7 +84,10 @@ pip install --upgrade pip
 ```
 3. Execute the following command, replacing `soda-postgres` with the install package that matches the type of data source you use to store data.
 ```shell
+# For bash interactive shell
 pip install -i https://pypi.cloud.soda.io soda-postgres
+# For zsh interactive shell
+pip install -i https://pypi.cloud.soda.io "soda-postgres"
 ```
 
 | Data source | Install package | 
@@ -119,6 +122,7 @@ To deactivate the virtual environment, use the following command:
 deactivate
 ```
 
+{% include pydantic-version.md %}
 
   </div>
   <div class="panel" id="two-panel" markdown="1">
@@ -134,11 +138,7 @@ pip install --upgrade pip
 ```
 3. Execute the following command, replacing `soda-postgres` with the install package that matches the type of data source you use to store data.
 ```shell
-# For bash interactive shell
 pip install -i https://pypi.cloud.soda.io soda-postgres
-
-# For zsh interactive shell
-pip install -i https://pypi.cloud.soda.io "soda-spark[databricks]"
 ```
 
 | Data source | Install package | 
@@ -171,6 +171,7 @@ deactivate
 
 Reference the <a href="https://virtualenv.pypa.io/en/legacy/userguide.html#activate-script" target="_blank">virtualenv documentation</a> for activating a Windows script.
 
+{% include pydantic-version.md %}
 
   </div>
   <div class="panel" id="three-panel" markdown="1">
