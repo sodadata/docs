@@ -17,7 +17,7 @@ redirect_from:
 
 A **Soda scan** executes the checks you write in an agreement, in a checks YAML file, or inline in a programmatic invocation, and returns a result for each check: pass, fail, or error. Optionally, you can configure a check to warn instead of fail by setting an [alert configuration]({% link soda-cl/optional-config.md %}#add-alert-configurations).
 
-As a step in the **Get started roadmap**, this guide offers instructions to define your first SodaCL checks in the Soda Cloud UI, in a checks YAML file, or within a programmatic invocation of Soda.
+As a step in the **Get started roadmap**, this guide offers instructions to define your first SodaCL checks in the Soda Cloud UI as no-code checks or in agreements, in a checks YAML file, or within a programmatic invocation of Soda.
 
 #### Get started roadmap
 
