@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### October 25, 2024
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.7.1.
+
 #### October 23, 2024
 * Added instructions for installing `pydanticv1` extra library package; see [Troubleshoot]({% link soda-library/install.md %}#troubleshoot) section of installation instructions.
 
