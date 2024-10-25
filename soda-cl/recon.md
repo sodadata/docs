@@ -338,6 +338,12 @@ reconciliation Production:
     - rows diff < 5:
         source key columns: [Planet, Hotness]
         target key columns: [Planet, Relative Temp]
+  # simple strategy with different primary key column names and different number of columns
+  - rows diff < 5:
+        source key columns: [City]  # Key columns to match rows between source and target
+        target key columns: [Town]
+        source columns: [City, Hotness] # Columns Soda compares in the source table
+        target columns: [Town, Relative Temp] # Columns Soda compares in the target table
   # deepdiff strategy
     - rows diff = 0:
         strategy: deepdiff
@@ -346,6 +352,7 @@ reconciliation Production:
 The `simple` strategy works by processing record comparisons according to one or more primary key identifiers in batches and pages. This type of processing serves to temper large-scale comparisons by loading rows into memory in batches so that a system is not overloaded; it is typically faster than the `deepdiff` strategy. 
 * If you do not specify a `strategy`, Soda executes the record reconciliation check using the `simple` strategy. 
 * If you do not specify `batch size` and/or `page size`, Soda applies default values of `1` and `100000`, respectively.
+* If you want to use `simple` strategy for comparing datasets with different numbers of columns, you must define the key columns that order the data and match rows between the two datasets. Additionally, you must map the source columns to the target columns that you wish to compare.
 
 The `deepdiff` strategy works by processing record comparisons of entire datasets by loading all rows into memory at once. This type of processing is more memory-heavy but allows you to work without primary key identifiers, or without specifying any other details about the data to be compared; it is typically slower than the `simple` strategy.
 
