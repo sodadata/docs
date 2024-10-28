@@ -255,7 +255,7 @@ soda-agent-secrets   Opaque   1      24h
 <br />
 
 ## Use Soda Cloud API Keys from an existing secret
-By default the Soda Agent will create a secret for storing the Soda Cloud API Key details securely on your cluster.  If you want to manually take control over this secret you can point the Soda Agent to an already existing Kubernetes Secret on your Cluster leveraging the `existingSecret` property. 
+By default the Soda Agent will create a secret for storing the Soda Cloud API Key details securely on your cluster.  If you want to manually take control over this secret you can point the Soda Agent to an already existing Kubernetes Secret on your Cluster leveraging the `soda.apikey.existingSecret` property. 
 
 To use an existing Kubernetes secret for Soda Agent’s Cloud API credentials, add the following to your deployment values YAML  file:
 
