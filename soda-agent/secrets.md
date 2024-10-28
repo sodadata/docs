@@ -18,6 +18,7 @@ As these values are sensitive, you may wish to employ the following alternative 
 [Use a values file to store private key authentication values](#use-a-values-file-to-store-private-key-authentication-values)<br />
 [Use environment variables to store data source connection credentials](#use-environment-variables-to-store-data-source-connection-credentials)<br />
 [Integrate with a secrets manager](#integrate-with-a-secrets-manager)<br />
+[Use Soda Cloud API Keys from an existing secret](#use-soda-cloud-api-keys-from-an-existing-secret)<br />
 [Go further](#go-further)<br />
 <br />
 
@@ -250,6 +251,23 @@ soda-agent-secrets   Opaque   1      24h
   Check the logs using:
         kubectl logs -l agent.soda.io/component=orchestrator -n soda-agent
    ```
+
+<br />
+
+## Use Soda Cloud API Keys from an existing secret
+By default the Soda Agent will create a secret for storing the Soda Cloud API Key details securely on your cluster.  If you want to manually take control over this secret you can point the Soda Agent to an already existing Kubernetes Secret on your Cluster leveraging the `existingSecret` property. 
+
+To use an existing Kubernetes secret for Soda Agent’s Cloud API credentials, add the following to your deployment values YAML  file:
+
+```yaml
+soda:
+  apikey:
+    existingSecret: "<existing-secret-name>"
+    secretKeys:
+      idKey: "<key-for-api-id>"
+      secretKey: "<key-for-api-secret>"
+```
+
 
 <br />
 
