@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### October 28, 2024
+* Add to Soda Agent extras with [instructions]({% link soda-agent/secrets.md %}#use-soda-cloud-api-keys-from-an-existing-secret) on how to use an existing Kubernetes secret for Soda Cloud API keys.
+
 #### October 25, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.7.1.
 
