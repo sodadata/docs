@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda Agent extras
-description: Learn how to adjust the Soda Agent to fit your organization's security standards by levering secrets managers, environment variables, and other controls.
+description: Learn how to adjust the Soda Agent to fit your security standards by leveraging secrets managers, environment variables, and other controls.
 parent: Get started
 ---
 
