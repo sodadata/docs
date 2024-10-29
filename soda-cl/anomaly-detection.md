@@ -58,7 +58,6 @@ checks for dim_customer:
 <small>✖️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library 1.2.2 or greater + Soda Cloud</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements+ Soda Agent</small><br />
-
 <small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
 
 <br />
@@ -111,7 +110,7 @@ Refer to [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientif
 
 ## Define an anomaly detection check
 
-The following basic examples demonstrate how to use the anomaly detection with a few metrics. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metrics with an anomaly detection check. The first example simply detects anomalies in `row_count` measurements for the dataset over time, while the second identifies anomalies in the calculated average of values in the `order_price` column.
+The following basic examples demonstrate how to use the anomaly detection with a few metrics. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [freshness]({% link soda-cl/freshness.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metrics with an anomaly detection check. The first example simply detects anomalies in `row_count` measurements for the dataset over time, while the second identifies anomalies in the calculated average of values in the `order_price` column. The third example gauges anomalies in timeliness of the data in the dataset based on the value of the `start_date` column.
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -122,6 +121,12 @@ checks for dim_customer:
 ```yaml
 checks for orders:
   - anomaly detection for avg(order_price)
+```
+
+{% include code-header.html %}
+```yaml
+checks for dim_promotion:
+  - anomaly detection for freshness(start_date)
 ```
 
 <br />
