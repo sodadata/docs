@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Soda Agent extras
-description: Learn how to manage sensitive values using Kubernetes secrets and environment variables, and how to integrate with an extermal secrets manager.
+description: Learn how to adjust the Soda Agent to fit your security standards by leveraging secrets managers, environment variables, and other controls.
 parent: Get started
 ---
 
