@@ -25,7 +25,6 @@ checks for dim_customer:
 <small>✔️ &nbsp;&nbsp; Supported in Soda Core</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Library + Soda Cloud</small><br />
 <small>✔️ &nbsp;&nbsp; Supported in Soda Cloud Agreements + Soda Agent</small><br />
-
 <small>✖️ &nbsp;&nbsp; Available as a no-code check</small>
 
 <br />
@@ -72,7 +71,7 @@ checks for dim_customer:
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |
 |   | Use for each to apply schema checks to multiple datasets in one scan. | - |
-| ✓ | Apply a dataset filter to partition data during a scan. | - |
+| ✓ | Apply a dataset filter to partition data during a scan; see [example](#example-with-dataset-filters). | - |
 
 #### Example with check name 
 {% include code-header.html %}
@@ -87,6 +86,20 @@ checks for dim_customer:
 ```yaml
 checks for dim_customer:
   - row_count same as "dim_department_group"
+```
+
+#### Example with dataset filters
+{% include code-header.html %}
+```yaml
+filter dim_promotion [daily]:
+  where: discount_pct = '0.5'
+
+filter retail_orders [daily]:
+  where: discount = `50'
+
+checks for dim_promotion [daily]:
+  - row_count same as retail_orders [daily] in aws_postgres_retail:
+      name: Cross check between data sources
 ```
 
 <br />
