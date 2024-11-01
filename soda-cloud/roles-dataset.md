@@ -79,7 +79,6 @@ This permission group cannot be removed from any of the out-of-the-box or custom
 #### Manage incidents
 * Create an incident related to a dataset's check
 * Update an incident related to a dataset's check
-* Delete an incident related to a dataset's check
 
 #### Delete dataset
 * Delete a dataset
