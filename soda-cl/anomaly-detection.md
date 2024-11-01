@@ -110,7 +110,9 @@ Refer to [Troubleshoot Soda Scientific installation](#troubleshoot-soda-scientif
 
 ## Define an anomaly detection check
 
-The following basic examples demonstrate how to use the anomaly detection with a few metrics. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [freshness]({% link soda-cl/freshness.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metrics with an anomaly detection check. The first example simply detects anomalies in `row_count` measurements for the dataset over time, while the second identifies anomalies in the calculated average of values in the `order_price` column. The third example gauges anomalies in timeliness of the data in the dataset based on the value of the `start_date` column.
+The following basic examples demonstrate how to use the anomaly detection with a few metrics. You can use any [numeric]({% link soda-cl/numeric-metrics.md %}), [freshness]({% link soda-cl/freshness.md %}),  [user-defined]({% link soda-cl/user-defined.md %}), [missing]({% link soda-cl/missing-metrics.md %}), or [validity]({% link soda-cl/validity-metrics.md %}) metrics with an anomaly detection check. 
+
+The first example simply detects anomalies in `row_count` measurements for the dataset over time, while the second identifies anomalies in the calculated average of values in the `order_price` column. 
 {% include code-header.html %}
 ```yaml
 checks for dim_customer:
@@ -123,13 +125,27 @@ checks for orders:
   - anomaly detection for avg(order_price)
 ```
 
+The third example gauges anomalies in timeliness of the data in the dataset based on the value of the `start_date` column.
 {% include code-header.html %}
 ```yaml
 checks for dim_promotion:
   - anomaly detection for freshness(start_date)
 ```
 
-<br />
+The following example includes two user-defined metrics: the first uses a SQL query to define the metric, the second uses CTE to do so.
+{% include code-header.html %}
+```yaml
+checks for dim_customer
+  - anomaly detection for customers:
+      customers query: |
+        SELECT COUNT(*)
+        FROM dim_customer
+
+checks for dim_reseller:
+  - avg_order_span between 5 and 10:
+      avg_order_span expression: AVG(last_order_year - first_order_year)
+  - anomaly detection for avg_order_span
+```
 
 The following examples demonstrate how to define a check that detects anomalies in the number of missing values in the `id` column relative to historical volumes; the second example detects anomalies in the volume of incorrectly formatted email addresses.
 {% include code-header.html %}

@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### November 1, 2024
+* Updated [anomaly detection check]({% link soda-cl/anomaly-detection.md %}) documentation to include support for freshness and user-defined metrics.
+
 #### October 29, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.8.0 and Soda Agent 1.1.32.
 
