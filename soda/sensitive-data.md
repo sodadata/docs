@@ -29,7 +29,7 @@ Soda's self-hosted agent is a containerized Soda Library deployed in a Kubernete
 
 Consider [deploying a self-hosted agent]({% link soda-agent/deploy.md %}) in your own infrastructure to securely manage access to your data sources. See also: [Soda architecture]({% link soda-cloud/soda-cloud-architecture.md %})
 
-Further, if you use an external secrets manager such as Hashicorp Vault or AWS Secrets Manager, you may wish to [integrate]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager) your self-hosted Soda Agent with your secrets manager to securely and efficiently grant Soda access to data sources that use frequently-rotated login credentials.
+Further, if you use an external secrets manager such as Hashicorp Vault or AWS Secrets Manager, you may wish to [integrate]({% link soda-agent/extras.md %}#integrate-with-a-secrets-manager) your self-hosted Soda Agent with your secrets manager to securely and efficiently grant Soda access to data sources that use frequently-rotated login credentials.
 
 
 ## Limit data sampling

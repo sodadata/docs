@@ -104,7 +104,7 @@ Use this setup for:<br />
 ✅ **Data migration**: Migrate good-quality data from one data source to another. See: [Test before data migration]({% link soda/quick-start-migration.md %})<br />
 ✅ **Anomaly detection dashboard**: ![preview](/assets/images/preview.png){:height="45px" width="45px" style="vertical-align:baseline"} Use Soda's out-of-the-box **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. See: [Add anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %})<br />
 ✅ **Data catalog integration**: Integrate Soda with a data catalog such as Atlan, Alation, or Metaphor. See: [Integrate Soda]({% link soda/integrate-alation.md %})<br />
-✅ **Secrets manager integration**: Integrate your Soda Agent with an external secrets manager to securely access frequently-rotated data source login credentials. See: [Integrate with a Secrets Manager]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager)
+✅ **Secrets manager integration**: Integrate your Soda Agent with an external secrets manager to securely access frequently-rotated data source login credentials. See: [Integrate with a Secrets Manager]({% link soda-agent/extras.md %}#integrate-with-a-secrets-manager)
 
 Requirements:
 * Access to your cloud-services environment, plus the authorization to deploy containerized apps in a new or existing Kubernetes cluster
@@ -141,7 +141,7 @@ Though similar, the type of Soda agent you choose to use depends upon the follow
 |----| ----------------- | ----------------- |
 | Data source compatibility | Compatible with a [limited subset]({% link soda-agent/managed-agent.md %}#compatibility) of Soda-supported data sources. | Compatible with [nearly all]({% link soda-agent/deploy.md %}#compatibility) Soda-supported data sources. |
 | Upgrade maintenance | Soda manages all upgrades to the latest available version of the Soda Agent. | You manage all upgrades to your Soda Agent deployed on your Kubernetes cluster. |
-| External Secrets manager integration | Unable to integrate with an External Secrets manager. | Able to [integrate]({% link soda-agent/secrets.md %}l#integrate-with-a-secrets-manager) with an External Secrets manager (Hashicorp Vault, Azure Key Vault, etc.) to better manage frequently-rotated login credentials. |
+| External Secrets manager integration | Unable to integrate with an External Secrets manager. | Able to [integrate]({% link soda-agent/extras.md %}l#integrate-with-a-secrets-manager) with an External Secrets manager (Hashicorp Vault, Azure Key Vault, etc.) to better manage frequently-rotated login credentials. |
 | Network connectivity| Access Soda Agent via public networks of passlisting. | Deploy the Soda Agent inside your own private cloud on on premises network infrastructure. |
 
 ## Next

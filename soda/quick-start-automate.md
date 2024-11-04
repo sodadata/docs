@@ -118,7 +118,7 @@ In the editing panel, provide the connection configurations Soda Cloud needs to 
 
 Access the [data source-specific connection configurations]({% link soda/connect-athena.md %}) for the connection syntax and descriptions; adjust the values to correspond with your data source's details. 
 
-To more securely provide sensitive values such as usernames and passwords in a self-hosted agent deployment model, use environment variables in a `values.yml` file when you deploy the Soda Agent. See [Use environment variables for data source connection credentials]({% link soda-agent/secrets.md %}#use-environment-variables-to-store-data-source-connection-credentials) for details.
+To more securely provide sensitive values such as usernames and passwords in a self-hosted agent deployment model, use environment variables in a `values.yml` file when you deploy the Soda Agent. See [Use environment variables for data source connection credentials]({% link soda-agent/extras.md %}#use-environment-variables-to-store-data-source-connection-credentials) for details.
  
 <br />
 

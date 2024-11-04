@@ -3,27 +3,33 @@ layout: default
 title: Soda Agent extras
 description: Learn how to adjust the Soda Agent to fit your security standards by leveraging secrets managers, environment variables, and other controls.
 parent: Get started
+redirect_from:
+  - /soda-agent/secrets.html
 ---
 
 # Soda Agent extras
 *Last modified on {% last_modified_at %}*
 
-When you deploy a self-hosted Soda Agent to a Kubernetes cluster in your cloud service provider environment, you need to provide a few essential values that the agent needs to connect to your Soda Cloud account (API keys), and connect to your data sources (data source login credentials) so that Soda can run data quality scans on the data.
+When you deploy a self-hosted Soda Agent to a Kubernetes cluster in your cloud service provider environment, you need to provide several key parameters and values to ensure optimal operation and allow the agent to connect to your Soda Cloud account (API keys), and connect to your data sources (data source login credentials) so that Soda can run data quality scans on the data.
 
+- [Sensitive value handling](#sensitive-value-handling)<br />
+- [Performance optimizations](#performance-optimizations)<br />
+
+---
+
+## Sensitive value handling
 {% include k8-secrets.md %}
 
 As these values are sensitive, you may wish to employ the following alternative strategies to keep them secure.
 
-[Use a values YAML file to store API key values](#use-a-values-yaml-file-to-store-api-key-values)<br />
-[Use a values file to store private key authentication values](#use-a-values-file-to-store-private-key-authentication-values)<br />
-[Use environment variables to store data source connection credentials](#use-environment-variables-to-store-data-source-connection-credentials)<br />
-[Integrate with a secrets manager](#integrate-with-a-secrets-manager)<br />
-[Use Soda Cloud API Keys from an existing secret](#use-soda-cloud-api-keys-from-an-existing-secret)<br />
-[Go further](#go-further)<br />
-<br />
+- [Use a values YAML file to store API key values](#use-a-values-yaml-file-to-store-api-key-values)<br />
+- [Use a values file to store private key authentication values](#use-a-values-file-to-store-private-key-authentication-values)<br />
+- [Use environment variables to store data source connection credentials](#use-environment-variables-to-store-data-source-connection-credentials)<br />
+- [Integrate with a secrets manager](#integrate-with-a-secrets-manager)<br />
+- [Use Soda Cloud API Keys from an existing secret](#use-soda-cloud-api-keys-from-an-existing-secret)<br />
+<br/>
 
-
-## Use a values YAML file to store API key values 
+### Use a values YAML file to store API key values 
 
 When you deploy a self-hosted Soda Agent from the command-line, you provide values for the API key id and API key secret which the agent uses to connect to your Soda Cloud account. You can provide these values during agent deployment in one of two ways:
 * directly in the `helm install` command that deploys the agent and stores the values as <a href="https://kubernetes.io/docs/concepts/configuration/secret/" target="_blank">Kubernetes secrets</a> in your cluster; see [deploy using CLI only]({% link soda-agent/deploy.md %}#deploy-using-cli-only)<br />
@@ -52,14 +58,14 @@ helm install soda-agent soda-agent/soda-agent \
 Refer to the exhaustive [cloud service provider-specific instructions]({% link soda-agent/deploy.md %}#deploy-a-soda-agent-in-a-kubernetes-cluster) for more detail on how to deploy an agent using a values YAML file.
 
 
-## Use a values file to store private key authentication values
+### Use a values file to store private key authentication values
 
 If you use private key with Snowflake or BigQuery, you can provide the required private key values in a `values.yml` file when you deploy or redeploy the agent.
 * [Private key authentication with Snowflake]({% link soda/connect-snowflake.md %}#use-a-values-file-to-store-private-key-authentication-values)
 * [Private key authentication with BigQuery]({% link soda/connect-bigquery.md %}#use-a-file-reference-for-a-big-query-data-source-connection)
 
 
-## Use environment variables to store data source connection credentials
+### Use environment variables to store data source connection credentials
 
 When you, or someone in your organization, follows the guided steps to use a self-hosted Soda Agent to [add a data source]({% link soda-agent/deploy.md %}#add-a-new-data-source) in Soda Cloud, one of the steps involves providing the connection details and credentials Soda needs to connect to the data source to run scans. 
 
@@ -96,7 +102,7 @@ data_source local_postgres_test:
 ```
 4. Follow the remaining guided steps to add a new data source in Soda Cloud. When you save the data source and test the connection, Soda Cloud uses the values you stored as environment variables in the values YAML file you supplied during redeployment.
 
-## Integrate with a secrets manager
+### Integrate with a secrets manager
 
 Use External Secrets Operator (ESO) to integrate your self-hosted Soda Agent with your secrets manager, such as a Hashicorp Vault, AWS Secrets Manager, or Azure Key Vault, and securely reconcile the login credentials that Soda Agent uses for your data sources.
 
@@ -117,11 +123,11 @@ The following procedure outlines how to use ESO to integrate with a **Hashicorp 
 * <a href="https://external-secrets.io/latest/provider/aws-secrets-manager/" target="_blank">AWS Secrets Manager</a> 
 * <a href="https://external-secrets.io/latest/provider/azure-key-vault/" target="_blank">Azure Key Vault</a>
 
-### Prerequisites
+#### Prerequisites
 * You have set up a Kubernetes cluster in your cloud services environment and deployed a self-hosted Soda Agent in the cluster.
 * For the purpose of this example procedure, you have set up and are using a Hashicorp Vault which contains a key-value pair for `POSTGRES_USERNAME` and `POSTGRES_PASSWORD` at the path `local/soda`.
 
-### Install and set up the External Secrets Operator
+#### Install and set up the External Secrets Operator
 
 Consider referencing the [use case guide]({% link soda/quick-start-secrets.md %}) for integrating an External Secrets Manager with a Soda Agent which offers step-by-step instructions to set everything up locally to see the integration in action. 
 
@@ -254,7 +260,7 @@ soda-agent-secrets   Opaque   1      24h
 
 <br />
 
-## Use Soda Cloud API Keys from an existing secret
+### Use Soda Cloud API Keys from an existing secret
 By default, the Soda Agent creates a secret for storing the Soda Cloud API Key details securely in your cluster.  If you want to use a different secret, you can point the Soda Agent to an existing Kubernetes Secret in your cluster using the `soda.apikey.existingSecret` property. 
 
 To use an existing Kubernetes secret for Soda Agent’s Cloud API credentials, add `existingSecret` and the `secretKeys` values to your agent's values YAML file, as in the following example.
@@ -270,6 +276,36 @@ soda:
 
 
 <br />
+
+---
+
+## Performance optimizations
+
+Default Soda Agent settings balance performance and cost-efficiency. You can adjust these settings to better suit your needs, optimizing for larger datasets, faster scans, or improved resource management.
+
+- [Change Sample Data and Failed Rows memory limits](#change-sample-data-and-failed-rows-memory-limits)<br />
+<br />
+
+### Change Sample Data and Failed Rows memory limits
+The Hard Query Cursor Limit setting controls how many rows Soda Library can store in memory during a scan. This limit is exposed in the Helm chart values as `soda.scanlauncher.config.query_cursor_hard_limit`. By default, this value is set to 10.000, preventing Out-Of-Memory (OOM) errors by capping the number of rows held in memory at any given time.
+
+If you need to work with larger sets of sample data or failed rows, you can raise the `query_cursor_hard_limit`. To turn off the limit completely, set it to `null`. Just remember, if you increase or remove the limit, you’ll need to make sure the Soda Agent has enough memory to prevent it from running out and causing OOM errors.
+
+The example below demonstrates how you can clear the limit and increase the memory limit using settings in your `values.yml` file:
+
+{% include code-header.html %}
+```yaml
+soda:
+  scanlauncher:
+    config:
+      query_cursor_hard_limit: null
+    resources:
+      limits:
+        memory: 2Gi
+```
+
+
+---
 
 ## Go further
 

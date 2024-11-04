@@ -16,7 +16,7 @@ parent: Learning resources
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.8.0 and Soda Agent 1.1.32.
 
 #### October 28, 2024
-* Add to Soda Agent extras with [instructions]({% link soda-agent/secrets.md %}#use-soda-cloud-api-keys-from-an-existing-secret) on how to use an existing Kubernetes secret for Soda Cloud API keys.
+* Add to Soda Agent extras with [instructions]({% link soda-agent/extras.md %}#use-soda-cloud-api-keys-from-an-existing-secret) on how to use an existing Kubernetes secret for Soda Cloud API keys.
 
 #### October 25, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.7.1.
@@ -601,7 +601,7 @@ parent: Learning resources
 * Added [release notes]({% link release-notes/soda-library.md %}) documentation for Soda Library 1.1.0 - 1.1.5.
 
 #### August 30, 2023
-* Added instructions for integrating with an [external secrets manager]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager) with a Soda Agent to manage frequently-changed data source login credentials.
+* Added instructions for integrating with an [external secrets manager]({% link soda-agent/extras.md %}#integrate-with-a-secrets-manager) with a Soda Agent to manage frequently-changed data source login credentials.
 * Added screenchots to [Integrate Soda with Atlan]({% link soda/integrate-atlan.md %}) documentation.
 * Added to [Troubleshoot]({% link soda-library/run-a-scan.md %}#troubleshoot) content for running a scan that produces an SSL certificate error.
 
@@ -695,7 +695,7 @@ parent: Learning resources
 * Added a note for a [Known Issue]({% link soda-cl/profile.md %}#limitations-and-known-issues) regarding the use of variables in profiling configurations.
 
 #### May 20, 2023
-* Added documentation for using [private key authentication for Snowflake]({% link soda-agent/secrets.md %}#use-a-values-file-to-store-private-key-authentication-values-for-snowflake) when deploying a Soda Agent. 
+* Added documentation for using [private key authentication for Snowflake]({% link soda-agent/extras.md %}#use-a-values-file-to-store-private-key-authentication-values-for-snowflake) when deploying a Soda Agent. 
 
 #### May 15, 2023
 * Replaced getting started guides with entirely new content with a focus on data engineering. 
