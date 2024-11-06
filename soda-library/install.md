@@ -324,9 +324,13 @@ Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> S
 
 <script>
   var hash = window.location.hash;
-  if (hash) {
-    document.querySelector("#" + document.querySelector(hash).parentElement.id.split("-")[0]+"-tab").click();
-    document.querySelector(hash).scrollIntoView();
+  var hashElem = document.querySelector(hash);
+  if (hashElem) {
+      var tab = document.querySelector("#" + hashElem.parentElement.id.split("-")[0] + "-tab");
+      if (tab) {
+          tab.click();
+      }
+      hashElem.scrollIntoView();
   }
 </script>
 

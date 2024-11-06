@@ -145,6 +145,18 @@ While waiting for your colleagues to accept your Soda invitation, get a head sta
 
 ---
 
+<script>
+  var hash = window.location.hash;
+  var hashElem = document.querySelector(hash);
+  if (hashElem) {
+      var tab = document.querySelector("#" + hashElem.parentElement.id.split("-")[0] + "-tab");
+      if (tab) {
+          tab.click();
+      }
+      hashElem.scrollIntoView();
+  }
+</script>
+
 Was this documentation helpful?
 
 <!-- LikeBtn.com BEGIN -->
