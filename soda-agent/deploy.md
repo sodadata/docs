@@ -1417,6 +1417,18 @@ Need help? Join the <a href="https://community.soda.io/slack" target="_blank"> S
 
 ---
 
+<script>
+  var hash = window.location.hash;
+  var hashElem = document.querySelector(hash);
+  if (hashElem) {
+      var tab = document.querySelector("#" + hashElem.parentElement.id.split("-")[0] + "-tab");
+      if (tab) {
+          tab.click();
+      }
+      hashElem.scrollIntoView();
+  }
+</script>
+
 Was this documentation helpful?
 
 <!-- LikeBtn.com BEGIN -->
