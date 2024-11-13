@@ -1,6 +1,6 @@
 ---
-name: "1.7.1"
-date: 2024-10-25
+name: "1.8.0"
+date: 2024-10-29
 products:
   - soda-library
 ---
