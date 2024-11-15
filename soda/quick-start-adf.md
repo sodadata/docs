@@ -76,7 +76,7 @@ Download the notebook: <a href="/assets/soda-synapse-recon-notebook.ipynb" downl
 soda-postgres
 soda-sqlserver
 ```
-4. They <a href="https://learn.microsoft.com/en-us/azure/synapse-analytics/spark/apache-spark-development-using-notebooks" target="_blank">create a new notebook</a> in their Synapse workspace, then add the following contents that enable Soda to connect with the data sources, and with Soda Cloud. For the sensitive data source login credentials and Soda Cloud API key values, the example fetches the values from an Azure Key Vault. Read more: [Integrate Soda with a secrets manager]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager)
+4. They <a href="https://learn.microsoft.com/en-us/azure/synapse-analytics/spark/apache-spark-development-using-notebooks" target="_blank">create a new notebook</a> in their Synapse workspace, then add the following contents that enable Soda to connect with the data sources, and with Soda Cloud. For the sensitive data source login credentials and Soda Cloud API key values, the example fetches the values from an Azure Key Vault. Read more: [Integrate Soda with a secrets manager]({% link soda-agent/extras.md %}#integrate-with-a-secrets-manager)
     ```python
     from notebookutils import mssparkutils
 

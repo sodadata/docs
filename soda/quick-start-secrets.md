@@ -263,7 +263,7 @@ The `target template` configuration in the `ExernalSecret` creates a file called
 
 ## Go further
 
-* Access standard instructions to [integrate with a secrets manager]({% link soda-agent/secrets.md %}#integrate-with-a-secrets-manager).
+* Access standard instructions to [integrate with a secrets manager]({% link soda-agent/extras.md %}#integrate-with-a-secrets-manager).
 * [Get organized]({% link soda-cloud/collaborate.md %}) in Soda!
 * <a href="https://www.soda.io/schedule-a-demo" target="_blank">Request a demo</a>. Hey, what can Soda do for you?
 * Join the <a href="https://community.soda.io/slack" target="_blank"> Soda community on Slack</a>.
