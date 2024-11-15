@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### November 15, 2024
+* Added instructions for optimizing Soda Agent performance using [Change sample data and failed rows memory limit]({% link soda-agent/extras.md %}#change-sample-data-and-failed-rows-memory-limits)
+
 #### November 14, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.8.2.
 
