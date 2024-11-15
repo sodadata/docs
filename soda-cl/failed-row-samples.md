@@ -887,6 +887,18 @@ SELECT id, cst_size, cst_size_txt, distance, pct, country, zip, email, date_upda
 
 ---
 
+<script>
+  var hash = window.location.hash;
+  var hashElem = document.querySelector(hash);
+  if (hashElem) {
+      var tab = document.querySelector("#" + hashElem.parentElement.id.split("-")[0] + "-tab");
+      if (tab) {
+          tab.click();
+      }
+      hashElem.scrollIntoView();
+  }
+</script>
+
 Was this documentation helpful?
 
 <!-- LikeBtn.com BEGIN -->
