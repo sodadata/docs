@@ -282,7 +282,7 @@ Soda Cloud Trace: 6925***98
 
 <br />
 
-To customize your reconciliation checks, you can borrow from the syntax of [failed rows checks]({% link soda-cl/failed-rows-checks.md %}) to execute SQL queries on the source and target datasets. You can also write a [user-defined check]({% link soda-cl/user-defined.md %}) to define a SQL query or a common table expression (CTE) that Soda executes on both datasets to reconcile data; see examples below.
+To customize your metric reconciliation checks, you can borrow from the syntax of [failed rows checks]({% link soda-cl/failed-rows-checks.md %}) to execute SQL queries on the source and target datasets. You can also write a [user-defined check]({% link soda-cl/user-defined.md %}) to define a SQL query or a common table expression (CTE) that Soda executes on both datasets to reconcile data; see examples below.
 {% include code-header.html %}
 ```yaml
 reconciliation Production:
@@ -404,6 +404,29 @@ reconciliation Production:
 ![recon diff2](/assets/images/recon-diff2.png){:height="500px" width="500px"}
 
 <br />
+
+To customize your record reconciliation checks, you can borrow from the syntax of [failed rows checks]({% link soda-cl/failed-rows-checks.md %}) to execute SQL queries on the source and target datasets. You can also write a [user-defined check]({% link soda-cl/user-defined.md %}) to define a SQL query or a common table expression (CTE) that Soda executes record-by-record on both datasets to reconcile data; see example below.
+{% include code-header.html %}
+```yaml
+reconciliation records_recon_check:
+  datasets:
+    source:
+      dataset: retail_customers
+      datasource: postgres_soda_demo_data_testing
+    target:
+      dataset: retail_customers_sfdc
+      datasource: postgres_soda_demo_data_testing
+
+  checks:
+    - rows diff = 0:
+        strategy: deepdiff
+        source query: |
+          SELECT DISTINCT salary
+          FROM retail_customers
+        target query: |
+          SELECT DISTINCT annual_pay
+          FROM retail_sfdc_customers
+```
 
 
 
