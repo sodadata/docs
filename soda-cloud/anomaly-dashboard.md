@@ -7,7 +7,7 @@ parent: Run scans and view results
 
 # Activate anomaly dashboards
 <!--Linked to UI, access Shlink-->
-![preview](/assets/images/preview.png){:height="90px" width="90px"} <br />
+![available-2025](/assets/images/available-2025.png){:height="150px" width="150px"} <br />
 *Last modified on {% last_modified_at %}*
 
 Use Soda's **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. 
@@ -51,7 +51,7 @@ After establishing these patterns, Soda automatically detects anomalies relative
 
 ## Set up anomaly dashboards
 
-![preview](/assets/images/preview.png){:height="90px" width="90px"} <br />
+![available-2025](/assets/images/available-2025.png){:height="150px" width="150px"} <br />
 *For preview particpants, only* 
 
 Activate an anomaly dashboard to one or more datasets by configuring profiling for a new data source in Soda Cloud. Refer to the [Get started]({% link soda-agent/managed-agent.md %}#add-a-new-data-source) documentation for full data source onboarding instructions. 
