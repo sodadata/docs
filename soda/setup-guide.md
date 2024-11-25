@@ -75,7 +75,7 @@ See also: [Soda-hosted vs. self-hosted agent](#soda-hosted-vs-self-hosted-agent)
 
 Use this setup for:<br /> 
 ✅ **A quick start**: Use the out-of-the-box agent to start testing data quality right away from within the Soda Cloud user interface, without the need to install or deploy any other tools. <br />
-✅ **Anomaly detection dashboard**: ![preview](/assets/images/preview.png){:height="45px" width="45px" style="vertical-align:baseline"} Use Soda's out-of-the-box **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. See: [Add anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %})<br />
+✅ **Anomaly detection dashboard**: ![available-2025](/assets/images/available-2025.png){:height="95px" width="95px" style="vertical-align:baseline"} Use Soda's out-of-the-box **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. See: [Add anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %})<br />
 ✅ **Automated data monitoring**: Set up data profiling and automated data quality monitoring. See: [Automate monitoring]({% link soda/quick-start-automate.md %})<br />
 ✅ **Self-serve data quality**: Empower data analysts and scientists to self-serve and create their own no-code checks for data quality. See: [Self-serve Soda]({% link soda/quick-start-end-user.md %})<br />
 ✅ **Data migration**: Migrate good-quality data from one data source to another. See: [Test before data migration]({% link soda/quick-start-migration.md %})<br />
@@ -102,7 +102,7 @@ See also: [Soda-hosted vs. self-hosted agent](#soda-hosted-vs-self-hosted-agent)
 Use this setup for:<br />
 ✅ **Self-serve data quality**: Empower data analysts and scientists to self-serve and create their own checks for data quality. See: [Self-serve Soda]({% link soda/quick-start-end-user.md %})<br />
 ✅ **Data migration**: Migrate good-quality data from one data source to another. See: [Test before data migration]({% link soda/quick-start-migration.md %})<br />
-✅ **Anomaly detection dashboard**: ![preview](/assets/images/preview.png){:height="45px" width="45px" style="vertical-align:baseline"} Use Soda's out-of-the-box **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. See: [Add anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %})<br />
+✅ **Anomaly detection dashboard**: ![available-2025](/assets/images/available-2025.png){:height="95px" width="95px" style="vertical-align:baseline"} Use Soda's out-of-the-box **anomaly dashboards** to get automated insights into basic data quality metrics for your datasets. See: [Add anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %})<br />
 ✅ **Data catalog integration**: Integrate Soda with a data catalog such as Atlan, Alation, or Metaphor. See: [Integrate Soda]({% link soda/integrate-alation.md %})<br />
 ✅ **Secrets manager integration**: Integrate your Soda Agent with an external secrets manager to securely access frequently-rotated data source login credentials. See: [Integrate with a Secrets Manager]({% link soda-agent/extras.md %}#integrate-with-a-secrets-manager)
 

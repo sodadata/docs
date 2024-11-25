@@ -11,7 +11,7 @@ parent: Write SodaCL checks
 When you add or edit a data source in Soda Cloud, use the `discover datasets` and/or `profile columns` configurations to automatically profile data in your data source. 
 * Examine the profile information to gain insight into the type of SodaCL checks you can prepare to test for data quality.
 * Use profiled data to create no-code data quality checks.
-* ![preview](/assets/images/preview.png){:height="48px" width="48px" style="vertical-align:baseline"} Activate an anomaly dashboard to automatically gain observability insight into data quality.
+* ![available-2025](/assets/images/available-2025.png){:height="120px" width="120px"} Activate an anomaly dashboard to automatically gain observability insight into data quality.
 
 {% include code-header.html %}
 ```yaml
@@ -133,16 +133,16 @@ Depending on your deployment model, or flavor, of Soda, profiling a dataset prod
 | Flavor of Soda| Includes **Column** <br/>tab output  | Includes **Anomalies** <br />tab output  |
 | ----- | :-----------: | :------:|
 | [Self-operated]({% link soda/setup-guide.md %}#self-operated) |  ![done](/assets/images/done.png){:width="20px"} |  |
-| [Soda-hosted agent]({% link soda/setup-guide.md %}#soda-hosted-agent) |  ![done](/assets/images/done.png){:width="20px"} |  ![preview](/assets/images/preview.png){:height="60px" width="60px"} |
-| [Self-hosted agent]({% link soda/setup-guide.md %}#self-hosted-agent)<br /> |  ![done](/assets/images/done.png){:width="20px"} | ![preview](/assets/images/preview.png){:height="60px" width="60px"} |
+| [Soda-hosted agent]({% link soda/setup-guide.md %}#soda-hosted-agent) |  ![done](/assets/images/done.png){:width="20px"} |  ![available-2025](/assets/images/available-2025.png){:height="150px" width="150px"} |
+| [Self-hosted agent]({% link soda/setup-guide.md %}#self-hosted-agent)<br /> |  ![done](/assets/images/done.png){:width="20px"} | ![available-2025](/assets/images/available-2025.png){:height="150px" width="150px"} |
 | [Programmatic]({% link soda/setup-guide.md %}#programmatic) |  ![done](/assets/images/done.png){:width="20px"} |  |
 
 In the **Columns** tab, you can see column profile information including details such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data.
 
 ![profile-columns2](/assets/images/profile-columns2.png){:height="700px" width="700px"}
 
-In the **Anomalies** tab, you can access an out-of-the-box anomaly dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorithm learns over the course of approximately five days. [Learn more]({% link soda-cloud/anomaly-dashboard.md %}) <br /> <br />
-![preview](/assets/images/preview.png){:height="75px" width="75px"} <br />
+In the **Anomalies** tab, you can access an out-of-the-box anomaly dashboard that uses the column profile information to automatically begin detecting anomalies in your data relative to the patterns the machine learning algorithm learns over the course of approximately five days. [Learn more]({% link soda-cloud/anomaly-dashboard.md %}) <br />
+![available-2025](/assets/images/available-2025.png){:height="150px" width="150px"} <br />
 ![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
 
 ### Add column profiling configuration
@@ -203,7 +203,8 @@ Navigate to the **Datasets** dashboard, then click a dataset name to open the da
 Access the **Columns** tab to review the datasets that Soda Library discovered, including the column profile details you can expand to review as in the example below.<br />
 ![profile-columns2](/assets/images/profile-columns2.png){:height="700px" width="700px"}
 
-If you have requested access and activated an anomaly dashboard for a dataset, access the **Anomalies** tab to review the automated anomaly detection checks that Soda applied to your data based on the profiling information it collected.<br />
+When available and activated for an anomaly dashboard for a dataset, access the **Anomalies** tab to review the automated anomaly detection checks that Soda applied to your data based on the profiling information it collected.<br />
+![available-2025](/assets/images/available-2025.png){:height="150px" width="150px"}<br />
 ![profile-anomalies](/assets/images/profile-anomalies.png){:height="700px" width="700px"}
 
 <br />

@@ -41,7 +41,7 @@ Customize your dashboard by adding filters to distill the data the dashboard dis
 ![customize-dashboard](/assets/images/customize-dashboard.png){:height="700px" width="700px"}
 
 ## Activate anomaly dashboards
-![preview](/assets/images/preview.png){:height="75px" width="75px"} <br />
+![available-2025](/assets/images/available-2025.png){:height="150px" width="150px"} <br />
 *For preview participants, only*
 
 <small>✔️ &nbsp;&nbsp; Requires Soda Core Scientific (included in a Soda Agent)</small><br />

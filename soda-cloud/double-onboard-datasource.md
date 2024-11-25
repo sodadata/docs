@@ -14,7 +14,7 @@ However, data sources you connect via a Soda agent using the guided workflow in 
 * [no-code checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks)
 * [Discussions]({% link soda/quick-start-end-user.md %}#begin-a-discussion-and-propose-checks)
 * [scan scheduling]({% link soda-library/run-a-scan.md %}#scan-for-data-quality)
-* [anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %}) ![preview](/assets/images/preview.png){:height="55px" width="55px"}
+* [anomaly dashboards]({% link soda-cloud/anomaly-dashboard.md %}) ![available-2025](/assets/images/available-2025.png){:height="105px" width="105px"}
 
 If you have onboarded a data source via Soda Library but you wish to take advantage of the features available to Soda Agent-onboarded data sources, you can double-onboard an existing data source.
 
