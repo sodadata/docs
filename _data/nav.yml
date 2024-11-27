@@ -283,7 +283,7 @@
       page: soda-agent/basics.md
     - subtitle: Soda architecture
       page: soda-cloud/soda-cloud-architecture.md
-    - subtitle: Active checks
+    - subtitle: Active checks and datasets
       page: soda/active-check.md
     - subtitle: Data security and privacy
       page: soda/data-privacy.md

@@ -1,20 +1,22 @@
 ---
 layout: default
-title: Active checks
-description: Learn more about active checks as they are defined in Soda's licensing model.
+title: Active checks and datasets
+description: Learn more about active checks and datasets as they are defined in Soda's licensing model.
 parent: Learning resources
 ---
 
-# Active checks
+# Active checks and datasets
 *Last modified on {% last_modified_at %}*
 
-Soda's licensing model can include volume-based measures of **active checks**.  
+Soda's licensing model can include volume-based measures of **active checks**, or a similar model based on **active datasets**.  
+
+An active dataset is one for which Soda has executed at least one check in the past 90 days, excluding empty datasets and any datasets that the Anomaly Detection Dashboard (available in 2025) accesses.
 
 An active check is one that Soda has executed during a scan at least once in the past 90 days. A single check, whether it has been executed during one scan, fifty scans, or five hundred scans in the last 90 days counts as one active check.
 
 A single check is identifiable as a test that yields a single result.
 
-A check with one or more [alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) counts as a single check. The following is an example of a single check as it only ever yields one result: pass, warn, fail, or error.  Note, A check that results in an error counts as an active check. Soda executes the check during a scan in order to yield a result; if the result is an error, it is still a result.
+A check with one or more [alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) counts as a single check. The following is an example of a single active check as it only ever yields one result: pass, warn, fail, or error.  Note, A check that results in an error counts as an active check. Soda executes the check during a scan in order to yield a result; if the result is an error, it is still a result.
 ```yaml
 checks for dim_reseller:
   - duplicate_count(phone):
@@ -23,7 +25,7 @@ checks for dim_reseller:
 ```
 
 <br />
-A check that is included as part of a [for each]({% link soda-cl/for-each.md %}) configuration yields a single result for *each* dataset against which it is executed. The following example produces four check results and, thus, has four checks.
+A check that is included as part of a [for each]({% link soda-cl/for-each.md %}) configuration yields a single result for *each* dataset against which it is executed. The following example produces four check results and, thus, has four active checks and four active datasets.
 ```yaml
 for each dataset T:
   datasets:
@@ -40,7 +42,7 @@ for each dataset T:
 ```
 
 <br />
-Similarly, a single check that is included in a scan against two data sources, or two environments such as staging and production, counts as two active checks. The following example `checks.yml` file contains as a single check. The scan commands that follow instruct Soda to execute the check on two different environments which counts as two active checks. See also: [Configure the same scan in multiple environments]({% link soda-library/run-a-scan.md %}#configure-the-same-scan-to-run-in-multiple-environments).
+Similarly, a single check that is included in a scan against two data sources, or two environments such as staging and production, counts as two active checks for two active datasets. The following example `checks.yml` file contains as a single check. The scan commands that follow instruct Soda to execute the check on two different environments which counts as two active checks for two active datasets. See also: [Configure the same scan in multiple environments]({% link soda-library/run-a-scan.md %}#configure-the-same-scan-to-run-in-multiple-environments).
 ```yaml
 checks for dim_customer:
     - row_count > 0
@@ -51,7 +53,7 @@ soda scan -d snowflake_staging -c configuration.yml -s stage_run checks.yml
 ```
 
 <br />
-A check that involves data comparison between multiple datasets in the same, or different, data sources counts as a single check. The following example has four checks, two [cross checks]({% link soda-cl/cross-row-checks.md %}) and two [reference checks]({% link soda-cl/reference.md %}).
+A check that involves data comparison between multiple datasets in the same, or different, data sources counts as a single check. The following example has four checks, two [cross checks]({% link soda-cl/cross-row-checks.md %}) and two [reference checks]({% link soda-cl/reference.md %}), and counts as two active datasets.
 ```yaml
 checks for dim_customer:
   - row_count same as dim_department_group
@@ -62,7 +64,7 @@ checks for dim_department_group:
 ```
 
 <br />
-Similarly, a [reconciliation check]({% link soda-cl/recon.md %}) that compares data between source and target datasets in the same, or different, data sources counts as a single check. The following example has five checks.
+Similarly, a [reconciliation check]({% link soda-cl/recon.md %}) that compares data between source and target datasets in the same, or different, data sources counts as a single active check running against a single active dataset which, for this type of check, is the target dataset. The following example has five active checks for five active datasets.
 ```yaml
 reconciliation Production:
   datasets:
@@ -88,7 +90,7 @@ reconciliation Production:
 ```
 
 <br />
-Where a check involves grouping its results by category, as in a [Group By]({% link soda-cl/group-by.md %}) configuration, the check itself still counts as a single check. The following example has one check.
+Where a check involves grouping its results by category, as in a [Group By]({% link soda-cl/group-by.md %}) configuration, the check itself still counts as a single check. The following example has one active check for one active dataset.
 ```yaml
 checks for fact_internet_sales:
   - group by:

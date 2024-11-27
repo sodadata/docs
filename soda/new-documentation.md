@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### November 28, 2024
+* Updated the [Active checks]({% link soda/active-check.md %}) content to include details about volume-based measures for active dataset.
+
 #### November 27, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.8.4.
 
