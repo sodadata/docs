@@ -8,7 +8,7 @@ parent: Use case guides
 # Build a Grafana dashboard 
 *Last modified on {% last_modified_at %}*
 
-This guide offers an example for building a data quality reporting dashboard using the Soda Cloud API and Grafana. Such a dashboard enables data engineers to monitor the status of Soda scans and capture and display check results. 
+This guide offers an example of how to create a data quality reporting dashboard using the Soda Cloud API and Grafana. Such a dashboard enables data engineers to monitor the status of Soda scans and capture and display check results. 
 
 Use the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) to trigger data quality scans and extract metadata from your Soda Cloud account, then store the metadata in PostgreSQL and use it to customize visualized data quality results in Grafana.
 
@@ -27,11 +27,11 @@ Use the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) to trigger 
 ## Prerequisites
 * access to a <a href="https://grafana.com/" target="_blank">Grafana account</a>
 * Python 3.8, 3.9, or 3.10
-* familiarity with Python, with Python library intreactions with APIs
+* familiarity with Python, with Python library interactions with APIs
 * access to a PostgreSQL data source
 * a Soda Cloud account; see [Get started]({% link soda-agent/managed-agent.md %})
 * permission in Soda Cloud to access dataset metadata; see [Manage dataset roles]({% link soda-cloud/roles-dataset.md %})
-* at least one no-code check associated with a scan definition in Soda Cloud; see [Use no-code checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks)
+* at least one agreement or no-code check associated with a scan definition in Soda Cloud; see [Use no-code checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks)
 
 
 ## Choose a scan definition
@@ -50,17 +50,19 @@ See also: [Trigger a scan via API]({% link soda-library/run-a-scan.md %}#trigger
 
 ## Prepare to use the Soda Cloud API
 
-1. As per best practice, set up a new Python virtual environment so that you can keep your projects isolated and avoid library clashes. The example below uses the built-in venv module to create, then activate, a virtual environment named `soda-grafana`.  (Run `deactivate` to close the virtual environment when you wish.)<br />
+1. As per best practice, set up a new Python virtual environment so that you can keep your projects isolated and avoid library clashes. The example below uses the built-in venv module to create, then navigate to and activate, a virtual environment named `soda-grafana`.  Run `deactivate` to close the virtual environment when you wish.<br />
     ```shell
     python3 -m venv ~/venvs/soda-grafana
 
-    source ~/venvs/soda-grafana
+    cd venvs
+
+    source soda-grafana/bin/activate
     ```
 2. Run the following command to install the requests libraries in your virtual environment that you need to connect to Soda Cloud API endpoints. <br />Because this exercise moves the data it extracts from your Soda Cloud account into a PostgreSQL data source, it requires the `psycopg2` library. Alternatively, you can list and save all the requirements in a `requirements.txt` file, then install them from the command-line using `pip install -r requirements.txt`. If you use a different type of data source, find a corresponding plugin, or check SQLAlchemy's built-in database compatibility.
 ```shell
 pip install requests psycopg2
 ```
-3. In your working directory, create a new file named `apiscan.py`. Paste the following contents into the file to define an ApiScan class, which you will use to interact with the Soda Cloud API.
+3. In the same directory, create a new file named `apiscan.py`. Paste the following contents into the file to define an ApiScan class, which you will use to interact with the Soda Cloud API.
     ```python
     import os
     import requests
@@ -109,12 +111,12 @@ pip install requests psycopg2
 * `SODA_URL`: use `https://cloud.soda.io/api/v1/` or `https://cloud.us.soda.io/api/v1/` as the value, according the region in which you created your Soda Cloud account.
 * `API_KEY` and `API_SECRET`: see [Generate API keys]({% link soda-cloud/api-keys.md %}#generate-api-keys-for-use-with-soda-library-or-a-soda-cloud-api)<br />
         ```shell
-        # Soda Cloud API, used in apiscan.py
+        # Soda Cloud API keys, used in apiscan.py
         SODA_URL = https://cloud.soda.io/api/v1/
         API_KEY = xxx
         API_SECRET = xxx
 
-        # PostgreSQL, used in main.py
+        # PostgreSQL access credentials, used in main.py
         HOST = host_name
         PG_USER = user_login
         PG_PASSWORD = user_pass
@@ -124,7 +126,7 @@ pip install requests psycopg2
 
 **Problem:** You get an error that reads, "psycopg2 installation fails with error: metadata-generation-failed , and suggestion If you prefer to avoid building psycopg2 from source, please install the PyPI 'psycopg2-binary' package instead."
 
-**Solution:** As suggested, install the binary pacakge instead, using `pip install psycopg2-binary`.
+**Solution:** As suggested, install the binary package instead, using `pip install psycopg2-binary`.
 
 
 ## Trigger and monitor a Soda scan
@@ -135,7 +137,6 @@ pip install requests psycopg2
 * initializes an `ApiScan` object as `ascan`, uses the object to trigger a scan with `scan_definition` as a parameter which, in this case, is `grafanascan0` 
 * stores the scan `id` as a variable
 * checks the state of the scan every 10 seconds, then only when it is in a completion state (`completedWithErrors`, `completedWithFailures`, `completedWithWarnings`, or `completed`), stores the scan results as variable `r`.<br />
-
 {% include code-header.html %}
 ```python
 from apiscan import ApiScan
@@ -202,10 +203,12 @@ for check in r["checks"]:  ### find scanned check in all checks from api
 ## Process scan results into a PostgreSQL data source
 The following example code serves as reference for adding data to a PostgreSQL data source. Replace it if you intend to store scan results in another type of data source.
 
-To the `main.py` file, add the following code which:
+1. To the `main.py` file, add the code below which:
 * connects to a PostgreSQL data source, using the psycopg2 library
 * creates a table in the data source in which to store scan results, if one does not already exist
-* processes checks list of dicts, and inserts them into table of scan results
+* processes the list of dicts, and inserts them into table of scan results
+2. From the command-line, run `python3 main.py`.
+
 {% include code-header.html %}
 ```python
 # POSTGRES / SQL
@@ -261,7 +264,7 @@ print(f"Scan processed to PostgreSQL# !")
 ## Visualize scan results in a Grafana dashboard
 
 1. Log into your Grafana account, select My Account, then launch Grafana Cloud.
-2. Follow Grafana's <a href="https://grafana.com/docs/grafana-cloud/connect-externally-hosted/data-sources/postgres/" target="_blank">PostgreSQL data source</a> instructions to add your data source with the check results.
+2. Follow Grafana's <a href="https://grafana.com/docs/grafana-cloud/connect-externally-hosted/data-sources/postgres/" target="_blank">PostgreSQL data source</a> instructions to add your data source which contains the Soda check results.
 3. Follow Grafana's <a href="https://grafana.com/docs/grafana-cloud/visualizations/dashboards/build-dashboards/create-dashboard/" target="_blank"> Create a dashboard</a> instructions to create a new dashboard. Use the following details for reference in the Edit panel for Visualizations.
 * In the Queries tab, configure a Query using Builder or Code, then Run query on the data source. Toggle the Table view at the top to see Query results.
 * In the Transformations tab, create, edit, or delete Transformations that transform Query results into the data and format that Visualization needs. 
