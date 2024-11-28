@@ -10,7 +10,7 @@ parent: Learning resources
 
 Soda's licensing model can include volume-based measures of **active checks**, or a similar model based on **active datasets**.  
 
-An active dataset is one for which Soda has executed at least one check in the past 90 days, excluding empty datasets and any datasets that the Anomaly Detection Dashboard (available in 2025) accesses.
+An active dataset is one for which Soda has executed at least one check, excluding empty datasets and any datasets that the Anomaly Detection Dashboard (available in 2025) accesses.
 
 An active check is one that Soda has executed during a scan at least once in the past 90 days. A single check, whether it has been executed during one scan, fifty scans, or five hundred scans in the last 90 days counts as one active check.
 
