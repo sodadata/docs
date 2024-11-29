@@ -45,8 +45,10 @@
       page: soda/quick-start-end-user.md
     - subtitle: Automate anomaly detection
       page: soda/quick-start-automate.md
-    - subtitle: "How to: Build a dashboard"
+    - subtitle: "How to: Build a Sigma dashboard"
       page: api-docs/reporting-api-to-overview-dashboards.md
+    - subtitle: "How to: Build a Grafana dashboard"
+      page: api-docs/public-api-to-grafana.md
     - subtitle: "How to: Invoke Soda in Databricks"
       page: soda/quick-start-databricks.md
     - subtitle: "How to: Add a Secrets Manager"
