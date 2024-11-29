@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Build a customized dashboard
+title: Build a Sigma dashboard
 description: This example helps you build a customized data quality reporting dashboard in Sigma using the Soda Cloud API. 
 parent: Use case guides
 ---
 
-# Build a customized dashboard 
+# Build a Sigma dashboard 
 *Last modified on {% last_modified_at %}*
 
 This guide offers a comprehensive example for building a customized data quality reporting dashboard in Sigma. Use the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) to capture metadata from your Soda Cloud account, store it in Snowflake, then access the data in Snowflake to create a Sigma dashboard.

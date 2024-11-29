@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### November 29, 2024
+* Published a new How To guide for building a custom Soda data quality [dashboard]({% link api-docs/public-api-to-grafana.md %}) in Grafana. 
+
 #### November 28, 2024
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Core 3.4.2.
 
