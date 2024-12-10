@@ -252,6 +252,15 @@ Text Columns
 * minimum length
 * maximum length
 
+Date Time Columns
+* five smallest values
+* five largest values
+* five most frequent values
+* count of distinct values
+* count of missing values
+* minimum timestamp
+* maximum timestamp
+
 
 ## Inclusion and exclusion rules
 
@@ -264,7 +273,7 @@ Text Columns
 
 * **Known issue:** Currently, SodaCL does not support column exclusion for the column profiling and dataset discovery configurations when connecting to a Spark DataFrame data source (`soda-library-spark-df`).
 * **Known issue:** SodaCL does not support using [variables]({% link soda-cl/filters.md %}#configure-variables-in-sodacl) in column profiling and dataset discovery configurations. <!--SAS-1642-->
-* **Data type**: Soda can only profile columns that contain NUMBERS or TEXT type data; it cannot profile columns that contain TIME or DATE data.
+* **Data type**: Soda can only profile columns that contain NUMBERS, TEXT or DATE / TIMESTAMP type data and BOOLEANS.
 * **Spark**: Soda usually uses the profiling include/exclude pattern to build the query that retrieves a dataset's metadata, but Spark does not support such profiling. Instead, Soda  retrieves all the datasets in a schema, then filters the list based on the include/exclude pattern, changing all `%` wildcard values with `.*` to translate a SQL pattern into a regular expression pattern.
 * **Performance:** Both column profiling and dataset discovery can lead to increased computation costs on your data sources. Consider adding these configurations to a selected few datasets to keep costs low. See [Compute consumption and cost considerations](#compute-consumption-and-cost-considerations) for more detail.
 * **Workaround:** If you wish, you can indicate to Soda to include all datasets in its dataset discovery or column profiling by using wildcard characters, as in `%.%`. Because YAML, upon which SodaCL is based, does not naturally recognize `%.%` as a string, you must wrap the value in quotes, as in the following example.
