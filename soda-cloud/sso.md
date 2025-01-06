@@ -90,13 +90,13 @@ Soda Cloud supports both **Identity Provider Initiated (IdP-initiated)**, and **
 
 ## Add Soda Cloud to Okta
 
-1. Email <a href="mailto:support@soda.io">support@soda.io</a> to request SSO set-up for Soda Cloud and provide your Soda Cloud organization identifier, accessible via **your avatar** > **Organization Settings**, in the **Organization** tab. <br />Soda Support sends you the URL that you need to configure the set up with your identity provider.
+1. Email <a href="mailto:support@soda.io">support@soda.io</a> to request SSO set-up for Soda Cloud and provide your Soda Cloud organization identifier, accessible via **your avatar** > **Organization Settings**, in the **Organization** tab. <br />Soda Support sends you the `samlURL` that you need to configure the set up with your identity provider.
 2. As an Okta Administrator, log in to Okta and navigate **Applications** > **Applications overview**, then click **Create App Integration**. Refer to <a href="https://help.okta.com/en-us/content/topics/apps/apps_app_integration_wizard_saml.htm" target="_blank">Okta documentation</a> for full procedure.
 3. Select **SAML 2.0**.
 4. Provide a name for the application, Soda Cloud, and upload the <a href="soda-logo.png" download>Soda logo</a>.
 5. Click **Next**. In the **Configure SAML** tab, there are two fields to populate:
-* **Single sign on URL**
-* **Audience URI (SP Entity ID)** (your Soda Cloud organization identifier) <br />
+* **Single sign on URL**, which is the value of `samlUrl` from step 1.
+* **Audience URI (SP Entity ID)**, which is also the value of `samlUrl` from step 1. <br />
 The values for these fields are unique to your organization and are provided to you by Soda and they follow this pattern: `https://cloud.soda.io/sso/<your-organization-identifier>/saml`.
 6. Be sure to use an email address as the application username.
 7. Scroll down to **Attribute Statements** to map the following values, then click **Next** to continue.
@@ -121,7 +121,7 @@ The values for these fields are unique to your organization and are provided to 
 
 ## Add Soda Cloud to Google Workspace
 
-1. Email <a href="mailto:support@soda.io">support@soda.io</a> to request SSO set-up for Soda Cloud and provide your Soda Cloud organization identifier, accessible via **your avatar** > **Organization Settings**, in the **Organization** tab. <br />Soda Support sends you the URL that you need to configure the set up with your identity provider.
+1. Email <a href="mailto:support@soda.io">support@soda.io</a> to request SSO set-up for Soda Cloud and provide your Soda Cloud organization identifier, accessible via **your avatar** > **Organization Settings**, in the **Organization** tab. <br />Soda Support sends you the `samlURL` that you need to configure the set up with your identity provider.
 2. As an administrator in your Google Workspace, follow the instructions in <a href="https://support.google.com/a/answer/6087519?hl=en&ref_topic=7559288" target="_blank">Google Workspace documentation</a> to **Set up your own custom SAML application**.
 3. Optionally, upload the <a href="soda-logo.png" download>Soda logo</a> so it appears in the app launcher with the logo instead of the first two letters of the app name.  
 4. On the **Google Identity Provider details** page, be sure to copy or download the following values:
