@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### January 6, 2025
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.8.6 - 1.8.9.
+
 #### November 29, 2024
 * Published a new How To guide for building a custom Soda data quality [dashboard]({% link api-docs/public-api-to-grafana.md %}) in Grafana. 
 
