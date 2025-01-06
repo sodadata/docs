@@ -29,7 +29,7 @@ Use the [Soda Cloud API]({% link api-docs/public-cloud-api-v1.md %}) to trigger 
 * Python 3.8, 3.9, or 3.10
 * familiarity with Python, with Python library interactions with APIs
 * access to a PostgreSQL data source
-* a Soda Cloud account; see [Get started]({% link soda-agent/managed-agent.md %})
+* a Soda Cloud account: <a href="https://cloud.soda.io/select-region" target="_blank">Sign Up</a>
 * permission in Soda Cloud to access dataset metadata; see [Manage dataset roles]({% link soda-cloud/roles-dataset.md %})
 * at least one agreement or no-code check associated with a scan definition in Soda Cloud; see [Use no-code checks]({% link soda-cl/soda-cl-overview.md %}#define-sodacl-checks)
 
@@ -42,7 +42,7 @@ See also: [Trigger a scan via API]({% link soda-library/run-a-scan.md %}#trigger
 
 1. Log in to your Soda Cloud account and navigate to the **Checks** page. Choose a check that originated in Soda Cloud, identifiable by the cloud icon, that you can use to complete this exercise. Use the action menu (stacked dots) next to the check to select **Edit Check**.
 ![cloud-origin](/assets/images/cloud-origin.png){:height="400px" width="400px"}
-2. In the dialog that opens, copy the scan definition name from the **Add to Scan Definition** field. The scan def name is in lowercase, with spaces represented by underscores. Paste the scan def name in a temporary local file. <br />
+2. In the dialog that opens, copy the scan definition name from the **Add to Scan Definition** field. Under **Scans**, above the scan definition name, copy the scan definition ID that uses undescores to represent spaces. Paste the scan definition ID in a temporary local file; you will use it in the next steps to trigger a scan via the Soda Cloud API. <br />
 ![scan-def-name](/assets/images/scan-def-name.png){:height="300px" width="300px"}
 3. Be aware that when you use the Soda Cloud API to trigger the execution of this scan definition remotely, Soda executes *all* checks associated with the scan definition. This is a good thing, as you can see the metadata for multiple check results in the Grafana dashboard this guide prepares. 
 
@@ -108,7 +108,7 @@ pip install requests psycopg2
             return self._get(endpt=f"scans/{scan_id}")
     ```
 4. From the command-line, create the following environment variables to facilitate a connection to your Soda Cloud account and your PostgreSQL data source. 
-* `SODA_URL`: use `https://cloud.soda.io/api/v1/` or `https://cloud.us.soda.io/api/v1/` as the value, according the region in which you created your Soda Cloud account.
+* `SODA_URL`: use `https://cloud.soda.io/api/v1/` or `https://cloud.us.soda.io/api/v1/` as the value, according to the region in which you created your Soda Cloud account.
 * `API_KEY` and `API_SECRET`: see [Generate API keys]({% link soda-cloud/api-keys.md %}#generate-api-keys-for-use-with-soda-library-or-a-soda-cloud-api)<br />
         ```shell
         # Soda Cloud API keys, used in apiscan.py
@@ -124,7 +124,7 @@ pip install requests psycopg2
 
 #### Troubleshoot
 
-**Problem:** You get an error that reads, "psycopg2 installation fails with error: metadata-generation-failed , and suggestion If you prefer to avoid building psycopg2 from source, please install the PyPI 'psycopg2-binary' package instead."
+**Problem:** You get an error that reads, "psycopg2 installation fails with error: metadata-generation-failed" and the suggestion "If you prefer to avoid building psycopg2 from source, please install the PyPI 'psycopg2-binary' package instead."
 
 **Solution:** As suggested, install the binary package instead, using `pip install psycopg2-binary`.
 
@@ -134,7 +134,7 @@ pip install requests psycopg2
 1. In the same directory in which you created the `apiscan.py` file, create a new file named `main.py`.
 2. To the file, add the following code which:
 * imports necessary libraries, as well as the ApiScan class from `apiscan.py`
-* initializes an `ApiScan` object as `ascan`, uses the object to trigger a scan with `scan_definition` as a parameter which, in this case, is `grafanascan0` 
+* initializes an `ApiScan` object as `ascan`, uses the object to trigger a scan with `scan_definition` as a parameter which, in this case, is `grafanascan0`; replace `grafanascan0` with the scan definition ID you copied to a local file earlier. 
 * stores the scan `id` as a variable
 * checks the state of the scan every 10 seconds, then only when it is in a completion state (`completedWithErrors`, `completedWithFailures`, `completedWithWarnings`, or `completed`), stores the scan results as variable `r`.<br />
 {% include code-header.html %}
