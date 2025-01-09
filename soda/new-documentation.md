@@ -9,6 +9,9 @@ parent: Learning resources
 
 <br />
 
+#### January 9, 2025
+* Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.8.13.
+
 #### January 8, 2025
 * Added [release notes]({% link release-notes/all.md %}) documentation for Soda Library 1.8.12.
 
