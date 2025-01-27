@@ -50,7 +50,7 @@ data_source my_datasource_name:
 | port     | optional | Provide the port through which to connect to the data source. |
 | username | required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_USER}`. |
 | password | required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_PASSWORD}`. |
-| account| required | Provide the unique value that identifies your account. Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`. Note: Account sometimes needs to take the form of `<account_identifier>-<account_name>` or`<account_identifier>.<region>`. |
+| account| required | Provide the unique value that identifies your account. Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`. Note: Account sometimes needs to take the form of `<account_identifier>-<account_name>` or `<account_identifier>.<region>`. |
 | database| required | Provide an idenfier for your database. |
 | warehouse| required | Provide an identifier for the cluster of resources that is a Snowflake virtual warehouse. See <a href="https://docs.snowflake.com/en/user-guide/warehouses-overview" target="_blank">Overview of Warehouses</a>.|
 | connection_timeout| required | Set the timeout period in minutes for an inactive login session.  |
