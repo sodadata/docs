@@ -33,7 +33,7 @@ $ gem install --user-install bundler jekyll
 3. Clone the [sodadata/docs](https://github.com/sodadata/docs) repo from GitHub.
 4. From the command-line, navigate to the `docs` repo directory, then run `bundle install` to install all the necessary gems.
 5. Open the cloned repo locally in your favorite code editor such as Visual Code or Sublime.
-6. From the command-line, navigate to the `docs` repo directory that you just cloned, then run the following to build and serve docs locally.
+6. Return to the command-line, ensure you are in the docs repo directory that you just cloned, then run the following to build and serve docs locally.
 ```shell
 $ bundle exec jekyll serve
 ```
