@@ -116,6 +116,8 @@ components:
       properties:
         average:
           type: number
+        averageLength:
+          type: number
         distinctCount:
           type: number
         extremeValues:
@@ -134,11 +136,21 @@ components:
         maximum:
           type: object
           $ref: '#/components/schemas/_object'
+        maximumLength:
+          type: integer
+          format: int32
+        maximumTimestamp:
+          type: string
         median:
           type: number
         minimum:
           type: object
           $ref: '#/components/schemas/_object'
+        minimumLength:
+          type: integer
+          format: int32
+        minimumTimestamp:
+          type: string
         missingCount:
           type: number
         standardDeviation:
@@ -902,8 +914,6 @@ components:
       - completedWithFailures
       - completedWithWarnings
       - completed
-    Set:
-      type: object
     UserContentDTO:
       type: object
       properties:
@@ -980,91 +990,6 @@ info:
   version: v1
 openapi: 3.1.0
 paths:
-  /api/v1/batchChecks:
-    get:
-      description: |-
-        This endpoint enables you to gather information about a specific batch of checks that in exist in your organization's Soda Cloud account, including information about the datasets and agreements with which they are associated and the incidents to which they are linked.
-
-        ## Authorization
-
-        Soda only returns the checks linked to datasets to which the user has **View dataset** permissions. Soda Cloud Admins have access to all checks.**See [Manage dataset roles](https://go.soda.io/roles) for more information.**
-
-        ## Authentication
-
-        User authentication required: `true`
-
-        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
-
-        ## Tags
-
-        `Checks`
-
-        ## Rate limiting
-
-        60 requests/60 seconds
-      operationId: GET/api/v1/batchChecks
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              $ref: '#/components/schemas/Set'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/ErrorResponse'
-          description: Bad request
-        "401":
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/ErrorResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/ErrorResponse'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/ErrorResponse'
-          description: Not found
-        "500":
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/ErrorResponse'
-          description: Internal server error
-        "200":
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/PublicApiChecksResponse'
-          description: Successful response
-        "429":
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/ErrorResponse'
-          description: Too many requests
-      security:
-      - basicAuthApiKey: []
-      summary: Check information
-      tags:
-      - Checks
   /api/v1/checks:
     get:
       description: |-
@@ -1077,6 +1002,8 @@ paths:
         - `page`: Supply an integer value. The default value is 0.
 
         - `datasetID`: Optionally, use this parameter to collect only the information for checks associated with a specific dataset. Find the `datasetID` in the URL of the dataset page in Soda Cloud.
+
+        - `checkIDs`: Optionally, use this parameter to collect only the information for a specific batch of checks (CSV list of check IDs which you can find on the individual check pages in Soda Cloud). This query parameter is limited to 1000 check IDs and it can't be combined with other query parameters like `page`, `datasetID`, `size`.
 
         If not specified, the query gathers information for all checks in the account and sorts the results by check name in ascending order.
 
@@ -1099,6 +1026,10 @@ paths:
         10 requests/60 seconds
       operationId: GET/api/v1/checks
       parameters:
+      - in: query
+        name: checkIDs
+        schema:
+          type: string
       - in: query
         name: datasetId
         schema:
