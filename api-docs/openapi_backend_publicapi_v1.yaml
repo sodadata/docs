@@ -1003,7 +1003,7 @@ paths:
 
         - `datasetId`: Optionally, use this parameter to collect only the information for checks associated with a specific dataset. Find the `datasetId` in the URL of the dataset page in Soda Cloud.
 
-        - `checkIDs`: Optionally, use this parameter to collect only the information for a specific batch of checks (CSV list of check IDs which you can find on the individual check pages in Soda Cloud). This query parameter is limited to 1000 check IDs and it can't be combined with other query parameters like `page`, `datasetId`, `size`.
+        - `checkIds`: Optionally, use this parameter to collect only the information for a specific batch of checks (CSV list of check IDs which you can find on the individual check pages in Soda Cloud). This query parameter is limited to 1000 check IDs and it can't be combined with other query parameters like `page`, `datasetId`, `size`.
 
         If not specified, the query gathers information for all checks in the account and sorts the results by check name in ascending order.
 
