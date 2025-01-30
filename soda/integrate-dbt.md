@@ -37,7 +37,7 @@ Use Soda Library to ingest the results of your dbt tests and push them to Soda C
 ## Prerequisites
 
 * You have installed a [Soda Library package]({% link soda-library/install.md %}) in your environment and have [configured it]({% link soda-library/install.md %}#configure-soda) to connect to a data source and your Soda Cloud account using a `configuration.yml` file.
-* You use dbt Cloud or <a href="https://github.com/dbt-labs/dbt-core" target="_blank">dbt-core</a> version 1.5 or 1.6. Note: As <a href="https://docs.getdbt.com/guides/migration/versions/upgrading-to-v1.4" target="_blank">dbt no longer supports v1.4</a>, Soda does not support that version.
+* You use dbt Cloud or <a href="https://github.com/dbt-labs/dbt-core" target="_blank">dbt-core</a> version >= 1.5, <2.0. Note: As <a href="https://docs.getdbt.com/guides/migration/versions/upgrading-to-v1.4" target="_blank">dbt no longer supports v1.4</a>, Soda does not support that version.
 
 ## Videos
 
@@ -55,16 +55,18 @@ Integrate dbt Cloud with Soda.
 
 Every time you execute tests in dbt, dbt captures information about the test results. Soda Library can access this information and translate it into test results that Soda Cloud can display. You must first run your tests in dbt before Soda Library can find and translate test results, then push them to Soda Cloud. <br />
 
-1. If you have not already done so, install one of the supported `soda-dbt` sub-packages in the Python environment that also runs your Soda Library package.
-```shell
-pip install -i https://pypi.cloud.soda.io "soda-dbt[v15]"
-# OR
-pip install -i https://pypi.cloud.soda.io "soda-dbt[v16]"
-```
-2. Run your dbt pipeline using one of the following commands:
+1. First, ensure that your dbt tests results are available in your local filesystem.
+   You can generate the necessary files by running your dbt pipeline with one of the following commands:
 * <a href="https://docs.getdbt.com/reference/commands/build" target="_blank">`dbt build`</a>
 * <a href="https://docs.getdbt.com/reference/commands/test" target="_blank">`dbt test`</a>
-3. To ingest dbt test results, Soda Library uses the files that dbt generates when it builds or tests models: `manifest.json` and `run_results.json`. Use Soda Library to execute *one* of the following ingest commands to ingest the JSON files into Soda Cloud.
+2. If you have not already done so, install the `soda-dbt` package in the Python environment used for your Soda Library scans:
+```shell
+pip install -i https://pypi.cloud.soda.io soda-dbt
+```
+Note: It is recommended that you use separate Python environments for your dbt pipeline and Soda scans to avoid dependency conflicts.
+
+3. To ingest dbt test results, Soda Library uses the files that dbt generates when it builds or tests models: `manifest.json` and `run_results.json`.
+   Use Soda Library to execute *one* of the following ingest commands to ingest the JSON files into Soda Cloud.
 * Specify the file path for the directory in which you store both the `manifest.json` and `run_results.json` files; Soda finds the files it needs in this directory.
 ```shell
 soda ingest dbt -d my_datasource_name --dbt-artifacts /path/to/files
@@ -72,7 +74,7 @@ soda ingest dbt -d my_datasource_name --dbt-artifacts /path/to/files
 OR <br />
 * Specify the path and filename for each individual JSON file that Soda Cloud must ingest.
 ```shell
-soda ingest dbt -d my_datasource_name --dbt-manifest path/to/manifest.json --dbt-run-results path/to/run_results.json>
+soda ingest dbt -d my_datasource_name --dbt-manifest path/to/manifest.json --dbt-run-results path/to/run_results.json
 ```
 
 Run `soda ingest --help` to review a list of all command options.
@@ -85,7 +87,7 @@ Every run that is part of a <a href="https://docs.getdbt.com/docs/dbt-cloud/clou
 
 Note that you must use Soda Library to run the CLI command to ingest dbt test results into Soda Cloud from dbt cloud. You cannot configure the connection to dbt Cloud from within the Soda Cloud user interface, as with a new data source, for example.
 
-1. If you have not already done so, install the `soda-dbt` sub-package in the Python environment that also runs you Soda Library package by running the following command.
+1. If you have not already done so, install the `soda-dbt` package in the Python environment that also runs Soda Library scans:
 ```
 pip install -i https://pypi.cloud.soda.io soda-dbt
 ```
