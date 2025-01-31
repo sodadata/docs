@@ -10,6 +10,8 @@ components:
     CheckResultValueDTO:
       type: object
       properties:
+        id:
+          type: string
         measure:
           type: object
           $ref: '#/components/schemas/MeasureDTO'
@@ -20,6 +22,8 @@ components:
         valueSeries:
           type: object
           $ref: '#/components/schemas/CheckResultValueSeriesDTO'
+      required:
+      - id
     CheckResultValueSeriesDTO:
       type: object
       properties:
@@ -52,6 +56,8 @@ components:
         cloudUrl:
           type: string
         column:
+          type: string
+        createdAt:
           type: string
         datasets:
           type: array
@@ -89,6 +95,7 @@ components:
           $ref: '#/components/schemas/OwnerDTO'
       required:
       - agreements
+      - createdAt
       - datasets
       - evaluationStatus
       - id
@@ -104,6 +111,54 @@ components:
           type: string
         name:
           type: string
+    ColumnMetricContentDTO:
+      type: object
+      properties:
+        average:
+          type: number
+        averageLength:
+          type: number
+        distinctCount:
+          type: number
+        extremeValues:
+          type: object
+          $ref: '#/components/schemas/ExtremeValuesContentDTO'
+        frequentValues:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/ValueCountContentDTO'
+        histogram:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/HistogramBinContentDTO'
+        maximum:
+          type: object
+          $ref: '#/components/schemas/_object'
+        maximumLength:
+          type: integer
+          format: int32
+        maximumTimestamp:
+          type: string
+        median:
+          type: number
+        minimum:
+          type: object
+          $ref: '#/components/schemas/_object'
+        minimumLength:
+          type: integer
+          format: int32
+        minimumTimestamp:
+          type: string
+        missingCount:
+          type: number
+        standardDeviation:
+          type: number
+        sum:
+          type: number
+        variance:
+          type: number
     DataQualityStatusDTO:
       type: string
       enum:
@@ -143,6 +198,19 @@ components:
       - text
       - single_select
       - multi_select
+    DatasetColumnProfilingContentDTO:
+      type: object
+      properties:
+        metrics:
+          type: object
+          $ref: '#/components/schemas/ColumnMetricContentDTO'
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
     DatasetOwnerDTO:
       type: object
       properties:
@@ -267,6 +335,10 @@ components:
             $ref: '#/components/schemas/DatasetOwnerDTO'
         qualifiedName:
           type: string
+        tags:
+          type: array
+          items:
+            type: string
       required:
       - checks
       - cloudUrl
@@ -277,6 +349,8 @@ components:
     DatasourcePropertiesDTO:
       type: object
       properties:
+        label:
+          type: string
         name:
           type: string
         prefix:
@@ -297,6 +371,32 @@ components:
       - warn
       - fail
       - notEvaluated
+    ExtremeValuesContentDTO:
+      type: object
+      properties:
+        maximum:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/_object'
+        minimum:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/_object'
+    HistogramBinContentDTO:
+      type: object
+      properties:
+        count:
+          type: number
+        lowerBound:
+          type: number
+        upperBound:
+          type: number
+      required:
+      - count
+      - lowerBound
+      - upperBound
     IncidentContentDTO:
       type: object
       properties:
@@ -472,6 +572,25 @@ components:
       - size
       - totalElements
       - totalPages
+    PublicApiDatasetProfilingResponse:
+      type: object
+      properties:
+        columnCount:
+          type: number
+        columns:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/DatasetColumnProfilingContentDTO'
+        datasetId:
+          type: string
+        profilingTime:
+          type: string
+        rowCount:
+          type: number
+      required:
+      - columns
+      - datasetId
     PublicApiDatasetResponsibilitiesResponse:
       type: object
       properties:
@@ -672,6 +791,10 @@ components:
           items:
             type: object
             $ref: '#/components/schemas/PublicApiUpdateDatasetOwnerRequestDTO'
+        tags:
+          type: array
+          items:
+            type: string
     PublicApiUpdateDatasetOwnerRequestDTO:
       type: object
       properties:
@@ -781,6 +904,7 @@ components:
       enum:
       - queuing
       - executing
+      - started
       - cancelationRequested
       - timeOutRequested
       - canceled
@@ -832,6 +956,14 @@ components:
       - name
       - userGroupId
       - users
+    ValueCountContentDTO:
+      type: object
+      properties:
+        count:
+          type: number
+        value:
+          type: object
+          $ref: '#/components/schemas/_object'
     _object:
       type: object
   securitySchemes:
@@ -869,7 +1001,9 @@ paths:
 
         - `page`: Supply an integer value. The default value is 0.
 
-        - `datasetID`: Optionally, use this parameter to collect only the information for checks associated with a specific dataset. Find the `datasetID` in the URL of the dataset page in Soda Cloud.
+        - `datasetId`: Optionally, use this parameter to collect only the information for checks associated with a specific dataset. Find the `datasetId` in the URL of the dataset page in Soda Cloud.
+
+        - `checkIds`: Optionally, use this parameter to collect only the information for a specific batch of checks. Provide multiple values as a comma-separated list of check IDs, which you can find on the individual check pages in Soda Cloud. This query parameter is limited to 1000 check IDs and it can't be combined with other query parameters like `page`, `datasetId`, `size`.
 
         If not specified, the query gathers information for all checks in the account and sorts the results by check name in ascending order.
 
@@ -892,6 +1026,10 @@ paths:
         10 requests/60 seconds
       operationId: GET/api/v1/checks
       parameters:
+      - in: query
+        name: checkIds
+        schema:
+          type: string
       - in: query
         name: datasetId
         schema:
@@ -974,7 +1112,11 @@ paths:
 
         - `from`: Optionally, use this parameter to collect only the information for datasets that have been updated after a particular point in time.  Supply an ISO8601 timestamp value. Example: `2023-12-31T10:15:30+01:00`
 
-        If not specified, the query gathers information for all datasets in the account and sorts the results by dataset name in ascending order.
+        - `datasourceName`:  Optionally, use this parameter to collect only the information for datasets associated with a specific datasource.
+
+        - `search`: Optionally, use this parameter to perform a fuzzy search on the dataset name.
+
+        If not specified, the query gathers information for all datasets in the account and sorts the results first by dataset name and then by datasource name in ascending order.
 
         ## Authorization
 
@@ -996,6 +1138,10 @@ paths:
       operationId: GET/api/v1/datasets
       parameters:
       - in: query
+        name: datasourceName
+        schema:
+          type: string
+      - in: query
         name: from
         schema:
           type: string
@@ -1004,6 +1150,10 @@ paths:
         schema:
           type: integer
           format: int32
+      - in: query
+        name: search
+        schema:
+          type: string
       - in: query
         name: size
         schema:
@@ -1257,7 +1407,7 @@ paths:
   /api/v1/datasets/{datasetId}:
     post:
       description: |-
-        This endpoint enables you to update an existing dataset name, owners, or attributes in your organization's Soda Cloud account.
+        This endpoint enables you to update an existing dataset name, owners, tags or attributes in your organization's Soda Cloud account.
 
         ## Authorization
 
@@ -1343,6 +1493,90 @@ paths:
       security:
       - basicAuthApiKey: []
       summary: Update dataset
+      tags:
+      - Datasets
+  /api/v1/datasets/{datasetId}/profiling:
+    get:
+      description: |-
+        This endpoint allows you to retrieve detailed profiling information for a specific dataset in your organization's Soda Cloud account. Profiling information provides insights into the dataset's structure, statistical summaries, and data characteristics.
+
+        ## Authorization
+
+        Only users with **Access dataset profiling and sampling** permission can view dataset profiling. Soda Cloud Admins have access to profiling information for all datasets.**See [Manage dataset roles](https://go.soda.io/roles) for more information.**
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Tags
+
+        `Datasets`
+
+        ## Rate limiting
+
+        1 requests/60 seconds
+      operationId: "GET/api/v1/datasets/{datasetId}/profiling"
+      parameters:
+      - in: path
+        name: datasetId
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/PublicApiDatasetProfilingResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      summary: Get dataset profiling information
       tags:
       - Datasets
   /api/v1/datasets/{datasetId}/responsibilities:
@@ -1448,6 +1682,8 @@ paths:
     post:
       description: |-
         This endpoint enables you to update the user and user groups permissions and their associated roles for a dataset in your organization's Soda Cloud account.
+
+        **Note**: This API fully replaces the existing responsibilities. The entire list of responsibilities must be provided in the request, including both new and existing entries, as any omissions will result in their removal.
 
         ## Authorization
 
