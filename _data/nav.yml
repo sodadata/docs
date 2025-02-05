@@ -33,7 +33,17 @@
       page: observability/row-level-monitoring.md
     - subtitle: What is Soda Agent
       page: observability/soda-agent.md
-
+      
+- title: Get started
+  page: soda/get-started-roadmap.md
+  subcategories:
+    - subtitle: Get started roadmap
+      page: soda/get-started-roadmap.md
+    - subtitle: Choose a flavor of Soda
+      page: soda/setup-guide.md
+      subcategories:
+      - subtitle: Install Soda Library
+        page: soda-library/install.md
 
 # - title: Data testing
 #   page:
