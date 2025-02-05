@@ -2,7 +2,7 @@
 layout: default
 title: Data testing
 description: What is data testing?
-parent: overview
+parent: Soda overview
 ---
 
 # What is data testing?
