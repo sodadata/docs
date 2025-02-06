@@ -42,35 +42,35 @@
   - subtitle: Introduction
     page: data-testing/introduction.md
     subcategories:
-    - subtitle: What is a data contract-41
+    - subtitle: What is a data contract
       page: data-testing/what-is-data-contract.md
-    - subtitle: Data contract operating model-42
-      page: data-testing/data-contract-opeating-model.md
-    - subtitle: Verify a first contract-43
+    - subtitle: Data contract operating model
+      page: data-testing/data-contract-operating-model.md
+    - subtitle: Verify a first contract
       page: data-testing/verify-first-contract.md
   - subtitle: Verify a contract in your pipeline-50
     page: data-testing/verify-contract-in-pipeline.md
     subcategories:
-    - subtitle: With the library-51
+    - subtitle: With the library
       page: data-testing/with-library.md
-    - subtitle: With the agent-52
+    - subtitle: With the agent
       page: data-testing/with-agent.md
-  - subtitle: Send results to Soda Cloud-60
+  - subtitle: Send results to Soda Cloud
     page: data-testing/send-results-to-soda-cloud.md
-  - subtitle: Verify a contract on a time schedule-70
+  - subtitle: Verify a contract on a time schedule
     page: data-testing/verify-contract-on-time-schedule.md
-  - subtitle: Write data contracts-80
+  - subtitle: Write data contracts
     page: data-testing/write-data-contracts.md
     subcategories:
-    - subtitle: Create a data contract-81
+    - subtitle: Create a data contract
       page: data-testing/create-data-contract.md
-    - subtitle: Check missing values-82
+    - subtitle: Check missing values
       page: data-testing/check-missing-values.md
-    - subtitle: Check validity-83
+    - subtitle: Check validity
       page: data-testing/check-validity.md
-  - subtitle: Configure notifications-90
+  - subtitle: Configure notifications
     page: data-testing/configure-notifications.md
-  - subtitle: Failed rows-100
+  - subtitle: Failed rows
     page: data-testing/failed-rows.md
 
 # - title: Soda Cloud administration - 200
