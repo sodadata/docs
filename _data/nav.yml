@@ -14,14 +14,6 @@
 - title: Observability
   page: observability/observability.md
   subcategories:
-  - subtitle: Set up Agent
-    page: observability/set-up-agent.md
-  - subtitle: Set up metrics monitoring
-    page: observability/set-up-metrics-monitoring.md
-  - subtitle: Set up observability
-    page: observability/set-up-metrics-monitoring.md
-  - subtitle: Configure notifications
-    page: observability/configure-notifications.md
   - subtitle: Introduction
     page: observability/introduction.md
     subcategories:
@@ -33,6 +25,14 @@
       page: observability/row-level-monitoring.md
     - subtitle: What is Soda Agent
       page: observability/soda-agent.md
+    - subtitle: Set up Agent
+      page: observability/set-up-agent.md
+  - subtitle: Set up metrics monitoring
+    page: observability/set-up-metrics-monitoring.md
+  - subtitle: Set up observability
+    page: observability/set-up-metrics-monitoring.md
+  - subtitle: Configure notifications
+    page: observability/configure-notifications.md
       
 - title: Get started
   page: soda/get-started-roadmap.md
