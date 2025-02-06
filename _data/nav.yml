@@ -73,39 +73,38 @@
   - subtitle: Failed rows
     page: data-testing/failed-rows.md
 
-# - title: Soda Cloud administration - 200
-#   page:
-#   subcategories:
-#   - subtitle: Managing authorization-210
-#     page: 
-#     subcategories:
-#     - subtitle: SSO - 211
-#       page: 
-#     - subtitle: User groups - 212
-#       page:
-#     - subtitle: Permissions -213
-#       pge: 
-#   - subtitle: Integrate with Soda-220
-#     page: 
-#     subcategories:
-#     - subtitle: 
-#     - subtitle: Atlan - 221
-#       page: soda/integrate-atlan.md
-#     - subtitle: Collibra -222
-#       page:
+- title: Soda Cloud administration
+  page: soda-administration/soda-cloud-administration.md
+  subcategories:
+  - subtitle: Managing authorization
+    page: soda-administration/managing-authorization.md
+    subcategories:
+    - subtitle: SSO
+      page: soda-administration/sso.md
+    - subtitle: User groups
+      page: soda-administration/user-groupd.md
+    - subtitle: Permissions
+      page: soda-administration/permissions.md
+  - subtitle: Integrate with Soda
+    page: soda-administration/integrate-with-soda.md
+    subcategories:
+    - subtitle: Atlan
+      page: soda/integrate-atlan.md
+    - subtitle: Collibra
+      page: soda-administration/integrate-colibra.md
       
-# - title: Data source connection reference
-#   page: 
+- title: Data source connection reference
+  page: soda-administration/data-source-connection-ref.md
 
-# - title: Soda contract reference
-#   page: 
+- title: Soda contract reference
+  page: soda-administration/soda-contract-ref.md
 
-# - title: Soda Python library API reference
-#   page: soda-library/python_api.md
+- title: Soda Python library API reference
+  page: soda-library/python_api.md
 
-# - title: Soda CLI reference
-#   page: 
+- title: Soda CLI reference
+  page: soda-administration/soda-python-library-api-ref.md
 
-# - title: Soda Cloud REST API reference
-#   page: api-docs/public-cloud-api-v1.md
+- title: Soda Cloud REST API reference
+  page: api-docs/public-cloud-api-v1.md
 
