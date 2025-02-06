@@ -30,7 +30,7 @@
   - subtitle: Set up metrics monitoring
     page: observability/set-up-metrics-monitoring.md
   - subtitle: Set up observability
-    page: observability/set-up-metrics-monitoring.md
+    page: observability/set-up-observability.md
   - subtitle: Configure notifications
     page: observability/configure-notifications.md
       
