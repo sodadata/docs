@@ -48,7 +48,7 @@
       page: data-testing/data-contract-operating-model.md
     - subtitle: Verify a first contract
       page: data-testing/verify-first-contract.md
-  - subtitle: Verify a contract in your pipeline-50
+  - subtitle: Verify a contract in your pipeline
     page: data-testing/verify-contract-in-pipeline.md
     subcategories:
     - subtitle: With the library
