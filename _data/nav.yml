@@ -12,10 +12,10 @@
     page: overview/observability.md
 
 - title: Observability
-  page: observability/what-is-observability.md
+  page: observability/observability.md
   subcategories:
   - subtitle: Introduction
-    page: observability/what-is-observability.md
+    page: observability/introduction.md
     subcategories:
     - subtitle: What is observability 
       page: observability/what-is-observability.md
@@ -40,7 +40,7 @@
   page: data-testing/data-testing.md
   subcategories:
   - subtitle: Introduction
-    page: data-testing/data-testing.md
+    page: data-testing/introduction.md
     subcategories:
     - subtitle: What is a data contract
       page: data-testing/what-is-data-contract.md
