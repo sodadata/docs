@@ -195,11 +195,15 @@ profile columns:
 <br />
 
 ### Disable column profiling at the organization level
+
 If you wish to disable column profiling at the organization level, you must possess Admin privileges in your Soda Cloud account. 
 Once confirmed, follow these steps:
+
 Navigate to your avatar.
-Click on **"Organization settings"**.
-Uncheck the box labeled **"Allow Soda to collect column profile information”**
+
+Click on **Organization settings**.
+
+Uncheck the box labeled **Allow Soda to collect column profile information**.
 
 <br />
 
