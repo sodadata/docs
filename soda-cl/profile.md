@@ -203,7 +203,7 @@ Navigate to your avatar.
 
 Click on **Organization settings**.
 
-Uncheck the box labeled **Allow Soda to collect column profile information**
+Uncheck the box labeled **Allow Soda to collect column profile information**.
 
 <br />
 
