@@ -92,19 +92,18 @@
       page: soda/integrate-atlan.md
     - subtitle: Collibra
       page: soda-administration/integrate-colibra.md
-      
-- title: Data source connection reference
-  page: refs/data-source-connection-ref.md
 
-- title: Soda contract reference
-  page: refs/soda-contract-ref.md
-
-- title: Soda Python library API reference
-  page: soda-library/python_api.md
-
-- title: Soda CLI reference
-  page: refs/soda-python-library-api-ref.md
-
-- title: Soda Cloud REST API reference
-  page: api-docs/public-cloud-api-v1.md
+- title: References
+  page: references.md
+  subcategories:   
+  - subtitle: Data source connection reference
+    page: refs/data-source-connection-ref.md
+  - subtitle: Soda contract reference
+    page: refs/soda-contract-ref.md
+  - subtitle: Soda Python library API reference
+    page: soda-library/python_api.md
+  - subtitle: Soda CLI reference
+    page: refs/soda-python-library-api-ref.md
+  - subtitle: Soda Cloud REST API reference
+    page: api-docs/public-cloud-api-v1.md
 
