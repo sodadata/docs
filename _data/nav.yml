@@ -34,8 +34,6 @@
   - subtitle: Configure notifications
     page: observability/configure-notifications.md
       
-
-
 - title: Data testing
   page: data-testing/data-testing.md
   subcategories:
@@ -94,7 +92,7 @@
       page: soda-administration/integrate-colibra.md
 
 - title: References
-  page: references.md
+  page: refs/references.md
   subcategories:   
   - subtitle: Data source connection reference
     page: refs/data-source-connection-ref.md
