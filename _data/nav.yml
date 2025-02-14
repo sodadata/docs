@@ -39,7 +39,7 @@
   children:
   - subtitle: Introduction
     page: observability/introduction.md
-    children:
+    grandchildren:
     - subtitle: What is observability 
       page: observability/what-is-observability.md
     - subtitle: What is metrics monitoring
