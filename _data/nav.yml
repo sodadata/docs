@@ -36,10 +36,10 @@
 
 - title: Observability
   page: observability/observability.md
-  subcategories:
+  children:
   - subtitle: Introduction
     page: observability/introduction.md
-    subcategories:
+    children:
     - subtitle: What is observability 
       page: observability/what-is-observability.md
     - subtitle: What is metrics monitoring
