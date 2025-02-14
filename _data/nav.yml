@@ -3,6 +3,29 @@
 - title: Home
   page: index.html
 
+- title: Take a sip of Soda
+  page: soda/quick-start-sip.md
+
+- title: Get started
+  page: soda/get-started-roadmap.md
+  subcategories:
+    - subtitle: Get started roadmap
+      page: soda/get-started-roadmap.md
+    - subtitle: Choose a flavor of Soda
+      page: soda/setup-guide.md
+    - subtitle: Install Soda Library
+      page: soda-library/install.md
+    - subtitle: Set up a Soda-hosted agent
+      page: soda-agent/managed-agent.md
+    - subtitle: Deploy a Soda Agent
+      page: soda-agent/deploy.md
+    - subtitle: Soda Agent extras
+      page: soda-agent/extras.md
+    - subtitle: Invoke Soda Library
+      page: soda-library/programmatic.md
+    - subtitle: Upgrade, redeploy, uninstall
+      page: soda/upgrade.md
+
 - title: Soda overview
   page: overview/data-testing.md
   subcategories:
