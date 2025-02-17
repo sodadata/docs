@@ -3,9 +3,6 @@
 - title: Home
   page: index.html
 
-- title: Take a sip of Soda
-  page: soda/quick-start-sip.md
-
 - title: Get started
   page: soda/get-started-roadmap.md
   subcategories:
