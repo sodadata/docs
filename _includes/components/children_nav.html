@@ -1,30 +1,18 @@
 {%- comment -%}
-  Recursive children navigation. Works with both `subcategories` and `children`.
+  Updated to support both `children` and `subcategories` for flexible YAML structures.
 {%- endcomment -%}
 
-{%- if page.has_children == false -%}
+{%- if page.has_children == false and page.subcategories == nil -%}
   {%- assign nav_children = "" | split: "" -%}
 {%- else -%}
   {%- capture site_nav -%}
     {%- include_cached components/site_nav.html all=true -%}
   {%- endcapture -%}
 
-  {%- assign nav_children = nil -%}
-
-  {%- capture nav_list_link -%}
-  <a href="{{ page.url | relative_url }}" class="nav-list-link"></a>
-  {%- endcapture -%}
-
-  {%- assign nav_child_start = site_nav | split: nav_list_link | last | split: "</a>" | slice: 1 | first -%}
-
-  {%- assign nav_child_test = nav_child_start | remove_first: "<ul class=\"nav-list\">" | prepend: "<ul class=\"nav-list\">" -%}
-
-  {%- if nav_child_start != nav_child_test -%}
-    {%- assign nav_children = "" | split: "" -%}
-  {%- endif -%}
+  {%- assign nav_children = site_nav | where_exp: "item", "item.parent == page.url" | concat: page.subcategories -%}
 {%- endif -%}
 
-{%- unless nav_children -%}
+{%- unless nav_children == empty -%}
 
   {%- assign nav_ancestors = "" | split: "" -%}
   {%- for nav_link in nav_breadcrumbs -%}
@@ -52,33 +40,11 @@
 {% include toc_heading_custom.html %}
 
 <ul class="nav-list">
-  {% macro render_nav(navlist) %}
-    <ul class="nav-list">
-      {% for nav in navlist %}
-        {% assign has_children = nav.subcategories | default: nav.children %}
-        {% assign active_class = "" %}
-        {% if page.path == nav.page %}
-          {% assign active_class = "active" %}
-        {% endif %}
-        
-        <li class="nav-list-item {{ active_class }}">
-          {% if has_children %}
-            <a href="#" class="nav-list-expander">
-              <svg viewBox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg>
-            </a>
-          {% endif %}
-          
-          <a class="nav-list-link" href="{% link {{ nav.page }} %}">{{ nav.title }}</a>
-          
-          {% if has_children %}
-            {% render_nav has_children %}
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-  {% endmacro %}
-  
-  {% render_nav nav_children %}
+  {% for nav_child in nav_children %}
+    <li>
+      <a href="{{ nav_child.url | relative_url }}">{{ nav_child.title }}</a>
+    </li>
+  {% endfor %}
 </ul>
 
 {%- endif -%}
