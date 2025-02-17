@@ -1,4 +1,3 @@
-{% macro render_nav(navlist) %}
 <ul class="nav-list">
   {% for nav in navlist %}
     {% assign has_children = nav.subcategories | default: nav.children %}
@@ -22,6 +21,3 @@
     </li>
   {% endfor %}
 </ul>
-{% endmacro %}
-
-{% render_nav navlist %}
