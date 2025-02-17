@@ -7,48 +7,47 @@
     {% assign navlist = site.data.nav %}
     {% endif %}
     {% for nav in navlist %}
-    {% assign has_subcategories = nav.subcategories != null %}
-    {% assign current_parent = has_subcategories and nav.subcategories | where:"page", page.path | size %}
-    {% assign classlist = current_parent != 0 ? "active" : "" %}
-    <li class="nav-list-item {{classlist}}">
-        <a href="#" class="nav-list-expander">
-            <svg viewBox="0 0 24 24">
-                <use xlink:href="#svg-arrow-right"></use>
-            </svg>
-        </a>
-        <a class="nav-list-link" href="{% link {{ nav.page }}  %}">{{ nav.title }}</a>
-        {% if has_subcategories %}
-        <ul class="nav-list ">
-            {% for subcategory in nav.subcategories %}
-            {% assign has_sub_subcategories = subcategory.subcategories != null %}
-            {% assign current_sub_parent = has_sub_subcategories and subcategory.subcategories | where:"page", page.path | size %}
-            {% assign sub_classlist = current_sub_parent != 0 ? "active" : "" %}
-            <li class="nav-list-item {{sub_classlist}}">
-                <a href="#" class="nav-list-expander">
-                    <svg viewBox="0 0 24 24">
-                        <use xlink:href="#svg-arrow-right"></use>
-                    </svg>
-                </a>
-                <a class="nav-list-link {{ sub_classlist }}" href="{% link {{ subcategory.page }} %}">{{ subcategory.subtitle }}</a>
-                {% if has_sub_subcategories %}
-                <ul class="nav-list ">
-                    {% for sub_subcategory in subcategory.subcategories %}
-                    <li class="nav-list-item">
-                        <a class="nav-list-link" href="{% link {{ sub_subcategory.page }} %}">{{ sub_subcategory.subtitle }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </li>
-            {% endfor %}
-        </ul>
+    {% if nav.subcategories != null %}
+        {% assign current_parent = nav.subcategories | where:"page", page.path | size %}
+        {% if current_parent != 0 %}
+            {% assign classlist = "active" %}
+        {% else %}
+            {% assign classlist = "" %}
         {% endif %}
-    </li>
+        <li class="nav-list-item {{classlist}}">
+            <a href="#" class="nav-list-expander">
+                <svg viewBox="0 0 24 24">
+                    <use xlink:href="#svg-arrow-right"></use>
+                </svg>
+            </a>
+            {% if nav.page %}
+            <a class="nav-list-link" href="{% link {{ nav.page }}  %}">{{ nav.title }}</a>
+            {% else %}
+            <a class="nav-list-link" href="#">{{ nav.title }}</a>
+            {% endif %}
+            <ul class="nav-list ">
+                {% for subcategory in nav.subcategories %}
+                    {% if page.path == subcategory.page %}
+                        {% assign classlist = "active" %}
+                    {% else %}
+                        {% assign classlist = "" %}
+                    {% endif %}
+                    <li class="nav-list-item">
+                        <a class="nav-list-link {{ classlist }}" href="{% link {{ subcategory.page }} %}">{{ subcategory.subtitle }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
     {% else %}
-    {% assign classlist = page.path == nav.page ? "active" : "" %}
-    <li class="nav-list-item">
-        <a class="nav-list-link {{classlist}}" href="{% link {{ nav.page }} %}">{{ nav.title }}</a>
-    </li>
+        {% if page.path == nav.page %}
+            {% assign classlist = "active" %}
+        {% else %}
+            {% assign classlist = "" %}
+        {% endif %}
+        <li class="nav-list-item">
+            <a class="nav-list-link {{classlist}}" href="{% link {{ nav.page }} %}">{{ nav.title }}</a>
+        </li>
     {% endif %}
     {% endfor %}
+
 </ul>
