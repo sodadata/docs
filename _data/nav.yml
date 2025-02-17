@@ -30,29 +30,6 @@
     page: overview/data-testing.md
   - subtitle: Observability
     page: overview/observability.md
-
-- title: Observability
-  page: observability/observability.md
-  subcategories:
-  - subtitle: Introduction
-    page: observability/introduction.md
-    subcategories:
-    - subtitle: What is observability 
-      page: observability/what-is-observability.md
-    - subtitle: What is metrics monitoring
-      page: observability/metrics-monitoring.md
-    - subtitle: What is row level monitoring (anomalo approach)
-      page: observability/row-level-monitoring.md
-    - subtitle: What is Soda Agent
-      page: observability/soda-agent.md
-    - subtitle: Set up Agent
-      page: observability/set-up-agent.md
-  - subtitle: Set up metrics monitoring
-    page: observability/set-up-metrics-monitoring.md
-  - subtitle: Set up observability
-    page: observability/set-up-observability.md
-  - subtitle: Configure notifications
-    page: observability/configure-notifications.md
       
 - title: Data testing
   page: data-testing/data-testing.md
@@ -90,6 +67,29 @@
     page: data-testing/configure-notifications.md
   - subtitle: Failed rows
     page: data-testing/failed-rows.md
+  
+- title: Observability
+  page: observability/observability.md
+  subcategories:
+  - subtitle: Introduction
+    page: observability/introduction.md
+    subcategories:
+    - subtitle: What is observability 
+      page: observability/what-is-observability.md
+    - subtitle: What is metrics monitoring
+      page: observability/metrics-monitoring.md
+    - subtitle: What is row level monitoring (anomalo approach)
+      page: observability/row-level-monitoring.md
+    - subtitle: What is Soda Agent
+      page: observability/soda-agent.md
+    - subtitle: Set up Agent
+      page: observability/set-up-agent.md
+  - subtitle: Set up metrics monitoring
+    page: observability/set-up-metrics-monitoring.md
+  - subtitle: Set up observability
+    page: observability/set-up-observability.md
+  - subtitle: Configure notifications
+    page: observability/configure-notifications.md
 
 - title: Soda Cloud administration
   page: soda-administration/soda-cloud-administration.md
