@@ -35,8 +35,10 @@ data_source my_datasource_name:
 | type     | required | Identify the type of data source for Soda. |
 | host     | required | Provide a host identifier.                 |
 | port     | optional | Provide a port identifier.                 |
+| auth_type| optional | `BasicAuthentication` in a combination of user + password or  `JWTAuthentication`  in combination with username and `access_token`. Default: `BasicAuthentication`. |
+| `access_token` | optional | Map to the JWT access token. Only applicable if auth_type = `JWTAuthentication`. |
 | username | required | Consider using system variables to retrieve this value securely using, for example, `${TRINO_USER}`. |
-| password | required | Consider using system variables to retrieve this value securely using, for example, `${TRINO_PASSWORD}`. |
+| password | optional | Consider using system variables to retrieve this value securely using, for example, `${TRINO_PASSWORD}`. Only applicable for default auth_type. |
 | catalog  | required | Provide an identifier for the catalog which contains schemas and which references a data source using a connector. See <a href="https://trino.io/docs/current/overview/concepts.html#catalog" target="_blank">Catalog</a> in the Trino documentation. |
 | schema   | required | Provide an identifier for the schema in which your dataset exists. |
 | source   | optional |  |
