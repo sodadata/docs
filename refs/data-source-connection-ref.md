@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Data source connetion reference
+title: Data source connection reference
 description: Data source connection reference
 parent: References
 ---

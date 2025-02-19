@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Data testing
-nav_order: 300
+nav_order: 310
 description: What is data testing?
-parent: Soda overview
+parent: Soda Overview
 ---
 
 # What is data testing?
