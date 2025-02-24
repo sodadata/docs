@@ -53,7 +53,7 @@ data_source my_datasource_name:
 | account| required | Provide the unique value that identifies your account. Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`. Note: Account sometimes needs to take the form of `<account_identifier>-<account_name>` or `<account_identifier>.<region>`. |
 | database| required | Provide an idenfier for your database. |
 | warehouse| required | Provide an identifier for the cluster of resources that is a Snowflake virtual warehouse. See <a href="https://docs.snowflake.com/en/user-guide/warehouses-overview" target="_blank">Overview of Warehouses</a>.|
-| connection_timeout| required | Set the timeout period in minutes for an inactive login session.  |
+| connection_timeout| required | Set the timeout period in seconds for an inactive login session.  |
 | role<sup>1</sup> | optional | Specify a Snowflake role that has permission to access the `database` and `schema` of your data source. |
 | client_session_keep_alive | optional | Use this parameter to keep the session active, even with no user activity. Provide a boolean value: `true` or `false`|
 | authenticator<sup>2</sup> | optional | Add an authenticator paramater with value `externalbrowser` to authenticate the connection to your Snowflake data source using any SAML 2.0-compliant identity provider (IdP) such as Okta or OneLogin.  |
