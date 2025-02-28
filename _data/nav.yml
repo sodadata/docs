@@ -9,15 +9,7 @@
     page: overview/data-testing.md
   - subtitle: Observability
     page: overview/observability.md
-
-- title: Get started
-  page: get-started/get-started.md
-  subcategories:
-    - subtitle: Get started with data testing
-      page: get-started/get-started-data-testing.md
-    - subtitle: Get started with observability
-      page: get-started/get-started-observability.md
-     
+   
 - title: Data testing
   page: data-testing/data-testing.md
   subcategories:
@@ -30,6 +22,8 @@
       page: data-testing/data-contract-operating-model.md
     - subtitle: Verify a first contract
       page: data-testing/verify-first-contract.md
+  - subtitle: Get started with data testing
+    page: get-started/get-started-data-testing.md
   - subtitle: Verify a contract in your pipeline
     page: data-testing/verify-contract-in-pipeline.md
     subcategories:
@@ -71,6 +65,8 @@
       page: observability/soda-agent.md
     - subtitle: Set up Agent
       page: observability/set-up-agent.md
+  - subtitle: Get started with observability
+    page: get-started/get-started-observability.md
   - subtitle: Set up metrics monitoring
     page: observability/set-up-metrics-monitoring.md
   - subtitle: Set up observability

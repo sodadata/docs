@@ -1,4 +1,5 @@
 ---
+layout: default
 title: What is a data contract
 parent: Introduction
 grand_parent: Data testing
