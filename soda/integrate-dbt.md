@@ -65,16 +65,17 @@ pip install -i https://pypi.cloud.soda.io soda-dbt
 ```
 Note: It is recommended that you use separate Python environments for your dbt pipeline and Soda scans to avoid dependency conflicts.
 
-3. To ingest dbt test results, Soda Library uses the files that dbt generates when it builds or tests models: `manifest.json` and `run_results.json`.
+3. Have a `configuration.yml` file that includes your Soda Cloud credentials and the Soda Datasource to be associated with the dbt tests. 
+4. To ingest dbt test results, Soda Library uses the files that dbt generates when it builds or tests models: `manifest.json` and `run_results.json`.
    Use Soda Library to execute *one* of the following ingest commands to ingest the JSON files into Soda Cloud.
 * Specify the file path for the directory in which you store both the `manifest.json` and `run_results.json` files; Soda finds the files it needs in this directory.
 ```shell
-soda ingest dbt -d my_datasource_name --dbt-artifacts /path/to/files
+soda ingest dbt -d my_datasource_name  -c /path/to/configuration.yml  --dbt-artifacts /path/to/files
 ```
 OR <br />
 * Specify the path and filename for each individual JSON file that Soda Cloud must ingest.
 ```shell
-soda ingest dbt -d my_datasource_name --dbt-manifest path/to/manifest.json --dbt-run-results path/to/run_results.json
+soda ingest dbt -d my_datasource_name  -c /path/to/configuration.yml  --dbt-manifest path/to/manifest.json --dbt-run-results path/to/run_results.json
 ```
 
 Run `soda ingest --help` to review a list of all command options.
@@ -108,12 +109,12 @@ dbt_cloud:
 4. From the command-line, run the `soda ingest` command to capture the test results from dbt Cloud and send them to Soda Cloud and include *one* of two identifiers from dbt Cloud. Refer to <a href="https://docs.getdbt.com/docs/dbt-cloud/cloud-overview" target="_blank">dbt Cloud documentation</a> for more information.
 * Use the **run ID** from which you want Soda to ingest results. <br /> Look for the run ID at the top of any Run page "Run #40732579" in dbt Cloud, or in the URL of the Run page. For example, `https://cloud.getdbt.com/#/accounts/ 1234/projects/1234/runs/40732579/`
 ```bash
-soda ingest dbt -d my_datasource_name -c configuration.yml --dbt-cloud-run-id the_run_id
+soda ingest dbt -d my_datasource_name -c /path/to/configuration.yml --dbt-cloud-run-id the_run_id
 ```
 OR <br />
 * Use the **job ID** from which you want Soda to ingest results. Using the job ID enables you to write the command once, and and know that Soda always ingests the latest run of the job, which is ideal if you perform ingests on a regular schedule via a cron job or other scheduler. <br /> Look for the job ID after the word "jobs" in the URL of the Job page in dbt Cloud. For example, `https://cloud.getdbt.com/#/accounts/ 1234/projects/5678/jobs/123445/`
 ```bash
-soda ingest dbt -d my_datasource_name -c configuration.yml --dbt-cloud-job-id the_job_id
+soda ingest dbt -d my_datasource_name -c /path/to/configuration.yml --dbt-cloud-job-id the_job_id
 ```
 
 <br/>
