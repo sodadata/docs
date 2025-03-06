@@ -3,7 +3,7 @@ layout: default
 title: Introduction
 description: Introduction
 parent: Observability
-nav_order: 510
+nav_order: 512
 ---
 
 # Introduction
@@ -16,7 +16,5 @@ nav_order: 510
 
 {% include metrics-monitoring.md %}
 
-{% include row-level-monitoring.md %}
 
-{% include soda-agent.md %}
 

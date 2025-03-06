@@ -1,10 +1,9 @@
 ---
 layout: default
-title: What is metrics monitoring?
-description: What is metrics monitoring?
+title: Metrics monitoring
+description: Metrics monitoring
 parent: Introduction
-grand_parent: Observability
-nav_order: 512
+nav_order: 514
 ---
 
-## What is metrics monitoring?
+## Metrics monitoring

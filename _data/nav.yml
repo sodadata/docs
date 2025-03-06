@@ -52,27 +52,63 @@
 - title: Observability
   page: observability/observability.md
   subcategories:
+  - subtitle: Quickstart
+    page: observability/quickstart.md
   - subtitle: Introduction
     page: observability/introduction.md
     subcategories:
-    - subtitle: What is observability 
+    - subtitle: Observability 
       page: observability/what-is-observability.md
-    - subtitle: What is metrics monitoring
+    - subtitle: Metrics monitoring
       page: observability/metrics-monitoring.md
-    - subtitle: What is row level monitoring (anomalo approach)
-      page: observability/row-level-monitoring.md
-    - subtitle: What is Soda Agent
-      page: observability/soda-agent.md
-    - subtitle: Set up Agent
-      page: observability/set-up-agent.md
-  - subtitle: Get started with observability
+  - subtitle: How it works/Observability Guide
     page: get-started/get-started-observability.md
-  - subtitle: Set up metrics monitoring
-    page: observability/set-up-metrics-monitoring.md
-  - subtitle: Set up observability
-    page: observability/set-up-observability.md
-  - subtitle: Configure notifications
-    page: observability/configure-notifications.md
+    subcategories:
+    - subtitle: Set up Soda Agent/Prerequisites
+      page: observability/prerequisites.md
+    - subtitle: Add data sources
+      page: observability/add-data-source.md
+      subcategories:
+      - subtitle: Supported data sources
+        page: observability/supported-data-sources.md
+    - subtitle: Anomaly Dashboard
+      page: observability/anomaly-dashboard.md
+      subcategories:
+      - subtitle: Plots
+        page: observability/plots.md
+      - subtitle: Results table and filters
+        page: observability/results-table.md
+      - subtitle: Actions
+        page: observability/actions.md
+      - subtitle: Tabs
+        page: observability/tabs.md
+      - subtitle: Buttons
+        page: observability/buttons.md
+    - subtitle: Update settings
+      page: observability/update-settings.md
+      subcategories:
+      - subtitle: Select datasets
+        page: observability/select-datasets.md
+      - subtitle: Specify time partition column
+        page: observability/select-partition-column.md
+      - subtitle: Set scan frequency on the data source
+        page: observability/scan-frequency.md
+    - subtitle: Inspect plots
+      page: observability/inspect-plots.md
+      subcategories:
+      - subtitle: View metric plots and results
+        page: observability/view-metrics-plots.md
+      - subtitle: Adjust sensitivity
+        page: observability/adjust-sensitivity.md
+      - subtitle: Define exclusion values
+        page: observability/define-exclusion-values.md
+      - subtitle: Give feedback
+        page: observability/give-feedback.md
+      - subtitle: Manage incidents
+        page: observability/manage-incidents.md
+    - subtitle: Set up alert notifications
+      page: observability/set-up-alerts.md
+
 
 - title: Soda Cloud administration
   page: soda-administration/soda-cloud-administration.md

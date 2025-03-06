@@ -1,10 +1,9 @@
 ---
 layout: default
-title: What is observability?
-description: What is data observability?
+title: Observability introduction
+description: Observability
 parent: Introduction
-grand_parent: Observability
-nav_order: 511
+nav_order: 513
 ---
 
-## What is data observability?
+## Observability

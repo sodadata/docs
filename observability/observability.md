@@ -5,7 +5,7 @@ description: What is observability?
 nav_order: 500
 ---
 
-# What is observability?
+# Observability
 
 *Last modified on {% last_modified_at %}*
 
