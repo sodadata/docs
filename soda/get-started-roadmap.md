@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Get started roadmap
+nav_order: 200
 description: Get started with Soda! Use this curated set of instructions to quickly get data quality tests up and running.
 parent: Get started
 ---
