@@ -14,7 +14,6 @@ nav_order: 512
 
 {% include what-is-observability.md %}
 
-{% include metrics-monitoring.md %}
 
 
 

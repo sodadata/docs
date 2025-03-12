@@ -80,10 +80,6 @@
         page: observability/results-table.md
       - subtitle: Actions
         page: observability/actions.md
-      - subtitle: Tabs
-        page: observability/tabs.md
-      - subtitle: Buttons
-        page: observability/buttons.md
     - subtitle: Update settings
       page: observability/update-settings.md
       subcategories:

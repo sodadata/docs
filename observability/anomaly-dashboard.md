@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Anomaly Dashboard
+title: Explore anomaly dashboard
 description: Elements of Anomaly Dashboard
 parent: Observability Guide
 nav_order: 540
 ---
 
-## Anomaly Dashboard
+## Explore anomaly dashboard
