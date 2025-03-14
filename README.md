@@ -95,7 +95,7 @@ Soda uses the [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGu
 - Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Activeandpresent" target="_blank">active voice</a>.
 - Use present tense and imperative mood. See the [Set up docs tooling](#set-up-docs-tooling) section above for an example.
 - Avoid the subjunctive mood: "should", "would", "could".
-- Make the language of your lists <a href="https://ewriteonline.com/how-and-why-to-make-your-lists-parallel-and-what-does-parallel-mean/" target="_blank">parallel</a>.
+- Make the language of your lists <a href="https://ezu.crewmachine.com/2021/12/22/parallel-structure-parallel-bullet-lists/" target="_blank">parallel</a>.
 
 ### Good practice
 - Never write an FAQ page or section. FAQs are a randomly organized bucket of content that put the burden on the reader to find what they need. Instead, consciously think about when and where a user needs the information and include it there.
