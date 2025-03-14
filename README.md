@@ -11,7 +11,7 @@ The following outlines the workflow to contribute to Soda documentation.
 3. Follow the [style guidelines](#style-guidelines) to edit existing or write new content using [markdown](#use-jekyll-markdown).
 4. Adjust the nav order of any new files in the `docs` > `nav.yml` file.
 5. Spell check your content (select all and copy to Google Docs for a thorough check) and test all links.
-6. Commit your contributions, create a pull request, and request a review from janet-can.
+6. Commit your contributions, open a pull request, and request a review from someone on the Soda team.
 7. If you work for Soda, merge your pull request. If not, a Soda employee will review and merge when ready.
 8. Celebrate your new life as a published author!
 
@@ -77,7 +77,7 @@ Rather than set up all the docs tooling locally to preview your work, you can us
 2. Make changes as you wish to docs files, then save and commit the changes locally.
 3. Push your branch to the repo, and Create a Pull Request.
 4. Once created and saved in GitHub, a new PR triggers a Netlify workflow that prepares a preview of the docs site that you can access via the Deploy Preview link in the PR. Use this link to review your work as it will appear when it is published.
-5. When you are satisfied with the changes, request a review of the PR from janet-can.
+5. When you are satisfied with the changes, request a review of the PR from someone on the Soda team.
 7. If you work for Soda, merge your pull request. If not, a Soda employee will review and merge when ready.
 
 ## Style guidelines
@@ -146,7 +146,7 @@ Document the details of each Soda product's release using included release note 
 4. Write your release notes using the style guide for guidance on format, language, etc. Use <a href="https://writing.wisc.edu/handbook/style/ccs_activevoice/" target="_blank">active voice</a>!
 5. Spell check your content. (Copy paste to a Google Doc or your favorite editor to run a spell check.)
 6. Commit your changes, then create a new pull request when you are ready to publish.
-7. In the new pull request, request a review by @janet-can, if you wish. 
+7. In the new pull request, request a review.
 8. Any Soda employee reviews, squashes, and mergess the PR.
 9. In the #release-alerts channel in the soda-community in Slack, follow the existing pattern to post a release alert and link to the newly-published release notes. 
 
