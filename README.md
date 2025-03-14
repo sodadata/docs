@@ -18,9 +18,9 @@ The following outlines the workflow to contribute to Soda documentation.
 ### Set up docs tooling
 
 Soda uses the following tools to build and publish documentation.
-- [GitHub](https://github.com/sodadata/soda-sql) to store content
+- [GitHub](https://github.com/sodadata/docs) to store content
 - [Jekyll](https://jekyllrb.com/docs/) to build and serve content
-- [Just the Docs](https://pmarsceill.github.io/just-the-docs/) to apply a visual theme
+- [Just the Docs](https://github.com/just-the-docs/just-the-docs) to apply a visual theme
 - [lunrjs](https://lunrjs.com/docs/index.html) to facilitate searches in docs (search bar)
 
 To contribute to Soda documentation, set up your local system to author and preview content before committing it.
