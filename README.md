@@ -11,16 +11,16 @@ The following outlines the workflow to contribute to Soda documentation.
 3. Follow the [style guidelines](#style-guidelines) to edit existing or write new content using [markdown](#use-jekyll-markdown).
 4. Adjust the nav order of any new files in the `docs` > `nav.yml` file.
 5. Spell check your content (select all and copy to Google Docs for a thorough check) and test all links.
-6. Commit your contributions, create a pull request, and request a review from janet-can.
+6. Commit your contributions, open a pull request, and request a review from someone on the Soda team.
 7. If you work for Soda, merge your pull request. If not, a Soda employee will review and merge when ready.
 8. Celebrate your new life as a published author!
 
 ### Set up docs tooling
 
 Soda uses the following tools to build and publish documentation.
-- [GitHub](https://github.com/sodadata/soda-sql) to store content
+- [GitHub](https://github.com/sodadata/docs) to store content
 - [Jekyll](https://jekyllrb.com/docs/) to build and serve content
-- [Just the Docs](https://pmarsceill.github.io/just-the-docs/) to apply a visual theme
+- [Just the Docs](https://github.com/just-the-docs/just-the-docs) to apply a visual theme
 - [lunrjs](https://lunrjs.com/docs/index.html) to facilitate searches in docs (search bar)
 
 To contribute to Soda documentation, set up your local system to author and preview content before committing it.
@@ -77,7 +77,7 @@ Rather than set up all the docs tooling locally to preview your work, you can us
 2. Make changes as you wish to docs files, then save and commit the changes locally.
 3. Push your branch to the repo, and Create a Pull Request.
 4. Once created and saved in GitHub, a new PR triggers a Netlify workflow that prepares a preview of the docs site that you can access via the Deploy Preview link in the PR. Use this link to review your work as it will appear when it is published.
-5. When you are satisfied with the changes, request a review of the PR from janet-can.
+5. When you are satisfied with the changes, request a review of the PR from someone on the Soda team.
 7. If you work for Soda, merge your pull request. If not, a Soda employee will review and merge when ready.
 
 ## Style guidelines
@@ -95,7 +95,7 @@ Soda uses the [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGu
 - Use <a href="https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Activeandpresent" target="_blank">active voice</a>.
 - Use present tense and imperative mood. See the [Set up docs tooling](#set-up-docs-tooling) section above for an example.
 - Avoid the subjunctive mood: "should", "would", "could".
-- Make the language of your lists <a href="https://ewriteonline.com/how-and-why-to-make-your-lists-parallel-and-what-does-parallel-mean/" target="_blank">parallel</a>.
+- Make the language of your lists <a href="https://ezu.crewmachine.com/2021/12/22/parallel-structure-parallel-bullet-lists/" target="_blank">parallel</a>.
 
 ### Good practice
 - Never write an FAQ page or section. FAQs are a randomly organized bucket of content that put the burden on the reader to find what they need. Instead, consciously think about when and where a user needs the information and include it there.
@@ -146,7 +146,7 @@ Document the details of each Soda product's release using included release note 
 4. Write your release notes using the style guide for guidance on format, language, etc. Use <a href="https://writing.wisc.edu/handbook/style/ccs_activevoice/" target="_blank">active voice</a>!
 5. Spell check your content. (Copy paste to a Google Doc or your favorite editor to run a spell check.)
 6. Commit your changes, then create a new pull request when you are ready to publish.
-7. In the new pull request, request a review by @janet-can, if you wish. 
+7. In the new pull request, request a review.
 8. Any Soda employee reviews, squashes, and mergess the PR.
 9. In the #release-alerts channel in the soda-community in Slack, follow the existing pattern to post a release alert and link to the newly-published release notes. 
 
