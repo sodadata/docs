@@ -10,3 +10,7 @@ nav_order: 500
 *Last modified on {% last_modified_at %}*
 
 {% include banner-upgrade.md %}
+
+OBSERVABILITY INTRO GOES HERE
+
+## What is Observability?
