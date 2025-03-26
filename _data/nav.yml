@@ -3,12 +3,7 @@
   page: index.html
 
 - title: Soda overview
-  page: overview/overview.md
-  subcategories:
-  - subtitle: Data testing
-    page: overview/data-testing.md
-  - subtitle: Observability
-    page: overview/observability.md
+  page: soda/overview.md
    
 - title: Data testing
   page: data-testing/data-testing.md
@@ -54,13 +49,6 @@
   subcategories:
   - subtitle: Quickstart
     page: observability/quickstart.md
-  - subtitle: Introduction
-    page: observability/introduction.md
-    subcategories:
-    - subtitle: Observability 
-      page: observability/what-is-observability.md
-    - subtitle: Metrics monitoring
-      page: observability/metrics-monitoring.md
   - subtitle: How it works/Observability Guide
     page: get-started/get-started-observability.md
     subcategories:
