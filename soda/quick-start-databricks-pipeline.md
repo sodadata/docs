@@ -93,7 +93,7 @@ A check is a test that Soda executes when it scans a dataset in your data source
 In this example, the Data Engineer creates two checks files in the `soda_settings` directory in Databricks:
 * `ingestion_checks.yml` to execute quality checks after data ingestion into the Unity catalog in the Data Ingestion Checks notebook
 * `input_data_checks.yml` to execute quality checks after transformation, and before using it to train their ML model in the Input Data Checks notebook.
-* `output_data_checks.yml` to execute quality chechs after training the model and monitor the perdormance of your model.
+* `output_data_checks.yml` to execute quality checks after training the model and monitor the performance of your model.
 
 The raw data in this example is divided into two main categories. 
 * The first category is Human Resources data, which the Unity catalog contains in three datasets: basic employee information, results of manager surveys, and results of employee surveys. The survey datasets are updated on a frequent basis. 
@@ -125,7 +125,7 @@ checks for employee_info:
        dimension: [Validity]
        pipeline_stage: Ingest
        team: Data Engineering
- - missing_count(EmployeID) = 0:
+ - missing_count(EmployeeID) = 0:
      name: No null values in the Employee ID column
      attributes:
        dimension: [Completeness]
