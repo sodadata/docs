@@ -10,15 +10,55 @@ parent: Integrate Soda
 
 Configure a [webhook]({% link soda/integrate-webhooks.md %}) in Soda Cloud to connect to your Jira workspace.
 
-In Jira, you can set up an Automation Rule that enables you to define what you want an incoming webhook to do, then provides you with a URL that you use in the URL field in the Soda Cloud integration setup. 
+In this guide, we will show how you can integrate Soda Cloud Incidents with Jira.
+After the integration is set up, then creating an incident in Soda will automatically trigger the creation of corresponding bug ticket in Jira.
+The Jira ticket will include information related to the incident created in Soda, including:
+- The number and title of the Incident
+- The description of the Incident
+- The severity of the incident
+- The status of the incident
+- The user who reported the Incident
+- A link to the Incident in Soda Cloud
+- A link to the associated Check in Soda Cloud
 
-This example offers guidance on how to set up a webhook to generate an external link to which Soda Cloud displays in the **Incident Details**. When you change the status of a Soda Cloud incident, the webhook also updates the status of the Jira issue that corresponds with the incident. Refer to [Event payloads]({% link soda/integrate-webhooks.md %}l#event-payloads) for details information.
+A link to this Jira ticket will be sent back to Soda and displayed on the Incident page in the Integrations box.
+Any updates to the status of the Incident in Soda Cloud will trigger corresponding changes to the Status of the Jira ticket.
+Any updates to the status of the Jira ticket will trigger corresponding changes to the Status of the Incident in Soda Cloud.
+
+In Jira, you can set up an Automation Rule that enables you to define what you want an incoming webhook to do,
+then provides you with a URL that you use in the URL field in the Soda Cloud integration setup. 
+
+This integration is built on two webhook events IncidentCreated and IncidentUpdated (Soda -> Jira; [Event payloads]({% link soda/integrate-webhooks.md %}l#event-payloads)),
+as well as the Soda Cloud API endpoint for updating incidents (Jira -> Soda; [API]({% link api-docs/public-cloud-api-v1.md %}). 
+
 
 ![webhook-incident](/assets/images/webhook-incident.png){:height="700px" width="700px"} 
 
 <br />
 
-In Jira, start by navigating to **Project settings** > **Automation**, then click **Create rule** and, for the type of **New trigger**, select **Incoming webhook**. Reference the Jira documentation for details on how to create an <a href="https://confluence.atlassian.com/automation070/triggers-1014664599.html" target="_blank">Incoming webhook</a>. 
+In Jira, start by creating a new project dedicated to tracking data quality tickets.
+Navigate to the **Project settings** > **Work Items**, and make sure you have a bug type work item with the fields,
+as shown in the image below:
+- Summary
+- Description
+- Assignee
+- IncidentSeverity
+- IncidentID
+- IncidentURL
+- CheckURL
+
+![jira-work-item](/assets/images/jira-work-item.png){:height="700px" width="700px"} 
+
+From the same page, next click the **Edit Workflow** button, and make sure your workflow includes the statuses:
+- Reported
+- Investigating
+- Fixing
+- Resolved
+as shown in the image below:
+![jira-workflow](assets/images/jira-workflow.png){:height="700px" width="700px"} 
+
+
+navigating to **Project settings** > **Automation**, then click **Create rule** and, for the type of **New trigger**, select **Incoming webhook**. Reference the Jira documentation for details on how to create an <a href="https://confluence.atlassian.com/automation070/triggers-1014664599.html" target="_blank">Incoming webhook</a>. 
 
 The images below offer details for an example of an Automation Rule in Jira to set up an incoming webhook that processes incident events from Soda Cloud. 
 
