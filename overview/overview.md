@@ -89,7 +89,7 @@ This deployment gives infrastructure teams full control over how Soda accesses d
 ![with-agent](/assets/images/with-agent.png){:height="60px" width="600px"}
 
 
-## Where to go next?
+## What's Next?
 
 To get started with Soda, follow one of these quickstarts based on your needs:
 
