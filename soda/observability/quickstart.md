@@ -125,5 +125,5 @@ Once saved, Soda runs a first scan using your profiling settings. This initial s
 ## What's Next?
 Now that your first dataset is configured and observability is active, try:
 
-- [Explore detailed metrics in the anomaly dashboard]({% link observability/anomaly-dashboard.md %})
-- [Set up alerts for anomaly detection]({% link observability/set-up-alerts.md %})
+- [Explore detailed metrics in the anomaly dashboard]({% link soda/observability/anomaly-dashboard.md %})
+- [Set up alerts for anomaly detection]({% link soda/observability/set-up-alerts.md %})

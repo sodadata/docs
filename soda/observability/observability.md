@@ -5,6 +5,13 @@ description: What is observability?
 nav_order: 500
 ---
 
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+
+
 # Observability
 
 *Last modified on {% last_modified_at %}*
@@ -47,5 +54,5 @@ You can use metric monitoring to:
 ## What's Next?
 To get started with Soda observability, follow one of these guides:
 
-- [Data observability quickstart]({% link observability/quickstart.md %}): Set up monitoring to detect anomalies in your datasets.
-- [Data observability guide]({% link observability/observability-guide.md %}): Learn how to get the most out of Soda’s data observability platform.
+- [Data observability quickstart]({% link soda/observability/quickstart.md %}): Set up monitoring to detect anomalies in your datasets.
+- [Data observability guide]({% link soda/observability/observability-guide.md %}): Learn how to get the most out of Soda’s data observability platform.
