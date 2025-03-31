@@ -94,4 +94,4 @@ This deployment gives infrastructure teams full control over how Soda accesses d
 To get started with Soda, follow one of these quickstarts based on your needs:
 
 - [Data testing quickstart](#): Learn how to define and run checks in your workflows.
-- [Data observability quickstart]({% link observability/quickstart.md %}): Set up monitoring to detect anomalies in your datasets.
+- [Data observability quickstart]({% link soda/observability/quickstart.md %}): Set up monitoring to detect anomalies in your datasets.

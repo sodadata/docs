@@ -48,46 +48,46 @@
       page: soda/data-testing/failed-rows.md
 
 - title: Observability
-  page: soda/soda/observability/observability.md
+  page: soda/observability/observability.md
   subcategories:
   - title: Observability
-    page: soda/soda/observability/observability.md
+    page: soda/observability/observability.md
     subcategories:
     - subtitle: Quickstart
-      page: soda/soda/observability/quickstart.md
+      page: soda/observability/quickstart.md
     - subtitle: How it works/Observability Guide
       page: get-started/get-started-observability.md
       subcategories:
       - subtitle: Set up Soda Agent/Prerequisites
-        page: soda/soda/observability/prerequisites.md
+        page: soda/observability/prerequisites.md
       - subtitle: Add data sources
-        page: soda/soda/observability/add-data-source.md
+        page: soda/observability/add-data-source.md
         subcategories:
         - subtitle: Supported data sources
-          page: soda/soda/observability/supported-data-sources.md
+          page: soda/observability/supported-data-sources.md
       - subtitle: Anomaly Dashboard
-        page: soda/soda/observability/anomaly-dashboard.md
+        page: soda/observability/anomaly-dashboard.md
         subcategories:
         - subtitle: Plots
-          page: soda/soda/observability/plots.md
+          page: soda/observability/plots.md
         - subtitle: Results table and filters
-          page: soda/soda/observability/results-table.md
+          page: soda/observability/results-table.md
         - subtitle: Actions
-          page: soda/soda/observability/actions.md
+          page: soda/observability/actions.md
       - subtitle: Update settings
-        page: soda/soda/observability/update-settings.md
+        page: soda/observability/update-settings.md
         subcategories:
         - subtitle: Select datasets
-          page: soda/soda/observability/select-datasets.md
+          page: soda/observability/select-datasets.md
         - subtitle: Specify time partition column
-          page: soda/soda/observability/select-partition-column.md
+          page: soda/observability/select-partition-column.md
         - subtitle: Set scan frequency on the data source
-          page: soda/soda/observability/scan-frequency.md
+          page: soda/observability/scan-frequency.md
       - subtitle: Inspect plots
-        page: soda/soda/observability/inspect-plots.md
+        page: soda/observability/inspect-plots.md
         subcategories:
         - subtitle: View metric plots and results
-          page: soda/soda/observability/view-metrics-plots.md
+          page: soda/observability/view-metrics-plots.md
         - subtitle: Adjust sensitivity
           page: soda/observability/adjust-sensitivity.md
         - subtitle: Define exclusion values
