@@ -6,137 +6,137 @@
   page: soda/overview.md
    
 - title: Data testing
-  page: data-testing/data-testing.md
+  page: soda/data-testing/data-testing.md
   subcategories:
   - title: Data testing
-    page: data-testing/data-testing.md
+    page: soda/data-testing/data-testing.md
     subcategories:
     - subtitle: Introduction
-      page: data-testing/introduction.md
+      page: soda/data-testing/introduction.md
       subcategories:
       - subtitle: What is a data contract
-        page: data-testing/what-is-data-contract.md
+        page: soda/data-testing/what-is-data-contract.md
       - subtitle: Data contract operating model
-        page: data-testing/data-contract-operating-model.md
+        page: soda/data-testing/data-contract-operating-model.md
       - subtitle: Verify a first contract
-        page: data-testing/verify-first-contract.md
+        page: soda/data-testing/verify-first-contract.md
     - subtitle: Get started with data testing
       page: get-started/get-started-data-testing.md
     - subtitle: Verify a contract in your pipeline
-      page: data-testing/verify-contract-in-pipeline.md
+      page: soda/data-testing/verify-contract-in-pipeline.md
       subcategories:
       - subtitle: With the library
-        page: data-testing/with-library.md
+        page: soda/data-testing/with-library.md
       - subtitle: With the agent
-        page: data-testing/with-agent.md
+        page: soda/data-testing/with-agent.md
     - subtitle: Send results to Soda Cloud
-      page: data-testing/send-results-to-soda-cloud.md
+      page: soda/data-testing/send-results-to-soda-cloud.md
     - subtitle: Verify a contract on a time schedule
-      page: data-testing/verify-contract-on-time-schedule.md
+      page: soda/data-testing/verify-contract-on-time-schedule.md
     - subtitle: Write data contracts
-      page: data-testing/write-data-contracts.md
+      page: soda/data-testing/write-data-contracts.md
       subcategories:
       - subtitle: Create a data contract
-        page: data-testing/create-data-contract.md
+        page: soda/data-testing/create-data-contract.md
       - subtitle: Check missing values
-        page: data-testing/check-missing-values.md
+        page: soda/data-testing/check-missing-values.md
       - subtitle: Check validity
-        page: data-testing/check-validity.md
+        page: soda/data-testing/check-validity.md
     - subtitle: Configure notifications
-      page: data-testing/configure-notifications.md
+      page: soda/data-testing/configure-notifications.md
     - subtitle: Failed rows
-      page: data-testing/failed-rows.md
+      page: soda/data-testing/failed-rows.md
 
 - title: Observability
-  page: observability/observability.md
+  page: soda/soda/observability/observability.md
   subcategories:
   - title: Observability
-    page: observability/observability.md
+    page: soda/soda/observability/observability.md
     subcategories:
     - subtitle: Quickstart
-      page: observability/quickstart.md
+      page: soda/soda/observability/quickstart.md
     - subtitle: How it works/Observability Guide
       page: get-started/get-started-observability.md
       subcategories:
       - subtitle: Set up Soda Agent/Prerequisites
-        page: observability/prerequisites.md
+        page: soda/soda/observability/prerequisites.md
       - subtitle: Add data sources
-        page: observability/add-data-source.md
+        page: soda/soda/observability/add-data-source.md
         subcategories:
         - subtitle: Supported data sources
-          page: observability/supported-data-sources.md
+          page: soda/soda/observability/supported-data-sources.md
       - subtitle: Anomaly Dashboard
-        page: observability/anomaly-dashboard.md
+        page: soda/soda/observability/anomaly-dashboard.md
         subcategories:
         - subtitle: Plots
-          page: observability/plots.md
+          page: soda/soda/observability/plots.md
         - subtitle: Results table and filters
-          page: observability/results-table.md
+          page: soda/soda/observability/results-table.md
         - subtitle: Actions
-          page: observability/actions.md
+          page: soda/soda/observability/actions.md
       - subtitle: Update settings
-        page: observability/update-settings.md
+        page: soda/soda/observability/update-settings.md
         subcategories:
         - subtitle: Select datasets
-          page: observability/select-datasets.md
+          page: soda/soda/observability/select-datasets.md
         - subtitle: Specify time partition column
-          page: observability/select-partition-column.md
+          page: soda/soda/observability/select-partition-column.md
         - subtitle: Set scan frequency on the data source
-          page: observability/scan-frequency.md
+          page: soda/soda/observability/scan-frequency.md
       - subtitle: Inspect plots
-        page: observability/inspect-plots.md
+        page: soda/soda/observability/inspect-plots.md
         subcategories:
         - subtitle: View metric plots and results
-          page: observability/view-metrics-plots.md
+          page: soda/soda/observability/view-metrics-plots.md
         - subtitle: Adjust sensitivity
-          page: observability/adjust-sensitivity.md
+          page: soda/observability/adjust-sensitivity.md
         - subtitle: Define exclusion values
-          page: observability/define-exclusion-values.md
+          page: soda/observability/define-exclusion-values.md
         - subtitle: Give feedback
-          page: observability/give-feedback.md
+          page: soda/observability/give-feedback.md
         - subtitle: Manage incidents
-          page: observability/manage-incidents.md
+          page: soda/observability/manage-incidents.md
       - subtitle: Set up alert notifications
-        page: observability/set-up-alerts.md
+        page: soda/observability/set-up-alerts.md
 
 
 - title: Soda Cloud administration
-  page: soda-administration/soda-cloud-administration.md
+  page: soda/soda-administration/soda-cloud-administration.md
   subcategories:
   - title: Soda Cloud administration
-    page: soda-administration/soda-cloud-administration.md
+    page: soda/soda-administration/soda-cloud-administration.md
     subcategories:
     - subtitle: Managing authorization
-      page: soda-administration/managing-authorization.md
+      page: soda/soda-administration/managing-authorization.md
       subcategories:
       - subtitle: SSO
-        page: soda-administration/sso.md
+        page: soda/soda-administration/sso.md
       - subtitle: User groups
-        page: soda-administration/user-groupd.md
+        page: soda/soda-administration/user-groupd.md
       - subtitle: Permissions
-        page: soda-administration/permissions.md
+        page: soda/soda-administration/permissions.md
     - subtitle: Integrate with Soda
-      page: soda-administration/integrate-with-soda.md
+      page: soda/soda-administration/integrate-with-soda.md
       subcategories:
       - subtitle: Atlan
         page: soda/integrate-atlan.md
       - subtitle: Collibra
-        page: soda-administration/integrate-colibra.md
+        page: soda/soda-administration/integrate-colibra.md
 
 - title: References
-  page: refs/references.md
+  page: soda/refs/references.md
   subcategories:
   - title: References
-    page: refs/references.md
+    page: soda/refs/references.md
     subcategories:
     - subtitle: Data source connection reference
-      page: refs/data-source-connection-ref.md
+      page: soda/refs/data-source-connection-ref.md
     - subtitle: Soda contract reference
-      page: refs/soda-contract-ref.md
+      page: soda/refs/soda-contract-ref.md
     - subtitle: Soda Python library API reference
       page: soda-library/python_api.md
     - subtitle: Soda CLI reference
-      page: refs/soda-python-library-api-ref.md
+      page: soda/refs/soda-python-library-api-ref.md
     - subtitle: Soda Cloud REST API reference
       page: api-docs/public-cloud-api-v1.md
 
