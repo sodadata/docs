@@ -25,7 +25,7 @@ See also: <a href="https://www.soda.io/privacy-policy" target="_blank">Soda Priv
 
 ## Compliance and reporting
 
-As a result of an independent review in April 2022, Soda has been found to be **SOCII Type 2** compliant. Contact <a href="mailto:support@soda.io">support@soda.io</a> for more information.
+As a result of an independent review in April 2024, Soda has been found to be **SOCII Type 2** compliant. Contact <a href="mailto:support@soda.io">support@soda.io</a> for more information.
 
 ![soc2](/assets/images/soc2.png){:width="100px"}
 
