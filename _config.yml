@@ -21,6 +21,10 @@ plugins:
   - jekyll-last-modified-at
   - jekyll-sitemap
 
+just_the_docs:
+  collections:
+    navigation: true
+
 logo: /assets/images/soda-logo.svg
 color_scheme: soda
 
