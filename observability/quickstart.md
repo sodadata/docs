@@ -2,7 +2,7 @@
 layout: default
 title: Quickstart Observability
 description: Quickstart Observability
-parent: Observability
+parent: Data Observability
 nav_order: 511
 ---
 
@@ -125,5 +125,5 @@ Once saved, Soda runs a first scan using your profiling settings. This initial s
 ## What's Next?
 Now that your first dataset is configured and observability is active, try:
 
-- [Explore detailed metrics in the anomaly dashboard]({% link observability/anomaly-dashboard.md %})
+- [Explore detailed metrics in the anomaly guide]({% link observability/observability-guide.md %})
 - [Set up alerts for anomaly detection]({% link observability/set-up-alerts.md %})

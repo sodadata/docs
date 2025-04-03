@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Observability
+title: Data Observability
 description: What is observability?
 nav_order: 500
 ---

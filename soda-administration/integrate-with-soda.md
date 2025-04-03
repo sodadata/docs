@@ -2,7 +2,7 @@
 layout: default
 title: Integrate with Soda
 description: Integrate with Soda
-parent: Soda Cloud administration
+parent: Soda Cloud
 nav_order: 620
 ---
 

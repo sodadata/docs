@@ -2,8 +2,8 @@
 layout: default
 title: Update settings
 description: Settings for metrics monitoring
-parent: Observability Guide
-nav_order: 550
+parent: Metric Monitors
+nav_order: 565
 ---
 
-## Update settings
+# Update settings

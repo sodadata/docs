@@ -2,7 +2,7 @@
 layout: default
 title: Managing authorization
 description: Managing authorization
-parent: Soda Cloud administration
+parent: Soda Cloud
 nav_order: 610
 ---
 

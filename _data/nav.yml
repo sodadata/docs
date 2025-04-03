@@ -49,53 +49,31 @@
   subcategories:
   - subtitle: Quickstart
     page: observability/quickstart.md
-  - subtitle: How it works/Observability Guide
+  - subtitle: Observability Guide
     page: get-started/get-started-observability.md
     subcategories:
-    - subtitle: Set up Soda Agent/Prerequisites
+    - subtitle: Prerequisites
       page: observability/prerequisites.md
-    - subtitle: Add data sources
-      page: observability/add-data-source.md
-      subcategories:
-      - subtitle: Supported data sources
-        page: observability/supported-data-sources.md
-    - subtitle: Anomaly Dashboard
-      page: observability/anomaly-dashboard.md
-      subcategories:
-      - subtitle: Plots
-        page: observability/plots.md
-      - subtitle: Results table and filters
-        page: observability/results-table.md
-      - subtitle: Actions
-        page: observability/actions.md
-    - subtitle: Update settings
-      page: observability/update-settings.md
-      subcategories:
-      - subtitle: Select datasets
-        page: observability/select-datasets.md
-      - subtitle: Specify time partition column
-        page: observability/select-partition-column.md
-      - subtitle: Set scan frequency on the data source
-        page: observability/scan-frequency.md
-    - subtitle: Inspect plots
+    - subtitle: Metric Monitors
       page: observability/inspect-plots.md
       subcategories:
-      - subtitle: View metric plots and results
-        page: observability/view-metrics-plots.md
       - subtitle: Adjust sensitivity
         page: observability/adjust-sensitivity.md
       - subtitle: Define exclusion values
         page: observability/define-exclusion-values.md
-      - subtitle: Give feedback
+      - subtitle: Give feedback to improve detection
         page: observability/give-feedback.md
       - subtitle: Manage incidents
         page: observability/manage-incidents.md
-    - subtitle: Set up alert notifications
-      page: observability/set-up-alerts.md
+      - subtitle: Set up alerts
+        page: observability/set-up-alerts.md
+      - subtitle: Update settings
+        page: observability/update-settings.md
 
 
-- title: Soda Cloud administration
-  page: soda-administration/soda-cloud-administration.md
+
+- title: Soda Cloud
+  page: soda-administration/soda-cloud.md
   subcategories:
   - subtitle: Managing authorization
     page: soda-administration/managing-authorization.md

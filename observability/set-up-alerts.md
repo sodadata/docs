@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Set up alerts notifications
-description: Set up alerts notifications
-parent: Observability Guide
-nav_order: 560
+title: Set up alerts
+description: Set up alerts
+parent: Metric Monitors
+nav_order: 564
 ---
 
-## Set up alerts  notifications
+# Set up alerts

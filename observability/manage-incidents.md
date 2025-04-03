@@ -1,11 +1,9 @@
 ---
 layout: default
-title: Manage indcidents
-description: Manage indcidents
-parent: Inspect plots
-nav_order: 569
+title: Manage incidents
+description: Manage incidents
+parent: Metric Monitors
+nav_order: 563
 ---
 
-## Manage incidents
-### Add a new incidents
-### Add to an exsiting incident
+# Manage incidents

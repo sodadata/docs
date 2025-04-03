@@ -2,7 +2,7 @@
 layout: default
 title: Observability Guide
 description: 
-parent: Observability
+parent: Data Observability
 nav_order: 515
 ---
 

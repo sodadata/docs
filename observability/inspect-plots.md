@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Inspect plots
+title: Metric Monitors
 description: Plot elements and how to understand the results
 parent: Observability Guide
-nav_order: 560
+nav_order: 550
 ---
 
-## Inspect plots
+# Metric Monitors
