@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Reconciliation checks
-description: Use SodaCL reconciliation checks to validate target and source data before conducting a data migration in production. 
+description: Use SodaCL reconciliation checks to validate target and source data before conducting a data migration in production.
 parent: SodaCL reference
 ---
 
@@ -88,12 +88,13 @@ reconciliation Production:
 
 ## Types of reconciliation checks
 
-Soda supports three types of reconciliation checks: 
+Soda supports four types of reconciliation checks:
 * metric reconciliation checks
 * record reconciliation checks
 * schema reconciliation checks
+* reference reconciliation checks
 
-A **metric reconciliation check** calculates the measurement of a metric such as `sum` or `avg` on data in the same dataset in two different data sources; where the delta between calculated measurements differs to the extent that it exceeds the threshold you set in the check, the check fails. Note, you can also compare data between datasets within the same data source. 
+A **metric reconciliation check** calculates the measurement of a metric such as `sum` or `avg` on data in the same dataset in two different data sources; where the delta between calculated measurements differs to the extent that it exceeds the threshold you set in the check, the check fails. Note, you can also compare data between datasets within the same data source.
 
 In other words, the check validates the delta between calculated measurements of a metric in multiple datasets.
 
@@ -158,9 +159,27 @@ reconciliation Production:
 
 ![recon schema](/assets/images/recon-schema.png){:height="700px" width="700px"}
 
+A **reference reconciliation check** assesses whether all target values are present in the source. It does the same comparison as standard Reference checks but using a different mechanism to enable checking referential integrity across datasources.
+
+```yaml
+reconciliation Production:
+  label: "Recon diff check"
+  datasets:
+    source:
+      dataset: dataset Y
+      datasource: Data source A
+    target:
+      dataset: dataset Y
+      datasource: Data source B
+  checks:
+    - values in target must exist in source:
+        source columns: [first_name, last_name]
+        target columns: [fname, lname]
+```
+
 ### Best practice for using reconciliation checks
 
-To efficiently use resources at scan time, best practice dictates that you first configure and run metric reconcilitation checks, then use the output to write refined record reconciliation checks to fine-tune the comparison. 
+To efficiently use resources at scan time, best practice dictates that you first configure and run metric reconcilitation checks, then use the output to write refined record reconciliation checks to fine-tune the comparison.
 
 Depending on the volume of data on which you must perform reconciliation checks, metric recon checks run considerably faster and use much fewer resources. Start by defining metric reconciliation checks that test grouping, filters, and joins to get meaningful insight into whether your ingestion or transformation works as expected. Where these checks do not surface all the details you need, or does not provide enough confidence in the output, then proceed with record reconciliation checks.
 
@@ -174,7 +193,7 @@ Read more about [Limitations and constraints](#limitations-and-constraints).
 The following outlines the basic steps to configure and execute reconciliation checks.
 1. [Install]({% link soda-library/install.md %}) a Soda Library package for both the migration source and target data sources. For the very first example above, you would install both `soda-mysql` and `soda-snowflake`.  If you use a Soda Agent and connect data sources via Soda Cloud, add both data sources to your account.
 2. [Configure]({% link soda-library/install.md %}#configure-soda) both data sources in a configuration YAML file, and add your `soda_cloud` configuration. For the very first example above, you would add both [MySQL]({% link soda/connect-mysql.md %}) and [Snowflake]({% link soda/connect-snowflake.md %}) connection configuration details to a configuration YAML file.
-3. Prepare a `recon.yml` file or new Soda agreement and configure the reconciliation metadata; see details below. 
+3. Prepare a `recon.yml` file or new Soda agreement and configure the reconciliation metadata; see details below.
 4. Define reconciliation checks to compare data between data sources; see details below.
 5. [Run a Soda scan]({% link soda-library/run-a-scan.md %}) against either the source or target data source to execute the reconciliation checks and review results in the command-line output and in Soda Cloud. Note that check results are associated with the *target* dataset in Soda Cloud.
 {% include code-header.html %}
@@ -212,7 +231,7 @@ reconciliation my_project_name:
 | `source` | required | Key-value pairs to identify the `dataset` and `data source` of the source, or origin location of the data to be migrated. |
 | `target` | required | Key-value pairs to identify the `dataset` and `data source` of the target, or destination location of the data to be migrated. |
 | `checks` | required | A subheading to contain the checks that reconcile the data between source and target. In this section, you can define any number of both metric and record reconciliation checks; see details below.|
- 
+
 
 ### Metric reconciliation checks
 
@@ -225,15 +244,15 @@ checks for dim_customer:
   - duplicate_count(last_name) = 0
 ```
 
-For a metric reconciliation check, you add the word `diff` to indicate that it ought to compare the count of duplicate values between the source dataset and the target dataset to confirm that the delta between those counts is zero. Refer to examples below. 
+For a metric reconciliation check, you add the word `diff` to indicate that it ought to compare the count of duplicate values between the source dataset and the target dataset to confirm that the delta between those counts is zero. Refer to examples below.
 
 Note that with reconciliation checks, there is no need to identify the dataset as you specified both source and target datasets in the project metadata configuration.
 {% include code-header.html %}
 ```yaml
 reconciliation Production:
 ...
-  checks: 
-    - duplicate_count(last_name) diff = 0  
+  checks:
+    - duplicate_count(last_name) diff = 0
     - avg(total_children) diff < 10
     - freshness(date_first_purchase) diff < 100h
     - row_count:
@@ -243,23 +262,23 @@ reconciliation Production:
         samples columns: [last_name, first_name]
 ```
 
-When you [run a scan]({% link soda-library/run-a-scan.md %}) against either the source or target data source, the `Scan summary` in the output indicates the check value, which is the calculated delta between measurements, the measurement value of each metric or check for both the source and target datasets, along with the diff value and percentage, and the absolute value and percentage.  
+When you [run a scan]({% link soda-library/run-a-scan.md %}) against either the source or target data source, the `Scan summary` in the output indicates the check value, which is the calculated delta between measurements, the measurement value of each metric or check for both the source and target datasets, along with the diff value and percentage, and the absolute value and percentage.
 
 ```shell
 soda scan -d adventureworks -c configuration.yml recon2.yml
 Soda Library 1.x.x
 Soda Core 3.0.xx
-xxx 
+xxx
 Sending failed row samples to Soda Cloud
 Sending failed row samples to Soda Cloud
 Sending failed row samples to Soda Cloud
 Scan summary:
-3/5 checks PASSED: 
+3/5 checks PASSED:
     dim_customer in aws_postgres_retail
       Recon Test: duplicate_count(last_name) diff = 0 [PASSED]
       Recon Test: avg(total_children) diff < 10 [PASSED]
       freshness(date_first_purchase) diff < 100h [PASSED]
-1/5 checks WARNED: 
+1/5 checks WARNED:
     dim_customer in aws_postgres_retail
       Recon Test: row_count warn when diff < 5% fail when diff > 10% [WARNED]
         check_value: 0.0
@@ -267,7 +286,7 @@ Scan summary:
         target_row_count: 18484
         diff_value: 0
         diff_percentage: 0.0%
-1/5 checks FAILED: 
+1/5 checks FAILED:
     dim_customer in aws_postgres_retail
       Recon Test: missing_count(middle_name) diff = 0 [FAILED]
         check_value: 7830
@@ -298,7 +317,7 @@ reconciliation Production:
           SELECT count(*)
           FROM dim_customer
           WHERE last_name = 'Walters'
-    
+
     - average_children diff = 0:
         average_children expression: avg(total_children)
 ```
@@ -309,7 +328,7 @@ Learn about reconciliation check [Limitations and constraints](#limitations-and-
 *Requires Soda Library 1.2.0 or greater*<br/>
 The syntax of record reconciliation checks expects a `rows diff` input to perform a record-by-record comparison of data between datasets. Choose between two strategies to refine how this type of check executes during a Soda scan:
 
-* `simple` 
+* `simple`
 * `deepdiff`
 
 ```yaml
@@ -348,8 +367,8 @@ reconciliation Production:
         strategy: deepdiff
 ```
 
-The `simple` strategy works by processing record comparisons according to one or more primary key identifiers in batches and pages. This type of processing serves to temper large-scale comparisons by loading rows into memory in batches so that a system is not overloaded; it is typically faster than the `deepdiff` strategy. 
-* If you do not specify a `strategy`, Soda executes the record reconciliation check using the `simple` strategy. 
+The `simple` strategy works by processing record comparisons according to one or more primary key identifiers in batches and pages. This type of processing serves to temper large-scale comparisons by loading rows into memory in batches so that a system is not overloaded; it is typically faster than the `deepdiff` strategy.
+* If you do not specify a `strategy`, Soda executes the record reconciliation check using the `simple` strategy.
 * If you do not specify `batch size` and/or `page size`, Soda applies default values of `1` and `100000`, respectively.
 * If you want to use `simple` strategy for comparing datasets with different numbers of columns, you must define the key columns that order the data and match rows between the two datasets. Additionally, you must map the source columns to the target columns that you wish to compare.
 
@@ -357,7 +376,7 @@ The `deepdiff` strategy works by processing record comparisons of entire dataset
 
 #### Record reconciliation strategy comparison
 
-|    | Simple strategy | Deepdiff strategy | 
+|    | Simple strategy | Deepdiff strategy |
 | -- | --------------- | ----------------- |
 | Default strategy |  ✓  |    |
 | Processing | Loads rows into memory one by one, or by batch for comparison | Loads all rows into memory for comparison |
@@ -371,7 +390,7 @@ The `deepdiff` strategy works by processing record comparisons of entire dataset
 
 <br />
 
-Beyond choosing a strategy, you can configure a number of granular details for Soda to refine its execution of a record reconciliation check.  
+Beyond choosing a strategy, you can configure a number of granular details for Soda to refine its execution of a record reconciliation check.
 
 | Configuration | Compares | Description and example |
 | ------------- | -------- | ----------------------- |
@@ -590,7 +609,7 @@ Soda Library 1.x.x
 Soda Core 3.0.x
 ...
 Scan summary:
-1/1 check FAILED: 
+1/1 check FAILED:
     dim_customer in aws_postgres_retail
       row_count diff = 0 [FAILED]
         check_value: 14757
@@ -607,7 +626,7 @@ Soda Cloud Trace: 4380***10
 
 ### Failed row samples
 
-Record reconciliation checks and metric reconcilication checks that borrow from `failed rows` check syntax such as the `name_combo` check in the example above, explicitly collect samples of any failed rows to display in Soda Cloud. The default number of failed row samples that Soda collects and displays is 100. 
+Record reconciliation checks and metric reconcilication checks that borrow from `failed rows` check syntax such as the `name_combo` check in the example above, explicitly collect samples of any failed rows to display in Soda Cloud. The default number of failed row samples that Soda collects and displays is 100.
 
 Read more [About failed row samples]({% link soda-cl/failed-row-samples.md %}#about-failed-row-samples).
 
@@ -616,19 +635,19 @@ Read more [About failed row samples]({% link soda-cl/failed-row-samples.md %}#ab
 If you wish to limit or broaden the sample size, you can add the `samples limit` configuration to a check.  Read more about [Setting a sample limit]({% link soda-cl/failed-row-samples.md %}#set-a-sample-limit).
 {% include code-header.html %}
 ```yaml
-checks:  
+checks:
   - rows diff = 0:
       samples limit: 20
-``` 
+```
 <br />
 
 Alternatively, you can set the `samples limit` to `0` to prevent Soda from collecting and sending failed rows samples for an individual check, as in the following example.
 {% include code-header.html %}
 ```yaml
-checks:  
+checks:
   - rows diff = 0:
       samples limit: 0
-``` 
+```
 <br />
 
 To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, then click the row for a the grouped reference checks. Examine failed rows in the **Failed Rows Analysis** tab; see [Manage failed row samples]({% link soda-cl/failed-row-samples.md %}) for further details.
@@ -640,27 +659,27 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 
 | Metric or check | Supported data sources|
 | --------------- | --------------------- |
-| `avg` | all | 
-| `avg_length` | all | 
-| `duplicate_count` | all | 
-| `duplicate_percent` | all | 
-| `failed rows` | all | 
-| `freshness` | all | 
+| `avg` | all |
+| `avg_length` | all |
+| `duplicate_count` | all |
+| `duplicate_percent` | all |
+| `failed rows` | all |
+| `freshness` | all |
 | `invalid_count` |Athena <br /> BigQuery <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames |
 | `invalid_percent` | Athena <br /> BigQuery <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />  Spark DataFrames |
-| `max` | all | 
-| `max_length` | all | 
-| `min` | all | 
-| `min_length` | all | 
+| `max` | all |
+| `max_length` | all |
+| `min` | all |
+| `min_length` | all |
 | `missing_count` | Athena <br /> BigQuery <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames |
 | `missing_percent` | Athena <br /> BigQuery <br /> DB2 <br /> SQL Server <br /> PostgreSQL <br /> Redshift <br /> Snowflake <br />Spark DataFrames |
 | `percentile` | PostgreSQL<br />Snowflake |
-| `row_count` | all | 
+| `row_count` | all |
 | `stddev` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
 | `stddev_pop` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
 | `stddev_samp` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
-| `sum` | all | 
-| `user-defined` | all | 
+| `sum` | all |
+| `user-defined` | all |
 | `variance` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
 | `var_pop` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
 | `var_samp` | Athena<br /> BigQuery<br /> PostgreSQL<br /> Redshift<br /> Snowflake |
@@ -674,7 +693,7 @@ To review the failed rows in Soda Cloud, navigate to the **Checks** dashboard, t
 | ✓ | Define a name for a reconciliation check; see [example](#example-with-name). |  [Customize check names]({% link soda-cl/optional-config.md %}#customize-check-names) |
 | ✓ | Add an identity to a check; see [example](#example-with-identity). | [Add a check identity]({% link soda-cl/optional-config.md %}#add-a-check-identity) |
 | ✓ | Define alert configurations to specify warn and fail alert conditions; see [example](#example-with-alerts). <br />*Exception:* schema reconciliation checks do not support alert configurations.| [Add alert configurations]({% link soda-cl/optional-config.md %}#add-alert-configurations) |
-|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - | 
+|   | Apply an in-check filter to return results for a specific portion of the data in your dataset.| - |
 | ✓ | Use quotes when identifying dataset or column names; see [example](#example-with-quotes). <br />Note that the type of quotes you use must match that which your data source uses. For example, BigQuery uses a backtick ({% raw %}`{% endraw %}) as a quotation mark. | [Use quotes in a check]({% link soda-cl/optional-config.md %}#use-quotes-in-a-check) |
 |   | Use wildcard characters ({% raw %} % {% endraw %} or {% raw %} * {% endraw %}) in values in the check. | - |
 |   | Use for each to apply reconciliation checks to multiple datasets in one scan. | - |
