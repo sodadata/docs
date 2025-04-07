@@ -15,12 +15,3 @@ Use the table below to understand what each field means and how to complete it:
 
 {:start="3"}
 3. Complete the connection configuration. These settings are specific to each data source (PostgreSQL, MySQL, Snowflake, etc) and usually include connection details such as host, port, credentials, and database name.
-
-Use the appropriate guide below to complete the connection:
-*  [Connect to BigQuery]({% link soda/connect-bigquery.md %})
-*  [Connect to Databricks SQL]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql)
-*  [Connect to MS SQL Server]({% link soda/connect-mssql.md %})
-*  [Connect to MySQL]({% link soda/connect-mysql.md %})
-*  [Connect to PostgreSQL]({% link soda/connect-postgres.md %})
-*  [Connect to Redshift]({% link soda/connect-redshift.md %})
-*  [Connect to Snowflake]({% link soda/connect-snowflake.md %})

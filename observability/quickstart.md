@@ -30,6 +30,13 @@ In this quickstart, you will:
 ## Step 2: Add a Data Source
 {% include connect-datasource.md %}
 
+Use the appropriate guide below to complete the connection:
+*  [Connect to BigQuery]({% link soda/connect-bigquery.md %})
+*  [Connect to Databricks SQL]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql)
+*  [Connect to MS SQL Server]({% link soda/connect-mssql.md %})
+*  [Connect to PostgreSQL]({% link soda/connect-postgres.md %})
+*  [Connect to Snowflake]({% link soda/connect-snowflake.md %})
+
 ## Step 3: Configure Dataset Discovery
 Dataset discovery captures metadata about each dataset, including its schema and the data types of each column.
 

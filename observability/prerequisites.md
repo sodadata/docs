@@ -31,3 +31,27 @@ If you are an admin and prefer to deploy your own agent, you can configure a sel
 
 ## Connect a Data Source
 {% include connect-datasource.md %}
+
+### Supported databases for data observability
+
+Soda supports metric monitoring for multiple databases. Soda leverages metadata history when available. If metadata history isn't available for your data source, Soda builds history gradually as scans occur.
+
+#### Metric monitoring support
+
+- **Metadata-based metrics**
+  - [Snowflake]({% link soda/connect-snowflake.md %})
+  - [BigQuery]({% link soda/connect-bigquery.md %})
+  - [Databricks SQL]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql)
+  - [MS SQL Server]({% link soda/connect-mssql.md %})
+  - [PostgreSQL]({% link soda/connect-postgres.md %})
+
+- **Historical metric support**
+  - **From metadata**
+    - [Databricks SQL]({% link soda/connect-spark.md %}#connect-to-spark-for-databricks-sql)
+
+  - **From query logs**
+    - [Snowflake]({% link soda/connect-snowflake.md %})
+    - [BigQuery]({% link soda/connect-bigquery.md %})
+
+- **Data-based metrics**
+  - All data sources are theoretically supported for data-based metric monitoring.
