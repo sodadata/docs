@@ -55,3 +55,8 @@ Soda supports metric monitoring for multiple databases. Soda leverages metadata 
 
 - **Data-based metrics**
   - All data sources are theoretically supported for data-based metric monitoring.
+
+
+## What's Next?
+
+- [Explore how to analyse and keep track of your Metric Monitors.]({% link observability/metric-monitors.md %})

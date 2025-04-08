@@ -22,31 +22,12 @@ Where data testing focuses on known expectations, observability helps you detect
 
 ## What is data observability?
 
-**Data observability** is the practice of continuously monitoring your data for unexpected changes, anomalies, and structural issues. It involves collecting and analyzing metrics about your datasets to understand their health over time.
-
-Instead of writing checks manually for each dataset, observability uses profiling and metrics to automatically detect problems such as:
-- A spike in null values
-- A drop in row counts
-- Unusual value distributions
-
-**Data Observability helps you:**
-- Detect incidents faster
-- Scale coverage across more data
-- Reduce time spent on manual testing
-- Empower more team members to spot and act on issues
+{% include what-is-observability.md %}
 
 
-## What is metrics monitoring?
+## What are Metric Monitors?
 
-**Metrics monitoring** is the foundation of data observability in Soda. Soda collects metrics from datasets—such as row count, null values, min/max, and value distribution—and tracks how those metrics evolve over time.
-
-Soda then uses built-in anomaly detection to identify when metrics deviate from expected patterns. These deviations are surfaced in the **Metric Monitors** tab for each dataset.
-
-You can use metric monitoring to:
-- Spot problems without writing checks
-- Establish baselines for normal behavior
-- Alert data owners when something unusual happens
-- Provide insight to business users without requiring code
+{% include what-are-metrics-monitors.md %}
 
 ## What's Next?
 To get started with Soda observability, follow one of these guides:

@@ -55,7 +55,7 @@
     - subtitle: Prerequisites
       page: observability/prerequisites.md
     - subtitle: Metric Monitors
-      page: observability/inspect-plots.md
+      page: observability/metric-monitors.md
       subcategories:
       - subtitle: Adjust sensitivity
         page: observability/adjust-sensitivity.md
