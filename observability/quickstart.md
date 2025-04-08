@@ -46,7 +46,7 @@ See [Compute consumption and cost considerations]({% link soda-cl/profile.md %}#
 ## Step 4: Add Column Profiling
 Column profiling extracts metrics such as the mean, minimum, and maximum values in a column, and the number of missing values.
 
-- In Step 4 of the guided workflow, use include/exclude patterns to define which columns Soda should profile. Soda uses this information to power the anomaly dashboard. Learn more about [column profiling syntax]({% link soda-cl/profile.md %}#add-column-profiling).
+- In Step 4 of the guided workflow, use include/exclude patterns to define which columns Soda should profile. Soda uses this information to power the anomaly dashboard.
 
 ```yaml
 profile columns:
@@ -55,10 +55,8 @@ profile columns:
     - "prod%.%"  # Includes all columns of all datasets that begin with 'prod'
 ```
 
-## Step 5: Add Automated Monitoring Checks
-In Step 5 of the guided workflow, define which datasets should have automated checks applied for anomaly scores and schema evolution.
-
-> If you are using the early access anomaly dashboard, this step is not required. Soda automatically enables monitoring in the > dashboard. See [Anomaly Dashboard]({% link soda-cloud/anomaly-dashboard.md %}) for details.
+## Step 5: Configure Anomaly Detection
+In Step 5 of the guided workflow, define which datasets should have Metric Monitors applied for anomaly scores and schema evolution.
 
 Use include/exclude filters to target specific datasets. Read more about [automated monitoring configuration]({% link soda-cl/automated-monitoring.md %}).
 
@@ -68,6 +66,12 @@ automated monitoring:
     - include prod% # Includes all the datasets that begin with 'prod'
     - exclude test% # Excludes all the datasets that begin with 'test'
 ```
+
+Enable historical metric collection to calculate past data quality metrics retroactively. This feature helps with:
+
+1. Assessing how the data quality metrics were performing in the past.
+2. Using them as training data for the anomaly detection algorithms.
+
 
 ## Step 6: Assing a Data Source and Dataset Owner
 In the step 6 of the guided workflow, assign responsibility for maintaining the data source and each dataset.
