@@ -71,6 +71,7 @@ reconciliation Production:
 &nbsp;&nbsp;&nbsp;&nbsp;[Metric reconciliation checks](#metric-reconciliation-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Record reconciliation checks](#record-reconciliation-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Schema reconciliation checks](#schema-reconciliation-checks) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Reference reconciliation checks](#reference-reconciliation-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Add attributes](#add-attributes) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Add a filter](#add-a-filter) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples)<br />
@@ -159,7 +160,7 @@ reconciliation Production:
 
 ![recon schema](/assets/images/recon-schema.png){:height="700px" width="700px"}
 
-A **reference reconciliation check** assesses whether all target values are present in the source. It does the same comparison as standard Reference checks but using a different mechanism to enable checking referential integrity across datasources.
+A **reference reconciliation check** verifies that all target values exist in the source. It performs the same comparison as a standard reference check but uses a different mechanism, allowing you to validate referential integrity across different data sources.
 
 ```yaml
 reconciliation Production:
@@ -538,6 +539,34 @@ reconciliation Production:
             target: boolean
           - source: enum
             target: string
+```
+
+### Reference reconciliation checks
+*Requires Soda Library 1.11.2 or greater*<br/>
+
+A reference reconciliation check assesses whether all target values are present in the source. It validates referential integrity across data sources by checking that each value in the target column(s) has a corresponding match in the source column(s).
+
+The check is performed on the target dataset, which is treated as the dataset under test. If it contains missing values from the source, those discrepancies will be flagged.
+To configure this check, you must specify the column(s) in the source and target to compare
+
+This check supports two **primary use cases**:
+- Downstream-upstream consistency: Verify that records in a downstream dataset (target dataset) also exist in an upstream dataset (source dataset).
+- Reference table validation: Validate that values in a dataset (target dataset) exist in a reference or lookup table (source dataset), such as ensuring all country codes in your data are part of a standardized country code list.
+
+```yaml
+reconciliation Production:
+  label: "Reference check"
+  datasets:
+    source:
+      dataset: dataset Y
+      datasource: Data source A
+    target:
+      dataset: dataset Y
+      datasource: Data source B
+  checks:
+    - values in target must exist in source:
+        source columns: [first_name, last_name]
+        target columns: [fname, lname]
 ```
 
 ### Add attributes
