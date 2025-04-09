@@ -71,6 +71,7 @@ reconciliation Production:
 &nbsp;&nbsp;&nbsp;&nbsp;[Metric reconciliation checks](#metric-reconciliation-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Record reconciliation checks](#record-reconciliation-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Schema reconciliation checks](#schema-reconciliation-checks) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[Reference reconciliation checks](#reference-reconciliation-checks) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Add attributes](#add-attributes) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Add a filter](#add-a-filter) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Failed row samples](#failed-row-samples)<br />
