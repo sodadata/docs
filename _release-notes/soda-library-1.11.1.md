@@ -1,5 +1,5 @@
 ---
-name: "1.10.2"
+name: "1.11.1"
 date: 2025-04-04
 products:
   - soda-library
