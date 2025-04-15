@@ -1516,7 +1516,7 @@ paths:
 
         ## Rate limiting
 
-        1 requests/60 seconds
+        1000 requests/60 seconds
       operationId: "GET/api/v1/datasets/{datasetId}/profiling"
       parameters:
       - in: path
