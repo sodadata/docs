@@ -9,11 +9,11 @@ nav_order: 500
 &nbsp;
 &nbsp;
 
-# Observability
+# Data Observability
 
 *Last modified on {% last_modified_at %}*
 
-{% include banner-upgrade.md %}
+{% include banner-upgrade-cloud.md %}
 
 Use observability to monitor data quality at scale across all your datasets.
 Observability helps you catch unexpected issues without needing to define every rule up front.
@@ -28,6 +28,8 @@ Where data testing focuses on known expectations, observability helps you detect
 ## What are Metric Monitors?
 
 {% include what-are-metrics-monitors.md %}
+
+
 
 ## What's Next?
 To get started with Soda observability, follow one of these guides:

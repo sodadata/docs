@@ -1,8 +1,9 @@
 1. In Soda Cloud, go to **your avatar** > **Data Sources**.
 2. Click **New Data Source**, then follow the guided steps to create the connection.
 Use the table below to understand what each field means and how to complete it:
+3. Complete the connection configuration. These settings are specific to each data source (PostgreSQL, MySQL, Snowflake, etc) and usually include connection details such as host, port, credentials, and database name.
 
-####  Attributes
+####  New Data Source Attributes
 
 | Field or Label            | Guidance |
 | -----------------------   | ---------- |
@@ -14,6 +15,3 @@ Use the table below to understand what each field means and how to complete it:
 | Column Profiling Scan Schedule | Specify the time of day at which Soda runs the Automation scan.|
 | Automation Scan Schedule | Specify the time of day at which Soda runs the daily anomaly dashboard scan.|
 | Partition column suggestion - Optional | Add any amount of partition column suggestions. If a suggested column name fully matches a column discovered during metric monitoring or profiling, that column will be used as the partition column. The order of the suggested columns matters, as they will be checked sequentially from top to bottom until a match is found. If no match is found, heuristics will be applied to determine the partition column. You can change the partition column at any time in the dataset settings.|
-
-{:start="3"}
-3. Complete the connection configuration. These settings are specific to each data source (PostgreSQL, MySQL, Snowflake, etc) and usually include connection details such as host, port, credentials, and database name.
