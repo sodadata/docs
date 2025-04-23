@@ -273,9 +273,13 @@ components:
           type: boolean
         deleteDataset:
           type: boolean
+        executeContracts:
+          type: boolean
         id:
           type: string
         manageChecks:
+          type: boolean
+        manageContracts:
           type: boolean
         manageIncidents:
           type: boolean
@@ -283,6 +287,8 @@ components:
           type: boolean
         name:
           type: string
+        publishContracts:
+          type: boolean
         viewFailedRows:
           type: boolean
         viewProfilingAndSamples:
@@ -540,6 +546,15 @@ components:
       - size
       - totalElements
       - totalPages
+    PublicApiCreateUserGroupRequestDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        userIds:
+          type: array
+          items:
+            type: string
     PublicApiDatasetAttributesResponse:
       type: object
       properties:
@@ -687,6 +702,8 @@ components:
       - size
       - totalElements
       - totalPages
+    PublicApiDeleteUserGroupResponse:
+      type: object
     PublicApiScanDefinitionSlim:
       type: object
       properties:
@@ -740,6 +757,8 @@ components:
             type: object
             $ref: '#/components/schemas/PublicApiCheckSlimDTO'
         cloudUrl:
+          type: string
+        contractDatasetCloudUrl:
           type: string
         created:
           type: string
@@ -830,6 +849,13 @@ components:
           $ref: '#/components/schemas/IncidentStatusDTO'
         title:
           type: string
+    PublicApiUpdateUserGroupRequestDTO:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
     PublicApiUserGroupsResponse:
       type: object
       properties:
@@ -2438,6 +2464,368 @@ paths:
       security:
       - basicAuthApiKey: []
       summary: Get user groups
+      tags:
+      - Users
+    post:
+      description: |-
+        This endpoint enables you to create a new user group in your organization's Soda Cloud account.
+
+        The Response of this call, when successful, is `201` and contains headers `Location` which is a reference to the newly created User Group.
+
+        ## Authorization
+
+        Only users with **Manage organization settings** permission can update user groups.**See [Manage global roles](https://docs.soda.io/soda-cloud/roles-global.html) for more information.**
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Users must have global role permission MANAGE_ORGANISATION_SETTINGS to execute this call.
+
+        ## Tags
+
+        `Users`
+
+        ## Rate limiting
+
+        60 requests/60 seconds
+      operationId: POST/api/v1/userGroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/PublicApiCreateUserGroupRequestDTO'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          description: Successful response
+          headers:
+            Location:
+              schema:
+                type: string
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      summary: Create user group
+      tags:
+      - Users
+  /api/v1/userGroups/{userGroupId}:
+    delete:
+      description: |-
+        This endpoint enables you to delete an existing user group from your organization's Soda Cloud account.
+
+        In case of success, the response returns a `200` (OK) response.
+
+        In case user group is not found, the response returns a `404` (Not found) response.
+
+        ## Authorization
+
+        Only users with **Manage organization settings** permission can update user groups.**See [Manage global roles](https://docs.soda.io/soda-cloud/roles-global.html) for more information.**
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Users must have global role permission MANAGE_ORGANISATION_SETTINGS to execute this call.
+
+        ## Tags
+
+        `Users`
+
+        ## Rate limiting
+
+        60 requests/60 seconds
+      operationId: "DELETE/api/v1/userGroups/{userGroupId}"
+      parameters:
+      - in: path
+        name: userGroupId
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/PublicApiDeleteUserGroupResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      summary: Delete user group
+      tags:
+      - Users
+    get:
+      description: |-
+        This endpoint enables you to gather information about a single user group in your organization's Soda Cloud account, including lists of members.
+
+        This GET is a non-paginated API that returns a single organization based on its ID.
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Any Soda Cloud user in your organization may execute this query.
+
+        ## Tags
+
+        `Users`
+
+        ## Rate limiting
+
+        60 requests/60 seconds
+      operationId: "GET/api/v1/userGroups/{userGroupId}"
+      parameters:
+      - in: path
+        name: userGroupId
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/UserGroupContentDTO'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      summary: Get user group
+      tags:
+      - Users
+    post:
+      description: |-
+        This endpoint enables you to update an existing user group in your organization's Soda Cloud account.
+
+        The Response of this call, when successful, is `200` and contains updated User Group details.
+
+        ## Authorization
+
+        Only users with **Manage organization settings** permission can update user groups.**See [Manage global roles](https://docs.soda.io/soda-cloud/roles-global.html) for more information.**
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Authorization
+
+        Users must have global role permission MANAGE_ORGANISATION_SETTINGS to execute this call.
+
+        ## Tags
+
+        `Users`
+
+        ## Rate limiting
+
+        60 requests/60 seconds
+      operationId: "POST/api/v1/userGroups/{userGroupId}"
+      parameters:
+      - in: path
+        name: userGroupId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/PublicApiUpdateUserGroupRequestDTO'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/UserGroupContentDTO'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      summary: Update user group
       tags:
       - Users
   /api/v1/users:
