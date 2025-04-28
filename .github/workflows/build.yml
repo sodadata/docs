@@ -7,7 +7,7 @@ jobs:
     name: Deploy documentation
     if: github.ref == 'refs/heads/main' && github.repository == 'sodadata/docs'
     timeout-minutes: 10
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     env:
       AWS_CLOUDFRONT_ID: E2OAY23FHJNRE7
       AWS_DOCS_BUCKET: soda-public-docs
