@@ -4,8 +4,10 @@
 
 - title: Soda overview
   page: soda/overview.md
-   
-- title: Data testing
+
+- title: Soda + Databricks Quickstart
+  page: databricks/quickstart.md
+- title: Data Testing
   page: data-testing/data-testing.md
   subcategories:
   - subtitle: Introduction

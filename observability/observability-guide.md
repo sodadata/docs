@@ -7,5 +7,3 @@ nav_order: 515
 ---
 
 # Observability Guide
-
-wip
