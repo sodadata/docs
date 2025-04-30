@@ -4,7 +4,6 @@ title: Soda + Databricks Quickstart
 description: Soda + Databricks Quickstart
 nav_order: 300
 ---
-
 <!-- temporal white space until we fix parent navegation -->
 &nbsp;
 &nbsp;
