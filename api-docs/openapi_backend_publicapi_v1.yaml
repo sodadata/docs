@@ -1035,7 +1035,7 @@ paths:
 
         ## Authorization
 
-        Soda only returns the checks linked to datasets to which the user has **View dataset** permissions. Soda Cloud Admins have access to all checks.**See [Manage dataset roles](https://go.soda.io/roles) for more information.**
+        Soda only returns the checks linked to datasets to which the user has **View dataset** permissions. Soda Cloud Admins have access to all checks.**See [Manage dataset roles](https://go.soda.io/roles-dataset) for more information.**
 
         ## Authentication
 
@@ -1146,7 +1146,7 @@ paths:
 
         ## Authorization
 
-        Soda only returns the datasets to which the user has **View dataset** permissions. Soda Cloud Admins have access to all datasets.**See [Manage dataset roles](https://go.soda.io/roles) for more information.**
+        Soda only returns the datasets to which the user has **View dataset** permissions. Soda Cloud Admins have access to all datasets.**See [Manage dataset roles](https://go.soda.io/roles-dataset) for more information.**
 
         ## Authentication
 
@@ -1437,7 +1437,7 @@ paths:
 
         ## Authorization
 
-        Only users with **Configure dataset** permission can update dataset attributes. Soda Cloud Admins have permission to update all datasets.**See [Manage dataset roles](https://go.soda.io/roles) for more information.**
+        Only users with **Configure dataset** permission can update dataset attributes. Soda Cloud Admins have permission to update all datasets.**See [Manage dataset roles](https://go.soda.io/roles-dataset) for more information.**
 
         ## Authentication
 
@@ -1528,7 +1528,7 @@ paths:
 
         ## Authorization
 
-        Only users with **Access dataset profiling and sampling** permission can view dataset profiling. Soda Cloud Admins have access to profiling information for all datasets.**See [Manage dataset roles](https://go.soda.io/roles) for more information.**
+        Only users with **Access dataset profiling and sampling** permission can view dataset profiling. Soda Cloud Admins have access to profiling information for all datasets.**See [Manage dataset roles](https://go.soda.io/roles-dataset) for more information.**
 
         ## Authentication
 
@@ -1618,7 +1618,7 @@ paths:
 
         ## Authorization
 
-        Soda only returns the dataset responsibilities to which the user has **View dataset** permissions. Soda Cloud Admins have access to all dataset responsibilities.**See [Manage dataset roles](https://go.soda.io/roles) for more information.**
+        Soda only returns the dataset responsibilities to which the user has **View dataset** permissions. Soda Cloud Admins have access to all dataset responsibilities.**See [Manage dataset roles](https://go.soda.io/roles-dataset) for more information.**
 
         ## Authentication
 
@@ -1713,7 +1713,7 @@ paths:
 
         ## Authorization
 
-        Only users with **Manage dataset responsibilities** permission can update dataset responsibilities. Soda Cloud Admins have permission to update all datasets responsibilities.**See [Manage dataset roles](https://go.soda.io/roles) for more information.**The Response of this call, when successful, is `201` and contains header `Location` which identify the URL where the responsibilities will eventually become available.
+        Only users with **Manage dataset responsibilities** permission can update dataset responsibilities. Soda Cloud Admins have permission to update all datasets responsibilities.**See [Manage dataset roles](https://go.soda.io/roles-dataset) for more information.**The Response of this call, when successful, is `201` and contains header `Location` which identify the URL where the responsibilities will eventually become available.
 
         ## Authentication
 
@@ -1803,7 +1803,7 @@ paths:
 
         ## Authorization
 
-        Only users with **Manage incident** permission can update incidents. Soda Cloud Admins have permission to update all incidents.**See [Manage dataset roles](https://go.soda.io/roles) for more information.**
+        Only users with **Manage incident** permission can update incidents. Soda Cloud Admins have permission to update all incidents.**See [Manage dataset roles](https://go.soda.io/roles-dataset) for more information.**
 
         ## Authentication
 
@@ -2474,7 +2474,7 @@ paths:
 
         ## Authorization
 
-        Only users with **Manage organization settings** permission can update user groups.**See [Manage global roles](https://docs.soda.io/soda-cloud/roles-global.html) for more information.**
+        Only users with **Manage organization settings** permission can update user groups.**See [Manage global roles](https://go.soda.io/roles-global) for more information.**
 
         ## Authentication
 
@@ -2566,7 +2566,7 @@ paths:
 
         ## Authorization
 
-        Only users with **Manage organization settings** permission can update user groups.**See [Manage global roles](https://docs.soda.io/soda-cloud/roles-global.html) for more information.**
+        Only users with **Manage organization settings** permission can update user groups.**See [Manage global roles](https://go.soda.io/roles-global) for more information.**
 
         ## Authentication
 
@@ -2740,7 +2740,7 @@ paths:
 
         ## Authorization
 
-        Only users with **Manage organization settings** permission can update user groups.**See [Manage global roles](https://docs.soda.io/soda-cloud/roles-global.html) for more information.**
+        Only users with **Manage organization settings** permission can update user groups.**See [Manage global roles](https://go.soda.io/roles-global) for more information.**
 
         ## Authentication
 
