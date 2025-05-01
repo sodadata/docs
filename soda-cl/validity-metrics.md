@@ -374,7 +374,7 @@ The column configuration key:value pair defines what SodaCL ought to consider as
 | `invalid regex` | Specifies a regular expression to define your own custom invalid values. | regex, no forward slash delimiters |
 | `invalid values` | Specifies the values that Soda ought to consider invalid. |
 | `valid format` | Defines the format of a value that Soda ought to register as valid. <br />Only works with columns that contain data type TEXT. | See [List of valid formats](#list-of-valid-formats).  |
-| `valid length` | Specifies a valid length for a string. <br />Only works with columns that contain data type TEXT. | integer |
+| `valid length` | Specifies a valid length for a string. <br /> Works with columns that contain data type TEXT, and also with INTEGER on most databases, where implicit casting from string to integer is supported. <br /> **Note:** PostgreSQL does not support this behavior, as it does not implicitly cast strings to integers for this use case. | integer |
 | `valid max` | Specifies a maximum numerical value for valid values. | integer or float|
 | `valid max length` | Specifies a valid maximum length for a string. <br />Only works with columns that contain data type TEXT.| integer |
 | `valid min` | Specifies a minimum numerical value for valid values. | integer or float |
