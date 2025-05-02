@@ -135,7 +135,7 @@ Paste the Webhook URL from Jira into the URL field in Soda and paste the Secret 
 Finally, in the `Define Scope` tab, make sure to select `Incidents - Triggered when users create or update incidents`.
 
 
-![jira-soda-webhook-integration-settings.png](assets/images/jira-soda-webhook-integration-settings.png)
+![jira-soda-webhook-integration-settings.png](/assets/images/jira-soda-webhook-integration-settings.png)
 
 ## Automation Rule (outbound)
 Lastly we will set up a second automation rule in Jira so that when
