@@ -29,7 +29,7 @@ In Jira, you can set up an Automation Rule that enables you to define what you w
 then provides you with a URL that you use in the URL field in the Soda Cloud integration setup. 
 
 This integration is built on two webhook events IncidentCreated and IncidentUpdated (Soda -> Jira; [Event payloads]({% link soda/integrate-webhooks.md %}l#event-payloads)),
-as well as the Soda Cloud API endpoint for updating incidents (Jira -> Soda; [API]({% link api-docs/public-cloud-api-v1.md %}). 
+as well as the Soda Cloud API endpoint for updating incidents (Jira -> Soda; [API]({% link api-docs/public-cloud-api-v1.md %})). 
 
 
 ![webhook-incident](/assets/images/webhook-incident.png){:height="700px" width="700px"} 
@@ -47,15 +47,20 @@ as shown in the image below:
 - IncidentID
 - IncidentURL
 - CheckURL
+
+
 ![jira-work-item](/assets/images/jira-work-item.png){:height="700px" width="700px"} 
 
-From the same page, next click the **Edit Workflow** button, and make sure your workflow includes the statuses:
+From the same page, next click the **Edit Workflow** button, and make sure your workflow includes the following statuses:
 - Reported
 - Investigating
 - Fixing
 - Resolved
-as shown in the image below:
+
+
 ![jira-workflow](assets/images/jira-workflow.png){:height="700px" width="700px"} 
+
+<br />
 
 ## Automation Rule (Inbound)
 ### Initialize the webhook-trigger
@@ -63,24 +68,39 @@ Here we will set up the automation in Jira so that when an Incident is created o
 then a bug ticket will automatically be created or updated in Jira.
 
 Navigate to `Project settings` > `Automation`, then click `Create rule` and, for the type of `New trigger`, select `Incoming webhook`.
-Under the `When: Incoming webhook trigger`, click `Add a component`, select `IF: Add a condition`, then `{{smart values}} condition`. 
+Under the `When: Incoming webhook trigger`, click `Add a component`, select `IF: Add a condition`, then smart values condition.
+
+
 ![jira-if-block-incidentCreated.png](/assets/images/jira-if-block-incidentCreated.png)
+
+
 What this means is that, **if** an incoming webhook has the `incidentCreated` event, then we will do something. 
 
+### Automatic creation of the Jira ticket
 Next we will add another component: `THEN: Add an action`. 
 The action will be to **Create work item** and the **Issue Type** should be `Bug` and the **Project** should be our new project. 
+
+
 ![jira-create-bug.png](/assets/images/jira-create-bug.png)
 
 Next we add some steps to fill out our ticket with extra information obtained from the webhook data.
 We start by creating a branch rule to identify our ticket:
+
+
 ![jira-branch-rule.png](/assets/images/jira-branch-rule.png)
 
 Then we Edit the ticket fields:
+
+
 ![jira-edit-work.png](/assets/images/jira-edit-work.png)
 
 Finally, the last step in our incident _creation_ workflow is to send a post request back to Soda with a link to the issue in Jira:
+
+
 ![jira-send-web-request.png](/assets/images/jira-send-web-request.png)
 
+
+### Automatic updates to the Jira ticket
 The remaining parts of this automation rule cover the scenarios where the status of the incident is updated in Soda,
 then we will detect this change and make the corresponding updates to the issue in Jira.
 
