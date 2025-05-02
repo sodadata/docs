@@ -58,7 +58,7 @@ From the same page, next click the **Edit Workflow** button, and make sure your 
 - Resolved
 
 
-![jira-workflow](assets/images/jira-workflow.png){:height="700px" width="700px"} 
+![jira-workflow](assets/images/jira-workflow.png)
 
 <br />
 
