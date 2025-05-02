@@ -68,6 +68,11 @@ Here we will set up the automation in Jira so that when an Incident is created o
 then a bug ticket will automatically be created or updated in Jira.
 
 Navigate to `Project settings` > `Automation`, then click `Create rule` and, for the type of `New trigger`, select `Incoming webhook`.
+
+
+![jira-incoming-webhook-trigger-start.png](assets/images/jira-incoming-webhook-trigger-start.png)
+
+
 Under the `When: Incoming webhook trigger`, click `Add a component`, select `IF: Add a condition`, then smart values condition.
 
 
