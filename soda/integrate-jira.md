@@ -58,7 +58,7 @@ From the same page, next click the **Edit Workflow** button, and make sure your 
 - Resolved
 
 
-![jira-workflow](assets/images/jira-workflow.png)
+![jira-workflow](/assets/images/jira-workflow.png)
 
 <br />
 
@@ -70,7 +70,7 @@ then a bug ticket will automatically be created or updated in Jira.
 Navigate to `Project settings` > `Automation`, then click `Create rule` and, for the type of `New trigger`, select `Incoming webhook`.
 
 
-![jira-incoming-webhook-trigger-start.png](assets/images/jira-incoming-webhook-trigger-start.png)
+![jira-incoming-webhook-trigger-start.png](/assets/images/jira-incoming-webhook-trigger-start.png)
 
 
 Under the `When: Incoming webhook trigger`, click `Add a component`, select `IF: Add a condition`, then smart values condition.
@@ -94,6 +94,7 @@ We start by creating a branch rule to identify our ticket:
 
 ![jira-branch-rule.png](/assets/images/jira-branch-rule.png)
 
+
 Then we Edit the ticket fields:
 
 
@@ -110,20 +111,30 @@ The remaining parts of this automation rule cover the scenarios where the status
 then we will detect this change and make the corresponding updates to the issue in Jira.
 
 When the status changes to `Reported`:
+
+
 ![jira-status-reported.png](/assets/images/jira-status-reported.png)
+
+
 The same logic is used for other status changes such as `Investigating` and `Fixing`.
 In case the status changes to `Resolved`, our rule uses a similar logic,
 but with the additional step of adding resolution notes as a comment to the issue in Jira:
+
+
 ![jira-status-resolved.png](/assets/images/jira-status-resolved.png)
 
 Once you save/enable this new rule, then you can access a URL and secret that you will provide to Soda when setting up the new webhook integration.
 After saving or enabling the rule, you can view details of the webhook trigger as shown below:
+
+
 ![jira-incoming-webhook-trigger.png](/assets/images/jira-incoming-webhook-trigger.png)
 
 ### Define the Webhook integration in Soda
 Next, you create a new webhook integration in Soda and provide the details from the webhook trigger above, as shown in the image below.
 Paste the Webhook URL from Jira into the URL field in Soda and paste the Secret from Jira into a custom HTTP header called `X-Automation-Webhook-Token`.  
 Finally, in the `Define Scope` tab, make sure to select `Incidents - Triggered when users create or update incidents`.
+
+
 ![jira-soda-webhook-integration-settings.png](assets/images/jira-soda-webhook-integration-settings.png)
 
 ## Automation Rule (outbound)
@@ -131,11 +142,18 @@ Lastly we will set up a second automation rule in Jira so that when
 the status of the ticket changes in Jira, these changes are also reflected in Soda.
 
 First, we set up the trigger for this automation to be when a Work item is transitioned:
-![jira-outbound-rule.png](assets/images/jira-outbound-rule.png)
+
+
+![jira-outbound-rule.png](/assets/images/jira-outbound-rule.png)
+
 
 Finally, we send a post request to the Soda Cloud API `incidents` endpoint,
 using information from our Jira ticket to update the severity and status of the corresponding incident in Soda:
-![jira-incident-api.png](assets/images/jira-incident-api.png)
+
+
+![jira-incident-api.png](/assets/images/jira-incident-api.png)
+
+
 Note that the `Authorization` header value must be formatted like: `Basic <base64_encoded_credentials>`. 
 Base64-encoded credentials can be generated using Soda Cloud API keys in Python like so:
 ```python
