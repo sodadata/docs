@@ -8,7 +8,10 @@ parent: Soda CL reference
 # Anomaly detection checks
 *Last modified on {% last_modified_at %}*
 
-{% include banner-upgrade.md %}
+<div class="info">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  This check is being deprecated. A new version—rebuilt from the ground up, 70% more accurate and significantly faster—will be launched at the Databricks AI Summit, June 9–12, 2025. 👉 <a href="https://launch.soda.io/" target="_blank">Request early access.</a>
+</div>
 
 Use an anomaly detection check to automatically discover anomalies in your check metrics. 
 {% include code-header.html %}
