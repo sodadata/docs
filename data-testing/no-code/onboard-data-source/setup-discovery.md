@@ -2,9 +2,9 @@
 layout: default
 title: Set up discovery
 description: Set up discovery
-parent: Connect to a Data Source
+parent: Onboard a Data Source
 grand_parent: Option 1 - No Code
-nav_order: 432
+nav_order: 3
 ---
 
 # Set Up Discovery
