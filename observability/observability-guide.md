@@ -3,9 +3,7 @@ layout: default
 title: Observability Guide
 description: 
 parent: Data Observability
-nav_order: 515
+nav_exclude: true
 ---
 
 # Observability Guide
-
-wip

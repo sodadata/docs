@@ -1,7 +1,14 @@
 ---
 layout: default
-title: Data testing
+title: Data Testing
+description: What is Data Testing?
 nav_order: 400
-
 ---
-# Introduction
+
+<!-- temporal white space until we fix parent navegation -->
+&nbsp;
+&nbsp;
+
+# Data Testing
+
+*Last modified on {% last_modified_at %}*

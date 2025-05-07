@@ -2,10 +2,40 @@
 - title: Home
   page: index.html
 
-- title: Soda overview
-  page: soda/overview.md
+- title: Get Started
+  page: get-started/get-started.md
+  subcategories:
+  - subtitle: What is Soda?
+    page: get-started/what-is-soda.md
+  - subtitle: Key Concepts
+    page: get-started/key-concepts.md
+  - subtitle: Deployment Options
+    page: get-started/deployment-options.md
+  - subtitle: Quickstart
+  - page: get-started/quickstart.md
+
+
+- title: Data Observability
+  page: observability/observability.md
+  subcategories:
+  - subtitle: Key Concepts
+    page: observability/key-concepts/key-concepts.md
+    subcategories:
+      - subtitle: What is Data Observability?
+        page: observability/key-concepts/what-is-data-observability.md
+      - subtitle: Discovery, Profiling, Metrics, and Monitors
+        page: observability/key-concepts/discovery-profiling-monitors.md
+      - subtitle: Combine Data Observability with Data Testing
+        page: observability/key-concepts/data-observability-with-data-testing.md
+  - subtitle: Get Started
+    page: observability/get-started.md
+    subcategories:
+      - subtitle: Connect to Data Sources
+        page: observability/connect-data-source.md
+      - subtitle: Enable Discovery/Profiling/Monitoring
+        page: observability/enable-discovery-profiling-monitoring.md
    
-- title: Data testing
+- title: Data Testing
   page: data-testing/data-testing.md
   subcategories:
   - subtitle: Introduction
@@ -43,34 +73,6 @@
     page: data-testing/configure-notifications.md
   - subtitle: Failed rows
     page: data-testing/failed-rows.md
-  
-- title: Observability
-  page: observability/observability.md
-  subcategories:
-  - subtitle: Quickstart
-    page: observability/quickstart.md
-  - subtitle: Observability Guide
-    page: get-started/get-started-observability.md
-    subcategories:
-    - subtitle: Prerequisites
-      page: observability/prerequisites.md
-    - subtitle: Metric Monitors
-      page: observability/metric-monitors.md
-      subcategories:
-      - subtitle: Adjust sensitivity
-        page: observability/adjust-sensitivity.md
-      - subtitle: Define exclusion values
-        page: observability/define-exclusion-values.md
-      - subtitle: Give feedback to improve detection
-        page: observability/give-feedback.md
-      - subtitle: Manage incidents
-        page: observability/manage-incidents.md
-      - subtitle: Set up alerts
-        page: observability/set-up-alerts.md
-      - subtitle: Update settings
-        page: observability/update-settings.md
-
-
 
 - title: Soda Cloud
   page: soda-administration/soda-cloud.md

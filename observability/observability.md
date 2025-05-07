@@ -2,7 +2,7 @@
 layout: default
 title: Data Observability
 description: What is observability?
-nav_order: 500
+nav_order: 300
 ---
 
 <!-- temporal white space until we fix parent navegation -->

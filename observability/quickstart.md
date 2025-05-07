@@ -4,6 +4,7 @@ title: Quickstart Observability
 description: Quickstart Observability
 parent: Data Observability
 nav_order: 511
+nav_exclude: true
 ---
 
 # Quickstart: Get Started with Observability

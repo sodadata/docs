@@ -2,13 +2,9 @@
 layout: default
 title: Get Started 
 description: Get Started
-nav_order: 200
+parent: Data Observability
+nav_order: 320
 ---
 
-<!-- temporal white space until we fix parent navegation -->
-&nbsp;
-&nbsp;
-
 # Get Started
-
 *Last modified on {% last_modified_at %}*
