@@ -1049,7 +1049,7 @@ paths:
 
         ## Rate limiting
 
-        10 requests/60 seconds
+        60 requests/60 seconds
       operationId: GET/api/v1/checks
       parameters:
       - in: query
