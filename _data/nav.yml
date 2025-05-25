@@ -2,6 +2,9 @@
 - title: Home
   page: index.html
 
+- title: What is Soda?
+  page: what-is-soda/what-is-soda.md
+
 - title: Get Started
   page: get-started/get-started.md
   subcategories:
