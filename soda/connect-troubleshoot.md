@@ -2,7 +2,7 @@
 layout: default
 title: Troubleshoot data source connections
 description: 
-parent: 
+parent: Data source reference
 ---
 
 # Troubleshoot data source connections

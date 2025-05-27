@@ -2,7 +2,7 @@
 layout: default
 title: Take a sip of Soda
 description: Follow this tutorial to set up and run a simple Soda scan for data quality using example data.
-parent: Home
+parent: Get started
 redirect_from:
 - /soda/core-interactive-demo.html
 - /soda/quick-start-soda-core.html
