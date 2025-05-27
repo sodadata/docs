@@ -148,7 +148,17 @@ Soda uses a statistical baseline to define an “expected range” for anomaly d
 1. **Open the panel**Click on "Set Sensitivity" button on the metric of your choice
 2. **Adjust the sensitivity**
 - **Provide a z-score**: enter a value between **0.3** and **6** to control the exact width of the expected range OR use the slider to drag between **Narrow** (lower z-score) and **Wide** (higher z-score).
-- **Default**: `z = 3`
+- **Default value**: `z = 3`
+
+Values are considered anomalous if they fall outside three standard deviations from the predicted value. The lower and upper bounds of the expected range are calculated as:
+
+```
+lower = point_forecast - z * sigma
+upper = point_forecast + z * sigma
+```
+
+A `z = 1.96` is equivalent to having a confidence level of 95%.
+
 
 Preview how changing sensitivity widens or narrows the gray “expected” band in the plot
 
