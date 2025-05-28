@@ -29,3 +29,11 @@ gem "webrick"
 gem 'jekyll-redirect-from'
 
 gem 'jekyll-sitemap'
+
+gem 'csv'
+
+gem 'logger'
+
+gem 'base64'
+
+gem 'bigdecimal'
