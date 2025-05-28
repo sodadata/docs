@@ -10,6 +10,11 @@ components:
     CheckResultValueDTO:
       type: object
       properties:
+        diagnostics:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/DiagnosticBlockDTO'
         id:
           type: string
         measure:
@@ -363,6 +368,33 @@ components:
           type: string
         type:
           type: string
+    DiagnosticBlockDTO:
+      type: object
+      properties:
+        freshness:
+          type: object
+          $ref: '#/components/schemas/FreshnessDiagnosticBlockDTO'
+        numericMetricValues:
+          type: object
+          $ref: '#/components/schemas/MapOfStringToDouble'
+        queries:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/QueriesDiagnosticBlockDTO'
+        schema:
+          type: object
+          $ref: '#/components/schemas/SchemaDiagnosticBlockDTO'
+        type:
+          type: object
+          $ref: '#/components/schemas/DiagnosticBlockTypeDTO'
+    DiagnosticBlockTypeDTO:
+      type: string
+      enum:
+      - freshness
+      - numericMetricValues
+      - queries
+      - schema
     ErrorResponse:
       type: object
       properties:
@@ -390,6 +422,8 @@ components:
           items:
             type: object
             $ref: '#/components/schemas/_object'
+    FreshnessDiagnosticBlockDTO:
+      type: object
     HistogramBinContentDTO:
       type: object
       properties:
@@ -407,6 +441,8 @@ components:
       type: object
       properties:
         description:
+          type: string
+        resolutionNotes:
           type: string
         severity:
           type: object
@@ -485,6 +521,9 @@ components:
       - level
       - message
       - timestamp
+    MapOfStringToDouble:
+      type: object
+      additionalProperties: true
     MapOfStringToString:
       type: object
       additionalProperties: true
@@ -702,6 +741,13 @@ components:
       - size
       - totalElements
       - totalPages
+    PublicApiDeleteDatasetResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
     PublicApiDeleteUserGroupResponse:
       type: object
     PublicApiScanDefinitionSlim:
@@ -841,6 +887,8 @@ components:
       properties:
         description:
           type: string
+        resolutionNotes:
+          type: string
         severity:
           type: object
           $ref: '#/components/schemas/IncidentSeverityDTO'
@@ -920,6 +968,17 @@ components:
       - size
       - totalElements
       - totalPages
+    QueriesDiagnosticBlockDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        query:
+          type: string
+        sample:
+          type: boolean
+        type:
+          type: string
     ResponsibilityTypeDTO:
       type: string
       enum:
@@ -940,6 +999,59 @@ components:
       - completedWithFailures
       - completedWithWarnings
       - completed
+    SchemaDiagnosticBlockDTO:
+      type: object
+      properties:
+        actualColumnNamesNotExpected:
+          type: array
+          items:
+            type: string
+        actualColumns:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/SchemaDiagnosticBlockDTO_Column'
+        areColumnsOutOfOrder:
+          type: boolean
+        columnDataTypeMismatches:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/SchemaDiagnosticBlockDTO_ColumnDataTypeMismatch'
+        expectedColumnNamesNotActual:
+          type: array
+          items:
+            type: string
+        expectedColumns:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/SchemaDiagnosticBlockDTO_Column'
+    SchemaDiagnosticBlockDTO_Column:
+      type: object
+      properties:
+        characterMaximumLength:
+          type: integer
+          format: int32
+        dataType:
+          type: string
+        name:
+          type: string
+    SchemaDiagnosticBlockDTO_ColumnDataTypeMismatch:
+      type: object
+      properties:
+        actualCharacterMaximumLength:
+          type: integer
+          format: int32
+        actualDataType:
+          type: string
+        column:
+          type: string
+        expectedCharacterMaximumLength:
+          type: integer
+          format: int32
+        expectedDataType:
+          type: string
     UserContentDTO:
       type: object
       properties:
@@ -1431,6 +1543,79 @@ paths:
       tags:
       - Datasets
   /api/v1/datasets/{datasetId}:
+    delete:
+      description: "This endpoint enables you to delete an existing dataset in your\
+        \ organization's Soda Cloud account. \n\nDeletion is not immediate and can\
+        \ take some time to complete, depending on the size of your dataset. You can\
+        \ check the status of the deletion by calling the **Get dataset** endpoint.\n\
+        \n## Authorization\n\nOnly users with **Delete dataset** permission can delete\
+        \ a dataset. Soda Cloud Admins have permission to delete any dataset.**See\
+        \ [Manage dataset roles](https://go.soda.io/roles-dataset) for more information.**\n\
+        \n## Authentication\n\nUser authentication required: `true`\n\nThis endpoint\
+        \ enforces authentication using the API keys you provide in the `Basic` authentication\
+        \ header.\n\n## Tags\n\n`Datasets`\n\n## Rate limiting\n\n10 requests/60 seconds"
+      operationId: "DELETE/api/v1/datasets/{datasetId}"
+      parameters:
+      - in: path
+        name: datasetId
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/PublicApiDeleteDatasetResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      summary: Delete dataset
+      tags:
+      - Datasets
     post:
       description: |-
         This endpoint enables you to update an existing dataset name, owners, tags or attributes in your organization's Soda Cloud account.
