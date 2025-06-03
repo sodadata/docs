@@ -232,14 +232,14 @@ $code-background-color: #f8f9f9;
   }
 
   .search-active {
-    position: relative;
-    z-index: 999;
     .search {
       .search-input-wrap {
         right: auto;
         margin-top: 0;
         margin-right: 0;
         height: 100% !important;
+        position: absolute; /* or fixed, depending on placement */
+        z-index: 1000;      /* or any large number above banners and headers */
       }
 
       .search-input {
@@ -976,6 +976,8 @@ body {
 .docs-banner {
   padding-top: 0;
   margin-bottom: 2px;
+  position: relative;
+  z-index: 1;
 
   &:last-of-type {
     margin-bottom: 0;
@@ -1004,18 +1006,6 @@ body {
   display: inline-block;
   white-space: nowrap;
   text-decoration: underline;
-}
-
-.docs-banner.docs-color-purple {
-  background-color: #5C3CFF;
-}
-
-.docs-banner.docs-color-purple .docs-banner-text {
-  color: #fff;
-}
-
-.docs-banner.docs-color-purple .docs-banner-action {
-  color: #DBC7FF;
 }
 
 .docs-banner.docs-color-turquoise {
