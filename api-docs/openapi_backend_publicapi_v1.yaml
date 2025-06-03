@@ -10,6 +10,8 @@ components:
     CheckResultValueDTO:
       type: object
       properties:
+        dataTimestamp:
+          type: string
         diagnostics:
           type: array
           items:
@@ -52,12 +54,15 @@ components:
       properties:
         agreements:
           type: array
+          deprecated: true
           items:
             type: object
             $ref: '#/components/schemas/AgreementSlimDTO'
         attributes:
           type: object
           $ref: '#/components/schemas/MapOfStringToString'
+        checkType:
+          type: string
         cloudUrl:
           type: string
         column:
@@ -91,22 +96,23 @@ components:
           $ref: '#/components/schemas/CheckResultValueDTO'
         lastCheckRunTime:
           type: string
+          deprecated: true
         lastUpdated:
           type: string
+          deprecated: true
         name:
           type: string
         owner:
           type: object
           $ref: '#/components/schemas/OwnerDTO'
+          deprecated: true
       required:
-      - agreements
       - createdAt
       - datasets
       - evaluationStatus
       - id
       - incidents
       - name
-      - owner
     ChecksContentDTO_Group:
       type: object
       properties:
@@ -309,6 +315,8 @@ components:
         id:
           type: string
         name:
+          type: string
+        qualifiedName:
           type: string
     DatasetsContentDTO:
       type: object
