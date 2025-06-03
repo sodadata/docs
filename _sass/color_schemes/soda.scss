@@ -1004,28 +1004,16 @@ body {
   text-decoration: underline;
 }
 
-.docs-banner.docs-color-purple {
+.docs-banner.docs-color-turquoise {
   background-color: #5C3CFF;
 }
 
-.docs-banner.docs-color-purple .docs-banner-text {
-  color: #fff;
-}
-
-.docs-banner.docs-color-purple .docs-banner-action {
-  color: #DBC7FF;
-}
-
-.docs-banner.docs-color-turquoise {
-  background-color: #00c9d6;
-}
-
 .docs-banner.docs-color-turquoise .docs-banner-text {
-  color: #000;
+  color: #fff;
 }
 
 .docs-banner.docs-color-turquoise .docs-banner-action {
-  color: #fff;
+  color: #DBC7FF;
 }
 
 /* Override comments in python snippets */
