@@ -232,13 +232,14 @@ $code-background-color: #f8f9f9;
   }
 
   .search-active {
+    position: relative;
+    z-index: 999;
     .search {
       .search-input-wrap {
         right: auto;
         margin-top: 0;
         margin-right: 0;
         height: 100% !important;
-        position: relative;
       }
 
       .search-input {
