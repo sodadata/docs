@@ -221,6 +221,8 @@
       page: soda/connect-motherduck.md
     - subtitle: Connect to MS SQL Server
       page: soda/connect-mssql.md
+    - subtitle: Connect to MS Fabric
+      page: soda/connect-fabric.md
     - subtitle: Connect to MySQL
       page: soda/connect-mysql.md
     - subtitle: Connect to OracleDB

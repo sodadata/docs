@@ -25,9 +25,10 @@ data_source my_datasource_name:
   database: database
   schema: dbo
   trusted_connection: false
-  encrypt: false 
+  encrypt: false
   trust_server_certificate: false
   driver: ODBC Driver 18 for SQL Server
+  scope: DW
   connection_parameters:
     multi_subnet_failover: true
 ```
@@ -41,10 +42,11 @@ data_source my_datasource_name:
 | password  | required  | Use system variables to retrieve this value securely.    |
 | database  | required  | Provide an identifier for your database.                 |
 | schema    | required  | Provide an identifier for the schema in which your dataset exists. |
-| trusted_connection    | optional |  Indicate connection trustworthiness by providing a boolean value: `true` or `false`. The default value is `false`. Set to `true` if you are using Active Directory authentication. |  
+| trusted_connection    | optional |  Indicate connection trustworthiness by providing a boolean value: `true` or `false`. The default value is `false`. Set to `true` if you are using Active Directory authentication. |
 | encrypt   | optional | Indicate the encryption status by providing a boolean value: `true` or `false`.  The default value is `false`. |
 | trust_server_certificate | optional | Specifies whether encryption occurs if there is no verifiable server certificate. Providing a boolean value: `true` or `false`.  The default value is `false`.  |
 | driver    | optional | Use this config setting to specify the ODBC driver version you use. For example, `SQL Server Native Client 11.0` or `ODBC Driver 18 for SQL Server`. |
+| scope     | optional | Access token scope. |
 | `multi_subnet_failover` | optional | Enable MultiSubnetFailover; see <a href="https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/sql/sqlclient-support-for-high-availability-disaster-recovery#connecting-with-multisubnetfailover" target="_blank">MS documentation</a>.
 
 {% include test-connection.md %}
