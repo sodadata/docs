@@ -20,12 +20,12 @@ Soda support for Fabric data source is based on `soda-sqlserver` package.
 data_source my_datasource_name:
   type: fabric
   ... same as sqlserver
-  authentication_method: fabric
+  authentication: auto
 ```
 
 | Property | Required | Notes                                                      |
 | -------- | -------- | ---------------------------------------------------------- |
-| authentication_method  | optional | Fabric authentication method. Supported values: 'auto', 'cli', 'environment', 'synapsespark' and 'fabricspark'. No default value. |
+| authentication  | optional | Fabric authentication method. Supported values identical as in sqlserver datasource, extended by values: `auto`, `cli`, `environment`, `synapsespark` and `fabricspark`. The default value is `sql`. |
 
 
 {% include test-connection.md %}
