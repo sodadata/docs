@@ -18,7 +18,7 @@ Soda support for Fabric data source is based on `soda-sqlserver` package.
 {% include code-header.html %}
 ```yaml
 data_source my_datasource_name:
-  type: sqlserver
+  type: fabric
   host: host
   port: '1433'
   username: simple
