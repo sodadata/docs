@@ -8,7 +8,6 @@ redirect_from:
 ---
 
 # Set up data contracts <br />
-![experimental](/assets/images/experimental.png){:height="400px" width="400px"} <br />
 <!--Linked to UI, access Shlink-->
 *Last modified on {% last_modified_at %}*
 
