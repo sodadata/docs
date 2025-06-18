@@ -48,7 +48,7 @@ data_source my_datasource_name:
 | trust_server_certificate | optional | Specifies whether encryption occurs if there is no verifiable server certificate. Providing a boolean value: `true` or `false`.  The default value is `false`.  |
 | driver    | optional | Use this config setting to specify the ODBC driver version you use. For example, `SQL Server Native Client 11.0` or `ODBC Driver 18 for SQL Server`. |
 | scope     | optional | Access token scope. |
-| `multi_subnet_failover` | optional | Enable MultiSubnetFailover; see <a href="https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/sql/sqlclient-support-for-high-availability-disaster-recovery#connecting-with-multisubnetfailover" target="_blank">MS documentation</a>.
+| `multi_subnet_failover` | optional | Enable MultiSubnetFailover; see <a href="https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/sql/sqlclient-support-for-high-availability-disaster-recovery#connecting-with-multisubnetfailover" target="_blank">MS documentation</a>.|
 | authentication    | optional | Authentication method to use. Supported values: `sql`, `activedirectoryinteractive`, `activedirectorypassword`, `activedirectoryserviceprincipal`, `activedirectory`, `auto`, `cli`, `environment`, `synapsespark` and `fabricspark`. The default value is `sql` which uses `username` and `password` to authenticate. |
 
 
