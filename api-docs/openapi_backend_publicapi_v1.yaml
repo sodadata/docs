@@ -50,7 +50,7 @@ components:
       properties:
         dataTimestamp:
           type: string
-        diagnosticsV4:
+        diagnostics:
           type: object
           $ref: '#/components/schemas/CheckResultDiagnosticsV4'
         id:
