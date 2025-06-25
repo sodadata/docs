@@ -1,5 +1,13 @@
 components:
   schemas:
+    AggregateDiagnosticsV4:
+      type: object
+      properties:
+        totalRowsTested:
+          type: integer
+          format: int32
+      required:
+      - totalRowsTested
     AgreementSlimDTO:
       type: object
       properties:
@@ -7,16 +15,44 @@ components:
           type: string
         name:
           type: string
+    CheckResultDiagnosticsV4:
+      type: object
+      properties:
+        aggregate:
+          type: object
+          $ref: '#/components/schemas/AggregateDiagnosticsV4'
+        duplicate:
+          type: object
+          $ref: '#/components/schemas/DuplicateDiagnosticsV4'
+        failedRows:
+          type: object
+          $ref: '#/components/schemas/FailedRowsDiagnosticsV4'
+        freshness:
+          type: object
+          $ref: '#/components/schemas/FreshnessDiagnosticsV4'
+        invalid:
+          type: object
+          $ref: '#/components/schemas/InvalidDiagnosticsV4'
+        metric:
+          type: object
+          $ref: '#/components/schemas/MetricDiagnosticsV4'
+        missing:
+          type: object
+          $ref: '#/components/schemas/MissingCheckResultDiagnosticsV4'
+        rowCount:
+          type: object
+          $ref: '#/components/schemas/RowCountDiagnosticsV4'
+        schema:
+          type: object
+          $ref: '#/components/schemas/SchemaDiagnosticsV4'
     CheckResultValueDTO:
       type: object
       properties:
         dataTimestamp:
           type: string
-        diagnostics:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/DiagnosticBlockDTO'
+        diagnosticsV4:
+          type: object
+          $ref: '#/components/schemas/CheckResultDiagnosticsV4'
         id:
           type: string
         measure:
@@ -376,33 +412,27 @@ components:
           type: string
         type:
           type: string
-    DiagnosticBlockDTO:
+    DuplicateDiagnosticsV4:
       type: object
       properties:
-        freshness:
-          type: object
-          $ref: '#/components/schemas/FreshnessDiagnosticBlockDTO'
-        numericMetricValues:
-          type: object
-          $ref: '#/components/schemas/MapOfStringToDouble'
-        queries:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/QueriesDiagnosticBlockDTO'
-        schema:
-          type: object
-          $ref: '#/components/schemas/SchemaDiagnosticBlockDTO'
-        type:
-          type: object
-          $ref: '#/components/schemas/DiagnosticBlockTypeDTO'
-    DiagnosticBlockTypeDTO:
-      type: string
-      enum:
-      - freshness
-      - numericMetricValues
-      - queries
-      - schema
+        failedRowsCount:
+          type: integer
+          format: int32
+        failedRowsDataQuery:
+          type: string
+        failedRowsKeysQuery:
+          type: string
+        failedRowsPercent:
+          type: number
+        failedRowsSourceQuery:
+          type: string
+        totalRowsTested:
+          type: integer
+          format: int32
+      required:
+      - failedRowsCount
+      - failedRowsPercent
+      - totalRowsTested
     ErrorResponse:
       type: object
       properties:
@@ -430,8 +460,47 @@ components:
           items:
             type: object
             $ref: '#/components/schemas/_object'
-    FreshnessDiagnosticBlockDTO:
+    FailedRowsDiagnosticsV4:
       type: object
+      properties:
+        failedRowsCount:
+          type: integer
+          format: int32
+        failedRowsDataQuery:
+          type: string
+        failedRowsKeysQuery:
+          type: string
+        failedRowsPercent:
+          type: number
+        failedRowsSourceQuery:
+          type: string
+        totalRowsTested:
+          type: integer
+          format: int32
+      required:
+      - failedRowsCount
+      - failedRowsPercent
+      - totalRowsTested
+    FreshnessDiagnosticsV4:
+      type: object
+      properties:
+        actualTimestamp:
+          type: string
+        actualTimestampUtc:
+          type: string
+        expectedTimestamp:
+          type: string
+        expectedTimestampUtc:
+          type: string
+        totalRowsTested:
+          type: integer
+          format: int32
+      required:
+      - actualTimestamp
+      - actualTimestampUtc
+      - expectedTimestamp
+      - expectedTimestampUtc
+      - totalRowsTested
     HistogramBinContentDTO:
       type: object
       properties:
@@ -504,6 +573,27 @@ components:
       - investigating
       - fixing
       - resolved
+    InvalidDiagnosticsV4:
+      type: object
+      properties:
+        failedRowsCount:
+          type: integer
+          format: int32
+        failedRowsDataQuery:
+          type: string
+        failedRowsKeysQuery:
+          type: string
+        failedRowsPercent:
+          type: number
+        failedRowsSourceQuery:
+          type: string
+        totalRowsTested:
+          type: integer
+          format: int32
+      required:
+      - failedRowsCount
+      - failedRowsPercent
+      - totalRowsTested
     LogLevelDTO:
       type: string
       enum:
@@ -529,9 +619,6 @@ components:
       - level
       - message
       - timestamp
-    MapOfStringToDouble:
-      type: object
-      additionalProperties: true
     MapOfStringToString:
       type: object
       additionalProperties: true
@@ -542,6 +629,33 @@ components:
       type: string
       enum:
       - time
+    MetricDiagnosticsV4:
+      type: object
+      properties:
+        totalRowsTested:
+          type: integer
+          format: int32
+    MissingCheckResultDiagnosticsV4:
+      type: object
+      properties:
+        failedRowsCount:
+          type: integer
+          format: int32
+        failedRowsDataQuery:
+          type: string
+        failedRowsKeysQuery:
+          type: string
+        failedRowsPercent:
+          type: number
+        failedRowsSourceQuery:
+          type: string
+        totalRowsTested:
+          type: integer
+          format: int32
+      required:
+      - failedRowsCount
+      - failedRowsPercent
+      - totalRowsTested
     OwnerDTO:
       type: object
       properties:
@@ -976,22 +1090,19 @@ components:
       - size
       - totalElements
       - totalPages
-    QueriesDiagnosticBlockDTO:
-      type: object
-      properties:
-        name:
-          type: string
-        query:
-          type: string
-        sample:
-          type: boolean
-        type:
-          type: string
     ResponsibilityTypeDTO:
       type: string
       enum:
       - user
       - userGroup
+    RowCountDiagnosticsV4:
+      type: object
+      properties:
+        totalRowsTested:
+          type: integer
+          format: int32
+      required:
+      - totalRowsTested
     ScanStateDTO:
       type: string
       enum:
@@ -1007,59 +1118,28 @@ components:
       - completedWithFailures
       - completedWithWarnings
       - completed
-    SchemaDiagnosticBlockDTO:
+    SchemaDiagnosticsV4:
       type: object
       properties:
-        actualColumnNamesNotExpected:
-          type: array
-          items:
-            type: string
-        actualColumns:
+        actual:
           type: array
           items:
             type: object
-            $ref: '#/components/schemas/SchemaDiagnosticBlockDTO_Column'
-        areColumnsOutOfOrder:
-          type: boolean
-        columnDataTypeMismatches:
+            $ref: '#/components/schemas/SchemaDiagnosticsV4_Column'
+        expected:
           type: array
           items:
             type: object
-            $ref: '#/components/schemas/SchemaDiagnosticBlockDTO_ColumnDataTypeMismatch'
-        expectedColumnNamesNotActual:
-          type: array
-          items:
-            type: string
-        expectedColumns:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/SchemaDiagnosticBlockDTO_Column'
-    SchemaDiagnosticBlockDTO_Column:
+            $ref: '#/components/schemas/SchemaDiagnosticsV4_Column'
+    SchemaDiagnosticsV4_Column:
       type: object
       properties:
-        characterMaximumLength:
-          type: integer
-          format: int32
-        dataType:
-          type: string
         name:
           type: string
-    SchemaDiagnosticBlockDTO_ColumnDataTypeMismatch:
-      type: object
-      properties:
-        actualCharacterMaximumLength:
-          type: integer
-          format: int32
-        actualDataType:
+        type:
           type: string
-        column:
-          type: string
-        expectedCharacterMaximumLength:
-          type: integer
-          format: int32
-        expectedDataType:
-          type: string
+      required:
+      - name
     UserContentDTO:
       type: object
       properties:
