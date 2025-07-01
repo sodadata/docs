@@ -3,11 +3,11 @@ components:
     AggregateDiagnosticsV4:
       type: object
       properties:
-        totalRowsTested:
+        datasetRowsTested:
           type: integer
           format: int32
       required:
-      - totalRowsTested
+      - datasetRowsTested
     AgreementSlimDTO:
       type: object
       properties:
@@ -24,7 +24,7 @@ components:
         duplicate:
           type: object
           $ref: '#/components/schemas/DuplicateDiagnosticsV4'
-        failedRows:
+        failed_rows:
           type: object
           $ref: '#/components/schemas/FailedRowsDiagnosticsV4'
         freshness:
@@ -38,8 +38,8 @@ components:
           $ref: '#/components/schemas/MetricDiagnosticsV4'
         missing:
           type: object
-          $ref: '#/components/schemas/MissingCheckResultDiagnosticsV4'
-        rowCount:
+          $ref: '#/components/schemas/MissingDiagnosticsV4'
+        row_count:
           type: object
           $ref: '#/components/schemas/RowCountDiagnosticsV4'
         schema:
@@ -415,6 +415,12 @@ components:
     DuplicateDiagnosticsV4:
       type: object
       properties:
+        checkRowsTested:
+          type: integer
+          format: int32
+        datasetRowsTested:
+          type: integer
+          format: int32
         failedRowsCount:
           type: integer
           format: int32
@@ -426,13 +432,11 @@ components:
           type: number
         failedRowsSourceQuery:
           type: string
-        totalRowsTested:
-          type: integer
-          format: int32
       required:
+      - checkRowsTested
+      - datasetRowsTested
       - failedRowsCount
       - failedRowsPercent
-      - totalRowsTested
     ErrorResponse:
       type: object
       properties:
@@ -463,6 +467,9 @@ components:
     FailedRowsDiagnosticsV4:
       type: object
       properties:
+        datasetRowsTested:
+          type: integer
+          format: int32
         failedRowsCount:
           type: integer
           format: int32
@@ -474,13 +481,10 @@ components:
           type: number
         failedRowsSourceQuery:
           type: string
-        totalRowsTested:
-          type: integer
-          format: int32
       required:
+      - datasetRowsTested
       - failedRowsCount
       - failedRowsPercent
-      - totalRowsTested
     FreshnessDiagnosticsV4:
       type: object
       properties:
@@ -488,19 +492,17 @@ components:
           type: string
         actualTimestampUtc:
           type: string
+        datasetRowsTested:
+          type: integer
+          format: int32
         expectedTimestamp:
           type: string
         expectedTimestampUtc:
           type: string
-        totalRowsTested:
-          type: integer
-          format: int32
       required:
-      - actualTimestamp
-      - actualTimestampUtc
+      - datasetRowsTested
       - expectedTimestamp
       - expectedTimestampUtc
-      - totalRowsTested
     HistogramBinContentDTO:
       type: object
       properties:
@@ -576,6 +578,12 @@ components:
     InvalidDiagnosticsV4:
       type: object
       properties:
+        checkRowsTested:
+          type: integer
+          format: int32
+        datasetRowsTested:
+          type: integer
+          format: int32
         failedRowsCount:
           type: integer
           format: int32
@@ -587,13 +595,11 @@ components:
           type: number
         failedRowsSourceQuery:
           type: string
-        totalRowsTested:
-          type: integer
-          format: int32
       required:
+      - checkRowsTested
+      - datasetRowsTested
       - failedRowsCount
       - failedRowsPercent
-      - totalRowsTested
     LogLevelDTO:
       type: string
       enum:
@@ -632,12 +638,20 @@ components:
     MetricDiagnosticsV4:
       type: object
       properties:
-        totalRowsTested:
+        datasetRowsTested:
           type: integer
           format: int32
-    MissingCheckResultDiagnosticsV4:
+      required:
+      - datasetRowsTested
+    MissingDiagnosticsV4:
       type: object
       properties:
+        checkRowsTested:
+          type: integer
+          format: int32
+        datasetRowsTested:
+          type: integer
+          format: int32
         failedRowsCount:
           type: integer
           format: int32
@@ -649,13 +663,11 @@ components:
           type: number
         failedRowsSourceQuery:
           type: string
-        totalRowsTested:
-          type: integer
-          format: int32
       required:
+      - checkRowsTested
+      - datasetRowsTested
       - failedRowsCount
       - failedRowsPercent
-      - totalRowsTested
     OwnerDTO:
       type: object
       properties:
@@ -1098,11 +1110,15 @@ components:
     RowCountDiagnosticsV4:
       type: object
       properties:
-        totalRowsTested:
+        checkRowsTested:
+          type: integer
+          format: int32
+        datasetRowsTested:
           type: integer
           format: int32
       required:
-      - totalRowsTested
+      - checkRowsTested
+      - datasetRowsTested
     ScanStateDTO:
       type: string
       enum:
