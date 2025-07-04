@@ -6,8 +6,6 @@ components:
         datasetRowsTested:
           type: integer
           format: int32
-      required:
-      - datasetRowsTested
     AgreementSlimDTO:
       type: object
       properties:
@@ -432,11 +430,6 @@ components:
           type: number
         failedRowsSourceQuery:
           type: string
-      required:
-      - checkRowsTested
-      - datasetRowsTested
-      - failedRowsCount
-      - failedRowsPercent
     ErrorResponse:
       type: object
       properties:
@@ -481,10 +474,6 @@ components:
           type: number
         failedRowsSourceQuery:
           type: string
-      required:
-      - datasetRowsTested
-      - failedRowsCount
-      - failedRowsPercent
     FreshnessDiagnosticsV4:
       type: object
       properties:
@@ -499,10 +488,6 @@ components:
           type: string
         expectedTimestampUtc:
           type: string
-      required:
-      - datasetRowsTested
-      - expectedTimestamp
-      - expectedTimestampUtc
     HistogramBinContentDTO:
       type: object
       properties:
@@ -595,11 +580,6 @@ components:
           type: number
         failedRowsSourceQuery:
           type: string
-      required:
-      - checkRowsTested
-      - datasetRowsTested
-      - failedRowsCount
-      - failedRowsPercent
     LogLevelDTO:
       type: string
       enum:
@@ -641,8 +621,6 @@ components:
         datasetRowsTested:
           type: integer
           format: int32
-      required:
-      - datasetRowsTested
     MissingDiagnosticsV4:
       type: object
       properties:
@@ -663,11 +641,6 @@ components:
           type: number
         failedRowsSourceQuery:
           type: string
-      required:
-      - checkRowsTested
-      - datasetRowsTested
-      - failedRowsCount
-      - failedRowsPercent
     OwnerDTO:
       type: object
       properties:
@@ -1116,9 +1089,6 @@ components:
         datasetRowsTested:
           type: integer
           format: int32
-      required:
-      - checkRowsTested
-      - datasetRowsTested
     ScanStateDTO:
       type: string
       enum:
@@ -1154,8 +1124,6 @@ components:
           type: string
         type:
           type: string
-      required:
-      - name
     UserContentDTO:
       type: object
       properties:
