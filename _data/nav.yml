@@ -11,18 +11,19 @@
       page: soda/get-started-roadmap.md
     - subtitle: Choose a flavor of Soda
       page: soda/setup-guide.md
-    - subtitle: Install Soda Library
-      page: soda-library/install.md
-    - subtitle: Set up a Soda-hosted agent
-      page: soda-agent/managed-agent.md
-    - subtitle: Deploy a Soda Agent
-      page: soda-agent/deploy.md
-    - subtitle: Soda Agent extras
-      page: soda-agent/extras.md
-    - subtitle: Invoke Soda Library
-      page: soda-library/programmatic.md
-    - subtitle: Upgrade, redeploy, uninstall
-      page: soda/upgrade.md
+      subcategories:
+      - subtitle: Install Soda Library
+        page: soda-library/install.md
+      - subtitle: Set up a Soda-hosted agent
+        page: soda-agent/managed-agent.md
+      - subtitle: Deploy a Soda Agent
+        page: soda-agent/deploy.md
+      - subtitle: Soda Agent extras
+        page: soda-agent/extras.md
+      - subtitle: Invoke Soda Library
+        page: soda-library/programmatic.md
+      - subtitle: Upgrade, redeploy, uninstall
+        page: soda/upgrade.md
 
 - title: Use case guides
   page: soda/use-case-guides.md
