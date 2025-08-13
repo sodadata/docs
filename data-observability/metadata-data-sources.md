@@ -50,7 +50,7 @@ Otherwise, Soda will fall back on a standard sampling method to detect the parti
 ### Redshift
 
 * **Historical backfilling** is supported on Redshift and it is limited to 7 days for the metadata.
-* **Modification time** does not include schema changes. Only
+* **Modification time** does not include schema changes. Only:
   * inserts
   * updates
   * deletes
