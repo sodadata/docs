@@ -191,6 +191,24 @@ DuckDB supports registering in-memory dataframes from **Pandas** or **Polars** a
 
 ***
 
+## Pandas
+
+You can run contracts on Pandas dataframes by registering them in DuckDB as in-memory tables.
+
+> Learn more: [duckdb-advanced-usage.md](duckdb-advanced-usage.md "mention")
+
+> Go to [Connect Soda to Dask and Pandas](https://app.gitbook.com/s/oV0A6Eua8LUIyWgHxsjf/data-source-reference/connect-dask "mention") for more information about Pandas connections.
+
+***
+
+## Polars
+
+You can run contracts on Polars dataframes by registering them in DuckDB as in-memory tables.
+
+> Learn more: [duckdb-advanced-usage.md](duckdb-advanced-usage.md "mention")
+
+***
+
 ## PostgreSQL
 
 Install the package `soda-postgres`:
@@ -282,21 +300,3 @@ data_source my_datasource_name:
 <sup>2</sup> Use this parameter when adding Snowflake connection configurations to a `configuration.yml` file. However, if you are adding connection configuration details directly in Soda Cloud (connecting to your Snowflake data source via a Soda Agent) to authenticate using Okta, you must follow the instructions documented by Snowflake for [Native SSO - Okta Only](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#native-sso-okta-only).
 
 > Go to [Connect Soda to Snowflake](https://app.gitbook.com/s/oV0A6Eua8LUIyWgHxsjf/data-source-reference/connect-snowflake "mention") for more information about Snowflake connections.
-
-***
-
-### Pandas
-
-You can run contracts on Pandas dataframes by registering them in DuckDB as in-memory tables.
-
-> Learn more: [duckdb-advanced-usage.md](duckdb-advanced-usage.md "mention")
-
-> Go to [Connect Soda to Dask and Pandas](https://app.gitbook.com/s/oV0A6Eua8LUIyWgHxsjf/data-source-reference/connect-dask "mention") for more information about Pandas connections.
-
-***
-
-### Polars
-
-You can run contracts on Polars dataframes by registering them in DuckDB as in-memory tables.
-
-> Learn more: [duckdb-advanced-usage.md](duckdb-advanced-usage.md "mention")
