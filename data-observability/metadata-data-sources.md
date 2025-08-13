@@ -1,12 +1,5 @@
 # Metadata data sources
 
-For each supported data source, Soda always calculates two metrics:
-
-* Total row count
-* Last modification time
-
-***
-
 ### Oracle
 
 * **Historical backfilling:** not possible.
@@ -21,6 +14,8 @@ Note that past data is only available for a limited amount of time, which varies
 Some databases convert timestamps to UTC, but **Oracle does not do any implicit conversions** and stores timestamps and timezone information as the user inputs them. Because of Oracle Python client limitations, all timezone information is stripped when Soda retrieves it, which means that Soda will read all timestamps as if they were UTC regardless of the original input.
 {% endhint %}
 
+***
+
 ### Postgres
 
 Metadata is supported, but it requires some additional setup on Postgres's side.
@@ -29,6 +24,8 @@ Metadata is supported, but it requires some additional setup on Postgres's side.
 * **Row count:** enabled out-of-the-box.
 * **Last modification time:** `track_commit_timestamp` must be enabled: https://www.postgresql.org/docs/current/runtime-config-replication.html#GUC-TRACK-COMMIT-TIMESTAMP
   * If `track_commit_timestamp` is not enabled, Soda will return a warning.
+
+***
 
 ### BigQuery
 
@@ -48,9 +45,17 @@ If the user has configured a partitioning column on BigQuery's side, Soda will u
 Otherwise, Soda will fall back on a standard sampling method to detect the partition column.
 {% endhint %}
 
+***
+
 ### Redshift
 
 * **Historical backfilling** is supported on Redshift and it is limited to 7 days for the metadata.
+* **Modification time** does not include schema changes. Only
+  * inserts
+  * updates
+  * deletes
+
+***
 
 ### Synapse
 
