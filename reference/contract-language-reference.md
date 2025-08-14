@@ -544,14 +544,14 @@ columns:
 
 **Check configuration keys**
 
-| Key          | Description                                                                                                                                                | Optional |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `expression` | A numeric SQL expression that produces the numeric metric value that will be compared with the threshold. Either `expression` or `query` must be specified | No       |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                                                                       | Yes      |
-| `threshold`  | [#thresholds](contract-language-reference.md#thresholds "mention")                                                                                         | No       |
-| `filter`     | [#configure-a-check-filter](contract-language-reference.md#configure-a-check-filter "mention")                                                             | Yes      |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                             | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                             | Yes      |
+| Key          | Description                                                                                        | Optional |
+| ------------ | -------------------------------------------------------------------------------------------------- | -------- |
+| `expression` | A SQL expression that produces the numeric metric value that will be compared with the threshold.  | No       |
+| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                               | Yes      |
+| `threshold`  | [#thresholds](contract-language-reference.md#thresholds "mention")                                 | No       |
+| `filter`     | [#configure-a-check-filter](contract-language-reference.md#configure-a-check-filter "mention")     | Yes      |
+| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                     | Yes      |
+| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                     | Yes      |
 
 ### Verify a SQL query value against a threshold
 
@@ -583,13 +583,13 @@ columns:
             must_be_greater_than: 3
 ```
 
-| Key          | Description                                                                                                                                                | Optional |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `query`      | A numeric SQL query that produces a single numeric metric value that will be compared with the threshold. Either `expression` or `query` must be specified | No       |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                                                                       | Yes      |
-| `threshold`  | [#thresholds](contract-language-reference.md#thresholds "mention")                                                                                         | No       |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                             | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                             | Yes      |
+| Key          | Description                                                                                         | Optional |
+| ------------ | --------------------------------------------------------------------------------------------------- | -------- |
+| `query`      | A  SQL query that produces a single numeric metric value that will be compared with the threshold.  | No       |
+| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                | Yes      |
+| `threshold`  | [#thresholds](contract-language-reference.md#thresholds "mention")                                  | No       |
+| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                      | Yes      |
+| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                      | Yes      |
 
 ***
 
@@ -626,13 +626,13 @@ columns:
 
 **Check configuration keys**
 
-| Key          | Description                                                                                                                                                                                                                                                                                                                                              | Optional |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Expression` | A SQL query that produces any tabular data indicating failures with the data. A query returning zero rows indicates there is no problem with the data. If rows are returned, they can be visualized in Soda Cloud to help to diagnose the issue. Joins and Common Table Expressions (CTEs) are allowed. Either `expression` or `query` must be specified | No       |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                                                                                                                                                                                                                                                                     | Yes      |
-| `threshold`  | The default is that there should be no failed rows.[#thresholds](contract-language-reference.md#thresholds "mention")                                                                                                                                                                                                                                    | Yes      |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                                                                                                                                                                                                                           | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                                                                                                                                                                                                                           | Yes      |
+| Key          | Description                                                                                                                                                                                  | Optional |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `Expression` | A SQL expression, used as the WHERE clause, that produces any tabular data indicating failures with the data. An expression returning zero rows indicates there is no problem with the data. | No       |
+| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                                                                                                         | Yes      |
+| `threshold`  | The default is that there should be no failed rows.[#thresholds](contract-language-reference.md#thresholds "mention")                                                                        | Yes      |
+| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                                                               | Yes      |
+| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                                                               | Yes      |
 
 ### Verify and visualize failed rows with a SQL query
 
@@ -661,14 +661,14 @@ columns:
 
 **Check configuration keys**
 
-| Key          | Description                                                                                                                                                                                                                                                                                                                                              | Optional |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Expression` | A SQL query that produces any tabular data indicating failures with the data. A query returning zero rows indicates there is no problem with the data. If rows are returned, they can be visualized in Soda Cloud to help to diagnose the issue. Joins and Common Table Expressions (CTEs) are allowed. Either `expression` or `query` must be specified | No       |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                                                                                                                                                                                                                                                                     | Yes      |
-| `threshold`  | The default is that there should be no failed rows. The threshold can only be count-based. Percent thresholds are not supported. [#thresholds](contract-language-reference.md#thresholds "mention")                                                                                                                                                      | Yes      |
-| `filter`     | [#configure-a-check-filter](contract-language-reference.md#configure-a-check-filter "mention")                                                                                                                                                                                                                                                           | Yes      |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                                                                                                                                                                                                                           | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                                                                                                                                                                                                                           | Yes      |
+| Key          | Description                                                                                                                                                                                         | Optional |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `query`      | A SQL query that produces any tabular data indicating failures with the data. An expression returning zero rows indicates there is no problem with the data. I                                      | No       |
+| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                                                                                                                | Yes      |
+| `threshold`  | The default is that there should be no failed rows. The threshold can only be count-based. Percent thresholds are not supported. [#thresholds](contract-language-reference.md#thresholds "mention") | Yes      |
+| `filter`     | [#configure-a-check-filter](contract-language-reference.md#configure-a-check-filter "mention")                                                                                                      | Yes      |
+| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                                                                      | Yes      |
+| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                                                                      | Yes      |
 
 ***
 
@@ -709,16 +709,16 @@ columns:
 
 Use one of the following threshold configuration keys to specify an open range.
 
-| Key                             | Description                                                            |
-| ------------------------------- | ---------------------------------------------------------------------- |
-| `must_be`                       | The metric value must be equal to the configured value                 |
-| `must_not_be`                   | The metric value must be different from the configured value           |
-| `must_be_greater_than`          | The metric value must be greater than the configured value             |
-| `must_be_greater_than_or_equal` | The metric value must be greater than or equal to the configured value |
-| `must_be_less_than`             | The metric value must be less than the configured value                |
-| `must_be_less_than_or_equal`    | The metric value must be less than or equal to the configured value    |
-| `must_be_between`               |                                                                        |
-| `must_be_not_between`           |                                                                        |
+| Key                             | Description                                                                                                                                                                                                                                                                                                                  |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `must_be`                       | The metric value must be equal to the configured value                                                                                                                                                                                                                                                                       |
+| `must_not_be`                   | The metric value must be different from the configured value                                                                                                                                                                                                                                                                 |
+| `must_be_greater_than`          | The metric value must be greater than the configured value                                                                                                                                                                                                                                                                   |
+| `must_be_greater_than_or_equal` | The metric value must be greater than or equal to the configured value                                                                                                                                                                                                                                                       |
+| `must_be_less_than`             | The metric value must be less than the configured value                                                                                                                                                                                                                                                                      |
+| `must_be_less_than_or_equal`    | The metric value must be less than or equal to the configured value                                                                                                                                                                                                                                                          |
+| `must_be_between`               | The metric value must be between the acceptable bounds for a metric. The bounds must be expressed as either a **strict** range (`greater_than` / `less_than`) or an **inclusive** range (`greater_than_or_equal` / `less_than_or_equal`). The bounds are specified as **nested properties** under `must_be_between`.         |
+| `must_be_not_between`           | The metric value must not be between the acceptable bounds for a metric. The bounds must be expressed as either a **strict** range (`greater_than` / `less_than`) or an **inclusive** range (`greater_than_or_equal` / `less_than_or_equal`). The bounds are specified as **nested properties** under `must_not_be_between`. |
 
 Use a closed range to ensure metric values are between 2 boundaries.
 
