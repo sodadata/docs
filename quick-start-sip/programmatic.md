@@ -150,6 +150,13 @@ scan.add_sodacl_yaml_str(
     file_name=f"checks-{scan_name}.yml",
 )
 
+
+# Set scan definition name, equivalent to CLI -s option
+# The scan definition name MUST be unique to this scan, and
+# not duplicated in any other programmatic scan
+##################
+scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
+
 # Execute the scan
 ##################
 scan.execute()
@@ -158,12 +165,6 @@ scan.execute()
 # Set logs to verbose mode, equivalent to CLI -V option
 ##################
 scan.set_verbose(True)
-
-# Set scan definition name, equivalent to CLI -s option
-# The scan definition name MUST be unique to this scan, and
-# not duplicated in any other programmatic scan
-##################
-scan.set_scan_definition_name("YOUR_SCHEDULE_NAME")
 
 # Do not send results to Soda Cloud, equivalent to CLI -l option;
 ##################
