@@ -221,7 +221,7 @@ checks:
 \
 
 
-When you use `must_be_not_between` threshold keys, Soda includes the boundary values as acceptable. In the following example, a check result of `0` or `120` each fails.
+When you use `must_be_not_between` threshold keys, Soda includes the boundary values as not acceptable. In the following example, a check result of `0` or `120` each fails.
 
 ```yaml
 dataset: dim_customer
