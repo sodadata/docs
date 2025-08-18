@@ -8,7 +8,7 @@ description: >-
 
 Welcome to the Soda documentation hub, your one-stop resource for everything you need to know about **Soda’s data quality platform**. Dive into our guides, tutorials, reference materials, and integration pages to learn how keep your data quality fresh across your entire stack.
 
-<a href="quick-start-sip/" class="button primary" data-icon="glass">Take a sip of Soda</a>
+<a href="quick-start-sip/" class="button primary" data-icon="glass">Get started!</a>
 
 #### Soda v3 vs v4
 

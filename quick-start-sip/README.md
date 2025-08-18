@@ -4,7 +4,7 @@ description: >-
   using example data.
 ---
 
-# Take a sip of Soda
+# Get started
 
 {% hint style="warning" %}
 The Soda environment has been updated since this tutorial.

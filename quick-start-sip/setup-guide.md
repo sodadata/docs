@@ -56,7 +56,7 @@ Use this setup for:
 
 ✅ **A small team**: Manage data quality within a small data engineering team or data analytics team who is comfortable working with the command-line and YAML files to design and execute scans for data quality.
 
-✅ **POC**: Conduct a proof-of-concept evaluation of Soda as a data quality testing and monitoring tool. See: [Take a sip of Soda](./)
+✅ **POC**: Conduct a proof-of-concept evaluation of Soda as a data quality testing and monitoring tool. See: [Get started](./)
 
 ✅ **Basic DQ**: Start from scratch to set up basic data quality checks on key datasets. See: [Adopt check suggestions](../soda-cl-overview/check-suggestions.md)
 

@@ -36,9 +36,9 @@ You do not need to follow the tutorial sequentially.
 
 ## Tutorial prerequisites
 
-* You have completed the [Take a sip of Soda](../quick-start-sip/) tutorial\
+* You have completed the [Get started](../quick-start-sip/) tutorial\
   OR\
-  you have followed the instructions to [Get started](../quick-start-sip/get-started-roadmap.md) Soda on your own.
+  you have followed the instructions on the [Roadmap](../quick-start-sip/get-started-roadmap.md) on your own.
 * You have created a new YAML file in your code editor and named it `checks.yml`\
   OR\
   you are on step 2 in the guided flow to create a new Soda Agreement.
@@ -298,6 +298,6 @@ checks for corp_value:
 
 * Learn more about [SodaCL metrics and checks](../sodacl-reference/metrics-and-checks.md) in general.
 * Read about the [Optional configurations](../sodacl-reference/optional-config.md) you can apply to SodaCL checks.
-* [Take a sip of Soda](../quick-start-sip/) to run a simple data quality scan on example data.
+* [Get started](../quick-start-sip/) to run a simple data quality scan on example data.
 
 {% include "../.gitbook/includes/need-help-join-the-soda-co....md" %}

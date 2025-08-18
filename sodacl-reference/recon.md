@@ -64,7 +64,7 @@ reconciliation Production:
 ## Prerequisites
 
 * Python version 3.9.x or greater.
-* A Soda Cloud account connected to Soda Library via API keys. See [Take a sip of Soda](../quick-start-sip/).
+* A Soda Cloud account connected to Soda Library via API keys. See [Get started](../quick-start-sip/).
 * Soda Library; [install](../quick-start-sip/install.md) one Soda Library package for each of the source and target data sources involved in your migration. See [step 1](recon.md#define-reconciliation-checks), below.
 
 ## Types of reconciliation checks

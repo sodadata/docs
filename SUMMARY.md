@@ -306,7 +306,7 @@
   * [user-groups-sync](_release-notes/user-groups-sync.md)
   * [user-groups](_release-notes/user-groups.md)
   * [webhooks-deletion](_release-notes/webhooks-deletion.md)
-* [Take a sip of Soda](quick-start-sip/README.md)
+* [Get started](quick-start-sip/README.md)
   * [Get started roadmap](quick-start-sip/get-started-roadmap.md)
   * [Choose a flavor of Soda](quick-start-sip/setup-guide.md)
   * [Install Soda Library](quick-start-sip/install.md)
