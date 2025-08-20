@@ -9,6 +9,8 @@ Use a validity metric in a check to surface invalid or unexpected values in your
 ```yaml
 checks for dim_customer:
 # Check for valid values
+  - invalid_count(customer_id) = 0:
+      invalid regex: ^(?!\d{8}$).+$
   - invalid_count(email_address) = 0:
       valid format: email
   - invalid_percent(english_education) = 0:
@@ -21,8 +23,6 @@ checks for dim_customer:
       valid min: 1
   - invalid_percent(marital_status) = 0:
       valid min length: 1
-  - invalid_percent(last_name) < 5%:
-      invalid regex: (?:XX)
   - invalid_count(house_owner_flag) = 0:
       valid values: [0, 1]
 ```
@@ -313,7 +313,7 @@ checks for CUSTOMERS [daily]:
 
 ## List of validity metrics
 
-<table><thead><tr><th valign="top">Metric</th><th>Column config keys</th><th>Description</th><th>Supported data types</th></tr></thead><tbody><tr><td valign="top"><code>invalid_count</code></td><td><code>invalid format</code><br><code>invalid values</code><br><code>valid format</code><br><code>valid length</code><br><code>valid max</code><br><code>valid max length</code><br><code>valid min</code><br><code>valid min length</code><br><code>valid values</code></td><td>The number of rows in a<br>column that contain<br>values that are not valid.</td><td>number<br>text<br>time</td></tr><tr><td valign="top"></td><td><code>invalid regex</code><br><code>valid regex</code></td><td></td><td>text</td></tr><tr><td valign="top"><code>invalid_percent</code></td><td><code>invalid format</code><br><code>invalid values</code><br><code>valid format</code><br><code>valid length</code><br><code>valid max</code><br><code>valid max length</code><br><code>valid min</code><br><code>valid min length</code><br><code>valid values</code></td><td>The percentage of rows<br>in a column, relative to<br>the total row count, that<br>contain values that<br>are not valid.</td><td>number<br>text<br>time</td></tr><tr><td valign="top"></td><td><code>invalid regex</code><br><code>valid regex</code></td><td></td><td>text</td></tr></tbody></table>
+<table><thead><tr><th valign="top">Metric</th><th>Column config keys</th><th>Description</th><th>Supported data types</th></tr></thead><tbody><tr><td valign="top"><code>invalid_count</code></td><td><code>invalid format</code><br><code>invalid values</code><br><code>valid format</code><br><code>valid length</code><br><code>valid max</code><br><code>valid max length</code><br><code>valid min</code><br><code>valid min length</code><br><code>valid values</code></td><td>The number of rows in a column that contain values that are not valid.</td><td>number<br>text<br>time</td></tr><tr><td valign="top"></td><td><code>invalid regex</code><br><code>valid regex</code></td><td></td><td>text</td></tr><tr><td valign="top"><code>invalid_percent</code></td><td><code>invalid format</code><br><code>invalid values</code><br><code>valid format</code><br><code>valid length</code><br><code>valid max</code><br><code>valid max length</code><br><code>valid min</code><br><code>valid min length</code><br><code>valid values</code></td><td>The percentage of rows in a column, relative to the total row count, that contain values that are not valid.</td><td>number<br>text<br>time</td></tr><tr><td valign="top"></td><td><code>invalid regex</code><br><code>valid regex</code></td><td></td><td>text</td></tr></tbody></table>
 
 ## List of configuration keys
 
