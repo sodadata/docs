@@ -23,14 +23,14 @@ This collaborative workflow ensures that **data contracts remain living agreemen
 
 ## Initiating a request
 
+{% hint style="warning" %}
+This action requires the **Propose checks** permission on the dataset. Learn more about permissions here: [dataset-attributes-and-responsibilities.md](../dataset-attributes-and-responsibilities.md "mention")
+{% endhint %}
+
 Users can:
 
 * **Request a change** by simply describing their needs and use cases.
 * **Propose changes directly** by editing the data contract, suggesting concrete modifications for the dataset owner to review.
-
-{% hint style="warning" %}
-This action requires the **Propose checks** permission on the dataset. Learn more about permissions here: [dataset-attributes-and-responsibilities.md](../dataset-attributes-and-responsibilities.md "mention")
-{% endhint %}
 
 When a request is created, dataset owners automatically receive an email notification, ensuring they can promptly review and collaborate with the requester.
 
