@@ -9,7 +9,7 @@ description: >-
 {% hint style="success" %}
 **Coming soon!**
 
-MAD functionalities will be available shortly for all Soda users.
+MAD functionalities will be available soon for [Enterprise plan users](https://www.soda.io/pricing).
 {% endhint %}
 
 ## What is MAD?
