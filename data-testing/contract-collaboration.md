@@ -162,7 +162,7 @@ All participants are automatically **notified by email** when a new proposal is 
 ## Publish a proposal
 
 {% hint style="warning" %}
-This action requires the **Propose checks** permission on the dataset. Learn more about permissions here: [dataset-attributes-and-responsibilities.md](../dataset-attributes-and-responsibilities.md "mention")
+This action requires the **Manage checks** permission on the dataset. Learn more about permissions here: [dataset-attributes-and-responsibilities.md](../dataset-attributes-and-responsibilities.md "mention")
 {% endhint %}
 
 ### Publishing to Soda Cloud
@@ -196,7 +196,7 @@ In case a new version of the contract has been published, it is required to sync
 
 ### Publish to Git
 
-Fetches the content of a proposal from Soda Cloud and saves it as a contract file, which can then be published to Git. This allows dataset owners to incorporate approved changes into version-controlled data contracts.
+You can fetch the content of a proposal from Soda Cloud and save it as a contract file, which can then be published to Git. This allows you to incorporate approved changes into version-controlled data contracts.
 
 ```bash
 soda request fetch -r 7 -p 1 -sc soda-cloud.yaml --f ./contracts/ecommerce_orders.yamlRe
