@@ -549,7 +549,6 @@ columns:
 | `expression` | A SQL expression that produces the numeric metric value that will be compared with the threshold.  | No       |
 | `name`       | [#check-names](contract-language-reference.md#check-names "mention")                               | Yes      |
 | `threshold`  | [#thresholds](contract-language-reference.md#thresholds "mention")                                 | No       |
-| `filter`     | [#configure-a-check-filter](contract-language-reference.md#configure-a-check-filter "mention")     | Yes      |
 | `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                     | Yes      |
 | `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                     | Yes      |
 
@@ -583,13 +582,13 @@ columns:
             must_be_greater_than: 3
 ```
 
-| Key          | Description                                                                                         | Optional |
-| ------------ | --------------------------------------------------------------------------------------------------- | -------- |
-| `query`      | A  SQL query that produces a single numeric metric value that will be compared with the threshold.  | No       |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                | Yes      |
-| `threshold`  | [#thresholds](contract-language-reference.md#thresholds "mention")                                  | No       |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                      | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                      | Yes      |
+| Key          | Description                                                                                        | Optional |
+| ------------ | -------------------------------------------------------------------------------------------------- | -------- |
+| `query`      | A SQL query that produces a single numeric metric value that will be compared with the threshold.  | No       |
+| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                               | Yes      |
+| `threshold`  | [#thresholds](contract-language-reference.md#thresholds "mention")                                 | No       |
+| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                     | Yes      |
+| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                     | Yes      |
 
 ***
 
@@ -666,7 +665,6 @@ columns:
 | `query`      | A SQL query that produces any tabular data indicating failures with the data. An expression returning zero rows indicates there is no problem with the data. I                                      | No       |
 | `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                                                                                                                | Yes      |
 | `threshold`  | The default is that there should be no failed rows. The threshold can only be count-based. Percent thresholds are not supported. [#thresholds](contract-language-reference.md#thresholds "mention") | Yes      |
-| `filter`     | [#configure-a-check-filter](contract-language-reference.md#configure-a-check-filter "mention")                                                                                                      | Yes      |
 | `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                                                                      | Yes      |
 | `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                                                                      | Yes      |
 
@@ -962,7 +960,7 @@ Setting a variable overrides the default value configured in the contract.
 
 #### Soda variables
 
-`${soda.NOW}` is a built-in variable that provides the current timestamp at the moment of scan execution,  allowing you to create dynamic filters relative to the time of scan execution—for example, to check for records in the last 24 hours..
+`${soda.NOW}` is a built-in variable that provides the current timestamp at the moment of scan execution, allowing you to create dynamic filters relative to the time of scan execution—for example, to check for records in the last 24 hours..
 
 ***
 
