@@ -1,4 +1,4 @@
-# Author a Contract in Soda Cloud
+# Author a contract in Soda Cloud
 
 Once your dataset is onboarded, you can begin defining the expectations that make up your Data Contract.
 
@@ -132,10 +132,6 @@ This action requires the **Manage contract** permission on the dataset. Learn mo
 {% endhint %}
 
 <figure><img src="../../.gitbook/assets/Screenshot 2025-05-20 at 3.13.24 PM.png" alt=""><figcaption></figcaption></figure>
-
-## Contract Proposal _(coming soon)_
-
-We’re adding a **Contract Proposal workflow** to support collaborative authoring and approval. This will allow non-technical users to propose changes, which can then be reviewed and accepted by engineering or data owners, integrating governance into the editing process.
 
 ***
 

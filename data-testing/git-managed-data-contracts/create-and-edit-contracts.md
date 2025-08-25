@@ -1,4 +1,4 @@
-# Create and Edit Contracts
+# Create and edit contracts
 
 With Git-managed contracts, you define your expectations as code using YAML. This gives you full control over how your data is validated, and allows you to manage contracts just like any other code artifact: versioned, tested, and deployed via Git.
 
@@ -14,9 +14,9 @@ The contract structure includes:
 * Scheduling — Optional
 * ...and more
 
-## Run a dry test (Contract Validation)
+## Test your contract
 
-Before publishing or verifying your contract, you can run a **dry test** to ensure the contract is correctly defined and points to a valid dataset.
+Before publishing or verifying your contract, you can run a **test command** to ensure the contract is correctly defined and points to a valid dataset.
 
 ```javascript
 soda contract test --data-source ds.yml --contract contract.yaml
@@ -31,6 +31,12 @@ This will:
 {% hint style="info" %}
 Run this as part of your development workflow or CI to catch errors early.
 {% endhint %}
+
+## Verify your contract
+
+Before publishing your contract, you may want to execute it to verify that it runs correctly.
+
+Read about [#verify-your-contract](create-and-edit-contracts.md#verify-your-contract "mention")
 
 ## Publish the Contract
 
