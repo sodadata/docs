@@ -192,7 +192,7 @@ Soda enables collaboration on data contracts through **requests** and **proposal
 Fetches the content of a proposal from Soda Cloud and saves it as a contract file, which can then be published to Git. This allows dataset owners to incorporate approved changes into version-controlled data contracts.
 
 ```bash
-soda request fetch -r 7 -p 1 -sc soda-cloud.yaml --f ./contracts/ecommerce_orders.yamlRe
+soda request fetch -r 7 -p 1 -sc soda-cloud.yaml --f ./contracts/ecommerce_orders.yaml
 ```
 
 | Parameter           | Required | Description                                                                                                                                                            |
