@@ -71,31 +71,31 @@ Instances of "dataset" in Soda documentation always reference the former.
 
 #### Connection configuration reference
 
-Install package: `soda-bigquery`
+Install the following package:
+
+```bash
+pip install -i  -U soda-bigquery
+```
+
+Data source YAML
 
 ```yaml
-# Service Account Key authentication method
-# See Authentication methods below for more config options
-data_source my_datasource_name:
+# Option A — Service Account
+data_source bigquery_prod:
   type: bigquery
-  account_info_json: '{
-      "type": "service_account",
-      "project_id": "gold-platform-67883",
-      "private_key_id": "d0121d000000870xxx",
-      "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
-      "client_email": "abc333@project.iam.gserviceaccount.com",
-      "client_id": "XXXXXXXXXXXXXXXXXXXX.apps.googleusercontent.com",
-      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-      "token_uri": "https://accounts.google.com/o/oauth2/token",
-      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/..."
-    }'
-  auth_scopes:
-  - https://www.googleapis.com/auth/bigquery
-  - https://www.googleapis.com/auth/cloud-platform
-  - https://www.googleapis.com/auth/drive
-  project_id: "platinum-platform-67883"
-  dataset: sodacore
+  account_info_json: ${BQ_SERVICE_ACCOUNT_JSON}  # full JSON string
+  project_id: <your-project-id>
+  dataset: <your-default-dataset>
+  # auth_scopes:                        # optional
+  #   - https://www.googleapis.com/auth/bigquery
+```
+
+```yaml
+# Option B — ADC (no key in config)
+data_source bigquery_prod:
+  type: bigquery
+  project_id: <your-project-id>
+  dataset: <your-default-dataset>
 ```
 
 > **Notes**: See [Google BigQuery Integration parameters](https://cloud.google.com/chronicle/docs/soar/marketplace-integrations/google-big-query#integration_parameters)
