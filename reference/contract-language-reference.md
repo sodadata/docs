@@ -190,7 +190,7 @@ A Row Count check verifies that the dataset contains the expected number of rows
 
 **Example**:
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 checks:
   - row_count:
@@ -216,7 +216,7 @@ A freshness check verifies if data is not too old by measuring the period betwee
 
 **Example:**&#x20;
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 
 checks:
@@ -247,7 +247,7 @@ A Missing check verifies that a specific column does not contain null or empty v
 
 **Example:**
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 columns:
   - name: id
@@ -279,7 +279,7 @@ columns:
 
 Configure a list of values that, apart from NULL, must also be considered as missing values. Typical examples are `'-'`, `'No value'`, `'N/A'`, `'None'`, `'null'`, `-1`, `999`
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 columns:
   - name: id
@@ -296,7 +296,7 @@ The `missing_values` configuration is only supported on string and numeric data 
 
 Configure a SQL regular expression that, apart from NULL, also matches values that are considered as missing values. Only supported for columns having a text data type
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 columns:
   - name: id
@@ -319,7 +319,7 @@ An Invalid check verifies that the values in a column conform to a set of allowe
 
 Example:
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 columns:
   - name: size
@@ -432,7 +432,7 @@ A Duplicate check ensures that values in a column or combination of columns are 
 
 ### Single column duplicate check
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 columns:
   - name: id
@@ -452,7 +452,7 @@ columns:
 
 ### Multi-column duplicate check
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 checks:
   - duplicate:
@@ -478,7 +478,7 @@ An Aggregate check verifies that the result of an aggregate function, such as `a
 
 **Example:**
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 columns:
   - name: age
@@ -514,7 +514,7 @@ For better performance, we recommend SQL expressions over full SQL queries—the
 
 **Example at the dataset level:**
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 checks:
   - metric:
@@ -556,7 +556,7 @@ columns:
 
 **Example at the dataset level:**
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 checks:
   - metric:
@@ -604,7 +604,7 @@ We recommend using SQL expressions over full SQL queries for simplicity and effi
 
 **Example at the dataset level:**
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 checks:
   - failed_rows:
@@ -613,7 +613,7 @@ checks:
 
 **Example at the column level:**
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 columns:
   - name: end
@@ -637,7 +637,7 @@ columns:
 
 **Example at the dataset level:**
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 checks:
   - failed_rows:
@@ -647,7 +647,7 @@ checks:
 
 **Example at the column level:**
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 columns:
   - name: end
@@ -676,7 +676,7 @@ columns:
 
 Most checks support a `filter` to limit the rows on which the check applies:
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 
 columns:
@@ -694,7 +694,7 @@ Every check (except the schema check) has a metric value that is evaluated and p
 
 An example threshold is: "The missing count metric value must be less than 5."
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 
 columns:
@@ -722,7 +722,7 @@ Use a closed range to ensure metric values are between 2 boundaries.
 
 **Example:**&#x20;
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 
 columns:
@@ -742,7 +742,7 @@ Use an open range to ensure metric values are outside 2 boundaries.
 
 **Example:**
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 
 columns:
@@ -787,7 +787,7 @@ The `name` property provides a human-readable description for a check. It helps 
 
 For example, instead of relying on technical details like a regex pattern or threshold, a well-written `name` offers a simple summary, such as:
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 
 columns:
@@ -825,7 +825,7 @@ Use attributes to **label**, **sort**, and **route** your checks in Soda Cloud. 
 You can add attributes directly to individual checks. For example:
 
 ```yaml
-Dataset: datasource/db/schema/dataset
+dataset: datasource/db/schema/dataset
 
 columns:
   - name: customer_email
@@ -845,7 +845,7 @@ columns:
 You can also define default attributes at the dataset level. These attributes apply to **all checks**, unless overridden at the individual check level.
 
 ```yaml
-Dataset: datasource/db/schema/dataset
+dataset: datasource/db/schema/dataset
 
 check_attributes:
   domain: Sales
@@ -904,7 +904,7 @@ A dataset filter ensures that all checks in the contract are only applied to a s
 
 This is most commonly used to apply all checks to the latest time partition of the data. Each time new data is appended to an incremental dataset, the contract verification should evaluate the checks only on the rows in the latest time partition.
 
-```bash
+```yaml
 dataset: datasource / db / schema / dataset;
 
 filter: "created_at >= CURRENT_DATE - INTERVAL '1 day'";
@@ -921,7 +921,7 @@ Variables can be used in filters, checks, thresholds, and more.
 
 Declare variables at the top of the contract:
 
-```bash
+```yaml
 dataset: datasource/db/schena/dataset
 
 variables:
@@ -937,7 +937,7 @@ Use variables in other places in the contract with syntax: `${var.VARIABLE_NAME}
 
 Variables are case sensitive. We recommend always using upper case and underscores for variable names.
 
-```bash
+```yaml
 dataset: datasource/db/schena/dataset
 
 filter: "created_at >= '${var.START_DATE}'"
@@ -970,7 +970,7 @@ Soda Cloud can execute the contract verification on a time schedule.
 
 First, configure the time schedule in the contract.
 
-```bash
+```yaml
 dataset: datasource/db/schema/dataset
 soda_agent:
   checks_schedule:
