@@ -71,7 +71,6 @@
     * [Soda Agent Extra](deployment-options/deploy-soda-agent/soda-agent-extra.md)
   * [Deploy a self-hosted Soda Agent from Soda's private container registry](deployment-options/deploy-a-self-hosted-soda-agent-from-sodas-private-container-registry.md)
   * [Upgrade guide](deployment-options/upgrade-guide.md)
-  * [Copy of Upgrade guide](deployment-options/copy-of-upgrade-guide.md)
 * [Organization and Admin settings](organization-and-admin-settings/README.md)
   * [General settings](organization-and-admin-settings/general-settings.md)
   * [User management](organization-and-admin-settings/user-management.md)
