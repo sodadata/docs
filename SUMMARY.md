@@ -316,6 +316,7 @@
   * [Soda Agent extras](quick-start-sip/extras.md)
   * [Invoke Soda Library](quick-start-sip/programmatic.md)
   * [Upgrade, redeploy, or uninstall Soda](quick-start-sip/upgrade.md)
+  * [Upgrade guide](quick-start-sip/upgrade-guide.md)
 * [Use case guides](use-case-guides/README.md)
   * [Test data quality in an Airflow data pipeline](use-case-guides/quick-start-prod.md)
   * [Test data quality in an Azure Data Factory pipeline](use-case-guides/quick-start-adf.md)
