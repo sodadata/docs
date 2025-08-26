@@ -78,14 +78,14 @@ You can add those details directly in Soda Cloud, but because any user can then 
 3.  In [step 2](https://docs.soda.io/soda-agent/deploy.html#2-connect-the-data-source) of the add a data source guided steps, add data source connection configuration which look something like the following example for a PostgreSQL data source. Note the environment variable values for username and password.
 
     ```
-    data_source local_postgres_test:
-     type: postgres
-     host: 172.17.0.7
-     port: 5432
-     username: ${POSTGRES_USER}
-     password: ${POSTGRES_PASS}
-     database: postgres
-     schema: new_york
+    type: postgres
+    name: postgres
+    connection:
+      host:
+      port:
+      database:
+      user: ${env.POSTGRES_USER}
+      password: ${env.POSTGRES_PASS}
     ```
 4. Follow the remaining guided steps to add a new data source in Soda Cloud. When you save the data source and test the connection, Soda Cloud uses the values you stored as environment variables in the values YAML file you supplied during redeployment.
 
@@ -142,7 +142,7 @@ Consider referencing the [use case guide](https://docs.soda.io/soda/quick-start-
    * [AWS Secrets Manager](https://external-secrets.io/latest/provider/aws-secrets-manager/)
    *   [Azure Key Vault](https://external-secrets.io/latest/provider/azure-key-vault/)
 
-       ```
+       ```yaml
         apiVersion: external-secrets.io/v1beta1
         kind: ClusterSecretStore
         metadata:
@@ -169,7 +169,7 @@ Consider referencing the [use case guide](https://docs.soda.io/soda/quick-start-
     ```
 5.  Create an `soda-secret.yml` file for the `ExternalSecret` configuration. The details in this file instruct the Soda Agent which values to fetch from the external secrets manager vault.
 
-    ```
+    ```yaml
     apiVersion: external-secrets.io/v1beta1
     kind: ExternalSecret
     metadata:
@@ -225,14 +225,18 @@ Consider referencing the [use case guide](https://docs.soda.io/soda/quick-start-
     ```
 8.  Prepare a `values.yml` file to deploy the Soda Agent with the `existingSecrets` parameter that instructs it to access the `ExternalSecret` file to fetch data source login credentials. Refer to complete [deploy instructions](https://docs.soda.io/soda-agent/deploy.html#deploy-using-a-values-yaml-file), or [redeploy instructions](https://docs.soda.io/soda/upgrade.html#redeploy-a-soda-agent) if you already have an agent running in a cluster.
 
-    ```
+    ```yaml
      soda:
        apikey:
          id: "154k***889"
          secret: "9sfjf****ff4"
        agent:
          name: "my-soda-agent-external-secrets"
-       scanlauncher:
+       scanLauncher:
+         existingSecrets:
+           # from spec.target.name in the ExternalSecret file
+           - soda-agent-secrets 
+       contractLauncher:
          existingSecrets:
            # from spec.target.name in the ExternalSecret file
            - soda-agent-secrets 
@@ -275,7 +279,7 @@ By default, the Soda Agent creates a secret for storing the Soda Cloud API Key d
 
 To use an existing Kubernetes secret for Soda Agent’s Cloud API credentials, add `existingSecret` and the `secretKeys` values to your agent’s values YAML file, as in the following example.
 
-```
+```yaml
 soda:
   apikey:
     existingSecret: "<existing-secret-name>"
@@ -288,22 +292,21 @@ soda:
 
 The default Soda Agent settings balance performance and cost-efficiency. You can adjust these settings to better suit your needs, optimizing for larger datasets, faster scans, or improved resource management.
 
-### Change sample data and failed rows memory limits <a href="#change-sample-data-and-failed-rows-memory-limits" id="change-sample-data-and-failed-rows-memory-limits"></a>
+The example below demonstrates how you can  increase the memory limit using settings in your `values.yml` file:
 
-The hard query cursor limit setting controls how many rows Soda Library can store in memory during a scan. By default, this value is 10,000 rows, preventing Out-Of-Memory (OOM) errors by capping the number of rows Soda holds in memory at any given time.
-
-If you need to work with larger sets of sample data or failed rows, you can raise the `query_cursor_hard_limit`. Be aware that if you increase or remove the limit, you must ensure that the Soda Agent has enough memory to prevent it from causing OOM errors.
-
-To turn off the limit completely, set the value of `query_cursor_hard_limit` to `null`.
-
-The example below demonstrates how you can clear the limit and increase the memory limit using settings in your `values.yml` file:
-
-```
+```yaml
 soda:
   scanlauncher:
-    config:
-      query_cursor_hard_limit: null
     resources:
       limits:
+        cpu: 1
         memory: 2Gi
+  contractlauncher:
+    resources:
+      limits:
+        cpu: 1
+        memory: 2Gi
+  
 ```
+
+### &#x20;<a href="#change-sample-data-and-failed-rows-memory-limits" id="change-sample-data-and-failed-rows-memory-limits"></a>
