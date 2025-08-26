@@ -3,9 +3,37 @@ components:
     AggregateDiagnosticsV4:
       type: object
       properties:
+        checkRowsTested:
+          type: integer
+          format: int32
         datasetRowsTested:
           type: integer
           format: int32
+    AggregateDiffDiagnosticsV4:
+      type: object
+      properties:
+        diff:
+          type: number
+        diffPercent:
+          type: number
+        function:
+          type: string
+        sourceCheckRowsTested:
+          type: integer
+          format: int32
+        sourceDatasetRowsTested:
+          type: integer
+          format: int32
+        sourceValue:
+          type: number
+        targetCheckRowsTested:
+          type: integer
+          format: int32
+        targetDatasetRowsTested:
+          type: integer
+          format: int32
+        targetValue:
+          type: number
     AgreementSlimDTO:
       type: object
       properties:
@@ -13,39 +41,65 @@ components:
           type: string
         name:
           type: string
+    CheckResultAnomalyDetectionDetailsDTO:
+      type: object
+      properties:
+        predictedValue:
+          type: number
     CheckResultDiagnosticsV4:
       type: object
       properties:
         aggregate:
           type: object
           $ref: '#/components/schemas/AggregateDiagnosticsV4'
+        aggregate_diff:
+          type: object
+          $ref: '#/components/schemas/AggregateDiffDiagnosticsV4'
         duplicate:
           type: object
           $ref: '#/components/schemas/DuplicateDiagnosticsV4'
+        duplicate_diff:
+          type: object
+          $ref: '#/components/schemas/DuplicateDiffDiagnosticsV4'
         failed_rows:
           type: object
           $ref: '#/components/schemas/FailedRowsDiagnosticsV4'
         freshness:
           type: object
           $ref: '#/components/schemas/FreshnessDiagnosticsV4'
+        freshness_diff:
+          type: object
+          $ref: '#/components/schemas/FreshnessDiffDiagnosticsV4'
         invalid:
           type: object
           $ref: '#/components/schemas/InvalidDiagnosticsV4'
         metric:
           type: object
           $ref: '#/components/schemas/MetricDiagnosticsV4'
+        metric_diff:
+          type: object
+          $ref: '#/components/schemas/MetricDiffDiagnosticsV4'
         missing:
           type: object
           $ref: '#/components/schemas/MissingDiagnosticsV4'
         row_count:
           type: object
           $ref: '#/components/schemas/RowCountDiagnosticsV4'
+        row_count_diff:
+          type: object
+          $ref: '#/components/schemas/RowCountDiffDiagnosticsV4'
+        rows_diff:
+          type: object
+          $ref: '#/components/schemas/RowsDiffDiagnosticsV4'
         schema:
           type: object
           $ref: '#/components/schemas/SchemaDiagnosticsV4'
     CheckResultValueDTO:
       type: object
       properties:
+        anomalyDetectionDetails:
+          type: object
+          $ref: '#/components/schemas/CheckResultAnomalyDetectionDetailsDTO'
         dataTimestamp:
           type: string
         diagnostics:
@@ -134,6 +188,8 @@ components:
         lastUpdated:
           type: string
           deprecated: true
+        metricType:
+          type: string
         name:
           type: string
         owner:
@@ -204,6 +260,17 @@ components:
           type: number
         variance:
           type: number
+    ColumnTypeDTO:
+      type: string
+      enum:
+      - unknown
+      - string
+      - integer
+      - float
+      - time
+      - boolean
+      - date
+      - dateTime
     DataQualityStatusDTO:
       type: string
       enum:
@@ -256,6 +323,27 @@ components:
       required:
       - name
       - type
+    DatasetMetricMonitorConfigurationDTO:
+      type: object
+      properties:
+        configuration:
+          type: object
+          $ref: '#/components/schemas/MetricMonitorConfigurationDTO'
+        metricType:
+          type: object
+          $ref: '#/components/schemas/DatasetMonitorMetricTypeDTO'
+      required:
+      - configuration
+      - metricType
+    DatasetMonitorMetricTypeDTO:
+      type: string
+      enum:
+      - rowCount
+      - freshness
+      - schema
+      - rowsInserted
+      - totalRowCountChange
+      - timeliness
     DatasetOwnerDTO:
       type: object
       properties:
@@ -275,6 +363,17 @@ components:
       enum:
       - user
       - userGroup
+    DatasetPartitionColumnContentDTO:
+      type: object
+      properties:
+        columnType:
+          type: object
+          $ref: '#/components/schemas/ColumnTypeDTO'
+        name:
+          type: string
+      required:
+      - columnType
+      - name
     DatasetResponsibilityContentDTO:
       type: object
       properties:
@@ -386,6 +485,9 @@ components:
           items:
             type: object
             $ref: '#/components/schemas/DatasetOwnerDTO'
+        partitionColumn:
+          type: object
+          $ref: '#/components/schemas/DatasetPartitionColumnContentDTO'
         qualifiedName:
           type: string
         tags:
@@ -430,6 +532,32 @@ components:
           type: number
         failedRowsSourceQuery:
           type: string
+    DuplicateDiffDiagnosticsV4:
+      type: object
+      properties:
+        duplicateCountDiff:
+          type: integer
+          format: int32
+        duplicateDiffPercent:
+          type: number
+        sourceCheckRowsTested:
+          type: integer
+          format: int32
+        sourceDatasetRowsTested:
+          type: integer
+          format: int32
+        sourceDuplicateCount:
+          type: integer
+          format: int32
+        targetCheckRowsTested:
+          type: integer
+          format: int32
+        targetDatasetRowsTested:
+          type: integer
+          format: int32
+        targetDuplicateCount:
+          type: integer
+          format: int32
     ErrorResponse:
       type: object
       properties:
@@ -488,6 +616,41 @@ components:
           type: string
         expectedTimestampUtc:
           type: string
+    FreshnessDiffDiagnosticsV4:
+      type: object
+      properties:
+        freshnessDiff:
+          type: integer
+          format: int32
+        freshnessDiffUnit:
+          type: object
+          $ref: '#/components/schemas/FreshnessDiffDiagnosticsV4_UnitOfTimeDTO'
+        sourceCheckRowsTested:
+          type: integer
+          format: int32
+        sourceDatasetRowsTested:
+          type: integer
+          format: int32
+        sourceMaxTimestamp:
+          type: string
+        sourceMaxTimestampUtc:
+          type: string
+        targetCheckRowsTested:
+          type: integer
+          format: int32
+        targetDatasetRowsTested:
+          type: integer
+          format: int32
+        targetMaxTimestamp:
+          type: string
+        targetMaxTimestampUtc:
+          type: string
+    FreshnessDiffDiagnosticsV4_UnitOfTimeDTO:
+      type: string
+      enum:
+      - minutes
+      - hours
+      - days
     HistogramBinContentDTO:
       type: object
       properties:
@@ -621,6 +784,34 @@ components:
         datasetRowsTested:
           type: integer
           format: int32
+    MetricDiffDiagnosticsV4:
+      type: object
+      properties:
+        metricDiff:
+          type: number
+        metricDiffPercent:
+          type: number
+        sourceCheckRowsTested:
+          type: integer
+          format: int32
+        sourceDatasetRowsTested:
+          type: integer
+          format: int32
+        sourceMetric:
+          type: number
+        targetCheckRowsTested:
+          type: integer
+          format: int32
+        targetDatasetRowsTested:
+          type: integer
+          format: int32
+        targetMetric:
+          type: number
+    MetricMonitorConfigurationDTO:
+      type: object
+      properties:
+        isEnabled:
+          type: boolean
     MissingDiagnosticsV4:
       type: object
       properties:
@@ -958,11 +1149,16 @@ components:
           $ref: '#/components/schemas/MapOfStringTo_object'
         label:
           type: string
+        metricMonitoring:
+          type: object
+          $ref: '#/components/schemas/UpdateDatasetMetricMonitoringConfigurationRequestDTO'
         owners:
           type: array
           items:
             type: object
             $ref: '#/components/schemas/PublicApiUpdateDatasetOwnerRequestDTO'
+        partitionColumn:
+          type: string
         tags:
           type: array
           items:
@@ -1089,6 +1285,55 @@ components:
         datasetRowsTested:
           type: integer
           format: int32
+    RowCountDiffDiagnosticsV4:
+      type: object
+      properties:
+        rowCountDiff:
+          type: integer
+          format: int32
+        rowCountDiffPercent:
+          type: number
+        sourceCheckRowsTested:
+          type: integer
+          format: int32
+        sourceDatasetRowsTested:
+          type: integer
+          format: int32
+        targetCheckRowsTested:
+          type: integer
+          format: int32
+        targetDatasetRowsTested:
+          type: integer
+          format: int32
+    RowsDiffDiagnosticsV4:
+      type: object
+      properties:
+        changed:
+          type: integer
+          format: int32
+        diffCount:
+          type: integer
+          format: int32
+        diffPercent:
+          type: number
+        exclusiveInSource:
+          type: integer
+          format: int32
+        exclusiveInTarget:
+          type: integer
+          format: int32
+        sourceCheckRowsTested:
+          type: integer
+          format: int32
+        sourceDatasetRowsTested:
+          type: integer
+          format: int32
+        targetCheckRowsTested:
+          type: integer
+          format: int32
+        targetDatasetRowsTested:
+          type: integer
+          format: int32
     ScanStateDTO:
       type: string
       enum:
@@ -1124,6 +1369,19 @@ components:
           type: string
         type:
           type: string
+    UpdateDatasetMetricMonitoringConfigurationRequestDTO:
+      type: object
+      properties:
+        historicalMetricCollectionScanStartDate:
+          type: string
+        metricMonitorsConfiguration:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/DatasetMetricMonitorConfigurationDTO'
+        scanSchedule:
+          type: object
+          $ref: '#/components/schemas/ZonedCronDTO'
     UserContentDTO:
       type: object
       properties:
@@ -1174,6 +1432,16 @@ components:
         value:
           type: object
           $ref: '#/components/schemas/_object'
+    ZonedCronDTO:
+      type: object
+      properties:
+        cronExpression:
+          type: string
+        timezone:
+          type: string
+      required:
+      - cronExpression
+      - timezone
     _object:
       type: object
   securitySchemes:
@@ -1690,7 +1958,7 @@ paths:
       - Datasets
     post:
       description: |-
-        This endpoint enables you to update an existing dataset name, owners, tags or attributes in your organization's Soda Cloud account.
+        This endpoint enables you to update an existing dataset name, owners, tags, attributes or partition column in your organization's Soda Cloud account.
 
         ## Authorization
 
