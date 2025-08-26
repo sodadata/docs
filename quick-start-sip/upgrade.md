@@ -277,6 +277,26 @@ soda:
 
 For more information about using the US region, see [Using the US image registry](https://app.gitbook.com/s/A2PmHkO5cBgeRPdiPPOG/deployment-options/deploy-a-self-hosted-soda-agent-from-sodas-private-container-registry#using-the-us-image-registry "mention").
 
+#### Rename `scanlauncher` to `scanLauncher`&#x20;
+
+The `scanlauncher` section in the values file has been renamed to `scanLauncher`. \
+Please ensure the correct name is used in your values file if you have any configuration values there:
+
+```yaml
+soda:
+  apikey:
+    id: ***
+    secret: ***
+  # Rename this ...
+  # scanLauncher:
+  # to become
+  scanLauncher:
+    existingSecrets:
+      - soda-agent-secrets 
+```
+
+
+
 ## Upgrade Soda Library
 
 To upgrade your existing Soda Library tool to the latest version, use the following command, replacing `redshift` with the install package that matches the type of data source you are using.
