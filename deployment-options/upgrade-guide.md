@@ -86,3 +86,21 @@ soda:
 ```
 
 For more information about using the US region, see [#using-the-us-image-registry](deploy-a-self-hosted-soda-agent-from-sodas-private-container-registry.md#using-the-us-image-registry "mention").
+
+### Rename `scanlauncher` to `scanLauncher`&#x20;
+
+The `scanlauncher` section in the values file has been renamed to `scanLauncher`. \
+Please ensure the correct name is used in your values file if you have any configuration values there:
+
+```yaml
+soda:
+  apikey:
+    id: ***
+    secret: ***
+  # Rename this ...
+  # scanLauncher:
+  # to become
+  scanLauncher:
+    existingSecrets:
+      - soda-agent-secrets 
+```
