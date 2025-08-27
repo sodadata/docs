@@ -126,12 +126,6 @@ connection:
   access_token: 
 ```
 
-You can use the Soda Library packages for Apache Spark to connect to Databricks SQL or to use Spark DataFrames on Databricks.
-
-* Refer to [Connect to Spark for Databricks SQL](broken-reference).
-* Refer to [Use Soda Library with Spark DataFrames on Databricks](broken-reference).\
-  🎥 Watch a video that demonstrates how to add Soda to your Databricks pipeline: [https://go.soda.io/soda-databricks-video](https://go.soda.io/soda-databricks-video)
-
 ***
 
 ## DuckDB
@@ -242,8 +236,6 @@ data_source my_datasource_name:
 | schema   | optional | Provide an identifier for the schema in which your dataset exists.                                                                                                                               |
 | sslmode  | optional | <p>Provide a value to indicate the type of SSL support:<br><code>prefer</code><br><code>require</code><br><code>allow</code><br><code>diable</code><br>Default value is <code>prefer</code>.</p> |
 
-> Go to [Connect Soda to PostgreSQL](https://app.gitbook.com/s/oV0A6Eua8LUIyWgHxsjf/data-source-reference/connect-postgres "mention") for more information about PostgreSQL connections.
-
 ***
 
 ## Snowflake
@@ -298,5 +290,3 @@ data_source my_datasource_name:
 <sup>1</sup> Though optional, best practice dictates that you provide a value for `role`. If you do not provide a role, and Snowflake has not assigned a [Snowflake System-Defined Role](https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles) to the user account, Snowflake may, confusingly, deny access to the data source.
 
 <sup>2</sup> Use this parameter when adding Snowflake connection configurations to a `configuration.yml` file. However, if you are adding connection configuration details directly in Soda Cloud (connecting to your Snowflake data source via a Soda Agent) to authenticate using Okta, you must follow the instructions documented by Snowflake for [Native SSO - Okta Only](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#native-sso-okta-only).
-
-> Go to [Connect Soda to Snowflake](https://app.gitbook.com/s/oV0A6Eua8LUIyWgHxsjf/data-source-reference/connect-snowflake "mention") for more information about Snowflake connections.
