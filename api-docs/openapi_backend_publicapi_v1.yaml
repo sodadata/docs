@@ -323,6 +323,21 @@ components:
       required:
       - name
       - type
+    DatasetDiagnosticsWarehouseFailedRowsConfigurationRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        maxRowCount:
+          type: integer
+          format: int32
+        storageStrategy:
+          type: object
+          $ref: '#/components/schemas/DiagnosticsWarehouseFailedRowsStorageStrategyDTO'
+        uniqueKeyColumnNames:
+          type: array
+          items:
+            type: string
     DatasetMetricMonitorConfigurationDTO:
       type: object
       properties:
@@ -512,6 +527,11 @@ components:
           type: string
         type:
           type: string
+    DiagnosticsWarehouseFailedRowsStorageStrategyDTO:
+      type: string
+      enum:
+      - fullFailedRows
+      - uniqueKeys
     DuplicateDiagnosticsV4:
       type: object
       properties:
@@ -585,6 +605,13 @@ components:
           items:
             type: object
             $ref: '#/components/schemas/_object'
+    FailedRowsConfigurationStateDTO:
+      type: string
+      enum:
+      - ready
+      - doNotDetectAutomatically
+      - awaitingPrimaryKeysInformationFromAgent
+      - errorMissingUniqueKeys
     FailedRowsDiagnosticsV4:
       type: object
       properties:
@@ -812,6 +839,12 @@ components:
       properties:
         isEnabled:
           type: boolean
+    MetricMonitoringStateDTO:
+      type: string
+      enum:
+      - unknown
+      - enabled
+      - disabled
     MissingDiagnosticsV4:
       type: object
       properties:
@@ -924,6 +957,48 @@ components:
       - size
       - totalElements
       - totalPages
+    PublicApiDatasetDiagnosticsWarehouseResponse:
+      type: object
+      properties:
+        failedRowsConfiguration:
+          type: object
+          $ref: '#/components/schemas/PublicApiDatasetDiagnosticsWarehouseResponse_DiagnosticsWarehouseFailedRowsConfigurationDTO'
+    PublicApiDatasetDiagnosticsWarehouseResponse_DiagnosticsWarehouseFailedRowsConfigurationDTO:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        maxRowCount:
+          type: integer
+          format: int32
+        state:
+          type: object
+          $ref: '#/components/schemas/FailedRowsConfigurationStateDTO'
+        storageStrategy:
+          type: object
+          $ref: '#/components/schemas/DiagnosticsWarehouseFailedRowsStorageStrategyDTO'
+        uniqueKeyColumnNames:
+          type: array
+          items:
+            type: string
+    PublicApiDatasetMetricMonitoringResponse:
+      type: object
+      properties:
+        backfillingScanStartDate:
+          type: string
+        datasetId:
+          type: string
+        datasetMetricMonitorsConfiguration:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/DatasetMetricMonitorConfigurationDTO'
+        scanSchedule:
+          type: object
+          $ref: '#/components/schemas/ZonedCronDTO'
+        state:
+          type: object
+          $ref: '#/components/schemas/MetricMonitoringStateDTO'
     PublicApiDatasetProfilingResponse:
       type: object
       properties:
@@ -1147,6 +1222,9 @@ components:
         attributes:
           type: object
           $ref: '#/components/schemas/MapOfStringTo_object'
+        diagnosticsWarehouse:
+          type: object
+          $ref: '#/components/schemas/UpdateDatasetDiagnosticsWarehouseConfigurationRequestDTO'
         label:
           type: string
         metricMonitoring:
@@ -1369,16 +1447,22 @@ components:
           type: string
         type:
           type: string
+    UpdateDatasetDiagnosticsWarehouseConfigurationRequestDTO:
+      type: object
+      properties:
+        failedRowsConfiguration:
+          type: object
+          $ref: '#/components/schemas/DatasetDiagnosticsWarehouseFailedRowsConfigurationRequest'
     UpdateDatasetMetricMonitoringConfigurationRequestDTO:
       type: object
       properties:
-        historicalMetricCollectionScanStartDate:
-          type: string
-        metricMonitorsConfiguration:
+        datasetMetricMonitorsConfiguration:
           type: array
           items:
             type: object
             $ref: '#/components/schemas/DatasetMetricMonitorConfigurationDTO'
+        historicalMetricCollectionScanStartDate:
+          type: string
         scanSchedule:
           type: object
           $ref: '#/components/schemas/ZonedCronDTO'
@@ -2044,6 +2128,174 @@ paths:
       security:
       - basicAuthApiKey: []
       summary: Update dataset
+      tags:
+      - Datasets
+  /api/v1/datasets/{datasetId}/diagnosticsWarehouse:
+    get:
+      description: |-
+        This endpoint allows you to retrieve detailed diagnostics warehouse information for a specific dataset in your organization's Soda Cloud account. The diagnostics warehouse collects scan-related data and securely forwards it to the customer's warehouse for storage and analysis.
+
+        ## Authorization
+
+        Only users with **View dataset** permission can view dataset diagnostics warehouse. Soda Cloud Admins have access to diagnostics warehouse information for all datasets.**See [Manage dataset roles](https://go.soda.io/roles-dataset) for more information.**
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Tags
+
+        `Datasets`
+
+        ## Rate limiting
+
+        1000 requests/60 seconds
+      operationId: "GET/api/v1/datasets/{datasetId}/diagnosticsWarehouse"
+      parameters:
+      - in: path
+        name: datasetId
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/PublicApiDatasetDiagnosticsWarehouseResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      summary: Get dataset diagnostics warehouse information
+      tags:
+      - Datasets
+  /api/v1/datasets/{datasetId}/metricMonitoring:
+    get:
+      description: |-
+        This endpoint allows you to retrieve detailed metric monitoring configuration information for a specific dataset in your organization's Soda Cloud account.
+
+        ## Authorization
+
+        Only users with **View dataset** permission can view dataset metric monitoring configuration. Soda Cloud Admins have access to metric monitoring configuration information for all datasets.**See [Manage dataset roles](https://go.soda.io/roles-dataset) for more information.**
+
+        ## Authentication
+
+        User authentication required: `true`
+
+        This endpoint enforces authentication using the API keys you provide in the `Basic` authentication header.
+
+        ## Tags
+
+        `Datasets`
+
+        ## Rate limiting
+
+        1000 requests/60 seconds
+      operationId: "GET/api/v1/datasets/{datasetId}/metricMonitoring"
+      parameters:
+      - in: path
+        name: datasetId
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Not found
+        "500":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/PublicApiDatasetMetricMonitoringResponse'
+          description: Successful response
+        "429":
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Too many requests
+      security:
+      - basicAuthApiKey: []
+      summary: Get dataset metric monitoring configuration information
       tags:
       - Datasets
   /api/v1/datasets/{datasetId}/profiling:
