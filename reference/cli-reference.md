@@ -83,7 +83,7 @@ soda data-source test -ds ds.yml
 Checks that a contract is syntactically valid and points to an existing dataset before publishing or running a verification.
 
 ```bash
-soda contract --contract contract.yaml
+soda contract test --contract contract.yaml
 ```
 
 | Parameter    | Required | Description                    |
