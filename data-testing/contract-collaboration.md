@@ -162,7 +162,7 @@ All participants are automatically **notified by email** when a new proposal is 
 ## Publish a proposal
 
 {% hint style="warning" %}
-This action requires the **Manage checks** permission on the dataset. Learn more about permissions here: [dataset-attributes-and-responsibilities.md](../dataset-attributes-and-responsibilities.md "mention")
+This action requires the **Manage Contract** permission on the dataset. Learn more about permissions here: [dataset-attributes-and-responsibilities.md](../dataset-attributes-and-responsibilities.md "mention")
 {% endhint %}
 
 ### Publishing to Soda Cloud
