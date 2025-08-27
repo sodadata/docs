@@ -83,13 +83,12 @@ soda data-source test -ds ds.yml
 Checks that a contract is syntactically valid and points to an existing dataset before publishing or running a verification.
 
 ```bash
-soda contract test --data-source ds.yml --contract contract.yaml
+soda contract --contract contract.yaml
 ```
 
-| Parameter       | Required | Description                      |
-| --------------- | -------- | -------------------------------- |
-| `--data-source` | Yes      | Path to local data source config |
-| `--contract`    | Yes      | Path to the contract YAML file   |
+| Parameter    | Required | Description                    |
+| ------------ | -------- | ------------------------------ |
+| `--contract` | Yes      | Path to the contract YAML file |
 
 ## Publish a Contract
 
