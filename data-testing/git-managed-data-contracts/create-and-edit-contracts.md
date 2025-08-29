@@ -36,7 +36,7 @@ Run this as part of your development workflow or CI to catch errors early.
 
 Before publishing your contract, you may want to execute it to verify that it runs correctly.
 
-Read about [#verify-your-contract](create-and-edit-contracts.md#verify-your-contract "mention")
+> Read more about how to [verify-a-contract.md](verify-a-contract.md "mention")
 
 ## Publish the Contract
 
