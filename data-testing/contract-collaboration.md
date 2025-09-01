@@ -1,9 +1,5 @@
 # Contract collaboration
 
-{% hint style="warning" %}
-Available on the 28th of September 2025
-{% endhint %}
-
 Data contracts define the expectations between data producers and data consumers, ensuring that the data delivered is fit for purpose and aligned with business needs. However, data requirements evolve, and consumers often identify gaps or new use cases that require adjustments.
 
 To support this, Soda provides a collaborative process that allows **data consumers to request changes** to existing data contracts or propose the creation of new ones. Consumers can directly propose changes by editing the data contract with **Soda's no-code editor**, suggesting concrete modifications for the dataset owner to review.
