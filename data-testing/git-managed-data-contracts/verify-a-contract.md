@@ -31,7 +31,7 @@ You can pass variables defined in the contract using the `--set` flag:
 soda contract verify --data-source ds.yml --contract contract.yaml --set START_DATE=2024-05-01
 ```
 
-> Learn about variables in Data Contract: [#make-contracts-dynamic-with-variables](../../reference/contract-language-reference.md#make-contracts-dynamic-with-variables "mention")
+> Learn about variables in Data Contract: [#make-contracts-dynamic-with-variables](../../reference/contract-language-reference/#make-contracts-dynamic-with-variables "mention")
 
 ### Publish results to Soda Cloud
 
@@ -75,7 +75,7 @@ You can pass variables defined in the contract using the `--set` flag:
 soda contract verify --contract contract.yaml --use-agent --soda-cloud sc.yml --set START_DATE=2024-05-01
 ```
 
-> Learn about variables in Data Contract: [#make-contracts-dynamic-with-variables](../../reference/contract-language-reference.md#make-contracts-dynamic-with-variables "mention")
+> Learn about variables in Data Contract: [#make-contracts-dynamic-with-variables](../../reference/contract-language-reference/#make-contracts-dynamic-with-variables "mention")
 
 ### Publish results to Soda Cloud
 

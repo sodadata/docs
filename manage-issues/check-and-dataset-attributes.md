@@ -57,7 +57,7 @@ Attributes for checks will be defined as part of the **Data Contract**.&#x20;
 Learn how to set attributes for datasets:&#x20;
 
 * Authoring in Soda Cloud: [#define-attributes](../data-testing/cloud-managed-data-contracts/author-a-contract-in-soda-cloud.md#define-attributes "mention")
-* Data Contract as code: [#check-attributes](../reference/contract-language-reference.md#check-attributes "mention")
+* Data Contract as code: [#check-attributes](../reference/contract-language-reference/#check-attributes "mention")
 
 ## Attributes in Filters
 

@@ -3,7 +3,7 @@
 This guide documents the CLI commands for working with Soda Data Contracts. You can use the CLI to generate, test, publish, and verify contracts using either Soda Core (local execution) or Soda Agent (remote execution).
 
 For full language reference, see:\
-[contract-language-reference.md](contract-language-reference.md "mention")
+[contract-language-reference](contract-language-reference/ "mention")
 
 For supported data source configurations, see:\
 [data-source-reference-for-soda-core](data-source-reference-for-soda-core/ "mention")
@@ -75,6 +75,28 @@ soda data-source test -ds ds.yml
 | Parameter | Required | Description                          |
 | --------- | -------- | ------------------------------------ |
 | `--f`     | Yes      | Output file path for the config file |
+
+***
+
+## Create a Contract
+
+Creates a new contract file for a given dataset. This is useful for bootstrapping a contract definition from an existing dataset schema.
+
+```bash
+soda contract create --dataset datasource/db/schema/table --file contract.yaml --data-source ds.yml --soda-cloud sc.yml --use-agent
+```
+
+| Parameter            | Required | Description                                                                                   |
+| -------------------- | -------- | --------------------------------------------------------------------------------------------- |
+| `--dataset, -d`      | Yes      | Fully qualified dataset name (data\_source\_name/database\_name/schema\_name/table\_name).    |
+| `--file, -f`         | Yes      | Path to the contract file to be created. Directories will be created if needed.               |
+| `--data-source, -ds` | No       | Path to a local data source config file.                                                      |
+| `--soda-cloud, -sc`  | No       | Path to Soda Cloud config file. Required if using Soda Agent.                                 |
+| `--use-agent, -a`    | Yes\*    | Use Soda Agent for execution. **Currently, contract creation only works with `--use-agent`.** |
+| `--verbose, -v`      | No       | Display detailed logs during execution.                                                       |
+
+\
+\*A new Soda extension will soon be available to create a contract without the need for a Soda Agent.
 
 ***
 

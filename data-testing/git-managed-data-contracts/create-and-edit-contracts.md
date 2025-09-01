@@ -2,7 +2,7 @@
 
 With Git-managed contracts, you define your expectations as code using YAML. This gives you full control over how your data is validated, and allows you to manage contracts just like any other code artifact: versioned, tested, and deployed via Git.
 
-> To learn all about the structure and supported features, refer to the full specification in the [contract-language-reference.md](../../reference/contract-language-reference.md "mention")
+> To learn all about the structure and supported features, refer to the full specification in the [contract-language-reference](../../reference/contract-language-reference/ "mention")
 
 The contract structure includes:
 

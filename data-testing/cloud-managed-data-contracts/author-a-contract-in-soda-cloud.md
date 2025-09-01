@@ -17,7 +17,7 @@ You’ll be taken to the **Contract Editor**, a powerful interface where you can
 * **No-code view**: Point-and-click UI to add quality checks and configure settings
 * **Code view**: YAML editor for full control and advanced use cases.
 
-> See language reference: [contract-language-reference.md](../../reference/contract-language-reference.md "mention")
+> See language reference: [contract-language-reference](../../reference/contract-language-reference/ "mention")
 
 You can switch between views at any time using the **editor toggle** in the top right corner.
 

@@ -178,9 +178,9 @@ The schema check uses the columns as specified in the contract and compares them
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `allow_extra_columns`      | Specifies if columns other than the ones listed in the contract are allowed in the dataset. Values are `true` or `false`. Default is false, which means that all columns in the dataset must be specified in the contract. | Yes      |
 | `allow_other_column_order` | Specifies if column ordering must be exact the same as in the contract YAML document. Values are `true` or `false`. Default is false, which means that columns must appear in the order as in the contract.                | Yes      |
-| `name`                     | [#check-names](contract-language-reference.md#check-names "mention")                                                                                                                                                       | Yes      |
-| `qualifier`                | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                                                                                             | Yes      |
-| `attributes`               | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                                                                                             | Yes      |
+| `name`                     | [#check-names](./#check-names "mention")                                                                                                                                                                                   | Yes      |
+| `qualifier`                | [#check-qualifiers](./#check-qualifiers "mention")                                                                                                                                                                         | Yes      |
+| `attributes`               | [#check-attributes](./#check-attributes "mention")                                                                                                                                                                         | Yes      |
 
 ***
 
@@ -198,13 +198,13 @@ checks:
 
 **Check configuration keys**
 
-| Key          | Description                                                                                                                                  | Optional |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                                                         | Yes      |
-| `threshold`  | The default row count threshold verifies there is at least 1 row present. [#thresholds](contract-language-reference.md#thresholds "mention") | Yes      |
-| `filter`     | [#configure-a-check-filter](contract-language-reference.md#configure-a-check-filter "mention")                                               | Yes      |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                               | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                               | Yes      |
+| Key          | Description                                                                                                      | Optional |
+| ------------ | ---------------------------------------------------------------------------------------------------------------- | -------- |
+| `name`       | [#check-names](./#check-names "mention")                                                                         | Yes      |
+| `threshold`  | The default row count threshold verifies there is at least 1 row present. [#thresholds](./#thresholds "mention") | Yes      |
+| `filter`     | [#configure-a-check-filter](./#configure-a-check-filter "mention")                                               | Yes      |
+| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                               | Yes      |
+| `attributes` | [#check-attributes](./#check-attributes "mention")                                                               | Yes      |
 
 ***
 
@@ -233,11 +233,11 @@ checks:
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `column`     | Specifies a timestamp column that represents the time of the row or                                                                                                                         | Yes      |
 | `unit`       | Specifies a the unit of measure for the time period between the current time and the most recent timestamp in the column. Values are `hour`, `minute` & `day` Default threshold is 1 `hour` | Yes      |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                                                                                                        | Yes      |
-| `threshold`  | The default freshness threshold verifies there are rows present that are less than 1 hour old. [#thresholds](contract-language-reference.md#thresholds "mention")                           | Yes      |
-| `filter`     | [#check-names](contract-language-reference.md#check-names "mention")                                                                                                                        | Yes      |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                                                              | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                                                              | Yes      |
+| `name`       | [#check-names](./#check-names "mention")                                                                                                                                                    | Yes      |
+| `threshold`  | The default freshness threshold verifies there are rows present that are less than 1 hour old. [#thresholds](./#thresholds "mention")                                                       | Yes      |
+| `filter`     | [#configure-a-check-filter](./#configure-a-check-filter "mention")                                                                                                                          | Yes      |
+| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                                                                                                          | Yes      |
+| `attributes` | [#check-attributes](./#check-attributes "mention")                                                                                                                                          | Yes      |
 
 ***
 
@@ -259,15 +259,15 @@ columns:
 
 **Check configuration keys**
 
-| Key              | Description                                                                                                                                                | Optional |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `missing_values` | The list of values is considered missing. NULL is always considered a missing value and doesn't need to be included                                        | No\*     |
-| `missing_format` | A SQL regex that matches with missing values. (Advanced)                                                                                                   | No\*     |
-| `name`           | [#check-names](contract-language-reference.md#check-names "mention")                                                                                       | Yes      |
-| `threshold`      | The default missing check threshold verifies there are no missing values in the column. [#thresholds](contract-language-reference.md#thresholds "mention") | Yes      |
-| `filter`         | [#configure-a-check-filter](contract-language-reference.md#configure-a-check-filter "mention")                                                             | Yes      |
-| `qualifier`      | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                             | Yes      |
-| `attributes`     | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                             | Yes      |
+| Key              | Description                                                                                                                    | Optional |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| `missing_values` | The list of values is considered missing. NULL is always considered a missing value and doesn't need to be included            | No\*     |
+| `missing_format` | A SQL regex that matches with missing values. (Advanced)                                                                       | No\*     |
+| `name`           | [#check-names](./#check-names "mention")                                                                                       | Yes      |
+| `threshold`      | The default missing check threshold verifies there are no missing values in the column. [#thresholds](./#thresholds "mention") | Yes      |
+| `filter`         | [#configure-a-check-filter](./#configure-a-check-filter "mention")                                                             | Yes      |
+| `qualifier`      | [#check-qualifiers](./#check-qualifiers "mention")                                                                             | Yes      |
+| `attributes`     | [#check-attributes](./#check-attributes "mention")                                                                             | Yes      |
 
 \* there are several configuration keys to configure the missing values. At least one missing configuration is required.&#x20;
 
@@ -330,23 +330,23 @@ columns:
 
 **Check configuration keys**
 
-| Key                    | Description                                                                                                                                          | Optional |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `valid_values`         | A list of valid values                                                                                                                               | No\*     |
-| `valid_format`         | A SQL regular expression that matches with valid values                                                                                              | No\*     |
-| `valid_reference_data` | References a dataset and column that contains valid values                                                                                           | No\*     |
-| `valid_min`            | Valid values must be greater or equal than the configured value                                                                                      | No\*     |
-| `valid_max`            | Valid values must be less or equal than the configured value                                                                                         | No\*     |
-| `valid_length`         | The fixed length of valid values                                                                                                                     | No\*     |
-| `valid_min_length`     | The minimum length of valid values                                                                                                                   | No\*     |
-| `valid_max_length`     | The maximum length of valid values                                                                                                                   | No\*     |
-| `invalid_values`       | A list of invalid values                                                                                                                             | No\*     |
-| `invalid_format`       | A SQL regular expression that matches with invalid values                                                                                            | No\*     |
-| `name`                 | [#check-names](contract-language-reference.md#check-names "mention")                                                                                 | Yes      |
-| `threshold`            | The default invalid check threshold ensures there must not be any invalid values. [#thresholds](contract-language-reference.md#thresholds "mention") | Yes      |
-| `filter`               | [#configure-a-check-filter](contract-language-reference.md#configure-a-check-filter "mention")                                                       | Yes      |
-| `qualifier`            | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                       | Yes      |
-| `attributes`           | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                       | Yes      |
+| Key                    | Description                                                                                                              | Optional |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------- |
+| `valid_values`         | A list of valid values                                                                                                   | No\*     |
+| `valid_format`         | A SQL regular expression that matches with valid values                                                                  | No\*     |
+| `valid_reference_data` | References a dataset and column that contains valid values                                                               | No\*     |
+| `valid_min`            | Valid values must be greater or equal than the configured value                                                          | No\*     |
+| `valid_max`            | Valid values must be less or equal than the configured value                                                             | No\*     |
+| `valid_length`         | The fixed length of valid values                                                                                         | No\*     |
+| `valid_min_length`     | The minimum length of valid values                                                                                       | No\*     |
+| `valid_max_length`     | The maximum length of valid values                                                                                       | No\*     |
+| `invalid_values`       | A list of invalid values                                                                                                 | No\*     |
+| `invalid_format`       | A SQL regular expression that matches with invalid values                                                                | No\*     |
+| `name`                 | [#check-names](./#check-names "mention")                                                                                 | Yes      |
+| `threshold`            | The default invalid check threshold ensures there must not be any invalid values. [#thresholds](./#thresholds "mention") | Yes      |
+| `filter`               | [#configure-a-check-filter](./#configure-a-check-filter "mention")                                                       | Yes      |
+| `qualifier`            | [#check-qualifiers](./#check-qualifiers "mention")                                                                       | Yes      |
+| `attributes`           | [#check-attributes](./#check-attributes "mention")                                                                       | Yes      |
 
 \* there are several configuration keys to configure the invalid values. At least one validity configuration is required. Multiple validity configurations can be combined.
 
@@ -442,13 +442,13 @@ columns:
 
 **Configuration keys:**
 
-| Key          | Description                                                                                                                                   | Optional |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                                                          | Yes      |
-| `threshold`  | The default duplicate check threshold requires that all values are unique. [#thresholds](contract-language-reference.md#thresholds "mention") | Yes      |
-| `filter`     | Check filter                                                                                                                                  | Yes      |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                | Yes      |
+| Key          | Description                                                                                                       | Optional |
+| ------------ | ----------------------------------------------------------------------------------------------------------------- | -------- |
+| `name`       | [#check-names](./#check-names "mention")                                                                          | Yes      |
+| `threshold`  | The default duplicate check threshold requires that all values are unique. [#thresholds](./#thresholds "mention") | Yes      |
+| `filter`     | Check filter                                                                                                      | Yes      |
+| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                                | Yes      |
+| `attributes` | [#check-attributes](./#check-attributes "mention")                                                                | Yes      |
 
 ### Multi-column duplicate check
 
@@ -464,11 +464,11 @@ checks:
 | Key          | Description                                                                                                   | Optional |
 | ------------ | ------------------------------------------------------------------------------------------------------------- | -------- |
 | `columns`    | List of column names                                                                                          | No       |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                          | Yes      |
+| `name`       | [#check-names](./#check-names "mention")                                                                      | Yes      |
 | `threshold`  | The default duplicate check threshold requires that all values are unique. Data Contract Language Reference ✅ | Yes      |
-| `filter`     | [#configure-a-check-filter](contract-language-reference.md#configure-a-check-filter "mention")                | Yes      |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                | Yes      |
+| `filter`     | [#configure-a-check-filter](./#configure-a-check-filter "mention")                                            | Yes      |
+| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                            | Yes      |
+| `attributes` | [#check-attributes](./#check-attributes "mention")                                                            | Yes      |
 
 ***
 
@@ -496,11 +496,11 @@ columns:
 | Key          | Description                                                                                         | Optional |
 | ------------ | --------------------------------------------------------------------------------------------------- | -------- |
 | `function`   | Supported by all data sources: `avg`, `avg_length`, `max`, `min`, `max_length`, `min_length`, `sum` | No       |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                | Yes      |
-| `threshold`  | [#thresholds](contract-language-reference.md#thresholds "mention")                                  | No       |
-| `filter`     | [#configure-a-check-filter](contract-language-reference.md#configure-a-check-filter "mention")      | Yes      |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                      | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                      | Yes      |
+| `name`       | [#check-names](./#check-names "mention")                                                            | Yes      |
+| `threshold`  | [#thresholds](./#thresholds "mention")                                                              | No       |
+| `filter`     | [#configure-a-check-filter](./#configure-a-check-filter "mention")                                  | Yes      |
+| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                  | Yes      |
+| `attributes` | [#check-attributes](./#check-attributes "mention")                                                  | Yes      |
 
 ***
 
@@ -547,10 +547,10 @@ columns:
 | Key          | Description                                                                                        | Optional |
 | ------------ | -------------------------------------------------------------------------------------------------- | -------- |
 | `expression` | A SQL expression that produces the numeric metric value that will be compared with the threshold.  | No       |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                               | Yes      |
-| `threshold`  | [#thresholds](contract-language-reference.md#thresholds "mention")                                 | No       |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                     | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                     | Yes      |
+| `name`       | [#check-names](./#check-names "mention")                                                           | Yes      |
+| `threshold`  | [#thresholds](./#thresholds "mention")                                                             | No       |
+| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                 | Yes      |
+| `attributes` | [#check-attributes](./#check-attributes "mention")                                                 | Yes      |
 
 ### Verify a SQL query value against a threshold
 
@@ -585,10 +585,10 @@ columns:
 | Key          | Description                                                                                        | Optional |
 | ------------ | -------------------------------------------------------------------------------------------------- | -------- |
 | `query`      | A SQL query that produces a single numeric metric value that will be compared with the threshold.  | No       |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                               | Yes      |
-| `threshold`  | [#thresholds](contract-language-reference.md#thresholds "mention")                                 | No       |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                     | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                     | Yes      |
+| `name`       | [#check-names](./#check-names "mention")                                                           | Yes      |
+| `threshold`  | [#thresholds](./#thresholds "mention")                                                             | No       |
+| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                 | Yes      |
+| `attributes` | [#check-attributes](./#check-attributes "mention")                                                 | Yes      |
 
 ***
 
@@ -628,10 +628,10 @@ columns:
 | Key          | Description                                                                                                                                                                                  | Optional |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `Expression` | A SQL expression, used as the WHERE clause, that produces any tabular data indicating failures with the data. An expression returning zero rows indicates there is no problem with the data. | No       |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                                                                                                         | Yes      |
-| `threshold`  | The default is that there should be no failed rows.[#thresholds](contract-language-reference.md#thresholds "mention")                                                                        | Yes      |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                                                               | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                                                               | Yes      |
+| `name`       | [#check-names](./#check-names "mention")                                                                                                                                                     | Yes      |
+| `threshold`  | The default is that there should be no failed rows.[#thresholds](./#thresholds "mention")                                                                                                    | Yes      |
+| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                                                                                                           | Yes      |
+| `attributes` | [#check-attributes](./#check-attributes "mention")                                                                                                                                           | Yes      |
 
 ### Verify and visualize failed rows with a SQL query
 
@@ -660,15 +660,19 @@ columns:
 
 **Check configuration keys**
 
-| Key          | Description                                                                                                                                                                                         | Optional |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `query`      | A SQL query that produces any tabular data indicating failures with the data. An expression returning zero rows indicates there is no problem with the data. I                                      | No       |
-| `name`       | [#check-names](contract-language-reference.md#check-names "mention")                                                                                                                                | Yes      |
-| `threshold`  | The default is that there should be no failed rows. The threshold can only be count-based. Percent thresholds are not supported. [#thresholds](contract-language-reference.md#thresholds "mention") | Yes      |
-| `qualifier`  | [#check-qualifiers](contract-language-reference.md#check-qualifiers "mention")                                                                                                                      | Yes      |
-| `attributes` | [#check-attributes](contract-language-reference.md#check-attributes "mention")                                                                                                                      | Yes      |
+| Key          | Description                                                                                                                                                             | Optional |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `query`      | A SQL query that produces any tabular data indicating failures with the data. An expression returning zero rows indicates there is no problem with the data. I          | No       |
+| `name`       | [#check-names](./#check-names "mention")                                                                                                                                | Yes      |
+| `threshold`  | The default is that there should be no failed rows. The threshold can only be count-based. Percent thresholds are not supported. [#thresholds](./#thresholds "mention") | Yes      |
+| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                                                                                      | Yes      |
+| `attributes` | [#check-attributes](./#check-attributes "mention")                                                                                                                      | Yes      |
 
 ***
+
+## Reconciliation checks
+
+Documentation for reconciliation checks is available in [reconciliation-checks.md](reconciliation-checks.md "mention")
 
 ## Common check configurations
 
@@ -818,7 +822,7 @@ By default, the check name is the check type.
 
 Use attributes to **label**, **sort**, and **route** your checks in Soda Cloud. Attributes help you organize checks by properties such as domain, priority, location, and sensitivity (e.g., PII).
 
-> Learn how to leverage attributes with [notifications.md](../manage-issues/notifications.md "mention") and [browse-datasets.md](../manage-issues/browse-datasets.md "mention").&#x20;
+> Learn how to leverage attributes with [notifications.md](../../manage-issues/notifications.md "mention") and [browse-datasets.md](../../manage-issues/browse-datasets.md "mention").&#x20;
 
 **Apply Attributes to Checks**
 
@@ -866,7 +870,7 @@ columns
 
 When publishing contract results to Soda Cloud, **all check attributes must be pre-defined in Soda Cloud**. If any attribute used in a contract is not registered in your Soda Cloud environment, the results will **not be published**, and the data contract scan will be **marked as failed**.
 
-> Learn how to configure attributes in Soda Cloud: [check-and-dataset-attributes.md](../manage-issues/check-and-dataset-attributes.md "mention").&#x20;
+> Learn how to configure attributes in Soda Cloud: [check-and-dataset-attributes.md](../../manage-issues/check-and-dataset-attributes.md "mention").&#x20;
 
 ### Check qualifiers
 
