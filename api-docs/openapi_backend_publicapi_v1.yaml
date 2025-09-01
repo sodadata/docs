@@ -876,6 +876,18 @@ components:
           type: string
         lastName:
           type: string
+    ProfilingSamplingStrategyConfigurationDTO:
+      type: object
+      properties:
+        numberOfRows:
+          type: integer
+          format: int32
+        numberOfUnits:
+          type: integer
+          format: int32
+        unitOfTime:
+          type: object
+          $ref: '#/components/schemas/UnitOfTimeDTO'
     PublicApiCheckSlimDTO:
       type: object
       properties:
@@ -984,8 +996,6 @@ components:
     PublicApiDatasetMetricMonitoringResponse:
       type: object
       properties:
-        backfillingScanStartDate:
-          type: string
         datasetId:
           type: string
         datasetMetricMonitorsConfiguration:
@@ -993,6 +1003,8 @@ components:
           items:
             type: object
             $ref: '#/components/schemas/DatasetMetricMonitorConfigurationDTO'
+        historicalMetricCollectionScanStartDate:
+          type: string
         scanSchedule:
           type: object
           $ref: '#/components/schemas/ZonedCronDTO'
@@ -1015,6 +1027,12 @@ components:
           type: string
         rowCount:
           type: number
+        samplingStrategyConfiguration:
+          type: object
+          $ref: '#/components/schemas/ProfilingSamplingStrategyConfigurationDTO'
+        scanSchedule:
+          type: object
+          $ref: '#/components/schemas/ZonedCronDTO'
       required:
       - columns
       - datasetId
@@ -1237,6 +1255,9 @@ components:
             $ref: '#/components/schemas/PublicApiUpdateDatasetOwnerRequestDTO'
         partitionColumn:
           type: string
+        profiling:
+          type: object
+          $ref: '#/components/schemas/UpdateDatasetProfilingConfigurationRequestDTO'
         tags:
           type: array
           items:
@@ -1447,6 +1468,12 @@ components:
           type: string
         type:
           type: string
+    UnitOfTimeDTO:
+      type: string
+      enum:
+      - hours
+      - days
+      - weeks
     UpdateDatasetDiagnosticsWarehouseConfigurationRequestDTO:
       type: object
       properties:
@@ -1466,6 +1493,18 @@ components:
         scanSchedule:
           type: object
           $ref: '#/components/schemas/ZonedCronDTO'
+    UpdateDatasetProfilingConfigurationRequestDTO:
+      type: object
+      properties:
+        profilingSamplingStrategy:
+          type: object
+          $ref: '#/components/schemas/ProfilingSamplingStrategyConfigurationDTO'
+        scanSchedule:
+          type: object
+          $ref: '#/components/schemas/ZonedCronDTO'
+      required:
+      - profilingSamplingStrategy
+      - scanSchedule
     UserContentDTO:
       type: object
       properties:
