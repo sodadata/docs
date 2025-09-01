@@ -18,10 +18,7 @@ In Jira, you can set up an Automation Rule that enables you to define what you w
 
 This integration is built on two webhook events IncidentCreated and IncidentUpdated (Soda -> Jira; [Event payloads](https://docs.soda.io/soda/integrate-webhooks.htmll#event-payloads)), as well as the Soda Cloud API endpoint for updating incidents (Jira -> Soda; [API](https://docs.soda.io/api-docs/public-cloud-api-v1.html)).
 
-![webhook-incident](https://docs.soda.io/assets/images/webhook-incident.png)
-
-\
-
+<figure><img src="../.gitbook/assets/image-1 (4).avif" alt=""><figcaption></figcaption></figure>
 
 ### Create a Jira project for DQ tickets <a href="#create-a-jira-project-for-dq-tickets" id="create-a-jira-project-for-dq-tickets"></a>
 
@@ -35,17 +32,17 @@ In Jira, start by creating a new project dedicated to tracking data quality tick
 * IncidentURL
 * CheckURL
 
-![jira-work-item](https://docs.soda.io/assets/images/jira-work-item.png)
+<figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FA2PmHkO5cBgeRPdiPPOG_2Fuploads_2FNUqKM4hhAXwIpeCJDDWX_2FScreenshot_202025-08-21_20at_203.10.27_E2_80_AFPM.avif" alt=""><figcaption></figcaption></figure>
 
 From the same page, next click the **Edit Workflow** button, and make sure your workflow includes the following statuses:
 
 * Reported
 * Investigating
 * Fixing
-* Resolved
+* Resolved\
 
-\
 
+<figure><img src="../.gitbook/assets/image (7).avif" alt=""><figcaption></figcaption></figure>
 
 ## Automation Rule (Inbound) <a href="#automation-rule-inbound" id="automation-rule-inbound"></a>
 
@@ -55,31 +52,35 @@ Here we will set up the automation in Jira so that when an Incident is created o
 
 Navigate to `Project settings` > `Automation`, then click `Create rule` and, for the type of `New trigger`, select `Incoming webhook`.
 
-![jira-incoming-webhook-trigger-start.png](https://docs.soda.io/assets/images/jira-incoming-webhook-trigger-start.png)
+<figure><img src="../.gitbook/assets/image-1 (5).avif" alt=""><figcaption></figcaption></figure>
 
 Under the `When: Incoming webhook trigger`, click `Add a component`, select `IF: Add a condition`, then smart values condition.
 
-![jira-if-block-incidentCreated.png](https://docs.soda.io/assets/images/jira-if-block-incidentCreated.png)
+<figure><img src="../.gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
 
 What this means is that, **if** an incoming webhook has the `incidentCreated` event, then we will do something.
 
 ### Automatic creation of the Jira ticket <a href="#automatic-creation-of-the-jira-ticket" id="automatic-creation-of-the-jira-ticket"></a>
 
-Next we will add another component: `THEN: Add an action`. The action will be to **Create work item** and the **Issue Type** should be `Bug` and the **Project** should be our new project.
+Next we will add another component: `THEN: Add an action`.
 
-![jira-create-bug.png](https://docs.soda.io/assets/images/jira-create-bug.png)
+The action will be to **Create work item** and the **Issue Type** should be `Bug` and the **Project** should be our new project.
 
-Next we add some steps to fill out our ticket with extra information obtained from the webhook data. We start by creating a branch rule to identify our ticket:
+<figure><img src="../.gitbook/assets/image-1.png" alt=""><figcaption></figcaption></figure>
 
-![jira-branch-rule.png](https://docs.soda.io/assets/images/jira-branch-rule.png)
+Next we add some steps to fill out our ticket with extra information obtained from the webhook data.
+
+We start by creating a branch rule to identify our ticket:
+
+<figure><img src="../.gitbook/assets/image (8).avif" alt=""><figcaption></figcaption></figure>
 
 Then we Edit the ticket fields:
 
-![jira-edit-work.png](https://docs.soda.io/assets/images/jira-edit-work.png)
+<figure><img src="../.gitbook/assets/image-1 (6).avif" alt=""><figcaption></figcaption></figure>
 
 Finally, the last step in our incident _creation_ workflow is to send a post request back to Soda with a link to the issue in Jira:
 
-![jira-send-web-request.png](https://docs.soda.io/assets/images/jira-send-web-request.png)
+<figure><img src="../.gitbook/assets/image (9).avif" alt=""><figcaption></figcaption></figure>
 
 ### Automatic updates to the Jira ticket <a href="#automatic-updates-to-the-jira-ticket" id="automatic-updates-to-the-jira-ticket"></a>
 
@@ -87,22 +88,29 @@ The remaining parts of this automation rule cover the scenarios where the status
 
 When the status changes to `Reported`:
 
-![jira-status-reported.png](https://docs.soda.io/assets/images/jira-status-reported.png)
+<figure><img src="../.gitbook/assets/image-1 (7).avif" alt=""><figcaption></figcaption></figure>
 
-The same logic is used for other status changes such as `Investigating` and `Fixing`. In case the status changes to `Resolved`, our rule uses a similar logic, but with the additional step of adding resolution notes as a comment to the issue in Jira:
+The same logic is used for other status changes such as `Investigating` and `Fixing`.
 
-![jira-status-resolved.png](https://docs.soda.io/assets/images/jira-status-resolved.png)
+In case the status changes to `Resolved`, our rule uses a similar logic, but with the additional step of adding resolution notes as a comment to the issue in Jira:
 
-Once you save/enable this new rule, then you can access a URL and secret that you will provide to Soda when setting up the new webhook integration. After saving or enabling the rule, you can view details of the webhook trigger as shown below:
+<figure><img src="../.gitbook/assets/image (10).avif" alt=""><figcaption></figcaption></figure>
 
-![jira-incoming-webhook-trigger.png](https://docs.soda.io/assets/images/jira-incoming-webhook-trigger.png)
+Once you save/enable this new rule, then you can access a URL and secret that you will provide to Soda when setting up the new webhook integration.
+
+After saving or enabling the rule, you can view details of the webhook trigger as shown below:
+
+<figure><img src="../.gitbook/assets/image (66).png" alt=""><figcaption></figcaption></figure>
 
 ### Define the Webhook integration in Soda <a href="#define-the-webhook-integration-in-soda" id="define-the-webhook-integration-in-soda"></a>
 
-Next, you create a new webhook integration in Soda and provide the details from the webhook trigger above, as shown in the image below. Paste the Webhook URL from Jira into the URL field in Soda and paste the Secret from Jira into a custom HTTP header called `X-Automation-Webhook-Token`.\
+Next, you create a new webhook integration in Soda and provide the details from the webhook trigger above, as shown in the image below.
+
+Paste the Webhook URL from Jira into the URL field in Soda and paste the Secret from Jira into a custom HTTP header called `X-Automation-Webhook-Token`.
+
 Finally, in the `Define Scope` tab, make sure to select `Incidents - Triggered when users create or update incidents`.
 
-![jira-soda-webhook-integration-settings.png](https://docs.soda.io/assets/images/jira-soda-webhook-integration-settings.png)
+<figure><img src="../.gitbook/assets/image-1 (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Automation Rule (outbound) <a href="#automation-rule-outbound" id="automation-rule-outbound"></a>
 
@@ -110,15 +118,15 @@ We will set up a second automation rule in Jira so that when the status of the t
 
 First, we set up the trigger for this automation to be when a Work item is transitioned:
 
-![jira-outbound-rule.png](https://docs.soda.io/assets/images/jira-outbound-rule.png)
+<figure><img src="../.gitbook/assets/image (11).avif" alt=""><figcaption></figcaption></figure>
 
 Finally, we send a post request to the Soda Cloud API `incidents` endpoint [https://docs.soda.io/soda/integrate-jira.html#automation-rule-outbound](https://docs.soda.io/soda/integrate-jira.html#automation-rule-outbound), using information from our Jira ticket to update the severity and status of the corresponding incident in Soda:
 
-![jira-incident-api.png](https://docs.soda.io/assets/images/jira-incident-api.png)
+<figure><img src="../.gitbook/assets/image (67).png" alt=""><figcaption></figcaption></figure>
 
+Note that the `Authorization` header value must be formatted like:
 
-
-Note that the `Authorization` header value must be formatted like: `Basic <base64_encoded_credentials>`. Base64-encoded credentials can be generated using Soda Cloud API keys in Python like so:
+`Basic <base64_encoded_credentials>`. Base64-encoded credentials can be generated using Soda Cloud API keys in Python like so:
 
 ```bash
 import base64

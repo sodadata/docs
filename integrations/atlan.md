@@ -6,9 +6,9 @@ Integrate Soda with Atlan to access details about the quality of your data from 
 * Use Soda Cloud to flag poor-quality data in lineage diagrams.
 * Give your Atlan users the confidence of knowing that the data they are using is sound.
 
-![atlan1](https://docs.soda.io/assets/images/atlan1.png)
+<figure><img src="../.gitbook/assets/image (4).avif" alt=""><figcaption></figcaption></figure>
 
-
+<figure><img src="../.gitbook/assets/image-1 (2).avif" alt=""><figcaption></figcaption></figure>
 
 ## Prerequisites <a href="#prerequisites" id="prerequisites"></a>
 

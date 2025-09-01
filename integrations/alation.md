@@ -7,8 +7,7 @@ Soda with Alation to access details about the quality of your data from within t
 * Give your Alation users the confidence of knowing that the data they are using is sound.
 * 🎥 Watch a [5-minute overview](https://vimeo.com/563765014) showcasing the integration of Soda and Alation.
 
-![alation-integration](https://docs.soda.io/assets/images/alation-integration.png)\
-
+<figure><img src="../.gitbook/assets/image (1).avif" alt=""><figcaption></figcaption></figure>
 
 ## Prerequisites <a href="#prerequisites" id="prerequisites"></a>
 
@@ -74,19 +73,17 @@ Soda with Alation to access details about the quality of your data from within t
 
 Retrieve the Alation `datasource_id` from the URL
 
-
+<figure><img src="../.gitbook/assets/image (64).png" alt="" width="375"><figcaption></figcaption></figure>
 
 <figure><img src="https://docs.soda.io/assets/images/alation-figure-1-0.png" alt=""><figcaption></figcaption></figure>
 
-Retrieve the Alation `datasource_container_name` (schema) from the data source page\
+Retrieve the Alation `datasource_container_name` (schema) from the data source page
 
+<figure><img src="../.gitbook/assets/image (2).avif" alt="" width="375"><figcaption></figcaption></figure>
 
-<figure><img src="https://docs.soda.io/assets/images/alation-figure-1-1.png" alt=""><figcaption></figcaption></figure>
+Retrieve the Alation `datasource_container_id` for the `datasource_container_name` from the URL in the **Schema** page.
 
-Retrieve the Alation `datasource_container_id` for the `datasource_container_name` from the URL in the **Schema** page.\
-
-
-<figure><img src="https://docs.soda.io/assets/images/alation-figure-1-3.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image-1 (1).avif" alt="" width="563"><figcaption></figcaption></figure>
 
 ## Enable API access to Alation with SSO <a href="#enable-api-access-to-alation-with-sso" id="enable-api-access-to-alation-with-sso"></a>
 
@@ -132,4 +129,4 @@ In a dataset page in Alation, in the **Overview** tab, users have the opportunit
 * Under the **Soda DQ Overview** heading in Alation, click **Open in Soda** to access the dataset page in Soda Cloud.
 * Under the **Dataset Level Monitors** heading in Alation, click the title of any monitor to access the check info page in Soda Cloud.
 
-![alation-figure-1-2](https://docs.soda.io/assets/images/alation-figure-1-2.png)
+<figure><img src="../.gitbook/assets/image (3).avif" alt=""><figcaption></figcaption></figure>

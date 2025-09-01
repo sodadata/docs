@@ -29,10 +29,4 @@ Integrate Soda with Metaphor to access details about the quality of your data fr
 
 ### Run the integration <a href="#run-the-integration" id="run-the-integration"></a>
 
-Contact [support@soda.io](mailto:support@soda.io) to acquire the assets and instructions to run the integration and view Soda Cloud details in your Metaphor catalog.
-
-
-
-
-
-\
+Contact [support@soda.io](mailto:support@soda.io) to acquire the assets and instructions to run the integration and view Soda Cloud details in your Metaphor catalog.\

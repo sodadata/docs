@@ -8,7 +8,7 @@ This example offers guidance on how to set up a Scripted REST API Resource to ge
 
 Refer to [webhook-api.md](../reference/webhook-api.md "mention") for details information.
 
-![webhook-incident-snow](https://docs.soda.io/assets/images/webhook-incident-snow.png)
+<figure><img src="../.gitbook/assets/image (12).avif" alt=""><figcaption></figcaption></figure>
 
 \
 
@@ -25,7 +25,7 @@ The following steps offer a brief overview of how to set up a ServiceNow Scripte
 5. In the **Script** field, define a script that creates new tickets when a Soda Cloud incident is opened, and updates existing tickets when a Soda Cloud incident status is updated. Use the example below for reference. You may also need to define Security settings according to your organizations authentication rules.
 6. Click **Submit**, then copy the value of the **Resource path** to use in the URL field in the Soda Cloud integration setup.
 
-```
+```javascript
 (function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
 
 

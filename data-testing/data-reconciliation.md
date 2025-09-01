@@ -20,8 +20,6 @@ Other use cases include **regulatory compliance**, where organizations must prov
 
 By systematically applying reconciliation checks, teams can maintain trust in their data, reduce operational risk, and streamline incident detection when anomalies arise.
 
-> Ready to apply reconciliation checks? Learn how in the [Contract Language Reference](../reference/contract-language-reference/reconciliation-checks.md).
-
 ## Defining source dataset
 
 Before defining reconciliation checks, you first specify the **source dataset**. This represents the system of record against which you want to validate consistency. It is possible to define a **filter** on the source dataset, allowing you to reconcile only a subset of records that match certain criteria (for example, only transactions from the current month, or only rows belonging to a specific business unit).
@@ -91,3 +89,9 @@ Row-level reconciliation is inherently **heavier** than metric-level reconciliat
 
 * **Leverage filters to scope checks to new or incremental batches of data** wherever possible, rather than repeatedly reconciling the entire dataset. This reduces both execution time and operational overhead.
 * Use **metric-level reconciliation as a first line of validation**. It is significantly more efficient and scalable, and can quickly highlight whether deeper row-level analysis is even necessary.
+
+***
+
+## Implement reconciliation checks programmatically
+
+Soda is suitable for no-code and programmatic users alike. If you are implementing checks programmatically, you can learn more about the **contract language syntax for reconciliation** on the [Contract Language reference](../reference/contract-language-reference/reconciliation-checks.md). Reconciliation checks can be used for both metric- and row-level validation.

@@ -8,15 +8,15 @@ Integrate Soda with Microsoft’s Purview data catalog to access details about t
 
 In Purview, you can see all the Soda data quality checks and the value associated with the check’s latest measurement, the health score of the dataset, and the timestamp for the most recent update. Each of these checks listed in Purview includes a link that opens a new page in Soda Cloud so you can examine diagnostic and historic information about the check.
 
-![check-in-purview](https://docs.soda.io/assets/images/check-in-purview.png)
+<figure><img src="../.gitbook/assets/image (5).avif" alt=""><figcaption></figcaption></figure>
 
 Purview displays the latest check results according to the most recent Soda scan for data quality, where color-coded icons indicate the latest result. A gray icon indicates that a check was not evaluated as part of a scan.
 
-![check-fail-purview](https://docs.soda.io/assets/images/check-fail-purview.png)
+<figure><img src="../.gitbook/assets/image-1 (3).avif" alt=""><figcaption></figcaption></figure>
 
 If Soda is performing no data quality checks on a dataset, the instructions in Purview invite a catalog user to access soda and create new checks.
 
-![add-check-purview](https://docs.soda.io/assets/images/add-check-purview.png)
+<figure><img src="../.gitbook/assets/image (6).avif" alt="" width="563"><figcaption></figcaption></figure>
 
 ## Prerequisites <a href="#prerequisites" id="prerequisites"></a>
 
