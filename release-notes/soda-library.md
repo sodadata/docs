@@ -6,6 +6,64 @@ description: >-
 
 # Release notes for Soda Library
 
+### \[soda-library] 1.12.19
+
+<sup>28 August 2025</sup>
+
+### 1.12.19 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
+
+* Fix using known partition column for v4 datasets
+
+***
+
+### \[soda-library] 1.12.18
+
+<sup>27 August 2025</sup>
+
+### 1.12.18 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
+
+* Fix for Fabric metadata row counts and schema discovery
+* Fix default port for v4 datasources
+* Set default driver for SQL Server on v4
+* PLATL-127 - Refactor data source secrets, use AWS Secretsmanager and organization variables
+* Prevent duplicate quoting of schemas on databricks
+* Add Athena support
+* Fix main pipeline
+* Add MM support for different time partition units
+
+***
+
+### \[soda-library] 1.12.17
+
+<sup>19 August 2025</sup>
+
+### 1.12.17 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
+
+* Fix generating defaults when partition is empty
+* Treat dates as midnight for MM
+* Impute missing groups
+* Fix handling cloud-generated dataset monitors
+* Limit max number of groups in group monitor
+* Fix check name for monitor groups
+* Fix group monitor names & defaults
+
+***
+
+### \[soda-library] 1.12.16
+
+<sup>13 August 2025</sup>
+
+### 1.12.16 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
+
+* Fix handling `None` values in MM algorithm
+* Add MS Fabric support
+* Attempt to fix main workflow for Fabric on Python 3.9
+* Redshift - case sensitive identifiers in v4
+* Add support for group by monitors
+* Fix python 3.9 compatibility
+
+***
+
 ### \[soda-library] 1.12.15
 
 <sup>06 August 2025</sup>
