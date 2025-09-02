@@ -63,7 +63,7 @@ Environment variables must be available in the runtime environment where Soda is
 
 A note about BigQuery datasets: Google uses the term dataset slightly differently than Soda (and many others) do.
 
-* In the context of Soda, a [dataset](broken-reference) is a representation of a tabular data structure with rows and columns. A dataset can take the form of a table in PostgreSQL or Snowflake, or a DataFrame in a Spark application.
+* In the context of Soda, a [dataset](https://app.gitbook.com/s/oV0A6Eua8LUIyWgHxsjf/learning-resources/glossary#dataset) is a representation of a tabular data structure with rows and columns. A dataset can take the form of a table in PostgreSQL or Snowflake, or a DataFrame in a Spark application.
 * In the context of BigQuery, a [dataset](https://cloud.google.com/bigquery/docs/datasets-intro) is “a top-level container that is used to organize and control access to your tables and views. A table or view must belong to a dataset…”
 
 Instances of "dataset" in Soda documentation always reference the former.
@@ -83,8 +83,7 @@ Data source YAML
 type: bigquery
 name: my_bigquery
 connection:
-  account_info_json: ${BQ_SERVICE_ACCOUNT_JSON}  # full JSON string
-  project_id: <your-project-id>
+  account_info_json: ${BQ_SERVICE_ACCOUNT_JSON}  # full JSON string. SEE NOTE
   dataset: <your_dataset>
   
   # optional
@@ -92,7 +91,15 @@ connection:
     - https://www.googleapis.com/auth/bigquery
     - https://www.googleapis.com/auth/cloud-platform
     - https://www.googleapis.com/auth/drive
-  storage_project_id: your-storage-project
+  project_id: <your-project-id>  # Defaults to the one embedded in credentials
+  storage_project_id: <your-storage-project>
+  location: <your-location>  # Defaults to the specified project's location
+  client_options: 
+  kabels: 
+  impersonation_account:
+  delegates:
+  use_context_auth: False     # if set to True, Application Default Credentials
+                              # will be used and other credentials passed in will be ignored
 ```
 
 ```yaml
@@ -100,8 +107,7 @@ connection:
 type: bigquery
 name: my_bigquery
 connection:
-  account_info_json_path: /path/to/service-account.json
-  project_id: <your-project-id>
+  account_info_json_path: /path/to/service-account.json  # SEE NOTE
   dataset: <your_dataset>
   
   # optional
@@ -109,10 +115,23 @@ connection:
     - https://www.googleapis.com/auth/bigquery
     - https://www.googleapis.com/auth/cloud-platform
     - https://www.googleapis.com/auth/drive
-  storage_project_id: your-storage-project
+  project_id: <your-project-id>  # Defaults to the one embedded in credentials
+  storage_project_id: <your-storage-project>
+  location: <your-location>  # Defaults to the specified project's location
+  client_options: 
+  kabels: 
+  impersonation_account:
+  delegates:
+  use_context_auth: False     # if set to True, Application Default Credentials
+                              # will be used and other credentials passed in will be ignored
 ```
 
-> **Notes**: See [Google BigQuery Integration parameters](https://cloud.google.com/chronicle/docs/soar/marketplace-integrations/google-big-query#integration_parameters)
+{% hint style="info" %}
+**Note:** Set `use_context_auth=True` to use application default credentials, in which case `account_info_json` or `account_info_json_path` are not necessary.
+{% endhint %}
+
+> * See [Google BigQuery Integration parameters](https://cloud.google.com/chronicle/docs/soar/marketplace-integrations/google-big-query#integration_parameters)
+> * See[ BigQuery's locations documentation](https://cloud.google.com/bigquery/docs/locations) to learn more about `location`.
 
 ***
 
@@ -132,8 +151,12 @@ name: my_databricks
 connection:
   host: <server-hostname>
   http_path: <http-path>
-  port: 443
   catalog: <unity-catalog>
+
+  # optional
+    warehouse:
+    session_configuration:
+    field_mapping: 
 ```
 
 ***
@@ -203,8 +226,8 @@ type: fabric
 name: my_fabric
 connection:
   host: <your-fabric-sql-endpoint>
-  username: ${env.USER}
-  password: ${env.PASSWORD}
+  user: ${env.USER}          # SEE NOTE
+  password: ${env.PASSWORD}  # SEE NOTE
   database: <your_db>
   
   # optional
@@ -218,6 +241,10 @@ connection:
     multi_subnet_failover: true
   authentication: sql
 ```
+
+{% hint style="info" %}
+**Note:** depending on the authentication method that is used,  `user` and `password` may not be required (e.g. `activedirectoryserviceprincipal` requires `client_id` and `client_secret`).
+{% endhint %}
 
 ## Pandas
 
@@ -249,7 +276,7 @@ pip install -i https://pypi.dev.sodadata.io/simple -U soda-postgres
 type: postgres
 name: my_postgres
 connection:
-  username: ${env.USERNAME}
+  user: ${env.USERNAME}
   host: <your-postgresql-host>
   port: 5432
   password: ${env.PASSWORD}
@@ -276,9 +303,9 @@ connection:
   port: 5439
   database: <your_database>
   user: ${env.USER}
-  password: ${env.PASSWORD}
   
   # optional
+  password: ${env.PASSWORD}
   access_key_id: ${AWS_ACCESS_KEY_ID}
   secret_access_key: ${AWS_SECRET_ACCESS_KEY}
   session_token: ${AWS_SESSION_TOKEN}
@@ -305,8 +332,8 @@ connection:
   host: <your-sqlserver-hostname>
   port: 1433
   database: <your_database>
-  user: ${env.USER}
-  password: ${env.PASSWORD}
+  user: ${env.USER}          # SEE NOTE
+  password: ${env.PASSWORD}  # SEE NOTE
 
   # optional
   trusted_connection: false
@@ -320,6 +347,10 @@ connection:
                           # activedirectoryserviceprincipal | activedirectory | auto |
                           # cli | environment | synapsespark | fabricspark |
 ```
+
+{% hint style="info" %}
+**Note:** depending on the authentication method that is used,  `user` and `password` may not be required (e.g. `activedirectoryserviceprincipal` requires `client_id` and `client_secret`).
+{% endhint %}
 
 ## Snowflake
 
@@ -336,20 +367,17 @@ type: snowflake
 name: my_snowflake
 connection:
   account: <your_account>
-  port: 5432
   database: <your_database>
-  schema: <public>
   warehouse: <your_warehouse>
+  user: ${env.USERNAME}
   
-  # username/password authentication
-  username: ${env.USERNAME}
+  # If using username/password authentication
   password: ${env.PASSWORD}
   
-  # private key authentication
+  # If using private key authentication
   private_key_path: ${env.PRIVATE_KEY}
   # or
   private_key_path: /path/to/rsa_key.p8 
-  
   private_key_passphrase: ${env.PRIVATE_KEY_PASSPHRASE}
 
   # optional
@@ -377,8 +405,8 @@ connection:
   host: <your-server>
   port: 1433
   database: <your_database>
-  username: ${env.USERNAME}
-  password: ${env.PASSWORD}
+  username: ${env.USERNAME}  # SEE NOTE
+  password: ${env.PASSWORD}  # SEE NOTE
 
   # optional
   trusted_connection: false
@@ -392,3 +420,7 @@ connection:
                        # activedirectoryserviceprincipal | activedirectory | auto | 
                        # cli | environment | synapsespark | fabricspark
 ```
+
+{% hint style="info" %}
+**Note:** depending on the authentication method that is used,  `user` and `password` may not be required (e.g. `activedirectoryserviceprincipal` requires `client_id` and `client_secret`).
+{% endhint %}
