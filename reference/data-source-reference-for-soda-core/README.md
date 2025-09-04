@@ -375,7 +375,8 @@ connection:
   password: ${env.PASSWORD}
   
   # If using private key authentication
-  private_key_path: ${env.PRIVATE_KEY}
+  private_key: ${env.PRIVATE_KEY}
+  private_key_passphrase: ${env.PRIVATE_KEY_PASSPHRASE}
   # or
   private_key_path: /path/to/rsa_key.p8 
   private_key_passphrase: ${env.PRIVATE_KEY_PASSPHRASE}
