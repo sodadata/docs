@@ -41,7 +41,7 @@ data_source my_datasource_name:
 
 </details>
 
-Choose exactly **one authentication approach** below.
+Choose exactly **one authentication approach** of the four options below.
 
 {% hint style="info" %}
 **Notes**:
@@ -53,7 +53,7 @@ Choose exactly **one authentication approach** below.
 * Proxy parameters are supported when connecting via an agent behind a proxy.
 {% endhint %}
 
-### Username + password
+### 1. Username + password
 
 ```yaml
   # 1) Username + password
@@ -69,7 +69,7 @@ Choose exactly **one authentication approach** below.
 
 </details>
 
-### External browser SSO
+### 2. External browser SSO
 
 ```yaml
   # 2) External browser SSO (SAML 2.0 IdP such as Okta/OneLogin)
@@ -84,7 +84,7 @@ Choose exactly **one authentication approach** below.
 
 </details>
 
-### Private key authentication
+### 3. Private key authentication
 
 You can use the `private_key` and `private_key_passphrase` parameters to specify for key pair authentication. In you configuration YML file, add the parameters as per the following example.
 
@@ -108,7 +108,7 @@ You can use the `private_key` and `private_key_passphrase` parameters to specify
 
 </details>
 
-### OAuth 2.0 Client Credentials (NEW)
+### 4. OAuth 2.0 Client Credentials (NEW)
 
 ```yaml
   # 4) OAuth 2.0 Client Credentials
@@ -126,6 +126,12 @@ You can use the `private_key` and `private_key_passphrase` parameters to specify
 <table><thead><tr><th width="231.75">Property</th><th width="93">Required</th><th>Description</th></tr></thead><tbody><tr><td><code>oauth_client_id</code></td><td>yes</td><td>Client ID from the IdP for the Snowflake <strong>security integration</strong>.</td></tr><tr><td><code>oauth_client_secret</code></td><td>yes</td><td>Client secret from the IdP for the Snowflake <strong>security integration</strong>.</td></tr><tr><td><code>oauth_token_request_url</code></td><td>yes</td><td>IdP token endpoint that issues access tokens to the driver. (With Snowflake as IdP, derive from server/account parameters.)</td></tr><tr><td><code>oauth_scope</code></td><td>no</td><td>Space-delimited, case-sensitive scopes. Defaults may be derived from role; specify explicitly for multiple/custom scopes.</td></tr></tbody></table>
 
 </details>
+
+
+
+
+
+
 
 ***
 
