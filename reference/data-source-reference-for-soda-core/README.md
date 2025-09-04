@@ -375,9 +375,11 @@ connection:
   password: ${env.PASSWORD}
   
   # If using private key authentication
+  authenticator: SNOWFLAKE_JWT
   private_key: ${env.PRIVATE_KEY}
   private_key_passphrase: ${env.PRIVATE_KEY_PASSPHRASE}
   # or
+  authenticator: SNOWFLAKE_JWT
   private_key_path: /path/to/rsa_key.p8 
   private_key_passphrase: ${env.PRIVATE_KEY_PASSPHRASE}
 
