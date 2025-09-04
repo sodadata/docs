@@ -10,68 +10,153 @@ description: Access configuration details to connect Soda to a Snowflake data so
 
 Install package: `soda-snowflake`
 
+Core connection:
+
 ```yaml
 data_source my_datasource_name:
   type: snowflake
-  host: localhost
-  port: 5432
-  username: ${SNOWFLAKE_USER}
-  password: ${SNOWFLAKE_PASSWORD}
+  # Core
   account: ${SNOWFLAKE_ACCOUNT}
-  database: soda
-  warehouse: soda_wh
-  connection_timeout: 240
-  role: PUBLIC
-  client_session_keep_alive: true
-  authenticator: externalbrowser
-  session_params:
-    QUERY_TAG: soda-queries
-    QUOTED_IDENTIFIERS_IGNORE_CASE: false
-  schema: public
+  database: <database>
+  schema: <schema>
+  warehouse: <warehouse>
+  role: <role>                            # optional, strongly recommended
+  connection_timeout: 240                 # optional
+  client_session_keep_alive: false        # optional
 ```
 
-| Property                                  | Required | Notes                                                                                                                                                                                                                                                                                           |
-| ----------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type                                      | required | Identify the type of data source for Soda.                                                                                                                                                                                                                                                      |
-| host                                      | optional | Provide host at which to connect to the data source.                                                                                                                                                                                                                                            |
-| port                                      | optional | Provide the port through which to connect to the data source.                                                                                                                                                                                                                                   |
-| username                                  | required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_USER}`.                                                                                                                                                                                        |
-| password                                  | required | Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_PASSWORD}`.                                                                                                                                                                                    |
-| account                                   | required | Provide the unique value that identifies your account. Consider using system variables to retrieve this value securely using, for example, `${SNOWFLAKE_ACCOUNT}`. Note: Account sometimes needs to take the form of `<account_identifier>-<account_name>` or `<account_identifier>.<region>`.  |
-| database                                  | required | Provide an idenfier for your database.                                                                                                                                                                                                                                                          |
-| warehouse                                 | required | Provide an identifier for the cluster of resources that is a Snowflake virtual warehouse. See [Overview of Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-overview).                                                                                                           |
-| connection\_timeout                       | required | Set the timeout period in seconds for an inactive login session.                                                                                                                                                                                                                                |
-| role<sup>1</sup>                          | optional | Specify a Snowflake role that has permission to access the `database` and `schema` of your data source.                                                                                                                                                                                         |
-| client\_session\_keep\_alive              | optional | Use this parameter to keep the session active, even with no user activity. Provide a boolean value: `true` or `false`                                                                                                                                                                           |
-| authenticator<sup>2</sup>                 | optional | Add an authenticator paramater with value `externalbrowser` to authenticate the connection to your Snowflake data source using any SAML 2.0-compliant identity provider (IdP) such as Okta or OneLogin.                                                                                         |
-| other params                              | optional | You can pass any other Snowflake paramters you wish by adding the key:value pairs to your Snowflake connection configuration. See [Snowflake Python Connector API documentation](https://docs.snowflake.com/en/user-guide/python-connector-api.html#connect) for a list of passable parameters. |
-| QUERY\_TAG                                | optional | See [QUERY\_TAG](https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag) in Snowflake documentation.                                                                                                                                                                             |
-| <p>QUOTED_IDENTIFIERS_<br>IGNORE_CASE</p> | optional | See [QUOTED\_IDENTIFIERS\_IGNORE\_CASE](https://docs.snowflake.com/en/sql-reference/parameters.html#quoted-identifiers-ignore-case) in Snowflake documentation.                                                                                                                                 |
-| schema                                    | required | Identify the schema in the data source in which your tables exist.                                                                                                                                                                                                                              |
+<details>
+
+<summary>Core connection properties</summary>
+
+<table><thead><tr><th width="242.5">Property</th><th width="133.75">Required</th><th width="100">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>type</code></td><td>yes</td><td>string</td><td>Identify the type of data source for Soda. In this case, must be <code>snowflake</code>.</td></tr><tr><td><code>account</code></td><td>yes</td><td>string</td><td>Provide the unique value that identifies your account. Consider using system variables to retrieve this value securely using, for example, <code>${SNOWFLAKE_ACCOUNT}</code>. Note: Account sometimes needs to take the form of <code>&#x3C;account_identifier>-&#x3C;account_name></code> or <code>&#x3C;account_identifier>.&#x3C;region></code>.</td></tr><tr><td><code>database</code></td><td>yes</td><td>string</td><td>Provide an identifier for your database.</td></tr><tr><td><code>schema</code></td><td>yes</td><td>string</td><td>Identify the schema in the data source in which your tables exist.</td></tr><tr><td><code>warehouse</code></td><td>yes</td><td>string</td><td>Provide an identifier for the cluster of resources that is a Snowflake virtual warehouse. See <a href="https://docs.snowflake.com/en/user-guide/warehouses-overview">Overview of Warehouses</a>.</td></tr><tr><td><code>role</code><sup>1</sup></td><td>recommended</td><td>string</td><td>Specify a Snowflake role that has permission to access the <code>database</code> and <code>schema</code> of your data source.</td></tr><tr><td><code>connection_timeout</code></td><td>no</td><td>integer</td><td>Set the timeout period in seconds for an inactive login session.</td></tr><tr><td><code>client_session_keep_alive</code></td><td>no</td><td>boolean</td><td>Use this parameter to keep the session active, even with no user activity.<br>Default value: <code>false</code>.</td></tr><tr><td><code>session_parameters</code></td><td>no</td><td>object</td><td>Pass-through Snowflake session params (e.g., <code>QUERY_TAG</code>, <code>QUOTED_IDENTIFIERS_IGNORE_CASE</code>).</td></tr><tr><td><code>proxy_http</code></td><td>no</td><td>string</td><td>HTTP proxy (agent environments); see <a href="connect-snowflake.md#troubleshoot">Troubleshoot section</a>.</td></tr><tr><td><code>proxy_https</code></td><td>no</td><td>string</td><td>HTTPS proxy (agent environments); see <a href="connect-snowflake.md#troubleshoot">Troubleshoot section</a>.</td></tr></tbody></table>
 
 <sup>1</sup> Though optional, best practice dictates that you provide a value for `role`. If you do not provide a role, and Snowflake has not assigned a [Snowflake System-Defined Role](https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#system-defined-roles) to the user account, Snowflake may, confusingly, deny access to the data source.
 
+#### Authenticator selector
+
+<table><thead><tr><th width="154.75">Property</th><th width="113.5">Required</th><th>Values / Example</th><th>Description</th></tr></thead><tbody><tr><td><code>authenticator</code><sup>2</sup></td><td>no</td><td><code>externalbrowser</code> | <code>SNOWFLAKE_JWT</code> | <code>OAUTH_CLIENT_CREDENTIALS</code></td><td>Add an authenticator paramater with value <code>externalbrowser</code> to authenticate the connection to your Snowflake data source using any SAML 2.0-compliant identity provider (IdP) such as Okta or OneLogin.</td></tr></tbody></table>
+
 <sup>2</sup> Use this parameter when adding Snowflake connection configurations to a `configuration.yml` file. However, if you are adding connection configuration details directly in Soda Cloud (connecting to your Snowflake data source via a Soda Agent) to authenticate using Okta, you must follow the instructions documented by Snowflake for [Native SSO - Okta Only](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#native-sso-okta-only).
+
+</details>
+
+Choose exactly **one authentication approach** below.
+
+{% hint style="info" %}
+**Notes**:
+
+* Use **one** authentication method per connection.
+* While `role` is technically optional, providing it avoids confusing access errors.
+* Private key auth can use inline `private_key` (PEM) or `private_key_path`.
+* `externalbrowser` SSO uses your SAML 2.0 IdP (e.g., Okta/OneLogin).
+* Proxy parameters are supported when connecting via an agent behind a proxy.
+{% endhint %}
+
+### Username + password
+
+```yaml
+  # 1) Username + password
+  username: ${SNOWFLAKE_USER}
+  password: ${SNOWFLAKE_PASSWORD}
+```
+
+<details>
+
+<summary>Username/password properties (when <em>no</em> <code>authenticator</code> is set)</summary>
+
+<table><thead><tr><th width="120">Property</th><th width="104">Required</th><th>Description</th></tr></thead><tbody><tr><td><code>username</code></td><td>yes</td><td>Snowflake user login.<br>Consider using system variables to retrieve this value securely using, for example, <code>${SNOWFLAKE_USER}</code>.</td></tr><tr><td><code>password</code></td><td>yes</td><td>Password for the user.<br>Consider using system variables to retrieve this value securely using, for example, <code>${SNOWFLAKE_PASSWORD}</code>.</td></tr></tbody></table>
+
+</details>
+
+### External browser SSO
+
+```yaml
+  # 2) External browser SSO (SAML 2.0 IdP such as Okta/OneLogin)
+  authenticator: externalbrowser
+```
+
+<details>
+
+<summary>External browser SSO properties (when <code>authenticator: externalbrowser</code>)</summary>
+
+<table><thead><tr><th width="160.5">Property</th><th width="116.25">Required</th><th>Description</th></tr></thead><tbody><tr><td><code>username</code></td><td>no</td><td>Depending on IdP settings, may be required.<br>Consider using system variables to retrieve this value securely using, for example, <code>${SNOWFLAKE_USER}</code>.</td></tr><tr><td><code>authenticator</code></td><td>yes</td><td>Must be <code>externalbrowser</code> to enable SAML 2.0 browser-based SSO.</td></tr></tbody></table>
+
+</details>
 
 ### Private key authentication
 
 You can use the `private_key` and `private_key_passphrase` parameters to specify for key pair authentication. In you configuration YML file, add the parameters as per the following example.
 
 ```yaml
-data_source snowflake:
-  type: snowflake
-  username: xxxyyyzzz
-  ...
-  client_session_keep_alive: true
-  Authenticator: SNOWFLAKE_JWT
-  schema: TPCH_SF1
-  private_key_passphrase: "123xxx"
+  # 3) Key pair (JWT) authentication
+  authenticator: SNOWFLAKE_JWT
+  username: <user>
   private_key: |
     -----BEGIN ENCRYPTED PRIVATE KEY-----
     -----END ENCRYPTED PRIVATE KEY-----
+  private_key_passphrase: ${SNOWFLAKE_PASSPHRASE}
+  # or use a file path instead of inline key:
+  private_key_path: /path/to/private-key.pk8
 ```
 
-### Use a values file to store private key authentication values
+<details>
+
+<summary>Key pair / JWT properties (when <code>authenticator: SNOWFLAKE_JWT</code>)</summary>
+
+<table><thead><tr><th width="213.75">Property</th><th width="111.75">Required</th><th>Description</th></tr></thead><tbody><tr><td><code>username</code></td><td>yes</td><td>Snowflake user that owns the key pair.</td></tr><tr><td><code>private_key</code></td><td>yes*</td><td>Inline PEM private key. Use either this <strong>or</strong> <code>private_key_path</code>.</td></tr><tr><td><code>private_key_path</code></td><td>yes*</td><td>Path to private key file (<code>.pk8</code>). Use either this <strong>or</strong> <code>private_key</code>.</td></tr><tr><td><code>private_key_passphrase</code></td><td>no</td><td>Passphrase for encrypted private key.</td></tr></tbody></table>
+
+</details>
+
+### OAuth 2.0 Client Credentials (NEW)
+
+```yaml
+  # 4) OAuth 2.0 Client Credentials
+  authenticator: OAUTH_CLIENT_CREDENTIALS
+  oauth_client_id: <client-id>
+  oauth_client_secret: <client-secret>
+  oauth_token_request_url: https://<idp>/oauth/token
+  oauth_scope: "scope1 scope2"        # space-delimited; optional if derived by role
+```
+
+<details>
+
+<summary>OAuth 2.0 client properties (when <code>authenticator: OAUTH_CLIENT_CREDENTIALS</code>)</summary>
+
+<table><thead><tr><th width="231.75">Property</th><th width="93">Required</th><th>Description</th></tr></thead><tbody><tr><td><code>oauth_client_id</code></td><td>yes</td><td>Client ID from the IdP for the Snowflake <strong>security integration</strong>.</td></tr><tr><td><code>oauth_client_secret</code></td><td>yes</td><td>Client secret from the IdP for the Snowflake <strong>security integration</strong>.</td></tr><tr><td><code>oauth_token_request_url</code></td><td>yes</td><td>IdP token endpoint that issues access tokens to the driver. (With Snowflake as IdP, derive from server/account parameters.)</td></tr><tr><td><code>oauth_scope</code></td><td>no</td><td>Space-delimited, case-sensitive scopes. Defaults may be derived from role; specify explicitly for multiple/custom scopes.</td></tr></tbody></table>
+
+</details>
+
+***
+
+### Other parameters
+
+```yaml
+  # Optional Snowflake session parameters (passed through)
+  session_parameters:
+    QUERY_TAG: soda-queries
+    QUOTED_IDENTIFIERS_IGNORE_CASE: false
+
+  # Optional proxies (for agents behind proxy)
+  proxy_http: http://host:port
+  proxy_https: https://host:port
+```
+
+<details>
+
+<summary>Other parameters properties</summary>
+
+| Property                                  | Required | Notes                                                                                                                                                                                                                                                                                            |
+| ----------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| other params                              | optional | You can pass any other Snowflake parameters you wish by adding the key:value pairs to your Snowflake connection configuration. See [Snowflake Python Connector API documentation](https://docs.snowflake.com/en/user-guide/python-connector-api.html#connect) for a list of passable parameters. |
+| QUERY\_TAG                                | optional | See [QUERY\_TAG](https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag) in Snowflake documentation.                                                                                                                                                                              |
+| <p>QUOTED_IDENTIFIERS_<br>IGNORE_CASE</p> | optional | See [QUOTED\_IDENTIFIERS\_IGNORE\_CASE](https://docs.snowflake.com/en/sql-reference/parameters.html#quoted-identifiers-ignore-case) in Snowflake documentation.                                                                                                                                  |
+
+</details>
+
+***
+
+## Use a values file to store private key authentication values
 
 If you use a private key authentication with Snowflake and have deployed a [Soda Agent](../quick-start-sip/deploy.md), you can provide the required private key values in a `values.yml` file when you deploy or redeploy the agent.
 
