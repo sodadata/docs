@@ -121,3 +121,8 @@
             spec: soda-public-api-v1
       ```
   * [Webhook API](reference/webhook-api.md)
+* [Release notes](release-notes/README.md)
+  * [Soda Agent - Release notes](release-notes/soda-agent-release-notes.md)
+  * [Soda Cloud - Release notes](release-notes/soda-cloud-release-notes.md)
+  * [Soda Core - Release notes](release-notes/soda-core-release-notes.md)
+  * [Soda Library - Release notes](release-notes/soda-library-release-notes.md)
