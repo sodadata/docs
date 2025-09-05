@@ -34,9 +34,7 @@ soda cloud create -f sc.yml
 
 #### Parameters
 
-| Parameter | Required | Description                     |
-| --------- | -------- | ------------------------------- |
-| `--f`     | Yes      | Output file path for the config |
+<table><thead><tr><th>Parameter</th><th width="225.33203125">Required</th><th>Description</th></tr></thead><tbody><tr><td><code>--file, -f</code> </td><td>Yes</td><td>Path to a Soda Cloud YAML file</td></tr><tr><td><code>--verbose, -v</code></td><td>No</td><td>Display detailed logs during execution.</td></tr></tbody></table>
 
 ***
 
@@ -46,9 +44,7 @@ soda cloud create -f sc.yml
 soda cloud test -sc sc.yml
 ```
 
-| Parameter | Required | Description                    |
-| --------- | -------- | ------------------------------ |
-| `--sc`    | Yes      | Path to Soda Cloud config file |
+<table><thead><tr><th>Parameter</th><th width="212.6796875">Required</th><th>Description</th></tr></thead><tbody><tr><td><code>--soda-cloud, -sc</code></td><td>Yes</td><td>Path to a Soda Cloud YAML file</td></tr><tr><td><code>--verbose, -v</code></td><td>No</td><td>Display detailed logs during execution.</td></tr></tbody></table>
 
 ***
 
@@ -62,9 +58,10 @@ These commands help you define a local configuration for your data source (used 
 soda data-source create -f ds.yml
 ```
 
-| Parameter | Required | Description                          |
-| --------- | -------- | ------------------------------------ |
-| `--f`     | Yes      | Output file path for the config file |
+| Parameter       | Required | Description                                    |
+| --------------- | -------- | ---------------------------------------------- |
+| `--file, -f`    | Yes      | Output file path for the data source YAML file |
+| `--verbose, -v` | No       | Display detailed logs during execution.        |
 
 #### Test Data Source Connection
 
@@ -72,9 +69,10 @@ soda data-source create -f ds.yml
 soda data-source test -ds ds.yml
 ```
 
-| Parameter | Required | Description                          |
-| --------- | -------- | ------------------------------------ |
-| `--f`     | Yes      | Output file path for the config file |
+| Parameter                    | Required | Description                             |
+| ---------------------------- | -------- | --------------------------------------- |
+| `--data-source, -d`          | Yes      | Path to a data source YAML file         |
+| `--verbose, -v`              | No       | Display detailed logs during execution. |
 
 ***
 
@@ -86,14 +84,14 @@ Creates a new contract file for a given dataset. This is useful for bootstrappin
 soda contract create --dataset datasource/db/schema/table --file contract.yaml --data-source ds.yml --soda-cloud sc.yml --use-agent
 ```
 
-| Parameter            | Required | Description                                                                                   |
-| -------------------- | -------- | --------------------------------------------------------------------------------------------- |
-| `--dataset, -d`      | Yes      | Fully qualified dataset name (data\_source\_name/database\_name/schema\_name/table\_name).    |
-| `--file, -f`         | Yes      | Path to the contract file to be created. Directories will be created if needed.               |
-| `--data-source, -ds` | No       | Path to a local data source config file.                                                      |
-| `--soda-cloud, -sc`  | No       | Path to Soda Cloud config file. Required if using Soda Agent.                                 |
-| `--use-agent, -a`    | Yes\*    | Use Soda Agent for execution. **Currently, contract creation only works with `--use-agent`.** |
-| `--verbose, -v`      | No       | Display detailed logs during execution.                                                       |
+| Parameter            | Required | Description                                                                                                                  |
+| -------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `--dataset, -d`      | Yes      | Fully qualified dataset name (data\_source\_name/database\_name/schema\_name/table\_name) aka Soda Cloud dataset identifier. |
+| `--file, -f`         | Yes      | Path to a contract YAML file to be created. Directories will be created if needed.                                           |
+| `--data-source, -ds` | No       | Path to a data source YAML file.                                                                                             |
+| `--soda-cloud, -sc`  | No       | Path to Soda Cloud YAML file. Required if using Soda Agent.                                                                  |
+| `--use-agent, -a`    | Yes\*    | Use Soda Agent for execution. **Currently, contract creation only works with `--use-agent`.**                                |
+| `--verbose, -v`      | No       | Display detailed logs during execution.                                                                                      |
 
 \
 \*A new Soda extension will soon be available to create a contract without the need for a Soda Agent.
@@ -108,9 +106,10 @@ Checks that a contract is syntactically valid and points to an existing dataset 
 soda contract test --contract contract.yaml
 ```
 
-| Parameter    | Required | Description                    |
-| ------------ | -------- | ------------------------------ |
-| `--contract` | Yes      | Path to the contract YAML file |
+| Parameter                             | Required | Description                             |
+| ------------------------------------- | -------- | --------------------------------------- |
+| `--contract, -c`                      | Yes      | Path to a contract YAML file            |
+| `--verbose, -v`                       | No       | Display detailed logs during execution. |
 
 ## Publish a Contract
 
@@ -120,10 +119,11 @@ Publishes a local contract to Soda Cloud, making it the source of truth for veri
 soda contract publish --contract contract.yaml --soda-cloud sc.yml
 ```
 
-| Parameter      | Required | Description                    |
-| -------------- | -------- | ------------------------------ |
-| `--contract`   | Yes      | Path to the contract YAML file |
-| `--soda-cloud` | Yes      | Path to Soda Cloud config file |
+| Parameter            | Required | Description                             |
+| -------------------- | -------- | --------------------------------------- |
+| `--contract, -c`     | Yes      | Path to a contract YAML file            |
+| `--soda-cloud, -sc`  | Yes      | Path to Soda Cloud YAML file            |
+| `--verbose, -v`      | No       | Display detailed logs during execution. |
 
 This action requires the "Manage contract" permission on the dataset; the user is identified based on the API key provided in the Soda Cloud configuration. Learn more about permissions here: [dataset-attributes-and-responsibilities.md](../dataset-attributes-and-responsibilities.md "mention")
 
@@ -135,56 +135,22 @@ You can fetch a contract from Soda Cloud to output it in a local file.
 soda contract fetch --dataset datasource/db/schema/table --file contract.yaml --soda-cloud sc.yml
 ```
 
-| Parameter           | Required | Description                                               |
-| ------------------- | -------- | --------------------------------------------------------- |
-| `--dataset`         | yes      | The dataset path                                          |
-| `--file`            | yes      | The path to the contract file to either update or create. |
-| `--soda-cloud, -sc` | yes      | Path to Soda config file                                  |
+| Parameter           | Required | Description                                           |
+| ------------------- | -------- | ----------------------------------------------------- |
+| `--dataset, -d`     | Yes      | Soda Cloud dataset identifier                         |
+| `--file, -f`        | Yes      | The path to a contract YAML file to update or create. |
+| `--soda-cloud, -sc` | Yes      | Path to Soda Cloud YAML file                          |
+| `--verbose, -v`     | no       | Display detailed logs during execution.               |
 
 ## Verify a Contract
 
-Executes a contract verification to check if the dataset complies with its expectations. You can run this locally (Soda Core) or remotely via a Soda Agent.
+Executes a contract verification to check if the dataset complies with its expectations. You can verify a local contract file or a Soda Cloud contract either locally (in your Python environment) or remotely with a Soda Agent.
 
 ```bash
 soda contract verify --data-source ds.yml --contract contract.yaml
 ```
 
-| Parameter           | Required         | Description                                                                                                                                                                                                                                                                                                                                   |
-| ------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--use-agent, -a`   | No               | Use Soda Agent for execution                                                                                                                                                                                                                                                                                                                  |
-| `--publish`         | No               | Push verification results to Soda Cloud. This action requires the "Manage contract" permission on the dataset; the user is identified based on the API key provided in the Soda Cloud configuration. Learn more about permissions here: [dataset-attributes-and-responsibilities.md](../dataset-attributes-and-responsibilities.md "mention") |
-| `--soda-cloud, -sc` | with `--publish` | Path to Soda Cloud config file                                                                                                                                                                                                                                                                                                                |
-| `--set`             | No               | Override contract variables at runtime (can be used multiple times)                                                                                                                                                                                                                                                                           |
-| `--verbose, -u`     | No               | Display detailed logs during execution                                                                                                                                                                                                                                                                                                        |
-
-***
-
-### **With Soda Core**
-
-| Parameter            | Required | Description                      |
-| -------------------- | -------- | -------------------------------- |
-| `--data-source, -ds` | Yes      | Path to local data source config |
-
-### **With Soda Agent**
-
-| Parameter           | Required | Description                    |
-| ------------------- | -------- | ------------------------------ |
-| `--use-agent, -a`   | Yes      | Use Soda Agent for execution   |
-| `--soda-cloud, -sc` | Yes      | Path to Soda Cloud config file |
-
-***
-
-### **With a local Data Contract file**
-
-| Parameter    | Required                      | Description                |
-| ------------ | ----------------------------- | -------------------------- |
-| `--contract` | Yes (if verifying local file) | Path to contract YAML file |
-
-### **With a Soda Cloud Data Contract**
-
-| Parameter       | Required | Description                  |
-| --------------- | -------- | ---------------------------- |
-| `--dataset, -d` | Yes      | Fully qualified dataset name |
+<table><thead><tr><th>Parameter</th><th width="230.328125">Required</th><th>Description</th></tr></thead><tbody><tr><td><code>--use-agent, -a</code></td><td>No</td><td>Use Soda Agent for execution</td></tr><tr><td><code>--publish</code></td><td>No</td><td>Publish results and contract to Soda Cloud. This action requires the "Manage contract" permission on the dataset; the user is identified based on the API key provided in the Soda Cloud configuration. Learn more about permissions here: <a data-mention href="../dataset-attributes-and-responsibilities.md">dataset-attributes-and-responsibilities.md</a></td></tr><tr><td><code>--data-source, -ds</code></td><td>without <code>--use-agent</code></td><td>Path to a data source YAML file</td></tr><tr><td><code>--contract, -c</code></td><td>without <code>--use-agent</code></td><td>Path to the contract YAML file</td></tr><tr><td><code>--soda-cloud, -sc</code></td><td>with <code>--use-agent</code> or with <code>--publish</code>  </td><td>Path to a Soda Cloud config YAML file</td></tr><tr><td><code>--dataset, -d</code></td><td>with <code>--use-agent</code></td><td>Soda Cloud dataset identifier</td></tr><tr><td><code>--set</code></td><td>No</td><td>Override contract variables at runtime (can be used multiple times)</td></tr><tr><td><code>--verbose, -v</code></td><td>No</td><td>Display detailed logs during execution</td></tr></tbody></table>
 
 ***
 
