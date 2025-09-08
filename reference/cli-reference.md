@@ -69,10 +69,10 @@ soda data-source create -f ds.yml
 soda data-source test -ds ds.yml
 ```
 
-| Parameter                    | Required | Description                             |
-| ---------------------------- | -------- | --------------------------------------- |
-| `--data-source, -d`          | Yes      | Path to a data source YAML file         |
-| `--verbose, -v`              | No       | Display detailed logs during execution. |
+| Parameter                     | Required | Description                             |
+| ----------------------------- | -------- | --------------------------------------- |
+| `--data-source, -ds`          | Yes      | Path to a data source YAML file         |
+| `--verbose, -v`               | No       | Display detailed logs during execution. |
 
 ***
 
