@@ -19,13 +19,10 @@ description: >-
   * Support for user feedback to flag anomalies & improve algorithm performance.
   * Support for configurable frequencies.
     * Supported frequencies: hourly, two-hourly, three-hourly, four-hourly, six-hourly, eight-hourly, 12-hourly, daily, weekly.
+  * Available on supported data sources:
+    * Athena, Bigquery, Databricks, Fabric, Postgres, Redshift, Snowflake, SQL Server, Synapse.
 * Introduced sampling strategy for dataset profiling.
   * You can now choose between the top 1,000,000 rows or the last 30 days of data (based on partition column).
-* Introduced support for primary key detection.
-* Introduced support for `Fabric` data source.
-* Enhanced quoting of identifiers with special characters.
-* Fixed reconciliation checks on large MySQL tables. Previously this would result in `mysql.connector.errors.InternalError: Unread result found`
-* Fixed mix-up of group evolution checks. Previously multiple group evolution checks in a single SodaCL file would have their results mixed up.
 * Increased default resource limits to meet increased demand for metric monitoring features.
   * Requests
     * CPU: 250m (unchanged)
