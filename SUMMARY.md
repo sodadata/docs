@@ -75,7 +75,7 @@
 * [Organization and Admin settings](organization-and-admin-settings/README.md)
   * [General settings](organization-and-admin-settings/general-settings.md)
   * [User management](organization-and-admin-settings/user-management.md)
-  * [User and user group management  with SSO](organization-and-admin-settings/user-and-user-group-management-with-sso.md)
+  * [User and user group management with SSO](organization-and-admin-settings/user-and-user-group-management-with-sso.md)
   * [Global and Dataset Roles](organization-and-admin-settings/global-and-dataset-roles.md)
 * [Integrations](integrations/README.md)
   * [Alation](integrations/alation.md)
@@ -111,9 +111,9 @@
   * [Python API](reference/python-api.md)
   * [Rest API](reference/rest-api/README.md)
     * ```yaml
-      type: builtin:openapi
       props:
         models: true
+      type: builtin:openapi
       dependencies:
         spec:
           ref:
