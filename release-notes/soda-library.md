@@ -6,6 +6,34 @@ description: >-
 
 # Release notes for Soda Library
 
+### \[soda-library] 1.12.22
+
+<sup>8 September 2025</sup>
+
+### 1.12.22 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
+
+* Bump `deepdiff~=8.6` to fix (CVE-2025-58367)[https://github.com/advisories/GHSA-mw26-5g2v-hqw3]
+* Fix data type for Redshift metadata row count
+
+### \[soda-library] 1.12.21
+
+<sup>3 September 2025</sup>
+
+### 1.12.21 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
+
+* Quote identitifiers in queries
+* Add private key auth support for snowflake
+
+### \[soda-library] 1.12.20
+
+<sup>3 September 2025</sup>
+
+### 1.12.20 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
+
+* Fix calculating total row count change metric
+* Introduce OAuth client credentials flow for trino
+* Enable OAuth client credentials flow for snowflake
+
 ### \[soda-library] 1.12.19
 
 <sup>28 August 2025</sup>
