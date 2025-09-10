@@ -1,4 +1,4 @@
-# Install and Configure
+# Install and configure
 
 Before you can define, test, or verify Git-managed data contracts, you need to install the Soda CLI and configure your environment.
 
@@ -63,17 +63,19 @@ pip install -i https://pypi.dev.sodadata.io "soda-postgres>=4.0.0.dev1" -U
 soda data-source create -f ds.yml
 ```
 
-Open `sc.yml` and provide the necessary credentials
+Open `ds.yml` and provide the necessary credentials.
 
 For example with PostgreSQL:
 
 ```javascript
-type: postgres;
-name: postgres_d;
-connection: host: localhost;
-port: 5432;
-user: soda;
-password: database: default_db;
+type: postgres
+name: postgres
+connection:
+  host: host_name
+  port: 5432
+  user: user_name
+  password: ${env.SODA_DEMO_POSTGRES_PW}
+  database: db_name
 ```
 
 > Refer to the [data-source-reference-for-soda-core](../../reference/data-source-reference-for-soda-core/ "mention") for the configurations of each data source type.
