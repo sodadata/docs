@@ -63,6 +63,12 @@ soda data-source create -f ds_config.yml
 | `--file, -f`    | Yes      | Output file path for the data source YAML configuration file. |
 | `--verbose, -v` | No       | Display detailed logs during execution.                       |
 
+{% hint style="info" %}
+By default, the YAML file generated as `ds_config.yml` is a template for **PostgreSQL connections**.
+
+To see how to modify it to connect to other data sources, head to [data-source-reference-for-soda-core](data-source-reference-for-soda-core/ "mention").
+{% endhint %}
+
 #### Test data source connection
 
 ```bash
