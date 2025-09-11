@@ -1,4 +1,4 @@
-# CLI Reference
+# CLI reference
 
 This guide documents the CLI commands for working with Soda Data Contracts. You can use the CLI to generate, test, publish, and verify contracts using either Soda Core (local execution) or Soda Agent (remote execution).
 
@@ -84,6 +84,10 @@ soda data-source test -ds ds_config.yml
 
 ## Create a contract
 
+{% hint style="warning" %}
+Available soon
+{% endhint %}
+
 Creates a new contract file for a given dataset. This is useful for bootstrapping a contract definition from an existing dataset schema.
 
 ```bash
@@ -96,11 +100,10 @@ soda contract create --dataset datasource/db/schema/table --file contract.yaml -
 | `--file, -f`         | Yes      | Path to a contract YAML file to be created. Directories will be created if needed.                                           |
 | `--data-source, -ds` | No       | Path to a data source YAML config file.                                                                                      |
 | `--soda-cloud, -sc`  | No       | Path to Soda Cloud YAML config file. Required if using Soda Agent.                                                           |
-| `--use-agent, -a`    | Yes\*    | Use Soda Agent for execution. **Currently, contract creation only works with `--use-agent`.**                                |
+| `--use-agent, -a`    | Yes      | Use Soda Agent for execution. **Currently, contract creation only works with `--use-agent`.**                                |
 | `--verbose, -v`      | No       | Display detailed logs during execution.                                                                                      |
 
-\
-\*A new Soda extension will soon be available to create a contract without the need for a Soda Agent.
+
 
 ***
 

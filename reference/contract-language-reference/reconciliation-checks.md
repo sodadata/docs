@@ -5,7 +5,7 @@ description: This page documents the contract language syntax for reconciliation
 # Reconciliation checks
 
 {% hint style="warning" %}
-Available on the 15th of September 2025.&#x20;
+Only available with Soda Agent.&#x20;
 {% endhint %}
 
 Reconciliation checks validate that a **target dataset** matches a **source dataset**, ensuring that data remains consistent after migrations, in pipelines, or during synchronizations. They can be used for both **metric-level (aggregate) validation** and **row-level (record-by-record) validation**.

@@ -1,4 +1,4 @@
-# Contract Language Reference
+# Contract Language reference
 
 A Soda data contract is a YAML document that contains data quality checks. The checks in a Soda data contract are similar to unit tests for testing software. Verifying a contract means evaluating the checks against the actual data. If contract verification fails, notifications can be sent out or the new data can be stopped from being released to users.
 
@@ -166,21 +166,11 @@ checks:
 
 The schema check uses the columns as specified in the contract and compares them with the measured dataset columns as as the expected columns.
 
-| Key                        | Description                                                                                                                | Optional |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `name`                     | The name of the column. The name is **case sensitive**.                                                                    | No       |
-| `data_type`                | The data type of the column as is returned by the metadata from the data source. Data types are compared case insensitive. | Yes      |
-| `character_maximum_length` | The character maximum length. This represents the maximum length for data types like `VARCHAR(255)`                        | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="112.0333251953125">Optional</th></tr></thead><tbody><tr><td><code>name</code></td><td>The name of the column. The name is <strong>case sensitive</strong>.</td><td>No</td></tr><tr><td><code>data_type</code></td><td>The data type of the column as is returned by the metadata from the data source. Data types are compared case insensitive.</td><td>Yes</td></tr><tr><td><code>character_maximum_length</code></td><td>The character maximum length. This represents the maximum length for data types like <code>VARCHAR(255)</code></td><td>Yes</td></tr></tbody></table>
 
 **Check configuration keys:**
 
-| Key                        | Description                                                                                                                                                                                                                | Optional |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `allow_extra_columns`      | Specifies if columns other than the ones listed in the contract are allowed in the dataset. Values are `true` or `false`. Default is false, which means that all columns in the dataset must be specified in the contract. | Yes      |
-| `allow_other_column_order` | Specifies if column ordering must be exact the same as in the contract YAML document. Values are `true` or `false`. Default is false, which means that columns must appear in the order as in the contract.                | Yes      |
-| `name`                     | [#check-names](./#check-names "mention")                                                                                                                                                                                   | Yes      |
-| `qualifier`                | [#check-qualifiers](./#check-qualifiers "mention")                                                                                                                                                                         | Yes      |
-| `attributes`               | [#check-attributes](./#check-attributes "mention")                                                                                                                                                                         | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="106.33331298828125">Optional</th></tr></thead><tbody><tr><td><code>allow_extra_columns</code></td><td>Specifies if columns other than the ones listed in the contract are allowed in the dataset. Values are <code>true</code> or <code>false</code>. Default is false, which means that all columns in the dataset must be specified in the contract.</td><td>Yes</td></tr><tr><td><code>allow_other_column_order</code></td><td>Specifies if column ordering must be exact the same as in the contract YAML document. Values are <code>true</code> or <code>false</code>. Default is false, which means that columns must appear in the order as in the contract.</td><td>Yes</td></tr><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 ***
 
@@ -198,13 +188,7 @@ checks:
 
 **Check configuration keys**
 
-| Key          | Description                                                                                                      | Optional |
-| ------------ | ---------------------------------------------------------------------------------------------------------------- | -------- |
-| `name`       | [#check-names](./#check-names "mention")                                                                         | Yes      |
-| `threshold`  | The default row count threshold verifies there is at least 1 row present. [#thresholds](./#thresholds "mention") | Yes      |
-| `filter`     | [#configure-a-check-filter](./#configure-a-check-filter "mention")                                               | Yes      |
-| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                               | Yes      |
-| `attributes` | [#check-attributes](./#check-attributes "mention")                                                               | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="106.33331298828125">Optional</th></tr></thead><tbody><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>threshold</code></td><td>The default row count threshold verifies there is at least 1 row present. <a data-mention href="./#thresholds">#thresholds</a></td><td>Yes</td></tr><tr><td><code>filter</code></td><td><a data-mention href="./#configure-a-check-filter">#configure-a-check-filter</a></td><td>Yes</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 ***
 
@@ -229,15 +213,7 @@ checks:
 
 **Check configuration keys**
 
-| Key          | Description                                                                                                                                                                                 | Optional |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `column`     | Specifies a timestamp column that represents the time of the row or                                                                                                                         | Yes      |
-| `unit`       | Specifies a the unit of measure for the time period between the current time and the most recent timestamp in the column. Values are `hour`, `minute` & `day` Default threshold is 1 `hour` | Yes      |
-| `name`       | [#check-names](./#check-names "mention")                                                                                                                                                    | Yes      |
-| `threshold`  | The default freshness threshold verifies there are rows present that are less than 1 hour old. [#thresholds](./#thresholds "mention")                                                       | Yes      |
-| `filter`     | [#configure-a-check-filter](./#configure-a-check-filter "mention")                                                                                                                          | Yes      |
-| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                                                                                                          | Yes      |
-| `attributes` | [#check-attributes](./#check-attributes "mention")                                                                                                                                          | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="106.33331298828125">Optional</th></tr></thead><tbody><tr><td><code>column</code></td><td>Specifies a timestamp column that represents the time of the row or</td><td>Yes</td></tr><tr><td><code>unit</code></td><td>Specifies a the unit of measure for the time period between the current time and the most recent timestamp in the column. Values are <code>hour</code>, <code>minute</code> &#x26; <code>day</code> Default threshold is 1 <code>hour</code></td><td>Yes</td></tr><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>threshold</code></td><td>The default freshness threshold verifies there are rows present that are less than 1 hour old. <a data-mention href="./#thresholds">#thresholds</a></td><td>Yes</td></tr><tr><td><code>filter</code></td><td><a data-mention href="./#configure-a-check-filter">#configure-a-check-filter</a></td><td>Yes</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 ***
 
@@ -259,15 +235,7 @@ columns:
 
 **Check configuration keys**
 
-| Key              | Description                                                                                                                    | Optional |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| `missing_values` | The list of values is considered missing. NULL is always considered a missing value and doesn't need to be included            | No\*     |
-| `missing_format` | A SQL regex that matches with missing values. (Advanced)                                                                       | No\*     |
-| `name`           | [#check-names](./#check-names "mention")                                                                                       | Yes      |
-| `threshold`      | The default missing check threshold verifies there are no missing values in the column. [#thresholds](./#thresholds "mention") | Yes      |
-| `filter`         | [#configure-a-check-filter](./#configure-a-check-filter "mention")                                                             | Yes      |
-| `qualifier`      | [#check-qualifiers](./#check-qualifiers "mention")                                                                             | Yes      |
-| `attributes`     | [#check-attributes](./#check-attributes "mention")                                                                             | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="106.33331298828125">Optional</th></tr></thead><tbody><tr><td><code>missing_values</code></td><td>The list of values is considered missing. NULL is always considered a missing value and doesn't need to be included</td><td>No*</td></tr><tr><td><code>missing_format</code></td><td>A SQL regex that matches with missing values. (Advanced)</td><td>No*</td></tr><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>threshold</code></td><td>The default missing check threshold verifies there are no missing values in the column. <a data-mention href="./#thresholds">#thresholds</a></td><td>Yes</td></tr><tr><td><code>filter</code></td><td><a data-mention href="./#configure-a-check-filter">#configure-a-check-filter</a></td><td>Yes</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 \* there are several configuration keys to configure the missing values. At least one missing configuration is required.&#x20;
 
@@ -330,23 +298,7 @@ columns:
 
 **Check configuration keys**
 
-| Key                    | Description                                                                                                              | Optional |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------- |
-| `valid_values`         | A list of valid values                                                                                                   | No\*     |
-| `valid_format`         | A SQL regular expression that matches with valid values                                                                  | No\*     |
-| `valid_reference_data` | References a dataset and column that contains valid values                                                               | No\*     |
-| `valid_min`            | Valid values must be greater or equal than the configured value                                                          | No\*     |
-| `valid_max`            | Valid values must be less or equal than the configured value                                                             | No\*     |
-| `valid_length`         | The fixed length of valid values                                                                                         | No\*     |
-| `valid_min_length`     | The minimum length of valid values                                                                                       | No\*     |
-| `valid_max_length`     | The maximum length of valid values                                                                                       | No\*     |
-| `invalid_values`       | A list of invalid values                                                                                                 | No\*     |
-| `invalid_format`       | A SQL regular expression that matches with invalid values                                                                | No\*     |
-| `name`                 | [#check-names](./#check-names "mention")                                                                                 | Yes      |
-| `threshold`            | The default invalid check threshold ensures there must not be any invalid values. [#thresholds](./#thresholds "mention") | Yes      |
-| `filter`               | [#configure-a-check-filter](./#configure-a-check-filter "mention")                                                       | Yes      |
-| `qualifier`            | [#check-qualifiers](./#check-qualifiers "mention")                                                                       | Yes      |
-| `attributes`           | [#check-attributes](./#check-attributes "mention")                                                                       | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="105.699951171875">Optional</th></tr></thead><tbody><tr><td><code>valid_values</code></td><td>A list of valid values</td><td>No*</td></tr><tr><td><code>valid_format</code></td><td>A SQL regular expression that matches with valid values</td><td>No*</td></tr><tr><td><code>valid_reference_data</code></td><td>References a dataset and column that contains valid values</td><td>No*</td></tr><tr><td><code>valid_min</code></td><td>Valid values must be greater or equal than the configured value</td><td>No*</td></tr><tr><td><code>valid_max</code></td><td>Valid values must be less or equal than the configured value</td><td>No*</td></tr><tr><td><code>valid_length</code></td><td>The fixed length of valid values</td><td>No*</td></tr><tr><td><code>valid_min_length</code></td><td>The minimum length of valid values</td><td>No*</td></tr><tr><td><code>valid_max_length</code></td><td>The maximum length of valid values</td><td>No*</td></tr><tr><td><code>invalid_values</code></td><td>A list of invalid values</td><td>No*</td></tr><tr><td><code>invalid_format</code></td><td>A SQL regular expression that matches with invalid values</td><td>No*</td></tr><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>threshold</code></td><td>The default invalid check threshold ensures there must not be any invalid values. <a data-mention href="./#thresholds">#thresholds</a></td><td>Yes</td></tr><tr><td><code>filter</code></td><td><a data-mention href="./#configure-a-check-filter">#configure-a-check-filter</a></td><td>Yes</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 \* there are several configuration keys to configure the invalid values. At least one validity configuration is required. Multiple validity configurations can be combined.
 
@@ -442,13 +394,7 @@ columns:
 
 **Configuration keys:**
 
-| Key          | Description                                                                                                       | Optional |
-| ------------ | ----------------------------------------------------------------------------------------------------------------- | -------- |
-| `name`       | [#check-names](./#check-names "mention")                                                                          | Yes      |
-| `threshold`  | The default duplicate check threshold requires that all values are unique. [#thresholds](./#thresholds "mention") | Yes      |
-| `filter`     | Check filter                                                                                                      | Yes      |
-| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                                | Yes      |
-| `attributes` | [#check-attributes](./#check-attributes "mention")                                                                | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="106.33331298828125">Optional</th></tr></thead><tbody><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>threshold</code></td><td>The default duplicate check threshold requires that all values are unique. <a data-mention href="./#thresholds">#thresholds</a></td><td>Yes</td></tr><tr><td><code>filter</code></td><td>Check filter</td><td>Yes</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 ### Multi-column duplicate check
 
@@ -461,14 +407,7 @@ checks:
 
 **Configuration keys:**
 
-| Key          | Description                                                                                                   | Optional |
-| ------------ | ------------------------------------------------------------------------------------------------------------- | -------- |
-| `columns`    | List of column names                                                                                          | No       |
-| `name`       | [#check-names](./#check-names "mention")                                                                      | Yes      |
-| `threshold`  | The default duplicate check threshold requires that all values are unique. Data Contract Language Reference ✅ | Yes      |
-| `filter`     | [#configure-a-check-filter](./#configure-a-check-filter "mention")                                            | Yes      |
-| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                            | Yes      |
-| `attributes` | [#check-attributes](./#check-attributes "mention")                                                            | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="106.33331298828125">Optional</th></tr></thead><tbody><tr><td><code>columns</code></td><td>List of column names</td><td>No</td></tr><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>threshold</code></td><td>The default duplicate check threshold requires that all values are unique. Data Contract Language Reference ✅</td><td>Yes</td></tr><tr><td><code>filter</code></td><td><a data-mention href="./#configure-a-check-filter">#configure-a-check-filter</a></td><td>Yes</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 ***
 
@@ -493,14 +432,7 @@ columns:
 
 **Check configuration keys**
 
-| Key          | Description                                                                                         | Optional |
-| ------------ | --------------------------------------------------------------------------------------------------- | -------- |
-| `function`   | Supported by all data sources: `avg`, `avg_length`, `max`, `min`, `max_length`, `min_length`, `sum` | No       |
-| `name`       | [#check-names](./#check-names "mention")                                                            | Yes      |
-| `threshold`  | [#thresholds](./#thresholds "mention")                                                              | No       |
-| `filter`     | [#configure-a-check-filter](./#configure-a-check-filter "mention")                                  | Yes      |
-| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                  | Yes      |
-| `attributes` | [#check-attributes](./#check-attributes "mention")                                                  | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="105.70001220703125">Optional</th></tr></thead><tbody><tr><td><code>function</code></td><td>Supported by all data sources: <code>avg</code>, <code>avg_length</code>, <code>max</code>, <code>min</code>, <code>max_length</code>, <code>min_length</code>, <code>sum</code></td><td>No</td></tr><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>threshold</code></td><td><a data-mention href="./#thresholds">#thresholds</a></td><td>No</td></tr><tr><td><code>filter</code></td><td><a data-mention href="./#configure-a-check-filter">#configure-a-check-filter</a></td><td>Yes</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 ***
 
@@ -544,13 +476,7 @@ columns:
 
 **Check configuration keys**
 
-| Key          | Description                                                                                        | Optional |
-| ------------ | -------------------------------------------------------------------------------------------------- | -------- |
-| `expression` | A SQL expression that produces the numeric metric value that will be compared with the threshold.  | No       |
-| `name`       | [#check-names](./#check-names "mention")                                                           | Yes      |
-| `threshold`  | [#thresholds](./#thresholds "mention")                                                             | No       |
-| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                 | Yes      |
-| `attributes` | [#check-attributes](./#check-attributes "mention")                                                 | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="106.33331298828125">Optional</th></tr></thead><tbody><tr><td><code>expression</code></td><td>A SQL expression that produces the numeric metric value that will be compared with the threshold. </td><td>No</td></tr><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>threshold</code></td><td><a data-mention href="./#thresholds">#thresholds</a></td><td>No</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 ### Verify a SQL query value against a threshold
 
@@ -582,13 +508,7 @@ columns:
             must_be_greater_than: 3
 ```
 
-| Key          | Description                                                                                        | Optional |
-| ------------ | -------------------------------------------------------------------------------------------------- | -------- |
-| `query`      | A SQL query that produces a single numeric metric value that will be compared with the threshold.  | No       |
-| `name`       | [#check-names](./#check-names "mention")                                                           | Yes      |
-| `threshold`  | [#thresholds](./#thresholds "mention")                                                             | No       |
-| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                 | Yes      |
-| `attributes` | [#check-attributes](./#check-attributes "mention")                                                 | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="106.33331298828125">Optional</th></tr></thead><tbody><tr><td><code>query</code></td><td>A SQL query that produces a single numeric metric value that will be compared with the threshold. </td><td>No</td></tr><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>threshold</code></td><td><a data-mention href="./#thresholds">#thresholds</a></td><td>No</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 ***
 
@@ -625,13 +545,7 @@ columns:
 
 **Check configuration keys**
 
-| Key          | Description                                                                                                                                                                                  | Optional |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Expression` | A SQL expression, used as the WHERE clause, that produces any tabular data indicating failures with the data. An expression returning zero rows indicates there is no problem with the data. | No       |
-| `name`       | [#check-names](./#check-names "mention")                                                                                                                                                     | Yes      |
-| `threshold`  | The default is that there should be no failed rows.[#thresholds](./#thresholds "mention")                                                                                                    | Yes      |
-| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                                                                                                           | Yes      |
-| `attributes` | [#check-attributes](./#check-attributes "mention")                                                                                                                                           | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="106.33331298828125">Optional</th></tr></thead><tbody><tr><td><code>Expression</code></td><td>A SQL expression, used as the WHERE clause, that produces any tabular data indicating failures with the data. An expression returning zero rows indicates there is no problem with the data.</td><td>No</td></tr><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>threshold</code></td><td>The default is that there should be no failed rows.<a data-mention href="./#thresholds">#thresholds</a></td><td>Yes</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 ### Verify and visualize failed rows with a SQL query
 
@@ -660,19 +574,50 @@ columns:
 
 **Check configuration keys**
 
-| Key          | Description                                                                                                                                                             | Optional |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `query`      | A SQL query that produces any tabular data indicating failures with the data. An expression returning zero rows indicates there is no problem with the data. I          | No       |
-| `name`       | [#check-names](./#check-names "mention")                                                                                                                                | Yes      |
-| `threshold`  | The default is that there should be no failed rows. The threshold can only be count-based. Percent thresholds are not supported. [#thresholds](./#thresholds "mention") | Yes      |
-| `qualifier`  | [#check-qualifiers](./#check-qualifiers "mention")                                                                                                                      | Yes      |
-| `attributes` | [#check-attributes](./#check-attributes "mention")                                                                                                                      | Yes      |
+<table><thead><tr><th>Key</th><th>Description</th><th width="106.33331298828125">Optional</th></tr></thead><tbody><tr><td><code>query</code></td><td>A SQL query that produces any tabular data indicating failures with the data. An expression returning zero rows indicates there is no problem with the data. I</td><td>No</td></tr><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>threshold</code></td><td>The default is that there should be no failed rows. The threshold can only be count-based. Percent thresholds are not supported. <a data-mention href="./#thresholds">#thresholds</a></td><td>Yes</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 ***
 
 ## Reconciliation checks
 
 Documentation for reconciliation checks is available in [reconciliation-checks.md](reconciliation-checks.md "mention")
+
+## Group By check
+
+{% hint style="warning" %}
+Available soon.
+{% endhint %}
+
+A `group by` Check allows you to run validations on **aggregated metrics per group of records** based on one or more fields. You can then apply thresholds to metrics like counts, sums, or averages for each group.
+
+### Verify a SQL query value against a threshold
+
+**Example at the dataset level:**
+
+```yaml
+dataset: datasource/db/schema/dataset
+checks:
+  - group_by:
+      name: ""
+      query: |-
+        SELECT
+            warehouse_id,
+            product_id,
+            COUNT(*) AS record_count,
+            SUM(qty_on_hand) AS total_qty_on_hand,
+        FROM soda_demo.retail_stock_levels
+        GROUP BY warehouse_id, product_id
+      fields:
+        - warehouse_id
+        - product_id
+      metric_name: total_qty_on_hand
+      threshold:
+        must_be_greater_than: 1
+```
+
+**Check configuration keys**
+
+<table><thead><tr><th>Key</th><th>Description</th><th width="105.70001220703125">Optional</th></tr></thead><tbody><tr><td><code>query</code></td><td>SQL query returning grouping fields and metrics</td><td>No</td></tr><tr><td><code>fields</code></td><td>List of column(s) used to group results</td><td>No</td></tr><tr><td>`<code>metric_name</code></td><td>Metric (from query alias) used for threshold evaluation</td><td></td></tr><tr><td><code>name</code></td><td><a data-mention href="./#check-names">#check-names</a></td><td>Yes</td></tr><tr><td><code>threshold</code></td><td>The default is that there should be no failed rows.<a data-mention href="./#thresholds">#thresholds</a></td><td>Yes</td></tr><tr><td><code>qualifier</code></td><td><a data-mention href="./#check-qualifiers">#check-qualifiers</a></td><td>Yes</td></tr><tr><td><code>attributes</code></td><td><a data-mention href="./#check-attributes">#check-attributes</a></td><td>Yes</td></tr></tbody></table>
 
 ## Common check configurations
 
