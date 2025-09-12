@@ -418,9 +418,9 @@
   * [Troubleshoot data source connections](data-source-reference/connect-troubleshoot.md)
 * [Soda Cloud API v1](soda-cloud-api-v1/README.md)
   * ```yaml
-    type: builtin:openapi
     props:
       models: true
+    type: builtin:openapi
     dependencies:
       spec:
         ref:
@@ -430,9 +430,9 @@
   * [GET checks into CSV files](soda-cloud-api-v1/api2csv-example.md)
 * [Soda Cloud Reporting API v1](reporting-api-v1/README.md)
   * ```yaml
-    type: builtin:openapi
     props:
       models: true
+    type: builtin:openapi
     dependencies:
       spec:
         ref:

@@ -85,7 +85,7 @@ You may find it useful to set up multiple organizations in Soda Cloud so that ea
 
 Note that Soda Cloud associates any [API keys](../use-case-guides/api-keys.md) that you generate within an organization with both your profile _and_ the organization in which you generated the keys. API keys are not interchangeable between organizations.
 
-Contact [support@soda.io ](mailto:support@soda.io)to request multiple organizations for Soda Cloud.
+Contact [support@soda.io](mailto:support@soda.io) to request multiple organizations for Soda Cloud.
 
 \
 
