@@ -1583,7 +1583,7 @@ info:
     \ in Soda Cloud. For Basic authentication, this API uses API keys rather than\
     \ username and password values.\n\nTo learn how to generate the API keys that\
     \ you need for basic authentication, access the [Generate API keys for use with\
-    \ Soda Library or a Soda Cloud API](https://docs.soda.io/soda-cloud/api-keys.html#generate-api-keys-for-use-with-soda-library-or-a-soda-cloud-api).\n\
+    \ Soda Library or a Soda Cloud API](https://docs.soda.io/soda-v4/reference/generate-api-keys#generate-api-keys-for-use-with-soda-core-or-a-soda-cloud-api).\n\
     \n## Examples\n\n```curl\ncurl -X GET \\ \n    --location \"https://cloud.soda.io/api/v1/test-login\"\
     \ \\\n    --basic \n    --user 5100a9bc-8cbe-44ab-8263-136ba0f35c1d:VIorf5ZGgE5yqMc-gT7amAsAiotqgySSUh98VBtek_6x6fP3asnybQ\n\
     ```\n"
