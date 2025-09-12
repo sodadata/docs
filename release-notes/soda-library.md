@@ -12,7 +12,7 @@ description: >-
 
 ### 1.12.22 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
 
-* Bump `deepdiff~=8.6` to fix (CVE-2025-58367)[https://github.com/advisories/GHSA-mw26-5g2v-hqw3]
+* Bump `deepdiff~=8.6` to fix [CVE-2025-58367](https://github.com/advisories/GHSA-mw26-5g2v-hqw3))
 * Fix data type for Redshift metadata row count
 
 ### \[soda-library] 1.12.21
@@ -181,10 +181,10 @@ description: >-
 
 ### 1.12.8 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
 
-* Added support for v4 table identity profiling&#x20;
-* Enable metadata collection & backfilling for redshift&#x20;
-* Implemented v4 datasource for SQLServer&#x20;
-* Add v4 data source: Oracle&#x20;
+* Added support for v4 table identity profiling
+* Enable metadata collection & backfilling for redshift
+* Implemented v4 datasource for SQLServer
+* Add v4 data source: Oracle
 * fix(recon\_row\_diff): ensure cursor is drained prior to executing another query
 
 ***
@@ -207,9 +207,9 @@ description: >-
 * Rename to `duplicate_values_percentage`
 * Fix missing value percentage metric
 * Fix qualified table quoting
-* Quick fix for metadata backfilling for BigQuery&#x20;
-* fix(group\_evo\_metric): diff query -> diff metric identity&#x20;
-* Query postgres row count using `SELECT COUNT(*)`&#x20;
+* Quick fix for metadata backfilling for BigQuery
+* fix(group\_evo\_metric): diff query -> diff metric identity
+* Query postgres row count using `SELECT COUNT(*)`
 
 ***
 
@@ -219,7 +219,7 @@ description: >-
 
 ### 1.12.6 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
 
-* fix(json\_helper): convert numpy int/floats to native int/floats&#x20;
+* fix(json\_helper): convert numpy int/floats to native int/floats
 
 ***
 
@@ -229,7 +229,7 @@ description: >-
 
 ### 1.12.5 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
 
-* Updated names for metrics&#x20;
+* Updated names for metrics
 
 ***
 
@@ -239,11 +239,11 @@ description: >-
 
 ### 1.12.3 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
 
-* Improve connection test for snowflake&#x20;
-* Remove suggest generator & `ia-questionary` dependency&#x20;
-* Fix handling cased table names on postgres&#x20;
-* Added more authentication methods for Postgres v4 connector&#x20;
-* Update test casing expectations for redshift&#x20;
+* Improve connection test for snowflake
+* Remove suggest generator & `ia-questionary` dependency
+* Fix handling cased table names on postgres
+* Added more authentication methods for Postgres v4 connector
+* Update test casing expectations for redshift
 * Add `sum`, `distinct` and `non_missing_count` metrics
 
 ***
@@ -254,14 +254,14 @@ description: >-
 
 ### 1.12.1 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
 
-* Support partition column suggestion per dataset&#x20;
-* Fix `connection_type` for v4 databricks&#x20;
-* Fix total row count change metric&#x20;
+* Support partition column suggestion per dataset
+* Fix `connection_type` for v4 databricks
+* Fix total row count change metric
 * Add support for env variables for v4 data sources
 * Use legacy behavior when `--upload-mode` not set
-* Limit databricks retries to 3 attempts in 1s-5s&#x20;
-* Rename timeliness to `Last modification time`&#x20;
-* Add support for Snowflake v4 data source&#x20;
+* Limit databricks retries to 3 attempts in 1s-5s
+* Rename timeliness to `Last modification time`
+* Add support for Snowflake v4 data source
 
 ***
 
@@ -281,10 +281,10 @@ description: >-
 
 ### 1.11.17 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
 
-* Skip data-based metrics when no partition column&#x20;
-* Dtl 768/split library&#x20;
-* Fix CI&#x20;
-* Fix ci&#x20;
+* Skip data-based metrics when no partition column
+* Dtl 768/split library
+* Fix CI
+* Fix ci
 * Fix CI + remove obs package from requirements to exclude it from docker
 
 ***
@@ -296,10 +296,10 @@ description: >-
 ### 1.11.16 Features and Fixes <a href="#id-1112-features-and-fixes" id="id-1112-features-and-fixes"></a>
 
 * Add support for v4 data sources
-* Fix python 3.9 compatibility&#x20;
-* Add `--upload-mode` CLI option&#x20;
-* Filter out system schemas from discovery&#x20;
-* Obsl 425 Create Postgres v4 Datasource&#x20;
+* Fix python 3.9 compatibility
+* Add `--upload-mode` CLI option
+* Filter out system schemas from discovery
+* Obsl 425 Create Postgres v4 Datasource
 
 ***
 
@@ -322,7 +322,7 @@ description: >-
 * Updated approach for acquiring last modification for OracleDB
 * Work around dependency resolution errors in pip 25.1
 * Update last modification timestamp for SQL Server
-* Updated Oracle implementation for new definition latest modification&#x20;
+* Updated Oracle implementation for new definition latest modification
 
 ***
 
@@ -365,12 +365,12 @@ description: >-
 
 #### Metric monitoring
 
-* Fix handling empty partition column&#x20;
-* Remove old observability based on profiling&#x20;
+* Fix handling empty partition column
+* Remove old observability based on profiling
   * This also fixes an issue for discovery performed as part of metric monitoring on SQL Server
 * Handle case where metadata is missing
-* Fix observability discovery&#x20;
-* Fix missing user configuration defaults&#x20;
+* Fix observability discovery
+* Fix missing user configuration defaults
 
 ***
 
@@ -380,9 +380,9 @@ description: >-
 
 ### 1.11.8 Features and Fixes <a href="#id-1111-features-and-fixes" id="id-1111-features-and-fixes"></a>
 
-* Fix duplicate metrics & schema identity for MM&#x20;
-* Use new optimized historic data queries&#x20;
-* Fix freshness metric for empty partitions&#x20;
+* Fix duplicate metrics & schema identity for MM
+* Use new optimized historic data queries
+* Fix freshness metric for empty partitions
 * Clean up redundant diagnostics mapping
 
 ***
@@ -403,18 +403,18 @@ description: >-
 
 ### 1.11.6 Features and Fixes <a href="#id-1111-features-and-fixes" id="id-1111-features-and-fixes"></a>
 
-* Ignore v4 data source configurations&#x20;
-* Add missing values column metric to MM&#x20;
-* Use cloud-generated name for column monitors&#x20;
-* Fix checking for exclusion zone when alerting&#x20;
-* Fix missing `userConfiguration` in DTO&#x20;
-* Fix monitor error when partition doesn't have data&#x20;
-* Fix python 3.9 compatibility&#x20;
-* Extend column monitors&#x20;
-* Fix getting history for column metric checks&#x20;
-* Fix missing metadata metrics after backfilling&#x20;
-* Verify dtype for suggested partition columns&#x20;
-* Fix handling table without metrics&#x20;
+* Ignore v4 data source configurations
+* Add missing values column metric to MM
+* Use cloud-generated name for column monitors
+* Fix checking for exclusion zone when alerting
+* Fix missing `userConfiguration` in DTO
+* Fix monitor error when partition doesn't have data
+* Fix python 3.9 compatibility
+* Extend column monitors
+* Fix getting history for column metric checks
+* Fix missing metadata metrics after backfilling
+* Verify dtype for suggested partition columns
+* Fix handling table without metrics
 
 ***
 
@@ -436,14 +436,14 @@ description: >-
 
 #### Anomaly detection checks
 
-* Fix prophet error on gaps in user feedback&#x20;
+* Fix prophet error on gaps in user feedback
 
 #### Metric monitoring
 
-* Fix handling `NaN` values in total row count&#x20;
-* added indexing to also feedback and predicted anomalies arrays&#x20;
+* Fix handling `NaN` values in total row count
+* added indexing to also feedback and predicted anomalies arrays
 * fix comment
-* Prevent recalculating imputed values&#x20;
+* Prevent recalculating imputed values
 
 ***
 
@@ -453,9 +453,9 @@ description: >-
 
 ### 1.11.3 Features and Fixes <a href="#id-1111-features-and-fixes" id="id-1111-features-and-fixes"></a>
 
-* update rounding\_type logic to not require user input&#x20;
-* Bump opentelemetry&#x20;
-* Clean up misplaced group evolution test&#x20;
+* update rounding\_type logic to not require user input
+* Bump opentelemetry
+* Clean up misplaced group evolution test
 
 ***
 
@@ -475,7 +475,7 @@ description: >-
 
 ### 1.11.1 Features and Fixes <a href="#id-1111-features-and-fixes" id="id-1111-features-and-fixes"></a>
 
-* New: Reconciliation Reference check&#x20;
+* New: Reconciliation Reference check
 
 ***
 
@@ -1393,8 +1393,7 @@ BROKEN RELEASE - DO NOT USE
 * Bump Prophet by @m1n0 in sodadata/soda-core#2000
 * Tests: Use approx comparison for floats by @m1n0 in sodadata/soda-core#1999
 
-\
-
+\\
 
 * Support token auth by @m1n0 in #159
 * Schema check: Support custom identity (#1988) by @m1n0 in #161
