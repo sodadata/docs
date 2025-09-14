@@ -22,4 +22,7 @@ connection:
   http_path: <sql-warehouse-http-path>
   catalog: <database-catalog-name>
   access_token: <sql-warehouse-access-token>
+  # optional
+  # warehouse: <warehouse>
+  # session_configuration: <Optional session configuration dict>
 ```
