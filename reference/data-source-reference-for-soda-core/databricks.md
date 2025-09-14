@@ -19,11 +19,7 @@ type: databricks
 name: my_databricks
 connection:
   host: <server-hostname>
-  http_path: <http-path>
-  catalog: <unity-catalog>
-
-  # optional
-    warehouse:
-    session_configuration:
-    field_mapping: 
+  http_path: <sql-warehouse-http-path>
+  catalog: <database-catalog-name>
+  access_token: <sql-warehouse-access-token>
 ```
