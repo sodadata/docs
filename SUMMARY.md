@@ -70,6 +70,8 @@
     * [Deploy a Soda Agent in an Azure AKS cluster](deployment-options/deploy-soda-agent/deploy-a-soda-agent-in-an-azure-aks-cluster.md)
     * [Deploy a Soda Agent in a Google GKE cluster](deployment-options/deploy-soda-agent/deploy-a-soda-agent-in-a-google-gke-cluster.md)
     * [Soda Agent Extra](deployment-options/deploy-soda-agent/soda-agent-extra.md)
+  * [Upgrade Soda Agent](deployment-options/upgrade-soda-agent.md)
+  * [Redeploy Soda Agent](deployment-options/redeploy-soda-agent.md)
   * [Deploy a self-hosted Soda Agent from Soda's private container registry](deployment-options/deploy-a-self-hosted-soda-agent-from-sodas-private-container-registry.md)
   * [Upgrade guide](deployment-options/upgrade-guide.md)
 * [Organization and Admin settings](organization-and-admin-settings/README.md)

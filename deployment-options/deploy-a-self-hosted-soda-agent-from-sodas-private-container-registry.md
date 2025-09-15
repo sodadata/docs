@@ -16,7 +16,7 @@ In order to enjoy the latest features Soda has to offer, please upgrade any self
 
 ### Registry access using your existing API key
 
-Follow the self-hosted Soda agent [upgrade](https://app.gitbook.com/s/oV0A6Eua8LUIyWgHxsjf/quick-start-sip/upgrade#upgrade-a-self-hosted-soda-agent) or [redeployment](https://app.gitbook.com/s/oV0A6Eua8LUIyWgHxsjf/quick-start-sip/upgrade#redeploy-a-self-hosted-soda-agent) guides. Don't execute the final `helm install` or `helm upgrade` step yet.
+Follow the self-hosted Soda agent [upgrade](upgrade-soda-agent.md) or [redeployment](redeploy-soda-agent.md) guides. Don't execute the final `helm install` or `helm upgrade` step yet.
 
 Ensure you retrieve the `soda.apikey.id` and `soda.apikey.secret` values first, by using\
 `helm get values -n <namespace> <release_name>` .
