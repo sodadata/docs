@@ -6,7 +6,7 @@ description: >-
 
 # Soda Agent - Release notes
 
-## v4 initial release
+## v4 initial release - `soda-agent 1.3.0`
 
 <sup>01 September, 2025</sup>
 
