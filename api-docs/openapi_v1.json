@@ -6,10 +6,9 @@
     "version": "1.3.1"
   },
   "servers": [
-    { "url": "https://reporting.cloud.soda.io/v1/", "description": "Cloud EU" },
+    { "url": "https://reporting.cloud.soda.io/v1", "description": "Cloud EU" },
     {
-      "url": "https://reporting.cloud.us.soda.io/v1/",
-      "description": "Cloud US"
+      "url": "https://reporting.cloud.us.soda.io/v1", "description": "Cloud US"
     }
   ],
   "paths": {
