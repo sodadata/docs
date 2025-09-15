@@ -20,21 +20,19 @@ pip install -i https://pypi.dev.sodadata.io/simple -U soda-fabric
 type: fabric
 name: my_fabric
 connection:
-  host: <your-fabric-sql-endpoint>
-  user: ${env.USER}          # SEE NOTE
-  password: ${env.PASSWORD}  # SEE NOTE
-  database: <your_db>
-  
-  # optional
+  host: <your-server>
   port: 1433
-  trusted_connection: false
-  encrypt: true
-  trust_server_certificate: false
+  database: <your_database>
+  username: ${env.USERNAME}  # SEE NOTE
+  password: ${env.PASSWORD}  # SEE NOTE
+  authentication: sql  # activedirectoryserviceprincipal | activedirectoryinteractive | activedirectorypassword 
+  # optional
+  client_id: <service_principle_client_id> # SEE NOTE
+  client_secret: <service_principle_client_secret> # SEE NOTE
   driver: ODBC Driver 18 for SQL Server
-  scope: DW
-  connection_parameters:
-    multi_subnet_failover: true
-  authentication: sql
+  trusted_connection: false
+  encrypt: false
+  trust_server_certificate: false
 ```
 
 {% hint style="info" %}

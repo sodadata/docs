@@ -18,23 +18,19 @@ pip install -i https://pypi.dev.sodadata.io/simple -U soda-sqlserver
 type: sqlserver
 name: my_sqlserver
 connection:
-  host: <your-sqlserver-hostname>
+  host: <your-sqlserver-host-name>
   port: 1433
   database: <your_database>
-  user: ${env.USER}          # SEE NOTE
+  username: ${env.USERNAME}  # SEE NOTE
   password: ${env.PASSWORD}  # SEE NOTE
-
+  authentication: sql  # activedirectoryserviceprincipal | activedirectoryinteractive | activedirectorypassword 
   # optional
+  client_id: <service_principle_client_id> # SEE NOTE
+  client_secret: <service_principle_client_secret> # SEE NOTE
+  driver: ODBC Driver 18 for SQL Server
   trusted_connection: false
   encrypt: false
   trust_server_certificate: false
-  driver: ODBC Driver 18 for SQL Server
-  scope: DW
-  connection_parameters:
-    multi_subnet_failover: true
-  authentication: sql     # sql | activedirectoryinteractive | activedirectorypassword |
-                          # activedirectoryserviceprincipal | activedirectory | auto |
-                          # cli | environment | synapsespark | fabricspark |
 ```
 
 {% hint style="info" %}

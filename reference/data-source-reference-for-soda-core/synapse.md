@@ -21,18 +21,14 @@ connection:
   database: <your_database>
   username: ${env.USERNAME}  # SEE NOTE
   password: ${env.PASSWORD}  # SEE NOTE
-
+  authentication: sql  # activedirectoryserviceprincipal | activedirectoryinteractive | activedirectorypassword 
   # optional
-  trusted_connection: false
-  encrypt: true
-  trust_server_certificate: false
+  client_id: <service_principle_client_id> # SEE NOTE
+  client_secret: <service_principle_client_secret> # SEE NOTE
   driver: ODBC Driver 18 for SQL Server
-  scope: DW
-  connection_parameters:
-    multi_subnet_failover: true
-  authentication: sql  # sql | activedirectoryinteractive | activedirectorypassword | 
-                       # activedirectoryserviceprincipal | activedirectory | auto | 
-                       # cli | environment | synapsespark | fabricspark
+  trusted_connection: false
+  encrypt: false
+  trust_server_certificate: false
 ```
 
 {% hint style="info" %}
