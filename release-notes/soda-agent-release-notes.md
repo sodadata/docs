@@ -30,3 +30,5 @@ description: >-
   * Limits
     * CPU: 250m → 500m
     * Memory: 250 MiB → 750 MiB
+* SECURITY: \[CVE-2025-50817] A known vulnerability exists in python-future which is an indirect dependency of soda-agent.  No patched version of python-future is available. It is exploitable only if attackers can write files on the server. Soda's cloud infrastructure is hardened against this attack. Users should ensure servers are hardened to prevent unauthorized file writes.&#x20;
+* SECURITY: \[CVE-2025-47907] Race condition in Go’s database/sql package. This item is listed for transparency because it was flagged by our automated scanning. The version of kubectl distributed by Kubernetes and included in soda-agent is built against a Go release that includes the affected code, but kubectl does not use the vulnerable functionality. No advisory has been issued by the Kubernetes project and no patched version of kubectl is currently available. No impact and no action required. \

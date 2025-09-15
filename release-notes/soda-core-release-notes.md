@@ -11,7 +11,7 @@ description: >-
 <sup>01 September, 2025</sup>
 
 * Introduced support for parsing, publishing and (both locally and remotely) verifying data contracts.
-* Introduced "Missing", "Invalid", "Duplicate", "Aggregate", "Failed Rows", "Metric" checks.
+* Introduced "Missing", "Invalid", "Duplicate", "Aggregate", "Failed Rows", "Metric" checks in data contract.
 * Introduced **data contracts** support for multiple data sources:
   * Postgres, Snowflake, Bigquery, Databricks, Redshift, SQL Server, Fabric, Synapse, Athena, DuckDB (in memory).
 * Introduced **metrics monitoring** support for multiple data sources:
