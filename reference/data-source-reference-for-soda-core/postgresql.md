@@ -18,9 +18,17 @@ pip install -i https://pypi.dev.sodadata.io/simple -U soda-postgres
 type: postgres
 name: my_postgres
 connection:
-  user: ${env.USERNAME}
-  host: <your-postgresql-host>
+  user: ${env.POSTGRES_USER}
+  host: ${env.POSTGRES_HOST}
   port: 5432
-  password: ${env.PASSWORD}
-  database: <your_database>
+  password: ${env.POSTGRES_PW}
+  database: ${env.POSTGRES_DB}
+```
+
+#### Connection test
+
+Test the data source connection:
+
+```bash
+soda data-source test -ds ds.yml
 ```

@@ -134,12 +134,6 @@ You can use the `private_key` and `private_key_passphrase` parameters to specify
 
 </details>
 
-
-
-
-
-
-
 ***
 
 ### Other parameters
@@ -218,7 +212,13 @@ kubectl create secret generic -n <soda-agent-namespace> snowflake-private-key --
     ```
 4. Deploy, or redeploy, the agent for the changes to take effect.
 
-{% include "https://app.gitbook.com/s/oV0A6Eua8LUIyWgHxsjf/~/reusable/RraIYgl6b69nOAJ8z5Za/" %}
+## Connection test
+
+Test the data source connection:
+
+```bash
+soda data-source test -ds ds.yml
+```
 
 ## Supported data types
 

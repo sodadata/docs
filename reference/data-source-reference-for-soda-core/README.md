@@ -64,10 +64,10 @@ Environment variables must be available in the runtime environment where Soda is
 
 ## Supported data sources
 
-|                                                                   |                                                                    |                                                                 |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------- |
-| <a href="bigquery/" class="button secondary">BigQuery</a>         | <a href="pandas.md" class="button secondary">Pandas</a>            | <a href="sql-server.md" class="button secondary">SQL Server</a> |
-| <a href="databricks.md" class="button secondary">Databricks</a>   | <a href="polars.md" class="button secondary">Polars</a>            | <a href="snowflake.md" class="button secondary">Snowflake</a>   |
-| <a href="duckdb/" class="button secondary">DuckDB</a>             | <a href="postgresql.md" class="button secondary">PostgreSQL</a>    | <a href="synapse.md" class="button secondary">Synapse</a>       |
-| <a href="microsoft-fabric.md" class="button secondary">Fabric</a> | <a href="amazon-redshift.md" class="button secondary">Redshift</a> |                                                                 |
+|                                                                   |                                                                      |                                                                 |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------- | --------------------------------------------------------------- |
+| <a href="bigquery/" class="button secondary">BigQuery</a>         | <a href="pandas.md" class="button secondary">Pandas</a>              | <a href="sql-server.md" class="button secondary">SQL Server</a> |
+| <a href="databricks.md" class="button secondary">Databricks</a>   | <a href="polars.md" class="button secondary">Polars</a>              | <a href="snowflake.md" class="button secondary">Snowflake</a>   |
+| <a href="duckdb/" class="button secondary">DuckDB</a>             | <a href="postgresql.md" class="button secondary">PostgreSQL</a>      | <a href="synapse.md" class="button secondary">Synapse</a>       |
+| <a href="microsoft-fabric.md" class="button secondary">Fabric</a> | <a href="amazon-redshift-1.md" class="button secondary">Redshift</a> |                                                                 |
 

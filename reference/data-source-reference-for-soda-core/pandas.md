@@ -4,6 +4,6 @@ description: Access configuration details to connect Soda to a Pandas data sourc
 
 # Pandas
 
-You can run contracts on Pandas dataframes by registering them in DuckDB as in-memory tables.
+You can run contracts on Pandas dataframes by registering them in DuckDB as in-memory tables, as described [here](duckdb/duckdb-advanced-usage.md#from-pandas-dataframe).
 
 > Learn more: [duckdb-advanced-usage.md](duckdb/duckdb-advanced-usage.md "mention")
