@@ -58,7 +58,7 @@ Depending on the selected scope, one or more of the following event types will b
 
 #### Check Evaluation
 
-Scope: `alert_notificatio`\
+Scope: `alert_notification`\
 Triggered when a check result triggers an alert.
 
 Alert Notifications require active **notification rules to use the webhook as a recipient**. See Notification Configuration →
@@ -72,7 +72,7 @@ Alert Notifications require active **notification rules to use the webhook as a 
 }
 ```
 
-`CheckResult`\*\* object:\*\*
+`CheckResult` **object**
 
 | Field           | Type   | Description                                        |
 | --------------- | ------ | -------------------------------------------------- |
