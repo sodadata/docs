@@ -179,7 +179,7 @@ kubectl create secret generic -n <soda-agent-namespace> snowflake-private-key --
 
     ```yaml
     soda:
-      scanlauncher:
+      scanLauncher:
         volumeMounts:
           - name: snowflake-private-key
             mountPath: /opt/soda/etc
@@ -190,6 +190,10 @@ kubectl create secret generic -n <soda-agent-namespace> snowflake-private-key --
               items:
                 - key: snowflake-private-key.pk8
                   path: snowflake-private-key.pk8
+      contractLauncher:
+        volumeMounts:
+          - name: snowflake-private-key
+            mountPath: /opt/soda/etc
     ```
 3.  Adjust the `configuration.yml` file to include the new path in the connection details, as in the following example.
 
