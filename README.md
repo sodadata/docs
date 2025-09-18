@@ -51,7 +51,7 @@ Detailed command, API, and configuration docs:
 
 Need help or want to contribute?
 
-* **Join our Slack Community**: [Soda Community](https://community.soda.io/slack)
+* **Join our Slack Community**: [Soda Community](https://soda-community.slack.com/)
 * **Browse GitHub Discussions**: [Soda on GitHub](https://github.com/sodadata/soda)
 
 ***
