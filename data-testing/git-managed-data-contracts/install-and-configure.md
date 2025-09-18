@@ -6,11 +6,15 @@ This setup gives you full control over your contracts, letting you version them 
 
 ## Install the Soda CLI
 
-Install the Soda Library using `pip`:
+Install the Soda Core using `pip`:
 
 ```javascript
-pip install -i https://pypi.dev.sodadata.io "soda-core>=4.0.0.dev1" -U
+pip install -i https://pypi.dev.sodadata.io/simple soda-postgres
 ```
+
+{% hint style="info" %}
+Replace `postgres` with the name of your data source type, e.g., `snowflake`, `databricks`, etc. See [here](../../reference/data-source-reference-for-soda-core/) for a list of supported data source types.&#x20;
+{% endhint %}
 
 ### Connect to Soda Cloud (optional)
 
